@@ -121,11 +121,11 @@ class VrmlConverter_Curve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds to the OStream the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer.
 	:param aCurve:
-	:type aCurve: Adaptor3d_Curve &
+	:type aCurve: Adaptor3d_Curve
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:rtype: void") Add;
 		static void Add (const Adaptor3d_Curve & aCurve,const opencascade::handle<VrmlConverter_Drawer> & aDrawer,Standard_OStream & anOStream);
 
@@ -133,15 +133,15 @@ class VrmlConverter_Curve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds to the OStream the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2.
 	:param aCurve:
-	:type aCurve: Adaptor3d_Curve &
+	:type aCurve: Adaptor3d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
 	:type U2: float
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:rtype: void") Add;
 		static void Add (const Adaptor3d_Curve & aCurve,const Standard_Real U1,const Standard_Real U2,const opencascade::handle<VrmlConverter_Drawer> & aDrawer,Standard_OStream & anOStream);
 
@@ -149,13 +149,13 @@ class VrmlConverter_Curve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds to the OStream the drawing of the curve aCurve. The aspect is the current aspect. The drawing will be limited between the points of parameter U1 and U2. aNbPoints defines number of points on one interval.
 	:param aCurve:
-	:type aCurve: Adaptor3d_Curve &
+	:type aCurve: Adaptor3d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
 	:type U2: float
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aNbPoints:
 	:type aNbPoints: int
 	:rtype: void") Add;
@@ -179,11 +179,11 @@ class VrmlConverter_DeflectionCurve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation defined by the drawer aDrawer. The aspect is defined by LineAspect in aDrawer.
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aCurve:
-	:type aCurve: Adaptor3d_Curve &
+	:type aCurve: Adaptor3d_Curve
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,Adaptor3d_Curve & aCurve,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -191,15 +191,15 @@ class VrmlConverter_DeflectionCurve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation defined by the drawer aDrawer. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2.
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aCurve:
-	:type aCurve: Adaptor3d_Curve &
+	:type aCurve: Adaptor3d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
 	:type U2: float
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,Adaptor3d_Curve & aCurve,const Standard_Real U1,const Standard_Real U2,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -207,9 +207,9 @@ class VrmlConverter_DeflectionCurve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aCurve:
-	:type aCurve: Adaptor3d_Curve &
+	:type aCurve: Adaptor3d_Curve
 	:param aDeflection:
 	:type aDeflection: float
 	:param aLimit:
@@ -221,13 +221,13 @@ class VrmlConverter_DeflectionCurve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aCurve:
-	:type aCurve: Adaptor3d_Curve &
+	:type aCurve: Adaptor3d_Curve
 	:param aDeflection:
 	:type aDeflection: float
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,Adaptor3d_Curve & aCurve,const Standard_Real aDeflection,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -235,9 +235,9 @@ class VrmlConverter_DeflectionCurve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect The drawing will be limited between the points of parameter U1 and U2.
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aCurve:
-	:type aCurve: Adaptor3d_Curve &
+	:type aCurve: Adaptor3d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -251,15 +251,15 @@ class VrmlConverter_DeflectionCurve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds to the OStream the drawing of the curve aCurve with the array of parameters to retrieve points on curve.
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aCurve:
-	:type aCurve: Adaptor3d_Curve &
+	:type aCurve: Adaptor3d_Curve
 	:param aParams:
-	:type aParams: opencascade::handle<TColStd_HArray1OfReal> &
+	:type aParams: TColStd_HArray1OfReal
 	:param aNbNodes:
 	:type aNbNodes: int
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,const Adaptor3d_Curve & aCurve,const opencascade::handle<TColStd_HArray1OfReal> & aParams,const Standard_Integer aNbNodes,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -377,7 +377,7 @@ class VrmlConverter_Drawer : public Standard_Transient {
 		/****************** SetFreeBoundaryAspect ******************/
 		%feature("compactdefaultargs") SetFreeBoundaryAspect;
 		%feature("autodoc", ":param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_LineAspect> &
+	:type anAspect: VrmlConverter_LineAspect
 	:rtype: None") SetFreeBoundaryAspect;
 		void SetFreeBoundaryAspect (const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
@@ -393,7 +393,7 @@ class VrmlConverter_Drawer : public Standard_Transient {
 		%feature("compactdefaultargs") SetHiddenLineAspect;
 		%feature("autodoc", "* sets LineAspect for the hidden lines.
 	:param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_LineAspect> &
+	:type anAspect: VrmlConverter_LineAspect
 	:rtype: None") SetHiddenLineAspect;
 		void SetHiddenLineAspect (const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
@@ -408,7 +408,7 @@ class VrmlConverter_Drawer : public Standard_Transient {
 		/****************** SetLineAspect ******************/
 		%feature("compactdefaultargs") SetLineAspect;
 		%feature("autodoc", ":param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_LineAspect> &
+	:type anAspect: VrmlConverter_LineAspect
 	:rtype: None") SetLineAspect;
 		void SetLineAspect (const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
@@ -431,7 +431,7 @@ class VrmlConverter_Drawer : public Standard_Transient {
 		/****************** SetPointAspect ******************/
 		%feature("compactdefaultargs") SetPointAspect;
 		%feature("autodoc", ":param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_PointAspect> &
+	:type anAspect: VrmlConverter_PointAspect
 	:rtype: None") SetPointAspect;
 		void SetPointAspect (const opencascade::handle<VrmlConverter_PointAspect> & anAspect);
 
@@ -439,14 +439,14 @@ class VrmlConverter_Drawer : public Standard_Transient {
 		%feature("compactdefaultargs") SetSeenLineAspect;
 		%feature("autodoc", "* sets LineAspect for the seen lines.
 	:param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_LineAspect> &
+	:type anAspect: VrmlConverter_LineAspect
 	:rtype: None") SetSeenLineAspect;
 		void SetSeenLineAspect (const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
 		/****************** SetShadingAspect ******************/
 		%feature("compactdefaultargs") SetShadingAspect;
 		%feature("autodoc", ":param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_ShadingAspect> &
+	:type anAspect: VrmlConverter_ShadingAspect
 	:rtype: None") SetShadingAspect;
 		void SetShadingAspect (const opencascade::handle<VrmlConverter_ShadingAspect> & anAspect);
 
@@ -461,14 +461,14 @@ class VrmlConverter_Drawer : public Standard_Transient {
 		/****************** SetUIsoAspect ******************/
 		%feature("compactdefaultargs") SetUIsoAspect;
 		%feature("autodoc", ":param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_IsoAspect> &
+	:type anAspect: VrmlConverter_IsoAspect
 	:rtype: None") SetUIsoAspect;
 		void SetUIsoAspect (const opencascade::handle<VrmlConverter_IsoAspect> & anAspect);
 
 		/****************** SetUnFreeBoundaryAspect ******************/
 		%feature("compactdefaultargs") SetUnFreeBoundaryAspect;
 		%feature("autodoc", ":param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_LineAspect> &
+	:type anAspect: VrmlConverter_LineAspect
 	:rtype: None") SetUnFreeBoundaryAspect;
 		void SetUnFreeBoundaryAspect (const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
@@ -483,14 +483,14 @@ class VrmlConverter_Drawer : public Standard_Transient {
 		/****************** SetVIsoAspect ******************/
 		%feature("compactdefaultargs") SetVIsoAspect;
 		%feature("autodoc", ":param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_IsoAspect> &
+	:type anAspect: VrmlConverter_IsoAspect
 	:rtype: None") SetVIsoAspect;
 		void SetVIsoAspect (const opencascade::handle<VrmlConverter_IsoAspect> & anAspect);
 
 		/****************** SetWireAspect ******************/
 		%feature("compactdefaultargs") SetWireAspect;
 		%feature("autodoc", ":param anAspect:
-	:type anAspect: opencascade::handle<VrmlConverter_LineAspect> &
+	:type anAspect: VrmlConverter_LineAspect
 	:rtype: None") SetWireAspect;
 		void SetWireAspect (const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
@@ -573,13 +573,13 @@ class VrmlConverter_HLRShape {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:param aProjector:
-	:type aProjector: opencascade::handle<VrmlConverter_Projector> &
+	:type aProjector: VrmlConverter_Projector
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,const TopoDS_Shape & aShape,const opencascade::handle<VrmlConverter_Drawer> & aDrawer,const opencascade::handle<VrmlConverter_Projector> & aProjector);
 
@@ -620,7 +620,7 @@ class VrmlConverter_LineAspect : public Standard_Transient {
 		/****************** SetMaterial ******************/
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:rtype: None") SetMaterial;
 		void SetMaterial (const opencascade::handle<Vrml_Material> & aMaterial);
 
@@ -633,7 +633,7 @@ class VrmlConverter_LineAspect : public Standard_Transient {
 		/****************** VrmlConverter_LineAspect ******************/
 		%feature("compactdefaultargs") VrmlConverter_LineAspect;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:param OnOff:
 	:type OnOff: bool
 	:rtype: None") VrmlConverter_LineAspect;
@@ -678,7 +678,7 @@ class VrmlConverter_PointAspect : public Standard_Transient {
 		/****************** SetMaterial ******************/
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:rtype: None") SetMaterial;
 		void SetMaterial (const opencascade::handle<Vrml_Material> & aMaterial);
 
@@ -691,7 +691,7 @@ class VrmlConverter_PointAspect : public Standard_Transient {
 		/****************** VrmlConverter_PointAspect ******************/
 		%feature("compactdefaultargs") VrmlConverter_PointAspect;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:param OnOff:
 	:type OnOff: bool
 	:rtype: None") VrmlConverter_PointAspect;
@@ -754,7 +754,7 @@ class VrmlConverter_Projector : public Standard_Transient {
 		/****************** VrmlConverter_Projector ******************/
 		%feature("compactdefaultargs") VrmlConverter_Projector;
 		%feature("autodoc", ":param Shapes:
-	:type Shapes: TopTools_Array1OfShape &
+	:type Shapes: TopTools_Array1OfShape
 	:param Focus:
 	:type Focus: float
 	:param DX:
@@ -795,20 +795,20 @@ class VrmlConverter_ShadedShape {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,const TopoDS_Shape & aShape,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****************** ComputeNormal ******************/
 		%feature("compactdefaultargs") ComputeNormal;
 		%feature("autodoc", ":param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param pc:
-	:type pc: Poly_Connect &
+	:type pc: Poly_Connect
 	:param Nor:
 	:type Nor: TColgp_Array1OfDir
 	:rtype: void") ComputeNormal;
@@ -849,7 +849,7 @@ class VrmlConverter_ShadingAspect : public Standard_Transient {
 		/****************** SetFrontMaterial ******************/
 		%feature("compactdefaultargs") SetFrontMaterial;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:rtype: None") SetFrontMaterial;
 		void SetFrontMaterial (const opencascade::handle<Vrml_Material> & aMaterial);
 
@@ -872,7 +872,7 @@ class VrmlConverter_ShadingAspect : public Standard_Transient {
 		/****************** SetShapeHints ******************/
 		%feature("compactdefaultargs") SetShapeHints;
 		%feature("autodoc", ":param aShapeHints:
-	:type aShapeHints: Vrml_ShapeHints &
+	:type aShapeHints: Vrml_ShapeHints
 	:rtype: None") SetShapeHints;
 		void SetShapeHints (const Vrml_ShapeHints & aShapeHints);
 
@@ -906,20 +906,20 @@ class VrmlConverter_WFDeflectionRestrictedFace {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aFace:
-	:type aFace: opencascade::handle<BRepAdaptor_HSurface> &
+	:type aFace: BRepAdaptor_HSurface
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,const opencascade::handle<BRepAdaptor_HSurface> & aFace,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aFace:
-	:type aFace: opencascade::handle<BRepAdaptor_HSurface> &
+	:type aFace: BRepAdaptor_HSurface
 	:param DrawUIso:
 	:type DrawUIso: bool
 	:param DrawVIso:
@@ -931,29 +931,29 @@ class VrmlConverter_WFDeflectionRestrictedFace {
 	:param NBViso:
 	:type NBViso: int
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,const opencascade::handle<BRepAdaptor_HSurface> & aFace,const Standard_Boolean DrawUIso,const Standard_Boolean DrawVIso,const Standard_Real Deflection,const Standard_Integer NBUiso,const Standard_Integer NBViso,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****************** AddUIso ******************/
 		%feature("compactdefaultargs") AddUIso;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aFace:
-	:type aFace: opencascade::handle<BRepAdaptor_HSurface> &
+	:type aFace: BRepAdaptor_HSurface
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") AddUIso;
 		static void AddUIso (Standard_OStream & anOStream,const opencascade::handle<BRepAdaptor_HSurface> & aFace,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****************** AddVIso ******************/
 		%feature("compactdefaultargs") AddVIso;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aFace:
-	:type aFace: opencascade::handle<BRepAdaptor_HSurface> &
+	:type aFace: BRepAdaptor_HSurface
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") AddVIso;
 		static void AddVIso (Standard_OStream & anOStream,const opencascade::handle<BRepAdaptor_HSurface> & aFace,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -974,11 +974,11 @@ class VrmlConverter_WFDeflectionShape {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,const TopoDS_Shape & aShape,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -999,20 +999,20 @@ class VrmlConverter_WFRestrictedFace {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aFace:
-	:type aFace: opencascade::handle<BRepAdaptor_HSurface> &
+	:type aFace: BRepAdaptor_HSurface
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,const opencascade::handle<BRepAdaptor_HSurface> & aFace,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aFace:
-	:type aFace: opencascade::handle<BRepAdaptor_HSurface> &
+	:type aFace: BRepAdaptor_HSurface
 	:param DrawUIso:
 	:type DrawUIso: bool
 	:param DrawVIso:
@@ -1022,29 +1022,29 @@ class VrmlConverter_WFRestrictedFace {
 	:param NBViso:
 	:type NBViso: int
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,const opencascade::handle<BRepAdaptor_HSurface> & aFace,const Standard_Boolean DrawUIso,const Standard_Boolean DrawVIso,const Standard_Integer NBUiso,const Standard_Integer NBViso,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****************** AddUIso ******************/
 		%feature("compactdefaultargs") AddUIso;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aFace:
-	:type aFace: opencascade::handle<BRepAdaptor_HSurface> &
+	:type aFace: BRepAdaptor_HSurface
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") AddUIso;
 		static void AddUIso (Standard_OStream & anOStream,const opencascade::handle<BRepAdaptor_HSurface> & aFace,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****************** AddVIso ******************/
 		%feature("compactdefaultargs") AddVIso;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aFace:
-	:type aFace: opencascade::handle<BRepAdaptor_HSurface> &
+	:type aFace: BRepAdaptor_HSurface
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") AddVIso;
 		static void AddVIso (Standard_OStream & anOStream,const opencascade::handle<BRepAdaptor_HSurface> & aFace,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -1065,11 +1065,11 @@ class VrmlConverter_WFShape {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<VrmlConverter_Drawer> &
+	:type aDrawer: VrmlConverter_Drawer
 	:rtype: void") Add;
 		static void Add (Standard_OStream & anOStream,const TopoDS_Shape & aShape,const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
@@ -1110,7 +1110,7 @@ class VrmlConverter_IsoAspect : public VrmlConverter_LineAspect {
 		/****************** VrmlConverter_IsoAspect ******************/
 		%feature("compactdefaultargs") VrmlConverter_IsoAspect;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:param OnOff:
 	:type OnOff: bool
 	:param aNumber:

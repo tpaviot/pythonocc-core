@@ -97,7 +97,7 @@ class ProjLib {
 		%feature("compactdefaultargs") IsAnaSurf;
 		%feature("autodoc", "* Returns 'true' if surface is analytical, that is it can be Plane, Cylinder, Cone, Sphere, Torus. For all other types of surface method returns 'false'.
 	:param theAS:
-	:type theAS: opencascade::handle<Adaptor3d_HSurface> &
+	:type theAS: Adaptor3d_HSurface
 	:rtype: bool") IsAnaSurf;
 		static Standard_Boolean IsAnaSurf (const opencascade::handle<Adaptor3d_HSurface> & theAS);
 
@@ -105,9 +105,9 @@ class ProjLib {
 		%feature("compactdefaultargs") MakePCurveOfType;
 		%feature("autodoc", "* Make empty P-Curve <aC> of relevant to <PC> type
 	:param PC:
-	:type PC: ProjLib_ProjectedCurve &
+	:type PC: ProjLib_ProjectedCurve
 	:param aC:
-	:type aC: opencascade::handle<Geom2d_Curve> &
+	:type aC: Geom2d_Curve
 	:rtype: void") MakePCurveOfType;
 		static void MakePCurveOfType (const ProjLib_ProjectedCurve & PC,opencascade::handle<Geom2d_Curve> & aC);
 
@@ -276,9 +276,9 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 	:param Index:
 	:type Index: int
 	:param Udeb:
-	:type Udeb: float &
+	:type Udeb: float
 	:param Ufin:
-	:type Ufin: float &
+	:type Ufin: float
 	:rtype: None") Bounds;
 		void Bounds (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -352,9 +352,9 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") GetTolerance;
 		void GetTolerance (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -374,7 +374,7 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Returns the parameters corresponding to S discontinuities. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -396,7 +396,7 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 	:param Index:
 	:type Index: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:rtype: bool") IsUIso;
 		Standard_Boolean IsUIso (const Standard_Integer Index,Standard_Real &OutValue);
 
@@ -406,7 +406,7 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 	:param Index:
 	:type Index: int
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: bool") IsVIso;
 		Standard_Boolean IsVIso (const Standard_Integer Index,Standard_Real &OutValue);
 
@@ -420,7 +420,7 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Changes the surface.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -428,7 +428,7 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Changes the curve.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -463,9 +463,9 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") ProjLib_CompProjectedCurve;
 		%feature("autodoc", "* try to find all solutions
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param TolU:
 	:type TolU: float
 	:param TolV:
@@ -477,9 +477,9 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") ProjLib_CompProjectedCurve;
 		%feature("autodoc", "* this constructor tries to optimize the search using the assumption that maximum distance between surface and curve less or equal then MaxDist. if MaxDist < 0 then algorithm works as above.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param TolU:
 	:type TolU: float
 	:param TolV:
@@ -538,9 +538,9 @@ class ProjLib_ComputeApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs projecting. In case of approximation current values of parameters are used: default values or set by corresponding methods Set...
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -554,9 +554,9 @@ class ProjLib_ComputeApprox {
 		%feature("compactdefaultargs") ProjLib_ComputeApprox;
 		%feature("autodoc", "* <Tol> is the tolerance with which the approximation is performed. Other parameters for approximation have default values.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") ProjLib_ComputeApprox;
@@ -627,9 +627,9 @@ class ProjLib_ComputeApproxOnPolarSurface {
 		%feature("compactdefaultargs") BuildInitialCurve2d;
 		%feature("autodoc", "* Builds initial 2d curve as BSpline with degree = 1 using Extrema algoritm. Method is used in method Perform(...).
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: opencascade::handle<Adaptor2d_HCurve2d>") BuildInitialCurve2d;
 		opencascade::handle<Adaptor2d_HCurve2d> BuildInitialCurve2d (const opencascade::handle<Adaptor3d_HCurve> & Curve,const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -648,9 +648,9 @@ class ProjLib_ComputeApproxOnPolarSurface {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Method, which performs projecting, using default values of parameters or they must be set by corresponding methods before using.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -658,11 +658,11 @@ class ProjLib_ComputeApproxOnPolarSurface {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Method, which performs projecting, using default values of parameters or they must be set by corresponding methods before using. Parameter InitCurve2d is any rough estimation of 2d result curve.
 	:param InitCurve2d:
-	:type InitCurve2d: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type InitCurve2d: Adaptor2d_HCurve2d
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: opencascade::handle<Geom2d_BSplineCurve>") Perform;
 		opencascade::handle<Geom2d_BSplineCurve> Perform (const opencascade::handle<Adaptor2d_HCurve2d> & InitCurve2d,const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -676,9 +676,9 @@ class ProjLib_ComputeApproxOnPolarSurface {
 		%feature("compactdefaultargs") ProjLib_ComputeApproxOnPolarSurface;
 		%feature("autodoc", "* Constructor, which performs projecting.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Tol: default value is 1.0e-4
 	:type Tol: float
 	:rtype: None") ProjLib_ComputeApproxOnPolarSurface;
@@ -688,11 +688,11 @@ class ProjLib_ComputeApproxOnPolarSurface {
 		%feature("compactdefaultargs") ProjLib_ComputeApproxOnPolarSurface;
 		%feature("autodoc", "* Constructor, which performs projecting, using initial curve 2d InitCurve2d, which is any rough approximation of result curve. Parameter Tol is 3d tolerance of approximation.
 	:param InitCurve2d:
-	:type InitCurve2d: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type InitCurve2d: Adaptor2d_HCurve2d
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") ProjLib_ComputeApproxOnPolarSurface;
@@ -702,13 +702,13 @@ class ProjLib_ComputeApproxOnPolarSurface {
 		%feature("compactdefaultargs") ProjLib_ComputeApproxOnPolarSurface;
 		%feature("autodoc", "* Constructor, which performs projecting, using two initial curves 2d: InitCurve2d and InitCurve2dBis that are any rough approximations of result curves. This constructor is used to get two pcurves for seem edge. Parameter Tol is 3d tolerance of approximation.
 	:param InitCurve2d:
-	:type InitCurve2d: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type InitCurve2d: Adaptor2d_HCurve2d
 	:param InitCurve2dBis:
-	:type InitCurve2dBis: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type InitCurve2dBis: Adaptor2d_HCurve2d
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") ProjLib_ComputeApproxOnPolarSurface;
@@ -718,11 +718,11 @@ class ProjLib_ComputeApproxOnPolarSurface {
 		%feature("compactdefaultargs") ProjectUsingInitialCurve2d;
 		%feature("autodoc", "* Method, which performs projecting. Method is used in method Perform(...).
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param InitCurve2d:
-	:type InitCurve2d: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type InitCurve2d: Adaptor2d_HCurve2d
 	:rtype: opencascade::handle<Geom2d_BSplineCurve>") ProjectUsingInitialCurve2d;
 		opencascade::handle<Geom2d_BSplineCurve> ProjectUsingInitialCurve2d (const opencascade::handle<Adaptor3d_HCurve> & Curve,const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor2d_HCurve2d> & InitCurve2d);
 
@@ -811,7 +811,7 @@ class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") ProjLib_HCompProjectedCurve;
 		%feature("autodoc", "* Creates a GenHCurve2d from a Curve
 	:param C:
-	:type C: ProjLib_CompProjectedCurve &
+	:type C: ProjLib_CompProjectedCurve
 	:rtype: None") ProjLib_HCompProjectedCurve;
 		 ProjLib_HCompProjectedCurve (const ProjLib_CompProjectedCurve & C);
 
@@ -819,7 +819,7 @@ class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve2d.
 	:param C:
-	:type C: ProjLib_CompProjectedCurve &
+	:type C: ProjLib_CompProjectedCurve
 	:rtype: None") Set;
 		void Set (const ProjLib_CompProjectedCurve & C);
 
@@ -862,7 +862,7 @@ class ProjLib_HProjectedCurve : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") ProjLib_HProjectedCurve;
 		%feature("autodoc", "* Creates a GenHCurve2d from a Curve
 	:param C:
-	:type C: ProjLib_ProjectedCurve &
+	:type C: ProjLib_ProjectedCurve
 	:rtype: None") ProjLib_HProjectedCurve;
 		 ProjLib_HProjectedCurve (const ProjLib_ProjectedCurve & C);
 
@@ -870,7 +870,7 @@ class ProjLib_HProjectedCurve : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve2d.
 	:param C:
-	:type C: ProjLib_ProjectedCurve &
+	:type C: ProjLib_ProjectedCurve
 	:rtype: None") Set;
 		void Set (const ProjLib_ProjectedCurve & C);
 
@@ -895,9 +895,9 @@ class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -916,11 +916,11 @@ class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 		/****************** ProjLib_PrjFunc ******************/
 		%feature("compactdefaultargs") ProjLib_PrjFunc;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_CurvePtr &
+	:type C: Adaptor3d_CurvePtr
 	:param FixVal:
 	:type FixVal: float
 	:param S:
-	:type S: Adaptor3d_SurfacePtr &
+	:type S: Adaptor3d_SurfacePtr
 	:param Fix:
 	:type Fix: int
 	:rtype: None") ProjLib_PrjFunc;
@@ -936,9 +936,9 @@ class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -946,11 +946,11 @@ class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -1000,9 +1000,9 @@ class ProjLib_PrjResolve {
 		/****************** ProjLib_PrjResolve ******************/
 		%feature("compactdefaultargs") ProjLib_PrjResolve;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param Fix:
 	:type Fix: int
 	:rtype: None") ProjLib_PrjResolve;
@@ -1163,7 +1163,7 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1198,7 +1198,7 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Sets the Curve and perform the projection. if <KeepParametrization> is true, the parametrization of the Projected Curve <PC> will be the same as the parametrization of the initial curve <C>. It meens: proj(C(u)) = PC(u) for each u. Otherwize, the parametrization may change.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Tolerance:
 	:type Tolerance: float
 	:param KeepParametrization: default value is Standard_True
@@ -1321,7 +1321,7 @@ class ProjLib_ProjectOnSurface {
 		%feature("compactdefaultargs") ProjLib_ProjectOnSurface;
 		%feature("autodoc", "* Create a projector normaly to the surface <S>.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") ProjLib_ProjectOnSurface;
 		 ProjLib_ProjectOnSurface (const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -1470,7 +1470,7 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1528,7 +1528,7 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs projecting for given curve. If projecting uses approximation, approximation parameters can be set before by corresponding methods SetDegree(...), SetMaxSegmets(...), SetBndPnt(...), SetMaxDist(...)
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1547,7 +1547,7 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") ProjLib_ProjectedCurve;
 		%feature("autodoc", "* Constructor with initialisation field mySurface
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") ProjLib_ProjectedCurve;
 		 ProjLib_ProjectedCurve (const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -1555,9 +1555,9 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") ProjLib_ProjectedCurve;
 		%feature("autodoc", "* Constructor, which performs projecting. If projecting uses approximation, default parameters are used, in particular, 3d tolerance of approximation is Precision::Confusion()
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") ProjLib_ProjectedCurve;
 		 ProjLib_ProjectedCurve (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1565,9 +1565,9 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") ProjLib_ProjectedCurve;
 		%feature("autodoc", "* Constructor, which performs projecting. If projecting uses approximation, 3d tolerance is Tol, default parameters are used,
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Tol:
 	:type Tol: float
 	:rtype: None") ProjLib_ProjectedCurve;
@@ -1750,14 +1750,14 @@ class ProjLib_Projector {
 		/****************** SetBSpline ******************/
 		%feature("compactdefaultargs") SetBSpline;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_BSplineCurve> &
+	:type C: Geom2d_BSplineCurve
 	:rtype: None") SetBSpline;
 		void SetBSpline (const opencascade::handle<Geom2d_BSplineCurve> & C);
 
 		/****************** SetBezier ******************/
 		%feature("compactdefaultargs") SetBezier;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_BezierCurve> &
+	:type C: Geom2d_BezierCurve
 	:rtype: None") SetBezier;
 		void SetBezier (const opencascade::handle<Geom2d_BezierCurve> & C);
 

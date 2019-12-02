@@ -94,7 +94,7 @@ class Law {
 		%feature("compactdefaultargs") MixBnd;
 		%feature("autodoc", "* This algorithm searches the knot values corresponding to the splitting of a given B-spline law into several arcs with the same continuity. The continuity order is given at the construction time. Builds a 1d bspline that is near from Lin with null derivatives at the extremities.
 	:param Lin:
-	:type Lin: opencascade::handle<Law_Linear> &
+	:type Lin: Law_Linear
 	:rtype: opencascade::handle<Law_BSpFunc>") MixBnd;
 		static opencascade::handle<Law_BSpFunc> MixBnd (const opencascade::handle<Law_Linear> & Lin);
 
@@ -104,11 +104,11 @@ class Law {
 	:param Degree:
 	:type Degree: int
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Lin:
-	:type Lin: opencascade::handle<Law_Linear> &
+	:type Lin: Law_Linear
 	:rtype: opencascade::handle<TColStd_HArray1OfReal>") MixBnd;
 		static opencascade::handle<TColStd_HArray1OfReal> MixBnd (const Standard_Integer Degree,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,const opencascade::handle<Law_Linear> & Lin);
 
@@ -118,9 +118,9 @@ class Law {
 	:param Degree:
 	:type Degree: int
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NulOnTheRight:
 	:type NulOnTheRight: bool
 	:param Index:
@@ -132,7 +132,7 @@ class Law {
 		%feature("compactdefaultargs") Reparametrize;
 		%feature("autodoc", "* Computes a 1 d curve to reparametrize a curve. Its an interpolation of NbPoints points calculated at quasi constant abscissa.
 	:param Curve:
-	:type Curve: Adaptor3d_Curve &
+	:type Curve: Adaptor3d_Curve
 	:param First:
 	:type First: float
 	:param Last:
@@ -218,7 +218,7 @@ class Law_BSpline : public Standard_Transient {
 		%feature("autodoc", ":param U:
 	:type U: float
 	:param P:
-	:type P: float &
+	:type P: float
 	:rtype: None") D0;
 		void D0 (const Standard_Real U,Standard_Real &OutValue);
 
@@ -227,9 +227,9 @@ class Law_BSpline : public Standard_Transient {
 		%feature("autodoc", ":param U:
 	:type U: float
 	:param P:
-	:type P: float &
+	:type P: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:rtype: None") D1;
 		void D1 (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -238,11 +238,11 @@ class Law_BSpline : public Standard_Transient {
 		%feature("autodoc", ":param U:
 	:type U: float
 	:param P:
-	:type P: float &
+	:type P: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") D2;
 		void D2 (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -251,13 +251,13 @@ class Law_BSpline : public Standard_Transient {
 		%feature("autodoc", ":param U:
 	:type U: float
 	:param P:
-	:type P: float &
+	:type P: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:param V3:
-	:type V3: float &
+	:type V3: float
 	:rtype: None") D3;
 		void D3 (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -355,9 +355,9 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") InsertKnots;
 		%feature("autodoc", "* Inserts a set of knots values in the sequence of knots. //! For each U = Knots(i), M = Mults(i) //! If <U> is an existing knot the multiplicity is increased by <M> if <Add> is True, increased to <M> if <Add> is False. //! If U is not on the parameter range nothing is done. //! If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree. //! The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param ParametricTolerance: default value is 0.0
 	:type ParametricTolerance: float
 	:param Add: default value is Standard_False
@@ -409,7 +409,7 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "* Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : K = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of K is not equal to NbPoles + Degree + 1
 	:param K:
-	:type K: TColStd_Array1OfReal &
+	:type K: TColStd_Array1OfReal
 	:rtype: None") KnotSequence;
 		void KnotSequence (TColStd_Array1OfReal & K);
 
@@ -417,7 +417,7 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* returns the knot values of the B-spline curve; //! Raised if the length of K is not equal to the number of knots.
 	:param K:
-	:type K: TColStd_Array1OfReal &
+	:type K: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & K);
 
@@ -437,11 +437,11 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") Law_BSpline;
 		%feature("autodoc", "* Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Multiplicities:
-	:type Multiplicities: TColStd_Array1OfInteger &
+	:type Multiplicities: TColStd_Array1OfInteger
 	:param Degree:
 	:type Degree: int
 	:param Periodic: default value is Standard_False
@@ -453,13 +453,13 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") Law_BSpline;
 		%feature("autodoc", "* Creates a rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Multiplicities:
-	:type Multiplicities: TColStd_Array1OfInteger &
+	:type Multiplicities: TColStd_Array1OfInteger
 	:param Degree:
 	:type Degree: int
 	:param Periodic: default value is Standard_False
@@ -476,7 +476,7 @@ class Law_BSpline : public Standard_Transient {
 	:param ToK2:
 	:type ToK2: int
 	:param P:
-	:type P: float &
+	:type P: float
 	:rtype: None") LocalD0;
 		void LocalD0 (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2,Standard_Real &OutValue);
 
@@ -489,9 +489,9 @@ class Law_BSpline : public Standard_Transient {
 	:param ToK2:
 	:type ToK2: int
 	:param P:
-	:type P: float &
+	:type P: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:rtype: None") LocalD1;
 		void LocalD1 (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -504,11 +504,11 @@ class Law_BSpline : public Standard_Transient {
 	:param ToK2:
 	:type ToK2: int
 	:param P:
-	:type P: float &
+	:type P: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") LocalD2;
 		void LocalD2 (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -521,13 +521,13 @@ class Law_BSpline : public Standard_Transient {
 	:param ToK2:
 	:type ToK2: int
 	:param P:
-	:type P: float &
+	:type P: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:param V3:
-	:type V3: float &
+	:type V3: float
 	:rtype: None") LocalD3;
 		void LocalD3 (const Standard_Real U,const Standard_Integer FromK1,const Standard_Integer ToK2,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -563,9 +563,9 @@ class Law_BSpline : public Standard_Transient {
 	:param ParametricTolerance:
 	:type ParametricTolerance: float
 	:param I1:
-	:type I1: int &
+	:type I1: int
 	:param I2:
-	:type I2: int &
+	:type I2: int
 	:param WithKnotRepetition: default value is Standard_False
 	:type WithKnotRepetition: bool
 	:rtype: None") LocateU;
@@ -593,7 +593,7 @@ class Law_BSpline : public Standard_Transient {
 	:param EndingCondition:
 	:type EndingCondition: int
 	:param ErrorStatus:
-	:type ErrorStatus: int &
+	:type ErrorStatus: int
 	:rtype: None") MovePointAndTangent;
 		void MovePointAndTangent (const Standard_Real U,const Standard_Real NewValue,const Standard_Real Derivative,const Standard_Real Tolerance,const Standard_Integer StartingCondition,const Standard_Integer EndingCondition,Standard_Integer &OutValue);
 
@@ -601,7 +601,7 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "* Returns the multiplicity of the knots of the curve. //! Raised if the length of M is not equal to NbKnots.
 	:param M:
-	:type M: TColStd_Array1OfInteger &
+	:type M: TColStd_Array1OfInteger
 	:rtype: None") Multiplicities;
 		void Multiplicities (TColStd_Array1OfInteger & M);
 
@@ -629,7 +629,7 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") PeriodicNormalization;
 		%feature("autodoc", "* returns the parameter normalized within the period if the curve is periodic : otherwise does not do anything
 	:param U:
-	:type U: float &
+	:type U: float
 	:rtype: None") PeriodicNormalization;
 		void PeriodicNormalization (Standard_Real &OutValue);
 
@@ -645,7 +645,7 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "* Returns the poles of the B-spline curve; //! Raised if the length of P is not equal to the number of poles.
 	:param P:
-	:type P: TColStd_Array1OfReal &
+	:type P: TColStd_Array1OfReal
 	:rtype: None") Poles;
 		void Poles (TColStd_Array1OfReal & P);
 
@@ -667,7 +667,7 @@ class Law_BSpline : public Standard_Transient {
 	:param Tolerance3D:
 	:type Tolerance3D: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Real Tolerance3D,Standard_Real &OutValue);
 
@@ -721,7 +721,7 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "* Changes all the knots of the curve The multiplicity of the knots are not modified. //! Raised if there is an index such that K (Index+1) <= K (Index). //! Raised if K.Lower() < 1 or K.Upper() > NbKnots
 	:param K:
-	:type K: TColStd_Array1OfReal &
+	:type K: TColStd_Array1OfReal
 	:rtype: None") SetKnots;
 		void SetKnots (const TColStd_Array1OfReal & K);
 
@@ -802,7 +802,7 @@ class Law_BSpline : public Standard_Transient {
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "* Returns the weights of the B-spline curve; //! Raised if the length of W is not equal to NbPoles.
 	:param W:
-	:type W: TColStd_Array1OfReal &
+	:type W: TColStd_Array1OfReal
 	:rtype: None") Weights;
 		void Weights (TColStd_Array1OfReal & W);
 
@@ -827,7 +827,7 @@ class Law_BSplineKnotSplitting {
 		%feature("compactdefaultargs") Law_BSplineKnotSplitting;
 		%feature("autodoc", "* Locates the knot values which correspond to the segmentation of the curve into arcs with a continuity equal to ContinuityRange. //! Raised if ContinuityRange is not greater or equal zero.
 	:param BasisLaw:
-	:type BasisLaw: opencascade::handle<Law_BSpline> &
+	:type BasisLaw: Law_BSpline
 	:param ContinuityRange:
 	:type ContinuityRange: int
 	:rtype: None") Law_BSplineKnotSplitting;
@@ -851,7 +851,7 @@ class Law_BSplineKnotSplitting {
 		%feature("compactdefaultargs") Splitting;
 		%feature("autodoc", "* Returns the indexes of the BSpline curve knots corresponding to the splitting. //! Raised if the length of SplitValues is not equal to NbSPlit.
 	:param SplitValues:
-	:type SplitValues: TColStd_Array1OfInteger &
+	:type SplitValues: TColStd_Array1OfInteger
 	:rtype: None") Splitting;
 		void Splitting (TColStd_Array1OfInteger & SplitValues);
 
@@ -874,9 +874,9 @@ class Law_Function : public Standard_Transient {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds of the function.
 	:param PFirst:
-	:type PFirst: float &
+	:type PFirst: float
 	:param PLast:
-	:type PLast: float &
+	:type PLast: float
 	:rtype: void") Bounds;
 		virtual void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -891,9 +891,9 @@ class Law_Function : public Standard_Transient {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: void") D1;
 		virtual void D1 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -903,11 +903,11 @@ class Law_Function : public Standard_Transient {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param D2:
-	:type D2: float &
+	:type D2: float
 	:rtype: void") D2;
 		virtual void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -915,7 +915,7 @@ class Law_Function : public Standard_Transient {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -980,7 +980,7 @@ class Law_Interpolate {
 		%feature("compactdefaultargs") Law_Interpolate;
 		%feature("autodoc", "* Tolerance is to check if the points are not too close to one an other. It is also used to check if the tangent vector is not too small. There should be at least 2 points. If PeriodicFlag is True then the curve will be periodic be periodic
 	:param Points:
-	:type Points: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Points: TColStd_HArray1OfReal
 	:param PeriodicFlag:
 	:type PeriodicFlag: bool
 	:param Tolerance:
@@ -992,9 +992,9 @@ class Law_Interpolate {
 		%feature("compactdefaultargs") Law_Interpolate;
 		%feature("autodoc", "* Tolerance is to check if the points are not too close to one an other. It is also used to check if the tangent vector is not too small. There should be at least 2 points. If PeriodicFlag is True then the curve will be periodic be periodic
 	:param Points:
-	:type Points: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Points: TColStd_HArray1OfReal
 	:param Parameters:
-	:type Parameters: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Parameters: TColStd_HArray1OfReal
 	:param PeriodicFlag:
 	:type PeriodicFlag: bool
 	:param Tolerance:
@@ -1016,9 +1016,9 @@ class Law_Interpolate {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* loads the tangents. We should have as many tangents as they are points in the array if TangentFlags.Value(i) is Standard_True use the tangent Tangents.Value(i) otherwise the tangent is not constrained.
 	:param Tangents:
-	:type Tangents: TColStd_Array1OfReal &
+	:type Tangents: TColStd_Array1OfReal
 	:param TangentFlags:
-	:type TangentFlags: opencascade::handle<TColStd_HArray1OfBoolean> &
+	:type TangentFlags: TColStd_HArray1OfBoolean
 	:rtype: None") Load;
 		void Load (const TColStd_Array1OfReal & Tangents,const opencascade::handle<TColStd_HArray1OfBoolean> & TangentFlags);
 
@@ -1046,9 +1046,9 @@ class Law_BSpFunc : public Law_Function {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param PFirst:
-	:type PFirst: float &
+	:type PFirst: float
 	:param PLast:
-	:type PLast: float &
+	:type PLast: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1067,9 +1067,9 @@ class Law_BSpFunc : public Law_Function {
 		%feature("autodoc", ":param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") D1;
 		void D1 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1078,11 +1078,11 @@ class Law_BSpFunc : public Law_Function {
 		%feature("autodoc", ":param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param D2:
-	:type D2: float &
+	:type D2: float
 	:rtype: None") D2;
 		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1090,7 +1090,7 @@ class Law_BSpFunc : public Law_Function {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1104,7 +1104,7 @@ class Law_BSpFunc : public Law_Function {
 		/****************** Law_BSpFunc ******************/
 		%feature("compactdefaultargs") Law_BSpFunc;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Law_BSpline> &
+	:type C: Law_BSpline
 	:param First:
 	:type First: float
 	:param Last:
@@ -1123,7 +1123,7 @@ class Law_BSpFunc : public Law_Function {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Law_BSpline> &
+	:type C: Law_BSpline
 	:rtype: None") SetCurve;
 		void SetCurve (const opencascade::handle<Law_BSpline> & C);
 
@@ -1167,9 +1167,9 @@ class Law_Composite : public Law_Function {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds of the function.
 	:param PFirst:
-	:type PFirst: float &
+	:type PFirst: float
 	:param PLast:
-	:type PLast: float &
+	:type PLast: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1197,9 +1197,9 @@ class Law_Composite : public Law_Function {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") D1;
 		void D1 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1209,11 +1209,11 @@ class Law_Composite : public Law_Function {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param D2:
-	:type D2: float &
+	:type D2: float
 	:rtype: None") D2;
 		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1221,7 +1221,7 @@ class Law_Composite : public Law_Function {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1304,9 +1304,9 @@ class Law_Constant : public Law_Function {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds of the function.
 	:param PFirst:
-	:type PFirst: float &
+	:type PFirst: float
 	:param PLast:
-	:type PLast: float &
+	:type PLast: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1322,9 +1322,9 @@ class Law_Constant : public Law_Function {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") D1;
 		void D1 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1334,18 +1334,18 @@ class Law_Constant : public Law_Function {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param D2:
-	:type D2: float &
+	:type D2: float
 	:rtype: None") D2;
 		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** Intervals ******************/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", ":param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1416,9 +1416,9 @@ class Law_Linear : public Law_Function {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds of the function.
 	:param PFirst:
-	:type PFirst: float &
+	:type PFirst: float
 	:param PLast:
-	:type PLast: float &
+	:type PLast: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1434,9 +1434,9 @@ class Law_Linear : public Law_Function {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") D1;
 		void D1 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1446,18 +1446,18 @@ class Law_Linear : public Law_Function {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param D2:
-	:type D2: float &
+	:type D2: float
 	:rtype: None") D2;
 		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** Intervals ******************/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", ":param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;

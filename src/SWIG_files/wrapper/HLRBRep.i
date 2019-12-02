@@ -216,7 +216,7 @@ class HLRBRep {
 		/****************** MakeEdge ******************/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", ":param ec:
-	:type ec: HLRBRep_Curve &
+	:type ec: HLRBRep_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -227,7 +227,7 @@ class HLRBRep {
 		/****************** MakeEdge3d ******************/
 		%feature("compactdefaultargs") MakeEdge3d;
 		%feature("autodoc", ":param ec:
-	:type ec: HLRBRep_Curve &
+	:type ec: HLRBRep_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -240,9 +240,9 @@ class HLRBRep {
 		%feature("autodoc", ":param InAngl:
 	:type InAngl: float
 	:param OutAngl:
-	:type OutAngl: float &
+	:type OutAngl: float
 	:param OutDefl:
-	:type OutDefl: float &
+	:type OutDefl: float
 	:rtype: void") PolyHLRAngleAndDeflection;
 		static void PolyHLRAngleAndDeflection (const Standard_Real InAngl,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -294,7 +294,7 @@ class HLRBRep_AreaLimit : public Standard_Transient {
 		%feature("compactdefaultargs") HLRBRep_AreaLimit;
 		%feature("autodoc", "* The previous and next field are set to NULL.
 	:param V:
-	:type V: HLRAlgo_Intersection &
+	:type V: HLRAlgo_Intersection
 	:param Boundary:
 	:type Boundary: bool
 	:param Interference:
@@ -323,7 +323,7 @@ class HLRBRep_AreaLimit : public Standard_Transient {
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", ":param N:
-	:type N: opencascade::handle<HLRBRep_AreaLimit> &
+	:type N: HLRBRep_AreaLimit
 	:rtype: None") Next;
 		void Next (const opencascade::handle<HLRBRep_AreaLimit> & N);
 
@@ -335,7 +335,7 @@ class HLRBRep_AreaLimit : public Standard_Transient {
 		/****************** Previous ******************/
 		%feature("compactdefaultargs") Previous;
 		%feature("autodoc", ":param P:
-	:type P: opencascade::handle<HLRBRep_AreaLimit> &
+	:type P: HLRBRep_AreaLimit
 	:rtype: None") Previous;
 		void Previous (const opencascade::handle<HLRBRep_AreaLimit> & P);
 
@@ -392,28 +392,28 @@ class HLRBRep_BCurveTool {
 		/****************** BSpline ******************/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: opencascade::handle<Geom_BSplineCurve>") BSpline;
 		static opencascade::handle<Geom_BSplineCurve> BSpline (const BRepAdaptor_Curve & C);
 
 		/****************** Bezier ******************/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: opencascade::handle<Geom_BezierCurve>") Bezier;
 		static opencascade::handle<Geom_BezierCurve> Bezier (const BRepAdaptor_Curve & C);
 
 		/****************** Circle ******************/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: gp_Circ") Circle;
 		static gp_Circ Circle (const BRepAdaptor_Curve & C);
 
 		/****************** Continuity ******************/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: GeomAbs_Shape") Continuity;
 		static GeomAbs_Shape Continuity (const BRepAdaptor_Curve & C);
 
@@ -421,7 +421,7 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -433,7 +433,7 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -447,7 +447,7 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -463,7 +463,7 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -481,7 +481,7 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param N:
@@ -492,21 +492,21 @@ class HLRBRep_BCurveTool {
 		/****************** Degree ******************/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: int") Degree;
 		static Standard_Integer Degree (const BRepAdaptor_Curve & C);
 
 		/****************** Ellipse ******************/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: gp_Elips") Ellipse;
 		static gp_Elips Ellipse (const BRepAdaptor_Curve & C);
 
 		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: float") FirstParameter;
 		static Standard_Real FirstParameter (const BRepAdaptor_Curve & C);
 
@@ -514,14 +514,14 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: GeomAbs_CurveType") GetType;
 		static GeomAbs_CurveType GetType (const BRepAdaptor_Curve & C);
 
 		/****************** Hyperbola ******************/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: gp_Hypr") Hyperbola;
 		static gp_Hypr Hyperbola (const BRepAdaptor_Curve & C);
 
@@ -529,9 +529,9 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -540,35 +540,35 @@ class HLRBRep_BCurveTool {
 		/****************** IsClosed ******************/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: bool") IsClosed;
 		static Standard_Boolean IsClosed (const BRepAdaptor_Curve & C);
 
 		/****************** IsPeriodic ******************/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: bool") IsPeriodic;
 		static Standard_Boolean IsPeriodic (const BRepAdaptor_Curve & C);
 
 		/****************** IsRational ******************/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: bool") IsRational;
 		static Standard_Boolean IsRational (const BRepAdaptor_Curve & C);
 
 		/****************** LastParameter ******************/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: float") LastParameter;
 		static Standard_Real LastParameter (const BRepAdaptor_Curve & C);
 
 		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: gp_Lin") Line;
 		static gp_Lin Line (const BRepAdaptor_Curve & C);
 
@@ -576,7 +576,7 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "* Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: int") NbIntervals;
@@ -585,21 +585,21 @@ class HLRBRep_BCurveTool {
 		/****************** NbKnots ******************/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: int") NbKnots;
 		static Standard_Integer NbKnots (const BRepAdaptor_Curve & C);
 
 		/****************** NbPoles ******************/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: int") NbPoles;
 		static Standard_Integer NbPoles (const BRepAdaptor_Curve & C);
 
 		/****************** NbSamples ******************/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U0:
 	:type U0: float
 	:param U1:
@@ -610,21 +610,21 @@ class HLRBRep_BCurveTool {
 		/****************** Parabola ******************/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: gp_Parab") Parabola;
 		static gp_Parab Parabola (const BRepAdaptor_Curve & C);
 
 		/****************** Period ******************/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: float") Period;
 		static Standard_Real Period (const BRepAdaptor_Curve & C);
 
 		/****************** Poles ******************/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param T:
 	:type T: TColgp_Array1OfPnt
 	:rtype: void") Poles;
@@ -633,11 +633,11 @@ class HLRBRep_BCurveTool {
 		/****************** PolesAndWeights ******************/
 		%feature("compactdefaultargs") PolesAndWeights;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param T:
 	:type T: TColgp_Array1OfPnt
 	:param W:
-	:type W: TColStd_Array1OfReal &
+	:type W: TColStd_Array1OfReal
 	:rtype: void") PolesAndWeights;
 		static void PolesAndWeights (const BRepAdaptor_Curve & C,TColgp_Array1OfPnt & T,TColStd_Array1OfReal & W);
 
@@ -645,7 +645,7 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param R3d:
 	:type R3d: float
 	:rtype: float") Resolution;
@@ -655,7 +655,7 @@ class HLRBRep_BCurveTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:rtype: gp_Pnt") Value;
@@ -695,7 +695,7 @@ class HLRBRep_BiPnt2D {
 	:param y2:
 	:type y2: float
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param reg1:
 	:type reg1: bool
 	:param regn:
@@ -714,7 +714,7 @@ class HLRBRep_BiPnt2D {
 	:param thePoint2:
 	:type thePoint2: gp_XY
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param reg1:
 	:type reg1: bool
 	:param regn:
@@ -792,7 +792,7 @@ class HLRBRep_BiPnt2D {
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Shape;
 		void Shape (const TopoDS_Shape & S);
 
@@ -831,7 +831,7 @@ class HLRBRep_BiPoint {
 	:param z2:
 	:type z2: float
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param reg1:
 	:type reg1: bool
 	:param regn:
@@ -909,7 +909,7 @@ class HLRBRep_BiPoint {
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Shape;
 		void Shape (const TopoDS_Shape & S);
 
@@ -932,7 +932,7 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") ComputeDomain;
 		%feature("autodoc", "* Create a domain from a curve
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param TolDomain:
 	:type TolDomain: float
 	:rtype: IntRes2d_Domain") ComputeDomain;
@@ -953,7 +953,7 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "* Self Intersection of a curve
 	:param C:
-	:type C: Standard_Address &
+	:type C: Standard_Address
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -965,9 +965,9 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "* Self Intersection of a curve with a domain.
 	:param C:
-	:type C: Standard_Address &
+	:type C: Standard_Address
 	:param D:
-	:type D: IntRes2d_Domain &
+	:type D: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -979,9 +979,9 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param C2:
-	:type C2: Standard_Address &
+	:type C2: Standard_Address
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -993,11 +993,11 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param C2:
-	:type C2: Standard_Address &
+	:type C2: Standard_Address
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -1009,11 +1009,11 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param C2:
-	:type C2: Standard_Address &
+	:type C2: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -1025,13 +1025,13 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param C2:
-	:type C2: Standard_Address &
+	:type C2: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -1043,13 +1043,13 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param C2:
-	:type C2: Standard_Address &
+	:type C2: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -1061,9 +1061,9 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param C2:
-	:type C2: Standard_Address &
+	:type C2: Standard_Address
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -1075,9 +1075,9 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -1089,7 +1089,7 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -1101,11 +1101,11 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param C2:
-	:type C2: Standard_Address &
+	:type C2: Standard_Address
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -1117,11 +1117,11 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersection between 2 curves.
 	:param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param C2:
-	:type C2: Standard_Address &
+	:type C2: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -1188,7 +1188,7 @@ class HLRBRep_CLProps {
 		%feature("compactdefaultargs") HLRBRep_CLProps;
 		%feature("autodoc", "* Initializes the local properties of the curve <C> The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, 2 or 3). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 	:param C:
-	:type C: HLRBRep_Curve * &
+	:type C: HLRBRep_Curve *
 	:param N:
 	:type N: int
 	:param Resolution:
@@ -1200,7 +1200,7 @@ class HLRBRep_CLProps {
 		%feature("compactdefaultargs") HLRBRep_CLProps;
 		%feature("autodoc", "* Same as previous constructor but here the parameter is set to the value <U>. All the computations done will be related to <C> and <U>.
 	:param C:
-	:type C: HLRBRep_Curve * &
+	:type C: HLRBRep_Curve *
 	:param U:
 	:type U: float
 	:param N:
@@ -1238,7 +1238,7 @@ class HLRBRep_CLProps {
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "* Initializes the local properties of the curve for the new curve.
 	:param C:
-	:type C: HLRBRep_Curve * &
+	:type C: HLRBRep_Curve *
 	:rtype: None") SetCurve;
 		void SetCurve (const HLRBRep_Curve * & C);
 
@@ -1397,7 +1397,7 @@ class HLRBRep_Curve {
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "* Sets the 3D curve to be projected.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") Curve;
 		void Curve (const TopoDS_Edge & E);
 
@@ -1527,7 +1527,7 @@ class HLRBRep_Curve {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1551,7 +1551,7 @@ class HLRBRep_Curve {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param kn:
-	:type kn: TColStd_Array1OfReal &
+	:type kn: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & kn);
 
@@ -1568,7 +1568,7 @@ class HLRBRep_Curve {
 		/****************** Multiplicities ******************/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", ":param mu:
-	:type mu: TColStd_Array1OfInteger &
+	:type mu: TColStd_Array1OfInteger
 	:rtype: None") Multiplicities;
 		void Multiplicities (TColStd_Array1OfInteger & mu);
 
@@ -1626,7 +1626,7 @@ class HLRBRep_Curve {
 		/****************** Poles ******************/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", ":param aCurve:
-	:type aCurve: opencascade::handle<Geom_BSplineCurve> &
+	:type aCurve: Geom_BSplineCurve
 	:param TP:
 	:type TP: TColgp_Array1OfPnt2d
 	:rtype: None") Poles;
@@ -1637,18 +1637,18 @@ class HLRBRep_Curve {
 		%feature("autodoc", ":param TP:
 	:type TP: TColgp_Array1OfPnt2d
 	:param TW:
-	:type TW: TColStd_Array1OfReal &
+	:type TW: TColStd_Array1OfReal
 	:rtype: None") PolesAndWeights;
 		void PolesAndWeights (TColgp_Array1OfPnt2d & TP,TColStd_Array1OfReal & TW);
 
 		/****************** PolesAndWeights ******************/
 		%feature("compactdefaultargs") PolesAndWeights;
 		%feature("autodoc", ":param aCurve:
-	:type aCurve: opencascade::handle<Geom_BSplineCurve> &
+	:type aCurve: Geom_BSplineCurve
 	:param TP:
 	:type TP: TColgp_Array1OfPnt2d
 	:param TW:
-	:type TW: TColStd_Array1OfReal &
+	:type TW: TColStd_Array1OfReal
 	:rtype: None") PolesAndWeights;
 		void PolesAndWeights (const opencascade::handle<Geom_BSplineCurve> & aCurve,TColgp_Array1OfPnt2d & TP,TColStd_Array1OfReal & TW);
 
@@ -1873,11 +1873,11 @@ class HLRBRep_CurveTool {
 	:param Index:
 	:type Index: int
 	:param Tab:
-	:type Tab: TColStd_Array1OfReal &
+	:type Tab: TColStd_Array1OfReal
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: None") GetInterval;
 		static void GetInterval (const Standard_Address C,const Standard_Integer Index,const TColStd_Array1OfReal & Tab,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1902,7 +1902,7 @@ class HLRBRep_CurveTool {
 	:param C:
 	:type C: Standard_Address
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:rtype: None") Intervals;
 		static void Intervals (const Standard_Address C,TColStd_Array1OfReal & T);
 
@@ -2029,11 +2029,11 @@ class HLRBRep_Data : public Standard_Transient {
 	:param E:
 	:type E: int
 	:param ED:
-	:type ED: HLRBRep_EdgeData &
+	:type ED: HLRBRep_EdgeData
 	:param LevelFlag:
 	:type LevelFlag: bool
 	:param Level:
-	:type Level: int &
+	:type Level: int
 	:param param:
 	:type param: float
 	:rtype: TopAbs_State") Classify;
@@ -2045,7 +2045,7 @@ class HLRBRep_Data : public Standard_Transient {
 	:param E:
 	:type E: int
 	:param ED:
-	:type ED: HLRBRep_EdgeData &
+	:type ED: HLRBRep_EdgeData
 	:rtype: TopAbs_State") Compare;
 		TopAbs_State Compare (const Standard_Integer E,const HLRBRep_EdgeData & ED);
 
@@ -2076,7 +2076,7 @@ class HLRBRep_Data : public Standard_Transient {
 	:param E:
 	:type E: int
 	:param ED:
-	:type ED: HLRBRep_EdgeData &
+	:type ED: HLRBRep_EdgeData
 	:rtype: bool") EdgeOfTheHidingFace;
 		Standard_Boolean EdgeOfTheHidingFace (const Standard_Integer E,const HLRBRep_EdgeData & ED);
 
@@ -2088,9 +2088,9 @@ class HLRBRep_Data : public Standard_Transient {
 	:param p2:
 	:type p2: float
 	:param stbef:
-	:type stbef: TopAbs_State &
+	:type stbef: TopAbs_State
 	:param staf:
-	:type staf: TopAbs_State &
+	:type staf: TopAbs_State
 	:rtype: None") EdgeState;
 		void EdgeState (const Standard_Real p1,const Standard_Real p2,TopAbs_State & stbef,TopAbs_State & staf);
 
@@ -2122,9 +2122,9 @@ class HLRBRep_Data : public Standard_Transient {
 	:param E:
 	:type E: int
 	:param ED:
-	:type ED: HLRBRep_EdgeData &
+	:type ED: HLRBRep_EdgeData
 	:param IL:
-	:type IL: HLRAlgo_InterferenceList &
+	:type IL: HLRAlgo_InterferenceList
 	:rtype: int") HidingStartLevel;
 		Standard_Integer HidingStartLevel (const Standard_Integer E,const HLRBRep_EdgeData & ED,const HLRAlgo_InterferenceList & IL);
 
@@ -2138,7 +2138,7 @@ class HLRBRep_Data : public Standard_Transient {
 		%feature("compactdefaultargs") InitBoundSort;
 		%feature("autodoc", "* to compare with only non rejected edges.
 	:param MinMaxTot:
-	:type MinMaxTot: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type MinMaxTot: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param e1:
 	:type e1: int
 	:param e2:
@@ -2152,7 +2152,7 @@ class HLRBRep_Data : public Standard_Transient {
 	:param FI:
 	:type FI: int
 	:param MST:
-	:type MST: BRepTopAdaptor_MapOfShapeTool &
+	:type MST: BRepTopAdaptor_MapOfShapeTool
 	:rtype: None") InitEdge;
 		void InitEdge (const Standard_Integer FI,BRepTopAdaptor_MapOfShapeTool & MST);
 
@@ -2185,7 +2185,7 @@ class HLRBRep_Data : public Standard_Transient {
 	:param Nm:
 	:type Nm: gp_Dir2d
 	:param Cu:
-	:type Cu: float &
+	:type Cu: float
 	:rtype: None") LocalFEGeometry2D;
 		void LocalFEGeometry2D (const Standard_Integer FE,const Standard_Real Param,gp_Dir2d & Tg,gp_Dir2d & Nm,Standard_Real &OutValue);
 
@@ -2199,7 +2199,7 @@ class HLRBRep_Data : public Standard_Transient {
 	:param Nm:
 	:type Nm: gp_Dir2d
 	:param Cu:
-	:type Cu: float &
+	:type Cu: float
 	:rtype: None") LocalLEGeometry2D;
 		void LocalLEGeometry2D (const Standard_Real Param,gp_Dir2d & Tg,gp_Dir2d & Nm,Standard_Real &OutValue);
 
@@ -2257,7 +2257,7 @@ class HLRBRep_Data : public Standard_Transient {
 	:param E:
 	:type E: int
 	:param ED:
-	:type ED: HLRBRep_EdgeData &
+	:type ED: HLRBRep_EdgeData
 	:param Nbp:
 	:type Nbp: int
 	:param p1:
@@ -2291,7 +2291,7 @@ class HLRBRep_Data : public Standard_Transient {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* end of building of the Data and updating all the informations linked to the projection.
 	:param P:
-	:type P: HLRAlgo_Projector &
+	:type P: HLRAlgo_Projector
 	:rtype: None") Update;
 		void Update (const HLRAlgo_Projector & P);
 
@@ -2299,7 +2299,7 @@ class HLRBRep_Data : public Standard_Transient {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Write <DS> in me with a translation of <dv>,<de>,<df>.
 	:param DS:
-	:type DS: opencascade::handle<HLRBRep_Data> &
+	:type DS: HLRBRep_Data
 	:param dv:
 	:type dv: int
 	:param de:
@@ -2361,7 +2361,7 @@ class HLRBRep_EdgeBuilder {
 		%feature("compactdefaultargs") HLRBRep_EdgeBuilder;
 		%feature("autodoc", "* Creates an EdgeBuilder algorithm. <VList> describes the edge and the interferences. AreaLimits are created from the vertices. Builds(IN) is automatically called.
 	:param VList:
-	:type VList: HLRBRep_VertexList &
+	:type VList: HLRBRep_VertexList
 	:rtype: None") HLRBRep_EdgeBuilder;
 		 HLRBRep_EdgeBuilder (HLRBRep_VertexList & VList);
 
@@ -2598,7 +2598,7 @@ class HLRBRep_EdgeData {
 	:param RegN:
 	:type RegN: bool
 	:param EG:
-	:type EG: TopoDS_Edge &
+	:type EG: TopoDS_Edge
 	:param V1:
 	:type V1: int
 	:param V2:
@@ -2647,7 +2647,7 @@ class HLRBRep_EdgeData {
 		/****************** UpdateMinMax ******************/
 		%feature("compactdefaultargs") UpdateMinMax;
 		%feature("autodoc", ":param theTotMinMax:
-	:type theTotMinMax: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type theTotMinMax: HLRAlgo_EdgesBlock::MinMaxIndices
 	:rtype: None") UpdateMinMax;
 		void UpdateMinMax (const HLRAlgo_EdgesBlock::MinMaxIndices & theTotMinMax);
 
@@ -2760,9 +2760,9 @@ class HLRBRep_EdgeFaceTool {
 	:param F:
 	:type F: Standard_Address
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: bool") UVPoint;
 		static Standard_Boolean UVPoint (const Standard_Real Par,const Standard_Address E,const Standard_Address F,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2784,11 +2784,11 @@ class HLRBRep_EdgeIList {
 		%feature("compactdefaultargs") AddInterference;
 		%feature("autodoc", "* Add the interference <I> to the list <IL>.
 	:param IL:
-	:type IL: HLRAlgo_InterferenceList &
+	:type IL: HLRAlgo_InterferenceList
 	:param I:
-	:type I: HLRAlgo_Interference &
+	:type I: HLRAlgo_Interference
 	:param T:
-	:type T: HLRBRep_EdgeInterferenceTool &
+	:type T: HLRBRep_EdgeInterferenceTool
 	:rtype: void") AddInterference;
 		static void AddInterference (HLRAlgo_InterferenceList & IL,const HLRAlgo_Interference & I,const HLRBRep_EdgeInterferenceTool & T);
 
@@ -2796,9 +2796,9 @@ class HLRBRep_EdgeIList {
 		%feature("compactdefaultargs") ProcessComplex;
 		%feature("autodoc", "* Process complex transitions on the list IL.
 	:param IL:
-	:type IL: HLRAlgo_InterferenceList &
+	:type IL: HLRAlgo_InterferenceList
 	:param T:
-	:type T: HLRBRep_EdgeInterferenceTool &
+	:type T: HLRBRep_EdgeInterferenceTool
 	:rtype: void") ProcessComplex;
 		static void ProcessComplex (HLRAlgo_InterferenceList & IL,const HLRBRep_EdgeInterferenceTool & T);
 
@@ -2842,14 +2842,14 @@ class HLRBRep_EdgeInterferenceTool {
 	:param Nrm:
 	:type Nrm: gp_Dir
 	:param Curv:
-	:type Curv: float &
+	:type Curv: float
 	:rtype: None") EdgeGeometry;
 		void EdgeGeometry (const Standard_Real Param,gp_Dir & Tgt,gp_Dir & Nrm,Standard_Real &OutValue);
 
 		/****************** HLRBRep_EdgeInterferenceTool ******************/
 		%feature("compactdefaultargs") HLRBRep_EdgeInterferenceTool;
 		%feature("autodoc", ":param DS:
-	:type DS: opencascade::handle<HLRBRep_Data> &
+	:type DS: HLRBRep_Data
 	:rtype: None") HLRBRep_EdgeInterferenceTool;
 		 HLRBRep_EdgeInterferenceTool (const opencascade::handle<HLRBRep_Data> & DS);
 
@@ -2862,13 +2862,13 @@ class HLRBRep_EdgeInterferenceTool {
 		%feature("compactdefaultargs") InterferenceBoundaryGeometry;
 		%feature("autodoc", "* Returns the geometry of the boundary at the interference <I>. See the AddInterference method of the class EdgeFaceTransition from TopCnx for the other arguments.
 	:param I:
-	:type I: HLRAlgo_Interference &
+	:type I: HLRAlgo_Interference
 	:param Tang:
 	:type Tang: gp_Dir
 	:param Norm:
 	:type Norm: gp_Dir
 	:param Curv:
-	:type Curv: float &
+	:type Curv: float
 	:rtype: None") InterferenceBoundaryGeometry;
 		void InterferenceBoundaryGeometry (const HLRAlgo_Interference & I,gp_Dir & Tang,gp_Dir & Norm,Standard_Real &OutValue);
 
@@ -2895,7 +2895,7 @@ class HLRBRep_EdgeInterferenceTool {
 		/****************** ParameterOfInterference ******************/
 		%feature("compactdefaultargs") ParameterOfInterference;
 		%feature("autodoc", ":param I:
-	:type I: HLRAlgo_Interference &
+	:type I: HLRAlgo_Interference
 	:rtype: float") ParameterOfInterference;
 		Standard_Real ParameterOfInterference (const HLRAlgo_Interference & I);
 
@@ -2903,9 +2903,9 @@ class HLRBRep_EdgeInterferenceTool {
 		%feature("compactdefaultargs") SameInterferences;
 		%feature("autodoc", "* True if the two interferences are on the same geometric locus.
 	:param I1:
-	:type I1: HLRAlgo_Interference &
+	:type I1: HLRAlgo_Interference
 	:param I2:
-	:type I2: HLRAlgo_Interference &
+	:type I2: HLRAlgo_Interference
 	:rtype: bool") SameInterferences;
 		Standard_Boolean SameInterferences (const HLRAlgo_Interference & I1,const HLRAlgo_Interference & I2);
 
@@ -2913,7 +2913,7 @@ class HLRBRep_EdgeInterferenceTool {
 		%feature("compactdefaultargs") SameVertexAndInterference;
 		%feature("autodoc", "* True if the Interference and the current Vertex are on the same geometric locus.
 	:param I:
-	:type I: HLRAlgo_Interference &
+	:type I: HLRAlgo_Interference
 	:rtype: bool") SameVertexAndInterference;
 		Standard_Boolean SameVertexAndInterference (const HLRAlgo_Interference & I);
 
@@ -2940,9 +2940,9 @@ class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 		/****************** HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter ******************/
 		%feature("compactdefaultargs") HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
 		%feature("autodoc", ":param C1:
-	:type C1: Standard_Address &
+	:type C1: Standard_Address
 	:param C2:
-	:type C2: Standard_Address &
+	:type C2: Standard_Address
 	:param Tol:
 	:type Tol: float
 	:rtype: None") HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
@@ -2956,17 +2956,17 @@ class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Poly1:
-	:type Poly1: HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter &
+	:type Poly1: HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter
 	:param Poly2:
-	:type Poly2: HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter &
+	:type Poly2: HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter
 	:param NumSegOn1:
-	:type NumSegOn1: int &
+	:type NumSegOn1: int
 	:param NumSegOn2:
-	:type NumSegOn2: int &
+	:type NumSegOn2: int
 	:param ParamOnSeg1:
-	:type ParamOnSeg1: float &
+	:type ParamOnSeg1: float
 	:param ParamOnSeg2:
-	:type ParamOnSeg2: float &
+	:type ParamOnSeg2: float
 	:rtype: None") Perform;
 		void Perform (const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter & Poly1,const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter & Poly2,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2990,9 +2990,9 @@ class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 		/****************** Roots ******************/
 		%feature("compactdefaultargs") Roots;
 		%feature("autodoc", ":param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Roots;
 		void Roots (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3133,7 +3133,7 @@ class HLRBRep_FaceData {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* <Or> is the orientation of the face. <Cl> is true if the face belongs to a closed volume. <NW> is the number of wires ( or block of edges ) of the face.
 	:param FG:
-	:type FG: TopoDS_Face &
+	:type FG: TopoDS_Face
 	:param Or:
 	:type Or: TopAbs_Orientation
 	:param Cl:
@@ -3303,7 +3303,7 @@ class HLRBRep_FaceIterator {
 		%feature("compactdefaultargs") InitEdge;
 		%feature("autodoc", "* Begin an exploration of the edges of the face <fd>
 	:param fd:
-	:type fd: HLRBRep_FaceData &
+	:type fd: HLRBRep_FaceData
 	:rtype: None") InitEdge;
 		void InitEdge (HLRBRep_FaceData & fd);
 
@@ -3380,7 +3380,7 @@ class HLRBRep_HLRToShape {
 		%feature("compactdefaultargs") CompoundOfEdges;
 		%feature("autodoc", "* For specified shape returns compound of resulting edges of required type and visibility, taking into account the kind of space (2d or 3d)
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param type:
 	:type type: HLRBRep_TypeOfResultingEdge
 	:param visible:
@@ -3398,7 +3398,7 @@ class HLRBRep_HLRToShape {
 		/****************** HCompound ******************/
 		%feature("compactdefaultargs") HCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") HCompound;
 		TopoDS_Shape HCompound (const TopoDS_Shape & S);
 
@@ -3406,7 +3406,7 @@ class HLRBRep_HLRToShape {
 		%feature("compactdefaultargs") HLRBRep_HLRToShape;
 		%feature("autodoc", "* Constructs a framework for filtering the results of the HLRBRep_Algo algorithm, A. Use the extraction filters to obtain the results you want for A.
 	:param A:
-	:type A: opencascade::handle<HLRBRep_Algo> &
+	:type A: HLRBRep_Algo
 	:rtype: None") HLRBRep_HLRToShape;
 		 HLRBRep_HLRToShape (const opencascade::handle<HLRBRep_Algo> & A);
 
@@ -3418,7 +3418,7 @@ class HLRBRep_HLRToShape {
 		/****************** IsoLineHCompound ******************/
 		%feature("compactdefaultargs") IsoLineHCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") IsoLineHCompound;
 		TopoDS_Shape IsoLineHCompound (const TopoDS_Shape & S);
 
@@ -3430,7 +3430,7 @@ class HLRBRep_HLRToShape {
 		/****************** IsoLineVCompound ******************/
 		%feature("compactdefaultargs") IsoLineVCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") IsoLineVCompound;
 		TopoDS_Shape IsoLineVCompound (const TopoDS_Shape & S);
 
@@ -3442,7 +3442,7 @@ class HLRBRep_HLRToShape {
 		/****************** OutLineHCompound ******************/
 		%feature("compactdefaultargs") OutLineHCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") OutLineHCompound;
 		TopoDS_Shape OutLineHCompound (const TopoDS_Shape & S);
 
@@ -3454,7 +3454,7 @@ class HLRBRep_HLRToShape {
 		/****************** OutLineVCompound ******************/
 		%feature("compactdefaultargs") OutLineVCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") OutLineVCompound;
 		TopoDS_Shape OutLineVCompound (const TopoDS_Shape & S);
 
@@ -3471,7 +3471,7 @@ class HLRBRep_HLRToShape {
 		/****************** Rg1LineHCompound ******************/
 		%feature("compactdefaultargs") Rg1LineHCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") Rg1LineHCompound;
 		TopoDS_Shape Rg1LineHCompound (const TopoDS_Shape & S);
 
@@ -3483,7 +3483,7 @@ class HLRBRep_HLRToShape {
 		/****************** Rg1LineVCompound ******************/
 		%feature("compactdefaultargs") Rg1LineVCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") Rg1LineVCompound;
 		TopoDS_Shape Rg1LineVCompound (const TopoDS_Shape & S);
 
@@ -3495,7 +3495,7 @@ class HLRBRep_HLRToShape {
 		/****************** RgNLineHCompound ******************/
 		%feature("compactdefaultargs") RgNLineHCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") RgNLineHCompound;
 		TopoDS_Shape RgNLineHCompound (const TopoDS_Shape & S);
 
@@ -3507,7 +3507,7 @@ class HLRBRep_HLRToShape {
 		/****************** RgNLineVCompound ******************/
 		%feature("compactdefaultargs") RgNLineVCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") RgNLineVCompound;
 		TopoDS_Shape RgNLineVCompound (const TopoDS_Shape & S);
 
@@ -3519,7 +3519,7 @@ class HLRBRep_HLRToShape {
 		/****************** VCompound ******************/
 		%feature("compactdefaultargs") VCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") VCompound;
 		TopoDS_Shape VCompound (const TopoDS_Shape & S);
 
@@ -3542,7 +3542,7 @@ class HLRBRep_Hider {
 		%feature("compactdefaultargs") HLRBRep_Hider;
 		%feature("autodoc", "* Creates a Hider processing the set of Edges and hiding faces described by <DS>. Stores the hidden parts in <DS>.
 	:param DS:
-	:type DS: opencascade::handle<HLRBRep_Data> &
+	:type DS: HLRBRep_Data
 	:rtype: None") HLRBRep_Hider;
 		 HLRBRep_Hider (const opencascade::handle<HLRBRep_Data> & DS);
 
@@ -3552,7 +3552,7 @@ class HLRBRep_Hider {
 	:param FI:
 	:type FI: int
 	:param MST:
-	:type MST: BRepTopAdaptor_MapOfShapeTool &
+	:type MST: BRepTopAdaptor_MapOfShapeTool
 	:rtype: None") Hide;
 		void Hide (const Standard_Integer FI,BRepTopAdaptor_MapOfShapeTool & MST);
 
@@ -3591,11 +3591,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3609,11 +3609,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3627,11 +3627,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3645,11 +3645,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param Prb:
 	:type Prb: gp_Parab2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3663,11 +3663,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param H:
 	:type H: gp_Hypr2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3681,11 +3681,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3699,11 +3699,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3717,11 +3717,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3735,11 +3735,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param Prb:
 	:type Prb: gp_Parab2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3753,11 +3753,11 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param H:
 	:type H: gp_Hypr2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -3792,7 +3792,7 @@ class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 	:param Curve:
 	:type Curve: gp_Lin
 	:param Surface:
-	:type Surface: Standard_Address &
+	:type Surface: Standard_Address
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & Curve,const Standard_Address & Surface);
 
@@ -3802,9 +3802,9 @@ class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 	:param Curve:
 	:type Curve: gp_Lin
 	:param Polygon:
-	:type Polygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type Polygon: HLRBRep_ThePolygonOfInterCSurf
 	:param Surface:
-	:type Surface: Standard_Address &
+	:type Surface: Standard_Address
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & Curve,const HLRBRep_ThePolygonOfInterCSurf & Polygon,const Standard_Address & Surface);
 
@@ -3814,11 +3814,11 @@ class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 	:param Curve:
 	:type Curve: gp_Lin
 	:param ThePolygon:
-	:type ThePolygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type ThePolygon: HLRBRep_ThePolygonOfInterCSurf
 	:param Surface:
-	:type Surface: Standard_Address &
+	:type Surface: Standard_Address
 	:param Polyhedron:
-	:type Polyhedron: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type Polyhedron: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & Curve,const HLRBRep_ThePolygonOfInterCSurf & ThePolygon,const Standard_Address & Surface,const HLRBRep_ThePolyhedronOfInterCSurf & Polyhedron);
 
@@ -3828,13 +3828,13 @@ class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 	:param Curve:
 	:type Curve: gp_Lin
 	:param ThePolygon:
-	:type ThePolygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type ThePolygon: HLRBRep_ThePolygonOfInterCSurf
 	:param Surface:
-	:type Surface: Standard_Address &
+	:type Surface: Standard_Address
 	:param Polyhedron:
-	:type Polyhedron: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type Polyhedron: HLRBRep_ThePolyhedronOfInterCSurf
 	:param BndBSB:
-	:type BndBSB: Bnd_BoundSortBox &
+	:type BndBSB: Bnd_BoundSortBox
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & Curve,const HLRBRep_ThePolygonOfInterCSurf & ThePolygon,const Standard_Address & Surface,const HLRBRep_ThePolyhedronOfInterCSurf & Polyhedron,Bnd_BoundSortBox & BndBSB);
 
@@ -3844,9 +3844,9 @@ class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 	:param Curve:
 	:type Curve: gp_Lin
 	:param Surface:
-	:type Surface: Standard_Address &
+	:type Surface: Standard_Address
 	:param Polyhedron:
-	:type Polyhedron: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type Polyhedron: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & Curve,const Standard_Address & Surface,const HLRBRep_ThePolyhedronOfInterCSurf & Polyhedron);
 
@@ -3890,7 +3890,7 @@ class HLRBRep_InternalAlgo : public Standard_Transient {
 		/****************** HLRBRep_InternalAlgo ******************/
 		%feature("compactdefaultargs") HLRBRep_InternalAlgo;
 		%feature("autodoc", ":param A:
-	:type A: opencascade::handle<HLRBRep_InternalAlgo> &
+	:type A: HLRBRep_InternalAlgo
 	:rtype: None") HLRBRep_InternalAlgo;
 		 HLRBRep_InternalAlgo (const opencascade::handle<HLRBRep_InternalAlgo> & A);
 
@@ -3936,7 +3936,7 @@ class HLRBRep_InternalAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* return the index of the Shape <S> and return 0 if the Shape <S> is not found.
 	:param S:
-	:type S: opencascade::handle<HLRTopoBRep_OutLiner> &
+	:type S: HLRTopoBRep_OutLiner
 	:rtype: int") Index;
 		Standard_Integer Index (const opencascade::handle<HLRTopoBRep_OutLiner> & S);
 
@@ -3950,9 +3950,9 @@ class HLRBRep_InternalAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* add the shape <S>.
 	:param S:
-	:type S: opencascade::handle<HLRTopoBRep_OutLiner> &
+	:type S: HLRTopoBRep_OutLiner
 	:param SData:
-	:type SData: opencascade::handle<Standard_Transient> &
+	:type SData: Standard_Transient
 	:param nbIso: default value is 0
 	:type nbIso: int
 	:rtype: None") Load;
@@ -3962,7 +3962,7 @@ class HLRBRep_InternalAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* add the shape <S>.
 	:param S:
-	:type S: opencascade::handle<HLRTopoBRep_OutLiner> &
+	:type S: HLRTopoBRep_OutLiner
 	:param nbIso: default value is 0
 	:type nbIso: int
 	:rtype: None") Load;
@@ -3983,7 +3983,7 @@ class HLRBRep_InternalAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Projector;
 		%feature("autodoc", "* set the projector.
 	:param P:
-	:type P: HLRAlgo_Projector &
+	:type P: HLRAlgo_Projector
 	:rtype: None") Projector;
 		void Projector (const HLRAlgo_Projector & P);
 
@@ -4049,7 +4049,7 @@ class HLRBRep_InternalAlgo : public Standard_Transient {
 	:param I:
 	:type I: int
 	:param SData:
-	:type SData: opencascade::handle<Standard_Transient> &
+	:type SData: Standard_Transient
 	:rtype: None") ShapeData;
 		void ShapeData (const Standard_Integer I,const opencascade::handle<Standard_Transient> & SData);
 
@@ -4122,7 +4122,7 @@ class HLRBRep_Intersector {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param A:
-	:type A: Standard_Address &
+	:type A: Standard_Address
 	:rtype: None") Load;
 		void Load (Standard_Address & A);
 
@@ -4388,7 +4388,7 @@ class HLRBRep_LineTool {
 	:param C:
 	:type C: gp_Lin
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param Sh:
 	:type Sh: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -4420,9 +4420,9 @@ class HLRBRep_LineTool {
 		%feature("autodoc", ":param C:
 	:type C: gp_Lin
 	:param TK:
-	:type TK: TColStd_Array1OfReal &
+	:type TK: TColStd_Array1OfReal
 	:param TM:
-	:type TM: TColStd_Array1OfInteger &
+	:type TM: TColStd_Array1OfInteger
 	:rtype: None") KnotsAndMultiplicities;
 		static void KnotsAndMultiplicities (const gp_Lin & C,TColStd_Array1OfReal & TK,TColStd_Array1OfInteger & TM);
 
@@ -4505,7 +4505,7 @@ class HLRBRep_LineTool {
 	:param TP:
 	:type TP: TColgp_Array1OfPnt
 	:param TW:
-	:type TW: TColStd_Array1OfReal &
+	:type TW: TColStd_Array1OfReal
 	:rtype: None") PolesAndWeights;
 		static void PolesAndWeights (const gp_Lin & C,TColgp_Array1OfPnt & TP,TColStd_Array1OfReal & TW);
 
@@ -4532,7 +4532,7 @@ class HLRBRep_LineTool {
 	:param NbMin:
 	:type NbMin: int
 	:param Pars:
-	:type Pars: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Pars: TColStd_HArray1OfReal
 	:rtype: None") SamplePars;
 		static void SamplePars (const gp_Lin & C,const Standard_Real U0,const Standard_Real U1,const Standard_Real Defl,const Standard_Integer NbMin,opencascade::handle<TColStd_HArray1OfReal> & Pars);
 
@@ -4567,7 +4567,7 @@ class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public ma
 	:param Param:
 	:type Param: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real Param,Standard_Real &OutValue);
 
@@ -4575,9 +4575,9 @@ class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public ma
 		%feature("compactdefaultargs") HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter;
 		%feature("autodoc", "* Constructor of the class.
 	:param IT:
-	:type IT: IntCurve_IConicTool &
+	:type IT: IntCurve_IConicTool
 	:param PC:
-	:type PC: Standard_Address &
+	:type PC: Standard_Address
 	:rtype: None") HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter;
 		 HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter (const IntCurve_IConicTool & IT,const Standard_Address & PC);
 
@@ -4587,7 +4587,7 @@ class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public ma
 	:param Param:
 	:type Param: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real Param,Standard_Real &OutValue);
 
@@ -4597,9 +4597,9 @@ class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public ma
 	:param Param:
 	:type Param: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real Param,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4624,7 +4624,7 @@ class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_Function
 	:param U:
 	:type U: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real U,Standard_Real &OutValue);
 
@@ -4644,7 +4644,7 @@ class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_Function
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Standard_Address &
+	:type C: Standard_Address
 	:rtype: None") HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
 		 HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter (const gp_Pnt2d & P,const Standard_Address & C);
 
@@ -4652,7 +4652,7 @@ class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_Function
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mycurve of the function.
 	:param C:
-	:type C: Standard_Address &
+	:type C: Standard_Address
 	:rtype: None") Initialize;
 		void Initialize (const Standard_Address & C);
 
@@ -4716,7 +4716,7 @@ class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_Function
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real U,Standard_Real &OutValue);
 
@@ -4726,9 +4726,9 @@ class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_Function
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4785,23 +4785,23 @@ class HLRBRep_PolyAlgo : public Standard_Transient {
 		/****************** HLRBRep_PolyAlgo ******************/
 		%feature("compactdefaultargs") HLRBRep_PolyAlgo;
 		%feature("autodoc", ":param A:
-	:type A: opencascade::handle<HLRBRep_PolyAlgo> &
+	:type A: HLRBRep_PolyAlgo
 	:rtype: None") HLRBRep_PolyAlgo;
 		 HLRBRep_PolyAlgo (const opencascade::handle<HLRBRep_PolyAlgo> & A);
 
 		/****************** HLRBRep_PolyAlgo ******************/
 		%feature("compactdefaultargs") HLRBRep_PolyAlgo;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") HLRBRep_PolyAlgo;
 		 HLRBRep_PolyAlgo (const TopoDS_Shape & S);
 
 		/****************** Hide ******************/
 		%feature("compactdefaultargs") Hide;
 		%feature("autodoc", ":param status:
-	:type status: HLRAlgo_EdgeStatus &
+	:type status: HLRAlgo_EdgeStatus
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param reg1:
 	:type reg1: bool
 	:param regn:
@@ -4817,7 +4817,7 @@ class HLRBRep_PolyAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* return the index of the Shape <S> and return 0 if the Shape <S> is not found.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") Index;
 		Standard_Integer Index (const TopoDS_Shape & S);
 
@@ -4835,7 +4835,7 @@ class HLRBRep_PolyAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Loads the shape S into this framework. Warning S must have already been triangulated.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Load;
 		void Load (const TopoDS_Shape & S);
 
@@ -4868,7 +4868,7 @@ class HLRBRep_PolyAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") OutLinedShape;
 		%feature("autodoc", "* Make a shape with the internal outlines in each face.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") OutLinedShape;
 		TopoDS_Shape OutLinedShape (const TopoDS_Shape & S);
 
@@ -4881,7 +4881,7 @@ class HLRBRep_PolyAlgo : public Standard_Transient {
 		/****************** Projector ******************/
 		%feature("compactdefaultargs") Projector;
 		%feature("autodoc", ":param P:
-	:type P: HLRAlgo_Projector &
+	:type P: HLRAlgo_Projector
 	:rtype: None") Projector;
 		void Projector (const HLRAlgo_Projector & P);
 
@@ -4903,7 +4903,7 @@ class HLRBRep_PolyAlgo : public Standard_Transient {
 		/****************** Show ******************/
 		%feature("compactdefaultargs") Show;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param reg1:
 	:type reg1: bool
 	:param regn:
@@ -4970,7 +4970,7 @@ class HLRBRep_PolyHLRToShape {
 		/****************** HCompound ******************/
 		%feature("compactdefaultargs") HCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") HCompound;
 		TopoDS_Shape HCompound (const TopoDS_Shape & S);
 
@@ -4994,7 +4994,7 @@ class HLRBRep_PolyHLRToShape {
 		%feature("compactdefaultargs") OutLineHCompound;
 		%feature("autodoc", "* Sets the extraction filter for hidden outlines. Hidden outlines occur, for instance, in tori. In this case, the inner outlines of the torus seen on its side are hidden.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") OutLineHCompound;
 		TopoDS_Shape OutLineHCompound (const TopoDS_Shape & S);
 
@@ -5007,7 +5007,7 @@ class HLRBRep_PolyHLRToShape {
 		%feature("compactdefaultargs") OutLineVCompound;
 		%feature("autodoc", "* Sets the extraction filter for visible outlines.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") OutLineVCompound;
 		TopoDS_Shape OutLineVCompound (const TopoDS_Shape & S);
 
@@ -5020,7 +5020,7 @@ class HLRBRep_PolyHLRToShape {
 		%feature("compactdefaultargs") Rg1LineHCompound;
 		%feature("autodoc", "* Sets the extraction filter for hidden smooth edges.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") Rg1LineHCompound;
 		TopoDS_Shape Rg1LineHCompound (const TopoDS_Shape & S);
 
@@ -5033,7 +5033,7 @@ class HLRBRep_PolyHLRToShape {
 		/****************** Rg1LineVCompound ******************/
 		%feature("compactdefaultargs") Rg1LineVCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") Rg1LineVCompound;
 		TopoDS_Shape Rg1LineVCompound (const TopoDS_Shape & S);
 
@@ -5046,7 +5046,7 @@ class HLRBRep_PolyHLRToShape {
 		%feature("compactdefaultargs") RgNLineHCompound;
 		%feature("autodoc", "* Sets the extraction filter for hidden sewn edges.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") RgNLineHCompound;
 		TopoDS_Shape RgNLineHCompound (const TopoDS_Shape & S);
 
@@ -5059,7 +5059,7 @@ class HLRBRep_PolyHLRToShape {
 		/****************** RgNLineVCompound ******************/
 		%feature("compactdefaultargs") RgNLineVCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") RgNLineVCompound;
 		TopoDS_Shape RgNLineVCompound (const TopoDS_Shape & S);
 
@@ -5071,7 +5071,7 @@ class HLRBRep_PolyHLRToShape {
 		/****************** Update ******************/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", ":param A:
-	:type A: opencascade::handle<HLRBRep_PolyAlgo> &
+	:type A: HLRBRep_PolyAlgo
 	:rtype: None") Update;
 		void Update (const opencascade::handle<HLRBRep_PolyAlgo> & A);
 
@@ -5083,7 +5083,7 @@ class HLRBRep_PolyHLRToShape {
 		/****************** VCompound ******************/
 		%feature("compactdefaultargs") VCompound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") VCompound;
 		TopoDS_Shape VCompound (const TopoDS_Shape & S);
 
@@ -5152,7 +5152,7 @@ class HLRBRep_SLProps {
 		%feature("compactdefaultargs") HLRBRep_SLProps;
 		%feature("autodoc", "* Initializes the local properties of the surface <S> for the parameter values (<U>, <V>). The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, or 2). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 	:param S:
-	:type S: Standard_Address &
+	:type S: Standard_Address
 	:param U:
 	:type U: float
 	:param V:
@@ -5168,7 +5168,7 @@ class HLRBRep_SLProps {
 		%feature("compactdefaultargs") HLRBRep_SLProps;
 		%feature("autodoc", "* idem as previous constructor but without setting the value of parameters <U> and <V>.
 	:param S:
-	:type S: Standard_Address &
+	:type S: Standard_Address
 	:param N:
 	:type N: int
 	:param Resolution:
@@ -5254,7 +5254,7 @@ class HLRBRep_SLProps {
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "* Initializes the local properties of the surface S for the new surface.
 	:param S:
-	:type S: Standard_Address &
+	:type S: Standard_Address
 	:rtype: None") SetSurface;
 		void SetSurface (const Standard_Address & S);
 
@@ -5300,13 +5300,13 @@ class HLRBRep_SLPropsATool {
 	:param A:
 	:type A: Standard_Address
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		static void Bounds (const Standard_Address A,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5407,17 +5407,17 @@ class HLRBRep_ShapeBounds {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param V1:
-	:type V1: int &
+	:type V1: int
 	:param V2:
-	:type V2: int &
+	:type V2: int
 	:param E1:
-	:type E1: int &
+	:type E1: int
 	:param E2:
-	:type E2: int &
+	:type E2: int
 	:param F1:
-	:type F1: int &
+	:type F1: int
 	:param F2:
-	:type F2: int &
+	:type F2: int
 	:rtype: None") Bounds;
 		void Bounds (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -5429,9 +5429,9 @@ class HLRBRep_ShapeBounds {
 		/****************** HLRBRep_ShapeBounds ******************/
 		%feature("compactdefaultargs") HLRBRep_ShapeBounds;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<HLRTopoBRep_OutLiner> &
+	:type S: HLRTopoBRep_OutLiner
 	:param SData:
-	:type SData: opencascade::handle<Standard_Transient> &
+	:type SData: Standard_Transient
 	:param nbIso:
 	:type nbIso: int
 	:param V1:
@@ -5452,7 +5452,7 @@ class HLRBRep_ShapeBounds {
 		/****************** HLRBRep_ShapeBounds ******************/
 		%feature("compactdefaultargs") HLRBRep_ShapeBounds;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<HLRTopoBRep_OutLiner> &
+	:type S: HLRTopoBRep_OutLiner
 	:param nbIso:
 	:type nbIso: int
 	:param V1:
@@ -5490,7 +5490,7 @@ class HLRBRep_ShapeBounds {
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<HLRTopoBRep_OutLiner> &
+	:type S: HLRTopoBRep_OutLiner
 	:rtype: None") Shape;
 		void Shape (const opencascade::handle<HLRTopoBRep_OutLiner> & S);
 
@@ -5502,7 +5502,7 @@ class HLRBRep_ShapeBounds {
 		/****************** ShapeData ******************/
 		%feature("compactdefaultargs") ShapeData;
 		%feature("autodoc", ":param SD:
-	:type SD: opencascade::handle<Standard_Transient> &
+	:type SD: Standard_Transient
 	:rtype: None") ShapeData;
 		void ShapeData (const opencascade::handle<Standard_Transient> & SD);
 
@@ -5514,11 +5514,11 @@ class HLRBRep_ShapeBounds {
 		/****************** Sizes ******************/
 		%feature("compactdefaultargs") Sizes;
 		%feature("autodoc", ":param NV:
-	:type NV: int &
+	:type NV: int
 	:param NE:
-	:type NE: int &
+	:type NE: int
 	:param NF:
-	:type NF: int &
+	:type NF: int
 	:rtype: None") Sizes;
 		void Sizes (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -5536,7 +5536,7 @@ class HLRBRep_ShapeBounds {
 		/****************** UpdateMinMax ******************/
 		%feature("compactdefaultargs") UpdateMinMax;
 		%feature("autodoc", ":param theTotMinMax:
-	:type theTotMinMax: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type theTotMinMax: HLRAlgo_EdgesBlock::MinMaxIndices
 	:rtype: None") UpdateMinMax;
 		void UpdateMinMax (const HLRAlgo_EdgesBlock::MinMaxIndices & theTotMinMax);
 
@@ -5558,11 +5558,11 @@ class HLRBRep_ShapeToHLR {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Creates a DataStructure containing the OutLiner <S> depending on the projector <P> and nbIso.
 	:param S:
-	:type S: opencascade::handle<HLRTopoBRep_OutLiner> &
+	:type S: HLRTopoBRep_OutLiner
 	:param P:
-	:type P: HLRAlgo_Projector &
+	:type P: HLRAlgo_Projector
 	:param MST:
-	:type MST: BRepTopAdaptor_MapOfShapeTool &
+	:type MST: BRepTopAdaptor_MapOfShapeTool
 	:param nbIso: default value is 0
 	:type nbIso: int
 	:rtype: opencascade::handle<HLRBRep_Data>") Load;
@@ -5890,7 +5890,7 @@ class HLRBRep_SurfaceTool {
 		%feature("autodoc", ":param S:
 	:type S: Standard_Address
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param Sh:
 	:type Sh: GeomAbs_Shape
 	:rtype: None") UIntervals;
@@ -5931,7 +5931,7 @@ class HLRBRep_SurfaceTool {
 		%feature("autodoc", ":param S:
 	:type S: Standard_Address
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param Sh:
 	:type Sh: GeomAbs_Shape
 	:rtype: None") VIntervals;
@@ -6006,16 +6006,16 @@ class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives
 		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** HLRBRep_TheCSFunctionOfInterCSurf ******************/
 		%feature("compactdefaultargs") HLRBRep_TheCSFunctionOfInterCSurf;
 		%feature("autodoc", ":param S:
-	:type S: Standard_Address &
+	:type S: Standard_Address
 	:param C:
 	:type C: gp_Lin
 	:rtype: None") HLRBRep_TheCSFunctionOfInterCSurf;
@@ -6044,20 +6044,20 @@ class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -6083,18 +6083,18 @@ class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_Fu
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter ******************/
 		%feature("compactdefaultargs") HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
 		%feature("autodoc", ":param curve1:
-	:type curve1: Standard_Address &
+	:type curve1: Standard_Address
 	:param curve2:
-	:type curve2: Standard_Address &
+	:type curve2: Standard_Address
 	:rtype: None") HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
 		 HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter (const Standard_Address & curve1,const Standard_Address & curve2);
 
@@ -6114,9 +6114,9 @@ class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_Fu
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -6124,11 +6124,11 @@ class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_Fu
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -6163,7 +6163,7 @@ class HLRBRep_TheExactInterCSurf {
 	:param W:
 	:type W: float
 	:param F:
-	:type F: HLRBRep_TheCSFunctionOfInterCSurf &
+	:type F: HLRBRep_TheCSFunctionOfInterCSurf
 	:param TolTangency:
 	:type TolTangency: float
 	:param MarginCoef: default value is 0.0
@@ -6175,7 +6175,7 @@ class HLRBRep_TheExactInterCSurf {
 		%feature("compactdefaultargs") HLRBRep_TheExactInterCSurf;
 		%feature("autodoc", "* initialize the parameters to compute the solution
 	:param F:
-	:type F: HLRBRep_TheCSFunctionOfInterCSurf &
+	:type F: HLRBRep_TheCSFunctionOfInterCSurf
 	:param TolTangency:
 	:type TolTangency: float
 	:rtype: None") HLRBRep_TheExactInterCSurf;
@@ -6200,9 +6200,9 @@ class HLRBRep_TheExactInterCSurf {
 		/****************** ParameterOnSurface ******************/
 		%feature("compactdefaultargs") ParameterOnSurface;
 		%feature("autodoc", ":param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") ParameterOnSurface;
 		void ParameterOnSurface (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6216,7 +6216,7 @@ class HLRBRep_TheExactInterCSurf {
 	:param W:
 	:type W: float
 	:param Rsnld:
-	:type Rsnld: math_FunctionSetRoot &
+	:type Rsnld: math_FunctionSetRoot
 	:param u0:
 	:type u0: float
 	:param v0:
@@ -6265,11 +6265,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6283,11 +6283,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6301,11 +6301,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6319,11 +6319,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param Prb:
 	:type Prb: gp_Parab2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6337,11 +6337,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param H:
 	:type H: gp_Hypr2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6355,11 +6355,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6373,11 +6373,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6391,11 +6391,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6409,11 +6409,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param Prb:
 	:type Prb: gp_Parab2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6427,11 +6427,11 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	:param H:
 	:type H: gp_Hypr2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6467,13 +6467,13 @@ class HLRBRep_TheIntPCurvePCurveOfCInter : public IntRes2d_Intersection {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Curve1:
-	:type Curve1: Standard_Address &
+	:type Curve1: Standard_Address
 	:param Domain1:
-	:type Domain1: IntRes2d_Domain &
+	:type Domain1: IntRes2d_Domain
 	:param Curve2:
-	:type Curve2: Standard_Address &
+	:type Curve2: Standard_Address
 	:param Domain2:
-	:type Domain2: IntRes2d_Domain &
+	:type Domain2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6484,9 +6484,9 @@ class HLRBRep_TheIntPCurvePCurveOfCInter : public IntRes2d_Intersection {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Curve1:
-	:type Curve1: Standard_Address &
+	:type Curve1: Standard_Address
 	:param Domain1:
-	:type Domain1: IntRes2d_Domain &
+	:type Domain1: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6527,9 +6527,9 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") HLRBRep_TheInterferenceOfInterCSurf;
 		%feature("autodoc", "* Constructs and computes an interference between the Polygon and the Polyhedron.
 	:param thePolyg:
-	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: None") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf (const HLRBRep_ThePolygonOfInterCSurf & thePolyg,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -6539,7 +6539,7 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 	:param theLin:
 	:type theLin: gp_Lin
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: None") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf (const gp_Lin & theLin,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -6547,9 +6547,9 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") HLRBRep_TheInterferenceOfInterCSurf;
 		%feature("autodoc", "* Constructs and computes an interference between the Straight Lines and the Polyhedron.
 	:param theLins:
-	:type theLins: Intf_Array1OfLin &
+	:type theLins: Intf_Array1OfLin
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: None") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf (const Intf_Array1OfLin & theLins,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -6557,11 +6557,11 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") HLRBRep_TheInterferenceOfInterCSurf;
 		%feature("autodoc", "* Constructs and computes an interference between the Polygon and the Polyhedron.
 	:param thePolyg:
-	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf (const HLRBRep_ThePolygonOfInterCSurf & thePolyg,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -6571,9 +6571,9 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 	:param theLin:
 	:type theLin: gp_Lin
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf (const gp_Lin & theLin,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -6581,11 +6581,11 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") HLRBRep_TheInterferenceOfInterCSurf;
 		%feature("autodoc", "* Constructs and computes an interference between the Straight Lines and the Polyhedron.
 	:param theLins:
-	:type theLins: Intf_Array1OfLin &
+	:type theLins: Intf_Array1OfLin
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") HLRBRep_TheInterferenceOfInterCSurf;
 		 HLRBRep_TheInterferenceOfInterCSurf (const Intf_Array1OfLin & theLins,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -6593,11 +6593,11 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") Interference;
 		%feature("autodoc", "* Compares the boundings between the segment of <thePolyg> and the facets of <thePolyh>.
 	:param thePolyg:
-	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") Interference;
 		void Interference (const HLRBRep_ThePolygonOfInterCSurf & thePolyg,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -6605,9 +6605,9 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") Interference;
 		%feature("autodoc", "* Compares the boundings between the segment of <thePolyg> and the facets of <thePolyh>.
 	:param thePolyg:
-	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: None") Interference;
 		void Interference (const HLRBRep_ThePolygonOfInterCSurf & thePolyg,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -6615,9 +6615,9 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes an interference between the Polygon and the Polyhedron.
 	:param thePolyg:
-	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: None") Perform;
 		void Perform (const HLRBRep_ThePolygonOfInterCSurf & thePolyg,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -6627,7 +6627,7 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 	:param theLin:
 	:type theLin: gp_Lin
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & theLin,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -6635,9 +6635,9 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes an interference between the Straight Lines and the Polyhedron.
 	:param theLins:
-	:type theLins: Intf_Array1OfLin &
+	:type theLins: Intf_Array1OfLin
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: None") Perform;
 		void Perform (const Intf_Array1OfLin & theLins,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -6645,11 +6645,11 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes an interference between the Polygon and the Polyhedron.
 	:param thePolyg:
-	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolyg: HLRBRep_ThePolygonOfInterCSurf
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") Perform;
 		void Perform (const HLRBRep_ThePolygonOfInterCSurf & thePolyg,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -6659,9 +6659,9 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 	:param theLin:
 	:type theLin: gp_Lin
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & theLin,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -6669,11 +6669,11 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes an interference between the Straight Lines and the Polyhedron.
 	:param theLins:
-	:type theLins: Intf_Array1OfLin &
+	:type theLins: Intf_Array1OfLin
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") Perform;
 		void Perform (const Intf_Array1OfLin & theLins,const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -6695,23 +6695,23 @@ class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Interse
 		/****************** And_Domaine_Objet1_Intersections ******************/
 		%feature("compactdefaultargs") And_Domaine_Objet1_Intersections;
 		%feature("autodoc", ":param TheImpTool:
-	:type TheImpTool: IntCurve_IConicTool &
+	:type TheImpTool: IntCurve_IConicTool
 	:param TheParCurve:
-	:type TheParCurve: Standard_Address &
+	:type TheParCurve: Standard_Address
 	:param TheImpCurveDomain:
-	:type TheImpCurveDomain: IntRes2d_Domain &
+	:type TheImpCurveDomain: IntRes2d_Domain
 	:param TheParCurveDomain:
-	:type TheParCurveDomain: IntRes2d_Domain &
+	:type TheParCurveDomain: IntRes2d_Domain
 	:param NbResultats:
-	:type NbResultats: int &
+	:type NbResultats: int
 	:param Inter2_And_Domain2:
-	:type Inter2_And_Domain2: TColStd_Array1OfReal &
+	:type Inter2_And_Domain2: TColStd_Array1OfReal
 	:param Inter1:
-	:type Inter1: TColStd_Array1OfReal &
+	:type Inter1: TColStd_Array1OfReal
 	:param Resultat1:
-	:type Resultat1: TColStd_Array1OfReal &
+	:type Resultat1: TColStd_Array1OfReal
 	:param Resultat2:
-	:type Resultat2: TColStd_Array1OfReal &
+	:type Resultat2: TColStd_Array1OfReal
 	:param EpsNul:
 	:type EpsNul: float
 	:rtype: None") And_Domaine_Objet1_Intersections;
@@ -6724,9 +6724,9 @@ class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Interse
 	:param point:
 	:type point: gp_Pnt2d
 	:param TheParCurev:
-	:type TheParCurev: Standard_Address &
+	:type TheParCurev: Standard_Address
 	:param TheImpTool:
-	:type TheImpTool: IntCurve_IConicTool &
+	:type TheImpTool: IntCurve_IConicTool
 	:rtype: float") FindU;
 		Standard_Real FindU (const Standard_Real parameter,gp_Pnt2d & point,const Standard_Address & TheParCurev,const IntCurve_IConicTool & TheImpTool);
 
@@ -6737,11 +6737,11 @@ class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Interse
 	:param point:
 	:type point: gp_Pnt2d
 	:param TheImpTool:
-	:type TheImpTool: IntCurve_IConicTool &
+	:type TheImpTool: IntCurve_IConicTool
 	:param ParCurve:
-	:type ParCurve: Standard_Address &
+	:type ParCurve: Standard_Address
 	:param TheParCurveDomain:
-	:type TheParCurveDomain: IntRes2d_Domain &
+	:type TheParCurveDomain: IntRes2d_Domain
 	:param V0:
 	:type V0: float
 	:param V1:
@@ -6761,13 +6761,13 @@ class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Interse
 		%feature("compactdefaultargs") HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter;
 		%feature("autodoc", "* Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 	:param ITool:
-	:type ITool: IntCurve_IConicTool &
+	:type ITool: IntCurve_IConicTool
 	:param Dom1:
-	:type Dom1: IntRes2d_Domain &
+	:type Dom1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param Dom2:
-	:type Dom2: IntRes2d_Domain &
+	:type Dom2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6779,13 +6779,13 @@ class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Interse
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 	:param ITool:
-	:type ITool: IntCurve_IConicTool &
+	:type ITool: IntCurve_IConicTool
 	:param Dom1:
-	:type Dom1: IntRes2d_Domain &
+	:type Dom1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: Standard_Address &
+	:type PCurve: Standard_Address
 	:param Dom2:
-	:type Dom2: IntRes2d_Domain &
+	:type Dom2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -6819,7 +6819,7 @@ class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Standard_Address &
+	:type C: Standard_Address
 	:param U0:
 	:type U0: float
 	:param TolU:
@@ -6833,7 +6833,7 @@ class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Standard_Address &
+	:type C: Standard_Address
 	:param U0:
 	:type U0: float
 	:param Umin:
@@ -6849,7 +6849,7 @@ class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Standard_Address &
+	:type C: Standard_Address
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -6957,9 +6957,9 @@ class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 		%feature("compactdefaultargs") ComputeWithBox;
 		%feature("autodoc", "* The current polygon is modified if most of the points of the polygon are are outside the box <OtherBox>. In this situation, bounds are computed to build a polygon inside or near the OtherBox.
 	:param Curve:
-	:type Curve: Standard_Address &
+	:type Curve: Standard_Address
 	:param OtherBox:
-	:type OtherBox: Bnd_Box2d &
+	:type OtherBox: Bnd_Box2d
 	:rtype: None") ComputeWithBox;
 		void ComputeWithBox (const Standard_Address & Curve,const Bnd_Box2d & OtherBox);
 
@@ -6977,11 +6977,11 @@ class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 		%feature("compactdefaultargs") HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
 		%feature("autodoc", "* Compute a polygon on the domain of the curve.
 	:param Curve:
-	:type Curve: Standard_Address &
+	:type Curve: Standard_Address
 	:param NbPnt:
 	:type NbPnt: int
 	:param Domain:
-	:type Domain: IntRes2d_Domain &
+	:type Domain: IntRes2d_Domain
 	:param Tol:
 	:type Tol: float
 	:rtype: None") HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
@@ -7120,7 +7120,7 @@ class HLRBRep_ThePolygonOfInterCSurf {
 		%feature("autodoc", ":param Curve:
 	:type Curve: gp_Lin
 	:param Upars:
-	:type Upars: TColStd_Array1OfReal &
+	:type Upars: TColStd_Array1OfReal
 	:rtype: None") HLRBRep_ThePolygonOfInterCSurf;
 		 HLRBRep_ThePolygonOfInterCSurf (const gp_Lin & Curve,const TColStd_Array1OfReal & Upars);
 
@@ -7167,7 +7167,7 @@ class HLRBRep_ThePolygonToolOfInterCSurf {
 		%feature("compactdefaultargs") BeginOfSeg;
 		%feature("autodoc", "* Give the point of range Index in the Polygon.
 	:param thePolygon:
-	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf
 	:param Index:
 	:type Index: int
 	:rtype: gp_Pnt") BeginOfSeg;
@@ -7177,28 +7177,28 @@ class HLRBRep_ThePolygonToolOfInterCSurf {
 		%feature("compactdefaultargs") Bounding;
 		%feature("autodoc", "* Give the bounding box of the polygon.
 	:param thePolygon:
-	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf
 	:rtype: Bnd_Box") Bounding;
 		static const Bnd_Box & Bounding (const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
 		/****************** Closed ******************/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", ":param thePolygon:
-	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf
 	:rtype: bool") Closed;
 		static Standard_Boolean Closed (const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
 		/****************** DeflectionOverEstimation ******************/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", ":param thePolygon:
-	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf
 	:rtype: float") DeflectionOverEstimation;
 		static Standard_Real DeflectionOverEstimation (const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", ":param thePolygon:
-	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf
 	:rtype: void") Dump;
 		static void Dump (const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
@@ -7206,7 +7206,7 @@ class HLRBRep_ThePolygonToolOfInterCSurf {
 		%feature("compactdefaultargs") EndOfSeg;
 		%feature("autodoc", "* Give the point of range Index in the Polygon.
 	:param thePolygon:
-	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf
 	:param Index:
 	:type Index: int
 	:rtype: gp_Pnt") EndOfSeg;
@@ -7215,7 +7215,7 @@ class HLRBRep_ThePolygonToolOfInterCSurf {
 		/****************** NbSegments ******************/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", ":param thePolygon:
-	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf &
+	:type thePolygon: HLRBRep_ThePolygonOfInterCSurf
 	:rtype: int") NbSegments;
 		static Standard_Integer NbSegments (const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
@@ -7240,7 +7240,7 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 		%feature("compactdefaultargs") Bounding;
 		%feature("autodoc", "* Give the bounding box of the PolyhedronTool.
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: Bnd_Box") Bounding;
 		static const Bnd_Box & Bounding (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -7248,7 +7248,7 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 		%feature("compactdefaultargs") ComponentsBounding;
 		%feature("autodoc", "* Give the array of boxes. The box <n> corresponding to the triangle <n>.
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: opencascade::handle<Bnd_HArray1OfBox>") ComponentsBounding;
 		static const opencascade::handle<Bnd_HArray1OfBox> & ComponentsBounding (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -7256,14 +7256,14 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "* Give the tolerance of the polygon.
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: float") DeflectionOverEstimation;
 		static Standard_Real DeflectionOverEstimation (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", ":param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: void") Dump;
 		static void Dump (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -7271,7 +7271,7 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 		%feature("compactdefaultargs") GetBorderDeflection;
 		%feature("autodoc", "* This method returns a border deflection of the polyhedron.
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: float") GetBorderDeflection;
 		static Standard_Real GetBorderDeflection (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -7279,7 +7279,7 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 		%feature("compactdefaultargs") IsOnBound;
 		%feature("autodoc", "* This method returns true if the edge based on points with indices Index1 and Index2 represents a boundary edge. It is necessary to take into account the boundary deflection for this edge.
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param Index1:
 	:type Index1: int
 	:param Index2:
@@ -7291,7 +7291,7 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 		%feature("compactdefaultargs") NbTriangles;
 		%feature("autodoc", "* Give the number of triangles in this polyedral surface.
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:rtype: int") NbTriangles;
 		static Standard_Integer NbTriangles (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
@@ -7299,7 +7299,7 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "* Give the point of index i in the polyedral surface.
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param Index:
 	:type Index: int
 	:rtype: gp_Pnt") Point;
@@ -7309,7 +7309,7 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 		%feature("compactdefaultargs") TriConnex;
 		%feature("autodoc", "* Give the addresse Tricon of the triangle connexe to the triangle of address Triang by the edge Pivot Pedge and the third point of this connexe triangle. When we are on a free edge TriCon==0 but the function return the value of the triangle in the other side of Pivot on the free edge. Used to turn around a vertex.
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param Triang:
 	:type Triang: int
 	:param Pivot:
@@ -7317,9 +7317,9 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 	:param Pedge:
 	:type Pedge: int
 	:param TriCon:
-	:type TriCon: int &
+	:type TriCon: int
 	:param OtherP:
-	:type OtherP: int &
+	:type OtherP: int
 	:rtype: int") TriConnex;
 		static Standard_Integer TriConnex (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,const Standard_Integer Triang,const Standard_Integer Pivot,const Standard_Integer Pedge,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -7327,15 +7327,15 @@ class HLRBRep_ThePolyhedronToolOfInterCSurf {
 		%feature("compactdefaultargs") Triangle;
 		%feature("autodoc", "* Give the indices of the 3 points of the triangle of address Index in the PolyhedronTool.
 	:param thePolyh:
-	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf &
+	:type thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 	:param Index:
 	:type Index: int
 	:param P1:
-	:type P1: int &
+	:type P1: int
 	:param P2:
-	:type P2: int &
+	:type P2: int
 	:param P3:
-	:type P3: int &
+	:type P3: int
 	:rtype: None") Triangle;
 		static void Triangle (const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh,const Standard_Integer Index,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -7357,7 +7357,7 @@ class HLRBRep_TheProjPCurOfCInter {
 		%feature("compactdefaultargs") FindParameter;
 		%feature("autodoc", "* Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondance between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. In that case, no bounds are given. The research of the rigth parameter has to be made on the natural parametric domain of the curve.
 	:param C:
-	:type C: Standard_Address &
+	:type C: Standard_Address
 	:param Pnt:
 	:type Pnt: gp_Pnt2d
 	:param Tol:
@@ -7369,7 +7369,7 @@ class HLRBRep_TheProjPCurOfCInter {
 		%feature("compactdefaultargs") FindParameter;
 		%feature("autodoc", "* Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondance between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. LowParameter and HighParameter give the boundaries of the interval in wich the parameter certainly lies. These parameters are given to implement a more efficient algoritm. So, it is not necessary to check that the returned value verifies LowParameter <= Value <= HighParameter.
 	:param C:
-	:type C: Standard_Address &
+	:type C: Standard_Address
 	:param Pnt:
 	:type Pnt: gp_Pnt2d
 	:param LowParameter:
@@ -7400,7 +7400,7 @@ class HLRBRep_TheQuadCurvExactInterCSurf {
 		%feature("compactdefaultargs") HLRBRep_TheQuadCurvExactInterCSurf;
 		%feature("autodoc", "* Provides the signed distance function : Q(w) and its first derivative dQ(w)/dw
 	:param S:
-	:type S: Standard_Address &
+	:type S: Standard_Address
 	:param C:
 	:type C: gp_Lin
 	:rtype: None") HLRBRep_TheQuadCurvExactInterCSurf;
@@ -7412,9 +7412,9 @@ class HLRBRep_TheQuadCurvExactInterCSurf {
 	:param Index:
 	:type Index: int
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: None") Intervals;
 		void Intervals (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7461,7 +7461,7 @@ class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_Function
 	:param Param:
 	:type Param: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real Param,Standard_Real &OutValue);
 
@@ -7469,7 +7469,7 @@ class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_Function
 		%feature("compactdefaultargs") HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf;
 		%feature("autodoc", "* Create the function.
 	:param Q:
-	:type Q: IntSurf_Quadric &
+	:type Q: IntSurf_Quadric
 	:param C:
 	:type C: gp_Lin
 	:rtype: None") HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf;
@@ -7481,7 +7481,7 @@ class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_Function
 	:param Param:
 	:type Param: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real Param,Standard_Real &OutValue);
 
@@ -7491,9 +7491,9 @@ class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_Function
 	:param Param:
 	:type Param: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real Param,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7527,9 +7527,9 @@ class HLRBRep_VertexList {
 		/****************** HLRBRep_VertexList ******************/
 		%feature("compactdefaultargs") HLRBRep_VertexList;
 		%feature("autodoc", ":param T:
-	:type T: HLRBRep_EdgeInterferenceTool &
+	:type T: HLRBRep_EdgeInterferenceTool
 	:param I:
-	:type I: HLRAlgo_ListIteratorOfInterferenceList &
+	:type I: HLRAlgo_ListIteratorOfInterferenceList
 	:rtype: None") HLRBRep_VertexList;
 		 HLRBRep_VertexList (const HLRBRep_EdgeInterferenceTool & T,const HLRAlgo_ListIteratorOfInterferenceList & I);
 
@@ -7594,9 +7594,9 @@ class HLRBRep_Algo : public HLRBRep_InternalAlgo {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* add the Shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param SData:
-	:type SData: opencascade::handle<Standard_Transient> &
+	:type SData: Standard_Transient
 	:param nbIso: default value is 0
 	:type nbIso: int
 	:rtype: None") Add;
@@ -7606,7 +7606,7 @@ class HLRBRep_Algo : public HLRBRep_InternalAlgo {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the shape S to this framework, and specifies the number of isoparameters nbiso desired in visualizing S. You may add as many shapes as you wish. Use the function Add once for each shape.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param nbIso: default value is 0
 	:type nbIso: int
 	:rtype: None") Add;
@@ -7621,7 +7621,7 @@ class HLRBRep_Algo : public HLRBRep_InternalAlgo {
 		/****************** HLRBRep_Algo ******************/
 		%feature("compactdefaultargs") HLRBRep_Algo;
 		%feature("autodoc", ":param A:
-	:type A: opencascade::handle<HLRBRep_Algo> &
+	:type A: HLRBRep_Algo
 	:rtype: None") HLRBRep_Algo;
 		 HLRBRep_Algo (const opencascade::handle<HLRBRep_Algo> & A);
 
@@ -7629,7 +7629,7 @@ class HLRBRep_Algo : public HLRBRep_InternalAlgo {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* return the index of the Shape <S> and return 0 if the Shape <S> is not found.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") Index;
 		Standard_Integer Index (const TopoDS_Shape & S);
 

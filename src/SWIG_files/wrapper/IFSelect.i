@@ -203,7 +203,7 @@ class IFSelect {
 		%feature("compactdefaultargs") RestoreSession;
 		%feature("autodoc", "* Restore the state of a WorkSession from IFSelect, by using a SessionFile from IFSelect. Returns True if Done, False in case of Error on Writing. <file> gives the name of the File to be used (this avoids to export the class SessionFile).
 	:param WS:
-	:type WS: opencascade::handle<IFSelect_WorkSession> &
+	:type WS: IFSelect_WorkSession
 	:param file:
 	:type file: char *
 	:rtype: bool") RestoreSession;
@@ -213,7 +213,7 @@ class IFSelect {
 		%feature("compactdefaultargs") SaveSession;
 		%feature("autodoc", "* Saves the state of a WorkSession from IFSelect, by using a SessionFile from IFSelect. Returns True if Done, False in case of Error on Writing. <file> gives the name of the File to be produced (this avoids to export the class SessionFile).
 	:param WS:
-	:type WS: opencascade::handle<IFSelect_WorkSession> &
+	:type WS: IFSelect_WorkSession
 	:param file:
 	:type file: char *
 	:rtype: bool") SaveSession;
@@ -258,7 +258,7 @@ class IFSelect_Activator : public Standard_Transient {
 		%feature("compactdefaultargs") Adding;
 		%feature("autodoc", "* Records, in a Dictionary available for all the Activators, the command title an Activator can process, attached with its number, proper for this Activator <mode> allows to distinguish various execution modes 0: default mode; 1 : for xset
 	:param actor:
-	:type actor: opencascade::handle<IFSelect_Activator> &
+	:type actor: IFSelect_Activator
 	:param number:
 	:type number: int
 	:param command:
@@ -284,7 +284,7 @@ class IFSelect_Activator : public Standard_Transient {
 	:param number:
 	:type number: int
 	:param pilot:
-	:type pilot: opencascade::handle<IFSelect_SessionPilot> &
+	:type pilot: IFSelect_SessionPilot
 	:rtype: IFSelect_ReturnStatus") Do;
 		virtual IFSelect_ReturnStatus Do (const Standard_Integer number,const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
@@ -328,9 +328,9 @@ class IFSelect_Activator : public Standard_Transient {
 	:param command:
 	:type command: char *
 	:param number:
-	:type number: int &
+	:type number: int
 	:param actor:
-	:type actor: opencascade::handle<IFSelect_Activator> &
+	:type actor: IFSelect_Activator
 	:rtype: bool") Select;
 		static Standard_Boolean Select (const char * command,Standard_Integer &OutValue,opencascade::handle<IFSelect_Activator> & actor);
 
@@ -365,7 +365,7 @@ class IFSelect_AppliedModifiers : public Standard_Transient {
 		%feature("compactdefaultargs") AddModif;
 		%feature("autodoc", "* Records a modifier. By default, it is to apply on all a produced file. Further calls to AddNum will restrict this. Returns True if done, False if too many modifiers are already recorded
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modif: IFSelect_GeneralModifier
 	:rtype: bool") AddModif;
 		Standard_Boolean AddModif (const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
@@ -405,9 +405,9 @@ class IFSelect_AppliedModifiers : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modif: IFSelect_GeneralModifier
 	:param entcount:
-	:type entcount: int &
+	:type entcount: int
 	:rtype: bool") Item;
 		Standard_Boolean Item (const Standard_Integer num,opencascade::handle<IFSelect_GeneralModifier> & modif,Standard_Integer &OutValue);
 
@@ -446,7 +446,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") AddCheck;
 		%feature("autodoc", "* Adds a Check to the CheckList. If it is empty, nothing is done If it concerns an Entity from the Original Model (by SetEntity) to which another Check is attached, it is merged to it. Else, it is added or merged as to GlobalCheck.
 	:param check:
-	:type check: opencascade::handle<Interface_Check> &
+	:type check: Interface_Check
 	:rtype: None") AddCheck;
 		void AddCheck (const opencascade::handle<Interface_Check> & check);
 
@@ -454,7 +454,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "* Adds a Fail Message for an Entity from the original Model If <start> is not an Entity from the original model (e.g. the model itself) this message is added to Global Check.
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param mess:
 	:type mess: char *
 	:param orig: default value is ""
@@ -466,7 +466,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "* Adds a Warning Message for an Entity from the original Model If <start> is not an Entity from the original model (e.g. the model itself) this message is added to Global Check.
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param mess:
 	:type mess: char *
 	:param orig: default value is ""
@@ -486,7 +486,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") CCheck;
 		%feature("autodoc", "* Returns a Check attached to an Entity from the original Model It can then be acknowledged on the spot, in condition that the caller works by reference ('Interface_Check& check = ...')
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: opencascade::handle<Interface_Check>") CCheck;
 		opencascade::handle<Interface_Check> CCheck (const opencascade::handle<Standard_Transient> & start);
 
@@ -518,9 +518,9 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") IFSelect_ContextModif;
 		%feature("autodoc", "* Prepares a ContextModif with these informations : - the graph established from original model (target passed directly to Modifier) - the CopyTool which detains the CopyControl, which maps starting (in original) and result (in target) entities - an optional file name (for file output) //! Such a ContextModif is considered to be applied on all transferred entities (no filter active)
 	:param graph:
-	:type graph: Interface_Graph &
+	:type graph: Interface_Graph
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:param filename: default value is ""
 	:type filename: char *
 	:rtype: None") IFSelect_ContextModif;
@@ -530,7 +530,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") IFSelect_ContextModif;
 		%feature("autodoc", "* Prepares a ContextModif with these informations : - the graph established from original model (target passed directly to Modifier) - an optional file name (for file output) Here, no CopyControl, hence all entities are considered equal as starting and result //! Such a ContextModif is considered to be applied on all transferred entities (no filter active)
 	:param graph:
-	:type graph: Interface_Graph &
+	:type graph: Interface_Graph
 	:param filename: default value is ""
 	:type filename: char *
 	:rtype: None") IFSelect_ContextModif;
@@ -552,7 +552,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") IsSelected;
 		%feature("autodoc", "* Returns True if a starting item has been transferred and selected
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsSelected;
 		Standard_Boolean IsSelected (const opencascade::handle<Standard_Transient> & ent);
 
@@ -560,7 +560,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") IsTransferred;
 		%feature("autodoc", "* Returns True if a starting item has been transferred
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsTransferred;
 		Standard_Boolean IsTransferred (const opencascade::handle<Standard_Transient> & ent);
 
@@ -598,7 +598,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "* This method requires ContextModif to be applied with a filter. If a ModelModifier is defined with a Selection criterium, the result of this Selection is used as a filter : - if none of its items has been transferred, the modification does not apply at all - else, the Modifier can query for what entities were selected and what are their results - if this method is not called before working, the Modifier has to work on the whole Model
 	:param list:
-	:type list: Interface_EntityIterator &
+	:type list: Interface_EntityIterator
 	:rtype: None") Select;
 		void Select (Interface_EntityIterator & list);
 
@@ -624,7 +624,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "* Allows to transmit a Protocol as part of a ContextModif
 	:param proto:
-	:type proto: opencascade::handle<Interface_Protocol> &
+	:type proto: Interface_Protocol
 	:rtype: None") SetProtocol;
 		void SetProtocol (const opencascade::handle<Interface_Protocol> & proto);
 
@@ -646,7 +646,7 @@ class IFSelect_ContextModif {
 		%feature("compactdefaultargs") TraceModifier;
 		%feature("autodoc", "* Traces the application of a Modifier. Works with default trace File and Level. Fills the trace if default trace level is at least 1. Traces the Modifier (its Label) and its Selection if there is one (its Label). To be called after Select (because status IsForAll is printed) Worths to trace a global modification. See also Trace below
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modif: IFSelect_GeneralModifier
 	:rtype: None") TraceModifier;
 		void TraceModifier (const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
@@ -681,7 +681,7 @@ class IFSelect_ContextWrite {
 		%feature("compactdefaultargs") AddCheck;
 		%feature("autodoc", "* Adds a Check to the CheckList. If it is empty, nothing is done If it concerns an Entity from the Model (by SetEntity) to which another Check is attached, it is merged to it. Else, it is added or merged as to GlobalCheck.
 	:param check:
-	:type check: opencascade::handle<Interface_Check> &
+	:type check: Interface_Check
 	:rtype: None") AddCheck;
 		void AddCheck (const opencascade::handle<Interface_Check> & check);
 
@@ -689,7 +689,7 @@ class IFSelect_ContextWrite {
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "* Adds a Fail Message for an Entity from the Model If <start> is not an Entity from the model (e.g. the model itself) this message is added to Global Check.
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param mess:
 	:type mess: char *
 	:param orig: default value is ""
@@ -701,7 +701,7 @@ class IFSelect_ContextWrite {
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "* Adds a Warning Message for an Entity from the Model If <start> is not an Entity from the model (e.g. the model itself) this message is added to Global Check.
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param mess:
 	:type mess: char *
 	:param orig: default value is ""
@@ -727,7 +727,7 @@ class IFSelect_ContextWrite {
 		%feature("compactdefaultargs") CCheck;
 		%feature("autodoc", "* Returns a Check attached to an Entity from the Model It can then be acknowledged on the spot, in condition that the caller works by reference ('Interface_Check& check = ...')
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: opencascade::handle<Interface_Check>") CCheck;
 		opencascade::handle<Interface_Check> CCheck (const opencascade::handle<Standard_Transient> & start);
 
@@ -759,11 +759,11 @@ class IFSelect_ContextWrite {
 		%feature("compactdefaultargs") IFSelect_ContextWrite;
 		%feature("autodoc", "* Prepares a ContextWrite with these informations : - the model which is to be written - the protocol to be used - the filename - an object AppliedModifiers to work. It gives a list of FileModifiers to be ran, and for each one it can give a restricted list of entities (in the model), else all the model is considered
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param proto:
-	:type proto: opencascade::handle<Interface_Protocol> &
+	:type proto: Interface_Protocol
 	:param applieds:
-	:type applieds: opencascade::handle<IFSelect_AppliedModifiers> &
+	:type applieds: IFSelect_AppliedModifiers
 	:param filename:
 	:type filename: char *
 	:rtype: None") IFSelect_ContextWrite;
@@ -773,11 +773,11 @@ class IFSelect_ContextWrite {
 		%feature("compactdefaultargs") IFSelect_ContextWrite;
 		%feature("autodoc", "* Same as above but with an already computed Graph
 	:param hgraph:
-	:type hgraph: opencascade::handle<Interface_HGraph> &
+	:type hgraph: Interface_HGraph
 	:param proto:
-	:type proto: opencascade::handle<Interface_Protocol> &
+	:type proto: Interface_Protocol
 	:param applieds:
-	:type applieds: opencascade::handle<IFSelect_AppliedModifiers> &
+	:type applieds: IFSelect_AppliedModifiers
 	:param filename:
 	:type filename: char *
 	:rtype: None") IFSelect_ContextWrite;
@@ -882,7 +882,7 @@ class IFSelect_Dispatch : public Standard_Transient {
 		%feature("compactdefaultargs") GetEntities;
 		%feature("autodoc", "* Gets Unique Root Entities from the Final Selection, given an input Graph This the starting step for an Evaluation (Packets - Remainder)
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") GetEntities;
 		Interface_EntityIterator GetEntities (const Interface_Graph & G);
 
@@ -904,7 +904,7 @@ class IFSelect_Dispatch : public Standard_Transient {
 	:param nbent:
 	:type nbent: int
 	:param max:
-	:type max: int &
+	:type max: int
 	:rtype: bool") LimitedMax;
 		virtual Standard_Boolean LimitedMax (const Standard_Integer nbent,Standard_Integer &OutValue);
 
@@ -912,7 +912,7 @@ class IFSelect_Dispatch : public Standard_Transient {
 		%feature("compactdefaultargs") Packeted;
 		%feature("autodoc", "* Returns the list of all Input Entities (see GetEntities) which are put in a Packet. That is, Entities listed in GetEntities but not in Remainder (see below). Input is given as a Graph.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") Packeted;
 		Interface_EntityIterator Packeted (const Interface_Graph & G);
 
@@ -920,9 +920,9 @@ class IFSelect_Dispatch : public Standard_Transient {
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "* Returns the list of produced Packets into argument <pack>. Each Packet corresponds to a Part, the Entities listed are the Roots given by the Selection. Input is given as a Graph. Thus, to create a file from a packet, it suffices to take the entities listed in a Part of Packets (that is, a Packet) without worrying about Shared entities This method can raise an Exception if data are not coherent
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param packs:
-	:type packs: IFGraph_SubPartsIterator &
+	:type packs: IFGraph_SubPartsIterator
 	:rtype: void") Packets;
 		virtual void Packets (const Interface_Graph & G,IFGraph_SubPartsIterator & packs);
 
@@ -930,7 +930,7 @@ class IFSelect_Dispatch : public Standard_Transient {
 		%feature("compactdefaultargs") Remainder;
 		%feature("autodoc", "* Returns Remainder which is a set of Entities. Can be empty. Default evaluation is empty (has to be redefined if CanHaveRemainder is redefined to return True).
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") Remainder;
 		virtual Interface_EntityIterator Remainder (const Interface_Graph & G);
 
@@ -950,7 +950,7 @@ class IFSelect_Dispatch : public Standard_Transient {
 		%feature("compactdefaultargs") SetFinalSelection;
 		%feature("autodoc", "* Stores (or Changes) the Final Selection for a Dispatch
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") SetFinalSelection;
 		void SetFinalSelection (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -958,7 +958,7 @@ class IFSelect_Dispatch : public Standard_Transient {
 		%feature("compactdefaultargs") SetRootName;
 		%feature("autodoc", "* Sets a Root Name as an HAsciiString To reset it, give a Null Handle (then, a ShareOut will have to define the Default Root Name)
 	:param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:rtype: None") SetRootName;
 		void SetRootName (const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -989,9 +989,9 @@ class IFSelect_EditForm : public Standard_Transient {
 		%feature("compactdefaultargs") ApplyData;
 		%feature("autodoc", "* Applies modifications to data Default uses Editor. Can be redefined
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") ApplyData;
 		virtual Standard_Boolean ApplyData (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1051,7 +1051,7 @@ class IFSelect_EditForm : public Standard_Transient {
 		%feature("compactdefaultargs") IFSelect_EditForm;
 		%feature("autodoc", "* Creates a complete EditForm from an Editor A specific Label can be given
 	:param editor:
-	:type editor: opencascade::handle<IFSelect_Editor> &
+	:type editor: IFSelect_Editor
 	:param readonly:
 	:type readonly: bool
 	:param undoable:
@@ -1065,9 +1065,9 @@ class IFSelect_EditForm : public Standard_Transient {
 		%feature("compactdefaultargs") IFSelect_EditForm;
 		%feature("autodoc", "* Creates an extracted EditForm from an Editor, limited to the values identified in <nums> A specific Label can be given
 	:param editor:
-	:type editor: opencascade::handle<IFSelect_Editor> &
+	:type editor: IFSelect_Editor
 	:param nums:
-	:type nums: TColStd_SequenceOfInteger &
+	:type nums: TColStd_SequenceOfInteger
 	:param readonly:
 	:type readonly: bool
 	:param undoable:
@@ -1122,9 +1122,9 @@ class IFSelect_EditForm : public Standard_Transient {
 		%feature("compactdefaultargs") LoadData;
 		%feature("autodoc", "* Loads modifications to data Default uses Editor. Can be redefined Remark that <ent> and/or <model> may be null, according to the kind of Editor. Shortcuts are available for these cases, but they finally call LoadData (hence, just ignore non-used args)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") LoadData;
 		virtual Standard_Boolean LoadData (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1144,7 +1144,7 @@ class IFSelect_EditForm : public Standard_Transient {
 		%feature("compactdefaultargs") LoadEntity;
 		%feature("autodoc", "* Shortcut for LoadData when <model> is not used
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") LoadEntity;
 		Standard_Boolean LoadEntity (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1154,7 +1154,7 @@ class IFSelect_EditForm : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfHAsciiString> &
+	:type list: TColStd_HSequenceOfHAsciiString
 	:rtype: None") LoadList;
 		void LoadList (const Standard_Integer num,const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list);
 
@@ -1162,7 +1162,7 @@ class IFSelect_EditForm : public Standard_Transient {
 		%feature("compactdefaultargs") LoadModel;
 		%feature("autodoc", "* Shortcut for LoadData when only the model is concerned
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") LoadModel;
 		Standard_Boolean LoadModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1172,7 +1172,7 @@ class IFSelect_EditForm : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") LoadValue;
 		void LoadValue (const Standard_Integer num,const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1187,7 +1187,7 @@ class IFSelect_EditForm : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param newval:
-	:type newval: opencascade::handle<TCollection_HAsciiString> &
+	:type newval: TCollection_HAsciiString
 	:param enforce: default value is Standard_False
 	:type enforce: bool
 	:rtype: bool") Modify;
@@ -1199,7 +1199,7 @@ class IFSelect_EditForm : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param edited:
-	:type edited: opencascade::handle<IFSelect_ListEditor> &
+	:type edited: IFSelect_ListEditor
 	:param enforce: default value is Standard_False
 	:type enforce: bool
 	:rtype: bool") ModifyList;
@@ -1211,7 +1211,7 @@ class IFSelect_EditForm : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfHAsciiString> &
+	:type list: TColStd_HSequenceOfHAsciiString
 	:param enforce: default value is Standard_False
 	:type enforce: bool
 	:rtype: bool") ModifyListValue;
@@ -1269,7 +1269,7 @@ class IFSelect_EditForm : public Standard_Transient {
 		%feature("compactdefaultargs") PrintDefs;
 		%feature("autodoc", "* Prints Definitions, relative to the Editor
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintDefs;
 		void PrintDefs (const opencascade::handle<Message_Messenger> & S);
 
@@ -1277,7 +1277,7 @@ class IFSelect_EditForm : public Standard_Transient {
 		%feature("compactdefaultargs") PrintValues;
 		%feature("autodoc", "* Prints Values, according to what and alsolist <names> True : prints Long Names; False : prints Short Names <what> < 0 : prints Original Values (+ flag Modified) <what> > 0 : prints Final Values (+flag Modified) <what> = 0 : prints Modified Values (Original + Edited) <alsolist> False (D) : lists are printed only as their count <alsolist> True : lists are printed for all their items
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param what:
 	:type what: int
 	:param names:
@@ -1304,23 +1304,23 @@ class IFSelect_EditForm : public Standard_Transient {
 		/****************** SetData ******************/
 		%feature("compactdefaultargs") SetData;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") SetData;
 		void SetData (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****************** SetEntity ******************/
 		%feature("compactdefaultargs") SetEntity;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") SetEntity;
 		void SetEntity (const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** SetModel ******************/
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", ":param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") SetModel;
 		void SetModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1330,7 +1330,7 @@ class IFSelect_EditForm : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param newlist:
-	:type newlist: opencascade::handle<TColStd_HSequenceOfHAsciiString> &
+	:type newlist: TColStd_HSequenceOfHAsciiString
 	:rtype: bool") TouchList;
 		Standard_Boolean TouchList (const Standard_Integer num,const opencascade::handle<TColStd_HSequenceOfHAsciiString> & newlist);
 
@@ -1361,11 +1361,11 @@ class IFSelect_Editor : public Standard_Transient {
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "* Applies modified values of the EditForm with some data Remark: <ent> may be Null, this means all <model> is concerned Also <model> may be Null, if no context applies for <ent> And both <ent> and <model> may be Null, for a full static editor
 	:param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Apply;
 		virtual Standard_Boolean Apply (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1413,7 +1413,7 @@ class IFSelect_Editor : public Standard_Transient {
 		%feature("compactdefaultargs") ListValue;
 		%feature("autodoc", "* Returns the value of an EditForm as a List, for a given item If not a list, a Null Handle should be returned Default returns a Null Handle, because many Editors have no list to edit. To be redefined as required
 	:param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param num:
 	:type num: int
 	:rtype: opencascade::handle<TColStd_HSequenceOfHAsciiString>") ListValue;
@@ -1423,11 +1423,11 @@ class IFSelect_Editor : public Standard_Transient {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Loads original values from some data, to an EditForm Remark: <ent> may be Null, this means all <model> is concerned Also <model> may be Null, if no context applies for <ent> And both <ent> and <model> may be Null, for a full static editor
 	:param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Load;
 		virtual Standard_Boolean Load (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1474,7 +1474,7 @@ class IFSelect_Editor : public Standard_Transient {
 		/****************** PrintDefs ******************/
 		%feature("compactdefaultargs") PrintDefs;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param labels: default value is Standard_False
 	:type labels: bool
 	:rtype: None") PrintDefs;
@@ -1483,7 +1483,7 @@ class IFSelect_Editor : public Standard_Transient {
 		/****************** PrintNames ******************/
 		%feature("compactdefaultargs") PrintNames;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintNames;
 		void PrintNames (const opencascade::handle<Message_Messenger> & S);
 
@@ -1491,7 +1491,7 @@ class IFSelect_Editor : public Standard_Transient {
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "* Tells if this Editor can work on this EditForm and its content (model, entity ?)
 	:param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:rtype: bool") Recognize;
 		virtual Standard_Boolean Recognize (const opencascade::handle<IFSelect_EditForm> & form);
 
@@ -1511,7 +1511,7 @@ class IFSelect_Editor : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param typval:
-	:type typval: opencascade::handle<Interface_TypedValue> &
+	:type typval: Interface_TypedValue
 	:param shortname: default value is ""
 	:type shortname: char *
 	:param accessmode: default value is IFSelect_Editable
@@ -1523,7 +1523,7 @@ class IFSelect_Editor : public Standard_Transient {
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", "* Returns the value of an EditForm, for a given item (if not a list. for a list, a Null String may be returned)
 	:param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param num:
 	:type num: int
 	:rtype: opencascade::handle<TCollection_HAsciiString>") StringValue;
@@ -1541,11 +1541,11 @@ class IFSelect_Editor : public Standard_Transient {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* Updates the EditForm when a parameter is modified I.E. default does nothing, can be redefined, as follows : Returns True when done (even if does nothing), False in case of refuse (for instance, if the new value is not suitable) <num> is the rank of the parameter for the EDITOR itself <enforce> True means that protected parameters can be touched //! If a parameter commands the value of other ones, when it is modified, it is necessary to touch them by Touch from EditForm
 	:param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param num:
 	:type num: int
 	:param newval:
-	:type newval: opencascade::handle<TCollection_HAsciiString> &
+	:type newval: TCollection_HAsciiString
 	:param enforce:
 	:type enforce: bool
 	:rtype: bool") Update;
@@ -1555,11 +1555,11 @@ class IFSelect_Editor : public Standard_Transient {
 		%feature("compactdefaultargs") UpdateList;
 		%feature("autodoc", "* Acts as Update, but when the value is a list
 	:param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param num:
 	:type num: int
 	:param newlist:
-	:type newlist: opencascade::handle<TColStd_HSequenceOfHAsciiString> &
+	:type newlist: TColStd_HSequenceOfHAsciiString
 	:param enforce:
 	:type enforce: bool
 	:rtype: bool") UpdateList;
@@ -1585,7 +1585,7 @@ class IFSelect_Functions {
 		%feature("compactdefaultargs") GiveDispatch;
 		%feature("autodoc", "* Evaluates and returns a Dispatch, from data of a WorkSession if <mode> is False, searches for exact name of Dispatch in WS Else (D), allows a parameter between brackets : ex.: dispatch_name(parameter) The parameter can be: an integer for DispPerCount or DispPerFiles or the name of a Signature for DispPerSignature Returns Null Handle if not found not well evaluated
 	:param WS:
-	:type WS: opencascade::handle<IFSelect_WorkSession> &
+	:type WS: IFSelect_WorkSession
 	:param name:
 	:type name: char *
 	:param mode: default value is Standard_True
@@ -1597,7 +1597,7 @@ class IFSelect_Functions {
 		%feature("compactdefaultargs") GiveEntity;
 		%feature("autodoc", "* Takes the name of an entity, either as argument, or (if <name> is empty) on keybord, and returns the entity name can be a label or a number (in alphanumeric), it is searched by NumberFromLabel from WorkSession. If <name> doesn't match en entity, a Null Handle is returned
 	:param WS:
-	:type WS: opencascade::handle<IFSelect_WorkSession> &
+	:type WS: IFSelect_WorkSession
 	:param name: default value is ""
 	:type name: char *
 	:rtype: opencascade::handle<Standard_Transient>") GiveEntity;
@@ -1607,7 +1607,7 @@ class IFSelect_Functions {
 		%feature("compactdefaultargs") GiveEntityNumber;
 		%feature("autodoc", "* Same as GetEntity, but returns the number in the model of the entity. Returns 0 for null handle
 	:param WS:
-	:type WS: opencascade::handle<IFSelect_WorkSession> &
+	:type WS: IFSelect_WorkSession
 	:param name: default value is ""
 	:type name: char *
 	:rtype: int") GiveEntityNumber;
@@ -1617,7 +1617,7 @@ class IFSelect_Functions {
 		%feature("compactdefaultargs") GiveList;
 		%feature("autodoc", "* Computes a List of entities from a WorkSession and two idents, first and second, as follows : if <first> is a Number or Label of an entity : this entity if <first> is the name of a Selection in <WS>, and <second> not defined, the standard result of this Selection if <first> is for a Selection and <second> is defined, the standard result of this selection from the list computed with <second> (an entity or a selection) If <second> is erroneous, it is ignored
 	:param WS:
-	:type WS: opencascade::handle<IFSelect_WorkSession> &
+	:type WS: IFSelect_WorkSession
 	:param first: default value is ""
 	:type first: char *
 	:param second: default value is ""
@@ -1650,7 +1650,7 @@ class IFSelect_GeneralModifier : public Standard_Transient {
 		%feature("compactdefaultargs") Applies;
 		%feature("autodoc", "* Returns True if a Model obtained from the Dispatch <disp> is to be treated (apart from the Selection criterium) If Dispatch(me) is Null, returns True. Else, checks <disp>
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:rtype: bool") Applies;
 		Standard_Boolean Applies (const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -1694,7 +1694,7 @@ class IFSelect_GeneralModifier : public Standard_Transient {
 		%feature("compactdefaultargs") SetDispatch;
 		%feature("autodoc", "* Attaches to a Dispatch. If <disp> is Null, Resets it (to apply the Modifier on every Dispatch)
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:rtype: None") SetDispatch;
 		void SetDispatch (const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -1702,7 +1702,7 @@ class IFSelect_GeneralModifier : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelection;
 		%feature("autodoc", "* Sets a Selection : a Model is treated if it contains one or more Entities designated by the Selection
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") SetSelection;
 		void SetSelection (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -1772,7 +1772,7 @@ class IFSelect_ListEditor : public Standard_Transient {
 		%feature("compactdefaultargs") AddValue;
 		%feature("autodoc", "* Adds a new item. By default appends (at the end of the list) Can insert before a given rank <num>, if positive Returns True when done. False if MaxLength may be overpassed or if <val> does not satisfy the definition
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:param atnum: default value is 0
 	:type atnum: int
 	:rtype: bool") AddValue;
@@ -1800,7 +1800,7 @@ class IFSelect_ListEditor : public Standard_Transient {
 		%feature("compactdefaultargs") IFSelect_ListEditor;
 		%feature("autodoc", "* Creates a ListEditor, for which items of the list to edit are defined by <def>, and <max> describes max length : 0 (D) means no limit value > 0 means : no more the <max> items are allowed
 	:param def:
-	:type def: opencascade::handle<Interface_TypedValue> &
+	:type def: Interface_TypedValue
 	:param max: default value is 0
 	:type max: int
 	:rtype: None") IFSelect_ListEditor;
@@ -1840,7 +1840,7 @@ class IFSelect_ListEditor : public Standard_Transient {
 		%feature("compactdefaultargs") LoadEdited;
 		%feature("autodoc", "* Loads a new list to replace the older one, in once ! By default (can be redefined) checks the length of the list and the value of each item according to the def Items are all recorded as Modified //! If no def has been given at creation time, no check is done Returns True when done, False if checks have failed ... a specialisation may also lock it by returning always False ...
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfHAsciiString> &
+	:type list: TColStd_HSequenceOfHAsciiString
 	:rtype: bool") LoadEdited;
 		virtual Standard_Boolean LoadEdited (const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list);
 
@@ -1848,7 +1848,7 @@ class IFSelect_ListEditor : public Standard_Transient {
 		%feature("compactdefaultargs") LoadModel;
 		%feature("autodoc", "* Loads a Model. It is used to check items of type Entity(Ident)
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") LoadModel;
 		void LoadModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1856,7 +1856,7 @@ class IFSelect_ListEditor : public Standard_Transient {
 		%feature("compactdefaultargs") LoadValues;
 		%feature("autodoc", "* Loads the original values for the list Remark : If its length is mor then MaxLength, editions remain allowed, except Add
 	:param vals:
-	:type vals: opencascade::handle<TColStd_HSequenceOfHAsciiString> &
+	:type vals: TColStd_HSequenceOfHAsciiString
 	:rtype: None") LoadValues;
 		void LoadValues (const opencascade::handle<TColStd_HSequenceOfHAsciiString> & vals);
 
@@ -1896,7 +1896,7 @@ class IFSelect_ListEditor : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: bool") SetValue;
 		virtual Standard_Boolean SetValue (const Standard_Integer num,const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1931,9 +1931,9 @@ class IFSelect_ModelCopier : public Standard_Transient {
 		%feature("compactdefaultargs") AddFile;
 		%feature("autodoc", "* Records a new File to be sent, as a couple (Name as AsciiString, Content as InterfaceModel) Returns True if Done, False if <filename> is already attached to another File
 	:param filename:
-	:type filename: TCollection_AsciiString &
+	:type filename: TCollection_AsciiString
 	:param content:
-	:type content: opencascade::handle<Interface_InterfaceModel> &
+	:type content: Interface_InterfaceModel
 	:rtype: bool") AddFile;
 		Standard_Boolean AddFile (const TCollection_AsciiString & filename,const opencascade::handle<Interface_InterfaceModel> & content);
 
@@ -1957,7 +1957,7 @@ class IFSelect_ModelCopier : public Standard_Transient {
 		%feature("compactdefaultargs") BeginSentFiles;
 		%feature("autodoc", "* Begins a sequence of recording the really sent files <sho> : the default file numbering is cleared If <record> is False, clears the list and stops recording If <record> is True, clears the list and commands recording Creation time corresponds to 'stop recording'
 	:param sho:
-	:type sho: opencascade::handle<IFSelect_ShareOut> &
+	:type sho: IFSelect_ShareOut
 	:param record:
 	:type record: bool
 	:rtype: None") BeginSentFiles;
@@ -1989,13 +1989,13 @@ class IFSelect_ModelCopier : public Standard_Transient {
 		%feature("compactdefaultargs") CopiedRemaining;
 		%feature("autodoc", "* Produces a Model copied from the Remaining List as <newmod> <newmod> is a Null Handle if this list is empty <WL> performs the copy by using <TC> <TC> is assumed to have been defined with the starting model same as defined by <G>.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param WL:
-	:type WL: opencascade::handle<IFSelect_WorkLibrary> &
+	:type WL: IFSelect_WorkLibrary
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:param newmod:
-	:type newmod: opencascade::handle<Interface_InterfaceModel> &
+	:type newmod: Interface_InterfaceModel
 	:rtype: None") CopiedRemaining;
 		void CopiedRemaining (const Interface_Graph & G,const opencascade::handle<IFSelect_WorkLibrary> & WL,Interface_CopyTool & TC,opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -2003,11 +2003,11 @@ class IFSelect_ModelCopier : public Standard_Transient {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* Performs the Copy Operations, which include the Modifications defined by the list of Modifiers. Memorizes the result, as a list of InterfaceModels with the corresponding FileNames They can then be sent, by the method Send, or queried Copy calls internal method Copying. Returns the produced CheckList
 	:param eval:
-	:type eval: IFSelect_ShareOutResult &
+	:type eval: IFSelect_ShareOutResult
 	:param WL:
-	:type WL: opencascade::handle<IFSelect_WorkLibrary> &
+	:type WL: IFSelect_WorkLibrary
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: Interface_CheckIterator") Copy;
 		Interface_CheckIterator Copy (IFSelect_ShareOutResult & eval,const opencascade::handle<IFSelect_WorkLibrary> & WL,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -2039,7 +2039,7 @@ class IFSelect_ModelCopier : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param filename:
-	:type filename: TCollection_AsciiString &
+	:type filename: TCollection_AsciiString
 	:rtype: bool") NameFile;
 		Standard_Boolean NameFile (const Standard_Integer num,const TCollection_AsciiString & filename);
 
@@ -2053,11 +2053,11 @@ class IFSelect_ModelCopier : public Standard_Transient {
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "* Performs the Copy Operations (which include the Modifications) and Sends the result on files, without memorizing it. (the memorized result is ignored : neither queried not filled)
 	:param eval:
-	:type eval: IFSelect_ShareOutResult &
+	:type eval: IFSelect_ShareOutResult
 	:param WL:
-	:type WL: opencascade::handle<IFSelect_WorkLibrary> &
+	:type WL: IFSelect_WorkLibrary
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: Interface_CheckIterator") Send;
 		Interface_CheckIterator Send (IFSelect_ShareOutResult & eval,const opencascade::handle<IFSelect_WorkLibrary> & WL,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -2067,11 +2067,11 @@ class IFSelect_ModelCopier : public Standard_Transient {
 	:param filename:
 	:type filename: char *
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param WL:
-	:type WL: opencascade::handle<IFSelect_WorkLibrary> &
+	:type WL: IFSelect_WorkLibrary
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: Interface_CheckIterator") SendAll;
 		Interface_CheckIterator SendAll (const char * filename,const Interface_Graph & G,const opencascade::handle<IFSelect_WorkLibrary> & WL,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -2079,9 +2079,9 @@ class IFSelect_ModelCopier : public Standard_Transient {
 		%feature("compactdefaultargs") SendCopied;
 		%feature("autodoc", "* Sends the formerly defined results (see method Copy) to files, then clears it Remark : A Null File Name cause file to be not produced
 	:param WL:
-	:type WL: opencascade::handle<IFSelect_WorkLibrary> &
+	:type WL: IFSelect_WorkLibrary
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: Interface_CheckIterator") SendCopied;
 		Interface_CheckIterator SendCopied (const opencascade::handle<IFSelect_WorkLibrary> & WL,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -2091,13 +2091,13 @@ class IFSelect_ModelCopier : public Standard_Transient {
 	:param filename:
 	:type filename: char *
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param WL:
-	:type WL: opencascade::handle<IFSelect_WorkLibrary> &
+	:type WL: IFSelect_WorkLibrary
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: Interface_CheckIterator") SendSelected;
 		Interface_CheckIterator SendSelected (const char * filename,const Interface_Graph & G,const opencascade::handle<IFSelect_WorkLibrary> & WL,const opencascade::handle<Interface_Protocol> & protocol,const Interface_EntityIterator & iter);
 
@@ -2113,7 +2113,7 @@ class IFSelect_ModelCopier : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param applied:
-	:type applied: opencascade::handle<IFSelect_AppliedModifiers> &
+	:type applied: IFSelect_AppliedModifiers
 	:rtype: bool") SetAppliedModifiers;
 		Standard_Boolean SetAppliedModifiers (const Standard_Integer num,const opencascade::handle<IFSelect_AppliedModifiers> & applied);
 
@@ -2121,7 +2121,7 @@ class IFSelect_ModelCopier : public Standard_Transient {
 		%feature("compactdefaultargs") SetRemaining;
 		%feature("autodoc", "* Updates Graph status for remaining data, for each entity : - Entities just Sent to file or Copied (by CopiedRemaining) have their status set to 1 - the other keep their former status (1 for Send/Copied, 0 for Remaining) These status are computed by Copying/Sending/CopiedRemaining Then, SetRemaining updates graph status, and mustr be called just after one of these method has been called Returns True if done, False if remaining info if not in phase which the Graph (not same counts of items)
 	:param CG:
-	:type CG: Interface_Graph &
+	:type CG: Interface_Graph
 	:rtype: bool") SetRemaining;
 		Standard_Boolean SetRemaining (Interface_Graph & CG);
 
@@ -2129,7 +2129,7 @@ class IFSelect_ModelCopier : public Standard_Transient {
 		%feature("compactdefaultargs") SetShareOut;
 		%feature("autodoc", "* Sets the ShareOut, which is used to define Modifiers to apply
 	:param sho:
-	:type sho: opencascade::handle<IFSelect_ShareOut> &
+	:type sho: IFSelect_ShareOut
 	:rtype: None") SetShareOut;
 		void SetShareOut (const opencascade::handle<IFSelect_ShareOut> & sho);
 
@@ -2154,7 +2154,7 @@ class IFSelect_PacketList : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds an entity from the Model into the current packet for Add
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2162,7 +2162,7 @@ class IFSelect_PacketList : public Standard_Transient {
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "* Adds an list of entities into the current packet for Add
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: None") AddList;
 		void AddList (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -2200,7 +2200,7 @@ class IFSelect_PacketList : public Standard_Transient {
 		%feature("compactdefaultargs") IFSelect_PacketList;
 		%feature("autodoc", "* Creates a PackList, empty, ready to receive entities from a given Model
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") IFSelect_PacketList;
 		 IFSelect_PacketList (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2269,7 +2269,7 @@ class IFSelect_Selection : public Standard_Transient {
 		%feature("compactdefaultargs") CompleteResult;
 		%feature("autodoc", "* Returns the list of entities involved by a Selection, i.e. UniqueResult plus the shared entities (directly or not)
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") CompleteResult;
 		virtual Interface_EntityIterator CompleteResult (const Interface_Graph & G);
 
@@ -2277,7 +2277,7 @@ class IFSelect_Selection : public Standard_Transient {
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "* Puts in an Iterator the Selections from which 'me' depends (there can be zero, or one, or a list). Specific to each class of Selection
 	:param iter:
-	:type iter: IFSelect_SelectionIterator &
+	:type iter: IFSelect_SelectionIterator
 	:rtype: void") FillIterator;
 		virtual void FillIterator (IFSelect_SelectionIterator & iter);
 
@@ -2291,7 +2291,7 @@ class IFSelect_Selection : public Standard_Transient {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities, computed from Input given as a Graph. Specific to each class of Selection Note that uniqueness of each entity is not required here This method can raise an exception as necessary
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		virtual Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -2299,7 +2299,7 @@ class IFSelect_Selection : public Standard_Transient {
 		%feature("compactdefaultargs") UniqueResult;
 		%feature("autodoc", "* Returns the list of selected entities, each of them beeing unique. Default definition works from RootResult. According HasUniqueResult, UniqueResult returns directly RootResult, or build a Unique Result from it with a Graph.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") UniqueResult;
 		Interface_EntityIterator UniqueResult (const Interface_Graph & G);
 
@@ -2324,7 +2324,7 @@ class IFSelect_SelectionIterator {
 		%feature("compactdefaultargs") AddFromIter;
 		%feature("autodoc", "* Adds to an iterator the content of another one (each selection is present only once in the result)
 	:param iter:
-	:type iter: IFSelect_SelectionIterator &
+	:type iter: IFSelect_SelectionIterator
 	:rtype: None") AddFromIter;
 		void AddFromIter (IFSelect_SelectionIterator & iter);
 
@@ -2332,7 +2332,7 @@ class IFSelect_SelectionIterator {
 		%feature("compactdefaultargs") AddItem;
 		%feature("autodoc", "* Adds a Selection to an iterator (if not yet noted)
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") AddItem;
 		void AddItem (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -2340,7 +2340,7 @@ class IFSelect_SelectionIterator {
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "* Adds a list of Selections to an iterator (this list comes from the description of a Selection or a Dispatch, etc...)
 	:param list:
-	:type list: IFSelect_TSeqOfSelection &
+	:type list: IFSelect_TSeqOfSelection
 	:rtype: None") AddList;
 		void AddList (const IFSelect_TSeqOfSelection & list);
 
@@ -2354,7 +2354,7 @@ class IFSelect_SelectionIterator {
 		%feature("compactdefaultargs") IFSelect_SelectionIterator;
 		%feature("autodoc", "* Creates an iterator from a Selection : it lists the Selections from which <sel> depends (given by its method FillIterator)
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") IFSelect_SelectionIterator;
 		 IFSelect_SelectionIterator (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -2407,11 +2407,11 @@ class IFSelect_SessionDumper : public Standard_Transient {
 		%feature("compactdefaultargs") ReadOwn;
 		%feature("autodoc", "* Recognizes a Type (given as <type>) then Creates an Item of this Type with the Own Parameter, as required. Returns True if it has recognized the Type (in this case, it is assumed to have created the Item, returned as <item>), False else : in that case, SessionFile will try another SessionDumper in the Library. ReadOwn can use these methods from SessionFile to access Own Parameters : NbOwnParams, IsVoid, IsText, TextValue, ItemValue
 	:param file:
-	:type file: IFSelect_SessionFile &
+	:type file: IFSelect_SessionFile
 	:param type:
-	:type type: TCollection_AsciiString &
+	:type type: TCollection_AsciiString
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") ReadOwn;
 		virtual Standard_Boolean ReadOwn (IFSelect_SessionFile & file,const TCollection_AsciiString & type,opencascade::handle<Standard_Transient> & item);
 
@@ -2419,9 +2419,9 @@ class IFSelect_SessionDumper : public Standard_Transient {
 		%feature("compactdefaultargs") WriteOwn;
 		%feature("autodoc", "* Writes the Own Parameters of a given Item, if it forecast to manage its Type. Returns True if it has recognized the Type of the Item (in this case, it is assumed to have written the Own Parameters if there are some), False else : in that case, SessionFile will try another SessionDumper in the Library. WriteOwn can use these methods from SessionFile : SendVoid, SendItem, SendText, and if necessary, WorkSession.
 	:param file:
-	:type file: IFSelect_SessionFile &
+	:type file: IFSelect_SessionFile
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") WriteOwn;
 		virtual Standard_Boolean WriteOwn (IFSelect_SessionFile & file,const opencascade::handle<Standard_Transient> & item);
 
@@ -2446,7 +2446,7 @@ class IFSelect_SessionFile {
 		%feature("compactdefaultargs") AddItem;
 		%feature("autodoc", "* Adds an Item to the WorkSession, taken as Name the first item of the read Line. If this Name is not a Name but a Number or if this Name is already recorded in the WorkSession, it adds the Item but with no Name. Then the Name is recorded in order to be used by the method ItemValue <active> commands to make <item> active or not in the session
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:param active: default value is Standard_True
 	:type active: bool
 	:rtype: None") AddItem;
@@ -2476,7 +2476,7 @@ class IFSelect_SessionFile {
 		%feature("compactdefaultargs") IFSelect_SessionFile;
 		%feature("autodoc", "* Creates a SessionFile, ready to read Files in order to load them into a given WorkSession. The following Read Operations must then be called. It is also possible to perform a Write, which produces a complete File of all the content of the WorkSession.
 	:param WS:
-	:type WS: opencascade::handle<IFSelect_WorkSession> &
+	:type WS: IFSelect_WorkSession
 	:rtype: None") IFSelect_SessionFile;
 		 IFSelect_SessionFile (const opencascade::handle<IFSelect_WorkSession> & WS);
 
@@ -2484,7 +2484,7 @@ class IFSelect_SessionFile {
 		%feature("compactdefaultargs") IFSelect_SessionFile;
 		%feature("autodoc", "* Creates a SessionFile which Writes the content of a WorkSession to a File (directly calls Write) Then, IsDone aknowledges on the result of the Operation. But such a SessionFile may not Read a File to a WorkSession.
 	:param WS:
-	:type WS: opencascade::handle<IFSelect_WorkSession> &
+	:type WS: IFSelect_WorkSession
 	:param filename:
 	:type filename: char *
 	:rtype: None") IFSelect_SessionFile;
@@ -2546,7 +2546,7 @@ class IFSelect_SessionFile {
 	:param ident:
 	:type ident: int
 	:param par:
-	:type par: opencascade::handle<Standard_Transient> &
+	:type par: Standard_Transient
 	:rtype: None") NewItem;
 		void NewItem (const Standard_Integer ident,const opencascade::handle<Standard_Transient> & par);
 
@@ -2590,7 +2590,7 @@ class IFSelect_SessionFile {
 		%feature("compactdefaultargs") ReadOwn;
 		%feature("autodoc", "* Tries to Read an Item, by calling the Library of Dumpers Sets the list of parameters of the line to be read from the first own one
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") ReadOwn;
 		Standard_Boolean ReadOwn (opencascade::handle<Standard_Transient> & item);
 
@@ -2618,7 +2618,7 @@ class IFSelect_SessionFile {
 		%feature("compactdefaultargs") SendItem;
 		%feature("autodoc", "* During a Write action, commands to send the identification of a Parameter : if it is Null (undefined) it is send as Void ($) if it is Named in the WorkSession, its Name is sent preceeded by ':', else a relative Ident Number is sent preceeded by '#' (relative to the present Write, i.e. starting at one, without skip, and counted part from Named Items)
 	:param par:
-	:type par: opencascade::handle<Standard_Transient> &
+	:type par: Standard_Transient
 	:rtype: None") SendItem;
 		void SendItem (const opencascade::handle<Standard_Transient> & par);
 
@@ -2710,7 +2710,7 @@ class IFSelect_SessionFile {
 		%feature("compactdefaultargs") WriteOwn;
 		%feature("autodoc", "* Writes the Parameters own to each type of Item. Uses the Library of SessionDumpers Returns True if Done, False if <item> could not be treated (hence it remains written with no Own Parameter)
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") WriteOwn;
 		Standard_Boolean WriteOwn (const opencascade::handle<Standard_Transient> & item);
 
@@ -2739,7 +2739,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") AddDispatch;
 		%feature("autodoc", "* Adds a Dispatch to the list
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:rtype: None") AddDispatch;
 		void AddDispatch (const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -2747,7 +2747,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") AddModif;
 		%feature("autodoc", "* Adds a Modifier to the list of Modifiers : Model Modifiers if <formodel> is True, File Modifiers else (internal).
 	:param modifier:
-	:type modifier: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modifier: IFSelect_GeneralModifier
 	:param formodel:
 	:type formodel: bool
 	:param atnum: default value is 0
@@ -2759,7 +2759,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") AddModifier;
 		%feature("autodoc", "* Sets a Modifier to be applied on all Dispatches to be run If <modifier> is a ModelModifier, adds it to the list of Model Modifiers; else to the list of File Modifiers By default (atnum = 0) at the end of the list, else at <atnum> Each Modifier is used, after each copy of a packet of Entities into a Model : its criteria are checked and if they are OK, the method Perform of this Modifier is run.
 	:param modifier:
-	:type modifier: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modifier: IFSelect_GeneralModifier
 	:param atnum:
 	:type atnum: int
 	:rtype: None") AddModifier;
@@ -2769,7 +2769,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") AddModifier;
 		%feature("autodoc", "* Sets a Modifier to be applied on the Dispatch <dispnum> If <modifier> is a ModelModifier, adds it to the list of Model Modifiers; else to the list of File Modifiers This is the same list as for all Dispatches, but the Modifier is qualified to be applied to one Dispatch only Then, <atnum> refers to the entire list By default (atnum = 0) at the end of the list, else at <atnum> Remark : if the Modifier was already in the list and if <atnum> = 0, the Modifier is not moved, but only qualified for a Dispatch
 	:param modifier:
-	:type modifier: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modifier: IFSelect_GeneralModifier
 	:param dispnum:
 	:type dispnum: int
 	:param atnum:
@@ -2823,7 +2823,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") DispatchRank;
 		%feature("autodoc", "* Returns the Rank of a Dispatch, given its Value (Handle). Returns 0 if the Dispatch is unknown in the ShareOut
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:rtype: int") DispatchRank;
 		Standard_Integer DispatchRank (const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -2887,7 +2887,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") ModifierRank;
 		%feature("autodoc", "* Gives the rank of a Modifier in the list, 0 if not in the list Model Modifiers if <modifier> is kind of ModelModifer, File Modifiers else
 	:param modifier:
-	:type modifier: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modifier: IFSelect_GeneralModifier
 	:rtype: int") ModifierRank;
 		Standard_Integer ModifierRank (const opencascade::handle<IFSelect_GeneralModifier> & modifier);
 
@@ -2923,7 +2923,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "* Removes an item, which can be, either a Dispatch (removed from the list of Dispatches), or a GeneralModifier (removed from the list of Model Modifiers or from the list of File Modifiers according to its type). Returns True if done, False if has not been found or if it is neither a Dispatch, nor a Modifier.
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") RemoveItem;
 		Standard_Boolean RemoveItem (const opencascade::handle<Standard_Transient> & item);
 
@@ -2949,7 +2949,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") RootNumber;
 		%feature("autodoc", "* Returns an integer value about a given root name : - positive : it's the rank of the Dispatch which has this name - null : this root name is unknown - negative (-1) : this root name is the default root name
 	:param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:rtype: int") RootNumber;
 		Standard_Integer RootNumber (const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -2957,7 +2957,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") SetDefaultRootName;
 		%feature("autodoc", "* Defines or Changes the Default Root Name to a new value (which is used for dispatches which have no attached root name). If this method is not called, DefaultRootName remains empty Returns True if OK, False if this Name is already attached, for a Dispatch or for Default
 	:param defrt:
-	:type defrt: opencascade::handle<TCollection_HAsciiString> &
+	:type defrt: TCollection_HAsciiString
 	:rtype: bool") SetDefaultRootName;
 		Standard_Boolean SetDefaultRootName (const opencascade::handle<TCollection_HAsciiString> & defrt);
 
@@ -2965,7 +2965,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") SetExtension;
 		%feature("autodoc", "* Defines or Changes the general Extension (which is appended to complete file name generated). If this method is not call, Extension remains empty
 	:param ext:
-	:type ext: opencascade::handle<TCollection_HAsciiString> &
+	:type ext: TCollection_HAsciiString
 	:rtype: None") SetExtension;
 		void SetExtension (const opencascade::handle<TCollection_HAsciiString> & ext);
 
@@ -2981,7 +2981,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 		%feature("compactdefaultargs") SetPrefix;
 		%feature("autodoc", "* Defines or Changes the general Prefix (which is prepended to complete file name generated). If this method is not call, Prefix remains empty
 	:param pref:
-	:type pref: opencascade::handle<TCollection_HAsciiString> &
+	:type pref: TCollection_HAsciiString
 	:rtype: None") SetPrefix;
 		void SetPrefix (const opencascade::handle<TCollection_HAsciiString> & pref);
 
@@ -2991,7 +2991,7 @@ class IFSelect_ShareOut : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:rtype: bool") SetRootName;
 		Standard_Boolean SetRootName (const Standard_Integer num,const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -3046,9 +3046,9 @@ class IFSelect_ShareOutResult {
 		%feature("compactdefaultargs") IFSelect_ShareOutResult;
 		%feature("autodoc", "* Creates a ShareOutResult from a ShareOut, to work on a Model (without any more precision; uses Active Protocol)
 	:param sho:
-	:type sho: opencascade::handle<IFSelect_ShareOut> &
+	:type sho: IFSelect_ShareOut
 	:param mod:
-	:type mod: opencascade::handle<Interface_InterfaceModel> &
+	:type mod: Interface_InterfaceModel
 	:rtype: None") IFSelect_ShareOutResult;
 		 IFSelect_ShareOutResult (const opencascade::handle<IFSelect_ShareOut> & sho,const opencascade::handle<Interface_InterfaceModel> & mod);
 
@@ -3056,9 +3056,9 @@ class IFSelect_ShareOutResult {
 		%feature("compactdefaultargs") IFSelect_ShareOutResult;
 		%feature("autodoc", "* Creates a ShareOutResult from a ShareOut, to work on a Graph already computed, which defines the Input Model and can specialize some Entities
 	:param sho:
-	:type sho: opencascade::handle<IFSelect_ShareOut> &
+	:type sho: IFSelect_ShareOut
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: None") IFSelect_ShareOutResult;
 		 IFSelect_ShareOutResult (const opencascade::handle<IFSelect_ShareOut> & sho,const Interface_Graph & G);
 
@@ -3066,9 +3066,9 @@ class IFSelect_ShareOutResult {
 		%feature("compactdefaultargs") IFSelect_ShareOutResult;
 		%feature("autodoc", "* Creates a ShareOutResult from a unique Dispatch, to work on a Model. As if it was a ShareOut with only one Dispatch (without any more precision; uses Active Protocol) Allows to compute the effect of a single Dispatch
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:param mod:
-	:type mod: opencascade::handle<Interface_InterfaceModel> &
+	:type mod: Interface_InterfaceModel
 	:rtype: None") IFSelect_ShareOutResult;
 		 IFSelect_ShareOutResult (const opencascade::handle<IFSelect_Dispatch> & disp,const opencascade::handle<Interface_InterfaceModel> & mod);
 
@@ -3076,9 +3076,9 @@ class IFSelect_ShareOutResult {
 		%feature("compactdefaultargs") IFSelect_ShareOutResult;
 		%feature("autodoc", "* Creates a ShareOutResult from a unique Dispatch, to work on a Graph. As if it was a ShareOut with only one Dispatch Allows to compute the effect of a single Dispatch
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: None") IFSelect_ShareOutResult;
 		 IFSelect_ShareOutResult (const opencascade::handle<IFSelect_Dispatch> & disp,const Interface_Graph & G);
 
@@ -3130,9 +3130,9 @@ class IFSelect_ShareOutResult {
 		%feature("compactdefaultargs") PacketsInDispatch;
 		%feature("autodoc", "* Returns Number (rank) of current Packet in current Dispatch, and total count of Packets in current Dispatch, as arguments
 	:param numpack:
-	:type numpack: int &
+	:type numpack: int
 	:param nbpacks:
-	:type nbpacks: int &
+	:type nbpacks: int
 	:rtype: None") PacketsInDispatch;
 		void PacketsInDispatch (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -3197,11 +3197,11 @@ class IFSelect_Signature : public Interface_SignType {
 	:param hasmin:
 	:type hasmin: bool
 	:param valmin:
-	:type valmin: int &
+	:type valmin: int
 	:param hasmax:
 	:type hasmax: bool
 	:param valmax:
-	:type valmax: int &
+	:type valmax: int
 	:rtype: bool") IsIntCase;
 		Standard_Boolean IsIntCase (Standard_Boolean &OutValue,Standard_Integer &OutValue,Standard_Boolean &OutValue,Standard_Integer &OutValue);
 
@@ -3217,7 +3217,7 @@ class IFSelect_Signature : public Interface_SignType {
 	:param val:
 	:type val: char *
 	:param text:
-	:type text: TCollection_AsciiString &
+	:type text: TCollection_AsciiString
 	:param exact:
 	:type exact: bool
 	:rtype: bool") MatchValue;
@@ -3227,11 +3227,11 @@ class IFSelect_Signature : public Interface_SignType {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Tells if the value for <ent> in <model> matches a text, with a criterium <exact>. The default definition calls MatchValue Can be redefined
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param text:
-	:type text: TCollection_AsciiString &
+	:type text: TCollection_AsciiString
 	:param exact:
 	:type exact: bool
 	:rtype: bool") Matches;
@@ -3278,7 +3278,7 @@ class IFSelect_SignatureList : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds an entity with its signature, i.e. : - counts an item more for <sign> - if record-list status is set, records the entity Accepts a null entity (the signature is then for the global model). But if the string is empty, counts a Null item. //! If SignOnly Mode is set, this work is replaced by just setting LastValue
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param sign:
 	:type sign: char *
 	:rtype: None") Add;
@@ -3317,9 +3317,9 @@ class IFSelect_SignatureList : public Standard_Transient {
 	:param name:
 	:type name: char *
 	:param count:
-	:type count: NCollection_IndexedDataMap<TCollection_AsciiString, int> &
+	:type count: NCollection_IndexedDataMap<TCollection_AsciiString, int>
 	:param list:
-	:type list: NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > &
+	:type list: Standard_Transient
 	:param nbnuls:
 	:type nbnuls: int
 	:rtype: None") Init;
@@ -3376,7 +3376,7 @@ class IFSelect_SignatureList : public Standard_Transient {
 		%feature("compactdefaultargs") PrintCount;
 		%feature("autodoc", "* Prints the counts of items (not the list)
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: void") PrintCount;
 		virtual void PrintCount (const opencascade::handle<Message_Messenger> & S);
 
@@ -3384,9 +3384,9 @@ class IFSelect_SignatureList : public Standard_Transient {
 		%feature("compactdefaultargs") PrintList;
 		%feature("autodoc", "* Prints the lists of items, if they are present (else, prints a message 'no list available') Uses <model> to determine for each entity to be listed, its number, and its specific identifier (by PrintLabel) <mod> gives a mode for printing : - CountByItem : just count (as PrintCount) - ShortByItem : minimum i.e. count plus 5 first entity numbers - ShortByItem(D) complete list of entity numbers (0: 'Global') - EntitiesByItem : list of (entity number/PrintLabel from the model) other modes are ignored
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param mod: default value is IFSelect_ListByItem
 	:type mod: IFSelect_PrintCount
 	:rtype: void") PrintList;
@@ -3396,7 +3396,7 @@ class IFSelect_SignatureList : public Standard_Transient {
 		%feature("compactdefaultargs") PrintSum;
 		%feature("autodoc", "* Prints a summary Item which has the greatest count of entities For items which are numeric values : their count, maximum, minimum values, cumul, average
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: void") PrintSum;
 		virtual void PrintSum (const opencascade::handle<Message_Messenger> & S);
 
@@ -3437,7 +3437,7 @@ class IFSelect_Transformer : public Standard_Transient {
 		%feature("compactdefaultargs") ChangeProtocol;
 		%feature("autodoc", "* This methods allows to declare that the Protocol applied to the new Model has changed. It applies to the last call to Perform. //! Returns True if the Protocol has changed, False else. The provided default keeps the starting Protocol. This method should be redefined as required by the effect of Perform.
 	:param newproto:
-	:type newproto: opencascade::handle<Interface_Protocol> &
+	:type newproto: Interface_Protocol
 	:rtype: bool") ChangeProtocol;
 		virtual Standard_Boolean ChangeProtocol (opencascade::handle<Interface_Protocol> & newproto);
 
@@ -3451,13 +3451,13 @@ class IFSelect_Transformer : public Standard_Transient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs a Transformation (defined by each sub-class) : <G> gives the input data (especially the starting model) and can be used for queries (by Selections, etc...) <protocol> allows to work with General Services as necessary (it applies to input data) If the change corresponds to a conversion to a new protocol, see also the method ChangeProtocol <checks> stores produced checks messages if any <newmod> gives the result of the transformation : - if it is Null (i.e. has not been affected), the transformation has been made on the spot, it is assumed to cause no change to the graph of dependances - if it equates the starting Model, it has been transformed on the spot (possibiliy some entities were replaced inside it) - if it is new, it corresponds to a new data set which replaces the starting one //! <self> is mutable to allow results for ChangeProtocol to be memorized if needed, and to store informations useful for the method Updated //! Returns True if Done, False if an Error occured : in this case, if a new data set has been produced, the transformation is ignored, else data may be corrupted.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param checks:
-	:type checks: Interface_CheckIterator &
+	:type checks: Interface_CheckIterator
 	:param newmod:
-	:type newmod: opencascade::handle<Interface_InterfaceModel> &
+	:type newmod: Interface_InterfaceModel
 	:rtype: bool") Perform;
 		virtual Standard_Boolean Perform (const Interface_Graph & G,const opencascade::handle<Interface_Protocol> & protocol,Interface_CheckIterator & checks,opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -3465,9 +3465,9 @@ class IFSelect_Transformer : public Standard_Transient {
 		%feature("compactdefaultargs") Updated;
 		%feature("autodoc", "* This method allows to know what happened to a starting entity after the last Perform. If <entfrom> (from starting model) has one and only one known item which corresponds in the new produced model, this method must return True and fill the argument <entto>. Else, it returns False.
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:rtype: bool") Updated;
 		virtual Standard_Boolean Updated (const opencascade::handle<Standard_Transient> & entfrom,opencascade::handle<Standard_Transient> & entto);
 
@@ -3492,13 +3492,13 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 		%feature("compactdefaultargs") CopyModel;
 		%feature("autodoc", "* Performs the copy of entities from an original model to a new one. It must also copy headers if any. Returns True when done. The provided default works by copying the individual entities designated in the list, by using the general service class CopyTool. It can be redefined for a norm which, either implements Copy by another way (do not forget to Bind each copied result with its original entity in TC) and returns True, or does not know how to copy and returns False
 	:param original:
-	:type original: opencascade::handle<Interface_InterfaceModel> &
+	:type original: Interface_InterfaceModel
 	:param newmodel:
-	:type newmodel: opencascade::handle<Interface_InterfaceModel> &
+	:type newmodel: Interface_InterfaceModel
 	:param list:
-	:type list: Interface_EntityIterator &
+	:type list: Interface_EntityIterator
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: bool") CopyModel;
 		virtual Standard_Boolean CopyModel (const opencascade::handle<Interface_InterfaceModel> & original,const opencascade::handle<Interface_InterfaceModel> & newmodel,const Interface_EntityIterator & list,Interface_CopyTool & TC);
 
@@ -3506,13 +3506,13 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 		%feature("compactdefaultargs") DumpEntity;
 		%feature("autodoc", "* Gives the way of dumping an entity under a form comprehensive for each norm. <model> helps to identify, number ... entities. <level> is to be interpreted for each norm (because of the formats which can be very different)
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param entity:
-	:type entity: opencascade::handle<Standard_Transient> &
+	:type entity: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param level:
 	:type level: int
 	:rtype: void") DumpEntity;
@@ -3522,13 +3522,13 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 		%feature("compactdefaultargs") DumpEntity;
 		%feature("autodoc", "* Calls deferred DumpEntity with the recorded default level
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param entity:
-	:type entity: opencascade::handle<Standard_Transient> &
+	:type entity: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") DumpEntity;
 		void DumpEntity (const opencascade::handle<Interface_InterfaceModel> & model,const opencascade::handle<Interface_Protocol> & protocol,const opencascade::handle<Standard_Transient> & entity,const opencascade::handle<Message_Messenger> & S);
 
@@ -3544,9 +3544,9 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 		%feature("compactdefaultargs") DumpLevels;
 		%feature("autodoc", "* Returns the recorded default and maximum dump levels If none was recorded, max is returned negative, def as zero
 	:param def:
-	:type def: int &
+	:type def: int
 	:param max:
-	:type max: int &
+	:type max: int
 	:rtype: None") DumpLevels;
 		void DumpLevels (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -3556,9 +3556,9 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 	:param name:
 	:type name: char *
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: int") ReadFile;
 		virtual Standard_Integer ReadFile (const char * name,opencascade::handle<Interface_InterfaceModel> & model,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -3586,7 +3586,7 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 		%feature("compactdefaultargs") WriteFile;
 		%feature("autodoc", "* Gives the way to Write a File from a Model. <ctx> contains all necessary informations : the model, the protocol, the file name, and the list of File Modifiers to be applied, also with restricted list of selected entities for each one, if required. In return, it brings the produced check-list //! The WorkLibrary has to query <applied> to get then run the ContextWrite by looping like this (example) : for (numap = 1; numap <= ctx.NbModifiers(); numap ++) { ctx.SetModifier (numap); cast ctx.FileModifier() to specific type -> variable filemod if (!filemod.IsNull()) filemod->Perform (ctx,writer); filemod then works with ctx. It can, either act on the model itself (for instance on its header), or iterate on selected entities (Start/Next/More/Value) it can call AddFail or AddWarning, as necessary }
 	:param ctx:
-	:type ctx: IFSelect_ContextWrite &
+	:type ctx: IFSelect_ContextWrite
 	:rtype: bool") WriteFile;
 		virtual Standard_Boolean WriteFile (IFSelect_ContextWrite & ctx);
 
@@ -3611,7 +3611,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") AddItem;
 		%feature("autodoc", "* Adds an Item and returns its attached Ident. Does nothing if <item> is already recorded (and returns its attached Ident) <active> if True commands call to SetActive (see below) Remark : the determined Ident is used if <item> is a Dispatch, to fill the ShareOut
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:param active: default value is Standard_True
 	:type active: bool
 	:rtype: int") AddItem;
@@ -3623,7 +3623,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 	:param name:
 	:type name: char *
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:param active: default value is Standard_True
 	:type active: bool
 	:rtype: int") AddNamedItem;
@@ -3647,7 +3647,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") CategoryName;
 		%feature("autodoc", "* Returns the Category Name determined for an entity it is computed by the class Category Remark : an unknown entity gives an empty string
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: char *") CategoryName;
 		const char * CategoryName (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3655,7 +3655,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") CategoryNumber;
 		%feature("autodoc", "* Returns the Category Number determined for an entity it is computed by the class Category An unknown entity (number 0) gives a value -1
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CategoryNumber;
 		Standard_Integer CategoryNumber (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3675,7 +3675,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") CheckOne;
 		%feature("autodoc", "* Returns a Check for a single entity, under the form of a CheckIterator (this gives only one form for the user) if <ent> is Null or equates the current Model, it gives the Global Check, else the Check for the given entity <complete> as for ModelCheckList
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param complete: default value is Standard_True
 	:type complete: bool
 	:rtype: Interface_CheckIterator") CheckOne;
@@ -3719,9 +3719,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") CombineAdd;
 		%feature("autodoc", "* Adds an input selection to a SelectCombine (Union or Inters.). Returns new count of inputs for this SelectCombine if Done or 0 if <sel> is not kind of SelectCombine, or if <seladd> or <sel> is not in the WorkSession By default, adding is done at the end of the list Else, it is an insertion to rank <atnum> (usefull for Un-ReDo)
 	:param selcomb:
-	:type selcomb: opencascade::handle<IFSelect_Selection> &
+	:type selcomb: IFSelect_Selection
 	:param seladd:
-	:type seladd: opencascade::handle<IFSelect_Selection> &
+	:type seladd: IFSelect_Selection
 	:param atnum: default value is 0
 	:type atnum: int
 	:rtype: int") CombineAdd;
@@ -3731,9 +3731,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") CombineRemove;
 		%feature("autodoc", "* Removes an input selection from a SelectCombine (Union or Intersection). Returns True if done, False if <selcomb> is not kind of SelectCombine or <selrem> is not source of <selcomb>
 	:param selcomb:
-	:type selcomb: opencascade::handle<IFSelect_Selection> &
+	:type selcomb: IFSelect_Selection
 	:param selrem:
-	:type selrem: opencascade::handle<IFSelect_Selection> &
+	:type selrem: IFSelect_Selection
 	:rtype: bool") CombineRemove;
 		Standard_Boolean CombineRemove (const opencascade::handle<IFSelect_Selection> & selcomb,const opencascade::handle<IFSelect_Selection> & selrem);
 
@@ -3749,7 +3749,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ComputeCounter;
 		%feature("autodoc", "* Computes the content of a SignCounter when it is defined with a Selection, then returns True Returns False if the SignCounter is not defined with a Selection, or if its Selection Mode is inhibited <forced> to work around optimisations
 	:param counter:
-	:type counter: opencascade::handle<IFSelect_SignCounter> &
+	:type counter: IFSelect_SignCounter
 	:param forced: default value is Standard_False
 	:type forced: bool
 	:rtype: bool") ComputeCounter;
@@ -3759,9 +3759,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ComputeCounterFromList;
 		%feature("autodoc", "* Computes the content of a SignCounter from an input list If <list> is Null, uses internal definition of the Counter : a Selection, else the whole Model (recomputation forced) If <clear> is True (D), starts from scratch Else, cumulates computations
 	:param counter:
-	:type counter: opencascade::handle<IFSelect_SignCounter> &
+	:type counter: IFSelect_SignCounter
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:param clear: default value is Standard_True
 	:type clear: bool
 	:rtype: bool") ComputeCounterFromList;
@@ -3793,7 +3793,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") DispatchRank;
 		%feature("autodoc", "* Returns the rank of a Dispatch in the ShareOut, or 0 if <disp> is not in the ShareOut or not in the WorkSession
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:rtype: int") DispatchRank;
 		Standard_Integer DispatchRank (const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -3801,11 +3801,11 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") DumpEntity;
 		%feature("autodoc", "* Dumps a starting entity according to the current norm. To do this, it calls DumpEntity from WorkLibrary. <level> is to be interpreted for each norm : see specific classes of WorkLibrary for it. Generally, 0 if for very basic (only type ...), greater values give more and more details.
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param level:
 	:type level: int
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") DumpEntity;
 		void DumpEntity (const opencascade::handle<Standard_Transient> & ent,const Standard_Integer level,const opencascade::handle<Message_Messenger> & S);
 
@@ -3815,7 +3815,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 	:param level:
 	:type level: int
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") DumpModel;
 		void DumpModel (const Standard_Integer level,const opencascade::handle<Message_Messenger> & S);
 
@@ -3823,7 +3823,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") DumpSelection;
 		%feature("autodoc", "* Lists a Selection and its Sources (see SelectionIterator), given its rank in the list
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") DumpSelection;
 		void DumpSelection (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -3837,7 +3837,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") EntityLabel;
 		%feature("autodoc", "* Returns the label for <ent>, as the Model does If <ent> is not in the Model or if no Model is loaded, a Null Handle is returned
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TCollection_HAsciiString>") EntityLabel;
 		opencascade::handle<TCollection_HAsciiString> EntityLabel (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3845,7 +3845,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") EntityName;
 		%feature("autodoc", "* Returns the Name of an Entity This Name is computed by the general service Name Returns a Null Handle if fails
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TCollection_HAsciiString>") EntityName;
 		opencascade::handle<TCollection_HAsciiString> EntityName (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3853,7 +3853,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") EvalSelection;
 		%feature("autodoc", "* Evaluates the effect of a Selection applied on the input Model Returned Result remains empty if no input Model has been set
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: Interface_EntityIterator") EvalSelection;
 		Interface_EntityIterator EvalSelection (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -3875,7 +3875,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") EvaluateDispatch;
 		%feature("autodoc", "* Displays the result of applying a Dispatch on the input Model (also shows Remainder if there is) <mode> = 0 (default), displays nothing else <mode> = 1 : displays also duplicated entities (because of this dispatch) <mode> = 2 : displays the entities of the starting Model which are not taken by this dispatch (forgotten entities) <mode> = 3 : displays both duplicated and forgotten entities Remark : EvaluateComplete displays these data evaluated for for all the dispatches, if there are several
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:param mode: default value is 0
 	:type mode: int
 	:rtype: None") EvaluateDispatch;
@@ -3891,7 +3891,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") EvaluateSelection;
 		%feature("autodoc", "* Displays the list of Entities selected by a Selection (i.e. the result of EvalSelection).
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") EvaluateSelection;
 		void EvaluateSelection (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -3927,7 +3927,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") FileRoot;
 		%feature("autodoc", "* Returns the File Root defined for a Dispatch. Null if no Root Name is defined for it (hence, no File will be produced)
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:rtype: opencascade::handle<TCollection_HAsciiString>") FileRoot;
 		opencascade::handle<TCollection_HAsciiString> FileRoot (const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -3973,7 +3973,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") GiveList;
 		%feature("autodoc", "* Determines a list of entities from an object : <obj> already HSequenceOfTransient : returned itself <obj> Selection : its Result of Evaluation is returned <obj> an entity of the Model : a HSequence which contains it else, an empty HSequence <obj> the Model it self : ALL its content (not only the roots)
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") GiveList;
 		opencascade::handle<TColStd_HSequenceOfTransient> GiveList (const opencascade::handle<Standard_Transient> & obj);
 
@@ -3991,9 +3991,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") GiveListCombined;
 		%feature("autodoc", "* Combines two lists and returns the result, according to mode : <mode> < 0 : entities in <l1> AND NOT in <l2> <mode> = 0 : entities in <l1> AND in <l2> <mode> > 0 : entities in <l1> OR in <l2>
 	:param l1:
-	:type l1: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type l1: TColStd_HSequenceOfTransient
 	:param l2:
-	:type l2: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type l2: TColStd_HSequenceOfTransient
 	:param mode:
 	:type mode: int
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") GiveListCombined;
@@ -4005,7 +4005,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 	:param selname:
 	:type selname: char *
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") GiveListFromList;
 		opencascade::handle<TColStd_HSequenceOfTransient> GiveListFromList (const char * selname,const opencascade::handle<Standard_Transient> & ent);
 
@@ -4039,7 +4039,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "* Returns True if an Item of the WorkSession has an attached Name
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") HasName;
 		Standard_Boolean HasName (const opencascade::handle<Standard_Transient> & item);
 
@@ -4061,7 +4061,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") IntValue;
 		%feature("autodoc", "* Returns Integer Value of an IntParam
 	:param it:
-	:type it: opencascade::handle<IFSelect_IntParam> &
+	:type it: IFSelect_IntParam
 	:rtype: int") IntValue;
 		Standard_Integer IntValue (const opencascade::handle<IFSelect_IntParam> & it);
 
@@ -4075,7 +4075,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") IsReversedSelectExtract;
 		%feature("autodoc", "* Returns True if <sel> a Reversed SelectExtract, False else
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: bool") IsReversedSelectExtract;
 		Standard_Boolean IsReversedSelectExtract (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -4091,7 +4091,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ItemIdent;
 		%feature("autodoc", "* Returns the Ident attached to an Item in the WorkSession, or Zero if it is unknown
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: int") ItemIdent;
 		Standard_Integer ItemIdent (const opencascade::handle<Standard_Transient> & item);
 
@@ -4099,7 +4099,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ItemIdents;
 		%feature("autodoc", "* Fills a Sequence with the List of Idents attached to the Items of which Type complies with (IsKind) <type> (alphabetic order) Remark : <type> = TYPE(Standard_Transient) gives all the Idents which are suitable in the WorkSession
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:rtype: opencascade::handle<TColStd_HSequenceOfInteger>") ItemIdents;
 		opencascade::handle<TColStd_HSequenceOfInteger> ItemIdents (const opencascade::handle<Standard_Type> & type);
 
@@ -4115,7 +4115,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ItemNames;
 		%feature("autodoc", "* Fills a Sequence with the list of the Names attached to Items of which Type complies with (IsKind) <type> (alphabetic order) Remark : <type> = TYPE(Standard_Transient) gives all the Names
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:rtype: opencascade::handle<TColStd_HSequenceOfHAsciiString>") ItemNames;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> ItemNames (const opencascade::handle<Standard_Type> & type);
 
@@ -4131,7 +4131,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ItemSelection;
 		%feature("autodoc", "* Returns the Selection of a Dispatch or a GeneralModifier. Returns a Null Handle if none is defined or <item> not good type
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: opencascade::handle<IFSelect_Selection>") ItemSelection;
 		opencascade::handle<IFSelect_Selection> ItemSelection (const opencascade::handle<Standard_Transient> & item);
 
@@ -4145,7 +4145,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ListEntities;
 		%feature("autodoc", "* Internal method which displays an EntityIterator <mode> 0 gives short display (only entity numbers) 1 gives a more complete trace (1 line per Entity) (can be used each time a trace has to be output from a list) 2 gives a form suitable for givelist : (n1,n2,n3...)
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:param mode:
 	:type mode: int
 	:rtype: None") ListEntities;
@@ -4217,7 +4217,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ModifierRank;
 		%feature("autodoc", "* Returns the Rank of a Modifier given its Ident. Model or File Modifier according its type (ModelModifier or not) Remember that Modifiers are applied sequencially following their Rank : first Model Modifiers then File Modifiers Rank is given by rank of call to AddItem and can be changed by ChangeModifierRank
 	:param item:
-	:type item: opencascade::handle<IFSelect_GeneralModifier> &
+	:type item: IFSelect_GeneralModifier
 	:rtype: int") ModifierRank;
 		Standard_Integer ModifierRank (const opencascade::handle<IFSelect_GeneralModifier> & item);
 
@@ -4225,7 +4225,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "* Returns the Name attached to an Item as a Variable of this WorkSession. If <item> is Null or not recorded, returns an empty string.
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: opencascade::handle<TCollection_HAsciiString>") Name;
 		opencascade::handle<TCollection_HAsciiString> Name (const opencascade::handle<Standard_Transient> & item);
 
@@ -4249,7 +4249,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") NamedItem;
 		%feature("autodoc", "* Same as above, but <name> is given through a Handle Especially Usefull with methods SelectionNames, etc...
 	:param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:rtype: opencascade::handle<Standard_Transient>") NamedItem;
 		opencascade::handle<Standard_Transient> NamedItem (const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -4271,7 +4271,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") NbSources;
 		%feature("autodoc", "* Returns the count of Input Selections known for a Selection, or 0 if <sel> not in the WorkSession. This count is one for a SelectDeduct / SelectExtract kind, two for SelectControl kind, variable for a SelectCombine (Union/Intersection), zero else
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: int") NbSources;
 		Standard_Integer NbSources (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -4303,7 +4303,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") NewSelectPointed;
 		%feature("autodoc", "* Creates a new Selection, of type SelectPointed, its content starts with <list>. A name must be given (can be empty)
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:param name:
 	:type name: char *
 	:rtype: opencascade::handle<IFSelect_Selection>") NewSelectPointed;
@@ -4353,7 +4353,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") PrintCheckList;
 		%feature("autodoc", "* Prints a CheckIterator to the current Trace File, controlled with the current Model complete or fails only, according to <failsonly> <mode> defines the mode of printing 0 : sequential, according entities; else with a CheckCounter 1 : according messages, count of entities 2 : id but with list of entities, designated by their numbers 3 : as 2 but with labels of entities
 	:param checklist:
-	:type checklist: Interface_CheckIterator &
+	:type checklist: Interface_CheckIterator
 	:param failsonly:
 	:type failsonly: bool
 	:param mode:
@@ -4365,9 +4365,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") PrintEntityStatus;
 		%feature("autodoc", "* Prints main informations about an entity : its number, type, validity (and checks if any), category, shareds and sharings.. mutable because it can recompute checks as necessary
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintEntityStatus;
 		void PrintEntityStatus (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Message_Messenger> & S);
 
@@ -4375,7 +4375,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") PrintSignatureList;
 		%feature("autodoc", "* Prints a SignatureList to the current Trace File, controlled with the current Model <mode> defines the mode of printing (see SignatureList)
 	:param signlist:
-	:type signlist: opencascade::handle<IFSelect_SignatureList> &
+	:type signlist: IFSelect_SignatureList
 	:param mode:
 	:type mode: IFSelect_PrintCount
 	:rtype: None") PrintSignatureList;
@@ -4391,7 +4391,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") QueryCheckList;
 		%feature("autodoc", "* Loads data from a check iterator to query status on it
 	:param chl:
-	:type chl: Interface_CheckIterator &
+	:type chl: Interface_CheckIterator
 	:rtype: None") QueryCheckList;
 		void QueryCheckList (const Interface_CheckIterator & chl);
 
@@ -4399,7 +4399,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") QueryCheckStatus;
 		%feature("autodoc", "* Determines check status for an entity regarding last call to QueryCheckList : -1 : <ent> unknown in the model, ignored 0 : no check at all, immediate or inherited thru Graph 1 : immediate warning (no fail), no inherited check 2 : immediate fail, no inherited check +10 : idem but some inherited warning (no fail) +20 : idem but some inherited fail
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") QueryCheckStatus;
 		Standard_Integer QueryCheckStatus (const opencascade::handle<Standard_Transient> & ent);
 
@@ -4407,9 +4407,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") QueryParent;
 		%feature("autodoc", "* Determines if <entdad> is parent of <entson> (in the graph), returns : -1 if no; 0 if <entdad> = <entson> 1 if immediate parent, > 1 if parent, gives count of steps
 	:param entdad:
-	:type entdad: opencascade::handle<Standard_Transient> &
+	:type entdad: Standard_Transient
 	:param entson:
-	:type entson: opencascade::handle<Standard_Transient> &
+	:type entson: Standard_Transient
 	:rtype: int") QueryParent;
 		Standard_Integer QueryParent (const opencascade::handle<Standard_Transient> & entdad,const opencascade::handle<Standard_Transient> & entson);
 
@@ -4425,7 +4425,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "* Removes an Item given its Ident. Returns False if <id> is attached to no Item in the WorkSession. For a Named Item, also removes its Name.
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") RemoveItem;
 		Standard_Boolean RemoveItem (const opencascade::handle<Standard_Transient> & item);
 
@@ -4449,7 +4449,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ResetAppliedModifier;
 		%feature("autodoc", "* Resets a GeneralModifier to be applied Returns True if done, False if <modif> was not applied
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modif: IFSelect_GeneralModifier
 	:rtype: bool") ResetAppliedModifier;
 		Standard_Boolean ResetAppliedModifier (const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
@@ -4457,7 +4457,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ResetItemSelection;
 		%feature("autodoc", "* Resets input Selection which was set by SetItemSelection Same conditions as for SetItemSelection Returns True if done, False if <item> is not in the WorkSession
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") ResetItemSelection;
 		Standard_Boolean ResetItemSelection (const opencascade::handle<Standard_Transient> & item);
 
@@ -4465,7 +4465,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") RunModifier;
 		%feature("autodoc", "* Runs a Modifier on Starting Model. It can modify entities, or add new ones. But the Model or the Protocol is unchanged. The Modifier is applied on each entity of the Model. See also RunModifierSelected Fills LastRunCheckList //! <copy> : if True, a new data set is produced which brings the modifications (Model + its Entities) if False, data are modified on the spot //! It works through a TransformStandard defined with <modif> Returned status as RunTransformer : 0 nothing done, >0 OK, <0 problem, but only between -3 and 3 (protocol unchanged) Remark : <copy> True will give <effect> = 3 or -3
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_Modifier> &
+	:type modif: IFSelect_Modifier
 	:param copy:
 	:type copy: bool
 	:rtype: int") RunModifier;
@@ -4475,9 +4475,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") RunModifierSelected;
 		%feature("autodoc", "* Acts as RunModifier, but the Modifier is applied on the list determined by a Selection, rather than on the whole Model If the selection is a null handle, the whole model is taken
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_Modifier> &
+	:type modif: IFSelect_Modifier
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param copy:
 	:type copy: bool
 	:rtype: int") RunModifierSelected;
@@ -4487,7 +4487,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") RunTransformer;
 		%feature("autodoc", "* Runs a Transformer on starting Model, which can then be edited or replaced by a new one. The Protocol can also be changed. Fills LastRunCheckList //! Returned status is 0 if nothing done (<transf> or model undefined), positive if OK, negative else : 0 : Nothing done 1 : OK, edition on the spot with no change to the graph of dependances (purely local) 2 : OK, model edited on the spot (graph recomputed, may have changed), protocol unchanged 3 : OK, new model produced, same protocol 4 : OK, model edited on the spot (graph recomputed), but protocol has changed 5 : OK, new model produced, protocol has changed -1 : Error on the spot (slight changes), data may be corrupted (remark : corruption should not be profound) -2 : Error on edition the spot, data may be corrupted (checking them is recommanded) -3 : Error with a new data set, transformation ignored -4 : OK as 4, but graph of dependances count not be recomputed (the former one is kept) : check the protocol
 	:param transf:
-	:type transf: opencascade::handle<IFSelect_Transformer> &
+	:type transf: IFSelect_Transformer
 	:rtype: int") RunTransformer;
 		Standard_Integer RunTransformer (const opencascade::handle<IFSelect_Transformer> & transf);
 
@@ -4503,7 +4503,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SelectionResult;
 		%feature("autodoc", "* Returns the result of a Selection, computed by EvalSelection (see above) under the form of a HSequence (hence, it can be used by a frontal-engine logic). It can be empty Returns a Null Handle if <sel> is not in the WorkSession
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") SelectionResult;
 		opencascade::handle<TColStd_HSequenceOfTransient> SelectionResult (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -4511,9 +4511,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SelectionResultFromList;
 		%feature("autodoc", "* Returns the result of a Selection, by forcing its input with a given list <list> (unless <list> is Null). RULES : <list> applies only for a SelectDeduct kind Selection : its Input is considered : if it is a SelectDeduct kind Selection, its Input is considered, etc... until an Input is not a Deduct/Extract : its result is replaced by <list> and all the chain of deductions is applied
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") SelectionResultFromList;
 		opencascade::handle<TColStd_HSequenceOfTransient> SelectionResultFromList (const opencascade::handle<IFSelect_Selection> & sel,const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -4533,7 +4533,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 	:param filename:
 	:type filename: char *
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param computegraph: default value is Standard_False
 	:type computegraph: bool
 	:rtype: IFSelect_ReturnStatus") SendSelected;
@@ -4563,7 +4563,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetActive;
 		%feature("autodoc", "* Following the type of <item> : - Dispatch : Adds or Removes it in the ShareOut & FileNaming - GeneralModifier : Adds or Removes it for final sending (i.e. in the ModelCopier) Returns True if it did something, False else (state unchanged)
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:param mode:
 	:type mode: bool
 	:rtype: bool") SetActive;
@@ -4573,9 +4573,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetAppliedModifier;
 		%feature("autodoc", "* Sets a GeneralModifier to be applied to an item : - item = ShareOut : applies for final sending (all dispatches) - item is a Dispatch : applies for this dispatch only Returns True if done, False if <modif> or <item> not in <self>
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modif: IFSelect_GeneralModifier
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") SetAppliedModifier;
 		Standard_Boolean SetAppliedModifier (const opencascade::handle<IFSelect_GeneralModifier> & modif,const opencascade::handle<Standard_Transient> & item);
 
@@ -4583,9 +4583,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetControl;
 		%feature("autodoc", "* Sets an Input Selection, Main if <formain> is True, Second else (as <sc>) to a SelectControl (as <sel>). Returns True if Done, False if <sel> is not a SelectControl, or <sc> or <sel> is not in the WorkSession
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param sc:
-	:type sc: opencascade::handle<IFSelect_Selection> &
+	:type sc: IFSelect_Selection
 	:param formain: default value is Standard_True
 	:type formain: bool
 	:rtype: bool") SetControl;
@@ -4619,7 +4619,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetFileRoot;
 		%feature("autodoc", "* Defines a Root for a Dispatch If <name> is empty, clears Root Name This has as effect to inhibit the production of File by <disp> Returns False if <disp> is not in the WorkSession or if a root name is already defined for it
 	:param disp:
-	:type disp: opencascade::handle<IFSelect_Dispatch> &
+	:type disp: IFSelect_Dispatch
 	:param name:
 	:type name: char *
 	:rtype: bool") SetFileRoot;
@@ -4629,9 +4629,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetInputSelection;
 		%feature("autodoc", "* Sets an Input Selection (as <input>) to a SelectExtract or a SelectDeduct (as <sel>). Returns True if Done, False if <sel> is neither a SelectExtract nor a SelectDeduct, or not in the WorkSession
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param input:
-	:type input: opencascade::handle<IFSelect_Selection> &
+	:type input: IFSelect_Selection
 	:rtype: bool") SetInputSelection;
 		Standard_Boolean SetInputSelection (const opencascade::handle<IFSelect_Selection> & sel,const opencascade::handle<IFSelect_Selection> & input);
 
@@ -4639,7 +4639,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetIntValue;
 		%feature("autodoc", "* Changes the Integer Value of an IntParam Returns True if Done, False if <it> is not in the WorkSession
 	:param it:
-	:type it: opencascade::handle<IFSelect_IntParam> &
+	:type it: IFSelect_IntParam
 	:param val:
 	:type val: int
 	:rtype: bool") SetIntValue;
@@ -4649,9 +4649,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetItemSelection;
 		%feature("autodoc", "* Sets a Selection as input for an item, according its type : if <item> is a Dispatch : as Final Selection if <item> is a GeneralModifier (i.e. any kind of Modifier) : as Selection used to filter entities to modify <sel> Null causes this Selection to be nullified Returns False if <item> is not of a suitable type, or <item> or <sel> is not in the WorkSession
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: bool") SetItemSelection;
 		Standard_Boolean SetItemSelection (const opencascade::handle<Standard_Transient> & item,const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -4659,7 +4659,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetLibrary;
 		%feature("autodoc", "* Sets a WorkLibrary, which will be used to Read and Write Files
 	:param theLib:
-	:type theLib: opencascade::handle<IFSelect_WorkLibrary> &
+	:type theLib: IFSelect_WorkLibrary
 	:rtype: None") SetLibrary;
 		void SetLibrary (const opencascade::handle<IFSelect_WorkLibrary> & theLib);
 
@@ -4683,7 +4683,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "* Sets a Model as input : this will be the Model from which the ShareOut will work if <clearpointed> is True (default) all SelectPointed items are cleared, else they must be managed by the caller Remark : SetModel clears the Graph, recomputes it if a Protocol is set and if the Model is not empty, of course
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param clearpointed: default value is Standard_True
 	:type clearpointed: bool
 	:rtype: None") SetModel;
@@ -4693,7 +4693,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetModelContent;
 		%feature("autodoc", "* Defines a new content from the former one If <keep> is True, it is given by entities selected by Selection <sel> (and all shared entities) Else, it is given by all the former content but entities selected by the Selection <sel> (and properly shared ones) Returns True if done. Returns False if the selected list (from <sel>) is empty, hence nothing is done
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param keep:
 	:type keep: bool
 	:rtype: bool") SetModelContent;
@@ -4703,7 +4703,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetModelCopier;
 		%feature("autodoc", "* Sets a new ModelCopier. Fills Items which its content
 	:param copier:
-	:type copier: opencascade::handle<IFSelect_ModelCopier> &
+	:type copier: IFSelect_ModelCopier
 	:rtype: None") SetModelCopier;
 		void SetModelCopier (const opencascade::handle<IFSelect_ModelCopier> & copier);
 
@@ -4711,9 +4711,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetParams;
 		%feature("autodoc", "* Sets a list of Parameters, i.e. TypedValue, to be handled through an Editor The two lists are parallel, if <params> is longer than <uses>, surnumeral parameters are for general use //! EditForms are created to handle these parameters (list, edit) on the basis of a ParamEditor xst-params-edit //! A use number dispatches the parameter to a given EditForm EditForms are defined as follows Name Use Means xst-params all All Parameters (complete list) xst-params-general 1 Generals xst-params-load 2 LoadFile (no Transfer) xst-params-send 3 SendFile (Write, no Transfer) xst-params-split 4 Split xst-param-read 5 Transfer on Reading xst-param-write 6 Transfer on Writing
 	:param params:
-	:type params: NCollection_Vector<opencascade::handle<Standard_Transient> > &
+	:type params: Standard_Transient
 	:param uselist:
-	:type uselist: NCollection_Vector<int> &
+	:type uselist: NCollection_Vector<int>
 	:rtype: None") SetParams;
 		void SetParams (const NCollection_Vector<opencascade::handle<Standard_Transient> > & params,const NCollection_Vector<Standard_Integer> & uselist);
 
@@ -4721,7 +4721,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "* Sets a Protocol, which will be used to determine Graphs, to Read and to Write Files
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") SetProtocol;
 		void SetProtocol (const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -4737,9 +4737,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelectPointed;
 		%feature("autodoc", "* Changes the content of a Selection of type SelectPointed According <mode> : 0 set <list> as new content (clear former) 1 : adds <list> to actual content -1 : removes <list> from actual content Returns True if done, False if <sel> is not a SelectPointed
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:param mode:
 	:type mode: int
 	:rtype: bool") SetSelectPointed;
@@ -4749,7 +4749,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetShareOut;
 		%feature("autodoc", "* Sets a new ShareOut. Fills Items which its content Warning : data from the former ShareOut are lost
 	:param shareout:
-	:type shareout: opencascade::handle<IFSelect_ShareOut> &
+	:type shareout: IFSelect_ShareOut
 	:rtype: None") SetShareOut;
 		void SetShareOut (const opencascade::handle<IFSelect_ShareOut> & shareout);
 
@@ -4757,7 +4757,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetSignType;
 		%feature("autodoc", "* Sets a specific Signature to be the SignType, i.e. the Signature which will determine TypeName from the Model (basic function). It is recorded in the GTool This Signature is also set as 'xst-sign-type' (reserved name)
 	:param signtype:
-	:type signtype: opencascade::handle<IFSelect_Signature> &
+	:type signtype: IFSelect_Signature
 	:rtype: None") SetSignType;
 		void SetSignType (const opencascade::handle<IFSelect_Signature> & signtype);
 
@@ -4765,7 +4765,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SetTextValue;
 		%feature("autodoc", "* Changes the Text Value of a TextParam (an HAsciiString) Returns True if Done, False if <it> is not in the WorkSession
 	:param par:
-	:type par: opencascade::handle<TCollection_HAsciiString> &
+	:type par: TCollection_HAsciiString
 	:param val:
 	:type val: char *
 	:rtype: bool") SetTextValue;
@@ -4781,7 +4781,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") Shareds;
 		%feature("autodoc", "* Returns the list of entities shared by <ent> (can be empty) Returns a null Handle if <ent> is unknown
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") Shareds;
 		opencascade::handle<TColStd_HSequenceOfTransient> Shareds (const opencascade::handle<Standard_Transient> & ent);
 
@@ -4789,7 +4789,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") Sharings;
 		%feature("autodoc", "* Returns the list of entities sharing <ent> (can be empty) Returns a null Handle if <ent> is unknown
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") Sharings;
 		opencascade::handle<TColStd_HSequenceOfTransient> Sharings (const opencascade::handle<Standard_Transient> & ent);
 
@@ -4811,9 +4811,9 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") SignValue;
 		%feature("autodoc", "* Returns the Value computed by a Signature for an Entity Returns an empty string if the entity does not belong to the loaded model
 	:param sign:
-	:type sign: opencascade::handle<IFSelect_Signature> &
+	:type sign: IFSelect_Signature
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: char *") SignValue;
 		const char * SignValue (const opencascade::handle<IFSelect_Signature> & sign,const opencascade::handle<Standard_Transient> & ent);
 
@@ -4829,7 +4829,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") Source;
 		%feature("autodoc", "* Returns the <num>th Input Selection of a Selection (see NbSources). Returns a Null Handle if <sel> is not in the WorkSession or if <num> is out of the range <1-NbSources> To obtain more details, see the method Sources
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param num: default value is 1
 	:type num: int
 	:rtype: opencascade::handle<IFSelect_Selection>") Source;
@@ -4839,7 +4839,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") Sources;
 		%feature("autodoc", "* Returns the Selections which are source of Selection, given its rank in the List of Selections (see SelectionIterator) Returned value is empty if <num> is out of range or if <sel> is not in the WorkSession
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: IFSelect_SelectionIterator") Sources;
 		IFSelect_SelectionIterator Sources (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -4855,7 +4855,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") StartingNumber;
 		%feature("autodoc", "* Returns the Number of an Entity in the Model (0 if no Model set or <ent> not in the Model)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") StartingNumber;
 		Standard_Integer StartingNumber (const opencascade::handle<Standard_Transient> & ent);
 
@@ -4871,7 +4871,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") TextValue;
 		%feature("autodoc", "* Returns Text Value of a TextParam (a String) or an empty string if <it> is not in the WorkSession
 	:param par:
-	:type par: opencascade::handle<TCollection_HAsciiString> &
+	:type par: TCollection_HAsciiString
 	:rtype: TCollection_AsciiString") TextValue;
 		TCollection_AsciiString TextValue (const opencascade::handle<TCollection_HAsciiString> & par);
 
@@ -4879,7 +4879,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ToggleSelectExtract;
 		%feature("autodoc", "* Toggles the Sense (Direct <-> Reversed) of a SelectExtract Returns True if Done, False if <sel> is not a SelectExtract or is not in the WorkSession
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: bool") ToggleSelectExtract;
 		Standard_Boolean ToggleSelectExtract (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -4887,7 +4887,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") TraceDumpEntity;
 		%feature("autodoc", "* Dumps an entity from the current Model as inherited DumpEntity on currently defined Default Trace File (<level> interpreted according to the Norm, see WorkLibrary)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param level:
 	:type level: int
 	:rtype: None") TraceDumpEntity;
@@ -4923,7 +4923,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") UsesAppliedModifier;
 		%feature("autodoc", "* Returns the item on which a GeneralModifier is applied : the ShareOut, or a given Dispatch Returns a Null Handle if <modif> is not applied
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_GeneralModifier> &
+	:type modif: IFSelect_GeneralModifier
 	:rtype: opencascade::handle<Standard_Transient>") UsesAppliedModifier;
 		opencascade::handle<Standard_Transient> UsesAppliedModifier (const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
@@ -4931,7 +4931,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 		%feature("compactdefaultargs") ValidityName;
 		%feature("autodoc", "* Returns the Validity Name determined for an entity it is computed by the class SignValidity Remark : an unknown entity gives an empty string
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: char *") ValidityName;
 		const char * ValidityName (const opencascade::handle<Standard_Transient> & ent);
 
@@ -4955,7 +4955,7 @@ class IFSelect_WorkSession : public Standard_Transient {
 	:param filename:
 	:type filename: char *
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: IFSelect_ReturnStatus") WriteFile;
 		IFSelect_ReturnStatus WriteFile (const char * filename,const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -5006,7 +5006,7 @@ class IFSelect_Act : public IFSelect_Activator {
 	:param number:
 	:type number: int
 	:param pilot:
-	:type pilot: opencascade::handle<IFSelect_SessionPilot> &
+	:type pilot: IFSelect_SessionPilot
 	:rtype: IFSelect_ReturnStatus") Do;
 		IFSelect_ReturnStatus Do (const Standard_Integer number,const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
@@ -5067,11 +5067,11 @@ class IFSelect_BasicDumper : public IFSelect_SessionDumper {
 		%feature("compactdefaultargs") ReadOwn;
 		%feature("autodoc", "* Recognizes and Read Own Parameters for Types of package IFSelect. Returns True if done and <item> created, False else
 	:param file:
-	:type file: IFSelect_SessionFile &
+	:type file: IFSelect_SessionFile
 	:param type:
-	:type type: TCollection_AsciiString &
+	:type type: TCollection_AsciiString
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") ReadOwn;
 		Standard_Boolean ReadOwn (IFSelect_SessionFile & file,const TCollection_AsciiString & type,opencascade::handle<Standard_Transient> & item);
 
@@ -5079,9 +5079,9 @@ class IFSelect_BasicDumper : public IFSelect_SessionDumper {
 		%feature("compactdefaultargs") WriteOwn;
 		%feature("autodoc", "* Write the Own Parameters of Types defined in package IFSelect Returns True if <item> has been processed, False else
 	:param file:
-	:type file: IFSelect_SessionFile &
+	:type file: IFSelect_SessionFile
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") WriteOwn;
 		Standard_Boolean WriteOwn (IFSelect_SessionFile & file,const opencascade::handle<Standard_Transient> & item);
 
@@ -5106,9 +5106,9 @@ class IFSelect_CheckCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") Analyse;
 		%feature("autodoc", "* Analyses a CheckIterator according a Model (which detains the entities for which the CheckIterator has messages), i.e. counts messages for entities If <original> is True, does not consider final messages but those before interpretation (such as inserting variables : integers, reals, strings) If <failsonly> is True, only Fails are considered Remark : global messages are recorded with a Null entity
 	:param list:
-	:type list: Interface_CheckIterator &
+	:type list: Interface_CheckIterator
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param original: default value is Standard_False
 	:type original: bool
 	:param failsonly: default value is Standard_False
@@ -5128,7 +5128,7 @@ class IFSelect_CheckCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") SetSignature;
 		%feature("autodoc", "* Sets a specific signature Else, the current SignType (in the model) is used
 	:param sign:
-	:type sign: opencascade::handle<MoniTool_SignText> &
+	:type sign: MoniTool_SignText
 	:rtype: None") SetSignature;
 		void SetSignature (const opencascade::handle<MoniTool_SignText> & sign);
 
@@ -5173,7 +5173,7 @@ class IFSelect_DispGlobal : public IFSelect_Dispatch {
 	:param nbent:
 	:type nbent: int
 	:param max:
-	:type max: int &
+	:type max: int
 	:rtype: bool") LimitedMax;
 		virtual Standard_Boolean LimitedMax (const Standard_Integer nbent,Standard_Integer &OutValue);
 
@@ -5181,9 +5181,9 @@ class IFSelect_DispGlobal : public IFSelect_Dispatch {
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "* Computes the list of produced Packets. It is made of only ONE Packet, which gets the RootResult from the Final Selection. Remark : the inherited exception raising is never activated.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param packs:
-	:type packs: IFGraph_SubPartsIterator &
+	:type packs: IFGraph_SubPartsIterator
 	:rtype: None") Packets;
 		void Packets (const Interface_Graph & G,IFGraph_SubPartsIterator & packs);
 
@@ -5234,7 +5234,7 @@ class IFSelect_DispPerCount : public IFSelect_Dispatch {
 	:param nbent:
 	:type nbent: int
 	:param max:
-	:type max: int &
+	:type max: int
 	:rtype: bool") LimitedMax;
 		virtual Standard_Boolean LimitedMax (const Standard_Integer nbent,Standard_Integer &OutValue);
 
@@ -5242,9 +5242,9 @@ class IFSelect_DispPerCount : public IFSelect_Dispatch {
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "* Computes the list of produced Packets. It defines Packets in order to have at most <Count> Entities per Packet, Entities are given by RootResult from the Final Selection.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param packs:
-	:type packs: IFGraph_SubPartsIterator &
+	:type packs: IFGraph_SubPartsIterator
 	:rtype: None") Packets;
 		void Packets (const Interface_Graph & G,IFGraph_SubPartsIterator & packs);
 
@@ -5252,7 +5252,7 @@ class IFSelect_DispPerCount : public IFSelect_Dispatch {
 		%feature("compactdefaultargs") SetCount;
 		%feature("autodoc", "* Sets a new Parameter for Count
 	:param count:
-	:type count: opencascade::handle<IFSelect_IntParam> &
+	:type count: IFSelect_IntParam
 	:rtype: None") SetCount;
 		void SetCount (const opencascade::handle<IFSelect_IntParam> & count);
 
@@ -5303,7 +5303,7 @@ class IFSelect_DispPerFiles : public IFSelect_Dispatch {
 	:param nbent:
 	:type nbent: int
 	:param max:
-	:type max: int &
+	:type max: int
 	:rtype: bool") LimitedMax;
 		virtual Standard_Boolean LimitedMax (const Standard_Integer nbent,Standard_Integer &OutValue);
 
@@ -5311,9 +5311,9 @@ class IFSelect_DispPerFiles : public IFSelect_Dispatch {
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "* Computes the list of produced Packets. It defines Packets in order to have <Count> Packets, except if the input count of Entities is lower. Entities are given by RootResult from the Final Selection.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param packs:
-	:type packs: IFGraph_SubPartsIterator &
+	:type packs: IFGraph_SubPartsIterator
 	:rtype: None") Packets;
 		void Packets (const Interface_Graph & G,IFGraph_SubPartsIterator & packs);
 
@@ -5321,7 +5321,7 @@ class IFSelect_DispPerFiles : public IFSelect_Dispatch {
 		%feature("compactdefaultargs") SetCount;
 		%feature("autodoc", "* Sets a new Parameter for Count
 	:param count:
-	:type count: opencascade::handle<IFSelect_IntParam> &
+	:type count: IFSelect_IntParam
 	:rtype: None") SetCount;
 		void SetCount (const opencascade::handle<IFSelect_IntParam> & count);
 
@@ -5360,7 +5360,7 @@ class IFSelect_DispPerOne : public IFSelect_Dispatch {
 	:param nbent:
 	:type nbent: int
 	:param max:
-	:type max: int &
+	:type max: int
 	:rtype: bool") LimitedMax;
 		virtual Standard_Boolean LimitedMax (const Standard_Integer nbent,Standard_Integer &OutValue);
 
@@ -5368,9 +5368,9 @@ class IFSelect_DispPerOne : public IFSelect_Dispatch {
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "* Returns the list of produced Packets. It defines one Packet per Entity given by RootResult from the Final Selection.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param packs:
-	:type packs: IFGraph_SubPartsIterator &
+	:type packs: IFGraph_SubPartsIterator
 	:rtype: None") Packets;
 		void Packets (const Interface_Graph & G,IFGraph_SubPartsIterator & packs);
 
@@ -5409,7 +5409,7 @@ class IFSelect_DispPerSignature : public IFSelect_Dispatch {
 	:param nbent:
 	:type nbent: int
 	:param max:
-	:type max: int &
+	:type max: int
 	:rtype: bool") LimitedMax;
 		virtual Standard_Boolean LimitedMax (const Standard_Integer nbent,Standard_Integer &OutValue);
 
@@ -5417,9 +5417,9 @@ class IFSelect_DispPerSignature : public IFSelect_Dispatch {
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "* Computes the list of produced Packets. It defines Packets from the SignCounter, which sirts the input Entities per Signature (specific of the SignCounter).
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param packs:
-	:type packs: IFGraph_SubPartsIterator &
+	:type packs: IFGraph_SubPartsIterator
 	:rtype: None") Packets;
 		void Packets (const Interface_Graph & G,IFGraph_SubPartsIterator & packs);
 
@@ -5427,7 +5427,7 @@ class IFSelect_DispPerSignature : public IFSelect_Dispatch {
 		%feature("compactdefaultargs") SetSignCounter;
 		%feature("autodoc", "* Sets a SignCounter for sort Remark : it is set to record lists of entities, not only counts
 	:param sign:
-	:type sign: opencascade::handle<IFSelect_SignCounter> &
+	:type sign: IFSelect_SignCounter
 	:rtype: None") SetSignCounter;
 		void SetSignCounter (const opencascade::handle<IFSelect_SignCounter> & sign);
 
@@ -5464,13 +5464,13 @@ class IFSelect_Modifier : public IFSelect_GeneralModifier {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* This deferred method defines the action specific to each class of Modifier. It is called by a ModelCopier, once the Model generated and filled. ModelCopier has already checked the criteria (Dispatch, Model Rank, Selection) before calling it. //! <ctx> detains informations about original data and selection. The result of copying, on which modifications are to be done, is <target>. <TC> allows to run additional copies as required //! In case of Error, use methods CCheck from the ContextModif to aknowledge an entity Check or a Global Check with messages
 	:param ctx:
-	:type ctx: IFSelect_ContextModif &
+	:type ctx: IFSelect_ContextModif
 	:param target:
-	:type target: opencascade::handle<Interface_InterfaceModel> &
+	:type target: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: void") Perform;
 		virtual void Perform (IFSelect_ContextModif & ctx,const opencascade::handle<Interface_InterfaceModel> & target,const opencascade::handle<Interface_Protocol> & protocol,Interface_CopyTool & TC);
 
@@ -5507,7 +5507,7 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 		%feature("compactdefaultargs") AddValue;
 		%feature("autodoc", "* Adds a TypedValue By default, its short name equates its complete name, it can be explicited
 	:param val:
-	:type val: opencascade::handle<Interface_TypedValue> &
+	:type val: Interface_TypedValue
 	:param shortname: default value is ""
 	:type shortname: char *
 	:rtype: None") AddValue;
@@ -5516,11 +5516,11 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 		/****************** Apply ******************/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Apply;
 		Standard_Boolean Apply (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -5542,18 +5542,18 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Load;
 		Standard_Boolean Load (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****************** Recognize ******************/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:rtype: bool") Recognize;
 		Standard_Boolean Recognize (const opencascade::handle<IFSelect_EditForm> & form);
 
@@ -5561,7 +5561,7 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 		%feature("compactdefaultargs") StaticEditor;
 		%feature("autodoc", "* Returns a ParamEditor to work on the Static Parameters of which names are listed in <list> Null Handle if <list> is null or empty
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfHAsciiString> &
+	:type list: TColStd_HSequenceOfHAsciiString
 	:param label: default value is ""
 	:type label: char *
 	:rtype: opencascade::handle<IFSelect_ParamEditor>") StaticEditor;
@@ -5570,7 +5570,7 @@ class IFSelect_ParamEditor : public IFSelect_Editor {
 		/****************** StringValue ******************/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param num:
 	:type num: int
 	:rtype: opencascade::handle<TCollection_HAsciiString>") StringValue;
@@ -5597,7 +5597,7 @@ class IFSelect_SelectBase : public IFSelect_Selection {
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "* Puts in an Iterator the Selections from which 'me' depends This list is empty for all SelectBase type Selections
 	:param iter:
-	:type iter: IFSelect_SelectionIterator &
+	:type iter: IFSelect_SelectionIterator
 	:rtype: None") FillIterator;
 		void FillIterator (IFSelect_SelectionIterator & iter);
 
@@ -5622,7 +5622,7 @@ class IFSelect_SelectCombine : public IFSelect_Selection {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Selection to the filling list By default, adds it to the end of the list A Positive rank less then NbInputs gives an insertion rank (InsertBefore : the new <atnum>th item of the list is <sel>)
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param atnum: default value is 0
 	:type atnum: int
 	:rtype: None") Add;
@@ -5632,7 +5632,7 @@ class IFSelect_SelectCombine : public IFSelect_Selection {
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "* Puts in an Iterator the Selections from which 'me' depends That is to say, the list of Input Selections
 	:param iter:
-	:type iter: IFSelect_SelectionIterator &
+	:type iter: IFSelect_SelectionIterator
 	:rtype: None") FillIterator;
 		void FillIterator (IFSelect_SelectionIterator & iter);
 
@@ -5648,7 +5648,7 @@ class IFSelect_SelectCombine : public IFSelect_Selection {
 		%feature("compactdefaultargs") InputRank;
 		%feature("autodoc", "* Returns the rank of an input Selection, 0 if not in the list. Most generally, its value is meaningless, except for testing the presence of an input Selection : - == 0 if <sel> is not an input for <self> - > 0 if <sel> is an input for <self>
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: int") InputRank;
 		Standard_Integer InputRank (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -5662,7 +5662,7 @@ class IFSelect_SelectCombine : public IFSelect_Selection {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes an input Selection. Returns True if Done, False, if <sel> is not an input for <self>
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: bool") Remove;
 		Standard_Boolean Remove (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -5695,7 +5695,7 @@ class IFSelect_SelectControl : public IFSelect_Selection {
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "* Puts in an Iterator the Selections from which 'me' depends That is to say, the list of Input Selections
 	:param iter:
-	:type iter: IFSelect_SelectionIterator &
+	:type iter: IFSelect_SelectionIterator
 	:rtype: None") FillIterator;
 		void FillIterator (IFSelect_SelectionIterator & iter);
 
@@ -5721,7 +5721,7 @@ class IFSelect_SelectControl : public IFSelect_Selection {
 		%feature("compactdefaultargs") SetMainInput;
 		%feature("autodoc", "* Sets a Selection to be the Main Input
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") SetMainInput;
 		void SetMainInput (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -5729,7 +5729,7 @@ class IFSelect_SelectControl : public IFSelect_Selection {
 		%feature("compactdefaultargs") SetSecondInput;
 		%feature("autodoc", "* Sets a Selection to be the Control Input
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") SetSecondInput;
 		void SetSecondInput (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -5760,7 +5760,7 @@ class IFSelect_SelectDeduct : public IFSelect_Selection {
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "* Puts in an Iterator the Selections from which 'me' depends This list contains one Selection : the InputSelection
 	:param iter:
-	:type iter: IFSelect_SelectionIterator &
+	:type iter: IFSelect_SelectionIterator
 	:rtype: None") FillIterator;
 		void FillIterator (IFSelect_SelectionIterator & iter);
 
@@ -5786,7 +5786,7 @@ class IFSelect_SelectDeduct : public IFSelect_Selection {
 		%feature("compactdefaultargs") InputResult;
 		%feature("autodoc", "* Returns the Result determined by Input Selection, as Unique if Input Selection is not defined, returns an empty list. //! If Alternate is set, InputResult takes its definition instead of calling the Input Selection, then clears it
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") InputResult;
 		Interface_EntityIterator InputResult (const Interface_Graph & G);
 
@@ -5794,7 +5794,7 @@ class IFSelect_SelectDeduct : public IFSelect_Selection {
 		%feature("compactdefaultargs") SetInput;
 		%feature("autodoc", "* Defines or Changes the Input Selection
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") SetInput;
 		void SetInput (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -5857,7 +5857,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 	:param number:
 	:type number: int
 	:param session:
-	:type session: opencascade::handle<IFSelect_SessionPilot> &
+	:type session: IFSelect_SessionPilot
 	:rtype: IFSelect_ReturnStatus") Do;
 		IFSelect_ReturnStatus Do (const Standard_Integer number,const opencascade::handle<IFSelect_SessionPilot> & session);
 
@@ -5865,7 +5865,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 		%feature("compactdefaultargs") Execute;
 		%feature("autodoc", "* Sets the Command then tries to execute it. Return value : same as for Perform
 	:param command:
-	:type command: TCollection_AsciiString &
+	:type command: TCollection_AsciiString
 	:rtype: IFSelect_ReturnStatus") Execute;
 		IFSelect_ReturnStatus Execute (const TCollection_AsciiString & command);
 
@@ -5873,7 +5873,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 		%feature("compactdefaultargs") ExecuteAlias;
 		%feature("autodoc", "* Executes the Commands, except that the command name (word 0) is aliased. The rest of the command line is unchanged If <alias> is empty, Executes with no change //! Error status is returned if the alias is unknown as command
 	:param aliasname:
-	:type aliasname: TCollection_AsciiString &
+	:type aliasname: TCollection_AsciiString
 	:rtype: IFSelect_ReturnStatus") ExecuteAlias;
 		IFSelect_ReturnStatus ExecuteAlias (const TCollection_AsciiString & aliasname);
 
@@ -5881,7 +5881,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 		%feature("compactdefaultargs") ExecuteCounter;
 		%feature("autodoc", "* Executes a Counter in a general way If <numword> is greater than count of command words, it counts all the model. Else it considers the word <numword> as the identifier of a Selection <mode> gives the mode of printing results, default is CountByItem
 	:param counter:
-	:type counter: opencascade::handle<IFSelect_SignCounter> &
+	:type counter: IFSelect_SignCounter
 	:param numword:
 	:type numword: int
 	:param mode: default value is IFSelect_CountByItem
@@ -5949,7 +5949,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 		%feature("compactdefaultargs") RecordItem;
 		%feature("autodoc", "* Allows to associate a Transient Value with the last execution as a partial result Returns RetDone if item is not Null, RetFail if item is Null Remark : it is nullified for each Perform
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: IFSelect_ReturnStatus") RecordItem;
 		IFSelect_ReturnStatus RecordItem (const opencascade::handle<Standard_Transient> & item);
 
@@ -5983,7 +5983,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 		%feature("compactdefaultargs") SetCommandLine;
 		%feature("autodoc", "* Sets the value of the Command Line to be interpreted Also prepares the interpretation (splitting by blanks)
 	:param command:
-	:type command: TCollection_AsciiString &
+	:type command: TCollection_AsciiString
 	:rtype: None") SetCommandLine;
 		void SetCommandLine (const TCollection_AsciiString & command);
 
@@ -5991,7 +5991,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 		%feature("compactdefaultargs") SetLibrary;
 		%feature("autodoc", "* Sets a WorkLibrary
 	:param WL:
-	:type WL: opencascade::handle<IFSelect_WorkLibrary> &
+	:type WL: IFSelect_WorkLibrary
 	:rtype: None") SetLibrary;
 		void SetLibrary (const opencascade::handle<IFSelect_WorkLibrary> & WL);
 
@@ -6007,7 +6007,7 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 		%feature("compactdefaultargs") SetSession;
 		%feature("autodoc", "* Sets a WorkSession to be worked on
 	:param WS:
-	:type WS: opencascade::handle<IFSelect_WorkSession> &
+	:type WS: IFSelect_WorkSession
 	:rtype: None") SetSession;
 		void SetSession (const opencascade::handle<IFSelect_WorkSession> & WS);
 
@@ -6046,9 +6046,9 @@ class IFSelect_SignCategory : public IFSelect_Signature {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Returns the Signature for a Transient object, as its Category recorded in the model
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: char *") Value;
 		const char * Value (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6073,9 +6073,9 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "* Adds an entity by considering its signature, which is given by call to method AddSign Returns True if added, False if already in the map (and map control status set)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") AddEntity;
 		virtual Standard_Boolean AddEntity (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6083,9 +6083,9 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") AddFromSelection;
 		%feature("autodoc", "* Adds the result determined by a Selection from a Graph Remark : does not impact at all data from SetSelection & Co
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: None") AddFromSelection;
 		void AddFromSelection (const opencascade::handle<IFSelect_Selection> & sel,const Interface_Graph & G);
 
@@ -6093,9 +6093,9 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "* Adds a list of entities by adding each of the items
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") AddList;
 		void AddList (const opencascade::handle<TColStd_HSequenceOfTransient> & list,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6103,7 +6103,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") AddModel;
 		%feature("autodoc", "* Adds all the entities contained in a Model
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") AddModel;
 		void AddModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6111,9 +6111,9 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") AddSign;
 		%feature("autodoc", "* Adds an entity (already filtered by Map) with its signature. This signature can be computed with the containing model. Its value is provided by the object Signature given at start, if no Signature is defined, it does nothing. //! Can be redefined (in this case, see also Sign)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: void") AddSign;
 		virtual void AddSign (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6121,9 +6121,9 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") AddWithGraph;
 		%feature("autodoc", "* Adds a list of entities in the context given by the graph Default just call basic AddList Can be redefined to get a signature computed with the graph
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:param graph:
-	:type graph: Interface_Graph &
+	:type graph: Interface_Graph
 	:rtype: void") AddWithGraph;
 		virtual void AddWithGraph (const opencascade::handle<TColStd_HSequenceOfTransient> & list,const Interface_Graph & graph);
 
@@ -6131,7 +6131,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") ComputeSelected;
 		%feature("autodoc", "* Computes from the selection result, if selection is active (mode 2). If selection is not defined (mode 0) or is inhibited (mode 1) does nothing. Returns True if computation is done (or optimised), False else This method is called by ComputeCounter from WorkSession //! If <forced> is True, recomputes systematically Else (D), if the counter was not cleared and if the former computed result started from the same total size of Graph and same count of selected entities : computation is not redone unless <forced> is given as True
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param forced: default value is Standard_False
 	:type forced: bool
 	:rtype: bool") ComputeSelected;
@@ -6141,9 +6141,9 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") ComputedSign;
 		%feature("autodoc", "* Applies AddWithGraph on one entity, and returns the Signature Value which has been recorded To do this, Add is called with SignOnly Mode True during the call, the returned value is LastValue
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: char *") ComputedSign;
 		const char * ComputedSign (const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G);
 
@@ -6161,7 +6161,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") IFSelect_SignCounter;
 		%feature("autodoc", "* Creates a SignCounter, with a predefined Signature Other arguments as for Create without Signature.
 	:param matcher:
-	:type matcher: opencascade::handle<IFSelect_Signature> &
+	:type matcher: IFSelect_Signature
 	:param withmap: default value is Standard_True
 	:type withmap: bool
 	:param withlist: default value is Standard_False
@@ -6201,7 +6201,7 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") SetSelection;
 		%feature("autodoc", "* Sets a Selection as input : this causes content to be cleared then the Selection to be ready to compute (but not immediatly)
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") SetSelection;
 		void SetSelection (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -6209,9 +6209,9 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 		%feature("compactdefaultargs") Sign;
 		%feature("autodoc", "* Determines and returns the value of the signature for an entity as an HAsciiString. This method works exactly as AddSign, which is optimized //! Can be redefined, accorded with AddSign
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: opencascade::handle<TCollection_HAsciiString>") Sign;
 		virtual opencascade::handle<TCollection_HAsciiString> Sign (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6242,7 +6242,7 @@ class IFSelect_SignMultiple : public IFSelect_Signature {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Signature. Width, if given, gives the tabulation If <maxi> is True, it is a forced tabulation (overlength is replaced by a final dot) If <maxi> is False, just 3 blanks follow an overlength
 	:param subsign:
-	:type subsign: opencascade::handle<IFSelect_Signature> &
+	:type subsign: IFSelect_Signature
 	:param width: default value is 0
 	:type width: int
 	:param maxi: default value is Standard_False
@@ -6262,11 +6262,11 @@ class IFSelect_SignMultiple : public IFSelect_Signature {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Specialized Match Rule If <exact> is False, simply checks if at least one sub-item matches If <exact> is True, standard match with Value (i.e. tabulations must be respected)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param text:
-	:type text: TCollection_AsciiString &
+	:type text: TCollection_AsciiString
 	:param exact:
 	:type exact: bool
 	:rtype: bool") Matches;
@@ -6276,9 +6276,9 @@ class IFSelect_SignMultiple : public IFSelect_Signature {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Concatenates the values of sub-signatures, with their tabulations
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: char *") Value;
 		const char * Value (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6311,9 +6311,9 @@ class IFSelect_SignType : public IFSelect_Signature {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Returns the Signature for a Transient object, as its Dynamic Type, with or without package name, according starting option
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: char *") Value;
 		const char * Value (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6338,9 +6338,9 @@ class IFSelect_SignValidity : public IFSelect_Signature {
 		%feature("compactdefaultargs") CVal;
 		%feature("autodoc", "* Returns the Signature for a Transient object, as a validity deducted from data (reports) stored in the model. Class method, can be called by any one
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: char *") CVal;
 		static const char * CVal (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6354,9 +6354,9 @@ class IFSelect_SignValidity : public IFSelect_Signature {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Returns the Signature for a Transient object, as a validity deducted from data (reports) stored in the model Calls the class method CVal
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: char *") Value;
 		const char * Value (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -6381,7 +6381,7 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") AddModifier;
 		%feature("autodoc", "* Adds a Modifier to the list : - <atnum> = 0 (default) : at the end of the list - <atnum> > 0 : at rank <atnum> Returns True if done, False if <atnum> is out of range
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_Modifier> &
+	:type modif: IFSelect_Modifier
 	:param atnum: default value is 0
 	:type atnum: int
 	:rtype: bool") AddModifier;
@@ -6391,15 +6391,15 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") ApplyModifiers;
 		%feature("autodoc", "* Applies the modifiers sequencially. For each one, prepares required data (if a Selection is associated as a filter). For the option OnTheSpot, it determines if the graph may be changed and updates <newmod> if required If a Modifier causes an error (check 'HasFailed'), ApplyModifier stops : the following Modifiers are ignored
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:param checks:
-	:type checks: Interface_CheckIterator &
+	:type checks: Interface_CheckIterator
 	:param newmod:
-	:type newmod: opencascade::handle<Interface_InterfaceModel> &
+	:type newmod: Interface_InterfaceModel
 	:rtype: bool") ApplyModifiers;
 		Standard_Boolean ApplyModifiers (const Interface_Graph & G,const opencascade::handle<Interface_Protocol> & protocol,Interface_CopyTool & TC,Interface_CheckIterator & checks,opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -6407,11 +6407,11 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* This the first operation. It calls StandardCopy or OnTheSpot according the option
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:param newmod:
-	:type newmod: opencascade::handle<Interface_InterfaceModel> &
+	:type newmod: Interface_InterfaceModel
 	:rtype: None") Copy;
 		void Copy (const Interface_Graph & G,Interface_CopyTool & TC,opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -6445,7 +6445,7 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") ModifierRank;
 		%feature("autodoc", "* Returns the rank of a Modifier in the list, 0 if unknown
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_Modifier> &
+	:type modif: IFSelect_Modifier
 	:rtype: int") ModifierRank;
 		Standard_Integer ModifierRank (const opencascade::handle<IFSelect_Modifier> & modif);
 
@@ -6459,11 +6459,11 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") OnTheSpot;
 		%feature("autodoc", "* This is the OnTheSpot action : each entity is bound with ... itself. The produced model is the same as the starting one.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:param newmod:
-	:type newmod: opencascade::handle<Interface_InterfaceModel> &
+	:type newmod: Interface_InterfaceModel
 	:rtype: None") OnTheSpot;
 		void OnTheSpot (const Interface_Graph & G,Interface_CopyTool & TC,opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -6471,13 +6471,13 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs the Standard Transformation, by calling Copy then ApplyModifiers (which can return an error status)
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param checks:
-	:type checks: Interface_CheckIterator &
+	:type checks: Interface_CheckIterator
 	:param newmod:
-	:type newmod: opencascade::handle<Interface_InterfaceModel> &
+	:type newmod: Interface_InterfaceModel
 	:rtype: bool") Perform;
 		Standard_Boolean Perform (const Interface_Graph & G,const opencascade::handle<Interface_Protocol> & protocol,Interface_CheckIterator & checks,opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -6485,7 +6485,7 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") RemoveModifier;
 		%feature("autodoc", "* Removes a Modifier from the list Returns True if done, False if <modif> not in the list
 	:param modif:
-	:type modif: opencascade::handle<IFSelect_Modifier> &
+	:type modif: IFSelect_Modifier
 	:rtype: bool") RemoveModifier;
 		Standard_Boolean RemoveModifier (const opencascade::handle<IFSelect_Modifier> & modif);
 
@@ -6515,7 +6515,7 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") SetSelection;
 		%feature("autodoc", "* Sets a Selection (or unsets if Null) This Selection then defines the list of entities on which the Modifiers will be applied If it is set, it has priority on Selections of Modifiers Else, for each Modifier its Selection is evaluated By default, all the Model is taken
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_Selection> &
+	:type sel: IFSelect_Selection
 	:rtype: None") SetSelection;
 		void SetSelection (const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -6523,11 +6523,11 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") StandardCopy;
 		%feature("autodoc", "* This is the standard action of Copy : its takes into account only the remaining entities (noted by Graph Status positive) and their proper dependances of course. Produces a new model.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:param newmod:
-	:type newmod: opencascade::handle<Interface_InterfaceModel> &
+	:type newmod: Interface_InterfaceModel
 	:rtype: None") StandardCopy;
 		void StandardCopy (const Interface_Graph & G,Interface_CopyTool & TC,opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -6535,9 +6535,9 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 		%feature("compactdefaultargs") Updated;
 		%feature("autodoc", "* This methods allows to know what happened to a starting entity after the last Perform. It reads result from the map which was filled by Perform.
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:rtype: bool") Updated;
 		Standard_Boolean Updated (const opencascade::handle<Standard_Transient> & entfrom,opencascade::handle<Standard_Transient> & entto);
 
@@ -6562,9 +6562,9 @@ class IFSelect_GraphCounter : public IFSelect_SignCounter {
 		%feature("compactdefaultargs") AddWithGraph;
 		%feature("autodoc", "* Adds a list of entities in the context given by the graph Default takes the count of entities selected by the applied selection, when it is given each entity of the list Can be redefined
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:param graph:
-	:type graph: Interface_Graph &
+	:type graph: Interface_Graph
 	:rtype: void") AddWithGraph;
 		virtual void AddWithGraph (const opencascade::handle<TColStd_HSequenceOfTransient> & list,const Interface_Graph & graph);
 
@@ -6588,7 +6588,7 @@ class IFSelect_GraphCounter : public IFSelect_SignCounter {
 		%feature("compactdefaultargs") SetApplied;
 		%feature("autodoc", "* Sets a new applied selection
 	:param sel:
-	:type sel: opencascade::handle<IFSelect_SelectDeduct> &
+	:type sel: IFSelect_SelectDeduct
 	:rtype: None") SetApplied;
 		void SetApplied (const opencascade::handle<IFSelect_SelectDeduct> & sel);
 
@@ -6619,7 +6619,7 @@ class IFSelect_ModifEditForm : public IFSelect_Modifier {
 		%feature("compactdefaultargs") IFSelect_ModifEditForm;
 		%feature("autodoc", "* Creates a ModifEditForm. It may not change the graph
 	:param editform:
-	:type editform: opencascade::handle<IFSelect_EditForm> &
+	:type editform: IFSelect_EditForm
 	:rtype: None") IFSelect_ModifEditForm;
 		 IFSelect_ModifEditForm (const opencascade::handle<IFSelect_EditForm> & editform);
 
@@ -6633,13 +6633,13 @@ class IFSelect_ModifEditForm : public IFSelect_Modifier {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Acts by applying an EditForm to entities, selected or all model
 	:param ctx:
-	:type ctx: IFSelect_ContextModif &
+	:type ctx: IFSelect_ContextModif
 	:param target:
-	:type target: opencascade::handle<Interface_InterfaceModel> &
+	:type target: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: None") Perform;
 		void Perform (IFSelect_ContextModif & ctx,const opencascade::handle<Interface_InterfaceModel> & target,const opencascade::handle<Interface_Protocol> & protocol,Interface_CopyTool & TC);
 
@@ -6678,13 +6678,13 @@ class IFSelect_ModifReorder : public IFSelect_Modifier {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Acts by computing orders (by method All from ShareTool) then forcing them in the model. Remark that selection is ignored : ALL the model is processed in once
 	:param ctx:
-	:type ctx: IFSelect_ContextModif &
+	:type ctx: IFSelect_ContextModif
 	:param target:
-	:type target: opencascade::handle<Interface_InterfaceModel> &
+	:type target: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: None") Perform;
 		void Perform (IFSelect_ContextModif & ctx,const opencascade::handle<Interface_InterfaceModel> & target,const opencascade::handle<Interface_Protocol> & protocol,Interface_CopyTool & TC);
 
@@ -6713,9 +6713,9 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 	:param n2:
 	:type n2: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: Interface_EntityIterator &
+	:type res: Interface_EntityIterator
 	:rtype: void") FillResult;
 		virtual void FillResult (const Standard_Integer n1,const Standard_Integer n2,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & res);
 
@@ -6735,7 +6735,7 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") KeepInputEntity;
 		%feature("autodoc", "* Keeps Input Entity, as having required type. It works by keeping in <iter>, only suitable Entities (SelectType can be used). Called by RootResult (which waits for ONE ENTITY MAX)
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: void") KeepInputEntity;
 		virtual void KeepInputEntity (Interface_EntityIterator & iter);
 
@@ -6767,7 +6767,7 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") NbItems;
 		%feature("autodoc", "* Returns count of Items in the list in the Entity <ent> If <ent> has not required type, returned value must be Zero
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") NbItems;
 		virtual Standard_Integer NbItems (const opencascade::handle<Standard_Transient> & ent);
 
@@ -6775,7 +6775,7 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities (list of entities complying with rank criterium) Error if the input list has more than one Item
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -6783,7 +6783,7 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") SetFrom;
 		%feature("autodoc", "* Sets a Lower limit but no upper limit
 	:param rankfrom:
-	:type rankfrom: opencascade::handle<IFSelect_IntParam> &
+	:type rankfrom: IFSelect_IntParam
 	:rtype: None") SetFrom;
 		void SetFrom (const opencascade::handle<IFSelect_IntParam> & rankfrom);
 
@@ -6791,7 +6791,7 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") SetOne;
 		%feature("autodoc", "* Sets a unique number (only one Entity will be sorted as True)
 	:param rank:
-	:type rank: opencascade::handle<IFSelect_IntParam> &
+	:type rank: IFSelect_IntParam
 	:rtype: None") SetOne;
 		void SetOne (const opencascade::handle<IFSelect_IntParam> & rank);
 
@@ -6799,9 +6799,9 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "* Sets a Range for numbers, with a lower and a upper limits
 	:param rankfrom:
-	:type rankfrom: opencascade::handle<IFSelect_IntParam> &
+	:type rankfrom: IFSelect_IntParam
 	:param rankto:
-	:type rankto: opencascade::handle<IFSelect_IntParam> &
+	:type rankto: IFSelect_IntParam
 	:rtype: None") SetRange;
 		void SetRange (const opencascade::handle<IFSelect_IntParam> & rankfrom,const opencascade::handle<IFSelect_IntParam> & rankto);
 
@@ -6809,7 +6809,7 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") SetUntil;
 		%feature("autodoc", "* Sets an Upper limit but no lower limit (equivalent to lower 1)
 	:param rankto:
-	:type rankto: opencascade::handle<IFSelect_IntParam> &
+	:type rankto: IFSelect_IntParam
 	:rtype: None") SetUntil;
 		void SetUntil (const opencascade::handle<IFSelect_IntParam> & rankto);
 
@@ -6858,7 +6858,7 @@ class IFSelect_SelectDiff : public IFSelect_SelectControl {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities : they are the Entities gotten from the Main Input but not from the Diff Input
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -6901,7 +6901,7 @@ class IFSelect_SelectEntityNumber : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities : the Entity having the specified Number (this result assures naturally uniqueness)
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -6909,7 +6909,7 @@ class IFSelect_SelectEntityNumber : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") SetNumber;
 		%feature("autodoc", "* Sets Entity Number to be taken (initially, none is set : 0)
 	:param num:
-	:type num: opencascade::handle<IFSelect_IntParam> &
+	:type num: IFSelect_IntParam
 	:rtype: None") SetNumber;
 		void SetNumber (const opencascade::handle<IFSelect_IntParam> & num);
 
@@ -6936,11 +6936,11 @@ class IFSelect_SelectExplore : public IFSelect_SelectDeduct {
 	:param level:
 	:type level: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param explored:
-	:type explored: Interface_EntityIterator &
+	:type explored: Interface_EntityIterator
 	:rtype: bool") Explore;
 		virtual Standard_Boolean Explore (const Standard_Integer level,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G,Interface_EntityIterator & explored);
 
@@ -6966,7 +6966,7 @@ class IFSelect_SelectExplore : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities. Works by calling the method Explore on each input entity : it can be rejected, taken for output, or to explore. If the maximum level has not yet been attained, or if no max level is specified, entities to be explored are themselves used as if they were input
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7009,7 +7009,7 @@ class IFSelect_SelectExtract : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities. Works by calling the method Sort on each input Entity : the Entity is kept as output if Sort returns the same value as Direct status
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		virtual Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7027,9 +7027,9 @@ class IFSelect_SelectExtract : public IFSelect_SelectDeduct {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		virtual Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -7039,9 +7039,9 @@ class IFSelect_SelectExtract : public IFSelect_SelectDeduct {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: bool") SortInGraph;
 		virtual Standard_Boolean SortInGraph (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G);
 
@@ -7078,7 +7078,7 @@ class IFSelect_SelectIntersection : public IFSelect_SelectCombine {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected Entities, which is the common part of results from all input selections. Uniqueness is guaranteed.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7103,7 +7103,7 @@ class IFSelect_SelectModelEntities : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") CompleteResult;
 		%feature("autodoc", "* The complete list of Entities (including shared ones) ... is exactly identical to RootResults in this case
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") CompleteResult;
 		virtual Interface_EntityIterator CompleteResult (const Interface_Graph & G);
 
@@ -7123,7 +7123,7 @@ class IFSelect_SelectModelEntities : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities : the Entities of the Model (note that this result assures naturally uniqueness)
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7160,7 +7160,7 @@ class IFSelect_SelectModelRoots : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities : the Roots of the Model (note that this result assures naturally uniqueness)
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7185,7 +7185,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds an item. Returns True if Done, False if <item> is already in the selected list
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") Add;
 		Standard_Boolean Add (const opencascade::handle<Standard_Transient> & item);
 
@@ -7193,7 +7193,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "* Adds all the items defined in a list. Returns True if at least one item has been added, False else
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: bool") AddList;
 		Standard_Boolean AddList (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -7239,7 +7239,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") Rank;
 		%feature("autodoc", "* Returns the rank of an item in the selected list, or 0.
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: int") Rank;
 		Standard_Integer Rank (const opencascade::handle<Standard_Transient> & item);
 
@@ -7247,7 +7247,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes an item. Returns True if Done, False if <item> was not in the selected list
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") Remove;
 		Standard_Boolean Remove (const opencascade::handle<Standard_Transient> & item);
 
@@ -7255,7 +7255,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") RemoveList;
 		%feature("autodoc", "* Removes all the items defined in a list. Returns True if at least one item has been removed, False else
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: bool") RemoveList;
 		Standard_Boolean RemoveList (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -7263,7 +7263,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected items. Only the selected entities which are present in the graph are given (this result assures uniqueness).
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7271,7 +7271,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") SetEntity;
 		%feature("autodoc", "* As SetList but with only one entity If <ent> is Null, the list is said as being set but is empty
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: None") SetEntity;
 		void SetEntity (const opencascade::handle<Standard_Transient> & item);
 
@@ -7279,7 +7279,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", "* Sets a given list to define the list of selected items <list> can be empty or null : in this case, the list is said as being set, but it is empty //! To use it as an alternate input, one shot : - SetList or SetEntity to define the input list - RootResult to get it - then Clear to drop it
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: None") SetList;
 		void SetList (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -7287,7 +7287,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") Toggle;
 		%feature("autodoc", "* Toggles status of an item : adds it if not pointed or removes it if already pointed. Returns the new status (Pointed or not)
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: bool") Toggle;
 		Standard_Boolean Toggle (const opencascade::handle<Standard_Transient> & item);
 
@@ -7295,7 +7295,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") ToggleList;
 		%feature("autodoc", "* Toggles status of all the items defined in a list : adds it if not pointed or removes it if already pointed.
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: bool") ToggleList;
 		Standard_Boolean ToggleList (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -7303,7 +7303,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* Rebuilds the selected list. Any selected entity which has a bound result is replaced by this result, else it is removed.
 	:param control:
-	:type control: opencascade::handle<Interface_CopyControl> &
+	:type control: Interface_CopyControl
 	:rtype: None") Update;
 		void Update (const opencascade::handle<Interface_CopyControl> & control);
 
@@ -7311,7 +7311,7 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* Rebuilds the selected list, by querying a Transformer (same principle as from a CopyControl)
 	:param trf:
-	:type trf: opencascade::handle<IFSelect_Transformer> &
+	:type trf: IFSelect_Transformer
 	:rtype: None") Update;
 		void Update (const opencascade::handle<IFSelect_Transformer> & trf);
 
@@ -7348,7 +7348,7 @@ class IFSelect_SelectShared : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities (list of entities shared by those of input list)
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7385,7 +7385,7 @@ class IFSelect_SelectSharing : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities (list of entities which share (level one) those of input list)
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7410,7 +7410,7 @@ class IFSelect_SelectSuite : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") AddInput;
 		%feature("autodoc", "* Adds an input selection. I.E. : If <item> is a SelectDeduct, adds it as Previous, not as Input Else, sets it as Input Returns True when done Returns False and refuses to work if Input is already defined
 	:param item:
-	:type item: opencascade::handle<IFSelect_Selection> &
+	:type item: IFSelect_Selection
 	:rtype: bool") AddInput;
 		Standard_Boolean AddInput (const opencascade::handle<IFSelect_Selection> & item);
 
@@ -7418,7 +7418,7 @@ class IFSelect_SelectSuite : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") AddNext;
 		%feature("autodoc", "* Adds a new last item (prepends to the list) If <item> is null, does nothing
 	:param item:
-	:type item: opencascade::handle<IFSelect_SelectDeduct> &
+	:type item: IFSelect_SelectDeduct
 	:rtype: None") AddNext;
 		void AddNext (const opencascade::handle<IFSelect_SelectDeduct> & item);
 
@@ -7426,7 +7426,7 @@ class IFSelect_SelectSuite : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") AddPrevious;
 		%feature("autodoc", "* Adds a new first item (prepends to the list). The Input is not touched If <item> is null, does nothing
 	:param item:
-	:type item: opencascade::handle<IFSelect_SelectDeduct> &
+	:type item: IFSelect_SelectDeduct
 	:rtype: None") AddPrevious;
 		void AddPrevious (const opencascade::handle<IFSelect_SelectDeduct> & item);
 
@@ -7460,7 +7460,7 @@ class IFSelect_SelectSuite : public IFSelect_SelectDeduct {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities To do this, once InputResult has been taken (if Input or Alternate has been defined, else the first Item gives it) : this result is set as alternate input for the first item, which computes its result : this result is set as alternate input for the second item, etc...
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7505,7 +7505,7 @@ class IFSelect_SelectUnion : public IFSelect_SelectCombine {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected Entities, which is the addition result from all input selections. Uniqueness is guaranteed.
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7536,11 +7536,11 @@ class IFSelect_SignAncestor : public IFSelect_SignType {
 		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param text:
-	:type text: TCollection_AsciiString &
+	:type text: TCollection_AsciiString
 	:param exact:
 	:type exact: bool
 	:rtype: bool") Matches;
@@ -7569,9 +7569,9 @@ class IFSelect_SelectAnyType : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -7616,9 +7616,9 @@ class IFSelect_SelectErrorEntities : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -7663,7 +7663,7 @@ class IFSelect_SelectFlag : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) //! An entity is selected if its flag is True on Direct mode, False on Reversed mode //! If flag does not exist for the given name, returns an empty result, whatever the Direct/Reversed sense
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		virtual Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7673,9 +7673,9 @@ class IFSelect_SelectFlag : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -7704,9 +7704,9 @@ class IFSelect_SelectInList : public IFSelect_SelectAnyList {
 	:param n2:
 	:type n2: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param result:
-	:type result: Interface_EntityIterator &
+	:type result: Interface_EntityIterator
 	:rtype: None") FillResult;
 		void FillResult (const Standard_Integer n1,const Standard_Integer n2,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & result);
 
@@ -7716,7 +7716,7 @@ class IFSelect_SelectInList : public IFSelect_SelectAnyList {
 	:param num:
 	:type num: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<Standard_Transient>") ListedEntity;
 		virtual opencascade::handle<Standard_Transient> ListedEntity (const Standard_Integer num,const opencascade::handle<Standard_Transient> & ent);
 
@@ -7777,7 +7777,7 @@ class IFSelect_SelectRange : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") SetFrom;
 		%feature("autodoc", "* Sets a Lower limit but no upper limit
 	:param rankfrom:
-	:type rankfrom: opencascade::handle<IFSelect_IntParam> &
+	:type rankfrom: IFSelect_IntParam
 	:rtype: None") SetFrom;
 		void SetFrom (const opencascade::handle<IFSelect_IntParam> & rankfrom);
 
@@ -7785,7 +7785,7 @@ class IFSelect_SelectRange : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") SetOne;
 		%feature("autodoc", "* Sets a unique number (only one Entity will be sorted as True)
 	:param rank:
-	:type rank: opencascade::handle<IFSelect_IntParam> &
+	:type rank: IFSelect_IntParam
 	:rtype: None") SetOne;
 		void SetOne (const opencascade::handle<IFSelect_IntParam> & rank);
 
@@ -7793,9 +7793,9 @@ class IFSelect_SelectRange : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "* Sets a Range for numbers, with a lower and a upper limits Error if rankto is lower then rankfrom
 	:param rankfrom:
-	:type rankfrom: opencascade::handle<IFSelect_IntParam> &
+	:type rankfrom: IFSelect_IntParam
 	:param rankto:
-	:type rankto: opencascade::handle<IFSelect_IntParam> &
+	:type rankto: IFSelect_IntParam
 	:rtype: None") SetRange;
 		void SetRange (const opencascade::handle<IFSelect_IntParam> & rankfrom,const opencascade::handle<IFSelect_IntParam> & rankto);
 
@@ -7803,7 +7803,7 @@ class IFSelect_SelectRange : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") SetUntil;
 		%feature("autodoc", "* Sets an Upper limit but no lower limit (equivalent to lower 1)
 	:param rankto:
-	:type rankto: opencascade::handle<IFSelect_IntParam> &
+	:type rankto: IFSelect_IntParam
 	:rtype: None") SetUntil;
 		void SetUntil (const opencascade::handle<IFSelect_IntParam> & rankto);
 
@@ -7813,9 +7813,9 @@ class IFSelect_SelectRange : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -7864,7 +7864,7 @@ class IFSelect_SelectRootComps : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of local root strong componants, by one Entity par componant. It is redefined for a purpose of effeciency : calling a Sort routine for each Entity would cost more ressource than to work in once using a Map RootResult takes in account the Direct status
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		virtual Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7874,9 +7874,9 @@ class IFSelect_SelectRootComps : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -7913,7 +7913,7 @@ class IFSelect_SelectRoots : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of local roots. It is redefined for a purpose of effeciency : calling a Sort routine for each Entity would cost more ressource than to work in once using a Map RootResult takes in account the Direct status
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		virtual Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7923,9 +7923,9 @@ class IFSelect_SelectRoots : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -7972,7 +7972,7 @@ class IFSelect_SelectSent : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "* Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) //! An entity is selected if its count complies to the query in Direct Mode, rejected in Reversed Mode //! Query works on the sending count recorded as status in Graph
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		virtual Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -7988,9 +7988,9 @@ class IFSelect_SelectSent : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -8027,7 +8027,7 @@ class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") IFSelect_SelectSignature;
 		%feature("autodoc", "* Creates a SelectSignature with its Signature and its Text to Match. <exact> if True requires exact match, if False requires <signtext> to be contained in the Signature of the entity (default is 'exact')
 	:param matcher:
-	:type matcher: opencascade::handle<IFSelect_Signature> &
+	:type matcher: IFSelect_Signature
 	:param signtext:
 	:type signtext: char *
 	:param exact: default value is Standard_True
@@ -8039,9 +8039,9 @@ class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") IFSelect_SelectSignature;
 		%feature("autodoc", "* As above with an AsciiString
 	:param matcher:
-	:type matcher: opencascade::handle<IFSelect_Signature> &
+	:type matcher: IFSelect_Signature
 	:param signtext:
-	:type signtext: TCollection_AsciiString &
+	:type signtext: TCollection_AsciiString
 	:param exact: default value is Standard_True
 	:type exact: bool
 	:rtype: None") IFSelect_SelectSignature;
@@ -8051,7 +8051,7 @@ class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") IFSelect_SelectSignature;
 		%feature("autodoc", "* Creates a SelectSignature with a Counter, more precisely a SelectSignature. Which is used here to just give a Signature Value (by SignOnly Mode) Matching is the default provided by the class Signature
 	:param matcher:
-	:type matcher: opencascade::handle<IFSelect_SignCounter> &
+	:type matcher: IFSelect_SignCounter
 	:param signtext:
 	:type signtext: char *
 	:param exact: default value is Standard_True
@@ -8083,9 +8083,9 @@ class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -8095,9 +8095,9 @@ class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: bool") SortInGraph;
 		virtual Standard_Boolean SortInGraph (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G);
 
@@ -8124,11 +8124,11 @@ class IFSelect_SelectSignedShared : public IFSelect_SelectExplore {
 	:param level:
 	:type level: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param explored:
-	:type explored: Interface_EntityIterator &
+	:type explored: Interface_EntityIterator
 	:rtype: bool") Explore;
 		Standard_Boolean Explore (const Standard_Integer level,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G,Interface_EntityIterator & explored);
 
@@ -8142,7 +8142,7 @@ class IFSelect_SelectSignedShared : public IFSelect_SelectExplore {
 		%feature("compactdefaultargs") IFSelect_SelectSignedShared;
 		%feature("autodoc", "* Creates a SelectSignedShared, defaulted for any level with a given Signature and text to match
 	:param matcher:
-	:type matcher: opencascade::handle<IFSelect_Signature> &
+	:type matcher: IFSelect_Signature
 	:param signtext:
 	:type signtext: char *
 	:param exact: default value is Standard_True
@@ -8193,11 +8193,11 @@ class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore {
 	:param level:
 	:type level: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param explored:
-	:type explored: Interface_EntityIterator &
+	:type explored: Interface_EntityIterator
 	:rtype: bool") Explore;
 		Standard_Boolean Explore (const Standard_Integer level,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G,Interface_EntityIterator & explored);
 
@@ -8211,7 +8211,7 @@ class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore {
 		%feature("compactdefaultargs") IFSelect_SelectSignedSharing;
 		%feature("autodoc", "* Creates a SelectSignedSharing, defaulted for any level with a given Signature and text to match
 	:param matcher:
-	:type matcher: opencascade::handle<IFSelect_Signature> &
+	:type matcher: IFSelect_Signature
 	:param signtext:
 	:type signtext: char *
 	:param exact: default value is Standard_True
@@ -8274,9 +8274,9 @@ class IFSelect_SelectUnknownEntities : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -8336,7 +8336,7 @@ class IFSelect_SelectType : public IFSelect_SelectAnyType {
 		%feature("compactdefaultargs") IFSelect_SelectType;
 		%feature("autodoc", "* Creates a SelectType for a given Type
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: None") IFSelect_SelectType;
 		 IFSelect_SelectType (const opencascade::handle<Standard_Type> & atype);
 
@@ -8344,7 +8344,7 @@ class IFSelect_SelectType : public IFSelect_SelectAnyType {
 		%feature("compactdefaultargs") SetType;
 		%feature("autodoc", "* Sets a TYpe for filter
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: None") SetType;
 		void SetType (const opencascade::handle<Standard_Type> & atype);
 

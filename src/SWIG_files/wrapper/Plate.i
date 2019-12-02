@@ -139,7 +139,7 @@ class Plate_D1 {
 		/****************** Plate_D1 ******************/
 		%feature("compactdefaultargs") Plate_D1;
 		%feature("autodoc", ":param ref:
-	:type ref: Plate_D1 &
+	:type ref: Plate_D1
 	:rtype: None") Plate_D1;
 		 Plate_D1 (const Plate_D1 & ref);
 
@@ -172,7 +172,7 @@ class Plate_D2 {
 		/****************** Plate_D2 ******************/
 		%feature("compactdefaultargs") Plate_D2;
 		%feature("autodoc", ":param ref:
-	:type ref: Plate_D2 &
+	:type ref: Plate_D2
 	:rtype: None") Plate_D2;
 		 Plate_D2 (const Plate_D2 & ref);
 
@@ -207,7 +207,7 @@ class Plate_D3 {
 		/****************** Plate_D3 ******************/
 		%feature("compactdefaultargs") Plate_D3;
 		%feature("autodoc", ":param ref:
-	:type ref: Plate_D3 &
+	:type ref: Plate_D3
 	:rtype: None") Plate_D3;
 		 Plate_D3 (const Plate_D3 & ref);
 
@@ -245,9 +245,9 @@ class Plate_FreeGtoCConstraint {
 		%feature("autodoc", ":param point2d:
 	:type point2d: gp_XY
 	:param D1S:
-	:type D1S: Plate_D1 &
+	:type D1S: Plate_D1
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param IncrementalLoad: default value is 1.0
 	:type IncrementalLoad: float
 	:param orientation: default value is 0
@@ -260,13 +260,13 @@ class Plate_FreeGtoCConstraint {
 		%feature("autodoc", ":param point2d:
 	:type point2d: gp_XY
 	:param D1S:
-	:type D1S: Plate_D1 &
+	:type D1S: Plate_D1
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2S:
-	:type D2S: Plate_D2 &
+	:type D2S: Plate_D2
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:param IncrementalLoad: default value is 1.0
 	:type IncrementalLoad: float
 	:param orientation: default value is 0
@@ -279,17 +279,17 @@ class Plate_FreeGtoCConstraint {
 		%feature("autodoc", ":param point2d:
 	:type point2d: gp_XY
 	:param D1S:
-	:type D1S: Plate_D1 &
+	:type D1S: Plate_D1
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2S:
-	:type D2S: Plate_D2 &
+	:type D2S: Plate_D2
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:param D3S:
-	:type D3S: Plate_D3 &
+	:type D3S: Plate_D3
 	:param D3T:
-	:type D3T: Plate_D3 &
+	:type D3T: Plate_D3
 	:param IncrementalLoad: default value is 1.0
 	:type IncrementalLoad: float
 	:param orientation: default value is 0
@@ -364,7 +364,7 @@ class Plate_GtoCConstraint {
 		/****************** Plate_GtoCConstraint ******************/
 		%feature("compactdefaultargs") Plate_GtoCConstraint;
 		%feature("autodoc", ":param ref:
-	:type ref: Plate_GtoCConstraint &
+	:type ref: Plate_GtoCConstraint
 	:rtype: None") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const Plate_GtoCConstraint & ref);
 
@@ -373,9 +373,9 @@ class Plate_GtoCConstraint {
 		%feature("autodoc", ":param point2d:
 	:type point2d: gp_XY
 	:param D1S:
-	:type D1S: Plate_D1 &
+	:type D1S: Plate_D1
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:rtype: None") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T);
 
@@ -384,9 +384,9 @@ class Plate_GtoCConstraint {
 		%feature("autodoc", ":param point2d:
 	:type point2d: gp_XY
 	:param D1S:
-	:type D1S: Plate_D1 &
+	:type D1S: Plate_D1
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param nP:
 	:type nP: gp_XYZ
 	:rtype: None") Plate_GtoCConstraint;
@@ -397,13 +397,13 @@ class Plate_GtoCConstraint {
 		%feature("autodoc", ":param point2d:
 	:type point2d: gp_XY
 	:param D1S:
-	:type D1S: Plate_D1 &
+	:type D1S: Plate_D1
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2S:
-	:type D2S: Plate_D2 &
+	:type D2S: Plate_D2
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:rtype: None") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const Plate_D2 & D2S,const Plate_D2 & D2T);
 
@@ -412,13 +412,13 @@ class Plate_GtoCConstraint {
 		%feature("autodoc", ":param point2d:
 	:type point2d: gp_XY
 	:param D1S:
-	:type D1S: Plate_D1 &
+	:type D1S: Plate_D1
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2S:
-	:type D2S: Plate_D2 &
+	:type D2S: Plate_D2
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:param nP:
 	:type nP: gp_XYZ
 	:rtype: None") Plate_GtoCConstraint;
@@ -429,17 +429,17 @@ class Plate_GtoCConstraint {
 		%feature("autodoc", ":param point2d:
 	:type point2d: gp_XY
 	:param D1S:
-	:type D1S: Plate_D1 &
+	:type D1S: Plate_D1
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2S:
-	:type D2S: Plate_D2 &
+	:type D2S: Plate_D2
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:param D3S:
-	:type D3S: Plate_D3 &
+	:type D3S: Plate_D3
 	:param D3T:
-	:type D3T: Plate_D3 &
+	:type D3T: Plate_D3
 	:rtype: None") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint (const gp_XY & point2d,const Plate_D1 & D1S,const Plate_D1 & D1T,const Plate_D2 & D2S,const Plate_D2 & D2T,const Plate_D3 & D3S,const Plate_D3 & D3T);
 
@@ -448,17 +448,17 @@ class Plate_GtoCConstraint {
 		%feature("autodoc", ":param point2d:
 	:type point2d: gp_XY
 	:param D1S:
-	:type D1S: Plate_D1 &
+	:type D1S: Plate_D1
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2S:
-	:type D2S: Plate_D2 &
+	:type D2S: Plate_D2
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:param D3S:
-	:type D3S: Plate_D3 &
+	:type D3S: Plate_D3
 	:param D3T:
-	:type D3T: Plate_D3 &
+	:type D3T: Plate_D3
 	:param nP:
 	:type nP: gp_XYZ
 	:rtype: None") Plate_GtoCConstraint;
@@ -535,7 +535,7 @@ class Plate_LinearScalarConstraint {
 		/****************** Plate_LinearScalarConstraint ******************/
 		%feature("compactdefaultargs") Plate_LinearScalarConstraint;
 		%feature("autodoc", ":param thePPC1:
-	:type thePPC1: Plate_PinpointConstraint &
+	:type thePPC1: Plate_PinpointConstraint
 	:param theCoeff:
 	:type theCoeff: gp_XYZ
 	:rtype: None") Plate_LinearScalarConstraint;
@@ -544,7 +544,7 @@ class Plate_LinearScalarConstraint {
 		/****************** Plate_LinearScalarConstraint ******************/
 		%feature("compactdefaultargs") Plate_LinearScalarConstraint;
 		%feature("autodoc", ":param thePPC:
-	:type thePPC: Plate_Array1OfPinpointConstraint &
+	:type thePPC: Plate_Array1OfPinpointConstraint
 	:param theCoeff:
 	:type theCoeff: TColgp_Array1OfXYZ
 	:rtype: None") Plate_LinearScalarConstraint;
@@ -553,7 +553,7 @@ class Plate_LinearScalarConstraint {
 		/****************** Plate_LinearScalarConstraint ******************/
 		%feature("compactdefaultargs") Plate_LinearScalarConstraint;
 		%feature("autodoc", ":param thePPC:
-	:type thePPC: Plate_Array1OfPinpointConstraint &
+	:type thePPC: Plate_Array1OfPinpointConstraint
 	:param theCoeff:
 	:type theCoeff: TColgp_Array2OfXYZ
 	:rtype: None") Plate_LinearScalarConstraint;
@@ -586,7 +586,7 @@ class Plate_LinearScalarConstraint {
 	:param Index:
 	:type Index: int
 	:param Value:
-	:type Value: Plate_PinpointConstraint &
+	:type Value: Plate_PinpointConstraint
 	:rtype: None") SetPPC;
 		void SetPPC (const Standard_Integer Index,const Plate_PinpointConstraint & Value);
 
@@ -623,18 +623,18 @@ class Plate_LinearXYZConstraint {
 		/****************** Plate_LinearXYZConstraint ******************/
 		%feature("compactdefaultargs") Plate_LinearXYZConstraint;
 		%feature("autodoc", ":param thePPC:
-	:type thePPC: Plate_Array1OfPinpointConstraint &
+	:type thePPC: Plate_Array1OfPinpointConstraint
 	:param theCoeff:
-	:type theCoeff: TColStd_Array1OfReal &
+	:type theCoeff: TColStd_Array1OfReal
 	:rtype: None") Plate_LinearXYZConstraint;
 		 Plate_LinearXYZConstraint (const Plate_Array1OfPinpointConstraint & thePPC,const TColStd_Array1OfReal & theCoeff);
 
 		/****************** Plate_LinearXYZConstraint ******************/
 		%feature("compactdefaultargs") Plate_LinearXYZConstraint;
 		%feature("autodoc", ":param thePPC:
-	:type thePPC: Plate_Array1OfPinpointConstraint &
+	:type thePPC: Plate_Array1OfPinpointConstraint
 	:param theCoeff:
-	:type theCoeff: TColStd_Array2OfReal &
+	:type theCoeff: TColStd_Array2OfReal
 	:rtype: None") Plate_LinearXYZConstraint;
 		 Plate_LinearXYZConstraint (const Plate_Array1OfPinpointConstraint & thePPC,const TColStd_Array2OfReal & theCoeff);
 
@@ -665,7 +665,7 @@ class Plate_LinearXYZConstraint {
 	:param Index:
 	:type Index: int
 	:param Value:
-	:type Value: Plate_PinpointConstraint &
+	:type Value: Plate_PinpointConstraint
 	:rtype: None") SetPPC;
 		void SetPPC (const Standard_Integer Index,const Plate_PinpointConstraint & Value);
 
@@ -773,7 +773,7 @@ class Plate_Plate {
 		/****************** CoefPol ******************/
 		%feature("compactdefaultargs") CoefPol;
 		%feature("autodoc", ":param Coefs:
-	:type Coefs: opencascade::handle<TColgp_HArray2OfXYZ>
+	:type Coefs: TColgp_HArray2OfXYZ
 	:rtype: None") CoefPol;
 		void CoefPol (opencascade::handle<TColgp_HArray2OfXYZ> & Coefs);
 
@@ -785,7 +785,7 @@ class Plate_Plate {
 		/****************** Copy ******************/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", ":param Ref:
-	:type Ref: Plate_Plate &
+	:type Ref: Plate_Plate
 	:rtype: Plate_Plate") Copy;
 		Plate_Plate & Copy (const Plate_Plate & Ref);
 
@@ -822,63 +822,63 @@ class Plate_Plate {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param PConst:
-	:type PConst: Plate_PinpointConstraint &
+	:type PConst: Plate_PinpointConstraint
 	:rtype: None") Load;
 		void Load (const Plate_PinpointConstraint & PConst);
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param LXYZConst:
-	:type LXYZConst: Plate_LinearXYZConstraint &
+	:type LXYZConst: Plate_LinearXYZConstraint
 	:rtype: None") Load;
 		void Load (const Plate_LinearXYZConstraint & LXYZConst);
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param LScalarConst:
-	:type LScalarConst: Plate_LinearScalarConstraint &
+	:type LScalarConst: Plate_LinearScalarConstraint
 	:rtype: None") Load;
 		void Load (const Plate_LinearScalarConstraint & LScalarConst);
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param GTConst:
-	:type GTConst: Plate_GlobalTranslationConstraint &
+	:type GTConst: Plate_GlobalTranslationConstraint
 	:rtype: None") Load;
 		void Load (const Plate_GlobalTranslationConstraint & GTConst);
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param LConst:
-	:type LConst: Plate_LineConstraint &
+	:type LConst: Plate_LineConstraint
 	:rtype: None") Load;
 		void Load (const Plate_LineConstraint & LConst);
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param PConst:
-	:type PConst: Plate_PlaneConstraint &
+	:type PConst: Plate_PlaneConstraint
 	:rtype: None") Load;
 		void Load (const Plate_PlaneConstraint & PConst);
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param SCConst:
-	:type SCConst: Plate_SampledCurveConstraint &
+	:type SCConst: Plate_SampledCurveConstraint
 	:rtype: None") Load;
 		void Load (const Plate_SampledCurveConstraint & SCConst);
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param GtoCConst:
-	:type GtoCConst: Plate_GtoCConstraint &
+	:type GtoCConst: Plate_GtoCConstraint
 	:rtype: None") Load;
 		void Load (const Plate_GtoCConstraint & GtoCConst);
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param FGtoCConst:
-	:type FGtoCConst: Plate_FreeGtoCConstraint &
+	:type FGtoCConst: Plate_FreeGtoCConstraint
 	:rtype: None") Load;
 		void Load (const Plate_FreeGtoCConstraint & FGtoCConst);
 
@@ -890,7 +890,7 @@ class Plate_Plate {
 		/****************** Plate_Plate ******************/
 		%feature("compactdefaultargs") Plate_Plate;
 		%feature("autodoc", ":param Ref:
-	:type Ref: Plate_Plate &
+	:type Ref: Plate_Plate
 	:rtype: None") Plate_Plate;
 		 Plate_Plate (const Plate_Plate & Ref);
 
@@ -908,20 +908,20 @@ class Plate_Plate {
 	:param anisotropie: default value is 1.0
 	:type anisotropie: float
 	:param aProgress: default value is opencascade::handle<Message_ProgressIndicator>()
-	:type aProgress: opencascade::handle<Message_ProgressIndicator> &
+	:type aProgress: Message_ProgressIndicator
 	:rtype: None") SolveTI;
 		void SolveTI (const Standard_Integer ord = 4,const Standard_Real anisotropie = 1.0,const opencascade::handle<Message_ProgressIndicator> & aProgress = opencascade::handle<Message_ProgressIndicator>());
 
 		/****************** UVBox ******************/
 		%feature("compactdefaultargs") UVBox;
 		%feature("autodoc", ":param UMin:
-	:type UMin: float &
+	:type UMin: float
 	:param UMax:
-	:type UMax: float &
+	:type UMax: float
 	:param VMin:
-	:type VMin: float &
+	:type VMin: float
 	:param VMax:
-	:type VMax: float &
+	:type VMax: float
 	:rtype: None") UVBox;
 		void UVBox (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -940,7 +940,7 @@ class Plate_Plate {
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param Ref:
-	:type Ref: Plate_Plate &
+	:type Ref: Plate_Plate
 	:rtype: Plate_Plate") operator =;
 		Plate_Plate & operator = (const Plate_Plate & Ref);
 
@@ -967,7 +967,7 @@ class Plate_SampledCurveConstraint {
 		/****************** Plate_SampledCurveConstraint ******************/
 		%feature("compactdefaultargs") Plate_SampledCurveConstraint;
 		%feature("autodoc", ":param SOPPC:
-	:type SOPPC: Plate_SequenceOfPinpointConstraint &
+	:type SOPPC: Plate_SequenceOfPinpointConstraint
 	:param n:
 	:type n: int
 	:rtype: None") Plate_SampledCurveConstraint;

@@ -120,7 +120,7 @@ class MAT_Arc : public Standard_Transient {
 		%feature("compactdefaultargs") HasNeighbour;
 		%feature("autodoc", "* Returnst True is there is an arc linked to the Node <aNode> located on the side <aSide> of <self>; if <aNode> is not on <self>
 	:param aNode:
-	:type aNode: opencascade::handle<MAT_Node> &
+	:type aNode: MAT_Node
 	:param aSide:
 	:type aSide: MAT_Side
 	:rtype: bool") HasNeighbour;
@@ -139,9 +139,9 @@ class MAT_Arc : public Standard_Transient {
 	:param GeomIndex:
 	:type GeomIndex: int
 	:param FirstElement:
-	:type FirstElement: opencascade::handle<MAT_BasicElt> &
+	:type FirstElement: MAT_BasicElt
 	:param SecondElement:
-	:type SecondElement: opencascade::handle<MAT_BasicElt> &
+	:type SecondElement: MAT_BasicElt
 	:rtype: None") MAT_Arc;
 		 MAT_Arc (const Standard_Integer ArcIndex,const Standard_Integer GeomIndex,const opencascade::handle<MAT_BasicElt> & FirstElement,const opencascade::handle<MAT_BasicElt> & SecondElement);
 
@@ -149,7 +149,7 @@ class MAT_Arc : public Standard_Transient {
 		%feature("compactdefaultargs") Neighbour;
 		%feature("autodoc", "* Returns the first arc linked to the Node <aNode> located on the side <aSide> of <self>; if HasNeighbour() returns False.
 	:param aNode:
-	:type aNode: opencascade::handle<MAT_Node> &
+	:type aNode: MAT_Node
 	:param aSide:
 	:type aSide: MAT_Side
 	:rtype: opencascade::handle<MAT_Arc>") Neighbour;
@@ -172,21 +172,21 @@ class MAT_Arc : public Standard_Transient {
 		%feature("autodoc", ":param aSide:
 	:type aSide: MAT_Side
 	:param anArc:
-	:type anArc: opencascade::handle<MAT_Arc> &
+	:type anArc: MAT_Arc
 	:rtype: None") SetFirstArc;
 		void SetFirstArc (const MAT_Side aSide,const opencascade::handle<MAT_Arc> & anArc);
 
 		/****************** SetFirstElement ******************/
 		%feature("compactdefaultargs") SetFirstElement;
 		%feature("autodoc", ":param aBasicElt:
-	:type aBasicElt: opencascade::handle<MAT_BasicElt> &
+	:type aBasicElt: MAT_BasicElt
 	:rtype: None") SetFirstElement;
 		void SetFirstElement (const opencascade::handle<MAT_BasicElt> & aBasicElt);
 
 		/****************** SetFirstNode ******************/
 		%feature("compactdefaultargs") SetFirstNode;
 		%feature("autodoc", ":param aNode:
-	:type aNode: opencascade::handle<MAT_Node> &
+	:type aNode: MAT_Node
 	:rtype: None") SetFirstNode;
 		void SetFirstNode (const opencascade::handle<MAT_Node> & aNode);
 
@@ -209,9 +209,9 @@ class MAT_Arc : public Standard_Transient {
 		%feature("autodoc", ":param aSide:
 	:type aSide: MAT_Side
 	:param aNode:
-	:type aNode: opencascade::handle<MAT_Node> &
+	:type aNode: MAT_Node
 	:param anArc:
-	:type anArc: opencascade::handle<MAT_Arc> &
+	:type anArc: MAT_Arc
 	:rtype: None") SetNeighbour;
 		void SetNeighbour (const MAT_Side aSide,const opencascade::handle<MAT_Node> & aNode,const opencascade::handle<MAT_Arc> & anArc);
 
@@ -220,21 +220,21 @@ class MAT_Arc : public Standard_Transient {
 		%feature("autodoc", ":param aSide:
 	:type aSide: MAT_Side
 	:param anArc:
-	:type anArc: opencascade::handle<MAT_Arc> &
+	:type anArc: MAT_Arc
 	:rtype: None") SetSecondArc;
 		void SetSecondArc (const MAT_Side aSide,const opencascade::handle<MAT_Arc> & anArc);
 
 		/****************** SetSecondElement ******************/
 		%feature("compactdefaultargs") SetSecondElement;
 		%feature("autodoc", ":param aBasicElt:
-	:type aBasicElt: opencascade::handle<MAT_BasicElt> &
+	:type aBasicElt: MAT_BasicElt
 	:rtype: None") SetSecondElement;
 		void SetSecondElement (const opencascade::handle<MAT_BasicElt> & aBasicElt);
 
 		/****************** SetSecondNode ******************/
 		%feature("compactdefaultargs") SetSecondNode;
 		%feature("autodoc", ":param aNode:
-	:type aNode: opencascade::handle<MAT_Node> &
+	:type aNode: MAT_Node
 	:rtype: None") SetSecondNode;
 		void SetSecondNode (const opencascade::handle<MAT_Node> & aNode);
 
@@ -242,7 +242,7 @@ class MAT_Arc : public Standard_Transient {
 		%feature("compactdefaultargs") TheOtherNode;
 		%feature("autodoc", "* an Arc has two Node, if <aNode> egal one Returns the other. //! if <aNode> is not oh <self>
 	:param aNode:
-	:type aNode: opencascade::handle<MAT_Node> &
+	:type aNode: MAT_Node
 	:rtype: opencascade::handle<MAT_Node>") TheOtherNode;
 		opencascade::handle<MAT_Node> TheOtherNode (const opencascade::handle<MAT_Node> & aNode);
 
@@ -292,7 +292,7 @@ class MAT_BasicElt : public Standard_Transient {
 		/****************** SetEndArc ******************/
 		%feature("compactdefaultargs") SetEndArc;
 		%feature("autodoc", ":param anArc:
-	:type anArc: opencascade::handle<MAT_Arc> &
+	:type anArc: MAT_Arc
 	:rtype: None") SetEndArc;
 		void SetEndArc (const opencascade::handle<MAT_Arc> & anArc);
 
@@ -313,7 +313,7 @@ class MAT_BasicElt : public Standard_Transient {
 		/****************** SetStartArc ******************/
 		%feature("compactdefaultargs") SetStartArc;
 		%feature("autodoc", ":param anArc:
-	:type anArc: opencascade::handle<MAT_Arc> &
+	:type anArc: MAT_Arc
 	:rtype: None") SetStartArc;
 		void SetStartArc (const opencascade::handle<MAT_Arc> & anArc);
 
@@ -343,7 +343,7 @@ class MAT_Bisector : public Standard_Transient {
 		/****************** AddBisector ******************/
 		%feature("compactdefaultargs") AddBisector;
 		%feature("autodoc", ":param abisector:
-	:type abisector: opencascade::handle<MAT_Bisector> &
+	:type abisector: MAT_Bisector
 	:rtype: None") AddBisector;
 		void AddBisector (const opencascade::handle<MAT_Bisector> & abisector);
 
@@ -400,7 +400,7 @@ class MAT_Bisector : public Standard_Transient {
 		/****************** FirstEdge ******************/
 		%feature("compactdefaultargs") FirstEdge;
 		%feature("autodoc", ":param anedge:
-	:type anedge: opencascade::handle<MAT_Edge> &
+	:type anedge: MAT_Edge
 	:rtype: None") FirstEdge;
 		void FirstEdge (const opencascade::handle<MAT_Edge> & anedge);
 
@@ -475,7 +475,7 @@ class MAT_Bisector : public Standard_Transient {
 		/****************** SecondEdge ******************/
 		%feature("compactdefaultargs") SecondEdge;
 		%feature("autodoc", ":param anedge:
-	:type anedge: opencascade::handle<MAT_Edge> &
+	:type anedge: MAT_Edge
 	:rtype: None") SecondEdge;
 		void SecondEdge (const opencascade::handle<MAT_Edge> & anedge);
 
@@ -573,7 +573,7 @@ class MAT_Edge : public Standard_Transient {
 		/****************** FirstBisector ******************/
 		%feature("compactdefaultargs") FirstBisector;
 		%feature("autodoc", ":param abisector:
-	:type abisector: opencascade::handle<MAT_Bisector> &
+	:type abisector: MAT_Bisector
 	:rtype: None") FirstBisector;
 		void FirstBisector (const opencascade::handle<MAT_Bisector> & abisector);
 
@@ -602,7 +602,7 @@ class MAT_Edge : public Standard_Transient {
 		/****************** SecondBisector ******************/
 		%feature("compactdefaultargs") SecondBisector;
 		%feature("autodoc", ":param abisector:
-	:type abisector: opencascade::handle<MAT_Bisector> &
+	:type abisector: MAT_Bisector
 	:rtype: None") SecondBisector;
 		void SecondBisector (const opencascade::handle<MAT_Bisector> & abisector);
 
@@ -654,7 +654,7 @@ class MAT_Graph : public Standard_Transient {
 		/****************** ChangeBasicElts ******************/
 		%feature("compactdefaultargs") ChangeBasicElts;
 		%feature("autodoc", ":param NewMap:
-	:type NewMap: MAT_DataMapOfIntegerBasicElt &
+	:type NewMap: MAT_DataMapOfIntegerBasicElt
 	:rtype: None") ChangeBasicElts;
 		void ChangeBasicElts (const MAT_DataMapOfIntegerBasicElt & NewMap);
 
@@ -678,15 +678,15 @@ class MAT_Graph : public Standard_Transient {
 	:param MergeArc1:
 	:type MergeArc1: bool
 	:param GeomIndexArc1:
-	:type GeomIndexArc1: int &
+	:type GeomIndexArc1: int
 	:param GeomIndexArc2:
-	:type GeomIndexArc2: int &
+	:type GeomIndexArc2: int
 	:param MergeArc2:
 	:type MergeArc2: bool
 	:param GeomIndexArc3:
-	:type GeomIndexArc3: int &
+	:type GeomIndexArc3: int
 	:param GeomIndexArc4:
-	:type GeomIndexArc4: int &
+	:type GeomIndexArc4: int
 	:rtype: None") FusionOfBasicElts;
 		void FusionOfBasicElts (const Standard_Integer IndexElt1,const Standard_Integer IndexElt2,Standard_Boolean &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Boolean &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -734,7 +734,7 @@ class MAT_Graph : public Standard_Transient {
 	:param SemiInfinite:
 	:type SemiInfinite: bool
 	:param TheRoots:
-	:type TheRoots: opencascade::handle<MAT_ListOfBisector> &
+	:type TheRoots: MAT_ListOfBisector
 	:param NbBasicElts:
 	:type NbBasicElts: int
 	:param NbArcs:
@@ -762,7 +762,7 @@ class MAT_ListOfBisector : public Standard_Transient {
 		/****************** BackAdd ******************/
 		%feature("compactdefaultargs") BackAdd;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Bisector> &
+	:type anitem: MAT_Bisector
 	:rtype: None") BackAdd;
 		void BackAdd (const opencascade::handle<MAT_Bisector> & anitem);
 
@@ -781,7 +781,7 @@ class MAT_ListOfBisector : public Standard_Transient {
 		/****************** Current ******************/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Bisector> &
+	:type anitem: MAT_Bisector
 	:rtype: None") Current;
 		void Current (const opencascade::handle<MAT_Bisector> & anitem);
 
@@ -807,7 +807,7 @@ class MAT_ListOfBisector : public Standard_Transient {
 		/****************** FrontAdd ******************/
 		%feature("compactdefaultargs") FrontAdd;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Bisector> &
+	:type anitem: MAT_Bisector
 	:rtype: None") FrontAdd;
 		void FrontAdd (const opencascade::handle<MAT_Bisector> & anitem);
 
@@ -819,7 +819,7 @@ class MAT_ListOfBisector : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aniten:
-	:type aniten: opencascade::handle<MAT_Bisector> &
+	:type aniten: MAT_Bisector
 	:rtype: None") Init;
 		void Init (const opencascade::handle<MAT_Bisector> & aniten);
 
@@ -841,14 +841,14 @@ class MAT_ListOfBisector : public Standard_Transient {
 		/****************** LinkAfter ******************/
 		%feature("compactdefaultargs") LinkAfter;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Bisector> &
+	:type anitem: MAT_Bisector
 	:rtype: None") LinkAfter;
 		void LinkAfter (const opencascade::handle<MAT_Bisector> & anitem);
 
 		/****************** LinkBefore ******************/
 		%feature("compactdefaultargs") LinkBefore;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Bisector> &
+	:type anitem: MAT_Bisector
 	:rtype: None") LinkBefore;
 		void LinkBefore (const opencascade::handle<MAT_Bisector> & anitem);
 
@@ -922,7 +922,7 @@ class MAT_ListOfEdge : public Standard_Transient {
 		/****************** BackAdd ******************/
 		%feature("compactdefaultargs") BackAdd;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Edge> &
+	:type anitem: MAT_Edge
 	:rtype: None") BackAdd;
 		void BackAdd (const opencascade::handle<MAT_Edge> & anitem);
 
@@ -941,7 +941,7 @@ class MAT_ListOfEdge : public Standard_Transient {
 		/****************** Current ******************/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Edge> &
+	:type anitem: MAT_Edge
 	:rtype: None") Current;
 		void Current (const opencascade::handle<MAT_Edge> & anitem);
 
@@ -967,7 +967,7 @@ class MAT_ListOfEdge : public Standard_Transient {
 		/****************** FrontAdd ******************/
 		%feature("compactdefaultargs") FrontAdd;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Edge> &
+	:type anitem: MAT_Edge
 	:rtype: None") FrontAdd;
 		void FrontAdd (const opencascade::handle<MAT_Edge> & anitem);
 
@@ -979,7 +979,7 @@ class MAT_ListOfEdge : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aniten:
-	:type aniten: opencascade::handle<MAT_Edge> &
+	:type aniten: MAT_Edge
 	:rtype: None") Init;
 		void Init (const opencascade::handle<MAT_Edge> & aniten);
 
@@ -1001,14 +1001,14 @@ class MAT_ListOfEdge : public Standard_Transient {
 		/****************** LinkAfter ******************/
 		%feature("compactdefaultargs") LinkAfter;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Edge> &
+	:type anitem: MAT_Edge
 	:rtype: None") LinkAfter;
 		void LinkAfter (const opencascade::handle<MAT_Edge> & anitem);
 
 		/****************** LinkBefore ******************/
 		%feature("compactdefaultargs") LinkBefore;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Edge> &
+	:type anitem: MAT_Edge
 	:rtype: None") LinkBefore;
 		void LinkBefore (const opencascade::handle<MAT_Edge> & anitem);
 
@@ -1106,7 +1106,7 @@ class MAT_Node : public Standard_Transient {
 		%feature("compactdefaultargs") LinkedArcs;
 		%feature("autodoc", "* Returns in <S> the Arcs linked to <self>.
 	:param S:
-	:type S: MAT_SequenceOfArc &
+	:type S: MAT_SequenceOfArc
 	:rtype: None") LinkedArcs;
 		void LinkedArcs (MAT_SequenceOfArc & S);
 
@@ -1115,7 +1115,7 @@ class MAT_Node : public Standard_Transient {
 		%feature("autodoc", ":param GeomIndex:
 	:type GeomIndex: int
 	:param LinkedArc:
-	:type LinkedArc: opencascade::handle<MAT_Arc> &
+	:type LinkedArc: MAT_Arc
 	:param Distance:
 	:type Distance: float
 	:rtype: None") MAT_Node;
@@ -1125,7 +1125,7 @@ class MAT_Node : public Standard_Transient {
 		%feature("compactdefaultargs") NearElts;
 		%feature("autodoc", "* Returns in <S> the BasicElts equidistant to <self>.
 	:param S:
-	:type S: MAT_SequenceOfBasicElt &
+	:type S: MAT_SequenceOfBasicElt
 	:rtype: None") NearElts;
 		void NearElts (MAT_SequenceOfBasicElt & S);
 
@@ -1152,7 +1152,7 @@ class MAT_Node : public Standard_Transient {
 		/****************** SetLinkedArc ******************/
 		%feature("compactdefaultargs") SetLinkedArc;
 		%feature("autodoc", ":param anArc:
-	:type anArc: opencascade::handle<MAT_Arc> &
+	:type anArc: MAT_Arc
 	:rtype: None") SetLinkedArc;
 		void SetLinkedArc (const opencascade::handle<MAT_Arc> & anArc);
 
@@ -1191,7 +1191,7 @@ class MAT_TListNodeOfListOfBisector : public Standard_Transient {
 		/****************** MAT_TListNodeOfListOfBisector ******************/
 		%feature("compactdefaultargs") MAT_TListNodeOfListOfBisector;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Bisector> &
+	:type anitem: MAT_Bisector
 	:rtype: None") MAT_TListNodeOfListOfBisector;
 		 MAT_TListNodeOfListOfBisector (const opencascade::handle<MAT_Bisector> & anitem);
 
@@ -1203,7 +1203,7 @@ class MAT_TListNodeOfListOfBisector : public Standard_Transient {
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", ":param atlistnode:
-	:type atlistnode: opencascade::handle<MAT_TListNodeOfListOfBisector> &
+	:type atlistnode: MAT_TListNodeOfListOfBisector
 	:rtype: None") Next;
 		void Next (const opencascade::handle<MAT_TListNodeOfListOfBisector> & atlistnode);
 
@@ -1215,14 +1215,14 @@ class MAT_TListNodeOfListOfBisector : public Standard_Transient {
 		/****************** Previous ******************/
 		%feature("compactdefaultargs") Previous;
 		%feature("autodoc", ":param atlistnode:
-	:type atlistnode: opencascade::handle<MAT_TListNodeOfListOfBisector> &
+	:type atlistnode: MAT_TListNodeOfListOfBisector
 	:rtype: None") Previous;
 		void Previous (const opencascade::handle<MAT_TListNodeOfListOfBisector> & atlistnode);
 
 		/****************** SetItem ******************/
 		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Bisector> &
+	:type anitem: MAT_Bisector
 	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<MAT_Bisector> & anitem);
 
@@ -1261,7 +1261,7 @@ class MAT_TListNodeOfListOfEdge : public Standard_Transient {
 		/****************** MAT_TListNodeOfListOfEdge ******************/
 		%feature("compactdefaultargs") MAT_TListNodeOfListOfEdge;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Edge> &
+	:type anitem: MAT_Edge
 	:rtype: None") MAT_TListNodeOfListOfEdge;
 		 MAT_TListNodeOfListOfEdge (const opencascade::handle<MAT_Edge> & anitem);
 
@@ -1273,7 +1273,7 @@ class MAT_TListNodeOfListOfEdge : public Standard_Transient {
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", ":param atlistnode:
-	:type atlistnode: opencascade::handle<MAT_TListNodeOfListOfEdge> &
+	:type atlistnode: MAT_TListNodeOfListOfEdge
 	:rtype: None") Next;
 		void Next (const opencascade::handle<MAT_TListNodeOfListOfEdge> & atlistnode);
 
@@ -1285,14 +1285,14 @@ class MAT_TListNodeOfListOfEdge : public Standard_Transient {
 		/****************** Previous ******************/
 		%feature("compactdefaultargs") Previous;
 		%feature("autodoc", ":param atlistnode:
-	:type atlistnode: opencascade::handle<MAT_TListNodeOfListOfEdge> &
+	:type atlistnode: MAT_TListNodeOfListOfEdge
 	:rtype: None") Previous;
 		void Previous (const opencascade::handle<MAT_TListNodeOfListOfEdge> & atlistnode);
 
 		/****************** SetItem ******************/
 		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", ":param anitem:
-	:type anitem: opencascade::handle<MAT_Edge> &
+	:type anitem: MAT_Edge
 	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<MAT_Edge> & anitem);
 
@@ -1336,7 +1336,7 @@ class MAT_Zone : public Standard_Transient {
 		%feature("compactdefaultargs") MAT_Zone;
 		%feature("autodoc", "* Compute the frontier of the Zone of proximity.
 	:param aBasicElt:
-	:type aBasicElt: opencascade::handle<MAT_BasicElt> &
+	:type aBasicElt: MAT_BasicElt
 	:rtype: None") MAT_Zone;
 		 MAT_Zone (const opencascade::handle<MAT_BasicElt> & aBasicElt);
 
@@ -1356,7 +1356,7 @@ class MAT_Zone : public Standard_Transient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Compute the frontier of the Zone of proximity.
 	:param aBasicElt:
-	:type aBasicElt: opencascade::handle<MAT_BasicElt> &
+	:type aBasicElt: MAT_BasicElt
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<MAT_BasicElt> & aBasicElt);
 

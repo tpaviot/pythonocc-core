@@ -133,7 +133,7 @@ class IntCurve_IConicTool {
 		/****************** IntCurve_IConicTool ******************/
 		%feature("compactdefaultargs") IntCurve_IConicTool;
 		%feature("autodoc", ":param IT:
-	:type IT: IntCurve_IConicTool &
+	:type IT: IntCurve_IConicTool
 	:rtype: None") IntCurve_IConicTool;
 		 IntCurve_IConicTool (const IntCurve_IConicTool & IT);
 
@@ -206,11 +206,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L1:
 	:type L1: gp_Lin2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param L2:
 	:type L2: gp_Lin2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -224,11 +224,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param DL:
-	:type DL: IntRes2d_Domain &
+	:type DL: IntRes2d_Domain
 	:param C:
 	:type C: gp_Circ2d
 	:param DC:
-	:type DC: IntRes2d_Domain &
+	:type DC: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -242,11 +242,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param DL:
-	:type DL: IntRes2d_Domain &
+	:type DL: IntRes2d_Domain
 	:param E:
 	:type E: gp_Elips2d
 	:param DE:
-	:type DE: IntRes2d_Domain &
+	:type DE: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -260,11 +260,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param DL:
-	:type DL: IntRes2d_Domain &
+	:type DL: IntRes2d_Domain
 	:param P:
 	:type P: gp_Parab2d
 	:param DP:
-	:type DP: IntRes2d_Domain &
+	:type DP: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -278,11 +278,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param DL:
-	:type DL: IntRes2d_Domain &
+	:type DL: IntRes2d_Domain
 	:param H:
 	:type H: gp_Hypr2d
 	:param DH:
-	:type DH: IntRes2d_Domain &
+	:type DH: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -296,11 +296,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param C1:
 	:type C1: gp_Circ2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param C2:
 	:type C2: gp_Circ2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -314,11 +314,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param DC:
-	:type DC: IntRes2d_Domain &
+	:type DC: IntRes2d_Domain
 	:param E:
 	:type E: gp_Elips2d
 	:param DE:
-	:type DE: IntRes2d_Domain &
+	:type DE: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -332,11 +332,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param DC:
-	:type DC: IntRes2d_Domain &
+	:type DC: IntRes2d_Domain
 	:param P:
 	:type P: gp_Parab2d
 	:param DP:
-	:type DP: IntRes2d_Domain &
+	:type DP: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -350,11 +350,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param DC:
-	:type DC: IntRes2d_Domain &
+	:type DC: IntRes2d_Domain
 	:param H:
 	:type H: gp_Hypr2d
 	:param DH:
-	:type DH: IntRes2d_Domain &
+	:type DH: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -368,11 +368,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param E1:
 	:type E1: gp_Elips2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param E2:
 	:type E2: gp_Elips2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -386,11 +386,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param DE:
-	:type DE: IntRes2d_Domain &
+	:type DE: IntRes2d_Domain
 	:param P:
 	:type P: gp_Parab2d
 	:param DP:
-	:type DP: IntRes2d_Domain &
+	:type DP: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -404,11 +404,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param DE:
-	:type DE: IntRes2d_Domain &
+	:type DE: IntRes2d_Domain
 	:param H:
 	:type H: gp_Hypr2d
 	:param DH:
-	:type DH: IntRes2d_Domain &
+	:type DH: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -422,11 +422,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param P1:
 	:type P1: gp_Parab2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param P2:
 	:type P2: gp_Parab2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -440,11 +440,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param P:
 	:type P: gp_Parab2d
 	:param DP:
-	:type DP: IntRes2d_Domain &
+	:type DP: IntRes2d_Domain
 	:param H:
 	:type H: gp_Hypr2d
 	:param DH:
-	:type DH: IntRes2d_Domain &
+	:type DH: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -458,11 +458,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param H1:
 	:type H1: gp_Hypr2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param H2:
 	:type H2: gp_Hypr2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -476,11 +476,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L1:
 	:type L1: gp_Lin2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param L2:
 	:type L2: gp_Lin2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -494,11 +494,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param DL:
-	:type DL: IntRes2d_Domain &
+	:type DL: IntRes2d_Domain
 	:param C:
 	:type C: gp_Circ2d
 	:param DC:
-	:type DC: IntRes2d_Domain &
+	:type DC: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -512,11 +512,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param DL:
-	:type DL: IntRes2d_Domain &
+	:type DL: IntRes2d_Domain
 	:param E:
 	:type E: gp_Elips2d
 	:param DE:
-	:type DE: IntRes2d_Domain &
+	:type DE: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -530,11 +530,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param DL:
-	:type DL: IntRes2d_Domain &
+	:type DL: IntRes2d_Domain
 	:param P:
 	:type P: gp_Parab2d
 	:param DP:
-	:type DP: IntRes2d_Domain &
+	:type DP: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -548,11 +548,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param DL:
-	:type DL: IntRes2d_Domain &
+	:type DL: IntRes2d_Domain
 	:param H:
 	:type H: gp_Hypr2d
 	:param DH:
-	:type DH: IntRes2d_Domain &
+	:type DH: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -566,11 +566,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param C1:
 	:type C1: gp_Circ2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param C2:
 	:type C2: gp_Circ2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -584,11 +584,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param DC:
-	:type DC: IntRes2d_Domain &
+	:type DC: IntRes2d_Domain
 	:param E:
 	:type E: gp_Elips2d
 	:param DE:
-	:type DE: IntRes2d_Domain &
+	:type DE: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -602,11 +602,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param DC:
-	:type DC: IntRes2d_Domain &
+	:type DC: IntRes2d_Domain
 	:param P:
 	:type P: gp_Parab2d
 	:param DP:
-	:type DP: IntRes2d_Domain &
+	:type DP: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -620,11 +620,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param DC:
-	:type DC: IntRes2d_Domain &
+	:type DC: IntRes2d_Domain
 	:param H:
 	:type H: gp_Hypr2d
 	:param DH:
-	:type DH: IntRes2d_Domain &
+	:type DH: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -638,11 +638,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param E1:
 	:type E1: gp_Elips2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param E2:
 	:type E2: gp_Elips2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -656,11 +656,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param DE:
-	:type DE: IntRes2d_Domain &
+	:type DE: IntRes2d_Domain
 	:param P:
 	:type P: gp_Parab2d
 	:param DP:
-	:type DP: IntRes2d_Domain &
+	:type DP: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -674,11 +674,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param DE:
-	:type DE: IntRes2d_Domain &
+	:type DE: IntRes2d_Domain
 	:param H:
 	:type H: gp_Hypr2d
 	:param DH:
-	:type DH: IntRes2d_Domain &
+	:type DH: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -692,11 +692,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param P1:
 	:type P1: gp_Parab2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param P2:
 	:type P2: gp_Parab2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -710,11 +710,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param P:
 	:type P: gp_Parab2d
 	:param DP:
-	:type DP: IntRes2d_Domain &
+	:type DP: IntRes2d_Domain
 	:param H:
 	:type H: gp_Hypr2d
 	:param DH:
-	:type DH: IntRes2d_Domain &
+	:type DH: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -728,11 +728,11 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	:param H1:
 	:type H1: gp_Hypr2d
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param H2:
 	:type H2: gp_Hypr2d
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -758,23 +758,23 @@ class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 		/****************** And_Domaine_Objet1_Intersections ******************/
 		%feature("compactdefaultargs") And_Domaine_Objet1_Intersections;
 		%feature("autodoc", ":param TheImpTool:
-	:type TheImpTool: IntCurve_IConicTool &
+	:type TheImpTool: IntCurve_IConicTool
 	:param TheParCurve:
-	:type TheParCurve: IntCurve_PConic &
+	:type TheParCurve: IntCurve_PConic
 	:param TheImpCurveDomain:
-	:type TheImpCurveDomain: IntRes2d_Domain &
+	:type TheImpCurveDomain: IntRes2d_Domain
 	:param TheParCurveDomain:
-	:type TheParCurveDomain: IntRes2d_Domain &
+	:type TheParCurveDomain: IntRes2d_Domain
 	:param NbResultats:
-	:type NbResultats: int &
+	:type NbResultats: int
 	:param Inter2_And_Domain2:
-	:type Inter2_And_Domain2: TColStd_Array1OfReal &
+	:type Inter2_And_Domain2: TColStd_Array1OfReal
 	:param Inter1:
-	:type Inter1: TColStd_Array1OfReal &
+	:type Inter1: TColStd_Array1OfReal
 	:param Resultat1:
-	:type Resultat1: TColStd_Array1OfReal &
+	:type Resultat1: TColStd_Array1OfReal
 	:param Resultat2:
-	:type Resultat2: TColStd_Array1OfReal &
+	:type Resultat2: TColStd_Array1OfReal
 	:param EpsNul:
 	:type EpsNul: float
 	:rtype: None") And_Domaine_Objet1_Intersections;
@@ -787,9 +787,9 @@ class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 	:param point:
 	:type point: gp_Pnt2d
 	:param TheParCurev:
-	:type TheParCurev: IntCurve_PConic &
+	:type TheParCurev: IntCurve_PConic
 	:param TheImpTool:
-	:type TheImpTool: IntCurve_IConicTool &
+	:type TheImpTool: IntCurve_IConicTool
 	:rtype: float") FindU;
 		Standard_Real FindU (const Standard_Real parameter,gp_Pnt2d & point,const IntCurve_PConic & TheParCurev,const IntCurve_IConicTool & TheImpTool);
 
@@ -800,11 +800,11 @@ class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 	:param point:
 	:type point: gp_Pnt2d
 	:param TheImpTool:
-	:type TheImpTool: IntCurve_IConicTool &
+	:type TheImpTool: IntCurve_IConicTool
 	:param ParCurve:
-	:type ParCurve: IntCurve_PConic &
+	:type ParCurve: IntCurve_PConic
 	:param TheParCurveDomain:
-	:type TheParCurveDomain: IntRes2d_Domain &
+	:type TheParCurveDomain: IntRes2d_Domain
 	:param V0:
 	:type V0: float
 	:param V1:
@@ -824,13 +824,13 @@ class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") IntCurve_IntImpConicParConic;
 		%feature("autodoc", "* Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 	:param ITool:
-	:type ITool: IntCurve_IConicTool &
+	:type ITool: IntCurve_IConicTool
 	:param Dom1:
-	:type Dom1: IntRes2d_Domain &
+	:type Dom1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: IntCurve_PConic &
+	:type PCurve: IntCurve_PConic
 	:param Dom2:
-	:type Dom2: IntRes2d_Domain &
+	:type Dom2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -842,13 +842,13 @@ class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 	:param ITool:
-	:type ITool: IntCurve_IConicTool &
+	:type ITool: IntCurve_IConicTool
 	:param Dom1:
-	:type Dom1: IntRes2d_Domain &
+	:type Dom1: IntRes2d_Domain
 	:param PCurve:
-	:type PCurve: IntCurve_PConic &
+	:type PCurve: IntCurve_PConic
 	:param Dom2:
-	:type Dom2: IntRes2d_Domain &
+	:type Dom2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -877,7 +877,7 @@ class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDeriv
 	:param Param:
 	:type Param: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real Param,Standard_Real &OutValue);
 
@@ -885,9 +885,9 @@ class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDeriv
 		%feature("compactdefaultargs") IntCurve_MyImpParToolOfIntImpConicParConic;
 		%feature("autodoc", "* Constructor of the class.
 	:param IT:
-	:type IT: IntCurve_IConicTool &
+	:type IT: IntCurve_IConicTool
 	:param PC:
-	:type PC: IntCurve_PConic &
+	:type PC: IntCurve_PConic
 	:rtype: None") IntCurve_MyImpParToolOfIntImpConicParConic;
 		 IntCurve_MyImpParToolOfIntImpConicParConic (const IntCurve_IConicTool & IT,const IntCurve_PConic & PC);
 
@@ -897,7 +897,7 @@ class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDeriv
 	:param Param:
 	:type Param: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real Param,Standard_Real &OutValue);
 
@@ -907,9 +907,9 @@ class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDeriv
 	:param Param:
 	:type Param: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real Param,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -946,7 +946,7 @@ class IntCurve_PConic {
 		/****************** IntCurve_PConic ******************/
 		%feature("compactdefaultargs") IntCurve_PConic;
 		%feature("autodoc", ":param PC:
-	:type PC: IntCurve_PConic &
+	:type PC: IntCurve_PConic
 	:rtype: None") IntCurve_PConic;
 		 IntCurve_PConic (const IntCurve_PConic & PC);
 
@@ -1034,7 +1034,7 @@ class IntCurve_PConicTool {
 		/****************** D1 ******************/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", ":param C:
-	:type C: IntCurve_PConic &
+	:type C: IntCurve_PConic
 	:param U:
 	:type U: float
 	:param P:
@@ -1047,7 +1047,7 @@ class IntCurve_PConicTool {
 		/****************** D2 ******************/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", ":param C:
-	:type C: IntCurve_PConic &
+	:type C: IntCurve_PConic
 	:param U:
 	:type U: float
 	:param P:
@@ -1062,21 +1062,21 @@ class IntCurve_PConicTool {
 		/****************** EpsX ******************/
 		%feature("compactdefaultargs") EpsX;
 		%feature("autodoc", ":param C:
-	:type C: IntCurve_PConic &
+	:type C: IntCurve_PConic
 	:rtype: float") EpsX;
 		static Standard_Real EpsX (const IntCurve_PConic & C);
 
 		/****************** NbSamples ******************/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", ":param C:
-	:type C: IntCurve_PConic &
+	:type C: IntCurve_PConic
 	:rtype: int") NbSamples;
 		static Standard_Integer NbSamples (const IntCurve_PConic & C);
 
 		/****************** NbSamples ******************/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", ":param C:
-	:type C: IntCurve_PConic &
+	:type C: IntCurve_PConic
 	:param U0:
 	:type U0: float
 	:param U1:
@@ -1087,7 +1087,7 @@ class IntCurve_PConicTool {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param C:
-	:type C: IntCurve_PConic &
+	:type C: IntCurve_PConic
 	:param X:
 	:type X: float
 	:rtype: gp_Pnt2d") Value;
@@ -1111,7 +1111,7 @@ class IntCurve_ProjectOnPConicTool {
 		%feature("compactdefaultargs") FindParameter;
 		%feature("autodoc", "* Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondance between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. In that case, no bounds are given. The research of the rigth parameter has to be made on the natural parametric domain of the curve.
 	:param C:
-	:type C: IntCurve_PConic &
+	:type C: IntCurve_PConic
 	:param Pnt:
 	:type Pnt: gp_Pnt2d
 	:param Tol:
@@ -1123,7 +1123,7 @@ class IntCurve_ProjectOnPConicTool {
 		%feature("compactdefaultargs") FindParameter;
 		%feature("autodoc", "* Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondance between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. LowParameter and HighParameter give the boundaries of the interval in wich the parameter certainly lies. These parameters are given to implement a more efficient algoritm. So, it is not necessary to check that the returned value verifies LowParameter <= Value <= HighParameter.
 	:param C:
-	:type C: IntCurve_PConic &
+	:type C: IntCurve_PConic
 	:param Pnt:
 	:type Pnt: gp_Pnt2d
 	:param LowParameter:

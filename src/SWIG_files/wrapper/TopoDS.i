@@ -90,7 +90,7 @@ class TopoDS {
 		%feature("compactdefaultargs") CompSolid;
 		%feature("autodoc", "* Casts shape S to the more specialized return type, CompSolid. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_CompSolid") CompSolid;
 		static const TopoDS_CompSolid  CompSolid (const TopoDS_Shape & S);
 
@@ -105,7 +105,7 @@ class TopoDS {
 		%feature("compactdefaultargs") Compound;
 		%feature("autodoc", "* Casts shape S to the more specialized return type, Compound. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Compound") Compound;
 		static const TopoDS_Compound  Compound (const TopoDS_Shape & S);
 
@@ -120,7 +120,7 @@ class TopoDS {
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "* Casts shape S to the more specialized return type, Edge Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Edge") Edge;
 		static const TopoDS_Edge  Edge (const TopoDS_Shape & S);
 
@@ -135,7 +135,7 @@ class TopoDS {
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "* Casts shape S to the more specialized return type, Face. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Face") Face;
 		static const TopoDS_Face  Face (const TopoDS_Shape & S);
 
@@ -150,7 +150,7 @@ class TopoDS {
 		%feature("compactdefaultargs") Shell;
 		%feature("autodoc", "* Casts shape S to the more specialized return type, Shell. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shell") Shell;
 		static const TopoDS_Shell  Shell (const TopoDS_Shape & S);
 
@@ -165,7 +165,7 @@ class TopoDS {
 		%feature("compactdefaultargs") Solid;
 		%feature("autodoc", "* Casts shape S to the more specialized return type, Solid. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Solid") Solid;
 		static const TopoDS_Solid  Solid (const TopoDS_Shape & S);
 
@@ -180,7 +180,7 @@ class TopoDS {
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "* Basic tool to access the data structure. Casts shape S to the more specialized return type, Vertex. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Vertex") Vertex;
 		static const TopoDS_Vertex  Vertex (const TopoDS_Shape & S);
 
@@ -195,7 +195,7 @@ class TopoDS {
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "* Casts shape S to the more specialized return type, Wire. Exceptions Standard_TypeMismatch if S cannot be cast to this return type.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Wire") Wire;
 		static const TopoDS_Wire  Wire (const TopoDS_Shape & S);
 
@@ -231,7 +231,7 @@ class TopoDS_AlertWithShape : public Message_Alert {
 		%feature("compactdefaultargs") Merge;
 		%feature("autodoc", "* Returns false.
 	:param theTarget:
-	:type theTarget: opencascade::handle<Message_Alert> &
+	:type theTarget: Message_Alert
 	:rtype: bool") Merge;
 		Standard_Boolean Merge (const opencascade::handle<Message_Alert> & theTarget);
 
@@ -239,7 +239,7 @@ class TopoDS_AlertWithShape : public Message_Alert {
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "* Sets the shape
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") SetShape;
 		void SetShape (const TopoDS_Shape & theShape);
 
@@ -253,7 +253,7 @@ class TopoDS_AlertWithShape : public Message_Alert {
 		%feature("compactdefaultargs") TopoDS_AlertWithShape;
 		%feature("autodoc", "* Constructor with shape argument
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") TopoDS_AlertWithShape;
 		 TopoDS_AlertWithShape (const TopoDS_Shape & theShape);
 
@@ -275,9 +275,9 @@ class TopoDS_Builder {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Add the Shape C in the Shape S. Exceptions - TopoDS_FrozenShape if S is not free and cannot be modified. - TopoDS__UnCompatibleShapes if S and C are not compatible.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param C:
-	:type C: TopoDS_Shape &
+	:type C: TopoDS_Shape
 	:rtype: None") Add;
 		void Add (TopoDS_Shape & S,const TopoDS_Shape & C);
 
@@ -285,7 +285,7 @@ class TopoDS_Builder {
 		%feature("compactdefaultargs") MakeCompSolid;
 		%feature("autodoc", "* Make an empty Composite Solid.
 	:param C:
-	:type C: TopoDS_CompSolid &
+	:type C: TopoDS_CompSolid
 	:rtype: None") MakeCompSolid;
 		void MakeCompSolid (TopoDS_CompSolid & C);
 
@@ -293,7 +293,7 @@ class TopoDS_Builder {
 		%feature("compactdefaultargs") MakeCompound;
 		%feature("autodoc", "* Make an empty Compound.
 	:param C:
-	:type C: TopoDS_Compound &
+	:type C: TopoDS_Compound
 	:rtype: None") MakeCompound;
 		void MakeCompound (TopoDS_Compound & C);
 
@@ -301,7 +301,7 @@ class TopoDS_Builder {
 		%feature("compactdefaultargs") MakeShell;
 		%feature("autodoc", "* Make an empty Shell.
 	:param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:rtype: None") MakeShell;
 		void MakeShell (TopoDS_Shell & S);
 
@@ -309,7 +309,7 @@ class TopoDS_Builder {
 		%feature("compactdefaultargs") MakeSolid;
 		%feature("autodoc", "* Make a Solid covering the whole 3D space.
 	:param S:
-	:type S: TopoDS_Solid &
+	:type S: TopoDS_Solid
 	:rtype: None") MakeSolid;
 		void MakeSolid (TopoDS_Solid & S);
 
@@ -317,7 +317,7 @@ class TopoDS_Builder {
 		%feature("compactdefaultargs") MakeWire;
 		%feature("autodoc", "* Make an empty Wire.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") MakeWire;
 		void MakeWire (TopoDS_Wire & W);
 
@@ -325,9 +325,9 @@ class TopoDS_Builder {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Remove the Shape C from the Shape S. Exceptions TopoDS_FrozenShape if S is frozen and cannot be modified.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param C:
-	:type C: TopoDS_Shape &
+	:type C: TopoDS_Shape
 	:rtype: None") Remove;
 		void Remove (TopoDS_Shape & S,const TopoDS_Shape & C);
 
@@ -356,7 +356,7 @@ class TopoDS_HShape : public Standard_Transient {
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "* Loads this shape with the shape aShape
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: None") Shape;
 		void Shape (const TopoDS_Shape & aShape);
 
@@ -376,7 +376,7 @@ class TopoDS_HShape : public Standard_Transient {
 		%feature("compactdefaultargs") TopoDS_HShape;
 		%feature("autodoc", "* Constructs a shape object defined by the shape aShape.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: None") TopoDS_HShape;
 		 TopoDS_HShape (const TopoDS_Shape & aShape);
 
@@ -401,7 +401,7 @@ class TopoDS_Iterator {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes this iterator with shape S. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param cumOri: default value is Standard_True
 	:type cumOri: bool
 	:param cumLoc: default value is Standard_True
@@ -431,7 +431,7 @@ class TopoDS_Iterator {
 		%feature("compactdefaultargs") TopoDS_Iterator;
 		%feature("autodoc", "* Creates an Iterator on <S> sub-shapes. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param cumOri: default value is Standard_True
 	:type cumOri: bool
 	:param cumLoc: default value is Standard_True
@@ -598,7 +598,7 @@ class TopoDS_Shape {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns True if two shapes are equal, i.e. if they share the same TShape with the same Locations and Orientations.
 	:param theOther:
-	:type theOther: TopoDS_Shape &
+	:type theOther: TopoDS_Shape
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const TopoDS_Shape & theOther);
 
@@ -606,7 +606,7 @@ class TopoDS_Shape {
 		%feature("compactdefaultargs") IsNotEqual;
 		%feature("autodoc", "* Negation of the IsEqual method.
 	:param theOther:
-	:type theOther: TopoDS_Shape &
+	:type theOther: TopoDS_Shape
 	:rtype: bool") IsNotEqual;
 		Standard_Boolean IsNotEqual (const TopoDS_Shape & theOther);
 
@@ -620,7 +620,7 @@ class TopoDS_Shape {
 		%feature("compactdefaultargs") IsPartner;
 		%feature("autodoc", "* Returns True if two shapes are partners, i.e. if they share the same TShape. Locations and Orientations may differ.
 	:param theOther:
-	:type theOther: TopoDS_Shape &
+	:type theOther: TopoDS_Shape
 	:rtype: bool") IsPartner;
 		Standard_Boolean IsPartner (const TopoDS_Shape & theOther);
 
@@ -628,7 +628,7 @@ class TopoDS_Shape {
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", "* Returns True if two shapes are same, i.e. if they share the same TShape with the same Locations. Orientations may differ.
 	:param theOther:
-	:type theOther: TopoDS_Shape &
+	:type theOther: TopoDS_Shape
 	:rtype: bool") IsSame;
 		Standard_Boolean IsSame (const TopoDS_Shape & theOther);
 
@@ -636,7 +636,7 @@ class TopoDS_Shape {
 		%feature("compactdefaultargs") Located;
 		%feature("autodoc", "* Returns a shape similar to <self> with the local coordinate system set to <Loc>.
 	:param theLoc:
-	:type theLoc: TopLoc_Location &
+	:type theLoc: TopLoc_Location
 	:rtype: TopoDS_Shape") Located;
 		TopoDS_Shape Located (const TopLoc_Location & theLoc);
 
@@ -650,7 +650,7 @@ class TopoDS_Shape {
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "* Sets the shape local coordinate system.
 	:param theLoc:
-	:type theLoc: TopLoc_Location &
+	:type theLoc: TopLoc_Location
 	:rtype: None") Location;
 		void Location (const TopLoc_Location & theLoc);
 
@@ -686,7 +686,7 @@ class TopoDS_Shape {
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "* Multiplies the Shape location by thePosition.
 	:param thePosition:
-	:type thePosition: TopLoc_Location &
+	:type thePosition: TopLoc_Location
 	:rtype: None") Move;
 		void Move (const TopLoc_Location & thePosition);
 
@@ -694,7 +694,7 @@ class TopoDS_Shape {
 		%feature("compactdefaultargs") Moved;
 		%feature("autodoc", "* Returns a shape similar to <self> with a location multiplied by thePosition.
 	:param thePosition:
-	:type thePosition: TopLoc_Location &
+	:type thePosition: TopLoc_Location
 	:rtype: TopoDS_Shape") Moved;
 		TopoDS_Shape Moved (const TopLoc_Location & thePosition);
 
@@ -773,7 +773,7 @@ class TopoDS_Shape {
 		/****************** TShape ******************/
 		%feature("compactdefaultargs") TShape;
 		%feature("autodoc", ":param theTShape:
-	:type theTShape: opencascade::handle<TopoDS_TShape> &
+	:type theTShape: TopoDS_TShape
 	:rtype: None") TShape;
 		void TShape (const opencascade::handle<TopoDS_TShape> & theTShape);
 

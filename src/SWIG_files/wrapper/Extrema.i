@@ -251,9 +251,9 @@ class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* Calculate Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & UV,math_Matrix & DF);
 
@@ -267,9 +267,9 @@ class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 		/****************** Extrema_CCLocFOfLocECC ******************/
 		%feature("compactdefaultargs") Extrema_CCLocFOfLocECC;
 		%feature("autodoc", ":param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:param thetol: default value is 1.0e-10
 	:type thetol: float
 	:rtype: None") Extrema_CCLocFOfLocECC;
@@ -303,9 +303,9 @@ class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv &
+	:type P1: Extrema_POnCurv
 	:param P2:
-	:type P2: Extrema_POnCurv &
+	:type P2: Extrema_POnCurv
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv & P1,Extrema_POnCurv & P2);
 
@@ -322,7 +322,7 @@ class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 		%feature("autodoc", ":param theRank:
 	:type theRank: int
 	:param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:rtype: None") SetCurve;
 		void SetCurve (const Standard_Integer theRank,const Adaptor3d_Curve & C1);
 
@@ -345,9 +345,9 @@ class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") SubIntervalInitialize;
 		%feature("autodoc", "* Determines of boundaries of subinterval for find of root.
 	:param theUfirst:
-	:type theUfirst: math_Vector &
+	:type theUfirst: math_Vector
 	:param theUlast:
-	:type theUlast: math_Vector &
+	:type theUlast: math_Vector
 	:rtype: None") SubIntervalInitialize;
 		void SubIntervalInitialize (const math_Vector & theUfirst,const math_Vector & theUlast);
 
@@ -361,9 +361,9 @@ class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Calculate Fi(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & UV,math_Vector & F);
 
@@ -371,11 +371,11 @@ class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* Calculate Fi(U,V) and Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & UV,math_Vector & F,math_Matrix & DF);
 
@@ -406,9 +406,9 @@ class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* Calculate Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & UV,math_Matrix & DF);
 
@@ -422,9 +422,9 @@ class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 		/****************** Extrema_CCLocFOfLocECC2d ******************/
 		%feature("compactdefaultargs") Extrema_CCLocFOfLocECC2d;
 		%feature("autodoc", ":param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:param thetol: default value is 1.0e-10
 	:type thetol: float
 	:rtype: None") Extrema_CCLocFOfLocECC2d;
@@ -458,9 +458,9 @@ class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv2d &
+	:type P1: Extrema_POnCurv2d
 	:param P2:
-	:type P2: Extrema_POnCurv2d &
+	:type P2: Extrema_POnCurv2d
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv2d & P1,Extrema_POnCurv2d & P2);
 
@@ -477,7 +477,7 @@ class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 		%feature("autodoc", ":param theRank:
 	:type theRank: int
 	:param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:rtype: None") SetCurve;
 		void SetCurve (const Standard_Integer theRank,const Adaptor2d_Curve2d & C1);
 
@@ -500,9 +500,9 @@ class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") SubIntervalInitialize;
 		%feature("autodoc", "* Determines of boundaries of subinterval for find of root.
 	:param theUfirst:
-	:type theUfirst: math_Vector &
+	:type theUfirst: math_Vector
 	:param theUlast:
-	:type theUlast: math_Vector &
+	:type theUlast: math_Vector
 	:rtype: None") SubIntervalInitialize;
 		void SubIntervalInitialize (const math_Vector & theUfirst,const math_Vector & theUlast);
 
@@ -516,9 +516,9 @@ class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Calculate Fi(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & UV,math_Vector & F);
 
@@ -526,11 +526,11 @@ class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* Calculate Fi(U,V) and Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & UV,math_Vector & F,math_Matrix & DF);
 
@@ -551,28 +551,28 @@ class Extrema_Curve2dTool {
 		/****************** BSpline ******************/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: opencascade::handle<Geom2d_BSplineCurve>") BSpline;
 		static opencascade::handle<Geom2d_BSplineCurve> BSpline (const Adaptor2d_Curve2d & C);
 
 		/****************** Bezier ******************/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: opencascade::handle<Geom2d_BezierCurve>") Bezier;
 		static opencascade::handle<Geom2d_BezierCurve> Bezier (const Adaptor2d_Curve2d & C);
 
 		/****************** Circle ******************/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: gp_Circ2d") Circle;
 		static gp_Circ2d Circle (const Adaptor2d_Curve2d & C);
 
 		/****************** Continuity ******************/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: GeomAbs_Shape") Continuity;
 		static GeomAbs_Shape Continuity (const Adaptor2d_Curve2d & C);
 
@@ -580,7 +580,7 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U:
 	:type U: float
 	:param P:
@@ -592,7 +592,7 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "* Computes the point of parameter U on the curve with its first derivative.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U:
 	:type U: float
 	:param P:
@@ -606,7 +606,7 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "* Returns the point P of parameter U, the first and second derivatives V1 and V2.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U:
 	:type U: float
 	:param P:
@@ -622,7 +622,7 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "* Returns the point P of parameter U, the first, the second and the third derivative.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U:
 	:type U: float
 	:param P:
@@ -640,7 +640,7 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "* The returned vector gives the value of the derivative for the order of derivation N.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U:
 	:type U: float
 	:param N:
@@ -652,28 +652,28 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") DeflCurvIntervals;
 		%feature("autodoc", "* Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method. //!
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: opencascade::handle<TColStd_HArray1OfReal>") DeflCurvIntervals;
 		static opencascade::handle<TColStd_HArray1OfReal> DeflCurvIntervals (const Adaptor2d_Curve2d & C);
 
 		/****************** Degree ******************/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: int") Degree;
 		static Standard_Integer Degree (const Adaptor2d_Curve2d & C);
 
 		/****************** Ellipse ******************/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: gp_Elips2d") Ellipse;
 		static gp_Elips2d Ellipse (const Adaptor2d_Curve2d & C);
 
 		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: float") FirstParameter;
 		static Standard_Real FirstParameter (const Adaptor2d_Curve2d & C);
 
@@ -681,14 +681,14 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: GeomAbs_CurveType") GetType;
 		static GeomAbs_CurveType GetType (const Adaptor2d_Curve2d & C);
 
 		/****************** Hyperbola ******************/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: gp_Hypr2d") Hyperbola;
 		static gp_Hypr2d Hyperbola (const Adaptor2d_Curve2d & C);
 
@@ -696,9 +696,9 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -707,35 +707,35 @@ class Extrema_Curve2dTool {
 		/****************** IsClosed ******************/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: bool") IsClosed;
 		static Standard_Boolean IsClosed (const Adaptor2d_Curve2d & C);
 
 		/****************** IsPeriodic ******************/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: bool") IsPeriodic;
 		static Standard_Boolean IsPeriodic (const Adaptor2d_Curve2d & C);
 
 		/****************** IsRational ******************/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: bool") IsRational;
 		static Standard_Boolean IsRational (const Adaptor2d_Curve2d & C);
 
 		/****************** LastParameter ******************/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: float") LastParameter;
 		static Standard_Real LastParameter (const Adaptor2d_Curve2d & C);
 
 		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: gp_Lin2d") Line;
 		static gp_Lin2d Line (const Adaptor2d_Curve2d & C);
 
@@ -743,7 +743,7 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "* If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: int") NbIntervals;
@@ -752,28 +752,28 @@ class Extrema_Curve2dTool {
 		/****************** NbKnots ******************/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: int") NbKnots;
 		static Standard_Integer NbKnots (const Adaptor2d_Curve2d & C);
 
 		/****************** NbPoles ******************/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: int") NbPoles;
 		static Standard_Integer NbPoles (const Adaptor2d_Curve2d & C);
 
 		/****************** Parabola ******************/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: gp_Parab2d") Parabola;
 		static gp_Parab2d Parabola (const Adaptor2d_Curve2d & C);
 
 		/****************** Period ******************/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: float") Period;
 		static Standard_Real Period (const Adaptor2d_Curve2d & C);
 
@@ -781,7 +781,7 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param R3d:
 	:type R3d: float
 	:rtype: float") Resolution;
@@ -791,7 +791,7 @@ class Extrema_Curve2dTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U:
 	:type U: float
 	:rtype: gp_Pnt2d") Value;
@@ -814,35 +814,35 @@ class Extrema_CurveTool {
 		/****************** BSpline ******************/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: opencascade::handle<Geom_BSplineCurve>") BSpline;
 		static opencascade::handle<Geom_BSplineCurve> BSpline (const Adaptor3d_Curve & C);
 
 		/****************** Bezier ******************/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: opencascade::handle<Geom_BezierCurve>") Bezier;
 		static opencascade::handle<Geom_BezierCurve> Bezier (const Adaptor3d_Curve & C);
 
 		/****************** Circle ******************/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: gp_Circ") Circle;
 		static gp_Circ Circle (const Adaptor3d_Curve & C);
 
 		/****************** Continuity ******************/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: GeomAbs_Shape") Continuity;
 		static GeomAbs_Shape Continuity (const Adaptor3d_Curve & C);
 
 		/****************** D0 ******************/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -853,7 +853,7 @@ class Extrema_CurveTool {
 		/****************** D1 ******************/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -866,7 +866,7 @@ class Extrema_CurveTool {
 		/****************** D2 ******************/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -881,7 +881,7 @@ class Extrema_CurveTool {
 		/****************** D3 ******************/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -898,7 +898,7 @@ class Extrema_CurveTool {
 		/****************** DN ******************/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U:
 	:type U: float
 	:param N:
@@ -910,42 +910,42 @@ class Extrema_CurveTool {
 		%feature("compactdefaultargs") DeflCurvIntervals;
 		%feature("autodoc", "* Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method. //!
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: opencascade::handle<TColStd_HArray1OfReal>") DeflCurvIntervals;
 		static opencascade::handle<TColStd_HArray1OfReal> DeflCurvIntervals (const Adaptor3d_Curve & C);
 
 		/****************** Degree ******************/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: int") Degree;
 		static Standard_Integer Degree (const Adaptor3d_Curve & C);
 
 		/****************** Ellipse ******************/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: gp_Elips") Ellipse;
 		static gp_Elips Ellipse (const Adaptor3d_Curve & C);
 
 		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: float") FirstParameter;
 		static Standard_Real FirstParameter (const Adaptor3d_Curve & C);
 
 		/****************** GetType ******************/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: GeomAbs_CurveType") GetType;
 		static GeomAbs_CurveType GetType (const Adaptor3d_Curve & C);
 
 		/****************** Hyperbola ******************/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: gp_Hypr") Hyperbola;
 		static gp_Hypr Hyperbola (const Adaptor3d_Curve & C);
 
@@ -953,9 +953,9 @@ class Extrema_CurveTool {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -964,28 +964,28 @@ class Extrema_CurveTool {
 		/****************** IsPeriodic ******************/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: bool") IsPeriodic;
 		static Standard_Boolean IsPeriodic (const Adaptor3d_Curve & C);
 
 		/****************** IsRational ******************/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: bool") IsRational;
 		static Standard_Boolean IsRational (const Adaptor3d_Curve & C);
 
 		/****************** LastParameter ******************/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: float") LastParameter;
 		static Standard_Real LastParameter (const Adaptor3d_Curve & C);
 
 		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: gp_Lin") Line;
 		static gp_Lin Line (const Adaptor3d_Curve & C);
 
@@ -993,7 +993,7 @@ class Extrema_CurveTool {
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "* Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: int") NbIntervals;
@@ -1002,35 +1002,35 @@ class Extrema_CurveTool {
 		/****************** NbKnots ******************/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: int") NbKnots;
 		static Standard_Integer NbKnots (const Adaptor3d_Curve & C);
 
 		/****************** NbPoles ******************/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: int") NbPoles;
 		static Standard_Integer NbPoles (const Adaptor3d_Curve & C);
 
 		/****************** Parabola ******************/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: gp_Parab") Parabola;
 		static gp_Parab Parabola (const Adaptor3d_Curve & C);
 
 		/****************** Period ******************/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: float") Period;
 		static Standard_Real Period (const Adaptor3d_Curve & C);
 
 		/****************** Resolution ******************/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param R3d:
 	:type R3d: float
 	:rtype: float") Resolution;
@@ -1039,7 +1039,7 @@ class Extrema_CurveTool {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U:
 	:type U: float
 	:rtype: gp_Pnt") Value;
@@ -1070,9 +1070,9 @@ class Extrema_ECC {
 		%feature("compactdefaultargs") Extrema_ECC;
 		%feature("autodoc", "* It calculates all the distances. The function F(u,v)=distance(C1(u),C2(v)) has an extremum when gradient(f)=0. The algorithm uses Evtushenko's global optimization solver.
 	:param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:rtype: None") Extrema_ECC;
 		 Extrema_ECC (const Adaptor3d_Curve & C1,const Adaptor3d_Curve & C2);
 
@@ -1080,9 +1080,9 @@ class Extrema_ECC {
 		%feature("compactdefaultargs") Extrema_ECC;
 		%feature("autodoc", "* Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
 	:param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -1130,9 +1130,9 @@ class Extrema_ECC {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv &
+	:type P1: Extrema_POnCurv
 	:param P2:
-	:type P2: Extrema_POnCurv &
+	:type P2: Extrema_POnCurv
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv & P1,Extrema_POnCurv & P2);
 
@@ -1140,9 +1140,9 @@ class Extrema_ECC {
 		%feature("compactdefaultargs") SetParams;
 		%feature("autodoc", "* Set params in case of empty constructor is usage.
 	:param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -1202,9 +1202,9 @@ class Extrema_ECC2d {
 		%feature("compactdefaultargs") Extrema_ECC2d;
 		%feature("autodoc", "* It calculates all the distances. The function F(u,v)=distance(C1(u),C2(v)) has an extremum when gradient(f)=0. The algorithm uses Evtushenko's global optimization solver.
 	:param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:rtype: None") Extrema_ECC2d;
 		 Extrema_ECC2d (const Adaptor2d_Curve2d & C1,const Adaptor2d_Curve2d & C2);
 
@@ -1212,9 +1212,9 @@ class Extrema_ECC2d {
 		%feature("compactdefaultargs") Extrema_ECC2d;
 		%feature("autodoc", "* Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
 	:param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -1262,9 +1262,9 @@ class Extrema_ECC2d {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv2d &
+	:type P1: Extrema_POnCurv2d
 	:param P2:
-	:type P2: Extrema_POnCurv2d &
+	:type P2: Extrema_POnCurv2d
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv2d & P1,Extrema_POnCurv2d & P2);
 
@@ -1272,9 +1272,9 @@ class Extrema_ECC2d {
 		%feature("compactdefaultargs") SetParams;
 		%feature("autodoc", "* Set params in case of empty constructor is usage.
 	:param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -1335,7 +1335,7 @@ class Extrema_ELPCOfLocateExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -1351,7 +1351,7 @@ class Extrema_ELPCOfLocateExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param TolF: default value is 1.0e-10
 	:type TolF: float
 	:rtype: None") Extrema_ELPCOfLocateExtPC;
@@ -1361,7 +1361,7 @@ class Extrema_ELPCOfLocateExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* initializes the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -1419,9 +1419,9 @@ class Extrema_ELPCOfLocateExtPC {
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "* if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
 	:param dist1:
-	:type dist1: float &
+	:type dist1: float
 	:param dist2:
-	:type dist2: float &
+	:type dist2: float
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -1455,7 +1455,7 @@ class Extrema_ELPCOfLocateExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -1471,7 +1471,7 @@ class Extrema_ELPCOfLocateExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param TolF: default value is 1.0e-10
 	:type TolF: float
 	:rtype: None") Extrema_ELPCOfLocateExtPC2d;
@@ -1481,7 +1481,7 @@ class Extrema_ELPCOfLocateExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* initializes the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -1539,9 +1539,9 @@ class Extrema_ELPCOfLocateExtPC2d {
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "* if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
 	:param dist1:
-	:type dist1: float &
+	:type dist1: float
 	:param dist2:
-	:type dist2: float &
+	:type dist2: float
 	:param P1:
 	:type P1: gp_Pnt2d
 	:param P2:
@@ -1575,7 +1575,7 @@ class Extrema_EPCOfELPCOfLocateExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbU:
 	:type NbU: int
 	:param TolU:
@@ -1591,7 +1591,7 @@ class Extrema_EPCOfELPCOfLocateExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbU:
 	:type NbU: int
 	:param Umin:
@@ -1609,7 +1609,7 @@ class Extrema_EPCOfELPCOfLocateExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbU:
 	:type NbU: int
 	:param TolU:
@@ -1623,7 +1623,7 @@ class Extrema_EPCOfELPCOfLocateExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbU:
 	:type NbU: int
 	:param Umin:
@@ -1641,7 +1641,7 @@ class Extrema_EPCOfELPCOfLocateExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor3d_Curve & C);
 
@@ -1731,7 +1731,7 @@ class Extrema_EPCOfELPCOfLocateExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param NbU:
 	:type NbU: int
 	:param TolU:
@@ -1747,7 +1747,7 @@ class Extrema_EPCOfELPCOfLocateExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param NbU:
 	:type NbU: int
 	:param Umin:
@@ -1765,7 +1765,7 @@ class Extrema_EPCOfELPCOfLocateExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param NbU:
 	:type NbU: int
 	:param TolU:
@@ -1779,7 +1779,7 @@ class Extrema_EPCOfELPCOfLocateExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param NbU:
 	:type NbU: int
 	:param Umin:
@@ -1797,7 +1797,7 @@ class Extrema_EPCOfELPCOfLocateExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor2d_Curve2d & C);
 
@@ -1887,7 +1887,7 @@ class Extrema_EPCOfExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbU:
 	:type NbU: int
 	:param TolU:
@@ -1903,7 +1903,7 @@ class Extrema_EPCOfExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbU:
 	:type NbU: int
 	:param Umin:
@@ -1921,7 +1921,7 @@ class Extrema_EPCOfExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbU:
 	:type NbU: int
 	:param TolU:
@@ -1935,7 +1935,7 @@ class Extrema_EPCOfExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbU:
 	:type NbU: int
 	:param Umin:
@@ -1953,7 +1953,7 @@ class Extrema_EPCOfExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor3d_Curve & C);
 
@@ -2043,7 +2043,7 @@ class Extrema_EPCOfExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param NbU:
 	:type NbU: int
 	:param TolU:
@@ -2059,7 +2059,7 @@ class Extrema_EPCOfExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param NbU:
 	:type NbU: int
 	:param Umin:
@@ -2077,7 +2077,7 @@ class Extrema_EPCOfExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param NbU:
 	:type NbU: int
 	:param TolU:
@@ -2091,7 +2091,7 @@ class Extrema_EPCOfExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param NbU:
 	:type NbU: int
 	:param Umin:
@@ -2109,7 +2109,7 @@ class Extrema_EPCOfExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor2d_Curve2d & C);
 
@@ -2201,9 +2201,9 @@ class Extrema_ExtCC {
 		%feature("compactdefaultargs") Extrema_ExtCC;
 		%feature("autodoc", "* It calculates all the distances.
 	:param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:param TolC1: default value is 1.0e-10
 	:type TolC1: float
 	:param TolC2: default value is 1.0e-10
@@ -2215,9 +2215,9 @@ class Extrema_ExtCC {
 		%feature("compactdefaultargs") Extrema_ExtCC;
 		%feature("autodoc", "* It calculates all the distances.
 	:param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -2268,9 +2268,9 @@ class Extrema_ExtCC {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv &
+	:type P1: Extrema_POnCurv
 	:param P2:
-	:type P2: Extrema_POnCurv &
+	:type P2: Extrema_POnCurv
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv & P1,Extrema_POnCurv & P2);
 
@@ -2279,7 +2279,7 @@ class Extrema_ExtCC {
 		%feature("autodoc", ":param theRank:
 	:type theRank: int
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") SetCurve;
 		void SetCurve (const Standard_Integer theRank,const Adaptor3d_Curve & C);
 
@@ -2288,7 +2288,7 @@ class Extrema_ExtCC {
 		%feature("autodoc", ":param theRank:
 	:type theRank: int
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -2336,13 +2336,13 @@ class Extrema_ExtCC {
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "* if the curve is a trimmed curve, dist11 is a square distance between the point on C1 of parameter FirstParameter and the point of parameter FirstParameter on C2.
 	:param dist11:
-	:type dist11: float &
+	:type dist11: float
 	:param distP12:
-	:type distP12: float &
+	:type distP12: float
 	:param distP21:
-	:type distP21: float &
+	:type distP21: float
 	:param distP22:
-	:type distP22: float &
+	:type distP22: float
 	:param P11:
 	:type P11: gp_Pnt
 	:param P12:
@@ -2378,9 +2378,9 @@ class Extrema_ExtCC2d {
 		%feature("compactdefaultargs") Extrema_ExtCC2d;
 		%feature("autodoc", "* It calculates all the distances.
 	:param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:param TolC1: default value is 1.0e-10
 	:type TolC1: float
 	:param TolC2: default value is 1.0e-10
@@ -2392,9 +2392,9 @@ class Extrema_ExtCC2d {
 		%feature("compactdefaultargs") Extrema_ExtCC2d;
 		%feature("autodoc", "* It calculates all the distances.
 	:param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -2420,7 +2420,7 @@ class Extrema_ExtCC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* initializes the fields.
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:param V1:
 	:type V1: float
 	:param V2:
@@ -2453,7 +2453,7 @@ class Extrema_ExtCC2d {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -2467,9 +2467,9 @@ class Extrema_ExtCC2d {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv2d &
+	:type P1: Extrema_POnCurv2d
 	:param P2:
-	:type P2: Extrema_POnCurv2d &
+	:type P2: Extrema_POnCurv2d
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv2d & P1,Extrema_POnCurv2d & P2);
 
@@ -2493,13 +2493,13 @@ class Extrema_ExtCC2d {
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "* if the curve is a trimmed curve, dist11 is a square distance between the point on C1 of parameter FirstParameter and the point of parameter FirstParameter on C2.
 	:param dist11:
-	:type dist11: float &
+	:type dist11: float
 	:param distP12:
-	:type distP12: float &
+	:type distP12: float
 	:param distP21:
-	:type distP21: float &
+	:type distP21: float
 	:param distP22:
-	:type distP22: float &
+	:type distP22: float
 	:param P11:
 	:type P11: gp_Pnt2d
 	:param P12:
@@ -2535,9 +2535,9 @@ class Extrema_ExtCS {
 		%feature("compactdefaultargs") Extrema_ExtCS;
 		%feature("autodoc", "* It calculates all the distances between C and S.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param TolC:
 	:type TolC: float
 	:param TolS:
@@ -2549,9 +2549,9 @@ class Extrema_ExtCS {
 		%feature("compactdefaultargs") Extrema_ExtCS;
 		%feature("autodoc", "* It calculates all the distances between C and S. UCinf and UCmax are the start and end parameters of the curve.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param UCinf:
 	:type UCinf: float
 	:param UCsup:
@@ -2575,7 +2575,7 @@ class Extrema_ExtCS {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -2613,7 +2613,7 @@ class Extrema_ExtCS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes the distances. An exception is raised if the fieds have not been initialized.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -2627,9 +2627,9 @@ class Extrema_ExtCS {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv &
+	:type P1: Extrema_POnCurv
 	:param P2:
-	:type P2: Extrema_POnSurf &
+	:type P2: Extrema_POnSurf
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv & P1,Extrema_POnSurf & P2);
 
@@ -2749,9 +2749,9 @@ class Extrema_ExtElC {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv &
+	:type P1: Extrema_POnCurv
 	:param P2:
-	:type P2: Extrema_POnCurv &
+	:type P2: Extrema_POnCurv
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv & P1,Extrema_POnCurv & P2);
 
@@ -2901,9 +2901,9 @@ class Extrema_ExtElC2d {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv2d &
+	:type P1: Extrema_POnCurv2d
 	:param P2:
-	:type P2: Extrema_POnCurv2d &
+	:type P2: Extrema_POnCurv2d
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv2d & P1,Extrema_POnCurv2d & P2);
 
@@ -3168,9 +3168,9 @@ class Extrema_ExtElCS {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnCurv &
+	:type P1: Extrema_POnCurv
 	:param P2:
-	:type P2: Extrema_POnSurf &
+	:type P2: Extrema_POnSurf
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnCurv & P1,Extrema_POnSurf & P2);
 
@@ -3340,9 +3340,9 @@ class Extrema_ExtElSS {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnSurf &
+	:type P1: Extrema_POnSurf
 	:param P2:
-	:type P2: Extrema_POnSurf &
+	:type P2: Extrema_POnSurf
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnSurf & P1,Extrema_POnSurf & P2);
 
@@ -3380,7 +3380,7 @@ class Extrema_ExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -3396,7 +3396,7 @@ class Extrema_ExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param TolF: default value is 1.0e-10
 	:type TolF: float
 	:rtype: None") Extrema_ExtPC;
@@ -3406,7 +3406,7 @@ class Extrema_ExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* initializes the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -3464,9 +3464,9 @@ class Extrema_ExtPC {
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "* if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
 	:param dist1:
-	:type dist1: float &
+	:type dist1: float
 	:param dist2:
-	:type dist2: float &
+	:type dist2: float
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -3500,7 +3500,7 @@ class Extrema_ExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -3516,7 +3516,7 @@ class Extrema_ExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param TolF: default value is 1.0e-10
 	:type TolF: float
 	:rtype: None") Extrema_ExtPC2d;
@@ -3526,7 +3526,7 @@ class Extrema_ExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* initializes the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -3584,9 +3584,9 @@ class Extrema_ExtPC2d {
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "* if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
 	:param dist1:
-	:type dist1: float &
+	:type dist1: float
 	:param dist2:
-	:type dist2: float &
+	:type dist2: float
 	:param P1:
 	:type P1: gp_Pnt2d
 	:param P2:
@@ -4205,7 +4205,7 @@ class Extrema_ExtPExtS : public Standard_Transient {
 	:param P:
 	:type P: gp_Pnt
 	:param S:
-	:type S: opencascade::handle<GeomAdaptor_HSurfaceOfLinearExtrusion> &
+	:type S: GeomAdaptor_HSurfaceOfLinearExtrusion
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -4227,7 +4227,7 @@ class Extrema_ExtPExtS : public Standard_Transient {
 	:param P:
 	:type P: gp_Pnt
 	:param S:
-	:type S: opencascade::handle<GeomAdaptor_HSurfaceOfLinearExtrusion> &
+	:type S: GeomAdaptor_HSurfaceOfLinearExtrusion
 	:param TolU:
 	:type TolU: float
 	:param TolV:
@@ -4239,7 +4239,7 @@ class Extrema_ExtPExtS : public Standard_Transient {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param S:
-	:type S: opencascade::handle<GeomAdaptor_HSurfaceOfLinearExtrusion> &
+	:type S: GeomAdaptor_HSurfaceOfLinearExtrusion
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -4318,7 +4318,7 @@ class Extrema_ExtPRevS : public Standard_Transient {
 	:param P:
 	:type P: gp_Pnt
 	:param S:
-	:type S: opencascade::handle<GeomAdaptor_HSurfaceOfRevolution> &
+	:type S: GeomAdaptor_HSurfaceOfRevolution
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -4340,7 +4340,7 @@ class Extrema_ExtPRevS : public Standard_Transient {
 	:param P:
 	:type P: gp_Pnt
 	:param S:
-	:type S: opencascade::handle<GeomAdaptor_HSurfaceOfRevolution> &
+	:type S: GeomAdaptor_HSurfaceOfRevolution
 	:param TolU:
 	:type TolU: float
 	:param TolV:
@@ -4351,7 +4351,7 @@ class Extrema_ExtPRevS : public Standard_Transient {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<GeomAdaptor_HSurfaceOfRevolution> &
+	:type S: GeomAdaptor_HSurfaceOfRevolution
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -4430,7 +4430,7 @@ class Extrema_ExtPS {
 	:param P:
 	:type P: gp_Pnt
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param TolU:
 	:type TolU: float
 	:param TolV:
@@ -4448,7 +4448,7 @@ class Extrema_ExtPS {
 	:param P:
 	:type P: gp_Pnt
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -4472,7 +4472,7 @@ class Extrema_ExtPS {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param Uinf:
 	:type Uinf: float
 	:param Usup:
@@ -4542,13 +4542,13 @@ class Extrema_ExtPS {
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "* if the surface is a trimmed surface, dUfVf is a square distance between <P> and the point of parameter FirstUParameter and FirstVParameter <PUfVf>. dUfVl is a square distance between <P> and the point of parameter FirstUParameter and LastVParameter <PUfVl>. dUlVf is a square distance between <P> and the point of parameter LastUParameter and FirstVParameter <PUlVf>. dUlVl is a square distance between <P> and the point of parameter LastUParameter and LastVParameter <PUlVl>.
 	:param dUfVf:
-	:type dUfVf: float &
+	:type dUfVf: float
 	:param dUfVl:
-	:type dUfVl: float &
+	:type dUfVl: float
 	:param dUlVf:
-	:type dUlVf: float &
+	:type dUlVf: float
 	:param dUlVl:
-	:type dUlVl: float &
+	:type dUlVl: float
 	:param PUfVf:
 	:type PUfVf: gp_Pnt
 	:param PUfVl:
@@ -4584,9 +4584,9 @@ class Extrema_ExtSS {
 		%feature("compactdefaultargs") Extrema_ExtSS;
 		%feature("autodoc", "* It calculates all the distances between S1 and S2.
 	:param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:param TolS1:
 	:type TolS1: float
 	:param TolS2:
@@ -4598,9 +4598,9 @@ class Extrema_ExtSS {
 		%feature("compactdefaultargs") Extrema_ExtSS;
 		%feature("autodoc", "* It calculates all the distances between S1 and S2.
 	:param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:param Uinf1:
 	:type Uinf1: float
 	:param Usup1:
@@ -4628,7 +4628,7 @@ class Extrema_ExtSS {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:param Uinf2:
 	:type Uinf2: float
 	:param Usup2:
@@ -4664,7 +4664,7 @@ class Extrema_ExtSS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes the distances. An exception is raised if the fieds have not been initialized.
 	:param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param Uinf1:
 	:type Uinf1: float
 	:param Usup1:
@@ -4684,9 +4684,9 @@ class Extrema_ExtSS {
 	:param N:
 	:type N: int
 	:param P1:
-	:type P1: Extrema_POnSurf &
+	:type P1: Extrema_POnSurf
 	:param P2:
-	:type P2: Extrema_POnSurf &
+	:type P2: Extrema_POnSurf
 	:rtype: None") Points;
 		void Points (const Standard_Integer N,Extrema_POnSurf & P1,Extrema_POnSurf & P2);
 
@@ -4717,9 +4717,9 @@ class Extrema_FuncExtCS : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* Calculation of Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & UV,math_Matrix & DF);
 
@@ -4731,9 +4731,9 @@ class Extrema_FuncExtCS : public math_FunctionSetWithDerivatives {
 		/****************** Extrema_FuncExtCS ******************/
 		%feature("compactdefaultargs") Extrema_FuncExtCS;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:rtype: None") Extrema_FuncExtCS;
 		 Extrema_FuncExtCS (const Adaptor3d_Curve & C,const Adaptor3d_Surface & S);
 
@@ -4747,9 +4747,9 @@ class Extrema_FuncExtCS : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mysurf of the function.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor3d_Curve & C,const Adaptor3d_Surface & S);
 
@@ -4797,9 +4797,9 @@ class Extrema_FuncExtCS : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Calculation of Fi(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & UV,math_Vector & F);
 
@@ -4807,11 +4807,11 @@ class Extrema_FuncExtCS : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* Calculation of Fi(U,V) and Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & UV,math_Vector & F,math_Matrix & DF);
 
@@ -4834,9 +4834,9 @@ class Extrema_FuncExtSS : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* Calculate Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & UV,math_Matrix & DF);
 
@@ -4848,9 +4848,9 @@ class Extrema_FuncExtSS : public math_FunctionSetWithDerivatives {
 		/****************** Extrema_FuncExtSS ******************/
 		%feature("compactdefaultargs") Extrema_FuncExtSS;
 		%feature("autodoc", ":param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:rtype: None") Extrema_FuncExtSS;
 		 Extrema_FuncExtSS (const Adaptor3d_Surface & S1,const Adaptor3d_Surface & S2);
 
@@ -4864,9 +4864,9 @@ class Extrema_FuncExtSS : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mysurf of the function.
 	:param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor3d_Surface & S1,const Adaptor3d_Surface & S2);
 
@@ -4914,9 +4914,9 @@ class Extrema_FuncExtSS : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Calculate Fi(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & UV,math_Vector & F);
 
@@ -4924,11 +4924,11 @@ class Extrema_FuncExtSS : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* Calculate Fi(U,V) and Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & UV,math_Vector & F,math_Matrix & DF);
 
@@ -4951,7 +4951,7 @@ class Extrema_FuncPSDist : public math_MultipleVarFunctionWithGradient {
 		%feature("compactdefaultargs") Extrema_FuncPSDist;
 		%feature("autodoc", "* Constructor.
 	:param theS:
-	:type theS: Adaptor3d_Surface &
+	:type theS: Adaptor3d_Surface
 	:param theP:
 	:type theP: gp_Pnt
 	:rtype: None") Extrema_FuncPSDist;
@@ -4961,9 +4961,9 @@ class Extrema_FuncPSDist : public math_MultipleVarFunctionWithGradient {
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* Gradient.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
@@ -4977,9 +4977,9 @@ class Extrema_FuncPSDist : public math_MultipleVarFunctionWithGradient {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Value.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -4987,11 +4987,11 @@ class Extrema_FuncPSDist : public math_MultipleVarFunctionWithGradient {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* Value and gradient.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -5014,9 +5014,9 @@ class Extrema_FuncPSNorm : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* Calculate Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & UV,math_Matrix & DF);
 
@@ -5030,7 +5030,7 @@ class Extrema_FuncPSNorm : public math_FunctionSetWithDerivatives {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:rtype: None") Extrema_FuncPSNorm;
 		 Extrema_FuncPSNorm (const gp_Pnt & P,const Adaptor3d_Surface & S);
 
@@ -5044,7 +5044,7 @@ class Extrema_FuncPSNorm : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mysurf of the function.
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor3d_Surface & S);
 
@@ -5092,9 +5092,9 @@ class Extrema_FuncPSNorm : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Calculate Fi(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & UV,math_Vector & F);
 
@@ -5102,11 +5102,11 @@ class Extrema_FuncPSNorm : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* Calculate Fi(U,V) and Fi'(U,V).
 	:param UV:
-	:type UV: math_Vector &
+	:type UV: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param DF:
-	:type DF: math_Matrix &
+	:type DF: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & UV,math_Vector & F,math_Matrix & DF);
 
@@ -5134,9 +5134,9 @@ class Extrema_GenExtCS {
 		%feature("compactdefaultargs") Extrema_GenExtCS;
 		%feature("autodoc", "* It calculates all the distances. The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an extremum when gradient(F)=0. The algorithm searchs all the zeros inside the definition ranges of the surfaces. NbU and NbV are used to locate the close points on the surface and NbT on the curve to find the zeros.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param NbT:
 	:type NbT: int
 	:param NbU:
@@ -5154,9 +5154,9 @@ class Extrema_GenExtCS {
 		%feature("compactdefaultargs") Extrema_GenExtCS;
 		%feature("autodoc", "* It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searchs all the zeros inside the definition ranges of the surface. NbT,NbU and NbV are used to locate the close points to find the zeros.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param NbT:
 	:type NbT: int
 	:param NbU:
@@ -5185,7 +5185,7 @@ class Extrema_GenExtCS {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5198,7 +5198,7 @@ class Extrema_GenExtCS {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5232,7 +5232,7 @@ class Extrema_GenExtCS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* the algorithm is done with S An exception is raised if the fields have not been initialized.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbT:
 	:type NbT: int
 	:param Tol1:
@@ -5244,7 +5244,7 @@ class Extrema_GenExtCS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* the algorithm is done with C An exception is raised if the fields have not been initialized.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param NbT:
 	:type NbT: int
 	:param tmin:
@@ -5306,7 +5306,7 @@ class Extrema_GenExtPS {
 	:param P:
 	:type P: gp_Pnt
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5328,7 +5328,7 @@ class Extrema_GenExtPS {
 	:param P:
 	:type P: gp_Pnt
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5355,7 +5355,7 @@ class Extrema_GenExtPS {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5370,7 +5370,7 @@ class Extrema_GenExtPS {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5464,9 +5464,9 @@ class Extrema_GenExtSS {
 		%feature("compactdefaultargs") Extrema_GenExtSS;
 		%feature("autodoc", "* It calculates all the distances. The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an extremum when gradient(F)=0. The algorithm searchs all the zeros inside the definition ranges of the surfaces. NbU and NbV are used to locate the close points to find the zeros.
 	:param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5482,9 +5482,9 @@ class Extrema_GenExtSS {
 		%feature("compactdefaultargs") Extrema_GenExtSS;
 		%feature("autodoc", "* It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searchs all the zeros inside the definition ranges of the surface. NbU and NbV are used to locate the close points to find the zeros.
 	:param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5515,7 +5515,7 @@ class Extrema_GenExtSS {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5528,7 +5528,7 @@ class Extrema_GenExtSS {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:param NbU:
 	:type NbU: int
 	:param NbV:
@@ -5562,7 +5562,7 @@ class Extrema_GenExtSS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* the algorithm is done with S1 An exception is raised if the fields have not been initialized.
 	:param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param Tol1:
 	:type Tol1: float
 	:rtype: None") Perform;
@@ -5572,7 +5572,7 @@ class Extrema_GenExtSS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* the algorithm is done withS1 An exception is raised if the fields have not been initialized.
 	:param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param U1min:
 	:type U1min: float
 	:param U1sup:
@@ -5634,9 +5634,9 @@ class Extrema_GenLocateExtCS {
 		%feature("compactdefaultargs") Extrema_GenLocateExtCS;
 		%feature("autodoc", "* Calculates the distance with two close points. The close points are defined by the parameter values T for C and (U,V) for S. The function F(t,u,v)=distance(C(t),S(u,v)) has an extremun when gradient(F)=0. The algorithm searchs a zero near the close points.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param T:
 	:type T: float
 	:param U:
@@ -5659,9 +5659,9 @@ class Extrema_GenLocateExtCS {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
-	:type S: Adaptor3d_Surface &
+	:type S: Adaptor3d_Surface
 	:param T:
 	:type T: float
 	:param U:
@@ -5712,7 +5712,7 @@ class Extrema_GenLocateExtPS {
 		%feature("compactdefaultargs") Extrema_GenLocateExtPS;
 		%feature("autodoc", "* Constructor.
 	:param theS:
-	:type theS: Adaptor3d_Surface &
+	:type theS: Adaptor3d_Surface
 	:param theTolU: default value is Precision::Confusion()
 	:type theTolU: float
 	:param theTolV: default value is Precision::Confusion()
@@ -5776,9 +5776,9 @@ class Extrema_GenLocateExtSS {
 		%feature("compactdefaultargs") Extrema_GenLocateExtSS;
 		%feature("autodoc", "* Calculates the distance with two close points. The close points are defined by the parameter values (U1,V1) for S1 and (U2,V2) for S2. The function F(u1,v1,u2,v2)=distance(S1(u1,v1),S2(u2,v2)) has an extremun when gradient(F)=0. The algorithm searchs a zero near the close points.
 	:param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:param U1:
 	:type U1: float
 	:param V1:
@@ -5803,9 +5803,9 @@ class Extrema_GenLocateExtSS {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param S1:
-	:type S1: Adaptor3d_Surface &
+	:type S1: Adaptor3d_Surface
 	:param S2:
-	:type S2: Adaptor3d_Surface &
+	:type S2: Adaptor3d_Surface
 	:param U1:
 	:type U1: float
 	:param V1:
@@ -5857,18 +5857,18 @@ class Extrema_GlobOptFuncCCC0 : public math_MultipleVarFunction {
 		/****************** Extrema_GlobOptFuncCCC0 ******************/
 		%feature("compactdefaultargs") Extrema_GlobOptFuncCCC0;
 		%feature("autodoc", ":param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:rtype: None") Extrema_GlobOptFuncCCC0;
 		 Extrema_GlobOptFuncCCC0 (const Adaptor3d_Curve & C1,const Adaptor3d_Curve & C2);
 
 		/****************** Extrema_GlobOptFuncCCC0 ******************/
 		%feature("compactdefaultargs") Extrema_GlobOptFuncCCC0;
 		%feature("autodoc", ":param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:rtype: None") Extrema_GlobOptFuncCCC0;
 		 Extrema_GlobOptFuncCCC0 (const Adaptor2d_Curve2d & C1,const Adaptor2d_Curve2d & C2);
 
@@ -5880,9 +5880,9 @@ class Extrema_GlobOptFuncCCC0 : public math_MultipleVarFunction {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -5904,27 +5904,27 @@ class Extrema_GlobOptFuncCCC1 : public math_MultipleVarFunctionWithGradient {
 		/****************** Extrema_GlobOptFuncCCC1 ******************/
 		%feature("compactdefaultargs") Extrema_GlobOptFuncCCC1;
 		%feature("autodoc", ":param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:rtype: None") Extrema_GlobOptFuncCCC1;
 		 Extrema_GlobOptFuncCCC1 (const Adaptor3d_Curve & C1,const Adaptor3d_Curve & C2);
 
 		/****************** Extrema_GlobOptFuncCCC1 ******************/
 		%feature("compactdefaultargs") Extrema_GlobOptFuncCCC1;
 		%feature("autodoc", ":param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:rtype: None") Extrema_GlobOptFuncCCC1;
 		 Extrema_GlobOptFuncCCC1 (const Adaptor2d_Curve2d & C1,const Adaptor2d_Curve2d & C2);
 
 		/****************** Gradient ******************/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		virtual Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
@@ -5936,20 +5936,20 @@ class Extrema_GlobOptFuncCCC1 : public math_MultipleVarFunctionWithGradient {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -5971,27 +5971,27 @@ class Extrema_GlobOptFuncCCC2 : public math_MultipleVarFunctionWithHessian {
 		/****************** Extrema_GlobOptFuncCCC2 ******************/
 		%feature("compactdefaultargs") Extrema_GlobOptFuncCCC2;
 		%feature("autodoc", ":param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:rtype: None") Extrema_GlobOptFuncCCC2;
 		 Extrema_GlobOptFuncCCC2 (const Adaptor3d_Curve & C1,const Adaptor3d_Curve & C2);
 
 		/****************** Extrema_GlobOptFuncCCC2 ******************/
 		%feature("compactdefaultargs") Extrema_GlobOptFuncCCC2;
 		%feature("autodoc", ":param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:rtype: None") Extrema_GlobOptFuncCCC2;
 		 Extrema_GlobOptFuncCCC2 (const Adaptor2d_Curve2d & C1,const Adaptor2d_Curve2d & C2);
 
 		/****************** Gradient ******************/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		virtual Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
@@ -6003,33 +6003,33 @@ class Extrema_GlobOptFuncCCC2 : public math_MultipleVarFunctionWithHessian {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:param H:
-	:type H: math_Matrix &
+	:type H: math_Matrix
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G,math_Matrix & H);
 
@@ -6061,9 +6061,9 @@ class Extrema_GlobOptFuncCS : public math_MultipleVarFunctionWithHessian {
 		/****************** Gradient ******************/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", ":param theX:
-	:type theX: math_Vector &
+	:type theX: math_Vector
 	:param theG:
-	:type theG: math_Vector &
+	:type theG: math_Vector
 	:rtype: bool") Gradient;
 		virtual Standard_Boolean Gradient (const math_Vector & theX,math_Vector & theG);
 
@@ -6075,33 +6075,33 @@ class Extrema_GlobOptFuncCS : public math_MultipleVarFunctionWithHessian {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param theX:
-	:type theX: math_Vector &
+	:type theX: math_Vector
 	:param theF:
-	:type theF: float &
+	:type theF: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & theX,Standard_Real &OutValue);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param theX:
-	:type theX: math_Vector &
+	:type theX: math_Vector
 	:param theF:
-	:type theF: float &
+	:type theF: float
 	:param theG:
-	:type theG: math_Vector &
+	:type theG: math_Vector
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const math_Vector & theX,Standard_Real &OutValue,math_Vector & theG);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param theX:
-	:type theX: math_Vector &
+	:type theX: math_Vector
 	:param theF:
-	:type theF: float &
+	:type theF: float
 	:param theG:
-	:type theG: math_Vector &
+	:type theG: math_Vector
 	:param theH:
-	:type theH: math_Matrix &
+	:type theH: math_Matrix
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const math_Vector & theX,Standard_Real &OutValue,math_Vector & theG,math_Matrix & theH);
 
@@ -6124,9 +6124,9 @@ class Extrema_LocECC {
 		%feature("compactdefaultargs") Extrema_LocECC;
 		%feature("autodoc", "* Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searchs the zero near the close point.
 	:param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:param U0:
 	:type U0: float
 	:param V0:
@@ -6148,9 +6148,9 @@ class Extrema_LocECC {
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "* Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
 	:param P1:
-	:type P1: Extrema_POnCurv &
+	:type P1: Extrema_POnCurv
 	:param P2:
-	:type P2: Extrema_POnCurv &
+	:type P2: Extrema_POnCurv
 	:rtype: None") Point;
 		void Point (Extrema_POnCurv & P1,Extrema_POnCurv & P2);
 
@@ -6179,9 +6179,9 @@ class Extrema_LocECC2d {
 		%feature("compactdefaultargs") Extrema_LocECC2d;
 		%feature("autodoc", "* Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searchs the zero near the close point.
 	:param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:param U0:
 	:type U0: float
 	:param V0:
@@ -6203,9 +6203,9 @@ class Extrema_LocECC2d {
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "* Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
 	:param P1:
-	:type P1: Extrema_POnCurv2d &
+	:type P1: Extrema_POnCurv2d
 	:param P2:
-	:type P2: Extrema_POnCurv2d &
+	:type P2: Extrema_POnCurv2d
 	:rtype: None") Point;
 		void Point (Extrema_POnCurv2d & P1,Extrema_POnCurv2d & P2);
 
@@ -6241,7 +6241,7 @@ class Extrema_LocEPCOfLocateExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U0:
 	:type U0: float
 	:param TolU:
@@ -6255,7 +6255,7 @@ class Extrema_LocEPCOfLocateExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U0:
 	:type U0: float
 	:param Umin:
@@ -6271,7 +6271,7 @@ class Extrema_LocEPCOfLocateExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -6341,7 +6341,7 @@ class Extrema_LocEPCOfLocateExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U0:
 	:type U0: float
 	:param TolU:
@@ -6355,7 +6355,7 @@ class Extrema_LocEPCOfLocateExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U0:
 	:type U0: float
 	:param Umin:
@@ -6371,7 +6371,7 @@ class Extrema_LocEPCOfLocateExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -6434,9 +6434,9 @@ class Extrema_LocateExtCC {
 		%feature("compactdefaultargs") Extrema_LocateExtCC;
 		%feature("autodoc", "* Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searchs the zero near the close point.
 	:param C1:
-	:type C1: Adaptor3d_Curve &
+	:type C1: Adaptor3d_Curve
 	:param C2:
-	:type C2: Adaptor3d_Curve &
+	:type C2: Adaptor3d_Curve
 	:param U0:
 	:type U0: float
 	:param V0:
@@ -6454,9 +6454,9 @@ class Extrema_LocateExtCC {
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "* Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
 	:param P1:
-	:type P1: Extrema_POnCurv &
+	:type P1: Extrema_POnCurv
 	:param P2:
-	:type P2: Extrema_POnCurv &
+	:type P2: Extrema_POnCurv
 	:rtype: None") Point;
 		void Point (Extrema_POnCurv & P1,Extrema_POnCurv & P2);
 
@@ -6485,9 +6485,9 @@ class Extrema_LocateExtCC2d {
 		%feature("compactdefaultargs") Extrema_LocateExtCC2d;
 		%feature("autodoc", "* Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searchs the zero near the close point.
 	:param C1:
-	:type C1: Adaptor2d_Curve2d &
+	:type C1: Adaptor2d_Curve2d
 	:param C2:
-	:type C2: Adaptor2d_Curve2d &
+	:type C2: Adaptor2d_Curve2d
 	:param U0:
 	:type U0: float
 	:param V0:
@@ -6505,9 +6505,9 @@ class Extrema_LocateExtCC2d {
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "* Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
 	:param P1:
-	:type P1: Extrema_POnCurv2d &
+	:type P1: Extrema_POnCurv2d
 	:param P2:
-	:type P2: Extrema_POnCurv2d &
+	:type P2: Extrema_POnCurv2d
 	:rtype: None") Point;
 		void Point (Extrema_POnCurv2d & P1,Extrema_POnCurv2d & P2);
 
@@ -6543,7 +6543,7 @@ class Extrema_LocateExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U0:
 	:type U0: float
 	:param TolF:
@@ -6557,7 +6557,7 @@ class Extrema_LocateExtPC {
 	:param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U0:
 	:type U0: float
 	:param Umin:
@@ -6573,7 +6573,7 @@ class Extrema_LocateExtPC {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -6642,7 +6642,7 @@ class Extrema_LocateExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U0:
 	:type U0: float
 	:param TolF:
@@ -6656,7 +6656,7 @@ class Extrema_LocateExtPC2d {
 	:param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U0:
 	:type U0: float
 	:param Umin:
@@ -6672,7 +6672,7 @@ class Extrema_LocateExtPC2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the fields of the algorithm.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -6736,7 +6736,7 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real U,Standard_Real &OutValue);
 
@@ -6750,7 +6750,7 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") Extrema_PCFOfEPCOfELPCOfLocateExtPC;
 		 Extrema_PCFOfEPCOfELPCOfLocateExtPC (const gp_Pnt & P,const Adaptor3d_Curve & C);
 
@@ -6764,7 +6764,7 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mycurve of the function.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor3d_Curve & C);
 
@@ -6828,7 +6828,7 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real U,Standard_Real &OutValue);
 
@@ -6838,9 +6838,9 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6865,7 +6865,7 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative
 	:param U:
 	:type U: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real U,Standard_Real &OutValue);
 
@@ -6879,7 +6879,7 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: None") Extrema_PCFOfEPCOfELPCOfLocateExtPC2d;
 		 Extrema_PCFOfEPCOfELPCOfLocateExtPC2d (const gp_Pnt2d & P,const Adaptor2d_Curve2d & C);
 
@@ -6893,7 +6893,7 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mycurve of the function.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor2d_Curve2d & C);
 
@@ -6957,7 +6957,7 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real U,Standard_Real &OutValue);
 
@@ -6967,9 +6967,9 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6994,7 +6994,7 @@ class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real U,Standard_Real &OutValue);
 
@@ -7008,7 +7008,7 @@ class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") Extrema_PCFOfEPCOfExtPC;
 		 Extrema_PCFOfEPCOfExtPC (const gp_Pnt & P,const Adaptor3d_Curve & C);
 
@@ -7022,7 +7022,7 @@ class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mycurve of the function.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor3d_Curve & C);
 
@@ -7086,7 +7086,7 @@ class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real U,Standard_Real &OutValue);
 
@@ -7096,9 +7096,9 @@ class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7123,7 +7123,7 @@ class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real U,Standard_Real &OutValue);
 
@@ -7137,7 +7137,7 @@ class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: None") Extrema_PCFOfEPCOfExtPC2d;
 		 Extrema_PCFOfEPCOfExtPC2d (const gp_Pnt2d & P,const Adaptor2d_Curve2d & C);
 
@@ -7151,7 +7151,7 @@ class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mycurve of the function.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor2d_Curve2d & C);
 
@@ -7215,7 +7215,7 @@ class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real U,Standard_Real &OutValue);
 
@@ -7225,9 +7225,9 @@ class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7252,7 +7252,7 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real U,Standard_Real &OutValue);
 
@@ -7266,7 +7266,7 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") Extrema_PCLocFOfLocEPCOfLocateExtPC;
 		 Extrema_PCLocFOfLocEPCOfLocateExtPC (const gp_Pnt & P,const Adaptor3d_Curve & C);
 
@@ -7280,7 +7280,7 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mycurve of the function.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor3d_Curve & C);
 
@@ -7344,7 +7344,7 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real U,Standard_Real &OutValue);
 
@@ -7354,9 +7354,9 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7381,7 +7381,7 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative
 	:param U:
 	:type U: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real U,Standard_Real &OutValue);
 
@@ -7395,7 +7395,7 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt2d
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: None") Extrema_PCLocFOfLocEPCOfLocateExtPC2d;
 		 Extrema_PCLocFOfLocEPCOfLocateExtPC2d (const gp_Pnt2d & P,const Adaptor2d_Curve2d & C);
 
@@ -7409,7 +7409,7 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* sets the field mycurve of the function.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: None") Initialize;
 		void Initialize (const Adaptor2d_Curve2d & C);
 
@@ -7473,7 +7473,7 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real U,Standard_Real &OutValue);
 
@@ -7483,9 +7483,9 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative
 	:param U:
 	:type U: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7632,9 +7632,9 @@ class Extrema_POnSurf {
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "* Returns the parameter values on the surface.
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameter;
 		void Parameter (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7699,9 +7699,9 @@ class Extrema_POnSurfParams : public Extrema_POnSurf {
 		%feature("compactdefaultargs") GetIndices;
 		%feature("autodoc", "* Query the U and V indices of an element that contains this point.
 	:param theIndexU:
-	:type theIndexU: int &
+	:type theIndexU: int
 	:param theIndexV:
-	:type theIndexV: int &
+	:type theIndexV: int
 	:rtype: None") GetIndices;
 		void GetIndices (Standard_Integer &OutValue,Standard_Integer &OutValue);
 

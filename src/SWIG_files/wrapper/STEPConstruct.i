@@ -117,11 +117,11 @@ class STEPConstruct {
 		%feature("compactdefaultargs") FindCDSR;
 		%feature("autodoc", "* Find CDSR correcponding to the component in the specified assembly
 	:param ComponentBinder:
-	:type ComponentBinder: opencascade::handle<Transfer_Binder> &
+	:type ComponentBinder: Transfer_Binder
 	:param AssemblySDR:
-	:type AssemblySDR: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type AssemblySDR: StepShape_ShapeDefinitionRepresentation
 	:param ComponentCDSR:
-	:type ComponentCDSR: opencascade::handle<StepShape_ContextDependentShapeRepresentation> &
+	:type ComponentCDSR: StepShape_ContextDependentShapeRepresentation
 	:rtype: bool") FindCDSR;
 		static Standard_Boolean FindCDSR (const opencascade::handle<Transfer_Binder> & ComponentBinder,const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & AssemblySDR,opencascade::handle<StepShape_ContextDependentShapeRepresentation> & ComponentCDSR);
 
@@ -129,9 +129,9 @@ class STEPConstruct {
 		%feature("compactdefaultargs") FindEntity;
 		%feature("autodoc", "* Returns STEP entity of the (sub)type of RepresentationItem which is a result of the tranalation of the Shape, or Null if no result is recorded
 	:param FinderProcess:
-	:type FinderProcess: opencascade::handle<Transfer_FinderProcess> &
+	:type FinderProcess: Transfer_FinderProcess
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:rtype: opencascade::handle<StepRepr_RepresentationItem>") FindEntity;
 		static opencascade::handle<StepRepr_RepresentationItem> FindEntity (const opencascade::handle<Transfer_FinderProcess> & FinderProcess,const TopoDS_Shape & Shape);
 
@@ -139,11 +139,11 @@ class STEPConstruct {
 		%feature("compactdefaultargs") FindEntity;
 		%feature("autodoc", "* The same as above, but in the case if item not found, repeats search on the same shape without location. The Loc corresponds to the location with which result is found (either location of the Shape, or Null)
 	:param FinderProcess:
-	:type FinderProcess: opencascade::handle<Transfer_FinderProcess> &
+	:type FinderProcess: Transfer_FinderProcess
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param Loc:
-	:type Loc: TopLoc_Location &
+	:type Loc: TopLoc_Location
 	:rtype: opencascade::handle<StepRepr_RepresentationItem>") FindEntity;
 		static opencascade::handle<StepRepr_RepresentationItem> FindEntity (const opencascade::handle<Transfer_FinderProcess> & FinderProcess,const TopoDS_Shape & Shape,TopLoc_Location & Loc);
 
@@ -151,9 +151,9 @@ class STEPConstruct {
 		%feature("compactdefaultargs") FindShape;
 		%feature("autodoc", "* Returns Shape resulting from given STEP entity (Null if not mapped)
 	:param TransientProcess:
-	:type TransientProcess: opencascade::handle<Transfer_TransientProcess> &
+	:type TransientProcess: Transfer_TransientProcess
 	:param item:
-	:type item: opencascade::handle<StepRepr_RepresentationItem> &
+	:type item: StepRepr_RepresentationItem
 	:rtype: TopoDS_Shape") FindShape;
 		static TopoDS_Shape FindShape (const opencascade::handle<Transfer_TransientProcess> & TransientProcess,const opencascade::handle<StepRepr_RepresentationItem> & item);
 
@@ -262,7 +262,7 @@ class STEPConstruct_AP203Context {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Takes SDR (part) which brings all standard data around part (common for AP203 and AP214) and creates all the additional entities required for AP203
 	:param sdr:
-	:type sdr: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type sdr: StepShape_ShapeDefinitionRepresentation
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & sdr);
 
@@ -270,7 +270,7 @@ class STEPConstruct_AP203Context {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Takes tool which describes standard data around part (common for AP203 and AP214) and creates all the additional entities required for AP203 //! The created entities can be obtained by calls to methods GetCreator(), GetDesignOwner(), GetDesignSupplier(), GetClassificationOfficer(), GetSecurity(), GetCreationDate(), GetClassificationDate(), GetApproval(), GetApprover(), GetApprovalDateTime(), GetProductCategoryRelationship()
 	:param SDRTool:
-	:type SDRTool: STEPConstruct_Part &
+	:type SDRTool: STEPConstruct_Part
 	:rtype: None") Init;
 		void Init (const STEPConstruct_Part & SDRTool);
 
@@ -278,7 +278,7 @@ class STEPConstruct_AP203Context {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Takes NAUO which describes assembly link to component and creates the security_classification entity associated to it as required by the AP203 //! Instantiated (or existing previously) entities concerned can be obtained by calls to methods GetClassificationOfficer(), GetSecurity(), GetClassificationDate(), GetApproval(), GetApprover(), GetApprovalDateTime() Takes tool which describes standard data around part (common for AP203 and AP214) and takes from model (or creates if missing) all the additional entities required by AP203
 	:param nauo:
-	:type nauo: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> &
+	:type nauo: StepRepr_NextAssemblyUsageOccurrence
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & nauo);
 
@@ -292,7 +292,7 @@ class STEPConstruct_AP203Context {
 		%feature("compactdefaultargs") InitAssembly;
 		%feature("autodoc", "* Initializes all missing data which are required for assembly
 	:param nauo:
-	:type nauo: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> &
+	:type nauo: StepRepr_NextAssemblyUsageOccurrence
 	:rtype: None") InitAssembly;
 		void InitAssembly (const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & nauo);
 
@@ -354,7 +354,7 @@ class STEPConstruct_AP203Context {
 		%feature("compactdefaultargs") SetDefaultApproval;
 		%feature("autodoc", "* Sets default approval
 	:param app:
-	:type app: opencascade::handle<StepBasic_Approval> &
+	:type app: StepBasic_Approval
 	:rtype: None") SetDefaultApproval;
 		void SetDefaultApproval (const opencascade::handle<StepBasic_Approval> & app);
 
@@ -362,7 +362,7 @@ class STEPConstruct_AP203Context {
 		%feature("compactdefaultargs") SetDefaultDateAndTime;
 		%feature("autodoc", "* Sets default date_and_time entity
 	:param dt:
-	:type dt: opencascade::handle<StepBasic_DateAndTime> &
+	:type dt: StepBasic_DateAndTime
 	:rtype: None") SetDefaultDateAndTime;
 		void SetDefaultDateAndTime (const opencascade::handle<StepBasic_DateAndTime> & dt);
 
@@ -370,7 +370,7 @@ class STEPConstruct_AP203Context {
 		%feature("compactdefaultargs") SetDefaultPersonAndOrganization;
 		%feature("autodoc", "* Sets default person_and_organization entity
 	:param po:
-	:type po: opencascade::handle<StepBasic_PersonAndOrganization> &
+	:type po: StepBasic_PersonAndOrganization
 	:rtype: None") SetDefaultPersonAndOrganization;
 		void SetDefaultPersonAndOrganization (const opencascade::handle<StepBasic_PersonAndOrganization> & po);
 
@@ -378,7 +378,7 @@ class STEPConstruct_AP203Context {
 		%feature("compactdefaultargs") SetDefaultSecurityClassificationLevel;
 		%feature("autodoc", "* Sets default security_classification_level
 	:param sc:
-	:type sc: opencascade::handle<StepBasic_SecurityClassificationLevel> &
+	:type sc: StepBasic_SecurityClassificationLevel
 	:rtype: None") SetDefaultSecurityClassificationLevel;
 		void SetDefaultSecurityClassificationLevel (const opencascade::handle<StepBasic_SecurityClassificationLevel> & sc);
 
@@ -401,9 +401,9 @@ class STEPConstruct_Assembly {
 		%feature("compactdefaultargs") CheckSRRReversesNAUO;
 		%feature("autodoc", "* Checks whether SRR's definition of assembly and component contradicts with NAUO definition or not, according to model schema (AP214 or AP203)
 	:param theGraph:
-	:type theGraph: Interface_Graph &
+	:type theGraph: Interface_Graph
 	:param CDSR:
-	:type CDSR: opencascade::handle<StepShape_ContextDependentShapeRepresentation> &
+	:type CDSR: StepShape_ContextDependentShapeRepresentation
 	:rtype: bool") CheckSRRReversesNAUO;
 		static Standard_Boolean CheckSRRReversesNAUO (const Interface_Graph & theGraph,const opencascade::handle<StepShape_ContextDependentShapeRepresentation> & CDSR);
 
@@ -417,13 +417,13 @@ class STEPConstruct_Assembly {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialises with starting values Ax0 : origin axis (typically, standard XYZ) Loc : location to which place the item Makes a MappedItem Resulting Value is returned by ItemValue
 	:param aSR:
-	:type aSR: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type aSR: StepShape_ShapeDefinitionRepresentation
 	:param SDR0:
-	:type SDR0: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type SDR0: StepShape_ShapeDefinitionRepresentation
 	:param Ax0:
-	:type Ax0: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type Ax0: StepGeom_Axis2Placement3d
 	:param Loc:
-	:type Loc: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type Loc: StepGeom_Axis2Placement3d
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & aSR,const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR0,const opencascade::handle<StepGeom_Axis2Placement3d> & Ax0,const opencascade::handle<StepGeom_Axis2Placement3d> & Loc);
 
@@ -519,7 +519,7 @@ class STEPConstruct_ContextTool {
 		%feature("compactdefaultargs") GetRootsForAssemblyLink;
 		%feature("autodoc", "* Produces and returns a full list of root entities required for assembly link identified by assembly (including NAUO and CDSR)
 	:param assembly:
-	:type assembly: STEPConstruct_Assembly &
+	:type assembly: STEPConstruct_Assembly
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") GetRootsForAssemblyLink;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetRootsForAssemblyLink (const STEPConstruct_Assembly & assembly);
 
@@ -527,7 +527,7 @@ class STEPConstruct_ContextTool {
 		%feature("compactdefaultargs") GetRootsForPart;
 		%feature("autodoc", "* Produces and returns a full list of root entities required for part identified by SDRTool (including SDR itself)
 	:param SDRTool:
-	:type SDRTool: STEPConstruct_Part &
+	:type SDRTool: STEPConstruct_Part
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") GetRootsForPart;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetRootsForPart (const STEPConstruct_Part & SDRTool);
 
@@ -589,28 +589,28 @@ class STEPConstruct_ContextTool {
 		/****************** STEPConstruct_ContextTool ******************/
 		%feature("compactdefaultargs") STEPConstruct_ContextTool;
 		%feature("autodoc", ":param aStepModel:
-	:type aStepModel: opencascade::handle<StepData_StepModel> &
+	:type aStepModel: StepData_StepModel
 	:rtype: None") STEPConstruct_ContextTool;
 		 STEPConstruct_ContextTool (const opencascade::handle<StepData_StepModel> & aStepModel);
 
 		/****************** SetACname ******************/
 		%feature("compactdefaultargs") SetACname;
 		%feature("autodoc", ":param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:rtype: None") SetACname;
 		void SetACname (const opencascade::handle<TCollection_HAsciiString> & name);
 
 		/****************** SetACschemaName ******************/
 		%feature("compactdefaultargs") SetACschemaName;
 		%feature("autodoc", ":param schemaName:
-	:type schemaName: opencascade::handle<TCollection_HAsciiString> &
+	:type schemaName: TCollection_HAsciiString
 	:rtype: None") SetACschemaName;
 		void SetACschemaName (const opencascade::handle<TCollection_HAsciiString> & schemaName);
 
 		/****************** SetACstatus ******************/
 		%feature("compactdefaultargs") SetACstatus;
 		%feature("autodoc", ":param status:
-	:type status: opencascade::handle<TCollection_HAsciiString> &
+	:type status: TCollection_HAsciiString
 	:rtype: None") SetACstatus;
 		void SetACstatus (const opencascade::handle<TCollection_HAsciiString> & status);
 
@@ -641,7 +641,7 @@ class STEPConstruct_ContextTool {
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "* Initialize ApplicationProtocolDefinition by the first entity of that type found in the model
 	:param aStepModel:
-	:type aStepModel: opencascade::handle<StepData_StepModel> &
+	:type aStepModel: StepData_StepModel
 	:rtype: None") SetModel;
 		void SetModel (const opencascade::handle<StepData_StepModel> & aStepModel);
 
@@ -678,11 +678,11 @@ class STEPConstruct_Part {
 		/****************** MakeSDR ******************/
 		%feature("compactdefaultargs") MakeSDR;
 		%feature("autodoc", ":param aShape:
-	:type aShape: opencascade::handle<StepShape_ShapeRepresentation> &
+	:type aShape: StepShape_ShapeRepresentation
 	:param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param AC:
-	:type AC: opencascade::handle<StepBasic_ApplicationContext> &
+	:type AC: StepBasic_ApplicationContext
 	:rtype: None") MakeSDR;
 		void MakeSDR (const opencascade::handle<StepShape_ShapeRepresentation> & aShape,const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepBasic_ApplicationContext> & AC);
 
@@ -794,7 +794,7 @@ class STEPConstruct_Part {
 		/****************** ReadSDR ******************/
 		%feature("compactdefaultargs") ReadSDR;
 		%feature("autodoc", ":param aShape:
-	:type aShape: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type aShape: StepShape_ShapeDefinitionRepresentation
 	:rtype: None") ReadSDR;
 		void ReadSDR (const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & aShape);
 
@@ -818,105 +818,105 @@ class STEPConstruct_Part {
 		/****************** SetACapplication ******************/
 		%feature("compactdefaultargs") SetACapplication;
 		%feature("autodoc", ":param text:
-	:type text: opencascade::handle<TCollection_HAsciiString> &
+	:type text: TCollection_HAsciiString
 	:rtype: None") SetACapplication;
 		void SetACapplication (const opencascade::handle<TCollection_HAsciiString> & text);
 
 		/****************** SetPCdisciplineType ******************/
 		%feature("compactdefaultargs") SetPCdisciplineType;
 		%feature("autodoc", ":param label:
-	:type label: opencascade::handle<TCollection_HAsciiString> &
+	:type label: TCollection_HAsciiString
 	:rtype: None") SetPCdisciplineType;
 		void SetPCdisciplineType (const opencascade::handle<TCollection_HAsciiString> & label);
 
 		/****************** SetPCname ******************/
 		%feature("compactdefaultargs") SetPCname;
 		%feature("autodoc", ":param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:rtype: None") SetPCname;
 		void SetPCname (const opencascade::handle<TCollection_HAsciiString> & name);
 
 		/****************** SetPDCname ******************/
 		%feature("compactdefaultargs") SetPDCname;
 		%feature("autodoc", ":param label:
-	:type label: opencascade::handle<TCollection_HAsciiString> &
+	:type label: TCollection_HAsciiString
 	:rtype: None") SetPDCname;
 		void SetPDCname (const opencascade::handle<TCollection_HAsciiString> & label);
 
 		/****************** SetPDCstage ******************/
 		%feature("compactdefaultargs") SetPDCstage;
 		%feature("autodoc", ":param label:
-	:type label: opencascade::handle<TCollection_HAsciiString> &
+	:type label: TCollection_HAsciiString
 	:rtype: None") SetPDCstage;
 		void SetPDCstage (const opencascade::handle<TCollection_HAsciiString> & label);
 
 		/****************** SetPDFdescription ******************/
 		%feature("compactdefaultargs") SetPDFdescription;
 		%feature("autodoc", ":param text:
-	:type text: opencascade::handle<TCollection_HAsciiString> &
+	:type text: TCollection_HAsciiString
 	:rtype: None") SetPDFdescription;
 		void SetPDFdescription (const opencascade::handle<TCollection_HAsciiString> & text);
 
 		/****************** SetPDFid ******************/
 		%feature("compactdefaultargs") SetPDFid;
 		%feature("autodoc", ":param id:
-	:type id: opencascade::handle<TCollection_HAsciiString> &
+	:type id: TCollection_HAsciiString
 	:rtype: None") SetPDFid;
 		void SetPDFid (const opencascade::handle<TCollection_HAsciiString> & id);
 
 		/****************** SetPDSdescription ******************/
 		%feature("compactdefaultargs") SetPDSdescription;
 		%feature("autodoc", ":param text:
-	:type text: opencascade::handle<TCollection_HAsciiString> &
+	:type text: TCollection_HAsciiString
 	:rtype: None") SetPDSdescription;
 		void SetPDSdescription (const opencascade::handle<TCollection_HAsciiString> & text);
 
 		/****************** SetPDSname ******************/
 		%feature("compactdefaultargs") SetPDSname;
 		%feature("autodoc", ":param label:
-	:type label: opencascade::handle<TCollection_HAsciiString> &
+	:type label: TCollection_HAsciiString
 	:rtype: None") SetPDSname;
 		void SetPDSname (const opencascade::handle<TCollection_HAsciiString> & label);
 
 		/****************** SetPDdescription ******************/
 		%feature("compactdefaultargs") SetPDdescription;
 		%feature("autodoc", ":param text:
-	:type text: opencascade::handle<TCollection_HAsciiString> &
+	:type text: TCollection_HAsciiString
 	:rtype: None") SetPDdescription;
 		void SetPDdescription (const opencascade::handle<TCollection_HAsciiString> & text);
 
 		/****************** SetPRPCdescription ******************/
 		%feature("compactdefaultargs") SetPRPCdescription;
 		%feature("autodoc", ":param text:
-	:type text: opencascade::handle<TCollection_HAsciiString> &
+	:type text: TCollection_HAsciiString
 	:rtype: None") SetPRPCdescription;
 		void SetPRPCdescription (const opencascade::handle<TCollection_HAsciiString> & text);
 
 		/****************** SetPRPCname ******************/
 		%feature("compactdefaultargs") SetPRPCname;
 		%feature("autodoc", ":param label:
-	:type label: opencascade::handle<TCollection_HAsciiString> &
+	:type label: TCollection_HAsciiString
 	:rtype: None") SetPRPCname;
 		void SetPRPCname (const opencascade::handle<TCollection_HAsciiString> & label);
 
 		/****************** SetPdescription ******************/
 		%feature("compactdefaultargs") SetPdescription;
 		%feature("autodoc", ":param text:
-	:type text: opencascade::handle<TCollection_HAsciiString> &
+	:type text: TCollection_HAsciiString
 	:rtype: None") SetPdescription;
 		void SetPdescription (const opencascade::handle<TCollection_HAsciiString> & text);
 
 		/****************** SetPid ******************/
 		%feature("compactdefaultargs") SetPid;
 		%feature("autodoc", ":param id:
-	:type id: opencascade::handle<TCollection_HAsciiString> &
+	:type id: TCollection_HAsciiString
 	:rtype: None") SetPid;
 		void SetPid (const opencascade::handle<TCollection_HAsciiString> & id);
 
 		/****************** SetPname ******************/
 		%feature("compactdefaultargs") SetPname;
 		%feature("autodoc", ":param label:
-	:type label: opencascade::handle<TCollection_HAsciiString> &
+	:type label: TCollection_HAsciiString
 	:rtype: None") SetPname;
 		void SetPname (const opencascade::handle<TCollection_HAsciiString> & label);
 
@@ -999,7 +999,7 @@ class STEPConstruct_Tool {
 		%feature("compactdefaultargs") STEPConstruct_Tool;
 		%feature("autodoc", "* Creates a tool and loads it with worksession
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: None") STEPConstruct_Tool;
 		 STEPConstruct_Tool (const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -1046,14 +1046,14 @@ class STEPConstruct_UnitContext {
 		%feature("compactdefaultargs") ComputeFactors;
 		%feature("autodoc", "* Computes the length, plane angle and solid angle conversion factor . Returns a status, 0 if OK
 	:param aContext:
-	:type aContext: opencascade::handle<StepRepr_GlobalUnitAssignedContext> &
+	:type aContext: StepRepr_GlobalUnitAssignedContext
 	:rtype: int") ComputeFactors;
 		Standard_Integer ComputeFactors (const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aContext);
 
 		/****************** ComputeFactors ******************/
 		%feature("compactdefaultargs") ComputeFactors;
 		%feature("autodoc", ":param aUnit:
-	:type aUnit: opencascade::handle<StepBasic_NamedUnit> &
+	:type aUnit: StepBasic_NamedUnit
 	:rtype: int") ComputeFactors;
 		Standard_Integer ComputeFactors (const opencascade::handle<StepBasic_NamedUnit> & aUnit);
 
@@ -1061,7 +1061,7 @@ class STEPConstruct_UnitContext {
 		%feature("compactdefaultargs") ComputeTolerance;
 		%feature("autodoc", "* Computes the uncertainty value (for length)
 	:param aContext:
-	:type aContext: opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> &
+	:type aContext: StepRepr_GlobalUncertaintyAssignedContext
 	:rtype: int") ComputeTolerance;
 		Standard_Integer ComputeTolerance (const opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> & aContext);
 
@@ -1188,7 +1188,7 @@ class STEPConstruct_ExternRefs : public STEPConstruct_Tool {
 	:param filename:
 	:type filename: char *
 	:param PD:
-	:type PD: opencascade::handle<StepBasic_ProductDefinition> &
+	:type PD: StepBasic_ProductDefinition
 	:param format:
 	:type format: char *
 	:rtype: int") AddExternRef;
@@ -1226,7 +1226,7 @@ class STEPConstruct_ExternRefs : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes tool; returns True if succeeded
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: bool") Init;
 		Standard_Boolean Init (const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -1260,7 +1260,7 @@ class STEPConstruct_ExternRefs : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") STEPConstruct_ExternRefs;
 		%feature("autodoc", "* Creates a tool and initializes it
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: None") STEPConstruct_ExternRefs;
 		 STEPConstruct_ExternRefs (const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -1268,7 +1268,7 @@ class STEPConstruct_ExternRefs : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") SetAP214APD;
 		%feature("autodoc", "* Set the ApplicationProtocolDefinition of the PDM schema
 	:param APD:
-	:type APD: opencascade::handle<StepBasic_ApplicationProtocolDefinition> &
+	:type APD: StepBasic_ApplicationProtocolDefinition
 	:rtype: None") SetAP214APD;
 		void SetAP214APD (const opencascade::handle<StepBasic_ApplicationProtocolDefinition> & APD);
 
@@ -1305,7 +1305,7 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") AddStyle;
 		%feature("autodoc", "* Adds a style to a sequence
 	:param style:
-	:type style: opencascade::handle<StepVisual_StyledItem> &
+	:type style: StepVisual_StyledItem
 	:rtype: None") AddStyle;
 		void AddStyle (const opencascade::handle<StepVisual_StyledItem> & style);
 
@@ -1313,11 +1313,11 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") AddStyle;
 		%feature("autodoc", "* Create a style linking giving PSA to the item, and add it to the sequence of stored styles. If Override is not Null, then the resulting style will be of the subtype OverridingStyledItem.
 	:param item:
-	:type item: opencascade::handle<StepRepr_RepresentationItem> &
+	:type item: StepRepr_RepresentationItem
 	:param PSA:
-	:type PSA: opencascade::handle<StepVisual_PresentationStyleAssignment> &
+	:type PSA: StepVisual_PresentationStyleAssignment
 	:param Override:
-	:type Override: opencascade::handle<StepVisual_StyledItem> &
+	:type Override: StepVisual_StyledItem
 	:rtype: opencascade::handle<StepVisual_StyledItem>") AddStyle;
 		opencascade::handle<StepVisual_StyledItem> AddStyle (const opencascade::handle<StepRepr_RepresentationItem> & item,const opencascade::handle<StepVisual_PresentationStyleAssignment> & PSA,const opencascade::handle<StepVisual_StyledItem> & Override);
 
@@ -1325,11 +1325,11 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") AddStyle;
 		%feature("autodoc", "* Create a style linking giving PSA to the Shape, and add it to the sequence of stored styles. If Override is not Null, then the resulting style will be of the subtype OverridingStyledItem. The Sape is used to find corresponding STEP entity by call to STEPConstruct::FindEntity(), then previous method is called.
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param PSA:
-	:type PSA: opencascade::handle<StepVisual_PresentationStyleAssignment> &
+	:type PSA: StepVisual_PresentationStyleAssignment
 	:param Override:
-	:type Override: opencascade::handle<StepVisual_StyledItem> &
+	:type Override: StepVisual_StyledItem
 	:rtype: opencascade::handle<StepVisual_StyledItem>") AddStyle;
 		opencascade::handle<StepVisual_StyledItem> AddStyle (const TopoDS_Shape & Shape,const opencascade::handle<StepVisual_PresentationStyleAssignment> & PSA,const opencascade::handle<StepVisual_StyledItem> & Override);
 
@@ -1343,9 +1343,9 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") CreateMDGPR;
 		%feature("autodoc", "* Create MDGPR, fill it with all the styles previously defined, and add it to the model
 	:param Context:
-	:type Context: opencascade::handle<StepRepr_RepresentationContext> &
+	:type Context: StepRepr_RepresentationContext
 	:param MDGPR:
-	:type MDGPR: opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> &
+	:type MDGPR: StepVisual_MechanicalDesignGeometricPresentationRepresentation
 	:rtype: bool") CreateMDGPR;
 		Standard_Boolean CreateMDGPR (const opencascade::handle<StepRepr_RepresentationContext> & Context,opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> & MDGPR);
 
@@ -1353,11 +1353,11 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") CreateNAUOSRD;
 		%feature("autodoc", "* Create MDGPR, fill it with all the styles previously defined, and add it to the model IMPORTANT: <initPDS> must be null when use for NAUO colors <initPDS> initialised only for SHUO case.
 	:param Context:
-	:type Context: opencascade::handle<StepRepr_RepresentationContext> &
+	:type Context: StepRepr_RepresentationContext
 	:param CDSR:
-	:type CDSR: opencascade::handle<StepShape_ContextDependentShapeRepresentation> &
+	:type CDSR: StepShape_ContextDependentShapeRepresentation
 	:param initPDS:
-	:type initPDS: opencascade::handle<StepRepr_ProductDefinitionShape> &
+	:type initPDS: StepRepr_ProductDefinitionShape
 	:rtype: bool") CreateNAUOSRD;
 		Standard_Boolean CreateNAUOSRD (const opencascade::handle<StepRepr_RepresentationContext> & Context,const opencascade::handle<StepShape_ContextDependentShapeRepresentation> & CDSR,const opencascade::handle<StepRepr_ProductDefinitionShape> & initPDS);
 
@@ -1365,9 +1365,9 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") DecodeColor;
 		%feature("autodoc", "* Decodes STEP color and fills the Quantity_Color. Returns True if OK or False if color is not recognized
 	:param Colour:
-	:type Colour: opencascade::handle<StepVisual_Colour> &
+	:type Colour: StepVisual_Colour
 	:param Col:
-	:type Col: Quantity_Color &
+	:type Col: Quantity_Color
 	:rtype: bool") DecodeColor;
 		static Standard_Boolean DecodeColor (const opencascade::handle<StepVisual_Colour> & Colour,Quantity_Color & Col);
 
@@ -1375,7 +1375,7 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") EncodeColor;
 		%feature("autodoc", "* Create STEP color entity by given Quantity_Color The analysis is performed for whether the color corresponds to one of standard colors predefined in STEP. In that case, PredefinedColour entity is created instead of RGBColour
 	:param Col:
-	:type Col: Quantity_Color &
+	:type Col: Quantity_Color
 	:rtype: opencascade::handle<StepVisual_Colour>") EncodeColor;
 		static opencascade::handle<StepVisual_Colour> EncodeColor (const Quantity_Color & Col);
 
@@ -1383,11 +1383,11 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") EncodeColor;
 		%feature("autodoc", "* Create STEP color entity by given Quantity_Color The analysis is performed for whether the color corresponds to one of standard colors predefined in STEP. In that case, PredefinedColour entity is created instead of RGBColour
 	:param Col:
-	:type Col: Quantity_Color &
+	:type Col: Quantity_Color
 	:param DPDCs:
-	:type DPDCs: STEPConstruct_DataMapOfAsciiStringTransient &
+	:type DPDCs: STEPConstruct_DataMapOfAsciiStringTransient
 	:param ColRGBs:
-	:type ColRGBs: STEPConstruct_DataMapOfPointTransient &
+	:type ColRGBs: STEPConstruct_DataMapOfPointTransient
 	:rtype: opencascade::handle<StepVisual_Colour>") EncodeColor;
 		static opencascade::handle<StepVisual_Colour> EncodeColor (const Quantity_Color & Col,STEPConstruct_DataMapOfAsciiStringTransient & DPDCs,STEPConstruct_DataMapOfPointTransient & ColRGBs);
 
@@ -1395,7 +1395,7 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") FindContext;
 		%feature("autodoc", "* Searches the STEP model for the RepresentationContext in which given shape is defined. This context (if found) can be used then in call to CreateMDGPR()
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:rtype: opencascade::handle<StepRepr_RepresentationContext>") FindContext;
 		opencascade::handle<StepRepr_RepresentationContext> FindContext (const TopoDS_Shape & Shape);
 
@@ -1403,9 +1403,9 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") GetColorPSA;
 		%feature("autodoc", "* Returns a PresentationStyleAssignment entity which defines surface and curve colors as Col. This PSA is either created or taken from internal map where all PSAs created by this method are remembered.
 	:param item:
-	:type item: opencascade::handle<StepRepr_RepresentationItem> &
+	:type item: StepRepr_RepresentationItem
 	:param Col:
-	:type Col: opencascade::handle<StepVisual_Colour> &
+	:type Col: StepVisual_Colour
 	:rtype: opencascade::handle<StepVisual_PresentationStyleAssignment>") GetColorPSA;
 		opencascade::handle<StepVisual_PresentationStyleAssignment> GetColorPSA (const opencascade::handle<StepRepr_RepresentationItem> & item,const opencascade::handle<StepVisual_Colour> & Col);
 
@@ -1413,13 +1413,13 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") GetColors;
 		%feature("autodoc", "* Extract color definitions from the style entity For each type of color supported, result can be either NULL if it is not defined by that style, or last definition (if they are 1 or more)
 	:param style:
-	:type style: opencascade::handle<StepVisual_StyledItem> &
+	:type style: StepVisual_StyledItem
 	:param SurfCol:
-	:type SurfCol: opencascade::handle<StepVisual_Colour> &
+	:type SurfCol: StepVisual_Colour
 	:param BoundCol:
-	:type BoundCol: opencascade::handle<StepVisual_Colour> &
+	:type BoundCol: StepVisual_Colour
 	:param CurveCol:
-	:type CurveCol: opencascade::handle<StepVisual_Colour> &
+	:type CurveCol: StepVisual_Colour
 	:param IsComponent:
 	:type IsComponent: bool
 	:rtype: bool") GetColors;
@@ -1429,7 +1429,7 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes tool; returns True if succeeded
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: bool") Init;
 		Standard_Boolean Init (const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -1437,7 +1437,7 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") LoadInvisStyles;
 		%feature("autodoc", "* Searches the STEP model for the INISIBILITY enteties (which bring styles) and fills out sequence of styles
 	:param InvSyles:
-	:type InvSyles: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type InvSyles: TColStd_HSequenceOfTransient
 	:rtype: bool") LoadInvisStyles;
 		Standard_Boolean LoadInvisStyles (opencascade::handle<TColStd_HSequenceOfTransient> & InvSyles);
 
@@ -1451,11 +1451,11 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") MakeColorPSA;
 		%feature("autodoc", "* Create a PresentationStyleAssignment entity which defines two colors (for filling surfaces and curves) if isForNAUO true then returns PresentationStyleByContext
 	:param item:
-	:type item: opencascade::handle<StepRepr_RepresentationItem> &
+	:type item: StepRepr_RepresentationItem
 	:param SurfCol:
-	:type SurfCol: opencascade::handle<StepVisual_Colour> &
+	:type SurfCol: StepVisual_Colour
 	:param CurveCol:
-	:type CurveCol: opencascade::handle<StepVisual_Colour> &
+	:type CurveCol: StepVisual_Colour
 	:param isForNAUO: default value is Standard_False
 	:type isForNAUO: bool
 	:rtype: opencascade::handle<StepVisual_PresentationStyleAssignment>") MakeColorPSA;
@@ -1477,7 +1477,7 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") STEPConstruct_Styles;
 		%feature("autodoc", "* Creates a tool and initializes it
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: None") STEPConstruct_Styles;
 		 STEPConstruct_Styles (const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -1508,7 +1508,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") AddArea;
 		%feature("autodoc", "* Adds surface area property for given shape (already mapped). Returns True if success, False in case of fail
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param Area:
 	:type Area: float
 	:rtype: bool") AddArea;
@@ -1518,7 +1518,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") AddCentroid;
 		%feature("autodoc", "* Adds centroid property for given shape (already mapped). Returns True if success, False in case of fail If instance is True, then centroid is assigned to an instance of component in assembly
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param Pnt:
 	:type Pnt: gp_Pnt
 	:param instance: default value is Standard_False
@@ -1530,9 +1530,9 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") AddProp;
 		%feature("autodoc", "* General method for adding (writing) a validation property for shape which should be already mapped on writing itself. It uses FindTarget() to find target STEP entity resulting from given shape, and associated context Returns True if success, False in case of fail
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param Prop:
-	:type Prop: opencascade::handle<StepRepr_RepresentationItem> &
+	:type Prop: StepRepr_RepresentationItem
 	:param Descr:
 	:type Descr: char *
 	:param instance: default value is Standard_False
@@ -1544,11 +1544,11 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") AddProp;
 		%feature("autodoc", "* General method for adding (writing) a validation property for shape which should be already mapped on writing itself. It takes target and Context entities which correspond to shape Returns True if success, False in case of fail
 	:param target:
-	:type target: StepRepr_CharacterizedDefinition &
+	:type target: StepRepr_CharacterizedDefinition
 	:param Context:
-	:type Context: opencascade::handle<StepRepr_RepresentationContext> &
+	:type Context: StepRepr_RepresentationContext
 	:param Prop:
-	:type Prop: opencascade::handle<StepRepr_RepresentationItem> &
+	:type Prop: StepRepr_RepresentationItem
 	:param Descr:
 	:type Descr: char *
 	:rtype: bool") AddProp;
@@ -1558,7 +1558,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") AddVolume;
 		%feature("autodoc", "* Adds volume property for given shape (already mapped). Returns True if success, False in case of fail
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param Vol:
 	:type Vol: float
 	:rtype: bool") AddVolume;
@@ -1568,11 +1568,11 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") FindTarget;
 		%feature("autodoc", "* Finds target STEP entity to which validation props should be assigned, and corresponding context, starting from shape Returns True if success, False in case of fail
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param target:
-	:type target: StepRepr_CharacterizedDefinition &
+	:type target: StepRepr_CharacterizedDefinition
 	:param Context:
-	:type Context: opencascade::handle<StepRepr_RepresentationContext> &
+	:type Context: StepRepr_RepresentationContext
 	:param instance: default value is Standard_False
 	:type instance: bool
 	:rtype: bool") FindTarget;
@@ -1582,7 +1582,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") GetPropNAUO;
 		%feature("autodoc", "* Returns CDSR associated with given PpD or NULL if not found (when, try GetPropSDR)
 	:param PD:
-	:type PD: opencascade::handle<StepRepr_PropertyDefinition> &
+	:type PD: StepRepr_PropertyDefinition
 	:rtype: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence>") GetPropNAUO;
 		opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> GetPropNAUO (const opencascade::handle<StepRepr_PropertyDefinition> & PD);
 
@@ -1590,7 +1590,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") GetPropPD;
 		%feature("autodoc", "* Returns SDR associated with given PpD or NULL if not found (when, try GetPropCDSR)
 	:param PD:
-	:type PD: opencascade::handle<StepRepr_PropertyDefinition> &
+	:type PD: StepRepr_PropertyDefinition
 	:rtype: opencascade::handle<StepBasic_ProductDefinition>") GetPropPD;
 		opencascade::handle<StepBasic_ProductDefinition> GetPropPD (const opencascade::handle<StepRepr_PropertyDefinition> & PD);
 
@@ -1598,9 +1598,9 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") GetPropPnt;
 		%feature("autodoc", "* Returns value of Centriod property (or False if it is not)
 	:param item:
-	:type item: opencascade::handle<StepRepr_RepresentationItem> &
+	:type item: StepRepr_RepresentationItem
 	:param Context:
-	:type Context: opencascade::handle<StepRepr_RepresentationContext> &
+	:type Context: StepRepr_RepresentationContext
 	:param Pnt:
 	:type Pnt: gp_Pnt
 	:rtype: bool") GetPropPnt;
@@ -1610,9 +1610,9 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") GetPropReal;
 		%feature("autodoc", "* Returns value of Real-Valued property (Area or Volume) If Property is neither Area nor Volume, returns False Else returns True and isArea indicates whether property is area or volume
 	:param item:
-	:type item: opencascade::handle<StepRepr_RepresentationItem> &
+	:type item: StepRepr_RepresentationItem
 	:param Val:
-	:type Val: float &
+	:type Val: float
 	:param isArea:
 	:type isArea: bool
 	:rtype: bool") GetPropReal;
@@ -1622,7 +1622,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") GetPropShape;
 		%feature("autodoc", "* Returns Shape associated with given SDR or Null Shape if not found
 	:param ProdDef:
-	:type ProdDef: opencascade::handle<StepBasic_ProductDefinition> &
+	:type ProdDef: StepBasic_ProductDefinition
 	:rtype: TopoDS_Shape") GetPropShape;
 		TopoDS_Shape GetPropShape (const opencascade::handle<StepBasic_ProductDefinition> & ProdDef);
 
@@ -1630,7 +1630,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") GetPropShape;
 		%feature("autodoc", "* Returns Shape associated with given PpD or Null Shape if not found
 	:param PD:
-	:type PD: opencascade::handle<StepRepr_PropertyDefinition> &
+	:type PD: StepRepr_PropertyDefinition
 	:rtype: TopoDS_Shape") GetPropShape;
 		TopoDS_Shape GetPropShape (const opencascade::handle<StepRepr_PropertyDefinition> & PD);
 
@@ -1638,7 +1638,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Load worksession; returns True if succeeded
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: bool") Init;
 		Standard_Boolean Init (const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -1646,7 +1646,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") LoadProps;
 		%feature("autodoc", "* Searches for entities of the type PropertyDefinitionRepresentation in the model and fills the sequence by them
 	:param seq:
-	:type seq: TColStd_SequenceOfTransient &
+	:type seq: TColStd_SequenceOfTransient
 	:rtype: bool") LoadProps;
 		Standard_Boolean LoadProps (TColStd_SequenceOfTransient & seq);
 
@@ -1660,7 +1660,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") STEPConstruct_ValidationProps;
 		%feature("autodoc", "* Creates a tool and loads it with worksession
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: None") STEPConstruct_ValidationProps;
 		 STEPConstruct_ValidationProps (const opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -1668,7 +1668,7 @@ class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 		%feature("compactdefaultargs") SetAssemblyShape;
 		%feature("autodoc", "* Sets current assembly shape SDR (for FindCDSR calls)
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: None") SetAssemblyShape;
 		void SetAssemblyShape (const TopoDS_Shape & shape);
 

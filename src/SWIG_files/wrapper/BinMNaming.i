@@ -89,9 +89,9 @@ class BinMNaming {
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "* Adds the attribute drivers to <theDriverTable>.
 	:param theDriverTable:
-	:type theDriverTable: opencascade::handle<BinMDF_ADriverTable> &
+	:type theDriverTable: BinMDF_ADriverTable
 	:param aMsgDrv:
-	:type aMsgDrv: opencascade::handle<Message_Messenger> &
+	:type aMsgDrv: Message_Messenger
 	:rtype: void") AddDrivers;
 		static void AddDrivers (const opencascade::handle<BinMDF_ADriverTable> & theDriverTable,const opencascade::handle<Message_Messenger> & aMsgDrv);
 
@@ -113,7 +113,7 @@ class BinMNaming_NamedShapeDriver : public BinMDF_ADriver {
 		/****************** BinMNaming_NamedShapeDriver ******************/
 		%feature("compactdefaultargs") BinMNaming_NamedShapeDriver;
 		%feature("autodoc", ":param theMessageDriver:
-	:type theMessageDriver: opencascade::handle<Message_Messenger> &
+	:type theMessageDriver: Message_Messenger
 	:rtype: None") BinMNaming_NamedShapeDriver;
 		 BinMNaming_NamedShapeDriver (const opencascade::handle<Message_Messenger> & theMessageDriver);
 
@@ -149,22 +149,22 @@ class BinMNaming_NamedShapeDriver : public BinMDF_ADriver {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: BinObjMgt_Persistent &
+	:type Source: BinObjMgt_Persistent
 	:param Target:
-	:type Target: opencascade::handle<TDF_Attribute> &
+	:type Target: TDF_Attribute
 	:param RelocTable:
-	:type RelocTable: BinObjMgt_RRelocationTable &
+	:type RelocTable: BinObjMgt_RRelocationTable
 	:rtype: bool") Paste;
 		Standard_Boolean Paste (const BinObjMgt_Persistent & Source,const opencascade::handle<TDF_Attribute> & Target,BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: opencascade::handle<TDF_Attribute> &
+	:type Source: TDF_Attribute
 	:param Target:
-	:type Target: BinObjMgt_Persistent &
+	:type Target: BinObjMgt_Persistent
 	:param RelocTable:
-	:type RelocTable: BinObjMgt_SRelocationTable &
+	:type RelocTable: BinObjMgt_SRelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Source,BinObjMgt_Persistent & Target,BinObjMgt_SRelocationTable & RelocTable);
 
@@ -219,7 +219,7 @@ class BinMNaming_NamingDriver : public BinMDF_ADriver {
 		/****************** BinMNaming_NamingDriver ******************/
 		%feature("compactdefaultargs") BinMNaming_NamingDriver;
 		%feature("autodoc", ":param theMessageDriver:
-	:type theMessageDriver: opencascade::handle<Message_Messenger> &
+	:type theMessageDriver: Message_Messenger
 	:rtype: None") BinMNaming_NamingDriver;
 		 BinMNaming_NamingDriver (const opencascade::handle<Message_Messenger> & theMessageDriver);
 
@@ -231,22 +231,22 @@ class BinMNaming_NamingDriver : public BinMDF_ADriver {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: BinObjMgt_Persistent &
+	:type Source: BinObjMgt_Persistent
 	:param Target:
-	:type Target: opencascade::handle<TDF_Attribute> &
+	:type Target: TDF_Attribute
 	:param RelocTable:
-	:type RelocTable: BinObjMgt_RRelocationTable &
+	:type RelocTable: BinObjMgt_RRelocationTable
 	:rtype: bool") Paste;
 		Standard_Boolean Paste (const BinObjMgt_Persistent & Source,const opencascade::handle<TDF_Attribute> & Target,BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: opencascade::handle<TDF_Attribute> &
+	:type Source: TDF_Attribute
 	:param Target:
-	:type Target: BinObjMgt_Persistent &
+	:type Target: BinObjMgt_Persistent
 	:param RelocTable:
-	:type RelocTable: BinObjMgt_SRelocationTable &
+	:type RelocTable: BinObjMgt_SRelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Source,BinObjMgt_Persistent & Target,BinObjMgt_SRelocationTable & RelocTable);
 

@@ -99,7 +99,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") CPnts_AbscissaPoint;
 		%feature("autodoc", "* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Abscissa:
 	:type Abscissa: float
 	:param U0:
@@ -113,7 +113,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") CPnts_AbscissaPoint;
 		%feature("autodoc", "* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Abscissa:
 	:type Abscissa: float
 	:param U0:
@@ -127,7 +127,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") CPnts_AbscissaPoint;
 		%feature("autodoc", "* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Abscissa:
 	:type Abscissa: float
 	:param U0:
@@ -143,7 +143,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") CPnts_AbscissaPoint;
 		%feature("autodoc", "* the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Abscissa:
 	:type Abscissa: float
 	:param U0:
@@ -159,7 +159,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the resolution function with <C>.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: None") Init;
 		void Init (const Adaptor3d_Curve & C);
 
@@ -167,7 +167,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the resolution function with <C>.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: None") Init;
 		void Init (const Adaptor2d_Curve2d & C);
 
@@ -175,7 +175,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the resolution function with <C>.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Init;
@@ -185,7 +185,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the resolution function with <C>.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Init;
@@ -195,7 +195,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the resolution function with <C> between U1 and U2.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -207,7 +207,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the resolution function with <C> between U1 and U2.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -219,7 +219,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the resolution function with <C> between U1 and U2.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -233,7 +233,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the resolution function with <C> between U1 and U2.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -253,7 +253,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Computes the length of the Curve <C>.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: float") Length;
 		static Standard_Real Length (const Adaptor3d_Curve & C);
 
@@ -261,7 +261,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Computes the length of the Curve <C>.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:rtype: float") Length;
 		static Standard_Real Length (const Adaptor2d_Curve2d & C);
 
@@ -269,7 +269,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Computes the length of the Curve <C> with the given tolerance.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Tol:
 	:type Tol: float
 	:rtype: float") Length;
@@ -279,7 +279,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Computes the length of the Curve <C> with the given tolerance.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Tol:
 	:type Tol: float
 	:rtype: float") Length;
@@ -289,7 +289,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Computes the length of the Curve <C> between <U1> and <U2>.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -301,7 +301,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Computes the length of the Curve <C> between <U1> and <U2>.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -313,7 +313,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -327,7 +327,7 @@ class CPnts_AbscissaPoint {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance. creation of a indefinite AbscissaPoint.
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -401,7 +401,7 @@ class CPnts_MyGaussFunction : public math_Function {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* F is a pointer on a function D is a client data //! Each value is computed with F(D)
 	:param F:
-	:type F: CPnts_RealFunction &
+	:type F: CPnts_RealFunction
 	:param D:
 	:type D: Standard_Address
 	:rtype: None") Init;
@@ -412,7 +412,7 @@ class CPnts_MyGaussFunction : public math_Function {
 		%feature("autodoc", ":param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 
@@ -442,7 +442,7 @@ class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param Df:
-	:type Df: float &
+	:type Df: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 
@@ -450,7 +450,7 @@ class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* F is a pointer on a function D is a client data Order is the order of integration to use
 	:param F:
-	:type F: CPnts_RealFunction &
+	:type F: CPnts_RealFunction
 	:param D:
 	:type D: Standard_Address
 	:param Order:
@@ -486,7 +486,7 @@ class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 
@@ -495,9 +495,9 @@ class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 		%feature("autodoc", ":param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param Df:
-	:type Df: float &
+	:type Df: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -526,7 +526,7 @@ class CPnts_UniformDeflection {
 		%feature("compactdefaultargs") CPnts_UniformDeflection;
 		%feature("autodoc", "* Computes a uniform deflection distribution of points on the curve <C>. <Deflection> defines the constant deflection value. The algorithm computes the number of points and the points. The curve <C> must be at least C2 else the computation can fail. If just some parts of the curve is C2 it is better to give the parameters bounds and to use the below constructor . if <WithControl> is True, the algorithm controls the estimate deflection when the curve is singular at the point P(u),the algorithm computes the next point as P(u + Max(CurrentStep,Abs(LastParameter-FirstParameter))) if the singularity is at the first point ,the next point calculated is the P(LastParameter)
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Deflection:
 	:type Deflection: float
 	:param Resolution:
@@ -540,7 +540,7 @@ class CPnts_UniformDeflection {
 		%feature("compactdefaultargs") CPnts_UniformDeflection;
 		%feature("autodoc", "* As above with 2d curve
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Deflection:
 	:type Deflection: float
 	:param Resolution:
@@ -554,7 +554,7 @@ class CPnts_UniformDeflection {
 		%feature("compactdefaultargs") CPnts_UniformDeflection;
 		%feature("autodoc", "* Computes an uniform deflection distribution of points on a part of the curve <C>. Deflection defines the step between the points. <U1> and <U2> define the distribution span. <U1> and <U2> must be in the parametric range of the curve.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Deflection:
 	:type Deflection: float
 	:param U1:
@@ -572,7 +572,7 @@ class CPnts_UniformDeflection {
 		%feature("compactdefaultargs") CPnts_UniformDeflection;
 		%feature("autodoc", "* As above with 2d curve
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Deflection:
 	:type Deflection: float
 	:param U1:
@@ -590,7 +590,7 @@ class CPnts_UniformDeflection {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initialize the algoritms with <C>, <Deflection>, <UStep>, <Resolution> and <WithControl>
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Deflection:
 	:type Deflection: float
 	:param Resolution:
@@ -604,7 +604,7 @@ class CPnts_UniformDeflection {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initialize the algoritms with <C>, <Deflection>, <UStep>, <Resolution> and <WithControl>
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Deflection:
 	:type Deflection: float
 	:param Resolution:
@@ -618,7 +618,7 @@ class CPnts_UniformDeflection {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initialize the algoritms with <C>, <Deflection>, <UStep>, <U1>, <U2> and <WithControl>
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param Deflection:
 	:type Deflection: float
 	:param U1:
@@ -636,7 +636,7 @@ class CPnts_UniformDeflection {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initialize the algoritms with <C>, <Deflection>, <UStep>, <U1>, <U2> and <WithControl>
 	:param C:
-	:type C: Adaptor2d_Curve2d &
+	:type C: Adaptor2d_Curve2d
 	:param Deflection:
 	:type Deflection: float
 	:param U1:

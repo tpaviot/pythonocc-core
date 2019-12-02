@@ -96,11 +96,11 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param Knots:
-	:type Knots: float &
+	:type Knots: float
 	:param Dimension:
 	:type Dimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param Depth:
 	:type Depth: int
 	:param Length:
@@ -120,11 +120,11 @@ class BSplCLib {
 	:param N:
 	:type N: int
 	:param Knots:
-	:type Knots: float &
+	:type Knots: float
 	:param Dimension:
 	:type Dimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:rtype: void") Bohm;
 		static void Bohm (const Standard_Real U,const Standard_Integer Degree,const Standard_Integer N,Standard_Real &OutValue,const Standard_Integer Dimension,Standard_Real &OutValue);
 
@@ -148,11 +148,11 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param Knots:
-	:type Knots: float &
+	:type Knots: float
 	:param Dimension:
 	:type Dimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param Depth:
 	:type Depth: int
 	:param Length:
@@ -164,19 +164,19 @@ class BSplCLib {
 		%feature("compactdefaultargs") BuildBSpMatrix;
 		%feature("autodoc", "* This Builds a fully blown Matrix of (ni) Bi (tj) //! with i and j within 1..Order + NumPoles The integer ni is the ith slot of the array OrderArray, tj is the jth slot of the array Parameters
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param OrderArray:
-	:type OrderArray: TColStd_Array1OfInteger &
+	:type OrderArray: TColStd_Array1OfInteger
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Degree:
 	:type Degree: int
 	:param Matrix:
-	:type Matrix: math_Matrix &
+	:type Matrix: math_Matrix
 	:param UpperBandWidth:
-	:type UpperBandWidth: int &
+	:type UpperBandWidth: int
 	:param LowerBandWidth:
-	:type LowerBandWidth: int &
+	:type LowerBandWidth: int
 	:rtype: int") BuildBSpMatrix;
 		static Standard_Integer BuildBSpMatrix (const TColStd_Array1OfReal & Parameters,const TColStd_Array1OfInteger & OrderArray,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer Degree,math_Matrix & Matrix,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -190,9 +190,9 @@ class BSplCLib {
 	:param Dimension:
 	:type Dimension: int
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param LP:
-	:type LP: float &
+	:type LP: float
 	:rtype: void") BuildBoor;
 		static void BuildBoor (const Standard_Integer Index,const Standard_Integer Length,const Standard_Integer Dimension,const TColStd_Array1OfReal & Poles,Standard_Real &OutValue);
 
@@ -208,7 +208,7 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weights:
@@ -232,7 +232,7 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param Weights:
@@ -258,13 +258,13 @@ class BSplCLib {
 	:param theSpanIndex:
 	:type theSpanIndex: int
 	:param theFlatKnots:
-	:type theFlatKnots: TColStd_Array1OfReal &
+	:type theFlatKnots: TColStd_Array1OfReal
 	:param thePoles:
 	:type thePoles: TColgp_Array1OfPnt
 	:param theWeights:
 	:type theWeights: TColStd_Array1OfReal *
 	:param theCacheArray:
-	:type theCacheArray: TColStd_Array2OfReal &
+	:type theCacheArray: TColStd_Array2OfReal
 	:rtype: void") BuildCache;
 		static void BuildCache (const Standard_Real theParameter,const Standard_Real theSpanDomain,const Standard_Boolean thePeriodicFlag,const Standard_Integer theDegree,const Standard_Integer theSpanIndex,const TColStd_Array1OfReal & theFlatKnots,const TColgp_Array1OfPnt & thePoles,const TColStd_Array1OfReal * theWeights,TColStd_Array2OfReal & theCacheArray);
 
@@ -282,13 +282,13 @@ class BSplCLib {
 	:param theSpanIndex:
 	:type theSpanIndex: int
 	:param theFlatKnots:
-	:type theFlatKnots: TColStd_Array1OfReal &
+	:type theFlatKnots: TColStd_Array1OfReal
 	:param thePoles:
 	:type thePoles: TColgp_Array1OfPnt2d
 	:param theWeights:
 	:type theWeights: TColStd_Array1OfReal *
 	:param theCacheArray:
-	:type theCacheArray: TColStd_Array2OfReal &
+	:type theCacheArray: TColStd_Array2OfReal
 	:rtype: void") BuildCache;
 		static void BuildCache (const Standard_Real theParameter,const Standard_Real theSpanDomain,const Standard_Boolean thePeriodicFlag,const Standard_Integer theDegree,const Standard_Integer theSpanIndex,const TColStd_Array1OfReal & theFlatKnots,const TColgp_Array1OfPnt2d & thePoles,const TColStd_Array1OfReal * theWeights,TColStd_Array2OfReal & theCacheArray);
 
@@ -299,11 +299,11 @@ class BSplCLib {
 	:param Index:
 	:type Index: int
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param LP:
-	:type LP: float &
+	:type LP: float
 	:rtype: void") BuildEval;
 		static void BuildEval (const Standard_Integer Degree,const Standard_Integer Index,const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal * Weights,Standard_Real &OutValue);
 
@@ -318,7 +318,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param LP:
-	:type LP: float &
+	:type LP: float
 	:rtype: void") BuildEval;
 		static void BuildEval (const Standard_Integer Degree,const Standard_Integer Index,const TColgp_Array1OfPnt & Poles,const TColStd_Array1OfReal * Weights,Standard_Real &OutValue);
 
@@ -334,7 +334,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param LP:
-	:type LP: float &
+	:type LP: float
 	:rtype: void") BuildEval;
 		static void BuildEval (const Standard_Integer Degree,const Standard_Integer Index,const TColgp_Array1OfPnt2d & Poles,const TColStd_Array1OfReal * Weights,Standard_Real &OutValue);
 
@@ -348,11 +348,11 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param LK:
-	:type LK: float &
+	:type LK: float
 	:rtype: void") BuildKnots;
 		static void BuildKnots (const Standard_Integer Degree,const Standard_Integer Index,const Standard_Boolean Periodic,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger * Mults,Standard_Real &OutValue);
 
@@ -362,9 +362,9 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:rtype: void") BuildSchoenbergPoints;
 		static void BuildSchoenbergPoints (const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,TColStd_Array1OfReal & Parameters);
 
@@ -699,15 +699,15 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
-	:type P: float &
+	:type P: float
 	:rtype: void") D0;
 		static void D0 (const Standard_Real U,const Standard_Integer Index,const Standard_Integer Degree,const Standard_Boolean Periodic,const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger * Mults,Standard_Real &OutValue);
 
@@ -726,7 +726,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
@@ -749,7 +749,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
@@ -794,17 +794,17 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
-	:type P: float &
+	:type P: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: void") D1;
 		static void D1 (const Standard_Real U,const Standard_Integer Index,const Standard_Integer Degree,const Standard_Boolean Periodic,const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger * Mults,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -823,7 +823,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
@@ -848,7 +848,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
@@ -899,19 +899,19 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
-	:type P: float &
+	:type P: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: void") D2;
 		static void D2 (const Standard_Real U,const Standard_Integer Index,const Standard_Integer Degree,const Standard_Boolean Periodic,const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger * Mults,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -930,7 +930,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
@@ -957,7 +957,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
@@ -1014,21 +1014,21 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
-	:type P: float &
+	:type P: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:param V3:
-	:type V3: float &
+	:type V3: float
 	:rtype: void") D3;
 		static void D3 (const Standard_Real U,const Standard_Integer Index,const Standard_Integer Degree,const Standard_Boolean Periodic,const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger * Mults,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1047,7 +1047,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
@@ -1076,7 +1076,7 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param P:
@@ -1134,7 +1134,7 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param Knots:
-	:type Knots: float &
+	:type Knots: float
 	:param Dimension:
 	:type Dimension: int
 	:param Length:
@@ -1142,7 +1142,7 @@ class BSplCLib {
 	:param Order:
 	:type Order: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:rtype: void") Derivative;
 		static void Derivative (const Standard_Integer Degree,Standard_Real &OutValue,const Standard_Integer Dimension,const Standard_Integer Length,const Standard_Integer Order,Standard_Real &OutValue);
 
@@ -1154,11 +1154,11 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param Knots:
-	:type Knots: float &
+	:type Knots: float
 	:param Dimension:
 	:type Dimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:rtype: void") Eval;
 		static void Eval (const Standard_Real U,const Standard_Integer Degree,Standard_Real &OutValue,const Standard_Integer Dimension,Standard_Real &OutValue);
 
@@ -1172,17 +1172,17 @@ class BSplCLib {
 	:param DerivativeRequest:
 	:type DerivativeRequest: int
 	:param ExtrapMode:
-	:type ExtrapMode: int &
+	:type ExtrapMode: int
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param ArrayDimension:
 	:type ArrayDimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param Result:
-	:type Result: float &
+	:type Result: float
 	:rtype: void") Eval;
 		static void Eval (const Standard_Real U,const Standard_Boolean PeriodicFlag,const Standard_Integer DerivativeRequest,Standard_Integer &OutValue,const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer ArrayDimension,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1196,21 +1196,21 @@ class BSplCLib {
 	:param DerivativeRequest:
 	:type DerivativeRequest: int
 	:param ExtrapMode:
-	:type ExtrapMode: int &
+	:type ExtrapMode: int
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param ArrayDimension:
 	:type ArrayDimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param Weights:
-	:type Weights: float &
+	:type Weights: float
 	:param PolesResult:
-	:type PolesResult: float &
+	:type PolesResult: float
 	:param WeightsResult:
-	:type WeightsResult: float &
+	:type WeightsResult: float
 	:rtype: void") Eval;
 		static void Eval (const Standard_Real U,const Standard_Boolean PeriodicFlag,const Standard_Integer DerivativeRequest,Standard_Integer &OutValue,const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer ArrayDimension,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1224,19 +1224,19 @@ class BSplCLib {
 	:param HomogeneousFlag:
 	:type HomogeneousFlag: bool
 	:param ExtrapMode:
-	:type ExtrapMode: int &
+	:type ExtrapMode: int
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param Point:
 	:type Point: gp_Pnt
 	:param Weight:
-	:type Weight: float &
+	:type Weight: float
 	:rtype: void") Eval;
 		static void Eval (const Standard_Real U,const Standard_Boolean PeriodicFlag,const Standard_Boolean HomogeneousFlag,Standard_Integer &OutValue,const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const TColgp_Array1OfPnt & Poles,const TColStd_Array1OfReal & Weights,gp_Pnt & Point,Standard_Real &OutValue);
 
@@ -1250,19 +1250,19 @@ class BSplCLib {
 	:param HomogeneousFlag:
 	:type HomogeneousFlag: bool
 	:param ExtrapMode:
-	:type ExtrapMode: int &
+	:type ExtrapMode: int
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param Point:
 	:type Point: gp_Pnt2d
 	:param Weight:
-	:type Weight: float &
+	:type Weight: float
 	:rtype: void") Eval;
 		static void Eval (const Standard_Real U,const Standard_Boolean PeriodicFlag,const Standard_Boolean HomogeneousFlag,Standard_Integer &OutValue,const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const TColgp_Array1OfPnt2d & Poles,const TColStd_Array1OfReal & Weights,gp_Pnt2d & Point,Standard_Real &OutValue);
 
@@ -1274,13 +1274,13 @@ class BSplCLib {
 	:param Order:
 	:type Order: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Parameter:
 	:type Parameter: float
 	:param FirstNonZeroBsplineIndex:
-	:type FirstNonZeroBsplineIndex: int &
+	:type FirstNonZeroBsplineIndex: int
 	:param BsplineBasis:
-	:type BsplineBasis: math_Matrix &
+	:type BsplineBasis: math_Matrix
 	:param isPeriodic: default value is Standard_False
 	:type isPeriodic: bool
 	:rtype: int") EvalBsplineBasis;
@@ -1290,13 +1290,13 @@ class BSplCLib {
 		%feature("compactdefaultargs") FactorBandedMatrix;
 		%feature("autodoc", "* this factors the Banded Matrix in the LU form with a Banded storage of components of the L matrix WARNING : do not use if the Matrix is totally positive (It is the case for Bspline matrices build as above with parameters being the Schoenberg points
 	:param Matrix:
-	:type Matrix: math_Matrix &
+	:type Matrix: math_Matrix
 	:param UpperBandWidth:
 	:type UpperBandWidth: int
 	:param LowerBandWidth:
 	:type LowerBandWidth: int
 	:param PivotIndexProblem:
-	:type PivotIndexProblem: int &
+	:type PivotIndexProblem: int
 	:rtype: int") FactorBandedMatrix;
 		static Standard_Integer FactorBandedMatrix (math_Matrix & Matrix,const Standard_Integer UpperBandWidth,const Standard_Integer LowerBandWidth,Standard_Integer &OutValue);
 
@@ -1306,7 +1306,7 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: int") FirstUKnotIndex;
 		static Standard_Integer FirstUKnotIndex (const Standard_Integer Degree,const TColStd_Array1OfInteger & Mults);
 
@@ -1326,7 +1326,7 @@ class BSplCLib {
 	:param Index:
 	:type Index: int
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Periodic:
 	:type Periodic: bool
 	:rtype: int") FlatIndex;
@@ -1336,23 +1336,23 @@ class BSplCLib {
 		%feature("compactdefaultargs") FunctionMultiply;
 		%feature("autodoc", "* this will multiply a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * F(t) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the range of F(t) Warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
 	:param Function:
-	:type Function: BSplCLib_EvaluatorFunction &
+	:type Function: BSplCLib_EvaluatorFunction
 	:param BSplineDegree:
 	:type BSplineDegree: int
 	:param BSplineFlatKnots:
-	:type BSplineFlatKnots: TColStd_Array1OfReal &
+	:type BSplineFlatKnots: TColStd_Array1OfReal
 	:param PolesDimension:
 	:type PolesDimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewDegree:
 	:type NewDegree: int
 	:param NewPoles:
-	:type NewPoles: float &
+	:type NewPoles: float
 	:param theStatus:
-	:type theStatus: int &
+	:type theStatus: int
 	:rtype: void") FunctionMultiply;
 		static void FunctionMultiply (const BSplCLib_EvaluatorFunction & Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal & BSplineFlatKnots,const Standard_Integer PolesDimension,Standard_Real &OutValue,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer NewDegree,Standard_Real &OutValue,Standard_Integer &OutValue);
 
@@ -1360,21 +1360,21 @@ class BSplCLib {
 		%feature("compactdefaultargs") FunctionMultiply;
 		%feature("autodoc", "* this will multiply a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * F(t) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the range of F(t) Warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
 	:param Function:
-	:type Function: BSplCLib_EvaluatorFunction &
+	:type Function: BSplCLib_EvaluatorFunction
 	:param BSplineDegree:
 	:type BSplineDegree: int
 	:param BSplineFlatKnots:
-	:type BSplineFlatKnots: TColStd_Array1OfReal &
+	:type BSplineFlatKnots: TColStd_Array1OfReal
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewDegree:
 	:type NewDegree: int
 	:param NewPoles:
-	:type NewPoles: TColStd_Array1OfReal &
+	:type NewPoles: TColStd_Array1OfReal
 	:param theStatus:
-	:type theStatus: int &
+	:type theStatus: int
 	:rtype: void") FunctionMultiply;
 		static void FunctionMultiply (const BSplCLib_EvaluatorFunction & Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal & BSplineFlatKnots,const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer NewDegree,TColStd_Array1OfReal & NewPoles,Standard_Integer &OutValue);
 
@@ -1382,21 +1382,21 @@ class BSplCLib {
 		%feature("compactdefaultargs") FunctionMultiply;
 		%feature("autodoc", "* this will multiply a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * F(t) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the range of F(t) Warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
 	:param Function:
-	:type Function: BSplCLib_EvaluatorFunction &
+	:type Function: BSplCLib_EvaluatorFunction
 	:param BSplineDegree:
 	:type BSplineDegree: int
 	:param BSplineFlatKnots:
-	:type BSplineFlatKnots: TColStd_Array1OfReal &
+	:type BSplineFlatKnots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewDegree:
 	:type NewDegree: int
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:param theStatus:
-	:type theStatus: int &
+	:type theStatus: int
 	:rtype: void") FunctionMultiply;
 		static void FunctionMultiply (const BSplCLib_EvaluatorFunction & Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal & BSplineFlatKnots,const TColgp_Array1OfPnt2d & Poles,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer NewDegree,TColgp_Array1OfPnt2d & NewPoles,Standard_Integer &OutValue);
 
@@ -1404,21 +1404,21 @@ class BSplCLib {
 		%feature("compactdefaultargs") FunctionMultiply;
 		%feature("autodoc", "* this will multiply a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] by a function a(t) which is assumed to satisfy the following : 1. a(t) * F(t) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the range of F(t) Warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of a(t)*F(t)
 	:param Function:
-	:type Function: BSplCLib_EvaluatorFunction &
+	:type Function: BSplCLib_EvaluatorFunction
 	:param BSplineDegree:
 	:type BSplineDegree: int
 	:param BSplineFlatKnots:
-	:type BSplineFlatKnots: TColStd_Array1OfReal &
+	:type BSplineFlatKnots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewDegree:
 	:type NewDegree: int
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:param theStatus:
-	:type theStatus: int &
+	:type theStatus: int
 	:rtype: void") FunctionMultiply;
 		static void FunctionMultiply (const BSplCLib_EvaluatorFunction & Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal & BSplineFlatKnots,const TColgp_Array1OfPnt & Poles,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer NewDegree,TColgp_Array1OfPnt & NewPoles,Standard_Integer &OutValue);
 
@@ -1426,23 +1426,23 @@ class BSplCLib {
 		%feature("compactdefaultargs") FunctionReparameterise;
 		%feature("autodoc", "* This function will compose a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] with a function a(t) which is assumed to satisfy the following: //! 1. F(a(t)) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots //! 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the range of F(t) //! Warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method //! theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
 	:param Function:
-	:type Function: BSplCLib_EvaluatorFunction &
+	:type Function: BSplCLib_EvaluatorFunction
 	:param BSplineDegree:
 	:type BSplineDegree: int
 	:param BSplineFlatKnots:
-	:type BSplineFlatKnots: TColStd_Array1OfReal &
+	:type BSplineFlatKnots: TColStd_Array1OfReal
 	:param PolesDimension:
 	:type PolesDimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewDegree:
 	:type NewDegree: int
 	:param NewPoles:
-	:type NewPoles: float &
+	:type NewPoles: float
 	:param theStatus:
-	:type theStatus: int &
+	:type theStatus: int
 	:rtype: void") FunctionReparameterise;
 		static void FunctionReparameterise (const BSplCLib_EvaluatorFunction & Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal & BSplineFlatKnots,const Standard_Integer PolesDimension,Standard_Real &OutValue,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer NewDegree,Standard_Real &OutValue,Standard_Integer &OutValue);
 
@@ -1450,21 +1450,21 @@ class BSplCLib {
 		%feature("compactdefaultargs") FunctionReparameterise;
 		%feature("autodoc", "* This function will compose a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] with a function a(t) which is assumed to satisfy the following: //! 1. F(a(t)) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots //! 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the range of F(t) //! Warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method //! theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
 	:param Function:
-	:type Function: BSplCLib_EvaluatorFunction &
+	:type Function: BSplCLib_EvaluatorFunction
 	:param BSplineDegree:
 	:type BSplineDegree: int
 	:param BSplineFlatKnots:
-	:type BSplineFlatKnots: TColStd_Array1OfReal &
+	:type BSplineFlatKnots: TColStd_Array1OfReal
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewDegree:
 	:type NewDegree: int
 	:param NewPoles:
-	:type NewPoles: TColStd_Array1OfReal &
+	:type NewPoles: TColStd_Array1OfReal
 	:param theStatus:
-	:type theStatus: int &
+	:type theStatus: int
 	:rtype: void") FunctionReparameterise;
 		static void FunctionReparameterise (const BSplCLib_EvaluatorFunction & Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal & BSplineFlatKnots,const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer NewDegree,TColStd_Array1OfReal & NewPoles,Standard_Integer &OutValue);
 
@@ -1472,21 +1472,21 @@ class BSplCLib {
 		%feature("compactdefaultargs") FunctionReparameterise;
 		%feature("autodoc", "* this will compose a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] with a function a(t) which is assumed to satisfy the following : 1. F(a(t)) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the range of F(t) Warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
 	:param Function:
-	:type Function: BSplCLib_EvaluatorFunction &
+	:type Function: BSplCLib_EvaluatorFunction
 	:param BSplineDegree:
 	:type BSplineDegree: int
 	:param BSplineFlatKnots:
-	:type BSplineFlatKnots: TColStd_Array1OfReal &
+	:type BSplineFlatKnots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewDegree:
 	:type NewDegree: int
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:param theStatus:
-	:type theStatus: int &
+	:type theStatus: int
 	:rtype: void") FunctionReparameterise;
 		static void FunctionReparameterise (const BSplCLib_EvaluatorFunction & Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal & BSplineFlatKnots,const TColgp_Array1OfPnt & Poles,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer NewDegree,TColgp_Array1OfPnt & NewPoles,Standard_Integer &OutValue);
 
@@ -1494,21 +1494,21 @@ class BSplCLib {
 		%feature("compactdefaultargs") FunctionReparameterise;
 		%feature("autodoc", "* this will compose a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] with a function a(t) which is assumed to satisfy the following : 1. F(a(t)) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the range of F(t) Warning: it is the caller's responsability to insure that conditions 1. and 2. above are satisfied : no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline : the method used is interpolation at Schoenenberg points of F(a(t))
 	:param Function:
-	:type Function: BSplCLib_EvaluatorFunction &
+	:type Function: BSplCLib_EvaluatorFunction
 	:param BSplineDegree:
 	:type BSplineDegree: int
 	:param BSplineFlatKnots:
-	:type BSplineFlatKnots: TColStd_Array1OfReal &
+	:type BSplineFlatKnots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewDegree:
 	:type NewDegree: int
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:param theStatus:
-	:type theStatus: int &
+	:type theStatus: int
 	:rtype: void") FunctionReparameterise;
 		static void FunctionReparameterise (const BSplCLib_EvaluatorFunction & Function,const Standard_Integer BSplineDegree,const TColStd_Array1OfReal & BSplineFlatKnots,const TColgp_Array1OfPnt2d & Poles,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer NewDegree,TColgp_Array1OfPnt2d & NewPoles,Standard_Integer &OutValue);
 
@@ -1524,11 +1524,11 @@ class BSplCLib {
 	:param Dimension:
 	:type Dimension: int
 	:param LocPoles:
-	:type LocPoles: float &
+	:type LocPoles: float
 	:param Position:
-	:type Position: int &
+	:type Position: int
 	:param Pole:
-	:type Pole: TColStd_Array1OfReal &
+	:type Pole: TColStd_Array1OfReal
 	:rtype: void") GetPole;
 		static void GetPole (const Standard_Integer Index,const Standard_Integer Length,const Standard_Integer Depth,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Integer &OutValue,TColStd_Array1OfReal & Pole);
 
@@ -1536,11 +1536,11 @@ class BSplCLib {
 		%feature("compactdefaultargs") Hunt;
 		%feature("autodoc", "* This routine searches the position of the real value theX in the monotonically increasing set of real values theArray using bisection algorithm. //! If the given value is out of range or array values, algorithm returns either theArray.Lower()-1 or theArray.Upper()+1 depending on theX position in the ordered set. //! This routine is used to locate a knot value in a set of knots.
 	:param theArray:
-	:type theArray: TColStd_Array1OfReal &
+	:type theArray: TColStd_Array1OfReal
 	:param theX:
 	:type theX: float
 	:param theXPos:
-	:type theXPos: int &
+	:type theXPos: int
 	:rtype: void") Hunt;
 		static void Hunt (const TColStd_Array1OfReal & theArray,const Standard_Real theX,Standard_Integer &OutValue);
 
@@ -1555,17 +1555,17 @@ class BSplCLib {
 	:param Dimension:
 	:type Dimension: int
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
-	:type NewPoles: TColStd_Array1OfReal &
+	:type NewPoles: TColStd_Array1OfReal
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:rtype: void") IncreaseDegree;
 		static void IncreaseDegree (const Standard_Integer Degree,const Standard_Integer NewDegree,const Standard_Boolean Periodic,const Standard_Integer Dimension,const TColStd_Array1OfReal & Poles,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,TColStd_Array1OfReal & NewPoles,TColStd_Array1OfReal & NewKnots,TColStd_Array1OfInteger & NewMults);
 
@@ -1582,17 +1582,17 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:param NewWeights:
 	:type NewWeights: TColStd_Array1OfReal *
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:rtype: void") IncreaseDegree;
 		static void IncreaseDegree (const Standard_Integer Degree,const Standard_Integer NewDegree,const Standard_Boolean Periodic,const TColgp_Array1OfPnt & Poles,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,TColgp_Array1OfPnt & NewPoles,TColStd_Array1OfReal * NewWeights,TColStd_Array1OfReal & NewKnots,TColStd_Array1OfInteger & NewMults);
 
@@ -1609,17 +1609,17 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:param NewWeights:
 	:type NewWeights: TColStd_Array1OfReal *
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:rtype: void") IncreaseDegree;
 		static void IncreaseDegree (const Standard_Integer Degree,const Standard_Integer NewDegree,const Standard_Boolean Periodic,const TColgp_Array1OfPnt2d & Poles,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,TColgp_Array1OfPnt2d & NewPoles,TColStd_Array1OfReal * NewWeights,TColStd_Array1OfReal & NewKnots,TColStd_Array1OfInteger & NewMults);
 
@@ -1664,7 +1664,7 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: int") IncreaseDegreeCountKnots;
 		static Standard_Integer IncreaseDegreeCountKnots (const Standard_Integer Degree,const Standard_Integer NewDegree,const Standard_Boolean Periodic,const TColStd_Array1OfInteger & Mults);
 
@@ -1685,9 +1685,9 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:param NewWeights:
@@ -1713,9 +1713,9 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:param NewWeights:
@@ -1732,21 +1732,21 @@ class BSplCLib {
 	:param Dimension:
 	:type Dimension: int
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param AddKnots:
-	:type AddKnots: TColStd_Array1OfReal &
+	:type AddKnots: TColStd_Array1OfReal
 	:param AddMults:
 	:type AddMults: TColStd_Array1OfInteger *
 	:param NewPoles:
-	:type NewPoles: TColStd_Array1OfReal &
+	:type NewPoles: TColStd_Array1OfReal
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param Epsilon:
 	:type Epsilon: float
 	:param Add: default value is Standard_True
@@ -1765,11 +1765,11 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param AddKnots:
-	:type AddKnots: TColStd_Array1OfReal &
+	:type AddKnots: TColStd_Array1OfReal
 	:param AddMults:
 	:type AddMults: TColStd_Array1OfInteger *
 	:param NewPoles:
@@ -1777,9 +1777,9 @@ class BSplCLib {
 	:param NewWeights:
 	:type NewWeights: TColStd_Array1OfReal *
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param Epsilon:
 	:type Epsilon: float
 	:param Add: default value is Standard_True
@@ -1799,11 +1799,11 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param AddKnots:
-	:type AddKnots: TColStd_Array1OfReal &
+	:type AddKnots: TColStd_Array1OfReal
 	:param AddMults:
 	:type AddMults: TColStd_Array1OfInteger *
 	:param NewPoles:
@@ -1811,9 +1811,9 @@ class BSplCLib {
 	:param NewWeights:
 	:type NewWeights: TColStd_Array1OfReal *
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param Epsilon:
 	:type Epsilon: float
 	:param Add: default value is Standard_True
@@ -1827,15 +1827,15 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param ContactOrderArray:
-	:type ContactOrderArray: TColStd_Array1OfInteger &
+	:type ContactOrderArray: TColStd_Array1OfInteger
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param InversionProblem:
-	:type InversionProblem: int &
+	:type InversionProblem: int
 	:rtype: void") Interpolate;
 		static void Interpolate (const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const TColStd_Array1OfReal & Parameters,const TColStd_Array1OfInteger & ContactOrderArray,TColgp_Array1OfPnt & Poles,Standard_Integer &OutValue);
 
@@ -1845,15 +1845,15 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param ContactOrderArray:
-	:type ContactOrderArray: TColStd_Array1OfInteger &
+	:type ContactOrderArray: TColStd_Array1OfInteger
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param InversionProblem:
-	:type InversionProblem: int &
+	:type InversionProblem: int
 	:rtype: void") Interpolate;
 		static void Interpolate (const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const TColStd_Array1OfReal & Parameters,const TColStd_Array1OfInteger & ContactOrderArray,TColgp_Array1OfPnt2d & Poles,Standard_Integer &OutValue);
 
@@ -1863,17 +1863,17 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param ContactOrderArray:
-	:type ContactOrderArray: TColStd_Array1OfInteger &
+	:type ContactOrderArray: TColStd_Array1OfInteger
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param InversionProblem:
-	:type InversionProblem: int &
+	:type InversionProblem: int
 	:rtype: void") Interpolate;
 		static void Interpolate (const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const TColStd_Array1OfReal & Parameters,const TColStd_Array1OfInteger & ContactOrderArray,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weights,Standard_Integer &OutValue);
 
@@ -1883,17 +1883,17 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param ContactOrderArray:
-	:type ContactOrderArray: TColStd_Array1OfInteger &
+	:type ContactOrderArray: TColStd_Array1OfInteger
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param InversionProblem:
-	:type InversionProblem: int &
+	:type InversionProblem: int
 	:rtype: void") Interpolate;
 		static void Interpolate (const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const TColStd_Array1OfReal & Parameters,const TColStd_Array1OfInteger & ContactOrderArray,TColgp_Array1OfPnt2d & Poles,TColStd_Array1OfReal & Weights,Standard_Integer &OutValue);
 
@@ -1903,17 +1903,17 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param ContactOrderArray:
-	:type ContactOrderArray: TColStd_Array1OfInteger &
+	:type ContactOrderArray: TColStd_Array1OfInteger
 	:param ArrayDimension:
 	:type ArrayDimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param InversionProblem:
-	:type InversionProblem: int &
+	:type InversionProblem: int
 	:rtype: void") Interpolate;
 		static void Interpolate (const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const TColStd_Array1OfReal & Parameters,const TColStd_Array1OfInteger & ContactOrderArray,const Standard_Integer ArrayDimension,Standard_Real &OutValue,Standard_Integer &OutValue);
 
@@ -1922,19 +1922,19 @@ class BSplCLib {
 		%feature("autodoc", ":param Degree:
 	:type Degree: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param ContactOrderArray:
-	:type ContactOrderArray: TColStd_Array1OfInteger &
+	:type ContactOrderArray: TColStd_Array1OfInteger
 	:param ArrayDimension:
 	:type ArrayDimension: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param Weights:
-	:type Weights: float &
+	:type Weights: float
 	:param InversionProblem:
-	:type InversionProblem: int &
+	:type InversionProblem: int
 	:rtype: void") Interpolate;
 		static void Interpolate (const Standard_Integer Degree,const TColStd_Array1OfReal & FlatKnots,const TColStd_Array1OfReal & Parameters,const TColStd_Array1OfInteger & ContactOrderArray,const Standard_Integer ArrayDimension,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Integer &OutValue);
 
@@ -1942,7 +1942,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "* Returns False if all the weights of the array <Weights> between I1 an I2 are identic. Epsilon is used for comparing weights. If Epsilon is 0. the Epsilon of the first weight is used.
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -1960,13 +1960,13 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param CKnots:
-	:type CKnots: TColStd_Array1OfReal &
+	:type CKnots: TColStd_Array1OfReal
 	:param CMults:
-	:type CMults: TColStd_Array1OfInteger &
+	:type CMults: TColStd_Array1OfInteger
 	:param KnotForm:
-	:type KnotForm: GeomAbs_BSplKnotDistribution &
+	:type KnotForm: GeomAbs_BSplKnotDistribution
 	:param MaxKnotMult:
-	:type MaxKnotMult: int &
+	:type MaxKnotMult: int
 	:rtype: void") KnotAnalysis;
 		static void KnotAnalysis (const Standard_Integer Degree,const Standard_Boolean Periodic,const TColStd_Array1OfReal & CKnots,const TColStd_Array1OfInteger & CMults,GeomAbs_BSplKnotDistribution & KnotForm,Standard_Integer &OutValue);
 
@@ -1974,7 +1974,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") KnotForm;
 		%feature("autodoc", "* Analyses if the knots distribution is 'Uniform' or 'NonUniform' between the knot FromK1 and the knot ToK2. There is no repetition of knot in the knots'sequence <Knots>.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param FromK1:
 	:type FromK1: int
 	:param ToK2:
@@ -1985,11 +1985,11 @@ class BSplCLib {
 		/****************** KnotSequence ******************/
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", ":param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param KnotSeq:
-	:type KnotSeq: TColStd_Array1OfReal &
+	:type KnotSeq: TColStd_Array1OfReal
 	:param Periodic: default value is Standard_False
 	:type Periodic: bool
 	:rtype: void") KnotSequence;
@@ -1999,15 +1999,15 @@ class BSplCLib {
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "* Computes the sequence of knots KnotSeq with repetition of the knots of multiplicity greater than 1. //! Length of KnotSeq must be KnotSequenceLength(Mults,Degree,Periodic)
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Degree:
 	:type Degree: int
 	:param Periodic:
 	:type Periodic: bool
 	:param KnotSeq:
-	:type KnotSeq: TColStd_Array1OfReal &
+	:type KnotSeq: TColStd_Array1OfReal
 	:rtype: void") KnotSequence;
 		static void KnotSequence (const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,const Standard_Integer Degree,const Standard_Boolean Periodic,TColStd_Array1OfReal & KnotSeq);
 
@@ -2015,7 +2015,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") KnotSequenceLength;
 		%feature("autodoc", "* Returns the length of the sequence of knots with repetition. //! Periodic : //! Sum(Mults(i), i = Mults.Lower(); i <= Mults.Upper()); //! Non Periodic : //! Sum(Mults(i); i = Mults.Lower(); i < Mults.Upper()) + 2 * Degree
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Degree:
 	:type Degree: int
 	:param Periodic:
@@ -2027,11 +2027,11 @@ class BSplCLib {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* Computes the sequence of knots Knots without repetition of the knots of multiplicity greater than 1. //! Length of <Knots> and <Mults> must be KnotsLength(KnotSequence,Periodic)
 	:param KnotSeq:
-	:type KnotSeq: TColStd_Array1OfReal &
+	:type KnotSeq: TColStd_Array1OfReal
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Periodic: default value is Standard_False
 	:type Periodic: bool
 	:rtype: void") Knots;
@@ -2041,7 +2041,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") KnotsLength;
 		%feature("autodoc", "* Returns the length of the sequence of knots (and Mults) without repetition.
 	:param KnotSeq:
-	:type KnotSeq: TColStd_Array1OfReal &
+	:type KnotSeq: TColStd_Array1OfReal
 	:param Periodic: default value is Standard_False
 	:type Periodic: bool
 	:rtype: int") KnotsLength;
@@ -2053,7 +2053,7 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: int") LastUKnotIndex;
 		static Standard_Integer LastUKnotIndex (const Standard_Integer Degree,const TColStd_Array1OfInteger & Mults);
 
@@ -2063,9 +2063,9 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param U:
 	:type U: float
 	:param IsPeriodic:
@@ -2075,9 +2075,9 @@ class BSplCLib {
 	:param ToK2:
 	:type ToK2: int
 	:param KnotIndex:
-	:type KnotIndex: int &
+	:type KnotIndex: int
 	:param NewU:
-	:type NewU: float &
+	:type NewU: float
 	:rtype: void") LocateParameter;
 		static void LocateParameter (const Standard_Integer Degree,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,const Standard_Real U,const Standard_Boolean IsPeriodic,const Standard_Integer FromK1,const Standard_Integer ToK2,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -2087,7 +2087,7 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param U:
 	:type U: float
 	:param IsPeriodic:
@@ -2097,9 +2097,9 @@ class BSplCLib {
 	:param ToK2:
 	:type ToK2: int
 	:param KnotIndex:
-	:type KnotIndex: int &
+	:type KnotIndex: int
 	:param NewU:
-	:type NewU: float &
+	:type NewU: float
 	:rtype: void") LocateParameter;
 		static void LocateParameter (const Standard_Integer Degree,const TColStd_Array1OfReal & Knots,const Standard_Real U,const Standard_Boolean IsPeriodic,const Standard_Integer FromK1,const Standard_Integer ToK2,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -2108,7 +2108,7 @@ class BSplCLib {
 		%feature("autodoc", ":param Degree:
 	:type Degree: int
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
 	:type Mults: TColStd_Array1OfInteger *
 	:param U:
@@ -2116,9 +2116,9 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:param NewU:
-	:type NewU: float &
+	:type NewU: float
 	:rtype: void") LocateParameter;
 		static void LocateParameter (const Standard_Integer Degree,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger * Mults,const Standard_Real U,const Standard_Boolean Periodic,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -2132,7 +2132,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") MaxKnotMult;
 		%feature("autodoc", "* Finds the greatest multiplicity in a set of knots between K1 and K2. Mults is the multiplicity associated with each knot value.
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param K1:
 	:type K1: int
 	:param K2:
@@ -2152,21 +2152,21 @@ class BSplCLib {
 	:param Degree1:
 	:type Degree1: int
 	:param Knots1:
-	:type Knots1: TColStd_Array1OfReal &
+	:type Knots1: TColStd_Array1OfReal
 	:param Mults1:
-	:type Mults1: TColStd_Array1OfInteger &
+	:type Mults1: TColStd_Array1OfInteger
 	:param Degree2:
 	:type Degree2: int
 	:param Knots2:
-	:type Knots2: TColStd_Array1OfReal &
+	:type Knots2: TColStd_Array1OfReal
 	:param Mults2:
-	:type Mults2: TColStd_Array1OfInteger &
+	:type Mults2: TColStd_Array1OfInteger
 	:param NumPoles:
-	:type NumPoles: int &
+	:type NumPoles: int
 	:param NewKnots:
-	:type NewKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:type NewKnots: TColStd_HArray1OfReal
 	:param NewMults:
-	:type NewMults: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type NewMults: TColStd_HArray1OfInteger
 	:rtype: void") MergeBSplineKnots;
 		static void MergeBSplineKnots (const Standard_Real Tolerance,const Standard_Real StartValue,const Standard_Real EndValue,const Standard_Integer Degree1,const TColStd_Array1OfReal & Knots1,const TColStd_Array1OfInteger & Mults1,const Standard_Integer Degree2,const TColStd_Array1OfReal & Knots2,const TColStd_Array1OfInteger & Mults2,Standard_Integer &OutValue,opencascade::handle<TColStd_HArray1OfReal> & NewKnots,opencascade::handle<TColStd_HArray1OfInteger> & NewMults);
 
@@ -2174,7 +2174,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") MinKnotMult;
 		%feature("autodoc", "* Finds the lowest multiplicity in a set of knots between K1 and K2. Mults is the multiplicity associated with each knot value.
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param K1:
 	:type K1: int
 	:param K2:
@@ -2200,11 +2200,11 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param FirstIndex:
-	:type FirstIndex: int &
+	:type FirstIndex: int
 	:param LastIndex:
-	:type LastIndex: int &
+	:type LastIndex: int
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:rtype: void") MovePoint;
@@ -2228,11 +2228,11 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param FirstIndex:
-	:type FirstIndex: int &
+	:type FirstIndex: int
 	:param LastIndex:
-	:type LastIndex: int &
+	:type LastIndex: int
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:rtype: void") MovePoint;
@@ -2246,9 +2246,9 @@ class BSplCLib {
 	:param ArrayDimension:
 	:type ArrayDimension: int
 	:param Delta:
-	:type Delta: float &
+	:type Delta: float
 	:param DeltaDerivative:
-	:type DeltaDerivative: float &
+	:type DeltaDerivative: float
 	:param Tolerance:
 	:type Tolerance: float
 	:param Degree:
@@ -2258,15 +2258,15 @@ class BSplCLib {
 	:param EndingCondition:
 	:type EndingCondition: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewPoles:
-	:type NewPoles: float &
+	:type NewPoles: float
 	:param ErrorStatus:
-	:type ErrorStatus: int &
+	:type ErrorStatus: int
 	:rtype: void") MovePointAndTangent;
 		static void MovePointAndTangent (const Standard_Real U,const Standard_Integer ArrayDimension,Standard_Real &OutValue,Standard_Real &OutValue,const Standard_Real Tolerance,const Standard_Integer Degree,const Standard_Integer StartingCondition,const Standard_Integer EndingCondition,Standard_Real &OutValue,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & FlatKnots,Standard_Real &OutValue,Standard_Integer &OutValue);
 
@@ -2292,11 +2292,11 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:param ErrorStatus:
-	:type ErrorStatus: int &
+	:type ErrorStatus: int
 	:rtype: void") MovePointAndTangent;
 		static void MovePointAndTangent (const Standard_Real U,const gp_Vec & Delta,const gp_Vec & DeltaDerivative,const Standard_Real Tolerance,const Standard_Integer Degree,const Standard_Integer StartingCondition,const Standard_Integer EndingCondition,const TColgp_Array1OfPnt & Poles,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & FlatKnots,TColgp_Array1OfPnt & NewPoles,Standard_Integer &OutValue);
 
@@ -2322,11 +2322,11 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:param ErrorStatus:
-	:type ErrorStatus: int &
+	:type ErrorStatus: int
 	:rtype: void") MovePointAndTangent;
 		static void MovePointAndTangent (const Standard_Real U,const gp_Vec2d & Delta,const gp_Vec2d & DeltaDerivative,const Standard_Real Tolerance,const Standard_Integer Degree,const Standard_Integer StartingCondition,const Standard_Integer EndingCondition,const TColgp_Array1OfPnt2d & Poles,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & FlatKnots,TColgp_Array1OfPnt2d & NewPoles,Standard_Integer &OutValue);
 
@@ -2334,7 +2334,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") MultForm;
 		%feature("autodoc", "* Analyses the distribution of multiplicities between the knot FromK1 and the Knot ToK2.
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FromK1:
 	:type FromK1: int
 	:param ToK2:
@@ -2350,7 +2350,7 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: int") NbPoles;
 		static Standard_Integer NbPoles (const Standard_Integer Degree,const Standard_Boolean Periodic,const TColStd_Array1OfInteger & Mults);
 
@@ -2376,7 +2376,7 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: int") PoleIndex;
 		static Standard_Integer PoleIndex (const Standard_Integer Degree,const Standard_Integer Index,const Standard_Boolean Periodic,const TColStd_Array1OfInteger & Mults);
 
@@ -2433,17 +2433,17 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param AddKnots:
-	:type AddKnots: TColStd_Array1OfReal &
+	:type AddKnots: TColStd_Array1OfReal
 	:param AddMults:
 	:type AddMults: TColStd_Array1OfInteger *
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Epsilon:
 	:type Epsilon: float
 	:param Add: default value is Standard_True
@@ -2459,17 +2459,17 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param U1:
 	:type U1: float
 	:param U2:
 	:type U2: float
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:rtype: void") PrepareTrimming;
 		static void PrepareTrimming (const Standard_Integer Degree,const Standard_Boolean Periodic,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,const Standard_Real U1,const Standard_Real U2,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2479,11 +2479,11 @@ class BSplCLib {
 	:param Degree:
 	:type Degree: int
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:rtype: void") PrepareUnperiodize;
 		static void PrepareUnperiodize (const Standard_Integer Degree,const TColStd_Array1OfInteger & Mults,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2502,9 +2502,9 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:param NewWeights:
@@ -2528,9 +2528,9 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:param NewWeights:
@@ -2551,17 +2551,17 @@ class BSplCLib {
 	:param Dimension:
 	:type Dimension: int
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
-	:type NewPoles: TColStd_Array1OfReal &
+	:type NewPoles: TColStd_Array1OfReal
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param Tolerance:
 	:type Tolerance: float
 	:rtype: bool") RemoveKnot;
@@ -2582,17 +2582,17 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:param NewWeights:
 	:type NewWeights: TColStd_Array1OfReal *
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param Tolerance:
 	:type Tolerance: float
 	:rtype: bool") RemoveKnot;
@@ -2614,17 +2614,17 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:param NewWeights:
 	:type NewWeights: TColStd_Array1OfReal *
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param Tolerance:
 	:type Tolerance: float
 	:rtype: bool") RemoveKnot;
@@ -2638,7 +2638,7 @@ class BSplCLib {
 	:param U2:
 	:type U2: float
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:rtype: void") Reparametrize;
 		static void Reparametrize (const Standard_Real U1,const Standard_Real U2,TColStd_Array1OfReal & Knots);
 
@@ -2646,7 +2646,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "* given a tolerance in 3D space returns a tolerance in U parameter space such that all u1 and u0 in the domain of the curve f(u) | u1 - u0 | < UTolerance and we have |f (u1) - f (u0)| < Tolerance3D
 	:param PolesArray:
-	:type PolesArray: float &
+	:type PolesArray: float
 	:param ArrayDimension:
 	:type ArrayDimension: int
 	:param NumPoles:
@@ -2654,13 +2654,13 @@ class BSplCLib {
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Degree:
 	:type Degree: int
 	:param Tolerance3D:
 	:type Tolerance3D: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:rtype: void") Resolution;
 		static void Resolution (Standard_Real &OutValue,const Standard_Integer ArrayDimension,const Standard_Integer NumPoles,const TColStd_Array1OfReal * Weights,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer Degree,const Standard_Real Tolerance3D,Standard_Real &OutValue);
 
@@ -2674,13 +2674,13 @@ class BSplCLib {
 	:param NumPoles:
 	:type NumPoles: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Degree:
 	:type Degree: int
 	:param Tolerance3D:
 	:type Tolerance3D: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:rtype: void") Resolution;
 		static void Resolution (const TColgp_Array1OfPnt & Poles,const TColStd_Array1OfReal * Weights,const Standard_Integer NumPoles,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer Degree,const Standard_Real Tolerance3D,Standard_Real &OutValue);
 
@@ -2694,13 +2694,13 @@ class BSplCLib {
 	:param NumPoles:
 	:type NumPoles: int
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param Degree:
 	:type Degree: int
 	:param Tolerance3D:
 	:type Tolerance3D: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:rtype: void") Resolution;
 		static void Resolution (const TColgp_Array1OfPnt2d & Poles,const TColStd_Array1OfReal * Weights,const Standard_Integer NumPoles,const TColStd_Array1OfReal & FlatKnots,const Standard_Integer Degree,const Standard_Real Tolerance3D,Standard_Real &OutValue);
 
@@ -2708,7 +2708,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "* Reverses the array knots to become the knots sequence of the reversed curve.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:rtype: void") Reverse;
 		static void Reverse (TColStd_Array1OfReal & Knots);
 
@@ -2716,7 +2716,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "* Reverses the array of multiplicities.
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: void") Reverse;
 		static void Reverse (TColStd_Array1OfInteger & Mults);
 
@@ -2744,7 +2744,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "* Reverses the array of poles.
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param Last:
 	:type Last: int
 	:rtype: void") Reverse;
@@ -2754,7 +2754,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "* This solves the system Matrix.X = B with when Matrix is factored in LU form The Array is an seen as an Array[1..N][1..ArrayDimension] with N = the rank of the matrix Matrix. The result is stored in Array when each coordinate is solved that is B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension
 	:param Matrix:
-	:type Matrix: math_Matrix &
+	:type Matrix: math_Matrix
 	:param UpperBandWidth:
 	:type UpperBandWidth: int
 	:param LowerBandWidth:
@@ -2762,7 +2762,7 @@ class BSplCLib {
 	:param ArrayDimension:
 	:type ArrayDimension: int
 	:param Array:
-	:type Array: float &
+	:type Array: float
 	:rtype: int") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem (const math_Matrix & Matrix,const Standard_Integer UpperBandWidth,const Standard_Integer LowerBandWidth,const Standard_Integer ArrayDimension,Standard_Real &OutValue);
 
@@ -2770,7 +2770,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "* This solves the system Matrix.X = B with when Matrix is factored in LU form The Array has the length of the rank of the matrix Matrix. The result is stored in Array when each coordinate is solved that is B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension
 	:param Matrix:
-	:type Matrix: math_Matrix &
+	:type Matrix: math_Matrix
 	:param UpperBandWidth:
 	:type UpperBandWidth: int
 	:param LowerBandWidth:
@@ -2784,7 +2784,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "* This solves the system Matrix.X = B with when Matrix is factored in LU form The Array has the length of the rank of the matrix Matrix. The result is stored in Array when each coordinate is solved that is B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension
 	:param Matrix:
-	:type Matrix: math_Matrix &
+	:type Matrix: math_Matrix
 	:param UpperBandWidth:
 	:type UpperBandWidth: int
 	:param LowerBandWidth:
@@ -2797,7 +2797,7 @@ class BSplCLib {
 		/****************** SolveBandedSystem ******************/
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", ":param Matrix:
-	:type Matrix: math_Matrix &
+	:type Matrix: math_Matrix
 	:param UpperBandWidth:
 	:type UpperBandWidth: int
 	:param LowerBandWidth:
@@ -2807,9 +2807,9 @@ class BSplCLib {
 	:param ArrayDimension:
 	:type ArrayDimension: int
 	:param Array:
-	:type Array: float &
+	:type Array: float
 	:param Weights:
-	:type Weights: float &
+	:type Weights: float
 	:rtype: int") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem (const math_Matrix & Matrix,const Standard_Integer UpperBandWidth,const Standard_Integer LowerBandWidth,const Standard_Boolean HomogenousFlag,const Standard_Integer ArrayDimension,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2817,7 +2817,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "* This solves the system Matrix.X = B with when Matrix is factored in LU form The Array is an seen as an Array[1..N][1..ArrayDimension] with N = the rank of the matrix Matrix. The result is stored in Array when each coordinate is solved that is B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension. If HomogeneousFlag == 0 the Poles are multiplied by the Weights uppon Entry and once interpolation is carried over the result of the poles are divided by the result of the interpolation of the weights. Otherwise if HomogenousFlag == 1 the Poles and Weigths are treated homogenously that is that those are interpolated as they are and result is returned without division by the interpolated weigths.
 	:param Matrix:
-	:type Matrix: math_Matrix &
+	:type Matrix: math_Matrix
 	:param UpperBandWidth:
 	:type UpperBandWidth: int
 	:param LowerBandWidth:
@@ -2827,7 +2827,7 @@ class BSplCLib {
 	:param Array:
 	:type Array: TColgp_Array1OfPnt2d
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:rtype: int") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem (const math_Matrix & Matrix,const Standard_Integer UpperBandWidth,const Standard_Integer LowerBandWidth,const Standard_Boolean HomogenousFlag,TColgp_Array1OfPnt2d & Array,TColStd_Array1OfReal & Weights);
 
@@ -2835,7 +2835,7 @@ class BSplCLib {
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "* This solves the system Matrix.X = B with when Matrix is factored in LU form The Array is an seen as an Array[1..N][1..ArrayDimension] with N = the rank of the matrix Matrix. The result is stored in Array when each coordinate is solved that is B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension If HomogeneousFlag == 0 the Poles are multiplied by the Weights uppon Entry and once interpolation is carried over the result of the poles are divided by the result of the interpolation of the weights. Otherwise if HomogenousFlag == 1 the Poles and Weigths are treated homogenously that is that those are interpolated as they are and result is returned without division by the interpolated weigths.
 	:param Matrix:
-	:type Matrix: math_Matrix &
+	:type Matrix: math_Matrix
 	:param UpperBandWidth:
 	:type UpperBandWidth: int
 	:param LowerBandWidth:
@@ -2845,7 +2845,7 @@ class BSplCLib {
 	:param Array:
 	:type Array: TColgp_Array1OfPnt
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:rtype: int") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem (const math_Matrix & Matrix,const Standard_Integer UpperBandWidth,const Standard_Integer LowerBandWidth,const Standard_Boolean HomogeneousFlag,TColgp_Array1OfPnt & Array,TColStd_Array1OfReal & Weights);
 
@@ -2853,31 +2853,31 @@ class BSplCLib {
 		%feature("compactdefaultargs") TangExtendToConstraint;
 		%feature("autodoc", "* Extend a BSpline nD using the tangency map <C1Coefficient> is the coefficient of reparametrisation <Continuity> must be equal to 1, 2 or 3. <Degree> must be greater or equal than <Continuity> + 1. //! Warning: <KnotsResult> and <PolesResult> must be dimensionned properly.
 	:param FlatKnots:
-	:type FlatKnots: TColStd_Array1OfReal &
+	:type FlatKnots: TColStd_Array1OfReal
 	:param C1Coefficient:
 	:type C1Coefficient: float
 	:param NumPoles:
 	:type NumPoles: int
 	:param Poles:
-	:type Poles: float &
+	:type Poles: float
 	:param Dimension:
 	:type Dimension: int
 	:param Degree:
 	:type Degree: int
 	:param ConstraintPoint:
-	:type ConstraintPoint: TColStd_Array1OfReal &
+	:type ConstraintPoint: TColStd_Array1OfReal
 	:param Continuity:
 	:type Continuity: int
 	:param After:
 	:type After: bool
 	:param NbPolesResult:
-	:type NbPolesResult: int &
+	:type NbPolesResult: int
 	:param NbKnotsRsult:
-	:type NbKnotsRsult: int &
+	:type NbKnotsRsult: int
 	:param KnotsResult:
-	:type KnotsResult: float &
+	:type KnotsResult: float
 	:param PolesResult:
-	:type PolesResult: float &
+	:type PolesResult: float
 	:rtype: void") TangExtendToConstraint;
 		static void TangExtendToConstraint (const TColStd_Array1OfReal & FlatKnots,const Standard_Real C1Coefficient,const Standard_Integer NumPoles,Standard_Real &OutValue,const Standard_Integer Dimension,const Standard_Integer Degree,const TColStd_Array1OfReal & ConstraintPoint,const Standard_Integer Continuity,const Standard_Boolean After,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2890,21 +2890,21 @@ class BSplCLib {
 	:param Dimension:
 	:type Dimension: int
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param U1:
 	:type U1: float
 	:param U2:
 	:type U2: float
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param NewPoles:
-	:type NewPoles: TColStd_Array1OfReal &
+	:type NewPoles: TColStd_Array1OfReal
 	:rtype: void") Trimming;
 		static void Trimming (const Standard_Integer Degree,const Standard_Boolean Periodic,const Standard_Integer Dimension,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults,const TColStd_Array1OfReal & Poles,const Standard_Real U1,const Standard_Real U2,TColStd_Array1OfReal & NewKnots,TColStd_Array1OfInteger & NewMults,TColStd_Array1OfReal & NewPoles);
 
@@ -2915,9 +2915,9 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weights:
@@ -2927,9 +2927,9 @@ class BSplCLib {
 	:param U2:
 	:type U2: float
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:param NewWeights:
@@ -2944,9 +2944,9 @@ class BSplCLib {
 	:param Periodic:
 	:type Periodic: bool
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param Weights:
@@ -2956,9 +2956,9 @@ class BSplCLib {
 	:param U2:
 	:type U2: float
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:param NewWeights:
@@ -2973,17 +2973,17 @@ class BSplCLib {
 	:param Dimension:
 	:type Dimension: int
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewPoles:
-	:type NewPoles: TColStd_Array1OfReal &
+	:type NewPoles: TColStd_Array1OfReal
 	:rtype: void") Unperiodize;
 		static void Unperiodize (const Standard_Integer Degree,const Standard_Integer Dimension,const TColStd_Array1OfInteger & Mults,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfReal & Poles,TColStd_Array1OfInteger & NewMults,TColStd_Array1OfReal & NewKnots,TColStd_Array1OfReal & NewPoles);
 
@@ -2992,17 +2992,17 @@ class BSplCLib {
 		%feature("autodoc", ":param Degree:
 	:type Degree: int
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt
 	:param NewWeights:
@@ -3015,17 +3015,17 @@ class BSplCLib {
 		%feature("autodoc", ":param Degree:
 	:type Degree: int
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param Weights:
 	:type Weights: TColStd_Array1OfReal *
 	:param NewMults:
-	:type NewMults: TColStd_Array1OfInteger &
+	:type NewMults: TColStd_Array1OfInteger
 	:param NewKnots:
-	:type NewKnots: TColStd_Array1OfReal &
+	:type NewKnots: TColStd_Array1OfReal
 	:param NewPoles:
 	:type NewPoles: TColgp_Array1OfPnt2d
 	:param NewWeights:
@@ -3052,11 +3052,11 @@ class BSplCLib_Cache : public Standard_Transient {
 		%feature("compactdefaultargs") BSplCLib_Cache;
 		%feature("autodoc", "* Constructor, prepares data structures for caching values on a 2d curve. \param theDegree degree of the curve \param thePeriodic identify whether the curve is periodic \param theFlatKnots knots of Bezier/B-spline curve (with repetitions) \param thePoles2d array of poles of 2D curve \param theWeights array of weights of corresponding poles
 	:param theDegree:
-	:type theDegree: int &
+	:type theDegree: int
 	:param thePeriodic:
 	:type thePeriodic: bool
 	:param theFlatKnots:
-	:type theFlatKnots: TColStd_Array1OfReal &
+	:type theFlatKnots: TColStd_Array1OfReal
 	:param thePoles2d:
 	:type thePoles2d: TColgp_Array1OfPnt2d
 	:param theWeights: default value is NULL
@@ -3068,11 +3068,11 @@ class BSplCLib_Cache : public Standard_Transient {
 		%feature("compactdefaultargs") BSplCLib_Cache;
 		%feature("autodoc", "* Constructor, prepares data structures for caching values on a 3d curve. \param theDegree degree of the curve \param thePeriodic identify whether the curve is periodic \param theFlatKnots knots of Bezier/B-spline curve (with repetitions) \param thePoles array of poles of 3D curve \param theWeights array of weights of corresponding poles
 	:param theDegree:
-	:type theDegree: int &
+	:type theDegree: int
 	:param thePeriodic:
 	:type thePeriodic: bool
 	:param theFlatKnots:
-	:type theFlatKnots: TColStd_Array1OfReal &
+	:type theFlatKnots: TColStd_Array1OfReal
 	:param thePoles:
 	:type thePoles: TColgp_Array1OfPnt
 	:param theWeights: default value is NULL
@@ -3084,9 +3084,9 @@ class BSplCLib_Cache : public Standard_Transient {
 		%feature("compactdefaultargs") BuildCache;
 		%feature("autodoc", "* Recomputes the cache data for 2D curves. Does not verify validity of the cache \param theParameter the value on the knot's axis to identify the span \param theFlatKnots knots of Bezier/B-spline curve (with repetitions) \param thePoles2d array of poles of 2D curve \param theWeights array of weights of corresponding poles
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param theFlatKnots:
-	:type theFlatKnots: TColStd_Array1OfReal &
+	:type theFlatKnots: TColStd_Array1OfReal
 	:param thePoles2d:
 	:type thePoles2d: TColgp_Array1OfPnt2d
 	:param theWeights:
@@ -3098,9 +3098,9 @@ class BSplCLib_Cache : public Standard_Transient {
 		%feature("compactdefaultargs") BuildCache;
 		%feature("autodoc", "* Recomputes the cache data for 3D curves. Does not verify validity of the cache \param theParameter the value on the knot's axis to identify the span \param theFlatKnots knots of Bezier/B-spline curve (with repetitions) \param thePoles array of poles of 3D curve \param theWeights array of weights of corresponding poles
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param theFlatKnots:
-	:type theFlatKnots: TColStd_Array1OfReal &
+	:type theFlatKnots: TColStd_Array1OfReal
 	:param thePoles:
 	:type thePoles: TColgp_Array1OfPnt
 	:param theWeights: default value is NULL
@@ -3112,7 +3112,7 @@ class BSplCLib_Cache : public Standard_Transient {
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "* Calculates the point on the curve in the specified parameter \param[in] theParameter parameter of calculation of the value \param[out] thePoint the result of calculation (the point on the curve)
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param thePoint:
 	:type thePoint: gp_Pnt2d
 	:rtype: None") D0;
@@ -3121,7 +3121,7 @@ class BSplCLib_Cache : public Standard_Transient {
 		/****************** D0 ******************/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", ":param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:rtype: None") D0;
@@ -3131,7 +3131,7 @@ class BSplCLib_Cache : public Standard_Transient {
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "* Calculates the point on the curve and its first derivative in the specified parameter \param[in] theParameter parameter of calculation of the value \param[out] thePoint the result of calculation (the point on the curve) \param[out] theTangent tangent vector (first derivatives) for the curve in the calculated point
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param thePoint:
 	:type thePoint: gp_Pnt2d
 	:param theTangent:
@@ -3142,7 +3142,7 @@ class BSplCLib_Cache : public Standard_Transient {
 		/****************** D1 ******************/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", ":param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:param theTangent:
@@ -3154,7 +3154,7 @@ class BSplCLib_Cache : public Standard_Transient {
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "* Calculates the point on the curve and two derivatives in the specified parameter \param[in] theParameter parameter of calculation of the value \param[out] thePoint the result of calculation (the point on the curve) \param[out] theTangent tangent vector (1st derivatives) for the curve in the calculated point \param[out] theCurvature curvature vector (2nd derivatives) for the curve in the calculated point
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param thePoint:
 	:type thePoint: gp_Pnt2d
 	:param theTangent:
@@ -3167,7 +3167,7 @@ class BSplCLib_Cache : public Standard_Transient {
 		/****************** D2 ******************/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", ":param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:param theTangent:
@@ -3181,7 +3181,7 @@ class BSplCLib_Cache : public Standard_Transient {
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "* Calculates the point on the curve and three derivatives in the specified parameter \param[in] theParameter parameter of calculation of the value \param[out] thePoint the result of calculation (the point on the curve) \param[out] theTangent tangent vector (1st derivatives) for the curve in the calculated point \param[out] theCurvature curvature vector (2nd derivatives) for the curve in the calculated point \param[out] theTorsion second curvature vector (3rd derivatives) for the curve in the calculated point
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param thePoint:
 	:type thePoint: gp_Pnt2d
 	:param theTangent:
@@ -3196,7 +3196,7 @@ class BSplCLib_Cache : public Standard_Transient {
 		/****************** D3 ******************/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", ":param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:param theTangent:
@@ -3244,7 +3244,7 @@ class BSplCLib_CacheParams {
 	:param thePeriodic:
 	:type thePeriodic: bool
 	:param theFlatKnots:
-	:type theFlatKnots: TColStd_Array1OfReal &
+	:type theFlatKnots: TColStd_Array1OfReal
 	:rtype: None") BSplCLib_CacheParams;
 		 BSplCLib_CacheParams (Standard_Integer theDegree,Standard_Boolean thePeriodic,const TColStd_Array1OfReal & theFlatKnots);
 
@@ -3260,9 +3260,9 @@ class BSplCLib_CacheParams {
 		%feature("compactdefaultargs") LocateParameter;
 		%feature("autodoc", "* Computes span for the specified parameter \param theParameter parameter of the point placed in the span \param theFlatKnots knots of Bezier / B-spline parameterization
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:param theFlatKnots:
-	:type theFlatKnots: TColStd_Array1OfReal &
+	:type theFlatKnots: TColStd_Array1OfReal
 	:rtype: None") LocateParameter;
 		void LocateParameter (Standard_Real &OutValue,const TColStd_Array1OfReal & theFlatKnots);
 

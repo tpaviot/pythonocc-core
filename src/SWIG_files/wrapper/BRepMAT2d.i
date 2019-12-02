@@ -110,7 +110,7 @@ class BRepMAT2d_BisectingLocus {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* Computation of the Bisector_Locus in a set of Lines defined in <anExplo>. The bisecting locus are computed on the side <aSide> from the line <LineIndex> in <anExplo>.
 	:param anExplo:
-	:type anExplo: BRepMAT2d_Explorer &
+	:type anExplo: BRepMAT2d_Explorer
 	:param LineIndex: default value is 1
 	:type LineIndex: int
 	:param aSide: default value is MAT_Left
@@ -126,7 +126,7 @@ class BRepMAT2d_BisectingLocus {
 		%feature("compactdefaultargs") GeomBis;
 		%feature("autodoc", "* Returns the geometry of type <Bissec> linked to the arc <ARC>. <Reverse> is False when the FirstNode of <anArc> correspond to the first point of geometry.
 	:param anArc:
-	:type anArc: opencascade::handle<MAT_Arc> &
+	:type anArc: MAT_Arc
 	:param Reverse:
 	:type Reverse: bool
 	:rtype: Bisector_Bisec") GeomBis;
@@ -136,7 +136,7 @@ class BRepMAT2d_BisectingLocus {
 		%feature("compactdefaultargs") GeomElt;
 		%feature("autodoc", "* Returns the geometry linked to the <BasicElt>.
 	:param aBasicElt:
-	:type aBasicElt: opencascade::handle<MAT_BasicElt> &
+	:type aBasicElt: MAT_BasicElt
 	:rtype: opencascade::handle<Geom2d_Geometry>") GeomElt;
 		opencascade::handle<Geom2d_Geometry> GeomElt (const opencascade::handle<MAT_BasicElt> & aBasicElt);
 
@@ -144,7 +144,7 @@ class BRepMAT2d_BisectingLocus {
 		%feature("compactdefaultargs") GeomElt;
 		%feature("autodoc", "* Returns the geometry of type <gp> linked to the <Node>.
 	:param aNode:
-	:type aNode: opencascade::handle<MAT_Node> &
+	:type aNode: MAT_Node
 	:rtype: gp_Pnt2d") GeomElt;
 		gp_Pnt2d GeomElt (const opencascade::handle<MAT_Node> & aNode);
 
@@ -207,7 +207,7 @@ class BRepMAT2d_Explorer {
 		/****************** BRepMAT2d_Explorer ******************/
 		%feature("compactdefaultargs") BRepMAT2d_Explorer;
 		%feature("autodoc", ":param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:rtype: None") BRepMAT2d_Explorer;
 		 BRepMAT2d_Explorer (const TopoDS_Face & aFace);
 
@@ -240,7 +240,7 @@ class BRepMAT2d_Explorer {
 		/****************** IsModified ******************/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: bool") IsModified;
 		Standard_Boolean IsModified (const TopoDS_Shape & aShape);
 
@@ -248,7 +248,7 @@ class BRepMAT2d_Explorer {
 		%feature("compactdefaultargs") ModifiedShape;
 		%feature("autodoc", "* If the shape is not modified, returns the shape itself.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: TopoDS_Shape") ModifiedShape;
 		TopoDS_Shape ModifiedShape (const TopoDS_Shape & aShape);
 
@@ -281,7 +281,7 @@ class BRepMAT2d_Explorer {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Face & aFace);
 
@@ -320,9 +320,9 @@ class BRepMAT2d_LinkTopoBilo {
 		%feature("compactdefaultargs") BRepMAT2d_LinkTopoBilo;
 		%feature("autodoc", "* Constructs the links Between S and BiLo. //! raises if <S> is not a face.
 	:param Explo:
-	:type Explo: BRepMAT2d_Explorer &
+	:type Explo: BRepMAT2d_Explorer
 	:param BiLo:
-	:type BiLo: BRepMAT2d_BisectingLocus &
+	:type BiLo: BRepMAT2d_BisectingLocus
 	:rtype: None") BRepMAT2d_LinkTopoBilo;
 		 BRepMAT2d_LinkTopoBilo (const BRepMAT2d_Explorer & Explo,const BRepMAT2d_BisectingLocus & BiLo);
 
@@ -330,7 +330,7 @@ class BRepMAT2d_LinkTopoBilo {
 		%feature("compactdefaultargs") GeneratingShape;
 		%feature("autodoc", "* Returns the Shape linked to <aBE>.
 	:param aBE:
-	:type aBE: opencascade::handle<MAT_BasicElt> &
+	:type aBE: MAT_BasicElt
 	:rtype: TopoDS_Shape") GeneratingShape;
 		TopoDS_Shape GeneratingShape (const opencascade::handle<MAT_BasicElt> & aBE);
 
@@ -338,7 +338,7 @@ class BRepMAT2d_LinkTopoBilo {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialise the Iterator on <S> <S> is an edge or a vertex of the initial wire or face. raises if <S> is not an edge or a vertex.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -358,9 +358,9 @@ class BRepMAT2d_LinkTopoBilo {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Constructs the links Between S and BiLo. //! raises if <S> is not a face or a wire.
 	:param Explo:
-	:type Explo: BRepMAT2d_Explorer &
+	:type Explo: BRepMAT2d_Explorer
 	:param BiLo:
-	:type BiLo: BRepMAT2d_BisectingLocus &
+	:type BiLo: BRepMAT2d_BisectingLocus
 	:rtype: None") Perform;
 		void Perform (const BRepMAT2d_Explorer & Explo,const BRepMAT2d_BisectingLocus & BiLo);
 

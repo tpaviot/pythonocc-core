@@ -85,7 +85,7 @@ class XCAFApp_Application : public TDocStd_Application {
 		%feature("compactdefaultargs") InitDocument;
 		%feature("autodoc", "* Set XCAFDoc_DocumentTool attribute
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:rtype: void") InitDocument;
 		virtual void InitDocument (const opencascade::handle<TDocStd_Document> & aDoc);
 

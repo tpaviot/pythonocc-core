@@ -89,9 +89,9 @@ class XmlMNaming {
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "* Adds the attribute drivers to <aDriverTable>.
 	:param aDriverTable:
-	:type aDriverTable: opencascade::handle<XmlMDF_ADriverTable> &
+	:type aDriverTable: XmlMDF_ADriverTable
 	:param aMessageDriver:
-	:type aMessageDriver: opencascade::handle<Message_Messenger> &
+	:type aMessageDriver: Message_Messenger
 	:rtype: void") AddDrivers;
 		static void AddDrivers (const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable,const opencascade::handle<Message_Messenger> & aMessageDriver);
 
@@ -130,22 +130,22 @@ class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param theSource:
-	:type theSource: XmlObjMgt_Persistent &
+	:type theSource: XmlObjMgt_Persistent
 	:param theTarget:
-	:type theTarget: opencascade::handle<TDF_Attribute> &
+	:type theTarget: TDF_Attribute
 	:param theRelocTable:
-	:type theRelocTable: XmlObjMgt_RRelocationTable &
+	:type theRelocTable: XmlObjMgt_RRelocationTable
 	:rtype: bool") Paste;
 		virtual Standard_Boolean Paste (const XmlObjMgt_Persistent & theSource,const opencascade::handle<TDF_Attribute> & theTarget,XmlObjMgt_RRelocationTable & theRelocTable);
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param theSource:
-	:type theSource: opencascade::handle<TDF_Attribute> &
+	:type theSource: TDF_Attribute
 	:param theTarget:
-	:type theTarget: XmlObjMgt_Persistent &
+	:type theTarget: XmlObjMgt_Persistent
 	:param theRelocTable:
-	:type theRelocTable: XmlObjMgt_SRelocationTable &
+	:type theRelocTable: XmlObjMgt_SRelocationTable
 	:rtype: void") Paste;
 		virtual void Paste (const opencascade::handle<TDF_Attribute> & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
 
@@ -153,7 +153,7 @@ class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 		%feature("compactdefaultargs") ReadShapeSection;
 		%feature("autodoc", "* Input the shapes from DOM element
 	:param anElement:
-	:type anElement: XmlObjMgt_Element &
+	:type anElement: XmlObjMgt_Element
 	:rtype: None") ReadShapeSection;
 		void ReadShapeSection (const XmlObjMgt_Element & anElement);
 
@@ -161,14 +161,14 @@ class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "* Output the shapes into DOM element
 	:param anElement:
-	:type anElement: XmlObjMgt_Element &
+	:type anElement: XmlObjMgt_Element
 	:rtype: None") WriteShapeSection;
 		void WriteShapeSection (XmlObjMgt_Element & anElement);
 
 		/****************** XmlMNaming_NamedShapeDriver ******************/
 		%feature("compactdefaultargs") XmlMNaming_NamedShapeDriver;
 		%feature("autodoc", ":param aMessageDriver:
-	:type aMessageDriver: opencascade::handle<Message_Messenger> &
+	:type aMessageDriver: Message_Messenger
 	:rtype: None") XmlMNaming_NamedShapeDriver;
 		 XmlMNaming_NamedShapeDriver (const opencascade::handle<Message_Messenger> & aMessageDriver);
 
@@ -197,29 +197,29 @@ class XmlMNaming_NamingDriver : public XmlMDF_ADriver {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param theSource:
-	:type theSource: XmlObjMgt_Persistent &
+	:type theSource: XmlObjMgt_Persistent
 	:param theTarget:
-	:type theTarget: opencascade::handle<TDF_Attribute> &
+	:type theTarget: TDF_Attribute
 	:param theRelocTable:
-	:type theRelocTable: XmlObjMgt_RRelocationTable &
+	:type theRelocTable: XmlObjMgt_RRelocationTable
 	:rtype: bool") Paste;
 		Standard_Boolean Paste (const XmlObjMgt_Persistent & theSource,const opencascade::handle<TDF_Attribute> & theTarget,XmlObjMgt_RRelocationTable & theRelocTable);
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param theSource:
-	:type theSource: opencascade::handle<TDF_Attribute> &
+	:type theSource: TDF_Attribute
 	:param theTarget:
-	:type theTarget: XmlObjMgt_Persistent &
+	:type theTarget: XmlObjMgt_Persistent
 	:param theRelocTable:
-	:type theRelocTable: XmlObjMgt_SRelocationTable &
+	:type theRelocTable: XmlObjMgt_SRelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & theSource,XmlObjMgt_Persistent & theTarget,XmlObjMgt_SRelocationTable & theRelocTable);
 
 		/****************** XmlMNaming_NamingDriver ******************/
 		%feature("compactdefaultargs") XmlMNaming_NamingDriver;
 		%feature("autodoc", ":param aMessageDriver:
-	:type aMessageDriver: opencascade::handle<Message_Messenger> &
+	:type aMessageDriver: Message_Messenger
 	:rtype: None") XmlMNaming_NamingDriver;
 		 XmlMNaming_NamingDriver (const opencascade::handle<Message_Messenger> & aMessageDriver);
 
@@ -276,7 +276,7 @@ class XmlMNaming_Shape1 {
 		/****************** SetVertex ******************/
 		%feature("compactdefaultargs") SetVertex;
 		%feature("autodoc", ":param theVertex:
-	:type theVertex: TopoDS_Shape &
+	:type theVertex: TopoDS_Shape
 	:rtype: None") SetVertex;
 		void SetVertex (const TopoDS_Shape & theVertex);
 
@@ -288,14 +288,14 @@ class XmlMNaming_Shape1 {
 		/****************** XmlMNaming_Shape1 ******************/
 		%feature("compactdefaultargs") XmlMNaming_Shape1;
 		%feature("autodoc", ":param Doc:
-	:type Doc: XmlObjMgt_Document &
+	:type Doc: XmlObjMgt_Document
 	:rtype: None") XmlMNaming_Shape1;
 		 XmlMNaming_Shape1 (XmlObjMgt_Document & Doc);
 
 		/****************** XmlMNaming_Shape1 ******************/
 		%feature("compactdefaultargs") XmlMNaming_Shape1;
 		%feature("autodoc", ":param E:
-	:type E: XmlObjMgt_Element &
+	:type E: XmlObjMgt_Element
 	:rtype: None") XmlMNaming_Shape1;
 		 XmlMNaming_Shape1 (const XmlObjMgt_Element & E);
 

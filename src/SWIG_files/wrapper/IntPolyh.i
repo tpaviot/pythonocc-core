@@ -151,7 +151,7 @@ class IntPolyh_Couple {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns true if the Couple is equal to <theOther>
 	:param theOther:
-	:type theOther: IntPolyh_Couple &
+	:type theOther: IntPolyh_Couple
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const IntPolyh_Couple & theOther);
 
@@ -206,7 +206,7 @@ class IntPolyh_CoupleMapHasher {
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "* Computes a hash code for the given couple, in the range [1, theUpperBound] @param theCouple the couple which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theCouple:
-	:type theCouple: IntPolyh_Couple &
+	:type theCouple: IntPolyh_Couple
 	:param theUpperBound:
 	:type theUpperBound: int
 	:rtype: int") HashCode;
@@ -215,9 +215,9 @@ class IntPolyh_CoupleMapHasher {
 		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", ":param theCouple1:
-	:type theCouple1: IntPolyh_Couple &
+	:type theCouple1: IntPolyh_Couple
 	:param theCouple2:
-	:type theCouple2: IntPolyh_Couple &
+	:type theCouple2: IntPolyh_Couple
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const IntPolyh_Couple & theCouple1,const IntPolyh_Couple & theCouple2);
 
@@ -342,21 +342,21 @@ class IntPolyh_Intersection {
 	:param IndexPoint:
 	:type IndexPoint: int
 	:param x:
-	:type x: float &
+	:type x: float
 	:param y:
-	:type y: float &
+	:type y: float
 	:param z:
-	:type z: float &
+	:type z: float
 	:param u1:
-	:type u1: float &
+	:type u1: float
 	:param v1:
-	:type v1: float &
+	:type v1: float
 	:param u2:
-	:type u2: float &
+	:type u2: float
 	:param v2:
-	:type v2: float &
+	:type v2: float
 	:param incidence:
-	:type incidence: float &
+	:type incidence: float
 	:rtype: None") GetLinePoint;
 		void GetLinePoint (const Standard_Integer IndexLine,const Standard_Integer IndexPoint,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -368,19 +368,19 @@ class IntPolyh_Intersection {
 	:param IndexPoint:
 	:type IndexPoint: int
 	:param x:
-	:type x: float &
+	:type x: float
 	:param y:
-	:type y: float &
+	:type y: float
 	:param z:
-	:type z: float &
+	:type z: float
 	:param u1:
-	:type u1: float &
+	:type u1: float
 	:param v1:
-	:type v1: float &
+	:type v1: float
 	:param u2:
-	:type u2: float &
+	:type u2: float
 	:param v2:
-	:type v2: float &
+	:type v2: float
 	:rtype: None") GetTangentZonePoint;
 		void GetTangentZonePoint (const Standard_Integer IndexLine,const Standard_Integer IndexPoint,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -388,9 +388,9 @@ class IntPolyh_Intersection {
 		%feature("compactdefaultargs") IntPolyh_Intersection;
 		%feature("autodoc", "* @name Constructors Constructor for intersection of two surfaces with default parameters. Performs intersection.
 	:param theS1:
-	:type theS1: opencascade::handle<Adaptor3d_HSurface> &
+	:type theS1: Adaptor3d_HSurface
 	:param theS2:
-	:type theS2: opencascade::handle<Adaptor3d_HSurface> &
+	:type theS2: Adaptor3d_HSurface
 	:rtype: None") IntPolyh_Intersection;
 		 IntPolyh_Intersection (const opencascade::handle<Adaptor3d_HSurface> & theS1,const opencascade::handle<Adaptor3d_HSurface> & theS2);
 
@@ -398,13 +398,13 @@ class IntPolyh_Intersection {
 		%feature("compactdefaultargs") IntPolyh_Intersection;
 		%feature("autodoc", "* Constructor for intersection of two surfaces with the given size of the sampling nets: - <theNbSU1> x <theNbSV1> - for the first surface <theS1>; - <theNbSU2> x <theNbSV2> - for the second surface <theS2>. Performs intersection.
 	:param theS1:
-	:type theS1: opencascade::handle<Adaptor3d_HSurface> &
+	:type theS1: Adaptor3d_HSurface
 	:param theNbSU1:
 	:type theNbSU1: int
 	:param theNbSV1:
 	:type theNbSV1: int
 	:param theS2:
-	:type theS2: opencascade::handle<Adaptor3d_HSurface> &
+	:type theS2: Adaptor3d_HSurface
 	:param theNbSU2:
 	:type theNbSU2: int
 	:param theNbSV2:
@@ -416,17 +416,17 @@ class IntPolyh_Intersection {
 		%feature("compactdefaultargs") IntPolyh_Intersection;
 		%feature("autodoc", "* Constructor for intersection of two surfaces with the precomputed sampling. Performs intersection.
 	:param theS1:
-	:type theS1: opencascade::handle<Adaptor3d_HSurface> &
+	:type theS1: Adaptor3d_HSurface
 	:param theUPars1:
-	:type theUPars1: TColStd_Array1OfReal &
+	:type theUPars1: TColStd_Array1OfReal
 	:param theVPars1:
-	:type theVPars1: TColStd_Array1OfReal &
+	:type theVPars1: TColStd_Array1OfReal
 	:param theS2:
-	:type theS2: opencascade::handle<Adaptor3d_HSurface> &
+	:type theS2: Adaptor3d_HSurface
 	:param theUPars2:
-	:type theUPars2: TColStd_Array1OfReal &
+	:type theUPars2: TColStd_Array1OfReal
 	:param theVPars2:
-	:type theVPars2: TColStd_Array1OfReal &
+	:type theVPars2: TColStd_Array1OfReal
 	:rtype: None") IntPolyh_Intersection;
 		 IntPolyh_Intersection (const opencascade::handle<Adaptor3d_HSurface> & theS1,const TColStd_Array1OfReal & theUPars1,const TColStd_Array1OfReal & theVPars1,const opencascade::handle<Adaptor3d_HSurface> & theS2,const TColStd_Array1OfReal & theUPars2,const TColStd_Array1OfReal & theVPars2);
 
@@ -485,7 +485,7 @@ class IntPolyh_Point {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Addition
 	:param P1:
-	:type P1: IntPolyh_Point &
+	:type P1: IntPolyh_Point
 	:rtype: IntPolyh_Point") Add;
 		IntPolyh_Point Add (const IntPolyh_Point & P1);
 
@@ -493,9 +493,9 @@ class IntPolyh_Point {
 		%feature("compactdefaultargs") Cross;
 		%feature("autodoc", "* Cross
 	:param P1:
-	:type P1: IntPolyh_Point &
+	:type P1: IntPolyh_Point
 	:param P2:
-	:type P2: IntPolyh_Point &
+	:type P2: IntPolyh_Point
 	:rtype: None") Cross;
 		void Cross (const IntPolyh_Point & P1,const IntPolyh_Point & P2);
 
@@ -517,7 +517,7 @@ class IntPolyh_Point {
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "* Dot
 	:param P2:
-	:type P2: IntPolyh_Point &
+	:type P2: IntPolyh_Point
 	:rtype: float") Dot;
 		Standard_Real Dot (const IntPolyh_Point & P2);
 
@@ -539,7 +539,7 @@ class IntPolyh_Point {
 		%feature("compactdefaultargs") Equal;
 		%feature("autodoc", "* Assignment operator
 	:param Pt:
-	:type Pt: IntPolyh_Point &
+	:type Pt: IntPolyh_Point
 	:rtype: None") Equal;
 		void Equal (const IntPolyh_Point & Pt);
 
@@ -569,11 +569,11 @@ class IntPolyh_Point {
 		%feature("compactdefaultargs") Middle;
 		%feature("autodoc", "* Creates middle point from P1 and P2 and stores it to this
 	:param MySurface:
-	:type MySurface: opencascade::handle<Adaptor3d_HSurface> &
+	:type MySurface: Adaptor3d_HSurface
 	:param P1:
-	:type P1: IntPolyh_Point &
+	:type P1: IntPolyh_Point
 	:param P2:
-	:type P2: IntPolyh_Point &
+	:type P2: IntPolyh_Point
 	:rtype: None") Middle;
 		void Middle (const opencascade::handle<Adaptor3d_HSurface> & MySurface,const IntPolyh_Point & P1,const IntPolyh_Point & P2);
 
@@ -669,7 +669,7 @@ class IntPolyh_Point {
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "* Square distance to the other point
 	:param P2:
-	:type P2: IntPolyh_Point &
+	:type P2: IntPolyh_Point
 	:rtype: float") SquareDistance;
 		Standard_Real SquareDistance (const IntPolyh_Point & P2);
 
@@ -683,7 +683,7 @@ class IntPolyh_Point {
 		%feature("compactdefaultargs") Sub;
 		%feature("autodoc", "* Subtraction
 	:param P1:
-	:type P1: IntPolyh_Point &
+	:type P1: IntPolyh_Point
 	:rtype: IntPolyh_Point") Sub;
 		IntPolyh_Point Sub (const IntPolyh_Point & P1);
 
@@ -727,14 +727,14 @@ class IntPolyh_Point {
 		/****************** operator + ******************/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param P1:
-	:type P1: IntPolyh_Point &
+	:type P1: IntPolyh_Point
 	:rtype: IntPolyh_Point") operator +;
 		IntPolyh_Point operator + (const IntPolyh_Point & P1);
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param P1:
-	:type P1: IntPolyh_Point &
+	:type P1: IntPolyh_Point
 	:rtype: IntPolyh_Point") operator -;
 		IntPolyh_Point operator - (const IntPolyh_Point & P1);
 
@@ -748,7 +748,7 @@ class IntPolyh_Point {
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param Pt:
-	:type Pt: IntPolyh_Point &
+	:type Pt: IntPolyh_Point
 	:rtype: None") operator =;
 		void operator = (const IntPolyh_Point & Pt);
 
@@ -794,7 +794,7 @@ class IntPolyh_SectionLine {
 		/****************** Copy ******************/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", ":param Other:
-	:type Other: IntPolyh_SectionLine &
+	:type Other: IntPolyh_SectionLine
 	:rtype: IntPolyh_SectionLine") Copy;
 		IntPolyh_SectionLine & Copy (const IntPolyh_SectionLine & Other);
 
@@ -845,7 +845,7 @@ class IntPolyh_SectionLine {
 		/****************** Prepend ******************/
 		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", ":param SP:
-	:type SP: IntPolyh_StartPoint &
+	:type SP: IntPolyh_StartPoint
 	:rtype: None") Prepend;
 		void Prepend (const IntPolyh_StartPoint & SP);
 
@@ -859,7 +859,7 @@ class IntPolyh_SectionLine {
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param Other:
-	:type Other: IntPolyh_SectionLine &
+	:type Other: IntPolyh_SectionLine
 	:rtype: IntPolyh_SectionLine") operator =;
 		IntPolyh_SectionLine & operator = (const IntPolyh_SectionLine & Other);
 
@@ -886,7 +886,7 @@ class IntPolyh_StartPoint {
 		/****************** CheckSameSP ******************/
 		%feature("compactdefaultargs") CheckSameSP;
 		%feature("autodoc", ":param SP:
-	:type SP: IntPolyh_StartPoint &
+	:type SP: IntPolyh_StartPoint
 	:rtype: int") CheckSameSP;
 		Standard_Integer CheckSameSP (const IntPolyh_StartPoint & SP);
 
@@ -920,13 +920,13 @@ class IntPolyh_StartPoint {
 		/****************** GetEdgePoints ******************/
 		%feature("compactdefaultargs") GetEdgePoints;
 		%feature("autodoc", ":param Triangle:
-	:type Triangle: IntPolyh_Triangle &
+	:type Triangle: IntPolyh_Triangle
 	:param FirstEdgePoint:
-	:type FirstEdgePoint: int &
+	:type FirstEdgePoint: int
 	:param SecondEdgePoint:
-	:type SecondEdgePoint: int &
+	:type SecondEdgePoint: int
 	:param LastPoint:
-	:type LastPoint: int &
+	:type LastPoint: int
 	:rtype: int") GetEdgePoints;
 		Standard_Integer GetEdgePoints (const IntPolyh_Triangle & Triangle,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1122,11 +1122,11 @@ class IntPolyh_Tools {
 		%feature("compactdefaultargs") ComputeDeflection;
 		%feature("autodoc", "* Computes the deflection tolerance on the surface for the given sampling.
 	:param theSurf:
-	:type theSurf: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurf: Adaptor3d_HSurface
 	:param theUPars:
-	:type theUPars: TColStd_Array1OfReal &
+	:type theUPars: TColStd_Array1OfReal
 	:param theVPars:
-	:type theVPars: TColStd_Array1OfReal &
+	:type theVPars: TColStd_Array1OfReal
 	:rtype: float") ComputeDeflection;
 		static Standard_Real ComputeDeflection (const opencascade::handle<Adaptor3d_HSurface> & theSurf,const TColStd_Array1OfReal & theUPars,const TColStd_Array1OfReal & theVPars);
 
@@ -1134,13 +1134,13 @@ class IntPolyh_Tools {
 		%feature("compactdefaultargs") FillArrayOfPointNormal;
 		%feature("autodoc", "* Fills the array <thePoints> with the points (triangulation nodes) on the surface and normal directions of the surface in these points.
 	:param theSurf:
-	:type theSurf: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurf: Adaptor3d_HSurface
 	:param theUPars:
-	:type theUPars: TColStd_Array1OfReal &
+	:type theUPars: TColStd_Array1OfReal
 	:param theVPars:
-	:type theVPars: TColStd_Array1OfReal &
+	:type theVPars: TColStd_Array1OfReal
 	:param thePoints:
-	:type thePoints: IntPolyh_ArrayOfPointNormal &
+	:type thePoints: IntPolyh_ArrayOfPointNormal
 	:rtype: void") FillArrayOfPointNormal;
 		static void FillArrayOfPointNormal (const opencascade::handle<Adaptor3d_HSurface> & theSurf,const TColStd_Array1OfReal & theUPars,const TColStd_Array1OfReal & theVPars,IntPolyh_ArrayOfPointNormal & thePoints);
 
@@ -1148,7 +1148,7 @@ class IntPolyh_Tools {
 		%feature("compactdefaultargs") IsEnlargePossible;
 		%feature("autodoc", "* Checks if the surface can be enlarged in U or V direction.
 	:param theSurf:
-	:type theSurf: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurf: Adaptor3d_HSurface
 	:param theUEnlarge:
 	:type theUEnlarge: bool
 	:param theVEnlarge:
@@ -1160,7 +1160,7 @@ class IntPolyh_Tools {
 		%feature("compactdefaultargs") MakeSampling;
 		%feature("autodoc", "* Makes the sampling of the given surface <theSurf> making the net of <theNbSU> x <theNbSV> sampling points. The flag <theEnlargeZone> controls the enlargement of the sampling zone on the surface. The parameters of the sampling points are stored into <theUPars> and <theVPars> arrays.
 	:param theSurf:
-	:type theSurf: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurf: Adaptor3d_HSurface
 	:param theNbSU:
 	:type theNbSU: int
 	:param theNbSV:
@@ -1168,9 +1168,9 @@ class IntPolyh_Tools {
 	:param theEnlargeZone:
 	:type theEnlargeZone: bool
 	:param theUPars:
-	:type theUPars: TColStd_Array1OfReal &
+	:type theUPars: TColStd_Array1OfReal
 	:param theVPars:
-	:type theVPars: TColStd_Array1OfReal &
+	:type theVPars: TColStd_Array1OfReal
 	:rtype: void") MakeSampling;
 		static void MakeSampling (const opencascade::handle<Adaptor3d_HSurface> & theSurf,const Standard_Integer theNbSU,const Standard_Integer theNbSV,const Standard_Boolean theEnlargeZone,TColStd_Array1OfReal & theUPars,TColStd_Array1OfReal & theVPars);
 
@@ -1193,7 +1193,7 @@ class IntPolyh_Triangle {
 		%feature("compactdefaultargs") BoundingBox;
 		%feature("autodoc", "* Returns the bounding box of the triangle.
 	:param thePoints:
-	:type thePoints: IntPolyh_ArrayOfPoints &
+	:type thePoints: IntPolyh_ArrayOfPoints
 	:rtype: Bnd_Box") BoundingBox;
 		const Bnd_Box & BoundingBox (const IntPolyh_ArrayOfPoints & thePoints);
 
@@ -1201,9 +1201,9 @@ class IntPolyh_Triangle {
 		%feature("compactdefaultargs") ComputeDeflection;
 		%feature("autodoc", "* Computes the deflection for the triangle
 	:param theSurface:
-	:type theSurface: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurface: Adaptor3d_HSurface
 	:param thePoints:
-	:type thePoints: IntPolyh_ArrayOfPoints &
+	:type thePoints: IntPolyh_ArrayOfPoints
 	:rtype: float") ComputeDeflection;
 		Standard_Real ComputeDeflection (const opencascade::handle<Adaptor3d_HSurface> & theSurface,const IntPolyh_ArrayOfPoints & thePoints);
 
@@ -1263,7 +1263,7 @@ class IntPolyh_Triangle {
 	:param theEdgeNum:
 	:type theEdgeNum: int
 	:param TEdges:
-	:type TEdges: IntPolyh_ArrayOfEdges &
+	:type TEdges: IntPolyh_ArrayOfEdges
 	:rtype: int") GetNextTriangle;
 		Standard_Integer GetNextTriangle (const Standard_Integer theTriangle,const Standard_Integer theEdgeNum,const IntPolyh_ArrayOfEdges & TEdges);
 
@@ -1307,7 +1307,7 @@ class IntPolyh_Triangle {
 		%feature("compactdefaultargs") LinkEdges2Triangle;
 		%feature("autodoc", "* Links edges to triangle
 	:param TEdges:
-	:type TEdges: IntPolyh_ArrayOfEdges &
+	:type TEdges: IntPolyh_ArrayOfEdges
 	:param theEdge1:
 	:type theEdge1: int
 	:param theEdge2:
@@ -1323,13 +1323,13 @@ class IntPolyh_Triangle {
 	:param theTriangleNumber:
 	:type theTriangleNumber: int
 	:param theSurface:
-	:type theSurface: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurface: Adaptor3d_HSurface
 	:param TPoints:
-	:type TPoints: IntPolyh_ArrayOfPoints &
+	:type TPoints: IntPolyh_ArrayOfPoints
 	:param TTriangles:
-	:type TTriangles: IntPolyh_ArrayOfTriangles &
+	:type TTriangles: IntPolyh_ArrayOfTriangles
 	:param TEdges:
-	:type TEdges: IntPolyh_ArrayOfEdges &
+	:type TEdges: IntPolyh_ArrayOfEdges
 	:rtype: None") MiddleRefinement;
 		void MiddleRefinement (const Standard_Integer theTriangleNumber,const opencascade::handle<Adaptor3d_HSurface> & theSurface,IntPolyh_ArrayOfPoints & TPoints,IntPolyh_ArrayOfTriangles & TTriangles,IntPolyh_ArrayOfEdges & TEdges);
 
@@ -1339,17 +1339,17 @@ class IntPolyh_Triangle {
 	:param theRefineCriterion:
 	:type theRefineCriterion: float
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:param theTriangleNumber:
 	:type theTriangleNumber: int
 	:param theSurface:
-	:type theSurface: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurface: Adaptor3d_HSurface
 	:param TPoints:
-	:type TPoints: IntPolyh_ArrayOfPoints &
+	:type TPoints: IntPolyh_ArrayOfPoints
 	:param TTriangles:
-	:type TTriangles: IntPolyh_ArrayOfTriangles &
+	:type TTriangles: IntPolyh_ArrayOfTriangles
 	:param TEdges:
-	:type TEdges: IntPolyh_ArrayOfEdges &
+	:type TEdges: IntPolyh_ArrayOfEdges
 	:rtype: None") MultipleMiddleRefinement;
 		void MultipleMiddleRefinement (const Standard_Real theRefineCriterion,const Bnd_Box & theBox,const Standard_Integer theTriangleNumber,const opencascade::handle<Adaptor3d_HSurface> & theSurface,IntPolyh_ArrayOfPoints & TPoints,IntPolyh_ArrayOfTriangles & TTriangles,IntPolyh_ArrayOfEdges & TEdges);
 
@@ -1401,7 +1401,7 @@ class IntPolyh_Triangle {
 		%feature("compactdefaultargs") SetEdgeAndOrientation;
 		%feature("autodoc", "* Sets the appropriate edge and orientation for the triangle.
 	:param theEdge:
-	:type theEdge: IntPolyh_Edge &
+	:type theEdge: IntPolyh_Edge
 	:param theEdgeIndex:
 	:type theEdgeIndex: int
 	:rtype: None") SetEdgeAndOrientation;

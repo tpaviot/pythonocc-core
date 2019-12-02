@@ -155,7 +155,7 @@ class Sweep_NumShapeIterator {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Resest the NumShapeIterator on sub-shapes of <aShape>.
 	:param aShape:
-	:type aShape: Sweep_NumShape &
+	:type aShape: Sweep_NumShape
 	:rtype: None") Init;
 		void Init (const Sweep_NumShape & aShape);
 
@@ -225,7 +225,7 @@ class Sweep_NumShapeTool {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of <aShape>.
 	:param aShape:
-	:type aShape: Sweep_NumShape &
+	:type aShape: Sweep_NumShape
 	:rtype: int") Index;
 		Standard_Integer Index (const Sweep_NumShape & aShape);
 
@@ -245,7 +245,7 @@ class Sweep_NumShapeTool {
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "* Returns the orientation of <aShape>.
 	:param aShape:
-	:type aShape: Sweep_NumShape &
+	:type aShape: Sweep_NumShape
 	:rtype: TopAbs_Orientation") Orientation;
 		TopAbs_Orientation Orientation (const Sweep_NumShape & aShape);
 
@@ -261,7 +261,7 @@ class Sweep_NumShapeTool {
 		%feature("compactdefaultargs") Sweep_NumShapeTool;
 		%feature("autodoc", "* Create a new NumShapeTool with <aShape>. The Tool must prepare an indexation for all the subshapes of this shape.
 	:param aShape:
-	:type aShape: Sweep_NumShape &
+	:type aShape: Sweep_NumShape
 	:rtype: None") Sweep_NumShapeTool;
 		 Sweep_NumShapeTool (const Sweep_NumShape & aShape);
 
@@ -269,7 +269,7 @@ class Sweep_NumShapeTool {
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "* Returns the type of <aShape>.
 	:param aShape:
-	:type aShape: Sweep_NumShape &
+	:type aShape: Sweep_NumShape
 	:rtype: TopAbs_ShapeEnum") Type;
 		TopAbs_ShapeEnum Type (const Sweep_NumShape & aShape);
 

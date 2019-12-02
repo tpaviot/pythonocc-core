@@ -178,7 +178,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "* Clears the owners matching the value of the selection mode aMode from the presentation manager object aPM. /// TODO
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePrsMgr: PrsMgr_PresentationManager
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: None") Clear;
@@ -202,7 +202,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") HandleMouseClick;
 		%feature("autodoc", "* Handle mouse button click event. Does nothing by default and returns False. @param thePoint mouse cursor position @param theButton clicked button @param theModifiers key modifiers @param theIsDoubleClick flag indicating double mouse click returns True if object handled click
 	:param thePoint:
-	:type thePoint: Graphic3d_Vec2i &
+	:type thePoint: Graphic3d_Vec2i
 	:param theButton:
 	:type theButton: Aspect_VKeyMouse
 	:param theModifiers:
@@ -228,9 +228,9 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "* Highlights selectable object's presentation with display mode in presentation manager with given highlight style. Also a check for auto-highlight is performed - if selectable object manages highlighting on its own, execution will be passed to SelectMgr_SelectableObject::HilightOwnerWithColor method.
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePrsMgr: PrsMgr_PresentationManager
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: void") HilightWithColor;
@@ -252,7 +252,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "* Returns true if the presentation manager highlights selections corresponding to the selection mode.
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePrsMgr: PrsMgr_PresentationManager
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: bool") IsHilighted;
@@ -262,7 +262,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") IsSameSelectable;
 		%feature("autodoc", "* Returns true if pointer to selectable object of this owner is equal to the given one
 	:param theOther:
-	:type theOther: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theOther: SelectMgr_SelectableObject
 	:rtype: bool") IsSameSelectable;
 		Standard_Boolean IsSameSelectable (const opencascade::handle<SelectMgr_SelectableObject> & theOther);
 
@@ -296,7 +296,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") SelectMgr_EntityOwner;
 		%feature("autodoc", "* Constructs a framework with the selectable object anSO being attributed the selection priority aPriority.
 	:param aSO:
-	:type aSO: opencascade::handle<SelectMgr_SelectableObject> &
+	:type aSO: SelectMgr_SelectableObject
 	:param aPriority: default value is 0
 	:type aPriority: int
 	:rtype: None") SelectMgr_EntityOwner;
@@ -306,7 +306,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") SelectMgr_EntityOwner;
 		%feature("autodoc", "* Constructs a framework from existing one anSO being attributed the selection priority aPriority.
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:param aPriority: default value is 0
 	:type aPriority: int
 	:rtype: None") SelectMgr_EntityOwner;
@@ -322,7 +322,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the selectable object.
 	:param theSelObj:
-	:type theSelObj: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theSelObj: SelectMgr_SelectableObject
 	:rtype: None") Set;
 		void Set (const opencascade::handle<SelectMgr_SelectableObject> & theSelObj);
 
@@ -346,7 +346,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "* Change owner location (callback for handling change of location of selectable object).
 	:param theLocation:
-	:type theLocation: TopLoc_Location &
+	:type theLocation: TopLoc_Location
 	:rtype: None") SetLocation;
 		void SetLocation (const TopLoc_Location & theLocation);
 
@@ -362,7 +362,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelectable;
 		%feature("autodoc", "* Sets the selectable object.
 	:param theSelObj:
-	:type theSelObj: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theSelObj: SelectMgr_SelectableObject
 	:rtype: None") SetSelectable;
 		void SetSelectable (const opencascade::handle<SelectMgr_SelectableObject> & theSelObj);
 
@@ -400,7 +400,7 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "* Removes highlighting from the owner of a detected selectable object in the presentation manager. This object could be the owner of a sensitive primitive. @param thePrsMgr presentation manager @param theMode obsolete argument for compatibility, should be ignored by implementations
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePrsMgr: PrsMgr_PresentationManager
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: None") Unhilight;
@@ -410,9 +410,9 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") UpdateHighlightTrsf;
 		%feature("autodoc", "* Implements immediate application of location transformation of parent object to dynamic highlight structure
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theManager:
-	:type theManager: opencascade::handle<PrsMgr_PresentationManager> &
+	:type theManager: PrsMgr_PresentationManager
 	:param theDispMode:
 	:type theDispMode: int
 	:rtype: None") UpdateHighlightTrsf;
@@ -447,7 +447,7 @@ class SelectMgr_Filter : public Standard_Transient {
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "* Indicates that the selected Interactive Object passes the filter. The owner, anObj, can be either direct or user. A direct owner is the corresponding construction element, whereas a user is the compound shape of which the entity forms a part. When an object is detected by the mouse - in AIS, this is done through a context selector - its owner is passed to the filter as an argument. If the object returns Standard_True, it is kept; if not, it is rejected. If you are creating a filter class inheriting this framework, and the daughter class is to be used in an AIS local context, you will need to implement the virtual function ActsOn.
 	:param anObj:
-	:type anObj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anObj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		virtual Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anObj);
 
@@ -481,7 +481,7 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") AddSelection;
 		%feature("autodoc", "* Adds the selection aSelection with the selection mode index aMode to this framework.
 	:param aSelection:
-	:type aSelection: opencascade::handle<SelectMgr_Selection> &
+	:type aSelection: SelectMgr_Selection
 	:param aMode:
 	:type aMode: int
 	:rtype: None") AddSelection;
@@ -491,7 +491,7 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") ClearDynamicHighlight;
 		%feature("autodoc", "* Method that needs to be implemented when the object manages selection and dynamic highlighting on its own. Clears or invalidates dynamic highlight presentation. By default it clears immediate draw of given presentation manager.
 	:param theMgr:
-	:type theMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type theMgr: PrsMgr_PresentationManager
 	:rtype: void") ClearDynamicHighlight;
 		virtual void ClearDynamicHighlight (const opencascade::handle<PrsMgr_PresentationManager> & theMgr);
 
@@ -513,7 +513,7 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") ComputeSelection;
 		%feature("autodoc", "* Computes sensitive primitives for the given selection mode - key interface method of Selectable Object. @param theSelection selection to fill @param theMode selection mode to create sensitive primitives
 	:param theSelection:
-	:type theSelection: opencascade::handle<SelectMgr_Selection> &
+	:type theSelection: SelectMgr_Selection
 	:param theMode:
 	:type theMode: int
 	:rtype: None") ComputeSelection;
@@ -551,7 +551,7 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") GetHilightPresentation;
 		%feature("autodoc", "* Creates or returns existing presentation for highlighting detected object. @param thePrsMgr presentation manager to create new presentation returns existing or newly created presentation (when thePrsMgr is not NULL)
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePrsMgr: PrsMgr_PresentationManager
 	:rtype: opencascade::handle<Prs3d_Presentation>") GetHilightPresentation;
 		opencascade::handle<Prs3d_Presentation> GetHilightPresentation (const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr);
 
@@ -559,7 +559,7 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") GetSelectPresentation;
 		%feature("autodoc", "* Creates or returns existing presentation for highlighting selected object. @param thePrsMgr presentation manager to create new presentation returns existing or newly created presentation (when thePrsMgr is not NULL)
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePrsMgr: PrsMgr_PresentationManager
 	:rtype: opencascade::handle<Prs3d_Presentation>") GetSelectPresentation;
 		opencascade::handle<Prs3d_Presentation> GetSelectPresentation (const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr);
 
@@ -587,11 +587,11 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") HilightOwnerWithColor;
 		%feature("autodoc", "* Method which hilight an owner belonging to this selectable object ( for fast presentation draw )
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePM: PrsMgr_PresentationManager
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:rtype: void") HilightOwnerWithColor;
 		virtual void HilightOwnerWithColor (const opencascade::handle<PrsMgr_PresentationManager> & thePM,const opencascade::handle<Prs3d_Drawer> & theStyle,const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
@@ -599,9 +599,9 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "* Method which draws selected owners ( for fast presentation draw )
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePrsMgr: PrsMgr_PresentationManager
 	:param theSeq:
-	:type theSeq: SelectMgr_SequenceOfOwner &
+	:type theSeq: SelectMgr_SequenceOfOwner
 	:rtype: void") HilightSelected;
 		virtual void HilightSelected (const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr,const SelectMgr_SequenceOfOwner & theSeq);
 
@@ -666,7 +666,7 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") SetAssemblyOwner;
 		%feature("autodoc", "* Sets common entity owner for assembly sensitive object entities
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:param theMode: default value is -1
 	:type theMode: int
 	:rtype: None") SetAssemblyOwner;
@@ -706,7 +706,7 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") UpdateTransformations;
 		%feature("autodoc", "* Updates locations in all sensitive entities from <aSelection> and in corresponding entity owners.
 	:param aSelection:
-	:type aSelection: opencascade::handle<SelectMgr_Selection> &
+	:type aSelection: SelectMgr_Selection
 	:rtype: void") UpdateTransformations;
 		virtual void UpdateTransformations (const opencascade::handle<SelectMgr_Selection> & aSelection);
 
@@ -742,7 +742,7 @@ enum BVHSubset {
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "* Adds the new selectable object to the set. The selectable object is placed into one of the predefined subsets depending on its persistence type. After adding an object, this method marks the corresponding BVH tree for rebuild. returns true if selectable object is added, otherwise returns false (selectable object is already in the set).
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:rtype: bool") Append;
 		Standard_Boolean Append (const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -758,7 +758,7 @@ enum BVHSubset {
 		%feature("compactdefaultargs") ChangeSubset;
 		%feature("autodoc", "* Performs necessary updates when object's persistence types changes. This method should be called right after changing transformation persistence flags of the objects and before updating BVH tree - to provide up-to-date state of the object set.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:rtype: None") ChangeSubset;
 		void ChangeSubset (const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -766,7 +766,7 @@ enum BVHSubset {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Returns true if this objects set contains theObject given.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -804,7 +804,7 @@ enum BVHSubset {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes the selectable object from the set. The selectable object is removed from the subset it has been placed into. After removing an object, this method marks the corresponding BVH tree for rebuild. returns true if selectable object is removed, otherwise returns false (selectable object is not in the set).
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:rtype: bool") Remove;
 		Standard_Boolean Remove (const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -818,13 +818,13 @@ enum BVHSubset {
 		%feature("compactdefaultargs") UpdateBVH;
 		%feature("autodoc", "* Updates outdated BVH trees and remembers the last state of the camera view-projection matrices and viewport (window) dimensions.
 	:param theCamera:
-	:type theCamera: opencascade::handle<Graphic3d_Camera> &
+	:type theCamera: Graphic3d_Camera
 	:param theProjectionMat:
-	:type theProjectionMat: Graphic3d_Mat4d &
+	:type theProjectionMat: Graphic3d_Mat4d
 	:param theWorldViewMat:
-	:type theWorldViewMat: Graphic3d_Mat4d &
+	:type theWorldViewMat: Graphic3d_Mat4d
 	:param theViewState:
-	:type theViewState: Graphic3d_WorldViewProjState &
+	:type theViewState: Graphic3d_WorldViewProjState
 	:param theViewportWidth:
 	:type theViewportWidth: int
 	:param theViewportHeight:
@@ -930,7 +930,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "* Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector
 	:param thePlaneEquations:
-	:type thePlaneEquations: NCollection_Vector<SelectMgr_Vec4> &
+	:type thePlaneEquations: NCollection_Vector<SelectMgr_Vec4>
 	:rtype: None") GetPlanes;
 		void GetPlanes (NCollection_Vector<SelectMgr_Vec4> & thePlaneEquations);
 
@@ -955,11 +955,11 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "* SAT intersection test between defined volume and given axis-aligned box
 	:param theBoxMin:
-	:type theBoxMin: SelectMgr_Vec3 &
+	:type theBoxMin: SelectMgr_Vec3
 	:param theBoxMax:
-	:type theBoxMax: SelectMgr_Vec3 &
+	:type theBoxMax: SelectMgr_Vec3
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		virtual Standard_Boolean Overlaps (const SelectMgr_Vec3 & theBoxMin,const SelectMgr_Vec3 & theBoxMax,SelectBasics_PickResult & thePickResult);
 
@@ -967,9 +967,9 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "* Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theMinPt and maximum at point theMaxPt
 	:param theBoxMin:
-	:type theBoxMin: SelectMgr_Vec3 &
+	:type theBoxMin: SelectMgr_Vec3
 	:param theBoxMax:
-	:type theBoxMax: SelectMgr_Vec3 &
+	:type theBoxMax: SelectMgr_Vec3
 	:param theInside: default value is NULL
 	:type theInside: bool *
 	:rtype: bool") Overlaps;
@@ -981,7 +981,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 	:param thePnt:
 	:type thePnt: gp_Pnt
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		virtual Standard_Boolean Overlaps (const gp_Pnt & thePnt,SelectBasics_PickResult & thePickResult);
 
@@ -997,11 +997,11 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "* SAT intersection test between defined volume and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type
 	:param theArrayOfPts:
-	:type theArrayOfPts: opencascade::handle<TColgp_HArray1OfPnt>
+	:type theArrayOfPts: TColgp_HArray1OfPnt
 	:param theSensType:
 	:type theSensType: int
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		virtual Standard_Boolean Overlaps (const opencascade::handle<TColgp_HArray1OfPnt> & theArrayOfPts,Standard_Integer theSensType,SelectBasics_PickResult & thePickResult);
 
@@ -1013,7 +1013,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 	:param theSensType:
 	:type theSensType: int
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		virtual Standard_Boolean Overlaps (const TColgp_Array1OfPnt & theArrayOfPts,Standard_Integer theSensType,SelectBasics_PickResult & thePickResult);
 
@@ -1025,7 +1025,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 	:param thePnt2:
 	:type thePnt2: gp_Pnt
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		virtual Standard_Boolean Overlaps (const gp_Pnt & thePnt1,const gp_Pnt & thePnt2,SelectBasics_PickResult & thePickResult);
 
@@ -1041,7 +1041,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 	:param theSensType:
 	:type theSensType: int
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		virtual Standard_Boolean Overlaps (const gp_Pnt & thePnt1,const gp_Pnt & thePnt2,const gp_Pnt & thePnt3,Standard_Integer theSensType,SelectBasics_PickResult & thePickResult);
 
@@ -1059,7 +1059,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 	:param theTrsf:
 	:type theTrsf: gp_GTrsf
 	:param theBuilder: default value is NULL
-	:type theBuilder: opencascade::handle<SelectMgr_FrustumBuilder> &
+	:type theBuilder: SelectMgr_FrustumBuilder
 	:rtype: SelectMgr_SelectingVolumeManager") ScaleAndTransform;
 		virtual SelectMgr_SelectingVolumeManager ScaleAndTransform (const Standard_Integer theScaleFactor,const gp_GTrsf & theTrsf,const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder = NULL);
 
@@ -1074,7 +1074,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		/****************** SetActiveSelectionType ******************/
 		%feature("compactdefaultargs") SetActiveSelectionType;
 		%feature("autodoc", ":param theType:
-	:type theType: SelectionType &
+	:type theType: SelectionType
 	:rtype: None") SetActiveSelectionType;
 		void SetActiveSelectionType (const SelectionType & theType);
 
@@ -1082,7 +1082,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		%feature("compactdefaultargs") SetCamera;
 		%feature("autodoc", "* Updates camera projection and orientation matrices in all selecting volumes
 	:param theCamera:
-	:type theCamera: opencascade::handle<Graphic3d_Camera>
+	:type theCamera: Graphic3d_Camera
 	:rtype: None") SetCamera;
 		void SetCamera (const opencascade::handle<Graphic3d_Camera> theCamera);
 
@@ -1090,13 +1090,13 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		%feature("compactdefaultargs") SetCamera;
 		%feature("autodoc", "* Updates camera projection and orientation matrices in all selecting volumes
 	:param theProjection:
-	:type theProjection: Graphic3d_Mat4d &
+	:type theProjection: Graphic3d_Mat4d
 	:param theWorldView:
-	:type theWorldView: Graphic3d_Mat4d &
+	:type theWorldView: Graphic3d_Mat4d
 	:param theIsOrthographic:
 	:type theIsOrthographic: bool
 	:param theWVPState: default value is Graphic3d_WorldViewProjState()
-	:type theWVPState: Graphic3d_WorldViewProjState &
+	:type theWVPState: Graphic3d_WorldViewProjState
 	:rtype: None") SetCamera;
 		void SetCamera (const Graphic3d_Mat4d & theProjection,const Graphic3d_Mat4d & theWorldView,const Standard_Boolean theIsOrthographic,const Graphic3d_WorldViewProjState & theWVPState = Graphic3d_WorldViewProjState());
 
@@ -1112,7 +1112,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		%feature("compactdefaultargs") SetViewClipRanges;
 		%feature("autodoc", "* Set clipping range.
 	:param theRange:
-	:type theRange: SelectMgr_ViewClipRange &
+	:type theRange: SelectMgr_ViewClipRange
 	:rtype: None") SetViewClipRanges;
 		void SetViewClipRanges (const SelectMgr_ViewClipRange & theRange);
 
@@ -1120,9 +1120,9 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		%feature("compactdefaultargs") SetViewClipping;
 		%feature("autodoc", "* Valid for point selection only! Computes depth range for clipping planes. @param theViewPlanes global view planes @param theObjPlanes object planes
 	:param theViewPlanes:
-	:type theViewPlanes: opencascade::handle<Graphic3d_SequenceOfHClipPlane> &
+	:type theViewPlanes: Graphic3d_SequenceOfHClipPlane
 	:param theObjPlanes:
-	:type theObjPlanes: opencascade::handle<Graphic3d_SequenceOfHClipPlane> &
+	:type theObjPlanes: Graphic3d_SequenceOfHClipPlane
 	:rtype: None") SetViewClipping;
 		void SetViewClipping (const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & theViewPlanes,const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & theObjPlanes);
 
@@ -1130,7 +1130,7 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		%feature("compactdefaultargs") SetViewClipping;
 		%feature("autodoc", "* Copy clipping planes from another volume manager.
 	:param theOther:
-	:type theOther: SelectMgr_SelectingVolumeManager &
+	:type theOther: SelectMgr_SelectingVolumeManager
 	:rtype: None") SetViewClipping;
 		void SetViewClipping (const SelectMgr_SelectingVolumeManager & theOther);
 
@@ -1173,9 +1173,9 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 		/****************** WindowSize ******************/
 		%feature("compactdefaultargs") WindowSize;
 		%feature("autodoc", ":param theWidth:
-	:type theWidth: int &
+	:type theWidth: int
 	:param theHeight:
-	:type theHeight: int &
+	:type theHeight: int
 	:rtype: None") WindowSize;
 		void WindowSize (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1210,7 +1210,7 @@ class SelectMgr_Selection : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the sensitive primitive to the list of stored entities in this object. Raises NullObject if the primitive is a null handle.
 	:param theSensitive:
-	:type theSensitive: opencascade::handle<Select3D_SensitiveEntity> &
+	:type theSensitive: Select3D_SensitiveEntity
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -1355,7 +1355,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") Activate;
 		%feature("autodoc", "* Activates the selection mode theMode in the selector theSelector for the selectable object anObject. By default, theMode is equal to 0. If theSelector is set to default (NULL), the selection with the mode theMode will be activated in all the viewers available.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: None") Activate;
@@ -1365,7 +1365,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") ClearSelectionStructures;
 		%feature("autodoc", "* Removes sensitive entities from all viewer selectors after method Clear() was called to the selection they belonged to or it was recomputed somehow.
 	:param theObj:
-	:type theObj: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObj: SelectMgr_SelectableObject
 	:param theMode: default value is -1
 	:type theMode: int
 	:rtype: None") ClearSelectionStructures;
@@ -1375,7 +1375,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Returns true if the manager contains the selectable object theObject.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -1383,7 +1383,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") Deactivate;
 		%feature("autodoc", "* Deactivates mode theMode of theObject in theSelector. If theMode value is set to default (-1), all active selection modes will be deactivated. Likewise, if theSelector value is set to default (NULL), theMode will be deactivated in all viewer selectors.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:param theMode: default value is -1
 	:type theMode: int
 	:rtype: None") Deactivate;
@@ -1393,7 +1393,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") IsActivated;
 		%feature("autodoc", "* Returns true if the selection with theMode is active for the selectable object theObject and selector theSelector. If all parameters are set to default values, it returns it there is any active selection in any known viewer selector for object theObject.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:param theMode: default value is -1
 	:type theMode: int
 	:rtype: bool") IsActivated;
@@ -1403,7 +1403,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Loads and computes selection mode theMode (if it is not equal to -1) in global context and adds selectable object to BVH tree. If the object theObject has an already calculated selection with mode theMode and it was removed, the selection will be recalculated.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:param theMode: default value is -1
 	:type theMode: int
 	:rtype: None") Load;
@@ -1413,7 +1413,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") RecomputeSelection;
 		%feature("autodoc", "* Recomputes activated selections of theObject for all known viewer selectors according to theMode specified. If theMode is set to default (-1), then all activated selections will be recomputed. If theIsForce is set to true, then selection mode theMode for object theObject will be recomputed regardless of its activation status.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:param theIsForce: default value is Standard_False
 	:type theIsForce: bool
 	:param theMode: default value is -1
@@ -1425,7 +1425,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes selectable object theObject from all viewer selectors it was added to previously, removes it from all contexts and clears all computed selections of theObject.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:rtype: None") Remove;
 		void Remove (const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
@@ -1433,7 +1433,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") RestoreSelectionStructures;
 		%feature("autodoc", "* Re-adds newly calculated sensitive entities of recomputed selection defined by mode theMode to all viewer selectors contained that selection.
 	:param theObj:
-	:type theObj: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObj: SelectMgr_SelectableObject
 	:param theMode: default value is -1
 	:type theMode: int
 	:rtype: None") RestoreSelectionStructures;
@@ -1443,7 +1443,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") SelectMgr_SelectionManager;
 		%feature("autodoc", "* Constructs an empty selection manager object.
 	:param theSelector:
-	:type theSelector: opencascade::handle<SelectMgr_ViewerSelector> &
+	:type theSelector: SelectMgr_ViewerSelector
 	:rtype: None") SelectMgr_SelectionManager;
 		 SelectMgr_SelectionManager (const opencascade::handle<SelectMgr_ViewerSelector> & theSelector);
 
@@ -1457,7 +1457,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelectionSensitivity;
 		%feature("autodoc", "* Allows to manage sensitivity of a particular selection of interactive object theObject and changes previous sensitivity value of all sensitive entities in selection with theMode to the given theNewSensitivity.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:param theMode:
 	:type theMode: int
 	:param theNewSens:
@@ -1469,7 +1469,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") SetUpdateMode;
 		%feature("autodoc", "* Sets type of update of all selections of theObject to the given theType.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:param theType:
 	:type theType: SelectMgr_TypeOfUpdate
 	:rtype: None") SetUpdateMode;
@@ -1479,7 +1479,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") SetUpdateMode;
 		%feature("autodoc", "* Sets type of update of selection with theMode of theObject to the given theType.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:param theMode:
 	:type theMode: int
 	:param theType:
@@ -1491,7 +1491,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* Updates all selections of theObject in all viewer selectors according to its current update status. If theIsForce is set to true, the call is equal to recomputation.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObject: SelectMgr_SelectableObject
 	:param theIsForce: default value is Standard_True
 	:type theIsForce: bool
 	:rtype: None") Update;
@@ -1501,7 +1501,7 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 		%feature("compactdefaultargs") UpdateSelection;
 		%feature("autodoc", "* Re-adds selectable object in BVHs in all viewer selectors.
 	:param theObj:
-	:type theObj: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theObj: SelectMgr_SelectableObject
 	:rtype: None") UpdateSelection;
 		void UpdateSelection (const opencascade::handle<SelectMgr_SelectableObject> & theObj);
 
@@ -1550,7 +1550,7 @@ class SelectMgr_SensitiveEntity : public Standard_Transient {
 		%feature("compactdefaultargs") SelectMgr_SensitiveEntity;
 		%feature("autodoc", "* Creates new inactive for selection object with base entity theEntity
 	:param theEntity:
-	:type theEntity: opencascade::handle<Select3D_SensitiveEntity> &
+	:type theEntity: Select3D_SensitiveEntity
 	:rtype: None") SelectMgr_SensitiveEntity;
 		 SelectMgr_SensitiveEntity (const opencascade::handle<Select3D_SensitiveEntity> & theEntity);
 
@@ -1593,7 +1593,7 @@ class SelectMgr_SortCriterion {
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "* Compare with another item.
 	:param theOther:
-	:type theOther: SelectMgr_SortCriterion &
+	:type theOther: SelectMgr_SortCriterion
 	:rtype: bool") IsGreater;
 		bool IsGreater (const SelectMgr_SortCriterion & theOther);
 
@@ -1601,7 +1601,7 @@ class SelectMgr_SortCriterion {
 		%feature("compactdefaultargs") IsLower;
 		%feature("autodoc", "* Compare with another item.
 	:param theOther:
-	:type theOther: SelectMgr_SortCriterion &
+	:type theOther: SelectMgr_SortCriterion
 	:rtype: bool") IsLower;
 		bool IsLower (const SelectMgr_SortCriterion & theOther);
 
@@ -1615,7 +1615,7 @@ class SelectMgr_SortCriterion {
 		%feature("compactdefaultargs") operator >;
 		%feature("autodoc", "* Comparison operator.
 	:param theOther:
-	:type theOther: SelectMgr_SortCriterion &
+	:type theOther: SelectMgr_SortCriterion
 	:rtype: bool") operator >;
 		bool operator > (const SelectMgr_SortCriterion & theOther);
 
@@ -1641,7 +1641,7 @@ class SelectMgr_ViewClipRange {
 		%feature("compactdefaultargs") AddClipSubRange;
 		%feature("autodoc", "* Adds a clipping sub-range (for clipping chains).
 	:param theRange:
-	:type theRange: Bnd_Range &
+	:type theRange: Bnd_Range
 	:rtype: None") AddClipSubRange;
 		void AddClipSubRange (const Bnd_Range & theRange);
 
@@ -1649,7 +1649,7 @@ class SelectMgr_ViewClipRange {
 		%feature("compactdefaultargs") AddClippingPlanes;
 		%feature("autodoc", "* Add clipping planes. Planes and picking ray should be defined in the same coordinate system.
 	:param thePlanes:
-	:type thePlanes: Graphic3d_SequenceOfHClipPlane &
+	:type thePlanes: Graphic3d_SequenceOfHClipPlane
 	:param thePickRay:
 	:type thePickRay: gp_Ax1
 	:rtype: None") AddClippingPlanes;
@@ -1673,9 +1673,9 @@ class SelectMgr_ViewClipRange {
 		%feature("compactdefaultargs") GetNearestDepth;
 		%feature("autodoc", "* Calculates the min not clipped value from the range. Returns False if the whole range is clipped.
 	:param theRange:
-	:type theRange: Bnd_Range &
+	:type theRange: Bnd_Range
 	:param theDepth:
-	:type theDepth: float &
+	:type theDepth: float
 	:rtype: bool") GetNearestDepth;
 		Standard_Boolean GetNearestDepth (const Bnd_Range & theRange,Standard_Real &OutValue);
 
@@ -1728,7 +1728,7 @@ class SelectMgr_CompositionFilter : public SelectMgr_Filter {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the filter afilter to a filter object created by a filter class inheriting this framework.
 	:param afilter:
-	:type afilter: opencascade::handle<SelectMgr_Filter> &
+	:type afilter: SelectMgr_Filter
 	:rtype: None") Add;
 		void Add (const opencascade::handle<SelectMgr_Filter> & afilter);
 
@@ -1748,7 +1748,7 @@ class SelectMgr_CompositionFilter : public SelectMgr_Filter {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Returns true if the filter aFilter is in this framework.
 	:param aFilter:
-	:type aFilter: opencascade::handle<SelectMgr_Filter> &
+	:type aFilter: SelectMgr_Filter
 	:rtype: bool") IsIn;
 		Standard_Boolean IsIn (const opencascade::handle<SelectMgr_Filter> & aFilter);
 
@@ -1756,7 +1756,7 @@ class SelectMgr_CompositionFilter : public SelectMgr_Filter {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes the filter aFilter from this framework.
 	:param aFilter:
-	:type aFilter: opencascade::handle<SelectMgr_Filter> &
+	:type aFilter: SelectMgr_Filter
 	:rtype: None") Remove;
 		void Remove (const opencascade::handle<SelectMgr_Filter> & aFilter);
 
@@ -1798,7 +1798,7 @@ class SelectMgr_AndFilter : public SelectMgr_CompositionFilter {
 		/****************** IsOk ******************/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", ":param anobj:
-	:type anobj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anobj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
@@ -1828,7 +1828,7 @@ class SelectMgr_OrFilter : public SelectMgr_CompositionFilter {
 		/****************** IsOk ******************/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", ":param anobj:
-	:type anobj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anobj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
@@ -1842,7 +1842,7 @@ class SelectMgr_OrFilter : public SelectMgr_CompositionFilter {
 		%feature("compactdefaultargs") SetDisabledObjects;
 		%feature("autodoc", "* Disable selection of specified objects.
 	:param theObjects:
-	:type theObjects: opencascade::handle<Graphic3d_NMapOfTransient> &
+	:type theObjects: Graphic3d_NMapOfTransient
 	:rtype: None") SetDisabledObjects;
 		void SetDisabledObjects (const opencascade::handle<Graphic3d_NMapOfTransient> & theObjects);
 

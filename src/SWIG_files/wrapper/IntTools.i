@@ -234,7 +234,7 @@ class IntTools {
 		%feature("compactdefaultargs") FindRootStates;
 		%feature("autodoc", "* Find the states (before and after) for each Root from the sequence aSeq
 	:param aSeq:
-	:type aSeq: IntTools_SequenceOfRoots &
+	:type aSeq: IntTools_SequenceOfRoots
 	:param anEpsNull:
 	:type anEpsNull: float
 	:rtype: void") FindRootStates;
@@ -243,13 +243,13 @@ class IntTools {
 		/****************** GetRadius ******************/
 		%feature("compactdefaultargs") GetRadius;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param t1:
 	:type t1: float
 	:param t3:
 	:type t3: float
 	:param R:
-	:type R: float &
+	:type R: float
 	:rtype: int") GetRadius;
 		static Standard_Integer GetRadius (const BRepAdaptor_Curve & C,const Standard_Real t1,const Standard_Real t3,Standard_Real &OutValue);
 
@@ -257,7 +257,7 @@ class IntTools {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* returns the length of the edge;
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: float") Length;
 		static Standard_Real Length (const TopoDS_Edge & E);
 
@@ -266,16 +266,16 @@ class IntTools {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param aParm:
-	:type aParm: float &
+	:type aParm: float
 	:rtype: int") Parameter;
 		static Standard_Integer Parameter (const gp_Pnt & P,const opencascade::handle<Geom_Curve> & Curve,Standard_Real &OutValue);
 
 		/****************** PrepareArgs ******************/
 		%feature("compactdefaultargs") PrepareArgs;
 		%feature("autodoc", ":param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param tMax:
 	:type tMax: float
 	:param tMin:
@@ -285,7 +285,7 @@ class IntTools {
 	:param Deflect:
 	:type Deflect: float
 	:param anArgs:
-	:type anArgs: IntTools_CArray1OfReal &
+	:type anArgs: IntTools_CArray1OfReal
 	:rtype: int") PrepareArgs;
 		static Standard_Integer PrepareArgs (BRepAdaptor_Curve & C,const Standard_Real tMax,const Standard_Real tMin,const Standard_Integer Discret,const Standard_Real Deflect,IntTools_CArray1OfReal & anArgs);
 
@@ -293,7 +293,7 @@ class IntTools {
 		%feature("compactdefaultargs") RemoveIdenticalRoots;
 		%feature("autodoc", "* Remove from the sequence aSeq the Roots that have values ti and tj such as |ti-tj] < anEpsT.
 	:param aSeq:
-	:type aSeq: IntTools_SequenceOfRoots &
+	:type aSeq: IntTools_SequenceOfRoots
 	:param anEpsT:
 	:type anEpsT: float
 	:rtype: void") RemoveIdenticalRoots;
@@ -303,7 +303,7 @@ class IntTools {
 		%feature("compactdefaultargs") SortRoots;
 		%feature("autodoc", "* Sort the sequence aSeq of the Roots to arrange the Roons in increasing order
 	:param aSeq:
-	:type aSeq: IntTools_SequenceOfRoots &
+	:type aSeq: IntTools_SequenceOfRoots
 	:param anEpsT:
 	:type anEpsT: float
 	:rtype: void") SortRoots;
@@ -373,9 +373,9 @@ class IntTools_BeanFaceIntersector {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the algorithm //! Warning: The parts of the edge which are on the surface of the face and belong to the whole in the face (if there is) is considered as result
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: None") Init;
 		void Init (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
 
@@ -383,9 +383,9 @@ class IntTools_BeanFaceIntersector {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the algorithm
 	:param theCurve:
-	:type theCurve: BRepAdaptor_Curve &
+	:type theCurve: BRepAdaptor_Curve
 	:param theSurface:
-	:type theSurface: BRepAdaptor_Surface &
+	:type theSurface: BRepAdaptor_Surface
 	:param theBeanTolerance:
 	:type theBeanTolerance: float
 	:param theFaceTolerance:
@@ -397,9 +397,9 @@ class IntTools_BeanFaceIntersector {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the algorithm theUMinParameter, ... are used for optimization purposes
 	:param theCurve:
-	:type theCurve: BRepAdaptor_Curve &
+	:type theCurve: BRepAdaptor_Curve
 	:param theSurface:
-	:type theSurface: BRepAdaptor_Surface &
+	:type theSurface: BRepAdaptor_Surface
 	:param theFirstParOnCurve:
 	:type theFirstParOnCurve: float
 	:param theLastParOnCurve:
@@ -428,9 +428,9 @@ class IntTools_BeanFaceIntersector {
 		%feature("compactdefaultargs") IntTools_BeanFaceIntersector;
 		%feature("autodoc", "* Initializes the algorithm //! Warning: The parts of the edge which are on the surface of the face and belong to the whole in the face (if there is) is considered as result
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: None") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
 
@@ -438,9 +438,9 @@ class IntTools_BeanFaceIntersector {
 		%feature("compactdefaultargs") IntTools_BeanFaceIntersector;
 		%feature("autodoc", "* Initializes the algorithm
 	:param theCurve:
-	:type theCurve: BRepAdaptor_Curve &
+	:type theCurve: BRepAdaptor_Curve
 	:param theSurface:
-	:type theSurface: BRepAdaptor_Surface &
+	:type theSurface: BRepAdaptor_Surface
 	:param theBeanTolerance:
 	:type theBeanTolerance: float
 	:param theFaceTolerance:
@@ -452,9 +452,9 @@ class IntTools_BeanFaceIntersector {
 		%feature("compactdefaultargs") IntTools_BeanFaceIntersector;
 		%feature("autodoc", "* Initializes the algorithm theUMinParameter, ... are used for optimization purposes
 	:param theCurve:
-	:type theCurve: BRepAdaptor_Curve &
+	:type theCurve: BRepAdaptor_Curve
 	:param theSurface:
-	:type theSurface: BRepAdaptor_Surface &
+	:type theSurface: BRepAdaptor_Surface
 	:param theFirstParOnCurve:
 	:type theFirstParOnCurve: float
 	:param theLastParOnCurve:
@@ -494,7 +494,7 @@ class IntTools_BeanFaceIntersector {
 		/****************** Result ******************/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", ":param theResults:
-	:type theResults: IntTools_SequenceOfRanges &
+	:type theResults: IntTools_SequenceOfRanges
 	:rtype: None") Result;
 		void Result (IntTools_SequenceOfRanges & theResults);
 
@@ -512,7 +512,7 @@ class IntTools_BeanFaceIntersector {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Sets the intersecton context
 	:param theContext:
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:rtype: None") SetContext;
 		void SetContext (const opencascade::handle<IntTools_Context> & theContext);
 
@@ -561,7 +561,7 @@ class IntTools_CommonPrt {
 		%feature("compactdefaultargs") AppendRange2;
 		%feature("autodoc", "* Appends the range of second edge.
 	:param aR:
-	:type aR: IntTools_Range &
+	:type aR: IntTools_Range
 	:rtype: None") AppendRange2;
 		void AppendRange2 (const IntTools_Range & aR);
 
@@ -578,7 +578,7 @@ class IntTools_CommonPrt {
 		/****************** Assign ******************/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_CommonPrt &
+	:type Other: IntTools_CommonPrt
 	:rtype: IntTools_CommonPrt") Assign;
 		IntTools_CommonPrt & Assign (const IntTools_CommonPrt & Other);
 
@@ -602,7 +602,7 @@ class IntTools_CommonPrt {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* Copies me to anOther
 	:param anOther:
-	:type anOther: IntTools_CommonPrt &
+	:type anOther: IntTools_CommonPrt
 	:rtype: None") Copy;
 		void Copy (IntTools_CommonPrt & anOther);
 
@@ -628,7 +628,7 @@ class IntTools_CommonPrt {
 		%feature("compactdefaultargs") IntTools_CommonPrt;
 		%feature("autodoc", "* Copy constructor
 	:param aCPrt:
-	:type aCPrt: IntTools_CommonPrt &
+	:type aCPrt: IntTools_CommonPrt
 	:rtype: None") IntTools_CommonPrt;
 		 IntTools_CommonPrt (const IntTools_CommonPrt & aCPrt);
 
@@ -642,9 +642,9 @@ class IntTools_CommonPrt {
 		%feature("compactdefaultargs") Range1;
 		%feature("autodoc", "* Returns the range of first edge.
 	:param tf:
-	:type tf: float &
+	:type tf: float
 	:param tl:
-	:type tl: float &
+	:type tl: float
 	:rtype: None") Range1;
 		void Range1 (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -676,7 +676,7 @@ class IntTools_CommonPrt {
 		%feature("compactdefaultargs") SetEdge1;
 		%feature("autodoc", "* Sets the first edge.
 	:param anE:
-	:type anE: TopoDS_Edge &
+	:type anE: TopoDS_Edge
 	:rtype: None") SetEdge1;
 		void SetEdge1 (const TopoDS_Edge & anE);
 
@@ -684,7 +684,7 @@ class IntTools_CommonPrt {
 		%feature("compactdefaultargs") SetEdge2;
 		%feature("autodoc", "* Sets the second edge.
 	:param anE:
-	:type anE: TopoDS_Edge &
+	:type anE: TopoDS_Edge
 	:rtype: None") SetEdge2;
 		void SetEdge2 (const TopoDS_Edge & anE);
 
@@ -692,7 +692,7 @@ class IntTools_CommonPrt {
 		%feature("compactdefaultargs") SetRange1;
 		%feature("autodoc", "* Sets the range of first edge.
 	:param aR:
-	:type aR: IntTools_Range &
+	:type aR: IntTools_Range
 	:rtype: None") SetRange1;
 		void SetRange1 (const IntTools_Range & aR);
 
@@ -751,7 +751,7 @@ class IntTools_CommonPrt {
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_CommonPrt &
+	:type Other: IntTools_CommonPrt
 	:rtype: IntTools_CommonPrt") operator =;
 		IntTools_CommonPrt & operator = (const IntTools_CommonPrt & Other);
 
@@ -773,7 +773,7 @@ class IntTools_Context : public Standard_Transient {
 		/****************** BndBox ******************/
 		%feature("compactdefaultargs") BndBox;
 		%feature("autodoc", ":param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: Bnd_Box") BndBox;
 		Bnd_Box & BndBox (const TopoDS_Shape & theS);
 
@@ -785,11 +785,11 @@ class IntTools_Context : public Standard_Transient {
 	:param theTolP:
 	:type theTolP: float
 	:param theE:
-	:type theE: TopoDS_Edge &
+	:type theE: TopoDS_Edge
 	:param theT:
-	:type theT: float &
+	:type theT: float
 	:param theDist:
-	:type theDist: float &
+	:type theDist: float
 	:rtype: int") ComputePE;
 		Standard_Integer ComputePE (const gp_Pnt & theP,const Standard_Real theTolP,const TopoDS_Edge & theE,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -797,13 +797,13 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") ComputeVE;
 		%feature("autodoc", "* Computes parameter of the vertex aV on the edge aE and correct tolerance value for the vertex on the edge. Returns zero if the distance between vertex and edge is less than sum of tolerances and the fuzzy value, otherwise and for following conditions returns negative value: 1. the edge is degenerated (-1) 2. the edge does not contain 3d curve and pcurves (-2) 3. projection algorithm failed (-3)
 	:param theV:
-	:type theV: TopoDS_Vertex &
+	:type theV: TopoDS_Vertex
 	:param theE:
-	:type theE: TopoDS_Edge &
+	:type theE: TopoDS_Edge
 	:param theT:
-	:type theT: float &
+	:type theT: float
 	:param theTol:
-	:type theTol: float &
+	:type theTol: float
 	:param theFuzz: default value is Precision::Confusion()
 	:type theFuzz: float
 	:rtype: int") ComputeVE;
@@ -813,15 +813,15 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") ComputeVF;
 		%feature("autodoc", "* Computes UV parameters of the vertex aV on face aF and correct tolerance value for the vertex on the face. Returns zero if the distance between vertex and face is less than or equal the sum of tolerances and the fuzzy value and the projection point lays inside boundaries of the face. For following conditions returns negative value 1. projection algorithm failed (-1) 2. distance is more than sum of tolerances (-2) 3. projection point out or on the boundaries of face (-3)
 	:param theVertex:
-	:type theVertex: TopoDS_Vertex &
+	:type theVertex: TopoDS_Vertex
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param theU:
-	:type theU: float &
+	:type theU: float
 	:param theV:
-	:type theV: float &
+	:type theV: float
 	:param theTol:
-	:type theTol: float &
+	:type theTol: float
 	:param theFuzz: default value is Precision::Confusion()
 	:type theFuzz: float
 	:rtype: int") ComputeVF;
@@ -831,7 +831,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") FClass2d;
 		%feature("autodoc", "* Returns a reference to point classifier for given face
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:rtype: IntTools_FClass2d") FClass2d;
 		IntTools_FClass2d & FClass2d (const TopoDS_Face & aF);
 
@@ -839,7 +839,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") Hatcher;
 		%feature("autodoc", "* Returns a reference to 2D hatcher for given face
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:rtype: Geom2dHatch_Hatcher") Hatcher;
 		Geom2dHatch_Hatcher & Hatcher (const TopoDS_Face & aF);
 
@@ -851,7 +851,7 @@ class IntTools_Context : public Standard_Transient {
 		/****************** IntTools_Context ******************/
 		%feature("compactdefaultargs") IntTools_Context;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") IntTools_Context;
 		 IntTools_Context (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -859,7 +859,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") IsInfiniteFace;
 		%feature("autodoc", "* Returns true if the solid <theFace> has infinite bounds
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: bool") IsInfiniteFace;
 		Standard_Boolean IsInfiniteFace (const TopoDS_Face & theFace);
 
@@ -867,7 +867,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") IsPointInFace;
 		%feature("autodoc", "* Returns true if the point aP2D is inside the boundaries of the face aF, otherwise returns false
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:param aP2D:
 	:type aP2D: gp_Pnt2d
 	:rtype: bool") IsPointInFace;
@@ -879,7 +879,7 @@ class IntTools_Context : public Standard_Transient {
 	:param aP3D:
 	:type aP3D: gp_Pnt
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:param aTol:
 	:type aTol: float
 	:rtype: bool") IsPointInFace;
@@ -889,7 +889,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") IsPointInOnFace;
 		%feature("autodoc", "* Returns true if the point aP2D is inside or on the boundaries of aF
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:param aP2D:
 	:type aP2D: gp_Pnt2d
 	:rtype: bool") IsPointInOnFace;
@@ -903,9 +903,9 @@ class IntTools_Context : public Standard_Transient {
 	:param aT2:
 	:type aT2: float
 	:param aIC:
-	:type aIC: IntTools_Curve &
+	:type aIC: IntTools_Curve
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:param aTol:
 	:type aTol: float
 	:rtype: bool") IsValidBlockForFace;
@@ -919,11 +919,11 @@ class IntTools_Context : public Standard_Transient {
 	:param aT2:
 	:type aT2: float
 	:param aIC:
-	:type aIC: IntTools_Curve &
+	:type aIC: IntTools_Curve
 	:param aF1:
-	:type aF1: TopoDS_Face &
+	:type aF1: TopoDS_Face
 	:param aF2:
-	:type aF2: TopoDS_Face &
+	:type aF2: TopoDS_Face
 	:param aTol:
 	:type aTol: float
 	:rtype: bool") IsValidBlockForFaces;
@@ -935,7 +935,7 @@ class IntTools_Context : public Standard_Transient {
 	:param aP3D:
 	:type aP3D: gp_Pnt
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:param aTol:
 	:type aTol: float
 	:rtype: bool") IsValidPointForFace;
@@ -947,9 +947,9 @@ class IntTools_Context : public Standard_Transient {
 	:param aP3D:
 	:type aP3D: gp_Pnt
 	:param aF1:
-	:type aF1: TopoDS_Face &
+	:type aF1: TopoDS_Face
 	:param aF2:
-	:type aF2: TopoDS_Face &
+	:type aF2: TopoDS_Face
 	:param aTol:
 	:type aTol: float
 	:rtype: bool") IsValidPointForFaces;
@@ -959,13 +959,13 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") IsVertexOnLine;
 		%feature("autodoc", "* Computes parameter of the vertex aV on the curve aIC. Returns true if the distance between vertex and curve is less than sum of tolerance of aV and aTolC, otherwise or if projection algorithm failed returns false (in this case aT isn't significant)
 	:param aV:
-	:type aV: TopoDS_Vertex &
+	:type aV: TopoDS_Vertex
 	:param aIC:
-	:type aIC: IntTools_Curve &
+	:type aIC: IntTools_Curve
 	:param aTolC:
 	:type aTolC: float
 	:param aT:
-	:type aT: float &
+	:type aT: float
 	:rtype: bool") IsVertexOnLine;
 		Standard_Boolean IsVertexOnLine (const TopoDS_Vertex & aV,const IntTools_Curve & aIC,const Standard_Real aTolC,Standard_Real &OutValue);
 
@@ -973,15 +973,15 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") IsVertexOnLine;
 		%feature("autodoc", "* Computes parameter of the vertex aV on the curve aIC. Returns true if the distance between vertex and curve is less than sum of tolerance of aV and aTolC, otherwise or if projection algorithm failed returns false (in this case aT isn't significant)
 	:param aV:
-	:type aV: TopoDS_Vertex &
+	:type aV: TopoDS_Vertex
 	:param aTolV:
 	:type aTolV: float
 	:param aIC:
-	:type aIC: IntTools_Curve &
+	:type aIC: IntTools_Curve
 	:param aTolC:
 	:type aTolC: float
 	:param aT:
-	:type aT: float &
+	:type aT: float
 	:rtype: bool") IsVertexOnLine;
 		Standard_Boolean IsVertexOnLine (const TopoDS_Vertex & aV,const Standard_Real aTolV,const IntTools_Curve & aIC,const Standard_Real aTolC,Standard_Real &OutValue);
 
@@ -989,7 +989,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") OBB;
 		%feature("autodoc", "* Builds and stores an Oriented Bounding Box for the shape. Returns a reference to OBB.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theFuzzyValue: default value is Precision::Confusion()
 	:type theFuzzyValue: float
 	:rtype: Bnd_OBB") OBB;
@@ -999,7 +999,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") ProjPC;
 		%feature("autodoc", "* Returns a reference to point projector for given edge
 	:param aE:
-	:type aE: TopoDS_Edge &
+	:type aE: TopoDS_Edge
 	:rtype: GeomAPI_ProjectPointOnCurve") ProjPC;
 		GeomAPI_ProjectPointOnCurve & ProjPC (const TopoDS_Edge & aE);
 
@@ -1007,7 +1007,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") ProjPS;
 		%feature("autodoc", "* Returns a reference to point projector for given face
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:rtype: GeomAPI_ProjectPointOnSurf") ProjPS;
 		GeomAPI_ProjectPointOnSurf & ProjPS (const TopoDS_Face & aF);
 
@@ -1015,7 +1015,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") ProjPT;
 		%feature("autodoc", "* Returns a reference to point projector for given curve
 	:param aC:
-	:type aC: opencascade::handle<Geom_Curve> &
+	:type aC: Geom_Curve
 	:rtype: GeomAPI_ProjectPointOnCurve") ProjPT;
 		GeomAPI_ProjectPointOnCurve & ProjPT (const opencascade::handle<Geom_Curve> & aC);
 
@@ -1025,9 +1025,9 @@ class IntTools_Context : public Standard_Transient {
 	:param aP:
 	:type aP: gp_Pnt
 	:param aE:
-	:type aE: TopoDS_Edge &
+	:type aE: TopoDS_Edge
 	:param aT:
-	:type aT: float &
+	:type aT: float
 	:rtype: bool") ProjectPointOnEdge;
 		Standard_Boolean ProjectPointOnEdge (const gp_Pnt & aP,const TopoDS_Edge & aE,Standard_Real &OutValue);
 
@@ -1043,7 +1043,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") SolidClassifier;
 		%feature("autodoc", "* Returns a reference to solid classifier for given solid
 	:param aSolid:
-	:type aSolid: TopoDS_Solid &
+	:type aSolid: TopoDS_Solid
 	:rtype: BRepClass3d_SolidClassifier") SolidClassifier;
 		BRepClass3d_SolidClassifier & SolidClassifier (const TopoDS_Solid & aSolid);
 
@@ -1051,7 +1051,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") StatePointFace;
 		%feature("autodoc", "* Returns the state of the point aP2D relative to face aF
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:param aP2D:
 	:type aP2D: gp_Pnt2d
 	:rtype: TopAbs_State") StatePointFace;
@@ -1061,7 +1061,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") SurfaceAdaptor;
 		%feature("autodoc", "* Returns a reference to surface adaptor for given face
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: BRepAdaptor_Surface") SurfaceAdaptor;
 		BRepAdaptor_Surface & SurfaceAdaptor (const TopoDS_Face & theFace);
 
@@ -1069,7 +1069,7 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") SurfaceData;
 		%feature("autodoc", "* Returns a reference to surface localization data for given face
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:rtype: IntTools_SurfaceRangeLocalizeData") SurfaceData;
 		IntTools_SurfaceRangeLocalizeData & SurfaceData (const TopoDS_Face & aF);
 
@@ -1077,15 +1077,15 @@ class IntTools_Context : public Standard_Transient {
 		%feature("compactdefaultargs") UVBounds;
 		%feature("autodoc", "* Computes the boundaries of the face using surface adaptor
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param UMin:
-	:type UMin: float &
+	:type UMin: float
 	:param UMax:
-	:type UMax: float &
+	:type UMax: float
 	:param VMin:
-	:type VMin: float &
+	:type VMin: float
 	:param VMax:
-	:type VMax: float &
+	:type VMax: float
 	:rtype: None") UVBounds;
 		void UVBounds (const TopoDS_Face & theFace,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1110,9 +1110,9 @@ class IntTools_Curve {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* If the 3d curve is bounded curve the method will return True and modify the output parameters with boundary parameters of the curve and corresponded 3d points. If the curve does not have bounds, the method will return false and the output parameters will stay untouched.
 	:param theFirst:
-	:type theFirst: float &
+	:type theFirst: float
 	:param theLast:
-	:type theLast: float &
+	:type theLast: float
 	:param theFirstPnt:
 	:type theFirstPnt: gp_Pnt
 	:param theLastPnt:
@@ -1130,7 +1130,7 @@ class IntTools_Curve {
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "* Computes 3d point corresponded to the given parameter if this parameter is inside the boundaries of the curve. Returns True in this case. Otherwise, the point will not be computed and the method will return False.
 	:param thePar:
-	:type thePar: float &
+	:type thePar: float
 	:param thePnt:
 	:type thePnt: gp_Pnt
 	:rtype: bool") D0;
@@ -1158,11 +1158,11 @@ class IntTools_Curve {
 		%feature("compactdefaultargs") IntTools_Curve;
 		%feature("autodoc", "* Constructor taking 3d curve, two 2d curves and two tolerance values
 	:param the3dCurve3d:
-	:type the3dCurve3d: opencascade::handle<Geom_Curve> &
+	:type the3dCurve3d: Geom_Curve
 	:param the2dCurve1:
-	:type the2dCurve1: opencascade::handle<Geom2d_Curve> &
+	:type the2dCurve1: Geom2d_Curve
 	:param the2dCurve2:
-	:type the2dCurve2: opencascade::handle<Geom2d_Curve> &
+	:type the2dCurve2: Geom2d_Curve
 	:param theTolerance: default value is 0.0
 	:type theTolerance: float
 	:param theTangentialTolerance: default value is 0.0
@@ -1180,7 +1180,7 @@ class IntTools_Curve {
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "* Sets the 3d curve
 	:param the3dCurve:
-	:type the3dCurve: opencascade::handle<Geom_Curve> &
+	:type the3dCurve: Geom_Curve
 	:rtype: None") SetCurve;
 		void SetCurve (const opencascade::handle<Geom_Curve> & the3dCurve);
 
@@ -1188,11 +1188,11 @@ class IntTools_Curve {
 		%feature("compactdefaultargs") SetCurves;
 		%feature("autodoc", "* Sets the curves
 	:param the3dCurve:
-	:type the3dCurve: opencascade::handle<Geom_Curve> &
+	:type the3dCurve: Geom_Curve
 	:param the2dCurve1:
-	:type the2dCurve1: opencascade::handle<Geom2d_Curve> &
+	:type the2dCurve1: Geom2d_Curve
 	:param the2dCurve2:
-	:type the2dCurve2: opencascade::handle<Geom2d_Curve> &
+	:type the2dCurve2: Geom2d_Curve
 	:rtype: None") SetCurves;
 		void SetCurves (const opencascade::handle<Geom_Curve> & the3dCurve,const opencascade::handle<Geom2d_Curve> & the2dCurve1,const opencascade::handle<Geom2d_Curve> & the2dCurve2);
 
@@ -1200,7 +1200,7 @@ class IntTools_Curve {
 		%feature("compactdefaultargs") SetFirstCurve2d;
 		%feature("autodoc", "* Sets the first 2d curve
 	:param the2dCurve1:
-	:type the2dCurve1: opencascade::handle<Geom2d_Curve> &
+	:type the2dCurve1: Geom2d_Curve
 	:rtype: None") SetFirstCurve2d;
 		void SetFirstCurve2d (const opencascade::handle<Geom2d_Curve> & the2dCurve1);
 
@@ -1208,7 +1208,7 @@ class IntTools_Curve {
 		%feature("compactdefaultargs") SetSecondCurve2d;
 		%feature("autodoc", "* Sets the second 2d curve
 	:param the2dCurve2:
-	:type the2dCurve2: opencascade::handle<Geom2d_Curve> &
+	:type the2dCurve2: Geom2d_Curve
 	:rtype: None") SetSecondCurve2d;
 		void SetSecondCurve2d (const opencascade::handle<Geom2d_Curve> & the2dCurve2);
 
@@ -1264,25 +1264,25 @@ class IntTools_CurveRangeLocalizeData {
 		/****************** AddBox ******************/
 		%feature("compactdefaultargs") AddBox;
 		%feature("autodoc", ":param theRange:
-	:type theRange: IntTools_CurveRangeSample &
+	:type theRange: IntTools_CurveRangeSample
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:rtype: None") AddBox;
 		void AddBox (const IntTools_CurveRangeSample & theRange,const Bnd_Box & theBox);
 
 		/****************** AddOutRange ******************/
 		%feature("compactdefaultargs") AddOutRange;
 		%feature("autodoc", ":param theRange:
-	:type theRange: IntTools_CurveRangeSample &
+	:type theRange: IntTools_CurveRangeSample
 	:rtype: None") AddOutRange;
 		void AddOutRange (const IntTools_CurveRangeSample & theRange);
 
 		/****************** FindBox ******************/
 		%feature("compactdefaultargs") FindBox;
 		%feature("autodoc", ":param theRange:
-	:type theRange: IntTools_CurveRangeSample &
+	:type theRange: IntTools_CurveRangeSample
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:rtype: bool") FindBox;
 		Standard_Boolean FindBox (const IntTools_CurveRangeSample & theRange,Bnd_Box & theBox);
 
@@ -1308,14 +1308,14 @@ class IntTools_CurveRangeLocalizeData {
 		/****************** IsRangeOut ******************/
 		%feature("compactdefaultargs") IsRangeOut;
 		%feature("autodoc", ":param theRange:
-	:type theRange: IntTools_CurveRangeSample &
+	:type theRange: IntTools_CurveRangeSample
 	:rtype: bool") IsRangeOut;
 		Standard_Boolean IsRangeOut (const IntTools_CurveRangeSample & theRange);
 
 		/****************** ListRangeOut ******************/
 		%feature("compactdefaultargs") ListRangeOut;
 		%feature("autodoc", ":param theList:
-	:type theList: IntTools_ListOfCurveRangeSample &
+	:type theList: IntTools_ListOfCurveRangeSample
 	:rtype: None") ListRangeOut;
 		void ListRangeOut (IntTools_ListOfCurveRangeSample & theList);
 
@@ -1337,7 +1337,7 @@ class IntTools_CurveRangeSampleMapHasher {
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "* Computes a hash code for the given key, in the range [1, theUpperBound] @param theKey the key which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theKey:
-	:type theKey: IntTools_CurveRangeSample &
+	:type theKey: IntTools_CurveRangeSample
 	:param theUpperBound:
 	:type theUpperBound: int
 	:rtype: int") HashCode;
@@ -1347,9 +1347,9 @@ class IntTools_CurveRangeSampleMapHasher {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
 	:param S1:
-	:type S1: IntTools_CurveRangeSample &
+	:type S1: IntTools_CurveRangeSample
 	:param S2:
-	:type S2: IntTools_CurveRangeSample &
+	:type S2: IntTools_CurveRangeSample
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const IntTools_CurveRangeSample & S1,const IntTools_CurveRangeSample & S2);
 
@@ -1390,9 +1390,9 @@ class IntTools_EdgeEdge {
 		%feature("compactdefaultargs") IntTools_EdgeEdge;
 		%feature("autodoc", "* Contructor
 	:param theEdge1:
-	:type theEdge1: TopoDS_Edge &
+	:type theEdge1: TopoDS_Edge
 	:param theEdge2:
-	:type theEdge2: TopoDS_Edge &
+	:type theEdge2: TopoDS_Edge
 	:rtype: None") IntTools_EdgeEdge;
 		 IntTools_EdgeEdge (const TopoDS_Edge & theEdge1,const TopoDS_Edge & theEdge2);
 
@@ -1400,13 +1400,13 @@ class IntTools_EdgeEdge {
 		%feature("compactdefaultargs") IntTools_EdgeEdge;
 		%feature("autodoc", "* Contructor
 	:param theEdge1:
-	:type theEdge1: TopoDS_Edge &
+	:type theEdge1: TopoDS_Edge
 	:param aT11:
 	:type aT11: float
 	:param aT12:
 	:type aT12: float
 	:param theEdge2:
-	:type theEdge2: TopoDS_Edge &
+	:type theEdge2: TopoDS_Edge
 	:param aT21:
 	:type aT21: float
 	:param aT22:
@@ -1436,7 +1436,7 @@ class IntTools_EdgeEdge {
 		%feature("compactdefaultargs") SetEdge1;
 		%feature("autodoc", "* Sets the first edge
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: None") SetEdge1;
 		void SetEdge1 (const TopoDS_Edge & theEdge);
 
@@ -1444,7 +1444,7 @@ class IntTools_EdgeEdge {
 		%feature("compactdefaultargs") SetEdge1;
 		%feature("autodoc", "* Sets the first edge and its range
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param aT1:
 	:type aT1: float
 	:param aT2:
@@ -1456,7 +1456,7 @@ class IntTools_EdgeEdge {
 		%feature("compactdefaultargs") SetEdge2;
 		%feature("autodoc", "* Sets the second edge
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: None") SetEdge2;
 		void SetEdge2 (const TopoDS_Edge & theEdge);
 
@@ -1464,7 +1464,7 @@ class IntTools_EdgeEdge {
 		%feature("compactdefaultargs") SetEdge2;
 		%feature("autodoc", "* Sets the first edge and its range
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param aT1:
 	:type aT1: float
 	:param aT2:
@@ -1484,7 +1484,7 @@ class IntTools_EdgeEdge {
 		%feature("compactdefaultargs") SetRange1;
 		%feature("autodoc", "* Sets the range for the first edge
 	:param theRange1:
-	:type theRange1: IntTools_Range &
+	:type theRange1: IntTools_Range
 	:rtype: None") SetRange1;
 		void SetRange1 (const IntTools_Range & theRange1);
 
@@ -1502,7 +1502,7 @@ class IntTools_EdgeEdge {
 		%feature("compactdefaultargs") SetRange2;
 		%feature("autodoc", "* Sets the range for the second edge
 	:param theRange:
-	:type theRange: IntTools_Range &
+	:type theRange: IntTools_Range
 	:rtype: None") SetRange2;
 		void SetRange2 (const IntTools_Range & theRange);
 
@@ -1609,7 +1609,7 @@ class IntTools_EdgeFace {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Sets the intersection context
 	:param theContext:
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:rtype: None") SetContext;
 		void SetContext (const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1617,7 +1617,7 @@ class IntTools_EdgeFace {
 		%feature("compactdefaultargs") SetEdge;
 		%feature("autodoc", "* @name Setters/Getters Sets the edge for intersection
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: None") SetEdge;
 		void SetEdge (const TopoDS_Edge & theEdge);
 
@@ -1625,7 +1625,7 @@ class IntTools_EdgeFace {
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", "* Sets the face for intersection
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: None") SetFace;
 		void SetFace (const TopoDS_Face & theFace);
 
@@ -1641,7 +1641,7 @@ class IntTools_EdgeFace {
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "* Sets the boundaries for the edge. The algorithm processes edge inside these boundaries.
 	:param theRange:
-	:type theRange: IntTools_Range &
+	:type theRange: IntTools_Range
 	:rtype: None") SetRange;
 		void SetRange (const IntTools_Range & theRange);
 
@@ -1688,7 +1688,7 @@ class IntTools_FClass2d {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes algorithm by the face F and tolerance Tol
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Init;
@@ -1704,7 +1704,7 @@ class IntTools_FClass2d {
 		%feature("compactdefaultargs") IntTools_FClass2d;
 		%feature("autodoc", "* Initializes algorithm by the face F and tolerance Tol
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Tol:
 	:type Tol: float
 	:rtype: None") IntTools_FClass2d;
@@ -1804,9 +1804,9 @@ class IntTools_FaceFace {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersects underliing surfaces of F1 and F2 Use sum of tolerance of F1 and F2 as intersection criteria
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Face & F1,const TopoDS_Face & F2);
 
@@ -1828,7 +1828,7 @@ class IntTools_FaceFace {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Sets the intersecton context
 	:param aContext:
-	:type aContext: opencascade::handle<IntTools_Context> &
+	:type aContext: IntTools_Context
 	:rtype: None") SetContext;
 		void SetContext (const opencascade::handle<IntTools_Context> & aContext);
 
@@ -1843,7 +1843,7 @@ class IntTools_FaceFace {
 		/****************** SetList ******************/
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", ":param ListOfPnts:
-	:type ListOfPnts: IntSurf_ListOfPntOn2S &
+	:type ListOfPnts: IntSurf_ListOfPntOn2S
 	:rtype: None") SetList;
 		void SetList (IntSurf_ListOfPntOn2S & ListOfPnts);
 
@@ -1931,7 +1931,7 @@ class IntTools_MarkedRangeSet {
 		%feature("compactdefaultargs") InsertRange;
 		%feature("autodoc", "* Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False
 	:param theRange:
-	:type theRange: IntTools_Range &
+	:type theRange: IntTools_Range
 	:param theFlag:
 	:type theFlag: int
 	:rtype: bool") InsertRange;
@@ -1955,7 +1955,7 @@ class IntTools_MarkedRangeSet {
 		%feature("compactdefaultargs") InsertRange;
 		%feature("autodoc", "* Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. The index theIndex is a position where the range will be inserted. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False
 	:param theRange:
-	:type theRange: IntTools_Range &
+	:type theRange: IntTools_Range
 	:param theFlag:
 	:type theFlag: int
 	:param theIndex:
@@ -1985,7 +1985,7 @@ class IntTools_MarkedRangeSet {
 		%feature("compactdefaultargs") IntTools_MarkedRangeSet;
 		%feature("autodoc", "* Build set of ranges based on the array of progressive sorted values //! Warning: The constructor do not check if the values of array are not sorted It should be checked before function invocation
 	:param theSortedArray:
-	:type theSortedArray: IntTools_CArray1OfReal &
+	:type theSortedArray: IntTools_CArray1OfReal
 	:param theInitFlag:
 	:type theInitFlag: int
 	:rtype: None") IntTools_MarkedRangeSet;
@@ -2031,7 +2031,7 @@ class IntTools_MarkedRangeSet {
 		%feature("compactdefaultargs") SetRanges;
 		%feature("autodoc", "* Build set of ranges based on the array of progressive sorted values //! Warning: The function do not check if the values of array are not sorted It should be checked before function invocation
 	:param theSortedArray:
-	:type theSortedArray: IntTools_CArray1OfReal &
+	:type theSortedArray: IntTools_CArray1OfReal
 	:param theInitFlag:
 	:type theInitFlag: int
 	:rtype: None") SetRanges;
@@ -2062,9 +2062,9 @@ class IntTools_PntOn2Faces {
 		%feature("compactdefaultargs") IntTools_PntOn2Faces;
 		%feature("autodoc", "* Initializes me by two points aP1 and aP2
 	:param aP1:
-	:type aP1: IntTools_PntOnFace &
+	:type aP1: IntTools_PntOnFace
 	:param aP2:
-	:type aP2: IntTools_PntOnFace &
+	:type aP2: IntTools_PntOnFace
 	:rtype: None") IntTools_PntOn2Faces;
 		 IntTools_PntOn2Faces (const IntTools_PntOnFace & aP1,const IntTools_PntOnFace & aP2);
 
@@ -2090,7 +2090,7 @@ class IntTools_PntOn2Faces {
 		%feature("compactdefaultargs") SetP1;
 		%feature("autodoc", "* Modifier
 	:param aP1:
-	:type aP1: IntTools_PntOnFace &
+	:type aP1: IntTools_PntOnFace
 	:rtype: None") SetP1;
 		void SetP1 (const IntTools_PntOnFace & aP1);
 
@@ -2098,7 +2098,7 @@ class IntTools_PntOn2Faces {
 		%feature("compactdefaultargs") SetP2;
 		%feature("autodoc", "* Modifier
 	:param aP2:
-	:type aP2: IntTools_PntOnFace &
+	:type aP2: IntTools_PntOnFace
 	:rtype: None") SetP2;
 		void SetP2 (const IntTools_PntOnFace & aP2);
 
@@ -2135,7 +2135,7 @@ class IntTools_PntOnFace {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes me by aFace, a 3d point and it's UV parameters on face
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:param aP:
 	:type aP: gp_Pnt
 	:param U:
@@ -2155,9 +2155,9 @@ class IntTools_PntOnFace {
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "* Selector
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2171,7 +2171,7 @@ class IntTools_PntOnFace {
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", "* Modifier
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:rtype: None") SetFace;
 		void SetFace (const TopoDS_Face & aF);
 
@@ -2248,9 +2248,9 @@ class IntTools_Range {
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "* Selector
 	:param aFirst:
-	:type aFirst: float &
+	:type aFirst: float
 	:param aLast:
-	:type aLast: float &
+	:type aLast: float
 	:rtype: None") Range;
 		void Range (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2305,13 +2305,13 @@ class IntTools_Root {
 		%feature("compactdefaultargs") Interval;
 		%feature("autodoc", "* Returns the values of interval from which the Root was found [t1,t2] and the corresponding values of the function on the bounds f(t1), f(t2).
 	:param t1:
-	:type t1: float &
+	:type t1: float
 	:param t2:
-	:type t2: float &
+	:type t2: float
 	:param f1:
-	:type f1: float &
+	:type f1: float
 	:param f2:
-	:type f2: float &
+	:type f2: float
 	:rtype: None") Interval;
 		void Interval (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2466,22 +2466,22 @@ class IntTools_ShrunkRange {
 		/****************** SetContext ******************/
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", ":param aCtx:
-	:type aCtx: opencascade::handle<IntTools_Context> &
+	:type aCtx: IntTools_Context
 	:rtype: None") SetContext;
 		void SetContext (const opencascade::handle<IntTools_Context> & aCtx);
 
 		/****************** SetData ******************/
 		%feature("compactdefaultargs") SetData;
 		%feature("autodoc", ":param aE:
-	:type aE: TopoDS_Edge &
+	:type aE: TopoDS_Edge
 	:param aT1:
 	:type aT1: float
 	:param aT2:
 	:type aT2: float
 	:param aV1:
-	:type aV1: TopoDS_Vertex &
+	:type aV1: TopoDS_Vertex
 	:param aV2:
-	:type aV2: TopoDS_Vertex &
+	:type aV2: TopoDS_Vertex
 	:rtype: None") SetData;
 		void SetData (const TopoDS_Edge & aE,const Standard_Real aT1,const Standard_Real aT2,const TopoDS_Vertex & aV1,const TopoDS_Vertex & aV2);
 
@@ -2497,9 +2497,9 @@ class IntTools_ShrunkRange {
 		/****************** ShrunkRange ******************/
 		%feature("compactdefaultargs") ShrunkRange;
 		%feature("autodoc", ":param aT1:
-	:type aT1: float &
+	:type aT1: float
 	:param aT2:
-	:type aT2: float &
+	:type aT2: float
 	:rtype: None") ShrunkRange;
 		void ShrunkRange (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2521,23 +2521,23 @@ class IntTools_SurfaceRangeLocalizeData {
 		/****************** AddBox ******************/
 		%feature("compactdefaultargs") AddBox;
 		%feature("autodoc", ":param theRange:
-	:type theRange: IntTools_SurfaceRangeSample &
+	:type theRange: IntTools_SurfaceRangeSample
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:rtype: None") AddBox;
 		void AddBox (const IntTools_SurfaceRangeSample & theRange,const Bnd_Box & theBox);
 
 		/****************** AddOutRange ******************/
 		%feature("compactdefaultargs") AddOutRange;
 		%feature("autodoc", ":param theRange:
-	:type theRange: IntTools_SurfaceRangeSample &
+	:type theRange: IntTools_SurfaceRangeSample
 	:rtype: None") AddOutRange;
 		void AddOutRange (const IntTools_SurfaceRangeSample & theRange);
 
 		/****************** Assign ******************/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_SurfaceRangeLocalizeData &
+	:type Other: IntTools_SurfaceRangeLocalizeData
 	:rtype: IntTools_SurfaceRangeLocalizeData") Assign;
 		IntTools_SurfaceRangeLocalizeData & Assign (const IntTools_SurfaceRangeLocalizeData & Other);
 
@@ -2550,9 +2550,9 @@ class IntTools_SurfaceRangeLocalizeData {
 		/****************** FindBox ******************/
 		%feature("compactdefaultargs") FindBox;
 		%feature("autodoc", ":param theRange:
-	:type theRange: IntTools_SurfaceRangeSample &
+	:type theRange: IntTools_SurfaceRangeSample
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:rtype: bool") FindBox;
 		Standard_Boolean FindBox (const IntTools_SurfaceRangeSample & theRange,Bnd_Box & theBox);
 
@@ -2679,21 +2679,21 @@ class IntTools_SurfaceRangeLocalizeData {
 		/****************** IntTools_SurfaceRangeLocalizeData ******************/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeLocalizeData;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_SurfaceRangeLocalizeData &
+	:type Other: IntTools_SurfaceRangeLocalizeData
 	:rtype: None") IntTools_SurfaceRangeLocalizeData;
 		 IntTools_SurfaceRangeLocalizeData (const IntTools_SurfaceRangeLocalizeData & Other);
 
 		/****************** IsRangeOut ******************/
 		%feature("compactdefaultargs") IsRangeOut;
 		%feature("autodoc", ":param theRange:
-	:type theRange: IntTools_SurfaceRangeSample &
+	:type theRange: IntTools_SurfaceRangeSample
 	:rtype: bool") IsRangeOut;
 		Standard_Boolean IsRangeOut (const IntTools_SurfaceRangeSample & theRange);
 
 		/****************** ListRangeOut ******************/
 		%feature("compactdefaultargs") ListRangeOut;
 		%feature("autodoc", ":param theList:
-	:type theList: IntTools_ListOfSurfaceRangeSample &
+	:type theList: IntTools_ListOfSurfaceRangeSample
 	:rtype: None") ListRangeOut;
 		void ListRangeOut (IntTools_ListOfSurfaceRangeSample & theList);
 
@@ -2775,7 +2775,7 @@ class IntTools_SurfaceRangeLocalizeData {
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_SurfaceRangeLocalizeData &
+	:type Other: IntTools_SurfaceRangeLocalizeData
 	:rtype: IntTools_SurfaceRangeLocalizeData") operator =;
 		IntTools_SurfaceRangeLocalizeData & operator = (const IntTools_SurfaceRangeLocalizeData & Other);
 
@@ -2797,7 +2797,7 @@ class IntTools_SurfaceRangeSample {
 		/****************** Assign ******************/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_SurfaceRangeSample &
+	:type Other: IntTools_SurfaceRangeSample
 	:rtype: IntTools_SurfaceRangeSample") Assign;
 		IntTools_SurfaceRangeSample & Assign (const IntTools_SurfaceRangeSample & Other);
 
@@ -2814,9 +2814,9 @@ class IntTools_SurfaceRangeSample {
 		/****************** GetDepths ******************/
 		%feature("compactdefaultargs") GetDepths;
 		%feature("autodoc", ":param theDepthU:
-	:type theDepthU: int &
+	:type theDepthU: int
 	:param theDepthV:
-	:type theDepthV: int &
+	:type theDepthV: int
 	:rtype: None") GetDepths;
 		void GetDepths (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2833,9 +2833,9 @@ class IntTools_SurfaceRangeSample {
 		/****************** GetIndexes ******************/
 		%feature("compactdefaultargs") GetIndexes;
 		%feature("autodoc", ":param theIndexU:
-	:type theIndexU: int &
+	:type theIndexU: int
 	:param theIndexV:
-	:type theIndexV: int &
+	:type theIndexV: int
 	:rtype: None") GetIndexes;
 		void GetIndexes (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2878,9 +2878,9 @@ class IntTools_SurfaceRangeSample {
 		/****************** GetRanges ******************/
 		%feature("compactdefaultargs") GetRanges;
 		%feature("autodoc", ":param theRangeU:
-	:type theRangeU: IntTools_CurveRangeSample &
+	:type theRangeU: IntTools_CurveRangeSample
 	:param theRangeV:
-	:type theRangeV: IntTools_CurveRangeSample &
+	:type theRangeV: IntTools_CurveRangeSample
 	:rtype: None") GetRanges;
 		void GetRanges (IntTools_CurveRangeSample & theRangeU,IntTools_CurveRangeSample & theRangeV);
 
@@ -2915,23 +2915,23 @@ class IntTools_SurfaceRangeSample {
 		/****************** IntTools_SurfaceRangeSample ******************/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeSample;
 		%feature("autodoc", ":param theRangeU:
-	:type theRangeU: IntTools_CurveRangeSample &
+	:type theRangeU: IntTools_CurveRangeSample
 	:param theRangeV:
-	:type theRangeV: IntTools_CurveRangeSample &
+	:type theRangeV: IntTools_CurveRangeSample
 	:rtype: None") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample (const IntTools_CurveRangeSample & theRangeU,const IntTools_CurveRangeSample & theRangeV);
 
 		/****************** IntTools_SurfaceRangeSample ******************/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeSample;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_SurfaceRangeSample &
+	:type Other: IntTools_SurfaceRangeSample
 	:rtype: None") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample (const IntTools_SurfaceRangeSample & Other);
 
 		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_SurfaceRangeSample &
+	:type Other: IntTools_SurfaceRangeSample
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const IntTools_SurfaceRangeSample & Other);
 
@@ -2975,30 +2975,30 @@ class IntTools_SurfaceRangeSample {
 		/****************** SetRanges ******************/
 		%feature("compactdefaultargs") SetRanges;
 		%feature("autodoc", ":param theRangeU:
-	:type theRangeU: IntTools_CurveRangeSample &
+	:type theRangeU: IntTools_CurveRangeSample
 	:param theRangeV:
-	:type theRangeV: IntTools_CurveRangeSample &
+	:type theRangeV: IntTools_CurveRangeSample
 	:rtype: None") SetRanges;
 		void SetRanges (const IntTools_CurveRangeSample & theRangeU,const IntTools_CurveRangeSample & theRangeV);
 
 		/****************** SetSampleRangeU ******************/
 		%feature("compactdefaultargs") SetSampleRangeU;
 		%feature("autodoc", ":param theRangeSampleU:
-	:type theRangeSampleU: IntTools_CurveRangeSample &
+	:type theRangeSampleU: IntTools_CurveRangeSample
 	:rtype: None") SetSampleRangeU;
 		void SetSampleRangeU (const IntTools_CurveRangeSample & theRangeSampleU);
 
 		/****************** SetSampleRangeV ******************/
 		%feature("compactdefaultargs") SetSampleRangeV;
 		%feature("autodoc", ":param theRangeSampleV:
-	:type theRangeSampleV: IntTools_CurveRangeSample &
+	:type theRangeSampleV: IntTools_CurveRangeSample
 	:rtype: None") SetSampleRangeV;
 		void SetSampleRangeV (const IntTools_CurveRangeSample & theRangeSampleV);
 
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_SurfaceRangeSample &
+	:type Other: IntTools_SurfaceRangeSample
 	:rtype: IntTools_SurfaceRangeSample") operator =;
 		IntTools_SurfaceRangeSample & operator = (const IntTools_SurfaceRangeSample & Other);
 
@@ -3020,7 +3020,7 @@ class IntTools_SurfaceRangeSampleMapHasher {
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "* Computes a hash code for the given key, in the range [1, theUpperBound] @param theKey the key which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theKey:
-	:type theKey: IntTools_SurfaceRangeSample &
+	:type theKey: IntTools_SurfaceRangeSample
 	:param theUpperBound:
 	:type theUpperBound: int
 	:rtype: int") HashCode;
@@ -3030,9 +3030,9 @@ class IntTools_SurfaceRangeSampleMapHasher {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
 	:param S1:
-	:type S1: IntTools_SurfaceRangeSample &
+	:type S1: IntTools_SurfaceRangeSample
 	:param S2:
-	:type S2: IntTools_SurfaceRangeSample &
+	:type S2: IntTools_SurfaceRangeSample
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const IntTools_SurfaceRangeSample & S1,const IntTools_SurfaceRangeSample & S2);
 
@@ -3054,16 +3054,16 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") CheckCurve;
 		%feature("autodoc", "* Checks if the curve is not covered by the default tolerance (confusion). Builds bounding box for the curve and stores it into <theBox>.
 	:param theCurve:
-	:type theCurve: IntTools_Curve &
+	:type theCurve: IntTools_Curve
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:rtype: bool") CheckCurve;
 		static Standard_Boolean CheckCurve (const IntTools_Curve & theCurve,Bnd_Box & theBox);
 
 		/****************** ClassifyPointByFace ******************/
 		%feature("compactdefaultargs") ClassifyPointByFace;
 		%feature("autodoc", ":param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt2d
 	:rtype: TopAbs_State") ClassifyPointByFace;
@@ -3085,19 +3085,19 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") ComputeTolerance;
 		%feature("autodoc", "* Computes the max distance between points taken from 3D and 2D curves by the same parameter
 	:param theCurve3D:
-	:type theCurve3D: opencascade::handle<Geom_Curve> &
+	:type theCurve3D: Geom_Curve
 	:param theCurve2D:
-	:type theCurve2D: opencascade::handle<Geom2d_Curve> &
+	:type theCurve2D: Geom2d_Curve
 	:param theSurf:
-	:type theSurf: opencascade::handle<Geom_Surface> &
+	:type theSurf: Geom_Surface
 	:param theFirst:
 	:type theFirst: float
 	:param theLast:
 	:type theLast: float
 	:param theMaxDist:
-	:type theMaxDist: float &
+	:type theMaxDist: float
 	:param theMaxPar:
-	:type theMaxPar: float &
+	:type theMaxPar: float
 	:param theTolRange: default value is Precision::Confusion()
 	:type theTolRange: float
 	:rtype: bool") ComputeTolerance;
@@ -3107,9 +3107,9 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") ComputeVV;
 		%feature("autodoc", "* Computes distance between vertex V1 and vertex V2, if the distance is less than sum of vertex tolerances returns zero, otherwise returns negative value
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: int") ComputeVV;
 		static Standard_Integer ComputeVV (const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -3117,7 +3117,7 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") CurveTolerance;
 		%feature("autodoc", "* Returns adaptive tolerance for given aTolBase if aC is trimmed curve and basis curve is parabola, otherwise returns value of aTolBase
 	:param aC:
-	:type aC: opencascade::handle<Geom_Curve> &
+	:type aC: Geom_Curve
 	:param aTolBase:
 	:type aTolBase: float
 	:rtype: float") CurveTolerance;
@@ -3127,7 +3127,7 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") HasInternalEdge;
 		%feature("autodoc", "* Returns True if wire aW contains edges with INTERNAL orientation
 	:param aW:
-	:type aW: TopoDS_Wire &
+	:type aW: TopoDS_Wire
 	:rtype: bool") HasInternalEdge;
 		static Standard_Boolean HasInternalEdge (const TopoDS_Wire & aW);
 
@@ -3145,7 +3145,7 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "* Returns True if aC is BoundedCurve from Geom and the distance between first point of the curve aC and last point is less than 1.e-12
 	:param aC:
-	:type aC: opencascade::handle<Geom_Curve> &
+	:type aC: Geom_Curve
 	:rtype: bool") IsClosed;
 		static Standard_Boolean IsClosed (const opencascade::handle<Geom_Curve> & aC);
 
@@ -3175,9 +3175,9 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") IsInRange;
 		%feature("autodoc", "* Checks if the range <theR> interfere with the range <theRRef>
 	:param theRRef:
-	:type theRRef: IntTools_Range &
+	:type theRRef: IntTools_Range
 	:param theR:
-	:type theR: IntTools_Range &
+	:type theR: IntTools_Range
 	:param theTol:
 	:type theTol: float
 	:rtype: bool") IsInRange;
@@ -3187,9 +3187,9 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") IsMiddlePointsEqual;
 		%feature("autodoc", "* Gets boundary of parameters of E1 and E2. Computes 3d points on each corresponded to average parameters. Returns True if distance between computed points is less than sum of edge tolerance, otherwise returns False.
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:rtype: bool") IsMiddlePointsEqual;
 		static Standard_Boolean IsMiddlePointsEqual (const TopoDS_Edge & E1,const TopoDS_Edge & E2);
 
@@ -3198,7 +3198,7 @@ class IntTools_Tools {
 		%feature("autodoc", ":param theT:
 	:type theT: float
 	:param theRange:
-	:type theRange: IntTools_Range &
+	:type theRange: IntTools_Range
 	:param theTol:
 	:type theTol: float
 	:rtype: bool") IsOnPave;
@@ -3209,7 +3209,7 @@ class IntTools_Tools {
 		%feature("autodoc", ":param theT:
 	:type theT: float
 	:param theRange:
-	:type theRange: IntTools_Range &
+	:type theRange: IntTools_Range
 	:param theTol:
 	:type theTol: float
 	:rtype: bool") IsOnPave1;
@@ -3219,7 +3219,7 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "* Computes square distance between a point on the edge E corresponded to parameter t and vertices of edge E. Returns True if this distance is less than square tolerance of vertex, otherwise returns false.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param t:
 	:type t: float
 	:rtype: bool") IsVertex;
@@ -3229,9 +3229,9 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "* Returns True if square distance between vertex V and a point on the edge E corresponded to parameter t is less than square tolerance of V
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param t:
 	:type t: float
 	:rtype: bool") IsVertex;
@@ -3241,7 +3241,7 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "* Returns True if IsVertx for middle parameter of fist range and first edge returns True and if IsVertex for middle parameter of second range and second range returns True, otherwise returns False
 	:param aCmnPrt:
-	:type aCmnPrt: IntTools_CommonPrt &
+	:type aCmnPrt: IntTools_CommonPrt
 	:rtype: bool") IsVertex;
 		static Standard_Boolean IsVertex (const IntTools_CommonPrt & aCmnPrt);
 
@@ -3253,7 +3253,7 @@ class IntTools_Tools {
 	:param aTolPV:
 	:type aTolPV: float
 	:param aV:
-	:type aV: TopoDS_Vertex &
+	:type aV: TopoDS_Vertex
 	:rtype: bool") IsVertex;
 		static Standard_Boolean IsVertex (const gp_Pnt & aP,const Standard_Real aTolPV,const TopoDS_Vertex & aV);
 
@@ -3261,11 +3261,11 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") MakeFaceFromWireAndFace;
 		%feature("autodoc", "* Build a face based on surface of given face aF and bounded by wire aW
 	:param aW:
-	:type aW: TopoDS_Wire &
+	:type aW: TopoDS_Wire
 	:param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:param aFNew:
-	:type aFNew: TopoDS_Face &
+	:type aFNew: TopoDS_Face
 	:rtype: void") MakeFaceFromWireAndFace;
 		static void MakeFaceFromWireAndFace (const TopoDS_Wire & aW,const TopoDS_Face & aF,TopoDS_Face & aFNew);
 
@@ -3273,9 +3273,9 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") RejectLines;
 		%feature("autodoc", "* Puts curves from aSIn to aSOut except those curves that are coincide with first curve from aSIn.
 	:param aSIn:
-	:type aSIn: IntTools_SequenceOfCurves &
+	:type aSIn: IntTools_SequenceOfCurves
 	:param aSOut:
-	:type aSOut: IntTools_SequenceOfCurves &
+	:type aSOut: IntTools_SequenceOfCurves
 	:rtype: void") RejectLines;
 		static void RejectLines (const IntTools_SequenceOfCurves & aSIn,IntTools_SequenceOfCurves & aSOut);
 
@@ -3296,13 +3296,13 @@ class IntTools_Tools {
 	:param theP:
 	:type theP: gp_Pnt
 	:param theT:
-	:type theT: float &
+	:type theT: float
 	:param theTolP:
-	:type theTolP: float &
+	:type theTolP: float
 	:param theTmin:
-	:type theTmin: float &
+	:type theTmin: float
 	:param theTmax:
-	:type theTmax: float &
+	:type theTmax: float
 	:rtype: int") SegPln;
 		static Standard_Integer SegPln (const gp_Lin & theLin,const Standard_Real theTLin1,const Standard_Real theTLin2,const Standard_Real theTolLin,const gp_Pln & thePln,const Standard_Real theTolPln,gp_Pnt & theP,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3310,29 +3310,29 @@ class IntTools_Tools {
 		%feature("compactdefaultargs") SplitCurve;
 		%feature("autodoc", "* Split aC by average parameter if aC is closed in 3D. Returns positive value if splitting has been done, otherwise returns zero.
 	:param aC:
-	:type aC: IntTools_Curve &
+	:type aC: IntTools_Curve
 	:param aS:
-	:type aS: IntTools_SequenceOfCurves &
+	:type aS: IntTools_SequenceOfCurves
 	:rtype: int") SplitCurve;
 		static Standard_Integer SplitCurve (const IntTools_Curve & aC,IntTools_SequenceOfCurves & aS);
 
 		/****************** VertexParameter ******************/
 		%feature("compactdefaultargs") VertexParameter;
 		%feature("autodoc", ":param theCP:
-	:type theCP: IntTools_CommonPrt &
+	:type theCP: IntTools_CommonPrt
 	:param theT:
-	:type theT: float &
+	:type theT: float
 	:rtype: void") VertexParameter;
 		static void VertexParameter (const IntTools_CommonPrt & theCP,Standard_Real &OutValue);
 
 		/****************** VertexParameters ******************/
 		%feature("compactdefaultargs") VertexParameters;
 		%feature("autodoc", ":param theCP:
-	:type theCP: IntTools_CommonPrt &
+	:type theCP: IntTools_CommonPrt
 	:param theT1:
-	:type theT1: float &
+	:type theT1: float
 	:param theT2:
-	:type theT2: float &
+	:type theT2: float
 	:rtype: void") VertexParameters;
 		static void VertexParameters (const IntTools_CommonPrt & theCP,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3366,7 +3366,7 @@ class IntTools_TopolTool : public Adaptor3d_TopolTool {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes me by surface
 	:param theSurface:
-	:type theSurface: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurface: Adaptor3d_HSurface
 	:rtype: void") Initialize;
 		virtual void Initialize (const opencascade::handle<Adaptor3d_HSurface> & theSurface);
 
@@ -3380,7 +3380,7 @@ class IntTools_TopolTool : public Adaptor3d_TopolTool {
 		%feature("compactdefaultargs") IntTools_TopolTool;
 		%feature("autodoc", "* Initializes me by surface
 	:param theSurface:
-	:type theSurface: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurface: Adaptor3d_HSurface
 	:rtype: None") IntTools_TopolTool;
 		 IntTools_TopolTool (const opencascade::handle<Adaptor3d_HSurface> & theSurface);
 
@@ -3445,38 +3445,38 @@ class IntTools_WLineTool {
 		/****************** DecompositionOfWLine ******************/
 		%feature("compactdefaultargs") DecompositionOfWLine;
 		%feature("autodoc", ":param theWLine:
-	:type theWLine: opencascade::handle<IntPatch_WLine> &
+	:type theWLine: IntPatch_WLine
 	:param theSurface1:
-	:type theSurface1: opencascade::handle<GeomAdaptor_HSurface> &
+	:type theSurface1: GeomAdaptor_HSurface
 	:param theSurface2:
-	:type theSurface2: opencascade::handle<GeomAdaptor_HSurface> &
+	:type theSurface2: GeomAdaptor_HSurface
 	:param theFace1:
-	:type theFace1: TopoDS_Face &
+	:type theFace1: TopoDS_Face
 	:param theFace2:
-	:type theFace2: TopoDS_Face &
+	:type theFace2: TopoDS_Face
 	:param theLConstructor:
-	:type theLConstructor: GeomInt_LineConstructor &
+	:type theLConstructor: GeomInt_LineConstructor
 	:param theAvoidLConstructor:
 	:type theAvoidLConstructor: bool
 	:param theTol:
 	:type theTol: float
 	:param theNewLines:
-	:type theNewLines: IntPatch_SequenceOfLine &
+	:type theNewLines: IntPatch_SequenceOfLine
 	:param theReachedTol3d:
-	:type theReachedTol3d: float &
+	:type theReachedTol3d: float
 	:param &:
-	:type &: opencascade::handle<IntTools_Context>
+	:type &: IntTools_Context
 	:rtype: bool") DecompositionOfWLine;
 		static Standard_Boolean DecompositionOfWLine (const opencascade::handle<IntPatch_WLine> & theWLine,const opencascade::handle<GeomAdaptor_HSurface> & theSurface1,const opencascade::handle<GeomAdaptor_HSurface> & theSurface2,const TopoDS_Face & theFace1,const TopoDS_Face & theFace2,const GeomInt_LineConstructor & theLConstructor,const Standard_Boolean theAvoidLConstructor,const Standard_Real theTol,IntPatch_SequenceOfLine & theNewLines,Standard_Real &OutValue,const opencascade::handle<IntTools_Context> &);
 
 		/****************** NotUseSurfacesForApprox ******************/
 		%feature("compactdefaultargs") NotUseSurfacesForApprox;
 		%feature("autodoc", ":param aF1:
-	:type aF1: TopoDS_Face &
+	:type aF1: TopoDS_Face
 	:param aF2:
-	:type aF2: TopoDS_Face &
+	:type aF2: TopoDS_Face
 	:param WL:
-	:type WL: opencascade::handle<IntPatch_WLine> &
+	:type WL: IntPatch_WLine
 	:param ifprm:
 	:type ifprm: int
 	:param ilprm:
@@ -3537,7 +3537,7 @@ class IntTools_CurveRangeSample : public IntTools_BaseRangeSample {
 		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", ":param Other:
-	:type Other: IntTools_CurveRangeSample &
+	:type Other: IntTools_CurveRangeSample
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const IntTools_CurveRangeSample & Other);
 

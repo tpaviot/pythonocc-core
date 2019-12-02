@@ -135,11 +135,11 @@ class BRepLib {
 		%feature("compactdefaultargs") BoundingVertex;
 		%feature("autodoc", "* Calculates the bounding sphere around the set of vertexes from the theLV list. Returns the center (theNewCenter) and the radius (theNewTol) of this sphere. This can be used to construct the new vertex which covers the given set of other vertices.
 	:param theLV:
-	:type theLV: NCollection_List<TopoDS_Shape> &
+	:type theLV: NCollection_List<TopoDS_Shape>
 	:param theNewCenter:
 	:type theNewCenter: gp_Pnt
 	:param theNewTol:
-	:type theNewTol: float &
+	:type theNewTol: float
 	:rtype: void") BoundingVertex;
 		static void BoundingVertex (const NCollection_List<TopoDS_Shape> & theLV,gp_Pnt & theNewCenter,Standard_Real &OutValue);
 
@@ -147,7 +147,7 @@ class BRepLib {
 		%feature("compactdefaultargs") BuildCurve3d;
 		%feature("autodoc", "* Computes the 3d curve for the edge <E> if it does not exist. Returns True if the curve was computed or existed. Returns False if there is no planar pcurve or the computation failed. <MaxSegment> >= 30 in approximation
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param Tolerance: default value is 1.0e-5
 	:type Tolerance: float
 	:param Continuity: default value is GeomAbs_C1
@@ -163,7 +163,7 @@ class BRepLib {
 		%feature("compactdefaultargs") BuildCurves3d;
 		%feature("autodoc", "* Computes the 3d curves for all the edges of <S> return False if one of the computation failed. <MaxSegment> >= 30 in approximation
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Tolerance:
 	:type Tolerance: float
 	:param Continuity: default value is GeomAbs_C1
@@ -179,7 +179,7 @@ class BRepLib {
 		%feature("compactdefaultargs") BuildCurves3d;
 		%feature("autodoc", "* Computes the 3d curves for all the edges of <S> return False if one of the computation failed.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") BuildCurves3d;
 		static Standard_Boolean BuildCurves3d (const TopoDS_Shape & S);
 
@@ -187,9 +187,9 @@ class BRepLib {
 		%feature("compactdefaultargs") BuildPCurveForEdgeOnPlane;
 		%feature("autodoc", "* Builds pcurve of edge on face if the surface is plane, and updates the edge.
 	:param theE:
-	:type theE: TopoDS_Edge &
+	:type theE: TopoDS_Edge
 	:param theF:
-	:type theF: TopoDS_Face &
+	:type theF: TopoDS_Face
 	:rtype: void") BuildPCurveForEdgeOnPlane;
 		static void BuildPCurveForEdgeOnPlane (const TopoDS_Edge & theE,const TopoDS_Face & theF);
 
@@ -197,11 +197,11 @@ class BRepLib {
 		%feature("compactdefaultargs") BuildPCurveForEdgeOnPlane;
 		%feature("autodoc", "* Builds pcurve of edge on face if the surface is plane, but does not update the edge. The output are the pcurve and the flag telling that pcurve was built.
 	:param theE:
-	:type theE: TopoDS_Edge &
+	:type theE: TopoDS_Edge
 	:param theF:
-	:type theF: TopoDS_Face &
+	:type theF: TopoDS_Face
 	:param aC2D:
-	:type aC2D: opencascade::handle<Geom2d_Curve> &
+	:type aC2D: Geom2d_Curve
 	:param bToUpdate:
 	:type bToUpdate: bool
 	:rtype: void") BuildPCurveForEdgeOnPlane;
@@ -211,7 +211,7 @@ class BRepLib {
 		%feature("compactdefaultargs") CheckSameRange;
 		%feature("autodoc", "* checks if the Edge is same range IGNORING the same range flag of the edge Confusion argument is to compare real numbers idenpendently of any model space tolerance
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param Confusion: default value is 1.0e-12
 	:type Confusion: float
 	:rtype: bool") CheckSameRange;
@@ -221,7 +221,7 @@ class BRepLib {
 		%feature("compactdefaultargs") EncodeRegularity;
 		%feature("autodoc", "* Encodes the Regularity of edges on a Shape. Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edges's regularity are coded before, nothing is done.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TolAng: default value is 1.0e-10
 	:type TolAng: float
 	:rtype: void") EncodeRegularity;
@@ -231,9 +231,9 @@ class BRepLib {
 		%feature("compactdefaultargs") EncodeRegularity;
 		%feature("autodoc", "* Encodes the Regularity of edges in list <LE> on the shape <S> Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edges's regularity are coded before, nothing is done.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LE:
-	:type LE: TopTools_ListOfShape &
+	:type LE: TopTools_ListOfShape
 	:param TolAng: default value is 1.0e-10
 	:type TolAng: float
 	:rtype: void") EncodeRegularity;
@@ -243,11 +243,11 @@ class BRepLib {
 		%feature("compactdefaultargs") EncodeRegularity;
 		%feature("autodoc", "* Encodes the Regularity beetween <F1> and <F2> by <E> Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edge's regularity is coded before, nothing is done.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:param TolAng: default value is 1.0e-10
 	:type TolAng: float
 	:rtype: void") EncodeRegularity;
@@ -257,7 +257,7 @@ class BRepLib {
 		%feature("compactdefaultargs") EnsureNormalConsistency;
 		%feature("autodoc", "* Corrects the normals in Poly_Triangulation of faces, in such way that normals at nodes lying along smooth edges have the same value on both adjacent triangulations. Returns True if any correction is done.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param theAngTol: default value is 0.001
 	:type theAngTol: float
 	:param ForceComputeNormals: default value is Standard_False
@@ -269,7 +269,7 @@ class BRepLib {
 		%feature("compactdefaultargs") ExtendFace;
 		%feature("autodoc", "* Enlarges the face on the given value. @param theF [in] The face to extend @param theExtVal [in] The extension value @param theExtUMin [in] Defines whether to extend the face in UMin direction @param theExtUMax [in] Defines whether to extend the face in UMax direction @param theExtVMin [in] Defines whether to extend the face in VMin direction @param theExtVMax [in] Defines whether to extend the face in VMax direction @param theFExtended [in] The extended face
 	:param theF:
-	:type theF: TopoDS_Face &
+	:type theF: TopoDS_Face
 	:param theExtVal:
 	:type theExtVal: float
 	:param theExtUMin:
@@ -281,7 +281,7 @@ class BRepLib {
 	:param theExtVMax:
 	:type theExtVMax: bool
 	:param theFExtended:
-	:type theFExtended: TopoDS_Face &
+	:type theFExtended: TopoDS_Face
 	:rtype: void") ExtendFace;
 		static void ExtendFace (const TopoDS_Face & theF,const Standard_Real theExtVal,const Standard_Boolean theExtUMin,const Standard_Boolean theExtUMax,const Standard_Boolean theExtVMin,const Standard_Boolean theExtVMax,TopoDS_Face & theFExtended);
 
@@ -289,7 +289,7 @@ class BRepLib {
 		%feature("compactdefaultargs") FindValidRange;
 		%feature("autodoc", "* For an edge defined by 3d curve and tolerance and vertices defined by points, parameters on curve and tolerances, finds a range of curve between vertices not covered by vertices tolerances. Returns false if there is no such range. Otherwise, sets theFirst and theLast as its bounds.
 	:param theCurve:
-	:type theCurve: Adaptor3d_Curve &
+	:type theCurve: Adaptor3d_Curve
 	:param theTolE:
 	:type theTolE: float
 	:param theParV1:
@@ -305,9 +305,9 @@ class BRepLib {
 	:param theTolV2:
 	:type theTolV2: float
 	:param theFirst:
-	:type theFirst: float &
+	:type theFirst: float
 	:param theLast:
-	:type theLast: float &
+	:type theLast: float
 	:rtype: bool") FindValidRange;
 		static Standard_Boolean FindValidRange (const Adaptor3d_Curve & theCurve,const Standard_Real theTolE,const Standard_Real theParV1,const gp_Pnt & thePntV1,const Standard_Real theTolV1,const Standard_Real theParV2,const gp_Pnt & thePntV2,const Standard_Real theTolV2,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -315,11 +315,11 @@ class BRepLib {
 		%feature("compactdefaultargs") FindValidRange;
 		%feature("autodoc", "* Finds a range of 3d curve of the edge not covered by vertices tolerances. Returns false if there is no such range. Otherwise, sets theFirst and theLast as its bounds.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theFirst:
-	:type theFirst: float &
+	:type theFirst: float
 	:param theLast:
-	:type theLast: float &
+	:type theLast: float
 	:rtype: bool") FindValidRange;
 		static Standard_Boolean FindValidRange (const TopoDS_Edge & theEdge,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -327,7 +327,7 @@ class BRepLib {
 		%feature("compactdefaultargs") OrientClosedSolid;
 		%feature("autodoc", "* Orients the solid forward and the shell with the orientation to have matter in the solid. Returns False if the solid is unOrientable (open or incoherent)
 	:param solid:
-	:type solid: TopoDS_Solid &
+	:type solid: TopoDS_Solid
 	:rtype: bool") OrientClosedSolid;
 		static Standard_Boolean OrientClosedSolid (TopoDS_Solid & solid);
 
@@ -335,7 +335,7 @@ class BRepLib {
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "* Sets the current plane to P.
 	:param P:
-	:type P: opencascade::handle<Geom_Plane> &
+	:type P: Geom_Plane
 	:rtype: void") Plane;
 		static void Plane (const opencascade::handle<Geom_Plane> & P);
 
@@ -363,9 +363,9 @@ class BRepLib {
 		%feature("compactdefaultargs") ReverseSortFaces;
 		%feature("autodoc", "* Sorts in LF the Faces of S on the reverse complexity of their surfaces (other,Torus,Sphere,Cone,Cylinder,Plane)
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LF:
-	:type LF: TopTools_ListOfShape &
+	:type LF: TopTools_ListOfShape
 	:rtype: void") ReverseSortFaces;
 		static void ReverseSortFaces (const TopoDS_Shape & S,TopTools_ListOfShape & LF);
 
@@ -373,7 +373,7 @@ class BRepLib {
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "* Computes new 2d curve(s) for the edge <theEdge> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on the Edge.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param Tolerance: default value is 1.0e-5
 	:type Tolerance: float
 	:rtype: void") SameParameter;
@@ -383,11 +383,11 @@ class BRepLib {
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "* Computes new 2d curve(s) for the edge <theEdge> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on the Edge. theNewTol is a new tolerance of vertices of the input edge (not applied inside the algorithm, but pre-computed). If IsUseOldEdge is true then the input edge will be modified, otherwise the new copy of input edge will be created. Returns the new edge as a result, can be ignored if IsUseOldEdge is true.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theTolerance:
 	:type theTolerance: float
 	:param theNewTol:
-	:type theNewTol: float &
+	:type theNewTol: float
 	:param IsUseOldEdge:
 	:type IsUseOldEdge: bool
 	:rtype: TopoDS_Edge") SameParameter;
@@ -397,7 +397,7 @@ class BRepLib {
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "* Computes new 2d curve(s) for all the edges of <S> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on an Edge.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Tolerance: default value is 1.0e-5
 	:type Tolerance: float
 	:param forced: default value is Standard_False
@@ -409,9 +409,9 @@ class BRepLib {
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "* Computes new 2d curve(s) for all the edges of <S> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on an Edge. theReshaper is used to record the modifications of input shape <S> to prevent any modifications on the shape itself. Thus the input shape (and its subshapes) will not be modified, instead the reshaper will contain a modified empty-copies of original subshapes as substitutions.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param theReshaper:
-	:type theReshaper: BRepTools_ReShape &
+	:type theReshaper: BRepTools_ReShape
 	:param Tolerance: default value is 1.0e-5
 	:type Tolerance: float
 	:param forced: default value is Standard_False
@@ -423,7 +423,7 @@ class BRepLib {
 		%feature("compactdefaultargs") SameRange;
 		%feature("autodoc", "* will make all the curve representation have the same range domain for the parameters. This will IGNORE the same range flag value to proceed. If there is a 3D curve there it will the range of that curve. If not the first curve representation encountered in the list will give its range to the all the other curves.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param Tolerance: default value is 1.0e-5
 	:type Tolerance: float
 	:rtype: void") SameRange;
@@ -433,9 +433,9 @@ class BRepLib {
 		%feature("compactdefaultargs") SortFaces;
 		%feature("autodoc", "* Sorts in LF the Faces of S on the complexity of their surfaces (Plane,Cylinder,Cone,Sphere,Torus,other)
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LF:
-	:type LF: TopTools_ListOfShape &
+	:type LF: TopTools_ListOfShape
 	:rtype: void") SortFaces;
 		static void SortFaces (const TopoDS_Shape & S,TopTools_ListOfShape & LF);
 
@@ -443,7 +443,7 @@ class BRepLib {
 		%feature("compactdefaultargs") UpdateEdgeTol;
 		%feature("autodoc", "* Checks if the edge has a Tolerance smaller than -- -- -- -- MaxToleranceToCheck if so it will compute the radius of -- the cylindrical pipe surface that MinToleranceRequest is the minimum tolerance before it is usefull to start testing. Usually it should be arround 10e-5 contains all -- the curve represenation of the edge returns True if the Edge tolerance had to be updated
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param MinToleranceRequest:
 	:type MinToleranceRequest: float
 	:param MaxToleranceToCheck:
@@ -455,7 +455,7 @@ class BRepLib {
 		%feature("compactdefaultargs") UpdateEdgeTolerance;
 		%feature("autodoc", "* -- Checks all the edges of the shape whose -- -- -- Tolerance is smaller than MaxToleranceToCheck -- Returns True if at least one edge was updated -- MinToleranceRequest is the minimum tolerance before -- it -- is usefull to start testing. Usually it should be arround -- 10e-5-- //! Warning :The method is very slow as it checks all. Use only in interfaces or processing assimilate batch
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param MinToleranceRequest:
 	:type MinToleranceRequest: float
 	:param MaxToleranceToCheck:
@@ -467,7 +467,7 @@ class BRepLib {
 		%feature("compactdefaultargs") UpdateInnerTolerances;
 		%feature("autodoc", "* Checks tolerances of edges (including inner points) and vertices of a shape and updates them to satisfy 'SameParameter' condition
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") UpdateInnerTolerances;
 		static void UpdateInnerTolerances (const TopoDS_Shape & S);
 
@@ -475,7 +475,7 @@ class BRepLib {
 		%feature("compactdefaultargs") UpdateTolerances;
 		%feature("autodoc", "* Replaces tolerance of FACE EDGE VERTEX by the tolerance Max of their connected handling shapes. It is not necessary to use this call after SameParameter. (called in)
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param verifyFaceTolerance: default value is Standard_False
 	:type verifyFaceTolerance: bool
 	:rtype: void") UpdateTolerances;
@@ -485,9 +485,9 @@ class BRepLib {
 		%feature("compactdefaultargs") UpdateTolerances;
 		%feature("autodoc", "* Replaces tolerance of FACE EDGE VERTEX by the tolerance Max of their connected handling shapes. It is not necessary to use this call after SameParameter. (called in) theReshaper is used to record the modifications of input shape <S> to prevent any modifications on the shape itself. Thus the input shape (and its subshapes) will not be modified, instead the reshaper will contain a modified empty-copies of original subshapes as substitutions.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param theReshaper:
-	:type theReshaper: BRepTools_ReShape &
+	:type theReshaper: BRepTools_ReShape
 	:param verifyFaceTolerance: default value is Standard_False
 	:type verifyFaceTolerance: bool
 	:rtype: void") UpdateTolerances;
@@ -518,9 +518,9 @@ class BRepLib_CheckCurveOnSurface {
 		%feature("compactdefaultargs") BRepLib_CheckCurveOnSurface;
 		%feature("autodoc", "* Contructor
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: None") BRepLib_CheckCurveOnSurface;
 		 BRepLib_CheckCurveOnSurface (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
 
@@ -540,9 +540,9 @@ class BRepLib_CheckCurveOnSurface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Sets the data for the algorithm
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: None") Init;
 		void Init (const TopoDS_Edge & theEdge,const TopoDS_Face & theFace);
 
@@ -588,9 +588,9 @@ class BRepLib_CheckCurveOnSurface {
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "* Returns first and last parameter of the curves (2D- and 3D-curves are considered to have same range)
 	:param theFirst:
-	:type theFirst: float &
+	:type theFirst: float
 	:param theLast:
-	:type theLast: float &
+	:type theLast: float
 	:rtype: None") Range;
 		void Range (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -650,7 +650,7 @@ class BRepLib_FindSurface {
 		%feature("compactdefaultargs") BRepLib_FindSurface;
 		%feature("autodoc", "* Computes the Surface from the edges of <S> with the given tolerance. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set. If <OnlyClosed> is true, then S sould be a wire and the existing surface, on which wire S is not closed in 2D, will be ignored.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Tol: default value is -1
 	:type Tol: float
 	:param OnlyPlane: default value is Standard_False
@@ -674,7 +674,7 @@ class BRepLib_FindSurface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Computes the Surface from the edges of <S> with the given tolerance. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set. If <OnlyClosed> is true, then S sould be a wire and the existing surface, on which wire S is not closed in 2D, will be ignored.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Tol: default value is -1
 	:type Tol: float
 	:param OnlyPlane: default value is Standard_False
@@ -723,7 +723,7 @@ class BRepLib_FuseEdges {
 		%feature("compactdefaultargs") AvoidEdges;
 		%feature("autodoc", "* set edges to avoid being fused
 	:param theMapEdg:
-	:type theMapEdg: TopTools_IndexedMapOfShape &
+	:type theMapEdg: TopTools_IndexedMapOfShape
 	:rtype: None") AvoidEdges;
 		void AvoidEdges (const TopTools_IndexedMapOfShape & theMapEdg);
 
@@ -731,7 +731,7 @@ class BRepLib_FuseEdges {
 		%feature("compactdefaultargs") BRepLib_FuseEdges;
 		%feature("autodoc", "* Initialise members and build construction of map of ancestors.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param PerformNow: default value is Standard_False
 	:type PerformNow: bool
 	:rtype: None") BRepLib_FuseEdges;
@@ -741,7 +741,7 @@ class BRepLib_FuseEdges {
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "* returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.
 	:param theMapLstEdg:
-	:type theMapLstEdg: TopTools_DataMapOfIntegerListOfShape &
+	:type theMapLstEdg: TopTools_DataMapOfIntegerListOfShape
 	:rtype: None") Edges;
 		void Edges (TopTools_DataMapOfIntegerListOfShape & theMapLstEdg);
 
@@ -749,7 +749,7 @@ class BRepLib_FuseEdges {
 		%feature("compactdefaultargs") Faces;
 		%feature("autodoc", "* returns the map of modified faces.
 	:param theMapFac:
-	:type theMapFac: TopTools_DataMapOfShapeShape &
+	:type theMapFac: TopTools_DataMapOfShapeShape
 	:rtype: None") Faces;
 		void Faces (TopTools_DataMapOfShapeShape & theMapFac);
 
@@ -769,7 +769,7 @@ class BRepLib_FuseEdges {
 		%feature("compactdefaultargs") ResultEdges;
 		%feature("autodoc", "* returns all the fused edges. each integer entry in the map corresponds to the integer in the DataMapOfIntegerListOfShape we get in method Edges. That is to say, to the list of edges in theMapLstEdg(i) corresponds the resulting edge theMapEdge(i)
 	:param theMapEdg:
-	:type theMapEdg: TopTools_DataMapOfIntegerShape &
+	:type theMapEdg: TopTools_DataMapOfIntegerShape
 	:rtype: None") ResultEdges;
 		void ResultEdges (TopTools_DataMapOfIntegerShape & theMapEdg);
 
@@ -812,7 +812,7 @@ class BRepLib_MakeShape : public BRepLib_Command {
 		%feature("compactdefaultargs") DescendantFaces;
 		%feature("autodoc", "* returns the list of generated Faces.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: TopTools_ListOfShape") DescendantFaces;
 		virtual const TopTools_ListOfShape & DescendantFaces (const TopoDS_Face & F);
 
@@ -820,7 +820,7 @@ class BRepLib_MakeShape : public BRepLib_Command {
 		%feature("compactdefaultargs") FaceStatus;
 		%feature("autodoc", "* returns the status of the Face after the shape creation.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: BRepLib_ShapeModification") FaceStatus;
 		virtual BRepLib_ShapeModification FaceStatus (const TopoDS_Face & F);
 
@@ -828,7 +828,7 @@ class BRepLib_MakeShape : public BRepLib_Command {
 		%feature("compactdefaultargs") FacesFromEdges;
 		%feature("autodoc", "* returns a list of the created faces from the edge <E>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: TopTools_ListOfShape") FacesFromEdges;
 		virtual const TopTools_ListOfShape & FacesFromEdges (const TopoDS_Edge & E);
 
@@ -836,7 +836,7 @@ class BRepLib_MakeShape : public BRepLib_Command {
 		%feature("compactdefaultargs") HasDescendants;
 		%feature("autodoc", "* Returns True if the Face generates new topology.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") HasDescendants;
 		virtual Standard_Boolean HasDescendants (const TopoDS_Face & F);
 
@@ -887,9 +887,9 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -936,9 +936,9 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Lin
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const gp_Lin & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -976,9 +976,9 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Circ
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const gp_Circ & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -1016,9 +1016,9 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Elips
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const gp_Elips & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -1056,9 +1056,9 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Hypr
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const gp_Hypr & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -1096,23 +1096,23 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Parab
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const gp_Parab & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom_Curve> &
+	:type L: Geom_Curve
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const opencascade::handle<Geom_Curve> & L);
 
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom_Curve> &
+	:type L: Geom_Curve
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1123,7 +1123,7 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom_Curve> &
+	:type L: Geom_Curve
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -1134,18 +1134,18 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom_Curve> &
+	:type L: Geom_Curve
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const opencascade::handle<Geom_Curve> & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom_Curve> &
+	:type L: Geom_Curve
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -1160,11 +1160,11 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom_Curve> &
+	:type L: Geom_Curve
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1175,18 +1175,18 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const opencascade::handle<Geom2d_Curve> & L,const opencascade::handle<Geom_Surface> & S);
 
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1197,9 +1197,9 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -1210,22 +1210,22 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge;
 		 BRepLib_MakeEdge (const opencascade::handle<Geom2d_Curve> & L,const opencascade::handle<Geom_Surface> & S,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -1240,13 +1240,13 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1268,14 +1268,14 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Curve> & C);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1286,7 +1286,7 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -1297,18 +1297,18 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Curve> & C,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -1323,11 +1323,11 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1338,18 +1338,18 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom2d_Curve> & C,const opencascade::handle<Geom_Surface> & S);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1360,9 +1360,9 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -1373,22 +1373,22 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom2d_Curve> & C,const opencascade::handle<Geom_Surface> & S,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -1403,13 +1403,13 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1452,9 +1452,9 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge2d ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", ":param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge2d;
 		 BRepLib_MakeEdge2d (const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -1501,9 +1501,9 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Lin2d
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge2d;
 		 BRepLib_MakeEdge2d (const gp_Lin2d & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -1541,9 +1541,9 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Circ2d
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge2d;
 		 BRepLib_MakeEdge2d (const gp_Circ2d & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -1581,9 +1581,9 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Elips2d
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge2d;
 		 BRepLib_MakeEdge2d (const gp_Elips2d & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -1621,9 +1621,9 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Hypr2d
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge2d;
 		 BRepLib_MakeEdge2d (const gp_Hypr2d & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
@@ -1661,23 +1661,23 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		%feature("autodoc", ":param L:
 	:type L: gp_Parab2d
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge2d;
 		 BRepLib_MakeEdge2d (const gp_Parab2d & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
 		/****************** BRepLib_MakeEdge2d ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:rtype: None") BRepLib_MakeEdge2d;
 		 BRepLib_MakeEdge2d (const opencascade::handle<Geom2d_Curve> & L);
 
 		/****************** BRepLib_MakeEdge2d ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1688,7 +1688,7 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge2d ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param P1:
 	:type P1: gp_Pnt2d
 	:param P2:
@@ -1699,18 +1699,18 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge2d ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakeEdge2d;
 		 BRepLib_MakeEdge2d (const opencascade::handle<Geom2d_Curve> & L,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
 		/****************** BRepLib_MakeEdge2d ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param P1:
 	:type P1: gp_Pnt2d
 	:param P2:
@@ -1725,11 +1725,11 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeEdge2d ******************/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<Geom2d_Curve> &
+	:type L: Geom2d_Curve
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1751,14 +1751,14 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom2d_Curve> & C);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1769,7 +1769,7 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param P1:
 	:type P1: gp_Pnt2d
 	:param P2:
@@ -1780,18 +1780,18 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom2d_Curve> & C,const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param P1:
 	:type P1: gp_Pnt2d
 	:param P2:
@@ -1806,11 +1806,11 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:param p1:
 	:type p1: float
 	:param p2:
@@ -1854,7 +1854,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the wire <W> in the current face.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") Add;
 		void Add (const TopoDS_Wire & W);
 
@@ -1868,7 +1868,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "* Load a face. Usefull to add wires.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") BRepLib_MakeFace;
 		 BRepLib_MakeFace (const TopoDS_Face & F);
 
@@ -1916,7 +1916,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "* Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param TolDegen:
 	:type TolDegen: float
 	:rtype: None") BRepLib_MakeFace;
@@ -2006,7 +2006,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "* Make a face from a Surface. Accepts min & max parameters to construct the face's bounds. Also accepts tolerance value (TolDegen) for resolution of degenerated edges.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UMin:
 	:type UMin: float
 	:param UMax:
@@ -2024,7 +2024,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "* Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param OnlyPlane: default value is Standard_False
 	:type OnlyPlane: bool
 	:rtype: None") BRepLib_MakeFace;
@@ -2036,7 +2036,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 	:param P:
 	:type P: gp_Pln
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Inside: default value is Standard_True
 	:type Inside: bool
 	:rtype: None") BRepLib_MakeFace;
@@ -2048,7 +2048,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 	:param C:
 	:type C: gp_Cylinder
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Inside: default value is Standard_True
 	:type Inside: bool
 	:rtype: None") BRepLib_MakeFace;
@@ -2060,7 +2060,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 	:param C:
 	:type C: gp_Cone
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Inside: default value is Standard_True
 	:type Inside: bool
 	:rtype: None") BRepLib_MakeFace;
@@ -2072,7 +2072,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 	:param S:
 	:type S: gp_Sphere
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Inside: default value is Standard_True
 	:type Inside: bool
 	:rtype: None") BRepLib_MakeFace;
@@ -2084,7 +2084,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 	:param C:
 	:type C: gp_Torus
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Inside: default value is Standard_True
 	:type Inside: bool
 	:rtype: None") BRepLib_MakeFace;
@@ -2094,9 +2094,9 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "* Make a face from a Surface and a wire.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Inside: default value is Standard_True
 	:type Inside: bool
 	:rtype: None") BRepLib_MakeFace;
@@ -2106,9 +2106,9 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "* Adds the wire <W> in the face <F>
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") BRepLib_MakeFace;
 		 BRepLib_MakeFace (const TopoDS_Face & F,const TopoDS_Wire & W);
 
@@ -2127,7 +2127,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Load the face.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Init;
 		void Init (const TopoDS_Face & F);
 
@@ -2135,7 +2135,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Creates the face from the surface. If Bound is True a wire is made from the natural bounds. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param Bound:
 	:type Bound: bool
 	:param TolDegen:
@@ -2147,7 +2147,7 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Creates the face from the surface and the min-max values. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UMin:
 	:type UMin: float
 	:param UMax:
@@ -2165,11 +2165,11 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "* Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom_Curve> &
+	:type theCurve: Geom_Curve
 	:param theMaxTol:
 	:type theMaxTol: float
 	:param theActTol:
-	:type theActTol: float &
+	:type theActTol: float
 	:rtype: bool") IsDegenerated;
 		static Standard_Boolean IsDegenerated (const opencascade::handle<Geom_Curve> & theCurve,const Standard_Real theMaxTol,Standard_Real &OutValue);
 
@@ -2203,7 +2203,7 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: None") Add;
 		void Add (const TopoDS_Vertex & V);
 
@@ -2259,20 +2259,20 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 		/****************** BRepLib_MakePolygon ******************/
 		%feature("compactdefaultargs") BRepLib_MakePolygon;
 		%feature("autodoc", ":param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: None") BRepLib_MakePolygon;
 		 BRepLib_MakePolygon (const TopoDS_Vertex & V1,const TopoDS_Vertex & V2);
 
 		/****************** BRepLib_MakePolygon ******************/
 		%feature("compactdefaultargs") BRepLib_MakePolygon;
 		%feature("autodoc", ":param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:param V3:
-	:type V3: TopoDS_Vertex &
+	:type V3: TopoDS_Vertex
 	:param Close: default value is Standard_False
 	:type Close: bool
 	:rtype: None") BRepLib_MakePolygon;
@@ -2281,13 +2281,13 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 		/****************** BRepLib_MakePolygon ******************/
 		%feature("compactdefaultargs") BRepLib_MakePolygon;
 		%feature("autodoc", ":param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:param V3:
-	:type V3: TopoDS_Vertex &
+	:type V3: TopoDS_Vertex
 	:param V4:
-	:type V4: TopoDS_Vertex &
+	:type V4: TopoDS_Vertex
 	:param Close: default value is Standard_False
 	:type Close: bool
 	:rtype: None") BRepLib_MakePolygon;
@@ -2353,7 +2353,7 @@ class BRepLib_MakeShell : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeShell ******************/
 		%feature("compactdefaultargs") BRepLib_MakeShell;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param Segment: default value is Standard_False
 	:type Segment: bool
 	:rtype: None") BRepLib_MakeShell;
@@ -2362,7 +2362,7 @@ class BRepLib_MakeShell : public BRepLib_MakeShape {
 		/****************** BRepLib_MakeShell ******************/
 		%feature("compactdefaultargs") BRepLib_MakeShell;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UMin:
 	:type UMin: float
 	:param UMax:
@@ -2385,7 +2385,7 @@ class BRepLib_MakeShell : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Creates the shell from the surface and the min-max values.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UMin:
 	:type UMin: float
 	:param UMax:
@@ -2429,7 +2429,7 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Add the shell to the current solid.
 	:param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:rtype: None") Add;
 		void Add (const TopoDS_Shell & S);
 
@@ -2443,7 +2443,7 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeSolid;
 		%feature("autodoc", "* Make a solid from a CompSolid.
 	:param S:
-	:type S: TopoDS_CompSolid &
+	:type S: TopoDS_CompSolid
 	:rtype: None") BRepLib_MakeSolid;
 		 BRepLib_MakeSolid (const TopoDS_CompSolid & S);
 
@@ -2451,7 +2451,7 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeSolid;
 		%feature("autodoc", "* Make a solid from a shell.
 	:param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:rtype: None") BRepLib_MakeSolid;
 		 BRepLib_MakeSolid (const TopoDS_Shell & S);
 
@@ -2459,9 +2459,9 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeSolid;
 		%feature("autodoc", "* Make a solid from two shells.
 	:param S1:
-	:type S1: TopoDS_Shell &
+	:type S1: TopoDS_Shell
 	:param S2:
-	:type S2: TopoDS_Shell &
+	:type S2: TopoDS_Shell
 	:rtype: None") BRepLib_MakeSolid;
 		 BRepLib_MakeSolid (const TopoDS_Shell & S1,const TopoDS_Shell & S2);
 
@@ -2469,11 +2469,11 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeSolid;
 		%feature("autodoc", "* Make a solid from three shells.
 	:param S1:
-	:type S1: TopoDS_Shell &
+	:type S1: TopoDS_Shell
 	:param S2:
-	:type S2: TopoDS_Shell &
+	:type S2: TopoDS_Shell
 	:param S3:
-	:type S3: TopoDS_Shell &
+	:type S3: TopoDS_Shell
 	:rtype: None") BRepLib_MakeSolid;
 		 BRepLib_MakeSolid (const TopoDS_Shell & S1,const TopoDS_Shell & S2,const TopoDS_Shell & S3);
 
@@ -2481,7 +2481,7 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeSolid;
 		%feature("autodoc", "* Make a solid from a solid. Usefull for adding later.
 	:param So:
-	:type So: TopoDS_Solid &
+	:type So: TopoDS_Solid
 	:rtype: None") BRepLib_MakeSolid;
 		 BRepLib_MakeSolid (const TopoDS_Solid & So);
 
@@ -2489,9 +2489,9 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeSolid;
 		%feature("autodoc", "* Add a shell to a solid.
 	:param So:
-	:type So: TopoDS_Solid &
+	:type So: TopoDS_Solid
 	:param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:rtype: None") BRepLib_MakeSolid;
 		 BRepLib_MakeSolid (const TopoDS_Solid & So,const TopoDS_Shell & S);
 
@@ -2499,7 +2499,7 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") FaceStatus;
 		%feature("autodoc", "* returns the status of the Face after the shape creation.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: BRepLib_ShapeModification") FaceStatus;
 		virtual BRepLib_ShapeModification FaceStatus (const TopoDS_Face & F);
 
@@ -2566,7 +2566,7 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Add the edge <E> to the current wire.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E);
 
@@ -2574,7 +2574,7 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Add the edges of <W> to the current wire.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") Add;
 		void Add (const TopoDS_Wire & W);
 
@@ -2582,7 +2582,7 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Add the edges of <L> to the current wire. The edges are not to be consecutive. But they are to be all connected geometrically or topologically.
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") Add;
 		void Add (const TopTools_ListOfShape & L);
 
@@ -2596,7 +2596,7 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeWire;
 		%feature("autodoc", "* Make a Wire from an edge.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") BRepLib_MakeWire;
 		 BRepLib_MakeWire (const TopoDS_Edge & E);
 
@@ -2604,9 +2604,9 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeWire;
 		%feature("autodoc", "* Make a Wire from two edges.
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:rtype: None") BRepLib_MakeWire;
 		 BRepLib_MakeWire (const TopoDS_Edge & E1,const TopoDS_Edge & E2);
 
@@ -2614,11 +2614,11 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeWire;
 		%feature("autodoc", "* Make a Wire from three edges.
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param E3:
-	:type E3: TopoDS_Edge &
+	:type E3: TopoDS_Edge
 	:rtype: None") BRepLib_MakeWire;
 		 BRepLib_MakeWire (const TopoDS_Edge & E1,const TopoDS_Edge & E2,const TopoDS_Edge & E3);
 
@@ -2626,13 +2626,13 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeWire;
 		%feature("autodoc", "* Make a Wire from four edges.
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param E3:
-	:type E3: TopoDS_Edge &
+	:type E3: TopoDS_Edge
 	:param E4:
-	:type E4: TopoDS_Edge &
+	:type E4: TopoDS_Edge
 	:rtype: None") BRepLib_MakeWire;
 		 BRepLib_MakeWire (const TopoDS_Edge & E1,const TopoDS_Edge & E2,const TopoDS_Edge & E3,const TopoDS_Edge & E4);
 
@@ -2640,7 +2640,7 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeWire;
 		%feature("autodoc", "* Make a Wire from a Wire. Usefull for adding later.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") BRepLib_MakeWire;
 		 BRepLib_MakeWire (const TopoDS_Wire & W);
 
@@ -2648,9 +2648,9 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 		%feature("compactdefaultargs") BRepLib_MakeWire;
 		%feature("autodoc", "* Add an edge to a wire.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") BRepLib_MakeWire;
 		 BRepLib_MakeWire (const TopoDS_Wire & W,const TopoDS_Edge & E);
 

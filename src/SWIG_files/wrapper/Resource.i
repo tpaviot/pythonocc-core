@@ -92,9 +92,9 @@ class Resource_LexicalCompare {
 		%feature("compactdefaultargs") IsLower;
 		%feature("autodoc", "* Returns True if <Left> is lower than <Right>.
 	:param Left:
-	:type Left: TCollection_AsciiString &
+	:type Left: TCollection_AsciiString
 	:param Right:
-	:type Right: TCollection_AsciiString &
+	:type Right: TCollection_AsciiString
 	:rtype: bool") IsLower;
 		Standard_Boolean IsLower (const TCollection_AsciiString & Left,const TCollection_AsciiString & Right);
 
@@ -138,7 +138,7 @@ class Resource_Manager : public Standard_Transient {
 		%feature("compactdefaultargs") GetResourcePath;
 		%feature("autodoc", "* Gets the resource file full path by its name. If corresponding environment variable is not set or file doesn't exist returns empty string.
 	:param aPath:
-	:type aPath: TCollection_AsciiString &
+	:type aPath: TCollection_AsciiString
 	:param aName:
 	:type aName: char *
 	:param isUserDefaults:
@@ -177,9 +177,9 @@ class Resource_Manager : public Standard_Transient {
 		%feature("autodoc", ":param aName:
 	:type aName: char *
 	:param aDefaultsDirectory:
-	:type aDefaultsDirectory: TCollection_AsciiString &
+	:type aDefaultsDirectory: TCollection_AsciiString
 	:param anUserDefaultsDirectory:
-	:type anUserDefaultsDirectory: TCollection_AsciiString &
+	:type anUserDefaultsDirectory: TCollection_AsciiString
 	:param Verbose: default value is Standard_False
 	:type Verbose: bool
 	:rtype: None") Resource_Manager;
@@ -261,7 +261,7 @@ class Resource_Unicode {
 	:param fromstr:
 	:type fromstr: char *
 	:param tostr:
-	:type tostr: TCollection_ExtendedString &
+	:type tostr: TCollection_ExtendedString
 	:rtype: void") ConvertANSIToUnicode;
 		static void ConvertANSIToUnicode (const char * fromstr,TCollection_ExtendedString & tostr);
 
@@ -271,7 +271,7 @@ class Resource_Unicode {
 	:param fromstr:
 	:type fromstr: char *
 	:param tostr:
-	:type tostr: TCollection_ExtendedString &
+	:type tostr: TCollection_ExtendedString
 	:rtype: bool") ConvertBig5ToUnicode;
 		static Standard_Boolean ConvertBig5ToUnicode (const char * fromstr,TCollection_ExtendedString & tostr);
 
@@ -281,7 +281,7 @@ class Resource_Unicode {
 	:param fromstr:
 	:type fromstr: char *
 	:param tostr:
-	:type tostr: TCollection_ExtendedString &
+	:type tostr: TCollection_ExtendedString
 	:rtype: void") ConvertEUCToUnicode;
 		static void ConvertEUCToUnicode (const char * fromstr,TCollection_ExtendedString & tostr);
 
@@ -291,7 +291,7 @@ class Resource_Unicode {
 	:param theFromStr:
 	:type theFromStr: char *
 	:param theToStr:
-	:type theToStr: TCollection_ExtendedString &
+	:type theToStr: TCollection_ExtendedString
 	:rtype: None") ConvertFormatToUnicode;
 		static void ConvertFormatToUnicode (const char * theFromStr,TCollection_ExtendedString & theToStr);
 
@@ -303,7 +303,7 @@ class Resource_Unicode {
 	:param theFromStr:
 	:type theFromStr: char *
 	:param theToStr:
-	:type theToStr: TCollection_ExtendedString &
+	:type theToStr: TCollection_ExtendedString
 	:rtype: void") ConvertFormatToUnicode;
 		static void ConvertFormatToUnicode (const Resource_FormatType theFormat,const char * theFromStr,TCollection_ExtendedString & theToStr);
 
@@ -313,7 +313,7 @@ class Resource_Unicode {
 	:param fromstr:
 	:type fromstr: char *
 	:param tostr:
-	:type tostr: TCollection_ExtendedString &
+	:type tostr: TCollection_ExtendedString
 	:rtype: bool") ConvertGBKToUnicode;
 		static Standard_Boolean ConvertGBKToUnicode (const char * fromstr,TCollection_ExtendedString & tostr);
 
@@ -323,7 +323,7 @@ class Resource_Unicode {
 	:param fromstr:
 	:type fromstr: char *
 	:param tostr:
-	:type tostr: TCollection_ExtendedString &
+	:type tostr: TCollection_ExtendedString
 	:rtype: void") ConvertGBToUnicode;
 		static void ConvertGBToUnicode (const char * fromstr,TCollection_ExtendedString & tostr);
 
@@ -333,7 +333,7 @@ class Resource_Unicode {
 	:param fromstr:
 	:type fromstr: char *
 	:param tostr:
-	:type tostr: TCollection_ExtendedString &
+	:type tostr: TCollection_ExtendedString
 	:rtype: void") ConvertSJISToUnicode;
 		static void ConvertSJISToUnicode (const char * fromstr,TCollection_ExtendedString & tostr);
 
@@ -341,9 +341,9 @@ class Resource_Unicode {
 		%feature("compactdefaultargs") ConvertUnicodeToANSI;
 		%feature("autodoc", "* Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in ANSI format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 	:param fromstr:
-	:type fromstr: TCollection_ExtendedString &
+	:type fromstr: TCollection_ExtendedString
 	:param tostr:
-	:type tostr: Standard_PCharacter &
+	:type tostr: Standard_PCharacter
 	:param maxsize:
 	:type maxsize: int
 	:rtype: bool") ConvertUnicodeToANSI;
@@ -353,9 +353,9 @@ class Resource_Unicode {
 		%feature("compactdefaultargs") ConvertUnicodeToEUC;
 		%feature("autodoc", "* Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in EUC format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 	:param fromstr:
-	:type fromstr: TCollection_ExtendedString &
+	:type fromstr: TCollection_ExtendedString
 	:param tostr:
-	:type tostr: Standard_PCharacter &
+	:type tostr: Standard_PCharacter
 	:param maxsize:
 	:type maxsize: int
 	:rtype: bool") ConvertUnicodeToEUC;
@@ -367,9 +367,9 @@ class Resource_Unicode {
 	:param theFormat:
 	:type theFormat: Resource_FormatType
 	:param theFromStr:
-	:type theFromStr: TCollection_ExtendedString &
+	:type theFromStr: TCollection_ExtendedString
 	:param theToStr:
-	:type theToStr: Standard_PCharacter &
+	:type theToStr: Standard_PCharacter
 	:param theMaxSize:
 	:type theMaxSize: int
 	:rtype: bool") ConvertUnicodeToFormat;
@@ -379,9 +379,9 @@ class Resource_Unicode {
 		%feature("compactdefaultargs") ConvertUnicodeToFormat;
 		%feature("autodoc", "* Converts the Unicode string of extended characters to the non-ASCII string according to the format returned by the function GetFormat. @param theFromStr [in] text to convert @param theToStr [out] destination buffer @param theMaxSize [in] destination buffer length
 	:param theFromStr:
-	:type theFromStr: TCollection_ExtendedString &
+	:type theFromStr: TCollection_ExtendedString
 	:param theToStr:
-	:type theToStr: Standard_PCharacter &
+	:type theToStr: Standard_PCharacter
 	:param theMaxSize:
 	:type theMaxSize: int
 	:rtype: bool") ConvertUnicodeToFormat;
@@ -391,9 +391,9 @@ class Resource_Unicode {
 		%feature("compactdefaultargs") ConvertUnicodeToGB;
 		%feature("autodoc", "* Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in GB format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 	:param fromstr:
-	:type fromstr: TCollection_ExtendedString &
+	:type fromstr: TCollection_ExtendedString
 	:param tostr:
-	:type tostr: Standard_PCharacter &
+	:type tostr: Standard_PCharacter
 	:param maxsize:
 	:type maxsize: int
 	:rtype: bool") ConvertUnicodeToGB;
@@ -403,9 +403,9 @@ class Resource_Unicode {
 		%feature("compactdefaultargs") ConvertUnicodeToSJIS;
 		%feature("autodoc", "* Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in SJIS format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 	:param fromstr:
-	:type fromstr: TCollection_ExtendedString &
+	:type fromstr: TCollection_ExtendedString
 	:param tostr:
-	:type tostr: Standard_PCharacter &
+	:type tostr: Standard_PCharacter
 	:param maxsize:
 	:type maxsize: int
 	:rtype: bool") ConvertUnicodeToSJIS;

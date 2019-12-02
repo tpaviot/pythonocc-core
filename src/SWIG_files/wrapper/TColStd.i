@@ -528,7 +528,7 @@ class TColStd_HPackedMapOfInteger : public Standard_Transient {
 		/****************** TColStd_HPackedMapOfInteger ******************/
 		%feature("compactdefaultargs") TColStd_HPackedMapOfInteger;
 		%feature("autodoc", ":param theOther:
-	:type theOther: TColStd_PackedMapOfInteger &
+	:type theOther: TColStd_PackedMapOfInteger
 	:rtype: None") TColStd_HPackedMapOfInteger;
 		 TColStd_HPackedMapOfInteger (const TColStd_PackedMapOfInteger & theOther);
 

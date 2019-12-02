@@ -100,7 +100,7 @@ class FEmTool_Assembly {
 	:param Dimension:
 	:type Dimension: int
 	:param LinearForm:
-	:type LinearForm: math_Vector &
+	:type LinearForm: math_Vector
 	:param Value:
 	:type Value: float
 	:rtype: None") AddConstraint;
@@ -116,7 +116,7 @@ class FEmTool_Assembly {
 	:param Dimension2:
 	:type Dimension2: int
 	:param Mat:
-	:type Mat: math_Matrix &
+	:type Mat: math_Matrix
 	:rtype: None") AddMatrix;
 		void AddMatrix (const Standard_Integer Element,const Standard_Integer Dimension1,const Standard_Integer Dimension2,const math_Matrix & Mat);
 
@@ -128,23 +128,23 @@ class FEmTool_Assembly {
 	:param Dimension:
 	:type Dimension: int
 	:param Vec:
-	:type Vec: math_Vector &
+	:type Vec: math_Vector
 	:rtype: None") AddVector;
 		void AddVector (const Standard_Integer Element,const Standard_Integer Dimension,const math_Vector & Vec);
 
 		/****************** FEmTool_Assembly ******************/
 		%feature("compactdefaultargs") FEmTool_Assembly;
 		%feature("autodoc", ":param Dependence:
-	:type Dependence: TColStd_Array2OfInteger &
+	:type Dependence: TColStd_Array2OfInteger
 	:param Table:
-	:type Table: opencascade::handle<FEmTool_HAssemblyTable> &
+	:type Table: FEmTool_HAssemblyTable
 	:rtype: None") FEmTool_Assembly;
 		 FEmTool_Assembly (const TColStd_Array2OfInteger & Dependence,const opencascade::handle<FEmTool_HAssemblyTable> & Table);
 
 		/****************** GetAssemblyTable ******************/
 		%feature("compactdefaultargs") GetAssemblyTable;
 		%feature("autodoc", ":param AssTable:
-	:type AssTable: opencascade::handle<FEmTool_HAssemblyTable> &
+	:type AssTable: FEmTool_HAssemblyTable
 	:rtype: None") GetAssemblyTable;
 		void GetAssemblyTable (opencascade::handle<FEmTool_HAssemblyTable> & AssTable);
 
@@ -180,7 +180,7 @@ class FEmTool_Assembly {
 		/****************** Solution ******************/
 		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", ":param Solution:
-	:type Solution: math_Vector &
+	:type Solution: math_Vector
 	:rtype: None") Solution;
 		void Solution (math_Vector & Solution);
 
@@ -215,7 +215,7 @@ class FEmTool_Curve : public Standard_Transient {
 		%feature("autodoc", ":param U:
 	:type U: float
 	:param Pnt:
-	:type Pnt: TColStd_Array1OfReal &
+	:type Pnt: TColStd_Array1OfReal
 	:rtype: None") D0;
 		void D0 (const Standard_Real U,TColStd_Array1OfReal & Pnt);
 
@@ -224,7 +224,7 @@ class FEmTool_Curve : public Standard_Transient {
 		%feature("autodoc", ":param U:
 	:type U: float
 	:param Vec:
-	:type Vec: TColStd_Array1OfReal &
+	:type Vec: TColStd_Array1OfReal
 	:rtype: None") D1;
 		void D1 (const Standard_Real U,TColStd_Array1OfReal & Vec);
 
@@ -233,7 +233,7 @@ class FEmTool_Curve : public Standard_Transient {
 		%feature("autodoc", ":param U:
 	:type U: float
 	:param Vec:
-	:type Vec: TColStd_Array1OfReal &
+	:type Vec: TColStd_Array1OfReal
 	:rtype: None") D2;
 		void D2 (const Standard_Real U,TColStd_Array1OfReal & Vec);
 
@@ -256,7 +256,7 @@ class FEmTool_Curve : public Standard_Transient {
 	:param NbElements:
 	:type NbElements: int
 	:param TheBase:
-	:type TheBase: opencascade::handle<PLib_Base> &
+	:type TheBase: PLib_Base
 	:param Tolerance:
 	:type Tolerance: float
 	:rtype: None") FEmTool_Curve;
@@ -267,7 +267,7 @@ class FEmTool_Curve : public Standard_Transient {
 		%feature("autodoc", ":param IndexOfElement:
 	:type IndexOfElement: int
 	:param Coeffs:
-	:type Coeffs: TColStd_Array2OfReal &
+	:type Coeffs: TColStd_Array2OfReal
 	:rtype: None") GetElement;
 		void GetElement (const Standard_Integer IndexOfElement,TColStd_Array2OfReal & Coeffs);
 
@@ -275,7 +275,7 @@ class FEmTool_Curve : public Standard_Transient {
 		%feature("compactdefaultargs") GetPolynom;
 		%feature("autodoc", "* returns coefficients of all elements in canonical base.
 	:param Coeffs:
-	:type Coeffs: TColStd_Array1OfReal &
+	:type Coeffs: TColStd_Array1OfReal
 	:rtype: None") GetPolynom;
 		void GetPolynom (TColStd_Array1OfReal & Coeffs);
 
@@ -291,7 +291,7 @@ class FEmTool_Curve : public Standard_Transient {
 	:param LastU:
 	:type LastU: float
 	:param Length:
-	:type Length: float &
+	:type Length: float
 	:rtype: None") Length;
 		void Length (const Standard_Real FirstU,const Standard_Real LastU,Standard_Real &OutValue);
 
@@ -307,9 +307,9 @@ class FEmTool_Curve : public Standard_Transient {
 	:param Tol:
 	:type Tol: float
 	:param NewDegree:
-	:type NewDegree: int &
+	:type NewDegree: int
 	:param MaxError:
-	:type MaxError: float &
+	:type MaxError: float
 	:rtype: None") ReduceDegree;
 		void ReduceDegree (const Standard_Integer IndexOfElement,const Standard_Real Tol,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -327,7 +327,7 @@ class FEmTool_Curve : public Standard_Transient {
 		%feature("autodoc", ":param IndexOfElement:
 	:type IndexOfElement: int
 	:param Coeffs:
-	:type Coeffs: TColStd_Array2OfReal &
+	:type Coeffs: TColStd_Array2OfReal
 	:rtype: None") SetElement;
 		void SetElement (const Standard_Integer IndexOfElement,const TColStd_Array2OfReal & Coeffs);
 
@@ -360,7 +360,7 @@ class FEmTool_ElementaryCriterion : public Standard_Transient {
 	:param Dim:
 	:type Dim: int
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: void") Gradient;
 		virtual void Gradient (const Standard_Integer Dim,math_Vector & G);
 
@@ -372,7 +372,7 @@ class FEmTool_ElementaryCriterion : public Standard_Transient {
 	:param Dim2:
 	:type Dim2: int
 	:param H:
-	:type H: math_Matrix &
+	:type H: math_Matrix
 	:rtype: void") Hessian;
 		virtual void Hessian (const Standard_Integer Dim1,const Standard_Integer Dim2,math_Matrix & H);
 
@@ -380,7 +380,7 @@ class FEmTool_ElementaryCriterion : public Standard_Transient {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Set the coefficient of the Element (the Curve)
 	:param Coeff:
-	:type Coeff: opencascade::handle<TColStd_HArray2OfReal> &
+	:type Coeff: TColStd_HArray2OfReal
 	:rtype: None") Set;
 		void Set (const opencascade::handle<TColStd_HArray2OfReal> & Coeff);
 
@@ -420,7 +420,7 @@ class FEmTool_ElementsOfRefMatrix : public math_FunctionSet {
 		/****************** FEmTool_ElementsOfRefMatrix ******************/
 		%feature("compactdefaultargs") FEmTool_ElementsOfRefMatrix;
 		%feature("autodoc", ":param TheBase:
-	:type TheBase: opencascade::handle<PLib_Base> &
+	:type TheBase: PLib_Base
 	:param DerOrder:
 	:type DerOrder: int
 	:rtype: None") FEmTool_ElementsOfRefMatrix;
@@ -442,9 +442,9 @@ class FEmTool_ElementsOfRefMatrix : public math_FunctionSet {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise. F contains results only for i<=j in following order: P0*P0, P0*P1, P0*P2... P1*P1, P1*P2,... (upper triangle of matrix {PiPj})
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -495,9 +495,9 @@ class FEmTool_SparseMatrix : public Standard_Transient {
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* returns the product of a SparseMatrix by a vector. An exception is raised if the dimensions are different
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param MX:
-	:type MX: math_Vector &
+	:type MX: math_Vector
 	:rtype: void") Multiplied;
 		virtual void Multiplied (const math_Vector & X,math_Vector & MX);
 
@@ -517,9 +517,9 @@ class FEmTool_SparseMatrix : public Standard_Transient {
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "* Direct Solve of AX = B
 	:param B:
-	:type B: math_Vector &
+	:type B: math_Vector
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:rtype: void") Solve;
 		virtual void Solve (const math_Vector & B,math_Vector & X);
 
@@ -527,13 +527,13 @@ class FEmTool_SparseMatrix : public Standard_Transient {
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "* Iterative solve of AX = B
 	:param B:
-	:type B: math_Vector &
+	:type B: math_Vector
 	:param Init:
-	:type Init: math_Vector &
+	:type Init: math_Vector
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param Residual:
-	:type Residual: math_Vector &
+	:type Residual: math_Vector
 	:param Tolerance: default value is 1.0e-8
 	:type Tolerance: float
 	:param NbIterations: default value is 50
@@ -577,7 +577,7 @@ class FEmTool_LinearFlexion : public FEmTool_ElementaryCriterion {
 		%feature("autodoc", ":param Dimension:
 	:type Dimension: int
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: void") Gradient;
 		virtual void Gradient (const Standard_Integer Dimension,math_Vector & G);
 
@@ -588,7 +588,7 @@ class FEmTool_LinearFlexion : public FEmTool_ElementaryCriterion {
 	:param Dimension2:
 	:type Dimension2: int
 	:param H:
-	:type H: math_Matrix &
+	:type H: math_Matrix
 	:rtype: void") Hessian;
 		virtual void Hessian (const Standard_Integer Dimension1,const Standard_Integer Dimension2,math_Matrix & H);
 
@@ -633,7 +633,7 @@ class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
 		%feature("autodoc", ":param Dimension:
 	:type Dimension: int
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: void") Gradient;
 		virtual void Gradient (const Standard_Integer Dimension,math_Vector & G);
 
@@ -644,7 +644,7 @@ class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
 	:param Dimension2:
 	:type Dimension2: int
 	:param H:
-	:type H: math_Matrix &
+	:type H: math_Matrix
 	:rtype: void") Hessian;
 		virtual void Hessian (const Standard_Integer Dimension1,const Standard_Integer Dimension2,math_Matrix & H);
 
@@ -689,7 +689,7 @@ class FEmTool_LinearTension : public FEmTool_ElementaryCriterion {
 		%feature("autodoc", ":param Dimension:
 	:type Dimension: int
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: void") Gradient;
 		virtual void Gradient (const Standard_Integer Dimension,math_Vector & G);
 
@@ -700,7 +700,7 @@ class FEmTool_LinearTension : public FEmTool_ElementaryCriterion {
 	:param Dimension2:
 	:type Dimension2: int
 	:param H:
-	:type H: math_Matrix &
+	:type H: math_Matrix
 	:rtype: void") Hessian;
 		virtual void Hessian (const Standard_Integer Dimension1,const Standard_Integer Dimension2,math_Matrix & H);
 
@@ -754,7 +754,7 @@ class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 		/****************** FEmTool_ProfileMatrix ******************/
 		%feature("compactdefaultargs") FEmTool_ProfileMatrix;
 		%feature("autodoc", ":param FirstIndexes:
-	:type FirstIndexes: TColStd_Array1OfInteger &
+	:type FirstIndexes: TColStd_Array1OfInteger
 	:rtype: None") FEmTool_ProfileMatrix;
 		 FEmTool_ProfileMatrix (const TColStd_Array1OfInteger & FirstIndexes);
 
@@ -778,9 +778,9 @@ class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* returns the product of a SparseMatrix by a vector. An exception is raised if the dimensions are different
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param MX:
-	:type MX: math_Vector &
+	:type MX: math_Vector
 	:rtype: None") Multiplied;
 		void Multiplied (const math_Vector & X,math_Vector & MX);
 
@@ -810,9 +810,9 @@ class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "* Direct Solve of AX = B
 	:param B:
-	:type B: math_Vector &
+	:type B: math_Vector
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:rtype: None") Solve;
 		void Solve (const math_Vector & B,math_Vector & X);
 
@@ -820,13 +820,13 @@ class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "* Iterative solve of AX = B
 	:param B:
-	:type B: math_Vector &
+	:type B: math_Vector
 	:param Init:
-	:type Init: math_Vector &
+	:type Init: math_Vector
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param Residual:
-	:type Residual: math_Vector &
+	:type Residual: math_Vector
 	:param Tolerance: default value is 1.0e-8
 	:type Tolerance: float
 	:param NbIterations: default value is 50

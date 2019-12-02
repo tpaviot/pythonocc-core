@@ -143,9 +143,9 @@ typedef NCollection_Shared <NCollection_Vector <gp_Pnt>> VectorOfPnt;
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs processing of the given face.
 	:param theDFace:
-	:type theDFace: IMeshData::IFaceHandle &
+	:type theDFace: IMeshData::IFaceHandle
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: void") Perform;
 		virtual void Perform (const IMeshData::IFaceHandle & theDFace,const IMeshTools_Parameters & theParameters);
 
@@ -232,7 +232,7 @@ typedef Standard_Integer Target;
 	:param theReservedSize:
 	:type theReservedSize: int
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_IncAllocator> &
+	:type theAllocator: NCollection_IncAllocator
 	:rtype: None") BRepMesh_CircleInspector;
 		 BRepMesh_CircleInspector (const Standard_Real theTolerance,const Standard_Integer theReservedSize,const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -242,7 +242,7 @@ typedef Standard_Integer Target;
 	:param theIndex:
 	:type theIndex: int
 	:param theCircle:
-	:type theCircle: BRepMesh_Circle &
+	:type theCircle: BRepMesh_Circle
 	:rtype: inline void") Bind;
 		inline void Bind (const Standard_Integer theIndex,const BRepMesh_Circle & theCircle);
 
@@ -311,7 +311,7 @@ class BRepMesh_CircleTool {
 		%feature("compactdefaultargs") BRepMesh_CircleTool;
 		%feature("autodoc", "* Constructor. @param theAllocator memory allocator to be used by internal structures.
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_IncAllocator> &
+	:type theAllocator: NCollection_IncAllocator
 	:rtype: None") BRepMesh_CircleTool;
 		 BRepMesh_CircleTool (const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -321,7 +321,7 @@ class BRepMesh_CircleTool {
 	:param theReservedSize:
 	:type theReservedSize: int
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_IncAllocator> &
+	:type theAllocator: NCollection_IncAllocator
 	:rtype: None") BRepMesh_CircleTool;
 		 BRepMesh_CircleTool (const Standard_Integer theReservedSize,const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -383,7 +383,7 @@ class BRepMesh_CircleTool {
 	:param theLocation:
 	:type theLocation: gp_XY
 	:param theRadius:
-	:type theRadius: float &
+	:type theRadius: float
 	:rtype: bool") MakeCircle;
 		static Standard_Boolean MakeCircle (const gp_XY & thePoint1,const gp_XY & thePoint2,const gp_XY & thePoint3,gp_XY & theLocation,Standard_Real &OutValue);
 
@@ -466,11 +466,11 @@ class BRepMesh_Classifier : public Standard_Transient {
 	:param theWire:
 	:type theWire: NCollection_Sequence< gp_Pnt2d *>
 	:param theTolUV:
-	:type theTolUV: std::pair<float, float> &
+	:type theTolUV: std::pair<float, float>
 	:param theRangeU:
-	:type theRangeU: std::pair<float, float> &
+	:type theRangeU: std::pair<float, float>
 	:param theRangeV:
-	:type theRangeV: std::pair<float, float> &
+	:type theRangeV: std::pair<float, float>
 	:rtype: None") RegisterWire;
 		void RegisterWire (const NCollection_Sequence<const gp_Pnt2d *> & theWire,const std::pair<Standard_Real, Standard_Real> & theTolUV,const std::pair<Standard_Real, Standard_Real> & theRangeU,const std::pair<Standard_Real, Standard_Real> & theRangeV);
 
@@ -516,9 +516,9 @@ class BRepMesh_CurveTessellator : public IMeshTools_CurveTessellator {
 		%feature("compactdefaultargs") BRepMesh_CurveTessellator;
 		%feature("autodoc", "* Constructor.
 	:param theEdge:
-	:type theEdge: IMeshData::IEdgeHandle &
+	:type theEdge: IMeshData::IEdgeHandle
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: None") BRepMesh_CurveTessellator;
 		 BRepMesh_CurveTessellator (const IMeshData::IEdgeHandle & theEdge,const IMeshTools_Parameters & theParameters);
 
@@ -526,13 +526,13 @@ class BRepMesh_CurveTessellator : public IMeshTools_CurveTessellator {
 		%feature("compactdefaultargs") BRepMesh_CurveTessellator;
 		%feature("autodoc", "* Constructor.
 	:param theEdge:
-	:type theEdge: IMeshData::IEdgeHandle &
+	:type theEdge: IMeshData::IEdgeHandle
 	:param theOrientation:
 	:type theOrientation: TopAbs_Orientation
 	:param theFace:
-	:type theFace: IMeshData::IFaceHandle &
+	:type theFace: IMeshData::IFaceHandle
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: None") BRepMesh_CurveTessellator;
 		 BRepMesh_CurveTessellator (const IMeshData::IEdgeHandle & theEdge,const TopAbs_Orientation theOrientation,const IMeshData::IFaceHandle & theFace,const IMeshTools_Parameters & theParameters);
 
@@ -550,7 +550,7 @@ class BRepMesh_CurveTessellator : public IMeshTools_CurveTessellator {
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const Standard_Integer theIndex,gp_Pnt & thePoint,Standard_Real &OutValue);
 
@@ -576,7 +576,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", "* Adds element to the mesh if it is not already in the mesh. @param theElement element to be added to the mesh. returns index of the element in the structure.
 	:param theElement:
-	:type theElement: BRepMesh_Triangle &
+	:type theElement: BRepMesh_Triangle
 	:rtype: int") AddElement;
 		Standard_Integer AddElement (const BRepMesh_Triangle & theElement);
 
@@ -584,7 +584,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") AddLink;
 		%feature("autodoc", "* Adds link to the mesh if it is not already in the mesh. @param theLink link to be added to the mesh. returns index of the link in the structure.
 	:param theLink:
-	:type theLink: BRepMesh_Edge &
+	:type theLink: BRepMesh_Edge
 	:rtype: int") AddLink;
 		Standard_Integer AddLink (const BRepMesh_Edge & theLink);
 
@@ -592,7 +592,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "* Adds node to the mesh if it is not already in the mesh. @param theNode node to be added to the mesh. @param isForceAdd adds the given node to structure without checking on coincidence with other nodes. returns index of the node in the structure.
 	:param theNode:
-	:type theNode: BRepMesh_Vertex &
+	:type theNode: BRepMesh_Vertex
 	:param isForceAdd: default value is Standard_False
 	:type isForceAdd: bool
 	:rtype: int") AddNode;
@@ -608,7 +608,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") BRepMesh_DataStructureOfDelaun;
 		%feature("autodoc", "* Constructor. @param theAllocator memory allocator to be used by internal structures. @param theReservedNodeSize presumed number of nodes in this mesh.
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_IncAllocator> &
+	:type theAllocator: NCollection_IncAllocator
 	:param theReservedNodeSize: default value is 100
 	:type theReservedNodeSize: int
 	:rtype: None") BRepMesh_DataStructureOfDelaun;
@@ -643,9 +643,9 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") ElementNodes;
 		%feature("autodoc", "* Returns indices of nodes forming the given element. @param theElement element which nodes should be retrieved. @param[out] theNodes nodes of the given element.
 	:param theElement:
-	:type theElement: BRepMesh_Triangle &
+	:type theElement: BRepMesh_Triangle
 	:param ):
-	:type ): int ( & theNodes
+	:type ): int (  theNodes
 	:rtype: None") ElementNodes;
 		void ElementNodes (const BRepMesh_Triangle & theElement,Standard_Integer ( & theNodes )[3]);
 
@@ -691,7 +691,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") IndexOf;
 		%feature("autodoc", "* Finds the index of the given node. @param theNode node to find. returns index of the given element of zero if node is not in the mesh.
 	:param theNode:
-	:type theNode: BRepMesh_Vertex &
+	:type theNode: BRepMesh_Vertex
 	:rtype: int") IndexOf;
 		Standard_Integer IndexOf (const BRepMesh_Vertex & theNode);
 
@@ -699,7 +699,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") IndexOf;
 		%feature("autodoc", "* Finds the index of the given link. @param theLink link to find. returns index of the given element of zero if link is not in the mesh.
 	:param theLink:
-	:type theLink: BRepMesh_Edge &
+	:type theLink: BRepMesh_Edge
 	:rtype: int") IndexOf;
 		Standard_Integer IndexOf (const BRepMesh_Edge & theLink);
 
@@ -777,7 +777,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 	:param theIndex:
 	:type theIndex: int
 	:param theNewElement:
-	:type theNewElement: BRepMesh_Triangle &
+	:type theNewElement: BRepMesh_Triangle
 	:rtype: bool") SubstituteElement;
 		Standard_Boolean SubstituteElement (const Standard_Integer theIndex,const BRepMesh_Triangle & theNewElement);
 
@@ -787,7 +787,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 	:param theIndex:
 	:type theIndex: int
 	:param theNewLink:
-	:type theNewLink: BRepMesh_Edge &
+	:type theNewLink: BRepMesh_Edge
 	:rtype: bool") SubstituteLink;
 		Standard_Boolean SubstituteLink (const Standard_Integer theIndex,const BRepMesh_Edge & theNewLink);
 
@@ -797,7 +797,7 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 	:param theIndex:
 	:type theIndex: int
 	:param theNewNode:
-	:type theNewNode: BRepMesh_Vertex &
+	:type theNewNode: BRepMesh_Vertex
 	:rtype: bool") SubstituteNode;
 		Standard_Boolean SubstituteNode (const Standard_Integer theIndex,const BRepMesh_Vertex & theNewNode);
 
@@ -822,7 +822,7 @@ class BRepMesh_Deflection : public Standard_Transient {
 		%feature("compactdefaultargs") ComputeAbsoluteDeflection;
 		%feature("autodoc", "* Returns absolute deflection for theShape with respect to the relative deflection and theMaxShapeSize. @param theShape shape for that the deflection should be computed. @param theRelativeDeflection relative deflection. @param theMaxShapeSize maximum size of the whole shape. returns absolute deflection for the shape.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theRelativeDeflection:
 	:type theRelativeDeflection: float
 	:param theMaxShapeSize:
@@ -834,11 +834,11 @@ class BRepMesh_Deflection : public Standard_Transient {
 		%feature("compactdefaultargs") ComputeDeflection;
 		%feature("autodoc", "* Computes and updates deflection of the given discrete edge.
 	:param theDEdge:
-	:type theDEdge: IMeshData::IEdgeHandle &
+	:type theDEdge: IMeshData::IEdgeHandle
 	:param theMaxShapeSize:
 	:type theMaxShapeSize: float
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: void") ComputeDeflection;
 		static void ComputeDeflection (const IMeshData::IEdgeHandle & theDEdge,const Standard_Real theMaxShapeSize,const IMeshTools_Parameters & theParameters);
 
@@ -846,9 +846,9 @@ class BRepMesh_Deflection : public Standard_Transient {
 		%feature("compactdefaultargs") ComputeDeflection;
 		%feature("autodoc", "* Computes and updates deflection of the given discrete wire.
 	:param theDWire:
-	:type theDWire: IMeshData::IWireHandle &
+	:type theDWire: IMeshData::IWireHandle
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: void") ComputeDeflection;
 		static void ComputeDeflection (const IMeshData::IWireHandle & theDWire,const IMeshTools_Parameters & theParameters);
 
@@ -856,9 +856,9 @@ class BRepMesh_Deflection : public Standard_Transient {
 		%feature("compactdefaultargs") ComputeDeflection;
 		%feature("autodoc", "* Computes and updates deflection of the given discrete face.
 	:param theDFace:
-	:type theDFace: IMeshData::IFaceHandle &
+	:type theDFace: IMeshData::IFaceHandle
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: void") ComputeDeflection;
 		static void ComputeDeflection (const IMeshData::IFaceHandle & theDFace,const IMeshTools_Parameters & theParameters);
 
@@ -883,7 +883,7 @@ class BRepMesh_Delaun {
 		%feature("compactdefaultargs") AddVertices;
 		%feature("autodoc", "* Adds some vertices into the triangulation.
 	:param theVerticesIndices:
-	:type theVerticesIndices: IMeshData::VectorOfInteger &
+	:type theVerticesIndices: IMeshData::VectorOfInteger
 	:rtype: None") AddVertices;
 		void AddVertices (IMeshData::VectorOfInteger & theVerticesIndices);
 
@@ -891,7 +891,7 @@ class BRepMesh_Delaun {
 		%feature("compactdefaultargs") BRepMesh_Delaun;
 		%feature("autodoc", "* Creates instance of triangulator, but do not run the algorithm automatically.
 	:param theOldMesh:
-	:type theOldMesh: opencascade::handle<BRepMesh_DataStructureOfDelaun> &
+	:type theOldMesh: BRepMesh_DataStructureOfDelaun
 	:param theCellsCountU:
 	:type theCellsCountU: int
 	:param theCellsCountV:
@@ -905,7 +905,7 @@ class BRepMesh_Delaun {
 		%feature("compactdefaultargs") BRepMesh_Delaun;
 		%feature("autodoc", "* Creates the triangulation with an empty Mesh data structure.
 	:param theVertices:
-	:type theVertices: IMeshData::Array1OfVertexOfDelaun &
+	:type theVertices: IMeshData::Array1OfVertexOfDelaun
 	:rtype: None") BRepMesh_Delaun;
 		 BRepMesh_Delaun (IMeshData::Array1OfVertexOfDelaun & theVertices);
 
@@ -913,9 +913,9 @@ class BRepMesh_Delaun {
 		%feature("compactdefaultargs") BRepMesh_Delaun;
 		%feature("autodoc", "* Creates the triangulation with an existent Mesh data structure.
 	:param theOldMesh:
-	:type theOldMesh: opencascade::handle<BRepMesh_DataStructureOfDelaun> &
+	:type theOldMesh: BRepMesh_DataStructureOfDelaun
 	:param theVertices:
-	:type theVertices: IMeshData::Array1OfVertexOfDelaun &
+	:type theVertices: IMeshData::Array1OfVertexOfDelaun
 	:rtype: None") BRepMesh_Delaun;
 		 BRepMesh_Delaun (const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theOldMesh,IMeshData::Array1OfVertexOfDelaun & theVertices);
 
@@ -923,9 +923,9 @@ class BRepMesh_Delaun {
 		%feature("compactdefaultargs") BRepMesh_Delaun;
 		%feature("autodoc", "* Creates the triangulation with an existant Mesh data structure.
 	:param theOldMesh:
-	:type theOldMesh: opencascade::handle<BRepMesh_DataStructureOfDelaun> &
+	:type theOldMesh: BRepMesh_DataStructureOfDelaun
 	:param theVertexIndices:
-	:type theVertexIndices: IMeshData::VectorOfInteger &
+	:type theVertexIndices: IMeshData::VectorOfInteger
 	:rtype: None") BRepMesh_Delaun;
 		 BRepMesh_Delaun (const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theOldMesh,IMeshData::VectorOfInteger & theVertexIndices);
 
@@ -933,9 +933,9 @@ class BRepMesh_Delaun {
 		%feature("compactdefaultargs") BRepMesh_Delaun;
 		%feature("autodoc", "* Creates the triangulation with an existant Mesh data structure.
 	:param theOldMesh:
-	:type theOldMesh: opencascade::handle<BRepMesh_DataStructureOfDelaun> &
+	:type theOldMesh: BRepMesh_DataStructureOfDelaun
 	:param theVertexIndices:
-	:type theVertexIndices: IMeshData::VectorOfInteger &
+	:type theVertexIndices: IMeshData::VectorOfInteger
 	:param theCellsCountU:
 	:type theCellsCountU: int
 	:param theCellsCountV:
@@ -955,11 +955,11 @@ class BRepMesh_Delaun {
 	:param theTriangleId:
 	:type theTriangleId: int
 	:param theVertex:
-	:type theVertex: BRepMesh_Vertex &
+	:type theVertex: BRepMesh_Vertex
 	:param theSqTolerance:
 	:type theSqTolerance: float
 	:param theEdgeOn:
-	:type theEdgeOn: int &
+	:type theEdgeOn: int
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const Standard_Integer theTriangleId,const BRepMesh_Vertex & theVertex,const Standard_Real theSqTolerance,Standard_Integer &OutValue);
 
@@ -991,7 +991,7 @@ class BRepMesh_Delaun {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the triangulation with an array of vertices.
 	:param theVertices:
-	:type theVertices: IMeshData::Array1OfVertexOfDelaun &
+	:type theVertices: IMeshData::Array1OfVertexOfDelaun
 	:rtype: None") Init;
 		void Init (IMeshData::Array1OfVertexOfDelaun & theVertices);
 
@@ -1009,7 +1009,7 @@ class BRepMesh_Delaun {
 		%feature("compactdefaultargs") RemoveVertex;
 		%feature("autodoc", "* Removes a vertex from the triangulation.
 	:param theVertex:
-	:type theVertex: BRepMesh_Vertex &
+	:type theVertex: BRepMesh_Vertex
 	:rtype: None") RemoveVertex;
 		void RemoveVertex (const BRepMesh_Vertex & theVertex);
 
@@ -1053,7 +1053,7 @@ class BRepMesh_DiscretFactory {
 		%feature("compactdefaultargs") Discret;
 		%feature("autodoc", "* Returns triangulation algorithm instance. @param theShape shape to be meshed. @param theLinDeflection linear deflection to be used for meshing. @param theAngDeflection angular deflection to be used for meshing.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theLinDeflection:
 	:type theLinDeflection: float
 	:param theAngDeflection:
@@ -1089,9 +1089,9 @@ class BRepMesh_DiscretFactory {
 		%feature("compactdefaultargs") SetDefault;
 		%feature("autodoc", "* Setup meshing algorithm that should be created by this Factory. Returns True if requested tool is available. On fail Factory will continue to use previous algo. Call ::ErrorStatus() method to retrieve fault reason.
 	:param theName:
-	:type theName: TCollection_AsciiString &
+	:type theName: TCollection_AsciiString
 	:param theFuncName: default value is 'DISCRETALGO'
-	:type theFuncName: TCollection_AsciiString &
+	:type theFuncName: TCollection_AsciiString
 	:rtype: bool") SetDefault;
 		Standard_Boolean SetDefault (const TCollection_AsciiString & theName,const TCollection_AsciiString & theFuncName = "DISCRETALGO");
 
@@ -1099,7 +1099,7 @@ class BRepMesh_DiscretFactory {
 		%feature("compactdefaultargs") SetDefaultName;
 		%feature("autodoc", "* Setup meshing algorithm by name. Returns True if requested tool is available. On fail Factory will continue to use previous algo.
 	:param theName:
-	:type theName: TCollection_AsciiString &
+	:type theName: TCollection_AsciiString
 	:rtype: bool") SetDefaultName;
 		Standard_Boolean SetDefaultName (const TCollection_AsciiString & theName);
 
@@ -1107,7 +1107,7 @@ class BRepMesh_DiscretFactory {
 		%feature("compactdefaultargs") SetFunctionName;
 		%feature("autodoc", "* Advanced function. Changes function name to retrieve from plugin. Returns True if requested tool is available. On fail Factory will continue to use previous algo.
 	:param theFuncName:
-	:type theFuncName: TCollection_AsciiString &
+	:type theFuncName: TCollection_AsciiString
 	:rtype: bool") SetFunctionName;
 		Standard_Boolean SetFunctionName (const TCollection_AsciiString & theFuncName);
 
@@ -1142,7 +1142,7 @@ class BRepMesh_DiscretRoot : public Standard_Transient {
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "* Set the shape to triangulate.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: inline void") SetShape;
 		inline void SetShape (const TopoDS_Shape & theShape);
 
@@ -1178,9 +1178,9 @@ class BRepMesh_EdgeDiscret : public IMeshTools_ModelAlgo {
 		%feature("compactdefaultargs") CreateEdgeTessellationExtractor;
 		%feature("autodoc", "* Creates instance of tessellation extractor.
 	:param theDEdge:
-	:type theDEdge: IMeshData::IEdgeHandle &
+	:type theDEdge: IMeshData::IEdgeHandle
 	:param theDFace:
-	:type theDFace: IMeshData::IFaceHandle &
+	:type theDFace: IMeshData::IFaceHandle
 	:rtype: opencascade::handle<IMeshTools_CurveTessellator>") CreateEdgeTessellationExtractor;
 		static opencascade::handle<IMeshTools_CurveTessellator> CreateEdgeTessellationExtractor (const IMeshData::IEdgeHandle & theDEdge,const IMeshData::IFaceHandle & theDFace);
 
@@ -1188,9 +1188,9 @@ class BRepMesh_EdgeDiscret : public IMeshTools_ModelAlgo {
 		%feature("compactdefaultargs") CreateEdgeTessellator;
 		%feature("autodoc", "* Creates instance of free edge tessellator.
 	:param theDEdge:
-	:type theDEdge: IMeshData::IEdgeHandle &
+	:type theDEdge: IMeshData::IEdgeHandle
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: opencascade::handle<IMeshTools_CurveTessellator>") CreateEdgeTessellator;
 		static opencascade::handle<IMeshTools_CurveTessellator> CreateEdgeTessellator (const IMeshData::IEdgeHandle & theDEdge,const IMeshTools_Parameters & theParameters);
 
@@ -1198,13 +1198,13 @@ class BRepMesh_EdgeDiscret : public IMeshTools_ModelAlgo {
 		%feature("compactdefaultargs") CreateEdgeTessellator;
 		%feature("autodoc", "* Creates instance of edge tessellator.
 	:param theDEdge:
-	:type theDEdge: IMeshData::IEdgeHandle &
+	:type theDEdge: IMeshData::IEdgeHandle
 	:param theOrientation:
 	:type theOrientation: TopAbs_Orientation
 	:param theDFace:
-	:type theDFace: IMeshData::IFaceHandle &
+	:type theDFace: IMeshData::IFaceHandle
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: opencascade::handle<IMeshTools_CurveTessellator>") CreateEdgeTessellator;
 		static opencascade::handle<IMeshTools_CurveTessellator> CreateEdgeTessellator (const IMeshData::IEdgeHandle & theDEdge,const TopAbs_Orientation theOrientation,const IMeshData::IFaceHandle & theDFace,const IMeshTools_Parameters & theParameters);
 
@@ -1212,7 +1212,7 @@ class BRepMesh_EdgeDiscret : public IMeshTools_ModelAlgo {
 		%feature("compactdefaultargs") Tessellate2d;
 		%feature("autodoc", "* Updates 2d discrete edge model using tessellation of 3D curve.
 	:param theDEdge:
-	:type theDEdge: IMeshData::IEdgeHandle &
+	:type theDEdge: IMeshData::IEdgeHandle
 	:param theUpdateEnds:
 	:type theUpdateEnds: bool
 	:rtype: void") Tessellate2d;
@@ -1222,9 +1222,9 @@ class BRepMesh_EdgeDiscret : public IMeshTools_ModelAlgo {
 		%feature("compactdefaultargs") Tessellate3d;
 		%feature("autodoc", "* Updates 3d discrete edge model using the given tessellation tool.
 	:param theDEdge:
-	:type theDEdge: IMeshData::IEdgeHandle &
+	:type theDEdge: IMeshData::IEdgeHandle
 	:param theTessellator:
-	:type theTessellator: opencascade::handle<IMeshTools_CurveTessellator> &
+	:type theTessellator: IMeshTools_CurveTessellator
 	:param theUpdateEnds:
 	:type theUpdateEnds: bool
 	:rtype: void") Tessellate3d;
@@ -1258,9 +1258,9 @@ typedef NCollection_Shared <NCollection_Array1 <opencascade::handle <Segments>>>
 		%feature("compactdefaultargs") BRepMesh_FaceChecker;
 		%feature("autodoc", "* Default constructor
 	:param theFace:
-	:type theFace: IMeshData::IFaceHandle &
+	:type theFace: IMeshData::IFaceHandle
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: None") BRepMesh_FaceChecker;
 		 BRepMesh_FaceChecker (const IMeshData::IFaceHandle & theFace,const IMeshTools_Parameters & theParameters);
 
@@ -1291,7 +1291,7 @@ class BRepMesh_FaceDiscret : public IMeshTools_ModelAlgo {
 		%feature("compactdefaultargs") BRepMesh_FaceDiscret;
 		%feature("autodoc", "* Constructor.
 	:param theAlgoFactory:
-	:type theAlgoFactory: opencascade::handle<IMeshTools_MeshAlgoFactory> &
+	:type theAlgoFactory: IMeshTools_MeshAlgoFactory
 	:rtype: None") BRepMesh_FaceDiscret;
 		 BRepMesh_FaceDiscret (const opencascade::handle<IMeshTools_MeshAlgoFactory> & theAlgoFactory);
 
@@ -1338,7 +1338,7 @@ enum IntFlag {
 		%feature("compactdefaultargs") BRepMesh_GeomTool;
 		%feature("autodoc", "* Constructor. Initiates discretization of the given geometric curve. @param theCurve curve to be discretized. @param theFirstParam first parameter of the curve. @param theLastParam last parameter of the curve. @param theLinDeflection linear deflection. @param theAngDeflection angular deflection. @param theMinPointsNb minimum nuber of points to be produced.
 	:param theCurve:
-	:type theCurve: BRepAdaptor_Curve &
+	:type theCurve: BRepAdaptor_Curve
 	:param theFirstParam:
 	:type theFirstParam: float
 	:param theLastParam:
@@ -1358,7 +1358,7 @@ enum IntFlag {
 		%feature("compactdefaultargs") BRepMesh_GeomTool;
 		%feature("autodoc", "* Constructor. Initiates discretization of geometric curve corresponding to iso curve of the given surface. @param theSurface surface the iso curve to be taken from. @param theIsoType type of iso curve to be used, U or V. @param theParamIso parameter on the surface specifying the iso curve. @param theFirstParam first parameter of the curve. @param theLastParam last parameter of the curve. @param theLinDeflection linear deflection. @param theAngDeflection angular deflection. @param theMinPointsNb minimum nuber of points to be produced.
 	:param theSurface:
-	:type theSurface: opencascade::handle<BRepAdaptor_HSurface> &
+	:type theSurface: BRepAdaptor_HSurface
 	:param theIsoType:
 	:type theIsoType: GeomAbs_IsoType
 	:param theParamIso:
@@ -1381,7 +1381,7 @@ enum IntFlag {
 		/****************** CellsCount ******************/
 		%feature("compactdefaultargs") CellsCount;
 		%feature("autodoc", ":param theSurface:
-	:type theSurface: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSurface: Adaptor3d_HSurface
 	:param theVerticesNb:
 	:type theVerticesNb: int
 	:param theDeflection:
@@ -1417,7 +1417,7 @@ enum IntFlag {
 	:param theIsoParam:
 	:type theIsoParam: float
 	:param theParam:
-	:type theParam: float &
+	:type theParam: float
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:param theUV:
@@ -1431,9 +1431,9 @@ enum IntFlag {
 	:param theIndex:
 	:type theIndex: int
 	:param theSurface:
-	:type theSurface: opencascade::handle<BRepAdaptor_HSurface> &
+	:type theSurface: BRepAdaptor_HSurface
 	:param theParam:
-	:type theParam: float &
+	:type theParam: float
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:param theUV:
@@ -1468,7 +1468,7 @@ class BRepMesh_MeshAlgoFactory : public IMeshTools_MeshAlgoFactory {
 	:param theSurfaceType:
 	:type theSurfaceType: GeomAbs_SurfaceType
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: opencascade::handle<IMeshTools_MeshAlgo>") GetAlgo;
 		virtual opencascade::handle<IMeshTools_MeshAlgo> GetAlgo (const GeomAbs_SurfaceType theSurfaceType,const IMeshTools_Parameters & theParameters);
 
@@ -1508,7 +1508,7 @@ class BRepMesh_MeshTool : public Standard_Transient {
 	:param theLastNode:
 	:type theLastNode: int
 	:param theLinkIndex:
-	:type theLinkIndex: int &
+	:type theLinkIndex: int
 	:param theLinkOri:
 	:type theLinkOri: bool
 	:rtype: inline void") AddLink;
@@ -1524,7 +1524,7 @@ class BRepMesh_MeshTool : public Standard_Transient {
 	:param thePoint3:
 	:type thePoint3: int
 	:param ):
-	:type ): int ( & theEdges
+	:type ): int (  theEdges
 	:rtype: inline void") AddTriangle;
 		inline void AddTriangle (const Standard_Integer thePoint1,const Standard_Integer thePoint2,const Standard_Integer thePoint3,Standard_Integer ( & theEdges )[3]);
 
@@ -1532,7 +1532,7 @@ class BRepMesh_MeshTool : public Standard_Transient {
 		%feature("compactdefaultargs") BRepMesh_MeshTool;
 		%feature("autodoc", "* Constructor. Initializes tool by the given data structure.
 	:param theStructure:
-	:type theStructure: opencascade::handle<BRepMesh_DataStructureOfDelaun> &
+	:type theStructure: BRepMesh_DataStructureOfDelaun
 	:rtype: None") BRepMesh_MeshTool;
 		 BRepMesh_MeshTool (const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theStructure);
 
@@ -1552,7 +1552,7 @@ class BRepMesh_MeshTool : public Standard_Transient {
 		%feature("compactdefaultargs") EraseFreeLinks;
 		%feature("autodoc", "* Erases links from the specified map that have no elements connected to them.
 	:param theLinks:
-	:type theLinks: IMeshData::MapOfIntegerInteger &
+	:type theLinks: IMeshData::MapOfIntegerInteger
 	:rtype: None") EraseFreeLinks;
 		void EraseFreeLinks (const IMeshData::MapOfIntegerInteger & theLinks);
 
@@ -1570,7 +1570,7 @@ class BRepMesh_MeshTool : public Standard_Transient {
 	:param theTriangleIndex:
 	:type theTriangleIndex: int
 	:param theLoopEdges:
-	:type theLoopEdges: IMeshData::MapOfIntegerInteger &
+	:type theLoopEdges: IMeshData::MapOfIntegerInteger
 	:rtype: None") EraseTriangle;
 		void EraseTriangle (const Standard_Integer theTriangleIndex,IMeshData::MapOfIntegerInteger & theLoopEdges);
 
@@ -1732,7 +1732,7 @@ class BRepMesh_OrientedEdge {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Checks this and other edge for equality. @param theOther edge to be checked against this one. @retrun True if edges have the same orientation, False if not.
 	:param theOther:
-	:type theOther: BRepMesh_OrientedEdge &
+	:type theOther: BRepMesh_OrientedEdge
 	:rtype: inline bool") IsEqual;
 		inline Standard_Boolean IsEqual (const BRepMesh_OrientedEdge & theOther);
 
@@ -1880,7 +1880,7 @@ class BRepMesh_SelectorOfDataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") BRepMesh_SelectorOfDataStructureOfDelaun;
 		%feature("autodoc", "* Constructor. Initializes selector by the mesh.
 	:param theMesh:
-	:type theMesh: opencascade::handle<BRepMesh_DataStructureOfDelaun> &
+	:type theMesh: BRepMesh_DataStructureOfDelaun
 	:rtype: None") BRepMesh_SelectorOfDataStructureOfDelaun;
 		 BRepMesh_SelectorOfDataStructureOfDelaun (const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theMesh);
 
@@ -1900,7 +1900,7 @@ class BRepMesh_SelectorOfDataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes selector by the mesh.
 	:param theMesh:
-	:type theMesh: opencascade::handle<BRepMesh_DataStructureOfDelaun> &
+	:type theMesh: BRepMesh_DataStructureOfDelaun
 	:rtype: None") Initialize;
 		void Initialize (const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theMesh);
 
@@ -1914,7 +1914,7 @@ class BRepMesh_SelectorOfDataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") NeighboursByEdgeOf;
 		%feature("autodoc", "* Selects all neighboring elements by links of the given element.
 	:param theElement:
-	:type theElement: BRepMesh_Triangle &
+	:type theElement: BRepMesh_Triangle
 	:rtype: None") NeighboursByEdgeOf;
 		void NeighboursByEdgeOf (const BRepMesh_Triangle & theElement);
 
@@ -1922,7 +1922,7 @@ class BRepMesh_SelectorOfDataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") NeighboursOf;
 		%feature("autodoc", "* Selects all neighboring elements of the given node.
 	:param theNode:
-	:type theNode: BRepMesh_Vertex &
+	:type theNode: BRepMesh_Vertex
 	:rtype: None") NeighboursOf;
 		void NeighboursOf (const BRepMesh_Vertex & theNode);
 
@@ -1930,7 +1930,7 @@ class BRepMesh_SelectorOfDataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") NeighboursOf;
 		%feature("autodoc", "* Selects all neighboring elements of the given link.
 	:param theLink:
-	:type theLink: BRepMesh_Edge &
+	:type theLink: BRepMesh_Edge
 	:rtype: None") NeighboursOf;
 		void NeighboursOf (const BRepMesh_Edge & theLink);
 
@@ -1938,7 +1938,7 @@ class BRepMesh_SelectorOfDataStructureOfDelaun : public Standard_Transient {
 		%feature("compactdefaultargs") NeighboursOf;
 		%feature("autodoc", "* Selects all neighboring elements of the given element.
 	:param theElement:
-	:type theElement: BRepMesh_Triangle &
+	:type theElement: BRepMesh_Triangle
 	:rtype: None") NeighboursOf;
 		void NeighboursOf (const BRepMesh_Triangle & theElement);
 
@@ -2001,9 +2001,9 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") AddInFace;
 		%feature("autodoc", "* Stores the given triangulation into the given face. @param theFace face to be updated by triangulation. @param theTriangulation triangulation to be stored into the face.
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:rtype: void") AddInFace;
 		static void AddInFace (const TopoDS_Face & theFace,opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -2011,9 +2011,9 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") BoxMaxDimension;
 		%feature("autodoc", "* Gets the maximum dimension of the given bounding box. If the given bounding box is void leaves the resulting value unchanged. @param theBox bounding box to be processed. @param theMaxDimension maximum dimension of the given box.
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:param theMaxDimension:
-	:type theMaxDimension: float &
+	:type theMaxDimension: float
 	:rtype: void") BoxMaxDimension;
 		static void BoxMaxDimension (const Bnd_Box & theBox,Standard_Real &OutValue);
 
@@ -2021,9 +2021,9 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") CheckAndUpdateFlags;
 		%feature("autodoc", "* Checks same parameter, same range and degenerativity attributes using geometrical data of the given edge and updates edge model by computed parameters in case of worst case - it can drop flags same parameter and same range to False but never to True if it is already set to False. In contrary, it can also drop degenerated flag to True, but never to False if it is already set to True.
 	:param theEdge:
-	:type theEdge: IMeshData::IEdgeHandle &
+	:type theEdge: IMeshData::IEdgeHandle
 	:param thePCurve:
-	:type thePCurve: IMeshData::IPCurveHandle &
+	:type thePCurve: IMeshData::IPCurveHandle
 	:rtype: void") CheckAndUpdateFlags;
 		static void CheckAndUpdateFlags (const IMeshData::IEdgeHandle & theEdge,const IMeshData::IPCurveHandle & thePCurve);
 
@@ -2031,7 +2031,7 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") MaxFaceTolerance;
 		%feature("autodoc", "* Returns maximum tolerance of the given face. Considers tolerances of edges and vertices contained in the given face.
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: float") MaxFaceTolerance;
 		static Standard_Real MaxFaceTolerance (const TopoDS_Face & theFace);
 
@@ -2039,11 +2039,11 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") NullifyEdge;
 		%feature("autodoc", "* Nullifies polygon on triangulation stored in the edge. @param theEdge edge to be updated by null polygon. @param theTriangulation triangulation the given edge is associated to. @param theLocation face location.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:param theLocation:
-	:type theLocation: TopLoc_Location &
+	:type theLocation: TopLoc_Location
 	:rtype: void") NullifyEdge;
 		static void NullifyEdge (const TopoDS_Edge & theEdge,const opencascade::handle<Poly_Triangulation> & theTriangulation,const TopLoc_Location & theLocation);
 
@@ -2051,9 +2051,9 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") NullifyEdge;
 		%feature("autodoc", "* Nullifies 3d polygon stored in the edge. @param theEdge edge to be updated by null polygon. @param theLocation face location.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theLocation:
-	:type theLocation: TopLoc_Location &
+	:type theLocation: TopLoc_Location
 	:rtype: void") NullifyEdge;
 		static void NullifyEdge (const TopoDS_Edge & theEdge,const TopLoc_Location & theLocation);
 
@@ -2061,7 +2061,7 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") NullifyFace;
 		%feature("autodoc", "* Nullifies triangulation stored in the face. @param theFace face to be updated by null triangulation.
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: void") NullifyFace;
 		static void NullifyFace (const TopoDS_Face & theFace);
 
@@ -2069,15 +2069,15 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "* Gets the parametric range of the given edge on the given face.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param thePCurve:
-	:type thePCurve: opencascade::handle<Geom2d_Curve> &
+	:type thePCurve: Geom2d_Curve
 	:param theFirstParam:
-	:type theFirstParam: float &
+	:type theFirstParam: float
 	:param theLastParam:
-	:type theLastParam: float &
+	:type theLastParam: float
 	:param isConsiderOrientation: default value is Standard_False
 	:type isConsiderOrientation: bool
 	:rtype: bool") Range;
@@ -2087,13 +2087,13 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "* Gets the 3d range of the given edge.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom_Curve> &
+	:type theCurve: Geom_Curve
 	:param theFirstParam:
-	:type theFirstParam: float &
+	:type theFirstParam: float
 	:param theLastParam:
-	:type theLastParam: float &
+	:type theLastParam: float
 	:param isConsiderOrientation: default value is Standard_False
 	:type isConsiderOrientation: bool
 	:rtype: bool") Range;
@@ -2103,9 +2103,9 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") UVPoints;
 		%feature("autodoc", "* Gets the strict UV locations of the extremities of the edge using pcurve.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param theFirstPoint2d:
 	:type theFirstPoint2d: gp_Pnt2d
 	:param theLastPoint2d:
@@ -2119,13 +2119,13 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "* Updates the given edge by the given tessellated representation. @param theEdge edge to be updated. @param thePolygon tessellated representation of the edge to be stored. @param theTriangulation triangulation the given edge is associated to. @param theLocation face location.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param thePolygon:
-	:type thePolygon: opencascade::handle<Poly_PolygonOnTriangulation> &
+	:type thePolygon: Poly_PolygonOnTriangulation
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:param theLocation:
-	:type theLocation: TopLoc_Location &
+	:type theLocation: TopLoc_Location
 	:rtype: void") UpdateEdge;
 		static void UpdateEdge (const TopoDS_Edge & theEdge,const opencascade::handle<Poly_PolygonOnTriangulation> & thePolygon,const opencascade::handle<Poly_Triangulation> & theTriangulation,const TopLoc_Location & theLocation);
 
@@ -2133,9 +2133,9 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "* Updates the given edge by the given tessellated representation. @param theEdge edge to be updated. @param thePolygon tessellated representation of the edge to be stored.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param thePolygon:
-	:type thePolygon: opencascade::handle<Poly_Polygon3D> &
+	:type thePolygon: Poly_Polygon3D
 	:rtype: void") UpdateEdge;
 		static void UpdateEdge (const TopoDS_Edge & theEdge,const opencascade::handle<Poly_Polygon3D> & thePolygon);
 
@@ -2143,15 +2143,15 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "* Updates the given seam edge by the given tessellated representations. @param theEdge edge to be updated. @param thePolygon1 tessellated representation corresponding to forward direction of the seam edge. @param thePolygon2 tessellated representation corresponding to reversed direction of the seam edge. @param theTriangulation triangulation the given edge is associated to. @param theLocation face location.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param thePolygon1:
-	:type thePolygon1: opencascade::handle<Poly_PolygonOnTriangulation> &
+	:type thePolygon1: Poly_PolygonOnTriangulation
 	:param thePolygon2:
-	:type thePolygon2: opencascade::handle<Poly_PolygonOnTriangulation> &
+	:type thePolygon2: Poly_PolygonOnTriangulation
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:param theLocation:
-	:type theLocation: TopLoc_Location &
+	:type theLocation: TopLoc_Location
 	:rtype: void") UpdateEdge;
 		static void UpdateEdge (const TopoDS_Edge & theEdge,const opencascade::handle<Poly_PolygonOnTriangulation> & thePolygon1,const opencascade::handle<Poly_PolygonOnTriangulation> & thePolygon2,const opencascade::handle<Poly_Triangulation> & theTriangulation,const TopLoc_Location & theLocation);
 
@@ -2161,7 +2161,7 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 	:param thePnt:
 	:type thePnt: gp_Pnt
 	:param theLoc:
-	:type theLoc: TopLoc_Location &
+	:type theLoc: TopLoc_Location
 	:rtype: gp_Pnt") UseLocation;
 		static gp_Pnt UseLocation (const gp_Pnt & thePnt,const TopLoc_Location & theLoc);
 
@@ -2186,7 +2186,7 @@ class BRepMesh_ShapeVisitor : public IMeshTools_ShapeVisitor {
 		%feature("compactdefaultargs") BRepMesh_ShapeVisitor;
 		%feature("autodoc", "* Constructor.
 	:param theModel:
-	:type theModel: opencascade::handle<IMeshData_Model> &
+	:type theModel: IMeshData_Model
 	:rtype: None") BRepMesh_ShapeVisitor;
 		 BRepMesh_ShapeVisitor (const opencascade::handle<IMeshData_Model> & theModel);
 
@@ -2194,7 +2194,7 @@ class BRepMesh_ShapeVisitor : public IMeshTools_ShapeVisitor {
 		%feature("compactdefaultargs") Visit;
 		%feature("autodoc", "* Handles TopoDS_Face object.
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: void") Visit;
 		virtual void Visit (const TopoDS_Face & theFace);
 
@@ -2202,7 +2202,7 @@ class BRepMesh_ShapeVisitor : public IMeshTools_ShapeVisitor {
 		%feature("compactdefaultargs") Visit;
 		%feature("autodoc", "* Handles TopoDS_Edge object.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: void") Visit;
 		virtual void Visit (const TopoDS_Edge & theEdge);
 
@@ -2234,9 +2234,9 @@ class BRepMesh_Triangle {
 		%feature("compactdefaultargs") BRepMesh_Triangle;
 		%feature("autodoc", "* Constructor. @param theEdges array of edges of triangle. @param theOrientations array of edge's orientations. @param theMovability movability of triangle.
 	:param ):
-	:type ): int ( & theEdges
+	:type ): int (  theEdges
 	:param ):
-	:type ): bool ( & theOrientations
+	:type ): bool (  theOrientations
 	:param theMovability:
 	:type theMovability: BRepMesh_DegreeOfFreedom
 	:rtype: None") BRepMesh_Triangle;
@@ -2246,9 +2246,9 @@ class BRepMesh_Triangle {
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "* Gets edges with orientations composing the triangle. @param[out] theEdges array edges are stored to. @param[out] theOrientations array orientations are stored to.
 	:param ):
-	:type ): int ( & theEdges
+	:type ): int (  theEdges
 	:param ):
-	:type ): bool ( & theOrientations
+	:type ): bool (  theOrientations
 	:rtype: inline void") Edges;
 		inline void Edges (Standard_Integer ( & theEdges )[3],Standard_Boolean ( & theOrientations )[3]);
 
@@ -2270,9 +2270,9 @@ class BRepMesh_Triangle {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes the triangle by the given parameters. @param theEdges array of edges of triangle. @param theOrientations array of edge's orientations. @param theMovability movability of triangle.
 	:param ):
-	:type ): int ( & theEdges
+	:type ): int (  theEdges
 	:param ):
-	:type ): bool ( & theOrientations
+	:type ): bool (  theOrientations
 	:param theMovability:
 	:type theMovability: BRepMesh_DegreeOfFreedom
 	:rtype: inline void") Initialize;
@@ -2282,7 +2282,7 @@ class BRepMesh_Triangle {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Checks for equality with another triangle. @param theOther triangle to be checked against this one. returns True if equal, False if not.
 	:param theOther:
-	:type theOther: BRepMesh_Triangle &
+	:type theOther: BRepMesh_Triangle
 	:rtype: inline bool") IsEqual;
 		inline Standard_Boolean IsEqual (const BRepMesh_Triangle & theOther);
 
@@ -2401,7 +2401,7 @@ class BRepMesh_Vertex {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Checks for equality with another vertex. @param theOther vertex to be checked against this one. returns True if equal, False if not.
 	:param theOther:
-	:type theOther: BRepMesh_Vertex &
+	:type theOther: BRepMesh_Vertex
 	:rtype: inline bool") IsEqual;
 		inline Standard_Boolean IsEqual (const BRepMesh_Vertex & theOther);
 
@@ -2459,7 +2459,7 @@ typedef Standard_Integer Target;
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Registers the given vertex. @param theVertex vertex to be registered.
 	:param theVertex:
-	:type theVertex: BRepMesh_Vertex &
+	:type theVertex: BRepMesh_Vertex
 	:rtype: int") Add;
 		Standard_Integer Add (const BRepMesh_Vertex & theVertex);
 
@@ -2467,7 +2467,7 @@ typedef Standard_Integer Target;
 		%feature("compactdefaultargs") BRepMesh_VertexInspector;
 		%feature("autodoc", "* Constructor. @param theAllocator memory allocator to be used by internal collections.
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_IncAllocator> &
+	:type theAllocator: NCollection_IncAllocator
 	:rtype: None") BRepMesh_VertexInspector;
 		 BRepMesh_VertexInspector (const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -2574,7 +2574,7 @@ class BRepMesh_VertexTool : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds vertex with empty data to the tool. @param theVertex node to be added to the mesh. @param isForceAdd adds the given node to structure without checking on coincidence with other nodes. returns index of the node in the structure.
 	:param theVertex:
-	:type theVertex: BRepMesh_Vertex &
+	:type theVertex: BRepMesh_Vertex
 	:param isForceAdd:
 	:type isForceAdd: bool
 	:rtype: int") Add;
@@ -2584,7 +2584,7 @@ class BRepMesh_VertexTool : public Standard_Transient {
 		%feature("compactdefaultargs") BRepMesh_VertexTool;
 		%feature("autodoc", "* Constructor. @param theAllocator memory allocator to be used by internal collections.
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_IncAllocator> &
+	:type theAllocator: NCollection_IncAllocator
 	:rtype: None") BRepMesh_VertexTool;
 		 BRepMesh_VertexTool (const opencascade::handle<NCollection_IncAllocator> & theAllocator);
 
@@ -2606,7 +2606,7 @@ class BRepMesh_VertexTool : public Standard_Transient {
 		%feature("compactdefaultargs") FindIndex;
 		%feature("autodoc", "* Returns index of the given vertex.
 	:param theVertex:
-	:type theVertex: BRepMesh_Vertex &
+	:type theVertex: BRepMesh_Vertex
 	:rtype: int") FindIndex;
 		Standard_Integer FindIndex (const BRepMesh_Vertex & theVertex);
 
@@ -2628,9 +2628,9 @@ class BRepMesh_VertexTool : public Standard_Transient {
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "* Gets the tolerance to be used for identification of coincident vertices. @param theToleranceX tolerance for X dimension. @param theToleranceY tolerance for Y dimension.
 	:param theToleranceX:
-	:type theToleranceX: float &
+	:type theToleranceX: float
 	:param theToleranceY:
-	:type theToleranceY: float &
+	:type theToleranceY: float
 	:rtype: None") GetTolerance;
 		void GetTolerance (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2696,7 +2696,7 @@ class BRepMesh_VertexTool : public Standard_Transient {
 	:param theIndex:
 	:type theIndex: int
 	:param theVertex:
-	:type theVertex: BRepMesh_Vertex &
+	:type theVertex: BRepMesh_Vertex
 	:rtype: None") Substitute;
 		void Substitute (const Standard_Integer theIndex,const BRepMesh_Vertex & theVertex);
 
@@ -2748,7 +2748,7 @@ class BRepMesh_Edge : public BRepMesh_OrientedEdge {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Checks for equality with another edge. @param theOther edge to be checked against this one. returns True if equal, False if not.
 	:param theOther:
-	:type theOther: BRepMesh_Edge &
+	:type theOther: BRepMesh_Edge
 	:rtype: inline bool") IsEqual;
 		inline Standard_Boolean IsEqual (const BRepMesh_Edge & theOther);
 
@@ -2756,7 +2756,7 @@ class BRepMesh_Edge : public BRepMesh_OrientedEdge {
 		%feature("compactdefaultargs") IsSameOrientation;
 		%feature("autodoc", "* Checks if the given edge and this one have the same orientation. @param theOther edge to be checked against this one. etrun True if edges have the same orientation, False if not.
 	:param theOther:
-	:type theOther: BRepMesh_Edge &
+	:type theOther: BRepMesh_Edge
 	:rtype: inline bool") IsSameOrientation;
 		inline Standard_Boolean IsSameOrientation (const BRepMesh_Edge & theOther);
 
@@ -2813,7 +2813,7 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 		%feature("compactdefaultargs") BRepMesh_IncrementalMesh;
 		%feature("autodoc", "* Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param isRelative if True deflection used for discretization of each edge will be <theLinDeflection> * <size of edge>. Deflection used for the faces will be the maximum deflection of their edges. @param theAngDeflection angular deflection. @param isInParallel if True shape will be meshed in parallel.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theLinDeflection:
 	:type theLinDeflection: float
 	:param isRelative: default value is Standard_False
@@ -2829,9 +2829,9 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 		%feature("compactdefaultargs") BRepMesh_IncrementalMesh;
 		%feature("autodoc", "* Constructor. Automatically calls method Perform. @param theShape shape to be meshed. @param theParameters - parameters of meshing
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: None") BRepMesh_IncrementalMesh;
 		 BRepMesh_IncrementalMesh (const TopoDS_Shape & theShape,const IMeshTools_Parameters & theParameters);
 
@@ -2845,13 +2845,13 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 		%feature("compactdefaultargs") Discret;
 		%feature("autodoc", "* @name plugin API Plugin interface for the Mesh Factories. Initializes meshing algorithm with the given parameters. @param theShape shape to be meshed. @param theLinDeflection linear deflection. @param theAngDeflection angular deflection. @param[out] theAlgo pointer to initialized algorithm.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theLinDeflection:
 	:type theLinDeflection: float
 	:param theAngDeflection:
 	:type theAngDeflection: float
 	:param theAlgo:
-	:type theAlgo: BRepMesh_DiscretRoot * &
+	:type theAlgo: BRepMesh_DiscretRoot *
 	:rtype: int") Discret;
 		static Standard_Integer Discret (const TopoDS_Shape & theShape,const Standard_Real theLinDeflection,const Standard_Real theAngDeflection,BRepMesh_DiscretRoot * & theAlgo);
 
@@ -2889,7 +2889,7 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs meshing using custom context;
 	:param theContext:
-	:type theContext: opencascade::handle<IMeshTools_Context> &
+	:type theContext: IMeshTools_Context
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<IMeshTools_Context> & theContext);
 

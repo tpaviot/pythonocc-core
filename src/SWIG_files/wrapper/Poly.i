@@ -125,7 +125,7 @@ class Poly {
 		%feature("compactdefaultargs") Catenate;
 		%feature("autodoc", "* Computes and stores the link from nodes to triangles and from triangles to neighbouring triangles. This tool is obsolete, replaced by Poly_CoherentTriangulation Algorithm to make minimal loops in a graph Join several triangulations to one new triangulation object. The new triangulation is just a mechanical sum of input triangulations, without node sharing. UV coordinates are dropped in the result.
 	:param lstTri:
-	:type lstTri: Poly_ListOfTriangulation &
+	:type lstTri: Poly_ListOfTriangulation
 	:rtype: opencascade::handle<Poly_Triangulation>") Catenate;
 		static opencascade::handle<Poly_Triangulation> Catenate (const Poly_ListOfTriangulation & lstTri);
 
@@ -133,7 +133,7 @@ class Poly {
 		%feature("compactdefaultargs") ComputeNormals;
 		%feature("autodoc", "* Compute node normals for face triangulation as mean normal of surrounding triangles
 	:param Tri:
-	:type Tri: opencascade::handle<Poly_Triangulation> &
+	:type Tri: Poly_Triangulation
 	:rtype: void") ComputeNormals;
 		static void ComputeNormals (const opencascade::handle<Poly_Triangulation> & Tri);
 
@@ -141,9 +141,9 @@ class Poly {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Dumps the triangulation. This is a call to the previous method with Comapct set to False.
 	:param T:
-	:type T: opencascade::handle<Poly_Triangulation> &
+	:type T: Poly_Triangulation
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Dump;
 		static void Dump (const opencascade::handle<Poly_Triangulation> & T,Standard_OStream & OS);
 
@@ -151,9 +151,9 @@ class Poly {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Dumps the 3D polygon. This is a call to the previous method with Comapct set to False.
 	:param P:
-	:type P: opencascade::handle<Poly_Polygon3D> &
+	:type P: Poly_Polygon3D
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Dump;
 		static void Dump (const opencascade::handle<Poly_Polygon3D> & P,Standard_OStream & OS);
 
@@ -161,9 +161,9 @@ class Poly {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Dumps the 2D polygon. This is a call to the previous method with Comapct set to False.
 	:param P:
-	:type P: opencascade::handle<Poly_Polygon2D> &
+	:type P: Poly_Polygon2D
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Dump;
 		static void Dump (const opencascade::handle<Poly_Polygon2D> & P,Standard_OStream & OS);
 
@@ -208,9 +208,9 @@ class Poly {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes the content of the triangulation <T> on the stream <OS>. If <Compact> is true this is a 'save' format intended to be read back with the Read method. If compact is False it is a 'Dump' format intended to be informative.
 	:param T:
-	:type T: opencascade::handle<Poly_Triangulation> &
+	:type T: Poly_Triangulation
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param Compact: default value is Standard_True
 	:type Compact: bool
 	:rtype: void") Write;
@@ -220,9 +220,9 @@ class Poly {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes the content of the 3D polygon <P> on the stream <OS>. If <Compact> is true this is a 'save' format intended to be read back with the Read method. If compact is False it is a 'Dump' format intended to be informative.
 	:param P:
-	:type P: opencascade::handle<Poly_Polygon3D> &
+	:type P: Poly_Polygon3D
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param Compact: default value is Standard_True
 	:type Compact: bool
 	:rtype: void") Write;
@@ -232,9 +232,9 @@ class Poly {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes the content of the 2D polygon <P> on the stream <OS>. If <Compact> is true this is a 'save' format intended to be read back with the Read method. If compact is False it is a 'Dump' format intended to be informative.
 	:param P:
-	:type P: opencascade::handle<Poly_Polygon2D> &
+	:type P: Poly_Polygon2D
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param Compact: default value is Standard_True
 	:type Compact: bool
 	:rtype: void") Write;
@@ -309,7 +309,7 @@ class Poly_CoherentLink {
 		%feature("compactdefaultargs") Poly_CoherentLink;
 		%feature("autodoc", "* /** * Constructor, takes a triangle and a side. A link is created always such * that myNode[0] < myNode[1]. Unlike the previous constructor, this one * assigns the 'opposite node' fields. This constructor is used when a * link is inserted into a Poly_CoherentTriangulation structure. * @param theTri * Triangle containing the link that is created * @param iSide * Can be 0, 1 or 2. Index of the node */
 	:param theTri:
-	:type theTri: Poly_CoherentTriangle &
+	:type theTri: Poly_CoherentTriangle
 	:param iSide:
 	:type iSide: int
 	:rtype: None") Poly_CoherentLink;
@@ -342,9 +342,9 @@ class Poly_CoherentNode : public gp_XYZ {
 		%feature("compactdefaultargs") AddTriangle;
 		%feature("autodoc", "* /** * Connect a triangle to this Node. */
 	:param theTri:
-	:type theTri: Poly_CoherentTriangle &
+	:type theTri: Poly_CoherentTriangle
 	:param theA:
-	:type theA: opencascade::handle<NCollection_BaseAllocator> &
+	:type theA: NCollection_BaseAllocator
 	:rtype: None") AddTriangle;
 		void AddTriangle (const Poly_CoherentTriangle & theTri,const opencascade::handle<NCollection_BaseAllocator> & theA);
 
@@ -352,7 +352,7 @@ class Poly_CoherentNode : public gp_XYZ {
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "* /** * Reset the Node to void. */
 	:param &:
-	:type &: opencascade::handle<NCollection_BaseAllocator>
+	:type &: NCollection_BaseAllocator
 	:rtype: None") Clear;
 		void Clear (const opencascade::handle<NCollection_BaseAllocator> &);
 
@@ -418,9 +418,9 @@ class Poly_CoherentNode : public gp_XYZ {
 		%feature("compactdefaultargs") RemoveTriangle;
 		%feature("autodoc", "* /** * Disconnect a triangle from this Node. */
 	:param theTri:
-	:type theTri: Poly_CoherentTriangle &
+	:type theTri: Poly_CoherentTriangle
 	:param theA:
-	:type theA: opencascade::handle<NCollection_BaseAllocator> &
+	:type theA: NCollection_BaseAllocator
 	:rtype: bool") RemoveTriangle;
 		Standard_Boolean RemoveTriangle (const Poly_CoherentTriangle & theTri,const opencascade::handle<NCollection_BaseAllocator> & theA);
 
@@ -556,7 +556,7 @@ class Poly_CoherentTriangle {
 		%feature("compactdefaultargs") RemoveConnection;
 		%feature("autodoc", "* /** * Remove the connection with the given Triangle. * returns * True if successfuol or False if the connection has not been found. */
 	:param theTri:
-	:type theTri: Poly_CoherentTriangle &
+	:type theTri: Poly_CoherentTriangle
 	:rtype: bool") RemoveConnection;
 		Standard_Boolean RemoveConnection (Poly_CoherentTriangle & theTri);
 
@@ -566,7 +566,7 @@ class Poly_CoherentTriangle {
 	:param iConn:
 	:type iConn: int
 	:param theTr:
-	:type theTr: Poly_CoherentTriangle &
+	:type theTr: Poly_CoherentTriangle
 	:rtype: bool") SetConnection;
 		Standard_Boolean SetConnection (const Standard_Integer iConn,Poly_CoherentTriangle & theTr);
 
@@ -574,7 +574,7 @@ class Poly_CoherentTriangle {
 		%feature("compactdefaultargs") SetConnection;
 		%feature("autodoc", "* /** * Create connection with another triangle theTri. * This method creates both connections: in this triangle and in theTri. * This method is slower than the previous one, because it makes analysis * what sides of both triangles are connected. * @param theTri * Triangle that is connected. * returns * True if successful, False if the connection is rejected * due to improper topology. */
 	:param theTri:
-	:type theTri: Poly_CoherentTriangle &
+	:type theTri: Poly_CoherentTriangle
 	:rtype: bool") SetConnection;
 		Standard_Boolean SetConnection (Poly_CoherentTriangle & theTri);
 
@@ -608,7 +608,7 @@ class Poly_Connect {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Initialize the algorithm to explore the adjacency data of nodes or triangles for the triangulation theTriangulation.
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -630,11 +630,11 @@ class Poly_Connect {
 	:param T:
 	:type T: int
 	:param n1:
-	:type n1: int &
+	:type n1: int
 	:param n2:
-	:type n2: int &
+	:type n2: int
 	:param n3:
-	:type n3: int &
+	:type n3: int
 	:rtype: None") Nodes;
 		void Nodes (const Standard_Integer T,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -648,7 +648,7 @@ class Poly_Connect {
 		%feature("compactdefaultargs") Poly_Connect;
 		%feature("autodoc", "* Constructs an algorithm to explore the adjacency data of nodes or triangles for the triangulation T.
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:rtype: None") Poly_Connect;
 		 Poly_Connect (const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -666,11 +666,11 @@ class Poly_Connect {
 	:param T:
 	:type T: int
 	:param t1:
-	:type t1: int &
+	:type t1: int
 	:param t2:
-	:type t2: int &
+	:type t2: int
 	:param t3:
-	:type t3: int &
+	:type t3: int
 	:rtype: None") Triangles;
 		void Triangles (const Standard_Integer T,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -819,7 +819,7 @@ class Poly_Polygon3D : public Standard_Transient {
 	:param Nodes:
 	:type Nodes: TColgp_Array1OfPnt
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:rtype: None") Poly_Polygon3D;
 		 Poly_Polygon3D (const TColgp_Array1OfPnt & Nodes,const TColStd_Array1OfReal & Parameters);
 
@@ -888,7 +888,7 @@ class Poly_PolygonOnTriangulation : public Standard_Transient {
 		%feature("compactdefaultargs") Poly_PolygonOnTriangulation;
 		%feature("autodoc", "* Constructs a 3D polygon on the triangulation of a shape, defined by the table of nodes, <Nodes>.
 	:param Nodes:
-	:type Nodes: TColStd_Array1OfInteger &
+	:type Nodes: TColStd_Array1OfInteger
 	:rtype: None") Poly_PolygonOnTriangulation;
 		 Poly_PolygonOnTriangulation (const TColStd_Array1OfInteger & Nodes);
 
@@ -896,9 +896,9 @@ class Poly_PolygonOnTriangulation : public Standard_Transient {
 		%feature("compactdefaultargs") Poly_PolygonOnTriangulation;
 		%feature("autodoc", "* Constructs a 3D polygon on the triangulation of a shape, defined by: - the table of nodes, Nodes, and the table of parameters, <Parameters>. where: - a node value is an index in the table of nodes specific to an existing triangulation of a shape - and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning The tables Nodes and Parameters must be the same size. This property is not checked at construction time.
 	:param Nodes:
-	:type Nodes: TColStd_Array1OfInteger &
+	:type Nodes: TColStd_Array1OfInteger
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:rtype: None") Poly_PolygonOnTriangulation;
 		 Poly_PolygonOnTriangulation (const TColStd_Array1OfInteger & Nodes,const TColStd_Array1OfReal & Parameters);
 
@@ -936,11 +936,11 @@ class Poly_Triangle {
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "* Returns the node indices of this triangle in N1, N2 and N3.
 	:param N1:
-	:type N1: int &
+	:type N1: int
 	:param N2:
-	:type N2: int &
+	:type N2: int
 	:param N3:
-	:type N3: int &
+	:type N3: int
 	:rtype: None") Get;
 		void Get (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1145,7 +1145,7 @@ class Poly_Triangulation : public Standard_Transient {
 	:param Nodes:
 	:type Nodes: TColgp_Array1OfPnt
 	:param Triangles:
-	:type Triangles: Poly_Array1OfTriangle &
+	:type Triangles: Poly_Array1OfTriangle
 	:rtype: None") Poly_Triangulation;
 		 Poly_Triangulation (const TColgp_Array1OfPnt & Nodes,const Poly_Array1OfTriangle & Triangles);
 
@@ -1157,7 +1157,7 @@ class Poly_Triangulation : public Standard_Transient {
 	:param UVNodes:
 	:type UVNodes: TColgp_Array1OfPnt2d
 	:param Triangles:
-	:type Triangles: Poly_Array1OfTriangle &
+	:type Triangles: Poly_Array1OfTriangle
 	:rtype: None") Poly_Triangulation;
 		 Poly_Triangulation (const TColgp_Array1OfPnt & Nodes,const TColgp_Array1OfPnt2d & UVNodes,const Poly_Array1OfTriangle & Triangles);
 
@@ -1165,7 +1165,7 @@ class Poly_Triangulation : public Standard_Transient {
 		%feature("compactdefaultargs") Poly_Triangulation;
 		%feature("autodoc", "* Copy constructor for triangulation.
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:rtype: None") Poly_Triangulation;
 		 Poly_Triangulation (const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -1189,7 +1189,7 @@ class Poly_Triangulation : public Standard_Transient {
 		%feature("compactdefaultargs") SetNormals;
 		%feature("autodoc", "* Sets the table of node normals. raises exception if length of theNormals != 3*NbNodes
 	:param theNormals:
-	:type theNormals: opencascade::handle<TShort_HArray1OfShortReal> &
+	:type theNormals: TShort_HArray1OfShortReal
 	:rtype: None") SetNormals;
 		void SetNormals (const opencascade::handle<TShort_HArray1OfShortReal> & theNormals);
 

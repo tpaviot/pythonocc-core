@@ -199,9 +199,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: void") ConeParameters;
 		static void ConeParameters (const gp_Ax3 & Pos,const Standard_Real Radius,const Standard_Real SAngle,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -367,9 +367,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: void") CylinderParameters;
 		static void CylinderParameters (const gp_Ax3 & Pos,const Standard_Real Radius,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -865,9 +865,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		static void Parameters (const gp_Pln & Pl,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -879,9 +879,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		static void Parameters (const gp_Cylinder & C,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -893,9 +893,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		static void Parameters (const gp_Cone & C,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -907,9 +907,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		static void Parameters (const gp_Sphere & S,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -921,9 +921,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		static void Parameters (const gp_Torus & T,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -980,9 +980,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: void") PlaneParameters;
 		static void PlaneParameters (const gp_Ax3 & Pos,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1136,9 +1136,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: void") SphereParameters;
 		static void SphereParameters (const gp_Ax3 & Pos,const Standard_Real Radius,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1311,9 +1311,9 @@ class ElSLib {
 	:param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: void") TorusParameters;
 		static void TorusParameters (const gp_Ax3 & Pos,const Standard_Real MajorRadius,const Standard_Real MinorRadius,const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 

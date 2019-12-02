@@ -100,9 +100,9 @@ class BRepIntCurveSurface_Inter {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Load the Shape, the curve and initialize the tolerance used for the classification.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theCurve:
-	:type theCurve: GeomAdaptor_Curve &
+	:type theCurve: GeomAdaptor_Curve
 	:param theTol:
 	:type theTol: float
 	:rtype: None") Init;
@@ -112,7 +112,7 @@ class BRepIntCurveSurface_Inter {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Load the Shape, the curve and initialize the tolerance used for the classification.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theLine:
 	:type theLine: gp_Lin
 	:param theTol:
@@ -124,7 +124,7 @@ class BRepIntCurveSurface_Inter {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Method to find intersections of specified curve with loaded shape.
 	:param theCurve:
-	:type theCurve: GeomAdaptor_Curve &
+	:type theCurve: GeomAdaptor_Curve
 	:rtype: None") Init;
 		void Init (const GeomAdaptor_Curve & theCurve);
 
@@ -132,7 +132,7 @@ class BRepIntCurveSurface_Inter {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Load the Shape, and initialize the tolerance used for the classification.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theTol:
 	:type theTol: float
 	:rtype: None") Load;

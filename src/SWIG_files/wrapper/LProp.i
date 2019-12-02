@@ -97,7 +97,7 @@ class LProp_AnalyticCurInf {
 	:param ULast:
 	:type ULast: float
 	:param Result:
-	:type Result: LProp_CurAndInf &
+	:type Result: LProp_CurAndInf
 	:rtype: None") Perform;
 		void Perform (const GeomAbs_CurveType T,const Standard_Real UFirst,const Standard_Real ULast,LProp_CurAndInf & Result);
 

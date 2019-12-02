@@ -116,7 +116,7 @@ class IntAna2d_AnaIntersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param C:
-	:type C: IntAna2d_Conic &
+	:type C: IntAna2d_Conic
 	:rtype: None") IntAna2d_AnaIntersection;
 		 IntAna2d_AnaIntersection (const gp_Lin2d & L,const IntAna2d_Conic & C);
 
@@ -126,7 +126,7 @@ class IntAna2d_AnaIntersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param Co:
-	:type Co: IntAna2d_Conic &
+	:type Co: IntAna2d_Conic
 	:rtype: None") IntAna2d_AnaIntersection;
 		 IntAna2d_AnaIntersection (const gp_Circ2d & C,const IntAna2d_Conic & Co);
 
@@ -136,7 +136,7 @@ class IntAna2d_AnaIntersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param C:
-	:type C: IntAna2d_Conic &
+	:type C: IntAna2d_Conic
 	:rtype: None") IntAna2d_AnaIntersection;
 		 IntAna2d_AnaIntersection (const gp_Elips2d & E,const IntAna2d_Conic & C);
 
@@ -146,7 +146,7 @@ class IntAna2d_AnaIntersection {
 	:param P:
 	:type P: gp_Parab2d
 	:param C:
-	:type C: IntAna2d_Conic &
+	:type C: IntAna2d_Conic
 	:rtype: None") IntAna2d_AnaIntersection;
 		 IntAna2d_AnaIntersection (const gp_Parab2d & P,const IntAna2d_Conic & C);
 
@@ -156,7 +156,7 @@ class IntAna2d_AnaIntersection {
 	:param H:
 	:type H: gp_Hypr2d
 	:param C:
-	:type C: IntAna2d_Conic &
+	:type C: IntAna2d_Conic
 	:rtype: None") IntAna2d_AnaIntersection;
 		 IntAna2d_AnaIntersection (const gp_Hypr2d & H,const IntAna2d_Conic & C);
 
@@ -220,7 +220,7 @@ class IntAna2d_AnaIntersection {
 	:param L:
 	:type L: gp_Lin2d
 	:param C:
-	:type C: IntAna2d_Conic &
+	:type C: IntAna2d_Conic
 	:rtype: None") Perform;
 		void Perform (const gp_Lin2d & L,const IntAna2d_Conic & C);
 
@@ -230,7 +230,7 @@ class IntAna2d_AnaIntersection {
 	:param C:
 	:type C: gp_Circ2d
 	:param Co:
-	:type Co: IntAna2d_Conic &
+	:type Co: IntAna2d_Conic
 	:rtype: None") Perform;
 		void Perform (const gp_Circ2d & C,const IntAna2d_Conic & Co);
 
@@ -240,7 +240,7 @@ class IntAna2d_AnaIntersection {
 	:param E:
 	:type E: gp_Elips2d
 	:param C:
-	:type C: IntAna2d_Conic &
+	:type C: IntAna2d_Conic
 	:rtype: None") Perform;
 		void Perform (const gp_Elips2d & E,const IntAna2d_Conic & C);
 
@@ -250,7 +250,7 @@ class IntAna2d_AnaIntersection {
 	:param P:
 	:type P: gp_Parab2d
 	:param C:
-	:type C: IntAna2d_Conic &
+	:type C: IntAna2d_Conic
 	:rtype: None") Perform;
 		void Perform (const gp_Parab2d & P,const IntAna2d_Conic & C);
 
@@ -260,7 +260,7 @@ class IntAna2d_AnaIntersection {
 	:param H:
 	:type H: gp_Hypr2d
 	:param C:
-	:type C: IntAna2d_Conic &
+	:type C: IntAna2d_Conic
 	:rtype: None") Perform;
 		void Perform (const gp_Hypr2d & H,const IntAna2d_Conic & C);
 
@@ -291,17 +291,17 @@ class IntAna2d_Conic {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* returns the coefficients of the polynomial equation wich defines the conic: A.X**2 + B.Y**2 + 2.C.X*Y + 2.D.X + 2.E.Y + F = 0.
 	:param A:
-	:type A: float &
+	:type A: float
 	:param B:
-	:type B: float &
+	:type B: float
 	:param C:
-	:type C: float &
+	:type C: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param E:
-	:type E: float &
+	:type E: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -354,17 +354,17 @@ class IntAna2d_Conic {
 		%feature("compactdefaultargs") NewCoefficients;
 		%feature("autodoc", "* Returns the coefficients of the polynomial equation ( written in the natural coordinates system ) A x x + B y y + 2 C x y + 2 D x + 2 E y + F in the local coordinates system defined by Axis
 	:param A:
-	:type A: float &
+	:type A: float
 	:param B:
-	:type B: float &
+	:type B: float
 	:param C:
-	:type C: float &
+	:type C: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param E:
-	:type E: float &
+	:type E: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param Axis:
 	:type Axis: gp_Ax2d
 	:rtype: None") NewCoefficients;
@@ -378,7 +378,7 @@ class IntAna2d_Conic {
 	:param Y:
 	:type Y: float
 	:param Val:
-	:type Val: float &
+	:type Val: float
 	:param Grd:
 	:type Grd: gp_XY
 	:rtype: None") ValAndGrad;

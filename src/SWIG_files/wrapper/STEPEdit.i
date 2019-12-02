@@ -135,11 +135,11 @@ class STEPEdit_EditContext : public IFSelect_Editor {
 		/****************** Apply ******************/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Apply;
 		Standard_Boolean Apply (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -151,18 +151,18 @@ class STEPEdit_EditContext : public IFSelect_Editor {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Load;
 		Standard_Boolean Load (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****************** Recognize ******************/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:rtype: bool") Recognize;
 		Standard_Boolean Recognize (const opencascade::handle<IFSelect_EditForm> & form);
 
@@ -174,7 +174,7 @@ class STEPEdit_EditContext : public IFSelect_Editor {
 		/****************** StringValue ******************/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param num:
 	:type num: int
 	:rtype: opencascade::handle<TCollection_HAsciiString>") StringValue;
@@ -200,11 +200,11 @@ class STEPEdit_EditSDR : public IFSelect_Editor {
 		/****************** Apply ******************/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Apply;
 		Standard_Boolean Apply (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -216,18 +216,18 @@ class STEPEdit_EditSDR : public IFSelect_Editor {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Load;
 		Standard_Boolean Load (const opencascade::handle<IFSelect_EditForm> & form,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****************** Recognize ******************/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:rtype: bool") Recognize;
 		Standard_Boolean Recognize (const opencascade::handle<IFSelect_EditForm> & form);
 
@@ -239,7 +239,7 @@ class STEPEdit_EditSDR : public IFSelect_Editor {
 		/****************** StringValue ******************/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", ":param form:
-	:type form: opencascade::handle<IFSelect_EditForm> &
+	:type form: IFSelect_EditForm
 	:param num:
 	:type num: int
 	:rtype: opencascade::handle<TCollection_HAsciiString>") StringValue;

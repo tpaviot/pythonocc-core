@@ -114,14 +114,14 @@ class ExprIntrp_Analysis {
 		/****************** GetFunction ******************/
 		%feature("compactdefaultargs") GetFunction;
 		%feature("autodoc", ":param name:
-	:type name: TCollection_AsciiString &
+	:type name: TCollection_AsciiString
 	:rtype: opencascade::handle<Expr_NamedFunction>") GetFunction;
 		opencascade::handle<Expr_NamedFunction> GetFunction (const TCollection_AsciiString & name);
 
 		/****************** GetNamed ******************/
 		%feature("compactdefaultargs") GetNamed;
 		%feature("autodoc", ":param name:
-	:type name: TCollection_AsciiString &
+	:type name: TCollection_AsciiString
 	:rtype: opencascade::handle<Expr_NamedExpression>") GetNamed;
 		opencascade::handle<Expr_NamedExpression> GetNamed (const TCollection_AsciiString & name);
 
@@ -163,28 +163,28 @@ class ExprIntrp_Analysis {
 		/****************** Push ******************/
 		%feature("compactdefaultargs") Push;
 		%feature("autodoc", ":param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Push;
 		void Push (const opencascade::handle<Expr_GeneralExpression> & exp);
 
 		/****************** PushFunction ******************/
 		%feature("compactdefaultargs") PushFunction;
 		%feature("autodoc", ":param func:
-	:type func: opencascade::handle<Expr_GeneralFunction> &
+	:type func: Expr_GeneralFunction
 	:rtype: None") PushFunction;
 		void PushFunction (const opencascade::handle<Expr_GeneralFunction> & func);
 
 		/****************** PushName ******************/
 		%feature("compactdefaultargs") PushName;
 		%feature("autodoc", ":param name:
-	:type name: TCollection_AsciiString &
+	:type name: TCollection_AsciiString
 	:rtype: None") PushName;
 		void PushName (const TCollection_AsciiString & name);
 
 		/****************** PushRelation ******************/
 		%feature("compactdefaultargs") PushRelation;
 		%feature("autodoc", ":param rel:
-	:type rel: opencascade::handle<Expr_GeneralRelation> &
+	:type rel: Expr_GeneralRelation
 	:rtype: None") PushRelation;
 		void PushRelation (const opencascade::handle<Expr_GeneralRelation> & rel);
 
@@ -203,21 +203,21 @@ class ExprIntrp_Analysis {
 		/****************** SetMaster ******************/
 		%feature("compactdefaultargs") SetMaster;
 		%feature("autodoc", ":param agen:
-	:type agen: opencascade::handle<ExprIntrp_Generator> &
+	:type agen: ExprIntrp_Generator
 	:rtype: None") SetMaster;
 		void SetMaster (const opencascade::handle<ExprIntrp_Generator> & agen);
 
 		/****************** Use ******************/
 		%feature("compactdefaultargs") Use;
 		%feature("autodoc", ":param func:
-	:type func: opencascade::handle<Expr_NamedFunction> &
+	:type func: Expr_NamedFunction
 	:rtype: None") Use;
 		void Use (const opencascade::handle<Expr_NamedFunction> & func);
 
 		/****************** Use ******************/
 		%feature("compactdefaultargs") Use;
 		%feature("autodoc", ":param named:
-	:type named: opencascade::handle<Expr_NamedExpression> &
+	:type named: Expr_NamedExpression
 	:rtype: None") Use;
 		void Use (const opencascade::handle<Expr_NamedExpression> & named);
 
@@ -240,7 +240,7 @@ class ExprIntrp_Generator : public Standard_Transient {
 		%feature("compactdefaultargs") GetFunction;
 		%feature("autodoc", "* Returns NamedFunction with name <name> already interpreted if it exists. Returns a null handle if not.
 	:param name:
-	:type name: TCollection_AsciiString &
+	:type name: TCollection_AsciiString
 	:rtype: opencascade::handle<Expr_NamedFunction>") GetFunction;
 		opencascade::handle<Expr_NamedFunction> GetFunction (const TCollection_AsciiString & name);
 
@@ -258,21 +258,21 @@ class ExprIntrp_Generator : public Standard_Transient {
 		%feature("compactdefaultargs") GetNamed;
 		%feature("autodoc", "* Returns NamedExpression with name <name> already interpreted if it exists. Returns a null handle if not.
 	:param name:
-	:type name: TCollection_AsciiString &
+	:type name: TCollection_AsciiString
 	:rtype: opencascade::handle<Expr_NamedExpression>") GetNamed;
 		opencascade::handle<Expr_NamedExpression> GetNamed (const TCollection_AsciiString & name);
 
 		/****************** Use ******************/
 		%feature("compactdefaultargs") Use;
 		%feature("autodoc", ":param func:
-	:type func: opencascade::handle<Expr_NamedFunction> &
+	:type func: Expr_NamedFunction
 	:rtype: None") Use;
 		void Use (const opencascade::handle<Expr_NamedFunction> & func);
 
 		/****************** Use ******************/
 		%feature("compactdefaultargs") Use;
 		%feature("autodoc", ":param named:
-	:type named: opencascade::handle<Expr_NamedExpression> &
+	:type named: Expr_NamedExpression
 	:rtype: None") Use;
 		void Use (const opencascade::handle<Expr_NamedExpression> & named);
 
@@ -314,7 +314,7 @@ class ExprIntrp_GenExp : public ExprIntrp_Generator {
 		%feature("compactdefaultargs") Process;
 		%feature("autodoc", "* Processes given string.
 	:param str:
-	:type str: TCollection_AsciiString &
+	:type str: TCollection_AsciiString
 	:rtype: None") Process;
 		void Process (const TCollection_AsciiString & str);
 
@@ -348,7 +348,7 @@ class ExprIntrp_GenFct : public ExprIntrp_Generator {
 		/****************** Process ******************/
 		%feature("compactdefaultargs") Process;
 		%feature("autodoc", ":param str:
-	:type str: TCollection_AsciiString &
+	:type str: TCollection_AsciiString
 	:rtype: None") Process;
 		void Process (const TCollection_AsciiString & str);
 
@@ -384,7 +384,7 @@ class ExprIntrp_GenRel : public ExprIntrp_Generator {
 		%feature("compactdefaultargs") Process;
 		%feature("autodoc", "* Processes given string.
 	:param str:
-	:type str: TCollection_AsciiString &
+	:type str: TCollection_AsciiString
 	:rtype: None") Process;
 		void Process (const TCollection_AsciiString & str);
 

@@ -93,9 +93,9 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") AddEdgeVertex;
 		%feature("autodoc", "* Adds the Vertex <V> in the Edge <E>. <P> is the parameter of the vertex on the edge. If direct is False the Vertex is reversed.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param P:
 	:type P: float
 	:param direct:
@@ -107,9 +107,9 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") AddEdgeVertex;
 		%feature("autodoc", "* Adds the Vertex <V> in the Edge <E>. <P1,P2> are the parameters of the vertex on the closed edge.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param P1:
 	:type P1: float
 	:param P2:
@@ -121,9 +121,9 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") AddFaceWire;
 		%feature("autodoc", "* Adds the Wire <W> in the Face <F>.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") AddFaceWire;
 		void AddFaceWire (TopoDS_Face & F,const TopoDS_Wire & W);
 
@@ -131,9 +131,9 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") AddShellFace;
 		%feature("autodoc", "* Adds the Face <F> in the Shell <Sh>.
 	:param Sh:
-	:type Sh: TopoDS_Shell &
+	:type Sh: TopoDS_Shell
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") AddShellFace;
 		void AddShellFace (TopoDS_Shell & Sh,const TopoDS_Face & F);
 
@@ -141,9 +141,9 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") AddWireEdge;
 		%feature("autodoc", "* Adds the Edge <E> in the Wire <W>, if direct is False the Edge is reversed.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param direct:
 	:type direct: bool
 	:rtype: None") AddWireEdge;
@@ -159,7 +159,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") BRepPrim_Builder;
 		%feature("autodoc", "* Creates from a Builder.
 	:param B:
-	:type B: BRep_Builder &
+	:type B: BRep_Builder
 	:rtype: None") BRepPrim_Builder;
 		 BRepPrim_Builder (const BRep_Builder & B);
 
@@ -172,7 +172,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") CompleteEdge;
 		%feature("autodoc", "* This is called once an edge is completed. It gives the opportunity to perform any post treatment.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") CompleteEdge;
 		void CompleteEdge (TopoDS_Edge & E);
 
@@ -180,7 +180,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") CompleteFace;
 		%feature("autodoc", "* This is called once a face is completed. It gives the opportunity to perform any post treatment.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") CompleteFace;
 		void CompleteFace (TopoDS_Face & F);
 
@@ -188,7 +188,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") CompleteShell;
 		%feature("autodoc", "* This is called once a shell is completed. It gives the opportunity to perform any post treatment.
 	:param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:rtype: None") CompleteShell;
 		void CompleteShell (TopoDS_Shell & S);
 
@@ -196,7 +196,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") CompleteWire;
 		%feature("autodoc", "* This is called once a wire is completed. It gives the opportunity to perform any post treatment.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") CompleteWire;
 		void CompleteWire (TopoDS_Wire & W);
 
@@ -204,7 +204,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") MakeDegeneratedEdge;
 		%feature("autodoc", "* Returns in <E> a degenerated edge.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") MakeDegeneratedEdge;
 		void MakeDegeneratedEdge (TopoDS_Edge & E);
 
@@ -212,7 +212,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "* Returns in <E> an Edge built with the line equation <L>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param L:
 	:type L: gp_Lin
 	:rtype: None") MakeEdge;
@@ -222,7 +222,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "* Returns in <E> an Edge built with the circle equation <C>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C:
 	:type C: gp_Circ
 	:rtype: None") MakeEdge;
@@ -232,7 +232,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") MakeFace;
 		%feature("autodoc", "* Returns in <F> a Face built with the plane equation <P>. Used by all primitives.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pln
 	:rtype: None") MakeFace;
@@ -242,7 +242,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") MakeShell;
 		%feature("autodoc", "* Make a empty Shell.
 	:param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:rtype: None") MakeShell;
 		void MakeShell (TopoDS_Shell & S);
 
@@ -250,7 +250,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") MakeVertex;
 		%feature("autodoc", "* Returns in <V> a Vertex built with the point <P>.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param P:
 	:type P: gp_Pnt
 	:rtype: None") MakeVertex;
@@ -260,7 +260,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") MakeWire;
 		%feature("autodoc", "* Returns in <W> an empty Wire.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") MakeWire;
 		void MakeWire (TopoDS_Wire & W);
 
@@ -268,7 +268,7 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") ReverseFace;
 		%feature("autodoc", "* Reverses the Face <F>.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") ReverseFace;
 		void ReverseFace (TopoDS_Face & F);
 
@@ -276,9 +276,9 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") SetPCurve;
 		%feature("autodoc", "* Sets the line <L> to be the curve representing the edge <E> in the parametric space of the surface of <F>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param L:
 	:type L: gp_Lin2d
 	:rtype: None") SetPCurve;
@@ -288,9 +288,9 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") SetPCurve;
 		%feature("autodoc", "* Sets the lines <L1,L2> to be the curves representing the edge <E> in the parametric space of the closed surface of <F>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param L1:
 	:type L1: gp_Lin2d
 	:param L2:
@@ -302,9 +302,9 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") SetPCurve;
 		%feature("autodoc", "* Sets the circle <C> to be the curve representing the edge <E> in the parametric space of the surface of <F>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param C:
 	:type C: gp_Circ2d
 	:rtype: None") SetPCurve;
@@ -314,9 +314,9 @@ class BRepPrim_Builder {
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "* <P1,P2> are the parameters of the vertex on the edge. The edge is a closed curve.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param P1:
 	:type P1: float
 	:param P2:
@@ -347,18 +347,18 @@ class BRepPrim_FaceBuilder {
 		/****************** BRepPrim_FaceBuilder ******************/
 		%feature("compactdefaultargs") BRepPrim_FaceBuilder;
 		%feature("autodoc", ":param B:
-	:type B: BRep_Builder &
+	:type B: BRep_Builder
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") BRepPrim_FaceBuilder;
 		 BRepPrim_FaceBuilder (const BRep_Builder & B,const opencascade::handle<Geom_Surface> & S);
 
 		/****************** BRepPrim_FaceBuilder ******************/
 		%feature("compactdefaultargs") BRepPrim_FaceBuilder;
 		%feature("autodoc", ":param B:
-	:type B: BRep_Builder &
+	:type B: BRep_Builder
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UMin:
 	:type UMin: float
 	:param UMax:
@@ -386,18 +386,18 @@ class BRepPrim_FaceBuilder {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param B:
-	:type B: BRep_Builder &
+	:type B: BRep_Builder
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") Init;
 		void Init (const BRep_Builder & B,const opencascade::handle<Geom_Surface> & S);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param B:
-	:type B: BRep_Builder &
+	:type B: BRep_Builder
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UMin:
 	:type UMin: float
 	:param UMax:
@@ -447,7 +447,7 @@ class BRepPrim_GWedge {
 		%feature("compactdefaultargs") BRepPrim_GWedge;
 		%feature("autodoc", "* Creates a GWedge algorithm. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive
 	:param B:
-	:type B: BRepPrim_Builder &
+	:type B: BRepPrim_Builder
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param dx:
@@ -463,7 +463,7 @@ class BRepPrim_GWedge {
 		%feature("compactdefaultargs") BRepPrim_GWedge;
 		%feature("autodoc", "* Creates a GWedge primitive. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative
 	:param B:
-	:type B: BRepPrim_Builder &
+	:type B: BRepPrim_Builder
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param dx:
@@ -481,7 +481,7 @@ class BRepPrim_GWedge {
 		%feature("compactdefaultargs") BRepPrim_GWedge;
 		%feature("autodoc", "* Create a GWedge primitive. <Axes> is the axis system for the primitive. //! all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative
 	:param B:
-	:type B: BRepPrim_Builder &
+	:type B: BRepPrim_Builder
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param xmin:
@@ -923,9 +923,9 @@ class BRepPrim_OneAxis {
 		%feature("compactdefaultargs") SetMeridianPCurve;
 		%feature("autodoc", "* Sets the parametric curve of the edge <E> in the face <F> to be the 2d representation of the meridian.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: void") SetMeridianPCurve;
 		virtual void SetMeridianPCurve (TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -1056,9 +1056,9 @@ class BRepPrim_Revolution : public BRepPrim_OneAxis {
 	:param VMax:
 	:type VMax: float
 	:param M:
-	:type M: opencascade::handle<Geom_Curve> &
+	:type M: Geom_Curve
 	:param PM:
-	:type PM: opencascade::handle<Geom2d_Curve> &
+	:type PM: Geom2d_Curve
 	:rtype: None") BRepPrim_Revolution;
 		 BRepPrim_Revolution (const gp_Ax2 & A,const Standard_Real VMin,const Standard_Real VMax,const opencascade::handle<Geom_Curve> & M,const opencascade::handle<Geom2d_Curve> & PM);
 
@@ -1088,9 +1088,9 @@ class BRepPrim_Revolution : public BRepPrim_OneAxis {
 		%feature("compactdefaultargs") SetMeridianPCurve;
 		%feature("autodoc", "* Sets the parametric urve of the edge <E> in the face <F> to be the 2d representation of the meridian.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: void") SetMeridianPCurve;
 		virtual void SetMeridianPCurve (TopoDS_Edge & E,const TopoDS_Face & F);
 

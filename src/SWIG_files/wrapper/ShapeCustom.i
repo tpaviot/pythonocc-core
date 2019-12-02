@@ -103,7 +103,7 @@ class ShapeCustom {
 		%feature("compactdefaultargs") BSplineRestriction;
 		%feature("autodoc", "* Returns a new shape with all surfaces, curves and pcurves which type is BSpline/Bezier or based on them converted having Degree less than <MaxDegree> or number of spans less than <NbMaxSegment> in dependence on parameter priority <Degree>. <GmaxDegree> and <GMaxSegments> are maximum possible degree and number of spans correspondingly. These values will be used in those cases when approximation with specified parameters is impossible and one of GmaxDegree or GMaxSegments is selected in dependence on priority. Note that even if approximation is impossible with <GMaxDegree> then number of spans can exceed specified <GMaxSegment> <Rational> specifies if to convert Rational BSpline/Bezier into polynomial B-Spline. If flags ConvOffSurf,ConvOffCurve3d,ConvOffCurve2d are Standard_True there are means that Offset surfaces , Offset curves 3d and Offset curves 2d are converted to BSPline correspondingly.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Tol3d:
 	:type Tol3d: float
 	:param Tol2d:
@@ -121,7 +121,7 @@ class ShapeCustom {
 	:param Rational:
 	:type Rational: bool
 	:param aParameters:
-	:type aParameters: opencascade::handle<ShapeCustom_RestrictionParameters> &
+	:type aParameters: ShapeCustom_RestrictionParameters
 	:rtype: TopoDS_Shape") BSplineRestriction;
 		static TopoDS_Shape BSplineRestriction (const TopoDS_Shape & S,const Standard_Real Tol3d,const Standard_Real Tol2d,const Standard_Integer MaxDegree,const Standard_Integer MaxNbSegment,const GeomAbs_Shape Continuity3d,const GeomAbs_Shape Continuity2d,const Standard_Boolean Degree,const Standard_Boolean Rational,const opencascade::handle<ShapeCustom_RestrictionParameters> & aParameters);
 
@@ -129,7 +129,7 @@ class ShapeCustom {
 		%feature("compactdefaultargs") ConvertToBSpline;
 		%feature("autodoc", "* Returns a new shape with all surfaces of linear extrusion, revolution, offset, and planar surfaces converted according to flags to Geom_BSplineSurface (with same parameterisation).
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param extrMode:
 	:type extrMode: bool
 	:param revolMode:
@@ -145,7 +145,7 @@ class ShapeCustom {
 		%feature("compactdefaultargs") ConvertToRevolution;
 		%feature("autodoc", "* Returns a new shape with all elementary periodic surfaces converted to Geom_SurfaceOfRevolution
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") ConvertToRevolution;
 		static TopoDS_Shape ConvertToRevolution (const TopoDS_Shape & S);
 
@@ -153,7 +153,7 @@ class ShapeCustom {
 		%feature("compactdefaultargs") DirectFaces;
 		%feature("autodoc", "* Returns a new shape without indirect surfaces.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") DirectFaces;
 		static TopoDS_Shape DirectFaces (const TopoDS_Shape & S);
 
@@ -161,7 +161,7 @@ class ShapeCustom {
 		%feature("compactdefaultargs") ScaleShape;
 		%feature("autodoc", "* Returns a new shape which is scaled original
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param scale:
 	:type scale: float
 	:rtype: TopoDS_Shape") ScaleShape;
@@ -171,7 +171,7 @@ class ShapeCustom {
 		%feature("compactdefaultargs") SweptToElementary;
 		%feature("autodoc", "* Returns a new shape with all surfaces of revolution and linear extrusion convert to elementary periodic surfaces
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") SweptToElementary;
 		static TopoDS_Shape SweptToElementary (const TopoDS_Shape & S);
 
@@ -203,7 +203,7 @@ class ShapeCustom_Curve {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Curve> & C);
 
@@ -215,7 +215,7 @@ class ShapeCustom_Curve {
 		/****************** ShapeCustom_Curve ******************/
 		%feature("compactdefaultargs") ShapeCustom_Curve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: None") ShapeCustom_Curve;
 		 ShapeCustom_Curve (const opencascade::handle<Geom_Curve> & C);
 
@@ -237,7 +237,7 @@ class ShapeCustom_Curve2d {
 		%feature("compactdefaultargs") ConvertToLine2d;
 		%feature("autodoc", "* Try to convert BSpline2d or Bezier2d to line 2d only if it is linear. Recalculate first and last parameters. Returns line2d or null curve2d.
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom2d_Curve> &
+	:type theCurve: Geom2d_Curve
 	:param theFirstIn:
 	:type theFirstIn: float
 	:param theLastIn:
@@ -245,11 +245,11 @@ class ShapeCustom_Curve2d {
 	:param theTolerance:
 	:type theTolerance: float
 	:param theNewFirst:
-	:type theNewFirst: float &
+	:type theNewFirst: float
 	:param theNewLast:
-	:type theNewLast: float &
+	:type theNewLast: float
 	:param theDeviation:
-	:type theDeviation: float &
+	:type theDeviation: float
 	:rtype: opencascade::handle<Geom2d_Line>") ConvertToLine2d;
 		static opencascade::handle<Geom2d_Line> ConvertToLine2d (const opencascade::handle<Geom2d_Curve> & theCurve,const Standard_Real theFirstIn,const Standard_Real theLastIn,const Standard_Real theTolerance,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -261,7 +261,7 @@ class ShapeCustom_Curve2d {
 	:param theTolerance:
 	:type theTolerance: float
 	:param theDeviation:
-	:type theDeviation: float &
+	:type theDeviation: float
 	:rtype: bool") IsLinear;
 		static Standard_Boolean IsLinear (const TColgp_Array1OfPnt2d & thePoles,const Standard_Real theTolerance,Standard_Real &OutValue);
 
@@ -269,7 +269,7 @@ class ShapeCustom_Curve2d {
 		%feature("compactdefaultargs") SimplifyBSpline2d;
 		%feature("autodoc", "* Try to remove knots from bspline where local derivatives are the same. Remove knots with given precision. Returns false if Bsplien was not modified
 	:param theBSpline2d:
-	:type theBSpline2d: opencascade::handle<Geom2d_BSplineCurve> &
+	:type theBSpline2d: Geom2d_BSplineCurve
 	:param theTolerance:
 	:type theTolerance: float
 	:rtype: bool") SimplifyBSpline2d;
@@ -300,9 +300,9 @@ class ShapeCustom_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") SendMsg;
 		%feature("autodoc", "* Sends a message to be attached to the shape. Calls corresponding message of message registrator.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:param gravity: default value is Message_Info
 	:type gravity: Message_Gravity
 	:rtype: None") SendMsg;
@@ -312,7 +312,7 @@ class ShapeCustom_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "* Sets message registrator
 	:param msgreg:
-	:type msgreg: opencascade::handle<ShapeExtend_BasicMsgRegistrator> &
+	:type msgreg: ShapeExtend_BasicMsgRegistrator
 	:rtype: void") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
@@ -593,7 +593,7 @@ class ShapeCustom_Surface {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Surface> & S);
 
@@ -605,7 +605,7 @@ class ShapeCustom_Surface {
 		/****************** ShapeCustom_Surface ******************/
 		%feature("compactdefaultargs") ShapeCustom_Surface;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") ShapeCustom_Surface;
 		 ShapeCustom_Surface (const opencascade::handle<Geom_Surface> & S);
 
@@ -628,13 +628,13 @@ class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "* Calls inherited method. Sets <Tol> as actual tolerance of <E> multiplied with scale factor.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewCurve;
 		Standard_Boolean NewCurve (const TopoDS_Edge & E,opencascade::handle<Geom_Curve> & C,TopLoc_Location & L,Standard_Real &OutValue);
 
@@ -642,17 +642,17 @@ class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "* Calls inherited method. Sets <Tol> as actual tolerance of <E> multiplied with scale factor.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param NewE:
-	:type NewE: TopoDS_Edge &
+	:type NewE: TopoDS_Edge
 	:param NewF:
-	:type NewF: TopoDS_Face &
+	:type NewF: TopoDS_Face
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewCurve2d;
 		Standard_Boolean NewCurve2d (const TopoDS_Edge & E,const TopoDS_Face & F,const TopoDS_Edge & NewE,const TopoDS_Face & NewF,opencascade::handle<Geom2d_Curve> & C,Standard_Real &OutValue);
 
@@ -660,13 +660,13 @@ class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "* Calls inherited method. Sets <Tol> as actual tolerance of <V> multiplied with scale factor.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param P:
-	:type P: float &
+	:type P: float
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -674,11 +674,11 @@ class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "* Calls inherited method. Sets <Tol> as actual tolerance of <V> multiplied with scale factor.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewPoint;
 		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
 
@@ -686,13 +686,13 @@ class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "* Calls inherited method. Sets <Tol> as actual tolerance of <F> multiplied with scale factor.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:param RevWires:
 	:type RevWires: bool
 	:param RevFace:
@@ -732,17 +732,17 @@ class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:param NewE:
-	:type NewE: TopoDS_Edge &
+	:type NewE: TopoDS_Edge
 	:param NewF1:
-	:type NewF1: TopoDS_Face &
+	:type NewF1: TopoDS_Face
 	:param NewF2:
-	:type NewF2: TopoDS_Face &
+	:type NewF2: TopoDS_Face
 	:rtype: GeomAbs_Shape") Continuity;
 		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
 
@@ -750,13 +750,13 @@ class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "* Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewCurve;
 		Standard_Boolean NewCurve (const TopoDS_Edge & E,opencascade::handle<Geom_Curve> & C,TopLoc_Location & L,Standard_Real &OutValue);
 
@@ -764,17 +764,17 @@ class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "* Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be usefull.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param NewE:
-	:type NewE: TopoDS_Edge &
+	:type NewE: TopoDS_Edge
 	:param NewF:
-	:type NewF: TopoDS_Face &
+	:type NewF: TopoDS_Face
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewCurve2d;
 		Standard_Boolean NewCurve2d (const TopoDS_Edge & E,const TopoDS_Face & F,const TopoDS_Edge & NewE,const TopoDS_Face & NewF,opencascade::handle<Geom2d_Curve> & C,Standard_Real &OutValue);
 
@@ -782,13 +782,13 @@ class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "* Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param P:
-	:type P: float &
+	:type P: float
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -796,11 +796,11 @@ class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewPoint;
 		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
 
@@ -808,13 +808,13 @@ class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <S>, <L>, <Tol> are not significant.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:param RevWires:
 	:type RevWires: bool
 	:param RevFace:
@@ -883,17 +883,17 @@ class ShapeCustom_DirectModification : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:param NewE:
-	:type NewE: TopoDS_Edge &
+	:type NewE: TopoDS_Edge
 	:param NewF1:
-	:type NewF1: TopoDS_Face &
+	:type NewF1: TopoDS_Face
 	:param NewF2:
-	:type NewF2: TopoDS_Face &
+	:type NewF2: TopoDS_Face
 	:rtype: GeomAbs_Shape") Continuity;
 		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
 
@@ -901,13 +901,13 @@ class ShapeCustom_DirectModification : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "* Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewCurve;
 		Standard_Boolean NewCurve (const TopoDS_Edge & E,opencascade::handle<Geom_Curve> & C,TopLoc_Location & L,Standard_Real &OutValue);
 
@@ -915,17 +915,17 @@ class ShapeCustom_DirectModification : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "* Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be usefull.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param NewE:
-	:type NewE: TopoDS_Edge &
+	:type NewE: TopoDS_Edge
 	:param NewF:
-	:type NewF: TopoDS_Face &
+	:type NewF: TopoDS_Face
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewCurve2d;
 		Standard_Boolean NewCurve2d (const TopoDS_Edge & E,const TopoDS_Face & F,const TopoDS_Edge & NewE,const TopoDS_Face & NewF,opencascade::handle<Geom2d_Curve> & C,Standard_Real &OutValue);
 
@@ -933,13 +933,13 @@ class ShapeCustom_DirectModification : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "* Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param P:
-	:type P: float &
+	:type P: float
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -947,11 +947,11 @@ class ShapeCustom_DirectModification : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewPoint;
 		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
 
@@ -959,13 +959,13 @@ class ShapeCustom_DirectModification : public ShapeCustom_Modification {
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <S>, <L>, <Tol> are not significant.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:param RevWires:
 	:type RevWires: bool
 	:param RevFace:

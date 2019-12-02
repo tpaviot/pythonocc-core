@@ -117,9 +117,9 @@ class LocOpe {
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "* Returns Standard_True when the wire <W> is closed on the face <OnF>.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param OnF:
-	:type OnF: TopoDS_Face &
+	:type OnF: TopoDS_Face
 	:rtype: bool") Closed;
 		static Standard_Boolean Closed (const TopoDS_Wire & W,const TopoDS_Face & OnF);
 
@@ -127,16 +127,16 @@ class LocOpe {
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "* Returns Standard_True when the edge <E> is closed on the face <OnF>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param OnF:
-	:type OnF: TopoDS_Face &
+	:type OnF: TopoDS_Face
 	:rtype: bool") Closed;
 		static Standard_Boolean Closed (const TopoDS_Edge & E,const TopoDS_Face & OnF);
 
 		/****************** SampleEdges ******************/
 		%feature("compactdefaultargs") SampleEdges;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Pt:
 	:type Pt: TColgp_SequenceOfPnt
 	:rtype: void") SampleEdges;
@@ -146,11 +146,11 @@ class LocOpe {
 		%feature("compactdefaultargs") TgtFaces;
 		%feature("autodoc", "* Returns Standard_True when the faces are tangent
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:rtype: bool") TgtFaces;
 		static Standard_Boolean TgtFaces (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2);
 
@@ -178,7 +178,7 @@ class LocOpe_BuildShape {
 		%feature("compactdefaultargs") LocOpe_BuildShape;
 		%feature("autodoc", "* Builds shape(s) from the list <L>. Uses only the faces of <L>.
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") LocOpe_BuildShape;
 		 LocOpe_BuildShape (const TopTools_ListOfShape & L);
 
@@ -186,7 +186,7 @@ class LocOpe_BuildShape {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Builds shape(s) from the list <L>. Uses only the faces of <L>.
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") Perform;
 		void Perform (const TopTools_ListOfShape & L);
 
@@ -223,18 +223,18 @@ class LocOpe_BuildWires {
 		/****************** LocOpe_BuildWires ******************/
 		%feature("compactdefaultargs") LocOpe_BuildWires;
 		%feature("autodoc", ":param Ledges:
-	:type Ledges: TopTools_ListOfShape &
+	:type Ledges: TopTools_ListOfShape
 	:param PW:
-	:type PW: opencascade::handle<LocOpe_WiresOnShape> &
+	:type PW: LocOpe_WiresOnShape
 	:rtype: None") LocOpe_BuildWires;
 		 LocOpe_BuildWires (const TopTools_ListOfShape & Ledges,const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Ledges:
-	:type Ledges: TopTools_ListOfShape &
+	:type Ledges: TopTools_ListOfShape
 	:param PW:
-	:type PW: opencascade::handle<LocOpe_WiresOnShape> &
+	:type PW: LocOpe_WiresOnShape
 	:rtype: None") Perform;
 		void Perform (const TopTools_ListOfShape & Ledges,const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
@@ -267,7 +267,7 @@ class LocOpe_CSIntersector {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Performs the intersection between <Ax1 and <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -287,7 +287,7 @@ class LocOpe_CSIntersector {
 		%feature("compactdefaultargs") LocOpe_CSIntersector;
 		%feature("autodoc", "* Creates and performs the intersection betwwen <Ax1> and <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") LocOpe_CSIntersector;
 		 LocOpe_CSIntersector (const TopoDS_Shape & S);
 
@@ -301,11 +301,11 @@ class LocOpe_CSIntersector {
 	:param Tol:
 	:type Tol: float
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:param IndFrom:
-	:type IndFrom: int &
+	:type IndFrom: int
 	:param IndTo:
-	:type IndTo: int &
+	:type IndTo: int
 	:rtype: bool") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer I,const Standard_Real From,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -319,11 +319,11 @@ class LocOpe_CSIntersector {
 	:param Tol:
 	:type Tol: float
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:param IndFrom:
-	:type IndFrom: int &
+	:type IndFrom: int
 	:param IndTo:
-	:type IndTo: int &
+	:type IndTo: int
 	:rtype: bool") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer I,const Standard_Integer FromInd,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -337,11 +337,11 @@ class LocOpe_CSIntersector {
 	:param Tol:
 	:type Tol: float
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:param IndFrom:
-	:type IndFrom: int &
+	:type IndFrom: int
 	:param IndTo:
-	:type IndTo: int &
+	:type IndTo: int
 	:rtype: bool") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Integer I,const Standard_Real From,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -355,11 +355,11 @@ class LocOpe_CSIntersector {
 	:param Tol:
 	:type Tol: float
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:param IndFrom:
-	:type IndFrom: int &
+	:type IndFrom: int
 	:param IndTo:
-	:type IndTo: int &
+	:type IndTo: int
 	:rtype: bool") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Integer I,const Standard_Integer FromInd,const Standard_Real Tol,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -374,21 +374,21 @@ class LocOpe_CSIntersector {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Slin:
-	:type Slin: LocOpe_SequenceOfLin &
+	:type Slin: LocOpe_SequenceOfLin
 	:rtype: None") Perform;
 		void Perform (const LocOpe_SequenceOfLin & Slin);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Scir:
-	:type Scir: LocOpe_SequenceOfCirc &
+	:type Scir: LocOpe_SequenceOfCirc
 	:rtype: None") Perform;
 		void Perform (const LocOpe_SequenceOfCirc & Scir);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Scur:
-	:type Scur: TColGeom_SequenceOfCurve &
+	:type Scur: TColGeom_SequenceOfCurve
 	:rtype: None") Perform;
 		void Perform (const TColGeom_SequenceOfCurve & Scur);
 
@@ -423,7 +423,7 @@ class LocOpe_CurveShapeIntersector {
 	:param Axis:
 	:type Axis: gp_Ax1
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const gp_Ax1 & Axis,const TopoDS_Shape & S);
 
@@ -433,7 +433,7 @@ class LocOpe_CurveShapeIntersector {
 	:param C:
 	:type C: gp_Circ
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const gp_Circ & C,const TopoDS_Shape & S);
 
@@ -455,7 +455,7 @@ class LocOpe_CurveShapeIntersector {
 	:param Axis:
 	:type Axis: gp_Ax1
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector (const gp_Ax1 & Axis,const TopoDS_Shape & S);
 
@@ -465,7 +465,7 @@ class LocOpe_CurveShapeIntersector {
 	:param C:
 	:type C: gp_Circ
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector (const gp_Circ & C,const TopoDS_Shape & S);
 
@@ -475,11 +475,11 @@ class LocOpe_CurveShapeIntersector {
 	:param From:
 	:type From: float
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:param IndFrom:
-	:type IndFrom: int &
+	:type IndFrom: int
 	:param IndTo:
-	:type IndTo: int &
+	:type IndTo: int
 	:rtype: bool") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Real From,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -489,11 +489,11 @@ class LocOpe_CurveShapeIntersector {
 	:param FromInd:
 	:type FromInd: int
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:param IndFrom:
-	:type IndFrom: int &
+	:type IndFrom: int
 	:param IndTo:
-	:type IndTo: int &
+	:type IndTo: int
 	:rtype: bool") LocalizeAfter;
 		Standard_Boolean LocalizeAfter (const Standard_Integer FromInd,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -503,11 +503,11 @@ class LocOpe_CurveShapeIntersector {
 	:param From:
 	:type From: float
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:param IndFrom:
-	:type IndFrom: int &
+	:type IndFrom: int
 	:param IndTo:
-	:type IndTo: int &
+	:type IndTo: int
 	:rtype: bool") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Real From,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -517,11 +517,11 @@ class LocOpe_CurveShapeIntersector {
 	:param FromInd:
 	:type FromInd: int
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:param IndFrom:
-	:type IndFrom: int &
+	:type IndFrom: int
 	:param IndTo:
-	:type IndTo: int &
+	:type IndTo: int
 	:rtype: bool") LocalizeBefore;
 		Standard_Boolean LocalizeBefore (const Standard_Integer FromInd,TopAbs_Orientation & Or,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -562,7 +562,7 @@ class LocOpe_DPrism {
 		/****************** Curves ******************/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", ":param SCurves:
-	:type SCurves: TColGeom_SequenceOfCurve &
+	:type SCurves: TColGeom_SequenceOfCurve
 	:rtype: None") Curves;
 		void Curves (TColGeom_SequenceOfCurve & SCurves);
 
@@ -584,7 +584,7 @@ class LocOpe_DPrism {
 		/****************** LocOpe_DPrism ******************/
 		%feature("compactdefaultargs") LocOpe_DPrism;
 		%feature("autodoc", ":param Spine:
-	:type Spine: TopoDS_Face &
+	:type Spine: TopoDS_Face
 	:param Height1:
 	:type Height1: float
 	:param Height2:
@@ -597,7 +597,7 @@ class LocOpe_DPrism {
 		/****************** LocOpe_DPrism ******************/
 		%feature("compactdefaultargs") LocOpe_DPrism;
 		%feature("autodoc", ":param Spine:
-	:type Spine: TopoDS_Face &
+	:type Spine: TopoDS_Face
 	:param Height:
 	:type Height: float
 	:param Angle:
@@ -618,7 +618,7 @@ class LocOpe_DPrism {
 		/****************** Shapes ******************/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
 
@@ -665,9 +665,9 @@ class LocOpe_FindEdges {
 		/****************** LocOpe_FindEdges ******************/
 		%feature("compactdefaultargs") LocOpe_FindEdges;
 		%feature("autodoc", ":param FFrom:
-	:type FFrom: TopoDS_Shape &
+	:type FFrom: TopoDS_Shape
 	:param FTo:
-	:type FTo: TopoDS_Shape &
+	:type FTo: TopoDS_Shape
 	:rtype: None") LocOpe_FindEdges;
 		 LocOpe_FindEdges (const TopoDS_Shape & FFrom,const TopoDS_Shape & FTo);
 
@@ -684,9 +684,9 @@ class LocOpe_FindEdges {
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param FFrom:
-	:type FFrom: TopoDS_Shape &
+	:type FFrom: TopoDS_Shape
 	:param FTo:
-	:type FTo: TopoDS_Shape &
+	:type FTo: TopoDS_Shape
 	:rtype: None") Set;
 		void Set (const TopoDS_Shape & FFrom,const TopoDS_Shape & FTo);
 
@@ -723,9 +723,9 @@ class LocOpe_FindEdgesInFace {
 		/****************** LocOpe_FindEdgesInFace ******************/
 		%feature("compactdefaultargs") LocOpe_FindEdgesInFace;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") LocOpe_FindEdgesInFace;
 		 LocOpe_FindEdgesInFace (const TopoDS_Shape & S,const TopoDS_Face & F);
 
@@ -742,9 +742,9 @@ class LocOpe_FindEdgesInFace {
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Set;
 		void Set (const TopoDS_Shape & S,const TopoDS_Face & F);
 
@@ -767,7 +767,7 @@ class LocOpe_GeneratedShape : public Standard_Transient {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns the edge created by the vertex <V>. If none, must return a null shape.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: TopoDS_Edge") Generated;
 		virtual TopoDS_Edge Generated (const TopoDS_Vertex & V);
 
@@ -775,7 +775,7 @@ class LocOpe_GeneratedShape : public Standard_Transient {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns the face created by the edge <E>. If none, must return a null shape.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: TopoDS_Face") Generated;
 		virtual TopoDS_Face Generated (const TopoDS_Edge & E);
 
@@ -811,7 +811,7 @@ class LocOpe_Generator {
 		%feature("compactdefaultargs") DescendantFace;
 		%feature("autodoc", "* Returns the descendant face of <F>. <F> may belong to the original shape or to the 'generated' shape. The returned face may be a null shape (when <F> disappears).
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: TopTools_ListOfShape") DescendantFace;
 		const TopTools_ListOfShape & DescendantFace (const TopoDS_Face & F);
 
@@ -819,7 +819,7 @@ class LocOpe_Generator {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the algorithm on the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -838,14 +838,14 @@ class LocOpe_Generator {
 		%feature("compactdefaultargs") LocOpe_Generator;
 		%feature("autodoc", "* Creates the algorithm on the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") LocOpe_Generator;
 		 LocOpe_Generator (const TopoDS_Shape & S);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param G:
-	:type G: opencascade::handle<LocOpe_GeneratedShape> &
+	:type G: LocOpe_GeneratedShape
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<LocOpe_GeneratedShape> & G);
 
@@ -884,25 +884,25 @@ class LocOpe_Gluer {
 		/****************** Bind ******************/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", ":param Fnew:
-	:type Fnew: TopoDS_Face &
+	:type Fnew: TopoDS_Face
 	:param Fbase:
-	:type Fbase: TopoDS_Face &
+	:type Fbase: TopoDS_Face
 	:rtype: None") Bind;
 		void Bind (const TopoDS_Face & Fnew,const TopoDS_Face & Fbase);
 
 		/****************** Bind ******************/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", ":param Enew:
-	:type Enew: TopoDS_Edge &
+	:type Enew: TopoDS_Edge
 	:param Ebase:
-	:type Ebase: TopoDS_Edge &
+	:type Ebase: TopoDS_Edge
 	:rtype: None") Bind;
 		void Bind (const TopoDS_Edge & Enew,const TopoDS_Edge & Ebase);
 
 		/****************** DescendantFaces ******************/
 		%feature("compactdefaultargs") DescendantFaces;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: TopTools_ListOfShape") DescendantFaces;
 		const TopTools_ListOfShape & DescendantFaces (const TopoDS_Face & F);
 
@@ -919,9 +919,9 @@ class LocOpe_Gluer {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Snew:
-	:type Snew: TopoDS_Shape &
+	:type Snew: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & Sbase,const TopoDS_Shape & Snew);
 
@@ -938,9 +938,9 @@ class LocOpe_Gluer {
 		/****************** LocOpe_Gluer ******************/
 		%feature("compactdefaultargs") LocOpe_Gluer;
 		%feature("autodoc", ":param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Snew:
-	:type Snew: TopoDS_Shape &
+	:type Snew: TopoDS_Shape
 	:rtype: None") LocOpe_Gluer;
 		 LocOpe_Gluer (const TopoDS_Shape & Sbase,const TopoDS_Shape & Snew);
 
@@ -997,7 +997,7 @@ class LocOpe_LinearForm {
 		/****************** LocOpe_LinearForm ******************/
 		%feature("compactdefaultargs") LocOpe_LinearForm;
 		%feature("autodoc", ":param Base:
-	:type Base: TopoDS_Shape &
+	:type Base: TopoDS_Shape
 	:param V:
 	:type V: gp_Vec
 	:param Pnt1:
@@ -1010,7 +1010,7 @@ class LocOpe_LinearForm {
 		/****************** LocOpe_LinearForm ******************/
 		%feature("compactdefaultargs") LocOpe_LinearForm;
 		%feature("autodoc", ":param Base:
-	:type Base: TopoDS_Shape &
+	:type Base: TopoDS_Shape
 	:param V:
 	:type V: gp_Vec
 	:param Vectra:
@@ -1025,7 +1025,7 @@ class LocOpe_LinearForm {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Base:
-	:type Base: TopoDS_Shape &
+	:type Base: TopoDS_Shape
 	:param V:
 	:type V: gp_Vec
 	:param Pnt1:
@@ -1038,7 +1038,7 @@ class LocOpe_LinearForm {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Base:
-	:type Base: TopoDS_Shape &
+	:type Base: TopoDS_Shape
 	:param V:
 	:type V: gp_Vec
 	:param Vectra:
@@ -1058,7 +1058,7 @@ class LocOpe_LinearForm {
 		/****************** Shapes ******************/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
 
@@ -1102,9 +1102,9 @@ class LocOpe_Pipe {
 		/****************** LocOpe_Pipe ******************/
 		%feature("compactdefaultargs") LocOpe_Pipe;
 		%feature("autodoc", ":param Spine:
-	:type Spine: TopoDS_Wire &
+	:type Spine: TopoDS_Wire
 	:param Profile:
-	:type Profile: TopoDS_Shape &
+	:type Profile: TopoDS_Shape
 	:rtype: None") LocOpe_Pipe;
 		 LocOpe_Pipe (const TopoDS_Wire & Spine,const TopoDS_Shape & Profile);
 
@@ -1121,7 +1121,7 @@ class LocOpe_Pipe {
 		/****************** Shapes ******************/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
 
@@ -1166,7 +1166,7 @@ class LocOpe_PntFace {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Or:
 	:type Or: TopAbs_Orientation
 	:param Param:
@@ -1226,7 +1226,7 @@ class LocOpe_Prism {
 		/****************** Curves ******************/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", ":param SCurves:
-	:type SCurves: TColGeom_SequenceOfCurve &
+	:type SCurves: TColGeom_SequenceOfCurve
 	:rtype: None") Curves;
 		void Curves (TColGeom_SequenceOfCurve & SCurves);
 
@@ -1248,7 +1248,7 @@ class LocOpe_Prism {
 		/****************** LocOpe_Prism ******************/
 		%feature("compactdefaultargs") LocOpe_Prism;
 		%feature("autodoc", ":param Base:
-	:type Base: TopoDS_Shape &
+	:type Base: TopoDS_Shape
 	:param V:
 	:type V: gp_Vec
 	:rtype: None") LocOpe_Prism;
@@ -1257,7 +1257,7 @@ class LocOpe_Prism {
 		/****************** LocOpe_Prism ******************/
 		%feature("compactdefaultargs") LocOpe_Prism;
 		%feature("autodoc", ":param Base:
-	:type Base: TopoDS_Shape &
+	:type Base: TopoDS_Shape
 	:param V:
 	:type V: gp_Vec
 	:param Vectra:
@@ -1268,7 +1268,7 @@ class LocOpe_Prism {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Base:
-	:type Base: TopoDS_Shape &
+	:type Base: TopoDS_Shape
 	:param V:
 	:type V: gp_Vec
 	:rtype: None") Perform;
@@ -1277,7 +1277,7 @@ class LocOpe_Prism {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Base:
-	:type Base: TopoDS_Shape &
+	:type Base: TopoDS_Shape
 	:param V:
 	:type V: gp_Vec
 	:param Vtra:
@@ -1293,7 +1293,7 @@ class LocOpe_Prism {
 		/****************** Shapes ******************/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Shapes;
 		const TopTools_ListOfShape & Shapes (const TopoDS_Shape & S);
 
@@ -1322,7 +1322,7 @@ class LocOpe_SplitDrafts {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the algoritm with the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -1342,7 +1342,7 @@ class LocOpe_SplitDrafts {
 		%feature("compactdefaultargs") LocOpe_SplitDrafts;
 		%feature("autodoc", "* Creates the algoritm on the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") LocOpe_SplitDrafts;
 		 LocOpe_SplitDrafts (const TopoDS_Shape & S);
 
@@ -1355,9 +1355,9 @@ class LocOpe_SplitDrafts {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on both parts of the wire. <Extractg>, <Nplg>, <Angleg> define the arguments for the left part of the wire. <Extractd>, <Npld>, <Angled> define the arguments for the right part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle. If <ModifyLeft> is set to <Standard_False>, no draft angle is applied to the left part of the wire. If <ModifyRight> is set to <Standard_False>,no draft angle is applied to the right part of the wire.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Extractg:
 	:type Extractg: gp_Dir
 	:param NPlg:
@@ -1381,9 +1381,9 @@ class LocOpe_SplitDrafts {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on the left part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Extract:
 	:type Extract: gp_Dir
 	:param NPl:
@@ -1403,7 +1403,7 @@ class LocOpe_SplitDrafts {
 		%feature("compactdefaultargs") ShapesFromShape;
 		%feature("autodoc", "* Manages the descendant shapes.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") ShapesFromShape;
 		const TopTools_ListOfShape & ShapesFromShape (const TopoDS_Shape & S);
 
@@ -1426,11 +1426,11 @@ class LocOpe_SplitShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the vertex <V> on the edge <E>, at parameter <P>.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param P:
 	:type P: float
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") Add;
 		void Add (const TopoDS_Vertex & V,const Standard_Real P,const TopoDS_Edge & E);
 
@@ -1438,9 +1438,9 @@ class LocOpe_SplitShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the wire <W> on the face <F>.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") Add;
 		Standard_Boolean Add (const TopoDS_Wire & W,const TopoDS_Face & F);
 
@@ -1448,9 +1448,9 @@ class LocOpe_SplitShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the list of wires <Lwires> on the face <F>.
 	:param Lwires:
-	:type Lwires: TopTools_ListOfShape &
+	:type Lwires: TopTools_ListOfShape
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") Add;
 		Standard_Boolean Add (const TopTools_ListOfShape & Lwires,const TopoDS_Face & F);
 
@@ -1458,7 +1458,7 @@ class LocOpe_SplitShape {
 		%feature("compactdefaultargs") CanSplit;
 		%feature("autodoc", "* Tests if it is possible to split the edge <E>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: bool") CanSplit;
 		Standard_Boolean CanSplit (const TopoDS_Edge & E);
 
@@ -1466,7 +1466,7 @@ class LocOpe_SplitShape {
 		%feature("compactdefaultargs") DescendantShapes;
 		%feature("autodoc", "* Returns the list of descendant shapes of <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes (const TopoDS_Shape & S);
 
@@ -1474,7 +1474,7 @@ class LocOpe_SplitShape {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the process on the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -1482,9 +1482,9 @@ class LocOpe_SplitShape {
 		%feature("compactdefaultargs") LeftOf;
 		%feature("autodoc", "* Returns the 'left' part defined by the wire <W> on the face <F>. The returned list of shape is in fact a list of faces. The face <F> is considered with its topological orientation in the original shape. <W> is considered with its orientation.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: TopTools_ListOfShape") LeftOf;
 		const TopTools_ListOfShape & LeftOf (const TopoDS_Wire & W,const TopoDS_Face & F);
 
@@ -1498,7 +1498,7 @@ class LocOpe_SplitShape {
 		%feature("compactdefaultargs") LocOpe_SplitShape;
 		%feature("autodoc", "* Creates the process with the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") LocOpe_SplitShape;
 		 LocOpe_SplitShape (const TopoDS_Shape & S);
 
@@ -1527,7 +1527,7 @@ class LocOpe_Spliter {
 		%feature("compactdefaultargs") DescendantShapes;
 		%feature("autodoc", "* Returns the list of descendant shapes of <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes (const TopoDS_Shape & S);
 
@@ -1541,7 +1541,7 @@ class LocOpe_Spliter {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the algorithm on the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -1566,14 +1566,14 @@ class LocOpe_Spliter {
 		%feature("compactdefaultargs") LocOpe_Spliter;
 		%feature("autodoc", "* Creates the algorithm on the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") LocOpe_Spliter;
 		 LocOpe_Spliter (const TopoDS_Shape & S);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param PW:
-	:type PW: opencascade::handle<LocOpe_WiresOnShape> &
+	:type PW: LocOpe_WiresOnShape
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
@@ -1608,43 +1608,43 @@ class LocOpe_WiresOnShape : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Add splitting edges or wires for whole initial shape withot additional specification edge->face, edge->edge This method puts edge on the corresponding faces from initial shape
 	:param theEdges:
-	:type theEdges: TopTools_SequenceOfShape &
+	:type theEdges: TopTools_SequenceOfShape
 	:rtype: bool") Add;
 		Standard_Boolean Add (const TopTools_SequenceOfShape & theEdges);
 
 		/****************** Bind ******************/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Bind;
 		void Bind (const TopoDS_Wire & W,const TopoDS_Face & F);
 
 		/****************** Bind ******************/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", ":param Comp:
-	:type Comp: TopoDS_Compound &
+	:type Comp: TopoDS_Compound
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Bind;
 		void Bind (const TopoDS_Compound & Comp,const TopoDS_Face & F);
 
 		/****************** Bind ******************/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Bind;
 		void Bind (const TopoDS_Edge & E,const TopoDS_Face & F);
 
 		/****************** Bind ******************/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", ":param EfromW:
-	:type EfromW: TopoDS_Edge &
+	:type EfromW: TopoDS_Edge
 	:param EonFace:
-	:type EonFace: TopoDS_Edge &
+	:type EonFace: TopoDS_Edge
 	:rtype: None") Bind;
 		void Bind (const TopoDS_Edge & EfromW,const TopoDS_Edge & EonFace);
 
@@ -1661,7 +1661,7 @@ class LocOpe_WiresOnShape : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -1679,14 +1679,14 @@ class LocOpe_WiresOnShape : public Standard_Transient {
 		%feature("compactdefaultargs") IsFaceWithSection;
 		%feature("autodoc", "* tells is the face to be split by section or not
 	:param aFace:
-	:type aFace: TopoDS_Shape &
+	:type aFace: TopoDS_Shape
 	:rtype: bool") IsFaceWithSection;
 		Standard_Boolean IsFaceWithSection (const TopoDS_Shape & aFace);
 
 		/****************** LocOpe_WiresOnShape ******************/
 		%feature("compactdefaultargs") LocOpe_WiresOnShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") LocOpe_WiresOnShape;
 		 LocOpe_WiresOnShape (const TopoDS_Shape & S);
 
@@ -1704,7 +1704,7 @@ class LocOpe_WiresOnShape : public Standard_Transient {
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "* If the current edge is projected on an edge, returns <Standard_True> and sets the value of <E>. Otherwise, returns <Standard_False>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: bool") OnEdge;
 		Standard_Boolean OnEdge (TopoDS_Edge & E);
 
@@ -1712,11 +1712,11 @@ class LocOpe_WiresOnShape : public Standard_Transient {
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "* If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param P:
-	:type P: float &
+	:type P: float
 	:rtype: bool") OnEdge;
 		Standard_Boolean OnEdge (const TopoDS_Vertex & V,TopoDS_Edge & E,Standard_Real &OutValue);
 
@@ -1724,13 +1724,13 @@ class LocOpe_WiresOnShape : public Standard_Transient {
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "* If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param EdgeFrom:
-	:type EdgeFrom: TopoDS_Edge &
+	:type EdgeFrom: TopoDS_Edge
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param P:
-	:type P: float &
+	:type P: float
 	:rtype: bool") OnEdge;
 		Standard_Boolean OnEdge (const TopoDS_Vertex & V,const TopoDS_Edge & EdgeFrom,TopoDS_Edge & E,Standard_Real &OutValue);
 
@@ -1743,9 +1743,9 @@ class LocOpe_WiresOnShape : public Standard_Transient {
 		/****************** OnVertex ******************/
 		%feature("compactdefaultargs") OnVertex;
 		%feature("autodoc", ":param Vwire:
-	:type Vwire: TopoDS_Vertex &
+	:type Vwire: TopoDS_Vertex
 	:param Vshape:
-	:type Vshape: TopoDS_Vertex &
+	:type Vshape: TopoDS_Vertex
 	:rtype: bool") OnVertex;
 		Standard_Boolean OnVertex (const TopoDS_Vertex & Vwire,TopoDS_Vertex & Vshape);
 
@@ -1778,7 +1778,7 @@ class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns the edge created by the vertex <V>. If none, must return a null shape.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: TopoDS_Edge") Generated;
 		TopoDS_Edge Generated (const TopoDS_Vertex & V);
 
@@ -1786,7 +1786,7 @@ class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns the face created by the edge <E>. If none, must return a null shape.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: TopoDS_Face") Generated;
 		TopoDS_Face Generated (const TopoDS_Edge & E);
 
@@ -1798,14 +1798,14 @@ class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 		/****************** GlueOnFace ******************/
 		%feature("compactdefaultargs") GlueOnFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") GlueOnFace;
 		void GlueOnFace (const TopoDS_Face & F);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -1817,7 +1817,7 @@ class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 		/****************** LocOpe_GluedShape ******************/
 		%feature("compactdefaultargs") LocOpe_GluedShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") LocOpe_GluedShape;
 		 LocOpe_GluedShape (const TopoDS_Shape & S);
 

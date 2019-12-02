@@ -87,13 +87,13 @@ class Intrv_Interval {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param Start:
-	:type Start: float &
+	:type Start: float
 	:param TolStart:
-	:type TolStart: Standard_ShortReal &
+	:type TolStart: Standard_ShortReal
 	:param End:
-	:type End: float &
+	:type End: float
 	:param TolEnd:
-	:type TolEnd: Standard_ShortReal &
+	:type TolEnd: Standard_ShortReal
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_ShortReal & TolStart,Standard_Real &OutValue,Standard_ShortReal & TolEnd);
 
@@ -173,7 +173,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsAfter;
 		%feature("autodoc", "* True if me is After Other **-----------**** me ***----------------**  Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsAfter;
 		Standard_Boolean IsAfter (const Intrv_Interval & Other);
 
@@ -181,7 +181,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsBefore;
 		%feature("autodoc", "* True if me is Before Other ***----------------**  me **-----------**** Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsBefore;
 		Standard_Boolean IsBefore (const Intrv_Interval & Other);
 
@@ -189,7 +189,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsEnclosing;
 		%feature("autodoc", "* True if me is Enclosing Other ***----------------------------**** me ***------------------** Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsEnclosing;
 		Standard_Boolean IsEnclosing (const Intrv_Interval & Other);
 
@@ -197,7 +197,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsInside;
 		%feature("autodoc", "* True if me is Inside Other **-----------****  me ***--------------------------**  Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsInside;
 		Standard_Boolean IsInside (const Intrv_Interval & Other);
 
@@ -205,7 +205,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsJustAfter;
 		%feature("autodoc", "* True if me is just after Other ****-------****  me ***-----------**  Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsJustAfter;
 		Standard_Boolean IsJustAfter (const Intrv_Interval & Other);
 
@@ -213,7 +213,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsJustBefore;
 		%feature("autodoc", "* True if me is just before Other ***--------****   me ***-----------** Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsJustBefore;
 		Standard_Boolean IsJustBefore (const Intrv_Interval & Other);
 
@@ -221,7 +221,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsJustEnclosingAtEnd;
 		%feature("autodoc", "* True if me is just Enclosing Other at End ***----------------------------**** me ***-----------------****  Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsJustEnclosingAtEnd;
 		Standard_Boolean IsJustEnclosingAtEnd (const Intrv_Interval & Other);
 
@@ -229,7 +229,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsJustEnclosingAtStart;
 		%feature("autodoc", "* True if me is just Enclosing Other at start ***---------------------------**** me ***------------------** Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsJustEnclosingAtStart;
 		Standard_Boolean IsJustEnclosingAtStart (const Intrv_Interval & Other);
 
@@ -237,7 +237,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsJustOverlappingAtEnd;
 		%feature("autodoc", "* True if me is just overlapping Other at end ***-----------*  me ***------------------------** Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsJustOverlappingAtEnd;
 		Standard_Boolean IsJustOverlappingAtEnd (const Intrv_Interval & Other);
 
@@ -245,7 +245,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsJustOverlappingAtStart;
 		%feature("autodoc", "* True if me is just overlapping Other at start ***-----------***  me ***------------------------** Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsJustOverlappingAtStart;
 		Standard_Boolean IsJustOverlappingAtStart (const Intrv_Interval & Other);
 
@@ -253,7 +253,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsOverlappingAtEnd;
 		%feature("autodoc", "* True if me is overlapping Other at end ***-----------** me ***---------------***  Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsOverlappingAtEnd;
 		Standard_Boolean IsOverlappingAtEnd (const Intrv_Interval & Other);
 
@@ -261,7 +261,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsOverlappingAtStart;
 		%feature("autodoc", "* True if me is overlapping Other at start ***---------------***  me ***-----------** Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsOverlappingAtStart;
 		Standard_Boolean IsOverlappingAtStart (const Intrv_Interval & Other);
 
@@ -275,7 +275,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") IsSimilar;
 		%feature("autodoc", "* True if me and Other have the same bounds *----------------***  me ***-----------------**  Other
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: bool") IsSimilar;
 		Standard_Boolean IsSimilar (const Intrv_Interval & Other);
 
@@ -283,7 +283,7 @@ class Intrv_Interval {
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "* True if me is Before Other **-----------**** Other ***-----*   Before ***------------*  JustBefore ***-----------------*  OverlappingAtStart ***--------------------------*  JustEnclosingAtEnd ***-------------------------------------* Enclosing ***----*  JustOverlappingAtStart ***-------------*  Similar ***------------------------* JustEnclosingAtStart ***-*  Inside ***------*  JustOverlappingAtEnd ***-----------------* OverlappingAtEnd ***--------* JustAfter ***---* After
 	:param Other:
-	:type Other: Intrv_Interval &
+	:type Other: Intrv_Interval
 	:rtype: Intrv_Position") Position;
 		Intrv_Position Position (const Intrv_Interval & Other);
 
@@ -339,7 +339,7 @@ class Intrv_Intervals {
 		%feature("compactdefaultargs") Intersect;
 		%feature("autodoc", "* Intersects the intervals with the interval <Tool>.
 	:param Tool:
-	:type Tool: Intrv_Interval &
+	:type Tool: Intrv_Interval
 	:rtype: None") Intersect;
 		void Intersect (const Intrv_Interval & Tool);
 
@@ -347,7 +347,7 @@ class Intrv_Intervals {
 		%feature("compactdefaultargs") Intersect;
 		%feature("autodoc", "* Intersects the intervals with the intervals in the sequence <Tool>.
 	:param Tool:
-	:type Tool: Intrv_Intervals &
+	:type Tool: Intrv_Intervals
 	:rtype: None") Intersect;
 		void Intersect (const Intrv_Intervals & Tool);
 
@@ -361,7 +361,7 @@ class Intrv_Intervals {
 		%feature("compactdefaultargs") Intrv_Intervals;
 		%feature("autodoc", "* Creates a sequence of one interval.
 	:param Int:
-	:type Int: Intrv_Interval &
+	:type Int: Intrv_Interval
 	:rtype: None") Intrv_Intervals;
 		 Intrv_Intervals (const Intrv_Interval & Int);
 
@@ -369,7 +369,7 @@ class Intrv_Intervals {
 		%feature("compactdefaultargs") Intrv_Intervals;
 		%feature("autodoc", "* Creates by copying an existing sequence of intervals.
 	:param Int:
-	:type Int: Intrv_Intervals &
+	:type Int: Intrv_Intervals
 	:rtype: None") Intrv_Intervals;
 		 Intrv_Intervals (const Intrv_Intervals & Int);
 
@@ -381,28 +381,28 @@ class Intrv_Intervals {
 		/****************** Subtract ******************/
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", ":param Tool:
-	:type Tool: Intrv_Interval &
+	:type Tool: Intrv_Interval
 	:rtype: None") Subtract;
 		void Subtract (const Intrv_Interval & Tool);
 
 		/****************** Subtract ******************/
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", ":param Tool:
-	:type Tool: Intrv_Intervals &
+	:type Tool: Intrv_Intervals
 	:rtype: None") Subtract;
 		void Subtract (const Intrv_Intervals & Tool);
 
 		/****************** Unite ******************/
 		%feature("compactdefaultargs") Unite;
 		%feature("autodoc", ":param Tool:
-	:type Tool: Intrv_Interval &
+	:type Tool: Intrv_Interval
 	:rtype: None") Unite;
 		void Unite (const Intrv_Interval & Tool);
 
 		/****************** Unite ******************/
 		%feature("compactdefaultargs") Unite;
 		%feature("autodoc", ":param Tool:
-	:type Tool: Intrv_Intervals &
+	:type Tool: Intrv_Intervals
 	:rtype: None") Unite;
 		void Unite (const Intrv_Intervals & Tool);
 
@@ -416,14 +416,14 @@ class Intrv_Intervals {
 		/****************** XUnite ******************/
 		%feature("compactdefaultargs") XUnite;
 		%feature("autodoc", ":param Tool:
-	:type Tool: Intrv_Interval &
+	:type Tool: Intrv_Interval
 	:rtype: None") XUnite;
 		void XUnite (const Intrv_Interval & Tool);
 
 		/****************** XUnite ******************/
 		%feature("compactdefaultargs") XUnite;
 		%feature("autodoc", ":param Tool:
-	:type Tool: Intrv_Intervals &
+	:type Tool: Intrv_Intervals
 	:rtype: None") XUnite;
 		void XUnite (const Intrv_Intervals & Tool);
 

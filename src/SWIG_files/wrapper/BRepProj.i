@@ -76,9 +76,9 @@ class BRepProj_Projection {
 		%feature("compactdefaultargs") BRepProj_Projection;
 		%feature("autodoc", "* Makes a Cylindrical projection of Wire om Shape
 	:param Wire:
-	:type Wire: TopoDS_Shape &
+	:type Wire: TopoDS_Shape
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param D:
 	:type D: gp_Dir
 	:rtype: None") BRepProj_Projection;
@@ -88,9 +88,9 @@ class BRepProj_Projection {
 		%feature("compactdefaultargs") BRepProj_Projection;
 		%feature("autodoc", "* Makes a Conical projection of Wire om Shape
 	:param Wire:
-	:type Wire: TopoDS_Shape &
+	:type Wire: TopoDS_Shape
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param P:
 	:type P: gp_Pnt
 	:rtype: None") BRepProj_Projection;

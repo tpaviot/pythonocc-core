@@ -116,11 +116,11 @@ class PLib {
 		/****************** CoefficientsPoles ******************/
 		%feature("compactdefaultargs") CoefficientsPoles;
 		%feature("autodoc", ":param Coefs:
-	:type Coefs: TColStd_Array1OfReal &
+	:type Coefs: TColStd_Array1OfReal
 	:param WCoefs:
 	:type WCoefs: TColStd_Array1OfReal *
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param WPoles:
 	:type WPoles: TColStd_Array1OfReal *
 	:rtype: void") CoefficientsPoles;
@@ -131,11 +131,11 @@ class PLib {
 		%feature("autodoc", ":param dim:
 	:type dim: int
 	:param Coefs:
-	:type Coefs: TColStd_Array1OfReal &
+	:type Coefs: TColStd_Array1OfReal
 	:param WCoefs:
 	:type WCoefs: TColStd_Array1OfReal *
 	:param Poles:
-	:type Poles: TColStd_Array1OfReal &
+	:type Poles: TColStd_Array1OfReal
 	:param WPoles:
 	:type WPoles: TColStd_Array1OfReal *
 	:rtype: void") CoefficientsPoles;
@@ -172,13 +172,13 @@ class PLib {
 	:param Dimension:
 	:type Dimension: int
 	:param ValueArray:
-	:type ValueArray: float &
+	:type ValueArray: float
 	:param DerivativeArray:
-	:type DerivativeArray: float &
+	:type DerivativeArray: float
 	:param ParameterArray:
-	:type ParameterArray: float &
+	:type ParameterArray: float
 	:param Results:
-	:type Results: float &
+	:type Results: float
 	:rtype: int") EvalCubicHermite;
 		static Standard_Integer EvalCubicHermite (const Standard_Real U,const Standard_Integer DerivativeOrder,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -194,11 +194,11 @@ class PLib {
 	:param Dimension:
 	:type Dimension: int
 	:param ValueArray:
-	:type ValueArray: float &
+	:type ValueArray: float
 	:param ParameterArray:
-	:type ParameterArray: float &
+	:type ParameterArray: float
 	:param Results:
-	:type Results: float &
+	:type Results: float
 	:rtype: int") EvalLagrange;
 		static Standard_Integer EvalLagrange (const Standard_Real U,const Standard_Integer DerivativeOrder,const Standard_Integer Degree,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -209,13 +209,13 @@ class PLib {
 	:param Dimension:
 	:type Dimension: int
 	:param PolynomialCoeff:
-	:type PolynomialCoeff: float &
+	:type PolynomialCoeff: float
 	:param U1:
 	:type U1: float
 	:param U2:
 	:type U2: float
 	:param Length:
-	:type Length: float &
+	:type Length: float
 	:rtype: void") EvalLength;
 		static void EvalLength (const Standard_Integer Degree,const Standard_Integer Dimension,Standard_Real &OutValue,const Standard_Real U1,const Standard_Real U2,Standard_Real &OutValue);
 
@@ -226,7 +226,7 @@ class PLib {
 	:param Dimension:
 	:type Dimension: int
 	:param PolynomialCoeff:
-	:type PolynomialCoeff: float &
+	:type PolynomialCoeff: float
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -234,9 +234,9 @@ class PLib {
 	:param Tol:
 	:type Tol: float
 	:param Length:
-	:type Length: float &
+	:type Length: float
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: void") EvalLength;
 		static void EvalLength (const Standard_Integer Degree,const Standard_Integer Dimension,Standard_Real &OutValue,const Standard_Real U1,const Standard_Real U2,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -258,9 +258,9 @@ class PLib {
 	:param Dimension:
 	:type Dimension: int
 	:param PolynomialCoeff:
-	:type PolynomialCoeff: float &
+	:type PolynomialCoeff: float
 	:param Results:
-	:type Results: float &
+	:type Results: float
 	:rtype: void") EvalPoly2Var;
 		static void EvalPoly2Var (const Standard_Real U,const Standard_Real V,const Standard_Integer UDerivativeOrder,const Standard_Integer VDerivativeOrder,const Standard_Integer UDegree,const Standard_Integer VDegree,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -276,9 +276,9 @@ class PLib {
 	:param Dimension:
 	:type Dimension: int
 	:param PolynomialCoeff:
-	:type PolynomialCoeff: float &
+	:type PolynomialCoeff: float
 	:param Results:
-	:type Results: float &
+	:type Results: float
 	:rtype: void") EvalPolynomial;
 		static void EvalPolynomial (const Standard_Real U,const Standard_Integer DerivativeOrder,const Standard_Integer Degree,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -286,7 +286,7 @@ class PLib {
 		%feature("compactdefaultargs") GetPoles;
 		%feature("autodoc", "* Get from FP the coordinates of the poles.
 	:param FP:
-	:type FP: TColStd_Array1OfReal &
+	:type FP: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:rtype: void") GetPoles;
@@ -296,11 +296,11 @@ class PLib {
 		%feature("compactdefaultargs") GetPoles;
 		%feature("autodoc", "* Get from FP the coordinates of the poles.
 	:param FP:
-	:type FP: TColStd_Array1OfReal &
+	:type FP: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:rtype: void") GetPoles;
 		static void GetPoles (const TColStd_Array1OfReal & FP,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weights);
 
@@ -308,7 +308,7 @@ class PLib {
 		%feature("compactdefaultargs") GetPoles;
 		%feature("autodoc", "* Get from FP the coordinates of the poles.
 	:param FP:
-	:type FP: TColStd_Array1OfReal &
+	:type FP: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:rtype: void") GetPoles;
@@ -318,11 +318,11 @@ class PLib {
 		%feature("compactdefaultargs") GetPoles;
 		%feature("autodoc", "* Get from FP the coordinates of the poles.
 	:param FP:
-	:type FP: TColStd_Array1OfReal &
+	:type FP: TColStd_Array1OfReal
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:rtype: void") GetPoles;
 		static void GetPoles (const TColStd_Array1OfReal & FP,TColgp_Array1OfPnt2d & Poles,TColStd_Array1OfReal & Weights);
 
@@ -338,7 +338,7 @@ class PLib {
 	:param LastOrder:
 	:type LastOrder: int
 	:param MatrixCoefs:
-	:type MatrixCoefs: math_Matrix &
+	:type MatrixCoefs: math_Matrix
 	:rtype: bool") HermiteCoefficients;
 		static Standard_Boolean HermiteCoefficients (const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Integer FirstOrder,const Standard_Integer LastOrder,math_Matrix & MatrixCoefs);
 
@@ -356,11 +356,11 @@ class PLib {
 	:param LastOrder:
 	:type LastOrder: int
 	:param FirstConstr:
-	:type FirstConstr: TColStd_Array2OfReal &
+	:type FirstConstr: TColStd_Array2OfReal
 	:param LastConstr:
-	:type LastConstr: TColStd_Array2OfReal &
+	:type LastConstr: TColStd_Array2OfReal
 	:param Coefficients:
-	:type Coefficients: TColStd_Array1OfReal &
+	:type Coefficients: TColStd_Array1OfReal
 	:rtype: bool") HermiteInterpolate;
 		static Standard_Boolean HermiteInterpolate (const Standard_Integer Dimension,const Standard_Real FirstParameter,const Standard_Real LastParameter,const Standard_Integer FirstOrder,const Standard_Integer LastOrder,const TColStd_Array2OfReal & FirstConstr,const TColStd_Array2OfReal & LastConstr,TColStd_Array1OfReal & Coefficients);
 
@@ -374,9 +374,9 @@ class PLib {
 	:param Code:
 	:type Code: int
 	:param NbGaussPoints:
-	:type NbGaussPoints: int &
+	:type NbGaussPoints: int
 	:param WorkDegree:
-	:type WorkDegree: int &
+	:type WorkDegree: int
 	:rtype: void") JacobiParameters;
 		static void JacobiParameters (const GeomAbs_Shape ConstraintOrder,const Standard_Integer MaxDegree,const Standard_Integer Code,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -400,9 +400,9 @@ class PLib {
 	:param DegreeDimension:
 	:type DegreeDimension: int
 	:param PolynomialCoeff:
-	:type PolynomialCoeff: float &
+	:type PolynomialCoeff: float
 	:param Results:
-	:type Results: float &
+	:type Results: float
 	:rtype: void") NoDerivativeEvalPolynomial;
 		static void NoDerivativeEvalPolynomial (const Standard_Real U,const Standard_Integer Degree,const Standard_Integer Dimension,const Standard_Integer DegreeDimension,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -428,9 +428,9 @@ class PLib {
 	:param Dimension:
 	:type Dimension: int
 	:param Ders:
-	:type Ders: float &
+	:type Ders: float
 	:param RDers:
-	:type RDers: float &
+	:type RDers: float
 	:param All: default value is Standard_True
 	:type All: bool
 	:rtype: void") RationalDerivative;
@@ -444,11 +444,11 @@ class PLib {
 	:param Dimension:
 	:type Dimension: int
 	:param PolesDerivatives:
-	:type PolesDerivatives: float &
+	:type PolesDerivatives: float
 	:param WeightsDerivatives:
-	:type WeightsDerivatives: float &
+	:type WeightsDerivatives: float
 	:param RationalDerivates:
-	:type RationalDerivates: float &
+	:type RationalDerivates: float
 	:rtype: void") RationalDerivatives;
 		static void RationalDerivatives (const Standard_Integer DerivativesRequest,const Standard_Integer Dimension,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -458,7 +458,7 @@ class PLib {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param FP:
-	:type FP: TColStd_Array1OfReal &
+	:type FP: TColStd_Array1OfReal
 	:rtype: void") SetPoles;
 		static void SetPoles (const TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & FP);
 
@@ -468,9 +468,9 @@ class PLib {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param FP:
-	:type FP: TColStd_Array1OfReal &
+	:type FP: TColStd_Array1OfReal
 	:rtype: void") SetPoles;
 		static void SetPoles (const TColgp_Array1OfPnt & Poles,const TColStd_Array1OfReal & Weights,TColStd_Array1OfReal & FP);
 
@@ -480,7 +480,7 @@ class PLib {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param FP:
-	:type FP: TColStd_Array1OfReal &
+	:type FP: TColStd_Array1OfReal
 	:rtype: void") SetPoles;
 		static void SetPoles (const TColgp_Array1OfPnt2d & Poles,TColStd_Array1OfReal & FP);
 
@@ -490,9 +490,9 @@ class PLib {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param FP:
-	:type FP: TColStd_Array1OfReal &
+	:type FP: TColStd_Array1OfReal
 	:rtype: void") SetPoles;
 		static void SetPoles (const TColgp_Array1OfPnt2d & Poles,const TColStd_Array1OfReal & Weights,TColStd_Array1OfReal & FP);
 
@@ -529,7 +529,7 @@ class PLib {
 	:param U2:
 	:type U2: float
 	:param Coeffs:
-	:type Coeffs: TColStd_Array1OfReal &
+	:type Coeffs: TColStd_Array1OfReal
 	:param WCoeffs:
 	:type WCoeffs: TColStd_Array1OfReal *
 	:rtype: void") Trimming;
@@ -544,7 +544,7 @@ class PLib {
 	:param dim:
 	:type dim: int
 	:param Coeffs:
-	:type Coeffs: TColStd_Array1OfReal &
+	:type Coeffs: TColStd_Array1OfReal
 	:param WCoeffs:
 	:type WCoeffs: TColStd_Array1OfReal *
 	:rtype: void") Trimming;
@@ -597,7 +597,7 @@ class PLib_Base : public Standard_Transient {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:rtype: void") D0;
 		virtual void D0 (const Standard_Real U,TColStd_Array1OfReal & BasisValue);
 
@@ -607,9 +607,9 @@ class PLib_Base : public Standard_Transient {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:param BasisD1:
-	:type BasisD1: TColStd_Array1OfReal &
+	:type BasisD1: TColStd_Array1OfReal
 	:rtype: void") D1;
 		virtual void D1 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1);
 
@@ -619,11 +619,11 @@ class PLib_Base : public Standard_Transient {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:param BasisD1:
-	:type BasisD1: TColStd_Array1OfReal &
+	:type BasisD1: TColStd_Array1OfReal
 	:param BasisD2:
-	:type BasisD2: TColStd_Array1OfReal &
+	:type BasisD2: TColStd_Array1OfReal
 	:rtype: void") D2;
 		virtual void D2 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2);
 
@@ -633,13 +633,13 @@ class PLib_Base : public Standard_Transient {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:param BasisD1:
-	:type BasisD1: TColStd_Array1OfReal &
+	:type BasisD1: TColStd_Array1OfReal
 	:param BasisD2:
-	:type BasisD2: TColStd_Array1OfReal &
+	:type BasisD2: TColStd_Array1OfReal
 	:param BasisD3:
-	:type BasisD3: TColStd_Array1OfReal &
+	:type BasisD3: TColStd_Array1OfReal
 	:rtype: void") D3;
 		virtual void D3 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2,TColStd_Array1OfReal & BasisD3);
 
@@ -653,11 +653,11 @@ class PLib_Base : public Standard_Transient {
 	:param Tol:
 	:type Tol: float
 	:param BaseCoeff:
-	:type BaseCoeff: float &
+	:type BaseCoeff: float
 	:param NewDegree:
-	:type NewDegree: int &
+	:type NewDegree: int
 	:param MaxError:
-	:type MaxError: float &
+	:type MaxError: float
 	:rtype: void") ReduceDegree;
 		virtual void ReduceDegree (const Standard_Integer Dimension,const Standard_Integer MaxDegree,const Standard_Real Tol,Standard_Real &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -669,9 +669,9 @@ class PLib_Base : public Standard_Transient {
 	:param Degree:
 	:type Degree: int
 	:param CoeffinBase:
-	:type CoeffinBase: TColStd_Array1OfReal &
+	:type CoeffinBase: TColStd_Array1OfReal
 	:param Coefficients:
-	:type Coefficients: TColStd_Array1OfReal &
+	:type Coefficients: TColStd_Array1OfReal
 	:rtype: void") ToCoefficients;
 		virtual void ToCoefficients (const Standard_Integer Dimension,const Standard_Integer Degree,const TColStd_Array1OfReal & CoeffinBase,TColStd_Array1OfReal & Coefficients);
 
@@ -709,7 +709,7 @@ class PLib_DoubleJacobiPolynomial {
 	:param dJacCoeff:
 	:type dJacCoeff: int
 	:param JacCoeff:
-	:type JacCoeff: TColStd_Array1OfReal &
+	:type JacCoeff: TColStd_Array1OfReal
 	:rtype: float") AverageError;
 		Standard_Real AverageError (const Standard_Integer Dimension,const Standard_Integer DegreeU,const Standard_Integer DegreeV,const Standard_Integer dJacCoeff,const TColStd_Array1OfReal & JacCoeff);
 
@@ -728,7 +728,7 @@ class PLib_DoubleJacobiPolynomial {
 	:param dJacCoeff:
 	:type dJacCoeff: int
 	:param JacCoeff:
-	:type JacCoeff: TColStd_Array1OfReal &
+	:type JacCoeff: TColStd_Array1OfReal
 	:param Error:
 	:type Error: float
 	:rtype: float") MaxError;
@@ -745,7 +745,7 @@ class PLib_DoubleJacobiPolynomial {
 	:param dJacCoeff:
 	:type dJacCoeff: int
 	:param JacCoeff:
-	:type JacCoeff: TColStd_Array1OfReal &
+	:type JacCoeff: TColStd_Array1OfReal
 	:rtype: float") MaxErrorU;
 		Standard_Real MaxErrorU (const Standard_Integer Dimension,const Standard_Integer DegreeU,const Standard_Integer DegreeV,const Standard_Integer dJacCoeff,const TColStd_Array1OfReal & JacCoeff);
 
@@ -760,7 +760,7 @@ class PLib_DoubleJacobiPolynomial {
 	:param dJacCoeff:
 	:type dJacCoeff: int
 	:param JacCoeff:
-	:type JacCoeff: TColStd_Array1OfReal &
+	:type JacCoeff: TColStd_Array1OfReal
 	:rtype: float") MaxErrorV;
 		Standard_Real MaxErrorV (const Standard_Integer Dimension,const Standard_Integer DegreeU,const Standard_Integer DegreeV,const Standard_Integer dJacCoeff,const TColStd_Array1OfReal & JacCoeff);
 
@@ -772,9 +772,9 @@ class PLib_DoubleJacobiPolynomial {
 		/****************** PLib_DoubleJacobiPolynomial ******************/
 		%feature("compactdefaultargs") PLib_DoubleJacobiPolynomial;
 		%feature("autodoc", ":param JacPolU:
-	:type JacPolU: opencascade::handle<PLib_JacobiPolynomial> &
+	:type JacPolU: PLib_JacobiPolynomial
 	:param JacPolV:
-	:type JacPolV: opencascade::handle<PLib_JacobiPolynomial> &
+	:type JacPolV: PLib_JacobiPolynomial
 	:rtype: None") PLib_DoubleJacobiPolynomial;
 		 PLib_DoubleJacobiPolynomial (const opencascade::handle<PLib_JacobiPolynomial> & JacPolU,const opencascade::handle<PLib_JacobiPolynomial> & JacPolV);
 
@@ -793,15 +793,15 @@ class PLib_DoubleJacobiPolynomial {
 	:param dJacCoeff:
 	:type dJacCoeff: int
 	:param JacCoeff:
-	:type JacCoeff: TColStd_Array1OfReal &
+	:type JacCoeff: TColStd_Array1OfReal
 	:param EpmsCut:
 	:type EpmsCut: float
 	:param MaxError:
-	:type MaxError: float &
+	:type MaxError: float
 	:param NewDegreeU:
-	:type NewDegreeU: int &
+	:type NewDegreeU: int
 	:param NewDegreeV:
-	:type NewDegreeV: int &
+	:type NewDegreeV: int
 	:rtype: None") ReduceDegree;
 		void ReduceDegree (const Standard_Integer Dimension,const Standard_Integer MinDegreeU,const Standard_Integer MaxDegreeU,const Standard_Integer MinDegreeV,const Standard_Integer MaxDegreeV,const Standard_Integer dJacCoeff,const TColStd_Array1OfReal & JacCoeff,const Standard_Real EpmsCut,Standard_Real &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -838,9 +838,9 @@ class PLib_DoubleJacobiPolynomial {
 	:param DegreeV:
 	:type DegreeV: int
 	:param JacCoeff:
-	:type JacCoeff: TColStd_Array1OfReal &
+	:type JacCoeff: TColStd_Array1OfReal
 	:param Coefficients:
-	:type Coefficients: TColStd_Array1OfReal &
+	:type Coefficients: TColStd_Array1OfReal
 	:rtype: None") WDoubleJacobiToCoefficients;
 		void WDoubleJacobiToCoefficients (const Standard_Integer Dimension,const Standard_Integer DegreeU,const Standard_Integer DegreeV,const TColStd_Array1OfReal & JacCoeff,TColStd_Array1OfReal & Coefficients);
 
@@ -864,7 +864,7 @@ class PLib_HermitJacobi : public PLib_Base {
 		%feature("autodoc", ":param Dimension:
 	:type Dimension: int
 	:param HermJacCoeff:
-	:type HermJacCoeff: float &
+	:type HermJacCoeff: float
 	:param NewDegree:
 	:type NewDegree: int
 	:rtype: float") AverageError;
@@ -876,7 +876,7 @@ class PLib_HermitJacobi : public PLib_Base {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:rtype: None") D0;
 		void D0 (const Standard_Real U,TColStd_Array1OfReal & BasisValue);
 
@@ -886,9 +886,9 @@ class PLib_HermitJacobi : public PLib_Base {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:param BasisD1:
-	:type BasisD1: TColStd_Array1OfReal &
+	:type BasisD1: TColStd_Array1OfReal
 	:rtype: None") D1;
 		void D1 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1);
 
@@ -898,11 +898,11 @@ class PLib_HermitJacobi : public PLib_Base {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:param BasisD1:
-	:type BasisD1: TColStd_Array1OfReal &
+	:type BasisD1: TColStd_Array1OfReal
 	:param BasisD2:
-	:type BasisD2: TColStd_Array1OfReal &
+	:type BasisD2: TColStd_Array1OfReal
 	:rtype: None") D2;
 		void D2 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2);
 
@@ -912,13 +912,13 @@ class PLib_HermitJacobi : public PLib_Base {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:param BasisD1:
-	:type BasisD1: TColStd_Array1OfReal &
+	:type BasisD1: TColStd_Array1OfReal
 	:param BasisD2:
-	:type BasisD2: TColStd_Array1OfReal &
+	:type BasisD2: TColStd_Array1OfReal
 	:param BasisD3:
-	:type BasisD3: TColStd_Array1OfReal &
+	:type BasisD3: TColStd_Array1OfReal
 	:rtype: None") D3;
 		void D3 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2,TColStd_Array1OfReal & BasisD3);
 
@@ -928,7 +928,7 @@ class PLib_HermitJacobi : public PLib_Base {
 	:param Dimension:
 	:type Dimension: int
 	:param HermJacCoeff:
-	:type HermJacCoeff: float &
+	:type HermJacCoeff: float
 	:param NewDegree:
 	:type NewDegree: int
 	:rtype: float") MaxError;
@@ -960,11 +960,11 @@ class PLib_HermitJacobi : public PLib_Base {
 	:param Tol:
 	:type Tol: float
 	:param HermJacCoeff:
-	:type HermJacCoeff: float &
+	:type HermJacCoeff: float
 	:param NewDegree:
-	:type NewDegree: int &
+	:type NewDegree: int
 	:param MaxError:
-	:type MaxError: float &
+	:type MaxError: float
 	:rtype: None") ReduceDegree;
 		void ReduceDegree (const Standard_Integer Dimension,const Standard_Integer MaxDegree,const Standard_Real Tol,Standard_Real &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -976,9 +976,9 @@ class PLib_HermitJacobi : public PLib_Base {
 	:param Degree:
 	:type Degree: int
 	:param HermJacCoeff:
-	:type HermJacCoeff: TColStd_Array1OfReal &
+	:type HermJacCoeff: TColStd_Array1OfReal
 	:param Coefficients:
-	:type Coefficients: TColStd_Array1OfReal &
+	:type Coefficients: TColStd_Array1OfReal
 	:rtype: None") ToCoefficients;
 		void ToCoefficients (const Standard_Integer Dimension,const Standard_Integer Degree,const TColStd_Array1OfReal & HermJacCoeff,TColStd_Array1OfReal & Coefficients);
 
@@ -1010,7 +1010,7 @@ class PLib_JacobiPolynomial : public PLib_Base {
 		%feature("autodoc", ":param Dimension:
 	:type Dimension: int
 	:param JacCoeff:
-	:type JacCoeff: float &
+	:type JacCoeff: float
 	:param NewDegree:
 	:type NewDegree: int
 	:rtype: float") AverageError;
@@ -1022,7 +1022,7 @@ class PLib_JacobiPolynomial : public PLib_Base {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:rtype: None") D0;
 		void D0 (const Standard_Real U,TColStd_Array1OfReal & BasisValue);
 
@@ -1032,9 +1032,9 @@ class PLib_JacobiPolynomial : public PLib_Base {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:param BasisD1:
-	:type BasisD1: TColStd_Array1OfReal &
+	:type BasisD1: TColStd_Array1OfReal
 	:rtype: None") D1;
 		void D1 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1);
 
@@ -1044,11 +1044,11 @@ class PLib_JacobiPolynomial : public PLib_Base {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:param BasisD1:
-	:type BasisD1: TColStd_Array1OfReal &
+	:type BasisD1: TColStd_Array1OfReal
 	:param BasisD2:
-	:type BasisD2: TColStd_Array1OfReal &
+	:type BasisD2: TColStd_Array1OfReal
 	:rtype: None") D2;
 		void D2 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2);
 
@@ -1058,13 +1058,13 @@ class PLib_JacobiPolynomial : public PLib_Base {
 	:param U:
 	:type U: float
 	:param BasisValue:
-	:type BasisValue: TColStd_Array1OfReal &
+	:type BasisValue: TColStd_Array1OfReal
 	:param BasisD1:
-	:type BasisD1: TColStd_Array1OfReal &
+	:type BasisD1: TColStd_Array1OfReal
 	:param BasisD2:
-	:type BasisD2: TColStd_Array1OfReal &
+	:type BasisD2: TColStd_Array1OfReal
 	:param BasisD3:
-	:type BasisD3: TColStd_Array1OfReal &
+	:type BasisD3: TColStd_Array1OfReal
 	:rtype: None") D3;
 		void D3 (const Standard_Real U,TColStd_Array1OfReal & BasisValue,TColStd_Array1OfReal & BasisD1,TColStd_Array1OfReal & BasisD2,TColStd_Array1OfReal & BasisD3);
 
@@ -1074,7 +1074,7 @@ class PLib_JacobiPolynomial : public PLib_Base {
 	:param Dimension:
 	:type Dimension: int
 	:param JacCoeff:
-	:type JacCoeff: float &
+	:type JacCoeff: float
 	:param NewDegree:
 	:type NewDegree: int
 	:rtype: float") MaxError;
@@ -1084,7 +1084,7 @@ class PLib_JacobiPolynomial : public PLib_Base {
 		%feature("compactdefaultargs") MaxValue;
 		%feature("autodoc", "* this method loads for k=0,q the maximum value of abs ( W(t)*Jk(t) )for t bellonging to [-1,1] This values are loaded is the array TabMax(0,myWorkDegree-2*(myNivConst+1)) MaxValue ( me ; TabMaxPointer : in out Real );
 	:param TabMax:
-	:type TabMax: TColStd_Array1OfReal &
+	:type TabMax: TColStd_Array1OfReal
 	:rtype: None") MaxValue;
 		void MaxValue (TColStd_Array1OfReal & TabMax);
 
@@ -1110,7 +1110,7 @@ class PLib_JacobiPolynomial : public PLib_Base {
 	:param NbGaussPoints:
 	:type NbGaussPoints: int
 	:param TabPoints:
-	:type TabPoints: TColStd_Array1OfReal &
+	:type TabPoints: TColStd_Array1OfReal
 	:rtype: None") Points;
 		void Points (const Standard_Integer NbGaussPoints,TColStd_Array1OfReal & TabPoints);
 
@@ -1124,11 +1124,11 @@ class PLib_JacobiPolynomial : public PLib_Base {
 	:param Tol:
 	:type Tol: float
 	:param JacCoeff:
-	:type JacCoeff: float &
+	:type JacCoeff: float
 	:param NewDegree:
-	:type NewDegree: int &
+	:type NewDegree: int
 	:param MaxError:
-	:type MaxError: float &
+	:type MaxError: float
 	:rtype: None") ReduceDegree;
 		void ReduceDegree (const Standard_Integer Dimension,const Standard_Integer MaxDegree,const Standard_Real Tol,Standard_Real &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -1140,9 +1140,9 @@ class PLib_JacobiPolynomial : public PLib_Base {
 	:param Degree:
 	:type Degree: int
 	:param JacCoeff:
-	:type JacCoeff: TColStd_Array1OfReal &
+	:type JacCoeff: TColStd_Array1OfReal
 	:param Coefficients:
-	:type Coefficients: TColStd_Array1OfReal &
+	:type Coefficients: TColStd_Array1OfReal
 	:rtype: None") ToCoefficients;
 		void ToCoefficients (const Standard_Integer Dimension,const Standard_Integer Degree,const TColStd_Array1OfReal & JacCoeff,TColStd_Array1OfReal & Coefficients);
 
@@ -1152,7 +1152,7 @@ class PLib_JacobiPolynomial : public PLib_Base {
 	:param NbGaussPoints:
 	:type NbGaussPoints: int
 	:param TabWeights:
-	:type TabWeights: TColStd_Array2OfReal &
+	:type TabWeights: TColStd_Array2OfReal
 	:rtype: None") Weights;
 		void Weights (const Standard_Integer NbGaussPoints,TColStd_Array2OfReal & TabWeights);
 

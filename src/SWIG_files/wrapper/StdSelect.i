@@ -154,9 +154,9 @@ class StdSelect {
 		%feature("compactdefaultargs") SetDrawerForBRepOwner;
 		%feature("autodoc", "* puts The same drawer in every BRepOwner Of SensitivePrimitive Used Only for hilight Of BRepOwner...
 	:param aSelection:
-	:type aSelection: opencascade::handle<SelectMgr_Selection> &
+	:type aSelection: SelectMgr_Selection
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:rtype: void") SetDrawerForBRepOwner;
 		static void SetDrawerForBRepOwner (const opencascade::handle<SelectMgr_Selection> & aSelection,const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -179,7 +179,7 @@ class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "* Clears the presentation manager object aPM of all shapes with the selection mode aMode.
 	:param aPM:
-	:type aPM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type aPM: PrsMgr_PresentationManager
 	:param aMode: default value is 0
 	:type aMode: int
 	:rtype: void") Clear;
@@ -206,9 +206,9 @@ class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 		/****************** HilightWithColor ******************/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", ":param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: void") HilightWithColor;
@@ -218,7 +218,7 @@ class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "* Returns true if an object with the selection mode aMode is highlighted in the presentation manager aPM.
 	:param aPM:
-	:type aPM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type aPM: PrsMgr_PresentationManager
 	:param aMode: default value is 0
 	:type aMode: int
 	:rtype: bool") IsHilighted;
@@ -241,7 +241,7 @@ class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 		/****************** SetLocation ******************/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", ":param aLoc:
-	:type aLoc: TopLoc_Location &
+	:type aLoc: TopLoc_Location
 	:rtype: void") SetLocation;
 		virtual void SetLocation (const TopLoc_Location & aLoc);
 
@@ -263,7 +263,7 @@ class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") StdSelect_BRepOwner;
 		%feature("autodoc", "* Constructs an owner specification framework defined by the shape aShape and the priority aPriority. aShape and aPriority are stored in this framework. If more than one owner are detected during dynamic selection, the one with the highest priority is the one stored.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aPriority: default value is 0
 	:type aPriority: int
 	:param ComesFromDecomposition: default value is Standard_False
@@ -275,9 +275,9 @@ class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") StdSelect_BRepOwner;
 		%feature("autodoc", "* Constructs an owner specification framework defined by the shape aShape, the selectable object theOrigin and the priority aPriority. aShape, theOrigin and aPriority are stored in this framework. If more than one owner are detected during dynamic selection, the one with the highest priority is the one stored.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param theOrigin:
-	:type theOrigin: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theOrigin: SelectMgr_SelectableObject
 	:param aPriority: default value is 0
 	:type aPriority: int
 	:param FromDecomposition: default value is Standard_False
@@ -289,7 +289,7 @@ class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "* Removes highlighting from the type of shape identified the selection mode aMode in the presentation manager aPM.
 	:param aPM:
-	:type aPM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type aPM: PrsMgr_PresentationManager
 	:param aMode: default value is 0
 	:type aMode: int
 	:rtype: void") Unhilight;
@@ -299,9 +299,9 @@ class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") UpdateHighlightTrsf;
 		%feature("autodoc", "* Implements immediate application of location transformation of parent object to dynamic highlight structure
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theManager:
-	:type theManager: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type theManager: PrsMgr_PresentationManager3d
 	:param theDispMode:
 	:type theDispMode: int
 	:rtype: void") UpdateHighlightTrsf;
@@ -327,11 +327,11 @@ class StdSelect_BRepSelectionTool {
 		%feature("compactdefaultargs") ComputeSensitive;
 		%feature("autodoc", "* Computes the sensitive primitives, stores them in the SelectMgr_Selection object, and returns this object. @param theShape shape to compute sensitive entities @param theOwner selectable owner object @param theSelection selection to append new sensitive entities @param theDeflection linear deflection @param theDeflAngle angular deflection @param theNbPOnEdge sensitivity parameters for edges and wires @param theMaxiParam sensitivity parameters for infinite objects (the default value is 500) @param theAutoTriang flag to compute triangulation for the faces which have none
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:param theSelection:
-	:type theSelection: opencascade::handle<SelectMgr_Selection> &
+	:type theSelection: SelectMgr_Selection
 	:param theDeflection:
 	:type theDeflection: float
 	:param theDeflAngle:
@@ -349,11 +349,11 @@ class StdSelect_BRepSelectionTool {
 		%feature("compactdefaultargs") GetEdgeSensitive;
 		%feature("autodoc", "* Create a sensitive edge or sensitive wire. @param theShape either TopoDS_Edge or TopoDS_Wire to compute sensitive entities @param theOwner selectable owner object @param theSelection selection to append new sensitive entities @param theDeflection linear deflection @param theDeviationAngle angular deflection @param theNbPOnEdge sensitivity parameters @param theMaxiParam sensitivity parameters
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:param theSelection:
-	:type theSelection: opencascade::handle<SelectMgr_Selection> &
+	:type theSelection: SelectMgr_Selection
 	:param theDeflection:
 	:type theDeflection: float
 	:param theDeviationAngle:
@@ -363,7 +363,7 @@ class StdSelect_BRepSelectionTool {
 	:param theMaxiParam:
 	:type theMaxiParam: float
 	:param theSensitive:
-	:type theSensitive: opencascade::handle<Select3D_SensitiveEntity> &
+	:type theSensitive: Select3D_SensitiveEntity
 	:rtype: void") GetEdgeSensitive;
 		static void GetEdgeSensitive (const TopoDS_Shape & theShape,const opencascade::handle<SelectMgr_EntityOwner> & theOwner,const opencascade::handle<SelectMgr_Selection> & theSelection,const Standard_Real theDeflection,const Standard_Real theDeviationAngle,const Standard_Integer theNbPOnEdge,const Standard_Real theMaxiParam,opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -371,11 +371,11 @@ class StdSelect_BRepSelectionTool {
 		%feature("compactdefaultargs") GetSensitiveForFace;
 		%feature("autodoc", "* Creates the 3D sensitive entities for Face selection. @param theFace face to compute sensitive entities @param theOwner selectable owner object @param theOutList output result list to append created entities @param theAutoTriang obsolete flag (has no effect) @param theNbPOnEdge sensitivity parameters @param theMaxiParam sensitivity parameters @param theInteriorFlag flag indicating that face interior (True) or face boundary (False) should be selectable
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:param theOutList:
-	:type theOutList: Select3D_EntitySequence &
+	:type theOutList: Select3D_EntitySequence
 	:param theAutoTriang: default value is Standard_True
 	:type theAutoTriang: bool
 	:param theNbPOnEdge: default value is 9
@@ -391,7 +391,7 @@ class StdSelect_BRepSelectionTool {
 		%feature("compactdefaultargs") GetStandardPriority;
 		%feature("autodoc", "* Returns the standard priority of the shape aShap having the type aType. This priority is passed to a StdSelect_BRepOwner object. You can use the function Load to modify the selection priority of an owner to make one entity more selectable than another one.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theType:
 	:type theType: TopAbs_ShapeEnum
 	:rtype: int") GetStandardPriority;
@@ -401,9 +401,9 @@ class StdSelect_BRepSelectionTool {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Decomposition of <aShape> into sensitive entities following a mode of decomposition <aType>. These entities are stored in <aSelection>. BrepOwners are created to store the identity of the picked shapes during the selection process. In those BRepOwners is also stored the original shape. But One can't get the selectable object which was decomposed to give the sensitive entities. maximal parameter is used for infinite objects, to limit the sensitive Domain.... If AutoTriangulation = True, a Triangulation will be computed for faces which have no existing one. if AutoTriangulation = False the old algorithm will be called to compute sensitive entities on faces.
 	:param aSelection:
-	:type aSelection: opencascade::handle<SelectMgr_Selection> &
+	:type aSelection: SelectMgr_Selection
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aType:
 	:type aType: TopAbs_ShapeEnum
 	:param theDeflection:
@@ -425,11 +425,11 @@ class StdSelect_BRepSelectionTool {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Same functionnalities ; the only difference is that the selectable object from which the selection comes is stored in each Sensitive EntityOwner; decomposition of <aShape> into sensitive entities following a mode of decomposition <aType>. These entities are stored in <aSelection> The Major difference is that the known users are first inserted in the BRepOwners. the original shape is the last user... (see EntityOwner from SelectBasics and BrepOwner)...
 	:param aSelection:
-	:type aSelection: opencascade::handle<SelectMgr_Selection> &
+	:type aSelection: SelectMgr_Selection
 	:param Origin:
-	:type Origin: opencascade::handle<SelectMgr_SelectableObject> &
+	:type Origin: SelectMgr_SelectableObject
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aType:
 	:type aType: TopAbs_ShapeEnum
 	:param theDeflection:
@@ -451,7 +451,7 @@ class StdSelect_BRepSelectionTool {
 		%feature("compactdefaultargs") PreBuildBVH;
 		%feature("autodoc", "* Traverses the selection given and pre-builds BVH trees for heavyweight sensitive entities containing more than BVH_PRIMITIVE_LIMIT (defined in .cxx file) sub-elements.
 	:param theSelection:
-	:type theSelection: opencascade::handle<SelectMgr_Selection> &
+	:type theSelection: SelectMgr_Selection
 	:rtype: void") PreBuildBVH;
 		static void PreBuildBVH (const opencascade::handle<SelectMgr_Selection> & theSelection);
 
@@ -480,7 +480,7 @@ class StdSelect_EdgeFilter : public SelectMgr_Filter {
 		/****************** IsOk ******************/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", ":param anobj:
-	:type anobj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anobj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		virtual Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
@@ -533,7 +533,7 @@ class StdSelect_FaceFilter : public SelectMgr_Filter {
 		/****************** IsOk ******************/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", ":param anobj:
-	:type anobj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anobj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		virtual Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
@@ -584,7 +584,7 @@ class StdSelect_Prs : public Prs3d_Presentation {
 		/****************** StdSelect_Prs ******************/
 		%feature("compactdefaultargs") StdSelect_Prs;
 		%feature("autodoc", ":param aStructureManager:
-	:type aStructureManager: opencascade::handle<Graphic3d_StructureManager> &
+	:type aStructureManager: Graphic3d_StructureManager
 	:rtype: None") StdSelect_Prs;
 		 StdSelect_Prs (const opencascade::handle<Graphic3d_StructureManager> & aStructureManager);
 
@@ -608,9 +608,9 @@ class StdSelect_Shape : public PrsMgr_PresentableObject {
 		/****************** Compute ******************/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", ":param aPresentationManager:
-	:type aPresentationManager: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type aPresentationManager: PrsMgr_PresentationManager3d
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:param aMode: default value is 0
 	:type aMode: int
 	:rtype: None") Compute;
@@ -620,11 +620,11 @@ class StdSelect_Shape : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -636,16 +636,16 @@ class StdSelect_Shape : public PrsMgr_PresentableObject {
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", ":param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") Shape;
 		void Shape (const TopoDS_Shape & theShape);
 
 		/****************** StdSelect_Shape ******************/
 		%feature("compactdefaultargs") StdSelect_Shape;
 		%feature("autodoc", ":param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theDrawer: default value is opencascade::handle<Prs3d_Drawer>()
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:rtype: None") StdSelect_Shape;
 		 StdSelect_Shape (const TopoDS_Shape & theShape,const opencascade::handle<Prs3d_Drawer> & theDrawer = opencascade::handle<Prs3d_Drawer>());
 
@@ -676,7 +676,7 @@ class StdSelect_ShapeTypeFilter : public SelectMgr_Filter {
 		/****************** IsOk ******************/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", ":param anobj:
-	:type anobj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anobj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		virtual Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
@@ -714,7 +714,7 @@ class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
 		/****************** ClearSensitive ******************/
 		%feature("compactdefaultargs") ClearSensitive;
 		%feature("autodoc", ":param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") ClearSensitive;
 		void ClearSensitive (const opencascade::handle<V3d_View> & theView);
 
@@ -722,18 +722,18 @@ class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
 		%feature("compactdefaultargs") DisplaySensitive;
 		%feature("autodoc", "* Displays sensitives in view <theView>.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") DisplaySensitive;
 		void DisplaySensitive (const opencascade::handle<V3d_View> & theView);
 
 		/****************** DisplaySensitive ******************/
 		%feature("compactdefaultargs") DisplaySensitive;
 		%feature("autodoc", ":param theSel:
-	:type theSel: opencascade::handle<SelectMgr_Selection> &
+	:type theSel: SelectMgr_Selection
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theToClearOthers: default value is Standard_True
 	:type theToClearOthers: bool
 	:rtype: None") DisplaySensitive;
@@ -747,7 +747,7 @@ class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
 	:param theYPix:
 	:type theYPix: int
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") Pick;
 		void Pick (const Standard_Integer theXPix,const Standard_Integer theYPix,const opencascade::handle<V3d_View> & theView);
 
@@ -763,7 +763,7 @@ class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
 	:param theYPMax:
 	:type theYPMax: int
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") Pick;
 		void Pick (const Standard_Integer theXPMin,const Standard_Integer theYPMin,const Standard_Integer theXPMax,const Standard_Integer theYPMax,const opencascade::handle<V3d_View> & theView);
 
@@ -773,7 +773,7 @@ class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
 	:param thePolyline:
 	:type thePolyline: TColgp_Array1OfPnt2d
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") Pick;
 		void Pick (const TColgp_Array1OfPnt2d & thePolyline,const opencascade::handle<V3d_View> & theView);
 
@@ -801,9 +801,9 @@ class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
 		%feature("compactdefaultargs") ToPixMap;
 		%feature("autodoc", "* Dump of detection results into image. This method performs axis picking for each pixel in the image and generates a color depending on picking results and selection image type. @param theImage result image, should be initialized @param theView 3D view defining camera position @param theType type of image to define @param thePickedIndex index of picked entity (1 means topmost)
 	:param theImage:
-	:type theImage: Image_PixMap &
+	:type theImage: Image_PixMap
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theType:
 	:type theType: StdSelect_TypeOfSelectionImage
 	:param thePickedIndex: default value is 1

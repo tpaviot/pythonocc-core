@@ -133,9 +133,9 @@ class TopOpeBRepBuild_AreaBuilder {
 		/****************** ADD_LISTOFLoop_TO_LISTOFLoop ******************/
 		%feature("compactdefaultargs") ADD_LISTOFLoop_TO_LISTOFLoop;
 		%feature("autodoc", ":param LOL1:
-	:type LOL1: TopOpeBRepBuild_ListOfLoop &
+	:type LOL1: TopOpeBRepBuild_ListOfLoop
 	:param LOL2:
-	:type LOL2: TopOpeBRepBuild_ListOfLoop &
+	:type LOL2: TopOpeBRepBuild_ListOfLoop
 	:param s: default value is NULL
 	:type s: Standard_Address
 	:param s1: default value is NULL
@@ -148,9 +148,9 @@ class TopOpeBRepBuild_AreaBuilder {
 		/****************** ADD_Loop_TO_LISTOFLoop ******************/
 		%feature("compactdefaultargs") ADD_Loop_TO_LISTOFLoop;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L: TopOpeBRepBuild_Loop
 	:param LOL:
-	:type LOL: TopOpeBRepBuild_ListOfLoop &
+	:type LOL: TopOpeBRepBuild_ListOfLoop
 	:param s: default value is NULL
 	:type s: Standard_Address
 	:rtype: void") ADD_Loop_TO_LISTOFLoop;
@@ -166,9 +166,9 @@ class TopOpeBRepBuild_AreaBuilder {
 		%feature("compactdefaultargs") InitAreaBuilder;
 		%feature("autodoc", "* Sets a AreaBuilder to find the areas on the shapes described by <LS> using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: void") InitAreaBuilder;
@@ -209,9 +209,9 @@ class TopOpeBRepBuild_AreaBuilder {
 		/****************** REM_Loop_FROM_LISTOFLoop ******************/
 		%feature("compactdefaultargs") REM_Loop_FROM_LISTOFLoop;
 		%feature("autodoc", ":param ITLOL:
-	:type ITLOL: TopOpeBRepBuild_ListIteratorOfListOfLoop &
+	:type ITLOL: TopOpeBRepBuild_ListIteratorOfListOfLoop
 	:param LOL:
-	:type LOL: TopOpeBRepBuild_ListOfLoop &
+	:type LOL: TopOpeBRepBuild_ListOfLoop
 	:param s: default value is NULL
 	:type s: Standard_Address
 	:rtype: void") REM_Loop_FROM_LISTOFLoop;
@@ -226,9 +226,9 @@ class TopOpeBRepBuild_AreaBuilder {
 		%feature("compactdefaultargs") TopOpeBRepBuild_AreaBuilder;
 		%feature("autodoc", "* Creates a AreaBuilder to build the areas on the shapes described by <LS> using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") TopOpeBRepBuild_AreaBuilder;
@@ -252,7 +252,7 @@ class TopOpeBRepBuild_BlockBuilder {
 		/****************** AddElement ******************/
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") AddElement;
 		Standard_Integer AddElement (const TopoDS_Shape & S);
 
@@ -270,7 +270,7 @@ class TopOpeBRepBuild_BlockBuilder {
 		%feature("compactdefaultargs") Element;
 		%feature("autodoc", "* Returns the current element of <BI>.
 	:param BI:
-	:type BI: TopOpeBRepBuild_BlockIterator &
+	:type BI: TopOpeBRepBuild_BlockIterator
 	:rtype: TopoDS_Shape") Element;
 		const TopoDS_Shape  Element (const TopOpeBRepBuild_BlockIterator & BI);
 
@@ -284,14 +284,14 @@ class TopOpeBRepBuild_BlockBuilder {
 		/****************** Element ******************/
 		%feature("compactdefaultargs") Element;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") Element;
 		Standard_Integer Element (const TopoDS_Shape & S);
 
 		/****************** ElementIsValid ******************/
 		%feature("compactdefaultargs") ElementIsValid;
 		%feature("autodoc", ":param BI:
-	:type BI: TopOpeBRepBuild_BlockIterator &
+	:type BI: TopOpeBRepBuild_BlockIterator
 	:rtype: bool") ElementIsValid;
 		Standard_Boolean ElementIsValid (const TopOpeBRepBuild_BlockIterator & BI);
 
@@ -310,7 +310,7 @@ class TopOpeBRepBuild_BlockBuilder {
 		/****************** MakeBlock ******************/
 		%feature("compactdefaultargs") MakeBlock;
 		%feature("autodoc", ":param SS:
-	:type SS: TopOpeBRepBuild_ShapeSet &
+	:type SS: TopOpeBRepBuild_ShapeSet
 	:rtype: None") MakeBlock;
 		void MakeBlock (TopOpeBRepBuild_ShapeSet & SS);
 
@@ -327,7 +327,7 @@ class TopOpeBRepBuild_BlockBuilder {
 		/****************** SetValid ******************/
 		%feature("compactdefaultargs") SetValid;
 		%feature("autodoc", ":param BI:
-	:type BI: TopOpeBRepBuild_BlockIterator &
+	:type BI: TopOpeBRepBuild_BlockIterator
 	:param isvalid:
 	:type isvalid: bool
 	:rtype: None") SetValid;
@@ -350,7 +350,7 @@ class TopOpeBRepBuild_BlockBuilder {
 		/****************** TopOpeBRepBuild_BlockBuilder ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_BlockBuilder;
 		%feature("autodoc", ":param SS:
-	:type SS: TopOpeBRepBuild_ShapeSet &
+	:type SS: TopOpeBRepBuild_ShapeSet
 	:rtype: None") TopOpeBRepBuild_BlockBuilder;
 		 TopOpeBRepBuild_BlockBuilder (TopOpeBRepBuild_ShapeSet & SS);
 
@@ -426,9 +426,9 @@ class TopOpeBRepBuild_Builder {
 		/****************** AddONPatchesSFS ******************/
 		%feature("compactdefaultargs") AddONPatchesSFS;
 		%feature("autodoc", ":param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: None") AddONPatchesSFS;
 		void AddONPatchesSFS (const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
@@ -436,7 +436,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") BuildEdges;
 		%feature("autodoc", "* update the DS by creating new geometries. create shapes from the new geometries.
 	:param DS:
-	:type DS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type DS: TopOpeBRepDS_HDataStructure
 	:rtype: None") BuildEdges;
 		void BuildEdges (const opencascade::handle<TopOpeBRepDS_HDataStructure> & DS);
 
@@ -449,7 +449,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") BuildVertices;
 		%feature("autodoc", "* update the DS by creating new geometries. create vertices on DS points.
 	:param DS:
-	:type DS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type DS: TopOpeBRepDS_HDataStructure
 	:rtype: None") BuildVertices;
 		void BuildVertices (const opencascade::handle<TopOpeBRepDS_HDataStructure> & DS);
 
@@ -476,7 +476,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") ChangeSplit;
 		%feature("autodoc", "* Returns a ref.on the list of shapes connected to <S> as <TB> split parts of <S>. Mark <S> as split in <TB> parts.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TB:
 	:type TB: TopAbs_State
 	:rtype: TopTools_ListOfShape") ChangeSplit;
@@ -501,9 +501,9 @@ class TopOpeBRepBuild_Builder {
 		/****************** Contains ******************/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: bool") Contains;
 		static Standard_Boolean Contains (const TopoDS_Shape & S,const TopTools_ListOfShape & L);
 
@@ -521,11 +521,11 @@ class TopOpeBRepBuild_Builder {
 		/****************** FillOnPatches ******************/
 		%feature("compactdefaultargs") FillOnPatches;
 		%feature("autodoc", ":param anEdgesON:
-	:type anEdgesON: TopTools_ListOfShape &
+	:type anEdgesON: TopTools_ListOfShape
 	:param aBaseFace:
-	:type aBaseFace: TopoDS_Shape &
+	:type aBaseFace: TopoDS_Shape
 	:param avoidMap:
-	:type avoidMap: TopTools_IndexedMapOfOrientedShape &
+	:type avoidMap: TopTools_IndexedMapOfOrientedShape
 	:rtype: None") FillOnPatches;
 		void FillOnPatches (const TopTools_ListOfShape & anEdgesON,const TopoDS_Shape & aBaseFace,const TopTools_IndexedMapOfOrientedShape & avoidMap);
 
@@ -535,22 +535,22 @@ class TopOpeBRepBuild_Builder {
 	:param aShapeRank:
 	:type aShapeRank: int
 	:param aMapON:
-	:type aMapON: TopTools_MapOfShape &
+	:type aMapON: TopTools_MapOfShape
 	:param anAncMap:
-	:type anAncMap: TopTools_DataMapOfShapeShape &
+	:type anAncMap: TopTools_DataMapOfShapeShape
 	:rtype: None") FillSecEdgeAncestorMap;
 		void FillSecEdgeAncestorMap (const Standard_Integer aShapeRank,const TopTools_MapOfShape & aMapON,TopTools_DataMapOfShapeShape & anAncMap);
 
 		/****************** FindFacesTouchingEdge ******************/
 		%feature("compactdefaultargs") FindFacesTouchingEdge;
 		%feature("autodoc", ":param aFace:
-	:type aFace: TopoDS_Shape &
+	:type aFace: TopoDS_Shape
 	:param anEdge:
-	:type anEdge: TopoDS_Shape &
+	:type anEdge: TopoDS_Shape
 	:param aShRank:
 	:type aShRank: int
 	:param aFaces:
-	:type aFaces: TopTools_ListOfShape &
+	:type aFaces: TopTools_ListOfShape
 	:rtype: None") FindFacesTouchingEdge;
 		void FindFacesTouchingEdge (const TopoDS_Shape & aFace,const TopoDS_Shape & anEdge,const Standard_Integer aShRank,TopTools_ListOfShape & aFaces);
 
@@ -562,29 +562,29 @@ class TopOpeBRepBuild_Builder {
 		/****************** FindSameDomain ******************/
 		%feature("compactdefaultargs") FindSameDomain;
 		%feature("autodoc", ":param L1:
-	:type L1: TopTools_ListOfShape &
+	:type L1: TopTools_ListOfShape
 	:param L2:
-	:type L2: TopTools_ListOfShape &
+	:type L2: TopTools_ListOfShape
 	:rtype: None") FindSameDomain;
 		void FindSameDomain (TopTools_ListOfShape & L1,TopTools_ListOfShape & L2);
 
 		/****************** FindSameDomainSameOrientation ******************/
 		%feature("compactdefaultargs") FindSameDomainSameOrientation;
 		%feature("autodoc", ":param LSO:
-	:type LSO: TopTools_ListOfShape &
+	:type LSO: TopTools_ListOfShape
 	:param LDO:
-	:type LDO: TopTools_ListOfShape &
+	:type LDO: TopTools_ListOfShape
 	:rtype: None") FindSameDomainSameOrientation;
 		void FindSameDomainSameOrientation (TopTools_ListOfShape & LSO,TopTools_ListOfShape & LDO);
 
 		/****************** FindSameRank ******************/
 		%feature("compactdefaultargs") FindSameRank;
 		%feature("autodoc", ":param L1:
-	:type L1: TopTools_ListOfShape &
+	:type L1: TopTools_ListOfShape
 	:param R:
 	:type R: int
 	:param L2:
-	:type L2: TopTools_ListOfShape &
+	:type L2: TopTools_ListOfShape
 	:rtype: None") FindSameRank;
 		void FindSameRank (const TopTools_ListOfShape & L1,const Standard_Integer R,TopTools_ListOfShape & L2);
 
@@ -596,168 +596,168 @@ class TopOpeBRepBuild_Builder {
 		/****************** GContains ******************/
 		%feature("compactdefaultargs") GContains;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: bool") GContains;
 		static Standard_Boolean GContains (const TopoDS_Shape & S,const TopTools_ListOfShape & L);
 
 		/****************** GCopyList ******************/
 		%feature("compactdefaultargs") GCopyList;
 		%feature("autodoc", ":param Lin:
-	:type Lin: TopTools_ListOfShape &
+	:type Lin: TopTools_ListOfShape
 	:param i1:
 	:type i1: int
 	:param i2:
 	:type i2: int
 	:param Lou:
-	:type Lou: TopTools_ListOfShape &
+	:type Lou: TopTools_ListOfShape
 	:rtype: void") GCopyList;
 		static void GCopyList (const TopTools_ListOfShape & Lin,const Standard_Integer i1,const Standard_Integer i2,TopTools_ListOfShape & Lou);
 
 		/****************** GCopyList ******************/
 		%feature("compactdefaultargs") GCopyList;
 		%feature("autodoc", ":param Lin:
-	:type Lin: TopTools_ListOfShape &
+	:type Lin: TopTools_ListOfShape
 	:param Lou:
-	:type Lou: TopTools_ListOfShape &
+	:type Lou: TopTools_ListOfShape
 	:rtype: void") GCopyList;
 		static void GCopyList (const TopTools_ListOfShape & Lin,TopTools_ListOfShape & Lou);
 
 		/****************** GEDBUMakeEdges ******************/
 		%feature("compactdefaultargs") GEDBUMakeEdges;
 		%feature("autodoc", ":param EF:
-	:type EF: TopoDS_Shape &
+	:type EF: TopoDS_Shape
 	:param EDBU:
-	:type EDBU: TopOpeBRepBuild_EdgeBuilder &
+	:type EDBU: TopOpeBRepBuild_EdgeBuilder
 	:param LOE:
-	:type LOE: TopTools_ListOfShape &
+	:type LOE: TopTools_ListOfShape
 	:rtype: None") GEDBUMakeEdges;
 		void GEDBUMakeEdges (const TopoDS_Shape & EF,TopOpeBRepBuild_EdgeBuilder & EDBU,TopTools_ListOfShape & LOE);
 
 		/****************** GFABUMakeFaces ******************/
 		%feature("compactdefaultargs") GFABUMakeFaces;
 		%feature("autodoc", ":param FF:
-	:type FF: TopoDS_Shape &
+	:type FF: TopoDS_Shape
 	:param FABU:
-	:type FABU: TopOpeBRepBuild_FaceBuilder &
+	:type FABU: TopOpeBRepBuild_FaceBuilder
 	:param LOF:
-	:type LOF: TopTools_ListOfShape &
+	:type LOF: TopTools_ListOfShape
 	:param MWisOld:
-	:type MWisOld: TopTools_DataMapOfShapeInteger &
+	:type MWisOld: TopTools_DataMapOfShapeInteger
 	:rtype: None") GFABUMakeFaces;
 		void GFABUMakeFaces (const TopoDS_Shape & FF,TopOpeBRepBuild_FaceBuilder & FABU,TopTools_ListOfShape & LOF,TopTools_DataMapOfShapeInteger & MWisOld);
 
 		/****************** GFillCurveTopologyWES ******************/
 		%feature("compactdefaultargs") GFillCurveTopologyWES;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillCurveTopologyWES;
 		void GFillCurveTopologyWES (const TopoDS_Shape & F,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillCurveTopologyWES ******************/
 		%feature("compactdefaultargs") GFillCurveTopologyWES;
 		%feature("autodoc", ":param IT:
-	:type IT: TopOpeBRepDS_CurveIterator &
+	:type IT: TopOpeBRepDS_CurveIterator
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillCurveTopologyWES;
 		void GFillCurveTopologyWES (const TopOpeBRepDS_CurveIterator & IT,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillEdgePVS ******************/
 		%feature("compactdefaultargs") GFillEdgePVS;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param LE2:
-	:type LE2: TopTools_ListOfShape &
+	:type LE2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param PVS:
-	:type PVS: TopOpeBRepBuild_PaveSet &
+	:type PVS: TopOpeBRepBuild_PaveSet
 	:rtype: None") GFillEdgePVS;
 		void GFillEdgePVS (const TopoDS_Shape & E,const TopTools_ListOfShape & LE2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_PaveSet & PVS);
 
 		/****************** GFillEdgeWES ******************/
 		%feature("compactdefaultargs") GFillEdgeWES;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillEdgeWES;
 		void GFillEdgeWES (const TopoDS_Shape & E,const TopTools_ListOfShape & LF2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillEdgesPVS ******************/
 		%feature("compactdefaultargs") GFillEdgesPVS;
 		%feature("autodoc", ":param LE1:
-	:type LE1: TopTools_ListOfShape &
+	:type LE1: TopTools_ListOfShape
 	:param LE2:
-	:type LE2: TopTools_ListOfShape &
+	:type LE2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param PVS:
-	:type PVS: TopOpeBRepBuild_PaveSet &
+	:type PVS: TopOpeBRepBuild_PaveSet
 	:rtype: None") GFillEdgesPVS;
 		void GFillEdgesPVS (const TopTools_ListOfShape & LE1,const TopTools_ListOfShape & LE2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_PaveSet & PVS);
 
 		/****************** GFillFaceSFS ******************/
 		%feature("compactdefaultargs") GFillFaceSFS;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: None") GFillFaceSFS;
 		void GFillFaceSFS (const TopoDS_Shape & F1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillFaceWES ******************/
 		%feature("compactdefaultargs") GFillFaceWES;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillFaceWES;
 		void GFillFaceWES (const TopoDS_Shape & F,const TopTools_ListOfShape & LF2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillFacesWES ******************/
 		%feature("compactdefaultargs") GFillFacesWES;
 		%feature("autodoc", ":param LF1:
-	:type LF1: TopTools_ListOfShape &
+	:type LF1: TopTools_ListOfShape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillFacesWES;
 		void GFillFacesWES (const TopTools_ListOfShape & LF1,const TopTools_ListOfShape & LF2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillFacesWESK ******************/
 		%feature("compactdefaultargs") GFillFacesWESK;
 		%feature("autodoc", ":param LF1:
-	:type LF1: TopTools_ListOfShape &
+	:type LF1: TopTools_ListOfShape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:param K:
 	:type K: int
 	:rtype: None") GFillFacesWESK;
@@ -766,182 +766,182 @@ class TopOpeBRepBuild_Builder {
 		/****************** GFillFacesWESMakeFaces ******************/
 		%feature("compactdefaultargs") GFillFacesWESMakeFaces;
 		%feature("autodoc", ":param LF1:
-	:type LF1: TopTools_ListOfShape &
+	:type LF1: TopTools_ListOfShape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param LSO:
-	:type LSO: TopTools_ListOfShape &
+	:type LSO: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:rtype: None") GFillFacesWESMakeFaces;
 		void GFillFacesWESMakeFaces (const TopTools_ListOfShape & LF1,const TopTools_ListOfShape & LF2,const TopTools_ListOfShape & LSO,const TopOpeBRepBuild_GTopo & G);
 
 		/****************** GFillONPartsWES ******************/
 		%feature("compactdefaultargs") GFillONPartsWES;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param LSclass:
-	:type LSclass: TopTools_ListOfShape &
+	:type LSclass: TopTools_ListOfShape
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillONPartsWES;
 		void GFillONPartsWES (const TopoDS_Shape & F,const TopOpeBRepBuild_GTopo & G,const TopTools_ListOfShape & LSclass,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillPointTopologyPVS ******************/
 		%feature("compactdefaultargs") GFillPointTopologyPVS;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param PVS:
-	:type PVS: TopOpeBRepBuild_PaveSet &
+	:type PVS: TopOpeBRepBuild_PaveSet
 	:rtype: None") GFillPointTopologyPVS;
 		void GFillPointTopologyPVS (const TopoDS_Shape & E,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_PaveSet & PVS);
 
 		/****************** GFillPointTopologyPVS ******************/
 		%feature("compactdefaultargs") GFillPointTopologyPVS;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param IT:
-	:type IT: TopOpeBRepDS_PointIterator &
+	:type IT: TopOpeBRepDS_PointIterator
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param PVS:
-	:type PVS: TopOpeBRepBuild_PaveSet &
+	:type PVS: TopOpeBRepBuild_PaveSet
 	:rtype: None") GFillPointTopologyPVS;
 		void GFillPointTopologyPVS (const TopoDS_Shape & E,const TopOpeBRepDS_PointIterator & IT,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_PaveSet & PVS);
 
 		/****************** GFillShellSFS ******************/
 		%feature("compactdefaultargs") GFillShellSFS;
 		%feature("autodoc", ":param SH1:
-	:type SH1: TopoDS_Shape &
+	:type SH1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: void") GFillShellSFS;
 		virtual void GFillShellSFS (const TopoDS_Shape & SH1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillSolidSFS ******************/
 		%feature("compactdefaultargs") GFillSolidSFS;
 		%feature("autodoc", ":param SO1:
-	:type SO1: TopoDS_Shape &
+	:type SO1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: void") GFillSolidSFS;
 		virtual void GFillSolidSFS (const TopoDS_Shape & SO1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillSolidsSFS ******************/
 		%feature("compactdefaultargs") GFillSolidsSFS;
 		%feature("autodoc", ":param LSO1:
-	:type LSO1: TopTools_ListOfShape &
+	:type LSO1: TopTools_ListOfShape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: None") GFillSolidsSFS;
 		void GFillSolidsSFS (const TopTools_ListOfShape & LSO1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillSurfaceTopologySFS ******************/
 		%feature("compactdefaultargs") GFillSurfaceTopologySFS;
 		%feature("autodoc", ":param SO1:
-	:type SO1: TopoDS_Shape &
+	:type SO1: TopoDS_Shape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: None") GFillSurfaceTopologySFS;
 		void GFillSurfaceTopologySFS (const TopoDS_Shape & SO1,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillSurfaceTopologySFS ******************/
 		%feature("compactdefaultargs") GFillSurfaceTopologySFS;
 		%feature("autodoc", ":param IT:
-	:type IT: TopOpeBRepDS_SurfaceIterator &
+	:type IT: TopOpeBRepDS_SurfaceIterator
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: None") GFillSurfaceTopologySFS;
 		void GFillSurfaceTopologySFS (const TopOpeBRepDS_SurfaceIterator & IT,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillWireWES ******************/
 		%feature("compactdefaultargs") GFillWireWES;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Shape &
+	:type W: TopoDS_Shape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillWireWES;
 		void GFillWireWES (const TopoDS_Shape & W,const TopTools_ListOfShape & LF2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFindSamDom ******************/
 		%feature("compactdefaultargs") GFindSamDom;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param L1:
-	:type L1: TopTools_ListOfShape &
+	:type L1: TopTools_ListOfShape
 	:param L2:
-	:type L2: TopTools_ListOfShape &
+	:type L2: TopTools_ListOfShape
 	:rtype: None") GFindSamDom;
 		void GFindSamDom (const TopoDS_Shape & S,TopTools_ListOfShape & L1,TopTools_ListOfShape & L2);
 
 		/****************** GFindSamDom ******************/
 		%feature("compactdefaultargs") GFindSamDom;
 		%feature("autodoc", ":param L1:
-	:type L1: TopTools_ListOfShape &
+	:type L1: TopTools_ListOfShape
 	:param L2:
-	:type L2: TopTools_ListOfShape &
+	:type L2: TopTools_ListOfShape
 	:rtype: None") GFindSamDom;
 		void GFindSamDom (TopTools_ListOfShape & L1,TopTools_ListOfShape & L2);
 
 		/****************** GFindSamDomSODO ******************/
 		%feature("compactdefaultargs") GFindSamDomSODO;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LSO:
-	:type LSO: TopTools_ListOfShape &
+	:type LSO: TopTools_ListOfShape
 	:param LDO:
-	:type LDO: TopTools_ListOfShape &
+	:type LDO: TopTools_ListOfShape
 	:rtype: None") GFindSamDomSODO;
 		void GFindSamDomSODO (const TopoDS_Shape & S,TopTools_ListOfShape & LSO,TopTools_ListOfShape & LDO);
 
 		/****************** GFindSamDomSODO ******************/
 		%feature("compactdefaultargs") GFindSamDomSODO;
 		%feature("autodoc", ":param LSO:
-	:type LSO: TopTools_ListOfShape &
+	:type LSO: TopTools_ListOfShape
 	:param LDO:
-	:type LDO: TopTools_ListOfShape &
+	:type LDO: TopTools_ListOfShape
 	:rtype: None") GFindSamDomSODO;
 		void GFindSamDomSODO (TopTools_ListOfShape & LSO,TopTools_ListOfShape & LDO);
 
 		/****************** GFindSameRank ******************/
 		%feature("compactdefaultargs") GFindSameRank;
 		%feature("autodoc", ":param L1:
-	:type L1: TopTools_ListOfShape &
+	:type L1: TopTools_ListOfShape
 	:param R:
 	:type R: int
 	:param L2:
-	:type L2: TopTools_ListOfShape &
+	:type L2: TopTools_ListOfShape
 	:rtype: None") GFindSameRank;
 		void GFindSameRank (const TopTools_ListOfShape & L1,const Standard_Integer R,TopTools_ListOfShape & L2);
 
 		/****************** GIsShapeOf ******************/
 		%feature("compactdefaultargs") GIsShapeOf;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param I12:
 	:type I12: int
 	:rtype: bool") GIsShapeOf;
@@ -950,9 +950,9 @@ class TopOpeBRepBuild_Builder {
 		/****************** GKeepShape ******************/
 		%feature("compactdefaultargs") GKeepShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Lref:
-	:type Lref: TopTools_ListOfShape &
+	:type Lref: TopTools_ListOfShape
 	:param T:
 	:type T: TopAbs_State
 	:rtype: bool") GKeepShape;
@@ -962,13 +962,13 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") GKeepShape1;
 		%feature("autodoc", "* return True if S is classified <T> / Lref shapes
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Lref:
-	:type Lref: TopTools_ListOfShape &
+	:type Lref: TopTools_ListOfShape
 	:param T:
 	:type T: TopAbs_State
 	:param pos:
-	:type pos: TopAbs_State &
+	:type pos: TopAbs_State
 	:rtype: bool") GKeepShape1;
 		Standard_Boolean GKeepShape1 (const TopoDS_Shape & S,const TopTools_ListOfShape & Lref,const TopAbs_State T,TopAbs_State & pos);
 
@@ -976,206 +976,206 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") GKeepShapes;
 		%feature("autodoc", "* add to Lou the shapes of Lin classified <T> / Lref shapes. Lou is not cleared. (S is a dummy trace argument)
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Lref:
-	:type Lref: TopTools_ListOfShape &
+	:type Lref: TopTools_ListOfShape
 	:param T:
 	:type T: TopAbs_State
 	:param Lin:
-	:type Lin: TopTools_ListOfShape &
+	:type Lin: TopTools_ListOfShape
 	:param Lou:
-	:type Lou: TopTools_ListOfShape &
+	:type Lou: TopTools_ListOfShape
 	:rtype: None") GKeepShapes;
 		void GKeepShapes (const TopoDS_Shape & S,const TopTools_ListOfShape & Lref,const TopAbs_State T,const TopTools_ListOfShape & Lin,TopTools_ListOfShape & Lou);
 
 		/****************** GMapShapes ******************/
 		%feature("compactdefaultargs") GMapShapes;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: None") GMapShapes;
 		void GMapShapes (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
 		/****************** GMergeEdgeWES ******************/
 		%feature("compactdefaultargs") GMergeEdgeWES;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GMergeEdgeWES;
 		void GMergeEdgeWES (const TopoDS_Shape & E,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GMergeEdges ******************/
 		%feature("compactdefaultargs") GMergeEdges;
 		%feature("autodoc", ":param LE1:
-	:type LE1: TopTools_ListOfShape &
+	:type LE1: TopTools_ListOfShape
 	:param LE2:
-	:type LE2: TopTools_ListOfShape &
+	:type LE2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:rtype: None") GMergeEdges;
 		void GMergeEdges (const TopTools_ListOfShape & LE1,const TopTools_ListOfShape & LE2,const TopOpeBRepBuild_GTopo & G);
 
 		/****************** GMergeFaceSFS ******************/
 		%feature("compactdefaultargs") GMergeFaceSFS;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: None") GMergeFaceSFS;
 		void GMergeFaceSFS (const TopoDS_Shape & F,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GMergeFaces ******************/
 		%feature("compactdefaultargs") GMergeFaces;
 		%feature("autodoc", ":param LF1:
-	:type LF1: TopTools_ListOfShape &
+	:type LF1: TopTools_ListOfShape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:rtype: None") GMergeFaces;
 		void GMergeFaces (const TopTools_ListOfShape & LF1,const TopTools_ListOfShape & LF2,const TopOpeBRepBuild_GTopo & G);
 
 		/****************** GMergeSolids ******************/
 		%feature("compactdefaultargs") GMergeSolids;
 		%feature("autodoc", ":param LSO1:
-	:type LSO1: TopTools_ListOfShape &
+	:type LSO1: TopTools_ListOfShape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:rtype: None") GMergeSolids;
 		void GMergeSolids (const TopTools_ListOfShape & LSO1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G);
 
 		/****************** GPVSMakeEdges ******************/
 		%feature("compactdefaultargs") GPVSMakeEdges;
 		%feature("autodoc", ":param EF:
-	:type EF: TopoDS_Shape &
+	:type EF: TopoDS_Shape
 	:param PVS:
-	:type PVS: TopOpeBRepBuild_PaveSet &
+	:type PVS: TopOpeBRepBuild_PaveSet
 	:param LOE:
-	:type LOE: TopTools_ListOfShape &
+	:type LOE: TopTools_ListOfShape
 	:rtype: None") GPVSMakeEdges;
 		void GPVSMakeEdges (const TopoDS_Shape & EF,TopOpeBRepBuild_PaveSet & PVS,TopTools_ListOfShape & LOE);
 
 		/****************** GParamOnReference ******************/
 		%feature("compactdefaultargs") GParamOnReference;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param P:
-	:type P: float &
+	:type P: float
 	:rtype: bool") GParamOnReference;
 		Standard_Boolean GParamOnReference (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue);
 
 		/****************** GSFSMakeSolids ******************/
 		%feature("compactdefaultargs") GSFSMakeSolids;
 		%feature("autodoc", ":param SOF:
-	:type SOF: TopoDS_Shape &
+	:type SOF: TopoDS_Shape
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:param LOSO:
-	:type LOSO: TopTools_ListOfShape &
+	:type LOSO: TopTools_ListOfShape
 	:rtype: None") GSFSMakeSolids;
 		void GSFSMakeSolids (const TopoDS_Shape & SOF,TopOpeBRepBuild_ShellFaceSet & SFS,TopTools_ListOfShape & LOSO);
 
 		/****************** GSOBUMakeSolids ******************/
 		%feature("compactdefaultargs") GSOBUMakeSolids;
 		%feature("autodoc", ":param SOF:
-	:type SOF: TopoDS_Shape &
+	:type SOF: TopoDS_Shape
 	:param SOBU:
-	:type SOBU: TopOpeBRepBuild_SolidBuilder &
+	:type SOBU: TopOpeBRepBuild_SolidBuilder
 	:param LOSO:
-	:type LOSO: TopTools_ListOfShape &
+	:type LOSO: TopTools_ListOfShape
 	:rtype: None") GSOBUMakeSolids;
 		void GSOBUMakeSolids (const TopoDS_Shape & SOF,TopOpeBRepBuild_SolidBuilder & SOBU,TopTools_ListOfShape & LOSO);
 
 		/****************** GShapeRank ******************/
 		%feature("compactdefaultargs") GShapeRank;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") GShapeRank;
 		Standard_Integer GShapeRank (const TopoDS_Shape & S);
 
 		/****************** GSplitEdge ******************/
 		%feature("compactdefaultargs") GSplitEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param LSclass:
-	:type LSclass: TopTools_ListOfShape &
+	:type LSclass: TopTools_ListOfShape
 	:rtype: None") GSplitEdge;
 		void GSplitEdge (const TopoDS_Shape & E,const TopOpeBRepBuild_GTopo & G,const TopTools_ListOfShape & LSclass);
 
 		/****************** GSplitEdgeWES ******************/
 		%feature("compactdefaultargs") GSplitEdgeWES;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GSplitEdgeWES;
 		void GSplitEdgeWES (const TopoDS_Shape & E,const TopTools_ListOfShape & LF2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GSplitFace ******************/
 		%feature("compactdefaultargs") GSplitFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param LSclass:
-	:type LSclass: TopTools_ListOfShape &
+	:type LSclass: TopTools_ListOfShape
 	:rtype: None") GSplitFace;
 		void GSplitFace (const TopoDS_Shape & F,const TopOpeBRepBuild_GTopo & G,const TopTools_ListOfShape & LSclass);
 
 		/****************** GSplitFaceSFS ******************/
 		%feature("compactdefaultargs") GSplitFaceSFS;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param LSclass:
-	:type LSclass: TopTools_ListOfShape &
+	:type LSclass: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: None") GSplitFaceSFS;
 		void GSplitFaceSFS (const TopoDS_Shape & F1,const TopTools_ListOfShape & LSclass,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GTakeCommonOfDiff ******************/
 		%feature("compactdefaultargs") GTakeCommonOfDiff;
 		%feature("autodoc", ":param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:rtype: bool") GTakeCommonOfDiff;
 		static Standard_Boolean GTakeCommonOfDiff (const TopOpeBRepBuild_GTopo & G);
 
 		/****************** GTakeCommonOfSame ******************/
 		%feature("compactdefaultargs") GTakeCommonOfSame;
 		%feature("autodoc", ":param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:rtype: bool") GTakeCommonOfSame;
 		static Standard_Boolean GTakeCommonOfSame (const TopOpeBRepBuild_GTopo & G);
 
 		/****************** GToMerge ******************/
 		%feature("compactdefaultargs") GToMerge;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") GToMerge;
 		Standard_Boolean GToMerge (const TopoDS_Shape & S);
 
 		/****************** GToSplit ******************/
 		%feature("compactdefaultargs") GToSplit;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TB:
 	:type TB: TopAbs_State
 	:rtype: bool") GToSplit;
@@ -1184,32 +1184,32 @@ class TopOpeBRepBuild_Builder {
 		/****************** GWESMakeFaces ******************/
 		%feature("compactdefaultargs") GWESMakeFaces;
 		%feature("autodoc", ":param FF:
-	:type FF: TopoDS_Shape &
+	:type FF: TopoDS_Shape
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:param LOF:
-	:type LOF: TopTools_ListOfShape &
+	:type LOF: TopTools_ListOfShape
 	:rtype: void") GWESMakeFaces;
 		virtual void GWESMakeFaces (const TopoDS_Shape & FF,TopOpeBRepBuild_WireEdgeSet & WES,TopTools_ListOfShape & LOF);
 
 		/****************** GcheckNBOUNDS ******************/
 		%feature("compactdefaultargs") GcheckNBOUNDS;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: bool") GcheckNBOUNDS;
 		static Standard_Boolean GcheckNBOUNDS (const TopoDS_Shape & E);
 
 		/****************** GdumpEDBU ******************/
 		%feature("compactdefaultargs") GdumpEDBU;
 		%feature("autodoc", ":param EB:
-	:type EB: TopOpeBRepBuild_EdgeBuilder &
+	:type EB: TopOpeBRepBuild_EdgeBuilder
 	:rtype: None") GdumpEDBU;
 		void GdumpEDBU (TopOpeBRepBuild_EdgeBuilder & EB);
 
 		/****************** GdumpEDG ******************/
 		%feature("compactdefaultargs") GdumpEDG;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param str: default value is NULL
 	:type str: Standard_Address
 	:rtype: None") GdumpEDG;
@@ -1218,9 +1218,9 @@ class TopOpeBRepBuild_Builder {
 		/****************** GdumpEDGVER ******************/
 		%feature("compactdefaultargs") GdumpEDGVER;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:param str: default value is NULL
 	:type str: Standard_Address
 	:rtype: None") GdumpEDGVER;
@@ -1229,21 +1229,21 @@ class TopOpeBRepBuild_Builder {
 		/****************** GdumpEXP ******************/
 		%feature("compactdefaultargs") GdumpEXP;
 		%feature("autodoc", ":param E:
-	:type E: TopOpeBRepTool_ShapeExplorer &
+	:type E: TopOpeBRepTool_ShapeExplorer
 	:rtype: None") GdumpEXP;
 		void GdumpEXP (const TopOpeBRepTool_ShapeExplorer & E);
 
 		/****************** GdumpFABU ******************/
 		%feature("compactdefaultargs") GdumpFABU;
 		%feature("autodoc", ":param FB:
-	:type FB: TopOpeBRepBuild_FaceBuilder &
+	:type FB: TopOpeBRepBuild_FaceBuilder
 	:rtype: None") GdumpFABU;
 		void GdumpFABU (TopOpeBRepBuild_FaceBuilder & FB);
 
 		/****************** GdumpLS ******************/
 		%feature("compactdefaultargs") GdumpLS;
 		%feature("autodoc", ":param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") GdumpLS;
 		void GdumpLS (const TopTools_ListOfShape & L);
 
@@ -1268,7 +1268,7 @@ class TopOpeBRepBuild_Builder {
 		/****************** GdumpSAMDOM ******************/
 		%feature("compactdefaultargs") GdumpSAMDOM;
 		%feature("autodoc", ":param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:param str: default value is NULL
 	:type str: Standard_Address
 	:rtype: None") GdumpSAMDOM;
@@ -1277,7 +1277,7 @@ class TopOpeBRepBuild_Builder {
 		/****************** GdumpSHA ******************/
 		%feature("compactdefaultargs") GdumpSHA;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param str: default value is NULL
 	:type str: Standard_Address
 	:rtype: None") GdumpSHA;
@@ -1286,7 +1286,7 @@ class TopOpeBRepBuild_Builder {
 		/****************** GdumpSHAORI ******************/
 		%feature("compactdefaultargs") GdumpSHAORI;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param str: default value is NULL
 	:type str: Standard_Address
 	:rtype: None") GdumpSHAORI;
@@ -1295,7 +1295,7 @@ class TopOpeBRepBuild_Builder {
 		/****************** GdumpSHAORIGEO ******************/
 		%feature("compactdefaultargs") GdumpSHAORIGEO;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param str: default value is NULL
 	:type str: Standard_Address
 	:rtype: None") GdumpSHAORIGEO;
@@ -1318,22 +1318,22 @@ class TopOpeBRepBuild_Builder {
 	:param T:
 	:type T: TopAbs_State
 	:param a: default value is ""
-	:type a: TCollection_AsciiString &
+	:type a: TCollection_AsciiString
 	:param b: default value is ""
-	:type b: TCollection_AsciiString &
+	:type b: TCollection_AsciiString
 	:rtype: None") GdumpSHASTA;
 		void GdumpSHASTA (const Standard_Integer iS,const TopAbs_State T,const TCollection_AsciiString & a = "",const TCollection_AsciiString & b = "");
 
 		/****************** GdumpSHASTA ******************/
 		%feature("compactdefaultargs") GdumpSHASTA;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
 	:type T: TopAbs_State
 	:param a: default value is ""
-	:type a: TCollection_AsciiString &
+	:type a: TCollection_AsciiString
 	:param b: default value is ""
-	:type b: TCollection_AsciiString &
+	:type b: TCollection_AsciiString
 	:rtype: None") GdumpSHASTA;
 		void GdumpSHASTA (const TopoDS_Shape & S,const TopAbs_State T,const TCollection_AsciiString & a = "",const TCollection_AsciiString & b = "");
 
@@ -1344,20 +1344,20 @@ class TopOpeBRepBuild_Builder {
 	:param T:
 	:type T: TopAbs_State
 	:param SS:
-	:type SS: TopOpeBRepBuild_ShapeSet &
+	:type SS: TopOpeBRepBuild_ShapeSet
 	:param a: default value is ""
-	:type a: TCollection_AsciiString &
+	:type a: TCollection_AsciiString
 	:param b: default value is ""
-	:type b: TCollection_AsciiString &
+	:type b: TCollection_AsciiString
 	:param c: default value is '\n'
-	:type c: TCollection_AsciiString &
+	:type c: TCollection_AsciiString
 	:rtype: None") GdumpSHASTA;
 		void GdumpSHASTA (const Standard_Integer iS,const TopAbs_State T,const TopOpeBRepBuild_ShapeSet & SS,const TCollection_AsciiString & a = "",const TCollection_AsciiString & b = "",const TCollection_AsciiString & c = "\n");
 
 		/****************** GdumpSOBU ******************/
 		%feature("compactdefaultargs") GdumpSOBU;
 		%feature("autodoc", ":param SB:
-	:type SB: TopOpeBRepBuild_SolidBuilder &
+	:type SB: TopOpeBRepBuild_SolidBuilder
 	:rtype: None") GdumpSOBU;
 		void GdumpSOBU (TopOpeBRepBuild_SolidBuilder & SB);
 
@@ -1380,16 +1380,16 @@ class TopOpeBRepBuild_Builder {
 		/****************** GtraceSPS ******************/
 		%feature("compactdefaultargs") GtraceSPS;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") GtraceSPS;
 		Standard_Boolean GtraceSPS (const TopoDS_Shape & S);
 
 		/****************** GtraceSPS ******************/
 		%feature("compactdefaultargs") GtraceSPS;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param IS:
-	:type IS: int &
+	:type IS: int
 	:rtype: bool") GtraceSPS;
 		Standard_Boolean GtraceSPS (const TopoDS_Shape & S,Standard_Integer &OutValue);
 
@@ -1407,7 +1407,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") IsMerged;
 		%feature("autodoc", "* Returns True if the shape <S> has been merged.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TB:
 	:type TB: TopAbs_State
 	:rtype: bool") IsMerged;
@@ -1416,7 +1416,7 @@ class TopOpeBRepBuild_Builder {
 		/****************** IsShapeOf ******************/
 		%feature("compactdefaultargs") IsShapeOf;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param I12:
 	:type I12: int
 	:rtype: bool") IsShapeOf;
@@ -1426,7 +1426,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") IsSplit;
 		%feature("autodoc", "* Returns True if the shape <S> has been split.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TB:
 	:type TB: TopAbs_State
 	:rtype: bool") IsSplit;
@@ -1440,71 +1440,71 @@ class TopOpeBRepBuild_Builder {
 		/****************** KPContains ******************/
 		%feature("compactdefaultargs") KPContains;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: bool") KPContains;
 		static Standard_Boolean KPContains (const TopoDS_Shape & S,const TopTools_ListOfShape & L);
 
 		/****************** KPSameDomain ******************/
 		%feature("compactdefaultargs") KPSameDomain;
 		%feature("autodoc", ":param L1:
-	:type L1: TopTools_ListOfShape &
+	:type L1: TopTools_ListOfShape
 	:param L2:
-	:type L2: TopTools_ListOfShape &
+	:type L2: TopTools_ListOfShape
 	:rtype: None") KPSameDomain;
 		void KPSameDomain (TopTools_ListOfShape & L1,TopTools_ListOfShape & L2);
 
 		/****************** KPclasSS ******************/
 		%feature("compactdefaultargs") KPclasSS;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param exceptLS1:
-	:type exceptLS1: TopTools_ListOfShape &
+	:type exceptLS1: TopTools_ListOfShape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: TopAbs_State") KPclasSS;
 		TopAbs_State KPclasSS (const TopoDS_Shape & S1,const TopTools_ListOfShape & exceptLS1,const TopoDS_Shape & S2);
 
 		/****************** KPclasSS ******************/
 		%feature("compactdefaultargs") KPclasSS;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param exceptS1:
-	:type exceptS1: TopoDS_Shape &
+	:type exceptS1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: TopAbs_State") KPclasSS;
 		TopAbs_State KPclasSS (const TopoDS_Shape & S1,const TopoDS_Shape & exceptS1,const TopoDS_Shape & S2);
 
 		/****************** KPclasSS ******************/
 		%feature("compactdefaultargs") KPclasSS;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: TopAbs_State") KPclasSS;
 		TopAbs_State KPclasSS (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
 		/****************** KPclassF ******************/
 		%feature("compactdefaultargs") KPclassF;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param F2:
-	:type F2: TopoDS_Shape &
+	:type F2: TopoDS_Shape
 	:rtype: TopAbs_State") KPclassF;
 		TopAbs_State KPclassF (const TopoDS_Shape & F1,const TopoDS_Shape & F2);
 
 		/****************** KPclassFF ******************/
 		%feature("compactdefaultargs") KPclassFF;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param F2:
-	:type F2: TopoDS_Shape &
+	:type F2: TopoDS_Shape
 	:param T1:
-	:type T1: TopAbs_State &
+	:type T1: TopAbs_State
 	:param T2:
-	:type T2: TopAbs_State &
+	:type T2: TopAbs_State
 	:rtype: None") KPclassFF;
 		void KPclassFF (const TopoDS_Shape & F1,const TopoDS_Shape & F2,TopAbs_State & T1,TopAbs_State & T2);
 
@@ -1520,18 +1520,18 @@ class TopOpeBRepBuild_Builder {
 	:param ST2:
 	:type ST2: TopAbs_State
 	:param I:
-	:type I: int &
+	:type I: int
 	:param IC1:
-	:type IC1: int &
+	:type IC1: int
 	:param IC2:
-	:type IC2: int &
+	:type IC2: int
 	:rtype: None") KPisdisjanalyse;
 		void KPisdisjanalyse (const TopAbs_State ST1,const TopAbs_State ST2,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** KPisdisjsh ******************/
 		%feature("compactdefaultargs") KPisdisjsh;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") KPisdisjsh;
 		Standard_Integer KPisdisjsh (const TopoDS_Shape & S);
 
@@ -1543,7 +1543,7 @@ class TopOpeBRepBuild_Builder {
 		/****************** KPisfafash ******************/
 		%feature("compactdefaultargs") KPisfafash;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") KPisfafash;
 		Standard_Integer KPisfafash (const TopoDS_Shape & S);
 
@@ -1555,13 +1555,13 @@ class TopOpeBRepBuild_Builder {
 		/****************** KPiskoleFF ******************/
 		%feature("compactdefaultargs") KPiskoleFF;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param F2:
-	:type F2: TopoDS_Shape &
+	:type F2: TopoDS_Shape
 	:param T1:
-	:type T1: TopAbs_State &
+	:type T1: TopAbs_State
 	:param T2:
-	:type T2: TopAbs_State &
+	:type T2: TopAbs_State
 	:rtype: bool") KPiskoleFF;
 		Standard_Boolean KPiskoleFF (const TopoDS_Shape & F1,const TopoDS_Shape & F2,TopAbs_State & T1,TopAbs_State & T2);
 
@@ -1576,22 +1576,22 @@ class TopOpeBRepBuild_Builder {
 	:param ST2:
 	:type ST2: TopAbs_State
 	:param I:
-	:type I: int &
+	:type I: int
 	:param I1:
-	:type I1: int &
+	:type I1: int
 	:param I2:
-	:type I2: int &
+	:type I2: int
 	:rtype: None") KPiskoleanalyse;
 		void KPiskoleanalyse (const TopAbs_State FT1,const TopAbs_State FT2,const TopAbs_State ST1,const TopAbs_State ST2,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** KPiskolesh ******************/
 		%feature("compactdefaultargs") KPiskolesh;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LS:
-	:type LS: TopTools_ListOfShape &
+	:type LS: TopTools_ListOfShape
 	:param LF:
-	:type LF: TopTools_ListOfShape &
+	:type LF: TopTools_ListOfShape
 	:rtype: bool") KPiskolesh;
 		Standard_Boolean KPiskolesh (const TopoDS_Shape & S,TopTools_ListOfShape & LS,TopTools_ListOfShape & LF);
 
@@ -1609,18 +1609,18 @@ class TopOpeBRepBuild_Builder {
 	:param ST2:
 	:type ST2: TopAbs_State
 	:param I:
-	:type I: int &
+	:type I: int
 	:rtype: None") KPiskoletgeanalyse;
 		void KPiskoletgeanalyse (const TopOpeBRepDS_Config Conf,const TopAbs_State ST1,const TopAbs_State ST2,Standard_Integer &OutValue);
 
 		/****************** KPiskoletgesh ******************/
 		%feature("compactdefaultargs") KPiskoletgesh;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LS:
-	:type LS: TopTools_ListOfShape &
+	:type LS: TopTools_ListOfShape
 	:param LF:
-	:type LF: TopTools_ListOfShape &
+	:type LF: TopTools_ListOfShape
 	:rtype: bool") KPiskoletgesh;
 		Standard_Boolean KPiskoletgesh (const TopoDS_Shape & S,TopTools_ListOfShape & LS,TopTools_ListOfShape & LF);
 
@@ -1632,25 +1632,25 @@ class TopOpeBRepBuild_Builder {
 		/****************** KPissososh ******************/
 		%feature("compactdefaultargs") KPissososh;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") KPissososh;
 		Standard_Integer KPissososh (const TopoDS_Shape & S);
 
 		/****************** KPlhg ******************/
 		%feature("compactdefaultargs") KPlhg;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: int") KPlhg;
 		Standard_Integer KPlhg (const TopoDS_Shape & S,const TopAbs_ShapeEnum T,TopTools_ListOfShape & L);
 
 		/****************** KPlhg ******************/
 		%feature("compactdefaultargs") KPlhg;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:rtype: int") KPlhg;
@@ -1659,18 +1659,18 @@ class TopOpeBRepBuild_Builder {
 		/****************** KPlhsd ******************/
 		%feature("compactdefaultargs") KPlhsd;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: int") KPlhsd;
 		Standard_Integer KPlhsd (const TopoDS_Shape & S,const TopAbs_ShapeEnum T,TopTools_ListOfShape & L);
 
 		/****************** KPlhsd ******************/
 		%feature("compactdefaultargs") KPlhsd;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:rtype: int") KPlhsd;
@@ -1679,18 +1679,18 @@ class TopOpeBRepBuild_Builder {
 		/****************** KPls ******************/
 		%feature("compactdefaultargs") KPls;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: int") KPls;
 		static Standard_Integer KPls (const TopoDS_Shape & S,const TopAbs_ShapeEnum T,TopTools_ListOfShape & L);
 
 		/****************** KPls ******************/
 		%feature("compactdefaultargs") KPls;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:rtype: int") KPls;
@@ -1699,9 +1699,9 @@ class TopOpeBRepBuild_Builder {
 		/****************** KPmakeface ******************/
 		%feature("compactdefaultargs") KPmakeface;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param T1:
 	:type T1: TopAbs_State
 	:param T2:
@@ -1723,9 +1723,9 @@ class TopOpeBRepBuild_Builder {
 		/****************** KeepShape ******************/
 		%feature("compactdefaultargs") KeepShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LS:
-	:type LS: TopTools_ListOfShape &
+	:type LS: TopTools_ListOfShape
 	:param T:
 	:type T: TopAbs_State
 	:rtype: bool") KeepShape;
@@ -1741,49 +1741,49 @@ class TopOpeBRepBuild_Builder {
 		/****************** MakeEdges ******************/
 		%feature("compactdefaultargs") MakeEdges;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param B:
-	:type B: TopOpeBRepBuild_EdgeBuilder &
+	:type B: TopOpeBRepBuild_EdgeBuilder
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") MakeEdges;
 		void MakeEdges (const TopoDS_Shape & E,TopOpeBRepBuild_EdgeBuilder & B,TopTools_ListOfShape & L);
 
 		/****************** MakeFaces ******************/
 		%feature("compactdefaultargs") MakeFaces;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param B:
-	:type B: TopOpeBRepBuild_FaceBuilder &
+	:type B: TopOpeBRepBuild_FaceBuilder
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") MakeFaces;
 		void MakeFaces (const TopoDS_Shape & F,TopOpeBRepBuild_FaceBuilder & B,TopTools_ListOfShape & L);
 
 		/****************** MakeShells ******************/
 		%feature("compactdefaultargs") MakeShells;
 		%feature("autodoc", ":param B:
-	:type B: TopOpeBRepBuild_SolidBuilder &
+	:type B: TopOpeBRepBuild_SolidBuilder
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") MakeShells;
 		void MakeShells (TopOpeBRepBuild_SolidBuilder & B,TopTools_ListOfShape & L);
 
 		/****************** MakeSolids ******************/
 		%feature("compactdefaultargs") MakeSolids;
 		%feature("autodoc", ":param B:
-	:type B: TopOpeBRepBuild_SolidBuilder &
+	:type B: TopOpeBRepBuild_SolidBuilder
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") MakeSolids;
 		void MakeSolids (TopOpeBRepBuild_SolidBuilder & B,TopTools_ListOfShape & L);
 
 		/****************** MapShapes ******************/
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: None") MapShapes;
 		void MapShapes (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
@@ -1791,11 +1791,11 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") MergeEdges;
 		%feature("autodoc", "* Merges the two edges <S1> and <S2> keeping the parts in each edge of states <TB1> and <TB2>. Booleans onA, onB, onAB indicate wheter parts of edges found as state ON respectively on first, second, and both shapes must be (or not) built.
 	:param L1:
-	:type L1: TopTools_ListOfShape &
+	:type L1: TopTools_ListOfShape
 	:param TB1:
 	:type TB1: TopAbs_State
 	:param L2:
-	:type L2: TopTools_ListOfShape &
+	:type L2: TopTools_ListOfShape
 	:param TB2:
 	:type TB2: TopAbs_State
 	:param onA: default value is Standard_False
@@ -1811,11 +1811,11 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") MergeFaces;
 		%feature("autodoc", "* Merges the two faces <S1> and <S2> keeping the parts in each face of states <TB1> and <TB2>.
 	:param S1:
-	:type S1: TopTools_ListOfShape &
+	:type S1: TopTools_ListOfShape
 	:param TB1:
 	:type TB1: TopAbs_State
 	:param S2:
-	:type S2: TopTools_ListOfShape &
+	:type S2: TopTools_ListOfShape
 	:param TB2:
 	:type TB2: TopAbs_State
 	:param onA: default value is Standard_False
@@ -1870,11 +1870,11 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") MergeShapes;
 		%feature("autodoc", "* Merges the two shapes <S1> and <S2> keeping the parts of states <TB1>,<TB2> in <S1>,<S2>.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param TB1:
 	:type TB1: TopAbs_State
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param TB2:
 	:type TB2: TopAbs_State
 	:rtype: None") MergeShapes;
@@ -1884,7 +1884,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") MergeSolid;
 		%feature("autodoc", "* Merges the solid <S> keeping the parts of state <TB>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TB:
 	:type TB: TopAbs_State
 	:rtype: None") MergeSolid;
@@ -1894,11 +1894,11 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") MergeSolids;
 		%feature("autodoc", "* Merges the two solids <S1> and <S2> keeping the parts in each solid of states <TB1> and <TB2>.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param TB1:
 	:type TB1: TopAbs_State
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param TB2:
 	:type TB2: TopAbs_State
 	:rtype: None") MergeSolids;
@@ -1908,7 +1908,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") Merged;
 		%feature("autodoc", "* Returns the merged parts <TB> of shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TB:
 	:type TB: TopAbs_State
 	:rtype: TopTools_ListOfShape") Merged;
@@ -1971,7 +1971,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Stores the data structure <HDS>, Create shapes from the new geometries.
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: void") Perform;
 		virtual void Perform (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -1979,90 +1979,90 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Stores the data structure <HDS>, Create shapes from the new geometries, Evaluates if an operation performed on shapes S1,S2 is a particular case.
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: void") Perform;
 		virtual void Perform (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS,const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
 		/****************** PrintCur ******************/
 		%feature("compactdefaultargs") PrintCur;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: void") PrintCur;
 		static void PrintCur (const TopoDS_Edge & E);
 
 		/****************** PrintGeo ******************/
 		%feature("compactdefaultargs") PrintGeo;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") PrintGeo;
 		static void PrintGeo (const TopoDS_Shape & S);
 
 		/****************** PrintOri ******************/
 		%feature("compactdefaultargs") PrintOri;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") PrintOri;
 		static void PrintOri (const TopoDS_Shape & S);
 
 		/****************** PrintPnt ******************/
 		%feature("compactdefaultargs") PrintPnt;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: void") PrintPnt;
 		static void PrintPnt (const TopoDS_Vertex & V);
 
 		/****************** PrintSur ******************/
 		%feature("compactdefaultargs") PrintSur;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: void") PrintSur;
 		static void PrintSur (const TopoDS_Face & F);
 
 		/****************** RegularizeFace ******************/
 		%feature("compactdefaultargs") RegularizeFace;
 		%feature("autodoc", ":param FF:
-	:type FF: TopoDS_Shape &
+	:type FF: TopoDS_Shape
 	:param newFace:
-	:type newFace: TopoDS_Shape &
+	:type newFace: TopoDS_Shape
 	:param LOF:
-	:type LOF: TopTools_ListOfShape &
+	:type LOF: TopTools_ListOfShape
 	:rtype: None") RegularizeFace;
 		void RegularizeFace (const TopoDS_Shape & FF,const TopoDS_Shape & newFace,TopTools_ListOfShape & LOF);
 
 		/****************** RegularizeFaces ******************/
 		%feature("compactdefaultargs") RegularizeFaces;
 		%feature("autodoc", ":param FF:
-	:type FF: TopoDS_Shape &
+	:type FF: TopoDS_Shape
 	:param lnewFace:
-	:type lnewFace: TopTools_ListOfShape &
+	:type lnewFace: TopTools_ListOfShape
 	:param LOF:
-	:type LOF: TopTools_ListOfShape &
+	:type LOF: TopTools_ListOfShape
 	:rtype: None") RegularizeFaces;
 		void RegularizeFaces (const TopoDS_Shape & FF,const TopTools_ListOfShape & lnewFace,TopTools_ListOfShape & LOF);
 
 		/****************** RegularizeSolid ******************/
 		%feature("compactdefaultargs") RegularizeSolid;
 		%feature("autodoc", ":param SS:
-	:type SS: TopoDS_Shape &
+	:type SS: TopoDS_Shape
 	:param newSolid:
-	:type newSolid: TopoDS_Shape &
+	:type newSolid: TopoDS_Shape
 	:param LOS:
-	:type LOS: TopTools_ListOfShape &
+	:type LOS: TopTools_ListOfShape
 	:rtype: None") RegularizeSolid;
 		void RegularizeSolid (const TopoDS_Shape & SS,const TopoDS_Shape & newSolid,TopTools_ListOfShape & LOS);
 
 		/****************** RegularizeSolids ******************/
 		%feature("compactdefaultargs") RegularizeSolids;
 		%feature("autodoc", ":param SS:
-	:type SS: TopoDS_Shape &
+	:type SS: TopoDS_Shape
 	:param lnewSolid:
-	:type lnewSolid: TopTools_ListOfShape &
+	:type lnewSolid: TopTools_ListOfShape
 	:param LOS:
-	:type LOS: TopTools_ListOfShape &
+	:type LOS: TopTools_ListOfShape
 	:rtype: None") RegularizeSolids;
 		void RegularizeSolids (const TopoDS_Shape & SS,const TopTools_ListOfShape & lnewSolid,TopTools_ListOfShape & LOS);
 
@@ -2079,7 +2079,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* return all section edges.
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") Section;
 		void Section (TopTools_ListOfShape & L);
 
@@ -2092,7 +2092,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") SectionCurves;
 		%feature("autodoc", "* return the section edges built on new curves.
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") SectionCurves;
 		void SectionCurves (TopTools_ListOfShape & L);
 
@@ -2100,23 +2100,23 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") SectionEdges;
 		%feature("autodoc", "* return the parts of edges found ON the boundary of the two arguments S1,S2 of Perform()
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") SectionEdges;
 		void SectionEdges (TopTools_ListOfShape & L);
 
 		/****************** ShapePosition ******************/
 		%feature("compactdefaultargs") ShapePosition;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LS:
-	:type LS: TopTools_ListOfShape &
+	:type LS: TopTools_ListOfShape
 	:rtype: TopAbs_State") ShapePosition;
 		TopAbs_State ShapePosition (const TopoDS_Shape & S,const TopTools_ListOfShape & LS);
 
 		/****************** ShapeRank ******************/
 		%feature("compactdefaultargs") ShapeRank;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") ShapeRank;
 		Standard_Integer ShapeRank (const TopoDS_Shape & S);
 
@@ -2129,7 +2129,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") SplitSectionEdge;
 		%feature("autodoc", "* create parts ON solid of section edges
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: void") SplitSectionEdge;
 		virtual void SplitSectionEdge (const TopoDS_Shape & E);
 
@@ -2143,7 +2143,7 @@ class TopOpeBRepBuild_Builder {
 		%feature("compactdefaultargs") Splits;
 		%feature("autodoc", "* Returns the split parts <TB> of shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TB:
 	:type TB: TopAbs_State
 	:rtype: TopTools_ListOfShape") Splits;
@@ -2159,14 +2159,14 @@ class TopOpeBRepBuild_Builder {
 		/****************** TopOpeBRepBuild_Builder ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_Builder;
 		%feature("autodoc", ":param BT:
-	:type BT: TopOpeBRepDS_BuildTool &
+	:type BT: TopOpeBRepDS_BuildTool
 	:rtype: None") TopOpeBRepBuild_Builder;
 		 TopOpeBRepBuild_Builder (const TopOpeBRepDS_BuildTool & BT);
 
 		/****************** TopType ******************/
 		%feature("compactdefaultargs") TopType;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopAbs_ShapeEnum") TopType;
 		static TopAbs_ShapeEnum TopType (const TopoDS_Shape & S);
 
@@ -2188,62 +2188,62 @@ class TopOpeBRepBuild_BuilderON {
 		/****************** GFillONCheckI ******************/
 		%feature("compactdefaultargs") GFillONCheckI;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: bool") GFillONCheckI;
 		Standard_Boolean GFillONCheckI (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** GFillONParts2dWES2 ******************/
 		%feature("compactdefaultargs") GFillONParts2dWES2;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param EspON:
-	:type EspON: TopoDS_Shape &
+	:type EspON: TopoDS_Shape
 	:rtype: None") GFillONParts2dWES2;
 		void GFillONParts2dWES2 (const opencascade::handle<TopOpeBRepDS_Interference> & I,const TopoDS_Shape & EspON);
 
 		/****************** GFillONPartsWES1 ******************/
 		%feature("compactdefaultargs") GFillONPartsWES1;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") GFillONPartsWES1;
 		void GFillONPartsWES1 (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** GFillONPartsWES2 ******************/
 		%feature("compactdefaultargs") GFillONPartsWES2;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param EspON:
-	:type EspON: TopoDS_Shape &
+	:type EspON: TopoDS_Shape
 	:rtype: None") GFillONPartsWES2;
 		void GFillONPartsWES2 (const opencascade::handle<TopOpeBRepDS_Interference> & I,const TopoDS_Shape & EspON);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param PB:
-	:type PB: TopOpeBRepBuild_PBuilder &
+	:type PB: TopOpeBRepBuild_PBuilder
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param PG:
-	:type PG: TopOpeBRepBuild_PGTopo &
+	:type PG: TopOpeBRepBuild_PGTopo
 	:param PLSclass:
-	:type PLSclass: TopOpeBRepTool_Plos &
+	:type PLSclass: TopOpeBRepTool_Plos
 	:param PWES:
-	:type PWES: TopOpeBRepBuild_PWireEdgeSet &
+	:type PWES: TopOpeBRepBuild_PWireEdgeSet
 	:rtype: None") Perform;
 		void Perform (const TopOpeBRepBuild_PBuilder & PB,const TopoDS_Shape & F,const TopOpeBRepBuild_PGTopo & PG,const TopOpeBRepTool_Plos & PLSclass,const TopOpeBRepBuild_PWireEdgeSet & PWES);
 
 		/****************** Perform2d ******************/
 		%feature("compactdefaultargs") Perform2d;
 		%feature("autodoc", ":param PB:
-	:type PB: TopOpeBRepBuild_PBuilder &
+	:type PB: TopOpeBRepBuild_PBuilder
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param PG:
-	:type PG: TopOpeBRepBuild_PGTopo &
+	:type PG: TopOpeBRepBuild_PGTopo
 	:param PLSclass:
-	:type PLSclass: TopOpeBRepTool_Plos &
+	:type PLSclass: TopOpeBRepTool_Plos
 	:param PWES:
-	:type PWES: TopOpeBRepBuild_PWireEdgeSet &
+	:type PWES: TopOpeBRepBuild_PWireEdgeSet
 	:rtype: None") Perform2d;
 		void Perform2d (const TopOpeBRepBuild_PBuilder & PB,const TopoDS_Shape & F,const TopOpeBRepBuild_PGTopo & PG,const TopOpeBRepTool_Plos & PLSclass,const TopOpeBRepBuild_PWireEdgeSet & PWES);
 
@@ -2255,15 +2255,15 @@ class TopOpeBRepBuild_BuilderON {
 		/****************** TopOpeBRepBuild_BuilderON ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_BuilderON;
 		%feature("autodoc", ":param PB:
-	:type PB: TopOpeBRepBuild_PBuilder &
+	:type PB: TopOpeBRepBuild_PBuilder
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param PG:
-	:type PG: TopOpeBRepBuild_PGTopo &
+	:type PG: TopOpeBRepBuild_PGTopo
 	:param PLSclass:
-	:type PLSclass: TopOpeBRepTool_Plos &
+	:type PLSclass: TopOpeBRepTool_Plos
 	:param PWES:
-	:type PWES: TopOpeBRepBuild_PWireEdgeSet &
+	:type PWES: TopOpeBRepBuild_PWireEdgeSet
 	:rtype: None") TopOpeBRepBuild_BuilderON;
 		 TopOpeBRepBuild_BuilderON (const TopOpeBRepBuild_PBuilder & PB,const TopoDS_Shape & F,const TopOpeBRepBuild_PGTopo & PG,const TopOpeBRepTool_Plos & PLSclass,const TopOpeBRepBuild_PWireEdgeSet & PWES);
 
@@ -2285,9 +2285,9 @@ class TopOpeBRepBuild_CorrectFace2d {
 		/****************** CheckList ******************/
 		%feature("compactdefaultargs") CheckList;
 		%feature("autodoc", ":param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param aHeadList:
-	:type aHeadList: TopTools_ListOfShape &
+	:type aHeadList: TopTools_ListOfShape
 	:rtype: void") CheckList;
 		static void CheckList (const TopoDS_Face & aFace,TopTools_ListOfShape & aHeadList);
 
@@ -2309,9 +2309,9 @@ class TopOpeBRepBuild_CorrectFace2d {
 		/****************** GetP2dFL ******************/
 		%feature("compactdefaultargs") GetP2dFL;
 		%feature("autodoc", ":param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param anEdge:
-	:type anEdge: TopoDS_Edge &
+	:type anEdge: TopoDS_Edge
 	:param P2dF:
 	:type P2dF: gp_Pnt2d
 	:param P2dL:
@@ -2337,7 +2337,7 @@ class TopOpeBRepBuild_CorrectFace2d {
 		/****************** SetMapOfTrans2dInfo ******************/
 		%feature("compactdefaultargs") SetMapOfTrans2dInfo;
 		%feature("autodoc", ":param aMap:
-	:type aMap: TopTools_IndexedDataMapOfShapeShape &
+	:type aMap: TopTools_IndexedDataMapOfShapeShape
 	:rtype: None") SetMapOfTrans2dInfo;
 		void SetMapOfTrans2dInfo (TopTools_IndexedDataMapOfShapeShape & aMap);
 
@@ -2349,11 +2349,11 @@ class TopOpeBRepBuild_CorrectFace2d {
 		/****************** TopOpeBRepBuild_CorrectFace2d ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_CorrectFace2d;
 		%feature("autodoc", ":param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param anAvoidMap:
-	:type anAvoidMap: TopTools_IndexedMapOfOrientedShape &
+	:type anAvoidMap: TopTools_IndexedMapOfOrientedShape
 	:param aMap:
-	:type aMap: TopTools_IndexedDataMapOfShapeShape &
+	:type aMap: TopTools_IndexedDataMapOfShapeShape
 	:rtype: None") TopOpeBRepBuild_CorrectFace2d;
 		 TopOpeBRepBuild_CorrectFace2d (const TopoDS_Face & aFace,const TopTools_IndexedMapOfOrientedShape & anAvoidMap,TopTools_IndexedDataMapOfShapeShape & aMap);
 
@@ -2375,9 +2375,9 @@ class TopOpeBRepBuild_FaceBuilder {
 		/****************** AddEdgeWire ******************/
 		%feature("compactdefaultargs") AddEdgeWire;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param W:
-	:type W: TopoDS_Shape &
+	:type W: TopoDS_Shape
 	:rtype: int") AddEdgeWire;
 		Standard_Integer AddEdgeWire (const TopoDS_Shape & E,TopoDS_Shape & W);
 
@@ -2385,9 +2385,9 @@ class TopOpeBRepBuild_FaceBuilder {
 		%feature("compactdefaultargs") CorrectGclosedWire;
 		%feature("autodoc", "* Using the given maps, change the topology of the 3d-closed wires, in order to get closed wires.
 	:param mapVVref:
-	:type mapVVref: TopTools_IndexedDataMapOfShapeShape &
+	:type mapVVref: TopTools_IndexedDataMapOfShapeShape
 	:param mapVon1Edge:
-	:type mapVon1Edge: TopTools_IndexedDataMapOfShapeShape &
+	:type mapVon1Edge: TopTools_IndexedDataMapOfShapeShape
 	:rtype: None") CorrectGclosedWire;
 		void CorrectGclosedWire (const TopTools_IndexedDataMapOfShapeShape & mapVVref,const TopTools_IndexedDataMapOfShapeShape & mapVon1Edge);
 
@@ -2395,7 +2395,7 @@ class TopOpeBRepBuild_FaceBuilder {
 		%feature("compactdefaultargs") DetectPseudoInternalEdge;
 		%feature("autodoc", "* Removes edges appearing twice (FORWARD,REVERSED) with a bounding vertex not connected to any other edge. mapE contains edges found. modifies myBlockBuilder.
 	:param mapE:
-	:type mapE: TopTools_IndexedMapOfShape &
+	:type mapE: TopTools_IndexedMapOfShape
 	:rtype: None") DetectPseudoInternalEdge;
 		void DetectPseudoInternalEdge (TopTools_IndexedMapOfShape & mapE);
 
@@ -2403,9 +2403,9 @@ class TopOpeBRepBuild_FaceBuilder {
 		%feature("compactdefaultargs") DetectUnclosedWire;
 		%feature("autodoc", "* Removes are non 3d-closed wires. Fills up maps <mapVVsameG> and <mapVon1Edge>, in order to correct 3d-closed but unclosed (topologic connexity) wires. modifies myBlockBuilder
 	:param mapVVsameG:
-	:type mapVVsameG: TopTools_IndexedDataMapOfShapeShape &
+	:type mapVVsameG: TopTools_IndexedDataMapOfShapeShape
 	:param mapVon1Edge:
-	:type mapVon1Edge: TopTools_IndexedDataMapOfShapeShape &
+	:type mapVon1Edge: TopTools_IndexedDataMapOfShapeShape
 	:rtype: None") DetectUnclosedWire;
 		void DetectUnclosedWire (TopTools_IndexedDataMapOfShapeShape & mapVVsameG,TopTools_IndexedDataMapOfShapeShape & mapVon1Edge);
 
@@ -2418,7 +2418,7 @@ class TopOpeBRepBuild_FaceBuilder {
 		/****************** EdgeConnexity ******************/
 		%feature("compactdefaultargs") EdgeConnexity;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: int") EdgeConnexity;
 		Standard_Integer EdgeConnexity (const TopoDS_Shape & E);
 
@@ -2447,9 +2447,9 @@ class TopOpeBRepBuild_FaceBuilder {
 		/****************** InitFaceBuilder ******************/
 		%feature("compactdefaultargs") InitFaceBuilder;
 		%feature("autodoc", ":param ES:
-	:type ES: TopOpeBRepBuild_WireEdgeSet &
+	:type ES: TopOpeBRepBuild_WireEdgeSet
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param ForceClass:
 	:type ForceClass: bool
 	:rtype: None") InitFaceBuilder;
@@ -2510,9 +2510,9 @@ class TopOpeBRepBuild_FaceBuilder {
 		%feature("compactdefaultargs") TopOpeBRepBuild_FaceBuilder;
 		%feature("autodoc", "* Create a FaceBuilder to build the faces on the shapes (wires, blocks of edge) described by <LS>.
 	:param ES:
-	:type ES: TopOpeBRepBuild_WireEdgeSet &
+	:type ES: TopOpeBRepBuild_WireEdgeSet
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") TopOpeBRepBuild_FaceBuilder;
@@ -2546,9 +2546,9 @@ class TopOpeBRepBuild_FuseFace {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param LIF:
-	:type LIF: TopTools_ListOfShape &
+	:type LIF: TopTools_ListOfShape
 	:param LRF:
-	:type LRF: TopTools_ListOfShape &
+	:type LRF: TopTools_ListOfShape
 	:param CXM:
 	:type CXM: int
 	:rtype: None") Init;
@@ -2617,9 +2617,9 @@ class TopOpeBRepBuild_FuseFace {
 		/****************** TopOpeBRepBuild_FuseFace ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_FuseFace;
 		%feature("autodoc", ":param LIF:
-	:type LIF: TopTools_ListOfShape &
+	:type LIF: TopTools_ListOfShape
 	:param LRF:
-	:type LRF: TopTools_ListOfShape &
+	:type LRF: TopTools_ListOfShape
 	:param CXM:
 	:type CXM: int
 	:rtype: None") TopOpeBRepBuild_FuseFace;
@@ -2643,9 +2643,9 @@ class TopOpeBRepBuild_GIter {
 		/****************** Current ******************/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", ":param s1:
-	:type s1: TopAbs_State &
+	:type s1: TopAbs_State
 	:param s2:
-	:type s2: TopAbs_State &
+	:type s2: TopAbs_State
 	:rtype: None") Current;
 		void Current (TopAbs_State & s1,TopAbs_State & s2);
 
@@ -2665,7 +2665,7 @@ class TopOpeBRepBuild_GIter {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:rtype: None") Init;
 		void Init (const TopOpeBRepBuild_GTopo & G);
 
@@ -2687,7 +2687,7 @@ class TopOpeBRepBuild_GIter {
 		/****************** TopOpeBRepBuild_GIter ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_GIter;
 		%feature("autodoc", ":param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:rtype: None") TopOpeBRepBuild_GIter;
 		 TopOpeBRepBuild_GIter (const TopOpeBRepBuild_GTopo & G);
 
@@ -2867,7 +2867,7 @@ class TopOpeBRepBuild_GTopo {
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", ":param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param s: default value is NULL
 	:type s: Standard_Address
 	:rtype: void") Dump;
@@ -2876,7 +2876,7 @@ class TopOpeBRepBuild_GTopo {
 		/****************** DumpSSB ******************/
 		%feature("compactdefaultargs") DumpSSB;
 		%feature("autodoc", ":param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param s1:
 	:type s1: TopAbs_State
 	:param s2:
@@ -2897,7 +2897,7 @@ class TopOpeBRepBuild_GTopo {
         		/****************** DumpVal ******************/
 		%feature("compactdefaultargs") DumpVal;
 		%feature("autodoc", ":param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param s1:
 	:type s1: TopAbs_State
 	:param s2:
@@ -2924,9 +2924,9 @@ class TopOpeBRepBuild_GTopo {
 		%feature("autodoc", ":param II:
 	:type II: int
 	:param i1:
-	:type i1: int &
+	:type i1: int
 	:param i2:
-	:type i2: int &
+	:type i2: int
 	:rtype: None") Index;
 		void Index (const Standard_Integer II,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2983,9 +2983,9 @@ class TopOpeBRepBuild_GTopo {
 		/****************** StatesON ******************/
 		%feature("compactdefaultargs") StatesON;
 		%feature("autodoc", ":param s1:
-	:type s1: TopAbs_State &
+	:type s1: TopAbs_State
 	:param s2:
-	:type s2: TopAbs_State &
+	:type s2: TopAbs_State
 	:rtype: None") StatesON;
 		void StatesON (TopAbs_State & s1,TopAbs_State & s2);
 
@@ -3028,9 +3028,9 @@ class TopOpeBRepBuild_GTopo {
 		/****************** Type ******************/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", ":param t1:
-	:type t1: TopAbs_ShapeEnum &
+	:type t1: TopAbs_ShapeEnum
 	:param t2:
-	:type t2: TopAbs_ShapeEnum &
+	:type t2: TopAbs_ShapeEnum
 	:rtype: None") Type;
 		void Type (TopAbs_ShapeEnum & t1,TopAbs_ShapeEnum & t2);
 
@@ -3118,13 +3118,13 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") EdgeCurveAncestors;
 		%feature("autodoc", "* search for the couple of face F1,F2 (from arguments of supra Perform(S1,S2,HDS)) method which intersection gives section edge E built on an intersection curve. returns True if F1,F2 have been valued. returns False if E is not a section edge built on intersection curve IC.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param F2:
-	:type F2: TopoDS_Shape &
+	:type F2: TopoDS_Shape
 	:param IC:
-	:type IC: int &
+	:type IC: int
 	:rtype: bool") EdgeCurveAncestors;
 		Standard_Boolean EdgeCurveAncestors (const TopoDS_Shape & E,TopoDS_Shape & F1,TopoDS_Shape & F2,Standard_Integer &OutValue);
 
@@ -3132,29 +3132,29 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") EdgeSectionAncestors;
 		%feature("autodoc", "* search for the couple of face F1,F2 (from arguments of supra Perform(S1,S2,HDS)) method which intersection gives section edge E built on at least one edge . returns True if F1,F2 have been valued. returns False if E is not a section edge built on at least one edge of S1 and/or S2. LE1,LE2 are edges of S1,S2 which common part is edge E. LE1 or LE2 may be empty() but not both.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param LF1:
-	:type LF1: TopTools_ListOfShape &
+	:type LF1: TopTools_ListOfShape
 	:param LF2:
-	:type LF2: TopTools_ListOfShape &
+	:type LF2: TopTools_ListOfShape
 	:param LE1:
-	:type LE1: TopTools_ListOfShape &
+	:type LE1: TopTools_ListOfShape
 	:param LE2:
-	:type LE2: TopTools_ListOfShape &
+	:type LE2: TopTools_ListOfShape
 	:rtype: bool") EdgeSectionAncestors;
 		Standard_Boolean EdgeSectionAncestors (const TopoDS_Shape & E,TopTools_ListOfShape & LF1,TopTools_ListOfShape & LF2,TopTools_ListOfShape & LE1,TopTools_ListOfShape & LE2);
 
 		/****************** GetDSCurveFromSectEdge ******************/
 		%feature("compactdefaultargs") GetDSCurveFromSectEdge;
 		%feature("autodoc", ":param SectEdge:
-	:type SectEdge: TopoDS_Shape &
+	:type SectEdge: TopoDS_Shape
 	:rtype: int") GetDSCurveFromSectEdge;
 		Standard_Integer GetDSCurveFromSectEdge (const TopoDS_Shape & SectEdge);
 
 		/****************** GetDSEdgeFromSectEdge ******************/
 		%feature("compactdefaultargs") GetDSEdgeFromSectEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param rank:
 	:type rank: int
 	:rtype: int") GetDSEdgeFromSectEdge;
@@ -3181,7 +3181,7 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		/****************** GetDSPointFromNewVertex ******************/
 		%feature("compactdefaultargs") GetDSPointFromNewVertex;
 		%feature("autodoc", ":param NewVert:
-	:type NewVert: TopoDS_Shape &
+	:type NewVert: TopoDS_Shape
 	:rtype: int") GetDSPointFromNewVertex;
 		Standard_Integer GetDSPointFromNewVertex (const TopoDS_Shape & NewVert);
 
@@ -3209,7 +3209,7 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") IsMerged;
 		%feature("autodoc", "* Returns True if the shape <S> has been merged.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ToBuild:
 	:type ToBuild: TopAbs_State
 	:rtype: bool") IsMerged;
@@ -3219,7 +3219,7 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") IsSplit;
 		%feature("autodoc", "* Returns True if the shape <S> has been split.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ToBuild:
 	:type ToBuild: TopAbs_State
 	:rtype: bool") IsSplit;
@@ -3238,11 +3238,11 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") MergeShapes;
 		%feature("autodoc", "* Merges the two shapes <S1> and <S2> keeping the parts of states <TB1>,<TB2> in <S1>,<S2>.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param TB1:
 	:type TB1: TopAbs_State
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param TB2:
 	:type TB2: TopAbs_State
 	:rtype: None") MergeShapes;
@@ -3252,7 +3252,7 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") MergeSolid;
 		%feature("autodoc", "* Merges the solid <S> keeping the parts of state <TB>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TB:
 	:type TB: TopAbs_State
 	:rtype: None") MergeSolid;
@@ -3262,11 +3262,11 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") MergeSolids;
 		%feature("autodoc", "* Merges the two solids <S1> and <S2> keeping the parts in each solid of states <TB1> and <TB2>.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param TB1:
 	:type TB1: TopAbs_State
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param TB2:
 	:type TB2: TopAbs_State
 	:rtype: None") MergeSolids;
@@ -3276,7 +3276,7 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") Merged;
 		%feature("autodoc", "* Returns the merged parts <ToBuild> of shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ToBuild:
 	:type ToBuild: TopAbs_State
 	:rtype: TopTools_ListOfShape") Merged;
@@ -3320,7 +3320,7 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Stores the data structure <HDS>, Create shapes from the new geometries described in <HDS>.
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -3328,11 +3328,11 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Same as previous + evaluates if an operation performed on shapes S1,S2 is a particular case.
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS,const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
@@ -3345,7 +3345,7 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		%feature("compactdefaultargs") Splits;
 		%feature("autodoc", "* Returns the split parts <ToBuild> of shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ToBuild:
 	:type ToBuild: TopAbs_State
 	:rtype: TopTools_ListOfShape") Splits;
@@ -3354,7 +3354,7 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 		/****************** TopOpeBRepBuild_HBuilder ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_HBuilder;
 		%feature("autodoc", ":param BT:
-	:type BT: TopOpeBRepDS_BuildTool &
+	:type BT: TopOpeBRepDS_BuildTool
 	:rtype: None") TopOpeBRepBuild_HBuilder;
 		 TopOpeBRepBuild_HBuilder (const TopOpeBRepDS_BuildTool & BT);
 
@@ -3398,14 +3398,14 @@ class TopOpeBRepBuild_Loop : public Standard_Transient {
 		/****************** TopOpeBRepBuild_Loop ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_Loop;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") TopOpeBRepBuild_Loop;
 		 TopOpeBRepBuild_Loop (const TopoDS_Shape & S);
 
 		/****************** TopOpeBRepBuild_Loop ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_Loop;
 		%feature("autodoc", ":param BI:
-	:type BI: TopOpeBRepBuild_BlockIterator &
+	:type BI: TopOpeBRepBuild_BlockIterator
 	:rtype: None") TopOpeBRepBuild_Loop;
 		 TopOpeBRepBuild_Loop (const TopOpeBRepBuild_BlockIterator & BI);
 
@@ -3430,9 +3430,9 @@ class TopOpeBRepBuild_LoopClassifier {
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "* Returns the state of loop <L1> compared with loop <L2>.
 	:param L1:
-	:type L1: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L1: TopOpeBRepBuild_Loop
 	:param L2:
-	:type L2: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L2: TopOpeBRepBuild_Loop
 	:rtype: TopAbs_State") Compare;
 		virtual TopAbs_State Compare (const opencascade::handle<TopOpeBRepBuild_Loop> & L1,const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
 
@@ -3524,16 +3524,16 @@ class TopOpeBRepBuild_ShapeListOfShape {
 		/****************** TopOpeBRepBuild_ShapeListOfShape ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_ShapeListOfShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") TopOpeBRepBuild_ShapeListOfShape;
 		 TopOpeBRepBuild_ShapeListOfShape (const TopoDS_Shape & S);
 
 		/****************** TopOpeBRepBuild_ShapeListOfShape ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_ShapeListOfShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") TopOpeBRepBuild_ShapeListOfShape;
 		 TopOpeBRepBuild_ShapeListOfShape (const TopoDS_Shape & S,const TopTools_ListOfShape & L);
 
@@ -3556,7 +3556,7 @@ class TopOpeBRepBuild_ShapeSet {
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", "* for each subshape SE of S of type mySubShapeType - Add subshapes of S to the map of subshapes (mySubShapeMap) - Add S to the list of shape incident to subshapes of S.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddElement;
 		virtual void AddElement (const TopoDS_Shape & S);
 
@@ -3564,7 +3564,7 @@ class TopOpeBRepBuild_ShapeSet {
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "* Adds <S> to the list of shapes. (wires or shells).
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddShape;
 		virtual void AddShape (const TopoDS_Shape & S);
 
@@ -3572,7 +3572,7 @@ class TopOpeBRepBuild_ShapeSet {
 		%feature("compactdefaultargs") AddStartElement;
 		%feature("autodoc", "* (S is a face or edge) Add S to the list of starting shapes used for reconstructions. apply AddElement(S).
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddStartElement;
 		virtual void AddStartElement (const TopoDS_Shape & S);
 
@@ -3596,7 +3596,7 @@ class TopOpeBRepBuild_ShapeSet {
 		/****************** CheckShape ******************/
 		%feature("compactdefaultargs") CheckShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param checkgeom: default value is Standard_False
 	:type checkgeom: bool
 	:rtype: bool") CheckShape;
@@ -3605,7 +3605,7 @@ class TopOpeBRepBuild_ShapeSet {
 		/****************** DEBName ******************/
 		%feature("compactdefaultargs") DEBName;
 		%feature("autodoc", ":param N:
-	:type N: TCollection_AsciiString &
+	:type N: TCollection_AsciiString
 	:rtype: None") DEBName;
 		void DEBName (const TCollection_AsciiString & N);
 
@@ -3634,11 +3634,11 @@ class TopOpeBRepBuild_ShapeSet {
 		/****************** DumpCheck ******************/
 		%feature("compactdefaultargs") DumpCheck;
 		%feature("autodoc", ":param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param str:
-	:type str: TCollection_AsciiString &
+	:type str: TCollection_AsciiString
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param chk:
 	:type chk: bool
 	:rtype: None") DumpCheck;
@@ -3647,9 +3647,9 @@ class TopOpeBRepBuild_ShapeSet {
 		/****************** DumpName ******************/
 		%feature("compactdefaultargs") DumpName;
 		%feature("autodoc", ":param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param str:
-	:type str: TCollection_AsciiString &
+	:type str: TCollection_AsciiString
 	:rtype: None") DumpName;
 		void DumpName (Standard_OStream & OS,const TCollection_AsciiString & str);
 
@@ -3667,7 +3667,7 @@ class TopOpeBRepBuild_ShapeSet {
 		/****************** InitNeighbours ******************/
 		%feature("compactdefaultargs") InitNeighbours;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") InitNeighbours;
 		virtual void InitNeighbours (const TopoDS_Shape & S);
 
@@ -3684,16 +3684,16 @@ class TopOpeBRepBuild_ShapeSet {
 		/****************** MakeNeighboursList ******************/
 		%feature("compactdefaultargs") MakeNeighboursList;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") MakeNeighboursList;
 		virtual const TopTools_ListOfShape & MakeNeighboursList (const TopoDS_Shape & E,const TopoDS_Shape & V);
 
 		/****************** MaxNumberSubShape ******************/
 		%feature("compactdefaultargs") MaxNumberSubShape;
 		%feature("autodoc", ":param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:rtype: int") MaxNumberSubShape;
 		Standard_Integer MaxNumberSubShape (const TopoDS_Shape & Shape);
 
@@ -3735,44 +3735,44 @@ class TopOpeBRepBuild_ShapeSet {
 		/****************** SName ******************/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SName;
 		virtual TCollection_AsciiString SName (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
 		/****************** SName ******************/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", ":param S:
-	:type S: TopTools_ListOfShape &
+	:type S: TopTools_ListOfShape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SName;
 		virtual TCollection_AsciiString SName (const TopTools_ListOfShape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
 		/****************** SNameori ******************/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SNameori;
 		virtual TCollection_AsciiString SNameori (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
 		/****************** SNameori ******************/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", ":param S:
-	:type S: TopTools_ListOfShape &
+	:type S: TopTools_ListOfShape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SNameori;
 		virtual TCollection_AsciiString SNameori (const TopTools_ListOfShape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
@@ -3820,7 +3820,7 @@ class TopOpeBRepBuild_ShellToSolid {
 		/****************** AddShell ******************/
 		%feature("compactdefaultargs") AddShell;
 		%feature("autodoc", ":param Sh:
-	:type Sh: TopoDS_Shell &
+	:type Sh: TopoDS_Shell
 	:rtype: None") AddShell;
 		void AddShell (const TopoDS_Shell & Sh);
 
@@ -3832,9 +3832,9 @@ class TopOpeBRepBuild_ShellToSolid {
 		/****************** MakeSolids ******************/
 		%feature("compactdefaultargs") MakeSolids;
 		%feature("autodoc", ":param So:
-	:type So: TopoDS_Solid &
+	:type So: TopoDS_Solid
 	:param LSo:
-	:type LSo: TopTools_ListOfShape &
+	:type LSo: TopTools_ListOfShape
 	:rtype: None") MakeSolids;
 		void MakeSolids (const TopoDS_Solid & So,TopTools_ListOfShape & LSo);
 
@@ -3882,7 +3882,7 @@ class TopOpeBRepBuild_SolidBuilder {
 		/****************** InitSolidBuilder ******************/
 		%feature("compactdefaultargs") InitSolidBuilder;
 		%feature("autodoc", ":param FS:
-	:type FS: TopOpeBRepBuild_ShellFaceSet &
+	:type FS: TopOpeBRepBuild_ShellFaceSet
 	:param ForceClass:
 	:type ForceClass: bool
 	:rtype: None") InitSolidBuilder;
@@ -3938,7 +3938,7 @@ class TopOpeBRepBuild_SolidBuilder {
 		%feature("compactdefaultargs") TopOpeBRepBuild_SolidBuilder;
 		%feature("autodoc", "* Create a SolidBuilder to build the areas on the shapes (shells, blocks of faces) described by <LS>.
 	:param FS:
-	:type FS: TopOpeBRepBuild_ShellFaceSet &
+	:type FS: TopOpeBRepBuild_ShellFaceSet
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") TopOpeBRepBuild_SolidBuilder;
@@ -3962,14 +3962,14 @@ class TopOpeBRepBuild_Tools {
 		%feature("compactdefaultargs") CheckFaceClosed2d;
 		%feature("autodoc", "* Checks if <theFace> has the properly closed in 2D boundary(ies)
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: bool") CheckFaceClosed2d;
 		static Standard_Boolean CheckFaceClosed2d (const TopoDS_Face & theFace);
 
 		/****************** CorrectCurveOnSurface ******************/
 		%feature("compactdefaultargs") CorrectCurveOnSurface;
 		%feature("autodoc", ":param aS:
-	:type aS: TopoDS_Shape &
+	:type aS: TopoDS_Shape
 	:param aTolMax: default value is 0.0001
 	:type aTolMax: float
 	:rtype: void") CorrectCurveOnSurface;
@@ -3979,20 +3979,20 @@ class TopOpeBRepBuild_Tools {
 		%feature("compactdefaultargs") CorrectFace2d;
 		%feature("autodoc", "* test if UV representation of <oldFace> is good (i.e. face is closed in 2d). if face is not closed , this method will try to close such face and will return corrected edges in the <aMapOfCorrect2dEdges>. Parameter <aSourceShapes> used to fix the edge (or wires) which should be correct (Corrector used it as a start shapes). NOTE : Parameter corrFace doesn't mean anything. If you want to use this method , rebuild resulting face after by yourself using corrected edges.
 	:param oldFace:
-	:type oldFace: TopoDS_Shape &
+	:type oldFace: TopoDS_Shape
 	:param corrFace:
-	:type corrFace: TopoDS_Shape &
+	:type corrFace: TopoDS_Shape
 	:param aSourceShapes:
-	:type aSourceShapes: TopTools_IndexedMapOfOrientedShape &
+	:type aSourceShapes: TopTools_IndexedMapOfOrientedShape
 	:param aMapOfCorrect2dEdges:
-	:type aMapOfCorrect2dEdges: TopTools_IndexedDataMapOfShapeShape &
+	:type aMapOfCorrect2dEdges: TopTools_IndexedDataMapOfShapeShape
 	:rtype: void") CorrectFace2d;
 		static void CorrectFace2d (const TopoDS_Shape & oldFace,TopoDS_Shape & corrFace,const TopTools_IndexedMapOfOrientedShape & aSourceShapes,TopTools_IndexedDataMapOfShapeShape & aMapOfCorrect2dEdges);
 
 		/****************** CorrectPointOnCurve ******************/
 		%feature("compactdefaultargs") CorrectPointOnCurve;
 		%feature("autodoc", ":param aS:
-	:type aS: TopoDS_Shape &
+	:type aS: TopoDS_Shape
 	:param aTolMax: default value is 0.0001
 	:type aTolMax: float
 	:rtype: void") CorrectPointOnCurve;
@@ -4001,7 +4001,7 @@ class TopOpeBRepBuild_Tools {
 		/****************** CorrectTolerances ******************/
 		%feature("compactdefaultargs") CorrectTolerances;
 		%feature("autodoc", ":param aS:
-	:type aS: TopoDS_Shape &
+	:type aS: TopoDS_Shape
 	:param aTolMax: default value is 0.0001
 	:type aTolMax: float
 	:rtype: void") CorrectTolerances;
@@ -4010,73 +4010,73 @@ class TopOpeBRepBuild_Tools {
 		/****************** FindState ******************/
 		%feature("compactdefaultargs") FindState;
 		%feature("autodoc", ":param aVertex:
-	:type aVertex: TopoDS_Shape &
+	:type aVertex: TopoDS_Shape
 	:param aState:
 	:type aState: TopAbs_State
 	:param aShapeEnum:
 	:type aShapeEnum: TopAbs_ShapeEnum
 	:param aMapVertexEdges:
-	:type aMapVertexEdges: TopTools_IndexedDataMapOfShapeListOfShape &
+	:type aMapVertexEdges: TopTools_IndexedDataMapOfShapeListOfShape
 	:param aMapProcessedVertices:
-	:type aMapProcessedVertices: TopTools_MapOfShape &
+	:type aMapProcessedVertices: TopTools_MapOfShape
 	:param aMapVs:
-	:type aMapVs: TopOpeBRepDS_DataMapOfShapeState &
+	:type aMapVs: TopOpeBRepDS_DataMapOfShapeState
 	:rtype: void") FindState;
 		static void FindState (const TopoDS_Shape & aVertex,const TopAbs_State aState,const TopAbs_ShapeEnum aShapeEnum,const TopTools_IndexedDataMapOfShapeListOfShape & aMapVertexEdges,TopTools_MapOfShape & aMapProcessedVertices,TopOpeBRepDS_DataMapOfShapeState & aMapVs);
 
 		/****************** FindState1 ******************/
 		%feature("compactdefaultargs") FindState1;
 		%feature("autodoc", ":param anEdge:
-	:type anEdge: TopoDS_Shape &
+	:type anEdge: TopoDS_Shape
 	:param aState:
 	:type aState: TopAbs_State
 	:param aMapEdgesFaces:
-	:type aMapEdgesFaces: TopTools_IndexedDataMapOfShapeListOfShape &
+	:type aMapEdgesFaces: TopTools_IndexedDataMapOfShapeListOfShape
 	:param aMapProcessedVertices:
-	:type aMapProcessedVertices: TopTools_MapOfShape &
+	:type aMapProcessedVertices: TopTools_MapOfShape
 	:param aMapVs:
-	:type aMapVs: TopOpeBRepDS_DataMapOfShapeState &
+	:type aMapVs: TopOpeBRepDS_DataMapOfShapeState
 	:rtype: void") FindState1;
 		static void FindState1 (const TopoDS_Shape & anEdge,const TopAbs_State aState,const TopTools_IndexedDataMapOfShapeListOfShape & aMapEdgesFaces,TopTools_MapOfShape & aMapProcessedVertices,TopOpeBRepDS_DataMapOfShapeState & aMapVs);
 
 		/****************** FindState2 ******************/
 		%feature("compactdefaultargs") FindState2;
 		%feature("autodoc", ":param anEdge:
-	:type anEdge: TopoDS_Shape &
+	:type anEdge: TopoDS_Shape
 	:param aState:
 	:type aState: TopAbs_State
 	:param aMapEdgesFaces:
-	:type aMapEdgesFaces: TopTools_IndexedDataMapOfShapeListOfShape &
+	:type aMapEdgesFaces: TopTools_IndexedDataMapOfShapeListOfShape
 	:param aMapProcessedEdges:
-	:type aMapProcessedEdges: TopTools_MapOfShape &
+	:type aMapProcessedEdges: TopTools_MapOfShape
 	:param aMapVs:
-	:type aMapVs: TopOpeBRepDS_DataMapOfShapeState &
+	:type aMapVs: TopOpeBRepDS_DataMapOfShapeState
 	:rtype: void") FindState2;
 		static void FindState2 (const TopoDS_Shape & anEdge,const TopAbs_State aState,const TopTools_IndexedDataMapOfShapeListOfShape & aMapEdgesFaces,TopTools_MapOfShape & aMapProcessedEdges,TopOpeBRepDS_DataMapOfShapeState & aMapVs);
 
 		/****************** FindStateThroughVertex ******************/
 		%feature("compactdefaultargs") FindStateThroughVertex;
 		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aShapeClassifier:
-	:type aShapeClassifier: TopOpeBRepTool_ShapeClassifier &
+	:type aShapeClassifier: TopOpeBRepTool_ShapeClassifier
 	:param aMapOfShapeWithState:
-	:type aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState &
+	:type aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
 	:param anAvoidSubshMap:
-	:type anAvoidSubshMap: TopTools_MapOfShape &
+	:type anAvoidSubshMap: TopTools_MapOfShape
 	:rtype: TopAbs_State") FindStateThroughVertex;
 		static TopAbs_State FindStateThroughVertex (const TopoDS_Shape & aShape,TopOpeBRepTool_ShapeClassifier & aShapeClassifier,TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState,const TopTools_MapOfShape & anAvoidSubshMap);
 
 		/****************** GetAdjacentFace ******************/
 		%feature("compactdefaultargs") GetAdjacentFace;
 		%feature("autodoc", ":param aFaceObj:
-	:type aFaceObj: TopoDS_Shape &
+	:type aFaceObj: TopoDS_Shape
 	:param anEObj:
-	:type anEObj: TopoDS_Shape &
+	:type anEObj: TopoDS_Shape
 	:param anEdgeFaceMap:
-	:type anEdgeFaceMap: TopTools_IndexedDataMapOfShapeListOfShape &
+	:type anEdgeFaceMap: TopTools_IndexedDataMapOfShapeListOfShape
 	:param anAdjFaceObj:
-	:type anAdjFaceObj: TopoDS_Shape &
+	:type anAdjFaceObj: TopoDS_Shape
 	:rtype: bool") GetAdjacentFace;
 		static Standard_Boolean GetAdjacentFace (const TopoDS_Shape & aFaceObj,const TopoDS_Shape & anEObj,const TopTools_IndexedDataMapOfShapeListOfShape & anEdgeFaceMap,TopoDS_Shape & anAdjFaceObj);
 
@@ -4084,9 +4084,9 @@ class TopOpeBRepBuild_Tools {
 		%feature("compactdefaultargs") GetNormalInNearestPoint;
 		%feature("autodoc", "* This function used to compute normal in point which is located near the point with param UV (used for computation of normals where the normal in the point UV equal to zero).
 	:param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param anEdge:
-	:type anEdge: TopoDS_Edge &
+	:type anEdge: TopoDS_Edge
 	:param aNormal:
 	:type aNormal: gp_Vec
 	:rtype: void") GetNormalInNearestPoint;
@@ -4095,9 +4095,9 @@ class TopOpeBRepBuild_Tools {
 		/****************** GetNormalToFaceOnEdge ******************/
 		%feature("compactdefaultargs") GetNormalToFaceOnEdge;
 		%feature("autodoc", ":param aFObj:
-	:type aFObj: TopoDS_Face &
+	:type aFObj: TopoDS_Face
 	:param anEdgeObj:
-	:type anEdgeObj: TopoDS_Edge &
+	:type anEdgeObj: TopoDS_Edge
 	:param aDirNormal:
 	:type aDirNormal: gp_Vec
 	:rtype: void") GetNormalToFaceOnEdge;
@@ -4106,7 +4106,7 @@ class TopOpeBRepBuild_Tools {
 		/****************** GetTangentToEdge ******************/
 		%feature("compactdefaultargs") GetTangentToEdge;
 		%feature("autodoc", ":param anEdgeObj:
-	:type anEdgeObj: TopoDS_Edge &
+	:type anEdgeObj: TopoDS_Edge
 	:param aTangent:
 	:type aTangent: gp_Vec
 	:rtype: bool") GetTangentToEdge;
@@ -4115,11 +4115,11 @@ class TopOpeBRepBuild_Tools {
 		/****************** GetTangentToEdgeEdge ******************/
 		%feature("compactdefaultargs") GetTangentToEdgeEdge;
 		%feature("autodoc", ":param aFObj:
-	:type aFObj: TopoDS_Face &
+	:type aFObj: TopoDS_Face
 	:param anEdgeObj:
-	:type anEdgeObj: TopoDS_Edge &
+	:type anEdgeObj: TopoDS_Edge
 	:param aOriEObj:
-	:type aOriEObj: TopoDS_Edge &
+	:type aOriEObj: TopoDS_Edge
 	:param aTangent:
 	:type aTangent: gp_Vec
 	:rtype: bool") GetTangentToEdgeEdge;
@@ -4128,9 +4128,9 @@ class TopOpeBRepBuild_Tools {
 		/****************** IsDegEdgesTheSame ******************/
 		%feature("compactdefaultargs") IsDegEdgesTheSame;
 		%feature("autodoc", ":param anE1:
-	:type anE1: TopoDS_Shape &
+	:type anE1: TopoDS_Shape
 	:param anE2:
-	:type anE2: TopoDS_Shape &
+	:type anE2: TopoDS_Shape
 	:rtype: bool") IsDegEdgesTheSame;
 		static Standard_Boolean IsDegEdgesTheSame (const TopoDS_Shape & anE1,const TopoDS_Shape & anE2);
 
@@ -4138,48 +4138,48 @@ class TopOpeBRepBuild_Tools {
 		%feature("compactdefaultargs") NormalizeFace;
 		%feature("autodoc", "* test if <oldFace> does not contain INTERNAL or EXTERNAL edges and remove such edges in case of its presence. The result is stored in <corrFace>
 	:param oldFace:
-	:type oldFace: TopoDS_Shape &
+	:type oldFace: TopoDS_Shape
 	:param corrFace:
-	:type corrFace: TopoDS_Shape &
+	:type corrFace: TopoDS_Shape
 	:rtype: void") NormalizeFace;
 		static void NormalizeFace (const TopoDS_Shape & oldFace,TopoDS_Shape & corrFace);
 
 		/****************** PropagateState ******************/
 		%feature("compactdefaultargs") PropagateState;
 		%feature("autodoc", ":param aSplEdgesState:
-	:type aSplEdgesState: TopOpeBRepDS_DataMapOfShapeState &
+	:type aSplEdgesState: TopOpeBRepDS_DataMapOfShapeState
 	:param anEdgesToRestMap:
-	:type anEdgesToRestMap: TopTools_IndexedMapOfShape &
+	:type anEdgesToRestMap: TopTools_IndexedMapOfShape
 	:param aShapeEnum1:
 	:type aShapeEnum1: TopAbs_ShapeEnum
 	:param aShapeEnum2:
 	:type aShapeEnum2: TopAbs_ShapeEnum
 	:param aShapeClassifier:
-	:type aShapeClassifier: TopOpeBRepTool_ShapeClassifier &
+	:type aShapeClassifier: TopOpeBRepTool_ShapeClassifier
 	:param aMapOfShapeWithState:
-	:type aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState &
+	:type aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
 	:param anUnkStateShapes:
-	:type anUnkStateShapes: TopTools_MapOfShape &
+	:type anUnkStateShapes: TopTools_MapOfShape
 	:rtype: void") PropagateState;
 		static void PropagateState (const TopOpeBRepDS_DataMapOfShapeState & aSplEdgesState,const TopTools_IndexedMapOfShape & anEdgesToRestMap,const TopAbs_ShapeEnum aShapeEnum1,const TopAbs_ShapeEnum aShapeEnum2,TopOpeBRepTool_ShapeClassifier & aShapeClassifier,TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState,const TopTools_MapOfShape & anUnkStateShapes);
 
 		/****************** PropagateStateForWires ******************/
 		%feature("compactdefaultargs") PropagateStateForWires;
 		%feature("autodoc", ":param aFacesToRestMap:
-	:type aFacesToRestMap: TopTools_IndexedMapOfShape &
+	:type aFacesToRestMap: TopTools_IndexedMapOfShape
 	:param aMapOfShapeWithState:
-	:type aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState &
+	:type aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
 	:rtype: void") PropagateStateForWires;
 		static void PropagateStateForWires (const TopTools_IndexedMapOfShape & aFacesToRestMap,TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState);
 
 		/****************** SpreadStateToChild ******************/
 		%feature("compactdefaultargs") SpreadStateToChild;
 		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aState:
 	:type aState: TopAbs_State
 	:param aMapOfShapeWithState:
-	:type aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState &
+	:type aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
 	:rtype: void") SpreadStateToChild;
 		static void SpreadStateToChild (const TopoDS_Shape & aShape,const TopAbs_State aState,TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState);
 
@@ -4187,11 +4187,11 @@ class TopOpeBRepBuild_Tools {
 		%feature("compactdefaultargs") UpdateEdgeOnFace;
 		%feature("autodoc", "* recompute PCurve of the edge on the NewFace
 	:param aEdgeToUpdate:
-	:type aEdgeToUpdate: TopoDS_Edge &
+	:type aEdgeToUpdate: TopoDS_Edge
 	:param OldFace:
-	:type OldFace: TopoDS_Face &
+	:type OldFace: TopoDS_Face
 	:param NewFace:
-	:type NewFace: TopoDS_Face &
+	:type NewFace: TopoDS_Face
 	:rtype: void") UpdateEdgeOnFace;
 		static void UpdateEdgeOnFace (const TopoDS_Edge & aEdgeToUpdate,const TopoDS_Face & OldFace,const TopoDS_Face & NewFace);
 
@@ -4199,11 +4199,11 @@ class TopOpeBRepBuild_Tools {
 		%feature("compactdefaultargs") UpdateEdgeOnPeriodicalFace;
 		%feature("autodoc", "* recompute PCurves of the closing (SIM , with 2 PCurves) edge on the NewFace
 	:param aEdgeToUpdate:
-	:type aEdgeToUpdate: TopoDS_Edge &
+	:type aEdgeToUpdate: TopoDS_Edge
 	:param OldFace:
-	:type OldFace: TopoDS_Face &
+	:type OldFace: TopoDS_Face
 	:param NewFace:
-	:type NewFace: TopoDS_Face &
+	:type NewFace: TopoDS_Face
 	:rtype: void") UpdateEdgeOnPeriodicalFace;
 		static void UpdateEdgeOnPeriodicalFace (const TopoDS_Edge & aEdgeToUpdate,const TopoDS_Face & OldFace,const TopoDS_Face & NewFace);
 
@@ -4211,11 +4211,11 @@ class TopOpeBRepBuild_Tools {
 		%feature("compactdefaultargs") UpdatePCurves;
 		%feature("autodoc", "* Recompute PCurves of the all edges from the wire on the <toFace>
 	:param aWire:
-	:type aWire: TopoDS_Wire &
+	:type aWire: TopoDS_Wire
 	:param fromFace:
-	:type fromFace: TopoDS_Face &
+	:type fromFace: TopoDS_Face
 	:param toFace:
-	:type toFace: TopoDS_Face &
+	:type toFace: TopoDS_Face
 	:rtype: void") UpdatePCurves;
 		static void UpdatePCurves (const TopoDS_Wire & aWire,const TopoDS_Face & fromFace,const TopoDS_Face & toFace);
 
@@ -4236,25 +4236,25 @@ class TopOpeBRepBuild_Tools2d {
 		/****************** DumpMapOfShapeVertexInfo ******************/
 		%feature("compactdefaultargs") DumpMapOfShapeVertexInfo;
 		%feature("autodoc", ":param aMap:
-	:type aMap: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo &
+	:type aMap: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo
 	:rtype: void") DumpMapOfShapeVertexInfo;
 		static void DumpMapOfShapeVertexInfo (const TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo & aMap);
 
 		/****************** MakeMapOfShapeVertexInfo ******************/
 		%feature("compactdefaultargs") MakeMapOfShapeVertexInfo;
 		%feature("autodoc", ":param aWire:
-	:type aWire: TopoDS_Wire &
+	:type aWire: TopoDS_Wire
 	:param aMap:
-	:type aMap: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo &
+	:type aMap: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo
 	:rtype: void") MakeMapOfShapeVertexInfo;
 		static void MakeMapOfShapeVertexInfo (const TopoDS_Wire & aWire,TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo & aMap);
 
 		/****************** Path ******************/
 		%feature("compactdefaultargs") Path;
 		%feature("autodoc", ":param aWire:
-	:type aWire: TopoDS_Wire &
+	:type aWire: TopoDS_Wire
 	:param aResList:
-	:type aResList: TopTools_ListOfShape &
+	:type aResList: TopTools_ListOfShape
 	:rtype: void") Path;
 		static void Path (const TopoDS_Wire & aWire,TopTools_ListOfShape & aResList);
 
@@ -4276,21 +4276,21 @@ class TopOpeBRepBuild_VertexInfo {
 		/****************** AddIn ******************/
 		%feature("compactdefaultargs") AddIn;
 		%feature("autodoc", ":param anE:
-	:type anE: TopoDS_Edge &
+	:type anE: TopoDS_Edge
 	:rtype: None") AddIn;
 		void AddIn (const TopoDS_Edge & anE);
 
 		/****************** AddOut ******************/
 		%feature("compactdefaultargs") AddOut;
 		%feature("autodoc", ":param anE:
-	:type anE: TopoDS_Edge &
+	:type anE: TopoDS_Edge
 	:rtype: None") AddOut;
 		void AddOut (const TopoDS_Edge & anE);
 
 		/****************** AppendPassed ******************/
 		%feature("compactdefaultargs") AppendPassed;
 		%feature("autodoc", ":param anE:
-	:type anE: TopoDS_Edge &
+	:type anE: TopoDS_Edge
 	:rtype: None") AppendPassed;
 		void AppendPassed (const TopoDS_Edge & anE);
 
@@ -4337,7 +4337,7 @@ class TopOpeBRepBuild_VertexInfo {
 		/****************** Prepare ******************/
 		%feature("compactdefaultargs") Prepare;
 		%feature("autodoc", ":param aL:
-	:type aL: TopTools_ListOfShape &
+	:type aL: TopTools_ListOfShape
 	:rtype: None") Prepare;
 		void Prepare (const TopTools_ListOfShape & aL);
 
@@ -4349,7 +4349,7 @@ class TopOpeBRepBuild_VertexInfo {
 		/****************** SetCurrentIn ******************/
 		%feature("compactdefaultargs") SetCurrentIn;
 		%feature("autodoc", ":param anE:
-	:type anE: TopoDS_Edge &
+	:type anE: TopoDS_Edge
 	:rtype: None") SetCurrentIn;
 		void SetCurrentIn (const TopoDS_Edge & anE);
 
@@ -4363,7 +4363,7 @@ class TopOpeBRepBuild_VertexInfo {
 		/****************** SetVertex ******************/
 		%feature("compactdefaultargs") SetVertex;
 		%feature("autodoc", ":param aV:
-	:type aV: TopoDS_Vertex &
+	:type aV: TopoDS_Vertex
 	:rtype: None") SetVertex;
 		void SetVertex (const TopoDS_Vertex & aV);
 
@@ -4400,7 +4400,7 @@ class TopOpeBRepBuild_WireToFace {
 		/****************** AddWire ******************/
 		%feature("compactdefaultargs") AddWire;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") AddWire;
 		void AddWire (const TopoDS_Wire & W);
 
@@ -4412,9 +4412,9 @@ class TopOpeBRepBuild_WireToFace {
 		/****************** MakeFaces ******************/
 		%feature("compactdefaultargs") MakeFaces;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param LF:
-	:type LF: TopTools_ListOfShape &
+	:type LF: TopTools_ListOfShape
 	:rtype: None") MakeFaces;
 		void MakeFaces (const TopoDS_Face & F,TopTools_ListOfShape & LF);
 
@@ -4441,9 +4441,9 @@ class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		/****************** ADD_LISTOFLoop_TO_LISTOFLoop ******************/
 		%feature("compactdefaultargs") ADD_LISTOFLoop_TO_LISTOFLoop;
 		%feature("autodoc", ":param LOL1:
-	:type LOL1: TopOpeBRepBuild_ListOfLoop &
+	:type LOL1: TopOpeBRepBuild_ListOfLoop
 	:param LOL2:
-	:type LOL2: TopOpeBRepBuild_ListOfLoop &
+	:type LOL2: TopOpeBRepBuild_ListOfLoop
 	:param s: default value is NULL
 	:type s: Standard_Address
 	:param s1: default value is NULL
@@ -4456,9 +4456,9 @@ class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		/****************** ADD_Loop_TO_LISTOFLoop ******************/
 		%feature("compactdefaultargs") ADD_Loop_TO_LISTOFLoop;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L: TopOpeBRepBuild_Loop
 	:param LOL:
-	:type LOL: TopOpeBRepBuild_ListOfLoop &
+	:type LOL: TopOpeBRepBuild_ListOfLoop
 	:param s: default value is NULL
 	:type s: Standard_Address
 	:rtype: void") ADD_Loop_TO_LISTOFLoop;
@@ -4467,7 +4467,7 @@ class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		/****************** DumpList ******************/
 		%feature("compactdefaultargs") DumpList;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRepBuild_ListOfLoop &
+	:type L: TopOpeBRepBuild_ListOfLoop
 	:rtype: void") DumpList;
 		static void DumpList (const TopOpeBRepBuild_ListOfLoop & L);
 
@@ -4475,9 +4475,9 @@ class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		%feature("compactdefaultargs") InitAreaBuilder;
 		%feature("autodoc", "* Sets a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: void") InitAreaBuilder;
@@ -4486,9 +4486,9 @@ class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		/****************** REM_Loop_FROM_LISTOFLoop ******************/
 		%feature("compactdefaultargs") REM_Loop_FROM_LISTOFLoop;
 		%feature("autodoc", ":param ITLOL:
-	:type ITLOL: TopOpeBRepBuild_ListIteratorOfListOfLoop &
+	:type ITLOL: TopOpeBRepBuild_ListIteratorOfListOfLoop
 	:param LOL:
-	:type LOL: TopOpeBRepBuild_ListOfLoop &
+	:type LOL: TopOpeBRepBuild_ListOfLoop
 	:param s: default value is NULL
 	:type s: Standard_Address
 	:rtype: void") REM_Loop_FROM_LISTOFLoop;
@@ -4503,9 +4503,9 @@ class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		%feature("compactdefaultargs") TopOpeBRepBuild_Area1dBuilder;
 		%feature("autodoc", "* Creates a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_PaveSet &
+	:type LS: TopOpeBRepBuild_PaveSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_PaveClassifier &
+	:type LC: TopOpeBRepBuild_PaveClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") TopOpeBRepBuild_Area1dBuilder;
@@ -4530,9 +4530,9 @@ class TopOpeBRepBuild_Area2dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		%feature("compactdefaultargs") InitAreaBuilder;
 		%feature("autodoc", "* Sets a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: void") InitAreaBuilder;
@@ -4547,9 +4547,9 @@ class TopOpeBRepBuild_Area2dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		%feature("compactdefaultargs") TopOpeBRepBuild_Area2dBuilder;
 		%feature("autodoc", "* Creates a Area2dBuilder to build faces on the (wires,blocks of edge) of <LS>, using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") TopOpeBRepBuild_Area2dBuilder;
@@ -4574,9 +4574,9 @@ class TopOpeBRepBuild_Area3dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		%feature("compactdefaultargs") InitAreaBuilder;
 		%feature("autodoc", "* Sets a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: void") InitAreaBuilder;
@@ -4591,9 +4591,9 @@ class TopOpeBRepBuild_Area3dBuilder : public TopOpeBRepBuild_AreaBuilder {
 		%feature("compactdefaultargs") TopOpeBRepBuild_Area3dBuilder;
 		%feature("autodoc", "* Creates a Area3dBuilder to build Solids on the (shells,blocks of face) of <LS>, using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") TopOpeBRepBuild_Area3dBuilder;
@@ -4623,148 +4623,148 @@ class TopOpeBRepBuild_Builder1 : public TopOpeBRepBuild_Builder {
 		/****************** CorrectResult2d ******************/
 		%feature("compactdefaultargs") CorrectResult2d;
 		%feature("autodoc", ":param aResult:
-	:type aResult: TopoDS_Shape &
+	:type aResult: TopoDS_Shape
 	:rtype: int") CorrectResult2d;
 		Standard_Integer CorrectResult2d (TopoDS_Shape & aResult);
 
 		/****************** GFillEdgeNotSameDomWES ******************/
 		%feature("compactdefaultargs") GFillEdgeNotSameDomWES;
 		%feature("autodoc", ":param E1:
-	:type E1: TopoDS_Shape &
+	:type E1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillEdgeNotSameDomWES;
 		void GFillEdgeNotSameDomWES (const TopoDS_Shape & E1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillEdgeSameDomWES ******************/
 		%feature("compactdefaultargs") GFillEdgeSameDomWES;
 		%feature("autodoc", ":param E1:
-	:type E1: TopoDS_Shape &
+	:type E1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillEdgeSameDomWES;
 		void GFillEdgeSameDomWES (const TopoDS_Shape & E1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillFaceNotSameDomSFS ******************/
 		%feature("compactdefaultargs") GFillFaceNotSameDomSFS;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: None") GFillFaceNotSameDomSFS;
 		void GFillFaceNotSameDomSFS (const TopoDS_Shape & F1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillFaceNotSameDomWES ******************/
 		%feature("compactdefaultargs") GFillFaceNotSameDomWES;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillFaceNotSameDomWES;
 		void GFillFaceNotSameDomWES (const TopoDS_Shape & F1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillFaceSameDomSFS ******************/
 		%feature("compactdefaultargs") GFillFaceSameDomSFS;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: None") GFillFaceSameDomSFS;
 		void GFillFaceSameDomSFS (const TopoDS_Shape & F1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillFaceSameDomWES ******************/
 		%feature("compactdefaultargs") GFillFaceSameDomWES;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillFaceSameDomWES;
 		void GFillFaceSameDomWES (const TopoDS_Shape & F1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillShellSFS ******************/
 		%feature("compactdefaultargs") GFillShellSFS;
 		%feature("autodoc", ":param SH1:
-	:type SH1: TopoDS_Shape &
+	:type SH1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: void") GFillShellSFS;
 		virtual void GFillShellSFS (const TopoDS_Shape & SH1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillSolidSFS ******************/
 		%feature("compactdefaultargs") GFillSolidSFS;
 		%feature("autodoc", ":param SO1:
-	:type SO1: TopoDS_Shape &
+	:type SO1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param SFS:
-	:type SFS: TopOpeBRepBuild_ShellFaceSet &
+	:type SFS: TopOpeBRepBuild_ShellFaceSet
 	:rtype: void") GFillSolidSFS;
 		virtual void GFillSolidSFS (const TopoDS_Shape & SO1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****************** GFillWireNotSameDomWES ******************/
 		%feature("compactdefaultargs") GFillWireNotSameDomWES;
 		%feature("autodoc", ":param W1:
-	:type W1: TopoDS_Shape &
+	:type W1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillWireNotSameDomWES;
 		void GFillWireNotSameDomWES (const TopoDS_Shape & W1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GFillWireSameDomWES ******************/
 		%feature("compactdefaultargs") GFillWireSameDomWES;
 		%feature("autodoc", ":param W1:
-	:type W1: TopoDS_Shape &
+	:type W1: TopoDS_Shape
 	:param LSO2:
-	:type LSO2: TopTools_ListOfShape &
+	:type LSO2: TopTools_ListOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") GFillWireSameDomWES;
 		void GFillWireSameDomWES (const TopoDS_Shape & W1,const TopTools_ListOfShape & LSO2,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** GWESMakeFaces ******************/
 		%feature("compactdefaultargs") GWESMakeFaces;
 		%feature("autodoc", ":param FF:
-	:type FF: TopoDS_Shape &
+	:type FF: TopoDS_Shape
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:param LOF:
-	:type LOF: TopTools_ListOfShape &
+	:type LOF: TopTools_ListOfShape
 	:rtype: void") GWESMakeFaces;
 		virtual void GWESMakeFaces (const TopoDS_Shape & FF,TopOpeBRepBuild_WireEdgeSet & WES,TopTools_ListOfShape & LOF);
 
@@ -4785,46 +4785,46 @@ class TopOpeBRepBuild_Builder1 : public TopOpeBRepBuild_Builder {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: void") Perform;
 		virtual void Perform (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: void") Perform;
 		virtual void Perform (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS,const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
 		/****************** PerformONParts ******************/
 		%feature("compactdefaultargs") PerformONParts;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param SDfaces:
-	:type SDfaces: TopTools_IndexedMapOfShape &
+	:type SDfaces: TopTools_IndexedMapOfShape
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param WES:
-	:type WES: TopOpeBRepBuild_WireEdgeSet &
+	:type WES: TopOpeBRepBuild_WireEdgeSet
 	:rtype: None") PerformONParts;
 		void PerformONParts (const TopoDS_Shape & F,const TopTools_IndexedMapOfShape & SDfaces,const TopOpeBRepBuild_GTopo & G,TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****************** PerformPieceIn2D ******************/
 		%feature("compactdefaultargs") PerformPieceIn2D;
 		%feature("autodoc", ":param aPieceToPerform:
-	:type aPieceToPerform: TopoDS_Edge &
+	:type aPieceToPerform: TopoDS_Edge
 	:param aOriginalEdge:
-	:type aOriginalEdge: TopoDS_Edge &
+	:type aOriginalEdge: TopoDS_Edge
 	:param edgeFace:
-	:type edgeFace: TopoDS_Face &
+	:type edgeFace: TopoDS_Face
 	:param toFace:
-	:type toFace: TopoDS_Face &
+	:type toFace: TopoDS_Face
 	:param G:
-	:type G: TopOpeBRepBuild_GTopo &
+	:type G: TopOpeBRepBuild_GTopo
 	:param keep:
 	:type keep: bool
 	:rtype: None") PerformPieceIn2D;
@@ -4833,37 +4833,37 @@ class TopOpeBRepBuild_Builder1 : public TopOpeBRepBuild_Builder {
 		/****************** PerformPieceOn2D ******************/
 		%feature("compactdefaultargs") PerformPieceOn2D;
 		%feature("autodoc", ":param aPieceObj:
-	:type aPieceObj: TopoDS_Shape &
+	:type aPieceObj: TopoDS_Shape
 	:param aFaceObj:
-	:type aFaceObj: TopoDS_Shape &
+	:type aFaceObj: TopoDS_Shape
 	:param aEdgeObj:
-	:type aEdgeObj: TopoDS_Shape &
+	:type aEdgeObj: TopoDS_Shape
 	:param aListOfPieces:
-	:type aListOfPieces: TopTools_ListOfShape &
+	:type aListOfPieces: TopTools_ListOfShape
 	:param aListOfFaces:
-	:type aListOfFaces: TopTools_ListOfShape &
+	:type aListOfFaces: TopTools_ListOfShape
 	:param aListOfPiecesOut2d:
-	:type aListOfPiecesOut2d: TopTools_ListOfShape &
+	:type aListOfPiecesOut2d: TopTools_ListOfShape
 	:rtype: int") PerformPieceOn2D;
 		Standard_Integer PerformPieceOn2D (const TopoDS_Shape & aPieceObj,const TopoDS_Shape & aFaceObj,const TopoDS_Shape & aEdgeObj,TopTools_ListOfShape & aListOfPieces,TopTools_ListOfShape & aListOfFaces,TopTools_ListOfShape & aListOfPiecesOut2d);
 
 		/****************** TopOpeBRepBuild_Builder1 ******************/
 		%feature("compactdefaultargs") TopOpeBRepBuild_Builder1;
 		%feature("autodoc", ":param BT:
-	:type BT: TopOpeBRepDS_BuildTool &
+	:type BT: TopOpeBRepDS_BuildTool
 	:rtype: None") TopOpeBRepBuild_Builder1;
 		 TopOpeBRepBuild_Builder1 (const TopOpeBRepDS_BuildTool & BT);
 
 		/****************** TwoPiecesON ******************/
 		%feature("compactdefaultargs") TwoPiecesON;
 		%feature("autodoc", ":param aSeq:
-	:type aSeq: TopTools_SequenceOfShape &
+	:type aSeq: TopTools_SequenceOfShape
 	:param aListOfPieces:
-	:type aListOfPieces: TopTools_ListOfShape &
+	:type aListOfPieces: TopTools_ListOfShape
 	:param aListOfFaces:
-	:type aListOfFaces: TopTools_ListOfShape &
+	:type aListOfFaces: TopTools_ListOfShape
 	:param aListOfPiecesOut2d:
-	:type aListOfPiecesOut2d: TopTools_ListOfShape &
+	:type aListOfPiecesOut2d: TopTools_ListOfShape
 	:rtype: int") TwoPiecesON;
 		Standard_Integer TwoPiecesON (const TopTools_SequenceOfShape & aSeq,TopTools_ListOfShape & aListOfPieces,TopTools_ListOfShape & aListOfFaces,TopTools_ListOfShape & aListOfPiecesOut2d);
 
@@ -4885,9 +4885,9 @@ class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifie
 		/****************** Compare ******************/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", ":param L1:
-	:type L1: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L1: TopOpeBRepBuild_Loop
 	:param L2:
-	:type L2: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L2: TopOpeBRepBuild_Loop
 	:rtype: TopAbs_State") Compare;
 		virtual TopAbs_State Compare (const opencascade::handle<TopOpeBRepBuild_Loop> & L1,const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
 
@@ -4895,7 +4895,7 @@ class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifie
 		%feature("compactdefaultargs") CompareElement;
 		%feature("autodoc", "* Add element <E> in the set of elements used in classification. Returns False if the element <E> has been already added to the set of elements, otherwise returns True.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: bool") CompareElement;
 		virtual Standard_Boolean CompareElement (const TopoDS_Shape & E);
 
@@ -4903,9 +4903,9 @@ class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifie
 		%feature("compactdefaultargs") CompareElementToShape;
 		%feature("autodoc", "* classify element <E> with shape <B>
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param B:
-	:type B: TopoDS_Shape &
+	:type B: TopoDS_Shape
 	:rtype: TopAbs_State") CompareElementToShape;
 		virtual TopAbs_State CompareElementToShape (const TopoDS_Shape & E,const TopoDS_Shape & B);
 
@@ -4913,9 +4913,9 @@ class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifie
 		%feature("compactdefaultargs") CompareShapes;
 		%feature("autodoc", "* classify shape <B1> with shape <B2>
 	:param B1:
-	:type B1: TopoDS_Shape &
+	:type B1: TopoDS_Shape
 	:param B2:
-	:type B2: TopoDS_Shape &
+	:type B2: TopoDS_Shape
 	:rtype: TopAbs_State") CompareShapes;
 		virtual TopAbs_State CompareShapes (const TopoDS_Shape & B1,const TopoDS_Shape & B2);
 
@@ -4923,7 +4923,7 @@ class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifie
 		%feature("compactdefaultargs") ResetElement;
 		%feature("autodoc", "* prepare classification involving element <E>.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: void") ResetElement;
 		virtual void ResetElement (const TopoDS_Shape & E);
 
@@ -4931,7 +4931,7 @@ class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifie
 		%feature("compactdefaultargs") ResetShape;
 		%feature("autodoc", "* prepare classification involving shape <B> calls ResetElement on first element of <B>
 	:param B:
-	:type B: TopoDS_Shape &
+	:type B: TopoDS_Shape
 	:rtype: void") ResetShape;
 		virtual void ResetShape (const TopoDS_Shape & B);
 
@@ -5003,7 +5003,7 @@ class TopOpeBRepBuild_Pave : public TopOpeBRepBuild_Loop {
 		/****************** SameDomain ******************/
 		%feature("compactdefaultargs") SameDomain;
 		%feature("autodoc", ":param VSD:
-	:type VSD: TopoDS_Shape &
+	:type VSD: TopoDS_Shape
 	:rtype: None") SameDomain;
 		void SameDomain (const TopoDS_Shape & VSD);
 
@@ -5021,7 +5021,7 @@ class TopOpeBRepBuild_Pave : public TopOpeBRepBuild_Loop {
 		%feature("compactdefaultargs") TopOpeBRepBuild_Pave;
 		%feature("autodoc", "* V = vertex, P = parameter of vertex <V> bound = True if <V> is an old vertex bound = False if <V> is a new vertex
 	:param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:param P:
 	:type P: float
 	:param bound:
@@ -5064,7 +5064,7 @@ class TopOpeBRepBuild_PaveClassifier : public TopOpeBRepBuild_LoopClassifier {
 	:param tol:
 	:type tol: float
 	:param cas:
-	:type cas: int &
+	:type cas: int
 	:rtype: float") AdjustCase;
 		static Standard_Real AdjustCase (const Standard_Real p1,const TopAbs_Orientation o,const Standard_Real first,const Standard_Real period,const Standard_Real tol,Standard_Integer &OutValue);
 
@@ -5079,9 +5079,9 @@ class TopOpeBRepBuild_PaveClassifier : public TopOpeBRepBuild_LoopClassifier {
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "* Returns state of vertex <L1> compared with <L2>.
 	:param L1:
-	:type L1: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L1: TopOpeBRepBuild_Loop
 	:param L2:
-	:type L2: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L2: TopOpeBRepBuild_Loop
 	:rtype: TopAbs_State") Compare;
 		TopAbs_State Compare (const opencascade::handle<TopOpeBRepBuild_Loop> & L1,const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
 
@@ -5096,7 +5096,7 @@ class TopOpeBRepBuild_PaveClassifier : public TopOpeBRepBuild_LoopClassifier {
 		%feature("compactdefaultargs") TopOpeBRepBuild_PaveClassifier;
 		%feature("autodoc", "* Create a Pave classifier to compare vertices on edge <E>.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: None") TopOpeBRepBuild_PaveClassifier;
 		 TopOpeBRepBuild_PaveClassifier (const TopoDS_Shape & E);
 
@@ -5119,7 +5119,7 @@ class TopOpeBRepBuild_PaveSet : public TopOpeBRepBuild_LoopSet {
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "* Add <PV> in the Pave set.
 	:param PV:
-	:type PV: opencascade::handle<TopOpeBRepBuild_Pave> &
+	:type PV: TopOpeBRepBuild_Pave
 	:rtype: None") Append;
 		void Append (const opencascade::handle<TopOpeBRepBuild_Pave> & PV);
 
@@ -5173,9 +5173,9 @@ class TopOpeBRepBuild_PaveSet : public TopOpeBRepBuild_LoopSet {
 		/****************** SortPave ******************/
 		%feature("compactdefaultargs") SortPave;
 		%feature("autodoc", ":param Lin:
-	:type Lin: TopOpeBRepBuild_ListOfPave &
+	:type Lin: TopOpeBRepBuild_ListOfPave
 	:param Lout:
-	:type Lout: TopOpeBRepBuild_ListOfPave &
+	:type Lout: TopOpeBRepBuild_ListOfPave
 	:rtype: void") SortPave;
 		static void SortPave (const TopOpeBRepBuild_ListOfPave & Lin,TopOpeBRepBuild_ListOfPave & Lout);
 
@@ -5183,7 +5183,7 @@ class TopOpeBRepBuild_PaveSet : public TopOpeBRepBuild_LoopSet {
 		%feature("compactdefaultargs") TopOpeBRepBuild_PaveSet;
 		%feature("autodoc", "* Create a Pave set on edge <E>. It contains <E> vertices.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: None") TopOpeBRepBuild_PaveSet;
 		 TopOpeBRepBuild_PaveSet (const TopoDS_Shape & E);
 
@@ -5205,21 +5205,21 @@ class TopOpeBRepBuild_ShellFaceSet : public TopOpeBRepBuild_ShapeSet {
 		/****************** AddElement ******************/
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddElement;
 		virtual void AddElement (const TopoDS_Shape & S);
 
 		/****************** AddShape ******************/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddShape;
 		virtual void AddShape (const TopoDS_Shape & S);
 
 		/****************** AddStartElement ******************/
 		%feature("compactdefaultargs") AddStartElement;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddStartElement;
 		virtual void AddStartElement (const TopoDS_Shape & S);
 
@@ -5231,44 +5231,44 @@ class TopOpeBRepBuild_ShellFaceSet : public TopOpeBRepBuild_ShapeSet {
 		/****************** SName ******************/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SName;
 		virtual TCollection_AsciiString SName (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
 		/****************** SName ******************/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", ":param S:
-	:type S: TopTools_ListOfShape &
+	:type S: TopTools_ListOfShape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SName;
 		virtual TCollection_AsciiString SName (const TopTools_ListOfShape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
 		/****************** SNameori ******************/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SNameori;
 		virtual TCollection_AsciiString SNameori (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
 		/****************** SNameori ******************/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", ":param S:
-	:type S: TopTools_ListOfShape &
+	:type S: TopTools_ListOfShape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SNameori;
 		virtual TCollection_AsciiString SNameori (const TopTools_ListOfShape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
@@ -5287,7 +5287,7 @@ class TopOpeBRepBuild_ShellFaceSet : public TopOpeBRepBuild_ShapeSet {
 		%feature("compactdefaultargs") TopOpeBRepBuild_ShellFaceSet;
 		%feature("autodoc", "* Creates a ShellFaceSet to build blocks of faces connected by edges.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Addr: default value is NULL
 	:type Addr: Standard_Address
 	:rtype: None") TopOpeBRepBuild_ShellFaceSet;
@@ -5311,21 +5311,21 @@ class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 		/****************** AddElement ******************/
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddElement;
 		virtual void AddElement (const TopoDS_Shape & S);
 
 		/****************** AddShape ******************/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddShape;
 		virtual void AddShape (const TopoDS_Shape & S);
 
 		/****************** AddStartElement ******************/
 		%feature("compactdefaultargs") AddStartElement;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddStartElement;
 		virtual void AddStartElement (const TopoDS_Shape & S);
 
@@ -5349,16 +5349,16 @@ class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 		/****************** InitNeighbours ******************/
 		%feature("compactdefaultargs") InitNeighbours;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: void") InitNeighbours;
 		virtual void InitNeighbours (const TopoDS_Shape & E);
 
 		/****************** IsUVISO ******************/
 		%feature("compactdefaultargs") IsUVISO;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param uiso:
 	:type uiso: bool
 	:param viso:
@@ -5369,53 +5369,53 @@ class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 		/****************** MakeNeighboursList ******************/
 		%feature("compactdefaultargs") MakeNeighboursList;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") MakeNeighboursList;
 		virtual const TopTools_ListOfShape & MakeNeighboursList (const TopoDS_Shape & E,const TopoDS_Shape & V);
 
 		/****************** SName ******************/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SName;
 		virtual TCollection_AsciiString SName (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
 		/****************** SName ******************/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", ":param S:
-	:type S: TopTools_ListOfShape &
+	:type S: TopTools_ListOfShape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SName;
 		virtual TCollection_AsciiString SName (const TopTools_ListOfShape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
 		/****************** SNameori ******************/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SNameori;
 		virtual TCollection_AsciiString SNameori (const TopoDS_Shape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
 		/****************** SNameori ******************/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", ":param S:
-	:type S: TopTools_ListOfShape &
+	:type S: TopTools_ListOfShape
 	:param sb: default value is ""
-	:type sb: TCollection_AsciiString &
+	:type sb: TCollection_AsciiString
 	:param sa: default value is ""
-	:type sa: TCollection_AsciiString &
+	:type sa: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SNameori;
 		virtual TCollection_AsciiString SNameori (const TopTools_ListOfShape & S,const TCollection_AsciiString & sb = "",const TCollection_AsciiString & sa = "");
 
@@ -5423,7 +5423,7 @@ class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 		%feature("compactdefaultargs") TopOpeBRepBuild_WireEdgeSet;
 		%feature("autodoc", "* Creates a WireEdgeSet to build edges connected by vertices on face F. Edges of the WireEdgeSet must have a representation on surface of face F.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param Addr: default value is NULL
 	:type Addr: Standard_Address
 	:rtype: None") TopOpeBRepBuild_WireEdgeSet;
@@ -5452,9 +5452,9 @@ class TopOpeBRepBuild_EdgeBuilder : public TopOpeBRepBuild_Area1dBuilder {
 		/****************** InitEdgeBuilder ******************/
 		%feature("compactdefaultargs") InitEdgeBuilder;
 		%feature("autodoc", ":param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") InitEdgeBuilder;
@@ -5499,9 +5499,9 @@ class TopOpeBRepBuild_EdgeBuilder : public TopOpeBRepBuild_Area1dBuilder {
 		%feature("compactdefaultargs") TopOpeBRepBuild_EdgeBuilder;
 		%feature("autodoc", "* Creates a EdgeBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_PaveSet &
+	:type LS: TopOpeBRepBuild_PaveSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_PaveClassifier &
+	:type LC: TopOpeBRepBuild_PaveClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") TopOpeBRepBuild_EdgeBuilder;
@@ -5530,9 +5530,9 @@ class TopOpeBRepBuild_FaceAreaBuilder : public TopOpeBRepBuild_Area2dBuilder {
 		/****************** InitFaceAreaBuilder ******************/
 		%feature("compactdefaultargs") InitFaceAreaBuilder;
 		%feature("autodoc", ":param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") InitFaceAreaBuilder;
@@ -5547,9 +5547,9 @@ class TopOpeBRepBuild_FaceAreaBuilder : public TopOpeBRepBuild_Area2dBuilder {
 		%feature("compactdefaultargs") TopOpeBRepBuild_FaceAreaBuilder;
 		%feature("autodoc", "* Creates a FaceAreaBuilder to build faces on the (wires,blocks of edge) of <LS>, using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") TopOpeBRepBuild_FaceAreaBuilder;
@@ -5579,7 +5579,7 @@ class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClas
 		%feature("compactdefaultargs") CompareElement;
 		%feature("autodoc", "* Add the face <F> in the set of faces used in 3D point classification. Returns False if the face <F> has been already added to the set of faces, otherwise returns True.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: bool") CompareElement;
 		Standard_Boolean CompareElement (const TopoDS_Shape & F);
 
@@ -5587,9 +5587,9 @@ class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClas
 		%feature("compactdefaultargs") CompareElementToShape;
 		%feature("autodoc", "* classify face <F> with shell <S>
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopAbs_State") CompareElementToShape;
 		TopAbs_State CompareElementToShape (const TopoDS_Shape & F,const TopoDS_Shape & S);
 
@@ -5597,9 +5597,9 @@ class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClas
 		%feature("compactdefaultargs") CompareShapes;
 		%feature("autodoc", "* classify shell <B1> with shell <B2>
 	:param B1:
-	:type B1: TopoDS_Shape &
+	:type B1: TopoDS_Shape
 	:param B2:
-	:type B2: TopoDS_Shape &
+	:type B2: TopoDS_Shape
 	:rtype: TopAbs_State") CompareShapes;
 		TopAbs_State CompareShapes (const TopoDS_Shape & B1,const TopoDS_Shape & B2);
 
@@ -5607,7 +5607,7 @@ class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClas
 		%feature("compactdefaultargs") ResetElement;
 		%feature("autodoc", "* prepare classification involving face <F> define 3D point (later used in Compare()) on first vertex of face <F>.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: None") ResetElement;
 		void ResetElement (const TopoDS_Shape & F);
 
@@ -5615,7 +5615,7 @@ class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClas
 		%feature("compactdefaultargs") ResetShape;
 		%feature("autodoc", "* prepare classification involving shell <S> calls ResetElement on first face of <S>
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") ResetShape;
 		void ResetShape (const TopoDS_Shape & S);
 
@@ -5629,7 +5629,7 @@ class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClas
 		%feature("compactdefaultargs") TopOpeBRepBuild_ShellFaceClassifier;
 		%feature("autodoc", "* Creates a classifier in 3D space, to compare : a face with a set of faces a shell with a set of faces a shell with a shell
 	:param BB:
-	:type BB: TopOpeBRepBuild_BlockBuilder &
+	:type BB: TopOpeBRepBuild_BlockBuilder
 	:rtype: None") TopOpeBRepBuild_ShellFaceClassifier;
 		 TopOpeBRepBuild_ShellFaceClassifier (const TopOpeBRepBuild_BlockBuilder & BB);
 
@@ -5651,9 +5651,9 @@ class TopOpeBRepBuild_SolidAreaBuilder : public TopOpeBRepBuild_Area3dBuilder {
 		/****************** InitSolidAreaBuilder ******************/
 		%feature("compactdefaultargs") InitSolidAreaBuilder;
 		%feature("autodoc", ":param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") InitSolidAreaBuilder;
@@ -5668,9 +5668,9 @@ class TopOpeBRepBuild_SolidAreaBuilder : public TopOpeBRepBuild_Area3dBuilder {
 		%feature("compactdefaultargs") TopOpeBRepBuild_SolidAreaBuilder;
 		%feature("autodoc", "* Creates a SolidAreaBuilder to build Solids on the (shells,blocks of face) of <LS>, using the classifier <LC>.
 	:param LS:
-	:type LS: TopOpeBRepBuild_LoopSet &
+	:type LS: TopOpeBRepBuild_LoopSet
 	:param LC:
-	:type LC: TopOpeBRepBuild_LoopClassifier &
+	:type LC: TopOpeBRepBuild_LoopClassifier
 	:param ForceClass: default value is Standard_False
 	:type ForceClass: bool
 	:rtype: None") TopOpeBRepBuild_SolidAreaBuilder;
@@ -5694,9 +5694,9 @@ class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClass
 		/****************** Compare ******************/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", ":param L1:
-	:type L1: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L1: TopOpeBRepBuild_Loop
 	:param L2:
-	:type L2: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L2: TopOpeBRepBuild_Loop
 	:rtype: TopAbs_State") Compare;
 		virtual TopAbs_State Compare (const opencascade::handle<TopOpeBRepBuild_Loop> & L1,const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
 
@@ -5704,7 +5704,7 @@ class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClass
 		%feature("compactdefaultargs") CompareElement;
 		%feature("autodoc", "* Add the edge <E> in the set of edges used in 2D point classification.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: bool") CompareElement;
 		Standard_Boolean CompareElement (const TopoDS_Shape & E);
 
@@ -5712,9 +5712,9 @@ class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClass
 		%feature("compactdefaultargs") CompareElementToShape;
 		%feature("autodoc", "* classify edge <E> with wire <B>
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param B:
-	:type B: TopoDS_Shape &
+	:type B: TopoDS_Shape
 	:rtype: TopAbs_State") CompareElementToShape;
 		TopAbs_State CompareElementToShape (const TopoDS_Shape & E,const TopoDS_Shape & B);
 
@@ -5722,16 +5722,16 @@ class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClass
 		%feature("compactdefaultargs") CompareShapes;
 		%feature("autodoc", "* classify wire <B1> with wire <B2>
 	:param B1:
-	:type B1: TopoDS_Shape &
+	:type B1: TopoDS_Shape
 	:param B2:
-	:type B2: TopoDS_Shape &
+	:type B2: TopoDS_Shape
 	:rtype: TopAbs_State") CompareShapes;
 		TopAbs_State CompareShapes (const TopoDS_Shape & B1,const TopoDS_Shape & B2);
 
 		/****************** LoopToShape ******************/
 		%feature("compactdefaultargs") LoopToShape;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<TopOpeBRepBuild_Loop> &
+	:type L: TopOpeBRepBuild_Loop
 	:rtype: TopoDS_Shape") LoopToShape;
 		TopoDS_Shape LoopToShape (const opencascade::handle<TopOpeBRepBuild_Loop> & L);
 
@@ -5739,7 +5739,7 @@ class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClass
 		%feature("compactdefaultargs") ResetElement;
 		%feature("autodoc", "* prepare classification involving edge <E> define 2D point (later used in Compare()) on first vertex of edge <E>.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: None") ResetElement;
 		void ResetElement (const TopoDS_Shape & E);
 
@@ -5747,7 +5747,7 @@ class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClass
 		%feature("compactdefaultargs") ResetShape;
 		%feature("autodoc", "* prepare classification involving wire <B> calls ResetElement on first edge of <B>
 	:param B:
-	:type B: TopoDS_Shape &
+	:type B: TopoDS_Shape
 	:rtype: None") ResetShape;
 		void ResetShape (const TopoDS_Shape & B);
 
@@ -5761,9 +5761,9 @@ class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClass
 		%feature("compactdefaultargs") TopOpeBRepBuild_WireEdgeClassifier;
 		%feature("autodoc", "* Creates a classifier on edge <F>. Used to compare edges and wires on the edge <F>.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param BB:
-	:type BB: TopOpeBRepBuild_BlockBuilder &
+	:type BB: TopOpeBRepBuild_BlockBuilder
 	:rtype: None") TopOpeBRepBuild_WireEdgeClassifier;
 		 TopOpeBRepBuild_WireEdgeClassifier (const TopoDS_Shape & F,const TopOpeBRepBuild_BlockBuilder & BB);
 

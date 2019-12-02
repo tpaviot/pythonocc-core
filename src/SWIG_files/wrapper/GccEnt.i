@@ -166,7 +166,7 @@ class GccEnt {
 	:param thePositionString:
 	:type thePositionString: char *
 	:param thePosition:
-	:type thePosition: GccEnt_Position &
+	:type thePosition: GccEnt_Position
 	:rtype: bool") PositionFromString;
 		static Standard_Boolean PositionFromString (const char * thePositionString,GccEnt_Position & thePosition);
 
@@ -184,7 +184,7 @@ class GccEnt {
 	:param thePosition:
 	:type thePosition: GccEnt_Position
 	:param theStream:
-	:type theStream: Standard_OStream &
+	:type theStream: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const GccEnt_Position thePosition,Standard_OStream & theStream);
 

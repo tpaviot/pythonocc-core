@@ -180,7 +180,7 @@ class TDataXtd {
 		%feature("compactdefaultargs") IDList;
 		%feature("autodoc", "* Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use. Print of TDataExt enumeration =============================
 	:param anIDList:
-	:type anIDList: TDF_IDList &
+	:type anIDList: TDF_IDList
 	:rtype: void") IDList;
 		static void IDList (TDF_IDList & anIDList);
 
@@ -190,7 +190,7 @@ class TDataXtd {
 	:param GEO:
 	:type GEO: TDataXtd_GeometryEnum
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TDataXtd_GeometryEnum GEO,Standard_OStream & S);
 
@@ -200,7 +200,7 @@ class TDataXtd {
 	:param CTR:
 	:type CTR: TDataXtd_ConstraintEnum
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TDataXtd_ConstraintEnum CTR,Standard_OStream & S);
 
@@ -246,16 +246,16 @@ class TDataXtd_Axis : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param into:
-	:type into: opencascade::handle<TDF_Attribute> &
+	:type into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param with:
-	:type with: opencascade::handle<TDF_Attribute> &
+	:type with: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & with);
 
@@ -263,7 +263,7 @@ class TDataXtd_Axis : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Finds or creates an axis attribute defined by the label. In the case of a creation of an axis, a compatible named shape should already be associated with label. Exceptions Standard_NullObject if no compatible named shape is associated with the label.
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_Axis>") Set;
 		static opencascade::handle<TDataXtd_Axis> Set (const TDF_Label & label);
 
@@ -271,7 +271,7 @@ class TDataXtd_Axis : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Find, or create, an Axis attribute and set <P> as generated in the associated NamedShape. Axis methods ============
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:param L:
 	:type L: gp_Lin
 	:rtype: opencascade::handle<TDataXtd_Axis>") Set;
@@ -309,9 +309,9 @@ class TDataXtd_Constraint : public TDF_Attribute {
 		%feature("compactdefaultargs") CollectChildConstraints;
 		%feature("autodoc", "* collects constraints on Childs for label <aLabel>
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param TheList:
-	:type TheList: TDF_LabelList &
+	:type TheList: TDF_LabelList
 	:rtype: void") CollectChildConstraints;
 		static void CollectChildConstraints (const TDF_Label & aLabel,TDF_LabelList & TheList);
 
@@ -398,23 +398,23 @@ class TDataXtd_Constraint : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** References ******************/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", ":param DS:
-	:type DS: opencascade::handle<TDF_DataSet> &
+	:type DS: TDF_DataSet
 	:rtype: void") References;
 		virtual void References (const opencascade::handle<TDF_DataSet> & DS);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param With:
-	:type With: opencascade::handle<TDF_Attribute> &
+	:type With: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & With);
 
@@ -434,7 +434,7 @@ class TDataXtd_Constraint : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Finds or creates the 2D constraint attribute defined by the planar topological attribute plane and the label label. Constraint methods ==================
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_Constraint>") Set;
 		static opencascade::handle<TDataXtd_Constraint> Set (const TDF_Label & label);
 
@@ -444,7 +444,7 @@ class TDataXtd_Constraint : public TDF_Attribute {
 	:param type:
 	:type type: TDataXtd_ConstraintEnum
 	:param G1:
-	:type G1: opencascade::handle<TNaming_NamedShape> &
+	:type G1: TNaming_NamedShape
 	:rtype: None") Set;
 		void Set (const TDataXtd_ConstraintEnum type,const opencascade::handle<TNaming_NamedShape> & G1);
 
@@ -454,9 +454,9 @@ class TDataXtd_Constraint : public TDF_Attribute {
 	:param type:
 	:type type: TDataXtd_ConstraintEnum
 	:param G1:
-	:type G1: opencascade::handle<TNaming_NamedShape> &
+	:type G1: TNaming_NamedShape
 	:param G2:
-	:type G2: opencascade::handle<TNaming_NamedShape> &
+	:type G2: TNaming_NamedShape
 	:rtype: None") Set;
 		void Set (const TDataXtd_ConstraintEnum type,const opencascade::handle<TNaming_NamedShape> & G1,const opencascade::handle<TNaming_NamedShape> & G2);
 
@@ -466,11 +466,11 @@ class TDataXtd_Constraint : public TDF_Attribute {
 	:param type:
 	:type type: TDataXtd_ConstraintEnum
 	:param G1:
-	:type G1: opencascade::handle<TNaming_NamedShape> &
+	:type G1: TNaming_NamedShape
 	:param G2:
-	:type G2: opencascade::handle<TNaming_NamedShape> &
+	:type G2: TNaming_NamedShape
 	:param G3:
-	:type G3: opencascade::handle<TNaming_NamedShape> &
+	:type G3: TNaming_NamedShape
 	:rtype: None") Set;
 		void Set (const TDataXtd_ConstraintEnum type,const opencascade::handle<TNaming_NamedShape> & G1,const opencascade::handle<TNaming_NamedShape> & G2,const opencascade::handle<TNaming_NamedShape> & G3);
 
@@ -480,13 +480,13 @@ class TDataXtd_Constraint : public TDF_Attribute {
 	:param type:
 	:type type: TDataXtd_ConstraintEnum
 	:param G1:
-	:type G1: opencascade::handle<TNaming_NamedShape> &
+	:type G1: TNaming_NamedShape
 	:param G2:
-	:type G2: opencascade::handle<TNaming_NamedShape> &
+	:type G2: TNaming_NamedShape
 	:param G3:
-	:type G3: opencascade::handle<TNaming_NamedShape> &
+	:type G3: TNaming_NamedShape
 	:param G4:
-	:type G4: opencascade::handle<TNaming_NamedShape> &
+	:type G4: TNaming_NamedShape
 	:rtype: None") Set;
 		void Set (const TDataXtd_ConstraintEnum type,const opencascade::handle<TNaming_NamedShape> & G1,const opencascade::handle<TNaming_NamedShape> & G2,const opencascade::handle<TNaming_NamedShape> & G3,const opencascade::handle<TNaming_NamedShape> & G4);
 
@@ -496,7 +496,7 @@ class TDataXtd_Constraint : public TDF_Attribute {
 	:param Index:
 	:type Index: int
 	:param G:
-	:type G: opencascade::handle<TNaming_NamedShape> &
+	:type G: TNaming_NamedShape
 	:rtype: None") SetGeometry;
 		void SetGeometry (const Standard_Integer Index,const opencascade::handle<TNaming_NamedShape> & G);
 
@@ -504,7 +504,7 @@ class TDataXtd_Constraint : public TDF_Attribute {
 		%feature("compactdefaultargs") SetPlane;
 		%feature("autodoc", "* Finds or creates the plane of the 2D constraint attribute, defined by the planar topological attribute plane.
 	:param plane:
-	:type plane: opencascade::handle<TNaming_NamedShape> &
+	:type plane: TNaming_NamedShape
 	:rtype: None") SetPlane;
 		void SetPlane (const opencascade::handle<TNaming_NamedShape> & plane);
 
@@ -520,7 +520,7 @@ class TDataXtd_Constraint : public TDF_Attribute {
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "* Finds or creates the real number value V of the dimension constraint attribute.
 	:param V:
-	:type V: opencascade::handle<TDataStd_Real> &
+	:type V: TDataStd_Real
 	:rtype: None") SetValue;
 		void SetValue (const opencascade::handle<TDataStd_Real> & V);
 
@@ -564,7 +564,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Axis;
 		%feature("autodoc", "* Returns the axis attribute defined by the label L and the axis G.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:param G:
 	:type G: gp_Ax1
 	:rtype: bool") Axis;
@@ -574,7 +574,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Axis;
 		%feature("autodoc", "* Returns the axis attribute defined by the topological attribute S and the axis G.
 	:param S:
-	:type S: opencascade::handle<TNaming_NamedShape> &
+	:type S: TNaming_NamedShape
 	:param G:
 	:type G: gp_Ax1
 	:rtype: bool") Axis;
@@ -584,7 +584,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "* Returns the circle attribute defined by the label L and the circle G.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:param G:
 	:type G: gp_Circ
 	:rtype: bool") Circle;
@@ -594,7 +594,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "* Returns the circle attribute defined by the topological attribute S and the circle G.
 	:param S:
-	:type S: opencascade::handle<TNaming_NamedShape> &
+	:type S: TNaming_NamedShape
 	:param G:
 	:type G: gp_Circ
 	:rtype: bool") Circle;
@@ -604,7 +604,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "* Returns the cylinder attribute defined by the label L and the cylinder G.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:param G:
 	:type G: gp_Cylinder
 	:rtype: bool") Cylinder;
@@ -614,7 +614,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "* Returns the cylinder attribute defined by the topological attribute S and the cylinder G.
 	:param S:
-	:type S: opencascade::handle<TNaming_NamedShape> &
+	:type S: TNaming_NamedShape
 	:param G:
 	:type G: gp_Cylinder
 	:rtype: bool") Cylinder;
@@ -632,7 +632,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "* Returns the ellipse attribute defined by the label L and the ellipse G.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:param G:
 	:type G: gp_Elips
 	:rtype: bool") Ellipse;
@@ -642,7 +642,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "* Returns the ellipse attribute defined by the topological attribute S and the ellipse G.
 	:param S:
-	:type S: opencascade::handle<TNaming_NamedShape> &
+	:type S: TNaming_NamedShape
 	:param G:
 	:type G: gp_Elips
 	:rtype: bool") Ellipse;
@@ -669,7 +669,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "* Returns the line attribute defined by the label L and the line G.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:param G:
 	:type G: gp_Lin
 	:rtype: bool") Line;
@@ -679,7 +679,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "* Returns the line attribute defined by the topological attribute S and the line G.
 	:param S:
-	:type S: opencascade::handle<TNaming_NamedShape> &
+	:type S: TNaming_NamedShape
 	:param G:
 	:type G: gp_Lin
 	:rtype: bool") Line;
@@ -693,9 +693,9 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param into:
-	:type into: opencascade::handle<TDF_Attribute> &
+	:type into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & into,const opencascade::handle<TDF_RelocationTable> & RT);
 
@@ -703,7 +703,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "* Returns the plane attribute defined by the label L and the plane G.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:param G:
 	:type G: gp_Pln
 	:rtype: bool") Plane;
@@ -713,7 +713,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "* Returns the plane attribute defined by the topological attribute S and the plane G.
 	:param S:
-	:type S: opencascade::handle<TNaming_NamedShape> &
+	:type S: TNaming_NamedShape
 	:param G:
 	:type G: gp_Pln
 	:rtype: bool") Plane;
@@ -723,7 +723,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "* Returns the point attribute defined by the label L and the point G.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:param G:
 	:type G: gp_Pnt
 	:rtype: bool") Point;
@@ -733,7 +733,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "* Returns the point attribute defined by the topological attribute S and the point G.
 	:param S:
-	:type S: opencascade::handle<TNaming_NamedShape> &
+	:type S: TNaming_NamedShape
 	:param G:
 	:type G: gp_Pnt
 	:rtype: bool") Point;
@@ -742,7 +742,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param with:
-	:type with: opencascade::handle<TDF_Attribute> &
+	:type with: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & with);
 
@@ -750,7 +750,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* API class methods ================= Finds, or creates, a Geometry attribute defined by the label label. The default type of geometry is the value ANY_GEOM of the enumeration TDataXtd_GeometryEnum. To specify another value of this enumeration, use the function SetType.
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_Geometry>") Set;
 		static opencascade::handle<TDataXtd_Geometry> Set (const TDF_Label & label);
 
@@ -772,7 +772,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "* Returns the label L used to define the type of geometric construction for the geometry attribute.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:rtype: TDataXtd_GeometryEnum") Type;
 		static TDataXtd_GeometryEnum Type (const TDF_Label & L);
 
@@ -780,7 +780,7 @@ class TDataXtd_Geometry : public TDF_Attribute {
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "* Returns the topological attribute S used to define the type of geometric construction for the geometry attribute.
 	:param S:
-	:type S: opencascade::handle<TNaming_NamedShape> &
+	:type S: TNaming_NamedShape
 	:rtype: TDataXtd_GeometryEnum") Type;
 		static TDataXtd_GeometryEnum Type (const opencascade::handle<TNaming_NamedShape> & S);
 
@@ -805,7 +805,7 @@ class TDataXtd_Pattern : public TDF_Attribute {
 		%feature("compactdefaultargs") ComputeTrsfs;
 		%feature("autodoc", "* Give the transformations
 	:param Trsfs:
-	:type Trsfs: TDataXtd_Array1OfTrsf &
+	:type Trsfs: TDataXtd_Array1OfTrsf
 	:rtype: void") ComputeTrsfs;
 		virtual void ComputeTrsfs (TDataXtd_Array1OfTrsf & Trsfs);
 
@@ -876,16 +876,16 @@ class TDataXtd_Placement : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param With:
-	:type With: opencascade::handle<TDF_Attribute> &
+	:type With: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & With);
 
@@ -893,7 +893,7 @@ class TDataXtd_Placement : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Find, or create, an Placement attribute. the Placement attribute is returned. Placement methods =================
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_Placement>") Set;
 		static opencascade::handle<TDataXtd_Placement> Set (const TDF_Label & label);
 
@@ -946,16 +946,16 @@ class TDataXtd_Plane : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param With:
-	:type With: opencascade::handle<TDF_Attribute> &
+	:type With: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & With);
 
@@ -963,7 +963,7 @@ class TDataXtd_Plane : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Finds or creates the plane attribute defined by the label label. Warning If you are creating the attribute with this syntax, a planar face should already be associated with label.
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_Plane>") Set;
 		static opencascade::handle<TDataXtd_Plane> Set (const TDF_Label & label);
 
@@ -971,7 +971,7 @@ class TDataXtd_Plane : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Finds, or creates, a Plane attribute and sets <P> as generated the associated NamedShape. Plane methods =============
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:param P:
 	:type P: gp_Pln
 	:rtype: opencascade::handle<TDataXtd_Plane>") Set;
@@ -1026,16 +1026,16 @@ class TDataXtd_Point : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param With:
-	:type With: opencascade::handle<TDF_Attribute> &
+	:type With: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & With);
 
@@ -1043,7 +1043,7 @@ class TDataXtd_Point : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the label Label as a point attribute. If no object is found, a point attribute is created.
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_Point>") Set;
 		static opencascade::handle<TDataXtd_Point> Set (const TDF_Label & label);
 
@@ -1051,7 +1051,7 @@ class TDataXtd_Point : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the label Label as a point attribute containing the point P. If no object is found, a point attribute is created. Point methods =============
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:param P:
 	:type P: gp_Pnt
 	:rtype: opencascade::handle<TDataXtd_Point>") Set;
@@ -1083,7 +1083,7 @@ class TDataXtd_Position : public TDF_Attribute {
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "* Search label <aLabel) for the TDataXtd_Position attribute and get its position if found returns True
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aPos:
 	:type aPos: gp_Pnt
 	:rtype: bool") Get;
@@ -1116,9 +1116,9 @@ class TDataXtd_Position : public TDF_Attribute {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
 	:param intoAttribute:
-	:type intoAttribute: opencascade::handle<TDF_Attribute> &
+	:type intoAttribute: TDF_Attribute
 	:param aRelocTationable:
-	:type aRelocTationable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocTationable: TDF_RelocationTable
 	:rtype: void") Paste;
 		virtual void Paste (const opencascade::handle<TDF_Attribute> & intoAttribute,const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
@@ -1126,7 +1126,7 @@ class TDataXtd_Position : public TDF_Attribute {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: void") Restore;
 		virtual void Restore (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1134,7 +1134,7 @@ class TDataXtd_Position : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Create if not found the TDataXtd_Position attribute set its position to <aPos>
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aPos:
 	:type aPos: gp_Pnt
 	:rtype: void") Set;
@@ -1144,7 +1144,7 @@ class TDataXtd_Position : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Find an existing, or create an empty, Position. the Position attribute is returned.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_Position>") Set;
 		static opencascade::handle<TDataXtd_Position> Set (const TDF_Label & aLabel);
 
@@ -1275,9 +1275,9 @@ class TDataXtd_Presentation : public TDF_Attribute {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
 	:param intoAttribute:
-	:type intoAttribute: opencascade::handle<TDF_Attribute> &
+	:type intoAttribute: TDF_Attribute
 	:param aRelocTationable:
-	:type aRelocTationable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocTationable: TDF_RelocationTable
 	:rtype: void") Paste;
 		virtual void Paste (const opencascade::handle<TDF_Attribute> & intoAttribute,const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
@@ -1285,7 +1285,7 @@ class TDataXtd_Presentation : public TDF_Attribute {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: void") Restore;
 		virtual void Restore (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1300,9 +1300,9 @@ class TDataXtd_Presentation : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Create if not found the TDataXtd_Presentation attribute and set its driver GUID
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theDriverId:
-	:type theDriverId: Standard_GUID &
+	:type theDriverId: Standard_GUID
 	:rtype: opencascade::handle<TDataXtd_Presentation>") Set;
 		static opencascade::handle<TDataXtd_Presentation> Set (const TDF_Label & theLabel,const Standard_GUID & theDriverId);
 
@@ -1324,7 +1324,7 @@ class TDataXtd_Presentation : public TDF_Attribute {
 		%feature("compactdefaultargs") SetDriverGUID;
 		%feature("autodoc", "* Sets the GUID of the driver managing display of associated AIS object
 	:param theGUID:
-	:type theGUID: Standard_GUID &
+	:type theGUID: Standard_GUID
 	:rtype: None") SetDriverGUID;
 		void SetDriverGUID (const Standard_GUID & theGUID);
 
@@ -1381,7 +1381,7 @@ class TDataXtd_Presentation : public TDF_Attribute {
 		%feature("compactdefaultargs") Unset;
 		%feature("autodoc", "* Remove attribute of this type from the label
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: void") Unset;
 		static void Unset (const TDF_Label & theLabel);
 
@@ -1449,9 +1449,9 @@ class TDataXtd_Shape : public TDF_Attribute {
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "* class methods ============= try to retrieve a Shape attribute at <current> label or in fathers label of <current>. Returns True if found and set <S>.
 	:param current:
-	:type current: TDF_Label &
+	:type current: TDF_Label
 	:param S:
-	:type S: opencascade::handle<TDataXtd_Shape> &
+	:type S: TDataXtd_Shape
 	:rtype: bool") Find;
 		static Standard_Boolean Find (const TDF_Label & current,opencascade::handle<TDataXtd_Shape> & S);
 
@@ -1459,7 +1459,7 @@ class TDataXtd_Shape : public TDF_Attribute {
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "* the Shape from associated NamedShape attribute is returned.
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: TopoDS_Shape") Get;
 		static TopoDS_Shape Get (const TDF_Label & label);
 
@@ -1478,7 +1478,7 @@ class TDataXtd_Shape : public TDF_Attribute {
 		%feature("compactdefaultargs") New;
 		%feature("autodoc", "* Find, or create, a Shape attribute. the Shape attribute is returned. Raises if <label> has attribute.
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_Shape>") New;
 		static opencascade::handle<TDataXtd_Shape> New (const TDF_Label & label);
 
@@ -1490,23 +1490,23 @@ class TDataXtd_Shape : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param into:
-	:type into: opencascade::handle<TDF_Attribute> &
+	:type into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** References ******************/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", ":param DS:
-	:type DS: opencascade::handle<TDF_DataSet> &
+	:type DS: TDF_DataSet
 	:rtype: void") References;
 		virtual void References (const opencascade::handle<TDF_DataSet> & DS);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param with:
-	:type with: opencascade::handle<TDF_Attribute> &
+	:type with: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & with);
 
@@ -1514,9 +1514,9 @@ class TDataXtd_Shape : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Create or update associated NamedShape attribute. the Shape attribute is returned.
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: opencascade::handle<TDataXtd_Shape>") Set;
 		static opencascade::handle<TDataXtd_Shape> Set (const TDF_Label & label,const TopoDS_Shape & shape);
 
@@ -1630,9 +1630,9 @@ class TDataXtd_Triangulation : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
@@ -1645,7 +1645,7 @@ class TDataXtd_Triangulation : public TDF_Attribute {
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param theAttribute:
-	:type theAttribute: opencascade::handle<TDF_Attribute> &
+	:type theAttribute: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & theAttribute);
 
@@ -1653,7 +1653,7 @@ class TDataXtd_Triangulation : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Finds or creates a triangulation attribute.
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_Triangulation>") Set;
 		static opencascade::handle<TDataXtd_Triangulation> Set (const TDF_Label & theLabel);
 
@@ -1661,9 +1661,9 @@ class TDataXtd_Triangulation : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Finds or creates a triangulation attribute. Initializes the attribute by a Poly_Triangulation object.
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:rtype: opencascade::handle<TDataXtd_Triangulation>") Set;
 		static opencascade::handle<TDataXtd_Triangulation> Set (const TDF_Label & theLabel,const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -1671,7 +1671,7 @@ class TDataXtd_Triangulation : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the triangulation.
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:rtype: None") Set;
 		void Set (const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -1699,7 +1699,7 @@ class TDataXtd_Triangulation : public TDF_Attribute {
 		%feature("compactdefaultargs") SetNormals;
 		%feature("autodoc", "* Sets the table of node normals. Raises exception if length of theNormals != 3 * NbNodes
 	:param theNormals:
-	:type theNormals: opencascade::handle<TShort_HArray1OfShortReal> &
+	:type theNormals: TShort_HArray1OfShortReal
 	:rtype: None") SetNormals;
 		void SetNormals (const opencascade::handle<TShort_HArray1OfShortReal> & theNormals);
 
@@ -1709,7 +1709,7 @@ class TDataXtd_Triangulation : public TDF_Attribute {
 	:param theIndex:
 	:type theIndex: int
 	:param theTriangle:
-	:type theTriangle: Poly_Triangle &
+	:type theTriangle: Poly_Triangle
 	:rtype: None") SetTriangle;
 		void SetTriangle (const Standard_Integer theIndex,const Poly_Triangle & theTriangle);
 
@@ -1765,7 +1765,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** Axis1 ******************/
 		%feature("compactdefaultargs") Axis1;
 		%feature("autodoc", ":param Axis1:
-	:type Axis1: opencascade::handle<TNaming_NamedShape> &
+	:type Axis1: TNaming_NamedShape
 	:rtype: None") Axis1;
 		void Axis1 (const opencascade::handle<TNaming_NamedShape> & Axis1);
 
@@ -1789,7 +1789,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** Axis2 ******************/
 		%feature("compactdefaultargs") Axis2;
 		%feature("autodoc", ":param Axis2:
-	:type Axis2: opencascade::handle<TNaming_NamedShape> &
+	:type Axis2: TNaming_NamedShape
 	:rtype: None") Axis2;
 		void Axis2 (const opencascade::handle<TNaming_NamedShape> & Axis2);
 
@@ -1813,7 +1813,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** ComputeTrsfs ******************/
 		%feature("compactdefaultargs") ComputeTrsfs;
 		%feature("autodoc", ":param Trsfs:
-	:type Trsfs: TDataXtd_Array1OfTrsf &
+	:type Trsfs: TDataXtd_Array1OfTrsf
 	:rtype: None") ComputeTrsfs;
 		void ComputeTrsfs (TDataXtd_Array1OfTrsf & Trsfs);
 
@@ -1833,7 +1833,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** Mirror ******************/
 		%feature("compactdefaultargs") Mirror;
 		%feature("autodoc", ":param plane:
-	:type plane: opencascade::handle<TNaming_NamedShape> &
+	:type plane: TNaming_NamedShape
 	:rtype: None") Mirror;
 		void Mirror (const opencascade::handle<TNaming_NamedShape> & plane);
 
@@ -1845,7 +1845,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** NbInstances1 ******************/
 		%feature("compactdefaultargs") NbInstances1;
 		%feature("autodoc", ":param NbInstances1:
-	:type NbInstances1: opencascade::handle<TDataStd_Integer> &
+	:type NbInstances1: TDataStd_Integer
 	:rtype: None") NbInstances1;
 		void NbInstances1 (const opencascade::handle<TDataStd_Integer> & NbInstances1);
 
@@ -1857,7 +1857,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** NbInstances2 ******************/
 		%feature("compactdefaultargs") NbInstances2;
 		%feature("autodoc", ":param NbInstances2:
-	:type NbInstances2: opencascade::handle<TDataStd_Integer> &
+	:type NbInstances2: TDataStd_Integer
 	:rtype: None") NbInstances2;
 		void NbInstances2 (const opencascade::handle<TDataStd_Integer> & NbInstances2);
 
@@ -1879,9 +1879,9 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
@@ -1893,14 +1893,14 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** References ******************/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", ":param aDataSet:
-	:type aDataSet: opencascade::handle<TDF_DataSet> &
+	:type aDataSet: TDF_DataSet
 	:rtype: void") References;
 		virtual void References (const opencascade::handle<TDF_DataSet> & aDataSet);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param With:
-	:type With: opencascade::handle<TDF_Attribute> &
+	:type With: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & With);
 
@@ -1908,7 +1908,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Find, or create, a PatternStd attribute
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: opencascade::handle<TDataXtd_PatternStd>") Set;
 		static opencascade::handle<TDataXtd_PatternStd> Set (const TDF_Label & label);
 
@@ -1932,7 +1932,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** Value1 ******************/
 		%feature("compactdefaultargs") Value1;
 		%feature("autodoc", ":param value:
-	:type value: opencascade::handle<TDataStd_Real> &
+	:type value: TDataStd_Real
 	:rtype: None") Value1;
 		void Value1 (const opencascade::handle<TDataStd_Real> & value);
 
@@ -1944,7 +1944,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 		/****************** Value2 ******************/
 		%feature("compactdefaultargs") Value2;
 		%feature("autodoc", ":param value:
-	:type value: opencascade::handle<TDataStd_Real> &
+	:type value: TDataStd_Real
 	:rtype: None") Value2;
 		void Value2 (const opencascade::handle<TDataStd_Real> & value);
 

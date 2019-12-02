@@ -439,7 +439,7 @@ class Aspect_Background {
 		%feature("compactdefaultargs") Aspect_Background;
 		%feature("autodoc", "* Creates a window background with the colour <AColor>.
 	:param AColor:
-	:type AColor: Quantity_Color &
+	:type AColor: Quantity_Color
 	:rtype: None") Aspect_Background;
 		 Aspect_Background (const Quantity_Color & AColor);
 
@@ -453,7 +453,7 @@ class Aspect_Background {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Modifies the colour of the window background <self>.
 	:param AColor:
-	:type AColor: Quantity_Color &
+	:type AColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & AColor);
 
@@ -547,7 +547,7 @@ class Aspect_GenId {
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "* Generates the next available identifier. @param theId [out] generated identifier returns False if all identifiers are busy.
 	:param theId:
-	:type theId: int &
+	:type theId: int
 	:rtype: bool") Next;
 		Standard_Boolean Next (Standard_Integer &OutValue);
 
@@ -582,9 +582,9 @@ class Aspect_Grid : public Standard_Transient {
 		%feature("compactdefaultargs") Colors;
 		%feature("autodoc", "* Returns the colors of the grid.
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aTenthColor:
-	:type aTenthColor: Quantity_Color &
+	:type aTenthColor: Quantity_Color
 	:rtype: None") Colors;
 		void Colors (Quantity_Color & aColor,Quantity_Color & aTenthColor);
 
@@ -596,9 +596,9 @@ class Aspect_Grid : public Standard_Transient {
 	:param Y:
 	:type Y: float
 	:param gridX:
-	:type gridX: float &
+	:type gridX: float
 	:param gridY:
-	:type gridY: float &
+	:type gridY: float
 	:rtype: void") Compute;
 		virtual void Compute (const Standard_Real X,const Standard_Real Y,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -634,9 +634,9 @@ class Aspect_Grid : public Standard_Transient {
 	:param Y:
 	:type Y: float
 	:param gridX:
-	:type gridX: float &
+	:type gridX: float
 	:param gridY:
-	:type gridY: float &
+	:type gridY: float
 	:rtype: None") Hit;
 		void Hit (const Standard_Real X,const Standard_Real Y,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -675,9 +675,9 @@ class Aspect_Grid : public Standard_Transient {
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "* Change the colors of the grid
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aTenthColor:
-	:type aTenthColor: Quantity_Color &
+	:type aTenthColor: Quantity_Color
 	:rtype: void") SetColors;
 		virtual void SetColors (const Quantity_Color & aColor,const Quantity_Color & aTenthColor);
 
@@ -764,7 +764,7 @@ class Aspect_ScrollDelta {
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
 		%feature("autodoc", "* Constructor.
 	:param thePnt:
-	:type thePnt: NCollection_Vec2<int> &
+	:type thePnt: NCollection_Vec2<int>
 	:param theValue:
 	:type theValue: float
 	:param theFlags: default value is Aspect_VKeyFlags_NONE
@@ -820,7 +820,7 @@ class Aspect_Touch {
 		%feature("compactdefaultargs") Aspect_Touch;
 		%feature("autodoc", "* Constructor with initialization.
 	:param thePnt:
-	:type thePnt: NCollection_Vec2<float> &
+	:type thePnt: NCollection_Vec2<float>
 	:param theIsPreciseDevice:
 	:type theIsPreciseDevice: bool
 	:rtype: None") Aspect_Touch;
@@ -893,7 +893,7 @@ class Aspect_Window : public Standard_Transient {
 		%feature("compactdefaultargs") InvalidateContent;
 		%feature("autodoc", "* Invalidate entire window content. //! Implementation is expected to allow calling this method from non-GUI thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! Optional display argument should be passed when called from non-GUI thread on platforms implementing thread-unsafe connections to display. NULL can be passed instead otherwise.
 	:param theDisp:
-	:type theDisp: opencascade::handle<Aspect_DisplayConnection> &
+	:type theDisp: Aspect_DisplayConnection
 	:rtype: None") InvalidateContent;
 		void InvalidateContent (const opencascade::handle<Aspect_DisplayConnection> & theDisp);
 
@@ -925,13 +925,13 @@ class Aspect_Window : public Standard_Transient {
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "* Returns The Window POSITION in PIXEL
 	:param X1:
-	:type X1: int &
+	:type X1: int
 	:param Y1:
-	:type Y1: int &
+	:type Y1: int
 	:param X2:
-	:type X2: int &
+	:type X2: int
 	:param Y2:
-	:type Y2: int &
+	:type Y2: int
 	:rtype: void") Position;
 		virtual void Position (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -945,7 +945,7 @@ class Aspect_Window : public Standard_Transient {
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "* Modifies the window background.
 	:param ABack:
-	:type ABack: Aspect_Background &
+	:type ABack: Aspect_Background
 	:rtype: None") SetBackground;
 		void SetBackground (const Aspect_Background & ABack);
 
@@ -953,7 +953,7 @@ class Aspect_Window : public Standard_Transient {
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "* Modifies the window background.
 	:param color:
-	:type color: Quantity_Color &
+	:type color: Quantity_Color
 	:rtype: None") SetBackground;
 		void SetBackground (const Quantity_Color & color);
 
@@ -961,7 +961,7 @@ class Aspect_Window : public Standard_Transient {
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "* Modifies the window gradient background.
 	:param ABackground:
-	:type ABackground: Aspect_GradientBackground &
+	:type ABackground: Aspect_GradientBackground
 	:rtype: None") SetBackground;
 		void SetBackground (const Aspect_GradientBackground & ABackground);
 
@@ -969,9 +969,9 @@ class Aspect_Window : public Standard_Transient {
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "* Modifies the window gradient background.
 	:param theFirstColor:
-	:type theFirstColor: Quantity_Color &
+	:type theFirstColor: Quantity_Color
 	:param theSecondColor:
-	:type theSecondColor: Quantity_Color &
+	:type theSecondColor: Quantity_Color
 	:param theFillMethod:
 	:type theFillMethod: Aspect_GradientFillMethod
 	:rtype: None") SetBackground;
@@ -981,7 +981,7 @@ class Aspect_Window : public Standard_Transient {
 		%feature("compactdefaultargs") SetTitle;
 		%feature("autodoc", "* Sets window title.
 	:param theTitle:
-	:type theTitle: TCollection_AsciiString &
+	:type theTitle: TCollection_AsciiString
 	:rtype: None") SetTitle;
 		void SetTitle (const TCollection_AsciiString & theTitle);
 
@@ -997,9 +997,9 @@ class Aspect_Window : public Standard_Transient {
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "* Returns The Window SIZE in PIXEL
 	:param Width:
-	:type Width: int &
+	:type Width: int
 	:param Height:
-	:type Height: int &
+	:type Height: int
 	:rtype: void") Size;
 		virtual void Size (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1039,9 +1039,9 @@ class Aspect_GradientBackground : public Aspect_Background {
 		%feature("compactdefaultargs") Aspect_GradientBackground;
 		%feature("autodoc", "* Creates a window gradient background with colours <AColor1, AColor2>.
 	:param AColor1:
-	:type AColor1: Quantity_Color &
+	:type AColor1: Quantity_Color
 	:param AColor2:
-	:type AColor2: Quantity_Color &
+	:type AColor2: Quantity_Color
 	:param AMethod: default value is Aspect_GFM_HOR
 	:type AMethod: Aspect_GradientFillMethod
 	:rtype: None") Aspect_GradientBackground;
@@ -1057,9 +1057,9 @@ class Aspect_GradientBackground : public Aspect_Background {
 		%feature("compactdefaultargs") Colors;
 		%feature("autodoc", "* Returns colours of the window gradient background <self>.
 	:param AColor1:
-	:type AColor1: Quantity_Color &
+	:type AColor1: Quantity_Color
 	:param AColor2:
-	:type AColor2: Quantity_Color &
+	:type AColor2: Quantity_Color
 	:rtype: None") Colors;
 		void Colors (Quantity_Color & AColor1,Quantity_Color & AColor2);
 
@@ -1067,9 +1067,9 @@ class Aspect_GradientBackground : public Aspect_Background {
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "* Modifies the colours of the window gradient background <self>.
 	:param AColor1:
-	:type AColor1: Quantity_Color &
+	:type AColor1: Quantity_Color
 	:param AColor2:
-	:type AColor2: Quantity_Color &
+	:type AColor2: Quantity_Color
 	:param AMethod: default value is Aspect_GFM_HOR
 	:type AMethod: Aspect_GradientFillMethod
 	:rtype: None") SetColors;

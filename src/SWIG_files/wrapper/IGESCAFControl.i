@@ -109,7 +109,7 @@ class IGESCAFControl {
 		%feature("compactdefaultargs") EncodeColor;
 		%feature("autodoc", "* Tries to Convert CASCADE color to IGES color index If no corresponding color defined in IGES, returns 0
 	:param col:
-	:type col: Quantity_Color &
+	:type col: Quantity_Color
 	:rtype: int") EncodeColor;
 		static Standard_Integer EncodeColor (const Quantity_Color & col);
 
@@ -153,7 +153,7 @@ class IGESCAFControl_Reader : public IGESControl_Reader {
 		%feature("compactdefaultargs") IGESCAFControl_Reader;
 		%feature("autodoc", "* Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for IGES
 	:param theWS:
-	:type theWS: opencascade::handle<XSControl_WorkSession> &
+	:type theWS: XSControl_WorkSession
 	:param FromScratch: default value is Standard_True
 	:type FromScratch: bool
 	:rtype: None") IGESCAFControl_Reader;
@@ -162,9 +162,9 @@ class IGESCAFControl_Reader : public IGESControl_Reader {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param theFileName:
-	:type theFileName: TCollection_AsciiString &
+	:type theFileName: TCollection_AsciiString
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: bool") Perform;
 		Standard_Boolean Perform (const TCollection_AsciiString & theFileName,opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -174,7 +174,7 @@ class IGESCAFControl_Reader : public IGESControl_Reader {
 	:param theFileName:
 	:type theFileName: char *
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: bool") Perform;
 		Standard_Boolean Perform (const char * theFileName,opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -206,7 +206,7 @@ class IGESCAFControl_Reader : public IGESControl_Reader {
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "* Translates currently loaded IGES file into the document Returns True if succeeded, and False in case of fail
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: bool") Transfer;
 		Standard_Boolean Transfer (opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -250,7 +250,7 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 		%feature("compactdefaultargs") IGESCAFControl_Writer;
 		%feature("autodoc", "* Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for IGES
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:param scratch: default value is Standard_True
 	:type scratch: bool
 	:rtype: None") IGESCAFControl_Writer;
@@ -259,9 +259,9 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param doc:
-	:type doc: opencascade::handle<TDocStd_Document> &
+	:type doc: TDocStd_Document
 	:param filename:
-	:type filename: TCollection_AsciiString &
+	:type filename: TCollection_AsciiString
 	:rtype: bool") Perform;
 		Standard_Boolean Perform (const opencascade::handle<TDocStd_Document> & doc,const TCollection_AsciiString & filename);
 
@@ -269,7 +269,7 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Transfers a document and writes it to a IGES file Returns True if translation is OK
 	:param doc:
-	:type doc: opencascade::handle<TDocStd_Document> &
+	:type doc: TDocStd_Document
 	:param filename:
 	:type filename: char *
 	:rtype: bool") Perform;
@@ -303,7 +303,7 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "* Transfers a document to a IGES model Returns True if translation is OK
 	:param doc:
-	:type doc: opencascade::handle<TDocStd_Document> &
+	:type doc: TDocStd_Document
 	:rtype: bool") Transfer;
 		Standard_Boolean Transfer (const opencascade::handle<TDocStd_Document> & doc);
 
@@ -311,7 +311,7 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "* Transfers labels to a IGES model Returns True if translation is OK
 	:param labels:
-	:type labels: TDF_LabelSequence &
+	:type labels: TDF_LabelSequence
 	:rtype: bool") Transfer;
 		Standard_Boolean Transfer (const TDF_LabelSequence & labels);
 
@@ -319,7 +319,7 @@ class IGESCAFControl_Writer : public IGESControl_Writer {
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "* Transfers label to a IGES model Returns True if translation is OK
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: bool") Transfer;
 		Standard_Boolean Transfer (const TDF_Label & label);
 

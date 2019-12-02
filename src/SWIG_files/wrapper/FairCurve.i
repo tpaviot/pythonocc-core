@@ -87,7 +87,7 @@ class FairCurve_Batten {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* Performs the algorithm, using the arguments Code, NbIterations and Tolerance and computes the curve with respect to the constraints. Code will have one of the following values: - OK - NotConverged - InfiniteSliding - NullHeight The parameters Tolerance and NbIterations control how precise the computation is, and how long it will take.
 	:param Code:
-	:type Code: FairCurve_AnalysisCode &
+	:type Code: FairCurve_AnalysisCode
 	:param NbIterations: default value is 50
 	:type NbIterations: int
 	:param Tolerance: default value is 1.0e-3
@@ -326,7 +326,7 @@ class FairCurve_BattenLaw : public math_Function {
 	:param T:
 	:type T: float
 	:param THeigth:
-	:type THeigth: float &
+	:type THeigth: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real T,Standard_Real &OutValue);
 
@@ -383,9 +383,9 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* computes the gradient <G> of the energys for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		virtual Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
@@ -405,9 +405,9 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values of the Energys E for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param E:
-	:type E: float &
+	:type E: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -415,11 +415,11 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* computes the Energy <E> and the gradient <G> of the energy for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param E:
-	:type E: float &
+	:type E: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -427,13 +427,13 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* computes the Energy <E>, the gradient <G> and the Hessian <H> of the energy for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param E:
-	:type E: float &
+	:type E: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:param H:
-	:type H: math_Matrix &
+	:type H: math_Matrix
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G,math_Matrix & H);
 
@@ -441,7 +441,7 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "* compute the variables <X> wich correspond with the field <MyPoles>
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:rtype: bool") Variable;
 		virtual Standard_Boolean Variable (math_Vector & X);
 
@@ -464,7 +464,7 @@ class FairCurve_Newton : public math_NewtonMinimum {
 		%feature("compactdefaultargs") FairCurve_Newton;
 		%feature("autodoc", "* The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: This constructor do not computation
 	:param theFunction:
-	:type theFunction: math_MultipleVarFunctionWithHessian &
+	:type theFunction: math_MultipleVarFunctionWithHessian
 	:param theSpatialTolerance: default value is 1.0e-7
 	:type theSpatialTolerance: float
 	:param theCriteriumTolerance: default value is 1.0e-7
@@ -504,13 +504,13 @@ class FairCurve_DistributionOfJerk : public FairCurve_DistributionOfEnergy {
 		%feature("autodoc", ":param BSplOrder:
 	:type BSplOrder: int
 	:param FlatKnots:
-	:type FlatKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:type FlatKnots: TColStd_HArray1OfReal
 	:param Poles:
-	:type Poles: opencascade::handle<TColgp_HArray1OfPnt2d>
+	:type Poles: TColgp_HArray1OfPnt2d
 	:param DerivativeOrder:
 	:type DerivativeOrder: int
 	:param Law:
-	:type Law: FairCurve_BattenLaw &
+	:type Law: FairCurve_BattenLaw
 	:param NbValAux: default value is 0
 	:type NbValAux: int
 	:rtype: None") FairCurve_DistributionOfJerk;
@@ -520,9 +520,9 @@ class FairCurve_DistributionOfJerk : public FairCurve_DistributionOfEnergy {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -546,13 +546,13 @@ class FairCurve_DistributionOfSagging : public FairCurve_DistributionOfEnergy {
 		%feature("autodoc", ":param BSplOrder:
 	:type BSplOrder: int
 	:param FlatKnots:
-	:type FlatKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:type FlatKnots: TColStd_HArray1OfReal
 	:param Poles:
-	:type Poles: opencascade::handle<TColgp_HArray1OfPnt2d>
+	:type Poles: TColgp_HArray1OfPnt2d
 	:param DerivativeOrder:
 	:type DerivativeOrder: int
 	:param Law:
-	:type Law: FairCurve_BattenLaw &
+	:type Law: FairCurve_BattenLaw
 	:param NbValAux: default value is 0
 	:type NbValAux: int
 	:rtype: None") FairCurve_DistributionOfSagging;
@@ -562,9 +562,9 @@ class FairCurve_DistributionOfSagging : public FairCurve_DistributionOfEnergy {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -588,15 +588,15 @@ class FairCurve_DistributionOfTension : public FairCurve_DistributionOfEnergy {
 		%feature("autodoc", ":param BSplOrder:
 	:type BSplOrder: int
 	:param FlatKnots:
-	:type FlatKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:type FlatKnots: TColStd_HArray1OfReal
 	:param Poles:
-	:type Poles: opencascade::handle<TColgp_HArray1OfPnt2d>
+	:type Poles: TColgp_HArray1OfPnt2d
 	:param DerivativeOrder:
 	:type DerivativeOrder: int
 	:param LengthSliding:
 	:type LengthSliding: float
 	:param Law:
-	:type Law: FairCurve_BattenLaw &
+	:type Law: FairCurve_BattenLaw
 	:param NbValAux: default value is 0
 	:type NbValAux: int
 	:param Uniform: default value is Standard_False
@@ -616,9 +616,9 @@ class FairCurve_DistributionOfTension : public FairCurve_DistributionOfEnergy {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -643,15 +643,15 @@ class FairCurve_EnergyOfBatten : public FairCurve_Energy {
 	:param BSplOrder:
 	:type BSplOrder: int
 	:param FlatKnots:
-	:type FlatKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:type FlatKnots: TColStd_HArray1OfReal
 	:param Poles:
-	:type Poles: opencascade::handle<TColgp_HArray1OfPnt2d>
+	:type Poles: TColgp_HArray1OfPnt2d
 	:param ContrOrder1:
 	:type ContrOrder1: int
 	:param ContrOrder2:
 	:type ContrOrder2: int
 	:param Law:
-	:type Law: FairCurve_BattenLaw &
+	:type Law: FairCurve_BattenLaw
 	:param LengthSliding:
 	:type LengthSliding: float
 	:param FreeSliding: default value is Standard_True
@@ -679,7 +679,7 @@ class FairCurve_EnergyOfBatten : public FairCurve_Energy {
 		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "* compute the variables <X> wich correspond with the field <MyPoles>
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:rtype: bool") Variable;
 		virtual Standard_Boolean Variable (math_Vector & X);
 
@@ -704,15 +704,15 @@ class FairCurve_EnergyOfMVC : public FairCurve_Energy {
 	:param BSplOrder:
 	:type BSplOrder: int
 	:param FlatKnots:
-	:type FlatKnots: opencascade::handle<TColStd_HArray1OfReal> &
+	:type FlatKnots: TColStd_HArray1OfReal
 	:param Poles:
-	:type Poles: opencascade::handle<TColgp_HArray1OfPnt2d>
+	:type Poles: TColgp_HArray1OfPnt2d
 	:param ContrOrder1:
 	:type ContrOrder1: int
 	:param ContrOrder2:
 	:type ContrOrder2: int
 	:param Law:
-	:type Law: FairCurve_BattenLaw &
+	:type Law: FairCurve_BattenLaw
 	:param PhysicalRatio:
 	:type PhysicalRatio: float
 	:param LengthSliding:
@@ -746,7 +746,7 @@ class FairCurve_EnergyOfMVC : public FairCurve_Energy {
 		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "* compute the variables <X> wich correspond with the field <MyPoles>
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:rtype: bool") Variable;
 		virtual Standard_Boolean Variable (math_Vector & X);
 
@@ -769,7 +769,7 @@ class FairCurve_MinimalVariation : public FairCurve_Batten {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* Computes the curve with respect to the constraints, NbIterations and Tolerance. The tolerance setting allows you to control the precision of computation, and the maximum number of iterations allows you to set a limit on computation time.
 	:param ACode:
-	:type ACode: FairCurve_AnalysisCode &
+	:type ACode: FairCurve_AnalysisCode
 	:param NbIterations: default value is 50
 	:type NbIterations: int
 	:param Tolerance: default value is 1.0e-3

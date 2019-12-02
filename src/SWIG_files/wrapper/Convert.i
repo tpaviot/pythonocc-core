@@ -113,9 +113,9 @@ class Convert_CompBezierCurves2dToBSplineCurve2d {
 		%feature("compactdefaultargs") KnotsAndMults;
 		%feature("autodoc", "* Loads the Knots table with the knots and the Mults table with the corresponding multiplicities of the BSpline curve whose data is computed in this framework. Warning - Do not use this function before the computation is performed (Perform function). - The length of the Knots and Mults arrays must be equal to the number of knots in the BSpline curve whose data is computed in this framework. Particular care must be taken with respect to the above as these conditions are not checked, and an error may occur.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: None") KnotsAndMults;
 		void KnotsAndMults (TColStd_Array1OfReal & Knots,TColStd_Array1OfInteger & Mults);
 
@@ -186,9 +186,9 @@ class Convert_CompBezierCurvesToBSplineCurve {
 		%feature("compactdefaultargs") KnotsAndMults;
 		%feature("autodoc", "* - loads the Knots table with the knots, - and loads the Mults table with the corresponding multiplicities of the BSpline curve whose data is computed in this framework. Warning - Do not use this function before the computation is performed (Perform function). - The length of the Knots and Mults arrays must be equal to the number of knots in the BSpline curve whose data is computed in this framework. Particular care must be taken with respect to the above as these conditions are not checked, and an error may occur.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: None") KnotsAndMults;
 		void KnotsAndMults (TColStd_Array1OfReal & Knots,TColStd_Array1OfInteger & Mults);
 
@@ -245,13 +245,13 @@ class Convert_CompPolynomialToPoles {
 	:param MaxDegree:
 	:type MaxDegree: int
 	:param NumCoeffPerCurve:
-	:type NumCoeffPerCurve: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type NumCoeffPerCurve: TColStd_HArray1OfInteger
 	:param Coefficients:
-	:type Coefficients: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Coefficients: TColStd_HArray1OfReal
 	:param PolynomialIntervals:
-	:type PolynomialIntervals: opencascade::handle<TColStd_HArray2OfReal> &
+	:type PolynomialIntervals: TColStd_HArray2OfReal
 	:param TrueIntervals:
-	:type TrueIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type TrueIntervals: TColStd_HArray1OfReal
 	:rtype: None") Convert_CompPolynomialToPoles;
 		 Convert_CompPolynomialToPoles (const Standard_Integer NumCurves,const Standard_Integer Continuity,const Standard_Integer Dimension,const Standard_Integer MaxDegree,const opencascade::handle<TColStd_HArray1OfInteger> & NumCoeffPerCurve,const opencascade::handle<TColStd_HArray1OfReal> & Coefficients,const opencascade::handle<TColStd_HArray2OfReal> & PolynomialIntervals,const opencascade::handle<TColStd_HArray1OfReal> & TrueIntervals);
 
@@ -265,15 +265,15 @@ class Convert_CompPolynomialToPoles {
 	:param MaxDegree:
 	:type MaxDegree: int
 	:param Continuity:
-	:type Continuity: TColStd_Array1OfInteger &
+	:type Continuity: TColStd_Array1OfInteger
 	:param NumCoeffPerCurve:
-	:type NumCoeffPerCurve: TColStd_Array1OfInteger &
+	:type NumCoeffPerCurve: TColStd_Array1OfInteger
 	:param Coefficients:
-	:type Coefficients: TColStd_Array1OfReal &
+	:type Coefficients: TColStd_Array1OfReal
 	:param PolynomialIntervals:
-	:type PolynomialIntervals: TColStd_Array2OfReal &
+	:type PolynomialIntervals: TColStd_Array2OfReal
 	:param TrueIntervals:
-	:type TrueIntervals: TColStd_Array1OfReal &
+	:type TrueIntervals: TColStd_Array1OfReal
 	:rtype: None") Convert_CompPolynomialToPoles;
 		 Convert_CompPolynomialToPoles (const Standard_Integer NumCurves,const Standard_Integer Dimension,const Standard_Integer MaxDegree,const TColStd_Array1OfInteger & Continuity,const TColStd_Array1OfInteger & NumCoeffPerCurve,const TColStd_Array1OfReal & Coefficients,const TColStd_Array2OfReal & PolynomialIntervals,const TColStd_Array1OfReal & TrueIntervals);
 
@@ -287,11 +287,11 @@ class Convert_CompPolynomialToPoles {
 	:param Degree:
 	:type Degree: int
 	:param Coefficients:
-	:type Coefficients: TColStd_Array1OfReal &
+	:type Coefficients: TColStd_Array1OfReal
 	:param PolynomialIntervals:
-	:type PolynomialIntervals: TColStd_Array1OfReal &
+	:type PolynomialIntervals: TColStd_Array1OfReal
 	:param TrueIntervals:
-	:type TrueIntervals: TColStd_Array1OfReal &
+	:type TrueIntervals: TColStd_Array1OfReal
 	:rtype: None") Convert_CompPolynomialToPoles;
 		 Convert_CompPolynomialToPoles (const Standard_Integer Dimension,const Standard_Integer MaxDegree,const Standard_Integer Degree,const TColStd_Array1OfReal & Coefficients,const TColStd_Array1OfReal & PolynomialIntervals,const TColStd_Array1OfReal & TrueIntervals);
 
@@ -309,7 +309,7 @@ class Convert_CompPolynomialToPoles {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* Knots of the n-dimensional Bspline
 	:param K:
-	:type K: opencascade::handle<TColStd_HArray1OfReal> &
+	:type K: TColStd_HArray1OfReal
 	:rtype: None") Knots;
 		void Knots (opencascade::handle<TColStd_HArray1OfReal> & K);
 
@@ -317,7 +317,7 @@ class Convert_CompPolynomialToPoles {
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "* Multiplicities of the knots in the BSpline
 	:param M:
-	:type M: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type M: TColStd_HArray1OfInteger
 	:rtype: None") Multiplicities;
 		void Multiplicities (opencascade::handle<TColStd_HArray1OfInteger> & M);
 
@@ -337,7 +337,7 @@ class Convert_CompPolynomialToPoles {
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "* returns the poles of the n-dimensional BSpline in the following format : [1..NumPoles][1..Dimension]
 	:param Poles:
-	:type Poles: opencascade::handle<TColStd_HArray2OfReal> &
+	:type Poles: TColStd_HArray2OfReal
 	:rtype: None") Poles;
 		void Poles (opencascade::handle<TColStd_HArray2OfReal> & Poles);
 
@@ -361,17 +361,17 @@ class Convert_ConicToBSplineCurve {
 		%feature("autodoc", ":param Parametrisation:
 	:type Parametrisation: Convert_ParameterisationType
 	:param CosNumerator:
-	:type CosNumerator: opencascade::handle<TColStd_HArray1OfReal> &
+	:type CosNumerator: TColStd_HArray1OfReal
 	:param SinNumerator:
-	:type SinNumerator: opencascade::handle<TColStd_HArray1OfReal> &
+	:type SinNumerator: TColStd_HArray1OfReal
 	:param Denominator:
-	:type Denominator: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Denominator: TColStd_HArray1OfReal
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param Knots:
-	:type Knots: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Knots: TColStd_HArray1OfReal
 	:param Mults:
-	:type Mults: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type Mults: TColStd_HArray1OfInteger
 	:rtype: None") BuildCosAndSin;
 		void BuildCosAndSin (const Convert_ParameterisationType Parametrisation,opencascade::handle<TColStd_HArray1OfReal> & CosNumerator,opencascade::handle<TColStd_HArray1OfReal> & SinNumerator,opencascade::handle<TColStd_HArray1OfReal> & Denominator,Standard_Integer &OutValue,opencascade::handle<TColStd_HArray1OfReal> & Knots,opencascade::handle<TColStd_HArray1OfInteger> & Mults);
 
@@ -384,17 +384,17 @@ class Convert_ConicToBSplineCurve {
 	:param ULast:
 	:type ULast: float
 	:param CosNumerator:
-	:type CosNumerator: opencascade::handle<TColStd_HArray1OfReal> &
+	:type CosNumerator: TColStd_HArray1OfReal
 	:param SinNumerator:
-	:type SinNumerator: opencascade::handle<TColStd_HArray1OfReal> &
+	:type SinNumerator: TColStd_HArray1OfReal
 	:param Denominator:
-	:type Denominator: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Denominator: TColStd_HArray1OfReal
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param Knots:
-	:type Knots: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Knots: TColStd_HArray1OfReal
 	:param Mults:
-	:type Mults: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type Mults: TColStd_HArray1OfInteger
 	:rtype: None") BuildCosAndSin;
 		void BuildCosAndSin (const Convert_ParameterisationType Parametrisation,const Standard_Real UFirst,const Standard_Real ULast,opencascade::handle<TColStd_HArray1OfReal> & CosNumerator,opencascade::handle<TColStd_HArray1OfReal> & SinNumerator,opencascade::handle<TColStd_HArray1OfReal> & Denominator,Standard_Integer &OutValue,opencascade::handle<TColStd_HArray1OfReal> & Knots,opencascade::handle<TColStd_HArray1OfInteger> & Mults);
 
@@ -588,13 +588,13 @@ class Convert_GridPolynomialToPoles {
 	:param MaxVDegree:
 	:type MaxVDegree: int
 	:param NumCoeff:
-	:type NumCoeff: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type NumCoeff: TColStd_HArray1OfInteger
 	:param Coefficients:
-	:type Coefficients: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Coefficients: TColStd_HArray1OfReal
 	:param PolynomialUIntervals:
-	:type PolynomialUIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type PolynomialUIntervals: TColStd_HArray1OfReal
 	:param PolynomialVIntervals:
-	:type PolynomialVIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type PolynomialVIntervals: TColStd_HArray1OfReal
 	:rtype: None") Convert_GridPolynomialToPoles;
 		 Convert_GridPolynomialToPoles (const Standard_Integer MaxUDegree,const Standard_Integer MaxVDegree,const opencascade::handle<TColStd_HArray1OfInteger> & NumCoeff,const opencascade::handle<TColStd_HArray1OfReal> & Coefficients,const opencascade::handle<TColStd_HArray1OfReal> & PolynomialUIntervals,const opencascade::handle<TColStd_HArray1OfReal> & PolynomialVIntervals);
 
@@ -614,17 +614,17 @@ class Convert_GridPolynomialToPoles {
 	:param MaxVDegree:
 	:type MaxVDegree: int
 	:param NumCoeffPerSurface:
-	:type NumCoeffPerSurface: opencascade::handle<TColStd_HArray2OfInteger> &
+	:type NumCoeffPerSurface: TColStd_HArray2OfInteger
 	:param Coefficients:
-	:type Coefficients: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Coefficients: TColStd_HArray1OfReal
 	:param PolynomialUIntervals:
-	:type PolynomialUIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type PolynomialUIntervals: TColStd_HArray1OfReal
 	:param PolynomialVIntervals:
-	:type PolynomialVIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type PolynomialVIntervals: TColStd_HArray1OfReal
 	:param TrueUIntervals:
-	:type TrueUIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type TrueUIntervals: TColStd_HArray1OfReal
 	:param TrueVIntervals:
-	:type TrueVIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type TrueVIntervals: TColStd_HArray1OfReal
 	:rtype: None") Convert_GridPolynomialToPoles;
 		 Convert_GridPolynomialToPoles (const Standard_Integer NbUSurfaces,const Standard_Integer NBVSurfaces,const Standard_Integer UContinuity,const Standard_Integer VContinuity,const Standard_Integer MaxUDegree,const Standard_Integer MaxVDegree,const opencascade::handle<TColStd_HArray2OfInteger> & NumCoeffPerSurface,const opencascade::handle<TColStd_HArray1OfReal> & Coefficients,const opencascade::handle<TColStd_HArray1OfReal> & PolynomialUIntervals,const opencascade::handle<TColStd_HArray1OfReal> & PolynomialVIntervals,const opencascade::handle<TColStd_HArray1OfReal> & TrueUIntervals,const opencascade::handle<TColStd_HArray1OfReal> & TrueVIntervals);
 
@@ -664,17 +664,17 @@ class Convert_GridPolynomialToPoles {
 	:param MaxVDegree:
 	:type MaxVDegree: int
 	:param NumCoeffPerSurface:
-	:type NumCoeffPerSurface: opencascade::handle<TColStd_HArray2OfInteger> &
+	:type NumCoeffPerSurface: TColStd_HArray2OfInteger
 	:param Coefficients:
-	:type Coefficients: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Coefficients: TColStd_HArray1OfReal
 	:param PolynomialUIntervals:
-	:type PolynomialUIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type PolynomialUIntervals: TColStd_HArray1OfReal
 	:param PolynomialVIntervals:
-	:type PolynomialVIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type PolynomialVIntervals: TColStd_HArray1OfReal
 	:param TrueUIntervals:
-	:type TrueUIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type TrueUIntervals: TColStd_HArray1OfReal
 	:param TrueVIntervals:
-	:type TrueVIntervals: opencascade::handle<TColStd_HArray1OfReal> &
+	:type TrueVIntervals: TColStd_HArray1OfReal
 	:rtype: None") Perform;
 		void Perform (const Standard_Integer UContinuity,const Standard_Integer VContinuity,const Standard_Integer MaxUDegree,const Standard_Integer MaxVDegree,const opencascade::handle<TColStd_HArray2OfInteger> & NumCoeffPerSurface,const opencascade::handle<TColStd_HArray1OfReal> & Coefficients,const opencascade::handle<TColStd_HArray1OfReal> & PolynomialUIntervals,const opencascade::handle<TColStd_HArray1OfReal> & PolynomialVIntervals,const opencascade::handle<TColStd_HArray1OfReal> & TrueUIntervals,const opencascade::handle<TColStd_HArray1OfReal> & TrueVIntervals);
 

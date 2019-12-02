@@ -109,7 +109,7 @@ class HLRAppli_ReflectLines {
 		%feature("compactdefaultargs") HLRAppli_ReflectLines;
 		%feature("autodoc", "* Constructor
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: None") HLRAppli_ReflectLines;
 		 HLRAppli_ReflectLines (const TopoDS_Shape & aShape);
 

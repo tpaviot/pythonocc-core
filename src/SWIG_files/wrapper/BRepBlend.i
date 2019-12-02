@@ -157,7 +157,7 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: bool") D0;
 		virtual Standard_Boolean D0 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -179,9 +179,9 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") D1;
 		virtual Standard_Boolean D1 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -207,11 +207,11 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") D2;
 		virtual Standard_Boolean D2 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -219,7 +219,7 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections. This information is usefull to perform well conditionned rational approximation.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetMinimalWeight;
 		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -233,7 +233,7 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: TColStd_Array1OfReal &
+	:type Tol3d: TColStd_Array1OfReal
 	:rtype: void") GetTolerance;
 		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
 
@@ -241,7 +241,7 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -257,7 +257,7 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* get the Knots of the section
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: void") Knots;
 		virtual void Knots (TColStd_Array1OfReal & TKnots);
 
@@ -271,7 +271,7 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "* get the Multplicities of the section
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: void") Mults;
 		virtual void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -292,13 +292,13 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 		/****************** Point ******************/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_AppFunction &
+	:type Func: Blend_AppFunction
 	:param Param:
 	:type Param: float
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Pnt:
-	:type Pnt: Blend_Point &
+	:type Pnt: Blend_Point
 	:rtype: void") Point;
 		virtual void Point (const Blend_AppFunction & Func,const Standard_Real Param,const math_Vector & Sol,Blend_Point & Pnt);
 
@@ -310,9 +310,9 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: void") Resolution;
 		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -320,11 +320,11 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "* get the format of an section
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:rtype: void") SectionShape;
 		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -351,9 +351,9 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 		/****************** Vec ******************/
 		%feature("compactdefaultargs") Vec;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Pnt:
-	:type Pnt: Blend_Point &
+	:type Pnt: Blend_Point
 	:rtype: void") Vec;
 		virtual void Vec (math_Vector & Sol,const Blend_Point & Pnt);
 
@@ -406,11 +406,11 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 		%feature("compactdefaultargs") CriteriumWeight;
 		%feature("autodoc", "* returns the Weights (as percent) associed to the criterium used in the optimization.
 	:param W1:
-	:type W1: float &
+	:type W1: float
 	:param W2:
-	:type W2: float &
+	:type W2: float
 	:param W3:
-	:type W3: float &
+	:type W3: float
 	:rtype: None") CriteriumWeight;
 		void CriteriumWeight (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -421,9 +421,9 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 	:param TPoles:
 	:type TPoles: TColgp_Array1OfPnt2d
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Curve2d;
 		void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
 
@@ -452,11 +452,11 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 		/****************** Curves2dShape ******************/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", ":param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:rtype: None") Curves2dShape;
 		void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -496,9 +496,9 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Lin:
-	:type Lin: opencascade::handle<BRepBlend_Line> &
+	:type Lin: BRepBlend_Line
 	:param SecGen:
-	:type SecGen: Blend_AppFunction &
+	:type SecGen: Blend_AppFunction
 	:param SpApprox: default value is Standard_False
 	:type SpApprox: bool
 	:rtype: None") Perform;
@@ -507,9 +507,9 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Lin:
-	:type Lin: opencascade::handle<BRepBlend_Line> &
+	:type Lin: BRepBlend_Line
 	:param SecGen:
-	:type SecGen: Blend_AppFunction &
+	:type SecGen: Blend_AppFunction
 	:param NbMaxP:
 	:type NbMaxP: int
 	:rtype: None") Perform;
@@ -518,9 +518,9 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 		/****************** PerformSmoothing ******************/
 		%feature("compactdefaultargs") PerformSmoothing;
 		%feature("autodoc", ":param Lin:
-	:type Lin: opencascade::handle<BRepBlend_Line> &
+	:type Lin: BRepBlend_Line
 	:param SecGen:
-	:type SecGen: Blend_AppFunction &
+	:type SecGen: Blend_AppFunction
 	:rtype: None") PerformSmoothing;
 		void PerformSmoothing (const opencascade::handle<BRepBlend_Line> & Lin,Blend_AppFunction & SecGen);
 
@@ -560,17 +560,17 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 		/****************** SurfShape ******************/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", ":param UDegree:
-	:type UDegree: int &
+	:type UDegree: int
 	:param VDegree:
-	:type VDegree: int &
+	:type VDegree: int
 	:param NbUPoles:
-	:type NbUPoles: int &
+	:type NbUPoles: int
 	:param NbVPoles:
-	:type NbVPoles: int &
+	:type NbVPoles: int
 	:param NbUKnots:
-	:type NbUKnots: int &
+	:type NbUKnots: int
 	:param NbVKnots:
-	:type NbVKnots: int &
+	:type NbVKnots: int
 	:rtype: None") SurfShape;
 		void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -604,15 +604,15 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 		%feature("autodoc", ":param TPoles:
 	:type TPoles: TColgp_Array2OfPnt
 	:param TWeights:
-	:type TWeights: TColStd_Array2OfReal &
+	:type TWeights: TColStd_Array2OfReal
 	:param TUKnots:
-	:type TUKnots: TColStd_Array1OfReal &
+	:type TUKnots: TColStd_Array1OfReal
 	:param TVKnots:
-	:type TVKnots: TColStd_Array1OfReal &
+	:type TVKnots: TColStd_Array1OfReal
 	:param TUMults:
-	:type TUMults: TColStd_Array1OfInteger &
+	:type TUMults: TColStd_Array1OfInteger
 	:param TVMults:
-	:type TVMults: TColStd_Array1OfInteger &
+	:type TVMults: TColStd_Array1OfInteger
 	:rtype: None") Surface;
 		void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
 
@@ -626,9 +626,9 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 		/****************** TolReached ******************/
 		%feature("compactdefaultargs") TolReached;
 		%feature("autodoc", ":param Tol3d:
-	:type Tol3d: float &
+	:type Tol3d: float
 	:param Tol2d:
-	:type Tol2d: float &
+	:type Tol2d: float
 	:rtype: None") TolReached;
 		void TolReached (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -661,7 +661,7 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
 		%feature("compactdefaultargs") BRepBlend_AppSurface;
 		%feature("autodoc", "* Approximation of the new Surface (and eventually the 2d Curves on the support surfaces). Normaly the 2d curve are approximated with an tolerance given by the resolution on support surfaces, but if this tolerance is too large Tol2d is used.
 	:param Funct:
-	:type Funct: opencascade::handle<Approx_SweepFunction> &
+	:type Funct: Approx_SweepFunction
 	:param First:
 	:type First: float
 	:param Last:
@@ -688,9 +688,9 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
 	:param TPoles:
 	:type TPoles: TColgp_Array1OfPnt2d
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Curve2d;
 		void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
 
@@ -719,11 +719,11 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
 		/****************** Curves2dShape ******************/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", ":param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:rtype: None") Curves2dShape;
 		void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -767,17 +767,17 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
 		/****************** SurfShape ******************/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", ":param UDegree:
-	:type UDegree: int &
+	:type UDegree: int
 	:param VDegree:
-	:type VDegree: int &
+	:type VDegree: int
 	:param NbUPoles:
-	:type NbUPoles: int &
+	:type NbUPoles: int
 	:param NbVPoles:
-	:type NbVPoles: int &
+	:type NbVPoles: int
 	:param NbUKnots:
-	:type NbUKnots: int &
+	:type NbUKnots: int
 	:param NbVKnots:
-	:type NbVKnots: int &
+	:type NbVKnots: int
 	:rtype: None") SurfShape;
 		void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -811,15 +811,15 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
 		%feature("autodoc", ":param TPoles:
 	:type TPoles: TColgp_Array2OfPnt
 	:param TWeights:
-	:type TWeights: TColStd_Array2OfReal &
+	:type TWeights: TColStd_Array2OfReal
 	:param TUKnots:
-	:type TUKnots: TColStd_Array1OfReal &
+	:type TUKnots: TColStd_Array1OfReal
 	:param TVKnots:
-	:type TVKnots: TColStd_Array1OfReal &
+	:type TVKnots: TColStd_Array1OfReal
 	:param TUMults:
-	:type TUMults: TColStd_Array1OfInteger &
+	:type TUMults: TColStd_Array1OfInteger
 	:param TVMults:
-	:type TVMults: TColStd_Array1OfInteger &
+	:type TVMults: TColStd_Array1OfInteger
 	:rtype: None") Surface;
 		void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
 
@@ -858,18 +858,18 @@ class BRepBlend_CSWalking {
 		/****************** BRepBlend_CSWalking ******************/
 		%feature("compactdefaultargs") BRepBlend_CSWalking;
 		%feature("autodoc", ":param Curv:
-	:type Curv: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curv: Adaptor3d_HCurve
 	:param Surf:
-	:type Surf: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf: Adaptor3d_HSurface
 	:param Domain:
-	:type Domain: opencascade::handle<Adaptor3d_TopolTool> &
+	:type Domain: Adaptor3d_TopolTool
 	:rtype: None") BRepBlend_CSWalking;
 		 BRepBlend_CSWalking (const opencascade::handle<Adaptor3d_HCurve> & Curv,const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & Domain);
 
 		/****************** Complete ******************/
 		%feature("compactdefaultargs") Complete;
 		%feature("autodoc", ":param F:
-	:type F: Blend_CSFunction &
+	:type F: Blend_CSFunction
 	:param Pmin:
 	:type Pmin: float
 	:rtype: bool") Complete;
@@ -888,7 +888,7 @@ class BRepBlend_CSWalking {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param F:
-	:type F: Blend_CSFunction &
+	:type F: Blend_CSFunction
 	:param Pdep:
 	:type Pdep: float
 	:param Pmax:
@@ -898,7 +898,7 @@ class BRepBlend_CSWalking {
 	:param TolGuide:
 	:type TolGuide: float
 	:param Soldep:
-	:type Soldep: math_Vector &
+	:type Soldep: math_Vector
 	:param Tolesp:
 	:type Tolesp: float
 	:param Fleche:
@@ -926,9 +926,9 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 		/****************** BRepBlend_CurvPointRadInv ******************/
 		%feature("compactdefaultargs") BRepBlend_CurvPointRadInv;
 		%feature("autodoc", ":param C1:
-	:type C1: opencascade::handle<Adaptor3d_HCurve> &
+	:type C1: Adaptor3d_HCurve
 	:param C2:
-	:type C2: opencascade::handle<Adaptor3d_HCurve> &
+	:type C2: Adaptor3d_HCurve
 	:rtype: None") BRepBlend_CurvPointRadInv;
 		 BRepBlend_CurvPointRadInv (const opencascade::handle<Adaptor3d_HCurve> & C1,const opencascade::handle<Adaptor3d_HCurve> & C2);
 
@@ -936,9 +936,9 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -946,9 +946,9 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "* Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 	:param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -956,7 +956,7 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "* Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 	:param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -966,7 +966,7 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "* Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -997,9 +997,9 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -1007,11 +1007,11 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -1034,13 +1034,13 @@ class BRepBlend_Extremity {
 		%feature("compactdefaultargs") AddArc;
 		%feature("autodoc", "* Sets the values of a point which is on the arc A, at parameter Param.
 	:param A:
-	:type A: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type A: Adaptor2d_HCurve2d
 	:param Param:
 	:type Param: float
 	:param TLine:
-	:type TLine: IntSurf_Transition &
+	:type TLine: IntSurf_Transition
 	:param TArc:
-	:type TArc: IntSurf_Transition &
+	:type TArc: IntSurf_Transition
 	:rtype: None") AddArc;
 		void AddArc (const opencascade::handle<Adaptor2d_HCurve2d> & A,const Standard_Real Param,const IntSurf_Transition & TLine,const IntSurf_Transition & TArc);
 
@@ -1079,7 +1079,7 @@ class BRepBlend_Extremity {
 	:param Tol:
 	:type Tol: float
 	:param Vtx:
-	:type Vtx: opencascade::handle<Adaptor3d_HVertex> &
+	:type Vtx: Adaptor3d_HVertex
 	:rtype: None") BRepBlend_Extremity;
 		 BRepBlend_Extremity (const gp_Pnt & P,const Standard_Real U,const Standard_Real V,const Standard_Real Param,const Standard_Real Tol,const opencascade::handle<Adaptor3d_HVertex> & Vtx);
 
@@ -1129,9 +1129,9 @@ class BRepBlend_Extremity {
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "* This method returns the parameters of the point on the concerned surface.
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1180,7 +1180,7 @@ class BRepBlend_Extremity {
 	:param Tol:
 	:type Tol: float
 	:param Vtx:
-	:type Vtx: opencascade::handle<Adaptor3d_HVertex> &
+	:type Vtx: Adaptor3d_HVertex
 	:rtype: None") SetValue;
 		void SetValue (const gp_Pnt & P,const Standard_Real U,const Standard_Real V,const Standard_Real Param,const Standard_Real Tol,const opencascade::handle<Adaptor3d_HVertex> & Vtx);
 
@@ -1202,7 +1202,7 @@ class BRepBlend_Extremity {
 		%feature("compactdefaultargs") SetVertex;
 		%feature("autodoc", "* Set the values for an extremity on a curve.
 	:param V:
-	:type V: opencascade::handle<Adaptor3d_HVertex> &
+	:type V: Adaptor3d_HVertex
 	:rtype: None") SetVertex;
 		void SetVertex (const opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -1249,7 +1249,7 @@ class BRepBlend_Line : public Standard_Transient {
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "* Adds a point in the line.
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:rtype: None") Append;
 		void Append (const Blend_Point & P);
 
@@ -1282,7 +1282,7 @@ class BRepBlend_Line : public Standard_Transient {
 	:param Index:
 	:type Index: int
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:rtype: None") InsertBefore;
 		void InsertBefore (const Standard_Integer Index,const Blend_Point & P);
 
@@ -1304,7 +1304,7 @@ class BRepBlend_Line : public Standard_Transient {
 		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "* Adds a point in the line at the first place.
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:rtype: None") Prepend;
 		void Prepend (const Blend_Point & P);
 
@@ -1340,9 +1340,9 @@ class BRepBlend_Line : public Standard_Transient {
 		%feature("compactdefaultargs") SetEndPoints;
 		%feature("autodoc", "* Sets tne values of the end points for the line.
 	:param EndPt1:
-	:type EndPt1: BRepBlend_Extremity &
+	:type EndPt1: BRepBlend_Extremity
 	:param EndPt2:
-	:type EndPt2: BRepBlend_Extremity &
+	:type EndPt2: BRepBlend_Extremity
 	:rtype: None") SetEndPoints;
 		void SetEndPoints (const BRepBlend_Extremity & EndPt1,const BRepBlend_Extremity & EndPt2);
 
@@ -1350,9 +1350,9 @@ class BRepBlend_Line : public Standard_Transient {
 		%feature("compactdefaultargs") SetStartPoints;
 		%feature("autodoc", "* Sets the values of the start points for the line.
 	:param StartPt1:
-	:type StartPt1: BRepBlend_Extremity &
+	:type StartPt1: BRepBlend_Extremity
 	:param StartPt2:
-	:type StartPt2: BRepBlend_Extremity &
+	:type StartPt2: BRepBlend_Extremity
 	:rtype: None") SetStartPoints;
 		void SetStartPoints (const BRepBlend_Extremity & StartPt1,const BRepBlend_Extremity & StartPt2);
 
@@ -1419,13 +1419,13 @@ class BRepBlend_PointOnRst {
 		%feature("compactdefaultargs") BRepBlend_PointOnRst;
 		%feature("autodoc", "* Creates the PointOnRst on the arc A, at parameter Param, with the transition TLine on the walking line, and TArc on the arc A.
 	:param A:
-	:type A: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type A: Adaptor2d_HCurve2d
 	:param Param:
 	:type Param: float
 	:param TLine:
-	:type TLine: IntSurf_Transition &
+	:type TLine: IntSurf_Transition
 	:param TArc:
-	:type TArc: IntSurf_Transition &
+	:type TArc: IntSurf_Transition
 	:rtype: None") BRepBlend_PointOnRst;
 		 BRepBlend_PointOnRst (const opencascade::handle<Adaptor2d_HCurve2d> & A,const Standard_Real Param,const IntSurf_Transition & TLine,const IntSurf_Transition & TArc);
 
@@ -1439,13 +1439,13 @@ class BRepBlend_PointOnRst {
 		%feature("compactdefaultargs") SetArc;
 		%feature("autodoc", "* Sets the values of a point which is on the arc A, at parameter Param.
 	:param A:
-	:type A: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type A: Adaptor2d_HCurve2d
 	:param Param:
 	:type Param: float
 	:param TLine:
-	:type TLine: IntSurf_Transition &
+	:type TLine: IntSurf_Transition
 	:param TArc:
-	:type TArc: IntSurf_Transition &
+	:type TArc: IntSurf_Transition
 	:rtype: None") SetArc;
 		void SetArc (const opencascade::handle<Adaptor2d_HCurve2d> & A,const Standard_Real Param,const IntSurf_Transition & TLine,const IntSurf_Transition & TArc);
 
@@ -1479,15 +1479,15 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		/****************** BRepBlend_RstRstConstRad ******************/
 		%feature("compactdefaultargs") BRepBlend_RstRstConstRad;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf1: Adaptor3d_HSurface
 	:param Rst1:
-	:type Rst1: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst1: Adaptor2d_HCurve2d
 	:param Surf2:
-	:type Surf2: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf2: Adaptor3d_HSurface
 	:param Rst2:
-	:type Rst2: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst2: Adaptor2d_HCurve2d
 	:param CGuide:
-	:type CGuide: opencascade::handle<Adaptor3d_HCurve> &
+	:type CGuide: Adaptor3d_HCurve
 	:rtype: None") BRepBlend_RstRstConstRad;
 		 BRepBlend_RstRstConstRad (const opencascade::handle<Adaptor3d_HSurface> & Surf1,const opencascade::handle<Adaptor2d_HCurve2d> & Rst1,const opencascade::handle<Adaptor3d_HSurface> & Surf2,const opencascade::handle<Adaptor2d_HCurve2d> & Rst2,const opencascade::handle<Adaptor3d_HCurve> & CGuide);
 
@@ -1511,7 +1511,7 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Decroch;
 		%feature("autodoc", "* Permet d ' implementer un critere de decrochage specifique a la fonction.
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param NRst1:
 	:type NRst1: gp_Vec
 	:param TgRst1:
@@ -1527,18 +1527,18 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -1552,7 +1552,7 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -1565,20 +1565,20 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -1594,9 +1594,9 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -1604,7 +1604,7 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1619,7 +1619,7 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -1633,14 +1633,14 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -1705,9 +1705,9 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1720,9 +1720,9 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 	:param V:
 	:type V: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Circ
 	:rtype: None") Section;
@@ -1732,7 +1732,7 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -1742,22 +1742,22 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -1765,7 +1765,7 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -1779,24 +1779,24 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param SurfRef1:
-	:type SurfRef1: opencascade::handle<Adaptor3d_HSurface> &
+	:type SurfRef1: Adaptor3d_HSurface
 	:param RstRef1:
-	:type RstRef1: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type RstRef1: Adaptor2d_HCurve2d
 	:param SurfRef2:
-	:type SurfRef2: opencascade::handle<Adaptor3d_HSurface> &
+	:type SurfRef2: Adaptor3d_HSurface
 	:param RstRef2:
-	:type RstRef2: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type RstRef2: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const opencascade::handle<Adaptor3d_HSurface> & SurfRef1,const opencascade::handle<Adaptor2d_HCurve2d> & RstRef1,const opencascade::handle<Adaptor3d_HSurface> & SurfRef2,const opencascade::handle<Adaptor2d_HCurve2d> & RstRef2);
 
@@ -1858,9 +1858,9 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -1868,11 +1868,11 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -1894,17 +1894,17 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		/****************** BRepBlend_RstRstEvolRad ******************/
 		%feature("compactdefaultargs") BRepBlend_RstRstEvolRad;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf1: Adaptor3d_HSurface
 	:param Rst1:
-	:type Rst1: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst1: Adaptor2d_HCurve2d
 	:param Surf2:
-	:type Surf2: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf2: Adaptor3d_HSurface
 	:param Rst2:
-	:type Rst2: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst2: Adaptor2d_HCurve2d
 	:param CGuide:
-	:type CGuide: opencascade::handle<Adaptor3d_HCurve> &
+	:type CGuide: Adaptor3d_HCurve
 	:param Evol:
-	:type Evol: opencascade::handle<Law_Function> &
+	:type Evol: Law_Function
 	:rtype: None") BRepBlend_RstRstEvolRad;
 		 BRepBlend_RstRstEvolRad (const opencascade::handle<Adaptor3d_HSurface> & Surf1,const opencascade::handle<Adaptor2d_HCurve2d> & Rst1,const opencascade::handle<Adaptor3d_HSurface> & Surf2,const opencascade::handle<Adaptor2d_HCurve2d> & Rst2,const opencascade::handle<Adaptor3d_HCurve> & CGuide,const opencascade::handle<Law_Function> & Evol);
 
@@ -1928,7 +1928,7 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Decroch;
 		%feature("autodoc", "* Enables implementation of a criterion of decrochage specific to the function.
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param NRst1:
 	:type NRst1: gp_Vec
 	:param TgRst1:
@@ -1944,18 +1944,18 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -1969,7 +1969,7 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -1982,20 +1982,20 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2011,9 +2011,9 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -2021,7 +2021,7 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -2036,7 +2036,7 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -2050,14 +2050,14 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -2122,9 +2122,9 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2137,9 +2137,9 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 	:param V:
 	:type V: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Circ
 	:rtype: None") Section;
@@ -2149,7 +2149,7 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -2159,22 +2159,22 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -2182,7 +2182,7 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -2196,24 +2196,24 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param SurfRef1:
-	:type SurfRef1: opencascade::handle<Adaptor3d_HSurface> &
+	:type SurfRef1: Adaptor3d_HSurface
 	:param RstRef1:
-	:type RstRef1: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type RstRef1: Adaptor2d_HCurve2d
 	:param SurfRef2:
-	:type SurfRef2: opencascade::handle<Adaptor3d_HSurface> &
+	:type SurfRef2: Adaptor3d_HSurface
 	:param RstRef2:
-	:type RstRef2: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type RstRef2: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const opencascade::handle<Adaptor3d_HSurface> & SurfRef1,const opencascade::handle<Adaptor2d_HCurve2d> & RstRef1,const opencascade::handle<Adaptor3d_HSurface> & SurfRef2,const opencascade::handle<Adaptor2d_HCurve2d> & RstRef2);
 
@@ -2273,9 +2273,9 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2283,11 +2283,11 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2309,32 +2309,32 @@ class BRepBlend_RstRstLineBuilder {
 		/****************** BRepBlend_RstRstLineBuilder ******************/
 		%feature("compactdefaultargs") BRepBlend_RstRstLineBuilder;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf1: Adaptor3d_HSurface
 	:param Rst1:
-	:type Rst1: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst1: Adaptor2d_HCurve2d
 	:param Domain1:
-	:type Domain1: opencascade::handle<Adaptor3d_TopolTool> &
+	:type Domain1: Adaptor3d_TopolTool
 	:param Surf2:
-	:type Surf2: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf2: Adaptor3d_HSurface
 	:param Rst2:
-	:type Rst2: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst2: Adaptor2d_HCurve2d
 	:param Domain2:
-	:type Domain2: opencascade::handle<Adaptor3d_TopolTool> &
+	:type Domain2: Adaptor3d_TopolTool
 	:rtype: None") BRepBlend_RstRstLineBuilder;
 		 BRepBlend_RstRstLineBuilder (const opencascade::handle<Adaptor3d_HSurface> & Surf1,const opencascade::handle<Adaptor2d_HCurve2d> & Rst1,const opencascade::handle<Adaptor3d_TopolTool> & Domain1,const opencascade::handle<Adaptor3d_HSurface> & Surf2,const opencascade::handle<Adaptor2d_HCurve2d> & Rst2,const opencascade::handle<Adaptor3d_TopolTool> & Domain2);
 
 		/****************** Complete ******************/
 		%feature("compactdefaultargs") Complete;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_RstRstFunction &
+	:type Func: Blend_RstRstFunction
 	:param Finv1:
-	:type Finv1: Blend_SurfCurvFuncInv &
+	:type Finv1: Blend_SurfCurvFuncInv
 	:param FinvP1:
-	:type FinvP1: Blend_CurvPointFuncInv &
+	:type FinvP1: Blend_CurvPointFuncInv
 	:param Finv2:
-	:type Finv2: Blend_SurfCurvFuncInv &
+	:type Finv2: Blend_SurfCurvFuncInv
 	:param FinvP2:
-	:type FinvP2: Blend_CurvPointFuncInv &
+	:type FinvP2: Blend_CurvPointFuncInv
 	:param Pmin:
 	:type Pmin: float
 	:rtype: bool") Complete;
@@ -2373,15 +2373,15 @@ class BRepBlend_RstRstLineBuilder {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_RstRstFunction &
+	:type Func: Blend_RstRstFunction
 	:param Finv1:
-	:type Finv1: Blend_SurfCurvFuncInv &
+	:type Finv1: Blend_SurfCurvFuncInv
 	:param FinvP1:
-	:type FinvP1: Blend_CurvPointFuncInv &
+	:type FinvP1: Blend_CurvPointFuncInv
 	:param Finv2:
-	:type Finv2: Blend_SurfCurvFuncInv &
+	:type Finv2: Blend_SurfCurvFuncInv
 	:param FinvP2:
-	:type FinvP2: Blend_CurvPointFuncInv &
+	:type FinvP2: Blend_CurvPointFuncInv
 	:param Pdep:
 	:type Pdep: float
 	:param Pmax:
@@ -2391,7 +2391,7 @@ class BRepBlend_RstRstLineBuilder {
 	:param TolGuide:
 	:type TolGuide: float
 	:param Soldep:
-	:type Soldep: math_Vector &
+	:type Soldep: math_Vector
 	:param Tolesp:
 	:type Tolesp: float
 	:param Fleche:
@@ -2404,21 +2404,21 @@ class BRepBlend_RstRstLineBuilder {
 		/****************** PerformFirstSection ******************/
 		%feature("compactdefaultargs") PerformFirstSection;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_RstRstFunction &
+	:type Func: Blend_RstRstFunction
 	:param Finv1:
-	:type Finv1: Blend_SurfCurvFuncInv &
+	:type Finv1: Blend_SurfCurvFuncInv
 	:param FinvP1:
-	:type FinvP1: Blend_CurvPointFuncInv &
+	:type FinvP1: Blend_CurvPointFuncInv
 	:param Finv2:
-	:type Finv2: Blend_SurfCurvFuncInv &
+	:type Finv2: Blend_SurfCurvFuncInv
 	:param FinvP2:
-	:type FinvP2: Blend_CurvPointFuncInv &
+	:type FinvP2: Blend_CurvPointFuncInv
 	:param Pdep:
 	:type Pdep: float
 	:param Pmax:
 	:type Pmax: float
 	:param Soldep:
-	:type Soldep: math_Vector &
+	:type Soldep: math_Vector
 	:param Tolesp:
 	:type Tolesp: float
 	:param TolGuide:
@@ -2432,9 +2432,9 @@ class BRepBlend_RstRstLineBuilder {
 	:param RecP2:
 	:type RecP2: bool
 	:param Psol:
-	:type Psol: float &
+	:type Psol: float
 	:param ParSol:
-	:type ParSol: math_Vector &
+	:type ParSol: math_Vector
 	:rtype: bool") PerformFirstSection;
 		Standard_Boolean PerformFirstSection (Blend_RstRstFunction & Func,Blend_SurfCurvFuncInv & Finv1,Blend_CurvPointFuncInv & FinvP1,Blend_SurfCurvFuncInv & Finv2,Blend_CurvPointFuncInv & FinvP2,const Standard_Real Pdep,const Standard_Real Pmax,const math_Vector & Soldep,const Standard_Real Tolesp,const Standard_Real TolGuide,const Standard_Boolean RecRst1,const Standard_Boolean RecP1,const Standard_Boolean RecRst2,const Standard_Boolean RecP2,Standard_Real &OutValue,math_Vector & ParSol);
 
@@ -2456,11 +2456,11 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 		/****************** BRepBlend_SurfCurvConstRadInv ******************/
 		%feature("compactdefaultargs") BRepBlend_SurfCurvConstRadInv;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Cg:
-	:type Cg: opencascade::handle<Adaptor3d_HCurve> &
+	:type Cg: Adaptor3d_HCurve
 	:rtype: None") BRepBlend_SurfCurvConstRadInv;
 		 BRepBlend_SurfCurvConstRadInv (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Adaptor3d_HCurve> & Cg);
 
@@ -2468,9 +2468,9 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -2478,9 +2478,9 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "* Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 	:param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -2488,7 +2488,7 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "* Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 	:param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2498,7 +2498,7 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "* Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -2523,7 +2523,7 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Set the restriction on which a solution has to be found.
 	:param Rst:
-	:type Rst: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const opencascade::handle<Adaptor2d_HCurve2d> & Rst);
 
@@ -2531,9 +2531,9 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2541,11 +2541,11 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2567,13 +2567,13 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 		/****************** BRepBlend_SurfCurvEvolRadInv ******************/
 		%feature("compactdefaultargs") BRepBlend_SurfCurvEvolRadInv;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Cg:
-	:type Cg: opencascade::handle<Adaptor3d_HCurve> &
+	:type Cg: Adaptor3d_HCurve
 	:param Evol:
-	:type Evol: opencascade::handle<Law_Function> &
+	:type Evol: Law_Function
 	:rtype: None") BRepBlend_SurfCurvEvolRadInv;
 		 BRepBlend_SurfCurvEvolRadInv (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Adaptor3d_HCurve> & Cg,const opencascade::handle<Law_Function> & Evol);
 
@@ -2581,9 +2581,9 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -2591,9 +2591,9 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "* Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 	:param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -2601,7 +2601,7 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "* Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 	:param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2611,7 +2611,7 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "* Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -2634,7 +2634,7 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Set the restriction on which a solution has to be found.
 	:param Rst:
-	:type Rst: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const opencascade::handle<Adaptor2d_HCurve2d> & Rst);
 
@@ -2642,9 +2642,9 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2652,11 +2652,11 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2678,9 +2678,9 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 		/****************** BRepBlend_SurfPointConstRadInv ******************/
 		%feature("compactdefaultargs") BRepBlend_SurfPointConstRadInv;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BRepBlend_SurfPointConstRadInv;
 		 BRepBlend_SurfPointConstRadInv (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -2688,9 +2688,9 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -2698,9 +2698,9 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "* Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 	:param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -2708,7 +2708,7 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "* Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 	:param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2718,7 +2718,7 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "* Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -2751,9 +2751,9 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2761,11 +2761,11 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2787,11 +2787,11 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 		/****************** BRepBlend_SurfPointEvolRadInv ******************/
 		%feature("compactdefaultargs") BRepBlend_SurfPointEvolRadInv;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Evol:
-	:type Evol: opencascade::handle<Law_Function> &
+	:type Evol: Law_Function
 	:rtype: None") BRepBlend_SurfPointEvolRadInv;
 		 BRepBlend_SurfPointEvolRadInv (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Law_Function> & Evol);
 
@@ -2799,9 +2799,9 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -2809,9 +2809,9 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "* Returns in the vector InfBound the lowest values allowed for each of the 3 variables. Returns in the vector SupBound the greatest values allowed for each of the 3 variables.
 	:param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -2819,7 +2819,7 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "* Returns in the vector Tolerance the parametric tolerance for each of the 3 variables; Tol is the tolerance used in 3d space.
 	:param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2829,7 +2829,7 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "* Returns Standard_True if Sol is a zero of the function. Tol is the tolerance used in 3d space.
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -2860,9 +2860,9 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2870,11 +2870,11 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2896,13 +2896,13 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		/****************** BRepBlend_SurfRstConstRad ******************/
 		%feature("compactdefaultargs") BRepBlend_SurfRstConstRad;
 		%feature("autodoc", ":param Surf:
-	:type Surf: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf: Adaptor3d_HSurface
 	:param SurfRst:
-	:type SurfRst: opencascade::handle<Adaptor3d_HSurface> &
+	:type SurfRst: Adaptor3d_HSurface
 	:param Rst:
-	:type Rst: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst: Adaptor2d_HCurve2d
 	:param CGuide:
-	:type CGuide: opencascade::handle<Adaptor3d_HCurve> &
+	:type CGuide: Adaptor3d_HCurve
 	:rtype: None") BRepBlend_SurfRstConstRad;
 		 BRepBlend_SurfRstConstRad (const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_HSurface> & SurfRst,const opencascade::handle<Adaptor2d_HCurve2d> & Rst,const opencascade::handle<Adaptor3d_HCurve> & CGuide);
 
@@ -2910,7 +2910,7 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Decroch;
 		%feature("autodoc", "* Enables implementation of a criterion of decrochage specific to the function. Warning: Can be called without previous call of issolution but the values calculated can be senseless.
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param NS:
 	:type NS: gp_Vec
 	:param TgS:
@@ -2922,18 +2922,18 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -2947,7 +2947,7 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -2960,20 +2960,20 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2989,9 +2989,9 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -2999,7 +2999,7 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -3014,7 +3014,7 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -3028,14 +3028,14 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -3094,9 +3094,9 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3111,9 +3111,9 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 	:param W:
 	:type W: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Circ
 	:rtype: None") Section;
@@ -3123,7 +3123,7 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -3133,9 +3133,9 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -3143,7 +3143,7 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -3157,33 +3157,33 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param SurfRef:
-	:type SurfRef: opencascade::handle<Adaptor3d_HSurface> &
+	:type SurfRef: Adaptor3d_HSurface
 	:param RstRef:
-	:type RstRef: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type RstRef: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const opencascade::handle<Adaptor3d_HSurface> & SurfRef,const opencascade::handle<Adaptor2d_HCurve2d> & RstRef);
 
@@ -3245,9 +3245,9 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -3255,11 +3255,11 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -3281,15 +3281,15 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		/****************** BRepBlend_SurfRstEvolRad ******************/
 		%feature("compactdefaultargs") BRepBlend_SurfRstEvolRad;
 		%feature("autodoc", ":param Surf:
-	:type Surf: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf: Adaptor3d_HSurface
 	:param SurfRst:
-	:type SurfRst: opencascade::handle<Adaptor3d_HSurface> &
+	:type SurfRst: Adaptor3d_HSurface
 	:param Rst:
-	:type Rst: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst: Adaptor2d_HCurve2d
 	:param CGuide:
-	:type CGuide: opencascade::handle<Adaptor3d_HCurve> &
+	:type CGuide: Adaptor3d_HCurve
 	:param Evol:
-	:type Evol: opencascade::handle<Law_Function> &
+	:type Evol: Law_Function
 	:rtype: None") BRepBlend_SurfRstEvolRad;
 		 BRepBlend_SurfRstEvolRad (const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_HSurface> & SurfRst,const opencascade::handle<Adaptor2d_HCurve2d> & Rst,const opencascade::handle<Adaptor3d_HCurve> & CGuide,const opencascade::handle<Law_Function> & Evol);
 
@@ -3297,7 +3297,7 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Decroch;
 		%feature("autodoc", "* Permet d ' implementer un critere de decrochage specifique a la fonction.
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param NS:
 	:type NS: gp_Vec
 	:param TgS:
@@ -3309,18 +3309,18 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -3334,7 +3334,7 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -3347,20 +3347,20 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -3376,9 +3376,9 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -3386,7 +3386,7 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -3401,7 +3401,7 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -3415,14 +3415,14 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -3481,9 +3481,9 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3498,9 +3498,9 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 	:param W:
 	:type W: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Circ
 	:rtype: None") Section;
@@ -3510,7 +3510,7 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -3520,9 +3520,9 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -3530,7 +3530,7 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -3544,33 +3544,33 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param SurfRef:
-	:type SurfRef: opencascade::handle<Adaptor3d_HSurface> &
+	:type SurfRef: Adaptor3d_HSurface
 	:param RstRef:
-	:type RstRef: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type RstRef: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const opencascade::handle<Adaptor3d_HSurface> & SurfRef,const opencascade::handle<Adaptor2d_HCurve2d> & RstRef);
 
@@ -3630,9 +3630,9 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -3640,11 +3640,11 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -3666,7 +3666,7 @@ class BRepBlend_SurfRstLineBuilder {
 		/****************** ArcToRecadre ******************/
 		%feature("compactdefaultargs") ArcToRecadre;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param PrevIndex:
 	:type PrevIndex: int
 	:param pt2d:
@@ -3674,35 +3674,35 @@ class BRepBlend_SurfRstLineBuilder {
 	:param lastpt2d:
 	:type lastpt2d: gp_Pnt2d
 	:param ponarc:
-	:type ponarc: float &
+	:type ponarc: float
 	:rtype: int") ArcToRecadre;
 		Standard_Integer ArcToRecadre (const math_Vector & Sol,const Standard_Integer PrevIndex,gp_Pnt2d & pt2d,gp_Pnt2d & lastpt2d,Standard_Real &OutValue);
 
 		/****************** BRepBlend_SurfRstLineBuilder ******************/
 		%feature("compactdefaultargs") BRepBlend_SurfRstLineBuilder;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf1: Adaptor3d_HSurface
 	:param Domain1:
-	:type Domain1: opencascade::handle<Adaptor3d_TopolTool> &
+	:type Domain1: Adaptor3d_TopolTool
 	:param Surf2:
-	:type Surf2: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf2: Adaptor3d_HSurface
 	:param Rst:
-	:type Rst: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Rst: Adaptor2d_HCurve2d
 	:param Domain2:
-	:type Domain2: opencascade::handle<Adaptor3d_TopolTool> &
+	:type Domain2: Adaptor3d_TopolTool
 	:rtype: None") BRepBlend_SurfRstLineBuilder;
 		 BRepBlend_SurfRstLineBuilder (const opencascade::handle<Adaptor3d_HSurface> & Surf1,const opencascade::handle<Adaptor3d_TopolTool> & Domain1,const opencascade::handle<Adaptor3d_HSurface> & Surf2,const opencascade::handle<Adaptor2d_HCurve2d> & Rst,const opencascade::handle<Adaptor3d_TopolTool> & Domain2);
 
 		/****************** Complete ******************/
 		%feature("compactdefaultargs") Complete;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_SurfRstFunction &
+	:type Func: Blend_SurfRstFunction
 	:param Finv:
-	:type Finv: Blend_FuncInv &
+	:type Finv: Blend_FuncInv
 	:param FinvP:
-	:type FinvP: Blend_SurfPointFuncInv &
+	:type FinvP: Blend_SurfPointFuncInv
 	:param FinvC:
-	:type FinvC: Blend_SurfCurvFuncInv &
+	:type FinvC: Blend_SurfCurvFuncInv
 	:param Pmin:
 	:type Pmin: float
 	:rtype: bool") Complete;
@@ -3731,13 +3731,13 @@ class BRepBlend_SurfRstLineBuilder {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_SurfRstFunction &
+	:type Func: Blend_SurfRstFunction
 	:param Finv:
-	:type Finv: Blend_FuncInv &
+	:type Finv: Blend_FuncInv
 	:param FinvP:
-	:type FinvP: Blend_SurfPointFuncInv &
+	:type FinvP: Blend_SurfPointFuncInv
 	:param FinvC:
-	:type FinvC: Blend_SurfCurvFuncInv &
+	:type FinvC: Blend_SurfCurvFuncInv
 	:param Pdep:
 	:type Pdep: float
 	:param Pmax:
@@ -3747,7 +3747,7 @@ class BRepBlend_SurfRstLineBuilder {
 	:param TolGuide:
 	:type TolGuide: float
 	:param Soldep:
-	:type Soldep: math_Vector &
+	:type Soldep: math_Vector
 	:param Tolesp:
 	:type Tolesp: float
 	:param Fleche:
@@ -3760,19 +3760,19 @@ class BRepBlend_SurfRstLineBuilder {
 		/****************** PerformFirstSection ******************/
 		%feature("compactdefaultargs") PerformFirstSection;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_SurfRstFunction &
+	:type Func: Blend_SurfRstFunction
 	:param Finv:
-	:type Finv: Blend_FuncInv &
+	:type Finv: Blend_FuncInv
 	:param FinvP:
-	:type FinvP: Blend_SurfPointFuncInv &
+	:type FinvP: Blend_SurfPointFuncInv
 	:param FinvC:
-	:type FinvC: Blend_SurfCurvFuncInv &
+	:type FinvC: Blend_SurfCurvFuncInv
 	:param Pdep:
 	:type Pdep: float
 	:param Pmax:
 	:type Pmax: float
 	:param Soldep:
-	:type Soldep: math_Vector &
+	:type Soldep: math_Vector
 	:param Tolesp:
 	:type Tolesp: float
 	:param TolGuide:
@@ -3784,9 +3784,9 @@ class BRepBlend_SurfRstLineBuilder {
 	:param RecS:
 	:type RecS: bool
 	:param Psol:
-	:type Psol: float &
+	:type Psol: float
 	:param ParSol:
-	:type ParSol: math_Vector &
+	:type ParSol: math_Vector
 	:rtype: bool") PerformFirstSection;
 		Standard_Boolean PerformFirstSection (Blend_SurfRstFunction & Func,Blend_FuncInv & Finv,Blend_SurfPointFuncInv & FinvP,Blend_SurfCurvFuncInv & FinvC,const Standard_Real Pdep,const Standard_Real Pmax,const math_Vector & Soldep,const Standard_Real Tolesp,const Standard_Real TolGuide,const Standard_Boolean RecRst,const Standard_Boolean RecP,const Standard_Boolean RecS,Standard_Real &OutValue,math_Vector & ParSol);
 
@@ -3809,22 +3809,22 @@ class BRepBlend_Walking {
 		%feature("compactdefaultargs") AddSingularPoint;
 		%feature("autodoc", "* To define singular points computed before walking.
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:rtype: None") AddSingularPoint;
 		void AddSingularPoint (const Blend_Point & P);
 
 		/****************** BRepBlend_Walking ******************/
 		%feature("compactdefaultargs") BRepBlend_Walking;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf1: Adaptor3d_HSurface
 	:param Surf2:
-	:type Surf2: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf2: Adaptor3d_HSurface
 	:param Domain1:
-	:type Domain1: opencascade::handle<Adaptor3d_TopolTool> &
+	:type Domain1: Adaptor3d_TopolTool
 	:param Domain2:
-	:type Domain2: opencascade::handle<Adaptor3d_TopolTool> &
+	:type Domain2: Adaptor3d_TopolTool
 	:param HGuide:
-	:type HGuide: opencascade::handle<ChFiDS_HElSpine> &
+	:type HGuide: ChFiDS_HElSpine
 	:rtype: None") BRepBlend_Walking;
 		 BRepBlend_Walking (const opencascade::handle<Adaptor3d_HSurface> & Surf1,const opencascade::handle<Adaptor3d_HSurface> & Surf2,const opencascade::handle<Adaptor3d_TopolTool> & Domain1,const opencascade::handle<Adaptor3d_TopolTool> & Domain2,const opencascade::handle<ChFiDS_HElSpine> & HGuide);
 
@@ -3859,9 +3859,9 @@ class BRepBlend_Walking {
 		/****************** Complete ******************/
 		%feature("compactdefaultargs") Complete;
 		%feature("autodoc", ":param F:
-	:type F: Blend_Function &
+	:type F: Blend_Function
 	:param FInv:
-	:type FInv: Blend_FuncInv &
+	:type FInv: Blend_FuncInv
 	:param Pmin:
 	:type Pmin: float
 	:rtype: bool") Complete;
@@ -3870,9 +3870,9 @@ class BRepBlend_Walking {
 		/****************** Continu ******************/
 		%feature("compactdefaultargs") Continu;
 		%feature("autodoc", ":param F:
-	:type F: Blend_Function &
+	:type F: Blend_Function
 	:param FInv:
-	:type FInv: Blend_FuncInv &
+	:type FInv: Blend_FuncInv
 	:param P:
 	:type P: float
 	:rtype: bool") Continu;
@@ -3881,9 +3881,9 @@ class BRepBlend_Walking {
 		/****************** Continu ******************/
 		%feature("compactdefaultargs") Continu;
 		%feature("autodoc", ":param F:
-	:type F: Blend_Function &
+	:type F: Blend_Function
 	:param FInv:
-	:type FInv: Blend_FuncInv &
+	:type FInv: Blend_FuncInv
 	:param P:
 	:type P: float
 	:param OnS1:
@@ -3904,9 +3904,9 @@ class BRepBlend_Walking {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param F:
-	:type F: Blend_Function &
+	:type F: Blend_Function
 	:param FInv:
-	:type FInv: Blend_FuncInv &
+	:type FInv: Blend_FuncInv
 	:param Pdep:
 	:type Pdep: float
 	:param Pmax:
@@ -3916,7 +3916,7 @@ class BRepBlend_Walking {
 	:param TolGuide:
 	:type TolGuide: float
 	:param Soldep:
-	:type Soldep: math_Vector &
+	:type Soldep: math_Vector
 	:param Tolesp:
 	:type Tolesp: float
 	:param Fleche:
@@ -3929,34 +3929,34 @@ class BRepBlend_Walking {
 		/****************** PerformFirstSection ******************/
 		%feature("compactdefaultargs") PerformFirstSection;
 		%feature("autodoc", ":param F:
-	:type F: Blend_Function &
+	:type F: Blend_Function
 	:param Pdep:
 	:type Pdep: float
 	:param ParDep:
-	:type ParDep: math_Vector &
+	:type ParDep: math_Vector
 	:param Tolesp:
 	:type Tolesp: float
 	:param TolGuide:
 	:type TolGuide: float
 	:param Pos1:
-	:type Pos1: TopAbs_State &
+	:type Pos1: TopAbs_State
 	:param Pos2:
-	:type Pos2: TopAbs_State &
+	:type Pos2: TopAbs_State
 	:rtype: bool") PerformFirstSection;
 		Standard_Boolean PerformFirstSection (Blend_Function & F,const Standard_Real Pdep,math_Vector & ParDep,const Standard_Real Tolesp,const Standard_Real TolGuide,TopAbs_State & Pos1,TopAbs_State & Pos2);
 
 		/****************** PerformFirstSection ******************/
 		%feature("compactdefaultargs") PerformFirstSection;
 		%feature("autodoc", ":param F:
-	:type F: Blend_Function &
+	:type F: Blend_Function
 	:param FInv:
-	:type FInv: Blend_FuncInv &
+	:type FInv: Blend_FuncInv
 	:param Pdep:
 	:type Pdep: float
 	:param Pmax:
 	:type Pmax: float
 	:param ParDep:
-	:type ParDep: math_Vector &
+	:type ParDep: math_Vector
 	:param Tolesp:
 	:type Tolesp: float
 	:param TolGuide:
@@ -3966,9 +3966,9 @@ class BRepBlend_Walking {
 	:param RecOnS2:
 	:type RecOnS2: bool
 	:param Psol:
-	:type Psol: float &
+	:type Psol: float
 	:param ParSol:
-	:type ParSol: math_Vector &
+	:type ParSol: math_Vector
 	:rtype: bool") PerformFirstSection;
 		Standard_Boolean PerformFirstSection (Blend_Function & F,Blend_FuncInv & FInv,const Standard_Real Pdep,const Standard_Real Pmax,const math_Vector & ParDep,const Standard_Real Tolesp,const Standard_Real TolGuide,const Standard_Boolean RecOnS1,const Standard_Boolean RecOnS2,Standard_Real &OutValue,math_Vector & ParSol);
 
@@ -3976,9 +3976,9 @@ class BRepBlend_Walking {
 		%feature("compactdefaultargs") SetDomainsToRecadre;
 		%feature("autodoc", "* To define different domains for control and clipping.
 	:param RecDomain1:
-	:type RecDomain1: opencascade::handle<Adaptor3d_TopolTool> &
+	:type RecDomain1: Adaptor3d_TopolTool
 	:param RecDomain2:
-	:type RecDomain2: opencascade::handle<Adaptor3d_TopolTool> &
+	:type RecDomain2: Adaptor3d_TopolTool
 	:rtype: None") SetDomainsToRecadre;
 		void SetDomainsToRecadre (const opencascade::handle<Adaptor3d_TopolTool> & RecDomain1,const opencascade::handle<Adaptor3d_TopolTool> & RecDomain2);
 
@@ -4010,9 +4010,9 @@ class BRepBlend_AppFunc : public BRepBlend_AppFuncRoot {
 		/****************** BRepBlend_AppFunc ******************/
 		%feature("compactdefaultargs") BRepBlend_AppFunc;
 		%feature("autodoc", ":param Line:
-	:type Line: opencascade::handle<BRepBlend_Line> &
+	:type Line: BRepBlend_Line
 	:param Func:
-	:type Func: Blend_Function &
+	:type Func: Blend_Function
 	:param Tol3d:
 	:type Tol3d: float
 	:param Tol2d:
@@ -4023,22 +4023,22 @@ class BRepBlend_AppFunc : public BRepBlend_AppFuncRoot {
 		/****************** Point ******************/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_AppFunction &
+	:type Func: Blend_AppFunction
 	:param Param:
 	:type Param: float
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Pnt:
-	:type Pnt: Blend_Point &
+	:type Pnt: Blend_Point
 	:rtype: None") Point;
 		void Point (const Blend_AppFunction & Func,const Standard_Real Param,const math_Vector & Sol,Blend_Point & Pnt);
 
 		/****************** Vec ******************/
 		%feature("compactdefaultargs") Vec;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Pnt:
-	:type Pnt: Blend_Point &
+	:type Pnt: Blend_Point
 	:rtype: None") Vec;
 		void Vec (math_Vector & Sol,const Blend_Point & Pnt);
 
@@ -4062,9 +4062,9 @@ class BRepBlend_AppFuncRst : public BRepBlend_AppFuncRoot {
 		/****************** BRepBlend_AppFuncRst ******************/
 		%feature("compactdefaultargs") BRepBlend_AppFuncRst;
 		%feature("autodoc", ":param Line:
-	:type Line: opencascade::handle<BRepBlend_Line> &
+	:type Line: BRepBlend_Line
 	:param Func:
-	:type Func: Blend_SurfRstFunction &
+	:type Func: Blend_SurfRstFunction
 	:param Tol3d:
 	:type Tol3d: float
 	:param Tol2d:
@@ -4075,22 +4075,22 @@ class BRepBlend_AppFuncRst : public BRepBlend_AppFuncRoot {
 		/****************** Point ******************/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_AppFunction &
+	:type Func: Blend_AppFunction
 	:param Param:
 	:type Param: float
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Pnt:
-	:type Pnt: Blend_Point &
+	:type Pnt: Blend_Point
 	:rtype: None") Point;
 		void Point (const Blend_AppFunction & Func,const Standard_Real Param,const math_Vector & Sol,Blend_Point & Pnt);
 
 		/****************** Vec ******************/
 		%feature("compactdefaultargs") Vec;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Pnt:
-	:type Pnt: Blend_Point &
+	:type Pnt: Blend_Point
 	:rtype: None") Vec;
 		void Vec (math_Vector & Sol,const Blend_Point & Pnt);
 
@@ -4114,9 +4114,9 @@ class BRepBlend_AppFuncRstRst : public BRepBlend_AppFuncRoot {
 		/****************** BRepBlend_AppFuncRstRst ******************/
 		%feature("compactdefaultargs") BRepBlend_AppFuncRstRst;
 		%feature("autodoc", ":param Line:
-	:type Line: opencascade::handle<BRepBlend_Line> &
+	:type Line: BRepBlend_Line
 	:param Func:
-	:type Func: Blend_RstRstFunction &
+	:type Func: Blend_RstRstFunction
 	:param Tol3d:
 	:type Tol3d: float
 	:param Tol2d:
@@ -4127,22 +4127,22 @@ class BRepBlend_AppFuncRstRst : public BRepBlend_AppFuncRoot {
 		/****************** Point ******************/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", ":param Func:
-	:type Func: Blend_AppFunction &
+	:type Func: Blend_AppFunction
 	:param Param:
 	:type Param: float
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Pnt:
-	:type Pnt: Blend_Point &
+	:type Pnt: Blend_Point
 	:rtype: None") Point;
 		void Point (const Blend_AppFunction & Func,const Standard_Real Param,const math_Vector & Sol,Blend_Point & Pnt);
 
 		/****************** Vec ******************/
 		%feature("compactdefaultargs") Vec;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Pnt:
-	:type Pnt: Blend_Point &
+	:type Pnt: Blend_Point
 	:rtype: None") Vec;
 		void Vec (math_Vector & Sol,const Blend_Point & Pnt);
 

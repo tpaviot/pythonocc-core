@@ -116,7 +116,7 @@ class Geom2dHatch_Classifier {
 		%feature("compactdefaultargs") Geom2dHatch_Classifier;
 		%feature("autodoc", "* Creates an algorithm to classify the Point P with Tolerance <T> on the face described by <F>.
 	:param F:
-	:type F: Geom2dHatch_Elements &
+	:type F: Geom2dHatch_Elements
 	:param P:
 	:type P: gp_Pnt2d
 	:param Tol:
@@ -134,7 +134,7 @@ class Geom2dHatch_Classifier {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Classify the Point P with Tolerance <T> on the face described by <F>.
 	:param F:
-	:type F: Geom2dHatch_Elements &
+	:type F: Geom2dHatch_Elements
 	:param P:
 	:type P: gp_Pnt2d
 	:param Tol:
@@ -196,7 +196,7 @@ class Geom2dHatch_Element {
 		%feature("compactdefaultargs") Geom2dHatch_Element;
 		%feature("autodoc", "* Magic constructor.
 	:param Other:
-	:type Other: Geom2dHatch_Element &
+	:type Other: Geom2dHatch_Element
 	:rtype: None") Geom2dHatch_Element;
 		 Geom2dHatch_Element (const Geom2dHatch_Element & Other);
 
@@ -204,7 +204,7 @@ class Geom2dHatch_Element {
 		%feature("compactdefaultargs") Geom2dHatch_Element;
 		%feature("autodoc", "* Creates an element.
 	:param Curve:
-	:type Curve: Geom2dAdaptor_Curve &
+	:type Curve: Geom2dAdaptor_Curve
 	:param Orientation: default value is TopAbs_FORWARD
 	:type Orientation: TopAbs_Orientation
 	:rtype: None") Geom2dHatch_Element;
@@ -244,7 +244,7 @@ class Geom2dHatch_Elements {
 		%feature("autodoc", ":param K:
 	:type K: int
 	:param I:
-	:type I: Geom2dHatch_Element &
+	:type I: Geom2dHatch_Element
 	:rtype: bool") Bind;
 		Standard_Boolean Bind (const Standard_Integer K,const Geom2dHatch_Element & I);
 
@@ -270,9 +270,9 @@ class Geom2dHatch_Elements {
 		/****************** CurrentEdge ******************/
 		%feature("compactdefaultargs") CurrentEdge;
 		%feature("autodoc", ":param E:
-	:type E: Geom2dAdaptor_Curve &
+	:type E: Geom2dAdaptor_Curve
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:rtype: None") CurrentEdge;
 		void CurrentEdge (Geom2dAdaptor_Curve & E,TopAbs_Orientation & Or);
 
@@ -291,7 +291,7 @@ class Geom2dHatch_Elements {
 		/****************** Geom2dHatch_Elements ******************/
 		%feature("compactdefaultargs") Geom2dHatch_Elements;
 		%feature("autodoc", ":param Other:
-	:type Other: Geom2dHatch_Elements &
+	:type Other: Geom2dHatch_Elements
 	:rtype: None") Geom2dHatch_Elements;
 		 Geom2dHatch_Elements (const Geom2dHatch_Elements & Other);
 
@@ -339,7 +339,7 @@ class Geom2dHatch_Elements {
 	:param L:
 	:type L: gp_Lin2d
 	:param Par:
-	:type Par: float &
+	:type Par: float
 	:rtype: bool") OtherSegment;
 		Standard_Boolean OtherSegment (const gp_Pnt2d & P,gp_Lin2d & L,Standard_Real &OutValue);
 
@@ -375,7 +375,7 @@ class Geom2dHatch_Elements {
 	:param L:
 	:type L: gp_Lin2d
 	:param Par:
-	:type Par: float &
+	:type Par: float
 	:rtype: bool") Segment;
 		Standard_Boolean Segment (const gp_Pnt2d & P,gp_Lin2d & L,Standard_Real &OutValue);
 
@@ -411,7 +411,7 @@ class Geom2dHatch_FClass2dOfClassifier {
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "* Updates the classification process with the edge <E> from the boundary.
 	:param E:
-	:type E: Geom2dAdaptor_Curve &
+	:type E: Geom2dAdaptor_Curve
 	:param Or:
 	:type Or: TopAbs_Orientation
 	:rtype: None") Compare;
@@ -478,7 +478,7 @@ class Geom2dHatch_Hatcher {
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", "* Adds an element to the hatcher and returns its index.
 	:param Curve:
-	:type Curve: Geom2dAdaptor_Curve &
+	:type Curve: Geom2dAdaptor_Curve
 	:param Orientation: default value is TopAbs_FORWARD
 	:type Orientation: TopAbs_Orientation
 	:rtype: int") AddElement;
@@ -488,7 +488,7 @@ class Geom2dHatch_Hatcher {
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", "* Adds an element to the hatcher and returns its index.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom2d_Curve> &
+	:type Curve: Geom2d_Curve
 	:param Orientation: default value is TopAbs_FORWARD
 	:type Orientation: TopAbs_Orientation
 	:rtype: int") AddElement;
@@ -498,7 +498,7 @@ class Geom2dHatch_Hatcher {
 		%feature("compactdefaultargs") AddHatching;
 		%feature("autodoc", "* Adds a hatching to the hatcher and returns its index.
 	:param Curve:
-	:type Curve: Geom2dAdaptor_Curve &
+	:type Curve: Geom2dAdaptor_Curve
 	:rtype: int") AddHatching;
 		Standard_Integer AddHatching (const Geom2dAdaptor_Curve & Curve);
 
@@ -596,7 +596,7 @@ class Geom2dHatch_Hatcher {
 		%feature("compactdefaultargs") Geom2dHatch_Hatcher;
 		%feature("autodoc", "* Returns an empty hatcher.
 	:param Intersector:
-	:type Intersector: Geom2dHatch_Intersector &
+	:type Intersector: Geom2dHatch_Intersector
 	:param Confusion2d:
 	:type Confusion2d: float
 	:param Confusion3d:
@@ -620,7 +620,7 @@ class Geom2dHatch_Hatcher {
 		%feature("compactdefaultargs") Intersector;
 		%feature("autodoc", "* Sets the associated intersector.
 	:param Intersector:
-	:type Intersector: Geom2dHatch_Intersector &
+	:type Intersector: Geom2dHatch_Intersector
 	:rtype: None") Intersector;
 		void Intersector (const Geom2dHatch_Intersector & Intersector);
 
@@ -718,7 +718,7 @@ class Geom2dHatch_Hatcher {
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "* Adds a hatching to the hatcher and trims it by the elements already given and returns its index.
 	:param Curve:
-	:type Curve: Geom2dAdaptor_Curve &
+	:type Curve: Geom2dAdaptor_Curve
 	:rtype: int") Trim;
 		Standard_Integer Trim (const Geom2dAdaptor_Curve & Curve);
 
@@ -765,7 +765,7 @@ class Geom2dHatch_Hatching {
 		%feature("compactdefaultargs") AddDomain;
 		%feature("autodoc", "* Adds a domain to the hatching.
 	:param Domain:
-	:type Domain: HatchGen_Domain &
+	:type Domain: HatchGen_Domain
 	:rtype: None") AddDomain;
 		void AddDomain (const HatchGen_Domain & Domain);
 
@@ -773,7 +773,7 @@ class Geom2dHatch_Hatching {
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "* Adds an intersection point to the hatching.
 	:param Point:
-	:type Point: HatchGen_PointOnHatching &
+	:type Point: HatchGen_PointOnHatching
 	:param Confusion:
 	:type Confusion: float
 	:rtype: None") AddPoint;
@@ -834,7 +834,7 @@ class Geom2dHatch_Hatching {
 		%feature("compactdefaultargs") Geom2dHatch_Hatching;
 		%feature("autodoc", "* Creates a hatching.
 	:param Curve:
-	:type Curve: Geom2dAdaptor_Curve &
+	:type Curve: Geom2dAdaptor_Curve
 	:rtype: None") Geom2dHatch_Hatching;
 		 Geom2dHatch_Hatching (const Geom2dAdaptor_Curve & Curve);
 
@@ -970,9 +970,9 @@ class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 		%feature("compactdefaultargs") Intersect;
 		%feature("autodoc", "* Intersects the curves C1 and C2. The results are retreived by the usual methods described in IntRes2d_Intersection. Creates an intersector.
 	:param C1:
-	:type C1: Geom2dAdaptor_Curve &
+	:type C1: Geom2dAdaptor_Curve
 	:param C2:
-	:type C2: Geom2dAdaptor_Curve &
+	:type C2: Geom2dAdaptor_Curve
 	:rtype: None") Intersect;
 		void Intersect (const Geom2dAdaptor_Curve & C1,const Geom2dAdaptor_Curve & C2);
 
@@ -980,7 +980,7 @@ class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 		%feature("compactdefaultargs") LocalGeometry;
 		%feature("autodoc", "* Returns in <T>, <N> and <C> the tangent, normal and curvature of the edge <E> at parameter value <U>.
 	:param E:
-	:type E: Geom2dAdaptor_Curve &
+	:type E: Geom2dAdaptor_Curve
 	:param U:
 	:type U: float
 	:param T:
@@ -988,7 +988,7 @@ class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 	:param N:
 	:type N: gp_Dir2d
 	:param C:
-	:type C: float &
+	:type C: float
 	:rtype: None") LocalGeometry;
 		void LocalGeometry (const Geom2dAdaptor_Curve & E,const Standard_Real U,gp_Dir2d & T,gp_Dir2d & N,Standard_Real &OutValue);
 
@@ -1002,7 +1002,7 @@ class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 	:param Tol:
 	:type Tol: float
 	:param E:
-	:type E: Geom2dAdaptor_Curve &
+	:type E: Geom2dAdaptor_Curve
 	:rtype: None") Perform;
 		void Perform (const gp_Lin2d & L,const Standard_Real P,const Standard_Real Tol,const Geom2dAdaptor_Curve & E);
 

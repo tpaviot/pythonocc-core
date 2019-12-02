@@ -255,7 +255,7 @@ class GeomFill {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetCircle;
 		static void GetCircle (const Convert_ParameterisationType TConv,const gp_Vec & ns1,const gp_Vec & ns2,const gp_Vec & nplan,const gp_Pnt & pt1,const gp_Pnt & pt2,const Standard_Real Rayon,const gp_Pnt & Center,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weigths);
 
@@ -296,9 +296,9 @@ class GeomFill {
 	:param DPoles:
 	:type DPoles: TColgp_Array1OfVec
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") GetCircle;
 		static Standard_Boolean GetCircle (const Convert_ParameterisationType TConv,const gp_Vec & ns1,const gp_Vec & ns2,const gp_Vec & dn1w,const gp_Vec & dn2w,const gp_Vec & nplan,const gp_Vec & dnplan,const gp_Pnt & pts1,const gp_Pnt & pts2,const gp_Vec & tang1,const gp_Vec & tang2,const Standard_Real Rayon,const Standard_Real DRayon,const gp_Pnt & Center,const gp_Vec & DCenter,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -355,11 +355,11 @@ class GeomFill {
 	:param D2Poles:
 	:type D2Poles: TColgp_Array1OfVec
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") GetCircle;
 		static Standard_Boolean GetCircle (const Convert_ParameterisationType TConv,const gp_Vec & ns1,const gp_Vec & ns2,const gp_Vec & dn1w,const gp_Vec & dn2w,const gp_Vec & d2n1w,const gp_Vec & d2n2w,const gp_Vec & nplan,const gp_Vec & dnplan,const gp_Vec & d2nplan,const gp_Pnt & pts1,const gp_Pnt & pts2,const gp_Vec & tang1,const gp_Vec & tang2,const gp_Vec & Dtang1,const gp_Vec & Dtang2,const Standard_Real Rayon,const Standard_Real DRayon,const Standard_Real D2Rayon,const gp_Pnt & Center,const gp_Vec & DCenter,const gp_Vec & D2Center,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -372,7 +372,7 @@ class GeomFill {
 	:param AngleMax:
 	:type AngleMax: float
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetMinimalWeights;
 		static void GetMinimalWeights (const Convert_ParameterisationType TConv,const Standard_Real AngleMin,const Standard_Real AngleMax,TColStd_Array1OfReal & Weigths);
 
@@ -381,13 +381,13 @@ class GeomFill {
 		%feature("autodoc", ":param MaxAng:
 	:type MaxAng: float
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param TypeConv:
-	:type TypeConv: Convert_ParameterisationType &
+	:type TypeConv: Convert_ParameterisationType
 	:rtype: void") GetShape;
 		static void GetShape (const Standard_Real MaxAng,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Convert_ParameterisationType & TypeConv);
 
@@ -412,7 +412,7 @@ class GeomFill {
 		%feature("autodoc", ":param TypeConv:
 	:type TypeConv: Convert_ParameterisationType
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: void") Knots;
 		static void Knots (const Convert_ParameterisationType TypeConv,TColStd_Array1OfReal & TKnots);
 
@@ -421,7 +421,7 @@ class GeomFill {
 		%feature("autodoc", ":param TypeConv:
 	:type TypeConv: Convert_ParameterisationType
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: void") Mults;
 		static void Mults (const Convert_ParameterisationType TypeConv,TColStd_Array1OfInteger & TMults);
 
@@ -429,9 +429,9 @@ class GeomFill {
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "* Builds a ruled surface between the two curves, Curve1 and Curve2.
 	:param Curve1:
-	:type Curve1: opencascade::handle<Geom_Curve> &
+	:type Curve1: Geom_Curve
 	:param Curve2:
-	:type Curve2: opencascade::handle<Geom_Curve> &
+	:type Curve2: Geom_Curve
 	:rtype: opencascade::handle<Geom_Surface>") Surface;
 		static opencascade::handle<Geom_Surface> Surface (const opencascade::handle<Geom_Curve> & Curve1,const opencascade::handle<Geom_Curve> & Curve2);
 
@@ -460,11 +460,11 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 		%feature("compactdefaultargs") CriteriumWeight;
 		%feature("autodoc", "* returns the Weights (as percent) associed to the criterium used in the optimization.
 	:param W1:
-	:type W1: float &
+	:type W1: float
 	:param W2:
-	:type W2: float &
+	:type W2: float
 	:param W3:
-	:type W3: float &
+	:type W3: float
 	:rtype: None") CriteriumWeight;
 		void CriteriumWeight (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -475,9 +475,9 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 	:param TPoles:
 	:type TPoles: TColgp_Array1OfPnt2d
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Curve2d;
 		void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
 
@@ -506,11 +506,11 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 		/****************** Curves2dShape ******************/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", ":param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:rtype: None") Curves2dShape;
 		void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -572,9 +572,9 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Lin:
-	:type Lin: opencascade::handle<GeomFill_Line> &
+	:type Lin: GeomFill_Line
 	:param SecGen:
-	:type SecGen: GeomFill_SectionGenerator &
+	:type SecGen: GeomFill_SectionGenerator
 	:param SpApprox: default value is Standard_False
 	:type SpApprox: bool
 	:rtype: None") Perform;
@@ -583,9 +583,9 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Lin:
-	:type Lin: opencascade::handle<GeomFill_Line> &
+	:type Lin: GeomFill_Line
 	:param SecGen:
-	:type SecGen: GeomFill_SectionGenerator &
+	:type SecGen: GeomFill_SectionGenerator
 	:param NbMaxP:
 	:type NbMaxP: int
 	:rtype: None") Perform;
@@ -594,9 +594,9 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 		/****************** PerformSmoothing ******************/
 		%feature("compactdefaultargs") PerformSmoothing;
 		%feature("autodoc", ":param Lin:
-	:type Lin: opencascade::handle<GeomFill_Line> &
+	:type Lin: GeomFill_Line
 	:param SecGen:
-	:type SecGen: GeomFill_SectionGenerator &
+	:type SecGen: GeomFill_SectionGenerator
 	:rtype: None") PerformSmoothing;
 		void PerformSmoothing (const opencascade::handle<GeomFill_Line> & Lin,GeomFill_SectionGenerator & SecGen);
 
@@ -636,17 +636,17 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 		/****************** SurfShape ******************/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", ":param UDegree:
-	:type UDegree: int &
+	:type UDegree: int
 	:param VDegree:
-	:type VDegree: int &
+	:type VDegree: int
 	:param NbUPoles:
-	:type NbUPoles: int &
+	:type NbUPoles: int
 	:param NbVPoles:
-	:type NbVPoles: int &
+	:type NbVPoles: int
 	:param NbUKnots:
-	:type NbUKnots: int &
+	:type NbUKnots: int
 	:param NbVKnots:
-	:type NbVKnots: int &
+	:type NbVKnots: int
 	:rtype: None") SurfShape;
 		void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -680,15 +680,15 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 		%feature("autodoc", ":param TPoles:
 	:type TPoles: TColgp_Array2OfPnt
 	:param TWeights:
-	:type TWeights: TColStd_Array2OfReal &
+	:type TWeights: TColStd_Array2OfReal
 	:param TUKnots:
-	:type TUKnots: TColStd_Array1OfReal &
+	:type TUKnots: TColStd_Array1OfReal
 	:param TVKnots:
-	:type TVKnots: TColStd_Array1OfReal &
+	:type TVKnots: TColStd_Array1OfReal
 	:param TUMults:
-	:type TUMults: TColStd_Array1OfInteger &
+	:type TUMults: TColStd_Array1OfInteger
 	:param TVMults:
-	:type TVMults: TColStd_Array1OfInteger &
+	:type TVMults: TColStd_Array1OfInteger
 	:rtype: None") Surface;
 		void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
 
@@ -702,9 +702,9 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 		/****************** TolReached ******************/
 		%feature("compactdefaultargs") TolReached;
 		%feature("autodoc", ":param Tol3d:
-	:type Tol3d: float &
+	:type Tol3d: float
 	:param Tol2d:
-	:type Tol2d: float &
+	:type Tol2d: float
 	:rtype: None") TolReached;
 		void TolReached (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -743,11 +743,11 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 		%feature("compactdefaultargs") CriteriumWeight;
 		%feature("autodoc", "* returns the Weights (as percent) associed to the criterium used in the optimization.
 	:param W1:
-	:type W1: float &
+	:type W1: float
 	:param W2:
-	:type W2: float &
+	:type W2: float
 	:param W3:
-	:type W3: float &
+	:type W3: float
 	:rtype: None") CriteriumWeight;
 		void CriteriumWeight (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -758,9 +758,9 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 	:param TPoles:
 	:type TPoles: TColgp_Array1OfPnt2d
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Curve2d;
 		void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
 
@@ -789,11 +789,11 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 		/****************** Curves2dShape ******************/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", ":param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:rtype: None") Curves2dShape;
 		void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -855,9 +855,9 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Lin:
-	:type Lin: opencascade::handle<GeomFill_Line> &
+	:type Lin: GeomFill_Line
 	:param SecGen:
-	:type SecGen: GeomFill_SweepSectionGenerator &
+	:type SecGen: GeomFill_SweepSectionGenerator
 	:param SpApprox: default value is Standard_False
 	:type SpApprox: bool
 	:rtype: None") Perform;
@@ -866,9 +866,9 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Lin:
-	:type Lin: opencascade::handle<GeomFill_Line> &
+	:type Lin: GeomFill_Line
 	:param SecGen:
-	:type SecGen: GeomFill_SweepSectionGenerator &
+	:type SecGen: GeomFill_SweepSectionGenerator
 	:param NbMaxP:
 	:type NbMaxP: int
 	:rtype: None") Perform;
@@ -877,9 +877,9 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 		/****************** PerformSmoothing ******************/
 		%feature("compactdefaultargs") PerformSmoothing;
 		%feature("autodoc", ":param Lin:
-	:type Lin: opencascade::handle<GeomFill_Line> &
+	:type Lin: GeomFill_Line
 	:param SecGen:
-	:type SecGen: GeomFill_SweepSectionGenerator &
+	:type SecGen: GeomFill_SweepSectionGenerator
 	:rtype: None") PerformSmoothing;
 		void PerformSmoothing (const opencascade::handle<GeomFill_Line> & Lin,GeomFill_SweepSectionGenerator & SecGen);
 
@@ -919,17 +919,17 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 		/****************** SurfShape ******************/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", ":param UDegree:
-	:type UDegree: int &
+	:type UDegree: int
 	:param VDegree:
-	:type VDegree: int &
+	:type VDegree: int
 	:param NbUPoles:
-	:type NbUPoles: int &
+	:type NbUPoles: int
 	:param NbVPoles:
-	:type NbVPoles: int &
+	:type NbVPoles: int
 	:param NbUKnots:
-	:type NbUKnots: int &
+	:type NbUKnots: int
 	:param NbVKnots:
-	:type NbVKnots: int &
+	:type NbVKnots: int
 	:rtype: None") SurfShape;
 		void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -963,15 +963,15 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 		%feature("autodoc", ":param TPoles:
 	:type TPoles: TColgp_Array2OfPnt
 	:param TWeights:
-	:type TWeights: TColStd_Array2OfReal &
+	:type TWeights: TColStd_Array2OfReal
 	:param TUKnots:
-	:type TUKnots: TColStd_Array1OfReal &
+	:type TUKnots: TColStd_Array1OfReal
 	:param TVKnots:
-	:type TVKnots: TColStd_Array1OfReal &
+	:type TVKnots: TColStd_Array1OfReal
 	:param TUMults:
-	:type TUMults: TColStd_Array1OfInteger &
+	:type TUMults: TColStd_Array1OfInteger
 	:param TVMults:
-	:type TVMults: TColStd_Array1OfInteger &
+	:type TVMults: TColStd_Array1OfInteger
 	:rtype: None") Surface;
 		void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
 
@@ -985,9 +985,9 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 		/****************** TolReached ******************/
 		%feature("compactdefaultargs") TolReached;
 		%feature("autodoc", ":param Tol3d:
-	:type Tol3d: float &
+	:type Tol3d: float
 	:param Tol2d:
-	:type Tol2d: float &
+	:type Tol2d: float
 	:rtype: None") TolReached;
 		void TolReached (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1025,13 +1025,13 @@ class GeomFill_BSplineCurves {
 		/****************** GeomFill_BSplineCurves ******************/
 		%feature("compactdefaultargs") GeomFill_BSplineCurves;
 		%feature("autodoc", ":param C1:
-	:type C1: opencascade::handle<Geom_BSplineCurve> &
+	:type C1: Geom_BSplineCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BSplineCurve> &
+	:type C2: Geom_BSplineCurve
 	:param C3:
-	:type C3: opencascade::handle<Geom_BSplineCurve> &
+	:type C3: Geom_BSplineCurve
 	:param C4:
-	:type C4: opencascade::handle<Geom_BSplineCurve> &
+	:type C4: Geom_BSplineCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") GeomFill_BSplineCurves;
@@ -1040,11 +1040,11 @@ class GeomFill_BSplineCurves {
 		/****************** GeomFill_BSplineCurves ******************/
 		%feature("compactdefaultargs") GeomFill_BSplineCurves;
 		%feature("autodoc", ":param C1:
-	:type C1: opencascade::handle<Geom_BSplineCurve> &
+	:type C1: Geom_BSplineCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BSplineCurve> &
+	:type C2: Geom_BSplineCurve
 	:param C3:
-	:type C3: opencascade::handle<Geom_BSplineCurve> &
+	:type C3: Geom_BSplineCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") GeomFill_BSplineCurves;
@@ -1054,9 +1054,9 @@ class GeomFill_BSplineCurves {
 		%feature("compactdefaultargs") GeomFill_BSplineCurves;
 		%feature("autodoc", "* Constructs a framework for building a BSpline surface from either - the four contiguous BSpline curves, C1, C2, C3 and C4, or - the three contiguous BSpline curves, C1, C2 and C3, or - the two contiguous BSpline curves, C1 and C2. The type of filling style Type to be used is one of: - GeomFill_Stretch - the style with the flattest patch - GeomFill_Coons - a rounded style of patch with less depth than that of Curved - GeomFill_Curved - the style with the most rounded patch.Constructs a framework for building a BSpline surface common to the two BSpline curves, C1 and C2. Exceptions Standard_ConstructionError if the curves are not contiguous.
 	:param C1:
-	:type C1: opencascade::handle<Geom_BSplineCurve> &
+	:type C1: Geom_BSplineCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BSplineCurve> &
+	:type C2: Geom_BSplineCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") GeomFill_BSplineCurves;
@@ -1066,13 +1066,13 @@ class GeomFill_BSplineCurves {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* if the curves cannot be joined
 	:param C1:
-	:type C1: opencascade::handle<Geom_BSplineCurve> &
+	:type C1: Geom_BSplineCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BSplineCurve> &
+	:type C2: Geom_BSplineCurve
 	:param C3:
-	:type C3: opencascade::handle<Geom_BSplineCurve> &
+	:type C3: Geom_BSplineCurve
 	:param C4:
-	:type C4: opencascade::handle<Geom_BSplineCurve> &
+	:type C4: Geom_BSplineCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") Init;
@@ -1082,11 +1082,11 @@ class GeomFill_BSplineCurves {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* if the curves cannot be joined
 	:param C1:
-	:type C1: opencascade::handle<Geom_BSplineCurve> &
+	:type C1: Geom_BSplineCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BSplineCurve> &
+	:type C2: Geom_BSplineCurve
 	:param C3:
-	:type C3: opencascade::handle<Geom_BSplineCurve> &
+	:type C3: Geom_BSplineCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") Init;
@@ -1096,9 +1096,9 @@ class GeomFill_BSplineCurves {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes or reinitializes this algorithm with two, three, or four curves - C1, C2, C3, and C4 - and Type, one of the following filling styles: - GeomFill_Stretch - the style with the flattest patch - GeomFill_Coons - a rounded style of patch with less depth than that of Curved - GeomFill_Curved - the style with the most rounded patch. Exceptions Standard_ConstructionError if the curves are not contiguous.
 	:param C1:
-	:type C1: opencascade::handle<Geom_BSplineCurve> &
+	:type C1: Geom_BSplineCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BSplineCurve> &
+	:type C2: Geom_BSplineCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") Init;
@@ -1135,13 +1135,13 @@ class GeomFill_BezierCurves {
 		%feature("compactdefaultargs") GeomFill_BezierCurves;
 		%feature("autodoc", "* Constructs a framework for building a Bezier surface from the four contiguous Bezier curves, C1, C2, C3 and C4 Raises Standard_ConstructionError if the curves are not contiguous.
 	:param C1:
-	:type C1: opencascade::handle<Geom_BezierCurve> &
+	:type C1: Geom_BezierCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BezierCurve> &
+	:type C2: Geom_BezierCurve
 	:param C3:
-	:type C3: opencascade::handle<Geom_BezierCurve> &
+	:type C3: Geom_BezierCurve
 	:param C4:
-	:type C4: opencascade::handle<Geom_BezierCurve> &
+	:type C4: Geom_BezierCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") GeomFill_BezierCurves;
@@ -1151,11 +1151,11 @@ class GeomFill_BezierCurves {
 		%feature("compactdefaultargs") GeomFill_BezierCurves;
 		%feature("autodoc", "* Constructs a framework for building a Bezier surface from the three contiguous Bezier curves, C1, C2 and C3 Raises Standard_ConstructionError if the curves are not contiguous.
 	:param C1:
-	:type C1: opencascade::handle<Geom_BezierCurve> &
+	:type C1: Geom_BezierCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BezierCurve> &
+	:type C2: Geom_BezierCurve
 	:param C3:
-	:type C3: opencascade::handle<Geom_BezierCurve> &
+	:type C3: Geom_BezierCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") GeomFill_BezierCurves;
@@ -1165,9 +1165,9 @@ class GeomFill_BezierCurves {
 		%feature("compactdefaultargs") GeomFill_BezierCurves;
 		%feature("autodoc", "* Constructs a framework for building a Bezier surface from the two contiguous Bezier curves, C1 and C2 Raises Standard_ConstructionError if the curves are not contiguous.
 	:param C1:
-	:type C1: opencascade::handle<Geom_BezierCurve> &
+	:type C1: Geom_BezierCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BezierCurve> &
+	:type C2: Geom_BezierCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") GeomFill_BezierCurves;
@@ -1177,13 +1177,13 @@ class GeomFill_BezierCurves {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* if the curves cannot be joined
 	:param C1:
-	:type C1: opencascade::handle<Geom_BezierCurve> &
+	:type C1: Geom_BezierCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BezierCurve> &
+	:type C2: Geom_BezierCurve
 	:param C3:
-	:type C3: opencascade::handle<Geom_BezierCurve> &
+	:type C3: Geom_BezierCurve
 	:param C4:
-	:type C4: opencascade::handle<Geom_BezierCurve> &
+	:type C4: Geom_BezierCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") Init;
@@ -1193,11 +1193,11 @@ class GeomFill_BezierCurves {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* if the curves cannot be joined
 	:param C1:
-	:type C1: opencascade::handle<Geom_BezierCurve> &
+	:type C1: Geom_BezierCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BezierCurve> &
+	:type C2: Geom_BezierCurve
 	:param C3:
-	:type C3: opencascade::handle<Geom_BezierCurve> &
+	:type C3: Geom_BezierCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") Init;
@@ -1207,9 +1207,9 @@ class GeomFill_BezierCurves {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes or reinitializes this algorithm with two, three, or four curves - C1, C2, C3, and C4 - and Type, one of the following filling styles: - GeomFill_Stretch - the style with the flattest patch - GeomFill_Coons - a rounded style of patch with less depth than that of Curved - GeomFill_Curved - the style with the most rounded patch. Exceptions Standard_ConstructionError if the curves are not contiguous.
 	:param C1:
-	:type C1: opencascade::handle<Geom_BezierCurve> &
+	:type C1: Geom_BezierCurve
 	:param C2:
-	:type C2: opencascade::handle<Geom_BezierCurve> &
+	:type C2: Geom_BezierCurve
 	:param Type:
 	:type Type: GeomFill_FillingStyle
 	:rtype: None") Init;
@@ -1239,9 +1239,9 @@ class GeomFill_Boundary : public Standard_Transient {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") Bounds;
 		virtual void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1380,7 +1380,7 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: bool") D0;
 		virtual Standard_Boolean D0 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -1402,9 +1402,9 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") D1;
 		virtual Standard_Boolean D1 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -1430,11 +1430,11 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") D2;
 		virtual Standard_Boolean D2 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -1442,11 +1442,11 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 		%feature("compactdefaultargs") GeomFill_CircularBlendFunc;
 		%feature("autodoc", "* Create a Blend with a constant radius with 2 guide-line. <FShape> sets the type of fillet surface. The -- default value is Convert_TgtThetaOver2 (classical -- nurbs -- representation of circles). ChFi3d_QuasiAngular -- corresponds to a nurbs representation of circles -- which parameterisation matches the circle one. -- ChFi3d_Polynomial corresponds to a polynomial -- representation of circles.
 	:param Path:
-	:type Path: opencascade::handle<Adaptor3d_HCurve> &
+	:type Path: Adaptor3d_HCurve
 	:param Curve1:
-	:type Curve1: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve1: Adaptor3d_HCurve
 	:param Curve2:
-	:type Curve2: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve2: Adaptor3d_HCurve
 	:param Radius:
 	:type Radius: float
 	:param Polynomial: default value is Standard_False
@@ -1458,7 +1458,7 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections. This information is usefull to perform well conditionned rational approximation.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetMinimalWeight;
 		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -1472,7 +1472,7 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: TColStd_Array1OfReal &
+	:type Tol3d: TColStd_Array1OfReal
 	:rtype: void") GetTolerance;
 		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
 
@@ -1480,7 +1480,7 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -1496,7 +1496,7 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* get the Knots of the section
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: void") Knots;
 		virtual void Knots (TColStd_Array1OfReal & TKnots);
 
@@ -1510,7 +1510,7 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "* get the Multplicities of the section
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: void") Mults;
 		virtual void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -1532,11 +1532,11 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "* get the format of an section
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:rtype: void") SectionShape;
 		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1625,7 +1625,7 @@ class GeomFill_ConstrainedFilling {
 	:param Ord:
 	:type Ord: int
 	:param Result:
-	:type Result: float &
+	:type Result: float
 	:rtype: int") Eval;
 		Standard_Integer Eval (const Standard_Real W,const Standard_Integer Ord,Standard_Real &OutValue);
 
@@ -1642,11 +1642,11 @@ class GeomFill_ConstrainedFilling {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param B1:
-	:type B1: opencascade::handle<GeomFill_Boundary> &
+	:type B1: GeomFill_Boundary
 	:param B2:
-	:type B2: opencascade::handle<GeomFill_Boundary> &
+	:type B2: GeomFill_Boundary
 	:param B3:
-	:type B3: opencascade::handle<GeomFill_Boundary> &
+	:type B3: GeomFill_Boundary
 	:param NoCheck: default value is Standard_False
 	:type NoCheck: bool
 	:rtype: None") Init;
@@ -1656,13 +1656,13 @@ class GeomFill_ConstrainedFilling {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Constructs a BSpline surface filled from the series of boundaries B1, B2, B3 and, if need be, B4, which serve: - as path constraints - and optionally, as tangency constraints if they are GeomFill_BoundWithSurf curves. The boundaries may be given in any order: they are classified and if necessary, reversed and reparameterized. The surface will also respect the following constraints: - its degree will not be greater than the maximum degree defined at the time of construction of this framework, and - the maximum number of segments MaxSeg which BSpline surfaces can have
 	:param B1:
-	:type B1: opencascade::handle<GeomFill_Boundary> &
+	:type B1: GeomFill_Boundary
 	:param B2:
-	:type B2: opencascade::handle<GeomFill_Boundary> &
+	:type B2: GeomFill_Boundary
 	:param B3:
-	:type B3: opencascade::handle<GeomFill_Boundary> &
+	:type B3: GeomFill_Boundary
 	:param B4:
-	:type B4: opencascade::handle<GeomFill_Boundary> &
+	:type B4: GeomFill_Boundary
 	:param NoCheck: default value is Standard_False
 	:type NoCheck: bool
 	:rtype: None") Init;
@@ -1680,7 +1680,7 @@ class GeomFill_ConstrainedFilling {
 	:param l:
 	:type l: float
 	:param B:
-	:type B: opencascade::handle<GeomFill_BoundWithSurf> &
+	:type B: GeomFill_BoundWithSurf
 	:rtype: None") SetDomain;
 		void SetDomain (const Standard_Real l,const opencascade::handle<GeomFill_BoundWithSurf> & B);
 
@@ -1753,9 +1753,9 @@ class GeomFill_CoonsAlgPatch : public Standard_Transient {
 		%feature("compactdefaultargs") Func;
 		%feature("autodoc", "* Give the blending functions.
 	:param f1:
-	:type f1: opencascade::handle<Law_Function> &
+	:type f1: Law_Function
 	:param f2:
-	:type f2: opencascade::handle<Law_Function> &
+	:type f2: Law_Function
 	:rtype: None") Func;
 		void Func (opencascade::handle<Law_Function> & f1,opencascade::handle<Law_Function> & f2);
 
@@ -1770,13 +1770,13 @@ class GeomFill_CoonsAlgPatch : public Standard_Transient {
 		%feature("compactdefaultargs") GeomFill_CoonsAlgPatch;
 		%feature("autodoc", "* Constructs the algorithmic patch. By Default the constructed blending functions are linear. Warning: No control is done on the bounds. B1/B3 and B2/B4 must be same range and well oriented.
 	:param B1:
-	:type B1: opencascade::handle<GeomFill_Boundary> &
+	:type B1: GeomFill_Boundary
 	:param B2:
-	:type B2: opencascade::handle<GeomFill_Boundary> &
+	:type B2: GeomFill_Boundary
 	:param B3:
-	:type B3: opencascade::handle<GeomFill_Boundary> &
+	:type B3: GeomFill_Boundary
 	:param B4:
-	:type B4: opencascade::handle<GeomFill_Boundary> &
+	:type B4: GeomFill_Boundary
 	:rtype: None") GeomFill_CoonsAlgPatch;
 		 GeomFill_CoonsAlgPatch (const opencascade::handle<GeomFill_Boundary> & B1,const opencascade::handle<GeomFill_Boundary> & B2,const opencascade::handle<GeomFill_Boundary> & B3,const opencascade::handle<GeomFill_Boundary> & B4);
 
@@ -1784,9 +1784,9 @@ class GeomFill_CoonsAlgPatch : public Standard_Transient {
 		%feature("compactdefaultargs") SetFunc;
 		%feature("autodoc", "* Set the blending functions.
 	:param f1:
-	:type f1: opencascade::handle<Law_Function> &
+	:type f1: Law_Function
 	:param f2:
-	:type f2: opencascade::handle<Law_Function> &
+	:type f2: Law_Function
 	:rtype: None") SetFunc;
 		void SetFunc (const opencascade::handle<Law_Function> & f1,const opencascade::handle<Law_Function> & f2);
 
@@ -1854,7 +1854,7 @@ class GeomFill_CornerState {
 		/****************** IsToKill ******************/
 		%feature("compactdefaultargs") IsToKill;
 		%feature("autodoc", ":param Scal:
-	:type Scal: float &
+	:type Scal: float
 	:rtype: bool") IsToKill;
 		Standard_Boolean IsToKill (Standard_Real &OutValue);
 
@@ -1922,7 +1922,7 @@ class GeomFill_Filling {
 		/****************** Weights ******************/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", ":param Weights:
-	:type Weights: TColStd_Array2OfReal &
+	:type Weights: TColStd_Array2OfReal
 	:rtype: None") Weights;
 		void Weights (TColStd_Array2OfReal & Weights);
 
@@ -1950,7 +1950,7 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Deriv2T;
 		%feature("autodoc", "* returns the values <F> of the T2 derivatives for the parameter Param .
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Param:
 	:type Param: float
 	:param W:
@@ -1960,7 +1960,7 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 	:param teta:
 	:type teta: float
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Deriv2T;
 		Standard_Boolean Deriv2T (const opencascade::handle<Adaptor3d_HCurve> & C,const Standard_Real Param,const Standard_Real W,const gp_Vec & d2N,const Standard_Real teta,math_Vector & F);
 
@@ -1968,9 +1968,9 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Deriv2X;
 		%feature("autodoc", "* returns the values <T> of the X2 derivatives for the parameter Param .
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param T:
-	:type T: GeomFill_Tensor &
+	:type T: GeomFill_Tensor
 	:rtype: bool") Deriv2X;
 		Standard_Boolean Deriv2X (const math_Vector & X,GeomFill_Tensor & T);
 
@@ -1978,7 +1978,7 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") DerivT;
 		%feature("autodoc", "* returns the values <F> of the T derivatives for the parameter Param .
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Param:
 	:type Param: float
 	:param W:
@@ -1988,7 +1988,7 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 	:param teta:
 	:type teta: float
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") DerivT;
 		Standard_Boolean DerivT (const opencascade::handle<Adaptor3d_HCurve> & C,const Standard_Real Param,const Standard_Real W,const gp_Vec & dN,const Standard_Real teta,math_Vector & F);
 
@@ -2000,7 +2000,7 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 	:param teta:
 	:type teta: float
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") DerivTX;
 		Standard_Boolean DerivTX (const gp_Vec & dN,const Standard_Real teta,math_Matrix & D);
 
@@ -2008,18 +2008,18 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		virtual Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GeomFill_FunctionDraft ******************/
 		%feature("compactdefaultargs") GeomFill_FunctionDraft;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") GeomFill_FunctionDraft;
 		 GeomFill_FunctionDraft (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -2039,9 +2039,9 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2049,11 +2049,11 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2076,13 +2076,13 @@ class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") DerivT;
 		%feature("autodoc", "* returns the values <F> of the T derivatives for the parameter Param .
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param DCentre:
 	:type DCentre: gp_XYZ
 	:param DDir:
 	:type DDir: gp_XYZ
 	:param DFDT:
-	:type DFDT: math_Vector &
+	:type DFDT: math_Vector
 	:rtype: bool") DerivT;
 		Standard_Boolean DerivT (const math_Vector & X,const gp_XYZ & DCentre,const gp_XYZ & DDir,math_Vector & DFDT);
 
@@ -2090,18 +2090,18 @@ class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		virtual Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GeomFill_FunctionGuide ******************/
 		%feature("compactdefaultargs") GeomFill_FunctionGuide;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<GeomFill_SectionLaw> &
+	:type S: GeomFill_SectionLaw
 	:param Guide:
-	:type Guide: opencascade::handle<Adaptor3d_HCurve> &
+	:type Guide: Adaptor3d_HCurve
 	:param ParamOnLaw: default value is 0.0
 	:type ParamOnLaw: float
 	:rtype: None") GeomFill_FunctionGuide;
@@ -2136,9 +2136,9 @@ class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2146,11 +2146,11 @@ class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2257,16 +2257,16 @@ class GeomFill_LocFunction {
 	:param Order:
 	:type Order: int
 	:param Result:
-	:type Result: float &
+	:type Result: float
 	:param Ier:
-	:type Ier: int &
+	:type Ier: int
 	:rtype: None") DN;
 		void DN (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,const Standard_Integer Order,Standard_Real &OutValue,Standard_Integer &OutValue);
 
 		/****************** GeomFill_LocFunction ******************/
 		%feature("compactdefaultargs") GeomFill_LocFunction;
 		%feature("autodoc", ":param Law:
-	:type Law: opencascade::handle<GeomFill_LocationLaw> &
+	:type Law: GeomFill_LocationLaw
 	:rtype: None") GeomFill_LocFunction;
 		 GeomFill_LocFunction (const opencascade::handle<GeomFill_LocationLaw> & Law);
 
@@ -2387,9 +2387,9 @@ class GeomFill_LocationLaw : public Standard_Transient {
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "* Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetDomain;
 		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2397,9 +2397,9 @@ class GeomFill_LocationLaw : public Standard_Transient {
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "* Gets the bounds of the parametric interval on the function
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetInterval;
 		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2425,7 +2425,7 @@ class GeomFill_LocationLaw : public Standard_Transient {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -2435,7 +2435,7 @@ class GeomFill_LocationLaw : public Standard_Transient {
 		%feature("compactdefaultargs") IsRotation;
 		%feature("autodoc", "* Say if the Location Law, is a rotation of Location The default implementation is ' returns False '.
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsRotation;
 		virtual Standard_Boolean IsRotation (Standard_Real &OutValue);
 
@@ -2443,7 +2443,7 @@ class GeomFill_LocationLaw : public Standard_Transient {
 		%feature("compactdefaultargs") IsTranslation;
 		%feature("autodoc", "* Say if the Location Law, is an translation of Location The default implementation is ' returns False '.
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsTranslation;
 		virtual Standard_Boolean IsTranslation (Standard_Real &OutValue);
 
@@ -2469,9 +2469,9 @@ class GeomFill_LocationLaw : public Standard_Transient {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: void") Resolution;
 		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2485,7 +2485,7 @@ class GeomFill_LocationLaw : public Standard_Transient {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -2575,7 +2575,7 @@ class GeomFill_Pipe {
 		/****************** GeomFill_Pipe ******************/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", ":param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param Radius:
 	:type Radius: float
 	:rtype: None") GeomFill_Pipe;
@@ -2585,9 +2585,9 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "* Create a pipe with a constant section (<FirstSection>) and a path (<Path>) Option can be - GeomFill_IsCorrectedFrenet - GeomFill_IsFrenet - GeomFill_IsConstant
 	:param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:param Option: default value is GeomFill_IsCorrectedFrenet
 	:type Option: GeomFill_Trihedron
 	:rtype: None") GeomFill_Pipe;
@@ -2597,11 +2597,11 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "* Create a pipe with a constant section (<FirstSection>) and a path defined by <Path> and <Support>
 	:param Path:
-	:type Path: opencascade::handle<Geom2d_Curve> &
+	:type Path: Geom2d_Curve
 	:param Support:
-	:type Support: opencascade::handle<Geom_Surface> &
+	:type Support: Geom_Surface
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:rtype: None") GeomFill_Pipe;
 		 GeomFill_Pipe (const opencascade::handle<Geom2d_Curve> & Path,const opencascade::handle<Geom_Surface> & Support,const opencascade::handle<Geom_Curve> & FirstSect);
 
@@ -2609,9 +2609,9 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "* Create a pipe with a constant section (<FirstSection>) and a path <Path> and a fixed binormal direction <Dir>
 	:param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:param Dir:
 	:type Dir: gp_Dir
 	:rtype: None") GeomFill_Pipe;
@@ -2621,11 +2621,11 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "* Create a pipe with an evolving section The section evoluate from First to Last Section
 	:param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:param LastSect:
-	:type LastSect: opencascade::handle<Geom_Curve> &
+	:type LastSect: Geom_Curve
 	:rtype: None") GeomFill_Pipe;
 		 GeomFill_Pipe (const opencascade::handle<Geom_Curve> & Path,const opencascade::handle<Geom_Curve> & FirstSect,const opencascade::handle<Geom_Curve> & LastSect);
 
@@ -2633,9 +2633,9 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "* Create a pipe with N sections The section evoluate from First to Last Section
 	:param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param NSections:
-	:type NSections: TColGeom_SequenceOfCurve &
+	:type NSections: TColGeom_SequenceOfCurve
 	:rtype: None") GeomFill_Pipe;
 		 GeomFill_Pipe (const opencascade::handle<Geom_Curve> & Path,const TColGeom_SequenceOfCurve & NSections);
 
@@ -2643,11 +2643,11 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "* Create a pipe with a constant radius with 2 guide-line.
 	:param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param Curve1:
-	:type Curve1: opencascade::handle<Geom_Curve> &
+	:type Curve1: Geom_Curve
 	:param Curve2:
-	:type Curve2: opencascade::handle<Geom_Curve> &
+	:type Curve2: Geom_Curve
 	:param Radius:
 	:type Radius: float
 	:rtype: None") GeomFill_Pipe;
@@ -2657,11 +2657,11 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "* Create a pipe with a constant radius with 2 guide-line.
 	:param Path:
-	:type Path: opencascade::handle<Adaptor3d_HCurve> &
+	:type Path: Adaptor3d_HCurve
 	:param Curve1:
-	:type Curve1: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve1: Adaptor3d_HCurve
 	:param Curve2:
-	:type Curve2: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve2: Adaptor3d_HCurve
 	:param Radius:
 	:type Radius: float
 	:rtype: None") GeomFill_Pipe;
@@ -2671,11 +2671,11 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "* Create a pipe with a constant section and with 1 guide-line. Use the function Perform to build the surface. All standard specific cases are detected in order to construct, according to the respective geometric nature of Path and the sections, a planar, cylindrical, conical, spherical or toroidal surface, a surface of linear extrusion or a surface of revolution. In the general case, the result is a BSpline surface (NURBS) built by approximation of a series of sections where: - the number of sections N is chosen automatically by the algorithm according to the respective geometries of Path and the sections. N is greater than or equal to 2; - N points Pi (with i in the range [ 1,N ]) are defined at regular intervals along the curve Path from its first point to its end point. At each point Pi, a coordinate system Ti is computed with Pi as origin, and with the tangential and normal vectors to Path defining two of its coordinate axes. In the case of a pipe with a constant circular section, the first section is a circle of radius Radius centered on the origin of Path and whose 'Z Axis' is aligned along the vector tangential to the origin of Path. In the case of a pipe with a constant section, the first section is the curve FirstSect. In these two cases, the ith section (for values of i greater than 1) is obtained by applying to a copy of this first section the geometric transformation which transforms coordinate system T1 into coordinate system Ti. In the case of an evolving section, N-2 intermediate curves Si are first computed (if N is greater than 2, and with i in the range [ 2,N-1 ]) whose geometry evolves regularly from the curve S1=FirstSect to the curve SN=LastSect. The first section is FirstSect, and the ith section (for values of i greater than 1) is obtained by applying to the curve Si the geometric transformation which transforms coordinate system T1 into coordinate system Ti.
 	:param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param Guide:
-	:type Guide: opencascade::handle<Adaptor3d_HCurve> &
+	:type Guide: Adaptor3d_HCurve
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:param ByACR:
 	:type ByACR: bool
 	:param rotat:
@@ -2686,7 +2686,7 @@ class GeomFill_Pipe {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param Radius:
 	:type Radius: float
 	:rtype: None") Init;
@@ -2695,9 +2695,9 @@ class GeomFill_Pipe {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:param Option: default value is GeomFill_IsCorrectedFrenet
 	:type Option: GeomFill_Trihedron
 	:rtype: None") Init;
@@ -2706,20 +2706,20 @@ class GeomFill_Pipe {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Path:
-	:type Path: opencascade::handle<Geom2d_Curve> &
+	:type Path: Geom2d_Curve
 	:param Support:
-	:type Support: opencascade::handle<Geom_Surface> &
+	:type Support: Geom_Surface
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom2d_Curve> & Path,const opencascade::handle<Geom_Surface> & Support,const opencascade::handle<Geom_Curve> & FirstSect);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:param Dir:
 	:type Dir: gp_Dir
 	:rtype: None") Init;
@@ -2728,20 +2728,20 @@ class GeomFill_Pipe {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:param LastSect:
-	:type LastSect: opencascade::handle<Geom_Curve> &
+	:type LastSect: Geom_Curve
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Curve> & Path,const opencascade::handle<Geom_Curve> & FirstSect,const opencascade::handle<Geom_Curve> & LastSect);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param NSections:
-	:type NSections: TColGeom_SequenceOfCurve &
+	:type NSections: TColGeom_SequenceOfCurve
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Curve> & Path,const TColGeom_SequenceOfCurve & NSections);
 
@@ -2749,11 +2749,11 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Create a pipe with a constant radius with 2 guide-line.
 	:param Path:
-	:type Path: opencascade::handle<Adaptor3d_HCurve> &
+	:type Path: Adaptor3d_HCurve
 	:param Curve1:
-	:type Curve1: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve1: Adaptor3d_HCurve
 	:param Curve2:
-	:type Curve2: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve2: Adaptor3d_HCurve
 	:param Radius:
 	:type Radius: float
 	:rtype: None") Init;
@@ -2763,11 +2763,11 @@ class GeomFill_Pipe {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this pipe algorithm to build the following surface: - a pipe with a constant circular section of radius Radius along the path Path, or - a pipe with constant section FirstSect along the path Path, or - a pipe where the section evolves from FirstSect to LastSect along the path Path. Use the function Perform to build the surface. Note: a description of the resulting surface is given under Constructors.
 	:param Path:
-	:type Path: opencascade::handle<Geom_Curve> &
+	:type Path: Geom_Curve
 	:param Guide:
-	:type Guide: opencascade::handle<Adaptor3d_HCurve> &
+	:type Guide: Adaptor3d_HCurve
 	:param FirstSect:
-	:type FirstSect: opencascade::handle<Geom_Curve> &
+	:type FirstSect: Geom_Curve
 	:param ByACR:
 	:type ByACR: bool
 	:param rotat:
@@ -2833,11 +2833,11 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 		%feature("autodoc", ":param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D1:
-	:type D1: float &
+	:type D1: float
 	:param D2:
-	:type D2: float &
+	:type D2: float
 	:rtype: None") D2;
 		void D2 (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2854,11 +2854,11 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	:param D2V:
 	:type D2V: gp_Vec
 	:param DFDT:
-	:type DFDT: float &
+	:type DFDT: float
 	:param D2FDT2:
-	:type D2FDT2: float &
+	:type D2FDT2: float
 	:param D2FDTDX:
-	:type D2FDTDX: float &
+	:type D2FDTDX: float
 	:rtype: None") D2E;
 		void D2E (const Standard_Real X,const gp_Vec & DP,const gp_Vec & D2P,const gp_Vec & DV,const gp_Vec & D2V,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2871,7 +2871,7 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	:param DV:
 	:type DV: gp_Vec
 	:param DF:
-	:type DF: float &
+	:type DF: float
 	:rtype: None") DEDT;
 		void DEDT (const Standard_Real X,const gp_Vec & DP,const gp_Vec & DV,Standard_Real &OutValue);
 
@@ -2881,7 +2881,7 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		virtual Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 
@@ -2892,7 +2892,7 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	:param V:
 	:type V: gp_Vec
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") GeomFill_PlanFunc;
 		 GeomFill_PlanFunc (const gp_Pnt & P,const gp_Vec & V,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -2902,7 +2902,7 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 
@@ -2912,9 +2912,9 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3042,7 +3042,7 @@ class GeomFill_Profiler {
 		/****************** AddCurve ******************/
 		%feature("compactdefaultargs") AddCurve;
 		%feature("autodoc", ":param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:rtype: None") AddCurve;
 		void AddCurve (const opencascade::handle<Geom_Curve> & Curve);
 
@@ -3073,9 +3073,9 @@ class GeomFill_Profiler {
 		%feature("compactdefaultargs") KnotsAndMults;
 		%feature("autodoc", "* Raises if not yet perform Raises if the lengthes of <Knots> and <Mults> are not equal to NbKnots().
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: None") KnotsAndMults;
 		void KnotsAndMults (TColStd_Array1OfReal & Knots,TColStd_Array1OfInteger & Mults);
 
@@ -3115,7 +3115,7 @@ class GeomFill_Profiler {
 	:param Index:
 	:type Index: int
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:rtype: None") Weights;
 		void Weights (const Standard_Integer Index,TColStd_Array1OfReal & Weights);
 
@@ -3163,7 +3163,7 @@ class GeomFill_QuasiAngularConvertor {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const gp_Pnt & FirstPnt,const gp_Pnt & Center,const gp_Vec & Dir,const Standard_Real Angle,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weights);
 
@@ -3190,9 +3190,9 @@ class GeomFill_QuasiAngularConvertor {
 	:param DPoles:
 	:type DPoles: TColgp_Array1OfVec
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param DWeights:
-	:type DWeights: TColStd_Array1OfReal &
+	:type DWeights: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const gp_Pnt & FirstPnt,const gp_Vec & DFirstPnt,const gp_Pnt & Center,const gp_Vec & DCenter,const gp_Vec & Dir,const gp_Vec & DDir,const Standard_Real Angle,const Standard_Real DAngle,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weights,TColStd_Array1OfReal & DWeights);
 
@@ -3229,11 +3229,11 @@ class GeomFill_QuasiAngularConvertor {
 	:param D2Poles:
 	:type D2Poles: TColgp_Array1OfVec
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param DWeights:
-	:type DWeights: TColStd_Array1OfReal &
+	:type DWeights: TColStd_Array1OfReal
 	:param D2Weights:
-	:type D2Weights: TColStd_Array1OfReal &
+	:type D2Weights: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const gp_Pnt & FirstPnt,const gp_Vec & DFirstPnt,const gp_Vec & D2FirstPnt,const gp_Pnt & Center,const gp_Vec & DCenter,const gp_Vec & D2Center,const gp_Vec & Dir,const gp_Vec & DDir,const gp_Vec & D2Dir,const Standard_Real Angle,const Standard_Real DAngle,const Standard_Real D2Angle,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weights,TColStd_Array1OfReal & DWeights,TColStd_Array1OfReal & D2Weights);
 
@@ -3286,7 +3286,7 @@ class GeomFill_SectionLaw : public Standard_Transient {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: bool") D0;
 		virtual Standard_Boolean D0 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weigths);
 
@@ -3300,9 +3300,9 @@ class GeomFill_SectionLaw : public Standard_Transient {
 	:param DPoles:
 	:type DPoles: TColgp_Array1OfVec
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") D1;
 		virtual Standard_Boolean D1 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -3318,11 +3318,11 @@ class GeomFill_SectionLaw : public Standard_Transient {
 	:param D2Poles:
 	:type D2Poles: TColgp_Array1OfVec
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") D2;
 		virtual Standard_Boolean D2 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -3330,9 +3330,9 @@ class GeomFill_SectionLaw : public Standard_Transient {
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "* Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetDomain;
 		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3340,9 +3340,9 @@ class GeomFill_SectionLaw : public Standard_Transient {
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "* Gets the bounds of the parametric interval on the function
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetInterval;
 		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3350,7 +3350,7 @@ class GeomFill_SectionLaw : public Standard_Transient {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles in all sections. This information is usefull to control error in rational approximation. Warning: Used only if <self> IsRational
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetMinimalWeight;
 		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -3364,7 +3364,7 @@ class GeomFill_SectionLaw : public Standard_Transient {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: TColStd_Array1OfReal &
+	:type Tol3d: TColStd_Array1OfReal
 	:rtype: void") GetTolerance;
 		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
 
@@ -3372,7 +3372,7 @@ class GeomFill_SectionLaw : public Standard_Transient {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -3382,7 +3382,7 @@ class GeomFill_SectionLaw : public Standard_Transient {
 		%feature("compactdefaultargs") IsConicalLaw;
 		%feature("autodoc", "* Returns True if all section are circle, with same plane,same center and linear radius evolution Return False by Default.
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsConicalLaw;
 		virtual Standard_Boolean IsConicalLaw (Standard_Real &OutValue);
 
@@ -3390,7 +3390,7 @@ class GeomFill_SectionLaw : public Standard_Transient {
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "* Say if all sections are equals
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsConstant;
 		virtual Standard_Boolean IsConstant (Standard_Real &OutValue);
 
@@ -3416,7 +3416,7 @@ class GeomFill_SectionLaw : public Standard_Transient {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* get the Knots of the section
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: void") Knots;
 		virtual void Knots (TColStd_Array1OfReal & TKnots);
 
@@ -3430,7 +3430,7 @@ class GeomFill_SectionLaw : public Standard_Transient {
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "* get the Multplicities of the section
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: void") Mults;
 		virtual void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -3446,11 +3446,11 @@ class GeomFill_SectionLaw : public Standard_Transient {
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "* get the format of an section
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:rtype: void") SectionShape;
 		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -3504,9 +3504,9 @@ class GeomFill_SectionPlacement {
 		/****************** GeomFill_SectionPlacement ******************/
 		%feature("compactdefaultargs") GeomFill_SectionPlacement;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<GeomFill_LocationLaw> &
+	:type L: GeomFill_LocationLaw
 	:param Section:
-	:type Section: opencascade::handle<Geom_Geometry> &
+	:type Section: Geom_Geometry
 	:rtype: None") GeomFill_SectionPlacement;
 		 GeomFill_SectionPlacement (const opencascade::handle<GeomFill_LocationLaw> & L,const opencascade::handle<Geom_Geometry> & Section);
 
@@ -3543,7 +3543,7 @@ class GeomFill_SectionPlacement {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Path:
-	:type Path: opencascade::handle<Adaptor3d_HCurve> &
+	:type Path: Adaptor3d_HCurve
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Perform;
@@ -3570,7 +3570,7 @@ class GeomFill_SectionPlacement {
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "* To change the section Law
 	:param L:
-	:type L: opencascade::handle<GeomFill_LocationLaw> &
+	:type L: GeomFill_LocationLaw
 	:rtype: None") SetLocation;
 		void SetLocation (const opencascade::handle<GeomFill_LocationLaw> & L);
 
@@ -3668,7 +3668,7 @@ class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 		/****************** GeomFill_SnglrFunc ******************/
 		%feature("compactdefaultargs") GeomFill_SnglrFunc;
 		%feature("autodoc", ":param HC:
-	:type HC: opencascade::handle<Adaptor3d_HCurve> &
+	:type HC: Adaptor3d_HCurve
 	:rtype: None") GeomFill_SnglrFunc;
 		 GeomFill_SnglrFunc (const opencascade::handle<Adaptor3d_HCurve> & HC);
 
@@ -3682,7 +3682,7 @@ class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -3753,7 +3753,7 @@ class GeomFill_Sweep {
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "* Build the Sweeep Surface ApproxStyle defines Approximation Strategy - GeomFill_Section : The composed Function : Location X Section is directly approximed. - GeomFill_Location : The location law is approximed, and the SweepSurface is build algebric composition of approximed location law and section law This option is Ok, if Section.Surface() methode is effective. Continuity : The continuity in v waiting on the surface Degmax : The maximum degree in v requiered on the surface Segmax : The maximum number of span in v requiered on the surface //! raise If Domain are infinite or Profile not Setted.
 	:param Section:
-	:type Section: opencascade::handle<GeomFill_SectionLaw> &
+	:type Section: GeomFill_SectionLaw
 	:param Methode: default value is GeomFill_Location
 	:type Methode: GeomFill_ApproxStyle
 	:param Continuity: default value is GeomAbs_C2
@@ -3771,9 +3771,9 @@ class GeomFill_Sweep {
 	:param IsFirst:
 	:type IsFirst: bool
 	:param UError:
-	:type UError: float &
+	:type UError: float
 	:param VError:
-	:type VError: float &
+	:type VError: float
 	:rtype: None") ErrorOnRestriction;
 		void ErrorOnRestriction (const Standard_Boolean IsFirst,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3789,9 +3789,9 @@ class GeomFill_Sweep {
 	:param IndexOfTrace:
 	:type IndexOfTrace: int
 	:param UError:
-	:type UError: float &
+	:type UError: float
 	:param VError:
-	:type VError: float &
+	:type VError: float
 	:rtype: None") ErrorOnTrace;
 		void ErrorOnTrace (const Standard_Integer IndexOfTrace,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3804,7 +3804,7 @@ class GeomFill_Sweep {
 		/****************** GeomFill_Sweep ******************/
 		%feature("compactdefaultargs") GeomFill_Sweep;
 		%feature("autodoc", ":param Location:
-	:type Location: opencascade::handle<GeomFill_LocationLaw> &
+	:type Location: GeomFill_LocationLaw
 	:param WithKpart: default value is Standard_True
 	:type WithKpart: bool
 	:rtype: None") GeomFill_Sweep;
@@ -3923,7 +3923,7 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: bool") D0;
 		virtual Standard_Boolean D0 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -3945,9 +3945,9 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") D1;
 		virtual Standard_Boolean D1 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -3973,20 +3973,20 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") D2;
 		virtual Standard_Boolean D2 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
 		/****************** GeomFill_SweepFunction ******************/
 		%feature("compactdefaultargs") GeomFill_SweepFunction;
 		%feature("autodoc", ":param Section:
-	:type Section: opencascade::handle<GeomFill_SectionLaw> &
+	:type Section: GeomFill_SectionLaw
 	:param Location:
-	:type Location: opencascade::handle<GeomFill_LocationLaw> &
+	:type Location: GeomFill_LocationLaw
 	:param FirstParameter:
 	:type FirstParameter: float
 	:param FirstParameterOnS:
@@ -4000,7 +4000,7 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections. This information is usefull to perform well conditionned rational approximation. Warning: Used only if <self> IsRational
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetMinimalWeight;
 		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -4014,7 +4014,7 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: TColStd_Array1OfReal &
+	:type Tol3d: TColStd_Array1OfReal
 	:rtype: void") GetTolerance;
 		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
 
@@ -4022,7 +4022,7 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -4038,7 +4038,7 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* get the Knots of the section
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: void") Knots;
 		virtual void Knots (TColStd_Array1OfReal & TKnots);
 
@@ -4052,7 +4052,7 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "* get the Multplicities of the section
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: void") Mults;
 		virtual void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -4078,9 +4078,9 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: void") Resolution;
 		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4088,11 +4088,11 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "* get the format of an section
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:rtype: void") SectionShape;
 		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -4171,9 +4171,9 @@ class GeomFill_Tensor {
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", ":param Right:
-	:type Right: math_Vector &
+	:type Right: math_Vector
 	:param Product:
-	:type Product: math_Matrix &
+	:type Product: math_Matrix
 	:rtype: None") Multiply;
 		void Multiply (const math_Vector & Right,math_Matrix & Product);
 
@@ -4232,7 +4232,7 @@ class GeomFill_TgtField : public Standard_Transient {
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
 		%feature("autodoc", ":param Func:
-	:type Func: opencascade::handle<Law_BSpline> &
+	:type Func: Law_BSpline
 	:rtype: void") Scale;
 		virtual void Scale (const opencascade::handle<Law_BSpline> & Func);
 
@@ -4348,9 +4348,9 @@ class GeomFill_TrihedronLaw : public Standard_Transient {
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "* Gets the bounds of the parametric interval on the function
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: None") GetInterval;
 		void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4358,7 +4358,7 @@ class GeomFill_TrihedronLaw : public Standard_Transient {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -4387,7 +4387,7 @@ class GeomFill_TrihedronLaw : public Standard_Transient {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -4421,9 +4421,9 @@ class GeomFill_BoundWithSurf : public GeomFill_Boundary {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4453,7 +4453,7 @@ class GeomFill_BoundWithSurf : public GeomFill_Boundary {
 		%feature("compactdefaultargs") GeomFill_BoundWithSurf;
 		%feature("autodoc", "* Constructs a boundary object defined by the 3d curve CurveOnSurf. The surface to be filled along this boundary will be in the tolerance range defined by Tol3d. What's more, at each point of CurveOnSurf, the angle between the normal to the surface to be filled along this boundary, and the normal to the surface on which CurveOnSurf lies, must not be greater than TolAng. This object is to be used as a boundary for a GeomFill_ConstrainedFilling framework. Warning CurveOnSurf is an adapted curve, that is, an object which is an interface between: - the services provided by a curve lying on a surface from the package Geom - and those required of the curve by the computation algorithm which uses it. The adapted curve is created in the following way: opencascade::handle<Geom_Surface> mySurface = ... ; opencascade::handle<Geom2d_Curve> myParamCurve = ... ; // where myParamCurve is a 2D curve in the parametric space of the surface mySurface opencascade::handle<GeomAdaptor_HSurface> Surface = new GeomAdaptor_HSurface(mySurface); opencascade::handle<Geom2dAdaptor_HCurve> ParamCurve = new Geom2dAdaptor_HCurve(myParamCurve); CurveOnSurf = Adaptor3d_CurveOnSurface(ParamCurve,Surface); The boundary is then constructed with the CurveOnSurf object: Standard_Real Tol = ... ; Standard_Real TolAng = ... ; myBoundary = GeomFill_BoundWithSurf ( CurveOnSurf, Tol, TolAng );
 	:param CurveOnSurf:
-	:type CurveOnSurf: Adaptor3d_CurveOnSurface &
+	:type CurveOnSurf: Adaptor3d_CurveOnSurface
 	:param Tol3d:
 	:type Tol3d: float
 	:param Tolang:
@@ -4609,7 +4609,7 @@ class GeomFill_ConstantBiNormal : public GeomFill_TrihedronLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -4638,7 +4638,7 @@ class GeomFill_ConstantBiNormal : public GeomFill_TrihedronLaw {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -4688,13 +4688,13 @@ class GeomFill_Coons : public GeomFill_Filling {
 	:param P4:
 	:type P4: TColgp_Array1OfPnt
 	:param W1:
-	:type W1: TColStd_Array1OfReal &
+	:type W1: TColStd_Array1OfReal
 	:param W2:
-	:type W2: TColStd_Array1OfReal &
+	:type W2: TColStd_Array1OfReal
 	:param W3:
-	:type W3: TColStd_Array1OfReal &
+	:type W3: TColStd_Array1OfReal
 	:param W4:
-	:type W4: TColStd_Array1OfReal &
+	:type W4: TColStd_Array1OfReal
 	:rtype: None") GeomFill_Coons;
 		 GeomFill_Coons (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
 
@@ -4722,13 +4722,13 @@ class GeomFill_Coons : public GeomFill_Filling {
 	:param P4:
 	:type P4: TColgp_Array1OfPnt
 	:param W1:
-	:type W1: TColStd_Array1OfReal &
+	:type W1: TColStd_Array1OfReal
 	:param W2:
-	:type W2: TColStd_Array1OfReal &
+	:type W2: TColStd_Array1OfReal
 	:param W3:
-	:type W3: TColStd_Array1OfReal &
+	:type W3: TColStd_Array1OfReal
 	:param W4:
-	:type W4: TColStd_Array1OfReal &
+	:type W4: TColStd_Array1OfReal
 	:rtype: None") Init;
 		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
 
@@ -4846,7 +4846,7 @@ class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -4875,7 +4875,7 @@ class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -4985,7 +4985,7 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 		/****************** GeomFill_CurveAndTrihedron ******************/
 		%feature("compactdefaultargs") GeomFill_CurveAndTrihedron;
 		%feature("autodoc", ":param Trihedron:
-	:type Trihedron: opencascade::handle<GeomFill_TrihedronLaw> &
+	:type Trihedron: GeomFill_TrihedronLaw
 	:rtype: None") GeomFill_CurveAndTrihedron;
 		 GeomFill_CurveAndTrihedron (const opencascade::handle<GeomFill_TrihedronLaw> & Trihedron);
 
@@ -5008,9 +5008,9 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "* Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetDomain;
 		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5018,9 +5018,9 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "* Gets the bounds of the parametric interval on the function
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetInterval;
 		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5034,7 +5034,7 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -5044,7 +5044,7 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") IsRotation;
 		%feature("autodoc", "* Say if the Location Law, is a rotation of Location The default implementation is ' returns False '.
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsRotation;
 		virtual Standard_Boolean IsRotation (Standard_Real &OutValue);
 
@@ -5052,7 +5052,7 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") IsTranslation;
 		%feature("autodoc", "* Say if the Location Law, is an translation of Location The default implementation is ' returns False '.
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsTranslation;
 		virtual Standard_Boolean IsTranslation (Standard_Real &OutValue);
 
@@ -5074,7 +5074,7 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -5142,13 +5142,13 @@ class GeomFill_Curved : public GeomFill_Filling {
 	:param P4:
 	:type P4: TColgp_Array1OfPnt
 	:param W1:
-	:type W1: TColStd_Array1OfReal &
+	:type W1: TColStd_Array1OfReal
 	:param W2:
-	:type W2: TColStd_Array1OfReal &
+	:type W2: TColStd_Array1OfReal
 	:param W3:
-	:type W3: TColStd_Array1OfReal &
+	:type W3: TColStd_Array1OfReal
 	:param W4:
-	:type W4: TColStd_Array1OfReal &
+	:type W4: TColStd_Array1OfReal
 	:rtype: None") GeomFill_Curved;
 		 GeomFill_Curved (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
 
@@ -5168,9 +5168,9 @@ class GeomFill_Curved : public GeomFill_Filling {
 	:param P2:
 	:type P2: TColgp_Array1OfPnt
 	:param W1:
-	:type W1: TColStd_Array1OfReal &
+	:type W1: TColStd_Array1OfReal
 	:param W2:
-	:type W2: TColStd_Array1OfReal &
+	:type W2: TColStd_Array1OfReal
 	:rtype: None") GeomFill_Curved;
 		 GeomFill_Curved (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2);
 
@@ -5198,13 +5198,13 @@ class GeomFill_Curved : public GeomFill_Filling {
 	:param P4:
 	:type P4: TColgp_Array1OfPnt
 	:param W1:
-	:type W1: TColStd_Array1OfReal &
+	:type W1: TColStd_Array1OfReal
 	:param W2:
-	:type W2: TColStd_Array1OfReal &
+	:type W2: TColStd_Array1OfReal
 	:param W3:
-	:type W3: TColStd_Array1OfReal &
+	:type W3: TColStd_Array1OfReal
 	:param W4:
-	:type W4: TColStd_Array1OfReal &
+	:type W4: TColStd_Array1OfReal
 	:rtype: None") Init;
 		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
 
@@ -5224,9 +5224,9 @@ class GeomFill_Curved : public GeomFill_Filling {
 	:param P2:
 	:type P2: TColgp_Array1OfPnt
 	:param W1:
-	:type W1: TColStd_Array1OfReal &
+	:type W1: TColStd_Array1OfReal
 	:param W2:
-	:type W2: TColStd_Array1OfReal &
+	:type W2: TColStd_Array1OfReal
 	:rtype: None") Init;
 		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2);
 
@@ -5331,7 +5331,7 @@ class GeomFill_Darboux : public GeomFill_TrihedronLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -5377,9 +5377,9 @@ class GeomFill_DegeneratedBound : public GeomFill_Boundary {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5548,7 +5548,7 @@ class GeomFill_DiscreteTrihedron : public GeomFill_TrihedronLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -5577,7 +5577,7 @@ class GeomFill_DiscreteTrihedron : public GeomFill_TrihedronLaw {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -5687,7 +5687,7 @@ class GeomFill_DraftTrihedron : public GeomFill_TrihedronLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -5763,7 +5763,7 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: bool") D0;
 		virtual Standard_Boolean D0 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weigths);
 
@@ -5777,9 +5777,9 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 	:param DPoles:
 	:type DPoles: TColgp_Array1OfVec
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") D1;
 		virtual Standard_Boolean D1 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -5795,11 +5795,11 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 	:param D2Poles:
 	:type D2Poles: TColgp_Array1OfVec
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") D2;
 		virtual Standard_Boolean D2 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -5807,9 +5807,9 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") GeomFill_EvolvedSection;
 		%feature("autodoc", "* Make an SectionLaw with a Curve and a real Law.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param L:
-	:type L: opencascade::handle<Law_Function> &
+	:type L: Law_Function
 	:rtype: None") GeomFill_EvolvedSection;
 		 GeomFill_EvolvedSection (const opencascade::handle<Geom_Curve> & C,const opencascade::handle<Law_Function> & L);
 
@@ -5817,9 +5817,9 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "* Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetDomain;
 		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5827,9 +5827,9 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "* Gets the bounds of the parametric interval on the function
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetInterval;
 		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5837,7 +5837,7 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles in all sections. This information is usefull to control error in rational approximation. Warning: Used only if <self> IsRational
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetMinimalWeight;
 		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -5851,7 +5851,7 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: TColStd_Array1OfReal &
+	:type Tol3d: TColStd_Array1OfReal
 	:rtype: void") GetTolerance;
 		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
 
@@ -5859,7 +5859,7 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -5869,7 +5869,7 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "* return True If the Law isConstant
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsConstant;
 		virtual Standard_Boolean IsConstant (Standard_Real &OutValue);
 
@@ -5895,7 +5895,7 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* get the Knots of the section
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: void") Knots;
 		virtual void Knots (TColStd_Array1OfReal & TKnots);
 
@@ -5909,7 +5909,7 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "* get the Multplicities of the section
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: void") Mults;
 		virtual void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -5925,11 +5925,11 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "* get the format of an section
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:rtype: void") SectionShape;
 		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -6050,7 +6050,7 @@ class GeomFill_Fixed : public GeomFill_TrihedronLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -6178,7 +6178,7 @@ class GeomFill_Frenet : public GeomFill_TrihedronLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -6207,7 +6207,7 @@ class GeomFill_Frenet : public GeomFill_TrihedronLaw {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -6371,9 +6371,9 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "* Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetDomain;
 		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6381,9 +6381,9 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "* Gets the bounds of the parametric interval on the function
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetInterval;
 		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6409,7 +6409,7 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -6425,7 +6425,7 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") IsRotation;
 		%feature("autodoc", "* Say if the Location Law, is a rotation of Location The default implementation is ' returns False '.
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsRotation;
 		virtual Standard_Boolean IsRotation (Standard_Real &OutValue);
 
@@ -6433,7 +6433,7 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") IsTranslation;
 		%feature("autodoc", "* Say if the Location Law, is an translation of Location The default implementation is ' returns False '.
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsTranslation;
 		virtual Standard_Boolean IsTranslation (Standard_Real &OutValue);
 
@@ -6453,9 +6453,9 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: void") Resolution;
 		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6476,7 +6476,7 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -6493,7 +6493,7 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 		/****************** SetStopSurf ******************/
 		%feature("compactdefaultargs") SetStopSurf;
 		%feature("autodoc", ":param Surf:
-	:type Surf: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf: Adaptor3d_HSurface
 	:rtype: None") SetStopSurf;
 		void SetStopSurf (const opencascade::handle<Adaptor3d_HSurface> & Surf);
 
@@ -6530,7 +6530,7 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 		/****************** ComputeAutomaticLaw ******************/
 		%feature("compactdefaultargs") ComputeAutomaticLaw;
 		%feature("autodoc", ":param ParAndRad:
-	:type ParAndRad: opencascade::handle<TColgp_HArray1OfPnt2d>
+	:type ParAndRad: TColgp_HArray1OfPnt2d
 	:rtype: GeomFill_PipeError") ComputeAutomaticLaw;
 		GeomFill_PipeError ComputeAutomaticLaw (opencascade::handle<TColgp_HArray1OfPnt2d> & ParAndRad);
 
@@ -6625,7 +6625,7 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 		/****************** GeomFill_LocationGuide ******************/
 		%feature("compactdefaultargs") GeomFill_LocationGuide;
 		%feature("autodoc", ":param Triedre:
-	:type Triedre: opencascade::handle<GeomFill_TrihedronWithGuide> &
+	:type Triedre: GeomFill_TrihedronWithGuide
 	:rtype: None") GeomFill_LocationGuide;
 		 GeomFill_LocationGuide (const opencascade::handle<GeomFill_TrihedronWithGuide> & Triedre);
 
@@ -6648,9 +6648,9 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "* Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetDomain;
 		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6658,9 +6658,9 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "* Gets the bounds of the parametric interval on the function
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetInterval;
 		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6691,7 +6691,7 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -6701,7 +6701,7 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") IsRotation;
 		%feature("autodoc", "* Say if the Location Law, is a rotation of Location The default implementation is ' returns False '.
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsRotation;
 		virtual Standard_Boolean IsRotation (Standard_Real &OutValue);
 
@@ -6709,7 +6709,7 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 		%feature("compactdefaultargs") IsTranslation;
 		%feature("autodoc", "* Say if the Location Law, is an translation of Location The default implementation is ' returns False '.
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsTranslation;
 		virtual Standard_Boolean IsTranslation (Standard_Real &OutValue);
 
@@ -6729,9 +6729,9 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: void") Resolution;
 		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6750,7 +6750,7 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param Section:
-	:type Section: opencascade::handle<GeomFill_SectionLaw> &
+	:type Section: GeomFill_SectionLaw
 	:param rotat:
 	:type rotat: bool
 	:param SFirst:
@@ -6760,14 +6760,14 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 	:param PrecAngle:
 	:type PrecAngle: float
 	:param LastAngle:
-	:type LastAngle: float &
+	:type LastAngle: float
 	:rtype: None") Set;
 		void Set (const opencascade::handle<GeomFill_SectionLaw> & Section,const Standard_Boolean rotat,const Standard_Real SFirst,const Standard_Real SLast,const Standard_Real PrecAngle,Standard_Real &OutValue);
 
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -6841,27 +6841,27 @@ class GeomFill_SectionGenerator : public GeomFill_Profiler {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -6887,9 +6887,9 @@ class GeomFill_SectionGenerator : public GeomFill_Profiler {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Standard_Integer P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -6902,14 +6902,14 @@ class GeomFill_SectionGenerator : public GeomFill_Profiler {
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Standard_Integer P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
 		/****************** SetParam ******************/
 		%feature("compactdefaultargs") SetParam;
 		%feature("autodoc", ":param Params:
-	:type Params: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Params: TColStd_HArray1OfReal
 	:rtype: None") SetParam;
 		void SetParam (const opencascade::handle<TColStd_HArray1OfReal> & Params);
 
@@ -6931,9 +6931,9 @@ class GeomFill_SimpleBound : public GeomFill_Boundary {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6952,7 +6952,7 @@ class GeomFill_SimpleBound : public GeomFill_Boundary {
 		%feature("compactdefaultargs") GeomFill_SimpleBound;
 		%feature("autodoc", "* Constructs the boundary object defined by the 3d curve. The surface to be built along this boundary will be in the tolerance range defined by Tol3d. This object is to be used as a boundary for a GeomFill_ConstrainedFilling framework. Dummy is initialized but has no function in this class. Warning Curve is an adapted curve, that is, an object which is an interface between: - the services provided by a 3D curve from the package Geom - and those required of the curve by the computation algorithm which uses it. The adapted curve is created in one of the following ways: - First sequence: opencascade::handle<Geom_Curve> myCurve = ... ; opencascade::handle<GeomAdaptor_HCurve> Curve = new GeomAdaptor_HCurve(myCurve); - Second sequence: // Step 1 opencascade::handle<Geom_Curve> myCurve = ... ; GeomAdaptor_Curve Crv (myCurve); // Step 2 opencascade::handle<GeomAdaptor_HCurve> Curve = new GeomAdaptor_HCurve(Crv); You use the second part of this sequence if you already have the adapted curve Crv. The boundary is then constructed with the Curve object: Standard_Real Tol = ... ; Standard_Real dummy = 0. ; myBoundary = GeomFill_SimpleBound (Curve,Tol,dummy);
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param Tol3d:
 	:type Tol3d: float
 	:param Tolang:
@@ -7037,13 +7037,13 @@ class GeomFill_Stretch : public GeomFill_Filling {
 	:param P4:
 	:type P4: TColgp_Array1OfPnt
 	:param W1:
-	:type W1: TColStd_Array1OfReal &
+	:type W1: TColStd_Array1OfReal
 	:param W2:
-	:type W2: TColStd_Array1OfReal &
+	:type W2: TColStd_Array1OfReal
 	:param W3:
-	:type W3: TColStd_Array1OfReal &
+	:type W3: TColStd_Array1OfReal
 	:param W4:
-	:type W4: TColStd_Array1OfReal &
+	:type W4: TColStd_Array1OfReal
 	:rtype: None") GeomFill_Stretch;
 		 GeomFill_Stretch (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
 
@@ -7071,13 +7071,13 @@ class GeomFill_Stretch : public GeomFill_Filling {
 	:param P4:
 	:type P4: TColgp_Array1OfPnt
 	:param W1:
-	:type W1: TColStd_Array1OfReal &
+	:type W1: TColStd_Array1OfReal
 	:param W2:
-	:type W2: TColStd_Array1OfReal &
+	:type W2: TColStd_Array1OfReal
 	:param W3:
-	:type W3: TColStd_Array1OfReal &
+	:type W3: TColStd_Array1OfReal
 	:param W4:
-	:type W4: TColStd_Array1OfReal &
+	:type W4: TColStd_Array1OfReal
 	:rtype: None") Init;
 		void Init (const TColgp_Array1OfPnt & P1,const TColgp_Array1OfPnt & P2,const TColgp_Array1OfPnt & P3,const TColgp_Array1OfPnt & P4,const TColStd_Array1OfReal & W1,const TColStd_Array1OfReal & W2,const TColStd_Array1OfReal & W3,const TColStd_Array1OfReal & W4);
 
@@ -7119,7 +7119,7 @@ class GeomFill_TgtOnCoons : public GeomFill_TgtField {
 		/****************** GeomFill_TgtOnCoons ******************/
 		%feature("compactdefaultargs") GeomFill_TgtOnCoons;
 		%feature("autodoc", ":param K:
-	:type K: opencascade::handle<GeomFill_CoonsAlgPatch> &
+	:type K: GeomFill_CoonsAlgPatch
 	:param I:
 	:type I: int
 	:rtype: None") GeomFill_TgtOnCoons;
@@ -7213,7 +7213,7 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: bool") D0;
 		virtual Standard_Boolean D0 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColStd_Array1OfReal & Weigths);
 
@@ -7227,9 +7227,9 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 	:param DPoles:
 	:type DPoles: TColgp_Array1OfVec
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") D1;
 		virtual Standard_Boolean D1 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -7245,11 +7245,11 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 	:param D2Poles:
 	:type D2Poles: TColgp_Array1OfVec
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") D2;
 		virtual Standard_Boolean D2 (const Standard_Real Param,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -7257,7 +7257,7 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") GeomFill_UniformSection;
 		%feature("autodoc", "* Make an constant Law with C. [First, Last] define law definition domain
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param FirstParameter: default value is 0.0
 	:type FirstParameter: float
 	:param LastParameter: default value is 1.0
@@ -7269,9 +7269,9 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "* Gets the bounds of the function parametric domain. Warning: This domain it is not modified by the SetValue method
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetDomain;
 		virtual void GetDomain (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7279,9 +7279,9 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "* Gets the bounds of the parametric interval on the function
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: void") GetInterval;
 		virtual void GetInterval (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7289,7 +7289,7 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles in all sections. This information is usefull to control error in rational approximation. Warning: Used only if <self> IsRational
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetMinimalWeight;
 		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -7303,7 +7303,7 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: TColStd_Array1OfReal &
+	:type Tol3d: TColStd_Array1OfReal
 	:rtype: void") GetTolerance;
 		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
 
@@ -7311,7 +7311,7 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -7321,7 +7321,7 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "* return True
 	:param Error:
-	:type Error: float &
+	:type Error: float
 	:rtype: bool") IsConstant;
 		virtual Standard_Boolean IsConstant (Standard_Real &OutValue);
 
@@ -7347,7 +7347,7 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* get the Knots of the section
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: void") Knots;
 		virtual void Knots (TColStd_Array1OfReal & TKnots);
 
@@ -7361,7 +7361,7 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "* get the Multplicities of the section
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: void") Mults;
 		virtual void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -7377,11 +7377,11 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "* get the format of an section
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:rtype: void") SectionShape;
 		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -7477,7 +7477,7 @@ class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
 		/****************** GeomFill_GuideTrihedronAC ******************/
 		%feature("compactdefaultargs") GeomFill_GuideTrihedronAC;
 		%feature("autodoc", ":param guide:
-	:type guide: opencascade::handle<Adaptor3d_HCurve> &
+	:type guide: Adaptor3d_HCurve
 	:rtype: None") GeomFill_GuideTrihedronAC;
 		 GeomFill_GuideTrihedronAC (const opencascade::handle<Adaptor3d_HCurve> & guide);
 
@@ -7502,7 +7502,7 @@ class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -7540,7 +7540,7 @@ class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -7642,7 +7642,7 @@ class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 		/****************** GeomFill_GuideTrihedronPlan ******************/
 		%feature("compactdefaultargs") GeomFill_GuideTrihedronPlan;
 		%feature("autodoc", ":param theGuide:
-	:type theGuide: opencascade::handle<Adaptor3d_HCurve> &
+	:type theGuide: Adaptor3d_HCurve
 	:rtype: None") GeomFill_GuideTrihedronPlan;
 		 GeomFill_GuideTrihedronPlan (const opencascade::handle<Adaptor3d_HCurve> & theGuide);
 
@@ -7667,7 +7667,7 @@ class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -7705,7 +7705,7 @@ class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param thePath:
-	:type thePath: opencascade::handle<Adaptor3d_HCurve> &
+	:type thePath: Adaptor3d_HCurve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & thePath);
 

@@ -595,9 +595,9 @@ class StepShape_Block : public StepGeom_GeometricRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type aPosition: StepGeom_Axis2Placement3d
 	:param aX:
 	:type aX: float
 	:param aY:
@@ -615,7 +615,7 @@ class StepShape_Block : public StepGeom_GeometricRepresentationItem {
 		/****************** SetPosition ******************/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", ":param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type aPosition: StepGeom_Axis2Placement3d
 	:rtype: None") SetPosition;
 		void SetPosition (const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition);
 
@@ -699,28 +699,28 @@ class StepShape_BooleanOperand {
 		/****************** SetBooleanResult ******************/
 		%feature("compactdefaultargs") SetBooleanResult;
 		%feature("autodoc", ":param aBooleanResult:
-	:type aBooleanResult: opencascade::handle<StepShape_BooleanResult> &
+	:type aBooleanResult: StepShape_BooleanResult
 	:rtype: None") SetBooleanResult;
 		void SetBooleanResult (const opencascade::handle<StepShape_BooleanResult> & aBooleanResult);
 
 		/****************** SetCsgPrimitive ******************/
 		%feature("compactdefaultargs") SetCsgPrimitive;
 		%feature("autodoc", ":param aCsgPrimitive:
-	:type aCsgPrimitive: StepShape_CsgPrimitive &
+	:type aCsgPrimitive: StepShape_CsgPrimitive
 	:rtype: None") SetCsgPrimitive;
 		void SetCsgPrimitive (const StepShape_CsgPrimitive & aCsgPrimitive);
 
 		/****************** SetHalfSpaceSolid ******************/
 		%feature("compactdefaultargs") SetHalfSpaceSolid;
 		%feature("autodoc", ":param aHalfSpaceSolid:
-	:type aHalfSpaceSolid: opencascade::handle<StepShape_HalfSpaceSolid> &
+	:type aHalfSpaceSolid: StepShape_HalfSpaceSolid
 	:rtype: None") SetHalfSpaceSolid;
 		void SetHalfSpaceSolid (const opencascade::handle<StepShape_HalfSpaceSolid> & aHalfSpaceSolid);
 
 		/****************** SetSolidModel ******************/
 		%feature("compactdefaultargs") SetSolidModel;
 		%feature("autodoc", ":param aSolidModel:
-	:type aSolidModel: opencascade::handle<StepShape_SolidModel> &
+	:type aSolidModel: StepShape_SolidModel
 	:rtype: None") SetSolidModel;
 		void SetSolidModel (const opencascade::handle<StepShape_SolidModel> & aSolidModel);
 
@@ -771,13 +771,13 @@ class StepShape_BooleanResult : public StepGeom_GeometricRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aOperator:
 	:type aOperator: StepShape_BooleanOperator
 	:param aFirstOperand:
-	:type aFirstOperand: StepShape_BooleanOperand &
+	:type aFirstOperand: StepShape_BooleanOperand
 	:param aSecondOperand:
-	:type aSecondOperand: StepShape_BooleanOperand &
+	:type aSecondOperand: StepShape_BooleanOperand
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepShape_BooleanOperator aOperator,const StepShape_BooleanOperand & aFirstOperand,const StepShape_BooleanOperand & aSecondOperand);
 
@@ -794,7 +794,7 @@ class StepShape_BooleanResult : public StepGeom_GeometricRepresentationItem {
 		/****************** SetFirstOperand ******************/
 		%feature("compactdefaultargs") SetFirstOperand;
 		%feature("autodoc", ":param aFirstOperand:
-	:type aFirstOperand: StepShape_BooleanOperand &
+	:type aFirstOperand: StepShape_BooleanOperand
 	:rtype: None") SetFirstOperand;
 		void SetFirstOperand (const StepShape_BooleanOperand & aFirstOperand);
 
@@ -808,7 +808,7 @@ class StepShape_BooleanResult : public StepGeom_GeometricRepresentationItem {
 		/****************** SetSecondOperand ******************/
 		%feature("compactdefaultargs") SetSecondOperand;
 		%feature("autodoc", ":param aSecondOperand:
-	:type aSecondOperand: StepShape_BooleanOperand &
+	:type aSecondOperand: StepShape_BooleanOperand
 	:rtype: None") SetSecondOperand;
 		void SetSecondOperand (const StepShape_BooleanOperand & aSecondOperand);
 
@@ -843,7 +843,7 @@ class StepShape_BoxDomain : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aCorner:
-	:type aCorner: opencascade::handle<StepGeom_CartesianPoint> &
+	:type aCorner: StepGeom_CartesianPoint
 	:param aXlength:
 	:type aXlength: float
 	:param aYlength:
@@ -856,7 +856,7 @@ class StepShape_BoxDomain : public Standard_Transient {
 		/****************** SetCorner ******************/
 		%feature("compactdefaultargs") SetCorner;
 		%feature("autodoc", ":param aCorner:
-	:type aCorner: opencascade::handle<StepGeom_CartesianPoint> &
+	:type aCorner: StepGeom_CartesianPoint
 	:rtype: None") SetCorner;
 		void SetCorner (const opencascade::handle<StepGeom_CartesianPoint> & aCorner);
 
@@ -945,9 +945,9 @@ class StepShape_ContextDependentShapeRepresentation : public Standard_Transient 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aRepRel:
-	:type aRepRel: opencascade::handle<StepRepr_ShapeRepresentationRelationship> &
+	:type aRepRel: StepRepr_ShapeRepresentationRelationship
 	:param aProRel:
-	:type aProRel: opencascade::handle<StepRepr_ProductDefinitionShape> &
+	:type aProRel: StepRepr_ProductDefinitionShape
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepRepr_ShapeRepresentationRelationship> & aRepRel,const opencascade::handle<StepRepr_ProductDefinitionShape> & aProRel);
 
@@ -964,14 +964,14 @@ class StepShape_ContextDependentShapeRepresentation : public Standard_Transient 
 		/****************** SetRepresentationRelation ******************/
 		%feature("compactdefaultargs") SetRepresentationRelation;
 		%feature("autodoc", ":param aRepRel:
-	:type aRepRel: opencascade::handle<StepRepr_ShapeRepresentationRelationship> &
+	:type aRepRel: StepRepr_ShapeRepresentationRelationship
 	:rtype: None") SetRepresentationRelation;
 		void SetRepresentationRelation (const opencascade::handle<StepRepr_ShapeRepresentationRelationship> & aRepRel);
 
 		/****************** SetRepresentedProductRelation ******************/
 		%feature("compactdefaultargs") SetRepresentedProductRelation;
 		%feature("autodoc", ":param aProRel:
-	:type aProRel: opencascade::handle<StepRepr_ProductDefinitionShape> &
+	:type aProRel: StepRepr_ProductDefinitionShape
 	:rtype: None") SetRepresentedProductRelation;
 		void SetRepresentedProductRelation (const opencascade::handle<StepRepr_ProductDefinitionShape> & aProRel);
 
@@ -1007,7 +1007,7 @@ class StepShape_CsgPrimitive : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a CsgPrimitive Kind Entity that is : 1 -> Sphere 2 -> Block 3 -> RightAngularWedge 4 -> Torus 5 -> RightCircularCone 6 -> RightCircularCylinder 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1077,14 +1077,14 @@ class StepShape_CsgSelect {
 		/****************** SetBooleanResult ******************/
 		%feature("compactdefaultargs") SetBooleanResult;
 		%feature("autodoc", ":param aBooleanResult:
-	:type aBooleanResult: opencascade::handle<StepShape_BooleanResult> &
+	:type aBooleanResult: StepShape_BooleanResult
 	:rtype: None") SetBooleanResult;
 		void SetBooleanResult (const opencascade::handle<StepShape_BooleanResult> & aBooleanResult);
 
 		/****************** SetCsgPrimitive ******************/
 		%feature("compactdefaultargs") SetCsgPrimitive;
 		%feature("autodoc", ":param aCsgPrimitive:
-	:type aCsgPrimitive: StepShape_CsgPrimitive &
+	:type aCsgPrimitive: StepShape_CsgPrimitive
 	:rtype: None") SetCsgPrimitive;
 		void SetCsgPrimitive (const StepShape_CsgPrimitive & aCsgPrimitive);
 
@@ -1147,7 +1147,7 @@ class StepShape_DimensionalCharacteristic : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a kind of DimensionalCharacteristic select type 1 -> DimensionalLocation from StepShape 2 -> DimensionalSize from StepShape 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1194,9 +1194,9 @@ class StepShape_DimensionalCharacteristicRepresentation : public Standard_Transi
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aDimension:
-	:type aDimension: StepShape_DimensionalCharacteristic &
+	:type aDimension: StepShape_DimensionalCharacteristic
 	:param aRepresentation:
-	:type aRepresentation: opencascade::handle<StepShape_ShapeDimensionRepresentation> &
+	:type aRepresentation: StepShape_ShapeDimensionRepresentation
 	:rtype: None") Init;
 		void Init (const StepShape_DimensionalCharacteristic & aDimension,const opencascade::handle<StepShape_ShapeDimensionRepresentation> & aRepresentation);
 
@@ -1210,7 +1210,7 @@ class StepShape_DimensionalCharacteristicRepresentation : public Standard_Transi
 		%feature("compactdefaultargs") SetDimension;
 		%feature("autodoc", "* Set field Dimension
 	:param Dimension:
-	:type Dimension: StepShape_DimensionalCharacteristic &
+	:type Dimension: StepShape_DimensionalCharacteristic
 	:rtype: None") SetDimension;
 		void SetDimension (const StepShape_DimensionalCharacteristic & Dimension);
 
@@ -1218,7 +1218,7 @@ class StepShape_DimensionalCharacteristicRepresentation : public Standard_Transi
 		%feature("compactdefaultargs") SetRepresentation;
 		%feature("autodoc", "* Set field Representation
 	:param Representation:
-	:type Representation: opencascade::handle<StepShape_ShapeDimensionRepresentation> &
+	:type Representation: StepShape_ShapeDimensionRepresentation
 	:rtype: None") SetRepresentation;
 		void SetRepresentation (const opencascade::handle<StepShape_ShapeDimensionRepresentation> & Representation);
 
@@ -1278,9 +1278,9 @@ class StepShape_DimensionalSize : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aAppliesTo:
-	:type aAppliesTo: opencascade::handle<StepRepr_ShapeAspect> &
+	:type aAppliesTo: StepRepr_ShapeAspect
 	:param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepRepr_ShapeAspect> & aAppliesTo,const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -1294,7 +1294,7 @@ class StepShape_DimensionalSize : public Standard_Transient {
 		%feature("compactdefaultargs") SetAppliesTo;
 		%feature("autodoc", "* Set field AppliesTo
 	:param AppliesTo:
-	:type AppliesTo: opencascade::handle<StepRepr_ShapeAspect> &
+	:type AppliesTo: StepRepr_ShapeAspect
 	:rtype: None") SetAppliesTo;
 		void SetAppliesTo (const opencascade::handle<StepRepr_ShapeAspect> & AppliesTo);
 
@@ -1302,7 +1302,7 @@ class StepShape_DimensionalSize : public Standard_Transient {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* Set field Name
 	:param Name:
-	:type Name: opencascade::handle<TCollection_HAsciiString> &
+	:type Name: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -1339,9 +1339,9 @@ class StepShape_EdgeBasedWireframeModel : public StepGeom_GeometricRepresentatio
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
-	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aRepresentationItem_Name: TCollection_HAsciiString
 	:param aEbwmBoundary:
-	:type aEbwmBoundary: opencascade::handle<StepShape_HArray1OfConnectedEdgeSet> &
+	:type aEbwmBoundary: StepShape_HArray1OfConnectedEdgeSet
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepShape_HArray1OfConnectedEdgeSet> & aEbwmBoundary);
 
@@ -1349,7 +1349,7 @@ class StepShape_EdgeBasedWireframeModel : public StepGeom_GeometricRepresentatio
 		%feature("compactdefaultargs") SetEbwmBoundary;
 		%feature("autodoc", "* Set field EbwmBoundary
 	:param EbwmBoundary:
-	:type EbwmBoundary: opencascade::handle<StepShape_HArray1OfConnectedEdgeSet> &
+	:type EbwmBoundary: StepShape_HArray1OfConnectedEdgeSet
 	:rtype: None") SetEbwmBoundary;
 		void SetEbwmBoundary (const opencascade::handle<StepShape_HArray1OfConnectedEdgeSet> & EbwmBoundary);
 
@@ -1386,9 +1386,9 @@ class StepShape_FaceBasedSurfaceModel : public StepGeom_GeometricRepresentationI
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
-	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aRepresentationItem_Name: TCollection_HAsciiString
 	:param aFbsmFaces:
-	:type aFbsmFaces: opencascade::handle<StepShape_HArray1OfConnectedFaceSet> &
+	:type aFbsmFaces: StepShape_HArray1OfConnectedFaceSet
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepShape_HArray1OfConnectedFaceSet> & aFbsmFaces);
 
@@ -1396,7 +1396,7 @@ class StepShape_FaceBasedSurfaceModel : public StepGeom_GeometricRepresentationI
 		%feature("compactdefaultargs") SetFbsmFaces;
 		%feature("autodoc", "* Set field FbsmFaces
 	:param FbsmFaces:
-	:type FbsmFaces: opencascade::handle<StepShape_HArray1OfConnectedFaceSet> &
+	:type FbsmFaces: StepShape_HArray1OfConnectedFaceSet
 	:rtype: None") SetFbsmFaces;
 		void SetFbsmFaces (const opencascade::handle<StepShape_HArray1OfConnectedFaceSet> & FbsmFaces);
 
@@ -1438,9 +1438,9 @@ class StepShape_GeometricSet : public StepGeom_GeometricRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aElements:
-	:type aElements: opencascade::handle<StepShape_HArray1OfGeometricSetSelect> &
+	:type aElements: StepShape_HArray1OfGeometricSetSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_HArray1OfGeometricSetSelect> & aElements);
 
@@ -1452,7 +1452,7 @@ class StepShape_GeometricSet : public StepGeom_GeometricRepresentationItem {
 		/****************** SetElements ******************/
 		%feature("compactdefaultargs") SetElements;
 		%feature("autodoc", ":param aElements:
-	:type aElements: opencascade::handle<StepShape_HArray1OfGeometricSetSelect> &
+	:type aElements: StepShape_HArray1OfGeometricSetSelect
 	:rtype: None") SetElements;
 		void SetElements (const opencascade::handle<StepShape_HArray1OfGeometricSetSelect> & aElements);
 
@@ -1483,7 +1483,7 @@ class StepShape_GeometricSetSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a GeometricSetSelect Kind Entity that is : 1 -> Point 2 -> Curve 3 -> Surface 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1539,9 +1539,9 @@ class StepShape_HalfSpaceSolid : public StepGeom_GeometricRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aBaseSurface:
-	:type aBaseSurface: opencascade::handle<StepGeom_Surface> &
+	:type aBaseSurface: StepGeom_Surface
 	:param aAgreementFlag:
 	:type aAgreementFlag: bool
 	:rtype: None") Init;
@@ -1557,7 +1557,7 @@ class StepShape_HalfSpaceSolid : public StepGeom_GeometricRepresentationItem {
 		/****************** SetBaseSurface ******************/
 		%feature("compactdefaultargs") SetBaseSurface;
 		%feature("autodoc", ":param aBaseSurface:
-	:type aBaseSurface: opencascade::handle<StepGeom_Surface> &
+	:type aBaseSurface: StepGeom_Surface
 	:rtype: None") SetBaseSurface;
 		void SetBaseSurface (const opencascade::handle<StepGeom_Surface> & aBaseSurface);
 
@@ -1597,41 +1597,41 @@ class StepShape_LimitsAndFits : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param form_variance:
-	:type form_variance: opencascade::handle<TCollection_HAsciiString> &
+	:type form_variance: TCollection_HAsciiString
 	:param zone_variance:
-	:type zone_variance: opencascade::handle<TCollection_HAsciiString> &
+	:type zone_variance: TCollection_HAsciiString
 	:param grade:
-	:type grade: opencascade::handle<TCollection_HAsciiString> &
+	:type grade: TCollection_HAsciiString
 	:param source:
-	:type source: opencascade::handle<TCollection_HAsciiString> &
+	:type source: TCollection_HAsciiString
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & form_variance,const opencascade::handle<TCollection_HAsciiString> & zone_variance,const opencascade::handle<TCollection_HAsciiString> & grade,const opencascade::handle<TCollection_HAsciiString> & source);
 
 		/****************** SetFormVariance ******************/
 		%feature("compactdefaultargs") SetFormVariance;
 		%feature("autodoc", ":param form_variance:
-	:type form_variance: opencascade::handle<TCollection_HAsciiString> &
+	:type form_variance: TCollection_HAsciiString
 	:rtype: None") SetFormVariance;
 		void SetFormVariance (const opencascade::handle<TCollection_HAsciiString> & form_variance);
 
 		/****************** SetGrade ******************/
 		%feature("compactdefaultargs") SetGrade;
 		%feature("autodoc", ":param grade:
-	:type grade: opencascade::handle<TCollection_HAsciiString> &
+	:type grade: TCollection_HAsciiString
 	:rtype: None") SetGrade;
 		void SetGrade (const opencascade::handle<TCollection_HAsciiString> & grade);
 
 		/****************** SetSource ******************/
 		%feature("compactdefaultargs") SetSource;
 		%feature("autodoc", ":param source:
-	:type source: opencascade::handle<TCollection_HAsciiString> &
+	:type source: TCollection_HAsciiString
 	:rtype: None") SetSource;
 		void SetSource (const opencascade::handle<TCollection_HAsciiString> & source);
 
 		/****************** SetZoneVariance ******************/
 		%feature("compactdefaultargs") SetZoneVariance;
 		%feature("autodoc", ":param zone_variance:
-	:type zone_variance: opencascade::handle<TCollection_HAsciiString> &
+	:type zone_variance: TCollection_HAsciiString
 	:rtype: None") SetZoneVariance;
 		void SetZoneVariance (const opencascade::handle<TCollection_HAsciiString> & zone_variance);
 
@@ -1675,13 +1675,13 @@ class StepShape_MeasureQualification : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:param description:
-	:type description: opencascade::handle<TCollection_HAsciiString> &
+	:type description: TCollection_HAsciiString
 	:param qualified_measure:
-	:type qualified_measure: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:type qualified_measure: StepBasic_MeasureWithUnit
 	:param qualifiers:
-	:type qualifiers: opencascade::handle<StepShape_HArray1OfValueQualifier> &
+	:type qualifiers: StepShape_HArray1OfValueQualifier
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & name,const opencascade::handle<TCollection_HAsciiString> & description,const opencascade::handle<StepBasic_MeasureWithUnit> & qualified_measure,const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
 
@@ -1715,28 +1715,28 @@ class StepShape_MeasureQualification : public Standard_Transient {
 		/****************** SetDescription ******************/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", ":param description:
-	:type description: opencascade::handle<TCollection_HAsciiString> &
+	:type description: TCollection_HAsciiString
 	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & description);
 
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & name);
 
 		/****************** SetQualifiedMeasure ******************/
 		%feature("compactdefaultargs") SetQualifiedMeasure;
 		%feature("autodoc", ":param qualified_measure:
-	:type qualified_measure: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:type qualified_measure: StepBasic_MeasureWithUnit
 	:rtype: None") SetQualifiedMeasure;
 		void SetQualifiedMeasure (const opencascade::handle<StepBasic_MeasureWithUnit> & qualified_measure);
 
 		/****************** SetQualifiers ******************/
 		%feature("compactdefaultargs") SetQualifiers;
 		%feature("autodoc", ":param qualifiers:
-	:type qualifiers: opencascade::handle<StepShape_HArray1OfValueQualifier> &
+	:type qualifiers: StepShape_HArray1OfValueQualifier
 	:rtype: None") SetQualifiers;
 		void SetQualifiers (const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
 
@@ -1745,7 +1745,7 @@ class StepShape_MeasureQualification : public Standard_Transient {
 		%feature("autodoc", ":param num:
 	:type num: int
 	:param aqualifier:
-	:type aqualifier: StepShape_ValueQualifier &
+	:type aqualifier: StepShape_ValueQualifier
 	:rtype: None") SetQualifiersValue;
 		void SetQualifiersValue (const Standard_Integer num,const StepShape_ValueQualifier & aqualifier);
 
@@ -1774,13 +1774,13 @@ class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aValueComponent:
-	:type aValueComponent: opencascade::handle<StepBasic_MeasureValueMember> &
+	:type aValueComponent: StepBasic_MeasureValueMember
 	:param aUnitComponent:
-	:type aUnitComponent: StepBasic_Unit &
+	:type aUnitComponent: StepBasic_Unit
 	:param qualifiers:
-	:type qualifiers: opencascade::handle<StepShape_HArray1OfValueQualifier> &
+	:type qualifiers: StepShape_HArray1OfValueQualifier
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepBasic_MeasureValueMember> & aValueComponent,const StepBasic_Unit & aUnitComponent,const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
 
@@ -1809,14 +1809,14 @@ class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public
 		/****************** SetMeasure ******************/
 		%feature("compactdefaultargs") SetMeasure;
 		%feature("autodoc", ":param Measure:
-	:type Measure: opencascade::handle<StepBasic_MeasureWithUnit> &
+	:type Measure: StepBasic_MeasureWithUnit
 	:rtype: None") SetMeasure;
 		void SetMeasure (const opencascade::handle<StepBasic_MeasureWithUnit> & Measure);
 
 		/****************** SetQualifiers ******************/
 		%feature("compactdefaultargs") SetQualifiers;
 		%feature("autodoc", ":param qualifiers:
-	:type qualifiers: opencascade::handle<StepShape_HArray1OfValueQualifier> &
+	:type qualifiers: StepShape_HArray1OfValueQualifier
 	:rtype: None") SetQualifiers;
 		void SetQualifiers (const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
 
@@ -1825,7 +1825,7 @@ class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public
 		%feature("autodoc", ":param num:
 	:type num: int
 	:param aqualifier:
-	:type aqualifier: StepShape_ValueQualifier &
+	:type aqualifier: StepShape_ValueQualifier
 	:rtype: None") SetQualifiersValue;
 		void SetQualifiersValue (const Standard_Integer num,const StepShape_ValueQualifier & aqualifier);
 
@@ -1854,9 +1854,9 @@ class StepShape_PlusMinusTolerance : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param range:
-	:type range: StepShape_ToleranceMethodDefinition &
+	:type range: StepShape_ToleranceMethodDefinition
 	:param toleranced_dimension:
-	:type toleranced_dimension: StepShape_DimensionalCharacteristic &
+	:type toleranced_dimension: StepShape_DimensionalCharacteristic
 	:rtype: None") Init;
 		void Init (const StepShape_ToleranceMethodDefinition & range,const StepShape_DimensionalCharacteristic & toleranced_dimension);
 
@@ -1868,14 +1868,14 @@ class StepShape_PlusMinusTolerance : public Standard_Transient {
 		/****************** SetRange ******************/
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", ":param range:
-	:type range: StepShape_ToleranceMethodDefinition &
+	:type range: StepShape_ToleranceMethodDefinition
 	:rtype: None") SetRange;
 		void SetRange (const StepShape_ToleranceMethodDefinition & range);
 
 		/****************** SetTolerancedDimension ******************/
 		%feature("compactdefaultargs") SetTolerancedDimension;
 		%feature("autodoc", ":param toleranced_dimension:
-	:type toleranced_dimension: StepShape_DimensionalCharacteristic &
+	:type toleranced_dimension: StepShape_DimensionalCharacteristic
 	:rtype: None") SetTolerancedDimension;
 		void SetTolerancedDimension (const StepShape_DimensionalCharacteristic & toleranced_dimension);
 
@@ -1950,9 +1950,9 @@ class StepShape_QualifiedRepresentationItem : public StepRepr_RepresentationItem
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param qualifiers:
-	:type qualifiers: opencascade::handle<StepShape_HArray1OfValueQualifier> &
+	:type qualifiers: StepShape_HArray1OfValueQualifier
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
 
@@ -1976,7 +1976,7 @@ class StepShape_QualifiedRepresentationItem : public StepRepr_RepresentationItem
 		/****************** SetQualifiers ******************/
 		%feature("compactdefaultargs") SetQualifiers;
 		%feature("autodoc", ":param qualifiers:
-	:type qualifiers: opencascade::handle<StepShape_HArray1OfValueQualifier> &
+	:type qualifiers: StepShape_HArray1OfValueQualifier
 	:rtype: None") SetQualifiers;
 		void SetQualifiers (const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
 
@@ -1985,7 +1985,7 @@ class StepShape_QualifiedRepresentationItem : public StepRepr_RepresentationItem
 		%feature("autodoc", ":param num:
 	:type num: int
 	:param aqualifier:
-	:type aqualifier: StepShape_ValueQualifier &
+	:type aqualifier: StepShape_ValueQualifier
 	:rtype: None") SetQualifiersValue;
 		void SetQualifiersValue (const Standard_Integer num,const StepShape_ValueQualifier & aqualifier);
 
@@ -2015,7 +2015,7 @@ class StepShape_ReversibleTopologyItem : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a ReversibleTopologyItem Kind Entity that is : 1 -> Edge 2 -> Path 3 -> Face 4 -> FaceBound 5 -> ClosedShell 6 -> OpenShell 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2079,9 +2079,9 @@ class StepShape_RightAngularWedge : public StepGeom_GeometricRepresentationItem 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type aPosition: StepGeom_Axis2Placement3d
 	:param aX:
 	:type aX: float
 	:param aY:
@@ -2113,7 +2113,7 @@ class StepShape_RightAngularWedge : public StepGeom_GeometricRepresentationItem 
 		/****************** SetPosition ******************/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", ":param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type aPosition: StepGeom_Axis2Placement3d
 	:rtype: None") SetPosition;
 		void SetPosition (const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition);
 
@@ -2184,9 +2184,9 @@ class StepShape_RightCircularCone : public StepGeom_GeometricRepresentationItem 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aPosition: StepGeom_Axis1Placement
 	:param aHeight:
 	:type aHeight: float
 	:param aRadius:
@@ -2221,7 +2221,7 @@ class StepShape_RightCircularCone : public StepGeom_GeometricRepresentationItem 
 		/****************** SetPosition ******************/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", ":param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aPosition: StepGeom_Axis1Placement
 	:rtype: None") SetPosition;
 		void SetPosition (const opencascade::handle<StepGeom_Axis1Placement> & aPosition);
 
@@ -2270,9 +2270,9 @@ class StepShape_RightCircularCylinder : public StepGeom_GeometricRepresentationI
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aPosition: StepGeom_Axis1Placement
 	:param aHeight:
 	:type aHeight: float
 	:param aRadius:
@@ -2300,7 +2300,7 @@ class StepShape_RightCircularCylinder : public StepGeom_GeometricRepresentationI
 		/****************** SetPosition ******************/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", ":param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aPosition: StepGeom_Axis1Placement
 	:rtype: None") SetPosition;
 		void SetPosition (const opencascade::handle<StepGeom_Axis1Placement> & aPosition);
 
@@ -2361,7 +2361,7 @@ class StepShape_ShapeDimensionRepresentationItem : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a ShapeDimensionRepresentationItem Kind Entity that is : 1 -> CompoundRepresentationItem 2 -> DescriptiveRepresentationItem 3 -> MeasureRepresentationItem 4 -> Placement 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2437,7 +2437,7 @@ class StepShape_Shell : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a Shell Kind Entity that is : 1 -> OpenShell 2 -> ClosedShell 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2477,9 +2477,9 @@ class StepShape_ShellBasedSurfaceModel : public StepGeom_GeometricRepresentation
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSbsmBoundary:
-	:type aSbsmBoundary: opencascade::handle<StepShape_HArray1OfShell> &
+	:type aSbsmBoundary: StepShape_HArray1OfShell
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_HArray1OfShell> & aSbsmBoundary);
 
@@ -2503,7 +2503,7 @@ class StepShape_ShellBasedSurfaceModel : public StepGeom_GeometricRepresentation
 		/****************** SetSbsmBoundary ******************/
 		%feature("compactdefaultargs") SetSbsmBoundary;
 		%feature("autodoc", ":param aSbsmBoundary:
-	:type aSbsmBoundary: opencascade::handle<StepShape_HArray1OfShell> &
+	:type aSbsmBoundary: StepShape_HArray1OfShell
 	:rtype: None") SetSbsmBoundary;
 		void SetSbsmBoundary (const opencascade::handle<StepShape_HArray1OfShell> & aSbsmBoundary);
 
@@ -2561,11 +2561,11 @@ class StepShape_Sphere : public StepGeom_GeometricRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aRadius:
 	:type aRadius: float
 	:param aCentre:
-	:type aCentre: opencascade::handle<StepGeom_Point> &
+	:type aCentre: StepGeom_Point
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Real aRadius,const opencascade::handle<StepGeom_Point> & aCentre);
 
@@ -2577,7 +2577,7 @@ class StepShape_Sphere : public StepGeom_GeometricRepresentationItem {
 		/****************** SetCentre ******************/
 		%feature("compactdefaultargs") SetCentre;
 		%feature("autodoc", ":param aCentre:
-	:type aCentre: opencascade::handle<StepGeom_Point> &
+	:type aCentre: StepGeom_Point
 	:rtype: None") SetCentre;
 		void SetCentre (const opencascade::handle<StepGeom_Point> & aCentre);
 
@@ -2615,7 +2615,7 @@ class StepShape_SurfaceModel : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a SurfaceModel Kind Entity that is : 1 -> ShellBasedSurfaceModel 2 -> FaceBasedSurfaceModel 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2650,7 +2650,7 @@ class StepShape_ToleranceMethodDefinition : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a kind of ValueQualifier Select Type : 1 -> ToleranceValue from StepShape 2 -> LimitsAndFits from StepShape
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2689,9 +2689,9 @@ class StepShape_ToleranceValue : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param lower_bound:
-	:type lower_bound: opencascade::handle<Standard_Transient> &
+	:type lower_bound: Standard_Transient
 	:param upper_bound:
-	:type upper_bound: opencascade::handle<Standard_Transient> &
+	:type upper_bound: Standard_Transient
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Standard_Transient> & lower_bound,const opencascade::handle<Standard_Transient> & upper_bound);
 
@@ -2703,14 +2703,14 @@ class StepShape_ToleranceValue : public Standard_Transient {
 		/****************** SetLowerBound ******************/
 		%feature("compactdefaultargs") SetLowerBound;
 		%feature("autodoc", ":param lower_bound:
-	:type lower_bound: opencascade::handle<Standard_Transient> &
+	:type lower_bound: Standard_Transient
 	:rtype: None") SetLowerBound;
 		void SetLowerBound (const opencascade::handle<Standard_Transient> & lower_bound);
 
 		/****************** SetUpperBound ******************/
 		%feature("compactdefaultargs") SetUpperBound;
 		%feature("autodoc", ":param upper_bound:
-	:type upper_bound: opencascade::handle<Standard_Transient> &
+	:type upper_bound: Standard_Transient
 	:rtype: None") SetUpperBound;
 		void SetUpperBound (const opencascade::handle<Standard_Transient> & upper_bound);
 
@@ -2767,9 +2767,9 @@ class StepShape_Torus : public StepGeom_GeometricRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aPosition: StepGeom_Axis1Placement
 	:param aMajorRadius:
 	:type aMajorRadius: float
 	:param aMinorRadius:
@@ -2809,7 +2809,7 @@ class StepShape_Torus : public StepGeom_GeometricRepresentationItem {
 		/****************** SetPosition ******************/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", ":param aPosition:
-	:type aPosition: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aPosition: StepGeom_Axis1Placement
 	:rtype: None") SetPosition;
 		void SetPosition (const opencascade::handle<StepGeom_Axis1Placement> & aPosition);
 
@@ -2839,7 +2839,7 @@ class StepShape_TypeQualifier : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -2851,7 +2851,7 @@ class StepShape_TypeQualifier : public Standard_Transient {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param name:
-	:type name: opencascade::handle<TCollection_HAsciiString> &
+	:type name: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -2887,7 +2887,7 @@ class StepShape_ValueFormatTypeQualifier : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Init all field own and inherited
 	:param theFormatType:
-	:type theFormatType: opencascade::handle<TCollection_HAsciiString> &
+	:type theFormatType: TCollection_HAsciiString
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theFormatType);
 
@@ -2895,7 +2895,7 @@ class StepShape_ValueFormatTypeQualifier : public Standard_Transient {
 		%feature("compactdefaultargs") SetFormatType;
 		%feature("autodoc", "* Set field FormatType
 	:param theFormatType:
-	:type theFormatType: opencascade::handle<TCollection_HAsciiString> &
+	:type theFormatType: TCollection_HAsciiString
 	:rtype: inline void") SetFormatType;
 		inline void SetFormatType (const opencascade::handle<TCollection_HAsciiString> & theFormatType);
 
@@ -2925,7 +2925,7 @@ class StepShape_ValueQualifier : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a kind of ValueQualifier Select Type : 1 -> PrecisionQualifier from StepShape 2 -> TypeQualifier from StepShape 3 -> UnceraintyQualifier .. not yet implemented 4 -> ValueFormatTypeQualifier
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3000,15 +3000,15 @@ class StepShape_AngularLocation : public StepShape_DimensionalLocation {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aShapeAspectRelationship_Name:
-	:type aShapeAspectRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aShapeAspectRelationship_Name: TCollection_HAsciiString
 	:param hasShapeAspectRelationship_Description:
 	:type hasShapeAspectRelationship_Description: bool
 	:param aShapeAspectRelationship_Description:
-	:type aShapeAspectRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
+	:type aShapeAspectRelationship_Description: TCollection_HAsciiString
 	:param aShapeAspectRelationship_RelatingShapeAspect:
-	:type aShapeAspectRelationship_RelatingShapeAspect: opencascade::handle<StepRepr_ShapeAspect> &
+	:type aShapeAspectRelationship_RelatingShapeAspect: StepRepr_ShapeAspect
 	:param aShapeAspectRelationship_RelatedShapeAspect:
-	:type aShapeAspectRelationship_RelatedShapeAspect: opencascade::handle<StepRepr_ShapeAspect> &
+	:type aShapeAspectRelationship_RelatedShapeAspect: StepRepr_ShapeAspect
 	:param aAngleSelection:
 	:type aAngleSelection: StepShape_AngleRelator
 	:rtype: None") Init;
@@ -3055,9 +3055,9 @@ class StepShape_AngularSize : public StepShape_DimensionalSize {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aDimensionalSize_AppliesTo:
-	:type aDimensionalSize_AppliesTo: opencascade::handle<StepRepr_ShapeAspect> &
+	:type aDimensionalSize_AppliesTo: StepRepr_ShapeAspect
 	:param aDimensionalSize_Name:
-	:type aDimensionalSize_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aDimensionalSize_Name: TCollection_HAsciiString
 	:param aAngleSelection:
 	:type aAngleSelection: StepShape_AngleRelator
 	:rtype: None") Init;
@@ -3102,20 +3102,20 @@ class StepShape_BoxedHalfSpace : public StepShape_HalfSpaceSolid {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aBaseSurface:
-	:type aBaseSurface: opencascade::handle<StepGeom_Surface> &
+	:type aBaseSurface: StepGeom_Surface
 	:param aAgreementFlag:
 	:type aAgreementFlag: bool
 	:param aEnclosure:
-	:type aEnclosure: opencascade::handle<StepShape_BoxDomain> &
+	:type aEnclosure: StepShape_BoxDomain
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Surface> & aBaseSurface,const Standard_Boolean aAgreementFlag,const opencascade::handle<StepShape_BoxDomain> & aEnclosure);
 
 		/****************** SetEnclosure ******************/
 		%feature("compactdefaultargs") SetEnclosure;
 		%feature("autodoc", ":param aEnclosure:
-	:type aEnclosure: opencascade::handle<StepShape_BoxDomain> &
+	:type aEnclosure: StepShape_BoxDomain
 	:rtype: None") SetEnclosure;
 		void SetEnclosure (const opencascade::handle<StepShape_BoxDomain> & aEnclosure);
 
@@ -3175,9 +3175,9 @@ class StepShape_ConnectedEdgeSet : public StepShape_TopologicalRepresentationIte
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
-	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aRepresentationItem_Name: TCollection_HAsciiString
 	:param aCesEdges:
-	:type aCesEdges: opencascade::handle<StepShape_HArray1OfEdge> &
+	:type aCesEdges: StepShape_HArray1OfEdge
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepShape_HArray1OfEdge> & aCesEdges);
 
@@ -3185,7 +3185,7 @@ class StepShape_ConnectedEdgeSet : public StepShape_TopologicalRepresentationIte
 		%feature("compactdefaultargs") SetCesEdges;
 		%feature("autodoc", "* Set field CesEdges
 	:param CesEdges:
-	:type CesEdges: opencascade::handle<StepShape_HArray1OfEdge> &
+	:type CesEdges: StepShape_HArray1OfEdge
 	:rtype: None") SetCesEdges;
 		void SetCesEdges (const opencascade::handle<StepShape_HArray1OfEdge> & CesEdges);
 
@@ -3227,9 +3227,9 @@ class StepShape_ConnectedFaceSet : public StepShape_TopologicalRepresentationIte
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aCfsFaces:
-	:type aCfsFaces: opencascade::handle<StepShape_HArray1OfFace> &
+	:type aCfsFaces: StepShape_HArray1OfFace
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_HArray1OfFace> & aCfsFaces);
 
@@ -3241,7 +3241,7 @@ class StepShape_ConnectedFaceSet : public StepShape_TopologicalRepresentationIte
 		/****************** SetCfsFaces ******************/
 		%feature("compactdefaultargs") SetCfsFaces;
 		%feature("autodoc", ":param aCfsFaces:
-	:type aCfsFaces: opencascade::handle<StepShape_HArray1OfFace> &
+	:type aCfsFaces: StepShape_HArray1OfFace
 	:rtype: void") SetCfsFaces;
 		virtual void SetCfsFaces (const opencascade::handle<StepShape_HArray1OfFace> & aCfsFaces);
 
@@ -3294,16 +3294,16 @@ class StepShape_CsgSolid : public StepShape_SolidModel {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aTreeRootExpression:
-	:type aTreeRootExpression: StepShape_CsgSelect &
+	:type aTreeRootExpression: StepShape_CsgSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepShape_CsgSelect & aTreeRootExpression);
 
 		/****************** SetTreeRootExpression ******************/
 		%feature("compactdefaultargs") SetTreeRootExpression;
 		%feature("autodoc", ":param aTreeRootExpression:
-	:type aTreeRootExpression: StepShape_CsgSelect &
+	:type aTreeRootExpression: StepShape_CsgSelect
 	:rtype: None") SetTreeRootExpression;
 		void SetTreeRootExpression (const StepShape_CsgSelect & aTreeRootExpression);
 
@@ -3339,17 +3339,17 @@ class StepShape_DimensionalLocationWithPath : public StepShape_DimensionalLocati
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aShapeAspectRelationship_Name:
-	:type aShapeAspectRelationship_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aShapeAspectRelationship_Name: TCollection_HAsciiString
 	:param hasShapeAspectRelationship_Description:
 	:type hasShapeAspectRelationship_Description: bool
 	:param aShapeAspectRelationship_Description:
-	:type aShapeAspectRelationship_Description: opencascade::handle<TCollection_HAsciiString> &
+	:type aShapeAspectRelationship_Description: TCollection_HAsciiString
 	:param aShapeAspectRelationship_RelatingShapeAspect:
-	:type aShapeAspectRelationship_RelatingShapeAspect: opencascade::handle<StepRepr_ShapeAspect> &
+	:type aShapeAspectRelationship_RelatingShapeAspect: StepRepr_ShapeAspect
 	:param aShapeAspectRelationship_RelatedShapeAspect:
-	:type aShapeAspectRelationship_RelatedShapeAspect: opencascade::handle<StepRepr_ShapeAspect> &
+	:type aShapeAspectRelationship_RelatedShapeAspect: StepRepr_ShapeAspect
 	:param aPath:
-	:type aPath: opencascade::handle<StepRepr_ShapeAspect> &
+	:type aPath: StepRepr_ShapeAspect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Name,const Standard_Boolean hasShapeAspectRelationship_Description,const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Description,const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatingShapeAspect,const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatedShapeAspect,const opencascade::handle<StepRepr_ShapeAspect> & aPath);
 
@@ -3363,7 +3363,7 @@ class StepShape_DimensionalLocationWithPath : public StepShape_DimensionalLocati
 		%feature("compactdefaultargs") SetPath;
 		%feature("autodoc", "* Set field Path
 	:param Path:
-	:type Path: opencascade::handle<StepRepr_ShapeAspect> &
+	:type Path: StepRepr_ShapeAspect
 	:rtype: None") SetPath;
 		void SetPath (const opencascade::handle<StepRepr_ShapeAspect> & Path);
 
@@ -3394,11 +3394,11 @@ class StepShape_DimensionalSizeWithPath : public StepShape_DimensionalSize {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aDimensionalSize_AppliesTo:
-	:type aDimensionalSize_AppliesTo: opencascade::handle<StepRepr_ShapeAspect> &
+	:type aDimensionalSize_AppliesTo: StepRepr_ShapeAspect
 	:param aDimensionalSize_Name:
-	:type aDimensionalSize_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aDimensionalSize_Name: TCollection_HAsciiString
 	:param aPath:
-	:type aPath: opencascade::handle<StepRepr_ShapeAspect> &
+	:type aPath: StepRepr_ShapeAspect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepRepr_ShapeAspect> & aDimensionalSize_AppliesTo,const opencascade::handle<TCollection_HAsciiString> & aDimensionalSize_Name,const opencascade::handle<StepRepr_ShapeAspect> & aPath);
 
@@ -3412,7 +3412,7 @@ class StepShape_DimensionalSizeWithPath : public StepShape_DimensionalSize {
 		%feature("compactdefaultargs") SetPath;
 		%feature("autodoc", "* Set field Path
 	:param Path:
-	:type Path: opencascade::handle<StepRepr_ShapeAspect> &
+	:type Path: StepRepr_ShapeAspect
 	:rtype: None") SetPath;
 		void SetPath (const opencascade::handle<StepRepr_ShapeAspect> & Path);
 
@@ -3475,25 +3475,25 @@ class StepShape_Edge : public StepShape_TopologicalRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aEdgeStart:
-	:type aEdgeStart: opencascade::handle<StepShape_Vertex> &
+	:type aEdgeStart: StepShape_Vertex
 	:param aEdgeEnd:
-	:type aEdgeEnd: opencascade::handle<StepShape_Vertex> &
+	:type aEdgeEnd: StepShape_Vertex
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_Vertex> & aEdgeStart,const opencascade::handle<StepShape_Vertex> & aEdgeEnd);
 
 		/****************** SetEdgeEnd ******************/
 		%feature("compactdefaultargs") SetEdgeEnd;
 		%feature("autodoc", ":param aEdgeEnd:
-	:type aEdgeEnd: opencascade::handle<StepShape_Vertex> &
+	:type aEdgeEnd: StepShape_Vertex
 	:rtype: void") SetEdgeEnd;
 		virtual void SetEdgeEnd (const opencascade::handle<StepShape_Vertex> & aEdgeEnd);
 
 		/****************** SetEdgeStart ******************/
 		%feature("compactdefaultargs") SetEdgeStart;
 		%feature("autodoc", ":param aEdgeStart:
-	:type aEdgeStart: opencascade::handle<StepShape_Vertex> &
+	:type aEdgeStart: StepShape_Vertex
 	:rtype: void") SetEdgeStart;
 		virtual void SetEdgeStart (const opencascade::handle<StepShape_Vertex> & aEdgeStart);
 
@@ -3558,9 +3558,9 @@ class StepShape_Face : public StepShape_TopologicalRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aBounds:
-	:type aBounds: opencascade::handle<StepShape_HArray1OfFaceBound> &
+	:type aBounds: StepShape_HArray1OfFaceBound
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_HArray1OfFaceBound> & aBounds);
 
@@ -3572,7 +3572,7 @@ class StepShape_Face : public StepShape_TopologicalRepresentationItem {
 		/****************** SetBounds ******************/
 		%feature("compactdefaultargs") SetBounds;
 		%feature("autodoc", ":param aBounds:
-	:type aBounds: opencascade::handle<StepShape_HArray1OfFaceBound> &
+	:type aBounds: StepShape_HArray1OfFaceBound
 	:rtype: void") SetBounds;
 		virtual void SetBounds (const opencascade::handle<StepShape_HArray1OfFaceBound> & aBounds);
 
@@ -3607,9 +3607,9 @@ class StepShape_FaceBound : public StepShape_TopologicalRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aBound:
-	:type aBound: opencascade::handle<StepShape_Loop> &
+	:type aBound: StepShape_Loop
 	:param aOrientation:
 	:type aOrientation: bool
 	:rtype: None") Init;
@@ -3623,7 +3623,7 @@ class StepShape_FaceBound : public StepShape_TopologicalRepresentationItem {
 		/****************** SetBound ******************/
 		%feature("compactdefaultargs") SetBound;
 		%feature("autodoc", ":param aBound:
-	:type aBound: opencascade::handle<StepShape_Loop> &
+	:type aBound: StepShape_Loop
 	:rtype: None") SetBound;
 		void SetBound (const opencascade::handle<StepShape_Loop> & aBound);
 
@@ -3787,20 +3787,20 @@ class StepShape_LoopAndPath : public StepShape_TopologicalRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aLoop:
-	:type aLoop: opencascade::handle<StepShape_Loop> &
+	:type aLoop: StepShape_Loop
 	:param aPath:
-	:type aPath: opencascade::handle<StepShape_Path> &
+	:type aPath: StepShape_Path
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_Loop> & aLoop,const opencascade::handle<StepShape_Path> & aPath);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aEdgeList:
-	:type aEdgeList: opencascade::handle<StepShape_HArray1OfOrientedEdge> &
+	:type aEdgeList: StepShape_HArray1OfOrientedEdge
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
 
@@ -3822,21 +3822,21 @@ class StepShape_LoopAndPath : public StepShape_TopologicalRepresentationItem {
 		/****************** SetEdgeList ******************/
 		%feature("compactdefaultargs") SetEdgeList;
 		%feature("autodoc", ":param aEdgeList:
-	:type aEdgeList: opencascade::handle<StepShape_HArray1OfOrientedEdge> &
+	:type aEdgeList: StepShape_HArray1OfOrientedEdge
 	:rtype: None") SetEdgeList;
 		void SetEdgeList (const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
 
 		/****************** SetLoop ******************/
 		%feature("compactdefaultargs") SetLoop;
 		%feature("autodoc", ":param aLoop:
-	:type aLoop: opencascade::handle<StepShape_Loop> &
+	:type aLoop: StepShape_Loop
 	:rtype: None") SetLoop;
 		void SetLoop (const opencascade::handle<StepShape_Loop> & aLoop);
 
 		/****************** SetPath ******************/
 		%feature("compactdefaultargs") SetPath;
 		%feature("autodoc", ":param aPath:
-	:type aPath: opencascade::handle<StepShape_Path> &
+	:type aPath: StepShape_Path
 	:rtype: None") SetPath;
 		void SetPath (const opencascade::handle<StepShape_Path> & aPath);
 
@@ -3866,18 +3866,18 @@ class StepShape_ManifoldSolidBrep : public StepShape_SolidModel {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aOuter:
-	:type aOuter: opencascade::handle<StepShape_ClosedShell> &
+	:type aOuter: StepShape_ClosedShell
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_ClosedShell> & aOuter);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aOuter:
-	:type aOuter: opencascade::handle<StepShape_ConnectedFaceSet> &
+	:type aOuter: StepShape_ConnectedFaceSet
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_ConnectedFaceSet> & aOuter);
 
@@ -3889,7 +3889,7 @@ class StepShape_ManifoldSolidBrep : public StepShape_SolidModel {
 		/****************** SetOuter ******************/
 		%feature("compactdefaultargs") SetOuter;
 		%feature("autodoc", ":param aOuter:
-	:type aOuter: opencascade::handle<StepShape_ConnectedFaceSet> &
+	:type aOuter: StepShape_ConnectedFaceSet
 	:rtype: None") SetOuter;
 		void SetOuter (const opencascade::handle<StepShape_ConnectedFaceSet> & aOuter);
 
@@ -3977,9 +3977,9 @@ class StepShape_Path : public StepShape_TopologicalRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aEdgeList:
-	:type aEdgeList: opencascade::handle<StepShape_HArray1OfOrientedEdge> &
+	:type aEdgeList: StepShape_HArray1OfOrientedEdge
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
 
@@ -3991,7 +3991,7 @@ class StepShape_Path : public StepShape_TopologicalRepresentationItem {
 		/****************** SetEdgeList ******************/
 		%feature("compactdefaultargs") SetEdgeList;
 		%feature("autodoc", ":param aEdgeList:
-	:type aEdgeList: opencascade::handle<StepShape_HArray1OfOrientedEdge> &
+	:type aEdgeList: StepShape_HArray1OfOrientedEdge
 	:rtype: void") SetEdgeList;
 		virtual void SetEdgeList (const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
 
@@ -4045,11 +4045,11 @@ class StepShape_ShapeDimensionRepresentation : public StepShape_ShapeRepresentat
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields AP214
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theItems:
-	:type theItems: opencascade::handle<StepRepr_HArray1OfRepresentationItem> &
+	:type theItems: StepRepr_HArray1OfRepresentationItem
 	:param theContextOfItems:
-	:type theContextOfItems: opencascade::handle<StepRepr_RepresentationContext> &
+	:type theContextOfItems: StepRepr_RepresentationContext
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems,const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
@@ -4057,11 +4057,11 @@ class StepShape_ShapeDimensionRepresentation : public StepShape_ShapeRepresentat
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields AP242
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theItems:
-	:type theItems: opencascade::handle<StepShape_HArray1OfShapeDimensionRepresentationItem> &
+	:type theItems: StepShape_HArray1OfShapeDimensionRepresentationItem
 	:param theContextOfItems:
-	:type theContextOfItems: opencascade::handle<StepRepr_RepresentationContext> &
+	:type theContextOfItems: StepRepr_RepresentationContext
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepShape_HArray1OfShapeDimensionRepresentationItem> & theItems,const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
@@ -4073,7 +4073,7 @@ class StepShape_ShapeDimensionRepresentation : public StepShape_ShapeRepresentat
 		/****************** SetItemsAP242 ******************/
 		%feature("compactdefaultargs") SetItemsAP242;
 		%feature("autodoc", ":param theItems:
-	:type theItems: opencascade::handle<StepShape_HArray1OfShapeDimensionRepresentationItem> &
+	:type theItems: StepShape_HArray1OfShapeDimensionRepresentationItem
 	:rtype: None") SetItemsAP242;
 		void SetItemsAP242 (const opencascade::handle<StepShape_HArray1OfShapeDimensionRepresentationItem> & theItems);
 
@@ -4126,11 +4126,11 @@ class StepShape_SolidReplica : public StepShape_SolidModel {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aParentSolid:
-	:type aParentSolid: opencascade::handle<StepShape_SolidModel> &
+	:type aParentSolid: StepShape_SolidModel
 	:param aTransformation:
-	:type aTransformation: opencascade::handle<StepGeom_CartesianTransformationOperator3d> &
+	:type aTransformation: StepGeom_CartesianTransformationOperator3d
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_SolidModel> & aParentSolid,const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & aTransformation);
 
@@ -4142,14 +4142,14 @@ class StepShape_SolidReplica : public StepShape_SolidModel {
 		/****************** SetParentSolid ******************/
 		%feature("compactdefaultargs") SetParentSolid;
 		%feature("autodoc", ":param aParentSolid:
-	:type aParentSolid: opencascade::handle<StepShape_SolidModel> &
+	:type aParentSolid: StepShape_SolidModel
 	:rtype: None") SetParentSolid;
 		void SetParentSolid (const opencascade::handle<StepShape_SolidModel> & aParentSolid);
 
 		/****************** SetTransformation ******************/
 		%feature("compactdefaultargs") SetTransformation;
 		%feature("autodoc", ":param aTransformation:
-	:type aTransformation: opencascade::handle<StepGeom_CartesianTransformationOperator3d> &
+	:type aTransformation: StepGeom_CartesianTransformationOperator3d
 	:rtype: None") SetTransformation;
 		void SetTransformation (const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & aTransformation);
 
@@ -4184,16 +4184,16 @@ class StepShape_SweptAreaSolid : public StepShape_SolidModel {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSweptArea:
-	:type aSweptArea: opencascade::handle<StepGeom_CurveBoundedSurface> &
+	:type aSweptArea: StepGeom_CurveBoundedSurface
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_CurveBoundedSurface> & aSweptArea);
 
 		/****************** SetSweptArea ******************/
 		%feature("compactdefaultargs") SetSweptArea;
 		%feature("autodoc", ":param aSweptArea:
-	:type aSweptArea: opencascade::handle<StepGeom_CurveBoundedSurface> &
+	:type aSweptArea: StepGeom_CurveBoundedSurface
 	:rtype: None") SetSweptArea;
 		void SetSweptArea (const opencascade::handle<StepGeom_CurveBoundedSurface> & aSweptArea);
 
@@ -4228,16 +4228,16 @@ class StepShape_SweptFaceSolid : public StepShape_SolidModel {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSweptArea:
-	:type aSweptArea: opencascade::handle<StepShape_FaceSurface> &
+	:type aSweptArea: StepShape_FaceSurface
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_FaceSurface> & aSweptArea);
 
 		/****************** SetSweptFace ******************/
 		%feature("compactdefaultargs") SetSweptFace;
 		%feature("autodoc", ":param aSweptArea:
-	:type aSweptArea: opencascade::handle<StepShape_FaceSurface> &
+	:type aSweptArea: StepShape_FaceSurface
 	:rtype: void") SetSweptFace;
 		virtual void SetSweptFace (const opencascade::handle<StepShape_FaceSurface> & aSweptArea);
 
@@ -4318,11 +4318,11 @@ class StepShape_BrepWithVoids : public StepShape_ManifoldSolidBrep {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aOuter:
-	:type aOuter: opencascade::handle<StepShape_ClosedShell> &
+	:type aOuter: StepShape_ClosedShell
 	:param aVoids:
-	:type aVoids: opencascade::handle<StepShape_HArray1OfOrientedClosedShell> &
+	:type aVoids: StepShape_HArray1OfOrientedClosedShell
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_ClosedShell> & aOuter,const opencascade::handle<StepShape_HArray1OfOrientedClosedShell> & aVoids);
 
@@ -4334,7 +4334,7 @@ class StepShape_BrepWithVoids : public StepShape_ManifoldSolidBrep {
 		/****************** SetVoids ******************/
 		%feature("compactdefaultargs") SetVoids;
 		%feature("autodoc", ":param aVoids:
-	:type aVoids: opencascade::handle<StepShape_HArray1OfOrientedClosedShell> &
+	:type aVoids: StepShape_HArray1OfOrientedClosedShell
 	:rtype: None") SetVoids;
 		void SetVoids (const opencascade::handle<StepShape_HArray1OfOrientedClosedShell> & aVoids);
 
@@ -4400,11 +4400,11 @@ class StepShape_ConnectedFaceSubSet : public StepShape_ConnectedFaceSet {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
-	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aRepresentationItem_Name: TCollection_HAsciiString
 	:param aConnectedFaceSet_CfsFaces:
-	:type aConnectedFaceSet_CfsFaces: opencascade::handle<StepShape_HArray1OfFace> &
+	:type aConnectedFaceSet_CfsFaces: StepShape_HArray1OfFace
 	:param aParentFaceSet:
-	:type aParentFaceSet: opencascade::handle<StepShape_ConnectedFaceSet> &
+	:type aParentFaceSet: StepShape_ConnectedFaceSet
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepShape_HArray1OfFace> & aConnectedFaceSet_CfsFaces,const opencascade::handle<StepShape_ConnectedFaceSet> & aParentFaceSet);
 
@@ -4418,7 +4418,7 @@ class StepShape_ConnectedFaceSubSet : public StepShape_ConnectedFaceSet {
 		%feature("compactdefaultargs") SetParentFaceSet;
 		%feature("autodoc", "* Set field ParentFaceSet
 	:param ParentFaceSet:
-	:type ParentFaceSet: opencascade::handle<StepShape_ConnectedFaceSet> &
+	:type ParentFaceSet: StepShape_ConnectedFaceSet
 	:rtype: None") SetParentFaceSet;
 		void SetParentFaceSet (const opencascade::handle<StepShape_ConnectedFaceSet> & ParentFaceSet);
 
@@ -4453,13 +4453,13 @@ class StepShape_EdgeCurve : public StepShape_Edge {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aEdgeStart:
-	:type aEdgeStart: opencascade::handle<StepShape_Vertex> &
+	:type aEdgeStart: StepShape_Vertex
 	:param aEdgeEnd:
-	:type aEdgeEnd: opencascade::handle<StepShape_Vertex> &
+	:type aEdgeEnd: StepShape_Vertex
 	:param aEdgeGeometry:
-	:type aEdgeGeometry: opencascade::handle<StepGeom_Curve> &
+	:type aEdgeGeometry: StepGeom_Curve
 	:param aSameSense:
 	:type aSameSense: bool
 	:rtype: None") Init;
@@ -4473,7 +4473,7 @@ class StepShape_EdgeCurve : public StepShape_Edge {
 		/****************** SetEdgeGeometry ******************/
 		%feature("compactdefaultargs") SetEdgeGeometry;
 		%feature("autodoc", ":param aEdgeGeometry:
-	:type aEdgeGeometry: opencascade::handle<StepGeom_Curve> &
+	:type aEdgeGeometry: StepGeom_Curve
 	:rtype: None") SetEdgeGeometry;
 		void SetEdgeGeometry (const opencascade::handle<StepGeom_Curve> & aEdgeGeometry);
 
@@ -4522,9 +4522,9 @@ class StepShape_EdgeLoop : public StepShape_Loop {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aEdgeList:
-	:type aEdgeList: opencascade::handle<StepShape_HArray1OfOrientedEdge> &
+	:type aEdgeList: StepShape_HArray1OfOrientedEdge
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
 
@@ -4536,7 +4536,7 @@ class StepShape_EdgeLoop : public StepShape_Loop {
 		/****************** SetEdgeList ******************/
 		%feature("compactdefaultargs") SetEdgeList;
 		%feature("autodoc", ":param aEdgeList:
-	:type aEdgeList: opencascade::handle<StepShape_HArray1OfOrientedEdge> &
+	:type aEdgeList: StepShape_HArray1OfOrientedEdge
 	:rtype: None") SetEdgeList;
 		void SetEdgeList (const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
 
@@ -4576,11 +4576,11 @@ class StepShape_ExtrudedAreaSolid : public StepShape_SweptAreaSolid {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSweptArea:
-	:type aSweptArea: opencascade::handle<StepGeom_CurveBoundedSurface> &
+	:type aSweptArea: StepGeom_CurveBoundedSurface
 	:param aExtrudedDirection:
-	:type aExtrudedDirection: opencascade::handle<StepGeom_Direction> &
+	:type aExtrudedDirection: StepGeom_Direction
 	:param aDepth:
 	:type aDepth: float
 	:rtype: None") Init;
@@ -4596,7 +4596,7 @@ class StepShape_ExtrudedAreaSolid : public StepShape_SweptAreaSolid {
 		/****************** SetExtrudedDirection ******************/
 		%feature("compactdefaultargs") SetExtrudedDirection;
 		%feature("autodoc", ":param aExtrudedDirection:
-	:type aExtrudedDirection: opencascade::handle<StepGeom_Direction> &
+	:type aExtrudedDirection: StepGeom_Direction
 	:rtype: None") SetExtrudedDirection;
 		void SetExtrudedDirection (const opencascade::handle<StepGeom_Direction> & aExtrudedDirection);
 
@@ -4636,11 +4636,11 @@ class StepShape_ExtrudedFaceSolid : public StepShape_SweptFaceSolid {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSweptArea:
-	:type aSweptArea: opencascade::handle<StepShape_FaceSurface> &
+	:type aSweptArea: StepShape_FaceSurface
 	:param aExtrudedDirection:
-	:type aExtrudedDirection: opencascade::handle<StepGeom_Direction> &
+	:type aExtrudedDirection: StepGeom_Direction
 	:param aDepth:
 	:type aDepth: float
 	:rtype: None") Init;
@@ -4656,7 +4656,7 @@ class StepShape_ExtrudedFaceSolid : public StepShape_SweptFaceSolid {
 		/****************** SetExtrudedDirection ******************/
 		%feature("compactdefaultargs") SetExtrudedDirection;
 		%feature("autodoc", ":param aExtrudedDirection:
-	:type aExtrudedDirection: opencascade::handle<StepGeom_Direction> &
+	:type aExtrudedDirection: StepGeom_Direction
 	:rtype: None") SetExtrudedDirection;
 		void SetExtrudedDirection (const opencascade::handle<StepGeom_Direction> & aExtrudedDirection);
 
@@ -4714,11 +4714,11 @@ class StepShape_FaceSurface : public StepShape_Face {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aBounds:
-	:type aBounds: opencascade::handle<StepShape_HArray1OfFaceBound> &
+	:type aBounds: StepShape_HArray1OfFaceBound
 	:param aFaceGeometry:
-	:type aFaceGeometry: opencascade::handle<StepGeom_Surface> &
+	:type aFaceGeometry: StepGeom_Surface
 	:param aSameSense:
 	:type aSameSense: bool
 	:rtype: None") Init;
@@ -4732,7 +4732,7 @@ class StepShape_FaceSurface : public StepShape_Face {
 		/****************** SetFaceGeometry ******************/
 		%feature("compactdefaultargs") SetFaceGeometry;
 		%feature("autodoc", ":param aFaceGeometry:
-	:type aFaceGeometry: opencascade::handle<StepGeom_Surface> &
+	:type aFaceGeometry: StepGeom_Surface
 	:rtype: None") SetFaceGeometry;
 		void SetFaceGeometry (const opencascade::handle<StepGeom_Surface> & aFaceGeometry);
 
@@ -4802,24 +4802,24 @@ class StepShape_FacetedBrepAndBrepWithVoids : public StepShape_ManifoldSolidBrep
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aOuter:
-	:type aOuter: opencascade::handle<StepShape_ClosedShell> &
+	:type aOuter: StepShape_ClosedShell
 	:param aFacetedBrep:
-	:type aFacetedBrep: opencascade::handle<StepShape_FacetedBrep> &
+	:type aFacetedBrep: StepShape_FacetedBrep
 	:param aBrepWithVoids:
-	:type aBrepWithVoids: opencascade::handle<StepShape_BrepWithVoids> &
+	:type aBrepWithVoids: StepShape_BrepWithVoids
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_ClosedShell> & aOuter,const opencascade::handle<StepShape_FacetedBrep> & aFacetedBrep,const opencascade::handle<StepShape_BrepWithVoids> & aBrepWithVoids);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aOuter:
-	:type aOuter: opencascade::handle<StepShape_ClosedShell> &
+	:type aOuter: StepShape_ClosedShell
 	:param aVoids:
-	:type aVoids: opencascade::handle<StepShape_HArray1OfOrientedClosedShell> &
+	:type aVoids: StepShape_HArray1OfOrientedClosedShell
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_ClosedShell> & aOuter,const opencascade::handle<StepShape_HArray1OfOrientedClosedShell> & aVoids);
 
@@ -4831,21 +4831,21 @@ class StepShape_FacetedBrepAndBrepWithVoids : public StepShape_ManifoldSolidBrep
 		/****************** SetBrepWithVoids ******************/
 		%feature("compactdefaultargs") SetBrepWithVoids;
 		%feature("autodoc", ":param aBrepWithVoids:
-	:type aBrepWithVoids: opencascade::handle<StepShape_BrepWithVoids> &
+	:type aBrepWithVoids: StepShape_BrepWithVoids
 	:rtype: None") SetBrepWithVoids;
 		void SetBrepWithVoids (const opencascade::handle<StepShape_BrepWithVoids> & aBrepWithVoids);
 
 		/****************** SetFacetedBrep ******************/
 		%feature("compactdefaultargs") SetFacetedBrep;
 		%feature("autodoc", ":param aFacetedBrep:
-	:type aFacetedBrep: opencascade::handle<StepShape_FacetedBrep> &
+	:type aFacetedBrep: StepShape_FacetedBrep
 	:rtype: None") SetFacetedBrep;
 		void SetFacetedBrep (const opencascade::handle<StepShape_FacetedBrep> & aFacetedBrep);
 
 		/****************** SetVoids ******************/
 		%feature("compactdefaultargs") SetVoids;
 		%feature("autodoc", ":param aVoids:
-	:type aVoids: opencascade::handle<StepShape_HArray1OfOrientedClosedShell> &
+	:type aVoids: StepShape_HArray1OfOrientedClosedShell
 	:rtype: None") SetVoids;
 		void SetVoids (const opencascade::handle<StepShape_HArray1OfOrientedClosedShell> & aVoids);
 
@@ -4925,9 +4925,9 @@ class StepShape_OrientedEdge : public StepShape_Edge {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aEdgeElement:
-	:type aEdgeElement: opencascade::handle<StepShape_Edge> &
+	:type aEdgeElement: StepShape_Edge
 	:param aOrientation:
 	:type aOrientation: bool
 	:rtype: None") Init;
@@ -4941,21 +4941,21 @@ class StepShape_OrientedEdge : public StepShape_Edge {
 		/****************** SetEdgeElement ******************/
 		%feature("compactdefaultargs") SetEdgeElement;
 		%feature("autodoc", ":param aEdgeElement:
-	:type aEdgeElement: opencascade::handle<StepShape_Edge> &
+	:type aEdgeElement: StepShape_Edge
 	:rtype: None") SetEdgeElement;
 		void SetEdgeElement (const opencascade::handle<StepShape_Edge> & aEdgeElement);
 
 		/****************** SetEdgeEnd ******************/
 		%feature("compactdefaultargs") SetEdgeEnd;
 		%feature("autodoc", ":param aEdgeEnd:
-	:type aEdgeEnd: opencascade::handle<StepShape_Vertex> &
+	:type aEdgeEnd: StepShape_Vertex
 	:rtype: void") SetEdgeEnd;
 		virtual void SetEdgeEnd (const opencascade::handle<StepShape_Vertex> & aEdgeEnd);
 
 		/****************** SetEdgeStart ******************/
 		%feature("compactdefaultargs") SetEdgeStart;
 		%feature("autodoc", ":param aEdgeStart:
-	:type aEdgeStart: opencascade::handle<StepShape_Vertex> &
+	:type aEdgeStart: StepShape_Vertex
 	:rtype: void") SetEdgeStart;
 		virtual void SetEdgeStart (const opencascade::handle<StepShape_Vertex> & aEdgeStart);
 
@@ -5009,9 +5009,9 @@ class StepShape_OrientedFace : public StepShape_Face {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aFaceElement:
-	:type aFaceElement: opencascade::handle<StepShape_Face> &
+	:type aFaceElement: StepShape_Face
 	:param aOrientation:
 	:type aOrientation: bool
 	:rtype: None") Init;
@@ -5030,14 +5030,14 @@ class StepShape_OrientedFace : public StepShape_Face {
 		/****************** SetBounds ******************/
 		%feature("compactdefaultargs") SetBounds;
 		%feature("autodoc", ":param aBounds:
-	:type aBounds: opencascade::handle<StepShape_HArray1OfFaceBound> &
+	:type aBounds: StepShape_HArray1OfFaceBound
 	:rtype: void") SetBounds;
 		virtual void SetBounds (const opencascade::handle<StepShape_HArray1OfFaceBound> & aBounds);
 
 		/****************** SetFaceElement ******************/
 		%feature("compactdefaultargs") SetFaceElement;
 		%feature("autodoc", ":param aFaceElement:
-	:type aFaceElement: opencascade::handle<StepShape_Face> &
+	:type aFaceElement: StepShape_Face
 	:rtype: None") SetFaceElement;
 		void SetFaceElement (const opencascade::handle<StepShape_Face> & aFaceElement);
 
@@ -5086,9 +5086,9 @@ class StepShape_OrientedPath : public StepShape_Path {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aPathElement:
-	:type aPathElement: opencascade::handle<StepShape_EdgeLoop> &
+	:type aPathElement: StepShape_EdgeLoop
 	:param aOrientation:
 	:type aOrientation: bool
 	:rtype: None") Init;
@@ -5112,7 +5112,7 @@ class StepShape_OrientedPath : public StepShape_Path {
 		/****************** SetEdgeList ******************/
 		%feature("compactdefaultargs") SetEdgeList;
 		%feature("autodoc", ":param aEdgeList:
-	:type aEdgeList: opencascade::handle<StepShape_HArray1OfOrientedEdge> &
+	:type aEdgeList: StepShape_HArray1OfOrientedEdge
 	:rtype: void") SetEdgeList;
 		virtual void SetEdgeList (const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
 
@@ -5126,7 +5126,7 @@ class StepShape_OrientedPath : public StepShape_Path {
 		/****************** SetPathElement ******************/
 		%feature("compactdefaultargs") SetPathElement;
 		%feature("autodoc", ":param aPathElement:
-	:type aPathElement: opencascade::handle<StepShape_EdgeLoop> &
+	:type aPathElement: StepShape_EdgeLoop
 	:rtype: None") SetPathElement;
 		void SetPathElement (const opencascade::handle<StepShape_EdgeLoop> & aPathElement);
 
@@ -5156,9 +5156,9 @@ class StepShape_PolyLoop : public StepShape_Loop {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aPolygon:
-	:type aPolygon: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
+	:type aPolygon: StepGeom_HArray1OfCartesianPoint
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aPolygon);
 
@@ -5182,7 +5182,7 @@ class StepShape_PolyLoop : public StepShape_Loop {
 		/****************** SetPolygon ******************/
 		%feature("compactdefaultargs") SetPolygon;
 		%feature("autodoc", ":param aPolygon:
-	:type aPolygon: opencascade::handle<StepGeom_HArray1OfCartesianPoint> &
+	:type aPolygon: StepGeom_HArray1OfCartesianPoint
 	:rtype: None") SetPolygon;
 		void SetPolygon (const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aPolygon);
 
@@ -5222,11 +5222,11 @@ class StepShape_RevolvedAreaSolid : public StepShape_SweptAreaSolid {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSweptArea:
-	:type aSweptArea: opencascade::handle<StepGeom_CurveBoundedSurface> &
+	:type aSweptArea: StepGeom_CurveBoundedSurface
 	:param aAxis:
-	:type aAxis: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aAxis: StepGeom_Axis1Placement
 	:param aAngle:
 	:type aAngle: float
 	:rtype: None") Init;
@@ -5242,7 +5242,7 @@ class StepShape_RevolvedAreaSolid : public StepShape_SweptAreaSolid {
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", ":param aAxis:
-	:type aAxis: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aAxis: StepGeom_Axis1Placement
 	:rtype: None") SetAxis;
 		void SetAxis (const opencascade::handle<StepGeom_Axis1Placement> & aAxis);
 
@@ -5282,20 +5282,20 @@ class StepShape_RevolvedFaceSolid : public StepShape_SweptFaceSolid {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSweptArea:
-	:type aSweptArea: opencascade::handle<StepShape_FaceSurface> &
+	:type aSweptArea: StepShape_FaceSurface
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_FaceSurface> & aSweptArea);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSweptArea:
-	:type aSweptArea: opencascade::handle<StepShape_FaceSurface> &
+	:type aSweptArea: StepShape_FaceSurface
 	:param aAxis:
-	:type aAxis: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aAxis: StepGeom_Axis1Placement
 	:param aAngle:
 	:type aAngle: float
 	:rtype: None") Init;
@@ -5311,7 +5311,7 @@ class StepShape_RevolvedFaceSolid : public StepShape_SweptFaceSolid {
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", ":param aAxis:
-	:type aAxis: opencascade::handle<StepGeom_Axis1Placement> &
+	:type aAxis: StepGeom_Axis1Placement
 	:rtype: None") SetAxis;
 		void SetAxis (const opencascade::handle<StepGeom_Axis1Placement> & aAxis);
 
@@ -5342,13 +5342,13 @@ class StepShape_Subedge : public StepShape_Edge {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
-	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aRepresentationItem_Name: TCollection_HAsciiString
 	:param aEdge_EdgeStart:
-	:type aEdge_EdgeStart: opencascade::handle<StepShape_Vertex> &
+	:type aEdge_EdgeStart: StepShape_Vertex
 	:param aEdge_EdgeEnd:
-	:type aEdge_EdgeEnd: opencascade::handle<StepShape_Vertex> &
+	:type aEdge_EdgeEnd: StepShape_Vertex
 	:param aParentEdge:
-	:type aParentEdge: opencascade::handle<StepShape_Edge> &
+	:type aParentEdge: StepShape_Edge
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepShape_Vertex> & aEdge_EdgeStart,const opencascade::handle<StepShape_Vertex> & aEdge_EdgeEnd,const opencascade::handle<StepShape_Edge> & aParentEdge);
 
@@ -5362,7 +5362,7 @@ class StepShape_Subedge : public StepShape_Edge {
 		%feature("compactdefaultargs") SetParentEdge;
 		%feature("autodoc", "* Set field ParentEdge
 	:param ParentEdge:
-	:type ParentEdge: opencascade::handle<StepShape_Edge> &
+	:type ParentEdge: StepShape_Edge
 	:rtype: None") SetParentEdge;
 		void SetParentEdge (const opencascade::handle<StepShape_Edge> & ParentEdge);
 
@@ -5393,11 +5393,11 @@ class StepShape_Subface : public StepShape_Face {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
-	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aRepresentationItem_Name: TCollection_HAsciiString
 	:param aFace_Bounds:
-	:type aFace_Bounds: opencascade::handle<StepShape_HArray1OfFaceBound> &
+	:type aFace_Bounds: StepShape_HArray1OfFaceBound
 	:param aParentFace:
-	:type aParentFace: opencascade::handle<StepShape_Face> &
+	:type aParentFace: StepShape_Face
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepShape_HArray1OfFaceBound> & aFace_Bounds,const opencascade::handle<StepShape_Face> & aParentFace);
 
@@ -5411,7 +5411,7 @@ class StepShape_Subface : public StepShape_Face {
 		%feature("compactdefaultargs") SetParentFace;
 		%feature("autodoc", "* Set field ParentFace
 	:param ParentFace:
-	:type ParentFace: opencascade::handle<StepShape_Face> &
+	:type ParentFace: StepShape_Face
 	:rtype: None") SetParentFace;
 		void SetParentFace (const opencascade::handle<StepShape_Face> & ParentFace);
 
@@ -5441,9 +5441,9 @@ class StepShape_VertexLoop : public StepShape_Loop {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aLoopVertex:
-	:type aLoopVertex: opencascade::handle<StepShape_Vertex> &
+	:type aLoopVertex: StepShape_Vertex
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepShape_Vertex> & aLoopVertex);
 
@@ -5455,7 +5455,7 @@ class StepShape_VertexLoop : public StepShape_Loop {
 		/****************** SetLoopVertex ******************/
 		%feature("compactdefaultargs") SetLoopVertex;
 		%feature("autodoc", ":param aLoopVertex:
-	:type aLoopVertex: opencascade::handle<StepShape_Vertex> &
+	:type aLoopVertex: StepShape_Vertex
 	:rtype: None") SetLoopVertex;
 		void SetLoopVertex (const opencascade::handle<StepShape_Vertex> & aLoopVertex);
 
@@ -5485,16 +5485,16 @@ class StepShape_VertexPoint : public StepShape_Vertex {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aVertexGeometry:
-	:type aVertexGeometry: opencascade::handle<StepGeom_Point> &
+	:type aVertexGeometry: StepGeom_Point
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Point> & aVertexGeometry);
 
 		/****************** SetVertexGeometry ******************/
 		%feature("compactdefaultargs") SetVertexGeometry;
 		%feature("autodoc", ":param aVertexGeometry:
-	:type aVertexGeometry: opencascade::handle<StepGeom_Point> &
+	:type aVertexGeometry: StepGeom_Point
 	:rtype: None") SetVertexGeometry;
 		void SetVertexGeometry (const opencascade::handle<StepGeom_Point> & aVertexGeometry);
 
@@ -5569,9 +5569,9 @@ class StepShape_OrientedClosedShell : public StepShape_ClosedShell {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aClosedShellElement:
-	:type aClosedShellElement: opencascade::handle<StepShape_ClosedShell> &
+	:type aClosedShellElement: StepShape_ClosedShell
 	:param aOrientation:
 	:type aOrientation: bool
 	:rtype: None") Init;
@@ -5590,14 +5590,14 @@ class StepShape_OrientedClosedShell : public StepShape_ClosedShell {
 		/****************** SetCfsFaces ******************/
 		%feature("compactdefaultargs") SetCfsFaces;
 		%feature("autodoc", ":param aCfsFaces:
-	:type aCfsFaces: opencascade::handle<StepShape_HArray1OfFace> &
+	:type aCfsFaces: StepShape_HArray1OfFace
 	:rtype: void") SetCfsFaces;
 		virtual void SetCfsFaces (const opencascade::handle<StepShape_HArray1OfFace> & aCfsFaces);
 
 		/****************** SetClosedShellElement ******************/
 		%feature("compactdefaultargs") SetClosedShellElement;
 		%feature("autodoc", ":param aClosedShellElement:
-	:type aClosedShellElement: opencascade::handle<StepShape_ClosedShell> &
+	:type aClosedShellElement: StepShape_ClosedShell
 	:rtype: None") SetClosedShellElement;
 		void SetClosedShellElement (const opencascade::handle<StepShape_ClosedShell> & aClosedShellElement);
 
@@ -5646,9 +5646,9 @@ class StepShape_OrientedOpenShell : public StepShape_OpenShell {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aOpenShellElement:
-	:type aOpenShellElement: opencascade::handle<StepShape_OpenShell> &
+	:type aOpenShellElement: StepShape_OpenShell
 	:param aOrientation:
 	:type aOrientation: bool
 	:rtype: None") Init;
@@ -5672,14 +5672,14 @@ class StepShape_OrientedOpenShell : public StepShape_OpenShell {
 		/****************** SetCfsFaces ******************/
 		%feature("compactdefaultargs") SetCfsFaces;
 		%feature("autodoc", ":param aCfsFaces:
-	:type aCfsFaces: opencascade::handle<StepShape_HArray1OfFace> &
+	:type aCfsFaces: StepShape_HArray1OfFace
 	:rtype: void") SetCfsFaces;
 		virtual void SetCfsFaces (const opencascade::handle<StepShape_HArray1OfFace> & aCfsFaces);
 
 		/****************** SetOpenShellElement ******************/
 		%feature("compactdefaultargs") SetOpenShellElement;
 		%feature("autodoc", ":param aOpenShellElement:
-	:type aOpenShellElement: opencascade::handle<StepShape_OpenShell> &
+	:type aOpenShellElement: StepShape_OpenShell
 	:rtype: None") SetOpenShellElement;
 		void SetOpenShellElement (const opencascade::handle<StepShape_OpenShell> & aOpenShellElement);
 
@@ -5717,13 +5717,13 @@ class StepShape_SeamEdge : public StepShape_OrientedEdge {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aRepresentationItem_Name:
-	:type aRepresentationItem_Name: opencascade::handle<TCollection_HAsciiString> &
+	:type aRepresentationItem_Name: TCollection_HAsciiString
 	:param aOrientedEdge_EdgeElement:
-	:type aOrientedEdge_EdgeElement: opencascade::handle<StepShape_Edge> &
+	:type aOrientedEdge_EdgeElement: StepShape_Edge
 	:param aOrientedEdge_Orientation:
 	:type aOrientedEdge_Orientation: bool
 	:param aPcurveReference:
-	:type aPcurveReference: opencascade::handle<StepGeom_Pcurve> &
+	:type aPcurveReference: StepGeom_Pcurve
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name,const opencascade::handle<StepShape_Edge> & aOrientedEdge_EdgeElement,const Standard_Boolean aOrientedEdge_Orientation,const opencascade::handle<StepGeom_Pcurve> & aPcurveReference);
 
@@ -5737,7 +5737,7 @@ class StepShape_SeamEdge : public StepShape_OrientedEdge {
 		%feature("compactdefaultargs") SetPcurveReference;
 		%feature("autodoc", "* Set field PcurveReference
 	:param PcurveReference:
-	:type PcurveReference: opencascade::handle<StepGeom_Pcurve> &
+	:type PcurveReference: StepGeom_Pcurve
 	:rtype: None") SetPcurveReference;
 		void SetPcurveReference (const opencascade::handle<StepGeom_Pcurve> & PcurveReference);
 

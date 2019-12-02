@@ -122,23 +122,23 @@ class STEPSelections_AssemblyComponent : public Standard_Transient {
 		/****************** STEPSelections_AssemblyComponent ******************/
 		%feature("compactdefaultargs") STEPSelections_AssemblyComponent;
 		%feature("autodoc", ":param sdr:
-	:type sdr: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type sdr: StepShape_ShapeDefinitionRepresentation
 	:param list:
-	:type list: opencascade::handle<STEPSelections_HSequenceOfAssemblyLink> &
+	:type list: STEPSelections_HSequenceOfAssemblyLink
 	:rtype: None") STEPSelections_AssemblyComponent;
 		 STEPSelections_AssemblyComponent (const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & sdr,const opencascade::handle<STEPSelections_HSequenceOfAssemblyLink> & list);
 
 		/****************** SetList ******************/
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", ":param list:
-	:type list: opencascade::handle<STEPSelections_HSequenceOfAssemblyLink> &
+	:type list: STEPSelections_HSequenceOfAssemblyLink
 	:rtype: None") SetList;
 		void SetList (const opencascade::handle<STEPSelections_HSequenceOfAssemblyLink> & list);
 
 		/****************** SetSDR ******************/
 		%feature("compactdefaultargs") SetSDR;
 		%feature("autodoc", ":param sdr:
-	:type sdr: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type sdr: StepShape_ShapeDefinitionRepresentation
 	:rtype: None") SetSDR;
 		void SetSDR (const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & sdr);
 
@@ -170,28 +170,28 @@ class STEPSelections_AssemblyExplorer {
         		/****************** FillListWithGraph ******************/
 		%feature("compactdefaultargs") FillListWithGraph;
 		%feature("autodoc", ":param cmp:
-	:type cmp: opencascade::handle<STEPSelections_AssemblyComponent> &
+	:type cmp: STEPSelections_AssemblyComponent
 	:rtype: None") FillListWithGraph;
 		void FillListWithGraph (const opencascade::handle<STEPSelections_AssemblyComponent> & cmp);
 
 		/****************** FindItemWithNAUO ******************/
 		%feature("compactdefaultargs") FindItemWithNAUO;
 		%feature("autodoc", ":param nauo:
-	:type nauo: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> &
+	:type nauo: StepRepr_NextAssemblyUsageOccurrence
 	:rtype: opencascade::handle<Standard_Transient>") FindItemWithNAUO;
 		opencascade::handle<Standard_Transient> FindItemWithNAUO (const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & nauo);
 
 		/****************** FindSDRWithProduct ******************/
 		%feature("compactdefaultargs") FindSDRWithProduct;
 		%feature("autodoc", ":param product:
-	:type product: opencascade::handle<StepBasic_ProductDefinition> &
+	:type product: StepBasic_ProductDefinition
 	:rtype: opencascade::handle<StepShape_ShapeDefinitionRepresentation>") FindSDRWithProduct;
 		opencascade::handle<StepShape_ShapeDefinitionRepresentation> FindSDRWithProduct (const opencascade::handle<StepBasic_ProductDefinition> & product);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: None") Init;
 		void Init (const Interface_Graph & G);
 
@@ -212,7 +212,7 @@ class STEPSelections_AssemblyExplorer {
 		/****************** STEPSelections_AssemblyExplorer ******************/
 		%feature("compactdefaultargs") STEPSelections_AssemblyExplorer;
 		%feature("autodoc", ":param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: None") STEPSelections_AssemblyExplorer;
 		 STEPSelections_AssemblyExplorer (const Interface_Graph & G);
 
@@ -254,32 +254,32 @@ class STEPSelections_AssemblyLink : public Standard_Transient {
 		/****************** STEPSelections_AssemblyLink ******************/
 		%feature("compactdefaultargs") STEPSelections_AssemblyLink;
 		%feature("autodoc", ":param nauo:
-	:type nauo: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> &
+	:type nauo: StepRepr_NextAssemblyUsageOccurrence
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:param part:
-	:type part: opencascade::handle<STEPSelections_AssemblyComponent> &
+	:type part: STEPSelections_AssemblyComponent
 	:rtype: None") STEPSelections_AssemblyLink;
 		 STEPSelections_AssemblyLink (const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & nauo,const opencascade::handle<Standard_Transient> & item,const opencascade::handle<STEPSelections_AssemblyComponent> & part);
 
 		/****************** SetComponent ******************/
 		%feature("compactdefaultargs") SetComponent;
 		%feature("autodoc", ":param part:
-	:type part: opencascade::handle<STEPSelections_AssemblyComponent> &
+	:type part: STEPSelections_AssemblyComponent
 	:rtype: None") SetComponent;
 		void SetComponent (const opencascade::handle<STEPSelections_AssemblyComponent> & part);
 
 		/****************** SetItem ******************/
 		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", ":param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<Standard_Transient> & item);
 
 		/****************** SetNAUO ******************/
 		%feature("compactdefaultargs") SetNAUO;
 		%feature("autodoc", ":param nauo:
-	:type nauo: opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> &
+	:type nauo: StepRepr_NextAssemblyUsageOccurrence
 	:rtype: None") SetNAUO;
 		void SetNAUO (const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & nauo);
 
@@ -308,9 +308,9 @@ class STEPSelections_Counter {
 		/****************** Count ******************/
 		%feature("compactdefaultargs") Count;
 		%feature("autodoc", ":param graph:
-	:type graph: Interface_Graph &
+	:type graph: Interface_Graph
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: None") Count;
 		void Count (const Interface_Graph & graph,const opencascade::handle<Standard_Transient> & start);
 
@@ -390,11 +390,11 @@ class STEPSelections_SelectAssembly : public IFSelect_SelectExplore {
 	:param level:
 	:type level: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param explored:
-	:type explored: Interface_EntityIterator &
+	:type explored: Interface_EntityIterator
 	:rtype: bool") Explore;
 		Standard_Boolean Explore (const Standard_Integer level,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G,Interface_EntityIterator & explored);
 
@@ -429,11 +429,11 @@ class STEPSelections_SelectDerived : public StepSelect_StepType {
 		/****************** Matches ******************/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param text:
-	:type text: TCollection_AsciiString &
+	:type text: TCollection_AsciiString
 	:param exact:
 	:type exact: bool
 	:rtype: bool") Matches;
@@ -467,11 +467,11 @@ class STEPSelections_SelectFaces : public IFSelect_SelectExplore {
 	:param level:
 	:type level: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param explored:
-	:type explored: Interface_EntityIterator &
+	:type explored: Interface_EntityIterator
 	:rtype: bool") Explore;
 		Standard_Boolean Explore (const Standard_Integer level,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G,Interface_EntityIterator & explored);
 
@@ -506,7 +506,7 @@ class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
 		/****************** RootResult ******************/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", ":param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		virtual Interface_EntityIterator RootResult (const Interface_Graph & G);
 
@@ -518,7 +518,7 @@ class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
 		/****************** STEPSelections_SelectForTransfer ******************/
 		%feature("compactdefaultargs") STEPSelections_SelectForTransfer;
 		%feature("autodoc", ":param TR:
-	:type TR: opencascade::handle<XSControl_TransferReader> &
+	:type TR: XSControl_TransferReader
 	:rtype: None") STEPSelections_SelectForTransfer;
 		 STEPSelections_SelectForTransfer (const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -544,11 +544,11 @@ class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore {
 		%feature("autodoc", ":param level:
 	:type level: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param explored:
-	:type explored: Interface_EntityIterator &
+	:type explored: Interface_EntityIterator
 	:rtype: bool") Explore;
 		Standard_Boolean Explore (const Standard_Integer level,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G,Interface_EntityIterator & explored);
 
@@ -585,11 +585,11 @@ class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 		%feature("autodoc", ":param level:
 	:type level: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param explored:
-	:type explored: Interface_EntityIterator &
+	:type explored: Interface_EntityIterator
 	:rtype: bool") Explore;
 		Standard_Boolean Explore (const Standard_Integer level,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G,Interface_EntityIterator & explored);
 
@@ -602,7 +602,7 @@ class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 		/****************** RootResult ******************/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", ":param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: Interface_EntityIterator") RootResult;
 		Interface_EntityIterator RootResult (const Interface_Graph & G);
 

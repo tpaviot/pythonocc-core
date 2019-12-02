@@ -79,11 +79,11 @@ class TopExp {
 		%feature("compactdefaultargs") CommonVertex;
 		%feature("autodoc", "* Finds the vertex <V> common to the two edges <E1,E2>, returns True if this vertex exists. //! Warning: <V> has sense only if the value <True> is returned
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: bool") CommonVertex;
 		static Standard_Boolean CommonVertex (const TopoDS_Edge & E1,const TopoDS_Edge & E2,TopoDS_Vertex & V);
 
@@ -91,7 +91,7 @@ class TopExp {
 		%feature("compactdefaultargs") FirstVertex;
 		%feature("autodoc", "* Returns the Vertex of orientation FORWARD in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param CumOri: default value is Standard_False
 	:type CumOri: bool
 	:rtype: TopoDS_Vertex") FirstVertex;
@@ -101,7 +101,7 @@ class TopExp {
 		%feature("compactdefaultargs") LastVertex;
 		%feature("autodoc", "* Returns the Vertex of orientation REVERSED in E. If there is none returns a Null Shape. CumOri = True : taking account the edge orientation
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param CumOri: default value is Standard_False
 	:type CumOri: bool
 	:rtype: TopoDS_Vertex") LastVertex;
@@ -111,11 +111,11 @@ class TopExp {
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "* Tool to explore a topological data structure. Stores in the map <M> all the sub-shapes of <S> of type <T>. //! Warning: The map is not cleared at first.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:param M:
-	:type M: TopTools_IndexedMapOfShape &
+	:type M: TopTools_IndexedMapOfShape
 	:rtype: void") MapShapes;
 		static void MapShapes (const TopoDS_Shape & S,const TopAbs_ShapeEnum T,TopTools_IndexedMapOfShape & M);
 
@@ -123,9 +123,9 @@ class TopExp {
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "* Stores in the map <M> all the sub-shapes of <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param M:
-	:type M: TopTools_IndexedMapOfShape &
+	:type M: TopTools_IndexedMapOfShape
 	:rtype: void") MapShapes;
 		static void MapShapes (const TopoDS_Shape & S,TopTools_IndexedMapOfShape & M);
 
@@ -133,9 +133,9 @@ class TopExp {
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "* Stores in the map <M> all the sub-shapes of <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param M:
-	:type M: TopTools_MapOfShape &
+	:type M: TopTools_MapOfShape
 	:rtype: void") MapShapes;
 		static void MapShapes (const TopoDS_Shape & S,TopTools_MapOfShape & M);
 
@@ -143,13 +143,13 @@ class TopExp {
 		%feature("compactdefaultargs") MapShapesAndAncestors;
 		%feature("autodoc", "* Stores in the map <M> all the subshape of <S> of type <TS> for each one append to the list all the ancestors of type <TA>. For example map all the edges and bind the list of faces. Warning: The map is not cleared at first.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TS:
 	:type TS: TopAbs_ShapeEnum
 	:param TA:
 	:type TA: TopAbs_ShapeEnum
 	:param M:
-	:type M: TopTools_IndexedDataMapOfShapeListOfShape &
+	:type M: TopTools_IndexedDataMapOfShapeListOfShape
 	:rtype: void") MapShapesAndAncestors;
 		static void MapShapesAndAncestors (const TopoDS_Shape & S,const TopAbs_ShapeEnum TS,const TopAbs_ShapeEnum TA,TopTools_IndexedDataMapOfShapeListOfShape & M);
 
@@ -157,13 +157,13 @@ class TopExp {
 		%feature("compactdefaultargs") MapShapesAndUniqueAncestors;
 		%feature("autodoc", "* Stores in the map <M> all the subshape of <S> of type <TS> for each one append to the list all unique ancestors of type <TA>. For example map all the edges and bind the list of faces. useOrientation = True : taking account the ancestor orientation Warning: The map is not cleared at first.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TS:
 	:type TS: TopAbs_ShapeEnum
 	:param TA:
 	:type TA: TopAbs_ShapeEnum
 	:param M:
-	:type M: TopTools_IndexedDataMapOfShapeListOfShape &
+	:type M: TopTools_IndexedDataMapOfShapeListOfShape
 	:param useOrientation: default value is Standard_False
 	:type useOrientation: bool
 	:rtype: void") MapShapesAndUniqueAncestors;
@@ -173,11 +173,11 @@ class TopExp {
 		%feature("compactdefaultargs") Vertices;
 		%feature("autodoc", "* Returns in Vfirst, Vlast the FORWARD and REVERSED vertices of the edge <E>. May be null shapes. CumOri = True : taking account the edge orientation
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param Vfirst:
-	:type Vfirst: TopoDS_Vertex &
+	:type Vfirst: TopoDS_Vertex
 	:param Vlast:
-	:type Vlast: TopoDS_Vertex &
+	:type Vlast: TopoDS_Vertex
 	:param CumOri: default value is Standard_False
 	:type CumOri: bool
 	:rtype: void") Vertices;
@@ -187,11 +187,11 @@ class TopExp {
 		%feature("compactdefaultargs") Vertices;
 		%feature("autodoc", "* Returns in Vfirst, Vlast the first and last vertices of the open wire <W>. May be null shapes. if <W> is closed Vfirst and Vlast are a same vertex on <W>. if <W> is no manifold. VFirst and VLast are null shapes.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Vfirst:
-	:type Vfirst: TopoDS_Vertex &
+	:type Vfirst: TopoDS_Vertex
 	:param Vlast:
-	:type Vlast: TopoDS_Vertex &
+	:type Vlast: TopoDS_Vertex
 	:rtype: void") Vertices;
 		static void Vertices (const TopoDS_Wire & W,TopoDS_Vertex & Vfirst,TopoDS_Vertex & Vlast);
 
@@ -237,7 +237,7 @@ class TopExp_Explorer {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Resets this explorer on the shape S. It is initialized to search the shape S, for shapes of type ToFind, that are not part of a shape ToAvoid. If the shape ToAvoid is equal to TopAbs_SHAPE, or if it is the same as, or less complex than, the shape ToFind it has no effect on the search.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ToFind:
 	:type ToFind: TopAbs_ShapeEnum
 	:param ToAvoid: default value is TopAbs_SHAPE
@@ -273,7 +273,7 @@ class TopExp_Explorer {
 		%feature("compactdefaultargs") TopExp_Explorer;
 		%feature("autodoc", "* Creates an Explorer on the Shape <S>. //! <ToFind> is the type of shapes to search. TopAbs_VERTEX, TopAbs_EDGE, ... //! <ToAvoid> is the type of shape to skip in the exploration. If <ToAvoid> is equal or less complex than <ToFind> or if <ToAVoid> is SHAPE it has no effect on the exploration.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ToFind:
 	:type ToFind: TopAbs_ShapeEnum
 	:param ToAvoid: default value is TopAbs_SHAPE

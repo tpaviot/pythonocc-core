@@ -122,7 +122,7 @@ class ShapeFix {
 		%feature("compactdefaultargs") EncodeRegularity;
 		%feature("autodoc", "* Runs EncodeRegularity from BRepLib taking into account shared components of assemblies, so that each component is processed only once
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param tolang: default value is 1.0e-10
 	:type tolang: float
 	:rtype: void") EncodeRegularity;
@@ -132,11 +132,11 @@ class ShapeFix {
 		%feature("compactdefaultargs") FixVertexPosition;
 		%feature("autodoc", "* Fix position of the vertices having tolerance more tnan specified one.;
 	:param theshape:
-	:type theshape: TopoDS_Shape &
+	:type theshape: TopoDS_Shape
 	:param theTolerance:
 	:type theTolerance: float
 	:param thecontext:
-	:type thecontext: opencascade::handle<ShapeBuild_ReShape> &
+	:type thecontext: ShapeBuild_ReShape
 	:rtype: bool") FixVertexPosition;
 		static Standard_Boolean FixVertexPosition (TopoDS_Shape & theshape,const Standard_Real theTolerance,const opencascade::handle<ShapeBuild_ReShape> & thecontext);
 
@@ -144,7 +144,7 @@ class ShapeFix {
 		%feature("compactdefaultargs") LeastEdgeSize;
 		%feature("autodoc", "* Calculate size of least edge;
 	:param theshape:
-	:type theshape: TopoDS_Shape &
+	:type theshape: TopoDS_Shape
 	:rtype: float") LeastEdgeSize;
 		static Standard_Real LeastEdgeSize (TopoDS_Shape & theshape);
 
@@ -152,11 +152,11 @@ class ShapeFix {
 		%feature("compactdefaultargs") RemoveSmallEdges;
 		%feature("autodoc", "* Removes edges which are less than given tolerance from shape with help of ShapeFix_Wire::FixSmall()
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param Tolerance:
 	:type Tolerance: float
 	:param context:
-	:type context: opencascade::handle<ShapeBuild_ReShape> &
+	:type context: ShapeBuild_ReShape
 	:rtype: TopoDS_Shape") RemoveSmallEdges;
 		static TopoDS_Shape RemoveSmallEdges (TopoDS_Shape & shape,const Standard_Real Tolerance,opencascade::handle<ShapeBuild_ReShape> & context);
 
@@ -164,15 +164,15 @@ class ShapeFix {
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "* Runs SameParameter from BRepLib with these adaptations : <enforce> forces computations, else they are made only on Edges with flag SameParameter false <preci>, if not precised, is taken for each EDge as its own Tolerance Returns True when done, False if an exception has been raised In case of exception anyway, as many edges as possible have been processed. The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param enforce:
 	:type enforce: bool
 	:param preci: default value is 0.0
 	:type preci: float
 	:param theProgress: default value is 0
-	:type theProgress: opencascade::handle<Message_ProgressIndicator> &
+	:type theProgress: Message_ProgressIndicator
 	:param theMsgReg: default value is 0
-	:type theMsgReg: opencascade::handle<ShapeExtend_BasicMsgRegistrator> &
+	:type theMsgReg: ShapeExtend_BasicMsgRegistrator
 	:rtype: bool") SameParameter;
 		static Standard_Boolean SameParameter (const TopoDS_Shape & shape,const Standard_Boolean enforce,const Standard_Real preci = 0.0,const opencascade::handle<Message_ProgressIndicator> & theProgress = 0,const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & theMsgReg = 0);
 
@@ -195,7 +195,7 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixAddCurve3d;
 		%feature("autodoc", "* Tries to build 3d curve of the edge if missing Use : It is to be called after FixRemoveCurve3d (if removed) or in any case when edge can have no 3d curve Returns: True if 3d curve was added, else False Status : OK : 3d curve exists FAIL1: BRepLib::BuildCurve3d() has failed DONE1: 3d curve was added
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:rtype: bool") FixAddCurve3d;
 		Standard_Boolean FixAddCurve3d (const TopoDS_Edge & edge);
 
@@ -203,9 +203,9 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixAddPCurve;
 		%feature("autodoc", "* See method below for information
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param isSeam:
 	:type isSeam: bool
 	:param prec: default value is 0.0
@@ -217,11 +217,11 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixAddPCurve;
 		%feature("autodoc", "* See method below for information
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:param isSeam:
 	:type isSeam: bool
 	:param prec: default value is 0.0
@@ -233,13 +233,13 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixAddPCurve;
 		%feature("autodoc", "* See method below for information
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param isSeam:
 	:type isSeam: bool
 	:param surfana:
-	:type surfana: opencascade::handle<ShapeAnalysis_Surface> &
+	:type surfana: ShapeAnalysis_Surface
 	:param prec: default value is 0.0
 	:type prec: float
 	:rtype: bool") FixAddPCurve;
@@ -249,15 +249,15 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixAddPCurve;
 		%feature("autodoc", "* Adds pcurve(s) of the edge if missing (by projecting 3d curve) Parameter isSeam indicates if the edge is a seam. The parameter <prec> defines the precision for calculations. If it is 0 (default), the tolerance of the edge is taken. Remark : This method is rather for internal use since it accepts parameter <surfana> for optimization of computations Use : It is to be called after FixRemovePCurve (if removed) or in any case when edge can have no pcurve Returns: True if pcurve was added, else False Status : OK : Pcurve exists FAIL1: No 3d curve FAIL2: fail during projecting DONE1: Pcurve was added DONE2: specific case of pcurve going through degenerated point on sphere encountered during projection (see class ShapeConstruct_ProjectCurveOnSurface for more info)
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:param isSeam:
 	:type isSeam: bool
 	:param surfana:
-	:type surfana: opencascade::handle<ShapeAnalysis_Surface> &
+	:type surfana: ShapeAnalysis_Surface
 	:param prec: default value is 0.0
 	:type prec: float
 	:rtype: bool") FixAddPCurve;
@@ -267,16 +267,16 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixRemoveCurve3d;
 		%feature("autodoc", "* Removes 3d curve of the edge if it does not match the vertices Returns: True, if does not match, removed (status DONE) False, (status OK) if matches or (status FAIL) if no 3d curve, nothing done
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:rtype: bool") FixRemoveCurve3d;
 		Standard_Boolean FixRemoveCurve3d (const TopoDS_Edge & edge);
 
 		/****************** FixRemovePCurve ******************/
 		%feature("compactdefaultargs") FixRemovePCurve;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: bool") FixRemovePCurve;
 		Standard_Boolean FixRemovePCurve (const TopoDS_Edge & edge,const TopoDS_Face & face);
 
@@ -284,20 +284,20 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixRemovePCurve;
 		%feature("autodoc", "* Removes the pcurve(s) of the edge if it does not match the vertices Check is done Use : It is to be called when pcurve of an edge can be wrong (e.g., after import from IGES) Returns: True, if does not match, removed (status DONE) False, (status OK) if matches or (status FAIL) if no pcurve, nothing done
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:rtype: bool") FixRemovePCurve;
 		Standard_Boolean FixRemovePCurve (const TopoDS_Edge & edge,const opencascade::handle<Geom_Surface> & surface,const TopLoc_Location & location);
 
 		/****************** FixReversed2d ******************/
 		%feature("compactdefaultargs") FixReversed2d;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: bool") FixReversed2d;
 		Standard_Boolean FixReversed2d (const TopoDS_Edge & edge,const TopoDS_Face & face);
 
@@ -305,11 +305,11 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixReversed2d;
 		%feature("autodoc", "* Fixes edge if pcurve is directed opposite to 3d curve Check is done by call to the function ShapeAnalysis_Edge::CheckCurve3dWithPCurve() Warning: For seam edge this method will check and fix the pcurve in only one direction. Hence, it should be called twice for seam edge: once with edge orientation FORWARD and once with REVERSED. Returns: False if nothing done, True if reversed (status DONE) Status: OK - pcurve OK, nothing done FAIL1 - no pcurve FAIL2 - no 3d curve DONE1 - pcurve was reversed
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:rtype: bool") FixReversed2d;
 		Standard_Boolean FixReversed2d (const TopoDS_Edge & edge,const opencascade::handle<Geom_Surface> & surface,const TopLoc_Location & location);
 
@@ -317,7 +317,7 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixSameParameter;
 		%feature("autodoc", "* Tries to make edge SameParameter and sets corresponding tolerance and SameParameter flag. First, it makes edge same range if SameRange flag is not set. //! If flag SameParameter is set, this method calls the function ShapeAnalysis_Edge::CheckSameParameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. If deviation > tolerance, the tolerance of edge is increased to a value of deviation. If deviation < tolerance nothing happens. //! If flag SameParameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure BRepLib::SameParameter and computing deviation (as above). If <tolerance> > 0, it is used as parameter for BRepLib::SameParameter, otherwise, tolerance of the edge is used. //! Use : Is to be called after all pcurves and 3d curve of the edge are correctly computed Remark : SameParameter flag is always set to True after this method Returns: True, if something done, else False Status : OK - edge was initially SameParameter, nothing is done FAIL1 - computation of deviation of pcurves from 3d curve has failed FAIL2 - BRepLib::SameParameter() has failed DONE1 - tolerance of the edge was increased DONE2 - flag SameParameter was set to True (only if BRepLib::SameParameter() did not set it) DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter DONE4 - not used anymore DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above (only for edges with not set SameParameter)
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param tolerance: default value is 0.0
 	:type tolerance: float
 	:rtype: bool") FixSameParameter;
@@ -327,9 +327,9 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixSameParameter;
 		%feature("autodoc", "* Tries to make edge SameParameter and sets corresponding tolerance and SameParameter flag. First, it makes edge same range if SameRange flag is not set. //! If flag SameParameter is set, this method calls the function ShapeAnalysis_Edge::CheckSameParameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. If deviation > tolerance, the tolerance of edge is increased to a value of deviation. If deviation < tolerance nothing happens. //! If flag SameParameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure BRepLib::SameParameter and computing deviation (as above). If <tolerance> > 0, it is used as parameter for BRepLib::SameParameter, otherwise, tolerance of the edge is used. //! Use : Is to be called after all pcurves and 3d curve of the edge are correctly computed Remark : SameParameter flag is always set to True after this method Returns: True, if something done, else False Status : OK - edge was initially SameParameter, nothing is done FAIL1 - computation of deviation of pcurves from 3d curve has failed FAIL2 - BRepLib::SameParameter() has failed DONE1 - tolerance of the edge was increased DONE2 - flag SameParameter was set to True (only if BRepLib::SameParameter() did not set it) DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter DONE4 - not used anymore DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above (only for edges with not set SameParameter)
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param tolerance: default value is 0.0
 	:type tolerance: float
 	:rtype: bool") FixSameParameter;
@@ -338,9 +338,9 @@ class ShapeFix_Edge : public Standard_Transient {
 		/****************** FixVertexTolerance ******************/
 		%feature("compactdefaultargs") FixVertexTolerance;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: bool") FixVertexTolerance;
 		Standard_Boolean FixVertexTolerance (const TopoDS_Edge & edge,const TopoDS_Face & face);
 
@@ -348,7 +348,7 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") FixVertexTolerance;
 		%feature("autodoc", "* Increases the tolerances of the edge vertices to comprise the ends of 3d curve and pcurve on the given face (first method) or all pcurves stored in an edge (second one) Returns: True, if tolerances have been increased, otherwise False Status: OK : the original tolerances have not been changed DONE1: the tolerance of first vertex has been increased DONE2: the tolerance of last vertex has been increased
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:rtype: bool") FixVertexTolerance;
 		Standard_Boolean FixVertexTolerance (const TopoDS_Edge & edge);
 
@@ -362,7 +362,7 @@ class ShapeFix_Edge : public Standard_Transient {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Sets context
 	:param context:
-	:type context: opencascade::handle<ShapeBuild_ReShape> &
+	:type context: ShapeBuild_ReShape
 	:rtype: None") SetContext;
 		void SetContext (const opencascade::handle<ShapeBuild_ReShape> & context);
 
@@ -401,9 +401,9 @@ class ShapeFix_EdgeConnect {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds information on connectivity between start vertex of second edge and end vertex of first edge, taking edges orientation into account
 	:param aFirst:
-	:type aFirst: TopoDS_Edge &
+	:type aFirst: TopoDS_Edge
 	:param aSecond:
-	:type aSecond: TopoDS_Edge &
+	:type aSecond: TopoDS_Edge
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & aFirst,const TopoDS_Edge & aSecond);
 
@@ -411,7 +411,7 @@ class ShapeFix_EdgeConnect {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds connectivity information for the whole shape. Note: edges in wires must be well ordered Note: flag Closed should be set for closed wires
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: None") Add;
 		void Add (const TopoDS_Shape & aShape);
 
@@ -462,9 +462,9 @@ class ShapeFix_EdgeProjAux : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") Init;
 		void Init (const TopoDS_Face & F,const TopoDS_Edge & E);
 
@@ -476,7 +476,7 @@ class ShapeFix_EdgeProjAux : public Standard_Transient {
 		/****************** IsIso ******************/
 		%feature("compactdefaultargs") IsIso;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: bool") IsIso;
 		Standard_Boolean IsIso (const opencascade::handle<Geom2d_Curve> & C);
 
@@ -498,9 +498,9 @@ class ShapeFix_EdgeProjAux : public Standard_Transient {
 		/****************** ShapeFix_EdgeProjAux ******************/
 		%feature("compactdefaultargs") ShapeFix_EdgeProjAux;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") ShapeFix_EdgeProjAux;
 		 ShapeFix_EdgeProjAux (const TopoDS_Face & F,const TopoDS_Edge & E);
 
@@ -524,16 +524,16 @@ class ShapeFix_FaceConnect {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param aFirst:
-	:type aFirst: TopoDS_Face &
+	:type aFirst: TopoDS_Face
 	:param aSecond:
-	:type aSecond: TopoDS_Face &
+	:type aSecond: TopoDS_Face
 	:rtype: bool") Add;
 		Standard_Boolean Add (const TopoDS_Face & aFirst,const TopoDS_Face & aSecond);
 
 		/****************** Build ******************/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", ":param shell:
-	:type shell: TopoDS_Shell &
+	:type shell: TopoDS_Shell
 	:param sewtoler:
 	:type sewtoler: float
 	:param fixtoler:
@@ -595,7 +595,7 @@ class ShapeFix_FreeBounds {
 		%feature("compactdefaultargs") ShapeFix_FreeBounds;
 		%feature("autodoc", "* Builds forecasting free bounds of the <shape> and connects open wires with tolerance <closetoler>. <shape> should be a compound of faces. Tolerance <closetoler> should be greater than tolerance <sewtoler> used for initializing sewing analyzer, otherwise connection of open wires is not performed.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param sewtoler:
 	:type sewtoler: float
 	:param closetoler:
@@ -611,7 +611,7 @@ class ShapeFix_FreeBounds {
 		%feature("compactdefaultargs") ShapeFix_FreeBounds;
 		%feature("autodoc", "* Builds actual free bounds of the <shape> and connects open wires with tolerance <closetoler>. <shape> should be a compound of shells.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param closetoler:
 	:type closetoler: float
 	:param splitclosed:
@@ -646,13 +646,13 @@ class ShapeFix_IntersectionTool {
 		%feature("compactdefaultargs") CutEdge;
 		%feature("autodoc", "* Cut edge by parameters pend and cut
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param pend:
 	:type pend: float
 	:param cut:
 	:type cut: float
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param iscutline:
 	:type iscutline: bool
 	:rtype: bool") CutEdge;
@@ -661,22 +661,22 @@ class ShapeFix_IntersectionTool {
 		/****************** FixIntersectingWires ******************/
 		%feature("compactdefaultargs") FixIntersectingWires;
 		%feature("autodoc", ":param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: bool") FixIntersectingWires;
 		Standard_Boolean FixIntersectingWires (TopoDS_Face & face);
 
 		/****************** FixSelfIntersectWire ******************/
 		%feature("compactdefaultargs") FixSelfIntersectWire;
 		%feature("autodoc", ":param sewd:
-	:type sewd: opencascade::handle<ShapeExtend_WireData> &
+	:type sewd: ShapeExtend_WireData
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param NbSplit:
-	:type NbSplit: int &
+	:type NbSplit: int
 	:param NbCut:
-	:type NbCut: int &
+	:type NbCut: int
 	:param NbRemoved:
-	:type NbRemoved: int &
+	:type NbRemoved: int
 	:rtype: bool") FixSelfIntersectWire;
 		Standard_Boolean FixSelfIntersectWire (opencascade::handle<ShapeExtend_WireData> & sewd,const TopoDS_Face & face,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -684,7 +684,7 @@ class ShapeFix_IntersectionTool {
 		%feature("compactdefaultargs") ShapeFix_IntersectionTool;
 		%feature("autodoc", "* Constructor
 	:param context:
-	:type context: opencascade::handle<ShapeBuild_ReShape> &
+	:type context: ShapeBuild_ReShape
 	:param preci:
 	:type preci: float
 	:param maxtol: default value is 1.0
@@ -696,17 +696,17 @@ class ShapeFix_IntersectionTool {
 		%feature("compactdefaultargs") SplitEdge;
 		%feature("autodoc", "* Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting The 'face' is necessary for pcurves and using TransferParameterProj
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param param:
 	:type param: float
 	:param vert:
-	:type vert: TopoDS_Vertex &
+	:type vert: TopoDS_Vertex
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param newE1:
-	:type newE1: TopoDS_Edge &
+	:type newE1: TopoDS_Edge
 	:param newE2:
-	:type newE2: TopoDS_Edge &
+	:type newE2: TopoDS_Edge
 	:param preci:
 	:type preci: float
 	:rtype: bool") SplitEdge;
@@ -769,9 +769,9 @@ class ShapeFix_Root : public Standard_Transient {
 		%feature("compactdefaultargs") SendFail;
 		%feature("autodoc", "* Sends a fail to be attached to the shape. Calls SendMsg with gravity set to Message_Fail.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:rtype: None") SendFail;
 		void SendFail (const TopoDS_Shape & shape,const Message_Msg & message);
 
@@ -779,7 +779,7 @@ class ShapeFix_Root : public Standard_Transient {
 		%feature("compactdefaultargs") SendFail;
 		%feature("autodoc", "* Calls previous method for myShape.
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:rtype: None") SendFail;
 		void SendFail (const Message_Msg & message);
 
@@ -787,9 +787,9 @@ class ShapeFix_Root : public Standard_Transient {
 		%feature("compactdefaultargs") SendMsg;
 		%feature("autodoc", "* Sends a message to be attached to the shape. Calls corresponding message of message registrator.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:param gravity: default value is Message_Info
 	:type gravity: Message_Gravity
 	:rtype: None") SendMsg;
@@ -799,7 +799,7 @@ class ShapeFix_Root : public Standard_Transient {
 		%feature("compactdefaultargs") SendMsg;
 		%feature("autodoc", "* Sends a message to be attached to myShape. Calls previous method.
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:param gravity: default value is Message_Info
 	:type gravity: Message_Gravity
 	:rtype: None") SendMsg;
@@ -809,9 +809,9 @@ class ShapeFix_Root : public Standard_Transient {
 		%feature("compactdefaultargs") SendWarning;
 		%feature("autodoc", "* Sends a warning to be attached to the shape. Calls SendMsg with gravity set to Message_Warning.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:rtype: None") SendWarning;
 		void SendWarning (const TopoDS_Shape & shape,const Message_Msg & message);
 
@@ -819,7 +819,7 @@ class ShapeFix_Root : public Standard_Transient {
 		%feature("compactdefaultargs") SendWarning;
 		%feature("autodoc", "* Calls previous method for myShape.
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:rtype: None") SendWarning;
 		void SendWarning (const Message_Msg & message);
 
@@ -827,7 +827,7 @@ class ShapeFix_Root : public Standard_Transient {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Copy all fields from another Root object
 	:param Root:
-	:type Root: opencascade::handle<ShapeFix_Root> &
+	:type Root: ShapeFix_Root
 	:rtype: void") Set;
 		virtual void Set (const opencascade::handle<ShapeFix_Root> & Root);
 
@@ -835,7 +835,7 @@ class ShapeFix_Root : public Standard_Transient {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Sets context
 	:param context:
-	:type context: opencascade::handle<ShapeBuild_ReShape> &
+	:type context: ShapeBuild_ReShape
 	:rtype: void") SetContext;
 		virtual void SetContext (const opencascade::handle<ShapeBuild_ReShape> & context);
 
@@ -859,7 +859,7 @@ class ShapeFix_Root : public Standard_Transient {
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "* Sets message registrator
 	:param msgreg:
-	:type msgreg: opencascade::handle<ShapeExtend_BasicMsgRegistrator> &
+	:type msgreg: ShapeExtend_BasicMsgRegistrator
 	:rtype: void") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
@@ -898,7 +898,7 @@ class ShapeFix_ShapeTolerance {
 		%feature("compactdefaultargs") LimitTolerance;
 		%feature("autodoc", "* Limits tolerances in a shape as follows : tmin = tmax -> as SetTolerance (forces) tmin = 0 -> maximum tolerance will be <tmax> tmax = 0 or not given (more generally, tmax < tmin) -> <tmax> ignored, minimum will be <tmin> else, maximum will be <max> and minimum will be <min> styp = VERTEX : only vertices are set styp = EDGE : only edges are set styp = FACE : only faces are set styp = WIRE : to have edges and their vertices set styp = other value : all (vertices,edges,faces) are set Returns True if at least one tolerance of the sub-shape has been modified
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param tmin:
 	:type tmin: float
 	:param tmax: default value is 0.0
@@ -912,7 +912,7 @@ class ShapeFix_ShapeTolerance {
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "* Sets (enforces) tolerances in a shape to the given value styp = VERTEX : only vertices are set styp = EDGE : only edges are set styp = FACE : only faces are set styp = WIRE : to have edges and their vertices set styp = other value : all (vertices,edges,faces) are set
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param preci:
 	:type preci: float
 	:param styp: default value is TopAbs_SHAPE
@@ -944,13 +944,13 @@ class ShapeFix_SplitTool {
 		%feature("compactdefaultargs") CutEdge;
 		%feature("autodoc", "* Cut edge by parameters pend and cut
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param pend:
 	:type pend: float
 	:param cut:
 	:type cut: float
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param iscutline:
 	:type iscutline: bool
 	:rtype: bool") CutEdge;
@@ -966,17 +966,17 @@ class ShapeFix_SplitTool {
 		%feature("compactdefaultargs") SplitEdge;
 		%feature("autodoc", "* Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting The 'face' is necessary for pcurves and using TransferParameterProj
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param param:
 	:type param: float
 	:param vert:
-	:type vert: TopoDS_Vertex &
+	:type vert: TopoDS_Vertex
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param newE1:
-	:type newE1: TopoDS_Edge &
+	:type newE1: TopoDS_Edge
 	:param newE2:
-	:type newE2: TopoDS_Edge &
+	:type newE2: TopoDS_Edge
 	:param tol3d:
 	:type tol3d: float
 	:param tol2d:
@@ -988,19 +988,19 @@ class ShapeFix_SplitTool {
 		%feature("compactdefaultargs") SplitEdge;
 		%feature("autodoc", "* Split edge on two new edges using new vertex 'vert' and 'param1' and 'param2' - parameter for splitting and cutting The 'face' is necessary for pcurves and using TransferParameterProj
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param param1:
 	:type param1: float
 	:param param2:
 	:type param2: float
 	:param vert:
-	:type vert: TopoDS_Vertex &
+	:type vert: TopoDS_Vertex
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param newE1:
-	:type newE1: TopoDS_Edge &
+	:type newE1: TopoDS_Edge
 	:param newE2:
-	:type newE2: TopoDS_Edge &
+	:type newE2: TopoDS_Edge
 	:param tol3d:
 	:type tol3d: float
 	:param tol2d:
@@ -1012,23 +1012,23 @@ class ShapeFix_SplitTool {
 		%feature("compactdefaultargs") SplitEdge;
 		%feature("autodoc", "* Split edge on two new edges using two new vertex V1 and V2 and two parameters for splitting - fp and lp correspondingly The 'face' is necessary for pcurves and using TransferParameterProj aNum - number of edge in SeqE which corresponding to [fp,lp]
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param fp:
 	:type fp: float
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param lp:
 	:type lp: float
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param SeqE:
-	:type SeqE: TopTools_SequenceOfShape &
+	:type SeqE: TopTools_SequenceOfShape
 	:param aNum:
-	:type aNum: int &
+	:type aNum: int
 	:param context:
-	:type context: opencascade::handle<ShapeBuild_ReShape> &
+	:type context: ShapeBuild_ReShape
 	:param tol3d:
 	:type tol3d: float
 	:param tol2d:
@@ -1076,7 +1076,7 @@ class ShapeFix_WireVertex {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Loads the wire, ininializes internal analyzer (ShapeAnalysis_WireVertex) with the given precision, and performs analysis
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param preci:
 	:type preci: float
 	:rtype: None") Init;
@@ -1086,7 +1086,7 @@ class ShapeFix_WireVertex {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Loads the wire, ininializes internal analyzer (ShapeAnalysis_WireVertex) with the given precision, and performs analysis
 	:param sbwd:
-	:type sbwd: opencascade::handle<ShapeExtend_WireData> &
+	:type sbwd: ShapeExtend_WireData
 	:param preci:
 	:type preci: float
 	:rtype: None") Init;
@@ -1096,7 +1096,7 @@ class ShapeFix_WireVertex {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Loads all the data on wire, already analysed by ShapeAnalysis_WireVertex
 	:param sawv:
-	:type sawv: ShapeAnalysis_WireVertex &
+	:type sawv: ShapeAnalysis_WireVertex
 	:rtype: None") Init;
 		void Init (const ShapeAnalysis_WireVertex & sawv);
 
@@ -1149,9 +1149,9 @@ class ShapeFix_ComposeShell : public ShapeFix_Root {
 		%feature("compactdefaultargs") DispatchWires;
 		%feature("autodoc", "* Creates new faces from the set of (closed) wires. Each wire is put on corresponding patch in the composite surface, and all pcurves on the initial (pseudo)face are reassigned to that surface. If several wires are one inside another, single face is created.
 	:param faces:
-	:type faces: TopTools_SequenceOfShape &
+	:type faces: TopTools_SequenceOfShape
 	:param wires:
-	:type wires: ShapeFix_SequenceOfWireSegment &
+	:type wires: ShapeFix_SequenceOfWireSegment
 	:rtype: None") DispatchWires;
 		void DispatchWires (TopTools_SequenceOfShape & faces,ShapeFix_SequenceOfWireSegment & wires);
 
@@ -1165,11 +1165,11 @@ class ShapeFix_ComposeShell : public ShapeFix_Root {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes with composite surface, face and precision. Here face defines both set of wires and way of getting pcurves. Precision is used (together with tolerance of edges) for handling subtle cases, such as tangential intersections.
 	:param Grid:
-	:type Grid: opencascade::handle<ShapeExtend_CompositeSurface> &
+	:type Grid: ShapeExtend_CompositeSurface
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:param Face:
-	:type Face: TopoDS_Face &
+	:type Face: TopoDS_Face
 	:param Prec:
 	:type Prec: float
 	:rtype: None") Init;
@@ -1191,7 +1191,7 @@ class ShapeFix_ComposeShell : public ShapeFix_Root {
 		%feature("compactdefaultargs") SetTransferParamTool;
 		%feature("autodoc", "* Sets tool for transfer parameters from 3d to 2d and vice versa.
 	:param TransferParam:
-	:type TransferParam: opencascade::handle<ShapeAnalysis_TransferParameters> &
+	:type TransferParam: ShapeAnalysis_TransferParameters
 	:rtype: None") SetTransferParamTool;
 		void SetTransferParamTool (const opencascade::handle<ShapeAnalysis_TransferParameters> & TransferParam);
 
@@ -1236,7 +1236,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Add a wire to current face using BRep_Builder. Wire is added without taking into account orientation of face (as if face were FORWARD).
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:rtype: None") Add;
 		void Add (const TopoDS_Wire & wire);
 
@@ -1307,7 +1307,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") FixLoopWire;
 		%feature("autodoc", "* Detects if wire has a loop and fixes this situation by splitting on the few parts. if wire has a loops and it was splitted Status was set to value ShapeExtend_DONE6.
 	:param aResWires:
-	:type aResWires: TopTools_SequenceOfShape &
+	:type aResWires: TopTools_SequenceOfShape
 	:rtype: bool") FixLoopWire;
 		Standard_Boolean FixLoopWire (TopTools_SequenceOfShape & aResWires);
 
@@ -1353,7 +1353,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") FixOrientation;
 		%feature("autodoc", "* Fixes orientation of wires on the face It tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. If face lying on sphere or torus has single wire and AddNaturalBoundMode is True, that wire is not reversed in any case (supposing that natural bound will be added). Returns True if wires were reversed OutWires return information about out wires + list of internal wires for each (for performing split face).
 	:param MapWires:
-	:type MapWires: TopTools_DataMapOfShapeListOfShape &
+	:type MapWires: TopTools_DataMapOfShapeListOfShape
 	:rtype: bool") FixOrientation;
 		Standard_Boolean FixOrientation (TopTools_DataMapOfShapeListOfShape & MapWires);
 
@@ -1414,7 +1414,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") FixSplitFace;
 		%feature("autodoc", "* Split face if there are more than one out wire using inrormation after FixOrientation()
 	:param MapWires:
-	:type MapWires: TopTools_DataMapOfShapeListOfShape &
+	:type MapWires: TopTools_DataMapOfShapeListOfShape
 	:rtype: bool") FixSplitFace;
 		Standard_Boolean FixSplitFace (const TopTools_DataMapOfShapeListOfShape & MapWires);
 
@@ -1460,7 +1460,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Loads a whole face already created, with its wires, sense and location
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: None") Init;
 		void Init (const TopoDS_Face & face);
 
@@ -1468,7 +1468,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Starts the creation of the face By default it will be FORWARD, or REVERSED if <fwd> is False
 	:param surf:
-	:type surf: opencascade::handle<Geom_Surface> &
+	:type surf: Geom_Surface
 	:param preci:
 	:type preci: float
 	:param fwd: default value is Standard_True
@@ -1480,7 +1480,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Starts the creation of the face By default it will be FORWARD, or REVERSED if <fwd> is False
 	:param surf:
-	:type surf: opencascade::handle<ShapeAnalysis_Surface> &
+	:type surf: ShapeAnalysis_Surface
 	:param preci:
 	:type preci: float
 	:param fwd: default value is Standard_True
@@ -1533,7 +1533,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "* Sets message registrator
 	:param msgreg:
-	:type msgreg: opencascade::handle<ShapeExtend_BasicMsgRegistrator> &
+	:type msgreg: ShapeExtend_BasicMsgRegistrator
 	:rtype: void") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
@@ -1555,7 +1555,7 @@ class ShapeFix_Face : public ShapeFix_Root {
 		%feature("compactdefaultargs") ShapeFix_Face;
 		%feature("autodoc", "* Creates a tool and loads a face
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: None") ShapeFix_Face;
 		 ShapeFix_Face (const TopoDS_Face & face);
 
@@ -1588,13 +1588,13 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 		%feature("compactdefaultargs") ComputeSharedEdgeForStripFace;
 		%feature("autodoc", "* Compute average edge for strip face
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param tol:
 	:type tol: float
 	:rtype: TopoDS_Edge") ComputeSharedEdgeForStripFace;
@@ -1603,14 +1603,14 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 		/****************** FixFace ******************/
 		%feature("compactdefaultargs") FixFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: TopoDS_Face") FixFace;
 		TopoDS_Face FixFace (const TopoDS_Face & F);
 
 		/****************** FixPinFace ******************/
 		%feature("compactdefaultargs") FixPinFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") FixPinFace;
 		Standard_Boolean FixPinFace (TopoDS_Face & F);
 
@@ -1622,7 +1622,7 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 		/****************** FixSplitFace ******************/
 		%feature("compactdefaultargs") FixSplitFace;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopoDS_Shape") FixSplitFace;
 		TopoDS_Shape FixSplitFace (const TopoDS_Shape & S);
 
@@ -1643,7 +1643,7 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -1657,7 +1657,7 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 		%feature("compactdefaultargs") RemoveFacesInCaseOfSpot;
 		%feature("autodoc", "* Remove spot face from compound
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") RemoveFacesInCaseOfSpot;
 		Standard_Boolean RemoveFacesInCaseOfSpot (const TopoDS_Face & F);
 
@@ -1665,7 +1665,7 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 		%feature("compactdefaultargs") RemoveFacesInCaseOfStrip;
 		%feature("autodoc", "* Remove strip face from compound.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") RemoveFacesInCaseOfStrip;
 		Standard_Boolean RemoveFacesInCaseOfStrip (const TopoDS_Face & F);
 
@@ -1673,11 +1673,11 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 		%feature("compactdefaultargs") ReplaceInCaseOfStrip;
 		%feature("autodoc", "* Replace veretces and edges.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param tol:
 	:type tol: float
 	:rtype: bool") ReplaceInCaseOfStrip;
@@ -1687,7 +1687,7 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 		%feature("compactdefaultargs") ReplaceVerticesInCaseOfSpot;
 		%feature("autodoc", "* Compute average vertex and replacing vertices by new one.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param tol:
 	:type tol: float
 	:rtype: bool") ReplaceVerticesInCaseOfSpot;
@@ -1707,9 +1707,9 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 		%feature("compactdefaultargs") SplitOneFace;
 		%feature("autodoc", "* Compute data for face splitting.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param theSplittedFaces:
-	:type theSplittedFaces: TopoDS_Compound &
+	:type theSplittedFaces: TopoDS_Compound
 	:rtype: bool") SplitOneFace;
 		Standard_Boolean SplitOneFace (TopoDS_Face & F,TopoDS_Compound & theSplittedFaces);
 
@@ -1734,9 +1734,9 @@ class ShapeFix_FixSmallSolid : public ShapeFix_Root {
 		%feature("compactdefaultargs") Merge;
 		%feature("autodoc", "* Merge small solids in the given shape to adjacent non-small ones
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theContext:
-	:type theContext: opencascade::handle<ShapeBuild_ReShape> &
+	:type theContext: ShapeBuild_ReShape
 	:rtype: TopoDS_Shape") Merge;
 		TopoDS_Shape Merge (const TopoDS_Shape & theShape,const opencascade::handle<ShapeBuild_ReShape> & theContext);
 
@@ -1744,9 +1744,9 @@ class ShapeFix_FixSmallSolid : public ShapeFix_Root {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Remove small solids from the given shape
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theContext:
-	:type theContext: opencascade::handle<ShapeBuild_ReShape> &
+	:type theContext: ShapeBuild_ReShape
 	:rtype: TopoDS_Shape") Remove;
 		TopoDS_Shape Remove (const TopoDS_Shape & theShape,const opencascade::handle<ShapeBuild_ReShape> & theContext);
 
@@ -1922,7 +1922,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initislises by shape.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & shape);
 
@@ -1930,7 +1930,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Iterates on sub- shape and performs fixes
 	:param theProgress: default value is 0
-	:type theProgress: opencascade::handle<Message_ProgressIndicator> &
+	:type theProgress: Message_ProgressIndicator
 	:rtype: bool") Perform;
 		Standard_Boolean Perform (const opencascade::handle<Message_ProgressIndicator> & theProgress = 0);
 
@@ -1954,7 +1954,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "* Sets message registrator
 	:param msgreg:
-	:type msgreg: opencascade::handle<ShapeExtend_BasicMsgRegistrator> &
+	:type msgreg: ShapeExtend_BasicMsgRegistrator
 	:rtype: void") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
@@ -1982,7 +1982,7 @@ class ShapeFix_Shape : public ShapeFix_Root {
 		%feature("compactdefaultargs") ShapeFix_Shape;
 		%feature("autodoc", "* Initislises by shape.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: None") ShapeFix_Shape;
 		 ShapeFix_Shape (const TopoDS_Shape & shape);
 
@@ -2034,7 +2034,7 @@ class ShapeFix_Shell : public ShapeFix_Root {
 		%feature("compactdefaultargs") FixFaceOrientation;
 		%feature("autodoc", "* Fixes orientation of faces in shell. Changes orientation of face in the shell, if it is oriented opposite to neigbouring faces. If it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. Other faces are stored in Error compound. Modes : isAccountMultiConex - mode for account cases of multiconnexity. If this mode is equal to Standard_True, separate shells will be created in the cases of multiconnexity. If this mode is equal to Standard_False, one shell will be created without account of multiconnexity.By defautt - Standard_True; NonManifold - mode for creation of non-manifold shells. If this mode is equal to Standard_True one non-manifold will be created from shell contains multishared edges. Else if this mode is equal to Standard_False only manifold shells will be created. By default - Standard_False.
 	:param shell:
-	:type shell: TopoDS_Shell &
+	:type shell: TopoDS_Shell
 	:param isAccountMultiConex: default value is Standard_True
 	:type isAccountMultiConex: bool
 	:param NonManifold: default value is Standard_False
@@ -2065,7 +2065,7 @@ class ShapeFix_Shell : public ShapeFix_Root {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes by shell.
 	:param shell:
-	:type shell: TopoDS_Shell &
+	:type shell: TopoDS_Shell
 	:rtype: None") Init;
 		void Init (const TopoDS_Shell & shell);
 
@@ -2079,7 +2079,7 @@ class ShapeFix_Shell : public ShapeFix_Root {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Iterates on subshapes and performs fixes (for each face calls ShapeFix_Face::Perform and then calls FixFaceOrientation). The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 	:param theProgress: default value is 0
-	:type theProgress: opencascade::handle<Message_ProgressIndicator> &
+	:type theProgress: Message_ProgressIndicator
 	:rtype: bool") Perform;
 		Standard_Boolean Perform (const opencascade::handle<Message_ProgressIndicator> & theProgress = 0);
 
@@ -2103,7 +2103,7 @@ class ShapeFix_Shell : public ShapeFix_Root {
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "* Sets message registrator
 	:param msgreg:
-	:type msgreg: opencascade::handle<ShapeExtend_BasicMsgRegistrator> &
+	:type msgreg: ShapeExtend_BasicMsgRegistrator
 	:rtype: void") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
@@ -2139,7 +2139,7 @@ class ShapeFix_Shell : public ShapeFix_Root {
 		%feature("compactdefaultargs") ShapeFix_Shell;
 		%feature("autodoc", "* Initializes by shell.
 	:param shape:
-	:type shape: TopoDS_Shell &
+	:type shape: TopoDS_Shell
 	:rtype: None") ShapeFix_Shell;
 		 ShapeFix_Shell (const TopoDS_Shell & shape);
 
@@ -2223,7 +2223,7 @@ class ShapeFix_Solid : public ShapeFix_Root {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes by solid .
 	:param solid:
-	:type solid: TopoDS_Solid &
+	:type solid: TopoDS_Solid
 	:rtype: void") Init;
 		virtual void Init (const TopoDS_Solid & solid);
 
@@ -2231,7 +2231,7 @@ class ShapeFix_Solid : public ShapeFix_Root {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Iterates on shells and performs fixes (calls ShapeFix_Shell for each subshell). The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 	:param theProgress: default value is 0
-	:type theProgress: opencascade::handle<Message_ProgressIndicator> &
+	:type theProgress: Message_ProgressIndicator
 	:rtype: bool") Perform;
 		virtual Standard_Boolean Perform (const opencascade::handle<Message_ProgressIndicator> & theProgress = 0);
 
@@ -2255,7 +2255,7 @@ class ShapeFix_Solid : public ShapeFix_Root {
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "* Sets message registrator
 	:param msgreg:
-	:type msgreg: opencascade::handle<ShapeExtend_BasicMsgRegistrator> &
+	:type msgreg: ShapeExtend_BasicMsgRegistrator
 	:rtype: void") SetMsgRegistrator;
 		virtual void SetMsgRegistrator (const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
@@ -2283,7 +2283,7 @@ class ShapeFix_Solid : public ShapeFix_Root {
 		%feature("compactdefaultargs") ShapeFix_Solid;
 		%feature("autodoc", "* Initializes by solid.
 	:param solid:
-	:type solid: TopoDS_Solid &
+	:type solid: TopoDS_Solid
 	:rtype: None") ShapeFix_Solid;
 		 ShapeFix_Solid (const TopoDS_Solid & solid);
 
@@ -2297,7 +2297,7 @@ class ShapeFix_Solid : public ShapeFix_Root {
 		%feature("compactdefaultargs") SolidFromShell;
 		%feature("autodoc", "* Calls MakeSolid and orients the solid to be 'not infinite'
 	:param shell:
-	:type shell: TopoDS_Shell &
+	:type shell: TopoDS_Shell
 	:rtype: TopoDS_Solid") SolidFromShell;
 		TopoDS_Solid SolidFromShell (const TopoDS_Shell & shell);
 
@@ -2329,7 +2329,7 @@ class ShapeFix_SplitCommonVertex : public ShapeFix_Root {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -2701,7 +2701,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
 		%feature("compactdefaultargs") FixReorder;
 		%feature("autodoc", "* Reorder edges in the wire as determined by WireOrder that should be filled and computed before
 	:param wi:
-	:type wi: ShapeAnalysis_WireOrder &
+	:type wi: ShapeAnalysis_WireOrder
 	:rtype: bool") FixReorder;
 		Standard_Boolean FixReorder (const ShapeAnalysis_WireOrder & wi);
 
@@ -2886,9 +2886,9 @@ class ShapeFix_Wire : public ShapeFix_Root {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Load analyzer with all the data for the wire and face and drops all fixing statuses
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param prec:
 	:type prec: float
 	:rtype: None") Init;
@@ -2898,7 +2898,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Load analyzer with all the data already prepared and drops all fixing statuses If analyzer contains face, there is no need to set it by SetFace or SetSurface
 	:param saw:
-	:type saw: opencascade::handle<ShapeAnalysis_Wire> &
+	:type saw: ShapeAnalysis_Wire
 	:rtype: None") Init;
 		void Init (const opencascade::handle<ShapeAnalysis_Wire> & saw);
 
@@ -2926,7 +2926,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Load data for the wire, and drops all fixing statuses
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:rtype: None") Load;
 		void Load (const TopoDS_Wire & wire);
 
@@ -2934,7 +2934,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Load data for the wire, and drops all fixing statuses
 	:param sbwd:
-	:type sbwd: opencascade::handle<ShapeExtend_WireData> &
+	:type sbwd: ShapeExtend_WireData
 	:rtype: None") Load;
 		void Load (const opencascade::handle<ShapeExtend_WireData> & sbwd);
 
@@ -3006,7 +3006,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", "* Set working face for the wire
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: None") SetFace;
 		void SetFace (const TopoDS_Face & face);
 
@@ -3038,7 +3038,7 @@ class ShapeFix_Wire : public ShapeFix_Root {
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "* Set surface for the wire
 	:param surf:
-	:type surf: opencascade::handle<Geom_Surface> &
+	:type surf: Geom_Surface
 	:rtype: None") SetSurface;
 		void SetSurface (const opencascade::handle<Geom_Surface> & surf);
 
@@ -3046,9 +3046,9 @@ class ShapeFix_Wire : public ShapeFix_Root {
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "* Set surface for the wire
 	:param surf:
-	:type surf: opencascade::handle<Geom_Surface> &
+	:type surf: Geom_Surface
 	:param loc:
-	:type loc: TopLoc_Location &
+	:type loc: TopLoc_Location
 	:rtype: None") SetSurface;
 		void SetSurface (const opencascade::handle<Geom_Surface> & surf,const TopLoc_Location & loc);
 
@@ -3062,9 +3062,9 @@ class ShapeFix_Wire : public ShapeFix_Root {
 		%feature("compactdefaultargs") ShapeFix_Wire;
 		%feature("autodoc", "* Create new object with default flags and prepare it for use (Loads analyzer with all the data for the wire and face)
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param prec:
 	:type prec: float
 	:rtype: None") ShapeFix_Wire;
@@ -3199,13 +3199,13 @@ class ShapeFix_Wireframe : public ShapeFix_Root {
 		%feature("compactdefaultargs") CheckSmallEdges;
 		%feature("autodoc", "* Auxiliary tool for FixSmallEdges which checks for small edges and fills the maps. Returns True if at least one small edge has been found.
 	:param theSmallEdges:
-	:type theSmallEdges: TopTools_MapOfShape &
+	:type theSmallEdges: TopTools_MapOfShape
 	:param theEdgeToFaces:
-	:type theEdgeToFaces: TopTools_DataMapOfShapeListOfShape &
+	:type theEdgeToFaces: TopTools_DataMapOfShapeListOfShape
 	:param theFaceWithSmall:
-	:type theFaceWithSmall: TopTools_DataMapOfShapeListOfShape &
+	:type theFaceWithSmall: TopTools_DataMapOfShapeListOfShape
 	:param theMultyEdges:
-	:type theMultyEdges: TopTools_MapOfShape &
+	:type theMultyEdges: TopTools_MapOfShape
 	:rtype: bool") CheckSmallEdges;
 		Standard_Boolean CheckSmallEdges (TopTools_MapOfShape & theSmallEdges,TopTools_DataMapOfShapeListOfShape & theEdgeToFaces,TopTools_DataMapOfShapeListOfShape & theFaceWithSmall,TopTools_MapOfShape & theMultyEdges);
 
@@ -3237,7 +3237,7 @@ class ShapeFix_Wireframe : public ShapeFix_Root {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Loads a shape, resets statuses
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: None") Load;
 		void Load (const TopoDS_Shape & shape);
 
@@ -3245,13 +3245,13 @@ class ShapeFix_Wireframe : public ShapeFix_Root {
 		%feature("compactdefaultargs") MergeSmallEdges;
 		%feature("autodoc", "* Auxiliary tool for FixSmallEdges which merges small edges. If theModeDrop is equal to Standard_True then small edges, which cannot be connected with adjacent edges are dropped. Otherwise they are kept. theLimitAngle specifies maximum allowed tangency discontinuity between adjacent edges. If theLimitAngle is equal to -1, this angle is not taken into account.
 	:param theSmallEdges:
-	:type theSmallEdges: TopTools_MapOfShape &
+	:type theSmallEdges: TopTools_MapOfShape
 	:param theEdgeToFaces:
-	:type theEdgeToFaces: TopTools_DataMapOfShapeListOfShape &
+	:type theEdgeToFaces: TopTools_DataMapOfShapeListOfShape
 	:param theFaceWithSmall:
-	:type theFaceWithSmall: TopTools_DataMapOfShapeListOfShape &
+	:type theFaceWithSmall: TopTools_DataMapOfShapeListOfShape
 	:param theMultyEdges:
-	:type theMultyEdges: TopTools_MapOfShape &
+	:type theMultyEdges: TopTools_MapOfShape
 	:param theModeDrop: default value is Standard_False
 	:type theModeDrop: bool
 	:param theLimitAngle: default value is -1
@@ -3293,7 +3293,7 @@ class ShapeFix_Wireframe : public ShapeFix_Root {
 		/****************** ShapeFix_Wireframe ******************/
 		%feature("compactdefaultargs") ShapeFix_Wireframe;
 		%feature("autodoc", ":param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: None") ShapeFix_Wireframe;
 		 ShapeFix_Wireframe (const TopoDS_Shape & shape);
 

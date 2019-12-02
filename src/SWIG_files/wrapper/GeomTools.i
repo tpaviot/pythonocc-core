@@ -79,9 +79,9 @@ class GeomTools {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* A set of Curves from Geom2d. Dumps the surface on the stream.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Dump;
 		static void Dump (const opencascade::handle<Geom_Surface> & S,Standard_OStream & OS);
 
@@ -89,9 +89,9 @@ class GeomTools {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Dumps the Curve on the stream.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Dump;
 		static void Dump (const opencascade::handle<Geom_Curve> & C,Standard_OStream & OS);
 
@@ -99,9 +99,9 @@ class GeomTools {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Dumps the Curve on the stream.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Dump;
 		static void Dump (const opencascade::handle<Geom2d_Curve> & C,Standard_OStream & OS);
 
@@ -109,9 +109,9 @@ class GeomTools {
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", "* Reads the Standard_Real value from the stream. Zero is read in case of error
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param theValue:
-	:type theValue: float &
+	:type theValue: float
 	:rtype: void") GetReal;
 		static void GetReal (Standard_IStream & IS,Standard_Real &OutValue);
 
@@ -124,9 +124,9 @@ class GeomTools {
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "* Reads the surface from the stream.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:rtype: void") Read;
 		static void Read (opencascade::handle<Geom_Surface> & S,Standard_IStream & IS);
 
@@ -134,9 +134,9 @@ class GeomTools {
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "* Reads the Curve from the stream.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:rtype: void") Read;
 		static void Read (opencascade::handle<Geom_Curve> & C,Standard_IStream & IS);
 
@@ -144,16 +144,16 @@ class GeomTools {
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "* Reads the Curve from the stream.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:rtype: void") Read;
 		static void Read (opencascade::handle<Geom2d_Curve> & C,Standard_IStream & IS);
 
 		/****************** SetUndefinedTypeHandler ******************/
 		%feature("compactdefaultargs") SetUndefinedTypeHandler;
 		%feature("autodoc", ":param aHandler:
-	:type aHandler: opencascade::handle<GeomTools_UndefinedTypeHandler> &
+	:type aHandler: GeomTools_UndefinedTypeHandler
 	:rtype: void") SetUndefinedTypeHandler;
 		static void SetUndefinedTypeHandler (const opencascade::handle<GeomTools_UndefinedTypeHandler> & aHandler);
 
@@ -161,9 +161,9 @@ class GeomTools {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes the surface on the stream.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Write;
 		static void Write (const opencascade::handle<Geom_Surface> & S,Standard_OStream & OS);
 
@@ -171,9 +171,9 @@ class GeomTools {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes the Curve on the stream.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Write;
 		static void Write (const opencascade::handle<Geom_Curve> & C,Standard_OStream & OS);
 
@@ -181,9 +181,9 @@ class GeomTools {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes the Curve on the stream.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Write;
 		static void Write (const opencascade::handle<Geom2d_Curve> & C,Standard_OStream & OS);
 
@@ -206,7 +206,7 @@ class GeomTools_Curve2dSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Incorporate a new Curve in the set and returns its index.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: int") Add;
 		Standard_Integer Add (const opencascade::handle<Geom2d_Curve> & C);
 
@@ -247,7 +247,7 @@ class GeomTools_Curve2dSet {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of <L>.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: int") Index;
 		Standard_Integer Index (const opencascade::handle<Geom2d_Curve> & C);
 
@@ -255,9 +255,9 @@ class GeomTools_Curve2dSet {
 		%feature("compactdefaultargs") PrintCurve2d;
 		%feature("autodoc", "* Dumps the curve on the stream, if compact is True use the compact format that can be read back.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param compact: default value is Standard_False
 	:type compact: bool
 	:rtype: void") PrintCurve2d;
@@ -280,7 +280,7 @@ class GeomTools_Curve2dSet {
         		/****************** SetProgress ******************/
 		%feature("compactdefaultargs") SetProgress;
 		%feature("autodoc", ":param PR:
-	:type PR: opencascade::handle<Message_ProgressIndicator> &
+	:type PR: Message_ProgressIndicator
 	:rtype: None") SetProgress;
 		void SetProgress (const opencascade::handle<Message_ProgressIndicator> & PR);
 
@@ -311,7 +311,7 @@ class GeomTools_CurveSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Incorporate a new Curve in the set and returns its index.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: int") Add;
 		Standard_Integer Add (const opencascade::handle<Geom_Curve> & C);
 
@@ -352,7 +352,7 @@ class GeomTools_CurveSet {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of <L>.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: int") Index;
 		Standard_Integer Index (const opencascade::handle<Geom_Curve> & C);
 
@@ -360,9 +360,9 @@ class GeomTools_CurveSet {
 		%feature("compactdefaultargs") PrintCurve;
 		%feature("autodoc", "* Dumps the curve on the stream, if compact is True use the compact format that can be read back.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param compact: default value is Standard_False
 	:type compact: bool
 	:rtype: void") PrintCurve;
@@ -385,7 +385,7 @@ class GeomTools_CurveSet {
         		/****************** SetProgress ******************/
 		%feature("compactdefaultargs") SetProgress;
 		%feature("autodoc", ":param PR:
-	:type PR: opencascade::handle<Message_ProgressIndicator> &
+	:type PR: Message_ProgressIndicator
 	:rtype: None") SetProgress;
 		void SetProgress (const opencascade::handle<Message_ProgressIndicator> & PR);
 
@@ -416,7 +416,7 @@ class GeomTools_SurfaceSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Incorporate a new Surface in the set and returns its index.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: int") Add;
 		Standard_Integer Add (const opencascade::handle<Geom_Surface> & S);
 
@@ -449,7 +449,7 @@ class GeomTools_SurfaceSet {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of <L>.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: int") Index;
 		Standard_Integer Index (const opencascade::handle<Geom_Surface> & S);
 
@@ -457,9 +457,9 @@ class GeomTools_SurfaceSet {
 		%feature("compactdefaultargs") PrintSurface;
 		%feature("autodoc", "* Dumps the surface on the stream, if compact is True use the compact format that can be read back.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param compact: default value is Standard_False
 	:type compact: bool
 	:rtype: void") PrintSurface;
@@ -482,7 +482,7 @@ class GeomTools_SurfaceSet {
         		/****************** SetProgress ******************/
 		%feature("compactdefaultargs") SetProgress;
 		%feature("autodoc", ":param PR:
-	:type PR: opencascade::handle<Message_ProgressIndicator> &
+	:type PR: Message_ProgressIndicator
 	:rtype: None") SetProgress;
 		void SetProgress (const opencascade::handle<Message_ProgressIndicator> & PR);
 
@@ -525,9 +525,9 @@ class GeomTools_UndefinedTypeHandler : public Standard_Transient {
 		/****************** PrintCurve ******************/
 		%feature("compactdefaultargs") PrintCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param compact: default value is Standard_False
 	:type compact: bool
 	:rtype: void") PrintCurve;
@@ -536,9 +536,9 @@ class GeomTools_UndefinedTypeHandler : public Standard_Transient {
 		/****************** PrintCurve2d ******************/
 		%feature("compactdefaultargs") PrintCurve2d;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param compact: default value is Standard_False
 	:type compact: bool
 	:rtype: void") PrintCurve2d;
@@ -547,9 +547,9 @@ class GeomTools_UndefinedTypeHandler : public Standard_Transient {
 		/****************** PrintSurface ******************/
 		%feature("compactdefaultargs") PrintSurface;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param compact: default value is Standard_False
 	:type compact: bool
 	:rtype: void") PrintSurface;
@@ -560,9 +560,9 @@ class GeomTools_UndefinedTypeHandler : public Standard_Transient {
 		%feature("autodoc", ":param ctype:
 	:type ctype: int
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: Standard_IStream") ReadCurve;
 		virtual Standard_IStream & ReadCurve (const Standard_Integer ctype,Standard_IStream & IS,opencascade::handle<Geom_Curve> & C);
 
@@ -571,9 +571,9 @@ class GeomTools_UndefinedTypeHandler : public Standard_Transient {
 		%feature("autodoc", ":param ctype:
 	:type ctype: int
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: Standard_IStream") ReadCurve2d;
 		virtual Standard_IStream & ReadCurve2d (const Standard_Integer ctype,Standard_IStream & IS,opencascade::handle<Geom2d_Curve> & C);
 
@@ -582,9 +582,9 @@ class GeomTools_UndefinedTypeHandler : public Standard_Transient {
 		%feature("autodoc", ":param ctype:
 	:type ctype: int
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: Standard_IStream") ReadSurface;
 		virtual Standard_IStream & ReadSurface (const Standard_Integer ctype,Standard_IStream & IS,opencascade::handle<Geom_Surface> & S);
 

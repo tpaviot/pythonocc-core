@@ -171,11 +171,11 @@ class BRepApprox_ApproxLine : public Standard_Transient {
 		/****************** BRepApprox_ApproxLine ******************/
 		%feature("compactdefaultargs") BRepApprox_ApproxLine;
 		%feature("autodoc", ":param CurveXYZ:
-	:type CurveXYZ: opencascade::handle<Geom_BSplineCurve> &
+	:type CurveXYZ: Geom_BSplineCurve
 	:param CurveUV1:
-	:type CurveUV1: opencascade::handle<Geom2d_BSplineCurve> &
+	:type CurveUV1: Geom2d_BSplineCurve
 	:param CurveUV2:
-	:type CurveUV2: opencascade::handle<Geom2d_BSplineCurve> &
+	:type CurveUV2: Geom2d_BSplineCurve
 	:rtype: None") BRepApprox_ApproxLine;
 		 BRepApprox_ApproxLine (const opencascade::handle<Geom_BSplineCurve> & CurveXYZ,const opencascade::handle<Geom2d_BSplineCurve> & CurveUV1,const opencascade::handle<Geom2d_BSplineCurve> & CurveUV2);
 
@@ -183,7 +183,7 @@ class BRepApprox_ApproxLine : public Standard_Transient {
 		%feature("compactdefaultargs") BRepApprox_ApproxLine;
 		%feature("autodoc", "* theTang variable has been entered only for compatibility with the alias IntPatch_WLine. They are not used in this class.
 	:param lin:
-	:type lin: opencascade::handle<IntSurf_LineOn2S> &
+	:type lin: IntSurf_LineOn2S
 	:param theTang: default value is Standard_False
 	:type theTang: bool
 	:rtype: None") BRepApprox_ApproxLine;
@@ -221,9 +221,9 @@ class BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox : publ
 		/****************** BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox ******************/
 		%feature("compactdefaultargs") BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -238,7 +238,7 @@ class BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox : publ
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -261,19 +261,19 @@ class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public
 		%feature("compactdefaultargs") BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has <NbPol> control points.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox;
@@ -304,7 +304,7 @@ class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -320,9 +320,9 @@ class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
@@ -335,7 +335,7 @@ class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -383,9 +383,9 @@ class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -393,11 +393,11 @@ class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -420,7 +420,7 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -430,7 +430,7 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
@@ -440,7 +440,7 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -458,11 +458,11 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -472,7 +472,7 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
@@ -482,11 +482,11 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -528,11 +528,11 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -540,13 +540,13 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -584,7 +584,7 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -592,7 +592,7 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -604,11 +604,11 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -620,15 +620,15 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -666,9 +666,9 @@ class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox : publi
 		/****************** BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox ******************/
 		%feature("compactdefaultargs") BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -683,7 +683,7 @@ class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox : publi
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -705,9 +705,9 @@ class BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox : public m
 		/****************** BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox ******************/
 		%feature("compactdefaultargs") BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -722,7 +722,7 @@ class BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox : public m
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -751,19 +751,19 @@ class BRepApprox_MyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_MyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -779,19 +779,19 @@ class BRepApprox_MyBSplGradientOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_MyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -864,15 +864,15 @@ class BRepApprox_MyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") BRepApprox_MyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -941,15 +941,15 @@ class BRepApprox_MyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_MyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -1012,15 +1012,15 @@ class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public 
 		%feature("compactdefaultargs") BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has the desired degree Deg.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:rtype: None") BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
@@ -1045,7 +1045,7 @@ class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public 
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -1055,16 +1055,16 @@ class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public 
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -1098,9 +1098,9 @@ class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public 
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -1108,11 +1108,11 @@ class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public 
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -1135,15 +1135,15 @@ class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public mat
 		%feature("compactdefaultargs") BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has the desired degree Deg.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:rtype: None") BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox;
@@ -1168,7 +1168,7 @@ class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public mat
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -1178,16 +1178,16 @@ class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public mat
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -1221,9 +1221,9 @@ class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public mat
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -1231,11 +1231,11 @@ class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public mat
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -1258,7 +1258,7 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1268,7 +1268,7 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
@@ -1278,7 +1278,7 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1296,11 +1296,11 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1310,7 +1310,7 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
@@ -1320,11 +1320,11 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1366,11 +1366,11 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1378,13 +1378,13 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1422,7 +1422,7 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -1430,7 +1430,7 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -1442,11 +1442,11 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -1458,15 +1458,15 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -1505,7 +1505,7 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1515,7 +1515,7 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
@@ -1525,7 +1525,7 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1543,11 +1543,11 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1557,7 +1557,7 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
@@ -1567,11 +1567,11 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1613,11 +1613,11 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1625,13 +1625,13 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1669,7 +1669,7 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -1677,7 +1677,7 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -1689,11 +1689,11 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -1705,15 +1705,15 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -1752,19 +1752,19 @@ class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "* Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param SCurv:
-	:type SCurv: AppParCurves_MultiCurve &
+	:type SCurv: AppParCurves_MultiCurve
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param Constraints:
-	:type Constraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type Constraints: AppParCurves_HArray1OfConstraintCouple
 	:param Bern:
-	:type Bern: math_Matrix &
+	:type Bern: math_Matrix
 	:param DerivativeBern:
-	:type DerivativeBern: math_Matrix &
+	:type DerivativeBern: math_Matrix
 	:param Tolerance: default value is 1.0e-10
 	:type Tolerance: float
 	:rtype: None") BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
@@ -1774,13 +1774,13 @@ class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "* Returns the derivative of the constraint matrix.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:rtype: math_Matrix") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative (const BRepApprox_TheMultiLineOfApprox & SSP,const math_Vector & Parameters,const Standard_Integer Deg,const math_Matrix & DA);
 
@@ -1826,19 +1826,19 @@ class BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "* Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param SCurv:
-	:type SCurv: AppParCurves_MultiCurve &
+	:type SCurv: AppParCurves_MultiCurve
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param Constraints:
-	:type Constraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type Constraints: AppParCurves_HArray1OfConstraintCouple
 	:param Bern:
-	:type Bern: math_Matrix &
+	:type Bern: math_Matrix
 	:param DerivativeBern:
-	:type DerivativeBern: math_Matrix &
+	:type DerivativeBern: math_Matrix
 	:param Tolerance: default value is 1.0e-10
 	:type Tolerance: float
 	:rtype: None") BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox;
@@ -1848,13 +1848,13 @@ class BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "* Returns the derivative of the constraint matrix.
 	:param SSP:
-	:type SSP: BRepApprox_TheMultiLineOfApprox &
+	:type SSP: BRepApprox_TheMultiLineOfApprox
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:rtype: math_Matrix") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative (const BRepApprox_TheMultiLineOfApprox & SSP,const math_Vector & Parameters,const Standard_Integer Deg,const math_Matrix & DA);
 
@@ -1900,7 +1900,7 @@ class BRepApprox_TheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineBezierOfApprox;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 	:param Line:
-	:type Line: BRepApprox_TheMultiLineOfApprox &
+	:type Line: BRepApprox_TheMultiLineOfApprox
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -1924,9 +1924,9 @@ class BRepApprox_TheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineBezierOfApprox;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 	:param Line:
-	:type Line: BRepApprox_TheMultiLineOfApprox &
+	:type Line: BRepApprox_TheMultiLineOfApprox
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -1948,7 +1948,7 @@ class BRepApprox_TheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineBezierOfApprox;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2002,9 +2002,9 @@ class BRepApprox_TheComputeLineBezierOfApprox {
 	:param Index:
 	:type Index: int
 	:param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") Error;
 		void Error (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2066,7 +2066,7 @@ class BRepApprox_TheComputeLineBezierOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* runs the algorithm after having initialized the fields.
 	:param Line:
-	:type Line: BRepApprox_TheMultiLineOfApprox &
+	:type Line: BRepApprox_TheMultiLineOfApprox
 	:rtype: None") Perform;
 		void Perform (const BRepApprox_TheMultiLineOfApprox & Line);
 
@@ -2133,7 +2133,7 @@ class BRepApprox_TheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineOfApprox;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all. //! The multiplicities of the internal knots is set by default.
 	:param Line:
-	:type Line: BRepApprox_TheMultiLineOfApprox &
+	:type Line: BRepApprox_TheMultiLineOfApprox
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2157,9 +2157,9 @@ class BRepApprox_TheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineOfApprox;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 	:param Line:
-	:type Line: BRepApprox_TheMultiLineOfApprox &
+	:type Line: BRepApprox_TheMultiLineOfApprox
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2181,7 +2181,7 @@ class BRepApprox_TheComputeLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineOfApprox;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2231,9 +2231,9 @@ class BRepApprox_TheComputeLineOfApprox {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the tolerances 2d and 3d of the MultiBSpCurve.
 	:param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2263,7 +2263,7 @@ class BRepApprox_TheComputeLineOfApprox {
 		%feature("compactdefaultargs") Interpol;
 		%feature("autodoc", "* Constructs an interpolation of the MultiLine <Line> The result will be a C2 curve of degree 3.
 	:param Line:
-	:type Line: BRepApprox_TheMultiLineOfApprox &
+	:type Line: BRepApprox_TheMultiLineOfApprox
 	:rtype: None") Interpol;
 		void Interpol (const BRepApprox_TheMultiLineOfApprox & Line);
 
@@ -2289,7 +2289,7 @@ class BRepApprox_TheComputeLineOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* runs the algorithm after having initialized the fields.
 	:param Line:
-	:type Line: BRepApprox_TheMultiLineOfApprox &
+	:type Line: BRepApprox_TheMultiLineOfApprox
 	:rtype: None") Perform;
 		void Perform (const BRepApprox_TheMultiLineOfApprox & Line);
 
@@ -2325,7 +2325,7 @@ class BRepApprox_TheComputeLineOfApprox {
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "* The approximation will be done with the set of knots <Knots>. The multiplicities will be set with the degree and the desired continuity.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:rtype: None") SetKnots;
 		void SetKnots (const TColStd_Array1OfReal & Knots);
 
@@ -2333,9 +2333,9 @@ class BRepApprox_TheComputeLineOfApprox {
 		%feature("compactdefaultargs") SetKnotsAndMultiplicities;
 		%feature("autodoc", "* The approximation will be done with the set of knots <Knots> and the multiplicities <Mults>.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: None") SetKnotsAndMultiplicities;
 		void SetKnotsAndMultiplicities (const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults);
 
@@ -2343,7 +2343,7 @@ class BRepApprox_TheComputeLineOfApprox {
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "* The approximation will begin with the set of parameters <ThePar>.
 	:param ThePar:
-	:type ThePar: math_Vector &
+	:type ThePar: math_Vector
 	:rtype: None") SetParameters;
 		void SetParameters (const math_Vector & ThePar);
 
@@ -2399,9 +2399,9 @@ class BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox : public mat
 		/****************** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox ******************/
 		%feature("compactdefaultargs") BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox;
 		%feature("autodoc", ":param S1:
-	:type S1: BRepAdaptor_Surface &
+	:type S1: BRepAdaptor_Surface
 	:param S2:
-	:type S2: BRepAdaptor_Surface &
+	:type S2: BRepAdaptor_Surface
 	:rtype: None") BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox;
 		 BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox (const BRepAdaptor_Surface & S1,const BRepAdaptor_Surface & S2);
 
@@ -2410,24 +2410,24 @@ class BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox : public mat
 		%feature("autodoc", ":param ChoixIso:
 	:type ChoixIso: IntImp_ConstIsoparametric
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param UVap:
-	:type UVap: math_Vector &
+	:type UVap: math_Vector
 	:param BornInf:
-	:type BornInf: math_Vector &
+	:type BornInf: math_Vector
 	:param BornSup:
-	:type BornSup: math_Vector &
+	:type BornSup: math_Vector
 	:param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:rtype: None") ComputeParameters;
 		void ComputeParameters (const IntImp_ConstIsoparametric ChoixIso,const TColStd_Array1OfReal & Param,math_Vector & UVap,math_Vector & BornInf,math_Vector & BornSup,math_Vector & Tolerance);
 
 		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -2449,11 +2449,11 @@ class BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox : public mat
 		/****************** IsTangent ******************/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", ":param UVap:
-	:type UVap: math_Vector &
+	:type UVap: math_Vector
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param BestChoix:
-	:type BestChoix: IntImp_ConstIsoparametric &
+	:type BestChoix: IntImp_ConstIsoparametric
 	:rtype: bool") IsTangent;
 		Standard_Boolean IsTangent (const math_Vector & UVap,TColStd_Array1OfReal & Param,IntImp_ConstIsoparametric & BestChoix);
 
@@ -2481,20 +2481,20 @@ class BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox : public mat
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2516,18 +2516,18 @@ class BRepApprox_TheImpPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 		/****************** BRepApprox_TheImpPrmSvSurfacesOfApprox ******************/
 		%feature("compactdefaultargs") BRepApprox_TheImpPrmSvSurfacesOfApprox;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: BRepAdaptor_Surface &
+	:type Surf1: BRepAdaptor_Surface
 	:param Surf2:
-	:type Surf2: IntSurf_Quadric &
+	:type Surf2: IntSurf_Quadric
 	:rtype: None") BRepApprox_TheImpPrmSvSurfacesOfApprox;
 		 BRepApprox_TheImpPrmSvSurfacesOfApprox (const BRepAdaptor_Surface & Surf1,const IntSurf_Quadric & Surf2);
 
 		/****************** BRepApprox_TheImpPrmSvSurfacesOfApprox ******************/
 		%feature("compactdefaultargs") BRepApprox_TheImpPrmSvSurfacesOfApprox;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: IntSurf_Quadric &
+	:type Surf1: IntSurf_Quadric
 	:param Surf2:
-	:type Surf2: BRepAdaptor_Surface &
+	:type Surf2: BRepAdaptor_Surface
 	:rtype: None") BRepApprox_TheImpPrmSvSurfacesOfApprox;
 		 BRepApprox_TheImpPrmSvSurfacesOfApprox (const IntSurf_Quadric & Surf1,const BRepAdaptor_Surface & Surf2);
 
@@ -2535,13 +2535,13 @@ class BRepApprox_TheImpPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* returns True if Tg,Tguv1 Tguv2 can be computed.
 	:param u1:
-	:type u1: float &
+	:type u1: float
 	:param v1:
-	:type v1: float &
+	:type v1: float
 	:param u2:
-	:type u2: float &
+	:type u2: float
 	:param v2:
-	:type v2: float &
+	:type v2: float
 	:param Pt:
 	:type Pt: gp_Pnt
 	:param Tg:
@@ -2579,7 +2579,7 @@ class BRepApprox_TheImpPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 	:param v2:
 	:type v2: float
 	:param Point:
-	:type Point: IntSurf_PntOn2S &
+	:type Point: IntSurf_PntOn2S
 	:rtype: bool") SeekPoint;
 		Standard_Boolean SeekPoint (const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,IntSurf_PntOn2S & Point);
 
@@ -2647,11 +2647,11 @@ class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
 		%feature("autodoc", "* compute the solution point with the close point
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param S1:
-	:type S1: BRepAdaptor_Surface &
+	:type S1: BRepAdaptor_Surface
 	:param S2:
-	:type S2: BRepAdaptor_Surface &
+	:type S2: BRepAdaptor_Surface
 	:param TolTangency:
 	:type TolTangency: float
 	:rtype: None") BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
@@ -2661,9 +2661,9 @@ class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
 		%feature("autodoc", "* initialize the parameters to compute the solution point it 's possible to write to optimize: IntImp_Int2S inter(S1,S2,Func,TolTangency); math_FunctionSetRoot rsnld(inter.Function()); while ...{ Param(1)=... Param(2)=... param(3)=... inter.Perform(Param,rsnld); }
 	:param S1:
-	:type S1: BRepAdaptor_Surface &
+	:type S1: BRepAdaptor_Surface
 	:param S2:
-	:type S2: BRepAdaptor_Surface &
+	:type S2: BRepAdaptor_Surface
 	:param TolTangency:
 	:type TolTangency: float
 	:rtype: None") BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
@@ -2721,9 +2721,9 @@ class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated)
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param Rsnld:
-	:type Rsnld: math_FunctionSetRoot &
+	:type Rsnld: math_FunctionSetRoot
 	:rtype: IntImp_ConstIsoparametric") Perform;
 		IntImp_ConstIsoparametric Perform (const TColStd_Array1OfReal & Param,math_FunctionSetRoot & Rsnld);
 
@@ -2731,9 +2731,9 @@ class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by ChoixIso)
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param Rsnld:
-	:type Rsnld: math_FunctionSetRoot &
+	:type Rsnld: math_FunctionSetRoot
 	:param ChoixIso:
 	:type ChoixIso: IntImp_ConstIsoparametric
 	:rtype: IntImp_ConstIsoparametric") Perform;
@@ -2769,7 +2769,7 @@ class BRepApprox_TheMultiLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheMultiLineOfApprox;
 		%feature("autodoc", "* The class SvSurfaces is used when the approximation algorithm needs some extra points on the line <line>. A New line is then created which shares the same surfaces and functions. SvSurfaces is a deferred class which allows several implementations of this algorithm with different surfaces (bi-parametric ones, or implicit and biparametric ones)
 	:param line:
-	:type line: opencascade::handle<BRepApprox_ApproxLine> &
+	:type line: BRepApprox_ApproxLine
 	:param PtrSvSurfaces:
 	:type PtrSvSurfaces: Standard_Address
 	:param NbP3d:
@@ -2807,7 +2807,7 @@ class BRepApprox_TheMultiLineOfApprox {
 		%feature("compactdefaultargs") BRepApprox_TheMultiLineOfApprox;
 		%feature("autodoc", "* No Extra points will be added on the current line
 	:param line:
-	:type line: opencascade::handle<BRepApprox_ApproxLine> &
+	:type line: BRepApprox_ApproxLine
 	:param NbP3d:
 	:type NbP3d: int
 	:param NbP2d:
@@ -2877,7 +2877,7 @@ class BRepApprox_TheMultiLineOfApprox {
 	:param indbad:
 	:type indbad: int
 	:param OtherLine:
-	:type OtherLine: BRepApprox_TheMultiLineOfApprox &
+	:type OtherLine: BRepApprox_TheMultiLineOfApprox
 	:rtype: bool") MakeMLOneMorePoint;
 		Standard_Boolean MakeMLOneMorePoint (const Standard_Integer Low,const Standard_Integer High,const Standard_Integer indbad,BRepApprox_TheMultiLineOfApprox & OtherLine);
 
@@ -2980,7 +2980,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "* returns the 3d curvature of the multipoint <MPointIndex> when only 3d points exist.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -2992,7 +2992,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "* returns the 2d curvature points of the multipoint <MPointIndex> only when 2d points exist.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV2d:
@@ -3004,7 +3004,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "* returns the 3d and 2d curvature of the multipoint <MPointIndex>.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -3018,7 +3018,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Dump of the current multi-line.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:rtype: None") Dump;
 		static void Dump (const BRepApprox_TheMultiLineOfApprox & ML);
 
@@ -3026,7 +3026,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "* Returns the number of multipoints of the TheMultiLine.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:rtype: int") FirstPoint;
 		static Standard_Integer FirstPoint (const BRepApprox_TheMultiLineOfApprox & ML);
 
@@ -3034,7 +3034,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") LastPoint;
 		%feature("autodoc", "* Returns the number of multipoints of the TheMultiLine.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:rtype: int") LastPoint;
 		static Standard_Integer LastPoint (const BRepApprox_TheMultiLineOfApprox & ML);
 
@@ -3042,7 +3042,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") MakeMLBetween;
 		%feature("autodoc", "* Is called if WhatStatus returned 'PointsAdded'.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -3056,7 +3056,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") MakeMLOneMorePoint;
 		%feature("autodoc", "* Is called when the Bezier curve contains a loop
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -3064,7 +3064,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 	:param indbad:
 	:type indbad: int
 	:param OtherLine:
-	:type OtherLine: BRepApprox_TheMultiLineOfApprox &
+	:type OtherLine: BRepApprox_TheMultiLineOfApprox
 	:rtype: bool") MakeMLOneMorePoint;
 		static Standard_Boolean MakeMLOneMorePoint (const BRepApprox_TheMultiLineOfApprox & ML,const Standard_Integer I1,const Standard_Integer I2,const Standard_Integer indbad,BRepApprox_TheMultiLineOfApprox & OtherLine);
 
@@ -3072,7 +3072,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") NbP2d;
 		%feature("autodoc", "* Returns the number of 2d points of a TheMultiLine.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:rtype: int") NbP2d;
 		static Standard_Integer NbP2d (const BRepApprox_TheMultiLineOfApprox & ML);
 
@@ -3080,7 +3080,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") NbP3d;
 		%feature("autodoc", "* Returns the number of 3d points of a TheMultiLine.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:rtype: int") NbP3d;
 		static Standard_Integer NbP3d (const BRepApprox_TheMultiLineOfApprox & ML);
 
@@ -3088,7 +3088,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "* returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -3100,7 +3100,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "* returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV2d:
@@ -3112,7 +3112,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "* returns the 3d and 2d points of the multipoint <MPointIndex>.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -3126,7 +3126,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabPt:
@@ -3138,7 +3138,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabPt2d:
@@ -3150,7 +3150,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* returns the 3d and 2d points of the multipoint <MPointIndex>.
 	:param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabPt:
@@ -3163,7 +3163,7 @@ class BRepApprox_TheMultiLineToolOfApprox {
 		/****************** WhatStatus ******************/
 		%feature("compactdefaultargs") WhatStatus;
 		%feature("autodoc", ":param ML:
-	:type ML: BRepApprox_TheMultiLineOfApprox &
+	:type ML: BRepApprox_TheMultiLineOfApprox
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -3189,9 +3189,9 @@ class BRepApprox_ThePrmPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 		/****************** BRepApprox_ThePrmPrmSvSurfacesOfApprox ******************/
 		%feature("compactdefaultargs") BRepApprox_ThePrmPrmSvSurfacesOfApprox;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: BRepAdaptor_Surface &
+	:type Surf1: BRepAdaptor_Surface
 	:param Surf2:
-	:type Surf2: BRepAdaptor_Surface &
+	:type Surf2: BRepAdaptor_Surface
 	:rtype: None") BRepApprox_ThePrmPrmSvSurfacesOfApprox;
 		 BRepApprox_ThePrmPrmSvSurfacesOfApprox (const BRepAdaptor_Surface & Surf1,const BRepAdaptor_Surface & Surf2);
 
@@ -3199,13 +3199,13 @@ class BRepApprox_ThePrmPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* returns True if Tg,Tguv1 Tguv2 can be computed.
 	:param u1:
-	:type u1: float &
+	:type u1: float
 	:param v1:
-	:type v1: float &
+	:type v1: float
 	:param u2:
-	:type u2: float &
+	:type u2: float
 	:param v2:
-	:type v2: float &
+	:type v2: float
 	:param Pt:
 	:type Pt: gp_Pnt
 	:param Tg:
@@ -3243,7 +3243,7 @@ class BRepApprox_ThePrmPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 	:param v2:
 	:type v2: float
 	:param Point:
-	:type Point: IntSurf_PntOn2S &
+	:type Point: IntSurf_PntOn2S
 	:rtype: bool") SeekPoint;
 		Standard_Boolean SeekPoint (const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,IntSurf_PntOn2S & Point);
 
@@ -3315,25 +3315,25 @@ class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox : public math_Functi
 		/****************** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox ******************/
 		%feature("compactdefaultargs") BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox;
 		%feature("autodoc", ":param PS:
-	:type PS: BRepAdaptor_Surface &
+	:type PS: BRepAdaptor_Surface
 	:param IS:
-	:type IS: IntSurf_Quadric &
+	:type IS: IntSurf_Quadric
 	:rtype: None") BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox;
 		 BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox (const BRepAdaptor_Surface & PS,const IntSurf_Quadric & IS);
 
 		/****************** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox ******************/
 		%feature("compactdefaultargs") BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox;
 		%feature("autodoc", ":param IS:
-	:type IS: IntSurf_Quadric &
+	:type IS: IntSurf_Quadric
 	:rtype: None") BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox;
 		 BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox (const IntSurf_Quadric & IS);
 
 		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -3385,7 +3385,7 @@ class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox : public math_Functi
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param PS:
-	:type PS: BRepAdaptor_Surface &
+	:type PS: BRepAdaptor_Surface
 	:rtype: None") Set;
 		void Set (const BRepAdaptor_Surface & PS);
 
@@ -3399,7 +3399,7 @@ class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox : public math_Functi
 		/****************** SetImplicitSurface ******************/
 		%feature("compactdefaultargs") SetImplicitSurface;
 		%feature("autodoc", ":param IS:
-	:type IS: IntSurf_Quadric &
+	:type IS: IntSurf_Quadric
 	:rtype: None") SetImplicitSurface;
 		void SetImplicitSurface (const IntSurf_Quadric & IS);
 
@@ -3412,20 +3412,20 @@ class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox : public math_Functi
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 

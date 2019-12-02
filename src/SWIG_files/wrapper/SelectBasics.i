@@ -137,9 +137,9 @@ class SelectBasics_PickResult {
 		%feature("compactdefaultargs") Min;
 		%feature("autodoc", "* Return closest result between two Pick Results according to Depth value.
 	:param thePickResult1:
-	:type thePickResult1: SelectBasics_PickResult &
+	:type thePickResult1: SelectBasics_PickResult
 	:param thePickResult2:
-	:type thePickResult2: SelectBasics_PickResult &
+	:type thePickResult2: SelectBasics_PickResult
 	:rtype: SelectBasics_PickResult") Min;
 		static const SelectBasics_PickResult & Min (const SelectBasics_PickResult & thePickResult1,const SelectBasics_PickResult & thePickResult2);
 
@@ -258,7 +258,7 @@ enum SelectionType {
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "* Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector
 	:param thePlaneEquations:
-	:type thePlaneEquations: NCollection_Vector<NCollection_Vec4<float> > &
+	:type thePlaneEquations: NCollection_Vector<NCollection_Vec4<float> >
 	:rtype: None") GetPlanes;
 		void GetPlanes (NCollection_Vector<NCollection_Vec4<Standard_Real> > & thePlaneEquations);
 
@@ -271,11 +271,11 @@ enum SelectionType {
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "* Returns true if selecting volume is overlapped by box theBox
 	:param theBoxMin:
-	:type theBoxMin: NCollection_Vec3<float> &
+	:type theBoxMin: NCollection_Vec3<float>
 	:param theBoxMax:
-	:type theBoxMax: NCollection_Vec3<float> &
+	:type theBoxMax: NCollection_Vec3<float>
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		Standard_Boolean Overlaps (const NCollection_Vec3<Standard_Real> & theBoxMin,const NCollection_Vec3<Standard_Real> & theBoxMax,SelectBasics_PickResult & thePickResult);
 
@@ -283,9 +283,9 @@ enum SelectionType {
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "* Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theMinPt and maximum at point theMaxPt
 	:param theBoxMin:
-	:type theBoxMin: NCollection_Vec3<float> &
+	:type theBoxMin: NCollection_Vec3<float>
 	:param theBoxMax:
-	:type theBoxMax: NCollection_Vec3<float> &
+	:type theBoxMax: NCollection_Vec3<float>
 	:param theInside: default value is NULL
 	:type theInside: bool *
 	:rtype: bool") Overlaps;
@@ -297,7 +297,7 @@ enum SelectionType {
 	:param thePnt:
 	:type thePnt: gp_Pnt
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		Standard_Boolean Overlaps (const gp_Pnt & thePnt,SelectBasics_PickResult & thePickResult);
 
@@ -313,11 +313,11 @@ enum SelectionType {
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "* Returns true if selecting volume is overlapped by planar convex polygon, which points are stored in theArrayOfPts, taking into account sensitivity type theSensType
 	:param theArrayOfPts:
-	:type theArrayOfPts: opencascade::handle<TColgp_HArray1OfPnt>
+	:type theArrayOfPts: TColgp_HArray1OfPnt
 	:param theSensType:
 	:type theSensType: int
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		Standard_Boolean Overlaps (const opencascade::handle<TColgp_HArray1OfPnt> & theArrayOfPts,Standard_Integer theSensType,SelectBasics_PickResult & thePickResult);
 
@@ -329,7 +329,7 @@ enum SelectionType {
 	:param theSensType:
 	:type theSensType: int
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		Standard_Boolean Overlaps (const TColgp_Array1OfPnt & theArrayOfPts,Standard_Integer theSensType,SelectBasics_PickResult & thePickResult);
 
@@ -341,7 +341,7 @@ enum SelectionType {
 	:param thePt2:
 	:type thePt2: gp_Pnt
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		Standard_Boolean Overlaps (const gp_Pnt & thePt1,const gp_Pnt & thePt2,SelectBasics_PickResult & thePickResult);
 
@@ -357,7 +357,7 @@ enum SelectionType {
 	:param theSensType:
 	:type theSensType: int
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Overlaps;
 		Standard_Boolean Overlaps (const gp_Pnt & thePt1,const gp_Pnt & thePt2,const gp_Pnt & thePt3,Standard_Integer theSensType,SelectBasics_PickResult & thePickResult);
 

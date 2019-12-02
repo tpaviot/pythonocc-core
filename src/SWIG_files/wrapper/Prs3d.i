@@ -212,11 +212,11 @@ class Prs3d {
 		%feature("compactdefaultargs") AddPrimitivesGroup;
 		%feature("autodoc", "* Add primitives into new group in presentation and clear the list of polylines.
 	:param thePrs:
-	:type thePrs: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs: Prs3d_Presentation
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:param thePolylines:
-	:type thePolylines: Prs3d_NListOfSequenceOfPnt &
+	:type thePolylines: Prs3d_NListOfSequenceOfPnt
 	:rtype: void") AddPrimitivesGroup;
 		static void AddPrimitivesGroup (const opencascade::handle<Prs3d_Presentation> & thePrs,const opencascade::handle<Prs3d_LineAspect> & theAspect,Prs3d_NListOfSequenceOfPnt & thePolylines);
 
@@ -224,9 +224,9 @@ class Prs3d {
 		%feature("compactdefaultargs") GetDeflection;
 		%feature("autodoc", "* Computes the absolute deflection value depending on the type of deflection in theDrawer: <ul> <li><b>Aspect_TOD_RELATIVE</b>: the absolute deflection is computed using the relative deviation coefficient from theDrawer and the shape's bounding box;</li> <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li> </ul> In case of the type of deflection in theDrawer computed relative deflection for shape is stored as absolute deflection. It is necessary to use it later on for sub-shapes. This function should always be used to compute the deflection value for building discrete representations of the shape (triangualtion, wireframe) to avoid incosistencies between different representations of the shape and undesirable visual artifacts.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theDrawer:
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:rtype: float") GetDeflection;
 		static Standard_Real GetDeflection (const TopoDS_Shape & theShape,const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -246,7 +246,7 @@ class Prs3d {
 	:param p2:
 	:type p2: gp_Pnt
 	:param dist:
-	:type dist: float &
+	:type dist: float
 	:rtype: bool") MatchSegment;
 		static Standard_Boolean MatchSegment (const Standard_Real X,const Standard_Real Y,const Standard_Real Z,const Standard_Real aDistance,const gp_Pnt & p1,const gp_Pnt & p2,Standard_Real &OutValue);
 
@@ -254,7 +254,7 @@ class Prs3d {
 		%feature("compactdefaultargs") PrimitivesFromPolylines;
 		%feature("autodoc", "* Assembles array of primitives for sequence of polylines. @param thePoints [in] the polylines sequence returns array of primitives
 	:param thePoints:
-	:type thePoints: Prs3d_NListOfSequenceOfPnt &
+	:type thePoints: Prs3d_NListOfSequenceOfPnt
 	:rtype: opencascade::handle<Graphic3d_ArrayOfPrimitives>") PrimitivesFromPolylines;
 		static opencascade::handle<Graphic3d_ArrayOfPrimitives> PrimitivesFromPolylines (const Prs3d_NListOfSequenceOfPnt & thePoints);
 
@@ -311,7 +311,7 @@ class Prs3d_DimensionUnits {
 		/****************** Prs3d_DimensionUnits ******************/
 		%feature("compactdefaultargs") Prs3d_DimensionUnits;
 		%feature("autodoc", ":param theUnits:
-	:type theUnits: Prs3d_DimensionUnits &
+	:type theUnits: Prs3d_DimensionUnits
 	:rtype: None") Prs3d_DimensionUnits;
 		 Prs3d_DimensionUnits (const Prs3d_DimensionUnits & theUnits);
 
@@ -319,7 +319,7 @@ class Prs3d_DimensionUnits {
 		%feature("compactdefaultargs") SetAngleUnits;
 		%feature("autodoc", "* Sets angle units
 	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: None") SetAngleUnits;
 		void SetAngleUnits (const TCollection_AsciiString & theUnits);
 
@@ -327,7 +327,7 @@ class Prs3d_DimensionUnits {
 		%feature("compactdefaultargs") SetLengthUnits;
 		%feature("autodoc", "* Sets length units
 	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: None") SetLengthUnits;
 		void SetLengthUnits (const TCollection_AsciiString & theUnits);
 
@@ -784,7 +784,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") Link;
 		%feature("autodoc", "* Sets theDrawer as a link to which the current object references.
 	:param theDrawer:
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:rtype: None") Link;
 		void Link (const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -858,7 +858,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetArrowAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for display attributes of arrows.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_ArrowAspect> &
+	:type theAspect: Prs3d_ArrowAspect
 	:rtype: None") SetArrowAspect;
 		void SetArrowAspect (const opencascade::handle<Prs3d_ArrowAspect> & theAspect);
 
@@ -874,7 +874,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetDatumAspect;
 		%feature("autodoc", "* Sets the modality theAspect for the display of datums.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_DatumAspect> &
+	:type theAspect: Prs3d_DatumAspect
 	:rtype: None") SetDatumAspect;
 		void SetDatumAspect (const opencascade::handle<Prs3d_DatumAspect> & theAspect);
 
@@ -910,7 +910,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetDimAngleDisplayUnits;
 		%feature("autodoc", "* Sets angle units in which value for dimension presentation is displayed. The method sets value owned by the drawer that will be used during visualization instead of the one set in link.
 	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: None") SetDimAngleDisplayUnits;
 		void SetDimAngleDisplayUnits (const TCollection_AsciiString & theUnits);
 
@@ -918,7 +918,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetDimAngleModelUnits;
 		%feature("autodoc", "* Sets dimension angle model units for computing of dimension presentation. The method sets value owned by the drawer that will be used during visualization instead of the one set in link.
 	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: None") SetDimAngleModelUnits;
 		void SetDimAngleModelUnits (const TCollection_AsciiString & theUnits);
 
@@ -926,7 +926,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetDimLengthDisplayUnits;
 		%feature("autodoc", "* Sets length units in which value for dimension presentation is displayed. The method sets value owned by the drawer that will be used during visualization instead of the one set in link.
 	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: None") SetDimLengthDisplayUnits;
 		void SetDimLengthDisplayUnits (const TCollection_AsciiString & theUnits);
 
@@ -934,7 +934,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetDimLengthModelUnits;
 		%feature("autodoc", "* Sets dimension length model units for computing of dimension presentation. The method sets value owned by the drawer that will be used during visualization instead of the one set in link.
 	:param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: None") SetDimLengthModelUnits;
 		void SetDimLengthModelUnits (const TCollection_AsciiString & theUnits);
 
@@ -942,7 +942,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetDimensionAspect;
 		%feature("autodoc", "* Sets the settings for the appearance of dimensions. The method sets aspect owned by the drawer that will be used during visualization instead of the one set in link.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_DimensionAspect> &
+	:type theAspect: Prs3d_DimensionAspect
 	:rtype: None") SetDimensionAspect;
 		void SetDimensionAspect (const opencascade::handle<Prs3d_DimensionAspect> & theAspect);
 
@@ -958,7 +958,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetFaceBoundaryAspect;
 		%feature("autodoc", "* Sets line aspect for face boundaries. The method sets line aspect owned by the drawer that will be used during visualization instead of the one set in link. theAspect is the line aspect that determines the look of the face boundaries.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetFaceBoundaryAspect;
 		void SetFaceBoundaryAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -982,7 +982,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetFreeBoundaryAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for the display of free boundaries. The method sets aspect owned by the drawer that will be used during visualization instead of the one set in link.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetFreeBoundaryAspect;
 		void SetFreeBoundaryAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -1026,7 +1026,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetHiddenLineAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for the display of hidden lines in hidden line removal mode.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetHiddenLineAspect;
 		void SetHiddenLineAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -1058,7 +1058,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetLineAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for display attributes of lines.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetLineAspect;
 		void SetLineAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -1066,7 +1066,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetLink;
 		%feature("autodoc", "* Sets theDrawer as a link to which the current object references.
 	:param theDrawer:
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:rtype: None") SetLink;
 		void SetLink (const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -1090,7 +1090,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetOwnDatumAspects;
 		%feature("autodoc", "* Sets own line aspects for datums. Returns False if own line for datums are already set.
 	:param theDefaults: default value is opencascade::handle<Prs3d_Drawer>()
-	:type theDefaults: opencascade::handle<Prs3d_Drawer> &
+	:type theDefaults: Prs3d_Drawer
 	:rtype: bool") SetOwnDatumAspects;
 		Standard_Boolean SetOwnDatumAspects (const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
@@ -1098,7 +1098,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetOwnLineAspects;
 		%feature("autodoc", "* Sets own line aspects. Returns False if own line aspect are already set.
 	:param theDefaults: default value is opencascade::handle<Prs3d_Drawer>()
-	:type theDefaults: opencascade::handle<Prs3d_Drawer> &
+	:type theDefaults: Prs3d_Drawer
 	:rtype: bool") SetOwnLineAspects;
 		Standard_Boolean SetOwnLineAspects (const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
@@ -1106,7 +1106,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetPlaneAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for the display of planes.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_PlaneAspect> &
+	:type theAspect: Prs3d_PlaneAspect
 	:rtype: None") SetPlaneAspect;
 		void SetPlaneAspect (const opencascade::handle<Prs3d_PlaneAspect> & theAspect);
 
@@ -1114,7 +1114,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetPointAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for display attributes of points
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_PointAspect> &
+	:type theAspect: Prs3d_PointAspect
 	:rtype: None") SetPointAspect;
 		void SetPointAspect (const opencascade::handle<Prs3d_PointAspect> & theAspect);
 
@@ -1122,7 +1122,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetSectionAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for display attributes of sections.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetSectionAspect;
 		void SetSectionAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -1130,7 +1130,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetSeenLineAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for the display of seen lines in hidden line removal mode.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetSeenLineAspect;
 		void SetSeenLineAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -1138,7 +1138,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetShaderProgram;
 		%feature("autodoc", "* Assign shader program for specified type of primitives. @param theProgram new program to set (might be NULL) @param theAspect the type of primitives @param theToOverrideDefaults if true then non-overridden attributes using defaults will be allocated and copied from the Link;  otherwise, only already customized attributes will be changed returns True if presentation should be recomputed after creating aspects not previously customized (if theToOverrideDefaults is also True)
 	:param theProgram:
-	:type theProgram: opencascade::handle<Graphic3d_ShaderProgram> &
+	:type theProgram: Graphic3d_ShaderProgram
 	:param theAspect:
 	:type theAspect: Graphic3d_GroupAspect
 	:param theToOverrideDefaults: default value is false
@@ -1150,7 +1150,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetShadingAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for display attributes of shading.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_ShadingAspect> &
+	:type theAspect: Prs3d_ShadingAspect
 	:rtype: None") SetShadingAspect;
 		void SetShadingAspect (const opencascade::handle<Prs3d_ShadingAspect> & theAspect);
 
@@ -1168,7 +1168,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetTextAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for display attributes of text.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_TextAspect> &
+	:type theAspect: Prs3d_TextAspect
 	:rtype: None") SetTextAspect;
 		void SetTextAspect (const opencascade::handle<Prs3d_TextAspect> & theAspect);
 
@@ -1191,7 +1191,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		/****************** SetUIsoAspect ******************/
 		%feature("compactdefaultargs") SetUIsoAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_IsoAspect> &
+	:type theAspect: Prs3d_IsoAspect
 	:rtype: None") SetUIsoAspect;
 		void SetUIsoAspect (const opencascade::handle<Prs3d_IsoAspect> & theAspect);
 
@@ -1199,7 +1199,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetUnFreeBoundaryAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for the display of shared boundaries. The method sets aspect owned by the drawer that will be used during visualization instead of the one set in link.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetUnFreeBoundaryAspect;
 		void SetUnFreeBoundaryAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -1215,7 +1215,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetVIsoAspect;
 		%feature("autodoc", "* Sets the appearance of V isoparameters - theAspect.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_IsoAspect> &
+	:type theAspect: Prs3d_IsoAspect
 	:rtype: None") SetVIsoAspect;
 		void SetVIsoAspect (const opencascade::handle<Prs3d_IsoAspect> & theAspect);
 
@@ -1223,7 +1223,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetVectorAspect;
 		%feature("autodoc", "* Sets the modality theAspect for the display of vectors.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetVectorAspect;
 		void SetVectorAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -1239,7 +1239,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetWireAspect;
 		%feature("autodoc", "* Sets the parameter theAspect for display of wires.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetWireAspect;
 		void SetWireAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -1255,7 +1255,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetupOwnFaceBoundaryAspect;
 		%feature("autodoc", "* Sets own face boundary aspect. Returns False if the drawer already has its own attribute for face boundary aspect.
 	:param theDefaults: default value is opencascade::handle<Prs3d_Drawer>()
-	:type theDefaults: opencascade::handle<Prs3d_Drawer> &
+	:type theDefaults: Prs3d_Drawer
 	:rtype: bool") SetupOwnFaceBoundaryAspect;
 		Standard_Boolean SetupOwnFaceBoundaryAspect (const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
@@ -1263,7 +1263,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetupOwnPointAspect;
 		%feature("autodoc", "* Sets own point aspect. Returns False if the drawer already has its own attribute for point aspect.
 	:param theDefaults: default value is opencascade::handle<Prs3d_Drawer>()
-	:type theDefaults: opencascade::handle<Prs3d_Drawer> &
+	:type theDefaults: Prs3d_Drawer
 	:rtype: bool") SetupOwnPointAspect;
 		Standard_Boolean SetupOwnPointAspect (const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
@@ -1271,7 +1271,7 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 		%feature("compactdefaultargs") SetupOwnShadingAspect;
 		%feature("autodoc", "* Sets own shading aspect. Returns False if the drawer already has its own attribute for shading aspect.
 	:param theDefaults: default value is opencascade::handle<Prs3d_Drawer>()
-	:type theDefaults: opencascade::handle<Prs3d_Drawer> &
+	:type theDefaults: Prs3d_Drawer
 	:rtype: bool") SetupOwnShadingAspect;
 		Standard_Boolean SetupOwnShadingAspect (const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
@@ -1404,9 +1404,9 @@ class Prs3d_PresentationShadow : public Graphic3d_Structure {
 		%feature("compactdefaultargs") Prs3d_PresentationShadow;
 		%feature("autodoc", "* Constructs a shadow of existing presentation object.
 	:param theViewer:
-	:type theViewer: opencascade::handle<Graphic3d_StructureManager> &
+	:type theViewer: Graphic3d_StructureManager
 	:param thePrs:
-	:type thePrs: opencascade::handle<Graphic3d_Structure> &
+	:type thePrs: Graphic3d_Structure
 	:rtype: None") Prs3d_PresentationShadow;
 		 Prs3d_PresentationShadow (const opencascade::handle<Graphic3d_StructureManager> & theViewer,const opencascade::handle<Graphic3d_Structure> & thePrs);
 
@@ -1436,7 +1436,7 @@ class Prs3d_Projector : public Standard_Transient {
 		/****************** Prs3d_Projector ******************/
 		%feature("compactdefaultargs") Prs3d_Projector;
 		%feature("autodoc", ":param Pr:
-	:type Pr: HLRAlgo_Projector &
+	:type Pr: HLRAlgo_Projector
 	:rtype: None") Prs3d_Projector;
 		 Prs3d_Projector (const HLRAlgo_Projector & Pr);
 
@@ -1488,7 +1488,7 @@ class Prs3d_Root {
 		%feature("compactdefaultargs") CurrentGroup;
 		%feature("autodoc", "* Returns the current (last created) group of primititves inside graphic objects in the display. A group also contains the attributes whose ranges are limited to the primitives in it.
 	:param thePrs3d:
-	:type thePrs3d: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs3d: Prs3d_Presentation
 	:rtype: opencascade::handle<Graphic3d_Group>") CurrentGroup;
 		static opencascade::handle<Graphic3d_Group> CurrentGroup (const opencascade::handle<Prs3d_Presentation> & thePrs3d);
 
@@ -1496,7 +1496,7 @@ class Prs3d_Root {
 		%feature("compactdefaultargs") NewGroup;
 		%feature("autodoc", "* Returns the new group of primitives inside graphic objects in the display. A group also contains the attributes whose ranges are limited to the primitives in it.
 	:param thePrs3d:
-	:type thePrs3d: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs3d: Prs3d_Presentation
 	:rtype: opencascade::handle<Graphic3d_Group>") NewGroup;
 		static opencascade::handle<Graphic3d_Group> NewGroup (const opencascade::handle<Prs3d_Presentation> & thePrs3d);
 
@@ -1518,7 +1518,7 @@ class Prs3d_ShapeTool {
 		/****************** CurrentTriangulation ******************/
 		%feature("compactdefaultargs") CurrentTriangulation;
 		%feature("autodoc", ":param l:
-	:type l: TopLoc_Location &
+	:type l: TopLoc_Location
 	:rtype: opencascade::handle<Poly_Triangulation>") CurrentTriangulation;
 		opencascade::handle<Poly_Triangulation> CurrentTriangulation (TopLoc_Location & l);
 
@@ -1585,7 +1585,7 @@ class Prs3d_ShapeTool {
 		/****************** IsPlanarFace ******************/
 		%feature("compactdefaultargs") IsPlanarFace;
 		%feature("autodoc", ":param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: bool") IsPlanarFace;
 		static Standard_Boolean IsPlanarFace (const TopoDS_Face & theFace);
 
@@ -1627,18 +1627,18 @@ class Prs3d_ShapeTool {
 		/****************** Polygon3D ******************/
 		%feature("compactdefaultargs") Polygon3D;
 		%feature("autodoc", ":param l:
-	:type l: TopLoc_Location &
+	:type l: TopLoc_Location
 	:rtype: opencascade::handle<Poly_Polygon3D>") Polygon3D;
 		opencascade::handle<Poly_Polygon3D> Polygon3D (TopLoc_Location & l);
 
 		/****************** PolygonOnTriangulation ******************/
 		%feature("compactdefaultargs") PolygonOnTriangulation;
 		%feature("autodoc", ":param Indices:
-	:type Indices: opencascade::handle<Poly_PolygonOnTriangulation> &
+	:type Indices: Poly_PolygonOnTriangulation
 	:param T:
-	:type T: opencascade::handle<Poly_Triangulation> &
+	:type T: Poly_Triangulation
 	:param l:
-	:type l: TopLoc_Location &
+	:type l: TopLoc_Location
 	:rtype: None") PolygonOnTriangulation;
 		void PolygonOnTriangulation (opencascade::handle<Poly_PolygonOnTriangulation> & Indices,opencascade::handle<Poly_Triangulation> & T,TopLoc_Location & l);
 
@@ -1646,7 +1646,7 @@ class Prs3d_ShapeTool {
 		%feature("compactdefaultargs") Prs3d_ShapeTool;
 		%feature("autodoc", "* Constructs the tool and initializes it using theShape and theAllVertices (optional) arguments. By default, only isolated and internal vertices are considered, however if theAllVertices argument is equal to True, all shape's vertices are taken into account.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theAllVertices: default value is Standard_False
 	:type theAllVertices: bool
 	:rtype: None") Prs3d_ShapeTool;
@@ -1671,7 +1671,7 @@ class Prs3d_ToolQuadric {
 		%feature("compactdefaultargs") FillArray;
 		%feature("autodoc", "* Generate primitives for 3D quadric surface and fill the given array. Optional transformation is applied.
 	:param theArray:
-	:type theArray: opencascade::handle<Graphic3d_ArrayOfTriangles> &
+	:type theArray: Graphic3d_ArrayOfTriangles
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
 	:rtype: None") FillArray;
@@ -1681,9 +1681,9 @@ class Prs3d_ToolQuadric {
 		%feature("compactdefaultargs") FillArray;
 		%feature("autodoc", "* Generate primitives for 3D quadric surface presentation and fill the given array and poly triangulation structure. Optional transformation is applied.
 	:param theArray:
-	:type theArray: opencascade::handle<Graphic3d_ArrayOfTriangles> &
+	:type theArray: Graphic3d_ArrayOfTriangles
 	:param theTriangulation:
-	:type theTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type theTriangulation: Poly_Triangulation
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
 	:rtype: None") FillArray;
@@ -1718,7 +1718,7 @@ class Prs3d_Arrow : public Prs3d_Root {
 		%feature("compactdefaultargs") Draw;
 		%feature("autodoc", "* Defines the representation of the arrow. Note that this method does NOT assign any presentation aspects to the primitives group! @param theGroup presentation group to add primitives @param theLocation location of the arrow tip @param theDirection direction of the arrow @param theAngle angle of opening of the arrow head @param theLength length of the arrow (from the tip)
 	:param theGroup:
-	:type theGroup: opencascade::handle<Graphic3d_Group> &
+	:type theGroup: Graphic3d_Group
 	:param theLocation:
 	:type theLocation: gp_Pnt
 	:param theDirection:
@@ -1734,7 +1734,7 @@ class Prs3d_Arrow : public Prs3d_Root {
 		%feature("compactdefaultargs") Draw;
 		%feature("autodoc", "* Alias to another method Draw() for backward compatibility.
 	:param thePrs:
-	:type thePrs: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs: Prs3d_Presentation
 	:param theLocation:
 	:type theLocation: gp_Pnt
 	:param theDirection:
@@ -1839,7 +1839,7 @@ class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 		/****************** Prs3d_ArrowAspect ******************/
 		%feature("compactdefaultargs") Prs3d_ArrowAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectLine3d> &
+	:type theAspect: Graphic3d_AspectLine3d
 	:rtype: None") Prs3d_ArrowAspect;
 		 Prs3d_ArrowAspect (const opencascade::handle<Graphic3d_AspectLine3d> & theAspect);
 
@@ -1854,14 +1854,14 @@ class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 		/****************** SetAspect ******************/
 		%feature("compactdefaultargs") SetAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectLine3d> &
+	:type theAspect: Graphic3d_AspectLine3d
 	:rtype: None") SetAspect;
 		void SetAspect (const opencascade::handle<Graphic3d_AspectLine3d> & theAspect);
 
 		/****************** SetColor ******************/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", ":param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & theColor);
 
@@ -2002,7 +2002,7 @@ class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetArrowAspect;
 		%feature("autodoc", "* Sets the arrow aspect of presentation
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_ArrowAspect> &
+	:type theAspect: Prs3d_ArrowAspect
 	:rtype: None") SetArrowAspect;
 		void SetArrowAspect (const opencascade::handle<Prs3d_ArrowAspect> & theAspect);
 
@@ -2012,7 +2012,7 @@ class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 	:param theType:
 	:type theType: Prs3d_DatumAttribute
 	:param theValue:
-	:type theValue: float &
+	:type theValue: float
 	:rtype: None") SetAttribute;
 		void SetAttribute (Prs3d_DatumAttribute theType,const Standard_Real & theValue);
 
@@ -2072,7 +2072,7 @@ class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetPointAspect;
 		%feature("autodoc", "* Returns the point aspect of origin wireframe presentation
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_PointAspect> &
+	:type theAspect: Prs3d_PointAspect
 	:rtype: None") SetPointAspect;
 		void SetPointAspect (const opencascade::handle<Prs3d_PointAspect> & theAspect);
 
@@ -2080,7 +2080,7 @@ class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetTextAspect;
 		%feature("autodoc", "* Sets text attributes for rendering labels.
 	:param theTextAspect:
-	:type theTextAspect: opencascade::handle<Prs3d_TextAspect> &
+	:type theTextAspect: Prs3d_TextAspect
 	:rtype: None") SetTextAspect;
 		void SetTextAspect (const opencascade::handle<Prs3d_TextAspect> & theTextAspect);
 
@@ -2250,7 +2250,7 @@ class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetArrowAspect;
 		%feature("autodoc", "* Sets the display attributes of arrows used in presentation of dimensions.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_ArrowAspect> &
+	:type theAspect: Prs3d_ArrowAspect
 	:rtype: None") SetArrowAspect;
 		void SetArrowAspect (const opencascade::handle<Prs3d_ArrowAspect> & theAspect);
 
@@ -2274,7 +2274,7 @@ class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetCommonColor;
 		%feature("autodoc", "* Sets the same color for all parts of dimension: lines, arrows and text.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetCommonColor;
 		void SetCommonColor (const Quantity_Color & theColor);
 
@@ -2290,7 +2290,7 @@ class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetLineAspect;
 		%feature("autodoc", "* Sets the display attributes of lines used in presentation of dimensions.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type theAspect: Prs3d_LineAspect
 	:rtype: None") SetLineAspect;
 		void SetLineAspect (const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
@@ -2298,7 +2298,7 @@ class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetTextAspect;
 		%feature("autodoc", "* Sets the display attributes of text used in presentation of dimensions.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_TextAspect> &
+	:type theAspect: Prs3d_TextAspect
 	:rtype: None") SetTextAspect;
 		void SetTextAspect (const opencascade::handle<Prs3d_TextAspect> & theAspect);
 
@@ -2322,7 +2322,7 @@ class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetValueStringFormat;
 		%feature("autodoc", "* Sets 'sprintf'-syntax format for formatting dimension value labels.
 	:param theFormat:
-	:type theFormat: TCollection_AsciiString &
+	:type theFormat: TCollection_AsciiString
 	:rtype: None") SetValueStringFormat;
 		void SetValueStringFormat (const TCollection_AsciiString & theFormat);
 
@@ -2385,7 +2385,7 @@ class Prs3d_LineAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") Prs3d_LineAspect;
 		%feature("autodoc", "* Constructs a framework for line aspect defined by - the color aColor - the type of line aType and - the line thickness aWidth. Type of line refers to whether the line is solid or dotted, for example.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theType:
 	:type theType: Aspect_TypeOfLine
 	:param theWidth:
@@ -2396,14 +2396,14 @@ class Prs3d_LineAspect : public Prs3d_BasicAspect {
 		/****************** Prs3d_LineAspect ******************/
 		%feature("compactdefaultargs") Prs3d_LineAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectLine3d> &
+	:type theAspect: Graphic3d_AspectLine3d
 	:rtype: None") Prs3d_LineAspect;
 		 Prs3d_LineAspect (const opencascade::handle<Graphic3d_AspectLine3d> & theAspect);
 
 		/****************** SetAspect ******************/
 		%feature("compactdefaultargs") SetAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectLine3d> &
+	:type theAspect: Graphic3d_AspectLine3d
 	:rtype: None") SetAspect;
 		void SetAspect (const opencascade::handle<Graphic3d_AspectLine3d> & theAspect);
 
@@ -2411,7 +2411,7 @@ class Prs3d_LineAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Sets the line color defined at the time of construction. Default value: Quantity_NOC_YELLOW
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & theColor);
 
@@ -2653,9 +2653,9 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") GetTextureSize;
 		%feature("autodoc", "* Returns marker's texture size.
 	:param theWidth:
-	:type theWidth: int &
+	:type theWidth: int
 	:param theHeight:
-	:type theHeight: int &
+	:type theHeight: int
 	:rtype: None") GetTextureSize;
 		void GetTextureSize (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2664,7 +2664,7 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 		%feature("autodoc", ":param theType:
 	:type theType: Aspect_TypeOfMarker
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theScale:
 	:type theScale: float
 	:rtype: None") Prs3d_PointAspect;
@@ -2674,27 +2674,27 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") Prs3d_PointAspect;
 		%feature("autodoc", "* Defines the user defined marker point.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theWidth:
 	:type theWidth: int
 	:param theHeight:
 	:type theHeight: int
 	:param theTexture:
-	:type theTexture: opencascade::handle<TColStd_HArray1OfByte> &
+	:type theTexture: TColStd_HArray1OfByte
 	:rtype: None") Prs3d_PointAspect;
 		 Prs3d_PointAspect (const Quantity_Color & theColor,const Standard_Integer theWidth,const Standard_Integer theHeight,const opencascade::handle<TColStd_HArray1OfByte> & theTexture);
 
 		/****************** Prs3d_PointAspect ******************/
 		%feature("compactdefaultargs") Prs3d_PointAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectMarker3d> &
+	:type theAspect: Graphic3d_AspectMarker3d
 	:rtype: None") Prs3d_PointAspect;
 		 Prs3d_PointAspect (const opencascade::handle<Graphic3d_AspectMarker3d> & theAspect);
 
 		/****************** SetAspect ******************/
 		%feature("compactdefaultargs") SetAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectMarker3d> &
+	:type theAspect: Graphic3d_AspectMarker3d
 	:rtype: None") SetAspect;
 		void SetAspect (const opencascade::handle<Graphic3d_AspectMarker3d> & theAspect);
 
@@ -2702,7 +2702,7 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* defines the color to be used when drawing a point. Default value: Quantity_NOC_YELLOW
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & theColor);
 
@@ -2779,14 +2779,14 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") Prs3d_ShadingAspect;
 		%feature("autodoc", "* Constructor with initialization.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectFillArea3d> &
+	:type theAspect: Graphic3d_AspectFillArea3d
 	:rtype: None") Prs3d_ShadingAspect;
 		 Prs3d_ShadingAspect (const opencascade::handle<Graphic3d_AspectFillArea3d> & theAspect);
 
 		/****************** SetAspect ******************/
 		%feature("compactdefaultargs") SetAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectFillArea3d> &
+	:type theAspect: Graphic3d_AspectFillArea3d
 	:rtype: None") SetAspect;
 		void SetAspect (const opencascade::handle<Graphic3d_AspectFillArea3d> & theAspect);
 
@@ -2794,7 +2794,7 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Change the polygons interior color and material ambient color.
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
 	:type aModel: Aspect_TypeOfFacingModel
 	:rtype: None") SetColor;
@@ -2804,7 +2804,7 @@ class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "* Change the polygons material aspect.
 	:param aMaterial:
-	:type aMaterial: Graphic3d_MaterialAspect &
+	:type aMaterial: Graphic3d_MaterialAspect
 	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
 	:type aModel: Aspect_TypeOfFacingModel
 	:rtype: None") SetMaterial;
@@ -2848,11 +2848,11 @@ class Prs3d_Text : public Prs3d_Root {
 		%feature("compactdefaultargs") Draw;
 		%feature("autodoc", "* Defines the display of the text. @param theGroup group to add primitives @param theAspect presentation attributes @param theText text to draw @param theAttachmentPoint attachment point
 	:param theGroup:
-	:type theGroup: opencascade::handle<Graphic3d_Group> &
+	:type theGroup: Graphic3d_Group
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_TextAspect> &
+	:type theAspect: Prs3d_TextAspect
 	:param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:param theAttachmentPoint:
 	:type theAttachmentPoint: gp_Pnt
 	:rtype: void") Draw;
@@ -2862,11 +2862,11 @@ class Prs3d_Text : public Prs3d_Root {
 		%feature("compactdefaultargs") Draw;
 		%feature("autodoc", "* Draws the text label. @param theGroup group to add primitives @param theAspect presentation attributes @param theText text to draw @param theOrientation location and orientation specified in the model 3D space @param theHasOwnAnchor
 	:param theGroup:
-	:type theGroup: opencascade::handle<Graphic3d_Group> &
+	:type theGroup: Graphic3d_Group
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_TextAspect> &
+	:type theAspect: Prs3d_TextAspect
 	:param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:param theOrientation:
 	:type theOrientation: gp_Ax2
 	:param theHasOwnAnchor: default value is Standard_True
@@ -2878,11 +2878,11 @@ class Prs3d_Text : public Prs3d_Root {
 		%feature("compactdefaultargs") Draw;
 		%feature("autodoc", "* Alias to another method Draw() for backward compatibility.
 	:param thePrs:
-	:type thePrs: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs: Prs3d_Presentation
 	:param theDrawer:
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:param theAttachmentPoint:
 	:type theAttachmentPoint: gp_Pnt
 	:rtype: None") Draw;
@@ -2892,11 +2892,11 @@ class Prs3d_Text : public Prs3d_Root {
 		%feature("compactdefaultargs") Draw;
 		%feature("autodoc", "* Alias to another method Draw() for backward compatibility.
 	:param thePrs:
-	:type thePrs: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs: Prs3d_Presentation
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_TextAspect> &
+	:type theAspect: Prs3d_TextAspect
 	:param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:param theOrientation:
 	:type theOrientation: gp_Ax2
 	:param theHasOwnAnchor: default value is Standard_True
@@ -2908,11 +2908,11 @@ class Prs3d_Text : public Prs3d_Root {
 		%feature("compactdefaultargs") Draw;
 		%feature("autodoc", "* Alias to another method Draw() for backward compatibility.
 	:param thePrs:
-	:type thePrs: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs: Prs3d_Presentation
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_TextAspect> &
+	:type theAspect: Prs3d_TextAspect
 	:param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:param theAttachmentPoint:
 	:type theAttachmentPoint: gp_Pnt
 	:rtype: None") Draw;
@@ -2980,7 +2980,7 @@ class Prs3d_TextAspect : public Prs3d_BasicAspect {
 		/****************** Prs3d_TextAspect ******************/
 		%feature("compactdefaultargs") Prs3d_TextAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectText3d> &
+	:type theAspect: Graphic3d_AspectText3d
 	:rtype: None") Prs3d_TextAspect;
 		 Prs3d_TextAspect (const opencascade::handle<Graphic3d_AspectText3d> & theAspect);
 
@@ -2995,7 +2995,7 @@ class Prs3d_TextAspect : public Prs3d_BasicAspect {
 		/****************** SetAspect ******************/
 		%feature("compactdefaultargs") SetAspect;
 		%feature("autodoc", ":param theAspect:
-	:type theAspect: opencascade::handle<Graphic3d_AspectText3d> &
+	:type theAspect: Graphic3d_AspectText3d
 	:rtype: None") SetAspect;
 		void SetAspect (const opencascade::handle<Graphic3d_AspectText3d> & theAspect);
 
@@ -3003,7 +3003,7 @@ class Prs3d_TextAspect : public Prs3d_BasicAspect {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Sets the color of the type used in text display.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & theColor);
 
@@ -3266,7 +3266,7 @@ class Prs3d_IsoAspect : public Prs3d_LineAspect {
 		%feature("compactdefaultargs") Prs3d_IsoAspect;
 		%feature("autodoc", "* Constructs a framework to define display attributes of isoparameters. These include: - the color attribute aColor - the type of line aType - the width value aWidth - aNumber, the number of isoparameters to be displayed.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theType:
 	:type theType: Aspect_TypeOfLine
 	:param theWidth:

@@ -233,9 +233,9 @@ class ChFiDS_CircSection {
 		%feature("autodoc", ":param C:
 	:type C: gp_Circ
 	:param F:
-	:type F: float &
+	:type F: float
 	:param L:
-	:type L: float &
+	:type L: float
 	:rtype: None") Get;
 		void Get (gp_Circ & C,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -244,9 +244,9 @@ class ChFiDS_CircSection {
 		%feature("autodoc", ":param C:
 	:type C: gp_Lin
 	:param F:
-	:type F: float &
+	:type F: float
 	:param L:
-	:type L: float &
+	:type L: float
 	:rtype: None") Get;
 		void Get (gp_Lin & C,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -347,7 +347,7 @@ class ChFiDS_CommonPoint {
 	:param Tol:
 	:type Tol: float
 	:param A:
-	:type A: TopoDS_Edge &
+	:type A: TopoDS_Edge
 	:param Param:
 	:type Param: float
 	:param TArc:
@@ -391,7 +391,7 @@ class ChFiDS_CommonPoint {
 		%feature("compactdefaultargs") SetVertex;
 		%feature("autodoc", "* Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface.
 	:param theVertex:
-	:type theVertex: TopoDS_Vertex &
+	:type theVertex: TopoDS_Vertex
 	:rtype: None") SetVertex;
 		void SetVertex (const TopoDS_Vertex & theVertex);
 
@@ -573,7 +573,7 @@ class ChFiDS_ElSpine : public Adaptor3d_Curve {
 		/****************** Intervals ******************/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", ":param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -662,7 +662,7 @@ class ChFiDS_ElSpine : public Adaptor3d_Curve {
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: None") SetCurve;
 		void SetCurve (const opencascade::handle<Geom_Curve> & C);
 
@@ -800,9 +800,9 @@ class ChFiDS_FaceInterference {
 	:param Trans:
 	:type Trans: TopAbs_Orientation
 	:param PCurv1:
-	:type PCurv1: opencascade::handle<Geom2d_Curve> &
+	:type PCurv1: Geom2d_Curve
 	:param PCurv2:
-	:type PCurv2: opencascade::handle<Geom2d_Curve> &
+	:type PCurv2: Geom2d_Curve
 	:rtype: None") SetInterference;
 		void SetInterference (const Standard_Integer LineIndex,const TopAbs_Orientation Trans,const opencascade::handle<Geom2d_Curve> & PCurv1,const opencascade::handle<Geom2d_Curve> & PCurv2);
 
@@ -866,7 +866,7 @@ class ChFiDS_HElSpine : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") ChFiDS_HElSpine;
 		%feature("autodoc", "* Creates a GenHCurve from a Curve
 	:param C:
-	:type C: ChFiDS_ElSpine &
+	:type C: ChFiDS_ElSpine
 	:rtype: None") ChFiDS_HElSpine;
 		 ChFiDS_HElSpine (const ChFiDS_ElSpine & C);
 
@@ -892,7 +892,7 @@ class ChFiDS_HElSpine : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve.
 	:param C:
-	:type C: ChFiDS_ElSpine &
+	:type C: ChFiDS_ElSpine
 	:rtype: None") Set;
 		void Set (const ChFiDS_ElSpine & C);
 
@@ -922,7 +922,7 @@ class ChFiDS_Map {
 		/****************** Contains ******************/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const TopoDS_Shape & S);
 
@@ -930,7 +930,7 @@ class ChFiDS_Map {
 		%feature("compactdefaultargs") Fill;
 		%feature("autodoc", "* Fills the map with the subshapes of type T1 as keys and the list of ancestors of type T2 as items.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T1:
 	:type T1: TopAbs_ShapeEnum
 	:param T2:
@@ -948,7 +948,7 @@ class ChFiDS_Map {
 		/****************** FindFromKey ******************/
 		%feature("compactdefaultargs") FindFromKey;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") FindFromKey;
 		const TopTools_ListOfShape & FindFromKey (const TopoDS_Shape & S);
 
@@ -1056,21 +1056,21 @@ class ChFiDS_Spine : public Standard_Transient {
 		/****************** Absc ******************/
 		%feature("compactdefaultargs") Absc;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: float") Absc;
 		Standard_Real Absc (const TopoDS_Vertex & V);
 
 		/****************** AppendElSpine ******************/
 		%feature("compactdefaultargs") AppendElSpine;
 		%feature("autodoc", ":param Els:
-	:type Els: opencascade::handle<ChFiDS_HElSpine> &
+	:type Els: ChFiDS_HElSpine
 	:rtype: void") AppendElSpine;
 		virtual void AppendElSpine (const opencascade::handle<ChFiDS_HElSpine> & Els);
 
 		/****************** AppendOffsetElSpine ******************/
 		%feature("compactdefaultargs") AppendOffsetElSpine;
 		%feature("autodoc", ":param Els:
-	:type Els: opencascade::handle<ChFiDS_HElSpine> &
+	:type Els: ChFiDS_HElSpine
 	:rtype: void") AppendOffsetElSpine;
 		virtual void AppendOffsetElSpine (const opencascade::handle<ChFiDS_HElSpine> & Els);
 
@@ -1164,7 +1164,7 @@ class ChFiDS_Spine : public Standard_Transient {
 		/****************** ElSpine ******************/
 		%feature("compactdefaultargs") ElSpine;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: opencascade::handle<ChFiDS_HElSpine>") ElSpine;
 		opencascade::handle<ChFiDS_HElSpine> ElSpine (const TopoDS_Edge & E);
 
@@ -1231,7 +1231,7 @@ class ChFiDS_Spine : public Standard_Transient {
 		/****************** Index ******************/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: int") Index;
 		Standard_Integer Index (const TopoDS_Edge & E);
 
@@ -1319,7 +1319,7 @@ class ChFiDS_Spine : public Standard_Transient {
 		%feature("autodoc", ":param AbsC:
 	:type AbsC: float
 	:param U:
-	:type U: float &
+	:type U: float
 	:param Oriented: default value is Standard_True
 	:type Oriented: bool
 	:rtype: None") Parameter;
@@ -1332,7 +1332,7 @@ class ChFiDS_Spine : public Standard_Transient {
 	:param AbsC:
 	:type AbsC: float
 	:param U:
-	:type U: float &
+	:type U: float
 	:param Oriented: default value is Standard_True
 	:type Oriented: bool
 	:rtype: None") Parameter;
@@ -1347,7 +1347,7 @@ class ChFiDS_Spine : public Standard_Transient {
 		%feature("compactdefaultargs") PutInFirst;
 		%feature("autodoc", "* store the edge at the first position before all others
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") PutInFirst;
 		void PutInFirst (const TopoDS_Edge & E);
 
@@ -1355,7 +1355,7 @@ class ChFiDS_Spine : public Standard_Transient {
 		%feature("compactdefaultargs") PutInFirstOffset;
 		%feature("autodoc", "* store the offset edge at the first position before all others
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") PutInFirstOffset;
 		void PutInFirstOffset (const TopoDS_Edge & E);
 
@@ -1384,7 +1384,7 @@ class ChFiDS_Spine : public Standard_Transient {
 		%feature("compactdefaultargs") SetEdges;
 		%feature("autodoc", "* store edges composing the guideline
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") SetEdges;
 		void SetEdges (const TopoDS_Edge & E);
 
@@ -1443,7 +1443,7 @@ class ChFiDS_Spine : public Standard_Transient {
 		%feature("compactdefaultargs") SetOffsetEdges;
 		%feature("autodoc", "* store offset edges composing the offset guideline
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") SetOffsetEdges;
 		void SetOffsetEdges (const TopoDS_Edge & E);
 
@@ -1665,9 +1665,9 @@ class ChFiDS_Stripe : public Standard_Transient {
 		/****************** FirstParameters ******************/
 		%feature("compactdefaultargs") FirstParameters;
 		%feature("autodoc", ":param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:rtype: None") FirstParameters;
 		void FirstParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1743,9 +1743,9 @@ class ChFiDS_Stripe : public Standard_Transient {
 		/****************** LastParameters ******************/
 		%feature("compactdefaultargs") LastParameters;
 		%feature("autodoc", ":param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:rtype: None") LastParameters;
 		void LastParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1799,9 +1799,9 @@ class ChFiDS_Stripe : public Standard_Transient {
 		%feature("autodoc", ":param First:
 	:type First: bool
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Boolean First,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1902,9 +1902,9 @@ class ChFiDS_StripeMap {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param F:
-	:type F: opencascade::handle<ChFiDS_Stripe> &
+	:type F: ChFiDS_Stripe
 	:rtype: None") Add;
 		void Add (const TopoDS_Vertex & V,const opencascade::handle<ChFiDS_Stripe> & F);
 
@@ -1933,7 +1933,7 @@ class ChFiDS_StripeMap {
 		/****************** FindFromKey ******************/
 		%feature("compactdefaultargs") FindFromKey;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: ChFiDS_ListOfStripe") FindFromKey;
 		const ChFiDS_ListOfStripe & FindFromKey (const TopoDS_Vertex & V);
 
@@ -2040,7 +2040,7 @@ class ChFiDS_SurfData : public Standard_Transient {
 		/****************** Copy ******************/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", ":param Other:
-	:type Other: opencascade::handle<ChFiDS_SurfData> &
+	:type Other: ChFiDS_SurfData
 	:rtype: None") Copy;
 		void Copy (const opencascade::handle<ChFiDS_SurfData> & Other);
 
@@ -2222,7 +2222,7 @@ class ChFiDS_SurfData : public Standard_Transient {
 		/****************** SetSimul ******************/
 		%feature("compactdefaultargs") SetSimul;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Standard_Transient> &
+	:type S: Standard_Transient
 	:rtype: None") SetSimul;
 		void SetSimul (const opencascade::handle<Standard_Transient> & S);
 
@@ -2322,25 +2322,25 @@ class ChFiDS_ChamfSpine : public ChFiDS_Spine {
 		/****************** Dists ******************/
 		%feature("compactdefaultargs") Dists;
 		%feature("autodoc", ":param Dis1:
-	:type Dis1: float &
+	:type Dis1: float
 	:param Dis2:
-	:type Dis2: float &
+	:type Dis2: float
 	:rtype: None") Dists;
 		void Dists (Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** GetDist ******************/
 		%feature("compactdefaultargs") GetDist;
 		%feature("autodoc", ":param Dis:
-	:type Dis: float &
+	:type Dis: float
 	:rtype: None") GetDist;
 		void GetDist (Standard_Real &OutValue);
 
 		/****************** GetDistAngle ******************/
 		%feature("compactdefaultargs") GetDistAngle;
 		%feature("autodoc", ":param Dis:
-	:type Dis: float &
+	:type Dis: float
 	:param Angle:
-	:type Angle: float &
+	:type Angle: float
 	:rtype: None") GetDistAngle;
 		void GetDistAngle (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2402,7 +2402,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 		/****************** AppendElSpine ******************/
 		%feature("compactdefaultargs") AppendElSpine;
 		%feature("autodoc", ":param Els:
-	:type Els: opencascade::handle<ChFiDS_HElSpine> &
+	:type Els: ChFiDS_HElSpine
 	:rtype: void") AppendElSpine;
 		virtual void AppendElSpine (const opencascade::handle<ChFiDS_HElSpine> & Els);
 
@@ -2422,7 +2422,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 		%feature("compactdefaultargs") ChangeLaw;
 		%feature("autodoc", "* returns the elementary law
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: opencascade::handle<Law_Function>") ChangeLaw;
 		opencascade::handle<Law_Function> & ChangeLaw (const TopoDS_Edge & E);
 
@@ -2443,7 +2443,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 		/****************** Law ******************/
 		%feature("compactdefaultargs") Law;
 		%feature("autodoc", ":param Els:
-	:type Els: opencascade::handle<ChFiDS_HElSpine> &
+	:type Els: ChFiDS_HElSpine
 	:rtype: opencascade::handle<Law_Composite>") Law;
 		opencascade::handle<Law_Composite> Law (const opencascade::handle<ChFiDS_HElSpine> & Els);
 
@@ -2471,7 +2471,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "* returns the radius if the fillet is constant all along the edge E.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: float") Radius;
 		Standard_Real Radius (const TopoDS_Edge & E);
 
@@ -2488,7 +2488,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 	:param Radius:
 	:type Radius: float
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") SetRadius;
 		void SetRadius (const Standard_Real Radius,const TopoDS_Edge & E);
 
@@ -2498,7 +2498,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 	:param Radius:
 	:type Radius: float
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: None") SetRadius;
 		void SetRadius (const Standard_Real Radius,const TopoDS_Vertex & V);
 
@@ -2524,7 +2524,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "* initializes the rule of evolution on all spine.
 	:param C:
-	:type C: opencascade::handle<Law_Function> &
+	:type C: Law_Function
 	:param IinC:
 	:type IinC: int
 	:rtype: None") SetRadius;
@@ -2534,7 +2534,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 		%feature("compactdefaultargs") UnSetRadius;
 		%feature("autodoc", "* resets the constant vector on edge E.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") UnSetRadius;
 		void UnSetRadius (const TopoDS_Edge & E);
 
@@ -2542,7 +2542,7 @@ class ChFiDS_FilSpine : public ChFiDS_Spine {
 		%feature("compactdefaultargs") UnSetRadius;
 		%feature("autodoc", "* resets the vector on Vertex V.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: None") UnSetRadius;
 		void UnSetRadius (const TopoDS_Vertex & V);
 

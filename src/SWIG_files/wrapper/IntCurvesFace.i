@@ -119,7 +119,7 @@ class IntCurvesFace_Intersector {
 		%feature("compactdefaultargs") IntCurvesFace_Intersector;
 		%feature("autodoc", "* Load a Face. //! The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol). If aRestr = true UV bounding box of face is used to restrict it's underlined surface, otherwise surface is not restricted. If UseBToler = false then the 2d-point of intersection is classified with null-tolerance (relative to face); otherwise it's using maximium between input tolerance(aTol) and tolerances of face bounds (edges).
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param aTol:
 	:type aTol: float
 	:param aRestr: default value is Standard_True
@@ -162,7 +162,7 @@ class IntCurvesFace_Intersector {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* same method for a HCurve from Adaptor3d. PInf an PSup can also be - and + INF.
 	:param HCu:
-	:type HCu: opencascade::handle<Adaptor3d_HCurve> &
+	:type HCu: Adaptor3d_HCurve
 	:param PInf:
 	:type PInf: float
 	:param PSup:
@@ -274,7 +274,7 @@ class IntCurvesFace_ShapeIntersector {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param Sh:
-	:type Sh: TopoDS_Shape &
+	:type Sh: TopoDS_Shape
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Load;
@@ -301,7 +301,7 @@ class IntCurvesFace_ShapeIntersector {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* same method for a HCurve from Adaptor3d. PInf an PSup can also be - and + INF.
 	:param HCu:
-	:type HCu: opencascade::handle<Adaptor3d_HCurve> &
+	:type HCu: Adaptor3d_HCurve
 	:param PInf:
 	:type PInf: float
 	:param PSup:

@@ -181,7 +181,7 @@ class Approx_Curve2d {
 		/****************** Approx_Curve2d ******************/
 		%feature("compactdefaultargs") Approx_Curve2d;
 		%feature("autodoc", ":param C2D:
-	:type C2D: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C2D: Adaptor2d_HCurve2d
 	:param First:
 	:type First: float
 	:param Last:
@@ -243,7 +243,7 @@ class Approx_Curve3d {
 		%feature("compactdefaultargs") Approx_Curve3d;
 		%feature("autodoc", "* Approximation of a curve with respect of the requiered tolerance Tol3D.
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param Tol3d:
 	:type Tol3d: float
 	:param Order:
@@ -304,9 +304,9 @@ class Approx_CurveOnSurface {
 		/****************** Approx_CurveOnSurface ******************/
 		%feature("compactdefaultargs") Approx_CurveOnSurface;
 		%feature("autodoc", ":param C2D:
-	:type C2D: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C2D: Adaptor2d_HCurve2d
 	:param Surf:
-	:type Surf: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf: Adaptor3d_HSurface
 	:param First:
 	:type First: float
 	:param Last:
@@ -381,7 +381,7 @@ class Approx_CurvilinearParameter {
 		%feature("compactdefaultargs") Approx_CurvilinearParameter;
 		%feature("autodoc", "* case of a free 3D curve
 	:param C3D:
-	:type C3D: opencascade::handle<Adaptor3d_HCurve> &
+	:type C3D: Adaptor3d_HCurve
 	:param Tol:
 	:type Tol: float
 	:param Order:
@@ -397,9 +397,9 @@ class Approx_CurvilinearParameter {
 		%feature("compactdefaultargs") Approx_CurvilinearParameter;
 		%feature("autodoc", "* case of a curve on one surface
 	:param C2D:
-	:type C2D: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C2D: Adaptor2d_HCurve2d
 	:param Surf:
-	:type Surf: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf: Adaptor3d_HSurface
 	:param Tol:
 	:type Tol: float
 	:param Order:
@@ -415,13 +415,13 @@ class Approx_CurvilinearParameter {
 		%feature("compactdefaultargs") Approx_CurvilinearParameter;
 		%feature("autodoc", "* case of a curve on two surfaces
 	:param C2D1:
-	:type C2D1: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C2D1: Adaptor2d_HCurve2d
 	:param Surf1:
-	:type Surf1: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf1: Adaptor3d_HSurface
 	:param C2D2:
-	:type C2D2: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C2D2: Adaptor2d_HCurve2d
 	:param Surf2:
-	:type Surf2: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf2: Adaptor3d_HSurface
 	:param Tol:
 	:type Tol: float
 	:param Order:
@@ -505,7 +505,7 @@ class Approx_CurvlinFunc : public Standard_Transient {
 		/****************** Approx_CurvlinFunc ******************/
 		%feature("compactdefaultargs") Approx_CurvlinFunc;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Approx_CurvlinFunc;
@@ -514,9 +514,9 @@ class Approx_CurvlinFunc : public Standard_Transient {
 		/****************** Approx_CurvlinFunc ******************/
 		%feature("compactdefaultargs") Approx_CurvlinFunc;
 		%feature("autodoc", ":param C2D:
-	:type C2D: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C2D: Adaptor2d_HCurve2d
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Approx_CurvlinFunc;
@@ -525,13 +525,13 @@ class Approx_CurvlinFunc : public Standard_Transient {
 		/****************** Approx_CurvlinFunc ******************/
 		%feature("compactdefaultargs") Approx_CurvlinFunc;
 		%feature("autodoc", ":param C2D1:
-	:type C2D1: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C2D1: Adaptor2d_HCurve2d
 	:param C2D2:
-	:type C2D2: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C2D2: Adaptor2d_HCurve2d
 	:param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Approx_CurvlinFunc;
@@ -545,7 +545,7 @@ class Approx_CurvlinFunc : public Standard_Transient {
 	:param Order:
 	:type Order: int
 	:param Result:
-	:type Result: TColStd_Array1OfReal &
+	:type Result: TColStd_Array1OfReal
 	:rtype: bool") EvalCase1;
 		Standard_Boolean EvalCase1 (const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal & Result);
 
@@ -557,7 +557,7 @@ class Approx_CurvlinFunc : public Standard_Transient {
 	:param Order:
 	:type Order: int
 	:param Result:
-	:type Result: TColStd_Array1OfReal &
+	:type Result: TColStd_Array1OfReal
 	:rtype: bool") EvalCase2;
 		Standard_Boolean EvalCase2 (const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal & Result);
 
@@ -569,7 +569,7 @@ class Approx_CurvlinFunc : public Standard_Transient {
 	:param Order:
 	:type Order: int
 	:param Result:
-	:type Result: TColStd_Array1OfReal &
+	:type Result: TColStd_Array1OfReal
 	:rtype: bool") EvalCase3;
 		Standard_Boolean EvalCase3 (const Standard_Real S,const Standard_Integer Order,TColStd_Array1OfReal & Result);
 
@@ -595,7 +595,7 @@ class Approx_CurvlinFunc : public Standard_Transient {
 		%feature("compactdefaultargs") GetUParameter;
 		%feature("autodoc", "* returns original parameter correponding S. if Case == 1 computation is performed on myC2D1 and mySurf1, otherwise it is done on myC2D2 and mySurf2.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param S:
 	:type S: float
 	:param NumberOfCurve:
@@ -607,7 +607,7 @@ class Approx_CurvlinFunc : public Standard_Transient {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -628,7 +628,7 @@ class Approx_CurvlinFunc : public Standard_Transient {
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "* Computes length of the curve segment.
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:param FirstU:
 	:type FirstU: float
 	:param LasrU:
@@ -685,7 +685,7 @@ class Approx_FitAndDivide {
 		%feature("compactdefaultargs") Approx_FitAndDivide;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True.
 	:param Line:
-	:type Line: AppCont_Function &
+	:type Line: AppCont_Function
 	:param degreemin: default value is 3
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -729,9 +729,9 @@ class Approx_FitAndDivide {
 	:param Index:
 	:type Index: int
 	:param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") Error;
 		void Error (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -758,9 +758,9 @@ class Approx_FitAndDivide {
 		%feature("autodoc", ":param Index:
 	:type Index: int
 	:param firstp:
-	:type firstp: float &
+	:type firstp: float
 	:param lastp:
-	:type lastp: float &
+	:type lastp: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -768,7 +768,7 @@ class Approx_FitAndDivide {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* runs the algorithm after having initialized the fields.
 	:param Line:
-	:type Line: AppCont_Function &
+	:type Line: AppCont_Function
 	:rtype: None") Perform;
 		void Perform (const AppCont_Function & Line);
 
@@ -845,7 +845,7 @@ class Approx_FitAndDivide2d {
 		%feature("compactdefaultargs") Approx_FitAndDivide2d;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True.
 	:param Line:
-	:type Line: AppCont_Function &
+	:type Line: AppCont_Function
 	:param degreemin: default value is 3
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -889,9 +889,9 @@ class Approx_FitAndDivide2d {
 	:param Index:
 	:type Index: int
 	:param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") Error;
 		void Error (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -918,9 +918,9 @@ class Approx_FitAndDivide2d {
 		%feature("autodoc", ":param Index:
 	:type Index: int
 	:param firstp:
-	:type firstp: float &
+	:type firstp: float
 	:param lastp:
-	:type lastp: float &
+	:type lastp: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -928,7 +928,7 @@ class Approx_FitAndDivide2d {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* runs the algorithm after having initialized the fields.
 	:param Line:
-	:type Line: AppCont_Function &
+	:type Line: AppCont_Function
 	:rtype: None") Perform;
 		void Perform (const AppCont_Function & Line);
 
@@ -1004,7 +1004,7 @@ class Approx_MCurvesToBSpCurve {
 		/****************** Append ******************/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", ":param MC:
-	:type MC: AppParCurves_MultiCurve &
+	:type MC: AppParCurves_MultiCurve
 	:rtype: None") Append;
 		void Append (const AppParCurves_MultiCurve & MC);
 
@@ -1027,7 +1027,7 @@ class Approx_MCurvesToBSpCurve {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param TheSeq:
-	:type TheSeq: AppParCurves_SequenceOfMultiCurve &
+	:type TheSeq: AppParCurves_SequenceOfMultiCurve
 	:rtype: None") Perform;
 		void Perform (const AppParCurves_SequenceOfMultiCurve & TheSeq);
 
@@ -1061,11 +1061,11 @@ class Approx_SameParameter {
 		%feature("compactdefaultargs") Approx_SameParameter;
 		%feature("autodoc", "* Warning: the C3D and C2D must have the same parametric domain.
 	:param C3D:
-	:type C3D: opencascade::handle<Geom_Curve> &
+	:type C3D: Geom_Curve
 	:param C2D:
-	:type C2D: opencascade::handle<Geom2d_Curve> &
+	:type C2D: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Approx_SameParameter;
@@ -1074,11 +1074,11 @@ class Approx_SameParameter {
 		/****************** Approx_SameParameter ******************/
 		%feature("compactdefaultargs") Approx_SameParameter;
 		%feature("autodoc", ":param C3D:
-	:type C3D: opencascade::handle<Adaptor3d_HCurve> &
+	:type C3D: Adaptor3d_HCurve
 	:param C2D:
-	:type C2D: opencascade::handle<Geom2d_Curve> &
+	:type C2D: Geom2d_Curve
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Approx_SameParameter;
@@ -1088,11 +1088,11 @@ class Approx_SameParameter {
 		%feature("compactdefaultargs") Approx_SameParameter;
 		%feature("autodoc", "* Warning: the C3D and C2D must have the same parametric domain.
 	:param C3D:
-	:type C3D: opencascade::handle<Adaptor3d_HCurve> &
+	:type C3D: Adaptor3d_HCurve
 	:param C2D:
-	:type C2D: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C2D: Adaptor2d_HCurve2d
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Approx_SameParameter;
@@ -1138,7 +1138,7 @@ class Approx_SweepApproximation {
 		/****************** Approx_SweepApproximation ******************/
 		%feature("compactdefaultargs") Approx_SweepApproximation;
 		%feature("autodoc", ":param Func:
-	:type Func: opencascade::handle<Approx_SweepFunction> &
+	:type Func: Approx_SweepFunction
 	:rtype: None") Approx_SweepApproximation;
 		 Approx_SweepApproximation (const opencascade::handle<Approx_SweepFunction> & Func);
 
@@ -1163,9 +1163,9 @@ class Approx_SweepApproximation {
 	:param TPoles:
 	:type TPoles: TColgp_Array1OfPnt2d
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Curve2d;
 		void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
 
@@ -1194,11 +1194,11 @@ class Approx_SweepApproximation {
 		/****************** Curves2dShape ******************/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", ":param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:rtype: None") Curves2dShape;
 		void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1222,7 +1222,7 @@ class Approx_SweepApproximation {
 	:param Last:
 	:type Last: float
 	:param Result:
-	:type Result: float &
+	:type Result: float
 	:rtype: int") Eval;
 		Standard_Integer Eval (const Standard_Real Parameter,const Standard_Integer DerivativeRequest,const Standard_Real First,const Standard_Real Last,Standard_Real &OutValue);
 
@@ -1283,17 +1283,17 @@ class Approx_SweepApproximation {
 		/****************** SurfShape ******************/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", ":param UDegree:
-	:type UDegree: int &
+	:type UDegree: int
 	:param VDegree:
-	:type VDegree: int &
+	:type VDegree: int
 	:param NbUPoles:
-	:type NbUPoles: int &
+	:type NbUPoles: int
 	:param NbVPoles:
-	:type NbVPoles: int &
+	:type NbVPoles: int
 	:param NbUKnots:
-	:type NbUKnots: int &
+	:type NbUKnots: int
 	:param NbVKnots:
-	:type NbVKnots: int &
+	:type NbVKnots: int
 	:rtype: None") SurfShape;
 		void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1327,15 +1327,15 @@ class Approx_SweepApproximation {
 		%feature("autodoc", ":param TPoles:
 	:type TPoles: TColgp_Array2OfPnt
 	:param TWeights:
-	:type TWeights: TColStd_Array2OfReal &
+	:type TWeights: TColStd_Array2OfReal
 	:param TUKnots:
-	:type TUKnots: TColStd_Array1OfReal &
+	:type TUKnots: TColStd_Array1OfReal
 	:param TVKnots:
-	:type TVKnots: TColStd_Array1OfReal &
+	:type TVKnots: TColStd_Array1OfReal
 	:param TUMults:
-	:type TUMults: TColStd_Array1OfInteger &
+	:type TUMults: TColStd_Array1OfInteger
 	:param TVMults:
-	:type TVMults: TColStd_Array1OfInteger &
+	:type TVMults: TColStd_Array1OfInteger
 	:rtype: None") Surface;
 		void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
 
@@ -1392,7 +1392,7 @@ class Approx_SweepFunction : public Standard_Transient {
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: bool") D0;
 		virtual Standard_Boolean D0 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -1414,9 +1414,9 @@ class Approx_SweepFunction : public Standard_Transient {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") D1;
 		virtual Standard_Boolean D1 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -1442,11 +1442,11 @@ class Approx_SweepFunction : public Standard_Transient {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") D2;
 		virtual Standard_Boolean D2 (const Standard_Real Param,const Standard_Real First,const Standard_Real Last,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -1454,7 +1454,7 @@ class Approx_SweepFunction : public Standard_Transient {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles in all sections. This information is usefull to control error in rational approximation. Warning: Used only if <self> IsRational
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetMinimalWeight;
 		virtual void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -1468,7 +1468,7 @@ class Approx_SweepFunction : public Standard_Transient {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: TColStd_Array1OfReal &
+	:type Tol3d: TColStd_Array1OfReal
 	:rtype: void") GetTolerance;
 		virtual void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,TColStd_Array1OfReal & Tol3d);
 
@@ -1476,7 +1476,7 @@ class Approx_SweepFunction : public Standard_Transient {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -1492,7 +1492,7 @@ class Approx_SweepFunction : public Standard_Transient {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* get the Knots of the section
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: void") Knots;
 		virtual void Knots (TColStd_Array1OfReal & TKnots);
 
@@ -1506,7 +1506,7 @@ class Approx_SweepFunction : public Standard_Transient {
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "* get the Multplicities of the section
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: void") Mults;
 		virtual void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -1532,9 +1532,9 @@ class Approx_SweepFunction : public Standard_Transient {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: void") Resolution;
 		virtual void Resolution (const Standard_Integer Index,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1542,11 +1542,11 @@ class Approx_SweepFunction : public Standard_Transient {
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "* get the format of an section
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:rtype: void") SectionShape;
 		virtual void SectionShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 

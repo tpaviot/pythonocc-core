@@ -106,7 +106,7 @@ class ShapeAlgo {
 		%feature("compactdefaultargs") SetAlgoContainer;
 		%feature("autodoc", "* Sets default AlgoContainer
 	:param aContainer:
-	:type aContainer: opencascade::handle<ShapeAlgo_AlgoContainer> &
+	:type aContainer: ShapeAlgo_AlgoContainer
 	:rtype: void") SetAlgoContainer;
 		static void SetAlgoContainer (const opencascade::handle<ShapeAlgo_AlgoContainer> & aContainer);
 

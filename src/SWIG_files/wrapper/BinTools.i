@@ -82,7 +82,7 @@ class BinTools {
 		/****************** GetBool ******************/
 		%feature("compactdefaultargs") GetBool;
 		%feature("autodoc", ":param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param theValue:
 	:type theValue: bool
 	:rtype: Standard_IStream") GetBool;
@@ -91,34 +91,34 @@ class BinTools {
 		/****************** GetExtChar ******************/
 		%feature("compactdefaultargs") GetExtChar;
 		%feature("autodoc", ":param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param theValue:
-	:type theValue: Standard_ExtCharacter &
+	:type theValue: Standard_ExtCharacter
 	:rtype: Standard_IStream") GetExtChar;
 		static Standard_IStream & GetExtChar (Standard_IStream & IS,Standard_ExtCharacter & theValue);
 
 		/****************** GetInteger ******************/
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", ":param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param theValue:
-	:type theValue: int &
+	:type theValue: int
 	:rtype: Standard_IStream") GetInteger;
 		static Standard_IStream & GetInteger (Standard_IStream & IS,Standard_Integer &OutValue);
 
 		/****************** GetReal ******************/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", ":param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param theValue:
-	:type theValue: float &
+	:type theValue: float
 	:rtype: Standard_IStream") GetReal;
 		static Standard_IStream & GetReal (Standard_IStream & IS,Standard_Real &OutValue);
 
 		/****************** PutBool ******************/
 		%feature("compactdefaultargs") PutBool;
 		%feature("autodoc", ":param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param theValue:
 	:type theValue: bool
 	:rtype: Standard_OStream") PutBool;
@@ -127,7 +127,7 @@ class BinTools {
 		/****************** PutExtChar ******************/
 		%feature("compactdefaultargs") PutExtChar;
 		%feature("autodoc", ":param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param theValue:
 	:type theValue: Standard_ExtCharacter
 	:rtype: Standard_OStream") PutExtChar;
@@ -136,7 +136,7 @@ class BinTools {
 		/****************** PutInteger ******************/
 		%feature("compactdefaultargs") PutInteger;
 		%feature("autodoc", ":param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param theValue:
 	:type theValue: int
 	:rtype: Standard_OStream") PutInteger;
@@ -145,7 +145,7 @@ class BinTools {
 		/****************** PutReal ******************/
 		%feature("compactdefaultargs") PutReal;
 		%feature("autodoc", ":param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:param theValue:
 	:type theValue: float
 	:rtype: Standard_OStream") PutReal;
@@ -155,9 +155,9 @@ class BinTools {
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "* Reads a shape from <theStream> and returns it in <theShape>.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theStream:
-	:type theStream: Standard_IStream &
+	:type theStream: Standard_IStream
 	:rtype: void") Read;
 		static void Read (TopoDS_Shape & theShape,Standard_IStream & theStream);
 
@@ -165,7 +165,7 @@ class BinTools {
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "* Reads a shape from <theFile> and returns it in <theShape>.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theFile:
 	:type theFile: char *
 	:rtype: bool") Read;
@@ -175,9 +175,9 @@ class BinTools {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes <theShape> on <theStream> in binary format.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theStream:
-	:type theStream: Standard_OStream &
+	:type theStream: Standard_OStream
 	:rtype: void") Write;
 		static void Write (const TopoDS_Shape & theShape,Standard_OStream & theStream);
 
@@ -185,7 +185,7 @@ class BinTools {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes <theShape> in <theFile>.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theFile:
 	:type theFile: char *
 	:rtype: bool") Write;
@@ -210,7 +210,7 @@ class BinTools_Curve2dSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Incorporate a new Curve in the set and returns its index.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: int") Add;
 		Standard_Integer Add (const opencascade::handle<Geom2d_Curve> & C);
 
@@ -238,7 +238,7 @@ class BinTools_Curve2dSet {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of <L>.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: int") Index;
 		Standard_Integer Index (const opencascade::handle<Geom2d_Curve> & C);
 
@@ -253,9 +253,9 @@ class BinTools_Curve2dSet {
 		%feature("compactdefaultargs") ReadCurve2d;
 		%feature("autodoc", "* Reads the curve from the stream. The curve is assumed to have been written with the Write method.
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: Standard_IStream") ReadCurve2d;
 		static Standard_IStream & ReadCurve2d (Standard_IStream & IS,opencascade::handle<Geom2d_Curve> & C);
 
@@ -271,9 +271,9 @@ class BinTools_Curve2dSet {
 		%feature("compactdefaultargs") WriteCurve2d;
 		%feature("autodoc", "* Dumps the curve on the binary stream, that can be read back.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") WriteCurve2d;
 		static void WriteCurve2d (const opencascade::handle<Geom2d_Curve> & C,Standard_OStream & OS);
 
@@ -296,7 +296,7 @@ class BinTools_CurveSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Incorporate a new Curve in the set and returns its index.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: int") Add;
 		Standard_Integer Add (const opencascade::handle<Geom_Curve> & C);
 
@@ -324,7 +324,7 @@ class BinTools_CurveSet {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of <L>.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: int") Index;
 		Standard_Integer Index (const opencascade::handle<Geom_Curve> & C);
 
@@ -339,9 +339,9 @@ class BinTools_CurveSet {
 		%feature("compactdefaultargs") ReadCurve;
 		%feature("autodoc", "* Reads the curve from the stream. The curve is assumed to have been written with the Write method
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: Standard_IStream") ReadCurve;
 		static Standard_IStream & ReadCurve (Standard_IStream & IS,opencascade::handle<Geom_Curve> & C);
 
@@ -357,9 +357,9 @@ class BinTools_CurveSet {
 		%feature("compactdefaultargs") WriteCurve;
 		%feature("autodoc", "* Dumps the curve on the stream in binary format that can be read back.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") WriteCurve;
 		static void WriteCurve (const opencascade::handle<Geom_Curve> & C,Standard_OStream & OS);
 
@@ -382,7 +382,7 @@ class BinTools_LocationSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Incorporate a new Location in the set and returns its index.
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:rtype: int") Add;
 		Standard_Integer Add (const TopLoc_Location & L);
 
@@ -402,7 +402,7 @@ class BinTools_LocationSet {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of <L>.
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:rtype: int") Index;
 		Standard_Integer Index (const TopLoc_Location & L);
 
@@ -454,7 +454,7 @@ class BinTools_ShapeSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Stores <S> and its sub-shape. Returns the index of <S>. The method AddGeometry is called on each sub-shape.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") Add;
 		Standard_Integer Add (const TopoDS_Shape & S);
 
@@ -462,7 +462,7 @@ class BinTools_ShapeSet {
 		%feature("compactdefaultargs") AddGeometry;
 		%feature("autodoc", "* Stores the goemetry of <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") AddGeometry;
 		virtual void AddGeometry (const TopoDS_Shape & S);
 
@@ -470,9 +470,9 @@ class BinTools_ShapeSet {
 		%feature("compactdefaultargs") AddShapes;
 		%feature("autodoc", "* Inserts the shape <S2> in the shape <S1>.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: void") AddShapes;
 		virtual void AddShapes (TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
@@ -505,7 +505,7 @@ class BinTools_ShapeSet {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") Index;
 		Standard_Integer Index (const TopoDS_Shape & S);
 
@@ -537,9 +537,9 @@ class BinTools_ShapeSet {
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "* Reads from <IS> a shape and returns it in S. <NbShapes> is the number of tshapes in the set.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param NbShapes:
 	:type NbShapes: int
 	:rtype: void") Read;
@@ -558,9 +558,9 @@ class BinTools_ShapeSet {
 	:param T:
 	:type T: TopAbs_ShapeEnum
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") ReadGeometry;
 		virtual void ReadGeometry (const TopAbs_ShapeEnum T,Standard_IStream & IS,TopoDS_Shape & S);
 
@@ -620,9 +620,9 @@ class BinTools_ShapeSet {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes on <OS> the shape <S>. Writes the orientation, the index of the TShape and the index of the Location.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Write;
 		virtual void Write (const TopoDS_Shape & S,Standard_OStream & OS);
 
@@ -638,9 +638,9 @@ class BinTools_ShapeSet {
 		%feature("compactdefaultargs") WriteGeometry;
 		%feature("autodoc", "* Writes the geometry of <S> on the stream <OS> in a binary format that can be read back by Read.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") WriteGeometry;
 		virtual void WriteGeometry (const TopoDS_Shape & S,Standard_OStream & OS);
 
@@ -687,7 +687,7 @@ class BinTools_SurfaceSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Incorporate a new Surface in the set and returns its index.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: int") Add;
 		Standard_Integer Add (const opencascade::handle<Geom_Surface> & S);
 
@@ -707,7 +707,7 @@ class BinTools_SurfaceSet {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of <L>.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: int") Index;
 		Standard_Integer Index (const opencascade::handle<Geom_Surface> & S);
 
@@ -722,9 +722,9 @@ class BinTools_SurfaceSet {
 		%feature("compactdefaultargs") ReadSurface;
 		%feature("autodoc", "* Reads the surface from the stream. The surface is assumed to have been written with the Write method.
 	:param IS:
-	:type IS: Standard_IStream &
+	:type IS: Standard_IStream
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: Standard_IStream") ReadSurface;
 		static Standard_IStream & ReadSurface (Standard_IStream & IS,opencascade::handle<Geom_Surface> & S);
 
@@ -748,9 +748,9 @@ class BinTools_SurfaceSet {
 		%feature("compactdefaultargs") WriteSurface;
 		%feature("autodoc", "* Dumps the surface on the stream in binary format that can be read back.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") WriteSurface;
 		static void WriteSurface (const opencascade::handle<Geom_Surface> & S,Standard_OStream & OS);
 

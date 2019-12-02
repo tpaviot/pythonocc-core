@@ -93,9 +93,9 @@ class BRepClass_Edge {
 		/****************** BRepClass_Edge ******************/
 		%feature("compactdefaultargs") BRepClass_Edge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") BRepClass_Edge;
 		 BRepClass_Edge (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -150,7 +150,7 @@ class BRepClass_FClass2dOfFClassifier {
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "* Updates the classification process with the edge <E> from the boundary.
 	:param E:
-	:type E: BRepClass_Edge &
+	:type E: BRepClass_Edge
 	:param Or:
 	:type Or: TopAbs_Orientation
 	:rtype: None") Compare;
@@ -217,7 +217,7 @@ class BRepClass_FClassifier {
 		%feature("compactdefaultargs") BRepClass_FClassifier;
 		%feature("autodoc", "* Creates an algorithm to classify the Point P with Tolerance <T> on the face described by <F>.
 	:param F:
-	:type F: BRepClass_FaceExplorer &
+	:type F: BRepClass_FaceExplorer
 	:param P:
 	:type P: gp_Pnt2d
 	:param Tol:
@@ -247,7 +247,7 @@ class BRepClass_FClassifier {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Classify the Point P with Tolerance <T> on the face described by <F>.
 	:param F:
-	:type F: BRepClass_FaceExplorer &
+	:type F: BRepClass_FaceExplorer
 	:param P:
 	:type P: gp_Pnt2d
 	:param Tol:
@@ -291,7 +291,7 @@ class BRepClass_FaceExplorer {
 		/****************** BRepClass_FaceExplorer ******************/
 		%feature("compactdefaultargs") BRepClass_FaceExplorer;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") BRepClass_FaceExplorer;
 		 BRepClass_FaceExplorer (const TopoDS_Face & F);
 
@@ -307,9 +307,9 @@ class BRepClass_FaceExplorer {
 		%feature("compactdefaultargs") CurrentEdge;
 		%feature("autodoc", "* Current edge in current wire and its orientation.
 	:param E:
-	:type E: BRepClass_Edge &
+	:type E: BRepClass_Edge
 	:param Or:
-	:type Or: TopAbs_Orientation &
+	:type Or: TopAbs_Orientation
 	:rtype: None") CurrentEdge;
 		void CurrentEdge (BRepClass_Edge & E,TopAbs_Orientation & Or);
 
@@ -357,7 +357,7 @@ class BRepClass_FaceExplorer {
 	:param L:
 	:type L: gp_Lin2d
 	:param Par:
-	:type Par: float &
+	:type Par: float
 	:rtype: bool") OtherSegment;
 		Standard_Boolean OtherSegment (const gp_Pnt2d & P,gp_Lin2d & L,Standard_Real &OutValue);
 
@@ -397,7 +397,7 @@ class BRepClass_FaceExplorer {
 	:param L:
 	:type L: gp_Lin2d
 	:param Par:
-	:type Par: float &
+	:type Par: float
 	:rtype: bool") Segment;
 		Standard_Boolean Segment (const gp_Pnt2d & P,gp_Lin2d & L,Standard_Real &OutValue);
 
@@ -432,7 +432,7 @@ class BRepClass_FacePassiveClassifier {
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "* Updates the classification process with the edge <E> from the boundary.
 	:param E:
-	:type E: BRepClass_Edge &
+	:type E: BRepClass_Edge
 	:param Or:
 	:type Or: TopAbs_Orientation
 	:rtype: None") Compare;
@@ -498,7 +498,7 @@ class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 		%feature("compactdefaultargs") LocalGeometry;
 		%feature("autodoc", "* Returns in <T>, <N> and <C> the tangent, normal and curvature of the edge <E> at parameter value <U>.
 	:param E:
-	:type E: BRepClass_Edge &
+	:type E: BRepClass_Edge
 	:param U:
 	:type U: float
 	:param T:
@@ -506,7 +506,7 @@ class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 	:param N:
 	:type N: gp_Dir2d
 	:param C:
-	:type C: float &
+	:type C: float
 	:rtype: None") LocalGeometry;
 		void LocalGeometry (const BRepClass_Edge & E,const Standard_Real U,gp_Dir2d & T,gp_Dir2d & N,Standard_Real &OutValue);
 
@@ -520,7 +520,7 @@ class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 	:param Tol:
 	:type Tol: float
 	:param E:
-	:type E: BRepClass_Edge &
+	:type E: BRepClass_Edge
 	:rtype: None") Perform;
 		void Perform (const gp_Lin2d & L,const Standard_Real P,const Standard_Real Tol,const BRepClass_Edge & E);
 

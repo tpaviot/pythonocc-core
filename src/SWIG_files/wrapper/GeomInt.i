@@ -119,9 +119,9 @@ class GeomInt {
 	:param thePeriod:
 	:type thePeriod: float
 	:param theNewPar:
-	:type theNewPar: float &
+	:type theNewPar: float
 	:param theOffset:
-	:type theOffset: float &
+	:type theOffset: float
 	:param theEps: default value is 0.0
 	:type theEps: float
 	:rtype: bool") AdjustPeriodic;
@@ -145,9 +145,9 @@ class GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox : publi
 		/****************** GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox ******************/
 		%feature("compactdefaultargs") GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -162,7 +162,7 @@ class GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox : publi
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -206,7 +206,7 @@ class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public 
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -222,19 +222,19 @@ class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public 
 		%feature("compactdefaultargs") GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has <NbPol> control points.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox;
@@ -244,9 +244,9 @@ class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public 
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
@@ -259,7 +259,7 @@ class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public 
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -307,9 +307,9 @@ class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public 
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -317,11 +317,11 @@ class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public 
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -368,11 +368,11 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -380,13 +380,13 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -406,7 +406,7 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -416,7 +416,7 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
@@ -426,7 +426,7 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -444,11 +444,11 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -458,7 +458,7 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
@@ -468,11 +468,11 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -508,7 +508,7 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -516,7 +516,7 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -528,11 +528,11 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -544,15 +544,15 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -590,9 +590,9 @@ class GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox : public
 		/****************** GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox ******************/
 		%feature("compactdefaultargs") GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -607,7 +607,7 @@ class GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox : public
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -629,9 +629,9 @@ class GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox : public ma
 		/****************** GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox ******************/
 		%feature("compactdefaultargs") GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -646,7 +646,7 @@ class GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox : public ma
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -680,13 +680,13 @@ class GeomInt_IntSS {
 	:param l:
 	:type l: float
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param C2d:
-	:type C2d: opencascade::handle<Geom2d_Curve> &
+	:type C2d: Geom2d_Curve
 	:rtype: void") BuildPCurves;
 		static void BuildPCurves (const Standard_Real f,const Standard_Real l,Standard_Real &OutValue,const opencascade::handle<Geom_Surface> & S,const opencascade::handle<Geom_Curve> & C,opencascade::handle<Geom2d_Curve> & C2d);
 
@@ -699,9 +699,9 @@ class GeomInt_IntSS {
 		%feature("compactdefaultargs") GeomInt_IntSS;
 		%feature("autodoc", "* performs general intersection of two surfaces just now
 	:param S1:
-	:type S1: opencascade::handle<Geom_Surface> &
+	:type S1: Geom_Surface
 	:param S2:
-	:type S2: opencascade::handle<Geom_Surface> &
+	:type S2: Geom_Surface
 	:param Tol:
 	:type Tol: float
 	:param Approx: default value is Standard_True
@@ -756,7 +756,7 @@ class GeomInt_IntSS {
 		/****************** MakeBSpline ******************/
 		%feature("compactdefaultargs") MakeBSpline;
 		%feature("autodoc", ":param WL:
-	:type WL: opencascade::handle<IntPatch_WLine> &
+	:type WL: IntPatch_WLine
 	:param ideb:
 	:type ideb: int
 	:param ifin:
@@ -767,7 +767,7 @@ class GeomInt_IntSS {
 		/****************** MakeBSpline2d ******************/
 		%feature("compactdefaultargs") MakeBSpline2d;
 		%feature("autodoc", ":param theWLine:
-	:type theWLine: opencascade::handle<IntPatch_WLine> &
+	:type theWLine: IntPatch_WLine
 	:param ideb:
 	:type ideb: int
 	:param ifin:
@@ -796,9 +796,9 @@ class GeomInt_IntSS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* general intersection of two surfaces
 	:param S1:
-	:type S1: opencascade::handle<Geom_Surface> &
+	:type S1: Geom_Surface
 	:param S2:
-	:type S2: opencascade::handle<Geom_Surface> &
+	:type S2: Geom_Surface
 	:param Tol:
 	:type Tol: float
 	:param Approx: default value is Standard_True
@@ -814,9 +814,9 @@ class GeomInt_IntSS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* intersection of adapted surfaces
 	:param HS1:
-	:type HS1: opencascade::handle<GeomAdaptor_HSurface> &
+	:type HS1: GeomAdaptor_HSurface
 	:param HS2:
-	:type HS2: opencascade::handle<GeomAdaptor_HSurface> &
+	:type HS2: GeomAdaptor_HSurface
 	:param Tol:
 	:type Tol: float
 	:param Approx: default value is Standard_True
@@ -832,9 +832,9 @@ class GeomInt_IntSS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* general intersection using a starting point
 	:param S1:
-	:type S1: opencascade::handle<Geom_Surface> &
+	:type S1: Geom_Surface
 	:param S2:
-	:type S2: opencascade::handle<Geom_Surface> &
+	:type S2: Geom_Surface
 	:param Tol:
 	:type Tol: float
 	:param U1:
@@ -858,9 +858,9 @@ class GeomInt_IntSS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* intersection of adapted surfaces using a starting point
 	:param HS1:
-	:type HS1: opencascade::handle<GeomAdaptor_HSurface> &
+	:type HS1: GeomAdaptor_HSurface
 	:param HS2:
-	:type HS2: opencascade::handle<GeomAdaptor_HSurface> &
+	:type HS2: GeomAdaptor_HSurface
 	:param Tol:
 	:type Tol: float
 	:param U1:
@@ -910,19 +910,19 @@ class GeomInt_IntSS {
 		%feature("compactdefaultargs") TreatRLine;
 		%feature("autodoc", "* converts RLine to Geom(2d)_Curve.
 	:param theRL:
-	:type theRL: opencascade::handle<IntPatch_RLine> &
+	:type theRL: IntPatch_RLine
 	:param theHS1:
-	:type theHS1: opencascade::handle<GeomAdaptor_HSurface> &
+	:type theHS1: GeomAdaptor_HSurface
 	:param theHS2:
-	:type theHS2: opencascade::handle<GeomAdaptor_HSurface> &
+	:type theHS2: GeomAdaptor_HSurface
 	:param theC3d:
-	:type theC3d: opencascade::handle<Geom_Curve> &
+	:type theC3d: Geom_Curve
 	:param theC2d1:
-	:type theC2d1: opencascade::handle<Geom2d_Curve> &
+	:type theC2d1: Geom2d_Curve
 	:param theC2d2:
-	:type theC2d2: opencascade::handle<Geom2d_Curve> &
+	:type theC2d2: Geom2d_Curve
 	:param theTolReached:
-	:type theTolReached: float &
+	:type theTolReached: float
 	:rtype: void") TreatRLine;
 		static void TreatRLine (const opencascade::handle<IntPatch_RLine> & theRL,const opencascade::handle<GeomAdaptor_HSurface> & theHS1,const opencascade::handle<GeomAdaptor_HSurface> & theHS2,opencascade::handle<Geom_Curve> & theC3d,opencascade::handle<Geom2d_Curve> & theC2d1,opencascade::handle<Geom2d_Curve> & theC2d2,Standard_Real &OutValue);
 
@@ -930,15 +930,15 @@ class GeomInt_IntSS {
 		%feature("compactdefaultargs") TrimILineOnSurfBoundaries;
 		%feature("autodoc", "* puts into theArrayOfParameters the parameters of intersection points of given theC2d1 and theC2d2 curves with the boundaries of the source surface.
 	:param theC2d1:
-	:type theC2d1: opencascade::handle<Geom2d_Curve> &
+	:type theC2d1: Geom2d_Curve
 	:param theC2d2:
-	:type theC2d2: opencascade::handle<Geom2d_Curve> &
+	:type theC2d2: Geom2d_Curve
 	:param theBound1:
-	:type theBound1: Bnd_Box2d &
+	:type theBound1: Bnd_Box2d
 	:param theBound2:
-	:type theBound2: Bnd_Box2d &
+	:type theBound2: Bnd_Box2d
 	:param theArrayOfParameters:
-	:type theArrayOfParameters: GeomInt_VectorOfReal &
+	:type theArrayOfParameters: GeomInt_VectorOfReal
 	:rtype: void") TrimILineOnSurfBoundaries;
 		static void TrimILineOnSurfBoundaries (const opencascade::handle<Geom2d_Curve> & theC2d1,const opencascade::handle<Geom2d_Curve> & theC2d2,const Bnd_Box2d & theBound1,const Bnd_Box2d & theBound2,GeomInt_VectorOfReal & theArrayOfParameters);
 
@@ -973,13 +973,13 @@ class GeomInt_LineConstructor {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Initializes me by two surfaces and corresponding tools which represent boundaries of surfaces
 	:param D1:
-	:type D1: opencascade::handle<Adaptor3d_TopolTool> &
+	:type D1: Adaptor3d_TopolTool
 	:param D2:
-	:type D2: opencascade::handle<Adaptor3d_TopolTool> &
+	:type D2: Adaptor3d_TopolTool
 	:param S1:
-	:type S1: opencascade::handle<GeomAdaptor_HSurface> &
+	:type S1: GeomAdaptor_HSurface
 	:param S2:
-	:type S2: opencascade::handle<GeomAdaptor_HSurface> &
+	:type S2: GeomAdaptor_HSurface
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor3d_TopolTool> & D1,const opencascade::handle<Adaptor3d_TopolTool> & D2,const opencascade::handle<GeomAdaptor_HSurface> & S1,const opencascade::handle<GeomAdaptor_HSurface> & S2);
 
@@ -995,9 +995,9 @@ class GeomInt_LineConstructor {
 	:param I:
 	:type I: int
 	:param WFirst:
-	:type WFirst: float &
+	:type WFirst: float
 	:param WLast:
-	:type WLast: float &
+	:type WLast: float
 	:rtype: None") Part;
 		void Part (const Standard_Integer I,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1005,7 +1005,7 @@ class GeomInt_LineConstructor {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Splits line
 	:param L:
-	:type L: opencascade::handle<IntPatch_Line> &
+	:type L: IntPatch_Line
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<IntPatch_Line> & L);
 
@@ -1026,45 +1026,45 @@ class GeomInt_LineTool {
 		/****************** DecompositionOfWLine ******************/
 		%feature("compactdefaultargs") DecompositionOfWLine;
 		%feature("autodoc", ":param theWLine:
-	:type theWLine: opencascade::handle<IntPatch_WLine> &
+	:type theWLine: IntPatch_WLine
 	:param theSurface1:
-	:type theSurface1: opencascade::handle<GeomAdaptor_HSurface> &
+	:type theSurface1: GeomAdaptor_HSurface
 	:param theSurface2:
-	:type theSurface2: opencascade::handle<GeomAdaptor_HSurface> &
+	:type theSurface2: GeomAdaptor_HSurface
 	:param aTolSum:
 	:type aTolSum: float
 	:param theLConstructor:
-	:type theLConstructor: GeomInt_LineConstructor &
+	:type theLConstructor: GeomInt_LineConstructor
 	:param theNewLines:
-	:type theNewLines: IntPatch_SequenceOfLine &
+	:type theNewLines: IntPatch_SequenceOfLine
 	:rtype: bool") DecompositionOfWLine;
 		static Standard_Boolean DecompositionOfWLine (const opencascade::handle<IntPatch_WLine> & theWLine,const opencascade::handle<GeomAdaptor_HSurface> & theSurface1,const opencascade::handle<GeomAdaptor_HSurface> & theSurface2,const Standard_Real aTolSum,const GeomInt_LineConstructor & theLConstructor,IntPatch_SequenceOfLine & theNewLines);
 
 		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<IntPatch_Line> &
+	:type L: IntPatch_Line
 	:rtype: float") FirstParameter;
 		static Standard_Real FirstParameter (const opencascade::handle<IntPatch_Line> & L);
 
 		/****************** LastParameter ******************/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<IntPatch_Line> &
+	:type L: IntPatch_Line
 	:rtype: float") LastParameter;
 		static Standard_Real LastParameter (const opencascade::handle<IntPatch_Line> & L);
 
 		/****************** NbVertex ******************/
 		%feature("compactdefaultargs") NbVertex;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<IntPatch_Line> &
+	:type L: IntPatch_Line
 	:rtype: int") NbVertex;
 		static Standard_Integer NbVertex (const opencascade::handle<IntPatch_Line> & L);
 
 		/****************** Vertex ******************/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<IntPatch_Line> &
+	:type L: IntPatch_Line
 	:param I:
 	:type I: int
 	:rtype: IntPatch_Point") Vertex;
@@ -1103,19 +1103,19 @@ class GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -1131,19 +1131,19 @@ class GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -1216,15 +1216,15 @@ class GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -1293,15 +1293,15 @@ class GeomInt_MyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_MyGradientbisOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -1371,7 +1371,7 @@ class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox : public m
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -1381,15 +1381,15 @@ class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox : public m
 		%feature("compactdefaultargs") GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has the desired degree Deg.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:rtype: None") GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox;
@@ -1399,16 +1399,16 @@ class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox : public m
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -1442,9 +1442,9 @@ class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox : public m
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -1452,11 +1452,11 @@ class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox : public m
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -1494,7 +1494,7 @@ class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox : public math
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -1504,15 +1504,15 @@ class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox : public math
 		%feature("compactdefaultargs") GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has the desired degree Deg.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:rtype: None") GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox;
@@ -1522,16 +1522,16 @@ class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox : public math
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -1565,9 +1565,9 @@ class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox : public math
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -1575,11 +1575,11 @@ class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox : public math
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -1626,11 +1626,11 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1638,13 +1638,13 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1664,7 +1664,7 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1674,7 +1674,7 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
@@ -1684,7 +1684,7 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1702,11 +1702,11 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1716,7 +1716,7 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
@@ -1726,11 +1726,11 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1766,7 +1766,7 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -1774,7 +1774,7 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -1786,11 +1786,11 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -1802,15 +1802,15 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -1873,11 +1873,11 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1885,13 +1885,13 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1911,7 +1911,7 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1921,7 +1921,7 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
@@ -1931,7 +1931,7 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1949,11 +1949,11 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -1963,7 +1963,7 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
@@ -1973,11 +1973,11 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2013,7 +2013,7 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -2021,7 +2021,7 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -2033,11 +2033,11 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -2049,15 +2049,15 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -2156,13 +2156,13 @@ class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "* Returns the derivative of the constraint matrix.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:rtype: math_Matrix") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative (const GeomInt_TheMultiLineOfWLApprox & SSP,const math_Vector & Parameters,const Standard_Integer Deg,const math_Matrix & DA);
 
@@ -2181,19 +2181,19 @@ class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param SCurv:
-	:type SCurv: AppParCurves_MultiCurve &
+	:type SCurv: AppParCurves_MultiCurve
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param Constraints:
-	:type Constraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type Constraints: AppParCurves_HArray1OfConstraintCouple
 	:param Bern:
-	:type Bern: math_Matrix &
+	:type Bern: math_Matrix
 	:param DerivativeBern:
-	:type DerivativeBern: math_Matrix &
+	:type DerivativeBern: math_Matrix
 	:param Tolerance: default value is 1.0e-10
 	:type Tolerance: float
 	:rtype: None") GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox;
@@ -2230,13 +2230,13 @@ class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "* Returns the derivative of the constraint matrix.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:rtype: math_Matrix") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative (const GeomInt_TheMultiLineOfWLApprox & SSP,const math_Vector & Parameters,const Standard_Integer Deg,const math_Matrix & DA);
 
@@ -2255,19 +2255,19 @@ class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
 		%feature("autodoc", "* Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 	:param SSP:
-	:type SSP: GeomInt_TheMultiLineOfWLApprox &
+	:type SSP: GeomInt_TheMultiLineOfWLApprox
 	:param SCurv:
-	:type SCurv: AppParCurves_MultiCurve &
+	:type SCurv: AppParCurves_MultiCurve
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param Constraints:
-	:type Constraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type Constraints: AppParCurves_HArray1OfConstraintCouple
 	:param Bern:
-	:type Bern: math_Matrix &
+	:type Bern: math_Matrix
 	:param DerivativeBern:
-	:type DerivativeBern: math_Matrix &
+	:type DerivativeBern: math_Matrix
 	:param Tolerance: default value is 1.0e-10
 	:type Tolerance: float
 	:rtype: None") GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
@@ -2314,9 +2314,9 @@ class GeomInt_TheComputeLineBezierOfWLApprox {
 	:param Index:
 	:type Index: int
 	:param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") Error;
 		void Error (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2324,7 +2324,7 @@ class GeomInt_TheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 	:param Line:
-	:type Line: GeomInt_TheMultiLineOfWLApprox &
+	:type Line: GeomInt_TheMultiLineOfWLApprox
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2348,9 +2348,9 @@ class GeomInt_TheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 	:param Line:
-	:type Line: GeomInt_TheMultiLineOfWLApprox &
+	:type Line: GeomInt_TheMultiLineOfWLApprox
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2372,7 +2372,7 @@ class GeomInt_TheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheComputeLineBezierOfWLApprox;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2470,7 +2470,7 @@ class GeomInt_TheComputeLineBezierOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* runs the algorithm after having initialized the fields.
 	:param Line:
-	:type Line: GeomInt_TheMultiLineOfWLApprox &
+	:type Line: GeomInt_TheMultiLineOfWLApprox
 	:rtype: None") Perform;
 		void Perform (const GeomInt_TheMultiLineOfWLApprox & Line);
 
@@ -2543,9 +2543,9 @@ class GeomInt_TheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the tolerances 2d and 3d of the MultiBSpCurve.
 	:param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2553,7 +2553,7 @@ class GeomInt_TheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheComputeLineOfWLApprox;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all. //! The multiplicities of the internal knots is set by default.
 	:param Line:
-	:type Line: GeomInt_TheMultiLineOfWLApprox &
+	:type Line: GeomInt_TheMultiLineOfWLApprox
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2577,9 +2577,9 @@ class GeomInt_TheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheComputeLineOfWLApprox;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 	:param Line:
-	:type Line: GeomInt_TheMultiLineOfWLApprox &
+	:type Line: GeomInt_TheMultiLineOfWLApprox
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2601,7 +2601,7 @@ class GeomInt_TheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheComputeLineOfWLApprox;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -2667,7 +2667,7 @@ class GeomInt_TheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Interpol;
 		%feature("autodoc", "* Constructs an interpolation of the MultiLine <Line> The result will be a C2 curve of degree 3.
 	:param Line:
-	:type Line: GeomInt_TheMultiLineOfWLApprox &
+	:type Line: GeomInt_TheMultiLineOfWLApprox
 	:rtype: None") Interpol;
 		void Interpol (const GeomInt_TheMultiLineOfWLApprox & Line);
 
@@ -2693,7 +2693,7 @@ class GeomInt_TheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* runs the algorithm after having initialized the fields.
 	:param Line:
-	:type Line: GeomInt_TheMultiLineOfWLApprox &
+	:type Line: GeomInt_TheMultiLineOfWLApprox
 	:rtype: None") Perform;
 		void Perform (const GeomInt_TheMultiLineOfWLApprox & Line);
 
@@ -2729,7 +2729,7 @@ class GeomInt_TheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "* The approximation will be done with the set of knots <Knots>. The multiplicities will be set with the degree and the desired continuity.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:rtype: None") SetKnots;
 		void SetKnots (const TColStd_Array1OfReal & Knots);
 
@@ -2737,9 +2737,9 @@ class GeomInt_TheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") SetKnotsAndMultiplicities;
 		%feature("autodoc", "* The approximation will be done with the set of knots <Knots> and the multiplicities <Mults>.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: None") SetKnotsAndMultiplicities;
 		void SetKnotsAndMultiplicities (const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults);
 
@@ -2747,7 +2747,7 @@ class GeomInt_TheComputeLineOfWLApprox {
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "* The approximation will begin with the set of parameters <ThePar>.
 	:param ThePar:
-	:type ThePar: math_Vector &
+	:type ThePar: math_Vector
 	:rtype: None") SetParameters;
 		void SetParameters (const math_Vector & ThePar);
 
@@ -2805,24 +2805,24 @@ class GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox : public math
 		%feature("autodoc", ":param ChoixIso:
 	:type ChoixIso: IntImp_ConstIsoparametric
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param UVap:
-	:type UVap: math_Vector &
+	:type UVap: math_Vector
 	:param BornInf:
-	:type BornInf: math_Vector &
+	:type BornInf: math_Vector
 	:param BornSup:
-	:type BornSup: math_Vector &
+	:type BornSup: math_Vector
 	:param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:rtype: None") ComputeParameters;
 		void ComputeParameters (const IntImp_ConstIsoparametric ChoixIso,const TColStd_Array1OfReal & Param,math_Vector & UVap,math_Vector & BornInf,math_Vector & BornSup,math_Vector & Tolerance);
 
 		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -2844,20 +2844,20 @@ class GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox : public math
 		/****************** GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox ******************/
 		%feature("compactdefaultargs") GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:rtype: None") GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 		 GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2);
 
 		/****************** IsTangent ******************/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", ":param UVap:
-	:type UVap: math_Vector &
+	:type UVap: math_Vector
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param BestChoix:
-	:type BestChoix: IntImp_ConstIsoparametric &
+	:type BestChoix: IntImp_ConstIsoparametric
 	:rtype: bool") IsTangent;
 		Standard_Boolean IsTangent (const math_Vector & UVap,TColStd_Array1OfReal & Param,IntImp_ConstIsoparametric & BestChoix);
 
@@ -2885,20 +2885,20 @@ class GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox : public math
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2921,13 +2921,13 @@ class GeomInt_TheImpPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* returns True if Tg,Tguv1 Tguv2 can be computed.
 	:param u1:
-	:type u1: float &
+	:type u1: float
 	:param v1:
-	:type v1: float &
+	:type v1: float
 	:param u2:
-	:type u2: float &
+	:type u2: float
 	:param v2:
-	:type v2: float &
+	:type v2: float
 	:param Pt:
 	:type Pt: gp_Pnt
 	:param Tg:
@@ -2942,18 +2942,18 @@ class GeomInt_TheImpPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 		/****************** GeomInt_TheImpPrmSvSurfacesOfWLApprox ******************/
 		%feature("compactdefaultargs") GeomInt_TheImpPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf1: Adaptor3d_HSurface
 	:param Surf2:
-	:type Surf2: IntSurf_Quadric &
+	:type Surf2: IntSurf_Quadric
 	:rtype: None") GeomInt_TheImpPrmSvSurfacesOfWLApprox;
 		 GeomInt_TheImpPrmSvSurfacesOfWLApprox (const opencascade::handle<Adaptor3d_HSurface> & Surf1,const IntSurf_Quadric & Surf2);
 
 		/****************** GeomInt_TheImpPrmSvSurfacesOfWLApprox ******************/
 		%feature("compactdefaultargs") GeomInt_TheImpPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: IntSurf_Quadric &
+	:type Surf1: IntSurf_Quadric
 	:param Surf2:
-	:type Surf2: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf2: Adaptor3d_HSurface
 	:rtype: None") GeomInt_TheImpPrmSvSurfacesOfWLApprox;
 		 GeomInt_TheImpPrmSvSurfacesOfWLApprox (const IntSurf_Quadric & Surf1,const opencascade::handle<Adaptor3d_HSurface> & Surf2);
 
@@ -2983,7 +2983,7 @@ class GeomInt_TheImpPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 	:param v2:
 	:type v2: float
 	:param Point:
-	:type Point: IntSurf_PntOn2S &
+	:type Point: IntSurf_PntOn2S
 	:rtype: bool") SeekPoint;
 		Standard_Boolean SeekPoint (const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,IntSurf_PntOn2S & Point);
 
@@ -3081,11 +3081,11 @@ class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "* compute the solution point with the close point
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param TolTangency:
 	:type TolTangency: float
 	:rtype: None") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
@@ -3095,9 +3095,9 @@ class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", "* initialize the parameters to compute the solution point it 's possible to write to optimize: IntImp_Int2S inter(S1,S2,Func,TolTangency); math_FunctionSetRoot rsnld(inter.Function()); while ...{ Param(1)=... Param(2)=... param(3)=... inter.Perform(Param,rsnld); }
 	:param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param TolTangency:
 	:type TolTangency: float
 	:rtype: None") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
@@ -3125,9 +3125,9 @@ class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated)
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param Rsnld:
-	:type Rsnld: math_FunctionSetRoot &
+	:type Rsnld: math_FunctionSetRoot
 	:rtype: IntImp_ConstIsoparametric") Perform;
 		IntImp_ConstIsoparametric Perform (const TColStd_Array1OfReal & Param,math_FunctionSetRoot & Rsnld);
 
@@ -3135,9 +3135,9 @@ class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by ChoixIso)
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param Rsnld:
-	:type Rsnld: math_FunctionSetRoot &
+	:type Rsnld: math_FunctionSetRoot
 	:param ChoixIso:
 	:type ChoixIso: IntImp_ConstIsoparametric
 	:rtype: IntImp_ConstIsoparametric") Perform;
@@ -3184,7 +3184,7 @@ class GeomInt_TheMultiLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheMultiLineOfWLApprox;
 		%feature("autodoc", "* The class SvSurfaces is used when the approximation algorithm needs some extra points on the line <line>. A New line is then created which shares the same surfaces and functions. SvSurfaces is a deferred class which allows several implementations of this algorithm with different surfaces (bi-parametric ones, or implicit and biparametric ones)
 	:param line:
-	:type line: opencascade::handle<IntPatch_WLine> &
+	:type line: IntPatch_WLine
 	:param PtrSvSurfaces:
 	:type PtrSvSurfaces: Standard_Address
 	:param NbP3d:
@@ -3222,7 +3222,7 @@ class GeomInt_TheMultiLineOfWLApprox {
 		%feature("compactdefaultargs") GeomInt_TheMultiLineOfWLApprox;
 		%feature("autodoc", "* No Extra points will be added on the current line
 	:param line:
-	:type line: opencascade::handle<IntPatch_WLine> &
+	:type line: IntPatch_WLine
 	:param NbP3d:
 	:type NbP3d: int
 	:param NbP2d:
@@ -3281,7 +3281,7 @@ class GeomInt_TheMultiLineOfWLApprox {
 	:param indbad:
 	:type indbad: int
 	:param OtherLine:
-	:type OtherLine: GeomInt_TheMultiLineOfWLApprox &
+	:type OtherLine: GeomInt_TheMultiLineOfWLApprox
 	:rtype: bool") MakeMLOneMorePoint;
 		Standard_Boolean MakeMLOneMorePoint (const Standard_Integer Low,const Standard_Integer High,const Standard_Integer indbad,GeomInt_TheMultiLineOfWLApprox & OtherLine);
 
@@ -3384,7 +3384,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "* returns the 3d curvature of the multipoint <MPointIndex> when only 3d points exist.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -3396,7 +3396,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "* returns the 2d curvature points of the multipoint <MPointIndex> only when 2d points exist.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV2d:
@@ -3408,7 +3408,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "* returns the 3d and 2d curvature of the multipoint <MPointIndex>.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -3422,7 +3422,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Dump of the current multi-line.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:rtype: None") Dump;
 		static void Dump (const GeomInt_TheMultiLineOfWLApprox & ML);
 
@@ -3430,7 +3430,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "* Returns the number of multipoints of the TheMultiLine.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:rtype: int") FirstPoint;
 		static Standard_Integer FirstPoint (const GeomInt_TheMultiLineOfWLApprox & ML);
 
@@ -3438,7 +3438,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") LastPoint;
 		%feature("autodoc", "* Returns the number of multipoints of the TheMultiLine.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:rtype: int") LastPoint;
 		static Standard_Integer LastPoint (const GeomInt_TheMultiLineOfWLApprox & ML);
 
@@ -3446,7 +3446,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") MakeMLBetween;
 		%feature("autodoc", "* Is called if WhatStatus returned 'PointsAdded'.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -3460,7 +3460,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") MakeMLOneMorePoint;
 		%feature("autodoc", "* Is called when the Bezier curve contains a loop
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -3468,7 +3468,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 	:param indbad:
 	:type indbad: int
 	:param OtherLine:
-	:type OtherLine: GeomInt_TheMultiLineOfWLApprox &
+	:type OtherLine: GeomInt_TheMultiLineOfWLApprox
 	:rtype: bool") MakeMLOneMorePoint;
 		static Standard_Boolean MakeMLOneMorePoint (const GeomInt_TheMultiLineOfWLApprox & ML,const Standard_Integer I1,const Standard_Integer I2,const Standard_Integer indbad,GeomInt_TheMultiLineOfWLApprox & OtherLine);
 
@@ -3476,7 +3476,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") NbP2d;
 		%feature("autodoc", "* Returns the number of 2d points of a TheMultiLine.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:rtype: int") NbP2d;
 		static Standard_Integer NbP2d (const GeomInt_TheMultiLineOfWLApprox & ML);
 
@@ -3484,7 +3484,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") NbP3d;
 		%feature("autodoc", "* Returns the number of 3d points of a TheMultiLine.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:rtype: int") NbP3d;
 		static Standard_Integer NbP3d (const GeomInt_TheMultiLineOfWLApprox & ML);
 
@@ -3492,7 +3492,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "* returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -3504,7 +3504,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "* returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV2d:
@@ -3516,7 +3516,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "* returns the 3d and 2d points of the multipoint <MPointIndex>.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -3530,7 +3530,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabPt:
@@ -3542,7 +3542,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabPt2d:
@@ -3554,7 +3554,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* returns the 3d and 2d points of the multipoint <MPointIndex>.
 	:param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabPt:
@@ -3567,7 +3567,7 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 		/****************** WhatStatus ******************/
 		%feature("compactdefaultargs") WhatStatus;
 		%feature("autodoc", ":param ML:
-	:type ML: GeomInt_TheMultiLineOfWLApprox &
+	:type ML: GeomInt_TheMultiLineOfWLApprox
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -3594,13 +3594,13 @@ class GeomInt_ThePrmPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* returns True if Tg,Tguv1 Tguv2 can be computed.
 	:param u1:
-	:type u1: float &
+	:type u1: float
 	:param v1:
-	:type v1: float &
+	:type v1: float
 	:param u2:
-	:type u2: float &
+	:type u2: float
 	:param v2:
-	:type v2: float &
+	:type v2: float
 	:param Pt:
 	:type Pt: gp_Pnt
 	:param Tg:
@@ -3615,9 +3615,9 @@ class GeomInt_ThePrmPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 		/****************** GeomInt_ThePrmPrmSvSurfacesOfWLApprox ******************/
 		%feature("compactdefaultargs") GeomInt_ThePrmPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf1: Adaptor3d_HSurface
 	:param Surf2:
-	:type Surf2: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf2: Adaptor3d_HSurface
 	:rtype: None") GeomInt_ThePrmPrmSvSurfacesOfWLApprox;
 		 GeomInt_ThePrmPrmSvSurfacesOfWLApprox (const opencascade::handle<Adaptor3d_HSurface> & Surf1,const opencascade::handle<Adaptor3d_HSurface> & Surf2);
 
@@ -3647,7 +3647,7 @@ class GeomInt_ThePrmPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 	:param v2:
 	:type v2: float
 	:param Point:
-	:type Point: IntSurf_PntOn2S &
+	:type Point: IntSurf_PntOn2S
 	:rtype: bool") SeekPoint;
 		Standard_Boolean SeekPoint (const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,IntSurf_PntOn2S & Point);
 
@@ -3714,9 +3714,9 @@ class GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox : public math_Functio
 		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -3738,16 +3738,16 @@ class GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox : public math_Functio
 		/****************** GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox ******************/
 		%feature("compactdefaultargs") GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", ":param PS:
-	:type PS: opencascade::handle<Adaptor3d_HSurface> &
+	:type PS: Adaptor3d_HSurface
 	:param IS:
-	:type IS: IntSurf_Quadric &
+	:type IS: IntSurf_Quadric
 	:rtype: None") GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox;
 		 GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox (const opencascade::handle<Adaptor3d_HSurface> & PS,const IntSurf_Quadric & IS);
 
 		/****************** GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox ******************/
 		%feature("compactdefaultargs") GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox;
 		%feature("autodoc", ":param IS:
-	:type IS: IntSurf_Quadric &
+	:type IS: IntSurf_Quadric
 	:rtype: None") GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox;
 		 GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox (const IntSurf_Quadric & IS);
 
@@ -3789,7 +3789,7 @@ class GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox : public math_Functio
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param PS:
-	:type PS: opencascade::handle<Adaptor3d_HSurface> &
+	:type PS: Adaptor3d_HSurface
 	:rtype: None") Set;
 		void Set (const opencascade::handle<Adaptor3d_HSurface> & PS);
 
@@ -3803,7 +3803,7 @@ class GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox : public math_Functio
 		/****************** SetImplicitSurface ******************/
 		%feature("compactdefaultargs") SetImplicitSurface;
 		%feature("autodoc", ":param IS:
-	:type IS: IntSurf_Quadric &
+	:type IS: IntSurf_Quadric
 	:rtype: None") SetImplicitSurface;
 		void SetImplicitSurface (const IntSurf_Quadric & IS);
 
@@ -3816,20 +3816,20 @@ class GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox : public math_Functio
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 

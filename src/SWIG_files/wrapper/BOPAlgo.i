@@ -142,7 +142,7 @@ class BOPAlgo_CheckResult {
 		%feature("compactdefaultargs") AddFaultyShape1;
 		%feature("autodoc", "* adds faulty sub-shapes from object to a list
 	:param TheShape:
-	:type TheShape: TopoDS_Shape &
+	:type TheShape: TopoDS_Shape
 	:rtype: None") AddFaultyShape1;
 		void AddFaultyShape1 (const TopoDS_Shape & TheShape);
 
@@ -150,7 +150,7 @@ class BOPAlgo_CheckResult {
 		%feature("compactdefaultargs") AddFaultyShape2;
 		%feature("autodoc", "* adds faulty sub-shapes from tool to a list
 	:param TheShape:
-	:type TheShape: TopoDS_Shape &
+	:type TheShape: TopoDS_Shape
 	:rtype: None") AddFaultyShape2;
 		void AddFaultyShape2 (const TopoDS_Shape & TheShape);
 
@@ -258,7 +258,7 @@ class BOPAlgo_CheckResult {
 		%feature("compactdefaultargs") SetShape1;
 		%feature("autodoc", "* sets ancestor shape (object) for faulty sub-shapes
 	:param TheShape:
-	:type TheShape: TopoDS_Shape &
+	:type TheShape: TopoDS_Shape
 	:rtype: None") SetShape1;
 		void SetShape1 (const TopoDS_Shape & TheShape);
 
@@ -266,7 +266,7 @@ class BOPAlgo_CheckResult {
 		%feature("compactdefaultargs") SetShape2;
 		%feature("autodoc", "* sets ancestor shape (tool) for faulty sub-shapes
 	:param TheShape:
-	:type TheShape: TopoDS_Shape &
+	:type TheShape: TopoDS_Shape
 	:rtype: None") SetShape2;
 		void SetShape2 (const TopoDS_Shape & TheShape);
 
@@ -289,7 +289,7 @@ class BOPAlgo_Options {
 		%feature("compactdefaultargs") AddError;
 		%feature("autodoc", "* //!@name Error reporting mechanism Adds the alert as error (fail)
 	:param theAlert:
-	:type theAlert: opencascade::handle<Message_Alert> &
+	:type theAlert: Message_Alert
 	:rtype: None") AddError;
 		void AddError (const opencascade::handle<Message_Alert> & theAlert);
 
@@ -297,7 +297,7 @@ class BOPAlgo_Options {
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "* Adds the alert as warning
 	:param theAlert:
-	:type theAlert: opencascade::handle<Message_Alert> &
+	:type theAlert: Message_Alert
 	:rtype: None") AddWarning;
 		void AddWarning (const opencascade::handle<Message_Alert> & theAlert);
 
@@ -317,7 +317,7 @@ class BOPAlgo_Options {
 		%feature("compactdefaultargs") BOPAlgo_Options;
 		%feature("autodoc", "* Constructor with allocator
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_Options;
 		 BOPAlgo_Options (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -371,7 +371,7 @@ class BOPAlgo_Options {
 		%feature("compactdefaultargs") HasError;
 		%feature("autodoc", "* Returns true if algorithm has generated error of specified type
 	:param theType:
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: bool") HasError;
 		Standard_Boolean HasError (const opencascade::handle<Standard_Type> & theType);
 
@@ -385,7 +385,7 @@ class BOPAlgo_Options {
 		%feature("compactdefaultargs") HasWarning;
 		%feature("autodoc", "* Returns true if algorithm has generated warning of specified type
 	:param theType:
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: bool") HasWarning;
 		Standard_Boolean HasWarning (const opencascade::handle<Standard_Type> & theType);
 
@@ -421,7 +421,7 @@ class BOPAlgo_Options {
 		%feature("compactdefaultargs") SetProgressIndicator;
 		%feature("autodoc", "* //!@name Progress indicator Set the Progress Indicator object.
 	:param theObj:
-	:type theObj: opencascade::handle<Message_ProgressIndicator> &
+	:type theObj: Message_ProgressIndicator
 	:rtype: None") SetProgressIndicator;
 		void SetProgressIndicator (const opencascade::handle<Message_ProgressIndicator> & theObj);
 
@@ -541,30 +541,30 @@ class BOPAlgo_Tools {
 		%feature("compactdefaultargs") ClassifyFaces;
 		%feature("autodoc", "* Classifies the faces <theFaces> relatively solids <theSolids>. The IN faces for solids are stored into output data map <theInParts>. //! The map <theSolidsIF> contains INTERNAL faces of the solids, to avoid their additional classification. //! Firstly, it checks the intersection of bounding boxes of the shapes. If the Box is not stored in the <theShapeBoxMap> map, it builds the box. If the bounding boxes of solid and face are interfering the classification is performed. //! It is assumed that all faces and solids are already intersected and do not have any geometrically coinciding parts without topological sharing of these parts
 	:param theFaces:
-	:type theFaces: TopTools_ListOfShape &
+	:type theFaces: TopTools_ListOfShape
 	:param theSolids:
-	:type theSolids: TopTools_ListOfShape &
+	:type theSolids: TopTools_ListOfShape
 	:param theRunParallel:
 	:type theRunParallel: bool
 	:param theContext:
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:param theInParts:
-	:type theInParts: TopTools_IndexedDataMapOfShapeListOfShape &
+	:type theInParts: TopTools_IndexedDataMapOfShapeListOfShape
 	:param theShapeBoxMap: default value is TopTools_DataMapOfShapeBox()
-	:type theShapeBoxMap: TopTools_DataMapOfShapeBox &
+	:type theShapeBoxMap: TopTools_DataMapOfShapeBox
 	:param theSolidsIF: default value is TopTools_DataMapOfShapeListOfShape()
-	:type theSolidsIF: TopTools_DataMapOfShapeListOfShape &
+	:type theSolidsIF: TopTools_DataMapOfShapeListOfShape
 	:rtype: void") ClassifyFaces;
 		static void ClassifyFaces (const TopTools_ListOfShape & theFaces,const TopTools_ListOfShape & theSolids,const Standard_Boolean theRunParallel,opencascade::handle<IntTools_Context> & theContext,TopTools_IndexedDataMapOfShapeListOfShape & theInParts,const TopTools_DataMapOfShapeBox & theShapeBoxMap = TopTools_DataMapOfShapeBox(),const TopTools_DataMapOfShapeListOfShape & theSolidsIF = TopTools_DataMapOfShapeListOfShape());
 
 		/****************** ComputeToleranceOfCB ******************/
 		%feature("compactdefaultargs") ComputeToleranceOfCB;
 		%feature("autodoc", ":param theCB:
-	:type theCB: opencascade::handle<BOPDS_CommonBlock> &
+	:type theCB: BOPDS_CommonBlock
 	:param theDS:
 	:type theDS: BOPDS_PDS
 	:param theContext:
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:rtype: float") ComputeToleranceOfCB;
 		static Standard_Real ComputeToleranceOfCB (const opencascade::handle<BOPDS_CommonBlock> & theCB,const BOPDS_PDS theDS,const opencascade::handle<IntTools_Context> & theContext);
 
@@ -572,9 +572,9 @@ class BOPAlgo_Tools {
 		%feature("compactdefaultargs") EdgesToWires;
 		%feature("autodoc", "* Creates planar wires from the given edges. The input edges are expected to be planar. And for the performance sake the method does not check if the edges are really planar. Thus, the result wires will also be not planar if the input edges are not planar. The edges may be not shared, but the resulting wires will be sharing the coinciding parts and intersecting parts. The output wires may be non-manifold and contain free and multi-connected vertices. Parameters: <theEdges> - input edges; <theWires> - output wires; <theShared> - boolean flag which defines whether the input edges are already shared or have to be intersected; <theAngTol> - the angular tolerance which will be used for distinguishing the planes in which the edges are located. Default value is 1.e-8 which is used for intersection of planes in IntTools_FaceFace. Method returns the following error statuses: 0 - in case of success (at least one wire has been built); 1 - in case there are no edges in the given shape; 2 - sharing of the edges has failed.
 	:param theEdges:
-	:type theEdges: TopoDS_Shape &
+	:type theEdges: TopoDS_Shape
 	:param theWires:
-	:type theWires: TopoDS_Shape &
+	:type theWires: TopoDS_Shape
 	:param theShared: default value is Standard_False
 	:type theShared: bool
 	:param theAngTol: default value is 1e-8
@@ -586,13 +586,13 @@ class BOPAlgo_Tools {
 		%feature("compactdefaultargs") FillInternals;
 		%feature("autodoc", "* Classifies the given parts relatively the given solids and fills the solids with the parts classified as INTERNAL. //! @param theSolids - The solids to put internals to @param theParts - The parts to classify relatively solids @param theImages - Possible images of the parts that has to be classified @param theContext - Cashed geometrical tools to speed-up classifications
 	:param theSolids:
-	:type theSolids: TopTools_ListOfShape &
+	:type theSolids: TopTools_ListOfShape
 	:param theParts:
-	:type theParts: TopTools_ListOfShape &
+	:type theParts: TopTools_ListOfShape
 	:param theImages:
-	:type theImages: TopTools_DataMapOfShapeListOfShape &
+	:type theImages: TopTools_DataMapOfShapeListOfShape
 	:param theContext:
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:rtype: void") FillInternals;
 		static void FillInternals (const TopTools_ListOfShape & theSolids,const TopTools_ListOfShape & theParts,const TopTools_DataMapOfShapeListOfShape & theImages,const opencascade::handle<IntTools_Context> & theContext);
 
@@ -600,11 +600,11 @@ class BOPAlgo_Tools {
 		%feature("compactdefaultargs") IntersectVertices;
 		%feature("autodoc", "* Finds chains of intersecting vertices
 	:param theVertices:
-	:type theVertices: TopTools_IndexedDataMapOfShapeReal &
+	:type theVertices: TopTools_IndexedDataMapOfShapeReal
 	:param theFuzzyValue:
 	:type theFuzzyValue: float
 	:param theChains:
-	:type theChains: TopTools_ListOfListOfShape &
+	:type theChains: TopTools_ListOfListOfShape
 	:rtype: void") IntersectVertices;
 		static void IntersectVertices (const TopTools_IndexedDataMapOfShapeReal & theVertices,const Standard_Real theFuzzyValue,TopTools_ListOfListOfShape & theChains);
 
@@ -612,13 +612,13 @@ class BOPAlgo_Tools {
 		%feature("compactdefaultargs") PerformCommonBlocks;
 		%feature("autodoc", "* Create Common Blocks from the groups of pave blocks of <theMBlocks> connection map.
 	:param theMBlocks:
-	:type theMBlocks: BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock &
+	:type theMBlocks: BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:param theDS:
-	:type theDS: BOPDS_PDS &
+	:type theDS: BOPDS_PDS
 	:param theContext: default value is opencascade::handle<IntTools_Context>()
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:rtype: void") PerformCommonBlocks;
 		static void PerformCommonBlocks (BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock & theMBlocks,const opencascade::handle<NCollection_BaseAllocator> & theAllocator,BOPDS_PDS & theDS,const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -626,13 +626,13 @@ class BOPAlgo_Tools {
 		%feature("compactdefaultargs") PerformCommonBlocks;
 		%feature("autodoc", "* Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
 	:param theMBlocks:
-	:type theMBlocks: BOPDS_IndexedDataMapOfPaveBlockListOfInteger &
+	:type theMBlocks: BOPDS_IndexedDataMapOfPaveBlockListOfInteger
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:param pDS:
-	:type pDS: BOPDS_PDS &
+	:type pDS: BOPDS_PDS
 	:param theContext: default value is opencascade::handle<IntTools_Context>()
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:rtype: void") PerformCommonBlocks;
 		static void PerformCommonBlocks (const BOPDS_IndexedDataMapOfPaveBlockListOfInteger & theMBlocks,const opencascade::handle<NCollection_BaseAllocator> & theAllocator,BOPDS_PDS & pDS,const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
@@ -640,11 +640,11 @@ class BOPAlgo_Tools {
 		%feature("compactdefaultargs") TreatCompound;
 		%feature("autodoc", "* Collect in the output list recursively all non-compound subshapes of the first level of the given shape theS. If a shape presents in the map theMFence it is skipped. All shapes put in the output are also added into theMFence.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:param theMFence:
-	:type theMFence: TopTools_MapOfShape &
+	:type theMFence: TopTools_MapOfShape
 	:param theLS:
-	:type theLS: TopTools_ListOfShape &
+	:type theLS: TopTools_ListOfShape
 	:rtype: void") TreatCompound;
 		static void TreatCompound (const TopoDS_Shape & theS,TopTools_MapOfShape & theMFence,TopTools_ListOfShape & theLS);
 
@@ -652,9 +652,9 @@ class BOPAlgo_Tools {
 		%feature("compactdefaultargs") WiresToFaces;
 		%feature("autodoc", "* Creates planar faces from given planar wires. The method does not check if the wires are really planar. The input wires may be non-manifold but should be shared. The wires located in the same planes and included into other wires will create holes in the faces built from outer wires. The tolerance values of the input shapes may be modified during the operation due to projection of the edges on the planes for creation of 2D curves. Parameters: <theWires> - the given wires; <theFaces> - the output faces; <theAngTol> - the angular tolerance for distinguishing the planes in which the wires are located. Default value is 1.e-8 which is used for intersection of planes in IntTools_FaceFace. Method returns True in case of success, i.e. at least one face has been built.
 	:param theWires:
-	:type theWires: TopoDS_Shape &
+	:type theWires: TopoDS_Shape
 	:param theFaces:
-	:type theFaces: TopoDS_Shape &
+	:type theFaces: TopoDS_Shape
 	:param theAngTol: default value is 1e-8
 	:type theAngTol: float
 	:rtype: bool") WiresToFaces;
@@ -678,14 +678,14 @@ class BOPAlgo_WireEdgeSet {
 		/****************** AddShape ******************/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", ":param sS:
-	:type sS: TopoDS_Shape &
+	:type sS: TopoDS_Shape
 	:rtype: None") AddShape;
 		void AddShape (const TopoDS_Shape & sS);
 
 		/****************** AddStartElement ******************/
 		%feature("compactdefaultargs") AddStartElement;
 		%feature("autodoc", ":param sS:
-	:type sS: TopoDS_Shape &
+	:type sS: TopoDS_Shape
 	:rtype: None") AddStartElement;
 		void AddStartElement (const TopoDS_Shape & sS);
 
@@ -697,7 +697,7 @@ class BOPAlgo_WireEdgeSet {
 		/****************** BOPAlgo_WireEdgeSet ******************/
 		%feature("compactdefaultargs") BOPAlgo_WireEdgeSet;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_WireEdgeSet;
 		 BOPAlgo_WireEdgeSet (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -714,7 +714,7 @@ class BOPAlgo_WireEdgeSet {
 		/****************** SetFace ******************/
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", ":param aF:
-	:type aF: TopoDS_Face &
+	:type aF: TopoDS_Face
 	:rtype: None") SetFace;
 		void SetFace (const TopoDS_Face & aF);
 
@@ -768,7 +768,7 @@ class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 		%feature("compactdefaultargs") AddArgument;
 		%feature("autodoc", "* Adds the shape to the arguments. @param theS [in] One of the argument shapes.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: None") AddArgument;
 		void AddArgument (const TopoDS_Shape & theS);
 
@@ -800,7 +800,7 @@ class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 		%feature("compactdefaultargs") GetModified;
 		%feature("autodoc", "* Returns the list of shapes modified from the given shape. @param theS [in] The shape for which the modified shapes are necessary.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") GetModified;
 		const TopTools_ListOfShape & GetModified (const TopoDS_Shape & theS);
 
@@ -808,7 +808,7 @@ class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 		%feature("compactdefaultargs") GetOrigins;
 		%feature("autodoc", "* Returns the list of original shapes from which the current shape has been created. @param theS [in] The shape for which the origins are necessary.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") GetOrigins;
 		const TopTools_ListOfShape & GetOrigins (const TopoDS_Shape & theS);
 
@@ -822,7 +822,7 @@ class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 		%feature("compactdefaultargs") MakePeriodic;
 		%feature("autodoc", "* @name Shape periodicity & repetition Makes the connected shape periodic. Repeated calls of this method overwrite the previous calls working with the basis connected shape. @param theParams [in] Periodic options.
 	:param theParams:
-	:type theParams: BOPAlgo_MakePeriodic::PeriodicityParams &
+	:type theParams: BOPAlgo_MakePeriodic::PeriodicityParams
 	:rtype: None") MakePeriodic;
 		void MakePeriodic (const BOPAlgo_MakePeriodic::PeriodicityParams & theParams);
 
@@ -830,7 +830,7 @@ class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 		%feature("compactdefaultargs") MaterialsOnNegativeSide;
 		%feature("autodoc", "* Returns the original shapes which images contain the the given shape with REVERSED orientation. @param theS [in] The shape for which the materials are necessary.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") MaterialsOnNegativeSide;
 		const TopTools_ListOfShape & MaterialsOnNegativeSide (const TopoDS_Shape & theS);
 
@@ -838,7 +838,7 @@ class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 		%feature("compactdefaultargs") MaterialsOnPositiveSide;
 		%feature("autodoc", "* @name Material transitions Returns the original shapes which images contain the the given shape with FORWARD orientation. @param theS [in] The shape for which the materials are necessary.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") MaterialsOnPositiveSide;
 		const TopTools_ListOfShape & MaterialsOnPositiveSide (const TopoDS_Shape & theS);
 
@@ -874,7 +874,7 @@ class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 		%feature("compactdefaultargs") SetArguments;
 		%feature("autodoc", "* @name Setters for the shapes to make connected Sets the shape for making them connected. @param theArgs [in] The arguments for the operation.
 	:param theArgs:
-	:type theArgs: TopTools_ListOfShape &
+	:type theArgs: TopTools_ListOfShape
 	:rtype: None") SetArguments;
 		void SetArguments (const TopTools_ListOfShape & theArgs);
 
@@ -922,7 +922,7 @@ class BOPAlgo_MakePeriodic : public BOPAlgo_Options {
 		%feature("compactdefaultargs") GetTwins;
 		%feature("autodoc", "* @name Getting the identical shapes Returns the identical shapes for the given shape located on the opposite periodic side. Returns empty list in case the shape has no twin. //! @param theS [in] Shape to get the twins for.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") GetTwins;
 		const TopTools_ListOfShape & GetTwins (const TopoDS_Shape & theS);
 
@@ -1073,7 +1073,7 @@ class BOPAlgo_MakePeriodic : public BOPAlgo_Options {
 		%feature("compactdefaultargs") SetPeriodicityParameters;
 		%feature("autodoc", "* //!< Array of start parameters of the XYZ periods: required for trimming @name Setters/Getters for periodicity parameters structure Sets the periodicity parameters. @param theParams [in] Periodicity parameters
 	:param theParams:
-	:type theParams: PeriodicityParams &
+	:type theParams: PeriodicityParams
 	:rtype: None") SetPeriodicityParameters;
 		void SetPeriodicityParameters (const PeriodicityParams & theParams);
 
@@ -1081,7 +1081,7 @@ class BOPAlgo_MakePeriodic : public BOPAlgo_Options {
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "* @name Setting the shape to make it periodic Sets the shape to make it periodic. @param theShape [in] The shape to make periodic.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") SetShape;
 		void SetShape (const TopoDS_Shape & theShape);
 
@@ -1353,7 +1353,7 @@ class BOPAlgo_ArgumentAnalyzer : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") SetShape1;
 		%feature("autodoc", "* sets object shape
 	:param TheShape:
-	:type TheShape: TopoDS_Shape &
+	:type TheShape: TopoDS_Shape
 	:rtype: None") SetShape1;
 		void SetShape1 (const TopoDS_Shape & TheShape);
 
@@ -1361,7 +1361,7 @@ class BOPAlgo_ArgumentAnalyzer : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") SetShape2;
 		%feature("autodoc", "* sets tool shape
 	:param TheShape:
-	:type TheShape: TopoDS_Shape &
+	:type TheShape: TopoDS_Shape
 	:rtype: None") SetShape2;
 		void SetShape2 (const TopoDS_Shape & TheShape);
 
@@ -1450,7 +1450,7 @@ class BOPAlgo_BuilderArea : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Sets the context for the algorithms
 	:param theContext:
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:rtype: None") SetContext;
 		void SetContext (const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1458,7 +1458,7 @@ class BOPAlgo_BuilderArea : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") SetShapes;
 		%feature("autodoc", "* Sets the shapes for building areas
 	:param theLS:
-	:type theLS: TopTools_ListOfShape &
+	:type theLS: TopTools_ListOfShape
 	:rtype: None") SetShapes;
 		void SetShapes (const TopTools_ListOfShape & theLS);
 
@@ -1487,7 +1487,7 @@ class BOPAlgo_BuilderShape : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns the list of shapes Generated from the shape theS.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Generated;
 		const TopTools_ListOfShape & Generated (const TopoDS_Shape & theS);
 
@@ -1525,7 +1525,7 @@ class BOPAlgo_BuilderShape : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "* Returns true if the shape theS has been deleted. In this case the shape will have no Modified elements, but can have Generated elements.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: bool") IsDeleted;
 		Standard_Boolean IsDeleted (const TopoDS_Shape & theS);
 
@@ -1533,7 +1533,7 @@ class BOPAlgo_BuilderShape : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "* @name History methods Returns the list of shapes Modified from the shape theS.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Modified;
 		const TopTools_ListOfShape & Modified (const TopoDS_Shape & theS);
 
@@ -1570,7 +1570,7 @@ class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") AddArgument;
 		%feature("autodoc", "* Adds the argument for operation
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") AddArgument;
 		void AddArgument (const TopoDS_Shape & theShape);
 
@@ -1588,7 +1588,7 @@ class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 		/****************** BOPAlgo_PaveFiller ******************/
 		%feature("compactdefaultargs") BOPAlgo_PaveFiller;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_PaveFiller;
 		 BOPAlgo_PaveFiller (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -1634,7 +1634,7 @@ class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") SetArguments;
 		%feature("autodoc", "* Sets the arguments for operation
 	:param theLS:
-	:type theLS: TopTools_ListOfShape &
+	:type theLS: TopTools_ListOfShape
 	:rtype: None") SetArguments;
 		void SetArguments (const TopTools_ListOfShape & theLS);
 
@@ -1665,7 +1665,7 @@ class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 		/****************** SetSectionAttribute ******************/
 		%feature("compactdefaultargs") SetSectionAttribute;
 		%feature("autodoc", ":param theSecAttr:
-	:type theSecAttr: BOPAlgo_SectionAttribute &
+	:type theSecAttr: BOPAlgo_SectionAttribute
 	:rtype: None") SetSectionAttribute;
 		void SetSectionAttribute (const BOPAlgo_SectionAttribute & theSecAttr);
 
@@ -1688,7 +1688,7 @@ class BOPAlgo_ShellSplitter : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") AddStartElement;
 		%feature("autodoc", "* adds a face <theS> to process
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: None") AddStartElement;
 		void AddStartElement (const TopoDS_Shape & theS);
 
@@ -1702,7 +1702,7 @@ class BOPAlgo_ShellSplitter : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") BOPAlgo_ShellSplitter;
 		%feature("autodoc", "* constructor
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_ShellSplitter;
 		 BOPAlgo_ShellSplitter (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -1721,7 +1721,7 @@ class BOPAlgo_ShellSplitter : public BOPAlgo_Algo {
 		/****************** SplitBlock ******************/
 		%feature("compactdefaultargs") SplitBlock;
 		%feature("autodoc", ":param theCB:
-	:type theCB: BOPTools_ConnexityBlock &
+	:type theCB: BOPTools_ConnexityBlock
 	:rtype: void") SplitBlock;
 		static void SplitBlock (BOPTools_ConnexityBlock & theCB);
 
@@ -1754,7 +1754,7 @@ class BOPAlgo_WireSplitter : public BOPAlgo_Algo {
 		/****************** BOPAlgo_WireSplitter ******************/
 		%feature("compactdefaultargs") BOPAlgo_WireSplitter;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_WireSplitter;
 		 BOPAlgo_WireSplitter (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -1767,9 +1767,9 @@ class BOPAlgo_WireSplitter : public BOPAlgo_Algo {
 		/****************** MakeWire ******************/
 		%feature("compactdefaultargs") MakeWire;
 		%feature("autodoc", ":param theLE:
-	:type theLE: TopTools_ListOfShape &
+	:type theLE: TopTools_ListOfShape
 	:param theW:
-	:type theW: TopoDS_Wire &
+	:type theW: TopoDS_Wire
 	:rtype: None") MakeWire;
 		static void MakeWire (TopTools_ListOfShape & theLE,TopoDS_Wire & theW);
 
@@ -1782,25 +1782,25 @@ class BOPAlgo_WireSplitter : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Sets the context for the algorithm
 	:param theContext:
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:rtype: None") SetContext;
 		void SetContext (const opencascade::handle<IntTools_Context> & theContext);
 
 		/****************** SetWES ******************/
 		%feature("compactdefaultargs") SetWES;
 		%feature("autodoc", ":param theWES:
-	:type theWES: BOPAlgo_WireEdgeSet &
+	:type theWES: BOPAlgo_WireEdgeSet
 	:rtype: None") SetWES;
 		void SetWES (const BOPAlgo_WireEdgeSet & theWES);
 
 		/****************** SplitBlock ******************/
 		%feature("compactdefaultargs") SplitBlock;
 		%feature("autodoc", ":param theF:
-	:type theF: TopoDS_Face &
+	:type theF: TopoDS_Face
 	:param theCB:
-	:type theCB: BOPTools_ConnexityBlock &
+	:type theCB: BOPTools_ConnexityBlock
 	:param theContext:
-	:type theContext: opencascade::handle<IntTools_Context> &
+	:type theContext: IntTools_Context
 	:rtype: void") SplitBlock;
 		static void SplitBlock (const TopoDS_Face & theF,BOPTools_ConnexityBlock & theCB,const opencascade::handle<IntTools_Context> & theContext);
 
@@ -1828,7 +1828,7 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 		%feature("compactdefaultargs") AddArgument;
 		%feature("autodoc", "* @name Arguments Adds the argument to the operation.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: void") AddArgument;
 		virtual void AddArgument (const TopoDS_Shape & theShape);
 
@@ -1847,7 +1847,7 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 		/****************** BOPAlgo_Builder ******************/
 		%feature("compactdefaultargs") BOPAlgo_Builder;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_Builder;
 		 BOPAlgo_Builder (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -1855,15 +1855,15 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 		%feature("compactdefaultargs") BuildBOP;
 		%feature("autodoc", "* @name BOPs on open solids Builds the result shape according to the given states for the objects and tools. These states can be unambiguously converted into the Boolean operation type. Thus, it performs the Boolean operation on the given groups of shapes. //! The result is built basing on the result of Builder operation (GF or any other). The only condition for the Builder is that the splits of faces should be created and classified relatively solids. //! The method uses classification approach for choosing the faces which will participate in building the result shape: - All faces from each group having the given state for the opposite group will be taken into result. //! Such approach shows better results (in comparison with BOPAlgo_BuilderSolid approach) when working with open solids. However, the result may not be always correct on such data (at least, not as expected) as the correct classification of the faces relatively open solids is not always possible and may vary depending on the chosen classification point on the face. //! History is not created for the solids in this method. //! To avoid pollution of the report of Builder algorithm, there is a possibility to pass the different report to collect the alerts of the method only. But, if the new report is not given, the Builder report will be used. So, even if Builder passed without any errors, but some error has been stored into its report in this method, for the following calls the Builder report must be cleared. //! The method may set the following errors: - BOPAlgo_AlertBuilderFailed - Building operation has not been performed yet or failed; - BOPAlgo_AlertBOPNotSet - invalid BOP type is given (COMMON/FUSE/CUT/CUT21 are supported); - BOPAlgo_AlertTooFewArguments - arguments are not given; - BOPAlgo_AlertUnknownShape - the shape is unknown for the operation. //! Parameters: @param theObjects - The group of Objects for BOP; @param theObjState - State for objects faces to pass into result; @param theTools - The group of Tools for BOP; @param theObjState - State for tools faces to pass into result; @param theReport - The alternative report to avoid pollution of the main one.
 	:param theObjects:
-	:type theObjects: TopTools_ListOfShape &
+	:type theObjects: TopTools_ListOfShape
 	:param theObjState:
 	:type theObjState: TopAbs_State
 	:param theTools:
-	:type theTools: TopTools_ListOfShape &
+	:type theTools: TopTools_ListOfShape
 	:param theToolsState:
 	:type theToolsState: TopAbs_State
 	:param theReport: default value is NULL
-	:type theReport: opencascade::handle<Message_Report>
+	:type theReport: Message_Report
 	:rtype: void") BuildBOP;
 		virtual void BuildBOP (const TopTools_ListOfShape & theObjects,const TopAbs_State theObjState,const TopTools_ListOfShape & theTools,const TopAbs_State theToolsState,opencascade::handle<Message_Report> theReport = NULL);
 
@@ -1871,13 +1871,13 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 		%feature("compactdefaultargs") BuildBOP;
 		%feature("autodoc", "* Builds the result of Boolean operation of given type basing on the result of Builder operation (GF or any other). //! The method converts the given type of operation into the states for the objects and tools required for their face to pass into result and performs the call to the same method, but with states instead of operation type. //! The conversion looks as follows: - COMMON is built from the faces of objects located IN any of the tools and vice versa. - FUSE is built from the faces OUT of all given shapes; - CUT is built from the faces of the objects OUT of the tools and faces of the tools located IN solids of the objects. //! @param theObjects - The group of Objects for BOP; @param theTools - The group of Tools for BOP; @param theOperation - The BOP type; @param theReport - The alternative report to avoid pollution of the global one.
 	:param theObjects:
-	:type theObjects: TopTools_ListOfShape &
+	:type theObjects: TopTools_ListOfShape
 	:param theTools:
-	:type theTools: TopTools_ListOfShape &
+	:type theTools: TopTools_ListOfShape
 	:param theOperation:
 	:type theOperation: BOPAlgo_Operation
 	:param theReport: default value is NULL
-	:type theReport: opencascade::handle<Message_Report>
+	:type theReport: Message_Report
 	:rtype: None") BuildBOP;
 		void BuildBOP (const TopTools_ListOfShape & theObjects,const TopTools_ListOfShape & theTools,const BOPAlgo_Operation theOperation,opencascade::handle<Message_Report> theReport = NULL);
 
@@ -1945,7 +1945,7 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 		%feature("compactdefaultargs") PerformWithFiller;
 		%feature("autodoc", "* Performs the operation with the prepared filler. The intersection will not be performed in this case.
 	:param theFiller:
-	:type theFiller: BOPAlgo_PaveFiller &
+	:type theFiller: BOPAlgo_PaveFiller
 	:rtype: void") PerformWithFiller;
 		virtual void PerformWithFiller (const BOPAlgo_PaveFiller & theFiller);
 
@@ -1953,7 +1953,7 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 		%feature("compactdefaultargs") SetArguments;
 		%feature("autodoc", "* Sets the list of arguments for the operation.
 	:param theLS:
-	:type theLS: TopTools_ListOfShape &
+	:type theLS: TopTools_ListOfShape
 	:rtype: void") SetArguments;
 		virtual void SetArguments (const TopTools_ListOfShape & theLS);
 
@@ -2010,7 +2010,7 @@ class BOPAlgo_BuilderFace : public BOPAlgo_BuilderArea {
 		/****************** BOPAlgo_BuilderFace ******************/
 		%feature("compactdefaultargs") BOPAlgo_BuilderFace;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_BuilderFace;
 		 BOPAlgo_BuilderFace (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2035,7 +2035,7 @@ class BOPAlgo_BuilderFace : public BOPAlgo_BuilderArea {
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", "* Sets the face generatix
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: None") SetFace;
 		void SetFace (const TopoDS_Face & theFace);
 
@@ -2064,7 +2064,7 @@ class BOPAlgo_BuilderSolid : public BOPAlgo_BuilderArea {
 		%feature("compactdefaultargs") BOPAlgo_BuilderSolid;
 		%feature("autodoc", "* Constructor with allocator
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_BuilderSolid;
 		 BOPAlgo_BuilderSolid (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2132,7 +2132,7 @@ class BOPAlgo_RemoveFeatures : public BOPAlgo_BuilderShape {
 		%feature("compactdefaultargs") AddFaceToRemove;
 		%feature("autodoc", "* Adds the face to remove from the input shape. @param theFace [in] The shape to extract the faces for removal.
 	:param theFace:
-	:type theFace: TopoDS_Shape &
+	:type theFace: TopoDS_Shape
 	:rtype: None") AddFaceToRemove;
 		void AddFaceToRemove (const TopoDS_Shape & theFace);
 
@@ -2140,7 +2140,7 @@ class BOPAlgo_RemoveFeatures : public BOPAlgo_BuilderShape {
 		%feature("compactdefaultargs") AddFacesToRemove;
 		%feature("autodoc", "* Adds the faces to remove from the input shape. @param theFaces [in] The list of shapes to extract the faces for removal.
 	:param theFaces:
-	:type theFaces: TopTools_ListOfShape &
+	:type theFaces: TopTools_ListOfShape
 	:rtype: None") AddFacesToRemove;
 		void AddFacesToRemove (const TopTools_ListOfShape & theFaces);
 
@@ -2178,7 +2178,7 @@ class BOPAlgo_RemoveFeatures : public BOPAlgo_BuilderShape {
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "* @name Setting input data for the algorithm Sets the shape for processing. @param theShape [in] The shape to remove the faces from.  It should either be the SOLID, COMPSOLID or COMPOUND of Solids.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") SetShape;
 		void SetShape (const TopoDS_Shape & theShape);
 
@@ -2211,9 +2211,9 @@ class BOPAlgo_CellsBuilder : public BOPAlgo_Builder {
 		%feature("compactdefaultargs") AddToResult;
 		%feature("autodoc", "* Adding the parts to result. The parts are defined by two lists of shapes: <theLSToTake> defines the arguments which parts should be taken into result; <theLSToAvoid> defines the arguments which parts should not be taken into result; To be taken into result the part must be IN for all shapes from the list <theLSToTake> and must be OUT of all shapes from the list <theLSToAvoid>. To remove internal boundaries between any cells in the result <theMaterial> variable should be used. The boundaries between cells with the same material will be removed. Default value is 0. Thus, to remove any boundary the value of this variable should not be equal to 0. <theUpdate> parameter defines whether to remove boundaries now or not.
 	:param theLSToTake:
-	:type theLSToTake: TopTools_ListOfShape &
+	:type theLSToTake: TopTools_ListOfShape
 	:param theLSToAvoid:
-	:type theLSToAvoid: TopTools_ListOfShape &
+	:type theLSToAvoid: TopTools_ListOfShape
 	:param theMaterial: default value is 0
 	:type theMaterial: int
 	:param theUpdate: default value is Standard_False
@@ -2229,7 +2229,7 @@ class BOPAlgo_CellsBuilder : public BOPAlgo_Builder {
 		/****************** BOPAlgo_CellsBuilder ******************/
 		%feature("compactdefaultargs") BOPAlgo_CellsBuilder;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_CellsBuilder;
 		 BOPAlgo_CellsBuilder (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2261,9 +2261,9 @@ class BOPAlgo_CellsBuilder : public BOPAlgo_Builder {
 		%feature("compactdefaultargs") RemoveFromResult;
 		%feature("autodoc", "* Removing the parts from result. The parts are defined by two lists of shapes: <theLSToTake> defines the arguments which parts should be removed from result; <theLSToAvoid> defines the arguments which parts should not be removed from result. To be removed from the result the part must be IN for all shapes from the list <theLSToTake> and must be OUT of all shapes from the list <theLSToAvoid>.
 	:param theLSToTake:
-	:type theLSToTake: TopTools_ListOfShape &
+	:type theLSToTake: TopTools_ListOfShape
 	:param theLSToAvoid:
-	:type theLSToAvoid: TopTools_ListOfShape &
+	:type theLSToAvoid: TopTools_ListOfShape
 	:rtype: None") RemoveFromResult;
 		void RemoveFromResult (const TopTools_ListOfShape & theLSToTake,const TopTools_ListOfShape & theLSToAvoid);
 
@@ -2298,7 +2298,7 @@ class BOPAlgo_MakerVolume : public BOPAlgo_Builder {
 		%feature("compactdefaultargs") BOPAlgo_MakerVolume;
 		%feature("autodoc", "* Empty contructor.
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_MakerVolume;
 		 BOPAlgo_MakerVolume (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2379,7 +2379,7 @@ class BOPAlgo_Section : public BOPAlgo_Builder {
 		%feature("compactdefaultargs") BOPAlgo_Section;
 		%feature("autodoc", "* Constructor with allocator
 	:param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_Section;
 		 BOPAlgo_Section (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2402,7 +2402,7 @@ class BOPAlgo_ToolsProvider : public BOPAlgo_Builder {
 		%feature("compactdefaultargs") AddTool;
 		%feature("autodoc", "* Adds Tool argument of the operation
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: void") AddTool;
 		virtual void AddTool (const TopoDS_Shape & theShape);
 
@@ -2415,7 +2415,7 @@ class BOPAlgo_ToolsProvider : public BOPAlgo_Builder {
 		/****************** BOPAlgo_ToolsProvider ******************/
 		%feature("compactdefaultargs") BOPAlgo_ToolsProvider;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_ToolsProvider;
 		 BOPAlgo_ToolsProvider (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2429,7 +2429,7 @@ class BOPAlgo_ToolsProvider : public BOPAlgo_Builder {
 		%feature("compactdefaultargs") SetTools;
 		%feature("autodoc", "* Adds the Tool arguments of the operation
 	:param theShapes:
-	:type theShapes: TopTools_ListOfShape &
+	:type theShapes: TopTools_ListOfShape
 	:rtype: void") SetTools;
 		virtual void SetTools (const TopTools_ListOfShape & theShapes);
 
@@ -2463,7 +2463,7 @@ class BOPAlgo_BOP : public BOPAlgo_ToolsProvider {
 		/****************** BOPAlgo_BOP ******************/
 		%feature("compactdefaultargs") BOPAlgo_BOP;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_BOP;
 		 BOPAlgo_BOP (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
@@ -2514,7 +2514,7 @@ class BOPAlgo_Splitter : public BOPAlgo_ToolsProvider {
 		/****************** BOPAlgo_Splitter ******************/
 		%feature("compactdefaultargs") BOPAlgo_Splitter;
 		%feature("autodoc", ":param theAllocator:
-	:type theAllocator: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAllocator: NCollection_BaseAllocator
 	:rtype: None") BOPAlgo_Splitter;
 		 BOPAlgo_Splitter (const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 

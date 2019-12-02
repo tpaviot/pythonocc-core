@@ -95,7 +95,7 @@ class BRepTopAdaptor_FClass2d {
 		/****************** BRepTopAdaptor_FClass2d ******************/
 		%feature("compactdefaultargs") BRepTopAdaptor_FClass2d;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Tol:
 	:type Tol: float
 	:rtype: None") BRepTopAdaptor_FClass2d;
@@ -104,7 +104,7 @@ class BRepTopAdaptor_FClass2d {
 		/****************** Copy ******************/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", ":param Other:
-	:type Other: BRepTopAdaptor_FClass2d &
+	:type Other: BRepTopAdaptor_FClass2d
 	:rtype: BRepTopAdaptor_FClass2d") Copy;
 		const BRepTopAdaptor_FClass2d & Copy (const BRepTopAdaptor_FClass2d & Other);
 
@@ -142,7 +142,7 @@ class BRepTopAdaptor_FClass2d {
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param Other:
-	:type Other: BRepTopAdaptor_FClass2d &
+	:type Other: BRepTopAdaptor_FClass2d
 	:rtype: BRepTopAdaptor_FClass2d") operator =;
 		const BRepTopAdaptor_FClass2d & operator = (const BRepTopAdaptor_FClass2d & Other);
 
@@ -164,9 +164,9 @@ class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 		/****************** BRepTopAdaptor_HVertex ******************/
 		%feature("compactdefaultargs") BRepTopAdaptor_HVertex;
 		%feature("autodoc", ":param Vtx:
-	:type Vtx: TopoDS_Vertex &
+	:type Vtx: TopoDS_Vertex
 	:param Curve:
-	:type Curve: opencascade::handle<BRepAdaptor_HCurve2d> &
+	:type Curve: BRepAdaptor_HCurve2d
 	:rtype: None") BRepTopAdaptor_HVertex;
 		 BRepTopAdaptor_HVertex (const TopoDS_Vertex & Vtx,const opencascade::handle<BRepAdaptor_HCurve2d> & Curve);
 
@@ -178,7 +178,7 @@ class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 		/****************** IsSame ******************/
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", ":param Other:
-	:type Other: opencascade::handle<Adaptor3d_HVertex> &
+	:type Other: Adaptor3d_HVertex
 	:rtype: bool") IsSame;
 		virtual Standard_Boolean IsSame (const opencascade::handle<Adaptor3d_HVertex> & Other);
 
@@ -190,7 +190,7 @@ class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: float") Parameter;
 		virtual Standard_Real Parameter (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -198,7 +198,7 @@ class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "* Parametric resolution (2d).
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: float") Resolution;
 		virtual Standard_Real Resolution (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -237,7 +237,7 @@ class BRepTopAdaptor_Tool {
 		/****************** BRepTopAdaptor_Tool ******************/
 		%feature("compactdefaultargs") BRepTopAdaptor_Tool;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Tol2d:
 	:type Tol2d: float
 	:rtype: None") BRepTopAdaptor_Tool;
@@ -246,7 +246,7 @@ class BRepTopAdaptor_Tool {
 		/****************** BRepTopAdaptor_Tool ******************/
 		%feature("compactdefaultargs") BRepTopAdaptor_Tool;
 		%feature("autodoc", ":param Surface:
-	:type Surface: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surface: Adaptor3d_HSurface
 	:param Tol2d:
 	:type Tol2d: float
 	:rtype: None") BRepTopAdaptor_Tool;
@@ -270,7 +270,7 @@ class BRepTopAdaptor_Tool {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Tol2d:
 	:type Tol2d: float
 	:rtype: None") Init;
@@ -279,7 +279,7 @@ class BRepTopAdaptor_Tool {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Surface:
-	:type Surface: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surface: Adaptor3d_HSurface
 	:param Tol2d:
 	:type Tol2d: float
 	:rtype: None") Init;
@@ -288,7 +288,7 @@ class BRepTopAdaptor_Tool {
 		/****************** SetTopolTool ******************/
 		%feature("compactdefaultargs") SetTopolTool;
 		%feature("autodoc", ":param TT:
-	:type TT: opencascade::handle<BRepTopAdaptor_TopolTool> &
+	:type TT: BRepTopAdaptor_TopolTool
 	:rtype: None") SetTopolTool;
 		void SetTopolTool (const opencascade::handle<BRepTopAdaptor_TopolTool> & TT);
 
@@ -315,7 +315,7 @@ class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 		/****************** BRepTopAdaptor_TopolTool ******************/
 		%feature("compactdefaultargs") BRepTopAdaptor_TopolTool;
 		%feature("autodoc", ":param Surface:
-	:type Surface: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surface: Adaptor3d_HSurface
 	:rtype: None") BRepTopAdaptor_TopolTool;
 		 BRepTopAdaptor_TopolTool (const opencascade::handle<Adaptor3d_HSurface> & Surface);
 
@@ -374,14 +374,14 @@ class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: void") Initialize;
 		virtual void Initialize (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param Curve:
-	:type Curve: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Curve: Adaptor2d_HCurve2d
 	:rtype: void") Initialize;
 		virtual void Initialize (const opencascade::handle<Adaptor2d_HCurve2d> & Curve);
 
@@ -439,7 +439,7 @@ class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "* If the function returns the orientation of the arc. If the orientation is FORWARD or REVERSED, the arc is a 'real' limit of the surface. If the orientation is INTERNAL or EXTERNAL, the arc is considered as an arc on the surface.
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: TopAbs_Orientation") Orientation;
 		virtual TopAbs_Orientation Orientation (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -447,7 +447,7 @@ class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "* If the function returns the orientation of the arc. If the orientation is FORWARD or REVERSED, the arc is a 'real' limit of the surface. If the orientation is INTERNAL or EXTERNAL, the arc is considered as an arc on the surface.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HVertex> &
+	:type C: Adaptor3d_HVertex
 	:rtype: TopAbs_Orientation") Orientation;
 		virtual TopAbs_Orientation Orientation (const opencascade::handle<Adaptor3d_HVertex> & C);
 
@@ -455,7 +455,7 @@ class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "* returns 3d point of the vertex V
 	:param V:
-	:type V: opencascade::handle<Adaptor3d_HVertex> &
+	:type V: Adaptor3d_HVertex
 	:rtype: gp_Pnt") Pnt;
 		virtual gp_Pnt Pnt (const opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -474,7 +474,7 @@ class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "* returns 3d tolerance of the arc C
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: float") Tol3d;
 		virtual Standard_Real Tol3d (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -482,7 +482,7 @@ class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "* returns 3d tolerance of the vertex V
 	:param V:
-	:type V: opencascade::handle<Adaptor3d_HVertex> &
+	:type V: Adaptor3d_HVertex
 	:rtype: float") Tol3d;
 		virtual Standard_Real Tol3d (const opencascade::handle<Adaptor3d_HVertex> & V);
 

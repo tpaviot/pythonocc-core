@@ -88,7 +88,7 @@ class GeomAdaptor {
 		%feature("compactdefaultargs") MakeCurve;
 		%feature("autodoc", "* Inherited from GHCurve. Provides a curve handled by reference. Build a Geom_Curve using the informations from the Curve from Adaptor3d
 	:param C:
-	:type C: Adaptor3d_Curve &
+	:type C: Adaptor3d_Curve
 	:rtype: opencascade::handle<Geom_Curve>") MakeCurve;
 		static opencascade::handle<Geom_Curve> MakeCurve (const Adaptor3d_Curve & C);
 
@@ -96,7 +96,7 @@ class GeomAdaptor {
 		%feature("compactdefaultargs") MakeSurface;
 		%feature("autodoc", "* Build a Geom_Surface using the informations from the Surface from Adaptor3d @param theS - Surface adaptor to convert. @param theTrimFlag - True if perform trim surface values by adaptor and false otherwise.
 	:param theS:
-	:type theS: Adaptor3d_Surface &
+	:type theS: Adaptor3d_Surface
 	:param theTrimFlag: default value is Standard_True
 	:type theTrimFlag: bool
 	:rtype: opencascade::handle<Geom_Surface>") MakeSurface;
@@ -231,7 +231,7 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 		/****************** GeomAdaptor_Curve ******************/
 		%feature("compactdefaultargs") GeomAdaptor_Curve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: None") GeomAdaptor_Curve;
 		 GeomAdaptor_Curve (const opencascade::handle<Geom_Curve> & C);
 
@@ -239,7 +239,7 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") GeomAdaptor_Curve;
 		%feature("autodoc", "* ConstructionError is raised if Ufirst>Ulast
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
@@ -261,7 +261,7 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -296,7 +296,7 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Geom_Curve> & C);
 
@@ -304,7 +304,7 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* ConstructionError is raised if Ufirst>Ulast
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
@@ -418,7 +418,7 @@ class GeomAdaptor_GHCurve : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") GeomAdaptor_GHCurve;
 		%feature("autodoc", "* Creates a GenHCurve from a Curve
 	:param C:
-	:type C: GeomAdaptor_Curve &
+	:type C: GeomAdaptor_Curve
 	:rtype: None") GeomAdaptor_GHCurve;
 		 GeomAdaptor_GHCurve (const GeomAdaptor_Curve & C);
 
@@ -432,7 +432,7 @@ class GeomAdaptor_GHCurve : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve.
 	:param C:
-	:type C: GeomAdaptor_Curve &
+	:type C: GeomAdaptor_Curve
 	:rtype: None") Set;
 		void Set (const GeomAdaptor_Curve & C);
 
@@ -469,7 +469,7 @@ class GeomAdaptor_GHSurface : public Adaptor3d_HSurface {
 		%feature("compactdefaultargs") GeomAdaptor_GHSurface;
 		%feature("autodoc", "* Creates a GenHSurface from a Surface.
 	:param S:
-	:type S: GeomAdaptor_Surface &
+	:type S: GeomAdaptor_Surface
 	:rtype: None") GeomAdaptor_GHSurface;
 		 GeomAdaptor_GHSurface (const GeomAdaptor_Surface & S);
 
@@ -477,7 +477,7 @@ class GeomAdaptor_GHSurface : public Adaptor3d_HSurface {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHSurface.
 	:param S:
-	:type S: GeomAdaptor_Surface &
+	:type S: GeomAdaptor_Surface
 	:rtype: None") Set;
 		void Set (const GeomAdaptor_Surface & S);
 
@@ -520,7 +520,7 @@ class GeomAdaptor_HSurfaceOfLinearExtrusion : public Adaptor3d_HSurface {
 		%feature("compactdefaultargs") GeomAdaptor_HSurfaceOfLinearExtrusion;
 		%feature("autodoc", "* Creates a GenHSurface from a Surface.
 	:param S:
-	:type S: GeomAdaptor_SurfaceOfLinearExtrusion &
+	:type S: GeomAdaptor_SurfaceOfLinearExtrusion
 	:rtype: None") GeomAdaptor_HSurfaceOfLinearExtrusion;
 		 GeomAdaptor_HSurfaceOfLinearExtrusion (const GeomAdaptor_SurfaceOfLinearExtrusion & S);
 
@@ -528,7 +528,7 @@ class GeomAdaptor_HSurfaceOfLinearExtrusion : public Adaptor3d_HSurface {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHSurface.
 	:param S:
-	:type S: GeomAdaptor_SurfaceOfLinearExtrusion &
+	:type S: GeomAdaptor_SurfaceOfLinearExtrusion
 	:rtype: None") Set;
 		void Set (const GeomAdaptor_SurfaceOfLinearExtrusion & S);
 
@@ -571,7 +571,7 @@ class GeomAdaptor_HSurfaceOfRevolution : public Adaptor3d_HSurface {
 		%feature("compactdefaultargs") GeomAdaptor_HSurfaceOfRevolution;
 		%feature("autodoc", "* Creates a GenHSurface from a Surface.
 	:param S:
-	:type S: GeomAdaptor_SurfaceOfRevolution &
+	:type S: GeomAdaptor_SurfaceOfRevolution
 	:rtype: None") GeomAdaptor_HSurfaceOfRevolution;
 		 GeomAdaptor_HSurfaceOfRevolution (const GeomAdaptor_SurfaceOfRevolution & S);
 
@@ -579,7 +579,7 @@ class GeomAdaptor_HSurfaceOfRevolution : public Adaptor3d_HSurface {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHSurface.
 	:param S:
-	:type S: GeomAdaptor_SurfaceOfRevolution &
+	:type S: GeomAdaptor_SurfaceOfRevolution
 	:rtype: None") Set;
 		void Set (const GeomAdaptor_SurfaceOfRevolution & S);
 
@@ -760,7 +760,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 		/****************** GeomAdaptor_Surface ******************/
 		%feature("compactdefaultargs") GeomAdaptor_Surface;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") GeomAdaptor_Surface;
 		 GeomAdaptor_Surface (const opencascade::handle<Geom_Surface> & S);
 
@@ -768,7 +768,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 		%feature("compactdefaultargs") GeomAdaptor_Surface;
 		%feature("autodoc", "* ConstructionError is raised if UFirst>ULast or VFirst>VLast
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
@@ -833,7 +833,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Geom_Surface> & S);
 
@@ -841,7 +841,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* ConstructionError is raised if UFirst>ULast or VFirst>VLast
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
@@ -932,7 +932,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the U direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") UIntervals;
@@ -977,7 +977,7 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the V direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") VIntervals;
@@ -1041,14 +1041,14 @@ class GeomAdaptor_HCurve : public GeomAdaptor_GHCurve {
 		/****************** GeomAdaptor_HCurve ******************/
 		%feature("compactdefaultargs") GeomAdaptor_HCurve;
 		%feature("autodoc", ":param AS:
-	:type AS: GeomAdaptor_Curve &
+	:type AS: GeomAdaptor_Curve
 	:rtype: None") GeomAdaptor_HCurve;
 		 GeomAdaptor_HCurve (const GeomAdaptor_Curve & AS);
 
 		/****************** GeomAdaptor_HCurve ******************/
 		%feature("compactdefaultargs") GeomAdaptor_HCurve;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Curve> &
+	:type S: Geom_Curve
 	:rtype: None") GeomAdaptor_HCurve;
 		 GeomAdaptor_HCurve (const opencascade::handle<Geom_Curve> & S);
 
@@ -1056,7 +1056,7 @@ class GeomAdaptor_HCurve : public GeomAdaptor_GHCurve {
 		%feature("compactdefaultargs") GeomAdaptor_HCurve;
 		%feature("autodoc", "* ConstructionError is raised if UFirst>ULast or VFirst>VLast
 	:param S:
-	:type S: opencascade::handle<Geom_Curve> &
+	:type S: Geom_Curve
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
@@ -1089,14 +1089,14 @@ class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface {
 		/****************** GeomAdaptor_HSurface ******************/
 		%feature("compactdefaultargs") GeomAdaptor_HSurface;
 		%feature("autodoc", ":param AS:
-	:type AS: GeomAdaptor_Surface &
+	:type AS: GeomAdaptor_Surface
 	:rtype: None") GeomAdaptor_HSurface;
 		 GeomAdaptor_HSurface (const GeomAdaptor_Surface & AS);
 
 		/****************** GeomAdaptor_HSurface ******************/
 		%feature("compactdefaultargs") GeomAdaptor_HSurface;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") GeomAdaptor_HSurface;
 		 GeomAdaptor_HSurface (const opencascade::handle<Geom_Surface> & S);
 
@@ -1104,7 +1104,7 @@ class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface {
 		%feature("compactdefaultargs") GeomAdaptor_HSurface;
 		%feature("autodoc", "* ConstructionError is raised if UFirst>ULast or VFirst>VLast
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
@@ -1191,7 +1191,7 @@ class GeomAdaptor_SurfaceOfLinearExtrusion : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") GeomAdaptor_SurfaceOfLinearExtrusion;
 		%feature("autodoc", "* The Curve is loaded.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") GeomAdaptor_SurfaceOfLinearExtrusion;
 		 GeomAdaptor_SurfaceOfLinearExtrusion (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1199,7 +1199,7 @@ class GeomAdaptor_SurfaceOfLinearExtrusion : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") GeomAdaptor_SurfaceOfLinearExtrusion;
 		%feature("autodoc", "* Thew Curve and the Direction are loaded.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param V:
 	:type V: gp_Dir
 	:rtype: None") GeomAdaptor_SurfaceOfLinearExtrusion;
@@ -1255,7 +1255,7 @@ class GeomAdaptor_SurfaceOfLinearExtrusion : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Changes the Curve
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1317,7 +1317,7 @@ class GeomAdaptor_SurfaceOfLinearExtrusion : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the U direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") UIntervals;
@@ -1358,7 +1358,7 @@ class GeomAdaptor_SurfaceOfLinearExtrusion : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the V direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") VIntervals;
@@ -1459,7 +1459,7 @@ class GeomAdaptor_SurfaceOfRevolution : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") GeomAdaptor_SurfaceOfRevolution;
 		%feature("autodoc", "* The Curve is loaded.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") GeomAdaptor_SurfaceOfRevolution;
 		 GeomAdaptor_SurfaceOfRevolution (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1467,7 +1467,7 @@ class GeomAdaptor_SurfaceOfRevolution : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") GeomAdaptor_SurfaceOfRevolution;
 		%feature("autodoc", "* The Curve and the Direction are loaded.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param V:
 	:type V: gp_Ax1
 	:rtype: None") GeomAdaptor_SurfaceOfRevolution;
@@ -1523,7 +1523,7 @@ class GeomAdaptor_SurfaceOfRevolution : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Changes the Curve
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1585,7 +1585,7 @@ class GeomAdaptor_SurfaceOfRevolution : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the U direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") UIntervals;
@@ -1631,7 +1631,7 @@ class GeomAdaptor_SurfaceOfRevolution : public GeomAdaptor_Surface {
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the V direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") VIntervals;

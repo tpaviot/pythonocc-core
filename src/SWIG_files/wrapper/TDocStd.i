@@ -103,7 +103,7 @@ class TDocStd {
 		%feature("compactdefaultargs") IDList;
 		%feature("autodoc", "* specific GUID of this package ============================= Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 	:param anIDList:
-	:type anIDList: TDF_IDList &
+	:type anIDList: TDF_IDList
 	:rtype: void") IDList;
 		static void IDList (TDF_IDList & anIDList);
 
@@ -126,7 +126,7 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") Close;
 		%feature("autodoc", "* Close the given document. the document is not any more handled by the applicative session.
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:rtype: None") Close;
 		void Close (const opencascade::handle<TDocStd_Document> & aDoc);
 
@@ -134,15 +134,15 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "* Sets up resources and registers read and storage drivers for the specified format. @param theFormat - unique name for the format, used to identify it. @param theDescription - textual description of the format. @param theExtension - extension of the files in that format. The same extension can be used by several formats. @param theReader - instance of the read driver for the format.  Null value is allowed (no possibility to read). @param theWriter - instance of the write driver for the format.  Null value is allowed (no possibility to write).
 	:param theFormat:
-	:type theFormat: TCollection_AsciiString &
+	:type theFormat: TCollection_AsciiString
 	:param theDescription:
-	:type theDescription: TCollection_AsciiString &
+	:type theDescription: TCollection_AsciiString
 	:param theExtension:
-	:type theExtension: TCollection_AsciiString &
+	:type theExtension: TCollection_AsciiString
 	:param theReader:
-	:type theReader: opencascade::handle<PCDM_RetrievalDriver> &
+	:type theReader: PCDM_RetrievalDriver
 	:param theWriter:
-	:type theWriter: opencascade::handle<PCDM_StorageDriver> &
+	:type theWriter: PCDM_StorageDriver
 	:rtype: None") DefineFormat;
 		void DefineFormat (const TCollection_AsciiString & theFormat,const TCollection_AsciiString & theDescription,const TCollection_AsciiString & theExtension,const opencascade::handle<PCDM_RetrievalDriver> & theReader,const opencascade::handle<PCDM_StorageDriver> & theWriter);
 
@@ -152,7 +152,7 @@ class TDocStd_Application : public CDF_Application {
 	:param index:
 	:type index: int
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:rtype: None") GetDocument;
 		void GetDocument (const Standard_Integer index,opencascade::handle<TDocStd_Document> & aDoc);
 
@@ -160,7 +160,7 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") InitDocument;
 		%feature("autodoc", "* Initialize the document aDoc for the applicative session. This virtual function is called by NewDocument and is to be redefined for each specific application. Modified flag (different of disk version) ============= to open/save a document =======================
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:rtype: void") InitDocument;
 		virtual void InitDocument (const opencascade::handle<TDocStd_Document> & aDoc);
 
@@ -174,7 +174,7 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") IsInSession;
 		%feature("autodoc", "* Returns an index for the document found in the path path in this applicative session. If the returned value is 0, the document is not present in the applicative session. This method can be used for the interactive part of an application. For instance, on a call to Open, the document to be opened may already be in memory. IsInSession checks to see if this is the case. Open can be made to depend on the value of the index returned: if IsInSession returns 0, the document is opened; if it returns another value, a message is displayed asking the user if he wants to override the version of the document in memory. Example: Standard_Integer insession = A->IsInSession(aDoc); if (insession > 0) { std::cout << 'document ' << insession << ' is already in session' << std::endl; return 0; }
 	:param path:
-	:type path: TCollection_ExtendedString &
+	:type path: TCollection_ExtendedString
 	:rtype: int") IsInSession;
 		Standard_Integer IsInSession (const TCollection_ExtendedString & path);
 
@@ -194,9 +194,9 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") NewDocument;
 		%feature("autodoc", "* Constructs the empty new document aDoc. This document will have the format format. If InitDocument is redefined for a specific application, the new document is handled by the applicative session.
 	:param format:
-	:type format: TCollection_ExtendedString &
+	:type format: TCollection_ExtendedString
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:rtype: void") NewDocument;
 		virtual void NewDocument (const TCollection_ExtendedString & format,opencascade::handle<TDocStd_Document> & aDoc);
 
@@ -204,7 +204,7 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") OnAbortTransaction;
 		%feature("autodoc", "* Notification that is fired at each AbortTransaction event.
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: void") OnAbortTransaction;
 		virtual void OnAbortTransaction (const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -212,7 +212,7 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") OnCommitTransaction;
 		%feature("autodoc", "* Notification that is fired at each CommitTransaction event.
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: void") OnCommitTransaction;
 		virtual void OnCommitTransaction (const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -220,7 +220,7 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") OnOpenTransaction;
 		%feature("autodoc", "* Notification that is fired at each OpenTransaction event.
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: void") OnOpenTransaction;
 		virtual void OnOpenTransaction (const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -228,9 +228,9 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") Open;
 		%feature("autodoc", "* Retrieves the document aDoc stored under the name aName in the directory directory. In order not to override a version of aDoc which is already in memory, this method can be made to depend on the value returned by IsInSession.
 	:param path:
-	:type path: TCollection_ExtendedString &
+	:type path: TCollection_ExtendedString
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:rtype: PCDM_ReaderStatus") Open;
 		PCDM_ReaderStatus Open (const TCollection_ExtendedString & path,opencascade::handle<TDocStd_Document> & aDoc);
 
@@ -238,9 +238,9 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") Open;
 		%feature("autodoc", "* Retrieves aDoc from standard SEEKABLE stream theIStream. the stream should support SEEK fuctionality
 	:param theIStream:
-	:type theIStream: Standard_IStream &
+	:type theIStream: Standard_IStream
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: PCDM_ReaderStatus") Open;
 		PCDM_ReaderStatus Open (Standard_IStream & theIStream,opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -248,7 +248,7 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") ReadingFormats;
 		%feature("autodoc", "* Returns the sequence of reading formats supported by the application. //! @param theFormats - sequence of reading formats. Output parameter.
 	:param theFormats:
-	:type theFormats: TColStd_SequenceOfAsciiString &
+	:type theFormats: TColStd_SequenceOfAsciiString
 	:rtype: None") ReadingFormats;
 		void ReadingFormats (TColStd_SequenceOfAsciiString & theFormats);
 
@@ -268,7 +268,7 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "* Save aDoc active document. Exceptions: Standard_NotImplemented if the document was not retrieved in the applicative session by using Open.
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:rtype: PCDM_StoreStatus") Save;
 		PCDM_StoreStatus Save (const opencascade::handle<TDocStd_Document> & aDoc);
 
@@ -276,9 +276,9 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "* Save the document overwriting the previous file
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:param theStatusMessage:
-	:type theStatusMessage: TCollection_ExtendedString &
+	:type theStatusMessage: TCollection_ExtendedString
 	:rtype: PCDM_StoreStatus") Save;
 		PCDM_StoreStatus Save (const opencascade::handle<TDocStd_Document> & aDoc,TCollection_ExtendedString & theStatusMessage);
 
@@ -286,9 +286,9 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "* Save the active document in the file <name> in the path <path> ; o verwrites the file if it already exists.
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:param path:
-	:type path: TCollection_ExtendedString &
+	:type path: TCollection_ExtendedString
 	:rtype: PCDM_StoreStatus") SaveAs;
 		PCDM_StoreStatus SaveAs (const opencascade::handle<TDocStd_Document> & aDoc,const TCollection_ExtendedString & path);
 
@@ -296,9 +296,9 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "* Save theDoc to standard SEEKABLE stream theOStream. the stream should support SEEK fuctionality
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:param theOStream:
-	:type theOStream: Standard_OStream &
+	:type theOStream: Standard_OStream
 	:rtype: PCDM_StoreStatus") SaveAs;
 		PCDM_StoreStatus SaveAs (const opencascade::handle<TDocStd_Document> & theDoc,Standard_OStream & theOStream);
 
@@ -306,11 +306,11 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "* Save the active document in the file <name> in the path <path> . overwrite the file if it already exist.
 	:param aDoc:
-	:type aDoc: opencascade::handle<TDocStd_Document> &
+	:type aDoc: TDocStd_Document
 	:param path:
-	:type path: TCollection_ExtendedString &
+	:type path: TCollection_ExtendedString
 	:param theStatusMessage:
-	:type theStatusMessage: TCollection_ExtendedString &
+	:type theStatusMessage: TCollection_ExtendedString
 	:rtype: PCDM_StoreStatus") SaveAs;
 		PCDM_StoreStatus SaveAs (const opencascade::handle<TDocStd_Document> & aDoc,const TCollection_ExtendedString & path,TCollection_ExtendedString & theStatusMessage);
 
@@ -318,11 +318,11 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "* Save theDoc TO standard SEEKABLE stream theOStream. the stream should support SEEK fuctionality
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:param theOStream:
-	:type theOStream: Standard_OStream &
+	:type theOStream: Standard_OStream
 	:param theStatusMessage:
-	:type theStatusMessage: TCollection_ExtendedString &
+	:type theStatusMessage: TCollection_ExtendedString
 	:rtype: PCDM_StoreStatus") SaveAs;
 		PCDM_StoreStatus SaveAs (const opencascade::handle<TDocStd_Document> & theDoc,Standard_OStream & theOStream,TCollection_ExtendedString & theStatusMessage);
 
@@ -336,7 +336,7 @@ class TDocStd_Application : public CDF_Application {
 		%feature("compactdefaultargs") WritingFormats;
 		%feature("autodoc", "* Returns the sequence of writing formats supported by the application. //! @param theFormats - sequence of writing formats. Output parameter.
 	:param theFormats:
-	:type theFormats: TColStd_SequenceOfAsciiString &
+	:type theFormats: TColStd_SequenceOfAsciiString
 	:rtype: None") WritingFormats;
 		void WritingFormats (TColStd_SequenceOfAsciiString & theFormats);
 
@@ -378,7 +378,7 @@ class TDocStd_ApplicationDelta : public Standard_Transient {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param theName:
-	:type theName: TCollection_ExtendedString &
+	:type theName: TCollection_ExtendedString
 	:rtype: None") SetName;
 		void SetName (const TCollection_ExtendedString & theName);
 
@@ -475,7 +475,7 @@ class TDocStd_Document : public CDM_Document {
 		%feature("compactdefaultargs") ChangeStorageFormat;
 		%feature("autodoc", "* methods for the nested transaction mode
 	:param newStorageFormat:
-	:type newStorageFormat: TCollection_ExtendedString &
+	:type newStorageFormat: TCollection_ExtendedString
 	:rtype: void") ChangeStorageFormat;
 		virtual void ChangeStorageFormat (const TCollection_ExtendedString & newStorageFormat);
 
@@ -507,7 +507,7 @@ class TDocStd_Document : public CDM_Document {
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "* Will Abort any execution, clear fields returns the document which contains <L>. raises an exception if the document is not found.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:rtype: opencascade::handle<TDocStd_Document>") Get;
 		static opencascade::handle<TDocStd_Document> Get (const TDF_Label & L);
 
@@ -667,7 +667,7 @@ class TDocStd_Document : public CDM_Document {
 		/****************** SetData ******************/
 		%feature("compactdefaultargs") SetData;
 		%feature("autodoc", ":param data:
-	:type data: opencascade::handle<TDF_Data> &
+	:type data: TDF_Data
 	:rtype: None") SetData;
 		void SetData (const opencascade::handle<TDF_Data> & data);
 
@@ -691,7 +691,7 @@ class TDocStd_Document : public CDM_Document {
 		%feature("compactdefaultargs") SetModified;
 		%feature("autodoc", "* Notify the label as modified, the Document becomes UnValid. returns True if <L> has been notified as modified.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:rtype: None") SetModified;
 		void SetModified (const TDF_Label & L);
 
@@ -734,7 +734,7 @@ class TDocStd_Document : public CDM_Document {
 		%feature("compactdefaultargs") TDocStd_Document;
 		%feature("autodoc", "* Constructs a document object defined by the string astorageformat.
 	:param astorageformat:
-	:type astorageformat: TCollection_ExtendedString &
+	:type astorageformat: TCollection_ExtendedString
 	:rtype: None") TDocStd_Document;
 		 TDocStd_Document (const TCollection_ExtendedString & astorageformat);
 
@@ -748,7 +748,7 @@ class TDocStd_Document : public CDM_Document {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* This method Update will be called to signal the end of the modified references list. The document should be recomputed and UpdateFromDocuments should be called. Update should returns True in case of success, false otherwise. In case of Failure, additional information can be given in ErrorString. Update the document by propagation ================================== Update the document from internal stored modifications. If you want to undoing this operation, please call NewCommand before. to change format (advanced programming) ================
 	:param aToDocument:
-	:type aToDocument: opencascade::handle<CDM_Document> &
+	:type aToDocument: CDM_Document
 	:param aReferenceIdentifier:
 	:type aReferenceIdentifier: int
 	:param aModifContext:
@@ -760,7 +760,7 @@ class TDocStd_Document : public CDM_Document {
 		%feature("compactdefaultargs") UpdateReferences;
 		%feature("autodoc", "* Set modifications on labels impacted by external references to the entry. The document becomes invalid and must be recomputed.
 	:param aDocEntry:
-	:type aDocEntry: TCollection_AsciiString &
+	:type aDocEntry: TCollection_AsciiString
 	:rtype: None") UpdateReferences;
 		void UpdateReferences (const TCollection_AsciiString & aDocEntry);
 
@@ -784,7 +784,7 @@ class TDocStd_Modified : public TDF_Attribute {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param alabel:
-	:type alabel: TDF_Label &
+	:type alabel: TDF_Label
 	:rtype: bool") Add;
 		static Standard_Boolean Add (const TDF_Label & alabel);
 
@@ -792,7 +792,7 @@ class TDocStd_Modified : public TDF_Attribute {
 		%feature("compactdefaultargs") AddLabel;
 		%feature("autodoc", "* add <L> as modified
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:rtype: bool") AddLabel;
 		Standard_Boolean AddLabel (const TDF_Label & L);
 
@@ -800,7 +800,7 @@ class TDocStd_Modified : public TDF_Attribute {
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "* remove all modified labels. becomes empty
 	:param access:
-	:type access: TDF_Label &
+	:type access: TDF_Label
 	:rtype: void") Clear;
 		static void Clear (const TDF_Label & access);
 
@@ -812,7 +812,7 @@ class TDocStd_Modified : public TDF_Attribute {
 		/****************** Contains ******************/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", ":param alabel:
-	:type alabel: TDF_Label &
+	:type alabel: TDF_Label
 	:rtype: bool") Contains;
 		static Standard_Boolean Contains (const TDF_Label & alabel);
 
@@ -828,7 +828,7 @@ class TDocStd_Modified : public TDF_Attribute {
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "* if <IsEmpty> raise an exception.
 	:param access:
-	:type access: TDF_Label &
+	:type access: TDF_Label
 	:rtype: TDF_LabelMap") Get;
 		static const TDF_LabelMap & Get (const TDF_Label & access);
 
@@ -853,7 +853,7 @@ class TDocStd_Modified : public TDF_Attribute {
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "* API class methods =================
 	:param access:
-	:type access: TDF_Label &
+	:type access: TDF_Label
 	:rtype: bool") IsEmpty;
 		static Standard_Boolean IsEmpty (const TDF_Label & access);
 
@@ -870,16 +870,16 @@ class TDocStd_Modified : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** Remove ******************/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", ":param alabel:
-	:type alabel: TDF_Label &
+	:type alabel: TDF_Label
 	:rtype: bool") Remove;
 		static Standard_Boolean Remove (const TDF_Label & alabel);
 
@@ -887,14 +887,14 @@ class TDocStd_Modified : public TDF_Attribute {
 		%feature("compactdefaultargs") RemoveLabel;
 		%feature("autodoc", "* remove <L> as modified
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:rtype: bool") RemoveLabel;
 		Standard_Boolean RemoveLabel (const TDF_Label & L);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param With:
-	:type With: opencascade::handle<TDF_Attribute> &
+	:type With: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & With);
 
@@ -930,7 +930,7 @@ class TDocStd_MultiTransactionManager : public Standard_Transient {
 		%feature("compactdefaultargs") AddDocument;
 		%feature("autodoc", "* Adds the document to the transaction manager and checks if it has been already added
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: None") AddDocument;
 		void AddDocument (const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -956,7 +956,7 @@ class TDocStd_MultiTransactionManager : public Standard_Transient {
 		%feature("compactdefaultargs") CommitCommand;
 		%feature("autodoc", "* Makes the same steps as the previous function but defines the name for transaction. Returns True if new data has been added to myUndos.
 	:param theName:
-	:type theName: TCollection_ExtendedString &
+	:type theName: TCollection_ExtendedString
 	:rtype: bool") CommitCommand;
 		Standard_Boolean CommitCommand (const TCollection_ExtendedString & theName);
 
@@ -1026,7 +1026,7 @@ class TDocStd_MultiTransactionManager : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveDocument;
 		%feature("autodoc", "* Removes the document from the transaction manager.
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: None") RemoveDocument;
 		void RemoveDocument (const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -1101,7 +1101,7 @@ class TDocStd_Owner : public TDF_Attribute {
 		%feature("compactdefaultargs") GetDocument;
 		%feature("autodoc", "* Owner methods ===============
 	:param ofdata:
-	:type ofdata: opencascade::handle<TDF_Data> &
+	:type ofdata: TDF_Data
 	:rtype: opencascade::handle<TDocStd_Document>") GetDocument;
 		static opencascade::handle<TDocStd_Document> GetDocument (const opencascade::handle<TDF_Data> & ofdata);
 
@@ -1129,32 +1129,32 @@ class TDocStd_Owner : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param With:
-	:type With: opencascade::handle<TDF_Attribute> &
+	:type With: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & With);
 
 		/****************** SetDocument ******************/
 		%feature("compactdefaultargs") SetDocument;
 		%feature("autodoc", ":param indata:
-	:type indata: opencascade::handle<TDF_Data> &
+	:type indata: TDF_Data
 	:param doc:
-	:type doc: opencascade::handle<TDocStd_Document> &
+	:type doc: TDocStd_Document
 	:rtype: void") SetDocument;
 		static void SetDocument (const opencascade::handle<TDF_Data> & indata,const opencascade::handle<TDocStd_Document> & doc);
 
 		/****************** SetDocument ******************/
 		%feature("compactdefaultargs") SetDocument;
 		%feature("autodoc", ":param document:
-	:type document: opencascade::handle<TDocStd_Document> &
+	:type document: TDocStd_Document
 	:rtype: None") SetDocument;
 		void SetDocument (const opencascade::handle<TDocStd_Document> & document);
 
@@ -1208,7 +1208,7 @@ class TDocStd_PathParser {
 		/****************** TDocStd_PathParser ******************/
 		%feature("compactdefaultargs") TDocStd_PathParser;
 		%feature("autodoc", ":param path:
-	:type path: TCollection_ExtendedString &
+	:type path: TCollection_ExtendedString
 	:rtype: None") TDocStd_PathParser;
 		 TDocStd_PathParser (const TCollection_ExtendedString & path);
 
@@ -1242,7 +1242,7 @@ class TDocStd_XLink : public TDF_Attribute {
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "* Something to do after applying <anAttDelta>.
 	:param anAttDelta:
-	:type anAttDelta: opencascade::handle<TDF_AttributeDelta> &
+	:type anAttDelta: TDF_AttributeDelta
 	:param forceIt: default value is Standard_False
 	:type forceIt: bool
 	:rtype: bool") AfterUndo;
@@ -1264,7 +1264,7 @@ class TDocStd_XLink : public TDF_Attribute {
 		%feature("compactdefaultargs") BeforeUndo;
 		%feature("autodoc", "* Something to do before applying <anAttDelta>.
 	:param anAttDelta:
-	:type anAttDelta: opencascade::handle<TDF_AttributeDelta> &
+	:type anAttDelta: TDF_AttributeDelta
 	:param forceIt: default value is Standard_False
 	:type forceIt: bool
 	:rtype: bool") BeforeUndo;
@@ -1274,7 +1274,7 @@ class TDocStd_XLink : public TDF_Attribute {
 		%feature("compactdefaultargs") DocumentEntry;
 		%feature("autodoc", "* Sets the name aDocEntry for the external document in this external link attribute.
 	:param aDocEntry:
-	:type aDocEntry: TCollection_AsciiString &
+	:type aDocEntry: TCollection_AsciiString
 	:rtype: None") DocumentEntry;
 		void DocumentEntry (const TCollection_AsciiString & aDocEntry);
 
@@ -1308,7 +1308,7 @@ class TDocStd_XLink : public TDF_Attribute {
 		%feature("compactdefaultargs") LabelEntry;
 		%feature("autodoc", "* Sets the label entry for this external link attribute with the label aLabel. aLabel pilots the importation of data from the document entry.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: None") LabelEntry;
 		void LabelEntry (const TDF_Label & aLabel);
 
@@ -1316,7 +1316,7 @@ class TDocStd_XLink : public TDF_Attribute {
 		%feature("compactdefaultargs") LabelEntry;
 		%feature("autodoc", "* Sets the label entry for this external link attribute as a document identified by aLabEntry.
 	:param aLabEntry:
-	:type aLabEntry: TCollection_AsciiString &
+	:type aLabEntry: TCollection_AsciiString
 	:rtype: None") LabelEntry;
 		void LabelEntry (const TCollection_AsciiString & aLabEntry);
 
@@ -1336,9 +1336,9 @@ class TDocStd_XLink : public TDF_Attribute {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* Does nothing.
 	:param intoAttribute:
-	:type intoAttribute: opencascade::handle<TDF_Attribute> &
+	:type intoAttribute: TDF_Attribute
 	:param aRelocationTable:
-	:type aRelocationTable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocationTable: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & intoAttribute,const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -1346,7 +1346,7 @@ class TDocStd_XLink : public TDF_Attribute {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Does nothing.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1354,7 +1354,7 @@ class TDocStd_XLink : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets an empty external reference, at the label aLabel.
 	:param atLabel:
-	:type atLabel: TDF_Label &
+	:type atLabel: TDF_Label
 	:rtype: opencascade::handle<TDocStd_XLink>") Set;
 		static opencascade::handle<TDocStd_XLink> Set (const TDF_Label & atLabel);
 
@@ -1391,7 +1391,7 @@ class TDocStd_XLinkIterator {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Restarts an iteration with <D>.
 	:param D:
-	:type D: opencascade::handle<TDocStd_Document> &
+	:type D: TDocStd_Document
 	:rtype: None") Initialize;
 		void Initialize (const opencascade::handle<TDocStd_Document> & D);
 
@@ -1417,7 +1417,7 @@ class TDocStd_XLinkIterator {
 		%feature("compactdefaultargs") TDocStd_XLinkIterator;
 		%feature("autodoc", "* Creates an iterator on Reference of <D>.
 	:param D:
-	:type D: opencascade::handle<TDocStd_Document> &
+	:type D: TDocStd_Document
 	:rtype: None") TDocStd_XLinkIterator;
 		 TDocStd_XLinkIterator (const opencascade::handle<TDocStd_Document> & D);
 
@@ -1472,7 +1472,7 @@ class TDocStd_XLinkRoot : public TDF_Attribute {
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "* Inserts <anXLinkPtr> at the beginning of the XLink chain.
 	:param anXLinkPtr:
-	:type anXLinkPtr: TDocStd_XLinkPtr &
+	:type anXLinkPtr: TDocStd_XLinkPtr
 	:rtype: void") Insert;
 		static void Insert (const TDocStd_XLinkPtr & anXLinkPtr);
 
@@ -1486,9 +1486,9 @@ class TDocStd_XLinkRoot : public TDF_Attribute {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* Does nothing.
 	:param intoAttribute:
-	:type intoAttribute: opencascade::handle<TDF_Attribute> &
+	:type intoAttribute: TDF_Attribute
 	:param aRelocationTable:
-	:type aRelocationTable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocationTable: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & intoAttribute,const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -1496,7 +1496,7 @@ class TDocStd_XLinkRoot : public TDF_Attribute {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes <anXLinkPtr> from the XLink chain, if it exists.
 	:param anXLinkPtr:
-	:type anXLinkPtr: TDocStd_XLinkPtr &
+	:type anXLinkPtr: TDocStd_XLinkPtr
 	:rtype: void") Remove;
 		static void Remove (const TDocStd_XLinkPtr & anXLinkPtr);
 
@@ -1504,7 +1504,7 @@ class TDocStd_XLinkRoot : public TDF_Attribute {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Does nothing.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1512,7 +1512,7 @@ class TDocStd_XLinkRoot : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets an empty XLinkRoot to Root or gets the existing one. Only one attribute per TDF_Data.
 	:param aDF:
-	:type aDF: opencascade::handle<TDF_Data> &
+	:type aDF: TDF_Data
 	:rtype: opencascade::handle<TDocStd_XLinkRoot>") Set;
 		static opencascade::handle<TDocStd_XLinkRoot> Set (const opencascade::handle<TDF_Data> & aDF);
 
@@ -1537,9 +1537,9 @@ class TDocStd_XLinkTool {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* Copy the content of <fromsource> under <intarget>. Noone link is registred. noone check is done. Example opencascade::handle<TDocStd_Document> DOC, XDOC; TDF_Label L, XL; TDocStd_XLinkTool xlinktool; xlinktool.Copy(L,XL); Exceptions: Standard_DomainError if the contents of fromsource are not entirely in the scope of this label, in other words, are not self-contained. !!! ==> Warning: If the document manages shapes use the next way: TDocStd_XLinkTool xlinktool; xlinktool.Copy(L,XL); TopTools_DataMapOfShapeShape M; TNaming::ChangeShapes(target,M);
 	:param intarget:
-	:type intarget: TDF_Label &
+	:type intarget: TDF_Label
 	:param fromsource:
-	:type fromsource: TDF_Label &
+	:type fromsource: TDF_Label
 	:rtype: void") Copy;
 		virtual void Copy (const TDF_Label & intarget,const TDF_Label & fromsource);
 
@@ -1547,9 +1547,9 @@ class TDocStd_XLinkTool {
 		%feature("compactdefaultargs") CopyWithLink;
 		%feature("autodoc", "* Copies the content of the label <fromsource> to the label <intarget>. The link is registred with an XLink attribute by <intarget> label. if the content of <fromsource> is not self-contained, and/or <intarget> has already an XLink attribute, an exception is raised.
 	:param intarget:
-	:type intarget: TDF_Label &
+	:type intarget: TDF_Label
 	:param fromsource:
-	:type fromsource: TDF_Label &
+	:type fromsource: TDF_Label
 	:rtype: None") CopyWithLink;
 		void CopyWithLink (const TDF_Label & intarget,const TDF_Label & fromsource);
 
@@ -1577,7 +1577,7 @@ class TDocStd_XLinkTool {
 		%feature("compactdefaultargs") UpdateLink;
 		%feature("autodoc", "* Update the external reference set at <L>. Example opencascade::handle<TDocStd_Document> aDoc; if (!OCAFTest::GetDocument(1,aDoc)) return 1; opencascade::handle<TDataStd_Reference> aRef; TDocStd_XLinkTool xlinktool; if (!OCAFTest::Find(aDoc,2),TDataStd_Reference::GetID(),aRef) return 1; xlinktool.UpdateLink(aRef->Label()); Exceptions Standard_DomainError if <L> has no XLink attribute.
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:rtype: None") UpdateLink;
 		void UpdateLink (const TDF_Label & L);
 

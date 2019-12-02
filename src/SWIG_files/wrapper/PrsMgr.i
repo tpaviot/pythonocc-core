@@ -134,7 +134,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") AddChild;
 		%feature("autodoc", "* Makes theObject child of current object in scene hierarchy.
 	:param theObject:
-	:type theObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type theObject: PrsMgr_PresentableObject
 	:rtype: void") AddChild;
 		virtual void AddChild (const opencascade::handle<PrsMgr_PresentableObject> & theObject);
 
@@ -142,7 +142,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") AddChildWithCurrentTransformation;
 		%feature("autodoc", "* Makes theObject child of current object in scene hierarchy with keeping the current global transformation So the object keeps the same position/orientation in the global CS.
 	:param theObject:
-	:type theObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type theObject: PrsMgr_PresentableObject
 	:rtype: None") AddChildWithCurrentTransformation;
 		void AddChildWithCurrentTransformation (const opencascade::handle<PrsMgr_PresentableObject> & theObject);
 
@@ -150,7 +150,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") AddClipPlane;
 		%feature("autodoc", "* Adds clip plane for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be subtracted from limit to predict the maximum possible number of object clipping planes. @param thePlane [in] the clip plane to be appended to map of clip planes.
 	:param thePlane:
-	:type thePlane: opencascade::handle<Graphic3d_ClipPlane> &
+	:type thePlane: Graphic3d_ClipPlane
 	:rtype: void") AddClipPlane;
 		virtual void AddClipPlane (const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
@@ -164,7 +164,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") BoundingBox;
 		%feature("autodoc", "* Returns bounding box of object correspondingly to its current display mode. This method requires presentation to be already computed, since it relies on bounding box of presentation structures, which are supposed to be same/close amongst different display modes of this object.
 	:param theBndBox:
-	:type theBndBox: Bnd_Box &
+	:type theBndBox: Bnd_Box
 	:rtype: void") BoundingBox;
 		virtual void BoundingBox (Bnd_Box & theBndBox);
 
@@ -184,7 +184,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "* Returns the color setting of the Interactive Object.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") Color;
 		void Color (Quantity_Color & theColor);
 
@@ -350,11 +350,11 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") PolygonOffsets;
 		%feature("autodoc", "* Retrieves current polygon offsets settings from <myDrawer>.
 	:param aMode:
-	:type aMode: int &
+	:type aMode: int
 	:param aFactor:
-	:type aFactor: Standard_ShortReal &
+	:type aFactor: Standard_ShortReal
 	:param aUnits:
-	:type aUnits: Standard_ShortReal &
+	:type aUnits: Standard_ShortReal
 	:rtype: void") PolygonOffsets;
 		virtual void PolygonOffsets (Standard_Integer &OutValue,Standard_ShortReal & aFactor,Standard_ShortReal & aUnits);
 
@@ -368,7 +368,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveChild;
 		%feature("autodoc", "* Removes theObject from children of current object in scene hierarchy.
 	:param theObject:
-	:type theObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type theObject: PrsMgr_PresentableObject
 	:rtype: void") RemoveChild;
 		virtual void RemoveChild (const opencascade::handle<PrsMgr_PresentableObject> & theObject);
 
@@ -376,7 +376,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveChildWithRestoreTransformation;
 		%feature("autodoc", "* Removes theObject from children of current object in scene hierarchy with keeping the current global transformation. So the object keeps the same position/orientation in the global CS.
 	:param theObject:
-	:type theObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type theObject: PrsMgr_PresentableObject
 	:rtype: None") RemoveChildWithRestoreTransformation;
 		void RemoveChildWithRestoreTransformation (const opencascade::handle<PrsMgr_PresentableObject> & theObject);
 
@@ -384,7 +384,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveClipPlane;
 		%feature("autodoc", "* Removes previously added clip plane. @param thePlane [in] the clip plane to be removed from map of clip planes.
 	:param thePlane:
-	:type thePlane: opencascade::handle<Graphic3d_ClipPlane> &
+	:type thePlane: Graphic3d_ClipPlane
 	:rtype: void") RemoveClipPlane;
 		virtual void RemoveClipPlane (const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
@@ -398,7 +398,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetAttributes;
 		%feature("autodoc", "* Initializes the drawing tool theDrawer.
 	:param theDrawer:
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:rtype: None") SetAttributes;
 		void SetAttributes (const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -406,14 +406,14 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetClipPlanes;
 		%feature("autodoc", "* Set clip planes for graphical clipping for all display mode presentations. The composition of clip planes truncates the rendering space to convex volume. Please be aware that number of supported clip plane is limited. The planes which exceed the limit are ignored. Besides of this, some planes can be already set in view where the object is shown: the number of these planes should be subtracted from limit to predict the maximum possible number of object clipping planes.
 	:param thePlanes:
-	:type thePlanes: opencascade::handle<Graphic3d_SequenceOfHClipPlane> &
+	:type thePlanes: Graphic3d_SequenceOfHClipPlane
 	:rtype: void") SetClipPlanes;
 		virtual void SetClipPlanes (const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
 		/****************** SetClipPlanes ******************/
 		%feature("compactdefaultargs") SetClipPlanes;
 		%feature("autodoc", ":param thePlanes:
-	:type thePlanes: Graphic3d_SequenceOfHClipPlane &
+	:type thePlanes: Graphic3d_SequenceOfHClipPlane
 	:rtype: None") SetClipPlanes;
 		void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane & thePlanes);
 
@@ -421,7 +421,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Only the interactive object knowns which Drawer attribute is affected by the color, if any (ex: for a wire,it's the wireaspect field of the drawer, but for a vertex, only the point aspect field is affected by the color). WARNING : Do not forget to set the corresponding fields here (hasOwnColor and myDrawer->SetColor())
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & theColor);
 
@@ -445,7 +445,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetDynamicHilightAttributes;
 		%feature("autodoc", "* Initializes the dynamic hilight drawing tool.
 	:param theDrawer:
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:rtype: None") SetDynamicHilightAttributes;
 		void SetDynamicHilightAttributes (const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -453,7 +453,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetHilightAttributes;
 		%feature("autodoc", "* Initializes the hilight drawing tool theDrawer.
 	:param theDrawer:
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:rtype: None") SetHilightAttributes;
 		void SetHilightAttributes (const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -493,7 +493,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetLocalTransformation;
 		%feature("autodoc", "* Sets local transformation to theTransformation. Note that the local transformation of the object having Transformation Persistence is applied within Local Coordinate system defined by this Persistence.
 	:param theTrsf:
-	:type theTrsf: opencascade::handle<Geom_Transformation> &
+	:type theTrsf: Geom_Transformation
 	:rtype: None") SetLocalTransformation;
 		void SetLocalTransformation (const opencascade::handle<Geom_Transformation> & theTrsf);
 
@@ -501,7 +501,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "* Sets the material aMat defining this display attribute for the interactive object. Material aspect determines shading aspect, color and transparency of visible entities.
 	:param aName:
-	:type aName: Graphic3d_MaterialAspect &
+	:type aName: Graphic3d_MaterialAspect
 	:rtype: void") SetMaterial;
 		virtual void SetMaterial (const Graphic3d_MaterialAspect & aName);
 
@@ -551,7 +551,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetTransformPersistence;
 		%feature("autodoc", "* Sets up Transform Persistence defining a special Local Coordinate system where this object should be located. Note that management of Transform Persistence object is more expensive than of the normal one, because it requires its position being recomputed basing on camera position within each draw call / traverse. @sa Graphic3d_TransformPers class description
 	:param theTrsfPers:
-	:type theTrsfPers: opencascade::handle<Graphic3d_TransformPers> &
+	:type theTrsfPers: Graphic3d_TransformPers
 	:rtype: void") SetTransformPersistence;
 		virtual void SetTransformPersistence (const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
@@ -615,7 +615,7 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") ToBeUpdated;
 		%feature("autodoc", "* @name deprecated methods gives the list of modes which are flagged 'to be updated'.
 	:param ListOfMode:
-	:type ListOfMode: TColStd_ListOfInteger &
+	:type ListOfMode: TColStd_ListOfInteger
 	:rtype: None") ToBeUpdated;
 		void ToBeUpdated (TColStd_ListOfInteger & ListOfMode);
 
@@ -768,7 +768,7 @@ class PrsMgr_Presentation : public Graphic3d_Structure {
 		%feature("compactdefaultargs") Highlight;
 		%feature("autodoc", "* Highlight structure.
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:rtype: None") Highlight;
 		void Highlight (const opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -834,7 +834,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") AddToImmediateList;
 		%feature("autodoc", "* Stores thePrs in the transient list of presentations to be displayed in immediate mode. Will be taken in account in EndImmediateDraw method.
 	:param thePrs:
-	:type thePrs: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs: Prs3d_Presentation
 	:rtype: None") AddToImmediateList;
 		void AddToImmediateList (const opencascade::handle<Prs3d_Presentation> & thePrs);
 
@@ -848,7 +848,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "* Clears the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: void") Clear;
@@ -864,13 +864,13 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "* Highlights the graphic object thePrsObject in the color theColor. thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theMode: default value is 0
 	:type theMode: int
 	:param theSelObj: default value is NULL
-	:type theSelObj: opencascade::handle<PrsMgr_PresentableObject> &
+	:type theSelObj: PrsMgr_PresentableObject
 	:param theImmediateStructLayerId: default value is Graphic3d_ZLayerId_Topmost
 	:type theImmediateStructLayerId: Graphic3d_ZLayerId
 	:rtype: None") Color;
@@ -879,9 +879,9 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		/****************** Connect ******************/
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", ":param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theOtherObject:
-	:type theOtherObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type theOtherObject: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:param theOtherMode: default value is 0
@@ -893,7 +893,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "* Displays the presentation of the object in the given Presentation manager with the given mode. The mode should be enumerated by the object which inherits PresentableObject.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: None") Display;
@@ -903,7 +903,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") DisplayPriority;
 		%feature("autodoc", "* Returns the display priority of the presentable object thePrsObject in this framework with the display mode theMode.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode:
 	:type theMode: int
 	:rtype: int") DisplayPriority;
@@ -913,7 +913,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") EndImmediateDraw;
 		%feature("autodoc", "* Allows rapid drawing of the each view in theViewer by avoiding an update of the whole background.
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:rtype: None") EndImmediateDraw;
 		void EndImmediateDraw (const opencascade::handle<V3d_Viewer> & theViewer);
 
@@ -921,7 +921,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") Erase;
 		%feature("autodoc", "* erases the presentation of the object in the given Presentation manager with the given mode. If @theMode is -1, then erases all presentations of the object.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: None") Erase;
@@ -931,7 +931,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") GetZLayer;
 		%feature("autodoc", "* Get Z layer ID assigned to all presentations of the object. Method returns -1 value if object has no presentations and is impossible to get layer index.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:rtype: Graphic3d_ZLayerId") GetZLayer;
 		Graphic3d_ZLayerId GetZLayer (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject);
 
@@ -939,7 +939,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") HasPresentation;
 		%feature("autodoc", "* Returns true if there is a presentation of the presentable object thePrsObject in this framework, thePrsObject having the display mode theMode.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: bool") HasPresentation;
@@ -948,7 +948,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		/****************** IsDisplayed ******************/
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", ":param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: bool") IsDisplayed;
@@ -958,7 +958,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") IsHighlighted;
 		%feature("autodoc", "* Returns true if the presentation of the presentable object thePrsObject in this framework with the display mode theMode is highlighted.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: bool") IsHighlighted;
@@ -974,13 +974,13 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") Presentation;
 		%feature("autodoc", "* Returns the presentation Presentation of the presentable object thePrsObject in this framework. When theToCreate is true - automatically creates presentation for specified mode when not exist. Optional argument theSelObj specifies parent decomposed object to inherit its view affinity.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:param theToCreate: default value is Standard_False
 	:type theToCreate: bool
 	:param theSelObj: default value is NULL
-	:type theSelObj: opencascade::handle<PrsMgr_PresentableObject> &
+	:type theSelObj: PrsMgr_PresentableObject
 	:rtype: opencascade::handle<PrsMgr_Presentation>") Presentation;
 		opencascade::handle<PrsMgr_Presentation> Presentation (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Standard_Integer theMode = 0,const Standard_Boolean theToCreate = Standard_False,const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL);
 
@@ -988,7 +988,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") PrsMgr_PresentationManager;
 		%feature("autodoc", "* Creates a framework to manage displays and graphic entities with the 3D view theStructureManager.
 	:param theStructureManager:
-	:type theStructureManager: opencascade::handle<Graphic3d_StructureManager> &
+	:type theStructureManager: Graphic3d_StructureManager
 	:rtype: None") PrsMgr_PresentationManager;
 		 PrsMgr_PresentationManager (const opencascade::handle<Graphic3d_StructureManager> & theStructureManager);
 
@@ -996,7 +996,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") RedrawImmediate;
 		%feature("autodoc", "* Clears and redisplays immediate structures of the viewer taking into account its affinity.
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:rtype: None") RedrawImmediate;
 		void RedrawImmediate (const opencascade::handle<V3d_Viewer> & theViewer);
 
@@ -1004,7 +1004,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") SetDisplayPriority;
 		%feature("autodoc", "* Sets the display priority theNewPrior of the presentable object thePrsObject in this framework with the display mode theMode.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode:
 	:type theMode: int
 	:param theNewPrior:
@@ -1016,7 +1016,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") SetVisibility;
 		%feature("autodoc", "* Sets the visibility of presentable object.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode:
 	:type theMode: int
 	:param theValue:
@@ -1028,7 +1028,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") SetZLayer;
 		%feature("autodoc", "* Set Z layer ID for all presentations of the object.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theLayerId:
 	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: None") SetZLayer;
@@ -1044,9 +1044,9 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "* Sets the transformation theTransformation for the presentable object thePrsObject. thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theTransformation:
-	:type theTransformation: opencascade::handle<Geom_Transformation> &
+	:type theTransformation: Geom_Transformation
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: None") Transform;
@@ -1056,14 +1056,14 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") Unhighlight;
 		%feature("autodoc", "* Removes highlighting from the presentation of the presentable object.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:rtype: None") Unhighlight;
 		void Unhighlight (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject);
 
 		/****************** Unhighlight ******************/
 		%feature("compactdefaultargs") Unhighlight;
 		%feature("autodoc", ":param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode:
 	:type theMode: int
 	:rtype: None") Unhighlight;
@@ -1073,7 +1073,7 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* Updates the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
 	:param thePrsObject:
-	:type thePrsObject: opencascade::handle<PrsMgr_PresentableObject> &
+	:type thePrsObject: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: None") Update;
@@ -1083,13 +1083,13 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 		%feature("compactdefaultargs") UpdateHighlightTrsf;
 		%feature("autodoc", "* Allows to apply location transformation to shadow highlight presentation immediately. @param theObj defines the base object, it local transformation will be applied to corresponding highlight structure @param theMode defines display mode of the base object @param theSelObj defines the object produced after decomposition of the base object for local selection
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theObj:
-	:type theObj: opencascade::handle<PrsMgr_PresentableObject> &
+	:type theObj: PrsMgr_PresentableObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:param theSelObj: default value is NULL
-	:type theSelObj: opencascade::handle<PrsMgr_PresentableObject> &
+	:type theSelObj: PrsMgr_PresentableObject
 	:rtype: None") UpdateHighlightTrsf;
 		void UpdateHighlightTrsf (const opencascade::handle<V3d_Viewer> & theViewer,const opencascade::handle<PrsMgr_PresentableObject> & theObj,const Standard_Integer theMode = 0,const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL);
 

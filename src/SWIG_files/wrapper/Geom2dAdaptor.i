@@ -82,7 +82,7 @@ class Geom2dAdaptor {
 		%feature("compactdefaultargs") MakeCurve;
 		%feature("autodoc", "* Inherited from GHCurve. Provides a curve handled by reference. Creates a 2d curve from a HCurve2d. This cannot process the OtherCurves.
 	:param HC:
-	:type HC: Adaptor2d_Curve2d &
+	:type HC: Adaptor2d_Curve2d
 	:rtype: opencascade::handle<Geom2d_Curve>") MakeCurve;
 		static opencascade::handle<Geom2d_Curve> MakeCurve (const Adaptor2d_Curve2d & HC);
 
@@ -211,7 +211,7 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 		/****************** Geom2dAdaptor_Curve ******************/
 		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: None") Geom2dAdaptor_Curve;
 		 Geom2dAdaptor_Curve (const opencascade::handle<Geom2d_Curve> & C);
 
@@ -219,7 +219,7 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
 		%feature("autodoc", "* ConstructionError is raised if Ufirst>Ulast
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
@@ -241,7 +241,7 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -275,7 +275,7 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Geom2d_Curve> & C);
 
@@ -283,7 +283,7 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* ConstructionError is raised if Ufirst>Ulast
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:
@@ -395,7 +395,7 @@ class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") Geom2dAdaptor_GHCurve;
 		%feature("autodoc", "* Creates a GenHCurve2d from a Curve
 	:param C:
-	:type C: Geom2dAdaptor_Curve &
+	:type C: Geom2dAdaptor_Curve
 	:rtype: None") Geom2dAdaptor_GHCurve;
 		 Geom2dAdaptor_GHCurve (const Geom2dAdaptor_Curve & C);
 
@@ -403,7 +403,7 @@ class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve2d.
 	:param C:
-	:type C: Geom2dAdaptor_Curve &
+	:type C: Geom2dAdaptor_Curve
 	:rtype: None") Set;
 		void Set (const Geom2dAdaptor_Curve & C);
 
@@ -432,14 +432,14 @@ class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 		/****************** Geom2dAdaptor_HCurve ******************/
 		%feature("compactdefaultargs") Geom2dAdaptor_HCurve;
 		%feature("autodoc", ":param AS:
-	:type AS: Geom2dAdaptor_Curve &
+	:type AS: Geom2dAdaptor_Curve
 	:rtype: None") Geom2dAdaptor_HCurve;
 		 Geom2dAdaptor_HCurve (const Geom2dAdaptor_Curve & AS);
 
 		/****************** Geom2dAdaptor_HCurve ******************/
 		%feature("compactdefaultargs") Geom2dAdaptor_HCurve;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom2d_Curve> &
+	:type S: Geom2d_Curve
 	:rtype: None") Geom2dAdaptor_HCurve;
 		 Geom2dAdaptor_HCurve (const opencascade::handle<Geom2d_Curve> & S);
 
@@ -447,7 +447,7 @@ class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 		%feature("compactdefaultargs") Geom2dAdaptor_HCurve;
 		%feature("autodoc", "* ConstructionError is raised if UFirst>ULast or VFirst>VLast
 	:param S:
-	:type S: opencascade::handle<Geom2d_Curve> &
+	:type S: Geom2d_Curve
 	:param UFirst:
 	:type UFirst: float
 	:param ULast:

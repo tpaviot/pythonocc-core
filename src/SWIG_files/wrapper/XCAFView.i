@@ -151,7 +151,7 @@ class XCAFView_Object : public Standard_Transient {
 		/****************** SetClippingExpression ******************/
 		%feature("compactdefaultargs") SetClippingExpression;
 		%feature("autodoc", ":param theExpression:
-	:type theExpression: opencascade::handle<TCollection_HAsciiString>
+	:type theExpression: TCollection_HAsciiString
 	:rtype: None") SetClippingExpression;
 		void SetClippingExpression (opencascade::handle<TCollection_HAsciiString> theExpression);
 
@@ -174,7 +174,7 @@ class XCAFView_Object : public Standard_Transient {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString>
+	:type theName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (opencascade::handle<TCollection_HAsciiString> theName);
 
@@ -277,7 +277,7 @@ class XCAFView_Object : public Standard_Transient {
 		/****************** XCAFView_Object ******************/
 		%feature("compactdefaultargs") XCAFView_Object;
 		%feature("autodoc", ":param theObj:
-	:type theObj: opencascade::handle<XCAFView_Object> &
+	:type theObj: XCAFView_Object
 	:rtype: None") XCAFView_Object;
 		 XCAFView_Object (const opencascade::handle<XCAFView_Object> & theObj);
 

@@ -114,9 +114,9 @@ class IntSurf {
 	:param Normal:
 	:type Normal: gp_Dir
 	:param TFirst:
-	:type TFirst: IntSurf_Transition &
+	:type TFirst: IntSurf_Transition
 	:param TSecond:
-	:type TSecond: IntSurf_Transition &
+	:type TSecond: IntSurf_Transition
 	:rtype: void") MakeTransition;
 		static void MakeTransition (const gp_Vec & TgFirst,const gp_Vec & TgSecond,const gp_Dir & Normal,IntSurf_Transition & TFirst,IntSurf_Transition & TSecond);
 
@@ -124,9 +124,9 @@ class IntSurf {
 		%feature("compactdefaultargs") SetPeriod;
 		%feature("autodoc", "* Fills theArrOfPeriod array by the period values of theFirstSurf and theSecondSurf. [0] = U-period of theFirstSurf, [1] = V-period of theFirstSurf, [2] = U-period of theSecondSurf, [3] = V-period of theSecondSurf. //! If surface is not periodic in correspond direction then its period is considered to be equal to 0.
 	:param theFirstSurf:
-	:type theFirstSurf: opencascade::handle<Adaptor3d_HSurface> &
+	:type theFirstSurf: Adaptor3d_HSurface
 	:param theSecondSurf:
-	:type theSecondSurf: opencascade::handle<Adaptor3d_HSurface> &
+	:type theSecondSurf: Adaptor3d_HSurface
 	:param theArrOfPeriod:
 	:type theArrOfPeriod: float
 	:rtype: void") SetPeriod;
@@ -224,9 +224,9 @@ class IntSurf_InteriorPoint {
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "* Returns the parameters of the interior point on the parametric surface.
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -281,7 +281,7 @@ class IntSurf_InteriorPointTool {
 		%feature("compactdefaultargs") Direction2d;
 		%feature("autodoc", "* returns the tangent at the intersectin in the parametric space of the parametrized surface.This tangent is associated to the value2d
 	:param PStart:
-	:type PStart: IntSurf_InteriorPoint &
+	:type PStart: IntSurf_InteriorPoint
 	:rtype: gp_Dir2d") Direction2d;
 		static gp_Dir2d Direction2d (const IntSurf_InteriorPoint & PStart);
 
@@ -289,7 +289,7 @@ class IntSurf_InteriorPointTool {
 		%feature("compactdefaultargs") Direction3d;
 		%feature("autodoc", "* returns the tangent at the intersectin in 3d space associated to <P>
 	:param PStart:
-	:type PStart: IntSurf_InteriorPoint &
+	:type PStart: IntSurf_InteriorPoint
 	:rtype: gp_Vec") Direction3d;
 		static gp_Vec Direction3d (const IntSurf_InteriorPoint & PStart);
 
@@ -297,11 +297,11 @@ class IntSurf_InteriorPointTool {
 		%feature("compactdefaultargs") Value2d;
 		%feature("autodoc", "* Returns the <U,V> parameters which are associated with <P> it's the parameters which start the marching algorithm
 	:param PStart:
-	:type PStart: IntSurf_InteriorPoint &
+	:type PStart: IntSurf_InteriorPoint
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Value2d;
 		static void Value2d (const IntSurf_InteriorPoint & PStart,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -309,7 +309,7 @@ class IntSurf_InteriorPointTool {
 		%feature("compactdefaultargs") Value3d;
 		%feature("autodoc", "* Returns the 3d coordinates of the starting point.
 	:param PStart:
-	:type PStart: IntSurf_InteriorPoint &
+	:type PStart: IntSurf_InteriorPoint
 	:rtype: gp_Pnt") Value3d;
 		static gp_Pnt Value3d (const IntSurf_InteriorPoint & PStart);
 
@@ -332,7 +332,7 @@ class IntSurf_LineOn2S : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a point in the line.
 	:param P:
-	:type P: IntSurf_PntOn2S &
+	:type P: IntSurf_PntOn2S
 	:rtype: None") Add;
 		void Add (const IntSurf_PntOn2S & P);
 
@@ -346,14 +346,14 @@ class IntSurf_LineOn2S : public Standard_Transient {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param P:
-	:type P: IntSurf_PntOn2S &
+	:type P: IntSurf_PntOn2S
 	:rtype: None") InsertBefore;
 		void InsertBefore (const Standard_Integer I,const IntSurf_PntOn2S & P);
 
 		/****************** IntSurf_LineOn2S ******************/
 		%feature("compactdefaultargs") IntSurf_LineOn2S;
 		%feature("autodoc", ":param theAllocator: default value is 0
-	:type theAllocator: IntSurf_Allocator &
+	:type theAllocator: IntSurf_Allocator
 	:rtype: None") IntSurf_LineOn2S;
 		 IntSurf_LineOn2S (const IntSurf_Allocator & theAllocator = 0);
 
@@ -436,7 +436,7 @@ class IntSurf_LineOn2S : public Standard_Transient {
 	:param Index:
 	:type Index: int
 	:param P:
-	:type P: IntSurf_PntOn2S &
+	:type P: IntSurf_PntOn2S
 	:rtype: None") Value;
 		void Value (const Standard_Integer Index,const IntSurf_PntOn2S & P);
 
@@ -512,9 +512,9 @@ class IntSurf_PathPoint {
 		%feature("autodoc", ":param Index:
 	:type Index: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -560,9 +560,9 @@ class IntSurf_PathPoint {
 		/****************** Value2d ******************/
 		%feature("compactdefaultargs") Value2d;
 		%feature("autodoc", ":param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Value2d;
 		void Value2d (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -584,7 +584,7 @@ class IntSurf_PathPointTool {
 		%feature("compactdefaultargs") Direction2d;
 		%feature("autodoc", "* returns the tangent at the intersection in the parametric space of the parametrized surface.This tangent is associated to the value2d la tangente a un sens signifiant (indique le sens de chemin ement) an exception is raised if IsTangent is true.
 	:param PStart:
-	:type PStart: IntSurf_PathPoint &
+	:type PStart: IntSurf_PathPoint
 	:rtype: gp_Dir2d") Direction2d;
 		static gp_Dir2d Direction2d (const IntSurf_PathPoint & PStart);
 
@@ -592,7 +592,7 @@ class IntSurf_PathPointTool {
 		%feature("compactdefaultargs") Direction3d;
 		%feature("autodoc", "* returns the tangent at the intersection in 3d space associated to <P> an exception is raised if IsTangent is true.
 	:param PStart:
-	:type PStart: IntSurf_PathPoint &
+	:type PStart: IntSurf_PathPoint
 	:rtype: gp_Vec") Direction3d;
 		static gp_Vec Direction3d (const IntSurf_PathPoint & PStart);
 
@@ -600,7 +600,7 @@ class IntSurf_PathPointTool {
 		%feature("compactdefaultargs") IsPassingPnt;
 		%feature("autodoc", "* Returns True if the point is a point on a non-oriented arc, which means that the intersection line does not stop at such a point but just go through such a point. IsPassingPnt is True when IsOnArc is True
 	:param PStart:
-	:type PStart: IntSurf_PathPoint &
+	:type PStart: IntSurf_PathPoint
 	:rtype: bool") IsPassingPnt;
 		static Standard_Boolean IsPassingPnt (const IntSurf_PathPoint & PStart);
 
@@ -608,7 +608,7 @@ class IntSurf_PathPointTool {
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "* Returns True if the surfaces are tangent at this point. IsTangent can be True when IsOnArc is True if IsPassingPnt is True and IsTangent is True,this point is a stopped point.
 	:param PStart:
-	:type PStart: IntSurf_PathPoint &
+	:type PStart: IntSurf_PathPoint
 	:rtype: bool") IsTangent;
 		static Standard_Boolean IsTangent (const IntSurf_PathPoint & PStart);
 
@@ -616,7 +616,7 @@ class IntSurf_PathPointTool {
 		%feature("compactdefaultargs") Multiplicity;
 		%feature("autodoc", "* Returns the multiplicity of the point i-e the number of auxillar parameters associated to the point which the principal parameters are given by Value2d
 	:param PStart:
-	:type PStart: IntSurf_PathPoint &
+	:type PStart: IntSurf_PathPoint
 	:rtype: int") Multiplicity;
 		static Standard_Integer Multiplicity (const IntSurf_PathPoint & PStart);
 
@@ -624,13 +624,13 @@ class IntSurf_PathPointTool {
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "* Parametric coordinates associated to the multiplicity. An exception is raised if Mult<=0 or Mult>multiplicity.
 	:param PStart:
-	:type PStart: IntSurf_PathPoint &
+	:type PStart: IntSurf_PathPoint
 	:param Mult:
 	:type Mult: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		static void Parameters (const IntSurf_PathPoint & PStart,const Standard_Integer Mult,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -638,11 +638,11 @@ class IntSurf_PathPointTool {
 		%feature("compactdefaultargs") Value2d;
 		%feature("autodoc", "* Returns the <U, V> parameters which are associated with <P> it's the parameters which start the marching algorithm
 	:param PStart:
-	:type PStart: IntSurf_PathPoint &
+	:type PStart: IntSurf_PathPoint
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Value2d;
 		static void Value2d (const IntSurf_PathPoint & PStart,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -650,7 +650,7 @@ class IntSurf_PathPointTool {
 		%feature("compactdefaultargs") Value3d;
 		%feature("autodoc", "* Returns the 3d coordinates of the starting point.
 	:param PStart:
-	:type PStart: IntSurf_PathPoint &
+	:type PStart: IntSurf_PathPoint
 	:rtype: gp_Pnt") Value3d;
 		static gp_Pnt Value3d (const IntSurf_PathPoint & PStart);
 
@@ -679,7 +679,7 @@ class IntSurf_PntOn2S {
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", "* Returns True if 2D- and 3D-coordinates of theOterPoint are equal to corresponding coordinates of me (with given tolerance). If theTol2D < 0.0 we will compare 3D-points only.
 	:param theOtherPoint:
-	:type theOtherPoint: IntSurf_PntOn2S &
+	:type theOtherPoint: IntSurf_PntOn2S
 	:param theTol3D: default value is 0.0
 	:type theTol3D: float
 	:param theTol2D: default value is -1.0
@@ -691,13 +691,13 @@ class IntSurf_PntOn2S {
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "* Returns the parameters of the point on both surfaces.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -705,9 +705,9 @@ class IntSurf_PntOn2S {
 		%feature("compactdefaultargs") ParametersOnS1;
 		%feature("autodoc", "* Returns the parameters of the point on the first surface.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:rtype: None") ParametersOnS1;
 		void ParametersOnS1 (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -715,9 +715,9 @@ class IntSurf_PntOn2S {
 		%feature("compactdefaultargs") ParametersOnS2;
 		%feature("autodoc", "* Returns the parameters of the point on the second surface.
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") ParametersOnS2;
 		void ParametersOnS2 (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -727,9 +727,9 @@ class IntSurf_PntOn2S {
 	:param OnFirst:
 	:type OnFirst: bool
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") ParametersOnSurface;
 		void ParametersOnSurface (const Standard_Boolean OnFirst,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -939,9 +939,9 @@ class IntSurf_Quadric {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		void Parameters (const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1005,7 +1005,7 @@ class IntSurf_Quadric {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param Dist:
-	:type Dist: float &
+	:type Dist: float
 	:param Grad:
 	:type Grad: gp_Vec
 	:rtype: None") ValAndGrad;
@@ -1038,7 +1038,7 @@ class IntSurf_QuadricTool {
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* Returns the gradient of the function.
 	:param Quad:
-	:type Quad: IntSurf_Quadric &
+	:type Quad: IntSurf_Quadric
 	:param X:
 	:type X: float
 	:param Y:
@@ -1054,7 +1054,7 @@ class IntSurf_QuadricTool {
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "* returns the tolerance of the zero of the implicit function
 	:param Quad:
-	:type Quad: IntSurf_Quadric &
+	:type Quad: IntSurf_Quadric
 	:rtype: float") Tolerance;
 		static Standard_Real Tolerance (const IntSurf_Quadric & Quad);
 
@@ -1062,7 +1062,7 @@ class IntSurf_QuadricTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Returns the value of the function.
 	:param Quad:
-	:type Quad: IntSurf_Quadric &
+	:type Quad: IntSurf_Quadric
 	:param X:
 	:type X: float
 	:param Y:
@@ -1076,7 +1076,7 @@ class IntSurf_QuadricTool {
 		%feature("compactdefaultargs") ValueAndGradient;
 		%feature("autodoc", "* Returns the value and the gradient.
 	:param Quad:
-	:type Quad: IntSurf_Quadric &
+	:type Quad: IntSurf_Quadric
 	:param X:
 	:type X: float
 	:param Y:
@@ -1084,7 +1084,7 @@ class IntSurf_QuadricTool {
 	:param Z:
 	:type Z: float
 	:param Val:
-	:type Val: float &
+	:type Val: float
 	:param Grad:
 	:type Grad: gp_Vec
 	:rtype: None") ValueAndGradient;

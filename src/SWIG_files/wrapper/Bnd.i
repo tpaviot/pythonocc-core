@@ -207,7 +207,7 @@ class Bnd_B2d {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Update the box by another box.
 	:param theBox:
-	:type theBox: Bnd_B2d &
+	:type theBox: Bnd_B2d
 	:rtype: None") Add;
 		void Add (const Bnd_B2d & theBox);
 
@@ -257,7 +257,7 @@ class Bnd_B2d {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
 	:param theBox:
-	:type theBox: Bnd_B2d &
+	:type theBox: Bnd_B2d
 	:rtype: bool") IsIn;
 		Standard_Boolean IsIn (const Bnd_B2d & theBox);
 
@@ -265,7 +265,7 @@ class Bnd_B2d {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
 	:param theBox:
-	:type theBox: Bnd_B2d &
+	:type theBox: Bnd_B2d
 	:param theTrsf:
 	:type theTrsf: gp_Trsf2d
 	:rtype: bool") IsIn;
@@ -295,7 +295,7 @@ class Bnd_B2d {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B2d &
+	:type theOtherBox: Bnd_B2d
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const Bnd_B2d & theOtherBox);
 
@@ -303,7 +303,7 @@ class Bnd_B2d {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B2d &
+	:type theOtherBox: Bnd_B2d
 	:param theTrsf:
 	:type theTrsf: gp_Trsf2d
 	:rtype: bool") IsOut;
@@ -337,7 +337,7 @@ class Bnd_B2d {
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "* Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B2d &
+	:type theOtherBox: Bnd_B2d
 	:rtype: bool") Limit;
 		Standard_Boolean Limit (const Bnd_B2d & theOtherBox);
 
@@ -406,7 +406,7 @@ class Bnd_B2f {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Update the box by another box.
 	:param theBox:
-	:type theBox: Bnd_B2f &
+	:type theBox: Bnd_B2f
 	:rtype: None") Add;
 		void Add (const Bnd_B2f & theBox);
 
@@ -456,7 +456,7 @@ class Bnd_B2f {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
 	:param theBox:
-	:type theBox: Bnd_B2f &
+	:type theBox: Bnd_B2f
 	:rtype: bool") IsIn;
 		Standard_Boolean IsIn (const Bnd_B2f & theBox);
 
@@ -464,7 +464,7 @@ class Bnd_B2f {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
 	:param theBox:
-	:type theBox: Bnd_B2f &
+	:type theBox: Bnd_B2f
 	:param theTrsf:
 	:type theTrsf: gp_Trsf2d
 	:rtype: bool") IsIn;
@@ -494,7 +494,7 @@ class Bnd_B2f {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B2f &
+	:type theOtherBox: Bnd_B2f
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const Bnd_B2f & theOtherBox);
 
@@ -502,7 +502,7 @@ class Bnd_B2f {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B2f &
+	:type theOtherBox: Bnd_B2f
 	:param theTrsf:
 	:type theTrsf: gp_Trsf2d
 	:rtype: bool") IsOut;
@@ -536,7 +536,7 @@ class Bnd_B2f {
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "* Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B2f &
+	:type theOtherBox: Bnd_B2f
 	:rtype: bool") Limit;
 		Standard_Boolean Limit (const Bnd_B2f & theOtherBox);
 
@@ -605,7 +605,7 @@ class Bnd_B3d {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Update the box by another box.
 	:param theBox:
-	:type theBox: Bnd_B3d &
+	:type theBox: Bnd_B3d
 	:rtype: None") Add;
 		void Add (const Bnd_B3d & theBox);
 
@@ -655,7 +655,7 @@ class Bnd_B3d {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
 	:param theBox:
-	:type theBox: Bnd_B3d &
+	:type theBox: Bnd_B3d
 	:rtype: bool") IsIn;
 		Standard_Boolean IsIn (const Bnd_B3d & theBox);
 
@@ -663,7 +663,7 @@ class Bnd_B3d {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
 	:param theBox:
-	:type theBox: Bnd_B3d &
+	:type theBox: Bnd_B3d
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
 	:rtype: bool") IsIn;
@@ -693,7 +693,7 @@ class Bnd_B3d {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B3d &
+	:type theOtherBox: Bnd_B3d
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const Bnd_B3d & theOtherBox);
 
@@ -701,7 +701,7 @@ class Bnd_B3d {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B3d &
+	:type theOtherBox: Bnd_B3d
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
 	:rtype: bool") IsOut;
@@ -737,7 +737,7 @@ class Bnd_B3d {
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "* Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B3d &
+	:type theOtherBox: Bnd_B3d
 	:rtype: bool") Limit;
 		Standard_Boolean Limit (const Bnd_B3d & theOtherBox);
 
@@ -806,7 +806,7 @@ class Bnd_B3f {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Update the box by another box.
 	:param theBox:
-	:type theBox: Bnd_B3f &
+	:type theBox: Bnd_B3f
 	:rtype: None") Add;
 		void Add (const Bnd_B3f & theBox);
 
@@ -856,7 +856,7 @@ class Bnd_B3f {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
 	:param theBox:
-	:type theBox: Bnd_B3f &
+	:type theBox: Bnd_B3f
 	:rtype: bool") IsIn;
 		Standard_Boolean IsIn (const Bnd_B3f & theBox);
 
@@ -864,7 +864,7 @@ class Bnd_B3f {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
 	:param theBox:
-	:type theBox: Bnd_B3f &
+	:type theBox: Bnd_B3f
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
 	:rtype: bool") IsIn;
@@ -894,7 +894,7 @@ class Bnd_B3f {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B3f &
+	:type theOtherBox: Bnd_B3f
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const Bnd_B3f & theOtherBox);
 
@@ -902,7 +902,7 @@ class Bnd_B3f {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B3f &
+	:type theOtherBox: Bnd_B3f
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
 	:rtype: bool") IsOut;
@@ -938,7 +938,7 @@ class Bnd_B3f {
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "* Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
 	:param theOtherBox:
-	:type theOtherBox: Bnd_B3f &
+	:type theOtherBox: Bnd_B3f
 	:rtype: bool") Limit;
 		Standard_Boolean Limit (const Bnd_B3f & theOtherBox);
 
@@ -991,7 +991,7 @@ class Bnd_BoundSortBox {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the bounding box theBox at position boxIndex in the array of boxes to be sorted by this comparison algorithm. This function is used only in conjunction with the third syntax described in the synopsis of Initialize. //! Exceptions: //! - Standard_OutOfRange if boxIndex is not in the range [ 1,nbComponents ] where nbComponents is the maximum number of bounding boxes declared for this comparison algorithm at initialization. //! - Standard_MultiplyDefined if a box already exists at position boxIndex in the array of boxes to be sorted by this comparison algorithm.
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:param boxIndex:
 	:type boxIndex: int
 	:rtype: None") Add;
@@ -1007,7 +1007,7 @@ class Bnd_BoundSortBox {
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "* Compares the bounding box theBox, with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:rtype: TColStd_ListOfInteger") Compare;
 		const TColStd_ListOfInteger & Compare (const Bnd_Box & theBox);
 
@@ -1033,9 +1033,9 @@ class Bnd_BoundSortBox {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes this comparison algorithm with - the set of bounding boxes SetOfBox.
 	:param CompleteBox:
-	:type CompleteBox: Bnd_Box &
+	:type CompleteBox: Bnd_Box
 	:param SetOfBox:
-	:type SetOfBox: opencascade::handle<Bnd_HArray1OfBox> &
+	:type SetOfBox: Bnd_HArray1OfBox
 	:rtype: None") Initialize;
 		void Initialize (const Bnd_Box & CompleteBox,const opencascade::handle<Bnd_HArray1OfBox> & SetOfBox);
 
@@ -1043,7 +1043,7 @@ class Bnd_BoundSortBox {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes this comparison algorithm with - the set of bounding boxes SetOfBox, where CompleteBox is given as the global bounding box of SetOfBox.
 	:param SetOfBox:
-	:type SetOfBox: opencascade::handle<Bnd_HArray1OfBox> &
+	:type SetOfBox: Bnd_HArray1OfBox
 	:rtype: None") Initialize;
 		void Initialize (const opencascade::handle<Bnd_HArray1OfBox> & SetOfBox);
 
@@ -1051,7 +1051,7 @@ class Bnd_BoundSortBox {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes this comparison algorithm, giving it only - the maximum number nbComponents of the bounding boxes to be managed. Use the Add function to define the array of bounding boxes to be sorted by this algorithm.
 	:param CompleteBox:
-	:type CompleteBox: Bnd_Box &
+	:type CompleteBox: Bnd_Box
 	:param nbComponents:
 	:type nbComponents: int
 	:rtype: None") Initialize;
@@ -1076,7 +1076,7 @@ class Bnd_BoundSortBox2d {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the 2D bounding box theBox at position boxIndex in the array of boxes to be sorted by this comparison algorithm. This function is used only in conjunction with the third syntax described in the synopsis of Initialize. Exceptions - Standard_OutOfRange if boxIndex is not in the range [ 1,nbComponents ] where nbComponents is the maximum number of bounding boxes declared for this comparison algorithm at initialization. - Standard_MultiplyDefined if a box still exists at position boxIndex in the array of boxes to be sorted by this comparison algorithm.
 	:param theBox:
-	:type theBox: Bnd_Box2d &
+	:type theBox: Bnd_Box2d
 	:param boxIndex:
 	:type boxIndex: int
 	:rtype: None") Add;
@@ -1092,7 +1092,7 @@ class Bnd_BoundSortBox2d {
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "* Compares the 2D bounding box theBox with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
 	:param theBox:
-	:type theBox: Bnd_Box2d &
+	:type theBox: Bnd_Box2d
 	:rtype: TColStd_ListOfInteger") Compare;
 		const TColStd_ListOfInteger & Compare (const Bnd_Box2d & theBox);
 
@@ -1105,9 +1105,9 @@ class Bnd_BoundSortBox2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes this comparison algorithm with - the set of 2D bounding boxes SetOfBox
 	:param CompleteBox:
-	:type CompleteBox: Bnd_Box2d &
+	:type CompleteBox: Bnd_Box2d
 	:param SetOfBox:
-	:type SetOfBox: opencascade::handle<Bnd_HArray1OfBox2d> &
+	:type SetOfBox: Bnd_HArray1OfBox2d
 	:rtype: None") Initialize;
 		void Initialize (const Bnd_Box2d & CompleteBox,const opencascade::handle<Bnd_HArray1OfBox2d> & SetOfBox);
 
@@ -1115,7 +1115,7 @@ class Bnd_BoundSortBox2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes this comparison algorithm with - the set of 2D bounding boxes SetOfBox, where CompleteBox is given as the global bounding box of SetOfBox.
 	:param SetOfBox:
-	:type SetOfBox: opencascade::handle<Bnd_HArray1OfBox2d> &
+	:type SetOfBox: Bnd_HArray1OfBox2d
 	:rtype: None") Initialize;
 		void Initialize (const opencascade::handle<Bnd_HArray1OfBox2d> & SetOfBox);
 
@@ -1123,7 +1123,7 @@ class Bnd_BoundSortBox2d {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes this comparison algorithm, giving it only - the maximum number nbComponents, and - the global bounding box CompleteBox, of the 2D bounding boxes to be managed. Use the Add function to define the array of bounding boxes to be sorted by this algorithm.
 	:param CompleteBox:
-	:type CompleteBox: Bnd_Box2d &
+	:type CompleteBox: Bnd_Box2d
 	:param nbComponents:
 	:type nbComponents: int
 	:rtype: None") Initialize;
@@ -1148,7 +1148,7 @@ class Bnd_Box {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the box <Other> to <self>.
 	:param Other:
-	:type Other: Bnd_Box &
+	:type Other: Bnd_Box
 	:rtype: None") Add;
 		void Add (const Bnd_Box & Other);
 
@@ -1210,7 +1210,7 @@ class Bnd_Box {
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "* Computes the minimum distance between two boxes.
 	:param Other:
-	:type Other: Bnd_Box &
+	:type Other: Bnd_Box
 	:rtype: float") Distance;
 		Standard_Real Distance (const Bnd_Box & Other);
 
@@ -1245,17 +1245,17 @@ class Bnd_Box {
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "* Returns the bounds of this bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid()
 	:param theXmin:
-	:type theXmin: float &
+	:type theXmin: float
 	:param theYmin:
-	:type theYmin: float &
+	:type theYmin: float
 	:param theZmin:
-	:type theZmin: float &
+	:type theZmin: float
 	:param theXmax:
-	:type theXmax: float &
+	:type theXmax: float
 	:param theYmax:
-	:type theYmax: float &
+	:type theYmax: float
 	:param theZmax:
-	:type theZmax: float &
+	:type theZmax: float
 	:rtype: None") Get;
 		void Get (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1341,7 +1341,7 @@ class Bnd_Box {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Returns False if the <Box> intersects or is inside <self>.
 	:param Other:
-	:type Other: Bnd_Box &
+	:type Other: Bnd_Box
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const Bnd_Box & Other);
 
@@ -1349,7 +1349,7 @@ class Bnd_Box {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Returns False if the transformed <Box> intersects or is inside <self>.
 	:param Other:
-	:type Other: Bnd_Box &
+	:type Other: Bnd_Box
 	:param T:
 	:type T: gp_Trsf
 	:rtype: bool") IsOut;
@@ -1361,7 +1361,7 @@ class Bnd_Box {
 	:param T1:
 	:type T1: gp_Trsf
 	:param Other:
-	:type Other: Bnd_Box &
+	:type Other: Bnd_Box
 	:param T2:
 	:type T2: gp_Trsf
 	:rtype: bool") IsOut;
@@ -1560,7 +1560,7 @@ class Bnd_Box2d {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the 2d box <Other> to <self>.
 	:param Other:
-	:type Other: Bnd_Box2d &
+	:type Other: Bnd_Box2d
 	:rtype: None") Add;
 		void Add (const Bnd_Box2d & Other);
 
@@ -1613,13 +1613,13 @@ class Bnd_Box2d {
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "* Returns the bounds of this 2D bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). if IsVoid()
 	:param aXmin:
-	:type aXmin: float &
+	:type aXmin: float
 	:param aYmin:
-	:type aYmin: float &
+	:type aYmin: float
 	:param aXmax:
-	:type aXmax: float &
+	:type aXmax: float
 	:param aYmax:
-	:type aYmax: float &
+	:type aYmax: float
 	:rtype: None") Get;
 		void Get (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1665,7 +1665,7 @@ class Bnd_Box2d {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Returns True if <Box2d> is out <self>.
 	:param Other:
-	:type Other: Bnd_Box2d &
+	:type Other: Bnd_Box2d
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const Bnd_Box2d & Other);
 
@@ -1673,7 +1673,7 @@ class Bnd_Box2d {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Returns True if transformed <Box2d> is out <self>.
 	:param theOther:
-	:type theOther: Bnd_Box2d &
+	:type theOther: Bnd_Box2d
 	:param theTrsf:
 	:type theTrsf: gp_Trsf2d
 	:rtype: bool") IsOut;
@@ -1685,7 +1685,7 @@ class Bnd_Box2d {
 	:param T1:
 	:type T1: gp_Trsf2d
 	:param Other:
-	:type Other: Bnd_Box2d &
+	:type Other: Bnd_Box2d
 	:param T2:
 	:type T2: gp_Trsf2d
 	:rtype: bool") IsOut;
@@ -1822,7 +1822,7 @@ class Bnd_OBB {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Rebuilds this in order to include all previous objects (which it was created from) and theOther.
 	:param theOther:
-	:type theOther: Bnd_OBB &
+	:type theOther: Bnd_OBB
 	:rtype: None") Add;
 		void Add (const Bnd_OBB & theOther);
 
@@ -1864,7 +1864,7 @@ class Bnd_OBB {
 		%feature("compactdefaultargs") Bnd_OBB;
 		%feature("autodoc", "* Constructor to create OBB from AABB.
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:rtype: None") Bnd_OBB;
 		 Bnd_OBB (const Bnd_Box & theBox);
 
@@ -1908,7 +1908,7 @@ class Bnd_OBB {
 		%feature("compactdefaultargs") IsCompletelyInside;
 		%feature("autodoc", "* Check if the theOther is completely inside *this.
 	:param theOther:
-	:type theOther: Bnd_OBB &
+	:type theOther: Bnd_OBB
 	:rtype: bool") IsCompletelyInside;
 		Standard_Boolean IsCompletelyInside (const Bnd_OBB & theOther);
 
@@ -1916,7 +1916,7 @@ class Bnd_OBB {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Check if the box do not interfere the other box.
 	:param theOther:
-	:type theOther: Bnd_OBB &
+	:type theOther: Bnd_OBB
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const Bnd_OBB & theOther);
 
@@ -2073,7 +2073,7 @@ class Bnd_Range {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Extends this range to include both ranges. @sa use method ::Union() to check if two ranges overlap method merging
 	:param theRange:
-	:type theRange: Bnd_Range &
+	:type theRange: Bnd_Range
 	:rtype: None") Add;
 		void Add (const Bnd_Range & theRange);
 
@@ -2097,7 +2097,7 @@ class Bnd_Range {
 		%feature("compactdefaultargs") Common;
 		%feature("autodoc", "* Replaces <this> with common-part of <this> and theOther
 	:param theOther:
-	:type theOther: Bnd_Range &
+	:type theOther: Bnd_Range
 	:rtype: None") Common;
 		void Common (const Bnd_Range & theOther);
 
@@ -2127,9 +2127,9 @@ class Bnd_Range {
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "* Obtain first and last boundary of <this>. If <this> is VOID the method returns false.
 	:param theFirstPar:
-	:type theFirstPar: float &
+	:type theFirstPar: float
 	:param theLastPar:
-	:type theLastPar: float &
+	:type theLastPar: float
 	:rtype: bool") GetBounds;
 		Standard_Boolean GetBounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2139,7 +2139,7 @@ class Bnd_Range {
 	:param theLambda:
 	:type theLambda: float
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:rtype: bool") GetIntermediatePoint;
 		Standard_Boolean GetIntermediatePoint (const Standard_Real theLambda,Standard_Real &OutValue);
 
@@ -2147,7 +2147,7 @@ class Bnd_Range {
 		%feature("compactdefaultargs") GetMax;
 		%feature("autodoc", "* Obtain MAX boundary of <this>. If <this> is VOID the method returns false.
 	:param thePar:
-	:type thePar: float &
+	:type thePar: float
 	:rtype: bool") GetMax;
 		Standard_Boolean GetMax (Standard_Real &OutValue);
 
@@ -2155,7 +2155,7 @@ class Bnd_Range {
 		%feature("compactdefaultargs") GetMin;
 		%feature("autodoc", "* Obtain MIN boundary of <this>. If <this> is VOID the method returns false.
 	:param thePar:
-	:type thePar: float &
+	:type thePar: float
 	:rtype: bool") GetMin;
 		Standard_Boolean GetMin (Standard_Real &OutValue);
 
@@ -2181,7 +2181,7 @@ class Bnd_Range {
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "* Returns True if the given range is out of this range.
 	:param theRange:
-	:type theRange: Bnd_Range &
+	:type theRange: Bnd_Range
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const Bnd_Range & theRange);
 
@@ -2219,7 +2219,7 @@ class Bnd_Range {
 	:param theVal:
 	:type theVal: float
 	:param theList:
-	:type theList: NCollection_List<Bnd_Range> &
+	:type theList: NCollection_List<Bnd_Range>
 	:param thePeriod: default value is 0.0
 	:type thePeriod: float
 	:rtype: None") Split;
@@ -2245,7 +2245,7 @@ class Bnd_Range {
 		%feature("compactdefaultargs") Union;
 		%feature("autodoc", "* Joins *this and theOther to one interval. Replaces *this to the result. Returns false if the operation cannot be done (e.g. input arguments are empty or separated). @sa use method ::Add() to merge two ranges unconditionally
 	:param theOther:
-	:type theOther: Bnd_Range &
+	:type theOther: Bnd_Range
 	:rtype: bool") Union;
 		Standard_Boolean Union (const Bnd_Range & theOther);
 
@@ -2281,7 +2281,7 @@ class Bnd_Sphere {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param theOther:
-	:type theOther: Bnd_Sphere &
+	:type theOther: Bnd_Sphere
 	:rtype: None") Add;
 		void Add (const Bnd_Sphere & theOther);
 
@@ -2324,16 +2324,16 @@ class Bnd_Sphere {
 	:param theXYZ:
 	:type theXYZ: gp_XYZ
 	:param theMin:
-	:type theMin: float &
+	:type theMin: float
 	:param theMax:
-	:type theMax: float &
+	:type theMax: float
 	:rtype: None") Distances;
 		void Distances (const gp_XYZ & theXYZ,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** IsOut ******************/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", ":param theOther:
-	:type theOther: Bnd_Sphere &
+	:type theOther: Bnd_Sphere
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const Bnd_Sphere & theOther);
 
@@ -2342,7 +2342,7 @@ class Bnd_Sphere {
 		%feature("autodoc", ":param thePnt:
 	:type thePnt: gp_XYZ
 	:param theMaxDist:
-	:type theMaxDist: float &
+	:type theMaxDist: float
 	:rtype: bool") IsOut;
 		Standard_Boolean IsOut (const gp_XYZ & thePnt,Standard_Real &OutValue);
 
@@ -2360,7 +2360,7 @@ class Bnd_Sphere {
 	:param theProjNode:
 	:type theProjNode: gp_XYZ
 	:param theDist:
-	:type theDist: float &
+	:type theDist: float
 	:param theInside:
 	:type theInside: bool
 	:rtype: bool") Project;
@@ -2392,9 +2392,9 @@ class Bnd_Sphere {
 	:param theXYZ:
 	:type theXYZ: gp_XYZ
 	:param theMin:
-	:type theMin: float &
+	:type theMin: float
 	:param theMax:
-	:type theMax: float &
+	:type theMax: float
 	:rtype: None") SquareDistances;
 		void SquareDistances (const gp_XYZ & theXYZ,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2434,7 +2434,7 @@ class Bnd_Tools {
 		%feature("compactdefaultargs") Bnd2BVH;
 		%feature("autodoc", "* @name Bnd_Box to BVH_Box conversion Converts the given Bnd_Box2d to BVH_Box
 	:param theBox:
-	:type theBox: Bnd_Box2d &
+	:type theBox: Bnd_Box2d
 	:rtype: BVH_Box<float, 2>") Bnd2BVH;
 		static BVH_Box<Standard_Real, 2> Bnd2BVH (const Bnd_Box2d & theBox);
 
@@ -2442,7 +2442,7 @@ class Bnd_Tools {
 		%feature("compactdefaultargs") Bnd2BVH;
 		%feature("autodoc", "* Converts the given Bnd_Box to BVH_Box
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:rtype: BVH_Box<float, 3>") Bnd2BVH;
 		static BVH_Box<Standard_Real, 3> Bnd2BVH (const Bnd_Box & theBox);
 

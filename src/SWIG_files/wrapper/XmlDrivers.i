@@ -88,7 +88,7 @@ class XmlDrivers {
 		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", ":param theMsgDriver:
-	:type theMsgDriver: opencascade::handle<Message_Messenger> &
+	:type theMsgDriver: Message_Messenger
 	:rtype: opencascade::handle<XmlMDF_ADriverTable>") AttributeDrivers;
 		static opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
 
@@ -96,14 +96,14 @@ class XmlDrivers {
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "* Defines format 'XmlOcaf' and registers its read and write drivers in the specified application
 	:param theApp:
-	:type theApp: opencascade::handle<TDocStd_Application> &
+	:type theApp: TDocStd_Application
 	:rtype: void") DefineFormat;
 		static void DefineFormat (const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", ":param theGUID:
-	:type theGUID: Standard_GUID &
+	:type theGUID: Standard_GUID
 	:rtype: opencascade::handle<Standard_Transient>") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory (const Standard_GUID & theGUID);
 
@@ -125,23 +125,23 @@ class XmlDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrievalD
 		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", ":param theMsgDriver:
-	:type theMsgDriver: opencascade::handle<Message_Messenger> &
+	:type theMsgDriver: Message_Messenger
 	:rtype: opencascade::handle<XmlMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadShapeSection ******************/
 		%feature("compactdefaultargs") ReadShapeSection;
 		%feature("autodoc", ":param thePDoc:
-	:type thePDoc: XmlObjMgt_Element &
+	:type thePDoc: XmlObjMgt_Element
 	:param theMsgDriver:
-	:type theMsgDriver: opencascade::handle<Message_Messenger> &
+	:type theMsgDriver: Message_Messenger
 	:rtype: opencascade::handle<XmlMDF_ADriver>") ReadShapeSection;
 		virtual opencascade::handle<XmlMDF_ADriver> ReadShapeSection (const XmlObjMgt_Element & thePDoc,const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ShapeSetCleaning ******************/
 		%feature("compactdefaultargs") ShapeSetCleaning;
 		%feature("autodoc", ":param theDriver:
-	:type theDriver: opencascade::handle<XmlMDF_ADriver> &
+	:type theDriver: XmlMDF_ADriver
 	:rtype: void") ShapeSetCleaning;
 		virtual void ShapeSetCleaning (const opencascade::handle<XmlMDF_ADriver> & theDriver);
 
@@ -170,21 +170,21 @@ class XmlDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDrive
 		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", ":param theMsgDriver:
-	:type theMsgDriver: opencascade::handle<Message_Messenger> &
+	:type theMsgDriver: Message_Messenger
 	:rtype: opencascade::handle<XmlMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** WriteShapeSection ******************/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", ":param thePDoc:
-	:type thePDoc: XmlObjMgt_Element &
+	:type thePDoc: XmlObjMgt_Element
 	:rtype: bool") WriteShapeSection;
 		virtual Standard_Boolean WriteShapeSection (XmlObjMgt_Element & thePDoc);
 
 		/****************** XmlDrivers_DocumentStorageDriver ******************/
 		%feature("compactdefaultargs") XmlDrivers_DocumentStorageDriver;
 		%feature("autodoc", ":param theCopyright:
-	:type theCopyright: TCollection_ExtendedString &
+	:type theCopyright: TCollection_ExtendedString
 	:rtype: None") XmlDrivers_DocumentStorageDriver;
 		 XmlDrivers_DocumentStorageDriver (const TCollection_ExtendedString & theCopyright);
 

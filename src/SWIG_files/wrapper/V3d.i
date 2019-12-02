@@ -221,7 +221,7 @@ class V3d {
 		%feature("compactdefaultargs") ArrowOfRadius;
 		%feature("autodoc", "* Compute the graphic structure of arrow. X0,Y0,Z0 : coordinate of the arrow. DX,DY,DZ : Direction of the arrow. Alpha : Angle of arrow. Lng : Length of arrow.
 	:param garrow:
-	:type garrow: opencascade::handle<Graphic3d_Group> &
+	:type garrow: Graphic3d_Group
 	:param X0:
 	:type X0: float
 	:param Y0:
@@ -245,7 +245,7 @@ class V3d {
 		%feature("compactdefaultargs") CircleInPlane;
 		%feature("autodoc", "* Compute the graphic structure of circle. X0,Y0,Z0 : Center of circle. VX,VY,VZ : Axis of circle. Radius : Radius of circle.
 	:param gcircle:
-	:type gcircle: opencascade::handle<Graphic3d_Group> &
+	:type gcircle: Graphic3d_Group
 	:param X0:
 	:type X0: float
 	:param Y0:
@@ -274,9 +274,9 @@ class V3d {
 		/****************** SwitchViewsinWindow ******************/
 		%feature("compactdefaultargs") SwitchViewsinWindow;
 		%feature("autodoc", ":param aPreviousView:
-	:type aPreviousView: opencascade::handle<V3d_View> &
+	:type aPreviousView: V3d_View
 	:param aNextView:
-	:type aNextView: opencascade::handle<V3d_View> &
+	:type aNextView: V3d_View
 	:rtype: void") SwitchViewsinWindow;
 		static void SwitchViewsinWindow (const opencascade::handle<V3d_View> & aPreviousView,const opencascade::handle<V3d_View> & aNextView);
 
@@ -294,7 +294,7 @@ class V3d {
 	:param theTypeString:
 	:type theTypeString: char *
 	:param theType:
-	:type theType: V3d_TypeOfOrientation &
+	:type theType: V3d_TypeOfOrientation
 	:rtype: bool") TypeOfOrientationFromString;
 		static Standard_Boolean TypeOfOrientationFromString (const char * theTypeString,V3d_TypeOfOrientation & theType);
 
@@ -325,7 +325,7 @@ class V3d_AmbientLight : public Graphic3d_CLight {
 		%feature("compactdefaultargs") V3d_AmbientLight;
 		%feature("autodoc", "* Constructs an ambient light source in the viewer. The default Color of this light source is WHITE.
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") V3d_AmbientLight;
 		 V3d_AmbientLight (const Quantity_Color & theColor = Quantity_NOC_WHITE);
 
@@ -333,9 +333,9 @@ class V3d_AmbientLight : public Graphic3d_CLight {
 		%feature("compactdefaultargs") V3d_AmbientLight;
 		%feature("autodoc", "* Constructs an ambient light source in the viewer. The default Color of this light source is WHITE.
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") V3d_AmbientLight;
 		 V3d_AmbientLight (const opencascade::handle<V3d_Viewer> & theViewer,const Quantity_Color & theColor = Quantity_NOC_WHITE);
 
@@ -369,9 +369,9 @@ class V3d_CircularGrid : public Aspect_CircularGrid {
 		/****************** GraphicValues ******************/
 		%feature("compactdefaultargs") GraphicValues;
 		%feature("autodoc", ":param Radius:
-	:type Radius: float &
+	:type Radius: float
 	:param OffSet:
-	:type OffSet: float &
+	:type OffSet: float
 	:rtype: None") GraphicValues;
 		void GraphicValues (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -383,9 +383,9 @@ class V3d_CircularGrid : public Aspect_CircularGrid {
 		/****************** SetColors ******************/
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", ":param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aTenthColor:
-	:type aTenthColor: Quantity_Color &
+	:type aTenthColor: Quantity_Color
 	:rtype: None") SetColors;
 		void SetColors (const Quantity_Color & aColor,const Quantity_Color & aTenthColor);
 
@@ -401,11 +401,11 @@ class V3d_CircularGrid : public Aspect_CircularGrid {
 		/****************** V3d_CircularGrid ******************/
 		%feature("compactdefaultargs") V3d_CircularGrid;
 		%feature("autodoc", ":param aViewer:
-	:type aViewer: V3d_ViewerPointer &
+	:type aViewer: V3d_ViewerPointer
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aTenthColor:
-	:type aTenthColor: Quantity_Color &
+	:type aTenthColor: Quantity_Color
 	:rtype: None") V3d_CircularGrid;
 		 V3d_CircularGrid (const V3d_ViewerPointer & aViewer,const Quantity_Color & aColor,const Quantity_Color & aTenthColor);
 
@@ -463,9 +463,9 @@ class V3d_Plane : public Standard_Transient {
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "* Display the plane representation in the choosen view.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theColor: default value is Quantity_NOC_GRAY
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: void") Display;
 		virtual void Display (const opencascade::handle<V3d_View> & theView,const Quantity_Color & theColor = Quantity_NOC_GRAY);
 
@@ -485,13 +485,13 @@ class V3d_Plane : public Standard_Transient {
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "* Returns the parameters of the plane.
 	:param theA:
-	:type theA: float &
+	:type theA: float
 	:param theB:
-	:type theB: float &
+	:type theB: float
 	:param theC:
-	:type theC: float &
+	:type theC: float
 	:param theD:
-	:type theD: float &
+	:type theD: float
 	:rtype: None") Plane;
 		void Plane (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -570,11 +570,11 @@ class V3d_RectangularGrid : public Aspect_RectangularGrid {
 		/****************** GraphicValues ******************/
 		%feature("compactdefaultargs") GraphicValues;
 		%feature("autodoc", ":param XSize:
-	:type XSize: float &
+	:type XSize: float
 	:param YSize:
-	:type YSize: float &
+	:type YSize: float
 	:param OffSet:
-	:type OffSet: float &
+	:type OffSet: float
 	:rtype: None") GraphicValues;
 		void GraphicValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -586,9 +586,9 @@ class V3d_RectangularGrid : public Aspect_RectangularGrid {
 		/****************** SetColors ******************/
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", ":param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aTenthColor:
-	:type aTenthColor: Quantity_Color &
+	:type aTenthColor: Quantity_Color
 	:rtype: void") SetColors;
 		virtual void SetColors (const Quantity_Color & aColor,const Quantity_Color & aTenthColor);
 
@@ -606,11 +606,11 @@ class V3d_RectangularGrid : public Aspect_RectangularGrid {
 		/****************** V3d_RectangularGrid ******************/
 		%feature("compactdefaultargs") V3d_RectangularGrid;
 		%feature("autodoc", ":param aViewer:
-	:type aViewer: V3d_ViewerPointer &
+	:type aViewer: V3d_ViewerPointer
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aTenthColor:
-	:type aTenthColor: Quantity_Color &
+	:type aTenthColor: Quantity_Color
 	:rtype: None") V3d_RectangularGrid;
 		 V3d_RectangularGrid (const V3d_ViewerPointer & aViewer,const Quantity_Color & aColor,const Quantity_Color & aTenthColor);
 
@@ -635,7 +635,7 @@ class V3d_Trihedron : public Standard_Transient {
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "* Display trihedron.
 	:param theView:
-	:type theView: V3d_View &
+	:type theView: V3d_View
 	:rtype: None") Display;
 		void Display (const V3d_View & theView);
 
@@ -657,11 +657,11 @@ class V3d_Trihedron : public Standard_Transient {
 		%feature("compactdefaultargs") SetArrowsColor;
 		%feature("autodoc", "* Setup colors of arrows.
 	:param theXColor:
-	:type theXColor: Quantity_Color &
+	:type theXColor: Quantity_Color
 	:param theYColor:
-	:type theYColor: Quantity_Color &
+	:type theYColor: Quantity_Color
 	:param theZColor:
-	:type theZColor: Quantity_Color &
+	:type theZColor: Quantity_Color
 	:rtype: None") SetArrowsColor;
 		void SetArrowsColor (const Quantity_Color & theXColor,const Quantity_Color & theYColor,const Quantity_Color & theZColor);
 
@@ -669,7 +669,7 @@ class V3d_Trihedron : public Standard_Transient {
 		%feature("compactdefaultargs") SetLabelsColor;
 		%feature("autodoc", "* Setup color of text labels.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetLabelsColor;
 		void SetLabelsColor (const Quantity_Color & theColor);
 
@@ -751,7 +751,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") AddClipPlane;
 		%feature("autodoc", "* Adds clip plane to the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by PlaneLimit method of associated Graphic3d_GraphicDriver. Please be aware that the planes which exceed the limit are ignored during rendering. @param thePlane [in] the clip plane to be added to view.
 	:param thePlane:
-	:type thePlane: opencascade::handle<Graphic3d_ClipPlane> &
+	:type thePlane: Graphic3d_ClipPlane
 	:rtype: void") AddClipPlane;
 		virtual void AddClipPlane (const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
@@ -759,11 +759,11 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") At;
 		%feature("autodoc", "* Returns the position of the view point.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") At;
 		void At (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -789,11 +789,11 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") AxialScale;
 		%feature("autodoc", "* Returns the current values of the anisotropic (axial) scale factors.
 	:param Sx:
-	:type Sx: float &
+	:type Sx: float
 	:param Sy:
-	:type Sy: float &
+	:type Sy: float
 	:param Sz:
-	:type Sz: float &
+	:type Sz: float
 	:rtype: None") AxialScale;
 		void AxialScale (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -821,11 +821,11 @@ class V3d_View : public Standard_Transient {
 	:param Type:
 	:type Type: Quantity_TypeOfColor
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:param V3:
-	:type V3: float &
+	:type V3: float
 	:rtype: None") BackgroundColor;
 		void BackgroundColor (const Quantity_TypeOfColor Type,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -875,9 +875,9 @@ class V3d_View : public Standard_Transient {
 	:param Yp:
 	:type Yp: int
 	:param Xv:
-	:type Xv: float &
+	:type Xv: float
 	:param Yv:
-	:type Yv: float &
+	:type Yv: float
 	:rtype: None") Convert;
 		void Convert (const Standard_Integer Xp,const Standard_Integer Yp,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -897,9 +897,9 @@ class V3d_View : public Standard_Transient {
 	:param Yv:
 	:type Yv: float
 	:param Xp:
-	:type Xp: int &
+	:type Xp: int
 	:param Yp:
-	:type Yp: int &
+	:type Yp: int
 	:rtype: None") Convert;
 		void Convert (const Standard_Real Xv,const Standard_Real Yv,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -911,11 +911,11 @@ class V3d_View : public Standard_Transient {
 	:param Yp:
 	:type Yp: int
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") Convert;
 		void Convert (const Standard_Integer Xp,const Standard_Integer Yp,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -929,9 +929,9 @@ class V3d_View : public Standard_Transient {
 	:param Z:
 	:type Z: float
 	:param Xp:
-	:type Xp: int &
+	:type Xp: int
 	:param Yp:
-	:type Yp: int &
+	:type Yp: int
 	:rtype: None") Convert;
 		void Convert (const Standard_Real X,const Standard_Real Y,const Standard_Real Z,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -943,11 +943,11 @@ class V3d_View : public Standard_Transient {
 	:param Yp:
 	:type Yp: int
 	:param Xg:
-	:type Xg: float &
+	:type Xg: float
 	:param Yg:
-	:type Yg: float &
+	:type Yg: float
 	:param Zg:
-	:type Zg: float &
+	:type Zg: float
 	:rtype: None") ConvertToGrid;
 		void ConvertToGrid (const Standard_Integer Xp,const Standard_Integer Yp,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -961,11 +961,11 @@ class V3d_View : public Standard_Transient {
 	:param Z:
 	:type Z: float
 	:param Xg:
-	:type Xg: float &
+	:type Xg: float
 	:param Yg:
-	:type Yg: float &
+	:type Yg: float
 	:param Zg:
-	:type Zg: float &
+	:type Zg: float
 	:rtype: None") ConvertToGrid;
 		void ConvertToGrid (const Standard_Real X,const Standard_Real Y,const Standard_Real Z,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -977,17 +977,17 @@ class V3d_View : public Standard_Transient {
 	:param Yp:
 	:type Yp: int
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:param Vx:
-	:type Vx: float &
+	:type Vx: float
 	:param Vy:
-	:type Vy: float &
+	:type Vy: float
 	:param Vz:
-	:type Vz: float &
+	:type Vz: float
 	:rtype: None") ConvertWithProj;
 		void ConvertWithProj (const Standard_Integer Xp,const Standard_Integer Yp,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1017,7 +1017,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") DiagnosticInformation;
 		%feature("autodoc", "* Fill in the dictionary with diagnostic info. Should be called within rendering thread. //! This API should be used only for user output or for creating automated reports. The format of returned information (e.g. key-value layout) is NOT part of this API and can be changed at any time. Thus application should not parse returned information to weed out specific parameters. @param theDict destination map for information @param theFlags defines the information to be retrieved
 	:param theDict:
-	:type theDict: TColStd_IndexedDataMapOfStringString &
+	:type theDict: TColStd_IndexedDataMapOfStringString
 	:param theFlags:
 	:type theFlags: Graphic3d_DiagnosticInfo
 	:rtype: None") DiagnosticInformation;
@@ -1035,7 +1035,7 @@ class V3d_View : public Standard_Transient {
 	:param theFile:
 	:type theFile: char *
 	:param theBufferType: default value is Graphic3d_BT_RGB
-	:type theBufferType: Graphic3d_BufferType &
+	:type theBufferType: Graphic3d_BufferType
 	:rtype: bool") Dump;
 		Standard_Boolean Dump (const char * theFile,const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
 
@@ -1043,11 +1043,11 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") Eye;
 		%feature("autodoc", "* Returns the position of the eye.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") Eye;
 		void Eye (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1065,7 +1065,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") FitAll;
 		%feature("autodoc", "* Adjust view parameters to fit the displayed scene, respecting height / width ratio according to the custom bounding box given. Throws program error exception if margin coefficient is < 0 or >= 1. Updates the view. @param theBox [in] the custom bounding box to fit. @param theMargin [in] the margin coefficient for view borders. @param theToUpdate [in] flag to perform view update.
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:param theMargin: default value is 0.01
 	:type theMargin: float
 	:param theToUpdate: default value is Standard_True
@@ -1091,9 +1091,9 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") FitMinMax;
 		%feature("autodoc", "* Transform camera eye, center and scale to fit in the passed bounding box specified in WCS. @param theCamera [in] the camera @param theBox [in] the bounding box @param theMargin [in] the margin coefficient for view borders @param theResolution [in] the minimum size of projection of bounding box in Xv or Yv direction when it considered to be a thin plane or point (without a volume);  in this case only the center of camera is adjusted @param theToEnlargeIfLine [in] when True - in cases when the whole bounding box projected into thin line going along Z-axis of screen,  the view plane is enlarged such thatwe see the whole line on rotation, otherwise only the center of camera is adjusted. returns True if the fit all operation can be done
 	:param theCamera:
-	:type theCamera: opencascade::handle<Graphic3d_Camera> &
+	:type theCamera: Graphic3d_Camera
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:param theMargin:
 	:type theMargin: float
 	:param theResolution: default value is 0.0
@@ -1107,11 +1107,11 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") FocalReferencePoint;
 		%feature("autodoc", "* Returns the position of point which emanating the projections.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") FocalReferencePoint;
 		void FocalReferencePoint (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1137,9 +1137,9 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") GradientBackgroundColors;
 		%feature("autodoc", "* Returns the gradient background colors of the view.
 	:param theColor1:
-	:type theColor1: Quantity_Color &
+	:type theColor1: Quantity_Color
 	:param theColor2:
-	:type theColor2: Quantity_Color &
+	:type theColor2: Quantity_Color
 	:rtype: None") GradientBackgroundColors;
 		void GradientBackgroundColors (Quantity_Color & theColor1,Quantity_Color & theColor2);
 
@@ -1147,7 +1147,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") GraduatedTrihedronDisplay;
 		%feature("autodoc", "* Displays a graduated trihedron.
 	:param theTrihedronData:
-	:type theTrihedronData: Graphic3d_GraduatedTrihedron &
+	:type theTrihedronData: Graphic3d_GraduatedTrihedron
 	:rtype: None") GraduatedTrihedronDisplay;
 		void GraduatedTrihedronDisplay (const Graphic3d_GraduatedTrihedron & theTrihedronData);
 
@@ -1197,7 +1197,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") IsActiveLight;
 		%feature("autodoc", "* Returns True when the light is active in this view.
 	:param theLight:
-	:type theLight: opencascade::handle<V3d_Light> &
+	:type theLight: V3d_Light
 	:rtype: bool") IsActiveLight;
 		Standard_Boolean IsActiveLight (const opencascade::handle<V3d_Light> & theLight);
 
@@ -1335,11 +1335,11 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") Proj;
 		%feature("autodoc", "* Returns the projection vector.
 	:param Vx:
-	:type Vx: float &
+	:type Vx: float
 	:param Vy:
-	:type Vy: float &
+	:type Vy: float
 	:param Vz:
-	:type Vz: float &
+	:type Vz: float
 	:rtype: None") Proj;
 		void Proj (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1351,17 +1351,17 @@ class V3d_View : public Standard_Transient {
 	:param Ypix:
 	:type Ypix: int
 	:param XP:
-	:type XP: float &
+	:type XP: float
 	:param YP:
-	:type YP: float &
+	:type YP: float
 	:param ZP:
-	:type ZP: float &
+	:type ZP: float
 	:param VX:
-	:type VX: float &
+	:type VX: float
 	:param VY:
-	:type VY: float &
+	:type VY: float
 	:param VZ:
-	:type VZ: float &
+	:type VZ: float
 	:rtype: None") ProjReferenceAxe;
 		void ProjReferenceAxe (const Standard_Integer Xpix,const Standard_Integer Ypix,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1375,9 +1375,9 @@ class V3d_View : public Standard_Transient {
 	:param theZ:
 	:type theZ: float
 	:param theXp:
-	:type theXp: float &
+	:type theXp: float
 	:param theYp:
-	:type theYp: float &
+	:type theYp: float
 	:rtype: None") Project;
 		void Project (const Standard_Real theX,const Standard_Real theY,const Standard_Real theZ,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1391,11 +1391,11 @@ class V3d_View : public Standard_Transient {
 	:param theZ:
 	:type theZ: float
 	:param theXp:
-	:type theXp: float &
+	:type theXp: float
 	:param theYp:
-	:type theYp: float &
+	:type theYp: float
 	:param theZp:
-	:type theZp: float &
+	:type theZp: float
 	:rtype: None") Project;
 		void Project (const Standard_Real theX,const Standard_Real theY,const Standard_Real theZ,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1421,7 +1421,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveClipPlane;
 		%feature("autodoc", "* Removes clip plane from the view. @param thePlane [in] the clip plane to be removed from view.
 	:param thePlane:
-	:type thePlane: opencascade::handle<Graphic3d_ClipPlane> &
+	:type thePlane: Graphic3d_ClipPlane
 	:rtype: void") RemoveClipPlane;
 		virtual void RemoveClipPlane (const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
@@ -1619,7 +1619,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") SetBackgroundColor;
 		%feature("autodoc", "* Defines the background color of the view.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetBackgroundColor;
 		void SetBackgroundColor (const Quantity_Color & theColor);
 
@@ -1627,7 +1627,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") SetBackgroundCubeMap;
 		%feature("autodoc", "* Sets environment cubemap as interactive background.
 	:param theCubeMap:
-	:type theCubeMap: opencascade::handle<Graphic3d_CubeMap> &
+	:type theCubeMap: Graphic3d_CubeMap
 	:param theToUpdate: default value is Standard_False
 	:type theToUpdate: bool
 	:rtype: None") SetBackgroundCubeMap;
@@ -1649,9 +1649,9 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") SetBgGradientColors;
 		%feature("autodoc", "* Defines the gradient background colors of the view by supplying the colors and the fill method (horizontal by default).
 	:param theColor1:
-	:type theColor1: Quantity_Color &
+	:type theColor1: Quantity_Color
 	:param theColor2:
-	:type theColor2: Quantity_Color &
+	:type theColor2: Quantity_Color
 	:param theFillStyle: default value is Aspect_GFM_HOR
 	:type theFillStyle: Aspect_GradientFillMethod
 	:param theToUpdate: default value is Standard_False
@@ -1683,7 +1683,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") SetCamera;
 		%feature("autodoc", "* Change camera used by view.
 	:param theCamera:
-	:type theCamera: opencascade::handle<Graphic3d_Camera> &
+	:type theCamera: Graphic3d_Camera
 	:rtype: None") SetCamera;
 		void SetCamera (const opencascade::handle<Graphic3d_Camera> & theCamera);
 
@@ -1701,14 +1701,14 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") SetClipPlanes;
 		%feature("autodoc", "* Sets sequence of clip planes to the view. The planes that have been set before are removed from the view. The composition of clip planes truncates the rendering space to convex volume. Number of supported clip planes can be consulted by InquirePlaneLimit method of Graphic3d_GraphicDriver. Please be aware that the planes that exceed the limit are ignored during rendering. @param thePlanes [in] the clip planes to set.
 	:param thePlanes:
-	:type thePlanes: opencascade::handle<Graphic3d_SequenceOfHClipPlane> &
+	:type thePlanes: Graphic3d_SequenceOfHClipPlane
 	:rtype: None") SetClipPlanes;
 		void SetClipPlanes (const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
 		/****************** SetClipPlanes ******************/
 		%feature("compactdefaultargs") SetClipPlanes;
 		%feature("autodoc", ":param thePlanes:
-	:type thePlanes: Graphic3d_SequenceOfHClipPlane &
+	:type thePlanes: Graphic3d_SequenceOfHClipPlane
 	:rtype: None") SetClipPlanes;
 		void SetClipPlanes (const Graphic3d_SequenceOfHClipPlane & thePlanes);
 
@@ -1768,7 +1768,7 @@ class V3d_View : public Standard_Transient {
 	:param aPlane:
 	:type aPlane: gp_Ax3
 	:param aGrid:
-	:type aGrid: opencascade::handle<Aspect_Grid> &
+	:type aGrid: Aspect_Grid
 	:rtype: None") SetGrid;
 		void SetGrid (const gp_Ax3 & aPlane,const opencascade::handle<Aspect_Grid> & aGrid);
 
@@ -1792,7 +1792,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") SetLightOff;
 		%feature("autodoc", "* Deactivate theLight in this view.
 	:param theLight:
-	:type theLight: opencascade::handle<V3d_Light> &
+	:type theLight: V3d_Light
 	:rtype: None") SetLightOff;
 		void SetLightOff (const opencascade::handle<V3d_Light> & theLight);
 
@@ -1806,7 +1806,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") SetLightOn;
 		%feature("autodoc", "* Activates theLight in the view.
 	:param theLight:
-	:type theLight: opencascade::handle<V3d_Light> &
+	:type theLight: V3d_Light
 	:rtype: None") SetLightOn;
 		void SetLightOn (const opencascade::handle<V3d_Light> & theLight);
 
@@ -1819,9 +1819,9 @@ class V3d_View : public Standard_Transient {
 		/****************** SetMagnify ******************/
 		%feature("compactdefaultargs") SetMagnify;
 		%feature("autodoc", ":param theWindow:
-	:type theWindow: opencascade::handle<Aspect_Window> &
+	:type theWindow: Aspect_Window
 	:param thePreviousView:
-	:type thePreviousView: opencascade::handle<V3d_View> &
+	:type thePreviousView: V3d_View
 	:param theX1:
 	:type theX1: int
 	:param theY1:
@@ -1883,7 +1883,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") SetTextureEnv;
 		%feature("autodoc", "* Sets the environment texture to use. No environment texture by default.
 	:param theTexture:
-	:type theTexture: opencascade::handle<Graphic3d_TextureEnv> &
+	:type theTexture: Graphic3d_TextureEnv
 	:rtype: None") SetTextureEnv;
 		void SetTextureEnv (const opencascade::handle<Graphic3d_TextureEnv> & theTexture);
 
@@ -1939,7 +1939,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") SetWindow;
 		%feature("autodoc", "* Activates the view in the specified Window If <aContext> is not NULL the graphic context is used to draw something in this view. Otherwise an internal graphic context is created. Warning: The view is centered and resized to preserve the height/width ratio of the window.
 	:param theWindow:
-	:type theWindow: opencascade::handle<Aspect_Window> &
+	:type theWindow: Aspect_Window
 	:param theContext: default value is NULL
 	:type theContext: Aspect_RenderingContext
 	:rtype: None") SetWindow;
@@ -1973,9 +1973,9 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "* Returns the height and width of the view.
 	:param Width:
-	:type Width: float &
+	:type Width: float
 	:param Height:
-	:type Height: float &
+	:type Height: float
 	:rtype: None") Size;
 		void Size (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2011,7 +2011,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") StatisticInformation;
 		%feature("autodoc", "* Fills in the dictionary with statistic performance info.
 	:param theDict:
-	:type theDict: TColStd_IndexedDataMapOfStringString &
+	:type theDict: TColStd_IndexedDataMapOfStringString
 	:rtype: None") StatisticInformation;
 		void StatisticInformation (TColStd_IndexedDataMapOfStringString & theDict);
 
@@ -2024,9 +2024,9 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") ToPixMap;
 		%feature("autodoc", "* Dumps the full contents of the view to a pixmap with specified parameters. Internally this method calls Redraw() with an offscreen render buffer of requested target size (theWidth x theHeight), so that there is no need resizing a window control for making a dump of different size.
 	:param theImage:
-	:type theImage: Image_PixMap &
+	:type theImage: Image_PixMap
 	:param theParams:
-	:type theParams: V3d_ImageDumpOptions &
+	:type theParams: V3d_ImageDumpOptions
 	:rtype: bool") ToPixMap;
 		Standard_Boolean ToPixMap (Image_PixMap & theImage,const V3d_ImageDumpOptions & theParams);
 
@@ -2034,13 +2034,13 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") ToPixMap;
 		%feature("autodoc", "* Dumps the full contents of the view to a pixmap. Internally this method calls Redraw() with an offscreen render buffer of requested target size (theWidth x theHeight), so that there is no need resizing a window control for making a dump of different size. @param theImage target image, will be re-allocated to match theWidth x theHeight @param theWidth target image width @param theHeight target image height @param theBufferType type of the view buffer to dump (color / depth) @param theToAdjustAspect when true, active view aspect ratio will be overridden by (theWidth / theHeight) @param theStereoOptions how to dump stereographic camera
 	:param theImage:
-	:type theImage: Image_PixMap &
+	:type theImage: Image_PixMap
 	:param theWidth:
 	:type theWidth: int
 	:param theHeight:
 	:type theHeight: int
 	:param theBufferType: default value is Graphic3d_BT_RGB
-	:type theBufferType: Graphic3d_BufferType &
+	:type theBufferType: Graphic3d_BufferType
 	:param theToAdjustAspect: default value is Standard_True
 	:type theToAdjustAspect: bool
 	:param theStereoOptions: default value is V3d_SDO_MONO
@@ -2090,7 +2090,7 @@ class V3d_View : public Standard_Transient {
 	:param thePosition: default value is Aspect_TOTP_CENTER
 	:type thePosition: Aspect_TypeOfTriedronPosition
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theScale: default value is 0.02
 	:type theScale: float
 	:param theMode: default value is V3d_WIREFRAME
@@ -2156,11 +2156,11 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") Up;
 		%feature("autodoc", "* Returns the vector giving the position of the high point.
 	:param Vx:
-	:type Vx: float &
+	:type Vx: float
 	:param Vy:
-	:type Vy: float &
+	:type Vy: float
 	:param Vz:
-	:type Vz: float &
+	:type Vz: float
 	:rtype: None") Up;
 		void Up (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2180,7 +2180,7 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") V3d_View;
 		%feature("autodoc", "* Initializes the view.
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theType: default value is V3d_ORTHOGRAPHIC
 	:type theType: V3d_TypeOfView
 	:rtype: None") V3d_View;
@@ -2190,9 +2190,9 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") V3d_View;
 		%feature("autodoc", "* Initializes the view by copying.
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") V3d_View;
 		 V3d_View (const opencascade::handle<V3d_Viewer> & theViewer,const opencascade::handle<V3d_View> & theView);
 
@@ -2252,11 +2252,11 @@ class V3d_View : public Standard_Transient {
 		%feature("compactdefaultargs") ZBufferTriedronSetup;
 		%feature("autodoc", "* Customization of the ZBUFFER Triedron. XColor,YColor,ZColor - colors of axis SizeRatio - ratio of decreasing of the trihedron size when its physical position comes out of the view AxisDiametr - diameter relatively to axis length NbFacettes - number of facets of cylinders and cones
 	:param theXColor: default value is Quantity_NOC_RED
-	:type theXColor: Quantity_Color &
+	:type theXColor: Quantity_Color
 	:param theYColor: default value is Quantity_NOC_GREEN
-	:type theYColor: Quantity_Color &
+	:type theYColor: Quantity_Color
 	:param theZColor: default value is Quantity_NOC_BLUE1
-	:type theZColor: Quantity_Color &
+	:type theZColor: Quantity_Color
 	:param theSizeRatio: default value is 0.8
 	:type theSizeRatio: float
 	:param theAxisDiametr: default value is 0.05
@@ -2361,7 +2361,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") AddLight;
 		%feature("autodoc", "* Adds Light in Sequence Of Lights.
 	:param theLight:
-	:type theLight: opencascade::handle<V3d_Light> &
+	:type theLight: V3d_Light
 	:rtype: None") AddLight;
 		void AddLight (const opencascade::handle<V3d_Light> & theLight);
 
@@ -2369,9 +2369,9 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") AddZLayer;
 		%feature("autodoc", "* Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value. The Z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. Custom layers will be inserted before Graphic3d_ZLayerId_Top (e.g. between Graphic3d_ZLayerId_Default and before Graphic3d_ZLayerId_Top). @param theLayerId [out] id of created layer @param theSettings [in] new layer settings returns False if the layer can not be created
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId &
+	:type theLayerId: Graphic3d_ZLayerId
 	:param theSettings: default value is Graphic3d_ZLayerSettings()
-	:type theSettings: Graphic3d_ZLayerSettings &
+	:type theSettings: Graphic3d_ZLayerSettings
 	:rtype: bool") AddZLayer;
 		Standard_Boolean AddZLayer (Graphic3d_ZLayerId & theLayerId,const Graphic3d_ZLayerSettings & theSettings = Graphic3d_ZLayerSettings());
 
@@ -2379,9 +2379,9 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") CircularGridGraphicValues;
 		%feature("autodoc", "* Returns the location and the size of the grid.
 	:param Radius:
-	:type Radius: float &
+	:type Radius: float
 	:param OffSet:
-	:type OffSet: float &
+	:type OffSet: float
 	:rtype: None") CircularGridGraphicValues;
 		void CircularGridGraphicValues (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2389,15 +2389,15 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") CircularGridValues;
 		%feature("autodoc", "* Returns the definition of the circular grid.
 	:param XOrigin:
-	:type XOrigin: float &
+	:type XOrigin: float
 	:param YOrigin:
-	:type YOrigin: float &
+	:type YOrigin: float
 	:param RadiusStep:
-	:type RadiusStep: float &
+	:type RadiusStep: float
 	:param DivisionNumber:
-	:type DivisionNumber: int &
+	:type DivisionNumber: int
 	:param RotationAngle:
-	:type RotationAngle: float &
+	:type RotationAngle: float
 	:rtype: None") CircularGridValues;
 		void CircularGridValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -2430,11 +2430,11 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("autodoc", ":param theType:
 	:type theType: Quantity_TypeOfColor
 	:param theV1:
-	:type theV1: float &
+	:type theV1: float
 	:param theV2:
-	:type theV2: float &
+	:type theV2: float
 	:param theV3:
-	:type theV3: float &
+	:type theV3: float
 	:rtype: None") DefaultBackgroundColor;
 		void DefaultBackgroundColor (const Quantity_TypeOfColor theType,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2442,9 +2442,9 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") DefaultBgGradientColors;
 		%feature("autodoc", "* Returns the gradient background colour objects of the view.
 	:param theColor1:
-	:type theColor1: Quantity_Color &
+	:type theColor1: Quantity_Color
 	:param theColor2:
-	:type theColor2: Quantity_Color &
+	:type theColor2: Quantity_Color
 	:rtype: None") DefaultBgGradientColors;
 		void DefaultBgGradientColors (Quantity_Color & theColor1,Quantity_Color & theColor2);
 
@@ -2516,7 +2516,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") DelLight;
 		%feature("autodoc", "* Delete Light in Sequence Of Lights.
 	:param theLight:
-	:type theLight: opencascade::handle<V3d_Light> &
+	:type theLight: V3d_Light
 	:rtype: None") DelLight;
 		void DelLight (const opencascade::handle<V3d_Light> & theLight);
 
@@ -2545,7 +2545,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") GetAllZLayers;
 		%feature("autodoc", "* Return all Z layer ids in sequence ordered by overlay level from lowest layer to highest ( foreground ). The first layer ID in sequence is the default layer that can't be removed.
 	:param theLayerSeq:
-	:type theLayerSeq: TColStd_SequenceOfInteger &
+	:type theLayerSeq: TColStd_SequenceOfInteger
 	:rtype: None") GetAllZLayers;
 		void GetAllZLayers (TColStd_SequenceOfInteger & theLayerSeq);
 
@@ -2583,7 +2583,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") HideGridEcho;
 		%feature("autodoc", "* Temporarly hide grid echo.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") HideGridEcho;
 		void HideGridEcho (const opencascade::handle<V3d_View> & theView);
 
@@ -2621,9 +2621,9 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") InsertLayerAfter;
 		%feature("autodoc", "* Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value. The Z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. Layer rendering order is defined by its position in list (altered by theLayerAfter) and IsImmediate() flag (all layers with IsImmediate() flag are drawn afterwards); @param theNewLayerId [out] id of created layer; layer id is arbitrary and does not depend on layer position in the list @param theSettings [in] new layer settings @param theLayerBefore [in] id of layer to append new layer after returns False if the layer can not be created
 	:param theNewLayerId:
-	:type theNewLayerId: Graphic3d_ZLayerId &
+	:type theNewLayerId: Graphic3d_ZLayerId
 	:param theSettings:
-	:type theSettings: Graphic3d_ZLayerSettings &
+	:type theSettings: Graphic3d_ZLayerSettings
 	:param theLayerBefore:
 	:type theLayerBefore: Graphic3d_ZLayerId
 	:rtype: bool") InsertLayerAfter;
@@ -2633,9 +2633,9 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") InsertLayerBefore;
 		%feature("autodoc", "* Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value. The Z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. Layer rendering order is defined by its position in list (altered by theLayerAfter) and IsImmediate() flag (all layers with IsImmediate() flag are drawn afterwards); @param theNewLayerId [out] id of created layer; layer id is arbitrary and does not depend on layer position in the list @param theSettings [in] new layer settings @param theLayerAfter [in] id of layer to append new layer before returns False if the layer can not be created
 	:param theNewLayerId:
-	:type theNewLayerId: Graphic3d_ZLayerId &
+	:type theNewLayerId: Graphic3d_ZLayerId
 	:param theSettings:
-	:type theSettings: Graphic3d_ZLayerSettings &
+	:type theSettings: Graphic3d_ZLayerSettings
 	:param theLayerAfter:
 	:type theLayerAfter: Graphic3d_ZLayerId
 	:rtype: bool") InsertLayerBefore;
@@ -2656,7 +2656,7 @@ class V3d_Viewer : public Standard_Transient {
 		/****************** IsGlobalLight ******************/
 		%feature("compactdefaultargs") IsGlobalLight;
 		%feature("autodoc", ":param TheLight:
-	:type TheLight: opencascade::handle<V3d_Light> &
+	:type TheLight: V3d_Light
 	:rtype: bool") IsGlobalLight;
 		Standard_Boolean IsGlobalLight (const opencascade::handle<V3d_Light> & TheLight);
 
@@ -2724,11 +2724,11 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") RectangularGridGraphicValues;
 		%feature("autodoc", "* Returns the location and the size of the grid.
 	:param XSize:
-	:type XSize: float &
+	:type XSize: float
 	:param YSize:
-	:type YSize: float &
+	:type YSize: float
 	:param OffSet:
-	:type OffSet: float &
+	:type OffSet: float
 	:rtype: None") RectangularGridGraphicValues;
 		void RectangularGridGraphicValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2736,15 +2736,15 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") RectangularGridValues;
 		%feature("autodoc", "* Returns the definition of the rectangular grid.
 	:param XOrigin:
-	:type XOrigin: float &
+	:type XOrigin: float
 	:param YOrigin:
-	:type YOrigin: float &
+	:type YOrigin: float
 	:param XStep:
-	:type XStep: float &
+	:type XStep: float
 	:param YStep:
-	:type YStep: float &
+	:type YStep: float
 	:param RotationAngle:
-	:type RotationAngle: float &
+	:type RotationAngle: float
 	:rtype: None") RectangularGridValues;
 		void RectangularGridValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2812,7 +2812,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") SetDefaultBackgroundColor;
 		%feature("autodoc", "* Defines the default background colour of views attached to the viewer by supplying the color object
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetDefaultBackgroundColor;
 		void SetDefaultBackgroundColor (const Quantity_Color & theColor);
 
@@ -2834,9 +2834,9 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") SetDefaultBgGradientColors;
 		%feature("autodoc", "* Defines the default gradient background colours of views attached to the viewer by supplying the colour objects
 	:param theColor1:
-	:type theColor1: Quantity_Color &
+	:type theColor1: Quantity_Color
 	:param theColor2:
-	:type theColor2: Quantity_Color &
+	:type theColor2: Quantity_Color
 	:param theFillStyle: default value is Aspect_GFM_HOR
 	:type theFillStyle: Aspect_GradientFillMethod
 	:rtype: None") SetDefaultBgGradientColors;
@@ -2860,7 +2860,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") SetDefaultRenderingParams;
 		%feature("autodoc", "* Set default Rendering Parameters.
 	:param theParams:
-	:type theParams: Graphic3d_RenderingParams &
+	:type theParams: Graphic3d_RenderingParams
 	:rtype: None") SetDefaultRenderingParams;
 		void SetDefaultRenderingParams (const Graphic3d_RenderingParams & theParams);
 
@@ -2916,7 +2916,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") SetGridEcho;
 		%feature("autodoc", "* Show grid echo <aMarker> to the hit point. Warning: When the grid echo marker is not set, a default marker is build with the attributes: marker type : Aspect_TOM_STAR marker color : Quantity_NOC_GRAY90 marker size : 3.0
 	:param aMarker:
-	:type aMarker: opencascade::handle<Graphic3d_AspectMarker3d> &
+	:type aMarker: Graphic3d_AspectMarker3d
 	:rtype: None") SetGridEcho;
 		void SetGridEcho (const opencascade::handle<Graphic3d_AspectMarker3d> & aMarker);
 
@@ -2924,7 +2924,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") SetLightOff;
 		%feature("autodoc", "* Deactivates MyLight in this viewer.
 	:param theLight:
-	:type theLight: opencascade::handle<V3d_Light> &
+	:type theLight: V3d_Light
 	:rtype: None") SetLightOff;
 		void SetLightOff (const opencascade::handle<V3d_Light> & theLight);
 
@@ -2938,7 +2938,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") SetLightOn;
 		%feature("autodoc", "* Activates MyLight in the viewer.
 	:param theLight:
-	:type theLight: opencascade::handle<V3d_Light> &
+	:type theLight: V3d_Light
 	:rtype: None") SetLightOn;
 		void SetLightOn (const opencascade::handle<V3d_Light> & theLight);
 
@@ -2993,7 +2993,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") SetViewOff;
 		%feature("autodoc", "* Deactivates a particular view in the Viewer. Must be call if the Window attached to the view has been Iconified .
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") SetViewOff;
 		void SetViewOff (const opencascade::handle<V3d_View> & theView);
 
@@ -3007,7 +3007,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") SetViewOn;
 		%feature("autodoc", "* Activates a particular view in the Viewer. Must be call if the Window attached to the view has been Deiconified.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") SetViewOn;
 		void SetViewOn (const opencascade::handle<V3d_View> & theView);
 
@@ -3017,7 +3017,7 @@ class V3d_Viewer : public Standard_Transient {
 	:param theLayerId:
 	:type theLayerId: Graphic3d_ZLayerId
 	:param theSettings:
-	:type theSettings: Graphic3d_ZLayerSettings &
+	:type theSettings: Graphic3d_ZLayerSettings
 	:rtype: None") SetZLayerSettings;
 		void SetZLayerSettings (const Graphic3d_ZLayerId theLayerId,const Graphic3d_ZLayerSettings & theSettings);
 
@@ -3025,9 +3025,9 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") ShowGridEcho;
 		%feature("autodoc", "* Display grid echo at requested point in the view.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param thePoint:
-	:type thePoint: Graphic3d_Vertex &
+	:type thePoint: Graphic3d_Vertex
 	:rtype: None") ShowGridEcho;
 		void ShowGridEcho (const opencascade::handle<V3d_View> & theView,const Graphic3d_Vertex & thePoint);
 
@@ -3059,7 +3059,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") V3d_Viewer;
 		%feature("autodoc", "* Create a Viewer with the given graphic driver and with default parameters: - View orientation: V3d_XposYnegZpos - View background: Quantity_NOC_GRAY30 - Shading model: V3d_GOURAUD
 	:param theDriver:
-	:type theDriver: opencascade::handle<Graphic3d_GraphicDriver> &
+	:type theDriver: Graphic3d_GraphicDriver
 	:rtype: None") V3d_Viewer;
 		 V3d_Viewer (const opencascade::handle<Graphic3d_GraphicDriver> & theDriver);
 
@@ -3067,7 +3067,7 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") V3d_Viewer;
 		%feature("autodoc", "* @name deprecated methods
 	:param theDriver:
-	:type theDriver: opencascade::handle<Graphic3d_GraphicDriver> &
+	:type theDriver: Graphic3d_GraphicDriver
 	:param theName:
 	:type theName: Standard_ExtString
 	:param theDomain: default value is ""
@@ -3077,7 +3077,7 @@ class V3d_Viewer : public Standard_Transient {
 	:param theViewProj: default value is V3d_XposYnegZpos
 	:type theViewProj: V3d_TypeOfOrientation
 	:param theViewBackground: default value is Quantity_NOC_GRAY30
-	:type theViewBackground: Quantity_Color &
+	:type theViewBackground: Quantity_Color
 	:param theVisualization: default value is V3d_ZBUFFER
 	:type theVisualization: V3d_TypeOfVisualization
 	:param theShadingModel: default value is Graphic3d_TOSM_VERTEX
@@ -3128,7 +3128,7 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 	:param theDirection: default value is V3d_XposYposZpos
 	:type theDirection: V3d_TypeOfOrientation
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theIsHeadlight: default value is Standard_False
 	:type theIsHeadlight: bool
 	:rtype: None") V3d_DirectionalLight;
@@ -3140,7 +3140,7 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 	:param theDirection:
 	:type theDirection: gp_Dir
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theIsHeadlight: default value is Standard_False
 	:type theIsHeadlight: bool
 	:rtype: None") V3d_DirectionalLight;
@@ -3149,11 +3149,11 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 		/****************** V3d_DirectionalLight ******************/
 		%feature("compactdefaultargs") V3d_DirectionalLight;
 		%feature("autodoc", ":param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theDirection: default value is V3d_XposYposZpos
 	:type theDirection: V3d_TypeOfOrientation
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theIsHeadlight: default value is Standard_False
 	:type theIsHeadlight: bool
 	:rtype: None") V3d_DirectionalLight;
@@ -3163,7 +3163,7 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 		%feature("compactdefaultargs") V3d_DirectionalLight;
 		%feature("autodoc", "* Creates a directional light source in the viewer. theXt, theYt, theZt : Coordinate of light source Target. theXp, theYp, theZp : Coordinate of light source Position. The others parameters describe before.
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theXt:
 	:type theXt: float
 	:param theYt:
@@ -3177,7 +3177,7 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 	:param theZp:
 	:type theZp: float
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theIsHeadlight: default value is Standard_False
 	:type theIsHeadlight: bool
 	:rtype: None") V3d_DirectionalLight;
@@ -3206,14 +3206,14 @@ class V3d_PositionalLight : public V3d_PositionLight {
 	:param thePos:
 	:type thePos: gp_Pnt
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") V3d_PositionalLight;
 		 V3d_PositionalLight (const gp_Pnt & thePos,const Quantity_Color & theColor = Quantity_NOC_WHITE);
 
 		/****************** V3d_PositionalLight ******************/
 		%feature("compactdefaultargs") V3d_PositionalLight;
 		%feature("autodoc", ":param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theX:
 	:type theX: float
 	:param theY:
@@ -3221,7 +3221,7 @@ class V3d_PositionalLight : public V3d_PositionLight {
 	:param theZ:
 	:type theZ: float
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theConstAttenuation: default value is 1.0
 	:type theConstAttenuation: float
 	:param theLinearAttenuation: default value is 0.0
@@ -3262,7 +3262,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 	:param theDirection: default value is V3d_XnegYnegZpos
 	:type theDirection: V3d_TypeOfOrientation
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") V3d_SpotLight;
 		 V3d_SpotLight (const gp_Pnt & thePos,const V3d_TypeOfOrientation theDirection = V3d_XnegYnegZpos,const Quantity_Color & theColor = Quantity_NOC_WHITE);
 
@@ -3274,14 +3274,14 @@ class V3d_SpotLight : public V3d_PositionLight {
 	:param theDirection:
 	:type theDirection: gp_Dir
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") V3d_SpotLight;
 		 V3d_SpotLight (const gp_Pnt & thePos,const gp_Dir & theDirection,const Quantity_Color & theColor = Quantity_NOC_WHITE);
 
 		/****************** V3d_SpotLight ******************/
 		%feature("compactdefaultargs") V3d_SpotLight;
 		%feature("autodoc", ":param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theX:
 	:type theX: float
 	:param theY:
@@ -3291,7 +3291,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 	:param theDirection: default value is V3d_XnegYnegZpos
 	:type theDirection: V3d_TypeOfOrientation
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theConstAttenuation: default value is 1.0
 	:type theConstAttenuation: float
 	:param theLinearAttenuation: default value is 0.0
@@ -3307,7 +3307,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 		%feature("compactdefaultargs") V3d_SpotLight;
 		%feature("autodoc", "* theXt, theYt, theZt : Coordinate of light source Target. theXp, theYp, theZp : Coordinate of light source Position.
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:param theXt:
 	:type theXt: float
 	:param theYt:
@@ -3321,7 +3321,7 @@ class V3d_SpotLight : public V3d_PositionLight {
 	:param theZp:
 	:type theZp: float
 	:param theColor: default value is Quantity_NOC_WHITE
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theConstAttenuation: default value is 1.0
 	:type theConstAttenuation: float
 	:param theLinearAttenuation: default value is 0.0

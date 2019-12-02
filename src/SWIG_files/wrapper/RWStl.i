@@ -78,9 +78,9 @@ class RWStl {
 		%feature("compactdefaultargs") ReadAscii;
 		%feature("autodoc", "* Read triangulation from an Ascii STL file In case of error, returns Null handle.
 	:param thePath:
-	:type thePath: OSD_Path &
+	:type thePath: OSD_Path
 	:param theProgInd: default value is opencascade::handle<Message_ProgressIndicator>()
-	:type theProgInd: opencascade::handle<Message_ProgressIndicator> &
+	:type theProgInd: Message_ProgressIndicator
 	:rtype: opencascade::handle<Poly_Triangulation>") ReadAscii;
 		static opencascade::handle<Poly_Triangulation> ReadAscii (const OSD_Path & thePath,const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
 
@@ -88,9 +88,9 @@ class RWStl {
 		%feature("compactdefaultargs") ReadBinary;
 		%feature("autodoc", "* Read triangulation from a binary STL file In case of error, returns Null handle.
 	:param thePath:
-	:type thePath: OSD_Path &
+	:type thePath: OSD_Path
 	:param theProgInd: default value is opencascade::handle<Message_ProgressIndicator>()
-	:type theProgInd: opencascade::handle<Message_ProgressIndicator> &
+	:type theProgInd: Message_ProgressIndicator
 	:rtype: opencascade::handle<Poly_Triangulation>") ReadBinary;
 		static opencascade::handle<Poly_Triangulation> ReadBinary (const OSD_Path & thePath,const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
 
@@ -98,9 +98,9 @@ class RWStl {
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "* Read specified STL file and returns its content as triangulation. In case of error, returns Null handle.
 	:param theFile:
-	:type theFile: OSD_Path &
+	:type theFile: OSD_Path
 	:param aProgInd: default value is opencascade::handle<Message_ProgressIndicator>()
-	:type aProgInd: opencascade::handle<Message_ProgressIndicator> &
+	:type aProgInd: Message_ProgressIndicator
 	:rtype: opencascade::handle<Poly_Triangulation>") ReadFile;
 		static opencascade::handle<Poly_Triangulation> ReadFile (const OSD_Path & theFile,const opencascade::handle<Message_ProgressIndicator> & aProgInd = opencascade::handle<Message_ProgressIndicator>());
 
@@ -110,7 +110,7 @@ class RWStl {
 	:param theFile:
 	:type theFile: char *
 	:param aProgInd: default value is opencascade::handle<Message_ProgressIndicator>()
-	:type aProgInd: opencascade::handle<Message_ProgressIndicator> &
+	:type aProgInd: Message_ProgressIndicator
 	:rtype: opencascade::handle<Poly_Triangulation>") ReadFile;
 		static opencascade::handle<Poly_Triangulation> ReadFile (const char * theFile,const opencascade::handle<Message_ProgressIndicator> & aProgInd = opencascade::handle<Message_ProgressIndicator>());
 
@@ -118,11 +118,11 @@ class RWStl {
 		%feature("compactdefaultargs") WriteAscii;
 		%feature("autodoc", "* write the meshing in a file following the Ascii format of an STL file. Returns false if the cannot be opened;
 	:param theMesh:
-	:type theMesh: opencascade::handle<Poly_Triangulation> &
+	:type theMesh: Poly_Triangulation
 	:param thePath:
-	:type thePath: OSD_Path &
+	:type thePath: OSD_Path
 	:param theProgInd: default value is opencascade::handle<Message_ProgressIndicator>()
-	:type theProgInd: opencascade::handle<Message_ProgressIndicator> &
+	:type theProgInd: Message_ProgressIndicator
 	:rtype: bool") WriteAscii;
 		static Standard_Boolean WriteAscii (const opencascade::handle<Poly_Triangulation> & theMesh,const OSD_Path & thePath,const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
 
@@ -130,11 +130,11 @@ class RWStl {
 		%feature("compactdefaultargs") WriteBinary;
 		%feature("autodoc", "* Write triangulation to binary STL file. binary format of an STL file. Returns false if the cannot be opened;
 	:param theMesh:
-	:type theMesh: opencascade::handle<Poly_Triangulation> &
+	:type theMesh: Poly_Triangulation
 	:param thePath:
-	:type thePath: OSD_Path &
+	:type thePath: OSD_Path
 	:param theProgInd: default value is opencascade::handle<Message_ProgressIndicator>()
-	:type theProgInd: opencascade::handle<Message_ProgressIndicator> &
+	:type theProgInd: Message_ProgressIndicator
 	:rtype: bool") WriteBinary;
 		static Standard_Boolean WriteBinary (const opencascade::handle<Poly_Triangulation> & theMesh,const OSD_Path & thePath,const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
 

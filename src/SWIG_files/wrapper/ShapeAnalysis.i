@@ -139,7 +139,7 @@ class ShapeAnalysis {
 		%feature("compactdefaultargs") ContourArea;
 		%feature("autodoc", "* Returns a total area of 3d wire
 	:param theWire:
-	:type theWire: TopoDS_Wire &
+	:type theWire: TopoDS_Wire
 	:rtype: float") ContourArea;
 		static Standard_Real ContourArea (const TopoDS_Wire & theWire);
 
@@ -147,11 +147,11 @@ class ShapeAnalysis {
 		%feature("compactdefaultargs") FindBounds;
 		%feature("autodoc", "* Finds the start and end vertices of the shape Shape can be of the following type: vertex: V1 and V2 are the same and equal to <shape>, edge : V1 is start and V2 is end vertex (see ShapeAnalysis_Edge methods FirstVertex and LastVertex), wire : V1 is start vertex of the first edge, V2 is end vertex of the last edge (also see ShapeAnalysis_Edge). If wire contains no edges V1 and V2 are nullified If none of the above V1 and V2 are nullified
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param V1:
-	:type V1: TopoDS_Vertex &
+	:type V1: TopoDS_Vertex
 	:param V2:
-	:type V2: TopoDS_Vertex &
+	:type V2: TopoDS_Vertex
 	:rtype: void") FindBounds;
 		static void FindBounds (const TopoDS_Shape & shape,TopoDS_Vertex & V1,TopoDS_Vertex & V2);
 
@@ -159,15 +159,15 @@ class ShapeAnalysis {
 		%feature("compactdefaultargs") GetFaceUVBounds;
 		%feature("autodoc", "* Computes exact UV bounds of all wires on the face
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Umin:
-	:type Umin: float &
+	:type Umin: float
 	:param Umax:
-	:type Umax: float &
+	:type Umax: float
 	:param Vmin:
-	:type Vmin: float &
+	:type Vmin: float
 	:param Vmax:
-	:type Vmax: float &
+	:type Vmax: float
 	:rtype: void") GetFaceUVBounds;
 		static void GetFaceUVBounds (const TopoDS_Face & F,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -175,7 +175,7 @@ class ShapeAnalysis {
 		%feature("compactdefaultargs") IsOuterBound;
 		%feature("autodoc", "* Returns True if <F> has outer bound.
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: bool") IsOuterBound;
 		static Standard_Boolean IsOuterBound (const TopoDS_Face & face);
 
@@ -183,7 +183,7 @@ class ShapeAnalysis {
 		%feature("compactdefaultargs") OuterWire;
 		%feature("autodoc", "* Returns the outer wire on the face <Face>. This is replacement of the method BRepTools::OuterWire until it works badly. Returns the first wire oriented as outer according to FClass2d_Classifier. If none, last wire is returned.
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: TopoDS_Wire") OuterWire;
 		static TopoDS_Wire OuterWire (const TopoDS_Face & face);
 
@@ -191,9 +191,9 @@ class ShapeAnalysis {
 		%feature("compactdefaultargs") TotCross2D;
 		%feature("autodoc", "* Returns a total area of 2d wire
 	:param sewd:
-	:type sewd: opencascade::handle<ShapeExtend_WireData> &
+	:type sewd: ShapeExtend_WireData
 	:param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:rtype: float") TotCross2D;
 		static Standard_Real TotCross2D (const opencascade::handle<ShapeExtend_WireData> & sewd,const TopoDS_Face & aFace);
 
@@ -216,20 +216,20 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") CheckPin;
 		%feature("autodoc", "* Checks if a Face has a pin, which can be edited No singularity : no pin, returns 0 If there is a pin, checked topics, with returned value : - 0 : nothing to do more - 1 : 'smooth', i.e. not a really sharp pin -> diagnostic 'SmoothPin' - 2 : stretched pin, i.e. is possible to relimit the face by another vertex, so that this vertex still gives a pin -> diagnostic 'StretchedPin' with location of vertex (Pnt)
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param whatrow:
-	:type whatrow: int &
+	:type whatrow: int
 	:param sence:
-	:type sence: int &
+	:type sence: int
 	:rtype: bool") CheckPin;
 		Standard_Boolean CheckPin (const TopoDS_Face & F,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** CheckPinEdges ******************/
 		%feature("compactdefaultargs") CheckPinEdges;
 		%feature("autodoc", ":param theFirstEdge:
-	:type theFirstEdge: TopoDS_Edge &
+	:type theFirstEdge: TopoDS_Edge
 	:param theSecondEdge:
-	:type theSecondEdge: TopoDS_Edge &
+	:type theSecondEdge: TopoDS_Edge
 	:param coef1:
 	:type coef1: float
 	:param coef2:
@@ -242,9 +242,9 @@ class ShapeAnalysis_CheckSmallFace {
 		/****************** CheckPinFace ******************/
 		%feature("compactdefaultargs") CheckPinFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param mapEdges:
-	:type mapEdges: TopTools_DataMapOfShapeShape &
+	:type mapEdges: TopTools_DataMapOfShapeShape
 	:param toler: default value is -1.0
 	:type toler: float
 	:rtype: bool") CheckPinFace;
@@ -254,11 +254,11 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") CheckSingleStrip;
 		%feature("autodoc", "* Checks if a Face is a single strip, i.e. brings two great edges which are confused on their whole length, possible other edges are small or null length //! Returns 0 if not a strip support, 1 strip in U, 2 strip in V Records diagnostic in info if it is a single strip
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param tol: default value is -1.0
 	:type tol: float
 	:rtype: bool") CheckSingleStrip;
@@ -268,13 +268,13 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") CheckSplittingVertices;
 		%feature("autodoc", "* Checks if a Face brings vertices which split it, either confused with non adjacent vertices, or confused with their projection on non adjacent edges Returns the count of found splitting vertices Each vertex then brings a diagnostic 'SplittingVertex', with data : 'Face' for the face, 'Edge' for the split edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param MapEdges:
-	:type MapEdges: TopTools_DataMapOfShapeListOfShape &
+	:type MapEdges: TopTools_DataMapOfShapeListOfShape
 	:param MapParam:
-	:type MapParam: ShapeAnalysis_DataMapOfShapeListOfReal &
+	:type MapParam: ShapeAnalysis_DataMapOfShapeListOfReal
 	:param theAllVert:
-	:type theAllVert: TopoDS_Compound &
+	:type theAllVert: TopoDS_Compound
 	:rtype: int") CheckSplittingVertices;
 		Standard_Integer CheckSplittingVertices (const TopoDS_Face & F,TopTools_DataMapOfShapeListOfShape & MapEdges,ShapeAnalysis_DataMapOfShapeListOfReal & MapParam,TopoDS_Compound & theAllVert);
 
@@ -282,7 +282,7 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") CheckSpotFace;
 		%feature("autodoc", "* Acts as IsSpotFace, but records in <infos> a diagnostic 'SpotFace' with the Pnt as value (data 'Location')
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param tol: default value is -1.0
 	:type tol: float
 	:rtype: bool") CheckSpotFace;
@@ -292,13 +292,13 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") CheckStripEdges;
 		%feature("autodoc", "* Checks if two edges define a strip, i.e. distance maxi below tolerance, given or some of those of E1 and E2
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param tol:
 	:type tol: float
 	:param dmax:
-	:type dmax: float &
+	:type dmax: float
 	:rtype: bool") CheckStripEdges;
 		Standard_Boolean CheckStripEdges (const TopoDS_Edge & E1,const TopoDS_Edge & E2,const Standard_Real tol,Standard_Real &OutValue);
 
@@ -306,11 +306,11 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") CheckStripFace;
 		%feature("autodoc", "* Checks if a Face is as a Strip Returns 0 if not or non determined, 1 if in U, 2 if in V By default, considers the tolerance zone of its edges A given value <tol> may be given to check a strip of max this width //! If a Face is determined as a Strip, it is delinited by two lists of edges. These lists are recorded in diagnostic Diagnostic 'StripFace' brings data 'Direction' (U or V), 'List1' , 'List2' (if they could be computed)
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param tol: default value is -1.0
 	:type tol: float
 	:rtype: bool") CheckStripFace;
@@ -320,11 +320,11 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") CheckTwisted;
 		%feature("autodoc", "* Checks if a Face is twisted (apart from checking Pin, i.e. it does not give information on pin, only 'it is twisted')
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param paramu:
-	:type paramu: float &
+	:type paramu: float
 	:param paramv:
-	:type paramv: float &
+	:type paramv: float
 	:rtype: bool") CheckTwisted;
 		Standard_Boolean CheckTwisted (const TopoDS_Face & F,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -332,15 +332,15 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") FindStripEdges;
 		%feature("autodoc", "* Searchs for two and only two edges up tolerance Returns True if OK, false if not 2 edges If True, returns the two edges and their maximum distance
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param tol:
 	:type tol: float
 	:param dmax:
-	:type dmax: float &
+	:type dmax: float
 	:rtype: bool") FindStripEdges;
 		Standard_Boolean FindStripEdges (const TopoDS_Face & F,TopoDS_Edge & E1,TopoDS_Edge & E2,const Standard_Real tol,Standard_Real &OutValue);
 
@@ -348,11 +348,11 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") IsSpotFace;
 		%feature("autodoc", "* Checks if a Face is as a Spot Returns 0 if not, 1 if yes, 2 if yes and all vertices are the same By default, considers the tolerance zone of its vertices A given value <tol> may be given to check a spot of this size If a Face is a Spot, its location is returned in <spot>, and <spotol> returns an equivalent tolerance, which is computed as half of max dimension of min-max box of the face
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param spot:
 	:type spot: gp_Pnt
 	:param spotol:
-	:type spotol: float &
+	:type spotol: float
 	:param tol: default value is -1.0
 	:type tol: float
 	:rtype: int") IsSpotFace;
@@ -362,7 +362,7 @@ class ShapeAnalysis_CheckSmallFace {
 		%feature("compactdefaultargs") IsStripSupport;
 		%feature("autodoc", "* Checks if a Face lies on a Surface which is a strip So the Face is a strip. But a Face may be a strip elsewhere .. //! A given value <tol> may be given to check max width By default, considers the tolerance zone of its edges Returns 0 if not a strip support, 1 strip in U, 2 strip in V
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param tol: default value is -1.0
 	:type tol: float
 	:rtype: bool") IsStripSupport;
@@ -463,7 +463,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") FillBndBox;
 		%feature("autodoc", "* Computes a boundary box on segment of curve C2d from First to Last. This is done by taking NPoints points from the curve and, if Exact is True, by searching for exact extrema. All these points are added to Box.
 	:param C2d:
-	:type C2d: opencascade::handle<Geom2d_Curve> &
+	:type C2d: Geom2d_Curve
 	:param First:
 	:type First: float
 	:param Last:
@@ -473,7 +473,7 @@ class ShapeAnalysis_Curve {
 	:param Exact:
 	:type Exact: bool
 	:param Box:
-	:type Box: Bnd_Box2d &
+	:type Box: Bnd_Box2d
 	:rtype: None") FillBndBox;
 		void FillBndBox (const opencascade::handle<Geom2d_Curve> & C2d,const Standard_Real First,const Standard_Real Last,const Standard_Integer NPoints,const Standard_Boolean Exact,Bnd_Box2d & Box);
 
@@ -481,7 +481,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") GetSamplePoints;
 		%feature("autodoc", "* Returns sample points which will serve as linearisation of the2d curve in range (first, last) The distribution of sample points is consystent with what is used by BRepTopAdaptor_FClass2d
 	:param curve:
-	:type curve: opencascade::handle<Geom2d_Curve> &
+	:type curve: Geom2d_Curve
 	:param first:
 	:type first: float
 	:param last:
@@ -495,7 +495,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") GetSamplePoints;
 		%feature("autodoc", "* Returns sample points which will serve as linearisation of the curve in range (first, last)
 	:param curve:
-	:type curve: opencascade::handle<Geom_Curve> &
+	:type curve: Geom_Curve
 	:param first:
 	:type first: float
 	:param last:
@@ -509,7 +509,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "* Tells if the Curve is closed with given precision. If <preci> < 0 then Precision::Confusion is used.
 	:param curve:
-	:type curve: opencascade::handle<Geom_Curve> &
+	:type curve: Geom_Curve
 	:param preci: default value is -1
 	:type preci: float
 	:rtype: bool") IsClosed;
@@ -519,7 +519,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "* This method was implemented as fix for changes in trimmed curve behaviour. For the moment trimmed curve returns false anyway. So it is necessary to adapt all Data exchange tools for this behaviour. Current implementation takes into account that curve may be offset.
 	:param curve:
-	:type curve: opencascade::handle<Geom_Curve> &
+	:type curve: Geom_Curve
 	:rtype: bool") IsPeriodic;
 		static Standard_Boolean IsPeriodic (const opencascade::handle<Geom_Curve> & curve);
 
@@ -527,7 +527,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "* The same as for Curve3d.
 	:param curve:
-	:type curve: opencascade::handle<Geom2d_Curve> &
+	:type curve: Geom2d_Curve
 	:rtype: bool") IsPeriodic;
 		static Standard_Boolean IsPeriodic (const opencascade::handle<Geom2d_Curve> & curve);
 
@@ -547,7 +547,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") IsPlanar;
 		%feature("autodoc", "* Checks if curve is planar with given preci. If Normal has not zero modulus, checks with given normal
 	:param curve:
-	:type curve: opencascade::handle<Geom_Curve> &
+	:type curve: Geom_Curve
 	:param Normal:
 	:type Normal: gp_XYZ
 	:param preci: default value is 0
@@ -561,7 +561,7 @@ class ShapeAnalysis_Curve {
 	:param paramPrev:
 	:type paramPrev: float
 	:param C3D:
-	:type C3D: opencascade::handle<Geom_Curve> &
+	:type C3D: Geom_Curve
 	:param P3D:
 	:type P3D: gp_Pnt
 	:param preci:
@@ -569,7 +569,7 @@ class ShapeAnalysis_Curve {
 	:param proj:
 	:type proj: gp_Pnt
 	:param param:
-	:type param: float &
+	:type param: float
 	:param cf:
 	:type cf: float
 	:param cl:
@@ -585,7 +585,7 @@ class ShapeAnalysis_Curve {
 	:param paramPrev:
 	:type paramPrev: float
 	:param C3D:
-	:type C3D: Adaptor3d_Curve &
+	:type C3D: Adaptor3d_Curve
 	:param P3D:
 	:type P3D: gp_Pnt
 	:param preci:
@@ -593,7 +593,7 @@ class ShapeAnalysis_Curve {
 	:param proj:
 	:type proj: gp_Pnt
 	:param param:
-	:type param: float &
+	:type param: float
 	:rtype: float") NextProject;
 		Standard_Real NextProject (const Standard_Real paramPrev,const Adaptor3d_Curve & C3D,const gp_Pnt & P3D,const Standard_Real preci,gp_Pnt & proj,Standard_Real &OutValue);
 
@@ -601,7 +601,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "* Projects a Point on a Curve. Computes the projected point and its parameter on the curve. <preci> is used as 3d precision (hence, 0 will produce reject unless exact confusion). The number of iterations is limited. If AdjustToEnds is True, point will be adjusted to the end of the curve if distance is less than <preci> //! Returned value is the distance between the given point and computed one.
 	:param C3D:
-	:type C3D: opencascade::handle<Geom_Curve> &
+	:type C3D: Geom_Curve
 	:param P3D:
 	:type P3D: gp_Pnt
 	:param preci:
@@ -609,7 +609,7 @@ class ShapeAnalysis_Curve {
 	:param proj:
 	:type proj: gp_Pnt
 	:param param:
-	:type param: float &
+	:type param: float
 	:param AdjustToEnds: default value is Standard_True
 	:type AdjustToEnds: bool
 	:rtype: float") Project;
@@ -619,7 +619,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "* Projects a Point on a Curve. Computes the projected point and its parameter on the curve. <preci> is used as 3d precision (hence, 0 will produce reject unless exact confusion). The number of iterations is limited. //! Returned value is the distance between the given point and computed one.
 	:param C3D:
-	:type C3D: Adaptor3d_Curve &
+	:type C3D: Adaptor3d_Curve
 	:param P3D:
 	:type P3D: gp_Pnt
 	:param preci:
@@ -627,7 +627,7 @@ class ShapeAnalysis_Curve {
 	:param proj:
 	:type proj: gp_Pnt
 	:param param:
-	:type param: float &
+	:type param: float
 	:param AdjustToEnds: default value is Standard_True
 	:type AdjustToEnds: bool
 	:rtype: float") Project;
@@ -637,7 +637,7 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "* Projects a Point on a Curve, but parameters are limited between <cf> and <cl>. The range [cf, cl] is extended with help of Adaptor3d on the basis of 3d precision <preci>. If AdjustToEnds is True, point will be adjusted to the end of the curve if distance is less than <preci>
 	:param C3D:
-	:type C3D: opencascade::handle<Geom_Curve> &
+	:type C3D: Geom_Curve
 	:param P3D:
 	:type P3D: gp_Pnt
 	:param preci:
@@ -645,7 +645,7 @@ class ShapeAnalysis_Curve {
 	:param proj:
 	:type proj: gp_Pnt
 	:param param:
-	:type param: float &
+	:type param: float
 	:param cf:
 	:type cf: float
 	:param cl:
@@ -658,7 +658,7 @@ class ShapeAnalysis_Curve {
 		/****************** ProjectAct ******************/
 		%feature("compactdefaultargs") ProjectAct;
 		%feature("autodoc", ":param C3D:
-	:type C3D: Adaptor3d_Curve &
+	:type C3D: Adaptor3d_Curve
 	:param P3D:
 	:type P3D: gp_Pnt
 	:param preci:
@@ -666,7 +666,7 @@ class ShapeAnalysis_Curve {
 	:param proj:
 	:type proj: gp_Pnt
 	:param param:
-	:type param: float &
+	:type param: float
 	:rtype: float") ProjectAct;
 		Standard_Real ProjectAct (const Adaptor3d_Curve & C3D,const gp_Pnt & P3D,const Standard_Real preci,gp_Pnt & proj,Standard_Real &OutValue);
 
@@ -674,9 +674,9 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") SelectForwardSeam;
 		%feature("autodoc", "* Defines which pcurve (C1 or C2) should be chosen for FORWARD seam edge.
 	:param C1:
-	:type C1: opencascade::handle<Geom2d_Curve> &
+	:type C1: Geom2d_Curve
 	:param C2:
-	:type C2: opencascade::handle<Geom2d_Curve> &
+	:type C2: Geom2d_Curve
 	:rtype: int") SelectForwardSeam;
 		Standard_Integer SelectForwardSeam (const opencascade::handle<Geom2d_Curve> & C1,const opencascade::handle<Geom2d_Curve> & C2);
 
@@ -684,11 +684,11 @@ class ShapeAnalysis_Curve {
 		%feature("compactdefaultargs") ValidateRange;
 		%feature("autodoc", "* Validate parameters First and Last for the given curve in order to make them valid for creation of edge. This includes: - limiting range [First,Last] by range of curve - adjusting range [First,Last] for periodic (or closed) curve if Last < First Returns True if parameters are OK or are successfully corrected, or False if parameters cannot be corrected. In the latter case, parameters are reset to range of curve.
 	:param Crv:
-	:type Crv: opencascade::handle<Geom_Curve> &
+	:type Crv: Geom_Curve
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:param prec:
 	:type prec: float
 	:rtype: bool") ValidateRange;
@@ -712,9 +712,9 @@ class ShapeAnalysis_Edge {
 		/****************** BoundUV ******************/
 		%feature("compactdefaultargs") BoundUV;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param first:
 	:type first: gp_Pnt2d
 	:param last:
@@ -726,11 +726,11 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") BoundUV;
 		%feature("autodoc", "* Returns the ends of pcurve Calls method PCurve with <orient> equal to True
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:param first:
 	:type first: gp_Pnt2d
 	:param last:
@@ -741,9 +741,9 @@ class ShapeAnalysis_Edge {
 		/****************** CheckCurve3dWithPCurve ******************/
 		%feature("compactdefaultargs") CheckCurve3dWithPCurve;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: bool") CheckCurve3dWithPCurve;
 		Standard_Boolean CheckCurve3dWithPCurve (const TopoDS_Edge & edge,const TopoDS_Face & face);
 
@@ -751,11 +751,11 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") CheckCurve3dWithPCurve;
 		%feature("autodoc", "* Checks mutual orientation of 3d curve and pcurve on the analysis of curves bounding points
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:rtype: bool") CheckCurve3dWithPCurve;
 		Standard_Boolean CheckCurve3dWithPCurve (const TopoDS_Edge & edge,const opencascade::handle<Geom_Surface> & surface,const TopLoc_Location & location);
 
@@ -763,11 +763,11 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") CheckOverlapping;
 		%feature("autodoc", "* Checks the first edge is overlapped with second edge. If distance between two edges is less then theTolOverlap edges is overlapped. theDomainDis - length of part of edges on wich edges is overlapped.
 	:param theEdge1:
-	:type theEdge1: TopoDS_Edge &
+	:type theEdge1: TopoDS_Edge
 	:param theEdge2:
-	:type theEdge2: TopoDS_Edge &
+	:type theEdge2: TopoDS_Edge
 	:param theTolOverlap:
-	:type theTolOverlap: float &
+	:type theTolOverlap: float
 	:param theDomainDist: default value is 0.0
 	:type theDomainDist: float
 	:rtype: bool") CheckOverlapping;
@@ -781,7 +781,7 @@ class ShapeAnalysis_Edge {
 	:param theLast:
 	:type theLast: float
 	:param thePC:
-	:type thePC: opencascade::handle<Geom2d_Curve> &
+	:type thePC: Geom2d_Curve
 	:rtype: bool") CheckPCurveRange;
 		Standard_Boolean CheckPCurveRange (const Standard_Real theFirst,const Standard_Real theLast,const opencascade::handle<Geom2d_Curve> & thePC);
 
@@ -789,9 +789,9 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") CheckSameParameter;
 		%feature("autodoc", "* Checks the edge to be SameParameter. Calculates the maximal deviation between 3d curve and each pcurve of the edge on <NbControl> equidistant points (the same algorithm as in BRepCheck; default value is 23 as in BRepCheck). This deviation is returned in <maxdev> parameter. If deviation is greater than tolerance of the edge (i.e. incorrect flag) returns False, else returns True.
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param maxdev:
-	:type maxdev: float &
+	:type maxdev: float
 	:param NbControl: default value is 23
 	:type NbControl: int
 	:rtype: bool") CheckSameParameter;
@@ -801,11 +801,11 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") CheckSameParameter;
 		%feature("autodoc", "* Checks the edge to be SameParameter. Calculates the maximal deviation between 3d curve and each pcurve of the edge on <NbControl> equidistant points (the same algorithm as in BRepCheck; default value is 23 as in BRepCheck). This deviation is returned in <maxdev> parameter. If deviation is greater than tolerance of the edge (i.e. incorrect flag) returns False, else returns True.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param theMaxdev:
-	:type theMaxdev: float &
+	:type theMaxdev: float
 	:param theNbControl: default value is 23
 	:type theNbControl: int
 	:rtype: bool") CheckSameParameter;
@@ -814,13 +814,13 @@ class ShapeAnalysis_Edge {
 		/****************** CheckVertexTolerance ******************/
 		%feature("compactdefaultargs") CheckVertexTolerance;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param toler1:
-	:type toler1: float &
+	:type toler1: float
 	:param toler2:
-	:type toler2: float &
+	:type toler2: float
 	:rtype: bool") CheckVertexTolerance;
 		Standard_Boolean CheckVertexTolerance (const TopoDS_Edge & edge,const TopoDS_Face & face,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -828,11 +828,11 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") CheckVertexTolerance;
 		%feature("autodoc", "* Checks if it is necessary to increase tolerances of the edge vertices to comprise the ends of 3d curve and pcurve on the given face (first method) or all pcurves stored in an edge (second one) toler1 returns necessary tolerance for first vertex, toler2 returns necessary tolerance for last vertex.
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param toler1:
-	:type toler1: float &
+	:type toler1: float
 	:param toler2:
-	:type toler2: float &
+	:type toler2: float
 	:rtype: bool") CheckVertexTolerance;
 		Standard_Boolean CheckVertexTolerance (const TopoDS_Edge & edge,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -840,7 +840,7 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") CheckVerticesWithCurve3d;
 		%feature("autodoc", "* Checks the start and/or end vertex of the edge for matching with 3d curve with the given precision. <vtx> = 1 : start vertex only <vtx> = 2 : end vertex only <vtx> = 0 : both (default) If preci < 0 the vertices are considered with their own tolerances, else with the given <preci>.
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param preci: default value is -1
 	:type preci: float
 	:param vtx: default value is 0
@@ -851,9 +851,9 @@ class ShapeAnalysis_Edge {
 		/****************** CheckVerticesWithPCurve ******************/
 		%feature("compactdefaultargs") CheckVerticesWithPCurve;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param preci: default value is -1
 	:type preci: float
 	:param vtx: default value is 0
@@ -865,11 +865,11 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") CheckVerticesWithPCurve;
 		%feature("autodoc", "* Checks the start and/or end vertex of the edge for matching with pcurve with the given precision. <vtx> = 1 : start vertex <vtx> = 2 : end vertex <vtx> = 0 : both If preci < 0 the vertices are considered with their own tolerances, else with the given <preci>.
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:param preci: default value is -1
 	:type preci: float
 	:param vtx: default value is 0
@@ -881,13 +881,13 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") ComputeDeviation;
 		%feature("autodoc", "* Computes the maximal deviation between the two curve representations. dev is an input/output parameter and contains the computed deviation (should be initialized with 0. for the first call). Used by CheckSameParameter().
 	:param CRef:
-	:type CRef: Adaptor3d_Curve &
+	:type CRef: Adaptor3d_Curve
 	:param Other:
-	:type Other: Adaptor3d_Curve &
+	:type Other: Adaptor3d_Curve
 	:param SameParameter:
 	:type SameParameter: bool
 	:param dev:
-	:type dev: float &
+	:type dev: float
 	:param NCONTROL:
 	:type NCONTROL: int
 	:rtype: bool") ComputeDeviation;
@@ -897,13 +897,13 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") Curve3d;
 		%feature("autodoc", "* Returns the 3d curve and bounding parameteres for the edge Returns False if no 3d curve. If <orient> is True (default), takes orientation into account: if the edge is reversed, cf and cl are toggled
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param C3d:
-	:type C3d: opencascade::handle<Geom_Curve> &
+	:type C3d: Geom_Curve
 	:param cf:
-	:type cf: float &
+	:type cf: float
 	:param cl:
-	:type cl: float &
+	:type cl: float
 	:param orient: default value is Standard_True
 	:type orient: bool
 	:rtype: bool") Curve3d;
@@ -913,16 +913,16 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") FirstVertex;
 		%feature("autodoc", "* Returns start vertex of the edge (taking edge orientation into account).
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:rtype: TopoDS_Vertex") FirstVertex;
 		TopoDS_Vertex FirstVertex (const TopoDS_Edge & edge);
 
 		/****************** GetEndTangent2d ******************/
 		%feature("compactdefaultargs") GetEndTangent2d;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param atEnd:
 	:type atEnd: bool
 	:param pos:
@@ -938,11 +938,11 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") GetEndTangent2d;
 		%feature("autodoc", "* Returns tangent of the edge pcurve at its start (if atEnd is False) or end (if True), regarding the orientation of edge. If edge is REVERSED, tangent is reversed before return. Returns True if pcurve is available and tangent is computed and is not null, else False.
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:param atEnd:
 	:type atEnd: bool
 	:param pos:
@@ -958,7 +958,7 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") HasCurve3d;
 		%feature("autodoc", "* Tells if the edge has a 3d curve
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:rtype: bool") HasCurve3d;
 		Standard_Boolean HasCurve3d (const TopoDS_Edge & edge);
 
@@ -966,9 +966,9 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") HasPCurve;
 		%feature("autodoc", "* Tells if the Edge has a pcurve on the face.
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: bool") HasPCurve;
 		Standard_Boolean HasPCurve (const TopoDS_Edge & edge,const TopoDS_Face & face);
 
@@ -976,11 +976,11 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") HasPCurve;
 		%feature("autodoc", "* Tells if the edge has a pcurve on the surface (with location).
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:rtype: bool") HasPCurve;
 		Standard_Boolean HasPCurve (const TopoDS_Edge & edge,const opencascade::handle<Geom_Surface> & surface,const TopLoc_Location & location);
 
@@ -988,16 +988,16 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") IsClosed3d;
 		%feature("autodoc", "* Gives True if the edge has a 3d curve, this curve is closed, and the edge has the same vertex at start and end
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:rtype: bool") IsClosed3d;
 		Standard_Boolean IsClosed3d (const TopoDS_Edge & edge);
 
 		/****************** IsSeam ******************/
 		%feature("compactdefaultargs") IsSeam;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: bool") IsSeam;
 		Standard_Boolean IsSeam (const TopoDS_Edge & edge,const TopoDS_Face & face);
 
@@ -1005,11 +1005,11 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") IsSeam;
 		%feature("autodoc", "* Returns True if the edge has two pcurves on one surface
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:rtype: bool") IsSeam;
 		Standard_Boolean IsSeam (const TopoDS_Edge & edge,const opencascade::handle<Geom_Surface> & surface,const TopLoc_Location & location);
 
@@ -1017,22 +1017,22 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") LastVertex;
 		%feature("autodoc", "* Returns end vertex of the edge (taking edge orientation into account).
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:rtype: TopoDS_Vertex") LastVertex;
 		TopoDS_Vertex LastVertex (const TopoDS_Edge & edge);
 
 		/****************** PCurve ******************/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", ":param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param C2d:
-	:type C2d: opencascade::handle<Geom2d_Curve> &
+	:type C2d: Geom2d_Curve
 	:param cf:
-	:type cf: float &
+	:type cf: float
 	:param cl:
-	:type cl: float &
+	:type cl: float
 	:param orient: default value is Standard_True
 	:type orient: bool
 	:rtype: bool") PCurve;
@@ -1042,17 +1042,17 @@ class ShapeAnalysis_Edge {
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "* Returns the pcurve and bounding parameteres for the edge lying on the surface. Returns False if the edge has no pcurve on this surface. If <orient> is True (default), takes orientation into account: if the edge is reversed, cf and cl are toggled
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:param C2d:
-	:type C2d: opencascade::handle<Geom2d_Curve> &
+	:type C2d: Geom2d_Curve
 	:param cf:
-	:type cf: float &
+	:type cf: float
 	:param cl:
-	:type cl: float &
+	:type cl: float
 	:param orient: default value is Standard_True
 	:type orient: bool
 	:rtype: bool") PCurve;
@@ -1091,7 +1091,7 @@ class ShapeAnalysis_FreeBoundData : public Standard_Transient {
 		%feature("compactdefaultargs") AddNotch;
 		%feature("autodoc", "* Adds notch on the contour with its maximum width
 	:param notch:
-	:type notch: TopoDS_Wire &
+	:type notch: TopoDS_Wire
 	:param width:
 	:type width: float
 	:rtype: None") AddNotch;
@@ -1141,7 +1141,7 @@ class ShapeAnalysis_FreeBoundData : public Standard_Transient {
 		%feature("compactdefaultargs") NotchWidth;
 		%feature("autodoc", "* Returns maximum width of notch specified as TopoDS_Wire on the contour
 	:param notch:
-	:type notch: TopoDS_Wire &
+	:type notch: TopoDS_Wire
 	:rtype: float") NotchWidth;
 		Standard_Real NotchWidth (const TopoDS_Wire & notch);
 
@@ -1175,7 +1175,7 @@ class ShapeAnalysis_FreeBoundData : public Standard_Transient {
 		%feature("compactdefaultargs") SetFreeBound;
 		%feature("autodoc", "* Sets contour
 	:param freebound:
-	:type freebound: TopoDS_Wire &
+	:type freebound: TopoDS_Wire
 	:rtype: None") SetFreeBound;
 		void SetFreeBound (const TopoDS_Wire & freebound);
 
@@ -1213,7 +1213,7 @@ class ShapeAnalysis_FreeBoundData : public Standard_Transient {
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBoundData;
 		%feature("autodoc", "* Creates object with contour given in the form of TopoDS_Wire
 	:param freebound:
-	:type freebound: TopoDS_Wire &
+	:type freebound: TopoDS_Wire
 	:rtype: None") ShapeAnalysis_FreeBoundData;
 		 ShapeAnalysis_FreeBoundData (const TopoDS_Wire & freebound);
 
@@ -1244,26 +1244,26 @@ class ShapeAnalysis_FreeBounds {
 		%feature("compactdefaultargs") ConnectEdgesToWires;
 		%feature("autodoc", "* Builds sequnce of <wires> out of sequence of not sorted <edges>. Tries to build wires of maximum length. Building a wire is stopped when no edges can be connected to it at its head or at its tail. //! Orientation of the edge can change when connecting. If <shared> is True connection is performed only when adjacent edges share the same vertex. If <shared> is False connection is performed only when ends of adjacent edges are at distance less than <toler>.
 	:param edges:
-	:type edges: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type edges: TopTools_HSequenceOfShape
 	:param toler:
 	:type toler: float
 	:param shared:
 	:type shared: bool
 	:param wires:
-	:type wires: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type wires: TopTools_HSequenceOfShape
 	:rtype: void") ConnectEdgesToWires;
 		static void ConnectEdgesToWires (opencascade::handle<TopTools_HSequenceOfShape> & edges,const Standard_Real toler,const Standard_Boolean shared,opencascade::handle<TopTools_HSequenceOfShape> & wires);
 
 		/****************** ConnectWiresToWires ******************/
 		%feature("compactdefaultargs") ConnectWiresToWires;
 		%feature("autodoc", ":param iwires:
-	:type iwires: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type iwires: TopTools_HSequenceOfShape
 	:param toler:
 	:type toler: float
 	:param shared:
 	:type shared: bool
 	:param owires:
-	:type owires: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type owires: TopTools_HSequenceOfShape
 	:rtype: void") ConnectWiresToWires;
 		static void ConnectWiresToWires (opencascade::handle<TopTools_HSequenceOfShape> & iwires,const Standard_Real toler,const Standard_Boolean shared,opencascade::handle<TopTools_HSequenceOfShape> & owires);
 
@@ -1271,15 +1271,15 @@ class ShapeAnalysis_FreeBounds {
 		%feature("compactdefaultargs") ConnectWiresToWires;
 		%feature("autodoc", "* Builds sequnce of <owires> out of sequence of not sorted <iwires>. Tries to build wires of maximum length. Building a wire is stopped when no wires can be connected to it at its head or at its tail. //! Orientation of the wire can change when connecting. If <shared> is True connection is performed only when adjacent wires share the same vertex. If <shared> is False connection is performed only when ends of adjacent wires are at distance less than <toler>. Map <vertices> stores the correspondence between original end vertices of the wires and new connecting vertices.
 	:param iwires:
-	:type iwires: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type iwires: TopTools_HSequenceOfShape
 	:param toler:
 	:type toler: float
 	:param shared:
 	:type shared: bool
 	:param owires:
-	:type owires: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type owires: TopTools_HSequenceOfShape
 	:param vertices:
-	:type vertices: TopTools_DataMapOfShapeShape &
+	:type vertices: TopTools_DataMapOfShapeShape
 	:rtype: void") ConnectWiresToWires;
 		static void ConnectWiresToWires (opencascade::handle<TopTools_HSequenceOfShape> & iwires,const Standard_Real toler,const Standard_Boolean shared,opencascade::handle<TopTools_HSequenceOfShape> & owires,TopTools_DataMapOfShapeShape & vertices);
 
@@ -1287,11 +1287,11 @@ class ShapeAnalysis_FreeBounds {
 		%feature("compactdefaultargs") DispatchWires;
 		%feature("autodoc", "* Dispatches sequence of <wires> into two compounds <closed> for closed wires and <open> for open wires. If a compound is not empty wires are added into it.
 	:param wires:
-	:type wires: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type wires: TopTools_HSequenceOfShape
 	:param closed:
-	:type closed: TopoDS_Compound &
+	:type closed: TopoDS_Compound
 	:param open:
-	:type open: TopoDS_Compound &
+	:type open: TopoDS_Compound
 	:rtype: void") DispatchWires;
 		static void DispatchWires (const opencascade::handle<TopTools_HSequenceOfShape> & wires,TopoDS_Compound & closed,TopoDS_Compound & open);
 
@@ -1317,7 +1317,7 @@ class ShapeAnalysis_FreeBounds {
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBounds;
 		%feature("autodoc", "* Builds forecasting free bounds of the <shape>. <shape> should be a compound of faces. This constructor is to be used for forecasting free edges with help of sewing analyzer BRepAlgo_Sewing which is called with tolerance <toler>. Free edges are connected into wires only when their ends are at distance less than <toler>. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param toler:
 	:type toler: float
 	:param splitclosed: default value is Standard_False
@@ -1331,7 +1331,7 @@ class ShapeAnalysis_FreeBounds {
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBounds;
 		%feature("autodoc", "* Builds actual free bounds of the <shape>. <shape> should be a compound of shells. This constructor is to be used for getting free edges (ones referenced by the only face) with help of analyzer ShapeAnalysis_Shell. Free edges are connected into wires only when they share the same vertex. If <splitclosed> is True extracts closed sub-wires out of built closed wires. If <splitopen> is True extracts closed sub-wires out of built open wires.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param splitclosed: default value is Standard_False
 	:type splitclosed: bool
 	:param splitopen: default value is Standard_True
@@ -1345,15 +1345,15 @@ class ShapeAnalysis_FreeBounds {
 		%feature("compactdefaultargs") SplitWires;
 		%feature("autodoc", "* Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires remained after extraction are put into <open>. If <shared> is True extraction is performed only when edges share the same vertex. If <shared> is False connection is performed only when ends of the edges are at distance less than <toler>.
 	:param wires:
-	:type wires: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type wires: TopTools_HSequenceOfShape
 	:param toler:
 	:type toler: float
 	:param shared:
 	:type shared: bool
 	:param closed:
-	:type closed: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type closed: TopTools_HSequenceOfShape
 	:param open:
-	:type open: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type open: TopTools_HSequenceOfShape
 	:rtype: void") SplitWires;
 		static void SplitWires (const opencascade::handle<TopTools_HSequenceOfShape> & wires,const Standard_Real toler,const Standard_Boolean shared,opencascade::handle<TopTools_HSequenceOfShape> & closed,opencascade::handle<TopTools_HSequenceOfShape> & open);
 
@@ -1389,7 +1389,7 @@ class ShapeAnalysis_FreeBoundsProperties {
 		/****************** CheckNotches ******************/
 		%feature("compactdefaultargs") CheckNotches;
 		%feature("autodoc", ":param fbData:
-	:type fbData: opencascade::handle<ShapeAnalysis_FreeBoundData> &
+	:type fbData: ShapeAnalysis_FreeBoundData
 	:param prec: default value is 0.0
 	:type prec: float
 	:rtype: bool") CheckNotches;
@@ -1398,13 +1398,13 @@ class ShapeAnalysis_FreeBoundsProperties {
 		/****************** CheckNotches ******************/
 		%feature("compactdefaultargs") CheckNotches;
 		%feature("autodoc", ":param freebound:
-	:type freebound: TopoDS_Wire &
+	:type freebound: TopoDS_Wire
 	:param num:
 	:type num: int
 	:param notch:
-	:type notch: TopoDS_Wire &
+	:type notch: TopoDS_Wire
 	:param distMax:
-	:type distMax: float &
+	:type distMax: float
 	:param prec: default value is 0.0
 	:type prec: float
 	:rtype: bool") CheckNotches;
@@ -1432,7 +1432,7 @@ class ShapeAnalysis_FreeBoundsProperties {
 		/****************** FillProperties ******************/
 		%feature("compactdefaultargs") FillProperties;
 		%feature("autodoc", ":param fbData:
-	:type fbData: opencascade::handle<ShapeAnalysis_FreeBoundData> &
+	:type fbData: ShapeAnalysis_FreeBoundData
 	:param prec: default value is 0.0
 	:type prec: float
 	:rtype: bool") FillProperties;
@@ -1442,7 +1442,7 @@ class ShapeAnalysis_FreeBoundsProperties {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the object with given parameters. <shape> should be a compound of faces.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param tolerance:
 	:type tolerance: float
 	:param splitclosed: default value is Standard_False
@@ -1456,7 +1456,7 @@ class ShapeAnalysis_FreeBoundsProperties {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the object with given parameters. <shape> should be a compound of shells.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param splitclosed: default value is Standard_False
 	:type splitclosed: bool
 	:param splitopen: default value is Standard_False
@@ -1524,7 +1524,7 @@ class ShapeAnalysis_FreeBoundsProperties {
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBoundsProperties;
 		%feature("autodoc", "* Creates the object and calls corresponding Init. <shape> should be a compound of faces.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param tolerance:
 	:type tolerance: float
 	:param splitclosed: default value is Standard_False
@@ -1538,7 +1538,7 @@ class ShapeAnalysis_FreeBoundsProperties {
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBoundsProperties;
 		%feature("autodoc", "* Creates the object and calls corresponding Init. <shape> should be a compound of shells.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param splitclosed: default value is Standard_False
 	:type splitclosed: bool
 	:param splitopen: default value is Standard_False
@@ -1574,7 +1574,7 @@ class ShapeAnalysis_Geom {
 	:param aPln:
 	:type aPln: gp_Pln
 	:param Dmax:
-	:type Dmax: float &
+	:type Dmax: float
 	:rtype: bool") NearestPlane;
 		static Standard_Boolean NearestPlane (const TColgp_Array1OfPnt & Pnts,gp_Pln & aPln,Standard_Real &OutValue);
 
@@ -1582,7 +1582,7 @@ class ShapeAnalysis_Geom {
 		%feature("compactdefaultargs") PositionTrsf;
 		%feature("autodoc", "* Builds transfromation object out of matrix. Matrix must be 3 x 4. Unit is used as multiplier.
 	:param coefs:
-	:type coefs: opencascade::handle<TColStd_HArray2OfReal> &
+	:type coefs: TColStd_HArray2OfReal
 	:param trsf:
 	:type trsf: gp_Trsf
 	:param unit:
@@ -1886,7 +1886,7 @@ class ShapeAnalysis_ShapeContents {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Counts quantities of sun-shapes in shape and stores sub-shapes according to flags
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & shape);
 
@@ -1925,7 +1925,7 @@ class ShapeAnalysis_ShapeTolerance {
 		%feature("compactdefaultargs") AddTolerance;
 		%feature("autodoc", "* Adds data on new Shape to compute Cumulated Tolerance (prepares three computations : maximal, average, minimal)
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param type: default value is TopAbs_SHAPE
 	:type type: TopAbs_ShapeEnum
 	:rtype: None") AddTolerance;
@@ -1943,7 +1943,7 @@ class ShapeAnalysis_ShapeTolerance {
 		%feature("compactdefaultargs") InTolerance;
 		%feature("autodoc", "* Determines which shapes have a tolerance within a given interval <type> is interpreted as in the method Tolerance
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param valmin:
 	:type valmin: float
 	:param valmax:
@@ -1963,7 +1963,7 @@ class ShapeAnalysis_ShapeTolerance {
 		%feature("compactdefaultargs") OverTolerance;
 		%feature("autodoc", "* Determines which shapes have a tolerance over the given value <type> is interpreted as in the method Tolerance
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param value:
 	:type value: float
 	:param type: default value is TopAbs_SHAPE
@@ -1981,7 +1981,7 @@ class ShapeAnalysis_ShapeTolerance {
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "* Determines a tolerance from the ones stored in a shape Remark : calls InitTolerance and AddTolerance, hence, can be used to start a series for cumulating tolerance <mode> = 0 : returns the average value between sub-shapes, <mode> > 0 : returns the maximal found, <mode> < 0 : returns the minimal found. <type> defines what kinds of sub-shapes to consider: SHAPE (default) : all : VERTEX, EDGE, FACE, VERTEX : only vertices, EDGE : only edges, FACE : only faces, SHELL : combined SHELL + FACE, for each face (and containing shell), also checks EDGE and VERTEX
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param mode:
 	:type mode: int
 	:param type: default value is TopAbs_SHAPE
@@ -2013,7 +2013,7 @@ class ShapeAnalysis_Shell {
 		%feature("compactdefaultargs") CheckOrientedShells;
 		%feature("autodoc", "* Checks if shells fulfill orientation condition, i.e. if each edge is, either present once (free edge) or twice (connected edge) but with different orientations (FORWARD/REVERSED) Edges which do not fulfill these conditions are bad //! If <alsofree> is True free edges are considered. Free edges can be queried but are not bad
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param alsofree: default value is Standard_False
 	:type alsofree: bool
 	:param checkinternaledges: default value is Standard_False
@@ -2055,7 +2055,7 @@ class ShapeAnalysis_Shell {
 		%feature("compactdefaultargs") IsLoaded;
 		%feature("autodoc", "* Tells if a shape is loaded (only shells are checked)
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: bool") IsLoaded;
 		Standard_Boolean IsLoaded (const TopoDS_Shape & shape);
 
@@ -2063,7 +2063,7 @@ class ShapeAnalysis_Shell {
 		%feature("compactdefaultargs") LoadShells;
 		%feature("autodoc", "* Adds shells contained in the <shape> to the list of loaded shells
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: None") LoadShells;
 		void LoadShells (const TopoDS_Shape & shape);
 
@@ -2106,13 +2106,13 @@ class ShapeAnalysis_Surface : public Standard_Transient {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the bounds of the surface (from Bounds from Surface, but buffered)
 	:param ufirst:
-	:type ufirst: float &
+	:type ufirst: float
 	:param ulast:
-	:type ulast: float &
+	:type ulast: float
 	:param vfirst:
-	:type vfirst: float &
+	:type vfirst: float
 	:param vlast:
-	:type vlast: float &
+	:type vlast: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2134,9 +2134,9 @@ class ShapeAnalysis_Surface : public Standard_Transient {
 	:param lastP2d:
 	:type lastP2d: gp_Pnt2d
 	:param firstpar:
-	:type firstpar: float &
+	:type firstpar: float
 	:param lastpar:
-	:type lastpar: float &
+	:type lastpar: float
 	:param forward: default value is Standard_True
 	:type forward: bool
 	:rtype: bool") DegeneratedValues;
@@ -2180,7 +2180,7 @@ class ShapeAnalysis_Surface : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Loads existing surface
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Surface> & S);
 
@@ -2188,7 +2188,7 @@ class ShapeAnalysis_Surface : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Reads all the data from another Surface, without recomputing
 	:param other:
-	:type other: opencascade::handle<ShapeAnalysis_Surface> &
+	:type other: ShapeAnalysis_Surface
 	:rtype: None") Init;
 		void Init (const opencascade::handle<ShapeAnalysis_Surface> & other);
 
@@ -2301,7 +2301,7 @@ class ShapeAnalysis_Surface : public Standard_Transient {
 		%feature("compactdefaultargs") ShapeAnalysis_Surface;
 		%feature("autodoc", "* Creates an analyzer object on the basis of existing surface
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") ShapeAnalysis_Surface;
 		 ShapeAnalysis_Surface (const opencascade::handle<Geom_Surface> & S);
 
@@ -2311,7 +2311,7 @@ class ShapeAnalysis_Surface : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param preci:
-	:type preci: float &
+	:type preci: float
 	:param P3d:
 	:type P3d: gp_Pnt
 	:param firstP2d:
@@ -2319,9 +2319,9 @@ class ShapeAnalysis_Surface : public Standard_Transient {
 	:param lastP2d:
 	:type lastP2d: gp_Pnt2d
 	:param firstpar:
-	:type firstpar: float &
+	:type firstpar: float
 	:param lastpar:
-	:type lastpar: float &
+	:type lastpar: float
 	:param uisodeg:
 	:type uisodeg: bool
 	:rtype: bool") Singularity;
@@ -2361,9 +2361,9 @@ class ShapeAnalysis_Surface : public Standard_Transient {
 	:param preci:
 	:type preci: float
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: float") UVFromIso;
 		Standard_Real UVFromIso (const gp_Pnt & P3D,const Standard_Real preci,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2430,9 +2430,9 @@ class ShapeAnalysis_TransferParameters : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize a tool with edge and face
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: void") Init;
 		virtual void Init (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -2446,7 +2446,7 @@ class ShapeAnalysis_TransferParameters : public Standard_Transient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Transfers parameters given by sequence Params from 3d curve to pcurve (if To2d is True) or back (if To2d is False)
 	:param Params:
-	:type Params: opencascade::handle<TColStd_HSequenceOfReal> &
+	:type Params: TColStd_HSequenceOfReal
 	:param To2d:
 	:type To2d: bool
 	:rtype: opencascade::handle<TColStd_HSequenceOfReal>") Perform;
@@ -2480,9 +2480,9 @@ class ShapeAnalysis_TransferParameters : public Standard_Transient {
 		%feature("compactdefaultargs") ShapeAnalysis_TransferParameters;
 		%feature("autodoc", "* Creates a tool and initializes it with edge and face
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") ShapeAnalysis_TransferParameters;
 		 ShapeAnalysis_TransferParameters (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -2490,7 +2490,7 @@ class ShapeAnalysis_TransferParameters : public Standard_Transient {
 		%feature("compactdefaultargs") TransferRange;
 		%feature("autodoc", "* Recomputes range of curves from NewEdge. If Is2d equals True parameters are recomputed by curve2d else by curve3d.
 	:param newEdge:
-	:type newEdge: TopoDS_Edge &
+	:type newEdge: TopoDS_Edge
 	:param prevPar:
 	:type prevPar: float
 	:param currPar:
@@ -2620,11 +2620,11 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param points2d:
-	:type points2d: IntRes2d_SequenceOfIntersectionPoint &
+	:type points2d: IntRes2d_SequenceOfIntersectionPoint
 	:param points3d:
 	:type points3d: TColgp_SequenceOfPnt
 	:param errors:
-	:type errors: TColStd_SequenceOfReal &
+	:type errors: TColStd_SequenceOfReal
 	:rtype: bool") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges (const Standard_Integer num,IntRes2d_SequenceOfIntersectionPoint & points2d,TColgp_SequenceOfPnt & points3d,TColStd_SequenceOfReal & errors);
 
@@ -2644,11 +2644,11 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 	:param num2:
 	:type num2: int
 	:param points2d:
-	:type points2d: IntRes2d_SequenceOfIntersectionPoint &
+	:type points2d: IntRes2d_SequenceOfIntersectionPoint
 	:param points3d:
 	:type points3d: TColgp_SequenceOfPnt
 	:param errors:
-	:type errors: TColStd_SequenceOfReal &
+	:type errors: TColStd_SequenceOfReal
 	:rtype: bool") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges (const Standard_Integer num1,const Standard_Integer num2,IntRes2d_SequenceOfIntersectionPoint & points2d,TColgp_SequenceOfPnt & points3d,TColStd_SequenceOfReal & errors);
 
@@ -2696,13 +2696,13 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") CheckLoop;
 		%feature("autodoc", "* Checks existance of loop on wire and return vertices wich are loop vertices (vertices belonging to a few pairs of edges)
 	:param aMapLoopVertices:
-	:type aMapLoopVertices: TopTools_IndexedMapOfShape &
+	:type aMapLoopVertices: TopTools_IndexedMapOfShape
 	:param aMapVertexEdges:
-	:type aMapVertexEdges: TopTools_DataMapOfShapeListOfShape &
+	:type aMapVertexEdges: TopTools_DataMapOfShapeListOfShape
 	:param aMapSmallEdges:
-	:type aMapSmallEdges: TopTools_MapOfShape &
+	:type aMapSmallEdges: TopTools_MapOfShape
 	:param aMapSeemEdges:
-	:type aMapSeemEdges: TopTools_MapOfShape &
+	:type aMapSeemEdges: TopTools_MapOfShape
 	:rtype: bool") CheckLoop;
 		Standard_Boolean CheckLoop (TopTools_IndexedMapOfShape & aMapLoopVertices,TopTools_DataMapOfShapeListOfShape & aMapVertexEdges,TopTools_MapOfShape & aMapSmallEdges,TopTools_MapOfShape & aMapSeemEdges);
 
@@ -2712,9 +2712,9 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param shortNum:
-	:type shortNum: int &
+	:type shortNum: int
 	:param param:
-	:type param: float &
+	:type param: float
 	:param Tolerance: default value is 0.0
 	:type Tolerance: float
 	:rtype: bool") CheckNotchedEdges;
@@ -2734,7 +2734,7 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") CheckOrder;
 		%feature("autodoc", "* Analyzes the order of the edges in the wire, uses class WireOrder for that purpose. Flag <isClosed> defines if the wire is closed or not Flag <mode3d> defines which mode is used (3d or 2d) Returns False if wire is already ordered (tail-to-head), True otherwise. Use returned WireOrder object for deeper analysis. Status: OK : the same edges orientation, the same edges sequence DONE1: the same edges orientation, not the same edges sequence DONE2: as DONE1 and gaps more than myPrecision DONE3: not the same edges orientation (some need to be reversed) DONE4: as DONE3 and gaps more than myPrecision FAIL : algorithm failed (could not detect order)
 	:param sawo:
-	:type sawo: ShapeAnalysis_WireOrder &
+	:type sawo: ShapeAnalysis_WireOrder
 	:param isClosed: default value is Standard_True
 	:type isClosed: bool
 	:param mode3d: default value is Standard_True
@@ -2756,13 +2756,13 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param C1:
-	:type C1: opencascade::handle<Geom2d_Curve> &
+	:type C1: Geom2d_Curve
 	:param C2:
-	:type C2: opencascade::handle<Geom2d_Curve> &
+	:type C2: Geom2d_Curve
 	:param cf:
-	:type cf: float &
+	:type cf: float
 	:param cl:
-	:type cl: float &
+	:type cl: float
 	:rtype: bool") CheckSeam;
 		Standard_Boolean CheckSeam (const Standard_Integer num,opencascade::handle<Geom2d_Curve> & C1,opencascade::handle<Geom2d_Curve> & C2,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2780,7 +2780,7 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param points2d:
-	:type points2d: IntRes2d_SequenceOfIntersectionPoint &
+	:type points2d: IntRes2d_SequenceOfIntersectionPoint
 	:param points3d:
 	:type points3d: TColgp_SequenceOfPnt
 	:rtype: bool") CheckSelfIntersectingEdge;
@@ -2803,7 +2803,7 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") CheckShapeConnect;
 		%feature("autodoc", "* Checks with what orientation <shape> (wire or edge) can be connected to the wire. Tests distances with starting <preci> from <SBWD> (close confusion), but if given <prec> is greater, tests with <prec> (coarse confusion). The smallest found distance can be returned by MinDistance3d //! Returns: False if status is FAIL (see below) Status: DONE1 : If <shape> follows <SBWD>, direct sense (normal) DONE2 : If <shape> follows <SBWD>, but if reversed DONE3 : If <shape> preceeds <SBWD>, direct sense DONE4 : If <shape> preceeds <SBWD>, but if reversed FAIL1 : If <shape> is neither an edge nor a wire FAIL2 : If <shape> cannot be connected to <SBWD> //! DONE5 : To the tail of <SBWD> the <shape> is closer with direct sense DONE6 : To the head of <SBWD> the <shape> is closer with direct sense //! Remark: Statuses DONE1 - DONE4, FAIL1 - FAIL2 are basic and describe the nearest connection of the <shape> to <SBWD>. Statuses DONE5 and DONE6 are advanced and are to be used when analyzing with what sense (direct or reversed) the <shape> should be connected to <SBWD>: For tail of <SBWD> if DONE4 is True <shape> should be direct, otherwise reversed. For head of <SBWD> if DONE5 is True <shape> should be direct, otherwise reversed.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param prec: default value is 0.0
 	:type prec: float
 	:rtype: bool") CheckShapeConnect;
@@ -2813,15 +2813,15 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") CheckShapeConnect;
 		%feature("autodoc", "* The same as previous CheckShapeConnect but is more advanced. It returns the distances between each end of <sbwd> and each end of <shape>. For example, <tailhead> stores distance between tail of <sbwd> and head of <shape> Remark: First method CheckShapeConnect calls this one
 	:param tailhead:
-	:type tailhead: float &
+	:type tailhead: float
 	:param tailtail:
-	:type tailtail: float &
+	:type tailtail: float
 	:param headtail:
-	:type headtail: float &
+	:type headtail: float
 	:param headhead:
-	:type headhead: float &
+	:type headhead: float
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param prec: default value is 0.0
 	:type prec: float
 	:rtype: bool") CheckShapeConnect;
@@ -2849,16 +2849,16 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") CheckSmallArea;
 		%feature("autodoc", "* Checks if wire has parametric area less than precision.
 	:param theWire:
-	:type theWire: TopoDS_Wire &
+	:type theWire: TopoDS_Wire
 	:rtype: bool") CheckSmallArea;
 		Standard_Boolean CheckSmallArea (const TopoDS_Wire & theWire);
 
 		/****************** CheckTail ******************/
 		%feature("compactdefaultargs") CheckTail;
 		%feature("autodoc", ":param theEdge1:
-	:type theEdge1: TopoDS_Edge &
+	:type theEdge1: TopoDS_Edge
 	:param theEdge2:
-	:type theEdge2: TopoDS_Edge &
+	:type theEdge2: TopoDS_Edge
 	:param theMaxSine:
 	:type theMaxSine: float
 	:param theMaxWidth:
@@ -2866,13 +2866,13 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 	:param theMaxTolerance:
 	:type theMaxTolerance: float
 	:param theEdge11:
-	:type theEdge11: TopoDS_Edge &
+	:type theEdge11: TopoDS_Edge
 	:param theEdge12:
-	:type theEdge12: TopoDS_Edge &
+	:type theEdge12: TopoDS_Edge
 	:param theEdge21:
-	:type theEdge21: TopoDS_Edge &
+	:type theEdge21: TopoDS_Edge
 	:param theEdge22:
-	:type theEdge22: TopoDS_Edge &
+	:type theEdge22: TopoDS_Edge
 	:rtype: bool") CheckTail;
 		Standard_Boolean CheckTail (const TopoDS_Edge & theEdge1,const TopoDS_Edge & theEdge2,const Standard_Real theMaxSine,const Standard_Real theMaxWidth,const Standard_Real theMaxTolerance,TopoDS_Edge & theEdge11,TopoDS_Edge & theEdge12,TopoDS_Edge & theEdge21,TopoDS_Edge & theEdge22);
 
@@ -2892,9 +2892,9 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the object with standard TopoDS_Wire, face and precision
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param precision:
 	:type precision: float
 	:rtype: None") Init;
@@ -2904,9 +2904,9 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the object with WireData object, face and precision
 	:param sbwd:
-	:type sbwd: opencascade::handle<ShapeExtend_WireData> &
+	:type sbwd: ShapeExtend_WireData
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param precision:
 	:type precision: float
 	:rtype: None") Init;
@@ -2936,7 +2936,7 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Loads the object with standard TopoDS_Wire
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:rtype: None") Load;
 		void Load (const TopoDS_Wire & wire);
 
@@ -2944,7 +2944,7 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Loads the object with WireData object
 	:param sbwd:
-	:type sbwd: opencascade::handle<ShapeExtend_WireData> &
+	:type sbwd: ShapeExtend_WireData
 	:rtype: None") Load;
 		void Load (const opencascade::handle<ShapeExtend_WireData> & sbwd);
 
@@ -2994,7 +2994,7 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", "* Loads the face the wire lies on
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: None") SetFace;
 		void SetFace (const TopoDS_Face & face);
 
@@ -3009,7 +3009,7 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "* Loads the surface the wire lies on
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:rtype: None") SetSurface;
 		void SetSurface (const opencascade::handle<Geom_Surface> & surface);
 
@@ -3017,9 +3017,9 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "* Loads the surface the wire lies on
 	:param surface:
-	:type surface: opencascade::handle<Geom_Surface> &
+	:type surface: Geom_Surface
 	:param location:
-	:type location: TopLoc_Location &
+	:type location: TopLoc_Location
 	:rtype: None") SetSurface;
 		void SetSurface (const opencascade::handle<Geom_Surface> & surface,const TopLoc_Location & location);
 
@@ -3033,9 +3033,9 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") ShapeAnalysis_Wire;
 		%feature("autodoc", "* Creates object with standard TopoDS_Wire, face and precision
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param precision:
 	:type precision: float
 	:rtype: None") ShapeAnalysis_Wire;
@@ -3045,9 +3045,9 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 		%feature("compactdefaultargs") ShapeAnalysis_Wire;
 		%feature("autodoc", "* Creates the object with WireData object, face and precision
 	:param sbwd:
-	:type sbwd: opencascade::handle<ShapeExtend_WireData> &
+	:type sbwd: ShapeExtend_WireData
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:param precision:
 	:type precision: float
 	:rtype: None") ShapeAnalysis_Wire;
@@ -3192,9 +3192,9 @@ class ShapeAnalysis_WireOrder {
 	:param num:
 	:type num: int
 	:param n1:
-	:type n1: int &
+	:type n1: int
 	:param n2:
-	:type n2: int &
+	:type n2: int
 	:rtype: None") Chain;
 		void Chain (const Standard_Integer num,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -3210,9 +3210,9 @@ class ShapeAnalysis_WireOrder {
 	:param num:
 	:type num: int
 	:param n1:
-	:type n1: int &
+	:type n1: int
 	:param n2:
-	:type n2: int &
+	:type n2: int
 	:rtype: None") Couple;
 		void Couple (const Standard_Integer num,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -3383,16 +3383,16 @@ class ShapeAnalysis_WireVertex {
 	:param pos:
 	:type pos: gp_XYZ
 	:param upre:
-	:type upre: float &
+	:type upre: float
 	:param ufol:
-	:type ufol: float &
+	:type ufol: float
 	:rtype: int") Data;
 		Standard_Integer Data (const Standard_Integer num,gp_XYZ & pos,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param preci:
 	:type preci: float
 	:rtype: None") Init;
@@ -3401,7 +3401,7 @@ class ShapeAnalysis_WireVertex {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param swbd:
-	:type swbd: opencascade::handle<ShapeExtend_WireData> &
+	:type swbd: ShapeExtend_WireData
 	:param preci:
 	:type preci: float
 	:rtype: None") Init;
@@ -3416,14 +3416,14 @@ class ShapeAnalysis_WireVertex {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:rtype: None") Load;
 		void Load (const TopoDS_Wire & wire);
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param sbwd:
-	:type sbwd: opencascade::handle<ShapeExtend_WireData> &
+	:type sbwd: ShapeExtend_WireData
 	:rtype: None") Load;
 		void Load (const opencascade::handle<ShapeExtend_WireData> & sbwd);
 
@@ -3600,11 +3600,11 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 		%feature("compactdefaultargs") CopyNMVertex;
 		%feature("autodoc", "* Make a copy of non-manifold vertex theVert (i.e. create new TVertex and replace PointRepresentations for this vertex from fromedge to toedge. Other representations were copied)
 	:param theVert:
-	:type theVert: TopoDS_Vertex &
+	:type theVert: TopoDS_Vertex
 	:param toedge:
-	:type toedge: TopoDS_Edge &
+	:type toedge: TopoDS_Edge
 	:param fromedge:
-	:type fromedge: TopoDS_Edge &
+	:type fromedge: TopoDS_Edge
 	:rtype: TopoDS_Vertex") CopyNMVertex;
 		static TopoDS_Vertex CopyNMVertex (const TopoDS_Vertex & theVert,const TopoDS_Edge & toedge,const TopoDS_Edge & fromedge);
 
@@ -3612,11 +3612,11 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 		%feature("compactdefaultargs") CopyNMVertex;
 		%feature("autodoc", "* Make a copy of non-manifold vertex theVert (i.e. create new TVertex and replace PointRepresentations for this vertex from fromFace to toFace. Other representations were copied)
 	:param theVert:
-	:type theVert: TopoDS_Vertex &
+	:type theVert: TopoDS_Vertex
 	:param toFace:
-	:type toFace: TopoDS_Face &
+	:type toFace: TopoDS_Face
 	:param fromFace:
-	:type fromFace: TopoDS_Face &
+	:type fromFace: TopoDS_Face
 	:rtype: TopoDS_Vertex") CopyNMVertex;
 		static TopoDS_Vertex CopyNMVertex (const TopoDS_Vertex & theVert,const TopoDS_Face & toFace,const TopoDS_Face & fromFace);
 
@@ -3636,9 +3636,9 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: void") Init;
 		virtual void Init (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -3652,7 +3652,7 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Transfers parameters given by sequence Params from 3d curve to pcurve (if To2d is True) or back (if To2d is False)
 	:param Papams:
-	:type Papams: opencascade::handle<TColStd_HSequenceOfReal> &
+	:type Papams: TColStd_HSequenceOfReal
 	:param To2d:
 	:type To2d: bool
 	:rtype: opencascade::handle<TColStd_HSequenceOfReal>") Perform;
@@ -3677,9 +3677,9 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 		/****************** ShapeAnalysis_TransferParametersProj ******************/
 		%feature("compactdefaultargs") ShapeAnalysis_TransferParametersProj;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") ShapeAnalysis_TransferParametersProj;
 		 ShapeAnalysis_TransferParametersProj (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -3687,7 +3687,7 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 		%feature("compactdefaultargs") TransferRange;
 		%feature("autodoc", "* Recomputes range of curves from NewEdge. If Is2d equals True parameters are recomputed by curve2d else by curve3d.
 	:param newEdge:
-	:type newEdge: TopoDS_Edge &
+	:type newEdge: TopoDS_Edge
 	:param prevPar:
 	:type prevPar: float
 	:param currPar:

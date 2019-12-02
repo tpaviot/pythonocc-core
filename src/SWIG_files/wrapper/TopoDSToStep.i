@@ -127,11 +127,11 @@ class TopoDSToStep {
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "* Adds an entity into the list of results (binders) for shape stored in FinderProcess
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param entity:
-	:type entity: opencascade::handle<Standard_Transient> &
+	:type entity: Standard_Transient
 	:rtype: void") AddResult;
 		static void AddResult (const opencascade::handle<Transfer_FinderProcess> & FP,const TopoDS_Shape & Shape,const opencascade::handle<Standard_Transient> & entity);
 
@@ -139,9 +139,9 @@ class TopoDSToStep {
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "* Adds all entities recorded in Tool into the map of results (binders) stored in FinderProcess
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param Tool:
-	:type Tool: TopoDSToStep_Tool &
+	:type Tool: TopoDSToStep_Tool
 	:rtype: void") AddResult;
 		static void AddResult (const opencascade::handle<Transfer_FinderProcess> & FP,const TopoDSToStep_Tool & Tool);
 
@@ -198,7 +198,7 @@ class TopoDSToStep_FacetedTool {
 		/****************** CheckTopoDSShape ******************/
 		%feature("compactdefaultargs") CheckTopoDSShape;
 		%feature("autodoc", ":param SH:
-	:type SH: TopoDS_Shape &
+	:type SH: TopoDS_Shape
 	:rtype: TopoDSToStep_FacetedError") CheckTopoDSShape;
 		static TopoDSToStep_FacetedError CheckTopoDSShape (const TopoDS_Shape & SH);
 
@@ -253,9 +253,9 @@ class TopoDSToStep_Tool {
 		/****************** Bind ******************/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
-	:type T: opencascade::handle<StepShape_TopologicalRepresentationItem> &
+	:type T: StepShape_TopologicalRepresentationItem
 	:rtype: None") Bind;
 		void Bind (const TopoDS_Shape & S,const opencascade::handle<StepShape_TopologicalRepresentationItem> & T);
 
@@ -292,14 +292,14 @@ class TopoDSToStep_Tool {
 		/****************** Find ******************/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: opencascade::handle<StepShape_TopologicalRepresentationItem>") Find;
 		opencascade::handle<StepShape_TopologicalRepresentationItem> Find (const TopoDS_Shape & S);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param M:
-	:type M: MoniTool_DataMapOfShapeTransient &
+	:type M: MoniTool_DataMapOfShapeTransient
 	:param FacetedContext:
 	:type FacetedContext: bool
 	:rtype: None") Init;
@@ -308,7 +308,7 @@ class TopoDSToStep_Tool {
 		/****************** IsBound ******************/
 		%feature("compactdefaultargs") IsBound;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") IsBound;
 		Standard_Boolean IsBound (const TopoDS_Shape & S);
 
@@ -331,35 +331,35 @@ class TopoDSToStep_Tool {
 		/****************** SetCurrentEdge ******************/
 		%feature("compactdefaultargs") SetCurrentEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") SetCurrentEdge;
 		void SetCurrentEdge (const TopoDS_Edge & E);
 
 		/****************** SetCurrentFace ******************/
 		%feature("compactdefaultargs") SetCurrentFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") SetCurrentFace;
 		void SetCurrentFace (const TopoDS_Face & F);
 
 		/****************** SetCurrentShell ******************/
 		%feature("compactdefaultargs") SetCurrentShell;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:rtype: None") SetCurrentShell;
 		void SetCurrentShell (const TopoDS_Shell & S);
 
 		/****************** SetCurrentVertex ******************/
 		%feature("compactdefaultargs") SetCurrentVertex;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: None") SetCurrentVertex;
 		void SetCurrentVertex (const TopoDS_Vertex & V);
 
 		/****************** SetCurrentWire ******************/
 		%feature("compactdefaultargs") SetCurrentWire;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") SetCurrentWire;
 		void SetCurrentWire (const TopoDS_Wire & W);
 
@@ -383,7 +383,7 @@ class TopoDSToStep_Tool {
 		/****************** TopoDSToStep_Tool ******************/
 		%feature("compactdefaultargs") TopoDSToStep_Tool;
 		%feature("autodoc", ":param M:
-	:type M: MoniTool_DataMapOfShapeTransient &
+	:type M: MoniTool_DataMapOfShapeTransient
 	:param FacetedContext:
 	:type FacetedContext: bool
 	:rtype: None") TopoDSToStep_Tool;
@@ -412,11 +412,11 @@ class TopoDSToStep_Builder : public TopoDSToStep_Root {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -428,11 +428,11 @@ class TopoDSToStep_Builder : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_Builder ******************/
 		%feature("compactdefaultargs") TopoDSToStep_Builder;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_Builder;
 		 TopoDSToStep_Builder (const TopoDS_Shape & S,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -459,9 +459,9 @@ class TopoDSToStep_MakeBrepWithVoids : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeBrepWithVoids ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeBrepWithVoids;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Solid &
+	:type S: TopoDS_Solid
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeBrepWithVoids;
 		 TopoDSToStep_MakeBrepWithVoids (const TopoDS_Solid & S,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -488,18 +488,18 @@ class TopoDSToStep_MakeFacetedBrep : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeFacetedBrep ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeFacetedBrep;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeFacetedBrep;
 		 TopoDSToStep_MakeFacetedBrep (const TopoDS_Shell & S,const opencascade::handle<Transfer_FinderProcess> & FP);
 
 		/****************** TopoDSToStep_MakeFacetedBrep ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeFacetedBrep;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Solid &
+	:type S: TopoDS_Solid
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeFacetedBrep;
 		 TopoDSToStep_MakeFacetedBrep (const TopoDS_Solid & S,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -526,9 +526,9 @@ class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeFacetedBrepAndBrepWithVoids ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeFacetedBrepAndBrepWithVoids;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Solid &
+	:type S: TopoDS_Solid
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeFacetedBrepAndBrepWithVoids;
 		 TopoDSToStep_MakeFacetedBrepAndBrepWithVoids (const TopoDS_Solid & S,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -555,9 +555,9 @@ class TopoDSToStep_MakeGeometricCurveSet : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeGeometricCurveSet ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeGeometricCurveSet;
 		%feature("autodoc", ":param SH:
-	:type SH: TopoDS_Shape &
+	:type SH: TopoDS_Shape
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeGeometricCurveSet;
 		 TopoDSToStep_MakeGeometricCurveSet (const TopoDS_Shape & SH,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -584,18 +584,18 @@ class TopoDSToStep_MakeManifoldSolidBrep : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeManifoldSolidBrep ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeManifoldSolidBrep;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeManifoldSolidBrep;
 		 TopoDSToStep_MakeManifoldSolidBrep (const TopoDS_Shell & S,const opencascade::handle<Transfer_FinderProcess> & FP);
 
 		/****************** TopoDSToStep_MakeManifoldSolidBrep ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeManifoldSolidBrep;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Solid &
+	:type S: TopoDS_Solid
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeManifoldSolidBrep;
 		 TopoDSToStep_MakeManifoldSolidBrep (const TopoDS_Solid & S,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -622,27 +622,27 @@ class TopoDSToStep_MakeShellBasedSurfaceModel : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeShellBasedSurfaceModel ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeShellBasedSurfaceModel;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeShellBasedSurfaceModel;
 		 TopoDSToStep_MakeShellBasedSurfaceModel (const TopoDS_Face & F,const opencascade::handle<Transfer_FinderProcess> & FP);
 
 		/****************** TopoDSToStep_MakeShellBasedSurfaceModel ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeShellBasedSurfaceModel;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeShellBasedSurfaceModel;
 		 TopoDSToStep_MakeShellBasedSurfaceModel (const TopoDS_Shell & S,const opencascade::handle<Transfer_FinderProcess> & FP);
 
 		/****************** TopoDSToStep_MakeShellBasedSurfaceModel ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeShellBasedSurfaceModel;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Solid &
+	:type S: TopoDS_Solid
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeShellBasedSurfaceModel;
 		 TopoDSToStep_MakeShellBasedSurfaceModel (const TopoDS_Solid & S,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -674,11 +674,11 @@ class TopoDSToStep_MakeStepEdge : public TopoDSToStep_Root {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") Init;
 		void Init (const TopoDS_Edge & E,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -690,11 +690,11 @@ class TopoDSToStep_MakeStepEdge : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeStepEdge ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeStepEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeStepEdge;
 		 TopoDSToStep_MakeStepEdge (const TopoDS_Edge & E,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -726,11 +726,11 @@ class TopoDSToStep_MakeStepFace : public TopoDSToStep_Root {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") Init;
 		void Init (const TopoDS_Face & F,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -742,11 +742,11 @@ class TopoDSToStep_MakeStepFace : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeStepFace ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeStepFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeStepFace;
 		 TopoDSToStep_MakeStepFace (const TopoDS_Face & F,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -778,11 +778,11 @@ class TopoDSToStep_MakeStepVertex : public TopoDSToStep_Root {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") Init;
 		void Init (const TopoDS_Vertex & V,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -794,11 +794,11 @@ class TopoDSToStep_MakeStepVertex : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeStepVertex ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeStepVertex;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeStepVertex;
 		 TopoDSToStep_MakeStepVertex (const TopoDS_Vertex & V,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -830,11 +830,11 @@ class TopoDSToStep_MakeStepWire : public TopoDSToStep_Root {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") Init;
 		void Init (const TopoDS_Wire & W,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -846,11 +846,11 @@ class TopoDSToStep_MakeStepWire : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_MakeStepWire ******************/
 		%feature("compactdefaultargs") TopoDSToStep_MakeStepWire;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_MakeStepWire;
 		 TopoDSToStep_MakeStepWire (const TopoDS_Wire & W,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -883,13 +883,13 @@ class TopoDSToStep_WireframeBuilder : public TopoDSToStep_Root {
 		%feature("compactdefaultargs") GetTrimmedCurveFromEdge;
 		%feature("autodoc", "* Extraction of Trimmed Curves from TopoDS_Edge for the Creation of a GeometricallyBoundedWireframeRepresentation
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param M:
-	:type M: MoniTool_DataMapOfShapeTransient &
+	:type M: MoniTool_DataMapOfShapeTransient
 	:param L:
-	:type L: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type L: TColStd_HSequenceOfTransient
 	:rtype: bool") GetTrimmedCurveFromEdge;
 		Standard_Boolean GetTrimmedCurveFromEdge (const TopoDS_Edge & E,const TopoDS_Face & F,MoniTool_DataMapOfShapeTransient & M,opencascade::handle<TColStd_HSequenceOfTransient> & L);
 
@@ -897,11 +897,11 @@ class TopoDSToStep_WireframeBuilder : public TopoDSToStep_Root {
 		%feature("compactdefaultargs") GetTrimmedCurveFromFace;
 		%feature("autodoc", "* Extraction of Trimmed Curves from TopoDS_Face for the Creation of a GeometricallyBoundedWireframeRepresentation
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param M:
-	:type M: MoniTool_DataMapOfShapeTransient &
+	:type M: MoniTool_DataMapOfShapeTransient
 	:param L:
-	:type L: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type L: TColStd_HSequenceOfTransient
 	:rtype: bool") GetTrimmedCurveFromFace;
 		Standard_Boolean GetTrimmedCurveFromFace (const TopoDS_Face & F,MoniTool_DataMapOfShapeTransient & M,opencascade::handle<TColStd_HSequenceOfTransient> & L);
 
@@ -909,22 +909,22 @@ class TopoDSToStep_WireframeBuilder : public TopoDSToStep_Root {
 		%feature("compactdefaultargs") GetTrimmedCurveFromShape;
 		%feature("autodoc", "* Extraction of Trimmed Curves from any TopoDS_Shape for the Creation of a GeometricallyBoundedWireframeRepresentation
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param M:
-	:type M: MoniTool_DataMapOfShapeTransient &
+	:type M: MoniTool_DataMapOfShapeTransient
 	:param L:
-	:type L: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type L: TColStd_HSequenceOfTransient
 	:rtype: bool") GetTrimmedCurveFromShape;
 		Standard_Boolean GetTrimmedCurveFromShape (const TopoDS_Shape & S,MoniTool_DataMapOfShapeTransient & M,opencascade::handle<TColStd_HSequenceOfTransient> & L);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -936,11 +936,11 @@ class TopoDSToStep_WireframeBuilder : public TopoDSToStep_Root {
 		/****************** TopoDSToStep_WireframeBuilder ******************/
 		%feature("compactdefaultargs") TopoDSToStep_WireframeBuilder;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param T:
-	:type T: TopoDSToStep_Tool &
+	:type T: TopoDSToStep_Tool
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: None") TopoDSToStep_WireframeBuilder;
 		 TopoDSToStep_WireframeBuilder (const TopoDS_Shape & S,TopoDSToStep_Tool & T,const opencascade::handle<Transfer_FinderProcess> & FP);
 

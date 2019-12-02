@@ -148,9 +148,9 @@ class TopOpeBRepTool {
 		/****************** CorrectONUVISO ******************/
 		%feature("compactdefaultargs") CorrectONUVISO;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Fsp:
-	:type Fsp: TopoDS_Face &
+	:type Fsp: TopoDS_Face
 	:rtype: bool") CorrectONUVISO;
 		static Standard_Boolean CorrectONUVISO (const TopoDS_Face & F,TopoDS_Face & Fsp);
 
@@ -158,13 +158,13 @@ class TopOpeBRepTool {
 		%feature("compactdefaultargs") MakeFaces;
 		%feature("autodoc", "* Builds up the correct list of faces <LOFF> from <LOF>, using faulty shapes from map <MshNOK>. <LOF> is the list of <F>'s descendant faces. returns false if building fails
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param LOF:
-	:type LOF: TopTools_ListOfShape &
+	:type LOF: TopTools_ListOfShape
 	:param MshNOK:
-	:type MshNOK: TopTools_IndexedMapOfOrientedShape &
+	:type MshNOK: TopTools_IndexedMapOfOrientedShape
 	:param LOFF:
-	:type LOFF: TopTools_ListOfShape &
+	:type LOFF: TopTools_ListOfShape
 	:rtype: bool") MakeFaces;
 		static Standard_Boolean MakeFaces (const TopoDS_Face & F,const TopTools_ListOfShape & LOF,const TopTools_IndexedMapOfOrientedShape & MshNOK,TopTools_ListOfShape & LOFF);
 
@@ -174,7 +174,7 @@ class TopOpeBRepTool {
 	:param OCT:
 	:type OCT: TopOpeBRepTool_OutCurveType
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopOpeBRepTool_OutCurveType OCT,Standard_OStream & S);
 
@@ -182,26 +182,26 @@ class TopOpeBRepTool {
 		%feature("compactdefaultargs") PurgeClosingEdges;
 		%feature("autodoc", "* Fuse edges (in a wire) of a shape where we have useless vertex. In case face <FF> is built on UV-non-connexed wires (with the two closing edges FORWARD and REVERSED, in spite of one only), we find out the faulty edge, add the faulty shapes (edge,wire,face) to <MshNOK>. <FF> is a face descendant of <F>. <MWisOld>(wire) = 1 if wire is wire of <F> 0 wire results from <F>'s wire splitted. returns false if purge fails
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param FF:
-	:type FF: TopoDS_Face &
+	:type FF: TopoDS_Face
 	:param MWisOld:
-	:type MWisOld: TopTools_DataMapOfShapeInteger &
+	:type MWisOld: TopTools_DataMapOfShapeInteger
 	:param MshNOK:
-	:type MshNOK: TopTools_IndexedMapOfOrientedShape &
+	:type MshNOK: TopTools_IndexedMapOfOrientedShape
 	:rtype: bool") PurgeClosingEdges;
 		static Standard_Boolean PurgeClosingEdges (const TopoDS_Face & F,const TopoDS_Face & FF,const TopTools_DataMapOfShapeInteger & MWisOld,TopTools_IndexedMapOfOrientedShape & MshNOK);
 
 		/****************** PurgeClosingEdges ******************/
 		%feature("compactdefaultargs") PurgeClosingEdges;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param LOF:
-	:type LOF: TopTools_ListOfShape &
+	:type LOF: TopTools_ListOfShape
 	:param MWisOld:
-	:type MWisOld: TopTools_DataMapOfShapeInteger &
+	:type MWisOld: TopTools_DataMapOfShapeInteger
 	:param MshNOK:
-	:type MshNOK: TopTools_IndexedMapOfOrientedShape &
+	:type MshNOK: TopTools_IndexedMapOfOrientedShape
 	:rtype: bool") PurgeClosingEdges;
 		static Standard_Boolean PurgeClosingEdges (const TopoDS_Face & F,const TopTools_ListOfShape & LOF,const TopTools_DataMapOfShapeInteger & MWisOld,TopTools_IndexedMapOfOrientedShape & MshNOK);
 
@@ -209,11 +209,11 @@ class TopOpeBRepTool {
 		%feature("compactdefaultargs") Regularize;
 		%feature("autodoc", "* Returns <False> if the face is valid (the UV representation of the face is a set of pcurves connexed by points with connexity 2). Else, splits <aFace> in order to return a list of valid faces.
 	:param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param aListOfFaces:
-	:type aListOfFaces: TopTools_ListOfShape &
+	:type aListOfFaces: TopTools_ListOfShape
 	:param ESplits:
-	:type ESplits: TopTools_DataMapOfShapeListOfShape &
+	:type ESplits: TopTools_DataMapOfShapeListOfShape
 	:rtype: bool") Regularize;
 		static Standard_Boolean Regularize (const TopoDS_Face & aFace,TopTools_ListOfShape & aListOfFaces,TopTools_DataMapOfShapeListOfShape & ESplits);
 
@@ -221,11 +221,11 @@ class TopOpeBRepTool {
 		%feature("compactdefaultargs") RegularizeFace;
 		%feature("autodoc", "* Classify wire's splits of map <OldWiresnewWires> in order to compute <aListOfFaces>, the splits of <aFace>.
 	:param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param OldWiresnewWires:
-	:type OldWiresnewWires: TopTools_DataMapOfShapeListOfShape &
+	:type OldWiresnewWires: TopTools_DataMapOfShapeListOfShape
 	:param aListOfFaces:
-	:type aListOfFaces: TopTools_ListOfShape &
+	:type aListOfFaces: TopTools_ListOfShape
 	:rtype: bool") RegularizeFace;
 		static Standard_Boolean RegularizeFace (const TopoDS_Face & aFace,const TopTools_DataMapOfShapeListOfShape & OldWiresnewWires,TopTools_ListOfShape & aListOfFaces);
 
@@ -233,11 +233,11 @@ class TopOpeBRepTool {
 		%feature("compactdefaultargs") RegularizeShells;
 		%feature("autodoc", "* Returns <False> if the shell is valid (the solid is a set of faces connexed by edges with connexity 2). Else, splits faces of the shell; <OldFacesnewFaces> describes (face, splits of face).
 	:param aSolid:
-	:type aSolid: TopoDS_Solid &
+	:type aSolid: TopoDS_Solid
 	:param OldSheNewShe:
-	:type OldSheNewShe: TopTools_DataMapOfShapeListOfShape &
+	:type OldSheNewShe: TopTools_DataMapOfShapeListOfShape
 	:param FSplits:
-	:type FSplits: TopTools_DataMapOfShapeListOfShape &
+	:type FSplits: TopTools_DataMapOfShapeListOfShape
 	:rtype: bool") RegularizeShells;
 		static Standard_Boolean RegularizeShells (const TopoDS_Solid & aSolid,TopTools_DataMapOfShapeListOfShape & OldSheNewShe,TopTools_DataMapOfShapeListOfShape & FSplits);
 
@@ -245,11 +245,11 @@ class TopOpeBRepTool {
 		%feature("compactdefaultargs") RegularizeWires;
 		%feature("autodoc", "* Returns <False> if the face is valid (the UV representation of the face is a set of pcurves connexed by points with connexity 2). Else, splits wires of the face, these are boundaries of the new faces to build up; <OldWiresNewWires> describes (wire, splits of wire); <ESplits> describes (edge, edge's splits)
 	:param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param OldWiresNewWires:
-	:type OldWiresNewWires: TopTools_DataMapOfShapeListOfShape &
+	:type OldWiresNewWires: TopTools_DataMapOfShapeListOfShape
 	:param ESplits:
-	:type ESplits: TopTools_DataMapOfShapeListOfShape &
+	:type ESplits: TopTools_DataMapOfShapeListOfShape
 	:rtype: bool") RegularizeWires;
 		static Standard_Boolean RegularizeWires (const TopoDS_Face & aFace,TopTools_DataMapOfShapeListOfShape & OldWiresNewWires,TopTools_DataMapOfShapeListOfShape & ESplits);
 
@@ -271,13 +271,13 @@ class TopOpeBRepTool_AncestorsTool {
 		%feature("compactdefaultargs") MakeAncestors;
 		%feature("autodoc", "* same as package method TopExp::MapShapeListOfShapes()
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TS:
 	:type TS: TopAbs_ShapeEnum
 	:param TA:
 	:type TA: TopAbs_ShapeEnum
 	:param M:
-	:type M: TopTools_IndexedDataMapOfShapeListOfShape &
+	:type M: TopTools_IndexedDataMapOfShapeListOfShape
 	:rtype: void") MakeAncestors;
 		static void MakeAncestors (const TopoDS_Shape & S,const TopAbs_ShapeEnum TS,const TopAbs_ShapeEnum TA,TopTools_IndexedDataMapOfShapeListOfShape & M);
 
@@ -299,7 +299,7 @@ class TopOpeBRepTool_BoxSort {
 		/****************** AddBoxes ******************/
 		%feature("compactdefaultargs") AddBoxes;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TS:
 	:type TS: TopAbs_ShapeEnum
 	:param TA: default value is TopAbs_SHAPE
@@ -310,7 +310,7 @@ class TopOpeBRepTool_BoxSort {
 		/****************** AddBoxesMakeCOB ******************/
 		%feature("compactdefaultargs") AddBoxesMakeCOB;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TS:
 	:type TS: TopAbs_ShapeEnum
 	:param TA: default value is TopAbs_SHAPE
@@ -321,7 +321,7 @@ class TopOpeBRepTool_BoxSort {
 		/****************** Box ******************/
 		%feature("compactdefaultargs") Box;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: Bnd_Box") Box;
 		const Bnd_Box & Box (const TopoDS_Shape & S);
 
@@ -333,7 +333,7 @@ class TopOpeBRepTool_BoxSort {
 		/****************** Compare ******************/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TColStd_ListIteratorOfListOfInteger") Compare;
 		const TColStd_ListIteratorOfListOfInteger & Compare (const TopoDS_Shape & S);
 
@@ -357,7 +357,7 @@ class TopOpeBRepTool_BoxSort {
 		/****************** MakeCOB ******************/
 		%feature("compactdefaultargs") MakeCOB;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TS:
 	:type TS: TopAbs_ShapeEnum
 	:param TA: default value is TopAbs_SHAPE
@@ -368,7 +368,7 @@ class TopOpeBRepTool_BoxSort {
 		/****************** MakeHAB ******************/
 		%feature("compactdefaultargs") MakeHAB;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TS:
 	:type TS: TopAbs_ShapeEnum
 	:param TA: default value is TopAbs_SHAPE
@@ -379,16 +379,16 @@ class TopOpeBRepTool_BoxSort {
 		/****************** MakeHABCOB ******************/
 		%feature("compactdefaultargs") MakeHABCOB;
 		%feature("autodoc", ":param HAB:
-	:type HAB: opencascade::handle<Bnd_HArray1OfBox> &
+	:type HAB: Bnd_HArray1OfBox
 	:param COB:
-	:type COB: Bnd_Box &
+	:type COB: Bnd_Box
 	:rtype: void") MakeHABCOB;
 		static void MakeHABCOB (const opencascade::handle<Bnd_HArray1OfBox> & HAB,Bnd_Box & COB);
 
 		/****************** SetHBoxTool ******************/
 		%feature("compactdefaultargs") SetHBoxTool;
 		%feature("autodoc", ":param T:
-	:type T: opencascade::handle<TopOpeBRepTool_HBoxTool> &
+	:type T: TopOpeBRepTool_HBoxTool
 	:rtype: None") SetHBoxTool;
 		void SetHBoxTool (const opencascade::handle<TopOpeBRepTool_HBoxTool> & T);
 
@@ -400,14 +400,14 @@ class TopOpeBRepTool_BoxSort {
 		/****************** TopOpeBRepTool_BoxSort ******************/
 		%feature("compactdefaultargs") TopOpeBRepTool_BoxSort;
 		%feature("autodoc", ":param T:
-	:type T: opencascade::handle<TopOpeBRepTool_HBoxTool> &
+	:type T: TopOpeBRepTool_HBoxTool
 	:rtype: None") TopOpeBRepTool_BoxSort;
 		 TopOpeBRepTool_BoxSort (const opencascade::handle<TopOpeBRepTool_HBoxTool> & T);
 
 		/****************** TouchedShape ******************/
 		%feature("compactdefaultargs") TouchedShape;
 		%feature("autodoc", ":param I:
-	:type I: TColStd_ListIteratorOfListOfInteger &
+	:type I: TColStd_ListIteratorOfListOfInteger
 	:rtype: TopoDS_Shape") TouchedShape;
 		const TopoDS_Shape  TouchedShape (const TColStd_ListIteratorOfListOfInteger & I);
 
@@ -434,39 +434,39 @@ class TopOpeBRepTool_C2DF {
 		/****************** IsFace ******************/
 		%feature("compactdefaultargs") IsFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") IsFace;
 		Standard_Boolean IsFace (const TopoDS_Face & F);
 
 		/****************** IsPC ******************/
 		%feature("compactdefaultargs") IsPC;
 		%feature("autodoc", ":param PC:
-	:type PC: opencascade::handle<Geom2d_Curve> &
+	:type PC: Geom2d_Curve
 	:rtype: bool") IsPC;
 		Standard_Boolean IsPC (const opencascade::handle<Geom2d_Curve> & PC);
 
 		/****************** PC ******************/
 		%feature("compactdefaultargs") PC;
 		%feature("autodoc", ":param f2d:
-	:type f2d: float &
+	:type f2d: float
 	:param l2d:
-	:type l2d: float &
+	:type l2d: float
 	:param tol:
-	:type tol: float &
+	:type tol: float
 	:rtype: opencascade::handle<Geom2d_Curve>") PC;
 		const opencascade::handle<Geom2d_Curve> & PC (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** SetFace ******************/
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") SetFace;
 		void SetFace (const TopoDS_Face & F);
 
 		/****************** SetPC ******************/
 		%feature("compactdefaultargs") SetPC;
 		%feature("autodoc", ":param PC:
-	:type PC: opencascade::handle<Geom2d_Curve> &
+	:type PC: Geom2d_Curve
 	:param f2d:
 	:type f2d: float
 	:param l2d:
@@ -484,7 +484,7 @@ class TopOpeBRepTool_C2DF {
 		/****************** TopOpeBRepTool_C2DF ******************/
 		%feature("compactdefaultargs") TopOpeBRepTool_C2DF;
 		%feature("autodoc", ":param PC:
-	:type PC: opencascade::handle<Geom2d_Curve> &
+	:type PC: Geom2d_Curve
 	:param f2d:
 	:type f2d: float
 	:param l2d:
@@ -492,7 +492,7 @@ class TopOpeBRepTool_C2DF {
 	:param tol:
 	:type tol: float
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") TopOpeBRepTool_C2DF;
 		 TopOpeBRepTool_C2DF (const opencascade::handle<Geom2d_Curve> & PC,const Standard_Real f2d,const Standard_Real l2d,const Standard_Real tol,const TopoDS_Face & F);
 
@@ -514,16 +514,16 @@ class TopOpeBRepTool_CLASSI {
 		/****************** Add2d ******************/
 		%feature("compactdefaultargs") Add2d;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") Add2d;
 		Standard_Boolean Add2d (const TopoDS_Shape & S);
 
 		/****************** ClassiBnd2d ******************/
 		%feature("compactdefaultargs") ClassiBnd2d;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param tol:
 	:type tol: float
 	:param checklarge:
@@ -534,18 +534,18 @@ class TopOpeBRepTool_CLASSI {
 		/****************** Classilist ******************/
 		%feature("compactdefaultargs") Classilist;
 		%feature("autodoc", ":param lS:
-	:type lS: TopTools_ListOfShape &
+	:type lS: TopTools_ListOfShape
 	:param mapgreasma:
-	:type mapgreasma: TopTools_DataMapOfShapeListOfShape &
+	:type mapgreasma: TopTools_DataMapOfShapeListOfShape
 	:rtype: bool") Classilist;
 		Standard_Boolean Classilist (const TopTools_ListOfShape & lS,TopTools_DataMapOfShapeListOfShape & mapgreasma);
 
 		/****************** Classip2d ******************/
 		%feature("compactdefaultargs") Classip2d;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param stabnd2d12:
 	:type stabnd2d12: int
 	:rtype: int") Classip2d;
@@ -554,18 +554,18 @@ class TopOpeBRepTool_CLASSI {
 		/****************** GetBox2d ******************/
 		%feature("compactdefaultargs") GetBox2d;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Box2d:
-	:type Box2d: Bnd_Box2d &
+	:type Box2d: Bnd_Box2d
 	:rtype: bool") GetBox2d;
 		Standard_Boolean GetBox2d (const TopoDS_Shape & S,Bnd_Box2d & Box2d);
 
 		/****************** Getface ******************/
 		%feature("compactdefaultargs") Getface;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param fa:
-	:type fa: TopOpeBRepTool_face &
+	:type fa: TopOpeBRepTool_face
 	:rtype: bool") Getface;
 		Standard_Boolean Getface (const TopoDS_Shape & S,TopOpeBRepTool_face & fa);
 
@@ -577,7 +577,7 @@ class TopOpeBRepTool_CLASSI {
 		/****************** Init2d ******************/
 		%feature("compactdefaultargs") Init2d;
 		%feature("autodoc", ":param Fref:
-	:type Fref: TopoDS_Face &
+	:type Fref: TopoDS_Face
 	:rtype: None") Init2d;
 		void Init2d (const TopoDS_Face & Fref);
 
@@ -604,77 +604,77 @@ class TopOpeBRepTool_CORRISO {
 		/****************** AddNewConnexity ******************/
 		%feature("compactdefaultargs") AddNewConnexity;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: bool") AddNewConnexity;
 		Standard_Boolean AddNewConnexity (const TopoDS_Vertex & V,const TopoDS_Edge & E);
 
 		/****************** Connexity ******************/
 		%feature("compactdefaultargs") Connexity;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param Eds:
-	:type Eds: TopTools_ListOfShape &
+	:type Eds: TopTools_ListOfShape
 	:rtype: bool") Connexity;
 		Standard_Boolean Connexity (const TopoDS_Vertex & V,TopTools_ListOfShape & Eds);
 
 		/****************** EdgeOUTofBoundsUV ******************/
 		%feature("compactdefaultargs") EdgeOUTofBoundsUV;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param onU:
 	:type onU: bool
 	:param tolx:
 	:type tolx: float
 	:param parspE:
-	:type parspE: float &
+	:type parspE: float
 	:rtype: int") EdgeOUTofBoundsUV;
 		Standard_Integer EdgeOUTofBoundsUV (const TopoDS_Edge & E,const Standard_Boolean onU,const Standard_Real tolx,Standard_Real &OutValue);
 
 		/****************** EdgeWithFaultyUV ******************/
 		%feature("compactdefaultargs") EdgeWithFaultyUV;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param Ivfaulty:
-	:type Ivfaulty: int &
+	:type Ivfaulty: int
 	:rtype: bool") EdgeWithFaultyUV;
 		Standard_Boolean EdgeWithFaultyUV (const TopoDS_Edge & E,Standard_Integer &OutValue);
 
 		/****************** EdgeWithFaultyUV ******************/
 		%feature("compactdefaultargs") EdgeWithFaultyUV;
 		%feature("autodoc", ":param EdsToCheck:
-	:type EdsToCheck: TopTools_ListOfShape &
+	:type EdsToCheck: TopTools_ListOfShape
 	:param nfybounds:
 	:type nfybounds: int
 	:param fyE:
-	:type fyE: TopoDS_Shape &
+	:type fyE: TopoDS_Shape
 	:param Ifaulty:
-	:type Ifaulty: int &
+	:type Ifaulty: int
 	:rtype: bool") EdgeWithFaultyUV;
 		Standard_Boolean EdgeWithFaultyUV (const TopTools_ListOfShape & EdsToCheck,const Standard_Integer nfybounds,TopoDS_Shape & fyE,Standard_Integer &OutValue);
 
 		/****************** EdgesOUTofBoundsUV ******************/
 		%feature("compactdefaultargs") EdgesOUTofBoundsUV;
 		%feature("autodoc", ":param EdsToCheck:
-	:type EdsToCheck: TopTools_ListOfShape &
+	:type EdsToCheck: TopTools_ListOfShape
 	:param onU:
 	:type onU: bool
 	:param tolx:
 	:type tolx: float
 	:param FyEds:
-	:type FyEds: TopTools_DataMapOfOrientedShapeInteger &
+	:type FyEds: TopTools_DataMapOfOrientedShapeInteger
 	:rtype: bool") EdgesOUTofBoundsUV;
 		Standard_Boolean EdgesOUTofBoundsUV (const TopTools_ListOfShape & EdsToCheck,const Standard_Boolean onU,const Standard_Real tolx,TopTools_DataMapOfOrientedShapeInteger & FyEds);
 
 		/****************** EdgesWithFaultyUV ******************/
 		%feature("compactdefaultargs") EdgesWithFaultyUV;
 		%feature("autodoc", ":param EdsToCheck:
-	:type EdsToCheck: TopTools_ListOfShape &
+	:type EdsToCheck: TopTools_ListOfShape
 	:param nfybounds:
 	:type nfybounds: int
 	:param FyEds:
-	:type FyEds: TopTools_DataMapOfOrientedShapeInteger &
+	:type FyEds: TopTools_DataMapOfOrientedShapeInteger
 	:param stopatfirst: default value is Standard_False
 	:type stopatfirst: bool
 	:rtype: bool") EdgesWithFaultyUV;
@@ -698,23 +698,23 @@ class TopOpeBRepTool_CORRISO {
 		/****************** GetnewS ******************/
 		%feature("compactdefaultargs") GetnewS;
 		%feature("autodoc", ":param newS:
-	:type newS: TopoDS_Face &
+	:type newS: TopoDS_Face
 	:rtype: bool") GetnewS;
 		Standard_Boolean GetnewS (TopoDS_Face & newS);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") Init;
 		Standard_Boolean Init (const TopoDS_Shape & S);
 
 		/****************** PurgeFyClosingE ******************/
 		%feature("compactdefaultargs") PurgeFyClosingE;
 		%feature("autodoc", ":param ClEds:
-	:type ClEds: TopTools_ListOfShape &
+	:type ClEds: TopTools_ListOfShape
 	:param fyClEds:
-	:type fyClEds: TopTools_ListOfShape &
+	:type fyClEds: TopTools_ListOfShape
 	:rtype: bool") PurgeFyClosingE;
 		Standard_Boolean PurgeFyClosingE (const TopTools_ListOfShape & ClEds,TopTools_ListOfShape & fyClEds);
 
@@ -723,16 +723,16 @@ class TopOpeBRepTool_CORRISO {
 		%feature("autodoc", ":param x:
 	:type x: int
 	:param xperiod:
-	:type xperiod: float &
+	:type xperiod: float
 	:rtype: bool") Refclosed;
 		Standard_Boolean Refclosed (const Standard_Integer x,Standard_Real &OutValue);
 
 		/****************** RemoveOldConnexity ******************/
 		%feature("compactdefaultargs") RemoveOldConnexity;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: bool") RemoveOldConnexity;
 		Standard_Boolean RemoveOldConnexity (const TopoDS_Vertex & V,const TopoDS_Edge & E);
 
@@ -744,18 +744,18 @@ class TopOpeBRepTool_CORRISO {
 		/****************** SetConnexity ******************/
 		%feature("compactdefaultargs") SetConnexity;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param Eds:
-	:type Eds: TopTools_ListOfShape &
+	:type Eds: TopTools_ListOfShape
 	:rtype: bool") SetConnexity;
 		Standard_Boolean SetConnexity (const TopoDS_Vertex & V,const TopTools_ListOfShape & Eds);
 
 		/****************** SetUVRep ******************/
 		%feature("compactdefaultargs") SetUVRep;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C2DF:
-	:type C2DF: TopOpeBRepTool_C2DF &
+	:type C2DF: TopOpeBRepTool_C2DF
 	:rtype: bool") SetUVRep;
 		Standard_Boolean SetUVRep (const TopoDS_Edge & E,const TopOpeBRepTool_C2DF & C2DF);
 
@@ -776,7 +776,7 @@ class TopOpeBRepTool_CORRISO {
 		/****************** TopOpeBRepTool_CORRISO ******************/
 		%feature("compactdefaultargs") TopOpeBRepTool_CORRISO;
 		%feature("autodoc", ":param FRef:
-	:type FRef: TopoDS_Face &
+	:type FRef: TopoDS_Face
 	:rtype: None") TopOpeBRepTool_CORRISO;
 		 TopOpeBRepTool_CORRISO (const TopoDS_Face & FRef);
 
@@ -785,7 +785,7 @@ class TopOpeBRepTool_CORRISO {
 		%feature("autodoc", ":param onU:
 	:type onU: bool
 	:param FyEds:
-	:type FyEds: TopTools_DataMapOfOrientedShapeInteger &
+	:type FyEds: TopTools_DataMapOfOrientedShapeInteger
 	:rtype: bool") TrslUV;
 		Standard_Boolean TrslUV (const Standard_Boolean onU,const TopTools_DataMapOfOrientedShapeInteger & FyEds);
 
@@ -797,9 +797,9 @@ class TopOpeBRepTool_CORRISO {
 		/****************** UVRep ******************/
 		%feature("compactdefaultargs") UVRep;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C2DF:
-	:type C2DF: TopOpeBRepTool_C2DF &
+	:type C2DF: TopOpeBRepTool_C2DF
 	:rtype: bool") UVRep;
 		Standard_Boolean UVRep (const TopoDS_Edge & E,TopOpeBRepTool_C2DF & C2DF);
 
@@ -831,9 +831,9 @@ class TopOpeBRepTool_CurveTool {
 		/****************** IsProjectable ******************/
 		%feature("compactdefaultargs") IsProjectable;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: bool") IsProjectable;
 		static Standard_Boolean IsProjectable (const TopoDS_Shape & S,const opencascade::handle<Geom_Curve> & C);
 
@@ -859,36 +859,36 @@ class TopOpeBRepTool_CurveTool {
 	:param max:
 	:type max: float
 	:param C3D:
-	:type C3D: opencascade::handle<Geom_Curve> &
+	:type C3D: Geom_Curve
 	:param PC1:
-	:type PC1: opencascade::handle<Geom2d_Curve> &
+	:type PC1: Geom2d_Curve
 	:param PC2:
-	:type PC2: opencascade::handle<Geom2d_Curve> &
+	:type PC2: Geom2d_Curve
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param C3DN:
-	:type C3DN: opencascade::handle<Geom_Curve> &
+	:type C3DN: Geom_Curve
 	:param PC1N:
-	:type PC1N: opencascade::handle<Geom2d_Curve> &
+	:type PC1N: Geom2d_Curve
 	:param PC2N:
-	:type PC2N: opencascade::handle<Geom2d_Curve> &
+	:type PC2N: Geom2d_Curve
 	:param Tol3d:
-	:type Tol3d: float &
+	:type Tol3d: float
 	:param Tol2d:
-	:type Tol2d: float &
+	:type Tol2d: float
 	:rtype: bool") MakeCurves;
 		Standard_Boolean MakeCurves (const Standard_Real min,const Standard_Real max,const opencascade::handle<Geom_Curve> & C3D,const opencascade::handle<Geom2d_Curve> & PC1,const opencascade::handle<Geom2d_Curve> & PC2,const TopoDS_Shape & S1,const TopoDS_Shape & S2,opencascade::handle<Geom_Curve> & C3DN,opencascade::handle<Geom2d_Curve> & PC1N,opencascade::handle<Geom2d_Curve> & PC2N,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** MakePCurveOnFace ******************/
 		%feature("compactdefaultargs") MakePCurveOnFace;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param TolReached2d:
-	:type TolReached2d: float &
+	:type TolReached2d: float
 	:param first: default value is 0.0
 	:type first: float
 	:param last: default value is 0.0
@@ -899,7 +899,7 @@ class TopOpeBRepTool_CurveTool {
 		/****************** SetGeomTool ******************/
 		%feature("compactdefaultargs") SetGeomTool;
 		%feature("autodoc", ":param GT:
-	:type GT: TopOpeBRepTool_GeomTool &
+	:type GT: TopOpeBRepTool_GeomTool
 	:rtype: None") SetGeomTool;
 		void SetGeomTool (const TopOpeBRepTool_GeomTool & GT);
 
@@ -918,7 +918,7 @@ class TopOpeBRepTool_CurveTool {
 		/****************** TopOpeBRepTool_CurveTool ******************/
 		%feature("compactdefaultargs") TopOpeBRepTool_CurveTool;
 		%feature("autodoc", ":param GT:
-	:type GT: TopOpeBRepTool_GeomTool &
+	:type GT: TopOpeBRepTool_GeomTool
 	:rtype: None") TopOpeBRepTool_CurveTool;
 		 TopOpeBRepTool_CurveTool (const TopOpeBRepTool_GeomTool & GT);
 
@@ -941,7 +941,7 @@ class TopOpeBRepTool_FuseEdges {
 		%feature("compactdefaultargs") AvoidEdges;
 		%feature("autodoc", "* set edges to avoid being fused
 	:param theMapEdg:
-	:type theMapEdg: TopTools_IndexedMapOfShape &
+	:type theMapEdg: TopTools_IndexedMapOfShape
 	:rtype: None") AvoidEdges;
 		void AvoidEdges (const TopTools_IndexedMapOfShape & theMapEdg);
 
@@ -949,7 +949,7 @@ class TopOpeBRepTool_FuseEdges {
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "* returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.
 	:param theMapLstEdg:
-	:type theMapLstEdg: TopTools_DataMapOfIntegerListOfShape &
+	:type theMapLstEdg: TopTools_DataMapOfIntegerListOfShape
 	:rtype: None") Edges;
 		void Edges (TopTools_DataMapOfIntegerListOfShape & theMapLstEdg);
 
@@ -957,7 +957,7 @@ class TopOpeBRepTool_FuseEdges {
 		%feature("compactdefaultargs") Faces;
 		%feature("autodoc", "* returns the map of modified faces.
 	:param theMapFac:
-	:type theMapFac: TopTools_DataMapOfShapeShape &
+	:type theMapFac: TopTools_DataMapOfShapeShape
 	:rtype: None") Faces;
 		void Faces (TopTools_DataMapOfShapeShape & theMapFac);
 
@@ -977,7 +977,7 @@ class TopOpeBRepTool_FuseEdges {
 		%feature("compactdefaultargs") ResultEdges;
 		%feature("autodoc", "* returns all the fused edges. each integer entry in the map corresponds to the integer in the DataMapOfIntegerListOfShape we get in method Edges. That is to say, to the list of edges in theMapLstEdg(i) corresponds the resulting edge theMapEdge(i)
 	:param theMapEdg:
-	:type theMapEdg: TopTools_DataMapOfIntegerShape &
+	:type theMapEdg: TopTools_DataMapOfIntegerShape
 	:rtype: None") ResultEdges;
 		void ResultEdges (TopTools_DataMapOfIntegerShape & theMapEdg);
 
@@ -991,7 +991,7 @@ class TopOpeBRepTool_FuseEdges {
 		%feature("compactdefaultargs") TopOpeBRepTool_FuseEdges;
 		%feature("autodoc", "* Initialise members and build construction of map of ancestors.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param PerformNow: default value is Standard_False
 	:type PerformNow: bool
 	:rtype: None") TopOpeBRepTool_FuseEdges;
@@ -1050,7 +1050,7 @@ class TopOpeBRepTool_GeomTool {
 		/****************** Define ******************/
 		%feature("compactdefaultargs") Define;
 		%feature("autodoc", ":param GT:
-	:type GT: TopOpeBRepTool_GeomTool &
+	:type GT: TopOpeBRepTool_GeomTool
 	:rtype: None") Define;
 		void Define (const TopOpeBRepTool_GeomTool & GT);
 
@@ -1078,9 +1078,9 @@ class TopOpeBRepTool_GeomTool {
 		/****************** GetTolerances ******************/
 		%feature("compactdefaultargs") GetTolerances;
 		%feature("autodoc", ":param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") GetTolerances;
 		void GetTolerances (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1142,14 +1142,14 @@ class TopOpeBRepTool_HBoxTool : public Standard_Transient {
 		/****************** AddBox ******************/
 		%feature("compactdefaultargs") AddBox;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") AddBox;
 		void AddBox (const TopoDS_Shape & S);
 
 		/****************** AddBoxes ******************/
 		%feature("compactdefaultargs") AddBoxes;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TS:
 	:type TS: TopAbs_ShapeEnum
 	:param TA: default value is TopAbs_SHAPE
@@ -1160,7 +1160,7 @@ class TopOpeBRepTool_HBoxTool : public Standard_Transient {
 		/****************** Box ******************/
 		%feature("compactdefaultargs") Box;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: Bnd_Box") Box;
 		const Bnd_Box & Box (const TopoDS_Shape & S);
 
@@ -1184,25 +1184,25 @@ class TopOpeBRepTool_HBoxTool : public Standard_Transient {
 		/****************** ComputeBox ******************/
 		%feature("compactdefaultargs") ComputeBox;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param B:
-	:type B: Bnd_Box &
+	:type B: Bnd_Box
 	:rtype: void") ComputeBox;
 		static void ComputeBox (const TopoDS_Shape & S,Bnd_Box & B);
 
 		/****************** ComputeBoxOnVertices ******************/
 		%feature("compactdefaultargs") ComputeBoxOnVertices;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param B:
-	:type B: Bnd_Box &
+	:type B: Bnd_Box
 	:rtype: void") ComputeBoxOnVertices;
 		static void ComputeBoxOnVertices (const TopoDS_Shape & S,Bnd_Box & B);
 
 		/****************** DumpB ******************/
 		%feature("compactdefaultargs") DumpB;
 		%feature("autodoc", ":param B:
-	:type B: Bnd_Box &
+	:type B: Bnd_Box
 	:rtype: void") DumpB;
 		static void DumpB (const Bnd_Box & B);
 
@@ -1214,7 +1214,7 @@ class TopOpeBRepTool_HBoxTool : public Standard_Transient {
 		/****************** HasBox ******************/
 		%feature("compactdefaultargs") HasBox;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") HasBox;
 		Standard_Boolean HasBox (const TopoDS_Shape & S);
 
@@ -1226,7 +1226,7 @@ class TopOpeBRepTool_HBoxTool : public Standard_Transient {
 		/****************** Index ******************/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") Index;
 		Standard_Integer Index (const TopoDS_Shape & S);
 
@@ -1263,7 +1263,7 @@ class TopOpeBRepTool_PurgeInternalEdges {
 		%feature("compactdefaultargs") Faces;
 		%feature("autodoc", "* returns the list internal edges associated with the faces of the myShape. If PerformNow was False when created, then call the private Perform method that do the main job.
 	:param theMapFacLstEdg:
-	:type theMapFacLstEdg: TopTools_DataMapOfShapeListOfShape &
+	:type theMapFacLstEdg: TopTools_DataMapOfShapeListOfShape
 	:rtype: None") Faces;
 		void Faces (TopTools_DataMapOfShapeListOfShape & theMapFacLstEdg);
 
@@ -1295,7 +1295,7 @@ class TopOpeBRepTool_PurgeInternalEdges {
 		%feature("compactdefaultargs") TopOpeBRepTool_PurgeInternalEdges;
 		%feature("autodoc", "* Initialize members and begin exploration of shape depending of the value of PerformNow
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param PerformNow: default value is Standard_True
 	:type PerformNow: bool
 	:rtype: None") TopOpeBRepTool_PurgeInternalEdges;
@@ -1319,21 +1319,21 @@ class TopOpeBRepTool_REGUS {
 		/****************** GetFsplits ******************/
 		%feature("compactdefaultargs") GetFsplits;
 		%feature("autodoc", ":param Fsplits:
-	:type Fsplits: TopTools_DataMapOfShapeListOfShape &
+	:type Fsplits: TopTools_DataMapOfShapeListOfShape
 	:rtype: None") GetFsplits;
 		void GetFsplits (TopTools_DataMapOfShapeListOfShape & Fsplits);
 
 		/****************** GetOshNsh ******************/
 		%feature("compactdefaultargs") GetOshNsh;
 		%feature("autodoc", ":param OshNsh:
-	:type OshNsh: TopTools_DataMapOfShapeListOfShape &
+	:type OshNsh: TopTools_DataMapOfShapeListOfShape
 	:rtype: None") GetOshNsh;
 		void GetOshNsh (TopTools_DataMapOfShapeListOfShape & OshNsh);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -1350,11 +1350,11 @@ class TopOpeBRepTool_REGUS {
 		/****************** NearestF ******************/
 		%feature("compactdefaultargs") NearestF;
 		%feature("autodoc", ":param e:
-	:type e: TopoDS_Edge &
+	:type e: TopoDS_Edge
 	:param lof:
-	:type lof: TopTools_ListOfShape &
+	:type lof: TopTools_ListOfShape
 	:param ffound:
-	:type ffound: TopoDS_Face &
+	:type ffound: TopoDS_Face
 	:rtype: bool") NearestF;
 		Standard_Boolean NearestF (const TopoDS_Edge & e,const TopTools_ListOfShape & lof,TopoDS_Face & ffound);
 
@@ -1376,23 +1376,23 @@ class TopOpeBRepTool_REGUS {
 		/****************** SetFsplits ******************/
 		%feature("compactdefaultargs") SetFsplits;
 		%feature("autodoc", ":param Fsplits:
-	:type Fsplits: TopTools_DataMapOfShapeListOfShape &
+	:type Fsplits: TopTools_DataMapOfShapeListOfShape
 	:rtype: None") SetFsplits;
 		void SetFsplits (TopTools_DataMapOfShapeListOfShape & Fsplits);
 
 		/****************** SetOshNsh ******************/
 		%feature("compactdefaultargs") SetOshNsh;
 		%feature("autodoc", ":param OshNsh:
-	:type OshNsh: TopTools_DataMapOfShapeListOfShape &
+	:type OshNsh: TopTools_DataMapOfShapeListOfShape
 	:rtype: None") SetOshNsh;
 		void SetOshNsh (TopTools_DataMapOfShapeListOfShape & OshNsh);
 
 		/****************** SplitF ******************/
 		%feature("compactdefaultargs") SplitF;
 		%feature("autodoc", ":param Fanc:
-	:type Fanc: TopoDS_Face &
+	:type Fanc: TopoDS_Face
 	:param FSplits:
-	:type FSplits: TopTools_ListOfShape &
+	:type FSplits: TopTools_ListOfShape
 	:rtype: bool") SplitF;
 		static Standard_Boolean SplitF (const TopoDS_Face & Fanc,TopTools_ListOfShape & FSplits);
 
@@ -1409,11 +1409,11 @@ class TopOpeBRepTool_REGUS {
 		/****************** WireToFace ******************/
 		%feature("compactdefaultargs") WireToFace;
 		%feature("autodoc", ":param Fanc:
-	:type Fanc: TopoDS_Face &
+	:type Fanc: TopoDS_Face
 	:param nWs:
-	:type nWs: TopTools_ListOfShape &
+	:type nWs: TopTools_ListOfShape
 	:param nFs:
-	:type nFs: TopTools_ListOfShape &
+	:type nFs: TopTools_ListOfShape
 	:rtype: bool") WireToFace;
 		static Standard_Boolean WireToFace (const TopoDS_Face & Fanc,const TopTools_ListOfShape & nWs,TopTools_ListOfShape & nFs);
 
@@ -1435,20 +1435,20 @@ class TopOpeBRepTool_REGUW {
 		/****************** AddNewConnexity ******************/
 		%feature("compactdefaultargs") AddNewConnexity;
 		%feature("autodoc", ":param v:
-	:type v: TopoDS_Vertex &
+	:type v: TopoDS_Vertex
 	:param OriKey:
 	:type OriKey: int
 	:param e:
-	:type e: TopoDS_Edge &
+	:type e: TopoDS_Edge
 	:rtype: bool") AddNewConnexity;
 		Standard_Boolean AddNewConnexity (const TopoDS_Vertex & v,const Standard_Integer OriKey,const TopoDS_Edge & e);
 
 		/****************** Connexity ******************/
 		%feature("compactdefaultargs") Connexity;
 		%feature("autodoc", ":param v:
-	:type v: TopoDS_Vertex &
+	:type v: TopoDS_Vertex
 	:param co:
-	:type co: TopOpeBRepTool_connexity &
+	:type co: TopOpeBRepTool_connexity
 	:rtype: bool") Connexity;
 		Standard_Boolean Connexity (const TopoDS_Vertex & v,TopOpeBRepTool_connexity & co);
 
@@ -1460,21 +1460,21 @@ class TopOpeBRepTool_REGUW {
 		/****************** GetEsplits ******************/
 		%feature("compactdefaultargs") GetEsplits;
 		%feature("autodoc", ":param Esplits:
-	:type Esplits: TopTools_DataMapOfShapeListOfShape &
+	:type Esplits: TopTools_DataMapOfShapeListOfShape
 	:rtype: None") GetEsplits;
 		void GetEsplits (TopTools_DataMapOfShapeListOfShape & Esplits);
 
 		/****************** GetOwNw ******************/
 		%feature("compactdefaultargs") GetOwNw;
 		%feature("autodoc", ":param OwNw:
-	:type OwNw: TopTools_DataMapOfShapeListOfShape &
+	:type OwNw: TopTools_DataMapOfShapeListOfShape
 	:rtype: None") GetOwNw;
 		void GetOwNw (TopTools_DataMapOfShapeListOfShape & OwNw);
 
 		/****************** GetSplits ******************/
 		%feature("compactdefaultargs") GetSplits;
 		%feature("autodoc", ":param Splits:
-	:type Splits: TopTools_ListOfShape &
+	:type Splits: TopTools_ListOfShape
 	:rtype: bool") GetSplits;
 		Standard_Boolean GetSplits (TopTools_ListOfShape & Splits);
 
@@ -1486,7 +1486,7 @@ class TopOpeBRepTool_REGUW {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -1503,9 +1503,9 @@ class TopOpeBRepTool_REGUW {
 		/****************** NearestE ******************/
 		%feature("compactdefaultargs") NearestE;
 		%feature("autodoc", ":param loe:
-	:type loe: TopTools_ListOfShape &
+	:type loe: TopTools_ListOfShape
 	:param efound:
-	:type efound: TopoDS_Edge &
+	:type efound: TopoDS_Edge
 	:rtype: bool") NearestE;
 		Standard_Boolean NearestE (const TopTools_ListOfShape & loe,TopoDS_Edge & efound);
 
@@ -1519,9 +1519,9 @@ class TopOpeBRepTool_REGUW {
 		%feature("autodoc", ":param istep:
 	:type istep: int
 	:param Scur:
-	:type Scur: TopoDS_Shape &
+	:type Scur: TopoDS_Shape
 	:param Splits:
-	:type Splits: TopTools_ListOfShape &
+	:type Splits: TopTools_ListOfShape
 	:rtype: bool") REGU;
 		Standard_Boolean REGU (const Standard_Integer istep,const TopoDS_Shape & Scur,TopTools_ListOfShape & Splits);
 
@@ -1533,11 +1533,11 @@ class TopOpeBRepTool_REGUW {
 		/****************** RemoveOldConnexity ******************/
 		%feature("compactdefaultargs") RemoveOldConnexity;
 		%feature("autodoc", ":param v:
-	:type v: TopoDS_Vertex &
+	:type v: TopoDS_Vertex
 	:param OriKey:
 	:type OriKey: int
 	:param e:
-	:type e: TopoDS_Edge &
+	:type e: TopoDS_Edge
 	:rtype: bool") RemoveOldConnexity;
 		Standard_Boolean RemoveOldConnexity (const TopoDS_Vertex & v,const Standard_Integer OriKey,const TopoDS_Edge & e);
 
@@ -1549,14 +1549,14 @@ class TopOpeBRepTool_REGUW {
 		/****************** SetEsplits ******************/
 		%feature("compactdefaultargs") SetEsplits;
 		%feature("autodoc", ":param Esplits:
-	:type Esplits: TopTools_DataMapOfShapeListOfShape &
+	:type Esplits: TopTools_DataMapOfShapeListOfShape
 	:rtype: None") SetEsplits;
 		void SetEsplits (TopTools_DataMapOfShapeListOfShape & Esplits);
 
 		/****************** SetOwNw ******************/
 		%feature("compactdefaultargs") SetOwNw;
 		%feature("autodoc", ":param OwNw:
-	:type OwNw: TopTools_DataMapOfShapeListOfShape &
+	:type OwNw: TopTools_DataMapOfShapeListOfShape
 	:rtype: None") SetOwNw;
 		void SetOwNw (TopTools_DataMapOfShapeListOfShape & OwNw);
 
@@ -1568,14 +1568,14 @@ class TopOpeBRepTool_REGUW {
 		/****************** TopOpeBRepTool_REGUW ******************/
 		%feature("compactdefaultargs") TopOpeBRepTool_REGUW;
 		%feature("autodoc", ":param FRef:
-	:type FRef: TopoDS_Face &
+	:type FRef: TopoDS_Face
 	:rtype: None") TopOpeBRepTool_REGUW;
 		 TopOpeBRepTool_REGUW (const TopoDS_Face & FRef);
 
 		/****************** UpdateMultiple ******************/
 		%feature("compactdefaultargs") UpdateMultiple;
 		%feature("autodoc", ":param v:
-	:type v: TopoDS_Vertex &
+	:type v: TopoDS_Vertex
 	:rtype: bool") UpdateMultiple;
 		Standard_Boolean UpdateMultiple (const TopoDS_Vertex & v);
 
@@ -1641,7 +1641,7 @@ class TopOpeBRepTool_ShapeClassifier {
 		%feature("compactdefaultargs") SetReference;
 		%feature("autodoc", "* Set SRef as reference shape the next StateShapeReference(S,AvoidS) calls will classify S with SRef.
 	:param SRef:
-	:type SRef: TopoDS_Shape &
+	:type SRef: TopoDS_Shape
 	:rtype: None") SetReference;
 		void SetReference (const TopoDS_Shape & SRef);
 
@@ -1671,9 +1671,9 @@ class TopOpeBRepTool_ShapeClassifier {
 		%feature("compactdefaultargs") StateShapeReference;
 		%feature("autodoc", "* classify shape S compared with reference shape. AvoidS is not used in classification; AvoidS may be IsNull(). (usefull to avoid ON or UNKNOWN state in special cases)
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param AvoidS:
-	:type AvoidS: TopoDS_Shape &
+	:type AvoidS: TopoDS_Shape
 	:rtype: TopAbs_State") StateShapeReference;
 		TopAbs_State StateShapeReference (const TopoDS_Shape & S,const TopoDS_Shape & AvoidS);
 
@@ -1681,9 +1681,9 @@ class TopOpeBRepTool_ShapeClassifier {
 		%feature("compactdefaultargs") StateShapeReference;
 		%feature("autodoc", "* classify shape S compared with reference shape. LAvoidS is list of S subshapes to avoid in classification (usefull to avoid ON or UNKNOWN state in special cases)
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LAvoidS:
-	:type LAvoidS: TopTools_ListOfShape &
+	:type LAvoidS: TopTools_ListOfShape
 	:rtype: TopAbs_State") StateShapeReference;
 		TopAbs_State StateShapeReference (const TopoDS_Shape & S,const TopTools_ListOfShape & LAvoidS);
 
@@ -1691,9 +1691,9 @@ class TopOpeBRepTool_ShapeClassifier {
 		%feature("compactdefaultargs") StateShapeShape;
 		%feature("autodoc", "* classify shape S compared with shape SRef. samedomain = 0 : S1,S2 are not same domain samedomain = 1 : S1,S2 are same domain
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param SRef:
-	:type SRef: TopoDS_Shape &
+	:type SRef: TopoDS_Shape
 	:param samedomain: default value is 0
 	:type samedomain: int
 	:rtype: TopAbs_State") StateShapeShape;
@@ -1703,11 +1703,11 @@ class TopOpeBRepTool_ShapeClassifier {
 		%feature("compactdefaultargs") StateShapeShape;
 		%feature("autodoc", "* classify shape S compared with shape SRef. AvoidS is not used in classification; AvoidS may be IsNull(). (usefull to avoid ON or UNKNOWN state in special cases)
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param AvoidS:
-	:type AvoidS: TopoDS_Shape &
+	:type AvoidS: TopoDS_Shape
 	:param SRef:
-	:type SRef: TopoDS_Shape &
+	:type SRef: TopoDS_Shape
 	:rtype: TopAbs_State") StateShapeShape;
 		TopAbs_State StateShapeShape (const TopoDS_Shape & S,const TopoDS_Shape & AvoidS,const TopoDS_Shape & SRef);
 
@@ -1715,11 +1715,11 @@ class TopOpeBRepTool_ShapeClassifier {
 		%feature("compactdefaultargs") StateShapeShape;
 		%feature("autodoc", "* classify shape S compared with shape SRef. LAvoidS is list of S subshapes to avoid in classification AvoidS is not used in classification; AvoidS may be IsNull(). (usefull to avoid ON or UNKNOWN state in special cases)
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LAvoidS:
-	:type LAvoidS: TopTools_ListOfShape &
+	:type LAvoidS: TopTools_ListOfShape
 	:param SRef:
-	:type SRef: TopoDS_Shape &
+	:type SRef: TopoDS_Shape
 	:rtype: TopAbs_State") StateShapeShape;
 		TopAbs_State StateShapeShape (const TopoDS_Shape & S,const TopTools_ListOfShape & LAvoidS,const TopoDS_Shape & SRef);
 
@@ -1732,7 +1732,7 @@ class TopOpeBRepTool_ShapeClassifier {
 		%feature("compactdefaultargs") TopOpeBRepTool_ShapeClassifier;
 		%feature("autodoc", "* SRef is the reference shape. StateShapeShape(S) calls will classify S with SRef.
 	:param SRef:
-	:type SRef: TopoDS_Shape &
+	:type SRef: TopoDS_Shape
 	:rtype: None") TopOpeBRepTool_ShapeClassifier;
 		 TopOpeBRepTool_ShapeClassifier (const TopoDS_Shape & SRef);
 
@@ -1768,7 +1768,7 @@ class TopOpeBRepTool_ShapeExplorer : public TopExp_Explorer {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ToFind:
 	:type ToFind: TopAbs_ShapeEnum
 	:param ToAvoid: default value is TopAbs_SHAPE
@@ -1792,7 +1792,7 @@ class TopOpeBRepTool_ShapeExplorer : public TopExp_Explorer {
 		%feature("compactdefaultargs") TopOpeBRepTool_ShapeExplorer;
 		%feature("autodoc", "* Creates an Explorer on the Shape <S>. //! <ToFind> is the type of shapes to search. TopAbs_VERTEX, TopAbs_EDGE, ... //! <ToAvoid> is the type of shape to skip in the exploration. If <ToAvoid> is equal or less complex than <ToFind> or if <ToAVoid> is SHAPE it has no effect on the exploration.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ToFind:
 	:type ToFind: TopAbs_ShapeEnum
 	:param ToAvoid: default value is TopAbs_SHAPE
@@ -1818,39 +1818,39 @@ class TopOpeBRepTool_ShapeTool {
 		%feature("compactdefaultargs") AdjustOnPeriodic;
 		%feature("autodoc", "* ajust u,v values in UVBounds of the domain of the geometric shape <S>, according to Uperiodicity and VPeriodicity of the domain. <S> is assumed to be a face. u and/or v is/are not modified when the domain is not periodic in U and/or V .
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:rtype: void") AdjustOnPeriodic;
 		static void AdjustOnPeriodic (const TopoDS_Shape & S,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** BASISCURVE ******************/
 		%feature("compactdefaultargs") BASISCURVE;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: opencascade::handle<Geom_Curve>") BASISCURVE;
 		static opencascade::handle<Geom_Curve> BASISCURVE (const opencascade::handle<Geom_Curve> & C);
 
 		/****************** BASISCURVE ******************/
 		%feature("compactdefaultargs") BASISCURVE;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: opencascade::handle<Geom_Curve>") BASISCURVE;
 		static opencascade::handle<Geom_Curve> BASISCURVE (const TopoDS_Edge & E);
 
 		/****************** BASISSURFACE ******************/
 		%feature("compactdefaultargs") BASISSURFACE;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: opencascade::handle<Geom_Surface>") BASISSURFACE;
 		static opencascade::handle<Geom_Surface> BASISSURFACE (const opencascade::handle<Geom_Surface> & S);
 
 		/****************** BASISSURFACE ******************/
 		%feature("compactdefaultargs") BASISSURFACE;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: opencascade::handle<Geom_Surface>") BASISSURFACE;
 		static opencascade::handle<Geom_Surface> BASISSURFACE (const TopoDS_Face & F);
 
@@ -1858,18 +1858,18 @@ class TopOpeBRepTool_ShapeTool {
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "* indicates wheter shape S1 is a closing shape on S2 or not.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: bool") Closed;
 		static Standard_Boolean Closed (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
 		/****************** CurvesSameOriented ******************/
 		%feature("compactdefaultargs") CurvesSameOriented;
 		%feature("autodoc", ":param C1:
-	:type C1: BRepAdaptor_Curve &
+	:type C1: BRepAdaptor_Curve
 	:param C2:
-	:type C2: BRepAdaptor_Curve &
+	:type C2: BRepAdaptor_Curve
 	:rtype: bool") CurvesSameOriented;
 		static Standard_Boolean CurvesSameOriented (const BRepAdaptor_Curve & C1,const BRepAdaptor_Curve & C2);
 
@@ -1877,7 +1877,7 @@ class TopOpeBRepTool_ShapeTool {
 		%feature("compactdefaultargs") EdgeData;
 		%feature("autodoc", "* Compute tangent T, normal N, curvature C at point of parameter P on curve BRAC. Returns the tolerance indicating if T,N are null.
 	:param BRAC:
-	:type BRAC: BRepAdaptor_Curve &
+	:type BRAC: BRepAdaptor_Curve
 	:param P:
 	:type P: float
 	:param T:
@@ -1885,7 +1885,7 @@ class TopOpeBRepTool_ShapeTool {
 	:param N:
 	:type N: gp_Dir
 	:param C:
-	:type C: float &
+	:type C: float
 	:rtype: float") EdgeData;
 		static Standard_Real EdgeData (const BRepAdaptor_Curve & BRAC,const Standard_Real P,gp_Dir & T,gp_Dir & N,Standard_Real &OutValue);
 
@@ -1893,7 +1893,7 @@ class TopOpeBRepTool_ShapeTool {
 		%feature("compactdefaultargs") EdgeData;
 		%feature("autodoc", "* Same as previous on edge E.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param P:
 	:type P: float
 	:param T:
@@ -1901,25 +1901,25 @@ class TopOpeBRepTool_ShapeTool {
 	:param N:
 	:type N: gp_Dir
 	:param C:
-	:type C: float &
+	:type C: float
 	:rtype: float") EdgeData;
 		static Standard_Real EdgeData (const TopoDS_Shape & E,const Standard_Real P,gp_Dir & T,gp_Dir & N,Standard_Real &OutValue);
 
 		/****************** EdgesSameOriented ******************/
 		%feature("compactdefaultargs") EdgesSameOriented;
 		%feature("autodoc", ":param E1:
-	:type E1: TopoDS_Shape &
+	:type E1: TopoDS_Shape
 	:param E2:
-	:type E2: TopoDS_Shape &
+	:type E2: TopoDS_Shape
 	:rtype: bool") EdgesSameOriented;
 		static Standard_Boolean EdgesSameOriented (const TopoDS_Shape & E1,const TopoDS_Shape & E2);
 
 		/****************** FacesSameOriented ******************/
 		%feature("compactdefaultargs") FacesSameOriented;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param F2:
-	:type F2: TopoDS_Shape &
+	:type F2: TopoDS_Shape
 	:rtype: bool") FacesSameOriented;
 		static Standard_Boolean FacesSameOriented (const TopoDS_Shape & F1,const TopoDS_Shape & F2);
 
@@ -1928,9 +1928,9 @@ class TopOpeBRepTool_ShapeTool {
 		%feature("autodoc", ":param par:
 	:type par: float
 	:param EE:
-	:type EE: TopoDS_Shape &
+	:type EE: TopoDS_Shape
 	:param FF:
-	:type FF: TopoDS_Shape &
+	:type FF: TopoDS_Shape
 	:rtype: float") PeriodizeParameter;
 		static Standard_Real PeriodizeParameter (const Standard_Real par,const TopoDS_Shape & EE,const TopoDS_Shape & FF);
 
@@ -1938,14 +1938,14 @@ class TopOpeBRepTool_ShapeTool {
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "* Returns 3D point of vertex <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: gp_Pnt") Pnt;
 		static gp_Pnt Pnt (const TopoDS_Shape & S);
 
 		/****************** Resolution3d ******************/
 		%feature("compactdefaultargs") Resolution3d;
 		%feature("autodoc", ":param SU:
-	:type SU: opencascade::handle<Geom_Surface> &
+	:type SU: Geom_Surface
 	:param Tol2d:
 	:type Tol2d: float
 	:rtype: float") Resolution3d;
@@ -1954,7 +1954,7 @@ class TopOpeBRepTool_ShapeTool {
 		/****************** Resolution3d ******************/
 		%feature("compactdefaultargs") Resolution3d;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Tol2d:
 	:type Tol2d: float
 	:rtype: float") Resolution3d;
@@ -1963,7 +1963,7 @@ class TopOpeBRepTool_ShapeTool {
 		/****************** Resolution3dU ******************/
 		%feature("compactdefaultargs") Resolution3dU;
 		%feature("autodoc", ":param SU:
-	:type SU: opencascade::handle<Geom_Surface> &
+	:type SU: Geom_Surface
 	:param Tol2d:
 	:type Tol2d: float
 	:rtype: float") Resolution3dU;
@@ -1972,7 +1972,7 @@ class TopOpeBRepTool_ShapeTool {
 		/****************** Resolution3dV ******************/
 		%feature("compactdefaultargs") Resolution3dV;
 		%feature("autodoc", ":param SU:
-	:type SU: opencascade::handle<Geom_Surface> &
+	:type SU: Geom_Surface
 	:param Tol2d:
 	:type Tol2d: float
 	:rtype: float") Resolution3dV;
@@ -1981,18 +1981,18 @@ class TopOpeBRepTool_ShapeTool {
 		/****************** ShapesSameOriented ******************/
 		%feature("compactdefaultargs") ShapesSameOriented;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: bool") ShapesSameOriented;
 		static Standard_Boolean ShapesSameOriented (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
 		/****************** SurfacesSameOriented ******************/
 		%feature("compactdefaultargs") SurfacesSameOriented;
 		%feature("autodoc", ":param S1:
-	:type S1: BRepAdaptor_Surface &
+	:type S1: BRepAdaptor_Surface
 	:param S2:
-	:type S2: BRepAdaptor_Surface &
+	:type S2: BRepAdaptor_Surface
 	:rtype: bool") SurfacesSameOriented;
 		static Standard_Boolean SurfacesSameOriented (const BRepAdaptor_Surface & S1,const BRepAdaptor_Surface & S2);
 
@@ -2000,45 +2000,45 @@ class TopOpeBRepTool_ShapeTool {
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "* Returns the tolerance of the shape <S>. If the shape <S> is Null, returns 0.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: float") Tolerance;
 		static Standard_Real Tolerance (const TopoDS_Shape & S);
 
 		/****************** UVBOUNDS ******************/
 		%feature("compactdefaultargs") UVBOUNDS;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UPeri:
 	:type UPeri: bool
 	:param VPeri:
 	:type VPeri: bool
 	:param Umin:
-	:type Umin: float &
+	:type Umin: float
 	:param Umax:
-	:type Umax: float &
+	:type Umax: float
 	:param Vmin:
-	:type Vmin: float &
+	:type Vmin: float
 	:param Vmax:
-	:type Vmax: float &
+	:type Vmax: float
 	:rtype: void") UVBOUNDS;
 		static void UVBOUNDS (const opencascade::handle<Geom_Surface> & S,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** UVBOUNDS ******************/
 		%feature("compactdefaultargs") UVBOUNDS;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param UPeri:
 	:type UPeri: bool
 	:param VPeri:
 	:type VPeri: bool
 	:param Umin:
-	:type Umin: float &
+	:type Umin: float
 	:param Umax:
-	:type Umax: float &
+	:type Umax: float
 	:param Vmin:
-	:type Vmin: float &
+	:type Vmin: float
 	:param Vmax:
-	:type Vmax: float &
+	:type Vmax: float
 	:rtype: void") UVBOUNDS;
 		static void UVBOUNDS (const TopoDS_Face & F,Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2061,7 +2061,7 @@ class TopOpeBRepTool_SolidClassifier {
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "* compute the position of point <P> regarding with the geometric domain of the solid <S>.
 	:param S:
-	:type S: TopoDS_Solid &
+	:type S: TopoDS_Solid
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
@@ -2073,7 +2073,7 @@ class TopOpeBRepTool_SolidClassifier {
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "* compute the position of point <P> regarding with the geometric domain of the shell <S>.
 	:param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
@@ -2089,14 +2089,14 @@ class TopOpeBRepTool_SolidClassifier {
 		/****************** LoadShell ******************/
 		%feature("compactdefaultargs") LoadShell;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:rtype: None") LoadShell;
 		void LoadShell (const TopoDS_Shell & S);
 
 		/****************** LoadSolid ******************/
 		%feature("compactdefaultargs") LoadSolid;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Solid &
+	:type S: TopoDS_Solid
 	:rtype: None") LoadSolid;
 		void LoadSolid (const TopoDS_Solid & S);
 
@@ -2127,42 +2127,42 @@ class TopOpeBRepTool_TOOL {
 		/****************** ClosedE ******************/
 		%feature("compactdefaultargs") ClosedE;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param vclo:
-	:type vclo: TopoDS_Vertex &
+	:type vclo: TopoDS_Vertex
 	:rtype: bool") ClosedE;
 		static Standard_Boolean ClosedE (const TopoDS_Edge & E,TopoDS_Vertex & vclo);
 
 		/****************** ClosedS ******************/
 		%feature("compactdefaultargs") ClosedS;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") ClosedS;
 		static Standard_Boolean ClosedS (const TopoDS_Face & F);
 
 		/****************** CurvE ******************/
 		%feature("compactdefaultargs") CurvE;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param par:
 	:type par: float
 	:param tg0:
 	:type tg0: gp_Dir
 	:param Curv:
-	:type Curv: float &
+	:type Curv: float
 	:rtype: bool") CurvE;
 		static Standard_Boolean CurvE (const TopoDS_Edge & E,const Standard_Real par,const gp_Dir & tg0,Standard_Real &OutValue);
 
 		/****************** CurvF ******************/
 		%feature("compactdefaultargs") CurvF;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param uv:
 	:type uv: gp_Pnt2d
 	:param tg0:
 	:type tg0: gp_Dir
 	:param Curv:
-	:type Curv: float &
+	:type Curv: float
 	:param direct:
 	:type direct: bool
 	:rtype: bool") CurvF;
@@ -2173,11 +2173,11 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param par:
 	:type par: float
 	:param ed:
-	:type ed: TopoDS_Edge &
+	:type ed: TopoDS_Edge
 	:param uv:
 	:type uv: gp_Pnt2d
 	:param fa:
-	:type fa: TopoDS_Face &
+	:type fa: TopoDS_Face
 	:param isonfa:
 	:type isonfa: bool
 	:rtype: bool") EdgeONFace;
@@ -2186,7 +2186,7 @@ class TopOpeBRepTool_TOOL {
 		/****************** Getduv ******************/
 		%feature("compactdefaultargs") Getduv;
 		%feature("autodoc", ":param f:
-	:type f: TopoDS_Face &
+	:type f: TopoDS_Face
 	:param uv:
 	:type uv: gp_Pnt2d
 	:param dir:
@@ -2203,52 +2203,52 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param p:
 	:type p: gp_Pnt
 	:param f:
-	:type f: TopoDS_Face &
+	:type f: TopoDS_Face
 	:param uv:
 	:type uv: gp_Pnt2d
 	:param st:
-	:type st: TopAbs_State &
+	:type st: TopAbs_State
 	:rtype: bool") Getstp3dF;
 		static Standard_Boolean Getstp3dF (const gp_Pnt & p,const TopoDS_Face & f,gp_Pnt2d & uv,TopAbs_State & st);
 
 		/****************** IsClosingE ******************/
 		%feature("compactdefaultargs") IsClosingE;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") IsClosingE;
 		static Standard_Boolean IsClosingE (const TopoDS_Edge & E,const TopoDS_Face & F);
 
 		/****************** IsClosingE ******************/
 		%feature("compactdefaultargs") IsClosingE;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param W:
-	:type W: TopoDS_Shape &
+	:type W: TopoDS_Shape
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") IsClosingE;
 		static Standard_Boolean IsClosingE (const TopoDS_Edge & E,const TopoDS_Shape & W,const TopoDS_Face & F);
 
 		/****************** IsQuad ******************/
 		%feature("compactdefaultargs") IsQuad;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: bool") IsQuad;
 		static Standard_Boolean IsQuad (const TopoDS_Edge & E);
 
 		/****************** IsQuad ******************/
 		%feature("compactdefaultargs") IsQuad;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") IsQuad;
 		static Standard_Boolean IsQuad (const TopoDS_Face & F);
 
 		/****************** IsonCLO ******************/
 		%feature("compactdefaultargs") IsonCLO;
 		%feature("autodoc", ":param PC:
-	:type PC: opencascade::handle<Geom2d_Curve> &
+	:type PC: Geom2d_Curve
 	:param onU:
 	:type onU: bool
 	:param xfirst:
@@ -2263,7 +2263,7 @@ class TopOpeBRepTool_TOOL {
 		/****************** IsonCLO ******************/
 		%feature("compactdefaultargs") IsonCLO;
 		%feature("autodoc", ":param C2DF:
-	:type C2DF: TopOpeBRepTool_C2DF &
+	:type C2DF: TopOpeBRepTool_C2DF
 	:param onU:
 	:type onU: bool
 	:param xfirst:
@@ -2308,46 +2308,46 @@ class TopOpeBRepTool_TOOL {
 	:param tola:
 	:type tola: float
 	:param Ang:
-	:type Ang: float &
+	:type Ang: float
 	:rtype: bool") Matter;
 		static Standard_Boolean Matter (const gp_Dir & xx1,const gp_Dir & nt1,const gp_Dir & xx2,const gp_Dir & nt2,const Standard_Real tola,Standard_Real &OutValue);
 
 		/****************** Matter ******************/
 		%feature("compactdefaultargs") Matter;
 		%feature("autodoc", ":param f1:
-	:type f1: TopoDS_Face &
+	:type f1: TopoDS_Face
 	:param f2:
-	:type f2: TopoDS_Face &
+	:type f2: TopoDS_Face
 	:param e:
-	:type e: TopoDS_Edge &
+	:type e: TopoDS_Edge
 	:param pare:
 	:type pare: float
 	:param tola:
 	:type tola: float
 	:param Ang:
-	:type Ang: float &
+	:type Ang: float
 	:rtype: bool") Matter;
 		static Standard_Boolean Matter (const TopoDS_Face & f1,const TopoDS_Face & f2,const TopoDS_Edge & e,const Standard_Real pare,const Standard_Real tola,Standard_Real &OutValue);
 
 		/****************** MatterKPtg ******************/
 		%feature("compactdefaultargs") MatterKPtg;
 		%feature("autodoc", ":param f1:
-	:type f1: TopoDS_Face &
+	:type f1: TopoDS_Face
 	:param f2:
-	:type f2: TopoDS_Face &
+	:type f2: TopoDS_Face
 	:param e:
-	:type e: TopoDS_Edge &
+	:type e: TopoDS_Edge
 	:param Ang:
-	:type Ang: float &
+	:type Ang: float
 	:rtype: bool") MatterKPtg;
 		static Standard_Boolean MatterKPtg (const TopoDS_Face & f1,const TopoDS_Face & f2,const TopoDS_Edge & e,Standard_Real &OutValue);
 
 		/****************** MkShell ******************/
 		%feature("compactdefaultargs") MkShell;
 		%feature("autodoc", ":param lF:
-	:type lF: TopTools_ListOfShape &
+	:type lF: TopTools_ListOfShape
 	:param She:
-	:type She: TopoDS_Shape &
+	:type She: TopoDS_Shape
 	:rtype: void") MkShell;
 		static void MkShell (const TopTools_ListOfShape & lF,TopoDS_Shape & She);
 
@@ -2356,9 +2356,9 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param par:
 	:type par: float
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param tola:
 	:type tola: float
 	:param ngApp:
@@ -2371,7 +2371,7 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param uv:
 	:type uv: gp_Pnt2d
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param ng:
 	:type ng: gp_Vec
 	:rtype: bool") NggeomF;
@@ -2382,7 +2382,7 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param uv:
 	:type uv: gp_Pnt2d
 	:param f:
-	:type f: TopoDS_Face &
+	:type f: TopoDS_Face
 	:param normt:
 	:type normt: gp_Dir
 	:rtype: bool") Nt;
@@ -2393,16 +2393,16 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param par:
 	:type par: float
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: int") OnBoundary;
 		static Standard_Integer OnBoundary (const Standard_Real par,const TopoDS_Edge & E);
 
 		/****************** OriinSor ******************/
 		%feature("compactdefaultargs") OriinSor;
 		%feature("autodoc", ":param sub:
-	:type sub: TopoDS_Shape &
+	:type sub: TopoDS_Shape
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param checkclo: default value is Standard_False
 	:type checkclo: bool
 	:rtype: int") OriinSor;
@@ -2411,9 +2411,9 @@ class TopOpeBRepTool_TOOL {
 		/****************** OriinSorclosed ******************/
 		%feature("compactdefaultargs") OriinSorclosed;
 		%feature("autodoc", ":param sub:
-	:type sub: TopoDS_Shape &
+	:type sub: TopoDS_Shape
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") OriinSorclosed;
 		static Standard_Integer OriinSorclosed (const TopoDS_Shape & sub,const TopoDS_Shape & S);
 
@@ -2422,7 +2422,7 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param Iv:
 	:type Iv: int
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: float") ParE;
 		static Standard_Real ParE (const Standard_Integer Iv,const TopoDS_Edge & E);
 
@@ -2431,13 +2431,13 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param p2d:
 	:type p2d: gp_Pnt2d
 	:param e:
-	:type e: TopoDS_Edge &
+	:type e: TopoDS_Edge
 	:param f:
-	:type f: TopoDS_Face &
+	:type f: TopoDS_Face
 	:param par:
-	:type par: float &
+	:type par: float
 	:param dist:
-	:type dist: float &
+	:type dist: float
 	:rtype: bool") ParE2d;
 		static Standard_Boolean ParE2d (const gp_Pnt2d & p2d,const TopoDS_Edge & e,const TopoDS_Face & f,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2446,29 +2446,29 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param p2d:
 	:type p2d: gp_Pnt2d
 	:param e:
-	:type e: TopoDS_Edge &
+	:type e: TopoDS_Edge
 	:param f:
-	:type f: TopoDS_Face &
+	:type f: TopoDS_Face
 	:param pare:
-	:type pare: float &
+	:type pare: float
 	:rtype: bool") ParISO;
 		static Standard_Boolean ParISO (const gp_Pnt2d & p2d,const TopoDS_Edge & e,const TopoDS_Face & f,Standard_Real &OutValue);
 
 		/****************** Remove ******************/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", ":param loS:
-	:type loS: TopTools_ListOfShape &
+	:type loS: TopTools_ListOfShape
 	:param toremove:
-	:type toremove: TopoDS_Shape &
+	:type toremove: TopoDS_Shape
 	:rtype: bool") Remove;
 		static Standard_Boolean Remove (TopTools_ListOfShape & loS,const TopoDS_Shape & toremove);
 
 		/****************** SplitE ******************/
 		%feature("compactdefaultargs") SplitE;
 		%feature("autodoc", ":param Eanc:
-	:type Eanc: TopoDS_Edge &
+	:type Eanc: TopoDS_Edge
 	:param Splits:
-	:type Splits: TopTools_ListOfShape &
+	:type Splits: TopTools_ListOfShape
 	:rtype: bool") SplitE;
 		static Standard_Boolean SplitE (const TopoDS_Edge & Eanc,TopTools_ListOfShape & Splits);
 
@@ -2477,9 +2477,9 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param iv:
 	:type iv: int
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C2DF:
-	:type C2DF: TopOpeBRepTool_C2DF &
+	:type C2DF: TopOpeBRepTool_C2DF
 	:rtype: gp_Vec2d") Tg2d;
 		static gp_Vec2d Tg2d (const Standard_Integer iv,const TopoDS_Edge & E,const TopOpeBRepTool_C2DF & C2DF);
 
@@ -2488,9 +2488,9 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param iv:
 	:type iv: int
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C2DF:
-	:type C2DF: TopOpeBRepTool_C2DF &
+	:type C2DF: TopOpeBRepTool_C2DF
 	:param factor:
 	:type factor: float
 	:rtype: gp_Vec2d") Tg2dApp;
@@ -2499,13 +2499,13 @@ class TopOpeBRepTool_TOOL {
 		/****************** TgINSIDE ******************/
 		%feature("compactdefaultargs") TgINSIDE;
 		%feature("autodoc", ":param v:
-	:type v: TopoDS_Vertex &
+	:type v: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param Tg:
 	:type Tg: gp_Vec
 	:param OvinE:
-	:type OvinE: int &
+	:type OvinE: int
 	:rtype: bool") TgINSIDE;
 		static Standard_Boolean TgINSIDE (const TopoDS_Vertex & v,const TopoDS_Edge & E,gp_Vec & Tg,Standard_Integer &OutValue);
 
@@ -2514,7 +2514,7 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param par:
 	:type par: float
 	:param BC:
-	:type BC: BRepAdaptor_Curve &
+	:type BC: BRepAdaptor_Curve
 	:param Tg:
 	:type Tg: gp_Vec
 	:rtype: bool") TggeomE;
@@ -2525,7 +2525,7 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param par:
 	:type par: float
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param Tg:
 	:type Tg: gp_Vec
 	:rtype: bool") TggeomE;
@@ -2534,16 +2534,16 @@ class TopOpeBRepTool_TOOL {
 		/****************** TolP ******************/
 		%feature("compactdefaultargs") TolP;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: float") TolP;
 		static Standard_Real TolP (const TopoDS_Edge & E,const TopoDS_Face & F);
 
 		/****************** TolUV ******************/
 		%feature("compactdefaultargs") TolUV;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param tol3d:
 	:type tol3d: float
 	:rtype: float") TolUV;
@@ -2554,7 +2554,7 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param t2d:
 	:type t2d: gp_Vec2d
 	:param C2DF:
-	:type C2DF: TopOpeBRepTool_C2DF &
+	:type C2DF: TopOpeBRepTool_C2DF
 	:rtype: void") TrslUV;
 		static void TrslUV (const gp_Vec2d & t2d,TopOpeBRepTool_C2DF & C2DF);
 
@@ -2563,9 +2563,9 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param t2d:
 	:type t2d: gp_Vec2d
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: bool") TrslUVModifE;
 		static Standard_Boolean TrslUVModifE (const gp_Vec2d & t2d,const TopoDS_Face & F,TopoDS_Edge & E);
 
@@ -2574,14 +2574,14 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param par:
 	:type par: float
 	:param C2DF:
-	:type C2DF: TopOpeBRepTool_C2DF &
+	:type C2DF: TopOpeBRepTool_C2DF
 	:rtype: gp_Pnt2d") UVF;
 		static gp_Pnt2d UVF (const Standard_Real par,const TopOpeBRepTool_C2DF & C2DF);
 
 		/****************** UVISO ******************/
 		%feature("compactdefaultargs") UVISO;
 		%feature("autodoc", ":param PC:
-	:type PC: opencascade::handle<Geom2d_Curve> &
+	:type PC: Geom2d_Curve
 	:param isou:
 	:type isou: bool
 	:param isov:
@@ -2596,7 +2596,7 @@ class TopOpeBRepTool_TOOL {
 		/****************** UVISO ******************/
 		%feature("compactdefaultargs") UVISO;
 		%feature("autodoc", ":param C2DF:
-	:type C2DF: TopOpeBRepTool_C2DF &
+	:type C2DF: TopOpeBRepTool_C2DF
 	:param isou:
 	:type isou: bool
 	:param isov:
@@ -2611,9 +2611,9 @@ class TopOpeBRepTool_TOOL {
 		/****************** UVISO ******************/
 		%feature("compactdefaultargs") UVISO;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param isou:
 	:type isou: bool
 	:param isov:
@@ -2630,27 +2630,27 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param Iv:
 	:type Iv: int
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: TopoDS_Vertex") Vertex;
 		static TopoDS_Vertex Vertex (const Standard_Integer Iv,const TopoDS_Edge & E);
 
 		/****************** Vertices ******************/
 		%feature("compactdefaultargs") Vertices;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param Vces:
-	:type Vces: TopTools_Array1OfShape &
+	:type Vces: TopTools_Array1OfShape
 	:rtype: void") Vertices;
 		static void Vertices (const TopoDS_Edge & E,TopTools_Array1OfShape & Vces);
 
 		/****************** WireToFace ******************/
 		%feature("compactdefaultargs") WireToFace;
 		%feature("autodoc", ":param Fref:
-	:type Fref: TopoDS_Face &
+	:type Fref: TopoDS_Face
 	:param mapWlow:
-	:type mapWlow: TopTools_DataMapOfShapeListOfShape &
+	:type mapWlow: TopTools_DataMapOfShapeListOfShape
 	:param lFs:
-	:type lFs: TopTools_ListOfShape &
+	:type lFs: TopTools_ListOfShape
 	:rtype: bool") WireToFace;
 		static Standard_Boolean WireToFace (const TopoDS_Face & Fref,const TopTools_DataMapOfShapeListOfShape & mapWlow,TopTools_ListOfShape & lFs);
 
@@ -2659,11 +2659,11 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param uv:
 	:type uv: gp_Pnt2d
 	:param f:
-	:type f: TopoDS_Face &
+	:type f: TopoDS_Face
 	:param par:
 	:type par: float
 	:param e:
-	:type e: TopoDS_Edge &
+	:type e: TopoDS_Edge
 	:param xx:
 	:type xx: gp_Dir
 	:rtype: bool") XX;
@@ -2672,7 +2672,7 @@ class TopOpeBRepTool_TOOL {
 		/****************** minDUV ******************/
 		%feature("compactdefaultargs") minDUV;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: float") minDUV;
 		static Standard_Real minDUV (const TopoDS_Face & F);
 
@@ -2681,7 +2681,7 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param uv:
 	:type uv: gp_Pnt2d
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") outUVbounds;
 		static Standard_Boolean outUVbounds (const gp_Pnt2d & uv,const TopoDS_Face & F);
 
@@ -2690,11 +2690,11 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param uv:
 	:type uv: gp_Pnt2d
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param onU:
-	:type onU: int &
+	:type onU: int
 	:param onV:
-	:type onV: int &
+	:type onV: int
 	:rtype: void") stuvF;
 		static void stuvF (const gp_Pnt2d & uv,const TopoDS_Face & F,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2703,9 +2703,9 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param par:
 	:type par: float
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param tola:
 	:type tola: float
 	:param ng:
@@ -2718,9 +2718,9 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param par:
 	:type par: float
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: int") tryOriEinF;
 		static Standard_Integer tryOriEinF (const Standard_Real par,const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -2729,9 +2729,9 @@ class TopOpeBRepTool_TOOL {
 		%feature("autodoc", ":param iv:
 	:type iv: int
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C2DF:
-	:type C2DF: TopOpeBRepTool_C2DF &
+	:type C2DF: TopOpeBRepTool_C2DF
 	:param factor:
 	:type factor: float
 	:rtype: gp_Vec2d") tryTg2dApp;
@@ -2740,9 +2740,9 @@ class TopOpeBRepTool_TOOL {
 		/****************** uvApp ******************/
 		%feature("compactdefaultargs") uvApp;
 		%feature("autodoc", ":param f:
-	:type f: TopoDS_Face &
+	:type f: TopoDS_Face
 	:param e:
-	:type e: TopoDS_Edge &
+	:type e: TopoDS_Edge
 	:param par:
 	:type par: float
 	:param eps:
@@ -2772,7 +2772,7 @@ class TopOpeBRepTool_connexity {
 		%feature("autodoc", ":param OriKey:
 	:type OriKey: int
 	:param Item:
-	:type Item: TopTools_ListOfShape &
+	:type Item: TopTools_ListOfShape
 	:rtype: None") AddItem;
 		void AddItem (const Standard_Integer OriKey,const TopTools_ListOfShape & Item);
 
@@ -2781,14 +2781,14 @@ class TopOpeBRepTool_connexity {
 		%feature("autodoc", ":param OriKey:
 	:type OriKey: int
 	:param Item:
-	:type Item: TopoDS_Shape &
+	:type Item: TopoDS_Shape
 	:rtype: None") AddItem;
 		void AddItem (const Standard_Integer OriKey,const TopoDS_Shape & Item);
 
 		/****************** AllItems ******************/
 		%feature("compactdefaultargs") AllItems;
 		%feature("autodoc", ":param Item:
-	:type Item: TopTools_ListOfShape &
+	:type Item: TopTools_ListOfShape
 	:rtype: int") AllItems;
 		Standard_Integer AllItems (TopTools_ListOfShape & Item);
 
@@ -2807,7 +2807,7 @@ class TopOpeBRepTool_connexity {
 		/****************** IsInternal ******************/
 		%feature("compactdefaultargs") IsInternal;
 		%feature("autodoc", ":param Item:
-	:type Item: TopTools_ListOfShape &
+	:type Item: TopTools_ListOfShape
 	:rtype: int") IsInternal;
 		Standard_Integer IsInternal (TopTools_ListOfShape & Item);
 
@@ -2821,7 +2821,7 @@ class TopOpeBRepTool_connexity {
 		%feature("autodoc", ":param OriKey:
 	:type OriKey: int
 	:param Item:
-	:type Item: TopTools_ListOfShape &
+	:type Item: TopTools_ListOfShape
 	:rtype: int") Item;
 		Standard_Integer Item (const Standard_Integer OriKey,TopTools_ListOfShape & Item);
 
@@ -2835,21 +2835,21 @@ class TopOpeBRepTool_connexity {
 		%feature("autodoc", ":param OriKey:
 	:type OriKey: int
 	:param Item:
-	:type Item: TopoDS_Shape &
+	:type Item: TopoDS_Shape
 	:rtype: bool") RemoveItem;
 		Standard_Boolean RemoveItem (const Standard_Integer OriKey,const TopoDS_Shape & Item);
 
 		/****************** RemoveItem ******************/
 		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", ":param Item:
-	:type Item: TopoDS_Shape &
+	:type Item: TopoDS_Shape
 	:rtype: bool") RemoveItem;
 		Standard_Boolean RemoveItem (const TopoDS_Shape & Item);
 
 		/****************** SetKey ******************/
 		%feature("compactdefaultargs") SetKey;
 		%feature("autodoc", ":param Key:
-	:type Key: TopoDS_Shape &
+	:type Key: TopoDS_Shape
 	:rtype: None") SetKey;
 		void SetKey (const TopoDS_Shape & Key);
 
@@ -2861,7 +2861,7 @@ class TopOpeBRepTool_connexity {
 		/****************** TopOpeBRepTool_connexity ******************/
 		%feature("compactdefaultargs") TopOpeBRepTool_connexity;
 		%feature("autodoc", ":param Key:
-	:type Key: TopoDS_Shape &
+	:type Key: TopoDS_Shape
 	:rtype: None") TopOpeBRepTool_connexity;
 		 TopOpeBRepTool_connexity (const TopoDS_Shape & Key);
 
@@ -2893,9 +2893,9 @@ class TopOpeBRepTool_face {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Fref:
-	:type Fref: TopoDS_Face &
+	:type Fref: TopoDS_Face
 	:rtype: bool") Init;
 		Standard_Boolean Init (const TopoDS_Wire & W,const TopoDS_Face & Fref);
 
@@ -2947,7 +2947,7 @@ class TopOpeBRepTool_makeTransition {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param pbef:
 	:type pbef: float
 	:param paft:
@@ -2955,7 +2955,7 @@ class TopOpeBRepTool_makeTransition {
 	:param parE:
 	:type parE: float
 	:param FS:
-	:type FS: TopoDS_Face &
+	:type FS: TopoDS_Face
 	:param uv:
 	:type uv: gp_Pnt2d
 	:param factor:
@@ -2971,43 +2971,43 @@ class TopOpeBRepTool_makeTransition {
 		/****************** MkT2donE ******************/
 		%feature("compactdefaultargs") MkT2donE;
 		%feature("autodoc", ":param stb:
-	:type stb: TopAbs_State &
+	:type stb: TopAbs_State
 	:param sta:
-	:type sta: TopAbs_State &
+	:type sta: TopAbs_State
 	:rtype: bool") MkT2donE;
 		Standard_Boolean MkT2donE (TopAbs_State & stb,TopAbs_State & sta);
 
 		/****************** MkT3dproj ******************/
 		%feature("compactdefaultargs") MkT3dproj;
 		%feature("autodoc", ":param stb:
-	:type stb: TopAbs_State &
+	:type stb: TopAbs_State
 	:param sta:
-	:type sta: TopAbs_State &
+	:type sta: TopAbs_State
 	:rtype: bool") MkT3dproj;
 		Standard_Boolean MkT3dproj (TopAbs_State & stb,TopAbs_State & sta);
 
 		/****************** MkT3onE ******************/
 		%feature("compactdefaultargs") MkT3onE;
 		%feature("autodoc", ":param stb:
-	:type stb: TopAbs_State &
+	:type stb: TopAbs_State
 	:param sta:
-	:type sta: TopAbs_State &
+	:type sta: TopAbs_State
 	:rtype: bool") MkT3onE;
 		Standard_Boolean MkT3onE (TopAbs_State & stb,TopAbs_State & sta);
 
 		/****************** MkTonE ******************/
 		%feature("compactdefaultargs") MkTonE;
 		%feature("autodoc", ":param stb:
-	:type stb: TopAbs_State &
+	:type stb: TopAbs_State
 	:param sta:
-	:type sta: TopAbs_State &
+	:type sta: TopAbs_State
 	:rtype: bool") MkTonE;
 		Standard_Boolean MkTonE (TopAbs_State & stb,TopAbs_State & sta);
 
 		/****************** SetRest ******************/
 		%feature("compactdefaultargs") SetRest;
 		%feature("autodoc", ":param ES:
-	:type ES: TopoDS_Edge &
+	:type ES: TopoDS_Edge
 	:param parES:
 	:type parES: float
 	:rtype: bool") SetRest;

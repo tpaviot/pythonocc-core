@@ -93,9 +93,9 @@ class BinMDF {
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "* Adds the attribute storage drivers to <aDriverTable>.
 	:param aDriverTable:
-	:type aDriverTable: opencascade::handle<BinMDF_ADriverTable> &
+	:type aDriverTable: BinMDF_ADriverTable
 	:param aMsgDrv:
-	:type aMsgDrv: opencascade::handle<Message_Messenger> &
+	:type aMsgDrv: Message_Messenger
 	:rtype: void") AddDrivers;
 		static void AddDrivers (const opencascade::handle<BinMDF_ADriverTable> & aDriverTable,const opencascade::handle<Message_Messenger> & aMsgDrv);
 
@@ -124,11 +124,11 @@ class BinMDF_ADriver : public Standard_Transient {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* Translate the contents of <aSource> and put it into <aTarget>, using the relocation table <aRelocTable> to keep the sharings.
 	:param aSource:
-	:type aSource: BinObjMgt_Persistent &
+	:type aSource: BinObjMgt_Persistent
 	:param aTarget:
-	:type aTarget: opencascade::handle<TDF_Attribute> &
+	:type aTarget: TDF_Attribute
 	:param aRelocTable:
-	:type aRelocTable: BinObjMgt_RRelocationTable &
+	:type aRelocTable: BinObjMgt_RRelocationTable
 	:rtype: bool") Paste;
 		virtual Standard_Boolean Paste (const BinObjMgt_Persistent & aSource,const opencascade::handle<TDF_Attribute> & aTarget,BinObjMgt_RRelocationTable & aRelocTable);
 
@@ -136,11 +136,11 @@ class BinMDF_ADriver : public Standard_Transient {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* Translate the contents of <aSource> and put it into <aTarget>, using the relocation table <aRelocTable> to keep the sharings.
 	:param aSource:
-	:type aSource: opencascade::handle<TDF_Attribute> &
+	:type aSource: TDF_Attribute
 	:param aTarget:
-	:type aTarget: BinObjMgt_Persistent &
+	:type aTarget: BinObjMgt_Persistent
 	:param aRelocTable:
-	:type aRelocTable: BinObjMgt_SRelocationTable &
+	:type aRelocTable: BinObjMgt_SRelocationTable
 	:rtype: void") Paste;
 		virtual void Paste (const opencascade::handle<TDF_Attribute> & aSource,BinObjMgt_Persistent & aTarget,BinObjMgt_SRelocationTable & aRelocTable);
 
@@ -177,7 +177,7 @@ class BinMDF_ADriverTable : public Standard_Transient {
 		%feature("compactdefaultargs") AddDriver;
 		%feature("autodoc", "* Adds a translation driver <theDriver>.
 	:param theDriver:
-	:type theDriver: opencascade::handle<BinMDF_ADriver> &
+	:type theDriver: BinMDF_ADriver
 	:rtype: None") AddDriver;
 		void AddDriver (const opencascade::handle<BinMDF_ADriver> & theDriver);
 
@@ -185,7 +185,7 @@ class BinMDF_ADriverTable : public Standard_Transient {
 		%feature("compactdefaultargs") AssignIds;
 		%feature("autodoc", "* Assigns the IDs to the drivers of the given Types. It uses indices in the map as IDs. Useful in storage procedure.
 	:param theTypes:
-	:type theTypes: TColStd_IndexedMapOfTransient &
+	:type theTypes: TColStd_IndexedMapOfTransient
 	:rtype: None") AssignIds;
 		void AssignIds (const TColStd_IndexedMapOfTransient & theTypes);
 
@@ -193,7 +193,7 @@ class BinMDF_ADriverTable : public Standard_Transient {
 		%feature("compactdefaultargs") AssignIds;
 		%feature("autodoc", "* Assigns the IDs to the drivers of the given Type Names; It uses indices in the sequence as IDs. Useful in retrieval procedure.
 	:param theTypeNames:
-	:type theTypeNames: TColStd_SequenceOfAsciiString &
+	:type theTypeNames: TColStd_SequenceOfAsciiString
 	:rtype: None") AssignIds;
 		void AssignIds (const TColStd_SequenceOfAsciiString & theTypeNames);
 
@@ -207,9 +207,9 @@ class BinMDF_ADriverTable : public Standard_Transient {
 		%feature("compactdefaultargs") GetDriver;
 		%feature("autodoc", "* Gets a driver <theDriver> according to <theType>. Returns Type ID if the driver was assigned an ID; 0 otherwise.
 	:param theType:
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:param theDriver:
-	:type theDriver: opencascade::handle<BinMDF_ADriver> &
+	:type theDriver: BinMDF_ADriver
 	:rtype: int") GetDriver;
 		Standard_Integer GetDriver (const opencascade::handle<Standard_Type> & theType,opencascade::handle<BinMDF_ADriver> & theDriver);
 
@@ -241,7 +241,7 @@ class BinMDF_ReferenceDriver : public BinMDF_ADriver {
 		/****************** BinMDF_ReferenceDriver ******************/
 		%feature("compactdefaultargs") BinMDF_ReferenceDriver;
 		%feature("autodoc", ":param theMessageDriver:
-	:type theMessageDriver: opencascade::handle<Message_Messenger> &
+	:type theMessageDriver: Message_Messenger
 	:rtype: None") BinMDF_ReferenceDriver;
 		 BinMDF_ReferenceDriver (const opencascade::handle<Message_Messenger> & theMessageDriver);
 
@@ -253,22 +253,22 @@ class BinMDF_ReferenceDriver : public BinMDF_ADriver {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: BinObjMgt_Persistent &
+	:type Source: BinObjMgt_Persistent
 	:param Target:
-	:type Target: opencascade::handle<TDF_Attribute> &
+	:type Target: TDF_Attribute
 	:param RelocTable:
-	:type RelocTable: BinObjMgt_RRelocationTable &
+	:type RelocTable: BinObjMgt_RRelocationTable
 	:rtype: bool") Paste;
 		virtual Standard_Boolean Paste (const BinObjMgt_Persistent & Source,const opencascade::handle<TDF_Attribute> & Target,BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: opencascade::handle<TDF_Attribute> &
+	:type Source: TDF_Attribute
 	:param Target:
-	:type Target: BinObjMgt_Persistent &
+	:type Target: BinObjMgt_Persistent
 	:param RelocTable:
-	:type RelocTable: BinObjMgt_SRelocationTable &
+	:type RelocTable: BinObjMgt_SRelocationTable
 	:rtype: void") Paste;
 		virtual void Paste (const opencascade::handle<TDF_Attribute> & Source,BinObjMgt_Persistent & Target,BinObjMgt_SRelocationTable & RelocTable);
 
@@ -292,7 +292,7 @@ class BinMDF_TagSourceDriver : public BinMDF_ADriver {
 		/****************** BinMDF_TagSourceDriver ******************/
 		%feature("compactdefaultargs") BinMDF_TagSourceDriver;
 		%feature("autodoc", ":param theMessageDriver:
-	:type theMessageDriver: opencascade::handle<Message_Messenger> &
+	:type theMessageDriver: Message_Messenger
 	:rtype: None") BinMDF_TagSourceDriver;
 		 BinMDF_TagSourceDriver (const opencascade::handle<Message_Messenger> & theMessageDriver);
 
@@ -304,22 +304,22 @@ class BinMDF_TagSourceDriver : public BinMDF_ADriver {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: BinObjMgt_Persistent &
+	:type Source: BinObjMgt_Persistent
 	:param Target:
-	:type Target: opencascade::handle<TDF_Attribute> &
+	:type Target: TDF_Attribute
 	:param RelocTable:
-	:type RelocTable: BinObjMgt_RRelocationTable &
+	:type RelocTable: BinObjMgt_RRelocationTable
 	:rtype: bool") Paste;
 		Standard_Boolean Paste (const BinObjMgt_Persistent & Source,const opencascade::handle<TDF_Attribute> & Target,BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: opencascade::handle<TDF_Attribute> &
+	:type Source: TDF_Attribute
 	:param Target:
-	:type Target: BinObjMgt_Persistent &
+	:type Target: BinObjMgt_Persistent
 	:param RelocTable:
-	:type RelocTable: BinObjMgt_SRelocationTable &
+	:type RelocTable: BinObjMgt_SRelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Source,BinObjMgt_Persistent & Target,BinObjMgt_SRelocationTable & RelocTable);
 

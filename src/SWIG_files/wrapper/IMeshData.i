@@ -199,7 +199,7 @@ class IMeshData_Shape : public Standard_Transient {
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "* Assigns shape to discrete shape.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: inline void") SetShape;
 		inline void SetShape (const TopoDS_Shape & theShape);
 
@@ -335,7 +335,7 @@ class IMeshData_Model : public IMeshData_Shape {
 		%feature("compactdefaultargs") AddEdge;
 		%feature("autodoc", "* Adds new edge to shape model.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: IMeshData::IEdgeHandle") AddEdge;
 		virtual const IMeshData::IEdgeHandle & AddEdge (const TopoDS_Edge & theEdge);
 
@@ -343,7 +343,7 @@ class IMeshData_Model : public IMeshData_Shape {
 		%feature("compactdefaultargs") AddFace;
 		%feature("autodoc", "* Adds new face to shape model.
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: IMeshData::IFaceHandle") AddFace;
 		virtual const IMeshData::IFaceHandle & AddFace (const TopoDS_Face & theFace);
 
@@ -520,7 +520,7 @@ class IMeshData_Edge : public IMeshData_TessellatedShape, public IMeshData_Statu
 		%feature("compactdefaultargs") AddPCurve;
 		%feature("autodoc", "* Adds discrete pcurve for the specifed discrete face.
 	:param theDFace:
-	:type theDFace: IMeshData::IFacePtr &
+	:type theDFace: IMeshData::IFacePtr
 	:param theOrientation:
 	:type theOrientation: TopAbs_Orientation
 	:rtype: IMeshData::IPCurveHandle") AddPCurve;
@@ -562,7 +562,7 @@ class IMeshData_Edge : public IMeshData_TessellatedShape, public IMeshData_Statu
 		%feature("compactdefaultargs") GetPCurve;
 		%feature("autodoc", "* Returns pcurve for the specified discrete face.
 	:param theDFace:
-	:type theDFace: IMeshData::IFacePtr &
+	:type theDFace: IMeshData::IFacePtr
 	:param theOrientation:
 	:type theOrientation: TopAbs_Orientation
 	:rtype: IMeshData::IPCurveHandle") GetPCurve;
@@ -612,7 +612,7 @@ class IMeshData_Edge : public IMeshData_TessellatedShape, public IMeshData_Statu
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "* Sets 3d curve associated with current edge.
 	:param theCurve:
-	:type theCurve: IMeshData::ICurveHandle &
+	:type theCurve: IMeshData::ICurveHandle
 	:rtype: inline void") SetCurve;
 		inline void SetCurve (const IMeshData::ICurveHandle & theCurve);
 
@@ -661,7 +661,7 @@ class IMeshData_Face : public IMeshData_TessellatedShape, public IMeshData_Statu
 		%feature("compactdefaultargs") AddWire;
 		%feature("autodoc", "* Adds wire to discrete model of face.
 	:param theWire:
-	:type theWire: TopoDS_Wire &
+	:type theWire: TopoDS_Wire
 	:param theEdgeNb: default value is 0
 	:type theEdgeNb: int
 	:rtype: IMeshData::IWireHandle") AddWire;
@@ -720,7 +720,7 @@ class IMeshData_Wire : public IMeshData_TessellatedShape, public IMeshData_Statu
 		%feature("compactdefaultargs") AddEdge;
 		%feature("autodoc", "* Adds new discrete edge with specified orientation to wire chain. returns index of added edge in wire chain.
 	:param theDEdge:
-	:type theDEdge: IMeshData::IEdgePtr &
+	:type theDEdge: IMeshData::IEdgePtr
 	:param theOrientation:
 	:type theOrientation: TopAbs_Orientation
 	:rtype: int") AddEdge;

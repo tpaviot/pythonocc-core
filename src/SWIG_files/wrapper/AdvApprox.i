@@ -84,11 +84,11 @@ class AdvApprox_ApproxAFunction {
 	:param Num3DSS:
 	:type Num3DSS: int
 	:param OneDTol:
-	:type OneDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type OneDTol: TColStd_HArray1OfReal
 	:param TwoDTol:
-	:type TwoDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type TwoDTol: TColStd_HArray1OfReal
 	:param ThreeDTol:
-	:type ThreeDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type ThreeDTol: TColStd_HArray1OfReal
 	:param First:
 	:type First: float
 	:param Last:
@@ -100,7 +100,7 @@ class AdvApprox_ApproxAFunction {
 	:param MaxSeg:
 	:type MaxSeg: int
 	:param Func:
-	:type Func: AdvApprox_EvaluatorFunction &
+	:type Func: AdvApprox_EvaluatorFunction
 	:rtype: None") AdvApprox_ApproxAFunction;
 		 AdvApprox_ApproxAFunction (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const opencascade::handle<TColStd_HArray1OfReal> & OneDTol,const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol,const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol,const Standard_Real First,const Standard_Real Last,const GeomAbs_Shape Continuity,const Standard_Integer MaxDeg,const Standard_Integer MaxSeg,const AdvApprox_EvaluatorFunction & Func);
 
@@ -114,11 +114,11 @@ class AdvApprox_ApproxAFunction {
 	:param Num3DSS:
 	:type Num3DSS: int
 	:param OneDTol:
-	:type OneDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type OneDTol: TColStd_HArray1OfReal
 	:param TwoDTol:
-	:type TwoDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type TwoDTol: TColStd_HArray1OfReal
 	:param ThreeDTol:
-	:type ThreeDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type ThreeDTol: TColStd_HArray1OfReal
 	:param First:
 	:type First: float
 	:param Last:
@@ -130,9 +130,9 @@ class AdvApprox_ApproxAFunction {
 	:param MaxSeg:
 	:type MaxSeg: int
 	:param Func:
-	:type Func: AdvApprox_EvaluatorFunction &
+	:type Func: AdvApprox_EvaluatorFunction
 	:param CutTool:
-	:type CutTool: AdvApprox_Cutting &
+	:type CutTool: AdvApprox_Cutting
 	:rtype: None") AdvApprox_ApproxAFunction;
 		 AdvApprox_ApproxAFunction (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const opencascade::handle<TColStd_HArray1OfReal> & OneDTol,const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol,const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol,const Standard_Real First,const Standard_Real Last,const GeomAbs_Shape Continuity,const Standard_Integer MaxDeg,const Standard_Integer MaxSeg,const AdvApprox_EvaluatorFunction & Func,const AdvApprox_Cutting & CutTool);
 
@@ -143,15 +143,15 @@ class AdvApprox_ApproxAFunction {
 	:param TotalNumSS:
 	:type TotalNumSS: int
 	:param LocalDimension:
-	:type LocalDimension: TColStd_Array1OfInteger &
+	:type LocalDimension: TColStd_Array1OfInteger
 	:param First:
 	:type First: float
 	:param Last:
 	:type Last: float
 	:param Evaluator:
-	:type Evaluator: AdvApprox_EvaluatorFunction &
+	:type Evaluator: AdvApprox_EvaluatorFunction
 	:param CutTool:
-	:type CutTool: AdvApprox_Cutting &
+	:type CutTool: AdvApprox_Cutting
 	:param ContinuityOrder:
 	:type ContinuityOrder: int
 	:param NumMaxCoeffs:
@@ -159,23 +159,23 @@ class AdvApprox_ApproxAFunction {
 	:param MaxSegments:
 	:type MaxSegments: int
 	:param TolerancesArray:
-	:type TolerancesArray: TColStd_Array1OfReal &
+	:type TolerancesArray: TColStd_Array1OfReal
 	:param code_precis:
 	:type code_precis: int
 	:param NumCurves:
-	:type NumCurves: int &
+	:type NumCurves: int
 	:param NumCoeffPerCurveArray:
-	:type NumCoeffPerCurveArray: TColStd_Array1OfInteger &
+	:type NumCoeffPerCurveArray: TColStd_Array1OfInteger
 	:param LocalCoefficientArray:
-	:type LocalCoefficientArray: TColStd_Array1OfReal &
+	:type LocalCoefficientArray: TColStd_Array1OfReal
 	:param IntervalsArray:
-	:type IntervalsArray: TColStd_Array1OfReal &
+	:type IntervalsArray: TColStd_Array1OfReal
 	:param ErrorMaxArray:
-	:type ErrorMaxArray: TColStd_Array1OfReal &
+	:type ErrorMaxArray: TColStd_Array1OfReal
 	:param AverageErrorArray:
-	:type AverageErrorArray: TColStd_Array1OfReal &
+	:type AverageErrorArray: TColStd_Array1OfReal
 	:param ErrorCode:
-	:type ErrorCode: int &
+	:type ErrorCode: int
 	:rtype: void") Approximation;
 		static void Approximation (const Standard_Integer TotalDimension,const Standard_Integer TotalNumSS,const TColStd_Array1OfInteger & LocalDimension,const Standard_Real First,const Standard_Real Last,AdvApprox_EvaluatorFunction & Evaluator,const AdvApprox_Cutting & CutTool,const Standard_Integer ContinuityOrder,const Standard_Integer NumMaxCoeffs,const Standard_Integer MaxSegments,const TColStd_Array1OfReal & TolerancesArray,const Standard_Integer code_precis,Standard_Integer &OutValue,TColStd_Array1OfInteger & NumCoeffPerCurveArray,TColStd_Array1OfReal & LocalCoefficientArray,TColStd_Array1OfReal & IntervalsArray,TColStd_Array1OfReal & ErrorMaxArray,TColStd_Array1OfReal & AverageErrorArray,Standard_Integer &OutValue);
 
@@ -292,7 +292,7 @@ class AdvApprox_ApproxAFunction {
 	:param Index:
 	:type Index: int
 	:param P:
-	:type P: TColStd_Array1OfReal &
+	:type P: TColStd_Array1OfReal
 	:rtype: None") Poles1d;
 		void Poles1d (const Standard_Integer Index,TColStd_Array1OfReal & P);
 
@@ -334,7 +334,7 @@ class AdvApprox_Cutting {
 	:param b:
 	:type b: float
 	:param cuttingvalue:
-	:type cuttingvalue: float &
+	:type cuttingvalue: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const Standard_Real a,const Standard_Real b,Standard_Real &OutValue);
 
@@ -369,9 +369,9 @@ class AdvApprox_SimpleApprox {
 	:param NbGaussPoints:
 	:type NbGaussPoints: int
 	:param JacobiBase:
-	:type JacobiBase: opencascade::handle<PLib_JacobiPolynomial> &
+	:type JacobiBase: PLib_JacobiPolynomial
 	:param Func:
-	:type Func: AdvApprox_EvaluatorFunction &
+	:type Func: AdvApprox_EvaluatorFunction
 	:rtype: None") AdvApprox_SimpleApprox;
 		 AdvApprox_SimpleApprox (const Standard_Integer TotalDimension,const Standard_Integer TotalNumSS,const GeomAbs_Shape Continuity,const Standard_Integer WorkDegree,const Standard_Integer NbGaussPoints,const opencascade::handle<PLib_JacobiPolynomial> & JacobiBase,const AdvApprox_EvaluatorFunction & Func);
 
@@ -434,9 +434,9 @@ class AdvApprox_SimpleApprox {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Constructs approximator tool. //! Warning: the Func should be valid reference to object of type inherited from class EvaluatorFunction from Approx with life time longer than that of the approximator tool;
 	:param LocalDimension:
-	:type LocalDimension: TColStd_Array1OfInteger &
+	:type LocalDimension: TColStd_Array1OfInteger
 	:param LocalTolerancesArray:
-	:type LocalTolerancesArray: TColStd_Array1OfReal &
+	:type LocalTolerancesArray: TColStd_Array1OfReal
 	:param First:
 	:type First: float
 	:param Last:
@@ -478,7 +478,7 @@ class AdvApprox_DichoCutting : public AdvApprox_Cutting {
 	:param b:
 	:type b: float
 	:param cuttingvalue:
-	:type cuttingvalue: float &
+	:type cuttingvalue: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const Standard_Real a,const Standard_Real b,Standard_Real &OutValue);
 
@@ -500,9 +500,9 @@ class AdvApprox_PrefAndRec : public AdvApprox_Cutting {
 		/****************** AdvApprox_PrefAndRec ******************/
 		%feature("compactdefaultargs") AdvApprox_PrefAndRec;
 		%feature("autodoc", ":param RecomendedCut:
-	:type RecomendedCut: TColStd_Array1OfReal &
+	:type RecomendedCut: TColStd_Array1OfReal
 	:param PrefferedCut:
-	:type PrefferedCut: TColStd_Array1OfReal &
+	:type PrefferedCut: TColStd_Array1OfReal
 	:param Weight: default value is 5
 	:type Weight: float
 	:rtype: None") AdvApprox_PrefAndRec;
@@ -516,7 +516,7 @@ class AdvApprox_PrefAndRec : public AdvApprox_Cutting {
 	:param b:
 	:type b: float
 	:param cuttingvalue:
-	:type cuttingvalue: float &
+	:type cuttingvalue: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const Standard_Real a,const Standard_Real b,Standard_Real &OutValue);
 
@@ -538,7 +538,7 @@ class AdvApprox_PrefCutting : public AdvApprox_Cutting {
 		/****************** AdvApprox_PrefCutting ******************/
 		%feature("compactdefaultargs") AdvApprox_PrefCutting;
 		%feature("autodoc", ":param CutPnts:
-	:type CutPnts: TColStd_Array1OfReal &
+	:type CutPnts: TColStd_Array1OfReal
 	:rtype: None") AdvApprox_PrefCutting;
 		 AdvApprox_PrefCutting (const TColStd_Array1OfReal & CutPnts);
 
@@ -549,7 +549,7 @@ class AdvApprox_PrefCutting : public AdvApprox_Cutting {
 	:param b:
 	:type b: float
 	:param cuttingvalue:
-	:type cuttingvalue: float &
+	:type cuttingvalue: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const Standard_Real a,const Standard_Real b,Standard_Real &OutValue);
 

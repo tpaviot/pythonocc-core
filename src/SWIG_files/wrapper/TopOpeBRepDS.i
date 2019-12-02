@@ -246,7 +246,7 @@ class TopOpeBRepDS {
 		%feature("autodoc", ":param S:
 	:type S: TopAbs_State
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopAbs_State S,Standard_OStream & OS);
 
@@ -255,7 +255,7 @@ class TopOpeBRepDS {
 		%feature("autodoc", ":param K:
 	:type K: TopOpeBRepDS_Kind
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopOpeBRepDS_Kind K,Standard_OStream & S);
 
@@ -266,11 +266,11 @@ class TopOpeBRepDS {
 	:param I:
 	:type I: int
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:param B: default value is ""
-	:type B: TCollection_AsciiString &
+	:type B: TCollection_AsciiString
 	:param A: default value is ""
-	:type A: TCollection_AsciiString &
+	:type A: TCollection_AsciiString
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopOpeBRepDS_Kind K,const Standard_Integer I,Standard_OStream & S,const TCollection_AsciiString & B = "",const TCollection_AsciiString & A = "");
 
@@ -281,7 +281,7 @@ class TopOpeBRepDS {
 	:param I:
 	:type I: int
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopAbs_ShapeEnum T,const Standard_Integer I,Standard_OStream & S);
 
@@ -290,7 +290,7 @@ class TopOpeBRepDS {
 		%feature("autodoc", ":param C:
 	:type C: TopOpeBRepDS_Config
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopOpeBRepDS_Config C,Standard_OStream & S);
 
@@ -318,9 +318,9 @@ class TopOpeBRepDS {
 	:param I:
 	:type I: int
 	:param B: default value is ""
-	:type B: TCollection_AsciiString &
+	:type B: TCollection_AsciiString
 	:param A: default value is ""
-	:type A: TCollection_AsciiString &
+	:type A: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SPrint;
 		static TCollection_AsciiString SPrint (const TopOpeBRepDS_Kind K,const Standard_Integer I,const TCollection_AsciiString & B = "",const TCollection_AsciiString & A = "");
 
@@ -380,41 +380,41 @@ class TopOpeBRepDS_Association : public Standard_Transient {
 		/****************** AreAssociated ******************/
 		%feature("compactdefaultargs") AreAssociated;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param K:
-	:type K: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type K: TopOpeBRepDS_Interference
 	:rtype: bool") AreAssociated;
 		Standard_Boolean AreAssociated (const opencascade::handle<TopOpeBRepDS_Interference> & I,const opencascade::handle<TopOpeBRepDS_Interference> & K);
 
 		/****************** Associate ******************/
 		%feature("compactdefaultargs") Associate;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param K:
-	:type K: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type K: TopOpeBRepDS_Interference
 	:rtype: None") Associate;
 		void Associate (const opencascade::handle<TopOpeBRepDS_Interference> & I,const opencascade::handle<TopOpeBRepDS_Interference> & K);
 
 		/****************** Associate ******************/
 		%feature("compactdefaultargs") Associate;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param LI:
-	:type LI: TopOpeBRepDS_ListOfInterference &
+	:type LI: TopOpeBRepDS_ListOfInterference
 	:rtype: None") Associate;
 		void Associate (const opencascade::handle<TopOpeBRepDS_Interference> & I,const TopOpeBRepDS_ListOfInterference & LI);
 
 		/****************** Associated ******************/
 		%feature("compactdefaultargs") Associated;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: TopOpeBRepDS_ListOfInterference") Associated;
 		TopOpeBRepDS_ListOfInterference & Associated (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** HasAssociation ******************/
 		%feature("compactdefaultargs") HasAssociation;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: bool") HasAssociation;
 		Standard_Boolean HasAssociation (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -443,69 +443,69 @@ class TopOpeBRepDS_BuildTool {
 		/****************** AddEdgeVertex ******************/
 		%feature("compactdefaultargs") AddEdgeVertex;
 		%feature("autodoc", ":param Ein:
-	:type Ein: TopoDS_Shape &
+	:type Ein: TopoDS_Shape
 	:param Eou:
-	:type Eou: TopoDS_Shape &
+	:type Eou: TopoDS_Shape
 	:param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:rtype: None") AddEdgeVertex;
 		void AddEdgeVertex (const TopoDS_Shape & Ein,TopoDS_Shape & Eou,const TopoDS_Shape & V);
 
 		/****************** AddEdgeVertex ******************/
 		%feature("compactdefaultargs") AddEdgeVertex;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:rtype: None") AddEdgeVertex;
 		void AddEdgeVertex (TopoDS_Shape & E,const TopoDS_Shape & V);
 
 		/****************** AddFaceWire ******************/
 		%feature("compactdefaultargs") AddFaceWire;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param W:
-	:type W: TopoDS_Shape &
+	:type W: TopoDS_Shape
 	:rtype: None") AddFaceWire;
 		void AddFaceWire (TopoDS_Shape & F,const TopoDS_Shape & W);
 
 		/****************** AddShellFace ******************/
 		%feature("compactdefaultargs") AddShellFace;
 		%feature("autodoc", ":param Sh:
-	:type Sh: TopoDS_Shape &
+	:type Sh: TopoDS_Shape
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: None") AddShellFace;
 		void AddShellFace (TopoDS_Shape & Sh,const TopoDS_Shape & F);
 
 		/****************** AddSolidShell ******************/
 		%feature("compactdefaultargs") AddSolidShell;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Sh:
-	:type Sh: TopoDS_Shape &
+	:type Sh: TopoDS_Shape
 	:rtype: None") AddSolidShell;
 		void AddSolidShell (TopoDS_Shape & S,const TopoDS_Shape & Sh);
 
 		/****************** AddWireEdge ******************/
 		%feature("compactdefaultargs") AddWireEdge;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Shape &
+	:type W: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: None") AddWireEdge;
 		void AddWireEdge (TopoDS_Shape & W,const TopoDS_Shape & E);
 
 		/****************** ApproxCurves ******************/
 		%feature("compactdefaultargs") ApproxCurves;
 		%feature("autodoc", ":param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param inewC:
-	:type inewC: int &
+	:type inewC: int
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") ApproxCurves;
 		void ApproxCurves (const TopOpeBRepDS_Curve & C,TopoDS_Edge & E,Standard_Integer &OutValue,const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -522,7 +522,7 @@ class TopOpeBRepDS_BuildTool {
 		/****************** Closed ******************/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param B:
 	:type B: bool
 	:rtype: None") Closed;
@@ -531,11 +531,11 @@ class TopOpeBRepDS_BuildTool {
 		/****************** ComputePCurves ******************/
 		%feature("compactdefaultargs") ComputePCurves;
 		%feature("autodoc", ":param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param newC:
-	:type newC: TopOpeBRepDS_Curve &
+	:type newC: TopOpeBRepDS_Curve
 	:param CompPC1:
 	:type CompPC1: bool
 	:param CompPC2:
@@ -549,9 +549,9 @@ class TopOpeBRepDS_BuildTool {
 		%feature("compactdefaultargs") CopyEdge;
 		%feature("autodoc", "* Make an edge <Eou> with the curve of the edge <Ein>
 	:param Ein:
-	:type Ein: TopoDS_Shape &
+	:type Ein: TopoDS_Shape
 	:param Eou:
-	:type Eou: TopoDS_Shape &
+	:type Eou: TopoDS_Shape
 	:rtype: None") CopyEdge;
 		void CopyEdge (const TopoDS_Shape & Ein,TopoDS_Shape & Eou);
 
@@ -559,9 +559,9 @@ class TopOpeBRepDS_BuildTool {
 		%feature("compactdefaultargs") CopyFace;
 		%feature("autodoc", "* Make a face <Fou> with the surface of the face <Fin>
 	:param Fin:
-	:type Fin: TopoDS_Shape &
+	:type Fin: TopoDS_Shape
 	:param Fou:
-	:type Fou: TopoDS_Shape &
+	:type Fou: TopoDS_Shape
 	:rtype: None") CopyFace;
 		void CopyFace (const TopoDS_Shape & Fin,TopoDS_Shape & Fou);
 
@@ -569,9 +569,9 @@ class TopOpeBRepDS_BuildTool {
 		%feature("compactdefaultargs") Curve3D;
 		%feature("autodoc", "* Sets the curve <C> for the edge <E>
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Curve3D;
@@ -585,44 +585,44 @@ class TopOpeBRepDS_BuildTool {
 		/****************** GetOrientedEdgeVertices ******************/
 		%feature("compactdefaultargs") GetOrientedEdgeVertices;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param Vmin:
-	:type Vmin: TopoDS_Vertex &
+	:type Vmin: TopoDS_Vertex
 	:param Vmax:
-	:type Vmax: TopoDS_Vertex &
+	:type Vmax: TopoDS_Vertex
 	:param Parmin:
-	:type Parmin: float &
+	:type Parmin: float
 	:param Parmax:
-	:type Parmax: float &
+	:type Parmax: float
 	:rtype: None") GetOrientedEdgeVertices;
 		void GetOrientedEdgeVertices (TopoDS_Edge & E,TopoDS_Vertex & Vmin,TopoDS_Vertex & Vmax,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** MakeEdge ******************/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:rtype: None") MakeEdge;
 		void MakeEdge (TopoDS_Shape & E,const TopOpeBRepDS_Curve & C);
 
 		/****************** MakeEdge ******************/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:param DS:
-	:type DS: TopOpeBRepDS_DataStructure &
+	:type DS: TopOpeBRepDS_DataStructure
 	:rtype: None") MakeEdge;
 		void MakeEdge (TopoDS_Shape & E,const TopOpeBRepDS_Curve & C,const TopOpeBRepDS_DataStructure & DS);
 
 		/****************** MakeEdge ******************/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param Tol:
 	:type Tol: float
 	:rtype: None") MakeEdge;
@@ -631,53 +631,53 @@ class TopOpeBRepDS_BuildTool {
 		/****************** MakeEdge ******************/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: None") MakeEdge;
 		void MakeEdge (TopoDS_Shape & E);
 
 		/****************** MakeFace ******************/
 		%feature("compactdefaultargs") MakeFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param S:
-	:type S: TopOpeBRepDS_Surface &
+	:type S: TopOpeBRepDS_Surface
 	:rtype: None") MakeFace;
 		void MakeFace (TopoDS_Shape & F,const TopOpeBRepDS_Surface & S);
 
 		/****************** MakeShell ******************/
 		%feature("compactdefaultargs") MakeShell;
 		%feature("autodoc", ":param Sh:
-	:type Sh: TopoDS_Shape &
+	:type Sh: TopoDS_Shape
 	:rtype: None") MakeShell;
 		void MakeShell (TopoDS_Shape & Sh);
 
 		/****************** MakeSolid ******************/
 		%feature("compactdefaultargs") MakeSolid;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") MakeSolid;
 		void MakeSolid (TopoDS_Shape & S);
 
 		/****************** MakeVertex ******************/
 		%feature("compactdefaultargs") MakeVertex;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:param P:
-	:type P: TopOpeBRepDS_Point &
+	:type P: TopOpeBRepDS_Point
 	:rtype: None") MakeVertex;
 		void MakeVertex (TopoDS_Shape & V,const TopOpeBRepDS_Point & P);
 
 		/****************** MakeWire ******************/
 		%feature("compactdefaultargs") MakeWire;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Shape &
+	:type W: TopoDS_Shape
 	:rtype: None") MakeWire;
 		void MakeWire (TopoDS_Shape & W);
 
 		/****************** Orientation ******************/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param O:
 	:type O: TopAbs_Orientation
 	:rtype: None") Orientation;
@@ -686,7 +686,7 @@ class TopOpeBRepDS_BuildTool {
 		/****************** Orientation ******************/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopAbs_Orientation") Orientation;
 		TopAbs_Orientation Orientation (const TopoDS_Shape & S);
 
@@ -706,24 +706,24 @@ class TopOpeBRepDS_BuildTool {
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "* Sets the pcurve <C> for the edge <E> on the face <F>. If OverWrite is True the old pcurve if there is one is overwritten, else the two pcurves are set.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: None") PCurve;
 		void PCurve (TopoDS_Shape & F,TopoDS_Shape & E,const opencascade::handle<Geom2d_Curve> & C);
 
 		/****************** PCurve ******************/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param CDS:
-	:type CDS: TopOpeBRepDS_Curve &
+	:type CDS: TopOpeBRepDS_Curve
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:rtype: None") PCurve;
 		void PCurve (TopoDS_Shape & F,TopoDS_Shape & E,const TopOpeBRepDS_Curve & CDS,const opencascade::handle<Geom2d_Curve> & C);
 
@@ -731,9 +731,9 @@ class TopOpeBRepDS_BuildTool {
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "* Sets the parameter <P> for the vertex <V> on the edge <E>.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:param P:
 	:type P: float
 	:rtype: None") Parameter;
@@ -743,20 +743,20 @@ class TopOpeBRepDS_BuildTool {
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "* Compute the parameter of the vertex <V>, supported by the edge <E>, on the curve <C>.
 	:param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:rtype: None") Parameter;
 		void Parameter (const TopOpeBRepDS_Curve & C,TopoDS_Shape & E,TopoDS_Shape & V);
 
 		/****************** PutPCurves ******************/
 		%feature("compactdefaultargs") PutPCurves;
 		%feature("autodoc", ":param newC:
-	:type newC: TopOpeBRepDS_Curve &
+	:type newC: TopOpeBRepDS_Curve
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param CompPC1:
 	:type CompPC1: bool
 	:param CompPC2:
@@ -768,7 +768,7 @@ class TopOpeBRepDS_BuildTool {
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "* Sets the range of edge <E>.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param first:
 	:type first: float
 	:param last:
@@ -779,15 +779,15 @@ class TopOpeBRepDS_BuildTool {
 		/****************** RecomputeCurves ******************/
 		%feature("compactdefaultargs") RecomputeCurves;
 		%feature("autodoc", ":param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:param oldE:
-	:type oldE: TopoDS_Edge &
+	:type oldE: TopoDS_Edge
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param inewC:
-	:type inewC: int &
+	:type inewC: int
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") RecomputeCurves;
 		void RecomputeCurves (const TopOpeBRepDS_Curve & C,const TopoDS_Edge & oldE,TopoDS_Edge & E,Standard_Integer &OutValue,const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -806,7 +806,7 @@ class TopOpeBRepDS_BuildTool {
 		/****************** TopOpeBRepDS_BuildTool ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_BuildTool;
 		%feature("autodoc", ":param GT:
-	:type GT: TopOpeBRepTool_GeomTool &
+	:type GT: TopOpeBRepTool_GeomTool
 	:rtype: None") TopOpeBRepDS_BuildTool;
 		 TopOpeBRepDS_BuildTool (const TopOpeBRepTool_GeomTool & GT);
 
@@ -826,22 +826,22 @@ class TopOpeBRepDS_BuildTool {
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "* Sets the range of edge <Eou> from <Ein> only when <Ein> has a closed geometry.
 	:param Ein:
-	:type Ein: TopoDS_Shape &
+	:type Ein: TopoDS_Shape
 	:param Eou:
-	:type Eou: TopoDS_Shape &
+	:type Eou: TopoDS_Shape
 	:rtype: None") UpdateEdge;
 		void UpdateEdge (const TopoDS_Shape & Ein,TopoDS_Shape & Eou);
 
 		/****************** UpdateEdgeCurveTol ******************/
 		%feature("compactdefaultargs") UpdateEdgeCurveTol;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C3Dnew:
-	:type C3Dnew: opencascade::handle<Geom_Curve> &
+	:type C3Dnew: Geom_Curve
 	:param tol3d:
 	:type tol3d: float
 	:param tol2d1:
@@ -849,31 +849,31 @@ class TopOpeBRepDS_BuildTool {
 	:param tol2d2:
 	:type tol2d2: float
 	:param newtol:
-	:type newtol: float &
+	:type newtol: float
 	:param newparmin:
-	:type newparmin: float &
+	:type newparmin: float
 	:param newparmax:
-	:type newparmax: float &
+	:type newparmax: float
 	:rtype: None") UpdateEdgeCurveTol;
 		void UpdateEdgeCurveTol (const TopoDS_Face & F1,const TopoDS_Face & F2,TopoDS_Edge & E,const opencascade::handle<Geom_Curve> & C3Dnew,const Standard_Real tol3d,const Standard_Real tol2d1,const Standard_Real tol2d2,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** UpdateSurface ******************/
 		%feature("compactdefaultargs") UpdateSurface;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param SU:
-	:type SU: opencascade::handle<Geom_Surface> &
+	:type SU: Geom_Surface
 	:rtype: None") UpdateSurface;
 		void UpdateSurface (const TopoDS_Shape & F,const opencascade::handle<Geom_Surface> & SU);
 
 		/****************** UpdateSurface ******************/
 		%feature("compactdefaultargs") UpdateSurface;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param oldF:
-	:type oldF: TopoDS_Shape &
+	:type oldF: TopoDS_Shape
 	:param newF:
-	:type newF: TopoDS_Shape &
+	:type newF: TopoDS_Shape
 	:rtype: None") UpdateSurface;
 		void UpdateSurface (const TopoDS_Shape & E,const TopoDS_Shape & oldF,const TopoDS_Shape & newF);
 
@@ -911,7 +911,7 @@ class TopOpeBRepDS_Check : public Standard_Transient {
 		%feature("compactdefaultargs") CheckShapes;
 		%feature("autodoc", "* Verifie que les Shapes existent bien dans la DS Utile pour les Shapes SameDomain si la liste est vide, renvoie vrai
 	:param LS:
-	:type LS: TopTools_ListOfShape &
+	:type LS: TopTools_ListOfShape
 	:rtype: bool") CheckShapes;
 		Standard_Boolean CheckShapes (const TopTools_ListOfShape & LS);
 
@@ -925,7 +925,7 @@ class TopOpeBRepDS_Check : public Standard_Transient {
 		%feature("compactdefaultargs") ChkIntgInterf;
 		%feature("autodoc", "* Check integrition of interferences (les supports et les geometries de LI)
 	:param LI:
-	:type LI: TopOpeBRepDS_ListOfInterference &
+	:type LI: TopOpeBRepDS_ListOfInterference
 	:rtype: bool") ChkIntgInterf;
 		Standard_Boolean ChkIntgInterf (const TopOpeBRepDS_ListOfInterference & LI);
 
@@ -952,7 +952,7 @@ class TopOpeBRepDS_Check : public Standard_Transient {
 	:param stat:
 	:type stat: TopOpeBRepDS_CheckStatus
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		Standard_OStream & Print (const TopOpeBRepDS_CheckStatus stat,Standard_OStream & S);
 
@@ -970,7 +970,7 @@ class TopOpeBRepDS_Check : public Standard_Transient {
 	:param SE:
 	:type SE: TopAbs_ShapeEnum
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") PrintShape;
 		Standard_OStream & PrintShape (const TopAbs_ShapeEnum SE,Standard_OStream & S);
 
@@ -980,7 +980,7 @@ class TopOpeBRepDS_Check : public Standard_Transient {
 	:param index:
 	:type index: int
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") PrintShape;
 		Standard_OStream & PrintShape (const Standard_Integer index,Standard_OStream & S);
 
@@ -992,7 +992,7 @@ class TopOpeBRepDS_Check : public Standard_Transient {
 		/****************** TopOpeBRepDS_Check ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Check;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") TopOpeBRepDS_Check;
 		 TopOpeBRepDS_Check (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -1064,7 +1064,7 @@ class TopOpeBRepDS_Curve {
 		/****************** Curve ******************/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", ":param C3D:
-	:type C3D: opencascade::handle<Geom_Curve> &
+	:type C3D: Geom_Curve
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Curve;
@@ -1078,7 +1078,7 @@ class TopOpeBRepDS_Curve {
 		/****************** Curve1 ******************/
 		%feature("compactdefaultargs") Curve1;
 		%feature("autodoc", ":param PC1:
-	:type PC1: opencascade::handle<Geom2d_Curve> &
+	:type PC1: Geom2d_Curve
 	:rtype: None") Curve1;
 		void Curve1 (const opencascade::handle<Geom2d_Curve> & PC1);
 
@@ -1090,7 +1090,7 @@ class TopOpeBRepDS_Curve {
 		/****************** Curve2 ******************/
 		%feature("compactdefaultargs") Curve2;
 		%feature("autodoc", ":param PC2:
-	:type PC2: opencascade::handle<Geom2d_Curve> &
+	:type PC2: Geom2d_Curve
 	:rtype: None") Curve2;
 		void Curve2 (const opencascade::handle<Geom2d_Curve> & PC2);
 
@@ -1102,7 +1102,7 @@ class TopOpeBRepDS_Curve {
 		/****************** DefineCurve ******************/
 		%feature("compactdefaultargs") DefineCurve;
 		%feature("autodoc", ":param P:
-	:type P: opencascade::handle<Geom_Curve> &
+	:type P: Geom_Curve
 	:param T:
 	:type T: float
 	:param IsWalk:
@@ -1113,9 +1113,9 @@ class TopOpeBRepDS_Curve {
 		/****************** GetSCI ******************/
 		%feature("compactdefaultargs") GetSCI;
 		%feature("autodoc", ":param I1:
-	:type I1: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I1: TopOpeBRepDS_Interference
 	:param I2:
-	:type I2: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I2: TopOpeBRepDS_Interference
 	:rtype: None") GetSCI;
 		void GetSCI (opencascade::handle<TopOpeBRepDS_Interference> & I1,opencascade::handle<TopOpeBRepDS_Interference> & I2);
 
@@ -1132,9 +1132,9 @@ class TopOpeBRepDS_Curve {
 		/****************** GetShapes ******************/
 		%feature("compactdefaultargs") GetShapes;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: None") GetShapes;
 		void GetShapes (TopoDS_Shape & S1,TopoDS_Shape & S2);
 
@@ -1156,9 +1156,9 @@ class TopOpeBRepDS_Curve {
 		/****************** Range ******************/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", ":param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: bool") Range;
 		Standard_Boolean Range (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1175,18 +1175,18 @@ class TopOpeBRepDS_Curve {
 		%feature("compactdefaultargs") SetSCI;
 		%feature("autodoc", "* define the interferences face/curve.
 	:param I1:
-	:type I1: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I1: TopOpeBRepDS_Interference
 	:param I2:
-	:type I2: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I2: TopOpeBRepDS_Interference
 	:rtype: None") SetSCI;
 		void SetSCI (const opencascade::handle<TopOpeBRepDS_Interference> & I1,const opencascade::handle<TopOpeBRepDS_Interference> & I2);
 
 		/****************** SetShapes ******************/
 		%feature("compactdefaultargs") SetShapes;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: None") SetShapes;
 		void SetShapes (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
@@ -1221,7 +1221,7 @@ class TopOpeBRepDS_Curve {
 		/****************** TopOpeBRepDS_Curve ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Curve;
 		%feature("autodoc", ":param P:
-	:type P: opencascade::handle<Geom_Curve> &
+	:type P: Geom_Curve
 	:param T:
 	:type T: float
 	:param IsWalk: default value is Standard_False
@@ -1264,7 +1264,7 @@ class TopOpeBRepDS_CurveExplorer {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param DS:
-	:type DS: TopOpeBRepDS_DataStructure &
+	:type DS: TopOpeBRepDS_DataStructure
 	:param FindOnlyKeep: default value is Standard_True
 	:type FindOnlyKeep: bool
 	:rtype: None") Init;
@@ -1307,7 +1307,7 @@ class TopOpeBRepDS_CurveExplorer {
 		/****************** TopOpeBRepDS_CurveExplorer ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_CurveExplorer;
 		%feature("autodoc", ":param DS:
-	:type DS: TopOpeBRepDS_DataStructure &
+	:type DS: TopOpeBRepDS_DataStructure
 	:param FindOnlyKeep: default value is Standard_True
 	:type FindOnlyKeep: bool
 	:rtype: None") TopOpeBRepDS_CurveExplorer;
@@ -1332,7 +1332,7 @@ class TopOpeBRepDS_DataStructure {
 		%feature("compactdefaultargs") AddCurve;
 		%feature("autodoc", "* Insert a new curve. Returns the index.
 	:param S:
-	:type S: TopOpeBRepDS_Curve &
+	:type S: TopOpeBRepDS_Curve
 	:rtype: int") AddCurve;
 		Standard_Integer AddCurve (const TopOpeBRepDS_Curve & S);
 
@@ -1340,7 +1340,7 @@ class TopOpeBRepDS_DataStructure {
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "* Insert a new point. Returns the index.
 	:param PDS:
-	:type PDS: TopOpeBRepDS_Point &
+	:type PDS: TopOpeBRepDS_Point
 	:rtype: int") AddPoint;
 		Standard_Integer AddPoint (const TopOpeBRepDS_Point & PDS);
 
@@ -1348,18 +1348,18 @@ class TopOpeBRepDS_DataStructure {
 		%feature("compactdefaultargs") AddPointSS;
 		%feature("autodoc", "* Insert a new point. Returns the index.
 	:param PDS:
-	:type PDS: TopOpeBRepDS_Point &
+	:type PDS: TopOpeBRepDS_Point
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: int") AddPointSS;
 		Standard_Integer AddPointSS (const TopOpeBRepDS_Point & PDS,const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
 		/****************** AddSectionEdge ******************/
 		%feature("compactdefaultargs") AddSectionEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: int") AddSectionEdge;
 		Standard_Integer AddSectionEdge (const TopoDS_Edge & E);
 
@@ -1367,7 +1367,7 @@ class TopOpeBRepDS_DataStructure {
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "* Insert a shape S. Returns the index.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") AddShape;
 		Standard_Integer AddShape (const TopoDS_Shape & S);
 
@@ -1375,7 +1375,7 @@ class TopOpeBRepDS_DataStructure {
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "* Insert a shape S which ancestor is I = 1 or 2. Returns the index.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param I:
 	:type I: int
 	:rtype: int") AddShape;
@@ -1384,18 +1384,18 @@ class TopOpeBRepDS_DataStructure {
 		/****************** AddShapeInterference ******************/
 		%feature("compactdefaultargs") AddShapeInterference;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") AddShapeInterference;
 		void AddShapeInterference (const TopoDS_Shape & S,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** AddShapeSameDomain ******************/
 		%feature("compactdefaultargs") AddShapeSameDomain;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param SSD:
-	:type SSD: TopoDS_Shape &
+	:type SSD: TopoDS_Shape
 	:rtype: None") AddShapeSameDomain;
 		void AddShapeSameDomain (const TopoDS_Shape & S,const TopoDS_Shape & SSD);
 
@@ -1403,7 +1403,7 @@ class TopOpeBRepDS_DataStructure {
 		%feature("compactdefaultargs") AddSurface;
 		%feature("autodoc", "* Insert a new surface. Returns the index.
 	:param S:
-	:type S: TopOpeBRepDS_Surface &
+	:type S: TopOpeBRepDS_Surface
 	:rtype: int") AddSurface;
 		Standard_Integer AddSurface (const TopOpeBRepDS_Surface & S);
 
@@ -1417,7 +1417,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** AncestorRank ******************/
 		%feature("compactdefaultargs") AncestorRank;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") AncestorRank;
 		Standard_Integer AncestorRank (const TopoDS_Shape & S);
 
@@ -1433,7 +1433,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** AncestorRank ******************/
 		%feature("compactdefaultargs") AncestorRank;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Ianc:
 	:type Ianc: int
 	:rtype: None") AncestorRank;
@@ -1466,7 +1466,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** ChangeKeepCurve ******************/
 		%feature("compactdefaultargs") ChangeKeepCurve;
 		%feature("autodoc", ":param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:param FindKeep:
 	:type FindKeep: bool
 	:rtype: None") ChangeKeepCurve;
@@ -1484,7 +1484,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** ChangeKeepPoint ******************/
 		%feature("compactdefaultargs") ChangeKeepPoint;
 		%feature("autodoc", ":param P:
-	:type P: TopOpeBRepDS_Point &
+	:type P: TopOpeBRepDS_Point
 	:param FindKeep:
 	:type FindKeep: bool
 	:rtype: None") ChangeKeepPoint;
@@ -1502,7 +1502,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** ChangeKeepShape ******************/
 		%feature("compactdefaultargs") ChangeKeepShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param FindKeep:
 	:type FindKeep: bool
 	:rtype: None") ChangeKeepShape;
@@ -1520,7 +1520,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** ChangeKeepSurface ******************/
 		%feature("compactdefaultargs") ChangeKeepSurface;
 		%feature("autodoc", ":param S:
-	:type S: TopOpeBRepDS_Surface &
+	:type S: TopOpeBRepDS_Surface
 	:param FindKeep:
 	:type FindKeep: bool
 	:rtype: None") ChangeKeepSurface;
@@ -1539,7 +1539,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** ChangeMapOfShapeWithState ******************/
 		%feature("compactdefaultargs") ChangeMapOfShapeWithState;
 		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aFlag:
 	:type aFlag: bool
 	:rtype: TopOpeBRepDS_IndexedDataMapOfShapeWithState") ChangeMapOfShapeWithState;
@@ -1580,7 +1580,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** ChangeShapeInterferences ******************/
 		%feature("compactdefaultargs") ChangeShapeInterferences;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopOpeBRepDS_ListOfInterference") ChangeShapeInterferences;
 		TopOpeBRepDS_ListOfInterference & ChangeShapeInterferences (const TopoDS_Shape & S);
 
@@ -1594,7 +1594,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** ChangeShapeSameDomain ******************/
 		%feature("compactdefaultargs") ChangeShapeSameDomain;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") ChangeShapeSameDomain;
 		TopTools_ListOfShape & ChangeShapeSameDomain (const TopoDS_Shape & S);
 
@@ -1643,9 +1643,9 @@ class TopOpeBRepDS_DataStructure {
 		/****************** FillShapesSameDomain ******************/
 		%feature("compactdefaultargs") FillShapesSameDomain;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param refFirst: default value is Standard_True
 	:type refFirst: bool
 	:rtype: None") FillShapesSameDomain;
@@ -1654,9 +1654,9 @@ class TopOpeBRepDS_DataStructure {
 		/****************** FillShapesSameDomain ******************/
 		%feature("compactdefaultargs") FillShapesSameDomain;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param c1:
 	:type c1: TopOpeBRepDS_Config
 	:param c2:
@@ -1669,7 +1669,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** GetShapeWithState ******************/
 		%feature("compactdefaultargs") GetShapeWithState;
 		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: TopOpeBRepDS_ShapeWithState") GetShapeWithState;
 		const TopOpeBRepDS_ShapeWithState & GetShapeWithState (const TopoDS_Shape & aShape);
 
@@ -1677,14 +1677,14 @@ class TopOpeBRepDS_DataStructure {
 		%feature("compactdefaultargs") HasGeometry;
 		%feature("autodoc", "* Returns True if <S> has new geometries, i.e : True si : HasShape(S) True S a une liste d'interferences non vide. S = SOLID, FACE, EDGE : true/false S = SHELL, WIRE, VERTEX : false.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") HasGeometry;
 		Standard_Boolean HasGeometry (const TopoDS_Shape & S);
 
 		/****************** HasNewSurface ******************/
 		%feature("compactdefaultargs") HasNewSurface;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: bool") HasNewSurface;
 		Standard_Boolean HasNewSurface (const TopoDS_Shape & F);
 
@@ -1692,7 +1692,7 @@ class TopOpeBRepDS_DataStructure {
 		%feature("compactdefaultargs") HasShape;
 		%feature("autodoc", "* Returns True if <S> est dans myShapes
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param FindKeep: default value is Standard_True
 	:type FindKeep: bool
 	:rtype: bool") HasShape;
@@ -1712,7 +1712,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** IsSectionEdge ******************/
 		%feature("compactdefaultargs") IsSectionEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param FindKeep: default value is Standard_True
 	:type FindKeep: bool
 	:rtype: bool") IsSectionEdge;
@@ -1740,7 +1740,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** KeepCurve ******************/
 		%feature("compactdefaultargs") KeepCurve;
 		%feature("autodoc", ":param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:rtype: bool") KeepCurve;
 		Standard_Boolean KeepCurve (const TopOpeBRepDS_Curve & C);
 
@@ -1754,7 +1754,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** KeepPoint ******************/
 		%feature("compactdefaultargs") KeepPoint;
 		%feature("autodoc", ":param P:
-	:type P: TopOpeBRepDS_Point &
+	:type P: TopOpeBRepDS_Point
 	:rtype: bool") KeepPoint;
 		Standard_Boolean KeepPoint (const TopOpeBRepDS_Point & P);
 
@@ -1770,7 +1770,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** KeepShape ******************/
 		%feature("compactdefaultargs") KeepShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param FindKeep: default value is Standard_True
 	:type FindKeep: bool
 	:rtype: bool") KeepShape;
@@ -1786,7 +1786,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** KeepSurface ******************/
 		%feature("compactdefaultargs") KeepSurface;
 		%feature("autodoc", ":param S:
-	:type S: TopOpeBRepDS_Surface &
+	:type S: TopOpeBRepDS_Surface
 	:rtype: bool") KeepSurface;
 		Standard_Boolean KeepSurface (TopOpeBRepDS_Surface & S);
 
@@ -1818,7 +1818,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** NewSurface ******************/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: opencascade::handle<Geom_Surface>") NewSurface;
 		const opencascade::handle<Geom_Surface> & NewSurface (const TopoDS_Shape & F);
 
@@ -1854,18 +1854,18 @@ class TopOpeBRepDS_DataStructure {
 		/****************** RemoveShapeInterference ******************/
 		%feature("compactdefaultargs") RemoveShapeInterference;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") RemoveShapeInterference;
 		void RemoveShapeInterference (const TopoDS_Shape & S,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** RemoveShapeSameDomain ******************/
 		%feature("compactdefaultargs") RemoveShapeSameDomain;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param SSD:
-	:type SSD: TopoDS_Shape &
+	:type SSD: TopoDS_Shape
 	:rtype: None") RemoveShapeSameDomain;
 		void RemoveShapeSameDomain (const TopoDS_Shape & S,const TopoDS_Shape & SSD);
 
@@ -1886,7 +1886,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** SameDomainInd ******************/
 		%feature("compactdefaultargs") SameDomainInd;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") SameDomainInd;
 		Standard_Integer SameDomainInd (const TopoDS_Shape & S);
 
@@ -1902,7 +1902,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** SameDomainInd ******************/
 		%feature("compactdefaultargs") SameDomainInd;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Ind:
 	:type Ind: int
 	:rtype: None") SameDomainInd;
@@ -1918,7 +1918,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** SameDomainOri ******************/
 		%feature("compactdefaultargs") SameDomainOri;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopOpeBRepDS_Config") SameDomainOri;
 		TopOpeBRepDS_Config SameDomainOri (const TopoDS_Shape & S);
 
@@ -1934,7 +1934,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** SameDomainOri ******************/
 		%feature("compactdefaultargs") SameDomainOri;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Ori:
 	:type Ori: TopOpeBRepDS_Config
 	:rtype: None") SameDomainOri;
@@ -1950,7 +1950,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** SameDomainRef ******************/
 		%feature("compactdefaultargs") SameDomainRef;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: int") SameDomainRef;
 		Standard_Integer SameDomainRef (const TopoDS_Shape & S);
 
@@ -1966,7 +1966,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** SameDomainRef ******************/
 		%feature("compactdefaultargs") SameDomainRef;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Ref:
 	:type Ref: int
 	:rtype: None") SameDomainRef;
@@ -1984,7 +1984,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** SectionEdge ******************/
 		%feature("compactdefaultargs") SectionEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param FindKeep: default value is Standard_True
 	:type FindKeep: bool
 	:rtype: int") SectionEdge;
@@ -1993,9 +1993,9 @@ class TopOpeBRepDS_DataStructure {
 		/****************** SetNewSurface ******************/
 		%feature("compactdefaultargs") SetNewSurface;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") SetNewSurface;
 		void SetNewSurface (const TopoDS_Shape & F,const opencascade::handle<Geom_Surface> & S);
 
@@ -2013,7 +2013,7 @@ class TopOpeBRepDS_DataStructure {
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "* returns the index of shape <S> stored in the map myShapes, accessing a list of interference. returns 0 if <S> is not in the map.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param FindKeep: default value is Standard_True
 	:type FindKeep: bool
 	:rtype: int") Shape;
@@ -2022,7 +2022,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** ShapeInterferences ******************/
 		%feature("compactdefaultargs") ShapeInterferences;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param FindKeep: default value is Standard_True
 	:type FindKeep: bool
 	:rtype: TopOpeBRepDS_ListOfInterference") ShapeInterferences;
@@ -2040,7 +2040,7 @@ class TopOpeBRepDS_DataStructure {
 		/****************** ShapeSameDomain ******************/
 		%feature("compactdefaultargs") ShapeSameDomain;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") ShapeSameDomain;
 		const TopTools_ListOfShape & ShapeSameDomain (const TopoDS_Shape & S);
 
@@ -2074,9 +2074,9 @@ class TopOpeBRepDS_DataStructure {
 		/****************** UnfillShapesSameDomain ******************/
 		%feature("compactdefaultargs") UnfillShapesSameDomain;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: None") UnfillShapesSameDomain;
 		void UnfillShapesSameDomain (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
@@ -2107,7 +2107,7 @@ class TopOpeBRepDS_Dumper {
 		/****************** SDumpRefOri ******************/
 		%feature("compactdefaultargs") SDumpRefOri;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TCollection_AsciiString") SDumpRefOri;
 		TCollection_AsciiString SDumpRefOri (const TopoDS_Shape & S);
 
@@ -2121,32 +2121,32 @@ class TopOpeBRepDS_Dumper {
 		/****************** SPrintShape ******************/
 		%feature("compactdefaultargs") SPrintShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TCollection_AsciiString") SPrintShape;
 		TCollection_AsciiString SPrintShape (const TopoDS_Shape & S);
 
 		/****************** SPrintShapeRefOri ******************/
 		%feature("compactdefaultargs") SPrintShapeRefOri;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param B: default value is ""
-	:type B: TCollection_AsciiString &
+	:type B: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SPrintShapeRefOri;
 		TCollection_AsciiString SPrintShapeRefOri (const TopoDS_Shape & S,const TCollection_AsciiString & B = "");
 
 		/****************** SPrintShapeRefOri ******************/
 		%feature("compactdefaultargs") SPrintShapeRefOri;
 		%feature("autodoc", ":param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:param B: default value is ""
-	:type B: TCollection_AsciiString &
+	:type B: TCollection_AsciiString
 	:rtype: TCollection_AsciiString") SPrintShapeRefOri;
 		TCollection_AsciiString SPrintShapeRefOri (const TopTools_ListOfShape & L,const TCollection_AsciiString & B = "");
 
 		/****************** TopOpeBRepDS_Dumper ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Dumper;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") TopOpeBRepDS_Dumper;
 		 TopOpeBRepDS_Dumper (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -2180,7 +2180,7 @@ class TopOpeBRepDS_EIR {
 		/****************** TopOpeBRepDS_EIR ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_EIR;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") TopOpeBRepDS_EIR;
 		 TopOpeBRepDS_EIR (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -2202,26 +2202,26 @@ class TopOpeBRepDS_Edge3dInterferenceTool {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param Eref:
-	:type Eref: TopoDS_Shape &
+	:type Eref: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Add;
 		void Add (const TopoDS_Shape & Eref,const TopoDS_Shape & E,const TopoDS_Shape & F,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Eref:
-	:type Eref: TopoDS_Shape &
+	:type Eref: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & Eref,const TopoDS_Shape & E,const TopoDS_Shape & F,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -2230,7 +2230,7 @@ class TopOpeBRepDS_Edge3dInterferenceTool {
 		%feature("autodoc", ":param IsVertex:
 	:type IsVertex: int
 	:param VonOO:
-	:type VonOO: TopoDS_Shape &
+	:type VonOO: TopoDS_Shape
 	:rtype: None") InitPointVertex;
 		void InitPointVertex (const Standard_Integer IsVertex,const TopoDS_Shape & VonOO);
 
@@ -2242,7 +2242,7 @@ class TopOpeBRepDS_Edge3dInterferenceTool {
 		/****************** Transition ******************/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Transition;
 		void Transition (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -2264,31 +2264,31 @@ class TopOpeBRepDS_EdgeInterferenceTool {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param V:
-	:type V: TopoDS_Shape &
+	:type V: TopoDS_Shape
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Add;
 		void Add (const TopoDS_Shape & E,const TopoDS_Shape & V,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param P:
-	:type P: TopOpeBRepDS_Point &
+	:type P: TopOpeBRepDS_Point
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Add;
 		void Add (const TopoDS_Shape & E,const TopOpeBRepDS_Point & P,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & E,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -2300,7 +2300,7 @@ class TopOpeBRepDS_EdgeInterferenceTool {
 		/****************** Transition ******************/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Transition;
 		void Transition (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -2342,7 +2342,7 @@ class TopOpeBRepDS_Explorer {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param T: default value is TopAbs_SHAPE
 	:type T: TopAbs_ShapeEnum
 	:param findkeep: default value is Standard_True
@@ -2368,7 +2368,7 @@ class TopOpeBRepDS_Explorer {
 		/****************** TopOpeBRepDS_Explorer ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Explorer;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param T: default value is TopAbs_SHAPE
 	:type T: TopAbs_ShapeEnum
 	:param findkeep: default value is Standard_True
@@ -2404,7 +2404,7 @@ class TopOpeBRepDS_FIR {
 		/****************** ProcessFaceInterferences ******************/
 		%feature("compactdefaultargs") ProcessFaceInterferences;
 		%feature("autodoc", ":param M:
-	:type M: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State &
+	:type M: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
 	:rtype: None") ProcessFaceInterferences;
 		void ProcessFaceInterferences (const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & M);
 
@@ -2413,14 +2413,14 @@ class TopOpeBRepDS_FIR {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param M:
-	:type M: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State &
+	:type M: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
 	:rtype: None") ProcessFaceInterferences;
 		void ProcessFaceInterferences (const Standard_Integer I,const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & M);
 
 		/****************** TopOpeBRepDS_FIR ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_FIR;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") TopOpeBRepDS_FIR;
 		 TopOpeBRepDS_FIR (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -2443,26 +2443,26 @@ class TopOpeBRepDS_FaceInterferenceTool {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Eisnew = true if E is a new edge built on edge I->Geometry() false if E is shape <=> I->Geometry()
 	:param FI:
-	:type FI: TopoDS_Shape &
+	:type FI: TopoDS_Shape
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param Eisnew:
 	:type Eisnew: bool
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Add;
 		void Add (const TopoDS_Shape & FI,const TopoDS_Shape & F,const TopoDS_Shape & E,const Standard_Boolean Eisnew,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Add;
 		void Add (const TopoDS_Shape & E,const TopOpeBRepDS_Curve & C,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -2471,7 +2471,7 @@ class TopOpeBRepDS_FaceInterferenceTool {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param par:
-	:type par: float &
+	:type par: float
 	:rtype: None") GetEdgePntPar;
 		void GetEdgePntPar (gp_Pnt & P,Standard_Real &OutValue);
 
@@ -2479,13 +2479,13 @@ class TopOpeBRepDS_FaceInterferenceTool {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Eisnew = true if E is a new edge built on edge I->Geometry() false if E is shape <=> I->Geometry()
 	:param FI:
-	:type FI: TopoDS_Shape &
+	:type FI: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param Eisnew:
 	:type Eisnew: bool
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & FI,const TopoDS_Shape & E,const Standard_Boolean Eisnew,const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -2506,14 +2506,14 @@ class TopOpeBRepDS_FaceInterferenceTool {
 		/****************** TopOpeBRepDS_FaceInterferenceTool ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_FaceInterferenceTool;
 		%feature("autodoc", ":param P:
-	:type P: TopOpeBRepDS_PDataStructure &
+	:type P: TopOpeBRepDS_PDataStructure
 	:rtype: None") TopOpeBRepDS_FaceInterferenceTool;
 		 TopOpeBRepDS_FaceInterferenceTool (const TopOpeBRepDS_PDataStructure & P);
 
 		/****************** Transition ******************/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") Transition;
 		void Transition (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -2559,7 +2559,7 @@ class TopOpeBRepDS_Filter {
 		/****************** ProcessFaceInterferences ******************/
 		%feature("compactdefaultargs") ProcessFaceInterferences;
 		%feature("autodoc", ":param MEsp:
-	:type MEsp: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State &
+	:type MEsp: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
 	:rtype: None") ProcessFaceInterferences;
 		void ProcessFaceInterferences (const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & MEsp);
 
@@ -2568,7 +2568,7 @@ class TopOpeBRepDS_Filter {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param MEsp:
-	:type MEsp: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State &
+	:type MEsp: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
 	:rtype: None") ProcessFaceInterferences;
 		void ProcessFaceInterferences (const Standard_Integer I,const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & MEsp);
 
@@ -2580,9 +2580,9 @@ class TopOpeBRepDS_Filter {
 		/****************** TopOpeBRepDS_Filter ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Filter;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param pClassif: default value is 0
-	:type pClassif: TopOpeBRepTool_PShapeClassifier &
+	:type pClassif: TopOpeBRepTool_PShapeClassifier
 	:rtype: None") TopOpeBRepDS_Filter;
 		 TopOpeBRepDS_Filter (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS,const TopOpeBRepTool_PShapeClassifier & pClassif = 0);
 
@@ -2605,18 +2605,18 @@ class TopOpeBRepDS_GapFiller {
 		%feature("compactdefaultargs") AddPointsOnConnexShape;
 		%feature("autodoc", "* Methodes pour reduire la liste des Points qui peuvent correspondre a une Point donne.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param LI:
-	:type LI: TopOpeBRepDS_ListOfInterference &
+	:type LI: TopOpeBRepDS_ListOfInterference
 	:rtype: None") AddPointsOnConnexShape;
 		void AddPointsOnConnexShape (const TopoDS_Shape & F,const TopOpeBRepDS_ListOfInterference & LI);
 
 		/****************** AddPointsOnShape ******************/
 		%feature("compactdefaultargs") AddPointsOnShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param LI:
-	:type LI: TopOpeBRepDS_ListOfInterference &
+	:type LI: TopOpeBRepDS_ListOfInterference
 	:rtype: None") AddPointsOnShape;
 		void AddPointsOnShape (const TopoDS_Shape & S,TopOpeBRepDS_ListOfInterference & LI);
 
@@ -2629,36 +2629,36 @@ class TopOpeBRepDS_GapFiller {
 		%feature("compactdefaultargs") CheckConnexity;
 		%feature("autodoc", "* Enchaine les sections via les points d'Interferences deja associe; Renvoit dans <L> les points extremites des Lignes. Methodes pour construire la liste des Points qui peuvent correspondre a une Point donne.
 	:param LI:
-	:type LI: TopOpeBRepDS_ListOfInterference &
+	:type LI: TopOpeBRepDS_ListOfInterference
 	:rtype: bool") CheckConnexity;
 		Standard_Boolean CheckConnexity (TopOpeBRepDS_ListOfInterference & LI);
 
 		/****************** FilterByEdge ******************/
 		%feature("compactdefaultargs") FilterByEdge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param LI:
-	:type LI: TopOpeBRepDS_ListOfInterference &
+	:type LI: TopOpeBRepDS_ListOfInterference
 	:rtype: None") FilterByEdge;
 		void FilterByEdge (const TopoDS_Edge & E,TopOpeBRepDS_ListOfInterference & LI);
 
 		/****************** FilterByFace ******************/
 		%feature("compactdefaultargs") FilterByFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param LI:
-	:type LI: TopOpeBRepDS_ListOfInterference &
+	:type LI: TopOpeBRepDS_ListOfInterference
 	:rtype: None") FilterByFace;
 		void FilterByFace (const TopoDS_Face & F,TopOpeBRepDS_ListOfInterference & LI);
 
 		/****************** FilterByIncidentDistance ******************/
 		%feature("compactdefaultargs") FilterByIncidentDistance;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param LI:
-	:type LI: TopOpeBRepDS_ListOfInterference &
+	:type LI: TopOpeBRepDS_ListOfInterference
 	:rtype: None") FilterByIncidentDistance;
 		void FilterByIncidentDistance (const TopoDS_Face & F,const opencascade::handle<TopOpeBRepDS_Interference> & I,TopOpeBRepDS_ListOfInterference & LI);
 
@@ -2666,9 +2666,9 @@ class TopOpeBRepDS_GapFiller {
 		%feature("compactdefaultargs") FindAssociatedPoints;
 		%feature("autodoc", "* Recherche parmi l'ensemble des points d'Interference la Liste <LI> des points qui correspondent au point d'indice <Index>
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param LI:
-	:type LI: TopOpeBRepDS_ListOfInterference &
+	:type LI: TopOpeBRepDS_ListOfInterference
 	:rtype: None") FindAssociatedPoints;
 		void FindAssociatedPoints (const opencascade::handle<TopOpeBRepDS_Interference> & I,TopOpeBRepDS_ListOfInterference & LI);
 
@@ -2676,9 +2676,9 @@ class TopOpeBRepDS_GapFiller {
 		%feature("compactdefaultargs") IsOnEdge;
 		%feature("autodoc", "* Return True si I ou une de ses representaions a pour support <E>. Methodes de reconstructions des geometries des point et des courbes de section
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: bool") IsOnEdge;
 		Standard_Boolean IsOnEdge (const opencascade::handle<TopOpeBRepDS_Interference> & I,const TopoDS_Edge & E);
 
@@ -2686,9 +2686,9 @@ class TopOpeBRepDS_GapFiller {
 		%feature("compactdefaultargs") IsOnFace;
 		%feature("autodoc", "* Return True si I a ete obtenu par une intersection avec <F>.
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: bool") IsOnFace;
 		Standard_Boolean IsOnFace (const opencascade::handle<TopOpeBRepDS_Interference> & I,const TopoDS_Face & F);
 
@@ -2700,16 +2700,16 @@ class TopOpeBRepDS_GapFiller {
 		/****************** ReBuildGeom ******************/
 		%feature("compactdefaultargs") ReBuildGeom;
 		%feature("autodoc", ":param I1:
-	:type I1: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I1: TopOpeBRepDS_Interference
 	:param Done:
-	:type Done: TColStd_MapOfInteger &
+	:type Done: TColStd_MapOfInteger
 	:rtype: None") ReBuildGeom;
 		void ReBuildGeom (const opencascade::handle<TopOpeBRepDS_Interference> & I1,TColStd_MapOfInteger & Done);
 
 		/****************** TopOpeBRepDS_GapFiller ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_GapFiller;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") TopOpeBRepDS_GapFiller;
 		 TopOpeBRepDS_GapFiller (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -2731,25 +2731,25 @@ class TopOpeBRepDS_GapTool : public Standard_Transient {
 		/****************** ChangeSameInterferences ******************/
 		%feature("compactdefaultargs") ChangeSameInterferences;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: TopOpeBRepDS_ListOfInterference") ChangeSameInterferences;
 		TopOpeBRepDS_ListOfInterference & ChangeSameInterferences (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** Curve ******************/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:rtype: bool") Curve;
 		Standard_Boolean Curve (const opencascade::handle<TopOpeBRepDS_Interference> & I,TopOpeBRepDS_Curve & C);
 
 		/****************** EdgeSupport ******************/
 		%feature("compactdefaultargs") EdgeSupport;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: bool") EdgeSupport;
 		Standard_Boolean EdgeSupport (const opencascade::handle<TopOpeBRepDS_Interference> & I,TopoDS_Shape & E);
 
@@ -2757,18 +2757,18 @@ class TopOpeBRepDS_GapTool : public Standard_Transient {
 		%feature("compactdefaultargs") FacesSupport;
 		%feature("autodoc", "* Return les faces qui ont genere la section origine de I
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param F2:
-	:type F2: TopoDS_Shape &
+	:type F2: TopoDS_Shape
 	:rtype: bool") FacesSupport;
 		Standard_Boolean FacesSupport (const opencascade::handle<TopOpeBRepDS_Interference> & I,TopoDS_Shape & F1,TopoDS_Shape & F2);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -2782,27 +2782,27 @@ class TopOpeBRepDS_GapTool : public Standard_Transient {
 		/****************** ParameterOnEdge ******************/
 		%feature("compactdefaultargs") ParameterOnEdge;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param U:
-	:type U: float &
+	:type U: float
 	:rtype: bool") ParameterOnEdge;
 		Standard_Boolean ParameterOnEdge (const opencascade::handle<TopOpeBRepDS_Interference> & I,const TopoDS_Shape & E,Standard_Real &OutValue);
 
 		/****************** SameInterferences ******************/
 		%feature("compactdefaultargs") SameInterferences;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: TopOpeBRepDS_ListOfInterference") SameInterferences;
 		const TopOpeBRepDS_ListOfInterference & SameInterferences (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** SetParameterOnEdge ******************/
 		%feature("compactdefaultargs") SetParameterOnEdge;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param U:
 	:type U: float
 	:rtype: None") SetParameterOnEdge;
@@ -2811,7 +2811,7 @@ class TopOpeBRepDS_GapTool : public Standard_Transient {
 		/****************** SetPoint ******************/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:param IndexPoint:
 	:type IndexPoint: int
 	:rtype: None") SetPoint;
@@ -2825,7 +2825,7 @@ class TopOpeBRepDS_GapTool : public Standard_Transient {
 		/****************** TopOpeBRepDS_GapTool ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_GapTool;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") TopOpeBRepDS_GapTool;
 		 TopOpeBRepDS_GapTool (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -2849,14 +2849,14 @@ class TopOpeBRepDS_GeometryData {
 		/****************** AddInterference ******************/
 		%feature("compactdefaultargs") AddInterference;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") AddInterference;
 		void AddInterference (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** Assign ******************/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", ":param Other:
-	:type Other: TopOpeBRepDS_GeometryData &
+	:type Other: TopOpeBRepDS_GeometryData
 	:rtype: None") Assign;
 		void Assign (const TopOpeBRepDS_GeometryData & Other);
 
@@ -2878,14 +2878,14 @@ class TopOpeBRepDS_GeometryData {
 		/****************** TopOpeBRepDS_GeometryData ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_GeometryData;
 		%feature("autodoc", ":param Other:
-	:type Other: TopOpeBRepDS_GeometryData &
+	:type Other: TopOpeBRepDS_GeometryData
 	:rtype: None") TopOpeBRepDS_GeometryData;
 		 TopOpeBRepDS_GeometryData (const TopOpeBRepDS_GeometryData & Other);
 
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param Other:
-	:type Other: TopOpeBRepDS_GeometryData &
+	:type Other: TopOpeBRepDS_GeometryData
 	:rtype: None") operator =;
 		void operator = (const TopOpeBRepDS_GeometryData & Other);
 
@@ -2916,13 +2916,13 @@ class TopOpeBRepDS_Interference : public Standard_Transient {
 		%feature("compactdefaultargs") GKGSKS;
 		%feature("autodoc", "* return GeometryType + Geometry + SupportType + Support
 	:param GK:
-	:type GK: TopOpeBRepDS_Kind &
+	:type GK: TopOpeBRepDS_Kind
 	:param G:
-	:type G: int &
+	:type G: int
 	:param SK:
-	:type SK: TopOpeBRepDS_Kind &
+	:type SK: TopOpeBRepDS_Kind
 	:param S:
-	:type S: int &
+	:type S: int
 	:rtype: None") GKGSKS;
 		void GKGSKS (TopOpeBRepDS_Kind & GK,Standard_Integer &OutValue,TopOpeBRepDS_Kind & SK,Standard_Integer &OutValue);
 
@@ -2953,14 +2953,14 @@ class TopOpeBRepDS_Interference : public Standard_Transient {
 		/****************** HasSameGeometry ******************/
 		%feature("compactdefaultargs") HasSameGeometry;
 		%feature("autodoc", ":param Other:
-	:type Other: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type Other: TopOpeBRepDS_Interference
 	:rtype: bool") HasSameGeometry;
 		Standard_Boolean HasSameGeometry (const opencascade::handle<TopOpeBRepDS_Interference> & Other);
 
 		/****************** HasSameSupport ******************/
 		%feature("compactdefaultargs") HasSameSupport;
 		%feature("autodoc", ":param Other:
-	:type Other: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type Other: TopOpeBRepDS_Interference
 	:rtype: bool") HasSameSupport;
 		Standard_Boolean HasSameSupport (const opencascade::handle<TopOpeBRepDS_Interference> & Other);
 
@@ -3003,7 +3003,7 @@ class TopOpeBRepDS_Interference : public Standard_Transient {
 		/****************** TopOpeBRepDS_Interference ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Interference;
 		%feature("autodoc", ":param Transition:
-	:type Transition: TopOpeBRepDS_Transition &
+	:type Transition: TopOpeBRepDS_Transition
 	:param SupportType:
 	:type SupportType: TopOpeBRepDS_Kind
 	:param Support:
@@ -3018,7 +3018,7 @@ class TopOpeBRepDS_Interference : public Standard_Transient {
 		/****************** TopOpeBRepDS_Interference ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Interference;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") TopOpeBRepDS_Interference;
 		 TopOpeBRepDS_Interference (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -3030,7 +3030,7 @@ class TopOpeBRepDS_Interference : public Standard_Transient {
 		/****************** Transition ******************/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", ":param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:rtype: None") Transition;
 		void Transition (const TopOpeBRepDS_Transition & T);
 
@@ -3076,7 +3076,7 @@ class TopOpeBRepDS_InterferenceIterator {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* re-initialize interference iteration process on the list of interference <L>. Conditions are not modified.
 	:param L:
-	:type L: TopOpeBRepDS_ListOfInterference &
+	:type L: TopOpeBRepDS_ListOfInterference
 	:rtype: None") Init;
 		void Init (const TopOpeBRepDS_ListOfInterference & L);
 
@@ -3090,7 +3090,7 @@ class TopOpeBRepDS_InterferenceIterator {
 		%feature("compactdefaultargs") MatchInterference;
 		%feature("autodoc", "* Returns True if the Interference <I> matches the conditions (if defined). If no conditions defined, returns True.
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: bool") MatchInterference;
 		virtual Standard_Boolean MatchInterference (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -3131,7 +3131,7 @@ class TopOpeBRepDS_InterferenceIterator {
 		%feature("compactdefaultargs") TopOpeBRepDS_InterferenceIterator;
 		%feature("autodoc", "* Creates an iterator on the Interference of list <L>.
 	:param L:
-	:type L: TopOpeBRepDS_ListOfInterference &
+	:type L: TopOpeBRepDS_ListOfInterference
 	:rtype: None") TopOpeBRepDS_InterferenceIterator;
 		 TopOpeBRepDS_InterferenceIterator (const TopOpeBRepDS_ListOfInterference & L);
 
@@ -3159,14 +3159,14 @@ class TopOpeBRepDS_InterferenceTool {
 		%feature("compactdefaultargs") DuplicateCurvePointInterference;
 		%feature("autodoc", "* duplicate I in a new interference with Complement() transition.
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: opencascade::handle<TopOpeBRepDS_Interference>") DuplicateCurvePointInterference;
 		static opencascade::handle<TopOpeBRepDS_Interference> DuplicateCurvePointInterference (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****************** MakeCurveInterference ******************/
 		%feature("compactdefaultargs") MakeCurveInterference;
 		%feature("autodoc", ":param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:param SK:
 	:type SK: TopOpeBRepDS_Kind
 	:param SI:
@@ -3183,7 +3183,7 @@ class TopOpeBRepDS_InterferenceTool {
 		/****************** MakeEdgeInterference ******************/
 		%feature("compactdefaultargs") MakeEdgeInterference;
 		%feature("autodoc", ":param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:param SK:
 	:type SK: TopOpeBRepDS_Kind
 	:param SI:
@@ -3200,7 +3200,7 @@ class TopOpeBRepDS_InterferenceTool {
 		/****************** MakeEdgeVertexInterference ******************/
 		%feature("compactdefaultargs") MakeEdgeVertexInterference;
 		%feature("autodoc", ":param Transition:
-	:type Transition: TopOpeBRepDS_Transition &
+	:type Transition: TopOpeBRepDS_Transition
 	:param EdgeI:
 	:type EdgeI: int
 	:param VertexI:
@@ -3217,20 +3217,20 @@ class TopOpeBRepDS_InterferenceTool {
 		/****************** MakeFaceCurveInterference ******************/
 		%feature("compactdefaultargs") MakeFaceCurveInterference;
 		%feature("autodoc", ":param Transition:
-	:type Transition: TopOpeBRepDS_Transition &
+	:type Transition: TopOpeBRepDS_Transition
 	:param FaceI:
 	:type FaceI: int
 	:param CurveI:
 	:type CurveI: int
 	:param PC:
-	:type PC: opencascade::handle<Geom2d_Curve> &
+	:type PC: Geom2d_Curve
 	:rtype: opencascade::handle<TopOpeBRepDS_Interference>") MakeFaceCurveInterference;
 		static opencascade::handle<TopOpeBRepDS_Interference> MakeFaceCurveInterference (const TopOpeBRepDS_Transition & Transition,const Standard_Integer FaceI,const Standard_Integer CurveI,const opencascade::handle<Geom2d_Curve> & PC);
 
 		/****************** MakeFaceEdgeInterference ******************/
 		%feature("compactdefaultargs") MakeFaceEdgeInterference;
 		%feature("autodoc", ":param Transition:
-	:type Transition: TopOpeBRepDS_Transition &
+	:type Transition: TopOpeBRepDS_Transition
 	:param FaceI:
 	:type FaceI: int
 	:param EdgeI:
@@ -3245,7 +3245,7 @@ class TopOpeBRepDS_InterferenceTool {
 		/****************** MakeSolidSurfaceInterference ******************/
 		%feature("compactdefaultargs") MakeSolidSurfaceInterference;
 		%feature("autodoc", ":param Transition:
-	:type Transition: TopOpeBRepDS_Transition &
+	:type Transition: TopOpeBRepDS_Transition
 	:param SolidI:
 	:type SolidI: int
 	:param SurfaceI:
@@ -3256,14 +3256,14 @@ class TopOpeBRepDS_InterferenceTool {
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", ":param CPI:
-	:type CPI: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type CPI: TopOpeBRepDS_Interference
 	:rtype: float") Parameter;
 		static Standard_Real Parameter (const opencascade::handle<TopOpeBRepDS_Interference> & CPI);
 
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", ":param CPI:
-	:type CPI: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type CPI: TopOpeBRepDS_Interference
 	:param Par:
 	:type Par: float
 	:rtype: void") Parameter;
@@ -3407,7 +3407,7 @@ class TopOpeBRepDS_Point {
 		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", ":param other:
-	:type other: TopOpeBRepDS_Point &
+	:type other: TopOpeBRepDS_Point
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const TopOpeBRepDS_Point & other);
 
@@ -3450,7 +3450,7 @@ class TopOpeBRepDS_Point {
 		/****************** TopOpeBRepDS_Point ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Point;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") TopOpeBRepDS_Point;
 		 TopOpeBRepDS_Point (const TopoDS_Shape & S);
 
@@ -3477,7 +3477,7 @@ class TopOpeBRepDS_PointExplorer {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param DS:
-	:type DS: TopOpeBRepDS_DataStructure &
+	:type DS: TopOpeBRepDS_DataStructure
 	:param FindOnlyKeep: default value is Standard_True
 	:type FindOnlyKeep: bool
 	:rtype: None") Init;
@@ -3532,7 +3532,7 @@ class TopOpeBRepDS_PointExplorer {
 		/****************** TopOpeBRepDS_PointExplorer ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_PointExplorer;
 		%feature("autodoc", ":param DS:
-	:type DS: TopOpeBRepDS_DataStructure &
+	:type DS: TopOpeBRepDS_DataStructure
 	:param FindOnlyKeep: default value is Standard_True
 	:type FindOnlyKeep: bool
 	:rtype: None") TopOpeBRepDS_PointExplorer;
@@ -3561,14 +3561,14 @@ class TopOpeBRepDS_Reducer {
 		/****************** ProcessFaceInterferences ******************/
 		%feature("compactdefaultargs") ProcessFaceInterferences;
 		%feature("autodoc", ":param M:
-	:type M: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State &
+	:type M: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
 	:rtype: None") ProcessFaceInterferences;
 		void ProcessFaceInterferences (const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & M);
 
 		/****************** TopOpeBRepDS_Reducer ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Reducer;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") TopOpeBRepDS_Reducer;
 		 TopOpeBRepDS_Reducer (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -3632,7 +3632,7 @@ class TopOpeBRepDS_ShapeWithState {
 		/****************** AddPart ******************/
 		%feature("compactdefaultargs") AddPart;
 		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aState:
 	:type aState: TopAbs_State
 	:rtype: None") AddPart;
@@ -3641,7 +3641,7 @@ class TopOpeBRepDS_ShapeWithState {
 		/****************** AddParts ******************/
 		%feature("compactdefaultargs") AddParts;
 		%feature("autodoc", ":param aListOfShape:
-	:type aListOfShape: TopTools_ListOfShape &
+	:type aListOfShape: TopTools_ListOfShape
 	:param aState:
 	:type aState: TopAbs_State
 	:rtype: None") AddParts;
@@ -3701,7 +3701,7 @@ class TopOpeBRepDS_Surface {
 		/****************** Assign ******************/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", ":param Other:
-	:type Other: TopOpeBRepDS_Surface &
+	:type Other: TopOpeBRepDS_Surface
 	:rtype: None") Assign;
 		void Assign (const TopOpeBRepDS_Surface & Other);
 
@@ -3743,7 +3743,7 @@ class TopOpeBRepDS_Surface {
 		/****************** TopOpeBRepDS_Surface ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Surface;
 		%feature("autodoc", ":param P:
-	:type P: opencascade::handle<Geom_Surface> &
+	:type P: Geom_Surface
 	:param T:
 	:type T: float
 	:rtype: None") TopOpeBRepDS_Surface;
@@ -3752,14 +3752,14 @@ class TopOpeBRepDS_Surface {
 		/****************** TopOpeBRepDS_Surface ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_Surface;
 		%feature("autodoc", ":param Other:
-	:type Other: TopOpeBRepDS_Surface &
+	:type Other: TopOpeBRepDS_Surface
 	:rtype: None") TopOpeBRepDS_Surface;
 		 TopOpeBRepDS_Surface (const TopOpeBRepDS_Surface & Other);
 
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param Other:
-	:type Other: TopOpeBRepDS_Surface &
+	:type Other: TopOpeBRepDS_Surface
 	:rtype: None") operator =;
 		void operator = (const TopOpeBRepDS_Surface & Other);
 
@@ -3786,7 +3786,7 @@ class TopOpeBRepDS_SurfaceExplorer {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param DS:
-	:type DS: TopOpeBRepDS_DataStructure &
+	:type DS: TopOpeBRepDS_DataStructure
 	:param FindOnlyKeep: default value is Standard_True
 	:type FindOnlyKeep: bool
 	:rtype: None") Init;
@@ -3841,7 +3841,7 @@ class TopOpeBRepDS_SurfaceExplorer {
 		/****************** TopOpeBRepDS_SurfaceExplorer ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_SurfaceExplorer;
 		%feature("autodoc", ":param DS:
-	:type DS: TopOpeBRepDS_DataStructure &
+	:type DS: TopOpeBRepDS_DataStructure
 	:param FindOnlyKeep: default value is Standard_True
 	:type FindOnlyKeep: bool
 	:rtype: None") TopOpeBRepDS_SurfaceExplorer;
@@ -3878,7 +3878,7 @@ class TopOpeBRepDS_TKI {
 	:param G:
 	:type G: int
 	:param HI:
-	:type HI: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type HI: TopOpeBRepDS_Interference
 	:rtype: None") Add;
 		void Add (const TopOpeBRepDS_Kind K,const Standard_Integer G,const opencascade::handle<TopOpeBRepDS_Interference> & HI);
 
@@ -3894,9 +3894,9 @@ class TopOpeBRepDS_TKI {
 		/****************** ChangeValue ******************/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", ":param K:
-	:type K: TopOpeBRepDS_Kind &
+	:type K: TopOpeBRepDS_Kind
 	:param G:
-	:type G: int &
+	:type G: int
 	:rtype: TopOpeBRepDS_ListOfInterference") ChangeValue;
 		TopOpeBRepDS_ListOfInterference & ChangeValue (TopOpeBRepDS_Kind & K,Standard_Integer &OutValue);
 
@@ -3908,23 +3908,23 @@ class TopOpeBRepDS_TKI {
 		/****************** DumpTKIIterator ******************/
 		%feature("compactdefaultargs") DumpTKIIterator;
 		%feature("autodoc", ":param s1: default value is ""
-	:type s1: TCollection_AsciiString &
+	:type s1: TCollection_AsciiString
 	:param s2: default value is ""
-	:type s2: TCollection_AsciiString &
+	:type s2: TCollection_AsciiString
 	:rtype: None") DumpTKIIterator;
 		void DumpTKIIterator (const TCollection_AsciiString & s1 = "",const TCollection_AsciiString & s2 = "");
 
 		/****************** FillOnGeometry ******************/
 		%feature("compactdefaultargs") FillOnGeometry;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRepDS_ListOfInterference &
+	:type L: TopOpeBRepDS_ListOfInterference
 	:rtype: None") FillOnGeometry;
 		void FillOnGeometry (const TopOpeBRepDS_ListOfInterference & L);
 
 		/****************** FillOnSupport ******************/
 		%feature("compactdefaultargs") FillOnSupport;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRepDS_ListOfInterference &
+	:type L: TopOpeBRepDS_ListOfInterference
 	:rtype: None") FillOnSupport;
 		void FillOnSupport (const TopOpeBRepDS_ListOfInterference & L);
 
@@ -3978,9 +3978,9 @@ class TopOpeBRepDS_TKI {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param K:
-	:type K: TopOpeBRepDS_Kind &
+	:type K: TopOpeBRepDS_Kind
 	:param G:
-	:type G: int &
+	:type G: int
 	:rtype: TopOpeBRepDS_ListOfInterference") Value;
 		const TopOpeBRepDS_ListOfInterference & Value (TopOpeBRepDS_Kind & K,Standard_Integer &OutValue);
 
@@ -4001,46 +4001,46 @@ class TopOpeBRepDS_TOOL {
 		/****************** EShareG ******************/
 		%feature("compactdefaultargs") EShareG;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param lEsd:
-	:type lEsd: TopTools_ListOfShape &
+	:type lEsd: TopTools_ListOfShape
 	:rtype: int") EShareG;
 		static Standard_Integer EShareG (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS,const TopoDS_Edge & E,TopTools_ListOfShape & lEsd);
 
 		/****************** GetConfig ******************/
 		%feature("compactdefaultargs") GetConfig;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param MEspON:
-	:type MEspON: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State &
+	:type MEspON: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
 	:param ie:
 	:type ie: int
 	:param iesd:
 	:type iesd: int
 	:param conf:
-	:type conf: int &
+	:type conf: int
 	:rtype: bool") GetConfig;
 		static Standard_Boolean GetConfig (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS,const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & MEspON,const Standard_Integer ie,const Standard_Integer iesd,Standard_Integer &OutValue);
 
 		/****************** GetEsd ******************/
 		%feature("compactdefaultargs") GetEsd;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ie:
 	:type ie: int
 	:param iesd:
-	:type iesd: int &
+	:type iesd: int
 	:rtype: bool") GetEsd;
 		static Standard_Boolean GetEsd (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS,const TopoDS_Shape & S,const Standard_Integer ie,Standard_Integer &OutValue);
 
 		/****************** ShareG ******************/
 		%feature("compactdefaultargs") ShareG;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param is1:
 	:type is1: int
 	:param is2:
@@ -4051,15 +4051,15 @@ class TopOpeBRepDS_TOOL {
 		/****************** ShareSplitON ******************/
 		%feature("compactdefaultargs") ShareSplitON;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param MspON:
-	:type MspON: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State &
+	:type MspON: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
 	:param i1:
 	:type i1: int
 	:param i2:
 	:type i2: int
 	:param spON:
-	:type spON: TopoDS_Shape &
+	:type spON: TopoDS_Shape
 	:rtype: bool") ShareSplitON;
 		static Standard_Boolean ShareSplitON (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS,const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & MspON,const Standard_Integer i1,const Standard_Integer i2,TopoDS_Shape & spON);
 
@@ -4280,7 +4280,7 @@ class TopOpeBRepDS_CurveData : public TopOpeBRepDS_GeometryData {
 		/****************** TopOpeBRepDS_CurveData ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_CurveData;
 		%feature("autodoc", ":param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:rtype: None") TopOpeBRepDS_CurveData;
 		 TopOpeBRepDS_CurveData (const TopOpeBRepDS_Curve & C);
 
@@ -4309,7 +4309,7 @@ class TopOpeBRepDS_CurveIterator : public TopOpeBRepDS_InterferenceIterator {
 		%feature("compactdefaultargs") MatchInterference;
 		%feature("autodoc", "* Returns True if the Interference <I> has a GeometryType() TopOpeBRepDS_CURVE returns False else.
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: bool") MatchInterference;
 		virtual Standard_Boolean MatchInterference (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -4329,7 +4329,7 @@ class TopOpeBRepDS_CurveIterator : public TopOpeBRepDS_InterferenceIterator {
 		%feature("compactdefaultargs") TopOpeBRepDS_CurveIterator;
 		%feature("autodoc", "* Creates an iterator on the curves on surface described by the interferences in <L>.
 	:param L:
-	:type L: TopOpeBRepDS_ListOfInterference &
+	:type L: TopOpeBRepDS_ListOfInterference
 	:rtype: None") TopOpeBRepDS_CurveIterator;
 		 TopOpeBRepDS_CurveIterator (const TopOpeBRepDS_ListOfInterference & L);
 
@@ -4363,7 +4363,7 @@ class TopOpeBRepDS_CurvePointInterference : public TopOpeBRepDS_Interference {
 		/****************** TopOpeBRepDS_CurvePointInterference ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_CurvePointInterference;
 		%feature("autodoc", ":param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:param ST:
 	:type ST: TopOpeBRepDS_Kind
 	:param S:
@@ -4397,9 +4397,9 @@ class TopOpeBRepDS_PointData : public TopOpeBRepDS_GeometryData {
 		/****************** GetShapes ******************/
 		%feature("compactdefaultargs") GetShapes;
 		%feature("autodoc", ":param I1:
-	:type I1: int &
+	:type I1: int
 	:param I2:
-	:type I2: int &
+	:type I2: int
 	:rtype: None") GetShapes;
 		void GetShapes (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -4420,14 +4420,14 @@ class TopOpeBRepDS_PointData : public TopOpeBRepDS_GeometryData {
 		/****************** TopOpeBRepDS_PointData ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_PointData;
 		%feature("autodoc", ":param P:
-	:type P: TopOpeBRepDS_Point &
+	:type P: TopOpeBRepDS_Point
 	:rtype: None") TopOpeBRepDS_PointData;
 		 TopOpeBRepDS_PointData (const TopOpeBRepDS_Point & P);
 
 		/****************** TopOpeBRepDS_PointData ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_PointData;
 		%feature("autodoc", ":param P:
-	:type P: TopOpeBRepDS_Point &
+	:type P: TopOpeBRepDS_Point
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -4475,7 +4475,7 @@ class TopOpeBRepDS_PointIterator : public TopOpeBRepDS_InterferenceIterator {
 		%feature("compactdefaultargs") MatchInterference;
 		%feature("autodoc", "* Returns True if the Interference <I> has a GeometryType() TopOpeBRepDS_POINT or TopOpeBRepDS_VERTEX returns False else.
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: bool") MatchInterference;
 		virtual Standard_Boolean MatchInterference (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -4505,7 +4505,7 @@ class TopOpeBRepDS_PointIterator : public TopOpeBRepDS_InterferenceIterator {
 		%feature("compactdefaultargs") TopOpeBRepDS_PointIterator;
 		%feature("autodoc", "* Creates an iterator on the points on curves described by the interferences in <L>.
 	:param L:
-	:type L: TopOpeBRepDS_ListOfInterference &
+	:type L: TopOpeBRepDS_ListOfInterference
 	:rtype: None") TopOpeBRepDS_PointIterator;
 		 TopOpeBRepDS_PointIterator (const TopOpeBRepDS_ListOfInterference & L);
 
@@ -4545,7 +4545,7 @@ class TopOpeBRepDS_ShapeShapeInterference : public TopOpeBRepDS_Interference {
 		%feature("compactdefaultargs") TopOpeBRepDS_ShapeShapeInterference;
 		%feature("autodoc", "* a shape interfers on shape <G> with shape <S>. examples : create a ShapeShapeInterference describing : vertex V of edge E1 found on edge E2 : ST,S,GT,G = TopOpeBRepDS_EDGE,E2,TopOpeBRepDS_VERTEX,V //! create a ShapeShapeInterference describing vertex V of edge E found on face F : ST,S,GT,G = TopOpeBRepDS_FACE,F,TopOpeBRepDS_VERTEX,V //! <GBound> indicates if shape <G> is a bound of shape <S>. //! <SCC> : UNSH_GEOMETRY : <S> and <Ancestor> have any types, <S> and <Ancestor> don't share the same geometry SAME_ORIENTED : <S> and <Ancestor> have identical types, <S> and <Ancestor> orientations are IDENTICAL. DIFF_ORIENTED : <S> and <Ancestor> have identical types, <S> and <Ancestor> orientations are DIFFERENT.
 	:param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:param ST:
 	:type ST: TopOpeBRepDS_Kind
 	:param S:
@@ -4581,7 +4581,7 @@ class TopOpeBRepDS_SolidSurfaceInterference : public TopOpeBRepDS_Interference {
 		/****************** TopOpeBRepDS_SolidSurfaceInterference ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_SolidSurfaceInterference;
 		%feature("autodoc", ":param Transition:
-	:type Transition: TopOpeBRepDS_Transition &
+	:type Transition: TopOpeBRepDS_Transition
 	:param SupportType:
 	:type SupportType: TopOpeBRepDS_Kind
 	:param Support:
@@ -4618,7 +4618,7 @@ class TopOpeBRepDS_SurfaceCurveInterference : public TopOpeBRepDS_Interference {
 		/****************** PCurve ******************/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", ":param PC:
-	:type PC: opencascade::handle<Geom2d_Curve> &
+	:type PC: Geom2d_Curve
 	:rtype: None") PCurve;
 		void PCurve (const opencascade::handle<Geom2d_Curve> & PC);
 
@@ -4630,7 +4630,7 @@ class TopOpeBRepDS_SurfaceCurveInterference : public TopOpeBRepDS_Interference {
 		/****************** TopOpeBRepDS_SurfaceCurveInterference ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_SurfaceCurveInterference;
 		%feature("autodoc", ":param Transition:
-	:type Transition: TopOpeBRepDS_Transition &
+	:type Transition: TopOpeBRepDS_Transition
 	:param SupportType:
 	:type SupportType: TopOpeBRepDS_Kind
 	:param Support:
@@ -4640,14 +4640,14 @@ class TopOpeBRepDS_SurfaceCurveInterference : public TopOpeBRepDS_Interference {
 	:param Geometry:
 	:type Geometry: int
 	:param PC:
-	:type PC: opencascade::handle<Geom2d_Curve> &
+	:type PC: Geom2d_Curve
 	:rtype: None") TopOpeBRepDS_SurfaceCurveInterference;
 		 TopOpeBRepDS_SurfaceCurveInterference (const TopOpeBRepDS_Transition & Transition,const TopOpeBRepDS_Kind SupportType,const Standard_Integer Support,const TopOpeBRepDS_Kind GeometryType,const Standard_Integer Geometry,const opencascade::handle<Geom2d_Curve> & PC);
 
 		/****************** TopOpeBRepDS_SurfaceCurveInterference ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_SurfaceCurveInterference;
 		%feature("autodoc", ":param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") TopOpeBRepDS_SurfaceCurveInterference;
 		 TopOpeBRepDS_SurfaceCurveInterference (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -4676,7 +4676,7 @@ class TopOpeBRepDS_SurfaceData : public TopOpeBRepDS_GeometryData {
 		/****************** TopOpeBRepDS_SurfaceData ******************/
 		%feature("compactdefaultargs") TopOpeBRepDS_SurfaceData;
 		%feature("autodoc", ":param S:
-	:type S: TopOpeBRepDS_Surface &
+	:type S: TopOpeBRepDS_Surface
 	:rtype: None") TopOpeBRepDS_SurfaceData;
 		 TopOpeBRepDS_SurfaceData (const TopOpeBRepDS_Surface & S);
 
@@ -4712,7 +4712,7 @@ class TopOpeBRepDS_SurfaceIterator : public TopOpeBRepDS_InterferenceIterator {
 		%feature("compactdefaultargs") TopOpeBRepDS_SurfaceIterator;
 		%feature("autodoc", "* Creates an iterator on the Surfaces on solid described by the interferences in <L>.
 	:param L:
-	:type L: TopOpeBRepDS_ListOfInterference &
+	:type L: TopOpeBRepDS_ListOfInterference
 	:rtype: None") TopOpeBRepDS_SurfaceIterator;
 		 TopOpeBRepDS_SurfaceIterator (const TopOpeBRepDS_ListOfInterference & L);
 
@@ -4747,7 +4747,7 @@ class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterf
 		%feature("compactdefaultargs") TopOpeBRepDS_EdgeVertexInterference;
 		%feature("autodoc", "* Create an interference of VERTEX <G> on a crossed EDGE E. //! if support type <ST> == EDGE : <S> is edge E FACE : <S> is the face with bound E. <T> is the transition along the edge, crossing the crossed edge. E is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <P> is the parameter of <G> on the edge. //! interference is stored in the list of interfs of the edge.
 	:param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:param ST:
 	:type ST: TopOpeBRepDS_Kind
 	:param S:
@@ -4767,7 +4767,7 @@ class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterf
 		%feature("compactdefaultargs") TopOpeBRepDS_EdgeVertexInterference;
 		%feature("autodoc", "* Create an interference of VERTEX <G> on crossed EDGE <S>. //! <T> is the transition along the edge, crossing the crossed edge. <S> is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <C> indicates the geometric configuration between the edge and the crossed edge. <P> is the parameter of <G> on the edge. //! interference is stored in the list of interfs of the edge.
 	:param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:param S:
 	:type S: int
 	:param G:
@@ -4802,7 +4802,7 @@ class TopOpeBRepDS_FaceEdgeInterference : public TopOpeBRepDS_ShapeShapeInterfer
 		%feature("compactdefaultargs") TopOpeBRepDS_FaceEdgeInterference;
 		%feature("autodoc", "* Create an interference of EDGE <G> on FACE <S>.
 	:param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:param S:
 	:type S: int
 	:param G:

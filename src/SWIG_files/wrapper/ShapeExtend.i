@@ -172,9 +172,9 @@ class ShapeExtend_BasicMsgRegistrator : public Standard_Transient {
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "* Sends a message to be attached to the object. Object can be of any type interpreted by redefined MsgRegistrator.
 	:param object:
-	:type object: opencascade::handle<Standard_Transient> &
+	:type object: Standard_Transient
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:param gravity:
 	:type gravity: Message_Gravity
 	:rtype: void") Send;
@@ -184,9 +184,9 @@ class ShapeExtend_BasicMsgRegistrator : public Standard_Transient {
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "* Sends a message to be attached to the shape.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:param gravity:
 	:type gravity: Message_Gravity
 	:rtype: void") Send;
@@ -196,7 +196,7 @@ class ShapeExtend_BasicMsgRegistrator : public Standard_Transient {
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "* Calls Send method with Null Transient.
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:param gravity:
 	:type gravity: Message_Gravity
 	:rtype: void") Send;
@@ -361,7 +361,7 @@ class ShapeExtend_ComplexCurve : public Geom_Curve {
 	:param U:
 	:type U: float
 	:param UOut:
-	:type UOut: float &
+	:type UOut: float
 	:rtype: int") LocateParameter;
 		virtual Standard_Integer LocateParameter (const Standard_Real U,Standard_Real &OutValue);
 
@@ -408,13 +408,13 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds of grid
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: void") Bounds;
 		virtual void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -560,7 +560,7 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 	:param j:
 	:type j: int
 	:param uFact:
-	:type uFact: float &
+	:type uFact: float
 	:param Trsf:
 	:type Trsf: gp_Trsf2d
 	:rtype: bool") GlobalToLocalTransformation;
@@ -570,7 +570,7 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes by a grid of surfaces. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case. //! Last parameter defines how global parametrisation (joint values) will be computed: ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc. ShapeExtend_Uniform: Ui = i-1, Vj = j-1 ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv
 	:param GridSurf:
-	:type GridSurf: opencascade::handle<TColGeom_HArray2OfSurface> &
+	:type GridSurf: TColGeom_HArray2OfSurface
 	:param param: default value is ShapeExtend_Natural
 	:type param: ShapeExtend_Parametrisation
 	:rtype: bool") Init;
@@ -580,11 +580,11 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes by a grid of surfaces with given global parametrisation defined by UJoints and VJoints arrays, each having langth equal to number of patches in corresponding direction + 1. Global joint values should be sorted in increasing order. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case.
 	:param GridSurf:
-	:type GridSurf: opencascade::handle<TColGeom_HArray2OfSurface> &
+	:type GridSurf: TColGeom_HArray2OfSurface
 	:param UJoints:
-	:type UJoints: TColStd_Array1OfReal &
+	:type UJoints: TColStd_Array1OfReal
 	:param VJoints:
-	:type VJoints: TColStd_Array1OfReal &
+	:type VJoints: TColStd_Array1OfReal
 	:rtype: bool") Init;
 		Standard_Boolean Init (const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf,const TColStd_Array1OfReal & UJoints,const TColStd_Array1OfReal & VJoints);
 
@@ -654,9 +654,9 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 	:param pnt:
 	:type pnt: gp_Pnt2d
 	:param i:
-	:type i: int &
+	:type i: int
 	:param j:
-	:type j: int &
+	:type j: int
 	:rtype: None") LocateUVPoint;
 		void LocateUVPoint (const gp_Pnt2d & pnt,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -726,7 +726,7 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 		%feature("compactdefaultargs") SetUJointValues;
 		%feature("autodoc", "* Sets the array of U values corresponding to joint points, which define global parametrisation of the surface. Number of values in array should be equal to NbUPatches()+1. All the values should be sorted in increasing order. If this is not satisfied, does nothing and returns False.
 	:param UJoints:
-	:type UJoints: TColStd_Array1OfReal &
+	:type UJoints: TColStd_Array1OfReal
 	:rtype: bool") SetUJointValues;
 		Standard_Boolean SetUJointValues (const TColStd_Array1OfReal & UJoints);
 
@@ -742,7 +742,7 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 		%feature("compactdefaultargs") SetVJointValues;
 		%feature("autodoc", "* Sets the array of V values corresponding to joint points, which define global parametrisation of the surface Number of values in array should be equal to NbVPatches()+1. All the values should be sorted in increasing order. If this is not satisfied, does nothing and returns False.
 	:param VJoints:
-	:type VJoints: TColStd_Array1OfReal &
+	:type VJoints: TColStd_Array1OfReal
 	:rtype: bool") SetVJointValues;
 		Standard_Boolean SetVJointValues (const TColStd_Array1OfReal & VJoints);
 
@@ -756,7 +756,7 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 		%feature("compactdefaultargs") ShapeExtend_CompositeSurface;
 		%feature("autodoc", "* Initializes by a grid of surfaces (calls Init()).
 	:param GridSurf:
-	:type GridSurf: opencascade::handle<TColGeom_HArray2OfSurface> &
+	:type GridSurf: TColGeom_HArray2OfSurface
 	:param param: default value is ShapeExtend_Natural
 	:type param: ShapeExtend_Parametrisation
 	:rtype: None") ShapeExtend_CompositeSurface;
@@ -766,11 +766,11 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 		%feature("compactdefaultargs") ShapeExtend_CompositeSurface;
 		%feature("autodoc", "* Initializes by a grid of surfaces (calls Init()).
 	:param GridSurf:
-	:type GridSurf: opencascade::handle<TColGeom_HArray2OfSurface> &
+	:type GridSurf: TColGeom_HArray2OfSurface
 	:param UJoints:
-	:type UJoints: TColStd_Array1OfReal &
+	:type UJoints: TColStd_Array1OfReal
 	:param VJoints:
-	:type VJoints: TColStd_Array1OfReal &
+	:type VJoints: TColStd_Array1OfReal
 	:rtype: None") ShapeExtend_CompositeSurface;
 		 ShapeExtend_CompositeSurface (const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf,const TColStd_Array1OfReal & UJoints,const TColStd_Array1OfReal & VJoints);
 
@@ -931,7 +931,7 @@ class ShapeExtend_Explorer {
 		%feature("compactdefaultargs") CompoundFromSeq;
 		%feature("autodoc", "* Converts a sequence of Shapes to a Compound
 	:param seqval:
-	:type seqval: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type seqval: TopTools_HSequenceOfShape
 	:rtype: TopoDS_Shape") CompoundFromSeq;
 		TopoDS_Shape CompoundFromSeq (const opencascade::handle<TopTools_HSequenceOfShape> & seqval);
 
@@ -939,23 +939,23 @@ class ShapeExtend_Explorer {
 		%feature("compactdefaultargs") DispatchList;
 		%feature("autodoc", "* Dispatches starting list of shapes according to their type, to the appropriate resulting lists For each of these lists, if it is null, it is firstly created else, new items are appended to the already existing ones
 	:param list:
-	:type list: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type list: TopTools_HSequenceOfShape
 	:param vertices:
-	:type vertices: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type vertices: TopTools_HSequenceOfShape
 	:param edges:
-	:type edges: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type edges: TopTools_HSequenceOfShape
 	:param wires:
-	:type wires: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type wires: TopTools_HSequenceOfShape
 	:param faces:
-	:type faces: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type faces: TopTools_HSequenceOfShape
 	:param shells:
-	:type shells: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type shells: TopTools_HSequenceOfShape
 	:param solids:
-	:type solids: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type solids: TopTools_HSequenceOfShape
 	:param compsols:
-	:type compsols: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type compsols: TopTools_HSequenceOfShape
 	:param compounds:
-	:type compounds: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type compounds: TopTools_HSequenceOfShape
 	:rtype: None") DispatchList;
 		void DispatchList (const opencascade::handle<TopTools_HSequenceOfShape> & list,opencascade::handle<TopTools_HSequenceOfShape> & vertices,opencascade::handle<TopTools_HSequenceOfShape> & edges,opencascade::handle<TopTools_HSequenceOfShape> & wires,opencascade::handle<TopTools_HSequenceOfShape> & faces,opencascade::handle<TopTools_HSequenceOfShape> & shells,opencascade::handle<TopTools_HSequenceOfShape> & solids,opencascade::handle<TopTools_HSequenceOfShape> & compsols,opencascade::handle<TopTools_HSequenceOfShape> & compounds);
 
@@ -963,9 +963,9 @@ class ShapeExtend_Explorer {
 		%feature("compactdefaultargs") ListFromSeq;
 		%feature("autodoc", "* Converts a Sequence of Shapes to a List of Shapes <clear> if True (D), commands the list to start from scratch else, the list is cumulated
 	:param seqval:
-	:type seqval: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type seqval: TopTools_HSequenceOfShape
 	:param lisval:
-	:type lisval: TopTools_ListOfShape &
+	:type lisval: TopTools_ListOfShape
 	:param clear: default value is Standard_True
 	:type clear: bool
 	:rtype: None") ListFromSeq;
@@ -975,7 +975,7 @@ class ShapeExtend_Explorer {
 		%feature("compactdefaultargs") SeqFromCompound;
 		%feature("autodoc", "* Converts a Compound to a list of Shapes if <comp> is not a compound, the list contains only <comp> if <comp> is Null, the list is empty if <comp> is a Compound, its sub-shapes are put into the list then if <expcomp> is True, if a sub-shape is a Compound, it is not put to the list but its sub-shapes are (recursive)
 	:param comp:
-	:type comp: TopoDS_Shape &
+	:type comp: TopoDS_Shape
 	:param expcomp:
 	:type expcomp: bool
 	:rtype: opencascade::handle<TopTools_HSequenceOfShape>") SeqFromCompound;
@@ -985,7 +985,7 @@ class ShapeExtend_Explorer {
 		%feature("compactdefaultargs") SeqFromList;
 		%feature("autodoc", "* Converts a List of Shapes to a Sequence of Shapes
 	:param lisval:
-	:type lisval: TopTools_ListOfShape &
+	:type lisval: TopTools_ListOfShape
 	:rtype: opencascade::handle<TopTools_HSequenceOfShape>") SeqFromList;
 		opencascade::handle<TopTools_HSequenceOfShape> SeqFromList (const TopTools_ListOfShape & lisval);
 
@@ -999,7 +999,7 @@ class ShapeExtend_Explorer {
 		%feature("compactdefaultargs") ShapeType;
 		%feature("autodoc", "* Returns the type of a Shape: true type if <compound> is False If <compound> is True and <shape> is a Compound, iterates on its items. If all are of the same type, returns this type. Else, returns COMPOUND. If it is empty, returns SHAPE For a Null Shape, returns SHAPE
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param compound:
 	:type compound: bool
 	:rtype: TopAbs_ShapeEnum") ShapeType;
@@ -1009,7 +1009,7 @@ class ShapeExtend_Explorer {
 		%feature("compactdefaultargs") SortedCompound;
 		%feature("autodoc", "* Builds a COMPOUND from the given shape. It explores the shape level by level, according to the <explore> argument. If <explore> is False, only COMPOUND items are explored, else all items are. The following shapes are added to resulting compound: - shapes which comply to <type> - if <type> is WIRE, considers also free edges (and makes wires) - if <type> is SHELL, considers also free faces (and makes shells) If <compound> is True, gathers items in compounds which correspond to starting COMPOUND,SOLID or SHELL containers, or items directly contained in a Compound
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param type:
 	:type type: TopAbs_ShapeEnum
 	:param explore:
@@ -1038,7 +1038,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds an edge to a wire, being defined (not yet ended) This is the plain, basic, function to add an edge <num> = 0 (D): Appends at end <num> = 1: Preprends at start else, Insert before <num> Remark : Null Edge is simply ignored
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param atnum: default value is 0
 	:type atnum: int
 	:rtype: None") Add;
@@ -1048,7 +1048,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds an entire wire, considered as a list of edges Remark : The wire is assumed to be ordered (TopoDS_Iterator is used)
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param atnum: default value is 0
 	:type atnum: int
 	:rtype: None") Add;
@@ -1058,7 +1058,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a wire in the form of WireData
 	:param wire:
-	:type wire: opencascade::handle<ShapeExtend_WireData> &
+	:type wire: ShapeExtend_WireData
 	:param atnum: default value is 0
 	:type atnum: int
 	:rtype: None") Add;
@@ -1068,7 +1068,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds an edge or a wire invoking corresponding method Add
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param atnum: default value is 0
 	:type atnum: int
 	:rtype: None") Add;
@@ -1078,7 +1078,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") AddOriented;
 		%feature("autodoc", "* Adds an edge to start or end of <self>, according to <mode> 0: at end, as direct 1: at end, as reversed 2: at start, as direct 3: at start, as reversed < 0: no adding
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param mode:
 	:type mode: int
 	:rtype: None") AddOriented;
@@ -1088,7 +1088,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") AddOriented;
 		%feature("autodoc", "* Adds a wire to start or end of <self>, according to <mode> 0: at end, as direct 1: at end, as reversed 2: at start, as direct 3: at start, as reversed < 0: no adding
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param mode:
 	:type mode: int
 	:rtype: None") AddOriented;
@@ -1098,7 +1098,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") AddOriented;
 		%feature("autodoc", "* Adds an edge or a wire invoking corresponding method AddOriented
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param mode:
 	:type mode: int
 	:rtype: None") AddOriented;
@@ -1130,7 +1130,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "* Returns the index of the edge If the edge is a seam the orientation is also checked Returns 0 if the edge is not found in the list
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:rtype: int") Index;
 		Standard_Integer Index (const TopoDS_Edge & edge);
 
@@ -1138,7 +1138,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Copies data from another WireData
 	:param other:
-	:type other: opencascade::handle<ShapeExtend_WireData> &
+	:type other: ShapeExtend_WireData
 	:rtype: None") Init;
 		void Init (const opencascade::handle<ShapeExtend_WireData> & other);
 
@@ -1146,7 +1146,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Loads an already existing wire If <chained> is True (default), edges are added in the sequence as they are explored by TopoDS_Iterator Else, if <chained> is False, wire is explored by BRepTools_WireExplorer and it is guaranteed that edges will be sequencially connected. Remark : In the latter case it can happen that not all edges will be found (because of limitations of BRepTools_WireExplorer for disconnected wires and wires with seam edges).
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param chained: default value is Standard_True
 	:type chained: bool
 	:param theManifoldMode: default value is Standard_True
@@ -1219,7 +1219,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "* Reverses the sense of the list and the orientation of each Edge The face is necessary for swapping pcurves for seam edges (first pcurve corresponds to orientation FORWARD, and second to REVERSED; when edge is reversed, pcurves must be swapped) If face is NULL, no swapping is performed
 	:param face:
-	:type face: TopoDS_Face &
+	:type face: TopoDS_Face
 	:rtype: None") Reverse;
 		void Reverse (const TopoDS_Face & face);
 
@@ -1227,7 +1227,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Replaces an edge at the given rank number <num> with new one. Default is last edge (<num> = 0).
 	:param edge:
-	:type edge: TopoDS_Edge &
+	:type edge: TopoDS_Edge
 	:param num: default value is 0
 	:type num: int
 	:rtype: None") Set;
@@ -1257,7 +1257,7 @@ class ShapeExtend_WireData : public Standard_Transient {
 		%feature("compactdefaultargs") ShapeExtend_WireData;
 		%feature("autodoc", "* Constructor initializing the data from TopoDS_Wire. Calls Init(wire,chained).
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param chained: default value is Standard_True
 	:type chained: bool
 	:param theManifoldMode: default value is Standard_True
@@ -1310,9 +1310,9 @@ class ShapeExtend_MsgRegistrator : public ShapeExtend_BasicMsgRegistrator {
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "* Sends a message to be attached to the object. If the object is in the map then the message is added to the list, otherwise the object is firstly added to the map.
 	:param object:
-	:type object: opencascade::handle<Standard_Transient> &
+	:type object: Standard_Transient
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:param gravity:
 	:type gravity: Message_Gravity
 	:rtype: void") Send;
@@ -1322,9 +1322,9 @@ class ShapeExtend_MsgRegistrator : public ShapeExtend_BasicMsgRegistrator {
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "* Sends a message to be attached to the shape. If the shape is in the map then the message is added to the list, otherwise the shape is firstly added to the map.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param message:
-	:type message: Message_Msg &
+	:type message: Message_Msg
 	:param gravity:
 	:type gravity: Message_Gravity
 	:rtype: void") Send;

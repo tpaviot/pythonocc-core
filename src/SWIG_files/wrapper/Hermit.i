@@ -76,7 +76,7 @@ class Hermit {
 		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "* returns the correct spline a(u) which will be multiplicated with BS later.
 	:param BS:
-	:type BS: opencascade::handle<Geom_BSplineCurve> &
+	:type BS: Geom_BSplineCurve
 	:param TolPoles: default value is 0.000001
 	:type TolPoles: float
 	:param TolKnots: default value is 0.000001
@@ -88,7 +88,7 @@ class Hermit {
 		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "* returns the correct spline a(u) which will be multiplicated with BS later.
 	:param BS:
-	:type BS: opencascade::handle<Geom2d_BSplineCurve> &
+	:type BS: Geom2d_BSplineCurve
 	:param TolPoles: default value is 0.000001
 	:type TolPoles: float
 	:param TolKnots: default value is 0.000001
@@ -100,11 +100,11 @@ class Hermit {
 		%feature("compactdefaultargs") Solutionbis;
 		%feature("autodoc", "* returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
 	:param BS:
-	:type BS: opencascade::handle<Geom_BSplineCurve> &
+	:type BS: Geom_BSplineCurve
 	:param Knotmin:
-	:type Knotmin: float &
+	:type Knotmin: float
 	:param Knotmax:
-	:type Knotmax: float &
+	:type Knotmax: float
 	:param TolPoles: default value is 0.000001
 	:type TolPoles: float
 	:param TolKnots: default value is 0.000001

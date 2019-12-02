@@ -339,7 +339,7 @@ class GeomEvaluator_OffsetCurve : public GeomEvaluator_Curve {
 		%feature("compactdefaultargs") GeomEvaluator_OffsetCurve;
 		%feature("autodoc", "* Initialize evaluator by curve
 	:param theBase:
-	:type theBase: opencascade::handle<Geom_Curve> &
+	:type theBase: Geom_Curve
 	:param theOffset:
 	:type theOffset: float
 	:param theDirection:
@@ -351,7 +351,7 @@ class GeomEvaluator_OffsetCurve : public GeomEvaluator_Curve {
 		%feature("compactdefaultargs") GeomEvaluator_OffsetCurve;
 		%feature("autodoc", "* Initialize evaluator by curve adaptor
 	:param theBase:
-	:type theBase: opencascade::handle<GeomAdaptor_HCurve> &
+	:type theBase: GeomAdaptor_HCurve
 	:param theOffset:
 	:type theOffset: float
 	:param theDirection:
@@ -489,11 +489,11 @@ class GeomEvaluator_OffsetSurface : public GeomEvaluator_Surface {
 		%feature("compactdefaultargs") GeomEvaluator_OffsetSurface;
 		%feature("autodoc", "* Initialize evaluator by surface
 	:param theBase:
-	:type theBase: opencascade::handle<Geom_Surface> &
+	:type theBase: Geom_Surface
 	:param theOffset:
 	:type theOffset: float
 	:param theOscSurf: default value is opencascade::handle<Geom_OsculatingSurface>()
-	:type theOscSurf: opencascade::handle<Geom_OsculatingSurface> &
+	:type theOscSurf: Geom_OsculatingSurface
 	:rtype: None") GeomEvaluator_OffsetSurface;
 		 GeomEvaluator_OffsetSurface (const opencascade::handle<Geom_Surface> & theBase,const Standard_Real theOffset,const opencascade::handle<Geom_OsculatingSurface> & theOscSurf = opencascade::handle<Geom_OsculatingSurface>());
 
@@ -501,11 +501,11 @@ class GeomEvaluator_OffsetSurface : public GeomEvaluator_Surface {
 		%feature("compactdefaultargs") GeomEvaluator_OffsetSurface;
 		%feature("autodoc", "* Initialize evaluator by surface adaptor
 	:param theBase:
-	:type theBase: opencascade::handle<GeomAdaptor_HSurface> &
+	:type theBase: GeomAdaptor_HSurface
 	:param theOffset:
 	:type theOffset: float
 	:param theOscSurf: default value is opencascade::handle<Geom_OsculatingSurface>()
-	:type theOscSurf: opencascade::handle<Geom_OsculatingSurface> &
+	:type theOscSurf: Geom_OsculatingSurface
 	:rtype: None") GeomEvaluator_OffsetSurface;
 		 GeomEvaluator_OffsetSurface (const opencascade::handle<GeomAdaptor_HSurface> & theBase,const Standard_Real theOffset,const opencascade::handle<Geom_OsculatingSurface> & theOscSurf = opencascade::handle<Geom_OsculatingSurface>());
 
@@ -632,7 +632,7 @@ class GeomEvaluator_SurfaceOfExtrusion : public GeomEvaluator_Surface {
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfExtrusion;
 		%feature("autodoc", "* Initialize evaluator by surface
 	:param theBase:
-	:type theBase: opencascade::handle<Geom_Curve> &
+	:type theBase: Geom_Curve
 	:param theExtrusionDir:
 	:type theExtrusionDir: gp_Dir
 	:rtype: None") GeomEvaluator_SurfaceOfExtrusion;
@@ -642,7 +642,7 @@ class GeomEvaluator_SurfaceOfExtrusion : public GeomEvaluator_Surface {
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfExtrusion;
 		%feature("autodoc", "* Initialize evaluator by surface adaptor
 	:param theBase:
-	:type theBase: opencascade::handle<Adaptor3d_HCurve> &
+	:type theBase: Adaptor3d_HCurve
 	:param theExtrusionDir:
 	:type theExtrusionDir: gp_Dir
 	:rtype: None") GeomEvaluator_SurfaceOfExtrusion;
@@ -771,7 +771,7 @@ class GeomEvaluator_SurfaceOfRevolution : public GeomEvaluator_Surface {
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfRevolution;
 		%feature("autodoc", "* Initialize evaluator by revolved curve, the axis of revolution and the location
 	:param theBase:
-	:type theBase: opencascade::handle<Geom_Curve> &
+	:type theBase: Geom_Curve
 	:param theRevolDir:
 	:type theRevolDir: gp_Dir
 	:param theRevolLoc:
@@ -783,7 +783,7 @@ class GeomEvaluator_SurfaceOfRevolution : public GeomEvaluator_Surface {
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfRevolution;
 		%feature("autodoc", "* Initialize evaluator by adaptor of the revolved curve, the axis of revolution and the location
 	:param theBase:
-	:type theBase: opencascade::handle<Adaptor3d_HCurve> &
+	:type theBase: Adaptor3d_HCurve
 	:param theRevolDir:
 	:type theRevolDir: gp_Dir
 	:param theRevolLoc:

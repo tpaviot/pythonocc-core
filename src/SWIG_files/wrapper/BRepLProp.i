@@ -85,9 +85,9 @@ class BRepLProp {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "* Computes the regularity at the junction between C1 and C2. The point u1 on C1 and the point u2 on C2 must be confused. tl and ta are the linear and angular tolerance used two compare the derivative.
 	:param C1:
-	:type C1: BRepAdaptor_Curve &
+	:type C1: BRepAdaptor_Curve
 	:param C2:
-	:type C2: BRepAdaptor_Curve &
+	:type C2: BRepAdaptor_Curve
 	:param u1:
 	:type u1: float
 	:param u2:
@@ -103,9 +103,9 @@ class BRepLProp {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "* The same as preciding but using the standard tolerances from package Precision.
 	:param C1:
-	:type C1: BRepAdaptor_Curve &
+	:type C1: BRepAdaptor_Curve
 	:param C2:
-	:type C2: BRepAdaptor_Curve &
+	:type C2: BRepAdaptor_Curve
 	:param u1:
 	:type u1: float
 	:param u2:
@@ -132,7 +132,7 @@ class BRepLProp_CLProps {
 		%feature("compactdefaultargs") BRepLProp_CLProps;
 		%feature("autodoc", "* Initializes the local properties of the curve <C> The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, 2 or 3). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param N:
 	:type N: int
 	:param Resolution:
@@ -144,7 +144,7 @@ class BRepLProp_CLProps {
 		%feature("compactdefaultargs") BRepLProp_CLProps;
 		%feature("autodoc", "* Same as previous constructor but here the parameter is set to the value <U>. All the computations done will be related to <C> and <U>.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param N:
@@ -214,7 +214,7 @@ class BRepLProp_CLProps {
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "* Initializes the local properties of the curve for the new curve.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: None") SetCurve;
 		void SetCurve (const BRepAdaptor_Curve & C);
 
@@ -258,7 +258,7 @@ class BRepLProp_CurveTool {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "* returns the order of continuity of the curve <C>. returns 1 : first derivative only is computable returns 2 : first and second derivative only are computable. returns 3 : first, second and third are computable.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: int") Continuity;
 		static Standard_Integer Continuity (const BRepAdaptor_Curve & C);
 
@@ -266,7 +266,7 @@ class BRepLProp_CurveTool {
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "* Computes the point <P> and first derivative <V1> of parameter <U> on the curve <C>.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -280,7 +280,7 @@ class BRepLProp_CurveTool {
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "* Computes the point <P>, the first derivative <V1> and second derivative <V2> of parameter <U> on the curve <C>.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -296,7 +296,7 @@ class BRepLProp_CurveTool {
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "* Computes the point <P>, the first derivative <V1>, the second derivative <V2> and third derivative <V3> of parameter <U> on the curve <C>.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -314,7 +314,7 @@ class BRepLProp_CurveTool {
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "* returns the first parameter bound of the curve.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: float") FirstParameter;
 		static Standard_Real FirstParameter (const BRepAdaptor_Curve & C);
 
@@ -322,7 +322,7 @@ class BRepLProp_CurveTool {
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "* returns the last parameter bound of the curve. FirstParameter must be less than LastParamenter.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: float") LastParameter;
 		static Standard_Real LastParameter (const BRepAdaptor_Curve & C);
 
@@ -330,7 +330,7 @@ class BRepLProp_CurveTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Computes the point <P> of parameter <U> on the curve <C>.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:param U:
 	:type U: float
 	:param P:
@@ -357,7 +357,7 @@ class BRepLProp_SLProps {
 		%feature("compactdefaultargs") BRepLProp_SLProps;
 		%feature("autodoc", "* Initializes the local properties of the surface <S> for the parameter values (<U>, <V>). The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, or 2). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:param U:
 	:type U: float
 	:param V:
@@ -373,7 +373,7 @@ class BRepLProp_SLProps {
 		%feature("compactdefaultargs") BRepLProp_SLProps;
 		%feature("autodoc", "* idem as previous constructor but without setting the value of parameters <U> and <V>.
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:param N:
 	:type N: int
 	:param Resolution:
@@ -505,7 +505,7 @@ class BRepLProp_SLProps {
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "* Initializes the local properties of the surface S for the new surface.
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:rtype: None") SetSurface;
 		void SetSurface (const BRepAdaptor_Surface & S);
 
@@ -549,15 +549,15 @@ class BRepLProp_SurfaceTool {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* returns the bounds of the Surface.
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: void") Bounds;
 		static void Bounds (const BRepAdaptor_Surface & S,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -565,7 +565,7 @@ class BRepLProp_SurfaceTool {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "* returns the order of continuity of the Surface <S>. returns 1 : first derivative only is computable returns 2 : first and second derivative only are computable.
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:rtype: int") Continuity;
 		static Standard_Integer Continuity (const BRepAdaptor_Surface & S);
 
@@ -573,7 +573,7 @@ class BRepLProp_SurfaceTool {
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "* Computes the point <P> and first derivative <D1*> of parameter <U> and <V> on the Surface <S>.
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:param U:
 	:type U: float
 	:param V:
@@ -591,7 +591,7 @@ class BRepLProp_SurfaceTool {
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "* Computes the point <P>, the first derivative <D1*> and second derivative <D2*> of parameter <U> and <V> on the Surface <S>.
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:param U:
 	:type U: float
 	:param V:
@@ -614,7 +614,7 @@ class BRepLProp_SurfaceTool {
 		/****************** DN ******************/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", ":param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:param U:
 	:type U: float
 	:param V:
@@ -630,7 +630,7 @@ class BRepLProp_SurfaceTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Computes the point <P> of parameter <U> and <V> on the Surface <S>.
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:param U:
 	:type U: float
 	:param V:

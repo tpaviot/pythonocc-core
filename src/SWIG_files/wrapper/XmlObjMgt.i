@@ -82,25 +82,25 @@ class XmlObjMgt {
 		/****************** FindChildByName ******************/
 		%feature("compactdefaultargs") FindChildByName;
 		%feature("autodoc", ":param theSource:
-	:type theSource: XmlObjMgt_Element &
+	:type theSource: XmlObjMgt_Element
 	:param theName:
-	:type theName: XmlObjMgt_DOMString &
+	:type theName: XmlObjMgt_DOMString
 	:rtype: XmlObjMgt_Element") FindChildByName;
 		static XmlObjMgt_Element FindChildByName (const XmlObjMgt_Element & theSource,const XmlObjMgt_DOMString & theName);
 
 		/****************** FindChildByRef ******************/
 		%feature("compactdefaultargs") FindChildByRef;
 		%feature("autodoc", ":param theSource:
-	:type theSource: XmlObjMgt_Element &
+	:type theSource: XmlObjMgt_Element
 	:param theRefName:
-	:type theRefName: XmlObjMgt_DOMString &
+	:type theRefName: XmlObjMgt_DOMString
 	:rtype: XmlObjMgt_Element") FindChildByRef;
 		static XmlObjMgt_Element FindChildByRef (const XmlObjMgt_Element & theSource,const XmlObjMgt_DOMString & theRefName);
 
 		/****************** FindChildElement ******************/
 		%feature("compactdefaultargs") FindChildElement;
 		%feature("autodoc", ":param theSource:
-	:type theSource: XmlObjMgt_Element &
+	:type theSource: XmlObjMgt_Element
 	:param theObjId:
 	:type theObjId: int
 	:rtype: XmlObjMgt_Element") FindChildElement;
@@ -110,36 +110,36 @@ class XmlObjMgt {
 		%feature("compactdefaultargs") GetExtendedString;
 		%feature("autodoc", "* Get attribute <theElement extstring='theString' ...>
 	:param theElement:
-	:type theElement: XmlObjMgt_Element &
+	:type theElement: XmlObjMgt_Element
 	:param theString:
-	:type theString: TCollection_ExtendedString &
+	:type theString: TCollection_ExtendedString
 	:rtype: bool") GetExtendedString;
 		static Standard_Boolean GetExtendedString (const XmlObjMgt_Element & theElement,TCollection_ExtendedString & theString);
 
 		/****************** GetInteger ******************/
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", ":param theString:
-	:type theString: char * &
+	:type theString: char *
 	:param theValue:
-	:type theValue: int &
+	:type theValue: int
 	:rtype: bool") GetInteger;
 		static Standard_Boolean GetInteger (const char * & theString,Standard_Integer &OutValue);
 
 		/****************** GetReal ******************/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", ":param theString:
-	:type theString: char * &
+	:type theString: char *
 	:param theValue:
-	:type theValue: float &
+	:type theValue: float
 	:rtype: bool") GetReal;
 		static Standard_Boolean GetReal (const char * & theString,Standard_Real &OutValue);
 
 		/****************** GetReal ******************/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", ":param theString:
-	:type theString: XmlObjMgt_DOMString &
+	:type theString: XmlObjMgt_DOMString
 	:param theValue:
-	:type theValue: float &
+	:type theValue: float
 	:rtype: bool") GetReal;
 		static Standard_Boolean GetReal (const XmlObjMgt_DOMString & theString,Standard_Real &OutValue);
 
@@ -147,7 +147,7 @@ class XmlObjMgt {
 		%feature("compactdefaultargs") GetStringValue;
 		%feature("autodoc", "* Returns the first child text node
 	:param theElement:
-	:type theElement: XmlObjMgt_Element &
+	:type theElement: XmlObjMgt_Element
 	:rtype: XmlObjMgt_DOMString") GetStringValue;
 		static XmlObjMgt_DOMString GetStringValue (const XmlObjMgt_Element & theElement);
 
@@ -155,9 +155,9 @@ class XmlObjMgt {
 		%feature("compactdefaultargs") GetTagEntryString;
 		%feature("autodoc", "* Convert XPath expression (DOMString) into TagEntry string returns False on Error
 	:param theTarget:
-	:type theTarget: XmlObjMgt_DOMString &
+	:type theTarget: XmlObjMgt_DOMString
 	:param theTagEntry:
-	:type theTagEntry: TCollection_AsciiString &
+	:type theTagEntry: TCollection_AsciiString
 	:rtype: bool") GetTagEntryString;
 		static Standard_Boolean GetTagEntryString (const XmlObjMgt_DOMString & theTarget,TCollection_AsciiString & theTagEntry);
 
@@ -171,9 +171,9 @@ class XmlObjMgt {
 		%feature("compactdefaultargs") SetExtendedString;
 		%feature("autodoc", "* Add attribute <theElement extstring='theString' ...>
 	:param theElement:
-	:type theElement: XmlObjMgt_Element &
+	:type theElement: XmlObjMgt_Element
 	:param theString:
-	:type theString: TCollection_ExtendedString &
+	:type theString: TCollection_ExtendedString
 	:rtype: bool") SetExtendedString;
 		static Standard_Boolean SetExtendedString (XmlObjMgt_Element & theElement,const TCollection_ExtendedString & theString);
 
@@ -181,9 +181,9 @@ class XmlObjMgt {
 		%feature("compactdefaultargs") SetStringValue;
 		%feature("autodoc", "* Add theData as the last child text node to theElement isClearText(True) avoids analysis of the string and replacement of characters like '<' and '&' during XML file storage. Do NEVER set isClearText unless you have a hell of a reason
 	:param theElement:
-	:type theElement: XmlObjMgt_Element &
+	:type theElement: XmlObjMgt_Element
 	:param theData:
-	:type theData: XmlObjMgt_DOMString &
+	:type theData: XmlObjMgt_DOMString
 	:param isClearText: default value is Standard_False
 	:type isClearText: bool
 	:rtype: void") SetStringValue;
@@ -193,9 +193,9 @@ class XmlObjMgt {
 		%feature("compactdefaultargs") SetTagEntryString;
 		%feature("autodoc", "* Convert XPath expression (DOMString) into TagEntry string returns False on Error
 	:param theSource:
-	:type theSource: XmlObjMgt_DOMString &
+	:type theSource: XmlObjMgt_DOMString
 	:param theTagEntry:
-	:type theTagEntry: TCollection_AsciiString &
+	:type theTagEntry: TCollection_AsciiString
 	:rtype: void") SetTagEntryString;
 		static void SetTagEntryString (XmlObjMgt_DOMString & theSource,const TCollection_AsciiString & theTagEntry);
 
@@ -218,9 +218,9 @@ class XmlObjMgt_Array1 {
 		%feature("compactdefaultargs") CreateArrayElement;
 		%feature("autodoc", "* Create DOM_Element representing the array, under 'theParent'
 	:param theParent:
-	:type theParent: XmlObjMgt_Element &
+	:type theParent: XmlObjMgt_Element
 	:param theName:
-	:type theName: XmlObjMgt_DOMString &
+	:type theName: XmlObjMgt_DOMString
 	:rtype: None") CreateArrayElement;
 		void CreateArrayElement (XmlObjMgt_Element & theParent,const XmlObjMgt_DOMString & theName);
 
@@ -248,7 +248,7 @@ class XmlObjMgt_Array1 {
 	:param Index:
 	:type Index: int
 	:param Value:
-	:type Value: XmlObjMgt_Element &
+	:type Value: XmlObjMgt_Element
 	:rtype: None") SetValue;
 		void SetValue (const Standard_Integer Index,XmlObjMgt_Element & Value);
 
@@ -280,9 +280,9 @@ class XmlObjMgt_Array1 {
 		%feature("compactdefaultargs") XmlObjMgt_Array1;
 		%feature("autodoc", "* for restoration from DOM_Element which is child of theParent: <theParent ...> <theName ...>
 	:param theParent:
-	:type theParent: XmlObjMgt_Element &
+	:type theParent: XmlObjMgt_Element
 	:param theName:
-	:type theName: XmlObjMgt_DOMString &
+	:type theName: XmlObjMgt_DOMString
 	:rtype: None") XmlObjMgt_Array1;
 		 XmlObjMgt_Array1 (const XmlObjMgt_Element & theParent,const XmlObjMgt_DOMString & theName);
 
@@ -324,7 +324,7 @@ class XmlObjMgt_GP {
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", ":param aStr:
-	:type aStr: XmlObjMgt_DOMString &
+	:type aStr: XmlObjMgt_DOMString
 	:param T:
 	:type T: gp_Trsf
 	:rtype: bool") Translate;
@@ -333,7 +333,7 @@ class XmlObjMgt_GP {
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", ":param aStr:
-	:type aStr: XmlObjMgt_DOMString &
+	:type aStr: XmlObjMgt_DOMString
 	:param T:
 	:type T: gp_Mat
 	:rtype: bool") Translate;
@@ -342,7 +342,7 @@ class XmlObjMgt_GP {
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", ":param aStr:
-	:type aStr: XmlObjMgt_DOMString &
+	:type aStr: XmlObjMgt_DOMString
 	:param T:
 	:type T: gp_XYZ
 	:rtype: bool") Translate;
@@ -367,9 +367,9 @@ class XmlObjMgt_Persistent {
 		%feature("compactdefaultargs") CreateElement;
 		%feature("autodoc", "* myElement := <theType id='theID'/>
 	:param theParent:
-	:type theParent: XmlObjMgt_Element &
+	:type theParent: XmlObjMgt_Element
 	:param theType:
-	:type theType: XmlObjMgt_DOMString &
+	:type theType: XmlObjMgt_DOMString
 	:param theID:
 	:type theID: int
 	:rtype: None") CreateElement;
@@ -409,7 +409,7 @@ class XmlObjMgt_Persistent {
 		%feature("compactdefaultargs") XmlObjMgt_Persistent;
 		%feature("autodoc", "* constructor
 	:param theElement:
-	:type theElement: XmlObjMgt_Element &
+	:type theElement: XmlObjMgt_Element
 	:rtype: None") XmlObjMgt_Persistent;
 		 XmlObjMgt_Persistent (const XmlObjMgt_Element & theElement);
 
@@ -417,9 +417,9 @@ class XmlObjMgt_Persistent {
 		%feature("compactdefaultargs") XmlObjMgt_Persistent;
 		%feature("autodoc", "* constructor from sub-element of Element referenced by theRef
 	:param theElement:
-	:type theElement: XmlObjMgt_Element &
+	:type theElement: XmlObjMgt_Element
 	:param theRef:
-	:type theRef: XmlObjMgt_DOMString &
+	:type theRef: XmlObjMgt_DOMString
 	:rtype: None") XmlObjMgt_Persistent;
 		 XmlObjMgt_Persistent (const XmlObjMgt_Element & theElement,const XmlObjMgt_DOMString & theRef);
 
@@ -465,7 +465,7 @@ class XmlObjMgt_RRelocationTable : public TColStd_DataMapOfIntegerTransient {
 		%feature("compactdefaultargs") SetHeaderData;
 		%feature("autodoc", "* Sets the storage header data. //! @param theHeaderData header data of the file that is begin read
 	:param theHeaderData:
-	:type theHeaderData: opencascade::handle<Storage_HeaderData> &
+	:type theHeaderData: Storage_HeaderData
 	:rtype: None") SetHeaderData;
 		void SetHeaderData (const opencascade::handle<Storage_HeaderData> & theHeaderData);
 
@@ -501,7 +501,7 @@ class XmlObjMgt_SRelocationTable : public TColStd_IndexedMapOfTransient {
 		%feature("compactdefaultargs") SetHeaderData;
 		%feature("autodoc", "* Sets the storage header data. //! @param theHeaderData header data of the file that is begin read
 	:param theHeaderData:
-	:type theHeaderData: opencascade::handle<Storage_HeaderData> &
+	:type theHeaderData: Storage_HeaderData
 	:rtype: None") SetHeaderData;
 		void SetHeaderData (const opencascade::handle<Storage_HeaderData> & theHeaderData);
 

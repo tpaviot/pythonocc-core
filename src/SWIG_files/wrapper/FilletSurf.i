@@ -142,9 +142,9 @@ class FilletSurf_Builder {
 		%feature("compactdefaultargs") FilletSurf_Builder;
 		%feature("autodoc", "* initialize of the informations necessary for the computation of the fillet on the Shape S from a list of edges E and a radius R. //! Ta is the angular tolerance Tapp3d is the 3d approximation tolerance Tapp2d is the 2d approximation tolerance
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param E:
-	:type E: TopTools_ListOfShape &
+	:type E: TopTools_ListOfShape
 	:param R:
 	:type R: float
 	:param Ta: default value is 1.0e-2
@@ -232,7 +232,7 @@ class FilletSurf_Builder {
 	:param IndexSec:
 	:type IndexSec: int
 	:param Circ:
-	:type Circ: opencascade::handle<Geom_TrimmedCurve> &
+	:type Circ: Geom_TrimmedCurve
 	:rtype: None") Section;
 		void Section (const Standard_Integer IndexSurf,const Standard_Integer IndexSec,opencascade::handle<Geom_TrimmedCurve> & Circ);
 
@@ -303,7 +303,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Initializes the contour with a list of Edges 0 : no problem 1 : empty list 2 : the edges are not G1 3 : two connected faces on a same support are not G1 4 : the edge is not on shape 5 : NotSharpEdge: the edge is not sharp
 	:param E:
-	:type E: TopTools_ListOfShape &
+	:type E: TopTools_ListOfShape
 	:param R:
 	:type R: float
 	:rtype: int") Add;
@@ -338,7 +338,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 		/****************** FilletSurf_InternalBuilder ******************/
 		%feature("compactdefaultargs") FilletSurf_InternalBuilder;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param FShape: default value is ChFi3d_Polynomial
 	:type FShape: ChFi3d_FilletShape
 	:param Ta: default value is 1.0e-2
@@ -419,7 +419,7 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	:param IndexSec:
 	:type IndexSec: int
 	:param Circ:
-	:type Circ: opencascade::handle<Geom_TrimmedCurve> &
+	:type Circ: Geom_TrimmedCurve
 	:rtype: None") Section;
 		void Section (const Standard_Integer IndexSurf,const Standard_Integer IndexSec,opencascade::handle<Geom_TrimmedCurve> & Circ);
 

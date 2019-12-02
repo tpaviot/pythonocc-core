@@ -103,7 +103,7 @@ class VrmlAPI {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* With help of this class user can change parameters of writing. Converts the shape aShape to VRML format of the passed version and writes it to the file identified by aFileName using default parameters.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aFileName:
 	:type aFileName: char *
 	:param aVersion: default value is 2
@@ -187,9 +187,9 @@ class VrmlAPI_Writer {
 		/****************** SetAmbientColorToMaterial ******************/
 		%feature("compactdefaultargs") SetAmbientColorToMaterial;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:param Color:
-	:type Color: opencascade::handle<Quantity_HArray1OfColor> &
+	:type Color: Quantity_HArray1OfColor
 	:rtype: None") SetAmbientColorToMaterial;
 		void SetAmbientColorToMaterial (opencascade::handle<Vrml_Material> & aMaterial,const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
@@ -204,18 +204,18 @@ class VrmlAPI_Writer {
 		/****************** SetDiffuseColorToMaterial ******************/
 		%feature("compactdefaultargs") SetDiffuseColorToMaterial;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:param Color:
-	:type Color: opencascade::handle<Quantity_HArray1OfColor> &
+	:type Color: Quantity_HArray1OfColor
 	:rtype: None") SetDiffuseColorToMaterial;
 		void SetDiffuseColorToMaterial (opencascade::handle<Vrml_Material> & aMaterial,const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
 		/****************** SetEmissiveColorToMaterial ******************/
 		%feature("compactdefaultargs") SetEmissiveColorToMaterial;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:param Color:
-	:type Color: opencascade::handle<Quantity_HArray1OfColor> &
+	:type Color: Quantity_HArray1OfColor
 	:rtype: None") SetEmissiveColorToMaterial;
 		void SetEmissiveColorToMaterial (opencascade::handle<Vrml_Material> & aMaterial,const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
@@ -230,7 +230,7 @@ class VrmlAPI_Writer {
 		/****************** SetShininessToMaterial ******************/
 		%feature("compactdefaultargs") SetShininessToMaterial;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:param aShininess:
 	:type aShininess: float
 	:rtype: None") SetShininessToMaterial;
@@ -239,9 +239,9 @@ class VrmlAPI_Writer {
 		/****************** SetSpecularColorToMaterial ******************/
 		%feature("compactdefaultargs") SetSpecularColorToMaterial;
 		%feature("autodoc", ":param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:param Color:
-	:type Color: opencascade::handle<Quantity_HArray1OfColor> &
+	:type Color: Quantity_HArray1OfColor
 	:rtype: None") SetSpecularColorToMaterial;
 		void SetSpecularColorToMaterial (opencascade::handle<Vrml_Material> & aMaterial,const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
@@ -249,7 +249,7 @@ class VrmlAPI_Writer {
 		%feature("compactdefaultargs") SetTransparencyToMaterial;
 		%feature("autodoc", "* Set transparency to given material
 	:param aMaterial:
-	:type aMaterial: opencascade::handle<Vrml_Material> &
+	:type aMaterial: Vrml_Material
 	:param aTransparency:
 	:type aTransparency: float
 	:rtype: None") SetTransparencyToMaterial;
@@ -265,7 +265,7 @@ class VrmlAPI_Writer {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Converts the shape aShape to VRML format of the passed version and writes it to the file identified by aFile.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aFile:
 	:type aFile: char *
 	:param aVersion: default value is 2
@@ -277,7 +277,7 @@ class VrmlAPI_Writer {
 		%feature("compactdefaultargs") WriteDoc;
 		%feature("autodoc", "* Converts the document to VRML format of the passed version and writes it to the file identified by aFile.
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:param theFile:
 	:type theFile: char *
 	:param theScale:

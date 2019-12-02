@@ -295,7 +295,7 @@ class NLPlate_NLPlate {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param GConst:
-	:type GConst: opencascade::handle<NLPlate_HGPPConstraint> &
+	:type GConst: NLPlate_HGPPConstraint
 	:rtype: None") Load;
 		void Load (const opencascade::handle<NLPlate_HGPPConstraint> & GConst);
 
@@ -307,7 +307,7 @@ class NLPlate_NLPlate {
 		/****************** NLPlate_NLPlate ******************/
 		%feature("compactdefaultargs") NLPlate_NLPlate;
 		%feature("autodoc", ":param InitialSurface:
-	:type InitialSurface: opencascade::handle<Geom_Surface> &
+	:type InitialSurface: Geom_Surface
 	:rtype: None") NLPlate_NLPlate;
 		 NLPlate_NLPlate (const opencascade::handle<Geom_Surface> & InitialSurface);
 
@@ -439,7 +439,7 @@ class NLPlate_HPG1Constraint : public NLPlate_HGPPConstraint {
 		%feature("autodoc", ":param UV:
 	:type UV: gp_XY
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:rtype: None") NLPlate_HPG1Constraint;
 		 NLPlate_HPG1Constraint (const gp_XY & UV,const Plate_D1 & D1T);
 
@@ -496,7 +496,7 @@ class NLPlate_HPG0G1Constraint : public NLPlate_HPG0Constraint {
 	:param Value:
 	:type Value: gp_XYZ
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:rtype: None") NLPlate_HPG0G1Constraint;
 		 NLPlate_HPG0G1Constraint (const gp_XY & UV,const gp_XYZ & Value,const Plate_D1 & D1T);
 
@@ -544,9 +544,9 @@ class NLPlate_HPG2Constraint : public NLPlate_HPG1Constraint {
 		%feature("autodoc", ":param UV:
 	:type UV: gp_XY
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:rtype: None") NLPlate_HPG2Constraint;
 		 NLPlate_HPG2Constraint (const gp_XY & UV,const Plate_D1 & D1T,const Plate_D2 & D2T);
 
@@ -584,9 +584,9 @@ class NLPlate_HPG0G2Constraint : public NLPlate_HPG0G1Constraint {
 	:param Value:
 	:type Value: gp_XYZ
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:rtype: None") NLPlate_HPG0G2Constraint;
 		 NLPlate_HPG0G2Constraint (const gp_XY & UV,const gp_XYZ & Value,const Plate_D1 & D1T,const Plate_D2 & D2T);
 
@@ -622,11 +622,11 @@ class NLPlate_HPG3Constraint : public NLPlate_HPG2Constraint {
 		%feature("autodoc", ":param UV:
 	:type UV: gp_XY
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:param D3T:
-	:type D3T: Plate_D3 &
+	:type D3T: Plate_D3
 	:rtype: None") NLPlate_HPG3Constraint;
 		 NLPlate_HPG3Constraint (const gp_XY & UV,const Plate_D1 & D1T,const Plate_D2 & D2T,const Plate_D3 & D3T);
 
@@ -664,11 +664,11 @@ class NLPlate_HPG0G3Constraint : public NLPlate_HPG0G2Constraint {
 	:param Value:
 	:type Value: gp_XYZ
 	:param D1T:
-	:type D1T: Plate_D1 &
+	:type D1T: Plate_D1
 	:param D2T:
-	:type D2T: Plate_D2 &
+	:type D2T: Plate_D2
 	:param D3T:
-	:type D3T: Plate_D3 &
+	:type D3T: Plate_D3
 	:rtype: None") NLPlate_HPG0G3Constraint;
 		 NLPlate_HPG0G3Constraint (const gp_XY & UV,const gp_XYZ & Value,const Plate_D1 & D1T,const Plate_D2 & D2T,const Plate_D3 & D3T);
 

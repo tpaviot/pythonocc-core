@@ -139,27 +139,27 @@ class CDF_Application : public CDM_Application {
 		/****************** CanClose ******************/
 		%feature("compactdefaultargs") CanClose;
 		%feature("autodoc", ":param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: CDM_CanCloseStatus") CanClose;
 		CDM_CanCloseStatus CanClose (const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** CanRetrieve ******************/
 		%feature("compactdefaultargs") CanRetrieve;
 		%feature("autodoc", ":param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:rtype: PCDM_ReaderStatus") CanRetrieve;
 		PCDM_ReaderStatus CanRetrieve (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName);
 
 		/****************** CanRetrieve ******************/
 		%feature("compactdefaultargs") CanRetrieve;
 		%feature("autodoc", ":param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:param aVersion:
-	:type aVersion: TCollection_ExtendedString &
+	:type aVersion: TCollection_ExtendedString
 	:rtype: PCDM_ReaderStatus") CanRetrieve;
 		PCDM_ReaderStatus CanRetrieve (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aVersion);
 
@@ -167,7 +167,7 @@ class CDF_Application : public CDM_Application {
 		%feature("compactdefaultargs") Close;
 		%feature("autodoc", "* removes the document of the current session directory and closes the document;
 	:param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: None") Close;
 		void Close (const opencascade::handle<CDM_Document> & aDocument);
 
@@ -180,9 +180,9 @@ class CDF_Application : public CDM_Application {
 		%feature("compactdefaultargs") Format;
 		%feature("autodoc", "* try to retrieve a Format directly in the file or in application resource by using extension. returns True if found;
 	:param aFileName:
-	:type aFileName: TCollection_ExtendedString &
+	:type aFileName: TCollection_ExtendedString
 	:param theFormat:
-	:type theFormat: TCollection_ExtendedString &
+	:type theFormat: TCollection_ExtendedString
 	:rtype: bool") Format;
 		Standard_Boolean Format (const TCollection_ExtendedString & aFileName,TCollection_ExtendedString & theFormat);
 
@@ -196,7 +196,7 @@ class CDF_Application : public CDM_Application {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* plugs an application. //! Open is used - for opening a Document that has been created in an application - for opening a Document from the database - for opening a Document from a file. The Open methods always add the document in the session directory and calls the virtual Activate method. The document is considered to be opened until Close is used. To be storable, a document must be opened by an application since the application resources are needed to store it.
 	:param aGUID:
-	:type aGUID: Standard_GUID &
+	:type aGUID: Standard_GUID
 	:rtype: opencascade::handle<CDF_Application>") Load;
 		static opencascade::handle<CDF_Application> Load (const Standard_GUID & aGUID);
 
@@ -204,7 +204,7 @@ class CDF_Application : public CDM_Application {
 		%feature("compactdefaultargs") Open;
 		%feature("autodoc", "* puts the document in the current session directory and calls the virtual method Activate on it.
 	:param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: None") Open;
 		void Open (const opencascade::handle<CDM_Document> & aDocument);
 
@@ -219,7 +219,7 @@ class CDF_Application : public CDM_Application {
 		%feature("compactdefaultargs") ReaderFromFormat;
 		%feature("autodoc", "* Returns instance of read driver for specified format. //! Default implementation uses plugin mechanism to load reader dynamically. For this to work, application resources should define GUID of the plugin as value of [Format].RetrievalPlugin, and 'Plugin' resource should define name of plugin library to be loaded as value of [GUID].Location. Plugin library should provide method PLUGINFACTORY returning instance of the reader for the same GUID (see Plugin_Macro.hxx). //! In case if reader is not available, will raise Standard_NoSuchObject or other exception if raised by plugin loader.
 	:param aFormat:
-	:type aFormat: TCollection_ExtendedString &
+	:type aFormat: TCollection_ExtendedString
 	:rtype: opencascade::handle<PCDM_Reader>") ReaderFromFormat;
 		virtual opencascade::handle<PCDM_Reader> ReaderFromFormat (const TCollection_ExtendedString & aFormat);
 
@@ -227,9 +227,9 @@ class CDF_Application : public CDM_Application {
 		%feature("compactdefaultargs") Retrieve;
 		%feature("autodoc", "* This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is Standard_True. The content of {aFolder}, {aName} and {aVersion} depends on the Database Manager system. If the DBMS is only based on the OS, {aFolder} is a directory and {aName} is the name of a file. In this case the use of the syntax with {aVersion} has no sense. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('/home/cascade','box.dsg'); If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} have the form they have in EUCLID/Design Manager. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('|user|cascade','box'); //! Since the version is not specified in this syntax, the latest wil be used. A link is kept with the database through an instance of CDM_MetaData
 	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:param UseStorageConfiguration: default value is Standard_True
 	:type UseStorageConfiguration: bool
 	:rtype: opencascade::handle<CDM_Document>") Retrieve;
@@ -239,11 +239,11 @@ class CDF_Application : public CDM_Application {
 		%feature("compactdefaultargs") Retrieve;
 		%feature("autodoc", "* This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is Standard_True. -- If the DBMS is only based on the OS, this syntax should not be used. //! If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} and {aVersion} have the form they have in EUCLID/Design Manager. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('|user|cascade','box','2'); A link is kept with the database through an instance of CDM_MetaData
 	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:param aVersion:
-	:type aVersion: TCollection_ExtendedString &
+	:type aVersion: TCollection_ExtendedString
 	:param UseStorageConfiguration: default value is Standard_True
 	:type UseStorageConfiguration: bool
 	:rtype: opencascade::handle<CDM_Document>") Retrieve;
@@ -260,7 +260,7 @@ class CDF_Application : public CDM_Application {
 		%feature("compactdefaultargs") WriterFromFormat;
 		%feature("autodoc", "* Returns instance of storage driver for specified format. //! Default implementation uses plugin mechanism to load driver dynamically. For this to work, application resources should define GUID of the plugin as value of [Format].StoragePlugin, and 'Plugin' resource should define name of plugin library to be loaded as value of [GUID].Location. Plugin library should provide method PLUGINFACTORY returning instance of the reader for the same GUID (see Plugin_Macro.hxx). //! In case if driver is not available, will raise Standard_NoSuchObject or other exception if raised by plugin loader.
 	:param aFormat:
-	:type aFormat: TCollection_ExtendedString &
+	:type aFormat: TCollection_ExtendedString
 	:rtype: opencascade::handle<PCDM_StorageDriver>") WriterFromFormat;
 		virtual opencascade::handle<PCDM_StorageDriver> WriterFromFormat (const TCollection_ExtendedString & aFormat);
 
@@ -285,7 +285,7 @@ class CDF_Directory : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* adds a document into the directory.
 	:param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: None") Add;
 		void Add (const opencascade::handle<CDM_Document> & aDocument);
 
@@ -299,7 +299,7 @@ class CDF_Directory : public Standard_Transient {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Returns true if the document aDocument is in the directory
 	:param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<CDM_Document> & aDocument);
 
@@ -325,7 +325,7 @@ class CDF_Directory : public Standard_Transient {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* removes the document.
 	:param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: None") Remove;
 		void Remove (const opencascade::handle<CDM_Document> & aDocument);
 
@@ -355,7 +355,7 @@ class CDF_DirectoryIterator {
 		/****************** CDF_DirectoryIterator ******************/
 		%feature("compactdefaultargs") CDF_DirectoryIterator;
 		%feature("autodoc", ":param aDirectory:
-	:type aDirectory: opencascade::handle<CDF_Directory> &
+	:type aDirectory: CDF_Directory
 	:rtype: None") CDF_DirectoryIterator;
 		 CDF_DirectoryIterator (const opencascade::handle<CDF_Directory> & aDirectory);
 
@@ -395,7 +395,7 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		/****************** BuildFileName ******************/
 		%feature("compactdefaultargs") BuildFileName;
 		%feature("autodoc", ":param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: TCollection_ExtendedString") BuildFileName;
 		virtual TCollection_ExtendedString BuildFileName (const opencascade::handle<CDM_Document> & aDocument);
 
@@ -403,9 +403,9 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		%feature("compactdefaultargs") CreateDependsOn;
 		%feature("autodoc", "* Creates a 'Depends On' relation between two Datas. By default does nothing
 	:param aFirstData:
-	:type aFirstData: opencascade::handle<CDM_MetaData> &
+	:type aFirstData: CDM_MetaData
 	:param aSecondData:
-	:type aSecondData: opencascade::handle<CDM_MetaData> &
+	:type aSecondData: CDM_MetaData
 	:rtype: void") CreateDependsOn;
 		virtual void CreateDependsOn (const opencascade::handle<CDM_MetaData> & aFirstData,const opencascade::handle<CDM_MetaData> & aSecondData);
 
@@ -413,18 +413,18 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		%feature("compactdefaultargs") CreateMetaData;
 		%feature("autodoc", "* should create meta-data corresponding to aData and maintaining a meta-link between these meta-data and aFileName CreateMetaData is called by CreateData If the metadata-driver has version capabilities, version must be set in the returned Data.
 	:param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:param aFileName:
-	:type aFileName: TCollection_ExtendedString &
+	:type aFileName: TCollection_ExtendedString
 	:rtype: opencascade::handle<CDM_MetaData>") CreateMetaData;
 		virtual opencascade::handle<CDM_MetaData> CreateMetaData (const opencascade::handle<CDM_Document> & aDocument,const TCollection_ExtendedString & aFileName);
 
 		/****************** CreateReference ******************/
 		%feature("compactdefaultargs") CreateReference;
 		%feature("autodoc", ":param aFrom:
-	:type aFrom: opencascade::handle<CDM_MetaData> &
+	:type aFrom: CDM_MetaData
 	:param aTo:
-	:type aTo: opencascade::handle<CDM_MetaData> &
+	:type aTo: CDM_MetaData
 	:param aReferenceIdentifier:
 	:type aReferenceIdentifier: int
 	:param aToDocumentVersion:
@@ -441,11 +441,11 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "* should indicate whether meta-data exist in the DBMS corresponding to the Data. aVersion may be NULL;
 	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:param aVersion:
-	:type aVersion: TCollection_ExtendedString &
+	:type aVersion: TCollection_ExtendedString
 	:rtype: bool") Find;
 		virtual Standard_Boolean Find (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aVersion);
 
@@ -453,27 +453,27 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "* calls Find with an empty version
 	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:rtype: bool") Find;
 		Standard_Boolean Find (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName);
 
 		/****************** FindFolder ******************/
 		%feature("compactdefaultargs") FindFolder;
 		%feature("autodoc", ":param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:rtype: bool") FindFolder;
 		virtual Standard_Boolean FindFolder (const TCollection_ExtendedString & aFolder);
 
 		/****************** HasReadPermission ******************/
 		%feature("compactdefaultargs") HasReadPermission;
 		%feature("autodoc", ":param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:param aVersion:
-	:type aVersion: TCollection_ExtendedString &
+	:type aVersion: TCollection_ExtendedString
 	:rtype: bool") HasReadPermission;
 		virtual Standard_Boolean HasReadPermission (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aVersion);
 
@@ -481,9 +481,9 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		%feature("compactdefaultargs") HasVersion;
 		%feature("autodoc", "* by default return Standard_True.
 	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:rtype: bool") HasVersion;
 		virtual Standard_Boolean HasVersion (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName);
 
@@ -497,7 +497,7 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		%feature("compactdefaultargs") LastVersion;
 		%feature("autodoc", "* by default returns aMetaDATA should return the MetaData stored in the DBMS with the meta-data corresponding to the path. If the MetaDataDriver has version management capabilities the version has to be set in the returned MetaData. MetaData is called by GetMetaData If the version is not included in the path , MetaData should return the last version of the metadata is deferred;
 	:param aMetaData:
-	:type aMetaData: opencascade::handle<CDM_MetaData> &
+	:type aMetaData: CDM_MetaData
 	:rtype: opencascade::handle<CDM_MetaData>") LastVersion;
 		virtual opencascade::handle<CDM_MetaData> LastVersion (const opencascade::handle<CDM_MetaData> & aMetaData);
 
@@ -505,11 +505,11 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		%feature("compactdefaultargs") MetaData;
 		%feature("autodoc", "* should return the MetaData stored in the DBMS with the meta-data corresponding to the Data. If the MetaDataDriver has version management capabilities the version has to be set in the returned MetaData. aVersion may be NULL MetaData is called by GetMetaData If the version is set to NULL, MetaData should return the last version of the metadata
 	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:param aVersion:
-	:type aVersion: TCollection_ExtendedString &
+	:type aVersion: TCollection_ExtendedString
 	:rtype: opencascade::handle<CDM_MetaData>") MetaData;
 		virtual opencascade::handle<CDM_MetaData> MetaData (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aVersion);
 
@@ -517,9 +517,9 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		%feature("compactdefaultargs") MetaData;
 		%feature("autodoc", "* calls MetaData with an empty version
 	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:rtype: opencascade::handle<CDM_MetaData>") MetaData;
 		opencascade::handle<CDM_MetaData> MetaData (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName);
 
@@ -532,9 +532,9 @@ class CDF_MetaDataDriver : public Standard_Transient {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* this methods is usefull if the name of an object -- depends on the metadatadriver. For example a Driver -- based on the operating system can choose to add the extension of file to create to the object.
 	:param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:rtype: TCollection_ExtendedString") SetName;
 		virtual TCollection_ExtendedString SetName (const opencascade::handle<CDM_Document> & aDocument,const TCollection_ExtendedString & aName);
 
@@ -623,7 +623,7 @@ class CDF_Session : public Standard_Transient {
 		/****************** SetCurrentApplication ******************/
 		%feature("compactdefaultargs") SetCurrentApplication;
 		%feature("autodoc", ":param anApplication:
-	:type anApplication: opencascade::handle<CDF_Application> &
+	:type anApplication: CDF_Application
 	:rtype: None") SetCurrentApplication;
 		void SetCurrentApplication (const opencascade::handle<CDF_Application> & anApplication);
 
@@ -658,7 +658,7 @@ class CDF_Store {
 		%feature("compactdefaultargs") CDF_Store;
 		%feature("autodoc", "* creates a store list from the document of the current selection.
 	:param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: None") CDF_Store;
 		 CDF_Store (const opencascade::handle<CDM_Document> & aDocument);
 
@@ -797,7 +797,7 @@ class CDF_Store {
 		%feature("compactdefaultargs") SetFolder;
 		%feature("autodoc", "* defines the folder in which the document should be stored. returns Standard_True if the Folder exists, Standard_False otherwise.
 	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:rtype: bool") SetFolder;
 		Standard_Boolean SetFolder (const TCollection_ExtendedString & aFolder);
 
@@ -827,7 +827,7 @@ class CDF_Store {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* defines the name under which the document should be stored.
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:rtype: CDF_StoreSetNameStatus") SetName;
 		CDF_StoreSetNameStatus SetName (const TCollection_ExtendedString & aName);
 
@@ -868,7 +868,7 @@ class CDF_StoreList : public Standard_Transient {
 		/****************** CDF_StoreList ******************/
 		%feature("compactdefaultargs") CDF_StoreList;
 		%feature("autodoc", ":param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: None") CDF_StoreList;
 		 CDF_StoreList (const opencascade::handle<CDM_Document> & aDocument);
 
@@ -896,9 +896,9 @@ class CDF_StoreList : public Standard_Transient {
 		%feature("compactdefaultargs") Store;
 		%feature("autodoc", "* stores each object of the storelist in the reverse order of which they had been added.
 	:param aMetaData:
-	:type aMetaData: opencascade::handle<CDM_MetaData> &
+	:type aMetaData: CDM_MetaData
 	:param aStatusAssociatedText:
-	:type aStatusAssociatedText: TCollection_ExtendedString &
+	:type aStatusAssociatedText: TCollection_ExtendedString
 	:rtype: PCDM_StoreStatus") Store;
 		PCDM_StoreStatus Store (opencascade::handle<CDM_MetaData> & aMetaData,TCollection_ExtendedString & aStatusAssociatedText);
 
@@ -927,7 +927,7 @@ class CDF_FWOSDriver : public CDF_MetaDataDriver {
 		/****************** BuildFileName ******************/
 		%feature("compactdefaultargs") BuildFileName;
 		%feature("autodoc", ":param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:rtype: TCollection_ExtendedString") BuildFileName;
 		TCollection_ExtendedString BuildFileName (const opencascade::handle<CDM_Document> & aDocument);
 
@@ -946,38 +946,38 @@ class CDF_FWOSDriver : public CDF_MetaDataDriver {
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "* indicate whether a file exists corresponding to the folder and the name
 	:param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:param aVersion:
-	:type aVersion: TCollection_ExtendedString &
+	:type aVersion: TCollection_ExtendedString
 	:rtype: bool") Find;
 		Standard_Boolean Find (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aVersion);
 
 		/****************** FindFolder ******************/
 		%feature("compactdefaultargs") FindFolder;
 		%feature("autodoc", ":param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:rtype: bool") FindFolder;
 		Standard_Boolean FindFolder (const TCollection_ExtendedString & aFolder);
 
 		/****************** HasReadPermission ******************/
 		%feature("compactdefaultargs") HasReadPermission;
 		%feature("autodoc", ":param aFolder:
-	:type aFolder: TCollection_ExtendedString &
+	:type aFolder: TCollection_ExtendedString
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:param aVersion:
-	:type aVersion: TCollection_ExtendedString &
+	:type aVersion: TCollection_ExtendedString
 	:rtype: bool") HasReadPermission;
 		Standard_Boolean HasReadPermission (const TCollection_ExtendedString & aFolder,const TCollection_ExtendedString & aName,const TCollection_ExtendedString & aVersion);
 
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aDocument:
-	:type aDocument: opencascade::handle<CDM_Document> &
+	:type aDocument: CDM_Document
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:rtype: TCollection_ExtendedString") SetName;
 		virtual TCollection_ExtendedString SetName (const opencascade::handle<CDM_Document> & aDocument,const TCollection_ExtendedString & aName);
 

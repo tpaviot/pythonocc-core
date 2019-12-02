@@ -129,9 +129,9 @@ class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute : public math_BFGS
 		/****************** AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute ******************/
 		%feature("compactdefaultargs") AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -146,7 +146,7 @@ class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute : public math_BFGS
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -169,19 +169,19 @@ class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_Multip
 		%feature("compactdefaultargs") AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has <NbPol> control points.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
@@ -212,7 +212,7 @@ class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_Multip
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -228,9 +228,9 @@ class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_Multip
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
@@ -243,7 +243,7 @@ class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_Multip
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -291,9 +291,9 @@ class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_Multip
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -301,11 +301,11 @@ class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_Multip
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -328,7 +328,7 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -338,7 +338,7 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
@@ -348,7 +348,7 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -366,11 +366,11 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -380,7 +380,7 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
@@ -390,11 +390,11 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -436,11 +436,11 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -448,13 +448,13 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -492,7 +492,7 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -500,7 +500,7 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -512,11 +512,11 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -528,15 +528,15 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -575,7 +575,7 @@ class AppDef_BSplineCompute {
 		%feature("compactdefaultargs") AppDef_BSplineCompute;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all. //! The multiplicities of the internal knots is set by default.
 	:param Line:
-	:type Line: AppDef_MultiLine &
+	:type Line: AppDef_MultiLine
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -599,9 +599,9 @@ class AppDef_BSplineCompute {
 		%feature("compactdefaultargs") AppDef_BSplineCompute;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 	:param Line:
-	:type Line: AppDef_MultiLine &
+	:type Line: AppDef_MultiLine
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -623,7 +623,7 @@ class AppDef_BSplineCompute {
 		%feature("compactdefaultargs") AppDef_BSplineCompute;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -673,9 +673,9 @@ class AppDef_BSplineCompute {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the tolerances 2d and 3d of the MultiBSpCurve.
 	:param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -705,7 +705,7 @@ class AppDef_BSplineCompute {
 		%feature("compactdefaultargs") Interpol;
 		%feature("autodoc", "* Constructs an interpolation of the MultiLine <Line> The result will be a C2 curve of degree 3.
 	:param Line:
-	:type Line: AppDef_MultiLine &
+	:type Line: AppDef_MultiLine
 	:rtype: None") Interpol;
 		void Interpol (const AppDef_MultiLine & Line);
 
@@ -731,7 +731,7 @@ class AppDef_BSplineCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* runs the algorithm after having initialized the fields.
 	:param Line:
-	:type Line: AppDef_MultiLine &
+	:type Line: AppDef_MultiLine
 	:rtype: None") Perform;
 		void Perform (const AppDef_MultiLine & Line);
 
@@ -767,7 +767,7 @@ class AppDef_BSplineCompute {
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "* The approximation will be done with the set of knots <Knots>. The multiplicities will be set with the degree and the desired continuity.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:rtype: None") SetKnots;
 		void SetKnots (const TColStd_Array1OfReal & Knots);
 
@@ -775,9 +775,9 @@ class AppDef_BSplineCompute {
 		%feature("compactdefaultargs") SetKnotsAndMultiplicities;
 		%feature("autodoc", "* The approximation will be done with the set of knots <Knots> and the multiplicities <Mults>.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: None") SetKnotsAndMultiplicities;
 		void SetKnotsAndMultiplicities (const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults);
 
@@ -785,7 +785,7 @@ class AppDef_BSplineCompute {
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "* The approximation will begin with the set of parameters <ThePar>.
 	:param ThePar:
-	:type ThePar: math_Vector &
+	:type ThePar: math_Vector
 	:rtype: None") SetParameters;
 		void SetParameters (const math_Vector & ThePar);
 
@@ -832,7 +832,7 @@ class AppDef_Compute {
 		%feature("compactdefaultargs") AppDef_Compute;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 	:param Line:
-	:type Line: AppDef_MultiLine &
+	:type Line: AppDef_MultiLine
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -856,9 +856,9 @@ class AppDef_Compute {
 		%feature("compactdefaultargs") AppDef_Compute;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 	:param Line:
-	:type Line: AppDef_MultiLine &
+	:type Line: AppDef_MultiLine
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -880,7 +880,7 @@ class AppDef_Compute {
 		%feature("compactdefaultargs") AppDef_Compute;
 		%feature("autodoc", "* Initializes the fields of the algorithm.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param degreemin: default value is 4
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -934,9 +934,9 @@ class AppDef_Compute {
 	:param Index:
 	:type Index: int
 	:param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") Error;
 		void Error (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -998,7 +998,7 @@ class AppDef_Compute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* runs the algorithm after having initialized the fields.
 	:param Line:
-	:type Line: AppDef_MultiLine &
+	:type Line: AppDef_MultiLine
 	:rtype: None") Perform;
 		void Perform (const AppDef_MultiLine & Line);
 
@@ -1064,9 +1064,9 @@ class AppDef_Gradient_BFGSOfMyGradientOfCompute : public math_BFGS {
 		/****************** AppDef_Gradient_BFGSOfMyGradientOfCompute ******************/
 		%feature("compactdefaultargs") AppDef_Gradient_BFGSOfMyGradientOfCompute;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -1081,7 +1081,7 @@ class AppDef_Gradient_BFGSOfMyGradientOfCompute : public math_BFGS {
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -1103,9 +1103,9 @@ class AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute : public math_BFGS {
 		/****************** AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute ******************/
 		%feature("compactdefaultargs") AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -1120,7 +1120,7 @@ class AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute : public math_BFGS {
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -1142,9 +1142,9 @@ class AppDef_Gradient_BFGSOfTheGradient : public math_BFGS {
 		/****************** AppDef_Gradient_BFGSOfTheGradient ******************/
 		%feature("compactdefaultargs") AppDef_Gradient_BFGSOfTheGradient;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:param StartingPoint:
-	:type StartingPoint: math_Vector &
+	:type StartingPoint: math_Vector
 	:param Tolerance3d:
 	:type Tolerance3d: float
 	:param Tolerance2d:
@@ -1159,7 +1159,7 @@ class AppDef_Gradient_BFGSOfTheGradient : public math_BFGS {
 		/****************** IsSolutionReached ******************/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", ":param F:
-	:type F: math_MultipleVarFunctionWithGradient &
+	:type F: math_MultipleVarFunctionWithGradient
 	:rtype: bool") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached (math_MultipleVarFunctionWithGradient & F);
 
@@ -1196,7 +1196,7 @@ class AppDef_MultiLine {
 		%feature("compactdefaultargs") AppDef_MultiLine;
 		%feature("autodoc", "* Constructs a MultiLine with an array of MultiPointConstraints.
 	:param tabMultiP:
-	:type tabMultiP: AppDef_Array1OfMultiPointConstraint &
+	:type tabMultiP: AppDef_Array1OfMultiPointConstraint
 	:rtype: None") AppDef_MultiLine;
 		 AppDef_MultiLine (const AppDef_Array1OfMultiPointConstraint & tabMultiP);
 
@@ -1242,7 +1242,7 @@ class AppDef_MultiLine {
 	:param Index:
 	:type Index: int
 	:param MPoint:
-	:type MPoint: AppDef_MultiPointConstraint &
+	:type MPoint: AppDef_MultiPointConstraint
 	:rtype: None") SetValue;
 		void SetValue (const Standard_Integer Index,const AppDef_MultiPointConstraint & MPoint);
 
@@ -1498,19 +1498,19 @@ class AppDef_MyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_MyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -1526,19 +1526,19 @@ class AppDef_MyBSplGradientOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_MyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -1611,15 +1611,15 @@ class AppDef_MyGradientOfCompute {
 		%feature("compactdefaultargs") AppDef_MyGradientOfCompute;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -1688,15 +1688,15 @@ class AppDef_MyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_MyGradientbisOfBSplineCompute;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -1764,7 +1764,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "* returns the 3d curvatures of the multipoint <MPointIndex> when only 3d points exist.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -1776,7 +1776,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "* returns the 2d curvatures of the multipoint <MPointIndex> only when 2d points exist.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV2d:
@@ -1788,7 +1788,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "* returns the 3d and 2d curvatures of the multipoint <MPointIndex>.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -1802,7 +1802,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "* Returns the first index of multipoints of the MultiLine.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:rtype: int") FirstPoint;
 		static Standard_Integer FirstPoint (const AppDef_MultiLine & ML);
 
@@ -1810,7 +1810,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") LastPoint;
 		%feature("autodoc", "* Returns the last index of multipoints of the MultiLine.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:rtype: int") LastPoint;
 		static Standard_Integer LastPoint (const AppDef_MultiLine & ML);
 
@@ -1818,7 +1818,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") MakeMLBetween;
 		%feature("autodoc", "* Is never called in the algorithms. Nothing is done.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -1832,7 +1832,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") MakeMLOneMorePoint;
 		%feature("autodoc", "* Is never called in the algorithms. Nothing is done.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -1840,7 +1840,7 @@ class AppDef_MyLineTool {
 	:param indbad:
 	:type indbad: int
 	:param OtherLine:
-	:type OtherLine: AppDef_MultiLine &
+	:type OtherLine: AppDef_MultiLine
 	:rtype: bool") MakeMLOneMorePoint;
 		static Standard_Boolean MakeMLOneMorePoint (const AppDef_MultiLine & ML,const Standard_Integer I1,const Standard_Integer I2,const Standard_Integer indbad,AppDef_MultiLine & OtherLine);
 
@@ -1848,7 +1848,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") NbP2d;
 		%feature("autodoc", "* Returns the number of 2d points of a MultiLine.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:rtype: int") NbP2d;
 		static Standard_Integer NbP2d (const AppDef_MultiLine & ML);
 
@@ -1856,7 +1856,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") NbP3d;
 		%feature("autodoc", "* Returns the number of 3d points of a MultiLine.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:rtype: int") NbP3d;
 		static Standard_Integer NbP3d (const AppDef_MultiLine & ML);
 
@@ -1864,7 +1864,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "* returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -1876,7 +1876,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "* returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV2d:
@@ -1888,7 +1888,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "* returns the 3d and 2d points of the multipoint <MPointIndex>.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabV:
@@ -1902,7 +1902,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabPt:
@@ -1914,7 +1914,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabPt2d:
@@ -1926,7 +1926,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* returns the 3d and 2d points of the multipoint <MPointIndex>.
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param MPointIndex:
 	:type MPointIndex: int
 	:param tabPt:
@@ -1940,7 +1940,7 @@ class AppDef_MyLineTool {
 		%feature("compactdefaultargs") WhatStatus;
 		%feature("autodoc", "* returns NoPointsAdded
 	:param ML:
-	:type ML: AppDef_MultiLine &
+	:type ML: AppDef_MultiLine
 	:param I1:
 	:type I1: int
 	:param I2:
@@ -1967,15 +1967,15 @@ class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionW
 		%feature("compactdefaultargs") AppDef_ParFunctionOfMyGradientOfCompute;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has the desired degree Deg.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:rtype: None") AppDef_ParFunctionOfMyGradientOfCompute;
@@ -2000,7 +2000,7 @@ class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionW
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -2010,16 +2010,16 @@ class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionW
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -2053,9 +2053,9 @@ class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionW
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -2063,11 +2063,11 @@ class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionW
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -2090,15 +2090,15 @@ class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVa
 		%feature("compactdefaultargs") AppDef_ParFunctionOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has the desired degree Deg.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:rtype: None") AppDef_ParFunctionOfMyGradientbisOfBSplineCompute;
@@ -2123,7 +2123,7 @@ class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVa
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -2133,16 +2133,16 @@ class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVa
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -2176,9 +2176,9 @@ class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVa
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -2186,11 +2186,11 @@ class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVa
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -2213,15 +2213,15 @@ class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradi
 		%feature("compactdefaultargs") AppDef_ParFunctionOfTheGradient;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has the desired degree Deg.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:rtype: None") AppDef_ParFunctionOfTheGradient;
@@ -2246,7 +2246,7 @@ class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradi
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -2256,16 +2256,16 @@ class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradi
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -2299,9 +2299,9 @@ class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradi
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -2309,11 +2309,11 @@ class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradi
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -2336,7 +2336,7 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2346,7 +2346,7 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_ParLeastSquareOfMyGradientOfCompute;
@@ -2356,7 +2356,7 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2374,11 +2374,11 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2388,7 +2388,7 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_ParLeastSquareOfMyGradientOfCompute;
@@ -2398,11 +2398,11 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2444,11 +2444,11 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2456,13 +2456,13 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2500,7 +2500,7 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -2508,7 +2508,7 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -2520,11 +2520,11 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -2536,15 +2536,15 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -2583,7 +2583,7 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2593,7 +2593,7 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
@@ -2603,7 +2603,7 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2621,11 +2621,11 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2635,7 +2635,7 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
@@ -2645,11 +2645,11 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2691,11 +2691,11 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2703,13 +2703,13 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2747,7 +2747,7 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -2755,7 +2755,7 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -2767,11 +2767,11 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -2783,15 +2783,15 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -2830,7 +2830,7 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfTheGradient;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2840,7 +2840,7 @@ class AppDef_ParLeastSquareOfTheGradient {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_ParLeastSquareOfTheGradient;
@@ -2850,7 +2850,7 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfTheGradient;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2868,11 +2868,11 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfTheGradient;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2882,7 +2882,7 @@ class AppDef_ParLeastSquareOfTheGradient {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_ParLeastSquareOfTheGradient;
@@ -2892,11 +2892,11 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfTheGradient;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -2938,11 +2938,11 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2950,13 +2950,13 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2994,7 +2994,7 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -3002,7 +3002,7 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -3014,11 +3014,11 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -3030,15 +3030,15 @@ class AppDef_ParLeastSquareOfTheGradient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -3077,19 +3077,19 @@ class AppDef_ResConstraintOfMyGradientOfCompute {
 		%feature("compactdefaultargs") AppDef_ResConstraintOfMyGradientOfCompute;
 		%feature("autodoc", "* Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param SCurv:
-	:type SCurv: AppParCurves_MultiCurve &
+	:type SCurv: AppParCurves_MultiCurve
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param Constraints:
-	:type Constraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type Constraints: AppParCurves_HArray1OfConstraintCouple
 	:param Bern:
-	:type Bern: math_Matrix &
+	:type Bern: math_Matrix
 	:param DerivativeBern:
-	:type DerivativeBern: math_Matrix &
+	:type DerivativeBern: math_Matrix
 	:param Tolerance: default value is 1.0e-10
 	:type Tolerance: float
 	:rtype: None") AppDef_ResConstraintOfMyGradientOfCompute;
@@ -3099,13 +3099,13 @@ class AppDef_ResConstraintOfMyGradientOfCompute {
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "* Returns the derivative of the constraint matrix.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:rtype: math_Matrix") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative (const AppDef_MultiLine & SSP,const math_Vector & Parameters,const Standard_Integer Deg,const math_Matrix & DA);
 
@@ -3151,19 +3151,19 @@ class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "* Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param SCurv:
-	:type SCurv: AppParCurves_MultiCurve &
+	:type SCurv: AppParCurves_MultiCurve
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param Constraints:
-	:type Constraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type Constraints: AppParCurves_HArray1OfConstraintCouple
 	:param Bern:
-	:type Bern: math_Matrix &
+	:type Bern: math_Matrix
 	:param DerivativeBern:
-	:type DerivativeBern: math_Matrix &
+	:type DerivativeBern: math_Matrix
 	:param Tolerance: default value is 1.0e-10
 	:type Tolerance: float
 	:rtype: None") AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
@@ -3173,13 +3173,13 @@ class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute {
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "* Returns the derivative of the constraint matrix.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:rtype: math_Matrix") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative (const AppDef_MultiLine & SSP,const math_Vector & Parameters,const Standard_Integer Deg,const math_Matrix & DA);
 
@@ -3225,19 +3225,19 @@ class AppDef_ResConstraintOfTheGradient {
 		%feature("compactdefaultargs") AppDef_ResConstraintOfTheGradient;
 		%feature("autodoc", "* Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param SCurv:
-	:type SCurv: AppParCurves_MultiCurve &
+	:type SCurv: AppParCurves_MultiCurve
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param Constraints:
-	:type Constraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type Constraints: AppParCurves_HArray1OfConstraintCouple
 	:param Bern:
-	:type Bern: math_Matrix &
+	:type Bern: math_Matrix
 	:param DerivativeBern:
-	:type DerivativeBern: math_Matrix &
+	:type DerivativeBern: math_Matrix
 	:param Tolerance: default value is 1.0e-10
 	:type Tolerance: float
 	:rtype: None") AppDef_ResConstraintOfTheGradient;
@@ -3247,13 +3247,13 @@ class AppDef_ResConstraintOfTheGradient {
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "* Returns the derivative of the constraint matrix.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:rtype: math_Matrix") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative (const AppDef_MultiLine & SSP,const math_Vector & Parameters,const Standard_Integer Deg,const math_Matrix & DA);
 
@@ -3308,11 +3308,11 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 		/****************** ErrorValues ******************/
 		%feature("compactdefaultargs") ErrorValues;
 		%feature("autodoc", ":param MaxError:
-	:type MaxError: float &
+	:type MaxError: float
 	:param QuadraticError:
-	:type QuadraticError: float &
+	:type QuadraticError: float
 	:param AverageError:
-	:type AverageError: float &
+	:type AverageError: float
 	:rtype: void") ErrorValues;
 		virtual void ErrorValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3324,27 +3324,27 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 		/****************** GetCurve ******************/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<FEmTool_Curve> &
+	:type C: FEmTool_Curve
 	:rtype: void") GetCurve;
 		virtual void GetCurve (opencascade::handle<FEmTool_Curve> & C);
 
 		/****************** GetEstimation ******************/
 		%feature("compactdefaultargs") GetEstimation;
 		%feature("autodoc", ":param E1:
-	:type E1: float &
+	:type E1: float
 	:param E2:
-	:type E2: float &
+	:type E2: float
 	:param E3:
-	:type E3: float &
+	:type E3: float
 	:rtype: void") GetEstimation;
 		virtual void GetEstimation (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** GetWeight ******************/
 		%feature("compactdefaultargs") GetWeight;
 		%feature("autodoc", ":param QuadraticWeight:
-	:type QuadraticWeight: float &
+	:type QuadraticWeight: float
 	:param QualityWeight:
-	:type QualityWeight: float &
+	:type QualityWeight: float
 	:rtype: void") GetWeight;
 		virtual void GetWeight (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3355,7 +3355,7 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 	:param Dimension:
 	:type Dimension: int
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: void") Gradient;
 		virtual void Gradient (const Standard_Integer Element,const Standard_Integer Dimension,math_Vector & G);
 
@@ -3368,7 +3368,7 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 	:param Dimension2:
 	:type Dimension2: int
 	:param H:
-	:type H: math_Matrix &
+	:type H: math_Matrix
 	:rtype: void") Hessian;
 		virtual void Hessian (const Standard_Integer Element,const Standard_Integer Dimension1,const Standard_Integer Dimension2,math_Matrix & H);
 
@@ -3376,9 +3376,9 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 		%feature("compactdefaultargs") InputVector;
 		%feature("autodoc", "* Convert the assembly Vector in an Curve;
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param AssTable:
-	:type AssTable: opencascade::handle<FEmTool_HAssemblyTable> &
+	:type AssTable: FEmTool_HAssemblyTable
 	:rtype: void") InputVector;
 		virtual void InputVector (const math_Vector & X,const opencascade::handle<FEmTool_HAssemblyTable> & AssTable);
 
@@ -3391,18 +3391,18 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 	:param J3min:
 	:type J3min: float
 	:param J1:
-	:type J1: float &
+	:type J1: float
 	:param J2:
-	:type J2: float &
+	:type J2: float
 	:param J3:
-	:type J3: float &
+	:type J3: float
 	:rtype: int") QualityValues;
 		virtual Standard_Integer QualityValues (const Standard_Real J1min,const Standard_Real J2min,const Standard_Real J3min,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<FEmTool_Curve> &
+	:type C: FEmTool_Curve
 	:rtype: void") SetCurve;
 		virtual void SetCurve (const opencascade::handle<FEmTool_Curve> & C);
 
@@ -3420,7 +3420,7 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 		/****************** SetParameters ******************/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", ":param Parameters:
-	:type Parameters: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Parameters: TColStd_HArray1OfReal
 	:rtype: void") SetParameters;
 		virtual void SetParameters (const opencascade::handle<TColStd_HArray1OfReal> & Parameters);
 
@@ -3442,7 +3442,7 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 		/****************** SetWeight ******************/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", ":param Weight:
-	:type Weight: TColStd_Array1OfReal &
+	:type Weight: TColStd_Array1OfReal
 	:rtype: void") SetWeight;
 		virtual void SetWeight (const TColStd_Array1OfReal & Weight);
 
@@ -3467,15 +3467,15 @@ class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 		%feature("compactdefaultargs") AppDef_TheFunction;
 		%feature("autodoc", "* initializes the fields of the function. The approximating curve has the desired degree Deg.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:rtype: None") AppDef_TheFunction;
@@ -3500,7 +3500,7 @@ class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 		/****************** FirstConstraint ******************/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param FirstPoint:
 	:type FirstPoint: int
 	:rtype: AppParCurves_Constraint") FirstConstraint;
@@ -3510,16 +3510,16 @@ class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "* returns the gradient G of the sum above for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Gradient;
 		Standard_Boolean Gradient (const math_Vector & X,math_Vector & G);
 
 		/****************** LastConstraint ******************/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", ":param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param LastPoint:
 	:type LastPoint: int
 	:rtype: AppParCurves_Constraint") LastConstraint;
@@ -3553,9 +3553,9 @@ class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,Standard_Real &OutValue);
 
@@ -3563,11 +3563,11 @@ class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,Standard_Real &OutValue,math_Vector & G);
 
@@ -3590,15 +3590,15 @@ class AppDef_TheGradient {
 		%feature("compactdefaultargs") AppDef_TheGradient;
 		%feature("autodoc", "* Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param Tol3d:
@@ -3667,7 +3667,7 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") AppDef_TheLeastSquares;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -3677,7 +3677,7 @@ class AppDef_TheLeastSquares {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_TheLeastSquares;
@@ -3687,7 +3687,7 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") AppDef_TheLeastSquares;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -3705,11 +3705,11 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") AppDef_TheLeastSquares;
 		%feature("autodoc", "* given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -3719,7 +3719,7 @@ class AppDef_TheLeastSquares {
 	:param LastCons:
 	:type LastCons: AppParCurves_Constraint
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param NbPol:
 	:type NbPol: int
 	:rtype: None") AppDef_TheLeastSquares;
@@ -3729,11 +3729,11 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") AppDef_TheLeastSquares;
 		%feature("autodoc", "* Initializes the fields of the object.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -3775,11 +3775,11 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3787,13 +3787,13 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "* returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 	:param Grad:
-	:type Grad: math_Vector &
+	:type Grad: math_Vector
 	:param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") ErrorGradient;
 		void ErrorGradient (math_Vector & Grad,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3831,7 +3831,7 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:rtype: None") Perform;
 		void Perform (const math_Vector & Parameters);
 
@@ -3839,7 +3839,7 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -3851,11 +3851,11 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -3867,15 +3867,15 @@ class AppDef_TheLeastSquares {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param V1t:
-	:type V1t: math_Vector &
+	:type V1t: math_Vector
 	:param V2t:
-	:type V2t: math_Vector &
+	:type V2t: math_Vector
 	:param V1c:
-	:type V1c: math_Vector &
+	:type V1c: math_Vector
 	:param V2c:
-	:type V2c: math_Vector &
+	:type V2c: math_Vector
 	:param l1:
 	:type l1: float
 	:param l2:
@@ -3914,19 +3914,19 @@ class AppDef_TheResol {
 		%feature("compactdefaultargs") AppDef_TheResol;
 		%feature("autodoc", "* Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param SCurv:
-	:type SCurv: AppParCurves_MultiCurve &
+	:type SCurv: AppParCurves_MultiCurve
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param Constraints:
-	:type Constraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type Constraints: AppParCurves_HArray1OfConstraintCouple
 	:param Bern:
-	:type Bern: math_Matrix &
+	:type Bern: math_Matrix
 	:param DerivativeBern:
-	:type DerivativeBern: math_Matrix &
+	:type DerivativeBern: math_Matrix
 	:param Tolerance: default value is 1.0e-10
 	:type Tolerance: float
 	:rtype: None") AppDef_TheResol;
@@ -3936,13 +3936,13 @@ class AppDef_TheResol {
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "* Returns the derivative of the constraint matrix.
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param Deg:
 	:type Deg: int
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:rtype: math_Matrix") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative (const AppDef_MultiLine & SSP,const math_Vector & Parameters,const Standard_Integer Deg,const math_Matrix & DA);
 
@@ -3988,13 +3988,13 @@ class AppDef_Variational {
 		%feature("compactdefaultargs") AppDef_Variational;
 		%feature("autodoc", "* Constructor. Initialization of the fields. warning : Nc0 : number of PassagePoint consraints Nc2 : number of TangencyPoint constraints Nc3 : number of CurvaturePoint constraints if ((MaxDegree-Continuity)*MaxSegment -Nc0 - 2*Nc1 -3*Nc2) is negative The problem is over-constrained. //! Limitation : The MultiLine from AppDef has to be composed by only one Line ( Dimension 2 or 3).
 	:param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
 	:type LastPoint: int
 	:param TheConstraints:
-	:type TheConstraints: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type TheConstraints: AppParCurves_HArray1OfConstraintCouple
 	:param MaxDegree: default value is 14
 	:type MaxDegree: int
 	:param MaxSegment: default value is 100
@@ -4034,11 +4034,11 @@ class AppDef_Variational {
 		%feature("compactdefaultargs") Criterium;
 		%feature("autodoc", "* returns the values of the quality criterium.
 	:param VFirstOrder:
-	:type VFirstOrder: float &
+	:type VFirstOrder: float
 	:param VSecondOrder:
-	:type VSecondOrder: float &
+	:type VSecondOrder: float
 	:param VThirdOrder:
-	:type VThirdOrder: float &
+	:type VThirdOrder: float
 	:rtype: None") Criterium;
 		void Criterium (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4046,11 +4046,11 @@ class AppDef_Variational {
 		%feature("compactdefaultargs") CriteriumWeight;
 		%feature("autodoc", "* returns the Weights (as percent) associed to the criterium used in the optimization.
 	:param Percent1:
-	:type Percent1: float &
+	:type Percent1: float
 	:param Percent2:
-	:type Percent2: float &
+	:type Percent2: float
 	:param Percent3:
-	:type Percent3: float &
+	:type Percent3: float
 	:rtype: None") CriteriumWeight;
 		void CriteriumWeight (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4058,7 +4058,7 @@ class AppDef_Variational {
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "* returns the distances between the points of the multiline and the approximation curves.
 	:param mat:
-	:type mat: math_Matrix &
+	:type mat: math_Matrix
 	:rtype: None") Distance;
 		void Distance (math_Matrix & mat);
 
@@ -4140,7 +4140,7 @@ class AppDef_Variational {
 		%feature("compactdefaultargs") SetConstraints;
 		%feature("autodoc", "* Define the constraints to approximate If this value is incompatible with the others fields this method modify nothing and returns false
 	:param aConstrainst:
-	:type aConstrainst: opencascade::handle<AppParCurves_HArray1OfConstraintCouple> &
+	:type aConstrainst: AppParCurves_HArray1OfConstraintCouple
 	:rtype: bool") SetConstraints;
 		Standard_Boolean SetConstraints (const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & aConstrainst);
 
@@ -4178,7 +4178,7 @@ class AppDef_Variational {
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "* Defines the knots used by the approximations If this value is incompatible with the others fields this method modify nothing and returns false
 	:param knots:
-	:type knots: opencascade::handle<TColStd_HArray1OfReal> &
+	:type knots: TColStd_HArray1OfReal
 	:rtype: bool") SetKnots;
 		Standard_Boolean SetKnots (const opencascade::handle<TColStd_HArray1OfReal> & knots);
 
@@ -4210,7 +4210,7 @@ class AppDef_Variational {
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "* Defines the parameters used by the approximations.
 	:param param:
-	:type param: opencascade::handle<TColStd_HArray1OfReal> &
+	:type param: TColStd_HArray1OfReal
 	:rtype: None") SetParameters;
 		void SetParameters (const opencascade::handle<TColStd_HArray1OfReal> & param);
 
@@ -4280,7 +4280,7 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 		/****************** AppDef_LinearCriteria ******************/
 		%feature("compactdefaultargs") AppDef_LinearCriteria;
 		%feature("autodoc", ":param SSP:
-	:type SSP: AppDef_MultiLine &
+	:type SSP: AppDef_MultiLine
 	:param FirstPoint:
 	:type FirstPoint: int
 	:param LastPoint:
@@ -4301,11 +4301,11 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 		/****************** ErrorValues ******************/
 		%feature("compactdefaultargs") ErrorValues;
 		%feature("autodoc", ":param MaxError:
-	:type MaxError: float &
+	:type MaxError: float
 	:param QuadraticError:
-	:type QuadraticError: float &
+	:type QuadraticError: float
 	:param AverageError:
-	:type AverageError: float &
+	:type AverageError: float
 	:rtype: None") ErrorValues;
 		void ErrorValues (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4325,27 +4325,27 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 		/****************** GetCurve ******************/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<FEmTool_Curve> &
+	:type C: FEmTool_Curve
 	:rtype: None") GetCurve;
 		void GetCurve (opencascade::handle<FEmTool_Curve> & C);
 
 		/****************** GetEstimation ******************/
 		%feature("compactdefaultargs") GetEstimation;
 		%feature("autodoc", ":param E1:
-	:type E1: float &
+	:type E1: float
 	:param E2:
-	:type E2: float &
+	:type E2: float
 	:param E3:
-	:type E3: float &
+	:type E3: float
 	:rtype: None") GetEstimation;
 		void GetEstimation (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** GetWeight ******************/
 		%feature("compactdefaultargs") GetWeight;
 		%feature("autodoc", ":param QuadraticWeight:
-	:type QuadraticWeight: float &
+	:type QuadraticWeight: float
 	:param QualityWeight:
-	:type QualityWeight: float &
+	:type QualityWeight: float
 	:rtype: None") GetWeight;
 		void GetWeight (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4356,7 +4356,7 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 	:param Dimension:
 	:type Dimension: int
 	:param G:
-	:type G: math_Vector &
+	:type G: math_Vector
 	:rtype: None") Gradient;
 		void Gradient (const Standard_Integer Element,const Standard_Integer Dimension,math_Vector & G);
 
@@ -4369,7 +4369,7 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 	:param Dimension2:
 	:type Dimension2: int
 	:param H:
-	:type H: math_Matrix &
+	:type H: math_Matrix
 	:rtype: None") Hessian;
 		void Hessian (const Standard_Integer Element,const Standard_Integer Dimension1,const Standard_Integer Dimension2,math_Matrix & H);
 
@@ -4377,9 +4377,9 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 		%feature("compactdefaultargs") InputVector;
 		%feature("autodoc", "* Convert the assembly Vector in an Curve;
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param AssTable:
-	:type AssTable: opencascade::handle<FEmTool_HAssemblyTable> &
+	:type AssTable: FEmTool_HAssemblyTable
 	:rtype: None") InputVector;
 		void InputVector (const math_Vector & X,const opencascade::handle<FEmTool_HAssemblyTable> & AssTable);
 
@@ -4392,18 +4392,18 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 	:param J3min:
 	:type J3min: float
 	:param J1:
-	:type J1: float &
+	:type J1: float
 	:param J2:
-	:type J2: float &
+	:type J2: float
 	:param J3:
-	:type J3: float &
+	:type J3: float
 	:rtype: int") QualityValues;
 		Standard_Integer QualityValues (const Standard_Real J1min,const Standard_Real J2min,const Standard_Real J3min,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** SetCurve ******************/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<FEmTool_Curve> &
+	:type C: FEmTool_Curve
 	:rtype: None") SetCurve;
 		void SetCurve (const opencascade::handle<FEmTool_Curve> & C);
 
@@ -4421,7 +4421,7 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 		/****************** SetParameters ******************/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", ":param Parameters:
-	:type Parameters: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Parameters: TColStd_HArray1OfReal
 	:rtype: None") SetParameters;
 		void SetParameters (const opencascade::handle<TColStd_HArray1OfReal> & Parameters);
 
@@ -4443,7 +4443,7 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 		/****************** SetWeight ******************/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", ":param Weight:
-	:type Weight: TColStd_Array1OfReal &
+	:type Weight: TColStd_Array1OfReal
 	:rtype: None") SetWeight;
 		void SetWeight (const TColStd_Array1OfReal & Weight);
 

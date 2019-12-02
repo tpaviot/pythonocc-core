@@ -154,7 +154,7 @@ class BRepFeat {
 		/****************** Barycenter ******************/
 		%feature("compactdefaultargs") Barycenter;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Pt:
 	:type Pt: gp_Pnt
 	:rtype: void") Barycenter;
@@ -163,27 +163,27 @@ class BRepFeat {
 		/****************** FaceUntil ******************/
 		%feature("compactdefaultargs") FaceUntil;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: void") FaceUntil;
 		static void FaceUntil (const TopoDS_Shape & S,TopoDS_Face & F);
 
 		/****************** IsInside ******************/
 		%feature("compactdefaultargs") IsInside;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:rtype: bool") IsInside;
 		static Standard_Boolean IsInside (const TopoDS_Face & F1,const TopoDS_Face & F2);
 
 		/****************** ParametricBarycenter ******************/
 		%feature("compactdefaultargs") ParametricBarycenter;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: float") ParametricBarycenter;
 		static Standard_Real ParametricBarycenter (const TopoDS_Shape & S,const opencascade::handle<Geom_Curve> & C);
 
@@ -191,17 +191,17 @@ class BRepFeat {
 		%feature("compactdefaultargs") ParametricMinMax;
 		%feature("autodoc", "* Ori = True taking account the orientation
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param prmin:
-	:type prmin: float &
+	:type prmin: float
 	:param prmax:
-	:type prmax: float &
+	:type prmax: float
 	:param prbmin:
-	:type prbmin: float &
+	:type prbmin: float
 	:param prbmax:
-	:type prbmax: float &
+	:type prbmax: float
 	:param flag:
 	:type flag: bool
 	:param Ori: default value is Standard_False
@@ -215,14 +215,14 @@ class BRepFeat {
 	:param SE:
 	:type SE: BRepFeat_StatusError
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const BRepFeat_StatusError SE,Standard_OStream & S);
 
 		/****************** SampleEdges ******************/
 		%feature("compactdefaultargs") SampleEdges;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Pt:
 	:type Pt: TColgp_SequenceOfPnt
 	:rtype: void") SampleEdges;
@@ -231,9 +231,9 @@ class BRepFeat {
 		/****************** Tool ******************/
 		%feature("compactdefaultargs") Tool;
 		%feature("autodoc", ":param SRef:
-	:type SRef: TopoDS_Shape &
+	:type SRef: TopoDS_Shape
 	:param Fac:
-	:type Fac: TopoDS_Face &
+	:type Fac: TopoDS_Face
 	:param Orf:
 	:type Orf: TopAbs_Orientation
 	:rtype: TopoDS_Solid") Tool;
@@ -281,9 +281,9 @@ class BRepFeat_Builder : public BOPAlgo_BOP {
 		%feature("compactdefaultargs") FillRemoved;
 		%feature("autodoc", "* Adds the shape S and its sub-shapes into myRemoved map.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:param theM:
-	:type theM: TopTools_MapOfShape &
+	:type theM: TopTools_MapOfShape
 	:rtype: None") FillRemoved;
 		void FillRemoved (const TopoDS_Shape & theS,TopTools_MapOfShape & theM);
 
@@ -291,7 +291,7 @@ class BRepFeat_Builder : public BOPAlgo_BOP {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialyzes the object of local boolean operation.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & theShape);
 
@@ -299,9 +299,9 @@ class BRepFeat_Builder : public BOPAlgo_BOP {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialyzes the arguments of local boolean operation.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theTool:
-	:type theTool: TopoDS_Shape &
+	:type theTool: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & theShape,const TopoDS_Shape & theTool);
 
@@ -309,7 +309,7 @@ class BRepFeat_Builder : public BOPAlgo_BOP {
 		%feature("compactdefaultargs") KeepPart;
 		%feature("autodoc", "* Adds shape theS and all its sub-shapes into myShapes map.
 	:param theS:
-	:type theS: TopoDS_Shape &
+	:type theS: TopoDS_Shape
 	:rtype: None") KeepPart;
 		void KeepPart (const TopoDS_Shape & theS);
 
@@ -317,7 +317,7 @@ class BRepFeat_Builder : public BOPAlgo_BOP {
 		%feature("compactdefaultargs") KeepParts;
 		%feature("autodoc", "* Initialyzes parts of the tool for second step of algorithm. Collects shapes and all sub-shapes into myShapes map.
 	:param theIm:
-	:type theIm: TopTools_ListOfShape &
+	:type theIm: TopTools_ListOfShape
 	:rtype: None") KeepParts;
 		void KeepParts (const TopTools_ListOfShape & theIm);
 
@@ -325,7 +325,7 @@ class BRepFeat_Builder : public BOPAlgo_BOP {
 		%feature("compactdefaultargs") PartsOfTool;
 		%feature("autodoc", "* Collects parts of the tool.
 	:param theLT:
-	:type theLT: TopTools_ListOfShape &
+	:type theLT: TopTools_ListOfShape
 	:rtype: None") PartsOfTool;
 		void PartsOfTool (TopTools_ListOfShape & theLT);
 
@@ -339,13 +339,13 @@ class BRepFeat_Builder : public BOPAlgo_BOP {
 		%feature("compactdefaultargs") RebuildEdge;
 		%feature("autodoc", "* Rebuilds edges in accordance with the kept parts of the tool.
 	:param theE:
-	:type theE: TopoDS_Shape &
+	:type theE: TopoDS_Shape
 	:param theF:
-	:type theF: TopoDS_Face &
+	:type theF: TopoDS_Face
 	:param theME:
-	:type theME: TopTools_MapOfShape &
+	:type theME: TopTools_MapOfShape
 	:param aLEIm:
-	:type aLEIm: TopTools_ListOfShape &
+	:type aLEIm: TopTools_ListOfShape
 	:rtype: None") RebuildEdge;
 		void RebuildEdge (const TopoDS_Shape & theE,const TopoDS_Face & theF,const TopTools_MapOfShape & theME,TopTools_ListOfShape & aLEIm);
 
@@ -407,7 +407,7 @@ class BRepFeat_Form : public BRepBuilderAPI_MakeShape {
 		/****************** Curves ******************/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", ":param S:
-	:type S: TColGeom_SequenceOfCurve &
+	:type S: TColGeom_SequenceOfCurve
 	:rtype: void") Curves;
 		virtual void Curves (TColGeom_SequenceOfCurve & S);
 
@@ -421,7 +421,7 @@ class BRepFeat_Form : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* returns a list of the created faces from the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Generated;
 		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
 
@@ -440,7 +440,7 @@ class BRepFeat_Form : public BRepBuilderAPI_MakeShape {
 		/****************** IsDeleted ******************/
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") IsDeleted;
 		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
 
@@ -454,7 +454,7 @@ class BRepFeat_Form : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "* returns the list of generated Faces.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Modified;
 		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & F);
 
@@ -519,9 +519,9 @@ class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") BRepFeat_Gluer;
 		%feature("autodoc", "* Initializes the shapes to be glued, the new shape Snew and the basis shape Sbase.
 	:param Snew:
-	:type Snew: TopoDS_Shape &
+	:type Snew: TopoDS_Shape
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:rtype: None") BRepFeat_Gluer;
 		 BRepFeat_Gluer (const TopoDS_Shape & Snew,const TopoDS_Shape & Sbase);
 
@@ -535,9 +535,9 @@ class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "* Defines a contact between Fnew on the new shape Snew and Fbase on the basis shape Sbase. Informs other methods that Fnew in the new shape Snew is connected to the face Fbase in the basis shape Sbase. The contact faces of the glued shape must not have parts outside the contact faces of the basis shape. This indicates that glueing is possible.
 	:param Fnew:
-	:type Fnew: TopoDS_Face &
+	:type Fnew: TopoDS_Face
 	:param Fbase:
-	:type Fbase: TopoDS_Face &
+	:type Fbase: TopoDS_Face
 	:rtype: None") Bind;
 		void Bind (const TopoDS_Face & Fnew,const TopoDS_Face & Fbase);
 
@@ -545,9 +545,9 @@ class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "* nforms other methods that the edge Enew in the new shape is the same as the edge Ebase in the basis shape and is therefore attached to the basis shape. This indicates that glueing is possible.
 	:param Enew:
-	:type Enew: TopoDS_Edge &
+	:type Enew: TopoDS_Edge
 	:param Ebase:
-	:type Ebase: TopoDS_Edge &
+	:type Ebase: TopoDS_Edge
 	:rtype: None") Bind;
 		void Bind (const TopoDS_Edge & Enew,const TopoDS_Edge & Ebase);
 
@@ -567,9 +567,9 @@ class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the new shape Snew and the basis shape Sbase for the local glueing operation.
 	:param Snew:
-	:type Snew: TopoDS_Shape &
+	:type Snew: TopoDS_Shape
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & Snew,const TopoDS_Shape & Sbase);
 
@@ -577,7 +577,7 @@ class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "* returns the status of the Face after the shape creation.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: bool") IsDeleted;
 		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & F);
 
@@ -585,7 +585,7 @@ class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "* returns the list of generated Faces.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Modified;
 		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & F);
 
@@ -613,15 +613,15 @@ class BRepFeat_RibSlot : public BRepBuilderAPI_MakeShape {
 		/****************** ChoiceOfFaces ******************/
 		%feature("compactdefaultargs") ChoiceOfFaces;
 		%feature("autodoc", ":param faces:
-	:type faces: TopTools_ListOfShape &
+	:type faces: TopTools_ListOfShape
 	:param cc:
-	:type cc: opencascade::handle<Geom_Curve> &
+	:type cc: Geom_Curve
 	:param par:
 	:type par: float
 	:param bnd:
 	:type bnd: float
 	:param Pln:
-	:type Pln: opencascade::handle<Geom_Plane> &
+	:type Pln: Geom_Plane
 	:rtype: TopoDS_Face") ChoiceOfFaces;
 		static TopoDS_Face ChoiceOfFaces (TopTools_ListOfShape & faces,const opencascade::handle<Geom_Curve> & cc,const Standard_Real par,const Standard_Real bnd,const opencascade::handle<Geom_Plane> & Pln);
 
@@ -646,14 +646,14 @@ class BRepFeat_RibSlot : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns a list TopTools_ListOfShape of the faces S created in the shape.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Generated;
 		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
 
 		/****************** IntPar ******************/
 		%feature("compactdefaultargs") IntPar;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param P:
 	:type P: gp_Pnt
 	:rtype: float") IntPar;
@@ -663,7 +663,7 @@ class BRepFeat_RibSlot : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "* Returns true if F a TopoDS_Shape of type edge or face has been deleted.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: bool") IsDeleted;
 		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & F);
 
@@ -677,7 +677,7 @@ class BRepFeat_RibSlot : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "* Returns the list of generated Faces F. This list may be empty.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Modified;
 		virtual const TopTools_ListOfShape & Modified (const TopoDS_Shape & F);
 
@@ -712,7 +712,7 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Add splitting edges or wires for whole initial shape withot additional specification edge->face, edge->edge This method puts edge on the corresponding faces from initial shape
 	:param theEdges:
-	:type theEdges: TopTools_SequenceOfShape &
+	:type theEdges: TopTools_SequenceOfShape
 	:rtype: bool") Add;
 		Standard_Boolean Add (const TopTools_SequenceOfShape & theEdges);
 
@@ -720,9 +720,9 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the wire <W> on the face <F>. Raises NoSuchObject if <F> does not belong to the original shape.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Wire & W,const TopoDS_Face & F);
 
@@ -730,9 +730,9 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the edge <E> on the face <F>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -740,9 +740,9 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the compound <Comp> on the face <F>. The compound <Comp> must consist of edges lying on the face <F>. If edges are geometrically connected, they must be connected topologically, i.e. they must share common vertices. //! Raises NoSuchObject if <F> does not belong to the original shape.
 	:param Comp:
-	:type Comp: TopoDS_Compound &
+	:type Comp: TopoDS_Compound
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Compound & Comp,const TopoDS_Face & F);
 
@@ -750,9 +750,9 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the edge <E> on the existing edge <EOn>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param EOn:
-	:type EOn: TopoDS_Edge &
+	:type EOn: TopoDS_Edge
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E,const TopoDS_Edge & EOn);
 
@@ -766,7 +766,7 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") BRepFeat_SplitShape;
 		%feature("autodoc", "* Creates the process with the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") BRepFeat_SplitShape;
 		 BRepFeat_SplitShape (const TopoDS_Shape & S);
 
@@ -786,7 +786,7 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the process on the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -794,7 +794,7 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "* Returns true if the shape has been deleted.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") IsDeleted;
 		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
 
@@ -808,7 +808,7 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "* Returns the list of generated Faces.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Modified;
 		const TopTools_ListOfShape & Modified (const TopoDS_Shape & F);
 
@@ -859,7 +859,7 @@ class BRepFeat_MakeCylindricalHole : public BRepFeat_Builder {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Sets the shape and axis on which hole(s) will be performed.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param Axis:
 	:type Axis: gp_Ax1
 	:rtype: None") Init;
@@ -944,9 +944,9 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param OnFace:
-	:type OnFace: TopoDS_Face &
+	:type OnFace: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E,const TopoDS_Face & OnFace);
 
@@ -954,11 +954,11 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") BRepFeat_MakeDPrism;
 		%feature("autodoc", "* A face Pbase is selected in the shape Sbase to serve as the basis for the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Initializes the draft prism class
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Pbase:
-	:type Pbase: TopoDS_Face &
+	:type Pbase: TopoDS_Face
 	:param Skface:
-	:type Skface: TopoDS_Face &
+	:type Skface: TopoDS_Face
 	:param Angle:
 	:type Angle: float
 	:param Fuse:
@@ -989,7 +989,7 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 		/****************** Curves ******************/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", ":param S:
-	:type S: TColGeom_SequenceOfCurve &
+	:type S: TColGeom_SequenceOfCurve
 	:rtype: None") Curves;
 		void Curves (TColGeom_SequenceOfCurve & S);
 
@@ -997,11 +997,11 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this algorithm for building draft prisms along surfaces. A face Pbase is selected in the basis shape Sbase to serve as the basis from the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Pbase:
-	:type Pbase: TopoDS_Face &
+	:type Pbase: TopoDS_Face
 	:param Skface:
-	:type Skface: TopoDS_Face &
+	:type Skface: TopoDS_Face
 	:param Angle:
 	:type Angle: float
 	:param Fuse:
@@ -1027,7 +1027,7 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & Until);
 
@@ -1035,9 +1035,9 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Assigns one of the following semantics - to a height Height - to a face Until - from a face From to a height Until. Reconstructs the feature topologically according to the semantic option chosen.
 	:param From:
-	:type From: TopoDS_Shape &
+	:type From: TopoDS_Shape
 	:param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & From,const TopoDS_Shape & Until);
 
@@ -1045,7 +1045,7 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") PerformFromEnd;
 		%feature("autodoc", "* Realizes a semi-infinite prism, limited by the face Funtil.
 	:param FUntil:
-	:type FUntil: TopoDS_Shape &
+	:type FUntil: TopoDS_Shape
 	:rtype: None") PerformFromEnd;
 		void PerformFromEnd (const TopoDS_Shape & FUntil);
 
@@ -1065,7 +1065,7 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") PerformUntilHeight;
 		%feature("autodoc", "* Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Height at which to stop generation of the prism feature.
 	:param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:param Height:
 	:type Height: float
 	:rtype: None") PerformUntilHeight;
@@ -1096,9 +1096,9 @@ class BRepFeat_MakeLinearForm : public BRepFeat_RibSlot {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param OnFace:
-	:type OnFace: TopoDS_Face &
+	:type OnFace: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E,const TopoDS_Face & OnFace);
 
@@ -1112,11 +1112,11 @@ class BRepFeat_MakeLinearForm : public BRepFeat_RibSlot {
 		%feature("compactdefaultargs") BRepFeat_MakeLinearForm;
 		%feature("autodoc", "* contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. Direction and Direction1 give The vectors for defining the direction(s) in which thickness will be built up. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param P:
-	:type P: opencascade::handle<Geom_Plane> &
+	:type P: Geom_Plane
 	:param Direction:
 	:type Direction: gp_Vec
 	:param Direction1:
@@ -1132,11 +1132,11 @@ class BRepFeat_MakeLinearForm : public BRepFeat_RibSlot {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this construction algorithm. A contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. The vectors for defining the direction(s) in which thickness will be built up are given by Direction and Direction1. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param P:
-	:type P: opencascade::handle<Geom_Plane> &
+	:type P: Geom_Plane
 	:param Direction:
 	:type Direction: gp_Vec
 	:param Direction1:
@@ -1157,9 +1157,9 @@ class BRepFeat_MakeLinearForm : public BRepFeat_RibSlot {
 		/****************** Propagate ******************/
 		%feature("compactdefaultargs") Propagate;
 		%feature("autodoc", ":param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param FPoint:
 	:type FPoint: gp_Pnt
 	:param LPoint:
@@ -1188,9 +1188,9 @@ class BRepFeat_MakePipe : public BRepFeat_Form {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param OnFace:
-	:type OnFace: TopoDS_Face &
+	:type OnFace: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E,const TopoDS_Face & OnFace);
 
@@ -1204,13 +1204,13 @@ class BRepFeat_MakePipe : public BRepFeat_Form {
 		%feature("compactdefaultargs") BRepFeat_MakePipe;
 		%feature("autodoc", "* A face Pbase is selected in the shape Sbase to serve as the basis for the pipe. It will be defined by the wire Spine. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Pbase:
-	:type Pbase: TopoDS_Shape &
+	:type Pbase: TopoDS_Shape
 	:param Skface:
-	:type Skface: TopoDS_Face &
+	:type Skface: TopoDS_Face
 	:param Spine:
-	:type Spine: TopoDS_Wire &
+	:type Spine: TopoDS_Wire
 	:param Fuse:
 	:type Fuse: int
 	:param Modify:
@@ -1226,7 +1226,7 @@ class BRepFeat_MakePipe : public BRepFeat_Form {
 		/****************** Curves ******************/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", ":param S:
-	:type S: TColGeom_SequenceOfCurve &
+	:type S: TColGeom_SequenceOfCurve
 	:rtype: None") Curves;
 		void Curves (TColGeom_SequenceOfCurve & S);
 
@@ -1234,13 +1234,13 @@ class BRepFeat_MakePipe : public BRepFeat_Form {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this algorithm for adding pipes to shapes. A face Pbase is selected in the shape Sbase to serve as the basis for the pipe. It will be defined by the wire Spine. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Pbase:
-	:type Pbase: TopoDS_Shape &
+	:type Pbase: TopoDS_Shape
 	:param Skface:
-	:type Skface: TopoDS_Face &
+	:type Skface: TopoDS_Face
 	:param Spine:
-	:type Spine: TopoDS_Wire &
+	:type Spine: TopoDS_Wire
 	:param Fuse:
 	:type Fuse: int
 	:param Modify:
@@ -1256,7 +1256,7 @@ class BRepFeat_MakePipe : public BRepFeat_Form {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & Until);
 
@@ -1264,9 +1264,9 @@ class BRepFeat_MakePipe : public BRepFeat_Form {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Assigns one of the following semantics - to a face Until - from a face From to a height Until. Reconstructs the feature topologically according to the semantic option chosen.
 	:param From:
-	:type From: TopoDS_Shape &
+	:type From: TopoDS_Shape
 	:param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & From,const TopoDS_Shape & Until);
 
@@ -1289,9 +1289,9 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param OnFace:
-	:type OnFace: TopoDS_Face &
+	:type OnFace: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E,const TopoDS_Face & OnFace);
 
@@ -1305,11 +1305,11 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") BRepFeat_MakePrism;
 		%feature("autodoc", "* Builds a prism by projecting a wire along the face of a shape. a face Pbase is selected in the shape Sbase to serve as the basis for the prism. The orientation of the prism will be defined by the vector Direction. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Exceptions Standard_ConstructionError if the face does not belong to the basis or the prism shape.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Pbase:
-	:type Pbase: TopoDS_Shape &
+	:type Pbase: TopoDS_Shape
 	:param Skface:
-	:type Skface: TopoDS_Face &
+	:type Skface: TopoDS_Face
 	:param Direction:
 	:type Direction: gp_Dir
 	:param Fuse:
@@ -1329,7 +1329,7 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "* Returns the list of curves S parallel to the axis of the prism.
 	:param S:
-	:type S: TColGeom_SequenceOfCurve &
+	:type S: TColGeom_SequenceOfCurve
 	:rtype: None") Curves;
 		void Curves (TColGeom_SequenceOfCurve & S);
 
@@ -1337,11 +1337,11 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this algorithm for building prisms along surfaces. A face Pbase is selected in the shape Sbase to serve as the basis for the prism. The orientation of the prism will be defined by the vector Direction. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Pbase:
-	:type Pbase: TopoDS_Shape &
+	:type Pbase: TopoDS_Shape
 	:param Skface:
-	:type Skface: TopoDS_Face &
+	:type Skface: TopoDS_Face
 	:param Direction:
 	:type Direction: gp_Dir
 	:param Fuse:
@@ -1361,7 +1361,7 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & Until);
 
@@ -1369,9 +1369,9 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Assigns one of the following semantics - to a height Length - to a face Until - from a face From to a height Until. Reconstructs the feature topologically according to the semantic option chosen.
 	:param From:
-	:type From: TopoDS_Shape &
+	:type From: TopoDS_Shape
 	:param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & From,const TopoDS_Shape & Until);
 
@@ -1379,7 +1379,7 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") PerformFromEnd;
 		%feature("autodoc", "* Realizes a semi-infinite prism, limited by the face Funtil.
 	:param FUntil:
-	:type FUntil: TopoDS_Shape &
+	:type FUntil: TopoDS_Shape
 	:rtype: None") PerformFromEnd;
 		void PerformFromEnd (const TopoDS_Shape & FUntil);
 
@@ -1399,7 +1399,7 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 		%feature("compactdefaultargs") PerformUntilHeight;
 		%feature("autodoc", "* Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Length at which to stop generation of the prism feature.
 	:param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:param Length:
 	:type Length: float
 	:rtype: None") PerformUntilHeight;
@@ -1424,9 +1424,9 @@ class BRepFeat_MakeRevol : public BRepFeat_Form {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param OnFace:
-	:type OnFace: TopoDS_Face &
+	:type OnFace: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E,const TopoDS_Face & OnFace);
 
@@ -1440,11 +1440,11 @@ class BRepFeat_MakeRevol : public BRepFeat_Form {
 		%feature("compactdefaultargs") BRepFeat_MakeRevol;
 		%feature("autodoc", "* a face Pbase is selected in the shape Sbase to serve as the basis for the revolved shell. The revolution will be defined by the axis Axis and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Pbase:
-	:type Pbase: TopoDS_Shape &
+	:type Pbase: TopoDS_Shape
 	:param Skface:
-	:type Skface: TopoDS_Face &
+	:type Skface: TopoDS_Face
 	:param Axis:
 	:type Axis: gp_Ax1
 	:param Fuse:
@@ -1462,18 +1462,18 @@ class BRepFeat_MakeRevol : public BRepFeat_Form {
 		/****************** Curves ******************/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", ":param S:
-	:type S: TColGeom_SequenceOfCurve &
+	:type S: TColGeom_SequenceOfCurve
 	:rtype: None") Curves;
 		void Curves (TColGeom_SequenceOfCurve & S);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param Pbase:
-	:type Pbase: TopoDS_Shape &
+	:type Pbase: TopoDS_Shape
 	:param Skface:
-	:type Skface: TopoDS_Face &
+	:type Skface: TopoDS_Face
 	:param Axis:
 	:type Axis: gp_Ax1
 	:param Fuse:
@@ -1493,7 +1493,7 @@ class BRepFeat_MakeRevol : public BRepFeat_Form {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & Until);
 
@@ -1501,9 +1501,9 @@ class BRepFeat_MakeRevol : public BRepFeat_Form {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Reconstructs the feature topologically.
 	:param From:
-	:type From: TopoDS_Shape &
+	:type From: TopoDS_Shape
 	:param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & From,const TopoDS_Shape & Until);
 
@@ -1517,7 +1517,7 @@ class BRepFeat_MakeRevol : public BRepFeat_Form {
 		%feature("compactdefaultargs") PerformUntilAngle;
 		%feature("autodoc", "* Assigns both a limiting shape, Until from TopoDS_Shape, and an angle, Angle at which to stop generation of the revolved shell feature.
 	:param Until:
-	:type Until: TopoDS_Shape &
+	:type Until: TopoDS_Shape
 	:param Angle:
 	:type Angle: float
 	:rtype: None") PerformUntilAngle;
@@ -1542,9 +1542,9 @@ class BRepFeat_MakeRevolutionForm : public BRepFeat_RibSlot {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Indicates that the edge <E> will slide on the face <OnFace>. Raises ConstructionError if the face does not belong to the basis shape, or the edge to the prismed shape.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param OnFace:
-	:type OnFace: TopoDS_Face &
+	:type OnFace: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E,const TopoDS_Face & OnFace);
 
@@ -1558,11 +1558,11 @@ class BRepFeat_MakeRevolutionForm : public BRepFeat_RibSlot {
 		%feature("compactdefaultargs") BRepFeat_MakeRevolutionForm;
 		%feature("autodoc", "* a contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. The axis Axis of the revolved surface in the basis shape defines the feature's axis of revolution. Height1 and Height2 may be used as limits to the construction of the feature. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Plane:
-	:type Plane: opencascade::handle<Geom_Plane> &
+	:type Plane: Geom_Plane
 	:param Axis:
 	:type Axis: gp_Ax1
 	:param Height1:
@@ -1580,11 +1580,11 @@ class BRepFeat_MakeRevolutionForm : public BRepFeat_RibSlot {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this construction algorithm A contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. The axis Axis of the revolved surface in the basis shape defines the feature's axis of revolution. Height1 and Height2 may be used as limits to the construction of the feature. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 	:param Sbase:
-	:type Sbase: TopoDS_Shape &
+	:type Sbase: TopoDS_Shape
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Plane:
-	:type Plane: opencascade::handle<Geom_Plane> &
+	:type Plane: Geom_Plane
 	:param Axis:
 	:type Axis: gp_Ax1
 	:param Height1:
@@ -1607,9 +1607,9 @@ class BRepFeat_MakeRevolutionForm : public BRepFeat_RibSlot {
 		/****************** Propagate ******************/
 		%feature("compactdefaultargs") Propagate;
 		%feature("autodoc", ":param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param FPoint:
 	:type FPoint: gp_Pnt
 	:param LPoint:

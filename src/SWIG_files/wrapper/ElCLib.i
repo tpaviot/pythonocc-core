@@ -78,9 +78,9 @@ class ElCLib {
 	:param Precision:
 	:type Precision: float
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: void") AdjustPeriodic;
 		static void AdjustPeriodic (const Standard_Real UFirst,const Standard_Real ULast,const Standard_Real Precision,Standard_Real &OutValue,Standard_Real &OutValue);
 

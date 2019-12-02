@@ -87,9 +87,9 @@ class GeomConvert {
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
 		%feature("autodoc", "* This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance.
 	:param BS:
-	:type BS: opencascade::handle<Geom_BSplineCurve> &
+	:type BS: Geom_BSplineCurve
 	:param tabBS:
-	:type tabBS: opencascade::handle<TColGeom_HArray1OfBSplineCurve> &
+	:type tabBS: TColGeom_HArray1OfBSplineCurve
 	:param tolerance:
 	:type tolerance: float
 	:rtype: void") C0BSplineToArrayOfC1BSplineCurve;
@@ -99,9 +99,9 @@ class GeomConvert {
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
 		%feature("autodoc", "* This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance : it allows for the maximum deformation The Angular tolerance is in radians and mesures the angle of the tangents on the left and on the right to decide if the curve is C1 or not at a given point
 	:param BS:
-	:type BS: opencascade::handle<Geom_BSplineCurve> &
+	:type BS: Geom_BSplineCurve
 	:param tabBS:
-	:type tabBS: opencascade::handle<TColGeom_HArray1OfBSplineCurve> &
+	:type tabBS: TColGeom_HArray1OfBSplineCurve
 	:param AngularTolerance:
 	:type AngularTolerance: float
 	:param tolerance:
@@ -113,7 +113,7 @@ class GeomConvert {
 		%feature("compactdefaultargs") C0BSplineToC1BSplineCurve;
 		%feature("autodoc", "* This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns a new BSpline which could still be C0. tolerance is a geometrical tolerance. The Angular toleranceis in radians and mesures the angle of the tangents on the left and on the right to decide if the curve is G1 or not at a given point
 	:param BS:
-	:type BS: opencascade::handle<Geom_BSplineCurve> &
+	:type BS: Geom_BSplineCurve
 	:param tolerance:
 	:type tolerance: float
 	:param AngularTolerance: default value is 1.0e-7
@@ -125,13 +125,13 @@ class GeomConvert {
 		%feature("compactdefaultargs") ConcatC1;
 		%feature("autodoc", "* This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 	:param ArrayOfCurves:
-	:type ArrayOfCurves: TColGeom_Array1OfBSplineCurve &
+	:type ArrayOfCurves: TColGeom_Array1OfBSplineCurve
 	:param ArrayOfToler:
-	:type ArrayOfToler: TColStd_Array1OfReal &
+	:type ArrayOfToler: TColStd_Array1OfReal
 	:param ArrayOfIndices:
-	:type ArrayOfIndices: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type ArrayOfIndices: TColStd_HArray1OfInteger
 	:param ArrayOfConcatenated:
-	:type ArrayOfConcatenated: opencascade::handle<TColGeom_HArray1OfBSplineCurve> &
+	:type ArrayOfConcatenated: TColGeom_HArray1OfBSplineCurve
 	:param ClosedFlag:
 	:type ClosedFlag: bool
 	:param ClosedTolerance:
@@ -143,13 +143,13 @@ class GeomConvert {
 		%feature("compactdefaultargs") ConcatC1;
 		%feature("autodoc", "* This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 	:param ArrayOfCurves:
-	:type ArrayOfCurves: TColGeom_Array1OfBSplineCurve &
+	:type ArrayOfCurves: TColGeom_Array1OfBSplineCurve
 	:param ArrayOfToler:
-	:type ArrayOfToler: TColStd_Array1OfReal &
+	:type ArrayOfToler: TColStd_Array1OfReal
 	:param ArrayOfIndices:
-	:type ArrayOfIndices: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type ArrayOfIndices: TColStd_HArray1OfInteger
 	:param ArrayOfConcatenated:
-	:type ArrayOfConcatenated: opencascade::handle<TColGeom_HArray1OfBSplineCurve> &
+	:type ArrayOfConcatenated: TColGeom_HArray1OfBSplineCurve
 	:param ClosedFlag:
 	:type ClosedFlag: bool
 	:param ClosedTolerance:
@@ -163,11 +163,11 @@ class GeomConvert {
 		%feature("compactdefaultargs") ConcatG1;
 		%feature("autodoc", "* This Method concatenates G1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 	:param ArrayOfCurves:
-	:type ArrayOfCurves: TColGeom_Array1OfBSplineCurve &
+	:type ArrayOfCurves: TColGeom_Array1OfBSplineCurve
 	:param ArrayOfToler:
-	:type ArrayOfToler: TColStd_Array1OfReal &
+	:type ArrayOfToler: TColStd_Array1OfReal
 	:param ArrayOfConcatenated:
-	:type ArrayOfConcatenated: opencascade::handle<TColGeom_HArray1OfBSplineCurve> &
+	:type ArrayOfConcatenated: TColGeom_HArray1OfBSplineCurve
 	:param ClosedFlag:
 	:type ClosedFlag: bool
 	:param ClosedTolerance:
@@ -179,7 +179,7 @@ class GeomConvert {
 		%feature("compactdefaultargs") CurveToBSplineCurve;
 		%feature("autodoc", "* This function converts a non infinite curve from Geom into a B-spline curve. C must be an ellipse or a circle or a trimmed conic or a trimmed line or a Bezier curve or a trimmed Bezier curve or a BSpline curve or a trimmed BSpline curve or an OffsetCurve. The returned B-spline is not periodic except if C is a Circle or an Ellipse. If the Parameterisation is QuasiAngular than the returned curve is NOT periodic in case a periodic Geom_Circle or Geom_Ellipse. For TgtThetaOver2_1 and TgtThetaOver2_2 the method raises an exception in case of a periodic Geom_Circle or a Geom_Ellipse ParameterisationType applies only if the curve is a Circle or an ellipse : TgtThetaOver2, -- TgtThetaOver2_1, -- TgtThetaOver2_2, -- TgtThetaOver2_3, -- TgtThetaOver2_4, //! Purpose: this is the classical rational parameterisation 2 1 - t cos(theta) = ------ 2 1 + t //! 2t sin(theta) = ------ 2 1 + t //! t = tan (theta/2) //! with TgtThetaOver2 the routine will compute the number of spans using the rule num_spans = [ (ULast - UFirst) / 1.2 ] + 1 with TgtThetaOver2_N, N spans will be forced: an error will be raized if (ULast - UFirst) >= PI and N = 1, ULast - UFirst >= 2 PI and N = 2 //! QuasiAngular, here t is a rational function that approximates theta ----> tan(theta/2). Neverthless the composing with above function yields exact functions whose square sum up to 1 RationalC1 ; t is replaced by a polynomial function of u so as to grant C1 contiuity across knots. Exceptions Standard_DomainError: - if the curve C is infinite, or - if C is a (complete) circle or ellipse, and Parameterisation is equal to Convert_TgtThetaOver2_1 or Convert_TgtThetaOver2_2. Standard_ConstructionError: - if C is a (complete) circle or ellipse, and if Parameterisation is not equal to Convert_TgtThetaOver2, Convert_RationalC1, Convert_QuasiAngular (the curve is converted in these three cases) or to Convert_TgtThetaOver2_1 or Convert_TgtThetaOver2_2 (another exception is raised in these two cases). - if C is a trimmed circle or ellipse, if Parameterisation is equal to Convert_TgtThetaOver2_1 and if U2 - U1 > 0.9999 * Pi, where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a half-circle or a half-ellipse, for example), or - if C is a trimmed circle or ellipse, if Parameterisation is equal to Convert_TgtThetaOver2_2 and U2 - U1 > 1.9999 * Pi where U1 and U2 are respectively the first and the last parameters of the trimmed curve (this method of parameterization cannot be used to convert a quasi-complete circle or ellipse).
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param Parameterisation: default value is Convert_TgtThetaOver2
 	:type Parameterisation: Convert_ParameterisationType
 	:rtype: opencascade::handle<Geom_BSplineCurve>") CurveToBSplineCurve;
@@ -189,7 +189,7 @@ class GeomConvert {
 		%feature("compactdefaultargs") SplitBSplineCurve;
 		%feature("autodoc", "* Convert a curve from Geom by an approximation method //! This method computes the arc of B-spline curve between the two knots FromK1 and ToK2. If C is periodic the arc has the same orientation as C if SameOrientation = Standard_True. If C is not periodic SameOrientation is not used for the computation and C is oriented from the knot fromK1 to the knot toK2. We just keep the local definition of C between the knots FromK1 and ToK2. The returned B-spline curve has its first and last knots with a multiplicity equal to degree + 1, where degree is the polynomial degree of C. The indexes of the knots FromK1 and ToK2 doesn't include the repetition of multiple knots in their definition. Raised if FromK1 = ToK2 Raised if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex]
 	:param C:
-	:type C: opencascade::handle<Geom_BSplineCurve> &
+	:type C: Geom_BSplineCurve
 	:param FromK1:
 	:type FromK1: int
 	:param ToK2:
@@ -203,7 +203,7 @@ class GeomConvert {
 		%feature("compactdefaultargs") SplitBSplineCurve;
 		%feature("autodoc", "* This function computes the segment of B-spline curve between the parametric values FromU1, ToU2. If C is periodic the arc has the same orientation as C if SameOrientation = True. If C is not periodic SameOrientation is not used for the computation and C is oriented fromU1 toU2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raised if FromU1 or ToU2 are out of the parametric bounds of the curve (The tolerance criterion is ParametricTolerance). Raised if Abs (FromU1 - ToU2) <= ParametricTolerance Raised if ParametricTolerance < Resolution from gp.
 	:param C:
-	:type C: opencascade::handle<Geom_BSplineCurve> &
+	:type C: Geom_BSplineCurve
 	:param FromU1:
 	:type FromU1: float
 	:param ToU2:
@@ -219,7 +219,7 @@ class GeomConvert {
 		%feature("compactdefaultargs") SplitBSplineSurface;
 		%feature("autodoc", "* Computes the B-spline surface patche between the knots values FromUK1, ToUK2, FromVK1, ToVK2. If S is periodic in one direction the patche has the same orientation as S in this direction if the flag is true in this direction (SameUOrientation, SameVOrientation). If S is not periodic SameUOrientation and SameVOrientation are not used for the computation and S is oriented FromUK1 ToUK2 and FromVK1 ToVK2. Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2 FromUK1 or ToUK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] FromVK1 or ToVK2 are out of the bounds [FirstVKnotIndex, LastVKnotIndex]
 	:param S:
-	:type S: opencascade::handle<Geom_BSplineSurface> &
+	:type S: Geom_BSplineSurface
 	:param FromUK1:
 	:type FromUK1: int
 	:param ToUK2:
@@ -239,7 +239,7 @@ class GeomConvert {
 		%feature("compactdefaultargs") SplitBSplineSurface;
 		%feature("autodoc", "* This method splits a B-spline surface patche between the knots values FromK1, ToK2 in one direction. If USplit = True then the splitting direction is the U parametric direction else it is the V parametric direction. If S is periodic in the considered direction the patche has the same orientation as S in this direction if SameOrientation is True If S is not periodic in this direction SameOrientation is not used for the computation and S is oriented FromK1 ToK2. Raised if FromK1 = ToK2 or if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] in the considered parametric direction.
 	:param S:
-	:type S: opencascade::handle<Geom_BSplineSurface> &
+	:type S: Geom_BSplineSurface
 	:param FromK1:
 	:type FromK1: int
 	:param ToK2:
@@ -255,7 +255,7 @@ class GeomConvert {
 		%feature("compactdefaultargs") SplitBSplineSurface;
 		%feature("autodoc", "* This method computes the B-spline surface patche between the parametric values FromU1, ToU2, FromV1, ToV2. If S is periodic in one direction the patche has the same orientation as S in this direction if the flag is True in this direction (SameUOrientation, SameVOrientation). If S is not periodic SameUOrientation and SameVOrientation are not used for the computation and S is oriented FromU1 ToU2 and FromV1 ToV2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raised if FromU1 or ToU2 or FromV1 or ToU2 are out of the parametric bounds of the surface (the tolerance criterion is ParametricTolerance). Raised if Abs (FromU1 - ToU2) <= ParametricTolerance or Abs (FromV1 - ToV2) <= ParametricTolerance. Raised if ParametricTolerance < Resolution.
 	:param S:
-	:type S: opencascade::handle<Geom_BSplineSurface> &
+	:type S: Geom_BSplineSurface
 	:param FromU1:
 	:type FromU1: float
 	:param ToU2:
@@ -277,7 +277,7 @@ class GeomConvert {
 		%feature("compactdefaultargs") SplitBSplineSurface;
 		%feature("autodoc", "* This method splits the B-spline surface S in one direction between the parametric values FromParam1, ToParam2. If USplit = True then the Splitting direction is the U parametric direction else it is the V parametric direction. If S is periodic in the considered direction the patche has the same orientation as S in this direction if SameOrientation is true. If S is not periodic in the considered direction SameOrientation is not used for the computation and S is oriented FromParam1 ToParam2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raises if FromParam1 or ToParam2 are out of the parametric bounds of the surface in the considered direction. Raises if Abs (FromParam1 - ToParam2) <= ParametricTolerance.
 	:param S:
-	:type S: opencascade::handle<Geom_BSplineSurface> &
+	:type S: Geom_BSplineSurface
 	:param FromParam1:
 	:type FromParam1: float
 	:param ToParam2:
@@ -295,7 +295,7 @@ class GeomConvert {
 		%feature("compactdefaultargs") SurfaceToBSplineSurface;
 		%feature("autodoc", "* This algorithm converts a non infinite surface from Geom into a B-spline surface. S must be a trimmed plane or a trimmed cylinder or a trimmed cone or a trimmed sphere or a trimmed torus or a sphere or a torus or a Bezier surface of a trimmed Bezier surface or a trimmed swept surface with a corresponding basis curve which can be turned into a B-spline curve (see the method CurveToBSplineCurve). Raises DomainError if the type of the surface is not previously defined.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: opencascade::handle<Geom_BSplineSurface>") SurfaceToBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SurfaceToBSplineSurface (const opencascade::handle<Geom_Surface> & S);
 
@@ -332,7 +332,7 @@ class GeomConvert_ApproxCurve {
 		%feature("compactdefaultargs") GeomConvert_ApproxCurve;
 		%feature("autodoc", "* Constructs a curve approximation framework defined by - - the conic Curve, - the tolerance value Tol3d, - the degree of continuity Order, - the maximum number of segments MaxSegments allowed in the resulting BSpline curve, and - the highest degree MaxDeg which the polynomial defining the BSpline curve may have.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param Tol3d:
 	:type Tol3d: float
 	:param Order:
@@ -348,7 +348,7 @@ class GeomConvert_ApproxCurve {
 		%feature("compactdefaultargs") GeomConvert_ApproxCurve;
 		%feature("autodoc", "* Constructs a curve approximation framework defined by - - the Curve, - the tolerance value Tol3d, - the degree of continuity Order, - the maximum number of segments MaxSegments allowed in the resulting BSpline curve, and - the highest degree MaxDeg which the polynomial defining the BSpline curve may have.
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param Tol3d:
 	:type Tol3d: float
 	:param Order:
@@ -405,7 +405,7 @@ class GeomConvert_ApproxSurface {
 		%feature("compactdefaultargs") GeomConvert_ApproxSurface;
 		%feature("autodoc", "* Constructs a surface approximation framework defined by - the conic Surf - the tolerance value Tol3d - the degree of continuity UContinuity, VContinuity in the directions of the U and V parameters - the highest degree MaxDegU, MaxDegV which the polynomial defining the BSpline curve may have in the directions of the U and V parameters - the maximum number of segments MaxSegments allowed in the resulting BSpline curve - the index of precision PrecisCode.
 	:param Surf:
-	:type Surf: opencascade::handle<Geom_Surface> &
+	:type Surf: Geom_Surface
 	:param Tol3d:
 	:type Tol3d: float
 	:param UContinuity:
@@ -427,7 +427,7 @@ class GeomConvert_ApproxSurface {
 		%feature("compactdefaultargs") GeomConvert_ApproxSurface;
 		%feature("autodoc", "* Constructs a surface approximation framework defined by - the Surf - the tolerance value Tol3d - the degree of continuity UContinuity, VContinuity in the directions of the U and V parameters - the highest degree MaxDegU, MaxDegV which the polynomial defining the BSpline curve may have in the directions of the U and V parameters - the maximum number of segments MaxSegments allowed in the resulting BSpline curve - the index of precision PrecisCode.
 	:param Surf:
-	:type Surf: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf: Adaptor3d_HSurface
 	:param Tol3d:
 	:type Tol3d: float
 	:param UContinuity:
@@ -488,7 +488,7 @@ class GeomConvert_BSplineCurveKnotSplitting {
 		%feature("compactdefaultargs") GeomConvert_BSplineCurveKnotSplitting;
 		%feature("autodoc", "* Determines points at which the BSpline curve BasisCurve should be split in order to obtain arcs with a degree of continuity equal to ContinuityRange. These points are knot values of BasisCurve. They are identified by indices in the knots table of BasisCurve. Use the available interrogation functions to access computed values, followed by the global function SplitBSplineCurve (provided by the package GeomConvert) to split the curve. Exceptions Standard_RangeError if ContinuityRange is less than zero.
 	:param BasisCurve:
-	:type BasisCurve: opencascade::handle<Geom_BSplineCurve> &
+	:type BasisCurve: Geom_BSplineCurve
 	:param ContinuityRange:
 	:type ContinuityRange: int
 	:rtype: None") GeomConvert_BSplineCurveKnotSplitting;
@@ -512,7 +512,7 @@ class GeomConvert_BSplineCurveKnotSplitting {
 		%feature("compactdefaultargs") Splitting;
 		%feature("autodoc", "* Loads the SplitValues table with the split knots values computed in this framework. Each value in the table is an index in the knots table of the BSpline curve analyzed by this algorithm. The values in SplitValues are given in ascending order and comprise the indices of the knots which give the first and last points of the curve. Use two consecutive values from the table as arguments of the global function SplitBSplineCurve (provided by the package GeomConvert) to split the curve. Exceptions Standard_DimensionError if the array SplitValues was not created with the following bounds: - 1, and - the number of split points computed in this framework (as given by the function NbSplits).
 	:param SplitValues:
-	:type SplitValues: TColStd_Array1OfInteger &
+	:type SplitValues: TColStd_Array1OfInteger
 	:rtype: None") Splitting;
 		void Splitting (TColStd_Array1OfInteger & SplitValues);
 
@@ -543,7 +543,7 @@ class GeomConvert_BSplineCurveToBezierCurve {
 		%feature("compactdefaultargs") Arcs;
 		%feature("autodoc", "* Constructs all the Bezier curves whose data is computed by this algorithm and loads these curves into the Curves table. The Bezier curves have the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_DimensionError if the Curves array was not created with the following bounds: - 1 , and - the number of adjacent Bezier arcs computed by this algorithm (as given by the function NbArcs).
 	:param Curves:
-	:type Curves: TColGeom_Array1OfBezierCurve &
+	:type Curves: TColGeom_Array1OfBezierCurve
 	:rtype: None") Arcs;
 		void Arcs (TColGeom_Array1OfBezierCurve & Curves);
 
@@ -551,7 +551,7 @@ class GeomConvert_BSplineCurveToBezierCurve {
 		%feature("compactdefaultargs") GeomConvert_BSplineCurveToBezierCurve;
 		%feature("autodoc", "* Computes all the data needed to convert the BSpline curve BasisCurve into a series of adjacent Bezier arcs.
 	:param BasisCurve:
-	:type BasisCurve: opencascade::handle<Geom_BSplineCurve> &
+	:type BasisCurve: Geom_BSplineCurve
 	:rtype: None") GeomConvert_BSplineCurveToBezierCurve;
 		 GeomConvert_BSplineCurveToBezierCurve (const opencascade::handle<Geom_BSplineCurve> & BasisCurve);
 
@@ -559,7 +559,7 @@ class GeomConvert_BSplineCurveToBezierCurve {
 		%feature("compactdefaultargs") GeomConvert_BSplineCurveToBezierCurve;
 		%feature("autodoc", "* Computes all the data needed to convert the portion of the BSpline curve BasisCurve limited by the two parameter values U1 and U2 into a series of adjacent Bezier arcs. The result consists of a series of BasisCurve arcs limited by points corresponding to knot values of the curve. Use the available interrogation functions to ascertain the number of computed Bezier arcs, and then to construct each individual Bezier curve (or all Bezier curves). Note: ParametricTolerance is not used. Raises DomainError if U1 or U2 are out of the parametric bounds of the basis curve [FirstParameter, LastParameter]. The Tolerance criterion is ParametricTolerance. Raised if Abs (U2 - U1) <= ParametricTolerance.
 	:param BasisCurve:
-	:type BasisCurve: opencascade::handle<Geom_BSplineCurve> &
+	:type BasisCurve: Geom_BSplineCurve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -573,7 +573,7 @@ class GeomConvert_BSplineCurveToBezierCurve {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* This methode returns the bspline's knots associated to the converted arcs Raised if the length of Curves is not equal to NbArcs + 1.
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
@@ -602,7 +602,7 @@ class GeomConvert_BSplineSurfaceKnotSplitting {
 		%feature("compactdefaultargs") GeomConvert_BSplineSurfaceKnotSplitting;
 		%feature("autodoc", "* Determines the u- and v-isoparametric curves along which the BSpline surface BasisSurface should be split in order to obtain patches with a degree of continuity equal to UContinuityRange in the u parametric direction, and to VContinuityRange in the v parametric direction. These isoparametric curves are defined by parameters, which are BasisSurface knot values in the u or v parametric direction. They are identified by indices in the BasisSurface knots table in the corresponding parametric direction. Use the available interrogation functions to access computed values, followed by the global function SplitBSplineSurface (provided by the package GeomConvert) to split the surface. Exceptions Standard_RangeError if UContinuityRange or VContinuityRange is less than zero.
 	:param BasisSurface:
-	:type BasisSurface: opencascade::handle<Geom_BSplineSurface> &
+	:type BasisSurface: Geom_BSplineSurface
 	:param UContinuityRange:
 	:type UContinuityRange: int
 	:param VContinuityRange:
@@ -626,9 +626,9 @@ class GeomConvert_BSplineSurfaceKnotSplitting {
 		%feature("compactdefaultargs") Splitting;
 		%feature("autodoc", "* Loads the USplit and VSplit tables with the split knots values computed in this framework. Each value in these tables is an index in the knots table corresponding to the u or v parametric direction of the BSpline surface analysed by this algorithm. The USplit and VSplit values are given in ascending order and comprise the indices of the knots which give the first and last isoparametric curves of the surface in the corresponding parametric direction. Use two consecutive values from the USplit table and two consecutive values from the VSplit table as arguments of the global function SplitBSplineSurface (provided by the package GeomConvert) to split the surface. Exceptions Standard_DimensionError if: - the array USplit was not created with the following bounds: - 1 , and - the number of split knots in the u parametric direction computed in this framework (as given by the function NbUSplits); or - the array VSplit was not created with the following bounds: - 1 , and - the number of split knots in the v parametric direction computed in this framework (as given by the function NbVSplits).
 	:param USplit:
-	:type USplit: TColStd_Array1OfInteger &
+	:type USplit: TColStd_Array1OfInteger
 	:param VSplit:
-	:type VSplit: TColStd_Array1OfInteger &
+	:type VSplit: TColStd_Array1OfInteger
 	:rtype: None") Splitting;
 		void Splitting (TColStd_Array1OfInteger & USplit,TColStd_Array1OfInteger & VSplit);
 
@@ -667,7 +667,7 @@ class GeomConvert_BSplineSurfaceToBezierSurface {
 		%feature("compactdefaultargs") GeomConvert_BSplineSurfaceToBezierSurface;
 		%feature("autodoc", "* Computes all the data needed to convert - the BSpline surface BasisSurface into a series of adjacent Bezier surfaces. The result consists of a grid of BasisSurface patches limited by isoparametric curves corresponding to knot values, both in the u and v parametric directions of the surface. A row in the grid corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves. A column in the grid corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves. Use the available interrogation functions to ascertain the number of computed Bezier patches, and then to construct each individual Bezier surface (or all Bezier surfaces). Note: ParametricTolerance is not used.
 	:param BasisSurface:
-	:type BasisSurface: opencascade::handle<Geom_BSplineSurface> &
+	:type BasisSurface: Geom_BSplineSurface
 	:rtype: None") GeomConvert_BSplineSurfaceToBezierSurface;
 		 GeomConvert_BSplineSurfaceToBezierSurface (const opencascade::handle<Geom_BSplineSurface> & BasisSurface);
 
@@ -675,7 +675,7 @@ class GeomConvert_BSplineSurfaceToBezierSurface {
 		%feature("compactdefaultargs") GeomConvert_BSplineSurfaceToBezierSurface;
 		%feature("autodoc", "* Computes all the data needed to convert the patch of the BSpline surface BasisSurface limited by the two parameter values U1 and U2 in the u parametric direction, and by the two parameter values V1 and V2 in the v parametric direction, into a series of adjacent Bezier surfaces. The result consists of a grid of BasisSurface patches limited by isoparametric curves corresponding to knot values, both in the u and v parametric directions of the surface. A row in the grid corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves. A column in the grid corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves. Use the available interrogation functions to ascertain the number of computed Bezier patches, and then to construct each individual Bezier surface (or all Bezier surfaces). Note: ParametricTolerance is not used. Raises DomainError if U1 or U2 or V1 or V2 are out of the parametric bounds of the basis surface [FirstUKnotIndex, LastUKnotIndex] , [FirstVKnotIndex, LastVKnotIndex] The tolerance criterion is ParametricTolerance. Raised if U2 - U1 <= ParametricTolerance or V2 - V1 <= ParametricTolerance.
 	:param BasisSurface:
-	:type BasisSurface: opencascade::handle<Geom_BSplineSurface> &
+	:type BasisSurface: Geom_BSplineSurface
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -715,7 +715,7 @@ class GeomConvert_BSplineSurfaceToBezierSurface {
 		%feature("compactdefaultargs") Patches;
 		%feature("autodoc", "* Constructs all the Bezier surfaces whose data is computed by this algorithm, and loads them into the Surfaces table. These Bezier surfaces have the same orientation as the BSpline surface analyzed in this framework. The Surfaces array is organised in the same way as the patch grid computed on the BSpline surface analyzed by this algorithm. A row in the array corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves of the surface. A column in the array corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves of the surface. Exceptions Standard_DimensionError if the Surfaces array was not created with the following bounds: - 1, and the number of adjacent patch series in the u parametric direction of the patch grid computed on the BSpline surface, analyzed by this algorithm (as given by the function NbUPatches) as row bounds, - 1, and the number of adjacent patch series in the v parametric direction of the patch grid computed on the BSpline surface, analyzed by this algorithm (as given by the function NbVPatches) as column bounds.
 	:param Surfaces:
-	:type Surfaces: TColGeom_Array2OfBezierSurface &
+	:type Surfaces: TColGeom_Array2OfBezierSurface
 	:rtype: None") Patches;
 		void Patches (TColGeom_Array2OfBezierSurface & Surfaces);
 
@@ -723,7 +723,7 @@ class GeomConvert_BSplineSurfaceToBezierSurface {
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "* This methode returns the bspline's u-knots associated to the converted Patches Raised if the length of Curves is not equal to NbUPatches + 1.
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") UKnots;
 		void UKnots (TColStd_Array1OfReal & TKnots);
 
@@ -731,7 +731,7 @@ class GeomConvert_BSplineSurfaceToBezierSurface {
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "* This methode returns the bspline's v-knots associated to the converted Patches Raised if the length of Curves is not equal to NbVPatches + 1.
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") VKnots;
 		void VKnots (TColStd_Array1OfReal & TKnots);
 
@@ -754,7 +754,7 @@ class GeomConvert_CompBezierSurfacesToBSplineSurface {
 		%feature("compactdefaultargs") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		%feature("autodoc", "* Computes all the data needed to build a 'C0' continuous BSpline surface equivalent to the grid of adjacent non-rational Bezier surfaces Beziers. Each surface in the Beziers grid becomes a natural patch, limited by knots values, on the BSpline surface whose data is computed. Surfaces in the grid must satisfy the following conditions: - Coincident bounding curves between two consecutive surfaces in a row of the Beziers grid must be u-isoparametric bounding curves of these two surfaces. - Coincident bounding curves between two consecutive surfaces in a column of the Beziers grid must be v-isoparametric bounding curves of these two surfaces. The BSpline surface whose data is computed has the following characteristics: - Its degree in the u (respectively v) parametric direction is equal to that of the Bezier surface which has the highest degree in the u (respectively v) parametric direction in the Beziers grid. - It is a 'Piecewise Bezier' in both u and v parametric directions, i.e.: - the knots are regularly spaced in each parametric direction (i.e. the difference between two consecutive knots is a constant), and - all the multiplicities of the surface knots in a given parametric direction are equal to Degree, which is the degree of the BSpline surface in this parametric direction, except for the first and last knots for which the multiplicity is equal to Degree + 1. - Coincident bounding curves between two consecutive columns of Bezier surfaces in the Beziers grid become u-isoparametric curves, corresponding to knots values of the BSpline surface. - Coincident bounding curves between two consecutive rows of Bezier surfaces in the Beziers grid become v-isoparametric curves corresponding to knots values of the BSpline surface. Use the available consultation functions to access the computed data. This data may be used to construct the BSpline surface. Warning The surfaces in the Beziers grid must be adjacent, i.e. two consecutive Bezier surfaces in the grid (in a row or column) must have a coincident bounding curve. In addition, the location of the parameterization on each of these surfaces (i.e. the relative location of u and v isoparametric curves on the surface) is of importance with regard to the positioning of the surfaces in the Beziers grid. Care must be taken with respect to the above, as these properties are not checked and an error may occur if they are not satisfied. Exceptions Standard_NotImplemented if one of the Bezier surfaces of the Beziers grid is rational.
 	:param Beziers:
-	:type Beziers: TColGeom_Array2OfBezierSurface &
+	:type Beziers: TColGeom_Array2OfBezierSurface
 	:rtype: None") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		 GeomConvert_CompBezierSurfacesToBSplineSurface (const TColGeom_Array2OfBezierSurface & Beziers);
 
@@ -762,7 +762,7 @@ class GeomConvert_CompBezierSurfacesToBSplineSurface {
 		%feature("compactdefaultargs") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		%feature("autodoc", "* Build an Ci uniform (Rational) BSpline surface The higest Continuity Ci is imposed, like the maximal deformation is lower than <Tolerance>. Warning: The Continuity C0 is imposed without any check.
 	:param Beziers:
-	:type Beziers: TColGeom_Array2OfBezierSurface &
+	:type Beziers: TColGeom_Array2OfBezierSurface
 	:param Tolerance:
 	:type Tolerance: float
 	:param RemoveKnots: default value is Standard_True
@@ -774,11 +774,11 @@ class GeomConvert_CompBezierSurfacesToBSplineSurface {
 		%feature("compactdefaultargs") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		%feature("autodoc", "* Computes all the data needed to construct a BSpline surface equivalent to the adjacent non-rational Bezier surfaces Beziers grid. Each surface in the Beziers grid becomes a natural patch, limited by knots values, on the BSpline surface whose data is computed. Surfaces in the grid must satisfy the following conditions: - Coincident bounding curves between two consecutive surfaces in a row of the Beziers grid must be u-isoparametric bounding curves of these two surfaces. - Coincident bounding curves between two consecutive surfaces in a column of the Beziers grid must be v-isoparametric bounding curves of these two surfaces. The BSpline surface whose data is computed has the following characteristics: - Its degree in the u (respectively v) parametric direction is equal to that of the Bezier surface which has the highest degree in the u (respectively v) parametric direction in the Beziers grid. - Coincident bounding curves between two consecutive columns of Bezier surfaces in the Beziers grid become u-isoparametric curves corresponding to knots values of the BSpline surface. - Coincident bounding curves between two consecutive rows of Bezier surfaces in the Beziers grid become v-isoparametric curves corresponding to knots values of the BSpline surface. Knots values of the BSpline surface are given in the two tables: - UKnots for the u parametric direction (which corresponds to the order of Bezier surface columns in the Beziers grid), and - VKnots for the v parametric direction (which corresponds to the order of Bezier surface rows in the Beziers grid). The dimensions of UKnots (respectively VKnots) must be equal to the number of columns (respectively, rows) of the Beziers grid, plus 1 . UContinuity and VContinuity, which are both defaulted to GeomAbs_C0, specify the required continuity on the BSpline surface. If the required degree of continuity is greater than 0 in a given parametric direction, a deformation is applied locally on the initial surface (as defined by the Beziers grid) to satisfy this condition. This local deformation is not applied however, if it is greater than Tolerance (defaulted to 1.0 e-7). In such cases, the continuity condition is not satisfied, and the function IsDone will return false. A small tolerance value prevents any modification of the surface and a large tolerance value 'smoothes' the surface. Use the available consultation functions to access the computed data. This data may be used to construct the BSpline surface. Warning The surfaces in the Beziers grid must be adjacent, i.e. two consecutive Bezier surfaces in the grid (in a row or column) must have a coincident bounding curve. In addition, the location of the parameterization on each of these surfaces (i.e. the relative location of u and v isoparametric curves on the surface) is of importance with regard to the positioning of the surfaces in the Beziers grid. Care must be taken with respect to the above, as these properties are not checked and an error may occur if they are not satisfied. Exceptions Standard_DimensionMismatch: - if the number of knots in the UKnots table (i.e. the length of the UKnots array) is not equal to the number of columns of Bezier surfaces in the Beziers grid plus 1, or - if the number of knots in the VKnots table (i.e. the length of the VKnots array) is not equal to the number of rows of Bezier surfaces in the Beziers grid, plus 1. Standard_ConstructionError: - if UContinuity and VContinuity are not equal to one of the following values: GeomAbs_C0, GeomAbs_C1, GeomAbs_C2 and GeomAbs_C3; or - if the number of columns in the Beziers grid is greater than 1, and the required degree of continuity in the u parametric direction is greater than that of the Bezier surface with the highest degree in the u parametric direction (in the Beziers grid), minus 1; or - if the number of rows in the Beziers grid is greater than 1, and the required degree of continuity in the v parametric direction is greater than that of the Bezier surface with the highest degree in the v parametric direction (in the Beziers grid), minus 1 . Standard_NotImplemented if one of the Bezier surfaces in the Beziers grid is rational.
 	:param Beziers:
-	:type Beziers: TColGeom_Array2OfBezierSurface &
+	:type Beziers: TColGeom_Array2OfBezierSurface
 	:param UKnots:
-	:type UKnots: TColStd_Array1OfReal &
+	:type UKnots: TColStd_Array1OfReal
 	:param VKnots:
-	:type VKnots: TColStd_Array1OfReal &
+	:type VKnots: TColStd_Array1OfReal
 	:param UContinuity: default value is GeomAbs_C0
 	:type UContinuity: GeomAbs_Shape
 	:param VContinuity: default value is GeomAbs_C0
@@ -879,7 +879,7 @@ class GeomConvert_CompCurveToBSplineCurve {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Append a curve in the BSpline Return False if the curve is not G0 with the BSplineCurve. Tolerance is used to check continuity and decrease Multiplicity at the common Knot until MinM if MinM = 0, the common Knot can be removed //! WithRatio defines whether the resulting curve should have a uniform parameterization. Setting WithRatio to Standard_False may greatly decrease the speed of algorithms like CPnts_AbscissaPoint::AdvPerform when applied to the resulting curve.
 	:param NewCurve:
-	:type NewCurve: opencascade::handle<Geom_BoundedCurve> &
+	:type NewCurve: Geom_BoundedCurve
 	:param Tolerance:
 	:type Tolerance: float
 	:param After: default value is Standard_False
@@ -908,7 +908,7 @@ class GeomConvert_CompCurveToBSplineCurve {
 		%feature("compactdefaultargs") GeomConvert_CompCurveToBSplineCurve;
 		%feature("autodoc", "* Initialize the algorithme with one curve - Parameterisation is used to convert
 	:param BasisCurve:
-	:type BasisCurve: opencascade::handle<Geom_BoundedCurve> &
+	:type BasisCurve: Geom_BoundedCurve
 	:param Parameterisation: default value is Convert_TgtThetaOver2
 	:type Parameterisation: Convert_ParameterisationType
 	:rtype: None") GeomConvert_CompCurveToBSplineCurve;

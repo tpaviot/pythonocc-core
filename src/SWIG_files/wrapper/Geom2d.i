@@ -281,7 +281,7 @@ class Geom2d_Transformation : public Standard_Transient {
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* Computes the transformation composed with Other and <self>. <self> * Other. Returns a new transformation
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Transformation> &
+	:type Other: Geom2d_Transformation
 	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Transformation>") Multiplied;
 		Standard_NODISCARD opencascade::handle<Geom2d_Transformation> Multiplied (const opencascade::handle<Geom2d_Transformation> & Other);
 
@@ -289,7 +289,7 @@ class Geom2d_Transformation : public Standard_Transient {
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "* Computes the transformation composed with Other and <self> . <self> = <self> * Other. //! Computes the following composition of transformations if N > 0 <self> * <self> * .......* <self>. if N = 0 Identity if N < 0 <self>.Invert() * .........* <self>.Invert()
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Transformation> &
+	:type Other: Geom2d_Transformation
 	:rtype: None") Multiply;
 		void Multiply (const opencascade::handle<Geom2d_Transformation> & Other);
 
@@ -313,7 +313,7 @@ class Geom2d_Transformation : public Standard_Transient {
 		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "* Computes the matrix of the transformation composed with <self> and Other. <self> = Other * <self>
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Transformation> &
+	:type Other: Geom2d_Transformation
 	:rtype: None") PreMultiply;
 		void PreMultiply (const opencascade::handle<Geom2d_Transformation> & Other);
 
@@ -407,9 +407,9 @@ class Geom2d_Transformation : public Standard_Transient {
 		%feature("compactdefaultargs") Transforms;
 		%feature("autodoc", "* Applies the transformation <self> to the triplet {X, Y}.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:rtype: None") Transforms;
 		void Transforms (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -432,7 +432,7 @@ class Geom2d_Transformation : public Standard_Transient {
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Other:
-	:type Other: opencascade::handle<Geom2d_Transformation> &
+	:type Other: Geom2d_Transformation
 	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Transformation>") operator *;
 		Standard_NODISCARD opencascade::handle<Geom2d_Transformation> operator * (const opencascade::handle<Geom2d_Transformation> & Other);
 
@@ -468,7 +468,7 @@ class Geom2d_AxisPlacement : public Geom2d_Geometry {
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "* Computes the angle between the 'Direction' of two axis placement in radians. The result is comprised between -Pi and Pi.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_AxisPlacement> &
+	:type Other: Geom2d_AxisPlacement
 	:rtype: float") Angle;
 		Standard_Real Angle (const opencascade::handle<Geom2d_AxisPlacement> & Other);
 
@@ -747,9 +747,9 @@ class Geom2d_Point : public Geom2d_Geometry {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* returns the Coordinates of <self>.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:rtype: void") Coord;
 		virtual void Coord (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -757,7 +757,7 @@ class Geom2d_Point : public Geom2d_Geometry {
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "* computes the distance between <self> and <Other>.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Point> &
+	:type Other: Geom2d_Point
 	:rtype: float") Distance;
 		Standard_Real Distance (const opencascade::handle<Geom2d_Point> & Other);
 
@@ -771,7 +771,7 @@ class Geom2d_Point : public Geom2d_Geometry {
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "* computes the square distance between <self> and <Other>.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Point> &
+	:type Other: Geom2d_Point
 	:rtype: float") SquareDistance;
 		Standard_Real SquareDistance (const opencascade::handle<Geom2d_Point> & Other);
 
@@ -808,7 +808,7 @@ class Geom2d_Vector : public Geom2d_Geometry {
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "* Computes the angular value, in radians, between this vector and vector Other. The result is a value between -Pi and Pi. The orientation is from this vector to vector Other. Raises VectorWithNullMagnitude if one of the two vectors is a vector with null magnitude because the angular value is indefinite.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: float") Angle;
 		Standard_Real Angle (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -816,9 +816,9 @@ class Geom2d_Vector : public Geom2d_Geometry {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* Returns the coordinates of <self>.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -826,7 +826,7 @@ class Geom2d_Vector : public Geom2d_Geometry {
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "* Cross product of <self> with the vector <Other>.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: float") Crossed;
 		virtual Standard_Real Crossed (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -834,7 +834,7 @@ class Geom2d_Vector : public Geom2d_Geometry {
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "* Returns the scalar product of 2 Vectors.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: float") Dot;
 		Standard_Real Dot (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -930,9 +930,9 @@ class Geom2d_CartesianPoint : public Geom2d_Point {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* Returns the coordinates of <self>.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1150,7 +1150,7 @@ class Geom2d_Direction : public Geom2d_Vector {
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "* Computes the cross product between <self> and <Other>.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: float") Crossed;
 		Standard_Real Crossed (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -1591,7 +1591,7 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 		%feature("compactdefaultargs") Geom2d_OffsetCurve;
 		%feature("autodoc", "* Constructs a curve offset from the basis curve C, where Offset is the distance between the offset curve and the basis curve at any point. A point on the offset curve is built by measuring the offset value along a normal vector at a point on C. This normal vector is obtained by rotating the vector tangential to C at 90 degrees in the anti-trigonometric sense. The side of C on which the offset value is measured is indicated by this normal vector if Offset is positive, or in the inverse sense if Offset is negative. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Warnings : In this package the entities are not shared. The OffsetCurve is built with a copy of the curve C. So when C is modified the OffsetCurve is not modified Warning! if isNotCheckC0 = false, ConstructionError raised if the basis curve C is not at least C1. No check is done to know if ||V^Z|| != 0.0 at any point.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param Offset:
 	:type Offset: float
 	:param isNotCheckC0: default value is Standard_False
@@ -1669,7 +1669,7 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "* Changes this offset curve by assigning C as the basis curve from which it is built. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Exceptions if isNotCheckC0 = false, Standard_ConstructionError if the curve C is not at least 'C1' continuous.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param isNotCheckC0: default value is Standard_False
 	:type isNotCheckC0: bool
 	:rtype: None") SetBasisCurve;
@@ -1722,7 +1722,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the Vector Other to <self>.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -1730,7 +1730,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "* Adds the vector Other to <self>.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") Added;
 		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> Added (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -1744,7 +1744,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "* Computes the cross product between <self> and Other <self> ^ Other. A new vector is returned.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: float") Crossed;
 		Standard_Real Crossed (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -1869,7 +1869,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "* Subtracts the Vector Other to <self>.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: None") Subtract;
 		void Subtract (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -1877,7 +1877,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "* Subtracts the vector Other to <self>. A new vector is returned.
 	:param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") Subtracted;
 		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> Subtracted (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -1903,7 +1903,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
         		/****************** operator + ******************/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") operator +;
 		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> operator + (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -1921,7 +1921,7 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
         		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Other:
-	:type Other: opencascade::handle<Geom2d_Vector> &
+	:type Other: Geom2d_Vector
 	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") operator -;
 		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> operator - (const opencascade::handle<Geom2d_Vector> & Other);
 
@@ -2074,9 +2074,9 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Multiplicities:
-	:type Multiplicities: TColStd_Array1OfInteger &
+	:type Multiplicities: TColStd_Array1OfInteger
 	:param Degree:
 	:type Degree: int
 	:param Periodic: default value is Standard_False
@@ -2090,11 +2090,11 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt2d
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Multiplicities:
-	:type Multiplicities: TColStd_Array1OfInteger &
+	:type Multiplicities: TColStd_Array1OfInteger
 	:param Degree:
 	:type Degree: int
 	:param Periodic: default value is Standard_False
@@ -2160,9 +2160,9 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 		%feature("compactdefaultargs") InsertKnots;
 		%feature("autodoc", "* Inserts the values of the array Knots, with the respective multiplicities given by the array Mults, into the knots table of this BSpline curve. If a value of the array Knots is an existing knot, its multiplicity is: - increased by M, if Add is true, or - increased to M, if Add is false (default value). The tolerance criterion used for knot equality is the larger of the values ParametricTolerance (defaulted to 0.) and Standard_Real::Epsilon(U), where U is the current knot value. Warning - For a value of the array Knots which is less than the first parameter or greater than the last parameter of this BSpline curve, nothing is done. - For a value of the array Mults which is negative or null, nothing is done. - The multiplicity of a knot is limited to the degree of this BSpline curve.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param ParametricTolerance: default value is 0.0
 	:type ParametricTolerance: float
 	:param Add: default value is Standard_False
@@ -2250,7 +2250,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "* Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : K = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if K.Lower() is less than number of first knot in knot sequence with repetitions or K.Upper() is more than number of last knot in knot sequence with repetitions.
 	:param K:
-	:type K: TColStd_Array1OfReal &
+	:type K: TColStd_Array1OfReal
 	:rtype: None") KnotSequence;
 		void KnotSequence (TColStd_Array1OfReal & K);
 
@@ -2264,7 +2264,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* returns the knot values of the B-spline curve; //! Raised K.Lower() is less than number of first knot or K.Upper() is more than number of last knot.
 	:param K:
-	:type K: TColStd_Array1OfReal &
+	:type K: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & K);
 
@@ -2388,9 +2388,9 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:param ParametricTolerance:
 	:type ParametricTolerance: float
 	:param I1:
-	:type I1: int &
+	:type I1: int
 	:param I2:
-	:type I2: int &
+	:type I2: int
 	:param WithKnotRepetition: default value is Standard_False
 	:type WithKnotRepetition: bool
 	:rtype: None") LocateU;
@@ -2414,9 +2414,9 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:param Index2:
 	:type Index2: int
 	:param FirstModifiedPole:
-	:type FirstModifiedPole: int &
+	:type FirstModifiedPole: int
 	:param LastModifiedPole:
-	:type LastModifiedPole: int &
+	:type LastModifiedPole: int
 	:rtype: None") MovePoint;
 		void MovePoint (const Standard_Real U,const gp_Pnt2d & P,const Standard_Integer Index1,const Standard_Integer Index2,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2436,7 +2436,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:param EndingCondition:
 	:type EndingCondition: int
 	:param ErrorStatus:
-	:type ErrorStatus: int &
+	:type ErrorStatus: int
 	:rtype: None") MovePointAndTangent;
 		void MovePointAndTangent (const Standard_Real U,const gp_Pnt2d & P,const gp_Vec2d & Tangent,const Standard_Real Tolerance,const Standard_Integer StartingCondition,const Standard_Integer EndingCondition,Standard_Integer &OutValue);
 
@@ -2444,7 +2444,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "* Returns the multiplicity of the knots of the curve. //! Raised if the length of M is not equal to NbKnots.
 	:param M:
-	:type M: TColStd_Array1OfInteger &
+	:type M: TColStd_Array1OfInteger
 	:rtype: None") Multiplicities;
 		void Multiplicities (TColStd_Array1OfInteger & M);
 
@@ -2478,7 +2478,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 		%feature("compactdefaultargs") PeriodicNormalization;
 		%feature("autodoc", "* Computes the parameter normalized within the 'first' period of this BSpline curve, if it is periodic: the returned value is in the range Param1 and Param1 + Period, where: - Param1 is the 'first parameter', and - Period the period of this BSpline curve. Note: If this curve is not periodic, U is not modified.
 	:param U:
-	:type U: float &
+	:type U: float
 	:rtype: None") PeriodicNormalization;
 		void PeriodicNormalization (Standard_Real &OutValue);
 
@@ -2530,7 +2530,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	:param ToleranceUV:
 	:type ToleranceUV: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Real ToleranceUV,Standard_Real &OutValue);
 
@@ -2586,7 +2586,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "* Modifies this BSpline curve by assigning the array K to its knots table. The multiplicity of the knots is not modified. Exceptions Standard_ConstructionError if the values in the array K are not in ascending order. Standard_OutOfRange if the bounds of the array K are not respectively 1 and the number of knots of this BSpline curve.
 	:param K:
-	:type K: TColStd_Array1OfReal &
+	:type K: TColStd_Array1OfReal
 	:rtype: None") SetKnots;
 		void SetKnots (const TColStd_Array1OfReal & K);
 
@@ -2668,7 +2668,7 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "* Returns the weights of the B-spline curve; //! Raised if the length of W is not equal to NbPoles.
 	:param W:
-	:type W: TColStd_Array1OfReal &
+	:type W: TColStd_Array1OfReal
 	:rtype: None") Weights;
 		void Weights (TColStd_Array1OfReal & W);
 
@@ -2797,7 +2797,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 	:param CurvePoles:
 	:type CurvePoles: TColgp_Array1OfPnt2d
 	:param PoleWeights:
-	:type PoleWeights: TColStd_Array1OfReal &
+	:type PoleWeights: TColStd_Array1OfReal
 	:rtype: None") Geom2d_BezierCurve;
 		 Geom2d_BezierCurve (const TColgp_Array1OfPnt2d & CurvePoles,const TColStd_Array1OfReal & PoleWeights);
 
@@ -2913,7 +2913,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 	:param ToleranceUV:
 	:type ToleranceUV: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Real ToleranceUV,Standard_Real &OutValue);
 
@@ -2999,7 +2999,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "* Returns all the weights of the curve. //! Raised if the length of W is not equal to the number of poles.
 	:param W:
-	:type W: TColStd_Array1OfReal &
+	:type W: TColStd_Array1OfReal
 	:rtype: None") Weights;
 		void Weights (TColStd_Array1OfReal & W);
 
@@ -4060,7 +4060,7 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 		%feature("compactdefaultargs") Geom2d_TrimmedCurve;
 		%feature("autodoc", "* Creates a trimmed curve from the basis curve C limited between U1 and U2. //! . U1 can be greater or lower than U2. . The returned curve is oriented from U1 to U2. . If the basis curve C is periodic there is an ambiguity because two parts are available. In this case by default the trimmed curve has the same orientation as the basis curve (Sense = True). If Sense = False then the orientation of the trimmed curve is opposite to the orientation of the basis curve C. If the curve is closed but not periodic it is not possible to keep the part of the curve including the junction point (except if the junction point is at the beginning or at the end of the trimmed curve) because you could lose the fundamental characteristics of the basis curve which are used for example to compute the derivatives of the trimmed curve. So for a closed curve the rules are the same as for a open curve. Warnings : In this package the entities are not shared. The TrimmedCurve is built with a copy of the curve C. So when C is modified the TrimmedCurve is not modified Warnings : If <C> is periodic and <theAdjustPeriodic> is True, parametrics bounds of the TrimmedCurve, can be different to [<U1>;<U2>}, if <U1> or <U2> are not in the principal period. Include : For more explanation see the scheme given with this class. Raises ConstructionError the C is not periodic and U1 or U2 are out of the bounds of C. Raised if U1 = U2.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param U1:
 	:type U1: float
 	:param U2:

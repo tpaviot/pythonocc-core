@@ -297,7 +297,7 @@ class Interface_BitMap {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initialize a BitMap from another one
 	:param other:
-	:type other: Interface_BitMap &
+	:type other: Interface_BitMap
 	:param copied: default value is Standard_False
 	:type copied: bool
 	:rtype: None") Initialize;
@@ -323,7 +323,7 @@ class Interface_BitMap {
 		%feature("compactdefaultargs") Interface_BitMap;
 		%feature("autodoc", "* Creates a BitMap from another one if <copied> is True, copies data else, data are not copied, only the header object is
 	:param other:
-	:type other: Interface_BitMap &
+	:type other: Interface_BitMap
 	:param copied: default value is Standard_False
 	:type copied: bool
 	:rtype: None") Interface_BitMap;
@@ -333,15 +333,15 @@ class Interface_BitMap {
 		%feature("compactdefaultargs") Internals;
 		%feature("autodoc", "* Returns internal values, used for copying Flags values start at false
 	:param nbitems:
-	:type nbitems: int &
+	:type nbitems: int
 	:param nbwords:
-	:type nbwords: int &
+	:type nbwords: int
 	:param nbflags:
-	:type nbflags: int &
+	:type nbflags: int
 	:param flags:
-	:type flags: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type flags: TColStd_HArray1OfInteger
 	:param names:
-	:type names: opencascade::handle<TColStd_HSequenceOfAsciiString> &
+	:type names: TColStd_HSequenceOfAsciiString
 	:rtype: None") Internals;
 		void Internals (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,opencascade::handle<TColStd_HArray1OfInteger> & flags,opencascade::handle<TColStd_HSequenceOfAsciiString> & names);
 
@@ -460,9 +460,9 @@ class Interface_Category {
 		%feature("compactdefaultargs") CatNum;
 		%feature("autodoc", "* Determines the Category Number for an entity in its context, by using general service CategoryNumber
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:param theShares:
-	:type theShares: Interface_ShareTool &
+	:type theShares: Interface_ShareTool
 	:rtype: int") CatNum;
 		Standard_Integer CatNum (const opencascade::handle<Standard_Transient> & theEnt,const Interface_ShareTool & theShares);
 
@@ -476,9 +476,9 @@ class Interface_Category {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* Computes the Category Number for each entity and records it, in an array (ent.number -> category number) Hence, it can be queried by the method Num. The Model itself is not recorded, this method is intended to be used in a wider context (which detains also a Graph, etc)
 	:param theModel:
-	:type theModel: opencascade::handle<Interface_InterfaceModel> &
+	:type theModel: Interface_InterfaceModel
 	:param theShares:
-	:type theShares: Interface_ShareTool &
+	:type theShares: Interface_ShareTool
 	:rtype: None") Compute;
 		void Compute (const opencascade::handle<Interface_InterfaceModel> & theModel,const Interface_ShareTool & theShares);
 
@@ -498,7 +498,7 @@ class Interface_Category {
 		%feature("compactdefaultargs") Interface_Category;
 		%feature("autodoc", "* Creates a Category with a given protocol
 	:param theProtocol:
-	:type theProtocol: opencascade::handle<Interface_Protocol> &
+	:type theProtocol: Interface_Protocol
 	:rtype: None") Interface_Category;
 		 Interface_Category (const opencascade::handle<Interface_Protocol> & theProtocol);
 
@@ -506,7 +506,7 @@ class Interface_Category {
 		%feature("compactdefaultargs") Interface_Category;
 		%feature("autodoc", "* Creates a Category with a given GTool
 	:param theGTool:
-	:type theGTool: opencascade::handle<Interface_GTool> &
+	:type theGTool: Interface_GTool
 	:rtype: None") Interface_Category;
 		 Interface_Category (const opencascade::handle<Interface_GTool> & theGTool);
 
@@ -544,7 +544,7 @@ class Interface_Category {
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "* Sets/Changes Protocol
 	:param theProtocol:
-	:type theProtocol: opencascade::handle<Interface_Protocol> &
+	:type theProtocol: Interface_Protocol
 	:rtype: None") SetProtocol;
 		void SetProtocol (const opencascade::handle<Interface_Protocol> & theProtocol);
 
@@ -567,7 +567,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "* Records a new Fail message
 	:param amess:
-	:type amess: opencascade::handle<TCollection_HAsciiString> &
+	:type amess: TCollection_HAsciiString
 	:rtype: None") AddFail;
 		void AddFail (const opencascade::handle<TCollection_HAsciiString> & amess);
 
@@ -575,9 +575,9 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "* Records a new Fail message under two forms : final,original
 	:param amess:
-	:type amess: opencascade::handle<TCollection_HAsciiString> &
+	:type amess: TCollection_HAsciiString
 	:param orig:
-	:type orig: opencascade::handle<TCollection_HAsciiString> &
+	:type orig: TCollection_HAsciiString
 	:rtype: None") AddFail;
 		void AddFail (const opencascade::handle<TCollection_HAsciiString> & amess,const opencascade::handle<TCollection_HAsciiString> & orig);
 
@@ -595,7 +595,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "* Records a new Fail from the definition of a Msg (Original+Value)
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") AddFail;
 		void AddFail (const Message_Msg & amsg);
 
@@ -603,7 +603,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "* Records a new Warning message
 	:param amess:
-	:type amess: opencascade::handle<TCollection_HAsciiString> &
+	:type amess: TCollection_HAsciiString
 	:rtype: None") AddWarning;
 		void AddWarning (const opencascade::handle<TCollection_HAsciiString> & amess);
 
@@ -611,9 +611,9 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "* Records a new Warning message under two forms : final,original
 	:param amess:
-	:type amess: opencascade::handle<TCollection_HAsciiString> &
+	:type amess: TCollection_HAsciiString
 	:param orig:
-	:type orig: opencascade::handle<TCollection_HAsciiString> &
+	:type orig: TCollection_HAsciiString
 	:rtype: None") AddWarning;
 		void AddWarning (const opencascade::handle<TCollection_HAsciiString> & amess,const opencascade::handle<TCollection_HAsciiString> & orig);
 
@@ -631,7 +631,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "* Records a new Warning from the definition of a Msg (Original+Value)
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") AddWarning;
 		void AddWarning (const Message_Msg & amsg);
 
@@ -701,7 +701,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") Complies;
 		%feature("autodoc", "* Tells if a message is brought by a Check, as follows : <incl> = 0 : <mess> exactly matches one of the messages <incl> < 0 : <mess> is contained by one of the messages <incl> > 0 : <mess> contains one of the messages For <status> : for CheckWarning and CheckFail, considers only resp. Warning or Check messages. for CheckAny, considers all other values are ignored (answer will be false)
 	:param mess:
-	:type mess: opencascade::handle<TCollection_HAsciiString> &
+	:type mess: TCollection_HAsciiString
 	:param incl:
 	:type incl: int
 	:param status:
@@ -737,7 +737,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") GetAsWarning;
 		%feature("autodoc", "* Copies messages converted into Warning messages If failsonly is true, only Fails are taken, and converted else, Warnings are taken too. Does not regard Entity Used to keep Fail messages as Warning, after a recovery
 	:param other:
-	:type other: opencascade::handle<Interface_Check> &
+	:type other: Interface_Check
 	:param failsonly:
 	:type failsonly: bool
 	:rtype: None") GetAsWarning;
@@ -747,7 +747,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") GetEntity;
 		%feature("autodoc", "* same as SetEntity (old form kept for compatibility) Warning : Does nothing if Entity field is not yet clear
 	:param anentity:
-	:type anentity: opencascade::handle<Standard_Transient> &
+	:type anentity: Standard_Transient
 	:rtype: None") GetEntity;
 		void GetEntity (const opencascade::handle<Standard_Transient> & anentity);
 
@@ -755,7 +755,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") GetMessages;
 		%feature("autodoc", "* Copies messages stored in another Check, cumulating Does not regard other's Entity. Used to cumulate messages
 	:param other:
-	:type other: opencascade::handle<Interface_Check> &
+	:type other: Interface_Check
 	:rtype: None") GetMessages;
 		void GetMessages (const opencascade::handle<Interface_Check> & other);
 
@@ -805,7 +805,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_Check;
 		%feature("autodoc", "* Defines a Check on an Entity
 	:param anentity:
-	:type anentity: opencascade::handle<Standard_Transient> &
+	:type anentity: Standard_Transient
 	:rtype: None") Interface_Check;
 		 Interface_Check (const opencascade::handle<Standard_Transient> & anentity);
 
@@ -841,7 +841,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "* Prints the messages of the check to an Messenger <level> = 1 : only fails <level> = 2 : fails and warnings <level> = 3 : all (fails, warnings, info msg) <final> : if positive (D) prints final values of messages if negative, prints originals if null, prints both forms
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param level:
 	:type level: int
 	:param final: default value is 1
@@ -853,7 +853,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes the messages which comply with <mess>, as follows : <incl> = 0 : <mess> exactly matches one of the messages <incl> < 0 : <mess> is contained by one of the messages <incl> > 0 : <mess> contains one of the messages For <status> : for CheckWarning and CheckFail, considers only resp. Warning or Check messages. for CheckAny, considers all other values are ignored (nothing is done) Returns True if at least one message has been removed, False else
 	:param mess:
-	:type mess: opencascade::handle<TCollection_HAsciiString> &
+	:type mess: TCollection_HAsciiString
 	:param incl:
 	:type incl: int
 	:param status:
@@ -865,7 +865,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") SendFail;
 		%feature("autodoc", "* New name for AddFail (Msg)
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") SendFail;
 		void SendFail (const Message_Msg & amsg);
 
@@ -873,7 +873,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") SendMsg;
 		%feature("autodoc", "* Records an information message This does not change the status of the Check
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") SendMsg;
 		void SendMsg (const Message_Msg & amsg);
 
@@ -881,7 +881,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") SendWarning;
 		%feature("autodoc", "* New name for AddWarning
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") SendWarning;
 		void SendWarning (const Message_Msg & amsg);
 
@@ -889,7 +889,7 @@ class Interface_Check : public Standard_Transient {
 		%feature("compactdefaultargs") SetEntity;
 		%feature("autodoc", "* Receives an entity result of a Transfer
 	:param anentity:
-	:type anentity: opencascade::handle<Standard_Transient> &
+	:type anentity: Standard_Transient
 	:rtype: None") SetEntity;
 		void SetEntity (const opencascade::handle<Standard_Transient> & anentity);
 
@@ -948,7 +948,7 @@ class Interface_CheckIterator {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Check to the list to be iterated This Check is Accompanied by Entity Number in the Model (0 for Global Check or Entity unknown in the Model), if 0 and Model is recorded in <self>, it is computed
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param num: default value is 0
 	:type num: int
 	:rtype: None") Add;
@@ -966,7 +966,7 @@ class Interface_CheckIterator {
 		%feature("compactdefaultargs") CCheck;
 		%feature("autodoc", "* Returns the Check bound to an Entity, in order to be consulted or completed on the spot I.e. returns the Check if is already exists, or adds it then returns the new empty Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<Interface_Check>") CCheck;
 		opencascade::handle<Interface_Check> & CCheck (const opencascade::handle<Standard_Transient> & ent);
 
@@ -982,7 +982,7 @@ class Interface_CheckIterator {
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "* Returns the Check attached to an Entity If no Check was recorded for this Entity, returns an empty Check. Remark : Works apart from the iteration methods (no interference)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<Interface_Check>") Check;
 		const opencascade::handle<Interface_Check> & Check (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1062,7 +1062,7 @@ class Interface_CheckIterator {
 		%feature("compactdefaultargs") Merge;
 		%feature("autodoc", "* Merges another CheckIterator into <self>, i.e. adds each of its Checks. Content of <other> remains unchanged. Takes also the Model but not the Name
 	:param other:
-	:type other: Interface_CheckIterator &
+	:type other: Interface_CheckIterator
 	:rtype: None") Merge;
 		void Merge (Interface_CheckIterator & other);
 
@@ -1100,7 +1100,7 @@ class Interface_CheckIterator {
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "* Prints the list of Checks with their attached Numbers If <failsonly> is True, prints only Fail messages If <failsonly> is False, prints all messages If <final> = 0 (D), prints also original messages if different If <final> < 0, prints only original messages If <final> > 0, prints only final messages It uses the recorded Model if it is defined Remark : Works apart from the iteration methods (no interference)
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param failsonly:
 	:type failsonly: bool
 	:param final: default value is 0
@@ -1112,9 +1112,9 @@ class Interface_CheckIterator {
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "* Works as Print without a model, but for entities which have no attached number (Number not positive), tries to compute this Number from <model> and displays 'original' or 'computed'
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param failsonly:
 	:type failsonly: bool
 	:param final: default value is 0
@@ -1138,7 +1138,7 @@ class Interface_CheckIterator {
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "* Defines a Model, used to locate entities (not required, if it is absent, entities are simply less documented)
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") SetModel;
 		void SetModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1221,11 +1221,11 @@ class Interface_CheckTool {
 		%feature("compactdefaultargs") FillCheck;
 		%feature("autodoc", "* Fills as required a Check with the Error and Warning messages produced by Checking a given Entity. For an Erroneous or Corrected Entity : Check build at Analyse time; else, Check computed for Entity (Verify integrity), can use a Graph as required to control context
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param sh:
-	:type sh: Interface_ShareTool &
+	:type sh: Interface_ShareTool
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") FillCheck;
 		void FillCheck (const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & sh,opencascade::handle<Interface_Check> & ach);
 
@@ -1233,9 +1233,9 @@ class Interface_CheckTool {
 		%feature("compactdefaultargs") Interface_CheckTool;
 		%feature("autodoc", "* Creates a CheckTool, by calling the General Service Library and Modules, selected through a Protocol, to work on a Model Moreover, Protocol recognizes Unknown Entities
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") Interface_CheckTool;
 		 Interface_CheckTool (const opencascade::handle<Interface_InterfaceModel> & model,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -1243,7 +1243,7 @@ class Interface_CheckTool {
 		%feature("compactdefaultargs") Interface_CheckTool;
 		%feature("autodoc", "* Creates a CheckTool, by calling the General Service Library and Modules, selected through a Protocol, to work on a Model Protocol and so on are taken from the Model (its GTool)
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") Interface_CheckTool;
 		 Interface_CheckTool (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1251,14 +1251,14 @@ class Interface_CheckTool {
 		%feature("compactdefaultargs") Interface_CheckTool;
 		%feature("autodoc", "* Creates a CheckTool from a Graph. The Graph contains a Model which designates a Protocol: they are used to create ShareTool
 	:param graph:
-	:type graph: Interface_Graph &
+	:type graph: Interface_Graph
 	:rtype: None") Interface_CheckTool;
 		 Interface_CheckTool (const Interface_Graph & graph);
 
 		/****************** Interface_CheckTool ******************/
 		%feature("compactdefaultargs") Interface_CheckTool;
 		%feature("autodoc", ":param hgraph:
-	:type hgraph: opencascade::handle<Interface_HGraph> &
+	:type hgraph: Interface_HGraph
 	:rtype: None") Interface_CheckTool;
 		 Interface_CheckTool (const opencascade::handle<Interface_HGraph> & hgraph);
 
@@ -1266,9 +1266,9 @@ class Interface_CheckTool {
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "* Utility method which Prints the content of a Check
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") Print;
 		void Print (const opencascade::handle<Interface_Check> & ach,const opencascade::handle<Message_Messenger> & S);
 
@@ -1276,9 +1276,9 @@ class Interface_CheckTool {
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "* Simply Lists all the Checks and the Content (messages) and the Entity, if there is, of each Check (if all Checks are OK, nothing is Printed)
 	:param list:
-	:type list: Interface_CheckIterator &
+	:type list: Interface_CheckIterator
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") Print;
 		void Print (const Interface_CheckIterator & list,const opencascade::handle<Message_Messenger> & S);
 
@@ -1319,9 +1319,9 @@ class Interface_CopyControl : public Standard_Transient {
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "* Bind a Result to a Starting Entity identified by its Number
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: void") Bind;
 		virtual void Bind (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Transient> & res);
 
@@ -1335,9 +1335,9 @@ class Interface_CopyControl : public Standard_Transient {
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "* Searches for the Result bound to a Startingf Entity identified by its Number. If Found, returns True and fills <res> Else, returns False and nullifies <res>
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: bool") Search;
 		virtual Standard_Boolean Search (const opencascade::handle<Standard_Transient> & ent,opencascade::handle<Standard_Transient> & res);
 
@@ -1362,9 +1362,9 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "* Defines a Result for the Transfer of a Starting object. Used by method Transferred (which performs a normal Copy), but can also be called to enforce a result : in the latter case, the enforced result must be compatible with the other Transfers which are performed
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: None") Bind;
 		void Bind (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Transient> & res);
 
@@ -1398,9 +1398,9 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* Creates the CounterPart of an Entity (by ShallowCopy), Binds it, then Copies the content of the former Entity to the other one (same Type), by call to the General Service Library It may command the Copy of Referenced Entities Then, its returns True. //! If <mapped> is True, the Map is used to store the Result Else, the Result is simply produced : it can be used to Copy internal sub-parts of Entities, which are not intended to be shared (Strings, Arrays, etc...) If <errstat> is True, this means that the Entity is recorded in the Model as Erroneous : in this case, the General Service for Deep Copy is not called (this could be dangerous) : hence the Counter-Part is produced but empty, it can be referenced. //! This method does nothing and returns False if the Protocol does not recognize <ent>. It basically makes a Deep Copy without changing the Types. It can be redefined for special uses.
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param mapped:
 	:type mapped: bool
 	:param errstat:
@@ -1412,7 +1412,7 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "* Fills a Model with the result of the transfer (TransferList) Commands copy of Header too, and calls RenewImpliedRefs
 	:param bmodel:
-	:type bmodel: opencascade::handle<Interface_InterfaceModel> &
+	:type bmodel: Interface_InterfaceModel
 	:rtype: None") FillModel;
 		void FillModel (const opencascade::handle<Interface_InterfaceModel> & bmodel);
 
@@ -1420,9 +1420,9 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") Interface_CopyTool;
 		%feature("autodoc", "* Creates a CopyTool adapted to work from a Model. Works with a General Service Library, given as an argument
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param lib:
-	:type lib: Interface_GeneralLib &
+	:type lib: Interface_GeneralLib
 	:rtype: None") Interface_CopyTool;
 		 Interface_CopyTool (const opencascade::handle<Interface_InterfaceModel> & amodel,const Interface_GeneralLib & lib);
 
@@ -1430,9 +1430,9 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") Interface_CopyTool;
 		%feature("autodoc", "* Same as above, but Library is defined through a Protocol
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") Interface_CopyTool;
 		 Interface_CopyTool (const opencascade::handle<Interface_InterfaceModel> & amodel,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -1440,7 +1440,7 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") Interface_CopyTool;
 		%feature("autodoc", "* Same as above, but works with the Active Protocol
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") Interface_CopyTool;
 		 Interface_CopyTool (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -1450,9 +1450,9 @@ class Interface_CopyTool {
 	:param numfrom:
 	:type numfrom: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: int") LastCopiedAfter;
 		Standard_Integer LastCopiedAfter (const Standard_Integer numfrom,opencascade::handle<Standard_Transient> & ent,opencascade::handle<Standard_Transient> & res);
 
@@ -1480,9 +1480,9 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "* Search for the result of a Starting Object (i.e. an Entity) Returns True if a Result is Bound (and fills 'result') Returns False if no result is Bound
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: bool") Search;
 		Standard_Boolean Search (const opencascade::handle<Standard_Transient> & ent,opencascade::handle<Standard_Transient> & res);
 
@@ -1490,7 +1490,7 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") SetControl;
 		%feature("autodoc", "* Changes the Map of Result for another one. This allows to work with a more sophisticated Mapping Control than the Standard one which is CopyMap (e.g. TransferProcess from Transfer)
 	:param othermap:
-	:type othermap: opencascade::handle<Interface_CopyControl> &
+	:type othermap: Interface_CopyControl
 	:rtype: None") SetControl;
 		void SetControl (const opencascade::handle<Interface_CopyControl> & othermap);
 
@@ -1498,7 +1498,7 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") TransferEntity;
 		%feature("autodoc", "* Transfers one Entity and records result into the Transfer List Calls method Transferred
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") TransferEntity;
 		void TransferEntity (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1506,7 +1506,7 @@ class Interface_CopyTool {
 		%feature("compactdefaultargs") Transferred;
 		%feature("autodoc", "* Transfers one Entity, if not yet bound to a result Remark : For an Entity which is reported in the Starting Model, the ReportEntity will also be copied with its Content if it has one (at least ShallowCopy; Complete Copy if the Protocol recognizes the Content : see method Copy)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<Standard_Transient>") Transferred;
 		opencascade::handle<Standard_Transient> Transferred (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1529,7 +1529,7 @@ class Interface_EntityCluster : public Standard_Transient {
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "* Appends an Entity to the Cluster. If it is not full, adds the entity directly inside itself. Else, transmits to its Next and Creates it if it does not yet exist
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") Append;
 		void Append (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1537,7 +1537,7 @@ class Interface_EntityCluster : public Standard_Transient {
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "* Fills an Iterator with designated Entities (includes Next)
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") FillIterator;
 		void FillIterator (Interface_EntityIterator & iter);
 
@@ -1551,7 +1551,7 @@ class Interface_EntityCluster : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_EntityCluster;
 		%feature("autodoc", "* Creates a non-chained EntityCluster, filled with one Entity
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") Interface_EntityCluster;
 		 Interface_EntityCluster (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1559,7 +1559,7 @@ class Interface_EntityCluster : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_EntityCluster;
 		%feature("autodoc", "* Creates an empty EntityCluster, chained with another one (that is, put BEFORE this other one in the list)
 	:param ec:
-	:type ec: opencascade::handle<Interface_EntityCluster> &
+	:type ec: Interface_EntityCluster
 	:rtype: None") Interface_EntityCluster;
 		 Interface_EntityCluster (const opencascade::handle<Interface_EntityCluster> & ec);
 
@@ -1567,9 +1567,9 @@ class Interface_EntityCluster : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_EntityCluster;
 		%feature("autodoc", "* Creates an EntityCluster, filled with a first Entity, and chained to another EntityCluster (BEFORE it, as above)
 	:param ant:
-	:type ant: opencascade::handle<Standard_Transient> &
+	:type ant: Standard_Transient
 	:param ec:
-	:type ec: opencascade::handle<Interface_EntityCluster> &
+	:type ec: Interface_EntityCluster
 	:rtype: None") Interface_EntityCluster;
 		 Interface_EntityCluster (const opencascade::handle<Standard_Transient> & ant,const opencascade::handle<Interface_EntityCluster> & ec);
 
@@ -1583,7 +1583,7 @@ class Interface_EntityCluster : public Standard_Transient {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes an Entity from the Cluster. If it is not found, calls its Next one to do so. Returns True if it becomes itself empty, False else (thus, a Cluster which becomes empty is deleted from the list)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") Remove;
 		Standard_Boolean Remove (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1601,7 +1601,7 @@ class Interface_EntityCluster : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") SetValue;
 		void SetValue (const Standard_Integer num,const opencascade::handle<Standard_Transient> & ent);
 
@@ -1634,7 +1634,7 @@ class Interface_EntityIterator {
 		%feature("compactdefaultargs") AddItem;
 		%feature("autodoc", "* Adds to the iteration list a defined entity
 	:param anentity:
-	:type anentity: opencascade::handle<Standard_Transient> &
+	:type anentity: Standard_Transient
 	:rtype: None") AddItem;
 		void AddItem (const opencascade::handle<Standard_Transient> & anentity);
 
@@ -1642,7 +1642,7 @@ class Interface_EntityIterator {
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "* Gets a list of entities and adds its to the iteration list
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: None") AddList;
 		void AddList (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -1662,7 +1662,7 @@ class Interface_EntityIterator {
 		%feature("compactdefaultargs") GetOneItem;
 		%feature("autodoc", "* same as AddItem (kept for compatibility)
 	:param anentity:
-	:type anentity: opencascade::handle<Standard_Transient> &
+	:type anentity: Standard_Transient
 	:rtype: None") GetOneItem;
 		void GetOneItem (const opencascade::handle<Standard_Transient> & anentity);
 
@@ -1676,7 +1676,7 @@ class Interface_EntityIterator {
 		%feature("compactdefaultargs") Interface_EntityIterator;
 		%feature("autodoc", "* Defines an iterator on a list, directly i.e. without copying it
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: None") Interface_EntityIterator;
 		 Interface_EntityIterator (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -1696,7 +1696,7 @@ class Interface_EntityIterator {
 		%feature("compactdefaultargs") NbTyped;
 		%feature("autodoc", "* Returns count of entities of a given type (kind of)
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:rtype: int") NbTyped;
 		Standard_Integer NbTyped (const opencascade::handle<Standard_Type> & type);
 
@@ -1710,7 +1710,7 @@ class Interface_EntityIterator {
 		%feature("compactdefaultargs") SelectType;
 		%feature("autodoc", "* Selects entities with are Kind of a given type, keep only them (is keep is True) or reject only them (if keep is False)
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:param keep:
 	:type keep: bool
 	:rtype: None") SelectType;
@@ -1726,7 +1726,7 @@ class Interface_EntityIterator {
 		%feature("compactdefaultargs") Typed;
 		%feature("autodoc", "* Returns the list of entities of a given type (kind of)
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:rtype: Interface_EntityIterator") Typed;
 		Interface_EntityIterator Typed (const opencascade::handle<Standard_Type> & type);
 
@@ -1755,7 +1755,7 @@ class Interface_EntityList {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds an Entity to the list, that is, with NO REGARD about the order (faster than Append if count becomes greater than 10)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1763,7 +1763,7 @@ class Interface_EntityList {
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "* Appends an Entity, that is to the END of the list (keeps order, but works slowerly than Add, see below)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") Append;
 		void Append (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1777,7 +1777,7 @@ class Interface_EntityList {
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "* fills an Iterator with the content of the list (normal way to consult a list which has been filled with Add)
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") FillIterator;
 		void FillIterator (Interface_EntityIterator & iter);
 
@@ -1803,7 +1803,7 @@ class Interface_EntityList {
 		%feature("compactdefaultargs") NbTypedEntities;
 		%feature("autodoc", "* Returns count of Entities of a given Type (0 : none)
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: int") NbTypedEntities;
 		Standard_Integer NbTypedEntities (const opencascade::handle<Standard_Type> & atype);
 
@@ -1811,7 +1811,7 @@ class Interface_EntityList {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes an Entity from the list, if it is there
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") Remove;
 		void Remove (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1829,7 +1829,7 @@ class Interface_EntityList {
 	:param num:
 	:type num: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") SetValue;
 		void SetValue (const Standard_Integer num,const opencascade::handle<Standard_Transient> & ent);
 
@@ -1837,7 +1837,7 @@ class Interface_EntityList {
 		%feature("compactdefaultargs") TypedEntity;
 		%feature("autodoc", "* Returns the Entity which is of a given type. If num = 0 (D), there must be ONE AND ONLY ONE If num > 0, returns the num-th entity of this type
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:param num: default value is 0
 	:type num: int
 	:rtype: opencascade::handle<Standard_Transient>") TypedEntity;
@@ -1894,7 +1894,7 @@ class Interface_FileParameter {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Fills fields (with Entity Number set to zero)
 	:param val:
-	:type val: TCollection_AsciiString &
+	:type val: TCollection_AsciiString
 	:param typ:
 	:type typ: Interface_ParamType
 	:rtype: None") Init;
@@ -1964,7 +1964,7 @@ class Interface_FileReaderData : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param aval:
-	:type aval: TCollection_AsciiString &
+	:type aval: TCollection_AsciiString
 	:param atype:
 	:type atype: Interface_ParamType
 	:param nument: default value is 0
@@ -1978,7 +1978,7 @@ class Interface_FileReaderData : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param FP:
-	:type FP: Interface_FileParameter &
+	:type FP: Interface_FileParameter
 	:rtype: None") AddParam;
 		void AddParam (const Standard_Integer num,const Interface_FileParameter & FP);
 
@@ -1988,7 +1988,7 @@ class Interface_FileReaderData : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") BindEntity;
 		void BindEntity (const Standard_Integer num,const opencascade::handle<Standard_Transient> & ent);
 
@@ -2164,7 +2164,7 @@ class Interface_FileReaderData : public Standard_Transient {
 	:param nump:
 	:type nump: int
 	:param FP:
-	:type FP: Interface_FileParameter &
+	:type FP: Interface_FileParameter
 	:rtype: None") SetParam;
 		void SetParam (const Standard_Integer num,const Standard_Integer nump,const Interface_FileParameter & FP);
 
@@ -2191,9 +2191,9 @@ class Interface_FileReaderTool {
 	:param num:
 	:type num: int
 	:param anent:
-	:type anent: opencascade::handle<Standard_Transient> &
+	:type anent: Standard_Transient
 	:param acheck:
-	:type acheck: opencascade::handle<Interface_Check> &
+	:type acheck: Interface_Check
 	:rtype: bool") AnalyseRecord;
 		virtual Standard_Boolean AnalyseRecord (const Standard_Integer num,const opencascade::handle<Standard_Transient> & anent,opencascade::handle<Interface_Check> & acheck);
 
@@ -2201,7 +2201,7 @@ class Interface_FileReaderTool {
 		%feature("compactdefaultargs") BeginRead;
 		%feature("autodoc", "* Fills model's header; each Interface defines for its Model its own file header; this method fills it from FileReaderTool.+ It is called by AnalyseFile from InterfaceModel
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: void") BeginRead;
 		virtual void BeginRead (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2221,7 +2221,7 @@ class Interface_FileReaderTool {
 		%feature("compactdefaultargs") EndRead;
 		%feature("autodoc", "* Ends file reading after reading all the entities default is doing nothing; redefinable as necessary
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: void") EndRead;
 		virtual void EndRead (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2229,7 +2229,7 @@ class Interface_FileReaderTool {
 		%feature("compactdefaultargs") LoadModel;
 		%feature("autodoc", "* Reads and fills Entities from the FileReaderData set by SetData to an InterfaceModel. It enchains required operations, the specific ones correspond to deferred methods (below) to be defined for each Norm. It manages also error recovery and trace. Remark : it calls SetModel. It Can raise any error which can occur during a load operation, unless Error Handling is set. This method can also be redefined if judged necessary.
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") LoadModel;
 		void LoadModel (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2271,9 +2271,9 @@ class Interface_FileReaderTool {
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") Recognize;
 		virtual Standard_Boolean Recognize (const Standard_Integer num,opencascade::handle<Interface_Check> & ach,opencascade::handle<Standard_Transient> & ent);
 
@@ -2283,13 +2283,13 @@ class Interface_FileReaderTool {
 	:param num:
 	:type num: int
 	:param glib:
-	:type glib: Interface_GeneralLib &
+	:type glib: Interface_GeneralLib
 	:param rlib:
-	:type rlib: Interface_ReaderLib &
+	:type rlib: Interface_ReaderLib
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") RecognizeByLib;
 		Standard_Boolean RecognizeByLib (const Standard_Integer num,Interface_GeneralLib & glib,Interface_ReaderLib & rlib,opencascade::handle<Interface_Check> & ach,opencascade::handle<Standard_Transient> & ent);
 
@@ -2297,9 +2297,9 @@ class Interface_FileReaderTool {
 		%feature("compactdefaultargs") SetData;
 		%feature("autodoc", "* Sets Data to a FileReaderData. Works with a Protocol
 	:param reader:
-	:type reader: opencascade::handle<Interface_FileReaderData> &
+	:type reader: Interface_FileReaderData
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") SetData;
 		void SetData (const opencascade::handle<Interface_FileReaderData> & reader,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -2313,7 +2313,7 @@ class Interface_FileReaderTool {
 		%feature("compactdefaultargs") SetMessenger;
 		%feature("autodoc", "* Sets Messenger used for outputting messages
 	:param messenger:
-	:type messenger: opencascade::handle<Message_Messenger> &
+	:type messenger: Message_Messenger
 	:rtype: None") SetMessenger;
 		void SetMessenger (const opencascade::handle<Message_Messenger> & messenger);
 
@@ -2321,7 +2321,7 @@ class Interface_FileReaderTool {
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "* Stores a Model. Used when the Model has been loaded
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") SetModel;
 		void SetModel (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2408,9 +2408,9 @@ class Interface_FloatWriter {
 	:param range:
 	:type range: bool
 	:param R1:
-	:type R1: float &
+	:type R1: float
 	:param R2:
-	:type R2: float &
+	:type R2: float
 	:rtype: None") Options;
 		void Options (Standard_Boolean &OutValue,Standard_Boolean &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2493,7 +2493,7 @@ class Interface_GTool : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_GTool;
 		%feature("autodoc", "* Creates a GTool from a Protocol Optional starting count of entities
 	:param proto:
-	:type proto: opencascade::handle<Interface_Protocol> &
+	:type proto: Interface_Protocol
 	:param nbent: default value is 0
 	:type nbent: int
 	:rtype: None") Interface_GTool;
@@ -2525,11 +2525,11 @@ class Interface_GTool : public Standard_Transient {
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "* Selects for an entity, its Module and Case Number It is optimised : once done for each entity, the result is mapped and the GeneralLib is not longer queried <enforce> True overpasses this optimisation
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param gmod:
-	:type gmod: opencascade::handle<Interface_GeneralModule> &
+	:type gmod: Interface_GeneralModule
 	:param CN:
-	:type CN: int &
+	:type CN: int
 	:param enforce: default value is Standard_False
 	:type enforce: bool
 	:rtype: bool") Select;
@@ -2539,7 +2539,7 @@ class Interface_GTool : public Standard_Transient {
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "* Sets a new Protocol if <enforce> is False and the new Protocol equates the old one then nothing is done
 	:param proto:
-	:type proto: opencascade::handle<Interface_Protocol> &
+	:type proto: Interface_Protocol
 	:param enforce: default value is Standard_False
 	:type enforce: bool
 	:rtype: None") SetProtocol;
@@ -2549,7 +2549,7 @@ class Interface_GTool : public Standard_Transient {
 		%feature("compactdefaultargs") SetSignType;
 		%feature("autodoc", "* Sets a new SignType
 	:param sign:
-	:type sign: opencascade::handle<Interface_SignType> &
+	:type sign: Interface_SignType
 	:rtype: None") SetSignType;
 		void SetSignType (const opencascade::handle<Interface_SignType> & sign);
 
@@ -2569,9 +2569,9 @@ class Interface_GTool : public Standard_Transient {
 		%feature("compactdefaultargs") SignValue;
 		%feature("autodoc", "* Returns the Signature for a Transient Object in a Model It calls SignType to do that If SignType is not defined, return ClassName of <ent>
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: char *") SignValue;
 		const char * SignValue (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2595,7 +2595,7 @@ class Interface_GeneralLib {
 		%feature("compactdefaultargs") AddProtocol;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added)
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Standard_Transient> &
+	:type aprotocol: Standard_Transient
 	:rtype: None") AddProtocol;
 		void AddProtocol (const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -2609,7 +2609,7 @@ class Interface_GeneralLib {
 		%feature("compactdefaultargs") Interface_GeneralLib;
 		%feature("autodoc", "* Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Interface_Protocol> &
+	:type aprotocol: Interface_Protocol
 	:rtype: None") Interface_GeneralLib;
 		 Interface_GeneralLib (const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -2647,11 +2647,11 @@ class Interface_GeneralLib {
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "* Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType)
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:param module:
-	:type module: opencascade::handle<Interface_GeneralModule> &
+	:type module: Interface_GeneralModule
 	:param CN:
-	:type CN: int &
+	:type CN: int
 	:rtype: bool") Select;
 		Standard_Boolean Select (const opencascade::handle<Standard_Transient> & obj,opencascade::handle<Interface_GeneralModule> & module,Standard_Integer &OutValue);
 
@@ -2665,9 +2665,9 @@ class Interface_GeneralLib {
 		%feature("compactdefaultargs") SetGlobal;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 	:param amodule:
-	:type amodule: opencascade::handle<Interface_GeneralModule> &
+	:type amodule: Interface_GeneralModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Interface_Protocol> &
+	:type aprotocol: Interface_Protocol
 	:rtype: void") SetGlobal;
 		static void SetGlobal (const opencascade::handle<Interface_GeneralModule> & amodule,const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -2698,7 +2698,7 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") CanCopy;
 		virtual Standard_Boolean CanCopy (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent);
 
@@ -2708,9 +2708,9 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param shares:
-	:type shares: Interface_ShareTool &
+	:type shares: Interface_ShareTool
 	:rtype: int") CategoryNumber;
 		virtual Standard_Integer CategoryNumber (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares);
 
@@ -2720,11 +2720,11 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param shares:
-	:type shares: Interface_ShareTool &
+	:type shares: Interface_ShareTool
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: void") CheckCase;
 		virtual void CheckCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 
@@ -2734,11 +2734,11 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: void") CopyCase;
 		virtual void CopyCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & entfrom,const opencascade::handle<Standard_Transient> & entto,Interface_CopyTool & TC);
 
@@ -2748,11 +2748,11 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: bool") Dispatch;
 		virtual Standard_Boolean Dispatch (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & entfrom,opencascade::handle<Standard_Transient> & entto,Interface_CopyTool & TC);
 
@@ -2760,13 +2760,13 @@ class Interface_GeneralModule : public Standard_Transient {
 		%feature("compactdefaultargs") FillShared;
 		%feature("autodoc", "* Specific filling of the list of Entities shared by an Entity <ent>, according a Case Number <CN> (formerly computed by CaseNum), considered in the context of a Model <model> Default calls FillSharedCase (i.e., ignores the model) Can be redefined to use the model for working
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: void") FillShared;
 		virtual void FillShared (const opencascade::handle<Interface_InterfaceModel> & model,const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & iter);
 
@@ -2776,9 +2776,9 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: void") FillSharedCase;
 		virtual void FillSharedCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & iter);
 
@@ -2786,13 +2786,13 @@ class Interface_GeneralModule : public Standard_Transient {
 		%feature("compactdefaultargs") ListImplied;
 		%feature("autodoc", "* List the Implied References of <ent> considered in the context of a Model <model> : i.e. the Entities which are Referenced while not considered as Shared (not copied if <ent> is, references not renewed by CopyCase but by ImpliedCase, only if referenced Entities have been Copied too) FillShared + ListImplied give the complete list of References Default calls ListImpliedCase (i.e. ignores the model) Can be redefined to use the model for working
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: void") ListImplied;
 		virtual void ListImplied (const opencascade::handle<Interface_InterfaceModel> & model,const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & iter);
 
@@ -2802,9 +2802,9 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: void") ListImpliedCase;
 		virtual void ListImpliedCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & iter);
 
@@ -2814,9 +2814,9 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param shares:
-	:type shares: Interface_ShareTool &
+	:type shares: Interface_ShareTool
 	:rtype: opencascade::handle<TCollection_HAsciiString>") Name;
 		virtual opencascade::handle<TCollection_HAsciiString> Name (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares);
 
@@ -2826,11 +2826,11 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: bool") NewCopiedCase;
 		virtual Standard_Boolean NewCopiedCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & entfrom,opencascade::handle<Standard_Transient> & entto,Interface_CopyTool & TC);
 
@@ -2840,7 +2840,7 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:rtype: bool") NewVoid;
 		virtual Standard_Boolean NewVoid (const Standard_Integer CN,opencascade::handle<Standard_Transient> & entto);
 
@@ -2850,11 +2850,11 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: void") RenewImpliedCase;
 		virtual void RenewImpliedCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & entfrom,const opencascade::handle<Standard_Transient> & entto,const Interface_CopyTool & TC);
 
@@ -2862,9 +2862,9 @@ class Interface_GeneralModule : public Standard_Transient {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Adds an Entity to a Shared List (uses GetOneItem on <iter>)
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:param shared:
-	:type shared: opencascade::handle<Standard_Transient> &
+	:type shared: Standard_Transient
 	:rtype: None") Share;
 		void Share (Interface_EntityIterator & iter,const opencascade::handle<Standard_Transient> & shared);
 
@@ -2874,7 +2874,7 @@ class Interface_GeneralModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param dispatched:
 	:type dispatched: bool
 	:rtype: void") WhenDeleteCase;
@@ -2901,9 +2901,9 @@ class Interface_GlobalNodeOfGeneralLib : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Module bound with a Protocol to the list : does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required) Once added, stores its attached Protocol in correspondance
 	:param amodule:
-	:type amodule: opencascade::handle<Interface_GeneralModule> &
+	:type amodule: Interface_GeneralModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Interface_Protocol> &
+	:type aprotocol: Interface_Protocol
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Interface_GeneralModule> & amodule,const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -2952,9 +2952,9 @@ class Interface_GlobalNodeOfReaderLib : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Module bound with a Protocol to the list : does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required) Once added, stores its attached Protocol in correspondance
 	:param amodule:
-	:type amodule: opencascade::handle<Interface_ReaderModule> &
+	:type amodule: Interface_ReaderModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Interface_Protocol> &
+	:type aprotocol: Interface_Protocol
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Interface_ReaderModule> & amodule,const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -3033,7 +3033,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") EntityNumber;
 		%feature("autodoc", "* Returns the Number of the entity in the Map, computed at creation time (Entities loaded from the Model) Returns 0 if <ent> not contained by Model used to create <self> (that is, <ent> is unknown from <self>)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") EntityNumber;
 		Standard_Integer EntityNumber (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3041,7 +3041,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") GetFromEntity;
 		%feature("autodoc", "* Gets an Entity, plus its shared ones (at every level) if 'shared' is True. New items are set to status 'newstat' Items already present in graph remain unchanged Of course, redefinitions of Shared lists are taken into account if there are some
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param shared:
 	:type shared: bool
 	:param newstat: default value is 0
@@ -3053,7 +3053,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") GetFromEntity;
 		%feature("autodoc", "* Gets an Entity, plus its shared ones (at every level) if 'shared' is True. New items are set to status 'newstat'. Items already present in graph are processed as follows : - if they already have status 'newstat', they remain unchanged - if they have another status, this one is modified : if cumul is True, to former status + overlapstat (cumul) if cumul is False, to overlapstat (enforce)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param shared:
 	:type shared: bool
 	:param newstat:
@@ -3069,7 +3069,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") GetFromGraph;
 		%feature("autodoc", "* Gets all present items from another graph
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:rtype: None") GetFromGraph;
 		void GetFromGraph (const Interface_Graph & agraph);
 
@@ -3077,7 +3077,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") GetFromGraph;
 		%feature("autodoc", "* Gets items from another graph which have a specific Status
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:param stat:
 	:type stat: int
 	:rtype: None") GetFromGraph;
@@ -3087,7 +3087,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") GetFromIter;
 		%feature("autodoc", "* Gets Entities given by an EntityIterator. Entities which were not yet present in the graph are mapped with status 'newstat' Entities already present remain unchanged
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:param newstat:
 	:type newstat: int
 	:rtype: None") GetFromIter;
@@ -3097,7 +3097,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") GetFromIter;
 		%feature("autodoc", "* Gets Entities given by an EntityIterator and distinguishes those already present in the Graph : - new entities added to the Graph with status 'newstst' - entities already present with status = 'newstat' remain unchanged - entities already present with status different form 'newstat' have their status modified : if cumul is True, to former status + overlapstat (cumul) if cumul is False, to overlapstat (enforce) (Note : works as GetEntity, shared = False, for each entity)
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:param newstat:
 	:type newstat: int
 	:param overlapstat:
@@ -3117,7 +3117,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") GetShareds;
 		%feature("autodoc", "* Returns the sequence of Entities Shared by an Entity
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") GetShareds;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetShareds (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3125,7 +3125,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") GetSharings;
 		%feature("autodoc", "* Returns the sequence of Entities Sharings by an Entity
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") GetSharings;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetSharings (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3133,7 +3133,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") HasShareErrors;
 		%feature("autodoc", "* Returns True if <ent> or the list of entities shared by <ent> (not redefined) contains items unknown from this Graph Remark : apart from the status HasShareError, these items are ignored
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") HasShareErrors;
 		Standard_Boolean HasShareErrors (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3141,9 +3141,9 @@ class Interface_Graph {
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "* Creates an empty graph, ready to receive Entities from amodel Note that this way of Creation allows <self> to verify that Entities to work with are contained in <amodel> Basic Shared and Sharing lists are obtained from a General Services Library, given directly as an argument
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param lib:
-	:type lib: Interface_GeneralLib &
+	:type lib: Interface_GeneralLib
 	:param theModeStats: default value is Standard_True
 	:type theModeStats: bool
 	:rtype: None") Interface_Graph;
@@ -3153,9 +3153,9 @@ class Interface_Graph {
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "* Same as above, but the Library is defined through a Protocol
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param theModeStats: default value is Standard_True
 	:type theModeStats: bool
 	:rtype: None") Interface_Graph;
@@ -3165,9 +3165,9 @@ class Interface_Graph {
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "* Same as above, but the Library is defined through a Protocol
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param gtool:
-	:type gtool: opencascade::handle<Interface_GTool> &
+	:type gtool: Interface_GTool
 	:param theModeStats: default value is Standard_True
 	:type theModeStats: bool
 	:rtype: None") Interface_Graph;
@@ -3177,7 +3177,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "* Same a above but works with the Protocol recorded in the Model
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param theModeStats: default value is Standard_True
 	:type theModeStats: bool
 	:rtype: None") Interface_Graph;
@@ -3187,7 +3187,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "* Creates a Graph from another one, getting all its data Remark that status are copied from <agraph>, but the other lists (sharing/shared) are copied only if <copied> = True
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:param copied: default value is Standard_False
 	:type copied: bool
 	:rtype: None") Interface_Graph;
@@ -3205,7 +3205,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") IsPresent;
 		%feature("autodoc", "* Same as above but directly on an Entity <ent> : if it is not contained in the Model, returns False. Else calls IsPresent(num) with <num> given by EntityNumber
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsPresent;
 		Standard_Boolean IsPresent (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3225,7 +3225,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "* Determines the name attached to an entity, by using the general service Name in GeneralModule Returns a null handle if no name could be computed or if the entity is not in the model
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TCollection_HAsciiString>") Name;
 		opencascade::handle<TCollection_HAsciiString> Name (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3283,7 +3283,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") Shareds;
 		%feature("autodoc", "* Returns the list of Entities Shared by an Entity, as recorded by the Graph. That is, by default Basic Shared List, else it can be redefined by methods SetShare, SetNoShare ... see below
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: Interface_EntityIterator") Shareds;
 		Interface_EntityIterator Shareds (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3297,7 +3297,7 @@ class Interface_Graph {
 		%feature("compactdefaultargs") Sharings;
 		%feature("autodoc", "* Returns the list of Entities which Share an Entity, computed from the Basic or Redefined Shared Lists
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: Interface_EntityIterator") Sharings;
 		Interface_EntityIterator Sharings (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3319,9 +3319,9 @@ class Interface_Graph {
 		%feature("compactdefaultargs") TypedSharings;
 		%feature("autodoc", "* Returns the list of sharings entities, AT ANY LEVEL, which are kind of a given type. A sharing entity kind of this type ends the exploration of its branch
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:rtype: Interface_EntityIterator") TypedSharings;
 		Interface_EntityIterator TypedSharings (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Type> & type);
 
@@ -3356,7 +3356,7 @@ class Interface_HGraph : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "* Creates an HGraph directly from a Graph. Remark that the starting Graph is duplicated
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:rtype: None") Interface_HGraph;
 		 Interface_HGraph (const Interface_Graph & agraph);
 
@@ -3364,9 +3364,9 @@ class Interface_HGraph : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "* Creates an HGraph with a Graph created from <amodel> and <lib>
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param lib:
-	:type lib: Interface_GeneralLib &
+	:type lib: Interface_GeneralLib
 	:param theModeStats: default value is Standard_True
 	:type theModeStats: bool
 	:rtype: None") Interface_HGraph;
@@ -3376,9 +3376,9 @@ class Interface_HGraph : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "* Creates an HGraph with a graph itself created from <amodel> and <protocol>
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param theModeStats: default value is Standard_True
 	:type theModeStats: bool
 	:rtype: None") Interface_HGraph;
@@ -3388,9 +3388,9 @@ class Interface_HGraph : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "* Creates an HGraph with a graph itself created from <amodel> and <protocol>
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param gtool:
-	:type gtool: opencascade::handle<Interface_GTool> &
+	:type gtool: Interface_GTool
 	:param theModeStats: default value is Standard_True
 	:type theModeStats: bool
 	:rtype: None") Interface_HGraph;
@@ -3400,7 +3400,7 @@ class Interface_HGraph : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "* Same a above, but works with the GTool in the model
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param theModeStats: default value is Standard_True
 	:type theModeStats: bool
 	:rtype: None") Interface_HGraph;
@@ -3471,7 +3471,7 @@ class Interface_IntList {
 		%feature("compactdefaultargs") Interface_IntList;
 		%feature("autodoc", "* Creates an IntList from another one. if <copied> is True, copies data else, data are not copied, only the header object is
 	:param other:
-	:type other: Interface_IntList &
+	:type other: Interface_IntList
 	:param copied:
 	:type copied: bool
 	:rtype: None") Interface_IntList;
@@ -3481,11 +3481,11 @@ class Interface_IntList {
 		%feature("compactdefaultargs") Internals;
 		%feature("autodoc", "* Returns internal values, used for copying
 	:param nbrefs:
-	:type nbrefs: int &
+	:type nbrefs: int
 	:param ents:
-	:type ents: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type ents: TColStd_HArray1OfInteger
 	:param refs:
-	:type refs: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type refs: TColStd_HArray1OfInteger
 	:rtype: None") Internals;
 		void Internals (Standard_Integer &OutValue,opencascade::handle<TColStd_HArray1OfInteger> & ents,opencascade::handle<TColStd_HArray1OfInteger> & refs);
 
@@ -3632,7 +3632,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "* Internal method for adding an Entity. Used by file reading (defined by each Interface) and Transfer tools. It adds the entity required to be added, not its refs : see AddWithRefs. If <anentity> is a ReportEntity, it is added to the list of Reports, its Concerned Entity (Erroneous or Corrected, else Unknown) is added to the list of Entities. That is, the ReportEntity must be created before Adding
 	:param anentity:
-	:type anentity: opencascade::handle<Standard_Transient> &
+	:type anentity: Standard_Transient
 	:rtype: void") AddEntity;
 		virtual void AddEntity (const opencascade::handle<Standard_Transient> & anentity);
 
@@ -3640,7 +3640,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") AddReportEntity;
 		%feature("autodoc", "* Adds a ReportEntity as such. Returns False if the concerned entity is not recorded in the Model Else, adds it into, either the main report list or the list for semantic checks, then returns True
 	:param rep:
-	:type rep: opencascade::handle<Interface_ReportEntity> &
+	:type rep: Interface_ReportEntity
 	:param semantic: default value is Standard_False
 	:type semantic: bool
 	:rtype: bool") AddReportEntity;
@@ -3650,9 +3650,9 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") AddWithRefs;
 		%feature("autodoc", "* Adds to the Model, an Entity with all its References, as they are defined by General Services FillShared and ListImplied. Process is recursive (any sub-levels) if <level> = 0 (Default) Else, adds sub-entities until the required sub-level. Especially, if <level> = 1, adds immediate subs and that's all //! If <listall> is False (Default), an entity (<anentity> itself or one of its subs at any level) which is already recorded in the Model is not analysed, only the newly added ones are. If <listall> is True, all items are analysed (this allows to ensure the consistency of an adding made by steps)
 	:param anent:
-	:type anent: opencascade::handle<Standard_Transient> &
+	:type anent: Standard_Transient
 	:param proto:
-	:type proto: opencascade::handle<Interface_Protocol> &
+	:type proto: Interface_Protocol
 	:param level: default value is 0
 	:type level: int
 	:param listall: default value is Standard_False
@@ -3664,7 +3664,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") AddWithRefs;
 		%feature("autodoc", "* Same as above, but works with the Protocol of the Model
 	:param anent:
-	:type anent: opencascade::handle<Standard_Transient> &
+	:type anent: Standard_Transient
 	:param level: default value is 0
 	:type level: int
 	:param listall: default value is Standard_False
@@ -3676,9 +3676,9 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") AddWithRefs;
 		%feature("autodoc", "* Same as above, but works with an already created GeneralLib
 	:param anent:
-	:type anent: opencascade::handle<Standard_Transient> &
+	:type anent: Standard_Transient
 	:param lib:
-	:type lib: Interface_GeneralLib &
+	:type lib: Interface_GeneralLib
 	:param level: default value is 0
 	:type level: int
 	:param listall: default value is Standard_False
@@ -3760,7 +3760,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Returns True if a Model contains an Entity (for a ReportEntity, looks for the ReportEntity itself AND its Concerned Entity)
 	:param anentity:
-	:type anentity: opencascade::handle<Standard_Transient> &
+	:type anentity: Standard_Transient
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<Standard_Transient> & anentity);
 
@@ -3787,7 +3787,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") DumpHeader;
 		%feature("autodoc", "* Dumps Header in a short, easy to read, form, onto a Stream <level> allows to print more or less parts of the header, if necessary. 0 for basic print
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param level: default value is 0
 	:type level: int
 	:rtype: void") DumpHeader;
@@ -3811,7 +3811,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "* Allows an EntityIterator to get a list of Entities
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") FillIterator;
 		void FillIterator (Interface_EntityIterator & iter);
 
@@ -3819,7 +3819,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") FillSemanticChecks;
 		%feature("autodoc", "* Fills the list of semantic checks. This list is computed (by CheckTool). Hence, it can be stored in the model for later queries <clear> True (D) : new list replaces <clear> False : new list is cumulated
 	:param checks:
-	:type checks: Interface_CheckIterator &
+	:type checks: Interface_CheckIterator
 	:param clear: default value is Standard_True
 	:type clear: bool
 	:rtype: None") FillSemanticChecks;
@@ -3835,7 +3835,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") GetFromAnother;
 		%feature("autodoc", "* Gets header (data specific of a defined Interface) from another InterfaceModel; called from TransferCopy
 	:param other:
-	:type other: opencascade::handle<Interface_InterfaceModel> &
+	:type other: Interface_InterfaceModel
 	:rtype: void") GetFromAnother;
 		virtual void GetFromAnother (const opencascade::handle<Interface_InterfaceModel> & other);
 
@@ -3843,7 +3843,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") GetFromTransfer;
 		%feature("autodoc", "* Gets contents from an EntityIterator, prepared by a Transfer tool (e.g TransferCopy). Starts from clear
 	:param aniter:
-	:type aniter: Interface_EntityIterator &
+	:type aniter: Interface_EntityIterator
 	:rtype: None") GetFromTransfer;
 		void GetFromTransfer (const Interface_EntityIterator & aniter);
 
@@ -3919,7 +3919,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") NbTypes;
 		%feature("autodoc", "* Returns the count of DISTINCT types under which an entity may be processed. Defined by the Protocol, which gives default as 1 (dynamic Type).
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") NbTypes;
 		Standard_Integer NbTypes (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3945,7 +3945,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "* Returns the Number of an Entity in the Model if it contains it. Else returns 0. For a ReportEntity, looks at Concerned Entity. Returns the Directory entry Number of an Entity in the Model if it contains it. Else returns 0. For a ReportEntity, looks at Concerned Entity.
 	:param anentity:
-	:type anentity: opencascade::handle<Standard_Transient> &
+	:type anentity: Standard_Transient
 	:rtype: int") Number;
 		Standard_Integer Number (const opencascade::handle<Standard_Transient> & anentity);
 
@@ -3953,9 +3953,9 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "* Prints identification of a given entity in <self>, in order to be printed in a list or phrase <mode> < 0 : prints only its number <mode> = 1 : just calls PrintLabel <mode> = 0 (D) : prints its number plus '/' plus PrintLabel If <ent> == <self>, simply prints 'Global' If <ent> is unknown, prints '/its type'
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param s:
-	:type s: opencascade::handle<Message_Messenger> &
+	:type s: Message_Messenger
 	:param mode: default value is 0
 	:type mode: int
 	:rtype: None") Print;
@@ -3965,9 +3965,9 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") PrintLabel;
 		%feature("autodoc", "* Prints label specific to each norm, for a given entity. Must only print label itself, in order to be included in a phrase. Can call the result of StringLabel, but not obliged.
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: void") PrintLabel;
 		virtual void PrintLabel (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Message_Messenger> & S);
 
@@ -3975,9 +3975,9 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") PrintToLog;
 		%feature("autodoc", "* Prints label specific to each norm in log format, for a given entity. By default, just calls PrintLabel, can be redefined
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: void") PrintToLog;
 		virtual void PrintToLog (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Message_Messenger> & S);
 
@@ -3999,7 +3999,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 	:param nument:
 	:type nument: int
 	:param anent:
-	:type anent: opencascade::handle<Standard_Transient> &
+	:type anent: Standard_Transient
 	:rtype: None") ReplaceEntity;
 		void ReplaceEntity (const Standard_Integer nument,const opencascade::handle<Standard_Transient> & anent);
 
@@ -4051,7 +4051,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") SetGTool;
 		%feature("autodoc", "* Sets a GTool for this model, which already defines a Protocol
 	:param gtool:
-	:type gtool: opencascade::handle<Interface_GTool> &
+	:type gtool: Interface_GTool
 	:rtype: None") SetGTool;
 		void SetGTool (const opencascade::handle<Interface_GTool> & gtool);
 
@@ -4059,7 +4059,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") SetGlobalCheck;
 		%feature("autodoc", "* Allows to modify GlobalCheck, after getting then completing it Remark : it is SYNTACTIC check. Semantics, see FillChecks
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") SetGlobalCheck;
 		void SetGlobalCheck (const opencascade::handle<Interface_Check> & ach);
 
@@ -4067,7 +4067,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "* Sets a Protocol for this Model It is also set by a call to AddWithRefs with Protocol It is used for : DumpHeader (as required), ClearEntities ...
 	:param proto:
-	:type proto: opencascade::handle<Interface_Protocol> &
+	:type proto: Interface_Protocol
 	:rtype: None") SetProtocol;
 		void SetProtocol (const opencascade::handle<Interface_Protocol> & proto);
 
@@ -4077,7 +4077,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param rep:
-	:type rep: opencascade::handle<Interface_ReportEntity> &
+	:type rep: Interface_ReportEntity
 	:rtype: bool") SetReportEntity;
 		Standard_Boolean SetReportEntity (const Standard_Integer num,const opencascade::handle<Interface_ReportEntity> & rep);
 
@@ -4087,7 +4087,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 	:param name:
 	:type name: char *
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") SetTemplate;
 		static Standard_Boolean SetTemplate (const char * name,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -4095,7 +4095,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") StringLabel;
 		%feature("autodoc", "* Returns a string with the label attached to a given entity. Warning : While this string may be edited on the spot, if it is a read field, the returned value must be copied before.
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TCollection_HAsciiString>") StringLabel;
 		virtual opencascade::handle<TCollection_HAsciiString> StringLabel (const opencascade::handle<Standard_Transient> & ent);
 
@@ -4111,7 +4111,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "* Returns a type, given its rank : defined by the Protocol (by default, the first one)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param num: default value is 1
 	:type num: int
 	:rtype: opencascade::handle<Standard_Type>") Type;
@@ -4121,7 +4121,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "* Returns the type name of an entity, from the list of types (one or more ...) <complete> True (D) gives the complete type, else packages are removed WARNING : buffered, to be immediately copied or printed
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param complete: default value is Standard_True
 	:type complete: bool
 	:rtype: char *") TypeName;
@@ -4139,7 +4139,7 @@ class Interface_InterfaceModel : public Standard_Transient {
 		%feature("compactdefaultargs") VerifyCheck;
 		%feature("autodoc", "* Minimum Semantic Global Check on data in model (header) Can only check basic Data. See also GlobalCheck from Protocol for a check which takes the Graph into account Default does nothing, can be redefined
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: void") VerifyCheck;
 		virtual void VerifyCheck (opencascade::handle<Interface_Check> & ach);
 
@@ -4182,7 +4182,7 @@ class Interface_LineBuffer {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a text as a AsciiString from TCollection
 	:param text:
-	:type text: TCollection_AsciiString &
+	:type text: TCollection_AsciiString
 	:rtype: None") Add;
 		void Add (const TCollection_AsciiString & text);
 
@@ -4238,7 +4238,7 @@ class Interface_LineBuffer {
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "* Fills a AsciiString <str> with the Content of the Line Buffer, then Clears the LineBuffer
 	:param str:
-	:type str: TCollection_AsciiString &
+	:type str: TCollection_AsciiString
 	:rtype: None") Move;
 		void Move (TCollection_AsciiString & str);
 
@@ -4246,7 +4246,7 @@ class Interface_LineBuffer {
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "* Same as above, but <str> is known through a Handle
 	:param str:
-	:type str: opencascade::handle<TCollection_HAsciiString> &
+	:type str: TCollection_HAsciiString
 	:rtype: None") Move;
 		void Move (const opencascade::handle<TCollection_HAsciiString> & str);
 
@@ -4427,17 +4427,17 @@ class Interface_MSG {
 	:param text:
 	:type text: char *
 	:param yy:
-	:type yy: int &
+	:type yy: int
 	:param mm:
-	:type mm: int &
+	:type mm: int
 	:param dd:
-	:type dd: int &
+	:type dd: int
 	:param hh:
-	:type hh: int &
+	:type hh: int
 	:param mn:
-	:type mn: int &
+	:type mn: int
 	:param ss:
-	:type ss: int &
+	:type ss: int
 	:rtype: bool") NDate;
 		static Standard_Boolean NDate (const char * text,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -4445,7 +4445,7 @@ class Interface_MSG {
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "* Prints a String on an Output Stream, as follows : Accompagned with blanks, to give up to <max> charis at all, justified according just : -1 (D) : left 0 : center 1 : right Maximum 76 characters
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:param val:
 	:type val: char *
 	:param max:
@@ -4548,7 +4548,7 @@ class Interface_MSG {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Writes the list of messages recorded to be translated, to a stream. Writes all the list (Default) or only keys which begin by <rootkey>. Returns the count of written messages
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:param rootkey: default value is ""
 	:type rootkey: char *
 	:rtype: int") Write;
@@ -4577,7 +4577,7 @@ class Interface_MapAsciiStringHasher {
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "* Computes a hash code for the given ASCII string, in the range [1, theUpperBound] @param theAsciiString the ASCII string which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theAsciiString:
-	:type theAsciiString: TCollection_AsciiString &
+	:type theAsciiString: TCollection_AsciiString
 	:param theUpperBound:
 	:type theUpperBound: int
 	:rtype: int") HashCode;
@@ -4586,9 +4586,9 @@ class Interface_MapAsciiStringHasher {
 		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", ":param K1:
-	:type K1: TCollection_AsciiString &
+	:type K1: TCollection_AsciiString
 	:param K2:
-	:type K2: TCollection_AsciiString &
+	:type K2: TCollection_AsciiString
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const TCollection_AsciiString & K1,const TCollection_AsciiString & K2);
 
@@ -4611,7 +4611,7 @@ class Interface_NodeOfGeneralLib : public Standard_Transient {
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "* Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it
 	:param anode:
-	:type anode: opencascade::handle<Interface_GlobalNodeOfGeneralLib> &
+	:type anode: Interface_GlobalNodeOfGeneralLib
 	:rtype: None") AddNode;
 		void AddNode (const opencascade::handle<Interface_GlobalNodeOfGeneralLib> & anode);
 
@@ -4660,7 +4660,7 @@ class Interface_NodeOfReaderLib : public Standard_Transient {
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "* Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it
 	:param anode:
-	:type anode: opencascade::handle<Interface_GlobalNodeOfReaderLib> &
+	:type anode: Interface_GlobalNodeOfReaderLib
 	:rtype: None") AddNode;
 		void AddNode (const opencascade::handle<Interface_GlobalNodeOfReaderLib> & anode);
 
@@ -4744,7 +4744,7 @@ class Interface_ParamList : public Standard_Transient {
 	:param Index:
 	:type Index: int
 	:param Value:
-	:type Value: Interface_FileParameter &
+	:type Value: Interface_FileParameter
 	:rtype: None") SetValue;
 		void SetValue (const Standard_Integer Index,const Interface_FileParameter & Value);
 
@@ -4797,7 +4797,7 @@ class Interface_ParamSet : public Standard_Transient {
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "* Adds a parameter at the end of the ParamSet (transparent about reservation and 'Next') Returns new count of recorded Parameters
 	:param FP:
-	:type FP: Interface_FileParameter &
+	:type FP: Interface_FileParameter
 	:rtype: int") Append;
 		Standard_Integer Append (const Interface_FileParameter & FP);
 
@@ -4855,7 +4855,7 @@ class Interface_ParamSet : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param FP:
-	:type FP: Interface_FileParameter &
+	:type FP: Interface_FileParameter
 	:rtype: None") SetParam;
 		void SetParam (const Standard_Integer num,const Interface_FileParameter & FP);
 
@@ -4886,7 +4886,7 @@ class Interface_Protocol : public Standard_Transient {
 		%feature("compactdefaultargs") CaseNumber;
 		%feature("autodoc", "* Returns a unique positive CaseNumber for each Recognized Object. By default, recognition is based on Type(1) By default, calls the following one which is deferred.
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:rtype: int") CaseNumber;
 		virtual Standard_Integer CaseNumber (const opencascade::handle<Standard_Transient> & obj);
 
@@ -4900,9 +4900,9 @@ class Interface_Protocol : public Standard_Transient {
 		%feature("compactdefaultargs") GlobalCheck;
 		%feature("autodoc", "* Evaluates a Global Check for a model (with its Graph) Returns True when done, False if data in model do not apply //! Very specific of each norm, i.e. of each protocol : the uppest level Protocol assumes it, it can call GlobalCheck of its ressources only if it is necessary //! Default does nothing, can be redefined
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: bool") GlobalCheck;
 		virtual Standard_Boolean GlobalCheck (const Interface_Graph & G,opencascade::handle<Interface_Check> & ach);
 
@@ -4910,7 +4910,7 @@ class Interface_Protocol : public Standard_Transient {
 		%feature("compactdefaultargs") IsDynamicType;
 		%feature("autodoc", "* Returns True if type of <obj> is that defined from CDL This is the default but it may change according implementation
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:rtype: bool") IsDynamicType;
 		virtual Standard_Boolean IsDynamicType (const opencascade::handle<Standard_Transient> & obj);
 
@@ -4918,7 +4918,7 @@ class Interface_Protocol : public Standard_Transient {
 		%feature("compactdefaultargs") IsSuitableModel;
 		%feature("autodoc", "* Returns True if <model> is a Model of the considered Norm
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") IsSuitableModel;
 		virtual Standard_Boolean IsSuitableModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -4926,7 +4926,7 @@ class Interface_Protocol : public Standard_Transient {
 		%feature("compactdefaultargs") IsUnknownEntity;
 		%feature("autodoc", "* Returns True if <ent> is an Unknown Entity for the Norm, i.e. same Type as them created by method UnknownEntity (for an Entity out of the Norm, answer can be unpredicable)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsUnknownEntity;
 		virtual Standard_Boolean IsUnknownEntity (const opencascade::handle<Standard_Transient> & ent);
 
@@ -4940,7 +4940,7 @@ class Interface_Protocol : public Standard_Transient {
 		%feature("compactdefaultargs") NbTypes;
 		%feature("autodoc", "* Returns the count of DISTINCT types under which an entity may be processed. Each one is candidate to be recognized by TypeNumber, <obj> is then processed according it By default, returns 1 (the DynamicType)
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:rtype: int") NbTypes;
 		virtual Standard_Integer NbTypes (const opencascade::handle<Standard_Transient> & obj);
 
@@ -4962,7 +4962,7 @@ class Interface_Protocol : public Standard_Transient {
 		%feature("compactdefaultargs") SetActive;
 		%feature("autodoc", "* Sets a given Protocol to be the Active one (for the users of Active, see just above). Applies to every sub-type of Protocol
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Interface_Protocol> &
+	:type aprotocol: Interface_Protocol
 	:rtype: void") SetActive;
 		static void SetActive (const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -4970,7 +4970,7 @@ class Interface_Protocol : public Standard_Transient {
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "* Returns a type under which <obj> can be recognized and processed, according its rank in its definition list (see NbTypes). By default, returns DynamicType
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:param nt: default value is 1
 	:type nt: int
 	:rtype: opencascade::handle<Standard_Type>") Type;
@@ -4980,7 +4980,7 @@ class Interface_Protocol : public Standard_Transient {
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "* Returns a unique positive CaseNumber for each Recognized Type, Returns Zero for '<type> not recognized'
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: int") TypeNumber;
 		virtual Standard_Integer TypeNumber (const opencascade::handle<Standard_Type> & atype);
 
@@ -5010,7 +5010,7 @@ class Interface_ReaderLib {
 		%feature("compactdefaultargs") AddProtocol;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added)
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Standard_Transient> &
+	:type aprotocol: Standard_Transient
 	:rtype: None") AddProtocol;
 		void AddProtocol (const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -5024,7 +5024,7 @@ class Interface_ReaderLib {
 		%feature("compactdefaultargs") Interface_ReaderLib;
 		%feature("autodoc", "* Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Interface_Protocol> &
+	:type aprotocol: Interface_Protocol
 	:rtype: None") Interface_ReaderLib;
 		 Interface_ReaderLib (const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -5062,11 +5062,11 @@ class Interface_ReaderLib {
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "* Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType)
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:param module:
-	:type module: opencascade::handle<Interface_ReaderModule> &
+	:type module: Interface_ReaderModule
 	:param CN:
-	:type CN: int &
+	:type CN: int
 	:rtype: bool") Select;
 		Standard_Boolean Select (const opencascade::handle<Standard_Transient> & obj,opencascade::handle<Interface_ReaderModule> & module,Standard_Integer &OutValue);
 
@@ -5080,9 +5080,9 @@ class Interface_ReaderLib {
 		%feature("compactdefaultargs") SetGlobal;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 	:param amodule:
-	:type amodule: opencascade::handle<Interface_ReaderModule> &
+	:type amodule: Interface_ReaderModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Interface_Protocol> &
+	:type aprotocol: Interface_Protocol
 	:rtype: void") SetGlobal;
 		static void SetGlobal (const opencascade::handle<Interface_ReaderModule> & amodule,const opencascade::handle<Interface_Protocol> & aprotocol);
 
@@ -5111,7 +5111,7 @@ class Interface_ReaderModule : public Standard_Transient {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Translates the type of record <num> in <data> to a positive Case Number. If Recognition fails, must return 0
 	:param data:
-	:type data: opencascade::handle<Interface_FileReaderData> &
+	:type data: Interface_FileReaderData
 	:param num:
 	:type num: int
 	:rtype: int") CaseNum;
@@ -5123,13 +5123,13 @@ class Interface_ReaderModule : public Standard_Transient {
 	:param casenum:
 	:type casenum: int
 	:param data:
-	:type data: opencascade::handle<Interface_FileReaderData> &
+	:type data: Interface_FileReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") NewRead;
 		virtual Standard_Boolean NewRead (const Standard_Integer casenum,const opencascade::handle<Interface_FileReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,opencascade::handle<Standard_Transient> & ent);
 
@@ -5139,13 +5139,13 @@ class Interface_ReaderModule : public Standard_Transient {
 	:param casenum:
 	:type casenum: int
 	:param data:
-	:type data: opencascade::handle<Interface_FileReaderData> &
+	:type data: Interface_FileReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: void") Read;
 		virtual void Read (const Standard_Integer casenum,const opencascade::handle<Interface_FileReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<Standard_Transient> & ent);
 
@@ -5206,7 +5206,7 @@ class Interface_ReportEntity : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_ReportEntity;
 		%feature("autodoc", "* Creates a ReportEntity for an Unknown Entity : Check is empty, and Concerned equates Content (i.e. the Unknown Entity)
 	:param unknown:
-	:type unknown: opencascade::handle<Standard_Transient> &
+	:type unknown: Standard_Transient
 	:rtype: None") Interface_ReportEntity;
 		 Interface_ReportEntity (const opencascade::handle<Standard_Transient> & unknown);
 
@@ -5214,9 +5214,9 @@ class Interface_ReportEntity : public Standard_Transient {
 		%feature("compactdefaultargs") Interface_ReportEntity;
 		%feature("autodoc", "* Creates a ReportEntity with its features : - <acheck> is the Check to be memorised - <concerned> is the Entity to which the Check is bound Later, a Content can be set : it is required for an Error
 	:param acheck:
-	:type acheck: opencascade::handle<Interface_Check> &
+	:type acheck: Interface_Check
 	:param concerned:
-	:type concerned: opencascade::handle<Standard_Transient> &
+	:type concerned: Standard_Transient
 	:rtype: None") Interface_ReportEntity;
 		 Interface_ReportEntity (const opencascade::handle<Interface_Check> & acheck,const opencascade::handle<Standard_Transient> & concerned);
 
@@ -5236,7 +5236,7 @@ class Interface_ReportEntity : public Standard_Transient {
 		%feature("compactdefaultargs") SetContent;
 		%feature("autodoc", "* Sets a Content : it brings non interpreted data which belong to the Concerned Entity. It can be empty then loaded later. Remark that for an Unknown Entity, Content is set by Create.
 	:param content:
-	:type content: opencascade::handle<Standard_Transient> &
+	:type content: Standard_Transient
 	:rtype: None") SetContent;
 		void SetContent (const opencascade::handle<Standard_Transient> & content);
 
@@ -5279,11 +5279,11 @@ class Interface_STAT {
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "* Returns global description (cumulated weights of all phases, count of phases,1 for default, and title)
 	:param nbphases:
-	:type nbphases: int &
+	:type nbphases: int
 	:param total:
-	:type total: float &
+	:type total: float
 	:param title:
-	:type title: char * &
+	:type title: char *
 	:rtype: None") Description;
 		void Description (Standard_Integer &OutValue,Standard_Real &OutValue,const char * & title);
 
@@ -5305,7 +5305,7 @@ class Interface_STAT {
 		%feature("compactdefaultargs") Interface_STAT;
 		%feature("autodoc", "* used when starting
 	:param other:
-	:type other: Interface_STAT &
+	:type other: Interface_STAT
 	:rtype: None") Interface_STAT;
 		 Interface_STAT (const Interface_STAT & other);
 
@@ -5313,19 +5313,19 @@ class Interface_STAT {
 		%feature("compactdefaultargs") Internals;
 		%feature("autodoc", "* Returns fields in once, without copying them, used for copy when starting
 	:param tit:
-	:type tit: opencascade::handle<TCollection_HAsciiString> &
+	:type tit: TCollection_HAsciiString
 	:param total:
-	:type total: float &
+	:type total: float
 	:param phn:
-	:type phn: opencascade::handle<TColStd_HSequenceOfAsciiString> &
+	:type phn: TColStd_HSequenceOfAsciiString
 	:param phw:
-	:type phw: opencascade::handle<TColStd_HSequenceOfReal> &
+	:type phw: TColStd_HSequenceOfReal
 	:param phdeb:
-	:type phdeb: opencascade::handle<TColStd_HSequenceOfInteger> &
+	:type phdeb: TColStd_HSequenceOfInteger
 	:param phfin:
-	:type phfin: opencascade::handle<TColStd_HSequenceOfInteger> &
+	:type phfin: TColStd_HSequenceOfInteger
 	:param stw:
-	:type stw: opencascade::handle<TColStd_HSequenceOfReal> &
+	:type stw: TColStd_HSequenceOfReal
 	:rtype: None") Internals;
 		void Internals (opencascade::handle<TCollection_HAsciiString> & tit,Standard_Real &OutValue,opencascade::handle<TColStd_HSequenceOfAsciiString> & phn,opencascade::handle<TColStd_HSequenceOfReal> & phw,opencascade::handle<TColStd_HSequenceOfInteger> & phdeb,opencascade::handle<TColStd_HSequenceOfInteger> & phfin,opencascade::handle<TColStd_HSequenceOfReal> & stw);
 
@@ -5375,13 +5375,13 @@ class Interface_STAT {
 	:param num:
 	:type num: int
 	:param n0step:
-	:type n0step: int &
+	:type n0step: int
 	:param nbstep:
-	:type nbstep: int &
+	:type nbstep: int
 	:param weight:
-	:type weight: float &
+	:type weight: float
 	:param name:
-	:type name: char * &
+	:type name: char *
 	:rtype: None") Phase;
 		void Phase (const Standard_Integer num,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Real &OutValue,const char * & name);
 
@@ -5450,9 +5450,9 @@ class Interface_ShareFlags {
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "* Creates a ShareFlags from a Model and builds required data (flags) by calling the General Service Library given as argument <lib>
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param lib:
-	:type lib: Interface_GeneralLib &
+	:type lib: Interface_GeneralLib
 	:rtype: None") Interface_ShareFlags;
 		 Interface_ShareFlags (const opencascade::handle<Interface_InterfaceModel> & amodel,const Interface_GeneralLib & lib);
 
@@ -5460,9 +5460,9 @@ class Interface_ShareFlags {
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "* Same as above, but GeneralLib is detained by a GTool
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param gtool:
-	:type gtool: opencascade::handle<Interface_GTool> &
+	:type gtool: Interface_GTool
 	:rtype: None") Interface_ShareFlags;
 		 Interface_ShareFlags (const opencascade::handle<Interface_InterfaceModel> & amodel,const opencascade::handle<Interface_GTool> & gtool);
 
@@ -5470,9 +5470,9 @@ class Interface_ShareFlags {
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "* Same as above, but GeneralLib is defined through a Protocol
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") Interface_ShareFlags;
 		 Interface_ShareFlags (const opencascade::handle<Interface_InterfaceModel> & amodel,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -5480,7 +5480,7 @@ class Interface_ShareFlags {
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "* Same as above, but works with the GTool of the Model
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") Interface_ShareFlags;
 		 Interface_ShareFlags (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -5488,7 +5488,7 @@ class Interface_ShareFlags {
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "* Creates a ShareFlags by querying informations from a Graph (remark that Graph also has a method IsShared)
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:rtype: None") Interface_ShareFlags;
 		 Interface_ShareFlags (const Interface_Graph & agraph);
 
@@ -5496,7 +5496,7 @@ class Interface_ShareFlags {
 		%feature("compactdefaultargs") IsShared;
 		%feature("autodoc", "* Returns True if <ent> is Shared by one or more other Entity(ies) of the Model
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsShared;
 		Standard_Boolean IsShared (const opencascade::handle<Standard_Transient> & ent);
 
@@ -5545,7 +5545,7 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") All;
 		%feature("autodoc", "* Returns the complete list of entities shared by <ent> at any level, including <ent> itself If <ent> is the Model, considers the concatenation of AllShared for each root If <rootlast> is True (D), the list starts with lower level entities and ends by the root. Else, the root is first and the lower level entities are at end
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param rootlast: default value is Standard_True
 	:type rootlast: bool
 	:rtype: Interface_EntityIterator") All;
@@ -5561,9 +5561,9 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "* Creates a ShareTool from a Model and builds all required data, by calling the General Service Library and Modules (GeneralLib given as an argument)
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param lib:
-	:type lib: Interface_GeneralLib &
+	:type lib: Interface_GeneralLib
 	:rtype: None") Interface_ShareTool;
 		 Interface_ShareTool (const opencascade::handle<Interface_InterfaceModel> & amodel,const Interface_GeneralLib & lib);
 
@@ -5571,9 +5571,9 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "* Same a above, but GeneralLib is detained by a GTool
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param gtool:
-	:type gtool: opencascade::handle<Interface_GTool> &
+	:type gtool: Interface_GTool
 	:rtype: None") Interface_ShareTool;
 		 Interface_ShareTool (const opencascade::handle<Interface_InterfaceModel> & amodel,const opencascade::handle<Interface_GTool> & gtool);
 
@@ -5581,9 +5581,9 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "* Same a above, but GeneralLib is defined through a Protocol Protocol is used to build the working library
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") Interface_ShareTool;
 		 Interface_ShareTool (const opencascade::handle<Interface_InterfaceModel> & amodel,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -5591,7 +5591,7 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "* Same as above, but works with the GTool of the Model
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") Interface_ShareTool;
 		 Interface_ShareTool (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -5599,7 +5599,7 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "* Creates a ShareTool from an already defined Graph Remark that the data of the Graph are copied
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:rtype: None") Interface_ShareTool;
 		 Interface_ShareTool (const Interface_Graph & agraph);
 
@@ -5607,7 +5607,7 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "* Completes the Graph by Adding Implied References. Hence, they are considered as Sharing References in all the other queries
 	:param ahgraph:
-	:type ahgraph: opencascade::handle<Interface_HGraph> &
+	:type ahgraph: Interface_HGraph
 	:rtype: None") Interface_ShareTool;
 		 Interface_ShareTool (const opencascade::handle<Interface_HGraph> & ahgraph);
 
@@ -5615,7 +5615,7 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") IsShared;
 		%feature("autodoc", "* Returns True if <ent> is Shared by other Entities in the Model
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsShared;
 		Standard_Boolean IsShared (const opencascade::handle<Standard_Transient> & ent);
 
@@ -5629,9 +5629,9 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") NbTypedSharings;
 		%feature("autodoc", "* Returns the count of Sharing Entities of an Entity, which are Kind of a given Type
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: int") NbTypedSharings;
 		Standard_Integer NbTypedSharings (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Type> & atype);
 
@@ -5639,9 +5639,9 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "* Utility method which Prints the content of an iterator (by their Numbers)
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") Print;
 		void Print (const Interface_EntityIterator & iter,const opencascade::handle<Message_Messenger> & S);
 
@@ -5655,7 +5655,7 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") Shareds;
 		%feature("autodoc", "* Returns the List of Entities Shared by a given Entity <ent>
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: Interface_EntityIterator") Shareds;
 		Interface_EntityIterator Shareds (const opencascade::handle<Standard_Transient> & ent);
 
@@ -5663,7 +5663,7 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") Sharings;
 		%feature("autodoc", "* Returns the List of Entities Sharing a given Entity <ent>
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: Interface_EntityIterator") Sharings;
 		Interface_EntityIterator Sharings (const opencascade::handle<Standard_Transient> & ent);
 
@@ -5671,9 +5671,9 @@ class Interface_ShareTool {
 		%feature("compactdefaultargs") TypedSharing;
 		%feature("autodoc", "* Returns the Sharing Entity of an Entity, which is Kind of a given Type. Allows to access a Sharing Entity of a given type when there is one and only one (current case)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: opencascade::handle<Standard_Transient>") TypedSharing;
 		opencascade::handle<Standard_Transient> TypedSharing (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Type> & atype);
 
@@ -5707,9 +5707,9 @@ class Interface_SignLabel : public MoniTool_SignText {
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "* Considers context as an InterfaceModel and returns the Label computed by it
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param context:
-	:type context: opencascade::handle<Standard_Transient> &
+	:type context: Standard_Transient
 	:rtype: TCollection_AsciiString") Text;
 		TCollection_AsciiString Text (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Transient> & context);
 
@@ -5742,9 +5742,9 @@ class Interface_SignType : public MoniTool_SignText {
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "* Returns an identification of the Signature (a word), given at initialization time Specialised to consider context as an InterfaceModel
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param context:
-	:type context: opencascade::handle<Standard_Transient> &
+	:type context: Standard_Transient
 	:rtype: TCollection_AsciiString") Text;
 		TCollection_AsciiString Text (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Transient> & context);
 
@@ -5752,9 +5752,9 @@ class Interface_SignType : public MoniTool_SignText {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Returns the Signature for a Transient object. It is specific of each sub-class of Signature. For a Null Handle, it should provide '' It can work with the model which contains the entity
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: char *") Value;
 		virtual const char * Value (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -5832,7 +5832,7 @@ class Interface_UndefinedContent : public Standard_Transient {
 	:param ptype:
 	:type ptype: Interface_ParamType
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") AddEntity;
 		void AddEntity (const Interface_ParamType ptype,const opencascade::handle<Standard_Transient> & ent);
 
@@ -5842,7 +5842,7 @@ class Interface_UndefinedContent : public Standard_Transient {
 	:param ptype:
 	:type ptype: Interface_ParamType
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") AddLiteral;
 		void AddLiteral (const Interface_ParamType ptype,const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -5856,9 +5856,9 @@ class Interface_UndefinedContent : public Standard_Transient {
 		%feature("compactdefaultargs") GetFromAnother;
 		%feature("autodoc", "* Copies contents of undefined entities; deigned to be called by GetFromAnother method from Undefined entity of each Interface (the basic operation is the same regardless the norm)
 	:param other:
-	:type other: opencascade::handle<Interface_UndefinedContent> &
+	:type other: Interface_UndefinedContent
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: None") GetFromAnother;
 		void GetFromAnother (const opencascade::handle<Interface_UndefinedContent> & other,Interface_CopyTool & TC);
 
@@ -5894,11 +5894,11 @@ class Interface_UndefinedContent : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param ptype:
-	:type ptype: Interface_ParamType &
+	:type ptype: Interface_ParamType
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: bool") ParamData;
 		Standard_Boolean ParamData (const Standard_Integer num,Interface_ParamType & ptype,opencascade::handle<Standard_Transient> & ent,opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -5952,7 +5952,7 @@ class Interface_UndefinedContent : public Standard_Transient {
 	:param ptype:
 	:type ptype: Interface_ParamType
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") SetEntity;
 		void SetEntity (const Standard_Integer num,const Interface_ParamType ptype,const opencascade::handle<Standard_Transient> & ent);
 
@@ -5962,7 +5962,7 @@ class Interface_UndefinedContent : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") SetEntity;
 		void SetEntity (const Standard_Integer num,const opencascade::handle<Standard_Transient> & ent);
 
@@ -5974,7 +5974,7 @@ class Interface_UndefinedContent : public Standard_Transient {
 	:param ptype:
 	:type ptype: Interface_ParamType
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetLiteral;
 		void SetLiteral (const Standard_Integer num,const Interface_ParamType ptype,const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -5999,9 +5999,9 @@ class Interface_CopyMap : public Interface_CopyControl {
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "* Binds a Starting Entity identified by its Number <num> in the Starting Model, to a Result of Transfer <res>
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: None") Bind;
 		void Bind (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Transient> & res);
 
@@ -6015,7 +6015,7 @@ class Interface_CopyMap : public Interface_CopyControl {
 		%feature("compactdefaultargs") Interface_CopyMap;
 		%feature("autodoc", "* Creates a CopyMap adapted to work from a Model
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") Interface_CopyMap;
 		 Interface_CopyMap (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -6029,9 +6029,9 @@ class Interface_CopyMap : public Interface_CopyControl {
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "* Search for the result of a Starting Object (i.e. an Entity, identified by its Number <num> in the Starting Model) Returns True if a Result is Bound (and fills <res>) Returns False if no result is Bound (and nullifies <res>)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: bool") Search;
 		Standard_Boolean Search (const opencascade::handle<Standard_Transient> & ent,opencascade::handle<Standard_Transient> & res);
 
@@ -6068,7 +6068,7 @@ class Interface_GraphContent : public Interface_EntityIterator {
 		%feature("compactdefaultargs") GetFromGraph;
 		%feature("autodoc", "* Gets all Entities designated by a Graph (once created), adds them to those already recorded
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:rtype: None") GetFromGraph;
 		void GetFromGraph (const Interface_Graph & agraph);
 
@@ -6076,7 +6076,7 @@ class Interface_GraphContent : public Interface_EntityIterator {
 		%feature("compactdefaultargs") GetFromGraph;
 		%feature("autodoc", "* Gets entities from a graph which have a specific Status value (one created), adds them to those already recorded
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:param stat:
 	:type stat: int
 	:rtype: None") GetFromGraph;
@@ -6092,7 +6092,7 @@ class Interface_GraphContent : public Interface_EntityIterator {
 		%feature("compactdefaultargs") Interface_GraphContent;
 		%feature("autodoc", "* Creates with all entities designated by a Graph
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:rtype: None") Interface_GraphContent;
 		 Interface_GraphContent (const Interface_Graph & agraph);
 
@@ -6100,7 +6100,7 @@ class Interface_GraphContent : public Interface_EntityIterator {
 		%feature("compactdefaultargs") Interface_GraphContent;
 		%feature("autodoc", "* Creates with entities having specific Status value in a Graph
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:param stat:
 	:type stat: int
 	:rtype: None") Interface_GraphContent;
@@ -6110,9 +6110,9 @@ class Interface_GraphContent : public Interface_EntityIterator {
 		%feature("compactdefaultargs") Interface_GraphContent;
 		%feature("autodoc", "* Creates an Iterator with Shared entities of an entity (equivalente to EntityIterator but with a Graph)
 	:param agraph:
-	:type agraph: Interface_Graph &
+	:type agraph: Interface_Graph
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") Interface_GraphContent;
 		 Interface_GraphContent (const Interface_Graph & agraph,const opencascade::handle<Standard_Transient> & ent);
 
@@ -6229,7 +6229,7 @@ class Interface_Static : public Interface_TypedValue {
 	:param name:
 	:type name: char *
 	:param other:
-	:type other: opencascade::handle<Interface_Static> &
+	:type other: Interface_Static
 	:rtype: None") Interface_Static;
 		 Interface_Static (const char * family,const char * name,const opencascade::handle<Interface_Static> & other);
 
@@ -6273,7 +6273,7 @@ class Interface_Static : public Interface_TypedValue {
 		%feature("compactdefaultargs") PrintStatic;
 		%feature("autodoc", "* Writes the properties of a parameter in the diagnostic file. These include: - Name - Family, - Wildcard (if it has one) - Current status (empty string if it was updated or if it is the original one) - Value
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintStatic;
 		void PrintStatic (const opencascade::handle<Message_Messenger> & S);
 
@@ -6325,7 +6325,7 @@ class Interface_Static : public Interface_TypedValue {
 		%feature("compactdefaultargs") SetWild;
 		%feature("autodoc", "* Sets a 'wild-card' static : its value will be considered if <self> is not properly set. (reset by set a null one)
 	:param wildcard:
-	:type wildcard: opencascade::handle<Interface_Static> &
+	:type wildcard: Interface_Static
 	:rtype: None") SetWild;
 		void SetWild (const opencascade::handle<Interface_Static> & wildcard);
 

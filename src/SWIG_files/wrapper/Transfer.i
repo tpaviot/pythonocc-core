@@ -146,7 +146,7 @@ class Transfer_ActorOfProcessForFinder : public Standard_Transient {
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "* Prerequesite for Transfer : the method Transfer is called on a starting object only if Recognize has returned True on it This allows to define a list of Actors, each one processing a definite kind of data TransferProcess calls Recognize on each one before calling Transfer. But even if Recognize has returned True, Transfer can reject by returning a Null Binder (afterwards rejection), the next actor is then invoked //! The provided default returns True, can be redefined
 	:param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:rtype: bool") Recognize;
 		virtual Standard_Boolean Recognize (const opencascade::handle<Transfer_Finder> & start);
 
@@ -162,7 +162,7 @@ class Transfer_ActorOfProcessForFinder : public Standard_Transient {
 		%feature("compactdefaultargs") SetNext;
 		%feature("autodoc", "* Defines a Next Actor : it can then be asked to work if <self> produces no result for a given type of Object. If Next is already set and is not 'Last', calls SetNext on it. If Next defined and 'Last', the new actor is added before it in the list
 	:param next:
-	:type next: opencascade::handle<Transfer_ActorOfProcessForFinder> &
+	:type next: Transfer_ActorOfProcessForFinder
 	:rtype: None") SetNext;
 		void SetNext (const opencascade::handle<Transfer_ActorOfProcessForFinder> & next);
 
@@ -175,9 +175,9 @@ class Transfer_ActorOfProcessForFinder : public Standard_Transient {
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "* Specific action of Transfer. The Result is stored in the returned Binder, or a Null Handle for 'No result' (Default defined as doing nothing; should be deffered) 'mutable' allows the Actor to record intermediate information, in addition to those of TransferProcess
 	:param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:param TP:
-	:type TP: opencascade::handle<Transfer_ProcessForFinder> &
+	:type TP: Transfer_ProcessForFinder
 	:rtype: opencascade::handle<Transfer_Binder>") Transferring;
 		virtual opencascade::handle<Transfer_Binder> Transferring (const opencascade::handle<Transfer_Finder> & start,const opencascade::handle<Transfer_ProcessForFinder> & TP);
 
@@ -185,7 +185,7 @@ class Transfer_ActorOfProcessForFinder : public Standard_Transient {
 		%feature("compactdefaultargs") TransientResult;
 		%feature("autodoc", "* Prepares and Returns a Binder for a Transient Result Returns a Null Handle if <res> is itself Null
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: opencascade::handle<Transfer_SimpleBinderOfTransient>") TransientResult;
 		opencascade::handle<Transfer_SimpleBinderOfTransient> TransientResult (const opencascade::handle<Standard_Transient> & res);
 
@@ -228,7 +228,7 @@ class Transfer_ActorOfProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "* Prerequesite for Transfer : the method Transfer is called on a starting object only if Recognize has returned True on it This allows to define a list of Actors, each one processing a definite kind of data TransferProcess calls Recognize on each one before calling Transfer. But even if Recognize has returned True, Transfer can reject by returning a Null Binder (afterwards rejection), the next actor is then invoked //! The provided default returns True, can be redefined
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: bool") Recognize;
 		virtual Standard_Boolean Recognize (const opencascade::handle<Standard_Transient> & start);
 
@@ -244,7 +244,7 @@ class Transfer_ActorOfProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SetNext;
 		%feature("autodoc", "* Defines a Next Actor : it can then be asked to work if <self> produces no result for a given type of Object. If Next is already set and is not 'Last', calls SetNext on it. If Next defined and 'Last', the new actor is added before it in the list
 	:param next:
-	:type next: opencascade::handle<Transfer_ActorOfProcessForTransient> &
+	:type next: Transfer_ActorOfProcessForTransient
 	:rtype: None") SetNext;
 		void SetNext (const opencascade::handle<Transfer_ActorOfProcessForTransient> & next);
 
@@ -257,9 +257,9 @@ class Transfer_ActorOfProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "* Specific action of Transfer. The Result is stored in the returned Binder, or a Null Handle for 'No result' (Default defined as doing nothing; should be deffered) 'mutable' allows the Actor to record intermediate information, in addition to those of TransferProcess
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param TP:
-	:type TP: opencascade::handle<Transfer_ProcessForTransient> &
+	:type TP: Transfer_ProcessForTransient
 	:rtype: opencascade::handle<Transfer_Binder>") Transferring;
 		virtual opencascade::handle<Transfer_Binder> Transferring (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Transfer_ProcessForTransient> & TP);
 
@@ -267,7 +267,7 @@ class Transfer_ActorOfProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") TransientResult;
 		%feature("autodoc", "* Prepares and Returns a Binder for a Transient Result Returns a Null Handle if <res> is itself Null
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: opencascade::handle<Transfer_SimpleBinderOfTransient>") TransientResult;
 		opencascade::handle<Transfer_SimpleBinderOfTransient> TransientResult (const opencascade::handle<Standard_Transient> & res);
 
@@ -302,7 +302,7 @@ class Transfer_Binder : public Standard_Transient {
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "* Adds a next result (at the end of the list) Remark : this information is not processed by Merge
 	:param next:
-	:type next: opencascade::handle<Transfer_Binder> &
+	:type next: Transfer_Binder
 	:rtype: None") AddResult;
 		void AddResult (const opencascade::handle<Transfer_Binder> & next);
 
@@ -344,7 +344,7 @@ class Transfer_Binder : public Standard_Transient {
 		%feature("compactdefaultargs") Merge;
 		%feature("autodoc", "* Merges basic data (Check, ExecStatus) from another Binder but keeps its result. Used when a binder is replaced by another one, this allows to keep messages
 	:param other:
-	:type other: opencascade::handle<Transfer_Binder> &
+	:type other: Transfer_Binder
 	:rtype: None") Merge;
 		void Merge (const opencascade::handle<Transfer_Binder> & other);
 
@@ -412,7 +412,7 @@ class Transfer_DataInfo {
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "* Returns the Type attached to an object Here, the Dynamic Type of a Transient. Null Type if unknown
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<Standard_Type>") Type;
 		static opencascade::handle<Standard_Type> Type (const opencascade::handle<Standard_Transient> & ent);
 
@@ -420,7 +420,7 @@ class Transfer_DataInfo {
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "* Returns Type Name (string) Allows to name type of non-handled objects
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: char *") TypeName;
 		static const char * TypeName (const opencascade::handle<Standard_Transient> & ent);
 
@@ -443,9 +443,9 @@ class Transfer_DispatchControl : public Interface_CopyControl {
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "* Binds a (Transient) Result to a (Transient) Starting Entity
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: None") Bind;
 		void Bind (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Transient> & res);
 
@@ -459,9 +459,9 @@ class Transfer_DispatchControl : public Interface_CopyControl {
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "* Searches for the Result bound to a Starting Entity If Found, returns True and fills <res> Else, returns False and nullifies <res>
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: bool") Search;
 		Standard_Boolean Search (const opencascade::handle<Standard_Transient> & ent,opencascade::handle<Standard_Transient> & res);
 
@@ -475,9 +475,9 @@ class Transfer_DispatchControl : public Interface_CopyControl {
 		%feature("compactdefaultargs") Transfer_DispatchControl;
 		%feature("autodoc", "* Creates the DispatchControl, ready for use
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: None") Transfer_DispatchControl;
 		 Transfer_DispatchControl (const opencascade::handle<Interface_InterfaceModel> & model,const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -507,7 +507,7 @@ class Transfer_FindHasher {
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "* Returns hash code for the given finder, in the range [1, theUpperBound]. Asks the finder its hash code, then transforms it to be in the required range @param theFinder the finder which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theFinder:
-	:type theFinder: opencascade::handle<Transfer_Finder> &
+	:type theFinder: Transfer_Finder
 	:param theUpperBound:
 	:type theUpperBound: int
 	:rtype: int") HashCode;
@@ -517,9 +517,9 @@ class Transfer_FindHasher {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns True if two keys are the same. The test does not work on the Finders themselves but by calling their methods Equates
 	:param K1:
-	:type K1: opencascade::handle<Transfer_Finder> &
+	:type K1: Transfer_Finder
 	:param K2:
-	:type K2: opencascade::handle<Transfer_Finder> &
+	:type K2: Transfer_Finder
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const opencascade::handle<Transfer_Finder> & K1,const opencascade::handle<Transfer_Finder> & K2);
 
@@ -564,7 +564,7 @@ class Transfer_Finder : public Standard_Transient {
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "* Specific testof equallity : to be defined by each sub-class, must be False if Finders have not the same true Type, else their contents must be compared
 	:param other:
-	:type other: opencascade::handle<Transfer_Finder> &
+	:type other: Transfer_Finder
 	:rtype: bool") Equates;
 		virtual Standard_Boolean Equates (const opencascade::handle<Transfer_Finder> & other);
 
@@ -574,9 +574,9 @@ class Transfer_Finder : public Standard_Transient {
 	:param name:
 	:type name: char *
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: bool") GetAttribute;
 		Standard_Boolean GetAttribute (const char * name,const opencascade::handle<Standard_Type> & type,opencascade::handle<Standard_Transient> & val);
 
@@ -584,7 +584,7 @@ class Transfer_Finder : public Standard_Transient {
 		%feature("compactdefaultargs") GetAttributes;
 		%feature("autodoc", "* Gets the list of attributes from <other>, by copying it By default, considers all the attributes from <other> If <fromname> is given, considers only the attributes with name beginning by <fromname> //! For each attribute, if <copied> is True (D), its value is also copied if it is a basic type (Integer,Real,String), else it remains shared between <other> and <self> //! These new attributes are added to the existing ones in <self>, in case of same name, they replace the existing ones
 	:param other:
-	:type other: opencascade::handle<Transfer_Finder> &
+	:type other: Transfer_Finder
 	:param fromname: default value is ""
 	:type fromname: char *
 	:param copied: default value is Standard_True
@@ -604,7 +604,7 @@ class Transfer_Finder : public Standard_Transient {
 	:param name:
 	:type name: char *
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") GetIntegerAttribute;
 		Standard_Boolean GetIntegerAttribute (const char * name,Standard_Integer &OutValue);
 
@@ -614,7 +614,7 @@ class Transfer_Finder : public Standard_Transient {
 	:param name:
 	:type name: char *
 	:param val:
-	:type val: float &
+	:type val: float
 	:rtype: bool") GetRealAttribute;
 		Standard_Boolean GetRealAttribute (const char * name,Standard_Real &OutValue);
 
@@ -624,7 +624,7 @@ class Transfer_Finder : public Standard_Transient {
 	:param name:
 	:type name: char *
 	:param val:
-	:type val: char * &
+	:type val: char *
 	:rtype: bool") GetStringAttribute;
 		Standard_Boolean GetStringAttribute (const char * name,const char * & val);
 
@@ -656,7 +656,7 @@ class Transfer_Finder : public Standard_Transient {
 		%feature("compactdefaultargs") SameAttributes;
 		%feature("autodoc", "* Gets the list of attributes from <other>, as such, i.e. not copied : attributes are shared, any attribute edited, added, or removed in <other> is also in <self> and vice versa The former list of attributes of <self> is dropped
 	:param other:
-	:type other: opencascade::handle<Transfer_Finder> &
+	:type other: Transfer_Finder
 	:rtype: None") SameAttributes;
 		void SameAttributes (const opencascade::handle<Transfer_Finder> & other);
 
@@ -666,7 +666,7 @@ class Transfer_Finder : public Standard_Transient {
 	:param name:
 	:type name: char *
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: None") SetAttribute;
 		void SetAttribute (const char * name,const opencascade::handle<Standard_Transient> & val);
 
@@ -747,7 +747,7 @@ class Transfer_MapContainer : public Standard_Transient {
 		%feature("compactdefaultargs") SetMapObjects;
 		%feature("autodoc", "* Set map already translated geometry objects.
 	:param theMapObjects:
-	:type theMapObjects: TColStd_DataMapOfTransientTransient &
+	:type theMapObjects: TColStd_DataMapOfTransientTransient
 	:rtype: None") SetMapObjects;
 		void SetMapObjects (TColStd_DataMapOfTransientTransient & theMapObjects);
 
@@ -792,7 +792,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") AddError;
 		%feature("autodoc", "* (other name of AddFail, maintained for compatibility)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param mess:
 	:type mess: char *
 	:param orig: default value is ""
@@ -804,7 +804,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "* Adds an Error message to a starting entity (to the check of its Binder of category 0, as a Fail)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param mess:
 	:type mess: char *
 	:param orig: default value is ""
@@ -816,9 +816,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "* Adds an Error Message to a starting entity from the definition of a Msg (Original+Value)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") AddFail;
 		void AddFail (const opencascade::handle<Standard_Transient> & start,const Message_Msg & amsg);
 
@@ -826,9 +826,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") AddMultiple;
 		%feature("autodoc", "* Adds an item to a list of results bound to a starting object. Considers a category number, by default 0, for all results
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: None") AddMultiple;
 		void AddMultiple (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Standard_Transient> & res);
 
@@ -836,7 +836,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "* Adds a Warning message to a starting entity (to the check of its Binder of category 0)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param mess:
 	:type mess: char *
 	:param orig: default value is ""
@@ -848,9 +848,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "* Adds a Warning Message to a starting entity from the definition of a Msg (Original+Value)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") AddWarning;
 		void AddWarning (const opencascade::handle<Standard_Transient> & start,const Message_Msg & amsg);
 
@@ -858,9 +858,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "* Creates a Link a starting Object with a Binder. This Binder can either bring a Result (effective Binding) or none (it can be set later : pre-binding). Considers a category number, by default 0
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:rtype: None") Bind;
 		void Bind (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Transfer_Binder> & binder);
 
@@ -868,7 +868,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") BindMultiple;
 		%feature("autodoc", "* Prepares an object <start> to be bound with several results. If no Binder is yet attached to <obj>, a MultipleBinder is created, empty. If a Binder is already set, it must accept Multiple Binding. Considers a category number, by default 0
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: None") BindMultiple;
 		void BindMultiple (const opencascade::handle<Standard_Transient> & start);
 
@@ -876,9 +876,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") BindTransient;
 		%feature("autodoc", "* Binds a starting object with a Transient Result. Uses a SimpleBinderOfTransient to work. If there is already one but with no Result set, sets its Result. Considers a category number, by default 0
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: None") BindTransient;
 		void BindTransient (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Standard_Transient> & res);
 
@@ -886,7 +886,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "* Returns the Check attached to a starting entity. If <start> is unknown, returns an empty Check Adds a case name to a starting entity Adds a case value to a starting entity Returns the complete case list for an entity. Null Handle if empty In the list of mapped items (between 1 and NbMapped), searches for the first item which follows <num0>(not included) and which has an attribute named <name> Attributes are brought by Binders Hence, allows such an iteration //! for (num = TP->NextItemWithAttribute(name,0); num > 0; num = TP->NextItemWithAttribute(name,num) { .. process mapped item <num> } Returns the type of an Attribute attached to binders If this name gives no Attribute, returns ParamVoid If this name gives several different types, returns ParamMisc Else, returns the effective type (ParamInteger, ParamReal, ParamIdent, or ParamText) Returns the list of recorded Attribute Names, as a Dictionary of Integer : each value gives the count of items which bring this attribute name By default, considers all the attribute names If <rootname> is given, considers only the attribute names which begin by <rootname>
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: opencascade::handle<Interface_Check>") Check;
 		opencascade::handle<Interface_Check> Check (const opencascade::handle<Standard_Transient> & start);
 
@@ -902,7 +902,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") CheckListOne;
 		%feature("autodoc", "* Returns a CheckList for one starting object <level> interpreted as by ResultOne If <erronly> is True, checks with Warnings only are ignored
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param level:
 	:type level: int
 	:param erronly:
@@ -914,7 +914,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") CheckNum;
 		%feature("autodoc", "* Computes a number to be associated to a starting object in a check or a check-list By default, returns 0; can be redefined
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: int") CheckNum;
 		virtual Standard_Integer CheckNum (const opencascade::handle<Standard_Transient> & start);
 
@@ -942,7 +942,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "* Returns the Binder which is linked with a starting Object It can either bring a Result (Transfer done) or none (for a pre-binding). If no Binder is linked with <start>, returns a Null Handle Considers a category number, by default 0
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: opencascade::handle<Transfer_Binder>") Find;
 		opencascade::handle<Transfer_Binder> Find (const opencascade::handle<Standard_Transient> & start);
 
@@ -950,7 +950,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") FindElseBind;
 		%feature("autodoc", "* Returns a Binder for a starting entity, as follows : Tries to Find the already bound one If none found, creates a VoidBinder and Binds it
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: opencascade::handle<Transfer_Binder>") FindElseBind;
 		opencascade::handle<Transfer_Binder> FindElseBind (const opencascade::handle<Standard_Transient> & start);
 
@@ -958,7 +958,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") FindTransient;
 		%feature("autodoc", "* Returns the Result of the Transfer of an object <start> as a Transient Result. Returns a Null Handle if there is no Transient Result Considers a category number, by default 0 Warning : Supposes that Binding is done with a SimpleBinderOfTransient
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: opencascade::handle<Standard_Transient>") FindTransient;
 		const opencascade::handle<Standard_Transient> & FindTransient (const opencascade::handle<Standard_Transient> & start);
 
@@ -966,11 +966,11 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") FindTypedTransient;
 		%feature("autodoc", "* Searches for a transient result attached to a starting object, according to its type, by criterium IsKind(atype) //! In case of multiple result, explores the list and gives in <val> the first transient result IsKind(atype) Returns True and fills <val> if found Else, returns False (<val> is not touched, not even nullified) //! This syntactic form avoids to do DownCast : if a result is found with the good type, it is loaded in <val> and can be immediately used, well initialised
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: bool") FindTypedTransient;
 		Standard_Boolean FindTypedTransient (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Standard_Type> & atype,opencascade::handle<Standard_Transient> & val);
 
@@ -984,11 +984,11 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") GetTypedTransient;
 		%feature("autodoc", "* Searches for a transient result recorded in a Binder, whatever this Binder is recorded or not in <self> //! This is strictly equivalent to the class method GetTypedResult from class SimpleBinderOfTransient, but is just lighter to call //! Apart from this, works as FindTypedTransient
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: bool") GetTypedTransient;
 		Standard_Boolean GetTypedTransient (const opencascade::handle<Transfer_Binder> & binder,const opencascade::handle<Standard_Type> & atype,opencascade::handle<Standard_Transient> & val);
 
@@ -996,7 +996,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") IsAlreadyUsed;
 		%feature("autodoc", "* Returns True if the result of the transfer of an object is already used in other ones. If it is, Rebind cannot change it. Considers a category number, by default 0
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: bool") IsAlreadyUsed;
 		Standard_Boolean IsAlreadyUsed (const opencascade::handle<Standard_Transient> & start);
 
@@ -1004,7 +1004,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") IsBound;
 		%feature("autodoc", "* Returns True if a Result (whatever its form) is Bound with a starting Object. I.e., if a Binder with a Result set, is linked with it Considers a category number, by default 0
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: bool") IsBound;
 		Standard_Boolean IsBound (const opencascade::handle<Standard_Transient> & start);
 
@@ -1012,7 +1012,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") IsCheckListEmpty;
 		%feature("autodoc", "* Returns True if no check message is attached to a starting object. <level> interpreted as by ResultOne If <erronly> is True, checks with Warnings only are ignored
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param level:
 	:type level: int
 	:param erronly:
@@ -1032,7 +1032,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") MapIndex;
 		%feature("autodoc", "* Returns the Index value bound to a Starting Object, 0 if none
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: int") MapIndex;
 		Standard_Integer MapIndex (const opencascade::handle<Standard_Transient> & start);
 
@@ -1055,7 +1055,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		/****************** Mend ******************/
 		%feature("compactdefaultargs") Mend;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param pref: default value is ""
 	:type pref: char *
 	:rtype: None") Mend;
@@ -1089,9 +1089,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") PrintTrace;
 		%feature("autodoc", "* Prints a short information on a starting object. By default prints its Dynamic Type. Can be redefined
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: void") PrintTrace;
 		virtual void PrintTrace (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Message_Messenger> & S);
 
@@ -1099,9 +1099,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Rebind;
 		%feature("autodoc", "* Changes the Binder linked with a starting Object for its unitary transfer. This it can be useful when the exact form of the result is known once the transfer is widely engaged. This can be done only on first transfer. Considers a category number, by default 0
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:rtype: None") Rebind;
 		void Rebind (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Transfer_Binder> & binder);
 
@@ -1109,7 +1109,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "* Tells if <start> has been recognized as good candidate for Transfer. i.e. queries the Actor and its Nexts
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: bool") Recognize;
 		Standard_Boolean Recognize (const opencascade::handle<Standard_Transient> & start);
 
@@ -1117,7 +1117,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveResult;
 		%feature("autodoc", "* Removes Results attached to (== Unbinds) a given object and, according <level> : <level> = 0 : only it <level> = 1 : it plus its immediately owned sub-results(scope) <level> = 2 : it plus all its owned sub-results(scope)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param level:
 	:type level: int
 	:param compute: default value is Standard_True
@@ -1143,7 +1143,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") ResultOne;
 		%feature("autodoc", "* Returns, as an Iterator, the log of transfer for one object <level> = 0 : this object only and if <start> is a scope owner (else, <level> is ignored) : <level> = 1 : object plus its immediate scoped ones <level> = 2 : object plus all its scoped ones
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param level:
 	:type level: int
 	:param withstart: default value is Standard_False
@@ -1163,7 +1163,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") RootIndex;
 		%feature("autodoc", "* Returns the index in the list of roots for a starting item, or 0 if it is not recorded as a root
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: int") RootIndex;
 		Standard_Integer RootIndex (const opencascade::handle<Standard_Transient> & start);
 
@@ -1187,9 +1187,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SendFail;
 		%feature("autodoc", "* New name for AddFail (Msg)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") SendFail;
 		void SendFail (const opencascade::handle<Standard_Transient> & start,const Message_Msg & amsg);
 
@@ -1197,9 +1197,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SendMsg;
 		%feature("autodoc", "* Adds an information message Trace is filled if trace level is at least 3
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") SendMsg;
 		void SendMsg (const opencascade::handle<Standard_Transient> & start,const Message_Msg & amsg);
 
@@ -1207,9 +1207,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SendWarning;
 		%feature("autodoc", "* New name for AddWarning (Msg)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") SendWarning;
 		void SendWarning (const opencascade::handle<Standard_Transient> & start,const Message_Msg & amsg);
 
@@ -1217,7 +1217,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SetActor;
 		%feature("autodoc", "* Defines an Actor, which is used for automatic Transfer If already defined, the new Actor is cumulated (see SetNext from Actor)
 	:param actor:
-	:type actor: opencascade::handle<Transfer_ActorOfProcessForTransient> &
+	:type actor: Transfer_ActorOfProcessForTransient
 	:rtype: None") SetActor;
 		void SetActor (const opencascade::handle<Transfer_ActorOfProcessForTransient> & actor);
 
@@ -1225,7 +1225,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SetMessenger;
 		%feature("autodoc", "* Sets Messenger used for outputting messages.
 	:param messenger:
-	:type messenger: opencascade::handle<Message_Messenger> &
+	:type messenger: Message_Messenger
 	:rtype: None") SetMessenger;
 		void SetMessenger (const opencascade::handle<Message_Messenger> & messenger);
 
@@ -1233,7 +1233,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SetProgress;
 		%feature("autodoc", "* Sets Progress indicator
 	:param theProgress:
-	:type theProgress: opencascade::handle<Message_ProgressIndicator> &
+	:type theProgress: Message_ProgressIndicator
 	:rtype: None") SetProgress;
 		void SetProgress (const opencascade::handle<Message_ProgressIndicator> & theProgress);
 
@@ -1241,7 +1241,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SetRoot;
 		%feature("autodoc", "* Declares <obj> (and its Result) as Root. This status will be later exploited by RootResult, see below (Result can be produced at any time)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: None") SetRoot;
 		void SetRoot (const opencascade::handle<Standard_Transient> & start);
 
@@ -1265,9 +1265,9 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") StartTrace;
 		%feature("autodoc", "* Method called when trace is asked Calls PrintTrace to display information relevant for starting objects (which can be redefined) <level> is Nesting Level of Transfer (0 = root) <mode> controls the way the trace is done : 0 neutral, 1 for Error, 2 for Warning message, 3 for new Root
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param level:
 	:type level: int
 	:param mode:
@@ -1285,7 +1285,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "* Same as Transferring but does not return the Binder. Simply returns True in case of success (for user call)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: bool") Transfer;
 		Standard_Boolean Transfer (const opencascade::handle<Standard_Transient> & start);
 
@@ -1301,7 +1301,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Transfer_ProcessForTransient;
 		%feature("autodoc", "* Sets TransferProcess at initial state. Gives an Initial size (indicative) for the Map when known (default is 10000). Sets a specified printer.
 	:param printer:
-	:type printer: opencascade::handle<Message_Messenger> &
+	:type printer: Message_Messenger
 	:param nb: default value is 10000
 	:type nb: int
 	:rtype: None") Transfer_ProcessForTransient;
@@ -1311,7 +1311,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "* Performs the Transfer of a Starting Object, by calling the method TransferProduct (see below). Mapping and Roots are managed : nothing is done if a Result is already Bound, an exception is raised in case of error.
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: opencascade::handle<Transfer_Binder>") Transferring;
 		opencascade::handle<Transfer_Binder> Transferring (const opencascade::handle<Standard_Transient> & start);
 
@@ -1319,7 +1319,7 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Unbind;
 		%feature("autodoc", "* Removes the Binder linked with a starting object If this Binder brings a non-empty Check, it is replaced by a VoidBinder. Also removes from the list of Roots as required. Returns True if done, False if <start> was not bound Considers a category number, by default 0
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: bool") Unbind;
 		Standard_Boolean Unbind (const opencascade::handle<Standard_Transient> & start);
 
@@ -1384,9 +1384,9 @@ class Transfer_ResultFromModel : public Standard_Transient {
 		%feature("compactdefaultargs") Fill;
 		%feature("autodoc", "* Fills from a TransientProcess, with the result attached to a starting entity. Considers its Model if it is set. This action produces a structured set of ResultFromTransient, considering scopes, starting by that of <ent>. If <ent> has no recorded result, it remains empty Returns True if a result is recorded, False else
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") Fill;
 		Standard_Boolean Fill (const opencascade::handle<Transfer_TransientProcess> & TP,const opencascade::handle<Standard_Transient> & ent);
 
@@ -1394,7 +1394,7 @@ class Transfer_ResultFromModel : public Standard_Transient {
 		%feature("compactdefaultargs") FillBack;
 		%feature("autodoc", "* Fills back a TransientProcess from the structured set of binders. Also sets the Model.
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: None") FillBack;
 		void FillBack (const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -1432,7 +1432,7 @@ class Transfer_ResultFromModel : public Standard_Transient {
 		%feature("compactdefaultargs") ResultFromKey;
 		%feature("autodoc", "* Searches for a key (starting entity) and returns its result Returns a null handle if not found
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: opencascade::handle<Transfer_ResultFromTransient>") ResultFromKey;
 		opencascade::handle<Transfer_ResultFromTransient> ResultFromKey (const opencascade::handle<Standard_Transient> & start);
 
@@ -1456,7 +1456,7 @@ class Transfer_ResultFromModel : public Standard_Transient {
 		%feature("compactdefaultargs") SetMainResult;
 		%feature("autodoc", "* Sets a new value for the main recorded ResultFromTransient
 	:param amain:
-	:type amain: opencascade::handle<Transfer_ResultFromTransient> &
+	:type amain: Transfer_ResultFromTransient
 	:rtype: None") SetMainResult;
 		void SetMainResult (const opencascade::handle<Transfer_ResultFromTransient> & amain);
 
@@ -1464,7 +1464,7 @@ class Transfer_ResultFromModel : public Standard_Transient {
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "* Sets starting Model
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") SetModel;
 		void SetModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1511,7 +1511,7 @@ class Transfer_ResultFromTransient : public Standard_Transient {
 		%feature("compactdefaultargs") AddSubResult;
 		%feature("autodoc", "* Adds a sub-result
 	:param sub:
-	:type sub: opencascade::handle<Transfer_ResultFromTransient> &
+	:type sub: Transfer_ResultFromTransient
 	:rtype: None") AddSubResult;
 		void AddSubResult (const opencascade::handle<Transfer_ResultFromTransient> & sub);
 
@@ -1543,7 +1543,7 @@ class Transfer_ResultFromTransient : public Standard_Transient {
 		%feature("compactdefaultargs") Fill;
 		%feature("autodoc", "* Fills from a TransientProcess, with the starting entity which must have been set before. It works with scopes, calls Fill on each of its sub-results
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: None") Fill;
 		void Fill (const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -1551,7 +1551,7 @@ class Transfer_ResultFromTransient : public Standard_Transient {
 		%feature("compactdefaultargs") FillBack;
 		%feature("autodoc", "* Fills back a TransientProcess with definition of a ResultFromTransient, respectfully to its structuration in scopes
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: None") FillBack;
 		void FillBack (const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -1559,7 +1559,7 @@ class Transfer_ResultFromTransient : public Standard_Transient {
 		%feature("compactdefaultargs") FillMap;
 		%feature("autodoc", "* This method is used by ResultFromModel to collate the list of ResultFromTransient, avoiding duplications with a map Remark : <self> is already in the map and has not to be bound
 	:param map:
-	:type map: TColStd_IndexedMapOfTransient &
+	:type map: TColStd_IndexedMapOfTransient
 	:rtype: None") FillMap;
 		void FillMap (TColStd_IndexedMapOfTransient & map);
 
@@ -1579,7 +1579,7 @@ class Transfer_ResultFromTransient : public Standard_Transient {
 		%feature("compactdefaultargs") ResultFromKey;
 		%feature("autodoc", "* Returns the ResultFromTransient attached to a given starting entity (the key). Returns a null handle if not found
 	:param key:
-	:type key: opencascade::handle<Standard_Transient> &
+	:type key: Standard_Transient
 	:rtype: opencascade::handle<Transfer_ResultFromTransient>") ResultFromKey;
 		opencascade::handle<Transfer_ResultFromTransient> ResultFromKey (const opencascade::handle<Standard_Transient> & key);
 
@@ -1587,7 +1587,7 @@ class Transfer_ResultFromTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SetBinder;
 		%feature("autodoc", "* Sets Binder (for result plus individual check)
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:rtype: None") SetBinder;
 		void SetBinder (const opencascade::handle<Transfer_Binder> & binder);
 
@@ -1595,7 +1595,7 @@ class Transfer_ResultFromTransient : public Standard_Transient {
 		%feature("compactdefaultargs") SetStart;
 		%feature("autodoc", "* Sets starting entity
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: None") SetStart;
 		void SetStart (const opencascade::handle<Standard_Transient> & start);
 
@@ -1646,9 +1646,9 @@ class Transfer_TransferDispatch : public Interface_CopyTool {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* Copies an Entity by calling the method Transferring from the TransferProcess. If this called produces a Null Binder, then the standard, inherited Copy is called
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param mapped:
 	:type mapped: bool
 	:param errstat:
@@ -1660,9 +1660,9 @@ class Transfer_TransferDispatch : public Interface_CopyTool {
 		%feature("compactdefaultargs") Transfer_TransferDispatch;
 		%feature("autodoc", "* Creates a TransferDispatch from a Model. Works with a General Service Library, given as an Argument A TransferDispatch is created as a CopyTool in which the Control is set to TransientProcess
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param lib:
-	:type lib: Interface_GeneralLib &
+	:type lib: Interface_GeneralLib
 	:rtype: None") Transfer_TransferDispatch;
 		 Transfer_TransferDispatch (const opencascade::handle<Interface_InterfaceModel> & amodel,const Interface_GeneralLib & lib);
 
@@ -1670,9 +1670,9 @@ class Transfer_TransferDispatch : public Interface_CopyTool {
 		%feature("compactdefaultargs") Transfer_TransferDispatch;
 		%feature("autodoc", "* Same as above, but Library is defined through a Protocol
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") Transfer_TransferDispatch;
 		 Transfer_TransferDispatch (const opencascade::handle<Interface_InterfaceModel> & amodel,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -1680,7 +1680,7 @@ class Transfer_TransferDispatch : public Interface_CopyTool {
 		%feature("compactdefaultargs") Transfer_TransferDispatch;
 		%feature("autodoc", "* Same as above, but works with the Active Protocol
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") Transfer_TransferDispatch;
 		 Transfer_TransferDispatch (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -1709,7 +1709,7 @@ class Transfer_TransferInput {
 		%feature("compactdefaultargs") Entities;
 		%feature("autodoc", "* Takes the transient items stored in a TransferIterator
 	:param list:
-	:type list: Transfer_TransferIterator &
+	:type list: Transfer_TransferIterator
 	:rtype: Interface_EntityIterator") Entities;
 		Interface_EntityIterator Entities (Transfer_TransferIterator & list);
 
@@ -1717,9 +1717,9 @@ class Transfer_TransferInput {
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "* Fills an InterfaceModel with the Complete Result of a Transfer stored in a TransientProcess (Starting Objects are Transient) The complete result is exactly added to the model
 	:param proc:
-	:type proc: opencascade::handle<Transfer_TransientProcess> &
+	:type proc: Transfer_TransientProcess
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") FillModel;
 		void FillModel (const opencascade::handle<Transfer_TransientProcess> & proc,const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -1727,11 +1727,11 @@ class Transfer_TransferInput {
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "* Fills an InterfaceModel with results of the Transfer recorded in a TransientProcess (Starting Objects are Transient) : Root Result if <roots> is True (Default), Complete Result else The entities added to the model are determined from the result by by adding the referenced entities
 	:param proc:
-	:type proc: opencascade::handle<Transfer_TransientProcess> &
+	:type proc: Transfer_TransientProcess
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param proto:
-	:type proto: opencascade::handle<Interface_Protocol> &
+	:type proto: Interface_Protocol
 	:param roots: default value is Standard_True
 	:type roots: bool
 	:rtype: None") FillModel;
@@ -1741,9 +1741,9 @@ class Transfer_TransferInput {
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "* Fills an InterfaceModel with the Complete Result of a Transfer stored in a TransientProcess (Starting Objects are Transient) The complete result is exactly added to the model
 	:param proc:
-	:type proc: opencascade::handle<Transfer_FinderProcess> &
+	:type proc: Transfer_FinderProcess
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") FillModel;
 		void FillModel (const opencascade::handle<Transfer_FinderProcess> & proc,const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -1751,11 +1751,11 @@ class Transfer_TransferInput {
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "* Fills an InterfaceModel with results of the Transfer recorded in a TransientProcess (Starting Objects are Transient) : Root Result if <roots> is True (Default), Complete Result else The entities added to the model are determined from the result by by adding the referenced entities
 	:param proc:
-	:type proc: opencascade::handle<Transfer_FinderProcess> &
+	:type proc: Transfer_FinderProcess
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param proto:
-	:type proto: opencascade::handle<Interface_Protocol> &
+	:type proto: Interface_Protocol
 	:param roots: default value is Standard_True
 	:type roots: bool
 	:rtype: None") FillModel;
@@ -1786,7 +1786,7 @@ class Transfer_TransferIterator {
 		%feature("compactdefaultargs") AddItem;
 		%feature("autodoc", "* Adds a Binder to the iteration list (construction)
 	:param atr:
-	:type atr: opencascade::handle<Transfer_Binder> &
+	:type atr: Transfer_Binder
 	:rtype: None") AddItem;
 		void AddItem (const opencascade::handle<Transfer_Binder> & atr);
 
@@ -1854,7 +1854,7 @@ class Transfer_TransferIterator {
 		%feature("compactdefaultargs") SelectBinder;
 		%feature("autodoc", "* Selects Items on the Type of Binder : keep only Binders which are of a given Type (if keep is True) or reject only them (if keep is False)
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:param keep:
 	:type keep: bool
 	:rtype: None") SelectBinder;
@@ -1874,7 +1874,7 @@ class Transfer_TransferIterator {
 		%feature("compactdefaultargs") SelectResult;
 		%feature("autodoc", "* Selects Items on the Type of Result. Considers only Unique Results. Considers Dynamic Type for Transient Result, Static Type (the one given to define the Binder) else. //! Results which are of a given Type (if keep is True) or reject only them (if keep is False)
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:param keep:
 	:type keep: bool
 	:rtype: None") SelectResult;
@@ -1953,7 +1953,7 @@ class Transfer_TransferOutput {
 		%feature("compactdefaultargs") ModelForStatus;
 		%feature("autodoc", "* Fills a Model with the list determined by ListForStatus This model starts from scratch (made by NewEmptyModel from the current Model), then is filled by AddWithRefs //! Useful to get separately from a transfer, the entities which have caused problem, in order to furtherly analyse them (with normal = False), or the 'good' entities, to obtain a data set 'which works well' (with normal = True)
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:param normal:
 	:type normal: bool
 	:param roots: default value is Standard_True
@@ -1965,7 +1965,7 @@ class Transfer_TransferOutput {
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "* Transfer checks that all taken Entities come from the same Model, then calls Transfer from TransientProcess
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:rtype: None") Transfer;
 		void Transfer (const opencascade::handle<Standard_Transient> & obj);
 
@@ -1973,7 +1973,7 @@ class Transfer_TransferOutput {
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "* Runs transfer on the roots of the Interface Model The Roots are computed with a ShareFlags created from a Protocol given as Argument
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") TransferRoots;
 		void TransferRoots (const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -1981,7 +1981,7 @@ class Transfer_TransferOutput {
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "* Runs transfer on the roots defined by a Graph of dependences (which detains also a Model and its Entities) Roots are computed with a ShareFlags created from the Graph
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:rtype: None") TransferRoots;
 		void TransferRoots (const Interface_Graph & G);
 
@@ -1995,9 +1995,9 @@ class Transfer_TransferOutput {
 		%feature("compactdefaultargs") Transfer_TransferOutput;
 		%feature("autodoc", "* Creates a TransferOutput ready to use, with a TransientProcess
 	:param actor:
-	:type actor: opencascade::handle<Transfer_ActorOfTransientProcess> &
+	:type actor: Transfer_ActorOfTransientProcess
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") Transfer_TransferOutput;
 		 Transfer_TransferOutput (const opencascade::handle<Transfer_ActorOfTransientProcess> & actor,const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2005,9 +2005,9 @@ class Transfer_TransferOutput {
 		%feature("compactdefaultargs") Transfer_TransferOutput;
 		%feature("autodoc", "* Creates a TransferOutput from an already existing TransientProcess, and a Model Returns (by Reference, hence can be changed) the Mode for Scope Management. False (D) means Scope is ignored. True means that each individual Transfer (direct or through TransferRoots) is regarded as one Scope
 	:param proc:
-	:type proc: opencascade::handle<Transfer_TransientProcess> &
+	:type proc: Transfer_TransientProcess
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") Transfer_TransferOutput;
 		 Transfer_TransferOutput (const opencascade::handle<Transfer_TransientProcess> & proc,const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2048,18 +2048,18 @@ class Transfer_ActorOfFinderProcess : public Transfer_ActorOfProcessForFinder {
 		/****************** Transfer ******************/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:param TP:
-	:type TP: opencascade::handle<Transfer_FinderProcess> &
+	:type TP: Transfer_FinderProcess
 	:rtype: opencascade::handle<Transfer_Binder>") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer (const opencascade::handle<Transfer_Finder> & start,const opencascade::handle<Transfer_FinderProcess> & TP);
 
 		/****************** TransferTransient ******************/
 		%feature("compactdefaultargs") TransferTransient;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param TP:
-	:type TP: opencascade::handle<Transfer_FinderProcess> &
+	:type TP: Transfer_FinderProcess
 	:rtype: opencascade::handle<Standard_Transient>") TransferTransient;
 		virtual opencascade::handle<Standard_Transient> TransferTransient (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Transfer_FinderProcess> & TP);
 
@@ -2071,9 +2071,9 @@ class Transfer_ActorOfFinderProcess : public Transfer_ActorOfProcessForFinder {
 		/****************** Transferring ******************/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:param TP:
-	:type TP: opencascade::handle<Transfer_ProcessForFinder> &
+	:type TP: Transfer_ProcessForFinder
 	:rtype: opencascade::handle<Transfer_Binder>") Transferring;
 		virtual opencascade::handle<Transfer_Binder> Transferring (const opencascade::handle<Transfer_Finder> & start,const opencascade::handle<Transfer_ProcessForFinder> & TP);
 
@@ -2097,18 +2097,18 @@ class Transfer_ActorOfTransientProcess : public Transfer_ActorOfProcessForTransi
 		/****************** Transfer ******************/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: opencascade::handle<Transfer_Binder>") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Transfer_TransientProcess> & TP);
 
 		/****************** TransferTransient ******************/
 		%feature("compactdefaultargs") TransferTransient;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: opencascade::handle<Standard_Transient>") TransferTransient;
 		virtual opencascade::handle<Standard_Transient> TransferTransient (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -2120,9 +2120,9 @@ class Transfer_ActorOfTransientProcess : public Transfer_ActorOfProcessForTransi
 		/****************** Transferring ******************/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param TP:
-	:type TP: opencascade::handle<Transfer_ProcessForTransient> &
+	:type TP: Transfer_ProcessForTransient
 	:rtype: opencascade::handle<Transfer_Binder>") Transferring;
 		virtual opencascade::handle<Transfer_Binder> Transferring (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Transfer_ProcessForTransient> & TP);
 
@@ -2165,7 +2165,7 @@ class Transfer_FinderProcess : public Transfer_ProcessForFinder {
 	:param mode:
 	:type mode: int
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintStats;
 		void PrintStats (const Standard_Integer mode,const opencascade::handle<Message_Messenger> & S);
 
@@ -2173,9 +2173,9 @@ class Transfer_FinderProcess : public Transfer_ProcessForFinder {
 		%feature("compactdefaultargs") PrintTrace;
 		%feature("autodoc", "* Specific printing to trace a Finder (by its method ValueType)
 	:param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: void") PrintTrace;
 		virtual void PrintTrace (const opencascade::handle<Transfer_Finder> & start,const opencascade::handle<Message_Messenger> & S);
 
@@ -2183,7 +2183,7 @@ class Transfer_FinderProcess : public Transfer_ProcessForFinder {
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "* Sets an InterfaceModel, which can be used during transfer for instance if a context must be managed, it is in the Model
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") SetModel;
 		void SetModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2199,7 +2199,7 @@ class Transfer_FinderProcess : public Transfer_ProcessForFinder {
 		%feature("compactdefaultargs") TransientMapper;
 		%feature("autodoc", "* Returns a TransientMapper for a given Transient Object Either <obj> is already mapped, then its Mapper is returned Or it is not, then a new one is created then returned, BUT it is not mapped here (use Bind or FindElseBind to do this)
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:rtype: opencascade::handle<Transfer_TransientMapper>") TransientMapper;
 		opencascade::handle<Transfer_TransientMapper> TransientMapper (const opencascade::handle<Standard_Transient> & obj);
 
@@ -2224,7 +2224,7 @@ class Transfer_IteratorOfProcessForFinder : public Transfer_TransferIterator {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Binder to the iteration list (construction) with no corresponding Starting Object (note that Result is brought by Binder)
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Transfer_Binder> & binder);
 
@@ -2232,9 +2232,9 @@ class Transfer_IteratorOfProcessForFinder : public Transfer_TransferIterator {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Binder to the iteration list, associated with its corresponding Starting Object 'start' Starting Object is ignored if not required at Creation time
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Transfer_Binder> & binder,const opencascade::handle<Transfer_Finder> & start);
 
@@ -2242,7 +2242,7 @@ class Transfer_IteratorOfProcessForFinder : public Transfer_TransferIterator {
 		%feature("compactdefaultargs") Filter;
 		%feature("autodoc", "* After having added all items, keeps or rejects items which are attached to starting data given by <only> <keep> = True (D) : keeps. <keep> = False : rejects Does nothing if <withstarts> was False
 	:param list:
-	:type list: opencascade::handle<Transfer_HSequenceOfFinder> &
+	:type list: Transfer_HSequenceOfFinder
 	:param keep: default value is Standard_True
 	:type keep: bool
 	:rtype: None") Filter;
@@ -2287,7 +2287,7 @@ class Transfer_IteratorOfProcessForTransient : public Transfer_TransferIterator 
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Binder to the iteration list (construction) with no corresponding Starting Object (note that Result is brought by Binder)
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Transfer_Binder> & binder);
 
@@ -2295,9 +2295,9 @@ class Transfer_IteratorOfProcessForTransient : public Transfer_TransferIterator 
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Binder to the iteration list, associated with its corresponding Starting Object 'start' Starting Object is ignored if not required at Creation time
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Transfer_Binder> & binder,const opencascade::handle<Standard_Transient> & start);
 
@@ -2305,7 +2305,7 @@ class Transfer_IteratorOfProcessForTransient : public Transfer_TransferIterator 
 		%feature("compactdefaultargs") Filter;
 		%feature("autodoc", "* After having added all items, keeps or rejects items which are attached to starting data given by <only> <keep> = True (D) : keeps. <keep> = False : rejects Does nothing if <withstarts> was False
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:param keep: default value is Standard_True
 	:type keep: bool
 	:rtype: None") Filter;
@@ -2350,7 +2350,7 @@ class Transfer_MultipleBinder : public Transfer_Binder {
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "* Adds a new Item to the Multiple Result
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: None") AddResult;
 		void AddResult (const opencascade::handle<Standard_Transient> & res);
 
@@ -2396,7 +2396,7 @@ class Transfer_MultipleBinder : public Transfer_Binder {
 		%feature("compactdefaultargs") SetMultipleResult;
 		%feature("autodoc", "* Defines a Binding with a Multiple Result, given as a Sequence Error if a Unique Result has yet been defined
 	:param mulres:
-	:type mulres: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type mulres: TColStd_HSequenceOfTransient
 	:rtype: None") SetMultipleResult;
 		void SetMultipleResult (const opencascade::handle<TColStd_HSequenceOfTransient> & mulres);
 
@@ -2427,11 +2427,11 @@ class Transfer_SimpleBinderOfTransient : public Transfer_Binder {
 		%feature("compactdefaultargs") GetTypedResult;
 		%feature("autodoc", "* Returns a transient result according to its type (IsKind) i.e. the result itself if IsKind(atype), else searches in NextResult, until first found, then returns True If not found, returns False (res is NOT touched) //! This syntactic form avoids to do DownCast : if a result is found with the good type, it is loaded in <res> and can be immediately used, well initialised
 	:param bnd:
-	:type bnd: opencascade::handle<Transfer_Binder> &
+	:type bnd: Transfer_Binder
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: bool") GetTypedResult;
 		static Standard_Boolean GetTypedResult (const opencascade::handle<Transfer_Binder> & bnd,const opencascade::handle<Standard_Type> & atype,opencascade::handle<Standard_Transient> & res);
 
@@ -2457,7 +2457,7 @@ class Transfer_SimpleBinderOfTransient : public Transfer_Binder {
 		%feature("compactdefaultargs") SetResult;
 		%feature("autodoc", "* Defines the Result
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: None") SetResult;
 		void SetResult (const opencascade::handle<Standard_Transient> & res);
 
@@ -2488,7 +2488,7 @@ class Transfer_TransientListBinder : public Transfer_Binder {
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "* Adds an item to the result list
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: None") AddResult;
 		void AddResult (const opencascade::handle<Standard_Transient> & res);
 
@@ -2523,7 +2523,7 @@ class Transfer_TransientListBinder : public Transfer_Binder {
 	:param num:
 	:type num: int
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: None") SetResult;
 		void SetResult (const Standard_Integer num,const opencascade::handle<Standard_Transient> & res);
 
@@ -2535,7 +2535,7 @@ class Transfer_TransientListBinder : public Transfer_Binder {
 		/****************** Transfer_TransientListBinder ******************/
 		%feature("compactdefaultargs") Transfer_TransientListBinder;
 		%feature("autodoc", ":param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: None") Transfer_TransientListBinder;
 		 Transfer_TransientListBinder (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -2567,7 +2567,7 @@ class Transfer_TransientMapper : public Transfer_Finder {
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "* Specific testof equallity : defined as False if <other> has not the same true Type, else contents are compared (by C++ operator ==)
 	:param other:
-	:type other: opencascade::handle<Transfer_Finder> &
+	:type other: Transfer_Finder
 	:rtype: bool") Equates;
 		Standard_Boolean Equates (const opencascade::handle<Transfer_Finder> & other);
 
@@ -2575,7 +2575,7 @@ class Transfer_TransientMapper : public Transfer_Finder {
 		%feature("compactdefaultargs") Transfer_TransientMapper;
 		%feature("autodoc", "* Creates a Mapper with a Value. This Value can then not be changed. It is used by the Hasher to compute the HashCode, which will then be stored for an immediate reading.
 	:param akey:
-	:type akey: opencascade::handle<Standard_Transient> &
+	:type akey: Standard_Transient
 	:rtype: None") Transfer_TransientMapper;
 		 Transfer_TransientMapper (const opencascade::handle<Standard_Transient> & akey);
 
@@ -2618,7 +2618,7 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 		%feature("compactdefaultargs") CheckNum;
 		%feature("autodoc", "* Specific number of a starting object for check-list : Number in model
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CheckNum;
 		virtual Standard_Integer CheckNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2634,9 +2634,9 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 	:param name:
 	:type name: char *
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:param ctx:
-	:type ctx: opencascade::handle<Standard_Transient> &
+	:type ctx: Standard_Transient
 	:rtype: bool") GetContext;
 		Standard_Boolean GetContext (const char * name,const opencascade::handle<Standard_Type> & type,opencascade::handle<Standard_Transient> & ctx);
 
@@ -2659,7 +2659,7 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 		%feature("compactdefaultargs") IsDataFail;
 		%feature("autodoc", "* Tells if an entity fails on data checking (load time, syntactic, or semantic check). Normally, should answer False. It is not prudent to try transferring an entity which fails on data checking
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsDataFail;
 		Standard_Boolean IsDataFail (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2667,7 +2667,7 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 		%feature("compactdefaultargs") IsDataLoaded;
 		%feature("autodoc", "* Tells if an entity is well loaded from file (even if its data fail on checking, they are present). Mostly often, answers True. Else, there was a syntactic error in the file. A non-loaded entity MAY NOT BE transferred, unless its Report (in the model) is interpreted
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsDataLoaded;
 		Standard_Boolean IsDataLoaded (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2683,7 +2683,7 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 	:param mode:
 	:type mode: int
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintStats;
 		void PrintStats (const Standard_Integer mode,const opencascade::handle<Message_Messenger> & S);
 
@@ -2691,9 +2691,9 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 		%feature("compactdefaultargs") PrintTrace;
 		%feature("autodoc", "* Specific printing to trace an entity : prints label and type (if model is set)
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: void") PrintTrace;
 		virtual void PrintTrace (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Message_Messenger> & S);
 
@@ -2708,7 +2708,7 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 	:param name:
 	:type name: char *
 	:param ctx:
-	:type ctx: opencascade::handle<Standard_Transient> &
+	:type ctx: Standard_Transient
 	:rtype: None") SetContext;
 		void SetContext (const char * name,const opencascade::handle<Standard_Transient> & ctx);
 
@@ -2716,7 +2716,7 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 		%feature("compactdefaultargs") SetGraph;
 		%feature("autodoc", "* Sets a Graph : superseedes SetModel if already done
 	:param HG:
-	:type HG: opencascade::handle<Interface_HGraph> &
+	:type HG: Interface_HGraph
 	:rtype: None") SetGraph;
 		void SetGraph (const opencascade::handle<Interface_HGraph> & HG);
 
@@ -2724,7 +2724,7 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "* Sets an InterfaceModel, used by StartTrace, CheckList, queries on Integrity, to give informations significant for each norm.
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") SetModel;
 		void SetModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2740,9 +2740,9 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 		%feature("compactdefaultargs") TypedSharings;
 		%feature("autodoc", "* Returns the list of sharings entities, AT ANY LEVEL, which are kind of a given type. Calls TypedSharings from Graph Returns an empty list if the Graph has not been aknowledged
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:rtype: Interface_EntityIterator") TypedSharings;
 		Interface_EntityIterator TypedSharings (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Standard_Type> & type);
 
@@ -2802,7 +2802,7 @@ class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
 		%feature("compactdefaultargs") AddActor;
 		%feature("autodoc", "* Utility which adds an actor to the default <self> (it calls SetActor from the TransientProcess)
 	:param actor:
-	:type actor: opencascade::handle<Transfer_ActorOfTransientProcess> &
+	:type actor: Transfer_ActorOfTransientProcess
 	:rtype: None") AddActor;
 		void AddActor (const opencascade::handle<Transfer_ActorOfTransientProcess> & actor);
 
@@ -2810,9 +2810,9 @@ class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "* Specific action : it calls the method Transfer from CopyTool i.e. the general service Copy, then returns the Binder produced by the TransientProcess
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: opencascade::handle<Transfer_Binder>") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -2826,9 +2826,9 @@ class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
 		%feature("compactdefaultargs") Transfer_ActorDispatch;
 		%feature("autodoc", "* Creates an ActorDispatch from a Model. Works with a General Service Library, given as an Argument This causes TransferDispatch and its TransientProcess to be created, with default actor <self>
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param lib:
-	:type lib: Interface_GeneralLib &
+	:type lib: Interface_GeneralLib
 	:rtype: None") Transfer_ActorDispatch;
 		 Transfer_ActorDispatch (const opencascade::handle<Interface_InterfaceModel> & amodel,const Interface_GeneralLib & lib);
 
@@ -2836,9 +2836,9 @@ class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
 		%feature("compactdefaultargs") Transfer_ActorDispatch;
 		%feature("autodoc", "* Same as above, but Library is defined through a Protocol
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") Transfer_ActorDispatch;
 		 Transfer_ActorDispatch (const opencascade::handle<Interface_InterfaceModel> & amodel,const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -2846,7 +2846,7 @@ class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
 		%feature("compactdefaultargs") Transfer_ActorDispatch;
 		%feature("autodoc", "* Same as above, but works with the Active Protocol
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") Transfer_ActorDispatch;
 		 Transfer_ActorDispatch (const opencascade::handle<Interface_InterfaceModel> & amodel);
 

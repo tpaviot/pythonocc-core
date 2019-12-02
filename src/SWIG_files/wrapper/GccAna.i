@@ -78,7 +78,7 @@ class GccAna_Circ2d2TanOn {
 	:param Index:
 	:type Index: int
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntArg:
 	:type PntArg: gp_Pnt2d
 	:rtype: None") CenterOn3;
@@ -88,9 +88,9 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two 2d circles and having the center ON a 2d line.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedCirc &
+	:type Qualified2: GccEnt_QualifiedCirc
 	:param OnLine:
 	:type OnLine: gp_Lin2d
 	:param Tolerance:
@@ -102,9 +102,9 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a 2d line having the center ON a 2d line.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param OnLine:
 	:type OnLine: gp_Lin2d
 	:param Tolerance:
@@ -116,9 +116,9 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two 2d lines having the center ON a 2d line.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param OnLine:
 	:type OnLine: gp_Lin2d
 	:param Tolerance:
@@ -130,7 +130,7 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a point having the center ON a 2d line.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Point2:
 	:type Point2: gp_Pnt2d
 	:param OnLine:
@@ -144,7 +144,7 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a point having the center ON a 2d line.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param Point2:
 	:type Point2: gp_Pnt2d
 	:param OnLine:
@@ -172,9 +172,9 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two 2d circles and having the center ON a 2d circle.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedCirc &
+	:type Qualified2: GccEnt_QualifiedCirc
 	:param OnCirc:
 	:type OnCirc: gp_Circ2d
 	:param Tolerance:
@@ -186,9 +186,9 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a circle and a line having the center ON a 2d circle.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param OnCirc:
 	:type OnCirc: gp_Circ2d
 	:param Tolerance:
@@ -200,7 +200,7 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a circle and a point having the center ON a 2d circle.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Point2:
 	:type Point2: gp_Pnt2d
 	:param OnCirc:
@@ -214,9 +214,9 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two 2d lines having the center ON a 2d circle.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param OnCirc:
 	:type OnCirc: gp_Circ2d
 	:param Tolerance:
@@ -228,7 +228,7 @@ class GccAna_Circ2d2TanOn {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a line and a point having the center ON a 2d circle.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param Point2:
 	:type Point2: gp_Pnt2d
 	:param OnCirc:
@@ -286,9 +286,9 @@ class GccAna_Circ2d2TanOn {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency1;
@@ -300,9 +300,9 @@ class GccAna_Circ2d2TanOn {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency2;
@@ -322,9 +322,9 @@ class GccAna_Circ2d2TanOn {
 	:param Index:
 	:type Index: int
 	:param Qualif1:
-	:type Qualif1: GccEnt_Position &
+	:type Qualif1: GccEnt_Position
 	:param Qualif2:
-	:type Qualif2: GccEnt_Position &
+	:type Qualif2: GccEnt_Position
 	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
 
@@ -347,9 +347,9 @@ class GccAna_Circ2d2TanRad {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two 2d circle with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedCirc &
+	:type Qualified2: GccEnt_QualifiedCirc
 	:param Radius:
 	:type Radius: float
 	:param Tolerance:
@@ -361,9 +361,9 @@ class GccAna_Circ2d2TanRad {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a 2d line with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param Radius:
 	:type Radius: float
 	:param Tolerance:
@@ -375,7 +375,7 @@ class GccAna_Circ2d2TanRad {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d circle and a point with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Point2:
 	:type Point2: gp_Pnt2d
 	:param Radius:
@@ -389,7 +389,7 @@ class GccAna_Circ2d2TanRad {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to a 2d line and a point with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param Point2:
 	:type Point2: gp_Pnt2d
 	:param Radius:
@@ -403,9 +403,9 @@ class GccAna_Circ2d2TanRad {
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles TANgent to two 2d lines with a radius of Radius. It raises NegativeValue if Radius is lower than zero.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param Radius:
 	:type Radius: float
 	:param Tolerance:
@@ -461,9 +461,9 @@ class GccAna_Circ2d2TanRad {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency1;
@@ -475,9 +475,9 @@ class GccAna_Circ2d2TanRad {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency2;
@@ -497,9 +497,9 @@ class GccAna_Circ2d2TanRad {
 	:param Index:
 	:type Index: int
 	:param Qualif1:
-	:type Qualif1: GccEnt_Position &
+	:type Qualif1: GccEnt_Position
 	:param Qualif2:
-	:type Qualif2: GccEnt_Position &
+	:type Qualif2: GccEnt_Position
 	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
 
@@ -522,11 +522,11 @@ class GccAna_Circ2d3Tan {
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 3 circles. ConstructionError is raised if there is a problem during the computation.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedCirc &
+	:type Qualified2: GccEnt_QualifiedCirc
 	:param Qualified3:
-	:type Qualified3: GccEnt_QualifiedCirc &
+	:type Qualified3: GccEnt_QualifiedCirc
 	:param Tolerance:
 	:type Tolerance: float
 	:rtype: None") GccAna_Circ2d3Tan;
@@ -536,11 +536,11 @@ class GccAna_Circ2d3Tan {
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 2 circles and 1 line. ConstructionError is raised if there is a problem during the computation.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedCirc &
+	:type Qualified2: GccEnt_QualifiedCirc
 	:param Qualified3:
-	:type Qualified3: GccEnt_QualifiedLin &
+	:type Qualified3: GccEnt_QualifiedLin
 	:param Tolerance:
 	:type Tolerance: float
 	:rtype: None") GccAna_Circ2d3Tan;
@@ -550,11 +550,11 @@ class GccAna_Circ2d3Tan {
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 1 circle and 2 lines. ConstructionError is raised if there is a problem during the computation.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param Qualified3:
-	:type Qualified3: GccEnt_QualifiedLin &
+	:type Qualified3: GccEnt_QualifiedLin
 	:param Tolerance:
 	:type Tolerance: float
 	:rtype: None") GccAna_Circ2d3Tan;
@@ -564,11 +564,11 @@ class GccAna_Circ2d3Tan {
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 3 lines. ConstructionError is raised if there is a problem during the computation.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param Qualified3:
-	:type Qualified3: GccEnt_QualifiedLin &
+	:type Qualified3: GccEnt_QualifiedLin
 	:param Tolerance:
 	:type Tolerance: float
 	:rtype: None") GccAna_Circ2d3Tan;
@@ -578,9 +578,9 @@ class GccAna_Circ2d3Tan {
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 2 circles and 1 Point. ConstructionError is raised if there is a problem during the computation.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedCirc &
+	:type Qualified2: GccEnt_QualifiedCirc
 	:param Point3:
 	:type Point3: gp_Pnt2d
 	:param Tolerance:
@@ -592,9 +592,9 @@ class GccAna_Circ2d3Tan {
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a circle and a line and 1 Point. ConstructionError is raised if there is a problem during the computation.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param Point3:
 	:type Point3: gp_Pnt2d
 	:param Tolerance:
@@ -606,9 +606,9 @@ class GccAna_Circ2d3Tan {
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to 2 lines and 1 Point. ConstructionError is raised if there is a problem during the computation.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedLin &
+	:type Qualified2: GccEnt_QualifiedLin
 	:param Point3:
 	:type Point3: gp_Pnt2d
 	:param Tolerance:
@@ -620,7 +620,7 @@ class GccAna_Circ2d3Tan {
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a circle and passing thrue 2 Points. ConstructionError is raised if there is a problem during the computation.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Point2:
 	:type Point2: gp_Pnt2d
 	:param Point3:
@@ -634,7 +634,7 @@ class GccAna_Circ2d3Tan {
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a line and passing thrue 2 Points. ConstructionError is raised if there is a problem during the computation.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param Point2:
 	:type Point2: gp_Pnt2d
 	:param Point3:
@@ -700,9 +700,9 @@ class GccAna_Circ2d3Tan {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency1;
@@ -714,9 +714,9 @@ class GccAna_Circ2d3Tan {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency2;
@@ -728,9 +728,9 @@ class GccAna_Circ2d3Tan {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency3;
@@ -750,11 +750,11 @@ class GccAna_Circ2d3Tan {
 	:param Index:
 	:type Index: int
 	:param Qualif1:
-	:type Qualif1: GccEnt_Position &
+	:type Qualif1: GccEnt_Position
 	:param Qualif2:
-	:type Qualif2: GccEnt_Position &
+	:type Qualif2: GccEnt_Position
 	:param Qualif3:
-	:type Qualif3: GccEnt_Position &
+	:type Qualif3: GccEnt_Position
 	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2,GccEnt_Position & Qualif3);
 
@@ -822,7 +822,7 @@ class GccAna_Circ2dTanCen {
 		%feature("compactdefaultargs") GccAna_Circ2dTanCen;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d circles tangent to a circle and centered on a point.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Pcenter:
 	:type Pcenter: gp_Pnt2d
 	:param Tolerance:
@@ -876,9 +876,9 @@ class GccAna_Circ2dTanCen {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency1;
@@ -898,7 +898,7 @@ class GccAna_Circ2dTanCen {
 	:param Index:
 	:type Index: int
 	:param Qualif1:
-	:type Qualif1: GccEnt_Position &
+	:type Qualif1: GccEnt_Position
 	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
 
@@ -923,7 +923,7 @@ class GccAna_Circ2dTanOnRad {
 	:param Index:
 	:type Index: int
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") CenterOn3;
@@ -933,7 +933,7 @@ class GccAna_Circ2dTanOnRad {
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles tangent to a circle and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases. For example Tolerance is used in the case of EnclosedCirc when Radius-R1+dist is greater Tolerance (dist is the distance between the line and the location of the circ, R1 is the radius of the circ) because there is no solution. raises NegativeValue in case of NegativeRadius.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param OnLine:
 	:type OnLine: gp_Lin2d
 	:param Radius:
@@ -947,7 +947,7 @@ class GccAna_Circ2dTanOnRad {
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles tangent to a 2d Line and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param OnLine:
 	:type OnLine: gp_Lin2d
 	:param Radius:
@@ -975,7 +975,7 @@ class GccAna_Circ2dTanOnRad {
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles tangent to a circle and centered on a 2d Circle with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param OnCirc:
 	:type OnCirc: gp_Circ2d
 	:param Radius:
@@ -989,7 +989,7 @@ class GccAna_Circ2dTanOnRad {
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "* This methods implements the algorithms used to create 2d Circles tangent to a 2d Line and centered on a 2d Line with a given radius. Tolerance is used to find solution in every limit cases. raises NegativeValue in case of NegativeRadius.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedLin &
+	:type Qualified1: GccEnt_QualifiedLin
 	:param OnCirc:
 	:type OnCirc: gp_Circ2d
 	:param Radius:
@@ -1039,9 +1039,9 @@ class GccAna_Circ2dTanOnRad {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency1;
@@ -1061,7 +1061,7 @@ class GccAna_Circ2dTanOnRad {
 	:param Index:
 	:type Index: int
 	:param Qualif1:
-	:type Qualif1: GccEnt_Position &
+	:type Qualif1: GccEnt_Position
 	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
 
@@ -1198,7 +1198,7 @@ class GccAna_Lin2d2Tan {
 		%feature("compactdefaultargs") GccAna_Lin2d2Tan;
 		%feature("autodoc", "* This methods implements the algorithms used to create 2d lines tangent to one circle and passing thrue a point. Exception BadQualifier is raised in the case of EnclosedCirc Tolerance is used because there is no solution when the point is inside the solution according to the tolerance.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param ThePoint:
 	:type ThePoint: gp_Pnt2d
 	:param Tolerance:
@@ -1210,9 +1210,9 @@ class GccAna_Lin2d2Tan {
 		%feature("compactdefaultargs") GccAna_Lin2d2Tan;
 		%feature("autodoc", "* This methods implements the algorithms used to create 2d lines tangent to 2 circles. Exception BadQualifier is raised in the case of EnclosedCirc
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Qualified2:
-	:type Qualified2: GccEnt_QualifiedCirc &
+	:type Qualified2: GccEnt_QualifiedCirc
 	:param Tolerance:
 	:type Tolerance: float
 	:rtype: None") GccAna_Lin2d2Tan;
@@ -1236,9 +1236,9 @@ class GccAna_Lin2d2Tan {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency1;
@@ -1250,9 +1250,9 @@ class GccAna_Lin2d2Tan {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency2;
@@ -1272,9 +1272,9 @@ class GccAna_Lin2d2Tan {
 	:param Index:
 	:type Index: int
 	:param Qualif1:
-	:type Qualif1: GccEnt_Position &
+	:type Qualif1: GccEnt_Position
 	:param Qualif2:
-	:type Qualif2: GccEnt_Position &
+	:type Qualif2: GccEnt_Position
 	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1,GccEnt_Position & Qualif2);
 
@@ -1309,9 +1309,9 @@ class GccAna_Lin2dBisec {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Intersection1;
@@ -1323,9 +1323,9 @@ class GccAna_Lin2dBisec {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Intersection2;
@@ -1382,7 +1382,7 @@ class GccAna_Lin2dTanObl {
 		%feature("compactdefaultargs") GccAna_Lin2dTanObl;
 		%feature("autodoc", "* This class implements the algorithms used to create 2d line tangent to a circle and making an angle with a line. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosed for a circle).
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param TheLine:
 	:type TheLine: gp_Lin2d
 	:param TheAngle:
@@ -1396,9 +1396,9 @@ class GccAna_Lin2dTanObl {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Intersection2;
@@ -1422,9 +1422,9 @@ class GccAna_Lin2dTanObl {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Tangency1;
@@ -1444,7 +1444,7 @@ class GccAna_Lin2dTanObl {
 	:param Index:
 	:type Index: int
 	:param Qualif1:
-	:type Qualif1: GccEnt_Position &
+	:type Qualif1: GccEnt_Position
 	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
 
@@ -1477,7 +1477,7 @@ class GccAna_Lin2dTanPar {
 		%feature("compactdefaultargs") GccAna_Lin2dTanPar;
 		%feature("autodoc", "* This method implements the algorithms used to create a 2d line tangent to a circle and parallel to another line. It raises BadQualifier in case of EnclosedCirc. Exceptions GccEnt_BadQualifier if a qualifier is inconsistent with the argument it qualifies (for example, enclosed for a circle).
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param Lin1:
 	:type Lin1: gp_Lin2d
 	:rtype: None") GccAna_Lin2dTanPar;
@@ -1501,9 +1501,9 @@ class GccAna_Lin2dTanPar {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param Pnt:
 	:type Pnt: gp_Pnt2d
 	:rtype: None") Tangency1;
@@ -1523,7 +1523,7 @@ class GccAna_Lin2dTanPar {
 	:param Index:
 	:type Index: int
 	:param Qualif1:
-	:type Qualif1: GccEnt_Position &
+	:type Qualif1: GccEnt_Position
 	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
 
@@ -1566,7 +1566,7 @@ class GccAna_Lin2dTanPer {
 		%feature("compactdefaultargs") GccAna_Lin2dTanPer;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d lines tangent to a circle and perpendicular to a line.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param TheLin:
 	:type TheLin: gp_Lin2d
 	:rtype: None") GccAna_Lin2dTanPer;
@@ -1576,7 +1576,7 @@ class GccAna_Lin2dTanPer {
 		%feature("compactdefaultargs") GccAna_Lin2dTanPer;
 		%feature("autodoc", "* This method implements the algorithms used to create 2d lines tangent to a circle and perpendicular to a circle.
 	:param Qualified1:
-	:type Qualified1: GccEnt_QualifiedCirc &
+	:type Qualified1: GccEnt_QualifiedCirc
 	:param TheCircle:
 	:type TheCircle: gp_Circ2d
 	:rtype: None") GccAna_Lin2dTanPer;
@@ -1588,9 +1588,9 @@ class GccAna_Lin2dTanPer {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param PntSol:
 	:type PntSol: gp_Pnt2d
 	:rtype: None") Intersection2;
@@ -1614,9 +1614,9 @@ class GccAna_Lin2dTanPer {
 	:param Index:
 	:type Index: int
 	:param ParSol:
-	:type ParSol: float &
+	:type ParSol: float
 	:param ParArg:
-	:type ParArg: float &
+	:type ParArg: float
 	:param Pnt:
 	:type Pnt: gp_Pnt2d
 	:rtype: None") Tangency1;
@@ -1636,7 +1636,7 @@ class GccAna_Lin2dTanPer {
 	:param Index:
 	:type Index: int
 	:param Qualif1:
-	:type Qualif1: GccEnt_Position &
+	:type Qualif1: GccEnt_Position
 	:rtype: None") WhichQualifier;
 		void WhichQualifier (const Standard_Integer Index,GccEnt_Position & Qualif1);
 

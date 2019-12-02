@@ -76,7 +76,7 @@ class TopBas_TestInterference {
 		/****************** Boundary ******************/
 		%feature("compactdefaultargs") Boundary;
 		%feature("autodoc", ":param B:
-	:type B: int &
+	:type B: int
 	:rtype: None") Boundary;
 		void Boundary (const Standard_Integer & B);
 
@@ -126,7 +126,7 @@ class TopBas_TestInterference {
 		/****************** Intersection ******************/
 		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", ":param I:
-	:type I: float &
+	:type I: float
 	:rtype: None") Intersection;
 		void Intersection (const Standard_Real & I);
 
@@ -155,9 +155,9 @@ class TopBas_TestInterference {
 		/****************** TopBas_TestInterference ******************/
 		%feature("compactdefaultargs") TopBas_TestInterference;
 		%feature("autodoc", ":param Inters:
-	:type Inters: float &
+	:type Inters: float
 	:param Bound:
-	:type Bound: int &
+	:type Bound: int
 	:param Orient:
 	:type Orient: TopAbs_Orientation
 	:param Trans:

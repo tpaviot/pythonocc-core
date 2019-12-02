@@ -1849,17 +1849,17 @@ class gp_Circ2d {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Returns the normalized coefficients from the implicit equation of the circle : A * (X**2) + B * (Y**2) + 2*C*(X*Y) + 2*D*X + 2*E*Y + F = 0.0
 	:param A:
-	:type A: float &
+	:type A: float
 	:param B:
-	:type B: float &
+	:type B: float
 	:param C:
-	:type C: float &
+	:type C: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param E:
-	:type E: float &
+	:type E: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2159,25 +2159,25 @@ class gp_Cone {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinates system : A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0
 	:param A1:
-	:type A1: float &
+	:type A1: float
 	:param A2:
-	:type A2: float &
+	:type A2: float
 	:param A3:
-	:type A3: float &
+	:type A3: float
 	:param B1:
-	:type B1: float &
+	:type B1: float
 	:param B2:
-	:type B2: float &
+	:type B2: float
 	:param B3:
-	:type B3: float &
+	:type B3: float
 	:param C1:
-	:type C1: float &
+	:type C1: float
 	:param C2:
-	:type C2: float &
+	:type C2: float
 	:param C3:
-	:type C3: float &
+	:type C3: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2450,25 +2450,25 @@ class gp_Cylinder {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system : A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0
 	:param A1:
-	:type A1: float &
+	:type A1: float
 	:param A2:
-	:type A2: float &
+	:type A2: float
 	:param A3:
-	:type A3: float &
+	:type A3: float
 	:param B1:
-	:type B1: float &
+	:type B1: float
 	:param B2:
-	:type B2: float &
+	:type B2: float
 	:param B3:
-	:type B3: float &
+	:type B3: float
 	:param C1:
-	:type C1: float &
+	:type C1: float
 	:param C2:
-	:type C2: float &
+	:type C2: float
 	:param C3:
-	:type C3: float &
+	:type C3: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2745,11 +2745,11 @@ class gp_Dir {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* Returns for the unit vector its three coordinates Xv, Yv, and Zv.
 	:param Xv:
-	:type Xv: float &
+	:type Xv: float
 	:param Yv:
-	:type Yv: float &
+	:type Yv: float
 	:param Zv:
-	:type Zv: float &
+	:type Zv: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3095,9 +3095,9 @@ class gp_Dir2d {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* For this unit vector returns its two coordinates Xv and Yv. Raises OutOfRange if Index != {1, 2}.
 	:param Xv:
-	:type Xv: float &
+	:type Xv: float
 	:param Yv:
-	:type Yv: float &
+	:type Yv: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3660,17 +3660,17 @@ class gp_Elips2d {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Returns the coefficients of the implicit equation of the ellipse. A * (X**2) + B * (Y**2) + 2*C*(X*Y) + 2*D*X + 2*E*Y + F = 0.
 	:param A:
-	:type A: float &
+	:type A: float
 	:param B:
-	:type B: float &
+	:type B: float
 	:param C:
-	:type C: float &
+	:type C: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param E:
-	:type E: float &
+	:type E: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4114,11 +4114,11 @@ class gp_GTrsf {
 		%feature("compactdefaultargs") Transforms;
 		%feature("autodoc", "* Transforms a triplet XYZ with a GTrsf.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") Transforms;
 		void Transforms (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4337,9 +4337,9 @@ class gp_GTrsf2d {
 		%feature("compactdefaultargs") Transforms;
 		%feature("autodoc", "* Applies this transformation to the coordinates: - of the number pair Coord, or - X and Y. //! Note: - Transforms modifies X, Y, or the coordinate pair Coord, while - Transformed creates a new coordinate pair.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:rtype: None") Transforms;
 		void Transforms (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4769,17 +4769,17 @@ class gp_Hypr2d {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Computes the coefficients of the implicit equation of the hyperbola : A * (X**2) + B * (Y**2) + 2*C*(X*Y) + 2*D*X + 2*E*Y + F = 0.
 	:param A:
-	:type A: float &
+	:type A: float
 	:param B:
-	:type B: float &
+	:type B: float
 	:param C:
-	:type C: float &
+	:type C: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param E:
-	:type E: float &
+	:type E: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5396,11 +5396,11 @@ class gp_Lin2d {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Returns the normalized coefficients of the line : A * X + B * Y + C = 0.
 	:param A:
-	:type A: float &
+	:type A: float
 	:param B:
-	:type B: float &
+	:type B: float
 	:param C:
-	:type C: float &
+	:type C: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6754,17 +6754,17 @@ class gp_Parab2d {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Computes the coefficients of the implicit equation of the parabola (in WCS - World Coordinate System). A * (X**2) + B * (Y**2) + 2*C*(X*Y) + 2*D*X + 2*E*Y + F = 0.
 	:param A:
-	:type A: float &
+	:type A: float
 	:param B:
-	:type B: float &
+	:type B: float
 	:param C:
-	:type C: float &
+	:type C: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:param E:
-	:type E: float &
+	:type E: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7035,13 +7035,13 @@ class gp_Pln {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Returns the coefficients of the plane's cartesian equation : A * X + B * Y + C * Z + D = 0.
 	:param A:
-	:type A: float &
+	:type A: float
 	:param B:
-	:type B: float &
+	:type B: float
 	:param C:
-	:type C: float &
+	:type C: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7396,11 +7396,11 @@ class gp_Pnt {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* For this point gives its three coordinates Xp, Yp and Zp.
 	:param Xp:
-	:type Xp: float &
+	:type Xp: float
 	:param Yp:
-	:type Yp: float &
+	:type Yp: float
 	:param Zp:
-	:type Zp: float &
+	:type Zp: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7705,9 +7705,9 @@ class gp_Pnt2d {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* For this point returns its two coordinates as a number pair.
 	:param Xp:
-	:type Xp: float &
+	:type Xp: float
 	:param Yp:
-	:type Yp: float &
+	:type Yp: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7991,11 +7991,11 @@ class gp_Quaternion {
 	:param theOrder:
 	:type theOrder: gp_EulerSequence
 	:param theAlpha:
-	:type theAlpha: float &
+	:type theAlpha: float
 	:param theBeta:
-	:type theBeta: float &
+	:type theBeta: float
 	:param theGamma:
-	:type theGamma: float &
+	:type theGamma: float
 	:rtype: None") GetEulerAngles;
 		void GetEulerAngles (const gp_EulerSequence theOrder,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8017,7 +8017,7 @@ class gp_Quaternion {
 	:param theAxis:
 	:type theAxis: gp_Vec
 	:param theAngle:
-	:type theAngle: float &
+	:type theAngle: float
 	:rtype: None") GetVectorAndAngle;
 		void GetVectorAndAngle (gp_Vec & theAxis,Standard_Real &OutValue);
 
@@ -8568,25 +8568,25 @@ class gp_Sphere {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Computes the coefficients of the implicit equation of the quadric in the absolute cartesian coordinates system : A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0
 	:param A1:
-	:type A1: float &
+	:type A1: float
 	:param A2:
-	:type A2: float &
+	:type A2: float
 	:param A3:
-	:type A3: float &
+	:type A3: float
 	:param B1:
-	:type B1: float &
+	:type B1: float
 	:param B2:
-	:type B2: float &
+	:type B2: float
 	:param B3:
-	:type B3: float &
+	:type B3: float
 	:param C1:
-	:type C1: float &
+	:type C1: float
 	:param C2:
-	:type C2: float &
+	:type C2: float
 	:param C3:
-	:type C3: float &
+	:type C3: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -9128,7 +9128,7 @@ class gp_Trsf {
 	:param theAxis:
 	:type theAxis: gp_XYZ
 	:param theAngle:
-	:type theAngle: float &
+	:type theAngle: float
 	:rtype: bool") GetRotation;
 		Standard_Boolean GetRotation (gp_XYZ & theAxis,Standard_Real &OutValue);
 
@@ -9369,11 +9369,11 @@ class gp_Trsf {
 		/****************** Transforms ******************/
 		%feature("compactdefaultargs") Transforms;
 		%feature("autodoc", ":param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") Transforms;
 		void Transforms (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -9642,9 +9642,9 @@ class gp_Trsf2d {
 		/****************** Transforms ******************/
 		%feature("compactdefaultargs") Transforms;
 		%feature("autodoc", ":param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:rtype: None") Transforms;
 		void Transforms (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -9771,11 +9771,11 @@ class gp_Vec {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* For this vector returns its three coordinates Xv, Yv, and Zvinline
 	:param Xv:
-	:type Xv: float &
+	:type Xv: float
 	:param Yv:
-	:type Yv: float &
+	:type Yv: float
 	:param Zv:
-	:type Zv: float &
+	:type Zv: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -10416,9 +10416,9 @@ class gp_Vec2d {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* For this vector, returns its two coordinates Xv and Yv
 	:param Xv:
-	:type Xv: float &
+	:type Xv: float
 	:param Yv:
-	:type Yv: float &
+	:type Yv: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -10954,9 +10954,9 @@ class gp_XY {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* For this number pair, returns its coordinates X and Y.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -11408,11 +11408,11 @@ class gp_XYZ {
 		/****************** Coord ******************/
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", ":param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 

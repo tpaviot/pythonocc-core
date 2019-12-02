@@ -139,7 +139,7 @@ class Units {
 	:param aUnit:
 	:type aUnit: char *
 	:param aDim:
-	:type aDim: opencascade::handle<Units_Dimensions> &
+	:type aDim: Units_Dimensions
 	:rtype: float") FromSI;
 		static Standard_Real FromSI (const Standard_Real aData,const char * aUnit,opencascade::handle<Units_Dimensions> & aDim);
 
@@ -195,7 +195,7 @@ class Units {
 	:param aUnit:
 	:type aUnit: char *
 	:param aDim:
-	:type aDim: opencascade::handle<Units_Dimensions> &
+	:type aDim: Units_Dimensions
 	:rtype: float") ToSI;
 		static Standard_Real ToSI (const Standard_Real aData,const char * aUnit,opencascade::handle<Units_Dimensions> & aDim);
 
@@ -229,7 +229,7 @@ class Units_Explorer {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the instance of the class with the UnitsSystem <aunitssystem>.
 	:param aunitssystem:
-	:type aunitssystem: opencascade::handle<Units_UnitsSystem> &
+	:type aunitssystem: Units_UnitsSystem
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Units_UnitsSystem> & aunitssystem);
 
@@ -237,7 +237,7 @@ class Units_Explorer {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the instance of the class with the UnitsDictionary <aunitsdictionary>.
 	:param aunitsdictionary:
-	:type aunitsdictionary: opencascade::handle<Units_UnitsDictionary> &
+	:type aunitsdictionary: Units_UnitsDictionary
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary);
 
@@ -245,7 +245,7 @@ class Units_Explorer {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the instance of the class with the UnitsSystem <aunitssystem> and positioned at the quantity <aquantity>.
 	:param aunitssystem:
-	:type aunitssystem: opencascade::handle<Units_UnitsSystem> &
+	:type aunitssystem: Units_UnitsSystem
 	:param aquantity:
 	:type aquantity: char *
 	:rtype: None") Init;
@@ -255,7 +255,7 @@ class Units_Explorer {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes the instance of the class with the UnitsDictionary <aunitsdictionary> and positioned at the quantity <aquantity>.
 	:param aunitsdictionary:
-	:type aunitsdictionary: opencascade::handle<Units_UnitsDictionary> &
+	:type aunitsdictionary: Units_UnitsDictionary
 	:param aquantity:
 	:type aquantity: char *
 	:rtype: None") Init;
@@ -313,7 +313,7 @@ class Units_Explorer {
 		%feature("compactdefaultargs") Units_Explorer;
 		%feature("autodoc", "* Creates a new instance of the class, initialized with the UnitsSystem <aunitssystem>.
 	:param aunitssystem:
-	:type aunitssystem: opencascade::handle<Units_UnitsSystem> &
+	:type aunitssystem: Units_UnitsSystem
 	:rtype: None") Units_Explorer;
 		 Units_Explorer (const opencascade::handle<Units_UnitsSystem> & aunitssystem);
 
@@ -321,7 +321,7 @@ class Units_Explorer {
 		%feature("compactdefaultargs") Units_Explorer;
 		%feature("autodoc", "* Creates a new instance of the class, initialized with the UnitsDictionary <aunitsdictionary>.
 	:param aunitsdictionary:
-	:type aunitsdictionary: opencascade::handle<Units_UnitsDictionary> &
+	:type aunitsdictionary: Units_UnitsDictionary
 	:rtype: None") Units_Explorer;
 		 Units_Explorer (const opencascade::handle<Units_UnitsDictionary> & aunitsdictionary);
 
@@ -329,7 +329,7 @@ class Units_Explorer {
 		%feature("compactdefaultargs") Units_Explorer;
 		%feature("autodoc", "* Creates a new instance of the class, initialized with the UnitsSystem <aunitssystem> and positioned at the quantity <aquantity>.
 	:param aunitssystem:
-	:type aunitssystem: opencascade::handle<Units_UnitsSystem> &
+	:type aunitssystem: Units_UnitsSystem
 	:param aquantity:
 	:type aquantity: char *
 	:rtype: None") Units_Explorer;
@@ -339,7 +339,7 @@ class Units_Explorer {
 		%feature("compactdefaultargs") Units_Explorer;
 		%feature("autodoc", "* Creates a new instance of the class, initialized with the UnitsDictionary <aunitsdictionary> and positioned at the quantity <aquantity>.
 	:param aunitsdictionary:
-	:type aunitsdictionary: opencascade::handle<Units_UnitsDictionary> &
+	:type aunitsdictionary: Units_UnitsDictionary
 	:param aquantity:
 	:type aquantity: char *
 	:rtype: None") Units_Explorer;
@@ -417,7 +417,7 @@ class Units_Measurement {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Returns (if it is possible) a measurement which is the addition of <self> and <ameasurement>. The chosen returned unit is the unit of <self>.
 	:param ameasurement:
-	:type ameasurement: Units_Measurement &
+	:type ameasurement: Units_Measurement
 	:rtype: Units_Measurement") Add;
 		Units_Measurement Add (const Units_Measurement & ameasurement);
 
@@ -433,7 +433,7 @@ class Units_Measurement {
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "* Returns a measurement which is the division of <self> by <ameasurement>.
 	:param ameasurement:
-	:type ameasurement: Units_Measurement &
+	:type ameasurement: Units_Measurement
 	:rtype: Units_Measurement") Divide;
 		Units_Measurement Divide (const Units_Measurement & ameasurement);
 
@@ -478,7 +478,7 @@ class Units_Measurement {
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "* Returns a measurement which is the multiplication of <self> and <ameasurement>.
 	:param ameasurement:
-	:type ameasurement: Units_Measurement &
+	:type ameasurement: Units_Measurement
 	:rtype: Units_Measurement") Multiply;
 		Units_Measurement Multiply (const Units_Measurement & ameasurement);
 
@@ -502,7 +502,7 @@ class Units_Measurement {
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "* Returns (if it is possible) a measurement which is the subtraction of <self> and <ameasurement>. The chosen returned unit is the unit of <self>.
 	:param ameasurement:
-	:type ameasurement: Units_Measurement &
+	:type ameasurement: Units_Measurement
 	:rtype: Units_Measurement") Subtract;
 		Units_Measurement Subtract (const Units_Measurement & ameasurement);
 
@@ -524,7 +524,7 @@ class Units_Measurement {
 	:param avalue:
 	:type avalue: float
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: None") Units_Measurement;
 		 Units_Measurement (const Standard_Real avalue,const opencascade::handle<Units_Token> & atoken);
 
@@ -541,7 +541,7 @@ class Units_Measurement {
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param ameasurement:
-	:type ameasurement: Units_Measurement &
+	:type ameasurement: Units_Measurement
 	:rtype: Units_Measurement") operator *;
 		Units_Measurement operator * (const Units_Measurement & ameasurement);
 
@@ -555,21 +555,21 @@ class Units_Measurement {
 		/****************** operator + ******************/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param ameasurement:
-	:type ameasurement: Units_Measurement &
+	:type ameasurement: Units_Measurement
 	:rtype: Units_Measurement") operator +;
 		Units_Measurement operator + (const Units_Measurement & ameasurement);
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param ameasurement:
-	:type ameasurement: Units_Measurement &
+	:type ameasurement: Units_Measurement
 	:rtype: Units_Measurement") operator -;
 		Units_Measurement operator - (const Units_Measurement & ameasurement);
 
 		/****************** operator / ******************/
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param ameasurement:
-	:type ameasurement: Units_Measurement &
+	:type ameasurement: Units_Measurement
 	:rtype: Units_Measurement") operator /;
 		Units_Measurement operator / (const Units_Measurement & ameasurement);
 
@@ -626,7 +626,7 @@ class Units_Sentence {
 		%feature("compactdefaultargs") Sequence;
 		%feature("autodoc", "* Sets the field <thesequenceoftokens> to <asequenceoftokens>.
 	:param asequenceoftokens:
-	:type asequenceoftokens: opencascade::handle<Units_TokensSequence> &
+	:type asequenceoftokens: Units_TokensSequence
 	:rtype: None") Sequence;
 		void Sequence (const opencascade::handle<Units_TokensSequence> & asequenceoftokens);
 
@@ -640,7 +640,7 @@ class Units_Sentence {
 		%feature("compactdefaultargs") Units_Sentence;
 		%feature("autodoc", "* Creates and returns a Sentence, by analyzing the string <astring> with the lexicon <alexicon>.
 	:param alexicon:
-	:type alexicon: opencascade::handle<Units_Lexicon> &
+	:type alexicon: Units_Lexicon
 	:param astring:
 	:type astring: char *
 	:rtype: None") Units_Sentence;
@@ -672,7 +672,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Returns a token which is the addition of <self> and another token <atoken>. The addition is possible if and only if the dimensions are the same.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: opencascade::handle<Units_Token>") Add;
 		opencascade::handle<Units_Token> Add (const opencascade::handle<Units_Token> & atoken);
 
@@ -692,7 +692,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") Dimensions;
 		%feature("autodoc", "* Sets the field <thedimensions> to <adimensions>.
 	:param adimensions:
-	:type adimensions: opencascade::handle<Units_Dimensions> &
+	:type adimensions: Units_Dimensions
 	:rtype: None") Dimensions;
 		void Dimensions (const opencascade::handle<Units_Dimensions> & adimensions);
 
@@ -700,7 +700,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "* Returns a token which is the division of <self> by another token <atoken>.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: opencascade::handle<Units_Token>") Divide;
 		opencascade::handle<Units_Token> Divide (const opencascade::handle<Units_Token> & atoken);
 
@@ -734,7 +734,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns true if the field <theword> and the string <theword> contained in the token <atoken> are the same, false otherwise.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const opencascade::handle<Units_Token> & atoken);
 
@@ -750,7 +750,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "* Returns false if the field <theword> is strictly contained at the beginning of the string <astring>, true otherwise.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: bool") IsGreater;
 		Standard_Boolean IsGreater (const opencascade::handle<Units_Token> & atoken);
 
@@ -758,7 +758,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") IsGreaterOrEqual;
 		%feature("autodoc", "* Returns true if the string <astring> is strictly contained at the beginning of the field <theword> false otherwise.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: bool") IsGreaterOrEqual;
 		Standard_Boolean IsGreaterOrEqual (const opencascade::handle<Units_Token> & atoken);
 
@@ -782,7 +782,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") IsNotEqual;
 		%feature("autodoc", "* Returns false if the field <theword> and the string <theword> contained in the token <atoken> are the same, true otherwise.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: bool") IsNotEqual;
 		Standard_Boolean IsNotEqual (const opencascade::handle<Units_Token> & atoken);
 
@@ -818,7 +818,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "* Returns a token which is the product of <self> and another token <atoken>.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: opencascade::handle<Units_Token>") Multiply;
 		opencascade::handle<Units_Token> Multiply (const opencascade::handle<Units_Token> & atoken);
 
@@ -826,7 +826,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") Power;
 		%feature("autodoc", "* Returns a token which is <self> to the power of another token <atoken>. The computation is possible only if <atoken> is a dimensionless constant.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: opencascade::handle<Units_Token>") Power;
 		opencascade::handle<Units_Token> Power (const opencascade::handle<Units_Token> & atoken);
 
@@ -842,7 +842,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "* Returns a token which is the subtraction of <self> and another token <atoken>. The subtraction is possible if and only if the dimensions are the same.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: opencascade::handle<Units_Token>") Subtract;
 		opencascade::handle<Units_Token> Subtract (const opencascade::handle<Units_Token> & atoken);
 
@@ -864,7 +864,7 @@ class Units_Token : public Standard_Transient {
 		%feature("compactdefaultargs") Units_Token;
 		%feature("autodoc", "* Creates and returns a token. <atoken> is copied in the returned token.
 	:param atoken:
-	:type atoken: opencascade::handle<Units_Token> &
+	:type atoken: Units_Token
 	:rtype: None") Units_Token;
 		 Units_Token (const opencascade::handle<Units_Token> & atoken);
 
@@ -900,7 +900,7 @@ class Units_Token : public Standard_Transient {
 	:param avalue:
 	:type avalue: float
 	:param adimension:
-	:type adimension: opencascade::handle<Units_Dimensions> &
+	:type adimension: Units_Dimensions
 	:rtype: None") Units_Token;
 		 Units_Token (const char * aword,const char * amean,const Standard_Real avalue,const opencascade::handle<Units_Dimensions> & adimension);
 
@@ -991,7 +991,7 @@ class Units_Unit : public Standard_Transient {
 		%feature("compactdefaultargs") Quantity;
 		%feature("autodoc", "* Sets the physical Quantity <aquantity> to <self>.
 	:param aquantity:
-	:type aquantity: opencascade::handle<Units_Quantity> &
+	:type aquantity: Units_Quantity
 	:rtype: None") Quantity;
 		void Quantity (const opencascade::handle<Units_Quantity> & aquantity);
 
@@ -1025,7 +1025,7 @@ class Units_Unit : public Standard_Transient {
 	:param avalue:
 	:type avalue: float
 	:param aquantity:
-	:type aquantity: opencascade::handle<Units_Quantity> &
+	:type aquantity: Units_Quantity
 	:rtype: None") Units_Unit;
 		 Units_Unit (const char * aname,const char * asymbol,const Standard_Real avalue,const opencascade::handle<Units_Quantity> & aquantity);
 
@@ -1104,7 +1104,7 @@ class Units_UnitsDictionary : public Standard_Transient {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Dumps for a designated physical dimensions <adimensions> all the previously stored units.
 	:param adimensions:
-	:type adimensions: opencascade::handle<Units_Dimensions> &
+	:type adimensions: Units_Dimensions
 	:rtype: None") Dump;
 		void Dump (const opencascade::handle<Units_Dimensions> & adimensions);
 
@@ -1341,7 +1341,7 @@ class Units_ShiftedToken : public Units_Token {
 	:param amove:
 	:type amove: float
 	:param adimensions:
-	:type adimensions: opencascade::handle<Units_Dimensions> &
+	:type adimensions: Units_Dimensions
 	:rtype: None") Units_ShiftedToken;
 		 Units_ShiftedToken (const char * aword,const char * amean,const Standard_Real avalue,const Standard_Real amove,const opencascade::handle<Units_Dimensions> & adimensions);
 
@@ -1403,7 +1403,7 @@ class Units_ShiftedUnit : public Units_Unit {
 	:param amove:
 	:type amove: float
 	:param aquantity:
-	:type aquantity: opencascade::handle<Units_Quantity> &
+	:type aquantity: Units_Quantity
 	:rtype: None") Units_ShiftedUnit;
 		 Units_ShiftedUnit (const char * aname,const char * asymbol,const Standard_Real avalue,const Standard_Real amove,const opencascade::handle<Units_Quantity> & aquantity);
 
@@ -1452,7 +1452,7 @@ class Units_UnitSentence : public Units_Sentence {
 		%feature("compactdefaultargs") SetUnits;
 		%feature("autodoc", "* For each token which represents a unit, finds in the sequence of physical quantities all the characteristics of the unit found.
 	:param aquantitiessequence:
-	:type aquantitiessequence: opencascade::handle<Units_QuantitiesSequence> &
+	:type aquantitiessequence: Units_QuantitiesSequence
 	:rtype: None") SetUnits;
 		void SetUnits (const opencascade::handle<Units_QuantitiesSequence> & aquantitiessequence);
 
@@ -1470,7 +1470,7 @@ class Units_UnitSentence : public Units_Sentence {
 	:param astring:
 	:type astring: char *
 	:param aquantitiessequence:
-	:type aquantitiessequence: opencascade::handle<Units_QuantitiesSequence> &
+	:type aquantitiessequence: Units_QuantitiesSequence
 	:rtype: None") Units_UnitSentence;
 		 Units_UnitSentence (const char * astring,const opencascade::handle<Units_QuantitiesSequence> & aquantitiessequence);
 

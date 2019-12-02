@@ -77,83 +77,83 @@ class UTL {
 		/****************** AddToUserInfo ******************/
 		%feature("compactdefaultargs") AddToUserInfo;
 		%feature("autodoc", ":param aData:
-	:type aData: opencascade::handle<Storage_Data> &
+	:type aData: Storage_Data
 	:param anInfo:
-	:type anInfo: TCollection_ExtendedString &
+	:type anInfo: TCollection_ExtendedString
 	:rtype: void") AddToUserInfo;
 		static void AddToUserInfo (const opencascade::handle<Storage_Data> & aData,const TCollection_ExtendedString & anInfo);
 
 		/****************** CString ******************/
 		%feature("compactdefaultargs") CString;
 		%feature("autodoc", ":param anExtendedString:
-	:type anExtendedString: TCollection_ExtendedString &
+	:type anExtendedString: TCollection_ExtendedString
 	:rtype: char *") CString;
 		static const char * CString (const TCollection_ExtendedString & anExtendedString);
 
 		/****************** Disk ******************/
 		%feature("compactdefaultargs") Disk;
 		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path &
+	:type aPath: OSD_Path
 	:rtype: TCollection_ExtendedString") Disk;
 		static TCollection_ExtendedString Disk (const OSD_Path & aPath);
 
 		/****************** ExtendedString ******************/
 		%feature("compactdefaultargs") ExtendedString;
 		%feature("autodoc", ":param anAsciiString:
-	:type anAsciiString: TCollection_AsciiString &
+	:type anAsciiString: TCollection_AsciiString
 	:rtype: TCollection_ExtendedString") ExtendedString;
 		static TCollection_ExtendedString ExtendedString (const TCollection_AsciiString & anAsciiString);
 
 		/****************** Extension ******************/
 		%feature("compactdefaultargs") Extension;
 		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path &
+	:type aPath: OSD_Path
 	:rtype: TCollection_ExtendedString") Extension;
 		static TCollection_ExtendedString Extension (const OSD_Path & aPath);
 
 		/****************** Extension ******************/
 		%feature("compactdefaultargs") Extension;
 		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString &
+	:type aFileName: TCollection_ExtendedString
 	:rtype: TCollection_ExtendedString") Extension;
 		static TCollection_ExtendedString Extension (const TCollection_ExtendedString & aFileName);
 
 		/****************** FileIterator ******************/
 		%feature("compactdefaultargs") FileIterator;
 		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path &
+	:type aPath: OSD_Path
 	:param aMask:
-	:type aMask: TCollection_ExtendedString &
+	:type aMask: TCollection_ExtendedString
 	:rtype: OSD_FileIterator") FileIterator;
 		static OSD_FileIterator FileIterator (const OSD_Path & aPath,const TCollection_ExtendedString & aMask);
 
 		/****************** Find ******************/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", ":param aResourceManager:
-	:type aResourceManager: opencascade::handle<Resource_Manager> &
+	:type aResourceManager: Resource_Manager
 	:param aResourceName:
-	:type aResourceName: TCollection_ExtendedString &
+	:type aResourceName: TCollection_ExtendedString
 	:rtype: bool") Find;
 		static Standard_Boolean Find (const opencascade::handle<Resource_Manager> & aResourceManager,const TCollection_ExtendedString & aResourceName);
 
 		/****************** GUID ******************/
 		%feature("compactdefaultargs") GUID;
 		%feature("autodoc", ":param anXString:
-	:type anXString: TCollection_ExtendedString &
+	:type anXString: TCollection_ExtendedString
 	:rtype: Standard_GUID") GUID;
 		static Standard_GUID GUID (const TCollection_ExtendedString & anXString);
 
 		/****************** IntegerValue ******************/
 		%feature("compactdefaultargs") IntegerValue;
 		%feature("autodoc", ":param anExtendedString:
-	:type anExtendedString: TCollection_ExtendedString &
+	:type anExtendedString: TCollection_ExtendedString
 	:rtype: int") IntegerValue;
 		static Standard_Integer IntegerValue (const TCollection_ExtendedString & anExtendedString);
 
 		/****************** IsReadOnly ******************/
 		%feature("compactdefaultargs") IsReadOnly;
 		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString &
+	:type aFileName: TCollection_ExtendedString
 	:rtype: bool") IsReadOnly;
 		static Standard_Boolean IsReadOnly (const TCollection_ExtendedString & aFileName);
 
@@ -165,16 +165,16 @@ class UTL {
 		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path &
+	:type aPath: OSD_Path
 	:rtype: TCollection_ExtendedString") Name;
 		static TCollection_ExtendedString Name (const OSD_Path & aPath);
 
 		/****************** OpenFile ******************/
 		%feature("compactdefaultargs") OpenFile;
 		%feature("autodoc", ":param aFile:
-	:type aFile: Storage_BaseDriver &
+	:type aFile: Storage_BaseDriver
 	:param aName:
-	:type aName: TCollection_ExtendedString &
+	:type aName: TCollection_ExtendedString
 	:param aMode:
 	:type aMode: Storage_OpenMode
 	:rtype: Storage_Error") OpenFile;
@@ -183,23 +183,23 @@ class UTL {
 		/****************** Path ******************/
 		%feature("compactdefaultargs") Path;
 		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString &
+	:type aFileName: TCollection_ExtendedString
 	:rtype: OSD_Path") Path;
 		static OSD_Path Path (const TCollection_ExtendedString & aFileName);
 
 		/****************** Trek ******************/
 		%feature("compactdefaultargs") Trek;
 		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path &
+	:type aPath: OSD_Path
 	:rtype: TCollection_ExtendedString") Trek;
 		static TCollection_ExtendedString Trek (const OSD_Path & aPath);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param aResourceManager:
-	:type aResourceManager: opencascade::handle<Resource_Manager> &
+	:type aResourceManager: Resource_Manager
 	:param aResourceName:
-	:type aResourceName: TCollection_ExtendedString &
+	:type aResourceName: TCollection_ExtendedString
 	:rtype: TCollection_ExtendedString") Value;
 		static TCollection_ExtendedString Value (const opencascade::handle<Resource_Manager> & aResourceManager,const TCollection_ExtendedString & aResourceName);
 

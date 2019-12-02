@@ -127,9 +127,9 @@ class HatchGen_Domain {
 		%feature("compactdefaultargs") HatchGen_Domain;
 		%feature("autodoc", "* Creates a domain for the curve associated to a hatching.
 	:param P1:
-	:type P1: HatchGen_PointOnHatching &
+	:type P1: HatchGen_PointOnHatching
 	:param P2:
-	:type P2: HatchGen_PointOnHatching &
+	:type P2: HatchGen_PointOnHatching
 	:rtype: None") HatchGen_Domain;
 		 HatchGen_Domain (const HatchGen_PointOnHatching & P1,const HatchGen_PointOnHatching & P2);
 
@@ -137,7 +137,7 @@ class HatchGen_Domain {
 		%feature("compactdefaultargs") HatchGen_Domain;
 		%feature("autodoc", "* Creates a semi-infinite domain for the curve associated to a hatching. The `First' flag means that the given point is the first one.
 	:param P:
-	:type P: HatchGen_PointOnHatching &
+	:type P: HatchGen_PointOnHatching
 	:param First:
 	:type First: bool
 	:rtype: None") HatchGen_Domain;
@@ -153,7 +153,7 @@ class HatchGen_Domain {
 		%feature("compactdefaultargs") SetFirstPoint;
 		%feature("autodoc", "* Sets the first point of the domain.
 	:param P:
-	:type P: HatchGen_PointOnHatching &
+	:type P: HatchGen_PointOnHatching
 	:rtype: None") SetFirstPoint;
 		void SetFirstPoint (const HatchGen_PointOnHatching & P);
 
@@ -167,9 +167,9 @@ class HatchGen_Domain {
 		%feature("compactdefaultargs") SetPoints;
 		%feature("autodoc", "* Sets the first and the second points of the domain.
 	:param P1:
-	:type P1: HatchGen_PointOnHatching &
+	:type P1: HatchGen_PointOnHatching
 	:param P2:
-	:type P2: HatchGen_PointOnHatching &
+	:type P2: HatchGen_PointOnHatching
 	:rtype: None") SetPoints;
 		void SetPoints (const HatchGen_PointOnHatching & P1,const HatchGen_PointOnHatching & P2);
 
@@ -183,7 +183,7 @@ class HatchGen_Domain {
 		%feature("compactdefaultargs") SetSecondPoint;
 		%feature("autodoc", "* Sets the second point of the domain.
 	:param P:
-	:type P: HatchGen_PointOnHatching &
+	:type P: HatchGen_PointOnHatching
 	:rtype: None") SetSecondPoint;
 		void SetSecondPoint (const HatchGen_PointOnHatching & P);
 
@@ -348,7 +348,7 @@ class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") HatchGen_PointOnElement;
 		%feature("autodoc", "* Creates a point from an other.
 	:param Point:
-	:type Point: HatchGen_PointOnElement &
+	:type Point: HatchGen_PointOnElement
 	:rtype: None") HatchGen_PointOnElement;
 		 HatchGen_PointOnElement (const HatchGen_PointOnElement & Point);
 
@@ -356,7 +356,7 @@ class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") HatchGen_PointOnElement;
 		%feature("autodoc", "* Creates a point from an intersection point.
 	:param Point:
-	:type Point: IntRes2d_IntersectionPoint &
+	:type Point: IntRes2d_IntersectionPoint
 	:rtype: None") HatchGen_PointOnElement;
 		 HatchGen_PointOnElement (const IntRes2d_IntersectionPoint & Point);
 
@@ -370,7 +370,7 @@ class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "* Tests if the point is different from an other.
 	:param Point:
-	:type Point: HatchGen_PointOnElement &
+	:type Point: HatchGen_PointOnElement
 	:param Confusion:
 	:type Confusion: float
 	:rtype: bool") IsDifferent;
@@ -380,7 +380,7 @@ class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if the point is identical to an other. That is to say : P1.myIndex = P2.myIndex Abs (P1.myParam - P2.myParam) <= Confusion P1.myPosit = P2.myPosit P1.myBefore = P2.myBefore P1.myAfter = P2.myAfter P1.mySegBeg = P2.mySegBeg P1.mySegEnd = P2.mySegEnd P1.myType = P2.myType
 	:param Point:
-	:type Point: HatchGen_PointOnElement &
+	:type Point: HatchGen_PointOnElement
 	:param Confusion:
 	:type Confusion: float
 	:rtype: bool") IsIdentical;
@@ -413,7 +413,7 @@ class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "* Adds a point on element to the point.
 	:param Point:
-	:type Point: HatchGen_PointOnElement &
+	:type Point: HatchGen_PointOnElement
 	:param Confusion:
 	:type Confusion: float
 	:rtype: None") AddPoint;
@@ -443,7 +443,7 @@ class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") HatchGen_PointOnHatching;
 		%feature("autodoc", "* Creates a point from an other.
 	:param Point:
-	:type Point: HatchGen_PointOnHatching &
+	:type Point: HatchGen_PointOnHatching
 	:rtype: None") HatchGen_PointOnHatching;
 		 HatchGen_PointOnHatching (const HatchGen_PointOnHatching & Point);
 
@@ -451,7 +451,7 @@ class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") HatchGen_PointOnHatching;
 		%feature("autodoc", "* Creates a point from an intersection point.
 	:param Point:
-	:type Point: IntRes2d_IntersectionPoint &
+	:type Point: IntRes2d_IntersectionPoint
 	:rtype: None") HatchGen_PointOnHatching;
 		 HatchGen_PointOnHatching (const IntRes2d_IntersectionPoint & Point);
 
@@ -459,7 +459,7 @@ class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Tests if the point is equal to an other. A point on hatching P1 is said to be equal to an other P2 if : | P2.myParam - P1.myParam | <= Confusion
 	:param Point:
-	:type Point: HatchGen_PointOnHatching &
+	:type Point: HatchGen_PointOnHatching
 	:param Confusion:
 	:type Confusion: float
 	:rtype: bool") IsEqual;
@@ -469,7 +469,7 @@ class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "* Tests if the point is greater than an other. A point on hatching P1 is said to be greater than an other P2 if : P1.myParam - P2.myParam > Confusion
 	:param Point:
-	:type Point: HatchGen_PointOnHatching &
+	:type Point: HatchGen_PointOnHatching
 	:param Confusion:
 	:type Confusion: float
 	:rtype: bool") IsGreater;
@@ -479,7 +479,7 @@ class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 		%feature("compactdefaultargs") IsLower;
 		%feature("autodoc", "* Tests if the point is lower than an other. A point on hatching P1 is said to be lower than an other P2 if : P2.myParam - P1.myParam > Confusion
 	:param Point:
-	:type Point: HatchGen_PointOnHatching &
+	:type Point: HatchGen_PointOnHatching
 	:param Confusion:
 	:type Confusion: float
 	:rtype: bool") IsLower;

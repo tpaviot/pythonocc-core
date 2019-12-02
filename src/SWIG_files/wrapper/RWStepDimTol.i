@@ -89,13 +89,13 @@ class RWStepDimTol_RWAngularityTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads AngularityTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_AngularityTolerance> &
+	:type ent: StepDimTol_AngularityTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_AngularityTolerance> & ent);
 
@@ -103,9 +103,9 @@ class RWStepDimTol_RWAngularityTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_AngularityTolerance> &
+	:type ent: StepDimTol_AngularityTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_AngularityTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -113,9 +113,9 @@ class RWStepDimTol_RWAngularityTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes AngularityTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_AngularityTolerance> &
+	:type ent: StepDimTol_AngularityTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_AngularityTolerance> & ent);
 
@@ -144,13 +144,13 @@ class RWStepDimTol_RWCircularRunoutTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CircularRunoutTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CircularRunoutTolerance> &
+	:type ent: StepDimTol_CircularRunoutTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_CircularRunoutTolerance> & ent);
 
@@ -158,9 +158,9 @@ class RWStepDimTol_RWCircularRunoutTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CircularRunoutTolerance> &
+	:type ent: StepDimTol_CircularRunoutTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_CircularRunoutTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -168,9 +168,9 @@ class RWStepDimTol_RWCircularRunoutTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CircularRunoutTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CircularRunoutTolerance> &
+	:type ent: StepDimTol_CircularRunoutTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_CircularRunoutTolerance> & ent);
 
@@ -199,13 +199,13 @@ class RWStepDimTol_RWCoaxialityTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CoaxialityTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CoaxialityTolerance> &
+	:type ent: StepDimTol_CoaxialityTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_CoaxialityTolerance> & ent);
 
@@ -213,9 +213,9 @@ class RWStepDimTol_RWCoaxialityTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CoaxialityTolerance> &
+	:type ent: StepDimTol_CoaxialityTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_CoaxialityTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -223,9 +223,9 @@ class RWStepDimTol_RWCoaxialityTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CoaxialityTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CoaxialityTolerance> &
+	:type ent: StepDimTol_CoaxialityTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_CoaxialityTolerance> & ent);
 
@@ -254,13 +254,13 @@ class RWStepDimTol_RWCommonDatum {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CommonDatum
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CommonDatum> &
+	:type ent: StepDimTol_CommonDatum
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_CommonDatum> & ent);
 
@@ -268,9 +268,9 @@ class RWStepDimTol_RWCommonDatum {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CommonDatum> &
+	:type ent: StepDimTol_CommonDatum
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_CommonDatum> & ent,Interface_EntityIterator & iter);
 
@@ -278,9 +278,9 @@ class RWStepDimTol_RWCommonDatum {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CommonDatum
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CommonDatum> &
+	:type ent: StepDimTol_CommonDatum
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_CommonDatum> & ent);
 
@@ -309,13 +309,13 @@ class RWStepDimTol_RWConcentricityTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads ConcentricityTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ConcentricityTolerance> &
+	:type ent: StepDimTol_ConcentricityTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_ConcentricityTolerance> & ent);
 
@@ -323,9 +323,9 @@ class RWStepDimTol_RWConcentricityTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ConcentricityTolerance> &
+	:type ent: StepDimTol_ConcentricityTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_ConcentricityTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -333,9 +333,9 @@ class RWStepDimTol_RWConcentricityTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes ConcentricityTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ConcentricityTolerance> &
+	:type ent: StepDimTol_ConcentricityTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_ConcentricityTolerance> & ent);
 
@@ -364,13 +364,13 @@ class RWStepDimTol_RWCylindricityTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CylindricityTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CylindricityTolerance> &
+	:type ent: StepDimTol_CylindricityTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_CylindricityTolerance> & ent);
 
@@ -378,9 +378,9 @@ class RWStepDimTol_RWCylindricityTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CylindricityTolerance> &
+	:type ent: StepDimTol_CylindricityTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_CylindricityTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -388,9 +388,9 @@ class RWStepDimTol_RWCylindricityTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CylindricityTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_CylindricityTolerance> &
+	:type ent: StepDimTol_CylindricityTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_CylindricityTolerance> & ent);
 
@@ -419,13 +419,13 @@ class RWStepDimTol_RWDatum {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads Datum
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_Datum> &
+	:type ent: StepDimTol_Datum
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_Datum> & ent);
 
@@ -433,9 +433,9 @@ class RWStepDimTol_RWDatum {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_Datum> &
+	:type ent: StepDimTol_Datum
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_Datum> & ent,Interface_EntityIterator & iter);
 
@@ -443,9 +443,9 @@ class RWStepDimTol_RWDatum {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes Datum
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_Datum> &
+	:type ent: StepDimTol_Datum
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_Datum> & ent);
 
@@ -474,13 +474,13 @@ class RWStepDimTol_RWDatumFeature {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads DatumFeature
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumFeature> &
+	:type ent: StepDimTol_DatumFeature
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_DatumFeature> & ent);
 
@@ -488,9 +488,9 @@ class RWStepDimTol_RWDatumFeature {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumFeature> &
+	:type ent: StepDimTol_DatumFeature
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_DatumFeature> & ent,Interface_EntityIterator & iter);
 
@@ -498,9 +498,9 @@ class RWStepDimTol_RWDatumFeature {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes DatumFeature
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumFeature> &
+	:type ent: StepDimTol_DatumFeature
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_DatumFeature> & ent);
 
@@ -529,13 +529,13 @@ class RWStepDimTol_RWDatumReference {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads DatumReference
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReference> &
+	:type ent: StepDimTol_DatumReference
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_DatumReference> & ent);
 
@@ -543,9 +543,9 @@ class RWStepDimTol_RWDatumReference {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReference> &
+	:type ent: StepDimTol_DatumReference
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_DatumReference> & ent,Interface_EntityIterator & iter);
 
@@ -553,9 +553,9 @@ class RWStepDimTol_RWDatumReference {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes DatumReference
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReference> &
+	:type ent: StepDimTol_DatumReference
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_DatumReference> & ent);
 
@@ -584,13 +584,13 @@ class RWStepDimTol_RWDatumReferenceCompartment {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads DatumReferenceElement
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReferenceCompartment> &
+	:type ent: StepDimTol_DatumReferenceCompartment
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_DatumReferenceCompartment> & ent);
 
@@ -598,9 +598,9 @@ class RWStepDimTol_RWDatumReferenceCompartment {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReferenceCompartment> &
+	:type ent: StepDimTol_DatumReferenceCompartment
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_DatumReferenceCompartment> & ent,Interface_EntityIterator & iter);
 
@@ -608,9 +608,9 @@ class RWStepDimTol_RWDatumReferenceCompartment {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes DatumReferenceElement
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReferenceCompartment> &
+	:type ent: StepDimTol_DatumReferenceCompartment
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_DatumReferenceCompartment> & ent);
 
@@ -639,13 +639,13 @@ class RWStepDimTol_RWDatumReferenceElement {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads DatumReferenceElement
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReferenceElement> &
+	:type ent: StepDimTol_DatumReferenceElement
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_DatumReferenceElement> & ent);
 
@@ -653,9 +653,9 @@ class RWStepDimTol_RWDatumReferenceElement {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReferenceElement> &
+	:type ent: StepDimTol_DatumReferenceElement
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_DatumReferenceElement> & ent,Interface_EntityIterator & iter);
 
@@ -663,9 +663,9 @@ class RWStepDimTol_RWDatumReferenceElement {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes DatumReferenceElement
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReferenceElement> &
+	:type ent: StepDimTol_DatumReferenceElement
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_DatumReferenceElement> & ent);
 
@@ -694,13 +694,13 @@ class RWStepDimTol_RWDatumReferenceModifierWithValue {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads DatumReferenceModifierWithValue
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReferenceModifierWithValue> &
+	:type ent: StepDimTol_DatumReferenceModifierWithValue
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_DatumReferenceModifierWithValue> & ent);
 
@@ -708,9 +708,9 @@ class RWStepDimTol_RWDatumReferenceModifierWithValue {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes DatumReferenceModifierWithValue
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumReferenceModifierWithValue> &
+	:type ent: StepDimTol_DatumReferenceModifierWithValue
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_DatumReferenceModifierWithValue> & ent);
 
@@ -739,13 +739,13 @@ class RWStepDimTol_RWDatumSystem {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads DatumSystem
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumSystem> &
+	:type ent: StepDimTol_DatumSystem
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_DatumSystem> & ent);
 
@@ -753,9 +753,9 @@ class RWStepDimTol_RWDatumSystem {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumSystem> &
+	:type ent: StepDimTol_DatumSystem
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_DatumSystem> & ent,Interface_EntityIterator & iter);
 
@@ -763,9 +763,9 @@ class RWStepDimTol_RWDatumSystem {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes DatumSystem
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumSystem> &
+	:type ent: StepDimTol_DatumSystem
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_DatumSystem> & ent);
 
@@ -794,13 +794,13 @@ class RWStepDimTol_RWDatumTarget {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads DatumTarget
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumTarget> &
+	:type ent: StepDimTol_DatumTarget
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_DatumTarget> & ent);
 
@@ -808,9 +808,9 @@ class RWStepDimTol_RWDatumTarget {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumTarget> &
+	:type ent: StepDimTol_DatumTarget
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_DatumTarget> & ent,Interface_EntityIterator & iter);
 
@@ -818,9 +818,9 @@ class RWStepDimTol_RWDatumTarget {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes DatumTarget
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_DatumTarget> &
+	:type ent: StepDimTol_DatumTarget
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_DatumTarget> & ent);
 
@@ -849,13 +849,13 @@ class RWStepDimTol_RWFlatnessTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads FlatnessTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_FlatnessTolerance> &
+	:type ent: StepDimTol_FlatnessTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_FlatnessTolerance> & ent);
 
@@ -863,9 +863,9 @@ class RWStepDimTol_RWFlatnessTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_FlatnessTolerance> &
+	:type ent: StepDimTol_FlatnessTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_FlatnessTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -873,9 +873,9 @@ class RWStepDimTol_RWFlatnessTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes FlatnessTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_FlatnessTolerance> &
+	:type ent: StepDimTol_FlatnessTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_FlatnessTolerance> & ent);
 
@@ -904,13 +904,13 @@ class RWStepDimTol_RWGeneralDatumReference {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads GeneralDatumReference
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeneralDatumReference> &
+	:type ent: StepDimTol_GeneralDatumReference
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeneralDatumReference> & ent);
 
@@ -918,9 +918,9 @@ class RWStepDimTol_RWGeneralDatumReference {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeneralDatumReference> &
+	:type ent: StepDimTol_GeneralDatumReference
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeneralDatumReference> & ent,Interface_EntityIterator & iter);
 
@@ -928,9 +928,9 @@ class RWStepDimTol_RWGeneralDatumReference {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes GeneralDatumReference
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeneralDatumReference> &
+	:type ent: StepDimTol_GeneralDatumReference
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeneralDatumReference> & ent);
 
@@ -957,31 +957,31 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRef {
 		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", ":param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRef> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRef
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRef> & ent);
 
 		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRef> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRef
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRef> & ent,Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", ":param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRef> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRef
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRef> & ent);
 
@@ -1008,31 +1008,31 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
 		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", ":param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> & ent);
 
 		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> & ent,Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", ":param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol> & ent);
 
@@ -1059,31 +1059,31 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
 		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", ":param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> & ent);
 
 		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> & ent,Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", ":param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod> & ent);
 
@@ -1110,31 +1110,31 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
 		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", ":param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol> & ent);
 
 		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol> & ent,Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", ":param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol> & ent);
 
@@ -1161,31 +1161,31 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
 		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", ":param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> & ent);
 
 		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> & ent,Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", ":param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol> & ent);
 
@@ -1212,31 +1212,31 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthMaxTol {
 		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", ":param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthMaxTol
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> & ent);
 
 		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthMaxTol
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> & ent,Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", ":param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthMaxTol
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMaxTol> & ent);
 
@@ -1263,31 +1263,31 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthMod {
 		/****************** ReadStep ******************/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", ":param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMod> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthMod
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMod> & ent);
 
 		/****************** Share ******************/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMod> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthMod
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMod> & ent,Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", ":param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMod> &
+	:type ent: StepDimTol_GeoTolAndGeoTolWthMod
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeoTolAndGeoTolWthMod> & ent);
 
@@ -1316,13 +1316,13 @@ class RWStepDimTol_RWGeometricTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads GeometricTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricTolerance> &
+	:type ent: StepDimTol_GeometricTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeometricTolerance> & ent);
 
@@ -1330,9 +1330,9 @@ class RWStepDimTol_RWGeometricTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricTolerance> &
+	:type ent: StepDimTol_GeometricTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeometricTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -1340,9 +1340,9 @@ class RWStepDimTol_RWGeometricTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes GeometricTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricTolerance> &
+	:type ent: StepDimTol_GeometricTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeometricTolerance> & ent);
 
@@ -1371,13 +1371,13 @@ class RWStepDimTol_RWGeometricToleranceRelationship {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads GeometricToleranceRelationship
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceRelationship> &
+	:type ent: StepDimTol_GeometricToleranceRelationship
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeometricToleranceRelationship> & ent);
 
@@ -1385,9 +1385,9 @@ class RWStepDimTol_RWGeometricToleranceRelationship {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceRelationship> &
+	:type ent: StepDimTol_GeometricToleranceRelationship
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeometricToleranceRelationship> & ent,Interface_EntityIterator & iter);
 
@@ -1395,9 +1395,9 @@ class RWStepDimTol_RWGeometricToleranceRelationship {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes GeometricToleranceRelationship
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceRelationship> &
+	:type ent: StepDimTol_GeometricToleranceRelationship
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeometricToleranceRelationship> & ent);
 
@@ -1426,13 +1426,13 @@ class RWStepDimTol_RWGeometricToleranceWithDatumReference {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads GeometricToleranceWithDatumReference
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> &
+	:type ent: StepDimTol_GeometricToleranceWithDatumReference
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & ent);
 
@@ -1440,9 +1440,9 @@ class RWStepDimTol_RWGeometricToleranceWithDatumReference {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> &
+	:type ent: StepDimTol_GeometricToleranceWithDatumReference
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & ent,Interface_EntityIterator & iter);
 
@@ -1450,9 +1450,9 @@ class RWStepDimTol_RWGeometricToleranceWithDatumReference {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes GeometricToleranceWithDatumReference
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> &
+	:type ent: StepDimTol_GeometricToleranceWithDatumReference
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & ent);
 
@@ -1481,13 +1481,13 @@ class RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads GeometricToleranceWithDefinedAreaUnit
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> &
+	:type ent: StepDimTol_GeometricToleranceWithDefinedAreaUnit
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> & ent);
 
@@ -1495,9 +1495,9 @@ class RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> &
+	:type ent: StepDimTol_GeometricToleranceWithDefinedAreaUnit
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> & ent,Interface_EntityIterator & iter);
 
@@ -1505,9 +1505,9 @@ class RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes GeometricToleranceWithDefinedAreaUnit
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> &
+	:type ent: StepDimTol_GeometricToleranceWithDefinedAreaUnit
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeometricToleranceWithDefinedAreaUnit> & ent);
 
@@ -1536,13 +1536,13 @@ class RWStepDimTol_RWGeometricToleranceWithDefinedUnit {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads GeometricToleranceWithDefinedUnit
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithDefinedUnit> &
+	:type ent: StepDimTol_GeometricToleranceWithDefinedUnit
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeometricToleranceWithDefinedUnit> & ent);
 
@@ -1550,9 +1550,9 @@ class RWStepDimTol_RWGeometricToleranceWithDefinedUnit {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithDefinedUnit> &
+	:type ent: StepDimTol_GeometricToleranceWithDefinedUnit
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeometricToleranceWithDefinedUnit> & ent,Interface_EntityIterator & iter);
 
@@ -1560,9 +1560,9 @@ class RWStepDimTol_RWGeometricToleranceWithDefinedUnit {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes GeometricToleranceWithDefinedUnit
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithDefinedUnit> &
+	:type ent: StepDimTol_GeometricToleranceWithDefinedUnit
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeometricToleranceWithDefinedUnit> & ent);
 
@@ -1591,13 +1591,13 @@ class RWStepDimTol_RWGeometricToleranceWithMaximumTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads GeometricToleranceWithMaximumTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithMaximumTolerance> &
+	:type ent: StepDimTol_GeometricToleranceWithMaximumTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeometricToleranceWithMaximumTolerance> & ent);
 
@@ -1605,9 +1605,9 @@ class RWStepDimTol_RWGeometricToleranceWithMaximumTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithMaximumTolerance> &
+	:type ent: StepDimTol_GeometricToleranceWithMaximumTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeometricToleranceWithMaximumTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -1615,9 +1615,9 @@ class RWStepDimTol_RWGeometricToleranceWithMaximumTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes GeometricToleranceWithMaximumTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithMaximumTolerance> &
+	:type ent: StepDimTol_GeometricToleranceWithMaximumTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeometricToleranceWithMaximumTolerance> & ent);
 
@@ -1646,13 +1646,13 @@ class RWStepDimTol_RWGeometricToleranceWithModifiers {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads GeometricToleranceWithModifiers
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> &
+	:type ent: StepDimTol_GeometricToleranceWithModifiers
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & ent);
 
@@ -1660,9 +1660,9 @@ class RWStepDimTol_RWGeometricToleranceWithModifiers {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> &
+	:type ent: StepDimTol_GeometricToleranceWithModifiers
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & ent,Interface_EntityIterator & iter);
 
@@ -1670,9 +1670,9 @@ class RWStepDimTol_RWGeometricToleranceWithModifiers {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes GeometricToleranceWithModifiers
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> &
+	:type ent: StepDimTol_GeometricToleranceWithModifiers
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & ent);
 
@@ -1701,13 +1701,13 @@ class RWStepDimTol_RWLineProfileTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads LineProfileTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_LineProfileTolerance> &
+	:type ent: StepDimTol_LineProfileTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_LineProfileTolerance> & ent);
 
@@ -1715,9 +1715,9 @@ class RWStepDimTol_RWLineProfileTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_LineProfileTolerance> &
+	:type ent: StepDimTol_LineProfileTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_LineProfileTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -1725,9 +1725,9 @@ class RWStepDimTol_RWLineProfileTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes LineProfileTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_LineProfileTolerance> &
+	:type ent: StepDimTol_LineProfileTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_LineProfileTolerance> & ent);
 
@@ -1756,13 +1756,13 @@ class RWStepDimTol_RWModifiedGeometricTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads ModifiedGeometricTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ModifiedGeometricTolerance> &
+	:type ent: StepDimTol_ModifiedGeometricTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_ModifiedGeometricTolerance> & ent);
 
@@ -1770,9 +1770,9 @@ class RWStepDimTol_RWModifiedGeometricTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ModifiedGeometricTolerance> &
+	:type ent: StepDimTol_ModifiedGeometricTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_ModifiedGeometricTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -1780,9 +1780,9 @@ class RWStepDimTol_RWModifiedGeometricTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes ModifiedGeometricTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ModifiedGeometricTolerance> &
+	:type ent: StepDimTol_ModifiedGeometricTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_ModifiedGeometricTolerance> & ent);
 
@@ -1811,13 +1811,13 @@ class RWStepDimTol_RWNonUniformZoneDefinition {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads NonUniformZoneDefinition
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_NonUniformZoneDefinition> &
+	:type ent: StepDimTol_NonUniformZoneDefinition
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_NonUniformZoneDefinition> & ent);
 
@@ -1825,9 +1825,9 @@ class RWStepDimTol_RWNonUniformZoneDefinition {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_NonUniformZoneDefinition> &
+	:type ent: StepDimTol_NonUniformZoneDefinition
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_NonUniformZoneDefinition> & ent,Interface_EntityIterator & iter);
 
@@ -1835,9 +1835,9 @@ class RWStepDimTol_RWNonUniformZoneDefinition {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes NonUniformZoneDefinition
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_NonUniformZoneDefinition> &
+	:type ent: StepDimTol_NonUniformZoneDefinition
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_NonUniformZoneDefinition> & ent);
 
@@ -1866,13 +1866,13 @@ class RWStepDimTol_RWParallelismTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads ParallelismTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ParallelismTolerance> &
+	:type ent: StepDimTol_ParallelismTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_ParallelismTolerance> & ent);
 
@@ -1880,9 +1880,9 @@ class RWStepDimTol_RWParallelismTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ParallelismTolerance> &
+	:type ent: StepDimTol_ParallelismTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_ParallelismTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -1890,9 +1890,9 @@ class RWStepDimTol_RWParallelismTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes ParallelismTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ParallelismTolerance> &
+	:type ent: StepDimTol_ParallelismTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_ParallelismTolerance> & ent);
 
@@ -1921,13 +1921,13 @@ class RWStepDimTol_RWPerpendicularityTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads PerpendicularityTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_PerpendicularityTolerance> &
+	:type ent: StepDimTol_PerpendicularityTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_PerpendicularityTolerance> & ent);
 
@@ -1935,9 +1935,9 @@ class RWStepDimTol_RWPerpendicularityTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_PerpendicularityTolerance> &
+	:type ent: StepDimTol_PerpendicularityTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_PerpendicularityTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -1945,9 +1945,9 @@ class RWStepDimTol_RWPerpendicularityTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes PerpendicularityTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_PerpendicularityTolerance> &
+	:type ent: StepDimTol_PerpendicularityTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_PerpendicularityTolerance> & ent);
 
@@ -1976,13 +1976,13 @@ class RWStepDimTol_RWPlacedDatumTargetFeature {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads PlacedDatumTargetFeature
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_PlacedDatumTargetFeature> &
+	:type ent: StepDimTol_PlacedDatumTargetFeature
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_PlacedDatumTargetFeature> & ent);
 
@@ -1990,9 +1990,9 @@ class RWStepDimTol_RWPlacedDatumTargetFeature {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_PlacedDatumTargetFeature> &
+	:type ent: StepDimTol_PlacedDatumTargetFeature
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_PlacedDatumTargetFeature> & ent,Interface_EntityIterator & iter);
 
@@ -2000,9 +2000,9 @@ class RWStepDimTol_RWPlacedDatumTargetFeature {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes PlacedDatumTargetFeature
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_PlacedDatumTargetFeature> &
+	:type ent: StepDimTol_PlacedDatumTargetFeature
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_PlacedDatumTargetFeature> & ent);
 
@@ -2031,13 +2031,13 @@ class RWStepDimTol_RWPositionTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads PositionTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_PositionTolerance> &
+	:type ent: StepDimTol_PositionTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_PositionTolerance> & ent);
 
@@ -2045,9 +2045,9 @@ class RWStepDimTol_RWPositionTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_PositionTolerance> &
+	:type ent: StepDimTol_PositionTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_PositionTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -2055,9 +2055,9 @@ class RWStepDimTol_RWPositionTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes PositionTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_PositionTolerance> &
+	:type ent: StepDimTol_PositionTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_PositionTolerance> & ent);
 
@@ -2086,13 +2086,13 @@ class RWStepDimTol_RWProjectedZoneDefinition {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads ProjectedZoneDefinition
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ProjectedZoneDefinition> &
+	:type ent: StepDimTol_ProjectedZoneDefinition
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_ProjectedZoneDefinition> & ent);
 
@@ -2100,9 +2100,9 @@ class RWStepDimTol_RWProjectedZoneDefinition {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ProjectedZoneDefinition> &
+	:type ent: StepDimTol_ProjectedZoneDefinition
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_ProjectedZoneDefinition> & ent,Interface_EntityIterator & iter);
 
@@ -2110,9 +2110,9 @@ class RWStepDimTol_RWProjectedZoneDefinition {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes ProjectedZoneDefinition
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ProjectedZoneDefinition> &
+	:type ent: StepDimTol_ProjectedZoneDefinition
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_ProjectedZoneDefinition> & ent);
 
@@ -2141,13 +2141,13 @@ class RWStepDimTol_RWRoundnessTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads RoundnessTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_RoundnessTolerance> &
+	:type ent: StepDimTol_RoundnessTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_RoundnessTolerance> & ent);
 
@@ -2155,9 +2155,9 @@ class RWStepDimTol_RWRoundnessTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_RoundnessTolerance> &
+	:type ent: StepDimTol_RoundnessTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_RoundnessTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -2165,9 +2165,9 @@ class RWStepDimTol_RWRoundnessTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes RoundnessTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_RoundnessTolerance> &
+	:type ent: StepDimTol_RoundnessTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_RoundnessTolerance> & ent);
 
@@ -2196,13 +2196,13 @@ class RWStepDimTol_RWRunoutZoneDefinition {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads RunoutZoneDefinition
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_RunoutZoneDefinition> &
+	:type ent: StepDimTol_RunoutZoneDefinition
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_RunoutZoneDefinition> & ent);
 
@@ -2210,9 +2210,9 @@ class RWStepDimTol_RWRunoutZoneDefinition {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_RunoutZoneDefinition> &
+	:type ent: StepDimTol_RunoutZoneDefinition
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_RunoutZoneDefinition> & ent,Interface_EntityIterator & iter);
 
@@ -2220,9 +2220,9 @@ class RWStepDimTol_RWRunoutZoneDefinition {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes RunoutZoneDefinition
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_RunoutZoneDefinition> &
+	:type ent: StepDimTol_RunoutZoneDefinition
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_RunoutZoneDefinition> & ent);
 
@@ -2251,13 +2251,13 @@ class RWStepDimTol_RWRunoutZoneOrientation {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads RunoutZoneOrientation
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_RunoutZoneOrientation> &
+	:type ent: StepDimTol_RunoutZoneOrientation
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_RunoutZoneOrientation> & ent);
 
@@ -2265,9 +2265,9 @@ class RWStepDimTol_RWRunoutZoneOrientation {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes RunoutZoneOrientation
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_RunoutZoneOrientation> &
+	:type ent: StepDimTol_RunoutZoneOrientation
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_RunoutZoneOrientation> & ent);
 
@@ -2296,13 +2296,13 @@ class RWStepDimTol_RWStraightnessTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads StraightnessTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_StraightnessTolerance> &
+	:type ent: StepDimTol_StraightnessTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_StraightnessTolerance> & ent);
 
@@ -2310,9 +2310,9 @@ class RWStepDimTol_RWStraightnessTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_StraightnessTolerance> &
+	:type ent: StepDimTol_StraightnessTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_StraightnessTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -2320,9 +2320,9 @@ class RWStepDimTol_RWStraightnessTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes StraightnessTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_StraightnessTolerance> &
+	:type ent: StepDimTol_StraightnessTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_StraightnessTolerance> & ent);
 
@@ -2351,13 +2351,13 @@ class RWStepDimTol_RWSurfaceProfileTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads SurfaceProfileTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_SurfaceProfileTolerance> &
+	:type ent: StepDimTol_SurfaceProfileTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_SurfaceProfileTolerance> & ent);
 
@@ -2365,9 +2365,9 @@ class RWStepDimTol_RWSurfaceProfileTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_SurfaceProfileTolerance> &
+	:type ent: StepDimTol_SurfaceProfileTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_SurfaceProfileTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -2375,9 +2375,9 @@ class RWStepDimTol_RWSurfaceProfileTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes SurfaceProfileTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_SurfaceProfileTolerance> &
+	:type ent: StepDimTol_SurfaceProfileTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_SurfaceProfileTolerance> & ent);
 
@@ -2406,13 +2406,13 @@ class RWStepDimTol_RWSymmetryTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads SymmetryTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_SymmetryTolerance> &
+	:type ent: StepDimTol_SymmetryTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_SymmetryTolerance> & ent);
 
@@ -2420,9 +2420,9 @@ class RWStepDimTol_RWSymmetryTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_SymmetryTolerance> &
+	:type ent: StepDimTol_SymmetryTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_SymmetryTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -2430,9 +2430,9 @@ class RWStepDimTol_RWSymmetryTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes SymmetryTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_SymmetryTolerance> &
+	:type ent: StepDimTol_SymmetryTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_SymmetryTolerance> & ent);
 
@@ -2461,13 +2461,13 @@ class RWStepDimTol_RWToleranceZone {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads ToleranceZone
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ToleranceZone> &
+	:type ent: StepDimTol_ToleranceZone
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_ToleranceZone> & ent);
 
@@ -2475,9 +2475,9 @@ class RWStepDimTol_RWToleranceZone {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ToleranceZone> &
+	:type ent: StepDimTol_ToleranceZone
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_ToleranceZone> & ent,Interface_EntityIterator & iter);
 
@@ -2485,9 +2485,9 @@ class RWStepDimTol_RWToleranceZone {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes ToleranceZone
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ToleranceZone> &
+	:type ent: StepDimTol_ToleranceZone
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_ToleranceZone> & ent);
 
@@ -2516,13 +2516,13 @@ class RWStepDimTol_RWToleranceZoneDefinition {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads ToleranceZoneDefinition
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ToleranceZoneDefinition> &
+	:type ent: StepDimTol_ToleranceZoneDefinition
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_ToleranceZoneDefinition> & ent);
 
@@ -2530,9 +2530,9 @@ class RWStepDimTol_RWToleranceZoneDefinition {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ToleranceZoneDefinition> &
+	:type ent: StepDimTol_ToleranceZoneDefinition
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_ToleranceZoneDefinition> & ent,Interface_EntityIterator & iter);
 
@@ -2540,9 +2540,9 @@ class RWStepDimTol_RWToleranceZoneDefinition {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes ToleranceZoneDefinition
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ToleranceZoneDefinition> &
+	:type ent: StepDimTol_ToleranceZoneDefinition
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_ToleranceZoneDefinition> & ent);
 
@@ -2571,13 +2571,13 @@ class RWStepDimTol_RWToleranceZoneForm {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads ToleranceZoneForm
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ToleranceZoneForm> &
+	:type ent: StepDimTol_ToleranceZoneForm
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_ToleranceZoneForm> & ent);
 
@@ -2585,9 +2585,9 @@ class RWStepDimTol_RWToleranceZoneForm {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes ToleranceZoneForm
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_ToleranceZoneForm> &
+	:type ent: StepDimTol_ToleranceZoneForm
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_ToleranceZoneForm> & ent);
 
@@ -2616,13 +2616,13 @@ class RWStepDimTol_RWTotalRunoutTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads TotalRunoutTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_TotalRunoutTolerance> &
+	:type ent: StepDimTol_TotalRunoutTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_TotalRunoutTolerance> & ent);
 
@@ -2630,9 +2630,9 @@ class RWStepDimTol_RWTotalRunoutTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_TotalRunoutTolerance> &
+	:type ent: StepDimTol_TotalRunoutTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_TotalRunoutTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -2640,9 +2640,9 @@ class RWStepDimTol_RWTotalRunoutTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes TotalRunoutTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_TotalRunoutTolerance> &
+	:type ent: StepDimTol_TotalRunoutTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_TotalRunoutTolerance> & ent);
 
@@ -2671,13 +2671,13 @@ class RWStepDimTol_RWUnequallyDisposedGeometricTolerance {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads UnequallyDisposedGeometricTolerance
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> &
+	:type ent: StepDimTol_UnequallyDisposedGeometricTolerance
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> & ent);
 
@@ -2685,9 +2685,9 @@ class RWStepDimTol_RWUnequallyDisposedGeometricTolerance {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> &
+	:type ent: StepDimTol_UnequallyDisposedGeometricTolerance
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> & ent,Interface_EntityIterator & iter);
 
@@ -2695,9 +2695,9 @@ class RWStepDimTol_RWUnequallyDisposedGeometricTolerance {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes UnequallyDisposedGeometricTolerance
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> &
+	:type ent: StepDimTol_UnequallyDisposedGeometricTolerance
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> & ent);
 

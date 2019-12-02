@@ -90,7 +90,7 @@ class GeomAPI {
 		%feature("compactdefaultargs") To2d;
 		%feature("autodoc", "* This function builds (in the parametric space of the plane P) a 2D curve equivalent to the 3D curve C. The 3D curve C is considered to be located in the plane P. Warning The 3D curve C must be of one of the following types: - a line - a circle - an ellipse - a hyperbola - a parabola - a Bezier curve - a BSpline curve Exceptions Standard_NoSuchObject if C is not a defined type curve.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param P:
 	:type P: gp_Pln
 	:rtype: opencascade::handle<Geom2d_Curve>") To2d;
@@ -100,7 +100,7 @@ class GeomAPI {
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "* Builds a 3D curve equivalent to the 2D curve C described in the parametric space defined by the local coordinate system of plane P. The resulting 3D curve is of the same nature as that of the curve C.
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param P:
 	:type P: gp_Pln
 	:rtype: opencascade::handle<Geom_Curve>") To3d;
@@ -145,9 +145,9 @@ class GeomAPI_ExtremaCurveCurve {
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveCurve;
 		%feature("autodoc", "* Computes the extrema between the curves C1 and C2.
 	:param C1:
-	:type C1: opencascade::handle<Geom_Curve> &
+	:type C1: Geom_Curve
 	:param C2:
-	:type C2: opencascade::handle<Geom_Curve> &
+	:type C2: Geom_Curve
 	:rtype: None") GeomAPI_ExtremaCurveCurve;
 		 GeomAPI_ExtremaCurveCurve (const opencascade::handle<Geom_Curve> & C1,const opencascade::handle<Geom_Curve> & C2);
 
@@ -155,9 +155,9 @@ class GeomAPI_ExtremaCurveCurve {
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveCurve;
 		%feature("autodoc", "* Computes the portion of the curve C1 limited by the two points of parameter (U1min,U1max), and - the portion of the curve C2 limited by the two points of parameter (U2min,U2max). Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 	:param C1:
-	:type C1: opencascade::handle<Geom_Curve> &
+	:type C1: Geom_Curve
 	:param C2:
-	:type C2: opencascade::handle<Geom_Curve> &
+	:type C2: Geom_Curve
 	:param U1min:
 	:type U1min: float
 	:param U1max:
@@ -173,9 +173,9 @@ class GeomAPI_ExtremaCurveCurve {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this algorithm with the given arguments and computes the extrema between the curves C1 and C2
 	:param C1:
-	:type C1: opencascade::handle<Geom_Curve> &
+	:type C1: Geom_Curve
 	:param C2:
-	:type C2: opencascade::handle<Geom_Curve> &
+	:type C2: Geom_Curve
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Curve> & C1,const opencascade::handle<Geom_Curve> & C2);
 
@@ -183,9 +183,9 @@ class GeomAPI_ExtremaCurveCurve {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this algorithm with the given arguments and computes the extrema between : - the portion of the curve C1 limited by the two points of parameter (U1min,U1max), and - the portion of the curve C2 limited by the two points of parameter (U2min,U2max). Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 	:param C1:
-	:type C1: opencascade::handle<Geom_Curve> &
+	:type C1: Geom_Curve
 	:param C2:
-	:type C2: opencascade::handle<Geom_Curve> &
+	:type C2: Geom_Curve
 	:param U1min:
 	:type U1min: float
 	:param U1max:
@@ -207,9 +207,9 @@ class GeomAPI_ExtremaCurveCurve {
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "* Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: None") LowerDistanceParameters;
 		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -235,9 +235,9 @@ class GeomAPI_ExtremaCurveCurve {
 	:param Index:
 	:type Index: int
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -263,9 +263,9 @@ class GeomAPI_ExtremaCurveCurve {
 		%feature("compactdefaultargs") TotalLowerDistanceParameters;
 		%feature("autodoc", "* set in <U1> and <U2> the parameters of the couple solution points which represents the total nearest solution.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: bool") TotalLowerDistanceParameters;
 		Standard_Boolean TotalLowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -328,9 +328,9 @@ class GeomAPI_ExtremaCurveSurface {
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveSurface;
 		%feature("autodoc", "* Computes the extrema distances between the curve <C> and the surface <S>.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:rtype: None") GeomAPI_ExtremaCurveSurface;
 		 GeomAPI_ExtremaCurveSurface (const opencascade::handle<Geom_Curve> & Curve,const opencascade::handle<Geom_Surface> & Surface);
 
@@ -338,9 +338,9 @@ class GeomAPI_ExtremaCurveSurface {
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveSurface;
 		%feature("autodoc", "* Computes the extrema distances between the curve <C> and the surface <S>. The solution point are computed in the domain [Wmin,Wmax] of the curve and in the domain [Umin,Umax] [Vmin,Vmax] of the surface. Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Wmin:
 	:type Wmin: float
 	:param Wmax:
@@ -360,9 +360,9 @@ class GeomAPI_ExtremaCurveSurface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Computes the extrema distances between the curve <C> and the surface <S>.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Curve> & Curve,const opencascade::handle<Geom_Surface> & Surface);
 
@@ -370,9 +370,9 @@ class GeomAPI_ExtremaCurveSurface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Computes the extrema distances between the curve <C> and the surface <S>. The solution point are computed in the domain [Wmin,Wmax] of the curve and in the domain [Umin,Umax] [Vmin,Vmax] of the surface. Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Wmin:
 	:type Wmin: float
 	:param Wmax:
@@ -398,11 +398,11 @@ class GeomAPI_ExtremaCurveSurface {
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "* Returns the parameters W of the point on the curve and (U,V) of the point on the surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
 	:param W:
-	:type W: float &
+	:type W: float
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") LowerDistanceParameters;
 		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -428,11 +428,11 @@ class GeomAPI_ExtremaCurveSurface {
 	:param Index:
 	:type Index: int
 	:param W:
-	:type W: float &
+	:type W: float
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -497,9 +497,9 @@ class GeomAPI_ExtremaSurfaceSurface {
 		%feature("compactdefaultargs") GeomAPI_ExtremaSurfaceSurface;
 		%feature("autodoc", "* Computes the extrema distances between the surfaces <S1> and <S2>
 	:param S1:
-	:type S1: opencascade::handle<Geom_Surface> &
+	:type S1: Geom_Surface
 	:param S2:
-	:type S2: opencascade::handle<Geom_Surface> &
+	:type S2: Geom_Surface
 	:rtype: None") GeomAPI_ExtremaSurfaceSurface;
 		 GeomAPI_ExtremaSurfaceSurface (const opencascade::handle<Geom_Surface> & S1,const opencascade::handle<Geom_Surface> & S2);
 
@@ -507,9 +507,9 @@ class GeomAPI_ExtremaSurfaceSurface {
 		%feature("compactdefaultargs") GeomAPI_ExtremaSurfaceSurface;
 		%feature("autodoc", "* Computes the extrema distances between the portion of the surface S1 limited by the two values of parameter (U1min,U1max) in the u parametric direction, and by the two values of parameter (V1min,V1max) in the v parametric direction, and - the portion of the surface S2 limited by the two values of parameter (U2min,U2max) in the u parametric direction, and by the two values of parameter (V2min,V2max) in the v parametric direction.
 	:param S1:
-	:type S1: opencascade::handle<Geom_Surface> &
+	:type S1: Geom_Surface
 	:param S2:
-	:type S2: opencascade::handle<Geom_Surface> &
+	:type S2: Geom_Surface
 	:param U1min:
 	:type U1min: float
 	:param U1max:
@@ -533,9 +533,9 @@ class GeomAPI_ExtremaSurfaceSurface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this algorithm with the given arguments and computes the extrema distances between the surfaces <S1> and <S2>
 	:param S1:
-	:type S1: opencascade::handle<Geom_Surface> &
+	:type S1: Geom_Surface
 	:param S2:
-	:type S2: opencascade::handle<Geom_Surface> &
+	:type S2: Geom_Surface
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom_Surface> & S1,const opencascade::handle<Geom_Surface> & S2);
 
@@ -543,9 +543,9 @@ class GeomAPI_ExtremaSurfaceSurface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes this algorithm with the given arguments and computes the extrema distances between - the portion of the surface S1 limited by the two values of parameter (U1min,U1max) in the u parametric direction, and by the two values of parameter (V1min,V1max) in the v parametric direction, and - the portion of the surface S2 limited by the two values of parameter (U2min,U2max) in the u parametric direction, and by the two values of parameter (V2min,V2max) in the v parametric direction.
 	:param S1:
-	:type S1: opencascade::handle<Geom_Surface> &
+	:type S1: Geom_Surface
 	:param S2:
-	:type S2: opencascade::handle<Geom_Surface> &
+	:type S2: Geom_Surface
 	:param U1min:
 	:type U1min: float
 	:param U1max:
@@ -575,13 +575,13 @@ class GeomAPI_ExtremaSurfaceSurface {
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "* Returns the parameters (U1,V1) of the point on the first surface and (U2,V2) of the point on the second surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") LowerDistanceParameters;
 		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -607,13 +607,13 @@ class GeomAPI_ExtremaSurfaceSurface {
 	:param Index:
 	:type Index: int
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -664,9 +664,9 @@ class GeomAPI_IntCS {
 		%feature("compactdefaultargs") GeomAPI_IntCS;
 		%feature("autodoc", "* Computes the intersections between the curve C and the surface S. Warning Use function IsDone to verify that the intersections are computed successfully.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") GeomAPI_IntCS;
 		 GeomAPI_IntCS (const opencascade::handle<Geom_Curve> & C,const opencascade::handle<Geom_Surface> & S);
 
@@ -694,11 +694,11 @@ class GeomAPI_IntCS {
 	:param Index:
 	:type Index: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param W:
-	:type W: float &
+	:type W: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -708,13 +708,13 @@ class GeomAPI_IntCS {
 	:param Index:
 	:type Index: int
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -722,9 +722,9 @@ class GeomAPI_IntCS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* This function Initializes an algorithm with the curve C and the surface S and computes the intersections between C and S. Warning Use function IsDone to verify that the intersections are computed successfully.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Geom_Curve> & C,const opencascade::handle<Geom_Surface> & S);
 
@@ -769,9 +769,9 @@ class GeomAPI_IntSS {
 		%feature("compactdefaultargs") GeomAPI_IntSS;
 		%feature("autodoc", "* Computes the intersection curves between the two surfaces S1 and S2. Parameter Tol defines the precision of curves computation. For most cases the value 1.0e-7 is recommended to use. Warning Use the function IsDone to verify that the intersections are successfully computed.I
 	:param S1:
-	:type S1: opencascade::handle<Geom_Surface> &
+	:type S1: Geom_Surface
 	:param S2:
-	:type S2: opencascade::handle<Geom_Surface> &
+	:type S2: Geom_Surface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GeomAPI_IntSS;
@@ -801,9 +801,9 @@ class GeomAPI_IntSS {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Initializes an algorithm with the given arguments and computes the intersection curves between the two surfaces S1 and S2. Parameter Tol defines the precision of curves computation. For most cases the value 1.0e-7 is recommended to use. Warning Use function IsDone to verify that the intersections are successfully computed.
 	:param S1:
-	:type S1: opencascade::handle<Geom_Surface> &
+	:type S1: Geom_Surface
 	:param S2:
-	:type S2: opencascade::handle<Geom_Surface> &
+	:type S2: Geom_Surface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Perform;
@@ -834,7 +834,7 @@ class GeomAPI_Interpolate {
 		%feature("compactdefaultargs") GeomAPI_Interpolate;
 		%feature("autodoc", "* Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: - points are not too close to each other, or - tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be 'C2' continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only 'C1' continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning - There must be at least 2 points in the table Points. - If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. - If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions - Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. - Standard_OutOfRange if: - there are less than two points in the table Points, or - conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected.
 	:param Points:
-	:type Points: opencascade::handle<TColgp_HArray1OfPnt>
+	:type Points: TColgp_HArray1OfPnt
 	:param PeriodicFlag:
 	:type PeriodicFlag: bool
 	:param Tolerance:
@@ -846,9 +846,9 @@ class GeomAPI_Interpolate {
 		%feature("compactdefaultargs") GeomAPI_Interpolate;
 		%feature("autodoc", "* Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points, where the parameters of each of its points are given by the parallel table Parameters. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: - points are not too close to each other, or - tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be 'C2' continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only 'C1' continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning - There must be at least 2 points in the table Points. - If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. - If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions - Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. - Standard_OutOfRange if: - there are less than two points in the table Points, or - conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected.
 	:param Points:
-	:type Points: opencascade::handle<TColgp_HArray1OfPnt>
+	:type Points: TColgp_HArray1OfPnt
 	:param Parameters:
-	:type Parameters: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Parameters: TColStd_HArray1OfReal
 	:param PeriodicFlag:
 	:type PeriodicFlag: bool
 	:param Tolerance:
@@ -880,7 +880,7 @@ class GeomAPI_Interpolate {
 	:param Tangents:
 	:type Tangents: TColgp_Array1OfVec
 	:param TangentFlags:
-	:type TangentFlags: opencascade::handle<TColStd_HArray1OfBoolean> &
+	:type TangentFlags: TColStd_HArray1OfBoolean
 	:param Scale: default value is Standard_True
 	:type Scale: bool
 	:rtype: None") Load;
@@ -959,7 +959,7 @@ class GeomAPI_PointsToBSpline {
 	:param Points:
 	:type Points: TColgp_Array1OfPnt
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param DegMin: default value is 3
 	:type DegMin: int
 	:param DegMax: default value is 8
@@ -1031,7 +1031,7 @@ class GeomAPI_PointsToBSpline {
 	:param Points:
 	:type Points: TColgp_Array1OfPnt
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param DegMin: default value is 3
 	:type DegMin: int
 	:param DegMax: default value is 8
@@ -1147,7 +1147,7 @@ class GeomAPI_PointsToBSplineSurface {
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
 		%feature("autodoc", "* Approximates a BSpline Surface passing through an array of Points. //! The points will be constructed as follow: P(i,j) = gp_Pnt( X0 + (i-1)*dX , Y0 + (j-1)*dY , ZPoints(i,j) ) //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D 4- the parametrization of the surface will verify: S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
 	:param ZPoints:
-	:type ZPoints: TColStd_Array2OfReal &
+	:type ZPoints: TColStd_Array2OfReal
 	:param X0:
 	:type X0: float
 	:param dX:
@@ -1187,7 +1187,7 @@ class GeomAPI_PointsToBSplineSurface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Approximates a BSpline Surface passing through an array of Points. //! The points will be constructed as follow: P(i,j) = gp_Pnt( X0 + (i-1)*dX , Y0 + (j-1)*dY , ZPoints(i,j) ) //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D 4- the parametrization of the surface will verify: S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
 	:param ZPoints:
-	:type ZPoints: TColStd_Array2OfReal &
+	:type ZPoints: TColStd_Array2OfReal
 	:param X0:
 	:type X0: float
 	:param dX:
@@ -1273,7 +1273,7 @@ class GeomAPI_PointsToBSplineSurface {
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "* Interpolates a BSpline Surface passing through an array of Points. //! The points will be constructed as follow: P(i,j) = gp_Pnt( X0 + (i-1)*dX , Y0 + (j-1)*dY , ZPoints(i,j) ) //! The resulting BSpline will have the following properties: 1- his degree will be 3 2- his continuity will be C2. 4- the parametrization of the surface will verify: S->Value( U, V) = gp_Pnt( U, V, Z(U,V) );
 	:param ZPoints:
-	:type ZPoints: TColStd_Array2OfReal &
+	:type ZPoints: TColStd_Array2OfReal
 	:param X0:
 	:type X0: float
 	:param dX:
@@ -1337,7 +1337,7 @@ class GeomAPI_ProjectPointOnCurve {
 	:param P:
 	:type P: gp_Pnt
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:rtype: None") GeomAPI_ProjectPointOnCurve;
 		 GeomAPI_ProjectPointOnCurve (const gp_Pnt & P,const opencascade::handle<Geom_Curve> & Curve);
 
@@ -1347,7 +1347,7 @@ class GeomAPI_ProjectPointOnCurve {
 	:param P:
 	:type P: gp_Pnt
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -1361,7 +1361,7 @@ class GeomAPI_ProjectPointOnCurve {
 	:param P:
 	:type P: gp_Pnt
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:rtype: None") Init;
 		void Init (const gp_Pnt & P,const opencascade::handle<Geom_Curve> & Curve);
 
@@ -1371,7 +1371,7 @@ class GeomAPI_ProjectPointOnCurve {
 	:param P:
 	:type P: gp_Pnt
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -1383,7 +1383,7 @@ class GeomAPI_ProjectPointOnCurve {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Init the projection of a point <P> on a curve <Curve> limited by the two points of parameter Umin and Usup.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -1429,7 +1429,7 @@ class GeomAPI_ProjectPointOnCurve {
 	:param Index:
 	:type Index: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:rtype: None") Parameter;
 		void Parameter (const Standard_Integer Index,Standard_Real &OutValue);
 
@@ -1505,7 +1505,7 @@ class GeomAPI_ProjectPointOnSurf {
 	:param P:
 	:type P: gp_Pnt
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Algo: default value is Extrema_ExtAlgo_Grad
 	:type Algo: Extrema_ExtAlgo
 	:rtype: None") GeomAPI_ProjectPointOnSurf;
@@ -1517,7 +1517,7 @@ class GeomAPI_ProjectPointOnSurf {
 	:param P:
 	:type P: gp_Pnt
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Tolerance:
 	:type Tolerance: float
 	:param Algo: default value is Extrema_ExtAlgo_Grad
@@ -1530,7 +1530,7 @@ class GeomAPI_ProjectPointOnSurf {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -1552,7 +1552,7 @@ class GeomAPI_ProjectPointOnSurf {
 	:param P:
 	:type P: gp_Pnt
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -1571,7 +1571,7 @@ class GeomAPI_ProjectPointOnSurf {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Tolerance:
 	:type Tolerance: float
 	:param Algo: default value is Extrema_ExtAlgo_Grad
@@ -1585,7 +1585,7 @@ class GeomAPI_ProjectPointOnSurf {
 	:param P:
 	:type P: gp_Pnt
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Algo: default value is Extrema_ExtAlgo_Grad
 	:type Algo: Extrema_ExtAlgo
 	:rtype: None") Init;
@@ -1596,7 +1596,7 @@ class GeomAPI_ProjectPointOnSurf {
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -1618,7 +1618,7 @@ class GeomAPI_ProjectPointOnSurf {
 	:param P:
 	:type P: gp_Pnt
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -1635,7 +1635,7 @@ class GeomAPI_ProjectPointOnSurf {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -1654,7 +1654,7 @@ class GeomAPI_ProjectPointOnSurf {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -1683,9 +1683,9 @@ class GeomAPI_ProjectPointOnSurf {
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "* Returns the parameters (U,V) on the surface of the nearest computed orthogonal projection of the point. Exceptions StdFail_NotDone if projection fails.
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") LowerDistanceParameters;
 		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1707,9 +1707,9 @@ class GeomAPI_ProjectPointOnSurf {
 	:param Index:
 	:type Index: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 

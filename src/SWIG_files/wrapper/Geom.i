@@ -284,7 +284,7 @@ class Geom_OsculatingSurface : public Standard_Transient {
 		%feature("compactdefaultargs") Geom_OsculatingSurface;
 		%feature("autodoc", "* detects if the surface has punctual U or V isoparametric curve along on the bounds of the surface relativly to the tolerance Tol and Builds the corresponding osculating surfaces.
 	:param BS:
-	:type BS: opencascade::handle<Geom_Surface> &
+	:type BS: Geom_Surface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Geom_OsculatingSurface;
@@ -293,7 +293,7 @@ class Geom_OsculatingSurface : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param BS:
-	:type BS: opencascade::handle<Geom_Surface> &
+	:type BS: Geom_Surface
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Init;
@@ -314,7 +314,7 @@ class Geom_OsculatingSurface : public Standard_Transient {
 	:param t:
 	:type t: bool
 	:param L:
-	:type L: opencascade::handle<Geom_BSplineSurface> &
+	:type L: Geom_BSplineSurface
 	:rtype: bool") UOscSurf;
 		Standard_Boolean UOscSurf (const Standard_Real U,const Standard_Real V,Standard_Boolean &OutValue,opencascade::handle<Geom_BSplineSurface> & L);
 
@@ -328,7 +328,7 @@ class Geom_OsculatingSurface : public Standard_Transient {
 	:param t:
 	:type t: bool
 	:param L:
-	:type L: opencascade::handle<Geom_BSplineSurface> &
+	:type L: Geom_BSplineSurface
 	:rtype: bool") VOscSurf;
 		Standard_Boolean VOscSurf (const Standard_Real U,const Standard_Real V,Standard_Boolean &OutValue,opencascade::handle<Geom_BSplineSurface> & L);
 
@@ -397,7 +397,7 @@ class Geom_Transformation : public Standard_Transient {
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* Computes the transformation composed with Other and <self>. <self> * Other. Returns a new transformation
 	:param Other:
-	:type Other: opencascade::handle<Geom_Transformation> &
+	:type Other: Geom_Transformation
 	:rtype: Standard_NODISCARD opencascade::handle<Geom_Transformation>") Multiplied;
 		Standard_NODISCARD opencascade::handle<Geom_Transformation> Multiplied (const opencascade::handle<Geom_Transformation> & Other);
 
@@ -405,7 +405,7 @@ class Geom_Transformation : public Standard_Transient {
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "* Computes the transformation composed with Other and <self> . <self> = <self> * Other.
 	:param theOther:
-	:type theOther: opencascade::handle<Geom_Transformation> &
+	:type theOther: Geom_Transformation
 	:rtype: None") Multiply;
 		void Multiply (const opencascade::handle<Geom_Transformation> & theOther);
 
@@ -429,7 +429,7 @@ class Geom_Transformation : public Standard_Transient {
 		%feature("compactdefaultargs") PreMultiply;
 		%feature("autodoc", "* Computes the matrix of the transformation composed with <self> and Other. <self> = Other * <self>
 	:param Other:
-	:type Other: opencascade::handle<Geom_Transformation> &
+	:type Other: Geom_Transformation
 	:rtype: None") PreMultiply;
 		void PreMultiply (const opencascade::handle<Geom_Transformation> & Other);
 
@@ -531,11 +531,11 @@ class Geom_Transformation : public Standard_Transient {
 		%feature("compactdefaultargs") Transforms;
 		%feature("autodoc", "* Applies the transformation <self> to the triplet {X, Y, Z}.
 	:param theX:
-	:type theX: float &
+	:type theX: float
 	:param theY:
-	:type theY: float &
+	:type theY: float
 	:param theZ:
-	:type theZ: float &
+	:type theZ: float
 	:rtype: None") Transforms;
 		void Transforms (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -576,7 +576,7 @@ class Geom_AxisPlacement : public Geom_Geometry {
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "* Computes the angular value, in radians, between the 'main Direction' of this positioning system and that of positioning system Other. The result is a value between 0 and Pi.
 	:param Other:
-	:type Other: opencascade::handle<Geom_AxisPlacement> &
+	:type Other: Geom_AxisPlacement
 	:rtype: float") Angle;
 		Standard_Real Angle (const opencascade::handle<Geom_AxisPlacement> & Other);
 
@@ -812,11 +812,11 @@ class Geom_Point : public Geom_Geometry {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* returns the Coordinates of <self>.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: void") Coord;
 		virtual void Coord (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -824,7 +824,7 @@ class Geom_Point : public Geom_Geometry {
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "* Computes the distance between <self> and <Other>.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Point> &
+	:type Other: Geom_Point
 	:rtype: float") Distance;
 		Standard_Real Distance (const opencascade::handle<Geom_Point> & Other);
 
@@ -838,7 +838,7 @@ class Geom_Point : public Geom_Geometry {
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "* Computes the square distance between <self> and <Other>.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Point> &
+	:type Other: Geom_Point
 	:rtype: float") SquareDistance;
 		Standard_Real SquareDistance (const opencascade::handle<Geom_Point> & Other);
 
@@ -881,13 +881,13 @@ class Geom_Surface : public Geom_Geometry {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds U1, U2, V1 and V2 of this surface. If the surface is infinite, this function can return a value equal to Precision::Infinite: instead of Standard_Real::LastReal.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: void") Bounds;
 		virtual void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1043,9 +1043,9 @@ class Geom_Surface : public Geom_Geometry {
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. //! me->Transformed(T)->Value(U',V') //! is the same point as //! me->Value(U,V).Transformed(T) //! Where U',V' are the new values of U,V after calling //! me->TranformParameters(U,V,T) //! This methods does not change <U> and <V> //! It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param T:
 	:type T: gp_Trsf
 	:rtype: void") TransformParameters;
@@ -1150,7 +1150,7 @@ class Geom_Vector : public Geom_Geometry {
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "* Computes the angular value, in radians, between this vector and vector Other. The result is a value between 0 and Pi. Exceptions gp_VectorWithNullMagnitude if: - the magnitude of this vector is less than or equal to gp::Resolution(), or - the magnitude of vector Other is less than or equal to gp::Resolution().
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: float") Angle;
 		Standard_Real Angle (const opencascade::handle<Geom_Vector> & Other);
 
@@ -1158,9 +1158,9 @@ class Geom_Vector : public Geom_Geometry {
 		%feature("compactdefaultargs") AngleWithRef;
 		%feature("autodoc", "* Computes the angular value, in radians, between this vector and vector Other. The result is a value between -Pi and Pi. The vector VRef defines the positive sense of rotation: the angular value is positive if the cross product this ^ Other has the same orientation as VRef (in relation to the plane defined by this vector and vector Other). Otherwise, it is negative. Exceptions Standard_DomainError if this vector, vector Other and vector VRef are coplanar, except if this vector and vector Other are parallel. gp_VectorWithNullMagnitude if the magnitude of this vector, vector Other or vector VRef is less than or equal to gp::Resolution().
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:param VRef:
-	:type VRef: opencascade::handle<Geom_Vector> &
+	:type VRef: Geom_Vector
 	:rtype: float") AngleWithRef;
 		Standard_Real AngleWithRef (const opencascade::handle<Geom_Vector> & Other,const opencascade::handle<Geom_Vector> & VRef);
 
@@ -1168,11 +1168,11 @@ class Geom_Vector : public Geom_Geometry {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* Returns the coordinates X, Y and Z of this vector.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1180,7 +1180,7 @@ class Geom_Vector : public Geom_Geometry {
 		%feature("compactdefaultargs") Cross;
 		%feature("autodoc", "* Computes the cross product between <self> and <Other>. //! Raised if <self> is a 'Direction' and if <self> and <Other> are parallel because it is not possible to build a 'Direction' with null length.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: void") Cross;
 		virtual void Cross (const opencascade::handle<Geom_Vector> & Other);
 
@@ -1188,9 +1188,9 @@ class Geom_Vector : public Geom_Geometry {
 		%feature("compactdefaultargs") CrossCross;
 		%feature("autodoc", "* Computes the triple vector product <self> ^(V1 ^ V2). //! Raised if <self> is a 'Direction' and if V1 and V2 are parallel or <self> and (V1 ^ V2) are parallel
 	:param V1:
-	:type V1: opencascade::handle<Geom_Vector> &
+	:type V1: Geom_Vector
 	:param V2:
-	:type V2: opencascade::handle<Geom_Vector> &
+	:type V2: Geom_Vector
 	:rtype: void") CrossCross;
 		virtual void CrossCross (const opencascade::handle<Geom_Vector> & V1,const opencascade::handle<Geom_Vector> & V2);
 
@@ -1198,9 +1198,9 @@ class Geom_Vector : public Geom_Geometry {
 		%feature("compactdefaultargs") CrossCrossed;
 		%feature("autodoc", "* Computes the triple vector product <self> ^(V1 ^ V2). //! Raised if <self> is a direction and if V1 and V2 are parallel or <self> and (V1 ^ V2) are parallel
 	:param V1:
-	:type V1: opencascade::handle<Geom_Vector> &
+	:type V1: Geom_Vector
 	:param V2:
-	:type V2: opencascade::handle<Geom_Vector> &
+	:type V2: Geom_Vector
 	:rtype: opencascade::handle<Geom_Vector>") CrossCrossed;
 		virtual opencascade::handle<Geom_Vector> CrossCrossed (const opencascade::handle<Geom_Vector> & V1,const opencascade::handle<Geom_Vector> & V2);
 
@@ -1208,7 +1208,7 @@ class Geom_Vector : public Geom_Geometry {
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "* Computes the cross product between <self> and <Other>. A new direction is returned. //! Raised if <self> is a 'Direction' and if the two vectors are parallel because it is not possible to create a 'Direction' with null length.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: opencascade::handle<Geom_Vector>") Crossed;
 		virtual opencascade::handle<Geom_Vector> Crossed (const opencascade::handle<Geom_Vector> & Other);
 
@@ -1216,7 +1216,7 @@ class Geom_Vector : public Geom_Geometry {
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "* Computes the scalar product of this vector and vector Other.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: float") Dot;
 		Standard_Real Dot (const opencascade::handle<Geom_Vector> & Other);
 
@@ -1224,9 +1224,9 @@ class Geom_Vector : public Geom_Geometry {
 		%feature("compactdefaultargs") DotCross;
 		%feature("autodoc", "* Computes the triple scalar product. Returns me . (V1 ^ V2)
 	:param V1:
-	:type V1: opencascade::handle<Geom_Vector> &
+	:type V1: Geom_Vector
 	:param V2:
-	:type V2: opencascade::handle<Geom_Vector> &
+	:type V2: Geom_Vector
 	:rtype: float") DotCross;
 		Standard_Real DotCross (const opencascade::handle<Geom_Vector> & V1,const opencascade::handle<Geom_Vector> & V2);
 
@@ -1521,11 +1521,11 @@ class Geom_CartesianPoint : public Geom_Point {
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "* Returns the coordinates of <self>.
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") Coord;
 		void Coord (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1763,7 +1763,7 @@ class Geom_Direction : public Geom_Vector {
 		%feature("compactdefaultargs") Cross;
 		%feature("autodoc", "* Computes the cross product between <self> and <Other>. //! Raised if the two vectors are parallel because it is not possible to have a direction with null length.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: None") Cross;
 		void Cross (const opencascade::handle<Geom_Vector> & Other);
 
@@ -1771,9 +1771,9 @@ class Geom_Direction : public Geom_Vector {
 		%feature("compactdefaultargs") CrossCross;
 		%feature("autodoc", "* Computes the triple vector product <self> ^(V1 ^ V2). //! Raised if V1 and V2 are parallel or <self> and (V1 ^ V2) are parallel
 	:param V1:
-	:type V1: opencascade::handle<Geom_Vector> &
+	:type V1: Geom_Vector
 	:param V2:
-	:type V2: opencascade::handle<Geom_Vector> &
+	:type V2: Geom_Vector
 	:rtype: None") CrossCross;
 		void CrossCross (const opencascade::handle<Geom_Vector> & V1,const opencascade::handle<Geom_Vector> & V2);
 
@@ -1781,9 +1781,9 @@ class Geom_Direction : public Geom_Vector {
 		%feature("compactdefaultargs") CrossCrossed;
 		%feature("autodoc", "* Computes the triple vector product <self> ^(V1 ^ V2). //! Raised if V1 and V2 are parallel or <self> and (V1 ^ V2) are parallel
 	:param V1:
-	:type V1: opencascade::handle<Geom_Vector> &
+	:type V1: Geom_Vector
 	:param V2:
-	:type V2: opencascade::handle<Geom_Vector> &
+	:type V2: Geom_Vector
 	:rtype: opencascade::handle<Geom_Vector>") CrossCrossed;
 		opencascade::handle<Geom_Vector> CrossCrossed (const opencascade::handle<Geom_Vector> & V1,const opencascade::handle<Geom_Vector> & V2);
 
@@ -1791,7 +1791,7 @@ class Geom_Direction : public Geom_Vector {
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "* Computes the cross product between <self> and <Other>. A new direction is returned. //! Raised if the two vectors are parallel because it is not possible to have a direction with null length.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: opencascade::handle<Geom_Vector>") Crossed;
 		opencascade::handle<Geom_Vector> Crossed (const opencascade::handle<Geom_Vector> & Other);
 
@@ -2339,7 +2339,7 @@ class Geom_OffsetCurve : public Geom_Curve {
 		%feature("compactdefaultargs") Geom_OffsetCurve;
 		%feature("autodoc", "* C is the basis curve, Offset is the distance between <self> and the basis curve at any point. V defines the fixed reference direction (offset direction). If P is a point on the basis curve and T the first derivative with non zero length at this point, the corresponding point on the offset curve is in the direction of the vector-product N = V ^ T where N is a unitary vector. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Warnings : In this package the entities are not shared. The OffsetCurve is built with a copy of the curve C. So when C is modified the OffsetCurve is not modified //! Raised if the basis curve C is not at least C1. Warnings : No check is done to know if ||V^T|| != 0.0 at any point.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param Offset:
 	:type Offset: float
 	:param V:
@@ -2419,7 +2419,7 @@ class Geom_OffsetCurve : public Geom_Curve {
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "* Changes this offset curve by assigning C as the basis curve from which it is built. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Exceptions Standard_ConstructionError if the curve C is not at least 'C1' continuous.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param isNotCheckC0: default value is Standard_False
 	:type isNotCheckC0: bool
 	:rtype: None") SetBasisCurve;
@@ -2486,13 +2486,13 @@ class Geom_OffsetSurface : public Geom_Surface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds U1, U2, V1 and V2 of this offset surface. If the surface is infinite, this function can return: - Standard_Real::RealFirst(), or - Standard_Real::RealLast().
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2606,7 +2606,7 @@ class Geom_OffsetSurface : public Geom_Surface {
 		%feature("compactdefaultargs") Geom_OffsetSurface;
 		%feature("autodoc", "* Constructs a surface offset from the basis surface S, where Offset is the distance between the offset surface and the basis surface at any point. A point on the offset surface is built by measuring the offset value along a normal vector at a point on S. This normal vector is given by the cross product D1u^D1v, where D1u and D1v are the vectors tangential to the basis surface in the u and v parametric directions at this point. The side of S on which the offset value is measured is indicated by this normal vector if Offset is positive, or is the inverse sense if Offset is negative. If isNotCheckC0 = True checking if basis surface has C0-continuity is not made. Warnings : - The offset surface is built with a copy of the surface S. Therefore, when S is modified the offset surface is not modified. - No check is made at the time of construction to detect points on S with multiple possible normal directions. Raised if S is not at least C1. Warnings : No check is done to verify that a unique normal direction is defined at any point of the basis surface S.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param Offset:
 	:type Offset: float
 	:param isNotCheckC0: default value is Standard_False
@@ -2684,7 +2684,7 @@ class Geom_OffsetSurface : public Geom_Surface {
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "* Raised if S is not at least C1. Warnings : No check is done to verify that a unique normal direction is defined at any point of the basis surface S. If isNotCheckC0 = True checking if basis surface has C0-continuity is not made. Exceptions Standard_ConstructionError if the surface S is not at least 'C1' continuous.
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param isNotCheckC0: default value is Standard_False
 	:type isNotCheckC0: bool
 	:rtype: None") SetBasisSurface;
@@ -2716,9 +2716,9 @@ class Geom_OffsetSurface : public Geom_Surface {
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. //! me->Transformed(T)->Value(U',V') //! is the same point as //! me->Value(U,V).Transformed(T) //! Where U',V' are the new values of U,V after calling //! me->TranformParameters(U,V,T) This methods calls the basis surface method.
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param T:
 	:type T: gp_Trsf
 	:rtype: void") TransformParameters;
@@ -2742,7 +2742,7 @@ class Geom_OffsetSurface : public Geom_Surface {
 	:param IsOpposite:
 	:type IsOpposite: bool
 	:param UOsculSurf:
-	:type UOsculSurf: opencascade::handle<Geom_BSplineSurface> &
+	:type UOsculSurf: Geom_BSplineSurface
 	:rtype: bool") UOsculatingSurface;
 		Standard_Boolean UOsculatingSurface (const Standard_Real U,const Standard_Real V,Standard_Boolean &OutValue,opencascade::handle<Geom_BSplineSurface> & UOsculSurf);
 
@@ -2784,7 +2784,7 @@ class Geom_OffsetSurface : public Geom_Surface {
 	:param IsOpposite:
 	:type IsOpposite: bool
 	:param VOsculSurf:
-	:type VOsculSurf: opencascade::handle<Geom_BSplineSurface> &
+	:type VOsculSurf: Geom_BSplineSurface
 	:rtype: bool") VOsculatingSurface;
 		Standard_Boolean VOsculatingSurface (const Standard_Real U,const Standard_Real V,Standard_Boolean &OutValue,opencascade::handle<Geom_BSplineSurface> & VOsculSurf);
 
@@ -2864,7 +2864,7 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the Vector Other to <self>.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Geom_Vector> & Other);
 
@@ -2872,7 +2872,7 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "* Adds the vector Other to <self>.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude>") Added;
 		Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude> Added (const opencascade::handle<Geom_Vector> & Other);
 
@@ -2886,7 +2886,7 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("compactdefaultargs") Cross;
 		%feature("autodoc", "* Computes the cross product between <self> and Other <self> ^ Other.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: None") Cross;
 		void Cross (const opencascade::handle<Geom_Vector> & Other);
 
@@ -2894,9 +2894,9 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("compactdefaultargs") CrossCross;
 		%feature("autodoc", "* Computes the triple vector product <self> ^ (V1 ^ V2).
 	:param V1:
-	:type V1: opencascade::handle<Geom_Vector> &
+	:type V1: Geom_Vector
 	:param V2:
-	:type V2: opencascade::handle<Geom_Vector> &
+	:type V2: Geom_Vector
 	:rtype: None") CrossCross;
 		void CrossCross (const opencascade::handle<Geom_Vector> & V1,const opencascade::handle<Geom_Vector> & V2);
 
@@ -2904,9 +2904,9 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("compactdefaultargs") CrossCrossed;
 		%feature("autodoc", "* Computes the triple vector product <self> ^ (V1 ^ V2). A new vector is returned.
 	:param V1:
-	:type V1: opencascade::handle<Geom_Vector> &
+	:type V1: Geom_Vector
 	:param V2:
-	:type V2: opencascade::handle<Geom_Vector> &
+	:type V2: Geom_Vector
 	:rtype: opencascade::handle<Geom_Vector>") CrossCrossed;
 		opencascade::handle<Geom_Vector> CrossCrossed (const opencascade::handle<Geom_Vector> & V1,const opencascade::handle<Geom_Vector> & V2);
 
@@ -2914,7 +2914,7 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "* Computes the cross product between <self> and Other <self> ^ Other. A new vector is returned.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: opencascade::handle<Geom_Vector>") Crossed;
 		opencascade::handle<Geom_Vector> Crossed (const opencascade::handle<Geom_Vector> & Other);
 
@@ -3052,7 +3052,7 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "* Subtracts the Vector Other to <self>.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: None") Subtract;
 		void Subtract (const opencascade::handle<Geom_Vector> & Other);
 
@@ -3060,7 +3060,7 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "* Subtracts the vector Other to <self>. A new vector is returned.
 	:param Other:
-	:type Other: opencascade::handle<Geom_Vector> &
+	:type Other: Geom_Vector
 	:rtype: Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude>") Subtracted;
 		Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude> Subtracted (const opencascade::handle<Geom_Vector> & Other);
 
@@ -3193,9 +3193,9 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Multiplicities:
-	:type Multiplicities: TColStd_Array1OfInteger &
+	:type Multiplicities: TColStd_Array1OfInteger
 	:param Degree:
 	:type Degree: int
 	:param Periodic: default value is Standard_False
@@ -3209,11 +3209,11 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Weights:
-	:type Weights: TColStd_Array1OfReal &
+	:type Weights: TColStd_Array1OfReal
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Multiplicities:
-	:type Multiplicities: TColStd_Array1OfInteger &
+	:type Multiplicities: TColStd_Array1OfInteger
 	:param Degree:
 	:type Degree: int
 	:param Periodic: default value is Standard_False
@@ -3283,9 +3283,9 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") InsertKnots;
 		%feature("autodoc", "* Inserts a set of knots values in the sequence of knots. //! For each U = Knots(i), M = Mults(i) //! If <U> is an existing knot the multiplicity is increased by <M> if <Add> is True, increased to <M> if <Add> is False. //! If U is not on the parameter range nothing is done. //! If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree. //! The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param ParametricTolerance: default value is 0.0
 	:type ParametricTolerance: float
 	:param Add: default value is Standard_False
@@ -3311,7 +3311,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Comapare two Bspline curve on identity;
 	:param theOther:
-	:type theOther: opencascade::handle<Geom_BSplineCurve> &
+	:type theOther: Geom_BSplineCurve
 	:param thePreci:
 	:type thePreci: float
 	:rtype: bool") IsEqual;
@@ -3359,7 +3359,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "* Returns K, the knots sequence of this BSpline curve. In this sequence, knots with a multiplicity greater than 1 are repeated. In the case of a non-periodic curve the length of the sequence must be equal to the sum of the NbKnots multiplicities of the knots of the curve (where NbKnots is the number of knots of this BSpline curve). This sum is also equal to : NbPoles + Degree + 1 where NbPoles is the number of poles and Degree the degree of this BSpline curve. In the case of a periodic curve, if there are k periodic knots, the period is Knot(k+1) - Knot(1). The initial sequence is built by writing knots 1 to k+1, which are repeated according to their corresponding multiplicities. If Degree is the degree of the curve, the degree of continuity of the curve at the knot of index 1 (or k+1) is equal to c = Degree + 1 - Mult(1). c knots are then inserted at the beginning and end of the initial sequence: - the c values of knots preceding the first item Knot(k+1) in the initial sequence are inserted at the beginning; the period is subtracted from these c values; - the c values of knots following the last item Knot(1) in the initial sequence are inserted at the end; the period is added to these c values. The length of the sequence must therefore be equal to: NbPoles + 2*Degree - Mult(1) + 2. Example For a non-periodic BSpline curve of degree 2 where: - the array of knots is: { k1 k2 k3 k4 }, - with associated multiplicities: { 3 1 2 3 }, the knot sequence is: K = { k1 k1 k1 k2 k3 k3 k4 k4 k4 } For a periodic BSpline curve of degree 4 , which is 'C1' continuous at the first knot, and where : - the periodic knots are: { k1 k2 k3 (k4) } (3 periodic knots: the points of parameter k1 and k4 are identical, the period is p = k4 - k1), - with associated multiplicities: { 3 1 2 (3) }, the degree of continuity at knots k1 and k4 is: Degree + 1 - Mult(i) = 2. 2 supplementary knots are added at the beginning and end of the sequence: - at the beginning: the 2 knots preceding k4 minus the period; in this example, this is k3 - p both times; - at the end: the 2 knots following k1 plus the period; in this example, this is k2 + p and k3 + p. The knot sequence is therefore: K = { k3-p k3-p k1 k1 k1 k2 k3 k3 k4 k4 k4 k2+p k3+p } Exceptions Raised if K.Lower() is less than number of first knot in knot sequence with repetitions or K.Upper() is more than number of last knot in knot sequence with repetitions.
 	:param K:
-	:type K: TColStd_Array1OfReal &
+	:type K: TColStd_Array1OfReal
 	:rtype: None") KnotSequence;
 		void KnotSequence (TColStd_Array1OfReal & K);
 
@@ -3373,7 +3373,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "* returns the knot values of the B-spline curve; Warning A knot with a multiplicity greater than 1 is not repeated in the knot table. The Multiplicity function can be used to obtain the multiplicity of each knot. //! Raised K.Lower() is less than number of first knot or K.Upper() is more than number of last knot.
 	:param K:
-	:type K: TColStd_Array1OfReal &
+	:type K: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & K);
 
@@ -3497,9 +3497,9 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:param ParametricTolerance:
 	:type ParametricTolerance: float
 	:param I1:
-	:type I1: int &
+	:type I1: int
 	:param I2:
-	:type I2: int &
+	:type I2: int
 	:param WithKnotRepetition: default value is Standard_False
 	:type WithKnotRepetition: bool
 	:rtype: None") LocateU;
@@ -3523,9 +3523,9 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:param Index2:
 	:type Index2: int
 	:param FirstModifiedPole:
-	:type FirstModifiedPole: int &
+	:type FirstModifiedPole: int
 	:param LastModifiedPole:
-	:type LastModifiedPole: int &
+	:type LastModifiedPole: int
 	:rtype: None") MovePoint;
 		void MovePoint (const Standard_Real U,const gp_Pnt & P,const Standard_Integer Index1,const Standard_Integer Index2,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -3545,7 +3545,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:param EndingCondition:
 	:type EndingCondition: int
 	:param ErrorStatus:
-	:type ErrorStatus: int &
+	:type ErrorStatus: int
 	:rtype: None") MovePointAndTangent;
 		void MovePointAndTangent (const Standard_Real U,const gp_Pnt & P,const gp_Vec & Tangent,const Standard_Real Tolerance,const Standard_Integer StartingCondition,const Standard_Integer EndingCondition,Standard_Integer &OutValue);
 
@@ -3553,7 +3553,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "* Returns the multiplicity of the knots of the curve. //! Raised if the length of M is not equal to NbKnots.
 	:param M:
-	:type M: TColStd_Array1OfInteger &
+	:type M: TColStd_Array1OfInteger
 	:rtype: None") Multiplicities;
 		void Multiplicities (TColStd_Array1OfInteger & M);
 
@@ -3587,7 +3587,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") PeriodicNormalization;
 		%feature("autodoc", "* returns the parameter normalized within the period if the curve is periodic : otherwise does not do anything
 	:param U:
-	:type U: float &
+	:type U: float
 	:rtype: None") PeriodicNormalization;
 		void PeriodicNormalization (Standard_Real &OutValue);
 
@@ -3631,7 +3631,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 	:param Tolerance3D:
 	:type Tolerance3D: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Real Tolerance3D,Standard_Real &OutValue);
 
@@ -3687,7 +3687,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "* Modifies this BSpline curve by assigning the array K to its knots table. The multiplicity of the knots is not modified. Exceptions Standard_ConstructionError if the values in the array K are not in ascending order. Standard_OutOfRange if the bounds of the array K are not respectively 1 and the number of knots of this BSpline curve.
 	:param K:
-	:type K: TColStd_Array1OfReal &
+	:type K: TColStd_Array1OfReal
 	:rtype: None") SetKnots;
 		void SetKnots (const TColStd_Array1OfReal & K);
 
@@ -3779,7 +3779,7 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "* Returns the weights of the B-spline curve; //! Raised if the length of W is not equal to NbPoles.
 	:param W:
-	:type W: TColStd_Array1OfReal &
+	:type W: TColStd_Array1OfReal
 	:rtype: None") Weights;
 		void Weights (TColStd_Array1OfReal & W);
 
@@ -3810,13 +3810,13 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds of the surface. Warnings : These parametric values are the bounds of the array of knots UKnots and VKnots only if the first knots and the last knots have a multiplicity equal to UDegree + 1 or VDegree + 1
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3967,13 +3967,13 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param Poles:
 	:type Poles: TColgp_Array2OfPnt
 	:param UKnots:
-	:type UKnots: TColStd_Array1OfReal &
+	:type UKnots: TColStd_Array1OfReal
 	:param VKnots:
-	:type VKnots: TColStd_Array1OfReal &
+	:type VKnots: TColStd_Array1OfReal
 	:param UMults:
-	:type UMults: TColStd_Array1OfInteger &
+	:type UMults: TColStd_Array1OfInteger
 	:param VMults:
-	:type VMults: TColStd_Array1OfInteger &
+	:type VMults: TColStd_Array1OfInteger
 	:param UDegree:
 	:type UDegree: int
 	:param VDegree:
@@ -3991,15 +3991,15 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param Poles:
 	:type Poles: TColgp_Array2OfPnt
 	:param Weights:
-	:type Weights: TColStd_Array2OfReal &
+	:type Weights: TColStd_Array2OfReal
 	:param UKnots:
-	:type UKnots: TColStd_Array1OfReal &
+	:type UKnots: TColStd_Array1OfReal
 	:param VKnots:
-	:type VKnots: TColStd_Array1OfReal &
+	:type VKnots: TColStd_Array1OfReal
 	:param UMults:
-	:type UMults: TColStd_Array1OfInteger &
+	:type UMults: TColStd_Array1OfInteger
 	:param VMults:
-	:type VMults: TColStd_Array1OfInteger &
+	:type VMults: TColStd_Array1OfInteger
 	:param UDegree:
 	:type UDegree: int
 	:param VDegree:
@@ -4107,9 +4107,9 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") InsertUKnots;
 		%feature("autodoc", "* Inserts into the knots table for the U parametric direction of this BSpline surface: - the values of the array Knots, with their respective multiplicities, Mults. If the knot value to insert already exists in the table, its multiplicity is: - increased by M, if Add is true (the default), or - increased to M, if Add is false. The tolerance criterion used to check the equality of the knots is the larger of the values ParametricTolerance and Standard_Real::Epsilon(val), where val is the knot value to be inserted. Warning - If a given multiplicity coefficient is null, or negative, nothing is done. - The new multiplicity of a knot is limited to the degree of this BSpline surface in the corresponding parametric direction. Exceptions Standard_ConstructionError if a knot value to insert is outside the bounds of this BSpline surface in the specified parametric direction. The comparison uses the precision criterion ParametricTolerance.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param ParametricTolerance: default value is 0.0
 	:type ParametricTolerance: float
 	:param Add: default value is Standard_True
@@ -4135,9 +4135,9 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") InsertVKnots;
 		%feature("autodoc", "* Inserts into the knots table for the V parametric direction of this BSpline surface: - the values of the array Knots, with their respective multiplicities, Mults. If the knot value to insert already exists in the table, its multiplicity is: - increased by M, if Add is true (the default), or - increased to M, if Add is false. The tolerance criterion used to check the equality of the knots is the larger of the values ParametricTolerance and Standard_Real::Epsilon(val), where val is the knot value to be inserted. Warning - If a given multiplicity coefficient is null, or negative, nothing is done. - The new multiplicity of a knot is limited to the degree of this BSpline surface in the corresponding parametric direction. Exceptions Standard_ConstructionError if a knot value to insert is outside the bounds of this BSpline surface in the specified parametric direction. The comparison uses the precision criterion ParametricTolerance.
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:param ParametricTolerance: default value is 0.0
 	:type ParametricTolerance: float
 	:param Add: default value is Standard_True
@@ -4369,9 +4369,9 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param ParametricTolerance:
 	:type ParametricTolerance: float
 	:param I1:
-	:type I1: int &
+	:type I1: int
 	:param I2:
-	:type I2: int &
+	:type I2: int
 	:param WithKnotRepetition: default value is Standard_False
 	:type WithKnotRepetition: bool
 	:rtype: None") LocateU;
@@ -4385,9 +4385,9 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param ParametricTolerance:
 	:type ParametricTolerance: float
 	:param I1:
-	:type I1: int &
+	:type I1: int
 	:param I2:
-	:type I2: int &
+	:type I2: int
 	:param WithKnotRepetition: default value is Standard_False
 	:type WithKnotRepetition: bool
 	:rtype: None") LocateV;
@@ -4417,13 +4417,13 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param VIndex2:
 	:type VIndex2: int
 	:param UFirstIndex:
-	:type UFirstIndex: int &
+	:type UFirstIndex: int
 	:param ULastIndex:
-	:type ULastIndex: int &
+	:type ULastIndex: int
 	:param VFirstIndex:
-	:type VFirstIndex: int &
+	:type VFirstIndex: int
 	:param VLastIndex:
-	:type VLastIndex: int &
+	:type VLastIndex: int
 	:rtype: None") MovePoint;
 		void MovePoint (const Standard_Real U,const Standard_Real V,const gp_Pnt & P,const Standard_Integer UIndex1,const Standard_Integer UIndex2,const Standard_Integer VIndex1,const Standard_Integer VIndex2,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -4455,9 +4455,9 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") PeriodicNormalization;
 		%feature("autodoc", "* returns the parameter normalized within the period if the surface is periodic : otherwise does not do anything
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") PeriodicNormalization;
 		void PeriodicNormalization (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4515,9 +4515,9 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param Tolerance3D:
 	:type Tolerance3D: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:param VTolerance:
-	:type VTolerance: float &
+	:type VTolerance: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Real Tolerance3D,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -4583,7 +4583,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param CPoles:
 	:type CPoles: TColgp_Array1OfPnt
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") SetPoleCol;
 		void SetPoleCol (const Standard_Integer VIndex,const TColgp_Array1OfPnt & CPoles,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -4595,7 +4595,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param CPoles:
 	:type CPoles: TColgp_Array1OfPnt
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") SetPoleRow;
 		void SetPoleRow (const Standard_Integer UIndex,const TColgp_Array1OfPnt & CPoles,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -4635,7 +4635,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") SetUKnots;
 		%feature("autodoc", "* Changes all the U-knots of the surface. The multiplicity of the knots are not modified. //! Raised if there is an index such that UK (Index+1) <= UK (Index). //! Raised if UK.Lower() < 1 or UK.Upper() > NbUKnots
 	:param UK:
-	:type UK: TColStd_Array1OfReal &
+	:type UK: TColStd_Array1OfReal
 	:rtype: None") SetUKnots;
 		void SetUKnots (const TColStd_Array1OfReal & UK);
 
@@ -4685,7 +4685,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") SetVKnots;
 		%feature("autodoc", "* Changes all the V-knots of the surface. The multiplicity of the knots are not modified. //! Raised if there is an index such that VK (Index+1) <= VK (Index). //! Raised if VK.Lower() < 1 or VK.Upper() > NbVKnots
 	:param VK:
-	:type VK: TColStd_Array1OfReal &
+	:type VK: TColStd_Array1OfReal
 	:rtype: None") SetVKnots;
 		void SetVKnots (const TColStd_Array1OfReal & VK);
 
@@ -4727,7 +4727,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param VIndex:
 	:type VIndex: int
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") SetWeightCol;
 		void SetWeightCol (const Standard_Integer VIndex,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -4737,7 +4737,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 	:param UIndex:
 	:type UIndex: int
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") SetWeightRow;
 		void SetWeightRow (const Standard_Integer UIndex,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -4791,7 +4791,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") UKnotSequence;
 		%feature("autodoc", "* Returns the uknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of Ku is not equal to NbUPoles + UDegree + 1
 	:param Ku:
-	:type Ku: TColStd_Array1OfReal &
+	:type Ku: TColStd_Array1OfReal
 	:rtype: None") UKnotSequence;
 		void UKnotSequence (TColStd_Array1OfReal & Ku);
 
@@ -4805,7 +4805,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "* Returns the knots in the U direction. //! Raised if the length of Ku is not equal to the number of knots in the U direction.
 	:param Ku:
-	:type Ku: TColStd_Array1OfReal &
+	:type Ku: TColStd_Array1OfReal
 	:rtype: None") UKnots;
 		void UKnots (TColStd_Array1OfReal & Ku);
 
@@ -4819,7 +4819,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "* Returns the multiplicities of the knots in the U direction. //! Raised if the length of Mu is not equal to the number of knots in the U direction.
 	:param Mu:
-	:type Mu: TColStd_Array1OfInteger &
+	:type Mu: TColStd_Array1OfInteger
 	:rtype: None") UMultiplicities;
 		void UMultiplicities (TColStd_Array1OfInteger & Mu);
 
@@ -4893,7 +4893,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") VKnotSequence;
 		%feature("autodoc", "* Returns the vknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example : Kv = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of Kv is not equal to NbVPoles + VDegree + 1
 	:param Kv:
-	:type Kv: TColStd_Array1OfReal &
+	:type Kv: TColStd_Array1OfReal
 	:rtype: None") VKnotSequence;
 		void VKnotSequence (TColStd_Array1OfReal & Kv);
 
@@ -4907,7 +4907,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "* Returns the knots in the V direction. //! Raised if the length of Kv is not equal to the number of knots in the V direction.
 	:param Kv:
-	:type Kv: TColStd_Array1OfReal &
+	:type Kv: TColStd_Array1OfReal
 	:rtype: None") VKnots;
 		void VKnots (TColStd_Array1OfReal & Kv);
 
@@ -4921,7 +4921,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "* Returns the multiplicities of the knots in the V direction. //! Raised if the length of Mv is not equal to the number of knots in the V direction.
 	:param Mv:
-	:type Mv: TColStd_Array1OfInteger &
+	:type Mv: TColStd_Array1OfInteger
 	:rtype: None") VMultiplicities;
 		void VMultiplicities (TColStd_Array1OfInteger & Mv);
 
@@ -4967,7 +4967,7 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "* Returns the weights of the B-spline surface. //! Raised if the length of W in the U and V direction is not equal to NbUPoles and NbVPoles.
 	:param W:
-	:type W: TColStd_Array2OfReal &
+	:type W: TColStd_Array2OfReal
 	:rtype: None") Weights;
 		void Weights (TColStd_Array2OfReal & W);
 
@@ -5097,7 +5097,7 @@ class Geom_BezierCurve : public Geom_BoundedCurve {
 	:param CurvePoles:
 	:type CurvePoles: TColgp_Array1OfPnt
 	:param PoleWeights:
-	:type PoleWeights: TColStd_Array1OfReal &
+	:type PoleWeights: TColStd_Array1OfReal
 	:rtype: None") Geom_BezierCurve;
 		 Geom_BezierCurve (const TColgp_Array1OfPnt & CurvePoles,const TColStd_Array1OfReal & PoleWeights);
 
@@ -5233,7 +5233,7 @@ class Geom_BezierCurve : public Geom_BoundedCurve {
 	:param Tolerance3D:
 	:type Tolerance3D: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Real Tolerance3D,Standard_Real &OutValue);
 
@@ -5319,7 +5319,7 @@ class Geom_BezierCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "* Returns all the weights of the curve. //! Raised if the length of W is not equal to the number of poles.
 	:param W:
-	:type W: TColStd_Array1OfReal &
+	:type W: TColStd_Array1OfReal
 	:rtype: None") Weights;
 		void Weights (TColStd_Array1OfReal & W);
 
@@ -5350,13 +5350,13 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds U1, U2, V1 and V2 of this Bezier surface. In the case of a Bezier surface, this function returns U1 = 0, V1 = 0, U2 = 1, V2 = 1.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5483,7 +5483,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param SurfacePoles:
 	:type SurfacePoles: TColgp_Array2OfPnt
 	:param PoleWeights:
-	:type PoleWeights: TColStd_Array2OfReal &
+	:type PoleWeights: TColStd_Array2OfReal
 	:rtype: None") Geom_BezierSurface;
 		 Geom_BezierSurface (const TColgp_Array2OfPnt & SurfacePoles,const TColStd_Array2OfReal & PoleWeights);
 
@@ -5515,7 +5515,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param CPoles:
 	:type CPoles: TColgp_Array1OfPnt
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") InsertPoleColAfter;
 		void InsertPoleColAfter (const Standard_Integer VIndex,const TColgp_Array1OfPnt & CPoles,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -5537,7 +5537,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param CPoles:
 	:type CPoles: TColgp_Array1OfPnt
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") InsertPoleColBefore;
 		void InsertPoleColBefore (const Standard_Integer VIndex,const TColgp_Array1OfPnt & CPoles,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -5559,7 +5559,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param CPoles:
 	:type CPoles: TColgp_Array1OfPnt
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") InsertPoleRowAfter;
 		void InsertPoleRowAfter (const Standard_Integer UIndex,const TColgp_Array1OfPnt & CPoles,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -5581,7 +5581,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param CPoles:
 	:type CPoles: TColgp_Array1OfPnt
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") InsertPoleRowBefore;
 		void InsertPoleRowBefore (const Standard_Integer UIndex,const TColgp_Array1OfPnt & CPoles,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -5701,9 +5701,9 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param Tolerance3D:
 	:type Tolerance3D: float
 	:param UTolerance:
-	:type UTolerance: float &
+	:type UTolerance: float
 	:param VTolerance:
-	:type VTolerance: float &
+	:type VTolerance: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Real Tolerance3D,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5765,7 +5765,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param CPoles:
 	:type CPoles: TColgp_Array1OfPnt
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") SetPoleCol;
 		void SetPoleCol (const Standard_Integer VIndex,const TColgp_Array1OfPnt & CPoles,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -5787,7 +5787,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param CPoles:
 	:type CPoles: TColgp_Array1OfPnt
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") SetPoleRow;
 		void SetPoleRow (const Standard_Integer UIndex,const TColgp_Array1OfPnt & CPoles,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -5809,7 +5809,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param VIndex:
 	:type VIndex: int
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") SetWeightCol;
 		void SetWeightCol (const Standard_Integer VIndex,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -5819,7 +5819,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 	:param UIndex:
 	:type UIndex: int
 	:param CPoleWeights:
-	:type CPoleWeights: TColStd_Array1OfReal &
+	:type CPoleWeights: TColStd_Array1OfReal
 	:rtype: None") SetWeightRow;
 		void SetWeightRow (const Standard_Integer UIndex,const TColStd_Array1OfReal & CPoleWeights);
 
@@ -5901,7 +5901,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "* Returns the weights of the Bezier surface. //! Raised if the length of W in the U an V direction is not equal to NbUPoles and NbVPoles.
 	:param W:
-	:type W: TColStd_Array2OfReal &
+	:type W: TColStd_Array2OfReal
 	:rtype: None") Weights;
 		void Weights (TColStd_Array2OfReal & W);
 
@@ -6115,13 +6115,13 @@ class Geom_ConicalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* The conical surface is infinite in the V direction so V1 = Realfirst from Standard and V2 = RealLast. U1 = 0 and U2 = 2*PI.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6129,25 +6129,25 @@ class Geom_ConicalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Returns the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system : These coefficients are normalized. A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0
 	:param A1:
-	:type A1: float &
+	:type A1: float
 	:param A2:
-	:type A2: float &
+	:type A2: float
 	:param A3:
-	:type A3: float &
+	:type A3: float
 	:param B1:
-	:type B1: float &
+	:type B1: float
 	:param B2:
-	:type B2: float &
+	:type B2: float
 	:param B3:
-	:type B3: float &
+	:type B3: float
 	:param C1:
-	:type C1: float &
+	:type C1: float
 	:param C2:
-	:type C2: float &
+	:type C2: float
 	:param C3:
-	:type C3: float &
+	:type C3: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6357,9 +6357,9 @@ class Geom_ConicalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. //! me->Transformed(T)->Value(U',V') //! is the same point as //! me->Value(U,V).Transformed(T) //! Where U',V' are the new values of U,V after calling //! me->TranformParameters(U,V,T) //! This methods multiplies V by T.ScaleFactor()
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param T:
 	:type T: gp_Trsf
 	:rtype: void") TransformParameters;
@@ -6424,13 +6424,13 @@ class Geom_CylindricalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* The CylindricalSurface is infinite in the V direction so V1 = Realfirst, V2 = RealLast from package Standard. U1 = 0 and U2 = 2*PI.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6438,25 +6438,25 @@ class Geom_CylindricalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Returns the coefficients of the implicit equation of the quadric in the absolute cartesian coordinate system : These coefficients are normalized. A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0
 	:param A1:
-	:type A1: float &
+	:type A1: float
 	:param A2:
-	:type A2: float &
+	:type A2: float
 	:param A3:
-	:type A3: float &
+	:type A3: float
 	:param B1:
-	:type B1: float &
+	:type B1: float
 	:param B2:
-	:type B2: float &
+	:type B2: float
 	:param B3:
-	:type B3: float &
+	:type B3: float
 	:param C1:
-	:type C1: float &
+	:type C1: float
 	:param C2:
-	:type C2: float &
+	:type C2: float
 	:param C3:
-	:type C3: float &
+	:type C3: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -6650,9 +6650,9 @@ class Geom_CylindricalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. me->Transformed(T)->Value(U',V') is the same point as me->Value(U,V).Transformed(T) Where U',V' are the new values of U,V after calling me->TranformParameters(U,V,T) This methods multiplies V by T.ScaleFactor()
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param T:
 	:type T: gp_Trsf
 	:rtype: void") TransformParameters;
@@ -7421,13 +7421,13 @@ class Geom_Plane : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds U1, U2, V1 and V2 of this plane. Because a plane is an infinite surface, the following is always true: - U1 = V1 = Standard_Real::RealFirst() - U2 = V2 = Standard_Real::RealLast().
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7435,13 +7435,13 @@ class Geom_Plane : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Computes the normalized coefficients of the plane's cartesian equation : Ax + By + Cz + D = 0.0
 	:param A:
-	:type A: float &
+	:type A: float
 	:param B:
-	:type B: float &
+	:type B: float
 	:param C:
-	:type C: float &
+	:type C: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7643,9 +7643,9 @@ class Geom_Plane : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. me->Transformed(T)->Value(U',V') is the same point as me->Value(U,V).Transformed(T) Where U',V' are the new values of U,V after calling me->TranformParameters(U,V,T) This methods multiplies U and V by T.ScaleFactor()
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param T:
 	:type T: gp_Trsf
 	:rtype: void") TransformParameters;
@@ -7722,13 +7722,13 @@ class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds U1, U2, V1 and V2 of this patch.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7842,7 +7842,7 @@ class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") Geom_RectangularTrimmedSurface;
 		%feature("autodoc", "* The U parametric direction of the surface is oriented from U1 to U2. The V parametric direction of the surface is oriented from V1 to V2. These two directions define the orientation of the surface (normal). If the surface is not periodic USense and VSense are not used for the construction. If the surface S is periodic in one direction USense and VSense give the available part of the surface. By default in this case the surface has the same orientation as the basis surface S. The returned surface is not closed and not periodic. ConstructionError Raised if S is not periodic in the UDirection and U1 or U2 are out of the bounds of S. S is not periodic in the VDirection and V1 or V2 are out of the bounds of S. U1 = U2 or V1 = V2
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -7862,7 +7862,7 @@ class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") Geom_RectangularTrimmedSurface;
 		%feature("autodoc", "* The basis surface S is only trim in one parametric direction. If UTrim = True the surface is trimmed in the U parametric direction else the surface is trimmed in the V parametric direction. In the considered parametric direction the resulting surface is oriented from Param1 to Param2. If S is periodic Sense gives the available part of the surface. By default the trimmed surface has the same orientation as the basis surface S in the considered parametric direction (Sense = True). If the basis surface S is closed or periodic in the parametric direction opposite to the trimming direction the trimmed surface has the same characteristics as the surface S in this direction. Warnings : In this package the entities are not shared. The RectangularTrimmedSurface is built with a copy of the surface S. So when S is modified the RectangularTrimmedSurface is not modified Raised if S is not periodic in the considered parametric direction and Param1 or Param2 are out of the bounds of S. Param1 = Param2
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param Param1:
 	:type Param1: float
 	:param Param2:
@@ -7966,9 +7966,9 @@ class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. //! me->Transformed(T)->Value(U',V') //! is the same point as //! me->Value(U,V).Transformed(T) //! Where U',V' are the new values of U,V after calling //! me->TranformParameters(U,V,T) //! This methods calls the basis surface method.
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param T:
 	:type T: gp_Trsf
 	:rtype: void") TransformParameters;
@@ -8057,13 +8057,13 @@ class Geom_SphericalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds U1, U2, V1 and V2 of this sphere. For a sphere: U1 = 0, U2 = 2*PI, V1 = -PI/2, V2 = PI/2.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8071,25 +8071,25 @@ class Geom_SphericalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Returns the coefficients of the implicit equation of the quadric in the absolute cartesian coordinates system : These coefficients are normalized. A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0
 	:param A1:
-	:type A1: float &
+	:type A1: float
 	:param A2:
-	:type A2: float &
+	:type A2: float
 	:param A3:
-	:type A3: float &
+	:type A3: float
 	:param B1:
-	:type B1: float &
+	:type B1: float
 	:param B2:
-	:type B2: float &
+	:type B2: float
 	:param B3:
-	:type B3: float &
+	:type B3: float
 	:param C1:
-	:type C1: float &
+	:type C1: float
 	:param C2:
-	:type C2: float &
+	:type C2: float
 	:param C3:
-	:type C3: float &
+	:type C3: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8330,13 +8330,13 @@ class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds U1, U2, V1 and V2 of this surface of linear extrusion. A surface of linear extrusion is infinite in the v parametric direction, so: - V1 = Standard_Real::RealFirst() - V2 = Standard_Real::RealLast().
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8444,7 +8444,7 @@ class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
 		%feature("compactdefaultargs") Geom_SurfaceOfLinearExtrusion;
 		%feature("autodoc", "* V is the direction of extrusion. C is the extruded curve. The form of a SurfaceOfLinearExtrusion can be : . ruled surface (RuledForm), . a cylindrical surface if the extruded curve is a circle or a trimmed circle (CylindricalForm), . a plane surface if the extruded curve is a Line (PlanarForm). Warnings : Degenerated surface cases are not detected. For example if the curve C is a line and V is parallel to the direction of this line.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param V:
 	:type V: gp_Dir
 	:rtype: None") Geom_SurfaceOfLinearExtrusion;
@@ -8502,7 +8502,7 @@ class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "* Modifies this surface of linear extrusion by redefining its 'basis curve' (the 'extruded curve').
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: None") SetBasisCurve;
 		void SetBasisCurve (const opencascade::handle<Geom_Curve> & C);
 
@@ -8526,9 +8526,9 @@ class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. //! me->Transformed(T)->Value(U',V') //! is the same point as //! me->Value(U,V).Transformed(T) //! Where U',V' are the new values of U,V after calling //! me->TranformParameters(U,V,T) //! This methods multiplies : U by BasisCurve()->ParametricTransformation(T) V by T.ScaleFactor()
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param T:
 	:type T: gp_Trsf
 	:rtype: void") TransformParameters;
@@ -8605,13 +8605,13 @@ class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds U1, U2 , V1 and V2 of this surface. A surface of revolution is always complete, so U1 = 0, U2 = 2*PI.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8719,7 +8719,7 @@ class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 		%feature("compactdefaultargs") Geom_SurfaceOfRevolution;
 		%feature("autodoc", "* C : is the meridian or the referenced curve. A1 is the axis of revolution. The form of a SurfaceOfRevolution can be : . a general revolution surface (RevolutionForm), . a conical surface if the meridian is a line or a trimmed line (ConicalForm), . a cylindrical surface if the meridian is a line or a trimmed line parallel to the revolution axis (CylindricalForm), . a planar surface if the meridian is a line perpendicular to the revolution axis of the surface (PlanarForm). . a spherical surface, . a toroidal surface, . a quadric surface. Warnings : It is not checked that the curve C is planar and that the surface axis is in the plane of the curve. It is not checked that the revolved curve C doesn't self-intersects.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param A1:
 	:type A1: gp_Ax1
 	:rtype: None") Geom_SurfaceOfRevolution;
@@ -8797,7 +8797,7 @@ class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "* Changes the revolved curve of the surface. Warnings : It is not checked that the curve C is planar and that the surface axis is in the plane of the curve. It is not checked that the revolved curve C doesn't self-intersects.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: None") SetBasisCurve;
 		void SetBasisCurve (const opencascade::handle<Geom_Curve> & C);
 
@@ -8829,9 +8829,9 @@ class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. //! me->Transformed(T)->Value(U',V') //! is the same point as //! me->Value(U,V).Transformed(T) //! Where U',V' are the new values of U,V after calling //! me->TranformParameters(U,V,T) //! This methods multiplies V by BasisCurve()->ParametricTransformation(T)
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param T:
 	:type T: gp_Trsf
 	:rtype: void") TransformParameters;
@@ -8908,13 +8908,13 @@ class Geom_ToroidalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* Returns the parametric bounds U1, U2, V1 and V2 of this torus. For a torus: U1 = V1 = 0 and U2 = V2 = 2*PI .
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8922,7 +8922,7 @@ class Geom_ToroidalSurface : public Geom_ElementarySurface {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Returns the coefficients of the implicit equation of the surface in the absolute cartesian coordinate system : Coef(1) * X**4 + Coef(2) * Y**4 + Coef(3) * Z**4 + Coef(4) * X**3 * Y + Coef(5) * X**3 * Z + Coef(6) * Y**3 * X + Coef(7) * Y**3 * Z + Coef(8) * Z**3 * X + Coef(9) * Z**3 * Y + Coef(10) * X**2 * Y**2 + Coef(11) * X**2 * Z**2 + Coef(12) * Y**2 * Z**2 + Coef(13) * X**3 + Coef(14) * Y**3 + Coef(15) * Z**3 + Coef(16) * X**2 * Y + Coef(17) * X**2 * Z + Coef(18) * Y**2 * X + Coef(19) * Y**2 * Z + Coef(20) * Z**2 * X + Coef(21) * Z**2 * Y + Coef(22) * X**2 + Coef(23) * Y**2 + Coef(24) * Z**2 + Coef(25) * X * Y + Coef(26) * X * Z + Coef(27) * Y * Z + Coef(28) * X + Coef(29) * Y + Coef(30) * Z + Coef(31) = 0.0 Raised if the length of Coef is lower than 31.
 	:param Coef:
-	:type Coef: TColStd_Array1OfReal &
+	:type Coef: TColStd_Array1OfReal
 	:rtype: None") Coefficients;
 		void Coefficients (TColStd_Array1OfReal & Coef);
 
@@ -9271,7 +9271,7 @@ class Geom_TrimmedCurve : public Geom_BoundedCurve {
 		%feature("compactdefaultargs") Geom_TrimmedCurve;
 		%feature("autodoc", "* Constructs a trimmed curve from the basis curve C which is limited between parameter values U1 and U2. Note: - U1 can be greater or less than U2; in both cases, the returned curve is oriented from U1 to U2. - If the basis curve C is periodic, there is an ambiguity because two parts are available. In this case, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. - If the curve is closed but not periodic, it is not possible to keep the part of the curve which includes the junction point (except if the junction point is at the beginning or at the end of the trimmed curve). If you tried to do this, you could alter the fundamental characteristics of the basis curve, which are used, for example, to compute the derivatives of the trimmed curve. The rules for a closed curve are therefore the same as those for an open curve. Warning: The trimmed curve is built from a copy of curve C. Therefore, when C is modified, the trimmed curve is not modified. - If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. When theAdjustPeriodic is False, parameters U1 and U2 will be the same, without adjustment into the first period. Exceptions Standard_ConstructionError if: - C is not periodic and U1 or U2 is outside the bounds of C, or - U1 is equal to U2.
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param U1:
 	:type U1: float
 	:param U2:

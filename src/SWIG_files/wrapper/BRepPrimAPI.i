@@ -227,7 +227,7 @@ class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") BRepPrimAPI_MakeHalfSpace;
 		%feature("autodoc", "* Make a HalfSpace defined with a Face and a Point.
 	:param Face:
-	:type Face: TopoDS_Face &
+	:type Face: TopoDS_Face
 	:param RefPnt:
 	:type RefPnt: gp_Pnt
 	:rtype: None") BRepPrimAPI_MakeHalfSpace;
@@ -237,7 +237,7 @@ class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 		%feature("compactdefaultargs") BRepPrimAPI_MakeHalfSpace;
 		%feature("autodoc", "* Make a HalfSpace defined with a Shell and a Point.
 	:param Shell:
-	:type Shell: TopoDS_Shell &
+	:type Shell: TopoDS_Shell
 	:param RefPnt:
 	:type RefPnt: gp_Pnt
 	:rtype: None") BRepPrimAPI_MakeHalfSpace;
@@ -639,7 +639,7 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") BRepPrimAPI_MakePrism;
 		%feature("autodoc", "* Builds the prism of base S and vector V. If C is true, S is copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param V:
 	:type V: gp_Vec
 	:param Copy: default value is Standard_False
@@ -653,7 +653,7 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") BRepPrimAPI_MakePrism;
 		%feature("autodoc", "* Builds a semi-infinite or an infinite prism of base S. If Inf is true the prism is infinite, if Inf is false the prism is semi-infinite (in the direction D). If C is true S is copied (for semi-infinite prisms). If Canonize is true then generated surfaces are attempted to be canonized in simple types
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param D:
 	:type D: gp_Dir
 	:param Inf: default value is Standard_True
@@ -681,7 +681,7 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "* Returns the TopoDS Shape of the bottom of the prism. generated with theShape (subShape of the generating shape).
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: TopoDS_Shape") FirstShape;
 		TopoDS_Shape FirstShape (const TopoDS_Shape & theShape);
 
@@ -689,7 +689,7 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns ListOfShape from TopTools.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Generated;
 		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
 
@@ -697,7 +697,7 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "* Returns true if the shape S has been deleted.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") IsDeleted;
 		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
 
@@ -711,7 +711,7 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "* Returns the TopoDS Shape of the top of the prism. generated with theShape (subShape of the generating shape).
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: TopoDS_Shape") LastShape;
 		TopoDS_Shape LastShape (const TopoDS_Shape & theShape);
 
@@ -740,7 +740,7 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevol;
 		%feature("autodoc", "* Builds the Revol of base S, axis A and angle D. If C is true, S is copied.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param A:
 	:type A: gp_Ax1
 	:param D:
@@ -754,7 +754,7 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevol;
 		%feature("autodoc", "* Builds the Revol of base S, axis A and angle 2*Pi. If C is true, S is copied.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param A:
 	:type A: gp_Ax1
 	:param Copy: default value is Standard_False
@@ -784,7 +784,7 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "* Returns the TopoDS Shape of the beginning of the revolution, generated with theShape (subShape of the generating shape).
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: TopoDS_Shape") FirstShape;
 		TopoDS_Shape FirstShape (const TopoDS_Shape & theShape);
 
@@ -792,7 +792,7 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns list of shape generated from shape S Warning: shape S must be shape of type VERTEX, EDGE, FACE, SOLID. For shapes of other types method always returns empty list
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Generated;
 		virtual const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
 
@@ -806,7 +806,7 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "* Returns true if the shape S has been deleted.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") IsDeleted;
 		virtual Standard_Boolean IsDeleted (const TopoDS_Shape & S);
 
@@ -820,7 +820,7 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "* Returns the TopoDS Shape of the end of the revolution, generated with theShape (subShape of the generating shape).
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: TopoDS_Shape") LastShape;
 		TopoDS_Shape LastShape (const TopoDS_Shape & theShape);
 
@@ -849,7 +849,7 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "* Make a revolution body by rotating a curve around Z.
 	:param Meridian:
-	:type Meridian: opencascade::handle<Geom_Curve> &
+	:type Meridian: Geom_Curve
 	:rtype: None") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution (const opencascade::handle<Geom_Curve> & Meridian);
 
@@ -857,7 +857,7 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "* Make a revolution body by rotating a curve around Z.
 	:param Meridian:
-	:type Meridian: opencascade::handle<Geom_Curve> &
+	:type Meridian: Geom_Curve
 	:param angle:
 	:type angle: float
 	:rtype: None") BRepPrimAPI_MakeRevolution;
@@ -867,7 +867,7 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "* Make a revolution body by rotating a curve around Z.
 	:param Meridian:
-	:type Meridian: opencascade::handle<Geom_Curve> &
+	:type Meridian: Geom_Curve
 	:param VMin:
 	:type VMin: float
 	:param VMax:
@@ -879,7 +879,7 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 		%feature("compactdefaultargs") BRepPrimAPI_MakeRevolution;
 		%feature("autodoc", "* Make a revolution body by rotating a curve around Z.
 	:param Meridian:
-	:type Meridian: opencascade::handle<Geom_Curve> &
+	:type Meridian: Geom_Curve
 	:param VMin:
 	:type VMin: float
 	:param VMax:
@@ -895,7 +895,7 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param Meridian:
-	:type Meridian: opencascade::handle<Geom_Curve> &
+	:type Meridian: Geom_Curve
 	:rtype: None") BRepPrimAPI_MakeRevolution;
 		 BRepPrimAPI_MakeRevolution (const gp_Ax2 & Axes,const opencascade::handle<Geom_Curve> & Meridian);
 
@@ -905,7 +905,7 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param Meridian:
-	:type Meridian: opencascade::handle<Geom_Curve> &
+	:type Meridian: Geom_Curve
 	:param angle:
 	:type angle: float
 	:rtype: None") BRepPrimAPI_MakeRevolution;
@@ -917,7 +917,7 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param Meridian:
-	:type Meridian: opencascade::handle<Geom_Curve> &
+	:type Meridian: Geom_Curve
 	:param VMin:
 	:type VMin: float
 	:param VMax:
@@ -931,7 +931,7 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 	:param Axes:
 	:type Axes: gp_Ax2
 	:param Meridian:
-	:type Meridian: opencascade::handle<Geom_Curve> &
+	:type Meridian: Geom_Curve
 	:param VMin:
 	:type VMin: float
 	:param VMax:

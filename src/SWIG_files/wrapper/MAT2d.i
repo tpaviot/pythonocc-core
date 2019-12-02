@@ -125,7 +125,7 @@ class MAT2d_BiInt {
 		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", ":param B:
-	:type B: MAT2d_BiInt &
+	:type B: MAT2d_BiInt
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const MAT2d_BiInt & B);
 
@@ -221,9 +221,9 @@ class MAT2d_Circuit : public Standard_Transient {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param aFigure:
-	:type aFigure: MAT2d_SequenceOfSequenceOfGeometry &
+	:type aFigure: MAT2d_SequenceOfSequenceOfGeometry
 	:param IsClosed:
-	:type IsClosed: TColStd_SequenceOfBoolean &
+	:type IsClosed: TColStd_SequenceOfBoolean
 	:param IndRefLine:
 	:type IndRefLine: int
 	:param Trigo:
@@ -345,7 +345,7 @@ class MAT2d_Connexion : public Standard_Transient {
 		%feature("compactdefaultargs") IsAfter;
 		%feature("autodoc", "* Returns <True> if my firstPoint is on the same line than the firstpoint of <aConnexion> and my firstpoint is after the firstpoint of <aConnexion> on the line. <aSense> = 1 if <aConnexion> is on the Left of its firstline, else <aSense> = -1.
 	:param aConnexion:
-	:type aConnexion: opencascade::handle<MAT2d_Connexion> &
+	:type aConnexion: MAT2d_Connexion
 	:param aSense:
 	:type aSense: float
 	:rtype: bool") IsAfter;
@@ -460,7 +460,7 @@ class MAT2d_MapBiIntHasher {
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "* Computes a hash code for the given key, in the range [1, theUpperBound] @param theKey the key which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theKey:
-	:type theKey: MAT2d_BiInt &
+	:type theKey: MAT2d_BiInt
 	:param theUpperBound:
 	:type theUpperBound: int
 	:rtype: int") HashCode;
@@ -469,9 +469,9 @@ class MAT2d_MapBiIntHasher {
 		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", ":param Key1:
-	:type Key1: MAT2d_BiInt &
+	:type Key1: MAT2d_BiInt
 	:param Key2:
-	:type Key2: MAT2d_BiInt &
+	:type Key2: MAT2d_BiInt
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const MAT2d_BiInt & Key1,const MAT2d_BiInt & Key2);
 
@@ -500,7 +500,7 @@ class MAT2d_Mat2d {
 		%feature("compactdefaultargs") CreateMat;
 		%feature("autodoc", "* Algoritm of computation of the bisecting locus.
 	:param aTool:
-	:type aTool: MAT2d_Tool2d &
+	:type aTool: MAT2d_Tool2d
 	:rtype: None") CreateMat;
 		void CreateMat (MAT2d_Tool2d & aTool);
 
@@ -508,7 +508,7 @@ class MAT2d_Mat2d {
 		%feature("compactdefaultargs") CreateMatOpen;
 		%feature("autodoc", "* Algoritm of computation of the bisecting locus for open wire.
 	:param aTool:
-	:type aTool: MAT2d_Tool2d &
+	:type aTool: MAT2d_Tool2d
 	:rtype: None") CreateMatOpen;
 		void CreateMatOpen (MAT2d_Tool2d & aTool);
 
@@ -618,7 +618,7 @@ class MAT2d_MiniPath {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes the path to link the lines in <Figure>. the path starts on the line of index <IndStart> <Sense> = True if the Circuit turns in the trigonometric sense.
 	:param Figure:
-	:type Figure: MAT2d_SequenceOfSequenceOfGeometry &
+	:type Figure: MAT2d_SequenceOfSequenceOfGeometry
 	:param IndStart:
 	:type IndStart: int
 	:param Sense:
@@ -673,7 +673,7 @@ class MAT2d_Tool2d {
 		%feature("compactdefaultargs") CreateBisector;
 		%feature("autodoc", "* Creates the geometric bisector defined by <abisector>.
 	:param abisector:
-	:type abisector: opencascade::handle<MAT_Bisector> &
+	:type abisector: MAT_Bisector
 	:rtype: None") CreateBisector;
 		void CreateBisector (const opencascade::handle<MAT_Bisector> & abisector);
 
@@ -681,7 +681,7 @@ class MAT2d_Tool2d {
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "* Returns the distance between the two points designed by their parameters on <abisector>.
 	:param abisector:
-	:type abisector: opencascade::handle<MAT_Bisector> &
+	:type abisector: MAT_Bisector
 	:param param1:
 	:type param1: float
 	:param param2:
@@ -705,7 +705,7 @@ class MAT2d_Tool2d {
 	:param anitem:
 	:type anitem: int
 	:param dist:
-	:type dist: float &
+	:type dist: float
 	:rtype: int") FirstPoint;
 		Standard_Integer FirstPoint (const Standard_Integer anitem,Standard_Real &OutValue);
 
@@ -745,7 +745,7 @@ class MAT2d_Tool2d {
 		%feature("compactdefaultargs") InitItems;
 		%feature("autodoc", "* InitItems cuts the line in Items. this Items are the geometrics representations of the BasicElts from MAT.
 	:param aCircuit:
-	:type aCircuit: opencascade::handle<MAT2d_Circuit> &
+	:type aCircuit: MAT2d_Circuit
 	:rtype: None") InitItems;
 		void InitItems (const opencascade::handle<MAT2d_Circuit> & aCircuit);
 
@@ -753,11 +753,11 @@ class MAT2d_Tool2d {
 		%feature("compactdefaultargs") IntersectBisector;
 		%feature("autodoc", "* Computes the point of intersection between the bisectors defined by <bisectorone> and <bisectortwo> . If this point exists, <intpnt> is its index in <theGeomPnts> and Return the distance of the point from the bisector else Return <RealLast>.
 	:param bisectorone:
-	:type bisectorone: opencascade::handle<MAT_Bisector> &
+	:type bisectorone: MAT_Bisector
 	:param bisectortwo:
-	:type bisectortwo: opencascade::handle<MAT_Bisector> &
+	:type bisectortwo: MAT_Bisector
 	:param intpnt:
-	:type intpnt: int &
+	:type intpnt: int
 	:rtype: float") IntersectBisector;
 		Standard_Real IntersectBisector (const opencascade::handle<MAT_Bisector> & bisectorone,const opencascade::handle<MAT_Bisector> & bisectortwo,Standard_Integer &OutValue);
 
@@ -826,7 +826,7 @@ class MAT2d_Tool2d {
 		%feature("compactdefaultargs") TrimBisector;
 		%feature("autodoc", "* Trims the geometric bisector by the <firstparameter> of <abisector>. If the parameter is out of the bisector, Return False. else Return True.
 	:param abisector:
-	:type abisector: opencascade::handle<MAT_Bisector> &
+	:type abisector: MAT_Bisector
 	:rtype: bool") TrimBisector;
 		Standard_Boolean TrimBisector (const opencascade::handle<MAT_Bisector> & abisector);
 
@@ -834,7 +834,7 @@ class MAT2d_Tool2d {
 		%feature("compactdefaultargs") TrimBisector;
 		%feature("autodoc", "* Trims the geometric bisector by the point of index <apoint> in <theGeomPnts>. If the point is out of the bisector, Return False. else Return True.
 	:param abisector:
-	:type abisector: opencascade::handle<MAT_Bisector> &
+	:type abisector: MAT_Bisector
 	:param apoint:
 	:type apoint: int
 	:rtype: bool") TrimBisector;

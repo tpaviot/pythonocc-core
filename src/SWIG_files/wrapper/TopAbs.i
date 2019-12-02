@@ -116,7 +116,7 @@ class TopAbs {
 	:param theShapeType:
 	:type theShapeType: TopAbs_ShapeEnum
 	:param theStream:
-	:type theStream: Standard_OStream &
+	:type theStream: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopAbs_ShapeEnum theShapeType,Standard_OStream & theStream);
 
@@ -126,7 +126,7 @@ class TopAbs {
 	:param theOrientation:
 	:type theOrientation: TopAbs_Orientation
 	:param theStream:
-	:type theStream: Standard_OStream &
+	:type theStream: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopAbs_Orientation theOrientation,Standard_OStream & theStream);
 
@@ -136,7 +136,7 @@ class TopAbs {
 	:param St:
 	:type St: TopAbs_State
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopAbs_State St,Standard_OStream & S);
 
@@ -162,7 +162,7 @@ class TopAbs {
 	:param theOrientationString:
 	:type theOrientationString: char *
 	:param theOrientation:
-	:type theOrientation: TopAbs_Orientation &
+	:type theOrientation: TopAbs_Orientation
 	:rtype: bool") ShapeOrientationFromString;
 		static Standard_Boolean ShapeOrientationFromString (const char * theOrientationString,TopAbs_Orientation & theOrientation);
 
@@ -188,7 +188,7 @@ class TopAbs {
 	:param theTypeString:
 	:type theTypeString: char *
 	:param theType:
-	:type theType: TopAbs_ShapeEnum &
+	:type theType: TopAbs_ShapeEnum
 	:rtype: bool") ShapeTypeFromString;
 		static Standard_Boolean ShapeTypeFromString (const char * theTypeString,TopAbs_ShapeEnum & theType);
 

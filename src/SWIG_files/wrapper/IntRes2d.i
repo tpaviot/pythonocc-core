@@ -95,9 +95,9 @@ class IntRes2d_Domain {
 		%feature("compactdefaultargs") EquivalentParameters;
 		%feature("autodoc", "* Returns Equivalent parameters if the domain is closed. Otherwise, the exception DomainError is raised.
 	:param zero:
-	:type zero: float &
+	:type zero: float
 	:param zeroplusperiod:
-	:type zeroplusperiod: float &
+	:type zeroplusperiod: float
 	:rtype: None") EquivalentParameters;
 		void EquivalentParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -335,9 +335,9 @@ class IntRes2d_IntersectionPoint {
 	:param Uc2:
 	:type Uc2: float
 	:param Trans1:
-	:type Trans1: IntRes2d_Transition &
+	:type Trans1: IntRes2d_Transition
 	:param Trans2:
-	:type Trans2: IntRes2d_Transition &
+	:type Trans2: IntRes2d_Transition
 	:param ReversedFlag:
 	:type ReversedFlag: bool
 	:rtype: None") IntRes2d_IntersectionPoint;
@@ -365,9 +365,9 @@ class IntRes2d_IntersectionPoint {
 	:param Uc2:
 	:type Uc2: float
 	:param Trans1:
-	:type Trans1: IntRes2d_Transition &
+	:type Trans1: IntRes2d_Transition
 	:param Trans2:
-	:type Trans2: IntRes2d_Transition &
+	:type Trans2: IntRes2d_Transition
 	:param ReversedFlag:
 	:type ReversedFlag: bool
 	:rtype: None") SetValues;
@@ -433,9 +433,9 @@ class IntRes2d_IntersectionSegment {
 		/****************** IntRes2d_IntersectionSegment ******************/
 		%feature("compactdefaultargs") IntRes2d_IntersectionSegment;
 		%feature("autodoc", ":param P1:
-	:type P1: IntRes2d_IntersectionPoint &
+	:type P1: IntRes2d_IntersectionPoint
 	:param P2:
-	:type P2: IntRes2d_IntersectionPoint &
+	:type P2: IntRes2d_IntersectionPoint
 	:param Oppos:
 	:type Oppos: bool
 	:param ReverseFlag:
@@ -446,7 +446,7 @@ class IntRes2d_IntersectionSegment {
 		/****************** IntRes2d_IntersectionSegment ******************/
 		%feature("compactdefaultargs") IntRes2d_IntersectionSegment;
 		%feature("autodoc", ":param P:
-	:type P: IntRes2d_IntersectionPoint &
+	:type P: IntRes2d_IntersectionPoint
 	:param First:
 	:type First: bool
 	:param Oppos:

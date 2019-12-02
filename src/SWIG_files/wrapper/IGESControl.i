@@ -104,7 +104,7 @@ class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "* Recognizes a ShapeMapper
 	:param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:rtype: bool") Recognize;
 		virtual Standard_Boolean Recognize (const opencascade::handle<Transfer_Finder> & start);
 
@@ -112,9 +112,9 @@ class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "* Transfers Shape to IGES Entities //! ModeTrans may be : 0 -> groups of Faces or 1 -> BRep
 	:param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: opencascade::handle<Transfer_Binder>") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer (const opencascade::handle<Transfer_Finder> & start,const opencascade::handle<Transfer_FinderProcess> & FP);
 
@@ -162,14 +162,14 @@ class IGESControl_Controller : public XSControl_Controller {
 		%feature("compactdefaultargs") ActorRead;
 		%feature("autodoc", "* Returns the Actor for Read attached to the pair (norm,appli) It is an Actor from IGESToBRep, adapted from an IGESModel : Unit, tolerances
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: opencascade::handle<Transfer_ActorOfTransientProcess>") ActorRead;
 		opencascade::handle<Transfer_ActorOfTransientProcess> ActorRead (const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****************** Customise ******************/
 		%feature("compactdefaultargs") Customise;
 		%feature("autodoc", ":param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: void") Customise;
 		virtual void Customise (opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -197,11 +197,11 @@ class IGESControl_Controller : public XSControl_Controller {
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "* Takes one Shape and transfers it to the InterfaceModel (already created by NewModel for instance) <modetrans> is to be interpreted by each kind of XstepAdaptor Returns a status : 0 OK 1 No result 2 Fail -1 bad modeshape -2 bad model (requires an IGESModel) modeshape : 0 groupe of face (version < 5.1) 1 BREP-version 5.1 of IGES
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param modetrans: default value is 0
 	:type modetrans: int
 	:rtype: IFSelect_ReturnStatus") TransferWriteShape;
@@ -248,7 +248,7 @@ class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 		%feature("compactdefaultargs") IGESControl_IGESBoundary;
 		%feature("autodoc", "* Creates an object and calls inherited constuctor.
 	:param CS:
-	:type CS: IGESToBRep_CurveAndSurface &
+	:type CS: IGESToBRep_CurveAndSurface
 	:rtype: None") IGESControl_IGESBoundary;
 		 IGESControl_IGESBoundary (const IGESToBRep_CurveAndSurface & CS);
 
@@ -284,7 +284,7 @@ class IGESControl_Reader : public XSControl_Reader {
 		%feature("compactdefaultargs") IGESControl_Reader;
 		%feature("autodoc", "* Creates a Reader from an already existing Session
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:param scratch: default value is Standard_True
 	:type scratch: bool
 	:rtype: None") IGESControl_Reader;
@@ -368,7 +368,7 @@ class IGESControl_Writer {
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "* Adds an IGES entity (and the ones it references) to the model
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") AddEntity;
 		Standard_Boolean AddEntity (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -376,7 +376,7 @@ class IGESControl_Writer {
 		%feature("compactdefaultargs") AddGeom;
 		%feature("autodoc", "* Translates a Geometry (Surface or Curve) to IGES Entities and adds them to the model Returns True if done, False if geom is neither a Surface or a Curve suitable for IGES or is null
 	:param geom:
-	:type geom: opencascade::handle<Standard_Transient> &
+	:type geom: Standard_Transient
 	:rtype: bool") AddGeom;
 		Standard_Boolean AddGeom (const opencascade::handle<Standard_Transient> & geom);
 
@@ -384,7 +384,7 @@ class IGESControl_Writer {
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "* Translates a Shape to IGES Entities and adds them to the model Returns True if done, False if Shape not suitable for IGES or null
 	:param sh:
-	:type sh: TopoDS_Shape &
+	:type sh: TopoDS_Shape
 	:rtype: bool") AddShape;
 		Standard_Boolean AddShape (const TopoDS_Shape & sh);
 
@@ -414,7 +414,7 @@ class IGESControl_Writer {
 		%feature("compactdefaultargs") IGESControl_Writer;
 		%feature("autodoc", "* Creates a writer object with the prepared IGES model model in write mode. modecr defines the write mode and may be: - 0: Faces (default) - 1: BRep.
 	:param model:
-	:type model: opencascade::handle<IGESData_IGESModel> &
+	:type model: IGESData_IGESModel
 	:param modecr: default value is 0
 	:type modecr: int
 	:rtype: None") IGESControl_Writer;
@@ -430,7 +430,7 @@ class IGESControl_Writer {
 		%feature("compactdefaultargs") SetTransferProcess;
 		%feature("autodoc", "* Returns/Sets the TransferProcess : it contains final results and if some, check messages
 	:param TP:
-	:type TP: opencascade::handle<Transfer_FinderProcess> &
+	:type TP: Transfer_FinderProcess
 	:rtype: None") SetTransferProcess;
 		void SetTransferProcess (const opencascade::handle<Transfer_FinderProcess> & TP);
 
@@ -443,7 +443,7 @@ class IGESControl_Writer {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Computes then writes the model to an OStream Returns True when done, false in case of error
 	:param S:
-	:type S: Standard_OStream &
+	:type S: Standard_OStream
 	:param fnes: default value is Standard_False
 	:type fnes: bool
 	:rtype: bool") Write;

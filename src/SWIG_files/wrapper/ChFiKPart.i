@@ -110,19 +110,19 @@ class ChFiKPart_ComputeData {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* Computes a simple fillet in several particular cases.
 	:param DStr:
-	:type DStr: TopOpeBRepDS_DataStructure &
+	:type DStr: TopOpeBRepDS_DataStructure
 	:param Data:
-	:type Data: opencascade::handle<ChFiDS_SurfData> &
+	:type Data: ChFiDS_SurfData
 	:param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param Or1:
 	:type Or1: TopAbs_Orientation
 	:param Or2:
 	:type Or2: TopAbs_Orientation
 	:param Sp:
-	:type Sp: opencascade::handle<ChFiDS_Spine> &
+	:type Sp: ChFiDS_Spine
 	:param Iedge:
 	:type Iedge: int
 	:rtype: bool") Compute;
@@ -132,13 +132,13 @@ class ChFiKPart_ComputeData {
 		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "* Computes a toric or spheric corner fillet.
 	:param DStr:
-	:type DStr: TopOpeBRepDS_DataStructure &
+	:type DStr: TopOpeBRepDS_DataStructure
 	:param Data:
-	:type Data: opencascade::handle<ChFiDS_SurfData> &
+	:type Data: ChFiDS_SurfData
 	:param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param OrFace1:
 	:type OrFace1: TopAbs_Orientation
 	:param OrFace2:
@@ -166,13 +166,13 @@ class ChFiKPart_ComputeData {
 		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "* Computes spheric corner fillet with non iso pcurve on S2.
 	:param DStr:
-	:type DStr: TopOpeBRepDS_DataStructure &
+	:type DStr: TopOpeBRepDS_DataStructure
 	:param Data:
-	:type Data: opencascade::handle<ChFiDS_SurfData> &
+	:type Data: ChFiDS_SurfData
 	:param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param OrFace1:
 	:type OrFace1: TopAbs_Orientation
 	:param OrFace2:
@@ -196,15 +196,15 @@ class ChFiKPart_ComputeData {
 		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "* Computes a toric corner rotule.
 	:param DStr:
-	:type DStr: TopOpeBRepDS_DataStructure &
+	:type DStr: TopOpeBRepDS_DataStructure
 	:param Data:
-	:type Data: opencascade::handle<ChFiDS_SurfData> &
+	:type Data: ChFiDS_SurfData
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param OfS:
 	:type OfS: TopAbs_Orientation
 	:param OS:

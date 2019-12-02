@@ -234,21 +234,21 @@ class Expr {
 		/****************** CopyShare ******************/
 		%feature("compactdefaultargs") CopyShare;
 		%feature("autodoc", ":param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: opencascade::handle<Expr_GeneralExpression>") CopyShare;
 		static opencascade::handle<Expr_GeneralExpression> CopyShare (const opencascade::handle<Expr_GeneralExpression> & exp);
 
 		/****************** NbOfFreeVariables ******************/
 		%feature("compactdefaultargs") NbOfFreeVariables;
 		%feature("autodoc", ":param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: int") NbOfFreeVariables;
 		static Standard_Integer NbOfFreeVariables (const opencascade::handle<Expr_GeneralExpression> & exp);
 
 		/****************** NbOfFreeVariables ******************/
 		%feature("compactdefaultargs") NbOfFreeVariables;
 		%feature("autodoc", ":param exp:
-	:type exp: opencascade::handle<Expr_GeneralRelation> &
+	:type exp: Expr_GeneralRelation
 	:rtype: int") NbOfFreeVariables;
 		static Standard_Integer NbOfFreeVariables (const opencascade::handle<Expr_GeneralRelation> & exp);
 
@@ -278,7 +278,7 @@ class Expr_GeneralExpression : public Standard_Transient {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <exp> is contained in <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		virtual Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -298,7 +298,7 @@ class Expr_GeneralExpression : public Standard_Transient {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		virtual opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -306,9 +306,9 @@ class Expr_GeneralExpression : public Standard_Transient {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		virtual Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -322,7 +322,7 @@ class Expr_GeneralExpression : public Standard_Transient {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. Warning: This method does not include any simplification before testing. It could also be very slow; to be used carefully.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		virtual Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -342,7 +342,7 @@ class Expr_GeneralExpression : public Standard_Transient {
 		%feature("compactdefaultargs") NDerivative;
 		%feature("autodoc", "* Returns the <N>-th derivative on <X> unknown of <self>. Raise OutOfRange if N <= 0
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:param N:
 	:type N: int
 	:rtype: opencascade::handle<Expr_GeneralExpression>") NDerivative;
@@ -358,9 +358,9 @@ class Expr_GeneralExpression : public Standard_Transient {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with copies of <with> in <self>. Copies of <with> are made with the Copy() method. Raises InvalidOperand if <with> contains <self>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: void") Replace;
 		virtual void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -417,7 +417,7 @@ class Expr_GeneralFunction : public Standard_Transient {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns Derivative of <self> for variable <var>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralFunction>") Derivative;
 		virtual opencascade::handle<Expr_GeneralFunction> Derivative (const opencascade::handle<Expr_NamedUnknown> & var);
 
@@ -425,7 +425,7 @@ class Expr_GeneralFunction : public Standard_Transient {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns Derivative of <self> for variable <var> with degree <deg>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param deg:
 	:type deg: int
 	:rtype: opencascade::handle<Expr_GeneralFunction>") Derivative;
@@ -435,9 +435,9 @@ class Expr_GeneralFunction : public Standard_Transient {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Computes the value of <self> with the given variables. Raises NotEvaluable if <vars> does not match all variables of <self>.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		virtual Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -450,7 +450,7 @@ class Expr_GeneralFunction : public Standard_Transient {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <func> are similar functions (same name and same used expression).
 	:param func:
-	:type func: opencascade::handle<Expr_GeneralFunction> &
+	:type func: Expr_GeneralFunction
 	:rtype: bool") IsIdentical;
 		virtual Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralFunction> & func);
 
@@ -497,7 +497,7 @@ class Expr_GeneralRelation : public Standard_Transient {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <exp> contains <var>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		virtual Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -535,9 +535,9 @@ class Expr_GeneralRelation : public Standard_Transient {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with <with> in <self>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: void") Replace;
 		virtual void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -588,7 +588,7 @@ class Expr_RUIterator {
 		%feature("compactdefaultargs") Expr_RUIterator;
 		%feature("autodoc", "* Creates an iterator on every NamedUnknown contained in <rel>.
 	:param rel:
-	:type rel: opencascade::handle<Expr_GeneralRelation> &
+	:type rel: Expr_GeneralRelation
 	:rtype: None") Expr_RUIterator;
 		 Expr_RUIterator (const opencascade::handle<Expr_GeneralRelation> & rel);
 
@@ -627,7 +627,7 @@ class Expr_RelationIterator {
 		/****************** Expr_RelationIterator ******************/
 		%feature("compactdefaultargs") Expr_RelationIterator;
 		%feature("autodoc", ":param rel:
-	:type rel: opencascade::handle<Expr_GeneralRelation> &
+	:type rel: Expr_GeneralRelation
 	:rtype: None") Expr_RelationIterator;
 		 Expr_RelationIterator (const opencascade::handle<Expr_GeneralRelation> & rel);
 
@@ -666,7 +666,7 @@ class Expr_UnknownIterator {
 		/****************** Expr_UnknownIterator ******************/
 		%feature("compactdefaultargs") Expr_UnknownIterator;
 		%feature("autodoc", ":param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_UnknownIterator;
 		 Expr_UnknownIterator (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -704,7 +704,7 @@ class Expr_BinaryExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <self> contains <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -729,9 +729,9 @@ class Expr_BinaryExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with <with> in <self>. Raises InvalidOperand if <with> contains <self>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: None") Replace;
 		void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -744,7 +744,7 @@ class Expr_BinaryExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") SetFirstOperand;
 		%feature("autodoc", "* Sets first operand of <self> Raises InvalidOperand if exp = me
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") SetFirstOperand;
 		void SetFirstOperand (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -752,7 +752,7 @@ class Expr_BinaryExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") SetSecondOperand;
 		%feature("autodoc", "* Sets second operand of <self> Raises InvalidOperand if <exp> contains <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") SetSecondOperand;
 		void SetSecondOperand (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -809,7 +809,7 @@ class Expr_FunctionDerivative : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns Derivative of <self> for variable <var>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralFunction>") Derivative;
 		opencascade::handle<Expr_GeneralFunction> Derivative (const opencascade::handle<Expr_NamedUnknown> & var);
 
@@ -817,7 +817,7 @@ class Expr_FunctionDerivative : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns Derivative of <self> for variable <var> with degree <deg>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param deg:
 	:type deg: int
 	:rtype: opencascade::handle<Expr_GeneralFunction>") Derivative;
@@ -827,9 +827,9 @@ class Expr_FunctionDerivative : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Computes the value of <self> with the given variables. Raises DimensionMismatch if Length(vars) is different from Length(values).
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param values:
-	:type values: TColStd_Array1OfReal &
+	:type values: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & values);
 
@@ -837,9 +837,9 @@ class Expr_FunctionDerivative : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") Expr_FunctionDerivative;
 		%feature("autodoc", "* Creates a FunctionDerivative of degree <deg> relative to the <withX> variable. Raises OutOfRange if <deg> lower or equal to zero.
 	:param func:
-	:type func: opencascade::handle<Expr_GeneralFunction> &
+	:type func: Expr_GeneralFunction
 	:param withX:
-	:type withX: opencascade::handle<Expr_NamedUnknown> &
+	:type withX: Expr_NamedUnknown
 	:param deg:
 	:type deg: int
 	:rtype: None") Expr_FunctionDerivative;
@@ -865,7 +865,7 @@ class Expr_FunctionDerivative : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <func> are similar functions (same name and same used expression).
 	:param func:
-	:type func: opencascade::handle<Expr_GeneralFunction> &
+	:type func: Expr_GeneralFunction
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralFunction> & func);
 
@@ -922,7 +922,7 @@ class Expr_NamedExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -935,7 +935,7 @@ class Expr_NamedExpression : public Expr_GeneralExpression {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param name:
-	:type name: TCollection_AsciiString &
+	:type name: TCollection_AsciiString
 	:rtype: None") SetName;
 		void SetName (const TCollection_AsciiString & name);
 
@@ -972,7 +972,7 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns Derivative of <self> for variable <var>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralFunction>") Derivative;
 		opencascade::handle<Expr_GeneralFunction> Derivative (const opencascade::handle<Expr_NamedUnknown> & var);
 
@@ -980,7 +980,7 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns Derivative of <self> for variable <var> with degree <deg>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param deg:
 	:type deg: int
 	:rtype: opencascade::handle<Expr_GeneralFunction>") Derivative;
@@ -990,9 +990,9 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Computes the value of <self> with the given variables. Raises DimensionMismatch if Length(vars) is different from Length(values).
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param values:
-	:type values: TColStd_Array1OfReal &
+	:type values: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & values);
 
@@ -1000,11 +1000,11 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") Expr_NamedFunction;
 		%feature("autodoc", "* Creates a function of given variables <vars> with name <name> defined by the expression <exp>.
 	:param name:
-	:type name: TCollection_AsciiString &
+	:type name: TCollection_AsciiString
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:rtype: None") Expr_NamedFunction;
 		 Expr_NamedFunction (const TCollection_AsciiString & name,const opencascade::handle<Expr_GeneralExpression> & exp,const Expr_Array1OfNamedUnknown & vars);
 
@@ -1029,7 +1029,7 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <func> are similar functions (same name and same used expression).
 	:param func:
-	:type func: opencascade::handle<Expr_GeneralFunction> &
+	:type func: Expr_GeneralFunction
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralFunction> & func);
 
@@ -1051,7 +1051,7 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") SetExpression;
 		%feature("autodoc", "* Modifies expression of <self>. Warning: Beware of derivatives. See FunctionDerivative
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") SetExpression;
 		void SetExpression (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1059,7 +1059,7 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* Sets the name <newname> to <self>.
 	:param newname:
-	:type newname: TCollection_AsciiString &
+	:type newname: TCollection_AsciiString
 	:rtype: None") SetName;
 		void SetName (const TCollection_AsciiString & newname);
 
@@ -1092,7 +1092,7 @@ class Expr_NumericValue : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <exp> is contained in <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1112,7 +1112,7 @@ class Expr_NumericValue : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -1120,9 +1120,9 @@ class Expr_NumericValue : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -1142,7 +1142,7 @@ class Expr_NumericValue : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -1155,7 +1155,7 @@ class Expr_NumericValue : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") NDerivative;
 		%feature("autodoc", "* Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:param N:
 	:type N: int
 	:rtype: opencascade::handle<Expr_GeneralExpression>") NDerivative;
@@ -1171,9 +1171,9 @@ class Expr_NumericValue : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with <with> in <self>
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: None") Replace;
 		void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -1231,7 +1231,7 @@ class Expr_PolyExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <exp> is contained in <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1265,9 +1265,9 @@ class Expr_PolyExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with <with> in <self> Raises InvalidOperand if <with> contains <self>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: None") Replace;
 		void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -1275,7 +1275,7 @@ class Expr_PolyExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") SetOperand;
 		%feature("autodoc", "* Sets the <index>-th operand used in <self>. An exception is raised if <index> is out of range Raises InvalidOperand if <exp> contains <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:param index:
 	:type index: int
 	:rtype: None") SetOperand;
@@ -1316,7 +1316,7 @@ class Expr_SingleRelation : public Expr_GeneralRelation {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <self> contains <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1348,9 +1348,9 @@ class Expr_SingleRelation : public Expr_GeneralRelation {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with <with> in <self>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: None") Replace;
 		void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -1364,7 +1364,7 @@ class Expr_SingleRelation : public Expr_GeneralRelation {
 		%feature("compactdefaultargs") SetFirstMember;
 		%feature("autodoc", "* Defines the first member of the relation
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") SetFirstMember;
 		void SetFirstMember (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1372,7 +1372,7 @@ class Expr_SingleRelation : public Expr_GeneralRelation {
 		%feature("compactdefaultargs") SetSecondMember;
 		%feature("autodoc", "* Defines the second member of the relation
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") SetSecondMember;
 		void SetSecondMember (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1405,7 +1405,7 @@ class Expr_SystemRelation : public Expr_GeneralRelation {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Appends <relation> in the list of components of <self>.
 	:param relation:
-	:type relation: opencascade::handle<Expr_GeneralRelation> &
+	:type relation: Expr_GeneralRelation
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Expr_GeneralRelation> & relation);
 
@@ -1413,7 +1413,7 @@ class Expr_SystemRelation : public Expr_GeneralRelation {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <self> contains <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1427,7 +1427,7 @@ class Expr_SystemRelation : public Expr_GeneralRelation {
 		%feature("compactdefaultargs") Expr_SystemRelation;
 		%feature("autodoc", "* Creates a system with one relation
 	:param relation:
-	:type relation: opencascade::handle<Expr_GeneralRelation> &
+	:type relation: Expr_GeneralRelation
 	:rtype: None") Expr_SystemRelation;
 		 Expr_SystemRelation (const opencascade::handle<Expr_GeneralRelation> & relation);
 
@@ -1457,7 +1457,7 @@ class Expr_SystemRelation : public Expr_GeneralRelation {
 		/****************** Remove ******************/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", ":param relation:
-	:type relation: opencascade::handle<Expr_GeneralRelation> &
+	:type relation: Expr_GeneralRelation
 	:rtype: None") Remove;
 		void Remove (const opencascade::handle<Expr_GeneralRelation> & relation);
 
@@ -1465,9 +1465,9 @@ class Expr_SystemRelation : public Expr_GeneralRelation {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with <with> in <self>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: None") Replace;
 		void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -1518,7 +1518,7 @@ class Expr_UnaryExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <exp> is contained in <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1544,9 +1544,9 @@ class Expr_UnaryExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with <with> in <self> Raises InvalidOperand if <with> contains <self>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: None") Replace;
 		void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -1554,7 +1554,7 @@ class Expr_UnaryExpression : public Expr_GeneralExpression {
 		%feature("compactdefaultargs") SetOperand;
 		%feature("autodoc", "* Sets the operand used Raises InvalidOperand if <exp> contains <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") SetOperand;
 		void SetOperand (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1599,7 +1599,7 @@ class Expr_Absolute : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -1607,9 +1607,9 @@ class Expr_Absolute : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -1617,7 +1617,7 @@ class Expr_Absolute : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_Absolute;
 		%feature("autodoc", "* Creates the Abs of <exp>
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_Absolute;
 		 Expr_Absolute (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1625,7 +1625,7 @@ class Expr_Absolute : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -1673,7 +1673,7 @@ class Expr_ArcCosine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -1681,9 +1681,9 @@ class Expr_ArcCosine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -1691,7 +1691,7 @@ class Expr_ArcCosine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_ArcCosine;
 		%feature("autodoc", "* Creates the Arccos of <exp>
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_ArcCosine;
 		 Expr_ArcCosine (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1699,7 +1699,7 @@ class Expr_ArcCosine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -1747,7 +1747,7 @@ class Expr_ArcSine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -1755,9 +1755,9 @@ class Expr_ArcSine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -1765,7 +1765,7 @@ class Expr_ArcSine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_ArcSine;
 		%feature("autodoc", "* Creates the Arcsin of <exp>
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_ArcSine;
 		 Expr_ArcSine (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1773,7 +1773,7 @@ class Expr_ArcSine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -1821,7 +1821,7 @@ class Expr_ArcTangent : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -1829,9 +1829,9 @@ class Expr_ArcTangent : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -1839,7 +1839,7 @@ class Expr_ArcTangent : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_ArcTangent;
 		%feature("autodoc", "* Creates the Arctan of <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_ArcTangent;
 		 Expr_ArcTangent (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1847,7 +1847,7 @@ class Expr_ArcTangent : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -1895,7 +1895,7 @@ class Expr_ArgCosh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -1903,9 +1903,9 @@ class Expr_ArgCosh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -1913,7 +1913,7 @@ class Expr_ArgCosh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_ArgCosh;
 		%feature("autodoc", "* Creates the ArgCosh of <exp>
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_ArgCosh;
 		 Expr_ArgCosh (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1921,7 +1921,7 @@ class Expr_ArgCosh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -1969,7 +1969,7 @@ class Expr_ArgSinh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -1977,9 +1977,9 @@ class Expr_ArgSinh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -1987,7 +1987,7 @@ class Expr_ArgSinh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_ArgSinh;
 		%feature("autodoc", "* Creates the ArgSinh of <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_ArgSinh;
 		 Expr_ArgSinh (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1995,7 +1995,7 @@ class Expr_ArgSinh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2043,7 +2043,7 @@ class Expr_ArgTanh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -2051,9 +2051,9 @@ class Expr_ArgTanh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -2061,7 +2061,7 @@ class Expr_ArgTanh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_ArgTanh;
 		%feature("autodoc", "* Creates the Argtanh of <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_ArgTanh;
 		 Expr_ArgTanh (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -2069,7 +2069,7 @@ class Expr_ArgTanh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2117,7 +2117,7 @@ class Expr_BinaryFunction : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -2125,9 +2125,9 @@ class Expr_BinaryFunction : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -2135,11 +2135,11 @@ class Expr_BinaryFunction : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Expr_BinaryFunction;
 		%feature("autodoc", "* Creates <self> as <func> (<exp1>,<exp2>). Raises exception if <func> is not binary.
 	:param func:
-	:type func: opencascade::handle<Expr_GeneralFunction> &
+	:type func: Expr_GeneralFunction
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_BinaryFunction;
 		 Expr_BinaryFunction (const opencascade::handle<Expr_GeneralFunction> & func,const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2153,7 +2153,7 @@ class Expr_BinaryFunction : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2201,7 +2201,7 @@ class Expr_Cosh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -2209,9 +2209,9 @@ class Expr_Cosh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -2219,7 +2219,7 @@ class Expr_Cosh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_Cosh;
 		%feature("autodoc", "* Creates the Cosh of <exp>
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_Cosh;
 		 Expr_Cosh (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -2227,7 +2227,7 @@ class Expr_Cosh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2275,7 +2275,7 @@ class Expr_Cosine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -2283,9 +2283,9 @@ class Expr_Cosine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -2293,7 +2293,7 @@ class Expr_Cosine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_Cosine;
 		%feature("autodoc", "* Creates the cosine of Exp
 	:param Exp:
-	:type Exp: opencascade::handle<Expr_GeneralExpression> &
+	:type Exp: Expr_GeneralExpression
 	:rtype: None") Expr_Cosine;
 		 Expr_Cosine (const opencascade::handle<Expr_GeneralExpression> & Exp);
 
@@ -2301,7 +2301,7 @@ class Expr_Cosine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2349,7 +2349,7 @@ class Expr_Difference : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -2357,9 +2357,9 @@ class Expr_Difference : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -2367,9 +2367,9 @@ class Expr_Difference : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Expr_Difference;
 		%feature("autodoc", "* Creates the difference <exp1> - <exp2>.
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_Difference;
 		 Expr_Difference (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2377,7 +2377,7 @@ class Expr_Difference : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2390,7 +2390,7 @@ class Expr_Difference : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") NDerivative;
 		%feature("autodoc", "* Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:param N:
 	:type N: int
 	:rtype: opencascade::handle<Expr_GeneralExpression>") NDerivative;
@@ -2435,9 +2435,9 @@ class Expr_Different : public Expr_SingleRelation {
 		%feature("compactdefaultargs") Expr_Different;
 		%feature("autodoc", "* Creates the relation <exp1> # <exp2>.
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_Different;
 		 Expr_Different (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2491,7 +2491,7 @@ class Expr_Division : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -2499,9 +2499,9 @@ class Expr_Division : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -2509,9 +2509,9 @@ class Expr_Division : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Expr_Division;
 		%feature("autodoc", "* Creates the division <exp1>/<exp2>
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_Division;
 		 Expr_Division (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2519,7 +2519,7 @@ class Expr_Division : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2567,9 +2567,9 @@ class Expr_Equal : public Expr_SingleRelation {
 		%feature("compactdefaultargs") Expr_Equal;
 		%feature("autodoc", "* Creates the relation <exp1> = <exp2>.
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_Equal;
 		 Expr_Equal (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2623,7 +2623,7 @@ class Expr_Exponential : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -2631,9 +2631,9 @@ class Expr_Exponential : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -2641,7 +2641,7 @@ class Expr_Exponential : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_Exponential;
 		%feature("autodoc", "* Creates the exponential of <exp>
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_Exponential;
 		 Expr_Exponential (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -2649,7 +2649,7 @@ class Expr_Exponential : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2697,7 +2697,7 @@ class Expr_Exponentiate : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -2705,9 +2705,9 @@ class Expr_Exponentiate : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -2715,9 +2715,9 @@ class Expr_Exponentiate : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") Expr_Exponentiate;
 		%feature("autodoc", "* Creates the exponential <exp1> ^ <exp2>
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_Exponentiate;
 		 Expr_Exponentiate (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2725,7 +2725,7 @@ class Expr_Exponentiate : public Expr_BinaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2773,9 +2773,9 @@ class Expr_GreaterThan : public Expr_SingleRelation {
 		%feature("compactdefaultargs") Expr_GreaterThan;
 		%feature("autodoc", "* Creates the relation <exp1> > <exp2>.
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_GreaterThan;
 		 Expr_GreaterThan (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2829,9 +2829,9 @@ class Expr_GreaterThanOrEqual : public Expr_SingleRelation {
 		%feature("compactdefaultargs") Expr_GreaterThanOrEqual;
 		%feature("autodoc", "* Creates the relation <exp1> >= <exp2>.
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_GreaterThanOrEqual;
 		 Expr_GreaterThanOrEqual (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2885,9 +2885,9 @@ class Expr_LessThan : public Expr_SingleRelation {
 		%feature("compactdefaultargs") Expr_LessThan;
 		%feature("autodoc", "* Creates the relation <exp1> < <exp2>.
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_LessThan;
 		 Expr_LessThan (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2941,9 +2941,9 @@ class Expr_LessThanOrEqual : public Expr_SingleRelation {
 		%feature("compactdefaultargs") Expr_LessThanOrEqual;
 		%feature("autodoc", "* Creates the relation <exp1> <= <exp2>.
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_LessThanOrEqual;
 		 Expr_LessThanOrEqual (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -2997,7 +2997,7 @@ class Expr_LogOf10 : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3005,9 +3005,9 @@ class Expr_LogOf10 : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3015,7 +3015,7 @@ class Expr_LogOf10 : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_LogOf10;
 		%feature("autodoc", "* Creates the base 10 logarithm of <exp>
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_LogOf10;
 		 Expr_LogOf10 (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3023,7 +3023,7 @@ class Expr_LogOf10 : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3071,7 +3071,7 @@ class Expr_LogOfe : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3079,9 +3079,9 @@ class Expr_LogOfe : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3089,7 +3089,7 @@ class Expr_LogOfe : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_LogOfe;
 		%feature("autodoc", "* Creates the natural logarithm of <exp>
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_LogOfe;
 		 Expr_LogOfe (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3097,7 +3097,7 @@ class Expr_LogOfe : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3139,7 +3139,7 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <exp> is contained in <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3159,7 +3159,7 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3167,9 +3167,9 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3177,7 +3177,7 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Expr_NamedConstant;
 		%feature("autodoc", "* Creates a constant value of name <name> and value <value>.
 	:param name:
-	:type name: TCollection_AsciiString &
+	:type name: TCollection_AsciiString
 	:param value:
 	:type value: float
 	:rtype: None") Expr_NamedConstant;
@@ -3197,7 +3197,7 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 		%feature("compactdefaultargs") NDerivative;
 		%feature("autodoc", "* Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:param N:
 	:type N: int
 	:rtype: opencascade::handle<Expr_GeneralExpression>") NDerivative;
@@ -3213,9 +3213,9 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with <with> in <self>
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: None") Replace;
 		void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -3260,7 +3260,7 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "* Assigns <self> to <exp> expression. Raises exception if <exp> refers to <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Assign;
 		void Assign (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3274,7 +3274,7 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "* Tests if <exp> is contained in <self>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: bool") Contains;
 		Standard_Boolean Contains (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3300,7 +3300,7 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3308,16 +3308,16 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
 		/****************** Expr_NamedUnknown ******************/
 		%feature("compactdefaultargs") Expr_NamedUnknown;
 		%feature("autodoc", ":param name:
-	:type name: TCollection_AsciiString &
+	:type name: TCollection_AsciiString
 	:rtype: None") Expr_NamedUnknown;
 		 Expr_NamedUnknown (const TCollection_AsciiString & name);
 
@@ -3342,9 +3342,9 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replaces all occurences of <var> with <with> in <self> Raises InvalidOperand if <with> contains <self>.
 	:param var:
-	:type var: opencascade::handle<Expr_NamedUnknown> &
+	:type var: Expr_NamedUnknown
 	:param with:
-	:type with: opencascade::handle<Expr_GeneralExpression> &
+	:type with: Expr_GeneralExpression
 	:rtype: None") Replace;
 		void Replace (const opencascade::handle<Expr_NamedUnknown> & var,const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -3395,7 +3395,7 @@ class Expr_PolyFunction : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3403,9 +3403,9 @@ class Expr_PolyFunction : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3413,9 +3413,9 @@ class Expr_PolyFunction : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Expr_PolyFunction;
 		%feature("autodoc", "* Creates <self> as <func>(<exps_1>,<exps_2>,...,<exps_n>)
 	:param func:
-	:type func: opencascade::handle<Expr_GeneralFunction> &
+	:type func: Expr_GeneralFunction
 	:param exps:
-	:type exps: Expr_Array1OfGeneralExpression &
+	:type exps: Expr_Array1OfGeneralExpression
 	:rtype: None") Expr_PolyFunction;
 		 Expr_PolyFunction (const opencascade::handle<Expr_GeneralFunction> & func,const Expr_Array1OfGeneralExpression & exps);
 
@@ -3429,7 +3429,7 @@ class Expr_PolyFunction : public Expr_PolyExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3477,7 +3477,7 @@ class Expr_Product : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3485,9 +3485,9 @@ class Expr_Product : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3495,7 +3495,7 @@ class Expr_Product : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Expr_Product;
 		%feature("autodoc", "* Creates the product of all members of sequence <exps>
 	:param exps:
-	:type exps: Expr_SequenceOfGeneralExpression &
+	:type exps: Expr_SequenceOfGeneralExpression
 	:rtype: None") Expr_Product;
 		 Expr_Product (const Expr_SequenceOfGeneralExpression & exps);
 
@@ -3503,9 +3503,9 @@ class Expr_Product : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Expr_Product;
 		%feature("autodoc", "* Creates the product of <exp1> and <exp2>.
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_Product;
 		 Expr_Product (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -3513,7 +3513,7 @@ class Expr_Product : public Expr_PolyExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3564,7 +3564,7 @@ class Expr_Sine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3572,9 +3572,9 @@ class Expr_Sine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3582,7 +3582,7 @@ class Expr_Sine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_Sine;
 		%feature("autodoc", "* Creates the sine of <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_Sine;
 		 Expr_Sine (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3590,7 +3590,7 @@ class Expr_Sine : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3638,7 +3638,7 @@ class Expr_Sinh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3646,9 +3646,9 @@ class Expr_Sinh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3656,7 +3656,7 @@ class Expr_Sinh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_Sinh;
 		%feature("autodoc", "* Creates the sinh of <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_Sinh;
 		 Expr_Sinh (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3664,7 +3664,7 @@ class Expr_Sinh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3712,7 +3712,7 @@ class Expr_Square : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3720,9 +3720,9 @@ class Expr_Square : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3730,7 +3730,7 @@ class Expr_Square : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_Square;
 		%feature("autodoc", "* Creates the square of <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_Square;
 		 Expr_Square (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3738,7 +3738,7 @@ class Expr_Square : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3786,7 +3786,7 @@ class Expr_SquareRoot : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3794,9 +3794,9 @@ class Expr_SquareRoot : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3804,7 +3804,7 @@ class Expr_SquareRoot : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_SquareRoot;
 		%feature("autodoc", "* Creates the square root of <exp>
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_SquareRoot;
 		 Expr_SquareRoot (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3812,7 +3812,7 @@ class Expr_SquareRoot : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3860,7 +3860,7 @@ class Expr_Sum : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3868,9 +3868,9 @@ class Expr_Sum : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3878,7 +3878,7 @@ class Expr_Sum : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Expr_Sum;
 		%feature("autodoc", "* Creates the sum of all the members of sequence <exps>.
 	:param exps:
-	:type exps: Expr_SequenceOfGeneralExpression &
+	:type exps: Expr_SequenceOfGeneralExpression
 	:rtype: None") Expr_Sum;
 		 Expr_Sum (const Expr_SequenceOfGeneralExpression & exps);
 
@@ -3886,9 +3886,9 @@ class Expr_Sum : public Expr_PolyExpression {
 		%feature("compactdefaultargs") Expr_Sum;
 		%feature("autodoc", "* Creates the sum of <exp1> and <exp2>.
 	:param exp1:
-	:type exp1: opencascade::handle<Expr_GeneralExpression> &
+	:type exp1: Expr_GeneralExpression
 	:param exp2:
-	:type exp2: opencascade::handle<Expr_GeneralExpression> &
+	:type exp2: Expr_GeneralExpression
 	:rtype: None") Expr_Sum;
 		 Expr_Sum (const opencascade::handle<Expr_GeneralExpression> & exp1,const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -3896,7 +3896,7 @@ class Expr_Sum : public Expr_PolyExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3909,7 +3909,7 @@ class Expr_Sum : public Expr_PolyExpression {
 		%feature("compactdefaultargs") NDerivative;
 		%feature("autodoc", "* Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:param N:
 	:type N: int
 	:rtype: opencascade::handle<Expr_GeneralExpression>") NDerivative;
@@ -3954,7 +3954,7 @@ class Expr_Tangent : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3962,9 +3962,9 @@ class Expr_Tangent : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -3972,7 +3972,7 @@ class Expr_Tangent : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_Tangent;
 		%feature("autodoc", "* Creates the tangent of <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_Tangent;
 		 Expr_Tangent (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3980,7 +3980,7 @@ class Expr_Tangent : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4028,7 +4028,7 @@ class Expr_Tanh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -4036,9 +4036,9 @@ class Expr_Tanh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -4046,7 +4046,7 @@ class Expr_Tanh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_Tanh;
 		%feature("autodoc", "* Creates the hyperbolic tangent of <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_Tanh;
 		 Expr_Tanh (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -4054,7 +4054,7 @@ class Expr_Tanh : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4102,7 +4102,7 @@ class Expr_UnaryFunction : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* returns the derivative on <X> unknown of <self>.
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -4110,9 +4110,9 @@ class Expr_UnaryFunction : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -4120,9 +4120,9 @@ class Expr_UnaryFunction : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_UnaryFunction;
 		%feature("autodoc", "* Creates me as <func>(<exp>). Raises exception if <func> is not unary.
 	:param func:
-	:type func: opencascade::handle<Expr_GeneralFunction> &
+	:type func: Expr_GeneralFunction
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_UnaryFunction;
 		 Expr_UnaryFunction (const opencascade::handle<Expr_GeneralFunction> & func,const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -4136,7 +4136,7 @@ class Expr_UnaryFunction : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4184,7 +4184,7 @@ class Expr_UnaryMinus : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "* Returns the derivative on <X> unknown of <self>
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:rtype: opencascade::handle<Expr_GeneralExpression>") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative (const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -4192,9 +4192,9 @@ class Expr_UnaryMinus : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 	:param vars:
-	:type vars: Expr_Array1OfNamedUnknown &
+	:type vars: Expr_Array1OfNamedUnknown
 	:param vals:
-	:type vals: TColStd_Array1OfReal &
+	:type vals: TColStd_Array1OfReal
 	:rtype: float") Evaluate;
 		Standard_Real Evaluate (const Expr_Array1OfNamedUnknown & vars,const TColStd_Array1OfReal & vals);
 
@@ -4202,7 +4202,7 @@ class Expr_UnaryMinus : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") Expr_UnaryMinus;
 		%feature("autodoc", "* Create the unary minus of <exp>.
 	:param exp:
-	:type exp: opencascade::handle<Expr_GeneralExpression> &
+	:type exp: Expr_GeneralExpression
 	:rtype: None") Expr_UnaryMinus;
 		 Expr_UnaryMinus (const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -4210,7 +4210,7 @@ class Expr_UnaryMinus : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") IsIdentical;
 		%feature("autodoc", "* Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 	:param Other:
-	:type Other: opencascade::handle<Expr_GeneralExpression> &
+	:type Other: Expr_GeneralExpression
 	:rtype: bool") IsIdentical;
 		Standard_Boolean IsIdentical (const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4223,7 +4223,7 @@ class Expr_UnaryMinus : public Expr_UnaryExpression {
 		%feature("compactdefaultargs") NDerivative;
 		%feature("autodoc", "* Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0
 	:param X:
-	:type X: opencascade::handle<Expr_NamedUnknown> &
+	:type X: Expr_NamedUnknown
 	:param N:
 	:type N: int
 	:rtype: opencascade::handle<Expr_GeneralExpression>") NDerivative;

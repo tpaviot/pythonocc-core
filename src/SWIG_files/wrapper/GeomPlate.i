@@ -215,7 +215,7 @@ class GeomPlate_BuildAveragePlane {
 		%feature("compactdefaultargs") GeomPlate_BuildAveragePlane;
 		%feature("autodoc", "* Tol is a Tolerance to make the difference between the result plane and the result line. if POption = 1 : automatical parametrisation if POption = 2 : parametrisation by eigen vectors if NOption = 1 : the average plane is the inertial plane. if NOption = 2 : the average plane is the plane of max. flux.
 	:param Pts:
-	:type Pts: opencascade::handle<TColgp_HArray1OfPnt>
+	:type Pts: TColgp_HArray1OfPnt
 	:param NbBoundPoints:
 	:type NbBoundPoints: int
 	:param Tol:
@@ -233,7 +233,7 @@ class GeomPlate_BuildAveragePlane {
 	:param Normals:
 	:type Normals: TColgp_SequenceOfVec
 	:param Pts:
-	:type Pts: opencascade::handle<TColgp_HArray1OfPnt>
+	:type Pts: TColgp_HArray1OfPnt
 	:rtype: None") GeomPlate_BuildAveragePlane;
 		 GeomPlate_BuildAveragePlane (const TColgp_SequenceOfVec & Normals,const opencascade::handle<TColgp_HArray1OfPnt> & Pts);
 
@@ -244,7 +244,7 @@ class GeomPlate_BuildAveragePlane {
 	:param Normals:
 	:type Normals: TColgp_SequenceOfVec
 	:param Bset:
-	:type Bset: GeomPlate_SequenceOfAij &
+	:type Bset: GeomPlate_SequenceOfAij
 	:param LinTol:
 	:type LinTol: float
 	:param AngTol:
@@ -274,13 +274,13 @@ class GeomPlate_BuildAveragePlane {
 		%feature("compactdefaultargs") MinMaxBox;
 		%feature("autodoc", "* computes the minimal box to include all normal projection points of the initial array on the plane.
 	:param Umin:
-	:type Umin: float &
+	:type Umin: float
 	:param Umax:
-	:type Umax: float &
+	:type Umax: float
 	:param Vmin:
-	:type Vmin: float &
+	:type Vmin: float
 	:param Vmax:
-	:type Vmax: float &
+	:type Vmax: float
 	:rtype: None") MinMaxBox;
 		void MinMaxBox (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -309,7 +309,7 @@ class GeomPlate_BuildPlateSurface {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the linear constraint cont.
 	:param Cont:
-	:type Cont: opencascade::handle<GeomPlate_CurveConstraint> &
+	:type Cont: GeomPlate_CurveConstraint
 	:rtype: None") Add;
 		void Add (const opencascade::handle<GeomPlate_CurveConstraint> & Cont);
 
@@ -317,7 +317,7 @@ class GeomPlate_BuildPlateSurface {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the point constraint cont.
 	:param Cont:
-	:type Cont: opencascade::handle<GeomPlate_PointConstraint> &
+	:type Cont: GeomPlate_PointConstraint
 	:rtype: None") Add;
 		void Add (const opencascade::handle<GeomPlate_PointConstraint> & Cont);
 
@@ -401,11 +401,11 @@ class GeomPlate_BuildPlateSurface {
 		%feature("compactdefaultargs") GeomPlate_BuildPlateSurface;
 		%feature("autodoc", "* Constructor compatible with the old version with this constructor the constraint are given in a Array of Curve on Surface The array NbPoints contains the number of points for each constraint. The Array Tang contains the order of constraint for each Constraint: The possible values for this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum number of iteration to optimise the number of points for resolution Degree is the degree of resolution for Plate Tol2d is the tolerance used to test if two points of different constraint are identical in the parametric space of the initial surface Tol3d is used to test if two identical points in the 2d space are identical in 3d space TolAng is used to compare the angle between normal of two identical points in the 2d space Raises ConstructionError;
 	:param NPoints:
-	:type NPoints: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type NPoints: TColStd_HArray1OfInteger
 	:param TabCurve:
-	:type TabCurve: opencascade::handle<GeomPlate_HArray1OfHCurve> &
+	:type TabCurve: GeomPlate_HArray1OfHCurve
 	:param Tang:
-	:type Tang: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type Tang: TColStd_HArray1OfInteger
 	:param Degree:
 	:type Degree: int
 	:param NbIter: default value is 3
@@ -426,7 +426,7 @@ class GeomPlate_BuildPlateSurface {
 		/****************** GeomPlate_BuildPlateSurface ******************/
 		%feature("compactdefaultargs") GeomPlate_BuildPlateSurface;
 		%feature("autodoc", ":param Surf:
-	:type Surf: opencascade::handle<Geom_Surface> &
+	:type Surf: Geom_Surface
 	:param Degree: default value is 3
 	:type Degree: int
 	:param NbPtsOnCur: default value is 10
@@ -484,7 +484,7 @@ class GeomPlate_BuildPlateSurface {
 		%feature("compactdefaultargs") LoadInitSurface;
 		%feature("autodoc", "* Loads the initial Surface
 	:param Surf:
-	:type Surf: opencascade::handle<Geom_Surface> &
+	:type Surf: Geom_Surface
 	:rtype: None") LoadInitSurface;
 		void LoadInitSurface (const opencascade::handle<Geom_Surface> & Surf);
 
@@ -498,7 +498,7 @@ class GeomPlate_BuildPlateSurface {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Calls the algorithm and computes the plate surface using the loaded constraints. If no initial surface is given, the algorithm automatically computes one. Exceptions Standard_RangeError if the value of the constraint is null or if plate is not done.
 	:param aProgress: default value is opencascade::handle<Message_ProgressIndicator>()
-	:type aProgress: opencascade::handle<Message_ProgressIndicator> &
+	:type aProgress: Message_ProgressIndicator
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Message_ProgressIndicator> & aProgress = opencascade::handle<Message_ProgressIndicator>());
 
@@ -641,7 +641,7 @@ class GeomPlate_CurveConstraint : public Standard_Transient {
 		%feature("compactdefaultargs") GeomPlate_CurveConstraint;
 		%feature("autodoc", "* Create a constraint Order is the order of the constraint. The possible values for order are -1,0,1,2. Order i means constraints Gi Npt is the number of points associated with the constraint. TolDist is the maximum error to satisfy for G0 constraints TolAng is the maximum error to satisfy for G1 constraints TolCurv is the maximum error to satisfy for G2 constraints These errors can be replaced by laws of criterion. Raises ConstructionError if Order is not -1 , 0, 1, 2
 	:param Boundary:
-	:type Boundary: opencascade::handle<Adaptor3d_HCurve> &
+	:type Boundary: Adaptor3d_HCurve
 	:param Order:
 	:type Order: int
 	:param NPt: default value is 10
@@ -694,7 +694,7 @@ class GeomPlate_CurveConstraint : public Standard_Transient {
 		%feature("compactdefaultargs") SetCurve2dOnSurf;
 		%feature("autodoc", "* loads a 2d curve associated the surface resulting of the constraints
 	:param Curve2d:
-	:type Curve2d: opencascade::handle<Geom2d_Curve> &
+	:type Curve2d: Geom2d_Curve
 	:rtype: None") SetCurve2dOnSurf;
 		void SetCurve2dOnSurf (const opencascade::handle<Geom2d_Curve> & Curve2d);
 
@@ -702,7 +702,7 @@ class GeomPlate_CurveConstraint : public Standard_Transient {
 		%feature("compactdefaultargs") SetG0Criterion;
 		%feature("autodoc", "* Allows you to set the G0 criterion. This is the law defining the greatest distance allowed between the constraint and the target surface for each point of the constraint. If this criterion is not set, TolDist, the distance tolerance from the constructor, is used.
 	:param G0Crit:
-	:type G0Crit: opencascade::handle<Law_Function> &
+	:type G0Crit: Law_Function
 	:rtype: None") SetG0Criterion;
 		void SetG0Criterion (const opencascade::handle<Law_Function> & G0Crit);
 
@@ -710,14 +710,14 @@ class GeomPlate_CurveConstraint : public Standard_Transient {
 		%feature("compactdefaultargs") SetG1Criterion;
 		%feature("autodoc", "* Allows you to set the G1 criterion. This is the law defining the greatest angle allowed between the constraint and the target surface. If this criterion is not set, TolAng, the angular tolerance from the constructor, is used. Raises ConstructionError if the curve is not on a surface
 	:param G1Crit:
-	:type G1Crit: opencascade::handle<Law_Function> &
+	:type G1Crit: Law_Function
 	:rtype: None") SetG1Criterion;
 		void SetG1Criterion (const opencascade::handle<Law_Function> & G1Crit);
 
 		/****************** SetG2Criterion ******************/
 		%feature("compactdefaultargs") SetG2Criterion;
 		%feature("autodoc", ":param G2Crit:
-	:type G2Crit: opencascade::handle<Law_Function> &
+	:type G2Crit: Law_Function
 	:rtype: None") SetG2Criterion;
 		void SetG2Criterion (const opencascade::handle<Law_Function> & G2Crit);
 
@@ -741,7 +741,7 @@ class GeomPlate_CurveConstraint : public Standard_Transient {
 		%feature("compactdefaultargs") SetProjectedCurve;
 		%feature("autodoc", "* loads a 2d curve resulting from the normal projection of the curve on the initial surface
 	:param Curve2d:
-	:type Curve2d: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Curve2d: Adaptor2d_HCurve2d
 	:param TolU:
 	:type TolU: float
 	:param TolV:
@@ -782,9 +782,9 @@ class GeomPlate_MakeApprox {
 		%feature("compactdefaultargs") GeomPlate_MakeApprox;
 		%feature("autodoc", "* Converts SurfPlate into a Geom_BSplineSurface with n Bezier pieces (n<=Nbmax) of degree <= dgmax and an approximation error < Tol3d if possible the criterion CritPlate is satisfied if possible
 	:param SurfPlate:
-	:type SurfPlate: opencascade::handle<GeomPlate_Surface> &
+	:type SurfPlate: GeomPlate_Surface
 	:param PlateCrit:
-	:type PlateCrit: AdvApp2Var_Criterion &
+	:type PlateCrit: AdvApp2Var_Criterion
 	:param Tol3d:
 	:type Tol3d: float
 	:param Nbmax:
@@ -802,7 +802,7 @@ class GeomPlate_MakeApprox {
 		%feature("compactdefaultargs") GeomPlate_MakeApprox;
 		%feature("autodoc", "* Converts SurfPlate into a Geom_BSplineSurface with n Bezier pieces (n<=Nbmax) of degree <= dgmax and an approximation error < Tol3d if possible if CritOrder = -1 , no criterion is used if CritOrder = 0 , a PlateG0Criterion is used with max value > 10*dmax if CritOrder = 1 , a PlateG1Criterion is used with max value > 10*dmax WARNING : for CritOrder = 0 or 1, only the constraints points of SurfPlate are used to evaluate the value of the criterion
 	:param SurfPlate:
-	:type SurfPlate: opencascade::handle<GeomPlate_Surface> &
+	:type SurfPlate: GeomPlate_Surface
 	:param Tol3d:
 	:type Tol3d: float
 	:param Nbmax:
@@ -859,16 +859,16 @@ class GeomPlate_PlateG0Criterion : public AdvApp2Var_Criterion {
 		/****************** IsSatisfied ******************/
 		%feature("compactdefaultargs") IsSatisfied;
 		%feature("autodoc", ":param P:
-	:type P: AdvApp2Var_Patch &
+	:type P: AdvApp2Var_Patch
 	:rtype: bool") IsSatisfied;
 		virtual Standard_Boolean IsSatisfied (const AdvApp2Var_Patch & P);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param P:
-	:type P: AdvApp2Var_Patch &
+	:type P: AdvApp2Var_Patch
 	:param C:
-	:type C: AdvApp2Var_Context &
+	:type C: AdvApp2Var_Context
 	:rtype: void") Value;
 		virtual void Value (AdvApp2Var_Patch & P,const AdvApp2Var_Context & C);
 
@@ -905,16 +905,16 @@ class GeomPlate_PlateG1Criterion : public AdvApp2Var_Criterion {
 		/****************** IsSatisfied ******************/
 		%feature("compactdefaultargs") IsSatisfied;
 		%feature("autodoc", ":param P:
-	:type P: AdvApp2Var_Patch &
+	:type P: AdvApp2Var_Patch
 	:rtype: bool") IsSatisfied;
 		virtual Standard_Boolean IsSatisfied (const AdvApp2Var_Patch & P);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param P:
-	:type P: AdvApp2Var_Patch &
+	:type P: AdvApp2Var_Patch
 	:param C:
-	:type C: AdvApp2Var_Context &
+	:type C: AdvApp2Var_Context
 	:rtype: void") Value;
 		virtual void Value (AdvApp2Var_Patch & P,const AdvApp2Var_Context & C);
 
@@ -1006,7 +1006,7 @@ class GeomPlate_PointConstraint : public Standard_Transient {
 	:param V:
 	:type V: float
 	:param Surf:
-	:type Surf: opencascade::handle<Geom_Surface> &
+	:type Surf: Geom_Surface
 	:param Order:
 	:type Order: int
 	:param TolDist: default value is 0.0001
@@ -1097,13 +1097,13 @@ class GeomPlate_Surface : public Geom_Surface {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1227,9 +1227,9 @@ class GeomPlate_Surface : public Geom_Surface {
 		/****************** GeomPlate_Surface ******************/
 		%feature("compactdefaultargs") GeomPlate_Surface;
 		%feature("autodoc", ":param Surfinit:
-	:type Surfinit: opencascade::handle<Geom_Surface> &
+	:type Surfinit: Geom_Surface
 	:param Surfinter:
-	:type Surfinter: Plate_Plate &
+	:type Surfinter: Plate_Plate
 	:rtype: None") GeomPlate_Surface;
 		 GeomPlate_Surface (const opencascade::handle<Geom_Surface> & Surfinit,const Plate_Plate & Surfinter);
 
@@ -1284,13 +1284,13 @@ class GeomPlate_Surface : public Geom_Surface {
 		/****************** RealBounds ******************/
 		%feature("compactdefaultargs") RealBounds;
 		%feature("autodoc", ":param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") RealBounds;
 		void RealBounds (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1319,9 +1319,9 @@ class GeomPlate_Surface : public Geom_Surface {
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "* Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. //! me->Transformed(T)->Value(U',V') //! is the same point as //! me->Value(U,V).Transformed(T) //! Where U',V' are the new values of U,V after calling //! me->TranformParameters(U,V,T) //! This methods does not change <U> and <V> //! It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:param T:
 	:type T: gp_Trsf
 	:rtype: void") TransformParameters;

@@ -106,9 +106,9 @@ class BRepExtrema_DistShapeShape {
 		%feature("compactdefaultargs") BRepExtrema_DistShapeShape;
 		%feature("autodoc", "* computation of the minimum distance (value and pair of points) using default deflection Default value is Precision::Confusion().
 	:param Shape1:
-	:type Shape1: TopoDS_Shape &
+	:type Shape1: TopoDS_Shape
 	:param Shape2:
-	:type Shape2: TopoDS_Shape &
+	:type Shape2: TopoDS_Shape
 	:param F: default value is Extrema_ExtFlag_MINMAX
 	:type F: Extrema_ExtFlag
 	:param A: default value is Extrema_ExtAlgo_Grad
@@ -120,9 +120,9 @@ class BRepExtrema_DistShapeShape {
 		%feature("compactdefaultargs") BRepExtrema_DistShapeShape;
 		%feature("autodoc", "* create tool and load both shapes into it
 	:param Shape1:
-	:type Shape1: TopoDS_Shape &
+	:type Shape1: TopoDS_Shape
 	:param Shape2:
-	:type Shape2: TopoDS_Shape &
+	:type Shape2: TopoDS_Shape
 	:param theDeflection:
 	:type theDeflection: float
 	:param F: default value is Extrema_ExtFlag_MINMAX
@@ -156,7 +156,7 @@ class BRepExtrema_DistShapeShape {
 		%feature("compactdefaultargs") LoadS1;
 		%feature("autodoc", "* load first shape into extrema
 	:param Shape1:
-	:type Shape1: TopoDS_Shape &
+	:type Shape1: TopoDS_Shape
 	:rtype: None") LoadS1;
 		void LoadS1 (const TopoDS_Shape & Shape1);
 
@@ -164,7 +164,7 @@ class BRepExtrema_DistShapeShape {
 		%feature("compactdefaultargs") LoadS2;
 		%feature("autodoc", "* load second shape into extrema
 	:param Shape1:
-	:type Shape1: TopoDS_Shape &
+	:type Shape1: TopoDS_Shape
 	:rtype: None") LoadS2;
 		void LoadS2 (const TopoDS_Shape & Shape1);
 
@@ -180,7 +180,7 @@ class BRepExtrema_DistShapeShape {
 	:param N:
 	:type N: int
 	:param t:
-	:type t: float &
+	:type t: float
 	:rtype: None") ParOnEdgeS1;
 		void ParOnEdgeS1 (const Standard_Integer N,Standard_Real &OutValue);
 
@@ -190,7 +190,7 @@ class BRepExtrema_DistShapeShape {
 	:param N:
 	:type N: int
 	:param t:
-	:type t: float &
+	:type t: float
 	:rtype: None") ParOnEdgeS2;
 		void ParOnEdgeS2 (const Standard_Integer N,Standard_Real &OutValue);
 
@@ -200,9 +200,9 @@ class BRepExtrema_DistShapeShape {
 	:param N:
 	:type N: int
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:rtype: None") ParOnFaceS1;
 		void ParOnFaceS1 (const Standard_Integer N,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -212,9 +212,9 @@ class BRepExtrema_DistShapeShape {
 	:param N:
 	:type N: int
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:rtype: None") ParOnFaceS2;
 		void ParOnFaceS2 (const Standard_Integer N,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -318,13 +318,13 @@ class BRepExtrema_DistanceSS {
 		%feature("compactdefaultargs") BRepExtrema_DistanceSS;
 		%feature("autodoc", "* computes the distance between two Shapes ( face edge vertex).
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param B1:
-	:type B1: Bnd_Box &
+	:type B1: Bnd_Box
 	:param B2:
-	:type B2: Bnd_Box &
+	:type B2: Bnd_Box
 	:param DstRef:
 	:type DstRef: float
 	:param F: default value is Extrema_ExtFlag_MINMAX
@@ -338,13 +338,13 @@ class BRepExtrema_DistanceSS {
 		%feature("compactdefaultargs") BRepExtrema_DistanceSS;
 		%feature("autodoc", "* computes the distance between two Shapes ( face edge vertex). Parameter theDeflection is used to specify a maximum deviation of extreme distances from the minimum one. Default value is Precision::Confusion().
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param B1:
-	:type B1: Bnd_Box &
+	:type B1: Bnd_Box
 	:param B2:
-	:type B2: Bnd_Box &
+	:type B2: Bnd_Box
 	:param DstRef:
 	:type DstRef: float
 	:param aDeflection:
@@ -454,16 +454,16 @@ class BRepExtrema_ExtCC {
 		%feature("compactdefaultargs") BRepExtrema_ExtCC;
 		%feature("autodoc", "* It calculates all the distances.
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:rtype: None") BRepExtrema_ExtCC;
 		 BRepExtrema_ExtCC (const TopoDS_Edge & E1,const TopoDS_Edge & E2);
 
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:rtype: None") Initialize;
 		void Initialize (const TopoDS_Edge & E2);
 
@@ -505,7 +505,7 @@ class BRepExtrema_ExtCC {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* An exception is raised if the fields have not been initialized.
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Edge & E1);
 
@@ -537,13 +537,13 @@ class BRepExtrema_ExtCC {
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "* if the edges is a trimmed curve, dist11 is a square distance between the point on E1 of parameter FirstParameter and the point of parameter FirstParameter on E2.
 	:param dist11:
-	:type dist11: float &
+	:type dist11: float
 	:param distP12:
-	:type distP12: float &
+	:type distP12: float
 	:param distP21:
-	:type distP21: float &
+	:type distP21: float
 	:param distP22:
-	:type distP22: float &
+	:type distP22: float
 	:param P11:
 	:type P11: gp_Pnt
 	:param P12:
@@ -579,18 +579,18 @@ class BRepExtrema_ExtCF {
 		%feature("compactdefaultargs") BRepExtrema_ExtCF;
 		%feature("autodoc", "* It calculates all the distances.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") BRepExtrema_ExtCF;
 		 BRepExtrema_ExtCF (const TopoDS_Edge & E,const TopoDS_Face & F);
 
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Initialize;
 		void Initialize (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -626,9 +626,9 @@ class BRepExtrema_ExtCF {
 	:param N:
 	:type N: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") ParameterOnFace;
 		void ParameterOnFace (const Standard_Integer N,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -636,9 +636,9 @@ class BRepExtrema_ExtCF {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* An exception is raised if the fields have not been initialized. Be careful: this method uses the Face only for classify not for the fields.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -690,16 +690,16 @@ class BRepExtrema_ExtFF {
 		%feature("compactdefaultargs") BRepExtrema_ExtFF;
 		%feature("autodoc", "* It calculates all the distances.
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:rtype: None") BRepExtrema_ExtFF;
 		 BRepExtrema_ExtFF (const TopoDS_Face & F1,const TopoDS_Face & F2);
 
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:rtype: None") Initialize;
 		void Initialize (const TopoDS_Face & F2);
 
@@ -727,9 +727,9 @@ class BRepExtrema_ExtFF {
 	:param N:
 	:type N: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") ParameterOnFace1;
 		void ParameterOnFace1 (const Standard_Integer N,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -739,9 +739,9 @@ class BRepExtrema_ExtFF {
 	:param N:
 	:type N: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") ParameterOnFace2;
 		void ParameterOnFace2 (const Standard_Integer N,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -749,9 +749,9 @@ class BRepExtrema_ExtFF {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* An exception is raised if the fields have not been initialized. Be careful: this method uses the Face F2 only for classify, not for the fields.
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Face & F1,const TopoDS_Face & F2);
 
@@ -803,16 +803,16 @@ class BRepExtrema_ExtPC {
 		%feature("compactdefaultargs") BRepExtrema_ExtPC;
 		%feature("autodoc", "* It calculates all the distances.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") BRepExtrema_ExtPC;
 		 BRepExtrema_ExtPC (const TopoDS_Vertex & V,const TopoDS_Edge & E);
 
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") Initialize;
 		void Initialize (const TopoDS_Edge & E);
 
@@ -848,7 +848,7 @@ class BRepExtrema_ExtPC {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* An exception is raised if the fields have not been initialized.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Vertex & V);
 
@@ -872,9 +872,9 @@ class BRepExtrema_ExtPC {
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "* if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <pnt1> and dist2 is a square distance between <P> and the point of parameter LastParameter <pnt2>.
 	:param dist1:
-	:type dist1: float &
+	:type dist1: float
 	:param dist2:
-	:type dist2: float &
+	:type dist2: float
 	:param pnt1:
 	:type pnt1: gp_Pnt
 	:param pnt2:
@@ -906,9 +906,9 @@ class BRepExtrema_ExtPF {
 		%feature("compactdefaultargs") BRepExtrema_ExtPF;
 		%feature("autodoc", "* It calculates all the distances.
 	:param TheVertex:
-	:type TheVertex: TopoDS_Vertex &
+	:type TheVertex: TopoDS_Vertex
 	:param TheFace:
-	:type TheFace: TopoDS_Face &
+	:type TheFace: TopoDS_Face
 	:param TheFlag: default value is Extrema_ExtFlag_MINMAX
 	:type TheFlag: Extrema_ExtFlag
 	:param TheAlgo: default value is Extrema_ExtAlgo_Grad
@@ -919,7 +919,7 @@ class BRepExtrema_ExtPF {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param TheFace:
-	:type TheFace: TopoDS_Face &
+	:type TheFace: TopoDS_Face
 	:param TheFlag: default value is Extrema_ExtFlag_MINMAX
 	:type TheFlag: Extrema_ExtFlag
 	:param TheAlgo: default value is Extrema_ExtAlgo_Grad
@@ -945,9 +945,9 @@ class BRepExtrema_ExtPF {
 	:param N:
 	:type N: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") Parameter;
 		void Parameter (const Standard_Integer N,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -955,9 +955,9 @@ class BRepExtrema_ExtPF {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* An exception is raised if the fields have not been initialized. Be careful: this method uses the Face only for classify not for the fields.
 	:param TheVertex:
-	:type TheVertex: TopoDS_Vertex &
+	:type TheVertex: TopoDS_Vertex
 	:param TheFace:
-	:type TheFace: TopoDS_Face &
+	:type TheFace: TopoDS_Face
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Vertex & TheVertex,const TopoDS_Face & TheFace);
 
@@ -1010,15 +1010,15 @@ class BRepExtrema_Poly {
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "* returns Standard_True if OK.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
 	:param dist:
-	:type dist: float &
+	:type dist: float
 	:rtype: bool") Distance;
 		static Standard_Boolean Distance (const TopoDS_Shape & S1,const TopoDS_Shape & S2,gp_Pnt & P1,gp_Pnt & P2,Standard_Real &OutValue);
 
@@ -1049,9 +1049,9 @@ class BRepExtrema_ShapeProximity {
 		%feature("compactdefaultargs") BRepExtrema_ShapeProximity;
 		%feature("autodoc", "* Creates proximity tool for the given two shapes.
 	:param theShape1:
-	:type theShape1: TopoDS_Shape &
+	:type theShape1: TopoDS_Shape
 	:param theShape2:
-	:type theShape2: TopoDS_Shape &
+	:type theShape2: TopoDS_Shape
 	:param theTolerance: default value is 0.0
 	:type theTolerance: float
 	:rtype: None") BRepExtrema_ShapeProximity;
@@ -1095,7 +1095,7 @@ class BRepExtrema_ShapeProximity {
 		%feature("compactdefaultargs") LoadShape1;
 		%feature("autodoc", "* Loads 1st shape into proximity tool.
 	:param theShape1:
-	:type theShape1: TopoDS_Shape &
+	:type theShape1: TopoDS_Shape
 	:rtype: bool") LoadShape1;
 		Standard_Boolean LoadShape1 (const TopoDS_Shape & theShape1);
 
@@ -1103,7 +1103,7 @@ class BRepExtrema_ShapeProximity {
 		%feature("compactdefaultargs") LoadShape2;
 		%feature("autodoc", "* Loads 2nd shape into proximity tool.
 	:param theShape2:
-	:type theShape2: TopoDS_Shape &
+	:type theShape2: TopoDS_Shape
 	:rtype: bool") LoadShape2;
 		Standard_Boolean LoadShape2 (const TopoDS_Shape & theShape2);
 
@@ -1170,7 +1170,7 @@ class BRepExtrema_SolutionElem {
 	:param theSolType:
 	:type theSolType: BRepExtrema_SupportType
 	:param theVertex:
-	:type theVertex: TopoDS_Vertex &
+	:type theVertex: TopoDS_Vertex
 	:rtype: None") BRepExtrema_SolutionElem;
 		 BRepExtrema_SolutionElem (const Standard_Real theDist,const gp_Pnt & thePoint,const BRepExtrema_SupportType theSolType,const TopoDS_Vertex & theVertex);
 
@@ -1184,7 +1184,7 @@ class BRepExtrema_SolutionElem {
 	:param theSolType:
 	:type theSolType: BRepExtrema_SupportType
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theParam:
 	:type theParam: float
 	:rtype: None") BRepExtrema_SolutionElem;
@@ -1200,7 +1200,7 @@ class BRepExtrema_SolutionElem {
 	:param theSolType:
 	:type theSolType: BRepExtrema_SupportType
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param theU:
 	:type theU: float
 	:param theV:
@@ -1224,7 +1224,7 @@ class BRepExtrema_SolutionElem {
 		%feature("compactdefaultargs") EdgeParameter;
 		%feature("autodoc", "* Returns the parameter value if the solution is on Edge.
 	:param theParam:
-	:type theParam: float &
+	:type theParam: float
 	:rtype: None") EdgeParameter;
 		void EdgeParameter (Standard_Real &OutValue);
 
@@ -1238,9 +1238,9 @@ class BRepExtrema_SolutionElem {
 		%feature("compactdefaultargs") FaceParameter;
 		%feature("autodoc", "* Returns the parameters U and V if the solution is in a Face.
 	:param theU:
-	:type theU: float &
+	:type theU: float
 	:param theV:
-	:type theV: float &
+	:type theV: float
 	:rtype: None") FaceParameter;
 		void FaceParameter (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1287,7 +1287,7 @@ class BRepExtrema_TriangleSet : public BVH_PrimitiveSet3d {
 		%feature("compactdefaultargs") BRepExtrema_TriangleSet;
 		%feature("autodoc", "* Creates triangle set from the given face.
 	:param theFaces:
-	:type theFaces: BRepExtrema_ShapeList &
+	:type theFaces: BRepExtrema_ShapeList
 	:rtype: None") BRepExtrema_TriangleSet;
 		 BRepExtrema_TriangleSet (const BRepExtrema_ShapeList & theFaces);
 
@@ -1329,11 +1329,11 @@ class BRepExtrema_TriangleSet : public BVH_PrimitiveSet3d {
 	:param theIndex:
 	:type theIndex: int
 	:param theVertex1:
-	:type theVertex1: BVH_Vec3d &
+	:type theVertex1: BVH_Vec3d
 	:param theVertex2:
-	:type theVertex2: BVH_Vec3d &
+	:type theVertex2: BVH_Vec3d
 	:param theVertex3:
-	:type theVertex3: BVH_Vec3d &
+	:type theVertex3: BVH_Vec3d
 	:rtype: None") GetVertices;
 		void GetVertices (const Standard_Integer theIndex,BVH_Vec3d & theVertex1,BVH_Vec3d & theVertex2,BVH_Vec3d & theVertex3);
 
@@ -1341,7 +1341,7 @@ class BRepExtrema_TriangleSet : public BVH_PrimitiveSet3d {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes triangle set.
 	:param theFaces:
-	:type theFaces: BRepExtrema_ShapeList &
+	:type theFaces: BRepExtrema_ShapeList
 	:rtype: bool") Init;
 		Standard_Boolean Init (const BRepExtrema_ShapeList & theFaces);
 
@@ -1393,7 +1393,7 @@ class BRepExtrema_SelfIntersection : public BRepExtrema_ElementFilter {
 		%feature("compactdefaultargs") BRepExtrema_SelfIntersection;
 		%feature("autodoc", "* Creates self-intersection tool for the given shape.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theTolerance: default value is 0.0
 	:type theTolerance: float
 	:rtype: None") BRepExtrema_SelfIntersection;
@@ -1423,7 +1423,7 @@ class BRepExtrema_SelfIntersection : public BRepExtrema_ElementFilter {
 		%feature("compactdefaultargs") LoadShape;
 		%feature("autodoc", "* Loads shape for detection of self-intersections.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: bool") LoadShape;
 		Standard_Boolean LoadShape (const TopoDS_Shape & theShape);
 

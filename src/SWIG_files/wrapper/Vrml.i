@@ -172,7 +172,7 @@ class Vrml {
 		%feature("autodoc", ":param aComment:
 	:type aComment: char *
 	:param anOStream:
-	:type anOStream: Standard_OStream &
+	:type anOStream: Standard_OStream
 	:rtype: Standard_OStream") CommentWriter;
 		static Standard_OStream & CommentWriter (const char * aComment,Standard_OStream & anOStream);
 
@@ -229,7 +229,7 @@ class Vrml_AsciiText : public Standard_Transient {
 		/****************** SetString ******************/
 		%feature("compactdefaultargs") SetString;
 		%feature("autodoc", ":param aString:
-	:type aString: opencascade::handle<TColStd_HArray1OfAsciiString> &
+	:type aString: TColStd_HArray1OfAsciiString
 	:rtype: None") SetString;
 		void SetString (const opencascade::handle<TColStd_HArray1OfAsciiString> & aString);
 
@@ -258,7 +258,7 @@ class Vrml_AsciiText : public Standard_Transient {
 		/****************** Vrml_AsciiText ******************/
 		%feature("compactdefaultargs") Vrml_AsciiText;
 		%feature("autodoc", ":param aString:
-	:type aString: opencascade::handle<TColStd_HArray1OfAsciiString> &
+	:type aString: TColStd_HArray1OfAsciiString
 	:param aSpacing:
 	:type aSpacing: float
 	:param aJustification:
@@ -376,14 +376,14 @@ class Vrml_Coordinate3 : public Standard_Transient {
         		/****************** SetPoint ******************/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", ":param aPoint:
-	:type aPoint: opencascade::handle<TColgp_HArray1OfVec>
+	:type aPoint: TColgp_HArray1OfVec
 	:rtype: None") SetPoint;
 		void SetPoint (const opencascade::handle<TColgp_HArray1OfVec> & aPoint);
 
 		/****************** Vrml_Coordinate3 ******************/
 		%feature("compactdefaultargs") Vrml_Coordinate3;
 		%feature("autodoc", ":param aPoint:
-	:type aPoint: opencascade::handle<TColgp_HArray1OfVec>
+	:type aPoint: TColgp_HArray1OfVec
 	:rtype: None") Vrml_Coordinate3;
 		 Vrml_Coordinate3 (const opencascade::handle<TColgp_HArray1OfVec> & aPoint);
 
@@ -580,7 +580,7 @@ class Vrml_DirectionalLight {
         		/****************** SetColor ******************/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", ":param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & aColor);
 
@@ -617,7 +617,7 @@ class Vrml_DirectionalLight {
 	:param aIntensity:
 	:type aIntensity: float
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aDirection:
 	:type aDirection: gp_Vec
 	:rtype: None") Vrml_DirectionalLight;
@@ -762,28 +762,28 @@ class Vrml_IndexedFaceSet : public Standard_Transient {
         		/****************** SetCoordIndex ******************/
 		%feature("compactdefaultargs") SetCoordIndex;
 		%feature("autodoc", ":param aCoordIndex:
-	:type aCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aCoordIndex: TColStd_HArray1OfInteger
 	:rtype: None") SetCoordIndex;
 		void SetCoordIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex);
 
 		/****************** SetMaterialIndex ******************/
 		%feature("compactdefaultargs") SetMaterialIndex;
 		%feature("autodoc", ":param aMaterialIndex:
-	:type aMaterialIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aMaterialIndex: TColStd_HArray1OfInteger
 	:rtype: None") SetMaterialIndex;
 		void SetMaterialIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex);
 
 		/****************** SetNormalIndex ******************/
 		%feature("compactdefaultargs") SetNormalIndex;
 		%feature("autodoc", ":param aNormalIndex:
-	:type aNormalIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aNormalIndex: TColStd_HArray1OfInteger
 	:rtype: None") SetNormalIndex;
 		void SetNormalIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex);
 
 		/****************** SetTextureCoordIndex ******************/
 		%feature("compactdefaultargs") SetTextureCoordIndex;
 		%feature("autodoc", ":param aTextureCoordIndex:
-	:type aTextureCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aTextureCoordIndex: TColStd_HArray1OfInteger
 	:rtype: None") SetTextureCoordIndex;
 		void SetTextureCoordIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
 
@@ -795,13 +795,13 @@ class Vrml_IndexedFaceSet : public Standard_Transient {
 		/****************** Vrml_IndexedFaceSet ******************/
 		%feature("compactdefaultargs") Vrml_IndexedFaceSet;
 		%feature("autodoc", ":param aCoordIndex:
-	:type aCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aCoordIndex: TColStd_HArray1OfInteger
 	:param aMaterialIndex:
-	:type aMaterialIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aMaterialIndex: TColStd_HArray1OfInteger
 	:param aNormalIndex:
-	:type aNormalIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aNormalIndex: TColStd_HArray1OfInteger
 	:param aTextureCoordIndex:
-	:type aTextureCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aTextureCoordIndex: TColStd_HArray1OfInteger
 	:rtype: None") Vrml_IndexedFaceSet;
 		 Vrml_IndexedFaceSet (const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
 
@@ -853,28 +853,28 @@ class Vrml_IndexedLineSet : public Standard_Transient {
         		/****************** SetCoordIndex ******************/
 		%feature("compactdefaultargs") SetCoordIndex;
 		%feature("autodoc", ":param aCoordIndex:
-	:type aCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aCoordIndex: TColStd_HArray1OfInteger
 	:rtype: None") SetCoordIndex;
 		void SetCoordIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex);
 
 		/****************** SetMaterialIndex ******************/
 		%feature("compactdefaultargs") SetMaterialIndex;
 		%feature("autodoc", ":param aMaterialIndex:
-	:type aMaterialIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aMaterialIndex: TColStd_HArray1OfInteger
 	:rtype: None") SetMaterialIndex;
 		void SetMaterialIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex);
 
 		/****************** SetNormalIndex ******************/
 		%feature("compactdefaultargs") SetNormalIndex;
 		%feature("autodoc", ":param aNormalIndex:
-	:type aNormalIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aNormalIndex: TColStd_HArray1OfInteger
 	:rtype: None") SetNormalIndex;
 		void SetNormalIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex);
 
 		/****************** SetTextureCoordIndex ******************/
 		%feature("compactdefaultargs") SetTextureCoordIndex;
 		%feature("autodoc", ":param aTextureCoordIndex:
-	:type aTextureCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aTextureCoordIndex: TColStd_HArray1OfInteger
 	:rtype: None") SetTextureCoordIndex;
 		void SetTextureCoordIndex (const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
 
@@ -886,13 +886,13 @@ class Vrml_IndexedLineSet : public Standard_Transient {
 		/****************** Vrml_IndexedLineSet ******************/
 		%feature("compactdefaultargs") Vrml_IndexedLineSet;
 		%feature("autodoc", ":param aCoordIndex:
-	:type aCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aCoordIndex: TColStd_HArray1OfInteger
 	:param aMaterialIndex:
-	:type aMaterialIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aMaterialIndex: TColStd_HArray1OfInteger
 	:param aNormalIndex:
-	:type aNormalIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aNormalIndex: TColStd_HArray1OfInteger
 	:param aTextureCoordIndex:
-	:type aTextureCoordIndex: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aTextureCoordIndex: TColStd_HArray1OfInteger
 	:rtype: None") Vrml_IndexedLineSet;
 		 Vrml_IndexedLineSet (const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex,const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
 
@@ -929,7 +929,7 @@ class Vrml_Info {
         		/****************** SetString ******************/
 		%feature("compactdefaultargs") SetString;
 		%feature("autodoc", ":param aString:
-	:type aString: TCollection_AsciiString &
+	:type aString: TCollection_AsciiString
 	:rtype: None") SetString;
 		void SetString (const TCollection_AsciiString & aString);
 
@@ -941,7 +941,7 @@ class Vrml_Info {
 		/****************** Vrml_Info ******************/
 		%feature("compactdefaultargs") Vrml_Info;
 		%feature("autodoc", ":param aString: default value is '<Undefinedinfo>'
-	:type aString: TCollection_AsciiString &
+	:type aString: TCollection_AsciiString
 	:rtype: None") Vrml_Info;
 		 Vrml_Info (const TCollection_AsciiString & aString = "<Undefinedinfo>");
 
@@ -980,7 +980,7 @@ class Vrml_Instancing {
 		%feature("compactdefaultargs") Vrml_Instancing;
 		%feature("autodoc", "* Adds 'DEF <myName>' in anOStream (VRML file).
 	:param aString:
-	:type aString: TCollection_AsciiString &
+	:type aString: TCollection_AsciiString
 	:rtype: None") Vrml_Instancing;
 		 Vrml_Instancing (const TCollection_AsciiString & aString);
 
@@ -1027,7 +1027,7 @@ class Vrml_LOD : public Standard_Transient {
 		/****************** SetRange ******************/
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", ":param aRange:
-	:type aRange: opencascade::handle<TColStd_HArray1OfReal> &
+	:type aRange: TColStd_HArray1OfReal
 	:rtype: None") SetRange;
 		void SetRange (const opencascade::handle<TColStd_HArray1OfReal> & aRange);
 
@@ -1039,7 +1039,7 @@ class Vrml_LOD : public Standard_Transient {
 		/****************** Vrml_LOD ******************/
 		%feature("compactdefaultargs") Vrml_LOD;
 		%feature("autodoc", ":param aRange:
-	:type aRange: opencascade::handle<TColStd_HArray1OfReal> &
+	:type aRange: TColStd_HArray1OfReal
 	:param aCenter:
 	:type aCenter: gp_Vec
 	:rtype: None") Vrml_LOD;
@@ -1088,42 +1088,42 @@ class Vrml_Material : public Standard_Transient {
         		/****************** SetAmbientColor ******************/
 		%feature("compactdefaultargs") SetAmbientColor;
 		%feature("autodoc", ":param aAmbientColor:
-	:type aAmbientColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:type aAmbientColor: Quantity_HArray1OfColor
 	:rtype: None") SetAmbientColor;
 		void SetAmbientColor (const opencascade::handle<Quantity_HArray1OfColor> & aAmbientColor);
 
 		/****************** SetDiffuseColor ******************/
 		%feature("compactdefaultargs") SetDiffuseColor;
 		%feature("autodoc", ":param aDiffuseColor:
-	:type aDiffuseColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:type aDiffuseColor: Quantity_HArray1OfColor
 	:rtype: None") SetDiffuseColor;
 		void SetDiffuseColor (const opencascade::handle<Quantity_HArray1OfColor> & aDiffuseColor);
 
 		/****************** SetEmissiveColor ******************/
 		%feature("compactdefaultargs") SetEmissiveColor;
 		%feature("autodoc", ":param aEmissiveColor:
-	:type aEmissiveColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:type aEmissiveColor: Quantity_HArray1OfColor
 	:rtype: None") SetEmissiveColor;
 		void SetEmissiveColor (const opencascade::handle<Quantity_HArray1OfColor> & aEmissiveColor);
 
 		/****************** SetShininess ******************/
 		%feature("compactdefaultargs") SetShininess;
 		%feature("autodoc", ":param aShininess:
-	:type aShininess: opencascade::handle<TColStd_HArray1OfReal> &
+	:type aShininess: TColStd_HArray1OfReal
 	:rtype: None") SetShininess;
 		void SetShininess (const opencascade::handle<TColStd_HArray1OfReal> & aShininess);
 
 		/****************** SetSpecularColor ******************/
 		%feature("compactdefaultargs") SetSpecularColor;
 		%feature("autodoc", ":param aSpecularColor:
-	:type aSpecularColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:type aSpecularColor: Quantity_HArray1OfColor
 	:rtype: None") SetSpecularColor;
 		void SetSpecularColor (const opencascade::handle<Quantity_HArray1OfColor> & aSpecularColor);
 
 		/****************** SetTransparency ******************/
 		%feature("compactdefaultargs") SetTransparency;
 		%feature("autodoc", ":param aTransparency:
-	:type aTransparency: opencascade::handle<TColStd_HArray1OfReal> &
+	:type aTransparency: TColStd_HArray1OfReal
 	:rtype: None") SetTransparency;
 		void SetTransparency (const opencascade::handle<TColStd_HArray1OfReal> & aTransparency);
 
@@ -1145,17 +1145,17 @@ class Vrml_Material : public Standard_Transient {
 		/****************** Vrml_Material ******************/
 		%feature("compactdefaultargs") Vrml_Material;
 		%feature("autodoc", ":param aAmbientColor:
-	:type aAmbientColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:type aAmbientColor: Quantity_HArray1OfColor
 	:param aDiffuseColor:
-	:type aDiffuseColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:type aDiffuseColor: Quantity_HArray1OfColor
 	:param aSpecularColor:
-	:type aSpecularColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:type aSpecularColor: Quantity_HArray1OfColor
 	:param aEmissiveColor:
-	:type aEmissiveColor: opencascade::handle<Quantity_HArray1OfColor> &
+	:type aEmissiveColor: Quantity_HArray1OfColor
 	:param aShininess:
-	:type aShininess: opencascade::handle<TColStd_HArray1OfReal> &
+	:type aShininess: TColStd_HArray1OfReal
 	:param aTransparency:
-	:type aTransparency: opencascade::handle<TColStd_HArray1OfReal> &
+	:type aTransparency: TColStd_HArray1OfReal
 	:rtype: None") Vrml_Material;
 		 Vrml_Material (const opencascade::handle<Quantity_HArray1OfColor> & aAmbientColor,const opencascade::handle<Quantity_HArray1OfColor> & aDiffuseColor,const opencascade::handle<Quantity_HArray1OfColor> & aSpecularColor,const opencascade::handle<Quantity_HArray1OfColor> & aEmissiveColor,const opencascade::handle<TColStd_HArray1OfReal> & aShininess,const opencascade::handle<TColStd_HArray1OfReal> & aTransparency);
 
@@ -1286,7 +1286,7 @@ class Vrml_Normal : public Standard_Transient {
         		/****************** SetVector ******************/
 		%feature("compactdefaultargs") SetVector;
 		%feature("autodoc", ":param aVector:
-	:type aVector: opencascade::handle<TColgp_HArray1OfVec>
+	:type aVector: TColgp_HArray1OfVec
 	:rtype: None") SetVector;
 		void SetVector (const opencascade::handle<TColgp_HArray1OfVec> & aVector);
 
@@ -1298,7 +1298,7 @@ class Vrml_Normal : public Standard_Transient {
 		/****************** Vrml_Normal ******************/
 		%feature("compactdefaultargs") Vrml_Normal;
 		%feature("autodoc", ":param aVector:
-	:type aVector: opencascade::handle<TColgp_HArray1OfVec>
+	:type aVector: TColgp_HArray1OfVec
 	:rtype: None") Vrml_Normal;
 		 Vrml_Normal (const opencascade::handle<TColgp_HArray1OfVec> & aVector);
 
@@ -1416,7 +1416,7 @@ class Vrml_OrthographicCamera {
 		/****************** SetOrientation ******************/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", ":param aOrientation:
-	:type aOrientation: Vrml_SFRotation &
+	:type aOrientation: Vrml_SFRotation
 	:rtype: None") SetOrientation;
 		void SetOrientation (const Vrml_SFRotation & aOrientation);
 
@@ -1437,7 +1437,7 @@ class Vrml_OrthographicCamera {
 		%feature("autodoc", ":param aPosition:
 	:type aPosition: gp_Vec
 	:param aOrientation:
-	:type aOrientation: Vrml_SFRotation &
+	:type aOrientation: Vrml_SFRotation
 	:param aFocalDistance:
 	:type aFocalDistance: float
 	:param aHeight:
@@ -1505,7 +1505,7 @@ class Vrml_PerspectiveCamera {
 		/****************** SetOrientation ******************/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", ":param aOrientation:
-	:type aOrientation: Vrml_SFRotation &
+	:type aOrientation: Vrml_SFRotation
 	:rtype: None") SetOrientation;
 		void SetOrientation (const Vrml_SFRotation & aOrientation);
 
@@ -1526,7 +1526,7 @@ class Vrml_PerspectiveCamera {
 		%feature("autodoc", ":param aPosition:
 	:type aPosition: gp_Vec
 	:param aOrientation:
-	:type aOrientation: Vrml_SFRotation &
+	:type aOrientation: Vrml_SFRotation
 	:param aFocalDistance:
 	:type aFocalDistance: float
 	:param aHeightAngle:
@@ -1580,7 +1580,7 @@ class Vrml_PointLight {
         		/****************** SetColor ******************/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", ":param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & aColor);
 
@@ -1617,7 +1617,7 @@ class Vrml_PointLight {
 	:param aIntensity:
 	:type aIntensity: float
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aLocation:
 	:type aLocation: gp_Vec
 	:rtype: None") Vrml_PointLight;
@@ -1710,7 +1710,7 @@ class Vrml_Rotation {
 		/****************** SetRotation ******************/
 		%feature("compactdefaultargs") SetRotation;
 		%feature("autodoc", ":param aRotation:
-	:type aRotation: Vrml_SFRotation &
+	:type aRotation: Vrml_SFRotation
 	:rtype: None") SetRotation;
 		void SetRotation (const Vrml_SFRotation & aRotation);
 
@@ -1722,7 +1722,7 @@ class Vrml_Rotation {
 		/****************** Vrml_Rotation ******************/
 		%feature("compactdefaultargs") Vrml_Rotation;
 		%feature("autodoc", ":param aRotation:
-	:type aRotation: Vrml_SFRotation &
+	:type aRotation: Vrml_SFRotation
 	:rtype: None") Vrml_Rotation;
 		 Vrml_Rotation (const Vrml_SFRotation & aRotation);
 
@@ -1764,7 +1764,7 @@ class Vrml_SFImage : public Standard_Transient {
 		/****************** SetArray ******************/
 		%feature("compactdefaultargs") SetArray;
 		%feature("autodoc", ":param anArray:
-	:type anArray: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type anArray: TColStd_HArray1OfInteger
 	:rtype: None") SetArray;
 		void SetArray (const opencascade::handle<TColStd_HArray1OfInteger> & anArray);
 
@@ -1803,7 +1803,7 @@ class Vrml_SFImage : public Standard_Transient {
 	:param aNumber:
 	:type aNumber: Vrml_SFImageNumber
 	:param anArray:
-	:type anArray: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type anArray: TColStd_HArray1OfInteger
 	:rtype: None") Vrml_SFImage;
 		 Vrml_SFImage (const Standard_Integer aWidth,const Standard_Integer aHeight,const Vrml_SFImageNumber aNumber,const opencascade::handle<TColStd_HArray1OfInteger> & anArray);
 
@@ -2176,7 +2176,7 @@ class Vrml_SpotLight {
         		/****************** SetColor ******************/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", ":param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & aColor);
 
@@ -2234,7 +2234,7 @@ class Vrml_SpotLight {
 	:param aIntensity:
 	:type aIntensity: float
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:param aLocation:
 	:type aLocation: gp_Vec
 	:param aDirection:
@@ -2324,14 +2324,14 @@ class Vrml_Texture2 {
         		/****************** SetFilename ******************/
 		%feature("compactdefaultargs") SetFilename;
 		%feature("autodoc", ":param aFilename:
-	:type aFilename: TCollection_AsciiString &
+	:type aFilename: TCollection_AsciiString
 	:rtype: None") SetFilename;
 		void SetFilename (const TCollection_AsciiString & aFilename);
 
 		/****************** SetImage ******************/
 		%feature("compactdefaultargs") SetImage;
 		%feature("autodoc", ":param aImage:
-	:type aImage: opencascade::handle<Vrml_SFImage> &
+	:type aImage: Vrml_SFImage
 	:rtype: None") SetImage;
 		void SetImage (const opencascade::handle<Vrml_SFImage> & aImage);
 
@@ -2357,9 +2357,9 @@ class Vrml_Texture2 {
 		/****************** Vrml_Texture2 ******************/
 		%feature("compactdefaultargs") Vrml_Texture2;
 		%feature("autodoc", ":param aFilename:
-	:type aFilename: TCollection_AsciiString &
+	:type aFilename: TCollection_AsciiString
 	:param aImage:
-	:type aImage: opencascade::handle<Vrml_SFImage> &
+	:type aImage: Vrml_SFImage
 	:param aWrapS:
 	:type aWrapS: Vrml_Texture2Wrap
 	:param aWrapT:
@@ -2497,7 +2497,7 @@ class Vrml_TextureCoordinate2 : public Standard_Transient {
         		/****************** SetPoint ******************/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", ":param aPoint:
-	:type aPoint: opencascade::handle<TColgp_HArray1OfVec2d>
+	:type aPoint: TColgp_HArray1OfVec2d
 	:rtype: None") SetPoint;
 		void SetPoint (const opencascade::handle<TColgp_HArray1OfVec2d> & aPoint);
 
@@ -2509,7 +2509,7 @@ class Vrml_TextureCoordinate2 : public Standard_Transient {
 		/****************** Vrml_TextureCoordinate2 ******************/
 		%feature("compactdefaultargs") Vrml_TextureCoordinate2;
 		%feature("autodoc", ":param aPoint:
-	:type aPoint: opencascade::handle<TColgp_HArray1OfVec2d>
+	:type aPoint: TColgp_HArray1OfVec2d
 	:rtype: None") Vrml_TextureCoordinate2;
 		 Vrml_TextureCoordinate2 (const opencascade::handle<TColgp_HArray1OfVec2d> & aPoint);
 
@@ -2568,7 +2568,7 @@ class Vrml_Transform {
 		/****************** SetRotation ******************/
 		%feature("compactdefaultargs") SetRotation;
 		%feature("autodoc", ":param aRotation:
-	:type aRotation: Vrml_SFRotation &
+	:type aRotation: Vrml_SFRotation
 	:rtype: None") SetRotation;
 		void SetRotation (const Vrml_SFRotation & aRotation);
 
@@ -2582,7 +2582,7 @@ class Vrml_Transform {
 		/****************** SetScaleOrientation ******************/
 		%feature("compactdefaultargs") SetScaleOrientation;
 		%feature("autodoc", ":param aScaleOrientation:
-	:type aScaleOrientation: Vrml_SFRotation &
+	:type aScaleOrientation: Vrml_SFRotation
 	:rtype: None") SetScaleOrientation;
 		void SetScaleOrientation (const Vrml_SFRotation & aScaleOrientation);
 
@@ -2608,11 +2608,11 @@ class Vrml_Transform {
 		%feature("autodoc", ":param aTranslation:
 	:type aTranslation: gp_Vec
 	:param aRotation:
-	:type aRotation: Vrml_SFRotation &
+	:type aRotation: Vrml_SFRotation
 	:param aScaleFactor:
 	:type aScaleFactor: gp_Vec
 	:param aScaleOrientation:
-	:type aScaleOrientation: Vrml_SFRotation &
+	:type aScaleOrientation: Vrml_SFRotation
 	:param aCenter:
 	:type aCenter: gp_Vec
 	:rtype: None") Vrml_Transform;
@@ -2734,7 +2734,7 @@ class Vrml_WWWAnchor {
         		/****************** SetDescription ******************/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", ":param aDescription:
-	:type aDescription: TCollection_AsciiString &
+	:type aDescription: TCollection_AsciiString
 	:rtype: None") SetDescription;
 		void SetDescription (const TCollection_AsciiString & aDescription);
 
@@ -2748,16 +2748,16 @@ class Vrml_WWWAnchor {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: TCollection_AsciiString &
+	:type aName: TCollection_AsciiString
 	:rtype: None") SetName;
 		void SetName (const TCollection_AsciiString & aName);
 
 		/****************** Vrml_WWWAnchor ******************/
 		%feature("compactdefaultargs") Vrml_WWWAnchor;
 		%feature("autodoc", ":param aName: default value is ""
-	:type aName: TCollection_AsciiString &
+	:type aName: TCollection_AsciiString
 	:param aDescription: default value is ""
-	:type aDescription: TCollection_AsciiString &
+	:type aDescription: TCollection_AsciiString
 	:param aMap: default value is Vrml_MAP_NONE
 	:type aMap: Vrml_WWWAnchorMap
 	:rtype: None") Vrml_WWWAnchor;
@@ -2818,7 +2818,7 @@ class Vrml_WWWInline {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: TCollection_AsciiString &
+	:type aName: TCollection_AsciiString
 	:rtype: None") SetName;
 		void SetName (const TCollection_AsciiString & aName);
 
@@ -2830,7 +2830,7 @@ class Vrml_WWWInline {
 		/****************** Vrml_WWWInline ******************/
 		%feature("compactdefaultargs") Vrml_WWWInline;
 		%feature("autodoc", ":param aName:
-	:type aName: TCollection_AsciiString &
+	:type aName: TCollection_AsciiString
 	:param aBboxSize:
 	:type aBboxSize: gp_Vec
 	:param aBboxCenter:

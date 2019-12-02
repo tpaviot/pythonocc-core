@@ -479,7 +479,7 @@ class AIS {
 		%feature("compactdefaultargs") ComputeGeomCurve;
 		%feature("autodoc", "* Checks if aCurve belongs to aPlane; if not, projects aCurve in aPlane and returns aCurve; Return True if ok
 	:param aCurve:
-	:type aCurve: opencascade::handle<Geom_Curve> &
+	:type aCurve: Geom_Curve
 	:param first1:
 	:type first1: float
 	:param last1:
@@ -489,7 +489,7 @@ class AIS {
 	:param LastPnt1:
 	:type LastPnt1: gp_Pnt
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:param isOnPlane:
 	:type isOnPlane: bool
 	:rtype: bool") ComputeGeomCurve;
@@ -499,9 +499,9 @@ class AIS {
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "* Used by 2d Relation only Computes the 3d geometry of <anEdge> in the current WorkingPlane and the extremities if any Return True if ok.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom_Curve> &
+	:type theCurve: Geom_Curve
 	:param theFirstPnt:
 	:type theFirstPnt: gp_Pnt
 	:param theLastPnt:
@@ -513,9 +513,9 @@ class AIS {
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "* Used by dimensions only. Computes the 3d geometry of <anEdge>. Return True if ok.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom_Curve> &
+	:type theCurve: Geom_Curve
 	:param theFirstPnt:
 	:type theFirstPnt: gp_Pnt
 	:param theLastPnt:
@@ -529,21 +529,21 @@ class AIS {
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "* Used by 2d Relation only Computes the 3d geometry of <anEdge> in the current WorkingPlane and the extremities if any. If <aCurve> is not in the current plane, <extCurve> contains the not projected curve associated to <anEdge>. If <anEdge> is infinite, <isinfinite> = true and the 2 parameters <FirstPnt> and <LastPnt> have no signification. Return True if ok.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom_Curve> &
+	:type theCurve: Geom_Curve
 	:param theFirstPnt:
 	:type theFirstPnt: gp_Pnt
 	:param theLastPnt:
 	:type theLastPnt: gp_Pnt
 	:param theExtCurve:
-	:type theExtCurve: opencascade::handle<Geom_Curve> &
+	:type theExtCurve: Geom_Curve
 	:param theIsInfinite:
 	:type theIsInfinite: bool
 	:param theIsOnPlane:
 	:type theIsOnPlane: bool
 	:param thePlane:
-	:type thePlane: opencascade::handle<Geom_Plane> &
+	:type thePlane: Geom_Plane
 	:rtype: bool") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Edge & theEdge,opencascade::handle<Geom_Curve> & theCurve,gp_Pnt & theFirstPnt,gp_Pnt & theLastPnt,opencascade::handle<Geom_Curve> & theExtCurve,Standard_Boolean &OutValue,Standard_Boolean &OutValue,const opencascade::handle<Geom_Plane> & thePlane);
 
@@ -551,13 +551,13 @@ class AIS {
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "* Used by 2d Relation only Computes the 3d geometry of <anEdge> in the current WorkingPlane and the extremities if any Return True if ok.
 	:param theFirstEdge:
-	:type theFirstEdge: TopoDS_Edge &
+	:type theFirstEdge: TopoDS_Edge
 	:param theSecondEdge:
-	:type theSecondEdge: TopoDS_Edge &
+	:type theSecondEdge: TopoDS_Edge
 	:param theFirstCurve:
-	:type theFirstCurve: opencascade::handle<Geom_Curve> &
+	:type theFirstCurve: Geom_Curve
 	:param theSecondCurve:
-	:type theSecondCurve: opencascade::handle<Geom_Curve> &
+	:type theSecondCurve: Geom_Curve
 	:param theFirstPnt1:
 	:type theFirstPnt1: gp_Pnt
 	:param theLastPnt1:
@@ -567,7 +567,7 @@ class AIS {
 	:param theLastPnt2:
 	:type theLastPnt2: gp_Pnt
 	:param thePlane:
-	:type thePlane: opencascade::handle<Geom_Plane> &
+	:type thePlane: Geom_Plane
 	:rtype: bool") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Edge & theFirstEdge,const TopoDS_Edge & theSecondEdge,opencascade::handle<Geom_Curve> & theFirstCurve,opencascade::handle<Geom_Curve> & theSecondCurve,gp_Pnt & theFirstPnt1,gp_Pnt & theLastPnt1,gp_Pnt & theFirstPnt2,gp_Pnt & theLastPnt2,const opencascade::handle<Geom_Plane> & thePlane);
 
@@ -575,13 +575,13 @@ class AIS {
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "* Used by dimensions only.Computes the 3d geometry of<anEdge1> and <anEdge2> and checks if they are infinite.
 	:param theFirstEdge:
-	:type theFirstEdge: TopoDS_Edge &
+	:type theFirstEdge: TopoDS_Edge
 	:param theSecondEdge:
-	:type theSecondEdge: TopoDS_Edge &
+	:type theSecondEdge: TopoDS_Edge
 	:param theFirstCurve:
-	:type theFirstCurve: opencascade::handle<Geom_Curve> &
+	:type theFirstCurve: Geom_Curve
 	:param theSecondCurve:
-	:type theSecondCurve: opencascade::handle<Geom_Curve> &
+	:type theSecondCurve: Geom_Curve
 	:param theFirstPnt1:
 	:type theFirstPnt1: gp_Pnt
 	:param theLastPnt1:
@@ -601,15 +601,15 @@ class AIS {
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "* Used by 2d Relation only Computes the 3d geometry of<anEdge1> and <anEdge2> in the current Plane and the extremities if any. Return in ExtCurve the 3d curve (not projected in the plane) of the first edge if <indexExt> =1 or of the 2nd edge if <indexExt> = 2. If <indexExt> = 0, ExtCurve is Null. if there is an edge external to the plane, <isinfinite> is true if this edge is infinite. So, the extremities of it are not significant. Return True if ok
 	:param theFirstEdge:
-	:type theFirstEdge: TopoDS_Edge &
+	:type theFirstEdge: TopoDS_Edge
 	:param theSecondEdge:
-	:type theSecondEdge: TopoDS_Edge &
+	:type theSecondEdge: TopoDS_Edge
 	:param theExtIndex:
-	:type theExtIndex: int &
+	:type theExtIndex: int
 	:param theFirstCurve:
-	:type theFirstCurve: opencascade::handle<Geom_Curve> &
+	:type theFirstCurve: Geom_Curve
 	:param theSecondCurve:
-	:type theSecondCurve: opencascade::handle<Geom_Curve> &
+	:type theSecondCurve: Geom_Curve
 	:param theFirstPnt1:
 	:type theFirstPnt1: gp_Pnt
 	:param theLastPnt1:
@@ -619,24 +619,24 @@ class AIS {
 	:param theLastPnt2:
 	:type theLastPnt2: gp_Pnt
 	:param theExtCurve:
-	:type theExtCurve: opencascade::handle<Geom_Curve> &
+	:type theExtCurve: Geom_Curve
 	:param theIsinfinite1:
 	:type theIsinfinite1: bool
 	:param theIsinfinite2:
 	:type theIsinfinite2: bool
 	:param thePlane:
-	:type thePlane: opencascade::handle<Geom_Plane> &
+	:type thePlane: Geom_Plane
 	:rtype: bool") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry (const TopoDS_Edge & theFirstEdge,const TopoDS_Edge & theSecondEdge,Standard_Integer &OutValue,opencascade::handle<Geom_Curve> & theFirstCurve,opencascade::handle<Geom_Curve> & theSecondCurve,gp_Pnt & theFirstPnt1,gp_Pnt & theLastPnt1,gp_Pnt & theFirstPnt2,gp_Pnt & theLastPnt2,opencascade::handle<Geom_Curve> & theExtCurve,Standard_Boolean &OutValue,Standard_Boolean &OutValue,const opencascade::handle<Geom_Plane> & thePlane);
 
 		/****************** ComputeGeometry ******************/
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", ":param aVertex:
-	:type aVertex: TopoDS_Vertex &
+	:type aVertex: TopoDS_Vertex
 	:param point:
 	:type point: gp_Pnt
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:param isOnPlane:
 	:type isOnPlane: bool
 	:rtype: bool") ComputeGeometry;
@@ -645,13 +645,13 @@ class AIS {
 		/****************** ComputeProjEdgePresentation ******************/
 		%feature("compactdefaultargs") ComputeProjEdgePresentation;
 		%feature("autodoc", ":param aPres:
-	:type aPres: opencascade::handle<Prs3d_Presentation> &
+	:type aPres: Prs3d_Presentation
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param anEdge:
-	:type anEdge: TopoDS_Edge &
+	:type anEdge: TopoDS_Edge
 	:param ProjCurve:
-	:type ProjCurve: opencascade::handle<Geom_Curve> &
+	:type ProjCurve: Geom_Curve
 	:param FirstP:
 	:type FirstP: gp_Pnt
 	:param LastP:
@@ -670,11 +670,11 @@ class AIS {
 		/****************** ComputeProjVertexPresentation ******************/
 		%feature("compactdefaultargs") ComputeProjVertexPresentation;
 		%feature("autodoc", ":param aPres:
-	:type aPres: opencascade::handle<Prs3d_Presentation> &
+	:type aPres: Prs3d_Presentation
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param aVertex:
-	:type aVertex: TopoDS_Vertex &
+	:type aVertex: TopoDS_Vertex
 	:param ProjPoint:
 	:type ProjPoint: gp_Pnt
 	:param aColor: default value is Quantity_NOC_PURPLE
@@ -703,7 +703,7 @@ class AIS {
 		/****************** Farest ******************/
 		%feature("compactdefaultargs") Farest;
 		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aPoint:
 	:type aPoint: gp_Pnt
 	:rtype: gp_Pnt") Farest;
@@ -713,15 +713,15 @@ class AIS {
 		%feature("compactdefaultargs") GetPlaneFromFace;
 		%feature("autodoc", "* Tryes to get Plane from Face. Returns Surface of Face in aSurf. Returns Standard_True and Plane of Face in aPlane in following cases: Face is Plane, Offset of Plane, Extrusion of Line and Offset of Extrusion of Line Returns pure type of Surface which can be: Plane, Cylinder, Cone, Sphere, Torus, SurfaceOfRevolution, SurfaceOfExtrusion
 	:param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param aPlane:
 	:type aPlane: gp_Pln
 	:param aSurf:
-	:type aSurf: opencascade::handle<Geom_Surface> &
+	:type aSurf: Geom_Surface
 	:param aSurfType:
-	:type aSurfType: AIS_KindOfSurface &
+	:type aSurfType: AIS_KindOfSurface
 	:param Offset:
-	:type Offset: float &
+	:type Offset: float
 	:rtype: bool") GetPlaneFromFace;
 		static Standard_Boolean GetPlaneFromFace (const TopoDS_Face & aFace,gp_Pln & aPlane,opencascade::handle<Geom_Surface> & aSurf,AIS_KindOfSurface & aSurfType,Standard_Real &OutValue);
 
@@ -741,9 +741,9 @@ class AIS {
 		%feature("compactdefaultargs") InitAngleBetweenCurvilinearFaces;
 		%feature("autodoc", "* Finds three points for the angle dimension between two curvilinear surfaces.
 	:param theFirstFace:
-	:type theFirstFace: TopoDS_Face &
+	:type theFirstFace: TopoDS_Face
 	:param theSecondFace:
-	:type theSecondFace: TopoDS_Face &
+	:type theSecondFace: TopoDS_Face
 	:param theFirstSurfType:
 	:type theFirstSurfType: AIS_KindOfSurface
 	:param theSecondSurfType:
@@ -763,9 +763,9 @@ class AIS {
 		%feature("compactdefaultargs") InitAngleBetweenPlanarFaces;
 		%feature("autodoc", "* Finds three points for the angle dimension between two planes.
 	:param theFirstFace:
-	:type theFirstFace: TopoDS_Face &
+	:type theFirstFace: TopoDS_Face
 	:param theSecondFace:
-	:type theSecondFace: TopoDS_Face &
+	:type theSecondFace: TopoDS_Face
 	:param theCenter:
 	:type theCenter: gp_Pnt
 	:param theFirstAttach:
@@ -780,15 +780,15 @@ class AIS {
 		/****************** InitFaceLength ******************/
 		%feature("compactdefaultargs") InitFaceLength;
 		%feature("autodoc", ":param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param aPlane:
 	:type aPlane: gp_Pln
 	:param aSurface:
-	:type aSurface: opencascade::handle<Geom_Surface> &
+	:type aSurface: Geom_Surface
 	:param aSurfaceType:
-	:type aSurfaceType: AIS_KindOfSurface &
+	:type aSurfaceType: AIS_KindOfSurface
 	:param anOffset:
-	:type anOffset: float &
+	:type anOffset: float
 	:rtype: void") InitFaceLength;
 		static void InitFaceLength (const TopoDS_Face & aFace,gp_Pln & aPlane,opencascade::handle<Geom_Surface> & aSurface,AIS_KindOfSurface & aSurfaceType,Standard_Real &OutValue);
 
@@ -796,13 +796,13 @@ class AIS {
 		%feature("compactdefaultargs") InitLengthBetweenCurvilinearFaces;
 		%feature("autodoc", "* Finds attachment points on two curvilinear faces for length dimension. @param thePlaneDir [in] the direction on the dimension plane to compute the plane automatically. It will not be taken into account if plane is defined by user.
 	:param theFirstFace:
-	:type theFirstFace: TopoDS_Face &
+	:type theFirstFace: TopoDS_Face
 	:param theSecondFace:
-	:type theSecondFace: TopoDS_Face &
+	:type theSecondFace: TopoDS_Face
 	:param theFirstSurf:
-	:type theFirstSurf: opencascade::handle<Geom_Surface> &
+	:type theFirstSurf: Geom_Surface
 	:param theSecondSurf:
-	:type theSecondSurf: opencascade::handle<Geom_Surface> &
+	:type theSecondSurf: Geom_Surface
 	:param theFirstAttach:
 	:type theFirstAttach: gp_Pnt
 	:param theSecondAttach:
@@ -816,7 +816,7 @@ class AIS {
 		%feature("compactdefaultargs") Nearest;
 		%feature("autodoc", "* Returns the nearest point in a shape. This is used by several classes in calculation of dimensions.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aPoint:
 	:type aPoint: gp_Pnt
 	:rtype: gp_Pnt") Nearest;
@@ -836,7 +836,7 @@ class AIS {
 		%feature("compactdefaultargs") Nearest;
 		%feature("autodoc", "* For the given point finds nearest point on the curve, returns True if found point is belongs to the curve and False otherwise.
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom_Curve> &
+	:type theCurve: Geom_Curve
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:param theFirstPoint:
@@ -891,7 +891,7 @@ class AIS {
 	:param aDir:
 	:type aDir: gp_Dir
 	:param aBndBox:
-	:type aBndBox: Bnd_Box &
+	:type aBndBox: Bnd_Box
 	:rtype: gp_Pnt") TranslatePointToBound;
 		static gp_Pnt TranslatePointToBound (const gp_Pnt & aPoint,const gp_Dir & aDir,const Bnd_Box & aBndBox);
 
@@ -914,7 +914,7 @@ class AIS_Animation : public Standard_Transient {
 		%feature("compactdefaultargs") AIS_Animation;
 		%feature("autodoc", "* Creates empty animation.
 	:param theAnimationName:
-	:type theAnimationName: TCollection_AsciiString &
+	:type theAnimationName: TCollection_AsciiString
 	:rtype: None") AIS_Animation;
 		 AIS_Animation (const TCollection_AsciiString & theAnimationName);
 
@@ -922,7 +922,7 @@ class AIS_Animation : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Add single animation to the timeline. @param theAnimation input animation
 	:param theAnimation:
-	:type theAnimation: opencascade::handle<AIS_Animation> &
+	:type theAnimation: AIS_Animation
 	:rtype: None") Add;
 		void Add (const opencascade::handle<AIS_Animation> & theAnimation);
 
@@ -942,7 +942,7 @@ class AIS_Animation : public Standard_Transient {
 		%feature("compactdefaultargs") CopyFrom;
 		%feature("autodoc", "* Clears own children and then copy child animations from another object. Copy also Start Time and Duration values.
 	:param theOther:
-	:type theOther: opencascade::handle<AIS_Animation> &
+	:type theOther: AIS_Animation
 	:rtype: None") CopyFrom;
 		void CopyFrom (const opencascade::handle<AIS_Animation> & theOther);
 
@@ -962,7 +962,7 @@ class AIS_Animation : public Standard_Transient {
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "* Return the child animation with the given name.
 	:param theAnimationName:
-	:type theAnimationName: TCollection_AsciiString &
+	:type theAnimationName: TCollection_AsciiString
 	:rtype: opencascade::handle<AIS_Animation>") Find;
 		opencascade::handle<AIS_Animation> Find (const TCollection_AsciiString & theAnimationName);
 
@@ -1000,7 +1000,7 @@ class AIS_Animation : public Standard_Transient {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Remove the child animation.
 	:param theAnimation:
-	:type theAnimation: opencascade::handle<AIS_Animation> &
+	:type theAnimation: AIS_Animation
 	:rtype: bool") Remove;
 		Standard_Boolean Remove (const opencascade::handle<AIS_Animation> & theAnimation);
 
@@ -1008,9 +1008,9 @@ class AIS_Animation : public Standard_Transient {
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "* Replace the child animation.
 	:param theAnimationOld:
-	:type theAnimationOld: opencascade::handle<AIS_Animation> &
+	:type theAnimationOld: AIS_Animation
 	:param theAnimationNew:
-	:type theAnimationNew: opencascade::handle<AIS_Animation> &
+	:type theAnimationNew: AIS_Animation
 	:rtype: bool") Replace;
 		Standard_Boolean Replace (const opencascade::handle<AIS_Animation> & theAnimationOld,const opencascade::handle<AIS_Animation> & theAnimationNew);
 
@@ -1163,7 +1163,7 @@ class AIS_AttributeFilter : public SelectMgr_Filter {
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "* Indicates that the selected Interactive Object passes the filter. The owner, anObj, can be either direct or user. A direct owner is the corresponding construction element, whereas a user is the compound shape of which the entity forms a part. If the Interactive Object returns Standard_True when detected by the Local Context selector through the mouse, the object is kept; if not, it is rejected.
 	:param anObj:
-	:type anObj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anObj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		virtual Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anObj);
 
@@ -1229,7 +1229,7 @@ class AIS_BadEdgeFilter : public SelectMgr_Filter {
 		%feature("compactdefaultargs") AddEdge;
 		%feature("autodoc", "* Adds an edge to the list of non-selectionnable edges.
 	:param anEdge:
-	:type anEdge: TopoDS_Edge &
+	:type anEdge: TopoDS_Edge
 	:param Index:
 	:type Index: int
 	:rtype: None") AddEdge;
@@ -1238,7 +1238,7 @@ class AIS_BadEdgeFilter : public SelectMgr_Filter {
 		/****************** IsOk ******************/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", ":param EO:
-	:type EO: opencascade::handle<SelectMgr_EntityOwner> &
+	:type EO: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		virtual Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & EO);
 
@@ -1278,7 +1278,7 @@ class AIS_C0RegularityFilter : public SelectMgr_Filter {
 		/****************** AIS_C0RegularityFilter ******************/
 		%feature("compactdefaultargs") AIS_C0RegularityFilter;
 		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: None") AIS_C0RegularityFilter;
 		 AIS_C0RegularityFilter (const TopoDS_Shape & aShape);
 
@@ -1292,7 +1292,7 @@ class AIS_C0RegularityFilter : public SelectMgr_Filter {
 		/****************** IsOk ******************/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", ":param EO:
-	:type EO: opencascade::handle<SelectMgr_EntityOwner> &
+	:type EO: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		virtual Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & EO);
 
@@ -1321,7 +1321,7 @@ class AIS_ColoredDrawer : public Prs3d_Drawer {
 		%feature("compactdefaultargs") AIS_ColoredDrawer;
 		%feature("autodoc", "* Default constructor.
 	:param theLink:
-	:type theLink: opencascade::handle<Prs3d_Drawer> &
+	:type theLink: Prs3d_Drawer
 	:rtype: None") AIS_ColoredDrawer;
 		 AIS_ColoredDrawer (const opencascade::handle<Prs3d_Drawer> & theLink);
 
@@ -1409,7 +1409,7 @@ class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") AIS_DimensionOwner;
 		%feature("autodoc", "* Initializes the dimension owner, theSO, and attributes it the priority, thePriority.
 	:param theSelObject:
-	:type theSelObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theSelObject: SelectMgr_SelectableObject
 	:param theSelMode:
 	:type theSelMode: AIS_DimensionSelectionMode
 	:param thePriority: default value is 0
@@ -1420,9 +1420,9 @@ class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 		/****************** HilightWithColor ******************/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", ":param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: void") HilightWithColor;
@@ -1432,7 +1432,7 @@ class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "* Returns true if an object with the selection mode aMode is highlighted in the presentation manager aPM.
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePM: PrsMgr_PresentationManager
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: bool") IsHilighted;
@@ -1447,7 +1447,7 @@ class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "* Removes highlighting from the selected part of dimension.
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePM: PrsMgr_PresentationManager
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: void") Unhilight;
@@ -1530,7 +1530,7 @@ class AIS_ExclusionFilter : public SelectMgr_Filter {
 		/****************** IsOk ******************/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", ":param anObj:
-	:type anObj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anObj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		virtual Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anObj);
 
@@ -1546,14 +1546,14 @@ class AIS_ExclusionFilter : public SelectMgr_Filter {
 		%feature("autodoc", ":param aType:
 	:type aType: AIS_KindOfInteractive
 	:param TheStoredList:
-	:type TheStoredList: TColStd_ListOfInteger &
+	:type TheStoredList: TColStd_ListOfInteger
 	:rtype: None") ListOfSignature;
 		void ListOfSignature (const AIS_KindOfInteractive aType,TColStd_ListOfInteger & TheStoredList);
 
 		/****************** ListOfStoredTypes ******************/
 		%feature("compactdefaultargs") ListOfStoredTypes;
 		%feature("autodoc", ":param TheList:
-	:type TheList: TColStd_ListOfInteger &
+	:type TheList: TColStd_ListOfInteger
 	:rtype: None") ListOfStoredTypes;
 		void ListOfStoredTypes (TColStd_ListOfInteger & TheList);
 
@@ -1708,7 +1708,7 @@ class AIS_GlobalStatus : public Standard_Transient {
 		%feature("compactdefaultargs") SetHilightStyle;
 		%feature("autodoc", "* Changes applied highlight style for a particular object
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:rtype: None") SetHilightStyle;
 		void SetHilightStyle (const opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -1748,38 +1748,38 @@ class AIS_GraphicTool {
 		/****************** GetInteriorColor ******************/
 		%feature("compactdefaultargs") GetInteriorColor;
 		%feature("autodoc", ":param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:rtype: Quantity_NameOfColor") GetInteriorColor;
 		static Quantity_NameOfColor GetInteriorColor (const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****************** GetInteriorColor ******************/
 		%feature("compactdefaultargs") GetInteriorColor;
 		%feature("autodoc", ":param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:rtype: void") GetInteriorColor;
 		static void GetInteriorColor (const opencascade::handle<Prs3d_Drawer> & aDrawer,Quantity_Color & aColor);
 
 		/****************** GetLineAtt ******************/
 		%feature("compactdefaultargs") GetLineAtt;
 		%feature("autodoc", ":param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param TheTypeOfAttributes:
 	:type TheTypeOfAttributes: AIS_TypeOfAttribute
 	:param aCol:
-	:type aCol: Quantity_NameOfColor &
+	:type aCol: Quantity_NameOfColor
 	:param aWidth:
-	:type aWidth: float &
+	:type aWidth: float
 	:param aTyp:
-	:type aTyp: Aspect_TypeOfLine &
+	:type aTyp: Aspect_TypeOfLine
 	:rtype: void") GetLineAtt;
 		static void GetLineAtt (const opencascade::handle<Prs3d_Drawer> & aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes,Quantity_NameOfColor & aCol,Standard_Real &OutValue,Aspect_TypeOfLine & aTyp);
 
 		/****************** GetLineColor ******************/
 		%feature("compactdefaultargs") GetLineColor;
 		%feature("autodoc", ":param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param TheTypeOfAttributes:
 	:type TheTypeOfAttributes: AIS_TypeOfAttribute
 	:rtype: Quantity_NameOfColor") GetLineColor;
@@ -1788,18 +1788,18 @@ class AIS_GraphicTool {
 		/****************** GetLineColor ******************/
 		%feature("compactdefaultargs") GetLineColor;
 		%feature("autodoc", ":param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param TheTypeOfAttributes:
 	:type TheTypeOfAttributes: AIS_TypeOfAttribute
 	:param TheLineColor:
-	:type TheLineColor: Quantity_Color &
+	:type TheLineColor: Quantity_Color
 	:rtype: void") GetLineColor;
 		static void GetLineColor (const opencascade::handle<Prs3d_Drawer> & aDrawer,const AIS_TypeOfAttribute TheTypeOfAttributes,Quantity_Color & TheLineColor);
 
 		/****************** GetLineType ******************/
 		%feature("compactdefaultargs") GetLineType;
 		%feature("autodoc", ":param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param TheTypeOfAttributes:
 	:type TheTypeOfAttributes: AIS_TypeOfAttribute
 	:rtype: Aspect_TypeOfLine") GetLineType;
@@ -1808,7 +1808,7 @@ class AIS_GraphicTool {
 		/****************** GetLineWidth ******************/
 		%feature("compactdefaultargs") GetLineWidth;
 		%feature("autodoc", ":param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param TheTypeOfAttributes:
 	:type TheTypeOfAttributes: AIS_TypeOfAttribute
 	:rtype: float") GetLineWidth;
@@ -1817,7 +1817,7 @@ class AIS_GraphicTool {
 		/****************** GetMaterial ******************/
 		%feature("compactdefaultargs") GetMaterial;
 		%feature("autodoc", ":param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:rtype: Graphic3d_MaterialAspect") GetMaterial;
 		static Graphic3d_MaterialAspect GetMaterial (const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1840,7 +1840,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") AIS_InteractiveContext;
 		%feature("autodoc", "* @name object display management Constructs the interactive context object defined by the principal viewer MainViewer.
 	:param MainViewer:
-	:type MainViewer: opencascade::handle<V3d_Viewer> &
+	:type MainViewer: V3d_Viewer
 	:rtype: None") AIS_InteractiveContext;
 		 AIS_InteractiveContext (const opencascade::handle<V3d_Viewer> & MainViewer);
 
@@ -1848,7 +1848,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Activate;
 		%feature("autodoc", "* Activates the selection mode aMode whose index is given, for the given interactive entity anIobj.
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:param theIsForce: default value is Standard_False
@@ -1870,9 +1870,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") ActivatedModes;
 		%feature("autodoc", "* Returns the list of activated selection modes.
 	:param anIobj:
-	:type anIobj: opencascade::handle<AIS_InteractiveObject> &
+	:type anIobj: AIS_InteractiveObject
 	:param theList:
-	:type theList: TColStd_ListOfInteger &
+	:type theList: TColStd_ListOfInteger
 	:rtype: None") ActivatedModes;
 		void ActivatedModes (const opencascade::handle<AIS_InteractiveObject> & anIobj,TColStd_ListOfInteger & theList);
 
@@ -1880,7 +1880,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") AddFilter;
 		%feature("autodoc", "* Allows you to add the filter.
 	:param theFilter:
-	:type theFilter: opencascade::handle<SelectMgr_Filter> &
+	:type theFilter: SelectMgr_Filter
 	:rtype: None") AddFilter;
 		void AddFilter (const opencascade::handle<SelectMgr_Filter> & theFilter);
 
@@ -1888,7 +1888,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") AddOrRemoveCurrentObject;
 		%feature("autodoc", "* Allows to add or remove the object given to the list of current and highlight/unhighlight it correspondingly. Is valid for global context only; for local context use method AddOrRemoveSelected. Since this method makes sence only for neutral point selection of a whole object, if 0 selection of the object is empty this method simply does nothing.
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theIsToUpdateViewer:
 	:type theIsToUpdateViewer: bool
 	:rtype: None") AddOrRemoveCurrentObject;
@@ -1898,7 +1898,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") AddOrRemoveSelected;
 		%feature("autodoc", "* Allows to highlight or unhighlight the owner given depending on its selection status
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") AddOrRemoveSelected;
@@ -1908,7 +1908,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") AddOrRemoveSelected;
 		%feature("autodoc", "* Allows to highlight or unhighlight the owner given depending on its selection status
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") AddOrRemoveSelected;
@@ -1918,7 +1918,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") AddSelect;
 		%feature("autodoc", "* Adds object in the selection.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theObject: SelectMgr_EntityOwner
 	:rtype: AIS_StatusOfPick") AddSelect;
 		AIS_StatusOfPick AddSelect (const opencascade::handle<SelectMgr_EntityOwner> & theObject);
 
@@ -1926,7 +1926,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") AddSelect;
 		%feature("autodoc", "* Adds object in the selection.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:rtype: AIS_StatusOfPick") AddSelect;
 		AIS_StatusOfPick AddSelect (const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -1958,7 +1958,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") ClearActiveSensitive;
 		%feature("autodoc", "* Clear visualization of sensitives.
 	:param aView:
-	:type aView: opencascade::handle<V3d_View> &
+	:type aView: V3d_View
 	:rtype: None") ClearActiveSensitive;
 		void ClearActiveSensitive (const opencascade::handle<V3d_View> & aView);
 
@@ -1982,7 +1982,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") ClearPrs;
 		%feature("autodoc", "* Empties the graphic presentation of the mode indexed by aMode. Warning! Removes theIObj. theIObj is still active if it was previously activated.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theMode:
 	:type theMode: int
 	:param theToUpdateViewer:
@@ -2002,9 +2002,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "* Returns the color of the Object in the interactive context.
 	:param aniobj:
-	:type aniobj: opencascade::handle<AIS_InteractiveObject> &
+	:type aniobj: AIS_InteractiveObject
 	:param acolor:
-	:type acolor: Quantity_Color &
+	:type acolor: Quantity_Color
 	:rtype: None") Color;
 		void Color (const opencascade::handle<AIS_InteractiveObject> & aniobj,Quantity_Color & acolor);
 
@@ -2024,7 +2024,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Deactivate;
 		%feature("autodoc", "* Deactivates all the activated selection modes of an object.
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:rtype: None") Deactivate;
 		void Deactivate (const opencascade::handle<AIS_InteractiveObject> & theObj);
 
@@ -2032,7 +2032,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Deactivate;
 		%feature("autodoc", "* Deactivates all the activated selection modes of the interactive object anIobj with a given selection mode aMode.
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theMode:
 	:type theMode: int
 	:rtype: None") Deactivate;
@@ -2114,9 +2114,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Disconnect;
 		%feature("autodoc", "* Disconnects theObjToDisconnect from theAssembly and removes dependent selection structures
 	:param theAssembly:
-	:type theAssembly: opencascade::handle<AIS_InteractiveObject> &
+	:type theAssembly: AIS_InteractiveObject
 	:param theObjToDisconnect: default value is NULL
-	:type theObjToDisconnect: opencascade::handle<AIS_InteractiveObject> &
+	:type theObjToDisconnect: AIS_InteractiveObject
 	:rtype: None") Disconnect;
 		void Disconnect (const opencascade::handle<AIS_InteractiveObject> & theAssembly,const opencascade::handle<AIS_InteractiveObject> & theObjToDisconnect = NULL);
 
@@ -2124,7 +2124,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "* Displays the object in this Context using default Display Mode. This will be the object's default display mode, if there is one. Otherwise, it will be the context mode. The Interactive Object's default selection mode is activated if GetAutoActivateSelection() is True. In general, this is 0.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") Display;
@@ -2134,7 +2134,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "* Sets status, display mode and selection mode for specified Object If theSelectionMode equals -1, theIObj will not be activated: it will be displayed but will not be selectable.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theDispMode:
 	:type theDispMode: int
 	:param theSelectionMode:
@@ -2149,7 +2149,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		/****************** Display ******************/
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", ":param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theDispMode:
 	:type theDispMode: int
 	:param theSelectionMode:
@@ -2167,7 +2167,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") DisplayActiveSensitive;
 		%feature("autodoc", "* @name debug visualization Visualization of sensitives - for debugging purposes!
 	:param aView:
-	:type aView: opencascade::handle<V3d_View> &
+	:type aView: V3d_View
 	:rtype: None") DisplayActiveSensitive;
 		void DisplayActiveSensitive (const opencascade::handle<V3d_View> & aView);
 
@@ -2175,9 +2175,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") DisplayActiveSensitive;
 		%feature("autodoc", "* Visualization of sensitives - for debugging purposes!
 	:param anObject:
-	:type anObject: opencascade::handle<AIS_InteractiveObject> &
+	:type anObject: AIS_InteractiveObject
 	:param aView:
-	:type aView: opencascade::handle<V3d_View> &
+	:type aView: V3d_View
 	:rtype: None") DisplayActiveSensitive;
 		void DisplayActiveSensitive (const opencascade::handle<AIS_InteractiveObject> & anObject,const opencascade::handle<V3d_View> & aView);
 
@@ -2199,7 +2199,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") DisplayPriority;
 		%feature("autodoc", "* @name object presence management (View affinity, Layer, Priority) Returns the display priority of the Object.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:rtype: int") DisplayPriority;
 		Standard_Integer DisplayPriority (const opencascade::handle<AIS_InteractiveObject> & theIObj);
 
@@ -2215,7 +2215,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") DisplayStatus;
 		%feature("autodoc", "* Returns the display status of the entity anIobj. This will be one of the following: - AIS_DS_Displayed displayed in main viewer - AIS_DS_Erased hidden in main viewer - AIS_DS_Temporary temporarily displayed - AIS_DS_None nowhere displayed.
 	:param anIobj:
-	:type anIobj: opencascade::handle<AIS_InteractiveObject> &
+	:type anIobj: AIS_InteractiveObject
 	:rtype: AIS_DisplayStatus") DisplayStatus;
 		AIS_DisplayStatus DisplayStatus (const opencascade::handle<AIS_InteractiveObject> & anIobj);
 
@@ -2223,7 +2223,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") DisplayedObjects;
 		%feature("autodoc", "* Returns the list of displayed objects of a particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals -1. This means that there is a check on type only.
 	:param aListOfIO:
-	:type aListOfIO: AIS_ListOfInteractive &
+	:type aListOfIO: AIS_ListOfInteractive
 	:rtype: None") DisplayedObjects;
 		void DisplayedObjects (AIS_ListOfInteractive & aListOfIO);
 
@@ -2235,7 +2235,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theWhichSignature:
 	:type theWhichSignature: int
 	:param theListOfIO:
-	:type theListOfIO: AIS_ListOfInteractive &
+	:type theListOfIO: AIS_ListOfInteractive
 	:rtype: None") DisplayedObjects;
 		void DisplayedObjects (const AIS_KindOfInteractive theWhichKind,const Standard_Integer theWhichSignature,AIS_ListOfInteractive & theListOfIO);
 
@@ -2254,7 +2254,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") EndImmediateDraw;
 		%feature("autodoc", "* returns True if the immediate display has been done.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: bool") EndImmediateDraw;
 		Standard_Boolean EndImmediateDraw (const opencascade::handle<V3d_View> & theView);
 
@@ -2268,7 +2268,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Erase;
 		%feature("autodoc", "* Hides the object. The object's presentations are simply flagged as invisible and therefore excluded from redrawing. To show hidden objects, use Display().
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") Erase;
@@ -2294,7 +2294,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") ErasedObjects;
 		%feature("autodoc", "* Returns the list theListOfIO of erased objects (hidden objects) particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals 1. This means that there is a check on type only.
 	:param theListOfIO:
-	:type theListOfIO: AIS_ListOfInteractive &
+	:type theListOfIO: AIS_ListOfInteractive
 	:rtype: None") ErasedObjects;
 		void ErasedObjects (AIS_ListOfInteractive & theListOfIO);
 
@@ -2306,7 +2306,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theWhichSignature:
 	:type theWhichSignature: int
 	:param theListOfIO:
-	:type theListOfIO: AIS_ListOfInteractive &
+	:type theListOfIO: AIS_ListOfInteractive
 	:rtype: None") ErasedObjects;
 		void ErasedObjects (const AIS_KindOfInteractive theWhichKind,const Standard_Integer theWhichSignature,AIS_ListOfInteractive & theListOfIO);
 
@@ -2326,7 +2326,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") FitSelected;
 		%feature("autodoc", "* Fits the view correspondingly to the bounds of selected objects. Infinite objects are ignored if infinite state of AIS_InteractiveObject is set to true.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theMargin:
 	:type theMargin: float
 	:param theToUpdate:
@@ -2338,7 +2338,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") FitSelected;
 		%feature("autodoc", "* Fits the view correspondingly to the bounds of selected objects. Infinite objects are ignored if infinite state of AIS_InteractiveObject is set to true.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") FitSelected;
 		void FitSelected (const opencascade::handle<V3d_View> & theView);
 
@@ -2352,7 +2352,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") GetZLayer;
 		%feature("autodoc", "* Get Z layer id set for displayed interactive object.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:rtype: Graphic3d_ZLayerId") GetZLayer;
 		Graphic3d_ZLayerId GetZLayer (const opencascade::handle<AIS_InteractiveObject> & theIObj);
 
@@ -2360,7 +2360,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") GravityPoint;
 		%feature("autodoc", "* Return rotation gravity point.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: gp_Pnt") GravityPoint;
 		virtual gp_Pnt GravityPoint (const opencascade::handle<V3d_View> & theView);
 
@@ -2386,7 +2386,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") HasColor;
 		%feature("autodoc", "* Returns true if a view of the Interactive Object has color.
 	:param aniobj:
-	:type aniobj: opencascade::handle<AIS_InteractiveObject> &
+	:type aniobj: AIS_InteractiveObject
 	:rtype: bool") HasColor;
 		Standard_Boolean HasColor (const opencascade::handle<AIS_InteractiveObject> & aniobj);
 
@@ -2406,7 +2406,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") HasLocation;
 		%feature("autodoc", "* Returns true if the Object has a location.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:rtype: bool") HasLocation;
 		Standard_Boolean HasLocation (const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -2420,7 +2420,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") HasPolygonOffsets;
 		%feature("autodoc", "* Simply calls AIS_InteractiveObject::HasPolygonOffsets().
 	:param anObj:
-	:type anObj: opencascade::handle<AIS_InteractiveObject> &
+	:type anObj: AIS_InteractiveObject
 	:rtype: bool") HasPolygonOffsets;
 		Standard_Boolean HasPolygonOffsets (const opencascade::handle<AIS_InteractiveObject> & anObj);
 
@@ -2454,9 +2454,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") HighlightStyle;
 		%feature("autodoc", "* Returns highlight style of the object if it is marked as highlighted via global status @param theObj [in] the object to check
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:rtype: bool") HighlightStyle;
 		Standard_Boolean HighlightStyle (const opencascade::handle<AIS_InteractiveObject> & theObj,opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -2464,9 +2464,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") HighlightStyle;
 		%feature("autodoc", "* Returns highlight style of the owner if it is selected @param theOwner [in] the owner to check
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:rtype: bool") HighlightStyle;
 		Standard_Boolean HighlightStyle (const opencascade::handle<SelectMgr_EntityOwner> & theOwner,opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -2474,7 +2474,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Hilight;
 		%feature("autodoc", "* Updates the display in the viewer to take dynamic detection into account. On dynamic detection by the mouse cursor, sensitive primitives are highlighted. The highlight color of entities detected by mouse movement is white by default.
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theIsToUpdateViewer:
 	:type theIsToUpdateViewer: bool
 	:rtype: None") Hilight;
@@ -2492,7 +2492,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") HilightNextDetected;
 		%feature("autodoc", "* If more than 1 object is detected by the selector, only the 'best' owner is hilighted at the mouse position. This Method allows the user to hilight one after another the other detected entities. If The method select is called, the selected entity will be the hilighted one! WARNING: Loop Method. When all the detected entities have been hilighted, the next call will hilight the first one again. returns the Rank of hilighted entity @sa HasNextDetected()/HilightPreviousDetected().
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theToRedrawImmediate: default value is Standard_True
 	:type theToRedrawImmediate: bool
 	:rtype: int") HilightNextDetected;
@@ -2502,7 +2502,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") HilightPreviousDetected;
 		%feature("autodoc", "* Same as previous methods in reverse direction. @sa HasNextDetected()/HilightNextDetected().
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theToRedrawImmediate: default value is Standard_True
 	:type theToRedrawImmediate: bool
 	:rtype: int") HilightPreviousDetected;
@@ -2520,9 +2520,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "* Changes the color of all the lines of the object in view.
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") HilightWithColor;
@@ -2532,7 +2532,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") ImmediateAdd;
 		%feature("autodoc", "* returns True if <anIObj> has been stored in the list.
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: bool") ImmediateAdd;
@@ -2560,7 +2560,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") IsCurrent;
 		%feature("autodoc", "* Returns true if there is a non-null interactive object in Neutral Point. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:rtype: bool") IsCurrent;
 		Standard_Boolean IsCurrent (const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -2568,14 +2568,14 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", "* Returns true if Object is displayed in the interactive context.
 	:param anIobj:
-	:type anIobj: opencascade::handle<AIS_InteractiveObject> &
+	:type anIobj: AIS_InteractiveObject
 	:rtype: bool") IsDisplayed;
 		Standard_Boolean IsDisplayed (const opencascade::handle<AIS_InteractiveObject> & anIobj);
 
 		/****************** IsDisplayed ******************/
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", ":param aniobj:
-	:type aniobj: opencascade::handle<AIS_InteractiveObject> &
+	:type aniobj: AIS_InteractiveObject
 	:param aMode:
 	:type aMode: int
 	:rtype: bool") IsDisplayed;
@@ -2585,7 +2585,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "* Returns true if the object is marked as highlighted via its global status @param theObj [in] the object to check
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:rtype: bool") IsHilighted;
 		Standard_Boolean IsHilighted (const opencascade::handle<AIS_InteractiveObject> & theObj);
 
@@ -2593,7 +2593,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "* Returns true if the owner is marked as selected @param theOwner [in] the owner to check
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:rtype: bool") IsHilighted;
 		Standard_Boolean IsHilighted (const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
@@ -2606,7 +2606,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") IsSelected;
 		%feature("autodoc", "* Returns true is the owner given is selected
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:rtype: bool") IsSelected;
 		Standard_Boolean IsSelected (const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
@@ -2614,7 +2614,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") IsSelected;
 		%feature("autodoc", "* Returns true is the object given is selected
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:rtype: bool") IsSelected;
 		Standard_Boolean IsSelected (const opencascade::handle<AIS_InteractiveObject> & theObj);
 
@@ -2646,7 +2646,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theIsEnabled:
 	:type theIsEnabled: bool
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:rtype: None") IsoOnTriangulation;
 		void IsoOnTriangulation (const Standard_Boolean theIsEnabled,const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -2674,7 +2674,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Allows you to load the Interactive Object with a given selection mode, and/or with the desired decomposition option, whether the object is visualized or not. The loaded objects will be selectable but displayable in highlighting only when detected by the Selector.
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theSelectionMode: default value is -1
 	:type theSelectionMode: int
 	:rtype: None") Load;
@@ -2683,7 +2683,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theSelectionMode:
 	:type theSelectionMode: int
 	:param :
@@ -2695,7 +2695,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "* Returns the location of the Object.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:rtype: TopLoc_Location") Location;
 		TopLoc_Location Location (const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -2735,7 +2735,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theYPix:
 	:type theYPix: int
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theToRedrawOnUpdate:
 	:type theToRedrawOnUpdate: bool
 	:rtype: AIS_StatusOfDetection") MoveTo;
@@ -2776,7 +2776,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theStatus:
 	:type theStatus: AIS_DisplayStatus
 	:param theListOfIO:
-	:type theListOfIO: AIS_ListOfInteractive &
+	:type theListOfIO: AIS_ListOfInteractive
 	:rtype: None") ObjectsByDisplayStatus;
 		void ObjectsByDisplayStatus (const AIS_DisplayStatus theStatus,AIS_ListOfInteractive & theListOfIO);
 
@@ -2790,7 +2790,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theStatus:
 	:type theStatus: AIS_DisplayStatus
 	:param theListOfIO:
-	:type theListOfIO: AIS_ListOfInteractive &
+	:type theListOfIO: AIS_ListOfInteractive
 	:rtype: None") ObjectsByDisplayStatus;
 		void ObjectsByDisplayStatus (const AIS_KindOfInteractive WhichKind,const Standard_Integer WhichSignature,const AIS_DisplayStatus theStatus,AIS_ListOfInteractive & theListOfIO);
 
@@ -2798,9 +2798,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") ObjectsForView;
 		%feature("autodoc", "* Query objects visible or hidden in specified view due to affinity mask.
 	:param theListOfIO:
-	:type theListOfIO: AIS_ListOfInteractive &
+	:type theListOfIO: AIS_ListOfInteractive
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theIsVisibleInView:
 	:type theIsVisibleInView: bool
 	:param theStatus: default value is AIS_DS_None
@@ -2812,7 +2812,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") ObjectsInside;
 		%feature("autodoc", "* fills <aListOfIO> with objects of a particular Type and Signature with no consideration of display status. by Default, <WhichSignature> = -1 means control only on <WhichKind>. if <WhichKind> = AIS_KOI_None and <WhichSignature> = -1, all the objects are put into the list.
 	:param aListOfIO:
-	:type aListOfIO: AIS_ListOfInteractive &
+	:type aListOfIO: AIS_ListOfInteractive
 	:param WhichKind: default value is AIS_KOI_None
 	:type WhichKind: AIS_KindOfInteractive
 	:param WhichSignature: default value is -1
@@ -2836,9 +2836,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") PlaneSize;
 		%feature("autodoc", "* Returns true if the length in the X direction XSize is the same as that in the Y direction YSize.
 	:param XSize:
-	:type XSize: float &
+	:type XSize: float
 	:param YSize:
-	:type YSize: float &
+	:type YSize: float
 	:rtype: bool") PlaneSize;
 		Standard_Boolean PlaneSize (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2846,13 +2846,13 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") PolygonOffsets;
 		%feature("autodoc", "* Retrieves current polygon offsets settings for Object.
 	:param anObj:
-	:type anObj: opencascade::handle<AIS_InteractiveObject> &
+	:type anObj: AIS_InteractiveObject
 	:param aMode:
-	:type aMode: int &
+	:type aMode: int
 	:param aFactor:
-	:type aFactor: Standard_ShortReal &
+	:type aFactor: Standard_ShortReal
 	:param aUnits:
-	:type aUnits: Standard_ShortReal &
+	:type aUnits: Standard_ShortReal
 	:rtype: None") PolygonOffsets;
 		void PolygonOffsets (const opencascade::handle<AIS_InteractiveObject> & anObj,Standard_Integer &OutValue,Standard_ShortReal & aFactor,Standard_ShortReal & aUnits);
 
@@ -2872,7 +2872,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") RecomputePrsOnly;
 		%feature("autodoc", "* Recomputes the displayed presentations, flags the others. Doesn't update presentations.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:param theAllModes: default value is Standard_False
@@ -2884,7 +2884,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") RecomputeSelectionOnly;
 		%feature("autodoc", "* Recomputes the active selections, flags the others. Doesn't update presentations.
 	:param anIObj:
-	:type anIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type anIObj: AIS_InteractiveObject
 	:rtype: None") RecomputeSelectionOnly;
 		void RecomputeSelectionOnly (const opencascade::handle<AIS_InteractiveObject> & anIObj);
 
@@ -2892,7 +2892,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Redisplay;
 		%feature("autodoc", "* Recomputes the seen parts presentation of the Object. If theAllModes equals true, all presentations are present in the object even if unseen.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:param theAllModes: default value is Standard_False
@@ -2916,7 +2916,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") RedrawImmediate;
 		%feature("autodoc", "* Redraws immediate structures in all views of the viewer given taking into account its visibility.
 	:param theViewer:
-	:type theViewer: opencascade::handle<V3d_Viewer> &
+	:type theViewer: V3d_Viewer
 	:rtype: None") RedrawImmediate;
 		void RedrawImmediate (const opencascade::handle<V3d_Viewer> & theViewer);
 
@@ -2924,7 +2924,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes Object from every viewer.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") Remove;
@@ -2942,7 +2942,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveFilter;
 		%feature("autodoc", "* Removes a filter from context.
 	:param theFilter:
-	:type theFilter: opencascade::handle<SelectMgr_Filter> &
+	:type theFilter: SelectMgr_Filter
 	:rtype: None") RemoveFilter;
 		void RemoveFilter (const opencascade::handle<SelectMgr_Filter> & theFilter);
 
@@ -2956,7 +2956,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") ResetLocation;
 		%feature("autodoc", "* Puts the Object back into its initial position.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:rtype: None") ResetLocation;
 		void ResetLocation (const opencascade::handle<AIS_InteractiveObject> & theObject);
 
@@ -2972,7 +2972,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theYPMax:
 	:type theYPMax: int
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: AIS_StatusOfPick") Select;
@@ -2984,7 +2984,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param thePolyline:
 	:type thePolyline: TColgp_Array1OfPnt2d
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: AIS_StatusOfPick") Select;
@@ -3037,7 +3037,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetAngleAndDeviation;
 		%feature("autodoc", "* Calls the AIS_Shape SetAngleAndDeviation to set both Angle and Deviation coefficients
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theAngle:
 	:type theAngle: float
 	:param theToUpdateViewer:
@@ -3065,9 +3065,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Sets the color of the selected entity.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") SetColor;
@@ -3077,7 +3077,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetCurrentFacingModel;
 		%feature("autodoc", "* change the current facing model apply on polygons for SetColor(), SetTransparency(), SetMaterial() methods default facing model is Aspect_TOFM_TWO_SIDE. This mean that attributes is applying both on the front and back face.
 	:param aniobj:
-	:type aniobj: opencascade::handle<AIS_InteractiveObject> &
+	:type aniobj: AIS_InteractiveObject
 	:param aModel: default value is Aspect_TOFM_BOTH_SIDE
 	:type aModel: Aspect_TypeOfFacingModel
 	:rtype: None") SetCurrentFacingModel;
@@ -3087,7 +3087,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetCurrentObject;
 		%feature("autodoc", "* @name obsolete methods Updates the view of the current object in open context. Objects selected when there is no open local context are called current objects; those selected in open local context, selected objects.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") SetCurrentObject;
@@ -3096,7 +3096,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		/****************** SetDeviationAngle ******************/
 		%feature("compactdefaultargs") SetDeviationAngle;
 		%feature("autodoc", ":param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theAngle:
 	:type theAngle: float
 	:param theToUpdateViewer:
@@ -3116,7 +3116,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetDeviationCoefficient;
 		%feature("autodoc", "* @name tessellation deviation properties for automatic triangulation Sets the deviation coefficient theCoefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient theCoefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through the method: SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theCoefficient:
 	:type theCoefficient: float
 	:param theToUpdateViewer:
@@ -3146,7 +3146,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetDisplayMode;
 		%feature("autodoc", "* Sets the display mode of seen Interactive Objects. theMode provides the display mode index of the entity theIObj.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theMode:
 	:type theMode: int
 	:param theToUpdateViewer:
@@ -3158,7 +3158,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetDisplayPriority;
 		%feature("autodoc", "* Sets the display priority of the seen parts presentation of the Object.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param thePriority:
 	:type thePriority: int
 	:rtype: None") SetDisplayPriority;
@@ -3176,7 +3176,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetHLRAngleAndDeviation;
 		%feature("autodoc", "* Computes a HLRAngle and a HLRDeviationCoefficient by means of the angle anAngle and sets the corresponding methods in the default drawing tool with these values.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theAngle:
 	:type theAngle: float
 	:param theToUpdateViewer:
@@ -3195,7 +3195,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		/****************** SetHLRDeviationAngle ******************/
 		%feature("compactdefaultargs") SetHLRDeviationAngle;
 		%feature("autodoc", ":param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theAngle:
 	:type theAngle: float
 	:param theToUpdateViewer:
@@ -3207,7 +3207,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetHLRDeviationCoefficient;
 		%feature("autodoc", "* Sets the deviation coefficient aCoefficient for removal of hidden lines created by different viewpoints in different presentations. The Default value is 0.02.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theCoefficient:
 	:type theCoefficient: float
 	:param theToUpdateViewer:
@@ -3227,7 +3227,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetHiddenLineAspect;
 		%feature("autodoc", "* Sets the hidden line aspect anAspect. Aspect defines display attributes for hidden lines in HLR projections.
 	:param anAspect:
-	:type anAspect: opencascade::handle<Prs3d_LineAspect> &
+	:type anAspect: Prs3d_LineAspect
 	:rtype: None") SetHiddenLineAspect;
 		void SetHiddenLineAspect (const opencascade::handle<Prs3d_LineAspect> & anAspect);
 
@@ -3237,7 +3237,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theStyleType:
 	:type theStyleType: Prs3d_TypeOfHighlight
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:rtype: None") SetHighlightStyle;
 		void SetHighlightStyle (const Prs3d_TypeOfHighlight theStyleType,const opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -3245,7 +3245,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetHighlightStyle;
 		%feature("autodoc", "* Setup the style of dynamic highlighting. It is preferred modifying existing style returned by method HighlightStyle() instead of creating a new drawer. //! If a new highlight style is created, its presentation Zlayer should be checked, otherwise highlighting might not work as expected. Default value is Graphic3d_ZLayerId_Top, object highlighting is drawn on top of main scene within Immediate Layers, so that V3d_View::RedrawImmediate() will be enough to see update;
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:rtype: None") SetHighlightStyle;
 		void SetHighlightStyle (const opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -3263,9 +3263,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetLocalAttributes;
 		%feature("autodoc", "* @name common object display attributes Sets the graphic attributes of the interactive object, such as visualization mode, color, and material.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theDrawer:
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") SetLocalAttributes;
@@ -3275,9 +3275,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "* @name object local transformation management Puts the location on the initial graphic representation and the selection for the Object.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:param theLocation:
-	:type theLocation: TopLoc_Location &
+	:type theLocation: TopLoc_Location
 	:rtype: None") SetLocation;
 		void SetLocation (const opencascade::handle<AIS_InteractiveObject> & theObject,const TopLoc_Location & theLocation);
 
@@ -3285,9 +3285,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "* Provides the type of material setting for the view of the Object.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theMaterial:
-	:type theMaterial: Graphic3d_MaterialAspect &
+	:type theMaterial: Graphic3d_MaterialAspect
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") SetMaterial;
@@ -3335,7 +3335,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetPolygonOffsets;
 		%feature("autodoc", "* Sets up polygon offsets for the given AIS_InteractiveObject. It simply calls AIS_InteractiveObject::SetPolygonOffsets().
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theMode:
 	:type theMode: int
 	:param theFactor:
@@ -3351,7 +3351,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelected;
 		%feature("autodoc", "* Unhighlights previously selected owners and marks them as not selected. Marks owner given as selected and highlights it. Performs selection filters check.
 	:param theOwners:
-	:type theOwners: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwners: SelectMgr_EntityOwner
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") SetSelected;
@@ -3361,7 +3361,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelected;
 		%feature("autodoc", "* Puts the interactive object aniObj in the list of selected objects. Performs selection filters check.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") SetSelected;
@@ -3371,7 +3371,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelectedAspect;
 		%feature("autodoc", "* @name Selection management Sets the graphic basic aspect to the current presentation of ALL selected objects.
 	:param theAspect:
-	:type theAspect: opencascade::handle<Prs3d_BasicAspect> &
+	:type theAspect: Prs3d_BasicAspect
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") SetSelectedAspect;
@@ -3381,7 +3381,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelectedState;
 		%feature("autodoc", "* Updates Selected state of specified owner without calling HilightSelected(). Has no effect if Selected state is not changed, and redirects to AddOrRemoveSelected() otherwise. @param theOwner owner object to set selected state @param theIsSelected new selected state returns True if Selected state has been changed
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:param theIsSelected:
 	:type theIsSelected: bool
 	:rtype: bool") SetSelectedState;
@@ -3391,7 +3391,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelection;
 		%feature("autodoc", "* Sets selection instance to manipulate a container of selected owners @param theSelection an instance of the selection
 	:param theSelection:
-	:type theSelection: opencascade::handle<AIS_Selection> &
+	:type theSelection: AIS_Selection
 	:rtype: None") SetSelection;
 		void SetSelection (const opencascade::handle<AIS_Selection> & theSelection);
 
@@ -3399,7 +3399,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelectionModeActive;
 		%feature("autodoc", "* @name management of active Selection Modes Activates or deactivates the selection mode for specified object. Has no effect if selection mode was already active/deactivated. @param theObj object to activate/deactivate selection mode @param theMode selection mode to activate/deactivate;  deactivation of -1 selection mode will effectively deactivate all selection modes;  activation of -1 selection mode with AIS_SelectionModesConcurrency_Single  will deactivate all selection modes, and will has no effect otherwise @param theToActivate activation/deactivation flag @param theConcurrency specifies how to handle already activated selection modes;  default value (AIS_SelectionModesConcurrency_Multiple) means active selection modes should be left as is,  AIS_SelectionModesConcurrency_Single can be used if only one selection mode is expected to be active  and AIS_SelectionModesConcurrency_GlobalOrLocal can be used if either AIS_InteractiveObject::GlobalSelectionMode()  or any combination of Local selection modes is acceptable;  this value is considered only if theToActivate set to True @param theIsForce when set to True, the display status will be ignored while activating selection mode
 	:param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theMode:
 	:type theMode: int
 	:param theToActivate:
@@ -3415,7 +3415,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelectionSensitivity;
 		%feature("autodoc", "* Allows to manage sensitivity of a particular selection of interactive object theObject and changes previous sensitivity value of all sensitive entities in selection with theMode to the given theNewSensitivity.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:param theMode:
 	:type theMode: int
 	:param theNewSensitivity:
@@ -3427,7 +3427,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetSelectionStyle;
 		%feature("autodoc", "* Setup the style of selection highlighting.
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:rtype: None") SetSelectionStyle;
 		void SetSelectionStyle (const opencascade::handle<Prs3d_Drawer> & theStyle);
 
@@ -3435,7 +3435,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetSubIntensityColor;
 		%feature("autodoc", "* Sub-intensity allows temporary highlighting of particular objects with specified color in a manner of selection highlight, but without actual selection (e.g., global status and owner's selection state will not be updated). The method sets up the color for such highlighting. By default, this is Quantity_NOC_GRAY40.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetSubIntensityColor;
 		void SetSubIntensityColor (const Quantity_Color & theColor);
 
@@ -3451,18 +3451,18 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetTransformPersistence;
 		%feature("autodoc", "* Sets transform persistence.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:param theTrsfPers:
-	:type theTrsfPers: opencascade::handle<Graphic3d_TransformPers> &
+	:type theTrsfPers: Graphic3d_TransformPers
 	:rtype: None") SetTransformPersistence;
 		void SetTransformPersistence (const opencascade::handle<AIS_InteractiveObject> & theObject,const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
 		/****************** SetTransformPersistence ******************/
 		%feature("compactdefaultargs") SetTransformPersistence;
 		%feature("autodoc", ":param theObj:
-	:type theObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theObj: AIS_InteractiveObject
 	:param theFlag:
-	:type theFlag: Graphic3d_TransModeFlags &
+	:type theFlag: Graphic3d_TransModeFlags
 	:param thePoint: default value is gp_Pnt(0.0,0.0,0.0)
 	:type thePoint: gp_Pnt
 	:rtype: None") SetTransformPersistence;
@@ -3472,7 +3472,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetTransparency;
 		%feature("autodoc", "* Provides the transparency settings for viewing the Object. The transparency value aValue may be between 0.0, opaque, and 1.0, fully transparent.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theValue:
 	:type theValue: float
 	:param theToUpdateViewer:
@@ -3494,9 +3494,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetViewAffinity;
 		%feature("autodoc", "* Setup object visibility in specified view. Has no effect if object is not displayed in this context.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theIsVisible:
 	:type theIsVisible: bool
 	:rtype: None") SetViewAffinity;
@@ -3506,7 +3506,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetWidth;
 		%feature("autodoc", "* Sets the width of the Object.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theValue:
 	:type theValue: float
 	:param theToUpdateViewer:
@@ -3518,7 +3518,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SetZLayer;
 		%feature("autodoc", "* Set Z layer id for interactive object. The Z layers can be used to display temporarily presentations of some object in front of the other objects in the scene. The ids for Z layers are generated by V3d_Viewer.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theLayerId:
 	:type theLayerId: Graphic3d_ZLayerId
 	:rtype: None") SetZLayer;
@@ -3538,7 +3538,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param thePolyline:
 	:type thePolyline: TColgp_Array1OfPnt2d
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: AIS_StatusOfPick") ShiftSelect;
@@ -3556,7 +3556,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theYPMax:
 	:type theYPMax: int
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: AIS_StatusOfPick") ShiftSelect;
@@ -3572,7 +3572,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SubIntensityOff;
 		%feature("autodoc", "* Removes the subintensity option for the entity. If a local context is open, the presentation of the Interactive Object activates the selection mode.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") SubIntensityOff;
@@ -3582,7 +3582,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") SubIntensityOn;
 		%feature("autodoc", "* Highlights, and removes highlights from, the displayed object which is displayed at Neutral Point with subintensity color. Available only for active local context. There is no effect if there is no local context. If a local context is open, the presentation of the Interactive Object activates the selection mode.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") SubIntensityOn;
@@ -3604,7 +3604,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "* Removes hilighting from the Object.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") Unhilight;
@@ -3630,7 +3630,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") UnsetColor;
 		%feature("autodoc", "* Removes the color selection for the selected entity.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") UnsetColor;
@@ -3640,7 +3640,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") UnsetDisplayMode;
 		%feature("autodoc", "* Unsets the display mode of seen Interactive Objects.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") UnsetDisplayMode;
@@ -3650,7 +3650,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") UnsetLocalAttributes;
 		%feature("autodoc", "* Removes the settings for local attributes of the Object and returns to defaults.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") UnsetLocalAttributes;
@@ -3660,7 +3660,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") UnsetMaterial;
 		%feature("autodoc", "* Removes the type of material setting for viewing the Object.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") UnsetMaterial;
@@ -3670,7 +3670,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") UnsetTransparency;
 		%feature("autodoc", "* Removes the transparency settings for viewing the Object.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: None") UnsetTransparency;
@@ -3680,7 +3680,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") UnsetWidth;
 		%feature("autodoc", "* Removes the width setting of the Object.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theToUpdateViewer:
 	:type theToUpdateViewer: bool
 	:rtype: void") UnsetWidth;
@@ -3690,7 +3690,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* Updates displayed interactive object by checking and recomputing its flagged as 'to be recomputed' presentation and selection structures. This method does not force any recomputation on its own. The method recomputes selections even if they are loaded without activation in particular selector.
 	:param theIObj:
-	:type theIObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theIObj: AIS_InteractiveObject
 	:param theUpdateViewer:
 	:type theUpdateViewer: bool
 	:rtype: None") Update;
@@ -3720,7 +3720,7 @@ class AIS_InteractiveContext : public Standard_Transient {
 		%feature("compactdefaultargs") Width;
 		%feature("autodoc", "* Returns the width of the Interactive Object in the interactive context.
 	:param aniobj:
-	:type aniobj: opencascade::handle<AIS_InteractiveObject> &
+	:type aniobj: AIS_InteractiveObject
 	:rtype: float") Width;
 		virtual Standard_Real Width (const opencascade::handle<AIS_InteractiveObject> & aniobj);
 
@@ -3809,7 +3809,7 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 		%feature("compactdefaultargs") SetAspect;
 		%feature("autodoc", "* Sets the graphic basic aspect to the current presentation.
 	:param anAspect:
-	:type anAspect: opencascade::handle<Prs3d_BasicAspect> &
+	:type anAspect: Prs3d_BasicAspect
 	:rtype: None") SetAspect;
 		void SetAspect (const opencascade::handle<Prs3d_BasicAspect> & anAspect);
 
@@ -3817,7 +3817,7 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Sets the interactive context aCtx and provides a link to the default drawing tool or 'Drawer' if there is none.
 	:param aCtx:
-	:type aCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type aCtx: AIS_InteractiveContext
 	:rtype: void") SetContext;
 		virtual void SetContext (const opencascade::handle<AIS_InteractiveContext> & aCtx);
 
@@ -3825,7 +3825,7 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 		%feature("compactdefaultargs") SetOwner;
 		%feature("autodoc", "* Allows you to attribute the owner theApplicativeEntity to an Interactive Object. This can be a shape for a set of sub-shapes or a sub-shape for sub-shapes which it is composed of. The owner takes the form of a transient.
 	:param theApplicativeEntity:
-	:type theApplicativeEntity: opencascade::handle<Standard_Transient> &
+	:type theApplicativeEntity: Standard_Transient
 	:rtype: None") SetOwner;
 		void SetOwner (const opencascade::handle<Standard_Transient> & theApplicativeEntity);
 
@@ -3861,7 +3861,7 @@ class AIS_ManipulatorOwner : public SelectMgr_EntityOwner {
 		/****************** AIS_ManipulatorOwner ******************/
 		%feature("compactdefaultargs") AIS_ManipulatorOwner;
 		%feature("autodoc", ":param theSelObject:
-	:type theSelObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theSelObject: SelectMgr_SelectableObject
 	:param theIndex:
 	:type theIndex: int
 	:param theMode:
@@ -3874,9 +3874,9 @@ class AIS_ManipulatorOwner : public SelectMgr_EntityOwner {
 		/****************** HilightWithColor ******************/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", ":param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theMode:
 	:type theMode: int
 	:rtype: void") HilightWithColor;
@@ -3891,7 +3891,7 @@ class AIS_ManipulatorOwner : public SelectMgr_EntityOwner {
 		/****************** IsHilighted ******************/
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", ":param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePM: PrsMgr_PresentationManager
 	:param theMode:
 	:type theMode: int
 	:rtype: bool") IsHilighted;
@@ -3905,7 +3905,7 @@ class AIS_ManipulatorOwner : public SelectMgr_EntityOwner {
 		/****************** Unhilight ******************/
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", ":param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePM: PrsMgr_PresentationManager
 	:param theMode:
 	:type theMode: int
 	:rtype: void") Unhilight;
@@ -3932,7 +3932,7 @@ class AIS_PointCloudOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") AIS_PointCloudOwner;
 		%feature("autodoc", "* ////DEFINE_STANDARD_RTTIEXT(AIS_PointCloudOwner, SelectMgr_EntityOwner) Main constructor.
 	:param theOrigin:
-	:type theOrigin: opencascade::handle<AIS_PointCloud> &
+	:type theOrigin: AIS_PointCloud
 	:rtype: None") AIS_PointCloudOwner;
 		 AIS_PointCloudOwner (const opencascade::handle<AIS_PointCloud> & theOrigin);
 
@@ -3940,7 +3940,7 @@ class AIS_PointCloudOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "* Clears presentation.
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePrsMgr: PrsMgr_PresentationManager
 	:param theMode:
 	:type theMode: int
 	:rtype: void") Clear;
@@ -3956,9 +3956,9 @@ class AIS_PointCloudOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "* Handle dynamic highlighting.
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePrsMgr: PrsMgr_PresentationManager3d
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theMode:
 	:type theMode: int
 	:rtype: void") HilightWithColor;
@@ -3980,7 +3980,7 @@ class AIS_PointCloudOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "* Removes highlighting.
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePrsMgr: PrsMgr_PresentationManager
 	:param theMode:
 	:type theMode: int
 	:rtype: void") Unhilight;
@@ -4011,7 +4011,7 @@ class AIS_Selection : public Standard_Transient {
 		%feature("compactdefaultargs") AddSelect;
 		%feature("autodoc", "* the object is always add int the selection. faster when the number of objects selected is great.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theObject: SelectMgr_EntityOwner
 	:rtype: AIS_SelectStatus") AddSelect;
 		virtual AIS_SelectStatus AddSelect (const opencascade::handle<SelectMgr_EntityOwner> & theObject);
 
@@ -4025,7 +4025,7 @@ class AIS_Selection : public Standard_Transient {
 		%feature("compactdefaultargs") ClearAndSelect;
 		%feature("autodoc", "* clears the selection and adds the object in the selection.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theObject: SelectMgr_EntityOwner
 	:rtype: None") ClearAndSelect;
 		void ClearAndSelect (const opencascade::handle<SelectMgr_EntityOwner> & theObject);
 
@@ -4051,7 +4051,7 @@ class AIS_Selection : public Standard_Transient {
 		%feature("compactdefaultargs") IsSelected;
 		%feature("autodoc", "* checks if the object is in the selection.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theObject: SelectMgr_EntityOwner
 	:rtype: bool") IsSelected;
 		Standard_Boolean IsSelected (const opencascade::handle<SelectMgr_EntityOwner> & theObject);
 
@@ -4077,7 +4077,7 @@ class AIS_Selection : public Standard_Transient {
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "* if the object is not yet in the selection, it will be added. if the object is already in the selection, it will be removed.
 	:param theObject:
-	:type theObject: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theObject: SelectMgr_EntityOwner
 	:rtype: AIS_SelectStatus") Select;
 		virtual AIS_SelectStatus Select (const opencascade::handle<SelectMgr_EntityOwner> & theObject);
 
@@ -4108,7 +4108,7 @@ class AIS_TrihedronOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") AIS_TrihedronOwner;
 		%feature("autodoc", "* Creates an owner of AIS_Trihedron object.
 	:param theSelObject:
-	:type theSelObject: opencascade::handle<SelectMgr_SelectableObject> &
+	:type theSelObject: SelectMgr_SelectableObject
 	:param theDatumPart:
 	:type theDatumPart: Prs3d_DatumParts
 	:param thePriority:
@@ -4126,9 +4126,9 @@ class AIS_TrihedronOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "* Highlights selectable object's presentation.
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theMode:
 	:type theMode: int
 	:rtype: void") HilightWithColor;
@@ -4138,7 +4138,7 @@ class AIS_TrihedronOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "* Returns true if the presentation manager thePM highlights selections corresponding to the selection mode aMode.
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePM: PrsMgr_PresentationManager
 	:param theMode:
 	:type theMode: int
 	:rtype: bool") IsHilighted;
@@ -4148,7 +4148,7 @@ class AIS_TrihedronOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "* Removes highlighting from the owner of a detected selectable object in the presentation manager thePM.
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager> &
+	:type thePM: PrsMgr_PresentationManager
 	:param theMode:
 	:type theMode: int
 	:rtype: void") Unhilight;
@@ -4183,7 +4183,7 @@ class AIS_TypeFilter : public SelectMgr_Filter {
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "* Returns False if the transient is not an Interactive Object, or if the type of the Interactive Object is not the same as that stored in the filter.
 	:param anobj:
-	:type anobj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anobj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		virtual Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
@@ -4222,7 +4222,7 @@ class AIS_ViewController {
 	:param theId:
 	:type theId: Standard_Size
 	:param thePnt:
-	:type thePnt: Graphic3d_Vec2d &
+	:type thePnt: Graphic3d_Vec2d
 	:param theClearBefore: default value is false
 	:type theClearBefore: bool
 	:rtype: void") AddTouchPoint;
@@ -4268,9 +4268,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") FlushViewEvents;
 		%feature("autodoc", "* Update buffer for rendering thread. This method is expected to be called within synchronization barrier between GUI and Rendering threads (e.g. GUI thread should be locked beforehand to avoid data races). @param theCtx interactive context @param theView active view @param theToHandle if True, the HandleViewEvents() will be called
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theToHandle: default value is Standard_False
 	:type theToHandle: bool
 	:rtype: void") FlushViewEvents;
@@ -4280,9 +4280,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") GravityPoint;
 		%feature("autodoc", "* Compute rotation gravity center point depending on rotation mode. This method is expected to be called from rendering thread.
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: gp_Pnt") GravityPoint;
 		virtual gp_Pnt GravityPoint (const opencascade::handle<AIS_InteractiveContext> & theCtx,const opencascade::handle<V3d_View> & theView);
 
@@ -4290,9 +4290,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") HandleViewEvents;
 		%feature("autodoc", "* Process events within rendering thread.
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: void") HandleViewEvents;
 		virtual void HandleViewEvents (const opencascade::handle<AIS_InteractiveContext> & theCtx,const opencascade::handle<V3d_View> & theView);
 
@@ -4404,9 +4404,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") OnObjectDragged;
 		%feature("autodoc", "* Callback called by handleMoveTo() on dragging object in 3D Viewer. This method is expected to be called from rendering thread.
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theAction:
 	:type theAction: AIS_DragAction
 	:rtype: void") OnObjectDragged;
@@ -4416,9 +4416,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") OnSelectionChanged;
 		%feature("autodoc", "* Callback called by handleMoveTo() on Selection in 3D Viewer. This method is expected to be called from rendering thread.
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: void") OnSelectionChanged;
 		virtual void OnSelectionChanged (const opencascade::handle<AIS_InteractiveContext> & theCtx,const opencascade::handle<V3d_View> & theView);
 
@@ -4434,11 +4434,11 @@ class AIS_ViewController {
 	:param thePnt:
 	:type thePnt: gp_Pnt
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theCursor:
-	:type theCursor: Graphic3d_Vec2i &
+	:type theCursor: Graphic3d_Vec2i
 	:param theToStickToPickRay:
 	:type theToStickToPickRay: bool
 	:rtype: bool") PickPoint;
@@ -4448,7 +4448,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") PressMouseButton;
 		%feature("autodoc", "* Handle mouse button press event. This method is expected to be called from UI thread. @param thePoint mouse cursor position @param theButton pressed button @param theModifiers key modifiers @param theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen returns True if View should be redrawn
 	:param thePoint:
-	:type thePoint: Graphic3d_Vec2i &
+	:type thePoint: Graphic3d_Vec2i
 	:param theButton:
 	:type theButton: Aspect_VKeyMouse
 	:param theModifiers:
@@ -4474,7 +4474,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") ReleaseMouseButton;
 		%feature("autodoc", "* Handle mouse button release event. This method is expected to be called from UI thread. @param thePoint mouse cursor position @param theButton released button @param theModifiers key modifiers @param theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen returns True if View should be redrawn
 	:param thePoint:
-	:type thePoint: Graphic3d_Vec2i &
+	:type thePoint: Graphic3d_Vec2i
 	:param theButton:
 	:type theButton: Aspect_VKeyMouse
 	:param theModifiers:
@@ -4516,7 +4516,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") SelectInViewer;
 		%feature("autodoc", "* Perform selection in 3D viewer. This method is expected to be called from UI thread. @param thePnt picking point @param theIsXOR XOR selection flag
 	:param thePnt:
-	:type thePnt: Graphic3d_Vec2i &
+	:type thePnt: Graphic3d_Vec2i
 	:param theIsXOR: default value is false
 	:type theIsXOR: bool
 	:rtype: void") SelectInViewer;
@@ -4526,7 +4526,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") SelectInViewer;
 		%feature("autodoc", "* Perform selection in 3D viewer. This method is expected to be called from UI thread. @param thePnts picking point @param theIsXOR XOR selection flag
 	:param thePnts:
-	:type thePnts: NCollection_Sequence<Graphic3d_Vec2i> &
+	:type thePnts: NCollection_Sequence<Graphic3d_Vec2i>
 	:param theIsXOR: default value is false
 	:type theIsXOR: bool
 	:rtype: void") SelectInViewer;
@@ -4704,7 +4704,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") SetViewAnimation;
 		%feature("autodoc", "* Set view animation to be handled within handleViewRedraw().
 	:param theAnimation:
-	:type theAnimation: opencascade::handle<AIS_AnimationCamera> &
+	:type theAnimation: AIS_AnimationCamera
 	:rtype: None") SetViewAnimation;
 		void SetViewAnimation (const opencascade::handle<AIS_AnimationCamera> & theAnimation);
 
@@ -4818,7 +4818,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") UpdateMouseButtons;
 		%feature("autodoc", "* Handle mouse button press/release event. This method is expected to be called from UI thread. @param thePoint mouse cursor position @param theButtons pressed buttons @param theModifiers key modifiers @param theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen returns True if View should be redrawn
 	:param thePoint:
-	:type thePoint: Graphic3d_Vec2i &
+	:type thePoint: Graphic3d_Vec2i
 	:param theButtons:
 	:type theButtons: Aspect_VKeyMouse
 	:param theModifiers:
@@ -4832,7 +4832,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") UpdateMouseClick;
 		%feature("autodoc", "* Handle mouse button click event (emulated by UpdateMouseButtons() while releasing single button). Note that as this method is called by UpdateMouseButtons(), it should be executed from UI thread. Default implementation redirects to SelectInViewer(). This method is expected to be called from UI thread. @param thePoint mouse cursor position @param theButton clicked button @param theModifiers key modifiers @param theIsDoubleClick flag indicating double mouse click returns True if View should be redrawn
 	:param thePoint:
-	:type thePoint: Graphic3d_Vec2i &
+	:type thePoint: Graphic3d_Vec2i
 	:param theButton:
 	:type theButton: Aspect_VKeyMouse
 	:param theModifiers:
@@ -4846,7 +4846,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") UpdateMousePosition;
 		%feature("autodoc", "* Handle mouse cursor movement event. This method is expected to be called from UI thread. @param thePoint mouse cursor position @param theButtons pressed buttons @param theModifiers key modifiers @param theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen returns True if View should be redrawn
 	:param thePoint:
-	:type thePoint: Graphic3d_Vec2i &
+	:type thePoint: Graphic3d_Vec2i
 	:param theButtons:
 	:type theButtons: Aspect_VKeyMouse
 	:param theModifiers:
@@ -4860,7 +4860,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") UpdateMouseScroll;
 		%feature("autodoc", "* Update mouse scroll event; redirects to UpdateZoom by default. This method is expected to be called from UI thread. @param theDelta mouse cursor position and delta returns True if new event has been created or False if existing one has been updated
 	:param theDelta:
-	:type theDelta: Aspect_ScrollDelta &
+	:type theDelta: Aspect_ScrollDelta
 	:rtype: bool") UpdateMouseScroll;
 		virtual bool UpdateMouseScroll (const Aspect_ScrollDelta & theDelta);
 
@@ -4868,7 +4868,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") UpdatePolySelection;
 		%feature("autodoc", "* Update polygonal selection tool. This method is expected to be called from UI thread. @param thePnt new point to add to polygon @param theToAppend append new point or update the last point
 	:param thePnt:
-	:type thePnt: Graphic3d_Vec2i &
+	:type thePnt: Graphic3d_Vec2i
 	:param theToAppend:
 	:type theToAppend: bool
 	:rtype: void") UpdatePolySelection;
@@ -4878,9 +4878,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") UpdateRubberBand;
 		%feature("autodoc", "* Update rectangle selection tool. This method is expected to be called from UI thread. @param thePntFrom rectangle first corner @param thePntTo rectangle another corner @param theIsXOR XOR selection flag
 	:param thePntFrom:
-	:type thePntFrom: Graphic3d_Vec2i &
+	:type thePntFrom: Graphic3d_Vec2i
 	:param thePntTo:
-	:type thePntTo: Graphic3d_Vec2i &
+	:type thePntTo: Graphic3d_Vec2i
 	:param theIsXOR: default value is false
 	:type theIsXOR: bool
 	:rtype: void") UpdateRubberBand;
@@ -4892,7 +4892,7 @@ class AIS_ViewController {
 	:param theId:
 	:type theId: Standard_Size
 	:param thePnt:
-	:type thePnt: Graphic3d_Vec2d &
+	:type thePnt: Graphic3d_Vec2d
 	:rtype: void") UpdateTouchPoint;
 		virtual void UpdateTouchPoint (Standard_Size theId,const Graphic3d_Vec2d & thePnt);
 
@@ -4918,7 +4918,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") UpdateZoom;
 		%feature("autodoc", "* Update zoom event (e.g. from mouse scroll). This method is expected to be called from UI thread. @param theDelta mouse cursor position to zoom at and zoom delta returns True if new zoom event has been created or False if existing one has been updated
 	:param theDelta:
-	:type theDelta: Aspect_ScrollDelta &
+	:type theDelta: Aspect_ScrollDelta
 	:rtype: bool") UpdateZoom;
 		virtual bool UpdateZoom (const Aspect_ScrollDelta & theDelta);
 
@@ -4944,11 +4944,11 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") handleCameraActions;
 		%feature("autodoc", "* Perform camera actions. This method is expected to be called from rendering thread.
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theWalk:
-	:type theWalk: AIS_WalkDelta &
+	:type theWalk: AIS_WalkDelta
 	:rtype: void") handleCameraActions;
 		virtual void handleCameraActions (const opencascade::handle<AIS_InteractiveContext> & theCtx,const opencascade::handle<V3d_View> & theView,const AIS_WalkDelta & theWalk);
 
@@ -4956,9 +4956,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") handleMoveTo;
 		%feature("autodoc", "* Perform moveto/selection/dragging. This method is expected to be called from rendering thread.
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: void") handleMoveTo;
 		virtual void handleMoveTo (const opencascade::handle<AIS_InteractiveContext> & theCtx,const opencascade::handle<V3d_View> & theView);
 
@@ -4966,7 +4966,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") handleOrbitRotation;
 		%feature("autodoc", "* Handle orbital rotation events myGL.OrbitRotation. @param theView view to modify @param thePnt 3D point to rotate around @param theToLockZUp amend camera to exclude roll angle (put camera Up vector to plane containing global Z and view direction)
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param thePnt:
 	:type thePnt: gp_Pnt
 	:param theToLockZUp:
@@ -4978,7 +4978,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") handlePanning;
 		%feature("autodoc", "* Handle panning event myGL.Panning.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: void") handlePanning;
 		virtual void handlePanning (const opencascade::handle<V3d_View> & theView);
 
@@ -4986,9 +4986,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") handleViewRedraw;
 		%feature("autodoc", "* Handle view redraw. This method is expected to be called from rendering thread.
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: void") handleViewRedraw;
 		virtual void handleViewRedraw (const opencascade::handle<AIS_InteractiveContext> & theCtx,const opencascade::handle<V3d_View> & theView);
 
@@ -4996,7 +4996,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") handleViewRotation;
 		%feature("autodoc", "* Handle view direction rotation events myGL.ViewRotation. This method is expected to be called from rendering thread. @param theView camera to modify @param theYawExtra extra yaw increment @param thePitchExtra extra pitch increment @param theRoll roll value @param theToRestartOnIncrement flag indicating flight mode
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theYawExtra:
 	:type theYawExtra: double
 	:param thePitchExtra:
@@ -5012,9 +5012,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") handleZFocusScroll;
 		%feature("autodoc", "* Handle ZScroll event myGL.ZoomActions. This method is expected to be called from rendering thread.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theParams:
-	:type theParams: Aspect_ScrollDelta &
+	:type theParams: Aspect_ScrollDelta
 	:rtype: void") handleZFocusScroll;
 		virtual void handleZFocusScroll (const opencascade::handle<V3d_View> & theView,const Aspect_ScrollDelta & theParams);
 
@@ -5022,7 +5022,7 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") handleZRotate;
 		%feature("autodoc", "* Handle Z rotation event myGL.ZRotate.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: void") handleZRotate;
 		virtual void handleZRotate (const opencascade::handle<V3d_View> & theView);
 
@@ -5030,9 +5030,9 @@ class AIS_ViewController {
 		%feature("compactdefaultargs") handleZoom;
 		%feature("autodoc", "* Handle zoom event myGL.ZoomActions. This method is expected to be called from rendering thread.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theParams:
-	:type theParams: Aspect_ScrollDelta &
+	:type theParams: Aspect_ScrollDelta
 	:param thePnt:
 	:type thePnt: gp_Pnt *
 	:rtype: void") handleZoom;
@@ -5091,7 +5091,7 @@ class AIS_ViewCubeOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") AIS_ViewCubeOwner;
 		%feature("autodoc", "* ////DEFINE_STANDARD_RTTIEXT(AIS_ViewCubeOwner, SelectMgr_EntityOwner) Main constructor.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_ViewCube> &
+	:type theObject: AIS_ViewCube
 	:param theOrient:
 	:type theOrient: V3d_TypeOfOrientation
 	:param thePriority: default value is 5
@@ -5103,7 +5103,7 @@ class AIS_ViewCubeOwner : public SelectMgr_EntityOwner {
 		%feature("compactdefaultargs") HandleMouseClick;
 		%feature("autodoc", "* Handle mouse button click event.
 	:param thePoint:
-	:type thePoint: Graphic3d_Vec2i &
+	:type thePoint: Graphic3d_Vec2i
 	:param theButton:
 	:type theButton: Aspect_VKeyMouse
 	:param theModifiers:
@@ -5299,9 +5299,9 @@ class AIS_AnimationCamera : public AIS_Animation {
 		%feature("compactdefaultargs") AIS_AnimationCamera;
 		%feature("autodoc", "* Main constructor.
 	:param theAnimationName:
-	:type theAnimationName: TCollection_AsciiString &
+	:type theAnimationName: TCollection_AsciiString
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") AIS_AnimationCamera;
 		 AIS_AnimationCamera (const TCollection_AsciiString & theAnimationName,const opencascade::handle<V3d_View> & theView);
 
@@ -5321,7 +5321,7 @@ class AIS_AnimationCamera : public AIS_Animation {
 		%feature("compactdefaultargs") SetCameraEnd;
 		%feature("autodoc", "* Define camera end position.
 	:param theCameraEnd:
-	:type theCameraEnd: opencascade::handle<Graphic3d_Camera> &
+	:type theCameraEnd: Graphic3d_Camera
 	:rtype: None") SetCameraEnd;
 		void SetCameraEnd (const opencascade::handle<Graphic3d_Camera> & theCameraEnd);
 
@@ -5329,7 +5329,7 @@ class AIS_AnimationCamera : public AIS_Animation {
 		%feature("compactdefaultargs") SetCameraStart;
 		%feature("autodoc", "* Define camera start position.
 	:param theCameraStart:
-	:type theCameraStart: opencascade::handle<Graphic3d_Camera> &
+	:type theCameraStart: Graphic3d_Camera
 	:rtype: None") SetCameraStart;
 		void SetCameraStart (const opencascade::handle<Graphic3d_Camera> & theCameraStart);
 
@@ -5337,7 +5337,7 @@ class AIS_AnimationCamera : public AIS_Animation {
 		%feature("compactdefaultargs") SetView;
 		%feature("autodoc", "* Set target view.
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") SetView;
 		void SetView (const opencascade::handle<V3d_View> & theView);
 
@@ -5368,11 +5368,11 @@ class AIS_AnimationObject : public AIS_Animation {
 		%feature("compactdefaultargs") AIS_AnimationObject;
 		%feature("autodoc", "* Constructor with initialization. Note that start/end transformations specify exactly local transformation of the object, not the transformation to be applied to existing local transformation. @param theAnimationName animation identifier @param theContext interactive context where object have been displayed @param theObject object to apply local transformation @param theTrsfStart local transformation at the start of animation (e.g. theObject->LocalTransformation()) @param theTrsfEnd local transformation at the end of animation
 	:param theAnimationName:
-	:type theAnimationName: TCollection_AsciiString &
+	:type theAnimationName: TCollection_AsciiString
 	:param theContext:
-	:type theContext: opencascade::handle<AIS_InteractiveContext> &
+	:type theContext: AIS_InteractiveContext
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:param theTrsfStart:
 	:type theTrsfStart: gp_Trsf
 	:param theTrsfEnd:
@@ -5423,7 +5423,7 @@ enum SelectionMode {
 		%feature("compactdefaultargs") SetCameraFrustum;
 		%feature("autodoc", "* Sets camera frustum.
 	:param theCamera:
-	:type theCamera: opencascade::handle<Graphic3d_Camera> &
+	:type theCamera: Graphic3d_Camera
 	:rtype: None") SetCameraFrustum;
 		void SetCameraFrustum (const opencascade::handle<Graphic3d_Camera> & theCamera);
 
@@ -5431,7 +5431,7 @@ enum SelectionMode {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Setup custom color.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: void") SetColor;
 		virtual void SetColor (const Quantity_Color & theColor);
 
@@ -5466,7 +5466,7 @@ class AIS_Circle : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Circle;
 		%feature("autodoc", "* Initializes this algorithm for constructing AIS circle datums initializes the circle aCircle
 	:param aCircle:
-	:type aCircle: opencascade::handle<Geom_Circle> &
+	:type aCircle: Geom_Circle
 	:rtype: None") AIS_Circle;
 		 AIS_Circle (const opencascade::handle<Geom_Circle> & aCircle);
 
@@ -5474,7 +5474,7 @@ class AIS_Circle : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Circle;
 		%feature("autodoc", "* Initializes this algorithm for constructing AIS circle datums. Initializes the circle theCircle, the arc starting point theUStart, the arc ending point theUEnd, and the type of sensitivity theIsFilledCircleSens.
 	:param theCircle:
-	:type theCircle: opencascade::handle<Geom_Circle> &
+	:type theCircle: Geom_Circle
 	:param theUStart:
 	:type theUStart: float
 	:param theUEnd:
@@ -5494,11 +5494,11 @@ class AIS_Circle : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -5512,9 +5512,9 @@ class AIS_Circle : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "* Constructs instances of the starting point and the end point parameters, theU1 and theU2.
 	:param theU1:
-	:type theU1: float &
+	:type theU1: float
 	:param theU2:
-	:type theU2: float &
+	:type theU2: float
 	:rtype: None") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5522,14 +5522,14 @@ class AIS_Circle : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetCircle;
 		%feature("autodoc", "* Allows you to provide settings for the circle datum aCircle.
 	:param theCircle:
-	:type theCircle: opencascade::handle<Geom_Circle> &
+	:type theCircle: Geom_Circle
 	:rtype: None") SetCircle;
 		void SetCircle (const opencascade::handle<Geom_Circle> & theCircle);
 
 		/****************** SetColor ******************/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", ":param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & aColor);
 
@@ -5624,9 +5624,9 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") ColorRange;
 		%feature("autodoc", "* Returns color range corresponding to minimum and maximum values, blue to red by default.
 	:param theMinColor:
-	:type theMinColor: Quantity_Color &
+	:type theMinColor: Quantity_Color
 	:param theMaxColor:
-	:type theMaxColor: Quantity_Color &
+	:type theMaxColor: Quantity_Color
 	:rtype: None") ColorRange;
 		void ColorRange (Quantity_Color & theMinColor,Quantity_Color & theMaxColor);
 
@@ -5634,9 +5634,9 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* Compute presentation.
 	:param thePresentationManager:
-	:type thePresentationManager: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePresentationManager: PrsMgr_PresentationManager3d
 	:param thePresentation:
-	:type thePresentation: opencascade::handle<Prs3d_Presentation> &
+	:type thePresentation: Prs3d_Presentation
 	:param theMode:
 	:type theMode: int
 	:rtype: void") Compute;
@@ -5646,7 +5646,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") ComputeSelection;
 		%feature("autodoc", "* Compute selection - not implemented for color scale.
 	:param &:
-	:type &: opencascade::handle<SelectMgr_Selection>
+	:type &: SelectMgr_Selection
 	:param Standard_Integer:
 	:type Standard_Integer: 
 	:rtype: None") ComputeSelection;
@@ -5664,11 +5664,11 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 	:param theColorsCount:
 	:type theColorsCount: int
 	:param theColorHlsMin:
-	:type theColorHlsMin: Graphic3d_Vec3d &
+	:type theColorHlsMin: Graphic3d_Vec3d
 	:param theColorHlsMax:
-	:type theColorHlsMax: Graphic3d_Vec3d &
+	:type theColorHlsMax: Graphic3d_Vec3d
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: bool") FindColor;
 		static Standard_Boolean FindColor (const Standard_Real theValue,const Standard_Real theMin,const Standard_Real theMax,const Standard_Integer theColorsCount,const Graphic3d_Vec3d & theColorHlsMin,const Graphic3d_Vec3d & theColorHlsMax,Quantity_Color & theColor);
 
@@ -5684,7 +5684,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 	:param theColorsCount:
 	:type theColorsCount: int
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: bool") FindColor;
 		static Standard_Boolean FindColor (const Standard_Real theValue,const Standard_Real theMin,const Standard_Real theMax,const Standard_Integer theColorsCount,Quantity_Color & theColor);
 
@@ -5694,7 +5694,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 	:param theValue:
 	:type theValue: float
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: bool") FindColor;
 		Standard_Boolean FindColor (const Standard_Real theValue,Quantity_Color & theColor);
 
@@ -5720,7 +5720,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") GetColors;
 		%feature("autodoc", "* Returns the user specified colors.
 	:param theColors:
-	:type theColors: Aspect_SequenceOfColor &
+	:type theColors: Aspect_SequenceOfColor
 	:rtype: None") GetColors;
 		void GetColors (Aspect_SequenceOfColor & theColors);
 
@@ -5774,7 +5774,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") GetLabels;
 		%feature("autodoc", "* Returns the user specified labels.
 	:param theLabels:
-	:type theLabels: TColStd_SequenceOfExtendedString &
+	:type theLabels: TColStd_SequenceOfExtendedString
 	:rtype: None") GetLabels;
 		void GetLabels (TColStd_SequenceOfExtendedString & theLabels);
 
@@ -5800,9 +5800,9 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") GetPosition;
 		%feature("autodoc", "* Returns the bottom-left position of color scale, 0x0 by default.
 	:param theX:
-	:type theX: float &
+	:type theX: float
 	:param theY:
-	:type theY: float &
+	:type theY: float
 	:rtype: None") GetPosition;
 		void GetPosition (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5810,9 +5810,9 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") GetRange;
 		%feature("autodoc", "* Returns minimal and maximal values of color scale, 0.0 to 1.0 by default.
 	:param theMin:
-	:type theMin: float &
+	:type theMin: float
 	:param theMax:
-	:type theMax: float &
+	:type theMax: float
 	:rtype: None") GetRange;
 		void GetRange (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5820,9 +5820,9 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") GetSize;
 		%feature("autodoc", "* Returns the size of color bar, 0 and 0 by default (e.g. should be set by user explicitly before displaying).
 	:param theBreadth:
-	:type theBreadth: int &
+	:type theBreadth: int
 	:param theHeight:
-	:type theHeight: int &
+	:type theHeight: int
 	:rtype: None") GetSize;
 		void GetSize (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -5872,9 +5872,9 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") HueRange;
 		%feature("autodoc", "* Returns the hue angle range corresponding to minimum and maximum values, 230 to 0 by default (blue to red).
 	:param theMinAngle:
-	:type theMinAngle: float &
+	:type theMinAngle: float
 	:param theMaxAngle:
-	:type theMaxAngle: float &
+	:type theMaxAngle: float
 	:rtype: None") HueRange;
 		void HueRange (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -5920,9 +5920,9 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColorRange;
 		%feature("autodoc", "* Sets color range corresponding to minimum and maximum values.
 	:param theMinColor:
-	:type theMinColor: Quantity_Color &
+	:type theMinColor: Quantity_Color
 	:param theMaxColor:
-	:type theMaxColor: Quantity_Color &
+	:type theMaxColor: Quantity_Color
 	:rtype: None") SetColorRange;
 		void SetColorRange (const Quantity_Color & theMinColor,const Quantity_Color & theMaxColor);
 
@@ -5938,7 +5938,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "* Sets the color scale colors. The length of the sequence should be equal to GetNumberOfIntervals().
 	:param theSeq:
-	:type theSeq: Aspect_SequenceOfColor &
+	:type theSeq: Aspect_SequenceOfColor
 	:rtype: None") SetColors;
 		void SetColors (const Aspect_SequenceOfColor & theSeq);
 
@@ -5946,7 +5946,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetFormat;
 		%feature("autodoc", "* Sets the color scale auto label format specification.
 	:param theFormat:
-	:type theFormat: TCollection_AsciiString &
+	:type theFormat: TCollection_AsciiString
 	:rtype: None") SetFormat;
 		void SetFormat (const TCollection_AsciiString & theFormat);
 
@@ -5972,7 +5972,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetIntervalColor;
 		%feature("autodoc", "* Sets the color of the specified interval. Note that list is automatically resized to include specified index. @param theColor color value to set @param theIndex index in range [1, GetNumberOfIntervals()];  appended to the end of list if -1 is specified
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:param theIndex:
 	:type theIndex: int
 	:rtype: None") SetIntervalColor;
@@ -5982,7 +5982,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "* Sets the color scale label at index. Note that list is automatically resized to include specified index. @param theLabel new label text @param theIndex index in range [1, GetNumberOfIntervals()] or [1, GetNumberOfIntervals() + 1] if IsLabelAtBorder() is true;  label is appended to the end of list if negative index is specified
 	:param theLabel:
-	:type theLabel: TCollection_ExtendedString &
+	:type theLabel: TCollection_ExtendedString
 	:param theIndex:
 	:type theIndex: int
 	:rtype: None") SetLabel;
@@ -6016,7 +6016,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetLabels;
 		%feature("autodoc", "* Sets the color scale labels. The length of the sequence should be equal to GetNumberOfIntervals() or to GetNumberOfIntervals() + 1 if IsLabelAtBorder() is true. If length of the sequence does not much the number of intervals, then these labels will be considered as 'free' and will be located at the virtual intervals corresponding to the number of labels (with flag IsLabelAtBorder() having the same effect as in normal case).
 	:param theSeq:
-	:type theSeq: TColStd_SequenceOfExtendedString &
+	:type theSeq: TColStd_SequenceOfExtendedString
 	:rtype: None") SetLabels;
 		void SetLabels (const TColStd_SequenceOfExtendedString & theSeq);
 
@@ -6110,7 +6110,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetTitle;
 		%feature("autodoc", "* Sets the color scale title string.
 	:param theTitle:
-	:type theTitle: TCollection_ExtendedString &
+	:type theTitle: TCollection_ExtendedString
 	:rtype: None") SetTitle;
 		void SetTitle (const TCollection_ExtendedString & theTitle);
 
@@ -6142,22 +6142,22 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") TextHeight;
 		%feature("autodoc", "* Returns the height of text. @param theText [in] the text of which to calculate height.
 	:param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:rtype: int") TextHeight;
 		Standard_Integer TextHeight (const TCollection_ExtendedString & theText);
 
 		/****************** TextSize ******************/
 		%feature("compactdefaultargs") TextSize;
 		%feature("autodoc", ":param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:param theHeight:
 	:type theHeight: int
 	:param theWidth:
-	:type theWidth: int &
+	:type theWidth: int
 	:param theAscent:
-	:type theAscent: int &
+	:type theAscent: int
 	:param theDescent:
-	:type theDescent: int &
+	:type theDescent: int
 	:rtype: None") TextSize;
 		void TextSize (const TCollection_ExtendedString & theText,const Standard_Integer theHeight,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -6165,7 +6165,7 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") TextWidth;
 		%feature("autodoc", "* Returns the width of text. @param theText [in] the text of which to calculate width.
 	:param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:rtype: int") TextWidth;
 		Standard_Integer TextWidth (const TCollection_ExtendedString & theText);
 
@@ -6220,7 +6220,7 @@ class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "* Establishes the connection between the Connected Interactive Object, anotherIobj, and its reference.
 	:param theAnotherObj:
-	:type theAnotherObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theAnotherObj: AIS_InteractiveObject
 	:rtype: None") Connect;
 		void Connect (const opencascade::handle<AIS_InteractiveObject> & theAnotherObj);
 
@@ -6228,7 +6228,7 @@ class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "* Establishes the connection between the Connected Interactive Object, anotherIobj, and its reference. Locates instance in aLocation.
 	:param theAnotherObj:
-	:type theAnotherObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theAnotherObj: AIS_InteractiveObject
 	:param theLocation:
 	:type theLocation: gp_Trsf
 	:rtype: None") Connect;
@@ -6238,9 +6238,9 @@ class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "* Establishes the connection between the Connected Interactive Object, anotherIobj, and its reference. Locates instance in aLocation.
 	:param theAnotherObj:
-	:type theAnotherObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theAnotherObj: AIS_InteractiveObject
 	:param theLocation:
-	:type theLocation: opencascade::handle<Geom_Transformation> &
+	:type theLocation: Geom_Transformation
 	:rtype: None") Connect;
 		void Connect (const opencascade::handle<AIS_InteractiveObject> & theAnotherObj,const opencascade::handle<Geom_Transformation> & theLocation);
 
@@ -6417,7 +6417,7 @@ enum ComputeMode {
 		%feature("compactdefaultargs") SetCustomValue;
 		%feature("autodoc", "* Sets user-defined dimension value. Unit conversion during the display is not applyed. @param theValue [in] the user-defined value to display.
 	:param theValue:
-	:type theValue: TCollection_ExtendedString &
+	:type theValue: TCollection_ExtendedString
 	:rtype: None") SetCustomValue;
 		void SetCustomValue (const TCollection_ExtendedString & theValue);
 
@@ -6425,7 +6425,7 @@ enum ComputeMode {
 		%feature("compactdefaultargs") SetDimensionAspect;
 		%feature("autodoc", "* Sets new dimension aspect for the interactive object drawer. The dimension aspect provides dynamic properties which are generally used during computation of dimension presentations.
 	:param theDimensionAspect:
-	:type theDimensionAspect: opencascade::handle<Prs3d_DimensionAspect> &
+	:type theDimensionAspect: Prs3d_DimensionAspect
 	:rtype: None") SetDimensionAspect;
 		void SetDimensionAspect (const opencascade::handle<Prs3d_DimensionAspect> & theDimensionAspect);
 
@@ -6528,7 +6528,7 @@ class AIS_Line : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Line;
 		%feature("autodoc", "* Initializes the line aLine.
 	:param aLine:
-	:type aLine: opencascade::handle<Geom_Line> &
+	:type aLine: Geom_Line
 	:rtype: None") AIS_Line;
 		 AIS_Line (const opencascade::handle<Geom_Line> & aLine);
 
@@ -6536,9 +6536,9 @@ class AIS_Line : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Line;
 		%feature("autodoc", "* Initializes a starting point aStartPoint and a finishing point aEndPoint for the line.
 	:param aStartPoint:
-	:type aStartPoint: opencascade::handle<Geom_Point> &
+	:type aStartPoint: Geom_Point
 	:param aEndPoint:
-	:type aEndPoint: opencascade::handle<Geom_Point> &
+	:type aEndPoint: Geom_Point
 	:rtype: None") AIS_Line;
 		 AIS_Line (const opencascade::handle<Geom_Point> & aStartPoint,const opencascade::handle<Geom_Point> & aEndPoint);
 
@@ -6546,11 +6546,11 @@ class AIS_Line : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -6564,9 +6564,9 @@ class AIS_Line : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "* Returns the starting point thePStart and the end point thePEnd of the line set by SetPoints.
 	:param thePStart:
-	:type thePStart: opencascade::handle<Geom_Point> &
+	:type thePStart: Geom_Point
 	:param thePEnd:
-	:type thePEnd: opencascade::handle<Geom_Point> &
+	:type thePEnd: Geom_Point
 	:rtype: None") Points;
 		void Points (opencascade::handle<Geom_Point> & thePStart,opencascade::handle<Geom_Point> & thePEnd);
 
@@ -6574,7 +6574,7 @@ class AIS_Line : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Provides a new color setting aColor for the line in the drawing tool, or 'Drawer'.
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & aColor);
 
@@ -6582,7 +6582,7 @@ class AIS_Line : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetLine;
 		%feature("autodoc", "* instantiates an infinite line.
 	:param theLine:
-	:type theLine: opencascade::handle<Geom_Line> &
+	:type theLine: Geom_Line
 	:rtype: None") SetLine;
 		void SetLine (const opencascade::handle<Geom_Line> & theLine);
 
@@ -6590,9 +6590,9 @@ class AIS_Line : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetPoints;
 		%feature("autodoc", "* Sets the starting point thePStart and ending point thePEnd of the infinite line to create a finite line segment.
 	:param thePStart:
-	:type thePStart: opencascade::handle<Geom_Point> &
+	:type thePStart: Geom_Point
 	:param thePEnd:
-	:type thePEnd: opencascade::handle<Geom_Point> &
+	:type thePEnd: Geom_Point
 	:rtype: None") SetPoints;
 		void SetPoints (const opencascade::handle<Geom_Point> & thePStart,const opencascade::handle<Geom_Point> & thePEnd);
 
@@ -6677,9 +6677,9 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Attach;
 		%feature("autodoc", "* Attaches himself to the input interactive object and become displayed in the same context. It is placed in the center of object bounding box, and its size is adjusted to the object bounding box.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_InteractiveObject> &
+	:type theObject: AIS_InteractiveObject
 	:param theOptions: default value is OptionsForAttach()
-	:type theOptions: OptionsForAttach &
+	:type theOptions: OptionsForAttach
 	:rtype: None") Attach;
 		void Attach (const opencascade::handle<AIS_InteractiveObject> & theObject,const OptionsForAttach & theOptions = OptionsForAttach());
 
@@ -6687,9 +6687,9 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Attach;
 		%feature("autodoc", "* Attaches himself to the input interactive object group and become displayed in the same context. It become attached to the first object, baut manage manipulation of the whole group. It is placed in the center of object bounding box, and its size is adjusted to the object bounding box.
 	:param theObject:
-	:type theObject: opencascade::handle<AIS_ManipulatorObjectSequence> &
+	:type theObject: AIS_ManipulatorObjectSequence
 	:param theOptions: default value is OptionsForAttach()
-	:type theOptions: OptionsForAttach &
+	:type theOptions: OptionsForAttach
 	:rtype: None") Attach;
 		void Attach (const opencascade::handle<AIS_ManipulatorObjectSequence> & theObject,const OptionsForAttach & theOptions = OptionsForAttach());
 
@@ -6703,9 +6703,9 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* @name Presentation computation Fills presentation. @note Manipulator presentation does not use display mode and for all modes has the same presentation.
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePrsMgr: PrsMgr_PresentationManager3d
 	:param thePrs:
-	:type thePrs: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs: Prs3d_Presentation
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: void") Compute;
@@ -6715,7 +6715,7 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") ComputeSelection;
 		%feature("autodoc", "* Computes selection sensitive zones (triangulation) for manipulator. @param theNode [in] Selection mode that is treated as transformation mode.
 	:param theSelection:
-	:type theSelection: opencascade::handle<SelectMgr_Selection> &
+	:type theSelection: SelectMgr_Selection
 	:param theMode:
 	:type theMode: int
 	:rtype: void") ComputeSelection;
@@ -6756,11 +6756,11 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") HilightOwnerWithColor;
 		%feature("autodoc", "* Method which hilight an owner belonging to this selectable object ( for fast presentation draw ).
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:rtype: void") HilightOwnerWithColor;
 		virtual void HilightOwnerWithColor (const opencascade::handle<PrsMgr_PresentationManager3d> & thePM,const opencascade::handle<Prs3d_Drawer> & theStyle,const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
@@ -6768,9 +6768,9 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "* Method which draws selected owners ( for fast presentation draw ).
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theSeq:
-	:type theSeq: SelectMgr_SequenceOfOwner &
+	:type theSeq: SelectMgr_SequenceOfOwner
 	:rtype: void") HilightSelected;
 		virtual void HilightSelected (const opencascade::handle<PrsMgr_PresentationManager3d> & thePM,const SelectMgr_SequenceOfOwner & theSeq);
 
@@ -6814,7 +6814,7 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 	:param theY:
 	:type theY: int
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
 	:rtype: bool") ObjectTransformation;
@@ -6890,7 +6890,7 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetTransformPersistence;
 		%feature("autodoc", "* Redefines transform persistence management to setup transformation for sub-presentation of axes. @warning this interactive object does not support custom transformation persistence when using \sa ZoomPersistence mode. In this mode the transformation persistence flags for presentations are overridden by this class. @warning Invokes debug assertion to catch incompatible usage of the method with \sa ZoomPersistence mode, silently does nothing in release mode. @warning revise use of AdjustSize argument of of \sa AttachToObjects method when enabling zoom persistence.
 	:param theTrsfPers:
-	:type theTrsfPers: opencascade::handle<Graphic3d_TransformPers> &
+	:type theTrsfPers: Graphic3d_TransformPers
 	:rtype: void") SetTransformPersistence;
 		virtual void SetTransformPersistence (const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
@@ -6915,7 +6915,7 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 	:param theY:
 	:type theY: int
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: None") StartTransform;
 		void StartTransform (const Standard_Integer theX,const Standard_Integer theY,const opencascade::handle<V3d_View> & theView);
 
@@ -6955,7 +6955,7 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 	:param theY:
 	:type theY: int
 	:param theView:
-	:type theView: opencascade::handle<V3d_View> &
+	:type theView: V3d_View
 	:rtype: gp_Trsf") Transform;
 		gp_Trsf Transform (const Standard_Integer theX,const Standard_Integer theY,const opencascade::handle<V3d_View> & theView);
 
@@ -6998,7 +6998,7 @@ class AIS_MediaPlayer : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") OpenInput;
 		%feature("autodoc", "* Open specified file.
 	:param thePath:
-	:type thePath: TCollection_AsciiString &
+	:type thePath: TCollection_AsciiString
 	:param theToWait:
 	:type theToWait: bool
 	:rtype: None") OpenInput;
@@ -7020,9 +7020,9 @@ class AIS_MediaPlayer : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") PresentFrame;
 		%feature("autodoc", "* Display new frame.
 	:param theLeftCorner:
-	:type theLeftCorner: Graphic3d_Vec2i &
+	:type theLeftCorner: Graphic3d_Vec2i
 	:param theMaxSize:
-	:type theMaxSize: Graphic3d_Vec2i &
+	:type theMaxSize: Graphic3d_Vec2i
 	:rtype: bool") PresentFrame;
 		bool PresentFrame (const Graphic3d_Vec2i & theLeftCorner,const Graphic3d_Vec2i & theMaxSize);
 
@@ -7073,20 +7073,20 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
 		/****************** Compute ******************/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", ":param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -7094,11 +7094,11 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "* Establishes the connection between the Connected Interactive Object, theInteractive, and its reference. Locates instance in theLocation and applies specified transformation persistence mode. returns created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive)
 	:param theAnotherObj:
-	:type theAnotherObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theAnotherObj: AIS_InteractiveObject
 	:param theLocation:
-	:type theLocation: opencascade::handle<Geom_Transformation> &
+	:type theLocation: Geom_Transformation
 	:param theTrsfPers:
-	:type theTrsfPers: opencascade::handle<Graphic3d_TransformPers> &
+	:type theTrsfPers: Graphic3d_TransformPers
 	:rtype: opencascade::handle<AIS_InteractiveObject>") Connect;
 		opencascade::handle<AIS_InteractiveObject> Connect (const opencascade::handle<AIS_InteractiveObject> & theAnotherObj,const opencascade::handle<Geom_Transformation> & theLocation,const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
@@ -7106,7 +7106,7 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "* Establishes the connection between the Connected Interactive Object, theInteractive, and its reference. Copies local transformation and transformation persistence mode from theInteractive. returns created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive)
 	:param theAnotherObj:
-	:type theAnotherObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theAnotherObj: AIS_InteractiveObject
 	:rtype: opencascade::handle<AIS_InteractiveObject>") Connect;
 		opencascade::handle<AIS_InteractiveObject> Connect (const opencascade::handle<AIS_InteractiveObject> & theAnotherObj);
 
@@ -7114,7 +7114,7 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "* Establishes the connection between the Connected Interactive Object, theInteractive, and its reference. Locates instance in theLocation and copies transformation persistence mode from theInteractive. returns created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive)
 	:param theAnotherObj:
-	:type theAnotherObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theAnotherObj: AIS_InteractiveObject
 	:param theLocation:
 	:type theLocation: gp_Trsf
 	:rtype: opencascade::handle<AIS_InteractiveObject>") Connect;
@@ -7124,22 +7124,22 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "* Establishes the connection between the Connected Interactive Object, theInteractive, and its reference. Locates instance in theLocation and applies specified transformation persistence mode. returns created instance object (AIS_ConnectedInteractive or AIS_MultipleConnectedInteractive)
 	:param theAnotherObj:
-	:type theAnotherObj: opencascade::handle<AIS_InteractiveObject> &
+	:type theAnotherObj: AIS_InteractiveObject
 	:param theLocation:
 	:type theLocation: gp_Trsf
 	:param theTrsfPers:
-	:type theTrsfPers: opencascade::handle<Graphic3d_TransformPers> &
+	:type theTrsfPers: Graphic3d_TransformPers
 	:rtype: opencascade::handle<AIS_InteractiveObject>") Connect;
 		opencascade::handle<AIS_InteractiveObject> Connect (const opencascade::handle<AIS_InteractiveObject> & theAnotherObj,const gp_Trsf & theLocation,const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
 		/****************** Connect ******************/
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", ":param theInteractive:
-	:type theInteractive: opencascade::handle<AIS_InteractiveObject> &
+	:type theInteractive: AIS_InteractiveObject
 	:param theLocation:
 	:type theLocation: gp_Trsf
 	:param theTrsfPersFlag:
-	:type theTrsfPersFlag: Graphic3d_TransModeFlags &
+	:type theTrsfPersFlag: Graphic3d_TransModeFlags
 	:param theTrsfPersPoint:
 	:type theTrsfPersPoint: gp_Pnt
 	:rtype: opencascade::handle<AIS_InteractiveObject>") Connect;
@@ -7149,7 +7149,7 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Disconnect;
 		%feature("autodoc", "* Removes the connection with theInteractive.
 	:param theInteractive:
-	:type theInteractive: opencascade::handle<AIS_InteractiveObject> &
+	:type theInteractive: AIS_InteractiveObject
 	:rtype: None") Disconnect;
 		void Disconnect (const opencascade::handle<AIS_InteractiveObject> & theInteractive);
 
@@ -7181,7 +7181,7 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Assigns interactive context.
 	:param theCtx:
-	:type theCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type theCtx: AIS_InteractiveContext
 	:rtype: void") SetContext;
 		virtual void SetContext (const opencascade::handle<AIS_InteractiveContext> & theCtx);
 
@@ -7216,7 +7216,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Plane;
 		%feature("autodoc", "* initializes the plane aComponent. If the mode aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.
 	:param aComponent:
-	:type aComponent: opencascade::handle<Geom_Plane> &
+	:type aComponent: Geom_Plane
 	:param aCurrentMode: default value is Standard_False
 	:type aCurrentMode: bool
 	:rtype: None") AIS_Plane;
@@ -7226,7 +7226,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Plane;
 		%feature("autodoc", "* initializes the plane aComponent and the point aCenter. If the mode aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized. aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.
 	:param aComponent:
-	:type aComponent: opencascade::handle<Geom_Plane> &
+	:type aComponent: Geom_Plane
 	:param aCenter:
 	:type aCenter: gp_Pnt
 	:param aCurrentMode: default value is Standard_False
@@ -7238,7 +7238,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Plane;
 		%feature("autodoc", "* initializes the plane aComponent, the point aCenter, and the minimum and maximum points, aPmin and aPmax. If the mode aCurrentMode equals true, the drawing tool, 'Drawer' is not initialized.
 	:param aComponent:
-	:type aComponent: opencascade::handle<Geom_Plane> &
+	:type aComponent: Geom_Plane
 	:param aCenter:
 	:type aCenter: gp_Pnt
 	:param aPmin:
@@ -7253,7 +7253,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		/****************** AIS_Plane ******************/
 		%feature("compactdefaultargs") AIS_Plane;
 		%feature("autodoc", ":param aComponent:
-	:type aComponent: opencascade::handle<Geom_Axis2Placement> &
+	:type aComponent: Geom_Axis2Placement
 	:param aPlaneType:
 	:type aPlaneType: AIS_TypeOfPlane
 	:param aCurrentMode: default value is Standard_False
@@ -7291,18 +7291,18 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
 		/****************** ComputeSelection ******************/
 		%feature("compactdefaultargs") ComputeSelection;
 		%feature("autodoc", ":param theSelection:
-	:type theSelection: opencascade::handle<SelectMgr_Selection> &
+	:type theSelection: SelectMgr_Selection
 	:param theMode:
 	:type theMode: int
 	:rtype: void") ComputeSelection;
@@ -7329,7 +7329,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") PlaneAttributes;
 		%feature("autodoc", "* Returns the settings for the selected plane aComponent, provided in SetPlaneAttributes. These include the points aCenter, aPmin, and aPmax
 	:param aComponent:
-	:type aComponent: opencascade::handle<Geom_Plane> &
+	:type aComponent: Geom_Plane
 	:param aCenter:
 	:type aCenter: gp_Pnt
 	:param aPmin:
@@ -7343,7 +7343,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetAxis2Placement;
 		%feature("autodoc", "* Allows you to provide settings for the position and direction of one of the plane's axes, aComponent, in 3D space. The coordinate system used is right-handed, and the type of plane aPlaneType is one of: - AIS_ TOPL_Unknown - AIS_ TOPL_XYPlane - AIS_ TOPL_XZPlane - AIS_ TOPL_YZPlane}.
 	:param aComponent:
-	:type aComponent: opencascade::handle<Geom_Axis2Placement> &
+	:type aComponent: Geom_Axis2Placement
 	:param aPlaneType:
 	:type aPlaneType: AIS_TypeOfPlane
 	:rtype: None") SetAxis2Placement;
@@ -7360,7 +7360,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		/****************** SetColor ******************/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", ":param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & aColor);
 
@@ -7368,7 +7368,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetComponent;
 		%feature("autodoc", "* Creates an instance of the plane aComponent.
 	:param aComponent:
-	:type aComponent: opencascade::handle<Geom_Plane> &
+	:type aComponent: Geom_Plane
 	:rtype: None") SetComponent;
 		void SetComponent (const opencascade::handle<Geom_Plane> & aComponent);
 
@@ -7376,7 +7376,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* connection to <aCtx> default drawer implies a recomputation of Frame values.
 	:param aCtx:
-	:type aCtx: opencascade::handle<AIS_InteractiveContext> &
+	:type aCtx: AIS_InteractiveContext
 	:rtype: void") SetContext;
 		virtual void SetContext (const opencascade::handle<AIS_InteractiveContext> & aCtx);
 
@@ -7392,7 +7392,7 @@ class AIS_Plane : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetPlaneAttributes;
 		%feature("autodoc", "* Allows you to provide settings other than default ones for the selected plane. These include: center point aCenter, maximum aPmax and minimum aPmin.
 	:param aComponent:
-	:type aComponent: opencascade::handle<Geom_Plane> &
+	:type aComponent: Geom_Plane
 	:param aCenter:
 	:type aCenter: gp_Pnt
 	:param aPmin:
@@ -7436,9 +7436,9 @@ class AIS_Plane : public AIS_InteractiveObject {
 		/****************** Size ******************/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", ":param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:rtype: bool") Size;
 		Standard_Boolean Size (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -7490,7 +7490,7 @@ class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_PlaneTrihedron;
 		%feature("autodoc", "* Initializes the plane aPlane. The plane trihedron is constructed from this and an axis.
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_PlaneTrihedron;
 		 AIS_PlaneTrihedron (const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -7512,11 +7512,11 @@ class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -7536,7 +7536,7 @@ class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Allows you to provide settings for the color aColor.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: void") SetColor;
 		virtual void SetColor (const Quantity_Color & theColor);
 
@@ -7544,7 +7544,7 @@ class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetComponent;
 		%feature("autodoc", "* Creates an instance of the component object aPlane.
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") SetComponent;
 		void SetComponent (const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -7559,14 +7559,14 @@ class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 		/****************** SetXLabel ******************/
 		%feature("compactdefaultargs") SetXLabel;
 		%feature("autodoc", ":param theLabel:
-	:type theLabel: TCollection_AsciiString &
+	:type theLabel: TCollection_AsciiString
 	:rtype: None") SetXLabel;
 		void SetXLabel (const TCollection_AsciiString & theLabel);
 
 		/****************** SetYLabel ******************/
 		%feature("compactdefaultargs") SetYLabel;
 		%feature("autodoc", ":param theLabel:
-	:type theLabel: TCollection_AsciiString &
+	:type theLabel: TCollection_AsciiString
 	:rtype: None") SetYLabel;
 		void SetYLabel (const TCollection_AsciiString & theLabel);
 
@@ -7614,7 +7614,7 @@ class AIS_Point : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Point;
 		%feature("autodoc", "* Initializes the point aComponent from which the point datum will be built.
 	:param aComponent:
-	:type aComponent: opencascade::handle<Geom_Point> &
+	:type aComponent: Geom_Point
 	:rtype: None") AIS_Point;
 		 AIS_Point (const opencascade::handle<Geom_Point> & aComponent);
 
@@ -7636,11 +7636,11 @@ class AIS_Point : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -7654,7 +7654,7 @@ class AIS_Point : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Allows you to provide settings for the Color.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: void") SetColor;
 		virtual void SetColor (const Quantity_Color & theColor);
 
@@ -7662,7 +7662,7 @@ class AIS_Point : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetComponent;
 		%feature("autodoc", "* Constructs an instance of the point aComponent.
 	:param aComponent:
-	:type aComponent: opencascade::handle<Geom_Point> &
+	:type aComponent: Geom_Point
 	:rtype: None") SetComponent;
 		void SetComponent (const opencascade::handle<Geom_Point> & aComponent);
 
@@ -7757,7 +7757,7 @@ enum SelectionMode {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Setup custom color. Affects presentation only when no per-point color attribute has been assigned.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: void") SetColor;
 		virtual void SetColor (const Quantity_Color & theColor);
 
@@ -7765,7 +7765,7 @@ enum SelectionMode {
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "* Setup custom material. Affects presentation only when normals are defined.
 	:param theMat:
-	:type theMat: Graphic3d_MaterialAspect &
+	:type theMat: Graphic3d_MaterialAspect
 	:rtype: void") SetMaterial;
 		virtual void SetMaterial (const Graphic3d_MaterialAspect & theMat);
 
@@ -7773,7 +7773,7 @@ enum SelectionMode {
 		%feature("compactdefaultargs") SetPoints;
 		%feature("autodoc", "* Sets the points from array of points. Method will not copy the input data - array will be stored as handle. @param thePoints [in] the array of points
 	:param thePoints:
-	:type thePoints: opencascade::handle<Graphic3d_ArrayOfPoints> &
+	:type thePoints: Graphic3d_ArrayOfPoints
 	:rtype: void") SetPoints;
 		virtual void SetPoints (const opencascade::handle<Graphic3d_ArrayOfPoints> & thePoints);
 
@@ -7781,11 +7781,11 @@ enum SelectionMode {
 		%feature("compactdefaultargs") SetPoints;
 		%feature("autodoc", "* Sets the points with optional colors. The input data will be copied into internal buffer. The input arrays should have equal length, otherwise the presentation will not be computed and displayed. @param theCoords [in] the array of coordinates @param theColors [in] optional array of colors @param theNormals [in] optional array of normals
 	:param theCoords:
-	:type theCoords: opencascade::handle<TColgp_HArray1OfPnt>
+	:type theCoords: TColgp_HArray1OfPnt
 	:param theColors: default value is NULL
-	:type theColors: opencascade::handle<Quantity_HArray1OfColor> &
+	:type theColors: Quantity_HArray1OfColor
 	:param theNormals: default value is NULL
-	:type theNormals: opencascade::handle<TColgp_HArray1OfDir>
+	:type theNormals: TColgp_HArray1OfDir
 	:rtype: void") SetPoints;
 		virtual void SetPoints (const opencascade::handle<TColgp_HArray1OfPnt> & theCoords,const opencascade::handle<Quantity_HArray1OfColor> & theColors = NULL,const opencascade::handle<TColgp_HArray1OfDir> & theNormals = NULL);
 
@@ -7914,7 +7914,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Allows you to provide settings for the color theColor of the lines representing the relation between the two shapes.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & theColor);
 
@@ -7929,7 +7929,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 		/****************** SetFirstShape ******************/
 		%feature("compactdefaultargs") SetFirstShape;
 		%feature("autodoc", ":param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:rtype: void") SetFirstShape;
 		virtual void SetFirstShape (const TopoDS_Shape & aFShape);
 
@@ -7937,7 +7937,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetPlane;
 		%feature("autodoc", "* Allows you to set the plane thePlane. This is used to define relations and dimensions in several daughter classes.
 	:param thePlane:
-	:type thePlane: opencascade::handle<Geom_Plane> &
+	:type thePlane: Geom_Plane
 	:rtype: None") SetPlane;
 		void SetPlane (const opencascade::handle<Geom_Plane> & thePlane);
 
@@ -7953,7 +7953,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetSecondShape;
 		%feature("autodoc", "* Allows you to identify the second shape aSShape relative to the first.
 	:param aSShape:
-	:type aSShape: TopoDS_Shape &
+	:type aSShape: TopoDS_Shape
 	:rtype: void") SetSecondShape;
 		virtual void SetSecondShape (const TopoDS_Shape & aSShape);
 
@@ -7969,7 +7969,7 @@ class AIS_Relation : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetText;
 		%feature("autodoc", "* Allows you to provide the settings theText for text aspect.
 	:param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:rtype: None") SetText;
 		void SetText (const TCollection_ExtendedString & theText);
 
@@ -8042,7 +8042,7 @@ class AIS_RubberBand : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_RubberBand;
 		%feature("autodoc", "* Consructs the rubber band with empty filling and defined line style. @param theLineColor [in] color of rubber band lines @param theType [in] type of rubber band lines @param theLineWidth [in] width of rubber band line. By default it is 1. @warning It binds this object with Graphic3d_ZLayerId_TopOSD layer.
 	:param theLineColor:
-	:type theLineColor: Quantity_Color &
+	:type theLineColor: Quantity_Color
 	:param theType:
 	:type theType: Aspect_TypeOfLine
 	:param theLineWidth: default value is 1.0
@@ -8056,7 +8056,7 @@ class AIS_RubberBand : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_RubberBand;
 		%feature("autodoc", "* Constructs the rubber band with defined filling and line parameters. @param theLineColor [in] color of rubber band lines @param theType [in] type of rubber band lines @param theFillColor [in] color of rubber band filling @param theTransparency [in] transparency of the filling. 0 is for opaque filling. By default it is transparent. @param theLineWidth [in] width of rubber band line. By default it is 1. @warning It binds this object with Graphic3d_ZLayerId_TopOSD layer.
 	:param theLineColor:
-	:type theLineColor: Quantity_Color &
+	:type theLineColor: Quantity_Color
 	:param theType:
 	:type theType: Aspect_TypeOfLine
 	:param theFillColor:
@@ -8074,7 +8074,7 @@ class AIS_RubberBand : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "* Adds last point to the list of points. They are used to build polygon for rubber band. @sa RemoveLastPoint(), GetPoints()
 	:param thePoint:
-	:type thePoint: Graphic3d_Vec2i &
+	:type thePoint: Graphic3d_Vec2i
 	:rtype: None") AddPoint;
 		void AddPoint (const Graphic3d_Vec2i & thePoint);
 
@@ -8142,7 +8142,7 @@ class AIS_RubberBand : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetFillColor;
 		%feature("autodoc", "* Sets color of rubber band filling.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetFillColor;
 		void SetFillColor (const Quantity_Color & theColor);
 
@@ -8176,7 +8176,7 @@ class AIS_RubberBand : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetLineColor;
 		%feature("autodoc", "* Sets color of lines for rubber band presentation.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetLineColor;
 		void SetLineColor (const Quantity_Color & theColor);
 
@@ -8239,7 +8239,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Shape;
 		%feature("autodoc", "* Initializes construction of the shape shap from wires, edges and vertices.
 	:param shap:
-	:type shap: TopoDS_Shape &
+	:type shap: TopoDS_Shape
 	:rtype: None") AIS_Shape;
 		 AIS_Shape (const TopoDS_Shape & shap);
 
@@ -8267,7 +8267,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "* Returns the Color attributes of the shape accordingly to the current facing model;
 	:param aColor:
-	:type aColor: Quantity_Color &
+	:type aColor: Quantity_Color
 	:rtype: void") Color;
 		virtual void Color (Quantity_Color & aColor);
 
@@ -8281,9 +8281,9 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") OwnDeviationAngle;
 		%feature("autodoc", "* Returns true and the values of the deviation angle anAngle and the previous deviation angle aPreviousAngle. If these values are not already set, false is returned.
 	:param anAngle:
-	:type anAngle: float &
+	:type anAngle: float
 	:param aPreviousAngle:
-	:type aPreviousAngle: float &
+	:type aPreviousAngle: float
 	:rtype: bool") OwnDeviationAngle;
 		Standard_Boolean OwnDeviationAngle (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8291,9 +8291,9 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") OwnDeviationCoefficient;
 		%feature("autodoc", "* Returns true and the values of the deviation coefficient aCoefficient and the previous deviation coefficient aPreviousCoefficient. If these values are not already set, false is returned.
 	:param aCoefficient:
-	:type aCoefficient: float &
+	:type aCoefficient: float
 	:param aPreviousCoefficient:
-	:type aPreviousCoefficient: float &
+	:type aPreviousCoefficient: float
 	:rtype: bool") OwnDeviationCoefficient;
 		Standard_Boolean OwnDeviationCoefficient (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8301,9 +8301,9 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") OwnHLRDeviationAngle;
 		%feature("autodoc", "* Returns true and the values of the HLR deviation angle anAngle and of the previous HLR deviation angle aPreviousAngle. If these values are not already set, false is returned.
 	:param anAngle:
-	:type anAngle: float &
+	:type anAngle: float
 	:param aPreviousAngle:
-	:type aPreviousAngle: float &
+	:type aPreviousAngle: float
 	:rtype: bool") OwnHLRDeviationAngle;
 		Standard_Boolean OwnHLRDeviationAngle (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8311,9 +8311,9 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") OwnHLRDeviationCoefficient;
 		%feature("autodoc", "* Returns true and the values of the HLR deviation coefficient aCoefficient and the previous HLR deviation coefficient aPreviousCoefficient. If these values are not already set, false is returned.
 	:param aCoefficient:
-	:type aCoefficient: float &
+	:type aCoefficient: float
 	:param aPreviousCoefficient:
-	:type aPreviousCoefficient: float &
+	:type aPreviousCoefficient: float
 	:rtype: bool") OwnHLRDeviationCoefficient;
 		Standard_Boolean OwnHLRDeviationCoefficient (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -8337,7 +8337,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Alias for ::SetShape().
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") Set;
 		void Set (const TopoDS_Shape & theShape);
 
@@ -8353,7 +8353,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Sets the color aColor in the reconstructed compound shape. Acts via the Drawer methods below on the appearance of: - free boundaries: Prs3d_Drawer_FreeBoundaryAspect, - isos: Prs3d_Drawer_UIsoAspect, Prs3dDrawer_VIsoAspect, - shared boundaries: Prs3d_Drawer_UnFreeBoundaryAspect, - shading: Prs3d_Drawer_ShadingAspect, - visible line color in hidden line mode: Prs3d_Drawer_SeenLineAspect - hidden line color in hidden line mode: Prs3d_Drawer_HiddenLineAspect.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: void") SetColor;
 		virtual void SetColor (const Quantity_Color & theColor);
 
@@ -8369,7 +8369,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "* Allows you to provide settings for the material aName in the reconstructed compound shape.
 	:param aName:
-	:type aName: Graphic3d_MaterialAspect &
+	:type aName: Graphic3d_MaterialAspect
 	:rtype: void") SetMaterial;
 		virtual void SetMaterial (const Graphic3d_MaterialAspect & aName);
 
@@ -8433,7 +8433,7 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "* Constructs an instance of the shape object theShape.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") SetShape;
 		void SetShape (const TopoDS_Shape & theShape);
 
@@ -8567,13 +8567,13 @@ class AIS_Shape : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") computeHlrPresentation;
 		%feature("autodoc", "* Compute HLR presentation for specified shape.
 	:param theProjector:
-	:type theProjector: opencascade::handle<Prs3d_Projector> &
+	:type theProjector: Prs3d_Projector
 	:param thePrs:
-	:type thePrs: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs: Prs3d_Presentation
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theDrawer:
-	:type theDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type theDrawer: Prs3d_Drawer
 	:rtype: void") computeHlrPresentation;
 		static void computeHlrPresentation (const opencascade::handle<Prs3d_Projector> & theProjector,const opencascade::handle<Prs3d_Presentation> & thePrs,const TopoDS_Shape & theShape,const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -8608,7 +8608,7 @@ class AIS_SignatureFilter : public AIS_TypeFilter {
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "* Returns False if the transient is not an AIS_InteractiveObject. Returns False if the signature of InteractiveObject is not the same as the stored one in the filter...
 	:param anobj:
-	:type anobj: opencascade::handle<SelectMgr_EntityOwner> &
+	:type anobj: SelectMgr_EntityOwner
 	:rtype: bool") IsOk;
 		Standard_Boolean IsOk (const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
@@ -8670,7 +8670,7 @@ class AIS_TextLabel : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Setup color of entire text.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: void") SetColor;
 		virtual void SetColor (const Quantity_Color & theColor);
 
@@ -8678,7 +8678,7 @@ class AIS_TextLabel : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColorSubTitle;
 		%feature("autodoc", "* Modifies the colour of the subtitle for the TODT_SUBTITLE TextDisplayType and the colour of backgroubd for the TODT_DEKALE TextDisplayType.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetColorSubTitle;
 		void SetColorSubTitle (const Quantity_Color & theColor);
 
@@ -8757,7 +8757,7 @@ class AIS_TextLabel : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetText;
 		%feature("autodoc", "* Setup text.
 	:param theText:
-	:type theText: TCollection_ExtendedString &
+	:type theText: TCollection_ExtendedString
 	:rtype: None") SetText;
 		void SetText (const TCollection_ExtendedString & theText);
 
@@ -8818,7 +8818,7 @@ class AIS_Triangulation : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Triangulation;
 		%feature("autodoc", "* Constructs the Triangulation display object
 	:param aTriangulation:
-	:type aTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type aTriangulation: Poly_Triangulation
 	:rtype: None") AIS_Triangulation;
 		 AIS_Triangulation (const opencascade::handle<Poly_Triangulation> & aTriangulation);
 
@@ -8844,7 +8844,7 @@ class AIS_Triangulation : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "* Set the color for each node. Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red Order of color components is essential for further usage by OpenGL
 	:param aColor:
-	:type aColor: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type aColor: TColStd_HArray1OfInteger
 	:rtype: None") SetColors;
 		void SetColors (const opencascade::handle<TColStd_HArray1OfInteger> & aColor);
 
@@ -8859,7 +8859,7 @@ class AIS_Triangulation : public AIS_InteractiveObject {
 		/****************** SetTriangulation ******************/
 		%feature("compactdefaultargs") SetTriangulation;
 		%feature("autodoc", ":param aTriangulation:
-	:type aTriangulation: opencascade::handle<Poly_Triangulation> &
+	:type aTriangulation: Poly_Triangulation
 	:rtype: None") SetTriangulation;
 		void SetTriangulation (const opencascade::handle<Poly_Triangulation> & aTriangulation);
 
@@ -8890,7 +8890,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") AIS_Trihedron;
 		%feature("autodoc", "* Initializes a trihedron entity.
 	:param theComponent:
-	:type theComponent: opencascade::handle<Geom_Axis2Placement> &
+	:type theComponent: Geom_Axis2Placement
 	:rtype: None") AIS_Trihedron;
 		 AIS_Trihedron (const opencascade::handle<Geom_Axis2Placement> & theComponent);
 
@@ -8956,11 +8956,11 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") HilightOwnerWithColor;
 		%feature("autodoc", "* Method which hilight an owner belonging to this selectable object ( for fast presentation draw ).
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:rtype: void") HilightOwnerWithColor;
 		virtual void HilightOwnerWithColor (const opencascade::handle<PrsMgr_PresentationManager3d> & thePM,const opencascade::handle<Prs3d_Drawer> & theStyle,const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
@@ -8968,9 +8968,9 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "* Method which draws selected owners ( for fast presentation draw ).
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theOwners:
-	:type theOwners: SelectMgr_SequenceOfOwner &
+	:type theOwners: SelectMgr_SequenceOfOwner
 	:rtype: void") HilightSelected;
 		virtual void HilightSelected (const opencascade::handle<PrsMgr_PresentationManager3d> & thePM,const SelectMgr_SequenceOfOwner & theOwners);
 
@@ -9000,7 +9000,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetArrowColor;
 		%feature("autodoc", "* Sets color of arrow of trihedron axes. Used only in wireframe mode
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetArrowColor;
 		void SetArrowColor (const Quantity_Color & theColor);
 
@@ -9008,7 +9008,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetAxisColor;
 		%feature("autodoc", "* Sets color of z-axis. //Standard_DEPRECATED('This method is deprecated - SetColor() should be called instead')
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetAxisColor;
 		void SetAxisColor (const Quantity_Color & theColor);
 
@@ -9016,7 +9016,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Sets the color theColor for this trihedron object, it changes color of axes.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & theColor);
 
@@ -9024,7 +9024,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetComponent;
 		%feature("autodoc", "* Constructs the right-handed coordinate system aComponent.
 	:param theComponent:
-	:type theComponent: opencascade::handle<Geom_Axis2Placement> &
+	:type theComponent: Geom_Axis2Placement
 	:rtype: None") SetComponent;
 		void SetComponent (const opencascade::handle<Geom_Axis2Placement> & theComponent);
 
@@ -9042,7 +9042,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 	:param thePart:
 	:type thePart: Prs3d_DatumParts
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetDatumPartColor;
 		void SetDatumPartColor (const Prs3d_DatumParts thePart,const Quantity_Color & theColor);
 
@@ -9060,7 +9060,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 	:param thePart:
 	:type thePart: Prs3d_DatumParts
 	:param thePriority:
-	:type thePriority: TCollection_ExtendedString &
+	:type thePriority: TCollection_ExtendedString
 	:rtype: None") SetLabel;
 		void SetLabel (const Prs3d_DatumParts thePart,const TCollection_ExtendedString & thePriority);
 
@@ -9068,7 +9068,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetOriginColor;
 		%feature("autodoc", "* Sets color of origin. //Standard_DEPRECATED('This method is deprecated - SetColor() should be called instead')
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetOriginColor;
 		void SetOriginColor (const Quantity_Color & theColor);
 
@@ -9094,7 +9094,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetTextColor;
 		%feature("autodoc", "* Sets color of label of trihedron axes.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetTextColor;
 		void SetTextColor (const Quantity_Color & theColor);
 
@@ -9102,7 +9102,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetXAxisColor;
 		%feature("autodoc", "* Sets color of x-axis. //Standard_DEPRECATED('This method is deprecated - SetColor() should be called instead')
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetXAxisColor;
 		void SetXAxisColor (const Quantity_Color & theColor);
 
@@ -9110,7 +9110,7 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetYAxisColor;
 		%feature("autodoc", "* Sets color of y-axis. //Standard_DEPRECATED('This method is deprecated - SetColor() should be called instead')
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetYAxisColor;
 		void SetYAxisColor (const Quantity_Color & theColor);
 
@@ -9273,9 +9273,9 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* Compute 3D part of View Cube. @param thePrsMgr [in] presentation manager. @param thePrs [in] input presentation that is to be filled with flat presentation primitives. @param theMode [in] display mode. @warning this object accept only 0 display mode.
 	:param thePrsMgr:
-	:type thePrsMgr: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePrsMgr: PrsMgr_PresentationManager3d
 	:param thePrs:
-	:type thePrs: opencascade::handle<Prs3d_Presentation> &
+	:type thePrs: Prs3d_Presentation
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: void") Compute;
@@ -9285,7 +9285,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") ComputeSelection;
 		%feature("autodoc", "* Redefine computing of sensitive entities for View Cube. @param theSelection [in] input selection object that is to be filled with sensitive entities. @param theMode [in] selection mode. @warning object accepts only 0 selection mode.
 	:param theSelection:
-	:type theSelection: opencascade::handle<SelectMgr_Selection> &
+	:type theSelection: SelectMgr_Selection
 	:param theMode:
 	:type theMode: int
 	:rtype: void") ComputeSelection;
@@ -9319,7 +9319,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") HandleClick;
 		%feature("autodoc", "* Perform camera transformation corresponding to the input detected owner.
 	:param theOwner:
-	:type theOwner: opencascade::handle<AIS_ViewCubeOwner> &
+	:type theOwner: AIS_ViewCubeOwner
 	:rtype: void") HandleClick;
 		virtual void HandleClick (const opencascade::handle<AIS_ViewCubeOwner> & theOwner);
 
@@ -9333,11 +9333,11 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") HilightOwnerWithColor;
 		%feature("autodoc", "* Method which highlights input owner belonging to this selectable object. @param thePM [in] presentation manager @param theStyle [in] style for dynamic highlighting. @param theOwner [in] input entity owner.
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theStyle:
-	:type theStyle: opencascade::handle<Prs3d_Drawer> &
+	:type theStyle: Prs3d_Drawer
 	:param theOwner:
-	:type theOwner: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwner: SelectMgr_EntityOwner
 	:rtype: void") HilightOwnerWithColor;
 		virtual void HilightOwnerWithColor (const opencascade::handle<PrsMgr_PresentationManager3d> & thePM,const opencascade::handle<Prs3d_Drawer> & theStyle,const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
@@ -9345,9 +9345,9 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "* Method which draws selected owners.
 	:param thePM:
-	:type thePM: opencascade::handle<PrsMgr_PresentationManager3d> &
+	:type thePM: PrsMgr_PresentationManager3d
 	:param theSeq:
-	:type theSeq: SelectMgr_SequenceOfOwner &
+	:type theSeq: SelectMgr_SequenceOfOwner
 	:rtype: void") HilightSelected;
 		virtual void HilightSelected (const opencascade::handle<PrsMgr_PresentationManager3d> & thePM,const SelectMgr_SequenceOfOwner & theSeq);
 
@@ -9423,11 +9423,11 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetAxesLabels;
 		%feature("autodoc", "* Set axes labels.
 	:param theX:
-	:type theX: TCollection_AsciiString &
+	:type theX: TCollection_AsciiString
 	:param theY:
-	:type theY: TCollection_AsciiString &
+	:type theY: TCollection_AsciiString
 	:param theZ:
-	:type theZ: TCollection_AsciiString &
+	:type theZ: TCollection_AsciiString
 	:rtype: None") SetAxesLabels;
 		void SetAxesLabels (const TCollection_AsciiString & theX,const TCollection_AsciiString & theY,const TCollection_AsciiString & theZ);
 
@@ -9443,7 +9443,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetBoxColor;
 		%feature("autodoc", "* Set new value of front color for the 3D part of object. @param theColor [in] input color value.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetBoxColor;
 		void SetBoxColor (const Quantity_Color & theColor);
 
@@ -9485,7 +9485,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 	:param theSide:
 	:type theSide: V3d_TypeOfOrientation
 	:param theLabel:
-	:type theLabel: TCollection_AsciiString &
+	:type theLabel: TCollection_AsciiString
 	:rtype: None") SetBoxSideLabel;
 		void SetBoxSideLabel (const V3d_TypeOfOrientation theSide,const TCollection_AsciiString & theLabel);
 
@@ -9501,7 +9501,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Set new value of color for the whole object. @param theColor [in] input color value.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetColor;
 		void SetColor (const Quantity_Color & theColor);
 
@@ -9557,7 +9557,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetFont;
 		%feature("autodoc", "* Set font name that is used for displaying of sides and axes text. Alias for: @code Attributes()->TextAspect()->SetFont() @endcode
 	:param theFont:
-	:type theFont: TCollection_AsciiString &
+	:type theFont: TCollection_AsciiString
 	:rtype: None") SetFont;
 		void SetFont (const TCollection_AsciiString & theFont);
 
@@ -9573,7 +9573,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetInnerColor;
 		%feature("autodoc", "* Set color of sides back material. Alias for: @code Attributes()->ShadingAspect()->Aspect()->ChangeBackMaterial().SetColor() @endcode
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetInnerColor;
 		void SetInnerColor (const Quantity_Color & theColor);
 
@@ -9581,7 +9581,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "* Sets the material for the interactive object.
 	:param theMat:
-	:type theMat: Graphic3d_MaterialAspect &
+	:type theMat: Graphic3d_MaterialAspect
 	:rtype: None") SetMaterial;
 		void SetMaterial (const Graphic3d_MaterialAspect & theMat);
 
@@ -9615,7 +9615,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetTextColor;
 		%feature("autodoc", "* Set color of text labels on box sides. Alias for: @code Attributes()->TextAspect()->SetColor() @endcode
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetTextColor;
 		void SetTextColor (const Quantity_Color & theColor);
 
@@ -9631,7 +9631,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") SetViewAnimation;
 		%feature("autodoc", "* Set view animation.
 	:param theAnimation:
-	:type theAnimation: opencascade::handle<AIS_AnimationCamera> &
+	:type theAnimation: AIS_AnimationCamera
 	:rtype: None") SetViewAnimation;
 		void SetViewAnimation (const opencascade::handle<AIS_AnimationCamera> & theAnimation);
 
@@ -9655,7 +9655,7 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 		%feature("compactdefaultargs") StartAnimation;
 		%feature("autodoc", "* Start camera transformation corresponding to the input detected owner. @param theOwner [in] detected owner.
 	:param theOwner:
-	:type theOwner: opencascade::handle<AIS_ViewCubeOwner> &
+	:type theOwner: AIS_ViewCubeOwner
 	:rtype: void") StartAnimation;
 		virtual void StartAnimation (const opencascade::handle<AIS_ViewCubeOwner> & theOwner);
 
@@ -9764,9 +9764,9 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_AngleDimension;
 		%feature("autodoc", "* Constructs minimum angle dimension between two linear edges (where possible). These two edges should be intersected by each other. Otherwise the geometry is not valid. @param theFirstEdge [in] the first edge. @param theSecondEdge [in] the second edge.
 	:param theFirstEdge:
-	:type theFirstEdge: TopoDS_Edge &
+	:type theFirstEdge: TopoDS_Edge
 	:param theSecondEdge:
-	:type theSecondEdge: TopoDS_Edge &
+	:type theSecondEdge: TopoDS_Edge
 	:rtype: None") AIS_AngleDimension;
 		 AIS_AngleDimension (const TopoDS_Edge & theFirstEdge,const TopoDS_Edge & theSecondEdge);
 
@@ -9786,11 +9786,11 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_AngleDimension;
 		%feature("autodoc", "* Constructs the angle display object defined by three vertices. @param theFirstVertex [in] the first vertex (vertex for first angle flyout). @param theSecondVertex [in] the center vertex of angle dimension. @param theThirdPoint [in] the second vertex (vertex for second angle flyout).
 	:param theFirstVertex:
-	:type theFirstVertex: TopoDS_Vertex &
+	:type theFirstVertex: TopoDS_Vertex
 	:param theSecondVertex:
-	:type theSecondVertex: TopoDS_Vertex &
+	:type theSecondVertex: TopoDS_Vertex
 	:param theThirdVertex:
-	:type theThirdVertex: TopoDS_Vertex &
+	:type theThirdVertex: TopoDS_Vertex
 	:rtype: None") AIS_AngleDimension;
 		 AIS_AngleDimension (const TopoDS_Vertex & theFirstVertex,const TopoDS_Vertex & theSecondVertex,const TopoDS_Vertex & theThirdVertex);
 
@@ -9798,7 +9798,7 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_AngleDimension;
 		%feature("autodoc", "* Constructs angle dimension for the cone face. @param theCone [in] the conical face.
 	:param theCone:
-	:type theCone: TopoDS_Face &
+	:type theCone: TopoDS_Face
 	:rtype: None") AIS_AngleDimension;
 		 AIS_AngleDimension (const TopoDS_Face & theCone);
 
@@ -9806,9 +9806,9 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_AngleDimension;
 		%feature("autodoc", "* Constructs angle dimension between two planar faces. @param theFirstFace [in] the first face. @param theSecondFace [in] the second face.
 	:param theFirstFace:
-	:type theFirstFace: TopoDS_Face &
+	:type theFirstFace: TopoDS_Face
 	:param theSecondFace:
-	:type theSecondFace: TopoDS_Face &
+	:type theSecondFace: TopoDS_Face
 	:rtype: None") AIS_AngleDimension;
 		 AIS_AngleDimension (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace);
 
@@ -9816,9 +9816,9 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_AngleDimension;
 		%feature("autodoc", "* Constructs angle dimension between two planar faces. @param theFirstFace [in] the first face. @param theSecondFace [in] the second face. @param thePoint [in] the point which the dimension plane should pass through. This point can lay on the one of the faces or not.
 	:param theFirstFace:
-	:type theFirstFace: TopoDS_Face &
+	:type theFirstFace: TopoDS_Face
 	:param theSecondFace:
-	:type theSecondFace: TopoDS_Face &
+	:type theSecondFace: TopoDS_Face
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:rtype: None") AIS_AngleDimension;
@@ -9887,14 +9887,14 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetArrowsVisibility;
 		%feature("autodoc", "* Sets visible arrows type @param theType [in] the type of visibility of arrows.
 	:param theType:
-	:type theType: AIS_TypeOfAngleArrowVisibility &
+	:type theType: AIS_TypeOfAngleArrowVisibility
 	:rtype: None") SetArrowsVisibility;
 		void SetArrowsVisibility (const AIS_TypeOfAngleArrowVisibility & theType);
 
 		/****************** SetDisplayUnits ******************/
 		%feature("compactdefaultargs") SetDisplayUnits;
 		%feature("autodoc", ":param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: void") SetDisplayUnits;
 		virtual void SetDisplayUnits (const TCollection_AsciiString & theUnits);
 
@@ -9902,9 +9902,9 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measures minimum angle dimension between two linear edges. These two edges should be intersected by each other. Otherwise the geometry is not valid. @param theFirstEdge [in] the first edge. @param theSecondEdge [in] the second edge.
 	:param theFirstEdge:
-	:type theFirstEdge: TopoDS_Edge &
+	:type theFirstEdge: TopoDS_Edge
 	:param theSecondEdge:
-	:type theSecondEdge: TopoDS_Edge &
+	:type theSecondEdge: TopoDS_Edge
 	:rtype: None") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Edge & theFirstEdge,const TopoDS_Edge & theSecondEdge);
 
@@ -9924,11 +9924,11 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measures angle defined by three vertices. @param theFirstVertex [in] the first vertex (vertex for first angle flyout). @param theSecondVertex [in] the center vertex of angle dimension. @param theThirdPoint [in] the second vertex (vertex for second angle flyout).
 	:param theFirstVertex:
-	:type theFirstVertex: TopoDS_Vertex &
+	:type theFirstVertex: TopoDS_Vertex
 	:param theSecondVertex:
-	:type theSecondVertex: TopoDS_Vertex &
+	:type theSecondVertex: TopoDS_Vertex
 	:param theThirdVertex:
-	:type theThirdVertex: TopoDS_Vertex &
+	:type theThirdVertex: TopoDS_Vertex
 	:rtype: None") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Vertex & theFirstVertex,const TopoDS_Vertex & theSecondVertex,const TopoDS_Vertex & theThirdVertex);
 
@@ -9936,7 +9936,7 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measures angle of conical face. @param theCone [in] the shape to measure.
 	:param theCone:
-	:type theCone: TopoDS_Face &
+	:type theCone: TopoDS_Face
 	:rtype: None") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Face & theCone);
 
@@ -9944,9 +9944,9 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measures angle between two planar faces. @param theFirstFace [in] the first face. @param theSecondFace [in] the second face..
 	:param theFirstFace:
-	:type theFirstFace: TopoDS_Face &
+	:type theFirstFace: TopoDS_Face
 	:param theSecondFace:
-	:type theSecondFace: TopoDS_Face &
+	:type theSecondFace: TopoDS_Face
 	:rtype: None") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace);
 
@@ -9954,9 +9954,9 @@ class AIS_AngleDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measures angle between two planar faces. @param theFirstFace [in] the first face. @param theSecondFace [in] the second face. @param thePoint [in] the point which the dimension plane should pass through. This point can lay on the one of the faces or not.
 	:param theFirstFace:
-	:type theFirstFace: TopoDS_Face &
+	:type theFirstFace: TopoDS_Face
 	:param theSecondFace:
-	:type theSecondFace: TopoDS_Face &
+	:type theSecondFace: TopoDS_Face
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:rtype: None") SetMeasuredGeometry;
@@ -9965,7 +9965,7 @@ class AIS_AngleDimension : public AIS_Dimension {
 		/****************** SetModelUnits ******************/
 		%feature("compactdefaultargs") SetModelUnits;
 		%feature("autodoc", ":param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: void") SetModelUnits;
 		virtual void SetModelUnits (const TCollection_AsciiString & theUnits);
 
@@ -10012,13 +10012,13 @@ class AIS_Chamf2dDimension : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_Chamf2dDimension;
 		%feature("autodoc", "* Constructs the display object for 2D chamfers. This object is defined by the face aFShape, the dimension aVal, the plane aPlane and the text aText.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:param aVal:
 	:type aVal: float
 	:param aText:
-	:type aText: TCollection_ExtendedString &
+	:type aText: TCollection_ExtendedString
 	:rtype: None") AIS_Chamf2dDimension;
 		 AIS_Chamf2dDimension (const TopoDS_Shape & aFShape,const opencascade::handle<Geom_Plane> & aPlane,const Standard_Real aVal,const TCollection_ExtendedString & aText);
 
@@ -10026,13 +10026,13 @@ class AIS_Chamf2dDimension : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_Chamf2dDimension;
 		%feature("autodoc", "* Constructs the display object for 2D chamfers. This object is defined by the face aFShape, the plane aPlane, the dimension aVal, the position aPosition, the type of arrow aSymbolPrs with the size anArrowSize, and the text aText.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:param aVal:
 	:type aVal: float
 	:param aText:
-	:type aText: TCollection_ExtendedString &
+	:type aText: TCollection_ExtendedString
 	:param aPosition:
 	:type aPosition: gp_Pnt
 	:param aSymbolPrs:
@@ -10046,11 +10046,11 @@ class AIS_Chamf2dDimension : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -10087,11 +10087,11 @@ class AIS_Chamf3dDimension : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_Chamf3dDimension;
 		%feature("autodoc", "* Constructs a display object for 3D chamfers. This object is defined by the shape aFShape, the dimension aVal and the text aText.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aVal:
 	:type aVal: float
 	:param aText:
-	:type aText: TCollection_ExtendedString &
+	:type aText: TCollection_ExtendedString
 	:rtype: None") AIS_Chamf3dDimension;
 		 AIS_Chamf3dDimension (const TopoDS_Shape & aFShape,const Standard_Real aVal,const TCollection_ExtendedString & aText);
 
@@ -10099,11 +10099,11 @@ class AIS_Chamf3dDimension : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_Chamf3dDimension;
 		%feature("autodoc", "* Constructs a display object for 3D chamfers. This object is defined by the shape aFShape, the dimension aVal, the text aText, the point of origin of the chamfer aPosition, the type of arrow aSymbolPrs with the size anArrowSize.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aVal:
 	:type aVal: float
 	:param aText:
-	:type aText: TCollection_ExtendedString &
+	:type aText: TCollection_ExtendedString
 	:param aPosition:
 	:type aPosition: gp_Pnt
 	:param aSymbolPrs:
@@ -10117,11 +10117,11 @@ class AIS_Chamf3dDimension : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -10158,7 +10158,7 @@ class AIS_ColoredShape : public AIS_Shape {
 		%feature("compactdefaultargs") AIS_ColoredShape;
 		%feature("autodoc", "* Default constructor
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") AIS_ColoredShape;
 		 AIS_ColoredShape (const TopoDS_Shape & theShape);
 
@@ -10166,7 +10166,7 @@ class AIS_ColoredShape : public AIS_Shape {
 		%feature("compactdefaultargs") AIS_ColoredShape;
 		%feature("autodoc", "* Copy constructor
 	:param theShape:
-	:type theShape: opencascade::handle<AIS_Shape> &
+	:type theShape: AIS_Shape
 	:rtype: None") AIS_ColoredShape;
 		 AIS_ColoredShape (const opencascade::handle<AIS_Shape> & theShape);
 
@@ -10186,7 +10186,7 @@ class AIS_ColoredShape : public AIS_Shape {
 		%feature("compactdefaultargs") CustomAspects;
 		%feature("autodoc", "* @name sub-shape aspects Customize properties of specified sub-shape. The shape will be stored in the map but ignored, if it is not sub-shape of main Shape! This method can be used to mark sub-shapes with customizable properties.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: opencascade::handle<AIS_ColoredDrawer>") CustomAspects;
 		virtual opencascade::handle<AIS_ColoredDrawer> CustomAspects (const TopoDS_Shape & theShape);
 
@@ -10200,7 +10200,7 @@ class AIS_ColoredShape : public AIS_Shape {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* @name global aspects Setup color of entire shape.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: void") SetColor;
 		virtual void SetColor (const Quantity_Color & theColor);
 
@@ -10208,9 +10208,9 @@ class AIS_ColoredShape : public AIS_Shape {
 		%feature("compactdefaultargs") SetCustomColor;
 		%feature("autodoc", "* Customize color of specified sub-shape
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: None") SetCustomColor;
 		void SetCustomColor (const TopoDS_Shape & theShape,const Quantity_Color & theColor);
 
@@ -10218,7 +10218,7 @@ class AIS_ColoredShape : public AIS_Shape {
 		%feature("compactdefaultargs") SetCustomTransparency;
 		%feature("autodoc", "* Customize transparency of specified sub-shape
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theTransparency:
 	:type theTransparency: float
 	:rtype: None") SetCustomTransparency;
@@ -10228,7 +10228,7 @@ class AIS_ColoredShape : public AIS_Shape {
 		%feature("compactdefaultargs") SetCustomWidth;
 		%feature("autodoc", "* Customize line width of specified sub-shape
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theLineWidth:
 	:type theLineWidth: float
 	:rtype: None") SetCustomWidth;
@@ -10238,7 +10238,7 @@ class AIS_ColoredShape : public AIS_Shape {
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "* Sets the material aspect.
 	:param theAspect:
-	:type theAspect: Graphic3d_MaterialAspect &
+	:type theAspect: Graphic3d_MaterialAspect
 	:rtype: void") SetMaterial;
 		virtual void SetMaterial (const Graphic3d_MaterialAspect & theAspect);
 
@@ -10262,7 +10262,7 @@ class AIS_ColoredShape : public AIS_Shape {
 		%feature("compactdefaultargs") UnsetCustomAspects;
 		%feature("autodoc", "* Reset custom properties of specified sub-shape. @param theToUnregister unregister or not sub-shape from the map
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theToUnregister: default value is Standard_False
 	:type theToUnregister: bool
 	:rtype: None") UnsetCustomAspects;
@@ -10301,11 +10301,11 @@ class AIS_ConcentricRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_ConcentricRelation;
 		%feature("autodoc", "* Constructs the display object for concentric relations between shapes. This object is defined by the two shapes, aFShape and aSShape and the plane aPlane. aPlane is provided to create an axis along which the relation of concentricity can be extended.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aSShape:
-	:type aSShape: TopoDS_Shape &
+	:type aSShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_ConcentricRelation;
 		 AIS_ConcentricRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape,const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -10313,11 +10313,11 @@ class AIS_ConcentricRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -10360,7 +10360,7 @@ class AIS_DiameterDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_DiameterDimension;
 		%feature("autodoc", "* Construct diameter on the passed shape, if applicable. @param theShape [in] the shape to measure.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") AIS_DiameterDimension;
 		 AIS_DiameterDimension (const TopoDS_Shape & theShape);
 
@@ -10368,7 +10368,7 @@ class AIS_DiameterDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_DiameterDimension;
 		%feature("autodoc", "* Construct diameter on the passed shape, if applicable - and define the preferred plane to orient the dimension. @param theShape [in] the shape to measure. @param thePlane [in] the plane defining preferred orientation for dimension.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param thePlane:
 	:type thePlane: gp_Pln
 	:rtype: None") AIS_DiameterDimension;
@@ -10406,7 +10406,7 @@ class AIS_DiameterDimension : public AIS_Dimension {
 		/****************** SetDisplayUnits ******************/
 		%feature("compactdefaultargs") SetDisplayUnits;
 		%feature("autodoc", ":param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: void") SetDisplayUnits;
 		virtual void SetDisplayUnits (const TCollection_AsciiString & theUnits);
 
@@ -10422,14 +10422,14 @@ class AIS_DiameterDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measure diameter on the passed shape, if applicable. The dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than Precision::Confusion(). @param theShape [in] the shape to measure.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Shape & theShape);
 
 		/****************** SetModelUnits ******************/
 		%feature("compactdefaultargs") SetModelUnits;
 		%feature("autodoc", ":param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: void") SetModelUnits;
 		virtual void SetModelUnits (const TCollection_AsciiString & theUnits);
 
@@ -10499,15 +10499,15 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_EqualDistanceRelation;
 		%feature("autodoc", "* Constructs a framework to display equivalent distances between the shapes aShape1, aShape2, aShape3, aShape4 and the plane aPlane. The distance is the length of a projection from the shape to the plane.
 	:param aShape1:
-	:type aShape1: TopoDS_Shape &
+	:type aShape1: TopoDS_Shape
 	:param aShape2:
-	:type aShape2: TopoDS_Shape &
+	:type aShape2: TopoDS_Shape
 	:param aShape3:
-	:type aShape3: TopoDS_Shape &
+	:type aShape3: TopoDS_Shape
 	:param aShape4:
-	:type aShape4: TopoDS_Shape &
+	:type aShape4: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_EqualDistanceRelation;
 		 AIS_EqualDistanceRelation (const TopoDS_Shape & aShape1,const TopoDS_Shape & aShape2,const TopoDS_Shape & aShape3,const TopoDS_Shape & aShape4,const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -10515,11 +10515,11 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* Computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -10527,23 +10527,23 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 		%feature("compactdefaultargs") ComputeOneEdgeOneVertexLength;
 		%feature("autodoc", "* Compute the interval location between a vertex and an edge. Edge may be a line or a circle.
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param ArrowSize:
 	:type ArrowSize: float
 	:param FirstShape:
-	:type FirstShape: TopoDS_Shape &
+	:type FirstShape: TopoDS_Shape
 	:param SecondShape:
-	:type SecondShape: TopoDS_Shape &
+	:type SecondShape: TopoDS_Shape
 	:param Plane:
-	:type Plane: opencascade::handle<Geom_Plane> &
+	:type Plane: Geom_Plane
 	:param AutomaticPos:
 	:type AutomaticPos: bool
 	:param IsSetBndBox:
 	:type IsSetBndBox: bool
 	:param BndBox:
-	:type BndBox: Bnd_Box &
+	:type BndBox: Bnd_Box
 	:param Position:
 	:type Position: gp_Pnt
 	:param FirstAttach:
@@ -10555,7 +10555,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 	:param SecondExtreme:
 	:type SecondExtreme: gp_Pnt
 	:param SymbolPrs:
-	:type SymbolPrs: DsgPrs_ArrowSide &
+	:type SymbolPrs: DsgPrs_ArrowSide
 	:rtype: void") ComputeOneEdgeOneVertexLength;
 		static void ComputeOneEdgeOneVertexLength (const opencascade::handle<Prs3d_Presentation> & aPresentation,const opencascade::handle<Prs3d_Drawer> & aDrawer,const Standard_Real ArrowSize,const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const opencascade::handle<Geom_Plane> & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
 
@@ -10563,23 +10563,23 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 		%feature("compactdefaultargs") ComputeTwoEdgesLength;
 		%feature("autodoc", "* Computes the location of an intreval between between two edges. FirstAttach , SecondAttach are the returned extreme points of the interval.
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param ArrowSize:
 	:type ArrowSize: float
 	:param FirstEdge:
-	:type FirstEdge: TopoDS_Edge &
+	:type FirstEdge: TopoDS_Edge
 	:param SecondEdge:
-	:type SecondEdge: TopoDS_Edge &
+	:type SecondEdge: TopoDS_Edge
 	:param Plane:
-	:type Plane: opencascade::handle<Geom_Plane> &
+	:type Plane: Geom_Plane
 	:param AutomaticPos:
 	:type AutomaticPos: bool
 	:param IsSetBndBox:
 	:type IsSetBndBox: bool
 	:param BndBox:
-	:type BndBox: Bnd_Box &
+	:type BndBox: Bnd_Box
 	:param Position:
 	:type Position: gp_Pnt
 	:param FirstAttach:
@@ -10591,7 +10591,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 	:param SecondExtreme:
 	:type SecondExtreme: gp_Pnt
 	:param SymbolPrs:
-	:type SymbolPrs: DsgPrs_ArrowSide &
+	:type SymbolPrs: DsgPrs_ArrowSide
 	:rtype: void") ComputeTwoEdgesLength;
 		static void ComputeTwoEdgesLength (const opencascade::handle<Prs3d_Presentation> & aPresentation,const opencascade::handle<Prs3d_Drawer> & aDrawer,const Standard_Real ArrowSize,const TopoDS_Edge & FirstEdge,const TopoDS_Edge & SecondEdge,const opencascade::handle<Geom_Plane> & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
 
@@ -10599,23 +10599,23 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 		%feature("compactdefaultargs") ComputeTwoVerticesLength;
 		%feature("autodoc", "* Computes the interval position between two vertexs. FirstAttach, SecondAttach are the returned extreme points of the interval.
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:param aDrawer:
-	:type aDrawer: opencascade::handle<Prs3d_Drawer> &
+	:type aDrawer: Prs3d_Drawer
 	:param ArrowSize:
 	:type ArrowSize: float
 	:param FirstVertex:
-	:type FirstVertex: TopoDS_Vertex &
+	:type FirstVertex: TopoDS_Vertex
 	:param SecondVertex:
-	:type SecondVertex: TopoDS_Vertex &
+	:type SecondVertex: TopoDS_Vertex
 	:param Plane:
-	:type Plane: opencascade::handle<Geom_Plane> &
+	:type Plane: Geom_Plane
 	:param AutomaticPos:
 	:type AutomaticPos: bool
 	:param IsSetBndBox:
 	:type IsSetBndBox: bool
 	:param BndBox:
-	:type BndBox: Bnd_Box &
+	:type BndBox: Bnd_Box
 	:param TypeDist:
 	:type TypeDist: AIS_TypeOfDist
 	:param Position:
@@ -10629,7 +10629,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 	:param SecondExtreme:
 	:type SecondExtreme: gp_Pnt
 	:param SymbolPrs:
-	:type SymbolPrs: DsgPrs_ArrowSide &
+	:type SymbolPrs: DsgPrs_ArrowSide
 	:rtype: void") ComputeTwoVerticesLength;
 		static void ComputeTwoVerticesLength (const opencascade::handle<Prs3d_Presentation> & aPresentation,const opencascade::handle<Prs3d_Drawer> & aDrawer,const Standard_Real ArrowSize,const TopoDS_Vertex & FirstVertex,const TopoDS_Vertex & SecondVertex,const opencascade::handle<Geom_Plane> & Plane,const Standard_Boolean AutomaticPos,const Standard_Boolean IsSetBndBox,const Bnd_Box & BndBox,const AIS_TypeOfDist TypeDist,gp_Pnt & Position,gp_Pnt & FirstAttach,gp_Pnt & SecondAttach,gp_Pnt & FirstExtreme,gp_Pnt & SecondExtreme,DsgPrs_ArrowSide & SymbolPrs);
 
@@ -10637,7 +10637,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 		%feature("compactdefaultargs") SetShape3;
 		%feature("autodoc", "* Sets the shape aShape to be used as the shape aShape3 in the framework created at construction time.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: None") SetShape3;
 		void SetShape3 (const TopoDS_Shape & aShape);
 
@@ -10645,7 +10645,7 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 		%feature("compactdefaultargs") SetShape4;
 		%feature("autodoc", "* Sets the shape aShape to be used as the shape aShape4 in the framework created at construction time.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:rtype: None") SetShape4;
 		void SetShape4 (const TopoDS_Shape & aShape);
 
@@ -10682,11 +10682,11 @@ class AIS_EqualRadiusRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_EqualRadiusRelation;
 		%feature("autodoc", "* Creates equal relation of two arc's radiuses. If one of edges is not in the given plane, the presentation method projects it onto the plane.
 	:param aFirstEdge:
-	:type aFirstEdge: TopoDS_Edge &
+	:type aFirstEdge: TopoDS_Edge
 	:param aSecondEdge:
-	:type aSecondEdge: TopoDS_Edge &
+	:type aSecondEdge: TopoDS_Edge
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_EqualRadiusRelation;
 		 AIS_EqualRadiusRelation (const TopoDS_Edge & aFirstEdge,const TopoDS_Edge & aSecondEdge,const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -10694,11 +10694,11 @@ class AIS_EqualRadiusRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -10723,11 +10723,11 @@ class AIS_FixRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_FixRelation;
 		%feature("autodoc", "* initializes the vertex aShape, the plane aPlane and the wire aWire, which connects the two vertices in a fixed relation.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:param aWire:
-	:type aWire: TopoDS_Wire &
+	:type aWire: TopoDS_Wire
 	:rtype: None") AIS_FixRelation;
 		 AIS_FixRelation (const TopoDS_Shape & aShape,const opencascade::handle<Geom_Plane> & aPlane,const TopoDS_Wire & aWire);
 
@@ -10735,11 +10735,11 @@ class AIS_FixRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_FixRelation;
 		%feature("autodoc", "* initializes the vertex aShape, the plane aPlane and the wire aWire, the position aPosition, the arrow size anArrowSize and the wire aWire, which connects the two vertices in a fixed relation.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:param aWire:
-	:type aWire: TopoDS_Wire &
+	:type aWire: TopoDS_Wire
 	:param aPosition:
 	:type aPosition: gp_Pnt
 	:param anArrowSize: default value is 0.01
@@ -10751,9 +10751,9 @@ class AIS_FixRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_FixRelation;
 		%feature("autodoc", "* initializes the edge aShape and the plane aPlane.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_FixRelation;
 		 AIS_FixRelation (const TopoDS_Shape & aShape,const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -10761,9 +10761,9 @@ class AIS_FixRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_FixRelation;
 		%feature("autodoc", "* initializes the edge aShape, the plane aPlane, the position aPosition and the arrow size anArrowSize.
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:param aPosition:
 	:type aPosition: gp_Pnt
 	:param anArrowSize: default value is 0.01
@@ -10775,11 +10775,11 @@ class AIS_FixRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -10793,7 +10793,7 @@ class AIS_FixRelation : public AIS_Relation {
 		%feature("compactdefaultargs") SetWire;
 		%feature("autodoc", "* Constructs the wire aWire. This connects vertices which are in a fixed relation.
 	:param aWire:
-	:type aWire: TopoDS_Wire &
+	:type aWire: TopoDS_Wire
 	:rtype: None") SetWire;
 		void SetWire (const TopoDS_Wire & aWire);
 
@@ -10824,18 +10824,18 @@ class AIS_IdenticRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_IdenticRelation;
 		%feature("autodoc", "* Initializes the relation of identity between the two entities, FirstShape and SecondShape. The plane aPlane is initialized in case a visual reference is needed to show identity.
 	:param FirstShape:
-	:type FirstShape: TopoDS_Shape &
+	:type FirstShape: TopoDS_Shape
 	:param SecondShape:
-	:type SecondShape: TopoDS_Shape &
+	:type SecondShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_IdenticRelation;
 		 AIS_IdenticRelation (const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const opencascade::handle<Geom_Plane> & aPlane);
 
 		/****************** AddUser ******************/
 		%feature("compactdefaultargs") AddUser;
 		%feature("autodoc", ":param theUser:
-	:type theUser: opencascade::handle<Standard_Transient> &
+	:type theUser: Standard_Transient
 	:rtype: None") AddUser;
 		void AddUser (const opencascade::handle<Standard_Transient> & theUser);
 
@@ -10848,11 +10848,11 @@ class AIS_IdenticRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -10893,9 +10893,9 @@ class AIS_LengthDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_LengthDimension;
 		%feature("autodoc", "* Construct length dimension between face and edge. Here dimension can be built without user-defined plane. @param theFace [in] the face (first shape). @param theEdge [in] the edge (second shape).
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: None") AIS_LengthDimension;
 		 AIS_LengthDimension (const TopoDS_Face & theFace,const TopoDS_Edge & theEdge);
 
@@ -10903,9 +10903,9 @@ class AIS_LengthDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_LengthDimension;
 		%feature("autodoc", "* Construct length dimension between two faces. @param theFirstFace [in] the first face (first shape). @param theSecondFace [in] the second face (second shape).
 	:param theFirstFace:
-	:type theFirstFace: TopoDS_Face &
+	:type theFirstFace: TopoDS_Face
 	:param theSecondFace:
-	:type theSecondFace: TopoDS_Face &
+	:type theSecondFace: TopoDS_Face
 	:rtype: None") AIS_LengthDimension;
 		 AIS_LengthDimension (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace);
 
@@ -10925,9 +10925,9 @@ class AIS_LengthDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_LengthDimension;
 		%feature("autodoc", "* Construct length dimension between two arbitrary shapes in the specified plane. @param theFirstShape [in] the first shape. @param theSecondShape [in] the second shape. @param thePlane [in] the plane to orient dimension.
 	:param theFirstShape:
-	:type theFirstShape: TopoDS_Shape &
+	:type theFirstShape: TopoDS_Shape
 	:param theSecondShape:
-	:type theSecondShape: TopoDS_Shape &
+	:type theSecondShape: TopoDS_Shape
 	:param thePlane:
 	:type thePlane: gp_Pln
 	:rtype: None") AIS_LengthDimension;
@@ -10937,7 +10937,7 @@ class AIS_LengthDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_LengthDimension;
 		%feature("autodoc", "* Construct length dimension of linear edge. @param theEdge [in] the edge to measure. @param thePlane [in] the plane to orient dimension.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param thePlane:
 	:type thePlane: gp_Pln
 	:rtype: None") AIS_LengthDimension;
@@ -10997,7 +10997,7 @@ class AIS_LengthDimension : public AIS_Dimension {
 		/****************** SetDisplayUnits ******************/
 		%feature("compactdefaultargs") SetDisplayUnits;
 		%feature("autodoc", ":param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: void") SetDisplayUnits;
 		virtual void SetDisplayUnits (const TCollection_AsciiString & theUnits);
 
@@ -11017,7 +11017,7 @@ class AIS_LengthDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measure length of edge. The dimension will become invalid if the new length of edge is less than Precision::Confusion(). @param theEdge [in] the edge to measure. @param thePlane [in] the user-defined plane
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:param thePlane:
 	:type thePlane: gp_Pln
 	:rtype: None") SetMeasuredGeometry;
@@ -11027,9 +11027,9 @@ class AIS_LengthDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measure distance between two faces. The dimension will become invalid if the distance can not be measured or it is less than Precision::Confusion(). @param theFirstFace [in] the first face (first shape). @param theSecondFace [in] the second face (second shape).
 	:param theFirstFace:
-	:type theFirstFace: TopoDS_Face &
+	:type theFirstFace: TopoDS_Face
 	:param theSecondFace:
-	:type theSecondFace: TopoDS_Face &
+	:type theSecondFace: TopoDS_Face
 	:rtype: None") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Face & theFirstFace,const TopoDS_Face & theSecondFace);
 
@@ -11037,9 +11037,9 @@ class AIS_LengthDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measure distance between face and edge. The dimension will become invalid if the distance can not be measured or it is less than Precision::Confusion(). @param theFace [in] the face (first shape). @param theEdge [in] the edge (second shape).
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: None") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Face & theFace,const TopoDS_Edge & theEdge);
 
@@ -11047,16 +11047,16 @@ class AIS_LengthDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredShapes;
 		%feature("autodoc", "* Measure distance between generic pair of shapes (edges, vertices, length), where measuring is applicable. @param theFirstShape [in] the first shape. @param theSecondShape [in] the second shape.
 	:param theFirstShape:
-	:type theFirstShape: TopoDS_Shape &
+	:type theFirstShape: TopoDS_Shape
 	:param theSecondShape:
-	:type theSecondShape: TopoDS_Shape &
+	:type theSecondShape: TopoDS_Shape
 	:rtype: None") SetMeasuredShapes;
 		void SetMeasuredShapes (const TopoDS_Shape & theFirstShape,const TopoDS_Shape & theSecondShape);
 
 		/****************** SetModelUnits ******************/
 		%feature("compactdefaultargs") SetModelUnits;
 		%feature("autodoc", ":param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: void") SetModelUnits;
 		virtual void SetModelUnits (const TCollection_AsciiString & theUnits);
 
@@ -11087,13 +11087,13 @@ class AIS_MidPointRelation : public AIS_Relation {
 		/****************** AIS_MidPointRelation ******************/
 		%feature("compactdefaultargs") AIS_MidPointRelation;
 		%feature("autodoc", ":param aSymmTool:
-	:type aSymmTool: TopoDS_Shape &
+	:type aSymmTool: TopoDS_Shape
 	:param FirstShape:
-	:type FirstShape: TopoDS_Shape &
+	:type FirstShape: TopoDS_Shape
 	:param SecondShape:
-	:type SecondShape: TopoDS_Shape &
+	:type SecondShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_MidPointRelation;
 		 AIS_MidPointRelation (const TopoDS_Shape & aSymmTool,const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -11101,11 +11101,11 @@ class AIS_MidPointRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* Computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -11122,7 +11122,7 @@ class AIS_MidPointRelation : public AIS_Relation {
 		/****************** SetTool ******************/
 		%feature("compactdefaultargs") SetTool;
 		%feature("autodoc", ":param aMidPointTool:
-	:type aMidPointTool: TopoDS_Shape &
+	:type aMidPointTool: TopoDS_Shape
 	:rtype: None") SetTool;
 		void SetTool (const TopoDS_Shape & aMidPointTool);
 
@@ -11147,13 +11147,13 @@ class AIS_OffsetDimension : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_OffsetDimension;
 		%feature("autodoc", "* Constructs the offset display object defined by the first shape aFShape, the second shape aSShape, the dimension aVal, and the text aText.
 	:param FistShape:
-	:type FistShape: TopoDS_Shape &
+	:type FistShape: TopoDS_Shape
 	:param SecondShape:
-	:type SecondShape: TopoDS_Shape &
+	:type SecondShape: TopoDS_Shape
 	:param aVal:
 	:type aVal: float
 	:param aText:
-	:type aText: TCollection_ExtendedString &
+	:type aText: TCollection_ExtendedString
 	:rtype: None") AIS_OffsetDimension;
 		 AIS_OffsetDimension (const TopoDS_Shape & FistShape,const TopoDS_Shape & SecondShape,const Standard_Real aVal,const TCollection_ExtendedString & aText);
 
@@ -11161,11 +11161,11 @@ class AIS_OffsetDimension : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -11210,11 +11210,11 @@ class AIS_ParallelRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_ParallelRelation;
 		%feature("autodoc", "* Constructs an object to display parallel constraints. This object is defined by the first shape aFShape and the second shape aSShape and the plane aPlane.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aSShape:
-	:type aSShape: TopoDS_Shape &
+	:type aSShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_ParallelRelation;
 		 AIS_ParallelRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape,const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -11222,11 +11222,11 @@ class AIS_ParallelRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_ParallelRelation;
 		%feature("autodoc", "* Constructs an object to display parallel constraints. This object is defined by the first shape aFShape and the second shape aSShape the plane aPlane, the position aPosition, the type of arrow, aSymbolPrs and its size anArrowSize.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aSShape:
-	:type aSShape: TopoDS_Shape &
+	:type aSShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:param aPosition:
 	:type aPosition: gp_Pnt
 	:param aSymbolPrs:
@@ -11240,11 +11240,11 @@ class AIS_ParallelRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -11275,11 +11275,11 @@ class AIS_PerpendicularRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_PerpendicularRelation;
 		%feature("autodoc", "* Constructs an object to display constraints of perpendicularity on shapes. This object is defined by a first shape aFShape, a second shape aSShape, and a plane aPlane. aPlane is the plane of reference to show and test the perpendicular relation between two shapes, at least one of which has a revolved surface.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aSShape:
-	:type aSShape: TopoDS_Shape &
+	:type aSShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_PerpendicularRelation;
 		 AIS_PerpendicularRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape,const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -11287,9 +11287,9 @@ class AIS_PerpendicularRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_PerpendicularRelation;
 		%feature("autodoc", "* Constructs an object to display constraints of perpendicularity on shapes. This object is defined by a first shape aFShape and a second shape aSShape.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aSShape:
-	:type aSShape: TopoDS_Shape &
+	:type aSShape: TopoDS_Shape
 	:rtype: None") AIS_PerpendicularRelation;
 		 AIS_PerpendicularRelation (const TopoDS_Shape & aFShape,const TopoDS_Shape & aSShape);
 
@@ -11297,11 +11297,11 @@ class AIS_PerpendicularRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -11344,7 +11344,7 @@ class AIS_RadiusDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") AIS_RadiusDimension;
 		%feature("autodoc", "* Create radius dimension for the arbitrary shape (if possible). @param theShape [in] the shape to measure.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") AIS_RadiusDimension;
 		 AIS_RadiusDimension (const TopoDS_Shape & theShape);
 
@@ -11380,7 +11380,7 @@ class AIS_RadiusDimension : public AIS_Dimension {
 		/****************** SetDisplayUnits ******************/
 		%feature("compactdefaultargs") SetDisplayUnits;
 		%feature("autodoc", ":param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: void") SetDisplayUnits;
 		virtual void SetDisplayUnits (const TCollection_AsciiString & theUnits);
 
@@ -11408,7 +11408,7 @@ class AIS_RadiusDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measure radius on the passed shape, if applicable. The dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than Precision::Confusion(). @param theShape [in] the shape to measure.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") SetMeasuredGeometry;
 		void SetMeasuredGeometry (const TopoDS_Shape & theShape);
 
@@ -11416,7 +11416,7 @@ class AIS_RadiusDimension : public AIS_Dimension {
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "* Measure radius on the passed shape, if applicable. The dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than Precision::Confusion(). @param theShape [in] the shape to measure. @param theAnchorPoint [in] the point to attach the dimension lines, should be on the circle @param theHasAnchor [in] should be set True if theAnchorPoint should be used
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theAnchorPoint:
 	:type theAnchorPoint: gp_Pnt
 	:param theHasAnchor: default value is Standard_True
@@ -11427,7 +11427,7 @@ class AIS_RadiusDimension : public AIS_Dimension {
 		/****************** SetModelUnits ******************/
 		%feature("compactdefaultargs") SetModelUnits;
 		%feature("autodoc", ":param theUnits:
-	:type theUnits: TCollection_AsciiString &
+	:type theUnits: TCollection_AsciiString
 	:rtype: void") SetModelUnits;
 		virtual void SetModelUnits (const TCollection_AsciiString & theUnits);
 
@@ -11465,13 +11465,13 @@ class AIS_SymmetricRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_SymmetricRelation;
 		%feature("autodoc", "* Constructs an object to display constraints of symmetricity. This object is defined by a tool aSymmTool, a first shape FirstShape, a second shape SecondShape, and a plane aPlane. aPlane serves as the axis of symmetry. aSymmTool is the shape composed of FirstShape SecondShape and aPlane. It may be queried and edited using the functions GetTool and SetTool. The two shapes are typically two edges, two vertices or two points.
 	:param aSymmTool:
-	:type aSymmTool: TopoDS_Shape &
+	:type aSymmTool: TopoDS_Shape
 	:param FirstShape:
-	:type FirstShape: TopoDS_Shape &
+	:type FirstShape: TopoDS_Shape
 	:param SecondShape:
-	:type SecondShape: TopoDS_Shape &
+	:type SecondShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:rtype: None") AIS_SymmetricRelation;
 		 AIS_SymmetricRelation (const TopoDS_Shape & aSymmTool,const TopoDS_Shape & FirstShape,const TopoDS_Shape & SecondShape,const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -11479,11 +11479,11 @@ class AIS_SymmetricRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -11503,7 +11503,7 @@ class AIS_SymmetricRelation : public AIS_Relation {
 		%feature("compactdefaultargs") SetTool;
 		%feature("autodoc", "* Sets the tool aSymmetricTool composed of a first shape, a second shape, and a plane. This tool is initially created at construction time.
 	:param aSymmetricTool:
-	:type aSymmetricTool: TopoDS_Shape &
+	:type aSymmetricTool: TopoDS_Shape
 	:rtype: None") SetTool;
 		void SetTool (const TopoDS_Shape & aSymmetricTool);
 
@@ -11528,11 +11528,11 @@ class AIS_TangentRelation : public AIS_Relation {
 		%feature("compactdefaultargs") AIS_TangentRelation;
 		%feature("autodoc", "* TwoFacesTangent or TwoEdgesTangent relation Constructs an object to display tangency constraints. This object is defined by the first shape aFShape, the second shape aSShape, the plane aPlane and the index anExternRef. aPlane serves as an optional axis. anExternRef set to 0 indicates that there is no relation.
 	:param aFShape:
-	:type aFShape: TopoDS_Shape &
+	:type aFShape: TopoDS_Shape
 	:param aSShape:
-	:type aSShape: TopoDS_Shape &
+	:type aSShape: TopoDS_Shape
 	:param aPlane:
-	:type aPlane: opencascade::handle<Geom_Plane> &
+	:type aPlane: Geom_Plane
 	:param anExternRef: default value is 0
 	:type anExternRef: int
 	:rtype: None") AIS_TangentRelation;
@@ -11542,11 +11542,11 @@ class AIS_TangentRelation : public AIS_Relation {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -11585,7 +11585,7 @@ class AIS_TexturedShape : public AIS_Shape {
 		%feature("compactdefaultargs") AIS_TexturedShape;
 		%feature("autodoc", "* @name main methods Initializes the textured shape.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") AIS_TexturedShape;
 		 AIS_TexturedShape (const TopoDS_Shape & theShape);
 
@@ -11613,7 +11613,7 @@ class AIS_TexturedShape : public AIS_Shape {
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "* Sets the color.
 	:param theColor:
-	:type theColor: Quantity_Color &
+	:type theColor: Quantity_Color
 	:rtype: void") SetColor;
 		virtual void SetColor (const Quantity_Color & theColor);
 
@@ -11621,7 +11621,7 @@ class AIS_TexturedShape : public AIS_Shape {
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "* Sets the material aspect.
 	:param theAspect:
-	:type theAspect: Graphic3d_MaterialAspect &
+	:type theAspect: Graphic3d_MaterialAspect
 	:rtype: void") SetMaterial;
 		virtual void SetMaterial (const Graphic3d_MaterialAspect & theAspect);
 
@@ -11629,7 +11629,7 @@ class AIS_TexturedShape : public AIS_Shape {
 		%feature("compactdefaultargs") SetTextureFileName;
 		%feature("autodoc", "* Sets the texture source. <theTextureFileName> can specify path to texture image or one of the standard predefined textures. The accepted file types are those used in Image_AlienPixMap with extensions such as rgb, png, jpg and more. To specify the standard predefined texture, the <theTextureFileName> should contain integer - the Graphic3d_NameOfTexture2D enumeration index. Setting texture source using this method resets the source pixmap (if was set previously).
 	:param theTextureFileName:
-	:type theTextureFileName: TCollection_AsciiString &
+	:type theTextureFileName: TCollection_AsciiString
 	:rtype: void") SetTextureFileName;
 		virtual void SetTextureFileName (const TCollection_AsciiString & theTextureFileName);
 
@@ -11661,7 +11661,7 @@ class AIS_TexturedShape : public AIS_Shape {
 		%feature("compactdefaultargs") SetTexturePixMap;
 		%feature("autodoc", "* Sets the texture source. <theTexturePixMap> specifies image data. Please note that the data should be in Bottom-Up order, the flag of Image_PixMap::IsTopDown() will be ignored by graphic driver. Setting texture source using this method resets the source by filename (if was set previously).
 	:param theTexturePixMap:
-	:type theTexturePixMap: opencascade::handle<Image_PixMap> &
+	:type theTexturePixMap: Image_PixMap
 	:rtype: void") SetTexturePixMap;
 		virtual void SetTexturePixMap (const opencascade::handle<Image_PixMap> & theTexturePixMap);
 
@@ -11806,11 +11806,11 @@ class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
 		%feature("compactdefaultargs") AIS_MaxRadiusDimension;
 		%feature("autodoc", "* Max Ellipse radius dimension Shape can be edge , planar face or cylindrical face
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aVal:
 	:type aVal: float
 	:param aText:
-	:type aText: TCollection_ExtendedString &
+	:type aText: TCollection_ExtendedString
 	:rtype: None") AIS_MaxRadiusDimension;
 		 AIS_MaxRadiusDimension (const TopoDS_Shape & aShape,const Standard_Real aVal,const TCollection_ExtendedString & aText);
 
@@ -11818,11 +11818,11 @@ class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
 		%feature("compactdefaultargs") AIS_MaxRadiusDimension;
 		%feature("autodoc", "* Max Ellipse radius dimension with position Shape can be edge , planar face or cylindrical face
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aVal:
 	:type aVal: float
 	:param aText:
-	:type aText: TCollection_ExtendedString &
+	:type aText: TCollection_ExtendedString
 	:param aPosition:
 	:type aPosition: gp_Pnt
 	:param aSymbolPrs:
@@ -11836,11 +11836,11 @@ class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 
@@ -11865,11 +11865,11 @@ class AIS_MinRadiusDimension : public AIS_EllipseRadiusDimension {
 		%feature("compactdefaultargs") AIS_MinRadiusDimension;
 		%feature("autodoc", "* Max Ellipse radius dimension Shape can be edge , planar face or cylindrical face
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aVal:
 	:type aVal: float
 	:param aText:
-	:type aText: TCollection_ExtendedString &
+	:type aText: TCollection_ExtendedString
 	:rtype: None") AIS_MinRadiusDimension;
 		 AIS_MinRadiusDimension (const TopoDS_Shape & aShape,const Standard_Real aVal,const TCollection_ExtendedString & aText);
 
@@ -11877,11 +11877,11 @@ class AIS_MinRadiusDimension : public AIS_EllipseRadiusDimension {
 		%feature("compactdefaultargs") AIS_MinRadiusDimension;
 		%feature("autodoc", "* Max Ellipse radius dimension with position Shape can be edge , planar face or cylindrical face
 	:param aShape:
-	:type aShape: TopoDS_Shape &
+	:type aShape: TopoDS_Shape
 	:param aVal:
 	:type aVal: float
 	:param aText:
-	:type aText: TCollection_ExtendedString &
+	:type aText: TCollection_ExtendedString
 	:param aPosition:
 	:type aPosition: gp_Pnt
 	:param aSymbolPrs:
@@ -11895,11 +11895,11 @@ class AIS_MinRadiusDimension : public AIS_EllipseRadiusDimension {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* computes the presentation according to a point of view given by <aProjector>. To be Used when the associated degenerated Presentations have been transformed by <aTrsf> which is not a Pure Translation. The HLR Prs can't be deducted automatically WARNING :<aTrsf> must be applied to the object to display before computation !!!
 	:param aProjector:
-	:type aProjector: opencascade::handle<Prs3d_Projector> &
+	:type aProjector: Prs3d_Projector
 	:param aTrsf:
-	:type aTrsf: opencascade::handle<Geom_Transformation> &
+	:type aTrsf: Geom_Transformation
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<Prs3d_Presentation> &
+	:type aPresentation: Prs3d_Presentation
 	:rtype: void") Compute;
 		virtual void Compute (const opencascade::handle<Prs3d_Projector> & aProjector,const opencascade::handle<Geom_Transformation> & aTrsf,const opencascade::handle<Prs3d_Presentation> & aPresentation);
 

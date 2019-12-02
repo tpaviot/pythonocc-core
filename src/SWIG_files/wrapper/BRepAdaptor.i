@@ -137,7 +137,7 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 		/****************** BRepAdaptor_CompCurve ******************/
 		%feature("compactdefaultargs") BRepAdaptor_CompCurve;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param KnotByCurvilinearAbcissa: default value is Standard_False
 	:type KnotByCurvilinearAbcissa: bool
 	:rtype: None") BRepAdaptor_CompCurve;
@@ -147,7 +147,7 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") BRepAdaptor_CompCurve;
 		%feature("autodoc", "* Creates a Curve to acces to the geometry of edge <W>.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param KnotByCurvilinearAbcissa:
 	:type KnotByCurvilinearAbcissa: bool
 	:param First:
@@ -252,9 +252,9 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 	:param U:
 	:type U: float
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param UonE:
-	:type UonE: float &
+	:type UonE: float
 	:rtype: None") Edge;
 		void Edge (const Standard_Real U,TopoDS_Edge & E,Standard_Real &OutValue);
 
@@ -282,7 +282,7 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Sets the wire <W>.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param KnotByCurvilinearAbcissa:
 	:type KnotByCurvilinearAbcissa: bool
 	:rtype: None") Initialize;
@@ -292,7 +292,7 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Sets wire <W> and trimmed parameter.
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param KnotByCurvilinearAbcissa:
 	:type KnotByCurvilinearAbcissa: bool
 	:param First:
@@ -308,7 +308,7 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -426,7 +426,7 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") BRepAdaptor_Curve;
 		%feature("autodoc", "* Creates a Curve to acces to the geometry of edge <E>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") BRepAdaptor_Curve;
 		 BRepAdaptor_Curve (const TopoDS_Edge & E);
 
@@ -434,9 +434,9 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") BRepAdaptor_Curve;
 		%feature("autodoc", "* Creates a Curve to acces to the geometry of edge <E>. The geometry will be computed using the parametric curve of <E> on the face <F>. An Error is raised if the edge does not have a pcurve on the face.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") BRepAdaptor_Curve;
 		 BRepAdaptor_Curve (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -571,7 +571,7 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Sets the Curve <self> to acces to the geometry of edge <E>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") Initialize;
 		void Initialize (const TopoDS_Edge & E);
 
@@ -579,9 +579,9 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Sets the Curve <self> to acces to the geometry of edge <E>. The geometry will be computed using the parametric curve of <E> on the face <F>. An Error is raised if the edge does not have a pcurve on the face.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Initialize;
 		void Initialize (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -589,7 +589,7 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -736,9 +736,9 @@ class BRepAdaptor_Curve2d : public Geom2dAdaptor_Curve {
 		%feature("compactdefaultargs") BRepAdaptor_Curve2d;
 		%feature("autodoc", "* Creates with the pcurve of <E> on <F>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") BRepAdaptor_Curve2d;
 		 BRepAdaptor_Curve2d (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -758,9 +758,9 @@ class BRepAdaptor_Curve2d : public Geom2dAdaptor_Curve {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initialize with the pcurve of <E> on <F>.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Initialize;
 		void Initialize (const TopoDS_Edge & E,const TopoDS_Face & F);
 
@@ -789,7 +789,7 @@ class BRepAdaptor_HCompCurve : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") BRepAdaptor_HCompCurve;
 		%feature("autodoc", "* Creates a GenHCurve from a Curve
 	:param C:
-	:type C: BRepAdaptor_CompCurve &
+	:type C: BRepAdaptor_CompCurve
 	:rtype: None") BRepAdaptor_HCompCurve;
 		 BRepAdaptor_HCompCurve (const BRepAdaptor_CompCurve & C);
 
@@ -815,7 +815,7 @@ class BRepAdaptor_HCompCurve : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve.
 	:param C:
-	:type C: BRepAdaptor_CompCurve &
+	:type C: BRepAdaptor_CompCurve
 	:rtype: None") Set;
 		void Set (const BRepAdaptor_CompCurve & C);
 
@@ -846,7 +846,7 @@ class BRepAdaptor_HCurve : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") BRepAdaptor_HCurve;
 		%feature("autodoc", "* Creates a GenHCurve from a Curve
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: None") BRepAdaptor_HCurve;
 		 BRepAdaptor_HCurve (const BRepAdaptor_Curve & C);
 
@@ -872,7 +872,7 @@ class BRepAdaptor_HCurve : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve.
 	:param C:
-	:type C: BRepAdaptor_Curve &
+	:type C: BRepAdaptor_Curve
 	:rtype: None") Set;
 		void Set (const BRepAdaptor_Curve & C);
 
@@ -903,7 +903,7 @@ class BRepAdaptor_HCurve2d : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") BRepAdaptor_HCurve2d;
 		%feature("autodoc", "* Creates a GenHCurve2d from a Curve
 	:param C:
-	:type C: BRepAdaptor_Curve2d &
+	:type C: BRepAdaptor_Curve2d
 	:rtype: None") BRepAdaptor_HCurve2d;
 		 BRepAdaptor_HCurve2d (const BRepAdaptor_Curve2d & C);
 
@@ -923,7 +923,7 @@ class BRepAdaptor_HCurve2d : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve2d.
 	:param C:
-	:type C: BRepAdaptor_Curve2d &
+	:type C: BRepAdaptor_Curve2d
 	:rtype: None") Set;
 		void Set (const BRepAdaptor_Curve2d & C);
 
@@ -954,7 +954,7 @@ class BRepAdaptor_HSurface : public Adaptor3d_HSurface {
 		%feature("compactdefaultargs") BRepAdaptor_HSurface;
 		%feature("autodoc", "* Creates a GenHSurface from a Surface.
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:rtype: None") BRepAdaptor_HSurface;
 		 BRepAdaptor_HSurface (const BRepAdaptor_Surface & S);
 
@@ -968,7 +968,7 @@ class BRepAdaptor_HSurface : public Adaptor3d_HSurface {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHSurface.
 	:param S:
-	:type S: BRepAdaptor_Surface &
+	:type S: BRepAdaptor_Surface
 	:rtype: None") Set;
 		void Set (const BRepAdaptor_Surface & S);
 
@@ -1010,7 +1010,7 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 		%feature("compactdefaultargs") BRepAdaptor_Surface;
 		%feature("autodoc", "* Creates a surface to access the geometry of <F>. If <Restriction> is true the parameter range is the parameter range in the UV space of the restriction.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param R: default value is Standard_True
 	:type R: bool
 	:rtype: None") BRepAdaptor_Surface;
@@ -1179,7 +1179,7 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Sets the surface to the geometry of <F>.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Restriction: default value is Standard_True
 	:type Restriction: bool
 	:rtype: None") Initialize;
@@ -1313,7 +1313,7 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the U direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") UIntervals;
@@ -1358,7 +1358,7 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the V direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") VIntervals;

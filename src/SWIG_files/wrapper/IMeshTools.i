@@ -196,7 +196,7 @@ class IMeshTools_Context : public IMeshData_Shape {
 		%feature("compactdefaultargs") SetEdgeDiscret;
 		%feature("autodoc", "* Sets instance of a tool to be used to discretize edges of a model.
 	:param theEdgeDiscret:
-	:type theEdgeDiscret: opencascade::handle<IMeshTools_ModelAlgo> &
+	:type theEdgeDiscret: IMeshTools_ModelAlgo
 	:rtype: inline void") SetEdgeDiscret;
 		inline void SetEdgeDiscret (const opencascade::handle<IMeshTools_ModelAlgo> & theEdgeDiscret);
 
@@ -204,7 +204,7 @@ class IMeshTools_Context : public IMeshData_Shape {
 		%feature("compactdefaultargs") SetFaceDiscret;
 		%feature("autodoc", "* Sets instance of meshing algorithm.
 	:param theFaceDiscret:
-	:type theFaceDiscret: opencascade::handle<IMeshTools_ModelAlgo> &
+	:type theFaceDiscret: IMeshTools_ModelAlgo
 	:rtype: inline void") SetFaceDiscret;
 		inline void SetFaceDiscret (const opencascade::handle<IMeshTools_ModelAlgo> & theFaceDiscret);
 
@@ -212,7 +212,7 @@ class IMeshTools_Context : public IMeshData_Shape {
 		%feature("compactdefaultargs") SetModelBuilder;
 		%feature("autodoc", "* Sets instance of a tool to be used to build discrete model.
 	:param theBuilder:
-	:type theBuilder: opencascade::handle<IMeshTools_ModelBuilder> &
+	:type theBuilder: IMeshTools_ModelBuilder
 	:rtype: inline void") SetModelBuilder;
 		inline void SetModelBuilder (const opencascade::handle<IMeshTools_ModelBuilder> & theBuilder);
 
@@ -220,7 +220,7 @@ class IMeshTools_Context : public IMeshData_Shape {
 		%feature("compactdefaultargs") SetModelHealer;
 		%feature("autodoc", "* Sets instance of a tool to be used to heal discrete model.
 	:param theModelHealer:
-	:type theModelHealer: opencascade::handle<IMeshTools_ModelAlgo> &
+	:type theModelHealer: IMeshTools_ModelAlgo
 	:rtype: inline void") SetModelHealer;
 		inline void SetModelHealer (const opencascade::handle<IMeshTools_ModelAlgo> & theModelHealer);
 
@@ -228,7 +228,7 @@ class IMeshTools_Context : public IMeshData_Shape {
 		%feature("compactdefaultargs") SetPostProcessor;
 		%feature("autodoc", "* Sets instance of post-processing algorithm.
 	:param thePostProcessor:
-	:type thePostProcessor: opencascade::handle<IMeshTools_ModelAlgo> &
+	:type thePostProcessor: IMeshTools_ModelAlgo
 	:rtype: inline void") SetPostProcessor;
 		inline void SetPostProcessor (const opencascade::handle<IMeshTools_ModelAlgo> & thePostProcessor);
 
@@ -236,7 +236,7 @@ class IMeshTools_Context : public IMeshData_Shape {
 		%feature("compactdefaultargs") SetPreProcessor;
 		%feature("autodoc", "* Sets instance of pre-processing algorithm.
 	:param thePreProcessor:
-	:type thePreProcessor: opencascade::handle<IMeshTools_ModelAlgo> &
+	:type thePreProcessor: IMeshTools_ModelAlgo
 	:rtype: inline void") SetPreProcessor;
 		inline void SetPreProcessor (const opencascade::handle<IMeshTools_ModelAlgo> & thePreProcessor);
 
@@ -271,7 +271,7 @@ class IMeshTools_CurveTessellator : public Standard_Transient {
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:param theParameter:
-	:type theParameter: float &
+	:type theParameter: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const Standard_Integer theIndex,gp_Pnt & thePoint,Standard_Real &OutValue);
 
@@ -296,9 +296,9 @@ class IMeshTools_MeshAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs processing of the given face.
 	:param theDFace:
-	:type theDFace: IMeshData::IFaceHandle &
+	:type theDFace: IMeshData::IFaceHandle
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: void") Perform;
 		virtual void Perform (const IMeshData::IFaceHandle & theDFace,const IMeshTools_Parameters & theParameters);
 
@@ -325,7 +325,7 @@ class IMeshTools_MeshAlgoFactory : public Standard_Transient {
 	:param theSurfaceType:
 	:type theSurfaceType: GeomAbs_SurfaceType
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: opencascade::handle<IMeshTools_MeshAlgo>") GetAlgo;
 		virtual opencascade::handle<IMeshTools_MeshAlgo> GetAlgo (const GeomAbs_SurfaceType theSurfaceType,const IMeshTools_Parameters & theParameters);
 
@@ -362,7 +362,7 @@ class IMeshTools_MeshBuilder : public Message_Algorithm {
 		%feature("compactdefaultargs") IMeshTools_MeshBuilder;
 		%feature("autodoc", "* Constructor.
 	:param theContext:
-	:type theContext: opencascade::handle<IMeshTools_Context> &
+	:type theContext: IMeshTools_Context
 	:rtype: None") IMeshTools_MeshBuilder;
 		 IMeshTools_MeshBuilder (const opencascade::handle<IMeshTools_Context> & theContext);
 
@@ -376,7 +376,7 @@ class IMeshTools_MeshBuilder : public Message_Algorithm {
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "* Sets context for algorithm.
 	:param theContext:
-	:type theContext: opencascade::handle<IMeshTools_Context> &
+	:type theContext: IMeshTools_Context
 	:rtype: inline void") SetContext;
 		inline void SetContext (const opencascade::handle<IMeshTools_Context> & theContext);
 
@@ -399,9 +399,9 @@ class IMeshTools_ModelAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Exceptions protected processing of the given model.
 	:param theModel:
-	:type theModel: opencascade::handle<IMeshData_Model> &
+	:type theModel: IMeshData_Model
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: bool") Perform;
 		Standard_Boolean Perform (const opencascade::handle<IMeshData_Model> & theModel,const IMeshTools_Parameters & theParameters);
 
@@ -426,9 +426,9 @@ class IMeshTools_ModelBuilder : public Message_Algorithm {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Exceptions protected method to create discrete model for the given shape. Returns nullptr in case of failure.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theParameters:
-	:type theParameters: IMeshTools_Parameters &
+	:type theParameters: IMeshTools_Parameters
 	:rtype: opencascade::handle<IMeshData_Model>") Perform;
 		opencascade::handle<IMeshData_Model> Perform (const TopoDS_Shape & theShape,const IMeshTools_Parameters & theParameters);
 
@@ -489,7 +489,7 @@ class IMeshTools_ShapeExplorer : public IMeshData_Shape {
 		%feature("compactdefaultargs") Accept;
 		%feature("autodoc", "* Starts exploring of a shape.
 	:param theVisitor:
-	:type theVisitor: opencascade::handle<IMeshTools_ShapeVisitor> &
+	:type theVisitor: IMeshTools_ShapeVisitor
 	:rtype: void") Accept;
 		virtual void Accept (const opencascade::handle<IMeshTools_ShapeVisitor> & theVisitor);
 
@@ -497,7 +497,7 @@ class IMeshTools_ShapeExplorer : public IMeshData_Shape {
 		%feature("compactdefaultargs") IMeshTools_ShapeExplorer;
 		%feature("autodoc", "* Constructor.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") IMeshTools_ShapeExplorer;
 		 IMeshTools_ShapeExplorer (const TopoDS_Shape & theShape);
 
@@ -522,7 +522,7 @@ class IMeshTools_ShapeVisitor : public Standard_Transient {
 		%feature("compactdefaultargs") Visit;
 		%feature("autodoc", "* Handles TopoDS_Face object.
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: void") Visit;
 		virtual void Visit (const TopoDS_Face & theFace);
 
@@ -530,7 +530,7 @@ class IMeshTools_ShapeVisitor : public Standard_Transient {
 		%feature("compactdefaultargs") Visit;
 		%feature("autodoc", "* Handles TopoDS_Edge object.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: void") Visit;
 		virtual void Visit (const TopoDS_Edge & theEdge);
 

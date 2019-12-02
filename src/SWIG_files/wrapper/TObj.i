@@ -123,9 +123,9 @@ class TObj_Application : public TDocStd_Application {
 		%feature("compactdefaultargs") CreateNewDocument;
 		%feature("autodoc", "* Create the OCAF document from scratch
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:param theFormat:
-	:type theFormat: TCollection_ExtendedString &
+	:type theFormat: TCollection_ExtendedString
 	:rtype: bool") CreateNewDocument;
 		Standard_Boolean CreateNewDocument (opencascade::handle<TDocStd_Document> & theDoc,const TCollection_ExtendedString & theFormat);
 
@@ -133,7 +133,7 @@ class TObj_Application : public TDocStd_Application {
 		%feature("compactdefaultargs") ErrorMessage;
 		%feature("autodoc", "* Signal error during Load or Save Default imiplementation is empty
 	:param theMsg:
-	:type theMsg: TCollection_ExtendedString &
+	:type theMsg: TCollection_ExtendedString
 	:param theLevel:
 	:type theLevel: Message_Gravity
 	:rtype: None") ErrorMessage;
@@ -143,7 +143,7 @@ class TObj_Application : public TDocStd_Application {
 		%feature("compactdefaultargs") ErrorMessage;
 		%feature("autodoc", "* Signal error during Load or Save Default imiplementation invoke previous declaration with 0
 	:param theMsg:
-	:type theMsg: TCollection_ExtendedString &
+	:type theMsg: TCollection_ExtendedString
 	:rtype: None") ErrorMessage;
 		void ErrorMessage (const TCollection_ExtendedString & theMsg);
 
@@ -163,9 +163,9 @@ class TObj_Application : public TDocStd_Application {
 		%feature("compactdefaultargs") LoadDocument;
 		%feature("autodoc", "* Loading the OCAF document from a file
 	:param theSourceFile:
-	:type theSourceFile: TCollection_ExtendedString &
+	:type theSourceFile: TCollection_ExtendedString
 	:param theTargetDoc:
-	:type theTargetDoc: opencascade::handle<TDocStd_Document> &
+	:type theTargetDoc: TDocStd_Document
 	:rtype: bool") LoadDocument;
 		virtual Standard_Boolean LoadDocument (const TCollection_ExtendedString & theSourceFile,opencascade::handle<TDocStd_Document> & theTargetDoc);
 
@@ -185,9 +185,9 @@ class TObj_Application : public TDocStd_Application {
 		%feature("compactdefaultargs") SaveDocument;
 		%feature("autodoc", "* /** * Load/Save support */ Saving the OCAF document to a file
 	:param theSourceDoc:
-	:type theSourceDoc: opencascade::handle<TDocStd_Document> &
+	:type theSourceDoc: TDocStd_Document
 	:param theTargetFile:
-	:type theTargetFile: TCollection_ExtendedString &
+	:type theTargetFile: TCollection_ExtendedString
 	:rtype: bool") SaveDocument;
 		virtual Standard_Boolean SaveDocument (const opencascade::handle<TDocStd_Document> & theSourceDoc,const TCollection_ExtendedString & theTargetFile);
 
@@ -220,7 +220,7 @@ class TObj_Assistant {
 		%feature("compactdefaultargs") BindModel;
 		%feature("autodoc", "* Binds model to the map
 	:param theModel:
-	:type theModel: opencascade::handle<TObj_Model>
+	:type theModel: TObj_Model
 	:rtype: None") BindModel;
 		static void BindModel (const opencascade::handle<TObj_Model> theModel);
 
@@ -228,7 +228,7 @@ class TObj_Assistant {
 		%feature("compactdefaultargs") BindType;
 		%feature("autodoc", "* Binds Standard_Type to the map; returns index of bound type
 	:param theType:
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: int") BindType;
 		static Standard_Integer BindType (const opencascade::handle<Standard_Type> & theType);
 
@@ -264,7 +264,7 @@ class TObj_Assistant {
 		%feature("compactdefaultargs") FindTypeIndex;
 		%feature("autodoc", "* Rinds index by Standard_Type; returns 0 if not found
 	:param theType:
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: int") FindTypeIndex;
 		static Standard_Integer FindTypeIndex (const opencascade::handle<Standard_Type> & theType);
 
@@ -284,7 +284,7 @@ class TObj_Assistant {
 		%feature("compactdefaultargs") SetCurrentModel;
 		%feature("autodoc", "* /** * Interface to the current model */ Sets current model
 	:param theModel:
-	:type theModel: opencascade::handle<TObj_Model> &
+	:type theModel: TObj_Model
 	:rtype: None") SetCurrentModel;
 		static void SetCurrentModel (const opencascade::handle<TObj_Model> & theModel);
 
@@ -339,7 +339,7 @@ class TObj_CheckModel : public Message_Algorithm {
 		%feature("compactdefaultargs") TObj_CheckModel;
 		%feature("autodoc", "* Initialize checker by model
 	:param theModel:
-	:type theModel: opencascade::handle<TObj_Model> &
+	:type theModel: TObj_Model
 	:rtype: None") TObj_CheckModel;
 		 TObj_CheckModel (const opencascade::handle<TObj_Model> & theModel);
 
@@ -377,7 +377,7 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") CloseDocument;
 		%feature("autodoc", "* Close Free OCAF document
 	:param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: None") CloseDocument;
 		void CloseDocument (const opencascade::handle<TDocStd_Document> & theDoc);
 
@@ -391,9 +391,9 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") CopyReferences;
 		%feature("autodoc", "* Copy references from me to the other
 	:param theTarget:
-	:type theTarget: opencascade::handle<TObj_Model> &
+	:type theTarget: TObj_Model
 	:param theRelocTable:
-	:type theRelocTable: opencascade::handle<TDF_RelocationTable> &
+	:type theRelocTable: TDF_RelocationTable
 	:rtype: None") CopyReferences;
 		void CopyReferences (const opencascade::handle<TObj_Model> & theTarget,const opencascade::handle<TDF_RelocationTable> & theRelocTable);
 
@@ -401,9 +401,9 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") FindObject;
 		%feature("autodoc", "* Returns an Object by given Name (or Null if not found).
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HExtendedString> &
+	:type theName: TCollection_HExtendedString
 	:param theDictionary:
-	:type theDictionary: opencascade::handle<TObj_TNameContainer> &
+	:type theDictionary: TObj_TNameContainer
 	:rtype: opencascade::handle<TObj_Object>") FindObject;
 		opencascade::handle<TObj_Object> FindObject (const opencascade::handle<TCollection_HExtendedString> & theName,const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
@@ -441,7 +441,7 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") GetDocumentModel;
 		%feature("autodoc", "* Returns model which contains a document with the label, or NULL handle if label is NULL
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: opencascade::handle<TObj_Model>") GetDocumentModel;
 		static opencascade::handle<TObj_Model> GetDocumentModel (const TDF_Label & theLabel);
 
@@ -515,9 +515,9 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") IsRegisteredName;
 		%feature("autodoc", "* Returns True is name is registered in the names map The input argument may be NULL handle, then model check in own global container
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HExtendedString> &
+	:type theName: TCollection_HExtendedString
 	:param theDictionary:
-	:type theDictionary: opencascade::handle<TObj_TNameContainer> &
+	:type theDictionary: TObj_TNameContainer
 	:rtype: bool") IsRegisteredName;
 		Standard_Boolean IsRegisteredName (const opencascade::handle<TCollection_HExtendedString> & theName,const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
@@ -525,7 +525,7 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* /** * Implementation of Load/Save for OCAF based models */ Load the OCAF model from a file. If the filename is empty or file does not exists, it just initializes model by empty data.
 	:param theFile:
-	:type theFile: TCollection_ExtendedString &
+	:type theFile: TCollection_ExtendedString
 	:rtype: bool") Load;
 		virtual Standard_Boolean Load (const TCollection_ExtendedString & theFile);
 
@@ -551,9 +551,9 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* /** * Methods for clone model */ Pastes me to the new model references will not be copied if theRelocTable is not 0 if theRelocTable is not NULL theRelocTable is filled by objects
 	:param theModel:
-	:type theModel: opencascade::handle<TObj_Model>
+	:type theModel: TObj_Model
 	:param theRelocTable: default value is 0
-	:type theRelocTable: opencascade::handle<TDF_RelocationTable>
+	:type theRelocTable: TDF_RelocationTable
 	:rtype: bool") Paste;
 		Standard_Boolean Paste (opencascade::handle<TObj_Model> theModel,opencascade::handle<TDF_RelocationTable> theRelocTable = 0);
 
@@ -561,11 +561,11 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") RegisterName;
 		%feature("autodoc", "* Register name in the map The input argument may be NULL handle, then model check in own global container
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HExtendedString> &
+	:type theName: TCollection_HExtendedString
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theDictionary:
-	:type theDictionary: opencascade::handle<TObj_TNameContainer> &
+	:type theDictionary: TObj_TNameContainer
 	:rtype: None") RegisterName;
 		void RegisterName (const opencascade::handle<TCollection_HExtendedString> & theName,const TDF_Label & theLabel,const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
@@ -579,7 +579,7 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "* Save the model to a file
 	:param theFile:
-	:type theFile: TCollection_ExtendedString &
+	:type theFile: TCollection_ExtendedString
 	:rtype: bool") SaveAs;
 		virtual Standard_Boolean SaveAs (const TCollection_ExtendedString & theFile);
 
@@ -587,7 +587,7 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "* Sets OCAF label on which model data are stored. Used by persistence mechanism.
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: None") SetLabel;
 		void SetLabel (const TDF_Label & theLabel);
 
@@ -595,7 +595,7 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") SetMessenger;
 		%feature("autodoc", "* /** * Messages mechanism */ Set messenger to use for messages output
 	:param theMsgr:
-	:type theMsgr: opencascade::handle<Message_Messenger> &
+	:type theMsgr: Message_Messenger
 	:rtype: None") SetMessenger;
 		void SetMessenger (const opencascade::handle<Message_Messenger> & theMsgr);
 
@@ -611,7 +611,7 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") SetNewName;
 		%feature("autodoc", "* Sets new unique name for the object
 	:param theObject:
-	:type theObject: opencascade::handle<TObj_Object> &
+	:type theObject: TObj_Object
 	:rtype: None") SetNewName;
 		static void SetNewName (const opencascade::handle<TObj_Object> & theObject);
 
@@ -619,9 +619,9 @@ class TObj_Model : public Standard_Transient {
 		%feature("compactdefaultargs") UnRegisterName;
 		%feature("autodoc", "* Unregisters name from the map The input argument may be NULL handle, then model check in own global container
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HExtendedString> &
+	:type theName: TCollection_HExtendedString
 	:param theDictionary:
-	:type theDictionary: opencascade::handle<TObj_TNameContainer> &
+	:type theDictionary: TObj_TNameContainer
 	:rtype: None") UnRegisterName;
 		void UnRegisterName (const opencascade::handle<TCollection_HExtendedString> & theName,const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
@@ -667,7 +667,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") AddBackReference;
 		%feature("autodoc", "* Registers another object as being dependent on this one. Stores back references under sublabel 2 (purely transient data, not subject to persistency).
 	:param theObject:
-	:type theObject: opencascade::handle<TObj_Object> &
+	:type theObject: TObj_Object
 	:rtype: None") AddBackReference;
 		void AddBackReference (const opencascade::handle<TObj_Object> & theObject);
 
@@ -703,7 +703,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") CanRemoveReference;
 		%feature("autodoc", "* Returns True if the referred object theObject can be deleted without deletion of this object. Default implementation does nothing and returns False.
 	:param theObject:
-	:type theObject: opencascade::handle<TObj_Object> &
+	:type theObject: TObj_Object
 	:rtype: bool") CanRemoveReference;
 		Standard_Boolean CanRemoveReference (const opencascade::handle<TObj_Object> & theObject);
 
@@ -725,9 +725,9 @@ enum ObjectState {
 		%feature("compactdefaultargs") Clone;
 		%feature("autodoc", "* /** * Cloning related methods */ Copy me to other label theTargetLabel New object will not have all the reference that has me. Coping object with data and childs, but change name by adding string '_copy' As result return handle of new object (null handle is something wrong) NOTE: BackReferences not coping. After clonning all objects it is neccessary to call copy references with the same relocation table
 	:param theTargetLabel:
-	:type theTargetLabel: TDF_Label &
+	:type theTargetLabel: TDF_Label
 	:param theRelocTable: default value is 0
-	:type theRelocTable: opencascade::handle<TDF_RelocationTable>
+	:type theRelocTable: TDF_RelocationTable
 	:rtype: opencascade::handle<TObj_Object>") Clone;
 		opencascade::handle<TObj_Object> Clone (const TDF_Label & theTargetLabel,opencascade::handle<TDF_RelocationTable> theRelocTable = 0);
 
@@ -735,9 +735,9 @@ enum ObjectState {
 		%feature("compactdefaultargs") CopyChildren;
 		%feature("autodoc", "* Coping the children from source label to the target.
 	:param theTargetLabel:
-	:type theTargetLabel: TDF_Label &
+	:type theTargetLabel: TDF_Label
 	:param theRelocTable:
-	:type theRelocTable: opencascade::handle<TDF_RelocationTable> &
+	:type theRelocTable: TDF_RelocationTable
 	:rtype: None") CopyChildren;
 		void CopyChildren (TDF_Label & theTargetLabel,const opencascade::handle<TDF_RelocationTable> & theRelocTable);
 
@@ -745,9 +745,9 @@ enum ObjectState {
 		%feature("compactdefaultargs") CopyReferences;
 		%feature("autodoc", "* Coping the references. return Standard_False is Target object is different type
 	:param theTargetObject:
-	:type theTargetObject: opencascade::handle<TObj_Object> &
+	:type theTargetObject: TObj_Object
 	:param theRelocTable:
-	:type theRelocTable: opencascade::handle<TDF_RelocationTable> &
+	:type theRelocTable: TDF_RelocationTable
 	:rtype: None") CopyReferences;
 		void CopyReferences (const opencascade::handle<TObj_Object> & theTargetObject,const opencascade::handle<TDF_RelocationTable> & theRelocTable);
 
@@ -763,7 +763,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") Detach;
 		%feature("autodoc", "* Deletes the object from the label. Checks if object can be deleted. Finds object on the label and detaches it by calling previos method. Returns true if there is no object on the label after detaching
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theMode: default value is TObj_FreeOnly
 	:type theMode: TObj_DeletingMode
 	:rtype: bool") Detach;
@@ -773,7 +773,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") GetBackReferences;
 		%feature("autodoc", "* Returns iterator for the objects which depend on this one. These reffering objects may belong to other models. theType narrows a variety of iterated objects
 	:param theType: default value is NULL
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: opencascade::handle<TObj_ObjectIterator>") GetBackReferences;
 		opencascade::handle<TObj_ObjectIterator> GetBackReferences (const opencascade::handle<Standard_Type> & theType = NULL);
 
@@ -781,9 +781,9 @@ enum ObjectState {
 		%feature("compactdefaultargs") GetBadReference;
 		%feature("autodoc", "* Return True if this refers to the model theRoot belongs to and a referred label is not a descendant of theRoot. In this case theBadReference returns the currently referred label.
 	:param theRoot:
-	:type theRoot: TDF_Label &
+	:type theRoot: TDF_Label
 	:param theBadReference:
-	:type theBadReference: TDF_Label &
+	:type theBadReference: TDF_Label
 	:rtype: bool") GetBadReference;
 		Standard_Boolean GetBadReference (const TDF_Label & theRoot,TDF_Label & theBadReference);
 
@@ -797,7 +797,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") GetChildren;
 		%feature("autodoc", "* Returns iterator for the child objects. This method provides tree-like view of the objects hierarchy. The references to other objects are not considered as children. theType narrows a variety of iterated objects The default implementation search for children on 1 sublavel of the children sub label
 	:param theType: default value is NULL
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: opencascade::handle<TObj_ObjectIterator>") GetChildren;
 		opencascade::handle<TObj_ObjectIterator> GetChildren (const opencascade::handle<Standard_Type> & theType = NULL);
 
@@ -817,7 +817,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") GetFatherObject;
 		%feature("autodoc", "* Returns the father object, which may be NULL theType gives type of father object to search
 	:param theType: default value is NULL
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: opencascade::handle<TObj_Object>") GetFatherObject;
 		opencascade::handle<TObj_Object> GetFatherObject (const opencascade::handle<Standard_Type> & theType = NULL);
 
@@ -849,7 +849,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") GetName;
 		%feature("autodoc", "* Returns the Standard_True is object has name and returns name to theName
 	:param theName:
-	:type theName: TCollection_ExtendedString &
+	:type theName: TCollection_ExtendedString
 	:rtype: bool") GetName;
 		Standard_Boolean GetName (TCollection_ExtendedString & theName);
 
@@ -857,7 +857,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") GetName;
 		%feature("autodoc", "* Returns the Standard_True is object has name and returns name to theName
 	:param theName:
-	:type theName: TCollection_AsciiString &
+	:type theName: TCollection_AsciiString
 	:rtype: bool") GetName;
 		Standard_Boolean GetName (TCollection_AsciiString & theName);
 
@@ -865,7 +865,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") GetNameForClone;
 		%feature("autodoc", "* Returns name for copy default implementation returns the same name
 	:param &:
-	:type &: opencascade::handle<TObj_Object>
+	:type &: TObj_Object
 	:rtype: opencascade::handle<TCollection_HExtendedString>") GetNameForClone;
 		opencascade::handle<TCollection_HExtendedString> GetNameForClone (const opencascade::handle<TObj_Object> &);
 
@@ -873,9 +873,9 @@ enum ObjectState {
 		%feature("compactdefaultargs") GetObj;
 		%feature("autodoc", "* /** * methods for object retrieval */ Returns the Object attached to a given label. Returns False if no object of type TObj_Object is stored on the specified label. If isSuper is true tries to find on the super labels.
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theResult:
-	:type theResult: opencascade::handle<TObj_Object> &
+	:type theResult: TObj_Object
 	:param isSuper: default value is Standard_False
 	:type isSuper: bool
 	:rtype: bool") GetObj;
@@ -897,7 +897,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") GetReferences;
 		%feature("autodoc", "* Returns an Iterator containing objects that compose the this one theType narrows a variety of iterated objects
 	:param theType: default value is NULL
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: opencascade::handle<TObj_ObjectIterator>") GetReferences;
 		opencascade::handle<TObj_ObjectIterator> GetReferences (const opencascade::handle<Standard_Type> & theType = NULL);
 
@@ -917,7 +917,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") HasReference;
 		%feature("autodoc", "* /** * Analysis of dependencies on other objects */ Returns True if object has reference to indicated object
 	:param theObject:
-	:type theObject: opencascade::handle<TObj_Object> &
+	:type theObject: TObj_Object
 	:rtype: bool") HasReference;
 		Standard_Boolean HasReference (const opencascade::handle<TObj_Object> & theObject);
 
@@ -931,9 +931,9 @@ enum ObjectState {
 		%feature("compactdefaultargs") RelocateReferences;
 		%feature("autodoc", "* Make that each reference pointing to a descendant label of theFromRoot to point to an equivalent label under theToRoot. Return False if a resulting reference does not point to an TObj_Object Example: a referred object label = 0:3:24:7:2:7 theFromRoot = 0:3:24 theToRoot = 0:2 a new referred label = 0:2:7:2:7
 	:param theFromRoot:
-	:type theFromRoot: TDF_Label &
+	:type theFromRoot: TDF_Label
 	:param theToRoot:
-	:type theToRoot: TDF_Label &
+	:type theToRoot: TDF_Label
 	:param theUpdateBackRefs: default value is Standard_True
 	:type theUpdateBackRefs: bool
 	:rtype: bool") RelocateReferences;
@@ -949,7 +949,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") RemoveBackReference;
 		%feature("autodoc", "* Removes information on dependent object (back reference). If theSingleOnly is true only the first back reference is removed in the case of duplicate items.
 	:param theObject:
-	:type theObject: opencascade::handle<TObj_Object> &
+	:type theObject: TObj_Object
 	:param theSingleOnly: default value is Standard_True
 	:type theSingleOnly: bool
 	:rtype: None") RemoveBackReference;
@@ -967,7 +967,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") RemoveReference;
 		%feature("autodoc", "* Removes reference to the object by replace reference to NULL object
 	:param theObject:
-	:type theObject: opencascade::handle<TObj_Object> &
+	:type theObject: TObj_Object
 	:rtype: None") RemoveReference;
 		void RemoveReference (const opencascade::handle<TObj_Object> & theObject);
 
@@ -975,9 +975,9 @@ enum ObjectState {
 		%feature("compactdefaultargs") ReplaceReference;
 		%feature("autodoc", "* Replace reference from old object to new object. If it is not possible, may raise exception. If new object is null then simple remove reference to old object.
 	:param theOldObject:
-	:type theOldObject: opencascade::handle<TObj_Object> &
+	:type theOldObject: TObj_Object
 	:param theNewObject:
-	:type theNewObject: opencascade::handle<TObj_Object> &
+	:type theNewObject: TObj_Object
 	:rtype: None") ReplaceReference;
 		void ReplaceReference (const opencascade::handle<TObj_Object> & theOldObject,const opencascade::handle<TObj_Object> & theNewObject);
 
@@ -993,7 +993,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* Sets name of the object. Returns False if theName is not unique.
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HExtendedString> &
+	:type theName: TCollection_HExtendedString
 	:rtype: bool") SetName;
 		Standard_Boolean SetName (const opencascade::handle<TCollection_HExtendedString> & theName);
 
@@ -1001,7 +1001,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* Sets name of the object. Returns False if theName is not unique.
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:rtype: bool") SetName;
 		Standard_Boolean SetName (const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -1017,7 +1017,7 @@ enum ObjectState {
 		%feature("compactdefaultargs") SetOrder;
 		%feature("autodoc", "* sets order of object
 	:param theIndx:
-	:type theIndx: int &
+	:type theIndx: int
 	:rtype: bool") SetOrder;
 		Standard_Boolean SetOrder (const Standard_Integer & theIndx);
 
@@ -1096,7 +1096,7 @@ class TObj_Persistence {
 	:param theType:
 	:type theType: char *
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: opencascade::handle<TObj_Object>") CreateNewObject;
 		static opencascade::handle<TObj_Object> CreateNewObject (const char * theType,const TDF_Label & theLabel);
 
@@ -1128,7 +1128,7 @@ typedef TObj_TIntSparseArray_VecOfData::ConstIterator Iterator;
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "* Clears my modification delta; called after application of theDelta
 	:param theDelta:
-	:type theDelta: opencascade::handle<TDF_AttributeDelta> &
+	:type theDelta: TDF_AttributeDelta
 	:param toForce:
 	:type toForce: bool
 	:rtype: bool") AfterUndo;
@@ -1161,7 +1161,7 @@ typedef TObj_TIntSparseArray_VecOfData::ConstIterator Iterator;
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "* Applies theDelta to this.
 	:param theDelta:
-	:type theDelta: opencascade::handle<TDF_DeltaOnModification> &
+	:type theDelta: TDF_DeltaOnModification
 	:rtype: None") DeltaOnModification;
 		void DeltaOnModification (const opencascade::handle<TDF_DeltaOnModification> & theDelta);
 
@@ -1201,9 +1201,9 @@ typedef TObj_TIntSparseArray_VecOfData::ConstIterator Iterator;
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* This method is used when copying an attribute from a source structure into a target structure.
 	:param theInto:
-	:type theInto: opencascade::handle<TDF_Attribute> &
+	:type theInto: TDF_Attribute
 	:param theRT:
-	:type theRT: opencascade::handle<TDF_RelocationTable> &
+	:type theRT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & theInto,const opencascade::handle<TDF_RelocationTable> & theRT);
 
@@ -1211,7 +1211,7 @@ typedef TObj_TIntSparseArray_VecOfData::ConstIterator Iterator;
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Restores the set using info saved in backup attribute theDelta.
 	:param theDelta:
-	:type theDelta: opencascade::handle<TDF_Attribute> &
+	:type theDelta: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & theDelta);
 
@@ -1219,7 +1219,7 @@ typedef TObj_TIntSparseArray_VecOfData::ConstIterator Iterator;
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Creates TObj_TIntSparseArray attribute on given label.
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: opencascade::handle<TObj_TIntSparseArray>") Set;
 		static opencascade::handle<TObj_TIntSparseArray> Set (const TDF_Label & theLabel);
 
@@ -1314,9 +1314,9 @@ class TObj_TModel : public TDF_Attribute {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* This method is used when copying an attribute from a source structure into a target structure.
 	:param theInto:
-	:type theInto: opencascade::handle<TDF_Attribute> &
+	:type theInto: TDF_Attribute
 	:param theRT:
-	:type theRT: opencascade::handle<TDF_RelocationTable> &
+	:type theRT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & theInto,const opencascade::handle<TDF_RelocationTable> & theRT);
 
@@ -1324,7 +1324,7 @@ class TObj_TModel : public TDF_Attribute {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 	:param theWith:
-	:type theWith: opencascade::handle<TDF_Attribute> &
+	:type theWith: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -1332,7 +1332,7 @@ class TObj_TModel : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Methods for setting and obtaining the Model object Sets the the Model object
 	:param theModel:
-	:type theModel: opencascade::handle<TObj_Model> &
+	:type theModel: TObj_Model
 	:rtype: None") Set;
 		void Set (const opencascade::handle<TObj_Model> & theModel);
 
@@ -1387,7 +1387,7 @@ class TObj_TNameContainer : public TDF_Attribute {
 		%feature("compactdefaultargs") IsRegistered;
 		%feature("autodoc", "* Return True is theName is registered in the Map
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HExtendedString> &
+	:type theName: TCollection_HExtendedString
 	:rtype: bool") IsRegistered;
 		Standard_Boolean IsRegistered (const opencascade::handle<TCollection_HExtendedString> & theName);
 
@@ -1401,9 +1401,9 @@ class TObj_TNameContainer : public TDF_Attribute {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* This method is used when copying an attribute from a source structure into a target structure.
 	:param theInto:
-	:type theInto: opencascade::handle<TDF_Attribute> &
+	:type theInto: TDF_Attribute
 	:param theRT:
-	:type theRT: opencascade::handle<TDF_RelocationTable> &
+	:type theRT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & theInto,const opencascade::handle<TDF_RelocationTable> & theRT);
 
@@ -1411,9 +1411,9 @@ class TObj_TNameContainer : public TDF_Attribute {
 		%feature("compactdefaultargs") RecordName;
 		%feature("autodoc", "* Methods for adding and removing names Records name with label attached
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HExtendedString> &
+	:type theName: TCollection_HExtendedString
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: None") RecordName;
 		void RecordName (const opencascade::handle<TCollection_HExtendedString> & theName,const TDF_Label & theLabel);
 
@@ -1421,7 +1421,7 @@ class TObj_TNameContainer : public TDF_Attribute {
 		%feature("compactdefaultargs") RemoveName;
 		%feature("autodoc", "* Remove name from the map
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HExtendedString> &
+	:type theName: TCollection_HExtendedString
 	:rtype: None") RemoveName;
 		void RemoveName (const opencascade::handle<TCollection_HExtendedString> & theName);
 
@@ -1429,7 +1429,7 @@ class TObj_TNameContainer : public TDF_Attribute {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 	:param theWith:
-	:type theWith: opencascade::handle<TDF_Attribute> &
+	:type theWith: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -1437,7 +1437,7 @@ class TObj_TNameContainer : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Method for create TObj_TNameContainer object Creates TObj_DataMapOfNameLabel attribute on given label if not exist
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: opencascade::handle<TObj_TNameContainer>") Set;
 		static opencascade::handle<TObj_TNameContainer> Set (const TDF_Label & theLabel);
 
@@ -1445,7 +1445,7 @@ class TObj_TNameContainer : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Methods for setting and obtaining TObj_TNameContainer Sets the TObj_DataMapOfNameLabel object
 	:param theElem:
-	:type theElem: TObj_DataMapOfNameLabel &
+	:type theElem: TObj_DataMapOfNameLabel
 	:rtype: None") Set;
 		void Set (const TObj_DataMapOfNameLabel & theElem);
 
@@ -1476,7 +1476,7 @@ class TObj_TObject : public TDF_Attribute {
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "* Tell TObj_Object to rise from the dead, i.e. (myElem->IsAlive() == true) after that
 	:param anAttDelta:
-	:type anAttDelta: opencascade::handle<TDF_AttributeDelta> &
+	:type anAttDelta: TDF_AttributeDelta
 	:param forceIt:
 	:type forceIt: bool
 	:rtype: bool") AfterUndo;
@@ -1516,9 +1516,9 @@ class TObj_TObject : public TDF_Attribute {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* This method is used when copying an attribute from a source structure into a target structure.
 	:param theInto:
-	:type theInto: opencascade::handle<TDF_Attribute> &
+	:type theInto: TDF_Attribute
 	:param theRT:
-	:type theRT: opencascade::handle<TDF_RelocationTable> &
+	:type theRT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & theInto,const opencascade::handle<TDF_RelocationTable> & theRT);
 
@@ -1526,7 +1526,7 @@ class TObj_TObject : public TDF_Attribute {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 	:param theWith:
-	:type theWith: opencascade::handle<TDF_Attribute> &
+	:type theWith: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -1534,9 +1534,9 @@ class TObj_TObject : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Method for create TObj_TObject object Creates TObj_TObject attribute on given label
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theElem:
-	:type theElem: opencascade::handle<TObj_Object> &
+	:type theElem: TObj_Object
 	:rtype: opencascade::handle<TObj_TObject>") Set;
 		static opencascade::handle<TObj_TObject> Set (const TDF_Label & theLabel,const opencascade::handle<TObj_Object> & theElem);
 
@@ -1544,7 +1544,7 @@ class TObj_TObject : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Methods for setting and obtaining TObj_Object Sets the TObj_Object object
 	:param theElem:
-	:type theElem: opencascade::handle<TObj_Object> &
+	:type theElem: TObj_Object
 	:rtype: None") Set;
 		void Set (const opencascade::handle<TObj_Object> & theElem);
 
@@ -1589,7 +1589,7 @@ class TObj_TReference : public TDF_Attribute {
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "* It is necessary for tranzaction mechanism (Undo/Redo).
 	:param theDelta:
-	:type theDelta: opencascade::handle<TDF_AttributeDelta> &
+	:type theDelta: TDF_AttributeDelta
 	:param isForced: default value is Standard_False
 	:type isForced: bool
 	:rtype: bool") AfterUndo;
@@ -1605,7 +1605,7 @@ class TObj_TReference : public TDF_Attribute {
 		%feature("compactdefaultargs") BeforeUndo;
 		%feature("autodoc", "* It is necessary for tranzaction mechanism (Undo/Redo).
 	:param theDelta:
-	:type theDelta: opencascade::handle<TDF_AttributeDelta> &
+	:type theDelta: TDF_AttributeDelta
 	:param isForced: default value is Standard_False
 	:type isForced: bool
 	:rtype: bool") BeforeUndo;
@@ -1651,9 +1651,9 @@ class TObj_TReference : public TDF_Attribute {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* This method is used when copying an attribute from a source structure into a target structure.
 	:param theInto:
-	:type theInto: opencascade::handle<TDF_Attribute> &
+	:type theInto: TDF_Attribute
 	:param theRT:
-	:type theRT: opencascade::handle<TDF_RelocationTable> &
+	:type theRT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & theInto,const opencascade::handle<TDF_RelocationTable> & theRT);
 
@@ -1661,7 +1661,7 @@ class TObj_TReference : public TDF_Attribute {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 	:param theWith:
-	:type theWith: opencascade::handle<TDF_Attribute> &
+	:type theWith: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -1669,11 +1669,11 @@ class TObj_TReference : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Method for create TObj_TReference object Creates reference on TDF_Label <theLabel> to the object <theObject> and creates backreference from the object <theObject> to <theMaster> one.
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theObject:
-	:type theObject: opencascade::handle<TObj_Object> &
+	:type theObject: TObj_Object
 	:param theMaster:
-	:type theMaster: opencascade::handle<TObj_Object> &
+	:type theMaster: TObj_Object
 	:rtype: opencascade::handle<TObj_TReference>") Set;
 		static opencascade::handle<TObj_TReference> Set (const TDF_Label & theLabel,const opencascade::handle<TObj_Object> & theObject,const opencascade::handle<TObj_Object> & theMaster);
 
@@ -1681,9 +1681,9 @@ class TObj_TReference : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Methods for setting and obtaining referenced object Sets the reference to the theObject
 	:param theObject:
-	:type theObject: opencascade::handle<TObj_Object> &
+	:type theObject: TObj_Object
 	:param theMasterLabel:
-	:type theMasterLabel: TDF_Label &
+	:type theMasterLabel: TDF_Label
 	:rtype: None") Set;
 		void Set (const opencascade::handle<TObj_Object> & theObject,const TDF_Label & theMasterLabel);
 
@@ -1691,9 +1691,9 @@ class TObj_TReference : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the reference to the theObject at indicated Label. It is method for persistent only. Don`t use anywhere else.
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theMasterLabel:
-	:type theMasterLabel: TDF_Label &
+	:type theMasterLabel: TDF_Label
 	:rtype: None") Set;
 		void Set (const TDF_Label & theLabel,const TDF_Label & theMasterLabel);
 
@@ -1756,9 +1756,9 @@ class TObj_TXYZ : public TDF_Attribute {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* This method is used when copying an attribute from a source structure into a target structure.
 	:param theInto:
-	:type theInto: opencascade::handle<TDF_Attribute> &
+	:type theInto: TDF_Attribute
 	:param theRT:
-	:type theRT: opencascade::handle<TDF_RelocationTable> &
+	:type theRT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & theInto,const opencascade::handle<TDF_RelocationTable> & theRT);
 
@@ -1766,7 +1766,7 @@ class TObj_TXYZ : public TDF_Attribute {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Restores the backuped contents from <theWith> into this one. It is used when aborting a transaction.
 	:param theWith:
-	:type theWith: opencascade::handle<TDF_Attribute> &
+	:type theWith: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & theWith);
 
@@ -1774,7 +1774,7 @@ class TObj_TXYZ : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Method for create TObj_TXYZ object Creates attribute and sets the XYZ
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theXYZ:
 	:type theXYZ: gp_XYZ
 	:rtype: opencascade::handle<TObj_TXYZ>") Set;
@@ -1868,7 +1868,7 @@ class TObj_ModelIterator : public TObj_ObjectIterator {
 		%feature("compactdefaultargs") TObj_ModelIterator;
 		%feature("autodoc", "* /** * Constructor */ Creates Iterator and initialize it by Model`s label
 	:param theModel:
-	:type theModel: opencascade::handle<TObj_Model> &
+	:type theModel: TObj_Model
 	:rtype: None") TObj_ModelIterator;
 		 TObj_ModelIterator (const opencascade::handle<TObj_Model> & theModel);
 
@@ -1905,7 +1905,7 @@ class TObj_Partition : public TObj_Object {
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "* /** * Method for create partition */ Creates a new partition on given label.
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: opencascade::handle<TObj_Partition>") Create;
 		static opencascade::handle<TObj_Partition> Create (const TDF_Label & theLabel);
 
@@ -1933,7 +1933,7 @@ class TObj_Partition : public TObj_Object {
 		%feature("compactdefaultargs") GetPartition;
 		%feature("autodoc", "* /** * Methods to define partition by object */ Returns the partition in which object is stored. Null partition returned if not found
 	:param theObject:
-	:type theObject: opencascade::handle<TObj_Object> &
+	:type theObject: TObj_Object
 	:rtype: opencascade::handle<TObj_Partition>") GetPartition;
 		static opencascade::handle<TObj_Partition> GetPartition (const opencascade::handle<TObj_Object> & theObject);
 
@@ -1955,7 +1955,7 @@ class TObj_Partition : public TObj_Object {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* /** * Methods hanling name of the object */ Sets name of the object. partition does not check unique of own name
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HExtendedString> &
+	:type theName: TCollection_HExtendedString
 	:rtype: bool") SetName;
 		Standard_Boolean SetName (const opencascade::handle<TCollection_HExtendedString> & theName);
 
@@ -1963,7 +1963,7 @@ class TObj_Partition : public TObj_Object {
 		%feature("compactdefaultargs") SetNamePrefix;
 		%feature("autodoc", "* Sets prefix for names of the objects in partition.
 	:param thePrefix:
-	:type thePrefix: opencascade::handle<TCollection_HExtendedString> &
+	:type thePrefix: TCollection_HExtendedString
 	:rtype: None") SetNamePrefix;
 		void SetNamePrefix (const opencascade::handle<TCollection_HExtendedString> & thePrefix);
 
@@ -2006,9 +2006,9 @@ class TObj_SequenceIterator : public TObj_ObjectIterator {
 		%feature("compactdefaultargs") TObj_SequenceIterator;
 		%feature("autodoc", "* /** * Constructor */ Creates an iterator an initialize it by sequence of objects.
 	:param theObjects:
-	:type theObjects: opencascade::handle<TObj_HSequenceOfObject> &
+	:type theObjects: TObj_HSequenceOfObject
 	:param theType: default value is NULL
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: None") TObj_SequenceIterator;
 		 TObj_SequenceIterator (const opencascade::handle<TObj_HSequenceOfObject> & theObjects,const opencascade::handle<Standard_Type> & theType = NULL);
 
@@ -2045,7 +2045,7 @@ class TObj_HiddenPartition : public TObj_Partition {
 		%feature("compactdefaultargs") TObj_HiddenPartition;
 		%feature("autodoc", "* constructor
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:rtype: None") TObj_HiddenPartition;
 		 TObj_HiddenPartition (const TDF_Label & theLabel);
 
@@ -2070,9 +2070,9 @@ class TObj_OcafObjectIterator : public TObj_LabelIterator {
 		%feature("compactdefaultargs") TObj_OcafObjectIterator;
 		%feature("autodoc", "* /** * Constructor */ Creates the iterator on objects in the sub labels of theLabel theType narrows a variety of iterated objects
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theType: default value is NULL
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:param theRecursive: default value is Standard_False
 	:type theRecursive: bool
 	:rtype: None") TObj_OcafObjectIterator;
@@ -2099,9 +2099,9 @@ class TObj_ReferenceIterator : public TObj_LabelIterator {
 		%feature("compactdefaultargs") TObj_ReferenceIterator;
 		%feature("autodoc", "* Creates the iterator on references in partition theType narrows a variety of iterated objects
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theType: default value is NULL
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:param theRecursive: default value is Standard_True
 	:type theRecursive: bool
 	:rtype: None") TObj_ReferenceIterator;

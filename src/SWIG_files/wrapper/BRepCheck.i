@@ -138,7 +138,7 @@ class BRepCheck {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param List:
-	:type List: BRepCheck_ListOfStatus &
+	:type List: BRepCheck_ListOfStatus
 	:param Stat:
 	:type Stat: BRepCheck_Status
 	:rtype: void") Add;
@@ -148,7 +148,7 @@ class BRepCheck {
 		%feature("compactdefaultargs") PrecCurve;
 		%feature("autodoc", "* Returns the resolution on the 3d curve
 	:param aAC3D:
-	:type aAC3D: Adaptor3d_Curve &
+	:type aAC3D: Adaptor3d_Curve
 	:rtype: float") PrecCurve;
 		static Standard_Real PrecCurve (const Adaptor3d_Curve & aAC3D);
 
@@ -156,7 +156,7 @@ class BRepCheck {
 		%feature("compactdefaultargs") PrecSurface;
 		%feature("autodoc", "* Returns the resolution on the surface
 	:param aAHSurf:
-	:type aAHSurf: opencascade::handle<Adaptor3d_HSurface> &
+	:type aAHSurf: Adaptor3d_HSurface
 	:rtype: float") PrecSurface;
 		static Standard_Real PrecSurface (const opencascade::handle<Adaptor3d_HSurface> & aAHSurf);
 
@@ -165,20 +165,20 @@ class BRepCheck {
 		%feature("autodoc", ":param Stat:
 	:type Stat: BRepCheck_Status
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: void") Print;
 		static void Print (const BRepCheck_Status Stat,Standard_OStream & OS);
 
 		/****************** SelfIntersection ******************/
 		%feature("compactdefaultargs") SelfIntersection;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:rtype: bool") SelfIntersection;
 		static Standard_Boolean SelfIntersection (const TopoDS_Wire & W,const TopoDS_Face & F,TopoDS_Edge & E1,TopoDS_Edge & E2);
 
@@ -201,7 +201,7 @@ class BRepCheck_Analyzer {
 		%feature("compactdefaultargs") BRepCheck_Analyzer;
 		%feature("autodoc", "* Constructs a shape validation object defined by the shape S. <S> is the shape to control. <GeomControls> If False only topological informaions are checked. The geometricals controls are For a Vertex : BRepCheck_InvalidToleranceValue NYI For an Edge : BRepCheck_InvalidCurveOnClosedSurface, BRepCheck_InvalidCurveOnSurface, BRepCheck_InvalidSameParameterFlag, BRepCheck_InvalidToleranceValue NYI For a face : BRepCheck_UnorientableShape, BRepCheck_IntersectingWires, BRepCheck_InvalidToleranceValue NYI For a wire : BRepCheck_SelfIntersectingWire
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param GeomControls: default value is Standard_True
 	:type GeomControls: bool
 	:rtype: None") BRepCheck_Analyzer;
@@ -211,7 +211,7 @@ class BRepCheck_Analyzer {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* <S> is the shape to control. <GeomControls> If False only topological informaions are checked. The geometricals controls are For a Vertex : BRepCheck_InvalidTolerance NYI For an Edge : BRepCheck_InvalidCurveOnClosedSurface, BRepCheck_InvalidCurveOnSurface, BRepCheck_InvalidSameParameterFlag, BRepCheck_InvalidTolerance NYI For a face : BRepCheck_UnorientableShape, BRepCheck_IntersectingWires, BRepCheck_InvalidTolerance NYI For a wire : BRepCheck_SelfIntersectingWire
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param GeomControls: default value is Standard_True
 	:type GeomControls: bool
 	:rtype: None") Init;
@@ -221,7 +221,7 @@ class BRepCheck_Analyzer {
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "* <S> is a subshape of the original shape. Returns <STandard_True> if no default has been detected on <S> and any of its subshape.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") IsValid;
 		Standard_Boolean IsValid (const TopoDS_Shape & S);
 
@@ -234,7 +234,7 @@ class BRepCheck_Analyzer {
 		/****************** Result ******************/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", ":param SubS:
-	:type SubS: TopoDS_Shape &
+	:type SubS: TopoDS_Shape
 	:rtype: opencascade::handle<BRepCheck_Result>") Result;
 		const opencascade::handle<BRepCheck_Result> & Result (const TopoDS_Shape & SubS);
 
@@ -266,14 +266,14 @@ class BRepCheck_Result : public Standard_Transient {
 		/****************** InContext ******************/
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", ":param ContextShape:
-	:type ContextShape: TopoDS_Shape &
+	:type ContextShape: TopoDS_Shape
 	:rtype: void") InContext;
 		virtual void InContext (const TopoDS_Shape & ContextShape);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -310,7 +310,7 @@ class BRepCheck_Result : public Standard_Transient {
 		/****************** SetFailStatus ******************/
 		%feature("compactdefaultargs") SetFailStatus;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") SetFailStatus;
 		void SetFailStatus (const TopoDS_Shape & S);
 
@@ -323,7 +323,7 @@ class BRepCheck_Result : public Standard_Transient {
 		%feature("compactdefaultargs") StatusOnShape;
 		%feature("autodoc", "* If not already done, performs the InContext control and returns the list of status.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: BRepCheck_ListOfStatus") StatusOnShape;
 		const BRepCheck_ListOfStatus & StatusOnShape (const TopoDS_Shape & S);
 
@@ -352,7 +352,7 @@ class BRepCheck_Edge : public BRepCheck_Result {
 		/****************** BRepCheck_Edge ******************/
 		%feature("compactdefaultargs") BRepCheck_Edge;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") BRepCheck_Edge;
 		 BRepCheck_Edge (const TopoDS_Edge & E);
 
@@ -365,7 +365,7 @@ class BRepCheck_Edge : public BRepCheck_Result {
 		%feature("compactdefaultargs") CheckPolygonOnTriangulation;
 		%feature("autodoc", "* Checks, if polygon on triangulation of heEdge is out of 3D-curve of this edge.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: BRepCheck_Status") CheckPolygonOnTriangulation;
 		BRepCheck_Status CheckPolygonOnTriangulation (const TopoDS_Edge & theEdge);
 
@@ -384,7 +384,7 @@ class BRepCheck_Edge : public BRepCheck_Result {
 		/****************** InContext ******************/
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", ":param ContextShape:
-	:type ContextShape: TopoDS_Shape &
+	:type ContextShape: TopoDS_Shape
 	:rtype: None") InContext;
 		void InContext (const TopoDS_Shape & ContextShape);
 
@@ -426,7 +426,7 @@ class BRepCheck_Face : public BRepCheck_Result {
 		/****************** BRepCheck_Face ******************/
 		%feature("compactdefaultargs") BRepCheck_Face;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") BRepCheck_Face;
 		 BRepCheck_Face (const TopoDS_Face & F);
 
@@ -457,7 +457,7 @@ class BRepCheck_Face : public BRepCheck_Result {
 		/****************** InContext ******************/
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", ":param ContextShape:
-	:type ContextShape: TopoDS_Shape &
+	:type ContextShape: TopoDS_Shape
 	:rtype: None") InContext;
 		void InContext (const TopoDS_Shape & ContextShape);
 
@@ -518,7 +518,7 @@ class BRepCheck_Shell : public BRepCheck_Result {
 		/****************** BRepCheck_Shell ******************/
 		%feature("compactdefaultargs") BRepCheck_Shell;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shell &
+	:type S: TopoDS_Shell
 	:rtype: None") BRepCheck_Shell;
 		 BRepCheck_Shell (const TopoDS_Shell & S);
 
@@ -538,7 +538,7 @@ class BRepCheck_Shell : public BRepCheck_Result {
 		/****************** InContext ******************/
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", ":param ContextShape:
-	:type ContextShape: TopoDS_Shape &
+	:type ContextShape: TopoDS_Shape
 	:rtype: None") InContext;
 		void InContext (const TopoDS_Shape & ContextShape);
 
@@ -555,7 +555,7 @@ class BRepCheck_Shell : public BRepCheck_Result {
 		/****************** NbConnectedSet ******************/
 		%feature("compactdefaultargs") NbConnectedSet;
 		%feature("autodoc", ":param theSets:
-	:type theSets: TopTools_ListOfShape &
+	:type theSets: TopTools_ListOfShape
 	:rtype: int") NbConnectedSet;
 		Standard_Integer NbConnectedSet (TopTools_ListOfShape & theSets);
 
@@ -593,7 +593,7 @@ class BRepCheck_Solid : public BRepCheck_Result {
 		%feature("compactdefaultargs") BRepCheck_Solid;
 		%feature("autodoc", "* Constructor <theS> is the solid to check
 	:param theS:
-	:type theS: TopoDS_Solid &
+	:type theS: TopoDS_Solid
 	:rtype: None") BRepCheck_Solid;
 		 BRepCheck_Solid (const TopoDS_Solid & theS);
 
@@ -607,7 +607,7 @@ class BRepCheck_Solid : public BRepCheck_Result {
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", "* Checks the solid in context of the shape <theContextShape>
 	:param theContextShape:
-	:type theContextShape: TopoDS_Shape &
+	:type theContextShape: TopoDS_Shape
 	:rtype: void") InContext;
 		virtual void InContext (const TopoDS_Shape & theContextShape);
 
@@ -637,7 +637,7 @@ class BRepCheck_Vertex : public BRepCheck_Result {
 		/****************** BRepCheck_Vertex ******************/
 		%feature("compactdefaultargs") BRepCheck_Vertex;
 		%feature("autodoc", ":param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: None") BRepCheck_Vertex;
 		 BRepCheck_Vertex (const TopoDS_Vertex & V);
 
@@ -649,7 +649,7 @@ class BRepCheck_Vertex : public BRepCheck_Result {
 		/****************** InContext ******************/
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", ":param ContextShape:
-	:type ContextShape: TopoDS_Shape &
+	:type ContextShape: TopoDS_Shape
 	:rtype: None") InContext;
 		void InContext (const TopoDS_Shape & ContextShape);
 
@@ -683,7 +683,7 @@ class BRepCheck_Wire : public BRepCheck_Result {
 		/****************** BRepCheck_Wire ******************/
 		%feature("compactdefaultargs") BRepCheck_Wire;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") BRepCheck_Wire;
 		 BRepCheck_Wire (const TopoDS_Wire & W);
 
@@ -705,7 +705,7 @@ class BRepCheck_Wire : public BRepCheck_Result {
 		%feature("compactdefaultargs") Closed2d;
 		%feature("autodoc", "* Checks if edges of the wire give a wire closed in 2d space. Returns BRepCheck_NoError, or BRepCheck_NotClosed If <Update> is set to Standard_True, registers the status in the list.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Update: default value is Standard_False
 	:type Update: bool
 	:rtype: BRepCheck_Status") Closed2d;
@@ -729,7 +729,7 @@ class BRepCheck_Wire : public BRepCheck_Result {
 		%feature("compactdefaultargs") InContext;
 		%feature("autodoc", "* if <ContextShape> is a face, consequently checks SelfIntersect(), Closed(), Orientation() and Closed2d until faulty is found
 	:param ContextShape:
-	:type ContextShape: TopoDS_Shape &
+	:type ContextShape: TopoDS_Shape
 	:rtype: None") InContext;
 		void InContext (const TopoDS_Shape & ContextShape);
 
@@ -743,7 +743,7 @@ class BRepCheck_Wire : public BRepCheck_Result {
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "* Checks if the oriented edges of the wire are correctly oriented. An internal call is made to the method Closed. If no face exists, call the method with a null face (TopoDS_face()). If <Update> is set to Standard_True, registers the status in the list. May return (and registers): BRepCheck_InvalidDegeneratedFlag, BRepCheck_BadOrientationOfSubshape, BRepCheck_NotClosed, BRepCheck_NoError
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Update: default value is Standard_False
 	:type Update: bool
 	:rtype: BRepCheck_Status") Orientation;
@@ -753,11 +753,11 @@ class BRepCheck_Wire : public BRepCheck_Result {
 		%feature("compactdefaultargs") SelfIntersect;
 		%feature("autodoc", "* Checks if the wire intersect itself on the face <F>. <E1> and <E2> are the first intersecting edges found. <E2> may be a null edge when a self-intersecting edge is found.If <Update> is set to Standard_True, registers the status in the list. May return (and register): BRepCheck_EmptyWire, BRepCheck_SelfIntersectingWire, BRepCheck_NoCurveOnSurface, BRepCheck_NoError
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param Update: default value is Standard_False
 	:type Update: bool
 	:rtype: BRepCheck_Status") SelfIntersect;

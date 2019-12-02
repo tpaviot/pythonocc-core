@@ -144,7 +144,7 @@ class StepData {
 		%feature("compactdefaultargs") AddHeaderProtocol;
 		%feature("autodoc", "* Adds a new Header Protocol to the Header Definition
 	:param headerproto:
-	:type headerproto: opencascade::handle<StepData_Protocol> &
+	:type headerproto: StepData_Protocol
 	:rtype: void") AddHeaderProtocol;
 		static void AddHeaderProtocol (const opencascade::handle<StepData_Protocol> & headerproto);
 
@@ -201,7 +201,7 @@ class StepData_Described : public Standard_Transient {
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "* Fills a Check by using its Description
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: void") Check;
 		virtual void Check (opencascade::handle<Interface_Check> & ach);
 
@@ -245,7 +245,7 @@ class StepData_Described : public Standard_Transient {
 		%feature("compactdefaultargs") Shared;
 		%feature("autodoc", "* Fills an EntityIterator with entities shared by <self>
 	:param list:
-	:type list: Interface_EntityIterator &
+	:type list: Interface_EntityIterator
 	:rtype: void") Shared;
 		virtual void Shared (Interface_EntityIterator & list);
 
@@ -443,7 +443,7 @@ class StepData_EnumTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Same as above but works on an AsciiString
 	:param txt:
-	:type txt: TCollection_AsciiString &
+	:type txt: TCollection_AsciiString
 	:rtype: int") Value;
 		Standard_Integer Value (const TCollection_AsciiString & txt);
 
@@ -496,7 +496,7 @@ class StepData_Field {
 		%feature("compactdefaultargs") CopyFrom;
 		%feature("autodoc", "* Gets the copy of the values of another field
 	:param other:
-	:type other: StepData_Field &
+	:type other: StepData_Field
 	:rtype: None") CopyFrom;
 		void CopyFrom (const StepData_Field & other);
 
@@ -604,7 +604,7 @@ class StepData_Field {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets an undetermined value : can be String, SelectMember, HArray(1-2) ... else, an Entity In case of an HArray, determines and records its size(s)
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: None") Set;
 		void Set (const opencascade::handle<Standard_Transient> & val);
 
@@ -635,7 +635,7 @@ class StepData_Field {
 		%feature("compactdefaultargs") SetEntity;
 		%feature("autodoc", "* Sets an Entity Value
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: None") SetEntity;
 		void SetEntity (const opencascade::handle<Standard_Transient> & val);
 
@@ -650,7 +650,7 @@ class StepData_Field {
 		%feature("autodoc", ":param num:
 	:type num: int
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: None") SetEntity;
 		void SetEntity (const Standard_Integer num,const opencascade::handle<Standard_Transient> & val);
 
@@ -776,7 +776,7 @@ class StepData_Field {
 		%feature("compactdefaultargs") SetSelectMember;
 		%feature("autodoc", "* Sets a SelectMember (for Integer,Boolean,Enum,Real,Logical) Hence, the value of the field is accessed through this member
 	:param val:
-	:type val: opencascade::handle<StepData_SelectMember> &
+	:type val: StepData_SelectMember
 	:rtype: None") SetSelectMember;
 		void SetSelectMember (const opencascade::handle<StepData_SelectMember> & val);
 
@@ -807,7 +807,7 @@ class StepData_Field {
 		%feature("compactdefaultargs") StepData_Field;
 		%feature("autodoc", "* Creates a Field from another one. If <copy> is True, Handled data (Select,String,List, not entities) are copied
 	:param other:
-	:type other: StepData_Field &
+	:type other: StepData_Field
 	:param copy: default value is Standard_False
 	:type copy: bool
 	:rtype: None") StepData_Field;
@@ -861,7 +861,7 @@ class StepData_FieldList {
 		%feature("compactdefaultargs") FillShared;
 		%feature("autodoc", "* Fills an iterator with the entities shared by <self>
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") FillShared;
 		void FillShared (Interface_EntityIterator & iter);
 
@@ -896,7 +896,7 @@ class StepData_FileRecognizer : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a new Recognizer to the Compound, at the end Several calls to Add work by adding in the order of calls : Hence, when Eval has failed to recognize, Evaluate will call Evaluate from the first added Recognizer if there is one, and to the second if there is still no result, and so on
 	:param reco:
-	:type reco: opencascade::handle<StepData_FileRecognizer> &
+	:type reco: StepData_FileRecognizer
 	:rtype: None") Add;
 		void Add (const opencascade::handle<StepData_FileRecognizer> & reco);
 
@@ -904,9 +904,9 @@ class StepData_FileRecognizer : public Standard_Transient {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Evaluates if recognition has a result, returns it if yes In case of success, Returns True and puts result in 'res' In case of Failure, simply Returns False Works by calling deferred method Eval, and in case of failure, looks for Added Recognizers to work
 	:param akey:
-	:type akey: TCollection_AsciiString &
+	:type akey: TCollection_AsciiString
 	:param res:
-	:type res: opencascade::handle<Standard_Transient> &
+	:type res: Standard_Transient
 	:rtype: bool") Evaluate;
 		Standard_Boolean Evaluate (const TCollection_AsciiString & akey,opencascade::handle<Standard_Transient> & res);
 
@@ -942,11 +942,11 @@ class StepData_GeneralModule : public Interface_GeneralModule {
 	:param casenum:
 	:type casenum: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param shares:
-	:type shares: Interface_ShareTool &
+	:type shares: Interface_ShareTool
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: void") CheckCase;
 		virtual void CheckCase (const Standard_Integer casenum,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 
@@ -956,11 +956,11 @@ class StepData_GeneralModule : public Interface_GeneralModule {
 	:param casenum:
 	:type casenum: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: void") CopyCase;
 		virtual void CopyCase (const Standard_Integer casenum,const opencascade::handle<Standard_Transient> & entfrom,const opencascade::handle<Standard_Transient> & entto,Interface_CopyTool & TC);
 
@@ -970,9 +970,9 @@ class StepData_GeneralModule : public Interface_GeneralModule {
 	:param casenum:
 	:type casenum: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: void") FillSharedCase;
 		virtual void FillSharedCase (const Standard_Integer casenum,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & iter);
 
@@ -997,9 +997,9 @@ class StepData_GlobalNodeOfWriterLib : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Module bound with a Protocol to the list : does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required) Once added, stores its attached Protocol in correspondance
 	:param amodule:
-	:type amodule: opencascade::handle<StepData_ReadWriteModule> &
+	:type amodule: StepData_ReadWriteModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<StepData_Protocol> &
+	:type aprotocol: StepData_Protocol
 	:rtype: None") Add;
 		void Add (const opencascade::handle<StepData_ReadWriteModule> & amodule,const opencascade::handle<StepData_Protocol> & aprotocol);
 
@@ -1048,7 +1048,7 @@ class StepData_NodeOfWriterLib : public Standard_Transient {
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "* Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it
 	:param anode:
-	:type anode: opencascade::handle<StepData_GlobalNodeOfWriterLib> &
+	:type anode: StepData_GlobalNodeOfWriterLib
 	:rtype: None") AddNode;
 		void AddNode (const opencascade::handle<StepData_GlobalNodeOfWriterLib> & anode);
 
@@ -1113,7 +1113,7 @@ class StepData_PDescr : public Standard_Transient {
 		%feature("compactdefaultargs") AddMember;
 		%feature("autodoc", "* Adds a member to a SELECT description
 	:param member:
-	:type member: opencascade::handle<StepData_PDescr> &
+	:type member: StepData_PDescr
 	:rtype: None") AddMember;
 		void AddMember (const opencascade::handle<StepData_PDescr> & member);
 
@@ -1127,9 +1127,9 @@ class StepData_PDescr : public Standard_Transient {
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "* Semantic Check of a Field : does it complies with the given description ?
 	:param afild:
-	:type afild: StepData_Field &
+	:type afild: StepData_Field
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: void") Check;
 		virtual void Check (const StepData_Field & afild,opencascade::handle<Interface_Check> & ach);
 
@@ -1187,7 +1187,7 @@ class StepData_PDescr : public Standard_Transient {
 		%feature("compactdefaultargs") IsDescr;
 		%feature("autodoc", "* Tells if <self> is for a Described entity of a given EDescr (does this EDescr match description name ?). For late-bnd (works for <self> + nexts if <self> is a Select)
 	:param descr:
-	:type descr: opencascade::handle<StepData_EDescr> &
+	:type descr: StepData_EDescr
 	:rtype: bool") IsDescr;
 		Standard_Boolean IsDescr (const opencascade::handle<StepData_EDescr> & descr);
 
@@ -1249,7 +1249,7 @@ class StepData_PDescr : public Standard_Transient {
 		%feature("compactdefaultargs") IsType;
 		%feature("autodoc", "* Tells if <self> is for an entity of a given CDL type (early-bnd) (works for <self> + nexts if <self> is a Select)
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: bool") IsType;
 		Standard_Boolean IsType (const opencascade::handle<Standard_Type> & atype);
 
@@ -1316,7 +1316,7 @@ class StepData_PDescr : public Standard_Transient {
 		%feature("compactdefaultargs") SetFrom;
 		%feature("autodoc", "* Sets <self> as <other> but duplicated Hence, some definition may be changed
 	:param other:
-	:type other: opencascade::handle<StepData_PDescr> &
+	:type other: StepData_PDescr
 	:rtype: None") SetFrom;
 		void SetFrom (const opencascade::handle<StepData_PDescr> & other);
 
@@ -1377,7 +1377,7 @@ class StepData_PDescr : public Standard_Transient {
 		%feature("compactdefaultargs") SetType;
 		%feature("autodoc", "* Sets <self> for an Entity which must match a Type (early-bound)
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: None") SetType;
 		void SetType (const opencascade::handle<Standard_Type> & atype);
 
@@ -1419,7 +1419,7 @@ class StepData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") AddBasicDescr;
 		%feature("autodoc", "* Records an ESDescr, intended to build complex descriptions
 	:param esdescr:
-	:type esdescr: opencascade::handle<StepData_ESDescr> &
+	:type esdescr: StepData_ESDescr
 	:rtype: None") AddBasicDescr;
 		void AddBasicDescr (const opencascade::handle<StepData_ESDescr> & esdescr);
 
@@ -1427,7 +1427,7 @@ class StepData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") AddDescr;
 		%feature("autodoc", "* Records an EDescr with its case number Also records its name for an ESDescr (simple type): an ESDescr is then used, for case number, or for type name
 	:param adescr:
-	:type adescr: opencascade::handle<StepData_EDescr> &
+	:type adescr: StepData_EDescr
 	:param CN:
 	:type CN: int
 	:rtype: None") AddDescr;
@@ -1437,7 +1437,7 @@ class StepData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") AddPDescr;
 		%feature("autodoc", "* Records an PDescr
 	:param pdescr:
-	:type pdescr: opencascade::handle<StepData_PDescr> &
+	:type pdescr: StepData_PDescr
 	:rtype: None") AddPDescr;
 		void AddPDescr (const opencascade::handle<StepData_PDescr> & pdescr);
 
@@ -1455,7 +1455,7 @@ class StepData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") CaseNumber;
 		%feature("autodoc", "* Returns a unique positive number for any recognized entity Redefined to work by calling both TypeNumber and, for a Described Entity (late binding) DescrNumber
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:rtype: int") CaseNumber;
 		virtual Standard_Integer CaseNumber (const opencascade::handle<Standard_Transient> & obj);
 
@@ -1481,7 +1481,7 @@ class StepData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") DescrNumber;
 		%feature("autodoc", "* Returns a unique positive CaseNumber for types described by an EDescr (late binding) Warning : TypeNumber and DescrNumber must give together a unique positive case number for each distinct case, type or descr
 	:param adescr:
-	:type adescr: opencascade::handle<StepData_EDescr> &
+	:type adescr: StepData_EDescr
 	:rtype: int") DescrNumber;
 		virtual Standard_Integer DescrNumber (const opencascade::handle<StepData_EDescr> & adescr);
 
@@ -1489,7 +1489,7 @@ class StepData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") ECDescr;
 		%feature("autodoc", "* Returns a complex description according to list of names <anylevel> True (D) : for <self> and its resources <anylevel> False : for <self> only
 	:param names:
-	:type names: TColStd_SequenceOfAsciiString &
+	:type names: TColStd_SequenceOfAsciiString
 	:param anylevel: default value is Standard_True
 	:type anylevel: bool
 	:rtype: opencascade::handle<StepData_ECDescr>") ECDescr;
@@ -1515,7 +1515,7 @@ class StepData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") IsSuitableModel;
 		%feature("autodoc", "* Returns True if <model> is a Model of Step Norm
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") IsSuitableModel;
 		Standard_Boolean IsSuitableModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1523,7 +1523,7 @@ class StepData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") IsUnknownEntity;
 		%feature("autodoc", "* Returns True if <ent> is an Unknown Entity for the Norm, i.e. Type UndefinedEntity, status Unknown
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsUnknownEntity;
 		Standard_Boolean IsUnknownEntity (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1572,7 +1572,7 @@ class StepData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "* Returns a Case Number, specific of each recognized Type Here, only Unknown Entity is recognized
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: int") TypeNumber;
 		Standard_Integer TypeNumber (const opencascade::handle<Standard_Type> & atype);
 
@@ -1603,7 +1603,7 @@ class StepData_ReadWriteModule : public Interface_ReaderModule {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Translate the Type of record <num> in <data> to a positive Case Number, or 0 if failed. Works with a StepReaderData, in which the Type of an Entity is defined as a String : Reads the RecordType <num> then calls CaseNum (this type) Warning : The methods CaseStep, StepType and Recognize, must be in phase (triplets CaseNum-StepType-Type of Object)
 	:param data:
-	:type data: opencascade::handle<Interface_FileReaderData> &
+	:type data: Interface_FileReaderData
 	:param num:
 	:type num: int
 	:rtype: int") CaseNum;
@@ -1613,7 +1613,7 @@ class StepData_ReadWriteModule : public Interface_ReaderModule {
 		%feature("compactdefaultargs") CaseStep;
 		%feature("autodoc", "* Defines Case Numbers corresponding to the recognized Types Called by CaseNum (data,num) above for a Simple Type Entity Warning : CaseStep must give the same Value as Protocol does for the Entity type which corresponds to this Type given as a String
 	:param atype:
-	:type atype: TCollection_AsciiString &
+	:type atype: TCollection_AsciiString
 	:rtype: int") CaseStep;
 		virtual Standard_Integer CaseStep (const TCollection_AsciiString & atype);
 
@@ -1621,7 +1621,7 @@ class StepData_ReadWriteModule : public Interface_ReaderModule {
 		%feature("compactdefaultargs") CaseStep;
 		%feature("autodoc", "* Same a above but for a Complex Type Entity ('Plex') The provided Default recognizes nothing
 	:param types:
-	:type types: TColStd_SequenceOfAsciiString &
+	:type types: TColStd_SequenceOfAsciiString
 	:rtype: int") CaseStep;
 		virtual Standard_Integer CaseStep (const TColStd_SequenceOfAsciiString & types);
 
@@ -1631,7 +1631,7 @@ class StepData_ReadWriteModule : public Interface_ReaderModule {
 	:param CN:
 	:type CN: int
 	:param types:
-	:type types: TColStd_SequenceOfAsciiString &
+	:type types: TColStd_SequenceOfAsciiString
 	:rtype: bool") ComplexType;
 		virtual Standard_Boolean ComplexType (const Standard_Integer CN,TColStd_SequenceOfAsciiString & types);
 
@@ -1649,13 +1649,13 @@ class StepData_ReadWriteModule : public Interface_ReaderModule {
 	:param CN:
 	:type CN: int
 	:param data:
-	:type data: opencascade::handle<Interface_FileReaderData> &
+	:type data: Interface_FileReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") Read;
 		void Read (const Standard_Integer CN,const opencascade::handle<Interface_FileReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<Standard_Transient> & ent);
 
@@ -1665,13 +1665,13 @@ class StepData_ReadWriteModule : public Interface_ReaderModule {
 	:param CN:
 	:type CN: int
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: void") ReadStep;
 		virtual void ReadStep (const Standard_Integer CN,const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<Standard_Transient> & ent);
 
@@ -1697,9 +1697,9 @@ class StepData_ReadWriteModule : public Interface_ReaderModule {
 	:param CN:
 	:type CN: int
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: void") WriteStep;
 		virtual void WriteStep (const Standard_Integer CN,StepData_StepWriter & SW,const opencascade::handle<Standard_Transient> & ent);
 
@@ -1900,7 +1900,7 @@ class StepData_SelectType {
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "* Recognize a SelectMember (kind, name). Returns a positive value which identifies the case in the List of immediate cases (distinct from the List of Entity Types). Zero if not recognizes Default returns 0, saying that no immediate value is allowed
 	:param ent:
-	:type ent: opencascade::handle<StepData_SelectMember> &
+	:type ent: StepData_SelectMember
 	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -1914,7 +1914,7 @@ class StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes the Type of an Entity. Returns a positive Number which identifies the Type in the definition List of the SelectType. Returns Zero if its Type in not in this List.
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		virtual Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1957,7 +1957,7 @@ class StepData_SelectType {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Returns True if the Type of an Entity complies with the definition list of the SelectType. Also checks for a SelectMember Default Implementation looks for CaseNum or CaseMem positive
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") Matches;
 		Standard_Boolean Matches (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2039,7 +2039,7 @@ class StepData_SelectType {
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "* Stores an Entity. This allows to define a specific SelectType class with one read method per member Type, which returns the Value casted with the good Type.
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") SetValue;
 		void SetValue (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2074,9 +2074,9 @@ class StepData_StepDumper {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Dumps a Entity on an Messenger. Returns True if sucess, False, if the entity to dump has not been recognized by the Protocol. <level> can have one of these values : - 0 : prints the TYPE only, as known in STEP Files (StepType) If <ent> has not been regognized by the Protocol, or if its type is Complex, the StepType is replaced by the display of the cdl type. Complex Type are well processed by level 1. - 1 : dumps the entity, completely (whatever it has simple or complex type) but alone. - 2 : dumps the entity completely, plus the item its refers to at first level (a header message designates the starting entity of the dump) <Lists Shared and Implied> - 3 : dumps the entity and its refered items at any levels //! For levels 1,2,3, the numbers displayed (form #nnn) are the numbers of the corresponding entities in the Model
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param level:
 	:type level: int
 	:rtype: bool") Dump;
@@ -2086,7 +2086,7 @@ class StepData_StepDumper {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* Works as Dump with a Transient, but directly takes the entity designated by its number in the Model Returns False, also if <num> is out of range
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param num:
 	:type num: int
 	:param level:
@@ -2098,9 +2098,9 @@ class StepData_StepDumper {
 		%feature("compactdefaultargs") StepData_StepDumper;
 		%feature("autodoc", "* Creates a StepDumper, able to work on a given StepModel (which defines the total scope for dumping entities) and a given Protocol from Step (which defines the authorized types to be dumped) <mode> commands what is to be displayed (number or label) 0 for number (and corresponding labels are displayed apart) 1 for label (and corresponding numbers are displayed apart) 2 for label without anymore
 	:param amodel:
-	:type amodel: opencascade::handle<StepData_StepModel> &
+	:type amodel: StepData_StepModel
 	:param protocol:
-	:type protocol: opencascade::handle<StepData_Protocol> &
+	:type protocol: StepData_Protocol
 	:param mode: default value is 0
 	:type mode: int
 	:rtype: None") StepData_StepDumper;
@@ -2131,7 +2131,7 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") AddHeaderEntity;
 		%feature("autodoc", "* Adds an Entity to the Header
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") AddHeaderEntity;
 		void AddHeaderEntity (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2151,7 +2151,7 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") DumpHeader;
 		%feature("autodoc", "* Dumps the Header, with the Header Protocol of StepData. If the Header Protocol is not defined, for each Header Entity, prints its Type. Else sends the Header under the form of HEADER Section of an Ascii Step File <level> is not used because Header is not so big
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param level: default value is 0
 	:type level: int
 	:rtype: None") DumpHeader;
@@ -2169,7 +2169,7 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") GetFromAnother;
 		%feature("autodoc", "* gets header from another Model (uses Header Protocol)
 	:param other:
-	:type other: opencascade::handle<Interface_InterfaceModel> &
+	:type other: Interface_InterfaceModel
 	:rtype: None") GetFromAnother;
 		void GetFromAnother (const opencascade::handle<Interface_InterfaceModel> & other);
 
@@ -2177,7 +2177,7 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") HasHeaderEntity;
 		%feature("autodoc", "* says if a Header entity has a specifed type
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: bool") HasHeaderEntity;
 		Standard_Boolean HasHeaderEntity (const opencascade::handle<Standard_Type> & atype);
 
@@ -2191,7 +2191,7 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") HeaderEntity;
 		%feature("autodoc", "* Returns Header entity with specified type, if there is
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: opencascade::handle<Standard_Transient>") HeaderEntity;
 		opencascade::handle<Standard_Transient> HeaderEntity (const opencascade::handle<Standard_Type> & atype);
 
@@ -2199,7 +2199,7 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") IdentLabel;
 		%feature("autodoc", "* returns the label ident attached to an entity, 0 if not in me
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") IdentLabel;
 		Standard_Integer IdentLabel (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2213,9 +2213,9 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") PrintLabel;
 		%feature("autodoc", "* Prints label specific to STEP norm for a given entity, i.e. if a LabelIdent has been recorded, its value with '#', else the number in the model with '#' and between ()
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintLabel;
 		void PrintLabel (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Message_Messenger> & S);
 
@@ -2223,7 +2223,7 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") SetIdentLabel;
 		%feature("autodoc", "* Attaches an ident to an entity to produce a label (does nothing if <ent> is not in <self>)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param ident:
 	:type ident: int
 	:rtype: None") SetIdentLabel;
@@ -2239,7 +2239,7 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") StringLabel;
 		%feature("autodoc", "* Returns a string with the label attached to a given entity, same form as for PrintLabel
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TCollection_HAsciiString>") StringLabel;
 		opencascade::handle<TCollection_HAsciiString> StringLabel (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2247,7 +2247,7 @@ class StepData_StepModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") VerifyCheck;
 		%feature("autodoc", "* Specific Check, checks Header Items with HeaderProtocol
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: void") VerifyCheck;
 		virtual void VerifyCheck (opencascade::handle<Interface_Check> & ach);
 
@@ -2300,7 +2300,7 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param errstat: default value is Standard_False
 	:type errstat: bool
 	:rtype: bool") CheckDerived;
@@ -2314,7 +2314,7 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param nbreq:
 	:type nbreq: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param mess: default value is ""
 	:type mess: char *
 	:rtype: bool") CheckNbParams;
@@ -2326,7 +2326,7 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param num:
 	:type num: int
 	:param types:
-	:type types: TColStd_SequenceOfAsciiString &
+	:type types: TColStd_SequenceOfAsciiString
 	:rtype: None") ComplexType;
 		void ComplexType (const Standard_Integer num,TColStd_SequenceOfAsciiString & types);
 
@@ -2340,7 +2340,7 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") FailEnumValue;
 		void FailEnumValue (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach);
 
@@ -2382,9 +2382,9 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param num0:
 	:type num0: int
 	:param num:
-	:type num: int &
+	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: bool") NamedForComplex;
 		Standard_Boolean NamedForComplex (const char * name,const Standard_Integer num0,Standard_Integer &OutValue,opencascade::handle<Interface_Check> & ach);
 
@@ -2398,9 +2398,9 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param num0:
 	:type num0: int
 	:param num:
-	:type num: int &
+	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: bool") NamedForComplex;
 		Standard_Boolean NamedForComplex (const char * theName,const char * theShortName,const Standard_Integer num0,Standard_Integer &OutValue,opencascade::handle<Interface_Check> & ach);
 
@@ -2434,11 +2434,11 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param descr:
-	:type descr: opencascade::handle<StepData_PDescr> &
+	:type descr: StepData_PDescr
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: bool") ReadAny;
 		Standard_Boolean ReadAny (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepData_PDescr> & descr,opencascade::handle<Standard_Transient> & val);
 
@@ -2452,7 +2452,7 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param flag:
 	:type flag: bool
 	:rtype: bool") ReadBoolean;
@@ -2468,11 +2468,11 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param enumtool:
-	:type enumtool: StepData_EnumTool &
+	:type enumtool: StepData_EnumTool
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") ReadEnum;
 		Standard_Boolean ReadEnum (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,const StepData_EnumTool & enumtool,Standard_Integer &OutValue);
 
@@ -2485,9 +2485,9 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param text:
-	:type text: char * &
+	:type text: char *
 	:rtype: bool") ReadEnumParam;
 		Standard_Boolean ReadEnumParam (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,const char * & text);
 
@@ -2501,11 +2501,11 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param descr:
-	:type descr: opencascade::handle<StepData_PDescr> &
+	:type descr: StepData_PDescr
 	:param fild:
-	:type fild: StepData_Field &
+	:type fild: StepData_Field
 	:rtype: bool") ReadField;
 		Standard_Boolean ReadField (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepData_PDescr> & descr,StepData_Field & fild);
 
@@ -2519,9 +2519,9 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") ReadInteger;
 		Standard_Boolean ReadInteger (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,Standard_Integer &OutValue);
 
@@ -2531,11 +2531,11 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param descr:
-	:type descr: opencascade::handle<StepData_ESDescr> &
+	:type descr: StepData_ESDescr
 	:param list:
-	:type list: StepData_FieldList &
+	:type list: StepData_FieldList
 	:rtype: bool") ReadList;
 		Standard_Boolean ReadList (const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepData_ESDescr> & descr,StepData_FieldList & list);
 
@@ -2549,9 +2549,9 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param flag:
-	:type flag: StepData_Logical &
+	:type flag: StepData_Logical
 	:rtype: bool") ReadLogical;
 		Standard_Boolean ReadLogical (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,StepData_Logical & flag);
 
@@ -2565,9 +2565,9 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param val:
-	:type val: float &
+	:type val: float
 	:rtype: bool") ReadReal;
 		Standard_Boolean ReadReal (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,Standard_Real &OutValue);
 
@@ -2581,9 +2581,9 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: bool") ReadString;
 		Standard_Boolean ReadString (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -2595,11 +2595,11 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param descr:
-	:type descr: opencascade::handle<StepData_PDescr> &
+	:type descr: StepData_PDescr
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: int") ReadSub;
 		Standard_Integer ReadSub (const Standard_Integer numsub,const char * mess,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepData_PDescr> & descr,opencascade::handle<Standard_Transient> & val);
 
@@ -2613,9 +2613,9 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param numsub:
-	:type numsub: int &
+	:type numsub: int
 	:param optional: default value is Standard_False
 	:type optional: bool
 	:param lenmin: default value is 0
@@ -2637,13 +2637,13 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param numr:
-	:type numr: int &
+	:type numr: int
 	:param numrp:
-	:type numrp: int &
+	:type numrp: int
 	:param typ:
-	:type typ: TCollection_AsciiString &
+	:type typ: TCollection_AsciiString
 	:rtype: bool") ReadTypedParam;
 		Standard_Boolean ReadTypedParam (const Standard_Integer num,const Standard_Integer nump,const Standard_Boolean mustbetyped,const char * mess,opencascade::handle<Interface_Check> & ach,Standard_Integer &OutValue,Standard_Integer &OutValue,TCollection_AsciiString & typ);
 
@@ -2657,11 +2657,11 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:rtype: bool") ReadXY;
 		Standard_Boolean ReadXY (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2675,13 +2675,13 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 	:param mess:
 	:type mess: char *
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: bool") ReadXYZ;
 		Standard_Boolean ReadXYZ (const Standard_Integer num,const Standard_Integer nump,const char * mess,opencascade::handle<Interface_Check> & ach,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2770,9 +2770,9 @@ class StepData_StepReaderTool : public Interface_FileReaderTool {
 	:param num:
 	:type num: int
 	:param anent:
-	:type anent: opencascade::handle<Standard_Transient> &
+	:type anent: Standard_Transient
 	:param acheck:
-	:type acheck: opencascade::handle<Interface_Check> &
+	:type acheck: Interface_Check
 	:rtype: bool") AnalyseRecord;
 		Standard_Boolean AnalyseRecord (const Standard_Integer num,const opencascade::handle<Standard_Transient> & anent,opencascade::handle<Interface_Check> & acheck);
 
@@ -2780,7 +2780,7 @@ class StepData_StepReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") BeginRead;
 		%feature("autodoc", "* fills model's header; that is, gives to it Header entities and commands their loading. Also fills StepModel's Global Check from StepReaderData's GlobalCheck
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") BeginRead;
 		void BeginRead (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2788,7 +2788,7 @@ class StepData_StepReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") EndRead;
 		%feature("autodoc", "* Ends file reading after reading all the entities Here, it binds in the model, Idents to Entities (for checks)
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: void") EndRead;
 		virtual void EndRead (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2804,7 +2804,7 @@ class StepData_StepReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") Prepare;
 		%feature("autodoc", "* Bounds empty entities to records, works with a specific FileRecognizer, stored and later used in Recognize Works only on data entities (skips header) <optimize : same as above
 	:param reco:
-	:type reco: opencascade::handle<StepData_FileRecognizer> &
+	:type reco: StepData_FileRecognizer
 	:param optimize: default value is Standard_True
 	:type optimize: bool
 	:rtype: None") Prepare;
@@ -2814,7 +2814,7 @@ class StepData_StepReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") PrepareHeader;
 		%feature("autodoc", "* bounds empty entities and sub-lists to header records works like Prepare + SetEntityNumbers, but for header (N.B.: in Header, no Ident and no reference) FileRecognizer is to specify Entities which are allowed to be defined in the Header (not every type can be)
 	:param reco:
-	:type reco: opencascade::handle<StepData_FileRecognizer> &
+	:type reco: StepData_FileRecognizer
 	:rtype: None") PrepareHeader;
 		void PrepareHeader (const opencascade::handle<StepData_FileRecognizer> & reco);
 
@@ -2824,9 +2824,9 @@ class StepData_StepReaderTool : public Interface_FileReaderTool {
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") Recognize;
 		Standard_Boolean Recognize (const Standard_Integer num,opencascade::handle<Interface_Check> & ach,opencascade::handle<Standard_Transient> & ent);
 
@@ -2834,9 +2834,9 @@ class StepData_StepReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") StepData_StepReaderTool;
 		%feature("autodoc", "* creates StepReaderTool to work with a StepReaderData according to a Step Protocol. Defines the ReaderLib at this time
 	:param reader:
-	:type reader: opencascade::handle<StepData_StepReaderData> &
+	:type reader: StepData_StepReaderData
 	:param protocol:
-	:type protocol: opencascade::handle<StepData_Protocol> &
+	:type protocol: StepData_Protocol
 	:rtype: None") StepData_StepReaderTool;
 		 StepData_StepReaderTool (const opencascade::handle<StepData_StepReaderData> & reader,const opencascade::handle<StepData_Protocol> & protocol);
 
@@ -3012,7 +3012,7 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "* sends a text given as string (it will be set between '...')
 	:param val:
-	:type val: TCollection_AsciiString &
+	:type val: TCollection_AsciiString
 	:rtype: None") Send;
 		void Send (const TCollection_AsciiString & val);
 
@@ -3020,7 +3020,7 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "* sends a reference to an entity (its identifier with '#') REMARK 1 : a Null <val> is interpreted as 'Undefined' REMARK 2 : for an HAsciiString which is not recorded in the Model, it is send as its String Content, between quotes
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: None") Send;
 		void Send (const opencascade::handle<Standard_Transient> & val);
 
@@ -3028,7 +3028,7 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") SendArrReal;
 		%feature("autodoc", "* sends an array of real
 	:param anArr:
-	:type anArr: opencascade::handle<TColStd_HArray1OfReal> &
+	:type anArr: TColStd_HArray1OfReal
 	:rtype: None") SendArrReal;
 		void SendArrReal (const opencascade::handle<TColStd_HArray1OfReal> & anArr);
 
@@ -3044,7 +3044,7 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") SendComment;
 		%feature("autodoc", "* sends a comment. Error if we are not inside a comment zone
 	:param text:
-	:type text: opencascade::handle<TCollection_HAsciiString> &
+	:type text: TCollection_HAsciiString
 	:rtype: None") SendComment;
 		void SendComment (const opencascade::handle<TCollection_HAsciiString> & text);
 
@@ -3080,7 +3080,7 @@ class StepData_StepWriter {
 	:param nument:
 	:type nument: int
 	:param lib:
-	:type lib: StepData_WriterLib &
+	:type lib: StepData_WriterLib
 	:rtype: None") SendEntity;
 		void SendEntity (const Standard_Integer nument,const StepData_WriterLib & lib);
 
@@ -3088,7 +3088,7 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") SendEnum;
 		%feature("autodoc", "* sends an enum given by String (litteral expression) adds '.' around it if not done Remark : val can be computed by class EnumTool from StepData: StepWriter.SendEnum (myenum.Text(enumval));
 	:param val:
-	:type val: TCollection_AsciiString &
+	:type val: TCollection_AsciiString
 	:rtype: None") SendEnum;
 		void SendEnum (const TCollection_AsciiString & val);
 
@@ -3104,9 +3104,9 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") SendField;
 		%feature("autodoc", "* Sends the content of a field, controlled by its descriptor If the descriptor is not defined, follows the description detained by the field itself
 	:param fild:
-	:type fild: StepData_Field &
+	:type fild: StepData_Field
 	:param descr:
-	:type descr: opencascade::handle<StepData_PDescr> &
+	:type descr: StepData_PDescr
 	:rtype: None") SendField;
 		void SendField (const StepData_Field & fild,const opencascade::handle<StepData_PDescr> & descr);
 
@@ -3128,9 +3128,9 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") SendList;
 		%feature("autodoc", "* Send the content of an entity as being a FieldList controlled by its descriptor. This includes start and end brackets but not the entity type
 	:param list:
-	:type list: StepData_FieldList &
+	:type list: StepData_FieldList
 	:param descr:
-	:type descr: opencascade::handle<StepData_ESDescr> &
+	:type descr: StepData_ESDescr
 	:rtype: None") SendList;
 		void SendList (const StepData_FieldList & list,const opencascade::handle<StepData_ESDescr> & descr);
 
@@ -3146,7 +3146,7 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") SendModel;
 		%feature("autodoc", "* Sends the complete Model, included HEADER and DATA Sections Works with a WriterLib defined through a Protocol If <headeronly> is given True, only the HEADER Section is sent (used to Dump the Header of a StepModel)
 	:param protocol:
-	:type protocol: opencascade::handle<StepData_Protocol> &
+	:type protocol: StepData_Protocol
 	:param headeronly: default value is Standard_False
 	:type headeronly: bool
 	:rtype: None") SendModel;
@@ -3162,9 +3162,9 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") SendSelect;
 		%feature("autodoc", "* Sends a SelectMember, which cab be named or not
 	:param sm:
-	:type sm: opencascade::handle<StepData_SelectMember> &
+	:type sm: StepData_SelectMember
 	:param descr:
-	:type descr: opencascade::handle<StepData_PDescr> &
+	:type descr: StepData_PDescr
 	:rtype: None") SendSelect;
 		void SendSelect (const opencascade::handle<StepData_SelectMember> & sm,const opencascade::handle<StepData_PDescr> & descr);
 
@@ -3172,7 +3172,7 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") SendString;
 		%feature("autodoc", "* sends a string exactly as it is given
 	:param val:
-	:type val: TCollection_AsciiString &
+	:type val: TCollection_AsciiString
 	:rtype: None") SendString;
 		void SendString (const TCollection_AsciiString & val);
 
@@ -3210,7 +3210,7 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") StartEntity;
 		%feature("autodoc", "* sets entity's StepType, opens brakets, starts param no to 0 params are separated by comma Remark : for a Multiple Type Entity (see Express ANDOR clause) StartComplex must be called before sending componants, then each 'Componant' must be send separately (one call to StartEntity for each one) : the Type which preceeds is then automaticaly closed. Once all the componants have been sent, EndComplex must be called, then and only then EndEntity
 	:param atype:
-	:type atype: TCollection_AsciiString &
+	:type atype: TCollection_AsciiString
 	:rtype: None") StartEntity;
 		void StartEntity (const TCollection_AsciiString & atype);
 
@@ -3218,7 +3218,7 @@ class StepData_StepWriter {
 		%feature("compactdefaultargs") StepData_StepWriter;
 		%feature("autodoc", "* Creates an empty StepWriter from a StepModel. The StepModel provides the Number of Entities, as identifiers for File
 	:param amodel:
-	:type amodel: opencascade::handle<StepData_StepModel> &
+	:type amodel: StepData_StepModel
 	:rtype: None") StepData_StepWriter;
 		 StepData_StepWriter (const opencascade::handle<StepData_StepModel> & amodel);
 
@@ -3256,7 +3256,7 @@ class StepData_WriterLib {
 		%feature("compactdefaultargs") AddProtocol;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added)
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Standard_Transient> &
+	:type aprotocol: Standard_Transient
 	:rtype: None") AddProtocol;
 		void AddProtocol (const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -3294,11 +3294,11 @@ class StepData_WriterLib {
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "* Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType)
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:param module:
-	:type module: opencascade::handle<StepData_ReadWriteModule> &
+	:type module: StepData_ReadWriteModule
 	:param CN:
-	:type CN: int &
+	:type CN: int
 	:rtype: bool") Select;
 		Standard_Boolean Select (const opencascade::handle<Standard_Transient> & obj,opencascade::handle<StepData_ReadWriteModule> & module,Standard_Integer &OutValue);
 
@@ -3312,9 +3312,9 @@ class StepData_WriterLib {
 		%feature("compactdefaultargs") SetGlobal;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 	:param amodule:
-	:type amodule: opencascade::handle<StepData_ReadWriteModule> &
+	:type amodule: StepData_ReadWriteModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<StepData_Protocol> &
+	:type aprotocol: StepData_Protocol
 	:rtype: void") SetGlobal;
 		static void SetGlobal (const opencascade::handle<StepData_ReadWriteModule> & amodule,const opencascade::handle<StepData_Protocol> & aprotocol);
 
@@ -3328,7 +3328,7 @@ class StepData_WriterLib {
 		%feature("compactdefaultargs") StepData_WriterLib;
 		%feature("autodoc", "* Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<StepData_Protocol> &
+	:type aprotocol: StepData_Protocol
 	:rtype: None") StepData_WriterLib;
 		 StepData_WriterLib (const opencascade::handle<StepData_Protocol> & aprotocol);
 
@@ -3359,11 +3359,11 @@ class StepData_DefaultGeneral : public StepData_GeneralModule {
 	:param casenum:
 	:type casenum: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param shares:
-	:type shares: Interface_ShareTool &
+	:type shares: Interface_ShareTool
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") CheckCase;
 		void CheckCase (const Standard_Integer casenum,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 
@@ -3373,11 +3373,11 @@ class StepData_DefaultGeneral : public StepData_GeneralModule {
 	:param casenum:
 	:type casenum: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: None") CopyCase;
 		void CopyCase (const Standard_Integer casenum,const opencascade::handle<Standard_Transient> & entfrom,const opencascade::handle<Standard_Transient> & entto,Interface_CopyTool & TC);
 
@@ -3387,9 +3387,9 @@ class StepData_DefaultGeneral : public StepData_GeneralModule {
 	:param casenum:
 	:type casenum: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") FillSharedCase;
 		void FillSharedCase (const Standard_Integer casenum,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & iter);
 
@@ -3399,7 +3399,7 @@ class StepData_DefaultGeneral : public StepData_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:rtype: bool") NewVoid;
 		Standard_Boolean NewVoid (const Standard_Integer CN,opencascade::handle<Standard_Transient> & entto);
 
@@ -3430,7 +3430,7 @@ class StepData_ECDescr : public StepData_EDescr {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a member Warning : members are added in alphabetic order
 	:param member:
-	:type member: opencascade::handle<StepData_ESDescr> &
+	:type member: StepData_ESDescr
 	:rtype: None") Add;
 		void Add (const opencascade::handle<StepData_ESDescr> & member);
 
@@ -3521,7 +3521,7 @@ class StepData_ESDescr : public StepData_EDescr {
 		%feature("compactdefaultargs") IsSub;
 		%feature("autodoc", "* Tells if <self> is sub-type of (or equal to) another one
 	:param other:
-	:type other: opencascade::handle<StepData_ESDescr> &
+	:type other: StepData_ESDescr
 	:rtype: bool") IsSub;
 		Standard_Boolean IsSub (const opencascade::handle<StepData_ESDescr> & other);
 
@@ -3573,7 +3573,7 @@ class StepData_ESDescr : public StepData_EDescr {
 		%feature("compactdefaultargs") SetBase;
 		%feature("autodoc", "* Sets an ESDescr as based on another one Hence, if there are inherited fields, the derived ESDescr cumulates all them, while the base just records its own ones
 	:param base:
-	:type base: opencascade::handle<StepData_ESDescr> &
+	:type base: StepData_ESDescr
 	:rtype: None") SetBase;
 		void SetBase (const opencascade::handle<StepData_ESDescr> & base);
 
@@ -3585,7 +3585,7 @@ class StepData_ESDescr : public StepData_EDescr {
 	:param name:
 	:type name: char *
 	:param descr:
-	:type descr: opencascade::handle<StepData_PDescr> &
+	:type descr: StepData_PDescr
 	:rtype: None") SetField;
 		void SetField (const Standard_Integer num,const char * name,const opencascade::handle<StepData_PDescr> & descr);
 
@@ -3601,7 +3601,7 @@ class StepData_ESDescr : public StepData_EDescr {
 		%feature("compactdefaultargs") SetSuper;
 		%feature("autodoc", "* Sets an ESDescr as 'super-type'. Applies an a base (non derived) ESDescr
 	:param super:
-	:type super: opencascade::handle<StepData_ESDescr> &
+	:type super: StepData_ESDescr
 	:rtype: None") SetSuper;
 		void SetSuper (const opencascade::handle<StepData_ESDescr> & super);
 
@@ -3793,7 +3793,7 @@ class StepData_FileProtocol : public StepData_Protocol {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Protocol to the definition list of the FileProtocol But ensures that each class of Protocol is present only once in this list
 	:param protocol:
-	:type protocol: opencascade::handle<StepData_Protocol> &
+	:type protocol: StepData_Protocol
 	:rtype: None") Add;
 		void Add (const opencascade::handle<StepData_Protocol> & protocol);
 
@@ -3801,9 +3801,9 @@ class StepData_FileProtocol : public StepData_Protocol {
 		%feature("compactdefaultargs") GlobalCheck;
 		%feature("autodoc", "* Calls GlobalCheck for each of its recorded ressources
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: bool") GlobalCheck;
 		virtual Standard_Boolean GlobalCheck (const Interface_Graph & G,opencascade::handle<Interface_Check> & ach);
 
@@ -3837,7 +3837,7 @@ class StepData_FileProtocol : public StepData_Protocol {
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "* Returns a Case Number, specific of each recognized Type Here, NO Type at all is recognized properly : all Types are recognized by the resources
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: int") TypeNumber;
 		virtual Standard_Integer TypeNumber (const opencascade::handle<Standard_Type> & atype);
 
@@ -3862,7 +3862,7 @@ class StepData_Plex : public StepData_Described {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a member to <self>
 	:param member:
-	:type member: opencascade::handle<StepData_Simple> &
+	:type member: StepData_Simple
 	:rtype: None") Add;
 		void Add (const opencascade::handle<StepData_Simple> & member);
 
@@ -3886,7 +3886,7 @@ class StepData_Plex : public StepData_Described {
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "* Fills a Check by using its Description
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") Check;
 		void Check (opencascade::handle<Interface_Check> & ach);
 
@@ -3944,7 +3944,7 @@ class StepData_Plex : public StepData_Described {
 		%feature("compactdefaultargs") Shared;
 		%feature("autodoc", "* Fills an EntityIterator with entities shared by <self>
 	:param list:
-	:type list: Interface_EntityIterator &
+	:type list: Interface_EntityIterator
 	:rtype: None") Shared;
 		void Shared (Interface_EntityIterator & list);
 
@@ -3952,7 +3952,7 @@ class StepData_Plex : public StepData_Described {
 		%feature("compactdefaultargs") StepData_Plex;
 		%feature("autodoc", "* Creates a Plex (empty). The complete creation is made by the ECDescr itself, by calling Add
 	:param descr:
-	:type descr: opencascade::handle<StepData_ECDescr> &
+	:type descr: StepData_ECDescr
 	:rtype: None") StepData_Plex;
 		 StepData_Plex (const opencascade::handle<StepData_ECDescr> & descr);
 
@@ -4197,7 +4197,7 @@ class StepData_Simple : public StepData_Described {
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "* Fills a Check by using its Description
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") Check;
 		void Check (opencascade::handle<Interface_Check> & ach);
 
@@ -4261,7 +4261,7 @@ class StepData_Simple : public StepData_Described {
 		%feature("compactdefaultargs") Shared;
 		%feature("autodoc", "* Fills an EntityIterator with entities shared by <self>
 	:param list:
-	:type list: Interface_EntityIterator &
+	:type list: Interface_EntityIterator
 	:rtype: None") Shared;
 		void Shared (Interface_EntityIterator & list);
 
@@ -4269,7 +4269,7 @@ class StepData_Simple : public StepData_Described {
 		%feature("compactdefaultargs") StepData_Simple;
 		%feature("autodoc", "* Creates a Simple Entity
 	:param descr:
-	:type descr: opencascade::handle<StepData_ESDescr> &
+	:type descr: StepData_ESDescr
 	:rtype: None") StepData_Simple;
 		 StepData_Simple (const opencascade::handle<StepData_ESDescr> & descr);
 
@@ -4309,7 +4309,7 @@ class StepData_SelectArrReal : public StepData_SelectNamed {
 		/****************** SetArrReal ******************/
 		%feature("compactdefaultargs") SetArrReal;
 		%feature("autodoc", ":param arr:
-	:type arr: opencascade::handle<TColStd_HArray1OfReal> &
+	:type arr: TColStd_HArray1OfReal
 	:rtype: None") SetArrReal;
 		void SetArrReal (const opencascade::handle<TColStd_HArray1OfReal> & arr);
 

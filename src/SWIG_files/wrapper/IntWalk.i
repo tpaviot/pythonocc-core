@@ -106,24 +106,24 @@ class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 		%feature("autodoc", ":param ChoixIso:
 	:type ChoixIso: IntImp_ConstIsoparametric
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param UVap:
-	:type UVap: math_Vector &
+	:type UVap: math_Vector
 	:param BornInf:
-	:type BornInf: math_Vector &
+	:type BornInf: math_Vector
 	:param BornSup:
-	:type BornSup: math_Vector &
+	:type BornSup: math_Vector
 	:param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:rtype: None") ComputeParameters;
 		void ComputeParameters (const IntImp_ConstIsoparametric ChoixIso,const TColStd_Array1OfReal & Param,math_Vector & UVap,math_Vector & BornInf,math_Vector & BornSup,math_Vector & Tolerance);
 
 		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -145,20 +145,20 @@ class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 		/****************** IntWalk_TheFunctionOfTheInt2S ******************/
 		%feature("compactdefaultargs") IntWalk_TheFunctionOfTheInt2S;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:rtype: None") IntWalk_TheFunctionOfTheInt2S;
 		 IntWalk_TheFunctionOfTheInt2S (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2);
 
 		/****************** IsTangent ******************/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", ":param UVap:
-	:type UVap: math_Vector &
+	:type UVap: math_Vector
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param BestChoix:
-	:type BestChoix: IntImp_ConstIsoparametric &
+	:type BestChoix: IntImp_ConstIsoparametric
 	:rtype: bool") IsTangent;
 		Standard_Boolean IsTangent (const math_Vector & UVap,TColStd_Array1OfReal & Param,IntImp_ConstIsoparametric & BestChoix);
 
@@ -186,20 +186,20 @@ class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -252,11 +252,11 @@ class IntWalk_TheInt2S {
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
 		%feature("autodoc", "* compute the solution point with the close point
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param TolTangency:
 	:type TolTangency: float
 	:rtype: None") IntWalk_TheInt2S;
@@ -266,9 +266,9 @@ class IntWalk_TheInt2S {
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
 		%feature("autodoc", "* initialize the parameters to compute the solution point it 's possible to write to optimize: IntImp_Int2S inter(S1,S2,Func,TolTangency); math_FunctionSetRoot rsnld(inter.Function()); while ...{ Param(1)=... Param(2)=... param(3)=... inter.Perform(Param,rsnld); }
 	:param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param TolTangency:
 	:type TolTangency: float
 	:rtype: None") IntWalk_TheInt2S;
@@ -296,9 +296,9 @@ class IntWalk_TheInt2S {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated)
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param Rsnld:
-	:type Rsnld: math_FunctionSetRoot &
+	:type Rsnld: math_FunctionSetRoot
 	:rtype: IntImp_ConstIsoparametric") Perform;
 		IntImp_ConstIsoparametric Perform (const TColStd_Array1OfReal & Param,math_FunctionSetRoot & Rsnld);
 
@@ -306,9 +306,9 @@ class IntWalk_TheInt2S {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by ChoixIso)
 	:param Param:
-	:type Param: TColStd_Array1OfReal &
+	:type Param: TColStd_Array1OfReal
 	:param Rsnld:
-	:type Rsnld: math_FunctionSetRoot &
+	:type Rsnld: math_FunctionSetRoot
 	:param ChoixIso:
 	:type ChoixIso: IntImp_ConstIsoparametric
 	:rtype: IntImp_ConstIsoparametric") Perform;

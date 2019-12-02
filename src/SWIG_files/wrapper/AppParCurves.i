@@ -238,11 +238,11 @@ class AppParCurves {
 		%feature("autodoc", ":param NbPoles:
 	:type NbPoles: int
 	:param U:
-	:type U: math_Vector &
+	:type U: math_Vector
 	:param A:
-	:type A: math_Matrix &
+	:type A: math_Matrix
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:rtype: void") Bernstein;
 		static void Bernstein (const Standard_Integer NbPoles,const math_Vector & U,math_Matrix & A,math_Matrix & DA);
 
@@ -251,9 +251,9 @@ class AppParCurves {
 		%feature("autodoc", ":param NbPoles:
 	:type NbPoles: int
 	:param U:
-	:type U: math_Vector &
+	:type U: math_Vector
 	:param A:
-	:type A: math_Matrix &
+	:type A: math_Matrix
 	:rtype: void") BernsteinMatrix;
 		static void BernsteinMatrix (const Standard_Integer NbPoles,const math_Vector & U,math_Matrix & A);
 
@@ -262,7 +262,7 @@ class AppParCurves {
 		%feature("autodoc", ":param U:
 	:type U: float
 	:param DDA:
-	:type DDA: math_Vector &
+	:type DDA: math_Vector
 	:rtype: void") SecondDerivativeBernstein;
 		static void SecondDerivativeBernstein (const Standard_Real U,math_Vector & DDA);
 
@@ -273,15 +273,15 @@ class AppParCurves {
 	:param Degree:
 	:type Degree: int
 	:param Parameters:
-	:type Parameters: math_Vector &
+	:type Parameters: math_Vector
 	:param FlatKnots:
-	:type FlatKnots: math_Vector &
+	:type FlatKnots: math_Vector
 	:param A:
-	:type A: math_Matrix &
+	:type A: math_Matrix
 	:param DA:
-	:type DA: math_Matrix &
+	:type DA: math_Matrix
 	:param Index:
-	:type Index: math_IntegerVector &
+	:type Index: math_IntegerVector
 	:rtype: void") SplineFunction;
 		static void SplineFunction (const Standard_Integer NbPoles,const Standard_Integer Degree,const math_Vector & Parameters,const math_Vector & FlatKnots,math_Matrix & A,math_Matrix & DA,math_IntegerVector & Index);
 
@@ -377,7 +377,7 @@ class AppParCurves_MultiCurve {
 		%feature("compactdefaultargs") AppParCurves_MultiCurve;
 		%feature("autodoc", "* creates a MultiCurve, describing Bezier curves all containing the same number of MultiPoint. Each MultiPoint must have NbCurves Poles.
 	:param tabMU:
-	:type tabMU: AppParCurves_Array1OfMultiPoint &
+	:type tabMU: AppParCurves_Array1OfMultiPoint
 	:rtype: None") AppParCurves_MultiCurve;
 		 AppParCurves_MultiCurve (const AppParCurves_Array1OfMultiPoint & tabMU);
 
@@ -529,7 +529,7 @@ class AppParCurves_MultiCurve {
 	:param Index:
 	:type Index: int
 	:param MPoint:
-	:type MPoint: AppParCurves_MultiPoint &
+	:type MPoint: AppParCurves_MultiPoint
 	:rtype: None") SetValue;
 		void SetValue (const Standard_Integer Index,const AppParCurves_MultiPoint & MPoint);
 
@@ -791,11 +791,11 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 		%feature("compactdefaultargs") AppParCurves_MultiBSpCurve;
 		%feature("autodoc", "* creates a MultiBSpCurve, describing BSpline curves all containing the same number of MultiPoint. Each MultiPoint must have NbCurves Poles.
 	:param tabMU:
-	:type tabMU: AppParCurves_Array1OfMultiPoint &
+	:type tabMU: AppParCurves_Array1OfMultiPoint
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: None") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve (const AppParCurves_Array1OfMultiPoint & tabMU,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults);
 
@@ -803,11 +803,11 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 		%feature("compactdefaultargs") AppParCurves_MultiBSpCurve;
 		%feature("autodoc", "* creates a MultiBSpCurve, describing BSpline curves, taking control points from <SC>.
 	:param SC:
-	:type SC: AppParCurves_MultiCurve &
+	:type SC: AppParCurves_MultiCurve
 	:param Knots:
-	:type Knots: TColStd_Array1OfReal &
+	:type Knots: TColStd_Array1OfReal
 	:param Mults:
-	:type Mults: TColStd_Array1OfInteger &
+	:type Mults: TColStd_Array1OfInteger
 	:rtype: None") AppParCurves_MultiBSpCurve;
 		 AppParCurves_MultiBSpCurve (const AppParCurves_MultiCurve & SC,const TColStd_Array1OfReal & Knots,const TColStd_Array1OfInteger & Mults);
 
@@ -901,7 +901,7 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "* Knots of the multiBSpCurve are assigned to <theknots>.
 	:param theKnots:
-	:type theKnots: TColStd_Array1OfReal &
+	:type theKnots: TColStd_Array1OfReal
 	:rtype: None") SetKnots;
 		void SetKnots (const TColStd_Array1OfReal & theKnots);
 
@@ -909,7 +909,7 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 		%feature("compactdefaultargs") SetMultiplicities;
 		%feature("autodoc", "* Multiplicities of the multiBSpCurve are assigned to <theMults>.
 	:param theMults:
-	:type theMults: TColStd_Array1OfInteger &
+	:type theMults: TColStd_Array1OfInteger
 	:rtype: None") SetMultiplicities;
 		void SetMultiplicities (const TColStd_Array1OfInteger & theMults);
 

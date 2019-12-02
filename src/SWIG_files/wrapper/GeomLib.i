@@ -134,7 +134,7 @@ class GeomLib {
 		/****************** AdjustExtremity ******************/
 		%feature("compactdefaultargs") AdjustExtremity;
 		%feature("autodoc", ":param Curve:
-	:type Curve: opencascade::handle<Geom_BoundedCurve> &
+	:type Curve: Geom_BoundedCurve
 	:param P1:
 	:type P1: gp_Pnt
 	:param P2:
@@ -165,17 +165,17 @@ class GeomLib {
 		%feature("autodoc", ":param Tolerance:
 	:type Tolerance: float
 	:param CurvePtr:
-	:type CurvePtr: Adaptor3d_CurveOnSurface &
+	:type CurvePtr: Adaptor3d_CurveOnSurface
 	:param FirstParameter:
 	:type FirstParameter: float
 	:param LastParameter:
 	:type LastParameter: float
 	:param NewCurvePtr:
-	:type NewCurvePtr: opencascade::handle<Geom_Curve> &
+	:type NewCurvePtr: Geom_Curve
 	:param MaxDeviation:
-	:type MaxDeviation: float &
+	:type MaxDeviation: float
 	:param AverageDeviation:
-	:type AverageDeviation: float &
+	:type AverageDeviation: float
 	:param Continuity: default value is GeomAbs_C1
 	:type Continuity: GeomAbs_Shape
 	:param MaxDegree: default value is 14
@@ -189,7 +189,7 @@ class GeomLib {
 		%feature("compactdefaultargs") CancelDenominatorDerivative;
 		%feature("autodoc", "* Cancel,on the boudaries,the denominator first derivative in the directions wished by the user and set its value to 1.
 	:param BSurf:
-	:type BSurf: opencascade::handle<Geom_BSplineSurface> &
+	:type BSurf: Geom_BSplineSurface
 	:param UDirection:
 	:type UDirection: bool
 	:param VDirection:
@@ -203,9 +203,9 @@ class GeomLib {
 	:param MinNumPoints:
 	:type MinNumPoints: int
 	:param InParameters:
-	:type InParameters: TColStd_Array1OfReal &
+	:type InParameters: TColStd_Array1OfReal
 	:param OutParameters:
-	:type OutParameters: opencascade::handle<TColStd_HArray1OfReal> &
+	:type OutParameters: TColStd_HArray1OfReal
 	:rtype: void") DensifyArray1OfReal;
 		static void DensifyArray1OfReal (const Standard_Integer MinNumPoints,const TColStd_Array1OfReal & InParameters,opencascade::handle<TColStd_HArray1OfReal> & OutParameters);
 
@@ -213,15 +213,15 @@ class GeomLib {
 		%feature("compactdefaultargs") EvalMaxDistanceAlongParameter;
 		%feature("autodoc", "* this will compute the maximum distancef at the parameters given in the Parameters array by projecting from the Curve to the reference curve and taking the minimum distance Than the maximum will be taken on those minimas.
 	:param Curve:
-	:type Curve: Adaptor3d_Curve &
+	:type Curve: Adaptor3d_Curve
 	:param AReferenceCurve:
-	:type AReferenceCurve: Adaptor3d_Curve &
+	:type AReferenceCurve: Adaptor3d_Curve
 	:param Tolerance:
 	:type Tolerance: float
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param MaxDistance:
-	:type MaxDistance: float &
+	:type MaxDistance: float
 	:rtype: void") EvalMaxDistanceAlongParameter;
 		static void EvalMaxDistanceAlongParameter (const Adaptor3d_Curve & Curve,const Adaptor3d_Curve & AReferenceCurve,const Standard_Real Tolerance,const TColStd_Array1OfReal & Parameters,Standard_Real &OutValue);
 
@@ -229,15 +229,15 @@ class GeomLib {
 		%feature("compactdefaultargs") EvalMaxParametricDistance;
 		%feature("autodoc", "* this will compute the maximum distance at the parameters given in the Parameters array by evaluating each parameter the two curves and taking the maximum of the evaluated distance
 	:param Curve:
-	:type Curve: Adaptor3d_Curve &
+	:type Curve: Adaptor3d_Curve
 	:param AReferenceCurve:
-	:type AReferenceCurve: Adaptor3d_Curve &
+	:type AReferenceCurve: Adaptor3d_Curve
 	:param Tolerance:
 	:type Tolerance: float
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param MaxDistance:
-	:type MaxDistance: float &
+	:type MaxDistance: float
 	:rtype: void") EvalMaxParametricDistance;
 		static void EvalMaxParametricDistance (const Adaptor3d_Curve & Curve,const Adaptor3d_Curve & AReferenceCurve,const Standard_Real Tolerance,const TColStd_Array1OfReal & Parameters,Standard_Real &OutValue);
 
@@ -245,7 +245,7 @@ class GeomLib {
 		%feature("compactdefaultargs") ExtendCurveToPoint;
 		%feature("autodoc", "* Extends the bounded curve Curve to the point Point. The extension is built: - at the end of the curve if After equals true, or - at the beginning of the curve if After equals false. The extension is performed according to a degree of continuity equal to Cont, which in its turn must be equal to 1, 2 or 3. This function converts the bounded curve Curve into a BSpline curve. Warning - Nothing is done, and Curve is not modified if Cont is not equal to 1, 2 or 3. - It is recommended that the extension should not be too large with respect to the size of the bounded curve Curve: Point must not be located too far from one of the extremities of Curve.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_BoundedCurve> &
+	:type Curve: Geom_BoundedCurve
 	:param Point:
 	:type Point: gp_Pnt
 	:param Cont:
@@ -259,7 +259,7 @@ class GeomLib {
 		%feature("compactdefaultargs") ExtendSurfByLength;
 		%feature("autodoc", "* Extends the bounded surface Surf along one of its boundaries. The chord length of the extension is equal to Length. The direction of the extension is given as: - the u parametric direction of Surf, if InU equals true, or - the v parametric direction of Surf, if InU equals false. In this parametric direction, the extension is built on the side of: - the last parameter of Surf, if After equals true, or - the first parameter of Surf, if After equals false. The extension is performed according to a degree of continuity equal to Cont, which in its turn must be equal to 1, 2 or 3. This function converts the bounded surface Surf into a BSpline surface. Warning - Nothing is done, and Surf is not modified if Cont is not equal to 1, 2 or 3. - It is recommended that Length, the size of the extension should not be too large with respect to the size of the bounded surface Surf. - Surf must not be a periodic BSpline surface in the parametric direction corresponding to the direction of extension.
 	:param Surf:
-	:type Surf: opencascade::handle<Geom_BoundedSurface> &
+	:type Surf: Geom_BoundedSurface
 	:param Length:
 	:type Length: float
 	:param Cont:
@@ -274,11 +274,11 @@ class GeomLib {
 		/****************** FuseIntervals ******************/
 		%feature("compactdefaultargs") FuseIntervals;
 		%feature("autodoc", ":param Interval1:
-	:type Interval1: TColStd_Array1OfReal &
+	:type Interval1: TColStd_Array1OfReal
 	:param Interval2:
-	:type Interval2: TColStd_Array1OfReal &
+	:type Interval2: TColStd_Array1OfReal
 	:param Fusion:
-	:type Fusion: TColStd_SequenceOfReal &
+	:type Fusion: TColStd_SequenceOfReal
 	:param Confusion: default value is 1.0e-9
 	:type Confusion: float
 	:rtype: void") FuseIntervals;
@@ -288,7 +288,7 @@ class GeomLib {
 		%feature("compactdefaultargs") GTransform;
 		%feature("autodoc", "* Computes the curve 3d from package Geom corresponding to the curve 3d from package Geom, transformed with the transformation <GTrsf> WARNING : this method may return a null Handle if it's impossible to compute the transformation of a curve. It's not implemented when : 1) the curve is an infinite parabola or hyperbola 2) the curve is an offsetcurve
 	:param Curve:
-	:type Curve: opencascade::handle<Geom2d_Curve> &
+	:type Curve: Geom2d_Curve
 	:param GTrsf:
 	:type GTrsf: gp_GTrsf2d
 	:rtype: opencascade::handle<Geom2d_Curve>") GTransform;
@@ -306,11 +306,11 @@ class GeomLib {
 	:param YDir:
 	:type YDir: gp_Dir
 	:param Xgap:
-	:type Xgap: float &
+	:type Xgap: float
 	:param YGap:
-	:type YGap: float &
+	:type YGap: float
 	:param ZGap:
-	:type ZGap: float &
+	:type ZGap: float
 	:rtype: void") Inertia;
 		static void Inertia (const TColgp_Array1OfPnt & Points,gp_Pnt & Bary,gp_Dir & XDir,gp_Dir & YDir,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -318,7 +318,7 @@ class GeomLib {
 		%feature("compactdefaultargs") IsBSplUClosed;
 		%feature("autodoc", "* Returns true if the poles of U1 isoline and the poles of U2 isoline of surface are identical according to tolerance criterion. For rational surfaces Weights(i)*Poles(i) are checked.
 	:param S:
-	:type S: opencascade::handle<Geom_BSplineSurface> &
+	:type S: Geom_BSplineSurface
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -332,7 +332,7 @@ class GeomLib {
 		%feature("compactdefaultargs") IsBSplVClosed;
 		%feature("autodoc", "* Returns true if the poles of V1 isoline and the poles of V2 isoline of surface are identical according to tolerance criterion. For rational surfaces Weights(i)*Poles(i) are checked.
 	:param S:
-	:type S: opencascade::handle<Geom_BSplineSurface> &
+	:type S: Geom_BSplineSurface
 	:param V1:
 	:type V1: float
 	:param V2:
@@ -346,7 +346,7 @@ class GeomLib {
 		%feature("compactdefaultargs") IsBzUClosed;
 		%feature("autodoc", "* Returns true if the poles of U1 isoline and the poles of U2 isoline of surface are identical according to tolerance criterion.
 	:param S:
-	:type S: opencascade::handle<Geom_BezierSurface> &
+	:type S: Geom_BezierSurface
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -360,7 +360,7 @@ class GeomLib {
 		%feature("compactdefaultargs") IsBzVClosed;
 		%feature("autodoc", "* Returns true if the poles of V1 isoline and the poles of V2 isoline of surface are identical according to tolerance criterion.
 	:param S:
-	:type S: opencascade::handle<Geom_BezierSurface> &
+	:type S: Geom_BezierSurface
 	:param V1:
 	:type V1: float
 	:param V2:
@@ -374,7 +374,7 @@ class GeomLib {
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "* This method defines if opposite boundaries of surface coincide with given tolerance
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param Tol:
 	:type Tol: float
 	:param isUClosed:
@@ -387,7 +387,7 @@ class GeomLib {
 		/****************** NormEstim ******************/
 		%feature("compactdefaultargs") NormEstim;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param UV:
 	:type UV: gp_Pnt2d
 	:param Tol:
@@ -403,9 +403,9 @@ class GeomLib {
 	:param NumPoints:
 	:type NumPoints: int
 	:param InParameters:
-	:type InParameters: TColStd_Array1OfReal &
+	:type InParameters: TColStd_Array1OfReal
 	:param OutParameters:
-	:type OutParameters: opencascade::handle<TColStd_HArray1OfReal> &
+	:type OutParameters: TColStd_HArray1OfReal
 	:rtype: void") RemovePointsFromArray;
 		static void RemovePointsFromArray (const Standard_Integer NumPoints,const TColStd_Array1OfReal & InParameters,opencascade::handle<TColStd_HArray1OfReal> & OutParameters);
 
@@ -415,7 +415,7 @@ class GeomLib {
 	:param Tolerance:
 	:type Tolerance: float
 	:param Curve2dPtr:
-	:type Curve2dPtr: opencascade::handle<Geom2d_Curve> &
+	:type Curve2dPtr: Geom2d_Curve
 	:param First:
 	:type First: float
 	:param Last:
@@ -425,7 +425,7 @@ class GeomLib {
 	:param RequestedLast:
 	:type RequestedLast: float
 	:param NewCurve2dPtr:
-	:type NewCurve2dPtr: opencascade::handle<Geom2d_Curve> &
+	:type NewCurve2dPtr: Geom2d_Curve
 	:rtype: void") SameRange;
 		static void SameRange (const Standard_Real Tolerance,const opencascade::handle<Geom2d_Curve> & Curve2dPtr,const Standard_Real First,const Standard_Real Last,const Standard_Real RequestedFirst,const Standard_Real RequestedLast,opencascade::handle<Geom2d_Curve> & NewCurve2dPtr);
 
@@ -435,7 +435,7 @@ class GeomLib {
 	:param Position:
 	:type Position: gp_Ax2
 	:param Curve2d:
-	:type Curve2d: opencascade::handle<Geom2d_Curve> &
+	:type Curve2d: Geom2d_Curve
 	:rtype: opencascade::handle<Geom_Curve>") To3d;
 		static opencascade::handle<Geom_Curve> To3d (const gp_Ax2 & Position,const opencascade::handle<Geom2d_Curve> & Curve2d);
 
@@ -476,7 +476,7 @@ class GeomLib_Check2dBSplineCurve {
 		/****************** GeomLib_Check2dBSplineCurve ******************/
 		%feature("compactdefaultargs") GeomLib_Check2dBSplineCurve;
 		%feature("autodoc", ":param Curve:
-	:type Curve: opencascade::handle<Geom2d_BSplineCurve> &
+	:type Curve: Geom2d_BSplineCurve
 	:param Tolerance:
 	:type Tolerance: float
 	:param AngularTolerance:
@@ -535,7 +535,7 @@ class GeomLib_CheckBSplineCurve {
 		/****************** GeomLib_CheckBSplineCurve ******************/
 		%feature("compactdefaultargs") GeomLib_CheckBSplineCurve;
 		%feature("autodoc", ":param Curve:
-	:type Curve: opencascade::handle<Geom_BSplineCurve> &
+	:type Curve: Geom_BSplineCurve
 	:param Tolerance:
 	:type Tolerance: float
 	:param AngularTolerance:
@@ -596,9 +596,9 @@ class GeomLib_CheckCurveOnSurface {
 		%feature("compactdefaultargs") GeomLib_CheckCurveOnSurface;
 		%feature("autodoc", "* Contructor
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom_Curve> &
+	:type theCurve: Geom_Curve
 	:param theSurface:
-	:type theSurface: opencascade::handle<Geom_Surface> &
+	:type theSurface: Geom_Surface
 	:param theFirst:
 	:type theFirst: float
 	:param theLast:
@@ -612,9 +612,9 @@ class GeomLib_CheckCurveOnSurface {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Sets the data for the algorithm
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom_Curve> &
+	:type theCurve: Geom_Curve
 	:param theSurface:
-	:type theSurface: opencascade::handle<Geom_Surface> &
+	:type theSurface: Geom_Surface
 	:param theFirst:
 	:type theFirst: float
 	:param theLast:
@@ -652,7 +652,7 @@ class GeomLib_CheckCurveOnSurface {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes the max distance for the 3d curve <myCurve> and 2d curve <thePCurve> If isTheMultyTheadDisabled == True then computation will be made without any parallelization.
 	:param thePCurve:
-	:type thePCurve: opencascade::handle<Geom2d_Curve> &
+	:type thePCurve: Geom2d_Curve
 	:param isTheMultyTheradDisabled: default value is Standard_False
 	:type isTheMultyTheradDisabled: bool
 	:rtype: None") Perform;
@@ -662,9 +662,9 @@ class GeomLib_CheckCurveOnSurface {
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "* Returns first and last parameter of the curves (2D- and 3D-curves are considered to have same range)
 	:param theFirst:
-	:type theFirst: float &
+	:type theFirst: float
 	:param theLast:
-	:type theLast: float &
+	:type theLast: float
 	:rtype: None") Range;
 		void Range (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -693,9 +693,9 @@ class GeomLib_DenominatorMultiplier {
 		%feature("compactdefaultargs") GeomLib_DenominatorMultiplier;
 		%feature("autodoc", "* if the surface is rational this will define the evaluator of a real function of 2 variables a(u,v) such that if we define a new surface by : a(u,v) * N(u,v) NewF(u,v) = ---------------- a(u,v) * D(u,v)
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_BSplineSurface> &
+	:type Surface: Geom_BSplineSurface
 	:param KnotVector:
-	:type KnotVector: TColStd_Array1OfReal &
+	:type KnotVector: TColStd_Array1OfReal
 	:rtype: None") GeomLib_DenominatorMultiplier;
 		 GeomLib_DenominatorMultiplier (const opencascade::handle<Geom_BSplineSurface> & Surface,const TColStd_Array1OfReal & KnotVector);
 
@@ -745,7 +745,7 @@ class GeomLib_Interpolate {
 	:param Points:
 	:type Points: TColgp_Array1OfPnt
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:rtype: None") GeomLib_Interpolate;
 		 GeomLib_Interpolate (const Standard_Integer Degree,const Standard_Integer NumPoints,const TColgp_Array1OfPnt & Points,const TColStd_Array1OfReal & Parameters);
 
@@ -773,7 +773,7 @@ class GeomLib_IsPlanarSurface {
 		/****************** GeomLib_IsPlanarSurface ******************/
 		%feature("compactdefaultargs") GeomLib_IsPlanarSurface;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param Tol: default value is 1.0e-7
 	:type Tol: float
 	:rtype: None") GeomLib_IsPlanarSurface;
@@ -889,7 +889,7 @@ class GeomLib_MakeCurvefromApprox {
 		/****************** GeomLib_MakeCurvefromApprox ******************/
 		%feature("compactdefaultargs") GeomLib_MakeCurvefromApprox;
 		%feature("autodoc", ":param Approx:
-	:type Approx: AdvApprox_ApproxAFunction &
+	:type Approx: AdvApprox_ApproxAFunction
 	:rtype: None") GeomLib_MakeCurvefromApprox;
 		 GeomLib_MakeCurvefromApprox (const AdvApprox_ApproxAFunction & Approx);
 
@@ -937,14 +937,14 @@ class GeomLib_PolyFunc : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		virtual Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 
 		/****************** GeomLib_PolyFunc ******************/
 		%feature("compactdefaultargs") GeomLib_PolyFunc;
 		%feature("autodoc", ":param Coeffs:
-	:type Coeffs: math_Vector &
+	:type Coeffs: math_Vector
 	:rtype: None") GeomLib_PolyFunc;
 		 GeomLib_PolyFunc (const math_Vector & Coeffs);
 
@@ -954,7 +954,7 @@ class GeomLib_PolyFunc : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		virtual Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 
@@ -964,9 +964,9 @@ class GeomLib_PolyFunc : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		virtual Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -988,13 +988,13 @@ class GeomLib_Tool {
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "* Extracts the parameter of a 3D point lying on a 3D curve or at a distance less than the MaxDist value.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param Point:
 	:type Point: gp_Pnt
 	:param MaxDist:
 	:type MaxDist: float
 	:param U:
-	:type U: float &
+	:type U: float
 	:rtype: bool") Parameter;
 		static Standard_Boolean Parameter (const opencascade::handle<Geom_Curve> & Curve,const gp_Pnt & Point,const Standard_Real MaxDist,Standard_Real &OutValue);
 
@@ -1002,13 +1002,13 @@ class GeomLib_Tool {
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "* Extracts the parameter of a 2D point lying on a 2D curve or at a distance less than the MaxDist value.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom2d_Curve> &
+	:type Curve: Geom2d_Curve
 	:param Point:
 	:type Point: gp_Pnt2d
 	:param MaxDist:
 	:type MaxDist: float
 	:param U:
-	:type U: float &
+	:type U: float
 	:rtype: bool") Parameter;
 		static Standard_Boolean Parameter (const opencascade::handle<Geom2d_Curve> & Curve,const gp_Pnt2d & Point,const Standard_Real MaxDist,Standard_Real &OutValue);
 
@@ -1016,15 +1016,15 @@ class GeomLib_Tool {
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "* Extracts the parameter of a 3D point lying on a surface or at a distance less than the MaxDist value.
 	:param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param Point:
 	:type Point: gp_Pnt
 	:param MaxDist:
 	:type MaxDist: float
 	:param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: bool") Parameters;
 		static Standard_Boolean Parameters (const opencascade::handle<Geom_Surface> & Surface,const gp_Pnt & Point,const Standard_Real MaxDist,Standard_Real &OutValue,Standard_Real &OutValue);
 

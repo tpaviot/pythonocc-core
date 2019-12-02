@@ -147,7 +147,7 @@ class XCAFNoteObjects_NoteObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", "* Sets a tesselated annotation
 	:param thePresentation:
-	:type thePresentation: TopoDS_Shape &
+	:type thePresentation: TopoDS_Shape
 	:rtype: None") SetPresentation;
 		void SetPresentation (const TopoDS_Shape & thePresentation);
 
@@ -161,7 +161,7 @@ class XCAFNoteObjects_NoteObject : public Standard_Transient {
 		%feature("compactdefaultargs") XCAFNoteObjects_NoteObject;
 		%feature("autodoc", "* Copy constructor.
 	:param theObj:
-	:type theObj: opencascade::handle<XCAFNoteObjects_NoteObject> &
+	:type theObj: XCAFNoteObjects_NoteObject
 	:rtype: None") XCAFNoteObjects_NoteObject;
 		 XCAFNoteObjects_NoteObject (const opencascade::handle<XCAFNoteObjects_NoteObject> & theObj);
 

@@ -98,7 +98,7 @@ class BlendFunc {
 		/****************** ComputeDNormal ******************/
 		%feature("compactdefaultargs") ComputeDNormal;
 		%feature("autodoc", ":param Surf:
-	:type Surf: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf: Adaptor3d_HSurface
 	:param p2d:
 	:type p2d: gp_Pnt2d
 	:param Normal:
@@ -113,7 +113,7 @@ class BlendFunc {
 		/****************** ComputeNormal ******************/
 		%feature("compactdefaultargs") ComputeNormal;
 		%feature("autodoc", ":param Surf:
-	:type Surf: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surf: Adaptor3d_HSurface
 	:param p2d:
 	:type p2d: gp_Pnt2d
 	:param Normal:
@@ -132,7 +132,7 @@ class BlendFunc {
 	:param AngleMax:
 	:type AngleMax: float
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: void") GetMinimalWeights;
 		static void GetMinimalWeights (const BlendFunc_SectionShape SectShape,const Convert_ParameterisationType TConv,const Standard_Real AngleMin,const Standard_Real AngleMax,TColStd_Array1OfReal & Weigths);
 
@@ -143,13 +143,13 @@ class BlendFunc {
 	:param MaxAng:
 	:type MaxAng: float
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param TypeConv:
-	:type TypeConv: Convert_ParameterisationType &
+	:type TypeConv: Convert_ParameterisationType
 	:rtype: void") GetShape;
 		static void GetShape (const BlendFunc_SectionShape SectShape,const Standard_Real MaxAng,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Convert_ParameterisationType & TypeConv);
 
@@ -180,13 +180,13 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		%feature("compactdefaultargs") BlendFunc_CSCircular;
 		%feature("autodoc", "* Creates a function for a circular blending between a curve <C> and a surface <S>. The direction of the planes are given by <CGuide>. The position of the plane is determined on the curve <C>. <L> defines the change of parameter between <C> and <CGuide>. So, the planes are defined as described below : t is the current parameter on the guide line. Pguide = C(L(t)); Nguide = CGuide'(t)/||CGuide'(t)||
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param CGuide:
-	:type CGuide: opencascade::handle<Adaptor3d_HCurve> &
+	:type CGuide: Adaptor3d_HCurve
 	:param L:
-	:type L: opencascade::handle<Law_Function> &
+	:type L: Law_Function
 	:rtype: None") BlendFunc_CSCircular;
 		 BlendFunc_CSCircular (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Adaptor3d_HCurve> & CGuide,const opencascade::handle<Law_Function> & L);
 
@@ -194,18 +194,18 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -213,7 +213,7 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -243,20 +243,20 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -272,9 +272,9 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -282,7 +282,7 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -297,7 +297,7 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -311,14 +311,14 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -370,9 +370,9 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -387,9 +387,9 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 	:param W:
 	:type W: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Circ
 	:rtype: None") Section;
@@ -399,7 +399,7 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -413,11 +413,11 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		virtual Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -425,7 +425,7 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -435,22 +435,22 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -520,9 +520,9 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -530,11 +530,11 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -556,11 +556,11 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		/****************** BlendFunc_CSConstRad ******************/
 		%feature("compactdefaultargs") BlendFunc_CSConstRad;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param CGuide:
-	:type CGuide: opencascade::handle<Adaptor3d_HCurve> &
+	:type CGuide: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_CSConstRad;
 		 BlendFunc_CSConstRad (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Adaptor3d_HCurve> & CGuide);
 
@@ -568,18 +568,18 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -587,7 +587,7 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -617,20 +617,20 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -646,9 +646,9 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -656,7 +656,7 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -671,7 +671,7 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -685,14 +685,14 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -739,9 +739,9 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -756,9 +756,9 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 	:param W:
 	:type W: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Circ
 	:rtype: None") Section;
@@ -768,7 +768,7 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section The method returns Standard_True if the derivatives are computed, otherwise it returns Standard_False.
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -782,11 +782,11 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		virtual Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -794,7 +794,7 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -804,22 +804,22 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -889,9 +889,9 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -899,11 +899,11 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -925,11 +925,11 @@ class BlendFunc_ChAsym : public Blend_Function {
 		/****************** BlendFunc_ChAsym ******************/
 		%feature("compactdefaultargs") BlendFunc_ChAsym;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_ChAsym;
 		 BlendFunc_ChAsym (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -937,7 +937,7 @@ class BlendFunc_ChAsym : public Blend_Function {
 		%feature("compactdefaultargs") ComputeValues;
 		%feature("autodoc", "* computes the values <F> of the derivatives for the variable <X> between DegF and DegL. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param DegF:
 	:type DegF: int
 	:param DegL:
@@ -949,18 +949,18 @@ class BlendFunc_ChAsym : public Blend_Function {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -974,7 +974,7 @@ class BlendFunc_ChAsym : public Blend_Function {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -987,20 +987,20 @@ class BlendFunc_ChAsym : public Blend_Function {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -1016,9 +1016,9 @@ class BlendFunc_ChAsym : public Blend_Function {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -1026,7 +1026,7 @@ class BlendFunc_ChAsym : public Blend_Function {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1041,7 +1041,7 @@ class BlendFunc_ChAsym : public Blend_Function {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -1055,14 +1055,14 @@ class BlendFunc_ChAsym : public Blend_Function {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -1097,9 +1097,9 @@ class BlendFunc_ChAsym : public Blend_Function {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1117,9 +1117,9 @@ class BlendFunc_ChAsym : public Blend_Function {
 	:param V2:
 	:type V2: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Lin
 	:rtype: None") Section;
@@ -1128,13 +1128,13 @@ class BlendFunc_ChAsym : public Blend_Function {
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -1142,7 +1142,7 @@ class BlendFunc_ChAsym : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -1152,9 +1152,9 @@ class BlendFunc_ChAsym : public Blend_Function {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		virtual Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
@@ -1162,7 +1162,7 @@ class BlendFunc_ChAsym : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -1176,11 +1176,11 @@ class BlendFunc_ChAsym : public Blend_Function {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		virtual Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -1268,9 +1268,9 @@ class BlendFunc_ChAsym : public Blend_Function {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -1278,11 +1278,11 @@ class BlendFunc_ChAsym : public Blend_Function {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -1304,11 +1304,11 @@ class BlendFunc_ChAsymInv : public Blend_FuncInv {
 		/****************** BlendFunc_ChAsymInv ******************/
 		%feature("compactdefaultargs") BlendFunc_ChAsymInv;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_ChAsymInv;
 		 BlendFunc_ChAsymInv (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1316,7 +1316,7 @@ class BlendFunc_ChAsymInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") ComputeValues;
 		%feature("autodoc", "* computes the values <F> of the derivatives for the variable <X> between DegF and DegL. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param DegF:
 	:type DegF: int
 	:param DegL:
@@ -1328,25 +1328,25 @@ class BlendFunc_ChAsymInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -1355,7 +1355,7 @@ class BlendFunc_ChAsymInv : public Blend_FuncInv {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -1372,7 +1372,7 @@ class BlendFunc_ChAsymInv : public Blend_FuncInv {
 		%feature("autodoc", ":param OnFirst:
 	:type OnFirst: bool
 	:param COnSurf:
-	:type COnSurf: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type COnSurf: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const Standard_Boolean OnFirst,const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
 
@@ -1391,9 +1391,9 @@ class BlendFunc_ChAsymInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -1401,11 +1401,11 @@ class BlendFunc_ChAsymInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -1434,11 +1434,11 @@ class BlendFunc_ConstRad : public Blend_Function {
 		/****************** BlendFunc_ConstRad ******************/
 		%feature("compactdefaultargs") BlendFunc_ConstRad;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_ConstRad;
 		 BlendFunc_ConstRad (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1446,18 +1446,18 @@ class BlendFunc_ConstRad : public Blend_Function {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -1471,7 +1471,7 @@ class BlendFunc_ConstRad : public Blend_Function {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -1484,20 +1484,20 @@ class BlendFunc_ConstRad : public Blend_Function {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -1513,9 +1513,9 @@ class BlendFunc_ConstRad : public Blend_Function {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -1523,7 +1523,7 @@ class BlendFunc_ConstRad : public Blend_Function {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1538,7 +1538,7 @@ class BlendFunc_ConstRad : public Blend_Function {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -1552,14 +1552,14 @@ class BlendFunc_ConstRad : public Blend_Function {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -1594,9 +1594,9 @@ class BlendFunc_ConstRad : public Blend_Function {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1614,9 +1614,9 @@ class BlendFunc_ConstRad : public Blend_Function {
 	:param V2:
 	:type V2: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Circ
 	:rtype: None") Section;
@@ -1626,7 +1626,7 @@ class BlendFunc_ConstRad : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -1640,11 +1640,11 @@ class BlendFunc_ConstRad : public Blend_Function {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		virtual Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -1652,7 +1652,7 @@ class BlendFunc_ConstRad : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -1662,22 +1662,22 @@ class BlendFunc_ConstRad : public Blend_Function {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		virtual Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -1771,9 +1771,9 @@ class BlendFunc_ConstRad : public Blend_Function {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -1781,11 +1781,11 @@ class BlendFunc_ConstRad : public Blend_Function {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -1807,11 +1807,11 @@ class BlendFunc_ConstRadInv : public Blend_FuncInv {
 		/****************** BlendFunc_ConstRadInv ******************/
 		%feature("compactdefaultargs") BlendFunc_ConstRadInv;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_ConstRadInv;
 		 BlendFunc_ConstRadInv (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1819,25 +1819,25 @@ class BlendFunc_ConstRadInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -1846,7 +1846,7 @@ class BlendFunc_ConstRadInv : public Blend_FuncInv {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -1863,7 +1863,7 @@ class BlendFunc_ConstRadInv : public Blend_FuncInv {
 		%feature("autodoc", ":param OnFirst:
 	:type OnFirst: bool
 	:param COnSurf:
-	:type COnSurf: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type COnSurf: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const Standard_Boolean OnFirst,const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
 
@@ -1880,9 +1880,9 @@ class BlendFunc_ConstRadInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -1890,11 +1890,11 @@ class BlendFunc_ConstRadInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -1916,9 +1916,9 @@ class BlendFunc_Corde {
 		/****************** BlendFunc_Corde ******************/
 		%feature("compactdefaultargs") BlendFunc_Corde;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param CGuide:
-	:type CGuide: opencascade::handle<Adaptor3d_HCurve> &
+	:type CGuide: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_Corde;
 		 BlendFunc_Corde (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & CGuide);
 
@@ -1926,7 +1926,7 @@ class BlendFunc_Corde {
 		%feature("compactdefaultargs") DerFguide;
 		%feature("autodoc", "* Derived of the function compared to the parameter of the guideline
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param DerF:
 	:type DerF: gp_Vec2d
 	:rtype: None") DerFguide;
@@ -1936,9 +1936,9 @@ class BlendFunc_Corde {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -1946,7 +1946,7 @@ class BlendFunc_Corde {
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "* Returns False if Sol is not solution else returns True and updates the fields tgs and tg2d
 	:param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -2005,9 +2005,9 @@ class BlendFunc_Corde {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Function for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2029,13 +2029,13 @@ class BlendFunc_EvolRad : public Blend_Function {
 		/****************** BlendFunc_EvolRad ******************/
 		%feature("compactdefaultargs") BlendFunc_EvolRad;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Law:
-	:type Law: opencascade::handle<Law_Function> &
+	:type Law: Law_Function
 	:rtype: None") BlendFunc_EvolRad;
 		 BlendFunc_EvolRad (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Law_Function> & Law);
 
@@ -2043,18 +2043,18 @@ class BlendFunc_EvolRad : public Blend_Function {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -2068,7 +2068,7 @@ class BlendFunc_EvolRad : public Blend_Function {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -2081,20 +2081,20 @@ class BlendFunc_EvolRad : public Blend_Function {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2110,9 +2110,9 @@ class BlendFunc_EvolRad : public Blend_Function {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -2120,7 +2120,7 @@ class BlendFunc_EvolRad : public Blend_Function {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -2135,7 +2135,7 @@ class BlendFunc_EvolRad : public Blend_Function {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -2149,14 +2149,14 @@ class BlendFunc_EvolRad : public Blend_Function {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -2191,9 +2191,9 @@ class BlendFunc_EvolRad : public Blend_Function {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2211,9 +2211,9 @@ class BlendFunc_EvolRad : public Blend_Function {
 	:param V2:
 	:type V2: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Circ
 	:rtype: None") Section;
@@ -2223,7 +2223,7 @@ class BlendFunc_EvolRad : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -2237,11 +2237,11 @@ class BlendFunc_EvolRad : public Blend_Function {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		virtual Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -2249,7 +2249,7 @@ class BlendFunc_EvolRad : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -2259,22 +2259,22 @@ class BlendFunc_EvolRad : public Blend_Function {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		virtual Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -2365,9 +2365,9 @@ class BlendFunc_EvolRad : public Blend_Function {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2375,11 +2375,11 @@ class BlendFunc_EvolRad : public Blend_Function {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2401,13 +2401,13 @@ class BlendFunc_EvolRadInv : public Blend_FuncInv {
 		/****************** BlendFunc_EvolRadInv ******************/
 		%feature("compactdefaultargs") BlendFunc_EvolRadInv;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param Law:
-	:type Law: opencascade::handle<Law_Function> &
+	:type Law: Law_Function
 	:rtype: None") BlendFunc_EvolRadInv;
 		 BlendFunc_EvolRadInv (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C,const opencascade::handle<Law_Function> & Law);
 
@@ -2415,25 +2415,25 @@ class BlendFunc_EvolRadInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2442,7 +2442,7 @@ class BlendFunc_EvolRadInv : public Blend_FuncInv {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -2459,7 +2459,7 @@ class BlendFunc_EvolRadInv : public Blend_FuncInv {
 		%feature("autodoc", ":param OnFirst:
 	:type OnFirst: bool
 	:param COnSurf:
-	:type COnSurf: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type COnSurf: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const Standard_Boolean OnFirst,const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
 
@@ -2474,9 +2474,9 @@ class BlendFunc_EvolRadInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -2484,11 +2484,11 @@ class BlendFunc_EvolRadInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2510,16 +2510,16 @@ class BlendFunc_GenChamfInv : public Blend_FuncInv {
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2536,7 +2536,7 @@ class BlendFunc_GenChamfInv : public Blend_FuncInv {
 		%feature("autodoc", ":param OnFirst:
 	:type OnFirst: bool
 	:param COnSurf:
-	:type COnSurf: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type COnSurf: Adaptor2d_HCurve2d
 	:rtype: void") Set;
 		virtual void Set (const Standard_Boolean OnFirst,const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
 
@@ -2555,11 +2555,11 @@ class BlendFunc_GenChamfInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2581,9 +2581,9 @@ class BlendFunc_GenChamfer : public Blend_Function {
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -2597,27 +2597,27 @@ class BlendFunc_GenChamfer : public Blend_Function {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2633,9 +2633,9 @@ class BlendFunc_GenChamfer : public Blend_Function {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -2643,7 +2643,7 @@ class BlendFunc_GenChamfer : public Blend_Function {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -2658,14 +2658,14 @@ class BlendFunc_GenChamfer : public Blend_Function {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -2690,9 +2690,9 @@ class BlendFunc_GenChamfer : public Blend_Function {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2710,9 +2710,9 @@ class BlendFunc_GenChamfer : public Blend_Function {
 	:param V2:
 	:type V2: float
 	:param Pdeb:
-	:type Pdeb: float &
+	:type Pdeb: float
 	:param Pfin:
-	:type Pfin: float &
+	:type Pfin: float
 	:param C:
 	:type C: gp_Lin
 	:rtype: None") Section;
@@ -2722,7 +2722,7 @@ class BlendFunc_GenChamfer : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -2736,11 +2736,11 @@ class BlendFunc_GenChamfer : public Blend_Function {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -2748,7 +2748,7 @@ class BlendFunc_GenChamfer : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -2758,22 +2758,22 @@ class BlendFunc_GenChamfer : public Blend_Function {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -2811,11 +2811,11 @@ class BlendFunc_GenChamfer : public Blend_Function {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -2844,11 +2844,11 @@ class BlendFunc_Ruled : public Blend_Function {
 		/****************** BlendFunc_Ruled ******************/
 		%feature("compactdefaultargs") BlendFunc_Ruled;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_Ruled;
 		 BlendFunc_Ruled (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -2856,18 +2856,18 @@ class BlendFunc_Ruled : public Blend_Function {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
@@ -2881,7 +2881,7 @@ class BlendFunc_Ruled : public Blend_Function {
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "* Compute the minimal value of weight for each poles of all sections.
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") GetMinimalWeight;
 		void GetMinimalWeight (TColStd_Array1OfReal & Weigths);
 
@@ -2913,20 +2913,20 @@ class BlendFunc_Ruled : public Blend_Function {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles2d:
-	:type NbPoles2d: int &
+	:type NbPoles2d: int
 	:rtype: None") GetShape;
 		void GetShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -2942,9 +2942,9 @@ class BlendFunc_Ruled : public Blend_Function {
 	:param AngleTol:
 	:type AngleTol: float
 	:param Tol3d:
-	:type Tol3d: math_Vector &
+	:type Tol3d: math_Vector
 	:param Tol1D:
-	:type Tol1D: math_Vector &
+	:type Tol1D: math_Vector
 	:rtype: None") GetTolerance;
 		void GetTolerance (const Standard_Real BoundTol,const Standard_Real SurfTol,const Standard_Real AngleTol,math_Vector & Tol3d,math_Vector & Tol1D);
 
@@ -2952,7 +2952,7 @@ class BlendFunc_Ruled : public Blend_Function {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -2967,7 +2967,7 @@ class BlendFunc_Ruled : public Blend_Function {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -2981,14 +2981,14 @@ class BlendFunc_Ruled : public Blend_Function {
 		/****************** Knots ******************/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", ":param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:rtype: None") Knots;
 		void Knots (TColStd_Array1OfReal & TKnots);
 
 		/****************** Mults ******************/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", ":param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: None") Mults;
 		void Mults (TColStd_Array1OfInteger & TMults);
 
@@ -3023,9 +3023,9 @@ class BlendFunc_Ruled : public Blend_Function {
 	:param Tol:
 	:type Tol: float
 	:param TolU:
-	:type TolU: float &
+	:type TolU: float
 	:param TolV:
-	:type TolV: float &
+	:type TolV: float
 	:rtype: None") Resolution;
 		void Resolution (const Standard_Integer IC2d,const Standard_Real Tol,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3033,7 +3033,7 @@ class BlendFunc_Ruled : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -3047,11 +3047,11 @@ class BlendFunc_Ruled : public Blend_Function {
 	:param D2Poles2d:
 	:type D2Poles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:param D2Weigths:
-	:type D2Weigths: TColStd_Array1OfReal &
+	:type D2Weigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfVec & D2Poles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColgp_Array1OfVec2d & D2Poles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths,TColStd_Array1OfReal & D2Weigths);
 
@@ -3059,7 +3059,7 @@ class BlendFunc_Ruled : public Blend_Function {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Used for the first and last section
 	:param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param DPoles:
@@ -3069,22 +3069,22 @@ class BlendFunc_Ruled : public Blend_Function {
 	:param DPoles2d:
 	:type DPoles2d: TColgp_Array1OfVec2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:param DWeigths:
-	:type DWeigths: TColStd_Array1OfReal &
+	:type DWeigths: TColStd_Array1OfReal
 	:rtype: bool") Section;
 		Standard_Boolean Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfVec & DPoles,TColgp_Array1OfPnt2d & Poles2d,TColgp_Array1OfVec2d & DPoles2d,TColStd_Array1OfReal & Weigths,TColStd_Array1OfReal & DWeigths);
 
 		/****************** Section ******************/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", ":param P:
-	:type P: Blend_Point &
+	:type P: Blend_Point
 	:param Poles:
 	:type Poles: TColgp_Array1OfPnt
 	:param Poles2d:
 	:type Poles2d: TColgp_Array1OfPnt2d
 	:param Weigths:
-	:type Weigths: TColStd_Array1OfReal &
+	:type Weigths: TColStd_Array1OfReal
 	:rtype: None") Section;
 		void Section (const Blend_Point & P,TColgp_Array1OfPnt & Poles,TColgp_Array1OfPnt2d & Poles2d,TColStd_Array1OfReal & Weigths);
 
@@ -3150,9 +3150,9 @@ class BlendFunc_Ruled : public Blend_Function {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -3160,11 +3160,11 @@ class BlendFunc_Ruled : public Blend_Function {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -3186,11 +3186,11 @@ class BlendFunc_RuledInv : public Blend_FuncInv {
 		/****************** BlendFunc_RuledInv ******************/
 		%feature("compactdefaultargs") BlendFunc_RuledInv;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_RuledInv;
 		 BlendFunc_RuledInv (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -3198,25 +3198,25 @@ class BlendFunc_RuledInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** GetBounds ******************/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", ":param InfBound:
-	:type InfBound: math_Vector &
+	:type InfBound: math_Vector
 	:param SupBound:
-	:type SupBound: math_Vector &
+	:type SupBound: math_Vector
 	:rtype: None") GetBounds;
 		void GetBounds (math_Vector & InfBound,math_Vector & SupBound);
 
 		/****************** GetTolerance ******************/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: math_Vector &
+	:type Tolerance: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: None") GetTolerance;
@@ -3225,7 +3225,7 @@ class BlendFunc_RuledInv : public Blend_FuncInv {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -3242,7 +3242,7 @@ class BlendFunc_RuledInv : public Blend_FuncInv {
 		%feature("autodoc", ":param OnFirst:
 	:type OnFirst: bool
 	:param COnSurf:
-	:type COnSurf: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type COnSurf: Adaptor2d_HCurve2d
 	:rtype: None") Set;
 		void Set (const Standard_Boolean OnFirst,const opencascade::handle<Adaptor2d_HCurve2d> & COnSurf);
 
@@ -3250,9 +3250,9 @@ class BlendFunc_RuledInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -3260,11 +3260,11 @@ class BlendFunc_RuledInv : public Blend_FuncInv {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -3318,9 +3318,9 @@ class BlendFunc_Tensor {
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", ":param Right:
-	:type Right: math_Vector &
+	:type Right: math_Vector
 	:param Product:
-	:type Product: math_Matrix &
+	:type Product: math_Matrix
 	:rtype: None") Multiply;
 		void Multiply (const math_Vector & Right,math_Matrix & Product);
 
@@ -3354,11 +3354,11 @@ class BlendFunc_ChamfInv : public BlendFunc_GenChamfInv {
 		/****************** BlendFunc_ChamfInv ******************/
 		%feature("compactdefaultargs") BlendFunc_ChamfInv;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_ChamfInv;
 		 BlendFunc_ChamfInv (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -3366,16 +3366,16 @@ class BlendFunc_ChamfInv : public BlendFunc_GenChamfInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -3396,9 +3396,9 @@ class BlendFunc_ChamfInv : public BlendFunc_GenChamfInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -3420,11 +3420,11 @@ class BlendFunc_Chamfer : public BlendFunc_GenChamfer {
 		/****************** BlendFunc_Chamfer ******************/
 		%feature("compactdefaultargs") BlendFunc_Chamfer;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param CG:
-	:type CG: opencascade::handle<Adaptor3d_HCurve> &
+	:type CG: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_Chamfer;
 		 BlendFunc_Chamfer (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & CG);
 
@@ -3432,9 +3432,9 @@ class BlendFunc_Chamfer : public BlendFunc_GenChamfer {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -3447,7 +3447,7 @@ class BlendFunc_Chamfer : public BlendFunc_GenChamfer {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -3533,9 +3533,9 @@ class BlendFunc_Chamfer : public BlendFunc_GenChamfer {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -3557,11 +3557,11 @@ class BlendFunc_ConstThroat : public BlendFunc_GenChamfer {
 		/****************** BlendFunc_ConstThroat ******************/
 		%feature("compactdefaultargs") BlendFunc_ConstThroat;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_ConstThroat;
 		 BlendFunc_ConstThroat (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -3569,9 +3569,9 @@ class BlendFunc_ConstThroat : public BlendFunc_GenChamfer {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -3584,7 +3584,7 @@ class BlendFunc_ConstThroat : public BlendFunc_GenChamfer {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -3670,9 +3670,9 @@ class BlendFunc_ConstThroat : public BlendFunc_GenChamfer {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -3694,11 +3694,11 @@ class BlendFunc_ConstThroatInv : public BlendFunc_GenChamfInv {
 		/****************** BlendFunc_ConstThroatInv ******************/
 		%feature("compactdefaultargs") BlendFunc_ConstThroatInv;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_ConstThroatInv;
 		 BlendFunc_ConstThroatInv (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -3706,16 +3706,16 @@ class BlendFunc_ConstThroatInv : public BlendFunc_GenChamfInv {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -3736,9 +3736,9 @@ class BlendFunc_ConstThroatInv : public BlendFunc_GenChamfInv {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -3760,11 +3760,11 @@ class BlendFunc_ConstThroatWithPenetration : public BlendFunc_ConstThroat {
 		/****************** BlendFunc_ConstThroatWithPenetration ******************/
 		%feature("compactdefaultargs") BlendFunc_ConstThroatWithPenetration;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_ConstThroatWithPenetration;
 		 BlendFunc_ConstThroatWithPenetration (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -3772,9 +3772,9 @@ class BlendFunc_ConstThroatWithPenetration : public BlendFunc_ConstThroat {
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
@@ -3787,7 +3787,7 @@ class BlendFunc_ConstThroatWithPenetration : public BlendFunc_ConstThroat {
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -3817,9 +3817,9 @@ class BlendFunc_ConstThroatWithPenetration : public BlendFunc_ConstThroat {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
@@ -3841,11 +3841,11 @@ class BlendFunc_ConstThroatWithPenetrationInv : public BlendFunc_ConstThroatInv 
 		/****************** BlendFunc_ConstThroatWithPenetrationInv ******************/
 		%feature("compactdefaultargs") BlendFunc_ConstThroatWithPenetrationInv;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<Adaptor3d_HSurface> &
+	:type S1: Adaptor3d_HSurface
 	:param S2:
-	:type S2: opencascade::handle<Adaptor3d_HSurface> &
+	:type S2: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") BlendFunc_ConstThroatWithPenetrationInv;
 		 BlendFunc_ConstThroatWithPenetrationInv (const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -3853,16 +3853,16 @@ class BlendFunc_ConstThroatWithPenetrationInv : public BlendFunc_ConstThroatInv 
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "* returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** IsSolution ******************/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", ":param Sol:
-	:type Sol: math_Vector &
+	:type Sol: math_Vector
 	:param Tol:
 	:type Tol: float
 	:rtype: bool") IsSolution;
@@ -3872,9 +3872,9 @@ class BlendFunc_ConstThroatWithPenetrationInv : public BlendFunc_ConstThroatInv 
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 	:param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 

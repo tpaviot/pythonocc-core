@@ -115,7 +115,7 @@ class LProp3d_CLProps {
 		%feature("compactdefaultargs") LProp3d_CLProps;
 		%feature("autodoc", "* Initializes the local properties of the curve <C> The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, 2 or 3). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param N:
 	:type N: int
 	:param Resolution:
@@ -127,7 +127,7 @@ class LProp3d_CLProps {
 		%feature("compactdefaultargs") LProp3d_CLProps;
 		%feature("autodoc", "* Same as previous constructor but here the parameter is set to the value <U>. All the computations done will be related to <C> and <U>.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param N:
@@ -159,7 +159,7 @@ class LProp3d_CLProps {
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "* Initializes the local properties of the curve for the new curve.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") SetCurve;
 		void SetCurve (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -203,7 +203,7 @@ class LProp3d_CurveTool {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "* returns the order of continuity of the HCurve <C>. returns 1 : first derivative only is computable returns 2 : first and second derivative only are computable. returns 3 : first, second and third are computable.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: int") Continuity;
 		static Standard_Integer Continuity (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -211,7 +211,7 @@ class LProp3d_CurveTool {
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "* Computes the point <P> and first derivative <V1> of parameter <U> on the HCurve <C>.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param P:
@@ -225,7 +225,7 @@ class LProp3d_CurveTool {
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "* Computes the point <P>, the first derivative <V1> and second derivative <V2> of parameter <U> on the HCurve <C>.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param P:
@@ -241,7 +241,7 @@ class LProp3d_CurveTool {
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "* Computes the point <P>, the first derivative <V1>, the second derivative <V2> and third derivative <V3> of parameter <U> on the HCurve <C>.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param P:
@@ -259,7 +259,7 @@ class LProp3d_CurveTool {
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "* returns the first parameter bound of the HCurve.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: float") FirstParameter;
 		static Standard_Real FirstParameter (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -267,7 +267,7 @@ class LProp3d_CurveTool {
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "* returns the last parameter bound of the HCurve. FirstParameter must be less than LastParamenter.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: float") LastParameter;
 		static Standard_Real LastParameter (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -275,7 +275,7 @@ class LProp3d_CurveTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Computes the point <P> of parameter <U> on the HCurve <C>.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param P:
@@ -378,7 +378,7 @@ class LProp3d_SLProps {
 		%feature("compactdefaultargs") LProp3d_SLProps;
 		%feature("autodoc", "* Initializes the local properties of the surface <S> for the parameter values (<U>, <V>). The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, or 2). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param U:
 	:type U: float
 	:param V:
@@ -394,7 +394,7 @@ class LProp3d_SLProps {
 		%feature("compactdefaultargs") LProp3d_SLProps;
 		%feature("autodoc", "* idem as previous constructor but without setting the value of parameters <U> and <V>.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param N:
 	:type N: int
 	:param Resolution:
@@ -450,7 +450,7 @@ class LProp3d_SLProps {
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "* Initializes the local properties of the surface S for the new surface.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") SetSurface;
 		void SetSurface (const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -494,15 +494,15 @@ class LProp3d_SurfaceTool {
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "* returns the bounds of the HSurface.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: void") Bounds;
 		static void Bounds (const opencascade::handle<Adaptor3d_HSurface> & S,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -510,7 +510,7 @@ class LProp3d_SurfaceTool {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "* returns the order of continuity of the HSurface <S>. returns 1 : first derivative only is computable returns 2 : first and second derivative only are computable.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: int") Continuity;
 		static Standard_Integer Continuity (const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -518,7 +518,7 @@ class LProp3d_SurfaceTool {
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "* Computes the point <P> and first derivative <D1*> of parameter <U> and <V> on the HSurface <S>.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param U:
 	:type U: float
 	:param V:
@@ -536,7 +536,7 @@ class LProp3d_SurfaceTool {
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "* Computes the point <P>, the first derivative <D1*> and second derivative <D2*> of parameter <U> and <V> on the HSurface <S>.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param U:
 	:type U: float
 	:param V:
@@ -559,7 +559,7 @@ class LProp3d_SurfaceTool {
 		/****************** DN ******************/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param U:
 	:type U: float
 	:param V:
@@ -575,7 +575,7 @@ class LProp3d_SurfaceTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Computes the point <P> of parameter <U> and <V> on the HSurface <S>.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param U:
 	:type U: float
 	:param V:

@@ -378,9 +378,9 @@ class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 		%feature("compactdefaultargs") GetModifierWithValue;
 		%feature("autodoc", "* Retrieves datum modifier with value.
 	:param theModifier:
-	:type theModifier: XCAFDimTolObjects_DatumModifWithValue &
+	:type theModifier: XCAFDimTolObjects_DatumModifWithValue
 	:param theValue:
-	:type theValue: float &
+	:type theValue: float
 	:rtype: None") GetModifierWithValue;
 		void GetModifierWithValue (XCAFDimTolObjects_DatumModifWithValue & theModifier,Standard_Real &OutValue);
 
@@ -480,7 +480,7 @@ class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetDatumTarget;
 		%feature("autodoc", "* Sets datum target shape.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") SetDatumTarget;
 		void SetDatumTarget (const TopoDS_Shape & theShape);
 
@@ -538,7 +538,7 @@ class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetModifiers;
 		%feature("autodoc", "* Sets new sequence of datum modifiers.
 	:param theModifiers:
-	:type theModifiers: XCAFDimTolObjects_DatumModifiersSequence &
+	:type theModifiers: XCAFDimTolObjects_DatumModifiersSequence
 	:rtype: None") SetModifiers;
 		void SetModifiers (const XCAFDimTolObjects_DatumModifiersSequence & theModifiers);
 
@@ -546,7 +546,7 @@ class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* Sets datum name.
 	:param theTag:
-	:type theTag: opencascade::handle<TCollection_HAsciiString> &
+	:type theTag: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & theTag);
 
@@ -586,9 +586,9 @@ class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", "* Set graphical presentation for object.
 	:param thePresentation:
-	:type thePresentation: TopoDS_Shape &
+	:type thePresentation: TopoDS_Shape
 	:param thePresentationName:
-	:type thePresentationName: opencascade::handle<TCollection_HAsciiString> &
+	:type thePresentationName: TCollection_HAsciiString
 	:rtype: None") SetPresentation;
 		void SetPresentation (const TopoDS_Shape & thePresentation,const opencascade::handle<TCollection_HAsciiString> & thePresentationName);
 
@@ -596,7 +596,7 @@ class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetSemanticName;
 		%feature("autodoc", "* Sets semantic name
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:rtype: None") SetSemanticName;
 		void SetSemanticName (const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -608,7 +608,7 @@ class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 		/****************** XCAFDimTolObjects_DatumObject ******************/
 		%feature("compactdefaultargs") XCAFDimTolObjects_DatumObject;
 		%feature("autodoc", ":param theObj:
-	:type theObj: opencascade::handle<XCAFDimTolObjects_DatumObject> &
+	:type theObj: XCAFDimTolObjects_DatumObject
 	:rtype: None") XCAFDimTolObjects_DatumObject;
 		 XCAFDimTolObjects_DatumObject (const opencascade::handle<XCAFDimTolObjects_DatumObject> & theObj);
 
@@ -633,9 +633,9 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 		%feature("compactdefaultargs") AddDescription;
 		%feature("autodoc", "* Add new description.
 	:param theDescription:
-	:type theDescription: opencascade::handle<TCollection_HAsciiString>
+	:type theDescription: TCollection_HAsciiString
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString>
+	:type theName: TCollection_HAsciiString
 	:rtype: None") AddDescription;
 		void AddDescription (const opencascade::handle<TCollection_HAsciiString> theDescription,const opencascade::handle<TCollection_HAsciiString> theName);
 
@@ -653,9 +653,9 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 	:param theHole:
 	:type theHole: bool
 	:param theFormVariance:
-	:type theFormVariance: XCAFDimTolObjects_DimensionFormVariance &
+	:type theFormVariance: XCAFDimTolObjects_DimensionFormVariance
 	:param theGrade:
-	:type theGrade: XCAFDimTolObjects_DimensionGrade &
+	:type theGrade: XCAFDimTolObjects_DimensionGrade
 	:rtype: bool") GetClassOfTolerance;
 		Standard_Boolean GetClassOfTolerance (Standard_Boolean &OutValue,XCAFDimTolObjects_DimensionFormVariance & theFormVariance,XCAFDimTolObjects_DimensionGrade & theGrade);
 
@@ -705,9 +705,9 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 		%feature("compactdefaultargs") GetNbOfDecimalPlaces;
 		%feature("autodoc", "* Returns the number of places to the left and right of the decimal point respectively.
 	:param theL:
-	:type theL: int &
+	:type theL: int
 	:param theR:
-	:type theR: int &
+	:type theR: int
 	:rtype: None") GetNbOfDecimalPlaces;
 		void GetNbOfDecimalPlaces (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -901,7 +901,7 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetModifiers;
 		%feature("autodoc", "* Sets new sequence of dimension modifiers.
 	:param theModifiers:
-	:type theModifiers: XCAFDimTolObjects_DimensionModifiersSequence &
+	:type theModifiers: XCAFDimTolObjects_DimensionModifiersSequence
 	:rtype: None") SetModifiers;
 		void SetModifiers (const XCAFDimTolObjects_DimensionModifiersSequence & theModifiers);
 
@@ -919,7 +919,7 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetPath;
 		%feature("autodoc", "* Sets a 'curve' along which the dimension is measured.
 	:param thePath:
-	:type thePath: TopoDS_Edge &
+	:type thePath: TopoDS_Edge
 	:rtype: None") SetPath;
 		void SetPath (const TopoDS_Edge & thePath);
 
@@ -958,9 +958,9 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", "* Set graphical presentation for the object.
 	:param thePresentation:
-	:type thePresentation: TopoDS_Shape &
+	:type thePresentation: TopoDS_Shape
 	:param thePresentationName:
-	:type thePresentationName: opencascade::handle<TCollection_HAsciiString> &
+	:type thePresentationName: TCollection_HAsciiString
 	:rtype: None") SetPresentation;
 		void SetPresentation (const TopoDS_Shape & thePresentation,const opencascade::handle<TCollection_HAsciiString> & thePresentationName);
 
@@ -976,7 +976,7 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetSemanticName;
 		%feature("autodoc", "* Sets semantic name
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:rtype: None") SetSemanticName;
 		void SetSemanticName (const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -1016,7 +1016,7 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "* Replaces current raw array of dimension values with theValues array.
 	:param theValue:
-	:type theValue: opencascade::handle<TColStd_HArray1OfReal> &
+	:type theValue: TColStd_HArray1OfReal
 	:rtype: None") SetValues;
 		void SetValues (const opencascade::handle<TColStd_HArray1OfReal> & theValue);
 
@@ -1028,7 +1028,7 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 		/****************** XCAFDimTolObjects_DimensionObject ******************/
 		%feature("compactdefaultargs") XCAFDimTolObjects_DimensionObject;
 		%feature("autodoc", ":param theObj:
-	:type theObj: opencascade::handle<XCAFDimTolObjects_DimensionObject> &
+	:type theObj: XCAFDimTolObjects_DimensionObject
 	:rtype: None") XCAFDimTolObjects_DimensionObject;
 		 XCAFDimTolObjects_DimensionObject (const opencascade::handle<XCAFDimTolObjects_DimensionObject> & theObj);
 
@@ -1237,7 +1237,7 @@ class XCAFDimTolObjects_GeomToleranceObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetModifiers;
 		%feature("autodoc", "* Sets new sequence of tolerance modifiers.
 	:param theModifiers:
-	:type theModifiers: XCAFDimTolObjects_GeomToleranceModifiersSequence &
+	:type theModifiers: XCAFDimTolObjects_GeomToleranceModifiersSequence
 	:rtype: None") SetModifiers;
 		void SetModifiers (const XCAFDimTolObjects_GeomToleranceModifiersSequence & theModifiers);
 
@@ -1269,9 +1269,9 @@ class XCAFDimTolObjects_GeomToleranceObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", "* Set graphical presentation for object.
 	:param thePresentation:
-	:type thePresentation: TopoDS_Shape &
+	:type thePresentation: TopoDS_Shape
 	:param thePresentationName:
-	:type thePresentationName: opencascade::handle<TCollection_HAsciiString> &
+	:type thePresentationName: TCollection_HAsciiString
 	:rtype: None") SetPresentation;
 		void SetPresentation (const TopoDS_Shape & thePresentation,const opencascade::handle<TCollection_HAsciiString> & thePresentationName);
 
@@ -1279,7 +1279,7 @@ class XCAFDimTolObjects_GeomToleranceObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetSemanticName;
 		%feature("autodoc", "* Sets semantic name
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:rtype: None") SetSemanticName;
 		void SetSemanticName (const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -1331,7 +1331,7 @@ class XCAFDimTolObjects_GeomToleranceObject : public Standard_Transient {
 		/****************** XCAFDimTolObjects_GeomToleranceObject ******************/
 		%feature("compactdefaultargs") XCAFDimTolObjects_GeomToleranceObject;
 		%feature("autodoc", ":param theObj:
-	:type theObj: opencascade::handle<XCAFDimTolObjects_GeomToleranceObject> &
+	:type theObj: XCAFDimTolObjects_GeomToleranceObject
 	:rtype: None") XCAFDimTolObjects_GeomToleranceObject;
 		 XCAFDimTolObjects_GeomToleranceObject (const opencascade::handle<XCAFDimTolObjects_GeomToleranceObject> & theObj);
 
@@ -1356,7 +1356,7 @@ class XCAFDimTolObjects_Tool {
 		%feature("compactdefaultargs") GetDimensions;
 		%feature("autodoc", "* Returns a sequence of Dimensions currently stored in the GD&T table
 	:param theDimensionObjectSequence:
-	:type theDimensionObjectSequence: XCAFDimTolObjects_DimensionObjectSequence &
+	:type theDimensionObjectSequence: XCAFDimTolObjects_DimensionObjectSequence
 	:rtype: None") GetDimensions;
 		void GetDimensions (XCAFDimTolObjects_DimensionObjectSequence & theDimensionObjectSequence);
 
@@ -1364,11 +1364,11 @@ class XCAFDimTolObjects_Tool {
 		%feature("compactdefaultargs") GetGeomTolerances;
 		%feature("autodoc", "* Returns a sequence of Tolerances currently stored in the GD&T table
 	:param theGeomToleranceObjectSequence:
-	:type theGeomToleranceObjectSequence: XCAFDimTolObjects_GeomToleranceObjectSequence &
+	:type theGeomToleranceObjectSequence: XCAFDimTolObjects_GeomToleranceObjectSequence
 	:param theDatumObjectSequence:
-	:type theDatumObjectSequence: XCAFDimTolObjects_DatumObjectSequence &
+	:type theDatumObjectSequence: XCAFDimTolObjects_DatumObjectSequence
 	:param theMap:
-	:type theMap: XCAFDimTolObjects_DataMapOfToleranceDatum &
+	:type theMap: XCAFDimTolObjects_DataMapOfToleranceDatum
 	:rtype: None") GetGeomTolerances;
 		void GetGeomTolerances (XCAFDimTolObjects_GeomToleranceObjectSequence & theGeomToleranceObjectSequence,XCAFDimTolObjects_DatumObjectSequence & theDatumObjectSequence,XCAFDimTolObjects_DataMapOfToleranceDatum & theMap);
 
@@ -1376,9 +1376,9 @@ class XCAFDimTolObjects_Tool {
 		%feature("compactdefaultargs") GetRefDatum;
 		%feature("autodoc", "* Returns DatumObject defined for Shape
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theDatum:
-	:type theDatum: opencascade::handle<XCAFDimTolObjects_DatumObject> &
+	:type theDatum: XCAFDimTolObjects_DatumObject
 	:rtype: bool") GetRefDatum;
 		Standard_Boolean GetRefDatum (const TopoDS_Shape & theShape,opencascade::handle<XCAFDimTolObjects_DatumObject> & theDatum);
 
@@ -1386,9 +1386,9 @@ class XCAFDimTolObjects_Tool {
 		%feature("compactdefaultargs") GetRefDimensions;
 		%feature("autodoc", "* Returns all Dimensions defined for Shape
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theDimensions:
-	:type theDimensions: XCAFDimTolObjects_DimensionObjectSequence &
+	:type theDimensions: XCAFDimTolObjects_DimensionObjectSequence
 	:rtype: bool") GetRefDimensions;
 		Standard_Boolean GetRefDimensions (const TopoDS_Shape & theShape,XCAFDimTolObjects_DimensionObjectSequence & theDimensions);
 
@@ -1396,20 +1396,20 @@ class XCAFDimTolObjects_Tool {
 		%feature("compactdefaultargs") GetRefGeomTolerances;
 		%feature("autodoc", "* Returns all GeomTolerances defined for Shape
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theGeomToleranceObjectSequence:
-	:type theGeomToleranceObjectSequence: XCAFDimTolObjects_GeomToleranceObjectSequence &
+	:type theGeomToleranceObjectSequence: XCAFDimTolObjects_GeomToleranceObjectSequence
 	:param theDatumObjectSequence:
-	:type theDatumObjectSequence: XCAFDimTolObjects_DatumObjectSequence &
+	:type theDatumObjectSequence: XCAFDimTolObjects_DatumObjectSequence
 	:param theMap:
-	:type theMap: XCAFDimTolObjects_DataMapOfToleranceDatum &
+	:type theMap: XCAFDimTolObjects_DataMapOfToleranceDatum
 	:rtype: bool") GetRefGeomTolerances;
 		Standard_Boolean GetRefGeomTolerances (const TopoDS_Shape & theShape,XCAFDimTolObjects_GeomToleranceObjectSequence & theGeomToleranceObjectSequence,XCAFDimTolObjects_DatumObjectSequence & theDatumObjectSequence,XCAFDimTolObjects_DataMapOfToleranceDatum & theMap);
 
 		/****************** XCAFDimTolObjects_Tool ******************/
 		%feature("compactdefaultargs") XCAFDimTolObjects_Tool;
 		%feature("autodoc", ":param theDoc:
-	:type theDoc: opencascade::handle<TDocStd_Document> &
+	:type theDoc: TDocStd_Document
 	:rtype: None") XCAFDimTolObjects_Tool;
 		 XCAFDimTolObjects_Tool (const opencascade::handle<TDocStd_Document> & theDoc);
 

@@ -174,9 +174,9 @@ class BRepFill {
 		%feature("compactdefaultargs") Axe;
 		%feature("autodoc", "* Computes <AxeProf> as Follow. <Location> is the Position of the nearest vertex V of <Profile> to <Spine>.<XDirection> is confused with the tangent to <Spine> at the projected point of V on the Spine. <Direction> is normal to <Spine>. <Spine> is a plane wire or a plane face.
 	:param Spine:
-	:type Spine: TopoDS_Shape &
+	:type Spine: TopoDS_Shape
 	:param Profile:
-	:type Profile: TopoDS_Wire &
+	:type Profile: TopoDS_Wire
 	:param AxeProf:
 	:type AxeProf: gp_Ax3
 	:param ProfOnSpine:
@@ -190,9 +190,9 @@ class BRepFill {
 		%feature("compactdefaultargs") ComputeACR;
 		%feature("autodoc", "* Compute ACR on a wire
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param ACR:
-	:type ACR: TColStd_Array1OfReal &
+	:type ACR: TColStd_Array1OfReal
 	:rtype: void") ComputeACR;
 		static void ComputeACR (const TopoDS_Wire & wire,TColStd_Array1OfReal & ACR);
 
@@ -200,9 +200,9 @@ class BRepFill {
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "* Computes a ruled surface between two edges.
 	:param Edge1:
-	:type Edge1: TopoDS_Edge &
+	:type Edge1: TopoDS_Edge
 	:param Edge2:
-	:type Edge2: TopoDS_Edge &
+	:type Edge2: TopoDS_Edge
 	:rtype: TopoDS_Face") Face;
 		static TopoDS_Face Face (const TopoDS_Edge & Edge1,const TopoDS_Edge & Edge2);
 
@@ -210,9 +210,9 @@ class BRepFill {
 		%feature("compactdefaultargs") InsertACR;
 		%feature("autodoc", "* Insert ACR on a wire
 	:param wire:
-	:type wire: TopoDS_Wire &
+	:type wire: TopoDS_Wire
 	:param ACRcuts:
-	:type ACRcuts: TColStd_Array1OfReal &
+	:type ACRcuts: TColStd_Array1OfReal
 	:param prec:
 	:type prec: float
 	:rtype: TopoDS_Wire") InsertACR;
@@ -222,9 +222,9 @@ class BRepFill {
 		%feature("compactdefaultargs") Shell;
 		%feature("autodoc", "* Computes a ruled surface between two wires. The wires must have the same number of edges.
 	:param Wire1:
-	:type Wire1: TopoDS_Wire &
+	:type Wire1: TopoDS_Wire
 	:param Wire2:
-	:type Wire2: TopoDS_Wire &
+	:type Wire2: TopoDS_Wire
 	:rtype: TopoDS_Shell") Shell;
 		static TopoDS_Shell Shell (const TopoDS_Wire & Wire1,const TopoDS_Wire & Wire2);
 
@@ -260,9 +260,9 @@ class BRepFill_AdvancedEvolved {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param theSpine:
-	:type theSpine: TopoDS_Wire &
+	:type theSpine: TopoDS_Wire
 	:param theProfile:
-	:type theProfile: TopoDS_Wire &
+	:type theProfile: TopoDS_Wire
 	:param theTolerance:
 	:type theTolerance: float
 	:param theSolidReq: default value is Standard_True
@@ -282,7 +282,7 @@ class BRepFill_AdvancedEvolved {
 		%feature("compactdefaultargs") SetTemporaryDirectory;
 		%feature("autodoc", "* Sets directory where the debug shapes will be saved
 	:param thePath:
-	:type thePath: char * &
+	:type thePath: char *
 	:rtype: None") SetTemporaryDirectory;
 		void SetTemporaryDirectory (const char * & thePath);
 
@@ -315,7 +315,7 @@ class BRepFill_ApproxSeewing {
 		/****************** BRepFill_ApproxSeewing ******************/
 		%feature("compactdefaultargs") BRepFill_ApproxSeewing;
 		%feature("autodoc", ":param ML:
-	:type ML: BRepFill_MultiLine &
+	:type ML: BRepFill_MultiLine
 	:rtype: None") BRepFill_ApproxSeewing;
 		 BRepFill_ApproxSeewing (const BRepFill_MultiLine & ML);
 
@@ -345,7 +345,7 @@ class BRepFill_ApproxSeewing {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param ML:
-	:type ML: BRepFill_MultiLine &
+	:type ML: BRepFill_MultiLine
 	:rtype: None") Perform;
 		void Perform (const BRepFill_MultiLine & ML);
 
@@ -372,7 +372,7 @@ class BRepFill_CompatibleWires {
 		/****************** BRepFill_CompatibleWires ******************/
 		%feature("compactdefaultargs") BRepFill_CompatibleWires;
 		%feature("autodoc", ":param Sections:
-	:type Sections: TopTools_SequenceOfShape &
+	:type Sections: TopTools_SequenceOfShape
 	:rtype: None") BRepFill_CompatibleWires;
 		 BRepFill_CompatibleWires (const TopTools_SequenceOfShape & Sections);
 
@@ -385,14 +385,14 @@ class BRepFill_CompatibleWires {
 		%feature("compactdefaultargs") GeneratedShapes;
 		%feature("autodoc", "* Returns the shapes created from a subshape <SubSection> of a section.
 	:param SubSection:
-	:type SubSection: TopoDS_Edge &
+	:type SubSection: TopoDS_Edge
 	:rtype: TopTools_ListOfShape") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes (const TopoDS_Edge & SubSection);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param Sections:
-	:type Sections: TopTools_SequenceOfShape &
+	:type Sections: TopTools_SequenceOfShape
 	:rtype: None") Init;
 		void Init (const TopTools_SequenceOfShape & Sections);
 
@@ -451,7 +451,7 @@ class BRepFill_ComputeCLine {
 		%feature("compactdefaultargs") BRepFill_ComputeCLine;
 		%feature("autodoc", "* The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True.
 	:param Line:
-	:type Line: BRepFill_MultiLine &
+	:type Line: BRepFill_MultiLine
 	:param degreemin: default value is 3
 	:type degreemin: int
 	:param degreemax: default value is 8
@@ -495,9 +495,9 @@ class BRepFill_ComputeCLine {
 	:param Index:
 	:type Index: int
 	:param tol3d:
-	:type tol3d: float &
+	:type tol3d: float
 	:param tol2d:
-	:type tol2d: float &
+	:type tol2d: float
 	:rtype: None") Error;
 		void Error (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -524,9 +524,9 @@ class BRepFill_ComputeCLine {
 		%feature("autodoc", ":param Index:
 	:type Index: int
 	:param firstp:
-	:type firstp: float &
+	:type firstp: float
 	:param lastp:
-	:type lastp: float &
+	:type lastp: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -534,7 +534,7 @@ class BRepFill_ComputeCLine {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* runs the algorithm after having initialized the fields.
 	:param Line:
-	:type Line: BRepFill_MultiLine &
+	:type Line: BRepFill_MultiLine
 	:rtype: None") Perform;
 		void Perform (const BRepFill_MultiLine & Line);
 
@@ -611,7 +611,7 @@ class BRepFill_CurveConstraint : public GeomPlate_CurveConstraint {
 		%feature("compactdefaultargs") BRepFill_CurveConstraint;
 		%feature("autodoc", "* Create a constraint Order is the order of the constraint. The possible values for order are -1,0,1,2. Order i means constraints Gi Npt is the number of points associated with the constraint. TolDist is the maximum error to satisfy for G0 constraints TolAng is the maximum error to satisfy for G1 constraints TolCurv is the maximum error to satisfy for G2 constraints These errors can be replaced by laws of criterion.
 	:param Boundary:
-	:type Boundary: opencascade::handle<Adaptor3d_HCurveOnSurface> &
+	:type Boundary: Adaptor3d_HCurveOnSurface
 	:param Order:
 	:type Order: int
 	:param NPt: default value is 10
@@ -628,7 +628,7 @@ class BRepFill_CurveConstraint : public GeomPlate_CurveConstraint {
 		/****************** BRepFill_CurveConstraint ******************/
 		%feature("compactdefaultargs") BRepFill_CurveConstraint;
 		%feature("autodoc", ":param Boundary:
-	:type Boundary: opencascade::handle<Adaptor3d_HCurve> &
+	:type Boundary: Adaptor3d_HCurve
 	:param Tang:
 	:type Tang: int
 	:param NPt: default value is 10
@@ -658,7 +658,7 @@ class BRepFill_Draft {
 		/****************** BRepFill_Draft ******************/
 		%feature("compactdefaultargs") BRepFill_Draft;
 		%feature("autodoc", ":param Shape:
-	:type Shape: TopoDS_Shape &
+	:type Shape: TopoDS_Shape
 	:param Dir:
 	:type Dir: gp_Dir
 	:param Angle:
@@ -670,7 +670,7 @@ class BRepFill_Draft {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns the list of shapes generated from the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Generated;
 		const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
 
@@ -689,7 +689,7 @@ class BRepFill_Draft {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Surface:
-	:type Surface: opencascade::handle<Geom_Surface> &
+	:type Surface: Geom_Surface
 	:param KeepInsideSurface: default value is Standard_True
 	:type KeepInsideSurface: bool
 	:rtype: None") Perform;
@@ -698,7 +698,7 @@ class BRepFill_Draft {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param StopShape:
-	:type StopShape: TopoDS_Shape &
+	:type StopShape: TopoDS_Shape
 	:param KeepOutSide: default value is Standard_True
 	:type KeepOutSide: bool
 	:rtype: None") Perform;
@@ -756,9 +756,9 @@ class BRepFill_EdgeFaceAndOrder {
 		/****************** BRepFill_EdgeFaceAndOrder ******************/
 		%feature("compactdefaultargs") BRepFill_EdgeFaceAndOrder;
 		%feature("autodoc", ":param anEdge:
-	:type anEdge: TopoDS_Edge &
+	:type anEdge: TopoDS_Edge
 	:param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param anOrder:
 	:type anOrder: GeomAbs_Shape
 	:rtype: None") BRepFill_EdgeFaceAndOrder;
@@ -788,9 +788,9 @@ class BRepFill_Evolved {
 		%feature("compactdefaultargs") BRepFill_Evolved;
 		%feature("autodoc", "* Creates an evolved shape by sweeping the <Profile> along the <Spine>. <AxeProf> is used to set the position of <Profile> along <Spine> as follows: <AxeProf> slides on the profile with direction colinear to the normal to <Spine>, and its <XDirection> mixed with the tangent to <Spine>.
 	:param Spine:
-	:type Spine: TopoDS_Wire &
+	:type Spine: TopoDS_Wire
 	:param Profile:
-	:type Profile: TopoDS_Wire &
+	:type Profile: TopoDS_Wire
 	:param AxeProf:
 	:type AxeProf: gp_Ax3
 	:param Join: default value is GeomAbs_Arc
@@ -804,9 +804,9 @@ class BRepFill_Evolved {
 		%feature("compactdefaultargs") BRepFill_Evolved;
 		%feature("autodoc", "* Creates an evolved shape by sweeping the <Profile> along the <Spine>
 	:param Spine:
-	:type Spine: TopoDS_Face &
+	:type Spine: TopoDS_Face
 	:param Profile:
-	:type Profile: TopoDS_Wire &
+	:type Profile: TopoDS_Wire
 	:param AxeProf:
 	:type AxeProf: gp_Ax3
 	:param Join: default value is GeomAbs_Arc
@@ -826,9 +826,9 @@ class BRepFill_Evolved {
 		%feature("compactdefaultargs") GeneratedShapes;
 		%feature("autodoc", "* Returns the shapes created from a subshape <SpineShape> of the spine and a subshape <ProfShape> on the profile.
 	:param SpineShape:
-	:type SpineShape: TopoDS_Shape &
+	:type SpineShape: TopoDS_Shape
 	:param ProfShape:
-	:type ProfShape: TopoDS_Shape &
+	:type ProfShape: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes (const TopoDS_Shape & SpineShape,const TopoDS_Shape & ProfShape);
 
@@ -846,9 +846,9 @@ class BRepFill_Evolved {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs an evolved shape by sweeping the <Profile> along the <Spine>
 	:param Spine:
-	:type Spine: TopoDS_Wire &
+	:type Spine: TopoDS_Wire
 	:param Profile:
-	:type Profile: TopoDS_Wire &
+	:type Profile: TopoDS_Wire
 	:param AxeProf:
 	:type AxeProf: gp_Ax3
 	:param Join: default value is GeomAbs_Arc
@@ -862,9 +862,9 @@ class BRepFill_Evolved {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs an evolved shape by sweeping the <Profile> along the <Spine>
 	:param Spine:
-	:type Spine: TopoDS_Face &
+	:type Spine: TopoDS_Face
 	:param Profile:
-	:type Profile: TopoDS_Wire &
+	:type Profile: TopoDS_Wire
 	:param AxeProf:
 	:type AxeProf: gp_Ax3
 	:param Join: default value is GeomAbs_Arc
@@ -909,7 +909,7 @@ class BRepFill_FaceAndOrder {
 		/****************** BRepFill_FaceAndOrder ******************/
 		%feature("compactdefaultargs") BRepFill_FaceAndOrder;
 		%feature("autodoc", ":param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:param anOrder:
 	:type anOrder: GeomAbs_Shape
 	:rtype: None") BRepFill_FaceAndOrder;
@@ -934,7 +934,7 @@ class BRepFill_Filling {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0 : the surface has to pass by 3D representation of the edge GeomAbs_G1 : the surface has to pass by 3D representation of the edge and to respect tangency with the first face of the edge GeomAbs_G2 : the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the first face of the edge.
 	:param anEdge:
-	:type anEdge: TopoDS_Edge &
+	:type anEdge: TopoDS_Edge
 	:param Order:
 	:type Order: GeomAbs_Shape
 	:param IsBound: default value is Standard_True
@@ -946,9 +946,9 @@ class BRepFill_Filling {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0 : the surface has to pass by 3D representation of the edge GeomAbs_G1 : the surface has to pass by 3D representation of the edge and to respect tangency with the given face GeomAbs_G2 : the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the given face.
 	:param anEdge:
-	:type anEdge: TopoDS_Edge &
+	:type anEdge: TopoDS_Edge
 	:param Support:
-	:type Support: TopoDS_Face &
+	:type Support: TopoDS_Face
 	:param Order:
 	:type Order: GeomAbs_Shape
 	:param IsBound: default value is Standard_True
@@ -960,7 +960,7 @@ class BRepFill_Filling {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a free constraint on a face. The corresponding edge has to be automatically recomputed. It is always a bound.
 	:param Support:
-	:type Support: TopoDS_Face &
+	:type Support: TopoDS_Face
 	:param Order:
 	:type Order: GeomAbs_Shape
 	:rtype: int") Add;
@@ -982,7 +982,7 @@ class BRepFill_Filling {
 	:param V:
 	:type V: float
 	:param Support:
-	:type Support: TopoDS_Face &
+	:type Support: TopoDS_Face
 	:param Order:
 	:type Order: GeomAbs_Shape
 	:rtype: int") Add;
@@ -1065,7 +1065,7 @@ class BRepFill_Filling {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns the list of shapes generated from the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") Generated;
 		const TopTools_ListOfShape & Generated (const TopoDS_Shape & S);
 
@@ -1078,7 +1078,7 @@ class BRepFill_Filling {
 		%feature("compactdefaultargs") LoadInitSurface;
 		%feature("autodoc", "* Loads the initial Surface The initial surface must have orthogonal local coordinates, i.e. partial derivatives dS/du and dS/dv must be orthogonal at each point of surface. If this condition breaks, distortions of resulting surface are possible.
 	:param aFace:
-	:type aFace: TopoDS_Face &
+	:type aFace: TopoDS_Face
 	:rtype: None") LoadInitSurface;
 		void LoadInitSurface (const TopoDS_Face & aFace);
 
@@ -1138,7 +1138,7 @@ class BRepFill_Generator {
 		/****************** AddWire ******************/
 		%feature("compactdefaultargs") AddWire;
 		%feature("autodoc", ":param Wire:
-	:type Wire: TopoDS_Wire &
+	:type Wire: TopoDS_Wire
 	:rtype: None") AddWire;
 		void AddWire (const TopoDS_Wire & Wire);
 
@@ -1157,7 +1157,7 @@ class BRepFill_Generator {
 		%feature("compactdefaultargs") GeneratedShapes;
 		%feature("autodoc", "* Returns the shapes created from a subshape <SSection> of a section.
 	:param SSection:
-	:type SSection: TopoDS_Shape &
+	:type SSection: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes (const TopoDS_Shape & SSection);
 
@@ -1203,9 +1203,9 @@ class BRepFill_LocationLaw : public Standard_Transient {
 	:param Index:
 	:type Index: int
 	:param First:
-	:type First: float &
+	:type First: float
 	:param Last:
-	:type Last: float &
+	:type Last: float
 	:rtype: None") CurvilinearBounds;
 		void CurvilinearBounds (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1215,7 +1215,7 @@ class BRepFill_LocationLaw : public Standard_Transient {
 	:param Abscissa:
 	:type Abscissa: float
 	:param Section:
-	:type Section: TopoDS_Shape &
+	:type Section: TopoDS_Shape
 	:rtype: None") D0;
 		void D0 (const Standard_Real Abscissa,TopoDS_Shape & Section);
 
@@ -1241,7 +1241,7 @@ class BRepFill_LocationLaw : public Standard_Transient {
 		/****************** Holes ******************/
 		%feature("compactdefaultargs") Holes;
 		%feature("autodoc", ":param Interval:
-	:type Interval: TColStd_Array1OfInteger &
+	:type Interval: TColStd_Array1OfInteger
 	:rtype: None") Holes;
 		void Holes (TColStd_Array1OfInteger & Interval);
 
@@ -1289,9 +1289,9 @@ class BRepFill_LocationLaw : public Standard_Transient {
 	:param Abscissa:
 	:type Abscissa: float
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:param Param:
-	:type Param: float &
+	:type Param: float
 	:rtype: None") Parameter;
 		void Parameter (const Standard_Real Abscissa,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -1301,11 +1301,11 @@ class BRepFill_LocationLaw : public Standard_Transient {
 	:param Index:
 	:type Index: int
 	:param InputVertex:
-	:type InputVertex: TopoDS_Vertex &
+	:type InputVertex: TopoDS_Vertex
 	:param TolMin:
 	:type TolMin: float
 	:param OutputVertex:
-	:type OutputVertex: TopoDS_Vertex &
+	:type OutputVertex: TopoDS_Vertex
 	:param Location: default value is 0
 	:type Location: int
 	:rtype: None") PerformVertex;
@@ -1364,19 +1364,19 @@ class BRepFill_MultiLine : public AppCont_Function {
 		/****************** BRepFill_MultiLine ******************/
 		%feature("compactdefaultargs") BRepFill_MultiLine;
 		%feature("autodoc", ":param Face1:
-	:type Face1: TopoDS_Face &
+	:type Face1: TopoDS_Face
 	:param Face2:
-	:type Face2: TopoDS_Face &
+	:type Face2: TopoDS_Face
 	:param Edge1:
-	:type Edge1: TopoDS_Edge &
+	:type Edge1: TopoDS_Edge
 	:param Edge2:
-	:type Edge2: TopoDS_Edge &
+	:type Edge2: TopoDS_Edge
 	:param Inv1:
 	:type Inv1: bool
 	:param Inv2:
 	:type Inv2: bool
 	:param Bissec:
-	:type Bissec: opencascade::handle<Geom2d_Curve> &
+	:type Bissec: Geom2d_Curve
 	:rtype: None") BRepFill_MultiLine;
 		 BRepFill_MultiLine (const TopoDS_Face & Face1,const TopoDS_Face & Face2,const TopoDS_Edge & Edge1,const TopoDS_Edge & Edge2,const Standard_Boolean Inv1,const Standard_Boolean Inv2,const opencascade::handle<Geom2d_Curve> & Bissec);
 
@@ -1390,11 +1390,11 @@ class BRepFill_MultiLine : public AppCont_Function {
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "* raises if IsParticularCase is <False>.
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param PCurve1:
-	:type PCurve1: opencascade::handle<Geom2d_Curve> &
+	:type PCurve1: Geom2d_Curve
 	:param PCurve2:
-	:type PCurve2: opencascade::handle<Geom2d_Curve> &
+	:type PCurve2: Geom2d_Curve
 	:rtype: None") Curves;
 		void Curves (opencascade::handle<Geom_Curve> & Curve,opencascade::handle<Geom2d_Curve> & PCurve1,opencascade::handle<Geom2d_Curve> & PCurve2);
 
@@ -1496,7 +1496,7 @@ class BRepFill_OffsetAncestors {
 		%feature("compactdefaultargs") Ancestor;
 		%feature("autodoc", "* may return a Null Shape if S1 is not a subShape of <Paral>; if Perform is not done.
 	:param S1:
-	:type S1: TopoDS_Edge &
+	:type S1: TopoDS_Edge
 	:rtype: TopoDS_Shape") Ancestor;
 		const TopoDS_Shape  Ancestor (const TopoDS_Edge & S1);
 
@@ -1508,14 +1508,14 @@ class BRepFill_OffsetAncestors {
 		/****************** BRepFill_OffsetAncestors ******************/
 		%feature("compactdefaultargs") BRepFill_OffsetAncestors;
 		%feature("autodoc", ":param Paral:
-	:type Paral: BRepFill_OffsetWire &
+	:type Paral: BRepFill_OffsetWire
 	:rtype: None") BRepFill_OffsetAncestors;
 		 BRepFill_OffsetAncestors (BRepFill_OffsetWire & Paral);
 
 		/****************** HasAncestor ******************/
 		%feature("compactdefaultargs") HasAncestor;
 		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Edge &
+	:type S1: TopoDS_Edge
 	:rtype: bool") HasAncestor;
 		Standard_Boolean HasAncestor (const TopoDS_Edge & S1);
 
@@ -1527,7 +1527,7 @@ class BRepFill_OffsetAncestors {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Paral:
-	:type Paral: BRepFill_OffsetWire &
+	:type Paral: BRepFill_OffsetWire
 	:rtype: None") Perform;
 		void Perform (BRepFill_OffsetWire & Paral);
 
@@ -1554,7 +1554,7 @@ class BRepFill_OffsetWire {
 		/****************** BRepFill_OffsetWire ******************/
 		%feature("compactdefaultargs") BRepFill_OffsetWire;
 		%feature("autodoc", ":param Spine:
-	:type Spine: TopoDS_Face &
+	:type Spine: TopoDS_Face
 	:param Join: default value is GeomAbs_Arc
 	:type Join: GeomAbs_JoinType
 	:param IsOpenResult: default value is Standard_False
@@ -1566,7 +1566,7 @@ class BRepFill_OffsetWire {
 		%feature("compactdefaultargs") GeneratedShapes;
 		%feature("autodoc", "* Returns the shapes created from a subshape <SpineShape> of the spine. Returns the last computed Offset.
 	:param SpineShape:
-	:type SpineShape: TopoDS_Shape &
+	:type SpineShape: TopoDS_Shape
 	:rtype: TopTools_ListOfShape") GeneratedShapes;
 		const TopTools_ListOfShape & GeneratedShapes (const TopoDS_Shape & SpineShape);
 
@@ -1574,7 +1574,7 @@ class BRepFill_OffsetWire {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize the evaluation of Offseting.
 	:param Spine:
-	:type Spine: TopoDS_Face &
+	:type Spine: TopoDS_Face
 	:param Join: default value is GeomAbs_Arc
 	:type Join: GeomAbs_JoinType
 	:param IsOpenResult: default value is Standard_False
@@ -1606,13 +1606,13 @@ class BRepFill_OffsetWire {
 		%feature("compactdefaultargs") PerformWithBiLo;
 		%feature("autodoc", "* Performs an OffsetWire
 	:param WSP:
-	:type WSP: TopoDS_Face &
+	:type WSP: TopoDS_Face
 	:param Offset:
 	:type Offset: float
 	:param Locus:
-	:type Locus: BRepMAT2d_BisectingLocus &
+	:type Locus: BRepMAT2d_BisectingLocus
 	:param Link:
-	:type Link: BRepMAT2d_LinkTopoBilo &
+	:type Link: BRepMAT2d_LinkTopoBilo
 	:param Join: default value is GeomAbs_Arc
 	:type Join: GeomAbs_JoinType
 	:param Alt: default value is 0.0
@@ -1654,9 +1654,9 @@ class BRepFill_Pipe {
 		/****************** BRepFill_Pipe ******************/
 		%feature("compactdefaultargs") BRepFill_Pipe;
 		%feature("autodoc", ":param Spine:
-	:type Spine: TopoDS_Wire &
+	:type Spine: TopoDS_Wire
 	:param Profile:
-	:type Profile: TopoDS_Shape &
+	:type Profile: TopoDS_Shape
 	:param aMode: default value is GeomFill_IsCorrectedFrenet
 	:type aMode: GeomFill_Trihedron
 	:param ForceApproxC1: default value is Standard_False
@@ -1670,9 +1670,9 @@ class BRepFill_Pipe {
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "* Returns the edge created from an edge of the spine and a vertex of the profile. if the edge or the vertex are not in the spine or the profile.
 	:param ESpine:
-	:type ESpine: TopoDS_Edge &
+	:type ESpine: TopoDS_Edge
 	:param VProfile:
-	:type VProfile: TopoDS_Vertex &
+	:type VProfile: TopoDS_Vertex
 	:rtype: TopoDS_Edge") Edge;
 		TopoDS_Edge Edge (const TopoDS_Edge & ESpine,const TopoDS_Vertex & VProfile);
 
@@ -1685,9 +1685,9 @@ class BRepFill_Pipe {
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "* Returns the face created from an edge of the spine and an edge of the profile. if the edges are not in the spine or the profile
 	:param ESpine:
-	:type ESpine: TopoDS_Edge &
+	:type ESpine: TopoDS_Edge
 	:param EProfile:
-	:type EProfile: TopoDS_Edge &
+	:type EProfile: TopoDS_Edge
 	:rtype: TopoDS_Face") Face;
 		TopoDS_Face Face (const TopoDS_Edge & ESpine,const TopoDS_Edge & EProfile);
 
@@ -1700,9 +1700,9 @@ class BRepFill_Pipe {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns the list of shapes generated from the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") Generated;
 		void Generated (const TopoDS_Shape & S,TopTools_ListOfShape & L);
 
@@ -1714,9 +1714,9 @@ class BRepFill_Pipe {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param Spine:
-	:type Spine: TopoDS_Wire &
+	:type Spine: TopoDS_Wire
 	:param Profile:
-	:type Profile: TopoDS_Shape &
+	:type Profile: TopoDS_Shape
 	:param GeneratePartCase: default value is Standard_False
 	:type GeneratePartCase: bool
 	:rtype: None") Perform;
@@ -1739,7 +1739,7 @@ class BRepFill_Pipe {
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "* Returns the shape created from the profile at the position of the vertex VSpine. if the vertex is not in the Spine
 	:param VSpine:
-	:type VSpine: TopoDS_Vertex &
+	:type VSpine: TopoDS_Vertex
 	:rtype: TopoDS_Shape") Section;
 		TopoDS_Shape Section (const TopoDS_Vertex & VSpine);
 
@@ -1772,7 +1772,7 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Set an section. The corespondance with the spine, will be automaticaly performed.
 	:param Profile:
-	:type Profile: TopoDS_Shape &
+	:type Profile: TopoDS_Shape
 	:param WithContact: default value is Standard_False
 	:type WithContact: bool
 	:param WithCorrection: default value is Standard_False
@@ -1784,9 +1784,9 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Set an section. The corespondance with the spine, is given by <Location>
 	:param Profile:
-	:type Profile: TopoDS_Shape &
+	:type Profile: TopoDS_Shape
 	:param Location:
-	:type Location: TopoDS_Vertex &
+	:type Location: TopoDS_Vertex
 	:param WithContact: default value is Standard_False
 	:type WithContact: bool
 	:param WithCorrection: default value is Standard_False
@@ -1798,7 +1798,7 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") BRepFill_PipeShell;
 		%feature("autodoc", "* Set an sweep's mode If no mode are setted, the mode use in MakePipe is used
 	:param Spine:
-	:type Spine: TopoDS_Wire &
+	:type Spine: TopoDS_Wire
 	:rtype: None") BRepFill_PipeShell;
 		 BRepFill_PipeShell (const TopoDS_Wire & Spine);
 
@@ -1812,7 +1812,7 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") DeleteProfile;
 		%feature("autodoc", "* Delete an section.
 	:param Profile:
-	:type Profile: TopoDS_Shape &
+	:type Profile: TopoDS_Shape
 	:rtype: None") DeleteProfile;
 		void DeleteProfile (const TopoDS_Shape & Profile);
 
@@ -1831,9 +1831,9 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "* Returns the list of shapes generated from the shape <S>.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param L:
-	:type L: TopTools_ListOfShape &
+	:type L: TopTools_ListOfShape
 	:rtype: None") Generated;
 		void Generated (const TopoDS_Shape & S,TopTools_ListOfShape & L);
 
@@ -1865,7 +1865,7 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") Profiles;
 		%feature("autodoc", "* Returns the list of original profiles
 	:param theProfiles:
-	:type theProfiles: TopTools_ListOfShape &
+	:type theProfiles: TopTools_ListOfShape
 	:rtype: None") Profiles;
 		void Profiles (TopTools_ListOfShape & theProfiles);
 
@@ -1897,7 +1897,7 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Set support to the spine to define the BiNormal at the spine, like the normal the surfaces. Warning: To be effective, Each edge of the <spine> must have an representaion on one face of<SpineSupport>
 	:param SpineSupport:
-	:type SpineSupport: TopoDS_Shape &
+	:type SpineSupport: TopoDS_Shape
 	:rtype: bool") Set;
 		Standard_Boolean Set (const TopoDS_Shape & SpineSupport);
 
@@ -1905,7 +1905,7 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Set an auxiliary spine to define the Normal For each Point of the Spine P, an Point Q is evalued on <AuxiliarySpine> If <CurvilinearEquivalence> Q split <AuxiliarySpine> with the same length ratio than P split <Spline>. Else the plan define by P and the tangent to the <Spine> intersect <AuxiliarySpine> in Q. If <KeepContact> equals BRepFill_NoContact: The Normal is defined by the vector PQ. If <KeepContact> equals BRepFill_Contact: The Normal is defined to achieve that the sweeped section is in contact to the auxiliarySpine. The width of section is constant all along the path. In other words, the auxiliary spine lies on the swept surface, but not necessarily is a boundary of this surface. However, the auxiliary spine has to be close enough to the main spine to provide intersection with any section all along the path. If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine becomes a boundary of the swept surface and the width of section varies along the path.
 	:param AuxiliarySpine:
-	:type AuxiliarySpine: TopoDS_Wire &
+	:type AuxiliarySpine: TopoDS_Wire
 	:param CurvilinearEquivalence: default value is Standard_True
 	:type CurvilinearEquivalence: bool
 	:param KeepContact: default value is BRepFill_NoContact
@@ -1931,9 +1931,9 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") SetLaw;
 		%feature("autodoc", "* Set an section and an homotetic law. The homotetie's centers is given by point on the <Spine>.
 	:param Profile:
-	:type Profile: TopoDS_Shape &
+	:type Profile: TopoDS_Shape
 	:param L:
-	:type L: opencascade::handle<Law_Function> &
+	:type L: Law_Function
 	:param WithContact: default value is Standard_False
 	:type WithContact: bool
 	:param WithCorrection: default value is Standard_False
@@ -1945,11 +1945,11 @@ class BRepFill_PipeShell : public Standard_Transient {
 		%feature("compactdefaultargs") SetLaw;
 		%feature("autodoc", "* Set an section and an homotetic law. The homotetie center is given by point on the <Spine>
 	:param Profile:
-	:type Profile: TopoDS_Shape &
+	:type Profile: TopoDS_Shape
 	:param L:
-	:type L: opencascade::handle<Law_Function> &
+	:type L: Law_Function
 	:param Location:
-	:type Location: TopoDS_Vertex &
+	:type Location: TopoDS_Vertex
 	:param WithContact: default value is Standard_False
 	:type WithContact: bool
 	:param WithCorrection: default value is Standard_False
@@ -2008,7 +2008,7 @@ class BRepFill_PipeShell : public Standard_Transient {
 	:param NumberOfSection:
 	:type NumberOfSection: int
 	:param Sections:
-	:type Sections: TopTools_ListOfShape &
+	:type Sections: TopTools_ListOfShape
 	:rtype: None") Simulate;
 		void Simulate (const Standard_Integer NumberOfSection,TopTools_ListOfShape & Sections);
 
@@ -2043,9 +2043,9 @@ class BRepFill_Section {
 		/****************** BRepFill_Section ******************/
 		%feature("compactdefaultargs") BRepFill_Section;
 		%feature("autodoc", ":param Profile:
-	:type Profile: TopoDS_Shape &
+	:type Profile: TopoDS_Shape
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param WithContact:
 	:type WithContact: bool
 	:param WithCorrection:
@@ -2066,7 +2066,7 @@ class BRepFill_Section {
 		/****************** ModifiedShape ******************/
 		%feature("compactdefaultargs") ModifiedShape;
 		%feature("autodoc", ":param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: TopoDS_Shape") ModifiedShape;
 		TopoDS_Shape ModifiedShape (const TopoDS_Shape & theShape);
 
@@ -2141,21 +2141,21 @@ class BRepFill_SectionLaw : public Standard_Transient {
 		%feature("autodoc", ":param U:
 	:type U: float
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") D0;
 		virtual void D0 (const Standard_Real U,TopoDS_Shape & S);
 
 		/****************** IndexOfEdge ******************/
 		%feature("compactdefaultargs") IndexOfEdge;
 		%feature("autodoc", ":param anEdge:
-	:type anEdge: TopoDS_Shape &
+	:type anEdge: TopoDS_Shape
 	:rtype: int") IndexOfEdge;
 		Standard_Integer IndexOfEdge (const TopoDS_Shape & anEdge);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:rtype: None") Init;
 		void Init (const TopoDS_Wire & W);
 
@@ -2241,9 +2241,9 @@ class BRepFill_SectionPlacement {
 		%feature("compactdefaultargs") BRepFill_SectionPlacement;
 		%feature("autodoc", "* Automatic placement
 	:param Law:
-	:type Law: opencascade::handle<BRepFill_LocationLaw> &
+	:type Law: BRepFill_LocationLaw
 	:param Section:
-	:type Section: TopoDS_Shape &
+	:type Section: TopoDS_Shape
 	:param WithContact: default value is Standard_False
 	:type WithContact: bool
 	:param WithCorrection: default value is Standard_False
@@ -2255,11 +2255,11 @@ class BRepFill_SectionPlacement {
 		%feature("compactdefaultargs") BRepFill_SectionPlacement;
 		%feature("autodoc", "* Placement on vertex
 	:param Law:
-	:type Law: opencascade::handle<BRepFill_LocationLaw> &
+	:type Law: BRepFill_LocationLaw
 	:param Section:
-	:type Section: TopoDS_Shape &
+	:type Section: TopoDS_Shape
 	:param Vertex:
-	:type Vertex: TopoDS_Shape &
+	:type Vertex: TopoDS_Shape
 	:param WithContact: default value is Standard_False
 	:type WithContact: bool
 	:param WithCorrection: default value is Standard_False
@@ -2290,9 +2290,9 @@ class BRepFill_Sweep {
 		/****************** BRepFill_Sweep ******************/
 		%feature("compactdefaultargs") BRepFill_Sweep;
 		%feature("autodoc", ":param Section:
-	:type Section: opencascade::handle<BRepFill_SectionLaw> &
+	:type Section: BRepFill_SectionLaw
 	:param Location:
-	:type Location: opencascade::handle<BRepFill_LocationLaw> &
+	:type Location: BRepFill_LocationLaw
 	:param WithKPart:
 	:type WithKPart: bool
 	:rtype: None") BRepFill_Sweep;
@@ -2302,11 +2302,11 @@ class BRepFill_Sweep {
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "* Build the Sweep Surface Transition define Transition strategy Approx define Approximation Strategy - GeomFill_Section : The composed Function Location X Section is directly approximed. - GeomFill_Location : The location law is approximed, and the SweepSurface is bulid algebric composition of approximed location law and section law This option is Ok, if Section.Surface() methode is effective. Continuity : The continuity in v waiting on the surface Degmax : The maximum degree in v requiered on the surface Segmax : The maximum number of span in v requiered on the surface.
 	:param ReversedEdges:
-	:type ReversedEdges: TopTools_MapOfShape &
+	:type ReversedEdges: TopTools_MapOfShape
 	:param Tapes:
-	:type Tapes: BRepFill_DataMapOfShapeHArray2OfShape &
+	:type Tapes: BRepFill_DataMapOfShapeHArray2OfShape
 	:param Rails:
-	:type Rails: BRepFill_DataMapOfShapeHArray2OfShape &
+	:type Rails: BRepFill_DataMapOfShapeHArray2OfShape
 	:param Transition: default value is BRepFill_Modified
 	:type Transition: BRepFill_TransitionStyle
 	:param Continuity: default value is GeomAbs_C2
@@ -2355,9 +2355,9 @@ class BRepFill_Sweep {
 		/****************** SetBounds ******************/
 		%feature("compactdefaultargs") SetBounds;
 		%feature("autodoc", ":param FirstShape:
-	:type FirstShape: TopoDS_Wire &
+	:type FirstShape: TopoDS_Wire
 	:param LastShape:
-	:type LastShape: TopoDS_Wire &
+	:type LastShape: TopoDS_Wire
 	:rtype: None") SetBounds;
 		void SetBounds (const TopoDS_Wire & FirstShape,const TopoDS_Wire & LastShape);
 
@@ -2422,9 +2422,9 @@ class BRepFill_TrimEdgeTool {
 		%feature("autodoc", ":param Start:
 	:type Start: bool
 	:param Edge1:
-	:type Edge1: TopoDS_Edge &
+	:type Edge1: TopoDS_Edge
 	:param Edge2:
-	:type Edge2: TopoDS_Edge &
+	:type Edge2: TopoDS_Edge
 	:param Params:
 	:type Params: TColgp_SequenceOfPnt
 	:rtype: None") AddOrConfuse;
@@ -2438,11 +2438,11 @@ class BRepFill_TrimEdgeTool {
 		/****************** BRepFill_TrimEdgeTool ******************/
 		%feature("compactdefaultargs") BRepFill_TrimEdgeTool;
 		%feature("autodoc", ":param Bisec:
-	:type Bisec: Bisector_Bisec &
+	:type Bisec: Bisector_Bisec
 	:param S1:
-	:type S1: opencascade::handle<Geom2d_Geometry> &
+	:type S1: Geom2d_Geometry
 	:param S2:
-	:type S2: opencascade::handle<Geom2d_Geometry> &
+	:type S2: Geom2d_Geometry
 	:param Offset:
 	:type Offset: float
 	:rtype: None") BRepFill_TrimEdgeTool;
@@ -2451,17 +2451,17 @@ class BRepFill_TrimEdgeTool {
 		/****************** IntersectWith ******************/
 		%feature("compactdefaultargs") IntersectWith;
 		%feature("autodoc", ":param Edge1:
-	:type Edge1: TopoDS_Edge &
+	:type Edge1: TopoDS_Edge
 	:param Edge2:
-	:type Edge2: TopoDS_Edge &
+	:type Edge2: TopoDS_Edge
 	:param InitShape1:
-	:type InitShape1: TopoDS_Shape &
+	:type InitShape1: TopoDS_Shape
 	:param InitShape2:
-	:type InitShape2: TopoDS_Shape &
+	:type InitShape2: TopoDS_Shape
 	:param End1:
-	:type End1: TopoDS_Vertex &
+	:type End1: TopoDS_Vertex
 	:param End2:
-	:type End2: TopoDS_Vertex &
+	:type End2: TopoDS_Vertex
 	:param theJoinType:
 	:type theJoinType: GeomAbs_JoinType
 	:param IsOpenResult:
@@ -2496,21 +2496,21 @@ class BRepFill_TrimShellCorner {
 		/****************** AddBounds ******************/
 		%feature("compactdefaultargs") AddBounds;
 		%feature("autodoc", ":param Bounds:
-	:type Bounds: opencascade::handle<TopTools_HArray2OfShape> &
+	:type Bounds: TopTools_HArray2OfShape
 	:rtype: None") AddBounds;
 		void AddBounds (const opencascade::handle<TopTools_HArray2OfShape> & Bounds);
 
 		/****************** AddUEdges ******************/
 		%feature("compactdefaultargs") AddUEdges;
 		%feature("autodoc", ":param theUEdges:
-	:type theUEdges: opencascade::handle<TopTools_HArray2OfShape> &
+	:type theUEdges: TopTools_HArray2OfShape
 	:rtype: None") AddUEdges;
 		void AddUEdges (const opencascade::handle<TopTools_HArray2OfShape> & theUEdges);
 
 		/****************** AddVEdges ******************/
 		%feature("compactdefaultargs") AddVEdges;
 		%feature("autodoc", ":param theVEdges:
-	:type theVEdges: opencascade::handle<TopTools_HArray2OfShape> &
+	:type theVEdges: TopTools_HArray2OfShape
 	:param theIndex:
 	:type theIndex: int
 	:rtype: None") AddVEdges;
@@ -2520,7 +2520,7 @@ class BRepFill_TrimShellCorner {
 		%feature("compactdefaultargs") BRepFill_TrimShellCorner;
 		%feature("autodoc", "* Constructor: takes faces to intersect, type of transition (it can be RightCorner or RoundCorner) and axis of bisector plane
 	:param theFaces:
-	:type theFaces: opencascade::handle<TopTools_HArray2OfShape> &
+	:type theFaces: TopTools_HArray2OfShape
 	:param theTransition:
 	:type theTransition: BRepFill_TransitionStyle
 	:param theAxeOfBisPlane:
@@ -2541,9 +2541,9 @@ class BRepFill_TrimShellCorner {
 		/****************** Modified ******************/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param theModified:
-	:type theModified: TopTools_ListOfShape &
+	:type theModified: TopTools_ListOfShape
 	:rtype: None") Modified;
 		void Modified (const TopoDS_Shape & S,TopTools_ListOfShape & theModified);
 
@@ -2570,15 +2570,15 @@ class BRepFill_TrimSurfaceTool {
 		/****************** BRepFill_TrimSurfaceTool ******************/
 		%feature("compactdefaultargs") BRepFill_TrimSurfaceTool;
 		%feature("autodoc", ":param Bis:
-	:type Bis: opencascade::handle<Geom2d_Curve> &
+	:type Bis: Geom2d_Curve
 	:param Face1:
-	:type Face1: TopoDS_Face &
+	:type Face1: TopoDS_Face
 	:param Face2:
-	:type Face2: TopoDS_Face &
+	:type Face2: TopoDS_Face
 	:param Edge1:
-	:type Edge1: TopoDS_Edge &
+	:type Edge1: TopoDS_Edge
 	:param Edge2:
-	:type Edge2: TopoDS_Edge &
+	:type Edge2: TopoDS_Edge
 	:param Inv1:
 	:type Inv1: bool
 	:param Inv2:
@@ -2590,9 +2590,9 @@ class BRepFill_TrimSurfaceTool {
 		%feature("compactdefaultargs") IntersectWith;
 		%feature("autodoc", "* Intersect <Bis> with the projection of the edges <EdgeOnFi> and returns the intersecting parameters on Bis and on the edges P.X() : Parameter on Bis P.Y() : Parameter on EdgeOnF1 P.Z() : Parameter on EdgeOnF2 raises if <Edge> is not a edge of Face1 or Face2.
 	:param EdgeOnF1:
-	:type EdgeOnF1: TopoDS_Edge &
+	:type EdgeOnF1: TopoDS_Edge
 	:param EdgeOnF2:
-	:type EdgeOnF2: TopoDS_Edge &
+	:type EdgeOnF2: TopoDS_Edge
 	:param Points:
 	:type Points: TColgp_SequenceOfPnt
 	:rtype: None") IntersectWith;
@@ -2612,7 +2612,7 @@ class BRepFill_TrimSurfaceTool {
 	:param Point:
 	:type Point: gp_Pnt2d
 	:param Edge:
-	:type Edge: TopoDS_Edge &
+	:type Edge: TopoDS_Edge
 	:rtype: float") ProjOn;
 		Standard_Real ProjOn (const gp_Pnt2d & Point,const TopoDS_Edge & Edge);
 
@@ -2623,13 +2623,13 @@ class BRepFill_TrimSurfaceTool {
 	:param U2:
 	:type U2: float
 	:param Curve:
-	:type Curve: opencascade::handle<Geom_Curve> &
+	:type Curve: Geom_Curve
 	:param PCurve1:
-	:type PCurve1: opencascade::handle<Geom2d_Curve> &
+	:type PCurve1: Geom2d_Curve
 	:param PCurve2:
-	:type PCurve2: opencascade::handle<Geom2d_Curve> &
+	:type PCurve2: Geom2d_Curve
 	:param myCont:
-	:type myCont: GeomAbs_Shape &
+	:type myCont: GeomAbs_Shape
 	:rtype: None") Project;
 		void Project (const Standard_Real U1,const Standard_Real U2,opencascade::handle<Geom_Curve> & Curve,opencascade::handle<Geom2d_Curve> & PCurve1,opencascade::handle<Geom2d_Curve> & PCurve2,GeomAbs_Shape & myCont);
 
@@ -2651,9 +2651,9 @@ class BRepFill_ACRLaw : public BRepFill_LocationLaw {
 		/****************** BRepFill_ACRLaw ******************/
 		%feature("compactdefaultargs") BRepFill_ACRLaw;
 		%feature("autodoc", ":param Path:
-	:type Path: TopoDS_Wire &
+	:type Path: TopoDS_Wire
 	:param Law:
-	:type Law: opencascade::handle<GeomFill_LocationGuide> &
+	:type Law: GeomFill_LocationGuide
 	:rtype: None") BRepFill_ACRLaw;
 		 BRepFill_ACRLaw (const TopoDS_Wire & Path,const opencascade::handle<GeomFill_LocationGuide> & Law);
 
@@ -2677,9 +2677,9 @@ class BRepFill_Edge3DLaw : public BRepFill_LocationLaw {
 		/****************** BRepFill_Edge3DLaw ******************/
 		%feature("compactdefaultargs") BRepFill_Edge3DLaw;
 		%feature("autodoc", ":param Path:
-	:type Path: TopoDS_Wire &
+	:type Path: TopoDS_Wire
 	:param Law:
-	:type Law: opencascade::handle<GeomFill_LocationLaw> &
+	:type Law: GeomFill_LocationLaw
 	:rtype: None") BRepFill_Edge3DLaw;
 		 BRepFill_Edge3DLaw (const TopoDS_Wire & Path,const opencascade::handle<GeomFill_LocationLaw> & Law);
 
@@ -2703,9 +2703,9 @@ class BRepFill_EdgeOnSurfLaw : public BRepFill_LocationLaw {
 		/****************** BRepFill_EdgeOnSurfLaw ******************/
 		%feature("compactdefaultargs") BRepFill_EdgeOnSurfLaw;
 		%feature("autodoc", ":param Path:
-	:type Path: TopoDS_Wire &
+	:type Path: TopoDS_Wire
 	:param Surf:
-	:type Surf: TopoDS_Shape &
+	:type Surf: TopoDS_Shape
 	:rtype: None") BRepFill_EdgeOnSurfLaw;
 		 BRepFill_EdgeOnSurfLaw (const TopoDS_Wire & Path,const TopoDS_Shape & Surf);
 
@@ -2736,7 +2736,7 @@ class BRepFill_NSections : public BRepFill_SectionLaw {
 		%feature("compactdefaultargs") BRepFill_NSections;
 		%feature("autodoc", "* Construct
 	:param S:
-	:type S: TopTools_SequenceOfShape &
+	:type S: TopTools_SequenceOfShape
 	:param Build: default value is Standard_True
 	:type Build: bool
 	:rtype: None") BRepFill_NSections;
@@ -2746,11 +2746,11 @@ class BRepFill_NSections : public BRepFill_SectionLaw {
 		%feature("compactdefaultargs") BRepFill_NSections;
 		%feature("autodoc", "* Construct
 	:param S:
-	:type S: TopTools_SequenceOfShape &
+	:type S: TopTools_SequenceOfShape
 	:param Trsfs:
-	:type Trsfs: GeomFill_SequenceOfTrsf &
+	:type Trsfs: GeomFill_SequenceOfTrsf
 	:param P:
-	:type P: TColStd_SequenceOfReal &
+	:type P: TColStd_SequenceOfReal
 	:param VF:
 	:type VF: float
 	:param VL:
@@ -2780,7 +2780,7 @@ class BRepFill_NSections : public BRepFill_SectionLaw {
 		%feature("autodoc", ":param Param:
 	:type Param: float
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") D0;
 		virtual void D0 (const Standard_Real Param,TopoDS_Shape & S);
 
@@ -2835,7 +2835,7 @@ class BRepFill_ShapeLaw : public BRepFill_SectionLaw {
 		%feature("compactdefaultargs") BRepFill_ShapeLaw;
 		%feature("autodoc", "* Construct an constant Law
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param Build: default value is Standard_True
 	:type Build: bool
 	:rtype: None") BRepFill_ShapeLaw;
@@ -2845,7 +2845,7 @@ class BRepFill_ShapeLaw : public BRepFill_SectionLaw {
 		%feature("compactdefaultargs") BRepFill_ShapeLaw;
 		%feature("autodoc", "* Construct an constant Law
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param Build: default value is Standard_True
 	:type Build: bool
 	:rtype: None") BRepFill_ShapeLaw;
@@ -2855,9 +2855,9 @@ class BRepFill_ShapeLaw : public BRepFill_SectionLaw {
 		%feature("compactdefaultargs") BRepFill_ShapeLaw;
 		%feature("autodoc", "* Construct an evolutive Law
 	:param W:
-	:type W: TopoDS_Wire &
+	:type W: TopoDS_Wire
 	:param L:
-	:type L: opencascade::handle<Law_Function> &
+	:type L: Law_Function
 	:param Build: default value is Standard_True
 	:type Build: bool
 	:rtype: None") BRepFill_ShapeLaw;
@@ -2883,7 +2883,7 @@ class BRepFill_ShapeLaw : public BRepFill_SectionLaw {
 		%feature("autodoc", ":param Param:
 	:type Param: float
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: void") D0;
 		virtual void D0 (const Standard_Real Param,TopoDS_Shape & S);
 
@@ -2944,9 +2944,9 @@ class BRepFill_DraftLaw : public BRepFill_Edge3DLaw {
 		/****************** BRepFill_DraftLaw ******************/
 		%feature("compactdefaultargs") BRepFill_DraftLaw;
 		%feature("autodoc", ":param Path:
-	:type Path: TopoDS_Wire &
+	:type Path: TopoDS_Wire
 	:param Law:
-	:type Law: opencascade::handle<GeomFill_LocationDraft> &
+	:type Law: GeomFill_LocationDraft
 	:rtype: None") BRepFill_DraftLaw;
 		 BRepFill_DraftLaw (const TopoDS_Wire & Path,const opencascade::handle<GeomFill_LocationDraft> & Law);
 

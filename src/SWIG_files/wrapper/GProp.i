@@ -127,7 +127,7 @@ class GProp_GProps {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Either - initializes the global properties retained by this framework from those retained by the framework Item, or - brings together the global properties still retained by this framework with those retained by the framework Item. The value Density, which is 1.0 by default, is used as the density of the system analysed by Item. Sometimes the density will have already been given at the time of construction of the framework Item. This may be the case for example, if Item is a GProp_PGProps framework built to compute the global properties of a set of points ; or another GProp_GProps object which already retains composite global properties. In these cases the real density was perhaps already taken into account at the time of construction of Item. Note that this is not checked: if the density of parts of the system is taken into account two or more times, results of the computation will be false. Notes : - The point relative to which the inertia of Item is computed (i.e. the reference point of Item) may be different from the reference point in this framework. Huygens' theorem is applied automatically to transfer inertia values to the reference point in this framework. - The function Add is used once per component of the system. After that, you use the interrogation functions available to access values computed for the system. - The system whose global properties are already brought together by this framework is referred to as the current system. However, the current system is not retained by this framework, which maintains only its global properties. Exceptions Standard_DomainError if Density is less than or equal to gp::Resolution().
 	:param Item:
-	:type Item: GProp_GProps &
+	:type Item: GProp_GProps
 	:param Density: default value is 1.0
 	:type Density: float
 	:rtype: None") Add;
@@ -191,11 +191,11 @@ class GProp_GProps {
 		%feature("compactdefaultargs") StaticMoments;
 		%feature("autodoc", "* Returns Ix, Iy, Iz, the static moments of inertia of the current system; i.e. the moments of inertia about the three axes of the Cartesian coordinate system.
 	:param Ix:
-	:type Ix: float &
+	:type Ix: float
 	:param Iy:
-	:type Iy: float &
+	:type Iy: float
 	:param Iz:
-	:type Iz: float &
+	:type Iz: float
 	:rtype: None") StaticMoments;
 		void StaticMoments (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -339,11 +339,11 @@ class GProp_PrincipalProps {
 		%feature("compactdefaultargs") Moments;
 		%feature("autodoc", "* Ixx, Iyy and Izz return the principal moments of inertia in the current system. Notes : - If the current system has an axis of symmetry, two of the three values Ixx, Iyy and Izz are equal. They indicate which eigen vectors define an infinity of axes of principal inertia. - If the current system has a center of symmetry, Ixx, Iyy and Izz are equal.
 	:param Ixx:
-	:type Ixx: float &
+	:type Ixx: float
 	:param Iyy:
-	:type Iyy: float &
+	:type Iyy: float
 	:param Izz:
-	:type Izz: float &
+	:type Izz: float
 	:rtype: None") Moments;
 		void Moments (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -351,11 +351,11 @@ class GProp_PrincipalProps {
 		%feature("compactdefaultargs") RadiusOfGyration;
 		%feature("autodoc", "* Returns the principal radii of gyration Rxx, Ryy and Rzz are the radii of gyration of the current system about its three principal axes of inertia. Note that: - If the current system has an axis of symmetry, two of the three values Rxx, Ryy and Rzz are equal. - If the current system has a center of symmetry, Rxx, Ryy and Rzz are equal.
 	:param Rxx:
-	:type Rxx: float &
+	:type Rxx: float
 	:param Ryy:
-	:type Ryy: float &
+	:type Ryy: float
 	:param Rzz:
-	:type Rzz: float &
+	:type Rzz: float
 	:rtype: None") RadiusOfGyration;
 		void RadiusOfGyration (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -510,9 +510,9 @@ class GProp_PGProps : public GProp_GProps {
 	:param Pnts:
 	:type Pnts: TColgp_Array1OfPnt
 	:param Density:
-	:type Density: TColStd_Array1OfReal &
+	:type Density: TColStd_Array1OfReal
 	:param Mass:
-	:type Mass: float &
+	:type Mass: float
 	:param G:
 	:type G: gp_Pnt
 	:rtype: void") Barycentre;
@@ -524,9 +524,9 @@ class GProp_PGProps : public GProp_GProps {
 	:param Pnts:
 	:type Pnts: TColgp_Array2OfPnt
 	:param Density:
-	:type Density: TColStd_Array2OfReal &
+	:type Density: TColStd_Array2OfReal
 	:param Mass:
-	:type Mass: float &
+	:type Mass: float
 	:param G:
 	:type G: gp_Pnt
 	:rtype: void") Barycentre;
@@ -560,7 +560,7 @@ class GProp_PGProps : public GProp_GProps {
 	:param Pnts:
 	:type Pnts: TColgp_Array1OfPnt
 	:param Density:
-	:type Density: TColStd_Array1OfReal &
+	:type Density: TColStd_Array1OfReal
 	:rtype: None") GProp_PGProps;
 		 GProp_PGProps (const TColgp_Array1OfPnt & Pnts,const TColStd_Array1OfReal & Density);
 
@@ -570,7 +570,7 @@ class GProp_PGProps : public GProp_GProps {
 	:param Pnts:
 	:type Pnts: TColgp_Array2OfPnt
 	:param Density:
-	:type Density: TColStd_Array2OfReal &
+	:type Density: TColStd_Array2OfReal
 	:rtype: None") GProp_PGProps;
 		 GProp_PGProps (const TColgp_Array2OfPnt & Pnts,const TColStd_Array2OfReal & Density);
 

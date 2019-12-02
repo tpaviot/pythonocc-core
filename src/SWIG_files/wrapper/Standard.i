@@ -269,7 +269,7 @@ class Standard_ErrorHandler {
 		%feature("compactdefaultargs") Catches;
 		%feature("autodoc", "* Returns 'True' if the caught exception has the same type or inherits from 'aType'
 	:param aType:
-	:type aType: opencascade::handle<Standard_Type> &
+	:type aType: Standard_Type
 	:rtype: bool") Catches;
 		Standard_Boolean Catches (const opencascade::handle<Standard_Type> & aType);
 
@@ -333,14 +333,14 @@ class Standard_GUID {
 		/****************** Assign ******************/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", ":param uid:
-	:type uid: Standard_GUID &
+	:type uid: Standard_GUID
 	:rtype: None") Assign;
 		void Assign (const Standard_GUID & uid);
 
 		/****************** Assign ******************/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", ":param uid:
-	:type uid: Standard_UUID &
+	:type uid: Standard_UUID
 	:rtype: None") Assign;
 		void Assign (const Standard_UUID & uid);
 
@@ -364,7 +364,7 @@ class Standard_GUID {
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "* Computes a hash code for the given GUID of the Standard_Integer type, in the range [1, theUpperBound] @param theGUID the GUID which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theGUID:
-	:type theGUID: Standard_GUID &
+	:type theGUID: Standard_GUID
 	:param theUpperBound:
 	:type theUpperBound: int
 	:rtype: int") HashCode;
@@ -374,23 +374,23 @@ class Standard_GUID {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns True when the two GUID are the same.
 	:param string1:
-	:type string1: Standard_GUID &
+	:type string1: Standard_GUID
 	:param string2:
-	:type string2: Standard_GUID &
+	:type string2: Standard_GUID
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const Standard_GUID & string1,const Standard_GUID & string2);
 
 		/****************** IsNotSame ******************/
 		%feature("compactdefaultargs") IsNotSame;
 		%feature("autodoc", ":param uid:
-	:type uid: Standard_GUID &
+	:type uid: Standard_GUID
 	:rtype: bool") IsNotSame;
 		Standard_Boolean IsNotSame (const Standard_GUID & uid);
 
 		/****************** IsSame ******************/
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", ":param uid:
-	:type uid: Standard_GUID &
+	:type uid: Standard_GUID
 	:rtype: bool") IsSame;
 		Standard_Boolean IsSame (const Standard_GUID & uid);
 
@@ -451,14 +451,14 @@ class Standard_GUID {
 		/****************** Standard_GUID ******************/
 		%feature("compactdefaultargs") Standard_GUID;
 		%feature("autodoc", ":param aGuid:
-	:type aGuid: Standard_UUID &
+	:type aGuid: Standard_UUID
 	:rtype: None") Standard_GUID;
 		 Standard_GUID (const Standard_UUID & aGuid);
 
 		/****************** Standard_GUID ******************/
 		%feature("compactdefaultargs") Standard_GUID;
 		%feature("autodoc", ":param aGuid:
-	:type aGuid: Standard_GUID &
+	:type aGuid: Standard_GUID
 	:rtype: None") Standard_GUID;
 		 Standard_GUID (const Standard_GUID & aGuid);
 
@@ -486,14 +486,14 @@ class Standard_GUID {
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param uid:
-	:type uid: Standard_GUID &
+	:type uid: Standard_GUID
 	:rtype: None") operator =;
 		void operator = (const Standard_GUID & uid);
 
 		/****************** operator = ******************/
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", ":param uid:
-	:type uid: Standard_UUID &
+	:type uid: Standard_UUID
 	:rtype: None") operator =;
 		void operator = (const Standard_UUID & uid);
 
@@ -639,7 +639,7 @@ typedef void base_type;
 		%feature("compactdefaultargs") IsInstance;
 		%feature("autodoc", "* Returns a true value if this is an instance of Type.
 	:param theType:
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: bool") IsInstance;
 		Standard_Boolean IsInstance (const opencascade::handle<Standard_Type> & theType);
 
@@ -655,7 +655,7 @@ typedef void base_type;
 		%feature("compactdefaultargs") IsKind;
 		%feature("autodoc", "* Returns true if this is an instance of Type or an instance of any class that inherits from Type. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
 	:param theType:
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:rtype: bool") IsKind;
 		Standard_Boolean IsKind (const opencascade::handle<Standard_Type> & theType);
 
@@ -957,7 +957,7 @@ class Standard_OutOfMemory : public Standard_ProgramError {
 		%feature("compactdefaultargs") Raise;
 		%feature("autodoc", "* Raises exception with specified message string
 	:param theMessage:
-	:type theMessage: Standard_SStream &
+	:type theMessage: Standard_SStream
 	:rtype: void") Raise;
 		static void Raise (Standard_SStream & theMessage);
 

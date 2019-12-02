@@ -142,7 +142,7 @@ class TopLoc_ItemLocation {
 		%feature("compactdefaultargs") TopLoc_ItemLocation;
 		%feature("autodoc", "* Sets the elementary Datum to <D> Sets the exponent to <P>
 	:param D:
-	:type D: opencascade::handle<TopLoc_Datum3D> &
+	:type D: TopLoc_Datum3D
 	:param P:
 	:type P: int
 	:rtype: None") TopLoc_ItemLocation;
@@ -167,7 +167,7 @@ class TopLoc_Location {
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "* Returns <self> / <Other>.
 	:param Other:
-	:type Other: TopLoc_Location &
+	:type Other: TopLoc_Location
 	:rtype: Standard_NODISCARD TopLoc_Location") Divided;
 		Standard_NODISCARD TopLoc_Location Divided (const TopLoc_Location & Other);
 
@@ -221,7 +221,7 @@ class TopLoc_Location {
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "* Returns true if this location and the location Other do not have the same elementary data, i.e. do not contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator !=.
 	:param Other:
-	:type Other: TopLoc_Location &
+	:type Other: TopLoc_Location
 	:rtype: bool") IsDifferent;
 		Standard_Boolean IsDifferent (const TopLoc_Location & Other);
 
@@ -229,7 +229,7 @@ class TopLoc_Location {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns true if this location and the location Other have the same elementary data, i.e. contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator ==.
 	:param Other:
-	:type Other: TopLoc_Location &
+	:type Other: TopLoc_Location
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const TopLoc_Location & Other);
 
@@ -243,7 +243,7 @@ class TopLoc_Location {
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* Returns <self> * <Other>, the elementary datums are concatenated.
 	:param Other:
-	:type Other: TopLoc_Location &
+	:type Other: TopLoc_Location
 	:rtype: Standard_NODISCARD TopLoc_Location") Multiplied;
 		Standard_NODISCARD TopLoc_Location Multiplied (const TopLoc_Location & Other);
 
@@ -265,7 +265,7 @@ class TopLoc_Location {
 		%feature("compactdefaultargs") Predivided;
 		%feature("autodoc", "* Returns <Other>.Inverted() * <self>.
 	:param Other:
-	:type Other: TopLoc_Location &
+	:type Other: TopLoc_Location
 	:rtype: Standard_NODISCARD TopLoc_Location") Predivided;
 		Standard_NODISCARD TopLoc_Location Predivided (const TopLoc_Location & Other);
 
@@ -295,7 +295,7 @@ class TopLoc_Location {
 		%feature("compactdefaultargs") TopLoc_Location;
 		%feature("autodoc", "* Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system.
 	:param D:
-	:type D: opencascade::handle<TopLoc_Datum3D> &
+	:type D: TopLoc_Datum3D
 	:rtype: None") TopLoc_Location;
 		 TopLoc_Location (const opencascade::handle<TopLoc_Datum3D> & D);
 
@@ -308,14 +308,14 @@ class TopLoc_Location {
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Other:
-	:type Other: TopLoc_Location &
+	:type Other: TopLoc_Location
 	:rtype: Standard_NODISCARD TopLoc_Location") operator *;
 		Standard_NODISCARD TopLoc_Location operator * (const TopLoc_Location & Other);
 
 		/****************** operator / ******************/
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Other:
-	:type Other: TopLoc_Location &
+	:type Other: TopLoc_Location
 	:rtype: Standard_NODISCARD TopLoc_Location") operator /;
 		Standard_NODISCARD TopLoc_Location operator / (const TopLoc_Location & Other);
 
@@ -361,9 +361,9 @@ class TopLoc_SListNodeOfItemLocation : public Standard_Transient {
 		/****************** TopLoc_SListNodeOfItemLocation ******************/
 		%feature("compactdefaultargs") TopLoc_SListNodeOfItemLocation;
 		%feature("autodoc", ":param I:
-	:type I: TopLoc_ItemLocation &
+	:type I: TopLoc_ItemLocation
 	:param aTail:
-	:type aTail: TopLoc_SListOfItemLocation &
+	:type aTail: TopLoc_SListOfItemLocation
 	:rtype: None") TopLoc_SListNodeOfItemLocation;
 		 TopLoc_SListNodeOfItemLocation (const TopLoc_ItemLocation & I,const TopLoc_SListOfItemLocation & aTail);
 
@@ -393,7 +393,7 @@ class TopLoc_SListOfItemLocation {
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "* Sets a list from an other one. The lists are shared. The list itself is returned.
 	:param Other:
-	:type Other: TopLoc_SListOfItemLocation &
+	:type Other: TopLoc_SListOfItemLocation
 	:rtype: TopLoc_SListOfItemLocation") Assign;
 		TopLoc_SListOfItemLocation & Assign (const TopLoc_SListOfItemLocation & Other);
 
@@ -407,7 +407,7 @@ class TopLoc_SListOfItemLocation {
 		%feature("compactdefaultargs") Construct;
 		%feature("autodoc", "* Replaces the list by a list with <anItem> as Value and the list <self> as tail.
 	:param anItem:
-	:type anItem: TopLoc_ItemLocation &
+	:type anItem: TopLoc_ItemLocation
 	:rtype: None") Construct;
 		void Construct (const TopLoc_ItemLocation & anItem);
 
@@ -451,9 +451,9 @@ class TopLoc_SListOfItemLocation {
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "* Creates a List with <anItem> as value and <aTail> as tail.
 	:param anItem:
-	:type anItem: TopLoc_ItemLocation &
+	:type anItem: TopLoc_ItemLocation
 	:param aTail:
-	:type aTail: TopLoc_SListOfItemLocation &
+	:type aTail: TopLoc_SListOfItemLocation
 	:rtype: None") TopLoc_SListOfItemLocation;
 		 TopLoc_SListOfItemLocation (const TopLoc_ItemLocation & anItem,const TopLoc_SListOfItemLocation & aTail);
 
@@ -461,7 +461,7 @@ class TopLoc_SListOfItemLocation {
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "* Creates a list from an other one. The lists are shared.
 	:param Other:
-	:type Other: TopLoc_SListOfItemLocation &
+	:type Other: TopLoc_SListOfItemLocation
 	:rtype: None") TopLoc_SListOfItemLocation;
 		 TopLoc_SListOfItemLocation (const TopLoc_SListOfItemLocation & Other);
 
@@ -469,7 +469,7 @@ class TopLoc_SListOfItemLocation {
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "* Move constructor
 	:param theOther:
-	:type theOther: TopLoc_SListOfItemLocation &
+	:type theOther: TopLoc_SListOfItemLocation
 	:rtype: None") TopLoc_SListOfItemLocation;
 		 TopLoc_SListOfItemLocation (TopLoc_SListOfItemLocation & theOther);
 
@@ -483,7 +483,7 @@ class TopLoc_SListOfItemLocation {
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "* Assignment
 	:param Other:
-	:type Other: TopLoc_SListOfItemLocation &
+	:type Other: TopLoc_SListOfItemLocation
 	:rtype: TopLoc_SListOfItemLocation") operator =;
 		TopLoc_SListOfItemLocation & operator = (const TopLoc_SListOfItemLocation & Other);
 
@@ -491,7 +491,7 @@ class TopLoc_SListOfItemLocation {
 		%feature("compactdefaultargs") operator =;
 		%feature("autodoc", "* Move operator
 	:param theOther:
-	:type theOther: TopLoc_SListOfItemLocation &
+	:type theOther: TopLoc_SListOfItemLocation
 	:rtype: TopLoc_SListOfItemLocation") operator =;
 		TopLoc_SListOfItemLocation & operator = (TopLoc_SListOfItemLocation & theOther);
 

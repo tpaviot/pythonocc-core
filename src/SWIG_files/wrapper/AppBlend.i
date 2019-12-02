@@ -77,9 +77,9 @@ class AppBlend_Approx {
 	:param TPoles:
 	:type TPoles: TColgp_Array1OfPnt2d
 	:param TKnots:
-	:type TKnots: TColStd_Array1OfReal &
+	:type TKnots: TColStd_Array1OfReal
 	:param TMults:
-	:type TMults: TColStd_Array1OfInteger &
+	:type TMults: TColStd_Array1OfInteger
 	:rtype: void") Curve2d;
 		virtual void Curve2d (const Standard_Integer Index,TColgp_Array1OfPnt2d & TPoles,TColStd_Array1OfReal & TKnots,TColStd_Array1OfInteger & TMults);
 
@@ -108,11 +108,11 @@ class AppBlend_Approx {
 		/****************** Curves2dShape ******************/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", ":param Degree:
-	:type Degree: int &
+	:type Degree: int
 	:param NbPoles:
-	:type NbPoles: int &
+	:type NbPoles: int
 	:param NbKnots:
-	:type NbKnots: int &
+	:type NbKnots: int
 	:rtype: void") Curves2dShape;
 		virtual void Curves2dShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -134,17 +134,17 @@ class AppBlend_Approx {
 		/****************** SurfShape ******************/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", ":param UDegree:
-	:type UDegree: int &
+	:type UDegree: int
 	:param VDegree:
-	:type VDegree: int &
+	:type VDegree: int
 	:param NbUPoles:
-	:type NbUPoles: int &
+	:type NbUPoles: int
 	:param NbVPoles:
-	:type NbVPoles: int &
+	:type NbVPoles: int
 	:param NbUKnots:
-	:type NbUKnots: int &
+	:type NbUKnots: int
 	:param NbVKnots:
-	:type NbVKnots: int &
+	:type NbVKnots: int
 	:rtype: void") SurfShape;
 		virtual void SurfShape (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -178,15 +178,15 @@ class AppBlend_Approx {
 		%feature("autodoc", ":param TPoles:
 	:type TPoles: TColgp_Array2OfPnt
 	:param TWeights:
-	:type TWeights: TColStd_Array2OfReal &
+	:type TWeights: TColStd_Array2OfReal
 	:param TUKnots:
-	:type TUKnots: TColStd_Array1OfReal &
+	:type TUKnots: TColStd_Array1OfReal
 	:param TVKnots:
-	:type TVKnots: TColStd_Array1OfReal &
+	:type TVKnots: TColStd_Array1OfReal
 	:param TUMults:
-	:type TUMults: TColStd_Array1OfInteger &
+	:type TUMults: TColStd_Array1OfInteger
 	:param TVMults:
-	:type TVMults: TColStd_Array1OfInteger &
+	:type TVMults: TColStd_Array1OfInteger
 	:rtype: void") Surface;
 		virtual void Surface (TColgp_Array2OfPnt & TPoles,TColStd_Array2OfReal & TWeights,TColStd_Array1OfReal & TUKnots,TColStd_Array1OfReal & TVKnots,TColStd_Array1OfInteger & TUMults,TColStd_Array1OfInteger & TVMults);
 
@@ -200,9 +200,9 @@ class AppBlend_Approx {
 		/****************** TolReached ******************/
 		%feature("compactdefaultargs") TolReached;
 		%feature("autodoc", ":param Tol3d:
-	:type Tol3d: float &
+	:type Tol3d: float
 	:param Tol2d:
-	:type Tol2d: float &
+	:type Tol2d: float
 	:rtype: void") TolReached;
 		virtual void TolReached (Standard_Real &OutValue,Standard_Real &OutValue);
 

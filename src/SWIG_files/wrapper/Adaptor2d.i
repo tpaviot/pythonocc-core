@@ -188,7 +188,7 @@ class Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -406,7 +406,7 @@ class Adaptor2d_HCurve2d : public Standard_Transient {
 		/****************** Intervals ******************/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", ":param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -517,7 +517,7 @@ class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") Adaptor2d_HLine2d;
 		%feature("autodoc", "* Creates a GenHCurve2d from a Curve
 	:param C:
-	:type C: Adaptor2d_Line2d &
+	:type C: Adaptor2d_Line2d
 	:rtype: None") Adaptor2d_HLine2d;
 		 Adaptor2d_HLine2d (const Adaptor2d_Line2d & C);
 
@@ -537,7 +537,7 @@ class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve2d.
 	:param C:
-	:type C: Adaptor2d_Line2d &
+	:type C: Adaptor2d_Line2d
 	:rtype: None") Set;
 		void Set (const Adaptor2d_Line2d & C);
 
@@ -568,7 +568,7 @@ class Adaptor2d_HOffsetCurve : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") Adaptor2d_HOffsetCurve;
 		%feature("autodoc", "* Creates a GenHCurve2d from a Curve
 	:param C:
-	:type C: Adaptor2d_OffsetCurve &
+	:type C: Adaptor2d_OffsetCurve
 	:rtype: None") Adaptor2d_HOffsetCurve;
 		 Adaptor2d_HOffsetCurve (const Adaptor2d_OffsetCurve & C);
 
@@ -588,7 +588,7 @@ class Adaptor2d_HOffsetCurve : public Adaptor2d_HCurve2d {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve2d.
 	:param C:
-	:type C: Adaptor2d_OffsetCurve &
+	:type C: Adaptor2d_OffsetCurve
 	:rtype: None") Set;
 		void Set (const Adaptor2d_OffsetCurve & C);
 
@@ -733,7 +733,7 @@ class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -861,7 +861,7 @@ class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
 		%feature("autodoc", "* The curve is loaded. The Offset is set to 0.
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: None") Adaptor2d_OffsetCurve;
 		 Adaptor2d_OffsetCurve (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -869,7 +869,7 @@ class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
 		%feature("autodoc", "* Creates an OffsetCurve curve. The Offset is set to Offset.
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:param Offset:
 	:type Offset: float
 	:rtype: None") Adaptor2d_OffsetCurve;
@@ -879,7 +879,7 @@ class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Adaptor2d_OffsetCurve;
 		%feature("autodoc", "* Create an Offset curve. WFirst,WLast define the bounds of the Offset curve.
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:param Offset:
 	:type Offset: float
 	:param WFirst:
@@ -1006,7 +1006,7 @@ class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -1041,7 +1041,7 @@ class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Changes the curve. The Offset is reset to 0.
 	:param S:
-	:type S: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type S: Adaptor2d_HCurve2d
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor2d_HCurve2d> & S);
 

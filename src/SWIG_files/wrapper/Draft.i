@@ -105,7 +105,7 @@ class Draft {
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "* Returns the draft angle of the face <F> using the direction <Direction>. The method is valid for : - Plane faces, - Cylindrical or conical faces, when the direction of the axis of the surface is colinear with the direction. Otherwise, the exception DomainError is raised.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Direction:
 	:type Direction: gp_Dir
 	:rtype: float") Angle;
@@ -129,7 +129,7 @@ class Draft_EdgeInfo {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Face & F);
 
@@ -190,7 +190,7 @@ class Draft_EdgeInfo {
 		/****************** RootFace ******************/
 		%feature("compactdefaultargs") RootFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") RootFace;
 		void RootFace (const TopoDS_Face & F);
 
@@ -253,7 +253,7 @@ class Draft_FaceInfo {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Add;
 		void Add (const TopoDS_Face & F);
 
@@ -280,7 +280,7 @@ class Draft_FaceInfo {
 		/****************** Draft_FaceInfo ******************/
 		%feature("compactdefaultargs") Draft_FaceInfo;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param HasNewGeometry:
 	:type HasNewGeometry: bool
 	:rtype: None") Draft_FaceInfo;
@@ -304,7 +304,7 @@ class Draft_FaceInfo {
 		/****************** RootFace ******************/
 		%feature("compactdefaultargs") RootFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") RootFace;
 		void RootFace (const TopoDS_Face & F);
 
@@ -337,7 +337,7 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the face F and propagates the draft modification to its neighbour faces if they are tangent. If an error occurs, will return False and ProblematicShape will return the 'bad' face.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Direction:
 	:type Direction: gp_Dir
 	:param Angle:
@@ -359,7 +359,7 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") ConnectedFaces;
 		%feature("autodoc", "* Returns all the faces which have been added together with the face <F>.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: TopTools_ListOfShape") ConnectedFaces;
 		const TopTools_ListOfShape & ConnectedFaces (const TopoDS_Face & F);
 
@@ -367,24 +367,24 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "* Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:param NewE:
-	:type NewE: TopoDS_Edge &
+	:type NewE: TopoDS_Edge
 	:param NewF1:
-	:type NewF1: TopoDS_Face &
+	:type NewF1: TopoDS_Face
 	:param NewF2:
-	:type NewF2: TopoDS_Face &
+	:type NewF2: TopoDS_Face
 	:rtype: GeomAbs_Shape") Continuity;
 		GeomAbs_Shape Continuity (const TopoDS_Edge & E,const TopoDS_Face & F1,const TopoDS_Face & F2,const TopoDS_Edge & NewE,const TopoDS_Face & NewF1,const TopoDS_Face & NewF2);
 
 		/****************** Draft_Modification ******************/
 		%feature("compactdefaultargs") Draft_Modification;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Draft_Modification;
 		 Draft_Modification (const TopoDS_Shape & S);
 
@@ -397,7 +397,7 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Changes the basis shape and resets.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & S);
 
@@ -417,13 +417,13 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "* Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewCurve;
 		Standard_Boolean NewCurve (const TopoDS_Edge & E,opencascade::handle<Geom_Curve> & C,TopLoc_Location & L,Standard_Real &OutValue);
 
@@ -431,17 +431,17 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "* Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be usefull.
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param NewE:
-	:type NewE: TopoDS_Edge &
+	:type NewE: TopoDS_Edge
 	:param NewF:
-	:type NewF: TopoDS_Face &
+	:type NewF: TopoDS_Face
 	:param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewCurve2d;
 		Standard_Boolean NewCurve2d (const TopoDS_Edge & E,const TopoDS_Face & F,const TopoDS_Edge & NewE,const TopoDS_Face & NewF,opencascade::handle<Geom2d_Curve> & C,Standard_Real &OutValue);
 
@@ -449,13 +449,13 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "* Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param P:
-	:type P: float &
+	:type P: float
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewParameter;
 		Standard_Boolean NewParameter (const TopoDS_Vertex & V,const TopoDS_Edge & E,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -463,11 +463,11 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "* Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:rtype: bool") NewPoint;
 		Standard_Boolean NewPoint (const TopoDS_Vertex & V,gp_Pnt & P,Standard_Real &OutValue);
 
@@ -475,13 +475,13 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "* Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. Here it will be set to Standard_False. //! Otherwise, returns Standard_False, and <S>, <L>, <Tol> , <RevWires> ,<RevFace> are not significant.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param S:
-	:type S: opencascade::handle<Geom_Surface> &
+	:type S: Geom_Surface
 	:param L:
-	:type L: TopLoc_Location &
+	:type L: TopLoc_Location
 	:param Tol:
-	:type Tol: float &
+	:type Tol: float
 	:param RevWires:
 	:type RevWires: bool
 	:param RevFace:
@@ -505,7 +505,7 @@ class Draft_Modification : public BRepTools_Modification {
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "* Removes the face F and the neighbour faces if they are tangent. It will be necessary to call this method if the method Add returns Standard_False, to unset ProblematicFace.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Remove;
 		void Remove (const TopoDS_Face & F);
 
@@ -529,7 +529,7 @@ class Draft_VertexInfo {
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: None") Add;
 		void Add (const TopoDS_Edge & E);
 
@@ -584,7 +584,7 @@ class Draft_VertexInfo {
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:rtype: float") Parameter;
 		Standard_Real Parameter (const TopoDS_Edge & E);
 

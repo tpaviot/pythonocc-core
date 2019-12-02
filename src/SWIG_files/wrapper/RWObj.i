@@ -98,9 +98,9 @@ class RWObj_IShapeReceiver {
 		%feature("compactdefaultargs") BindNamedShape;
 		%feature("autodoc", "* @param theShape shape to register @param theName shape name @param theMaterial shape material @param theIsRootShape indicates that this is a root object (free shape)
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theName:
-	:type theName: TCollection_AsciiString &
+	:type theName: TCollection_AsciiString
 	:param theMaterial:
 	:type theMaterial: RWObj_Material *
 	:param theIsRootShape:

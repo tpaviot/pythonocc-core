@@ -74,7 +74,7 @@ class StlAPI {
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "* Legacy interface. Read STL file and create a shape composed of triangular faces, one per facet. This approach is very inefficient, especially for large files. Consider reading STL file to Poly_Triangulation object instead (see class RWStl).
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param aFile:
 	:type aFile: char *
 	:rtype: bool") Read;
@@ -84,7 +84,7 @@ class StlAPI {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Convert and write shape to STL format. File is written in binary if aAsciiMode is False otherwise it is written in Ascii (by default).
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theFile:
 	:type theFile: char *
 	:param theAsciiMode: default value is Standard_True
@@ -111,7 +111,7 @@ class StlAPI_Reader {
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "* Reads STL file to the TopoDS_Shape (each triangle is converted to the face). returns True if reading is successful
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theFileName:
 	:type theFileName: char *
 	:rtype: bool") Read;
@@ -155,7 +155,7 @@ class StlAPI_Writer {
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "* Converts a given shape to STL format and writes it to file with a given filename. eturn the error state.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theFileName:
 	:type theFileName: char *
 	:rtype: bool") Write;

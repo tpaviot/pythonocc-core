@@ -87,7 +87,7 @@ class ApproxInt_KnotTools {
 	:param thePntsU2V2:
 	:type thePntsU2V2: TColgp_Array1OfPnt2d
 	:param thePars:
-	:type thePars: math_Vector &
+	:type thePars: math_Vector
 	:param theApproxXYZ:
 	:type theApproxXYZ: bool
 	:param theApproxU1V1:
@@ -97,7 +97,7 @@ class ApproxInt_KnotTools {
 	:param theMinNbPnts:
 	:type theMinNbPnts: int
 	:param theKnots:
-	:type theKnots: NCollection_Vector<int> &
+	:type theKnots: NCollection_Vector<int>
 	:rtype: void") BuildKnots;
 		static void BuildKnots (const TColgp_Array1OfPnt & thePntsXYZ,const TColgp_Array1OfPnt2d & thePntsU1V1,const TColgp_Array1OfPnt2d & thePntsU2V2,const math_Vector & thePars,const Standard_Boolean theApproxXYZ,const Standard_Boolean theApproxU1V1,const Standard_Boolean theApproxU2V2,const Standard_Integer theMinNbPnts,NCollection_Vector<Standard_Integer> & theKnots);
 
@@ -120,13 +120,13 @@ class ApproxInt_SvSurfaces {
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "* returns True if Tg,Tguv1 Tguv2 can be computed.
 	:param u1:
-	:type u1: float &
+	:type u1: float
 	:param v1:
-	:type v1: float &
+	:type v1: float
 	:param u2:
-	:type u2: float &
+	:type u2: float
 	:param v2:
-	:type v2: float &
+	:type v2: float
 	:param Pt:
 	:type Pt: gp_Pnt
 	:param Tg:
@@ -165,7 +165,7 @@ class ApproxInt_SvSurfaces {
 	:param v2:
 	:type v2: float
 	:param Point:
-	:type Point: IntSurf_PntOn2S &
+	:type Point: IntSurf_PntOn2S
 	:rtype: bool") SeekPoint;
 		virtual Standard_Boolean SeekPoint (const Standard_Real u1,const Standard_Real v1,const Standard_Real u2,const Standard_Real v2,IntSurf_PntOn2S & Point);
 

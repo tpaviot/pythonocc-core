@@ -140,9 +140,9 @@ class Hatch_Hatcher {
 	:param J:
 	:type J: int
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:param Par2:
-	:type Par2: float &
+	:type Par2: float
 	:rtype: None") EndIndex;
 		void EndIndex (const Standard_Integer I,const Standard_Integer J,Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -226,9 +226,9 @@ class Hatch_Hatcher {
 	:param J:
 	:type J: int
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:param Par2:
-	:type Par2: float &
+	:type Par2: float
 	:rtype: None") StartIndex;
 		void StartIndex (const Standard_Integer I,const Standard_Integer J,Standard_Integer &OutValue,Standard_Real &OutValue);
 

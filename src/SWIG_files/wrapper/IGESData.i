@@ -247,7 +247,7 @@ class IGESData_BasicEditor {
 		%feature("compactdefaultargs") AutoCorrect;
 		%feature("autodoc", "* Performs auto-correction on an IGESEntity Returns True if something has changed, False if nothing done. //! Works with the specific IGES Services : DirChecker which allows to correct data in 'Directory Part' of Entities (such as required values for status, or references to be null), and the specific IGES service OwnCorrect, which is specialised for each type of entity.
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") AutoCorrect;
 		Standard_Boolean AutoCorrect (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -287,7 +287,7 @@ class IGESData_BasicEditor {
 		%feature("compactdefaultargs") IGESData_BasicEditor;
 		%feature("autodoc", "* Creates a Basic Editor, with a new IGESModel, ready to run
 	:param protocol:
-	:type protocol: opencascade::handle<IGESData_Protocol> &
+	:type protocol: IGESData_Protocol
 	:rtype: None") IGESData_BasicEditor;
 		 IGESData_BasicEditor (const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -295,9 +295,9 @@ class IGESData_BasicEditor {
 		%feature("compactdefaultargs") IGESData_BasicEditor;
 		%feature("autodoc", "* Creates a Basic Editor for IGES Data, ready to run
 	:param model:
-	:type model: opencascade::handle<IGESData_IGESModel> &
+	:type model: IGESData_IGESModel
 	:param protocol:
-	:type protocol: opencascade::handle<IGESData_Protocol> &
+	:type protocol: IGESData_Protocol
 	:rtype: None") IGESData_BasicEditor;
 		 IGESData_BasicEditor (const opencascade::handle<IGESData_IGESModel> & model,const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -319,7 +319,7 @@ class IGESData_BasicEditor {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize a Basic Editor, with a new IGESModel, ready to run
 	:param protocol:
-	:type protocol: opencascade::handle<IGESData_Protocol> &
+	:type protocol: IGESData_Protocol
 	:rtype: None") Init;
 		void Init (const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -327,9 +327,9 @@ class IGESData_BasicEditor {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize a Basic Editor for IGES Data, ready to run
 	:param model:
-	:type model: opencascade::handle<IGESData_IGESModel> &
+	:type model: IGESData_IGESModel
 	:param protocol:
-	:type protocol: opencascade::handle<IGESData_Protocol> &
+	:type protocol: IGESData_Protocol
 	:rtype: None") Init;
 		void Init (const opencascade::handle<IGESData_IGESModel> & model,const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -473,9 +473,9 @@ class IGESData_DirChecker {
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "* Performs the Checks on an IGESEntity, according to the recorded criteria In addition, does minimal Checks, such as admitted range for Status, or presence of Error status in some data (Color, ...)
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: None") Check;
 		void Check (opencascade::handle<Interface_Check> & ach,const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -483,9 +483,9 @@ class IGESData_DirChecker {
 		%feature("compactdefaultargs") CheckTypeAndForm;
 		%feature("autodoc", "* Performs a Check only on Values of Type Number and Form Number This allows to do a check on an Entity not yet completely filled but of which Type and Form Number have been already set
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: None") CheckTypeAndForm;
 		void CheckTypeAndForm (opencascade::handle<Interface_Check> & ach,const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -501,7 +501,7 @@ class IGESData_DirChecker {
 		%feature("compactdefaultargs") Correct;
 		%feature("autodoc", "* Corrects the Directory Entry of an IGES Entity as far as it is possible according recorded criteria without any ambiguity : - if a numeric Status is required a given value, this value is enforced - if an item is required to be Void, or if it recorded as Erroneous, it is cleared (set to Void) - Type Number is enforced - finally Form Number is enforced only if one and only Value is admitted (no range, see Constructors of DirChecker)
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") Correct;
 		Standard_Boolean Correct (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -706,39 +706,39 @@ class IGESData_DirPart {
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "* returns values recorded in DirPart (content of cstrings are modified)
 	:param i1:
-	:type i1: int &
+	:type i1: int
 	:param i2:
-	:type i2: int &
+	:type i2: int
 	:param i3:
-	:type i3: int &
+	:type i3: int
 	:param i4:
-	:type i4: int &
+	:type i4: int
 	:param i5:
-	:type i5: int &
+	:type i5: int
 	:param i6:
-	:type i6: int &
+	:type i6: int
 	:param i7:
-	:type i7: int &
+	:type i7: int
 	:param i8:
-	:type i8: int &
+	:type i8: int
 	:param i9:
-	:type i9: int &
+	:type i9: int
 	:param i19:
-	:type i19: int &
+	:type i19: int
 	:param i11:
-	:type i11: int &
+	:type i11: int
 	:param i12:
-	:type i12: int &
+	:type i12: int
 	:param i13:
-	:type i13: int &
+	:type i13: int
 	:param i14:
-	:type i14: int &
+	:type i14: int
 	:param i15:
-	:type i15: int &
+	:type i15: int
 	:param i16:
-	:type i16: int &
+	:type i16: int
 	:param i17:
-	:type i17: int &
+	:type i17: int
 	:param res1:
 	:type res1: char *
 	:param res2:
@@ -769,7 +769,7 @@ class IGESData_FileRecognizer : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a new Recognizer to the Compound, at the end Several calls to Add work by adding in the order of calls : Hence, when Eval has failed to recognize, Evaluate will call Evaluate from the first added Recognizer if there is one, and to the second if there is still no result, and so on
 	:param reco:
-	:type reco: opencascade::handle<IGESData_FileRecognizer> &
+	:type reco: IGESData_FileRecognizer
 	:rtype: None") Add;
 		void Add (const opencascade::handle<IGESData_FileRecognizer> & reco);
 
@@ -777,9 +777,9 @@ class IGESData_FileRecognizer : public Standard_Transient {
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "* Evaluates if recognition has a result, returns it if yes In case of success, Returns True and puts result in 'res' In case of Failure, simply Returns False Works by calling deferred method Eval, and in case of failure, looks for Added Recognizers to work
 	:param akey:
-	:type akey: IGESData_IGESType &
+	:type akey: IGESData_IGESType
 	:param res:
-	:type res: opencascade::handle<IGESData_IGESEntity> &
+	:type res: IGESData_IGESEntity
 	:rtype: bool") Evaluate;
 		Standard_Boolean Evaluate (const IGESData_IGESType & akey,opencascade::handle<IGESData_IGESEntity> & res);
 
@@ -812,7 +812,7 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") CanCopy;
 		virtual Standard_Boolean CanCopy (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent);
 
@@ -822,11 +822,11 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param shares:
-	:type shares: Interface_ShareTool &
+	:type shares: Interface_ShareTool
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") CheckCase;
 		void CheckCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 
@@ -836,11 +836,11 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: None") CopyCase;
 		void CopyCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & entfrom,const opencascade::handle<Standard_Transient> & entto,Interface_CopyTool & TC);
 
@@ -850,7 +850,7 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: IGESData_DirChecker") DirChecker;
 		virtual IGESData_DirChecker DirChecker (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -860,9 +860,9 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") FillSharedCase;
 		void FillSharedCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & iter);
 
@@ -872,9 +872,9 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: void") ListImpliedCase;
 		virtual void ListImpliedCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,Interface_EntityIterator & iter);
 
@@ -884,9 +884,9 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param shares:
-	:type shares: Interface_ShareTool &
+	:type shares: Interface_ShareTool
 	:rtype: opencascade::handle<TCollection_HAsciiString>") Name;
 		virtual opencascade::handle<TCollection_HAsciiString> Name (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & ent,const Interface_ShareTool & shares);
 
@@ -896,7 +896,7 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:rtype: bool") NewVoid;
 		virtual Standard_Boolean NewVoid (const Standard_Integer CN,opencascade::handle<Standard_Transient> & entto);
 
@@ -906,11 +906,11 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param shares:
-	:type shares: Interface_ShareTool &
+	:type shares: Interface_ShareTool
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: void") OwnCheckCase;
 		virtual void OwnCheckCase (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 
@@ -920,11 +920,11 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<IGESData_IGESEntity> &
+	:type entfrom: IGESData_IGESEntity
 	:param entto:
-	:type entto: opencascade::handle<IGESData_IGESEntity> &
+	:type entto: IGESData_IGESEntity
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: void") OwnCopyCase;
 		virtual void OwnCopyCase (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & entfrom,const opencascade::handle<IGESData_IGESEntity> & entto,Interface_CopyTool & TC);
 
@@ -934,7 +934,7 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: void") OwnDeleteCase;
 		virtual void OwnDeleteCase (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -944,9 +944,9 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: void") OwnImpliedCase;
 		virtual void OwnImpliedCase (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent,Interface_EntityIterator & iter);
 
@@ -956,11 +956,11 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<IGESData_IGESEntity> &
+	:type entfrom: IGESData_IGESEntity
 	:param entto:
-	:type entto: opencascade::handle<IGESData_IGESEntity> &
+	:type entto: IGESData_IGESEntity
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: void") OwnRenewCase;
 		virtual void OwnRenewCase (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & entfrom,const opencascade::handle<IGESData_IGESEntity> & entto,const Interface_CopyTool & TC);
 
@@ -970,9 +970,9 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: void") OwnSharedCase;
 		virtual void OwnSharedCase (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent,Interface_EntityIterator & iter);
 
@@ -982,11 +982,11 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<Standard_Transient> &
+	:type entfrom: Standard_Transient
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: void") RenewImpliedCase;
 		virtual void RenewImpliedCase (const Standard_Integer CN,const opencascade::handle<Standard_Transient> & entfrom,const opencascade::handle<Standard_Transient> & entto,const Interface_CopyTool & TC);
 
@@ -996,7 +996,7 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param dispatched:
 	:type dispatched: bool
 	:rtype: void") WhenDeleteCase;
@@ -1023,9 +1023,9 @@ class IGESData_GlobalNodeOfSpecificLib : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Module bound with a Protocol to the list : does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required) Once added, stores its attached Protocol in correspondance
 	:param amodule:
-	:type amodule: opencascade::handle<IGESData_SpecificModule> &
+	:type amodule: IGESData_SpecificModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<IGESData_Protocol> &
+	:type aprotocol: IGESData_Protocol
 	:rtype: None") Add;
 		void Add (const opencascade::handle<IGESData_SpecificModule> & amodule,const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -1074,9 +1074,9 @@ class IGESData_GlobalNodeOfWriterLib : public Standard_Transient {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a Module bound with a Protocol to the list : does nothing if already in the list, THAT IS, Same Type (exact match) and Same State (that is, IsEqual is not required) Once added, stores its attached Protocol in correspondance
 	:param amodule:
-	:type amodule: opencascade::handle<IGESData_ReadWriteModule> &
+	:type amodule: IGESData_ReadWriteModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<IGESData_Protocol> &
+	:type aprotocol: IGESData_Protocol
 	:rtype: None") Add;
 		void Add (const opencascade::handle<IGESData_ReadWriteModule> & amodule,const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -1200,9 +1200,9 @@ class IGESData_GlobalSection {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Fills GlobalSection from a ParamSet (i.e. taken from file) undefined parameters do not change default values when defined Fills Check about Corrections or Fails
 	:param params:
-	:type params: opencascade::handle<Interface_ParamSet> &
+	:type params: Interface_ParamSet
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Interface_ParamSet> & params,opencascade::handle<Interface_Check> & ach);
 
@@ -1302,7 +1302,7 @@ class IGESData_GlobalSection {
 		%feature("compactdefaultargs") NewDateString;
 		%feature("autodoc", "* Converts the string given in the form YYMMDD.HHNNSS or YYYYMMDD.HHNNSS to either YYMMDD.HHNNSS, YYYYMMDD.HHNNSS or YYYY-MM-DD:HH-NN-SS.
 	:param date:
-	:type date: opencascade::handle<TCollection_HAsciiString> &
+	:type date: TCollection_HAsciiString
 	:param mode: default value is 1
 	:type mode: int
 	:rtype: opencascade::handle<TCollection_HAsciiString>") NewDateString;
@@ -1347,28 +1347,28 @@ class IGESData_GlobalSection {
 		/****************** SetApplicationProtocol ******************/
 		%feature("compactdefaultargs") SetApplicationProtocol;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetApplicationProtocol;
 		void SetApplicationProtocol (const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** SetAuthorName ******************/
 		%feature("compactdefaultargs") SetAuthorName;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetAuthorName;
 		void SetAuthorName (const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** SetCompanyName ******************/
 		%feature("compactdefaultargs") SetCompanyName;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetCompanyName;
 		void SetCompanyName (const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** SetDate ******************/
 		%feature("compactdefaultargs") SetDate;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetDate;
 		void SetDate (const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1389,7 +1389,7 @@ class IGESData_GlobalSection {
 		/****************** SetFileName ******************/
 		%feature("compactdefaultargs") SetFileName;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetFileName;
 		void SetFileName (const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1410,7 +1410,7 @@ class IGESData_GlobalSection {
 		/****************** SetInterfaceVersion ******************/
 		%feature("compactdefaultargs") SetInterfaceVersion;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetInterfaceVersion;
 		void SetInterfaceVersion (const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1422,7 +1422,7 @@ class IGESData_GlobalSection {
 		/****************** SetLastChangeDate ******************/
 		%feature("compactdefaultargs") SetLastChangeDate;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetLastChangeDate;
 		void SetLastChangeDate (const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1478,7 +1478,7 @@ class IGESData_GlobalSection {
 		/****************** SetReceiveName ******************/
 		%feature("compactdefaultargs") SetReceiveName;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetReceiveName;
 		void SetReceiveName (const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1499,7 +1499,7 @@ class IGESData_GlobalSection {
 		/****************** SetSendName ******************/
 		%feature("compactdefaultargs") SetSendName;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetSendName;
 		void SetSendName (const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1513,7 +1513,7 @@ class IGESData_GlobalSection {
 		/****************** SetSystemId ******************/
 		%feature("compactdefaultargs") SetSystemId;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetSystemId;
 		void SetSystemId (const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1527,7 +1527,7 @@ class IGESData_GlobalSection {
 		/****************** SetUnitName ******************/
 		%feature("compactdefaultargs") SetUnitName;
 		%feature("autodoc", ":param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SetUnitName;
 		void SetUnitName (const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -1541,7 +1541,7 @@ class IGESData_GlobalSection {
 		%feature("compactdefaultargs") TranslatedFromHollerith;
 		%feature("autodoc", "* Returns a string withpout its Hollerith marks (nnnH ahead). Remark : all strings stored in GlobalSection are expurged from Hollerith informations (without nnnH) If <astr> is not Hollerith form, it is simply copied
 	:param astr:
-	:type astr: opencascade::handle<TCollection_HAsciiString> &
+	:type astr: TCollection_HAsciiString
 	:rtype: opencascade::handle<TCollection_HAsciiString>") TranslatedFromHollerith;
 		opencascade::handle<TCollection_HAsciiString> TranslatedFromHollerith (const opencascade::handle<TCollection_HAsciiString> & astr);
 
@@ -1581,9 +1581,9 @@ class IGESData_IGESDumper {
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", ":param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param own:
 	:type own: int
 	:param attached: default value is -1
@@ -1595,9 +1595,9 @@ class IGESData_IGESDumper {
 		%feature("compactdefaultargs") IGESData_IGESDumper;
 		%feature("autodoc", "* Returns an IGESDumper ready to work. The IGESModel provides the numbering of Entities : as for any InterfaceModel, it gives each Entity a number; but for IGESEntities, the 'Number of Directory Entry' according to the definition of IGES Files, is also usefull
 	:param model:
-	:type model: opencascade::handle<IGESData_IGESModel> &
+	:type model: IGESData_IGESModel
 	:param protocol:
-	:type protocol: opencascade::handle<IGESData_Protocol> &
+	:type protocol: IGESData_Protocol
 	:rtype: None") IGESData_IGESDumper;
 		 IGESData_IGESDumper (const opencascade::handle<IGESData_IGESModel> & model,const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -1605,9 +1605,9 @@ class IGESData_IGESDumper {
 		%feature("compactdefaultargs") OwnDump;
 		%feature("autodoc", "* Specific Dump for each IGES Entity, call by Dump (just above) <own> is the parameter <own> from Dump
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param own:
 	:type own: int
 	:rtype: None") OwnDump;
@@ -1617,9 +1617,9 @@ class IGESData_IGESDumper {
 		%feature("compactdefaultargs") PrintDNum;
 		%feature("autodoc", "* Prints onto an output, the 'Number of Directory Entry' which corresponds to an IGESEntity in the IGESModel, under the form 'D#nnn' (a Null Handle gives D#0)
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintDNum;
 		void PrintDNum (const opencascade::handle<IGESData_IGESEntity> & ent,const opencascade::handle<Message_Messenger> & S);
 
@@ -1627,9 +1627,9 @@ class IGESData_IGESDumper {
 		%feature("compactdefaultargs") PrintShort;
 		%feature("autodoc", "* Prints onto an output, the 'Number of Directory Entry' (see PrintDNum) plus IGES Type and Form Numbers, which gives 'D#nnn Type nnn Form nnn'
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintShort;
 		void PrintShort (const opencascade::handle<IGESData_IGESEntity> & ent,const opencascade::handle<Message_Messenger> & S);
 
@@ -1652,7 +1652,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") AddProperty;
 		%feature("autodoc", "* Adds a Property in the list
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: None") AddProperty;
 		void AddProperty (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -1672,7 +1672,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") Associate;
 		%feature("autodoc", "* Sets 'me' in the Associativity list of another Entity
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: None") Associate;
 		void Associate (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -1746,7 +1746,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") Dissociate;
 		%feature("autodoc", "* Resets 'me' from the Associativity list of another Entity
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: None") Dissociate;
 		void Dissociate (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -1814,7 +1814,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") InitColor;
 		%feature("autodoc", "* Initializes Color data : if <ent> is not Null, it gives Color, else <rank> gives or erases (if zero) RankColor
 	:param ent:
-	:type ent: opencascade::handle<IGESData_ColorEntity> &
+	:type ent: IGESData_ColorEntity
 	:param rank: default value is 0
 	:type rank: int
 	:rtype: None") InitColor;
@@ -1826,7 +1826,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 	:param fieldnum:
 	:type fieldnum: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: None") InitDirFieldEntity;
 		void InitDirFieldEntity (const Standard_Integer fieldnum,const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -1834,7 +1834,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") InitLevel;
 		%feature("autodoc", "* Initializes Level : if <ent> is not Null, it gives LevelList, else <val> gives or erases (if zero) unique Level
 	:param ent:
-	:type ent: opencascade::handle<IGESData_LevelListEntity> &
+	:type ent: IGESData_LevelListEntity
 	:param val: default value is 0
 	:type val: int
 	:rtype: None") InitLevel;
@@ -1844,7 +1844,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") InitLineFont;
 		%feature("autodoc", "* Initializes LineFont : if <ent> is not Null, it gives LineFont, else <rank> gives or erases (if zero) RankLineFont
 	:param ent:
-	:type ent: opencascade::handle<IGESData_LineFontEntity> &
+	:type ent: IGESData_LineFontEntity
 	:param rank: default value is 0
 	:type rank: int
 	:rtype: None") InitLineFont;
@@ -1854,9 +1854,9 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") InitMisc;
 		%feature("autodoc", "* Initializes various data (those not yet seen above), or erases them if they are given as Null (Zero for <weightnum>) : <str> for Structure, <lab> for LabelDisplay, and <weightnum> for WeightNumber
 	:param str:
-	:type str: opencascade::handle<IGESData_IGESEntity> &
+	:type str: IGESData_IGESEntity
 	:param lab:
-	:type lab: opencascade::handle<IGESData_LabelDisplayEntity> &
+	:type lab: IGESData_LabelDisplayEntity
 	:param weightnum:
 	:type weightnum: int
 	:rtype: None") InitMisc;
@@ -1880,7 +1880,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") InitTransf;
 		%feature("autodoc", "* Initializes Transf, or erases it if <ent> is given Null
 	:param ent:
-	:type ent: opencascade::handle<IGESData_TransfEntity> &
+	:type ent: IGESData_TransfEntity
 	:rtype: None") InitTransf;
 		void InitTransf (const opencascade::handle<IGESData_TransfEntity> & ent);
 
@@ -1888,7 +1888,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") InitView;
 		%feature("autodoc", "* Initializes View, or erases it if <ent> is given Null
 	:param ent:
-	:type ent: opencascade::handle<IGESData_ViewKindEntity> &
+	:type ent: IGESData_ViewKindEntity
 	:rtype: None") InitView;
 		void InitView (const opencascade::handle<IGESData_ViewKindEntity> & ent);
 
@@ -1956,7 +1956,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") NbTypedAssociativities;
 		%feature("autodoc", "* gives how many Associativities have a given type
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: int") NbTypedAssociativities;
 		Standard_Integer NbTypedAssociativities (const opencascade::handle<Standard_Type> & atype);
 
@@ -1964,7 +1964,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") NbTypedProperties;
 		%feature("autodoc", "* gives how many Properties have a given type
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: int") NbTypedProperties;
 		Standard_Integer NbTypedProperties (const opencascade::handle<Standard_Type> & atype);
 
@@ -1990,7 +1990,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveProperty;
 		%feature("autodoc", "* Removes a Property from the list
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: None") RemoveProperty;
 		void RemoveProperty (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -1998,7 +1998,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "* Sets a new Label to an IGES Entity If <sub> is given, it sets value of SubScriptNumber else, SubScriptNumber is erased
 	:param label:
-	:type label: opencascade::handle<TCollection_HAsciiString> &
+	:type label: TCollection_HAsciiString
 	:param sub: default value is -1
 	:type sub: int
 	:rtype: None") SetLabel;
@@ -2062,7 +2062,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") TypedAssociativity;
 		%feature("autodoc", "* returns the Associativity of a given Type (if only one exists) Error if none or more than one
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: opencascade::handle<IGESData_IGESEntity>") TypedAssociativity;
 		opencascade::handle<IGESData_IGESEntity> TypedAssociativity (const opencascade::handle<Standard_Type> & atype);
 
@@ -2070,7 +2070,7 @@ class IGESData_IGESEntity : public Standard_Transient {
 		%feature("compactdefaultargs") TypedProperty;
 		%feature("autodoc", "* returns the Property of a given Type Error if none or more than one
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:param anum: default value is 0
 	:type anum: int
 	:rtype: opencascade::handle<IGESData_IGESEntity>") TypedProperty;
@@ -2163,7 +2163,7 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") DNum;
 		%feature("autodoc", "* Returns the equivalent DE Number for an Entity, i.e. 2*Number(ent)-1 , or 0 if <ent> is unknown from <self> This DE Number is used for File Writing for instance
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: int") DNum;
 		Standard_Integer DNum (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -2171,7 +2171,7 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") DumpHeader;
 		%feature("autodoc", "* Prints the IGES file header (Start and Global Sections) to the log file. The integer parameter is intended to be used as a level indicator but is not used at present.
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param level: default value is 0
 	:type level: int
 	:rtype: None") DumpHeader;
@@ -2189,7 +2189,7 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") GetFromAnother;
 		%feature("autodoc", "* gets Header (GlobalSection) from another Model
 	:param other:
-	:type other: opencascade::handle<Interface_InterfaceModel> &
+	:type other: Interface_InterfaceModel
 	:rtype: None") GetFromAnother;
 		void GetFromAnother (const opencascade::handle<Interface_InterfaceModel> & other);
 
@@ -2220,9 +2220,9 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") PrintInfo;
 		%feature("autodoc", "* Prints label specific to IGES norm for a given entity, i.e. its directory entry number (2*Number-1)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintInfo;
 		void PrintInfo (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Message_Messenger> & S);
 
@@ -2230,9 +2230,9 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") PrintLabel;
 		%feature("autodoc", "* Prints label specific to IGES norm for a given entity, i.e. its directory entry number (2*Number-1)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintLabel;
 		void PrintLabel (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Message_Messenger> & S);
 
@@ -2240,9 +2240,9 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") PrintToLog;
 		%feature("autodoc", "* Prints label specific to IGES norm for a given -- -- entity, i.e. its directory entry number (2*Number-1) in the log file format.
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: void") PrintToLog;
 		virtual void PrintToLog (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Message_Messenger> & S);
 
@@ -2250,7 +2250,7 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") SetGlobalSection;
 		%feature("autodoc", "* Sets the Global section of the IGES file.
 	:param header:
-	:type header: IGESData_GlobalSection &
+	:type header: IGESData_GlobalSection
 	:rtype: None") SetGlobalSection;
 		void SetGlobalSection (const IGESData_GlobalSection & header);
 
@@ -2266,7 +2266,7 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") SetStartSection;
 		%feature("autodoc", "* Sets a new Start section from a list of strings. If copy is false, the Start section will be shared. Any modifications made to the strings later on, will have an effect on the Start section. If copy is true (default value), an independent copy of the strings is created and used as the Start section. Any modifications made to the strings later on, will have no effect on the Start section.
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfHAsciiString> &
+	:type list: TColStd_HSequenceOfHAsciiString
 	:param copy: default value is Standard_True
 	:type copy: bool
 	:rtype: None") SetStartSection;
@@ -2290,7 +2290,7 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") StringLabel;
 		%feature("autodoc", "* Returns a string with the label attached to a given entity, i.e. a string 'Dnn' with nn = directory entry number (2*N-1)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TCollection_HAsciiString>") StringLabel;
 		opencascade::handle<TCollection_HAsciiString> StringLabel (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2298,7 +2298,7 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 		%feature("compactdefaultargs") VerifyCheck;
 		%feature("autodoc", "* Checks that the IGES file Global section contains valid data that conforms to the IGES specifications.
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: void") VerifyCheck;
 		virtual void VerifyCheck (opencascade::handle<Interface_Check> & ach);
 
@@ -2365,47 +2365,47 @@ class IGESData_IGESReaderData : public Interface_FileReaderData {
 	:param num:
 	:type num: int
 	:param i1:
-	:type i1: int &
+	:type i1: int
 	:param i2:
-	:type i2: int &
+	:type i2: int
 	:param i3:
-	:type i3: int &
+	:type i3: int
 	:param i4:
-	:type i4: int &
+	:type i4: int
 	:param i5:
-	:type i5: int &
+	:type i5: int
 	:param i6:
-	:type i6: int &
+	:type i6: int
 	:param i7:
-	:type i7: int &
+	:type i7: int
 	:param i8:
-	:type i8: int &
+	:type i8: int
 	:param i9:
-	:type i9: int &
+	:type i9: int
 	:param i10:
-	:type i10: int &
+	:type i10: int
 	:param i11:
-	:type i11: int &
+	:type i11: int
 	:param i12:
-	:type i12: int &
+	:type i12: int
 	:param i13:
-	:type i13: int &
+	:type i13: int
 	:param i14:
-	:type i14: int &
+	:type i14: int
 	:param i15:
-	:type i15: int &
+	:type i15: int
 	:param i16:
-	:type i16: int &
+	:type i16: int
 	:param i17:
-	:type i17: int &
+	:type i17: int
 	:param res1:
-	:type res1: char * &
+	:type res1: char *
 	:param res2:
-	:type res2: char * &
+	:type res2: char *
 	:param label:
-	:type label: char * &
+	:type label: char *
 	:param subs:
-	:type subs: char * &
+	:type subs: char *
 	:rtype: None") DirValues;
 		void DirValues (const Standard_Integer num,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,const char * & res1,const char * & res2,const char * & label,const char * & subs);
 
@@ -2544,9 +2544,9 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 	:param num:
 	:type num: int
 	:param anent:
-	:type anent: opencascade::handle<Standard_Transient> &
+	:type anent: Standard_Transient
 	:param acheck:
-	:type acheck: opencascade::handle<Interface_Check> &
+	:type acheck: Interface_Check
 	:rtype: bool") AnalyseRecord;
 		Standard_Boolean AnalyseRecord (const Standard_Integer num,const opencascade::handle<Standard_Transient> & anent,opencascade::handle<Interface_Check> & acheck);
 
@@ -2554,7 +2554,7 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") BeginRead;
 		%feature("autodoc", "* fills model's header, that is, its GlobalSection
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: None") BeginRead;
 		void BeginRead (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2562,7 +2562,7 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") EndRead;
 		%feature("autodoc", "* after reading entities, true line weights can be computed
 	:param amodel:
-	:type amodel: opencascade::handle<Interface_InterfaceModel> &
+	:type amodel: Interface_InterfaceModel
 	:rtype: void") EndRead;
 		virtual void EndRead (const opencascade::handle<Interface_InterfaceModel> & amodel);
 
@@ -2570,9 +2570,9 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") IGESData_IGESReaderTool;
 		%feature("autodoc", "* creates IGESReaderTool to work with an IGESReaderData and an IGES Protocol. Actually, no Lib is used
 	:param reader:
-	:type reader: opencascade::handle<IGESData_IGESReaderData> &
+	:type reader: IGESData_IGESReaderData
 	:param protocol:
-	:type protocol: opencascade::handle<IGESData_Protocol> &
+	:type protocol: IGESData_Protocol
 	:rtype: None") IGESData_IGESReaderTool;
 		 IGESData_IGESReaderTool (const opencascade::handle<IGESData_IGESReaderData> & reader,const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -2580,7 +2580,7 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") Prepare;
 		%feature("autodoc", "* binds empty entities to records, works with the Protocol (from IGESData) stored and later used RQ : Actually, sets DNum into IGES Entities Also loads the list of parameters for ParamReader
 	:param reco:
-	:type reco: opencascade::handle<IGESData_FileRecognizer> &
+	:type reco: IGESData_FileRecognizer
 	:rtype: None") Prepare;
 		void Prepare (const opencascade::handle<IGESData_FileRecognizer> & reco);
 
@@ -2588,11 +2588,11 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") ReadAssocs;
 		%feature("autodoc", "* Reads Associativity List, if there is (if not, does nothing) criterium is : current parameter of PR remains inside params list, and Stage is 'Own' Same conditions as above; in addition, no parameter must be let after the list once read Note that 'Associated' entities are not declared 'Shared'
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param PR:
-	:type PR: IGESData_ParamReader &
+	:type PR: IGESData_ParamReader
 	:rtype: None") ReadAssocs;
 		void ReadAssocs (const opencascade::handle<IGESData_IGESEntity> & ent,const opencascade::handle<IGESData_IGESReaderData> & IR,IGESData_ParamReader & PR);
 
@@ -2600,13 +2600,13 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") ReadDir;
 		%feature("autodoc", "* Reads directory part componants from file; DP is the litteral directory part, IR detains entities referenced by DP
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param DP:
-	:type DP: IGESData_DirPart &
+	:type DP: IGESData_DirPart
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") ReadDir;
 		void ReadDir (const opencascade::handle<IGESData_IGESEntity> & ent,const opencascade::handle<IGESData_IGESReaderData> & IR,const IGESData_DirPart & DP,opencascade::handle<Interface_Check> & ach);
 
@@ -2614,11 +2614,11 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") ReadOwnParams;
 		%feature("autodoc", "* Performs Reading of own Parameters for each IGESEntity Works with the ReaderLib loaded with ReadWriteModules for IGES In case of failure, tries UndefinedEntity from IGES
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param PR:
-	:type PR: IGESData_ParamReader &
+	:type PR: IGESData_ParamReader
 	:rtype: None") ReadOwnParams;
 		void ReadOwnParams (const opencascade::handle<IGESData_IGESEntity> & ent,const opencascade::handle<IGESData_IGESReaderData> & IR,IGESData_ParamReader & PR);
 
@@ -2626,11 +2626,11 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 		%feature("compactdefaultargs") ReadProps;
 		%feature("autodoc", "* Reads Property List, if there is (if not, does nothing) criterium is : current parameter of PR remains inside params list, and Stage is 'Own' Current parameter must be a positive integer, which value gives the length of the list; else, a Fail is produced (into Check of PR) and reading process is stopped
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param PR:
-	:type PR: IGESData_ParamReader &
+	:type PR: IGESData_ParamReader
 	:rtype: None") ReadProps;
 		void ReadProps (const opencascade::handle<IGESData_IGESEntity> & ent,const opencascade::handle<IGESData_IGESReaderData> & IR,IGESData_ParamReader & PR);
 
@@ -2640,9 +2640,9 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") Recognize;
 		Standard_Boolean Recognize (const Standard_Integer num,opencascade::handle<Interface_Check> & ach,opencascade::handle<Standard_Transient> & ent);
 
@@ -2685,7 +2685,7 @@ class IGESData_IGESType {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* compares two IGESTypes, avoiding comparing their fields
 	:param another:
-	:type another: IGESData_IGESType &
+	:type another: IGESData_IGESType
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const IGESData_IGESType & another);
 
@@ -2734,7 +2734,7 @@ class IGESData_IGESWriter {
 		%feature("compactdefaultargs") Associativities;
 		%feature("autodoc", "* sends associativity list, as complement of parameters list error if not in sections DP or Stage not 'Associativity'
 	:param anent:
-	:type anent: opencascade::handle<IGESData_IGESEntity> &
+	:type anent: IGESData_IGESEntity
 	:rtype: None") Associativities;
 		void Associativities (const opencascade::handle<IGESData_IGESEntity> & anent);
 
@@ -2742,7 +2742,7 @@ class IGESData_IGESWriter {
 		%feature("compactdefaultargs") DirPart;
 		%feature("autodoc", "* translates directory part of an Entity into a litteral DirPart Some infos are computed after sending parameters Error if not in sections DP or Stage not 'Dir'
 	:param anent:
-	:type anent: opencascade::handle<IGESData_IGESEntity> &
+	:type anent: IGESData_IGESEntity
 	:rtype: None") DirPart;
 		void DirPart (const opencascade::handle<IGESData_IGESEntity> & anent);
 
@@ -2762,7 +2762,7 @@ class IGESData_IGESWriter {
 		%feature("compactdefaultargs") IGESData_IGESWriter;
 		%feature("autodoc", "* Creates an IGESWriter, empty ready to work (see the methods SendModel and Print)
 	:param amodel:
-	:type amodel: opencascade::handle<IGESData_IGESModel> &
+	:type amodel: IGESData_IGESModel
 	:rtype: None") IGESData_IGESWriter;
 		 IGESData_IGESWriter (const opencascade::handle<IGESData_IGESModel> & amodel);
 
@@ -2776,7 +2776,7 @@ class IGESData_IGESWriter {
 		%feature("compactdefaultargs") IGESData_IGESWriter;
 		%feature("autodoc", "* Constructor by copy (not used) to satisfy the compiler
 	:param other:
-	:type other: IGESData_IGESWriter &
+	:type other: IGESData_IGESWriter
 	:rtype: None") IGESData_IGESWriter;
 		 IGESData_IGESWriter (const IGESData_IGESWriter & other);
 
@@ -2784,7 +2784,7 @@ class IGESData_IGESWriter {
 		%feature("compactdefaultargs") OwnParams;
 		%feature("autodoc", "* sends own parameters of the entity, by sending firstly its type, then calling specific method WriteOwnParams Error if not in sections DP or Stage not 'Own'
 	:param anent:
-	:type anent: opencascade::handle<IGESData_IGESEntity> &
+	:type anent: IGESData_IGESEntity
 	:rtype: None") OwnParams;
 		void OwnParams (const opencascade::handle<IGESData_IGESEntity> & anent);
 
@@ -2800,7 +2800,7 @@ class IGESData_IGESWriter {
 		%feature("compactdefaultargs") Properties;
 		%feature("autodoc", "* sends property list, as complement of parameters list error if not in sections DP or Stage not 'Property'
 	:param anent:
-	:type anent: opencascade::handle<IGESData_IGESEntity> &
+	:type anent: IGESData_IGESEntity
 	:rtype: None") Properties;
 		void Properties (const opencascade::handle<IGESData_IGESEntity> & anent);
 
@@ -2808,7 +2808,7 @@ class IGESData_IGESWriter {
 		%feature("compactdefaultargs") SectionG;
 		%feature("autodoc", "* prepares sending of header, from a GlobalSection (stores it) error if SectionS was not called just before takes in account special characters (Separator, EndMark)
 	:param header:
-	:type header: IGESData_GlobalSection &
+	:type header: IGESData_GlobalSection
 	:rtype: None") SectionG;
 		void SectionG (const IGESData_GlobalSection & header);
 
@@ -2850,7 +2850,7 @@ class IGESData_IGESWriter {
 		%feature("compactdefaultargs") SendModel;
 		%feature("autodoc", "* Sends the complete IGESModel (Global Section, Entities as Directory Entries & Parameter Lists, etc...) i.e. fills a list of texts. Once filled, it can be sent by method Print
 	:param protocol:
-	:type protocol: opencascade::handle<IGESData_Protocol> &
+	:type protocol: IGESData_Protocol
 	:rtype: None") SendModel;
 		void SendModel (const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -2866,7 +2866,7 @@ class IGESData_IGESWriter {
 		%feature("compactdefaultargs") SendString;
 		%feature("autodoc", "* sends a parameter under its exact form given as a string
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") SendString;
 		void SendString (const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -2908,7 +2908,7 @@ class IGESData_NodeOfSpecificLib : public Standard_Transient {
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "* Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it
 	:param anode:
-	:type anode: opencascade::handle<IGESData_GlobalNodeOfSpecificLib> &
+	:type anode: IGESData_GlobalNodeOfSpecificLib
 	:rtype: None") AddNode;
 		void AddNode (const opencascade::handle<IGESData_GlobalNodeOfSpecificLib> & anode);
 
@@ -2957,7 +2957,7 @@ class IGESData_NodeOfWriterLib : public Standard_Transient {
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "* Adds a couple (Module,Protocol), that is, stores it into itself if not yet done, else creates a Next Node to do it
 	:param anode:
-	:type anode: opencascade::handle<IGESData_GlobalNodeOfWriterLib> &
+	:type anode: IGESData_GlobalNodeOfWriterLib
 	:rtype: None") AddNode;
 		void AddNode (const opencascade::handle<IGESData_GlobalNodeOfWriterLib> & anode);
 
@@ -3134,9 +3134,9 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "* feeds the Check with a new fail (as a String or as a CString)
 	:param af:
-	:type af: opencascade::handle<TCollection_HAsciiString> &
+	:type af: TCollection_HAsciiString
 	:param bf:
-	:type bf: opencascade::handle<TCollection_HAsciiString> &
+	:type bf: TCollection_HAsciiString
 	:rtype: None") AddFail;
 		void AddFail (const opencascade::handle<TCollection_HAsciiString> & af,const opencascade::handle<TCollection_HAsciiString> & bf);
 
@@ -3153,9 +3153,9 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "* feeds the Check with a new Warning message
 	:param aw:
-	:type aw: opencascade::handle<TCollection_HAsciiString> &
+	:type aw: TCollection_HAsciiString
 	:param bw:
-	:type bw: opencascade::handle<TCollection_HAsciiString> &
+	:type bw: TCollection_HAsciiString
 	:rtype: None") AddWarning;
 		void AddWarning (const opencascade::handle<TCollection_HAsciiString> & aw,const opencascade::handle<TCollection_HAsciiString> & bw);
 
@@ -3227,9 +3227,9 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") IGESData_ParamReader;
 		%feature("autodoc", "* Prepares a ParamReader, stage 'Own', current param = 1 It considers a part of the list, from <base> (excluded) for <nbpar> parameters; <nbpar> = 0 commands to take list length. Default is (1 to skip type)
 	:param list:
-	:type list: opencascade::handle<Interface_ParamList> &
+	:type list: Interface_ParamList
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param base: default value is 1
 	:type base: int
 	:param nbpar: default value is 0
@@ -3284,7 +3284,7 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ParamEntity;
 		%feature("autodoc", "* directly returns entity referenced by a parameter
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param num:
 	:type num: int
 	:rtype: opencascade::handle<IGESData_IGESEntity>") ParamEntity;
@@ -3317,9 +3317,9 @@ class IGESData_ParamReader {
 		/****************** ReadBoolean ******************/
 		%feature("compactdefaultargs") ReadBoolean;
 		%feature("autodoc", ":param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:param val:
 	:type val: bool
 	:param exact: default value is Standard_True
@@ -3331,7 +3331,7 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadBoolean;
 		%feature("autodoc", "* Reads a Boolean value from parameter 'num' A Boolean is given as an Integer value 0 (False) or 1 (True) Anyway, an Integer is demanded (else, Check is filled) If exact is given True, those precise values are demanded Else, Correction is done, as False for 0 or <0, True for >0 (with a Warning error message, and return is True) In case of error (not an Integer, or not 0/1 and exact True), Check is filled with a Fail (using mess) and return is False
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
@@ -3344,13 +3344,13 @@ class IGESData_ParamReader {
 		/****************** ReadEntList ******************/
 		%feature("compactdefaultargs") ReadEntList;
 		%feature("autodoc", ":param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:param val:
-	:type val: Interface_EntityList &
+	:type val: Interface_EntityList
 	:param ord: default value is Standard_True
 	:type ord: bool
 	:rtype: bool") ReadEntList;
@@ -3360,13 +3360,13 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadEntList;
 		%feature("autodoc", "* Reads a list of Entities defined by PC Same conditions as for ReadEnts, for PC The list is given as an EntityList (index has no meaning; the EntityList starts from clear) If 'ord' is given True (default), entities will be added to the list in their original order Remark : Negative or Null Pointers are ignored Else ('ord' False), order is not garanteed (faster mode) If all params cannot be read as Entities, same as above Warning Give 'ord' to False ONLY if order is not significant
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: Interface_EntityList &
+	:type val: Interface_EntityList
 	:param ord: default value is Standard_True
 	:type ord: bool
 	:rtype: bool") ReadEntList;
@@ -3375,13 +3375,13 @@ class IGESData_ParamReader {
 		/****************** ReadEnts ******************/
 		%feature("compactdefaultargs") ReadEnts;
 		%feature("autodoc", ":param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:param val:
-	:type val: opencascade::handle<IGESData_HArray1OfIGESEntity> &
+	:type val: IGESData_HArray1OfIGESEntity
 	:param index: default value is 1
 	:type index: int
 	:rtype: bool") ReadEnts;
@@ -3391,13 +3391,13 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadEnts;
 		%feature("autodoc", "* Reads a list of Entities defined by PC Same conditions as for ReadInts, for PC and index The list is given as a HArray1, numered from 'index' If all params cannot be read as Entities, Check is filled (using mess) and return value is False Remark : Null references are accepted, they are ignored (negative pointers too : they provoke a Warning message) If the caller wants to check them, a loop on ReadEntity should be used
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: opencascade::handle<IGESData_HArray1OfIGESEntity> &
+	:type val: IGESData_HArray1OfIGESEntity
 	:param index: default value is 1
 	:type index: int
 	:rtype: bool") ReadEnts;
@@ -3406,9 +3406,9 @@ class IGESData_ParamReader {
 		/****************** ReadInteger ******************/
 		%feature("compactdefaultargs") ReadInteger;
 		%feature("autodoc", ":param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") ReadInteger;
 		Standard_Boolean ReadInteger (const IGESData_ParamCursor & PC,Standard_Integer &OutValue);
 
@@ -3416,22 +3416,22 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadInteger;
 		%feature("autodoc", "* Reads an Integer value designated by PC The method Current designates the current parameter and advances the Current Number by one after reading Note that if a count (not 1) is given, it is ignored If it is not an Integer, fills Check with a Fail (using mess) and returns False
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") ReadInteger;
 		Standard_Boolean ReadInteger (const IGESData_ParamCursor & PC,const char * mess,Standard_Integer &OutValue);
 
 		/****************** ReadInts ******************/
 		%feature("compactdefaultargs") ReadInts;
 		%feature("autodoc", ":param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:param val:
-	:type val: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type val: TColStd_HArray1OfInteger
 	:param index: default value is 1
 	:type index: int
 	:rtype: bool") ReadInts;
@@ -3441,11 +3441,11 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadInts;
 		%feature("autodoc", "* Reads a list of Integer values, defined by PC (with a count of parameters). PC can start from Current Number and command it to advance after reading (use method CurrentList to do this) The list is given as a HArray1, numered from 'index' If all params are not Integer, Check is filled (using mess) and return value is False
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: opencascade::handle<TColStd_HArray1OfInteger> &
+	:type val: TColStd_HArray1OfInteger
 	:param index: default value is 1
 	:type index: int
 	:rtype: bool") ReadInts;
@@ -3454,9 +3454,9 @@ class IGESData_ParamReader {
 		/****************** ReadReal ******************/
 		%feature("compactdefaultargs") ReadReal;
 		%feature("autodoc", ":param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param val:
-	:type val: float &
+	:type val: float
 	:rtype: bool") ReadReal;
 		Standard_Boolean ReadReal (const IGESData_ParamCursor & PC,Standard_Real &OutValue);
 
@@ -3464,22 +3464,22 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadReal;
 		%feature("autodoc", "* Reads a Real value from parameter 'num' An Integer is accepted (Check is filled with a Warning message) and causes return to be True (as normal case) In other cases, Check is filled with a Fail and return is False
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: float &
+	:type val: float
 	:rtype: bool") ReadReal;
 		Standard_Boolean ReadReal (const IGESData_ParamCursor & PC,const char * mess,Standard_Real &OutValue);
 
 		/****************** ReadReals ******************/
 		%feature("compactdefaultargs") ReadReals;
 		%feature("autodoc", ":param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:param val:
-	:type val: opencascade::handle<TColStd_HArray1OfReal> &
+	:type val: TColStd_HArray1OfReal
 	:param index: default value is 1
 	:type index: int
 	:rtype: bool") ReadReals;
@@ -3489,11 +3489,11 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadReals;
 		%feature("autodoc", "* Reads a list of Real values defined by PC Same conditions as for ReadInts, for PC and index An Integer parameter is accepted, if at least one parameter is Integer, Check is filled with a 'Warning' message If all params are neither Real nor Integer, Check is filled (using mess) and return value is False
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: opencascade::handle<TColStd_HArray1OfReal> &
+	:type val: TColStd_HArray1OfReal
 	:param index: default value is 1
 	:type index: int
 	:rtype: bool") ReadReals;
@@ -3502,11 +3502,11 @@ class IGESData_ParamReader {
 		/****************** ReadText ******************/
 		%feature("compactdefaultargs") ReadText;
 		%feature("autodoc", ":param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: bool") ReadText;
 		Standard_Boolean ReadText (const IGESData_ParamCursor & PC,const Message_Msg & amsg,opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -3514,22 +3514,22 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadText;
 		%feature("autodoc", "* Reads a Text value from parameter 'num', as a String from Collection, that is, Hollerith text without leading 'nnnH' If it is not a String, fills Check with a Fail (using mess) and returns False
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: bool") ReadText;
 		Standard_Boolean ReadText (const IGESData_ParamCursor & PC,const char * mess,opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****************** ReadTexts ******************/
 		%feature("compactdefaultargs") ReadTexts;
 		%feature("autodoc", ":param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:param val:
-	:type val: opencascade::handle<Interface_HArray1OfHAsciiString> &
+	:type val: Interface_HArray1OfHAsciiString
 	:param index: default value is 1
 	:type index: int
 	:rtype: bool") ReadTexts;
@@ -3539,11 +3539,11 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadTexts;
 		%feature("autodoc", "* Reads a list of Hollerith Texts, defined by PC Texts are read as Hollerith texts without leading 'nnnH' Same conditions as for ReadInts, for PC and index If all params are not Text, Check is filled (using mess) and return value is False
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: opencascade::handle<Interface_HArray1OfHAsciiString> &
+	:type val: Interface_HArray1OfHAsciiString
 	:param index: default value is 1
 	:type index: int
 	:rtype: bool") ReadTexts;
@@ -3552,9 +3552,9 @@ class IGESData_ParamReader {
 		/****************** ReadXY ******************/
 		%feature("compactdefaultargs") ReadXY;
 		%feature("autodoc", ":param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:param val:
 	:type val: gp_XY
 	:rtype: bool") ReadXY;
@@ -3564,7 +3564,7 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadXY;
 		%feature("autodoc", "* Reads a couple of Real values (X,Y) from parameter 'num' Integers are accepted (Check is filled with a Warning message) and cause return to be True (as normal case) In other cases, Check is filled with a Fail and return is False
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
@@ -3575,9 +3575,9 @@ class IGESData_ParamReader {
 		/****************** ReadXYZ ******************/
 		%feature("compactdefaultargs") ReadXYZ;
 		%feature("autodoc", ":param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:param val:
 	:type val: gp_XYZ
 	:rtype: bool") ReadXYZ;
@@ -3587,7 +3587,7 @@ class IGESData_ParamReader {
 		%feature("compactdefaultargs") ReadXYZ;
 		%feature("autodoc", "* Reads a triplet of Real values (X,Y,Z) from parameter 'num' Integers are accepted (Check is filled with a Warning message) and cause return to be True (as normal case) In other cases, Check is filled with a Fail and return is False For Message
 	:param PC:
-	:type PC: IGESData_ParamCursor &
+	:type PC: IGESData_ParamCursor
 	:param mess:
 	:type mess: char *
 	:param val:
@@ -3600,7 +3600,7 @@ class IGESData_ParamReader {
 		%feature("autodoc", ":param num:
 	:type num: int
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") ReadingEntityNumber;
 		Standard_Boolean ReadingEntityNumber (const Standard_Integer num,Standard_Integer &OutValue);
 
@@ -3612,7 +3612,7 @@ class IGESData_ParamReader {
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") ReadingEntityNumber;
 		Standard_Boolean ReadingEntityNumber (const Standard_Integer num,const char * mess,Standard_Integer &OutValue);
 
@@ -3621,7 +3621,7 @@ class IGESData_ParamReader {
 		%feature("autodoc", ":param num:
 	:type num: int
 	:param val:
-	:type val: float &
+	:type val: float
 	:rtype: bool") ReadingReal;
 		Standard_Boolean ReadingReal (const Standard_Integer num,Standard_Real &OutValue);
 
@@ -3633,21 +3633,21 @@ class IGESData_ParamReader {
 	:param mess:
 	:type mess: char *
 	:param val:
-	:type val: float &
+	:type val: float
 	:rtype: bool") ReadingReal;
 		Standard_Boolean ReadingReal (const Standard_Integer num,const char * mess,Standard_Real &OutValue);
 
 		/****************** SendFail ******************/
 		%feature("compactdefaultargs") SendFail;
 		%feature("autodoc", ":param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") SendFail;
 		void SendFail (const Message_Msg & amsg);
 
 		/****************** SendWarning ******************/
 		%feature("compactdefaultargs") SendWarning;
 		%feature("autodoc", ":param amsg:
-	:type amsg: Message_Msg &
+	:type amsg: Message_Msg
 	:rtype: None") SendWarning;
 		void SendWarning (const Message_Msg & amsg);
 
@@ -3689,7 +3689,7 @@ class IGESData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") IsSuitableModel;
 		%feature("autodoc", "* Returns True if <model> is a Model of IGES Norm
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") IsSuitableModel;
 		Standard_Boolean IsSuitableModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -3697,7 +3697,7 @@ class IGESData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") IsUnknownEntity;
 		%feature("autodoc", "* Returns True if <ent> is an Unknown Entity for the Norm, i.e. Type UndefinedEntity, status Unknown
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: bool") IsUnknownEntity;
 		Standard_Boolean IsUnknownEntity (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3725,7 +3725,7 @@ class IGESData_Protocol : public Interface_Protocol {
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "* Returns a Case Number, specific of each recognized Type Here, Undefined and Free Format Entities have the Number 1.
 	:param atype:
-	:type atype: opencascade::handle<Standard_Type> &
+	:type atype: Standard_Type
 	:rtype: int") TypeNumber;
 		Standard_Integer TypeNumber (const opencascade::handle<Standard_Type> & atype);
 
@@ -3766,7 +3766,7 @@ class IGESData_ReadWriteModule : public Interface_ReaderModule {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Translates the Type of record <num> in <data> to a positive Case Number, or 0 if failed. Works with IGESReaderData which provides Type & Form Numbers, and calls CaseIGES (see below)
 	:param data:
-	:type data: opencascade::handle<Interface_FileReaderData> &
+	:type data: Interface_FileReaderData
 	:param num:
 	:type num: int
 	:rtype: int") CaseNum;
@@ -3778,13 +3778,13 @@ class IGESData_ReadWriteModule : public Interface_ReaderModule {
 	:param CN:
 	:type CN: int
 	:param data:
-	:type data: opencascade::handle<Interface_FileReaderData> &
+	:type data: Interface_FileReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: None") Read;
 		void Read (const Standard_Integer CN,const opencascade::handle<Interface_FileReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<Standard_Transient> & ent);
 
@@ -3794,11 +3794,11 @@ class IGESData_ReadWriteModule : public Interface_ReaderModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param PR:
-	:type PR: IGESData_ParamReader &
+	:type PR: IGESData_ParamReader
 	:rtype: void") ReadOwnParams;
 		virtual void ReadOwnParams (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent,const opencascade::handle<IGESData_IGESReaderData> & IR,IGESData_ParamReader & PR);
 
@@ -3808,9 +3808,9 @@ class IGESData_ReadWriteModule : public Interface_ReaderModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param IW:
-	:type IW: IGESData_IGESWriter &
+	:type IW: IGESData_IGESWriter
 	:rtype: void") WriteOwnParams;
 		virtual void WriteOwnParams (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent,IGESData_IGESWriter & IW);
 
@@ -3834,7 +3834,7 @@ class IGESData_SpecificLib {
 		%feature("compactdefaultargs") AddProtocol;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added)
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Standard_Transient> &
+	:type aprotocol: Standard_Transient
 	:rtype: None") AddProtocol;
 		void AddProtocol (const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -3848,7 +3848,7 @@ class IGESData_SpecificLib {
 		%feature("compactdefaultargs") IGESData_SpecificLib;
 		%feature("autodoc", "* Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<IGESData_Protocol> &
+	:type aprotocol: IGESData_Protocol
 	:rtype: None") IGESData_SpecificLib;
 		 IGESData_SpecificLib (const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -3886,11 +3886,11 @@ class IGESData_SpecificLib {
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "* Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType)
 	:param obj:
-	:type obj: opencascade::handle<IGESData_IGESEntity> &
+	:type obj: IGESData_IGESEntity
 	:param module:
-	:type module: opencascade::handle<IGESData_SpecificModule> &
+	:type module: IGESData_SpecificModule
 	:param CN:
-	:type CN: int &
+	:type CN: int
 	:rtype: bool") Select;
 		Standard_Boolean Select (const opencascade::handle<IGESData_IGESEntity> & obj,opencascade::handle<IGESData_SpecificModule> & module,Standard_Integer &OutValue);
 
@@ -3904,9 +3904,9 @@ class IGESData_SpecificLib {
 		%feature("compactdefaultargs") SetGlobal;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 	:param amodule:
-	:type amodule: opencascade::handle<IGESData_SpecificModule> &
+	:type amodule: IGESData_SpecificModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<IGESData_Protocol> &
+	:type aprotocol: IGESData_Protocol
 	:rtype: void") SetGlobal;
 		static void SetGlobal (const opencascade::handle<IGESData_SpecificModule> & amodule,const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -3937,7 +3937,7 @@ class IGESData_SpecificModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") OwnCorrect;
 		virtual Standard_Boolean OwnCorrect (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -3947,11 +3947,11 @@ class IGESData_SpecificModule : public Standard_Transient {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param dumper:
-	:type dumper: IGESData_IGESDumper &
+	:type dumper: IGESData_IGESDumper
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param own:
 	:type own: int
 	:rtype: void") OwnDump;
@@ -4002,7 +4002,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") EffectiveLocation;
 		%feature("autodoc", "* Returns the effective Location of an Entity, i.e. the composition of its proper Transformation Matrix (returned by Transf) and its Parent's Location (returned by ParentLocation)
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: gp_GTrsf") EffectiveLocation;
 		gp_GTrsf EffectiveLocation (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4010,7 +4010,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") ExplicitLocation;
 		%feature("autodoc", "* Returns the Explicit Location defined by the Transformation Matrix of <ent>. Identity if there is none
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: gp_GTrsf") ExplicitLocation;
 		gp_GTrsf ExplicitLocation (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4018,7 +4018,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") HasParent;
 		%feature("autodoc", "* Returns True if <ent> is dependent from one and only one other Entity, either by Reference or by Associativity
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") HasParent;
 		Standard_Boolean HasParent (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4026,7 +4026,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") HasParentByAssociativity;
 		%feature("autodoc", "* Returns True if the Parent, if there is one, is defined by a SingleParentEntity Associativity Else, if HasParent is True, it is by Reference
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") HasParentByAssociativity;
 		Standard_Boolean HasParentByAssociativity (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4034,7 +4034,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") HasTransf;
 		%feature("autodoc", "* Returns True if <ent> has a Transformation Matrix in proper (referenced from its Directory Part)
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") HasTransf;
 		Standard_Boolean HasTransf (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4042,9 +4042,9 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") IGESData_ToolLocation;
 		%feature("autodoc", "* Creates a ToolLocation on a given Model, filled with the help of a Protocol (which allows to known Entities referenced by other ones)
 	:param amodel:
-	:type amodel: opencascade::handle<IGESData_IGESModel> &
+	:type amodel: IGESData_IGESModel
 	:param protocol:
-	:type protocol: opencascade::handle<IGESData_Protocol> &
+	:type protocol: IGESData_Protocol
 	:rtype: None") IGESData_ToolLocation;
 		 IGESData_ToolLocation (const opencascade::handle<IGESData_IGESModel> & amodel,const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -4052,7 +4052,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") IsAmbiguous;
 		%feature("autodoc", "* Returns True if more than one Parent has been determined for <ent>, by adding direct References and Associativities
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") IsAmbiguous;
 		Standard_Boolean IsAmbiguous (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4060,7 +4060,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") IsAssociativity;
 		%feature("autodoc", "* Returns True if <ent> is an Associativity (IGES Type 402). Then, Location does not apply.
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") IsAssociativity;
 		Standard_Boolean IsAssociativity (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4068,7 +4068,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") IsTransf;
 		%feature("autodoc", "* Returns True if <ent> is kind of TransfEntity. Then, it has no location, while it can be used to define a Location)
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: bool") IsTransf;
 		Standard_Boolean IsTransf (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4082,7 +4082,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") Parent;
 		%feature("autodoc", "* Returns the unique Parent recorded for <ent>. Returns a Null Handle if there is none
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: opencascade::handle<IGESData_IGESEntity>") Parent;
 		opencascade::handle<IGESData_IGESEntity> Parent (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4090,7 +4090,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") ParentLocation;
 		%feature("autodoc", "* Returns the effective Location of the Parent of <ent>, if there is one : this Location is itself given as compound according dependences on the Parent, if there are some. Returns an Identity Transformation if no Parent is recorded.
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: gp_GTrsf") ParentLocation;
 		gp_GTrsf ParentLocation (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4098,7 +4098,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") ResetDependences;
 		%feature("autodoc", "* Resets all informations about dependences for <child>
 	:param child:
-	:type child: opencascade::handle<IGESData_IGESEntity> &
+	:type child: IGESData_IGESEntity
 	:rtype: None") ResetDependences;
 		void ResetDependences (const opencascade::handle<IGESData_IGESEntity> & child);
 
@@ -4106,7 +4106,7 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") SetOwnAsDependent;
 		%feature("autodoc", "* Unitary action which defines Entities referenced by <ent> (except those in Directory Part and Associativities List) as Dependent (their Locations are related to that of <ent>)
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: None") SetOwnAsDependent;
 		void SetOwnAsDependent (const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4114,9 +4114,9 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") SetParentAssoc;
 		%feature("autodoc", "* Sets the 'Associativity' information for <child> as being <parent> (it must be the Parent itself, not the Associativity)
 	:param parent:
-	:type parent: opencascade::handle<IGESData_IGESEntity> &
+	:type parent: IGESData_IGESEntity
 	:param child:
-	:type child: opencascade::handle<IGESData_IGESEntity> &
+	:type child: IGESData_IGESEntity
 	:rtype: None") SetParentAssoc;
 		void SetParentAssoc (const opencascade::handle<IGESData_IGESEntity> & parent,const opencascade::handle<IGESData_IGESEntity> & child);
 
@@ -4132,9 +4132,9 @@ class IGESData_ToolLocation : public Standard_Transient {
 		%feature("compactdefaultargs") SetReference;
 		%feature("autodoc", "* Sets the 'Reference' information for <child> as being <parent> Sets an Error Status if already set (see method IsAmbiguous)
 	:param parent:
-	:type parent: opencascade::handle<IGESData_IGESEntity> &
+	:type parent: IGESData_IGESEntity
 	:param child:
-	:type child: opencascade::handle<IGESData_IGESEntity> &
+	:type child: IGESData_IGESEntity
 	:rtype: None") SetReference;
 		void SetReference (const opencascade::handle<IGESData_IGESEntity> & parent,const opencascade::handle<IGESData_IGESEntity> & child);
 
@@ -4158,7 +4158,7 @@ class IGESData_WriterLib {
 		%feature("compactdefaultargs") AddProtocol;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) to the Library, given the class of a Protocol. Takes Resources into account. (if <aprotocol> is not of type TheProtocol, it is not added)
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<Standard_Transient> &
+	:type aprotocol: Standard_Transient
 	:rtype: None") AddProtocol;
 		void AddProtocol (const opencascade::handle<Standard_Transient> & aprotocol);
 
@@ -4172,7 +4172,7 @@ class IGESData_WriterLib {
 		%feature("compactdefaultargs") IGESData_WriterLib;
 		%feature("autodoc", "* Creates a Library which complies with a Protocol, that is : Same class (criterium IsInstance) This creation gets the Modules from the global set, those which are bound to the given Protocol and its Resources
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<IGESData_Protocol> &
+	:type aprotocol: IGESData_Protocol
 	:rtype: None") IGESData_WriterLib;
 		 IGESData_WriterLib (const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -4210,11 +4210,11 @@ class IGESData_WriterLib {
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "* Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType)
 	:param obj:
-	:type obj: opencascade::handle<IGESData_IGESEntity> &
+	:type obj: IGESData_IGESEntity
 	:param module:
-	:type module: opencascade::handle<IGESData_ReadWriteModule> &
+	:type module: IGESData_ReadWriteModule
 	:param CN:
-	:type CN: int &
+	:type CN: int
 	:rtype: bool") Select;
 		Standard_Boolean Select (const opencascade::handle<IGESData_IGESEntity> & obj,opencascade::handle<IGESData_ReadWriteModule> & module,Standard_Integer &OutValue);
 
@@ -4228,9 +4228,9 @@ class IGESData_WriterLib {
 		%feature("compactdefaultargs") SetGlobal;
 		%feature("autodoc", "* Adds a couple (Module-Protocol) into the global definition set for this class of Library.
 	:param amodule:
-	:type amodule: opencascade::handle<IGESData_ReadWriteModule> &
+	:type amodule: IGESData_ReadWriteModule
 	:param aprotocol:
-	:type aprotocol: opencascade::handle<IGESData_Protocol> &
+	:type aprotocol: IGESData_Protocol
 	:rtype: void") SetGlobal;
 		static void SetGlobal (const opencascade::handle<IGESData_ReadWriteModule> & amodule,const opencascade::handle<IGESData_Protocol> & aprotocol);
 
@@ -4278,7 +4278,7 @@ class IGESData_DefaultGeneral : public IGESData_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:rtype: IGESData_DirChecker") DirChecker;
 		IGESData_DirChecker DirChecker (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent);
 
@@ -4294,7 +4294,7 @@ class IGESData_DefaultGeneral : public IGESData_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param entto:
-	:type entto: opencascade::handle<Standard_Transient> &
+	:type entto: Standard_Transient
 	:rtype: bool") NewVoid;
 		Standard_Boolean NewVoid (const Standard_Integer CN,opencascade::handle<Standard_Transient> & entto);
 
@@ -4304,11 +4304,11 @@ class IGESData_DefaultGeneral : public IGESData_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param shares:
-	:type shares: Interface_ShareTool &
+	:type shares: Interface_ShareTool
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: None") OwnCheckCase;
 		void OwnCheckCase (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent,const Interface_ShareTool & shares,opencascade::handle<Interface_Check> & ach);
 
@@ -4318,11 +4318,11 @@ class IGESData_DefaultGeneral : public IGESData_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param entfrom:
-	:type entfrom: opencascade::handle<IGESData_IGESEntity> &
+	:type entfrom: IGESData_IGESEntity
 	:param entto:
-	:type entto: opencascade::handle<IGESData_IGESEntity> &
+	:type entto: IGESData_IGESEntity
 	:param TC:
-	:type TC: Interface_CopyTool &
+	:type TC: Interface_CopyTool
 	:rtype: None") OwnCopyCase;
 		void OwnCopyCase (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & entfrom,const opencascade::handle<IGESData_IGESEntity> & entto,Interface_CopyTool & TC);
 
@@ -4332,9 +4332,9 @@ class IGESData_DefaultGeneral : public IGESData_GeneralModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") OwnSharedCase;
 		void OwnSharedCase (const Standard_Integer CN,const opencascade::handle<IGESData_IGESEntity> & ent,Interface_EntityIterator & iter);
 
@@ -4367,11 +4367,11 @@ class IGESData_DefaultSpecific : public IGESData_SpecificModule {
 	:param CN:
 	:type CN: int
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param dumper:
-	:type dumper: IGESData_IGESDumper &
+	:type dumper: IGESData_IGESDumper
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:param own:
 	:type own: int
 	:rtype: None") OwnDump;
@@ -4398,7 +4398,7 @@ class IGESData_FileProtocol : public IGESData_Protocol {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds a resource
 	:param protocol:
-	:type protocol: opencascade::handle<IGESData_Protocol> &
+	:type protocol: IGESData_Protocol
 	:rtype: None") Add;
 		void Add (const opencascade::handle<IGESData_Protocol> & protocol);
 
@@ -4653,11 +4653,11 @@ class IGESData_UndefinedEntity : public IGESData_IGESEntity {
 		%feature("compactdefaultargs") ReadDir;
 		%feature("autodoc", "* Computes the Directory Error Status, to be called before standard ReadDir from IGESReaderTool Returns True if OK (hence, Directory can be loaded), Else returns False and the DirPart <DP> is modified (hence, Directory Error Status is non null; and standard Read will work with an acceptable DirectoryPart)
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param DP:
-	:type DP: IGESData_DirPart &
+	:type DP: IGESData_DirPart
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:rtype: bool") ReadDir;
 		virtual Standard_Boolean ReadDir (const opencascade::handle<IGESData_IGESReaderData> & IR,IGESData_DirPart & DP,opencascade::handle<Interface_Check> & ach);
 
@@ -4665,9 +4665,9 @@ class IGESData_UndefinedEntity : public IGESData_IGESEntity {
 		%feature("compactdefaultargs") ReadOwnParams;
 		%feature("autodoc", "* reads own parameters from file; PR gives access to them, IR detains parameter types and values Here, reads all parameters, integers are considered as entity reference unless they cannot be; no list interpretation No property or associativity list is managed
 	:param IR:
-	:type IR: opencascade::handle<IGESData_IGESReaderData> &
+	:type IR: IGESData_IGESReaderData
 	:param PR:
-	:type PR: IGESData_ParamReader &
+	:type PR: IGESData_ParamReader
 	:rtype: void") ReadOwnParams;
 		virtual void ReadOwnParams (const opencascade::handle<IGESData_IGESReaderData> & IR,IGESData_ParamReader & PR);
 
@@ -4675,7 +4675,7 @@ class IGESData_UndefinedEntity : public IGESData_IGESEntity {
 		%feature("compactdefaultargs") SetNewContent;
 		%feature("autodoc", "* Redefines a completely new UndefinedContent Used by a Copy which begins by ShallowCopy, for instance
 	:param cont:
-	:type cont: opencascade::handle<Interface_UndefinedContent> &
+	:type cont: Interface_UndefinedContent
 	:rtype: None") SetNewContent;
 		void SetNewContent (const opencascade::handle<Interface_UndefinedContent> & cont);
 
@@ -4695,7 +4695,7 @@ class IGESData_UndefinedEntity : public IGESData_IGESEntity {
 		%feature("compactdefaultargs") WriteOwnParams;
 		%feature("autodoc", "* writes parameters to IGESWriter, taken from UndefinedContent
 	:param IW:
-	:type IW: IGESData_IGESWriter &
+	:type IW: IGESData_IGESWriter
 	:rtype: void") WriteOwnParams;
 		virtual void WriteOwnParams (IGESData_IGESWriter & IW);
 
@@ -4757,7 +4757,7 @@ class IGESData_FreeFormatEntity : public IGESData_UndefinedEntity {
 		%feature("compactdefaultargs") AddEntities;
 		%feature("autodoc", "* Adds a set of Entities, given as a HArray1OfIGESEntity Causes creation of : an Integer Parameter which gives count of Entities, then the list of Entities of the Array Error if an Entity is not an IGESEntity All these Entities will be interpreted as 'Positive Pointers' by IGESWriter
 	:param ents:
-	:type ents: opencascade::handle<IGESData_HArray1OfIGESEntity> &
+	:type ents: IGESData_HArray1OfIGESEntity
 	:rtype: None") AddEntities;
 		void AddEntities (const opencascade::handle<IGESData_HArray1OfIGESEntity> & ents);
 
@@ -4767,7 +4767,7 @@ class IGESData_FreeFormatEntity : public IGESData_UndefinedEntity {
 	:param ptype:
 	:type ptype: Interface_ParamType
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param negative: default value is Standard_False
 	:type negative: bool
 	:rtype: None") AddEntity;
@@ -4779,7 +4779,7 @@ class IGESData_FreeFormatEntity : public IGESData_UndefinedEntity {
 	:param ptype:
 	:type ptype: Interface_ParamType
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: None") AddLiteral;
 		void AddLiteral (const Interface_ParamType ptype,const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -4797,7 +4797,7 @@ class IGESData_FreeFormatEntity : public IGESData_UndefinedEntity {
 		%feature("compactdefaultargs") AddNegativePointers;
 		%feature("autodoc", "* Adds a list of Ranks of Parameters to be noted as Negative Pointers (this will be taken into account for Parameters which are Entities)
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfInteger> &
+	:type list: TColStd_HSequenceOfInteger
 	:rtype: None") AddNegativePointers;
 		void AddNegativePointers (const opencascade::handle<TColStd_HSequenceOfInteger> & list);
 
@@ -4847,11 +4847,11 @@ class IGESData_FreeFormatEntity : public IGESData_UndefinedEntity {
 	:param num:
 	:type num: int
 	:param ptype:
-	:type ptype: Interface_ParamType &
+	:type ptype: Interface_ParamType
 	:param ent:
-	:type ent: opencascade::handle<IGESData_IGESEntity> &
+	:type ent: IGESData_IGESEntity
 	:param val:
-	:type val: opencascade::handle<TCollection_HAsciiString> &
+	:type val: TCollection_HAsciiString
 	:rtype: bool") ParamData;
 		Standard_Boolean ParamData (const Standard_Integer num,Interface_ParamType & ptype,opencascade::handle<IGESData_IGESEntity> & ent,opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -4899,7 +4899,7 @@ class IGESData_FreeFormatEntity : public IGESData_UndefinedEntity {
 		%feature("compactdefaultargs") WriteOwnParams;
 		%feature("autodoc", "* WriteOwnParams is redefined for FreeFormatEntity to take into account the supplementary information 'Negative Pointer'
 	:param IW:
-	:type IW: IGESData_IGESWriter &
+	:type IW: IGESData_IGESWriter
 	:rtype: void") WriteOwnParams;
 		virtual void WriteOwnParams (IGESData_IGESWriter & IW);
 

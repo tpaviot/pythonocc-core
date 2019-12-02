@@ -116,9 +116,9 @@ class STEPControl_ActorRead : public Transfer_ActorOfTransientProcess {
 		%feature("compactdefaultargs") ComputeSRRWT;
 		%feature("autodoc", "* Computes transformation defined by given REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION
 	:param SRR:
-	:type SRR: opencascade::handle<StepRepr_RepresentationRelationship> &
+	:type SRR: StepRepr_RepresentationRelationship
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param Trsf:
 	:type Trsf: gp_Trsf
 	:rtype: bool") ComputeSRRWT;
@@ -128,15 +128,15 @@ class STEPControl_ActorRead : public Transfer_ActorOfTransientProcess {
 		%feature("compactdefaultargs") ComputeTransformation;
 		%feature("autodoc", "* Computes transformation defined by two axis placements (in MAPPED_ITEM or ITEM_DEFINED_TRANSFORMATION) taking into account their representation contexts (i.e. units, which may be different) Returns True if transformation is computed and is not an identity.
 	:param Origin:
-	:type Origin: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type Origin: StepGeom_Axis2Placement3d
 	:param Target:
-	:type Target: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type Target: StepGeom_Axis2Placement3d
 	:param OrigContext:
-	:type OrigContext: opencascade::handle<StepRepr_Representation> &
+	:type OrigContext: StepRepr_Representation
 	:param TargContext:
-	:type TargContext: opencascade::handle<StepRepr_Representation> &
+	:type TargContext: StepRepr_Representation
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param Trsf:
 	:type Trsf: gp_Trsf
 	:rtype: bool") ComputeTransformation;
@@ -146,16 +146,16 @@ class STEPControl_ActorRead : public Transfer_ActorOfTransientProcess {
 		%feature("compactdefaultargs") PrepareUnits;
 		%feature("autodoc", "* set units and tolerances context by given ShapeRepresentation
 	:param rep:
-	:type rep: opencascade::handle<StepRepr_Representation> &
+	:type rep: StepRepr_Representation
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: None") PrepareUnits;
 		void PrepareUnits (const opencascade::handle<StepRepr_Representation> & rep,const opencascade::handle<Transfer_TransientProcess> & TP);
 
 		/****************** Recognize ******************/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: bool") Recognize;
 		virtual Standard_Boolean Recognize (const opencascade::handle<Standard_Transient> & start);
 
@@ -173,18 +173,18 @@ class STEPControl_ActorRead : public Transfer_ActorOfTransientProcess {
 		/****************** Transfer ******************/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: opencascade::handle<Transfer_Binder>") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer (const opencascade::handle<Standard_Transient> & start,const opencascade::handle<Transfer_TransientProcess> & TP);
 
 		/****************** TransferShape ******************/
 		%feature("compactdefaultargs") TransferShape;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param isManifold: default value is Standard_True
 	:type isManifold: bool
 	:rtype: opencascade::handle<Transfer_Binder>") TransferShape;
@@ -216,7 +216,7 @@ class STEPControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 		%feature("compactdefaultargs") IsAssembly;
 		%feature("autodoc", "* Customizable method to check whether shape S should be written as assembly or not Default implementation uses flag GroupMode and analyses the shape itself NOTE: this method can modify shape
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") IsAssembly;
 		virtual Standard_Boolean IsAssembly (TopoDS_Shape & S);
 
@@ -228,7 +228,7 @@ class STEPControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 		/****************** Recognize ******************/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:rtype: bool") Recognize;
 		virtual Standard_Boolean Recognize (const opencascade::handle<Transfer_Finder> & start);
 
@@ -261,33 +261,33 @@ class STEPControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 		/****************** Transfer ******************/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: opencascade::handle<Transfer_Binder>") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer (const opencascade::handle<Transfer_Finder> & start,const opencascade::handle<Transfer_FinderProcess> & FP);
 
 		/****************** TransferCompound ******************/
 		%feature("compactdefaultargs") TransferCompound;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:param SDR:
-	:type SDR: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type SDR: StepShape_ShapeDefinitionRepresentation
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:rtype: opencascade::handle<Transfer_Binder>") TransferCompound;
 		opencascade::handle<Transfer_Binder> TransferCompound (const opencascade::handle<Transfer_Finder> & start,const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR,const opencascade::handle<Transfer_FinderProcess> & FP);
 
 		/****************** TransferShape ******************/
 		%feature("compactdefaultargs") TransferShape;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:param SDR:
-	:type SDR: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type SDR: StepShape_ShapeDefinitionRepresentation
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param shapeGroup: default value is NULL
-	:type shapeGroup: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type shapeGroup: TopTools_HSequenceOfShape
 	:param isManifold: default value is Standard_True
 	:type isManifold: bool
 	:rtype: opencascade::handle<Transfer_Binder>") TransferShape;
@@ -296,15 +296,15 @@ class STEPControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 		/****************** TransferSubShape ******************/
 		%feature("compactdefaultargs") TransferSubShape;
 		%feature("autodoc", ":param start:
-	:type start: opencascade::handle<Transfer_Finder> &
+	:type start: Transfer_Finder
 	:param SDR:
-	:type SDR: opencascade::handle<StepShape_ShapeDefinitionRepresentation> &
+	:type SDR: StepShape_ShapeDefinitionRepresentation
 	:param AX1:
-	:type AX1: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type AX1: StepGeom_Axis2Placement3d
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param shapeGroup: default value is NULL
-	:type shapeGroup: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type shapeGroup: TopTools_HSequenceOfShape
 	:param isManifold: default value is Standard_True
 	:type isManifold: bool
 	:rtype: opencascade::handle<Transfer_Binder>") TransferSubShape;
@@ -330,7 +330,7 @@ class STEPControl_Controller : public XSControl_Controller {
 		/****************** Customise ******************/
 		%feature("compactdefaultargs") Customise;
 		%feature("autodoc", ":param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: void") Customise;
 		virtual void Customise (opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -356,11 +356,11 @@ class STEPControl_Controller : public XSControl_Controller {
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "* Takes one Shape and transfers it to the InterfaceModel (already created by NewModel for instance) <modeshape> is to be interpreted by each kind of XstepAdaptor Returns a status : 0 OK 1 No result 2 Fail -1 bad modeshape -2 bad model (requires a StepModel) modeshape : 1 Facetted BRep, 2 Shell, 3 Manifold Solid
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param modetrans: default value is 0
 	:type modetrans: int
 	:rtype: IFSelect_ReturnStatus") TransferWriteShape;
@@ -387,11 +387,11 @@ class STEPControl_Reader : public XSControl_Reader {
 		%feature("compactdefaultargs") FileUnits;
 		%feature("autodoc", "* Returns sequence of all unit names for shape representations found in file
 	:param theUnitLengthNames:
-	:type theUnitLengthNames: TColStd_SequenceOfAsciiString &
+	:type theUnitLengthNames: TColStd_SequenceOfAsciiString
 	:param theUnitAngleNames:
-	:type theUnitAngleNames: TColStd_SequenceOfAsciiString &
+	:type theUnitAngleNames: TColStd_SequenceOfAsciiString
 	:param theUnitSolidAngleNames:
-	:type theUnitSolidAngleNames: TColStd_SequenceOfAsciiString &
+	:type theUnitSolidAngleNames: TColStd_SequenceOfAsciiString
 	:rtype: None") FileUnits;
 		void FileUnits (TColStd_SequenceOfAsciiString & theUnitLengthNames,TColStd_SequenceOfAsciiString & theUnitAngleNames,TColStd_SequenceOfAsciiString & theUnitSolidAngleNames);
 
@@ -411,7 +411,7 @@ class STEPControl_Reader : public XSControl_Reader {
 		%feature("compactdefaultargs") STEPControl_Reader;
 		%feature("autodoc", "* Creates a Reader for STEP from an already existing Session Clears the session if it was not yet set for STEP
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:param scratch: default value is Standard_True
 	:type scratch: bool
 	:rtype: None") STEPControl_Reader;
@@ -474,7 +474,7 @@ class STEPControl_Writer {
 		%feature("compactdefaultargs") STEPControl_Writer;
 		%feature("autodoc", "* Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:param scratch: default value is Standard_True
 	:type scratch: bool
 	:rtype: None") STEPControl_Writer;
@@ -492,7 +492,7 @@ class STEPControl_Writer {
 		%feature("compactdefaultargs") SetWS;
 		%feature("autodoc", "* Sets a specific session to <self>
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:param scratch: default value is Standard_True
 	:type scratch: bool
 	:rtype: None") SetWS;
@@ -502,7 +502,7 @@ class STEPControl_Writer {
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "* Translates shape sh to a STEP entity. mode defines the STEP entity type to be output: - STEPControlStd_AsIs translates a shape to its highest possible STEP representation. - STEPControlStd_ManifoldSolidBrep translates a shape to a STEP manifold_solid_brep or brep_with_voids entity. - STEPControlStd_FacetedBrep translates a shape into a STEP faceted_brep entity. - STEPControlStd_ShellBasedSurfaceModel translates a shape into a STEP shell_based_surface_model entity. - STEPControlStd_GeometricCurveSet translates a shape into a STEP geometric_curve_set entity.
 	:param sh:
-	:type sh: TopoDS_Shape &
+	:type sh: TopoDS_Shape
 	:param mode:
 	:type mode: STEPControl_StepModelType
 	:param compgraph: default value is Standard_True

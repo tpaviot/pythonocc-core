@@ -202,7 +202,7 @@ class Adaptor3d_Curve {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") Intervals;
@@ -427,7 +427,7 @@ class Adaptor3d_HCurve : public Standard_Transient {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -790,7 +790,7 @@ class Adaptor3d_HSurface : public Standard_Transient {
 		/****************** UIntervals ******************/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", ":param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") UIntervals;
@@ -832,7 +832,7 @@ class Adaptor3d_HSurface : public Standard_Transient {
 		/****************** VIntervals ******************/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", ":param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") VIntervals;
@@ -889,56 +889,56 @@ class Adaptor3d_HSurfaceTool {
 		/****************** AxeOfRevolution ******************/
 		%feature("compactdefaultargs") AxeOfRevolution;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: gp_Ax1") AxeOfRevolution;
 		static gp_Ax1 AxeOfRevolution (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** BSpline ******************/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: opencascade::handle<Geom_BSplineSurface>") BSpline;
 		static opencascade::handle<Geom_BSplineSurface> BSpline (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** BasisCurve ******************/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: opencascade::handle<Adaptor3d_HCurve>") BasisCurve;
 		static opencascade::handle<Adaptor3d_HCurve> BasisCurve (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** BasisSurface ******************/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: opencascade::handle<Adaptor3d_HSurface>") BasisSurface;
 		static opencascade::handle<Adaptor3d_HSurface> BasisSurface (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Bezier ******************/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: opencascade::handle<Geom_BezierSurface>") Bezier;
 		static opencascade::handle<Geom_BezierSurface> Bezier (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Cone ******************/
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: gp_Cone") Cone;
 		static gp_Cone Cone (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Cylinder ******************/
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: gp_Cylinder") Cylinder;
 		static gp_Cylinder Cylinder (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** D0 ******************/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param u:
 	:type u: float
 	:param v:
@@ -951,7 +951,7 @@ class Adaptor3d_HSurfaceTool {
 		/****************** D1 ******************/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param u:
 	:type u: float
 	:param v:
@@ -968,7 +968,7 @@ class Adaptor3d_HSurfaceTool {
 		/****************** D2 ******************/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param u:
 	:type u: float
 	:param v:
@@ -991,7 +991,7 @@ class Adaptor3d_HSurfaceTool {
 		/****************** D3 ******************/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param u:
 	:type u: float
 	:param v:
@@ -1022,7 +1022,7 @@ class Adaptor3d_HSurfaceTool {
 		/****************** DN ******************/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param u:
 	:type u: float
 	:param v:
@@ -1037,84 +1037,84 @@ class Adaptor3d_HSurfaceTool {
 		/****************** Direction ******************/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: gp_Dir") Direction;
 		static gp_Dir Direction (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** FirstUParameter ******************/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: float") FirstUParameter;
 		static Standard_Real FirstUParameter (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** FirstVParameter ******************/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: float") FirstVParameter;
 		static Standard_Real FirstVParameter (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** GetType ******************/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: GeomAbs_SurfaceType") GetType;
 		static GeomAbs_SurfaceType GetType (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** IsUClosed ******************/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: bool") IsUClosed;
 		static Standard_Boolean IsUClosed (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** IsUPeriodic ******************/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: bool") IsUPeriodic;
 		static Standard_Boolean IsUPeriodic (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** IsVClosed ******************/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: bool") IsVClosed;
 		static Standard_Boolean IsVClosed (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** IsVPeriodic ******************/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: bool") IsVPeriodic;
 		static Standard_Boolean IsVPeriodic (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** LastUParameter ******************/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: float") LastUParameter;
 		static Standard_Real LastUParameter (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** LastVParameter ******************/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: float") LastVParameter;
 		static Standard_Real LastVParameter (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** NbSamplesU ******************/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: int") NbSamplesU;
 		static Standard_Integer NbSamplesU (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** NbSamplesU ******************/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param u1:
 	:type u1: float
 	:param u2:
@@ -1125,14 +1125,14 @@ class Adaptor3d_HSurfaceTool {
 		/****************** NbSamplesV ******************/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: int") NbSamplesV;
 		static Standard_Integer NbSamplesV (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** NbSamplesV ******************/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param v1:
 	:type v1: float
 	:param v2:
@@ -1143,7 +1143,7 @@ class Adaptor3d_HSurfaceTool {
 		/****************** NbUIntervals ******************/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Sh:
 	:type Sh: GeomAbs_Shape
 	:rtype: int") NbUIntervals;
@@ -1152,7 +1152,7 @@ class Adaptor3d_HSurfaceTool {
 		/****************** NbVIntervals ******************/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Sh:
 	:type Sh: GeomAbs_Shape
 	:rtype: int") NbVIntervals;
@@ -1161,37 +1161,37 @@ class Adaptor3d_HSurfaceTool {
 		/****************** OffsetValue ******************/
 		%feature("compactdefaultargs") OffsetValue;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: float") OffsetValue;
 		static Standard_Real OffsetValue (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Plane ******************/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: gp_Pln") Plane;
 		static gp_Pln Plane (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Sphere ******************/
 		%feature("compactdefaultargs") Sphere;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: gp_Sphere") Sphere;
 		static gp_Sphere Sphere (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Torus ******************/
 		%feature("compactdefaultargs") Torus;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: gp_Torus") Torus;
 		static gp_Torus Torus (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** UIntervals ******************/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param Sh:
 	:type Sh: GeomAbs_Shape
 	:rtype: None") UIntervals;
@@ -1200,14 +1200,14 @@ class Adaptor3d_HSurfaceTool {
 		/****************** UPeriod ******************/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: float") UPeriod;
 		static Standard_Real UPeriod (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** UResolution ******************/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param R3d:
 	:type R3d: float
 	:rtype: float") UResolution;
@@ -1217,7 +1217,7 @@ class Adaptor3d_HSurfaceTool {
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "* If <First> >= <Last>
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param First:
 	:type First: float
 	:param Last:
@@ -1230,9 +1230,9 @@ class Adaptor3d_HSurfaceTool {
 		/****************** VIntervals ******************/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param Sh:
 	:type Sh: GeomAbs_Shape
 	:rtype: None") VIntervals;
@@ -1241,14 +1241,14 @@ class Adaptor3d_HSurfaceTool {
 		/****************** VPeriod ******************/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: float") VPeriod;
 		static Standard_Real VPeriod (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** VResolution ******************/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param R3d:
 	:type R3d: float
 	:rtype: float") VResolution;
@@ -1258,7 +1258,7 @@ class Adaptor3d_HSurfaceTool {
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "* If <First> >= <Last>
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param First:
 	:type First: float
 	:param Last:
@@ -1271,7 +1271,7 @@ class Adaptor3d_HSurfaceTool {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param u:
 	:type u: float
 	:param v:
@@ -1313,7 +1313,7 @@ class Adaptor3d_HVertex : public Standard_Transient {
 		/****************** IsSame ******************/
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", ":param Other:
-	:type Other: opencascade::handle<Adaptor3d_HVertex> &
+	:type Other: Adaptor3d_HVertex
 	:rtype: bool") IsSame;
 		virtual Standard_Boolean IsSame (const opencascade::handle<Adaptor3d_HVertex> & Other);
 
@@ -1325,7 +1325,7 @@ class Adaptor3d_HVertex : public Standard_Transient {
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: float") Parameter;
 		virtual Standard_Real Parameter (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -1333,7 +1333,7 @@ class Adaptor3d_HVertex : public Standard_Transient {
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "* Parametric resolution (2d).
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: float") Resolution;
 		virtual Standard_Real Resolution (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -1363,7 +1363,7 @@ class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 		%feature("compactdefaultargs") Adaptor3d_InterFunc;
 		%feature("autodoc", "* build the function U(t)=FixVal if Fix =1 or V(t)=FixVal if Fix=2
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:param FixVal:
 	:type FixVal: float
 	:param Fix:
@@ -1377,7 +1377,7 @@ class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 
@@ -1387,7 +1387,7 @@ class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 
@@ -1397,9 +1397,9 @@ class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1677,7 +1677,7 @@ class Adaptor3d_Surface {
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the U direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") UIntervals;
@@ -1722,7 +1722,7 @@ class Adaptor3d_Surface {
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "* Returns the intervals with the requested continuity in the V direction.
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: void") VIntervals;
@@ -1786,7 +1786,7 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		/****************** Adaptor3d_TopolTool ******************/
 		%feature("compactdefaultargs") Adaptor3d_TopolTool;
 		%feature("autodoc", ":param Surface:
-	:type Surface: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surface: Adaptor3d_HSurface
 	:rtype: None") Adaptor3d_TopolTool;
 		 Adaptor3d_TopolTool (const opencascade::handle<Adaptor3d_HSurface> & Surface);
 
@@ -1838,9 +1838,9 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		%feature("compactdefaultargs") Identical;
 		%feature("autodoc", "* Returns True if the vertices V1 and V2 are identical. This method does not take the orientation of the vertices in account.
 	:param V1:
-	:type V1: opencascade::handle<Adaptor3d_HVertex> &
+	:type V1: Adaptor3d_HVertex
 	:param V2:
-	:type V2: opencascade::handle<Adaptor3d_HVertex> &
+	:type V2: Adaptor3d_HVertex
 	:rtype: bool") Identical;
 		virtual Standard_Boolean Identical (const opencascade::handle<Adaptor3d_HVertex> & V1,const opencascade::handle<Adaptor3d_HVertex> & V2);
 
@@ -1862,14 +1862,14 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: void") Initialize;
 		virtual void Initialize (const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param Curve:
-	:type Curve: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type Curve: Adaptor2d_HCurve2d
 	:rtype: void") Initialize;
 		virtual void Initialize (const opencascade::handle<Adaptor2d_HCurve2d> & Curve);
 
@@ -1932,7 +1932,7 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "* If the function returns the orientation of the arc. If the orientation is FORWARD or REVERSED, the arc is a 'real' limit of the surface. If the orientation is INTERNAL or EXTERNAL, the arc is considered as an arc on the surface.
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: TopAbs_Orientation") Orientation;
 		virtual TopAbs_Orientation Orientation (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -1940,7 +1940,7 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "* Returns the orientation of the vertex V. The vertex has been found with an exploration on a given arc. The orientation is the orientation of the vertex on this arc.
 	:param V:
-	:type V: opencascade::handle<Adaptor3d_HVertex> &
+	:type V: Adaptor3d_HVertex
 	:rtype: TopAbs_Orientation") Orientation;
 		virtual TopAbs_Orientation Orientation (const opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -1948,7 +1948,7 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "* returns 3d point of the vertex V
 	:param V:
-	:type V: opencascade::handle<Adaptor3d_HVertex> &
+	:type V: Adaptor3d_HVertex
 	:rtype: gp_Pnt") Pnt;
 		virtual gp_Pnt Pnt (const opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -1979,7 +1979,7 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "* returns 3d tolerance of the arc C
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: float") Tol3d;
 		virtual Standard_Real Tol3d (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -1987,7 +1987,7 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "* returns 3d tolerance of the vertex V
 	:param V:
-	:type V: opencascade::handle<Adaptor3d_HVertex> &
+	:type V: Adaptor3d_HVertex
 	:rtype: float") Tol3d;
 		virtual Standard_Real Tol3d (const opencascade::handle<Adaptor3d_HVertex> & V);
 
@@ -1995,7 +1995,7 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		%feature("compactdefaultargs") UParameters;
 		%feature("autodoc", "* return the set of U parameters on the surface obtained by the method SamplePnts
 	:param theArray:
-	:type theArray: TColStd_Array1OfReal &
+	:type theArray: TColStd_Array1OfReal
 	:rtype: None") UParameters;
 		void UParameters (TColStd_Array1OfReal & theArray);
 
@@ -2003,7 +2003,7 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 		%feature("compactdefaultargs") VParameters;
 		%feature("autodoc", "* return the set of V parameters on the surface obtained by the method SamplePnts
 	:param theArray:
-	:type theArray: TColStd_Array1OfReal &
+	:type theArray: TColStd_Array1OfReal
 	:rtype: None") VParameters;
 		void VParameters (TColStd_Array1OfReal & theArray);
 
@@ -2042,7 +2042,7 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 		/****************** Adaptor3d_CurveOnSurface ******************/
 		%feature("compactdefaultargs") Adaptor3d_CurveOnSurface;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") Adaptor3d_CurveOnSurface;
 		 Adaptor3d_CurveOnSurface (const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -2050,9 +2050,9 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Adaptor3d_CurveOnSurface;
 		%feature("autodoc", "* Creates a CurveOnSurface from the 2d curve <C> and the surface <S>.
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") Adaptor3d_CurveOnSurface;
 		 Adaptor3d_CurveOnSurface (const opencascade::handle<Adaptor2d_HCurve2d> & C,const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -2188,7 +2188,7 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -2223,7 +2223,7 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Changes the surface.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -2231,7 +2231,7 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Changes the 2d curve.
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
@@ -2239,9 +2239,9 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Load both curve and surface.
 	:param C:
-	:type C: opencascade::handle<Adaptor2d_HCurve2d> &
+	:type C: Adaptor2d_HCurve2d
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor2d_HCurve2d> & C,const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -2326,7 +2326,7 @@ class Adaptor3d_HCurveOnSurface : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") Adaptor3d_HCurveOnSurface;
 		%feature("autodoc", "* Creates a GenHCurve from a Curve
 	:param C:
-	:type C: Adaptor3d_CurveOnSurface &
+	:type C: Adaptor3d_CurveOnSurface
 	:rtype: None") Adaptor3d_HCurveOnSurface;
 		 Adaptor3d_HCurveOnSurface (const Adaptor3d_CurveOnSurface & C);
 
@@ -2352,7 +2352,7 @@ class Adaptor3d_HCurveOnSurface : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve.
 	:param C:
-	:type C: Adaptor3d_CurveOnSurface &
+	:type C: Adaptor3d_CurveOnSurface
 	:rtype: None") Set;
 		void Set (const Adaptor3d_CurveOnSurface & C);
 
@@ -2383,7 +2383,7 @@ class Adaptor3d_HIsoCurve : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") Adaptor3d_HIsoCurve;
 		%feature("autodoc", "* Creates a GenHCurve from a Curve
 	:param C:
-	:type C: Adaptor3d_IsoCurve &
+	:type C: Adaptor3d_IsoCurve
 	:rtype: None") Adaptor3d_HIsoCurve;
 		 Adaptor3d_HIsoCurve (const Adaptor3d_IsoCurve & C);
 
@@ -2409,7 +2409,7 @@ class Adaptor3d_HIsoCurve : public Adaptor3d_HCurve {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the field of the GenHCurve.
 	:param C:
-	:type C: Adaptor3d_IsoCurve &
+	:type C: Adaptor3d_IsoCurve
 	:rtype: None") Set;
 		void Set (const Adaptor3d_IsoCurve & C);
 
@@ -2440,7 +2440,7 @@ class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Adaptor3d_IsoCurve;
 		%feature("autodoc", "* The surface is loaded. The iso is set to NoneIso.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") Adaptor3d_IsoCurve;
 		 Adaptor3d_IsoCurve (const opencascade::handle<Adaptor3d_HSurface> & S);
 
@@ -2448,7 +2448,7 @@ class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Adaptor3d_IsoCurve;
 		%feature("autodoc", "* Creates an IsoCurve curve. Iso defines the type (isoU or isoU) Param defines the value of the iso. The bounds of the iso are the bounds of the surface.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Iso:
 	:type Iso: GeomAbs_IsoType
 	:param Param:
@@ -2460,7 +2460,7 @@ class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Adaptor3d_IsoCurve;
 		%feature("autodoc", "* Create an IsoCurve curve. Iso defines the type (isoU or isov). Param defines the value of the iso. WFirst,WLast define the bounds of the iso.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param Iso:
 	:type Iso: GeomAbs_IsoType
 	:param Param:
@@ -2584,7 +2584,7 @@ class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -2624,7 +2624,7 @@ class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Changes the surface. The iso is reset to NoneIso.
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:rtype: None") Load;
 		void Load (const opencascade::handle<Adaptor3d_HSurface> & S);
 

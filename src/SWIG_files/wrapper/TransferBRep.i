@@ -95,9 +95,9 @@ class TransferBRep {
 		%feature("compactdefaultargs") CheckObject;
 		%feature("autodoc", "* Returns the check-list bound to a given object, generally none (if OK) or one check. <obj> can be, either a true Transient object or entity, or a ShapeMapper, in that case the Shape is considered
 	:param chl:
-	:type chl: Interface_CheckIterator &
+	:type chl: Interface_CheckIterator
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:rtype: Interface_CheckIterator") CheckObject;
 		static Interface_CheckIterator CheckObject (const Interface_CheckIterator & chl,const opencascade::handle<Standard_Transient> & obj);
 
@@ -105,7 +105,7 @@ class TransferBRep {
 		%feature("compactdefaultargs") Checked;
 		%feature("autodoc", "* Returns the list of objects to which a non-empty Check is bound in a check-list. Objects are transients, they can then be either Imagine objects entities for an Interface Norm. <alsoshapes> commands Shapes to be returned too (as ShapeMapper), see also CheckedShapes
 	:param chl:
-	:type chl: Interface_CheckIterator &
+	:type chl: Interface_CheckIterator
 	:param alsoshapes: default value is Standard_False
 	:type alsoshapes: bool
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") Checked;
@@ -115,7 +115,7 @@ class TransferBRep {
 		%feature("compactdefaultargs") CheckedShapes;
 		%feature("autodoc", "* Returns the list of shapes to which a non-empty Check is bound in a check-list
 	:param chl:
-	:type chl: Interface_CheckIterator &
+	:type chl: Interface_CheckIterator
 	:rtype: opencascade::handle<TopTools_HSequenceOfShape>") CheckedShapes;
 		static opencascade::handle<TopTools_HSequenceOfShape> CheckedShapes (const Interface_CheckIterator & chl);
 
@@ -123,11 +123,11 @@ class TransferBRep {
 		%feature("compactdefaultargs") PrintResultInfo;
 		%feature("autodoc", "* Prints the results of transfer to given priner with given header.
 	:param Printer:
-	:type Printer: opencascade::handle<Message_Printer> &
+	:type Printer: Message_Printer
 	:param Header:
-	:type Header: Message_Msg &
+	:type Header: Message_Msg
 	:param ResultInfo:
-	:type ResultInfo: opencascade::handle<TransferBRep_TransferResultInfo> &
+	:type ResultInfo: TransferBRep_TransferResultInfo
 	:param printEmpty: default value is Standard_True
 	:type printEmpty: bool
 	:rtype: void") PrintResultInfo;
@@ -137,11 +137,11 @@ class TransferBRep {
 		%feature("compactdefaultargs") ResultCheckList;
 		%feature("autodoc", "* Takes a starting CheckIterator which brings checks bound with starting objects (Shapes, Transient from an Imagine appli ...) and converts it to a CheckIterator in which checks are bound with results in an InterfaceModel Mapping is recorded in the FinderProcess Starting objects for which no individual result is recorded remain in their state
 	:param chl:
-	:type chl: Interface_CheckIterator &
+	:type chl: Interface_CheckIterator
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: Interface_CheckIterator") ResultCheckList;
 		static Interface_CheckIterator ResultCheckList (const Interface_CheckIterator & chl,const opencascade::handle<Transfer_FinderProcess> & FP,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -149,9 +149,9 @@ class TransferBRep {
 		%feature("compactdefaultargs") ResultFromShape;
 		%feature("autodoc", "* Returns the result (as a Binder) attached to a given Shape Null if none
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: opencascade::handle<Transfer_Binder>") ResultFromShape;
 		static opencascade::handle<Transfer_Binder> ResultFromShape (const opencascade::handle<Transfer_FinderProcess> & FP,const TopoDS_Shape & shape);
 
@@ -159,11 +159,11 @@ class TransferBRep {
 		%feature("compactdefaultargs") SetShapeResult;
 		%feature("autodoc", "* Sets a Shape as a result for a starting entity <ent> (reverse of ShapeResult) It simply creates a ShapeBinder then binds it to the entity
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param result:
-	:type result: TopoDS_Shape &
+	:type result: TopoDS_Shape
 	:rtype: void") SetShapeResult;
 		static void SetShapeResult (const opencascade::handle<Transfer_TransientProcess> & TP,const opencascade::handle<Standard_Transient> & ent,const TopoDS_Shape & result);
 
@@ -171,11 +171,11 @@ class TransferBRep {
 		%feature("compactdefaultargs") SetTransientFromShape;
 		%feature("autodoc", "* Binds a Transient Result to a Shape in a FinderProcess (as first result if multiple : does not add it to existing one)
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param result:
-	:type result: opencascade::handle<Standard_Transient> &
+	:type result: Standard_Transient
 	:rtype: void") SetTransientFromShape;
 		static void SetTransientFromShape (const opencascade::handle<Transfer_FinderProcess> & FP,const TopoDS_Shape & shape,const opencascade::handle<Standard_Transient> & result);
 
@@ -183,9 +183,9 @@ class TransferBRep {
 		%feature("compactdefaultargs") ShapeMapper;
 		%feature("autodoc", "* Returns a ShapeMapper for a given Shape (location included) Either <shape> is already mapped, then its Mapper is returned Or it is not, then a new one is created then returned, BUT it is not mapped here (use Bind or FindElseBind to do this)
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: opencascade::handle<TransferBRep_ShapeMapper>") ShapeMapper;
 		static opencascade::handle<TransferBRep_ShapeMapper> ShapeMapper (const opencascade::handle<Transfer_FinderProcess> & FP,const TopoDS_Shape & shape);
 
@@ -193,7 +193,7 @@ class TransferBRep {
 		%feature("compactdefaultargs") ShapeResult;
 		%feature("autodoc", "* Get the Shape recorded in a Binder If the Binder brings a multiple result, search for the Shape
 	:param binder:
-	:type binder: opencascade::handle<Transfer_Binder> &
+	:type binder: Transfer_Binder
 	:rtype: TopoDS_Shape") ShapeResult;
 		static TopoDS_Shape ShapeResult (const opencascade::handle<Transfer_Binder> & binder);
 
@@ -201,9 +201,9 @@ class TransferBRep {
 		%feature("compactdefaultargs") ShapeResult;
 		%feature("autodoc", "* Get the Shape recorded in a TransientProcess as result of the Transfer of an entity. I.E. in the binder bound to that Entity If no result or result not a single Shape, returns a Null Shape
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: TopoDS_Shape") ShapeResult;
 		static TopoDS_Shape ShapeResult (const opencascade::handle<Transfer_TransientProcess> & TP,const opencascade::handle<Standard_Transient> & ent);
 
@@ -211,9 +211,9 @@ class TransferBRep {
 		%feature("compactdefaultargs") ShapeState;
 		%feature("autodoc", "* Returns a Status regarding a Shape in a FinderProcess - FORWARD means bound with SAME Orientation - REVERSED means bound with REVERSE Orientation - EXTERNAL means NOT BOUND - INTERNAL is not used
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: TopAbs_Orientation") ShapeState;
 		static TopAbs_Orientation ShapeState (const opencascade::handle<Transfer_FinderProcess> & FP,const TopoDS_Shape & shape);
 
@@ -221,7 +221,7 @@ class TransferBRep {
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "* Gets the Shapes recorded in a TransientProcess as result of a Transfer, considers roots only or all results according <rootsonly>, returns them as a HSequence
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param rootsonly: default value is Standard_True
 	:type rootsonly: bool
 	:rtype: opencascade::handle<TopTools_HSequenceOfShape>") Shapes;
@@ -231,9 +231,9 @@ class TransferBRep {
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "* Gets the Shapes recorded in a TransientProcess as result of a Transfer, for a given list of starting entities, returns the shapes as a HSequence
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: opencascade::handle<TopTools_HSequenceOfShape>") Shapes;
 		static opencascade::handle<TopTools_HSequenceOfShape> Shapes (const opencascade::handle<Transfer_TransientProcess> & TP,const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -241,11 +241,11 @@ class TransferBRep {
 		%feature("compactdefaultargs") TransferResultInfo;
 		%feature("autodoc", "* Fills sequence of TransferResultInfo for each type of entity given in the EntityTypes (entity are given as objects). Method IsKind applied to the entities in TP is used to compare with entities in EntityTypes. TopAbs_ShapeEnum).
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param EntityTypes:
-	:type EntityTypes: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type EntityTypes: TColStd_HSequenceOfTransient
 	:param InfoSeq:
-	:type InfoSeq: opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> &
+	:type InfoSeq: TransferBRep_HSequenceOfTransferResultInfo
 	:rtype: void") TransferResultInfo;
 		static void TransferResultInfo (const opencascade::handle<Transfer_TransientProcess> & TP,const opencascade::handle<TColStd_HSequenceOfTransient> & EntityTypes,opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
 
@@ -253,11 +253,11 @@ class TransferBRep {
 		%feature("compactdefaultargs") TransferResultInfo;
 		%feature("autodoc", "* Fills sequence of TransferResultInfo for each type of shape given in the ShapeTypes (which are in fact considered as TopAbs_ShapeEnum). The Finders in the FP are considered as ShapeMappers.
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param ShapeTypes:
-	:type ShapeTypes: opencascade::handle<TColStd_HSequenceOfInteger> &
+	:type ShapeTypes: TColStd_HSequenceOfInteger
 	:param InfoSeq:
-	:type InfoSeq: opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> &
+	:type InfoSeq: TransferBRep_HSequenceOfTransferResultInfo
 	:rtype: void") TransferResultInfo;
 		static void TransferResultInfo (const opencascade::handle<Transfer_FinderProcess> & FP,const opencascade::handle<TColStd_HSequenceOfInteger> & ShapeTypes,opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
 
@@ -265,9 +265,9 @@ class TransferBRep {
 		%feature("compactdefaultargs") TransientFromShape;
 		%feature("autodoc", "* Returns the result as pure Transient attached to a Shape first one if multiple result
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: opencascade::handle<Standard_Transient>") TransientFromShape;
 		static opencascade::handle<Standard_Transient> TransientFromShape (const opencascade::handle<Transfer_FinderProcess> & FP,const TopoDS_Shape & shape);
 
@@ -314,7 +314,7 @@ class TransferBRep_BinderOfShape : public Transfer_Binder {
 		%feature("compactdefaultargs") SetResult;
 		%feature("autodoc", "* Defines the Result
 	:param res:
-	:type res: TopoDS_Shape &
+	:type res: TopoDS_Shape
 	:rtype: None") SetResult;
 		void SetResult (const TopoDS_Shape & res);
 
@@ -328,7 +328,7 @@ class TransferBRep_BinderOfShape : public Transfer_Binder {
 		%feature("compactdefaultargs") TransferBRep_BinderOfShape;
 		%feature("autodoc", "* constructor which in the same time defines the result Returns True if a starting object is bound with SEVERAL results : Here, returns allways False But it can have next results
 	:param res:
-	:type res: TopoDS_Shape &
+	:type res: TopoDS_Shape
 	:rtype: None") TransferBRep_BinderOfShape;
 		 TransferBRep_BinderOfShape (const TopoDS_Shape & res);
 
@@ -353,7 +353,7 @@ class TransferBRep_OrientedShapeMapper : public Transfer_Finder {
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "* Specific testof equallity : defined as False if <other> has not the same true Type, else contents are compared (by C++ operator ==)
 	:param other:
-	:type other: opencascade::handle<Transfer_Finder> &
+	:type other: Transfer_Finder
 	:rtype: bool") Equates;
 		Standard_Boolean Equates (const opencascade::handle<Transfer_Finder> & other);
 
@@ -361,7 +361,7 @@ class TransferBRep_OrientedShapeMapper : public Transfer_Finder {
 		%feature("compactdefaultargs") TransferBRep_OrientedShapeMapper;
 		%feature("autodoc", "* Creates a Mapper with a Value. This Value can then not be changed. It is used by the Hasher to compute the HashCode, which will then be stored for an immediate reading.
 	:param akey:
-	:type akey: TopoDS_Shape &
+	:type akey: TopoDS_Shape
 	:rtype: None") TransferBRep_OrientedShapeMapper;
 		 TransferBRep_OrientedShapeMapper (const TopoDS_Shape & akey);
 
@@ -523,7 +523,7 @@ class TransferBRep_Reader {
 		%feature("compactdefaultargs") SetActor;
 		%feature("autodoc", "* Records the actor to be used for transfers
 	:param actor:
-	:type actor: opencascade::handle<Transfer_ActorOfTransientProcess> &
+	:type actor: Transfer_ActorOfTransientProcess
 	:rtype: None") SetActor;
 		void SetActor (const opencascade::handle<Transfer_ActorOfTransientProcess> & actor);
 
@@ -539,7 +539,7 @@ class TransferBRep_Reader {
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "* Specifies a Model to work on Also clears the result and Done status
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: None") SetModel;
 		void SetModel (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -547,7 +547,7 @@ class TransferBRep_Reader {
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "* Records the protocol to be used for read and transfer roots
 	:param protocol:
-	:type protocol: opencascade::handle<Interface_Protocol> &
+	:type protocol: Interface_Protocol
 	:rtype: None") SetProtocol;
 		void SetProtocol (const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -563,7 +563,7 @@ class TransferBRep_Reader {
 		%feature("compactdefaultargs") ShapeResult;
 		%feature("autodoc", "* Returns a Shape produced from a given entity (if it was individually transferred or if an intermediate result is known). If no Shape is bound with <ent>, returns a Null Shape Warning : Runs on the last call to Transfer,TransferRoots,TransferList
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: TopoDS_Shape") ShapeResult;
 		TopoDS_Shape ShapeResult (const opencascade::handle<Standard_Transient> & ent);
 
@@ -597,7 +597,7 @@ class TransferBRep_Reader {
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "* Transfers a list of Entities (only the ones also in the Model) Remark : former result is cleared
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: void") TransferList;
 		virtual void TransferList (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -645,7 +645,7 @@ class TransferBRep_ShapeInfo {
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "* Returns the Type attached to an object Here, TShape (Shape has no Dynamic Type)
 	:param ent:
-	:type ent: TopoDS_Shape &
+	:type ent: TopoDS_Shape
 	:rtype: opencascade::handle<Standard_Type>") Type;
 		static opencascade::handle<Standard_Type> Type (const TopoDS_Shape & ent);
 
@@ -653,7 +653,7 @@ class TransferBRep_ShapeInfo {
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "* Returns Type Name (string) Here, the true name of the Type of a Shape
 	:param ent:
-	:type ent: TopoDS_Shape &
+	:type ent: TopoDS_Shape
 	:rtype: char *") TypeName;
 		static const char * TypeName (const TopoDS_Shape & ent);
 
@@ -676,7 +676,7 @@ class TransferBRep_ShapeListBinder : public Transfer_Binder {
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "* Adds an item to the result list
 	:param res:
-	:type res: TopoDS_Shape &
+	:type res: TopoDS_Shape
 	:rtype: None") AddResult;
 		void AddResult (const TopoDS_Shape & res);
 
@@ -739,7 +739,7 @@ class TransferBRep_ShapeListBinder : public Transfer_Binder {
 	:param num:
 	:type num: int
 	:param res:
-	:type res: TopoDS_Shape &
+	:type res: TopoDS_Shape
 	:rtype: None") SetResult;
 		void SetResult (const Standard_Integer num,const TopoDS_Shape & res);
 
@@ -779,7 +779,7 @@ class TransferBRep_ShapeListBinder : public Transfer_Binder {
 		/****************** TransferBRep_ShapeListBinder ******************/
 		%feature("compactdefaultargs") TransferBRep_ShapeListBinder;
 		%feature("autodoc", ":param list:
-	:type list: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type list: TopTools_HSequenceOfShape
 	:rtype: None") TransferBRep_ShapeListBinder;
 		 TransferBRep_ShapeListBinder (const opencascade::handle<TopTools_HSequenceOfShape> & list);
 
@@ -818,7 +818,7 @@ class TransferBRep_ShapeMapper : public Transfer_Finder {
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "* Specific testof equallity : defined as False if <other> has not the same true Type, else contents are compared (by C++ operator ==)
 	:param other:
-	:type other: opencascade::handle<Transfer_Finder> &
+	:type other: Transfer_Finder
 	:rtype: bool") Equates;
 		Standard_Boolean Equates (const opencascade::handle<Transfer_Finder> & other);
 
@@ -826,7 +826,7 @@ class TransferBRep_ShapeMapper : public Transfer_Finder {
 		%feature("compactdefaultargs") TransferBRep_ShapeMapper;
 		%feature("autodoc", "* Creates a Mapper with a Value. This Value can then not be changed. It is used by the Hasher to compute the HashCode, which will then be stored for an immediate reading.
 	:param akey:
-	:type akey: TopoDS_Shape &
+	:type akey: TopoDS_Shape
 	:rtype: None") TransferBRep_ShapeMapper;
 		 TransferBRep_ShapeMapper (const TopoDS_Shape & akey);
 
@@ -1044,7 +1044,7 @@ class TransferBRep_ShapeBinder : public TransferBRep_BinderOfShape {
 		%feature("compactdefaultargs") TransferBRep_ShapeBinder;
 		%feature("autodoc", "* Creates a ShapeBinder with a result
 	:param res:
-	:type res: TopoDS_Shape &
+	:type res: TopoDS_Shape
 	:rtype: None") TransferBRep_ShapeBinder;
 		 TransferBRep_ShapeBinder (const TopoDS_Shape & res);
 

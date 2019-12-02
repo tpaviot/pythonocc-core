@@ -160,7 +160,7 @@ class BRepMeshData_Edge : public IMeshData_Edge {
 		%feature("compactdefaultargs") AddPCurve;
 		%feature("autodoc", "* Adds disrete pcurve for the specifed discrete face.
 	:param theDFace:
-	:type theDFace: IMeshData::IFacePtr &
+	:type theDFace: IMeshData::IFacePtr
 	:param theOrientation:
 	:type theOrientation: TopAbs_Orientation
 	:rtype: IMeshData::IPCurveHandle") AddPCurve;
@@ -170,7 +170,7 @@ class BRepMeshData_Edge : public IMeshData_Edge {
 		%feature("compactdefaultargs") GetPCurve;
 		%feature("autodoc", "* Returns pcurve for the specified discrete face.
 	:param theDFace:
-	:type theDFace: IMeshData::IFacePtr &
+	:type theDFace: IMeshData::IFacePtr
 	:param theOrientation:
 	:type theOrientation: TopAbs_Orientation
 	:rtype: IMeshData::IPCurveHandle") GetPCurve;
@@ -209,7 +209,7 @@ class BRepMeshData_Face : public IMeshData_Face {
 		%feature("compactdefaultargs") AddWire;
 		%feature("autodoc", "* Adds wire to discrete model of face.
 	:param theWire:
-	:type theWire: TopoDS_Wire &
+	:type theWire: TopoDS_Wire
 	:param theEdgeNb: default value is 0
 	:type theEdgeNb: int
 	:rtype: IMeshData::IWireHandle") AddWire;
@@ -248,7 +248,7 @@ class BRepMeshData_Model : public IMeshData_Model {
 		%feature("compactdefaultargs") AddEdge;
 		%feature("autodoc", "* Adds new edge to shape model.
 	:param theEdge:
-	:type theEdge: TopoDS_Edge &
+	:type theEdge: TopoDS_Edge
 	:rtype: IMeshData::IEdgeHandle") AddEdge;
 		virtual const IMeshData::IEdgeHandle & AddEdge (const TopoDS_Edge & theEdge);
 
@@ -256,7 +256,7 @@ class BRepMeshData_Model : public IMeshData_Model {
 		%feature("compactdefaultargs") AddFace;
 		%feature("autodoc", "* Adds new face to shape model.
 	:param theFace:
-	:type theFace: TopoDS_Face &
+	:type theFace: TopoDS_Face
 	:rtype: IMeshData::IFaceHandle") AddFace;
 		virtual const IMeshData::IFaceHandle & AddFace (const TopoDS_Face & theFace);
 
@@ -264,7 +264,7 @@ class BRepMeshData_Model : public IMeshData_Model {
 		%feature("compactdefaultargs") BRepMeshData_Model;
 		%feature("autodoc", "* Constructor. Initializes empty model.
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: None") BRepMeshData_Model;
 		 BRepMeshData_Model (const TopoDS_Shape & theShape);
 
@@ -412,7 +412,7 @@ class BRepMeshData_Wire : public IMeshData_Wire {
 		%feature("compactdefaultargs") AddEdge;
 		%feature("autodoc", "* Adds new discrete edge with specified orientation to wire chain. returns index of added edge in wire chain.
 	:param theDEdge:
-	:type theDEdge: IMeshData::IEdgePtr &
+	:type theDEdge: IMeshData::IEdgePtr
 	:param theOrientation:
 	:type theOrientation: TopAbs_Orientation
 	:rtype: int") AddEdge;

@@ -124,7 +124,7 @@ class UnitsAPI {
 	:param aUnit:
 	:type aUnit: char *
 	:param aDim:
-	:type aDim: opencascade::handle<Units_Dimensions> &
+	:type aDim: Units_Dimensions
 	:rtype: float") AnyToLS;
 		static Standard_Real AnyToLS (const Standard_Real aData,const char * aUnit,opencascade::handle<Units_Dimensions> & aDim);
 
@@ -146,7 +146,7 @@ class UnitsAPI {
 	:param aUnit:
 	:type aUnit: char *
 	:param aDim:
-	:type aDim: opencascade::handle<Units_Dimensions> &
+	:type aDim: Units_Dimensions
 	:rtype: float") AnyToSI;
 		static Standard_Real AnyToSI (const Standard_Real aData,const char * aUnit,opencascade::handle<Units_Dimensions> & aDim);
 

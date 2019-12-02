@@ -491,13 +491,13 @@ class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aDescription:
-	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:type aDescription: TCollection_HAsciiString
 	:param aItem:
-	:type aItem: opencascade::handle<StepRepr_RepresentationItem> &
+	:type aItem: StepRepr_RepresentationItem
 	:param aRep:
-	:type aRep: opencascade::handle<StepRepr_Representation> &
+	:type aRep: StepRepr_Representation
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_RepresentationItem> & aItem,const opencascade::handle<StepRepr_Representation> & aRep);
 
@@ -523,7 +523,7 @@ class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "* Set field Description
 	:param Description:
-	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:type Description: TCollection_HAsciiString
 	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -531,7 +531,7 @@ class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", "* Set field Item
 	:param Item:
-	:type Item: opencascade::handle<StepRepr_RepresentationItem> &
+	:type Item: StepRepr_RepresentationItem
 	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<StepRepr_RepresentationItem> & Item);
 
@@ -539,7 +539,7 @@ class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* Set field Name
 	:param Name:
-	:type Name: opencascade::handle<TCollection_HAsciiString> &
+	:type Name: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -547,7 +547,7 @@ class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 		%feature("compactdefaultargs") SetRep;
 		%feature("autodoc", "* Set field Rep
 	:param Rep:
-	:type Rep: opencascade::handle<StepRepr_Representation> &
+	:type Rep: StepRepr_Representation
 	:rtype: None") SetRep;
 		void SetRep (const opencascade::handle<StepRepr_Representation> & Rep);
 
@@ -578,7 +578,7 @@ class StepElement_CurveElementEndReleasePacket : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aReleaseFreedom:
-	:type aReleaseFreedom: StepElement_CurveElementFreedom &
+	:type aReleaseFreedom: StepElement_CurveElementFreedom
 	:param aReleaseStiffness:
 	:type aReleaseStiffness: float
 	:rtype: None") Init;
@@ -600,7 +600,7 @@ class StepElement_CurveElementEndReleasePacket : public Standard_Transient {
 		%feature("compactdefaultargs") SetReleaseFreedom;
 		%feature("autodoc", "* Set field ReleaseFreedom
 	:param ReleaseFreedom:
-	:type ReleaseFreedom: StepElement_CurveElementFreedom &
+	:type ReleaseFreedom: StepElement_CurveElementFreedom
 	:rtype: None") SetReleaseFreedom;
 		void SetReleaseFreedom (const StepElement_CurveElementFreedom & ReleaseFreedom);
 
@@ -645,7 +645,7 @@ class StepElement_CurveElementFreedom : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "* Recognizes a items of select member CurveElementFreedomMember 1 -> EnumeratedCurveElementFreedom 2 -> ApplicationDefinedDegreeOfFreedom 0 else
 	:param ent:
-	:type ent: opencascade::handle<StepData_SelectMember> &
+	:type ent: StepData_SelectMember
 	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -653,7 +653,7 @@ class StepElement_CurveElementFreedom : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a kind of CurveElementFreedom select type return 0
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -673,7 +673,7 @@ class StepElement_CurveElementFreedom : public StepData_SelectType {
 		%feature("compactdefaultargs") SetApplicationDefinedDegreeOfFreedom;
 		%feature("autodoc", "* Set Value for ApplicationDefinedDegreeOfFreedom
 	:param aVal:
-	:type aVal: opencascade::handle<TCollection_HAsciiString> &
+	:type aVal: TCollection_HAsciiString
 	:rtype: None") SetApplicationDefinedDegreeOfFreedom;
 		void SetApplicationDefinedDegreeOfFreedom (const opencascade::handle<TCollection_HAsciiString> & aVal);
 
@@ -767,7 +767,7 @@ class StepElement_CurveElementPurpose : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "* Recognizes a items of select member CurveElementPurposeMember 1 -> EnumeratedCurveElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else
 	:param ent:
-	:type ent: opencascade::handle<StepData_SelectMember> &
+	:type ent: StepData_SelectMember
 	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -775,7 +775,7 @@ class StepElement_CurveElementPurpose : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a kind of CurveElementPurpose select type return 0
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -795,7 +795,7 @@ class StepElement_CurveElementPurpose : public StepData_SelectType {
 		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
 		%feature("autodoc", "* Set Value for ApplicationDefinedElementPurpose
 	:param aVal:
-	:type aVal: opencascade::handle<TCollection_HAsciiString> &
+	:type aVal: TCollection_HAsciiString
 	:rtype: None") SetApplicationDefinedElementPurpose;
 		void SetApplicationDefinedElementPurpose (const opencascade::handle<TCollection_HAsciiString> & aVal);
 
@@ -889,7 +889,7 @@ class StepElement_CurveElementSectionDefinition : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aDescription:
-	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:type aDescription: TCollection_HAsciiString
 	:param aSectionAngle:
 	:type aSectionAngle: float
 	:rtype: None") Init;
@@ -905,7 +905,7 @@ class StepElement_CurveElementSectionDefinition : public Standard_Transient {
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "* Set field Description
 	:param Description:
-	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:type Description: TCollection_HAsciiString
 	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -944,7 +944,7 @@ class StepElement_ElementAspect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "* Recognizes a items of select member ElementAspectMember 1 -> ElementVolume 2 -> Volume3dFace 3 -> Volume2dFace 4 -> Volume3dEdge 5 -> Volume2dEdge 6 -> Surface3dFace 7 -> Surface2dFace 8 -> Surface3dEdge 9 -> Surface2dEdge 10 -> CurveEdge 0 else
 	:param ent:
-	:type ent: opencascade::handle<StepData_SelectMember> &
+	:type ent: StepData_SelectMember
 	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -952,7 +952,7 @@ class StepElement_ElementAspect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a kind of ElementAspect select type return 0
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1186,7 +1186,7 @@ class StepElement_ElementDescriptor : public Standard_Transient {
 	:param aTopologyOrder:
 	:type aTopologyOrder: StepElement_ElementOrder
 	:param aDescription:
-	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:type aDescription: TCollection_HAsciiString
 	:rtype: None") Init;
 		void Init (const StepElement_ElementOrder aTopologyOrder,const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
@@ -1194,7 +1194,7 @@ class StepElement_ElementDescriptor : public Standard_Transient {
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "* Set field Description
 	:param Description:
-	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:type Description: TCollection_HAsciiString
 	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -1245,11 +1245,11 @@ class StepElement_ElementMaterial : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aMaterialId:
-	:type aMaterialId: opencascade::handle<TCollection_HAsciiString> &
+	:type aMaterialId: TCollection_HAsciiString
 	:param aDescription:
-	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:type aDescription: TCollection_HAsciiString
 	:param aProperties:
-	:type aProperties: opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> &
+	:type aProperties: StepRepr_HArray1OfMaterialPropertyRepresentation
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aMaterialId,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> & aProperties);
 
@@ -1269,7 +1269,7 @@ class StepElement_ElementMaterial : public Standard_Transient {
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "* Set field Description
 	:param Description:
-	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:type Description: TCollection_HAsciiString
 	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -1277,7 +1277,7 @@ class StepElement_ElementMaterial : public Standard_Transient {
 		%feature("compactdefaultargs") SetMaterialId;
 		%feature("autodoc", "* Set field MaterialId
 	:param MaterialId:
-	:type MaterialId: opencascade::handle<TCollection_HAsciiString> &
+	:type MaterialId: TCollection_HAsciiString
 	:rtype: None") SetMaterialId;
 		void SetMaterialId (const opencascade::handle<TCollection_HAsciiString> & MaterialId);
 
@@ -1285,7 +1285,7 @@ class StepElement_ElementMaterial : public Standard_Transient {
 		%feature("compactdefaultargs") SetProperties;
 		%feature("autodoc", "* Set field Properties
 	:param Properties:
-	:type Properties: opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> &
+	:type Properties: StepRepr_HArray1OfMaterialPropertyRepresentation
 	:rtype: None") SetProperties;
 		void SetProperties (const opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> & Properties);
 
@@ -1316,7 +1316,7 @@ class StepElement_MeasureOrUnspecifiedValue : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "* Recognizes a items of select member MeasureOrUnspecifiedValueMember 1 -> ContextDependentMeasure 2 -> UnspecifiedValue 0 else
 	:param ent:
-	:type ent: opencascade::handle<StepData_SelectMember> &
+	:type ent: StepData_SelectMember
 	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -1324,7 +1324,7 @@ class StepElement_MeasureOrUnspecifiedValue : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a kind of MeasureOrUnspecifiedValue select type return 0
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1444,11 +1444,11 @@ class StepElement_SurfaceElementProperty : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aPropertyId:
-	:type aPropertyId: opencascade::handle<TCollection_HAsciiString> &
+	:type aPropertyId: TCollection_HAsciiString
 	:param aDescription:
-	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:type aDescription: TCollection_HAsciiString
 	:param aSection:
-	:type aSection: opencascade::handle<StepElement_SurfaceSectionField> &
+	:type aSection: StepElement_SurfaceSectionField
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aPropertyId,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepElement_SurfaceSectionField> & aSection);
 
@@ -1468,7 +1468,7 @@ class StepElement_SurfaceElementProperty : public Standard_Transient {
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "* Set field Description
 	:param Description:
-	:type Description: opencascade::handle<TCollection_HAsciiString> &
+	:type Description: TCollection_HAsciiString
 	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -1476,7 +1476,7 @@ class StepElement_SurfaceElementProperty : public Standard_Transient {
 		%feature("compactdefaultargs") SetPropertyId;
 		%feature("autodoc", "* Set field PropertyId
 	:param PropertyId:
-	:type PropertyId: opencascade::handle<TCollection_HAsciiString> &
+	:type PropertyId: TCollection_HAsciiString
 	:rtype: None") SetPropertyId;
 		void SetPropertyId (const opencascade::handle<TCollection_HAsciiString> & PropertyId);
 
@@ -1484,7 +1484,7 @@ class StepElement_SurfaceElementProperty : public Standard_Transient {
 		%feature("compactdefaultargs") SetSection;
 		%feature("autodoc", "* Set field Section
 	:param Section:
-	:type Section: opencascade::handle<StepElement_SurfaceSectionField> &
+	:type Section: StepElement_SurfaceSectionField
 	:rtype: None") SetSection;
 		void SetSection (const opencascade::handle<StepElement_SurfaceSectionField> & Section);
 
@@ -1521,7 +1521,7 @@ class StepElement_SurfaceElementPurpose : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "* Recognizes a items of select member SurfaceElementPurposeMember 1 -> EnumeratedSurfaceElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else
 	:param ent:
-	:type ent: opencascade::handle<StepData_SelectMember> &
+	:type ent: StepData_SelectMember
 	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -1529,7 +1529,7 @@ class StepElement_SurfaceElementPurpose : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a kind of SurfaceElementPurpose select type return 0
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1549,7 +1549,7 @@ class StepElement_SurfaceElementPurpose : public StepData_SelectType {
 		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
 		%feature("autodoc", "* Set Value for ApplicationDefinedElementPurpose
 	:param aVal:
-	:type aVal: opencascade::handle<TCollection_HAsciiString> &
+	:type aVal: TCollection_HAsciiString
 	:rtype: None") SetApplicationDefinedElementPurpose;
 		void SetApplicationDefinedElementPurpose (const opencascade::handle<TCollection_HAsciiString> & aVal);
 
@@ -1637,11 +1637,11 @@ class StepElement_SurfaceSection : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aOffset:
-	:type aOffset: StepElement_MeasureOrUnspecifiedValue &
+	:type aOffset: StepElement_MeasureOrUnspecifiedValue
 	:param aNonStructuralMass:
-	:type aNonStructuralMass: StepElement_MeasureOrUnspecifiedValue &
+	:type aNonStructuralMass: StepElement_MeasureOrUnspecifiedValue
 	:param aNonStructuralMassOffset:
-	:type aNonStructuralMassOffset: StepElement_MeasureOrUnspecifiedValue &
+	:type aNonStructuralMassOffset: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") Init;
 		void Init (const StepElement_MeasureOrUnspecifiedValue & aOffset,const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMass,const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMassOffset);
 
@@ -1667,7 +1667,7 @@ class StepElement_SurfaceSection : public Standard_Transient {
 		%feature("compactdefaultargs") SetNonStructuralMass;
 		%feature("autodoc", "* Set field NonStructuralMass
 	:param NonStructuralMass:
-	:type NonStructuralMass: StepElement_MeasureOrUnspecifiedValue &
+	:type NonStructuralMass: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") SetNonStructuralMass;
 		void SetNonStructuralMass (const StepElement_MeasureOrUnspecifiedValue & NonStructuralMass);
 
@@ -1675,7 +1675,7 @@ class StepElement_SurfaceSection : public Standard_Transient {
 		%feature("compactdefaultargs") SetNonStructuralMassOffset;
 		%feature("autodoc", "* Set field NonStructuralMassOffset
 	:param NonStructuralMassOffset:
-	:type NonStructuralMassOffset: StepElement_MeasureOrUnspecifiedValue &
+	:type NonStructuralMassOffset: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") SetNonStructuralMassOffset;
 		void SetNonStructuralMassOffset (const StepElement_MeasureOrUnspecifiedValue & NonStructuralMassOffset);
 
@@ -1683,7 +1683,7 @@ class StepElement_SurfaceSection : public Standard_Transient {
 		%feature("compactdefaultargs") SetOffset;
 		%feature("autodoc", "* Set field Offset
 	:param Offset:
-	:type Offset: StepElement_MeasureOrUnspecifiedValue &
+	:type Offset: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") SetOffset;
 		void SetOffset (const StepElement_MeasureOrUnspecifiedValue & Offset);
 
@@ -1743,7 +1743,7 @@ class StepElement_VolumeElementPurpose : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "* Recognizes a items of select member VolumeElementPurposeMember 1 -> EnumeratedVolumeElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else
 	:param ent:
-	:type ent: opencascade::handle<StepData_SelectMember> &
+	:type ent: StepData_SelectMember
 	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -1751,7 +1751,7 @@ class StepElement_VolumeElementPurpose : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a kind of VolumeElementPurpose select type return 0
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1771,7 +1771,7 @@ class StepElement_VolumeElementPurpose : public StepData_SelectType {
 		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
 		%feature("autodoc", "* Set Value for ApplicationDefinedElementPurpose
 	:param aVal:
-	:type aVal: opencascade::handle<TCollection_HAsciiString> &
+	:type aVal: TCollection_HAsciiString
 	:rtype: None") SetApplicationDefinedElementPurpose;
 		void SetApplicationDefinedElementPurpose (const opencascade::handle<TCollection_HAsciiString> & aVal);
 
@@ -1861,9 +1861,9 @@ class StepElement_Curve3dElementDescriptor : public StepElement_ElementDescripto
 	:param aElementDescriptor_TopologyOrder:
 	:type aElementDescriptor_TopologyOrder: StepElement_ElementOrder
 	:param aElementDescriptor_Description:
-	:type aElementDescriptor_Description: opencascade::handle<TCollection_HAsciiString> &
+	:type aElementDescriptor_Description: TCollection_HAsciiString
 	:param aPurpose:
-	:type aPurpose: opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> &
+	:type aPurpose: StepElement_HArray1OfHSequenceOfCurveElementPurposeMember
 	:rtype: None") Init;
 		void Init (const StepElement_ElementOrder aElementDescriptor_TopologyOrder,const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description,const opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> & aPurpose);
 
@@ -1877,7 +1877,7 @@ class StepElement_Curve3dElementDescriptor : public StepElement_ElementDescripto
 		%feature("compactdefaultargs") SetPurpose;
 		%feature("autodoc", "* Set field Purpose
 	:param Purpose:
-	:type Purpose: opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> &
+	:type Purpose: StepElement_HArray1OfHSequenceOfCurveElementPurposeMember
 	:rtype: None") SetPurpose;
 		void SetPurpose (const opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> & Purpose);
 
@@ -1914,29 +1914,29 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aCurveElementSectionDefinition_Description:
-	:type aCurveElementSectionDefinition_Description: opencascade::handle<TCollection_HAsciiString> &
+	:type aCurveElementSectionDefinition_Description: TCollection_HAsciiString
 	:param aCurveElementSectionDefinition_SectionAngle:
 	:type aCurveElementSectionDefinition_SectionAngle: float
 	:param aCrossSectionalArea:
 	:type aCrossSectionalArea: float
 	:param aShearArea:
-	:type aShearArea: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
+	:type aShearArea: StepElement_HArray1OfMeasureOrUnspecifiedValue
 	:param aSecondMomentOfArea:
-	:type aSecondMomentOfArea: opencascade::handle<TColStd_HArray1OfReal> &
+	:type aSecondMomentOfArea: TColStd_HArray1OfReal
 	:param aTorsionalConstant:
 	:type aTorsionalConstant: float
 	:param aWarpingConstant:
-	:type aWarpingConstant: StepElement_MeasureOrUnspecifiedValue &
+	:type aWarpingConstant: StepElement_MeasureOrUnspecifiedValue
 	:param aLocationOfCentroid:
-	:type aLocationOfCentroid: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
+	:type aLocationOfCentroid: StepElement_HArray1OfMeasureOrUnspecifiedValue
 	:param aLocationOfShearCentre:
-	:type aLocationOfShearCentre: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
+	:type aLocationOfShearCentre: StepElement_HArray1OfMeasureOrUnspecifiedValue
 	:param aLocationOfNonStructuralMass:
-	:type aLocationOfNonStructuralMass: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
+	:type aLocationOfNonStructuralMass: StepElement_HArray1OfMeasureOrUnspecifiedValue
 	:param aNonStructuralMass:
-	:type aNonStructuralMass: StepElement_MeasureOrUnspecifiedValue &
+	:type aNonStructuralMass: StepElement_MeasureOrUnspecifiedValue
 	:param aPolarMoment:
-	:type aPolarMoment: StepElement_MeasureOrUnspecifiedValue &
+	:type aPolarMoment: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aCurveElementSectionDefinition_Description,const Standard_Real aCurveElementSectionDefinition_SectionAngle,const Standard_Real aCrossSectionalArea,const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aShearArea,const opencascade::handle<TColStd_HArray1OfReal> & aSecondMomentOfArea,const Standard_Real aTorsionalConstant,const StepElement_MeasureOrUnspecifiedValue & aWarpingConstant,const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aLocationOfCentroid,const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aLocationOfShearCentre,const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aLocationOfNonStructuralMass,const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMass,const StepElement_MeasureOrUnspecifiedValue & aPolarMoment);
 
@@ -1988,7 +1988,7 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 		%feature("compactdefaultargs") SetLocationOfCentroid;
 		%feature("autodoc", "* Set field LocationOfCentroid
 	:param LocationOfCentroid:
-	:type LocationOfCentroid: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
+	:type LocationOfCentroid: StepElement_HArray1OfMeasureOrUnspecifiedValue
 	:rtype: None") SetLocationOfCentroid;
 		void SetLocationOfCentroid (const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfCentroid);
 
@@ -1996,7 +1996,7 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 		%feature("compactdefaultargs") SetLocationOfNonStructuralMass;
 		%feature("autodoc", "* Set field LocationOfNonStructuralMass
 	:param LocationOfNonStructuralMass:
-	:type LocationOfNonStructuralMass: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
+	:type LocationOfNonStructuralMass: StepElement_HArray1OfMeasureOrUnspecifiedValue
 	:rtype: None") SetLocationOfNonStructuralMass;
 		void SetLocationOfNonStructuralMass (const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfNonStructuralMass);
 
@@ -2004,7 +2004,7 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 		%feature("compactdefaultargs") SetLocationOfShearCentre;
 		%feature("autodoc", "* Set field LocationOfShearCentre
 	:param LocationOfShearCentre:
-	:type LocationOfShearCentre: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
+	:type LocationOfShearCentre: StepElement_HArray1OfMeasureOrUnspecifiedValue
 	:rtype: None") SetLocationOfShearCentre;
 		void SetLocationOfShearCentre (const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfShearCentre);
 
@@ -2012,7 +2012,7 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 		%feature("compactdefaultargs") SetNonStructuralMass;
 		%feature("autodoc", "* Set field NonStructuralMass
 	:param NonStructuralMass:
-	:type NonStructuralMass: StepElement_MeasureOrUnspecifiedValue &
+	:type NonStructuralMass: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") SetNonStructuralMass;
 		void SetNonStructuralMass (const StepElement_MeasureOrUnspecifiedValue & NonStructuralMass);
 
@@ -2020,7 +2020,7 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 		%feature("compactdefaultargs") SetPolarMoment;
 		%feature("autodoc", "* Set field PolarMoment
 	:param PolarMoment:
-	:type PolarMoment: StepElement_MeasureOrUnspecifiedValue &
+	:type PolarMoment: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") SetPolarMoment;
 		void SetPolarMoment (const StepElement_MeasureOrUnspecifiedValue & PolarMoment);
 
@@ -2028,7 +2028,7 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 		%feature("compactdefaultargs") SetSecondMomentOfArea;
 		%feature("autodoc", "* Set field SecondMomentOfArea
 	:param SecondMomentOfArea:
-	:type SecondMomentOfArea: opencascade::handle<TColStd_HArray1OfReal> &
+	:type SecondMomentOfArea: TColStd_HArray1OfReal
 	:rtype: None") SetSecondMomentOfArea;
 		void SetSecondMomentOfArea (const opencascade::handle<TColStd_HArray1OfReal> & SecondMomentOfArea);
 
@@ -2036,7 +2036,7 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 		%feature("compactdefaultargs") SetShearArea;
 		%feature("autodoc", "* Set field ShearArea
 	:param ShearArea:
-	:type ShearArea: opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> &
+	:type ShearArea: StepElement_HArray1OfMeasureOrUnspecifiedValue
 	:rtype: None") SetShearArea;
 		void SetShearArea (const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & ShearArea);
 
@@ -2052,7 +2052,7 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 		%feature("compactdefaultargs") SetWarpingConstant;
 		%feature("autodoc", "* Set field WarpingConstant
 	:param WarpingConstant:
-	:type WarpingConstant: StepElement_MeasureOrUnspecifiedValue &
+	:type WarpingConstant: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") SetWarpingConstant;
 		void SetWarpingConstant (const StepElement_MeasureOrUnspecifiedValue & WarpingConstant);
 
@@ -2103,9 +2103,9 @@ class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescrip
 	:param aElementDescriptor_TopologyOrder:
 	:type aElementDescriptor_TopologyOrder: StepElement_ElementOrder
 	:param aElementDescriptor_Description:
-	:type aElementDescriptor_Description: opencascade::handle<TCollection_HAsciiString> &
+	:type aElementDescriptor_Description: TCollection_HAsciiString
 	:param aPurpose:
-	:type aPurpose: opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> &
+	:type aPurpose: StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember
 	:param aShape:
 	:type aShape: StepElement_Element2dShape
 	:rtype: None") Init;
@@ -2121,7 +2121,7 @@ class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescrip
 		%feature("compactdefaultargs") SetPurpose;
 		%feature("autodoc", "* Set field Purpose
 	:param Purpose:
-	:type Purpose: opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> &
+	:type Purpose: StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember
 	:rtype: None") SetPurpose;
 		void SetPurpose (const opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> & Purpose);
 
@@ -2172,7 +2172,7 @@ class StepElement_SurfaceSectionFieldConstant : public StepElement_SurfaceSectio
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aDefinition:
-	:type aDefinition: opencascade::handle<StepElement_SurfaceSection> &
+	:type aDefinition: StepElement_SurfaceSection
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepElement_SurfaceSection> & aDefinition);
 
@@ -2180,7 +2180,7 @@ class StepElement_SurfaceSectionFieldConstant : public StepElement_SurfaceSectio
 		%feature("compactdefaultargs") SetDefinition;
 		%feature("autodoc", "* Set field Definition
 	:param Definition:
-	:type Definition: opencascade::handle<StepElement_SurfaceSection> &
+	:type Definition: StepElement_SurfaceSection
 	:rtype: None") SetDefinition;
 		void SetDefinition (const opencascade::handle<StepElement_SurfaceSection> & Definition);
 
@@ -2223,7 +2223,7 @@ class StepElement_SurfaceSectionFieldVarying : public StepElement_SurfaceSection
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aDefinitions:
-	:type aDefinitions: opencascade::handle<StepElement_HArray1OfSurfaceSection> &
+	:type aDefinitions: StepElement_HArray1OfSurfaceSection
 	:param aAdditionalNodeValues:
 	:type aAdditionalNodeValues: bool
 	:rtype: None") Init;
@@ -2241,7 +2241,7 @@ class StepElement_SurfaceSectionFieldVarying : public StepElement_SurfaceSection
 		%feature("compactdefaultargs") SetDefinitions;
 		%feature("autodoc", "* Set field Definitions
 	:param Definitions:
-	:type Definitions: opencascade::handle<StepElement_HArray1OfSurfaceSection> &
+	:type Definitions: StepElement_HArray1OfSurfaceSection
 	:rtype: None") SetDefinitions;
 		void SetDefinitions (const opencascade::handle<StepElement_HArray1OfSurfaceSection> & Definitions);
 
@@ -2278,17 +2278,17 @@ class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param aSurfaceSection_Offset:
-	:type aSurfaceSection_Offset: StepElement_MeasureOrUnspecifiedValue &
+	:type aSurfaceSection_Offset: StepElement_MeasureOrUnspecifiedValue
 	:param aSurfaceSection_NonStructuralMass:
-	:type aSurfaceSection_NonStructuralMass: StepElement_MeasureOrUnspecifiedValue &
+	:type aSurfaceSection_NonStructuralMass: StepElement_MeasureOrUnspecifiedValue
 	:param aSurfaceSection_NonStructuralMassOffset:
-	:type aSurfaceSection_NonStructuralMassOffset: StepElement_MeasureOrUnspecifiedValue &
+	:type aSurfaceSection_NonStructuralMassOffset: StepElement_MeasureOrUnspecifiedValue
 	:param aThickness:
 	:type aThickness: float
 	:param aBendingThickness:
-	:type aBendingThickness: StepElement_MeasureOrUnspecifiedValue &
+	:type aBendingThickness: StepElement_MeasureOrUnspecifiedValue
 	:param aShearThickness:
-	:type aShearThickness: StepElement_MeasureOrUnspecifiedValue &
+	:type aShearThickness: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") Init;
 		void Init (const StepElement_MeasureOrUnspecifiedValue & aSurfaceSection_Offset,const StepElement_MeasureOrUnspecifiedValue & aSurfaceSection_NonStructuralMass,const StepElement_MeasureOrUnspecifiedValue & aSurfaceSection_NonStructuralMassOffset,const Standard_Real aThickness,const StepElement_MeasureOrUnspecifiedValue & aBendingThickness,const StepElement_MeasureOrUnspecifiedValue & aShearThickness);
 
@@ -2296,7 +2296,7 @@ class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
 		%feature("compactdefaultargs") SetBendingThickness;
 		%feature("autodoc", "* Set field BendingThickness
 	:param BendingThickness:
-	:type BendingThickness: StepElement_MeasureOrUnspecifiedValue &
+	:type BendingThickness: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") SetBendingThickness;
 		void SetBendingThickness (const StepElement_MeasureOrUnspecifiedValue & BendingThickness);
 
@@ -2304,7 +2304,7 @@ class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
 		%feature("compactdefaultargs") SetShearThickness;
 		%feature("autodoc", "* Set field ShearThickness
 	:param ShearThickness:
-	:type ShearThickness: StepElement_MeasureOrUnspecifiedValue &
+	:type ShearThickness: StepElement_MeasureOrUnspecifiedValue
 	:rtype: None") SetShearThickness;
 		void SetShearThickness (const StepElement_MeasureOrUnspecifiedValue & ShearThickness);
 
@@ -2357,9 +2357,9 @@ class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescript
 	:param aElementDescriptor_TopologyOrder:
 	:type aElementDescriptor_TopologyOrder: StepElement_ElementOrder
 	:param aElementDescriptor_Description:
-	:type aElementDescriptor_Description: opencascade::handle<TCollection_HAsciiString> &
+	:type aElementDescriptor_Description: TCollection_HAsciiString
 	:param aPurpose:
-	:type aPurpose: opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> &
+	:type aPurpose: StepElement_HArray1OfVolumeElementPurposeMember
 	:param aShape:
 	:type aShape: StepElement_Volume3dElementShape
 	:rtype: None") Init;
@@ -2375,7 +2375,7 @@ class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescript
 		%feature("compactdefaultargs") SetPurpose;
 		%feature("autodoc", "* Set field Purpose
 	:param Purpose:
-	:type Purpose: opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> &
+	:type Purpose: StepElement_HArray1OfVolumeElementPurposeMember
 	:rtype: None") SetPurpose;
 		void SetPurpose (const opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> & Purpose);
 

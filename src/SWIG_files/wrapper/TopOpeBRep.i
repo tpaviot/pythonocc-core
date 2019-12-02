@@ -232,7 +232,7 @@ class TopOpeBRep {
 	:param TLC:
 	:type TLC: TopOpeBRep_TypeLineCurve
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: Standard_OStream") Print;
 		static Standard_OStream & Print (const TopOpeBRep_TypeLineCurve TLC,Standard_OStream & OS);
 
@@ -318,14 +318,14 @@ class TopOpeBRep_DSFiller {
 		/****************** Checker ******************/
 		%feature("compactdefaultargs") Checker;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Checker;
 		void Checker (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****************** Complete ******************/
 		%feature("compactdefaultargs") Complete;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Complete;
 		void Complete (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -333,7 +333,7 @@ class TopOpeBRep_DSFiller {
 		%feature("compactdefaultargs") CompleteDS;
 		%feature("autodoc", "* Update the data structure with relevant informations deduced from the intersections. //! Shells containing an intersected face. Wires containing an intersected edge.
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") CompleteDS;
 		void CompleteDS (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -341,21 +341,21 @@ class TopOpeBRep_DSFiller {
 		%feature("compactdefaultargs") CompleteDS2d;
 		%feature("autodoc", "* Update the data structure with relevant informations deduced from the intersections 2d. //! Shells containing an intersected face. Wires containing an intersected edge. //! search for interference identity using edge connexity //NYI
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") CompleteDS2d;
 		void CompleteDS2d (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****************** Filter ******************/
 		%feature("compactdefaultargs") Filter;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Filter;
 		void Filter (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****************** GapFiller ******************/
 		%feature("compactdefaultargs") GapFiller;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") GapFiller;
 		void GapFiller (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -363,11 +363,11 @@ class TopOpeBRep_DSFiller {
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "* Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True S FORWARD,REVERSED --> FORWARD S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param orientFORWARD: default value is Standard_True
 	:type orientFORWARD: bool
 	:rtype: None") Insert;
@@ -377,15 +377,15 @@ class TopOpeBRep_DSFiller {
 		%feature("compactdefaultargs") Insert1d;
 		%feature("autodoc", "* Stores in <DS> the intersections of <S1> and <S2>. S1 and S2 are edges or wires. S1 edges have a 2d representation in face F1 S2 edges have a 2d representation in face F2 F1 is the face which surface is taken as reference for 2d description of S1 and S2 edges. if orientFORWARD = True S FORWARD,REVERSED --> FORWARD S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param orientFORWARD: default value is Standard_False
 	:type orientFORWARD: bool
 	:rtype: None") Insert1d;
@@ -395,11 +395,11 @@ class TopOpeBRep_DSFiller {
 		%feature("compactdefaultargs") Insert2d;
 		%feature("autodoc", "* Stores in <DS> the intersections of <S1> and <S2>. S1 et S2 contain only SameDomain Face
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Insert2d;
 		void Insert2d (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -407,11 +407,11 @@ class TopOpeBRep_DSFiller {
 		%feature("compactdefaultargs") InsertIntersection;
 		%feature("autodoc", "* Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True S FORWAR,REVERSED --> FORWARD S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:param orientFORWARD: default value is Standard_True
 	:type orientFORWARD: bool
 	:rtype: None") InsertIntersection;
@@ -421,25 +421,25 @@ class TopOpeBRep_DSFiller {
 		%feature("compactdefaultargs") InsertIntersection2d;
 		%feature("autodoc", "* S1, S2 set of tangent face lance les intersections 2d pour coder correctement les faces SameDomain.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") InsertIntersection2d;
 		void InsertIntersection2d (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****************** IsContext1d ******************/
 		%feature("compactdefaultargs") IsContext1d;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") IsContext1d;
 		Standard_Boolean IsContext1d (const TopoDS_Shape & S);
 
 		/****************** IsMadeOf1d ******************/
 		%feature("compactdefaultargs") IsMadeOf1d;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: bool") IsMadeOf1d;
 		Standard_Boolean IsMadeOf1d (const TopoDS_Shape & S);
 
@@ -452,14 +452,14 @@ class TopOpeBRep_DSFiller {
 		/****************** Reducer ******************/
 		%feature("compactdefaultargs") Reducer;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Reducer;
 		void Reducer (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****************** RemoveUnsharedGeometry ******************/
 		%feature("compactdefaultargs") RemoveUnsharedGeometry;
 		%feature("autodoc", ":param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") RemoveUnsharedGeometry;
 		void RemoveUnsharedGeometry (const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -488,7 +488,7 @@ class TopOpeBRep_EdgesFiller {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: None") Face;
 		void Face (const Standard_Integer I,const TopoDS_Shape & F);
 
@@ -502,13 +502,13 @@ class TopOpeBRep_EdgesFiller {
 		/****************** Insert ******************/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", ":param E1:
-	:type E1: TopoDS_Shape &
+	:type E1: TopoDS_Shape
 	:param E2:
-	:type E2: TopoDS_Shape &
+	:type E2: TopoDS_Shape
 	:param EI:
-	:type EI: TopOpeBRep_EdgesIntersector &
+	:type EI: TopOpeBRep_EdgesIntersector
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Insert;
 		void Insert (const TopoDS_Shape & E1,const TopoDS_Shape & E2,TopOpeBRep_EdgesIntersector & EI,const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -555,7 +555,7 @@ class TopOpeBRep_EdgesIntersector {
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", ":param str:
-	:type str: TCollection_AsciiString &
+	:type str: TCollection_AsciiString
 	:param ie1: default value is 0
 	:type ie1: int
 	:param ie2: default value is 0
@@ -632,9 +632,9 @@ class TopOpeBRep_EdgesIntersector {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param E1:
-	:type E1: TopoDS_Shape &
+	:type E1: TopoDS_Shape
 	:param E2:
-	:type E2: TopoDS_Shape &
+	:type E2: TopoDS_Shape
 	:param ReduceSegments: default value is Standard_True
 	:type ReduceSegments: bool
 	:rtype: None") Perform;
@@ -660,11 +660,11 @@ class TopOpeBRep_EdgesIntersector {
 		/****************** ReduceSegment ******************/
 		%feature("compactdefaultargs") ReduceSegment;
 		%feature("autodoc", ":param P1:
-	:type P1: TopOpeBRep_Point2d &
+	:type P1: TopOpeBRep_Point2d
 	:param P2:
-	:type P2: TopOpeBRep_Point2d &
+	:type P2: TopOpeBRep_Point2d
 	:param Pn:
-	:type Pn: TopOpeBRep_Point2d &
+	:type Pn: TopOpeBRep_Point2d
 	:rtype: bool") ReduceSegment;
 		virtual Standard_Boolean ReduceSegment (TopOpeBRep_Point2d & P1,TopOpeBRep_Point2d & P2,TopOpeBRep_Point2d & Pn);
 
@@ -677,22 +677,22 @@ class TopOpeBRep_EdgesIntersector {
 		/****************** SetFaces ******************/
 		%feature("compactdefaultargs") SetFaces;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param F2:
-	:type F2: TopoDS_Shape &
+	:type F2: TopoDS_Shape
 	:rtype: None") SetFaces;
 		void SetFaces (const TopoDS_Shape & F1,const TopoDS_Shape & F2);
 
 		/****************** SetFaces ******************/
 		%feature("compactdefaultargs") SetFaces;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param F2:
-	:type F2: TopoDS_Shape &
+	:type F2: TopoDS_Shape
 	:param B1:
-	:type B1: Bnd_Box &
+	:type B1: Bnd_Box
 	:param B2:
-	:type B2: Bnd_Box &
+	:type B2: Bnd_Box
 	:rtype: None") SetFaces;
 		void SetFaces (const TopoDS_Shape & F1,const TopoDS_Shape & F2,const Bnd_Box & B1,const Bnd_Box & B2);
 
@@ -721,9 +721,9 @@ class TopOpeBRep_EdgesIntersector {
 		/****************** Tolerances ******************/
 		%feature("compactdefaultargs") Tolerances;
 		%feature("autodoc", ":param tol1:
-	:type tol1: float &
+	:type tol1: float
 	:param tol2:
-	:type tol2: float &
+	:type tol2: float
 	:rtype: None") Tolerances;
 		void Tolerances (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -750,7 +750,7 @@ class TopOpeBRep_FFDumper : public Standard_Transient {
 		/****************** DumpDSP ******************/
 		%feature("compactdefaultargs") DumpDSP;
 		%feature("autodoc", ":param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param GK:
 	:type GK: TopOpeBRepDS_Kind
 	:param G:
@@ -770,21 +770,21 @@ class TopOpeBRep_FFDumper : public Standard_Transient {
 		/****************** DumpLine ******************/
 		%feature("compactdefaultargs") DumpLine;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:rtype: None") DumpLine;
 		void DumpLine (const TopOpeBRep_LineInter & L);
 
 		/****************** DumpVP ******************/
 		%feature("compactdefaultargs") DumpVP;
 		%feature("autodoc", ":param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:rtype: None") DumpVP;
 		void DumpVP (const TopOpeBRep_VPointInter & VP);
 
 		/****************** DumpVP ******************/
 		%feature("compactdefaultargs") DumpVP;
 		%feature("autodoc", ":param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param ISI:
 	:type ISI: int
 	:rtype: None") DumpVP;
@@ -793,7 +793,7 @@ class TopOpeBRep_FFDumper : public Standard_Transient {
 		/****************** ExploreIndex ******************/
 		%feature("compactdefaultargs") ExploreIndex;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param ISI:
 	:type ISI: int
 	:rtype: int") ExploreIndex;
@@ -802,7 +802,7 @@ class TopOpeBRep_FFDumper : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param PFF:
-	:type PFF: TopOpeBRep_PFacesFiller &
+	:type PFF: TopOpeBRep_PFacesFiller
 	:rtype: None") Init;
 		void Init (const TopOpeBRep_PFacesFiller & PFF);
 
@@ -814,7 +814,7 @@ class TopOpeBRep_FFDumper : public Standard_Transient {
 		/****************** TopOpeBRep_FFDumper ******************/
 		%feature("compactdefaultargs") TopOpeBRep_FFDumper;
 		%feature("autodoc", ":param PFF:
-	:type PFF: TopOpeBRep_PFacesFiller &
+	:type PFF: TopOpeBRep_PFacesFiller
 	:rtype: None") TopOpeBRep_FFDumper;
 		 TopOpeBRep_FFDumper (const TopOpeBRep_PFacesFiller & PFF);
 
@@ -838,22 +838,22 @@ class TopOpeBRep_FFTransitionTool {
 		%feature("compactdefaultargs") ProcessEdgeONTransition;
 		%feature("autodoc", "* compute transition on 'IntPatch_Restriction line' edge <R> when crossing edge <E> of face <F> at point <VP>. VP is given on edge <E> of face <F> of index <Index> (1 or 2). <VP> has been classified by FacesFiller as TopAbs_ON an edge <R> of the other face than <F> of current (face/face) intersection. Transition depends on the orientation of E in F. This method should be provided by IntPatch_Line (NYI)
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param Index:
 	:type Index: int
 	:param R:
-	:type R: TopoDS_Shape &
+	:type R: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:rtype: TopOpeBRepDS_Transition") ProcessEdgeONTransition;
 		static TopOpeBRepDS_Transition ProcessEdgeONTransition (const TopOpeBRep_VPointInter & VP,const Standard_Integer Index,const TopoDS_Shape & R,const TopoDS_Shape & E,const TopoDS_Shape & F);
 
 		/****************** ProcessEdgeTransition ******************/
 		%feature("compactdefaultargs") ProcessEdgeTransition;
 		%feature("autodoc", ":param P:
-	:type P: TopOpeBRep_VPointInter &
+	:type P: TopOpeBRep_VPointInter
 	:param Index:
 	:type Index: int
 	:param LineOrientation:
@@ -864,7 +864,7 @@ class TopOpeBRep_FFTransitionTool {
 		/****************** ProcessFaceTransition ******************/
 		%feature("compactdefaultargs") ProcessFaceTransition;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:param Index:
 	:type Index: int
 	:param FaceOrientation:
@@ -875,7 +875,7 @@ class TopOpeBRep_FFTransitionTool {
 		/****************** ProcessLineTransition ******************/
 		%feature("compactdefaultargs") ProcessLineTransition;
 		%feature("autodoc", ":param P:
-	:type P: TopOpeBRep_VPointInter &
+	:type P: TopOpeBRep_VPointInter
 	:param Index:
 	:type Index: int
 	:param EdgeOrientation:
@@ -886,9 +886,9 @@ class TopOpeBRep_FFTransitionTool {
 		/****************** ProcessLineTransition ******************/
 		%feature("compactdefaultargs") ProcessLineTransition;
 		%feature("autodoc", ":param P:
-	:type P: TopOpeBRep_VPointInter &
+	:type P: TopOpeBRep_VPointInter
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:rtype: TopOpeBRepDS_Transition") ProcessLineTransition;
 		static TopOpeBRepDS_Transition ProcessLineTransition (const TopOpeBRep_VPointInter & P,const TopOpeBRep_LineInter & L);
 
@@ -910,13 +910,13 @@ class TopOpeBRep_FaceEdgeFiller {
 		/****************** Insert ******************/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:param FEINT:
-	:type FEINT: TopOpeBRep_FaceEdgeIntersector &
+	:type FEINT: TopOpeBRep_FaceEdgeIntersector
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Insert;
 		void Insert (const TopoDS_Shape & F,const TopoDS_Shape & E,TopOpeBRep_FaceEdgeIntersector & FEINT,const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -967,13 +967,13 @@ class TopOpeBRep_FaceEdgeIntersector {
 		/****************** IsVertex ******************/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
 	:type Tol: float
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: bool") IsVertex;
 		Standard_Boolean IsVertex (const TopoDS_Shape & S,const gp_Pnt & P,const Standard_Real Tol,TopoDS_Vertex & V);
 
@@ -982,7 +982,7 @@ class TopOpeBRep_FaceEdgeIntersector {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: bool") IsVertex;
 		Standard_Boolean IsVertex (const Standard_Integer I,TopoDS_Vertex & V);
 
@@ -1010,9 +1010,9 @@ class TopOpeBRep_FaceEdgeIntersector {
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & F,const TopoDS_Shape & E);
 
@@ -1104,18 +1104,18 @@ class TopOpeBRep_FacesFiller {
 		/****************** CheckLine ******************/
 		%feature("compactdefaultargs") CheckLine;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:rtype: bool") CheckLine;
 		Standard_Boolean CheckLine (TopOpeBRep_LineInter & L);
 
 		/****************** EqualpPonR ******************/
 		%feature("compactdefaultargs") EqualpPonR;
 		%feature("autodoc", ":param Lrest:
-	:type Lrest: TopOpeBRep_LineInter &
+	:type Lrest: TopOpeBRep_LineInter
 	:param VP1:
-	:type VP1: TopOpeBRep_VPointInter &
+	:type VP1: TopOpeBRep_VPointInter
 	:param VP2:
-	:type VP2: TopOpeBRep_VPointInter &
+	:type VP2: TopOpeBRep_VPointInter
 	:rtype: bool") EqualpPonR;
 		static Standard_Boolean EqualpPonR (const TopOpeBRep_LineInter & Lrest,const TopOpeBRep_VPointInter & VP1,const TopOpeBRep_VPointInter & VP2);
 
@@ -1129,7 +1129,7 @@ class TopOpeBRep_FacesFiller {
 		/****************** FaceFaceTransition ******************/
 		%feature("compactdefaultargs") FaceFaceTransition;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:param I:
 	:type I: int
 	:rtype: TopOpeBRepDS_Transition") FaceFaceTransition;
@@ -1157,7 +1157,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") GetESL;
 		%feature("autodoc", "* Get map <mapES > of restriction edges having parts IN one of the 2 faces.
 	:param LES:
-	:type LES: TopTools_ListOfShape &
+	:type LES: TopTools_ListOfShape
 	:rtype: None") GetESL;
 		void GetESL (TopTools_ListOfShape & LES);
 
@@ -1165,11 +1165,11 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") GetFFGeometry;
 		%feature("autodoc", "* search for G = geometry of Point which is identical to <DSP> among the DS Points created in the CURRENT face/face intersection ( current Insert() call).
 	:param DSP:
-	:type DSP: TopOpeBRepDS_Point &
+	:type DSP: TopOpeBRepDS_Point
 	:param K:
-	:type K: TopOpeBRepDS_Kind &
+	:type K: TopOpeBRepDS_Kind
 	:param G:
-	:type G: int &
+	:type G: int
 	:rtype: bool") GetFFGeometry;
 		Standard_Boolean GetFFGeometry (const TopOpeBRepDS_Point & DSP,TopOpeBRepDS_Kind & K,Standard_Integer &OutValue);
 
@@ -1177,11 +1177,11 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") GetFFGeometry;
 		%feature("autodoc", "* search for G = geometry of Point which is identical to <VP> among the DS Points created in the CURRENT face/face intersection ( current Insert() call).
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param K:
-	:type K: TopOpeBRepDS_Kind &
+	:type K: TopOpeBRepDS_Kind
 	:param G:
-	:type G: int &
+	:type G: int
 	:rtype: bool") GetFFGeometry;
 		Standard_Boolean GetFFGeometry (const TopOpeBRep_VPointInter & VP,TopOpeBRepDS_Kind & K,Standard_Integer &OutValue);
 
@@ -1189,22 +1189,22 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") GetGeometry;
 		%feature("autodoc", "* Get the geometry of a DS point <DSP>. Search for it with ScanInterfList (previous method). if found, set <G> to the geometry of the interference found. else, add the point <DSP> in the <DS> and set <G> to the value of the new geometry such created. returns the value of ScanInterfList().
 	:param IT:
-	:type IT: TopOpeBRepDS_ListIteratorOfListOfInterference &
+	:type IT: TopOpeBRepDS_ListIteratorOfListOfInterference
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param G:
-	:type G: int &
+	:type G: int
 	:param K:
-	:type K: TopOpeBRepDS_Kind &
+	:type K: TopOpeBRepDS_Kind
 	:rtype: bool") GetGeometry;
 		Standard_Boolean GetGeometry (TopOpeBRepDS_ListIteratorOfListOfInterference & IT,const TopOpeBRep_VPointInter & VP,Standard_Integer &OutValue,TopOpeBRepDS_Kind & K);
 
 		/****************** GetTraceIndex ******************/
 		%feature("compactdefaultargs") GetTraceIndex;
 		%feature("autodoc", ":param exF1:
-	:type exF1: int &
+	:type exF1: int
 	:param exF2:
-	:type exF2: int &
+	:type exF2: int
 	:rtype: None") GetTraceIndex;
 		void GetTraceIndex (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1217,13 +1217,13 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "* Stores in <DS> the intersections of <S1> and <S2>.
 	:param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param F2:
-	:type F2: TopoDS_Shape &
+	:type F2: TopoDS_Shape
 	:param FACINT:
-	:type FACINT: TopOpeBRep_FacesIntersector &
+	:type FACINT: TopOpeBRep_FacesIntersector
 	:param HDS:
-	:type HDS: opencascade::handle<TopOpeBRepDS_HDataStructure> &
+	:type HDS: TopOpeBRepDS_HDataStructure
 	:rtype: None") Insert;
 		void Insert (const TopoDS_Shape & F1,const TopoDS_Shape & F2,TopOpeBRep_FacesIntersector & FACINT,const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -1231,13 +1231,13 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") IsVPtransLok;
 		%feature("autodoc", "* Computes the transition <T> of the VPoint <iVP> on the edge of <SI12>. Returns <False> if the status is unknown.
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:param iVP:
 	:type iVP: int
 	:param SI12:
 	:type SI12: int
 	:param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:rtype: bool") IsVPtransLok;
 		static Standard_Boolean IsVPtransLok (const TopOpeBRep_LineInter & L,const Standard_Integer iVP,const Standard_Integer SI12,TopOpeBRepDS_Transition & T);
 
@@ -1245,9 +1245,9 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") LSameDomainERL;
 		%feature("autodoc", "* Returns <True> if <L> shares a same geometric domain with at least one of the section edges of <ERL>.
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:param ERL:
-	:type ERL: TopTools_ListOfShape &
+	:type ERL: TopTools_ListOfShape
 	:rtype: bool") LSameDomainERL;
 		static Standard_Boolean LSameDomainERL (const TopOpeBRep_LineInter & L,const TopTools_ListOfShape & ERL);
 
@@ -1255,29 +1255,29 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") Lminmax;
 		%feature("autodoc", "* Computes <pmin> and <pmax> the upper and lower bounds of <L> enclosing all vpoints.
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:param pmin:
-	:type pmin: float &
+	:type pmin: float
 	:param pmax:
-	:type pmax: float &
+	:type pmax: float
 	:rtype: void") Lminmax;
 		static void Lminmax (const TopOpeBRep_LineInter & L,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** LoadLine ******************/
 		%feature("compactdefaultargs") LoadLine;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:rtype: None") LoadLine;
 		void LoadLine (TopOpeBRep_LineInter & L);
 
 		/****************** MakeGeometry ******************/
 		%feature("compactdefaultargs") MakeGeometry;
 		%feature("autodoc", ":param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param ShapeIndex:
 	:type ShapeIndex: int
 	:param K:
-	:type K: TopOpeBRepDS_Kind &
+	:type K: TopOpeBRepDS_Kind
 	:rtype: int") MakeGeometry;
 		Standard_Integer MakeGeometry (const TopOpeBRep_VPointInter & VP,const Standard_Integer ShapeIndex,TopOpeBRepDS_Kind & K);
 
@@ -1323,7 +1323,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") ProcessVPInotonR;
 		%feature("autodoc", "* processing ProcessVPnotonR for VPI.
 	:param VPI:
-	:type VPI: TopOpeBRep_VPointInterIterator &
+	:type VPI: TopOpeBRep_VPointInterIterator
 	:rtype: None") ProcessVPInotonR;
 		void ProcessVPInotonR (TopOpeBRep_VPointInterIterator & VPI);
 
@@ -1331,11 +1331,11 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") ProcessVPIonR;
 		%feature("autodoc", "* processing ProcessVPonR for VPI.
 	:param VPI:
-	:type VPI: TopOpeBRep_VPointInterIterator &
+	:type VPI: TopOpeBRep_VPointInterIterator
 	:param trans1:
-	:type trans1: TopOpeBRepDS_Transition &
+	:type trans1: TopOpeBRepDS_Transition
 	:param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param ShapeIndex:
 	:type ShapeIndex: int
 	:rtype: None") ProcessVPIonR;
@@ -1345,9 +1345,9 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") ProcessVPR;
 		%feature("autodoc", "* calling the followings ProcessVPIonR and ProcessVPonR.
 	:param FF:
-	:type FF: TopOpeBRep_FacesFiller &
+	:type FF: TopOpeBRep_FacesFiller
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:rtype: None") ProcessVPR;
 		void ProcessVPR (TopOpeBRep_FacesFiller & FF,const TopOpeBRep_VPointInter & VP);
 
@@ -1355,7 +1355,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") ProcessVPnotonR;
 		%feature("autodoc", "* adds <VP>'s geometrical point to the DS (if not stored) and computes curve point interference.
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:rtype: None") ProcessVPnotonR;
 		void ProcessVPnotonR (const TopOpeBRep_VPointInter & VP);
 
@@ -1363,11 +1363,11 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") ProcessVPonR;
 		%feature("autodoc", "* adds <VP>'s geometric point (if not stored) and computes (curve or edge)/(point or vertex) interference.
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param trans1:
-	:type trans1: TopOpeBRepDS_Transition &
+	:type trans1: TopOpeBRepDS_Transition
 	:param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param ShapeIndex:
 	:type ShapeIndex: int
 	:rtype: None") ProcessVPonR;
@@ -1377,13 +1377,13 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") ProcessVPonclosingR;
 		%feature("autodoc", "* VP processing on closing arc.
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param F1:
-	:type F1: TopoDS_Shape &
+	:type F1: TopoDS_Shape
 	:param ShapeIndex:
 	:type ShapeIndex: int
 	:param transEdge:
-	:type transEdge: TopOpeBRepDS_Transition &
+	:type transEdge: TopOpeBRepDS_Transition
 	:param PVKind:
 	:type PVKind: TopOpeBRepDS_Kind
 	:param PVIndex:
@@ -1391,7 +1391,7 @@ class TopOpeBRep_FacesFiller {
 	:param EPIfound:
 	:type EPIfound: bool
 	:param IEPI:
-	:type IEPI: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type IEPI: TopOpeBRepDS_Interference
 	:rtype: None") ProcessVPonclosingR;
 		void ProcessVPonclosingR (const TopOpeBRep_VPointInter & VP,const TopoDS_Shape & F1,const Standard_Integer ShapeIndex,const TopOpeBRepDS_Transition & transEdge,const TopOpeBRepDS_Kind PVKind,const Standard_Integer PVIndex,const Standard_Boolean EPIfound,const opencascade::handle<TopOpeBRepDS_Interference> & IEPI);
 
@@ -1399,21 +1399,21 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") ProcessVPondgE;
 		%feature("autodoc", "* VP processing on degenerated arc.
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param ShapeIndex:
 	:type ShapeIndex: int
 	:param PVKind:
-	:type PVKind: TopOpeBRepDS_Kind &
+	:type PVKind: TopOpeBRepDS_Kind
 	:param PVIndex:
-	:type PVIndex: int &
+	:type PVIndex: int
 	:param EPIfound:
 	:type EPIfound: bool
 	:param IEPI:
-	:type IEPI: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type IEPI: TopOpeBRepDS_Interference
 	:param CPIfound:
 	:type CPIfound: bool
 	:param ICPI:
-	:type ICPI: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type ICPI: TopOpeBRepDS_Interference
 	:rtype: bool") ProcessVPondgE;
 		Standard_Boolean ProcessVPondgE (const TopOpeBRep_VPointInter & VP,const Standard_Integer ShapeIndex,TopOpeBRepDS_Kind & PVKind,Standard_Integer &OutValue,Standard_Boolean &OutValue,opencascade::handle<TopOpeBRepDS_Interference> & IEPI,Standard_Boolean &OutValue,opencascade::handle<TopOpeBRepDS_Interference> & ICPI);
 
@@ -1426,7 +1426,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") SetPShapeClassifier;
 		%feature("autodoc", "* set field myPShapeClassifier.
 	:param PSC:
-	:type PSC: TopOpeBRepTool_PShapeClassifier &
+	:type PSC: TopOpeBRepTool_PShapeClassifier
 	:rtype: None") SetPShapeClassifier;
 		void SetPShapeClassifier (const TopOpeBRepTool_PShapeClassifier & PSC);
 
@@ -1443,7 +1443,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") StoreCurveInterference;
 		%feature("autodoc", "* Add interference <I> to list myDSCIL. on a given line, at first call, add a new DS curve.
 	:param I:
-	:type I: opencascade::handle<TopOpeBRepDS_Interference> &
+	:type I: TopOpeBRepDS_Interference
 	:rtype: None") StoreCurveInterference;
 		void StoreCurveInterference (const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -1456,7 +1456,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") TransvpOK;
 		%feature("autodoc", "* Computes transition on line for VP<iVP> on edge restriction of <SI>. If <isINOUT> : returns <true> if transition computed is IN/OUT else : returns <true> if transition computed is OUT/IN.
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:param iVP:
 	:type iVP: int
 	:param SI:
@@ -1470,9 +1470,9 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") VPParamOnER;
 		%feature("autodoc", "* Returns parameter u of vp on the restriction edge.
 	:param vp:
-	:type vp: TopOpeBRep_VPointInter &
+	:type vp: TopOpeBRep_VPointInter
 	:param Lrest:
-	:type Lrest: TopOpeBRep_LineInter &
+	:type Lrest: TopOpeBRep_LineInter
 	:rtype: float") VPParamOnER;
 		static Standard_Real VPParamOnER (const TopOpeBRep_VPointInter & vp,const TopOpeBRep_LineInter & Lrest);
 
@@ -1480,7 +1480,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") VP_Position;
 		%feature("autodoc", "* compute position of VPoints of lines
 	:param FACINT:
-	:type FACINT: TopOpeBRep_FacesIntersector &
+	:type FACINT: TopOpeBRep_FacesIntersector
 	:rtype: None") VP_Position;
 		void VP_Position (TopOpeBRep_FacesIntersector & FACINT);
 
@@ -1488,7 +1488,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") VP_Position;
 		%feature("autodoc", "* compute position of VPoints of line L
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:rtype: None") VP_Position;
 		void VP_Position (TopOpeBRep_LineInter & L);
 
@@ -1496,9 +1496,9 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") VP_Position;
 		%feature("autodoc", "* compute position of VP with current faces, according to VP.ShapeIndex() .
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param VPC:
-	:type VPC: TopOpeBRep_VPointInterClassifier &
+	:type VPC: TopOpeBRep_VPointInterClassifier
 	:rtype: None") VP_Position;
 		void VP_Position (TopOpeBRep_VPointInter & VP,TopOpeBRep_VPointInterClassifier & VPC);
 
@@ -1506,7 +1506,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") VP_PositionOnL;
 		%feature("autodoc", "* compute position of VPoints of non-restriction line L.
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:rtype: None") VP_PositionOnL;
 		void VP_PositionOnL (TopOpeBRep_LineInter & L);
 
@@ -1514,7 +1514,7 @@ class TopOpeBRep_FacesFiller {
 		%feature("compactdefaultargs") VP_PositionOnR;
 		%feature("autodoc", "* compute position of VPoints of restriction line L.
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:rtype: None") VP_PositionOnR;
 		void VP_PositionOnR (TopOpeBRep_LineInter & L);
 
@@ -1572,9 +1572,9 @@ class TopOpeBRep_FacesIntersector {
 		%feature("compactdefaultargs") GetTolerances;
 		%feature("autodoc", "* Return the tolerance values used in the last Perform() call If ForceTolerances() has been called, return the given values. If not, return values extracted from shapes.
 	:param tolarc:
-	:type tolarc: float &
+	:type tolarc: float
 	:param toltang:
-	:type toltang: float &
+	:type toltang: float
 	:rtype: None") GetTolerances;
 		void GetTolerances (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1597,7 +1597,7 @@ class TopOpeBRep_FacesIntersector {
 		%feature("compactdefaultargs") IsRestriction;
 		%feature("autodoc", "* returns true if edge <E> is found as same as the edge associated with a RESTRICTION line.
 	:param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: bool") IsRestriction;
 		Standard_Boolean IsRestriction (const TopoDS_Shape & E);
 
@@ -1625,9 +1625,9 @@ class TopOpeBRep_FacesIntersector {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes the intersection of faces S1 and S2.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
@@ -1635,13 +1635,13 @@ class TopOpeBRep_FacesIntersector {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes the intersection of faces S1 and S2.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param B1:
-	:type B1: Bnd_Box &
+	:type B1: Bnd_Box
 	:param B2:
-	:type B2: Bnd_Box &
+	:type B2: Bnd_Box
 	:rtype: None") Perform;
 		void Perform (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const Bnd_Box & B1,const Bnd_Box & B2);
 
@@ -1690,7 +1690,7 @@ class TopOpeBRep_GeomTool {
 		/****************** MakeBSpline1fromWALKING2d ******************/
 		%feature("compactdefaultargs") MakeBSpline1fromWALKING2d;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:param SI:
 	:type SI: int
 	:rtype: opencascade::handle<Geom2d_Curve>") MakeBSpline1fromWALKING2d;
@@ -1699,7 +1699,7 @@ class TopOpeBRep_GeomTool {
 		/****************** MakeBSpline1fromWALKING3d ******************/
 		%feature("compactdefaultargs") MakeBSpline1fromWALKING3d;
 		%feature("autodoc", ":param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:rtype: opencascade::handle<Geom_Curve>") MakeBSpline1fromWALKING3d;
 		static opencascade::handle<Geom_Curve> MakeBSpline1fromWALKING3d (const TopOpeBRep_LineInter & L);
 
@@ -1710,9 +1710,9 @@ class TopOpeBRep_GeomTool {
 	:param max:
 	:type max: float
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:param C:
-	:type C: opencascade::handle<Geom_Curve> &
+	:type C: Geom_Curve
 	:rtype: void") MakeCurve;
 		static void MakeCurve (const Standard_Real min,const Standard_Real max,const TopOpeBRep_LineInter & L,opencascade::handle<Geom_Curve> & C);
 
@@ -1724,17 +1724,17 @@ class TopOpeBRep_GeomTool {
 	:param max:
 	:type max: float
 	:param L:
-	:type L: TopOpeBRep_LineInter &
+	:type L: TopOpeBRep_LineInter
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param C:
-	:type C: TopOpeBRepDS_Curve &
+	:type C: TopOpeBRepDS_Curve
 	:param PC1:
-	:type PC1: opencascade::handle<Geom2d_Curve> &
+	:type PC1: Geom2d_Curve
 	:param PC2:
-	:type PC2: opencascade::handle<Geom2d_Curve> &
+	:type PC2: Geom2d_Curve
 	:rtype: void") MakeCurves;
 		static void MakeCurves (const Standard_Real min,const Standard_Real max,const TopOpeBRep_LineInter & L,const TopoDS_Shape & S1,const TopoDS_Shape & S2,TopOpeBRepDS_Curve & C,opencascade::handle<Geom2d_Curve> & PC1,opencascade::handle<Geom2d_Curve> & PC2);
 
@@ -1777,13 +1777,13 @@ class TopOpeBRep_Hctxee2d : public Standard_Transient {
 		/****************** SetEdges ******************/
 		%feature("compactdefaultargs") SetEdges;
 		%feature("autodoc", ":param E1:
-	:type E1: TopoDS_Edge &
+	:type E1: TopoDS_Edge
 	:param E2:
-	:type E2: TopoDS_Edge &
+	:type E2: TopoDS_Edge
 	:param BAS1:
-	:type BAS1: BRepAdaptor_Surface &
+	:type BAS1: BRepAdaptor_Surface
 	:param BAS2:
-	:type BAS2: BRepAdaptor_Surface &
+	:type BAS2: BRepAdaptor_Surface
 	:rtype: None") SetEdges;
 		void SetEdges (const TopoDS_Edge & E1,const TopoDS_Edge & E2,const BRepAdaptor_Surface & BAS1,const BRepAdaptor_Surface & BAS2);
 
@@ -1836,9 +1836,9 @@ class TopOpeBRep_Hctxff2d : public Standard_Transient {
 		/****************** GetTolerances ******************/
 		%feature("compactdefaultargs") GetTolerances;
 		%feature("autodoc", ":param Tol1:
-	:type Tol1: float &
+	:type Tol1: float
 	:param Tol2:
-	:type Tol2: float &
+	:type Tol2: float
 	:rtype: None") GetTolerances;
 		void GetTolerances (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1852,18 +1852,18 @@ class TopOpeBRep_Hctxff2d : public Standard_Transient {
 		/****************** SetFaces ******************/
 		%feature("compactdefaultargs") SetFaces;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:rtype: None") SetFaces;
 		void SetFaces (const TopoDS_Face & F1,const TopoDS_Face & F2);
 
 		/****************** SetHSurfaces ******************/
 		%feature("compactdefaultargs") SetHSurfaces;
 		%feature("autodoc", ":param S1:
-	:type S1: opencascade::handle<BRepAdaptor_HSurface> &
+	:type S1: BRepAdaptor_HSurface
 	:param S2:
-	:type S2: opencascade::handle<BRepAdaptor_HSurface> &
+	:type S2: BRepAdaptor_HSurface
 	:rtype: None") SetHSurfaces;
 		void SetHSurfaces (const opencascade::handle<BRepAdaptor_HSurface> & S1,const opencascade::handle<BRepAdaptor_HSurface> & S2);
 
@@ -1920,9 +1920,9 @@ class TopOpeBRep_LineInter {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param f:
-	:type f: float &
+	:type f: float
 	:param l:
-	:type l: float &
+	:type l: float
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1955,11 +1955,11 @@ class TopOpeBRep_LineInter {
 		/****************** DumpBipoint ******************/
 		%feature("compactdefaultargs") DumpBipoint;
 		%feature("autodoc", ":param B:
-	:type B: TopOpeBRep_Bipoint &
+	:type B: TopOpeBRep_Bipoint
 	:param s1:
-	:type s1: TCollection_AsciiString &
+	:type s1: TCollection_AsciiString
 	:param s2:
-	:type s2: TCollection_AsciiString &
+	:type s2: TCollection_AsciiString
 	:rtype: None") DumpBipoint;
 		void DumpBipoint (const TopOpeBRep_Bipoint & B,const TCollection_AsciiString & s1,const TCollection_AsciiString & s2);
 
@@ -1981,9 +1981,9 @@ class TopOpeBRep_LineInter {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param s1:
-	:type s1: TCollection_AsciiString &
+	:type s1: TCollection_AsciiString
 	:param s2:
-	:type s2: TCollection_AsciiString &
+	:type s2: TCollection_AsciiString
 	:rtype: None") DumpVPoint;
 		void DumpVPoint (const Standard_Integer I,const TCollection_AsciiString & s1,const TCollection_AsciiString & s2);
 
@@ -1997,9 +1997,9 @@ class TopOpeBRep_LineInter {
 		/****************** GetTraceIndex ******************/
 		%feature("compactdefaultargs") GetTraceIndex;
 		%feature("autodoc", ":param exF1:
-	:type exF1: int &
+	:type exF1: int
 	:param exF2:
-	:type exF2: int &
+	:type exF2: int
 	:rtype: None") GetTraceIndex;
 		void GetTraceIndex (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2088,9 +2088,9 @@ class TopOpeBRep_LineInter {
 		/****************** SetFaces ******************/
 		%feature("compactdefaultargs") SetFaces;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:rtype: None") SetFaces;
 		void SetFaces (const TopoDS_Face & F1,const TopoDS_Face & F2);
 
@@ -2112,11 +2112,11 @@ class TopOpeBRep_LineInter {
 		/****************** SetLine ******************/
 		%feature("compactdefaultargs") SetLine;
 		%feature("autodoc", ":param L:
-	:type L: opencascade::handle<IntPatch_Line> &
+	:type L: IntPatch_Line
 	:param S1:
-	:type S1: BRepAdaptor_Surface &
+	:type S1: BRepAdaptor_Surface
 	:param S2:
-	:type S2: BRepAdaptor_Surface &
+	:type S2: BRepAdaptor_Surface
 	:rtype: None") SetLine;
 		void SetLine (const opencascade::handle<IntPatch_Line> & L,const BRepAdaptor_Surface & S1,const BRepAdaptor_Surface & S2);
 
@@ -2174,11 +2174,11 @@ class TopOpeBRep_LineInter {
 		/****************** VPBounds ******************/
 		%feature("compactdefaultargs") VPBounds;
 		%feature("autodoc", ":param f:
-	:type f: int &
+	:type f: int
 	:param l:
-	:type l: int &
+	:type l: int
 	:param n:
-	:type n: int &
+	:type n: int
 	:rtype: None") VPBounds;
 		void VPBounds (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2284,9 +2284,9 @@ class TopOpeBRep_Point2d {
 		/****************** SegmentAncestors ******************/
 		%feature("compactdefaultargs") SegmentAncestors;
 		%feature("autodoc", ":param IP1:
-	:type IP1: int &
+	:type IP1: int
 	:param IP2:
-	:type IP2: int &
+	:type IP2: int
 	:rtype: bool") SegmentAncestors;
 		Standard_Boolean SegmentAncestors (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2300,14 +2300,14 @@ class TopOpeBRep_Point2d {
 		/****************** SetHctxee2d ******************/
 		%feature("compactdefaultargs") SetHctxee2d;
 		%feature("autodoc", ":param ee2d:
-	:type ee2d: opencascade::handle<TopOpeBRep_Hctxee2d> &
+	:type ee2d: TopOpeBRep_Hctxee2d
 	:rtype: None") SetHctxee2d;
 		void SetHctxee2d (const opencascade::handle<TopOpeBRep_Hctxee2d> & ee2d);
 
 		/****************** SetHctxff2d ******************/
 		%feature("compactdefaultargs") SetHctxff2d;
 		%feature("autodoc", ":param ff2d:
-	:type ff2d: opencascade::handle<TopOpeBRep_Hctxff2d> &
+	:type ff2d: TopOpeBRep_Hctxff2d
 	:rtype: None") SetHctxff2d;
 		void SetHctxff2d (const opencascade::handle<TopOpeBRep_Hctxff2d> & ff2d);
 
@@ -2353,7 +2353,7 @@ class TopOpeBRep_Point2d {
 		/****************** SetPint ******************/
 		%feature("compactdefaultargs") SetPint;
 		%feature("autodoc", ":param P:
-	:type P: IntRes2d_IntersectionPoint &
+	:type P: IntRes2d_IntersectionPoint
 	:rtype: None") SetPint;
 		void SetPint (const IntRes2d_IntersectionPoint & P);
 
@@ -2385,7 +2385,7 @@ class TopOpeBRep_Point2d {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param T:
-	:type T: TopOpeBRepDS_Transition &
+	:type T: TopOpeBRepDS_Transition
 	:rtype: None") SetTransition;
 		void SetTransition (const Standard_Integer I,const TopOpeBRepDS_Transition & T);
 
@@ -2408,7 +2408,7 @@ class TopOpeBRep_Point2d {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param V:
-	:type V: TopoDS_Vertex &
+	:type V: TopoDS_Vertex
 	:rtype: None") SetVertex;
 		void SetVertex (const Standard_Integer I,const TopoDS_Vertex & V);
 
@@ -2470,7 +2470,7 @@ class TopOpeBRep_PointClassifier {
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "* compute position of point <P> regarding with the face <F>.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt2d
 	:param Tol:
@@ -2486,7 +2486,7 @@ class TopOpeBRep_PointClassifier {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Load;
 		void Load (const TopoDS_Face & F);
 
@@ -2517,37 +2517,37 @@ class TopOpeBRep_PointGeomTool {
 		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", ":param DSP1:
-	:type DSP1: TopOpeBRepDS_Point &
+	:type DSP1: TopOpeBRepDS_Point
 	:param DSP2:
-	:type DSP2: TopOpeBRepDS_Point &
+	:type DSP2: TopOpeBRepDS_Point
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const TopOpeBRepDS_Point & DSP1,const TopOpeBRepDS_Point & DSP2);
 
 		/****************** MakePoint ******************/
 		%feature("compactdefaultargs") MakePoint;
 		%feature("autodoc", ":param IP:
-	:type IP: TopOpeBRep_VPointInter &
+	:type IP: TopOpeBRep_VPointInter
 	:rtype: TopOpeBRepDS_Point") MakePoint;
 		static TopOpeBRepDS_Point MakePoint (const TopOpeBRep_VPointInter & IP);
 
 		/****************** MakePoint ******************/
 		%feature("compactdefaultargs") MakePoint;
 		%feature("autodoc", ":param P2D:
-	:type P2D: TopOpeBRep_Point2d &
+	:type P2D: TopOpeBRep_Point2d
 	:rtype: TopOpeBRepDS_Point") MakePoint;
 		static TopOpeBRepDS_Point MakePoint (const TopOpeBRep_Point2d & P2D);
 
 		/****************** MakePoint ******************/
 		%feature("compactdefaultargs") MakePoint;
 		%feature("autodoc", ":param FEI:
-	:type FEI: TopOpeBRep_FaceEdgeIntersector &
+	:type FEI: TopOpeBRep_FaceEdgeIntersector
 	:rtype: TopOpeBRepDS_Point") MakePoint;
 		static TopOpeBRepDS_Point MakePoint (const TopOpeBRep_FaceEdgeIntersector & FEI);
 
 		/****************** MakePoint ******************/
 		%feature("compactdefaultargs") MakePoint;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: TopOpeBRepDS_Point") MakePoint;
 		static TopOpeBRepDS_Point MakePoint (const TopoDS_Shape & S);
 
@@ -2603,9 +2603,9 @@ class TopOpeBRep_ShapeIntersector {
 		%feature("compactdefaultargs") GetTolerances;
 		%feature("autodoc", "* return MAX of intersection tolerances with which FacesIntersector from TopOpeBRep was working.
 	:param tol1:
-	:type tol1: float &
+	:type tol1: float
 	:param tol2:
-	:type tol2: float &
+	:type tol2: float
 	:rtype: None") GetTolerances;
 		void GetTolerances (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -2620,9 +2620,9 @@ class TopOpeBRep_ShapeIntersector {
 		%feature("compactdefaultargs") InitIntersection;
 		%feature("autodoc", "* Initialize the intersection of shapes S1,S2.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: None") InitIntersection;
 		void InitIntersection (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
@@ -2630,13 +2630,13 @@ class TopOpeBRep_ShapeIntersector {
 		%feature("compactdefaultargs") InitIntersection;
 		%feature("autodoc", "* Initialize the intersection of shapes S1,S2.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:rtype: None") InitIntersection;
 		void InitIntersection (const TopoDS_Shape & S1,const TopoDS_Shape & S2,const TopoDS_Face & F1,const TopoDS_Face & F2);
 
@@ -2655,11 +2655,11 @@ class TopOpeBRep_ShapeIntersector {
 		/****************** RejectedFaces ******************/
 		%feature("compactdefaultargs") RejectedFaces;
 		%feature("autodoc", ":param anObj:
-	:type anObj: TopoDS_Shape &
+	:type anObj: TopoDS_Shape
 	:param aReference:
-	:type aReference: TopoDS_Shape &
+	:type aReference: TopoDS_Shape
 	:param aListOfShape:
-	:type aListOfShape: TopTools_ListOfShape &
+	:type aListOfShape: TopTools_ListOfShape
 	:rtype: None") RejectedFaces;
 		void RejectedFaces (const TopoDS_Shape & anObj,const TopoDS_Shape & aReference,TopTools_ListOfShape & aListOfShape);
 
@@ -2723,9 +2723,9 @@ class TopOpeBRep_ShapeIntersector2d {
 		%feature("compactdefaultargs") InitIntersection;
 		%feature("autodoc", "* Initialize the intersection of shapes S1,S2.
 	:param S1:
-	:type S1: TopoDS_Shape &
+	:type S1: TopoDS_Shape
 	:param S2:
-	:type S2: TopoDS_Shape &
+	:type S2: TopoDS_Shape
 	:rtype: None") InitIntersection;
 		void InitIntersection (const TopoDS_Shape & S1,const TopoDS_Shape & S2);
 
@@ -2772,7 +2772,7 @@ class TopOpeBRep_ShapeScanner {
 		/****************** AddBoxesMakeCOB ******************/
 		%feature("compactdefaultargs") AddBoxesMakeCOB;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param TS:
 	:type TS: TopAbs_ShapeEnum
 	:param TA: default value is TopAbs_SHAPE
@@ -2816,14 +2816,14 @@ class TopOpeBRep_ShapeScanner {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param E:
-	:type E: TopoDS_Shape &
+	:type E: TopoDS_Shape
 	:rtype: None") Init;
 		void Init (const TopoDS_Shape & E);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param X:
-	:type X: TopOpeBRepTool_ShapeExplorer &
+	:type X: TopOpeBRepTool_ShapeExplorer
 	:rtype: None") Init;
 		void Init (TopOpeBRepTool_ShapeExplorer & X);
 
@@ -2880,20 +2880,20 @@ class TopOpeBRep_VPointInter {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: Standard_OStream") Dump;
 		Standard_OStream & Dump (const Standard_Integer I,const TopoDS_Face & F,Standard_OStream & OS);
 
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", ":param F1:
-	:type F1: TopoDS_Face &
+	:type F1: TopoDS_Face
 	:param F2:
-	:type F2: TopoDS_Face &
+	:type F2: TopoDS_Face
 	:param OS:
-	:type OS: Standard_OStream &
+	:type OS: Standard_OStream
 	:rtype: Standard_OStream") Dump;
 		Standard_OStream & Dump (const TopoDS_Face & F1,const TopoDS_Face & F2,Standard_OStream & OS);
 
@@ -2909,7 +2909,7 @@ class TopOpeBRep_VPointInter {
 		%feature("compactdefaultargs") EdgeON;
 		%feature("autodoc", "* set the shape Eon of shape I (1,2) containing the point, and parameter <Par> of point on <Eon>.
 	:param Eon:
-	:type Eon: TopoDS_Shape &
+	:type Eon: TopoDS_Shape
 	:param Par:
 	:type Par: float
 	:param I:
@@ -2945,16 +2945,16 @@ class TopOpeBRep_VPointInter {
 		%feature("compactdefaultargs") EqualpP;
 		%feature("autodoc", "* returns <True> if the 3d points and the parameters of the VPoints are same
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:rtype: bool") EqualpP;
 		Standard_Boolean EqualpP (const TopOpeBRep_VPointInter & VP);
 
 		/****************** GetShapes ******************/
 		%feature("compactdefaultargs") GetShapes;
 		%feature("autodoc", ":param I1:
-	:type I1: int &
+	:type I1: int
 	:param I2:
-	:type I2: int &
+	:type I2: int
 	:rtype: None") GetShapes;
 		void GetShapes (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -3039,18 +3039,18 @@ class TopOpeBRep_VPointInter {
 		/****************** ParametersOnS1 ******************/
 		%feature("compactdefaultargs") ParametersOnS1;
 		%feature("autodoc", ":param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:rtype: None") ParametersOnS1;
 		void ParametersOnS1 (Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** ParametersOnS2 ******************/
 		%feature("compactdefaultargs") ParametersOnS2;
 		%feature("autodoc", ":param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:rtype: None") ParametersOnS2;
 		void ParametersOnS2 (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -3058,16 +3058,16 @@ class TopOpeBRep_VPointInter {
 		%feature("compactdefaultargs") ParonE;
 		%feature("autodoc", "* returns <false> if the vpoint is not given on arc <E>, else returns <par> parameter on <E>
 	:param E:
-	:type E: TopoDS_Edge &
+	:type E: TopoDS_Edge
 	:param par:
-	:type par: float &
+	:type par: float
 	:rtype: bool") ParonE;
 		Standard_Boolean ParonE (const TopoDS_Edge & E,Standard_Real &OutValue);
 
 		/****************** SetPoint ******************/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", ":param P:
-	:type P: IntPatch_Point &
+	:type P: IntPatch_Point
 	:rtype: None") SetPoint;
 		void SetPoint (const IntPatch_Point & P);
 
@@ -3216,13 +3216,13 @@ class TopOpeBRep_VPointInterClassifier {
 		%feature("compactdefaultargs") VPointPosition;
 		%feature("autodoc", "* compute position of VPoint <VP> regarding with face <F>. <ShapeIndex> (= 1,2) indicates which (u,v) point of <VP> is used. when state is ON, set VP.EdgeON() with the edge containing <VP> and associated parameter. returns state of VP on ShapeIndex.
 	:param F:
-	:type F: TopoDS_Shape &
+	:type F: TopoDS_Shape
 	:param VP:
-	:type VP: TopOpeBRep_VPointInter &
+	:type VP: TopOpeBRep_VPointInter
 	:param ShapeIndex:
 	:type ShapeIndex: int
 	:param PC:
-	:type PC: TopOpeBRep_PointClassifier &
+	:type PC: TopOpeBRep_PointClassifier
 	:param AssumeINON:
 	:type AssumeINON: bool
 	:param Tol:
@@ -3263,7 +3263,7 @@ class TopOpeBRep_VPointInterIterator {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param LI:
-	:type LI: TopOpeBRep_LineInter &
+	:type LI: TopOpeBRep_LineInter
 	:param checkkeep: default value is Standard_False
 	:type checkkeep: bool
 	:rtype: None") Init;
@@ -3297,7 +3297,7 @@ class TopOpeBRep_VPointInterIterator {
 		/****************** TopOpeBRep_VPointInterIterator ******************/
 		%feature("compactdefaultargs") TopOpeBRep_VPointInterIterator;
 		%feature("autodoc", ":param LI:
-	:type LI: TopOpeBRep_LineInter &
+	:type LI: TopOpeBRep_LineInter
 	:rtype: None") TopOpeBRep_VPointInterIterator;
 		 TopOpeBRep_VPointInterIterator (const TopOpeBRep_LineInter & LI);
 
@@ -3324,38 +3324,38 @@ class TopOpeBRep_WPointInter {
 		/****************** Parameters ******************/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", ":param U1:
-	:type U1: float &
+	:type U1: float
 	:param V1:
-	:type V1: float &
+	:type V1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param V2:
-	:type V2: float &
+	:type V2: float
 	:rtype: None") Parameters;
 		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** ParametersOnS1 ******************/
 		%feature("compactdefaultargs") ParametersOnS1;
 		%feature("autodoc", ":param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") ParametersOnS1;
 		void ParametersOnS1 (Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** ParametersOnS2 ******************/
 		%feature("compactdefaultargs") ParametersOnS2;
 		%feature("autodoc", ":param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") ParametersOnS2;
 		void ParametersOnS2 (Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param P:
-	:type P: IntSurf_PntOn2S &
+	:type P: IntSurf_PntOn2S
 	:rtype: None") Set;
 		void Set (const IntSurf_PntOn2S & P);
 
@@ -3402,7 +3402,7 @@ class TopOpeBRep_WPointInterIterator {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param LI:
-	:type LI: TopOpeBRep_LineInter &
+	:type LI: TopOpeBRep_LineInter
 	:rtype: None") Init;
 		void Init (const TopOpeBRep_LineInter & LI);
 
@@ -3434,7 +3434,7 @@ class TopOpeBRep_WPointInterIterator {
 		/****************** TopOpeBRep_WPointInterIterator ******************/
 		%feature("compactdefaultargs") TopOpeBRep_WPointInterIterator;
 		%feature("autodoc", ":param LI:
-	:type LI: TopOpeBRep_LineInter &
+	:type LI: TopOpeBRep_LineInter
 	:rtype: None") TopOpeBRep_WPointInterIterator;
 		 TopOpeBRep_WPointInterIterator (const TopOpeBRep_LineInter & LI);
 

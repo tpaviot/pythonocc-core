@@ -148,7 +148,7 @@ class CSLib {
 	:param SinTol:
 	:type SinTol: float
 	:param theStatus:
-	:type theStatus: CSLib_DerivativeStatus &
+	:type theStatus: CSLib_DerivativeStatus
 	:param Normal:
 	:type Normal: gp_Dir
 	:rtype: void") Normal;
@@ -172,7 +172,7 @@ class CSLib {
 	:param Done:
 	:type Done: bool
 	:param theStatus:
-	:type theStatus: CSLib_NormalStatus &
+	:type theStatus: CSLib_NormalStatus
 	:param Normal:
 	:type Normal: gp_Dir
 	:rtype: void") Normal;
@@ -188,7 +188,7 @@ class CSLib {
 	:param MagTol:
 	:type MagTol: float
 	:param theStatus:
-	:type theStatus: CSLib_NormalStatus &
+	:type theStatus: CSLib_NormalStatus
 	:param Normal:
 	:type Normal: gp_Dir
 	:rtype: void") Normal;
@@ -216,13 +216,13 @@ class CSLib {
 	:param Vmax:
 	:type Vmax: float
 	:param theStatus:
-	:type theStatus: CSLib_NormalStatus &
+	:type theStatus: CSLib_NormalStatus
 	:param Normal:
 	:type Normal: gp_Dir
 	:param OrderU:
-	:type OrderU: int &
+	:type OrderU: int
 	:param OrderV:
-	:type OrderV: int &
+	:type OrderV: int
 	:rtype: void") Normal;
 		static void Normal (const Standard_Integer MaxOrder,const TColgp_Array2OfVec & DerNUV,const Standard_Real MagTol,const Standard_Real U,const Standard_Real V,const Standard_Real Umin,const Standard_Real Umax,const Standard_Real Vmin,const Standard_Real Vmax,CSLib_NormalStatus & theStatus,gp_Dir & Normal,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -335,7 +335,7 @@ class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 		%feature("autodoc", ":param k0:
 	:type k0: int
 	:param li:
-	:type li: TColStd_Array1OfReal &
+	:type li: TColStd_Array1OfReal
 	:rtype: None") CSLib_NormalPolyDef;
 		 CSLib_NormalPolyDef (const Standard_Integer k0,const TColStd_Array1OfReal & li);
 
@@ -345,7 +345,7 @@ class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 
@@ -355,7 +355,7 @@ class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 
@@ -365,9 +365,9 @@ class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 

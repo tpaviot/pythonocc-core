@@ -96,7 +96,7 @@ class BinObjMgt_Persistent {
 		/****************** GetAsciiString ******************/
 		%feature("compactdefaultargs") GetAsciiString;
 		%feature("autodoc", ":param theValue:
-	:type theValue: TCollection_AsciiString &
+	:type theValue: TCollection_AsciiString
 	:rtype: BinObjMgt_Persistent") GetAsciiString;
 		const BinObjMgt_Persistent & GetAsciiString (TCollection_AsciiString & theValue);
 
@@ -110,7 +110,7 @@ class BinObjMgt_Persistent {
 		/****************** GetByte ******************/
 		%feature("compactdefaultargs") GetByte;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_Byte &
+	:type theValue: Standard_Byte
 	:rtype: BinObjMgt_Persistent") GetByte;
 		const BinObjMgt_Persistent & GetByte (Standard_Byte & theValue);
 
@@ -137,7 +137,7 @@ class BinObjMgt_Persistent {
 		/****************** GetCharacter ******************/
 		%feature("compactdefaultargs") GetCharacter;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_Character &
+	:type theValue: Standard_Character
 	:rtype: BinObjMgt_Persistent") GetCharacter;
 		const BinObjMgt_Persistent & GetCharacter (Standard_Character & theValue);
 
@@ -154,21 +154,21 @@ class BinObjMgt_Persistent {
 		/****************** GetExtCharacter ******************/
 		%feature("compactdefaultargs") GetExtCharacter;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_ExtCharacter &
+	:type theValue: Standard_ExtCharacter
 	:rtype: BinObjMgt_Persistent") GetExtCharacter;
 		const BinObjMgt_Persistent & GetExtCharacter (Standard_ExtCharacter & theValue);
 
 		/****************** GetExtendedString ******************/
 		%feature("compactdefaultargs") GetExtendedString;
 		%feature("autodoc", ":param theValue:
-	:type theValue: TCollection_ExtendedString &
+	:type theValue: TCollection_ExtendedString
 	:rtype: BinObjMgt_Persistent") GetExtendedString;
 		const BinObjMgt_Persistent & GetExtendedString (TCollection_ExtendedString & theValue);
 
 		/****************** GetGUID ******************/
 		%feature("compactdefaultargs") GetGUID;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_GUID &
+	:type theValue: Standard_GUID
 	:rtype: BinObjMgt_Persistent") GetGUID;
 		const BinObjMgt_Persistent & GetGUID (Standard_GUID & theValue);
 
@@ -185,23 +185,23 @@ class BinObjMgt_Persistent {
 		/****************** GetInteger ******************/
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", ":param theValue:
-	:type theValue: int &
+	:type theValue: int
 	:rtype: BinObjMgt_Persistent") GetInteger;
 		const BinObjMgt_Persistent & GetInteger (Standard_Integer &OutValue);
 
 		/****************** GetLabel ******************/
 		%feature("compactdefaultargs") GetLabel;
 		%feature("autodoc", ":param theDS:
-	:type theDS: opencascade::handle<TDF_Data> &
+	:type theDS: TDF_Data
 	:param theValue:
-	:type theValue: TDF_Label &
+	:type theValue: TDF_Label
 	:rtype: BinObjMgt_Persistent") GetLabel;
 		const BinObjMgt_Persistent & GetLabel (const opencascade::handle<TDF_Data> & theDS,TDF_Label & theValue);
 
 		/****************** GetReal ******************/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", ":param theValue:
-	:type theValue: float &
+	:type theValue: float
 	:rtype: BinObjMgt_Persistent") GetReal;
 		const BinObjMgt_Persistent & GetReal (Standard_Real &OutValue);
 
@@ -218,7 +218,7 @@ class BinObjMgt_Persistent {
 		/****************** GetShortReal ******************/
 		%feature("compactdefaultargs") GetShortReal;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_ShortReal &
+	:type theValue: Standard_ShortReal
 	:rtype: BinObjMgt_Persistent") GetShortReal;
 		const BinObjMgt_Persistent & GetShortReal (Standard_ShortReal & theValue);
 
@@ -272,7 +272,7 @@ class BinObjMgt_Persistent {
 		%feature("compactdefaultargs") PutAsciiString;
 		%feature("autodoc", "* Offset in output buffer is word-aligned
 	:param theValue:
-	:type theValue: TCollection_AsciiString &
+	:type theValue: TCollection_AsciiString
 	:rtype: BinObjMgt_Persistent") PutAsciiString;
 		BinObjMgt_Persistent & PutAsciiString (const TCollection_AsciiString & theValue);
 
@@ -346,14 +346,14 @@ class BinObjMgt_Persistent {
 		%feature("compactdefaultargs") PutExtendedString;
 		%feature("autodoc", "* Offset in output buffer is word-aligned
 	:param theValue:
-	:type theValue: TCollection_ExtendedString &
+	:type theValue: TCollection_ExtendedString
 	:rtype: BinObjMgt_Persistent") PutExtendedString;
 		BinObjMgt_Persistent & PutExtendedString (const TCollection_ExtendedString & theValue);
 
 		/****************** PutGUID ******************/
 		%feature("compactdefaultargs") PutGUID;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_GUID &
+	:type theValue: Standard_GUID
 	:rtype: BinObjMgt_Persistent") PutGUID;
 		BinObjMgt_Persistent & PutGUID (const Standard_GUID & theValue);
 
@@ -377,7 +377,7 @@ class BinObjMgt_Persistent {
 		/****************** PutLabel ******************/
 		%feature("compactdefaultargs") PutLabel;
 		%feature("autodoc", ":param theValue:
-	:type theValue: TDF_Label &
+	:type theValue: TDF_Label
 	:rtype: BinObjMgt_Persistent") PutLabel;
 		BinObjMgt_Persistent & PutLabel (const TDF_Label & theValue);
 
@@ -469,28 +469,28 @@ class BinObjMgt_Persistent {
         		/****************** operator >> ******************/
 		%feature("compactdefaultargs") operator >>;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_Character &
+	:type theValue: Standard_Character
 	:rtype: BinObjMgt_Persistent") operator >>;
 		const BinObjMgt_Persistent & operator >> (Standard_Character & theValue);
 
 		/****************** operator >> ******************/
 		%feature("compactdefaultargs") operator >>;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_Byte &
+	:type theValue: Standard_Byte
 	:rtype: BinObjMgt_Persistent") operator >>;
 		const BinObjMgt_Persistent & operator >> (Standard_Byte & theValue);
 
 		/****************** operator >> ******************/
 		%feature("compactdefaultargs") operator >>;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_ExtCharacter &
+	:type theValue: Standard_ExtCharacter
 	:rtype: BinObjMgt_Persistent") operator >>;
 		const BinObjMgt_Persistent & operator >> (Standard_ExtCharacter & theValue);
 
 		/****************** operator >> ******************/
 		%feature("compactdefaultargs") operator >>;
 		%feature("autodoc", ":param theValue:
-	:type theValue: int &
+	:type theValue: int
 	:rtype: BinObjMgt_Persistent") operator >>;
 		const BinObjMgt_Persistent & operator >> (Standard_Integer &OutValue);
 
@@ -504,35 +504,35 @@ class BinObjMgt_Persistent {
 		/****************** operator >> ******************/
 		%feature("compactdefaultargs") operator >>;
 		%feature("autodoc", ":param theValue:
-	:type theValue: float &
+	:type theValue: float
 	:rtype: BinObjMgt_Persistent") operator >>;
 		const BinObjMgt_Persistent & operator >> (Standard_Real &OutValue);
 
 		/****************** operator >> ******************/
 		%feature("compactdefaultargs") operator >>;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_ShortReal &
+	:type theValue: Standard_ShortReal
 	:rtype: BinObjMgt_Persistent") operator >>;
 		const BinObjMgt_Persistent & operator >> (Standard_ShortReal & theValue);
 
 		/****************** operator >> ******************/
 		%feature("compactdefaultargs") operator >>;
 		%feature("autodoc", ":param theValue:
-	:type theValue: TCollection_AsciiString &
+	:type theValue: TCollection_AsciiString
 	:rtype: BinObjMgt_Persistent") operator >>;
 		const BinObjMgt_Persistent & operator >> (TCollection_AsciiString & theValue);
 
 		/****************** operator >> ******************/
 		%feature("compactdefaultargs") operator >>;
 		%feature("autodoc", ":param theValue:
-	:type theValue: TCollection_ExtendedString &
+	:type theValue: TCollection_ExtendedString
 	:rtype: BinObjMgt_Persistent") operator >>;
 		const BinObjMgt_Persistent & operator >> (TCollection_ExtendedString & theValue);
 
 		/****************** operator >> ******************/
 		%feature("compactdefaultargs") operator >>;
 		%feature("autodoc", ":param theValue:
-	:type theValue: Standard_GUID &
+	:type theValue: Standard_GUID
 	:rtype: BinObjMgt_Persistent") operator >>;
 		const BinObjMgt_Persistent & operator >> (Standard_GUID & theValue);
 
@@ -573,7 +573,7 @@ class BinObjMgt_RRelocationTable : public TColStd_DataMapOfIntegerTransient {
 		%feature("compactdefaultargs") SetHeaderData;
 		%feature("autodoc", "* Sets the storage header data. //! @param theHeaderData header data of the file that is begin read
 	:param theHeaderData:
-	:type theHeaderData: opencascade::handle<Storage_HeaderData> &
+	:type theHeaderData: Storage_HeaderData
 	:rtype: None") SetHeaderData;
 		void SetHeaderData (const opencascade::handle<Storage_HeaderData> & theHeaderData);
 

@@ -221,48 +221,48 @@ class HLRAlgo {
 		/****************** AddMinMax ******************/
 		%feature("compactdefaultargs") AddMinMax;
 		%feature("autodoc", ":param IMin:
-	:type IMin: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type IMin: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param IMax:
-	:type IMax: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type IMax: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param OMin:
-	:type OMin: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type OMin: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param OMax:
-	:type OMax: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type OMax: HLRAlgo_EdgesBlock::MinMaxIndices
 	:rtype: void") AddMinMax;
 		static void AddMinMax (HLRAlgo_EdgesBlock::MinMaxIndices & IMin,HLRAlgo_EdgesBlock::MinMaxIndices & IMax,HLRAlgo_EdgesBlock::MinMaxIndices & OMin,HLRAlgo_EdgesBlock::MinMaxIndices & OMax);
 
 		/****************** CopyMinMax ******************/
 		%feature("compactdefaultargs") CopyMinMax;
 		%feature("autodoc", ":param IMin:
-	:type IMin: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type IMin: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param IMax:
-	:type IMax: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type IMax: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param OMin:
-	:type OMin: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type OMin: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param OMax:
-	:type OMax: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type OMax: HLRAlgo_EdgesBlock::MinMaxIndices
 	:rtype: None") CopyMinMax;
 		static void CopyMinMax (HLRAlgo_EdgesBlock::MinMaxIndices & IMin,HLRAlgo_EdgesBlock::MinMaxIndices & IMax,HLRAlgo_EdgesBlock::MinMaxIndices & OMin,HLRAlgo_EdgesBlock::MinMaxIndices & OMax);
 
 		/****************** DecodeMinMax ******************/
 		%feature("compactdefaultargs") DecodeMinMax;
 		%feature("autodoc", ":param MinMax:
-	:type MinMax: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type MinMax: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param Min:
-	:type Min: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type Min: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param Max:
-	:type Max: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type Max: HLRAlgo_EdgesBlock::MinMaxIndices
 	:rtype: void") DecodeMinMax;
 		static void DecodeMinMax (const HLRAlgo_EdgesBlock::MinMaxIndices & MinMax,HLRAlgo_EdgesBlock::MinMaxIndices & Min,HLRAlgo_EdgesBlock::MinMaxIndices & Max);
 
 		/****************** EncodeMinMax ******************/
 		%feature("compactdefaultargs") EncodeMinMax;
 		%feature("autodoc", ":param Min:
-	:type Min: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type Min: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param Max:
-	:type Max: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type Max: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param MinMax:
-	:type MinMax: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type MinMax: HLRAlgo_EdgesBlock::MinMaxIndices
 	:rtype: void") EncodeMinMax;
 		static void EncodeMinMax (HLRAlgo_EdgesBlock::MinMaxIndices & Min,HLRAlgo_EdgesBlock::MinMaxIndices & Max,HLRAlgo_EdgesBlock::MinMaxIndices & MinMax);
 
@@ -291,9 +291,9 @@ class HLRAlgo {
 		/****************** SizeBox ******************/
 		%feature("compactdefaultargs") SizeBox;
 		%feature("autodoc", ":param Min:
-	:type Min: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type Min: HLRAlgo_EdgesBlock::MinMaxIndices
 	:param Max:
-	:type Max: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type Max: HLRAlgo_EdgesBlock::MinMaxIndices
 	:rtype: float") SizeBox;
 		static Standard_Real SizeBox (HLRAlgo_EdgesBlock::MinMaxIndices & Min,HLRAlgo_EdgesBlock::MinMaxIndices & Max);
 
@@ -688,18 +688,18 @@ class HLRAlgo_Coincidence {
 		/****************** State3D ******************/
 		%feature("compactdefaultargs") State3D;
 		%feature("autodoc", ":param stbef:
-	:type stbef: TopAbs_State &
+	:type stbef: TopAbs_State
 	:param staft:
-	:type staft: TopAbs_State &
+	:type staft: TopAbs_State
 	:rtype: None") State3D;
 		void State3D (TopAbs_State & stbef,TopAbs_State & staft);
 
 		/****************** Value2D ******************/
 		%feature("compactdefaultargs") Value2D;
 		%feature("autodoc", ":param FE:
-	:type FE: int &
+	:type FE: int
 	:param Param:
-	:type Param: float &
+	:type Param: float
 	:rtype: None") Value2D;
 		void Value2D (Standard_Integer &OutValue,Standard_Real &OutValue);
 
@@ -728,27 +728,27 @@ class HLRAlgo_EdgeIterator {
 		%feature("compactdefaultargs") Hidden;
 		%feature("autodoc", "* Returns the bounds and the tolerances of the current Hidden Interval
 	:param Start:
-	:type Start: float &
+	:type Start: float
 	:param TolStart:
-	:type TolStart: Standard_ShortReal &
+	:type TolStart: Standard_ShortReal
 	:param End:
-	:type End: float &
+	:type End: float
 	:param TolEnd:
-	:type TolEnd: Standard_ShortReal &
+	:type TolEnd: Standard_ShortReal
 	:rtype: None") Hidden;
 		void Hidden (Standard_Real &OutValue,Standard_ShortReal & TolStart,Standard_Real &OutValue,Standard_ShortReal & TolEnd);
 
 		/****************** InitHidden ******************/
 		%feature("compactdefaultargs") InitHidden;
 		%feature("autodoc", ":param status:
-	:type status: HLRAlgo_EdgeStatus &
+	:type status: HLRAlgo_EdgeStatus
 	:rtype: None") InitHidden;
 		void InitHidden (HLRAlgo_EdgeStatus & status);
 
 		/****************** InitVisible ******************/
 		%feature("compactdefaultargs") InitVisible;
 		%feature("autodoc", ":param status:
-	:type status: HLRAlgo_EdgeStatus &
+	:type status: HLRAlgo_EdgeStatus
 	:rtype: None") InitVisible;
 		void InitVisible (HLRAlgo_EdgeStatus & status);
 
@@ -776,13 +776,13 @@ class HLRAlgo_EdgeIterator {
 		%feature("compactdefaultargs") Visible;
 		%feature("autodoc", "* Returns the bounds and the tolerances of the current Visible Interval
 	:param Start:
-	:type Start: float &
+	:type Start: float
 	:param TolStart:
-	:type TolStart: Standard_ShortReal &
+	:type TolStart: Standard_ShortReal
 	:param End:
-	:type End: float &
+	:type End: float
 	:param TolEnd:
-	:type TolEnd: Standard_ShortReal &
+	:type TolEnd: Standard_ShortReal
 	:rtype: None") Visible;
 		void Visible (Standard_Real &OutValue,Standard_ShortReal & TolStart,Standard_Real &OutValue,Standard_ShortReal & TolEnd);
 
@@ -828,13 +828,13 @@ class HLRAlgo_EdgeStatus {
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", ":param theStart:
-	:type theStart: float &
+	:type theStart: float
 	:param theTolStart:
-	:type theTolStart: Standard_ShortReal &
+	:type theTolStart: Standard_ShortReal
 	:param theEnd:
-	:type theEnd: float &
+	:type theEnd: float
 	:param theTolEnd:
-	:type theTolEnd: Standard_ShortReal &
+	:type theTolEnd: Standard_ShortReal
 	:rtype: None") Bounds;
 		void Bounds (Standard_Real &OutValue,Standard_ShortReal & theTolStart,Standard_Real &OutValue,Standard_ShortReal & theTolEnd);
 
@@ -911,13 +911,13 @@ class HLRAlgo_EdgeStatus {
 		%feature("autodoc", ":param Index:
 	:type Index: int
 	:param Start:
-	:type Start: float &
+	:type Start: float
 	:param TolStart:
-	:type TolStart: Standard_ShortReal &
+	:type TolStart: Standard_ShortReal
 	:param End:
-	:type End: float &
+	:type End: float
 	:param TolEnd:
-	:type TolEnd: Standard_ShortReal &
+	:type TolEnd: Standard_ShortReal
 	:rtype: None") VisiblePart;
 		void VisiblePart (const Standard_Integer Index,Standard_Real &OutValue,Standard_ShortReal & TolStart,Standard_Real &OutValue,Standard_ShortReal & TolEnd);
 
@@ -1066,7 +1066,7 @@ class HLRAlgo_Interference {
 		/****************** Boundary ******************/
 		%feature("compactdefaultargs") Boundary;
 		%feature("autodoc", ":param B:
-	:type B: HLRAlgo_Coincidence &
+	:type B: HLRAlgo_Coincidence
 	:rtype: None") Boundary;
 		void Boundary (const HLRAlgo_Coincidence & B);
 
@@ -1105,9 +1105,9 @@ class HLRAlgo_Interference {
 		/****************** HLRAlgo_Interference ******************/
 		%feature("compactdefaultargs") HLRAlgo_Interference;
 		%feature("autodoc", ":param Inters:
-	:type Inters: HLRAlgo_Intersection &
+	:type Inters: HLRAlgo_Intersection
 	:param Bound:
-	:type Bound: HLRAlgo_Coincidence &
+	:type Bound: HLRAlgo_Coincidence
 	:param Orient:
 	:type Orient: TopAbs_Orientation
 	:param Trans:
@@ -1120,7 +1120,7 @@ class HLRAlgo_Interference {
 		/****************** Intersection ******************/
 		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", ":param I:
-	:type I: HLRAlgo_Intersection &
+	:type I: HLRAlgo_Intersection
 	:rtype: None") Intersection;
 		void Intersection (const HLRAlgo_Intersection & I);
 
@@ -1305,9 +1305,9 @@ class HLRAlgo_PolyAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Hide;
 		%feature("autodoc", "* process hiding between <Pt1> and <Pt2>.
 	:param status:
-	:type status: HLRAlgo_EdgeStatus &
+	:type status: HLRAlgo_EdgeStatus
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:param reg1:
 	:type reg1: bool
 	:param regn:
@@ -1322,7 +1322,7 @@ class HLRAlgo_PolyAlgo : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param HShell:
-	:type HShell: opencascade::handle<TColStd_HArray1OfTransient> &
+	:type HShell: TColStd_HArray1OfTransient
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TColStd_HArray1OfTransient> & HShell);
 
@@ -1365,7 +1365,7 @@ class HLRAlgo_PolyAlgo : public Standard_Transient {
 		%feature("compactdefaultargs") Show;
 		%feature("autodoc", "* process hiding between <Pt1> and <Pt2>.
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:param reg1:
 	:type reg1: bool
 	:param regn:
@@ -1423,21 +1423,21 @@ class HLRAlgo_PolyData : public Standard_Transient {
 		/****************** HNodes ******************/
 		%feature("compactdefaultargs") HNodes;
 		%feature("autodoc", ":param HNodes:
-	:type HNodes: opencascade::handle<TColgp_HArray1OfXYZ>
+	:type HNodes: TColgp_HArray1OfXYZ
 	:rtype: None") HNodes;
 		void HNodes (const opencascade::handle<TColgp_HArray1OfXYZ> & HNodes);
 
 		/****************** HPHDat ******************/
 		%feature("compactdefaultargs") HPHDat;
 		%feature("autodoc", ":param HPHDat:
-	:type HPHDat: opencascade::handle<HLRAlgo_HArray1OfPHDat> &
+	:type HPHDat: HLRAlgo_HArray1OfPHDat
 	:rtype: None") HPHDat;
 		void HPHDat (const opencascade::handle<HLRAlgo_HArray1OfPHDat> & HPHDat);
 
 		/****************** HTData ******************/
 		%feature("compactdefaultargs") HTData;
 		%feature("autodoc", ":param HTData:
-	:type HTData: opencascade::handle<HLRAlgo_HArray1OfTData> &
+	:type HTData: HLRAlgo_HArray1OfTData
 	:rtype: None") HTData;
 		void HTData (const opencascade::handle<HLRAlgo_HArray1OfTData> & HTData);
 
@@ -1481,13 +1481,13 @@ class HLRAlgo_PolyInternalData : public Standard_Transient {
 		/****************** AddNode ******************/
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", ":param Nod1RValues:
-	:type Nod1RValues: HLRAlgo_PolyInternalNode::NodeData &
+	:type Nod1RValues: HLRAlgo_PolyInternalNode::NodeData
 	:param Nod2RValues:
-	:type Nod2RValues: HLRAlgo_PolyInternalNode::NodeData &
+	:type Nod2RValues: HLRAlgo_PolyInternalNode::NodeData
 	:param PINod1:
-	:type PINod1: HLRAlgo_Array1OfPINod * &
+	:type PINod1: HLRAlgo_Array1OfPINod *
 	:param PINod2:
-	:type PINod2: HLRAlgo_Array1OfPINod * &
+	:type PINod2: HLRAlgo_Array1OfPINod *
 	:param coef1:
 	:type coef1: float
 	:param X3:
@@ -1531,27 +1531,27 @@ class HLRAlgo_PolyInternalData : public Standard_Transient {
 		/****************** IncPINod ******************/
 		%feature("compactdefaultargs") IncPINod;
 		%feature("autodoc", ":param PINod1:
-	:type PINod1: HLRAlgo_Array1OfPINod * &
+	:type PINod1: HLRAlgo_Array1OfPINod *
 	:param PINod2:
-	:type PINod2: HLRAlgo_Array1OfPINod * &
+	:type PINod2: HLRAlgo_Array1OfPINod *
 	:rtype: None") IncPINod;
 		void IncPINod (HLRAlgo_Array1OfPINod * & PINod1,HLRAlgo_Array1OfPINod * & PINod2);
 
 		/****************** IncPISeg ******************/
 		%feature("compactdefaultargs") IncPISeg;
 		%feature("autodoc", ":param PISeg1:
-	:type PISeg1: HLRAlgo_Array1OfPISeg * &
+	:type PISeg1: HLRAlgo_Array1OfPISeg *
 	:param PISeg2:
-	:type PISeg2: HLRAlgo_Array1OfPISeg * &
+	:type PISeg2: HLRAlgo_Array1OfPISeg *
 	:rtype: None") IncPISeg;
 		void IncPISeg (HLRAlgo_Array1OfPISeg * & PISeg1,HLRAlgo_Array1OfPISeg * & PISeg2);
 
 		/****************** IncTData ******************/
 		%feature("compactdefaultargs") IncTData;
 		%feature("autodoc", ":param TData1:
-	:type TData1: HLRAlgo_Array1OfTData * &
+	:type TData1: HLRAlgo_Array1OfTData *
 	:param TData2:
-	:type TData2: HLRAlgo_Array1OfTData * &
+	:type TData2: HLRAlgo_Array1OfTData *
 	:rtype: None") IncTData;
 		void IncTData (HLRAlgo_Array1OfTData * & TData1,HLRAlgo_Array1OfTData * & TData2);
 
@@ -1612,11 +1612,11 @@ class HLRAlgo_PolyInternalData : public Standard_Transient {
 		/****************** UpdateLinks ******************/
 		%feature("compactdefaultargs") UpdateLinks;
 		%feature("autodoc", ":param TData:
-	:type TData: HLRAlgo_Array1OfTData * &
+	:type TData: HLRAlgo_Array1OfTData *
 	:param PISeg:
-	:type PISeg: HLRAlgo_Array1OfPISeg * &
+	:type PISeg: HLRAlgo_Array1OfPISeg *
 	:param PINod:
-	:type PINod: HLRAlgo_Array1OfPINod * &
+	:type PINod: HLRAlgo_Array1OfPINod *
 	:rtype: None") UpdateLinks;
 		void UpdateLinks (HLRAlgo_Array1OfTData * & TData,HLRAlgo_Array1OfPISeg * & PISeg,HLRAlgo_Array1OfPINod * & PINod);
 
@@ -1629,17 +1629,17 @@ class HLRAlgo_PolyInternalData : public Standard_Transient {
 	:param ip3:
 	:type ip3: int
 	:param TData1:
-	:type TData1: HLRAlgo_Array1OfTData * &
+	:type TData1: HLRAlgo_Array1OfTData *
 	:param TData2:
-	:type TData2: HLRAlgo_Array1OfTData * &
+	:type TData2: HLRAlgo_Array1OfTData *
 	:param PISeg1:
-	:type PISeg1: HLRAlgo_Array1OfPISeg * &
+	:type PISeg1: HLRAlgo_Array1OfPISeg *
 	:param PISeg2:
-	:type PISeg2: HLRAlgo_Array1OfPISeg * &
+	:type PISeg2: HLRAlgo_Array1OfPISeg *
 	:param PINod1:
-	:type PINod1: HLRAlgo_Array1OfPINod * &
+	:type PINod1: HLRAlgo_Array1OfPINod *
 	:param PINod2:
-	:type PINod2: HLRAlgo_Array1OfPINod * &
+	:type PINod2: HLRAlgo_Array1OfPINod *
 	:rtype: None") UpdateLinks;
 		void UpdateLinks (const Standard_Integer ip1,const Standard_Integer ip2,const Standard_Integer ip3,HLRAlgo_Array1OfTData * & TData1,HLRAlgo_Array1OfTData * & TData2,HLRAlgo_Array1OfPISeg * & PISeg1,HLRAlgo_Array1OfPISeg * & PISeg2,HLRAlgo_Array1OfPINod * & PINod1,HLRAlgo_Array1OfPINod * & PINod2);
 
@@ -1718,7 +1718,7 @@ class HLRAlgo_PolyShellData : public Standard_Transient {
 		/****************** UpdateGlobalMinMax ******************/
 		%feature("compactdefaultargs") UpdateGlobalMinMax;
 		%feature("autodoc", ":param theBox:
-	:type theBox: HLRAlgo_PolyData::Box &
+	:type theBox: HLRAlgo_PolyData::Box
 	:rtype: None") UpdateGlobalMinMax;
 		void UpdateGlobalMinMax (HLRAlgo_PolyData::Box & theBox);
 
@@ -1850,11 +1850,11 @@ class HLRAlgo_Projector {
 	:param P:
 	:type P: gp_Pnt
 	:param X:
-	:type X: float &
+	:type X: float
 	:param Y:
-	:type Y: float &
+	:type Y: float
 	:param Z:
-	:type Z: float &
+	:type Z: float
 	:rtype: None") Project;
 		void Project (const gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1962,14 +1962,14 @@ class HLRAlgo_WiresBlock : public Standard_Transient {
 		%feature("autodoc", ":param I:
 	:type I: int
 	:param W:
-	:type W: opencascade::handle<HLRAlgo_EdgesBlock> &
+	:type W: HLRAlgo_EdgesBlock
 	:rtype: None") Set;
 		void Set (const Standard_Integer I,const opencascade::handle<HLRAlgo_EdgesBlock> & W);
 
 		/****************** UpdateMinMax ******************/
 		%feature("compactdefaultargs") UpdateMinMax;
 		%feature("autodoc", ":param theMinMaxes:
-	:type theMinMaxes: HLRAlgo_EdgesBlock::MinMaxIndices &
+	:type theMinMaxes: HLRAlgo_EdgesBlock::MinMaxIndices
 	:rtype: None") UpdateMinMax;
 		void UpdateMinMax (const HLRAlgo_EdgesBlock::MinMaxIndices & theMinMaxes);
 

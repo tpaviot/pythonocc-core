@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : d5ba0d4
+git revision : e004a14
 
 operating system : debian Linux 4.15.0-70-generic
 
 occt version targeted : 7.4.0
 
-date : 2019-11-20 06:51:34.681431
+date : 2019-12-02 09:35:12.404314
 ############################
 
 [INFO ]  Single process mode
@@ -4423,6 +4423,7 @@ date : 2019-11-20 06:51:34.681431
 [INFO ]  ShapeUpgrade_SplitCurve
 [INFO ]  ShapeUpgrade_SplitSurface
 [INFO ]  ShapeUpgrade_Tool
+[INFO ]  ShapeUpgrade_UnifySameDomain
 [INFO ]  ShapeUpgrade_ConvertSurfaceToBezierBasis
 [INFO ]  ShapeUpgrade_EdgeDivide
 [INFO ]  ShapeUpgrade_FaceDivide
@@ -5643,6 +5644,6 @@ date : 2019-11-20 06:51:34.681431
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 49.96s
+SWIG interface file generation completed in 61.18s
 #################################################
 

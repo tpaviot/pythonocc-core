@@ -232,13 +232,13 @@ class IntCurveSurface_IntersectionPoint {
 	:param P:
 	:type P: gp_Pnt
 	:param USurf:
-	:type USurf: float &
+	:type USurf: float
 	:param VSurf:
-	:type VSurf: float &
+	:type VSurf: float
 	:param UCurv:
-	:type UCurv: float &
+	:type UCurv: float
 	:param TrCurv:
-	:type TrCurv: IntCurveSurface_TransitionOnCurve &
+	:type TrCurv: IntCurveSurface_TransitionOnCurve
 	:rtype: None") Values;
 		void Values (gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,IntCurveSurface_TransitionOnCurve & TrCurv);
 
@@ -271,7 +271,7 @@ class IntCurveSurface_IntersectionSegment {
 		/****************** FirstPoint ******************/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", ":param P1:
-	:type P1: IntCurveSurface_IntersectionPoint &
+	:type P1: IntCurveSurface_IntersectionPoint
 	:rtype: None") FirstPoint;
 		void FirstPoint (IntCurveSurface_IntersectionPoint & P1);
 
@@ -288,16 +288,16 @@ class IntCurveSurface_IntersectionSegment {
 		/****************** IntCurveSurface_IntersectionSegment ******************/
 		%feature("compactdefaultargs") IntCurveSurface_IntersectionSegment;
 		%feature("autodoc", ":param P1:
-	:type P1: IntCurveSurface_IntersectionPoint &
+	:type P1: IntCurveSurface_IntersectionPoint
 	:param P2:
-	:type P2: IntCurveSurface_IntersectionPoint &
+	:type P2: IntCurveSurface_IntersectionPoint
 	:rtype: None") IntCurveSurface_IntersectionSegment;
 		 IntCurveSurface_IntersectionSegment (const IntCurveSurface_IntersectionPoint & P1,const IntCurveSurface_IntersectionPoint & P2);
 
 		/****************** SecondPoint ******************/
 		%feature("compactdefaultargs") SecondPoint;
 		%feature("autodoc", ":param P2:
-	:type P2: IntCurveSurface_IntersectionPoint &
+	:type P2: IntCurveSurface_IntersectionPoint
 	:rtype: None") SecondPoint;
 		void SecondPoint (IntCurveSurface_IntersectionPoint & P2);
 
@@ -309,18 +309,18 @@ class IntCurveSurface_IntersectionSegment {
 		/****************** SetValues ******************/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", ":param P1:
-	:type P1: IntCurveSurface_IntersectionPoint &
+	:type P1: IntCurveSurface_IntersectionPoint
 	:param P2:
-	:type P2: IntCurveSurface_IntersectionPoint &
+	:type P2: IntCurveSurface_IntersectionPoint
 	:rtype: None") SetValues;
 		void SetValues (const IntCurveSurface_IntersectionPoint & P1,const IntCurveSurface_IntersectionPoint & P2);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param P1:
-	:type P1: IntCurveSurface_IntersectionPoint &
+	:type P1: IntCurveSurface_IntersectionPoint
 	:param P2:
-	:type P2: IntCurveSurface_IntersectionPoint &
+	:type P2: IntCurveSurface_IntersectionPoint
 	:rtype: None") Values;
 		void Values (IntCurveSurface_IntersectionPoint & P1,IntCurveSurface_IntersectionPoint & P2);
 
@@ -352,18 +352,18 @@ class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivat
 		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Derivatives;
 		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
 
 		/****************** IntCurveSurface_TheCSFunctionOfHInter ******************/
 		%feature("compactdefaultargs") IntCurveSurface_TheCSFunctionOfHInter;
 		%feature("autodoc", ":param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") IntCurveSurface_TheCSFunctionOfHInter;
 		 IntCurveSurface_TheCSFunctionOfHInter (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -390,20 +390,20 @@ class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivat
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:rtype: bool") Value;
 		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", ":param X:
-	:type X: math_Vector &
+	:type X: math_Vector
 	:param F:
-	:type F: math_Vector &
+	:type F: math_Vector
 	:param D:
-	:type D: math_Matrix &
+	:type D: math_Matrix
 	:rtype: bool") Values;
 		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
 
@@ -438,7 +438,7 @@ class IntCurveSurface_TheExactHInter {
 	:param W:
 	:type W: float
 	:param F:
-	:type F: IntCurveSurface_TheCSFunctionOfHInter &
+	:type F: IntCurveSurface_TheCSFunctionOfHInter
 	:param TolTangency:
 	:type TolTangency: float
 	:param MarginCoef: default value is 0.0
@@ -450,7 +450,7 @@ class IntCurveSurface_TheExactHInter {
 		%feature("compactdefaultargs") IntCurveSurface_TheExactHInter;
 		%feature("autodoc", "* initialize the parameters to compute the solution
 	:param F:
-	:type F: IntCurveSurface_TheCSFunctionOfHInter &
+	:type F: IntCurveSurface_TheCSFunctionOfHInter
 	:param TolTangency:
 	:type TolTangency: float
 	:rtype: None") IntCurveSurface_TheExactHInter;
@@ -475,9 +475,9 @@ class IntCurveSurface_TheExactHInter {
 		/****************** ParameterOnSurface ******************/
 		%feature("compactdefaultargs") ParameterOnSurface;
 		%feature("autodoc", ":param U:
-	:type U: float &
+	:type U: float
 	:param V:
-	:type V: float &
+	:type V: float
 	:rtype: None") ParameterOnSurface;
 		void ParameterOnSurface (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -491,7 +491,7 @@ class IntCurveSurface_TheExactHInter {
 	:param W:
 	:type W: float
 	:param Rsnld:
-	:type Rsnld: math_FunctionSetRoot &
+	:type Rsnld: math_FunctionSetRoot
 	:param u0:
 	:type u0: float
 	:param v0:
@@ -530,28 +530,28 @@ class IntCurveSurface_TheHCurveTool {
 		/****************** BSpline ******************/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: opencascade::handle<Geom_BSplineCurve>") BSpline;
 		static opencascade::handle<Geom_BSplineCurve> BSpline (const opencascade::handle<Adaptor3d_HCurve> & C);
 
 		/****************** Bezier ******************/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: opencascade::handle<Geom_BezierCurve>") Bezier;
 		static opencascade::handle<Geom_BezierCurve> Bezier (const opencascade::handle<Adaptor3d_HCurve> & C);
 
 		/****************** Circle ******************/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: gp_Circ") Circle;
 		static gp_Circ Circle (const opencascade::handle<Adaptor3d_HCurve> & C);
 
 		/****************** Continuity ******************/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: GeomAbs_Shape") Continuity;
 		static GeomAbs_Shape Continuity (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -559,7 +559,7 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param P:
@@ -571,7 +571,7 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param P:
@@ -585,7 +585,7 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param P:
@@ -601,7 +601,7 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param P:
@@ -619,7 +619,7 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:param N:
@@ -630,14 +630,14 @@ class IntCurveSurface_TheHCurveTool {
 		/****************** Ellipse ******************/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: gp_Elips") Ellipse;
 		static gp_Elips Ellipse (const opencascade::handle<Adaptor3d_HCurve> & C);
 
 		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: float") FirstParameter;
 		static Standard_Real FirstParameter (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -645,14 +645,14 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: GeomAbs_CurveType") GetType;
 		static GeomAbs_CurveType GetType (const opencascade::handle<Adaptor3d_HCurve> & C);
 
 		/****************** Hyperbola ******************/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: gp_Hypr") Hyperbola;
 		static gp_Hypr Hyperbola (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -660,9 +660,9 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param T:
-	:type T: TColStd_Array1OfReal &
+	:type T: TColStd_Array1OfReal
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: None") Intervals;
@@ -671,28 +671,28 @@ class IntCurveSurface_TheHCurveTool {
 		/****************** IsClosed ******************/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: bool") IsClosed;
 		static Standard_Boolean IsClosed (const opencascade::handle<Adaptor3d_HCurve> & C);
 
 		/****************** IsPeriodic ******************/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: bool") IsPeriodic;
 		static Standard_Boolean IsPeriodic (const opencascade::handle<Adaptor3d_HCurve> & C);
 
 		/****************** LastParameter ******************/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: float") LastParameter;
 		static Standard_Real LastParameter (const opencascade::handle<Adaptor3d_HCurve> & C);
 
 		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: gp_Lin") Line;
 		static gp_Lin Line (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -700,7 +700,7 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "* Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param S:
 	:type S: GeomAbs_Shape
 	:rtype: int") NbIntervals;
@@ -709,7 +709,7 @@ class IntCurveSurface_TheHCurveTool {
 		/****************** NbSamples ******************/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U0:
 	:type U0: float
 	:param U1:
@@ -720,14 +720,14 @@ class IntCurveSurface_TheHCurveTool {
 		/****************** Parabola ******************/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: gp_Parab") Parabola;
 		static gp_Parab Parabola (const opencascade::handle<Adaptor3d_HCurve> & C);
 
 		/****************** Period ******************/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: float") Period;
 		static Standard_Real Period (const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -735,7 +735,7 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "* Returns the parametric resolution corresponding to the real space resolution <R3d>.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param R3d:
 	:type R3d: float
 	:rtype: float") Resolution;
@@ -744,7 +744,7 @@ class IntCurveSurface_TheHCurveTool {
 		/****************** SamplePars ******************/
 		%feature("compactdefaultargs") SamplePars;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U0:
 	:type U0: float
 	:param U1:
@@ -754,7 +754,7 @@ class IntCurveSurface_TheHCurveTool {
 	:param NbMin:
 	:type NbMin: int
 	:param Pars:
-	:type Pars: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Pars: TColStd_HArray1OfReal
 	:rtype: void") SamplePars;
 		static void SamplePars (const opencascade::handle<Adaptor3d_HCurve> & C,const Standard_Real U0,const Standard_Real U1,const Standard_Real Defl,const Standard_Integer NbMin,opencascade::handle<TColStd_HArray1OfReal> & Pars);
 
@@ -762,7 +762,7 @@ class IntCurveSurface_TheHCurveTool {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Computes the point of parameter U on the curve.
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:param U:
 	:type U: float
 	:rtype: gp_Pnt") Value;
@@ -793,9 +793,9 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") IntCurveSurface_TheInterferenceOfHInter;
 		%feature("autodoc", "* Constructs and computes an interference between the Polygon and the Polyhedron.
 	:param thePolyg:
-	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: None") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -805,7 +805,7 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 	:param theLin:
 	:type theLin: gp_Lin
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: None") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const gp_Lin & theLin,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -813,9 +813,9 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") IntCurveSurface_TheInterferenceOfHInter;
 		%feature("autodoc", "* Constructs and computes an interference between the Straight Lines and the Polyhedron.
 	:param theLins:
-	:type theLins: Intf_Array1OfLin &
+	:type theLins: Intf_Array1OfLin
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: None") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const Intf_Array1OfLin & theLins,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -823,11 +823,11 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") IntCurveSurface_TheInterferenceOfHInter;
 		%feature("autodoc", "* Constructs and computes an interference between the Polygon and the Polyhedron.
 	:param thePolyg:
-	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -837,9 +837,9 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 	:param theLin:
 	:type theLin: gp_Lin
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const gp_Lin & theLin,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -847,11 +847,11 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") IntCurveSurface_TheInterferenceOfHInter;
 		%feature("autodoc", "* Constructs and computes an interference between the Straight Lines and the Polyhedron.
 	:param theLins:
-	:type theLins: Intf_Array1OfLin &
+	:type theLins: Intf_Array1OfLin
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") IntCurveSurface_TheInterferenceOfHInter;
 		 IntCurveSurface_TheInterferenceOfHInter (const Intf_Array1OfLin & theLins,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -859,11 +859,11 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") Interference;
 		%feature("autodoc", "* Compares the boundings between the segment of <thePolyg> and the facets of <thePolyh>.
 	:param thePolyg:
-	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") Interference;
 		void Interference (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -871,9 +871,9 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") Interference;
 		%feature("autodoc", "* Compares the boundings between the segment of <thePolyg> and the facets of <thePolyh>.
 	:param thePolyg:
-	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: None") Interference;
 		void Interference (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -881,9 +881,9 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes an interference between the Polygon and the Polyhedron.
 	:param thePolyg:
-	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: None") Perform;
 		void Perform (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -893,7 +893,7 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 	:param theLin:
 	:type theLin: gp_Lin
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & theLin,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -901,9 +901,9 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes an interference between the Straight Lines and the Polyhedron.
 	:param theLins:
-	:type theLins: Intf_Array1OfLin &
+	:type theLins: Intf_Array1OfLin
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: None") Perform;
 		void Perform (const Intf_Array1OfLin & theLins,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -911,11 +911,11 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes an interference between the Polygon and the Polyhedron.
 	:param thePolyg:
-	:type thePolyg: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolyg: IntCurveSurface_ThePolygonOfHInter
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") Perform;
 		void Perform (const IntCurveSurface_ThePolygonOfHInter & thePolyg,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -925,9 +925,9 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 	:param theLin:
 	:type theLin: gp_Lin
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & theLin,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -935,11 +935,11 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes an interference between the Straight Lines and the Polyhedron.
 	:param theLins:
-	:type theLins: Intf_Array1OfLin &
+	:type theLins: Intf_Array1OfLin
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param theBoundSB:
-	:type theBoundSB: Bnd_BoundSortBox &
+	:type theBoundSB: Bnd_BoundSortBox
 	:rtype: None") Perform;
 		void Perform (const Intf_Array1OfLin & theLins,const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,Bnd_BoundSortBox & theBoundSB);
 
@@ -1021,7 +1021,7 @@ class IntCurveSurface_ThePolygonOfHInter {
 		/****************** IntCurveSurface_ThePolygonOfHInter ******************/
 		%feature("compactdefaultargs") IntCurveSurface_ThePolygonOfHInter;
 		%feature("autodoc", ":param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param NbPnt:
 	:type NbPnt: int
 	:rtype: None") IntCurveSurface_ThePolygonOfHInter;
@@ -1030,7 +1030,7 @@ class IntCurveSurface_ThePolygonOfHInter {
 		/****************** IntCurveSurface_ThePolygonOfHInter ******************/
 		%feature("compactdefaultargs") IntCurveSurface_ThePolygonOfHInter;
 		%feature("autodoc", ":param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param U1:
 	:type U1: float
 	:param U2:
@@ -1043,9 +1043,9 @@ class IntCurveSurface_ThePolygonOfHInter {
 		/****************** IntCurveSurface_ThePolygonOfHInter ******************/
 		%feature("compactdefaultargs") IntCurveSurface_ThePolygonOfHInter;
 		%feature("autodoc", ":param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param Upars:
-	:type Upars: TColStd_Array1OfReal &
+	:type Upars: TColStd_Array1OfReal
 	:rtype: None") IntCurveSurface_ThePolygonOfHInter;
 		 IntCurveSurface_ThePolygonOfHInter (const opencascade::handle<Adaptor3d_HCurve> & Curve,const TColStd_Array1OfReal & Upars);
 
@@ -1086,7 +1086,7 @@ class IntCurveSurface_ThePolygonToolOfHInter {
 		%feature("compactdefaultargs") BeginOfSeg;
 		%feature("autodoc", "* Give the point of range Index in the Polygon.
 	:param thePolygon:
-	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter
 	:param Index:
 	:type Index: int
 	:rtype: gp_Pnt") BeginOfSeg;
@@ -1096,28 +1096,28 @@ class IntCurveSurface_ThePolygonToolOfHInter {
 		%feature("compactdefaultargs") Bounding;
 		%feature("autodoc", "* Give the bounding box of the polygon.
 	:param thePolygon:
-	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter
 	:rtype: Bnd_Box") Bounding;
 		static const Bnd_Box & Bounding (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
 		/****************** Closed ******************/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", ":param thePolygon:
-	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter
 	:rtype: bool") Closed;
 		static Standard_Boolean Closed (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
 		/****************** DeflectionOverEstimation ******************/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", ":param thePolygon:
-	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter
 	:rtype: float") DeflectionOverEstimation;
 		static Standard_Real DeflectionOverEstimation (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", ":param thePolygon:
-	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter
 	:rtype: void") Dump;
 		static void Dump (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
@@ -1125,7 +1125,7 @@ class IntCurveSurface_ThePolygonToolOfHInter {
 		%feature("compactdefaultargs") EndOfSeg;
 		%feature("autodoc", "* Give the point of range Index in the Polygon.
 	:param thePolygon:
-	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter
 	:param Index:
 	:type Index: int
 	:rtype: gp_Pnt") EndOfSeg;
@@ -1134,7 +1134,7 @@ class IntCurveSurface_ThePolygonToolOfHInter {
 		/****************** NbSegments ******************/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", ":param thePolygon:
-	:type thePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:type thePolygon: IntCurveSurface_ThePolygonOfHInter
 	:rtype: int") NbSegments;
 		static Standard_Integer NbSegments (const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
@@ -1159,7 +1159,7 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 		%feature("compactdefaultargs") Bounding;
 		%feature("autodoc", "* Give the bounding box of the PolyhedronTool.
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: Bnd_Box") Bounding;
 		static const Bnd_Box & Bounding (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1167,7 +1167,7 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 		%feature("compactdefaultargs") ComponentsBounding;
 		%feature("autodoc", "* Give the array of boxes. The box <n> corresponding to the triangle <n>.
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: opencascade::handle<Bnd_HArray1OfBox>") ComponentsBounding;
 		static const opencascade::handle<Bnd_HArray1OfBox> & ComponentsBounding (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1175,14 +1175,14 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "* Give the tolerance of the polygon.
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: float") DeflectionOverEstimation;
 		static Standard_Real DeflectionOverEstimation (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", ":param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: void") Dump;
 		static void Dump (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1190,7 +1190,7 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 		%feature("compactdefaultargs") GetBorderDeflection;
 		%feature("autodoc", "* This method returns a border deflection of the polyhedron.
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: float") GetBorderDeflection;
 		static Standard_Real GetBorderDeflection (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1198,7 +1198,7 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 		%feature("compactdefaultargs") IsOnBound;
 		%feature("autodoc", "* This method returns true if the edge based on points with indices Index1 and Index2 represents a boundary edge. It is necessary to take into account the boundary deflection for this edge.
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param Index1:
 	:type Index1: int
 	:param Index2:
@@ -1210,7 +1210,7 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 		%feature("compactdefaultargs") NbTriangles;
 		%feature("autodoc", "* Give the number of triangles in this polyedral surface.
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: int") NbTriangles;
 		static Standard_Integer NbTriangles (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
@@ -1218,7 +1218,7 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "* Give the point of index i in the polyedral surface.
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param Index:
 	:type Index: int
 	:rtype: gp_Pnt") Point;
@@ -1228,7 +1228,7 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 		%feature("compactdefaultargs") TriConnex;
 		%feature("autodoc", "* Give the addresse Tricon of the triangle connexe to the triangle of address Triang by the edge Pivot Pedge and the third point of this connexe triangle. When we are on a free edge TriCon==0 but the function return the value of the triangle in the other side of Pivot on the free edge. Used to turn around a vertex.
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param Triang:
 	:type Triang: int
 	:param Pivot:
@@ -1236,9 +1236,9 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 	:param Pedge:
 	:type Pedge: int
 	:param TriCon:
-	:type TriCon: int &
+	:type TriCon: int
 	:param OtherP:
-	:type OtherP: int &
+	:type OtherP: int
 	:rtype: int") TriConnex;
 		static Standard_Integer TriConnex (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,const Standard_Integer Triang,const Standard_Integer Pivot,const Standard_Integer Pedge,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1246,15 +1246,15 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 		%feature("compactdefaultargs") Triangle;
 		%feature("autodoc", "* Give the indices of the 3 points of the triangle of address Index in the PolyhedronTool.
 	:param thePolyh:
-	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter &
+	:type thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 	:param Index:
 	:type Index: int
 	:param P1:
-	:type P1: int &
+	:type P1: int
 	:param P2:
-	:type P2: int &
+	:type P2: int
 	:param P3:
-	:type P3: int &
+	:type P3: int
 	:rtype: None") Triangle;
 		static void Triangle (const IntCurveSurface_ThePolyhedronOfHInter & thePolyh,const Standard_Integer Index,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1277,9 +1277,9 @@ class IntCurveSurface_TheQuadCurvExactHInter {
 		%feature("compactdefaultargs") IntCurveSurface_TheQuadCurvExactHInter;
 		%feature("autodoc", "* Provides the signed distance function : Q(w) and its first derivative dQ(w)/dw
 	:param S:
-	:type S: opencascade::handle<Adaptor3d_HSurface> &
+	:type S: Adaptor3d_HSurface
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") IntCurveSurface_TheQuadCurvExactHInter;
 		 IntCurveSurface_TheQuadCurvExactHInter (const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1289,9 +1289,9 @@ class IntCurveSurface_TheQuadCurvExactHInter {
 	:param Index:
 	:type Index: int
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: None") Intervals;
 		void Intervals (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1338,7 +1338,7 @@ class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_Func
 	:param Param:
 	:type Param: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real Param,Standard_Real &OutValue);
 
@@ -1346,9 +1346,9 @@ class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_Func
 		%feature("compactdefaultargs") IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter;
 		%feature("autodoc", "* Create the function.
 	:param Q:
-	:type Q: IntSurf_Quadric &
+	:type Q: IntSurf_Quadric
 	:param C:
-	:type C: opencascade::handle<Adaptor3d_HCurve> &
+	:type C: Adaptor3d_HCurve
 	:rtype: None") IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter;
 		 IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter (const IntSurf_Quadric & Q,const opencascade::handle<Adaptor3d_HCurve> & C);
 
@@ -1358,7 +1358,7 @@ class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_Func
 	:param Param:
 	:type Param: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real Param,Standard_Real &OutValue);
 
@@ -1368,9 +1368,9 @@ class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_Func
 	:param Param:
 	:type Param: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real Param,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1399,9 +1399,9 @@ class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Compute the Intersection between the curve and the surface
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param Surface:
-	:type Surface: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surface: Adaptor3d_HSurface
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Adaptor3d_HCurve> & Curve,const opencascade::handle<Adaptor3d_HSurface> & Surface);
 
@@ -1409,11 +1409,11 @@ class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon : <Polygon> is given.
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param Polygon:
-	:type Polygon: IntCurveSurface_ThePolygonOfHInter &
+	:type Polygon: IntCurveSurface_ThePolygonOfHInter
 	:param Surface:
-	:type Surface: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surface: Adaptor3d_HSurface
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Adaptor3d_HCurve> & Curve,const IntCurveSurface_ThePolygonOfHInter & Polygon,const opencascade::handle<Adaptor3d_HSurface> & Surface);
 
@@ -1421,13 +1421,13 @@ class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon : <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param ThePolygon:
-	:type ThePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:type ThePolygon: IntCurveSurface_ThePolygonOfHInter
 	:param Surface:
-	:type Surface: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surface: Adaptor3d_HSurface
 	:param Polyhedron:
-	:type Polyhedron: IntCurveSurface_ThePolyhedronOfHInter &
+	:type Polyhedron: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Adaptor3d_HCurve> & Curve,const IntCurveSurface_ThePolygonOfHInter & ThePolygon,const opencascade::handle<Adaptor3d_HSurface> & Surface,const IntCurveSurface_ThePolyhedronOfHInter & Polyhedron);
 
@@ -1435,15 +1435,15 @@ class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon : <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param ThePolygon:
-	:type ThePolygon: IntCurveSurface_ThePolygonOfHInter &
+	:type ThePolygon: IntCurveSurface_ThePolygonOfHInter
 	:param Surface:
-	:type Surface: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surface: Adaptor3d_HSurface
 	:param Polyhedron:
-	:type Polyhedron: IntCurveSurface_ThePolyhedronOfHInter &
+	:type Polyhedron: IntCurveSurface_ThePolyhedronOfHInter
 	:param BndBSB:
-	:type BndBSB: Bnd_BoundSortBox &
+	:type BndBSB: Bnd_BoundSortBox
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Adaptor3d_HCurve> & Curve,const IntCurveSurface_ThePolygonOfHInter & ThePolygon,const opencascade::handle<Adaptor3d_HSurface> & Surface,const IntCurveSurface_ThePolyhedronOfHInter & Polyhedron,Bnd_BoundSortBox & BndBSB);
 
@@ -1451,11 +1451,11 @@ class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Compute the Intersection between the curve and the surface. The Surface is already sampled and its polyhedron : <Polyhedron> is given.
 	:param Curve:
-	:type Curve: opencascade::handle<Adaptor3d_HCurve> &
+	:type Curve: Adaptor3d_HCurve
 	:param Surface:
-	:type Surface: opencascade::handle<Adaptor3d_HSurface> &
+	:type Surface: Adaptor3d_HSurface
 	:param Polyhedron:
-	:type Polyhedron: IntCurveSurface_ThePolyhedronOfHInter &
+	:type Polyhedron: IntCurveSurface_ThePolyhedronOfHInter
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Adaptor3d_HCurve> & Curve,const opencascade::handle<Adaptor3d_HSurface> & Surface,const IntCurveSurface_ThePolyhedronOfHInter & Polyhedron);
 

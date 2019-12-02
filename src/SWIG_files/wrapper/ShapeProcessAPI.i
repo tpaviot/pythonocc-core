@@ -110,7 +110,7 @@ class ShapeProcessAPI_ApplySequence {
 		%feature("compactdefaultargs") PrepareShape;
 		%feature("autodoc", "* Performs sequence of operators stored in myRsc. If <fillmap> is True adds history 'shape-shape' into myMap for shape and its subshapes until level <until> (included). If <until> is TopAbs_SHAPE, all the subshapes are considered.
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param fillmap: default value is Standard_False
 	:type fillmap: bool
 	:param until: default value is TopAbs_SHAPE

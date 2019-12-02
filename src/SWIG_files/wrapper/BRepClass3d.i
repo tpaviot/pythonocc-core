@@ -101,7 +101,7 @@ class BRepClass3d {
 		%feature("compactdefaultargs") OuterShell;
 		%feature("autodoc", "* Returns the outer most shell of <S>. Returns a Null shell if <S> has no outer shell. If <S> has only one shell, then it will return, without checking orientation.
 	:param S:
-	:type S: TopoDS_Solid &
+	:type S: TopoDS_Solid
 	:rtype: TopoDS_Shell") OuterShell;
 		static TopoDS_Shell OuterShell (const TopoDS_Solid & S);
 
@@ -154,7 +154,7 @@ class BRepClass3d_Intersector3d {
 	:param Tol:
 	:type Tol: float
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & L,const Standard_Real Prm,const Standard_Real Tol,const TopoDS_Face & F);
 
@@ -219,7 +219,7 @@ class BRepClass3d_SClassifier {
 		%feature("compactdefaultargs") BRepClass3d_SClassifier;
 		%feature("autodoc", "* Constructor to classify the point P with the tolerance Tol on the solid S.
 	:param S:
-	:type S: BRepClass3d_SolidExplorer &
+	:type S: BRepClass3d_SolidExplorer
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
@@ -243,7 +243,7 @@ class BRepClass3d_SClassifier {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Classify the point P with the tolerance Tol on the solid S.
 	:param S:
-	:type S: BRepClass3d_SolidExplorer &
+	:type S: BRepClass3d_SolidExplorer
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
@@ -255,7 +255,7 @@ class BRepClass3d_SClassifier {
 		%feature("compactdefaultargs") PerformInfinitePoint;
 		%feature("autodoc", "* Classify an infinite point with the tolerance Tol on the solid S.
 	:param S:
-	:type S: BRepClass3d_SolidExplorer &
+	:type S: BRepClass3d_SolidExplorer
 	:param Tol:
 	:type Tol: float
 	:rtype: None") PerformInfinitePoint;
@@ -296,7 +296,7 @@ class BRepClass3d_SolidExplorer {
 		/****************** BRepClass3d_SolidExplorer ******************/
 		%feature("compactdefaultargs") BRepClass3d_SolidExplorer;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") BRepClass3d_SolidExplorer;
 		 BRepClass3d_SolidExplorer (const TopoDS_Shape & S);
 
@@ -339,41 +339,41 @@ class BRepClass3d_SolidExplorer {
 		%feature("compactdefaultargs") FindAPointInTheFace;
 		%feature("autodoc", "* compute a point P in the face F. Param is a Real in ]0,1[ and is used to initialise the algorithm. For different values , different points are returned.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt
 	:param Param:
-	:type Param: float &
+	:type Param: float
 	:rtype: bool") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue);
 
 		/****************** FindAPointInTheFace ******************/
 		%feature("compactdefaultargs") FindAPointInTheFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:param Param:
-	:type Param: float &
+	:type Param: float
 	:rtype: bool") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** FindAPointInTheFace ******************/
 		%feature("compactdefaultargs") FindAPointInTheFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:param Param:
-	:type Param: float &
+	:type Param: float
 	:param theVecD1U:
 	:type theVecD1U: gp_Vec
 	:param theVecD1V:
@@ -384,20 +384,20 @@ class BRepClass3d_SolidExplorer {
 		/****************** FindAPointInTheFace ******************/
 		%feature("compactdefaultargs") FindAPointInTheFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:rtype: bool") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue);
 
 		/****************** FindAPointInTheFace ******************/
 		%feature("compactdefaultargs") FindAPointInTheFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt
 	:rtype: bool") FindAPointInTheFace;
@@ -406,11 +406,11 @@ class BRepClass3d_SolidExplorer {
 		/****************** FindAPointInTheFace ******************/
 		%feature("compactdefaultargs") FindAPointInTheFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:rtype: bool") FindAPointInTheFace;
 		static Standard_Boolean FindAPointInTheFace (const TopoDS_Face & F,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -446,7 +446,7 @@ class BRepClass3d_SolidExplorer {
 		/****************** InitShape ******************/
 		%feature("compactdefaultargs") InitShape;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") InitShape;
 		void InitShape (const TopoDS_Shape & S);
 
@@ -459,7 +459,7 @@ class BRepClass3d_SolidExplorer {
 		/****************** Intersector ******************/
 		%feature("compactdefaultargs") Intersector;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:rtype: IntCurvesFace_Intersector") Intersector;
 		IntCurvesFace_Intersector & Intersector (const TopoDS_Face & F);
 
@@ -495,43 +495,43 @@ class BRepClass3d_SolidExplorer {
 	:param L:
 	:type L: gp_Lin
 	:param Par:
-	:type Par: float &
+	:type Par: float
 	:rtype: int") OtherSegment;
 		Standard_Integer OtherSegment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
 
 		/****************** PointInTheFace ******************/
 		%feature("compactdefaultargs") PointInTheFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:param Param:
-	:type Param: float &
+	:type Param: float
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:rtype: bool") PointInTheFace;
 		Standard_Boolean PointInTheFace (const TopoDS_Face & F,gp_Pnt & P,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Integer &OutValue);
 
 		/****************** PointInTheFace ******************/
 		%feature("compactdefaultargs") PointInTheFace;
 		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:param Param:
-	:type Param: float &
+	:type Param: float
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:param surf:
-	:type surf: opencascade::handle<BRepAdaptor_HSurface> &
+	:type surf: BRepAdaptor_HSurface
 	:param u1:
 	:type u1: float
 	:param v1:
@@ -547,19 +547,19 @@ class BRepClass3d_SolidExplorer {
 		%feature("compactdefaultargs") PointInTheFace;
 		%feature("autodoc", "* <Index> gives point index to search from and returns point index of succeseful search
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param P:
 	:type P: gp_Pnt
 	:param u:
-	:type u: float &
+	:type u: float
 	:param v:
-	:type v: float &
+	:type v: float
 	:param Param:
-	:type Param: float &
+	:type Param: float
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:param surf:
-	:type surf: opencascade::handle<BRepAdaptor_HSurface> &
+	:type surf: BRepAdaptor_HSurface
 	:param u1:
 	:type u1: float
 	:param v1:
@@ -607,7 +607,7 @@ class BRepClass3d_SolidExplorer {
 	:param L:
 	:type L: gp_Lin
 	:param Par:
-	:type Par: float &
+	:type Par: float
 	:rtype: int") Segment;
 		Standard_Integer Segment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
 
@@ -636,7 +636,7 @@ class BRepClass3d_SolidPassiveClassifier {
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "* Updates the classification process with the face <F> from the boundary.
 	:param F:
-	:type F: TopoDS_Face &
+	:type F: TopoDS_Face
 	:param Or:
 	:type Or: TopAbs_Orientation
 	:rtype: None") Compare;
@@ -709,7 +709,7 @@ class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 		%feature("compactdefaultargs") BRepClass3d_SolidClassifier;
 		%feature("autodoc", "* Constructor from a Shape.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") BRepClass3d_SolidClassifier;
 		 BRepClass3d_SolidClassifier (const TopoDS_Shape & S);
 
@@ -717,7 +717,7 @@ class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 		%feature("compactdefaultargs") BRepClass3d_SolidClassifier;
 		%feature("autodoc", "* Constructor to classify the point P with the tolerance Tol on the solid S.
 	:param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:param P:
 	:type P: gp_Pnt
 	:param Tol:
@@ -733,7 +733,7 @@ class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape &
+	:type S: TopoDS_Shape
 	:rtype: None") Load;
 		void Load (const TopoDS_Shape & S);
 

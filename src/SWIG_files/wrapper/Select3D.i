@@ -164,7 +164,7 @@ class Select3D_BVHIndexBuffer : public Graphic3d_Buffer {
 		%feature("compactdefaultargs") Select3D_BVHIndexBuffer;
 		%feature("autodoc", "* Empty constructor.
 	:param theAlloc:
-	:type theAlloc: opencascade::handle<NCollection_BaseAllocator> &
+	:type theAlloc: NCollection_BaseAllocator
 	:rtype: None") Select3D_BVHIndexBuffer;
 		 Select3D_BVHIndexBuffer (const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
 
@@ -268,7 +268,7 @@ class Select3D_PointData {
 		%feature("autodoc", ":param theIndex:
 	:type theIndex: int
 	:param theValue:
-	:type theValue: Select3D_Pnt &
+	:type theValue: Select3D_Pnt
 	:rtype: None") SetPnt;
 		void SetPnt (const Standard_Integer theIndex,const Select3D_Pnt & theValue);
 
@@ -325,9 +325,9 @@ class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Checks whether the box overlaps current selecting volume
 	:param theMgr:
-	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:type theMgr: SelectBasics_SelectingVolumeManager
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
 
@@ -341,9 +341,9 @@ class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Select3D_SensitiveBox;
 		%feature("autodoc", "* Constructs a sensitive box object defined by the owner theOwnerId, and the box theBox.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param theBox:
-	:type theBox: Bnd_Box &
+	:type theBox: Bnd_Box
 	:rtype: None") Select3D_SensitiveBox;
 		 Select3D_SensitiveBox (const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId,const Bnd_Box & theBox);
 
@@ -351,7 +351,7 @@ class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Select3D_SensitiveBox;
 		%feature("autodoc", "* Constructs a sensitive box object defined by the owner theOwnerId, and the coordinates theXmin, theYMin, theZMin, theXMax, theYMax, theZMax. theXmin, theYMin and theZMin define the minimum point in the front lower left hand corner of the box, and theXMax, theYMax and theZMax define the maximum point in the back upper right hand corner of the box.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param theXMin:
 	:type theXMin: float
 	:param theYMin:
@@ -411,7 +411,7 @@ class Select3D_SensitiveFace : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") GetPoints;
 		%feature("autodoc", "* Initializes the given array theHArrayOfPnt by 3d coordinates of vertices of the face
 	:param theHArrayOfPnt:
-	:type theHArrayOfPnt: opencascade::handle<TColgp_HArray1OfPnt>
+	:type theHArrayOfPnt: TColgp_HArray1OfPnt
 	:rtype: None") GetPoints;
 		void GetPoints (opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
@@ -419,9 +419,9 @@ class Select3D_SensitiveFace : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Checks whether the face overlaps current selecting volume
 	:param theMgr:
-	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:type theMgr: SelectBasics_SelectingVolumeManager
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
 
@@ -435,7 +435,7 @@ class Select3D_SensitiveFace : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Select3D_SensitiveFace;
 		%feature("autodoc", "* Constructs a sensitive face object defined by the owner theOwnerId, the array of points thePoints, and the sensitivity type theType. The array of points is the outer polygon of the geometric face.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePoints:
 	:type thePoints: TColgp_Array1OfPnt
 	:param theType:
@@ -447,9 +447,9 @@ class Select3D_SensitiveFace : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Select3D_SensitiveFace;
 		%feature("autodoc", "* Constructs a sensitive face object defined by the owner theOwnerId, the array of points thePoints, and the sensitivity type theType. The array of points is the outer polygon of the geometric face.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePoints:
-	:type thePoints: opencascade::handle<TColgp_HArray1OfPnt>
+	:type thePoints: TColgp_HArray1OfPnt
 	:param theType:
 	:type theType: Select3D_TypeOfSensitivity
 	:rtype: None") Select3D_SensitiveFace;
@@ -493,9 +493,9 @@ class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Checks whether the point overlaps current selecting volume
 	:param theMgr:
-	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:type theMgr: SelectBasics_SelectingVolumeManager
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
 
@@ -515,7 +515,7 @@ class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Select3D_SensitivePoint;
 		%feature("autodoc", "* Constructs a sensitive point object defined by the owner OwnerId and the point Point.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePoint:
 	:type thePoint: gp_Pnt
 	:rtype: None") Select3D_SensitivePoint;
@@ -573,9 +573,9 @@ class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Checks whether the segment overlaps current selecting volume
 	:param theMgr:
-	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:type theMgr: SelectBasics_SelectingVolumeManager
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
 
@@ -589,7 +589,7 @@ class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Select3D_SensitiveSegment;
 		%feature("autodoc", "* Constructs the sensitive segment object defined by the owner theOwnerId, the points theFirstPnt, theLastPnt
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param theFirstPnt:
 	:type theFirstPnt: gp_Pnt
 	:param theLastPnt:
@@ -674,9 +674,9 @@ class Select3D_SensitiveTriangle : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Checks whether the triangle overlaps current selecting volume
 	:param theMgr:
-	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:type theMgr: SelectBasics_SelectingVolumeManager
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
 
@@ -702,7 +702,7 @@ class Select3D_SensitiveTriangle : public Select3D_SensitiveEntity {
 		%feature("compactdefaultargs") Select3D_SensitiveTriangle;
 		%feature("autodoc", "* Constructs a sensitive triangle object defined by the owner theOwnerId, the points P1, P2, P3, and the type of sensitivity Sensitivity.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePnt0:
 	:type thePnt0: gp_Pnt
 	:param thePnt1:
@@ -765,7 +765,7 @@ class Select3D_InteriorSensitivePointSet : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") GetPoints;
 		%feature("autodoc", "* Initializes the given array theHArrayOfPnt by 3d coordinates of vertices of the whole point set
 	:param theHArrayOfPnt:
-	:type theHArrayOfPnt: opencascade::handle<TColgp_HArray1OfPnt>
+	:type theHArrayOfPnt: TColgp_HArray1OfPnt
 	:rtype: void") GetPoints;
 		virtual void GetPoints (opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
@@ -779,7 +779,7 @@ class Select3D_InteriorSensitivePointSet : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Select3D_InteriorSensitivePointSet;
 		%feature("autodoc", "* Splits the given point set thePoints onto planar convex polygons
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePoints:
 	:type thePoints: TColgp_Array1OfPnt
 	:rtype: None") Select3D_InteriorSensitivePointSet;
@@ -822,7 +822,7 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the list of sensitive entities LL to the empty sensitive group object created at construction time.
 	:param theEntities:
-	:type theEntities: Select3D_EntitySequence &
+	:type theEntities: Select3D_EntitySequence
 	:rtype: None") Add;
 		void Add (Select3D_EntitySequence & theEntities);
 
@@ -830,7 +830,7 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the sensitive entity aSensitive to the non-empty sensitive group object created at construction time.
 	:param theSensitive:
-	:type theSensitive: opencascade::handle<Select3D_SensitiveEntity> &
+	:type theSensitive: Select3D_SensitiveEntity
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -885,7 +885,7 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "* Returns true if the sensitive entity aSensitive is in the list used at the time of construction, or added using the function Add.
 	:param theSensitive:
-	:type theSensitive: opencascade::handle<Select3D_SensitiveEntity> &
+	:type theSensitive: Select3D_SensitiveEntity
 	:rtype: bool") IsIn;
 		Standard_Boolean IsIn (const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -905,9 +905,9 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Checks whether the group overlaps current selecting volume
 	:param theMgr:
-	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:type theMgr: SelectBasics_SelectingVolumeManager
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
 
@@ -926,7 +926,7 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 		/****************** Remove ******************/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", ":param theSensitive:
-	:type theSensitive: opencascade::handle<Select3D_SensitiveEntity> &
+	:type theSensitive: Select3D_SensitiveEntity
 	:rtype: None") Remove;
 		void Remove (const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -934,7 +934,7 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Select3D_SensitiveGroup;
 		%feature("autodoc", "* Constructs an empty sensitive group object. This is a set of sensitive 3D entities. The sensitive entities will be defined using the function Add to fill the entity owner OwnerId. If MatchAll is false, nothing can be added.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param theIsMustMatchAll: default value is Standard_True
 	:type theIsMustMatchAll: bool
 	:rtype: None") Select3D_SensitiveGroup;
@@ -944,9 +944,9 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Select3D_SensitiveGroup;
 		%feature("autodoc", "* Constructs a sensitive group object defined by the list TheList and the entity owner OwnerId. If MatchAll is false, nothing is done.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param theEntities:
-	:type theEntities: Select3D_EntitySequence &
+	:type theEntities: Select3D_EntitySequence
 	:param theIsMustMatchAll: default value is Standard_True
 	:type theIsMustMatchAll: bool
 	:rtype: None") Select3D_SensitiveGroup;
@@ -956,7 +956,7 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the owner for all entities in group
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:rtype: None") Set;
 		void Set (const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
@@ -1063,7 +1063,7 @@ class Select3D_SensitivePoly : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Points3D;
 		%feature("autodoc", "* Returns the 3D points of the array used at construction time.
 	:param theHArrayOfPnt:
-	:type theHArrayOfPnt: opencascade::handle<TColgp_HArray1OfPnt>
+	:type theHArrayOfPnt: TColgp_HArray1OfPnt
 	:rtype: None") Points3D;
 		void Points3D (opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
@@ -1071,7 +1071,7 @@ class Select3D_SensitivePoly : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Select3D_SensitivePoly;
 		%feature("autodoc", "* Constructs a sensitive face object defined by the owner OwnerId, the array of points ThePoints, and the sensitivity type Sensitivity. The array of points is the outer polygon of the geometric face.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePoints:
 	:type thePoints: TColgp_Array1OfPnt
 	:param theIsBVHEnabled:
@@ -1083,9 +1083,9 @@ class Select3D_SensitivePoly : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Select3D_SensitivePoly;
 		%feature("autodoc", "* Constructs a sensitive face object defined by the owner OwnerId, the array of points ThePoints, and the sensitivity type Sensitivity. The array of points is the outer polygon of the geometric face.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePoints:
-	:type thePoints: opencascade::handle<TColgp_HArray1OfPnt>
+	:type thePoints: TColgp_HArray1OfPnt
 	:param theIsBVHEnabled:
 	:type theIsBVHEnabled: bool
 	:rtype: None") Select3D_SensitivePoly;
@@ -1095,7 +1095,7 @@ class Select3D_SensitivePoly : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Select3D_SensitivePoly;
 		%feature("autodoc", "* Constructs the sensitive circle object defined by the owner OwnerId, the circle Circle, the Boolean FilledCircle and the number of points NbOfPoints.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param theIsBVHEnabled:
 	:type theIsBVHEnabled: bool
 	:param theNbPnts: default value is 6
@@ -1187,11 +1187,11 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") InitPoints;
 		%feature("autodoc", "* Initialize the sensitive object from point set. The sub-set of points can be specified by arguments theIndexLower and theIndexUpper (these are for iterating theIndices, not to restrict the actual index values!). @param theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 @param theIndices index array defining points @param theInitLoc location @param theIndexLower the theIndices range - first value (inclusive), starting from 0 @param theIndexUpper the theIndices range - last value (inclusive), upto theIndices->NbElements-1 @param theToEvalMinMax compute bounding box within initialization @param theNbGroups number of groups to split the vertex array into several parts
 	:param theVerts:
-	:type theVerts: opencascade::handle<Graphic3d_Buffer> &
+	:type theVerts: Graphic3d_Buffer
 	:param theIndices:
-	:type theIndices: opencascade::handle<Graphic3d_IndexBuffer> &
+	:type theIndices: Graphic3d_IndexBuffer
 	:param theInitLoc:
-	:type theInitLoc: TopLoc_Location &
+	:type theInitLoc: TopLoc_Location
 	:param theIndexLower:
 	:type theIndexLower: int
 	:param theIndexUpper:
@@ -1207,11 +1207,11 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") InitPoints;
 		%feature("autodoc", "* Initialize the sensitive object from point set. @param theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 @param theIndices index array to define subset of points @param theInitLoc location @param theToEvalMinMax compute bounding box within initialization @param theNbGroups number of groups to split the vertex array into several parts
 	:param theVerts:
-	:type theVerts: opencascade::handle<Graphic3d_Buffer> &
+	:type theVerts: Graphic3d_Buffer
 	:param theIndices:
-	:type theIndices: opencascade::handle<Graphic3d_IndexBuffer> &
+	:type theIndices: Graphic3d_IndexBuffer
 	:param theInitLoc:
-	:type theInitLoc: TopLoc_Location &
+	:type theInitLoc: TopLoc_Location
 	:param theToEvalMinMax: default value is true
 	:type theToEvalMinMax: bool
 	:param theNbGroups: default value is 1
@@ -1223,9 +1223,9 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") InitPoints;
 		%feature("autodoc", "* Initialize the sensitive object from point set. @param theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 @param theInitLoc location @param theToEvalMinMax compute bounding box within initialization @param theNbGroups number of groups to split the vertex array into several parts
 	:param theVerts:
-	:type theVerts: opencascade::handle<Graphic3d_Buffer> &
+	:type theVerts: Graphic3d_Buffer
 	:param theInitLoc:
-	:type theInitLoc: TopLoc_Location &
+	:type theInitLoc: TopLoc_Location
 	:param theToEvalMinMax: default value is true
 	:type theToEvalMinMax: bool
 	:param theNbGroups: default value is 1
@@ -1237,11 +1237,11 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") InitTriangulation;
 		%feature("autodoc", "* Initialize the sensitive object from triangualtion. The sub-triangulation can be specified by arguments theIndexLower and theIndexUpper (these are for iterating theIndices, not to restrict the actual index values!). @param theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 @param theIndices index array defining triangulation @param theInitLoc location @param theIndexLower the theIndices range - first value (inclusive), starting from 0 and multiple by 3 @param theIndexUpper the theIndices range - last value (inclusive), upto theIndices->NbElements-1 and multiple by 3 @param theToEvalMinMax compute bounding box within initialization @param theNbGroups number of groups to split the vertex array into several parts
 	:param theVerts:
-	:type theVerts: opencascade::handle<Graphic3d_Buffer> &
+	:type theVerts: Graphic3d_Buffer
 	:param theIndices:
-	:type theIndices: opencascade::handle<Graphic3d_IndexBuffer> &
+	:type theIndices: Graphic3d_IndexBuffer
 	:param theInitLoc:
-	:type theInitLoc: TopLoc_Location &
+	:type theInitLoc: TopLoc_Location
 	:param theIndexLower:
 	:type theIndexLower: int
 	:param theIndexUpper:
@@ -1257,11 +1257,11 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") InitTriangulation;
 		%feature("autodoc", "* Initialize the sensitive object from triangualtion. @param theVerts attributes array containing Graphic3d_TOA_POS with type Graphic3d_TOD_VEC3 or Graphic3d_TOD_VEC2 @param theIndices index array defining triangulation @param theInitLoc location @param theToEvalMinMax compute bounding box within initialization @param theNbGroups number of groups to split the vertex array into several parts
 	:param theVerts:
-	:type theVerts: opencascade::handle<Graphic3d_Buffer> &
+	:type theVerts: Graphic3d_Buffer
 	:param theIndices:
-	:type theIndices: opencascade::handle<Graphic3d_IndexBuffer> &
+	:type theIndices: Graphic3d_IndexBuffer
 	:param theInitLoc:
-	:type theInitLoc: TopLoc_Location &
+	:type theInitLoc: TopLoc_Location
 	:param theToEvalMinMax: default value is true
 	:type theToEvalMinMax: bool
 	:param theNbGroups: default value is 1
@@ -1315,9 +1315,9 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Checks whether the sensitive entity is overlapped by current selecting volume.
 	:param theMgr:
-	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:type theMgr: SelectBasics_SelectingVolumeManager
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
 
@@ -1343,7 +1343,7 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Select3D_SensitivePrimitiveArray;
 		%feature("autodoc", "* Constructs an empty sensitive object.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:rtype: None") Select3D_SensitivePrimitiveArray;
 		 Select3D_SensitivePrimitiveArray (const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
@@ -1351,7 +1351,7 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the owner for all entities in group
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:rtype: void") Set;
 		virtual void Set (const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
@@ -1499,7 +1499,7 @@ class Select3D_SensitiveWire : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "* Adds the sensitive entity theSensitive to this framework.
 	:param theSensitive:
-	:type theSensitive: opencascade::handle<Select3D_SensitiveEntity> &
+	:type theSensitive: Select3D_SensitiveEntity
 	:rtype: None") Add;
 		void Add (const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
@@ -1559,7 +1559,7 @@ class Select3D_SensitiveWire : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Select3D_SensitiveWire;
 		%feature("autodoc", "* Constructs a sensitive wire object defined by the owner theOwnerId
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:rtype: None") Select3D_SensitiveWire;
 		 Select3D_SensitiveWire (const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
@@ -1567,7 +1567,7 @@ class Select3D_SensitiveWire : public Select3D_SensitiveSet {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Sets the owner for all entities in wire
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:rtype: void") Set;
 		virtual void Set (const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
@@ -1607,9 +1607,9 @@ class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 		/****************** ArrayBounds ******************/
 		%feature("compactdefaultargs") ArrayBounds;
 		%feature("autodoc", ":param theLow:
-	:type theLow: int &
+	:type theLow: int
 	:param theUp:
-	:type theUp: int &
+	:type theUp: int
 	:rtype: None") ArrayBounds;
 		void ArrayBounds (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -1641,9 +1641,9 @@ class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "* Checks whether the circle overlaps current selecting volume
 	:param theMgr:
-	:type theMgr: SelectBasics_SelectingVolumeManager &
+	:type theMgr: SelectBasics_SelectingVolumeManager
 	:param thePickResult:
-	:type thePickResult: SelectBasics_PickResult &
+	:type thePickResult: SelectBasics_PickResult
 	:rtype: bool") Matches;
 		virtual Standard_Boolean Matches (SelectBasics_SelectingVolumeManager & theMgr,SelectBasics_PickResult & thePickResult);
 
@@ -1651,9 +1651,9 @@ class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 		%feature("compactdefaultargs") Select3D_SensitiveCircle;
 		%feature("autodoc", "* Constructs the sensitive circle object defined by the owner theOwnerId, the circle theCircle, the boolean theIsFilled and the number of points theNbPnts.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param theCircle:
-	:type theCircle: opencascade::handle<Geom_Circle> &
+	:type theCircle: Geom_Circle
 	:param theIsFilled: default value is Standard_False
 	:type theIsFilled: bool
 	:param theNbPnts: default value is 12
@@ -1665,9 +1665,9 @@ class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 		%feature("compactdefaultargs") Select3D_SensitiveCircle;
 		%feature("autodoc", "* Constructs the sensitive arc object defined by the owner theOwnerId, the circle theCircle, the parameters theU1 and theU2, the boolean theIsFilled and the number of points theNbPnts. theU1 and theU2 define the first and last points of the arc on theCircle.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param theCircle:
-	:type theCircle: opencascade::handle<Geom_Circle> &
+	:type theCircle: Geom_Circle
 	:param theU1:
 	:type theU1: float
 	:param theU2:
@@ -1683,9 +1683,9 @@ class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 		%feature("compactdefaultargs") Select3D_SensitiveCircle;
 		%feature("autodoc", "* Constructs the sensitive circle object defined by the owner theOwnerId, the array of triangles thePnts3d, and the boolean theIsFilled. thePnts3d is an array of consecutive triangles on the circle. The triangle i+1 lies on the intersection of the tangents to the circle of i and i+2. Note, that the first point of thePnts3d must be equal to the last point of thePnts3d.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePnts3d:
-	:type thePnts3d: opencascade::handle<TColgp_HArray1OfPnt>
+	:type thePnts3d: TColgp_HArray1OfPnt
 	:param theIsFilled: default value is Standard_False
 	:type theIsFilled: bool
 	:rtype: None") Select3D_SensitiveCircle;
@@ -1695,7 +1695,7 @@ class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 		%feature("compactdefaultargs") Select3D_SensitiveCircle;
 		%feature("autodoc", "* Constructs the sensitive circle object defined by the owner theOwnerId, the array of points thePnts3d, and the boolean theIsFilled. If the length of thePnts3d is more then 1, the first point of thePnts3d must be equal to the last point of thePnts3d.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePnts3d:
 	:type thePnts3d: TColgp_Array1OfPnt
 	:param theIsFilled: default value is Standard_False
@@ -1730,9 +1730,9 @@ class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 		%feature("compactdefaultargs") Select3D_SensitiveCurve;
 		%feature("autodoc", "* Constructs a sensitive curve object defined by the owner theOwnerId, the curve theCurve, and the maximum number of points on the curve: theNbPnts.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param theCurve:
-	:type theCurve: opencascade::handle<Geom_Curve> &
+	:type theCurve: Geom_Curve
 	:param theNbPnts: default value is 17
 	:type theNbPnts: int
 	:rtype: None") Select3D_SensitiveCurve;
@@ -1742,9 +1742,9 @@ class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 		%feature("compactdefaultargs") Select3D_SensitiveCurve;
 		%feature("autodoc", "* Constructs a sensitive curve object defined by the owner theOwnerId and the set of points ThePoints.
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePoints:
-	:type thePoints: opencascade::handle<TColgp_HArray1OfPnt>
+	:type thePoints: TColgp_HArray1OfPnt
 	:rtype: None") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve (const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId,const opencascade::handle<TColgp_HArray1OfPnt> & thePoints);
 
@@ -1752,7 +1752,7 @@ class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 		%feature("compactdefaultargs") Select3D_SensitiveCurve;
 		%feature("autodoc", "* Creation of Sensitive Curve from Points. Warning : This Method should disappear in the next version...
 	:param theOwnerId:
-	:type theOwnerId: opencascade::handle<SelectMgr_EntityOwner> &
+	:type theOwnerId: SelectMgr_EntityOwner
 	:param thePoints:
 	:type thePoints: TColgp_Array1OfPnt
 	:rtype: None") Select3D_SensitiveCurve;

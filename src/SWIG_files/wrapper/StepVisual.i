@@ -822,7 +822,7 @@ class StepVisual_AnnotationPlaneElement : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a IdAttributeSelect Kind Entity that is : 1 -> DraughtingCallout 2 -> StyledItem 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -895,23 +895,23 @@ class StepVisual_AreaInSet : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aArea:
-	:type aArea: opencascade::handle<StepVisual_PresentationArea> &
+	:type aArea: StepVisual_PresentationArea
 	:param aInSet:
-	:type aInSet: opencascade::handle<StepVisual_PresentationSet> &
+	:type aInSet: StepVisual_PresentationSet
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_PresentationArea> & aArea,const opencascade::handle<StepVisual_PresentationSet> & aInSet);
 
 		/****************** SetArea ******************/
 		%feature("compactdefaultargs") SetArea;
 		%feature("autodoc", ":param aArea:
-	:type aArea: opencascade::handle<StepVisual_PresentationArea> &
+	:type aArea: StepVisual_PresentationArea
 	:rtype: None") SetArea;
 		void SetArea (const opencascade::handle<StepVisual_PresentationArea> & aArea);
 
 		/****************** SetInSet ******************/
 		%feature("compactdefaultargs") SetInSet;
 		%feature("autodoc", ":param aInSet:
-	:type aInSet: opencascade::handle<StepVisual_PresentationSet> &
+	:type aInSet: StepVisual_PresentationSet
 	:rtype: None") SetInSet;
 		void SetInSet (const opencascade::handle<StepVisual_PresentationSet> & aInSet);
 
@@ -942,7 +942,7 @@ class StepVisual_AreaOrView : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a AreaOrView Kind Entity that is : 1 -> PresentationArea 2 -> PresentationView 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1079,7 +1079,7 @@ class StepVisual_CameraModelD3MultiClippingInterectionSelect : public StepData_S
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a IdAttributeSelect Kind Entity that is : 1 -> Plane 2 -> CameraModelD3MultiClippingUnion 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1113,16 +1113,16 @@ class StepVisual_CameraModelD3MultiClippingIntersection : public StepGeom_Geomet
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theShapeClipping:
-	:type theShapeClipping: opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> &
+	:type theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
 
 		/****************** SetShapeClipping ******************/
 		%feature("compactdefaultargs") SetShapeClipping;
 		%feature("autodoc", ":param theShapeClipping:
-	:type theShapeClipping: opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> &
+	:type theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
 	:rtype: None") SetShapeClipping;
 		void SetShapeClipping (const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
 
@@ -1157,16 +1157,16 @@ class StepVisual_CameraModelD3MultiClippingUnion : public StepGeom_GeometricRepr
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theShapeClipping:
-	:type theShapeClipping: opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> &
+	:type theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> & theShapeClipping);
 
 		/****************** SetShapeClipping ******************/
 		%feature("compactdefaultargs") SetShapeClipping;
 		%feature("autodoc", ":param theShapeClipping:
-	:type theShapeClipping: opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> &
+	:type theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect
 	:rtype: None") SetShapeClipping;
 		void SetShapeClipping (const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> & theShapeClipping);
 
@@ -1208,7 +1208,7 @@ class StepVisual_CameraModelD3MultiClippingUnionSelect : public StepData_SelectT
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a IdAttributeSelect Kind Entity that is : 1 -> Plane 2 -> CameraModelD3MultiClippingIntersection 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1300,9 +1300,9 @@ class StepVisual_CompositeText : public StepGeom_GeometricRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aCollectedText:
-	:type aCollectedText: opencascade::handle<StepVisual_HArray1OfTextOrCharacter> &
+	:type aCollectedText: StepVisual_HArray1OfTextOrCharacter
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_HArray1OfTextOrCharacter> & aCollectedText);
 
@@ -1314,7 +1314,7 @@ class StepVisual_CompositeText : public StepGeom_GeometricRepresentationItem {
 		/****************** SetCollectedText ******************/
 		%feature("compactdefaultargs") SetCollectedText;
 		%feature("autodoc", ":param aCollectedText:
-	:type aCollectedText: opencascade::handle<StepVisual_HArray1OfTextOrCharacter> &
+	:type aCollectedText: StepVisual_HArray1OfTextOrCharacter
 	:rtype: None") SetCollectedText;
 		void SetCollectedText (const opencascade::handle<StepVisual_HArray1OfTextOrCharacter> & aCollectedText);
 
@@ -1359,13 +1359,13 @@ class StepVisual_CurveStyle : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aCurveFont:
-	:type aCurveFont: StepVisual_CurveStyleFontSelect &
+	:type aCurveFont: StepVisual_CurveStyleFontSelect
 	:param aCurveWidth:
-	:type aCurveWidth: StepBasic_SizeSelect &
+	:type aCurveWidth: StepBasic_SizeSelect
 	:param aCurveColour:
-	:type aCurveColour: opencascade::handle<StepVisual_Colour> &
+	:type aCurveColour: StepVisual_Colour
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepVisual_CurveStyleFontSelect & aCurveFont,const StepBasic_SizeSelect & aCurveWidth,const opencascade::handle<StepVisual_Colour> & aCurveColour);
 
@@ -1377,28 +1377,28 @@ class StepVisual_CurveStyle : public Standard_Transient {
 		/****************** SetCurveColour ******************/
 		%feature("compactdefaultargs") SetCurveColour;
 		%feature("autodoc", ":param aCurveColour:
-	:type aCurveColour: opencascade::handle<StepVisual_Colour> &
+	:type aCurveColour: StepVisual_Colour
 	:rtype: None") SetCurveColour;
 		void SetCurveColour (const opencascade::handle<StepVisual_Colour> & aCurveColour);
 
 		/****************** SetCurveFont ******************/
 		%feature("compactdefaultargs") SetCurveFont;
 		%feature("autodoc", ":param aCurveFont:
-	:type aCurveFont: StepVisual_CurveStyleFontSelect &
+	:type aCurveFont: StepVisual_CurveStyleFontSelect
 	:rtype: None") SetCurveFont;
 		void SetCurveFont (const StepVisual_CurveStyleFontSelect & aCurveFont);
 
 		/****************** SetCurveWidth ******************/
 		%feature("compactdefaultargs") SetCurveWidth;
 		%feature("autodoc", ":param aCurveWidth:
-	:type aCurveWidth: StepBasic_SizeSelect &
+	:type aCurveWidth: StepBasic_SizeSelect
 	:rtype: None") SetCurveWidth;
 		void SetCurveWidth (const StepBasic_SizeSelect & aCurveWidth);
 
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -1428,9 +1428,9 @@ class StepVisual_CurveStyleFont : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aPatternList:
-	:type aPatternList: opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> &
+	:type aPatternList: StepVisual_HArray1OfCurveStyleFontPattern
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> & aPatternList);
 
@@ -1459,14 +1459,14 @@ class StepVisual_CurveStyleFont : public Standard_Transient {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
 		/****************** SetPatternList ******************/
 		%feature("compactdefaultargs") SetPatternList;
 		%feature("autodoc", ":param aPatternList:
-	:type aPatternList: opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> &
+	:type aPatternList: StepVisual_HArray1OfCurveStyleFontPattern
 	:rtype: None") SetPatternList;
 		void SetPatternList (const opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> & aPatternList);
 
@@ -1553,7 +1553,7 @@ class StepVisual_CurveStyleFontSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a CurveStyleFontSelect Kind Entity that is : 1 -> CurveStyleFont 2 -> PreDefinedCurveFont 3 -> ExternallyDefinedCurveFont 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1670,9 +1670,9 @@ class StepVisual_DraughtingCallout : public StepGeom_GeometricRepresentationItem
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Init
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theContents:
-	:type theContents: opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> &
+	:type theContents: StepVisual_HArray1OfDraughtingCalloutElement
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> & theContents);
 
@@ -1686,7 +1686,7 @@ class StepVisual_DraughtingCallout : public StepGeom_GeometricRepresentationItem
 		%feature("compactdefaultargs") SetContents;
 		%feature("autodoc", "* Set field Contents
 	:param theContents:
-	:type theContents: opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> &
+	:type theContents: StepVisual_HArray1OfDraughtingCalloutElement
 	:rtype: inline void") SetContents;
 		inline void SetContents (const opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> & theContents);
 
@@ -1696,7 +1696,7 @@ class StepVisual_DraughtingCallout : public StepGeom_GeometricRepresentationItem
 	:param theNum:
 	:type theNum: int
 	:param theItem:
-	:type theItem: StepVisual_DraughtingCalloutElement &
+	:type theItem: StepVisual_DraughtingCalloutElement
 	:rtype: inline void") SetContentsValue;
 		inline void SetContentsValue (const Standard_Integer theNum,const StepVisual_DraughtingCalloutElement & theItem);
 
@@ -1745,7 +1745,7 @@ class StepVisual_DraughtingCalloutElement : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a IdAttributeSelect Kind Entity that is : 1 -> AnnotationCurveOccurrence 2 -> AnnotationTextOccurrence 3 -> TessellatedAnnotationOccurrence 4 -> AnnotationFillAreaOccurrence 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1860,9 +1860,9 @@ class StepVisual_FillAreaStyle : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aFillStyles:
-	:type aFillStyles: opencascade::handle<StepVisual_HArray1OfFillStyleSelect> &
+	:type aFillStyles: StepVisual_HArray1OfFillStyleSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_HArray1OfFillStyleSelect> & aFillStyles);
 
@@ -1879,14 +1879,14 @@ class StepVisual_FillAreaStyle : public Standard_Transient {
 		/****************** SetFillStyles ******************/
 		%feature("compactdefaultargs") SetFillStyles;
 		%feature("autodoc", ":param aFillStyles:
-	:type aFillStyles: opencascade::handle<StepVisual_HArray1OfFillStyleSelect> &
+	:type aFillStyles: StepVisual_HArray1OfFillStyleSelect
 	:rtype: None") SetFillStyles;
 		void SetFillStyles (const opencascade::handle<StepVisual_HArray1OfFillStyleSelect> & aFillStyles);
 
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -1921,9 +1921,9 @@ class StepVisual_FillAreaStyleColour : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aFillColour:
-	:type aFillColour: opencascade::handle<StepVisual_Colour> &
+	:type aFillColour: StepVisual_Colour
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_Colour> & aFillColour);
 
@@ -1935,14 +1935,14 @@ class StepVisual_FillAreaStyleColour : public Standard_Transient {
 		/****************** SetFillColour ******************/
 		%feature("compactdefaultargs") SetFillColour;
 		%feature("autodoc", ":param aFillColour:
-	:type aFillColour: opencascade::handle<StepVisual_Colour> &
+	:type aFillColour: StepVisual_Colour
 	:rtype: None") SetFillColour;
 		void SetFillColour (const opencascade::handle<StepVisual_Colour> & aFillColour);
 
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -1973,7 +1973,7 @@ class StepVisual_FillStyleSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a FillStyleSelect Kind Entity that is : 1 -> FillAreaStyleColour 2 -> ExternallyDefinedTileStyle 3 -> FillAreaStyleTiles 4 -> ExternallyDefinedHatchStyle 5 -> FillAreaStyleHatching 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2008,7 +2008,7 @@ class StepVisual_FontSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a FontSelect Kind Entity that is : 1 -> PreDefinedTextFont 2 -> ExternallyDefinedTextFont 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2048,7 +2048,7 @@ class StepVisual_Invisibility : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aInvisibleItems:
-	:type aInvisibleItems: opencascade::handle<StepVisual_HArray1OfInvisibleItem> &
+	:type aInvisibleItems: StepVisual_HArray1OfInvisibleItem
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_HArray1OfInvisibleItem> & aInvisibleItems);
 
@@ -2072,7 +2072,7 @@ class StepVisual_Invisibility : public Standard_Transient {
 		/****************** SetInvisibleItems ******************/
 		%feature("compactdefaultargs") SetInvisibleItems;
 		%feature("autodoc", ":param aInvisibleItems:
-	:type aInvisibleItems: opencascade::handle<StepVisual_HArray1OfInvisibleItem> &
+	:type aInvisibleItems: StepVisual_HArray1OfInvisibleItem
 	:rtype: None") SetInvisibleItems;
 		void SetInvisibleItems (const opencascade::handle<StepVisual_HArray1OfInvisibleItem> & aInvisibleItems);
 
@@ -2103,7 +2103,7 @@ class StepVisual_InvisibilityContext : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a InvisibilityContext Kind Entity that is : 1 -> PresentationRepresentation 2 -> PresentationSet 2 -> DraughtingModel 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2150,7 +2150,7 @@ class StepVisual_InvisibleItem : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a InvisibleItem Kind Entity that is : 1 -> StyledItem 2 -> PresentationLayerAssignment 3 -> PresentationRepresentation 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2197,7 +2197,7 @@ class StepVisual_LayeredItem : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a LayeredItem Kind Entity that is : 1 -> PresentationRepresentation 2 -> RepresentationItem 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2303,7 +2303,7 @@ class StepVisual_MarkerSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "* Returns 1 for a SelectMember enum, named MARKER_TYPE
 	:param sm:
-	:type sm: opencascade::handle<StepData_SelectMember> &
+	:type sm: StepData_SelectMember
 	:rtype: int") CaseMem;
 		virtual Standard_Integer CaseMem (const opencascade::handle<StepData_SelectMember> & sm);
 
@@ -2311,7 +2311,7 @@ class StepVisual_MarkerSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a MarkerSelect Kind Entity that is : 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2421,7 +2421,7 @@ class StepVisual_PlanarExtent : public StepGeom_GeometricRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSizeInX:
 	:type aSizeInX: float
 	:param aSizeInY:
@@ -2479,13 +2479,13 @@ class StepVisual_PointStyle : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aMarker:
-	:type aMarker: StepVisual_MarkerSelect &
+	:type aMarker: StepVisual_MarkerSelect
 	:param aMarkerSize:
-	:type aMarkerSize: StepBasic_SizeSelect &
+	:type aMarkerSize: StepBasic_SizeSelect
 	:param aMarkerColour:
-	:type aMarkerColour: opencascade::handle<StepVisual_Colour> &
+	:type aMarkerColour: StepVisual_Colour
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const StepVisual_MarkerSelect & aMarker,const StepBasic_SizeSelect & aMarkerSize,const opencascade::handle<StepVisual_Colour> & aMarkerColour);
 
@@ -2512,28 +2512,28 @@ class StepVisual_PointStyle : public Standard_Transient {
 		/****************** SetMarker ******************/
 		%feature("compactdefaultargs") SetMarker;
 		%feature("autodoc", ":param aMarker:
-	:type aMarker: StepVisual_MarkerSelect &
+	:type aMarker: StepVisual_MarkerSelect
 	:rtype: None") SetMarker;
 		void SetMarker (const StepVisual_MarkerSelect & aMarker);
 
 		/****************** SetMarkerColour ******************/
 		%feature("compactdefaultargs") SetMarkerColour;
 		%feature("autodoc", ":param aMarkerColour:
-	:type aMarkerColour: opencascade::handle<StepVisual_Colour> &
+	:type aMarkerColour: StepVisual_Colour
 	:rtype: None") SetMarkerColour;
 		void SetMarkerColour (const opencascade::handle<StepVisual_Colour> & aMarkerColour);
 
 		/****************** SetMarkerSize ******************/
 		%feature("compactdefaultargs") SetMarkerSize;
 		%feature("autodoc", ":param aMarkerSize:
-	:type aMarkerSize: StepBasic_SizeSelect &
+	:type aMarkerSize: StepBasic_SizeSelect
 	:rtype: None") SetMarkerSize;
 		void SetMarkerSize (const StepBasic_SizeSelect & aMarkerSize);
 
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -2563,7 +2563,7 @@ class StepVisual_PreDefinedItem : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -2575,7 +2575,7 @@ class StepVisual_PreDefinedItem : public Standard_Transient {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -2622,11 +2622,11 @@ class StepVisual_PresentationLayerAssignment : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aDescription:
-	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:type aDescription: TCollection_HAsciiString
 	:param aAssignedItems:
-	:type aAssignedItems: opencascade::handle<StepVisual_HArray1OfLayeredItem> &
+	:type aAssignedItems: StepVisual_HArray1OfLayeredItem
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aDescription,const opencascade::handle<StepVisual_HArray1OfLayeredItem> & aAssignedItems);
 
@@ -2643,21 +2643,21 @@ class StepVisual_PresentationLayerAssignment : public Standard_Transient {
 		/****************** SetAssignedItems ******************/
 		%feature("compactdefaultargs") SetAssignedItems;
 		%feature("autodoc", ":param aAssignedItems:
-	:type aAssignedItems: opencascade::handle<StepVisual_HArray1OfLayeredItem> &
+	:type aAssignedItems: StepVisual_HArray1OfLayeredItem
 	:rtype: None") SetAssignedItems;
 		void SetAssignedItems (const opencascade::handle<StepVisual_HArray1OfLayeredItem> & aAssignedItems);
 
 		/****************** SetDescription ******************/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", ":param aDescription:
-	:type aDescription: opencascade::handle<TCollection_HAsciiString> &
+	:type aDescription: TCollection_HAsciiString
 	:rtype: None") SetDescription;
 		void SetDescription (const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -2692,9 +2692,9 @@ class StepVisual_PresentationLayerUsage : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aAssignment:
-	:type aAssignment: opencascade::handle<StepVisual_PresentationLayerAssignment> &
+	:type aAssignment: StepVisual_PresentationLayerAssignment
 	:param aPresentation:
-	:type aPresentation: opencascade::handle<StepVisual_PresentationRepresentation> &
+	:type aPresentation: StepVisual_PresentationRepresentation
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_PresentationLayerAssignment> & aAssignment,const opencascade::handle<StepVisual_PresentationRepresentation> & aPresentation);
 
@@ -2706,14 +2706,14 @@ class StepVisual_PresentationLayerUsage : public Standard_Transient {
 		/****************** SetAssignment ******************/
 		%feature("compactdefaultargs") SetAssignment;
 		%feature("autodoc", ":param aAssignment:
-	:type aAssignment: opencascade::handle<StepVisual_PresentationLayerAssignment> &
+	:type aAssignment: StepVisual_PresentationLayerAssignment
 	:rtype: None") SetAssignment;
 		void SetAssignment (const opencascade::handle<StepVisual_PresentationLayerAssignment> & aAssignment);
 
 		/****************** SetPresentation ******************/
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", ":param aPresentation:
-	:type aPresentation: opencascade::handle<StepVisual_PresentationRepresentation> &
+	:type aPresentation: StepVisual_PresentationRepresentation
 	:rtype: None") SetPresentation;
 		void SetPresentation (const opencascade::handle<StepVisual_PresentationRepresentation> & aPresentation);
 
@@ -2766,7 +2766,7 @@ class StepVisual_PresentationRepresentationSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a PresentationRepresentationSelect Kind Entity that is : 1 -> PresentationRepresentation 2 -> PresentationSet 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2829,23 +2829,23 @@ class StepVisual_PresentationSize : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aUnit:
-	:type aUnit: StepVisual_PresentationSizeAssignmentSelect &
+	:type aUnit: StepVisual_PresentationSizeAssignmentSelect
 	:param aSize:
-	:type aSize: opencascade::handle<StepVisual_PlanarBox> &
+	:type aSize: StepVisual_PlanarBox
 	:rtype: None") Init;
 		void Init (const StepVisual_PresentationSizeAssignmentSelect & aUnit,const opencascade::handle<StepVisual_PlanarBox> & aSize);
 
 		/****************** SetSize ******************/
 		%feature("compactdefaultargs") SetSize;
 		%feature("autodoc", ":param aSize:
-	:type aSize: opencascade::handle<StepVisual_PlanarBox> &
+	:type aSize: StepVisual_PlanarBox
 	:rtype: None") SetSize;
 		void SetSize (const opencascade::handle<StepVisual_PlanarBox> & aSize);
 
 		/****************** SetUnit ******************/
 		%feature("compactdefaultargs") SetUnit;
 		%feature("autodoc", ":param aUnit:
-	:type aUnit: StepVisual_PresentationSizeAssignmentSelect &
+	:type aUnit: StepVisual_PresentationSizeAssignmentSelect
 	:rtype: None") SetUnit;
 		void SetUnit (const StepVisual_PresentationSizeAssignmentSelect & aUnit);
 
@@ -2892,7 +2892,7 @@ class StepVisual_PresentationSizeAssignmentSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a PresentationSizeAssignmentSelect Kind Entity that is : 1 -> PresentationView 2 -> PresentationArea 3 -> AreaInSet 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -2932,7 +2932,7 @@ class StepVisual_PresentationStyleAssignment : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aStyles:
-	:type aStyles: opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> &
+	:type aStyles: StepVisual_HArray1OfPresentationStyleSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> & aStyles);
 
@@ -2944,7 +2944,7 @@ class StepVisual_PresentationStyleAssignment : public Standard_Transient {
 		/****************** SetStyles ******************/
 		%feature("compactdefaultargs") SetStyles;
 		%feature("autodoc", ":param aStyles:
-	:type aStyles: opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> &
+	:type aStyles: StepVisual_HArray1OfPresentationStyleSelect
 	:rtype: None") SetStyles;
 		void SetStyles (const opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> & aStyles);
 
@@ -2987,7 +2987,7 @@ class StepVisual_PresentationStyleSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a PresentationStyleSelect Kind Entity that is : 1 -> PointStyle 2 -> CurveStyle 3 -> SurfaceStyleUsage 4 -> SymbolStyle 5 -> FillAreaStyle 6 -> TextStyle 7 -> NullStyle 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3056,9 +3056,9 @@ class StepVisual_PresentedItemRepresentation : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aPresentation:
-	:type aPresentation: StepVisual_PresentationRepresentationSelect &
+	:type aPresentation: StepVisual_PresentationRepresentationSelect
 	:param aItem:
-	:type aItem: opencascade::handle<StepVisual_PresentedItem> &
+	:type aItem: StepVisual_PresentedItem
 	:rtype: None") Init;
 		void Init (const StepVisual_PresentationRepresentationSelect & aPresentation,const opencascade::handle<StepVisual_PresentedItem> & aItem);
 
@@ -3075,14 +3075,14 @@ class StepVisual_PresentedItemRepresentation : public Standard_Transient {
 		/****************** SetItem ******************/
 		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", ":param aItem:
-	:type aItem: opencascade::handle<StepVisual_PresentedItem> &
+	:type aItem: StepVisual_PresentedItem
 	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<StepVisual_PresentedItem> & aItem);
 
 		/****************** SetPresentation ******************/
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", ":param aPresentation:
-	:type aPresentation: StepVisual_PresentationRepresentationSelect &
+	:type aPresentation: StepVisual_PresentationRepresentationSelect
 	:rtype: None") SetPresentation;
 		void SetPresentation (const StepVisual_PresentationRepresentationSelect & aPresentation);
 
@@ -3112,7 +3112,7 @@ class StepVisual_StyleContextSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a StyleContextSelect Kind Entity that is : 1 -> Representation 2 -> RepresentationItem 3 -> PresentationSet 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3158,11 +3158,11 @@ class StepVisual_StyledItem : public StepRepr_RepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aStyles:
-	:type aStyles: opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> &
+	:type aStyles: StepVisual_HArray1OfPresentationStyleAssignment
 	:param aItem:
-	:type aItem: opencascade::handle<Standard_Transient> &
+	:type aItem: Standard_Transient
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles,const opencascade::handle<Standard_Transient> & aItem);
 
@@ -3184,21 +3184,21 @@ class StepVisual_StyledItem : public StepRepr_RepresentationItem {
 		/****************** SetItem ******************/
 		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", ":param aItem:
-	:type aItem: opencascade::handle<StepRepr_RepresentationItem> &
+	:type aItem: StepRepr_RepresentationItem
 	:rtype: None") SetItem;
 		void SetItem (const opencascade::handle<StepRepr_RepresentationItem> & aItem);
 
 		/****************** SetItem ******************/
 		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", ":param aItem:
-	:type aItem: StepVisual_StyledItemTarget &
+	:type aItem: StepVisual_StyledItemTarget
 	:rtype: None") SetItem;
 		void SetItem (const StepVisual_StyledItemTarget & aItem);
 
 		/****************** SetStyles ******************/
 		%feature("compactdefaultargs") SetStyles;
 		%feature("autodoc", ":param aStyles:
-	:type aStyles: opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> &
+	:type aStyles: StepVisual_HArray1OfPresentationStyleAssignment
 	:rtype: None") SetStyles;
 		void SetStyles (const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles);
 
@@ -3241,7 +3241,7 @@ class StepVisual_StyledItemTarget : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a StyledItemTarget Kind Entity that is : 1 -> GeometricRepresentationItem 2 -> MappedItem 3 -> Representation 4 -> TopologicalRepresentationItem 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3293,9 +3293,9 @@ class StepVisual_SurfaceSideStyle : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aStyles:
-	:type aStyles: opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> &
+	:type aStyles: StepVisual_HArray1OfSurfaceStyleElementSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> & aStyles);
 
@@ -3312,14 +3312,14 @@ class StepVisual_SurfaceSideStyle : public Standard_Transient {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
 		/****************** SetStyles ******************/
 		%feature("compactdefaultargs") SetStyles;
 		%feature("autodoc", ":param aStyles:
-	:type aStyles: opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> &
+	:type aStyles: StepVisual_HArray1OfSurfaceStyleElementSelect
 	:rtype: None") SetStyles;
 		void SetStyles (const opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> & aStyles);
 
@@ -3361,14 +3361,14 @@ class StepVisual_SurfaceStyleBoundary : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aStyleOfBoundary:
-	:type aStyleOfBoundary: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfBoundary: StepVisual_CurveStyle
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfBoundary);
 
 		/****************** SetStyleOfBoundary ******************/
 		%feature("compactdefaultargs") SetStyleOfBoundary;
 		%feature("autodoc", ":param aStyleOfBoundary:
-	:type aStyleOfBoundary: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfBoundary: StepVisual_CurveStyle
 	:rtype: None") SetStyleOfBoundary;
 		void SetStyleOfBoundary (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfBoundary);
 
@@ -3403,14 +3403,14 @@ class StepVisual_SurfaceStyleControlGrid : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aStyleOfControlGrid:
-	:type aStyleOfControlGrid: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfControlGrid: StepVisual_CurveStyle
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfControlGrid);
 
 		/****************** SetStyleOfControlGrid ******************/
 		%feature("compactdefaultargs") SetStyleOfControlGrid;
 		%feature("autodoc", ":param aStyleOfControlGrid:
-	:type aStyleOfControlGrid: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfControlGrid: StepVisual_CurveStyle
 	:rtype: None") SetStyleOfControlGrid;
 		void SetStyleOfControlGrid (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfControlGrid);
 
@@ -3446,7 +3446,7 @@ class StepVisual_SurfaceStyleElementSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a SurfaceStyleElementSelect Kind Entity that is : 1 -> SurfaceStyleFillArea 2 -> SurfaceStyleBoundary 3 -> SurfaceStyleParameterLine 4 -> SurfaceStyleSilhouette 5 -> SurfaceStyleSegmentationCurve 6 -> SurfaceStyleControlGrid 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3497,14 +3497,14 @@ class StepVisual_SurfaceStyleFillArea : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aFillArea:
-	:type aFillArea: opencascade::handle<StepVisual_FillAreaStyle> &
+	:type aFillArea: StepVisual_FillAreaStyle
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_FillAreaStyle> & aFillArea);
 
 		/****************** SetFillArea ******************/
 		%feature("compactdefaultargs") SetFillArea;
 		%feature("autodoc", ":param aFillArea:
-	:type aFillArea: opencascade::handle<StepVisual_FillAreaStyle> &
+	:type aFillArea: StepVisual_FillAreaStyle
 	:rtype: None") SetFillArea;
 		void SetFillArea (const opencascade::handle<StepVisual_FillAreaStyle> & aFillArea);
 
@@ -3546,9 +3546,9 @@ class StepVisual_SurfaceStyleParameterLine : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aStyleOfParameterLines:
-	:type aStyleOfParameterLines: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfParameterLines: StepVisual_CurveStyle
 	:param aDirectionCounts:
-	:type aDirectionCounts: opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> &
+	:type aDirectionCounts: StepVisual_HArray1OfDirectionCountSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfParameterLines,const opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> & aDirectionCounts);
 
@@ -3560,14 +3560,14 @@ class StepVisual_SurfaceStyleParameterLine : public Standard_Transient {
 		/****************** SetDirectionCounts ******************/
 		%feature("compactdefaultargs") SetDirectionCounts;
 		%feature("autodoc", ":param aDirectionCounts:
-	:type aDirectionCounts: opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> &
+	:type aDirectionCounts: StepVisual_HArray1OfDirectionCountSelect
 	:rtype: None") SetDirectionCounts;
 		void SetDirectionCounts (const opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> & aDirectionCounts);
 
 		/****************** SetStyleOfParameterLines ******************/
 		%feature("compactdefaultargs") SetStyleOfParameterLines;
 		%feature("autodoc", ":param aStyleOfParameterLines:
-	:type aStyleOfParameterLines: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfParameterLines: StepVisual_CurveStyle
 	:rtype: None") SetStyleOfParameterLines;
 		void SetStyleOfParameterLines (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfParameterLines);
 
@@ -3602,14 +3602,14 @@ class StepVisual_SurfaceStyleSegmentationCurve : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aStyleOfSegmentationCurve:
-	:type aStyleOfSegmentationCurve: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfSegmentationCurve: StepVisual_CurveStyle
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfSegmentationCurve);
 
 		/****************** SetStyleOfSegmentationCurve ******************/
 		%feature("compactdefaultargs") SetStyleOfSegmentationCurve;
 		%feature("autodoc", ":param aStyleOfSegmentationCurve:
-	:type aStyleOfSegmentationCurve: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfSegmentationCurve: StepVisual_CurveStyle
 	:rtype: None") SetStyleOfSegmentationCurve;
 		void SetStyleOfSegmentationCurve (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfSegmentationCurve);
 
@@ -3644,14 +3644,14 @@ class StepVisual_SurfaceStyleSilhouette : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aStyleOfSilhouette:
-	:type aStyleOfSilhouette: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfSilhouette: StepVisual_CurveStyle
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfSilhouette);
 
 		/****************** SetStyleOfSilhouette ******************/
 		%feature("compactdefaultargs") SetStyleOfSilhouette;
 		%feature("autodoc", ":param aStyleOfSilhouette:
-	:type aStyleOfSilhouette: opencascade::handle<StepVisual_CurveStyle> &
+	:type aStyleOfSilhouette: StepVisual_CurveStyle
 	:rtype: None") SetStyleOfSilhouette;
 		void SetStyleOfSilhouette (const opencascade::handle<StepVisual_CurveStyle> & aStyleOfSilhouette);
 
@@ -3688,7 +3688,7 @@ class StepVisual_SurfaceStyleUsage : public Standard_Transient {
 		%feature("autodoc", ":param aSide:
 	:type aSide: StepVisual_SurfaceSide
 	:param aStyle:
-	:type aStyle: opencascade::handle<StepVisual_SurfaceSideStyle> &
+	:type aStyle: StepVisual_SurfaceSideStyle
 	:rtype: None") Init;
 		void Init (const StepVisual_SurfaceSide aSide,const opencascade::handle<StepVisual_SurfaceSideStyle> & aStyle);
 
@@ -3702,7 +3702,7 @@ class StepVisual_SurfaceStyleUsage : public Standard_Transient {
 		/****************** SetStyle ******************/
 		%feature("compactdefaultargs") SetStyle;
 		%feature("autodoc", ":param aStyle:
-	:type aStyle: opencascade::handle<StepVisual_SurfaceSideStyle> &
+	:type aStyle: StepVisual_SurfaceSideStyle
 	:rtype: None") SetStyle;
 		void SetStyle (const opencascade::handle<StepVisual_SurfaceSideStyle> & aStyle);
 
@@ -3821,17 +3821,17 @@ class StepVisual_TextLiteral : public StepGeom_GeometricRepresentationItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aLiteral:
-	:type aLiteral: opencascade::handle<TCollection_HAsciiString> &
+	:type aLiteral: TCollection_HAsciiString
 	:param aPlacement:
-	:type aPlacement: StepGeom_Axis2Placement &
+	:type aPlacement: StepGeom_Axis2Placement
 	:param aAlignment:
-	:type aAlignment: opencascade::handle<TCollection_HAsciiString> &
+	:type aAlignment: TCollection_HAsciiString
 	:param aPath:
 	:type aPath: StepVisual_TextPath
 	:param aFont:
-	:type aFont: StepVisual_FontSelect &
+	:type aFont: StepVisual_FontSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<TCollection_HAsciiString> & aLiteral,const StepGeom_Axis2Placement & aPlacement,const opencascade::handle<TCollection_HAsciiString> & aAlignment,const StepVisual_TextPath aPath,const StepVisual_FontSelect & aFont);
 
@@ -3853,21 +3853,21 @@ class StepVisual_TextLiteral : public StepGeom_GeometricRepresentationItem {
 		/****************** SetAlignment ******************/
 		%feature("compactdefaultargs") SetAlignment;
 		%feature("autodoc", ":param aAlignment:
-	:type aAlignment: opencascade::handle<TCollection_HAsciiString> &
+	:type aAlignment: TCollection_HAsciiString
 	:rtype: None") SetAlignment;
 		void SetAlignment (const opencascade::handle<TCollection_HAsciiString> & aAlignment);
 
 		/****************** SetFont ******************/
 		%feature("compactdefaultargs") SetFont;
 		%feature("autodoc", ":param aFont:
-	:type aFont: StepVisual_FontSelect &
+	:type aFont: StepVisual_FontSelect
 	:rtype: None") SetFont;
 		void SetFont (const StepVisual_FontSelect & aFont);
 
 		/****************** SetLiteral ******************/
 		%feature("compactdefaultargs") SetLiteral;
 		%feature("autodoc", ":param aLiteral:
-	:type aLiteral: opencascade::handle<TCollection_HAsciiString> &
+	:type aLiteral: TCollection_HAsciiString
 	:rtype: None") SetLiteral;
 		void SetLiteral (const opencascade::handle<TCollection_HAsciiString> & aLiteral);
 
@@ -3881,7 +3881,7 @@ class StepVisual_TextLiteral : public StepGeom_GeometricRepresentationItem {
 		/****************** SetPlacement ******************/
 		%feature("compactdefaultargs") SetPlacement;
 		%feature("autodoc", ":param aPlacement:
-	:type aPlacement: StepGeom_Axis2Placement &
+	:type aPlacement: StepGeom_Axis2Placement
 	:rtype: None") SetPlacement;
 		void SetPlacement (const StepGeom_Axis2Placement & aPlacement);
 
@@ -3918,7 +3918,7 @@ class StepVisual_TextOrCharacter : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a TextOrCharacter Kind Entity that is : 1 -> AnnotationText 2 -> CompositeText 3 -> TextLiteral 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -3963,9 +3963,9 @@ class StepVisual_TextStyle : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aCharacterAppearance:
-	:type aCharacterAppearance: opencascade::handle<StepVisual_TextStyleForDefinedFont> &
+	:type aCharacterAppearance: StepVisual_TextStyleForDefinedFont
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_TextStyleForDefinedFont> & aCharacterAppearance);
 
@@ -3977,14 +3977,14 @@ class StepVisual_TextStyle : public Standard_Transient {
 		/****************** SetCharacterAppearance ******************/
 		%feature("compactdefaultargs") SetCharacterAppearance;
 		%feature("autodoc", ":param aCharacterAppearance:
-	:type aCharacterAppearance: opencascade::handle<StepVisual_TextStyleForDefinedFont> &
+	:type aCharacterAppearance: StepVisual_TextStyleForDefinedFont
 	:rtype: None") SetCharacterAppearance;
 		void SetCharacterAppearance (const opencascade::handle<StepVisual_TextStyleForDefinedFont> & aCharacterAppearance);
 
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -4014,14 +4014,14 @@ class StepVisual_TextStyleForDefinedFont : public Standard_Transient {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aTextColour:
-	:type aTextColour: opencascade::handle<StepVisual_Colour> &
+	:type aTextColour: StepVisual_Colour
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_Colour> & aTextColour);
 
 		/****************** SetTextColour ******************/
 		%feature("compactdefaultargs") SetTextColour;
 		%feature("autodoc", ":param aTextColour:
-	:type aTextColour: opencascade::handle<StepVisual_Colour> &
+	:type aTextColour: StepVisual_Colour
 	:rtype: None") SetTextColour;
 		void SetTextColour (const opencascade::handle<StepVisual_Colour> & aTextColour);
 
@@ -4078,7 +4078,7 @@ class StepVisual_ViewVolume : public Standard_Transient {
 		%feature("autodoc", ":param aProjectionType:
 	:type aProjectionType: StepVisual_CentralOrParallel
 	:param aProjectionPoint:
-	:type aProjectionPoint: opencascade::handle<StepGeom_CartesianPoint> &
+	:type aProjectionPoint: StepGeom_CartesianPoint
 	:param aViewPlaneDistance:
 	:type aViewPlaneDistance: float
 	:param aFrontPlaneDistance:
@@ -4092,7 +4092,7 @@ class StepVisual_ViewVolume : public Standard_Transient {
 	:param aViewVolumeSidesClipping:
 	:type aViewVolumeSidesClipping: bool
 	:param aViewWindow:
-	:type aViewWindow: opencascade::handle<StepVisual_PlanarBox> &
+	:type aViewWindow: StepVisual_PlanarBox
 	:rtype: None") Init;
 		void Init (const StepVisual_CentralOrParallel aProjectionType,const opencascade::handle<StepGeom_CartesianPoint> & aProjectionPoint,const Standard_Real aViewPlaneDistance,const Standard_Real aFrontPlaneDistance,const Standard_Boolean aFrontPlaneClipping,const Standard_Real aBackPlaneDistance,const Standard_Boolean aBackPlaneClipping,const Standard_Boolean aViewVolumeSidesClipping,const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
 
@@ -4137,7 +4137,7 @@ class StepVisual_ViewVolume : public Standard_Transient {
 		/****************** SetProjectionPoint ******************/
 		%feature("compactdefaultargs") SetProjectionPoint;
 		%feature("autodoc", ":param aProjectionPoint:
-	:type aProjectionPoint: opencascade::handle<StepGeom_CartesianPoint> &
+	:type aProjectionPoint: StepGeom_CartesianPoint
 	:rtype: None") SetProjectionPoint;
 		void SetProjectionPoint (const opencascade::handle<StepGeom_CartesianPoint> & aProjectionPoint);
 
@@ -4165,7 +4165,7 @@ class StepVisual_ViewVolume : public Standard_Transient {
 		/****************** SetViewWindow ******************/
 		%feature("compactdefaultargs") SetViewWindow;
 		%feature("autodoc", ":param aViewWindow:
-	:type aViewWindow: opencascade::handle<StepVisual_PlanarBox> &
+	:type aViewWindow: StepVisual_PlanarBox
 	:rtype: None") SetViewWindow;
 		void SetViewWindow (const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
 
@@ -4233,7 +4233,7 @@ class StepVisual_BackgroundColour : public StepVisual_Colour {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aPresentation:
-	:type aPresentation: StepVisual_AreaOrView &
+	:type aPresentation: StepVisual_AreaOrView
 	:rtype: None") Init;
 		void Init (const StepVisual_AreaOrView & aPresentation);
 
@@ -4245,7 +4245,7 @@ class StepVisual_BackgroundColour : public StepVisual_Colour {
 		/****************** SetPresentation ******************/
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", ":param aPresentation:
-	:type aPresentation: StepVisual_AreaOrView &
+	:type aPresentation: StepVisual_AreaOrView
 	:rtype: None") SetPresentation;
 		void SetPresentation (const StepVisual_AreaOrView & aPresentation);
 
@@ -4319,9 +4319,9 @@ class StepVisual_CameraModelD2 : public StepVisual_CameraModel {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aViewWindow:
-	:type aViewWindow: opencascade::handle<StepVisual_PlanarBox> &
+	:type aViewWindow: StepVisual_PlanarBox
 	:param aViewWindowClipping:
 	:type aViewWindowClipping: bool
 	:rtype: None") Init;
@@ -4330,7 +4330,7 @@ class StepVisual_CameraModelD2 : public StepVisual_CameraModel {
 		/****************** SetViewWindow ******************/
 		%feature("compactdefaultargs") SetViewWindow;
 		%feature("autodoc", ":param aViewWindow:
-	:type aViewWindow: opencascade::handle<StepVisual_PlanarBox> &
+	:type aViewWindow: StepVisual_PlanarBox
 	:rtype: None") SetViewWindow;
 		void SetViewWindow (const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
 
@@ -4377,11 +4377,11 @@ class StepVisual_CameraModelD3 : public StepVisual_CameraModel {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aViewReferenceSystem:
-	:type aViewReferenceSystem: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type aViewReferenceSystem: StepGeom_Axis2Placement3d
 	:param aPerspectiveOfVolume:
-	:type aPerspectiveOfVolume: opencascade::handle<StepVisual_ViewVolume> &
+	:type aPerspectiveOfVolume: StepVisual_ViewVolume
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepGeom_Axis2Placement3d> & aViewReferenceSystem,const opencascade::handle<StepVisual_ViewVolume> & aPerspectiveOfVolume);
 
@@ -4393,14 +4393,14 @@ class StepVisual_CameraModelD3 : public StepVisual_CameraModel {
 		/****************** SetPerspectiveOfVolume ******************/
 		%feature("compactdefaultargs") SetPerspectiveOfVolume;
 		%feature("autodoc", ":param aPerspectiveOfVolume:
-	:type aPerspectiveOfVolume: opencascade::handle<StepVisual_ViewVolume> &
+	:type aPerspectiveOfVolume: StepVisual_ViewVolume
 	:rtype: None") SetPerspectiveOfVolume;
 		void SetPerspectiveOfVolume (const opencascade::handle<StepVisual_ViewVolume> & aPerspectiveOfVolume);
 
 		/****************** SetViewReferenceSystem ******************/
 		%feature("compactdefaultargs") SetViewReferenceSystem;
 		%feature("autodoc", ":param aViewReferenceSystem:
-	:type aViewReferenceSystem: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type aViewReferenceSystem: StepGeom_Axis2Placement3d
 	:rtype: None") SetViewReferenceSystem;
 		void SetViewReferenceSystem (const opencascade::handle<StepGeom_Axis2Placement3d> & aViewReferenceSystem);
 
@@ -4457,7 +4457,7 @@ class StepVisual_ColourSpecification : public StepVisual_Colour {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -4469,7 +4469,7 @@ class StepVisual_ColourSpecification : public StepVisual_Colour {
 		/****************** SetName ******************/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:rtype: None") SetName;
 		void SetName (const opencascade::handle<TCollection_HAsciiString> & aName);
 
@@ -4504,18 +4504,18 @@ class StepVisual_CompositeTextWithExtent : public StepVisual_CompositeText {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aCollectedText:
-	:type aCollectedText: opencascade::handle<StepVisual_HArray1OfTextOrCharacter> &
+	:type aCollectedText: StepVisual_HArray1OfTextOrCharacter
 	:param aExtent:
-	:type aExtent: opencascade::handle<StepVisual_PlanarExtent> &
+	:type aExtent: StepVisual_PlanarExtent
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_HArray1OfTextOrCharacter> & aCollectedText,const opencascade::handle<StepVisual_PlanarExtent> & aExtent);
 
 		/****************** SetExtent ******************/
 		%feature("compactdefaultargs") SetExtent;
 		%feature("autodoc", ":param aExtent:
-	:type aExtent: opencascade::handle<StepVisual_PlanarExtent> &
+	:type aExtent: StepVisual_PlanarExtent
 	:rtype: None") SetExtent;
 		void SetExtent (const opencascade::handle<StepVisual_PlanarExtent> & aExtent);
 
@@ -4545,9 +4545,9 @@ class StepVisual_ContextDependentInvisibility : public StepVisual_Invisibility {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aInvisibleItems:
-	:type aInvisibleItems: opencascade::handle<StepVisual_HArray1OfInvisibleItem> &
+	:type aInvisibleItems: StepVisual_HArray1OfInvisibleItem
 	:param aPresentationContext:
-	:type aPresentationContext: StepVisual_InvisibilityContext &
+	:type aPresentationContext: StepVisual_InvisibilityContext
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_HArray1OfInvisibleItem> & aInvisibleItems,const StepVisual_InvisibilityContext & aPresentationContext);
 
@@ -4559,7 +4559,7 @@ class StepVisual_ContextDependentInvisibility : public StepVisual_Invisibility {
 		/****************** SetPresentationContext ******************/
 		%feature("compactdefaultargs") SetPresentationContext;
 		%feature("autodoc", ":param aPresentationContext:
-	:type aPresentationContext: StepVisual_InvisibilityContext &
+	:type aPresentationContext: StepVisual_InvisibilityContext
 	:rtype: None") SetPresentationContext;
 		void SetPresentationContext (const StepVisual_InvisibilityContext & aPresentationContext);
 
@@ -4589,9 +4589,9 @@ class StepVisual_CoordinatesList : public StepVisual_TessellatedItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param thePoints:
-	:type thePoints: opencascade::handle<TColgp_HArray1OfXYZ>
+	:type thePoints: TColgp_HArray1OfXYZ
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
@@ -4649,13 +4649,13 @@ class StepVisual_OverRidingStyledItem : public StepVisual_StyledItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aStyles:
-	:type aStyles: opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> &
+	:type aStyles: StepVisual_HArray1OfPresentationStyleAssignment
 	:param aItem:
-	:type aItem: opencascade::handle<Standard_Transient> &
+	:type aItem: Standard_Transient
 	:param aOverRiddenStyle:
-	:type aOverRiddenStyle: opencascade::handle<StepVisual_StyledItem> &
+	:type aOverRiddenStyle: StepVisual_StyledItem
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles,const opencascade::handle<Standard_Transient> & aItem,const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle);
 
@@ -4667,7 +4667,7 @@ class StepVisual_OverRidingStyledItem : public StepVisual_StyledItem {
 		/****************** SetOverRiddenStyle ******************/
 		%feature("compactdefaultargs") SetOverRiddenStyle;
 		%feature("autodoc", ":param aOverRiddenStyle:
-	:type aOverRiddenStyle: opencascade::handle<StepVisual_StyledItem> &
+	:type aOverRiddenStyle: StepVisual_StyledItem
 	:rtype: None") SetOverRiddenStyle;
 		void SetOverRiddenStyle (const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle);
 
@@ -4697,13 +4697,13 @@ class StepVisual_PlanarBox : public StepVisual_PlanarExtent {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aSizeInX:
 	:type aSizeInX: float
 	:param aSizeInY:
 	:type aSizeInY: float
 	:param aPlacement:
-	:type aPlacement: StepGeom_Axis2Placement &
+	:type aPlacement: StepGeom_Axis2Placement
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const Standard_Real aSizeInX,const Standard_Real aSizeInY,const StepGeom_Axis2Placement & aPlacement);
 
@@ -4715,7 +4715,7 @@ class StepVisual_PlanarBox : public StepVisual_PlanarExtent {
 		/****************** SetPlacement ******************/
 		%feature("compactdefaultargs") SetPlacement;
 		%feature("autodoc", ":param aPlacement:
-	:type aPlacement: StepGeom_Axis2Placement &
+	:type aPlacement: StepGeom_Axis2Placement
 	:rtype: None") SetPlacement;
 		void SetPlacement (const StepGeom_Axis2Placement & aPlacement);
 
@@ -4752,7 +4752,7 @@ class StepVisual_PreDefinedColour : public StepVisual_Colour {
 		%feature("compactdefaultargs") SetPreDefinedItem;
 		%feature("autodoc", "* set a pre_defined_item part
 	:param item:
-	:type item: opencascade::handle<StepVisual_PreDefinedItem> &
+	:type item: StepVisual_PreDefinedItem
 	:rtype: None") SetPreDefinedItem;
 		void SetPreDefinedItem (const opencascade::handle<StepVisual_PreDefinedItem> & item);
 
@@ -4851,16 +4851,16 @@ class StepVisual_PresentationStyleByContext : public StepVisual_PresentationStyl
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aStyles:
-	:type aStyles: opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> &
+	:type aStyles: StepVisual_HArray1OfPresentationStyleSelect
 	:param aStyleContext:
-	:type aStyleContext: StepVisual_StyleContextSelect &
+	:type aStyleContext: StepVisual_StyleContextSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> & aStyles,const StepVisual_StyleContextSelect & aStyleContext);
 
 		/****************** SetStyleContext ******************/
 		%feature("compactdefaultargs") SetStyleContext;
 		%feature("autodoc", ":param aStyleContext:
-	:type aStyleContext: StepVisual_StyleContextSelect &
+	:type aStyleContext: StepVisual_StyleContextSelect
 	:rtype: None") SetStyleContext;
 		void SetStyleContext (const StepVisual_StyleContextSelect & aStyleContext);
 
@@ -4951,11 +4951,11 @@ class StepVisual_TessellatedCurveSet : public StepVisual_TessellatedItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theCoordList:
-	:type theCoordList: opencascade::handle<StepVisual_CoordinatesList> &
+	:type theCoordList: StepVisual_CoordinatesList
 	:param theCurves:
-	:type theCurves: NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger> &
+	:type theCurves: NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepVisual_CoordinatesList> & theCoordList,const NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger> & theCurves);
 
@@ -4985,9 +4985,9 @@ class StepVisual_TessellatedGeometricSet : public StepVisual_TessellatedItem {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theItems:
-	:type theItems: NCollection_Handle<StepVisual_Array1OfTessellatedItem> &
+	:type theItems: NCollection_Handle<StepVisual_Array1OfTessellatedItem>
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const NCollection_Handle<StepVisual_Array1OfTessellatedItem> & theItems);
 
@@ -5034,11 +5034,11 @@ class StepVisual_TextStyleWithBoxCharacteristics : public StepVisual_TextStyle {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aCharacterAppearance:
-	:type aCharacterAppearance: opencascade::handle<StepVisual_TextStyleForDefinedFont> &
+	:type aCharacterAppearance: StepVisual_TextStyleForDefinedFont
 	:param aCharacteristics:
-	:type aCharacteristics: opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> &
+	:type aCharacteristics: StepVisual_HArray1OfBoxCharacteristicSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_TextStyleForDefinedFont> & aCharacterAppearance,const opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> & aCharacteristics);
 
@@ -5050,7 +5050,7 @@ class StepVisual_TextStyleWithBoxCharacteristics : public StepVisual_TextStyle {
 		/****************** SetCharacteristics ******************/
 		%feature("compactdefaultargs") SetCharacteristics;
 		%feature("autodoc", ":param aCharacteristics:
-	:type aCharacteristics: opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> &
+	:type aCharacteristics: StepVisual_HArray1OfBoxCharacteristicSelect
 	:rtype: None") SetCharacteristics;
 		void SetCharacteristics (const opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> & aCharacteristics);
 
@@ -5110,13 +5110,13 @@ class StepVisual_AnnotationFillAreaOccurrence : public StepVisual_AnnotationOccu
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initialize all fields (own and inherited)
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theStyles:
-	:type theStyles: opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> &
+	:type theStyles: StepVisual_HArray1OfPresentationStyleAssignment
 	:param theItem:
-	:type theItem: opencascade::handle<Standard_Transient> &
+	:type theItem: Standard_Transient
 	:param theFillStyleTarget:
-	:type theFillStyleTarget: opencascade::handle<StepGeom_GeometricRepresentationItem> &
+	:type theFillStyleTarget: StepGeom_GeometricRepresentationItem
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & theStyles,const opencascade::handle<Standard_Transient> & theItem,const opencascade::handle<StepGeom_GeometricRepresentationItem> & theFillStyleTarget);
 
@@ -5124,7 +5124,7 @@ class StepVisual_AnnotationFillAreaOccurrence : public StepVisual_AnnotationOccu
 		%feature("compactdefaultargs") SetFillStyleTarget;
 		%feature("autodoc", "* Set field fill_style_target
 	:param theTarget:
-	:type theTarget: opencascade::handle<StepGeom_GeometricRepresentationItem> &
+	:type theTarget: StepGeom_GeometricRepresentationItem
 	:rtype: None") SetFillStyleTarget;
 		void SetFillStyleTarget (const opencascade::handle<StepGeom_GeometricRepresentationItem> & theTarget);
 
@@ -5168,13 +5168,13 @@ class StepVisual_AnnotationPlane : public StepVisual_AnnotationOccurrence {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theStyles:
-	:type theStyles: opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> &
+	:type theStyles: StepVisual_HArray1OfPresentationStyleAssignment
 	:param theItem:
-	:type theItem: opencascade::handle<Standard_Transient> &
+	:type theItem: Standard_Transient
 	:param theElements:
-	:type theElements: opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> &
+	:type theElements: StepVisual_HArray1OfAnnotationPlaneElement
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & theStyles,const opencascade::handle<Standard_Transient> & theItem,const opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> & theElements);
 
@@ -5188,7 +5188,7 @@ class StepVisual_AnnotationPlane : public StepVisual_AnnotationOccurrence {
 		%feature("compactdefaultargs") SetElements;
 		%feature("autodoc", "* Set field Elements
 	:param theElements:
-	:type theElements: opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> &
+	:type theElements: StepVisual_HArray1OfAnnotationPlaneElement
 	:rtype: inline void") SetElements;
 		inline void SetElements (const opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> & theElements);
 
@@ -5198,7 +5198,7 @@ class StepVisual_AnnotationPlane : public StepVisual_AnnotationOccurrence {
 	:param theNum:
 	:type theNum: int
 	:param theItem:
-	:type theItem: StepVisual_AnnotationPlaneElement &
+	:type theItem: StepVisual_AnnotationPlaneElement
 	:rtype: inline void") SetElementsValue;
 		inline void SetElementsValue (const Standard_Integer theNum,const StepVisual_AnnotationPlaneElement & theItem);
 
@@ -5251,20 +5251,20 @@ class StepVisual_CameraModelD3MultiClipping : public StepVisual_CameraModelD3 {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theViewReferenceSystem:
-	:type theViewReferenceSystem: opencascade::handle<StepGeom_Axis2Placement3d> &
+	:type theViewReferenceSystem: StepGeom_Axis2Placement3d
 	:param thePerspectiveOfVolume:
-	:type thePerspectiveOfVolume: opencascade::handle<StepVisual_ViewVolume> &
+	:type thePerspectiveOfVolume: StepVisual_ViewVolume
 	:param theShapeClipping:
-	:type theShapeClipping: opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> &
+	:type theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<StepGeom_Axis2Placement3d> & theViewReferenceSystem,const opencascade::handle<StepVisual_ViewVolume> & thePerspectiveOfVolume,const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
 
 		/****************** SetShapeClipping ******************/
 		%feature("compactdefaultargs") SetShapeClipping;
 		%feature("autodoc", ":param theShapeClipping:
-	:type theShapeClipping: opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> &
+	:type theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
 	:rtype: None") SetShapeClipping;
 		void SetShapeClipping (const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
 
@@ -5309,7 +5309,7 @@ class StepVisual_ColourRgb : public StepVisual_ColourSpecification {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aRed:
 	:type aRed: float
 	:param aGreen:
@@ -5371,15 +5371,15 @@ class StepVisual_ContextDependentOverRidingStyledItem : public StepVisual_OverRi
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param aName:
-	:type aName: opencascade::handle<TCollection_HAsciiString> &
+	:type aName: TCollection_HAsciiString
 	:param aStyles:
-	:type aStyles: opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> &
+	:type aStyles: StepVisual_HArray1OfPresentationStyleAssignment
 	:param aItem:
-	:type aItem: opencascade::handle<Standard_Transient> &
+	:type aItem: Standard_Transient
 	:param aOverRiddenStyle:
-	:type aOverRiddenStyle: opencascade::handle<StepVisual_StyledItem> &
+	:type aOverRiddenStyle: StepVisual_StyledItem
 	:param aStyleContext:
-	:type aStyleContext: opencascade::handle<StepVisual_HArray1OfStyleContextSelect> &
+	:type aStyleContext: StepVisual_HArray1OfStyleContextSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & aName,const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles,const opencascade::handle<Standard_Transient> & aItem,const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle,const opencascade::handle<StepVisual_HArray1OfStyleContextSelect> & aStyleContext);
 
@@ -5391,7 +5391,7 @@ class StepVisual_ContextDependentOverRidingStyledItem : public StepVisual_OverRi
 		/****************** SetStyleContext ******************/
 		%feature("compactdefaultargs") SetStyleContext;
 		%feature("autodoc", ":param aStyleContext:
-	:type aStyleContext: opencascade::handle<StepVisual_HArray1OfStyleContextSelect> &
+	:type aStyleContext: StepVisual_HArray1OfStyleContextSelect
 	:rtype: None") SetStyleContext;
 		void SetStyleContext (const opencascade::handle<StepVisual_HArray1OfStyleContextSelect> & aStyleContext);
 

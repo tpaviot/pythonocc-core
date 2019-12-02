@@ -221,7 +221,7 @@ class Geom2dEvaluator_OffsetCurve : public Geom2dEvaluator_Curve {
 		%feature("compactdefaultargs") Geom2dEvaluator_OffsetCurve;
 		%feature("autodoc", "* Initialize evaluator by curve
 	:param theBase:
-	:type theBase: opencascade::handle<Geom2d_Curve> &
+	:type theBase: Geom2d_Curve
 	:param theOffset:
 	:type theOffset: float
 	:rtype: None") Geom2dEvaluator_OffsetCurve;
@@ -231,7 +231,7 @@ class Geom2dEvaluator_OffsetCurve : public Geom2dEvaluator_Curve {
 		%feature("compactdefaultargs") Geom2dEvaluator_OffsetCurve;
 		%feature("autodoc", "* Initialize evaluator by curve adaptor
 	:param theBase:
-	:type theBase: opencascade::handle<Geom2dAdaptor_HCurve> &
+	:type theBase: Geom2dAdaptor_HCurve
 	:param theOffset:
 	:type theOffset: float
 	:rtype: None") Geom2dEvaluator_OffsetCurve;

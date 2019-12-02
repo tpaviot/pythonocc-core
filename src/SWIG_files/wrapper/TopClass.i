@@ -128,7 +128,7 @@ class TopClass_SolidExplorer {
 	:param L:
 	:type L: gp_Lin
 	:param Par:
-	:type Par: float &
+	:type Par: float
 	:rtype: void") OtherSegment;
 		virtual void OtherSegment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
 
@@ -168,7 +168,7 @@ class TopClass_SolidExplorer {
 	:param L:
 	:type L: gp_Lin
 	:param Par:
-	:type Par: float &
+	:type Par: float
 	:rtype: void") Segment;
 		virtual void Segment (const gp_Pnt & P,gp_Lin & L,Standard_Real &OutValue);
 

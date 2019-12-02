@@ -83,7 +83,7 @@ class Bisector {
 		/****************** IsConvex ******************/
 		%feature("compactdefaultargs") IsConvex;
 		%feature("autodoc", ":param Cu:
-	:type Cu: opencascade::handle<Geom2d_Curve> &
+	:type Cu: Geom2d_Curve
 	:param Sign:
 	:type Sign: float
 	:rtype: bool") IsConvex;
@@ -119,9 +119,9 @@ class Bisector_Bisec {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 	:param Cu1:
-	:type Cu1: opencascade::handle<Geom2d_Curve> &
+	:type Cu1: Geom2d_Curve
 	:param Cu2:
-	:type Cu2: opencascade::handle<Geom2d_Curve> &
+	:type Cu2: Geom2d_Curve
 	:param P:
 	:type P: gp_Pnt2d
 	:param V1:
@@ -143,9 +143,9 @@ class Bisector_Bisec {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 	:param Cu:
-	:type Cu: opencascade::handle<Geom2d_Curve> &
+	:type Cu: Geom2d_Curve
 	:param Pnt:
-	:type Pnt: opencascade::handle<Geom2d_Point> &
+	:type Pnt: Geom2d_Point
 	:param P:
 	:type P: gp_Pnt2d
 	:param V1:
@@ -165,9 +165,9 @@ class Bisector_Bisec {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs the bisecting line between the curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 	:param Pnt:
-	:type Pnt: opencascade::handle<Geom2d_Point> &
+	:type Pnt: Geom2d_Point
 	:param Cu:
-	:type Cu: opencascade::handle<Geom2d_Curve> &
+	:type Cu: Geom2d_Curve
 	:param P:
 	:type P: gp_Pnt2d
 	:param V1:
@@ -187,9 +187,9 @@ class Bisector_Bisec {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs the bisecting line between the two points <Pnt1> and <Pnt2>.
 	:param Pnt1:
-	:type Pnt1: opencascade::handle<Geom2d_Point> &
+	:type Pnt1: Geom2d_Point
 	:param Pnt2:
-	:type Pnt2: opencascade::handle<Geom2d_Point> &
+	:type Pnt2: Geom2d_Point
 	:param P:
 	:type P: gp_Pnt2d
 	:param V1:
@@ -285,7 +285,7 @@ class Bisector_FunctionH : public math_FunctionWithDerivative {
 		/****************** Bisector_FunctionH ******************/
 		%feature("compactdefaultargs") Bisector_FunctionH;
 		%feature("autodoc", ":param C2:
-	:type C2: opencascade::handle<Geom2d_Curve> &
+	:type C2: Geom2d_Curve
 	:param P1:
 	:type P1: gp_Pnt2d
 	:param T1:
@@ -298,7 +298,7 @@ class Bisector_FunctionH : public math_FunctionWithDerivative {
 		%feature("autodoc", ":param X:
 	:type X: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 
@@ -308,7 +308,7 @@ class Bisector_FunctionH : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 
@@ -318,9 +318,9 @@ class Bisector_FunctionH : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -347,11 +347,11 @@ class Bisector_FunctionInter : public math_FunctionWithDerivative {
 		/****************** Bisector_FunctionInter ******************/
 		%feature("compactdefaultargs") Bisector_FunctionInter;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param Bis1:
-	:type Bis1: opencascade::handle<Bisector_Curve> &
+	:type Bis1: Bisector_Curve
 	:param Bis2:
-	:type Bis2: opencascade::handle<Bisector_Curve> &
+	:type Bis2: Bisector_Curve
 	:rtype: None") Bisector_FunctionInter;
 		 Bisector_FunctionInter (const opencascade::handle<Geom2d_Curve> & C,const opencascade::handle<Bisector_Curve> & Bis1,const opencascade::handle<Bisector_Curve> & Bis2);
 
@@ -360,18 +360,18 @@ class Bisector_FunctionInter : public math_FunctionWithDerivative {
 		%feature("autodoc", ":param X:
 	:type X: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Derivative;
 		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", ":param C:
-	:type C: opencascade::handle<Geom2d_Curve> &
+	:type C: Geom2d_Curve
 	:param Bis1:
-	:type Bis1: opencascade::handle<Bisector_Curve> &
+	:type Bis1: Bisector_Curve
 	:param Bis2:
-	:type Bis2: opencascade::handle<Bisector_Curve> &
+	:type Bis2: Bisector_Curve
 	:rtype: None") Perform;
 		void Perform (const opencascade::handle<Geom2d_Curve> & C,const opencascade::handle<Bisector_Curve> & Bis1,const opencascade::handle<Bisector_Curve> & Bis2);
 
@@ -381,7 +381,7 @@ class Bisector_FunctionInter : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:rtype: bool") Value;
 		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
 
@@ -391,9 +391,9 @@ class Bisector_FunctionInter : public math_FunctionWithDerivative {
 	:param X:
 	:type X: float
 	:param F:
-	:type F: float &
+	:type F: float
 	:param D:
-	:type D: float &
+	:type D: float
 	:rtype: bool") Values;
 		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -421,13 +421,13 @@ class Bisector_Inter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") Bisector_Inter;
 		%feature("autodoc", "* Intersection between 2 curves. C1 separates the element A and B. C2 separates the elements C et D. If B an C have the same geometry. <ComunElement> Has to be True. It Permits an optimiztion of the computation.
 	:param C1:
-	:type C1: Bisector_Bisec &
+	:type C1: Bisector_Bisec
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param C2:
-	:type C2: Bisector_Bisec &
+	:type C2: Bisector_Bisec
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -441,13 +441,13 @@ class Bisector_Inter : public IntRes2d_Intersection {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Intersection between 2 curves. C1 separates the element A and B. C2 separates the elements C et D. If B an C have the same geometry. <ComunElement> Has to be True. It Permits an optimiztion of the computation.
 	:param C1:
-	:type C1: Bisector_Bisec &
+	:type C1: Bisector_Bisec
 	:param D1:
-	:type D1: IntRes2d_Domain &
+	:type D1: IntRes2d_Domain
 	:param C2:
-	:type C2: Bisector_Bisec &
+	:type C2: Bisector_Bisec
 	:param D2:
-	:type D2: IntRes2d_Domain &
+	:type D2: IntRes2d_Domain
 	:param TolConf:
 	:type TolConf: float
 	:param Tol:
@@ -587,7 +587,7 @@ class Bisector_PolyBis {
 		/****************** Append ******************/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", ":param Point:
-	:type Point: Bisector_PointOnBis &
+	:type Point: Bisector_PointOnBis
 	:rtype: None") Append;
 		void Append (const Bisector_PointOnBis & Point);
 
@@ -746,7 +746,7 @@ class Bisector_BisecAna : public Bisector_Curve {
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", ":param bisector:
-	:type bisector: opencascade::handle<Geom2d_TrimmedCurve> &
+	:type bisector: Geom2d_TrimmedCurve
 	:rtype: None") Init;
 		void Init (const opencascade::handle<Geom2d_TrimmedCurve> & bisector);
 
@@ -826,9 +826,9 @@ class Bisector_BisecAna : public Bisector_Curve {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 	:param Cu1:
-	:type Cu1: opencascade::handle<Geom2d_Curve> &
+	:type Cu1: Geom2d_Curve
 	:param Cu2:
-	:type Cu2: opencascade::handle<Geom2d_Curve> &
+	:type Cu2: Geom2d_Curve
 	:param P:
 	:type P: gp_Pnt2d
 	:param V1:
@@ -850,9 +850,9 @@ class Bisector_BisecAna : public Bisector_Curve {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 	:param Cu:
-	:type Cu: opencascade::handle<Geom2d_Curve> &
+	:type Cu: Geom2d_Curve
 	:param Pnt:
-	:type Pnt: opencascade::handle<Geom2d_Point> &
+	:type Pnt: Geom2d_Point
 	:param P:
 	:type P: gp_Pnt2d
 	:param V1:
@@ -872,9 +872,9 @@ class Bisector_BisecAna : public Bisector_Curve {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs the bisecting line between the curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 	:param Pnt:
-	:type Pnt: opencascade::handle<Geom2d_Point> &
+	:type Pnt: Geom2d_Point
 	:param Cu:
-	:type Cu: opencascade::handle<Geom2d_Curve> &
+	:type Cu: Geom2d_Curve
 	:param P:
 	:type P: gp_Pnt2d
 	:param V1:
@@ -894,9 +894,9 @@ class Bisector_BisecAna : public Bisector_Curve {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Performs the bisecting line between the two points <Pnt1> and <Pnt2>.
 	:param Pnt1:
-	:type Pnt1: opencascade::handle<Geom2d_Point> &
+	:type Pnt1: Geom2d_Point
 	:param Pnt2:
-	:type Pnt2: opencascade::handle<Geom2d_Point> &
+	:type Pnt2: Geom2d_Point
 	:param P:
 	:type P: gp_Pnt2d
 	:param V1:
@@ -928,7 +928,7 @@ class Bisector_BisecAna : public Bisector_Curve {
 		%feature("compactdefaultargs") SetTrim;
 		%feature("autodoc", "* Trim <self> by a domain defined by the curve <Cu>. This domain is the set of the points which are nearest from <Cu> than the extremitis of <Cu>.
 	:param Cu:
-	:type Cu: opencascade::handle<Geom2d_Curve> &
+	:type Cu: Geom2d_Curve
 	:rtype: None") SetTrim;
 		void SetTrim (const opencascade::handle<Geom2d_Curve> & Cu);
 
@@ -975,9 +975,9 @@ class Bisector_BisecCC : public Bisector_Curve {
 		%feature("compactdefaultargs") Bisector_BisecCC;
 		%feature("autodoc", "* Constructs the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 	:param Cu1:
-	:type Cu1: opencascade::handle<Geom2d_Curve> &
+	:type Cu1: Geom2d_Curve
 	:param Cu2:
-	:type Cu2: opencascade::handle<Geom2d_Curve> &
+	:type Cu2: Geom2d_Curve
 	:param Side1:
 	:type Side1: float
 	:param Side2:
@@ -1175,9 +1175,9 @@ class Bisector_BisecCC : public Bisector_Curve {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Computes the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. //! <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 	:param Cu1:
-	:type Cu1: opencascade::handle<Geom2d_Curve> &
+	:type Cu1: Geom2d_Curve
 	:param Cu2:
-	:type Cu2: opencascade::handle<Geom2d_Curve> &
+	:type Cu2: Geom2d_Curve
 	:param Side1:
 	:type Side1: float
 	:param Side2:
@@ -1220,11 +1220,11 @@ class Bisector_BisecCC : public Bisector_Curve {
 	:param U:
 	:type U: float
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param Distance:
-	:type Distance: float &
+	:type Distance: float
 	:rtype: gp_Pnt2d") ValueAndDist;
 		gp_Pnt2d ValueAndDist (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1234,11 +1234,11 @@ class Bisector_BisecCC : public Bisector_Curve {
 	:param U:
 	:type U: float
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:param Distance:
-	:type Distance: float &
+	:type Distance: float
 	:rtype: gp_Pnt2d") ValueByInt;
 		gp_Pnt2d ValueByInt (const Standard_Real U,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1268,7 +1268,7 @@ class Bisector_BisecPC : public Bisector_Curve {
 		%feature("compactdefaultargs") Bisector_BisecPC;
 		%feature("autodoc", "* Constructs the bisector between the point <P> and the curve <Cu>. <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 	:param Cu:
-	:type Cu: opencascade::handle<Geom2d_Curve> &
+	:type Cu: Geom2d_Curve
 	:param P:
 	:type P: gp_Pnt2d
 	:param Side:
@@ -1282,7 +1282,7 @@ class Bisector_BisecPC : public Bisector_Curve {
 		%feature("compactdefaultargs") Bisector_BisecPC;
 		%feature("autodoc", "* Constructs the bisector between the point <P> and the curve <Cu> Trimmed by <UMin> and <UMax> <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. Warning: the bisector is supposed all over defined between <UMin> and <UMax>.
 	:param Cu:
-	:type Cu: opencascade::handle<Geom2d_Curve> &
+	:type Cu: Geom2d_Curve
 	:param P:
 	:type P: gp_Pnt2d
 	:param Side:
@@ -1481,7 +1481,7 @@ class Bisector_BisecPC : public Bisector_Curve {
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "* Construct the bisector between the point <P> and the curve <Cu>. <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 	:param Cu:
-	:type Cu: opencascade::handle<Geom2d_Curve> &
+	:type Cu: Geom2d_Curve
 	:param P:
 	:type P: gp_Pnt2d
 	:param Side:

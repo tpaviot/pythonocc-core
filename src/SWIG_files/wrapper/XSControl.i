@@ -106,7 +106,7 @@ class XSControl {
 		%feature("compactdefaultargs") Session;
 		%feature("autodoc", "* Returns the WorkSession of a SessionPilot, but casts it as from XSControl : it then gives access to Control & Transfers
 	:param pilot:
-	:type pilot: opencascade::handle<IFSelect_SessionPilot> &
+	:type pilot: IFSelect_SessionPilot
 	:rtype: opencascade::handle<XSControl_WorkSession>") Session;
 		static opencascade::handle<XSControl_WorkSession> Session (const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
@@ -114,7 +114,7 @@ class XSControl {
 		%feature("compactdefaultargs") Vars;
 		%feature("autodoc", "* Returns the Vars of a SessionPilot, it is brought by Session it provides access to external variables
 	:param pilot:
-	:type pilot: opencascade::handle<IFSelect_SessionPilot> &
+	:type pilot: IFSelect_SessionPilot
 	:rtype: opencascade::handle<XSControl_Vars>") Vars;
 		static opencascade::handle<XSControl_Vars> Vars (const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
@@ -137,9 +137,9 @@ class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 		%feature("compactdefaultargs") AdjacentEntities;
 		%feature("autodoc", "* This functions considers a shape from a transfer and performs the search function explained above
 	:param ashape:
-	:type ashape: TopoDS_Shape &
+	:type ashape: TopoDS_Shape
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:param type:
 	:type type: TopAbs_ShapeEnum
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") AdjacentEntities;
@@ -151,11 +151,11 @@ class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 	:param level:
 	:type level: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param G:
-	:type G: Interface_Graph &
+	:type G: Interface_Graph
 	:param explored:
-	:type explored: Interface_EntityIterator &
+	:type explored: Interface_EntityIterator
 	:rtype: bool") Explore;
 		Standard_Boolean Explore (const Standard_Integer level,const opencascade::handle<Standard_Transient> & ent,const Interface_Graph & G,Interface_EntityIterator & explored);
 
@@ -169,7 +169,7 @@ class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 		%feature("compactdefaultargs") SetReader;
 		%feature("autodoc", "* Sets a TransferReader to sort entities : it brings the TransferProcess which may change, while the TransferReader does not
 	:param TR:
-	:type TR: opencascade::handle<XSControl_TransferReader> &
+	:type TR: XSControl_TransferReader
 	:rtype: None") SetReader;
 		void SetReader (const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -183,7 +183,7 @@ class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 		%feature("compactdefaultargs") XSControl_ConnectedShapes;
 		%feature("autodoc", "* Creates a Selection ConnectedShapes, which will work with the current TransferProcess brought by the TransferReader
 	:param TR:
-	:type TR: opencascade::handle<XSControl_TransferReader> &
+	:type TR: XSControl_TransferReader
 	:rtype: None") XSControl_ConnectedShapes;
 		 XSControl_ConnectedShapes (const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -208,7 +208,7 @@ class XSControl_Controller : public Standard_Transient {
 		%feature("compactdefaultargs") ActorRead;
 		%feature("autodoc", "* Returns the Actor for Read attached to the pair (norm,appli) It can be adapted for data of the input Model, as required Can be read from field then adapted with Model as required
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: opencascade::handle<Transfer_ActorOfTransientProcess>") ActorRead;
 		virtual opencascade::handle<Transfer_ActorOfTransientProcess> ActorRead (const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -227,7 +227,7 @@ class XSControl_Controller : public Standard_Transient {
 		%feature("compactdefaultargs") AddSessionItem;
 		%feature("autodoc", "* Records a Session Item, to be added for customisation of the Work Session. It must have a specific name. <setapplied> is used if <item> is a GeneralModifier, to decide If set to true, <item> will be applied to the hook list 'send'. Else, it is not applied to any hook list. Remark : this method is to be called at Create time, the recorded items will be used by Customise Warning : if <name> conflicts, the last recorded item is kept
 	:param theItem:
-	:type theItem: opencascade::handle<Standard_Transient> &
+	:type theItem: Standard_Transient
 	:param theName:
 	:type theName: char *
 	:param toApply: default value is Standard_False
@@ -245,7 +245,7 @@ class XSControl_Controller : public Standard_Transient {
 		%feature("compactdefaultargs") Customise;
 		%feature("autodoc", "* Customises a WorkSession, by adding to it the recorded items (by AddSessionItem)
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:rtype: void") Customise;
 		virtual void Customise (opencascade::handle<XSControl_WorkSession> & WS);
 
@@ -263,9 +263,9 @@ class XSControl_Controller : public Standard_Transient {
 		%feature("compactdefaultargs") ModeWriteBounds;
 		%feature("autodoc", "* Returns recorded min and max values for modetrans (write) Actually only for shapes Returns True if bounds are set, False else (then, free value)
 	:param modemin:
-	:type modemin: int &
+	:type modemin: int
 	:param modemax:
-	:type modemax: int &
+	:type modemax: int
 	:param shape: default value is Standard_True
 	:type shape: bool
 	:rtype: bool") ModeWriteBounds;
@@ -305,7 +305,7 @@ class XSControl_Controller : public Standard_Transient {
 		%feature("compactdefaultargs") RecognizeWriteShape;
 		%feature("autodoc", "* Tells if a shape is valid for a transfer to a model Asks the ActorWrite (through a ShapeMapper)
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param modetrans: default value is 0
 	:type modetrans: int
 	:rtype: bool") RecognizeWriteShape;
@@ -315,7 +315,7 @@ class XSControl_Controller : public Standard_Transient {
 		%feature("compactdefaultargs") RecognizeWriteTransient;
 		%feature("autodoc", "* Tells if <obj> (an application object) is a valid candidate for a transfer to a Model. By default, asks the ActorWrite if known (through a TransientMapper). Can be redefined
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:param modetrans: default value is 0
 	:type modetrans: int
 	:rtype: bool") RecognizeWriteTransient;
@@ -383,11 +383,11 @@ class XSControl_Controller : public Standard_Transient {
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "* Takes one Shape and transfers it to an InterfaceModel (already created, e.g. by NewModel) Default uses ActorWrite; can be redefined as necessary Returned value is a status, as follows : Done OK , Void : No Result , Fail : Fail (e.g. exception) Error : bad conditions , bad model or null model
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param modetrans: default value is 0
 	:type modetrans: int
 	:rtype: IFSelect_ReturnStatus") TransferWriteShape;
@@ -397,11 +397,11 @@ class XSControl_Controller : public Standard_Transient {
 		%feature("compactdefaultargs") TransferWriteTransient;
 		%feature("autodoc", "* Takes one Transient Object and transfers it to an InterfaceModel (already created, e.g. by NewModel) (result is recorded in the model by AddWithRefs) FP records produced results and checks //! Default uses ActorWrite; can be redefined as necessary Returned value is a status, as follows : 0 OK , 1 No Result , 2 Fail (e.g. exception raised) -1 bad conditions , -2 bad model or null model For type of object not recognized : should return 1
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:param FP:
-	:type FP: opencascade::handle<Transfer_FinderProcess> &
+	:type FP: Transfer_FinderProcess
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:param modetrans: default value is 0
 	:type modetrans: int
 	:rtype: IFSelect_ReturnStatus") TransferWriteTransient;
@@ -433,7 +433,7 @@ class XSControl_FuncShape {
 		%feature("compactdefaultargs") FileAndVar;
 		%feature("autodoc", "* Analyses given file name and variable name, with a default name for variables. Returns resulting file name and variable name plus status 'file to read'(True) or 'already read'(False) In the latter case, empty resfile means no file available //! If <file> is null or empty or equates '.', considers Session and returned status is False Else, returns resfile = file and status is True If <var> is neither null nor empty, resvar = var Else, the root part of <resfile> is considered, if defined Else, <def> is taken
 	:param session:
-	:type session: opencascade::handle<XSControl_WorkSession> &
+	:type session: XSControl_WorkSession
 	:param file:
 	:type file: char *
 	:param var:
@@ -441,9 +441,9 @@ class XSControl_FuncShape {
 	:param def:
 	:type def: char *
 	:param resfile:
-	:type resfile: TCollection_AsciiString &
+	:type resfile: TCollection_AsciiString
 	:param resvar:
-	:type resvar: TCollection_AsciiString &
+	:type resvar: TCollection_AsciiString
 	:rtype: bool") FileAndVar;
 		static Standard_Boolean FileAndVar (const opencascade::handle<XSControl_WorkSession> & session,const char * file,const char * var,const char * def,TCollection_AsciiString & resfile,TCollection_AsciiString & resvar);
 
@@ -457,9 +457,9 @@ class XSControl_FuncShape {
 		%feature("compactdefaultargs") MoreShapes;
 		%feature("autodoc", "* Analyses a name as designating Shapes from a Vars or from XSTEP transfer (last Transfer on Reading). <name> can be : '*' : all the root shapes produced by last Transfer (Read) i.e. considers roots of the TransientProcess a name : a name of a variable DRAW //! Returns the count of designated Shapes. Their list is put in <list>. If <list> is null, it is firstly created. Then it is completed (Append without Clear) by the Shapes found Returns 0 if no Shape could be found
 	:param session:
-	:type session: opencascade::handle<XSControl_WorkSession> &
+	:type session: XSControl_WorkSession
 	:param list:
-	:type list: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type list: TopTools_HSequenceOfShape
 	:param name:
 	:type name: char *
 	:rtype: int") MoreShapes;
@@ -511,13 +511,13 @@ class XSControl_Reader {
 		%feature("compactdefaultargs") GetStatsTransfer;
 		%feature("autodoc", "* Gives statistics about Transfer
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:param nbMapped:
-	:type nbMapped: int &
+	:type nbMapped: int
 	:param nbWithResult:
-	:type nbWithResult: int &
+	:type nbWithResult: int
 	:param nbWithFail:
-	:type nbWithFail: int &
+	:type nbWithFail: int
 	:rtype: None") GetStatsTransfer;
 		void GetStatsTransfer (const opencascade::handle<TColStd_HSequenceOfTransient> & list,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -537,7 +537,7 @@ class XSControl_Reader {
 	:param first:
 	:type first: char *
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") GiveList;
 		opencascade::handle<TColStd_HSequenceOfTransient> GiveList (const char * first,const opencascade::handle<Standard_Transient> & ent);
 
@@ -623,7 +623,7 @@ class XSControl_Reader {
 		%feature("compactdefaultargs") SetWS;
 		%feature("autodoc", "* Sets a specific session to <self>
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:param scratch: default value is Standard_True
 	:type scratch: bool
 	:rtype: None") SetWS;
@@ -641,7 +641,7 @@ class XSControl_Reader {
 		%feature("compactdefaultargs") TransferEntity;
 		%feature("autodoc", "* Translates an IGES or STEP entity in the model. true is returned if a shape is produced; otherwise, false is returned.
 	:param start:
-	:type start: opencascade::handle<Standard_Transient> &
+	:type start: Standard_Transient
 	:rtype: bool") TransferEntity;
 		Standard_Boolean TransferEntity (const opencascade::handle<Standard_Transient> & start);
 
@@ -649,7 +649,7 @@ class XSControl_Reader {
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "* Translates a list of entities. Returns the number of IGES or STEP entities that were successfully translated. The list can be produced with GiveList. Warning - This function does not clear the existing output shapes.
 	:param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type list: TColStd_HSequenceOfTransient
 	:rtype: int") TransferList;
 		Standard_Integer TransferList (const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -699,7 +699,7 @@ class XSControl_Reader {
 		%feature("compactdefaultargs") XSControl_Reader;
 		%feature("autodoc", "* Creates a Reader from an already existing Session, with a Controller already set Virtual destructor
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:param scratch: default value is Standard_True
 	:type scratch: bool
 	:rtype: None") XSControl_Reader;
@@ -742,7 +742,7 @@ class XSControl_SelectForTransfer : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") SetActor;
 		%feature("autodoc", "* Sets a precise actor to sort entities This definition oversedes the creation with a TransferReader
 	:param act:
-	:type act: opencascade::handle<Transfer_ActorOfTransientProcess> &
+	:type act: Transfer_ActorOfTransientProcess
 	:rtype: None") SetActor;
 		void SetActor (const opencascade::handle<Transfer_ActorOfTransientProcess> & act);
 
@@ -750,7 +750,7 @@ class XSControl_SelectForTransfer : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") SetReader;
 		%feature("autodoc", "* Sets a TransferReader to sort entities : it brings the Actor, which may change, while the TransferReader does not
 	:param TR:
-	:type TR: opencascade::handle<XSControl_TransferReader> &
+	:type TR: XSControl_TransferReader
 	:rtype: None") SetReader;
 		void SetReader (const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -760,9 +760,9 @@ class XSControl_SelectForTransfer : public IFSelect_SelectExtract {
 	:param rank:
 	:type rank: int
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: bool") Sort;
 		Standard_Boolean Sort (const Standard_Integer rank,const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -776,7 +776,7 @@ class XSControl_SelectForTransfer : public IFSelect_SelectExtract {
 		%feature("compactdefaultargs") XSControl_SelectForTransfer;
 		%feature("autodoc", "* Creates a SelectForTransfer, which will work with the currently defined Actor brought by the TransferReader
 	:param TR:
-	:type TR: opencascade::handle<XSControl_TransferReader> &
+	:type TR: XSControl_TransferReader
 	:rtype: None") XSControl_SelectForTransfer;
 		 XSControl_SelectForTransfer (const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -813,7 +813,7 @@ class XSControl_SignTransferStatus : public IFSelect_Signature {
 		%feature("compactdefaultargs") SetMap;
 		%feature("autodoc", "* Sets a precise map to sign entities This definition oversedes the creation with a TransferReader
 	:param TP:
-	:type TP: opencascade::handle<Transfer_TransientProcess> &
+	:type TP: Transfer_TransientProcess
 	:rtype: None") SetMap;
 		void SetMap (const opencascade::handle<Transfer_TransientProcess> & TP);
 
@@ -821,7 +821,7 @@ class XSControl_SignTransferStatus : public IFSelect_Signature {
 		%feature("compactdefaultargs") SetReader;
 		%feature("autodoc", "* Sets a TransferReader to work
 	:param TR:
-	:type TR: opencascade::handle<XSControl_TransferReader> &
+	:type TR: XSControl_TransferReader
 	:rtype: None") SetReader;
 		void SetReader (const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -829,9 +829,9 @@ class XSControl_SignTransferStatus : public IFSelect_Signature {
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "* Returns the Signature for a Transient object, as its transfer status
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param model:
-	:type model: opencascade::handle<Interface_InterfaceModel> &
+	:type model: Interface_InterfaceModel
 	:rtype: char *") Value;
 		const char * Value (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -845,7 +845,7 @@ class XSControl_SignTransferStatus : public IFSelect_Signature {
 		%feature("compactdefaultargs") XSControl_SignTransferStatus;
 		%feature("autodoc", "* Creates a SignTransferStatus, which will work on the current TransientProcess brought by the TransferReader (its MapReader)
 	:param TR:
-	:type TR: opencascade::handle<XSControl_TransferReader> &
+	:type TR: XSControl_TransferReader
 	:rtype: None") XSControl_SignTransferStatus;
 		 XSControl_SignTransferStatus (const opencascade::handle<XSControl_TransferReader> & TR);
 
@@ -882,7 +882,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") CheckList;
 		%feature("autodoc", "* Returns the CheckList resulting from transferring <ent>, i.e. stored in its recorded form ResultFromModel (empty if transfer successful or not recorded ...) //! If <ent> is the Model, returns the complete cumulated check-list, <level> is ignored //! If <ent> is an entity of the Model, <level> applies as follows <level> : -1 for <ent> only, LAST transfer (TransientProcess) <level> : 0 for <ent> only (D) 1 for <ent> and its immediate subtransfers, if any 2 for <ent> and subtransferts at all levels
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:param theLevel: default value is 0
 	:type theLevel: int
 	:rtype: Interface_CheckIterator") CheckList;
@@ -892,7 +892,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") CheckedList;
 		%feature("autodoc", "* Returns the list of starting entities to which a given check status is attached, IN FINAL RESULTS <ent> can be an entity, or the model to query all entities Below, 'entities' are, either <ent> plus its sub-transferred, or all the entities of the model //! <check> = -2 , all entities whatever the check (see result) <check> = -1 , entities with no fail (warning allowed) <check> = 0 , entities with no check at all <check> = 1 , entities with warning but no fail <check> = 2 , entities with fail <result> : if True, only entities with an attached result Remark : result True and check=0 will give an empty list
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:param WithCheck: default value is Interface_CheckAny
 	:type WithCheck: Interface_CheckStatus
 	:param theResult: default value is Standard_True
@@ -912,7 +912,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") ClearResult;
 		%feature("autodoc", "* Clears recorded result for an entity, according mode <mode> = -1 : true, complete, clearing (erasing result) <mode> >= 0 : simple 'stripping', see ResultFromModel, in particular, 0 for simple internal strip, 10 for all but final result, 11 for all : just label, status and filename are kept Returns True when done, False if nothing was to clear
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:param theMode:
 	:type theMode: int
 	:rtype: bool") ClearResult;
@@ -928,7 +928,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") EntitiesFromShapeList;
 		%feature("autodoc", "* Returns the list of entities from which some shapes were produced : it corresponds to a loop on EntityFromShapeResult, but is optimised
 	:param theRes:
-	:type theRes: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type theRes: TopTools_HSequenceOfShape
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: opencascade::handle<TColStd_HSequenceOfTransient>") EntitiesFromShapeList;
@@ -938,7 +938,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") EntityFromResult;
 		%feature("autodoc", "* Returns an entity from which a given result was produced. If <mode> = 0 (D), searches in last root transfers If <mode> = 1, searches in last (root & sub) transfers If <mode> = 2, searches in root recorded results If <mode> = 3, searches in all (root & sub) recordeds <res> can be, either a transient object (result itself) or a binder. For a binder of shape, calls EntityFromShapeResult Returns a Null Handle if <res> not recorded
 	:param theRes:
-	:type theRes: opencascade::handle<Standard_Transient> &
+	:type theRes: Standard_Transient
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: opencascade::handle<Standard_Transient>") EntityFromResult;
@@ -948,7 +948,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") EntityFromShapeResult;
 		%feature("autodoc", "* Returns an entity from which a given shape result was produced Returns a Null Handle if <res> not recorded or not a Shape
 	:param theRes:
-	:type theRes: TopoDS_Shape &
+	:type theRes: TopoDS_Shape
 	:param theMode: default value is 0
 	:type theMode: int
 	:rtype: opencascade::handle<Standard_Transient>") EntityFromShapeResult;
@@ -964,7 +964,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") FinalEntityLabel;
 		%feature("autodoc", "* Returns the label attached to an entity recorded for final, or an empty string if not recorded
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: char *") FinalEntityLabel;
 		const char * FinalEntityLabel (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -972,7 +972,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") FinalEntityNumber;
 		%feature("autodoc", "* Returns the number attached to the entity recorded for final, or zero if not recorded (looks in the ResultFromModel)
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: int") FinalEntityNumber;
 		Standard_Integer FinalEntityNumber (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -980,7 +980,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") FinalResult;
 		%feature("autodoc", "* Returns the final result recorded for an entity, as such
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: opencascade::handle<Transfer_ResultFromModel>") FinalResult;
 		opencascade::handle<Transfer_ResultFromModel> FinalResult (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -990,9 +990,9 @@ class XSControl_TransferReader : public Standard_Transient {
 	:param theName:
 	:type theName: char *
 	:param theType:
-	:type theType: opencascade::handle<Standard_Type> &
+	:type theType: Standard_Type
 	:param theCtx:
-	:type theCtx: opencascade::handle<Standard_Transient> &
+	:type theCtx: Standard_Transient
 	:rtype: bool") GetContext;
 		Standard_Boolean GetContext (const char * theName,const opencascade::handle<Standard_Type> & theType,opencascade::handle<Standard_Transient> & theCtx);
 
@@ -1000,7 +1000,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") HasChecks;
 		%feature("autodoc", "* Returns True if an entity (with a final result) has checks : - failsonly = False : any kind of check message - failsonly = True : fails only Returns False if <ent> is not recorded
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:param FailsOnly:
 	:type FailsOnly: bool
 	:rtype: bool") HasChecks;
@@ -1010,7 +1010,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "* Returns True if a final result is recorded AND BRINGS AN EFFECTIVE RESULT (else, it brings only fail messages)
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: bool") HasResult;
 		Standard_Boolean HasResult (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1018,7 +1018,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") IsMarked;
 		%feature("autodoc", "* Returns True if an entity has been asked for transfert, hence it is marked, as : Recorded (a computation has ran, with or without an effective result), or Skipped (case ignored)
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: bool") IsMarked;
 		Standard_Boolean IsMarked (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1026,7 +1026,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") IsRecorded;
 		%feature("autodoc", "* Returns True if a final result is recorded for an entity Remark that it can bring no effective result if transfer has completely failed (FinalResult brings only fail messages ...)
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: bool") IsRecorded;
 		Standard_Boolean IsRecorded (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1034,7 +1034,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") IsSkipped;
 		%feature("autodoc", "* Returns True if an entity is noted as skipped
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: bool") IsSkipped;
 		Standard_Boolean IsSkipped (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1072,9 +1072,9 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") PrintStatsOnList;
 		%feature("autodoc", "* Works as PrintStatsProcess, but displays data only on the entities which are in <list> (filter)
 	:param theTP:
-	:type theTP: opencascade::handle<Transfer_TransientProcess> &
+	:type theTP: Transfer_TransientProcess
 	:param theList:
-	:type theList: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type theList: TColStd_HSequenceOfTransient
 	:param theWhat:
 	:type theWhat: int
 	:param theMode: default value is 0
@@ -1086,7 +1086,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") PrintStatsProcess;
 		%feature("autodoc", "* This routines prints statistics about a TransientProcess It can be called, by a TransferReader, or isolately Prints are done on the default trace file <what> defines what kind of statistics are to be printed : 0 : basic figures 1 : root results 2 : all recorded (roots, intermediate, checked entities) 3 : abnormal records 4 : check messages (warnings and fails) 5 : fail messages //! <mode> is used according <what> : <what> = 0 : <mode> is ignored <what> = 1,2,3 : <mode> as follows : 0 (D) : just lists numbers of concerned entities in the model 1 : for each entity, gives number,label, type and result type and/or status (fail/warning...) 2 : for each entity, gives maximal information (i.e. checks) 3 : counts per type of starting entity (class type) 4 : counts per result type and/or status 5 : counts per couple (starting type / result type/status) 6 : idem plus gives for each item, the list of numbers of entities in the starting model //! <what> = 4,5 : modes relays on an enum PrintCount : 0 (D) : ItemsByEntity (sequential list by entity) 1 : CountByItem 2 : ShortByItem (count + 5 first numbers) 3 : ListByItem (count + entity numbers) 4 : EntitiesByItem (count + entity numbers and labels)
 	:param theTP:
-	:type theTP: opencascade::handle<Transfer_TransientProcess> &
+	:type theTP: Transfer_TransientProcess
 	:param theWhat:
 	:type theWhat: int
 	:param theMode: default value is 0
@@ -1098,7 +1098,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "* Tells if an entity is recognized as a valid candidate for Transfer. Calls method Recognize from the Actor (if known)
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: bool") Recognize;
 		Standard_Boolean Recognize (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1106,7 +1106,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") RecordResult;
 		%feature("autodoc", "* Records a final result of transferring an entity This result is recorded as a ResultFromModel, taken from the TransientProcess Returns True if a result is available, False else
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: bool") RecordResult;
 		Standard_Boolean RecordResult (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1128,7 +1128,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") SetActor;
 		%feature("autodoc", "* Sets the Actor directly : this value will be used if the Controller is not set
 	:param theActor:
-	:type theActor: opencascade::handle<Transfer_ActorOfTransientProcess> &
+	:type theActor: Transfer_ActorOfTransientProcess
 	:rtype: None") SetActor;
 		void SetActor (const opencascade::handle<Transfer_ActorOfTransientProcess> & theActor);
 
@@ -1138,7 +1138,7 @@ class XSControl_TransferReader : public Standard_Transient {
 	:param theName:
 	:type theName: char *
 	:param theCtx:
-	:type theCtx: opencascade::handle<Standard_Transient> &
+	:type theCtx: Standard_Transient
 	:rtype: None") SetContext;
 		void SetContext (const char * theName,const opencascade::handle<Standard_Transient> & theCtx);
 
@@ -1146,7 +1146,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") SetController;
 		%feature("autodoc", "* Sets a Controller. It is required to generate the Actor. Elsewhere, the Actor must be provided directly
 	:param theControl:
-	:type theControl: opencascade::handle<XSControl_Controller> &
+	:type theControl: XSControl_Controller
 	:rtype: None") SetController;
 		void SetController (const opencascade::handle<XSControl_Controller> & theControl);
 
@@ -1162,7 +1162,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") SetGraph;
 		%feature("autodoc", "* Sets a Graph and its InterfaceModel (calls SetModel)
 	:param theGraph:
-	:type theGraph: opencascade::handle<Interface_HGraph> &
+	:type theGraph: Interface_HGraph
 	:rtype: None") SetGraph;
 		void SetGraph (const opencascade::handle<Interface_HGraph> & theGraph);
 
@@ -1170,7 +1170,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "* Sets an InterfaceModel. This causes former results, computed from another one, to be lost (see also Clear)
 	:param theModel:
-	:type theModel: opencascade::handle<Interface_InterfaceModel> &
+	:type theModel: Interface_InterfaceModel
 	:rtype: None") SetModel;
 		void SetModel (const opencascade::handle<Interface_InterfaceModel> & theModel);
 
@@ -1178,7 +1178,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") SetTransientProcess;
 		%feature("autodoc", "* Forces the TransientProcess Remark : it also changes the Model and the Actor, from those recorded in the new TransientProcess
 	:param theTP:
-	:type theTP: opencascade::handle<Transfer_TransientProcess> &
+	:type theTP: Transfer_TransientProcess
 	:rtype: None") SetTransientProcess;
 		void SetTransientProcess (const opencascade::handle<Transfer_TransientProcess> & theTP);
 
@@ -1186,7 +1186,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") ShapeResult;
 		%feature("autodoc", "* Returns the resulting object as a Shape Null Shape if no result or result not a shape
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: TopoDS_Shape") ShapeResult;
 		TopoDS_Shape ShapeResult (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1202,7 +1202,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") Skip;
 		%feature("autodoc", "* Note that an entity has been required for transfer but no result at all is available (typically : case not implemented) It is not an error, but it gives a specific status : Skipped Returns True if done, False if <ent> is not in starting model
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: bool") Skip;
 		Standard_Boolean Skip (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1210,7 +1210,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") TransferClear;
 		%feature("autodoc", "* Clears the results attached to an entity if <ents> equates the starting model, clears all results
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:param theLevel: default value is 0
 	:type theLevel: int
 	:rtype: None") TransferClear;
@@ -1220,7 +1220,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "* Commands the transfer on reading for a list of entities to data for Imagine, using the selected Actor for Read Returns count of transferred entities, ok or with fails (0/1) If <rec> is True (D), the results are recorded by RecordResult
 	:param theList:
-	:type theList: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type theList: TColStd_HSequenceOfTransient
 	:param theRec: default value is Standard_True
 	:type theRec: bool
 	:rtype: int") TransferList;
@@ -1230,7 +1230,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") TransferOne;
 		%feature("autodoc", "* Commands the transfer on reading for an entity to data for Imagine, using the selected Actor for Read Returns count of transferred entities, ok or with fails (0/1) If <rec> is True (D), the result is recorded by RecordResult
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:param theRec: default value is Standard_True
 	:type theRec: bool
 	:rtype: int") TransferOne;
@@ -1240,7 +1240,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "* Transfers the content of the current Interface Model to data handled by Imagine, starting from its Roots (determined by the Graph <G>), using the selected Actor for Read Returns the count of performed root transfers (i.e. 0 if none) or -1 if no actor is defined
 	:param theGraph:
-	:type theGraph: Interface_Graph &
+	:type theGraph: Interface_Graph
 	:rtype: int") TransferRoots;
 		Standard_Integer TransferRoots (const Interface_Graph & theGraph);
 
@@ -1254,7 +1254,7 @@ class XSControl_TransferReader : public Standard_Transient {
 		%feature("compactdefaultargs") TransientResult;
 		%feature("autodoc", "* Returns the resulting object as a Transient Null Handle if no result or result not transient
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:rtype: opencascade::handle<Standard_Transient>") TransientResult;
 		opencascade::handle<Standard_Transient> TransientResult (const opencascade::handle<Standard_Transient> & theEnt);
 
@@ -1321,7 +1321,7 @@ class XSControl_TransferWriter : public Standard_Transient {
 		%feature("compactdefaultargs") RecognizeShape;
 		%feature("autodoc", "* Tells if a Shape is valid for a transfer to a model Asks the Controller (RecognizeWriteShape)
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: bool") RecognizeShape;
 		Standard_Boolean RecognizeShape (const TopoDS_Shape & theShape);
 
@@ -1329,7 +1329,7 @@ class XSControl_TransferWriter : public Standard_Transient {
 		%feature("compactdefaultargs") RecognizeTransient;
 		%feature("autodoc", "* Tells if a transient object (from an application) is a valid candidate for a transfer to a model Asks the Controller (RecognizeWriteTransient) If <obj> is a HShape, calls RecognizeShape
 	:param theObj:
-	:type theObj: opencascade::handle<Standard_Transient> &
+	:type theObj: Standard_Transient
 	:rtype: bool") RecognizeTransient;
 		Standard_Boolean RecognizeTransient (const opencascade::handle<Standard_Transient> & theObj);
 
@@ -1337,7 +1337,7 @@ class XSControl_TransferWriter : public Standard_Transient {
 		%feature("compactdefaultargs") ResultCheckList;
 		%feature("autodoc", "* Returns the check-list of last transfer (write), but tries to bind to each check, the resulting entity in the model instead of keeping the original Mapper, whenever known
 	:param theModel:
-	:type theModel: opencascade::handle<Interface_InterfaceModel> &
+	:type theModel: Interface_InterfaceModel
 	:rtype: Interface_CheckIterator") ResultCheckList;
 		Interface_CheckIterator ResultCheckList (const opencascade::handle<Interface_InterfaceModel> & theModel);
 
@@ -1345,7 +1345,7 @@ class XSControl_TransferWriter : public Standard_Transient {
 		%feature("compactdefaultargs") SetController;
 		%feature("autodoc", "* Sets a new Controller, also sets a new FinderProcess
 	:param theCtl:
-	:type theCtl: opencascade::handle<XSControl_Controller> &
+	:type theCtl: XSControl_Controller
 	:rtype: None") SetController;
 		void SetController (const opencascade::handle<XSControl_Controller> & theCtl);
 
@@ -1353,7 +1353,7 @@ class XSControl_TransferWriter : public Standard_Transient {
 		%feature("compactdefaultargs") SetFinderProcess;
 		%feature("autodoc", "* Sets a new FinderProcess and forgets the former one
 	:param theFP:
-	:type theFP: opencascade::handle<Transfer_FinderProcess> &
+	:type theFP: Transfer_FinderProcess
 	:rtype: None") SetFinderProcess;
 		void SetFinderProcess (const opencascade::handle<Transfer_FinderProcess> & theFP);
 
@@ -1375,9 +1375,9 @@ class XSControl_TransferWriter : public Standard_Transient {
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "* Transfers a Shape from CasCade to a model of current norm, according to the last call to SetTransferMode Works by calling the Controller Returns status : =0 if OK, >0 if error during transfer, <0 if transfer badly initialised
 	:param theModel:
-	:type theModel: opencascade::handle<Interface_InterfaceModel> &
+	:type theModel: Interface_InterfaceModel
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:rtype: IFSelect_ReturnStatus") TransferWriteShape;
 		IFSelect_ReturnStatus TransferWriteShape (const opencascade::handle<Interface_InterfaceModel> & theModel,const TopoDS_Shape & theShape);
 
@@ -1385,9 +1385,9 @@ class XSControl_TransferWriter : public Standard_Transient {
 		%feature("compactdefaultargs") TransferWriteTransient;
 		%feature("autodoc", "* Transfers a Transient object (from an application) to a model of current norm, according to the last call to SetTransferMode Works by calling the Controller Returns status : =0 if OK, >0 if error during transfer, <0 if transfer badly initialised
 	:param theModel:
-	:type theModel: opencascade::handle<Interface_InterfaceModel> &
+	:type theModel: Interface_InterfaceModel
 	:param theObj:
-	:type theObj: opencascade::handle<Standard_Transient> &
+	:type theObj: Standard_Transient
 	:rtype: IFSelect_ReturnStatus") TransferWriteTransient;
 		IFSelect_ReturnStatus TransferWriteTransient (const opencascade::handle<Interface_InterfaceModel> & theModel,const opencascade::handle<Standard_Transient> & theObj);
 
@@ -1417,7 +1417,7 @@ class XSControl_Utils {
 		/****************** AppendCStr ******************/
 		%feature("compactdefaultargs") AppendCStr;
 		%feature("autodoc", ":param seqval:
-	:type seqval: opencascade::handle<TColStd_HSequenceOfHAsciiString> &
+	:type seqval: TColStd_HSequenceOfHAsciiString
 	:param strval:
 	:type strval: char *
 	:rtype: None") AppendCStr;
@@ -1426,7 +1426,7 @@ class XSControl_Utils {
 		/****************** AppendEStr ******************/
 		%feature("compactdefaultargs") AppendEStr;
 		%feature("autodoc", ":param seqval:
-	:type seqval: opencascade::handle<TColStd_HSequenceOfHExtendedString> &
+	:type seqval: TColStd_HSequenceOfHExtendedString
 	:param strval:
 	:type strval: Standard_ExtString
 	:rtype: None") AppendEStr;
@@ -1435,25 +1435,25 @@ class XSControl_Utils {
 		/****************** AppendShape ******************/
 		%feature("compactdefaultargs") AppendShape;
 		%feature("autodoc", ":param seqv:
-	:type seqv: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type seqv: TopTools_HSequenceOfShape
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:rtype: None") AppendShape;
 		void AppendShape (const opencascade::handle<TopTools_HSequenceOfShape> & seqv,const TopoDS_Shape & shape);
 
 		/****************** AppendTra ******************/
 		%feature("compactdefaultargs") AppendTra;
 		%feature("autodoc", ":param seqval:
-	:type seqval: opencascade::handle<TColStd_HSequenceOfTransient> &
+	:type seqval: TColStd_HSequenceOfTransient
 	:param traval:
-	:type traval: opencascade::handle<Standard_Transient> &
+	:type traval: Standard_Transient
 	:rtype: None") AppendTra;
 		void AppendTra (const opencascade::handle<TColStd_HSequenceOfTransient> & seqval,const opencascade::handle<Standard_Transient> & traval);
 
 		/****************** ArrToSeq ******************/
 		%feature("compactdefaultargs") ArrToSeq;
 		%feature("autodoc", ":param arr:
-	:type arr: opencascade::handle<Standard_Transient> &
+	:type arr: Standard_Transient
 	:rtype: opencascade::handle<Standard_Transient>") ArrToSeq;
 		opencascade::handle<Standard_Transient> ArrToSeq (const opencascade::handle<Standard_Transient> & arr);
 
@@ -1468,14 +1468,14 @@ class XSControl_Utils {
 		%feature("compactdefaultargs") BinderShape;
 		%feature("autodoc", "* From a Transient, returns a Shape. In fact, recognizes ShapeBinder ShapeMapper and HShape
 	:param tr:
-	:type tr: opencascade::handle<Standard_Transient> &
+	:type tr: Standard_Transient
 	:rtype: TopoDS_Shape") BinderShape;
 		TopoDS_Shape BinderShape (const opencascade::handle<Standard_Transient> & tr);
 
 		/****************** CStrValue ******************/
 		%feature("compactdefaultargs") CStrValue;
 		%feature("autodoc", ":param list:
-	:type list: opencascade::handle<Standard_Transient> &
+	:type list: Standard_Transient
 	:param num:
 	:type num: int
 	:rtype: char *") CStrValue;
@@ -1485,7 +1485,7 @@ class XSControl_Utils {
 		%feature("compactdefaultargs") CompoundFromSeq;
 		%feature("autodoc", "* Converts a list of Shapes to a Compound (a kind of Shape)
 	:param seqval:
-	:type seqval: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type seqval: TopTools_HSequenceOfShape
 	:rtype: TopoDS_Shape") CompoundFromSeq;
 		TopoDS_Shape CompoundFromSeq (const opencascade::handle<TopTools_HSequenceOfShape> & seqval);
 
@@ -1511,24 +1511,24 @@ class XSControl_Utils {
 		%feature("autodoc", ":param text:
 	:type text: char *
 	:param yy:
-	:type yy: int &
+	:type yy: int
 	:param mm:
-	:type mm: int &
+	:type mm: int
 	:param dd:
-	:type dd: int &
+	:type dd: int
 	:param hh:
-	:type hh: int &
+	:type hh: int
 	:param mn:
-	:type mn: int &
+	:type mn: int
 	:param ss:
-	:type ss: int &
+	:type ss: int
 	:rtype: None") DateValues;
 		void DateValues (const char * text,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
 		/****************** EStrValue ******************/
 		%feature("compactdefaultargs") EStrValue;
 		%feature("autodoc", ":param list:
-	:type list: opencascade::handle<Standard_Transient> &
+	:type list: Standard_Transient
 	:param num:
 	:type num: int
 	:rtype: Standard_ExtString") EStrValue;
@@ -1551,9 +1551,9 @@ class XSControl_Utils {
 		/****************** IsKind ******************/
 		%feature("compactdefaultargs") IsKind;
 		%feature("autodoc", ":param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:param what:
-	:type what: opencascade::handle<Standard_Type> &
+	:type what: Standard_Type
 	:rtype: bool") IsKind;
 		Standard_Boolean IsKind (const opencascade::handle<Standard_Transient> & item,const opencascade::handle<Standard_Type> & what);
 
@@ -1580,7 +1580,7 @@ class XSControl_Utils {
 		/****************** SeqIntValue ******************/
 		%feature("compactdefaultargs") SeqIntValue;
 		%feature("autodoc", ":param list:
-	:type list: opencascade::handle<TColStd_HSequenceOfInteger> &
+	:type list: TColStd_HSequenceOfInteger
 	:param num:
 	:type num: int
 	:rtype: int") SeqIntValue;
@@ -1589,14 +1589,14 @@ class XSControl_Utils {
 		/****************** SeqLength ******************/
 		%feature("compactdefaultargs") SeqLength;
 		%feature("autodoc", ":param list:
-	:type list: opencascade::handle<Standard_Transient> &
+	:type list: Standard_Transient
 	:rtype: int") SeqLength;
 		Standard_Integer SeqLength (const opencascade::handle<Standard_Transient> & list);
 
 		/****************** SeqToArr ******************/
 		%feature("compactdefaultargs") SeqToArr;
 		%feature("autodoc", ":param seq:
-	:type seq: opencascade::handle<Standard_Transient> &
+	:type seq: Standard_Transient
 	:param first: default value is 1
 	:type first: int
 	:rtype: opencascade::handle<Standard_Transient>") SeqToArr;
@@ -1606,7 +1606,7 @@ class XSControl_Utils {
 		%feature("compactdefaultargs") ShapeBinder;
 		%feature("autodoc", "* Creates a Transient Object from a Shape : it is either a Binder (used by functions which require a Transient but can process a Shape, such as viewing functions) or a HShape (according to hs) Default is a HShape
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param hs: default value is Standard_True
 	:type hs: bool
 	:rtype: opencascade::handle<Standard_Transient>") ShapeBinder;
@@ -1616,7 +1616,7 @@ class XSControl_Utils {
 		%feature("compactdefaultargs") ShapeType;
 		%feature("autodoc", "* Returns the type of a Shape : true type if <compound> is False If <compound> is True and <shape> is a Compound, iterates on its items. If all are of the same type, returns this type. Else, returns COMPOUND. If it is empty, returns SHAPE For a Null Shape, returns SHAPE
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param compound:
 	:type compound: bool
 	:rtype: TopAbs_ShapeEnum") ShapeType;
@@ -1625,7 +1625,7 @@ class XSControl_Utils {
 		/****************** ShapeValue ******************/
 		%feature("compactdefaultargs") ShapeValue;
 		%feature("autodoc", ":param seqv:
-	:type seqv: opencascade::handle<TopTools_HSequenceOfShape> &
+	:type seqv: TopTools_HSequenceOfShape
 	:param num:
 	:type num: int
 	:rtype: TopoDS_Shape") ShapeValue;
@@ -1635,7 +1635,7 @@ class XSControl_Utils {
 		%feature("compactdefaultargs") SortedCompound;
 		%feature("autodoc", "* From a Shape, builds a Compound as follows : explores it level by level If <explore> is False, only COMPOUND items. Else, all items Adds to the result, shapes which comply to <type> + if <type> is WIRE, considers free edges (and makes wires) + if <type> is SHELL, considers free faces (and makes shells) If <compound> is True, gathers items in compounds which correspond to starting COMPOUND,SOLID or SHELL containers, or items directly contained in a Compound
 	:param shape:
-	:type shape: TopoDS_Shape &
+	:type shape: TopoDS_Shape
 	:param type:
 	:type type: TopAbs_ShapeEnum
 	:param explore:
@@ -1655,28 +1655,28 @@ class XSControl_Utils {
 		/****************** ToCString ******************/
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", ":param strval:
-	:type strval: opencascade::handle<TCollection_HAsciiString> &
+	:type strval: TCollection_HAsciiString
 	:rtype: char *") ToCString;
 		const char * ToCString (const opencascade::handle<TCollection_HAsciiString> & strval);
 
 		/****************** ToCString ******************/
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", ":param strval:
-	:type strval: TCollection_AsciiString &
+	:type strval: TCollection_AsciiString
 	:rtype: char *") ToCString;
 		const char * ToCString (const TCollection_AsciiString & strval);
 
 		/****************** ToEString ******************/
 		%feature("compactdefaultargs") ToEString;
 		%feature("autodoc", ":param strval:
-	:type strval: opencascade::handle<TCollection_HExtendedString> &
+	:type strval: TCollection_HExtendedString
 	:rtype: Standard_ExtString") ToEString;
 		Standard_ExtString ToEString (const opencascade::handle<TCollection_HExtendedString> & strval);
 
 		/****************** ToEString ******************/
 		%feature("compactdefaultargs") ToEString;
 		%feature("autodoc", ":param strval:
-	:type strval: TCollection_ExtendedString &
+	:type strval: TCollection_ExtendedString
 	:rtype: Standard_ExtString") ToEString;
 		Standard_ExtString ToEString (const TCollection_ExtendedString & strval);
 
@@ -1704,7 +1704,7 @@ class XSControl_Utils {
 		/****************** TraValue ******************/
 		%feature("compactdefaultargs") TraValue;
 		%feature("autodoc", ":param list:
-	:type list: opencascade::handle<Standard_Transient> &
+	:type list: Standard_Transient
 	:param num:
 	:type num: int
 	:rtype: opencascade::handle<Standard_Transient>") TraValue;
@@ -1722,7 +1722,7 @@ class XSControl_Utils {
 		%feature("compactdefaultargs") TraceLines;
 		%feature("autodoc", "* Just prints a line or a set of lines into the current Trace File. <lines> can be a HAscii/ExtendedString (produces a print without ending line) or a HSequence or HArray1 Of .. (one new line per item)
 	:param lines:
-	:type lines: opencascade::handle<Standard_Transient> &
+	:type lines: Standard_Transient
 	:rtype: None") TraceLines;
 		void TraceLines (const opencascade::handle<Standard_Transient> & lines);
 
@@ -1730,7 +1730,7 @@ class XSControl_Utils {
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "* Returns the name of the dynamic type of an object, i.e. : If it is a Type, its Name If it is a object not a type, the Name of its DynamicType If it is Null, an empty string If <nopk> is False (D), gives complete name If <nopk> is True, returns class name without package
 	:param item:
-	:type item: opencascade::handle<Standard_Transient> &
+	:type item: Standard_Transient
 	:param nopk: default value is Standard_False
 	:type nopk: bool
 	:rtype: char *") TypeName;
@@ -1760,35 +1760,35 @@ class XSControl_Vars : public Standard_Transient {
 		/****************** Get ******************/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", ":param name:
-	:type name: char * &
+	:type name: char *
 	:rtype: opencascade::handle<Standard_Transient>") Get;
 		virtual opencascade::handle<Standard_Transient> Get (const char * & name);
 
 		/****************** GetCurve ******************/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", ":param name:
-	:type name: char * &
+	:type name: char *
 	:rtype: opencascade::handle<Geom_Curve>") GetCurve;
 		virtual opencascade::handle<Geom_Curve> GetCurve (const char * & name);
 
 		/****************** GetCurve2d ******************/
 		%feature("compactdefaultargs") GetCurve2d;
 		%feature("autodoc", ":param name:
-	:type name: char * &
+	:type name: char *
 	:rtype: opencascade::handle<Geom2d_Curve>") GetCurve2d;
 		virtual opencascade::handle<Geom2d_Curve> GetCurve2d (const char * & name);
 
 		/****************** GetGeom ******************/
 		%feature("compactdefaultargs") GetGeom;
 		%feature("autodoc", ":param name:
-	:type name: char * &
+	:type name: char *
 	:rtype: opencascade::handle<Geom_Geometry>") GetGeom;
 		virtual opencascade::handle<Geom_Geometry> GetGeom (const char * & name);
 
 		/****************** GetPoint ******************/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", ":param name:
-	:type name: char * &
+	:type name: char *
 	:param pnt:
 	:type pnt: gp_Pnt
 	:rtype: bool") GetPoint;
@@ -1797,7 +1797,7 @@ class XSControl_Vars : public Standard_Transient {
 		/****************** GetPoint2d ******************/
 		%feature("compactdefaultargs") GetPoint2d;
 		%feature("autodoc", ":param name:
-	:type name: char * &
+	:type name: char *
 	:param pnt:
 	:type pnt: gp_Pnt2d
 	:rtype: bool") GetPoint2d;
@@ -1806,14 +1806,14 @@ class XSControl_Vars : public Standard_Transient {
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", ":param name:
-	:type name: char * &
+	:type name: char *
 	:rtype: TopoDS_Shape") GetShape;
 		virtual TopoDS_Shape GetShape (const char * & name);
 
 		/****************** GetSurface ******************/
 		%feature("compactdefaultargs") GetSurface;
 		%feature("autodoc", ":param name:
-	:type name: char * &
+	:type name: char *
 	:rtype: opencascade::handle<Geom_Surface>") GetSurface;
 		virtual opencascade::handle<Geom_Surface> GetSurface (const char * & name);
 
@@ -1822,7 +1822,7 @@ class XSControl_Vars : public Standard_Transient {
 		%feature("autodoc", ":param name:
 	:type name: char *
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: void") Set;
 		virtual void Set (const char * name,const opencascade::handle<Standard_Transient> & val);
 
@@ -1849,7 +1849,7 @@ class XSControl_Vars : public Standard_Transient {
 		%feature("autodoc", ":param name:
 	:type name: char *
 	:param val:
-	:type val: TopoDS_Shape &
+	:type val: TopoDS_Shape
 	:rtype: void") SetShape;
 		virtual void SetShape (const char * name,const TopoDS_Shape & val);
 
@@ -1929,7 +1929,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 	:param theWri:
 	:type theWri: bool
 	:param theS:
-	:type theS: opencascade::handle<Message_Messenger> &
+	:type theS: Message_Messenger
 	:rtype: bool") PrintTransferStatus;
 		Standard_Boolean PrintTransferStatus (const Standard_Integer theNum,const Standard_Boolean theWri,const opencascade::handle<Message_Messenger> & theS);
 
@@ -1937,7 +1937,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "* Returns the result attached to a starting entity If <mode> = 0, returns Final Result If <mode> = 1, considers Last Result If <mode> = 2, considers Final, else if absent, Last returns it as Transient, if result is not transient returns the Binder <mode> = 10,11,12 idem but returns the Binder itself (if it is not, e.g. Shape, returns the Binder) <mode> = 20, returns the ResultFromModel
 	:param theEnt:
-	:type theEnt: opencascade::handle<Standard_Transient> &
+	:type theEnt: Standard_Transient
 	:param theMode:
 	:type theMode: int
 	:rtype: opencascade::handle<Standard_Transient>") Result;
@@ -1963,7 +1963,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 		%feature("compactdefaultargs") SetAllContext;
 		%feature("autodoc", "* Sets the current Context List, as a whole Sets it to the TransferReader
 	:param theContext:
-	:type theContext: NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > &
+	:type theContext: Standard_Transient
 	:rtype: None") SetAllContext;
 		void SetAllContext (const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & theContext);
 
@@ -1971,7 +1971,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 		%feature("compactdefaultargs") SetController;
 		%feature("autodoc", "* Selects a Norm defined by its Controller itself
 	:param theCtl:
-	:type theCtl: opencascade::handle<XSControl_Controller> &
+	:type theCtl: XSControl_Controller
 	:rtype: None") SetController;
 		void SetController (const opencascade::handle<XSControl_Controller> & theCtl);
 
@@ -1979,7 +1979,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 		%feature("compactdefaultargs") SetMapReader;
 		%feature("autodoc", "* Changes the Map Reader, i.e. considers that the new one defines the relevant read results (forgets the former ones) Returns True when done, False in case of bad definition, i.e. if Model from TP differs from that of Session
 	:param theTP:
-	:type theTP: opencascade::handle<Transfer_TransientProcess> &
+	:type theTP: Transfer_TransientProcess
 	:rtype: bool") SetMapReader;
 		Standard_Boolean SetMapReader (const opencascade::handle<Transfer_TransientProcess> & theTP);
 
@@ -1987,7 +1987,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 		%feature("compactdefaultargs") SetMapWriter;
 		%feature("autodoc", "* Changes the Map Reader, i.e. considers that the new one defines the relevant read results (forgets the former ones) Returns True when done, False if <FP> is Null
 	:param theFP:
-	:type theFP: opencascade::handle<Transfer_FinderProcess> &
+	:type theFP: Transfer_FinderProcess
 	:rtype: bool") SetMapWriter;
 		Standard_Boolean SetMapWriter (const opencascade::handle<Transfer_FinderProcess> & theFP);
 
@@ -1995,14 +1995,14 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 		%feature("compactdefaultargs") SetTransferReader;
 		%feature("autodoc", "* Sets a Transfer Reader, which manages transfers on reading
 	:param theTR:
-	:type theTR: opencascade::handle<XSControl_TransferReader> &
+	:type theTR: XSControl_TransferReader
 	:rtype: None") SetTransferReader;
 		void SetTransferReader (const opencascade::handle<XSControl_TransferReader> & theTR);
 
 		/****************** SetVars ******************/
 		%feature("compactdefaultargs") SetVars;
 		%feature("autodoc", ":param theVars:
-	:type theVars: opencascade::handle<XSControl_Vars> &
+	:type theVars: XSControl_Vars
 	:rtype: None") SetVars;
 		void SetVars (const opencascade::handle<XSControl_Vars> & theVars);
 
@@ -2010,7 +2010,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 		%feature("compactdefaultargs") TransferReadOne;
 		%feature("autodoc", "* Commands the transfer of, either one entity, or a list I.E. calls the TransferReader after having analysed <ents> It is cumulated from the last BeginTransfer <ents> is processed by GiveList, hence : - <ents> a Selection : its SelectionResult - <ents> a HSequenceOfTransient : this list - <ents> the Model : in this specific case, all the roots, with no cumulation of former transfers (TransferReadRoots)
 	:param theEnts:
-	:type theEnts: opencascade::handle<Standard_Transient> &
+	:type theEnts: Standard_Transient
 	:rtype: int") TransferReadOne;
 		Standard_Integer TransferReadOne (const opencascade::handle<Standard_Transient> & theEnts);
 
@@ -2036,7 +2036,7 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "* Transfers a Shape from CasCade to a model of current norm, according to the last call to SetModeWriteShape Returns status :Done if OK, Fail if error during transfer, Error if transfer badly initialised
 	:param theShape:
-	:type theShape: TopoDS_Shape &
+	:type theShape: TopoDS_Shape
 	:param theCompGraph: default value is Standard_True
 	:type theCompGraph: bool
 	:rtype: IFSelect_ReturnStatus") TransferWriteShape;
@@ -2105,7 +2105,7 @@ class XSControl_Writer {
 		%feature("compactdefaultargs") SetWS;
 		%feature("autodoc", "* Sets a specific session to <self>
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:param scratch: default value is Standard_True
 	:type scratch: bool
 	:rtype: None") SetWS;
@@ -2115,7 +2115,7 @@ class XSControl_Writer {
 		%feature("compactdefaultargs") TransferShape;
 		%feature("autodoc", "* Transfers a Shape according to the mode
 	:param sh:
-	:type sh: TopoDS_Shape &
+	:type sh: TopoDS_Shape
 	:param mode: default value is 0
 	:type mode: int
 	:rtype: IFSelect_ReturnStatus") TransferShape;
@@ -2153,7 +2153,7 @@ class XSControl_Writer {
 		%feature("compactdefaultargs") XSControl_Writer;
 		%feature("autodoc", "* Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data
 	:param WS:
-	:type WS: opencascade::handle<XSControl_WorkSession> &
+	:type WS: XSControl_WorkSession
 	:param scratch: default value is Standard_True
 	:type scratch: bool
 	:rtype: None") XSControl_Writer;

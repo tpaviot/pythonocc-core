@@ -141,9 +141,9 @@ class MoniTool_AttrList {
 	:param name:
 	:type name: char *
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: bool") GetAttribute;
 		Standard_Boolean GetAttribute (const char * name,const opencascade::handle<Standard_Type> & type,opencascade::handle<Standard_Transient> & val);
 
@@ -151,7 +151,7 @@ class MoniTool_AttrList {
 		%feature("compactdefaultargs") GetAttributes;
 		%feature("autodoc", "* Gets the list of attributes from <other>, by copying it By default, considers all the attributes from <other> If <fromname> is given, considers only the attributes with name beginning by <fromname> //! For each attribute, if <copied> is True (D), its value is also copied if it is a basic type (Integer,Real,String), else it remains shared between <other> and <self> //! These new attributes are added to the existing ones in <self>, in case of same name, they replace the existing ones
 	:param other:
-	:type other: MoniTool_AttrList &
+	:type other: MoniTool_AttrList
 	:param fromname: default value is ""
 	:type fromname: char *
 	:param copied: default value is Standard_True
@@ -165,7 +165,7 @@ class MoniTool_AttrList {
 	:param name:
 	:type name: char *
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") GetIntegerAttribute;
 		Standard_Boolean GetIntegerAttribute (const char * name,Standard_Integer &OutValue);
 
@@ -175,7 +175,7 @@ class MoniTool_AttrList {
 	:param name:
 	:type name: char *
 	:param val:
-	:type val: float &
+	:type val: float
 	:rtype: bool") GetRealAttribute;
 		Standard_Boolean GetRealAttribute (const char * name,Standard_Real &OutValue);
 
@@ -185,7 +185,7 @@ class MoniTool_AttrList {
 	:param name:
 	:type name: char *
 	:param val:
-	:type val: char * &
+	:type val: char *
 	:rtype: bool") GetStringAttribute;
 		Standard_Boolean GetStringAttribute (const char * name,const char * & val);
 
@@ -207,7 +207,7 @@ class MoniTool_AttrList {
 		%feature("compactdefaultargs") MoniTool_AttrList;
 		%feature("autodoc", "* Creates an AttrList from another one, definitions are shared (calls SameAttributes)
 	:param other:
-	:type other: MoniTool_AttrList &
+	:type other: MoniTool_AttrList
 	:rtype: None") MoniTool_AttrList;
 		 MoniTool_AttrList (const MoniTool_AttrList & other);
 
@@ -231,7 +231,7 @@ class MoniTool_AttrList {
 		%feature("compactdefaultargs") SameAttributes;
 		%feature("autodoc", "* Gets the list of attributes from <other>, as such, i.e. not copied : attributes are shared, any attribute edited, added, or removed in <other> is also in <self> and vice versa The former list of attributes of <self> is dropped
 	:param other:
-	:type other: MoniTool_AttrList &
+	:type other: MoniTool_AttrList
 	:rtype: None") SameAttributes;
 		void SameAttributes (const MoniTool_AttrList & other);
 
@@ -241,7 +241,7 @@ class MoniTool_AttrList {
 	:param name:
 	:type name: char *
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: None") SetAttribute;
 		void SetAttribute (const char * name,const opencascade::handle<Standard_Transient> & val);
 
@@ -302,7 +302,7 @@ class MoniTool_CaseData : public Standard_Transient {
 		%feature("compactdefaultargs") AddAny;
 		%feature("autodoc", "* Adds a Transient, with no more meaning
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:param name: default value is ""
 	:type name: char *
 	:rtype: None") AddAny;
@@ -324,7 +324,7 @@ class MoniTool_CaseData : public Standard_Transient {
 		%feature("compactdefaultargs") AddData;
 		%feature("autodoc", "* Unitary adding a data; rather internal
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:param kind:
 	:type kind: int
 	:param name: default value is ""
@@ -336,7 +336,7 @@ class MoniTool_CaseData : public Standard_Transient {
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "* Adds a Transient, as an Entity from an InterfaceModel for instance : it will then be printed with the help of a DBPE
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param name: default value is ""
 	:type name: char *
 	:rtype: None") AddEntity;
@@ -346,7 +346,7 @@ class MoniTool_CaseData : public Standard_Transient {
 		%feature("compactdefaultargs") AddGeom;
 		%feature("autodoc", "* Adds a Geometric as a Transient (Curve, Surface ...)
 	:param geom:
-	:type geom: opencascade::handle<Standard_Transient> &
+	:type geom: Standard_Transient
 	:param name: default value is ""
 	:type name: char *
 	:rtype: None") AddGeom;
@@ -366,7 +366,7 @@ class MoniTool_CaseData : public Standard_Transient {
 		%feature("compactdefaultargs") AddRaised;
 		%feature("autodoc", "* Adds the currently caught exception
 	:param theException:
-	:type theException: opencascade::handle<Standard_Failure> &
+	:type theException: Standard_Failure
 	:param name: default value is ""
 	:type name: char *
 	:rtype: None") AddRaised;
@@ -398,7 +398,7 @@ class MoniTool_CaseData : public Standard_Transient {
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "* Adds a Shape (recorded as a HShape)
 	:param sh:
-	:type sh: TopoDS_Shape &
+	:type sh: TopoDS_Shape
 	:param name: default value is ""
 	:type name: char *
 	:rtype: None") AddShape;
@@ -476,9 +476,9 @@ class MoniTool_CaseData : public Standard_Transient {
 	:param nd:
 	:type nd: int
 	:param type:
-	:type type: opencascade::handle<Standard_Type> &
+	:type type: Standard_Type
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: bool") GetData;
 		Standard_Boolean GetData (const Standard_Integer nd,const opencascade::handle<Standard_Type> & type,opencascade::handle<Standard_Transient> & val);
 
@@ -488,7 +488,7 @@ class MoniTool_CaseData : public Standard_Transient {
 	:param nd:
 	:type nd: int
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") Integer;
 		Standard_Boolean Integer (const Standard_Integer nd,Standard_Integer &OutValue);
 
@@ -580,7 +580,7 @@ class MoniTool_CaseData : public Standard_Transient {
 	:param nd:
 	:type nd: int
 	:param val:
-	:type val: float &
+	:type val: float
 	:rtype: bool") Real;
 		Standard_Boolean Real (const Standard_Integer nd,Standard_Real &OutValue);
 
@@ -590,9 +590,9 @@ class MoniTool_CaseData : public Standard_Transient {
 	:param nd:
 	:type nd: int
 	:param v1:
-	:type v1: float &
+	:type v1: float
 	:param v2:
-	:type v2: float &
+	:type v2: float
 	:rtype: bool") Reals;
 		Standard_Boolean Reals (const Standard_Integer nd,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -692,7 +692,7 @@ class MoniTool_CaseData : public Standard_Transient {
 	:param nd:
 	:type nd: int
 	:param text:
-	:type text: char * &
+	:type text: char *
 	:rtype: bool") Text;
 		Standard_Boolean Text (const Standard_Integer nd,const char * & text);
 
@@ -736,7 +736,7 @@ class MoniTool_DataInfo {
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "* Returns the Type attached to an object Here, the Dynamic Type of a Transient. Null Type if unknown
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: opencascade::handle<Standard_Type>") Type;
 		static opencascade::handle<Standard_Type> Type (const opencascade::handle<Standard_Transient> & ent);
 
@@ -744,7 +744,7 @@ class MoniTool_DataInfo {
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "* Returns Type Name (string) Allows to name type of non-handled objects
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: char *") TypeName;
 		static const char * TypeName (const opencascade::handle<Standard_Transient> & ent);
 
@@ -766,7 +766,7 @@ class MoniTool_ElemHasher {
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "* Returns hash code for the given element, in the range [1, theUpperBound]. Asks theElement its HashCode, then transforms it to be in the required range. @param theElement the element which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theElement:
-	:type theElement: opencascade::handle<MoniTool_Element> &
+	:type theElement: MoniTool_Element
 	:param theUpperBound:
 	:type theUpperBound: int
 	:rtype: int") HashCode;
@@ -776,9 +776,9 @@ class MoniTool_ElemHasher {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns True if two keys are the same. The test does not work on the Elements themselves but by calling their methods Equates
 	:param K1:
-	:type K1: opencascade::handle<MoniTool_Element> &
+	:type K1: MoniTool_Element
 	:param K2:
-	:type K2: opencascade::handle<MoniTool_Element> &
+	:type K2: MoniTool_Element
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const opencascade::handle<MoniTool_Element> & K1,const opencascade::handle<MoniTool_Element> & K2);
 
@@ -807,7 +807,7 @@ class MoniTool_Element : public Standard_Transient {
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "* Specific testof equallity : to be defined by each sub-class, must be False if Elements have not the same true Type, else their contents must be compared
 	:param other:
-	:type other: opencascade::handle<MoniTool_Element> &
+	:type other: MoniTool_Element
 	:rtype: bool") Equates;
 		virtual Standard_Boolean Equates (const opencascade::handle<MoniTool_Element> & other);
 
@@ -980,9 +980,9 @@ class MoniTool_SignText : public Standard_Transient {
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "* Gives a text as a signature for a transient object in a context If the context is senseless, it can be given as Null Handle empty result if nothing to give (at least the DynamicType could be sent ?)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param context:
-	:type context: opencascade::handle<Standard_Transient> &
+	:type context: Standard_Transient
 	:rtype: TCollection_AsciiString") Text;
 		virtual TCollection_AsciiString Text (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Transient> & context);
 
@@ -990,7 +990,7 @@ class MoniTool_SignText : public Standard_Transient {
 		%feature("compactdefaultargs") TextAlone;
 		%feature("autodoc", "* Gives a text as a signature for a transient object alone, i.e. without defined context. By default, calls Text with undefined context (Null Handle) and if empty, then returns DynamicType
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: TCollection_AsciiString") TextAlone;
 		virtual TCollection_AsciiString TextAlone (const opencascade::handle<Standard_Transient> & ent);
 
@@ -1062,7 +1062,7 @@ class MoniTool_Stat {
 		%feature("compactdefaultargs") MoniTool_Stat;
 		%feature("autodoc", "* used when starting
 	:param other:
-	:type other: MoniTool_Stat &
+	:type other: MoniTool_Stat
 	:rtype: None") MoniTool_Stat;
 		 MoniTool_Stat (const MoniTool_Stat & other);
 
@@ -1162,13 +1162,13 @@ class MoniTool_Timer : public Standard_Transient {
 		%feature("compactdefaultargs") GetAmendments;
 		%feature("autodoc", "* The computed amendmens are returned (for information only)
 	:param Access:
-	:type Access: float &
+	:type Access: float
 	:param Internal:
-	:type Internal: float &
+	:type Internal: float
 	:param External:
-	:type External: float &
+	:type External: float
 	:param Error10:
-	:type Error10: float &
+	:type Error10: float
 	:rtype: void") GetAmendments;
 		static void GetAmendments (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1263,7 +1263,7 @@ class MoniTool_TimerSentry {
 		%feature("compactdefaultargs") MoniTool_TimerSentry;
 		%feature("autodoc", "* Constructor creates an instance and runs the corresponding timer
 	:param timer:
-	:type timer: opencascade::handle<MoniTool_Timer> &
+	:type timer: MoniTool_Timer
 	:rtype: None") MoniTool_TimerSentry;
 		 MoniTool_TimerSentry (const opencascade::handle<MoniTool_Timer> & timer);
 
@@ -1341,7 +1341,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") AddLib;
 		%feature("autodoc", "* Adds a TypedValue in the library. It is recorded then will be accessed by its Name Its Definition may be imposed, else it is computed as usual By default it will be accessed by its Definition (string) Returns True if done, False if tv is Null or brings no Definition or <def> not defined //! If a TypedValue was already recorded under this name, it is replaced
 	:param tv:
-	:type tv: opencascade::handle<MoniTool_TypedValue> &
+	:type tv: MoniTool_TypedValue
 	:param def: default value is ""
 	:type def: char *
 	:rtype: bool") AddLib;
@@ -1377,9 +1377,9 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") EnumDef;
 		%feature("autodoc", "* Gives the Enum definitions : start value, end value, match status. Returns True for an Enum, False else.
 	:param startcase:
-	:type startcase: int &
+	:type startcase: int
 	:param endcase:
-	:type endcase: int &
+	:type endcase: int
 	:param match:
 	:type match: bool
 	:rtype: bool") EnumDef;
@@ -1405,7 +1405,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") GetObjectValue;
 		%feature("autodoc", "* Same as ObjectValue, but avoids DownCast : the receiving variable is directly loaded. It is assumed that it complies with the definition of ObjectType ! Otherwise, big trouble
 	:param val:
-	:type val: opencascade::handle<Standard_Transient> &
+	:type val: Standard_Transient
 	:rtype: None") GetObjectValue;
 		void GetObjectValue (opencascade::handle<Standard_Transient> & val);
 
@@ -1427,7 +1427,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 	:param max:
 	:type max: bool
 	:param val:
-	:type val: int &
+	:type val: int
 	:rtype: bool") IntegerLimit;
 		Standard_Boolean IntegerLimit (const Standard_Boolean max,Standard_Integer &OutValue);
 
@@ -1441,13 +1441,13 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") Internals;
 		%feature("autodoc", "* Access to internal data which have no other access
 	:param interp:
-	:type interp: MoniTool_ValueInterpret &
+	:type interp: MoniTool_ValueInterpret
 	:param satisf:
-	:type satisf: MoniTool_ValueSatisfies &
+	:type satisf: MoniTool_ValueSatisfies
 	:param satisname:
-	:type satisname: char * &
+	:type satisname: char *
 	:param enums:
-	:type enums: NCollection_DataMap<TCollection_AsciiString, int> &
+	:type enums: NCollection_DataMap<TCollection_AsciiString, int>
 	:rtype: None") Internals;
 		void Internals (MoniTool_ValueInterpret & interp,MoniTool_ValueSatisfies & satisf,const char * & satisname,NCollection_DataMap<TCollection_AsciiString, Standard_Integer> & enums);
 
@@ -1455,7 +1455,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") Interpret;
 		%feature("autodoc", "* Interprets a value. <native> True : returns a native value <native> False : returns a coded value If the Interpret function is set, calls it Else, for an Enum, Native returns the Text, Coded returns the number STANDARD RETURNS : = hval means no specific interpretation Null means senseless Can also be redefined
 	:param hval:
-	:type hval: opencascade::handle<TCollection_HAsciiString> &
+	:type hval: TCollection_HAsciiString
 	:param native:
 	:type native: bool
 	:rtype: opencascade::handle<TCollection_HAsciiString>") Interpret;
@@ -1509,7 +1509,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") MoniTool_TypedValue;
 		%feature("autodoc", "* Creates a TypedValue from another one, by duplication
 	:param other:
-	:type other: opencascade::handle<MoniTool_TypedValue> &
+	:type other: MoniTool_TypedValue
 	:rtype: None") MoniTool_TypedValue;
 		 MoniTool_TypedValue (const opencascade::handle<MoniTool_TypedValue> & other);
 
@@ -1541,7 +1541,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "* Prints definition, specification, and actual status and value
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: void") Print;
 		virtual void Print (const opencascade::handle<Message_Messenger> & S);
 
@@ -1549,7 +1549,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") PrintValue;
 		%feature("autodoc", "* Prints only the Value
 	:param S:
-	:type S: opencascade::handle<Message_Messenger> &
+	:type S: Message_Messenger
 	:rtype: None") PrintValue;
 		void PrintValue (const opencascade::handle<Message_Messenger> & S);
 
@@ -1559,7 +1559,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 	:param max:
 	:type max: bool
 	:param val:
-	:type val: float &
+	:type val: float
 	:rtype: bool") RealLimit;
 		Standard_Boolean RealLimit (const Standard_Boolean max,Standard_Real &OutValue);
 
@@ -1573,7 +1573,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") Satisfies;
 		%feature("autodoc", "* Returns True if a value statifies the specification (remark : does not apply to Entity : see ObjectType, for this type, the string is just a comment)
 	:param hval:
-	:type hval: opencascade::handle<TCollection_HAsciiString> &
+	:type hval: TCollection_HAsciiString
 	:rtype: bool") Satisfies;
 		virtual Standard_Boolean Satisfies (const opencascade::handle<TCollection_HAsciiString> & hval);
 
@@ -1603,7 +1603,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") SetHStringValue;
 		%feature("autodoc", "* Forces a new Handle for the Value It can be empty, else (if Type is not free Text), it must satisfy the specification. Not only the value is changed, but also the way it is shared Remark : for Type=Object, this value is not controlled, it can be set as a comment Returns False (and did not set) if the new value does not satisfy the specification Can be redefined to be managed (in a subclass)
 	:param hval:
-	:type hval: opencascade::handle<TCollection_HAsciiString> &
+	:type hval: TCollection_HAsciiString
 	:rtype: bool") SetHStringValue;
 		virtual Standard_Boolean SetHStringValue (const opencascade::handle<TCollection_HAsciiString> & hval);
 
@@ -1653,7 +1653,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") SetObjectType;
 		%feature("autodoc", "* Sets type of which an Object TypedValue must be kind of Error for a TypedValue not an Object (Entity)
 	:param typ:
-	:type typ: opencascade::handle<Standard_Type> &
+	:type typ: Standard_Type
 	:rtype: None") SetObjectType;
 		void SetObjectType (const opencascade::handle<Standard_Type> & typ);
 
@@ -1661,7 +1661,7 @@ class MoniTool_TypedValue : public Standard_Transient {
 		%feature("compactdefaultargs") SetObjectValue;
 		%feature("autodoc", "* Changes the value as Transient Object, only for Object/Entity Returns False if DynamicType does not satisfy ObjectType Can be redefined to be managed (in a subclass)
 	:param obj:
-	:type obj: opencascade::handle<Standard_Transient> &
+	:type obj: Standard_Transient
 	:rtype: bool") SetObjectValue;
 		virtual Standard_Boolean SetObjectValue (const opencascade::handle<Standard_Transient> & obj);
 
@@ -1763,9 +1763,9 @@ class MoniTool_SignShape : public MoniTool_SignText {
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "* Returns for a HShape, the string of its ShapeEnum The Model is absolutely useless (may be null)
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:param context:
-	:type context: opencascade::handle<Standard_Transient> &
+	:type context: Standard_Transient
 	:rtype: TCollection_AsciiString") Text;
 		TCollection_AsciiString Text (const opencascade::handle<Standard_Transient> & ent,const opencascade::handle<Standard_Transient> & context);
 
@@ -1790,7 +1790,7 @@ class MoniTool_TransientElem : public MoniTool_Element {
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "* Specific testof equallity : defined as False if <other> has not the same true Type, else contents are compared (by C++ operator ==)
 	:param other:
-	:type other: opencascade::handle<MoniTool_Element> &
+	:type other: MoniTool_Element
 	:rtype: bool") Equates;
 		Standard_Boolean Equates (const opencascade::handle<MoniTool_Element> & other);
 
@@ -1798,7 +1798,7 @@ class MoniTool_TransientElem : public MoniTool_Element {
 		%feature("compactdefaultargs") MoniTool_TransientElem;
 		%feature("autodoc", "* Creates a TransientElem with a Value. This Value can then not be changed. It is used by the Hasher to compute the HashCode, which will then be stored for an immediate reading.
 	:param akey:
-	:type akey: opencascade::handle<Standard_Transient> &
+	:type akey: Standard_Transient
 	:rtype: None") MoniTool_TransientElem;
 		 MoniTool_TransientElem (const opencascade::handle<Standard_Transient> & akey);
 

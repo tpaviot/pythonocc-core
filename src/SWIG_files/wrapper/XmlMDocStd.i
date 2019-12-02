@@ -80,9 +80,9 @@ class XmlMDocStd {
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "* Adds the attribute drivers to <aDriverTable>.
 	:param aDriverTable:
-	:type aDriverTable: opencascade::handle<XmlMDF_ADriverTable> &
+	:type aDriverTable: XmlMDF_ADriverTable
 	:param theMessageDriver:
-	:type theMessageDriver: opencascade::handle<Message_Messenger> &
+	:type theMessageDriver: Message_Messenger
 	:rtype: void") AddDrivers;
 		static void AddDrivers (const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable,const opencascade::handle<Message_Messenger> & theMessageDriver);
 
@@ -109,29 +109,29 @@ class XmlMDocStd_XLinkDriver : public XmlMDF_ADriver {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: XmlObjMgt_Persistent &
+	:type Source: XmlObjMgt_Persistent
 	:param Target:
-	:type Target: opencascade::handle<TDF_Attribute> &
+	:type Target: TDF_Attribute
 	:param RelocTable:
-	:type RelocTable: XmlObjMgt_RRelocationTable &
+	:type RelocTable: XmlObjMgt_RRelocationTable
 	:rtype: bool") Paste;
 		Standard_Boolean Paste (const XmlObjMgt_Persistent & Source,const opencascade::handle<TDF_Attribute> & Target,XmlObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Source:
-	:type Source: opencascade::handle<TDF_Attribute> &
+	:type Source: TDF_Attribute
 	:param Target:
-	:type Target: XmlObjMgt_Persistent &
+	:type Target: XmlObjMgt_Persistent
 	:param RelocTable:
-	:type RelocTable: XmlObjMgt_SRelocationTable &
+	:type RelocTable: XmlObjMgt_SRelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Source,XmlObjMgt_Persistent & Target,XmlObjMgt_SRelocationTable & RelocTable);
 
 		/****************** XmlMDocStd_XLinkDriver ******************/
 		%feature("compactdefaultargs") XmlMDocStd_XLinkDriver;
 		%feature("autodoc", ":param theMessageDriver:
-	:type theMessageDriver: opencascade::handle<Message_Messenger> &
+	:type theMessageDriver: Message_Messenger
 	:rtype: None") XmlMDocStd_XLinkDriver;
 		 XmlMDocStd_XLinkDriver (const opencascade::handle<Message_Messenger> & theMessageDriver);
 

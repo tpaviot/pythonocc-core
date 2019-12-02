@@ -132,17 +132,17 @@ class AdvApp2Var_ApproxAFunc2Var {
 	:param Num3DSS:
 	:type Num3DSS: int
 	:param OneDTol:
-	:type OneDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type OneDTol: TColStd_HArray1OfReal
 	:param TwoDTol:
-	:type TwoDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type TwoDTol: TColStd_HArray1OfReal
 	:param ThreeDTol:
-	:type ThreeDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type ThreeDTol: TColStd_HArray1OfReal
 	:param OneDTolFr:
-	:type OneDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
+	:type OneDTolFr: TColStd_HArray2OfReal
 	:param TwoDTolFr:
-	:type TwoDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
+	:type TwoDTolFr: TColStd_HArray2OfReal
 	:param ThreeDTolFr:
-	:type ThreeDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
+	:type ThreeDTolFr: TColStd_HArray2OfReal
 	:param FirstInU:
 	:type FirstInU: float
 	:param LastInU:
@@ -166,11 +166,11 @@ class AdvApp2Var_ApproxAFunc2Var {
 	:param MaxPatch:
 	:type MaxPatch: int
 	:param Func:
-	:type Func: AdvApp2Var_EvaluatorFunc2Var &
+	:type Func: AdvApp2Var_EvaluatorFunc2Var
 	:param UChoice:
-	:type UChoice: AdvApprox_Cutting &
+	:type UChoice: AdvApprox_Cutting
 	:param VChoice:
-	:type VChoice: AdvApprox_Cutting &
+	:type VChoice: AdvApprox_Cutting
 	:rtype: None") AdvApp2Var_ApproxAFunc2Var;
 		 AdvApp2Var_ApproxAFunc2Var (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const opencascade::handle<TColStd_HArray1OfReal> & OneDTol,const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol,const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol,const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr,const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr,const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr,const Standard_Real FirstInU,const Standard_Real LastInU,const Standard_Real FirstInV,const Standard_Real LastInV,const GeomAbs_IsoType FavorIso,const GeomAbs_Shape ContInU,const GeomAbs_Shape ContInV,const Standard_Integer PrecisCode,const Standard_Integer MaxDegInU,const Standard_Integer MaxDegInV,const Standard_Integer MaxPatch,const AdvApp2Var_EvaluatorFunc2Var & Func,AdvApprox_Cutting & UChoice,AdvApprox_Cutting & VChoice);
 
@@ -183,17 +183,17 @@ class AdvApp2Var_ApproxAFunc2Var {
 	:param Num3DSS:
 	:type Num3DSS: int
 	:param OneDTol:
-	:type OneDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type OneDTol: TColStd_HArray1OfReal
 	:param TwoDTol:
-	:type TwoDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type TwoDTol: TColStd_HArray1OfReal
 	:param ThreeDTol:
-	:type ThreeDTol: opencascade::handle<TColStd_HArray1OfReal> &
+	:type ThreeDTol: TColStd_HArray1OfReal
 	:param OneDTolFr:
-	:type OneDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
+	:type OneDTolFr: TColStd_HArray2OfReal
 	:param TwoDTolFr:
-	:type TwoDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
+	:type TwoDTolFr: TColStd_HArray2OfReal
 	:param ThreeDTolFr:
-	:type ThreeDTolFr: opencascade::handle<TColStd_HArray2OfReal> &
+	:type ThreeDTolFr: TColStd_HArray2OfReal
 	:param FirstInU:
 	:type FirstInU: float
 	:param LastInU:
@@ -217,13 +217,13 @@ class AdvApp2Var_ApproxAFunc2Var {
 	:param MaxPatch:
 	:type MaxPatch: int
 	:param Func:
-	:type Func: AdvApp2Var_EvaluatorFunc2Var &
+	:type Func: AdvApp2Var_EvaluatorFunc2Var
 	:param Crit:
-	:type Crit: AdvApp2Var_Criterion &
+	:type Crit: AdvApp2Var_Criterion
 	:param UChoice:
-	:type UChoice: AdvApprox_Cutting &
+	:type UChoice: AdvApprox_Cutting
 	:param VChoice:
-	:type VChoice: AdvApprox_Cutting &
+	:type VChoice: AdvApprox_Cutting
 	:rtype: None") AdvApp2Var_ApproxAFunc2Var;
 		 AdvApp2Var_ApproxAFunc2Var (const Standard_Integer Num1DSS,const Standard_Integer Num2DSS,const Standard_Integer Num3DSS,const opencascade::handle<TColStd_HArray1OfReal> & OneDTol,const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol,const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol,const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr,const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr,const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr,const Standard_Real FirstInU,const Standard_Real LastInU,const Standard_Real FirstInV,const Standard_Real LastInV,const GeomAbs_IsoType FavorIso,const GeomAbs_Shape ContInU,const GeomAbs_Shape ContInV,const Standard_Integer PrecisCode,const Standard_Integer MaxDegInU,const Standard_Integer MaxDegInV,const Standard_Integer MaxPatch,const AdvApp2Var_EvaluatorFunc2Var & Func,const AdvApp2Var_Criterion & Crit,AdvApprox_Cutting & UChoice,AdvApprox_Cutting & VChoice);
 
@@ -608,7 +608,7 @@ class AdvApp2Var_ApproxF2var {
 	:param vintfn:
 	:type vintfn: doublereal *
 	:param foncnp:
-	:type foncnp: AdvApp2Var_EvaluatorFunc2Var &
+	:type foncnp: AdvApp2Var_EvaluatorFunc2Var
 	:param nbpntu:
 	:type nbpntu: integer *
 	:param nbpntv:
@@ -647,7 +647,7 @@ class AdvApp2Var_ApproxF2var {
 	:param uvfonc:
 	:type uvfonc: doublereal *
 	:param foncnp:
-	:type foncnp: AdvApp2Var_EvaluatorFunc2Var &
+	:type foncnp: AdvApp2Var_EvaluatorFunc2Var
 	:param tconst:
 	:type tconst: doublereal *
 	:param isofav:
@@ -808,17 +808,17 @@ class AdvApp2Var_Context {
 	:param nb3Dss:
 	:type nb3Dss: int
 	:param tol1D:
-	:type tol1D: opencascade::handle<TColStd_HArray1OfReal> &
+	:type tol1D: TColStd_HArray1OfReal
 	:param tol2D:
-	:type tol2D: opencascade::handle<TColStd_HArray1OfReal> &
+	:type tol2D: TColStd_HArray1OfReal
 	:param tol3D:
-	:type tol3D: opencascade::handle<TColStd_HArray1OfReal> &
+	:type tol3D: TColStd_HArray1OfReal
 	:param tof1D:
-	:type tof1D: opencascade::handle<TColStd_HArray2OfReal> &
+	:type tof1D: TColStd_HArray2OfReal
 	:param tof2D:
-	:type tof2D: opencascade::handle<TColStd_HArray2OfReal> &
+	:type tof2D: TColStd_HArray2OfReal
 	:param tof3D:
-	:type tof3D: opencascade::handle<TColStd_HArray2OfReal> &
+	:type tof3D: TColStd_HArray2OfReal
 	:rtype: None") AdvApp2Var_Context;
 		 AdvApp2Var_Context (const Standard_Integer ifav,const Standard_Integer iu,const Standard_Integer iv,const Standard_Integer nlimu,const Standard_Integer nlimv,const Standard_Integer iprecis,const Standard_Integer nb1Dss,const Standard_Integer nb2Dss,const Standard_Integer nb3Dss,const opencascade::handle<TColStd_HArray1OfReal> & tol1D,const opencascade::handle<TColStd_HArray1OfReal> & tol2D,const opencascade::handle<TColStd_HArray1OfReal> & tol3D,const opencascade::handle<TColStd_HArray2OfReal> & tof1D,const opencascade::handle<TColStd_HArray2OfReal> & tof2D,const opencascade::handle<TColStd_HArray2OfReal> & tof3D);
 
@@ -930,7 +930,7 @@ class AdvApp2Var_Criterion {
 		/****************** IsSatisfied ******************/
 		%feature("compactdefaultargs") IsSatisfied;
 		%feature("autodoc", ":param P:
-	:type P: AdvApp2Var_Patch &
+	:type P: AdvApp2Var_Patch
 	:rtype: bool") IsSatisfied;
 		virtual Standard_Boolean IsSatisfied (const AdvApp2Var_Patch & P);
 
@@ -952,9 +952,9 @@ class AdvApp2Var_Criterion {
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", ":param P:
-	:type P: AdvApp2Var_Patch &
+	:type P: AdvApp2Var_Patch
 	:param C:
-	:type C: AdvApp2Var_Context &
+	:type C: AdvApp2Var_Context
 	:rtype: void") Value;
 		virtual void Value (AdvApp2Var_Patch & P,const AdvApp2Var_Context & C);
 
@@ -1054,11 +1054,11 @@ class AdvApp2Var_Framework {
 		/****************** AdvApp2Var_Framework ******************/
 		%feature("compactdefaultargs") AdvApp2Var_Framework;
 		%feature("autodoc", ":param Frame:
-	:type Frame: AdvApp2Var_SequenceOfNode &
+	:type Frame: AdvApp2Var_SequenceOfNode
 	:param UFrontier:
-	:type UFrontier: AdvApp2Var_SequenceOfStrip &
+	:type UFrontier: AdvApp2Var_SequenceOfStrip
 	:param VFrontier:
-	:type VFrontier: AdvApp2Var_SequenceOfStrip &
+	:type VFrontier: AdvApp2Var_SequenceOfStrip
 	:rtype: None") AdvApp2Var_Framework;
 		 AdvApp2Var_Framework (const AdvApp2Var_SequenceOfNode & Frame,const AdvApp2Var_SequenceOfStrip & UFrontier,const AdvApp2Var_SequenceOfStrip & VFrontier);
 
@@ -1069,7 +1069,7 @@ class AdvApp2Var_Framework {
 	:param IndexStrip:
 	:type IndexStrip: int
 	:param anIso:
-	:type anIso: AdvApp2Var_Iso &
+	:type anIso: AdvApp2Var_Iso
 	:rtype: None") ChangeIso;
 		void ChangeIso (const Standard_Integer IndexIso,const Standard_Integer IndexStrip,const AdvApp2Var_Iso & anIso);
 
@@ -1095,11 +1095,11 @@ class AdvApp2Var_Framework {
 		%feature("compactdefaultargs") FirstNotApprox;
 		%feature("autodoc", "* search the Index of the first Iso not approximated, if all Isos are approximated Standard_False is returned.
 	:param IndexIso:
-	:type IndexIso: int &
+	:type IndexIso: int
 	:param IndexStrip:
-	:type IndexStrip: int &
+	:type IndexStrip: int
 	:param anIso:
-	:type anIso: AdvApp2Var_Iso &
+	:type anIso: AdvApp2Var_Iso
 	:rtype: bool") FirstNotApprox;
 		Standard_Boolean FirstNotApprox (Standard_Integer &OutValue,Standard_Integer &OutValue,AdvApp2Var_Iso & anIso);
 
@@ -1891,11 +1891,11 @@ class AdvApp2Var_Network {
 		/****************** AdvApp2Var_Network ******************/
 		%feature("compactdefaultargs") AdvApp2Var_Network;
 		%feature("autodoc", ":param Net:
-	:type Net: AdvApp2Var_SequenceOfPatch &
+	:type Net: AdvApp2Var_SequenceOfPatch
 	:param TheU:
-	:type TheU: TColStd_SequenceOfReal &
+	:type TheU: TColStd_SequenceOfReal
 	:param TheV:
-	:type TheV: TColStd_SequenceOfReal &
+	:type TheV: TColStd_SequenceOfReal
 	:rtype: None") AdvApp2Var_Network;
 		 AdvApp2Var_Network (const AdvApp2Var_SequenceOfPatch & Net,const TColStd_SequenceOfReal & TheU,const TColStd_SequenceOfReal & TheV);
 
@@ -1910,7 +1910,7 @@ class AdvApp2Var_Network {
 		%feature("compactdefaultargs") FirstNotApprox;
 		%feature("autodoc", "* search the Index of the first Patch not approximated, if all Patches are approximated Standard_False is returned
 	:param Index:
-	:type Index: int &
+	:type Index: int
 	:rtype: bool") FirstNotApprox;
 		Standard_Boolean FirstNotApprox (Standard_Integer &OutValue);
 
@@ -1945,9 +1945,9 @@ class AdvApp2Var_Network {
 	:param iv:
 	:type iv: int
 	:param ncfu:
-	:type ncfu: int &
+	:type ncfu: int
 	:param ncfv:
-	:type ncfv: int &
+	:type ncfv: int
 	:rtype: None") SameDegree;
 		void SameDegree (const Standard_Integer iu,const Standard_Integer iv,Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -2101,16 +2101,16 @@ class AdvApp2Var_Patch {
 		/****************** AddConstraints ******************/
 		%feature("compactdefaultargs") AddConstraints;
 		%feature("autodoc", ":param Conditions:
-	:type Conditions: AdvApp2Var_Context &
+	:type Conditions: AdvApp2Var_Context
 	:param Constraints:
-	:type Constraints: AdvApp2Var_Framework &
+	:type Constraints: AdvApp2Var_Framework
 	:rtype: None") AddConstraints;
 		void AddConstraints (const AdvApp2Var_Context & Conditions,const AdvApp2Var_Framework & Constraints);
 
 		/****************** AddErrors ******************/
 		%feature("compactdefaultargs") AddErrors;
 		%feature("autodoc", ":param Constraints:
-	:type Constraints: AdvApp2Var_Framework &
+	:type Constraints: AdvApp2Var_Framework
 	:rtype: None") AddErrors;
 		void AddErrors (const AdvApp2Var_Framework & Constraints);
 
@@ -2168,7 +2168,7 @@ class AdvApp2Var_Patch {
 		%feature("autodoc", ":param SSPIndex:
 	:type SSPIndex: int
 	:param Conditions:
-	:type Conditions: AdvApp2Var_Context &
+	:type Conditions: AdvApp2Var_Context
 	:rtype: opencascade::handle<TColStd_HArray1OfReal>") Coefficients;
 		opencascade::handle<TColStd_HArray1OfReal> Coefficients (const Standard_Integer SSPIndex,const AdvApp2Var_Context & Conditions);
 
@@ -2185,7 +2185,7 @@ class AdvApp2Var_Patch {
 		/****************** CutSense ******************/
 		%feature("compactdefaultargs") CutSense;
 		%feature("autodoc", ":param Crit:
-	:type Crit: AdvApp2Var_Criterion &
+	:type Crit: AdvApp2Var_Criterion
 	:param NumDec:
 	:type NumDec: int
 	:rtype: int") CutSense;
@@ -2194,11 +2194,11 @@ class AdvApp2Var_Patch {
 		/****************** Discretise ******************/
 		%feature("compactdefaultargs") Discretise;
 		%feature("autodoc", ":param Conditions:
-	:type Conditions: AdvApp2Var_Context &
+	:type Conditions: AdvApp2Var_Context
 	:param Constraints:
-	:type Constraints: AdvApp2Var_Framework &
+	:type Constraints: AdvApp2Var_Framework
 	:param func:
-	:type func: AdvApp2Var_EvaluatorFunc2Var &
+	:type func: AdvApp2Var_EvaluatorFunc2Var
 	:rtype: None") Discretise;
 		void Discretise (const AdvApp2Var_Context & Conditions,const AdvApp2Var_Framework & Constraints,const AdvApp2Var_EvaluatorFunc2Var & func);
 
@@ -2225,9 +2225,9 @@ class AdvApp2Var_Patch {
 		/****************** MakeApprox ******************/
 		%feature("compactdefaultargs") MakeApprox;
 		%feature("autodoc", ":param Conditions:
-	:type Conditions: AdvApp2Var_Context &
+	:type Conditions: AdvApp2Var_Context
 	:param Constraints:
-	:type Constraints: AdvApp2Var_Framework &
+	:type Constraints: AdvApp2Var_Framework
 	:param NumDec:
 	:type NumDec: int
 	:rtype: None") MakeApprox;
@@ -2258,7 +2258,7 @@ class AdvApp2Var_Patch {
 		%feature("autodoc", ":param SSPIndex:
 	:type SSPIndex: int
 	:param Conditions:
-	:type Conditions: AdvApp2Var_Context &
+	:type Conditions: AdvApp2Var_Context
 	:rtype: opencascade::handle<TColgp_HArray2OfPnt>") Poles;
 		opencascade::handle<TColgp_HArray2OfPnt> Poles (const Standard_Integer SSPIndex,const AdvApp2Var_Context & Conditions);
 

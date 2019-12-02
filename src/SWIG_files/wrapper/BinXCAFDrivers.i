@@ -86,7 +86,7 @@ class BinXCAFDrivers {
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "* Creates the table of drivers of types supported
 	:param MsgDrv:
-	:type MsgDrv: opencascade::handle<Message_Messenger> &
+	:type MsgDrv: Message_Messenger
 	:rtype: opencascade::handle<BinMDF_ADriverTable>") AttributeDrivers;
 		static opencascade::handle<BinMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & MsgDrv);
 
@@ -94,14 +94,14 @@ class BinXCAFDrivers {
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "* Defines format 'BinXCAF' and registers its read and write drivers in the specified application
 	:param theApp:
-	:type theApp: opencascade::handle<TDocStd_Application> &
+	:type theApp: TDocStd_Application
 	:rtype: void") DefineFormat;
 		static void DefineFormat (const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", ":param theGUID:
-	:type theGUID: Standard_GUID &
+	:type theGUID: Standard_GUID
 	:rtype: opencascade::handle<Standard_Transient>") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory (const Standard_GUID & theGUID);
 
@@ -123,7 +123,7 @@ class BinXCAFDrivers_DocumentRetrievalDriver : public BinDrivers_DocumentRetriev
 		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", ":param theMsgDriver:
-	:type theMsgDriver: opencascade::handle<Message_Messenger> &
+	:type theMsgDriver: Message_Messenger
 	:rtype: opencascade::handle<BinMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
 
@@ -153,7 +153,7 @@ class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDr
 		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", ":param theMsgDriver:
-	:type theMsgDriver: opencascade::handle<Message_Messenger> &
+	:type theMsgDriver: Message_Messenger
 	:rtype: opencascade::handle<BinMDF_ADriverTable>") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
 

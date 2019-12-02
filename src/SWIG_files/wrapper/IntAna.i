@@ -103,9 +103,9 @@ class IntAna_Curve {
 		%feature("compactdefaultargs") Domain;
 		%feature("autodoc", "* Returns the paramatric domain of the curve.
 	:param theFirst:
-	:type theFirst: float &
+	:type theFirst: float
 	:param theLast:
-	:type theLast: float &
+	:type theLast: float
 	:rtype: None") Domain;
 		void Domain (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -115,7 +115,7 @@ class IntAna_Curve {
 	:param P:
 	:type P: gp_Pnt
 	:param theParams:
-	:type theParams: TColStd_ListOfReal &
+	:type theParams: TColStd_ListOfReal
 	:rtype: None") FindParameter;
 		void FindParameter (const gp_Pnt & P,TColStd_ListOfReal & theParams);
 
@@ -348,7 +348,7 @@ class IntAna_IntConicQuad {
 	:param L:
 	:type L: gp_Lin
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Lin & L,const IntAna_Quadric & Q);
 
@@ -358,7 +358,7 @@ class IntAna_IntConicQuad {
 	:param C:
 	:type C: gp_Circ
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Circ & C,const IntAna_Quadric & Q);
 
@@ -368,7 +368,7 @@ class IntAna_IntConicQuad {
 	:param E:
 	:type E: gp_Elips
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Elips & E,const IntAna_Quadric & Q);
 
@@ -378,7 +378,7 @@ class IntAna_IntConicQuad {
 	:param P:
 	:type P: gp_Parab
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Parab & P,const IntAna_Quadric & Q);
 
@@ -388,7 +388,7 @@ class IntAna_IntConicQuad {
 	:param H:
 	:type H: gp_Hypr
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") IntAna_IntConicQuad;
 		 IntAna_IntConicQuad (const gp_Hypr & H,const IntAna_Quadric & Q);
 
@@ -498,7 +498,7 @@ class IntAna_IntConicQuad {
 	:param L:
 	:type L: gp_Lin
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") Perform;
 		void Perform (const gp_Lin & L,const IntAna_Quadric & Q);
 
@@ -508,7 +508,7 @@ class IntAna_IntConicQuad {
 	:param C:
 	:type C: gp_Circ
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") Perform;
 		void Perform (const gp_Circ & C,const IntAna_Quadric & Q);
 
@@ -518,7 +518,7 @@ class IntAna_IntConicQuad {
 	:param E:
 	:type E: gp_Elips
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") Perform;
 		void Perform (const gp_Elips & E,const IntAna_Quadric & Q);
 
@@ -528,7 +528,7 @@ class IntAna_IntConicQuad {
 	:param P:
 	:type P: gp_Parab
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") Perform;
 		void Perform (const gp_Parab & P,const IntAna_Quadric & Q);
 
@@ -538,7 +538,7 @@ class IntAna_IntConicQuad {
 	:param H:
 	:type H: gp_Hypr
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:rtype: None") Perform;
 		void Perform (const gp_Hypr & H,const IntAna_Quadric & Q);
 
@@ -674,9 +674,9 @@ class IntAna_IntLinTorus {
 	:param Index:
 	:type Index: int
 	:param FI:
-	:type FI: float &
+	:type FI: float
 	:param THETA:
-	:type THETA: float &
+	:type THETA: float
 	:rtype: None") ParamOnTorus;
 		void ParamOnTorus (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -755,7 +755,7 @@ class IntAna_IntQuadQuad {
 	:param C:
 	:type C: gp_Cylinder
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:param Tol:
 	:type Tol: float
 	:rtype: None") IntAna_IntQuadQuad;
@@ -767,7 +767,7 @@ class IntAna_IntQuadQuad {
 	:param C:
 	:type C: gp_Cone
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:param Tol:
 	:type Tol: float
 	:rtype: None") IntAna_IntQuadQuad;
@@ -807,9 +807,9 @@ class IntAna_IntQuadQuad {
 	:param N:
 	:type N: int
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer N,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -819,7 +819,7 @@ class IntAna_IntQuadQuad {
 	:param C:
 	:type C: gp_Cylinder
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Perform;
@@ -831,7 +831,7 @@ class IntAna_IntQuadQuad {
 	:param C:
 	:type C: gp_Cone
 	:param Q:
-	:type Q: IntAna_Quadric &
+	:type Q: IntAna_Quadric
 	:param Tol:
 	:type Tol: float
 	:rtype: None") Perform;
@@ -1343,25 +1343,25 @@ class IntAna_Quadric {
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "* Returns the coefficients of the polynomial equation which define the quadric: xCXX x**2 + xCYY y**2 + xCZZ z**2 + 2 ( xCXY x y + xCXZ x z + xCYZ y z ) + 2 ( xCX x + xCY y + xCZ z ) + xCCte
 	:param xCXX:
-	:type xCXX: float &
+	:type xCXX: float
 	:param xCYY:
-	:type xCYY: float &
+	:type xCYY: float
 	:param xCZZ:
-	:type xCZZ: float &
+	:type xCZZ: float
 	:param xCXY:
-	:type xCXY: float &
+	:type xCXY: float
 	:param xCXZ:
-	:type xCXZ: float &
+	:type xCXZ: float
 	:param xCYZ:
-	:type xCYZ: float &
+	:type xCYZ: float
 	:param xCX:
-	:type xCX: float &
+	:type xCX: float
 	:param xCY:
-	:type xCY: float &
+	:type xCY: float
 	:param xCZ:
-	:type xCZ: float &
+	:type xCZ: float
 	:param xCCte:
-	:type xCCte: float &
+	:type xCCte: float
 	:rtype: None") Coefficients;
 		void Coefficients (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -1407,25 +1407,25 @@ class IntAna_Quadric {
 		%feature("compactdefaultargs") NewCoefficients;
 		%feature("autodoc", "* Returns the coefficients of the polynomial equation ( written in the natural coordinates system ) in the local coordinates system defined by Axis
 	:param xCXX:
-	:type xCXX: float &
+	:type xCXX: float
 	:param xCYY:
-	:type xCYY: float &
+	:type xCYY: float
 	:param xCZZ:
-	:type xCZZ: float &
+	:type xCZZ: float
 	:param xCXY:
-	:type xCXY: float &
+	:type xCXY: float
 	:param xCXZ:
-	:type xCXZ: float &
+	:type xCXZ: float
 	:param xCYZ:
-	:type xCYZ: float &
+	:type xCYZ: float
 	:param xCX:
-	:type xCX: float &
+	:type xCX: float
 	:param xCY:
-	:type xCY: float &
+	:type xCY: float
 	:param xCZ:
-	:type xCZ: float &
+	:type xCZ: float
 	:param xCCte:
-	:type xCCte: float &
+	:type xCCte: float
 	:param Axis:
 	:type Axis: gp_Ax3
 	:rtype: None") NewCoefficients;

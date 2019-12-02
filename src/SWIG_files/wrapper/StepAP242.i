@@ -107,16 +107,16 @@ class StepAP242_IdAttribute : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Init all field own and inherited
 	:param theAttributeValue:
-	:type theAttributeValue: opencascade::handle<TCollection_HAsciiString> &
+	:type theAttributeValue: TCollection_HAsciiString
 	:param theIdentifiedItem:
-	:type theIdentifiedItem: StepAP242_IdAttributeSelect &
+	:type theIdentifiedItem: StepAP242_IdAttributeSelect
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theAttributeValue,const StepAP242_IdAttributeSelect & theIdentifiedItem);
 
 		/****************** SetAttributeValue ******************/
 		%feature("compactdefaultargs") SetAttributeValue;
 		%feature("autodoc", ":param theAttributeValue:
-	:type theAttributeValue: opencascade::handle<TCollection_HAsciiString> &
+	:type theAttributeValue: TCollection_HAsciiString
 	:rtype: inline void") SetAttributeValue;
 		inline void SetAttributeValue (const opencascade::handle<TCollection_HAsciiString> & theAttributeValue);
 
@@ -124,7 +124,7 @@ class StepAP242_IdAttribute : public Standard_Transient {
 		%feature("compactdefaultargs") SetIdentifiedItem;
 		%feature("autodoc", "* Set field IdentifiedItem
 	:param theIdentifiedItem:
-	:type theIdentifiedItem: StepAP242_IdAttributeSelect &
+	:type theIdentifiedItem: StepAP242_IdAttributeSelect
 	:rtype: inline void") SetIdentifiedItem;
 		inline void SetIdentifiedItem (const StepAP242_IdAttributeSelect & theIdentifiedItem);
 
@@ -173,7 +173,7 @@ class StepAP242_IdAttributeSelect : public StepData_SelectType {
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a IdAttributeSelect Kind Entity that is : 1 -> Action 2 -> Address 3 -> ApplicationContext 4 -> DimensionalSize 5 -> GeometricTolerance 6 -> Group 7 -> Reserved for OrganizatonalProject (not implemented in OCCT) 8 -> ProductCategory 9 -> PropertyDefinition 10 -> Representation 11 -> ShapeAspect 12 -> ShapeAspectRelationship 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 
@@ -276,15 +276,15 @@ class StepAP242_ItemIdentifiedRepresentationUsage : public Standard_Transient {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Init all fields own and inherited
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:param theDescription:
-	:type theDescription: opencascade::handle<TCollection_HAsciiString> &
+	:type theDescription: TCollection_HAsciiString
 	:param theDefinition:
-	:type theDefinition: StepAP242_ItemIdentifiedRepresentationUsageDefinition &
+	:type theDefinition: StepAP242_ItemIdentifiedRepresentationUsageDefinition
 	:param theUsedRepresentation:
-	:type theUsedRepresentation: opencascade::handle<StepRepr_Representation> &
+	:type theUsedRepresentation: StepRepr_Representation
 	:param theIdentifiedItem:
-	:type theIdentifiedItem: opencascade::handle<StepRepr_HArray1OfRepresentationItem> &
+	:type theIdentifiedItem: StepRepr_HArray1OfRepresentationItem
 	:rtype: None") Init;
 		void Init (const opencascade::handle<TCollection_HAsciiString> & theName,const opencascade::handle<TCollection_HAsciiString> & theDescription,const StepAP242_ItemIdentifiedRepresentationUsageDefinition & theDefinition,const opencascade::handle<StepRepr_Representation> & theUsedRepresentation,const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theIdentifiedItem);
 
@@ -304,7 +304,7 @@ class StepAP242_ItemIdentifiedRepresentationUsage : public Standard_Transient {
 		%feature("compactdefaultargs") SetDefinition;
 		%feature("autodoc", "* Set field Definition
 	:param theDefinition:
-	:type theDefinition: StepAP242_ItemIdentifiedRepresentationUsageDefinition &
+	:type theDefinition: StepAP242_ItemIdentifiedRepresentationUsageDefinition
 	:rtype: inline void") SetDefinition;
 		inline void SetDefinition (const StepAP242_ItemIdentifiedRepresentationUsageDefinition & theDefinition);
 
@@ -312,7 +312,7 @@ class StepAP242_ItemIdentifiedRepresentationUsage : public Standard_Transient {
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "* Set field Description
 	:param theDescription:
-	:type theDescription: opencascade::handle<TCollection_HAsciiString> &
+	:type theDescription: TCollection_HAsciiString
 	:rtype: inline void") SetDescription;
 		inline void SetDescription (const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
@@ -320,7 +320,7 @@ class StepAP242_ItemIdentifiedRepresentationUsage : public Standard_Transient {
 		%feature("compactdefaultargs") SetIdentifiedItem;
 		%feature("autodoc", "* Set fiels IdentifiedItem
 	:param theIdentifiedItem:
-	:type theIdentifiedItem: opencascade::handle<StepRepr_HArray1OfRepresentationItem> &
+	:type theIdentifiedItem: StepRepr_HArray1OfRepresentationItem
 	:rtype: inline void") SetIdentifiedItem;
 		inline void SetIdentifiedItem (const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theIdentifiedItem);
 
@@ -330,7 +330,7 @@ class StepAP242_ItemIdentifiedRepresentationUsage : public Standard_Transient {
 	:param num:
 	:type num: int
 	:param theItem:
-	:type theItem: opencascade::handle<StepRepr_RepresentationItem> &
+	:type theItem: StepRepr_RepresentationItem
 	:rtype: inline void") SetIdentifiedItemValue;
 		inline void SetIdentifiedItemValue (const Standard_Integer num,const opencascade::handle<StepRepr_RepresentationItem> & theItem);
 
@@ -338,7 +338,7 @@ class StepAP242_ItemIdentifiedRepresentationUsage : public Standard_Transient {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* Set field Name
 	:param theName:
-	:type theName: opencascade::handle<TCollection_HAsciiString> &
+	:type theName: TCollection_HAsciiString
 	:rtype: inline void") SetName;
 		inline void SetName (const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -346,7 +346,7 @@ class StepAP242_ItemIdentifiedRepresentationUsage : public Standard_Transient {
 		%feature("compactdefaultargs") SetUsedRepresentation;
 		%feature("autodoc", "* Set field UsedRepresentation
 	:param theUsedRepresentation:
-	:type theUsedRepresentation: opencascade::handle<StepRepr_Representation> &
+	:type theUsedRepresentation: StepRepr_Representation
 	:rtype: inline void") SetUsedRepresentation;
 		inline void SetUsedRepresentation (const opencascade::handle<StepRepr_Representation> & theUsedRepresentation);
 
@@ -437,7 +437,7 @@ class StepAP242_ItemIdentifiedRepresentationUsageDefinition : public StepData_Se
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "* Recognizes a ItemIdentifiedRepresentationUsageDefinition Kind Entity that is : 1 -> AppliedApprovalAssignment 2 -> AppliedDateAndTimeAssignment 3 -> AppliedDateAssignment 4 -> AppliedDocumentReference 5 -> AppliedExternalIdentificationAssignment 6 -> AppliedGroupAssignment 7 -> AppliedOrganizationAssignment 8 -> AppliedPersonAndOrganizationAssignment 9 -> AppliedSecurityClassificationAssignment 10 -> DimensionalSize 11 -> GeneralProperty 12 -> GeometricTolerance 13 -> ProductDefinitionRelationship 14 -> PropertyDefinition 15 -> PropertyDefinitionRelationship 16 -> ShapeAspect 17 -> ShapeAspectRelationship 0 else
 	:param ent:
-	:type ent: opencascade::handle<Standard_Transient> &
+	:type ent: Standard_Transient
 	:rtype: int") CaseNum;
 		Standard_Integer CaseNum (const opencascade::handle<Standard_Transient> & ent);
 

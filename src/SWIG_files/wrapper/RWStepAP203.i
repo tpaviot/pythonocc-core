@@ -89,13 +89,13 @@ class RWStepAP203_RWCcDesignApproval {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CcDesignApproval
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignApproval> &
+	:type ent: StepAP203_CcDesignApproval
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_CcDesignApproval> & ent);
 
@@ -103,9 +103,9 @@ class RWStepAP203_RWCcDesignApproval {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignApproval> &
+	:type ent: StepAP203_CcDesignApproval
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_CcDesignApproval> & ent,Interface_EntityIterator & iter);
 
@@ -113,9 +113,9 @@ class RWStepAP203_RWCcDesignApproval {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CcDesignApproval
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignApproval> &
+	:type ent: StepAP203_CcDesignApproval
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_CcDesignApproval> & ent);
 
@@ -144,13 +144,13 @@ class RWStepAP203_RWCcDesignCertification {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CcDesignCertification
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignCertification> &
+	:type ent: StepAP203_CcDesignCertification
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_CcDesignCertification> & ent);
 
@@ -158,9 +158,9 @@ class RWStepAP203_RWCcDesignCertification {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignCertification> &
+	:type ent: StepAP203_CcDesignCertification
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_CcDesignCertification> & ent,Interface_EntityIterator & iter);
 
@@ -168,9 +168,9 @@ class RWStepAP203_RWCcDesignCertification {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CcDesignCertification
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignCertification> &
+	:type ent: StepAP203_CcDesignCertification
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_CcDesignCertification> & ent);
 
@@ -199,13 +199,13 @@ class RWStepAP203_RWCcDesignContract {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CcDesignContract
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignContract> &
+	:type ent: StepAP203_CcDesignContract
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_CcDesignContract> & ent);
 
@@ -213,9 +213,9 @@ class RWStepAP203_RWCcDesignContract {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignContract> &
+	:type ent: StepAP203_CcDesignContract
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_CcDesignContract> & ent,Interface_EntityIterator & iter);
 
@@ -223,9 +223,9 @@ class RWStepAP203_RWCcDesignContract {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CcDesignContract
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignContract> &
+	:type ent: StepAP203_CcDesignContract
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_CcDesignContract> & ent);
 
@@ -254,13 +254,13 @@ class RWStepAP203_RWCcDesignDateAndTimeAssignment {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CcDesignDateAndTimeAssignment
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignDateAndTimeAssignment> &
+	:type ent: StepAP203_CcDesignDateAndTimeAssignment
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_CcDesignDateAndTimeAssignment> & ent);
 
@@ -268,9 +268,9 @@ class RWStepAP203_RWCcDesignDateAndTimeAssignment {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignDateAndTimeAssignment> &
+	:type ent: StepAP203_CcDesignDateAndTimeAssignment
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_CcDesignDateAndTimeAssignment> & ent,Interface_EntityIterator & iter);
 
@@ -278,9 +278,9 @@ class RWStepAP203_RWCcDesignDateAndTimeAssignment {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CcDesignDateAndTimeAssignment
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignDateAndTimeAssignment> &
+	:type ent: StepAP203_CcDesignDateAndTimeAssignment
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_CcDesignDateAndTimeAssignment> & ent);
 
@@ -309,13 +309,13 @@ class RWStepAP203_RWCcDesignPersonAndOrganizationAssignment {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CcDesignPersonAndOrganizationAssignment
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignPersonAndOrganizationAssignment> &
+	:type ent: StepAP203_CcDesignPersonAndOrganizationAssignment
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_CcDesignPersonAndOrganizationAssignment> & ent);
 
@@ -323,9 +323,9 @@ class RWStepAP203_RWCcDesignPersonAndOrganizationAssignment {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignPersonAndOrganizationAssignment> &
+	:type ent: StepAP203_CcDesignPersonAndOrganizationAssignment
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_CcDesignPersonAndOrganizationAssignment> & ent,Interface_EntityIterator & iter);
 
@@ -333,9 +333,9 @@ class RWStepAP203_RWCcDesignPersonAndOrganizationAssignment {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CcDesignPersonAndOrganizationAssignment
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignPersonAndOrganizationAssignment> &
+	:type ent: StepAP203_CcDesignPersonAndOrganizationAssignment
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_CcDesignPersonAndOrganizationAssignment> & ent);
 
@@ -364,13 +364,13 @@ class RWStepAP203_RWCcDesignSecurityClassification {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CcDesignSecurityClassification
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignSecurityClassification> &
+	:type ent: StepAP203_CcDesignSecurityClassification
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_CcDesignSecurityClassification> & ent);
 
@@ -378,9 +378,9 @@ class RWStepAP203_RWCcDesignSecurityClassification {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignSecurityClassification> &
+	:type ent: StepAP203_CcDesignSecurityClassification
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_CcDesignSecurityClassification> & ent,Interface_EntityIterator & iter);
 
@@ -388,9 +388,9 @@ class RWStepAP203_RWCcDesignSecurityClassification {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CcDesignSecurityClassification
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignSecurityClassification> &
+	:type ent: StepAP203_CcDesignSecurityClassification
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_CcDesignSecurityClassification> & ent);
 
@@ -419,13 +419,13 @@ class RWStepAP203_RWCcDesignSpecificationReference {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads CcDesignSpecificationReference
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignSpecificationReference> &
+	:type ent: StepAP203_CcDesignSpecificationReference
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_CcDesignSpecificationReference> & ent);
 
@@ -433,9 +433,9 @@ class RWStepAP203_RWCcDesignSpecificationReference {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignSpecificationReference> &
+	:type ent: StepAP203_CcDesignSpecificationReference
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_CcDesignSpecificationReference> & ent,Interface_EntityIterator & iter);
 
@@ -443,9 +443,9 @@ class RWStepAP203_RWCcDesignSpecificationReference {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes CcDesignSpecificationReference
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_CcDesignSpecificationReference> &
+	:type ent: StepAP203_CcDesignSpecificationReference
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_CcDesignSpecificationReference> & ent);
 
@@ -474,13 +474,13 @@ class RWStepAP203_RWChange {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads Change
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_Change> &
+	:type ent: StepAP203_Change
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_Change> & ent);
 
@@ -488,9 +488,9 @@ class RWStepAP203_RWChange {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_Change> &
+	:type ent: StepAP203_Change
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_Change> & ent,Interface_EntityIterator & iter);
 
@@ -498,9 +498,9 @@ class RWStepAP203_RWChange {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes Change
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_Change> &
+	:type ent: StepAP203_Change
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_Change> & ent);
 
@@ -529,13 +529,13 @@ class RWStepAP203_RWChangeRequest {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads ChangeRequest
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_ChangeRequest> &
+	:type ent: StepAP203_ChangeRequest
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_ChangeRequest> & ent);
 
@@ -543,9 +543,9 @@ class RWStepAP203_RWChangeRequest {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_ChangeRequest> &
+	:type ent: StepAP203_ChangeRequest
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_ChangeRequest> & ent,Interface_EntityIterator & iter);
 
@@ -553,9 +553,9 @@ class RWStepAP203_RWChangeRequest {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes ChangeRequest
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_ChangeRequest> &
+	:type ent: StepAP203_ChangeRequest
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_ChangeRequest> & ent);
 
@@ -584,13 +584,13 @@ class RWStepAP203_RWStartRequest {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads StartRequest
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_StartRequest> &
+	:type ent: StepAP203_StartRequest
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_StartRequest> & ent);
 
@@ -598,9 +598,9 @@ class RWStepAP203_RWStartRequest {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_StartRequest> &
+	:type ent: StepAP203_StartRequest
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_StartRequest> & ent,Interface_EntityIterator & iter);
 
@@ -608,9 +608,9 @@ class RWStepAP203_RWStartRequest {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes StartRequest
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_StartRequest> &
+	:type ent: StepAP203_StartRequest
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_StartRequest> & ent);
 
@@ -639,13 +639,13 @@ class RWStepAP203_RWStartWork {
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "* Reads StartWork
 	:param data:
-	:type data: opencascade::handle<StepData_StepReaderData> &
+	:type data: StepData_StepReaderData
 	:param num:
 	:type num: int
 	:param ach:
-	:type ach: opencascade::handle<Interface_Check> &
+	:type ach: Interface_Check
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_StartWork> &
+	:type ent: StepAP203_StartWork
 	:rtype: None") ReadStep;
 		void ReadStep (const opencascade::handle<StepData_StepReaderData> & data,const Standard_Integer num,opencascade::handle<Interface_Check> & ach,const opencascade::handle<StepAP203_StartWork> & ent);
 
@@ -653,9 +653,9 @@ class RWStepAP203_RWStartWork {
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "* Fills data for graph (shared items)
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_StartWork> &
+	:type ent: StepAP203_StartWork
 	:param iter:
-	:type iter: Interface_EntityIterator &
+	:type iter: Interface_EntityIterator
 	:rtype: None") Share;
 		void Share (const opencascade::handle<StepAP203_StartWork> & ent,Interface_EntityIterator & iter);
 
@@ -663,9 +663,9 @@ class RWStepAP203_RWStartWork {
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "* Writes StartWork
 	:param SW:
-	:type SW: StepData_StepWriter &
+	:type SW: StepData_StepWriter
 	:param ent:
-	:type ent: opencascade::handle<StepAP203_StartWork> &
+	:type ent: StepAP203_StartWork
 	:rtype: None") WriteStep;
 		void WriteStep (StepData_StepWriter & SW,const opencascade::handle<StepAP203_StartWork> & ent);
 

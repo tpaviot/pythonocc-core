@@ -191,9 +191,9 @@ class TDF {
 		%feature("compactdefaultargs") AddLinkGUIDToProgID;
 		%feature("autodoc", "* Sets link between GUID and ProgID in hidden DataMap
 	:param ID:
-	:type ID: Standard_GUID &
+	:type ID: Standard_GUID
 	:param ProgID:
-	:type ProgID: TCollection_ExtendedString &
+	:type ProgID: TCollection_ExtendedString
 	:rtype: void") AddLinkGUIDToProgID;
 		static void AddLinkGUIDToProgID (const Standard_GUID & ID,const TCollection_ExtendedString & ProgID);
 
@@ -201,9 +201,9 @@ class TDF {
 		%feature("compactdefaultargs") GUIDFromProgID;
 		%feature("autodoc", "* Returns True if there is GUID for given <ProgID> then GUID is returned in <ID>
 	:param ProgID:
-	:type ProgID: TCollection_ExtendedString &
+	:type ProgID: TCollection_ExtendedString
 	:param ID:
-	:type ID: Standard_GUID &
+	:type ID: Standard_GUID
 	:rtype: bool") GUIDFromProgID;
 		static Standard_Boolean GUIDFromProgID (const TCollection_ExtendedString & ProgID,Standard_GUID & ID);
 
@@ -217,9 +217,9 @@ class TDF {
 		%feature("compactdefaultargs") ProgIDFromGUID;
 		%feature("autodoc", "* Returns True if there is ProgID for given <ID> then ProgID is returned in <ProgID>
 	:param ID:
-	:type ID: Standard_GUID &
+	:type ID: Standard_GUID
 	:param ProgID:
-	:type ProgID: TCollection_ExtendedString &
+	:type ProgID: TCollection_ExtendedString
 	:rtype: bool") ProgIDFromGUID;
 		static Standard_Boolean ProgIDFromGUID (const Standard_GUID & ID,TCollection_ExtendedString & ProgID);
 
@@ -248,7 +248,7 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") AddAttribute;
 		%feature("autodoc", "* Adds an Attribute <other> to the label of <self>.Raises if there is already one of the same GUID fhan <other>.
 	:param other:
-	:type other: opencascade::handle<TDF_Attribute> &
+	:type other: TDF_Attribute
 	:rtype: None") AddAttribute;
 		void AddAttribute (const opencascade::handle<TDF_Attribute> & other);
 
@@ -276,7 +276,7 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "* Something to do after applying <anAttDelta>. The returned status says if AfterUndo has been performed (true) or if this callback must be called once again further (false). If <forceIt> is set to true, the method MUST perform and return true. Does nothing by default and returns true.
 	:param anAttDelta:
-	:type anAttDelta: opencascade::handle<TDF_AttributeDelta> &
+	:type anAttDelta: TDF_AttributeDelta
 	:param forceIt: default value is Standard_False
 	:type forceIt: bool
 	:rtype: bool") AfterUndo;
@@ -316,7 +316,7 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") BeforeUndo;
 		%feature("autodoc", "* Something to do before applying <anAttDelta>. The returned status says if AfterUndo has been performed (true) or if this callback must be called once again further (false). If <forceIt> is set to true, the method MUST perform and return true. Does nothing by default and returns true.
 	:param anAttDelta:
-	:type anAttDelta: opencascade::handle<TDF_AttributeDelta> &
+	:type anAttDelta: TDF_AttributeDelta
 	:param forceIt: default value is Standard_False
 	:type forceIt: bool
 	:rtype: bool") BeforeUndo;
@@ -338,7 +338,7 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "* Makes a DeltaOnModification between <self> and <anOldAttribute.
 	:param anOldAttribute:
-	:type anOldAttribute: opencascade::handle<TDF_Attribute> &
+	:type anOldAttribute: TDF_Attribute
 	:rtype: opencascade::handle<TDF_DeltaOnModification>") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification (const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
@@ -346,7 +346,7 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "* Applies a DeltaOnModification to <self>.
 	:param aDelta:
-	:type aDelta: opencascade::handle<TDF_DeltaOnModification> &
+	:type aDelta: TDF_DeltaOnModification
 	:rtype: void") DeltaOnModification;
 		virtual void DeltaOnModification (const opencascade::handle<TDF_DeltaOnModification> & aDelta);
 
@@ -374,11 +374,11 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") ExtendedDump;
 		%feature("autodoc", "* Dumps the attribute content on <aStream>, using <aMap> like this: if an attribute is not in the map, first put add it to the map and then dump it. Use the map rank instead of dumping each attribute field.
 	:param anOS:
-	:type anOS: Standard_OStream &
+	:type anOS: Standard_OStream
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:param aMap:
-	:type aMap: TDF_AttributeIndexedMap &
+	:type aMap: TDF_AttributeIndexedMap
 	:rtype: void") ExtendedDump;
 		virtual void ExtendedDump (Standard_OStream & anOS,const TDF_IDFilter & aFilter,TDF_AttributeIndexedMap & aMap);
 
@@ -386,9 +386,9 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") FindAttribute;
 		%feature("autodoc", "* Finds an associated attribute of <self>, according to <anID>. the returned <anAttribute> is a valid one. The method returns True if found, False otherwise. A removed attribute cannot be found using this method.
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: bool") FindAttribute;
 		Standard_Boolean FindAttribute (const Standard_GUID & anID,opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -412,7 +412,7 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") ForgetAttribute;
 		%feature("autodoc", "* Forgets the Attribute of GUID <aguid> associated to the label of <self>. Be carefull that if <self> is the attribute of <guid>, <self> will have a null label after this call. If the attribute doesn't exist returns False. Otherwise returns True.
 	:param aguid:
-	:type aguid: Standard_GUID &
+	:type aguid: Standard_GUID
 	:rtype: bool") ForgetAttribute;
 		Standard_Boolean ForgetAttribute (const Standard_GUID & aguid);
 
@@ -426,7 +426,7 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") IsAttribute;
 		%feature("autodoc", "* Returns true if it exists an associated attribute of <self> with <anID> as ID.
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:rtype: bool") IsAttribute;
 		Standard_Boolean IsAttribute (const Standard_GUID & anID);
 
@@ -470,9 +470,9 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "* This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method may paste the contents of <self> into <intoAttribute>. //! The given pasted attribute can be full or empty of its contents. But don't make a NEW! Just set the contents! //! It is possible to use <aRelocationTable> to get/set the relocation value of a source attribute.
 	:param intoAttribute:
-	:type intoAttribute: opencascade::handle<TDF_Attribute> &
+	:type intoAttribute: TDF_Attribute
 	:param aRelocationTable:
-	:type aRelocationTable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocationTable: TDF_RelocationTable
 	:rtype: void") Paste;
 		virtual void Paste (const opencascade::handle<TDF_Attribute> & intoAttribute,const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -480,7 +480,7 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "* Adds the first level referenced attributes and labels to <aDataSet>. //! For this, use the AddLabel or AddAttribute of DataSet. //! If there is none, do not implement the method.
 	:param aDataSet:
-	:type aDataSet: opencascade::handle<TDF_DataSet> &
+	:type aDataSet: TDF_DataSet
 	:rtype: void") References;
 		virtual void References (const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -488,7 +488,7 @@ class TDF_Attribute : public Standard_Transient {
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "* Restores the backuped contents from <anAttribute> into this one. It is used when aborting a transaction.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: void") Restore;
 		virtual void Restore (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -587,7 +587,7 @@ class TDF_AttributeIterator {
 		/****************** Initialize ******************/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", ":param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param withoutForgotten: default value is Standard_True
 	:type withoutForgotten: bool
 	:rtype: None") Initialize;
@@ -617,7 +617,7 @@ class TDF_AttributeIterator {
 		/****************** TDF_AttributeIterator ******************/
 		%feature("compactdefaultargs") TDF_AttributeIterator;
 		%feature("autodoc", ":param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param withoutForgotten: default value is Standard_True
 	:type withoutForgotten: bool
 	:rtype: None") TDF_AttributeIterator;
@@ -656,9 +656,9 @@ class TDF_ChildIDIterator {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes the iteration on the children of the given label. If <allLevels> option is set to true, it explores not only the first, but all the sub label levels.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:param allLevels: default value is Standard_False
 	:type allLevels: bool
 	:rtype: None") Initialize;
@@ -692,9 +692,9 @@ class TDF_ChildIDIterator {
 		%feature("compactdefaultargs") TDF_ChildIDIterator;
 		%feature("autodoc", "* Iterates on the children of the given label. If <allLevels> option is set to true, it explores not only the first, but all the sub label levels.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:param allLevels: default value is Standard_False
 	:type allLevels: bool
 	:rtype: None") TDF_ChildIDIterator;
@@ -725,7 +725,7 @@ class TDF_ChildIterator {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Initializes the iteration on the children of the given label. If <allLevels> option is set to true, it explores not only the first, but all the sub label levels. If allLevels is false, only the first level of child labels is explored. In the example below, the label is iterated using Initialize, More and Next and its child labels dumped using TDF_Tool::Entry. Example void DumpChildren(const TDF_Label& aLabel) { TDF_ChildIterator it; TCollection_AsciiString es; for (it.Initialize(aLabel,Standard_True); it.More(); it.Next()){ TDF_Tool::Entry(it.Value(),es); std::cout << as.ToCString() << std::endl; } }
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param allLevels: default value is Standard_False
 	:type allLevels: bool
 	:rtype: None") Initialize;
@@ -759,7 +759,7 @@ class TDF_ChildIterator {
 		%feature("compactdefaultargs") TDF_ChildIterator;
 		%feature("autodoc", "* Constructs the iterator object defined by the label aLabel. Iterates on the children of the given label. If <allLevels> option is set to true, it explores not only the first, but all the sub label levels.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param allLevels: default value is Standard_False
 	:type allLevels: bool
 	:rtype: None") TDF_ChildIterator;
@@ -840,7 +840,7 @@ class TDF_ClosureTool {
 		%feature("compactdefaultargs") Closure;
 		%feature("autodoc", "* Builds the transitive closure of label and attribute sets into <aDataSet>.
 	:param aDataSet:
-	:type aDataSet: opencascade::handle<TDF_DataSet> &
+	:type aDataSet: TDF_DataSet
 	:rtype: void") Closure;
 		static void Closure (const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -848,11 +848,11 @@ class TDF_ClosureTool {
 		%feature("compactdefaultargs") Closure;
 		%feature("autodoc", "* Builds the transitive closure of label and attribute sets into <aDataSet>. Uses <aFilter> to determine if an attribute has to be taken in account or not. Uses <aMode> for various way of closing.
 	:param aDataSet:
-	:type aDataSet: opencascade::handle<TDF_DataSet> &
+	:type aDataSet: TDF_DataSet
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:param aMode:
-	:type aMode: TDF_ClosureMode &
+	:type aMode: TDF_ClosureMode
 	:rtype: void") Closure;
 		static void Closure (const opencascade::handle<TDF_DataSet> & aDataSet,const TDF_IDFilter & aFilter,const TDF_ClosureMode & aMode);
 
@@ -860,15 +860,15 @@ class TDF_ClosureTool {
 		%feature("compactdefaultargs") Closure;
 		%feature("autodoc", "* Builds the transitive closure of <aLabel>.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aLabMap:
-	:type aLabMap: TDF_LabelMap &
+	:type aLabMap: TDF_LabelMap
 	:param anAttMap:
-	:type anAttMap: TDF_AttributeMap &
+	:type anAttMap: TDF_AttributeMap
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:param aMode:
-	:type aMode: TDF_ClosureMode &
+	:type aMode: TDF_ClosureMode
 	:rtype: void") Closure;
 		static void Closure (const TDF_Label & aLabel,TDF_LabelMap & aLabMap,TDF_AttributeMap & anAttMap,const TDF_IDFilter & aFilter,const TDF_ClosureMode & aMode);
 
@@ -890,13 +890,13 @@ class TDF_ComparisonTool {
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "* Compares <aSourceDataSet> with <aTargetDataSet>, updating <aRelocationTable> with labels and attributes found in both sets.
 	:param aSourceDataSet:
-	:type aSourceDataSet: opencascade::handle<TDF_DataSet> &
+	:type aSourceDataSet: TDF_DataSet
 	:param aTargetDataSet:
-	:type aTargetDataSet: opencascade::handle<TDF_DataSet> &
+	:type aTargetDataSet: TDF_DataSet
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:param aRelocationTable:
-	:type aRelocationTable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocationTable: TDF_RelocationTable
 	:rtype: void") Compare;
 		static void Compare (const opencascade::handle<TDF_DataSet> & aSourceDataSet,const opencascade::handle<TDF_DataSet> & aTargetDataSet,const TDF_IDFilter & aFilter,const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -904,7 +904,7 @@ class TDF_ComparisonTool {
 		%feature("compactdefaultargs") Cut;
 		%feature("autodoc", "* Removes attributes from <aDataSet>.
 	:param aDataSet:
-	:type aDataSet: opencascade::handle<TDF_DataSet> &
+	:type aDataSet: TDF_DataSet
 	:rtype: void") Cut;
 		static void Cut (const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -912,9 +912,9 @@ class TDF_ComparisonTool {
 		%feature("compactdefaultargs") IsSelfContained;
 		%feature("autodoc", "* Returns true if all the labels of <aDataSet> are descendant of <aLabel>.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aDataSet:
-	:type aDataSet: opencascade::handle<TDF_DataSet> &
+	:type aDataSet: TDF_DataSet
 	:rtype: bool") IsSelfContained;
 		static Standard_Boolean IsSelfContained (const TDF_Label & aLabel,const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -922,13 +922,13 @@ class TDF_ComparisonTool {
 		%feature("compactdefaultargs") SourceUnbound;
 		%feature("autodoc", "* Finds from <aRefDataSet> all the keys not bound into <aRelocationTable> and put them into <aDiffDataSet>. Returns True if the difference contains at least one key. (A key is a source object). //! <anOption> may take the following values: 1 : labels treatment only; 2 : attributes treatment only (default value); 3 : both labels & attributes treatment.
 	:param aRefDataSet:
-	:type aRefDataSet: opencascade::handle<TDF_DataSet> &
+	:type aRefDataSet: TDF_DataSet
 	:param aRelocationTable:
-	:type aRelocationTable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocationTable: TDF_RelocationTable
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:param aDiffDataSet:
-	:type aDiffDataSet: opencascade::handle<TDF_DataSet> &
+	:type aDiffDataSet: TDF_DataSet
 	:param anOption: default value is 2
 	:type anOption: int
 	:rtype: bool") SourceUnbound;
@@ -938,13 +938,13 @@ class TDF_ComparisonTool {
 		%feature("compactdefaultargs") TargetUnbound;
 		%feature("autodoc", "* Substracts from <aRefDataSet> all the items bound into <aRelocationTable>. The result is put into <aDiffDataSet>. Returns True if the difference contains at least one item. (An item is a target object). //! <anOption> may take the following values: 1 : labels treatment only; 2 : attributes treatment only(default value); 3 : both labels & attributes treatment.
 	:param aRefDataSet:
-	:type aRefDataSet: opencascade::handle<TDF_DataSet> &
+	:type aRefDataSet: TDF_DataSet
 	:param aRelocationTable:
-	:type aRelocationTable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocationTable: TDF_RelocationTable
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:param aDiffDataSet:
-	:type aDiffDataSet: opencascade::handle<TDF_DataSet> &
+	:type aDiffDataSet: TDF_DataSet
 	:param anOption: default value is 2
 	:type anOption: int
 	:rtype: bool") TargetUnbound;
@@ -969,11 +969,11 @@ class TDF_CopyLabel {
 		%feature("compactdefaultargs") ExternalReferences;
 		%feature("autodoc", "* Check external references and if exist fills the aExternals Map
 	:param Lab:
-	:type Lab: TDF_Label &
+	:type Lab: TDF_Label
 	:param aExternals:
-	:type aExternals: TDF_AttributeMap &
+	:type aExternals: TDF_AttributeMap
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:rtype: bool") ExternalReferences;
 		static Standard_Boolean ExternalReferences (const TDF_Label & Lab,TDF_AttributeMap & aExternals,const TDF_IDFilter & aFilter);
 
@@ -981,15 +981,15 @@ class TDF_CopyLabel {
 		%feature("compactdefaultargs") ExternalReferences;
 		%feature("autodoc", "* Check external references and if exist fills the aExternals Map
 	:param aRefLab:
-	:type aRefLab: TDF_Label &
+	:type aRefLab: TDF_Label
 	:param Lab:
-	:type Lab: TDF_Label &
+	:type Lab: TDF_Label
 	:param aExternals:
-	:type aExternals: TDF_AttributeMap &
+	:type aExternals: TDF_AttributeMap
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:param aDataSet:
-	:type aDataSet: opencascade::handle<TDF_DataSet> &
+	:type aDataSet: TDF_DataSet
 	:rtype: void") ExternalReferences;
 		static void ExternalReferences (const TDF_Label & aRefLab,const TDF_Label & Lab,TDF_AttributeMap & aExternals,const TDF_IDFilter & aFilter,opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -1002,9 +1002,9 @@ class TDF_CopyLabel {
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "* Loads src and tgt labels
 	:param aSource:
-	:type aSource: TDF_Label &
+	:type aSource: TDF_Label
 	:param aTarget:
-	:type aTarget: TDF_Label &
+	:type aTarget: TDF_Label
 	:rtype: None") Load;
 		void Load (const TDF_Label & aSource,const TDF_Label & aTarget);
 
@@ -1030,9 +1030,9 @@ class TDF_CopyLabel {
 		%feature("compactdefaultargs") TDF_CopyLabel;
 		%feature("autodoc", "* CopyTool
 	:param aSource:
-	:type aSource: TDF_Label &
+	:type aSource: TDF_Label
 	:param aTarget:
-	:type aTarget: TDF_Label &
+	:type aTarget: TDF_Label
 	:rtype: None") TDF_CopyLabel;
 		 TDF_CopyLabel (const TDF_Label & aSource,const TDF_Label & aTarget);
 
@@ -1040,7 +1040,7 @@ class TDF_CopyLabel {
 		%feature("compactdefaultargs") UseFilter;
 		%feature("autodoc", "* Sets filter
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:rtype: None") UseFilter;
 		void UseFilter (const TDF_IDFilter & aFilter);
 
@@ -1062,9 +1062,9 @@ class TDF_CopyTool {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* Copy <aSourceDataSet> with using and updating <aRelocationTable>. This method ignores target attributes privilege over source ones.
 	:param aSourceDataSet:
-	:type aSourceDataSet: opencascade::handle<TDF_DataSet> &
+	:type aSourceDataSet: TDF_DataSet
 	:param aRelocationTable:
-	:type aRelocationTable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocationTable: TDF_RelocationTable
 	:rtype: void") Copy;
 		static void Copy (const opencascade::handle<TDF_DataSet> & aSourceDataSet,const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -1072,11 +1072,11 @@ class TDF_CopyTool {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* Copy <aSourceDataSet> using and updating <aRelocationTable>. Use <aPrivilegeFilter> to give a list of IDs for which the target attribute prevails over the source one.
 	:param aSourceDataSet:
-	:type aSourceDataSet: opencascade::handle<TDF_DataSet> &
+	:type aSourceDataSet: TDF_DataSet
 	:param aRelocationTable:
-	:type aRelocationTable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocationTable: TDF_RelocationTable
 	:param aPrivilegeFilter:
-	:type aPrivilegeFilter: TDF_IDFilter &
+	:type aPrivilegeFilter: TDF_IDFilter
 	:rtype: void") Copy;
 		static void Copy (const opencascade::handle<TDF_DataSet> & aSourceDataSet,const opencascade::handle<TDF_RelocationTable> & aRelocationTable,const TDF_IDFilter & aPrivilegeFilter);
 
@@ -1084,13 +1084,13 @@ class TDF_CopyTool {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* Copy <aSourceDataSet> using and updating <aRelocationTable>. Use <aPrivilegeFilter> to give a list of IDs for which the target attribute prevails over the source one. If <setSelfContained> is set to true, every TDF_Reference will be replaced by the referenced structure according to <aRefFilter>. //! NB: <aRefFilter> is used only if <setSelfContained> is true. Internal root label copy recursive method.
 	:param aSourceDataSet:
-	:type aSourceDataSet: opencascade::handle<TDF_DataSet> &
+	:type aSourceDataSet: TDF_DataSet
 	:param aRelocationTable:
-	:type aRelocationTable: opencascade::handle<TDF_RelocationTable> &
+	:type aRelocationTable: TDF_RelocationTable
 	:param aPrivilegeFilter:
-	:type aPrivilegeFilter: TDF_IDFilter &
+	:type aPrivilegeFilter: TDF_IDFilter
 	:param aRefFilter:
-	:type aRefFilter: TDF_IDFilter &
+	:type aRefFilter: TDF_IDFilter
 	:param setSelfContained:
 	:type setSelfContained: bool
 	:rtype: void") Copy;
@@ -1136,7 +1136,7 @@ class TDF_Data : public Standard_Transient {
 		%feature("compactdefaultargs") IsApplicable;
 		%feature("autodoc", "* Returns true if <aDelta> is applicable HERE and NOW.
 	:param aDelta:
-	:type aDelta: opencascade::handle<TDF_Delta> &
+	:type aDelta: TDF_Delta
 	:rtype: bool") IsApplicable;
 		Standard_Boolean IsApplicable (const opencascade::handle<TDF_Delta> & aDelta);
 
@@ -1186,7 +1186,7 @@ class TDF_Data : public Standard_Transient {
 		%feature("compactdefaultargs") Undo;
 		%feature("autodoc", "* Apply <aDelta> to undo a set of attribute modifications. //! Optionnal <withDelta> set to True indiquates a Delta Set must be generated. (See above)
 	:param aDelta:
-	:type aDelta: opencascade::handle<TDF_Delta> &
+	:type aDelta: TDF_Delta
 	:param withDelta: default value is Standard_False
 	:type withDelta: bool
 	:rtype: opencascade::handle<TDF_Delta>") Undo;
@@ -1213,7 +1213,7 @@ class TDF_DataSet : public Standard_Transient {
 		%feature("compactdefaultargs") AddAttribute;
 		%feature("autodoc", "* Adds <anAttribute> into the current data set.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: None") AddAttribute;
 		void AddAttribute (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1221,7 +1221,7 @@ class TDF_DataSet : public Standard_Transient {
 		%feature("compactdefaultargs") AddLabel;
 		%feature("autodoc", "* Adds <aLabel> in the current data set.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: None") AddLabel;
 		void AddLabel (const TDF_Label & aLabel);
 
@@ -1229,7 +1229,7 @@ class TDF_DataSet : public Standard_Transient {
 		%feature("compactdefaultargs") AddRoot;
 		%feature("autodoc", "* Adds a root label to <myRootLabels>.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: None") AddRoot;
 		void AddRoot (const TDF_Label & aLabel);
 
@@ -1249,7 +1249,7 @@ class TDF_DataSet : public Standard_Transient {
 		%feature("compactdefaultargs") ContainsAttribute;
 		%feature("autodoc", "* Returns true if <anAttribute> is in the data set.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: bool") ContainsAttribute;
 		Standard_Boolean ContainsAttribute (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1257,7 +1257,7 @@ class TDF_DataSet : public Standard_Transient {
 		%feature("compactdefaultargs") ContainsLabel;
 		%feature("autodoc", "* Returns true if the label <alabel> is in the data set.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: bool") ContainsLabel;
 		Standard_Boolean ContainsLabel (const TDF_Label & aLabel);
 
@@ -1354,7 +1354,7 @@ class TDF_Delta : public Standard_Transient {
 		%feature("compactdefaultargs") Labels;
 		%feature("autodoc", "* Adds in <aLabelList> the labels of the attribute deltas. Caution: <aLabelList> is not cleared before use.
 	:param aLabelList:
-	:type aLabelList: TDF_LabelList &
+	:type aLabelList: TDF_LabelList
 	:rtype: None") Labels;
 		void Labels (TDF_LabelList & aLabelList);
 
@@ -1368,7 +1368,7 @@ class TDF_Delta : public Standard_Transient {
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "* Associates a name <theName> with this delta
 	:param theName:
-	:type theName: TCollection_ExtendedString &
+	:type theName: TCollection_ExtendedString
 	:rtype: None") SetName;
 		void SetName (const TCollection_ExtendedString & theName);
 
@@ -1399,7 +1399,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "* Copies into <self> the contents of <fromFilter>. <self> is cleared before copy.
 	:param fromFilter:
-	:type fromFilter: TDF_IDFilter &
+	:type fromFilter: TDF_IDFilter
 	:rtype: None") Copy;
 		void Copy (const TDF_IDFilter & fromFilter);
 
@@ -1415,7 +1415,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") IDList;
 		%feature("autodoc", "* Copies the list of ID to be kept or ignored in <anIDList>. <anIDList> is cleared before use.
 	:param anIDList:
-	:type anIDList: TDF_IDList &
+	:type anIDList: TDF_IDList
 	:rtype: None") IDList;
 		void IDList (TDF_IDList & anIDList);
 
@@ -1423,7 +1423,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") Ignore;
 		%feature("autodoc", "* An attribute with <anID> as ID is to be ignored and the filter will answer false to the question IsKept(<anID>).
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:rtype: None") Ignore;
 		void Ignore (const Standard_GUID & anID);
 
@@ -1431,7 +1431,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") Ignore;
 		%feature("autodoc", "* Attributes with ID owned by <anIDList> are to be ignored and the filter will answer false to the question IsKept(<anID>) with ID from <anIDList>.
 	:param anIDList:
-	:type anIDList: TDF_IDList &
+	:type anIDList: TDF_IDList
 	:rtype: None") Ignore;
 		void Ignore (const TDF_IDList & anIDList);
 
@@ -1453,7 +1453,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") IsIgnored;
 		%feature("autodoc", "* Returns true if the ID is to be ignored.
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:rtype: bool") IsIgnored;
 		Standard_Boolean IsIgnored (const Standard_GUID & anID);
 
@@ -1461,7 +1461,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") IsIgnored;
 		%feature("autodoc", "* Returns true if the attribute is to be ignored.
 	:param anAtt:
-	:type anAtt: opencascade::handle<TDF_Attribute> &
+	:type anAtt: TDF_Attribute
 	:rtype: bool") IsIgnored;
 		Standard_Boolean IsIgnored (const opencascade::handle<TDF_Attribute> & anAtt);
 
@@ -1469,7 +1469,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") IsKept;
 		%feature("autodoc", "* Returns true if the ID is to be kept.
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:rtype: bool") IsKept;
 		Standard_Boolean IsKept (const Standard_GUID & anID);
 
@@ -1477,7 +1477,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") IsKept;
 		%feature("autodoc", "* Returns true if the attribute is to be kept.
 	:param anAtt:
-	:type anAtt: opencascade::handle<TDF_Attribute> &
+	:type anAtt: TDF_Attribute
 	:rtype: bool") IsKept;
 		Standard_Boolean IsKept (const opencascade::handle<TDF_Attribute> & anAtt);
 
@@ -1485,7 +1485,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "* An attribute with <anID> as ID is to be kept and the filter will answer true to the question IsKept(<anID>).
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:rtype: None") Keep;
 		void Keep (const Standard_GUID & anID);
 
@@ -1493,7 +1493,7 @@ class TDF_IDFilter {
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "* Attributes with ID owned by <anIDList> are to be kept and the filter will answer true to the question IsKept(<anID>) with ID from <anIDList>.
 	:param anIDList:
-	:type anIDList: TDF_IDList &
+	:type anIDList: TDF_IDList
 	:rtype: None") Keep;
 		void Keep (const TDF_IDList & anIDList);
 
@@ -1524,7 +1524,7 @@ class TDF_Label {
 		%feature("compactdefaultargs") AddAttribute;
 		%feature("autodoc", "* Adds an Attribute to the current label. Raises if there is already one.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:param append: default value is Standard_True
 	:type append: bool
 	:rtype: None") AddAttribute;
@@ -1568,11 +1568,11 @@ class TDF_Label {
 		%feature("compactdefaultargs") ExtendedDump;
 		%feature("autodoc", "* Dumps the label on <aStream> and its attributes rank in <aMap> if their IDs are kept by <IDFilter>.
 	:param anOS:
-	:type anOS: Standard_OStream &
+	:type anOS: Standard_OStream
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:param aMap:
-	:type aMap: TDF_AttributeIndexedMap &
+	:type aMap: TDF_AttributeIndexedMap
 	:rtype: None") ExtendedDump;
 		void ExtendedDump (Standard_OStream & anOS,const TDF_IDFilter & aFilter,TDF_AttributeIndexedMap & aMap);
 
@@ -1586,9 +1586,9 @@ class TDF_Label {
 		%feature("compactdefaultargs") FindAttribute;
 		%feature("autodoc", "* Finds an attribute of the current label, according to <anID>. If anAttribute is not a valid one, false is returned. //! The method returns True if found, False otherwise. //! A removed attribute cannot be found.
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: bool") FindAttribute;
 		Standard_Boolean FindAttribute (const Standard_GUID & anID,opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1596,11 +1596,11 @@ class TDF_Label {
 		%feature("compactdefaultargs") FindAttribute;
 		%feature("autodoc", "* Finds an attribute of the current label, according to <anID> and <aTransaction>. This attribute has/had to be a valid one for the given transaction index . So, this attribute is not necessary a valid one. //! The method returns True if found, False otherwise. //! A removed attribute cannot be found nor a backuped attribute of a removed one.
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:param aTransaction:
 	:type aTransaction: int
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: bool") FindAttribute;
 		Standard_Boolean FindAttribute (const Standard_GUID & anID,const Standard_Integer aTransaction,opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1626,7 +1626,7 @@ class TDF_Label {
 		%feature("compactdefaultargs") ForgetAttribute;
 		%feature("autodoc", "* Forgets an Attribute from the current label, setting its forgotten status true and its valid status false. Raises if the attribute is not in the structure.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: None") ForgetAttribute;
 		void ForgetAttribute (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1634,7 +1634,7 @@ class TDF_Label {
 		%feature("compactdefaultargs") ForgetAttribute;
 		%feature("autodoc", "* Forgets the Attribute of GUID <aguid> from the current label . If the attribute doesn't exist returns False. Otherwise returns True.
 	:param aguid:
-	:type aguid: Standard_GUID &
+	:type aguid: Standard_GUID
 	:rtype: bool") ForgetAttribute;
 		Standard_Boolean ForgetAttribute (const Standard_GUID & aguid);
 
@@ -1654,7 +1654,7 @@ class TDF_Label {
 		%feature("compactdefaultargs") HasGreaterNode;
 		%feature("autodoc", "* Returns true if node address of <self> is greater than <otherLabel> one. Used to quickly sort labels (not on entry criterion). //! -C++: inline
 	:param otherLabel:
-	:type otherLabel: TDF_Label &
+	:type otherLabel: TDF_Label
 	:rtype: bool") HasGreaterNode;
 		Standard_Boolean HasGreaterNode (const TDF_Label & otherLabel);
 
@@ -1662,7 +1662,7 @@ class TDF_Label {
 		%feature("compactdefaultargs") HasLowerNode;
 		%feature("autodoc", "* Returns true if node address of <self> is lower than <otherLabel> one. Used to quickly sort labels (not on entry criterion). //! -C++: inline
 	:param otherLabel:
-	:type otherLabel: TDF_Label &
+	:type otherLabel: TDF_Label
 	:rtype: bool") HasLowerNode;
 		Standard_Boolean HasLowerNode (const TDF_Label & otherLabel);
 
@@ -1678,7 +1678,7 @@ class TDF_Label {
 		%feature("compactdefaultargs") IsAttribute;
 		%feature("autodoc", "* Returns true if <self> owns an attribute with <anID> as ID.
 	:param anID:
-	:type anID: Standard_GUID &
+	:type anID: Standard_GUID
 	:rtype: bool") IsAttribute;
 		Standard_Boolean IsAttribute (const Standard_GUID & anID);
 
@@ -1686,14 +1686,14 @@ class TDF_Label {
 		%feature("compactdefaultargs") IsDescendant;
 		%feature("autodoc", "* Returns True if <self> is a descendant of <aLabel>. Attention: every label is its own descendant.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: bool") IsDescendant;
 		Standard_Boolean IsDescendant (const TDF_Label & aLabel);
 
 		/****************** IsDifferent ******************/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", ":param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: bool") IsDifferent;
 		Standard_Boolean IsDifferent (const TDF_Label & aLabel);
 
@@ -1701,7 +1701,7 @@ class TDF_Label {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns True if the <aLabel> is equal to me (same LabelNode*).
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: bool") IsEqual;
 		Standard_Boolean IsEqual (const TDF_Label & aLabel);
 
@@ -1756,7 +1756,7 @@ class TDF_Label {
 		%feature("compactdefaultargs") ResumeAttribute;
 		%feature("autodoc", "* Undo Forget action, setting its forgotten status false and its valid status true. Raises if the attribute is not in the structure.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: None") ResumeAttribute;
 		void ResumeAttribute (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1817,7 +1817,7 @@ class TDF_LabelMapHasher {
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "* Computes a hash code for the given label, in the range [1, theUpperBound] @param theLabel the label which hash code is to be computed @param theUpperBound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theUpperBound]
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theUpperBound:
 	:type theUpperBound: int
 	:rtype: int") HashCode;
@@ -1827,9 +1827,9 @@ class TDF_LabelMapHasher {
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "* Returns True when the two keys are the same. Two same keys must have the same hashcode, the contrary is not necessary.
 	:param aLab1:
-	:type aLab1: TDF_Label &
+	:type aLab1: TDF_Label
 	:param aLab2:
-	:type aLab2: TDF_Label &
+	:type aLab2: TDF_Label
 	:rtype: bool") IsEqual;
 		static Standard_Boolean IsEqual (const TDF_Label & aLab1,const TDF_Label & aLab2);
 
@@ -1886,7 +1886,7 @@ class TDF_RelocationTable : public Standard_Transient {
 	:param dumpTransients:
 	:type dumpTransients: bool
 	:param anOS:
-	:type anOS: Standard_OStream &
+	:type anOS: Standard_OStream
 	:rtype: Standard_OStream") Dump;
 		Standard_OStream & Dump (const Standard_Boolean dumpLabels,const Standard_Boolean dumpAttributes,const Standard_Boolean dumpTransients,Standard_OStream & anOS);
 
@@ -1894,9 +1894,9 @@ class TDF_RelocationTable : public Standard_Transient {
 		%feature("compactdefaultargs") HasRelocation;
 		%feature("autodoc", "* Finds the relocation value of <aSourceLabel> and returns it into <aTargetLabel>. //! (See above SelfRelocate method for more explanation about the method behavior)
 	:param aSourceLabel:
-	:type aSourceLabel: TDF_Label &
+	:type aSourceLabel: TDF_Label
 	:param aTargetLabel:
-	:type aTargetLabel: TDF_Label &
+	:type aTargetLabel: TDF_Label
 	:rtype: bool") HasRelocation;
 		Standard_Boolean HasRelocation (const TDF_Label & aSourceLabel,TDF_Label & aTargetLabel);
 
@@ -1904,9 +1904,9 @@ class TDF_RelocationTable : public Standard_Transient {
 		%feature("compactdefaultargs") HasRelocation;
 		%feature("autodoc", "* Finds the relocation value of <aSourceAttribute> and returns it into <aTargetAttribute>. //! (See above SelfRelocate method for more explanation about the method behavior)
 	:param aSourceAttribute:
-	:type aSourceAttribute: opencascade::handle<TDF_Attribute> &
+	:type aSourceAttribute: TDF_Attribute
 	:param aTargetAttribute:
-	:type aTargetAttribute: opencascade::handle<TDF_Attribute> &
+	:type aTargetAttribute: TDF_Attribute
 	:rtype: bool") HasRelocation;
 		Standard_Boolean HasRelocation (const opencascade::handle<TDF_Attribute> & aSourceAttribute,opencascade::handle<TDF_Attribute> & aTargetAttribute);
 
@@ -1914,9 +1914,9 @@ class TDF_RelocationTable : public Standard_Transient {
 		%feature("compactdefaultargs") HasTransientRelocation;
 		%feature("autodoc", "* Finds the relocation value of <aSourceTransient> and returns it into <aTargetTransient>. //! (See above SelfRelocate method for more explanation about the method behavior)
 	:param aSourceTransient:
-	:type aSourceTransient: opencascade::handle<Standard_Transient> &
+	:type aSourceTransient: Standard_Transient
 	:param aTargetTransient:
-	:type aTargetTransient: opencascade::handle<Standard_Transient> &
+	:type aTargetTransient: Standard_Transient
 	:rtype: bool") HasTransientRelocation;
 		Standard_Boolean HasTransientRelocation (const opencascade::handle<Standard_Transient> & aSourceTransient,opencascade::handle<Standard_Transient> & aTargetTransient);
 
@@ -1944,9 +1944,9 @@ class TDF_RelocationTable : public Standard_Transient {
 		%feature("compactdefaultargs") SetRelocation;
 		%feature("autodoc", "* Sets the relocation value of <aSourceLabel> to <aTargetLabel>.
 	:param aSourceLabel:
-	:type aSourceLabel: TDF_Label &
+	:type aSourceLabel: TDF_Label
 	:param aTargetLabel:
-	:type aTargetLabel: TDF_Label &
+	:type aTargetLabel: TDF_Label
 	:rtype: None") SetRelocation;
 		void SetRelocation (const TDF_Label & aSourceLabel,const TDF_Label & aTargetLabel);
 
@@ -1954,9 +1954,9 @@ class TDF_RelocationTable : public Standard_Transient {
 		%feature("compactdefaultargs") SetRelocation;
 		%feature("autodoc", "* Sets the relocation value of <aSourceAttribute> to <aTargetAttribute>.
 	:param aSourceAttribute:
-	:type aSourceAttribute: opencascade::handle<TDF_Attribute> &
+	:type aSourceAttribute: TDF_Attribute
 	:param aTargetAttribute:
-	:type aTargetAttribute: opencascade::handle<TDF_Attribute> &
+	:type aTargetAttribute: TDF_Attribute
 	:rtype: None") SetRelocation;
 		void SetRelocation (const opencascade::handle<TDF_Attribute> & aSourceAttribute,const opencascade::handle<TDF_Attribute> & aTargetAttribute);
 
@@ -1964,9 +1964,9 @@ class TDF_RelocationTable : public Standard_Transient {
 		%feature("compactdefaultargs") SetTransientRelocation;
 		%feature("autodoc", "* Sets the relocation value of <aSourceTransient> to <aTargetTransient>.
 	:param aSourceTransient:
-	:type aSourceTransient: opencascade::handle<Standard_Transient> &
+	:type aSourceTransient: Standard_Transient
 	:param aTargetTransient:
-	:type aTargetTransient: opencascade::handle<Standard_Transient> &
+	:type aTargetTransient: Standard_Transient
 	:rtype: None") SetTransientRelocation;
 		void SetTransientRelocation (const opencascade::handle<Standard_Transient> & aSourceTransient,const opencascade::handle<Standard_Transient> & aTargetTransient);
 
@@ -1982,7 +1982,7 @@ class TDF_RelocationTable : public Standard_Transient {
 		%feature("compactdefaultargs") TargetAttributeMap;
 		%feature("autodoc", "* Fills <anAttributeMap> with target relocation attributes. <anAttributeMap> is not cleared before use.
 	:param anAttributeMap:
-	:type anAttributeMap: TDF_AttributeMap &
+	:type anAttributeMap: TDF_AttributeMap
 	:rtype: None") TargetAttributeMap;
 		void TargetAttributeMap (TDF_AttributeMap & anAttributeMap);
 
@@ -1990,7 +1990,7 @@ class TDF_RelocationTable : public Standard_Transient {
 		%feature("compactdefaultargs") TargetLabelMap;
 		%feature("autodoc", "* Fills <aLabelMap> with target relocation labels. <aLabelMap> is not cleared before use.
 	:param aLabelMap:
-	:type aLabelMap: TDF_LabelMap &
+	:type aLabelMap: TDF_LabelMap
 	:rtype: None") TargetLabelMap;
 		void TargetLabelMap (TDF_LabelMap & aLabelMap);
 
@@ -2020,9 +2020,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") CountLabels;
 		%feature("autodoc", "* Adds the labels of <aLabelList> to <aLabelMap> if they are unbound, or increases their reference counters. At the end of the process, <aLabelList> contains only the ADDED labels.
 	:param aLabelList:
-	:type aLabelList: TDF_LabelList &
+	:type aLabelList: TDF_LabelList
 	:param aLabelMap:
-	:type aLabelMap: TDF_LabelIntegerMap &
+	:type aLabelMap: TDF_LabelIntegerMap
 	:rtype: void") CountLabels;
 		static void CountLabels (TDF_LabelList & aLabelList,TDF_LabelIntegerMap & aLabelMap);
 
@@ -2030,9 +2030,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") DeductLabels;
 		%feature("autodoc", "* Decreases the reference counters of the labels of <aLabelList> to <aLabelMap>, and removes labels with null counter. At the end of the process, <aLabelList> contains only the SUPPRESSED labels.
 	:param aLabelList:
-	:type aLabelList: TDF_LabelList &
+	:type aLabelList: TDF_LabelList
 	:param aLabelMap:
-	:type aLabelMap: TDF_LabelIntegerMap &
+	:type aLabelMap: TDF_LabelIntegerMap
 	:rtype: void") DeductLabels;
 		static void DeductLabels (TDF_LabelList & aLabelList,TDF_LabelIntegerMap & aLabelMap);
 
@@ -2040,9 +2040,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") DeepDump;
 		%feature("autodoc", "* Dumps <aDF> and its labels and their attributes.
 	:param anOS:
-	:type anOS: Standard_OStream &
+	:type anOS: Standard_OStream
 	:param aDF:
-	:type aDF: opencascade::handle<TDF_Data> &
+	:type aDF: TDF_Data
 	:rtype: void") DeepDump;
 		static void DeepDump (Standard_OStream & anOS,const opencascade::handle<TDF_Data> & aDF);
 
@@ -2050,9 +2050,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") DeepDump;
 		%feature("autodoc", "* Dumps <aLabel>, its chilren and their attributes.
 	:param anOS:
-	:type anOS: Standard_OStream &
+	:type anOS: Standard_OStream
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: void") DeepDump;
 		static void DeepDump (Standard_OStream & anOS,const TDF_Label & aLabel);
 
@@ -2060,9 +2060,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") Entry;
 		%feature("autodoc", "* Returns the entry for the label aLabel in the form of the ASCII character string anEntry containing the tag list for aLabel.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param anEntry:
-	:type anEntry: TCollection_AsciiString &
+	:type anEntry: TCollection_AsciiString
 	:rtype: void") Entry;
 		static void Entry (const TDF_Label & aLabel,TCollection_AsciiString & anEntry);
 
@@ -2070,11 +2070,11 @@ class TDF_Tool {
 		%feature("compactdefaultargs") ExtendedDeepDump;
 		%feature("autodoc", "* Dumps <aDF> and its labels and their attributes, if their IDs are kept by <aFilter>. Dumps also the attributes content.
 	:param anOS:
-	:type anOS: Standard_OStream &
+	:type anOS: Standard_OStream
 	:param aDF:
-	:type aDF: opencascade::handle<TDF_Data> &
+	:type aDF: TDF_Data
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:rtype: void") ExtendedDeepDump;
 		static void ExtendedDeepDump (Standard_OStream & anOS,const opencascade::handle<TDF_Data> & aDF,const TDF_IDFilter & aFilter);
 
@@ -2082,11 +2082,11 @@ class TDF_Tool {
 		%feature("compactdefaultargs") ExtendedDeepDump;
 		%feature("autodoc", "* Dumps <aLabel>, its chilren and their attributes, if their IDs are kept by <aFilter>. Dumps also the attributes content.
 	:param anOS:
-	:type anOS: Standard_OStream &
+	:type anOS: Standard_OStream
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:rtype: void") ExtendedDeepDump;
 		static void ExtendedDeepDump (Standard_OStream & anOS,const TDF_Label & aLabel,const TDF_IDFilter & aFilter);
 
@@ -2094,7 +2094,7 @@ class TDF_Tool {
 		%feature("compactdefaultargs") IsSelfContained;
 		%feature("autodoc", "* Returns true if <aLabel> and its descendants reference only attributes or labels attached to themselves.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: bool") IsSelfContained;
 		static Standard_Boolean IsSelfContained (const TDF_Label & aLabel);
 
@@ -2102,9 +2102,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") IsSelfContained;
 		%feature("autodoc", "* Returns true if <aLabel> and its descendants reference only attributes or labels attached to themselves and kept by <aFilter>.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:rtype: bool") IsSelfContained;
 		static Standard_Boolean IsSelfContained (const TDF_Label & aLabel,const TDF_IDFilter & aFilter);
 
@@ -2112,11 +2112,11 @@ class TDF_Tool {
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "* Returns the label expressed by <anEntry>; creates the label if it does not exist and if <create> is true.
 	:param aDF:
-	:type aDF: opencascade::handle<TDF_Data> &
+	:type aDF: TDF_Data
 	:param anEntry:
-	:type anEntry: TCollection_AsciiString &
+	:type anEntry: TCollection_AsciiString
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param create: default value is Standard_False
 	:type create: bool
 	:rtype: void") Label;
@@ -2126,11 +2126,11 @@ class TDF_Tool {
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "* Returns the label expressed by <anEntry>; creates the label if it does not exist and if <create> is true.
 	:param aDF:
-	:type aDF: opencascade::handle<TDF_Data> &
+	:type aDF: TDF_Data
 	:param anEntry:
 	:type anEntry: char *
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param create: default value is Standard_False
 	:type create: bool
 	:rtype: void") Label;
@@ -2140,11 +2140,11 @@ class TDF_Tool {
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "* Returns the label expressed by <anEntry>; creates the label if it does not exist and if <create> is true.
 	:param aDF:
-	:type aDF: opencascade::handle<TDF_Data> &
+	:type aDF: TDF_Data
 	:param aTagList:
-	:type aTagList: TColStd_ListOfInteger &
+	:type aTagList: TColStd_ListOfInteger
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param create: default value is Standard_False
 	:type create: bool
 	:rtype: void") Label;
@@ -2154,7 +2154,7 @@ class TDF_Tool {
 		%feature("compactdefaultargs") NbAttributes;
 		%feature("autodoc", "* Returns the total number of attributes attached to the labels dependent on the label aLabel. The attributes of aLabel are also included in this figure. This information is useful in setting the size of an array.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: int") NbAttributes;
 		static Standard_Integer NbAttributes (const TDF_Label & aLabel);
 
@@ -2162,9 +2162,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") NbAttributes;
 		%feature("autodoc", "* Returns the number of attributes of the tree, selected by a<Filter>, including those of <aLabel>.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aFilter:
-	:type aFilter: TDF_IDFilter &
+	:type aFilter: TDF_IDFilter
 	:rtype: int") NbAttributes;
 		static Standard_Integer NbAttributes (const TDF_Label & aLabel,const TDF_IDFilter & aFilter);
 
@@ -2172,7 +2172,7 @@ class TDF_Tool {
 		%feature("compactdefaultargs") NbLabels;
 		%feature("autodoc", "* Returns the number of labels of the tree, including <aLabel>. aLabel is also included in this figure. This information is useful in setting the size of an array.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:rtype: int") NbLabels;
 		static Standard_Integer NbLabels (const TDF_Label & aLabel);
 
@@ -2180,9 +2180,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") OutReferences;
 		%feature("autodoc", "* Returns in <atts> the referenced attributes. Caution: <atts> is not cleared before use!
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param atts:
-	:type atts: TDF_AttributeMap &
+	:type atts: TDF_AttributeMap
 	:rtype: void") OutReferences;
 		static void OutReferences (const TDF_Label & aLabel,TDF_AttributeMap & atts);
 
@@ -2190,13 +2190,13 @@ class TDF_Tool {
 		%feature("compactdefaultargs") OutReferences;
 		%feature("autodoc", "* Returns in <atts> the referenced attributes and kept by <aFilterForReferences>. It considers only the referers kept by <aFilterForReferers>. Caution: <atts> is not cleared before use!
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aFilterForReferers:
-	:type aFilterForReferers: TDF_IDFilter &
+	:type aFilterForReferers: TDF_IDFilter
 	:param aFilterForReferences:
-	:type aFilterForReferences: TDF_IDFilter &
+	:type aFilterForReferences: TDF_IDFilter
 	:param atts:
-	:type atts: TDF_AttributeMap &
+	:type atts: TDF_AttributeMap
 	:rtype: void") OutReferences;
 		static void OutReferences (const TDF_Label & aLabel,const TDF_IDFilter & aFilterForReferers,const TDF_IDFilter & aFilterForReferences,TDF_AttributeMap & atts);
 
@@ -2204,9 +2204,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") OutReferers;
 		%feature("autodoc", "* Returns in <theAtts> the attributes having out references. //! Caution: <theAtts> is not cleared before use!
 	:param theLabel:
-	:type theLabel: TDF_Label &
+	:type theLabel: TDF_Label
 	:param theAtts:
-	:type theAtts: TDF_AttributeMap &
+	:type theAtts: TDF_AttributeMap
 	:rtype: void") OutReferers;
 		static void OutReferers (const TDF_Label & theLabel,TDF_AttributeMap & theAtts);
 
@@ -2214,13 +2214,13 @@ class TDF_Tool {
 		%feature("compactdefaultargs") OutReferers;
 		%feature("autodoc", "* Returns in <atts> the attributes having out references and kept by <aFilterForReferers>. It considers only the references kept by <aFilterForReferences>. Caution: <atts> is not cleared before use!
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aFilterForReferers:
-	:type aFilterForReferers: TDF_IDFilter &
+	:type aFilterForReferers: TDF_IDFilter
 	:param aFilterForReferences:
-	:type aFilterForReferences: TDF_IDFilter &
+	:type aFilterForReferences: TDF_IDFilter
 	:param atts:
-	:type atts: TDF_AttributeMap &
+	:type atts: TDF_AttributeMap
 	:rtype: void") OutReferers;
 		static void OutReferers (const TDF_Label & aLabel,const TDF_IDFilter & aFilterForReferers,const TDF_IDFilter & aFilterForReferences,TDF_AttributeMap & atts);
 
@@ -2228,13 +2228,13 @@ class TDF_Tool {
 		%feature("compactdefaultargs") RelocateLabel;
 		%feature("autodoc", "* Returns the label having the same sub-entry as <aLabel> but located as descendant as <toRoot> instead of <fromRoot>. //! Exemple : //! aLabel = 0:3:24:7:2:7 fromRoot = 0:3:24 toRoot = 0:5 returned label = 0:5:7:2:7
 	:param aSourceLabel:
-	:type aSourceLabel: TDF_Label &
+	:type aSourceLabel: TDF_Label
 	:param fromRoot:
-	:type fromRoot: TDF_Label &
+	:type fromRoot: TDF_Label
 	:param toRoot:
-	:type toRoot: TDF_Label &
+	:type toRoot: TDF_Label
 	:param aTargetLabel:
-	:type aTargetLabel: TDF_Label &
+	:type aTargetLabel: TDF_Label
 	:param create: default value is Standard_False
 	:type create: bool
 	:rtype: void") RelocateLabel;
@@ -2244,9 +2244,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") TagList;
 		%feature("autodoc", "* Returns the entry of <aLabel> as list of integers in <aTagList>.
 	:param aLabel:
-	:type aLabel: TDF_Label &
+	:type aLabel: TDF_Label
 	:param aTagList:
-	:type aTagList: TColStd_ListOfInteger &
+	:type aTagList: TColStd_ListOfInteger
 	:rtype: void") TagList;
 		static void TagList (const TDF_Label & aLabel,TColStd_ListOfInteger & aTagList);
 
@@ -2254,9 +2254,9 @@ class TDF_Tool {
 		%feature("compactdefaultargs") TagList;
 		%feature("autodoc", "* Returns the entry expressed by <anEntry> as list of integers in <aTagList>.
 	:param anEntry:
-	:type anEntry: TCollection_AsciiString &
+	:type anEntry: TCollection_AsciiString
 	:param aTagList:
-	:type aTagList: TColStd_ListOfInteger &
+	:type aTagList: TColStd_ListOfInteger
 	:rtype: void") TagList;
 		static void TagList (const TCollection_AsciiString & anEntry,TColStd_ListOfInteger & aTagList);
 
@@ -2299,7 +2299,7 @@ class TDF_Transaction {
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "* Aborts all the transactions on <myDF> and sets <aDF> to build a transaction context on <aDF>, ready to be opened.
 	:param aDF:
-	:type aDF: opencascade::handle<TDF_Data> &
+	:type aDF: TDF_Data
 	:rtype: None") Initialize;
 		void Initialize (const opencascade::handle<TDF_Data> & aDF);
 
@@ -2325,7 +2325,7 @@ class TDF_Transaction {
 		%feature("compactdefaultargs") TDF_Transaction;
 		%feature("autodoc", "* Creates an empty transaction context, unable to be opened.
 	:param aName: default value is ""
-	:type aName: TCollection_AsciiString &
+	:type aName: TCollection_AsciiString
 	:rtype: None") TDF_Transaction;
 		 TDF_Transaction (const TCollection_AsciiString & aName = "");
 
@@ -2333,9 +2333,9 @@ class TDF_Transaction {
 		%feature("compactdefaultargs") TDF_Transaction;
 		%feature("autodoc", "* Creates a transaction context on <aDF>, ready to be opened.
 	:param aDF:
-	:type aDF: opencascade::handle<TDF_Data> &
+	:type aDF: TDF_Data
 	:param aName: default value is ""
-	:type aName: TCollection_AsciiString &
+	:type aName: TCollection_AsciiString
 	:rtype: None") TDF_Transaction;
 		 TDF_Transaction (const opencascade::handle<TDF_Data> & aDF,const TCollection_AsciiString & aName = "");
 
@@ -2370,7 +2370,7 @@ class TDF_DeltaOnAddition : public TDF_AttributeDelta {
 		%feature("compactdefaultargs") TDF_DeltaOnAddition;
 		%feature("autodoc", "* Creates a TDF_DeltaOnAddition.
 	:param anAtt:
-	:type anAtt: opencascade::handle<TDF_Attribute> &
+	:type anAtt: TDF_Attribute
 	:rtype: None") TDF_DeltaOnAddition;
 		 TDF_DeltaOnAddition (const opencascade::handle<TDF_Attribute> & anAtt);
 
@@ -2401,7 +2401,7 @@ class TDF_DeltaOnForget : public TDF_AttributeDelta {
 		%feature("compactdefaultargs") TDF_DeltaOnForget;
 		%feature("autodoc", "* Creates a TDF_DeltaOnForget.
 	:param anAtt:
-	:type anAtt: opencascade::handle<TDF_Attribute> &
+	:type anAtt: TDF_Attribute
 	:rtype: None") TDF_DeltaOnForget;
 		 TDF_DeltaOnForget (const opencascade::handle<TDF_Attribute> & anAtt);
 
@@ -2472,7 +2472,7 @@ class TDF_DeltaOnResume : public TDF_AttributeDelta {
 		%feature("compactdefaultargs") TDF_DeltaOnResume;
 		%feature("autodoc", "* Creates a TDF_DeltaOnResume.
 	:param anAtt:
-	:type anAtt: opencascade::handle<TDF_Attribute> &
+	:type anAtt: TDF_Attribute
 	:rtype: None") TDF_DeltaOnResume;
 		 TDF_DeltaOnResume (const opencascade::handle<TDF_Attribute> & anAtt);
 
@@ -2524,39 +2524,39 @@ class TDF_Reference : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** References ******************/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", ":param DS:
-	:type DS: opencascade::handle<TDF_DataSet> &
+	:type DS: TDF_DataSet
 	:rtype: void") References;
 		virtual void References (const opencascade::handle<TDF_DataSet> & DS);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param With:
-	:type With: opencascade::handle<TDF_Attribute> &
+	:type With: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & With);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param I:
-	:type I: TDF_Label &
+	:type I: TDF_Label
 	:param Origin:
-	:type Origin: TDF_Label &
+	:type Origin: TDF_Label
 	:rtype: opencascade::handle<TDF_Reference>") Set;
 		static opencascade::handle<TDF_Reference> Set (const TDF_Label & I,const TDF_Label & Origin);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", ":param Origin:
-	:type Origin: TDF_Label &
+	:type Origin: TDF_Label
 	:rtype: None") Set;
 		void Set (const TDF_Label & Origin);
 
@@ -2602,7 +2602,7 @@ class TDF_TagSource : public TDF_Attribute {
 		%feature("compactdefaultargs") NewChild;
 		%feature("autodoc", "* Find (or create) a tagSource attribute located at <L> and make a new child label. TagSource methods =================
 	:param L:
-	:type L: TDF_Label &
+	:type L: TDF_Label
 	:rtype: TDF_Label") NewChild;
 		static TDF_Label NewChild (const TDF_Label & L);
 
@@ -2624,16 +2624,16 @@ class TDF_TagSource : public TDF_Attribute {
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", ":param Into:
-	:type Into: opencascade::handle<TDF_Attribute> &
+	:type Into: TDF_Attribute
 	:param RT:
-	:type RT: opencascade::handle<TDF_RelocationTable> &
+	:type RT: TDF_RelocationTable
 	:rtype: None") Paste;
 		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", ":param with:
-	:type with: opencascade::handle<TDF_Attribute> &
+	:type with: TDF_Attribute
 	:rtype: None") Restore;
 		void Restore (const opencascade::handle<TDF_Attribute> & with);
 
@@ -2641,7 +2641,7 @@ class TDF_TagSource : public TDF_Attribute {
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "* Find, or create, a TagSource attribute. the TagSource attribute is returned.
 	:param label:
-	:type label: TDF_Label &
+	:type label: TDF_Label
 	:rtype: opencascade::handle<TDF_TagSource>") Set;
 		static opencascade::handle<TDF_TagSource> Set (const TDF_Label & label);
 
@@ -2685,7 +2685,7 @@ class TDF_DefaultDeltaOnModification : public TDF_DeltaOnModification {
 		%feature("compactdefaultargs") TDF_DefaultDeltaOnModification;
 		%feature("autodoc", "* Creates a TDF_DefaultDeltaOnModification. <anAttribute> must be the backup copy.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: None") TDF_DefaultDeltaOnModification;
 		 TDF_DefaultDeltaOnModification (const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -2716,7 +2716,7 @@ class TDF_DefaultDeltaOnRemoval : public TDF_DeltaOnRemoval {
 		%feature("compactdefaultargs") TDF_DefaultDeltaOnRemoval;
 		%feature("autodoc", "* Creates a TDF_DefaultDeltaOnRemoval.
 	:param anAttribute:
-	:type anAttribute: opencascade::handle<TDF_Attribute> &
+	:type anAttribute: TDF_Attribute
 	:rtype: None") TDF_DefaultDeltaOnRemoval;
 		 TDF_DefaultDeltaOnRemoval (const opencascade::handle<TDF_Attribute> & anAttribute);
 

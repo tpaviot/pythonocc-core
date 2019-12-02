@@ -104,9 +104,9 @@ class AppCont_Function {
 		%feature("compactdefaultargs") GetNumberOfPoints;
 		%feature("autodoc", "* Get number of 3d and 2d points returned by 'Value' and 'D1' functions.
 	:param theNbPnt:
-	:type theNbPnt: int &
+	:type theNbPnt: int
 	:param theNbPnt2d:
-	:type theNbPnt2d: int &
+	:type theNbPnt2d: int
 	:rtype: None") GetNumberOfPoints;
 		void GetNumberOfPoints (Standard_Integer &OutValue,Standard_Integer &OutValue);
 
@@ -124,7 +124,7 @@ class AppCont_Function {
 	:param IsPeriodic:
 	:type IsPeriodic: bool
 	:param thePeriod:
-	:type thePeriod: float &
+	:type thePeriod: float
 	:rtype: None") PeriodInformation;
 		void PeriodInformation (const Standard_Integer,Standard_Boolean &OutValue,Standard_Real &OutValue);
 
@@ -158,7 +158,7 @@ class AppCont_LeastSquare {
 		/****************** AppCont_LeastSquare ******************/
 		%feature("compactdefaultargs") AppCont_LeastSquare;
 		%feature("autodoc", ":param SSP:
-	:type SSP: AppCont_Function &
+	:type SSP: AppCont_Function
 	:param U0:
 	:type U0: float
 	:param U1:
@@ -177,11 +177,11 @@ class AppCont_LeastSquare {
 		/****************** Error ******************/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", ":param F:
-	:type F: float &
+	:type F: float
 	:param MaxE3d:
-	:type MaxE3d: float &
+	:type MaxE3d: float
 	:param MaxE2d:
-	:type MaxE2d: float &
+	:type MaxE2d: float
 	:rtype: None") Error;
 		void Error (Standard_Real &OutValue,Standard_Real &OutValue,Standard_Real &OutValue);
 

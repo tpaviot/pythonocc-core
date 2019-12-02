@@ -105,9 +105,9 @@ class Geom2dAPI_ExtremaCurveCurve {
 		%feature("compactdefaultargs") Geom2dAPI_ExtremaCurveCurve;
 		%feature("autodoc", "* Computes the extrema between - the portion of the curve C1 limited by the two points of parameter (U1min,U1max), and - the portion of the curve C2 limited by the two points of parameter (U2min,U2max). Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 	:param C1:
-	:type C1: opencascade::handle<Geom2d_Curve> &
+	:type C1: Geom2d_Curve
 	:param C2:
-	:type C2: opencascade::handle<Geom2d_Curve> &
+	:type C2: Geom2d_Curve
 	:param U1min:
 	:type U1min: float
 	:param U1max:
@@ -129,9 +129,9 @@ class Geom2dAPI_ExtremaCurveCurve {
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "* Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: None") LowerDistanceParameters;
 		void LowerDistanceParameters (Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -157,9 +157,9 @@ class Geom2dAPI_ExtremaCurveCurve {
 	:param Index:
 	:type Index: int
 	:param U1:
-	:type U1: float &
+	:type U1: float
 	:param U2:
-	:type U2: float &
+	:type U2: float
 	:rtype: None") Parameters;
 		void Parameters (const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
 
@@ -210,9 +210,9 @@ class Geom2dAPI_InterCurveCurve {
 		%feature("compactdefaultargs") Geom2dAPI_InterCurveCurve;
 		%feature("autodoc", "* Creates an object and computes the intersections between the curves C1 and C2.
 	:param C1:
-	:type C1: opencascade::handle<Geom2d_Curve> &
+	:type C1: Geom2d_Curve
 	:param C2:
-	:type C2: opencascade::handle<Geom2d_Curve> &
+	:type C2: Geom2d_Curve
 	:param Tol: default value is 1.0e-6
 	:type Tol: float
 	:rtype: None") Geom2dAPI_InterCurveCurve;
@@ -222,7 +222,7 @@ class Geom2dAPI_InterCurveCurve {
 		%feature("compactdefaultargs") Geom2dAPI_InterCurveCurve;
 		%feature("autodoc", "* Creates an object and computes self-intersections of the curve C1. Tolerance value Tol, defaulted to 1.0e-6, defines the precision of computing the intersection points. In case of a tangential intersection, Tol also defines the size of intersection segments (limited portions of the curves) where the distance between all points from two curves (or a curve in case of self-intersection) is less than Tol. Warning Use functions NbPoints and NbSegments to obtain the number of solutions. If the algorithm finds no intersections NbPoints and NbSegments return 0.
 	:param C1:
-	:type C1: opencascade::handle<Geom2d_Curve> &
+	:type C1: Geom2d_Curve
 	:param Tol: default value is 1.0e-6
 	:type Tol: float
 	:rtype: None") Geom2dAPI_InterCurveCurve;
@@ -232,9 +232,9 @@ class Geom2dAPI_InterCurveCurve {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes an algorithm with the given arguments and computes the intersections between the curves C1. and C2.
 	:param C1:
-	:type C1: opencascade::handle<Geom2d_Curve> &
+	:type C1: Geom2d_Curve
 	:param C2:
-	:type C2: opencascade::handle<Geom2d_Curve> &
+	:type C2: Geom2d_Curve
 	:param Tol: default value is 1.0e-6
 	:type Tol: float
 	:rtype: None") Init;
@@ -244,7 +244,7 @@ class Geom2dAPI_InterCurveCurve {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Initializes an algorithm with the given arguments and computes the self-intersections of the curve C1. Tolerance value Tol, defaulted to 1.0e-6, defines the precision of computing the intersection points. In case of a tangential intersection, Tol also defines the size of intersection segments (limited portions of the curves) where the distance between all points from two curves (or a curve in case of self-intersection) is less than Tol. Warning Use functions NbPoints and NbSegments to obtain the number of solutions. If the algorithm finds no intersections NbPoints and NbSegments return 0.
 	:param C1:
-	:type C1: opencascade::handle<Geom2d_Curve> &
+	:type C1: Geom2d_Curve
 	:param Tol: default value is 1.0e-6
 	:type Tol: float
 	:rtype: None") Init;
@@ -282,9 +282,9 @@ class Geom2dAPI_InterCurveCurve {
 	:param Index:
 	:type Index: int
 	:param Curve1:
-	:type Curve1: opencascade::handle<Geom2d_Curve> &
+	:type Curve1: Geom2d_Curve
 	:param Curve2:
-	:type Curve2: opencascade::handle<Geom2d_Curve> &
+	:type Curve2: Geom2d_Curve
 	:rtype: None") Segment;
 		void Segment (const Standard_Integer Index,opencascade::handle<Geom2d_Curve> & Curve1,opencascade::handle<Geom2d_Curve> & Curve2);
 
@@ -313,7 +313,7 @@ class Geom2dAPI_Interpolate {
 		%feature("compactdefaultargs") Geom2dAPI_Interpolate;
 		%feature("autodoc", "* Tolerance is to check if the points are not too close to one an other It is also used to check if the tangent vector is not too small. There should be at least 2 points if PeriodicFlag is True then the curve will be periodic.
 	:param Points:
-	:type Points: opencascade::handle<TColgp_HArray1OfPnt2d>
+	:type Points: TColgp_HArray1OfPnt2d
 	:param PeriodicFlag:
 	:type PeriodicFlag: bool
 	:param Tolerance:
@@ -325,9 +325,9 @@ class Geom2dAPI_Interpolate {
 		%feature("compactdefaultargs") Geom2dAPI_Interpolate;
 		%feature("autodoc", "* if PeriodicFlag is True then the curve will be periodic Warning: There should be as many parameters as there are points except if PeriodicFlag is True : then there should be one more parameter to close the curve
 	:param Points:
-	:type Points: opencascade::handle<TColgp_HArray1OfPnt2d>
+	:type Points: TColgp_HArray1OfPnt2d
 	:param Parameters:
-	:type Parameters: opencascade::handle<TColStd_HArray1OfReal> &
+	:type Parameters: TColStd_HArray1OfReal
 	:param PeriodicFlag:
 	:type PeriodicFlag: bool
 	:param Tolerance:
@@ -359,7 +359,7 @@ class Geom2dAPI_Interpolate {
 	:param Tangents:
 	:type Tangents: TColgp_Array1OfVec2d
 	:param TangentFlags:
-	:type TangentFlags: opencascade::handle<TColStd_HArray1OfBoolean> &
+	:type TangentFlags: TColStd_HArray1OfBoolean
 	:param Scale: default value is Standard_True
 	:type Scale: bool
 	:rtype: None") Load;
@@ -418,7 +418,7 @@ class Geom2dAPI_PointsToBSpline {
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "* Approximate a BSpline Curve passing through an array of Point. Of coordinates : //! X = X0 + DX * (i-YValues.Lower()) Y = YValues(i) //! With i in the range YValues.Lower(), YValues.Upper() //! The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower()) //! And will satisfy X(t) = t //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D
 	:param YValues:
-	:type YValues: TColStd_Array1OfReal &
+	:type YValues: TColStd_Array1OfReal
 	:param X0:
 	:type X0: float
 	:param DX:
@@ -458,7 +458,7 @@ class Geom2dAPI_PointsToBSpline {
 	:param Points:
 	:type Points: TColgp_Array1OfPnt2d
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param DegMin: default value is 3
 	:type DegMin: int
 	:param DegMax: default value is 8
@@ -510,7 +510,7 @@ class Geom2dAPI_PointsToBSpline {
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "* Approximate a BSpline Curve passing through an array of Point. Of coordinates : //! X = X0 + DX * (i-YValues.Lower()) Y = YValues(i) //! With i in the range YValues.Lower(), YValues.Upper() //! The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower()) //! And will satisfy X(t) = t //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D
 	:param YValues:
-	:type YValues: TColStd_Array1OfReal &
+	:type YValues: TColStd_Array1OfReal
 	:param X0:
 	:type X0: float
 	:param DX:
@@ -550,7 +550,7 @@ class Geom2dAPI_PointsToBSpline {
 	:param Points:
 	:type Points: TColgp_Array1OfPnt2d
 	:param Parameters:
-	:type Parameters: TColStd_Array1OfReal &
+	:type Parameters: TColStd_Array1OfReal
 	:param DegMin: default value is 3
 	:type DegMin: int
 	:param DegMax: default value is 8
@@ -628,7 +628,7 @@ class Geom2dAPI_ProjectPointOnCurve {
 	:param P:
 	:type P: gp_Pnt2d
 	:param Curve:
-	:type Curve: opencascade::handle<Geom2d_Curve> &
+	:type Curve: Geom2d_Curve
 	:rtype: None") Geom2dAPI_ProjectPointOnCurve;
 		 Geom2dAPI_ProjectPointOnCurve (const gp_Pnt2d & P,const opencascade::handle<Geom2d_Curve> & Curve);
 
@@ -638,7 +638,7 @@ class Geom2dAPI_ProjectPointOnCurve {
 	:param P:
 	:type P: gp_Pnt2d
 	:param Curve:
-	:type Curve: opencascade::handle<Geom2d_Curve> &
+	:type Curve: Geom2d_Curve
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -652,7 +652,7 @@ class Geom2dAPI_ProjectPointOnCurve {
 	:param P:
 	:type P: gp_Pnt2d
 	:param Curve:
-	:type Curve: opencascade::handle<Geom2d_Curve> &
+	:type Curve: Geom2d_Curve
 	:rtype: None") Init;
 		void Init (const gp_Pnt2d & P,const opencascade::handle<Geom2d_Curve> & Curve);
 
@@ -662,7 +662,7 @@ class Geom2dAPI_ProjectPointOnCurve {
 	:param P:
 	:type P: gp_Pnt2d
 	:param Curve:
-	:type Curve: opencascade::handle<Geom2d_Curve> &
+	:type Curve: Geom2d_Curve
 	:param Umin:
 	:type Umin: float
 	:param Usup:
@@ -708,7 +708,7 @@ class Geom2dAPI_ProjectPointOnCurve {
 	:param Index:
 	:type Index: int
 	:param U:
-	:type U: float &
+	:type U: float
 	:rtype: None") Parameter;
 		void Parameter (const Standard_Integer Index,Standard_Real &OutValue);
 

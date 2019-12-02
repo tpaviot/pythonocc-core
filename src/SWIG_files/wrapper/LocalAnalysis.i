@@ -87,9 +87,9 @@ class LocalAnalysis {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* This class compute s and gives tools to check the local continuity between two points situated on 2 curves) //! This fonction gives informations about a variable CurveContinuity
 	:param surfconti:
-	:type surfconti: LocalAnalysis_SurfaceContinuity &
+	:type surfconti: LocalAnalysis_SurfaceContinuity
 	:param o:
-	:type o: Standard_OStream &
+	:type o: Standard_OStream
 	:rtype: void") Dump;
 		static void Dump (const LocalAnalysis_SurfaceContinuity & surfconti,Standard_OStream & o);
 
@@ -97,9 +97,9 @@ class LocalAnalysis {
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "* This fonction gives informations about a variable SurfaceContinuity
 	:param curvconti:
-	:type curvconti: LocalAnalysis_CurveContinuity &
+	:type curvconti: LocalAnalysis_CurveContinuity
 	:param o:
-	:type o: Standard_OStream &
+	:type o: Standard_OStream
 	:rtype: void") Dump;
 		static void Dump (const LocalAnalysis_CurveContinuity & curvconti,Standard_OStream & o);
 
@@ -197,11 +197,11 @@ class LocalAnalysis_CurveContinuity {
 		%feature("compactdefaultargs") LocalAnalysis_CurveContinuity;
 		%feature("autodoc", "* -u1 is the parameter of the point on Curv1 -u2 is the parameter of the point on Curv2 -Order is the required continuity: GeomAbs_C0 GeomAbs_C1 GeomAbs_C2 GeomAbs_G1 GeomAbs_G2 //! -EpsNul is used to detect a a vector with nul magnitude (in mm) //! -EpsC0 is used for C0 continuity to confuse two points (in mm) //! -EpsC1 is an angular tolerance in radians used for C1 continuity to compare the angle between the first derivatives //! -EpsC2 is an angular tolerance in radians used for C2 continuity to compare the angle between the second derivatives //! -EpsG1 is an angular tolerance in radians used for G1 continuity to compare the angle between the tangents //! -EpsG2 is an angular tolerance in radians used for G2 continuity to compare the angle between the normals //! - percent : percentage of curvature variation (unitless) used for G2 continuity //! - Maxlen is the maximum length of Curv1 or Curv2 in meters used to detect nul curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case C0 -------- - the distance between P1 and P2 with P1=Curv1 (u1) and P2=Curv2(u2) //! case C1 ------- //! - the angle between the first derivatives dCurv1(u1)  dCurv2(u2) -------- and --------- du  du //! - the ratio between the magnitudes of the first derivatives //! the angle value is between 0 and PI/2 //! case C2 ------- - the angle between the second derivatives 2  2 d Curv1(u1) d Curv2(u2) ---------- ---------- 2  2 du du //! the angle value is between 0 and PI/2 //! - the ratio between the magnitudes of the second derivatives //! case G1 ------- the angle between the tangents at each point //! the angle value is between 0 and PI/2 //! case G2 ------- -the angle between the normals at each point //! the angle value is between 0 and PI/2 //! - the relative variation of curvature: |curvat1-curvat2| ------------------ 1/2 (curvat1*curvat2) //! where curvat1 is the curvature at the first point and curvat2 the curvature at the second point
 	:param Curv1:
-	:type Curv1: opencascade::handle<Geom_Curve> &
+	:type Curv1: Geom_Curve
 	:param u1:
 	:type u1: float
 	:param Curv2:
-	:type Curv2: opencascade::handle<Geom_Curve> &
+	:type Curv2: Geom_Curve
 	:param u2:
 	:type u2: float
 	:param Order:
@@ -293,9 +293,9 @@ class LocalAnalysis_SurfaceContinuity {
 		/****************** ComputeAnalysis ******************/
 		%feature("compactdefaultargs") ComputeAnalysis;
 		%feature("autodoc", ":param Surf1:
-	:type Surf1: GeomLProp_SLProps &
+	:type Surf1: GeomLProp_SLProps
 	:param Surf2:
-	:type Surf2: GeomLProp_SLProps &
+	:type Surf2: GeomLProp_SLProps
 	:param Order:
 	:type Order: GeomAbs_Shape
 	:rtype: None") ComputeAnalysis;
@@ -350,13 +350,13 @@ class LocalAnalysis_SurfaceContinuity {
 		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
 		%feature("autodoc", "* -u1,v1 are the parameters of the point on Surf1 -u2,v2 are the parameters of the point on Surf2 -Order is the required continuity: GeomAbs_C0 GeomAbs_C1 GeomAbs_C2 GeomAbs_G1 GeomAbs_G2 //! -EpsNul is used to detect a a vector with nul magnitude //! -EpsC0 is used for C0 continuity to confuse two points (in mm) //! -EpsC1 is an angular tolerance in radians used for C1 continuity to compare the angle between the first derivatives //! -EpsC2 is an angular tolerance in radians used for C2 continuity to compare the angle between the second derivatives //! -EpsG1 is an angular tolerance in radians used for G1 continuity to compare the angle between the normals //! -Percent : percentage of curvature variation (unitless) used for G2 continuity //! - Maxlen is the maximum length of Surf1 or Surf2 in meters used to detect null curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case C0 -------- - the distance between P1 and P2 with P1=Surf (u1,v1) and P2=Surfv2(u2,v2) //! case C1 ------- //! - the angle between the first derivatives in u : //! dSurf1(u1,v1) dSurf2(u2,v2) ----------- and --------- du  du //! the angle value is between 0 and PI/2 //! - the angle between the first derivatives in v : //! dSurf1(u1,v1) dSurf2(u2,v2) -------- and --------- dv  dv //! - the ratio between the magnitudes of the first derivatives in u - the ratio between the magnitudes of the first derivatives in v //! the angle value is between 0 and pi/2 //! case C2 ------- - the angle between the second derivatives in u 2 2 d Surf1(u1,v1) d Surf2(u2,v2) ---------- ---------- 2 2 d u d u //! - the ratio between the magnitudes of the second derivatives in u - the ratio between the magnitudes of the second derivatives in v //! the angle value is between 0 and PI/2 //! case G1 ------- -the angle between the normals at each point the angle value is between 0 and PI/2 //! case G2 ------- - the maximum normal curvature gap between the two points
 	:param Surf1:
-	:type Surf1: opencascade::handle<Geom_Surface> &
+	:type Surf1: Geom_Surface
 	:param u1:
 	:type u1: float
 	:param v1:
 	:type v1: float
 	:param Surf2:
-	:type Surf2: opencascade::handle<Geom_Surface> &
+	:type Surf2: Geom_Surface
 	:param u2:
 	:type u2: float
 	:param v2:
@@ -383,15 +383,15 @@ class LocalAnalysis_SurfaceContinuity {
 		/****************** LocalAnalysis_SurfaceContinuity ******************/
 		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
 		%feature("autodoc", ":param curv1:
-	:type curv1: opencascade::handle<Geom2d_Curve> &
+	:type curv1: Geom2d_Curve
 	:param curv2:
-	:type curv2: opencascade::handle<Geom2d_Curve> &
+	:type curv2: Geom2d_Curve
 	:param U:
 	:type U: float
 	:param Surf1:
-	:type Surf1: opencascade::handle<Geom_Surface> &
+	:type Surf1: Geom_Surface
 	:param Surf2:
-	:type Surf2: opencascade::handle<Geom_Surface> &
+	:type Surf2: Geom_Surface
 	:param Order:
 	:type Order: GeomAbs_Shape
 	:param EpsNul: default value is 0.001
