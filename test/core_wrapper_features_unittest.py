@@ -57,6 +57,9 @@ from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve
 from OCC.Core.BRep import BRep_Tool_Curve
 from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
 from OCC.Core.HLRAlgo import HLRAlgo_Projector
+from OCC.Core.TopTools import (TopTools_HArray1OfShape,
+                               TopTools_HArray2OfShape,
+                               TopTools_HSequenceOfShape)
 
 @contextmanager
 def assert_warns_deprecated():
@@ -697,6 +700,14 @@ class TestWrapperFeatures(unittest.TestCase):
         json_string = bnd_box.DumpJsonToString()
         expected_output = '"Bnd_Box": {"CornerMin": [-10, -10, -10], "CornerMax": [10, 10, 10], "Gap": 1e-07, "Flags": 0}'
         self.assertEqual(json_string, expected_output)
+
+    def test_harray1_harray2_hsequence(self):
+        """ Check that special wrappers for harray1, harray2 and hsequence.
+        Only check that related classes can be instanciated.
+        """
+        TopTools_HArray1OfShape(0, 3)
+        TopTools_HArray2OfShape(0, 3, 0, 3)
+        TopTools_HSequenceOfShape()
 
 
 def suite():
