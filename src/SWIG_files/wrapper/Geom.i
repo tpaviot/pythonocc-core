@@ -9386,10 +9386,11 @@ class Geom_TrimmedCurve : public Geom_BoundedCurve {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class Geom_HSequenceOfBSplineSurface : public  Geom_SequenceOfBSplineSurface, public Standard_Transient {
+  public:
     Geom_HSequenceOfBSplineSurface();
     Geom_HSequenceOfBSplineSurface(const  Geom_SequenceOfBSplineSurface& theOther);
     const  Geom_SequenceOfBSplineSurface& Sequence();

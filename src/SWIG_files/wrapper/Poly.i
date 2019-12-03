@@ -1238,7 +1238,7 @@ class Poly_Triangulation : public Standard_Transient {
 /*************************
 * class Poly_MakeLoops3D *
 *************************/
-/* harray1 class */
+/* harray1 classes */
 class Poly_HArray1OfTriangle : public  Poly_Array1OfTriangle, public Standard_Transient {
   public:
     Poly_HArray1OfTriangle(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1250,5 +1250,5 @@ class Poly_HArray1OfTriangle : public  Poly_Array1OfTriangle, public Standard_Tr
 %make_alias(Poly_HArray1OfTriangle)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

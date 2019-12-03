@@ -1069,10 +1069,11 @@ class TransferBRep_ShapeBinder : public TransferBRep_BinderOfShape {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class TransferBRep_HSequenceOfTransferResultInfo : public  TransferBRep_SequenceOfTransferResultInfo, public Standard_Transient {
+  public:
     TransferBRep_HSequenceOfTransferResultInfo();
     TransferBRep_HSequenceOfTransferResultInfo(const  TransferBRep_SequenceOfTransferResultInfo& theOther);
     const  TransferBRep_SequenceOfTransferResultInfo& Sequence();

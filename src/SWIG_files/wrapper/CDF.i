@@ -992,6 +992,6 @@ class CDF_FWOSDriver : public CDF_MetaDataDriver {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

@@ -4945,7 +4945,7 @@ class TDataStd_Variable : public TDF_Attribute {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class TDataStd_HLabelArray1 : public  TDataStd_LabelArray1, public Standard_Transient {
   public:
     TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4957,5 +4957,5 @@ class TDataStd_HLabelArray1 : public  TDataStd_LabelArray1, public Standard_Tran
 %make_alias(TDataStd_HLabelArray1)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

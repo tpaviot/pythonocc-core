@@ -5538,7 +5538,7 @@ class StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItem
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepVisual_HArray1OfAnnotationPlaneElement : public  StepVisual_Array1OfAnnotationPlaneElement, public Standard_Transient {
   public:
     StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5704,5 +5704,5 @@ class StepVisual_HArray1OfInvisibleItem : public  StepVisual_Array1OfInvisibleIt
 %make_alias(StepVisual_HArray1OfInvisibleItem)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

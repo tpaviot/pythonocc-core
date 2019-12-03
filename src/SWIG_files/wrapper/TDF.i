@@ -2731,7 +2731,7 @@ class TDF_DefaultDeltaOnRemoval : public TDF_DeltaOnRemoval {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class TDF_HAttributeArray1 : public  TDF_AttributeArray1, public Standard_Transient {
   public:
     TDF_HAttributeArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -2743,5 +2743,5 @@ class TDF_HAttributeArray1 : public  TDF_AttributeArray1, public Standard_Transi
 %make_alias(TDF_HAttributeArray1)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

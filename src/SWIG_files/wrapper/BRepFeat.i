@@ -1628,6 +1628,6 @@ class BRepFeat_MakeRevolutionForm : public BRepFeat_RibSlot {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

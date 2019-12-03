@@ -2118,10 +2118,11 @@ class TObj_ReferenceIterator : public TObj_LabelIterator {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class TObj_HSequenceOfObject : public  TObj_SequenceOfObject, public Standard_Transient {
+  public:
     TObj_HSequenceOfObject();
     TObj_HSequenceOfObject(const  TObj_SequenceOfObject& theOther);
     const  TObj_SequenceOfObject& Sequence();

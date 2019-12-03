@@ -622,10 +622,11 @@ class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class STEPSelections_HSequenceOfAssemblyLink : public  STEPSelections_SequenceOfAssemblyLink, public Standard_Transient {
+  public:
     STEPSelections_HSequenceOfAssemblyLink();
     STEPSelections_HSequenceOfAssemblyLink(const  STEPSelections_SequenceOfAssemblyLink& theOther);
     const  STEPSelections_SequenceOfAssemblyLink& Sequence();

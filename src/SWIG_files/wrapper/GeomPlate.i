@@ -1394,7 +1394,7 @@ class GeomPlate_Surface : public Geom_Surface {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class GeomPlate_HArray1OfSequenceOfReal : public  GeomPlate_Array1OfSequenceOfReal, public Standard_Transient {
   public:
     GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1417,9 +1417,10 @@ class GeomPlate_HArray1OfHCurve : public  GeomPlate_Array1OfHCurve, public Stand
 %make_alias(GeomPlate_HArray1OfHCurve)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */
 class GeomPlate_HSequenceOfPointConstraint : public  GeomPlate_SequenceOfPointConstraint, public Standard_Transient {
+  public:
     GeomPlate_HSequenceOfPointConstraint();
     GeomPlate_HSequenceOfPointConstraint(const  GeomPlate_SequenceOfPointConstraint& theOther);
     const  GeomPlate_SequenceOfPointConstraint& Sequence();
@@ -1431,6 +1432,7 @@ class GeomPlate_HSequenceOfPointConstraint : public  GeomPlate_SequenceOfPointCo
 
 
 class GeomPlate_HSequenceOfCurveConstraint : public  GeomPlate_SequenceOfCurveConstraint, public Standard_Transient {
+  public:
     GeomPlate_HSequenceOfCurveConstraint();
     GeomPlate_HSequenceOfCurveConstraint(const  GeomPlate_SequenceOfCurveConstraint& theOther);
     const  GeomPlate_SequenceOfCurveConstraint& Sequence();

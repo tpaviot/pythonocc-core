@@ -2293,10 +2293,11 @@ class ProjLib_Torus : public ProjLib_Projector {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class ProjLib_HSequenceOfHSequenceOfPnt : public  ProjLib_SequenceOfHSequenceOfPnt, public Standard_Transient {
+  public:
     ProjLib_HSequenceOfHSequenceOfPnt();
     ProjLib_HSequenceOfHSequenceOfPnt(const  ProjLib_SequenceOfHSequenceOfPnt& theOther);
     const  ProjLib_SequenceOfHSequenceOfPnt& Sequence();

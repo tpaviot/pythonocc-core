@@ -3629,7 +3629,7 @@ class StepAP214_SecurityClassificationItem : public StepAP214_ApprovalItem {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepAP214_HArray1OfDateItem : public  StepAP214_Array1OfDateItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfDateItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3817,5 +3817,5 @@ class StepAP214_HArray1OfDateAndTimeItem : public  StepAP214_Array1OfDateAndTime
 %make_alias(StepAP214_HArray1OfDateAndTimeItem)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

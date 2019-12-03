@@ -7746,7 +7746,7 @@ class Extrema_POnSurfParams : public Extrema_POnSurf {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class Extrema_HArray1OfPOnSurf : public  Extrema_Array1OfPOnSurf, public Standard_Transient {
   public:
     Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7780,7 +7780,7 @@ class Extrema_HArray1OfPOnCurv2d : public  Extrema_Array1OfPOnCurv2d, public Sta
 %make_alias(Extrema_HArray1OfPOnCurv2d)
 
 
-/* harray2 class */
+/* harray2 classes */
 class Extrema_HArray2OfPOnCurv2d : public  Extrema_Array2OfPOnCurv2d, public Standard_Transient {
   public:
     Extrema_HArray2OfPOnCurv2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -7833,4 +7833,4 @@ class Extrema_HArray2OfPOnSurfParams : public  Extrema_Array2OfPOnSurfParams, pu
 %make_alias(Extrema_HArray2OfPOnSurfParams)
 
 
-/* harray2 class */
+/* hsequence classes */

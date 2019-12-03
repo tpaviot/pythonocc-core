@@ -1822,7 +1822,7 @@ class Quantity_Period {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class Quantity_HArray1OfColor : public  Quantity_Array1OfColor, public Standard_Transient {
   public:
     Quantity_HArray1OfColor(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1834,5 +1834,5 @@ class Quantity_HArray1OfColor : public  Quantity_Array1OfColor, public Standard_
 %make_alias(Quantity_HArray1OfColor)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

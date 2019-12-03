@@ -3373,7 +3373,7 @@ class StepDimTol_TotalRunoutTolerance : public StepDimTol_GeometricToleranceWith
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepDimTol_HArray1OfToleranceZoneTarget : public  StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
   public:
     StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3451,5 +3451,5 @@ class StepDimTol_HArray1OfGeometricToleranceModifier : public  StepDimTol_Array1
 %make_alias(StepDimTol_HArray1OfGeometricToleranceModifier)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

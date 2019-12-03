@@ -4914,7 +4914,7 @@ class IGESData_FreeFormatEntity : public IGESData_UndefinedEntity {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class IGESData_HArray1OfIGESEntity : public  IGESData_Array1OfIGESEntity, public Standard_Transient {
   public:
     IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4926,5 +4926,5 @@ class IGESData_HArray1OfIGESEntity : public  IGESData_Array1OfIGESEntity, public
 %make_alias(IGESData_HArray1OfIGESEntity)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

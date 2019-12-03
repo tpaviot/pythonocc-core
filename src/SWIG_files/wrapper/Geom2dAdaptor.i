@@ -466,6 +466,6 @@ class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

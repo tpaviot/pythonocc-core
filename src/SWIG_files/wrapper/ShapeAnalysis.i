@@ -3708,10 +3708,11 @@ class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParame
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class ShapeAnalysis_HSequenceOfFreeBounds : public  ShapeAnalysis_SequenceOfFreeBounds, public Standard_Transient {
+  public:
     ShapeAnalysis_HSequenceOfFreeBounds();
     ShapeAnalysis_HSequenceOfFreeBounds(const  ShapeAnalysis_SequenceOfFreeBounds& theOther);
     const  ShapeAnalysis_SequenceOfFreeBounds& Sequence();

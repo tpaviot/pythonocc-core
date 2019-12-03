@@ -6319,7 +6319,7 @@ class StepGeom_OuterBoundaryCurve : public StepGeom_BoundaryCurve {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepGeom_HArray1OfCartesianPoint : public  StepGeom_Array1OfCartesianPoint, public Standard_Transient {
   public:
     StepGeom_HArray1OfCartesianPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -6397,7 +6397,7 @@ class StepGeom_HArray1OfTrimmingSelect : public  StepGeom_Array1OfTrimmingSelect
 %make_alias(StepGeom_HArray1OfTrimmingSelect)
 
 
-/* harray2 class */
+/* harray2 classes */
 class StepGeom_HArray2OfSurfacePatch : public  StepGeom_Array2OfSurfacePatch, public Standard_Transient {
   public:
     StepGeom_HArray2OfSurfacePatch(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -6424,4 +6424,4 @@ class StepGeom_HArray2OfCartesianPoint : public  StepGeom_Array2OfCartesianPoint
 %make_alias(StepGeom_HArray2OfCartesianPoint)
 
 
-/* harray2 class */
+/* hsequence classes */

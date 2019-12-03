@@ -1037,6 +1037,6 @@ class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

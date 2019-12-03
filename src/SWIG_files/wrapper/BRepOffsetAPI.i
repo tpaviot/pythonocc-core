@@ -1746,6 +1746,6 @@ class BRepOffsetAPI_MakeThickSolid : public BRepOffsetAPI_MakeOffsetShape {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

@@ -474,6 +474,6 @@ class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

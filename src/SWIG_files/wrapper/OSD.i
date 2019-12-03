@@ -167,6 +167,6 @@ typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
 typedef pthread_t OSD_PThread;
 /* end typedefs declaration */
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

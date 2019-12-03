@@ -405,6 +405,6 @@ class ExprIntrp_GenRel : public ExprIntrp_Generator {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

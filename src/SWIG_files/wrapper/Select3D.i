@@ -1769,6 +1769,6 @@ class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

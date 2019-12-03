@@ -548,6 +548,6 @@ class StepAP242_GeometricItemSpecificUsage : public StepAP242_ItemIdentifiedRepr
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

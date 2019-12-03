@@ -1964,7 +1964,7 @@ class TDataXtd_PatternStd : public TDataXtd_Pattern {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class TDataXtd_HArray1OfTrsf : public  TDataXtd_Array1OfTrsf, public Standard_Transient {
   public:
     TDataXtd_HArray1OfTrsf(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1976,5 +1976,5 @@ class TDataXtd_HArray1OfTrsf : public  TDataXtd_Array1OfTrsf, public Standard_Tr
 %make_alias(TDataXtd_HArray1OfTrsf)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

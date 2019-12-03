@@ -1035,6 +1035,6 @@ class Standard_Persistent : public Standard_Transient {
 /*******************
 * class is_integer *
 *******************/
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

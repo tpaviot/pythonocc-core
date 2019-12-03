@@ -3581,7 +3581,7 @@ class StepFEA_NodeWithVector : public StepFEA_Node {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepFEA_HArray1OfCurveElementInterval : public  StepFEA_Array1OfCurveElementInterval, public Standard_Transient {
   public:
     StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3648,9 +3648,10 @@ class StepFEA_HArray1OfNodeRepresentation : public  StepFEA_Array1OfNodeRepresen
 %make_alias(StepFEA_HArray1OfNodeRepresentation)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */
 class StepFEA_HSequenceOfElementRepresentation : public  StepFEA_SequenceOfElementRepresentation, public Standard_Transient {
+  public:
     StepFEA_HSequenceOfElementRepresentation();
     StepFEA_HSequenceOfElementRepresentation(const  StepFEA_SequenceOfElementRepresentation& theOther);
     const  StepFEA_SequenceOfElementRepresentation& Sequence();
@@ -3662,6 +3663,7 @@ class StepFEA_HSequenceOfElementRepresentation : public  StepFEA_SequenceOfEleme
 
 
 class StepFEA_HSequenceOfElementGeometricRelationship : public  StepFEA_SequenceOfElementGeometricRelationship, public Standard_Transient {
+  public:
     StepFEA_HSequenceOfElementGeometricRelationship();
     StepFEA_HSequenceOfElementGeometricRelationship(const  StepFEA_SequenceOfElementGeometricRelationship& theOther);
     const  StepFEA_SequenceOfElementGeometricRelationship& Sequence();
@@ -3673,6 +3675,7 @@ class StepFEA_HSequenceOfElementGeometricRelationship : public  StepFEA_Sequence
 
 
 class StepFEA_HSequenceOfNodeRepresentation : public  StepFEA_SequenceOfNodeRepresentation, public Standard_Transient {
+  public:
     StepFEA_HSequenceOfNodeRepresentation();
     StepFEA_HSequenceOfNodeRepresentation(const  StepFEA_SequenceOfNodeRepresentation& theOther);
     const  StepFEA_SequenceOfNodeRepresentation& Sequence();
@@ -3684,6 +3687,7 @@ class StepFEA_HSequenceOfNodeRepresentation : public  StepFEA_SequenceOfNodeRepr
 
 
 class StepFEA_HSequenceOfCurve3dElementProperty : public  StepFEA_SequenceOfCurve3dElementProperty, public Standard_Transient {
+  public:
     StepFEA_HSequenceOfCurve3dElementProperty();
     StepFEA_HSequenceOfCurve3dElementProperty(const  StepFEA_SequenceOfCurve3dElementProperty& theOther);
     const  StepFEA_SequenceOfCurve3dElementProperty& Sequence();

@@ -8365,10 +8365,11 @@ class IFSelect_SelectType : public IFSelect_SelectAnyType {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class IFSelect_HSeqOfSelection : public  IFSelect_TSeqOfSelection, public Standard_Transient {
+  public:
     IFSelect_HSeqOfSelection();
     IFSelect_HSeqOfSelection(const  IFSelect_TSeqOfSelection& theOther);
     const  IFSelect_TSeqOfSelection& Sequence();

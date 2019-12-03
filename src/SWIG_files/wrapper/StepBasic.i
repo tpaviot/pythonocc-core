@@ -8887,7 +8887,7 @@ class StepBasic_SiUnitAndVolumeUnit : public StepBasic_SiUnit {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepBasic_HArray1OfOrganization : public  StepBasic_Array1OfOrganization, public Standard_Transient {
   public:
     StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -8998,5 +8998,5 @@ class StepBasic_HArray1OfProduct : public  StepBasic_Array1OfProduct, public Sta
 %make_alias(StepBasic_HArray1OfProduct)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

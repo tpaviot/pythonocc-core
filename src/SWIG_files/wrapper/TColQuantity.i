@@ -100,7 +100,7 @@ typedef NCollection_Array1 <Quantity_Length> TColQuantity_Array1OfLength;
 typedef NCollection_Array2 <Quantity_Length> TColQuantity_Array2OfLength;
 /* end typedefs declaration */
 
-/* harray1 class */
+/* harray1 classes */
 class TColQuantity_HArray1OfLength : public  TColQuantity_Array1OfLength, public Standard_Transient {
   public:
     TColQuantity_HArray1OfLength(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -112,7 +112,7 @@ class TColQuantity_HArray1OfLength : public  TColQuantity_Array1OfLength, public
 %make_alias(TColQuantity_HArray1OfLength)
 
 
-/* harray2 class */
+/* harray2 classes */
 class TColQuantity_HArray2OfLength : public  TColQuantity_Array2OfLength, public Standard_Transient {
   public:
     TColQuantity_HArray2OfLength(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -126,4 +126,4 @@ class TColQuantity_HArray2OfLength : public  TColQuantity_Array2OfLength, public
 %make_alias(TColQuantity_HArray2OfLength)
 
 
-/* harray2 class */
+/* hsequence classes */

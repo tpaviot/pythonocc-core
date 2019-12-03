@@ -1831,10 +1831,11 @@ class MoniTool_TransientElem : public MoniTool_Element {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class MoniTool_HSequenceOfElement : public  MoniTool_SequenceOfElement, public Standard_Transient {
+  public:
     MoniTool_HSequenceOfElement();
     MoniTool_HSequenceOfElement(const  MoniTool_SequenceOfElement& theOther);
     const  MoniTool_SequenceOfElement& Sequence();

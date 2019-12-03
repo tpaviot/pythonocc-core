@@ -2410,7 +2410,7 @@ class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescript
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepElement_HArray1OfVolumeElementPurpose : public  StepElement_Array1OfVolumeElementPurpose, public Standard_Transient {
   public:
     StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -2499,7 +2499,7 @@ class StepElement_HArray1OfCurveElementEndReleasePacket : public  StepElement_Ar
 %make_alias(StepElement_HArray1OfCurveElementEndReleasePacket)
 
 
-/* harray2 class */
+/* harray2 classes */
 class StepElement_HArray2OfSurfaceElementPurposeMember : public  StepElement_Array2OfSurfaceElementPurposeMember, public Standard_Transient {
   public:
     StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -2539,8 +2539,9 @@ class StepElement_HArray2OfCurveElementPurposeMember : public  StepElement_Array
 %make_alias(StepElement_HArray2OfCurveElementPurposeMember)
 
 
-/* harray2 class */
+/* hsequence classes */
 class StepElement_HSequenceOfCurveElementSectionDefinition : public  StepElement_SequenceOfCurveElementSectionDefinition, public Standard_Transient {
+  public:
     StepElement_HSequenceOfCurveElementSectionDefinition();
     StepElement_HSequenceOfCurveElementSectionDefinition(const  StepElement_SequenceOfCurveElementSectionDefinition& theOther);
     const  StepElement_SequenceOfCurveElementSectionDefinition& Sequence();
@@ -2552,6 +2553,7 @@ class StepElement_HSequenceOfCurveElementSectionDefinition : public  StepElement
 
 
 class StepElement_HSequenceOfCurveElementPurposeMember : public  StepElement_SequenceOfCurveElementPurposeMember, public Standard_Transient {
+  public:
     StepElement_HSequenceOfCurveElementPurposeMember();
     StepElement_HSequenceOfCurveElementPurposeMember(const  StepElement_SequenceOfCurveElementPurposeMember& theOther);
     const  StepElement_SequenceOfCurveElementPurposeMember& Sequence();
@@ -2563,6 +2565,7 @@ class StepElement_HSequenceOfCurveElementPurposeMember : public  StepElement_Seq
 
 
 class StepElement_HSequenceOfElementMaterial : public  StepElement_SequenceOfElementMaterial, public Standard_Transient {
+  public:
     StepElement_HSequenceOfElementMaterial();
     StepElement_HSequenceOfElementMaterial(const  StepElement_SequenceOfElementMaterial& theOther);
     const  StepElement_SequenceOfElementMaterial& Sequence();
@@ -2574,6 +2577,7 @@ class StepElement_HSequenceOfElementMaterial : public  StepElement_SequenceOfEle
 
 
 class StepElement_HSequenceOfSurfaceElementPurposeMember : public  StepElement_SequenceOfSurfaceElementPurposeMember, public Standard_Transient {
+  public:
     StepElement_HSequenceOfSurfaceElementPurposeMember();
     StepElement_HSequenceOfSurfaceElementPurposeMember(const  StepElement_SequenceOfSurfaceElementPurposeMember& theOther);
     const  StepElement_SequenceOfSurfaceElementPurposeMember& Sequence();

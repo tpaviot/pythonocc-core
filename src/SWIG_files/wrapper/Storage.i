@@ -171,7 +171,7 @@ typedef NCollection_Array1 <opencascade::handle <Storage_Schema>> Storage_ArrayO
 typedef NCollection_Sequence <opencascade::handle <Storage_Root>> Storage_SeqOfRoot;
 /* end typedefs declaration */
 
-/* harray1 class */
+/* harray1 classes */
 class Storage_HArrayOfSchema : public  Storage_ArrayOfSchema, public Standard_Transient {
   public:
     Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -205,9 +205,10 @@ class Storage_HArrayOfCallBack : public  Storage_ArrayOfCallBack, public Standar
 %make_alias(Storage_HArrayOfCallBack)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */
 class Storage_HSeqOfRoot : public  Storage_SeqOfRoot, public Standard_Transient {
+  public:
     Storage_HSeqOfRoot();
     Storage_HSeqOfRoot(const  Storage_SeqOfRoot& theOther);
     const  Storage_SeqOfRoot& Sequence();

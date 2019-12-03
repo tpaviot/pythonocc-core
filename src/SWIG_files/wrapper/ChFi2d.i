@@ -653,6 +653,6 @@ class ChFi2d_FilletAlgo {
 /********************
 * class FilletPoint *
 ********************/
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

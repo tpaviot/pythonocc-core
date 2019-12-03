@@ -104,7 +104,7 @@ typedef NCollection_Array2 <Standard_ShortReal> TShort_Array2OfShortReal;
 typedef NCollection_Array1 <Standard_ShortReal> TShort_Array1OfShortReal;
 /* end typedefs declaration */
 
-/* harray1 class */
+/* harray1 classes */
 class TShort_HArray1OfShortReal : public  TShort_Array1OfShortReal, public Standard_Transient {
   public:
     TShort_HArray1OfShortReal(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -116,7 +116,7 @@ class TShort_HArray1OfShortReal : public  TShort_Array1OfShortReal, public Stand
 %make_alias(TShort_HArray1OfShortReal)
 
 
-/* harray2 class */
+/* harray2 classes */
 class TShort_HArray2OfShortReal : public  TShort_Array2OfShortReal, public Standard_Transient {
   public:
     TShort_HArray2OfShortReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -130,8 +130,9 @@ class TShort_HArray2OfShortReal : public  TShort_Array2OfShortReal, public Stand
 %make_alias(TShort_HArray2OfShortReal)
 
 
-/* harray2 class */
+/* hsequence classes */
 class TShort_HSequenceOfShortReal : public  TShort_SequenceOfShortReal, public Standard_Transient {
+  public:
     TShort_HSequenceOfShortReal();
     TShort_HSequenceOfShortReal(const  TShort_SequenceOfShortReal& theOther);
     const  TShort_SequenceOfShortReal& Sequence();

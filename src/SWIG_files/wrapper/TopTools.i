@@ -694,7 +694,7 @@ class TopTools_ShapeSet {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class TopTools_HArray1OfShape : public  TopTools_Array1OfShape, public Standard_Transient {
   public:
     TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -717,7 +717,7 @@ class TopTools_HArray1OfListOfShape : public  TopTools_Array1OfListOfShape, publ
 %make_alias(TopTools_HArray1OfListOfShape)
 
 
-/* harray2 class */
+/* harray2 classes */
 class TopTools_HArray2OfShape : public  TopTools_Array2OfShape, public Standard_Transient {
   public:
     TopTools_HArray2OfShape(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -731,8 +731,9 @@ class TopTools_HArray2OfShape : public  TopTools_Array2OfShape, public Standard_
 %make_alias(TopTools_HArray2OfShape)
 
 
-/* harray2 class */
+/* hsequence classes */
 class TopTools_HSequenceOfShape : public  TopTools_SequenceOfShape, public Standard_Transient {
+  public:
     TopTools_HSequenceOfShape();
     TopTools_HSequenceOfShape(const  TopTools_SequenceOfShape& theOther);
     const  TopTools_SequenceOfShape& Sequence();

@@ -2969,6 +2969,6 @@ class BRepFill_DraftLaw : public BRepFill_Edge3DLaw {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

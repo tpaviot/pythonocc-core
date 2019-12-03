@@ -60,6 +60,6 @@ typedef NCollection_DataMap <TCollection_AsciiString , OSD_Function , TCollectio
 typedef NCollection_DataMap <TCollection_AsciiString , OSD_Function , TCollection_AsciiString>::Iterator Plugin_DataMapIteratorOfMapOfFunctions;
 /* end typedefs declaration */
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

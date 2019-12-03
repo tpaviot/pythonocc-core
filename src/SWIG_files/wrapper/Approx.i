@@ -1581,7 +1581,7 @@ class Approx_SweepFunction : public Standard_Transient {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class Approx_HArray1OfGTrsf2d : public  Approx_Array1OfGTrsf2d, public Standard_Transient {
   public:
     Approx_HArray1OfGTrsf2d(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1604,5 +1604,5 @@ class Approx_HArray1OfAdHSurface : public  Approx_Array1OfAdHSurface, public Sta
 %make_alias(Approx_HArray1OfAdHSurface)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

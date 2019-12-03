@@ -1276,6 +1276,6 @@ class BRepPrimAPI_MakeTorus : public BRepPrimAPI_MakeOneAxis {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

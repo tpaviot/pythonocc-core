@@ -3344,6 +3344,6 @@ class V3d_SpotLight : public V3d_PositionLight {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

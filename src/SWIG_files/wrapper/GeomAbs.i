@@ -143,6 +143,6 @@ enum GeomAbs_UVSense {
 /* typedefs */
 /* end typedefs declaration */
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

@@ -678,6 +678,6 @@ class XmlMDataXtd_TriangulationDriver : public XmlMDF_ADriver {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

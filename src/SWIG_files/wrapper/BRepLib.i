@@ -2691,6 +2691,6 @@ class BRepLib_MakeWire : public BRepLib_MakeShape {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

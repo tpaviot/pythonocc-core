@@ -1160,7 +1160,7 @@ class TFunction_Scope : public TDF_Attribute {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class TFunction_HArray1OfDataMapOfGUIDDriver : public  TFunction_Array1OfDataMapOfGUIDDriver, public Standard_Transient {
   public:
     TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1172,5 +1172,5 @@ class TFunction_HArray1OfDataMapOfGUIDDriver : public  TFunction_Array1OfDataMap
 %make_alias(TFunction_HArray1OfDataMapOfGUIDDriver)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

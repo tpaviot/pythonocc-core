@@ -3295,6 +3295,6 @@ class Prs3d_IsoAspect : public Prs3d_LineAspect {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

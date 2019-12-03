@@ -1090,6 +1090,6 @@ class Aspect_GradientBackground : public Aspect_Background {
 /*******************************
 * class Aspect_RectangularGrid *
 *******************************/
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

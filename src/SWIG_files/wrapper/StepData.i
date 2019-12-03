@@ -4329,7 +4329,7 @@ class StepData_SelectArrReal : public StepData_SelectNamed {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepData_HArray1OfField : public  StepData_Array1OfField, public Standard_Transient {
   public:
     StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4341,5 +4341,5 @@ class StepData_HArray1OfField : public  StepData_Array1OfField, public Standard_
 %make_alias(StepData_HArray1OfField)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

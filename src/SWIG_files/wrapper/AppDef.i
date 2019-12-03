@@ -4458,7 +4458,7 @@ class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class AppDef_HArray1OfMultiPointConstraint : public  AppDef_Array1OfMultiPointConstraint, public Standard_Transient {
   public:
     AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4470,5 +4470,5 @@ class AppDef_HArray1OfMultiPointConstraint : public  AppDef_Array1OfMultiPointCo
 %make_alias(AppDef_HArray1OfMultiPointConstraint)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

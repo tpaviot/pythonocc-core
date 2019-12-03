@@ -2628,6 +2628,6 @@ class AdvApp2Var_SysBase {
 /************************
 * class union Multitype *
 ************************/
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

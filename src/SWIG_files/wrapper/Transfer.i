@@ -2898,10 +2898,11 @@ class Transfer_BinderOfTransientInteger : public Transfer_SimpleBinderOfTransien
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class Transfer_HSequenceOfBinder : public  Transfer_SequenceOfBinder, public Standard_Transient {
+  public:
     Transfer_HSequenceOfBinder();
     Transfer_HSequenceOfBinder(const  Transfer_SequenceOfBinder& theOther);
     const  Transfer_SequenceOfBinder& Sequence();
@@ -2913,6 +2914,7 @@ class Transfer_HSequenceOfBinder : public  Transfer_SequenceOfBinder, public Sta
 
 
 class Transfer_HSequenceOfFinder : public  Transfer_SequenceOfFinder, public Standard_Transient {
+  public:
     Transfer_HSequenceOfFinder();
     Transfer_HSequenceOfFinder(const  Transfer_SequenceOfFinder& theOther);
     const  Transfer_SequenceOfFinder& Sequence();

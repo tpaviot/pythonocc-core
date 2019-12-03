@@ -536,6 +536,6 @@ class Geom2dLProp_NumericCurInf2d {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

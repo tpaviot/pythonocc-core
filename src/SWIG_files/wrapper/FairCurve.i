@@ -852,6 +852,6 @@ class FairCurve_MinimalVariation : public FairCurve_Batten {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

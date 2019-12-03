@@ -2952,7 +2952,7 @@ class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class MeshVS_HArray1OfSequenceOfInteger : public  MeshVS_Array1OfSequenceOfInteger, public Standard_Transient {
   public:
     MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -2964,5 +2964,5 @@ class MeshVS_HArray1OfSequenceOfInteger : public  MeshVS_Array1OfSequenceOfInteg
 %make_alias(MeshVS_HArray1OfSequenceOfInteger)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

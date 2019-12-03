@@ -5758,7 +5758,7 @@ class StepShape_SeamEdge : public StepShape_OrientedEdge {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepShape_HArray1OfConnectedEdgeSet : public  StepShape_Array1OfConnectedEdgeSet, public Standard_Transient {
   public:
     StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5880,5 +5880,5 @@ class StepShape_HArray1OfOrientedEdge : public  StepShape_Array1OfOrientedEdge, 
 %make_alias(StepShape_HArray1OfOrientedEdge)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

@@ -4825,7 +4825,7 @@ class TopOpeBRepDS_FaceEdgeInterference : public TopOpeBRepDS_ShapeShapeInterfer
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference, public Standard_Transient {
   public:
     TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4837,5 +4837,5 @@ class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public  TopOpeB
 %make_alias(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

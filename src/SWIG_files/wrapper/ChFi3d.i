@@ -1353,6 +1353,6 @@ class ChFi3d_FilBuilder : public ChFi3d_Builder {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

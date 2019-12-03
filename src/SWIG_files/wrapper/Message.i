@@ -216,6 +216,6 @@ typedef NCollection_Handle <Message_ArrayOfMsg> Message_HArrayOfMsg;
 typedef NCollection_List <opencascade::handle <Message_Alert>> Message_ListOfAlert;
 /* end typedefs declaration */
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

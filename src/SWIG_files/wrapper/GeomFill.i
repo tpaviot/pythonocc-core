@@ -7730,7 +7730,7 @@ class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class GeomFill_HArray1OfLocationLaw : public  GeomFill_Array1OfLocationLaw, public Standard_Transient {
   public:
     GeomFill_HArray1OfLocationLaw(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -7753,9 +7753,10 @@ class GeomFill_HArray1OfSectionLaw : public  GeomFill_Array1OfSectionLaw, public
 %make_alias(GeomFill_HArray1OfSectionLaw)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */
 class GeomFill_HSequenceOfAx2 : public  GeomFill_SequenceOfAx2, public Standard_Transient {
+  public:
     GeomFill_HSequenceOfAx2();
     GeomFill_HSequenceOfAx2(const  GeomFill_SequenceOfAx2& theOther);
     const  GeomFill_SequenceOfAx2& Sequence();

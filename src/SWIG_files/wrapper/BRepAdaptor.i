@@ -1408,7 +1408,7 @@ class BRepAdaptor_Surface : public Adaptor3d_Surface {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class BRepAdaptor_HArray1OfCurve : public  BRepAdaptor_Array1OfCurve, public Standard_Transient {
   public:
     BRepAdaptor_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1420,5 +1420,5 @@ class BRepAdaptor_HArray1OfCurve : public  BRepAdaptor_Array1OfCurve, public Sta
 %make_alias(BRepAdaptor_HArray1OfCurve)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

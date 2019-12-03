@@ -1213,6 +1213,6 @@ class BSplSLib_Cache : public Standard_Transient {
 /***********************************
 * class BSplSLib_EvaluatorFunction *
 ***********************************/
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

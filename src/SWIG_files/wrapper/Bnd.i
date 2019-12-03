@@ -2455,7 +2455,7 @@ class Bnd_Tools {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class Bnd_HArray1OfBox : public  Bnd_Array1OfBox, public Standard_Transient {
   public:
     Bnd_HArray1OfBox(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -2489,5 +2489,5 @@ class Bnd_HArray1OfBox2d : public  Bnd_Array1OfBox2d, public Standard_Transient 
 %make_alias(Bnd_HArray1OfBox2d)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

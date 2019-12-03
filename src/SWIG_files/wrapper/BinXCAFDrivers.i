@@ -174,6 +174,6 @@ class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDr
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

@@ -108,6 +108,6 @@ typedef size_t Standard_Size;
 typedef NCollection_Utf8String NCollection_String;
 /* end typedefs declaration */
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

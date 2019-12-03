@@ -543,7 +543,7 @@ class TColStd_HPackedMapOfInteger : public Standard_Transient {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class TColStd_HArray1OfExtendedString : public  TColStd_Array1OfExtendedString, public Standard_Transient {
   public:
     TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -643,7 +643,7 @@ class TColStd_HArray1OfByte : public  TColStd_Array1OfByte, public Standard_Tran
 %make_alias(TColStd_HArray1OfByte)
 
 
-/* harray2 class */
+/* harray2 classes */
 class TColStd_HArray2OfBoolean : public  TColStd_Array2OfBoolean, public Standard_Transient {
   public:
     TColStd_HArray2OfBoolean(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -709,8 +709,9 @@ class TColStd_HArray2OfCharacter : public  TColStd_Array2OfCharacter, public Sta
 %make_alias(TColStd_HArray2OfCharacter)
 
 
-/* harray2 class */
+/* hsequence classes */
 class TColStd_HSequenceOfHAsciiString : public  TColStd_SequenceOfHAsciiString, public Standard_Transient {
+  public:
     TColStd_HSequenceOfHAsciiString();
     TColStd_HSequenceOfHAsciiString(const  TColStd_SequenceOfHAsciiString& theOther);
     const  TColStd_SequenceOfHAsciiString& Sequence();
@@ -722,6 +723,7 @@ class TColStd_HSequenceOfHAsciiString : public  TColStd_SequenceOfHAsciiString, 
 
 
 class TColStd_HSequenceOfTransient : public  TColStd_SequenceOfTransient, public Standard_Transient {
+  public:
     TColStd_HSequenceOfTransient();
     TColStd_HSequenceOfTransient(const  TColStd_SequenceOfTransient& theOther);
     const  TColStd_SequenceOfTransient& Sequence();
@@ -733,6 +735,7 @@ class TColStd_HSequenceOfTransient : public  TColStd_SequenceOfTransient, public
 
 
 class TColStd_HSequenceOfAsciiString : public  TColStd_SequenceOfAsciiString, public Standard_Transient {
+  public:
     TColStd_HSequenceOfAsciiString();
     TColStd_HSequenceOfAsciiString(const  TColStd_SequenceOfAsciiString& theOther);
     const  TColStd_SequenceOfAsciiString& Sequence();
@@ -744,6 +747,7 @@ class TColStd_HSequenceOfAsciiString : public  TColStd_SequenceOfAsciiString, pu
 
 
 class TColStd_HSequenceOfHExtendedString : public  TColStd_SequenceOfHExtendedString, public Standard_Transient {
+  public:
     TColStd_HSequenceOfHExtendedString();
     TColStd_HSequenceOfHExtendedString(const  TColStd_SequenceOfHExtendedString& theOther);
     const  TColStd_SequenceOfHExtendedString& Sequence();
@@ -755,6 +759,7 @@ class TColStd_HSequenceOfHExtendedString : public  TColStd_SequenceOfHExtendedSt
 
 
 class TColStd_HSequenceOfInteger : public  TColStd_SequenceOfInteger, public Standard_Transient {
+  public:
     TColStd_HSequenceOfInteger();
     TColStd_HSequenceOfInteger(const  TColStd_SequenceOfInteger& theOther);
     const  TColStd_SequenceOfInteger& Sequence();
@@ -766,6 +771,7 @@ class TColStd_HSequenceOfInteger : public  TColStd_SequenceOfInteger, public Sta
 
 
 class TColStd_HSequenceOfExtendedString : public  TColStd_SequenceOfExtendedString, public Standard_Transient {
+  public:
     TColStd_HSequenceOfExtendedString();
     TColStd_HSequenceOfExtendedString(const  TColStd_SequenceOfExtendedString& theOther);
     const  TColStd_SequenceOfExtendedString& Sequence();
@@ -777,6 +783,7 @@ class TColStd_HSequenceOfExtendedString : public  TColStd_SequenceOfExtendedStri
 
 
 class TColStd_HSequenceOfReal : public  TColStd_SequenceOfReal, public Standard_Transient {
+  public:
     TColStd_HSequenceOfReal();
     TColStd_HSequenceOfReal(const  TColStd_SequenceOfReal& theOther);
     const  TColStd_SequenceOfReal& Sequence();

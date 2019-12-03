@@ -11654,6 +11654,6 @@ class Graphic3d_Texture2Dplane : public Graphic3d_Texture2D {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

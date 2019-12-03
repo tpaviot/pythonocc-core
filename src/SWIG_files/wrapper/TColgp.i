@@ -489,7 +489,7 @@ typedef NCollection_Sequence <gp_XYZ> TColgp_SequenceOfXYZ;
 typedef NCollection_Array2 <gp_Dir> TColgp_Array2OfDir;
 /* end typedefs declaration */
 
-/* harray1 class */
+/* harray1 classes */
 class TColgp_HArray1OfVec : public  TColgp_Array1OfVec, public Standard_Transient {
   public:
     TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -600,7 +600,7 @@ class TColgp_HArray1OfDir2d : public  TColgp_Array1OfDir2d, public Standard_Tran
 %make_alias(TColgp_HArray1OfDir2d)
 
 
-/* harray2 class */
+/* harray2 classes */
 class TColgp_HArray2OfLin2d : public  TColgp_Array2OfLin2d, public Standard_Transient {
   public:
     TColgp_HArray2OfLin2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -731,8 +731,9 @@ class TColgp_HArray2OfXY : public  TColgp_Array2OfXY, public Standard_Transient 
 %make_alias(TColgp_HArray2OfXY)
 
 
-/* harray2 class */
+/* hsequence classes */
 class TColgp_HSequenceOfXY : public  TColgp_SequenceOfXY, public Standard_Transient {
+  public:
     TColgp_HSequenceOfXY();
     TColgp_HSequenceOfXY(const  TColgp_SequenceOfXY& theOther);
     const  TColgp_SequenceOfXY& Sequence();
@@ -744,6 +745,7 @@ class TColgp_HSequenceOfXY : public  TColgp_SequenceOfXY, public Standard_Transi
 
 
 class TColgp_HSequenceOfPnt2d : public  TColgp_SequenceOfPnt2d, public Standard_Transient {
+  public:
     TColgp_HSequenceOfPnt2d();
     TColgp_HSequenceOfPnt2d(const  TColgp_SequenceOfPnt2d& theOther);
     const  TColgp_SequenceOfPnt2d& Sequence();
@@ -755,6 +757,7 @@ class TColgp_HSequenceOfPnt2d : public  TColgp_SequenceOfPnt2d, public Standard_
 
 
 class TColgp_HSequenceOfPnt : public  TColgp_SequenceOfPnt, public Standard_Transient {
+  public:
     TColgp_HSequenceOfPnt();
     TColgp_HSequenceOfPnt(const  TColgp_SequenceOfPnt& theOther);
     const  TColgp_SequenceOfPnt& Sequence();
@@ -766,6 +769,7 @@ class TColgp_HSequenceOfPnt : public  TColgp_SequenceOfPnt, public Standard_Tran
 
 
 class TColgp_HSequenceOfXYZ : public  TColgp_SequenceOfXYZ, public Standard_Transient {
+  public:
     TColgp_HSequenceOfXYZ();
     TColgp_HSequenceOfXYZ(const  TColgp_SequenceOfXYZ& theOther);
     const  TColgp_SequenceOfXYZ& Sequence();
@@ -777,6 +781,7 @@ class TColgp_HSequenceOfXYZ : public  TColgp_SequenceOfXYZ, public Standard_Tran
 
 
 class TColgp_HSequenceOfVec2d : public  TColgp_SequenceOfVec2d, public Standard_Transient {
+  public:
     TColgp_HSequenceOfVec2d();
     TColgp_HSequenceOfVec2d(const  TColgp_SequenceOfVec2d& theOther);
     const  TColgp_SequenceOfVec2d& Sequence();
@@ -788,6 +793,7 @@ class TColgp_HSequenceOfVec2d : public  TColgp_SequenceOfVec2d, public Standard_
 
 
 class TColgp_HSequenceOfDir2d : public  TColgp_SequenceOfDir2d, public Standard_Transient {
+  public:
     TColgp_HSequenceOfDir2d();
     TColgp_HSequenceOfDir2d(const  TColgp_SequenceOfDir2d& theOther);
     const  TColgp_SequenceOfDir2d& Sequence();
@@ -799,6 +805,7 @@ class TColgp_HSequenceOfDir2d : public  TColgp_SequenceOfDir2d, public Standard_
 
 
 class TColgp_HSequenceOfVec : public  TColgp_SequenceOfVec, public Standard_Transient {
+  public:
     TColgp_HSequenceOfVec();
     TColgp_HSequenceOfVec(const  TColgp_SequenceOfVec& theOther);
     const  TColgp_SequenceOfVec& Sequence();
@@ -810,6 +817,7 @@ class TColgp_HSequenceOfVec : public  TColgp_SequenceOfVec, public Standard_Tran
 
 
 class TColgp_HSequenceOfDir : public  TColgp_SequenceOfDir, public Standard_Transient {
+  public:
     TColgp_HSequenceOfDir();
     TColgp_HSequenceOfDir(const  TColgp_SequenceOfDir& theOther);
     const  TColgp_SequenceOfDir& Sequence();

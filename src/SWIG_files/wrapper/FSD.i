@@ -59,6 +59,6 @@ typedef std::fstream FSD_FStream;
 typedef FILE * FSD_BStream;
 /* end typedefs declaration */
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

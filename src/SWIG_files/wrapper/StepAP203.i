@@ -1502,7 +1502,7 @@ class StepAP203_WorkItem : public StepData_SelectType {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepAP203_HArray1OfSpecifiedItem : public  StepAP203_Array1OfSpecifiedItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfSpecifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1613,5 +1613,5 @@ class StepAP203_HArray1OfClassifiedItem : public  StepAP203_Array1OfClassifiedIt
 %make_alias(StepAP203_HArray1OfClassifiedItem)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

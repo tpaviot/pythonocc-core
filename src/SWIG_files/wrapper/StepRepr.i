@@ -3926,7 +3926,7 @@ class StepRepr_ShapeRepresentationRelationshipWithTransformation : public StepRe
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class StepRepr_HArray1OfMaterialPropertyRepresentation : public  StepRepr_Array1OfMaterialPropertyRepresentation, public Standard_Transient {
   public:
     StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3971,9 +3971,10 @@ class StepRepr_HArray1OfShapeAspect : public  StepRepr_Array1OfShapeAspect, publ
 %make_alias(StepRepr_HArray1OfShapeAspect)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */
 class StepRepr_HSequenceOfRepresentationItem : public  StepRepr_SequenceOfRepresentationItem, public Standard_Transient {
+  public:
     StepRepr_HSequenceOfRepresentationItem();
     StepRepr_HSequenceOfRepresentationItem(const  StepRepr_SequenceOfRepresentationItem& theOther);
     const  StepRepr_SequenceOfRepresentationItem& Sequence();
@@ -3985,6 +3986,7 @@ class StepRepr_HSequenceOfRepresentationItem : public  StepRepr_SequenceOfRepres
 
 
 class StepRepr_HSequenceOfMaterialPropertyRepresentation : public  StepRepr_SequenceOfMaterialPropertyRepresentation, public Standard_Transient {
+  public:
     StepRepr_HSequenceOfMaterialPropertyRepresentation();
     StepRepr_HSequenceOfMaterialPropertyRepresentation(const  StepRepr_SequenceOfMaterialPropertyRepresentation& theOther);
     const  StepRepr_SequenceOfMaterialPropertyRepresentation& Sequence();

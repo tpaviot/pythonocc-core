@@ -764,6 +764,6 @@ class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

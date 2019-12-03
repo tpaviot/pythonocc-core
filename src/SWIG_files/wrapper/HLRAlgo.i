@@ -1991,7 +1991,7 @@ class HLRAlgo_WiresBlock : public Standard_Transient {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class HLRAlgo_HArray1OfPINod : public  HLRAlgo_Array1OfPINod, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -2036,5 +2036,5 @@ class HLRAlgo_HArray1OfPISeg : public  HLRAlgo_Array1OfPISeg, public Standard_Tr
 %make_alias(HLRAlgo_HArray1OfPISeg)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

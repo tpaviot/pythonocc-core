@@ -3450,7 +3450,7 @@ class TopOpeBRep_WPointInterIterator {
 /*****************************
 * class TopOpeBRep_traceSIFF *
 *****************************/
-/* harray1 class */
+/* harray1 classes */
 class TopOpeBRep_HArray1OfVPointInter : public  TopOpeBRep_Array1OfVPointInter, public Standard_Transient {
   public:
     TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3473,5 +3473,5 @@ class TopOpeBRep_HArray1OfLineInter : public  TopOpeBRep_Array1OfLineInter, publ
 %make_alias(TopOpeBRep_HArray1OfLineInter)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

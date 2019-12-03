@@ -4175,6 +4175,6 @@ class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

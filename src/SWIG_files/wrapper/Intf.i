@@ -1004,6 +1004,6 @@ class Intf_InterferencePolygon2d : public Intf_Interference {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

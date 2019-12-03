@@ -946,7 +946,7 @@ class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class AppParCurves_HArray1OfMultiCurve : public  AppParCurves_Array1OfMultiCurve, public Standard_Transient {
   public:
     AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -991,5 +991,5 @@ class AppParCurves_HArray1OfMultiBSpCurve : public  AppParCurves_Array1OfMultiBS
 %make_alias(AppParCurves_HArray1OfMultiBSpCurve)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

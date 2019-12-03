@@ -822,6 +822,6 @@ class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

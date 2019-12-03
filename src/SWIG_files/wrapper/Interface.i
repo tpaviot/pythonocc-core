@@ -6374,7 +6374,7 @@ class Interface_Static : public Interface_TypedValue {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class Interface_HArray1OfHAsciiString : public  Interface_Array1OfHAsciiString, public Standard_Transient {
   public:
     Interface_HArray1OfHAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -6386,9 +6386,10 @@ class Interface_HArray1OfHAsciiString : public  Interface_Array1OfHAsciiString, 
 %make_alias(Interface_HArray1OfHAsciiString)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */
 class Interface_HSequenceOfCheck : public  Interface_SequenceOfCheck, public Standard_Transient {
+  public:
     Interface_HSequenceOfCheck();
     Interface_HSequenceOfCheck(const  Interface_SequenceOfCheck& theOther);
     const  Interface_SequenceOfCheck& Sequence();

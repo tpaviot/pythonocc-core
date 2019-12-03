@@ -982,7 +982,7 @@ class Plate_SampledCurveConstraint {
 	}
 };
 
-/* harray1 class */
+/* harray1 classes */
 class Plate_HArray1OfPinpointConstraint : public  Plate_Array1OfPinpointConstraint, public Standard_Transient {
   public:
     Plate_HArray1OfPinpointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -994,5 +994,5 @@ class Plate_HArray1OfPinpointConstraint : public  Plate_Array1OfPinpointConstrai
 %make_alias(Plate_HArray1OfPinpointConstraint)
 
 
-/* harray2 class */
-/* harray2 class */
+/* harray2 classes */
+/* hsequence classes */

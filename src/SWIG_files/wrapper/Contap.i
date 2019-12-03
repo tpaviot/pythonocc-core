@@ -2193,10 +2193,11 @@ class Contap_TheSegmentOfTheSearch {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class Contap_TheHSequenceOfPoint : public  Contap_TheSequenceOfPoint, public Standard_Transient {
+  public:
     Contap_TheHSequenceOfPoint();
     Contap_TheHSequenceOfPoint(const  Contap_TheSequenceOfPoint& theOther);
     const  Contap_TheSequenceOfPoint& Sequence();

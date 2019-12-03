@@ -998,6 +998,6 @@ class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

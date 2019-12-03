@@ -1838,6 +1838,6 @@ class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

@@ -845,8 +845,8 @@ class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
 class FEmTool_HAssemblyTable : public  FEmTool_AssemblyTable, public Standard_Transient {
   public:
     FEmTool_HAssemblyTable(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -860,4 +860,4 @@ class FEmTool_HAssemblyTable : public  FEmTool_AssemblyTable, public Standard_Tr
 %make_alias(FEmTool_HAssemblyTable)
 
 
-/* harray2 class */
+/* hsequence classes */

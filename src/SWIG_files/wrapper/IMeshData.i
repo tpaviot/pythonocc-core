@@ -765,6 +765,6 @@ class IMeshData_Wire : public IMeshData_TessellatedShape, public IMeshData_Statu
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

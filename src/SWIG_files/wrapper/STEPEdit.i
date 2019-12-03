@@ -256,6 +256,6 @@ class STEPEdit_EditSDR : public IFSelect_Editor {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

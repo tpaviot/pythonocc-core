@@ -502,6 +502,6 @@ class IntAna2d_IntPoint {
 /********************************
 * class MyDirectPolynomialRoots *
 ********************************/
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

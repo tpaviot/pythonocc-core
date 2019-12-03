@@ -3286,6 +3286,6 @@ class BSplCLib_CacheParams {
 /***********************************
 * class BSplCLib_EvaluatorFunction *
 ***********************************/
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

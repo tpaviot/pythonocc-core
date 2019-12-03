@@ -60,6 +60,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_netgenplugin.html
 /* typedefs */
 /* end typedefs declaration */
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

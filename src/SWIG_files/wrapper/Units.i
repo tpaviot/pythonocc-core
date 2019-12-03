@@ -1520,10 +1520,11 @@ class Units_UnitsLexicon : public Units_Lexicon {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
 class Units_TokensSequence : public  Units_TksSequence, public Standard_Transient {
+  public:
     Units_TokensSequence();
     Units_TokensSequence(const  Units_TksSequence& theOther);
     const  Units_TksSequence& Sequence();
@@ -1535,6 +1536,7 @@ class Units_TokensSequence : public  Units_TksSequence, public Standard_Transien
 
 
 class Units_QuantitiesSequence : public  Units_QtsSequence, public Standard_Transient {
+  public:
     Units_QuantitiesSequence();
     Units_QuantitiesSequence(const  Units_QtsSequence& theOther);
     const  Units_QtsSequence& Sequence();
@@ -1546,6 +1548,7 @@ class Units_QuantitiesSequence : public  Units_QtsSequence, public Standard_Tran
 
 
 class Units_UnitsSequence : public  Units_UtsSequence, public Standard_Transient {
+  public:
     Units_UnitsSequence();
     Units_UnitsSequence(const  Units_UtsSequence& theOther);
     const  Units_UtsSequence& Sequence();

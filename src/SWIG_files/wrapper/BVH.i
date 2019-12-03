@@ -93,6 +93,6 @@ typedef BVH::MatrixType <Standard_Real , 4>::Type BVH_Mat4d;
 typedef typename BVH_QueueBuilder <T , N>::BVH_PrimitiveRange Range;
 /* end typedefs declaration */
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

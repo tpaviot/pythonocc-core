@@ -3037,6 +3037,6 @@ class TopOpeBRepTool_makeTransition {
 /********************************
 * class TopOpeBRepTool_mkTondgE *
 ********************************/
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

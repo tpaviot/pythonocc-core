@@ -1748,6 +1748,6 @@ class gce_MakePln : public gce_Root {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

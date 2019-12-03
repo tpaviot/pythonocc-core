@@ -1654,6 +1654,6 @@ class Law_S : public Law_BSpFunc {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

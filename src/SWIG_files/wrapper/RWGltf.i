@@ -330,6 +330,6 @@ class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 /***********************************
 * class RWGltf_TriangulationReader *
 ***********************************/
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */

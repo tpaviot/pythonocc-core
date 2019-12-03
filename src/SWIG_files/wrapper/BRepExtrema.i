@@ -1462,6 +1462,6 @@ class BRepExtrema_SelfIntersection : public BRepExtrema_ElementFilter {
 	}
 };
 
-/* harray1 class */
-/* harray2 class */
-/* harray2 class */
+/* harray1 classes */
+/* harray2 classes */
+/* hsequence classes */
