@@ -28,7 +28,7 @@ requirements:
 
   run:
     - opencascade ==7.4.0
-    - python {{ python }}
+    - python
 
 test:
   imports:

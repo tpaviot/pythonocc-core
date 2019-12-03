@@ -1,0 +1,56 @@
+parameters:
+  name: 'Conda build job'
+  vmImage: 'Ubuntu-18.04'
+  py_maj: '3'
+  py_min: '6'
+  conda_bld: '3.16.3'
+
+jobs:
+- job: ${{ parameters.name }}
+  timeoutInMinutes: 360
+  
+  pool:
+    vmImage: ${{ parameters.vmImage }}
+    
+  steps: 
+  
+  #activate conda
+  - ${{ if or(contains(parameters.vmImage, 'macOS'),contains(parameters.vmImage, 'Ubuntu')) }}:
+    - bash: echo "##vso[task.prependpath]$CONDA/bin"
+      displayName: 'Add conda to PATH'
+  - ${{ if contains(parameters.vmImage, 'win') }}:
+    - powershell: Write-Host "##vso[task.prependpath]$env:CONDA\Scripts"
+      displayName: 'Add conda to PATH'
+
+  # Ubuntu install opengl items
+  - ${{ if contains(parameters.vmImage, 'Ubuntu') }}:
+    - bash: |
+        sudo apt-get -q -y install libglu1-mesa-dev freeglut3-dev mesa-common-dev
+      displayName: 'Install OpenGL headers'
+  
+  # macOS ownership workaround
+  - ${{ if contains(parameters.vmImage, 'macOS') }}:
+    - bash: sudo chown -R $USER $CONDA
+      displayName: 'MacOS ownership workaround'    	
+      
+  - bash: |
+        export PYTHONBUFFERED=1 && \
+        conda config --set always_yes yes --set changeps1 no && \
+        conda update -q conda && \
+        conda info -a && \
+        conda config --add channels https://conda.anaconda.org/dlr-sc && \
+        conda config --add channels https://conda.anaconda.org/conda-forge
+    displayName: 'Conda config and info'
+      
+  - bash: conda create --yes --quiet --name build_env conda-build=${{ parameters.conda_bld }} conda-verify libarchive python=${{ parameters.py_maj }}.${{ parameters.py_min }} anaconda-client
+    displayName: Create Anaconda environment
+    
+  - bash: |
+      source activate build_env && \
+      conda build --no-remove-work-dir --dirty ci/conda
+    displayName: 'Run conda build'
+    failOnStderr: false
+    env:
+      PYTHON_VERSION: ${{ parameters.py_maj }}.${{ parameters.py_min }}
+      PACKAGE_VERSION: $(Build.SourceBranchName)
+      TOKEN: $(anaconda.TOKEN)
