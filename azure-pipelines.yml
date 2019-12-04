@@ -1,0 +1,62 @@
+trigger:
+- master
+- review/*
+
+jobs:
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_16_04_python37
+    vmImage: 'ubuntu-16.04'
+    py_maj: 3
+    py_min: 7
+
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_18_04_python36
+    vmImage: 'ubuntu-18.04'
+    py_maj: 3
+    py_min: 6
+
+- template:  conda-build.yml
+  parameters:
+    name: macOS_10_13_python36
+    vmImage: 'macOS-10.13'
+    py_maj: 3
+    py_min: 6
+
+- template:  conda-build.yml
+  parameters:
+    name: Windows_VS2017_python36
+    vmImage: 'vs2017-win2016'
+    py_maj: 3
+    py_min: 6
+    conda_bld: 3.17
+
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_18_04_python37
+    vmImage: 'ubuntu-18.04'
+    py_maj: 3
+    py_min: 7
+
+- template:  conda-build.yml
+  parameters:
+    name: macOS_10_13_python37
+    vmImage: 'macOS-10.13'
+    py_maj: 3
+    py_min: 7
+
+- template:  conda-build.yml
+  parameters:
+    name: macOS_10_14_python37
+    vmImage: 'macOS-10.14'
+    py_maj: 3
+    py_min: 7
+
+- template:  conda-build.yml
+  parameters:
+    name: Windows_VS2017_python37
+    vmImage: 'vs2017-win2016'
+    py_maj: 3
+    py_min: 7
+    conda_bld: 3.17
