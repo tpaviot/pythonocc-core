@@ -23,8 +23,6 @@ from OCC.Core.StlAPI import stlapi_Read, StlAPI_Writer
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.TopoDS import TopoDS_Compound
 from OCC.Core.IGESControl import IGESControl_Reader, IGESControl_Writer
-# TODO : ugly, the following line must be imported for STEPControl to be imported
-from OCC.Core.StepShape import StepShape_Shell
 from OCC.Core.STEPControl import STEPControl_Reader, STEPControl_Writer, STEPControl_AsIs
 from OCC.Core.Interface import Interface_Static_SetCVal
 from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
@@ -40,7 +38,6 @@ from OCC.Core.TopLoc import TopLoc_Location
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
 
 from OCC.Extend.TopologyUtils import TopologyExplorer
-
 
 ##########################
 # Step import and export #
@@ -241,24 +238,24 @@ def read_step_file_with_names_colors(filename):
             if (color_tool.GetInstanceColor(shape, 0, c) or
                     color_tool.GetInstanceColor(shape, 1, c) or
                     color_tool.GetInstanceColor(shape, 2, c)):
-                for i in (0, 1, 2):
-                    color_tool.SetInstanceColor(shape, i, c)
+                color_tool.SetInstanceColor(shape, 0, c)
+                color_tool.SetInstanceColor(shape, 1, c)
+                color_tool.SetInstanceColor(shape, 2, c)
                 colorSet = True
                 n = c.Name(c.Red(), c.Green(), c.Blue())
-                #print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
+                print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
             if not colorSet:
                 if (color_tool.GetColor(lab, 0, c) or
                         color_tool.GetColor(lab, 1, c) or
                         color_tool.GetColor(lab, 2, c)):
-                    for i in (0, 1, 2):
-                        color_tool.SetInstanceColor(shape, i, c)
+                    
+                    color_tool.SetInstanceColor(shape, 0, c)
+                    color_tool.SetInstanceColor(shape, 1, c)
+                    color_tool.SetInstanceColor(shape, 2, c)
 
                     n = c.Name(c.Red(), c.Green(), c.Blue())
                     print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
-
-                #n = c.Name(c.Red(), c.Green(), c.Blue())
-                #print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
             shape_disp = BRepBuilderAPI_Transform(shape, loc.Transformation()).Shape()
             if not shape_disp in output_shapes:
@@ -273,8 +270,9 @@ def read_step_file_with_names_colors(filename):
                 if (color_tool.GetInstanceColor(shape_sub, 0, c) or
                         color_tool.GetInstanceColor(shape_sub, 1, c) or
                         color_tool.GetInstanceColor(shape_sub, 2, c)):
-                    for i in (0, 1, 2):
-                        color_tool.SetInstanceColor(shape_sub, i, c)
+                    color_tool.SetInstanceColor(shape_sub, 0, c)
+                    color_tool.SetInstanceColor(shape_sub, 1, c)
+                    color_tool.SetInstanceColor(shape_sub, 2, c)
                     colorSet = True
                     n = c.Name(c.Red(), c.Green(), c.Blue())
                     #print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
@@ -283,8 +281,9 @@ def read_step_file_with_names_colors(filename):
                     if (color_tool.GetColor(lab_subs, 0, c) or
                             color_tool.GetColor(lab_subs, 1, c) or
                             color_tool.GetColor(lab_subs, 2, c)):
-                        for i in (0, 1, 2):
-                            color_tool.SetInstanceColor(shape, i, c)
+                        color_tool.SetInstanceColor(shape, 0, c)
+                        color_tool.SetInstanceColor(shape, 1, c)
+                        color_tool.SetInstanceColor(shape, 2, c)
 
                         n = c.Name(c.Red(), c.Green(), c.Blue())
                         #print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
@@ -459,4 +458,3 @@ if __name__ == "__main__":
     read_iges_file("s_iges.igs", return_as_shapes=True)
     # test step with colors
     read_step_file_with_names_colors("s_214.stp")
-
