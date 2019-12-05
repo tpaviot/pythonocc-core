@@ -630,7 +630,7 @@ class Viewer3d(Display3d):
             callback(self.selected_shapes, X, Y)
 
     def ShiftSelect(self, X, Y):
-        self.Context.ShiftSelect()
+        self.Context.ShiftSelect(True)
         self.Context.InitSelected()
 
         self.selected_shapes = []
@@ -639,7 +639,7 @@ class Viewer3d(Display3d):
                 self.selected_shapes.append(self.Context.SelectedShape())
             self.Context.NextSelected()
         # hilight newly selected unhighlight those no longer selected
-        self.Context.UpdateSelected()
+        self.Context.UpdateSelected(True)
         # callbacks
         for callback in self._select_callbacks:
             callback(self.selected_shapes, X, Y)
