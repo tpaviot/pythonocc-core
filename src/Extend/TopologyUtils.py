@@ -17,27 +17,23 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
-
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Core.BRep import BRep_Tool
 from OCC.Core.BRepTools import BRepTools_WireExplorer
 from OCC.Core.TopAbs import (TopAbs_VERTEX, TopAbs_EDGE, TopAbs_FACE, TopAbs_WIRE,
-                        TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
-                        TopAbs_COMPSOLID)
+                             TopAbs_SHELL, TopAbs_SOLID, TopAbs_COMPOUND,
+                             TopAbs_COMPSOLID)
 from OCC.Core.TopExp import TopExp_Explorer, topexp_MapShapesAndAncestors
-from OCC.Core.TopTools import (TopTools_ListOfShape,
-                          TopTools_ListIteratorOfListOfShape,
-                          TopTools_IndexedDataMapOfShapeListOfShape)
+from OCC.Core.TopTools import (TopTools_ListIteratorOfListOfShape,
+                               TopTools_IndexedDataMapOfShapeListOfShape)
 from OCC.Core.TopoDS import (topods, TopoDS_Wire, TopoDS_Vertex, TopoDS_Edge,
-                        TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
-                        TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
-                        topods_Vertex, TopoDS_Iterator)
+                             TopoDS_Face, TopoDS_Shell, TopoDS_Solid,
+                             TopoDS_Compound, TopoDS_CompSolid, topods_Edge,
+                             topods_Vertex, TopoDS_Iterator)
 from OCC.Core.GCPnts import GCPnts_UniformAbscissa
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 
 
-class WireExplorer(object):
+class WireExplorer:
     '''
     Wire traversal
     '''
@@ -56,7 +52,6 @@ class WireExplorer(object):
             self._reinitialize()
         topologyType = topods_Edge if edges else topods_Vertex
         seq = []
-        hashes = []  # list that stores hashes to avoid redundancy
         occ_seq = []
         while self.wire_explorer.More():
             # loop edges
@@ -65,19 +60,13 @@ class WireExplorer(object):
             # loop vertices
             else:
                 current_item = self.wire_explorer.CurrentVertex()
-            #current_item_hash = current_item.__hash__()
-            #if not current_item_hash in hashes:
-            #    hashes.append(current_item_hash)
-            #    occ_seq.Append(current_item)
             occ_seq.append(current_item)
             self.wire_explorer.Next()
 
         # Convert occ_seq to python list
-        #occ_iterator = TopTools_ListIteratorOfListOfShape(occ_seq)
-        for elem in occ_seq:#while occ_iterator.More():
-            topo_to_add = topologyType(elem)#occ_iterator.Value())
+        for elem in occ_seq:
+            topo_to_add = topologyType(elem)
             seq.append(topo_to_add)
-            #occ_iterator.Next()
         self.done = True
         return iter(seq)
 
@@ -88,7 +77,7 @@ class WireExplorer(object):
         return self._loop_topo(edges=False)
 
 
-class TopologyExplorer(object):
+class TopologyExplorer:
     '''
     Topology traversal
     '''
@@ -167,24 +156,11 @@ class TopologyExplorer(object):
                              topologyType,
                              topologyTypeToAvoid)
         seq = []
-        #hashes = []  # list that stores hashes to avoid redundancy
-        #occ_seq = [] #TopTools_ListOfShape()
         while self.topExp.More():
             current_item = self.topExp.Current()
-            #current_item_hash = current_item.__hash__()
             topo_to_add = self.topoFactory[topologyType](current_item)
             seq.append(topo_to_add)
-            #if not current_item_hash in hashes:
-            #hashes.append(current_item_hash)
-            #occ_seq.append(current_item)
-
             self.topExp.Next()
-        # Convert occ_seq to python list
-        #occ_iterator = TopTools_ListIteratorOfListOfShape(occ_seq)
-        #for elem in occ_seq:#while occ_iterator.More():
-        #    topo_to_add = self.topoFactory[topologyType](elem)
-        #    seq.append(topo_to_add)
-        #    #occ_iterator.Next()
 
         if self.ignore_orientation:
             # filter out those entities that share the same TShape
@@ -491,15 +467,15 @@ def dump_topology_to_string(shape, level=0, buffer=""):
     s = shape.ShapeType()
     if s == TopAbs_VERTEX:
         pnt = brt.Pnt(topods_Vertex(shape))
-        print( ".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
+        print(".." * level  + "<Vertex %i: %s %s %s>\n" % (hash(shape), pnt.X(), pnt.Y(), pnt.Z()))
     else:
-        print(".." * level, end ="")
-        print(shape_type_string(shape))
+        print(".." * level, end="")
+        print(shape)
     it = TopoDS_Iterator(shape)
     while it.More() and level < 5:  # LEVEL MAX
         shp = it.Value()
         it.Next()
-        print(dump_topology_to_string(shp, level + 1, buffer))
+        dump_topology_to_string(shp, level + 1, buffer)
 
 #
 # Edge and wire discretizers
