@@ -32,6 +32,14 @@ jobs:
     py_min: 6
     conda_bld: 3.17
 
+- template:  conda-build.yml
+  parameters:
+    name: Windows_VS2017_python36_32
+    vmImage: 'vs2017-win2016'
+    py_maj: 3
+    py_min: 6
+    conda_bld: 3.17
+
 - template: conda-build.yml
   parameters:
     name: Ubuntu_18_04_python37
@@ -56,6 +64,14 @@ jobs:
 - template:  conda-build.yml
   parameters:
     name: Windows_VS2017_python37
+    vmImage: 'vs2017-win2016'
+    py_maj: 3
+    py_min: 7
+    conda_bld: 3.17
+
+- template:  conda-build.yml
+  parameters:
+    name: Windows_VS2017_python37_32
     vmImage: 'vs2017-win2016'
     py_maj: 3
     py_min: 7

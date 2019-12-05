@@ -27,21 +27,31 @@ jobs:
     - bash: |
         sudo apt-get -q -y install libglu1-mesa-dev freeglut3-dev mesa-common-dev
       displayName: 'Install OpenGL headers'
-  
-  # macOS ownership workaround
+
+  # macOS ownership workaround and fix osx sdk
   - ${{ if contains(parameters.vmImage, 'macOS') }}:
-    - bash: sudo chown -R $USER $CONDA
-      displayName: 'MacOS ownership workaround'    	
-      
+    - bash: |
+        sudo chown -R $USER $CONDA && \
+        curl -o MacOSX10.9.sdk.tar.xz -L https://github.com/phracker/MacOSX-SDKs/releases/download/10.13/MacOSX10.9.sdk.tar.xz && \
+        tar xf MacOSX10.9.sdk.tar.xz && \
+        sudo mv -v MacOSX10.9.sdk /opt/ && \
+        ls /opt
+      displayName: 'MacOS ownership workaround and installation of MacOSX10.9 sdk'
+ 
   - bash: |
-        export PYTHONBUFFERED=1 && \
         conda config --set always_yes yes --set changeps1 no && \
         conda update -q conda && \
         conda info -a && \
-        conda config --add channels https://conda.anaconda.org/dlr-sc && \
-        conda config --add channels https://conda.anaconda.org/conda-forge
+        conda config --add channels https://conda.anaconda.org/dlr-sc
     displayName: 'Conda config and info'
-      
+
+  # on windows, set arch if ever 32 is in the build name
+  - ${{ if contains(parameters.name, '32') }}:
+    - bash: |
+        set CONDA_SUBDIR=win-32 && \
+        conda config --env --set subdir win-32
+      displayName: 'Windows force 32 bit build'
+
   - bash: conda create --yes --quiet --name build_env conda-build=${{ parameters.conda_bld }} conda-verify libarchive python=${{ parameters.py_maj }}.${{ parameters.py_min }} anaconda-client
     displayName: Create Anaconda environment
     
@@ -51,6 +61,7 @@ jobs:
     displayName: 'Run conda build'
     failOnStderr: false
     env:
+      PYTHONBUFFERED: 1
       PYTHON_VERSION: ${{ parameters.py_maj }}.${{ parameters.py_min }}
       PACKAGE_VERSION: $(Build.SourceBranchName)
       TOKEN: $(anaconda.TOKEN)
