@@ -54,7 +54,6 @@ try:
     from OCC.Core.SMESH import SMESH_Mesh
     HAVE_SMESH = True
 except ImportError:
-    print("SMESH wrapper not found, can't display SMESH meshes")
     HAVE_SMESH = False
 
 # default values
