@@ -15,19 +15,16 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function, absolute_import
-
 import enum
 from functools import reduce
 import itertools
 import math
-import operator
 import uuid
 import sys
 
 # pythreejs
 try:
-    from pythreejs import (CombinedCamera, BufferAttribute, BufferGeometry, Plane, Mesh,
+    from pythreejs import (CombinedCamera, BufferAttribute, BufferGeometry, Mesh,
                            LineSegmentsGeometry, LineMaterial, LineSegments2, AmbientLight,
                            DirectionalLight, Scene, OrbitControls, Renderer, PerspectiveCamera,
                            Picker, Group, GridHelper, LineSegments,
