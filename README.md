@@ -15,7 +15,7 @@ pythonocc is a python package whose purpose is to provide 3D modeling
 features. It is intended to developers who aim at developing
 CAD/PDM/PLM applications.
 
-Latest release : [pythonocc-core 7.4.0beta (december 2019)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.4.0beta)
+Latest release : [pythonocc-core 7.4.0beta2 (december 2019)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.4.0beta2)
 
 
 Build from source
@@ -32,37 +32,30 @@ pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/p
 # first create an environment
 conda create --name=whatever-name python=3.7
 source activate whatever-name
-conda install -c dlr-sc pythonocc-core=7.4.0beta
+conda install -c dlr-sc -c pythonocc pythonocc-core=7.4.0beta2
 ```
 
-Just replace "3.7" with the python version you target.
+Conda packages are provided for python 3.6 and 3.7.
 
 Other pythonocc related resources
 ---------------------------------
 
-* Demos : python examples, as well as jupyter notebooks https://github.com/tpaviot/pythonocc-demos
+* Demos: python examples, as well as jupyter notebooks https://github.com/tpaviot/pythonocc-demos
 
-* Docker, binderhub : docker and online jupyter notebooks https://github.com/tpaviot/pythonocc-binderhub
+* Docker, binderhub: docker and online jupyter notebooks https://github.com/tpaviot/pythonocc-binderhub
+
+* Documentation: https://github.com/tpaviot/pythonocc-documentation
 
 Online resources for development
 --------------------------------
 
 We use the following online resources:
+
 * Homepage: http://www.pythonocc.org
-
-* Anaconda cloud repository for official releases: https://anaconda.org/pythonocc
-
-* Anaconda cloud repository for nightly builds: https://anaconda.org/tpaviot/pythonocc-core
-
-* API documentation: https://cdn.rawgit.com/tpaviot/pythonocc-core/e05ec51b/doc/apidoc/0.18.1/
 
 * Mailing list: http://groups.google.com/group/pythonocc
 
 * Twitter : https://twitter.com/pythonocc
-
-* Appveyor Continuous Integration Service: https://ci.appveyor.com/project/tpaviot/pythonocc-core
-
-* Travis Continuous Integration Service: https://travis-ci.org/tpaviot/pythonocc-core
 
 * LGTM code quality review: https://lgtm.com/projects/g/tpaviot/honocc-core/
 

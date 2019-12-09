@@ -1,4 +1,19 @@
 ==========================
+Version 7.4.0beta2 - December 2019
+
+This release require opencascade 7.4.0
+
+* wrapper: add mssigin class Shape_Upgrade_UnifySameDomain
+
+* wrapper: fixed docstring to hide deprecated handle stuff
+
+* wrapper: fixed wrong HSEQUENCE wrapper
+
+* ci/cd: moved from Travis/Appveyor to MS Azure
+
+* code clean-up
+
+==========================
 Version 7.4.0beta - December 2019
 
 This release require opencascade 7.4.0
