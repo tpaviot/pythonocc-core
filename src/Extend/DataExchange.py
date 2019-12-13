@@ -275,7 +275,7 @@ def read_step_file_with_names_colors(filename):
                     color_tool.SetInstanceColor(shape_sub, 2, c)
                     colorSet = True
                     n = c.Name(c.Red(), c.Green(), c.Blue())
-                    #print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
+                    print('    instance color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
 
                 if not colorSet:
                     if (color_tool.GetColor(lab_subs, 0, c) or
@@ -286,7 +286,7 @@ def read_step_file_with_names_colors(filename):
                         color_tool.SetInstanceColor(shape, 2, c)
 
                         n = c.Name(c.Red(), c.Green(), c.Blue())
-                        #print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
+                        print('    shape color Name & RGB: ', c, n, c.Red(), c.Green(), c.Blue())
                 shape_to_disp = BRepBuilderAPI_Transform(shape_sub, loc.Transformation()).Shape()
                 # position the subshape to display
                 if not shape_to_disp in output_shapes:
