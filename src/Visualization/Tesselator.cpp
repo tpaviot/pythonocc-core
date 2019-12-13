@@ -66,7 +66,11 @@ Tesselator::Tesselator(TopoDS_Shape   aShape,
   myAutoScaleSizeOnV(anAutoScaleSizeOnV),
   myTxtMapType(aTxtMapType),
   myShape(aShape),
-  myRotationAngle(aRotationAngle)
+  myRotationAngle(aRotationAngle),
+  locVertexcoord(NULL),
+  locNormalcoord(NULL),
+  locTexcoord(NULL),
+  loc_tri_indexes(NULL),
 {
   //prepare bbox tex coords
   if (myTxtMapType == atCube) {
@@ -74,11 +78,7 @@ Tesselator::Tesselator(TopoDS_Shape   aShape,
     //prepare bbox tex coords
     PrepareBoxTextureCoordinates(myShape);
   }
-    locVertexcoord = NULL;
-    locNormalcoord = NULL;
-    locTexcoord    = NULL;
-    loc_tri_indexes = NULL;
-    ComputeDefaultDeviation();
+  ComputeDefaultDeviation();
 }
 
 Tesselator::Tesselator(TopoDS_Shape   aShape) :
@@ -94,13 +94,13 @@ Tesselator::Tesselator(TopoDS_Shape   aShape) :
   myAutoScaleSizeOnV(1.),
   myTxtMapType(atNormal),
   myShape(aShape),
-  myRotationAngle(0.)
+  myRotationAngle(0.),
+  locVertexcoord(NULL),
+  locNormalcoord(NULL),
+  locTexcoord(NULL),
+  loc_tri_indexes(NULL)
 {
-    locVertexcoord = NULL;
-    locNormalcoord = NULL;
-    locTexcoord    = NULL;
-    loc_tri_indexes = NULL;
-    ComputeDefaultDeviation();
+  ComputeDefaultDeviation();
 }
 
 void Tesselator::Compute(bool uv_coords, bool compute_edges, float mesh_quality, bool parallel)

@@ -21,7 +21,7 @@
 
 
 Display3d::Display3d()
-  : myIsOffscreen(false)
+  : myIsOffscreen(false), mySizeX(0), mySizeY(0)
 {
 }
 
