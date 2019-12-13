@@ -71,6 +71,7 @@ Tesselator::Tesselator(TopoDS_Shape   aShape,
   locNormalcoord(NULL),
   locTexcoord(NULL),
   loc_tri_indexes(NULL),
+  computed(false)
 {
   //prepare bbox tex coords
   if (myTxtMapType == atCube) {
@@ -98,7 +99,8 @@ Tesselator::Tesselator(TopoDS_Shape   aShape) :
   locVertexcoord(NULL),
   locNormalcoord(NULL),
   locTexcoord(NULL),
-  loc_tri_indexes(NULL)
+  loc_tri_indexes(NULL),
+  computed(false)
 {
   ComputeDefaultDeviation();
 }
@@ -111,6 +113,7 @@ void Tesselator::Compute(bool uv_coords, bool compute_edges, float mesh_quality,
   else {
     Tesselate(compute_edges, mesh_quality, parallel);
   }
+  computed=true;
 }
 
 //---------------------------------------------------------------------------
@@ -124,6 +127,9 @@ Tesselator::~Tesselator()
 
     if (locTexcoord)
       delete [] locTexcoord;
+
+    if (loc_tri_indexes)
+      delete [] loc_tri_indexes;
 
     for (std::vector<aedge*>::iterator edgeit = edgelist.begin(); edgeit != edgelist.end(); ++edgeit) {
       aedge* edge = *edgeit;
@@ -362,10 +368,6 @@ void Tesselator::ComputeDefaultDeviation()
     BRepBndLib::Add(myShape, aBox);
     aBox.Get(aXmin, aYmin, aZmin, aXmax, aYmax, aZmax);
 
-    Standard_Real xDim = std::abs((long)aXmax - (long)aXmin);
-    Standard_Real yDim = std::abs((long)aYmax - (long)aYmin);
-    Standard_Real zDim = std::abs((long)aZmax - (long)aZmin);
-
     Standard_Real adeviation = std::max(aXmax-aXmin, std::max(aYmax-aYmin, aZmax-aZmin)) * 2e-2 ;
     myDeviation = adeviation;
 }
@@ -446,6 +448,17 @@ void Tesselator::ComputeEdges()
   }
 }
 
+void Tesselator::EnsureMeshIsComputed()
+{
+  // this method ensures that the mesh is computed before returning any
+  // related data
+  if (!computed) {
+    printf("The mesh is not computed. Currently computing with default parameters ...");
+    Compute(true, true, 1.0, false);
+    printf("done\n");
+    printf("Call explicitely the Compute method to set the parameters value.");
+  }
+}
 
 std::string formatFloatNumber(float f) 
 {
@@ -462,6 +475,7 @@ std::string formatFloatNumber(float f)
 
 std::vector<float> Tesselator::GetVerticesPositionAsTuple()
 {
+  EnsureMeshIsComputed();
   // create the vector and allocate memory
   std::vector<float> vertices_position;
   vertices_position.reserve(tot_triangle_count);
@@ -490,25 +504,23 @@ std::vector<float> Tesselator::GetVerticesPositionAsTuple()
 
 std::vector<float> Tesselator::GetNormalsAsTuple()
 {
+  EnsureMeshIsComputed();
   // create the vector and allocate memory
   std::vector<float> normals;
   normals.reserve(tot_triangle_count);
   // loop over normals
-  int pID = 0;
-  int qID = 0;
-  int rID = 0;
   for (int i=0;i<tot_triangle_count;i++) {
-      pID = loc_tri_indexes[(i * 3) + 0] * 3;
+      int pID = loc_tri_indexes[(i * 3) + 0] * 3;
       normals.push_back(locNormalcoord[pID]);
       normals.push_back(locNormalcoord[pID+1]);
       normals.push_back(locNormalcoord[pID+2]);
       // Second normal
-      qID = loc_tri_indexes[(i * 3) + 1] * 3;
+      int qID = loc_tri_indexes[(i * 3) + 1] * 3;
       normals.push_back(locNormalcoord[qID]);
       normals.push_back(locNormalcoord[qID+1]);
       normals.push_back(locNormalcoord[qID+2]);
       // Third normal
-      rID = loc_tri_indexes[(i * 3) + 2] * 3;
+      int rID = loc_tri_indexes[(i * 3) + 2] * 3;
       normals.push_back(locNormalcoord[rID]);
       normals.push_back(locNormalcoord[rID+1]);
       normals.push_back(locNormalcoord[rID+2]);
@@ -518,6 +530,7 @@ std::vector<float> Tesselator::GetNormalsAsTuple()
 
 std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
 {
+  EnsureMeshIsComputed();
   std::stringstream str_ifs, str_vertices, str_normals;
   int *vertices_idx = new int[3];
   int *texcoords_idx = new int[3];
@@ -573,6 +586,7 @@ std::string Tesselator::ExportShapeToX3DIndexedFaceSet()
 
 void Tesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int diffB)
 {
+  EnsureMeshIsComputed();
     std::ofstream X3Dfile;
     X3Dfile.open (filename);
     // write header
@@ -593,6 +607,7 @@ void Tesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, int dif
 
 std::string Tesselator::ExportShapeToThreejsJSONString(char *shape_function_name, bool export_uv)
 {
+  EnsureMeshIsComputed();
     // a method that export a shape to a JSON BufferGeometry object
     std::stringstream str_3js, str_vertices, str_normals, str_uvs;
     int *vertices_idx = new int[3];
@@ -700,47 +715,56 @@ std::string Tesselator::ExportShapeToThreejsJSONString(char *shape_function_name
 //---------------------------------------------------------------------------
 float* Tesselator::VerticesList()
 {
+  EnsureMeshIsComputed();
   return locVertexcoord;
 }
 //---------------------------------------------------------------------------
 float* Tesselator::NormalsList()
 {
+  EnsureMeshIsComputed();
   return locNormalcoord;
 }
 //---------------------------------------------------------------------------
 float* Tesselator::TextureCoordinatesList()
 {
+  EnsureMeshIsComputed();
   return locTexcoord;
 }
 
 //---------------------------------------------------------------------------
 int Tesselator::ObjGetTriangleCount()
 {
+  EnsureMeshIsComputed();
   return  tot_triangle_count;
 }
 //---------------------------------------------------------------------------
 int Tesselator::ObjGetVertexCount()
 {
+  EnsureMeshIsComputed();
   return  tot_vertex_count;
 }
 //---------------------------------------------------------------------------
 int Tesselator::ObjGetNormalCount()
 {
+  EnsureMeshIsComputed();
   return  tot_normal_count;
 }
 //---------------------------------------------------------------------------
 int Tesselator::ObjGetTexCoordCount()
 {
+  EnsureMeshIsComputed();
   return  tot_texcoord_count;
 }
 //---------------------------------------------------------------------------
 int Tesselator::ObjGetEdgeCount()
 {
+  EnsureMeshIsComputed();
   return edgelist.size();
 }
 //---------------------------------------------------------------------------
 int Tesselator::ObjEdgeGetVertexCount(int iEdge)
 {
+  EnsureMeshIsComputed();
   aedge* edge = edgelist.at(iEdge);
   if (!edge) {
     return 0;
@@ -751,6 +775,7 @@ int Tesselator::ObjEdgeGetVertexCount(int iEdge)
 //---------------------------------------------------------------------------
 void Tesselator::GetVertex(int ivert, float& x, float& y, float& z)
 {
+  EnsureMeshIsComputed();
   x = locVertexcoord[ivert*3 + 0];
   y = locVertexcoord[ivert*3 + 1];
   z = locVertexcoord[ivert*3 + 2];
@@ -758,6 +783,7 @@ void Tesselator::GetVertex(int ivert, float& x, float& y, float& z)
 //---------------------------------------------------------------------------
 void Tesselator::GetNormal(int ivert, float& x, float& y, float& z)
 {
+  EnsureMeshIsComputed();
   x = locNormalcoord[ivert*3 + 0];
   y = locNormalcoord[ivert*3 + 1];
   z = locNormalcoord[ivert*3 + 2];
@@ -765,6 +791,7 @@ void Tesselator::GetNormal(int ivert, float& x, float& y, float& z)
 //---------------------------------------------------------------------------
 void Tesselator::GetTriangleIndex(int triangleIdx, int &v1, int &v2, int &v3)
 {
+  EnsureMeshIsComputed();
   v1 = loc_tri_indexes[3*triangleIdx + 0];
   v2 = loc_tri_indexes[3*triangleIdx + 1];
   v3 = loc_tri_indexes[3*triangleIdx + 2];
@@ -772,6 +799,7 @@ void Tesselator::GetTriangleIndex(int triangleIdx, int &v1, int &v2, int &v3)
 //---------------------------------------------------------------------------
 void Tesselator::GetEdgeVertex(int iEdge, int ivert, float &x, float &y, float &z)
 {
+  EnsureMeshIsComputed();
   aedge* e = edgelist.at(iEdge);
   if (!e) {
     return;
@@ -784,6 +812,7 @@ void Tesselator::GetEdgeVertex(int iEdge, int ivert, float &x, float &y, float &
 //---------------------------------------------------------------------------
 void Tesselator::ObjGetTriangle(int trianglenum, int *vertices, int *texcoords, int *normals)
 {
+  EnsureMeshIsComputed();
   int pID = loc_tri_indexes[(trianglenum * 3) + 0] * 3;
   int qID = loc_tri_indexes[(trianglenum * 3) + 1] * 3;
   int rID = loc_tri_indexes[(trianglenum * 3) + 2] * 3;
@@ -807,7 +836,6 @@ void Tesselator::JoinPrimitives()
 {
   int obP = 0;
   int obN = 0;
-  int obT = 0;
   int obTR = 0;
 
   int advance = 0;

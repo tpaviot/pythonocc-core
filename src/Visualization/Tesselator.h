@@ -50,6 +50,7 @@ class Tesselator
   private:
 
   protected:
+      bool computed;
       float *locVertexcoord;
       float *locNormalcoord;
       float *locTexcoord;
@@ -80,6 +81,7 @@ class Tesselator
       void GetBoxTextureCoordinate(const gp_Pnt& p, const gp_Dir& N1, gp_Vec2d& theCoord_p);
       void ComputeDefaultDeviation();
       void ComputeEdges();
+      void EnsureMeshIsComputed();
 
   public:
       Tesselator(TopoDS_Shape aShape,
