@@ -51,9 +51,9 @@ HEADER = """
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
     <meta name='Keywords' content='WebGl,pythonOCC'>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="https://x3dom.org/release/x3dom.css" charset="utf-8" ></link>
-    <script type="text/javascript" src="https://x3dom.org/release/x3dom.js"></script>
-    <style type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://x3dom.org/release/x3dom.css">
+    <script src="https://x3dom.org/release/x3dom.js"></script>
+    <style>
         body {
             background: linear-gradient(@bg_gradient_color1@, @bg_gradient_color2@);
             margin: 0px;
@@ -199,7 +199,7 @@ def indexed_lineset_to_x3d_string(str_linesets, header=True, footer=True, ils_id
     return x3dfile_str
 
 
-class HTMLHeader(object):
+class HTMLHeader:
     def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080"):
         self._bg_gradient_color1 = bg_gradient_color1
         self._bg_gradient_color2 = bg_gradient_color2
@@ -212,7 +212,7 @@ class HTMLHeader(object):
         return header_str
 
 
-class HTMLBody(object):
+class HTMLBody:
     def __init__(self, x3d_shapes, axes_plane, axes_plane_zoom_factor=1.):
         """ x3d_shapes is a list that contains uid for each shape
         """
@@ -255,7 +255,7 @@ class HTMLBody(object):
         return body_str
 
 
-class X3DExporter(object):
+class X3DExporter:
     """ A class for exporting a TopoDS_Shape to an x3d file """
     def __init__(self,
                  shape,  # the TopoDS shape to mesh
@@ -349,7 +349,7 @@ class X3DExporter(object):
             f.write(self.to_x3dfile_string(shape_id))
 
 
-class X3DomRenderer(object):
+class X3DomRenderer:
     def __init__(self, path=None, display_axes_plane=True, axes_plane_zoom_factor=1.):
         if not path:  # by default, write to a temp directory
             self._path = tempfile.mkdtemp()
@@ -362,7 +362,7 @@ class X3DomRenderer(object):
         self._axes_plane_zoom_factor = axes_plane_zoom_factor
 
         print("## x3dom webgl renderer - render axes/planes : %r - axes/plane zoom factor : %g" % (self._axes_plane,
-                                                                                                  self._axes_plane_zoom_factor))
+                                                                                                   self._axes_plane_zoom_factor))
 
     def DisplayShape(self,
                      shape,
@@ -414,31 +414,25 @@ class X3DomRenderer(object):
         # the x3d filename is computed from the shape hash
         shape_id = len(self._x3d_shapes)
         x3d_exporter.write_to_file(x3d_filename, shape_id)
-        ## TODO : orientation and translation
-        # get shape translation and orientation
-        # trans = shape.Location().Transformation().TranslationPart().Coord()  # vector
-        # v = gp_Vec()
-        # angle = shape.Location().Transformation().GetRotation().GetVectorAndAngle(v)
-        # ori = (v.X(), v.Y(), v.Z(), angle)  # angles
-        # fill the shape dictionnary with shape hash, translation and orientation
-        #  self._x3d_shapes[shape_hash] = [trans, ori]
-        self._x3d_shapes[shape_hash] = [export_edges, color, specular_color, shininess, transparency, line_color, line_width]
+
+        self._x3d_shapes[shape_hash] = [export_edges, color, specular_color, shininess,
+                                        transparency, line_color, line_width]
         return self._x3d_shapes, self._x3d_edges
 
-    def render(self, server_port=8080, open_webbrowser=False):
+    def render(self, addr="localhost", server_port=8080, open_webbrowser=False):
         """ Call the render() method to display the X3D scene.
         """
         # first generate the HTML root file
         self.GenerateHTMLFile(self._axes_plane, self._axes_plane_zoom_factor)
         # then create a simple web server
-        start_server(server_port, self._path, open_webbrowser)
+        start_server(addr, server_port, self._path, open_webbrowser)
 
     def GenerateHTMLFile(self, axes_plane, axes_plane_zoom_factor):
         """ Generate the HTML file to be rendered wy the web browser
         axes_plane: a boolean, telles wether or not display axes
         """
         with open(self._html_filename, "w") as fp:
-            fp.write("<!DOCTYPE HTML>")
+            fp.write("<!DOCTYPE HTML>\n")
             fp.write('<html lang="en">')
             # header
             fp.write(HTMLHeader().get_str())
