@@ -37,7 +37,7 @@ def get_available_port(port):
     # check this port is available
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        s.bind(("", port))
+        s.bind(("127.0.0.1", port))
     except socket.error as e:
         if e.errno == errno.EADDRINUSE:
             print("\nPort %i is already in use. Picking another one." % port)
@@ -51,25 +51,27 @@ def get_available_port(port):
     return port
 
 
-def start_server(port=8080, path='.', open_webbrowser=False):
+def start_server(addr="127.0.0.1", port=8080, x3d_path='.', open_webbrowser=False):
     """ starts the server if the PYTHONOCC_SHUNT_WEB_SERVER
     env var is not set
-    * port : the port number to use (if available) ;
-    * open_webbrower : if True, open the web browser to the correct url
+    * port: the port number to use (if available) ;
+    * path: where thehtml files are located
+    * open_webbrower: if True, open the web browser to the correct url
     """
     if os.getenv("PYTHONOCC_SHUNT_WEB_SERVER") == "1":
         return False
-    else:
-        try:
-            from SimpleHTTPServer import SimpleHTTPRequestHandler as handler
-            from BaseHTTPServer import HTTPServer as server
-        except ImportError:
-            from http.server import (SimpleHTTPRequestHandler as handler,
-                                     HTTPServer as server)
-        os.chdir(path)
+    # prefer using Flask, if installed
+    try:
+        from flask import Flask, send_from_directory
+        HAVE_FLASK = True
+    except ImportError:
+        HAVE_FLASK = False
+    if not HAVE_FLASK:  # use simple http server
+        from http.server import SimpleHTTPRequestHandler, HTTPServer
+        os.chdir(x3d_path)
         port = get_available_port(port)
-        httpd = server(("", port), handler)
-        print("\n## Serving %s \n## using SimpleHTTPServer" % path)
+        httpd = HTTPServer((addr, port), SimpleHTTPRequestHandler)
+        print("\n## Serving %s \n## using SimpleHTTPServer" % x3d_path)
         print("## Open your webbrowser at the URL: http://localhost:%i" % port)
         print("## CTRL-C to shutdown the server")
         # open webbrowser
@@ -77,9 +79,27 @@ def start_server(port=8080, path='.', open_webbrowser=False):
             webbrowser.open('http://localhost:%i' % port, new=2)
         # starts the web_server
         httpd.serve_forever()
+    else:  # use flask
+        # set the project root directory as the static folder, you can set others.
+        app = Flask(__name__)
+
+        @app.route('/')
+        def root():
+            fp = open(os.path.join(x3d_path, 'index.html'))
+            html_content = fp.read()
+            fp.close()
+            return html_content
+        @app.route('/<path:path>')
+        def send_x3d_content(path):
+            return send_from_directory(x3d_path, path)
+        print("\n## Serving %s \n## using Flask" % x3d_path)
+        print("## Open your webbrowser at the URL: http://localhost:%i" % port)
+        print("## CTRL-C to shutdown the server")
+        port = get_available_port(port)
+        app.run(host=addr, port=port)
 
 
 if __name__ == "__main__":
-    get_available_port(8080)
-    get_available_port(5022)
-    start_server(8080)
+    get_available_port(port=8080)
+    get_available_port(port=5022)
+    start_server(port=8080)

@@ -30,7 +30,7 @@ from OCC import VERSION as OCC_VERSION
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-THREEJS_RELEASE = "r110"
+THREEJS_RELEASE = "r111"
 
 def spinning_cursor():
     while True:
@@ -80,7 +80,7 @@ HEADER = """
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
     <meta name='Keywords' content='WebGl,pythonocc'>
     <meta charset="utf-8">
-    <style type="text/css">
+    <style>
         body {
             background: linear-gradient(@bg_gradient_color1@, @bg_gradient_color2@);
             margin: 0px;
@@ -142,9 +142,9 @@ BODY_PART0 = """
     <b>g</b> view/hide grid<br>
     <b>a</b> view/hide axis<br>
     </div>
-    <script type="text/javascript" src="https://rawcdn.githack.com/mrdoob/three.js/%s/build/three.min.js"></script>
-    <script type="text/javascript" src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/controls/TrackballControls.js"></script>
-    <script type="text/javascript" src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
+    <script src="https://rawcdn.githack.com/mrdoob/three.js/%s/build/three.min.js"></script>
+    <script src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/controls/TrackballControls.js"></script>
+    <script src="https://rawcdn.githack.com/mrdoob/three.js/%s/examples/js/libs/stats.min.js"></script>
 
 """ % (THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE, THREEJS_RELEASE)
 
@@ -539,8 +539,8 @@ class ThreejsRenderer(object):
             edge_string_list.append("\t});\n")
         # write the string for the shape
         with open(self._html_filename, "w") as fp:
-            fp.write("<!DOCTYPE HTML>")
-            fp.write('<html>')
+            fp.write("<!DOCTYPE HTML>\n")
+            fp.write("<html lang='en'>")
             # header
             fp.write(HTMLHeader().get_str())
             # body
@@ -553,13 +553,13 @@ class ThreejsRenderer(object):
             fp.write(BODY_PART2)
             fp.write("</html>\n")
 
-    def render(self, server_port=8080, open_webbrowser=False):
+    def render(self, addr="localhost", server_port=8080, open_webbrowser=False):
         ''' render the scene into the browser.
         '''
         # generate HTML file
         self.generate_html_file()
         # then create a simple web server
-        start_server(server_port, self._path, open_webbrowser)
+        start_server(addr, server_port, self._path, open_webbrowser)
 
 if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
