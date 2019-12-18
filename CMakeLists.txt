@@ -345,6 +345,30 @@ if(PYTHONOCC_WRAP_SMESH)
   endforeach(SMESH_MODULE)
 endif(PYTHONOCC_WRAP_SMESH)
 
+##########
+# Addons #
+##########
+execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Addons)
+set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i PROPERTIES CPLUSPLUS ON)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons)
+set(ADDONS_SOURCE_FILES
+${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i
+${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Font3d.cpp
+#${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextItem.cpp
+#${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/LineItem.cpp
+#${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/TextureItem.cpp
+)
+
+swig_add_library(Addons LANGUAGE python SOURCES ${ADDONS_SOURCE_FILES} TYPE MODULE)
+swig_link_libraries(Addons ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+#if (APPLE)
+#  set_target_properties(${SWIG_MODULE_Addons_REAL_NAME} PROPERTIES COMPILE_FLAGS ${PYTHON_CFLAGS})
+#  set_target_properties(${SWIG_MODULE_Addons_REAL_NAME} PROPERTIES LINK_FLAGS ${PYTHON_LDFLAGS})
+#  swig_link_libraries(Addons ${OPENGL_LIBRARIES})
+#else(APPLE)
+#  swig_link_libraries(Addons ${PYTHON_LIBRARIES})
+#endif(APPLE)
+
 ################
 # Installation #
 ################
@@ -384,6 +408,11 @@ if(PYTHONOCC_WRAP_VISU)
 install(FILES ${BUILD_DIR}/Visualization.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 install(TARGETS _Visualization DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endif(PYTHONOCC_WRAP_VISU)
+
+# install addons
+install(FILES ${BUILD_DIR}/Addons.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
+install(TARGETS _Addons DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
 
 # instal SMESH
 if(PYTHONOCC_WRAP_SMESH)
