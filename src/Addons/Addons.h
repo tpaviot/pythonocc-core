@@ -21,6 +21,8 @@
 #define __Addons__
 
 #include <Font_BRepTextBuilder.hxx>
+#include <Font_FontMgr.hxx>
+#include <TCollection_AsciiString.hxx>
 
 TopoDS_Shape text_to_brep(const char* aText,
                           const char* aName,
@@ -28,6 +30,5 @@ TopoDS_Shape text_to_brep(const char* aText,
                           float aSize,
                           bool anIsCompositeCurve);
 //void display_available_fonts();
-//void register_font(char* aFontPath);
-
+void register_font(char* aFontPath, Font_FontAspect aFontAspect=Font_FontAspect_UNDEFINED);
 #endif

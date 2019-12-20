@@ -48,7 +48,7 @@ enum Font_FontAspect
 	:type text_to_render: char *
 	:param aFontName: Font name
 	:type aFontName: char *
-	:param aFontAspect:  Fontaspect, Font_FA_Regular, Font_FA_Bold, Font_FA_Italic or Font_FA_BoldItalic
+	:param aFontAspect:  Fontaspect, FontAspect_UNDEFINED, Font_FontAspect_Regular, Font_FontAspect_Bold, Font_FA_Italic or Font_FA_BoldItalic
 	:type aFontAspect: Font_FontAspect
 	:param aSize: Size of the font
 	:type aSize: float
@@ -57,3 +57,13 @@ enum Font_FontAspect
 	:rtype: TopoDS_Shape
 ") text_to_brep;
 TopoDS_Shape text_to_brep(const char* aText, const char* aName, Font_FontAspect aFontAspect, float aSize, bool anIsCompositeCurve);
+
+%feature("compactdefaultargs") register_font;
+%feature("autodoc", "	* Add a font to the available font list. 
+	:param aFontPath: Path to the font.
+	:type aFontPath: char *
+	:param aFontAspect
+	:type Font_FontAspect
+	:rtype: void
+") register_font;
+void register_font(char* aFontPath, Font_FontAspect aFontAspect=Font_FontAspect_UNDEFINED);

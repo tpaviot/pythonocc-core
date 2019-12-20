@@ -52,3 +52,28 @@ TopoDS_Shape text_to_brep(const char* aText,
   Font_BRepTextBuilder aBuilder;
   return aBuilder.Perform (aFont, aText, aPenAx3, aHJustification, aVJustification);
 }
+
+void register_font(char* aFontPath, Font_FontAspect aFontAspect) {
+  Handle(Font_FontMgr) aMgr = Font_FontMgr::GetInstance();
+  Handle(Font_SystemFont) aFont = aMgr->CheckFont (aFontPath);
+  if (aFont.IsNull()) {
+      std::cerr << "Error: font '" << aFontPath << "' is not found!\n";
+  }
+  else {
+    TCollection_AsciiString aName = aFont->FontName();
+    Handle(Font_SystemFont) aFont2 = new Font_SystemFont(aName);
+    aFont2 = new Font_SystemFont (aName);
+        
+    if (aFontAspect != Font_FontAspect_UNDEFINED) {
+        aFont2->SetFontPath (aFontAspect, aFontPath);
+    }
+    else {
+        for (int anAspectIter = 0; anAspectIter < Font_FontAspect_NB; ++anAspectIter) {
+            aFont2->SetFontPath ((Font_FontAspect )anAspectIter, aFont->FontPath ((Font_FontAspect )anAspectIter));
+        }
+    }
+    aFont = aFont2;
+    aMgr->RegisterFont (aFont, Standard_True);
+    std::cout << "Font loaded :" << aFont->ToString();
+  }
+}
