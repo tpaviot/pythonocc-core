@@ -537,9 +537,11 @@ class TestWrapperFeatures(unittest.TestCase):
         """ Test if repr string is properly returned
         """
         p = gp_Pnt(1, 2, 3)
-        self.assertEqual(str(p), "class<'gp_Pnt'>")
+        self.assertEqual(repr(p), "<class 'gp_Pnt'>")
+        empty_shape = TopoDS_Shape()
+        self.assertEqual(repr(empty_shape), "<class 'TopoDS_Shape': Null>")
         shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-        self.assertTrue("class<'TopoDS_Solid'; id:" in str(shp))
+        self.assertEqual(repr(shp), "<class 'TopoDS_Solid'>")
 
     def test_downcast_curve(self):
         """ Test if a GeomCurve can be DownCasted to a GeomLine
