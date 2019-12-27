@@ -166,8 +166,16 @@ endif(PYTHONOCC_WRAP_SMESH)
 # Installation directory                     #
 # by default, installed to site-packages/OCC #
 ##############################################
-execute_process(COMMAND ${Python3_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE)
-set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory")
+if(DEFINED ENV{SP_DIR} AND WIN32)
+  # TODO: following hack is azure specific, a recent update in azure
+  # prevent cmake to find correct paths of python3 on windows
+  # this should be removed as soon as possible
+  message(STATUS "conda-build running, using $ENV{SP_DIR} as install dir")
+  set(PYTHONOCC_INSTALL_DIRECTORY $ENV{SP_DIR}/OCC CACHE PATH "pythonOCC install directory")
+else(DEFINED ENV{SP_DIR} AND WIN32)
+  execute_process(COMMAND ${Python3_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; import os;print(get_python_lib())" OUTPUT_VARIABLE python_lib OUTPUT_STRIP_TRAILING_WHITESPACE)
+  set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonOCC install directory")
+endif(DEFINED ENV{SP_DIR} AND WIN32)
 message(STATUS "pythonOCC modules will be installed to: ${PYTHONOCC_INSTALL_DIRECTORY}")
 
 #############################################
