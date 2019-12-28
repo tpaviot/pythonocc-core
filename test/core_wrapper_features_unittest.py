@@ -346,27 +346,23 @@ class TestWrapperFeatures(unittest.TestCase):
         cs.SetDistAngle(1., 45)
         self.assertEqual(cs.GetDistAngle(), (1.0, 45.))
 
-    def test_dump_to_string(self):
+    def test_pickle_topods_shape_to_from(self):
         '''
         Checks if the pickle python module works for TopoDS_Shapes
         '''
         # Create the shape
         box_shape = BRepPrimAPI_MakeBox(100, 200, 300).Shape()
         shp_dump = pickle.dumps(box_shape)
+        # file to dump to/from
+        filename = os.path.join('.', 'test_io', 'box_shape_generated.brep')
         # write to file
-        output = open("./test_io/box_shape_generated.brep", "wb")
-        output.write(shp_dump)
-        output.close()
-        self.assertTrue(os.path.isfile("./test_io/box_shape_generated.brep"))
-
-    def test_pickle_from_file(self):
-        '''
-        Checks if the pickle python module works for TopoDS_Shapes
-        '''
-        shp_dump = open("./test_io/box_shape.brep", "rb")
-        box_shape = pickle.load(shp_dump)
-        shp_dump.close()
-        self.assertFalse(box_shape.IsNull())
+        with open(filename, "wb") as output: 
+            output.write(shp_dump)
+        self.assertTrue(os.path.isfile(filename))
+        # load from file
+        with open(filename, "rb") as dump_from_file:
+            pickled_shape = pickle.load(dump_from_file)
+        self.assertFalse(pickled_shape.IsNull())       
 
     def test_sub_class(self):
         """ Test: subclass """
