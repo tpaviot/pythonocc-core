@@ -43,6 +43,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdf.html"
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
 #include<TColStd_module.hxx>
+#include<TDataStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -1798,7 +1799,20 @@ class TDF_Label {
             except:
                 return False
         }
-        };
+        %feature("autodoc", "Returns the label name") GetLabelName;
+		%extend{
+			std::string GetLabelName() {
+			std::string txt;
+			Handle(TDataStd_Name) name;
+			if (!self->IsNull() && self->FindAttribute(TDataStd_Name::GetID(),name)) {
+			TCollection_ExtendedString extstr = name->Get();
+			char* str = new char[extstr.LengthOfCString()+1];
+			extstr.ToUTF8CString(str);
+			txt = str;
+			delete[] str;}
+			return txt;}
+		};
+};
 
 
 %extend TDF_Label {

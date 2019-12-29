@@ -35,6 +35,7 @@ try:
     HAVE_SMESH = True
 except:
     HAVE_SMESH = False
+import core_extend_dataexchange_unittest
 suite = unittest.TestSuite()
 
 # Get all test suites from modules
@@ -52,6 +53,8 @@ if HAVE_SMESH:
     tests.append(suite6)
 suite7 = core_extend_topology_unittest.suite()
 tests.append(suite7)
+suite8 = core_extend_dataexchange_unittest.suite()
+tests.append(suite8)
 
 # Add test cases
 suite.addTests(tests)

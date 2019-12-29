@@ -133,19 +133,7 @@ def read_step_file_with_names_colors(filename):
     if status == IFSelect_RetDone:
         step_reader.Transfer(doc)
 
-
-    #lvl = 0
     locs = []
-    #cnt = 0
-
-    def _get_label_name(lab):
-        entry = TCollection_AsciiString()
-        TDF_Tool.Entry(lab, entry)
-        n = TDataStd_Name()
-        lab.FindAttribute(TDataStd_Name_GetID(), n)
-        if n is not None:
-            return n.Get().PrintToString()
-        return "No Name"
 
     def _get_sub_shapes(lab, loc):
         #global cnt, lvl
@@ -173,7 +161,7 @@ def read_step_file_with_names_colors(filename):
         shape_tool.GetComponents(lab, l_comps)
         #print("Nb components  :", l_comps.Length())
         #print()
-        name = _get_label_name(lab)
+        name = lab.GetLabelName()
         print("Name :", name)
 
         if shape_tool.IsAssembly(lab):
@@ -259,7 +247,7 @@ def read_step_file_with_names_colors(filename):
 
             shape_disp = BRepBuilderAPI_Transform(shape, loc.Transformation()).Shape()
             if not shape_disp in output_shapes:
-                output_shapes[shape_disp] = [_get_label_name(lab), c]
+                output_shapes[shape_disp] = [lab.GetLabelName(), c]
             for i in range(l_subss.Length()):
                 lab_subs = l_subss.Value(i+1)
                 #print("\n########  simpleshape subshape label :", lab)
@@ -290,7 +278,7 @@ def read_step_file_with_names_colors(filename):
                 shape_to_disp = BRepBuilderAPI_Transform(shape_sub, loc.Transformation()).Shape()
                 # position the subshape to display
                 if not shape_to_disp in output_shapes:
-                    output_shapes[shape_to_disp] = [_get_label_name(lab_subs), c]
+                    output_shapes[shape_to_disp] = [lab_subs.GetLabelName(), c]
 
 
     def _get_shapes():
