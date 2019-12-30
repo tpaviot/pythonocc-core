@@ -1,7 +1,25 @@
 ==========================
+Version 7.4.0rc1 - December 2019
+
+This release requires opencascade 7.4.0
+
+* wrapper : small fix in __repr__ method overload
+
+* wrapper : ported the old Addon subpackage to benefit from 3d fonts
+
+* wrapper : added GetLabelName method to TDF_Label class to fix step part names
+
+* display : tesselator computes mesh if not already done
+
+* webgl : html and js fixes in x3dom and threejs renderers, simple_server uses flask if available
+
+* minor lgtm fixes
+
+
+==========================
 Version 7.4.0beta2 - December 2019
 
-This release require opencascade 7.4.0
+This release requires opencascade 7.4.0
 
 * wrapper: add mssigin class Shape_Upgrade_UnifySameDomain
 
@@ -16,7 +34,7 @@ This release require opencascade 7.4.0
 ==========================
 Version 7.4.0beta - December 2019
 
-This release require opencascade 7.4.0
+This release requires opencascade 7.4.0
 
 * Port to opencascade 7.4.0
 
