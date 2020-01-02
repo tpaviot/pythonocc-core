@@ -443,16 +443,15 @@ class Viewer3d(Display3d):
     def DisplayShape(self, shapes, material=None, texture=None, color=None, transparency=None, update=False):
         """ display one or a set of displayable objects
         """
-        SOLO = False  # assume multiple instances by default
-        # if a gp_Pnt is passed, first convert to vertex
+        ais_shapes = []  # the list of all displayed shapes
+
         if issubclass(shapes.__class__, gp_Pnt):
+            # if a gp_Pnt is passed, first convert to vertex
             vertex = BRepBuilderAPI_MakeVertex(shapes)
             shapes = [vertex.Shape()]
-            SOLO = True
         elif isinstance(shapes, gp_Pnt2d):
             vertex = BRepBuilderAPI_MakeVertex(gp_Pnt(shapes.X(), shapes.Y(), 0))
             shapes = [vertex.Shape()]
-            SOLO = True
         elif isinstance(shapes, Geom_Surface):
             bounds = True
             toldegen = 1e-6
@@ -460,21 +459,16 @@ class Viewer3d(Display3d):
             face.Init(shapes, bounds, toldegen)
             face.Build()
             shapes = [face.Shape()]
-            SOLO = True
         elif isinstance(shapes, Geom_Curve):
             edge = BRepBuilderAPI_MakeEdge(shapes)
             shapes = [edge.Shape()]
-            SOLO = True
         elif isinstance(shapes, Geom2d_Curve):
             edge2d = BRepBuilderAPI_MakeEdge2d(shapes)
             shapes = [edge2d.Shape()]
-            SOLO = True
-        elif issubclass(shapes.__class__, TopoDS_Shape):
+        # if only one shapes, create a list with a single shape
+        if not isinstance(shapes, list):
             shapes = [shapes]
-            SOLO = True
-
-        ais_shapes = []
-
+        # build AIS_Shapes list
         for shape in shapes:
             if material or texture:
                 if texture:
@@ -496,23 +490,22 @@ class Viewer3d(Display3d):
 
             ais_shapes.append(shape_to_display)
 
-        if not SOLO:
-            # computing graphic properties is expensive
-            # if an iterable is found, so cluster all TopoDS_Shape under
-            # an AIS_MultipleConnectedInteractive
-            #shape_to_display = AIS_MultipleConnectedInteractive()
-            for ais_shp in ais_shapes:
-                # TODO : following line crashes with oce-0.18
-                # why ? fix ?
-                #shape_to_display.Connect(i)
-                self.Context.Display(ais_shp, False)
-            shape_to_display = ais_shapes
-            return shape_to_display
+        # if not SOLO:
+        #     # computing graphic properties is expensive
+        #     # if an iterable is found, so cluster all TopoDS_Shape under
+        #     # an AIS_MultipleConnectedInteractive
+        #     #shape_to_display = AIS_MultipleConnectedInteractive()
+        #     for ais_shp in ais_shapes:
+        #         # TODO : following line crashes with oce-0.18
+        #         # why ? fix ?
+        #         #shape_to_display.Connect(i)
+        #         self.Context.Display(ais_shp, False)
         # set the graphic properties
         if material is None:
             #The default material is too shiny to show the object
             #color well, so I set it to something less reflective
-            shape_to_display.SetMaterial(Graphic3d_MaterialAspect(Graphic3d_NOM_NEON_GNC))
+            for shape_to_display in ais_shapes:
+                shape_to_display.SetMaterial(Graphic3d_MaterialAspect(Graphic3d_NOM_NEON_GNC))
         if color:
             if isinstance(color, str):
                 color = get_color_from_name(color)
@@ -521,17 +514,17 @@ class Viewer3d(Display3d):
             for shp in ais_shapes:
                 self.Context.SetColor(shp, color, False)
         if transparency:
-            shape_to_display.SetTransparency(transparency)
-        if update:
-            # only update when explicitely told to do so
+            for shape_to_display in ais_shapes:
+                shape_to_display.SetTransparency(transparency)
+        # display the shapes
+        for shape_to_display in ais_shapes:
             self.Context.Display(shape_to_display, False)
+        if update:
             # especially this call takes up a lot of time...
             self.FitAll()
             self.Repaint()
-        else:
-            self.Context.Display(shape_to_display, False)
 
-        return shape_to_display
+        return ais_shapes
 
     def DisplayColoredShape(self, shapes, color='YELLOW', update=False, ):
         if isinstance(color, str):
