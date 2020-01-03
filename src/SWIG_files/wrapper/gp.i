@@ -312,24 +312,24 @@ class gp_Ax1 {
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to the point P which is the center of the symmetry and creates a new axis.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Ax1") Mirrored;
-		Standard_NODISCARD gp_Ax1 Mirrored (const gp_Pnt & P);
+	:rtype: gp_Ax1") Mirrored;
+		gp_Ax1 Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to an axis placement which is the axis of the symmetry and creates a new axis.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Ax1") Mirrored;
-		Standard_NODISCARD gp_Ax1 Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Ax1") Mirrored;
+		gp_Ax1 Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to a plane. The axis placement <A2> locates the plane of the symmetry : (Location, XDirection, YDirection) and creates a new axis.
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Ax1") Mirrored;
-		Standard_NODISCARD gp_Ax1 Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Ax1") Mirrored;
+		gp_Ax1 Mirrored (const gp_Ax2 & A2);
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
@@ -340,8 +340,8 @@ class gp_Ax1 {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the unit vector of this axis and creates a new one.
-	:rtype: Standard_NODISCARD gp_Ax1") Reversed;
-		Standard_NODISCARD gp_Ax1 Reversed ();
+	:rtype: gp_Ax1") Reversed;
+		gp_Ax1 Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -360,8 +360,8 @@ class gp_Ax1 {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Ax1") Rotated;
-		Standard_NODISCARD gp_Ax1 Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Ax1") Rotated;
+		gp_Ax1 Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -380,8 +380,8 @@ class gp_Ax1 {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Ax1") Scaled;
-		Standard_NODISCARD gp_Ax1 Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Ax1") Scaled;
+		gp_Ax1 Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetDirection ******************/
 		%feature("compactdefaultargs") SetDirection;
@@ -412,8 +412,8 @@ class gp_Ax1 {
 		%feature("autodoc", "* Applies the transformation T to this axis and creates a new one. //! Translates an axis plaxement in the direction of the vector <V>. The magnitude of the translation is the vector's magnitude.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Ax1") Transformed;
-		Standard_NODISCARD gp_Ax1 Transformed (const gp_Trsf & T);
+	:rtype: gp_Ax1") Transformed;
+		gp_Ax1 Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -438,8 +438,8 @@ class gp_Ax1 {
 		%feature("autodoc", "* Translates this axis by the vector V, and creates a new one.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Ax1") Translated;
-		Standard_NODISCARD gp_Ax1 Translated (const gp_Vec & V);
+	:rtype: gp_Ax1") Translated;
+		gp_Ax1 Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -448,8 +448,8 @@ class gp_Ax1 {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Ax1") Translated;
-		Standard_NODISCARD gp_Ax1 Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Ax1") Translated;
+		gp_Ax1 Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** gp_Ax1 ******************/
 		%feature("compactdefaultargs") gp_Ax1;
@@ -560,24 +560,24 @@ class gp_Ax2 {
 		%feature("autodoc", "* Performs a symmetrical transformation of this coordinate system with respect to: - the point P, and creates a new one. Warning This transformation is always performed on the origin. In case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'X Direction' and the 'Y Direction' are simply reversed In case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'X Direction' and the 'Y Direction', then - the 'main Direction' is recomputed as the cross product 'X Direction' ^ 'Y Direction'. This maintains the right-handed property of the coordinate system.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Ax2") Mirrored;
-		Standard_NODISCARD gp_Ax2 Mirrored (const gp_Pnt & P);
+	:rtype: gp_Ax2") Mirrored;
+		gp_Ax2 Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs a symmetrical transformation of this coordinate system with respect to: - the axis A1, and creates a new one. Warning This transformation is always performed on the origin. In case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'X Direction' and the 'Y Direction' are simply reversed In case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'X Direction' and the 'Y Direction', then - the 'main Direction' is recomputed as the cross product 'X Direction' ^ 'Y Direction'. This maintains the right-handed property of the coordinate system.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Ax2") Mirrored;
-		Standard_NODISCARD gp_Ax2 Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Ax2") Mirrored;
+		gp_Ax2 Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs a symmetrical transformation of this coordinate system with respect to: - the plane defined by the origin, 'X Direction' and 'Y Direction' of coordinate system A2 and creates a new one. Warning This transformation is always performed on the origin. In case of a reflection with respect to a point: - the main direction of the coordinate system is not changed, and - the 'X Direction' and the 'Y Direction' are simply reversed In case of a reflection with respect to an axis or a plane: - the transformation is applied to the 'X Direction' and the 'Y Direction', then - the 'main Direction' is recomputed as the cross product 'X Direction' ^ 'Y Direction'. This maintains the right-handed property of the coordinate system.
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Ax2") Mirrored;
-		Standard_NODISCARD gp_Ax2 Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Ax2") Mirrored;
+		gp_Ax2 Mirrored (const gp_Ax2 & A2);
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -595,8 +595,8 @@ class gp_Ax2 {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Ax2") Rotated;
-		Standard_NODISCARD gp_Ax2 Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Ax2") Rotated;
+		gp_Ax2 Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -614,8 +614,8 @@ class gp_Ax2 {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Ax2") Scaled;
-		Standard_NODISCARD gp_Ax2 Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Ax2") Scaled;
+		gp_Ax2 Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -669,8 +669,8 @@ class gp_Ax2 {
 		%feature("autodoc", "* Transforms an axis placement with a Trsf. The 'Location' point, the 'XDirection' and the 'YDirection' are transformed with T. The resulting main 'Direction' of <self> is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Ax2") Transformed;
-		Standard_NODISCARD gp_Ax2 Transformed (const gp_Trsf & T);
+	:rtype: gp_Ax2") Transformed;
+		gp_Ax2 Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -693,8 +693,8 @@ class gp_Ax2 {
 		%feature("autodoc", "* Translates an axis plaxement in the direction of the vector <V>. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Ax2") Translated;
-		Standard_NODISCARD gp_Ax2 Translated (const gp_Vec & V);
+	:rtype: gp_Ax2") Translated;
+		gp_Ax2 Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -703,8 +703,8 @@ class gp_Ax2 {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Ax2") Translated;
-		Standard_NODISCARD gp_Ax2 Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Ax2") Translated;
+		gp_Ax2 Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** XDirection ******************/
 		%feature("compactdefaultargs") XDirection;
@@ -786,16 +786,16 @@ class gp_Ax22d {
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to the point P which is the center of the symmetry. Warnings : The main direction of the axis placement is not changed. The 'XDirection' and the 'YDirection' are reversed. So the axis placement stay right handed.
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Ax22d") Mirrored;
-		Standard_NODISCARD gp_Ax22d Mirrored (const gp_Pnt2d & P);
+	:rtype: gp_Ax22d") Mirrored;
+		gp_Ax22d Mirrored (const gp_Pnt2d & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to an axis placement which is the axis of the symmetry. The transformation is performed on the 'Location' point, on the 'XDirection' and 'YDirection'. The resulting main 'Direction' is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 	:param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Ax22d") Mirrored;
-		Standard_NODISCARD gp_Ax22d Mirrored (const gp_Ax2d & A);
+	:rtype: gp_Ax22d") Mirrored;
+		gp_Ax22d Mirrored (const gp_Ax2d & A);
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -813,8 +813,8 @@ class gp_Ax22d {
 	:type P: gp_Pnt2d
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Ax22d") Rotated;
-		Standard_NODISCARD gp_Ax22d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
+	:rtype: gp_Ax22d") Rotated;
+		gp_Ax22d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -832,8 +832,8 @@ class gp_Ax22d {
 	:type P: gp_Pnt2d
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Ax22d") Scaled;
-		Standard_NODISCARD gp_Ax22d Scaled (const gp_Pnt2d & P,const Standard_Real S);
+	:rtype: gp_Ax22d") Scaled;
+		gp_Ax22d Scaled (const gp_Pnt2d & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -895,8 +895,8 @@ class gp_Ax22d {
 		%feature("autodoc", "* Transforms an axis placement with a Trsf. The 'Location' point, the 'XDirection' and the 'YDirection' are transformed with T. The resulting main 'Direction' of <self> is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Ax22d") Transformed;
-		Standard_NODISCARD gp_Ax22d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Ax22d") Transformed;
+		gp_Ax22d Transformed (const gp_Trsf2d & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -919,8 +919,8 @@ class gp_Ax22d {
 		%feature("autodoc", "* Translates an axis plaxement in the direction of the vector <V>. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Ax22d") Translated;
-		Standard_NODISCARD gp_Ax22d Translated (const gp_Vec2d & V);
+	:rtype: gp_Ax22d") Translated;
+		gp_Ax22d Translated (const gp_Vec2d & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -929,8 +929,8 @@ class gp_Ax22d {
 	:type P1: gp_Pnt2d
 	:param P2:
 	:type P2: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Ax22d") Translated;
-		Standard_NODISCARD gp_Ax22d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
+	:rtype: gp_Ax22d") Translated;
+		gp_Ax22d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
 
 		/****************** XAxis ******************/
 		%feature("compactdefaultargs") XAxis;
@@ -1092,16 +1092,16 @@ class gp_Ax2d {
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Ax2d") Mirrored;
-		Standard_NODISCARD gp_Ax2d Mirrored (const gp_Pnt2d & P);
+	:rtype: gp_Ax2d") Mirrored;
+		gp_Ax2d Mirrored (const gp_Pnt2d & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to an axis placement which is the axis of the symmetry.
 	:param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Ax2d") Mirrored;
-		Standard_NODISCARD gp_Ax2d Mirrored (const gp_Ax2d & A);
+	:rtype: gp_Ax2d") Mirrored;
+		gp_Ax2d Mirrored (const gp_Ax2d & A);
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
@@ -1112,8 +1112,8 @@ class gp_Ax2d {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Computes a new axis placement with a direction opposite to the direction of <self>.
-	:rtype: Standard_NODISCARD gp_Ax2d") Reversed;
-		Standard_NODISCARD gp_Ax2d Reversed ();
+	:rtype: gp_Ax2d") Reversed;
+		gp_Ax2d Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -1131,8 +1131,8 @@ class gp_Ax2d {
 	:type P: gp_Pnt2d
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Ax2d") Rotated;
-		Standard_NODISCARD gp_Ax2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
+	:rtype: gp_Ax2d") Rotated;
+		gp_Ax2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -1150,8 +1150,8 @@ class gp_Ax2d {
 	:type P: gp_Pnt2d
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Ax2d") Scaled;
-		Standard_NODISCARD gp_Ax2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
+	:rtype: gp_Ax2d") Scaled;
+		gp_Ax2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
 
 		/****************** SetDirection ******************/
 		%feature("compactdefaultargs") SetDirection;
@@ -1181,8 +1181,8 @@ class gp_Ax2d {
 		%feature("autodoc", "* Transforms an axis placement with a Trsf.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Ax2d") Transformed;
-		Standard_NODISCARD gp_Ax2d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Ax2d") Transformed;
+		gp_Ax2d Transformed (const gp_Trsf2d & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -1205,8 +1205,8 @@ class gp_Ax2d {
 		%feature("autodoc", "* Translates an axis placement in the direction of the vector <V>. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Ax2d") Translated;
-		Standard_NODISCARD gp_Ax2d Translated (const gp_Vec2d & V);
+	:rtype: gp_Ax2d") Translated;
+		gp_Ax2d Translated (const gp_Vec2d & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -1215,8 +1215,8 @@ class gp_Ax2d {
 	:type P1: gp_Pnt2d
 	:param P2:
 	:type P2: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Ax2d") Translated;
-		Standard_NODISCARD gp_Ax2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
+	:rtype: gp_Ax2d") Translated;
+		gp_Ax2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
 
 		/****************** gp_Ax2d ******************/
 		%feature("compactdefaultargs") gp_Ax2d;
@@ -1337,24 +1337,24 @@ class gp_Ax3 {
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to the point P which is the center of the symmetry. Warnings : The main direction of the axis placement is not changed. The 'XDirection' and the 'YDirection' are reversed. So the axis placement stay right handed.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Ax3") Mirrored;
-		Standard_NODISCARD gp_Ax3 Mirrored (const gp_Pnt & P);
+	:rtype: gp_Ax3") Mirrored;
+		gp_Ax3 Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to an axis placement which is the axis of the symmetry. The transformation is performed on the 'Location' point, on the 'XDirection' and 'YDirection'. The resulting main 'Direction' is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Ax3") Mirrored;
-		Standard_NODISCARD gp_Ax3 Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Ax3") Mirrored;
+		gp_Ax3 Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an axis placement with respect to a plane. The axis placement <A2> locates the plane of the symmetry : (Location, XDirection, YDirection). The transformation is performed on the 'Location' point, on the 'XDirection' and 'YDirection'. The resulting main 'Direction' is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Ax3") Mirrored;
-		Standard_NODISCARD gp_Ax3 Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Ax3") Mirrored;
+		gp_Ax3 Mirrored (const gp_Ax2 & A2);
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -1372,8 +1372,8 @@ class gp_Ax3 {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Ax3") Rotated;
-		Standard_NODISCARD gp_Ax3 Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Ax3") Rotated;
+		gp_Ax3 Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -1391,8 +1391,8 @@ class gp_Ax3 {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Ax3") Scaled;
-		Standard_NODISCARD gp_Ax3 Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Ax3") Scaled;
+		gp_Ax3 Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -1446,8 +1446,8 @@ class gp_Ax3 {
 		%feature("autodoc", "* Transforms an axis placement with a Trsf. The 'Location' point, the 'XDirection' and the 'YDirection' are transformed with T. The resulting main 'Direction' of <self> is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Ax3") Transformed;
-		Standard_NODISCARD gp_Ax3 Transformed (const gp_Trsf & T);
+	:rtype: gp_Ax3") Transformed;
+		gp_Ax3 Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -1470,8 +1470,8 @@ class gp_Ax3 {
 		%feature("autodoc", "* Translates an axis plaxement in the direction of the vector <V>. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Ax3") Translated;
-		Standard_NODISCARD gp_Ax3 Translated (const gp_Vec & V);
+	:rtype: gp_Ax3") Translated;
+		gp_Ax3 Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -1480,8 +1480,8 @@ class gp_Ax3 {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Ax3") Translated;
-		Standard_NODISCARD gp_Ax3 Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Ax3") Translated;
+		gp_Ax3 Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** XDirection ******************/
 		%feature("compactdefaultargs") XDirection;
@@ -1632,24 +1632,24 @@ class gp_Circ {
 		%feature("autodoc", "* Performs the symmetrical transformation of a circle with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Circ") Mirrored;
-		Standard_NODISCARD gp_Circ Mirrored (const gp_Pnt & P);
+	:rtype: gp_Circ") Mirrored;
+		gp_Circ Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a circle with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Circ") Mirrored;
-		Standard_NODISCARD gp_Circ Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Circ") Mirrored;
+		gp_Circ Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a circle with respect to a plane. The axis placement A2 locates the plane of the of the symmetry : (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Circ") Mirrored;
-		Standard_NODISCARD gp_Circ Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Circ") Mirrored;
+		gp_Circ Mirrored (const gp_Ax2 & A2);
 
 		/****************** Position ******************/
 		%feature("compactdefaultargs") Position;
@@ -1679,8 +1679,8 @@ class gp_Circ {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Circ") Rotated;
-		Standard_NODISCARD gp_Circ Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Circ") Rotated;
+		gp_Circ Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -1698,8 +1698,8 @@ class gp_Circ {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Circ") Scaled;
-		Standard_NODISCARD gp_Circ Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Circ") Scaled;
+		gp_Circ Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -1753,8 +1753,8 @@ class gp_Circ {
 		%feature("autodoc", "* Transforms a circle with the transformation T from class Trsf.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Circ") Transformed;
-		Standard_NODISCARD gp_Circ Transformed (const gp_Trsf & T);
+	:rtype: gp_Circ") Transformed;
+		gp_Circ Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -1777,8 +1777,8 @@ class gp_Circ {
 		%feature("autodoc", "* Translates a circle in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Circ") Translated;
-		Standard_NODISCARD gp_Circ Translated (const gp_Vec & V);
+	:rtype: gp_Circ") Translated;
+		gp_Circ Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -1787,8 +1787,8 @@ class gp_Circ {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Circ") Translated;
-		Standard_NODISCARD gp_Circ Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Circ") Translated;
+		gp_Circ Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** XAxis ******************/
 		%feature("compactdefaultargs") XAxis;
@@ -1918,16 +1918,16 @@ class gp_Circ2d {
 		%feature("autodoc", "* Performs the symmetrical transformation of a circle with respect to the point P which is the center of the symmetry
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Circ2d") Mirrored;
-		Standard_NODISCARD gp_Circ2d Mirrored (const gp_Pnt2d & P);
+	:rtype: gp_Circ2d") Mirrored;
+		gp_Circ2d Mirrored (const gp_Pnt2d & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a circle with respect to an axis placement which is the axis of the symmetry.
 	:param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Circ2d") Mirrored;
-		Standard_NODISCARD gp_Circ2d Mirrored (const gp_Ax2d & A);
+	:rtype: gp_Circ2d") Mirrored;
+		gp_Circ2d Mirrored (const gp_Ax2d & A);
 
 		/****************** Position ******************/
 		%feature("compactdefaultargs") Position;
@@ -1950,8 +1950,8 @@ class gp_Circ2d {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the orientation of the local coordinate system of this circle (the 'Y Direction' is reversed) and therefore changes the implicit orientation of this circle. Reversed creates a new circle.
-	:rtype: Standard_NODISCARD gp_Circ2d") Reversed;
-		Standard_NODISCARD gp_Circ2d Reversed ();
+	:rtype: gp_Circ2d") Reversed;
+		gp_Circ2d Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -1969,8 +1969,8 @@ class gp_Circ2d {
 	:type P: gp_Pnt2d
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Circ2d") Rotated;
-		Standard_NODISCARD gp_Circ2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
+	:rtype: gp_Circ2d") Rotated;
+		gp_Circ2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -1988,8 +1988,8 @@ class gp_Circ2d {
 	:type P: gp_Pnt2d
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Circ2d") Scaled;
-		Standard_NODISCARD gp_Circ2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
+	:rtype: gp_Circ2d") Scaled;
+		gp_Circ2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -2051,8 +2051,8 @@ class gp_Circ2d {
 		%feature("autodoc", "* Transforms a circle with the transformation T from class Trsf2d.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Circ2d") Transformed;
-		Standard_NODISCARD gp_Circ2d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Circ2d") Transformed;
+		gp_Circ2d Transformed (const gp_Trsf2d & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -2075,8 +2075,8 @@ class gp_Circ2d {
 		%feature("autodoc", "* Translates a circle in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Circ2d") Translated;
-		Standard_NODISCARD gp_Circ2d Translated (const gp_Vec2d & V);
+	:rtype: gp_Circ2d") Translated;
+		gp_Circ2d Translated (const gp_Vec2d & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -2085,8 +2085,8 @@ class gp_Circ2d {
 	:type P1: gp_Pnt2d
 	:param P2:
 	:type P2: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Circ2d") Translated;
-		Standard_NODISCARD gp_Circ2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
+	:rtype: gp_Circ2d") Translated;
+		gp_Circ2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
 
 		/****************** XAxis ******************/
 		%feature("compactdefaultargs") XAxis;
@@ -2219,24 +2219,24 @@ class gp_Cone {
 		%feature("autodoc", "* Performs the symmetrical transformation of a cone with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Cone") Mirrored;
-		Standard_NODISCARD gp_Cone Mirrored (const gp_Pnt & P);
+	:rtype: gp_Cone") Mirrored;
+		gp_Cone Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a cone with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Cone") Mirrored;
-		Standard_NODISCARD gp_Cone Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Cone") Mirrored;
+		gp_Cone Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a cone with respect to a plane. The axis placement A2 locates the plane of the of the symmetry : (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Cone") Mirrored;
-		Standard_NODISCARD gp_Cone Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Cone") Mirrored;
+		gp_Cone Mirrored (const gp_Ax2 & A2);
 
 		/****************** Position ******************/
 		%feature("compactdefaultargs") Position;
@@ -2266,8 +2266,8 @@ class gp_Cone {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Cone") Rotated;
-		Standard_NODISCARD gp_Cone Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Cone") Rotated;
+		gp_Cone Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -2285,8 +2285,8 @@ class gp_Cone {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Cone") Scaled;
-		Standard_NODISCARD gp_Cone Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Cone") Scaled;
+		gp_Cone Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SemiAngle ******************/
 		%feature("compactdefaultargs") SemiAngle;
@@ -2346,8 +2346,8 @@ class gp_Cone {
 		%feature("autodoc", "* Transforms a cone with the transformation T from class Trsf.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Cone") Transformed;
-		Standard_NODISCARD gp_Cone Transformed (const gp_Trsf & T);
+	:rtype: gp_Cone") Transformed;
+		gp_Cone Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -2370,8 +2370,8 @@ class gp_Cone {
 		%feature("autodoc", "* Translates a cone in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Cone") Translated;
-		Standard_NODISCARD gp_Cone Translated (const gp_Vec & V);
+	:rtype: gp_Cone") Translated;
+		gp_Cone Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -2380,8 +2380,8 @@ class gp_Cone {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Cone") Translated;
-		Standard_NODISCARD gp_Cone Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Cone") Translated;
+		gp_Cone Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** UReverse ******************/
 		%feature("compactdefaultargs") UReverse;
@@ -2510,24 +2510,24 @@ class gp_Cylinder {
 		%feature("autodoc", "* Performs the symmetrical transformation of a cylinder with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Cylinder") Mirrored;
-		Standard_NODISCARD gp_Cylinder Mirrored (const gp_Pnt & P);
+	:rtype: gp_Cylinder") Mirrored;
+		gp_Cylinder Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a cylinder with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Cylinder") Mirrored;
-		Standard_NODISCARD gp_Cylinder Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Cylinder") Mirrored;
+		gp_Cylinder Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a cylinder with respect to a plane. The axis placement A2 locates the plane of the of the symmetry : (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Cylinder") Mirrored;
-		Standard_NODISCARD gp_Cylinder Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Cylinder") Mirrored;
+		gp_Cylinder Mirrored (const gp_Ax2 & A2);
 
 		/****************** Position ******************/
 		%feature("compactdefaultargs") Position;
@@ -2557,8 +2557,8 @@ class gp_Cylinder {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Cylinder") Rotated;
-		Standard_NODISCARD gp_Cylinder Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Cylinder") Rotated;
+		gp_Cylinder Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -2576,8 +2576,8 @@ class gp_Cylinder {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Cylinder") Scaled;
-		Standard_NODISCARD gp_Cylinder Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Cylinder") Scaled;
+		gp_Cylinder Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -2623,8 +2623,8 @@ class gp_Cylinder {
 		%feature("autodoc", "* Transforms a cylinder with the transformation T from class Trsf.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Cylinder") Transformed;
-		Standard_NODISCARD gp_Cylinder Transformed (const gp_Trsf & T);
+	:rtype: gp_Cylinder") Transformed;
+		gp_Cylinder Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -2647,8 +2647,8 @@ class gp_Cylinder {
 		%feature("autodoc", "* Translates a cylinder in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Cylinder") Translated;
-		Standard_NODISCARD gp_Cylinder Translated (const gp_Vec & V);
+	:rtype: gp_Cylinder") Translated;
+		gp_Cylinder Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -2657,8 +2657,8 @@ class gp_Cylinder {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Cylinder") Translated;
-		Standard_NODISCARD gp_Cylinder Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Cylinder") Translated;
+		gp_Cylinder Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** UReverse ******************/
 		%feature("compactdefaultargs") UReverse;
@@ -2777,16 +2777,16 @@ class gp_Dir {
 	:type V1: gp_Dir
 	:param V2:
 	:type V2: gp_Dir
-	:rtype: Standard_NODISCARD gp_Dir") CrossCrossed;
-		Standard_NODISCARD gp_Dir CrossCrossed (const gp_Dir & V1,const gp_Dir & V2);
+	:rtype: gp_Dir") CrossCrossed;
+		gp_Dir CrossCrossed (const gp_Dir & V1,const gp_Dir & V2);
 
 		/****************** Crossed ******************/
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "* Computes the triple vector product. <self> ^ (V1 ^ V2) Raises the exception ConstructionError if V1 and V2 are parallel or <self> and (V1^V2) are parallel because the computed vector can't be normalized to create a direction.
 	:param Right:
 	:type Right: gp_Dir
-	:rtype: Standard_NODISCARD gp_Dir") Crossed;
-		Standard_NODISCARD gp_Dir Crossed (const gp_Dir & Right);
+	:rtype: gp_Dir") Crossed;
+		gp_Dir Crossed (const gp_Dir & Right);
 
 		/****************** Dot ******************/
 		%feature("compactdefaultargs") Dot;
@@ -2872,24 +2872,24 @@ class gp_Dir {
 		%feature("autodoc", "* Performs the symmetrical transformation of a direction with respect to the direction V which is the center of the symmetry.
 	:param V:
 	:type V: gp_Dir
-	:rtype: Standard_NODISCARD gp_Dir") Mirrored;
-		Standard_NODISCARD gp_Dir Mirrored (const gp_Dir & V);
+	:rtype: gp_Dir") Mirrored;
+		gp_Dir Mirrored (const gp_Dir & V);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a direction with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Dir") Mirrored;
-		Standard_NODISCARD gp_Dir Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Dir") Mirrored;
+		gp_Dir Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a direction with respect to a plane. The axis placement A2 locates the plane of the symmetry : (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Dir") Mirrored;
-		Standard_NODISCARD gp_Dir Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Dir") Mirrored;
+		gp_Dir Mirrored (const gp_Ax2 & A2);
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
@@ -2899,8 +2899,8 @@ class gp_Dir {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the orientation of a direction geometric transformations Performs the symmetrical transformation of a direction with respect to the direction V which is the center of the symmetry.]
-	:rtype: Standard_NODISCARD gp_Dir") Reversed;
-		Standard_NODISCARD gp_Dir Reversed ();
+	:rtype: gp_Dir") Reversed;
+		gp_Dir Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -2918,8 +2918,8 @@ class gp_Dir {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Dir") Rotated;
-		Standard_NODISCARD gp_Dir Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Dir") Rotated;
+		gp_Dir Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -2987,8 +2987,8 @@ class gp_Dir {
 		%feature("autodoc", "* Transforms a direction with a 'Trsf' from gp. Warnings : If the scale factor of the 'Trsf' T is negative then the direction <self> is reversed.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Dir") Transformed;
-		Standard_NODISCARD gp_Dir Transformed (const gp_Trsf & T);
+	:rtype: gp_Dir") Transformed;
+		gp_Dir Transformed (const gp_Trsf & T);
 
 		/****************** X ******************/
 		%feature("compactdefaultargs") X;
@@ -3057,8 +3057,8 @@ class gp_Dir {
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
-		%feature("autodoc", ":rtype: Standard_NODISCARD gp_Dir") operator -;
-		Standard_NODISCARD gp_Dir operator - ();
+		%feature("autodoc", ":rtype: gp_Dir") operator -;
+		gp_Dir operator - ();
 
 };
 
@@ -3106,8 +3106,8 @@ class gp_Dir2d {
 		%feature("autodoc", "* Computes the cross product between two directions.
 	:param Right:
 	:type Right: gp_Dir2d
-	:rtype: Standard_NODISCARD float") Crossed;
-		Standard_NODISCARD Standard_Real Crossed (const gp_Dir2d & Right);
+	:rtype: float") Crossed;
+		Standard_Real Crossed (const gp_Dir2d & Right);
 
 		/****************** Dot ******************/
 		%feature("compactdefaultargs") Dot;
@@ -3176,16 +3176,16 @@ class gp_Dir2d {
 		%feature("autodoc", "* Performs the symmetrical transformation of a direction with respect to the direction V which is the center of the symmetry.
 	:param V:
 	:type V: gp_Dir2d
-	:rtype: Standard_NODISCARD gp_Dir2d") Mirrored;
-		Standard_NODISCARD gp_Dir2d Mirrored (const gp_Dir2d & V);
+	:rtype: gp_Dir2d") Mirrored;
+		gp_Dir2d Mirrored (const gp_Dir2d & V);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a direction with respect to an axis placement which is the axis of the symmetry.
 	:param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Dir2d") Mirrored;
-		Standard_NODISCARD gp_Dir2d Mirrored (const gp_Ax2d & A);
+	:rtype: gp_Dir2d") Mirrored;
+		gp_Dir2d Mirrored (const gp_Ax2d & A);
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
@@ -3195,8 +3195,8 @@ class gp_Dir2d {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the orientation of a direction
-	:rtype: Standard_NODISCARD gp_Dir2d") Reversed;
-		Standard_NODISCARD gp_Dir2d Reversed ();
+	:rtype: gp_Dir2d") Reversed;
+		gp_Dir2d Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -3210,8 +3210,8 @@ class gp_Dir2d {
 		%feature("autodoc", "* Rotates a direction. Ang is the angular value of the rotation in radians.
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Dir2d") Rotated;
-		Standard_NODISCARD gp_Dir2d Rotated (const Standard_Real Ang);
+	:rtype: gp_Dir2d") Rotated;
+		gp_Dir2d Rotated (const Standard_Real Ang);
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -3269,8 +3269,8 @@ class gp_Dir2d {
 		%feature("autodoc", "* Transforms a direction with the 'Trsf' T. Warnings : If the scale factor of the 'Trsf' T is negative then the direction <self> is reversed.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Dir2d") Transformed;
-		Standard_NODISCARD gp_Dir2d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Dir2d") Transformed;
+		gp_Dir2d Transformed (const gp_Trsf2d & T);
 
 		/****************** X ******************/
 		%feature("compactdefaultargs") X;
@@ -3331,8 +3331,8 @@ class gp_Dir2d {
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
-		%feature("autodoc", ":rtype: Standard_NODISCARD gp_Dir2d") operator -;
-		Standard_NODISCARD gp_Dir2d operator - ();
+		%feature("autodoc", ":rtype: gp_Dir2d") operator -;
+		gp_Dir2d operator - ();
 
 };
 
@@ -3441,24 +3441,24 @@ class gp_Elips {
 		%feature("autodoc", "* Performs the symmetrical transformation of an ellipse with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Elips") Mirrored;
-		Standard_NODISCARD gp_Elips Mirrored (const gp_Pnt & P);
+	:rtype: gp_Elips") Mirrored;
+		gp_Elips Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an ellipse with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Elips") Mirrored;
-		Standard_NODISCARD gp_Elips Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Elips") Mirrored;
+		gp_Elips Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an ellipse with respect to a plane. The axis placement A2 locates the plane of the symmetry (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Elips") Mirrored;
-		Standard_NODISCARD gp_Elips Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Elips") Mirrored;
+		gp_Elips Mirrored (const gp_Ax2 & A2);
 
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
@@ -3488,8 +3488,8 @@ class gp_Elips {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Elips") Rotated;
-		Standard_NODISCARD gp_Elips Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Elips") Rotated;
+		gp_Elips Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -3507,8 +3507,8 @@ class gp_Elips {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Elips") Scaled;
-		Standard_NODISCARD gp_Elips Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Elips") Scaled;
+		gp_Elips Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -3562,8 +3562,8 @@ class gp_Elips {
 		%feature("autodoc", "* Transforms an ellipse with the transformation T from class Trsf.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Elips") Transformed;
-		Standard_NODISCARD gp_Elips Transformed (const gp_Trsf & T);
+	:rtype: gp_Elips") Transformed;
+		gp_Elips Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -3586,8 +3586,8 @@ class gp_Elips {
 		%feature("autodoc", "* Translates an ellipse in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Elips") Translated;
-		Standard_NODISCARD gp_Elips Translated (const gp_Vec & V);
+	:rtype: gp_Elips") Translated;
+		gp_Elips Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -3596,8 +3596,8 @@ class gp_Elips {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Elips") Translated;
-		Standard_NODISCARD gp_Elips Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Elips") Translated;
+		gp_Elips Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** XAxis ******************/
 		%feature("compactdefaultargs") XAxis;
@@ -3753,16 +3753,16 @@ class gp_Elips2d {
 		%feature("autodoc", "* Performs the symmetrical transformation of a ellipse with respect to the point P which is the center of the symmetry
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Elips2d") Mirrored;
-		Standard_NODISCARD gp_Elips2d Mirrored (const gp_Pnt2d & P);
+	:rtype: gp_Elips2d") Mirrored;
+		gp_Elips2d Mirrored (const gp_Pnt2d & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a ellipse with respect to an axis placement which is the axis of the symmetry.
 	:param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Elips2d") Mirrored;
-		Standard_NODISCARD gp_Elips2d Mirrored (const gp_Ax2d & A);
+	:rtype: gp_Elips2d") Mirrored;
+		gp_Elips2d Mirrored (const gp_Ax2d & A);
 
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
@@ -3777,8 +3777,8 @@ class gp_Elips2d {
 
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
-		%feature("autodoc", ":rtype: Standard_NODISCARD gp_Elips2d") Reversed;
-		Standard_NODISCARD gp_Elips2d Reversed ();
+		%feature("autodoc", ":rtype: gp_Elips2d") Reversed;
+		gp_Elips2d Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -3795,8 +3795,8 @@ class gp_Elips2d {
 	:type P: gp_Pnt2d
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Elips2d") Rotated;
-		Standard_NODISCARD gp_Elips2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
+	:rtype: gp_Elips2d") Rotated;
+		gp_Elips2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -3814,8 +3814,8 @@ class gp_Elips2d {
 	:type P: gp_Pnt2d
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Elips2d") Scaled;
-		Standard_NODISCARD gp_Elips2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
+	:rtype: gp_Elips2d") Scaled;
+		gp_Elips2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -3877,8 +3877,8 @@ class gp_Elips2d {
 		%feature("autodoc", "* Transforms an ellipse with the transformation T from class Trsf2d.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Elips2d") Transformed;
-		Standard_NODISCARD gp_Elips2d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Elips2d") Transformed;
+		gp_Elips2d Transformed (const gp_Trsf2d & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -3901,8 +3901,8 @@ class gp_Elips2d {
 		%feature("autodoc", "* Translates a ellipse in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Elips2d") Translated;
-		Standard_NODISCARD gp_Elips2d Translated (const gp_Vec2d & V);
+	:rtype: gp_Elips2d") Translated;
+		gp_Elips2d Translated (const gp_Vec2d & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -3911,8 +3911,8 @@ class gp_Elips2d {
 	:type P1: gp_Pnt2d
 	:param P2:
 	:type P2: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Elips2d") Translated;
-		Standard_NODISCARD gp_Elips2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
+	:rtype: gp_Elips2d") Translated;
+		gp_Elips2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
 
 		/****************** XAxis ******************/
 		%feature("compactdefaultargs") XAxis;
@@ -3987,8 +3987,8 @@ class gp_GTrsf {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Computes the reverse transformation. Raises an exception if the matrix of the transformation is not inversible.
-	:rtype: Standard_NODISCARD gp_GTrsf") Inverted;
-		Standard_NODISCARD gp_GTrsf Inverted ();
+	:rtype: gp_GTrsf") Inverted;
+		gp_GTrsf Inverted ();
 
 		/****************** IsNegative ******************/
 		%feature("compactdefaultargs") IsNegative;
@@ -4007,8 +4007,8 @@ class gp_GTrsf {
 		%feature("autodoc", "* Computes the transformation composed from T and <self>. In a C++ implementation you can also write Tcomposed = <self> * T. Example : GTrsf T1, T2, Tcomp; ............... //composition : Tcomp = T2.Multiplied(T1); // or (Tcomp = T2 * T1) // transformation of a point XYZ P(10.,3.,4.); XYZ P1(P); Tcomp.Transforms(P1); //using Tcomp XYZ P2(P); T1.Transforms(P2); //using T1 then T2 T2.Transforms(P2); // P1 = P2 !!!
 	:param T:
 	:type T: gp_GTrsf
-	:rtype: Standard_NODISCARD gp_GTrsf") Multiplied;
-		Standard_NODISCARD gp_GTrsf Multiplied (const gp_GTrsf & T);
+	:rtype: gp_GTrsf") Multiplied;
+		gp_GTrsf Multiplied (const gp_GTrsf & T);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -4030,8 +4030,8 @@ class gp_GTrsf {
 		%feature("autodoc", "* Computes: - the product of this transformation multiplied by itself N times, if N is positive, or - the product of the inverse of this transformation multiplied by itself |N| times, if N is negative. If N equals zero, the result is equal to the Identity transformation. I.e.: <self> * <self> * .......* <self>, N time. if N =0 <self> = Identity if N < 0 <self> = <self>.Inverse() *...........* <self>.Inverse(). //! Raises an exception if N < 0 and if the matrix of the transformation not inversible.
 	:param N:
 	:type N: int
-	:rtype: Standard_NODISCARD gp_GTrsf") Powered;
-		Standard_NODISCARD gp_GTrsf Powered (const Standard_Integer N);
+	:rtype: gp_GTrsf") Powered;
+		gp_GTrsf Powered (const Standard_Integer N);
 
 		/****************** PreMultiply ******************/
 		%feature("compactdefaultargs") PreMultiply;
@@ -4177,8 +4177,8 @@ class gp_GTrsf {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param T:
 	:type T: gp_GTrsf
-	:rtype: Standard_NODISCARD gp_GTrsf") operator *;
-		Standard_NODISCARD gp_GTrsf operator * (const gp_GTrsf & T);
+	:rtype: gp_GTrsf") operator *;
+		gp_GTrsf operator * (const gp_GTrsf & T);
 
 
         %extend{
@@ -4220,8 +4220,8 @@ class gp_GTrsf2d {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Computes the reverse transformation. Raised an exception if the matrix of the transformation is not inversible.
-	:rtype: Standard_NODISCARD gp_GTrsf2d") Inverted;
-		Standard_NODISCARD gp_GTrsf2d Inverted ();
+	:rtype: gp_GTrsf2d") Inverted;
+		gp_GTrsf2d Inverted ();
 
 		/****************** IsNegative ******************/
 		%feature("compactdefaultargs") IsNegative;
@@ -4240,8 +4240,8 @@ class gp_GTrsf2d {
 		%feature("autodoc", "* Computes the transformation composed with T and <self>. In a C++ implementation you can also write Tcomposed = <self> * T. Example : GTrsf2d T1, T2, Tcomp; ............... //composition : Tcomp = T2.Multiplied(T1); // or (Tcomp = T2 * T1) // transformation of a point XY P(10.,3.); XY P1(P); Tcomp.Transforms(P1); //using Tcomp XY P2(P); T1.Transforms(P2); //using T1 then T2 T2.Transforms(P2); // P1 = P2 !!!
 	:param T:
 	:type T: gp_GTrsf2d
-	:rtype: Standard_NODISCARD gp_GTrsf2d") Multiplied;
-		Standard_NODISCARD gp_GTrsf2d Multiplied (const gp_GTrsf2d & T);
+	:rtype: gp_GTrsf2d") Multiplied;
+		gp_GTrsf2d Multiplied (const gp_GTrsf2d & T);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -4262,8 +4262,8 @@ class gp_GTrsf2d {
 		%feature("autodoc", "* Computes the following composition of transformations <self> * <self> * .......* <self>, N time. if N = 0 <self> = Identity if N < 0 <self> = <self>.Inverse() *...........* <self>.Inverse(). //! Raises an exception if N < 0 and if the matrix of the transformation is not inversible.
 	:param N:
 	:type N: int
-	:rtype: Standard_NODISCARD gp_GTrsf2d") Powered;
-		Standard_NODISCARD gp_GTrsf2d Powered (const Standard_Integer N);
+	:rtype: gp_GTrsf2d") Powered;
+		gp_GTrsf2d Powered (const Standard_Integer N);
 
 		/****************** PreMultiply ******************/
 		%feature("compactdefaultargs") PreMultiply;
@@ -4323,8 +4323,8 @@ class gp_GTrsf2d {
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", ":param Coord:
 	:type Coord: gp_XY
-	:rtype: Standard_NODISCARD gp_XY") Transformed;
-		Standard_NODISCARD gp_XY Transformed (const gp_XY & Coord);
+	:rtype: gp_XY") Transformed;
+		gp_XY Transformed (const gp_XY & Coord);
 
 		/****************** Transforms ******************/
 		%feature("compactdefaultargs") Transforms;
@@ -4399,8 +4399,8 @@ class gp_GTrsf2d {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param T:
 	:type T: gp_GTrsf2d
-	:rtype: Standard_NODISCARD gp_GTrsf2d") operator *;
-		Standard_NODISCARD gp_GTrsf2d operator * (const gp_GTrsf2d & T);
+	:rtype: gp_GTrsf2d") operator *;
+		gp_GTrsf2d operator * (const gp_GTrsf2d & T);
 
 
         %extend{
@@ -4538,24 +4538,24 @@ class gp_Hypr {
 		%feature("autodoc", "* Performs the symmetrical transformation of an hyperbola with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Hypr") Mirrored;
-		Standard_NODISCARD gp_Hypr Mirrored (const gp_Pnt & P);
+	:rtype: gp_Hypr") Mirrored;
+		gp_Hypr Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an hyperbola with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Hypr") Mirrored;
-		Standard_NODISCARD gp_Hypr Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Hypr") Mirrored;
+		gp_Hypr Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an hyperbola with respect to a plane. The axis placement A2 locates the plane of the symmetry (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Hypr") Mirrored;
-		Standard_NODISCARD gp_Hypr Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Hypr") Mirrored;
+		gp_Hypr Mirrored (const gp_Ax2 & A2);
 
 		/****************** OtherBranch ******************/
 		%feature("compactdefaultargs") OtherBranch;
@@ -4591,8 +4591,8 @@ class gp_Hypr {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Hypr") Rotated;
-		Standard_NODISCARD gp_Hypr Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Hypr") Rotated;
+		gp_Hypr Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -4610,8 +4610,8 @@ class gp_Hypr {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Hypr") Scaled;
-		Standard_NODISCARD gp_Hypr Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Hypr") Scaled;
+		gp_Hypr Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -4665,8 +4665,8 @@ class gp_Hypr {
 		%feature("autodoc", "* Transforms an hyperbola with the transformation T from class Trsf.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Hypr") Transformed;
-		Standard_NODISCARD gp_Hypr Transformed (const gp_Trsf & T);
+	:rtype: gp_Hypr") Transformed;
+		gp_Hypr Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -4689,8 +4689,8 @@ class gp_Hypr {
 		%feature("autodoc", "* Translates an hyperbola in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Hypr") Translated;
-		Standard_NODISCARD gp_Hypr Translated (const gp_Vec & V);
+	:rtype: gp_Hypr") Translated;
+		gp_Hypr Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -4699,8 +4699,8 @@ class gp_Hypr {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Hypr") Translated;
-		Standard_NODISCARD gp_Hypr Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Hypr") Translated;
+		gp_Hypr Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** XAxis ******************/
 		%feature("compactdefaultargs") XAxis;
@@ -4874,16 +4874,16 @@ class gp_Hypr2d {
 		%feature("autodoc", "* Performs the symmetrical transformation of an hyperbola with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Hypr2d") Mirrored;
-		Standard_NODISCARD gp_Hypr2d Mirrored (const gp_Pnt2d & P);
+	:rtype: gp_Hypr2d") Mirrored;
+		gp_Hypr2d Mirrored (const gp_Pnt2d & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of an hyperbola with respect to an axis placement which is the axis of the symmetry.
 	:param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Hypr2d") Mirrored;
-		Standard_NODISCARD gp_Hypr2d Mirrored (const gp_Ax2d & A);
+	:rtype: gp_Hypr2d") Mirrored;
+		gp_Hypr2d Mirrored (const gp_Ax2d & A);
 
 		/****************** OtherBranch ******************/
 		%feature("compactdefaultargs") OtherBranch;
@@ -4905,8 +4905,8 @@ class gp_Hypr2d {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the orientation of the local coordinate system of this hyperbola (the 'Y Axis' is reversed). Therefore, the implicit orientation of this hyperbola is reversed. Note: - Reverse assigns the result to this hyperbola, while - Reversed creates a new one.
-	:rtype: Standard_NODISCARD gp_Hypr2d") Reversed;
-		Standard_NODISCARD gp_Hypr2d Reversed ();
+	:rtype: gp_Hypr2d") Reversed;
+		gp_Hypr2d Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -4924,8 +4924,8 @@ class gp_Hypr2d {
 	:type P: gp_Pnt2d
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Hypr2d") Rotated;
-		Standard_NODISCARD gp_Hypr2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
+	:rtype: gp_Hypr2d") Rotated;
+		gp_Hypr2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -4943,8 +4943,8 @@ class gp_Hypr2d {
 	:type P: gp_Pnt2d
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Hypr2d") Scaled;
-		Standard_NODISCARD gp_Hypr2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
+	:rtype: gp_Hypr2d") Scaled;
+		gp_Hypr2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -5006,8 +5006,8 @@ class gp_Hypr2d {
 		%feature("autodoc", "* Transforms an hyperbola with the transformation T from class Trsf2d.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Hypr2d") Transformed;
-		Standard_NODISCARD gp_Hypr2d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Hypr2d") Transformed;
+		gp_Hypr2d Transformed (const gp_Trsf2d & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -5030,8 +5030,8 @@ class gp_Hypr2d {
 		%feature("autodoc", "* Translates an hyperbola in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Hypr2d") Translated;
-		Standard_NODISCARD gp_Hypr2d Translated (const gp_Vec2d & V);
+	:rtype: gp_Hypr2d") Translated;
+		gp_Hypr2d Translated (const gp_Vec2d & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -5040,8 +5040,8 @@ class gp_Hypr2d {
 	:type P1: gp_Pnt2d
 	:param P2:
 	:type P2: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Hypr2d") Translated;
-		Standard_NODISCARD gp_Hypr2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
+	:rtype: gp_Hypr2d") Translated;
+		gp_Hypr2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
 
 		/****************** XAxis ******************/
 		%feature("compactdefaultargs") XAxis;
@@ -5174,24 +5174,24 @@ class gp_Lin {
 		%feature("autodoc", "* Performs the symmetrical transformation of a line with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Lin") Mirrored;
-		Standard_NODISCARD gp_Lin Mirrored (const gp_Pnt & P);
+	:rtype: gp_Lin") Mirrored;
+		gp_Lin Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a line with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Lin") Mirrored;
-		Standard_NODISCARD gp_Lin Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Lin") Mirrored;
+		gp_Lin Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a line with respect to a plane. The axis placement <A2> locates the plane of the symmetry : (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Lin") Mirrored;
-		Standard_NODISCARD gp_Lin Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Lin") Mirrored;
+		gp_Lin Mirrored (const gp_Ax2 & A2);
 
 		/****************** Normal ******************/
 		%feature("compactdefaultargs") Normal;
@@ -5215,8 +5215,8 @@ class gp_Lin {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the direction of the line. Note: - Reverse assigns the result to this line, while - Reversed creates a new one.
-	:rtype: Standard_NODISCARD gp_Lin") Reversed;
-		Standard_NODISCARD gp_Lin Reversed ();
+	:rtype: gp_Lin") Reversed;
+		gp_Lin Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -5234,8 +5234,8 @@ class gp_Lin {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Lin") Rotated;
-		Standard_NODISCARD gp_Lin Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Lin") Rotated;
+		gp_Lin Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -5253,8 +5253,8 @@ class gp_Lin {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Lin") Scaled;
-		Standard_NODISCARD gp_Lin Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Lin") Scaled;
+		gp_Lin Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetDirection ******************/
 		%feature("compactdefaultargs") SetDirection;
@@ -5308,8 +5308,8 @@ class gp_Lin {
 		%feature("autodoc", "* Transforms a line with the transformation T from class Trsf.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Lin") Transformed;
-		Standard_NODISCARD gp_Lin Transformed (const gp_Trsf & T);
+	:rtype: gp_Lin") Transformed;
+		gp_Lin Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -5332,8 +5332,8 @@ class gp_Lin {
 		%feature("autodoc", "* Translates a line in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Lin") Translated;
-		Standard_NODISCARD gp_Lin Translated (const gp_Vec & V);
+	:rtype: gp_Lin") Translated;
+		gp_Lin Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -5342,8 +5342,8 @@ class gp_Lin {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Lin") Translated;
-		Standard_NODISCARD gp_Lin Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Lin") Translated;
+		gp_Lin Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** gp_Lin ******************/
 		%feature("compactdefaultargs") gp_Lin;
@@ -5461,16 +5461,16 @@ class gp_Lin2d {
 		%feature("autodoc", "* Performs the symmetrical transformation of a line with respect to the point <P> which is the center of the symmetry
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Lin2d") Mirrored;
-		Standard_NODISCARD gp_Lin2d Mirrored (const gp_Pnt2d & P);
+	:rtype: gp_Lin2d") Mirrored;
+		gp_Lin2d Mirrored (const gp_Pnt2d & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a line with respect to an axis placement which is the axis of the symmetry.
 	:param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Lin2d") Mirrored;
-		Standard_NODISCARD gp_Lin2d Mirrored (const gp_Ax2d & A);
+	:rtype: gp_Lin2d") Mirrored;
+		gp_Lin2d Mirrored (const gp_Ax2d & A);
 
 		/****************** Normal ******************/
 		%feature("compactdefaultargs") Normal;
@@ -5494,8 +5494,8 @@ class gp_Lin2d {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the positioning axis of this line. Note: - Reverse assigns the result to this line, while - Reversed creates a new one.
-	:rtype: Standard_NODISCARD gp_Lin2d") Reversed;
-		Standard_NODISCARD gp_Lin2d Reversed ();
+	:rtype: gp_Lin2d") Reversed;
+		gp_Lin2d Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -5513,8 +5513,8 @@ class gp_Lin2d {
 	:type P: gp_Pnt2d
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Lin2d") Rotated;
-		Standard_NODISCARD gp_Lin2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
+	:rtype: gp_Lin2d") Rotated;
+		gp_Lin2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -5532,8 +5532,8 @@ class gp_Lin2d {
 	:type P: gp_Pnt2d
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Lin2d") Scaled;
-		Standard_NODISCARD gp_Lin2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
+	:rtype: gp_Lin2d") Scaled;
+		gp_Lin2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
 
 		/****************** SetDirection ******************/
 		%feature("compactdefaultargs") SetDirection;
@@ -5587,8 +5587,8 @@ class gp_Lin2d {
 		%feature("autodoc", "* Transforms a line with the transformation T from class Trsf2d.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Lin2d") Transformed;
-		Standard_NODISCARD gp_Lin2d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Lin2d") Transformed;
+		gp_Lin2d Transformed (const gp_Trsf2d & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -5611,8 +5611,8 @@ class gp_Lin2d {
 		%feature("autodoc", "* Translates a line in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Lin2d") Translated;
-		Standard_NODISCARD gp_Lin2d Translated (const gp_Vec2d & V);
+	:rtype: gp_Lin2d") Translated;
+		gp_Lin2d Translated (const gp_Vec2d & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -5621,8 +5621,8 @@ class gp_Lin2d {
 	:type P1: gp_Pnt2d
 	:param P2:
 	:type P2: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Lin2d") Translated;
-		Standard_NODISCARD gp_Lin2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
+	:rtype: gp_Lin2d") Translated;
+		gp_Lin2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
 
 		/****************** gp_Lin2d ******************/
 		%feature("compactdefaultargs") gp_Lin2d;
@@ -5687,8 +5687,8 @@ class gp_Mat {
 		%feature("autodoc", "* Computes the sum of this matrix and the matrix Other for each coefficient of the matrix : <self>.Coef(i,j) + <Other>.Coef(i,j)
 	:param Other:
 	:type Other: gp_Mat
-	:rtype: Standard_NODISCARD gp_Mat") Added;
-		Standard_NODISCARD gp_Mat Added (const gp_Mat & Other);
+	:rtype: gp_Mat") Added;
+		gp_Mat Added (const gp_Mat & Other);
 
 
         %feature("autodoc","1");
@@ -5735,8 +5735,8 @@ class gp_Mat {
 		%feature("autodoc", "* Divides all the coefficients of the matrix by Scalar
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Mat") Divided;
-		Standard_NODISCARD gp_Mat Divided (const Standard_Real Scalar);
+	:rtype: gp_Mat") Divided;
+		gp_Mat Divided (const Standard_Real Scalar);
 
 
         %feature("autodoc", "1");
@@ -5754,8 +5754,8 @@ class gp_Mat {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Inverses the matrix and raises if the matrix is singular. - Invert assigns the result to this matrix, while - Inverted creates a new one. Warning The Gauss LU decomposition is used to invert the matrix. Consequently, the matrix is considered as singular if the largest pivot found is less than or equal to gp::Resolution(). Exceptions Standard_ConstructionError if this matrix is singular, and therefore cannot be inverted.
-	:rtype: Standard_NODISCARD gp_Mat") Inverted;
-		Standard_NODISCARD gp_Mat Inverted ();
+	:rtype: gp_Mat") Inverted;
+		gp_Mat Inverted ();
 
 		/****************** IsSingular ******************/
 		%feature("compactdefaultargs") IsSingular;
@@ -5768,15 +5768,15 @@ class gp_Mat {
 		%feature("autodoc", "* Computes the product of two matrices <self> * <Other>
 	:param Other:
 	:type Other: gp_Mat
-	:rtype: Standard_NODISCARD gp_Mat") Multiplied;
-		Standard_NODISCARD gp_Mat Multiplied (const gp_Mat & Other);
+	:rtype: gp_Mat") Multiplied;
+		gp_Mat Multiplied (const gp_Mat & Other);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Mat") Multiplied;
-		Standard_NODISCARD gp_Mat Multiplied (const Standard_Real Scalar);
+	:rtype: gp_Mat") Multiplied;
+		gp_Mat Multiplied (const Standard_Real Scalar);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -5806,8 +5806,8 @@ class gp_Mat {
 		%feature("autodoc", "* Computes <self> = <self> * <self> * .......* <self>, N time. if N = 0 <self> = Identity if N < 0 <self> = <self>.Invert() *...........* <self>.Invert(). If N < 0 an exception will be raised if the matrix is not inversible
 	:param N:
 	:type N: int
-	:rtype: Standard_NODISCARD gp_Mat") Powered;
-		Standard_NODISCARD gp_Mat Powered (const Standard_Integer N);
+	:rtype: gp_Mat") Powered;
+		gp_Mat Powered (const Standard_Integer N);
 
 		/****************** PreMultiply ******************/
 		%feature("compactdefaultargs") PreMultiply;
@@ -5944,8 +5944,8 @@ class gp_Mat {
 		%feature("autodoc", "* cOmputes for each coefficient of the matrix : <self>.Coef(i,j) - <Other>.Coef(i,j)
 	:param Other:
 	:type Other: gp_Mat
-	:rtype: Standard_NODISCARD gp_Mat") Subtracted;
-		Standard_NODISCARD gp_Mat Subtracted (const gp_Mat & Other);
+	:rtype: gp_Mat") Subtracted;
+		gp_Mat Subtracted (const gp_Mat & Other);
 
 		/****************** Transpose ******************/
 		%feature("compactdefaultargs") Transpose;
@@ -5955,8 +5955,8 @@ class gp_Mat {
 		/****************** Transposed ******************/
 		%feature("compactdefaultargs") Transposed;
 		%feature("autodoc", "* Transposes the matrix. A(j, i) -> A (i, j)
-	:rtype: Standard_NODISCARD gp_Mat") Transposed;
-		Standard_NODISCARD gp_Mat Transposed ();
+	:rtype: gp_Mat") Transposed;
+		gp_Mat Transposed ();
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
@@ -6013,15 +6013,15 @@ class gp_Mat {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_Mat
-	:rtype: Standard_NODISCARD gp_Mat") operator *;
-		Standard_NODISCARD gp_Mat operator * (const gp_Mat & Other);
+	:rtype: gp_Mat") operator *;
+		gp_Mat operator * (const gp_Mat & Other);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Mat") operator *;
-		Standard_NODISCARD gp_Mat operator * (const Standard_Real Scalar);
+	:rtype: gp_Mat") operator *;
+		gp_Mat operator * (const Standard_Real Scalar);
 
 
         %extend{
@@ -6049,8 +6049,8 @@ class gp_Mat {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_Mat
-	:rtype: Standard_NODISCARD gp_Mat") operator +;
-		Standard_NODISCARD gp_Mat operator + (const gp_Mat & Other);
+	:rtype: gp_Mat") operator +;
+		gp_Mat operator + (const gp_Mat & Other);
 
 
         %extend{
@@ -6067,8 +6067,8 @@ class gp_Mat {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_Mat
-	:rtype: Standard_NODISCARD gp_Mat") operator -;
-		Standard_NODISCARD gp_Mat operator - (const gp_Mat & Other);
+	:rtype: gp_Mat") operator -;
+		gp_Mat operator - (const gp_Mat & Other);
 
 
         %extend{
@@ -6085,8 +6085,8 @@ class gp_Mat {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Mat") operator /;
-		Standard_NODISCARD gp_Mat operator / (const Standard_Real Scalar);
+	:rtype: gp_Mat") operator /;
+		gp_Mat operator / (const Standard_Real Scalar);
 
 
         %extend{
@@ -6126,8 +6126,8 @@ class gp_Mat2d {
 		%feature("autodoc", "* Computes the sum of this matrix and the matrix Other.for each coefficient of the matrix : <self>.Coef(i,j) + <Other>.Coef(i,j) Note: - operator += assigns the result to this matrix, while - operator + creates a new one.
 	:param Other:
 	:type Other: gp_Mat2d
-	:rtype: Standard_NODISCARD gp_Mat2d") Added;
-		Standard_NODISCARD gp_Mat2d Added (const gp_Mat2d & Other);
+	:rtype: gp_Mat2d") Added;
+		gp_Mat2d Added (const gp_Mat2d & Other);
 
 
         %feature("autodoc","1");
@@ -6174,8 +6174,8 @@ class gp_Mat2d {
 		%feature("autodoc", "* Divides all the coefficients of the matrix by a scalar.
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Mat2d") Divided;
-		Standard_NODISCARD gp_Mat2d Divided (const Standard_Real Scalar);
+	:rtype: gp_Mat2d") Divided;
+		gp_Mat2d Divided (const Standard_Real Scalar);
 
 		/****************** Invert ******************/
 		%feature("compactdefaultargs") Invert;
@@ -6185,8 +6185,8 @@ class gp_Mat2d {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Inverses the matrix and raises exception if the matrix is singular.
-	:rtype: Standard_NODISCARD gp_Mat2d") Inverted;
-		Standard_NODISCARD gp_Mat2d Inverted ();
+	:rtype: gp_Mat2d") Inverted;
+		gp_Mat2d Inverted ();
 
 		/****************** IsSingular ******************/
 		%feature("compactdefaultargs") IsSingular;
@@ -6198,15 +6198,15 @@ class gp_Mat2d {
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_Mat2d
-	:rtype: Standard_NODISCARD gp_Mat2d") Multiplied;
-		Standard_NODISCARD gp_Mat2d Multiplied (const gp_Mat2d & Other);
+	:rtype: gp_Mat2d") Multiplied;
+		gp_Mat2d Multiplied (const gp_Mat2d & Other);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Mat2d") Multiplied;
-		Standard_NODISCARD gp_Mat2d Multiplied (const Standard_Real Scalar);
+	:rtype: gp_Mat2d") Multiplied;
+		gp_Mat2d Multiplied (const Standard_Real Scalar);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -6236,8 +6236,8 @@ class gp_Mat2d {
 		%feature("autodoc", "* computes <self> = <self> * <self> * .......* <self>, N time. if N = 0 <self> = Identity if N < 0 <self> = <self>.Invert() *...........* <self>.Invert(). If N < 0 an exception can be raised if the matrix is not inversible
 	:param N:
 	:type N: int
-	:rtype: Standard_NODISCARD gp_Mat2d") Powered;
-		Standard_NODISCARD gp_Mat2d Powered (const Standard_Integer N);
+	:rtype: gp_Mat2d") Powered;
+		gp_Mat2d Powered (const Standard_Integer N);
 
 		/****************** PreMultiply ******************/
 		%feature("compactdefaultargs") PreMultiply;
@@ -6351,8 +6351,8 @@ class gp_Mat2d {
 		%feature("autodoc", "* Computes for each coefficient of the matrix : <self>.Coef(i,j) - <Other>.Coef(i,j)
 	:param Other:
 	:type Other: gp_Mat2d
-	:rtype: Standard_NODISCARD gp_Mat2d") Subtracted;
-		Standard_NODISCARD gp_Mat2d Subtracted (const gp_Mat2d & Other);
+	:rtype: gp_Mat2d") Subtracted;
+		gp_Mat2d Subtracted (const gp_Mat2d & Other);
 
 		/****************** Transpose ******************/
 		%feature("compactdefaultargs") Transpose;
@@ -6362,8 +6362,8 @@ class gp_Mat2d {
 		/****************** Transposed ******************/
 		%feature("compactdefaultargs") Transposed;
 		%feature("autodoc", "* Transposes the matrix. A(j, i) -> A (i, j)
-	:rtype: Standard_NODISCARD gp_Mat2d") Transposed;
-		Standard_NODISCARD gp_Mat2d Transposed ();
+	:rtype: gp_Mat2d") Transposed;
+		gp_Mat2d Transposed ();
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
@@ -6395,15 +6395,15 @@ class gp_Mat2d {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_Mat2d
-	:rtype: Standard_NODISCARD gp_Mat2d") operator *;
-		Standard_NODISCARD gp_Mat2d operator * (const gp_Mat2d & Other);
+	:rtype: gp_Mat2d") operator *;
+		gp_Mat2d operator * (const gp_Mat2d & Other);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Mat2d") operator *;
-		Standard_NODISCARD gp_Mat2d operator * (const Standard_Real Scalar);
+	:rtype: gp_Mat2d") operator *;
+		gp_Mat2d operator * (const Standard_Real Scalar);
 
 
         %extend{
@@ -6420,8 +6420,8 @@ class gp_Mat2d {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_Mat2d
-	:rtype: Standard_NODISCARD gp_Mat2d") operator +;
-		Standard_NODISCARD gp_Mat2d operator + (const gp_Mat2d & Other);
+	:rtype: gp_Mat2d") operator +;
+		gp_Mat2d operator + (const gp_Mat2d & Other);
 
 
         %extend{
@@ -6438,8 +6438,8 @@ class gp_Mat2d {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_Mat2d
-	:rtype: Standard_NODISCARD gp_Mat2d") operator -;
-		Standard_NODISCARD gp_Mat2d operator - (const gp_Mat2d & Other);
+	:rtype: gp_Mat2d") operator -;
+		gp_Mat2d operator - (const gp_Mat2d & Other);
 
 
         %extend{
@@ -6456,8 +6456,8 @@ class gp_Mat2d {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Mat2d") operator /;
-		Standard_NODISCARD gp_Mat2d operator / (const Standard_Real Scalar);
+	:rtype: gp_Mat2d") operator /;
+		gp_Mat2d operator / (const Standard_Real Scalar);
 
 
         %extend{
@@ -6541,24 +6541,24 @@ class gp_Parab {
 		%feature("autodoc", "* Performs the symmetrical transformation of a parabola with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Parab") Mirrored;
-		Standard_NODISCARD gp_Parab Mirrored (const gp_Pnt & P);
+	:rtype: gp_Parab") Mirrored;
+		gp_Parab Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a parabola with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Parab") Mirrored;
-		Standard_NODISCARD gp_Parab Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Parab") Mirrored;
+		gp_Parab Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a parabola with respect to a plane. The axis placement A2 locates the plane of the symmetry (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Parab") Mirrored;
-		Standard_NODISCARD gp_Parab Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Parab") Mirrored;
+		gp_Parab Mirrored (const gp_Ax2 & A2);
 
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
@@ -6588,8 +6588,8 @@ class gp_Parab {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Parab") Rotated;
-		Standard_NODISCARD gp_Parab Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Parab") Rotated;
+		gp_Parab Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -6607,8 +6607,8 @@ class gp_Parab {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Parab") Scaled;
-		Standard_NODISCARD gp_Parab Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Parab") Scaled;
+		gp_Parab Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -6654,8 +6654,8 @@ class gp_Parab {
 		%feature("autodoc", "* Transforms a parabola with the transformation T from class Trsf.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Parab") Transformed;
-		Standard_NODISCARD gp_Parab Transformed (const gp_Trsf & T);
+	:rtype: gp_Parab") Transformed;
+		gp_Parab Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -6678,8 +6678,8 @@ class gp_Parab {
 		%feature("autodoc", "* Translates a parabola in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Parab") Translated;
-		Standard_NODISCARD gp_Parab Translated (const gp_Vec & V);
+	:rtype: gp_Parab") Translated;
+		gp_Parab Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -6688,8 +6688,8 @@ class gp_Parab {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Parab") Translated;
-		Standard_NODISCARD gp_Parab Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Parab") Translated;
+		gp_Parab Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** XAxis ******************/
 		%feature("compactdefaultargs") XAxis;
@@ -6823,16 +6823,16 @@ class gp_Parab2d {
 		%feature("autodoc", "* Performs the symmetrical transformation of a parabola with respect to the point P which is the center of the symmetry
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Parab2d") Mirrored;
-		Standard_NODISCARD gp_Parab2d Mirrored (const gp_Pnt2d & P);
+	:rtype: gp_Parab2d") Mirrored;
+		gp_Parab2d Mirrored (const gp_Pnt2d & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a parabola with respect to an axis placement which is the axis of the symmetry.
 	:param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Parab2d") Mirrored;
-		Standard_NODISCARD gp_Parab2d Mirrored (const gp_Ax2d & A);
+	:rtype: gp_Parab2d") Mirrored;
+		gp_Parab2d Mirrored (const gp_Ax2d & A);
 
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
@@ -6848,8 +6848,8 @@ class gp_Parab2d {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the orientation of the local coordinate system of this parabola (the 'Y Direction' is reversed). Therefore, the implicit orientation of this parabola is reversed. Note: - Reverse assigns the result to this parabola, while - Reversed creates a new one.
-	:rtype: Standard_NODISCARD gp_Parab2d") Reversed;
-		Standard_NODISCARD gp_Parab2d Reversed ();
+	:rtype: gp_Parab2d") Reversed;
+		gp_Parab2d Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -6867,8 +6867,8 @@ class gp_Parab2d {
 	:type P: gp_Pnt2d
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Parab2d") Rotated;
-		Standard_NODISCARD gp_Parab2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
+	:rtype: gp_Parab2d") Rotated;
+		gp_Parab2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -6886,8 +6886,8 @@ class gp_Parab2d {
 	:type P: gp_Pnt2d
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Parab2d") Scaled;
-		Standard_NODISCARD gp_Parab2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
+	:rtype: gp_Parab2d") Scaled;
+		gp_Parab2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -6933,8 +6933,8 @@ class gp_Parab2d {
 		%feature("autodoc", "* Transforms an parabola with the transformation T from class Trsf2d.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Parab2d") Transformed;
-		Standard_NODISCARD gp_Parab2d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Parab2d") Transformed;
+		gp_Parab2d Transformed (const gp_Trsf2d & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -6957,8 +6957,8 @@ class gp_Parab2d {
 		%feature("autodoc", "* Translates a parabola in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Parab2d") Translated;
-		Standard_NODISCARD gp_Parab2d Translated (const gp_Vec2d & V);
+	:rtype: gp_Parab2d") Translated;
+		gp_Parab2d Translated (const gp_Vec2d & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -6967,8 +6967,8 @@ class gp_Parab2d {
 	:type P1: gp_Pnt2d
 	:param P2:
 	:type P2: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Parab2d") Translated;
-		Standard_NODISCARD gp_Parab2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
+	:rtype: gp_Parab2d") Translated;
+		gp_Parab2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
 
 		/****************** gp_Parab2d ******************/
 		%feature("compactdefaultargs") gp_Parab2d;
@@ -7129,24 +7129,24 @@ class gp_Pln {
 		%feature("autodoc", "* Performs the symmetrical transformation of a plane with respect to the point <P> which is the center of the symmetry Warnings : The normal direction to the plane is not changed. The 'XAxis' and the 'YAxis' are reversed.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Pln") Mirrored;
-		Standard_NODISCARD gp_Pln Mirrored (const gp_Pnt & P);
+	:rtype: gp_Pln") Mirrored;
+		gp_Pln Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a plane with respect to an axis placement which is the axis of the symmetry. The transformation is performed on the 'Location' point, on the 'XAxis' and the 'YAxis'. The resulting normal direction is the cross product between the 'XDirection' and the 'YDirection' after transformation if the initial plane was right handed, else it is the opposite.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Pln") Mirrored;
-		Standard_NODISCARD gp_Pln Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Pln") Mirrored;
+		gp_Pln Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a plane with respect to an axis placement. The axis placement <A2> locates the plane of the symmetry. The transformation is performed on the 'Location' point, on the 'XAxis' and the 'YAxis'. The resulting normal direction is the cross product between the 'XDirection' and the 'YDirection' after transformation if the initial plane was right handed, else it is the opposite.
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Pln") Mirrored;
-		Standard_NODISCARD gp_Pln Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Pln") Mirrored;
+		gp_Pln Mirrored (const gp_Ax2 & A2);
 
 		/****************** Position ******************/
 		%feature("compactdefaultargs") Position;
@@ -7170,8 +7170,8 @@ class gp_Pln {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Pln") Rotated;
-		Standard_NODISCARD gp_Pln Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Pln") Rotated;
+		gp_Pln Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -7189,8 +7189,8 @@ class gp_Pln {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Pln") Scaled;
-		Standard_NODISCARD gp_Pln Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Pln") Scaled;
+		gp_Pln Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -7252,8 +7252,8 @@ class gp_Pln {
 		%feature("autodoc", "* Transforms a plane with the transformation T from class Trsf. The transformation is performed on the 'Location' point, on the 'XAxis' and the 'YAxis'. The resulting normal direction is the cross product between the 'XDirection' and the 'YDirection' after transformation.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Pln") Transformed;
-		Standard_NODISCARD gp_Pln Transformed (const gp_Trsf & T);
+	:rtype: gp_Pln") Transformed;
+		gp_Pln Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -7276,8 +7276,8 @@ class gp_Pln {
 		%feature("autodoc", "* Translates a plane in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Pln") Translated;
-		Standard_NODISCARD gp_Pln Translated (const gp_Vec & V);
+	:rtype: gp_Pln") Translated;
+		gp_Pln Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -7286,8 +7286,8 @@ class gp_Pln {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Pln") Translated;
-		Standard_NODISCARD gp_Pln Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Pln") Translated;
+		gp_Pln Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** UReverse ******************/
 		%feature("compactdefaultargs") UReverse;
@@ -7455,24 +7455,24 @@ class gp_Pnt {
 		%feature("autodoc", "* Performs the symmetrical transformation of a point with respect to an axis placement which is the axis of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Pnt") Mirrored;
-		Standard_NODISCARD gp_Pnt Mirrored (const gp_Pnt & P);
+	:rtype: gp_Pnt") Mirrored;
+		gp_Pnt Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a point with respect to a plane. The axis placement A2 locates the plane of the symmetry : (Location, XDirection, YDirection).
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Pnt") Mirrored;
-		Standard_NODISCARD gp_Pnt Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Pnt") Mirrored;
+		gp_Pnt Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Rotates a point. A1 is the axis of the rotation. Ang is the angular value of the rotation in radians.
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Pnt") Mirrored;
-		Standard_NODISCARD gp_Pnt Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Pnt") Mirrored;
+		gp_Pnt Mirrored (const gp_Ax2 & A2);
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -7490,8 +7490,8 @@ class gp_Pnt {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Pnt") Rotated;
-		Standard_NODISCARD gp_Pnt Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Pnt") Rotated;
+		gp_Pnt Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -7509,8 +7509,8 @@ class gp_Pnt {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Pnt") Scaled;
-		Standard_NODISCARD gp_Pnt Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Pnt") Scaled;
+		gp_Pnt Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -7586,8 +7586,8 @@ class gp_Pnt {
 		%feature("autodoc", "* Translates a point in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Pnt") Transformed;
-		Standard_NODISCARD gp_Pnt Transformed (const gp_Trsf & T);
+	:rtype: gp_Pnt") Transformed;
+		gp_Pnt Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -7610,8 +7610,8 @@ class gp_Pnt {
 		%feature("autodoc", "* Translates a point from the point P1 to the point P2.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Pnt") Translated;
-		Standard_NODISCARD gp_Pnt Translated (const gp_Vec & V);
+	:rtype: gp_Pnt") Translated;
+		gp_Pnt Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -7619,8 +7619,8 @@ class gp_Pnt {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Pnt") Translated;
-		Standard_NODISCARD gp_Pnt Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Pnt") Translated;
+		gp_Pnt Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** X ******************/
 		%feature("compactdefaultargs") X;
@@ -7755,16 +7755,16 @@ class gp_Pnt2d {
 		%feature("autodoc", "* Performs the symmetrical transformation of a point with respect to an axis placement which is the axis
 	:param P:
 	:type P: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Pnt2d") Mirrored;
-		Standard_NODISCARD gp_Pnt2d Mirrored (const gp_Pnt2d & P);
+	:rtype: gp_Pnt2d") Mirrored;
+		gp_Pnt2d Mirrored (const gp_Pnt2d & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Rotates a point. A1 is the axis of the rotation. Ang is the angular value of the rotation in radians.
 	:param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Pnt2d") Mirrored;
-		Standard_NODISCARD gp_Pnt2d Mirrored (const gp_Ax2d & A);
+	:rtype: gp_Pnt2d") Mirrored;
+		gp_Pnt2d Mirrored (const gp_Ax2d & A);
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -7782,8 +7782,8 @@ class gp_Pnt2d {
 	:type P: gp_Pnt2d
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Pnt2d") Rotated;
-		Standard_NODISCARD gp_Pnt2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
+	:rtype: gp_Pnt2d") Rotated;
+		gp_Pnt2d Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -7801,8 +7801,8 @@ class gp_Pnt2d {
 	:type P: gp_Pnt2d
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Pnt2d") Scaled;
-		Standard_NODISCARD gp_Pnt2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
+	:rtype: gp_Pnt2d") Scaled;
+		gp_Pnt2d Scaled (const gp_Pnt2d & P,const Standard_Real S);
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -7868,8 +7868,8 @@ class gp_Pnt2d {
 		%feature("autodoc", "* Translates a point in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Pnt2d") Transformed;
-		Standard_NODISCARD gp_Pnt2d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Pnt2d") Transformed;
+		gp_Pnt2d Transformed (const gp_Trsf2d & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -7892,8 +7892,8 @@ class gp_Pnt2d {
 		%feature("autodoc", "* Translates a point from the point P1 to the point P2.
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Pnt2d") Translated;
-		Standard_NODISCARD gp_Pnt2d Translated (const gp_Vec2d & V);
+	:rtype: gp_Pnt2d") Translated;
+		gp_Pnt2d Translated (const gp_Vec2d & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -7901,8 +7901,8 @@ class gp_Pnt2d {
 	:type P1: gp_Pnt2d
 	:param P2:
 	:type P2: gp_Pnt2d
-	:rtype: Standard_NODISCARD gp_Pnt2d") Translated;
-		Standard_NODISCARD gp_Pnt2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
+	:rtype: gp_Pnt2d") Translated;
+		gp_Pnt2d Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
 
 		/****************** X ******************/
 		%feature("compactdefaultargs") X;
@@ -7974,8 +7974,8 @@ class gp_Quaternion {
 		%feature("autodoc", "* Makes sum of quaternion components; result is 'rotations mix'
 	:param theOther:
 	:type theOther: gp_Quaternion
-	:rtype: Standard_NODISCARD gp_Quaternion") Added;
-		Standard_NODISCARD gp_Quaternion Added (const gp_Quaternion & theOther);
+	:rtype: gp_Quaternion") Added;
+		gp_Quaternion Added (const gp_Quaternion & theOther);
 
 		/****************** Dot ******************/
 		%feature("compactdefaultargs") Dot;
@@ -8030,8 +8030,8 @@ class gp_Quaternion {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Return inversed quaternion q^-1
-	:rtype: Standard_NODISCARD gp_Quaternion") Inverted;
-		Standard_NODISCARD gp_Quaternion Inverted ();
+	:rtype: gp_Quaternion") Inverted;
+		gp_Quaternion Inverted ();
 
 		/****************** IsEqual ******************/
 		%feature("compactdefaultargs") IsEqual;
@@ -8046,8 +8046,8 @@ class gp_Quaternion {
 		%feature("autodoc", "* Multiply function - work the same as Matrices multiplying. qq' = (cross(v,v') + wv' + w'v, ww' - dot(v,v')) Result is rotation combination: q' than q (here q=this, q'=theQ). Notices than: qq' != q'q; qq^-1 = q;
 	:param theOther:
 	:type theOther: gp_Quaternion
-	:rtype: Standard_NODISCARD gp_Quaternion") Multiplied;
-		Standard_NODISCARD gp_Quaternion Multiplied (const gp_Quaternion & theOther);
+	:rtype: gp_Quaternion") Multiplied;
+		gp_Quaternion Multiplied (const gp_Quaternion & theOther);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -8068,8 +8068,8 @@ class gp_Quaternion {
 		/****************** Negated ******************/
 		%feature("compactdefaultargs") Negated;
 		%feature("autodoc", "* Returns quaternion with all components negated. Note that this operation does not affect neither rotation operator defined by quaternion nor its norm.
-	:rtype: Standard_NODISCARD gp_Quaternion") Negated;
-		Standard_NODISCARD gp_Quaternion Negated ();
+	:rtype: gp_Quaternion") Negated;
+		gp_Quaternion Negated ();
 
 		/****************** Norm ******************/
 		%feature("compactdefaultargs") Norm;
@@ -8086,8 +8086,8 @@ class gp_Quaternion {
 		/****************** Normalized ******************/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "* Returns quaternion scaled so that its norm goes to 1.
-	:rtype: Standard_NODISCARD gp_Quaternion") Normalized;
-		Standard_NODISCARD gp_Quaternion Normalized ();
+	:rtype: gp_Quaternion") Normalized;
+		gp_Quaternion Normalized ();
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
@@ -8098,8 +8098,8 @@ class gp_Quaternion {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Return rotation with reversed direction (conjugated quaternion)
-	:rtype: Standard_NODISCARD gp_Quaternion") Reversed;
-		Standard_NODISCARD gp_Quaternion Reversed ();
+	:rtype: gp_Quaternion") Reversed;
+		gp_Quaternion Reversed ();
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -8114,8 +8114,8 @@ class gp_Quaternion {
 		%feature("autodoc", "* Returns scaled quaternion
 	:param theScale:
 	:type theScale: float
-	:rtype: Standard_NODISCARD gp_Quaternion") Scaled;
-		Standard_NODISCARD gp_Quaternion Scaled (const Standard_Real theScale);
+	:rtype: gp_Quaternion") Scaled;
+		gp_Quaternion Scaled (const Standard_Real theScale);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
@@ -8222,8 +8222,8 @@ class gp_Quaternion {
 		%feature("autodoc", "* Makes difference of quaternion components; result is 'rotations mix'
 	:param theOther:
 	:type theOther: gp_Quaternion
-	:rtype: Standard_NODISCARD gp_Quaternion") Subtracted;
-		Standard_NODISCARD gp_Quaternion Subtracted (const gp_Quaternion & theOther);
+	:rtype: gp_Quaternion") Subtracted;
+		gp_Quaternion Subtracted (const gp_Quaternion & theOther);
 
 		/****************** W ******************/
 		%feature("compactdefaultargs") W;
@@ -8317,15 +8317,15 @@ class gp_Quaternion {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theScale:
 	:type theScale: float
-	:rtype: Standard_NODISCARD gp_Quaternion") operator *;
-		Standard_NODISCARD gp_Quaternion operator * (const Standard_Real theScale);
+	:rtype: gp_Quaternion") operator *;
+		gp_Quaternion operator * (const Standard_Real theScale);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theOther:
 	:type theOther: gp_Quaternion
-	:rtype: Standard_NODISCARD gp_Quaternion") operator *;
-		Standard_NODISCARD gp_Quaternion operator * (const gp_Quaternion & theOther);
+	:rtype: gp_Quaternion") operator *;
+		gp_Quaternion operator * (const gp_Quaternion & theOther);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
@@ -8360,8 +8360,8 @@ class gp_Quaternion {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param theOther:
 	:type theOther: gp_Quaternion
-	:rtype: Standard_NODISCARD gp_Quaternion") operator +;
-		Standard_NODISCARD gp_Quaternion operator + (const gp_Quaternion & theOther);
+	:rtype: gp_Quaternion") operator +;
+		gp_Quaternion operator + (const gp_Quaternion & theOther);
 
 
         %extend{
@@ -8376,15 +8376,15 @@ class gp_Quaternion {
         }
         		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
-		%feature("autodoc", ":rtype: Standard_NODISCARD gp_Quaternion") operator -;
-		Standard_NODISCARD gp_Quaternion operator - ();
+		%feature("autodoc", ":rtype: gp_Quaternion") operator -;
+		gp_Quaternion operator - ();
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param theOther:
 	:type theOther: gp_Quaternion
-	:rtype: Standard_NODISCARD gp_Quaternion") operator -;
-		Standard_NODISCARD gp_Quaternion operator - (const gp_Quaternion & theOther);
+	:rtype: gp_Quaternion") operator -;
+		gp_Quaternion operator - (const gp_Quaternion & theOther);
 
 
         %extend{
@@ -8628,24 +8628,24 @@ class gp_Sphere {
 		%feature("autodoc", "* Performs the symmetrical transformation of a sphere with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Sphere") Mirrored;
-		Standard_NODISCARD gp_Sphere Mirrored (const gp_Pnt & P);
+	:rtype: gp_Sphere") Mirrored;
+		gp_Sphere Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a sphere with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Sphere") Mirrored;
-		Standard_NODISCARD gp_Sphere Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Sphere") Mirrored;
+		gp_Sphere Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a sphere with respect to a plane. The axis placement A2 locates the plane of the of the symmetry : (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Sphere") Mirrored;
-		Standard_NODISCARD gp_Sphere Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Sphere") Mirrored;
+		gp_Sphere Mirrored (const gp_Ax2 & A2);
 
 		/****************** Position ******************/
 		%feature("compactdefaultargs") Position;
@@ -8675,8 +8675,8 @@ class gp_Sphere {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Sphere") Rotated;
-		Standard_NODISCARD gp_Sphere Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Sphere") Rotated;
+		gp_Sphere Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -8694,8 +8694,8 @@ class gp_Sphere {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Sphere") Scaled;
-		Standard_NODISCARD gp_Sphere Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Sphere") Scaled;
+		gp_Sphere Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetLocation ******************/
 		%feature("compactdefaultargs") SetLocation;
@@ -8733,8 +8733,8 @@ class gp_Sphere {
 		%feature("autodoc", "* Transforms a sphere with the transformation T from class Trsf.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Sphere") Transformed;
-		Standard_NODISCARD gp_Sphere Transformed (const gp_Trsf & T);
+	:rtype: gp_Sphere") Transformed;
+		gp_Sphere Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -8757,8 +8757,8 @@ class gp_Sphere {
 		%feature("autodoc", "* Translates a sphere in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Sphere") Translated;
-		Standard_NODISCARD gp_Sphere Translated (const gp_Vec & V);
+	:rtype: gp_Sphere") Translated;
+		gp_Sphere Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -8767,8 +8767,8 @@ class gp_Sphere {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Sphere") Translated;
-		Standard_NODISCARD gp_Sphere Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Sphere") Translated;
+		gp_Sphere Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** UReverse ******************/
 		%feature("compactdefaultargs") UReverse;
@@ -8893,24 +8893,24 @@ class gp_Torus {
 		%feature("autodoc", "* Performs the symmetrical transformation of a torus with respect to the point P which is the center of the symmetry.
 	:param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Torus") Mirrored;
-		Standard_NODISCARD gp_Torus Mirrored (const gp_Pnt & P);
+	:rtype: gp_Torus") Mirrored;
+		gp_Torus Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a torus with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Torus") Mirrored;
-		Standard_NODISCARD gp_Torus Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Torus") Mirrored;
+		gp_Torus Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a torus with respect to a plane. The axis placement A2 locates the plane of the of the symmetry : (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Torus") Mirrored;
-		Standard_NODISCARD gp_Torus Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Torus") Mirrored;
+		gp_Torus Mirrored (const gp_Ax2 & A2);
 
 		/****************** Position ******************/
 		%feature("compactdefaultargs") Position;
@@ -8934,8 +8934,8 @@ class gp_Torus {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Torus") Rotated;
-		Standard_NODISCARD gp_Torus Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Torus") Rotated;
+		gp_Torus Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -8953,8 +8953,8 @@ class gp_Torus {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Torus") Scaled;
-		Standard_NODISCARD gp_Torus Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: gp_Torus") Scaled;
+		gp_Torus Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -9008,8 +9008,8 @@ class gp_Torus {
 		%feature("autodoc", "* Transforms a torus with the transformation T from class Trsf.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Torus") Transformed;
-		Standard_NODISCARD gp_Torus Transformed (const gp_Trsf & T);
+	:rtype: gp_Torus") Transformed;
+		gp_Torus Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -9032,8 +9032,8 @@ class gp_Torus {
 		%feature("autodoc", "* Translates a torus in the direction of the vector V. The magnitude of the translation is the vector's magnitude.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Torus") Translated;
-		Standard_NODISCARD gp_Torus Translated (const gp_Vec & V);
+	:rtype: gp_Torus") Translated;
+		gp_Torus Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -9042,8 +9042,8 @@ class gp_Torus {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD gp_Torus") Translated;
-		Standard_NODISCARD gp_Torus Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: gp_Torus") Translated;
+		gp_Torus Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 		/****************** UReverse ******************/
 		%feature("compactdefaultargs") UReverse;
@@ -9152,8 +9152,8 @@ class gp_Trsf {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Computes the reverse transformation Raises an exception if the matrix of the transformation is not inversible, it means that the scale factor is lower or equal to Resolution from package gp. Computes the transformation composed with T and <self>. In a C++ implementation you can also write Tcomposed = <self> * T. Example : Trsf T1, T2, Tcomp; ............... Tcomp = T2.Multiplied(T1); // or (Tcomp = T2 * T1) Pnt P1(10.,3.,4.); Pnt P2 = P1.Transformed(Tcomp); //using Tcomp Pnt P3 = P1.Transformed(T1); //using T1 then T2 P3.Transform(T2); // P3 = P2 !!!
-	:rtype: Standard_NODISCARD gp_Trsf") Inverted;
-		Standard_NODISCARD gp_Trsf Inverted ();
+	:rtype: gp_Trsf") Inverted;
+		gp_Trsf Inverted ();
 
 		/****************** IsNegative ******************/
 		%feature("compactdefaultargs") IsNegative;
@@ -9165,8 +9165,8 @@ class gp_Trsf {
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", ":param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Trsf") Multiplied;
-		Standard_NODISCARD gp_Trsf Multiplied (const gp_Trsf & T);
+	:rtype: gp_Trsf") Multiplied;
+		gp_Trsf Multiplied (const gp_Trsf & T);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -9188,8 +9188,8 @@ class gp_Trsf {
 		%feature("autodoc", "* Computes the following composition of transformations <self> * <self> * .......* <self>, N time. if N = 0 <self> = Identity if N < 0 <self> = <self>.Inverse() *...........* <self>.Inverse(). //! Raises if N < 0 and if the matrix of the transformation not inversible.
 	:param N:
 	:type N: int
-	:rtype: Standard_NODISCARD gp_Trsf") Powered;
-		Standard_NODISCARD gp_Trsf Powered (const Standard_Integer N);
+	:rtype: gp_Trsf") Powered;
+		gp_Trsf Powered (const Standard_Integer N);
 
 		/****************** PreMultiply ******************/
 		%feature("compactdefaultargs") PreMultiply;
@@ -9425,8 +9425,8 @@ class gp_Trsf {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Trsf") operator *;
-		Standard_NODISCARD gp_Trsf operator * (const gp_Trsf & T);
+	:rtype: gp_Trsf") operator *;
+		gp_Trsf operator * (const gp_Trsf & T);
 
 
         %extend{
@@ -9474,8 +9474,8 @@ class gp_Trsf2d {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Computes the reverse transformation. Raises an exception if the matrix of the transformation is not inversible, it means that the scale factor is lower or equal to Resolution from package gp.
-	:rtype: Standard_NODISCARD gp_Trsf2d") Inverted;
-		Standard_NODISCARD gp_Trsf2d Inverted ();
+	:rtype: gp_Trsf2d") Inverted;
+		gp_Trsf2d Inverted ();
 
 		/****************** IsNegative ******************/
 		%feature("compactdefaultargs") IsNegative;
@@ -9487,8 +9487,8 @@ class gp_Trsf2d {
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", ":param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Trsf2d") Multiplied;
-		Standard_NODISCARD gp_Trsf2d Multiplied (const gp_Trsf2d & T);
+	:rtype: gp_Trsf2d") Multiplied;
+		gp_Trsf2d Multiplied (const gp_Trsf2d & T);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -9696,8 +9696,8 @@ class gp_Trsf2d {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Trsf2d") operator *;
-		Standard_NODISCARD gp_Trsf2d operator * (const gp_Trsf2d & T);
+	:rtype: gp_Trsf2d") operator *;
+		gp_Trsf2d operator * (const gp_Trsf2d & T);
 
 
         %extend{
@@ -9738,8 +9738,8 @@ class gp_Vec {
 		%feature("autodoc", "* Adds two vectors
 	:param Other:
 	:type Other: gp_Vec
-	:rtype: Standard_NODISCARD gp_Vec") Added;
-		Standard_NODISCARD gp_Vec Added (const gp_Vec & Other);
+	:rtype: gp_Vec") Added;
+		gp_Vec Added (const gp_Vec & Other);
 
 		/****************** Angle ******************/
 		%feature("compactdefaultargs") Angle;
@@ -9804,8 +9804,8 @@ class gp_Vec {
 	:type V1: gp_Vec
 	:param V2:
 	:type V2: gp_Vec
-	:rtype: Standard_NODISCARD gp_Vec") CrossCrossed;
-		Standard_NODISCARD gp_Vec CrossCrossed (const gp_Vec & V1,const gp_Vec & V2);
+	:rtype: gp_Vec") CrossCrossed;
+		gp_Vec CrossCrossed (const gp_Vec & V1,const gp_Vec & V2);
 
 		/****************** CrossMagnitude ******************/
 		%feature("compactdefaultargs") CrossMagnitude;
@@ -9828,8 +9828,8 @@ class gp_Vec {
 		%feature("autodoc", "* computes the cross product between two vectors
 	:param Right:
 	:type Right: gp_Vec
-	:rtype: Standard_NODISCARD gp_Vec") Crossed;
-		Standard_NODISCARD gp_Vec Crossed (const gp_Vec & Right);
+	:rtype: gp_Vec") Crossed;
+		gp_Vec Crossed (const gp_Vec & Right);
 
 		/****************** Divide ******************/
 		%feature("compactdefaultargs") Divide;
@@ -9844,8 +9844,8 @@ class gp_Vec {
 		%feature("autodoc", "* Divides a vector by a scalar
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Vec") Divided;
-		Standard_NODISCARD gp_Vec Divided (const Standard_Real Scalar);
+	:rtype: gp_Vec") Divided;
+		gp_Vec Divided (const Standard_Real Scalar);
 
 		/****************** Dot ******************/
 		%feature("compactdefaultargs") Dot;
@@ -9939,32 +9939,32 @@ class gp_Vec {
 		%feature("autodoc", "* Performs the symmetrical transformation of a vector with respect to the vector V which is the center of the symmetry.
 	:param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD gp_Vec") Mirrored;
-		Standard_NODISCARD gp_Vec Mirrored (const gp_Vec & V);
+	:rtype: gp_Vec") Mirrored;
+		gp_Vec Mirrored (const gp_Vec & V);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a vector with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD gp_Vec") Mirrored;
-		Standard_NODISCARD gp_Vec Mirrored (const gp_Ax1 & A1);
+	:rtype: gp_Vec") Mirrored;
+		gp_Vec Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a vector with respect to a plane. The axis placement A2 locates the plane of the symmetry : (Location, XDirection, YDirection).
 	:param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD gp_Vec") Mirrored;
-		Standard_NODISCARD gp_Vec Mirrored (const gp_Ax2 & A2);
+	:rtype: gp_Vec") Mirrored;
+		gp_Vec Mirrored (const gp_Ax2 & A2);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* Multiplies a vector by a scalar
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Vec") Multiplied;
-		Standard_NODISCARD gp_Vec Multiplied (const Standard_Real Scalar);
+	:rtype: gp_Vec") Multiplied;
+		gp_Vec Multiplied (const Standard_Real Scalar);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -9983,8 +9983,8 @@ class gp_Vec {
 		/****************** Normalized ******************/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "* normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from gp.
-	:rtype: Standard_NODISCARD gp_Vec") Normalized;
-		Standard_NODISCARD gp_Vec Normalized ();
+	:rtype: gp_Vec") Normalized;
+		gp_Vec Normalized ();
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
@@ -9995,8 +9995,8 @@ class gp_Vec {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the direction of a vector
-	:rtype: Standard_NODISCARD gp_Vec") Reversed;
-		Standard_NODISCARD gp_Vec Reversed ();
+	:rtype: gp_Vec") Reversed;
+		gp_Vec Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -10014,8 +10014,8 @@ class gp_Vec {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Vec") Rotated;
-		Standard_NODISCARD gp_Vec Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: gp_Vec") Rotated;
+		gp_Vec Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -10029,8 +10029,8 @@ class gp_Vec {
 		%feature("autodoc", "* Scales a vector. S is the scaling value.
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Vec") Scaled;
-		Standard_NODISCARD gp_Vec Scaled (const Standard_Real S);
+	:rtype: gp_Vec") Scaled;
+		gp_Vec Scaled (const Standard_Real S);
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -10195,8 +10195,8 @@ class gp_Vec {
 		%feature("autodoc", "* Subtracts two vectors
 	:param Right:
 	:type Right: gp_Vec
-	:rtype: Standard_NODISCARD gp_Vec") Subtracted;
-		Standard_NODISCARD gp_Vec Subtracted (const gp_Vec & Right);
+	:rtype: gp_Vec") Subtracted;
+		gp_Vec Subtracted (const gp_Vec & Right);
 
 		/****************** Transform ******************/
 		%feature("compactdefaultargs") Transform;
@@ -10211,8 +10211,8 @@ class gp_Vec {
 		%feature("autodoc", "* Transforms a vector with the transformation T.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD gp_Vec") Transformed;
-		Standard_NODISCARD gp_Vec Transformed (const gp_Trsf & T);
+	:rtype: gp_Vec") Transformed;
+		gp_Vec Transformed (const gp_Trsf & T);
 
 		/****************** X ******************/
 		%feature("compactdefaultargs") X;
@@ -10286,8 +10286,8 @@ class gp_Vec {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Vec") operator *;
-		Standard_NODISCARD gp_Vec operator * (const Standard_Real Scalar);
+	:rtype: gp_Vec") operator *;
+		gp_Vec operator * (const Standard_Real Scalar);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
@@ -10311,8 +10311,8 @@ class gp_Vec {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_Vec
-	:rtype: Standard_NODISCARD gp_Vec") operator +;
-		Standard_NODISCARD gp_Vec operator + (const gp_Vec & Other);
+	:rtype: gp_Vec") operator +;
+		gp_Vec operator + (const gp_Vec & Other);
 
 
         %extend{
@@ -10329,13 +10329,13 @@ class gp_Vec {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Right:
 	:type Right: gp_Vec
-	:rtype: Standard_NODISCARD gp_Vec") operator -;
-		Standard_NODISCARD gp_Vec operator - (const gp_Vec & Right);
+	:rtype: gp_Vec") operator -;
+		gp_Vec operator - (const gp_Vec & Right);
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
-		%feature("autodoc", ":rtype: Standard_NODISCARD gp_Vec") operator -;
-		Standard_NODISCARD gp_Vec operator - ();
+		%feature("autodoc", ":rtype: gp_Vec") operator -;
+		gp_Vec operator - ();
 
 
         %extend{
@@ -10352,8 +10352,8 @@ class gp_Vec {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Vec") operator /;
-		Standard_NODISCARD gp_Vec operator / (const Standard_Real Scalar);
+	:rtype: gp_Vec") operator /;
+		gp_Vec operator / (const Standard_Real Scalar);
 
 
         %extend{
@@ -10393,8 +10393,8 @@ class gp_Vec2d {
 		%feature("autodoc", "* Adds two vectors
 	:param Other:
 	:type Other: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Vec2d") Added;
-		Standard_NODISCARD gp_Vec2d Added (const gp_Vec2d & Other);
+	:rtype: gp_Vec2d") Added;
+		gp_Vec2d Added (const gp_Vec2d & Other);
 
 		/****************** Angle ******************/
 		%feature("compactdefaultargs") Angle;
@@ -10443,8 +10443,8 @@ class gp_Vec2d {
 		%feature("autodoc", "* Computes the crossing product between two vectors
 	:param Right:
 	:type Right: gp_Vec2d
-	:rtype: Standard_NODISCARD float") Crossed;
-		Standard_NODISCARD Standard_Real Crossed (const gp_Vec2d & Right);
+	:rtype: float") Crossed;
+		Standard_Real Crossed (const gp_Vec2d & Right);
 
 		/****************** Divide ******************/
 		%feature("compactdefaultargs") Divide;
@@ -10458,8 +10458,8 @@ class gp_Vec2d {
 		%feature("autodoc", "* divides a vector by a scalar
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Vec2d") Divided;
-		Standard_NODISCARD gp_Vec2d Divided (const Standard_Real Scalar);
+	:rtype: gp_Vec2d") Divided;
+		gp_Vec2d Divided (const Standard_Real Scalar);
 
 		/****************** Dot ******************/
 		%feature("compactdefaultargs") Dot;
@@ -10543,24 +10543,24 @@ class gp_Vec2d {
 		%feature("autodoc", "* Performs the symmetrical transformation of a vector with respect to the vector V which is the center of the symmetry.
 	:param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Vec2d") Mirrored;
-		Standard_NODISCARD gp_Vec2d Mirrored (const gp_Vec2d & V);
+	:rtype: gp_Vec2d") Mirrored;
+		gp_Vec2d Mirrored (const gp_Vec2d & V);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", "* Performs the symmetrical transformation of a vector with respect to an axis placement which is the axis of the symmetry.
 	:param A1:
 	:type A1: gp_Ax2d
-	:rtype: Standard_NODISCARD gp_Vec2d") Mirrored;
-		Standard_NODISCARD gp_Vec2d Mirrored (const gp_Ax2d & A1);
+	:rtype: gp_Vec2d") Mirrored;
+		gp_Vec2d Mirrored (const gp_Ax2d & A1);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* Normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from package gp.
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Vec2d") Multiplied;
-		Standard_NODISCARD gp_Vec2d Multiplied (const Standard_Real Scalar);
+	:rtype: gp_Vec2d") Multiplied;
+		gp_Vec2d Multiplied (const Standard_Real Scalar);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -10577,8 +10577,8 @@ class gp_Vec2d {
 		/****************** Normalized ******************/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "* Normalizes a vector Raises an exception if the magnitude of the vector is lower or equal to Resolution from package gp. Reverses the direction of a vector
-	:rtype: Standard_NODISCARD gp_Vec2d") Normalized;
-		Standard_NODISCARD gp_Vec2d Normalized ();
+	:rtype: gp_Vec2d") Normalized;
+		gp_Vec2d Normalized ();
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
@@ -10588,8 +10588,8 @@ class gp_Vec2d {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the direction of a vector
-	:rtype: Standard_NODISCARD gp_Vec2d") Reversed;
-		Standard_NODISCARD gp_Vec2d Reversed ();
+	:rtype: gp_Vec2d") Reversed;
+		gp_Vec2d Reversed ();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -10603,8 +10603,8 @@ class gp_Vec2d {
 		%feature("autodoc", "* Rotates a vector. Ang is the angular value of the rotation in radians.
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD gp_Vec2d") Rotated;
-		Standard_NODISCARD gp_Vec2d Rotated (const Standard_Real Ang);
+	:rtype: gp_Vec2d") Rotated;
+		gp_Vec2d Rotated (const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -10618,8 +10618,8 @@ class gp_Vec2d {
 		%feature("autodoc", "* Scales a vector. S is the scaling value.
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD gp_Vec2d") Scaled;
-		Standard_NODISCARD gp_Vec2d Scaled (const Standard_Real S);
+	:rtype: gp_Vec2d") Scaled;
+		gp_Vec2d Scaled (const Standard_Real S);
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -10736,8 +10736,8 @@ class gp_Vec2d {
 		%feature("autodoc", "* Subtracts two vectors
 	:param Right:
 	:type Right: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Vec2d") Subtracted;
-		Standard_NODISCARD gp_Vec2d Subtracted (const gp_Vec2d & Right);
+	:rtype: gp_Vec2d") Subtracted;
+		gp_Vec2d Subtracted (const gp_Vec2d & Right);
 
 		/****************** Transform ******************/
 		%feature("compactdefaultargs") Transform;
@@ -10751,8 +10751,8 @@ class gp_Vec2d {
 		%feature("autodoc", "* Transforms a vector with a Trsf from gp.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD gp_Vec2d") Transformed;
-		Standard_NODISCARD gp_Vec2d Transformed (const gp_Trsf2d & T);
+	:rtype: gp_Vec2d") Transformed;
+		gp_Vec2d Transformed (const gp_Trsf2d & T);
 
 		/****************** X ******************/
 		%feature("compactdefaultargs") X;
@@ -10825,8 +10825,8 @@ class gp_Vec2d {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Vec2d") operator *;
-		Standard_NODISCARD gp_Vec2d operator * (const Standard_Real Scalar);
+	:rtype: gp_Vec2d") operator *;
+		gp_Vec2d operator * (const Standard_Real Scalar);
 
 
         %extend{
@@ -10843,8 +10843,8 @@ class gp_Vec2d {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Vec2d") operator +;
-		Standard_NODISCARD gp_Vec2d operator + (const gp_Vec2d & Other);
+	:rtype: gp_Vec2d") operator +;
+		gp_Vec2d operator + (const gp_Vec2d & Other);
 
 
         %extend{
@@ -10859,15 +10859,15 @@ class gp_Vec2d {
         }
         		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
-		%feature("autodoc", ":rtype: Standard_NODISCARD gp_Vec2d") operator -;
-		Standard_NODISCARD gp_Vec2d operator - ();
+		%feature("autodoc", ":rtype: gp_Vec2d") operator -;
+		gp_Vec2d operator - ();
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Right:
 	:type Right: gp_Vec2d
-	:rtype: Standard_NODISCARD gp_Vec2d") operator -;
-		Standard_NODISCARD gp_Vec2d operator - (const gp_Vec2d & Right);
+	:rtype: gp_Vec2d") operator -;
+		gp_Vec2d operator - (const gp_Vec2d & Right);
 
 
         %extend{
@@ -10884,8 +10884,8 @@ class gp_Vec2d {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_Vec2d") operator /;
-		Standard_NODISCARD gp_Vec2d operator / (const Standard_Real Scalar);
+	:rtype: gp_Vec2d") operator /;
+		gp_Vec2d operator / (const Standard_Real Scalar);
 
 
         %extend{
@@ -10926,8 +10926,8 @@ class gp_XY {
 		%feature("autodoc", "* Computes the sum of this number pair and number pair Other new.X() = <self>.X() + Other.X() new.Y() = <self>.Y() + Other.Y()
 	:param Other:
 	:type Other: gp_XY
-	:rtype: Standard_NODISCARD gp_XY") Added;
-		Standard_NODISCARD gp_XY Added (const gp_XY & Other);
+	:rtype: gp_XY") Added;
+		gp_XY Added (const gp_XY & Other);
 
 
         %feature("autodoc","1");
@@ -10981,8 +10981,8 @@ class gp_XY {
 		%feature("autodoc", "* Real D = <self>.X() * Other.Y() - <self>.Y() * Other.X()
 	:param Right:
 	:type Right: gp_XY
-	:rtype: Standard_NODISCARD float") Crossed;
-		Standard_NODISCARD Standard_Real Crossed (const gp_XY & Right);
+	:rtype: float") Crossed;
+		Standard_Real Crossed (const gp_XY & Right);
 
 		/****************** Divide ******************/
 		%feature("compactdefaultargs") Divide;
@@ -10997,8 +10997,8 @@ class gp_XY {
 		%feature("autodoc", "* Divides <self> by a real.
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_XY") Divided;
-		Standard_NODISCARD gp_XY Divided (const Standard_Real Scalar);
+	:rtype: gp_XY") Divided;
+		gp_XY Divided (const Standard_Real Scalar);
 
 		/****************** Dot ******************/
 		%feature("compactdefaultargs") Dot;
@@ -11029,24 +11029,24 @@ class gp_XY {
 		%feature("autodoc", "* New.X() = <self>.X() * Scalar; New.Y() = <self>.Y() * Scalar;
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_XY") Multiplied;
-		Standard_NODISCARD gp_XY Multiplied (const Standard_Real Scalar);
+	:rtype: gp_XY") Multiplied;
+		gp_XY Multiplied (const Standard_Real Scalar);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* new.X() = <self>.X() * Other.X(); new.Y() = <self>.Y() * Other.Y();
 	:param Other:
 	:type Other: gp_XY
-	:rtype: Standard_NODISCARD gp_XY") Multiplied;
-		Standard_NODISCARD gp_XY Multiplied (const gp_XY & Other);
+	:rtype: gp_XY") Multiplied;
+		gp_XY Multiplied (const gp_XY & Other);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* New = Matrix * <self>
 	:param Matrix:
 	:type Matrix: gp_Mat2d
-	:rtype: Standard_NODISCARD gp_XY") Multiplied;
-		Standard_NODISCARD gp_XY Multiplied (const gp_Mat2d & Matrix);
+	:rtype: gp_XY") Multiplied;
+		gp_XY Multiplied (const gp_Mat2d & Matrix);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -11081,8 +11081,8 @@ class gp_XY {
 		/****************** Normalized ******************/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "* New.X() = <self>.X()/ <self>.Modulus() New.Y() = <self>.Y()/ <self>.Modulus() Raises ConstructionError if <self>.Modulus() <= Resolution from gp
-	:rtype: Standard_NODISCARD gp_XY") Normalized;
-		Standard_NODISCARD gp_XY Normalized ();
+	:rtype: gp_XY") Normalized;
+		gp_XY Normalized ();
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
@@ -11093,8 +11093,8 @@ class gp_XY {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* New.X() = -<self>.X() New.Y() = -<self>.Y()
-	:rtype: Standard_NODISCARD gp_XY") Reversed;
-		Standard_NODISCARD gp_XY Reversed ();
+	:rtype: gp_XY") Reversed;
+		gp_XY Reversed ();
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -11203,8 +11203,8 @@ class gp_XY {
 		%feature("autodoc", "* new.X() = <self>.X() - Other.X() new.Y() = <self>.Y() - Other.Y()
 	:param Right:
 	:type Right: gp_XY
-	:rtype: Standard_NODISCARD gp_XY") Subtracted;
-		Standard_NODISCARD gp_XY Subtracted (const gp_XY & Right);
+	:rtype: gp_XY") Subtracted;
+		gp_XY Subtracted (const gp_XY & Right);
 
 		/****************** X ******************/
 		%feature("compactdefaultargs") X;
@@ -11245,15 +11245,15 @@ class gp_XY {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_XY") operator *;
-		Standard_NODISCARD gp_XY operator * (const Standard_Real Scalar);
+	:rtype: gp_XY") operator *;
+		gp_XY operator * (const Standard_Real Scalar);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Matrix:
 	:type Matrix: gp_Mat2d
-	:rtype: Standard_NODISCARD gp_XY") operator *;
-		Standard_NODISCARD gp_XY operator * (const gp_Mat2d & Matrix);
+	:rtype: gp_XY") operator *;
+		gp_XY operator * (const gp_Mat2d & Matrix);
 
 
         %extend{
@@ -11292,8 +11292,8 @@ class gp_XY {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_XY
-	:rtype: Standard_NODISCARD gp_XY") operator +;
-		Standard_NODISCARD gp_XY operator + (const gp_XY & Other);
+	:rtype: gp_XY") operator +;
+		gp_XY operator + (const gp_XY & Other);
 
 
         %extend{
@@ -11308,15 +11308,15 @@ class gp_XY {
         }
         		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
-		%feature("autodoc", ":rtype: Standard_NODISCARD gp_XY") operator -;
-		Standard_NODISCARD gp_XY operator - ();
+		%feature("autodoc", ":rtype: gp_XY") operator -;
+		gp_XY operator - ();
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Right:
 	:type Right: gp_XY
-	:rtype: Standard_NODISCARD gp_XY") operator -;
-		Standard_NODISCARD gp_XY operator - (const gp_XY & Right);
+	:rtype: gp_XY") operator -;
+		gp_XY operator - (const gp_XY & Right);
 
 
         %extend{
@@ -11333,8 +11333,8 @@ class gp_XY {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_XY") operator /;
-		Standard_NODISCARD gp_XY operator / (const Standard_Real Scalar);
+	:rtype: gp_XY") operator /;
+		gp_XY operator / (const Standard_Real Scalar);
 
 
         %extend{
@@ -11375,8 +11375,8 @@ class gp_XYZ {
 		%feature("autodoc", "* new.X() = <self>.X() + Other.X() new.Y() = <self>.Y() + Other.Y() new.Z() = <self>.Z() + Other.Z()
 	:param Other:
 	:type Other: gp_XYZ
-	:rtype: Standard_NODISCARD gp_XYZ") Added;
-		Standard_NODISCARD gp_XYZ Added (const gp_XYZ & Other);
+	:rtype: gp_XYZ") Added;
+		gp_XYZ Added (const gp_XYZ & Other);
 
 
         %feature("autodoc","1");
@@ -11441,8 +11441,8 @@ class gp_XYZ {
 	:type Coord1: gp_XYZ
 	:param Coord2:
 	:type Coord2: gp_XYZ
-	:rtype: Standard_NODISCARD gp_XYZ") CrossCrossed;
-		Standard_NODISCARD gp_XYZ CrossCrossed (const gp_XYZ & Coord1,const gp_XYZ & Coord2);
+	:rtype: gp_XYZ") CrossCrossed;
+		gp_XYZ CrossCrossed (const gp_XYZ & Coord1,const gp_XYZ & Coord2);
 
 		/****************** CrossMagnitude ******************/
 		%feature("compactdefaultargs") CrossMagnitude;
@@ -11465,8 +11465,8 @@ class gp_XYZ {
 		%feature("autodoc", "* new.X() = <self>.Y() * Other.Z() - <self>.Z() * Other.Y() new.Y() = <self>.Z() * Other.X() - <self>.X() * Other.Z() new.Z() = <self>.X() * Other.Y() - <self>.Y() * Other.X()
 	:param Right:
 	:type Right: gp_XYZ
-	:rtype: Standard_NODISCARD gp_XYZ") Crossed;
-		Standard_NODISCARD gp_XYZ Crossed (const gp_XYZ & Right);
+	:rtype: gp_XYZ") Crossed;
+		gp_XYZ Crossed (const gp_XYZ & Right);
 
 		/****************** Divide ******************/
 		%feature("compactdefaultargs") Divide;
@@ -11481,8 +11481,8 @@ class gp_XYZ {
 		%feature("autodoc", "* divides <self> by a real.
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_XYZ") Divided;
-		Standard_NODISCARD gp_XYZ Divided (const Standard_Real Scalar);
+	:rtype: gp_XYZ") Divided;
+		gp_XYZ Divided (const Standard_Real Scalar);
 
 		/****************** Dot ******************/
 		%feature("compactdefaultargs") Dot;
@@ -11537,24 +11537,24 @@ class gp_XYZ {
 		%feature("autodoc", "* New.X() = <self>.X() * Scalar; New.Y() = <self>.Y() * Scalar; New.Z() = <self>.Z() * Scalar;
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_XYZ") Multiplied;
-		Standard_NODISCARD gp_XYZ Multiplied (const Standard_Real Scalar);
+	:rtype: gp_XYZ") Multiplied;
+		gp_XYZ Multiplied (const Standard_Real Scalar);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* new.X() = <self>.X() * Other.X(); new.Y() = <self>.Y() * Other.Y(); new.Z() = <self>.Z() * Other.Z();
 	:param Other:
 	:type Other: gp_XYZ
-	:rtype: Standard_NODISCARD gp_XYZ") Multiplied;
-		Standard_NODISCARD gp_XYZ Multiplied (const gp_XYZ & Other);
+	:rtype: gp_XYZ") Multiplied;
+		gp_XYZ Multiplied (const gp_XYZ & Other);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* New = Matrix * <self>
 	:param Matrix:
 	:type Matrix: gp_Mat
-	:rtype: Standard_NODISCARD gp_XYZ") Multiplied;
-		Standard_NODISCARD gp_XYZ Multiplied (const gp_Mat & Matrix);
+	:rtype: gp_XYZ") Multiplied;
+		gp_XYZ Multiplied (const gp_Mat & Matrix);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -11589,8 +11589,8 @@ class gp_XYZ {
 		/****************** Normalized ******************/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "* New.X() = <self>.X()/ <self>.Modulus() New.Y() = <self>.Y()/ <self>.Modulus() New.Z() = <self>.Z()/ <self>.Modulus() Raised if <self>.Modulus() <= Resolution from gp
-	:rtype: Standard_NODISCARD gp_XYZ") Normalized;
-		Standard_NODISCARD gp_XYZ Normalized ();
+	:rtype: gp_XYZ") Normalized;
+		gp_XYZ Normalized ();
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
@@ -11601,8 +11601,8 @@ class gp_XYZ {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* New.X() = -<self>.X() New.Y() = -<self>.Y() New.Z() = -<self>.Z()
-	:rtype: Standard_NODISCARD gp_XYZ") Reversed;
-		Standard_NODISCARD gp_XYZ Reversed ();
+	:rtype: gp_XYZ") Reversed;
+		gp_XYZ Reversed ();
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -11759,8 +11759,8 @@ class gp_XYZ {
 		%feature("autodoc", "* new.X() = <self>.X() - Other.X() new.Y() = <self>.Y() - Other.Y() new.Z() = <self>.Z() - Other.Z()
 	:param Right:
 	:type Right: gp_XYZ
-	:rtype: Standard_NODISCARD gp_XYZ") Subtracted;
-		Standard_NODISCARD gp_XYZ Subtracted (const gp_XYZ & Right);
+	:rtype: gp_XYZ") Subtracted;
+		gp_XYZ Subtracted (const gp_XYZ & Right);
 
 		/****************** X ******************/
 		%feature("compactdefaultargs") X;
@@ -11809,15 +11809,15 @@ class gp_XYZ {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_XYZ") operator *;
-		Standard_NODISCARD gp_XYZ operator * (const Standard_Real Scalar);
+	:rtype: gp_XYZ") operator *;
+		gp_XYZ operator * (const Standard_Real Scalar);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Matrix:
 	:type Matrix: gp_Mat
-	:rtype: Standard_NODISCARD gp_XYZ") operator *;
-		Standard_NODISCARD gp_XYZ operator * (const gp_Mat & Matrix);
+	:rtype: gp_XYZ") operator *;
+		gp_XYZ operator * (const gp_Mat & Matrix);
 
 
         %extend{
@@ -11856,8 +11856,8 @@ class gp_XYZ {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Other:
 	:type Other: gp_XYZ
-	:rtype: Standard_NODISCARD gp_XYZ") operator +;
-		Standard_NODISCARD gp_XYZ operator + (const gp_XYZ & Other);
+	:rtype: gp_XYZ") operator +;
+		gp_XYZ operator + (const gp_XYZ & Other);
 
 
         %extend{
@@ -11874,8 +11874,8 @@ class gp_XYZ {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Right:
 	:type Right: gp_XYZ
-	:rtype: Standard_NODISCARD gp_XYZ") operator -;
-		Standard_NODISCARD gp_XYZ operator - (const gp_XYZ & Right);
+	:rtype: gp_XYZ") operator -;
+		gp_XYZ operator - (const gp_XYZ & Right);
 
 
         %extend{
@@ -11892,8 +11892,8 @@ class gp_XYZ {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD gp_XYZ") operator /;
-		Standard_NODISCARD gp_XYZ operator / (const Standard_Real Scalar);
+	:rtype: gp_XYZ") operator /;
+		gp_XYZ operator / (const Standard_Real Scalar);
 
 
         %extend{

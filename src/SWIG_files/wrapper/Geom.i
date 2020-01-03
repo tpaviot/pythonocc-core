@@ -149,22 +149,22 @@ class Geom_Geometry : public Standard_Transient {
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Geometry>") Mirrored;
-		Standard_NODISCARD opencascade::handle<Geom_Geometry> Mirrored (const gp_Pnt & P);
+	:rtype: opencascade::handle<Geom_Geometry>") Mirrored;
+		opencascade::handle<Geom_Geometry> Mirrored (const gp_Pnt & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", ":param A1:
 	:type A1: gp_Ax1
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Geometry>") Mirrored;
-		Standard_NODISCARD opencascade::handle<Geom_Geometry> Mirrored (const gp_Ax1 & A1);
+	:rtype: opencascade::handle<Geom_Geometry>") Mirrored;
+		opencascade::handle<Geom_Geometry> Mirrored (const gp_Ax1 & A1);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", ":param A2:
 	:type A2: gp_Ax2
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Geometry>") Mirrored;
-		Standard_NODISCARD opencascade::handle<Geom_Geometry> Mirrored (const gp_Ax2 & A2);
+	:rtype: opencascade::handle<Geom_Geometry>") Mirrored;
+		opencascade::handle<Geom_Geometry> Mirrored (const gp_Ax2 & A2);
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -182,8 +182,8 @@ class Geom_Geometry : public Standard_Transient {
 	:type A1: gp_Ax1
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Geometry>") Rotated;
-		Standard_NODISCARD opencascade::handle<Geom_Geometry> Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
+	:rtype: opencascade::handle<Geom_Geometry>") Rotated;
+		opencascade::handle<Geom_Geometry> Rotated (const gp_Ax1 & A1,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -201,8 +201,8 @@ class Geom_Geometry : public Standard_Transient {
 	:type P: gp_Pnt
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Geometry>") Scaled;
-		Standard_NODISCARD opencascade::handle<Geom_Geometry> Scaled (const gp_Pnt & P,const Standard_Real S);
+	:rtype: opencascade::handle<Geom_Geometry>") Scaled;
+		opencascade::handle<Geom_Geometry> Scaled (const gp_Pnt & P,const Standard_Real S);
 
 		/****************** Transform ******************/
 		%feature("compactdefaultargs") Transform;
@@ -216,8 +216,8 @@ class Geom_Geometry : public Standard_Transient {
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", ":param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Geometry>") Transformed;
-		Standard_NODISCARD opencascade::handle<Geom_Geometry> Transformed (const gp_Trsf & T);
+	:rtype: opencascade::handle<Geom_Geometry>") Transformed;
+		opencascade::handle<Geom_Geometry> Transformed (const gp_Trsf & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -241,8 +241,8 @@ class Geom_Geometry : public Standard_Transient {
 		%feature("compactdefaultargs") Translated;
 		%feature("autodoc", ":param V:
 	:type V: gp_Vec
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Geometry>") Translated;
-		Standard_NODISCARD opencascade::handle<Geom_Geometry> Translated (const gp_Vec & V);
+	:rtype: opencascade::handle<Geom_Geometry>") Translated;
+		opencascade::handle<Geom_Geometry> Translated (const gp_Vec & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -250,8 +250,8 @@ class Geom_Geometry : public Standard_Transient {
 	:type P1: gp_Pnt
 	:param P2:
 	:type P2: gp_Pnt
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Geometry>") Translated;
-		Standard_NODISCARD opencascade::handle<Geom_Geometry> Translated (const gp_Pnt & P1,const gp_Pnt & P2);
+	:rtype: opencascade::handle<Geom_Geometry>") Translated;
+		opencascade::handle<Geom_Geometry> Translated (const gp_Pnt & P1,const gp_Pnt & P2);
 
 };
 
@@ -384,8 +384,8 @@ class Geom_Transformation : public Standard_Transient {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Raised if the the transformation is singular. This means that the ScaleFactor is lower or equal to Resolution from package gp.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Transformation>") Inverted;
-		Standard_NODISCARD opencascade::handle<Geom_Transformation> Inverted ();
+	:rtype: opencascade::handle<Geom_Transformation>") Inverted;
+		opencascade::handle<Geom_Transformation> Inverted ();
 
 		/****************** IsNegative ******************/
 		%feature("compactdefaultargs") IsNegative;
@@ -398,8 +398,8 @@ class Geom_Transformation : public Standard_Transient {
 		%feature("autodoc", "* Computes the transformation composed with Other and <self>. <self> * Other. Returns a new transformation
 	:param Other:
 	:type Other: Geom_Transformation
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Transformation>") Multiplied;
-		Standard_NODISCARD opencascade::handle<Geom_Transformation> Multiplied (const opencascade::handle<Geom_Transformation> & Other);
+	:rtype: opencascade::handle<Geom_Transformation>") Multiplied;
+		opencascade::handle<Geom_Transformation> Multiplied (const opencascade::handle<Geom_Transformation> & Other);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -762,8 +762,8 @@ class Geom_Curve : public Geom_Geometry {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Returns a copy of <self> reversed.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Curve>") Reversed;
-		Standard_NODISCARD opencascade::handle<Geom_Curve> Reversed ();
+	:rtype: opencascade::handle<Geom_Curve>") Reversed;
+		opencascade::handle<Geom_Curve> Reversed ();
 
 		/****************** ReversedParameter ******************/
 		%feature("compactdefaultargs") ReversedParameter;
@@ -1074,8 +1074,8 @@ class Geom_Surface : public Geom_Geometry {
 		/****************** UReversed ******************/
 		%feature("compactdefaultargs") UReversed;
 		%feature("autodoc", "* Reverses the U direction of parametrization of <self>. The bounds of the surface are not modified. A copy of <self> is returned.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Surface>") UReversed;
-		Standard_NODISCARD opencascade::handle<Geom_Surface> UReversed ();
+	:rtype: opencascade::handle<Geom_Surface>") UReversed;
+		opencascade::handle<Geom_Surface> UReversed ();
 
 		/****************** UReversedParameter ******************/
 		%feature("compactdefaultargs") UReversedParameter;
@@ -1108,8 +1108,8 @@ class Geom_Surface : public Geom_Geometry {
 		/****************** VReversed ******************/
 		%feature("compactdefaultargs") VReversed;
 		%feature("autodoc", "* Reverses the V direction of parametrization of <self>. The bounds of the surface are not modified. A copy of <self> is returned.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Surface>") VReversed;
-		Standard_NODISCARD opencascade::handle<Geom_Surface> VReversed ();
+	:rtype: opencascade::handle<Geom_Surface>") VReversed;
+		opencascade::handle<Geom_Surface> VReversed ();
 
 		/****************** VReversedParameter ******************/
 		%feature("compactdefaultargs") VReversedParameter;
@@ -1245,8 +1245,8 @@ class Geom_Vector : public Geom_Geometry {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Returns a copy of <self> reversed.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Vector>") Reversed;
-		Standard_NODISCARD opencascade::handle<Geom_Vector> Reversed ();
+	:rtype: opencascade::handle<Geom_Vector>") Reversed;
+		opencascade::handle<Geom_Vector> Reversed ();
 
 		/****************** SquareMagnitude ******************/
 		%feature("compactdefaultargs") SquareMagnitude;
@@ -1334,8 +1334,8 @@ class Geom_Axis1Placement : public Geom_AxisPlacement {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Returns a copy of <self> reversed.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_Axis1Placement>") Reversed;
-		Standard_NODISCARD opencascade::handle<Geom_Axis1Placement> Reversed ();
+	:rtype: opencascade::handle<Geom_Axis1Placement>") Reversed;
+		opencascade::handle<Geom_Axis1Placement> Reversed ();
 
 		/****************** SetDirection ******************/
 		%feature("compactdefaultargs") SetDirection;
@@ -2873,8 +2873,8 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("autodoc", "* Adds the vector Other to <self>.
 	:param Other:
 	:type Other: Geom_Vector
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude>") Added;
-		Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude> Added (const opencascade::handle<Geom_Vector> & Other);
+	:rtype: opencascade::handle<Geom_VectorWithMagnitude>") Added;
+		opencascade::handle<Geom_VectorWithMagnitude> Added (const opencascade::handle<Geom_Vector> & Other);
 
 		/****************** Copy ******************/
 		%feature("compactdefaultargs") Copy;
@@ -2931,8 +2931,8 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("autodoc", "* Divides <self> by a scalar. A new vector is returned.
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude>") Divided;
-		Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude> Divided (const Standard_Real Scalar);
+	:rtype: opencascade::handle<Geom_VectorWithMagnitude>") Divided;
+		opencascade::handle<Geom_VectorWithMagnitude> Divided (const Standard_Real Scalar);
 
 		/****************** Geom_VectorWithMagnitude ******************/
 		%feature("compactdefaultargs") Geom_VectorWithMagnitude;
@@ -2975,8 +2975,8 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("autodoc", "* Computes the product of the vector <self> by a scalar. A new vector is returned.
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude>") Multiplied;
-		Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude> Multiplied (const Standard_Real Scalar);
+	:rtype: opencascade::handle<Geom_VectorWithMagnitude>") Multiplied;
+		opencascade::handle<Geom_VectorWithMagnitude> Multiplied (const Standard_Real Scalar);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -2995,8 +2995,8 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		/****************** Normalized ******************/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "* Returns a copy of <self> Normalized. //! Raised if the magnitude of the vector is lower or equal to Resolution from package gp.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude>") Normalized;
-		Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude> Normalized ();
+	:rtype: opencascade::handle<Geom_VectorWithMagnitude>") Normalized;
+		opencascade::handle<Geom_VectorWithMagnitude> Normalized ();
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -3061,8 +3061,8 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 		%feature("autodoc", "* Subtracts the vector Other to <self>. A new vector is returned.
 	:param Other:
 	:type Other: Geom_Vector
-	:rtype: Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude>") Subtracted;
-		Standard_NODISCARD opencascade::handle<Geom_VectorWithMagnitude> Subtracted (const opencascade::handle<Geom_Vector> & Other);
+	:rtype: opencascade::handle<Geom_VectorWithMagnitude>") Subtracted;
+		opencascade::handle<Geom_VectorWithMagnitude> Subtracted (const opencascade::handle<Geom_Vector> & Other);
 
 		/****************** Transform ******************/
 		%feature("compactdefaultargs") Transform;

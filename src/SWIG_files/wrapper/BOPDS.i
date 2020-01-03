@@ -160,6 +160,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopds.html"
 %template(BOPDS_VectorOfInterfEF) NCollection_Vector <BOPDS_InterfEF>;
 %template(BOPDS_VectorOfInterfVE) NCollection_Vector <BOPDS_InterfVE>;
 %template(BOPDS_DataMapOfIntegerListOfPaveBlock) NCollection_DataMap <Standard_Integer , BOPDS_ListOfPaveBlock , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , BOPDS_ListOfPaveBlock , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (BOPDS_DataMapOfIntegerListOfPaveBlock::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(BOPDS_MapOfPair) NCollection_Map <BOPDS_Pair , BOPDS_PairMapHasher>;
 %template(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock) NCollection_IndexedDataMap <opencascade::handle <BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock , TColStd_MapTransientHasher>;
 %template(BOPDS_ListOfPaveBlock) NCollection_List <opencascade::handle <BOPDS_PaveBlock>>;

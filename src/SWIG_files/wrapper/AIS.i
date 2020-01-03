@@ -439,6 +439,18 @@ enum AIS_DisplayStatus {
 
 /* templates */
 %template(AIS_DataMapofIntegerListOfinteractive) NCollection_DataMap <Standard_Integer , AIS_ListOfInteractive , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , AIS_ListOfInteractive , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (AIS_DataMapofIntegerListOfinteractive::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(AIS_ListOfInteractive) NCollection_List <opencascade::handle <AIS_InteractiveObject>>;
 %template(AIS_ListIteratorOfListOfInteractive) NCollection_TListIterator<opencascade::handle<AIS_InteractiveObject>>;
 %template(AIS_MouseGestureMap) NCollection_DataMap <unsigned int , AIS_MouseGesture>;

@@ -2304,8 +2304,8 @@ class math_IntegerVector {
 		%feature("autodoc", "* adds the IntegerVector 'theRight' to an IntegerVector. An exception is raised if the IntegerVectors have not the same length. An exception is raised if the lengths are not equal.
 	:param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD math_IntegerVector") Added;
-		Standard_NODISCARD math_IntegerVector Added (const math_IntegerVector & theRight);
+	:rtype: math_IntegerVector") Added;
+		math_IntegerVector Added (const math_IntegerVector & theRight);
 
 
         %feature("autodoc", "1");
@@ -2372,16 +2372,16 @@ class math_IntegerVector {
 		%feature("autodoc", "* returns the product of an IntegerVector by an integer value.
 	:param theRight:
 	:type theRight: int
-	:rtype: Standard_NODISCARD math_IntegerVector") Multiplied;
-		Standard_NODISCARD math_IntegerVector Multiplied (const Standard_Integer theRight);
+	:rtype: math_IntegerVector") Multiplied;
+		math_IntegerVector Multiplied (const Standard_Integer theRight);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* returns the inner product of 2 IntegerVectors. An exception is raised if the lengths are not equal.
 	:param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD int") Multiplied;
-		Standard_NODISCARD Standard_Integer Multiplied (const math_IntegerVector & theRight);
+	:rtype: int") Multiplied;
+		Standard_Integer Multiplied (const math_IntegerVector & theRight);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -2464,16 +2464,16 @@ class math_IntegerVector {
 		%feature("autodoc", "* returns the subtraction of 'theRight' from 'me'. An exception is raised if the IntegerVectors have not the same length.
 	:param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD math_IntegerVector") Subtracted;
-		Standard_NODISCARD math_IntegerVector Subtracted (const math_IntegerVector & theRight);
+	:rtype: math_IntegerVector") Subtracted;
+		math_IntegerVector Subtracted (const math_IntegerVector & theRight);
 
 		/****************** TMultiplied ******************/
 		%feature("compactdefaultargs") TMultiplied;
 		%feature("autodoc", "* returns the product of a vector and a real value.
 	:param theRight:
 	:type theRight: int
-	:rtype: Standard_NODISCARD math_IntegerVector") TMultiplied;
-		Standard_NODISCARD math_IntegerVector TMultiplied (const Standard_Integer theRight);
+	:rtype: math_IntegerVector") TMultiplied;
+		math_IntegerVector TMultiplied (const Standard_Integer theRight);
 
 		/****************** Upper ******************/
 		%feature("compactdefaultargs") Upper;
@@ -2543,15 +2543,15 @@ class math_IntegerVector {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: int
-	:rtype: Standard_NODISCARD math_IntegerVector") operator *;
-		Standard_NODISCARD math_IntegerVector operator * (const Standard_Integer theRight);
+	:rtype: math_IntegerVector") operator *;
+		math_IntegerVector operator * (const Standard_Integer theRight);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD int") operator *;
-		Standard_NODISCARD Standard_Integer operator * (const math_IntegerVector & theRight);
+	:rtype: int") operator *;
+		Standard_Integer operator * (const math_IntegerVector & theRight);
 
 
         %extend{
@@ -2568,8 +2568,8 @@ class math_IntegerVector {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD math_IntegerVector") operator +;
-		Standard_NODISCARD math_IntegerVector operator + (const math_IntegerVector & theRight);
+	:rtype: math_IntegerVector") operator +;
+		math_IntegerVector operator + (const math_IntegerVector & theRight);
 
 
         %extend{
@@ -2591,8 +2591,8 @@ class math_IntegerVector {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD math_IntegerVector") operator -;
-		Standard_NODISCARD math_IntegerVector operator - (const math_IntegerVector & theRight);
+	:rtype: math_IntegerVector") operator -;
+		math_IntegerVector operator - (const math_IntegerVector & theRight);
 
 
         %extend{
@@ -2861,8 +2861,8 @@ class math_Matrix {
 		%feature("autodoc", "* adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different.
 	:param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") Added;
-		Standard_NODISCARD math_Matrix Added (const math_Matrix & Right);
+	:rtype: math_Matrix") Added;
+		math_Matrix Added (const math_Matrix & Right);
 
 		/****************** Col ******************/
 		%feature("compactdefaultargs") Col;
@@ -2897,8 +2897,8 @@ class math_Matrix {
 		%feature("autodoc", "* divides all the elements of a matrix by the value <Right>. An exception is raised if <Right> = 0.
 	:param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") Divided;
-		Standard_NODISCARD math_Matrix Divided (const Standard_Real Right);
+	:rtype: math_Matrix") Divided;
+		math_Matrix Divided (const Standard_Real Right);
 
 
         %feature("autodoc", "1");
@@ -2953,24 +2953,24 @@ class math_Matrix {
 		%feature("autodoc", "* multiplies all the elements of a matrix by the value <Right>.
 	:param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") Multiplied;
-		Standard_NODISCARD math_Matrix Multiplied (const Standard_Real Right);
+	:rtype: math_Matrix") Multiplied;
+		math_Matrix Multiplied (const Standard_Real Right);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* Returns the product of 2 matrices. An exception is raised if the dimensions are different.
 	:param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") Multiplied;
-		Standard_NODISCARD math_Matrix Multiplied (const math_Matrix & Right);
+	:rtype: math_Matrix") Multiplied;
+		math_Matrix Multiplied (const math_Matrix & Right);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* Returns the product of a matrix by a vector. An exception is raised if the dimensions are different.
 	:param Right:
 	:type Right: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") Multiplied;
-		Standard_NODISCARD math_Vector Multiplied (const math_Vector & Right);
+	:rtype: math_Vector") Multiplied;
+		math_Vector Multiplied (const math_Vector & Right);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -3095,8 +3095,8 @@ class math_Matrix {
 		%feature("autodoc", "* Returns the result of the subtraction of <Right> from <self>. An exception is raised if the dimensions are different.
 	:param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") Subtracted;
-		Standard_NODISCARD math_Matrix Subtracted (const math_Matrix & Right);
+	:rtype: math_Matrix") Subtracted;
+		math_Matrix Subtracted (const math_Matrix & Right);
 
 		/****************** SwapCol ******************/
 		%feature("compactdefaultargs") SwapCol;
@@ -3123,8 +3123,8 @@ class math_Matrix {
 		%feature("autodoc", "* Sets this matrix to the product of the transposed matrix TLeft, and the matrix Right. Example math_Matrix A (1, 3, 1, 3); math_Matrix B (1, 3, 1, 3); // A = ... , B = ... math_Matrix C (1, 3, 1, 3); C.Multiply(A, B); Exceptions Standard_DimensionError if matrices are of incompatible dimensions, i.e. if: - the number of columns of matrix Left, or the number of rows of matrix TLeft is not equal to the number of rows of matrix Right, or - the number of rows of matrix Left, or the number of columns of matrix TLeft is not equal to the number of rows of this matrix, or - the number of columns of matrix Right is not equal to the number of columns of this matrix.
 	:param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") TMultiplied;
-		Standard_NODISCARD math_Matrix TMultiplied (const Standard_Real Right);
+	:rtype: math_Matrix") TMultiplied;
+		math_Matrix TMultiplied (const Standard_Real Right);
 
 		/****************** TMultiply ******************/
 		%feature("compactdefaultargs") TMultiply;
@@ -3153,8 +3153,8 @@ class math_Matrix {
 		/****************** Transposed ******************/
 		%feature("compactdefaultargs") Transposed;
 		%feature("autodoc", "* Teturns the transposed of a matrix. An exception is raised if the matrix is not a square matrix.
-	:rtype: Standard_NODISCARD math_Matrix") Transposed;
-		Standard_NODISCARD math_Matrix Transposed ();
+	:rtype: math_Matrix") Transposed;
+		math_Matrix Transposed ();
 
 		/****************** UpperCol ******************/
 		%feature("compactdefaultargs") UpperCol;
@@ -3239,22 +3239,22 @@ class math_Matrix {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") operator *;
-		Standard_NODISCARD math_Matrix operator * (const Standard_Real Right);
+	:rtype: math_Matrix") operator *;
+		math_Matrix operator * (const Standard_Real Right);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") operator *;
-		Standard_NODISCARD math_Matrix operator * (const math_Matrix & Right);
+	:rtype: math_Matrix") operator *;
+		math_Matrix operator * (const math_Matrix & Right);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Right:
 	:type Right: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") operator *;
-		Standard_NODISCARD math_Vector operator * (const math_Vector & Right);
+	:rtype: math_Vector") operator *;
+		math_Vector operator * (const math_Vector & Right);
 
 
         %extend{
@@ -3282,8 +3282,8 @@ class math_Matrix {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") operator +;
-		Standard_NODISCARD math_Matrix operator + (const math_Matrix & Right);
+	:rtype: math_Matrix") operator +;
+		math_Matrix operator + (const math_Matrix & Right);
 
 
         %extend{
@@ -3300,8 +3300,8 @@ class math_Matrix {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") operator -;
-		Standard_NODISCARD math_Matrix operator - (const math_Matrix & Right);
+	:rtype: math_Matrix") operator -;
+		math_Matrix operator - (const math_Matrix & Right);
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
@@ -3323,8 +3323,8 @@ class math_Matrix {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") operator /;
-		Standard_NODISCARD math_Matrix operator / (const Standard_Real Right);
+	:rtype: math_Matrix") operator /;
+		math_Matrix operator / (const Standard_Real Right);
 
 
         %extend{
@@ -4291,8 +4291,8 @@ class math_Vector {
 		%feature("autodoc", "* adds the vector theRight to a vector. An exception is raised if the vectors have not the same length. An exception is raised if the lengths are not equal.
 	:param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") Added;
-		Standard_NODISCARD math_Vector Added (const math_Vector & theRight);
+	:rtype: math_Vector") Added;
+		math_Vector Added (const math_Vector & theRight);
 
 		/****************** Divide ******************/
 		%feature("compactdefaultargs") Divide;
@@ -4307,8 +4307,8 @@ class math_Vector {
 		%feature("autodoc", "* divides a vector by the value 'theRight'. An exception is raised if 'theRight' = 0.
 	:param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") Divided;
-		Standard_NODISCARD math_Vector Divided (const Standard_Real theRight);
+	:rtype: math_Vector") Divided;
+		math_Vector Divided (const Standard_Real theRight);
 
 
         %feature("autodoc", "1");
@@ -4375,24 +4375,24 @@ class math_Vector {
 		%feature("autodoc", "* returns the product of a vector and a real value.
 	:param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") Multiplied;
-		Standard_NODISCARD math_Vector Multiplied (const Standard_Real theRight);
+	:rtype: math_Vector") Multiplied;
+		math_Vector Multiplied (const Standard_Real theRight);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* returns the inner product of 2 vectors. An exception is raised if the lengths are not equal.
 	:param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD float") Multiplied;
-		Standard_NODISCARD Standard_Real Multiplied (const math_Vector & theRight);
+	:rtype: float") Multiplied;
+		Standard_Real Multiplied (const math_Vector & theRight);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* returns the product of a vector by a matrix.
 	:param theRight:
 	:type theRight: math_Matrix
-	:rtype: Standard_NODISCARD math_Vector") Multiplied;
-		Standard_NODISCARD math_Vector Multiplied (const math_Matrix & theRight);
+	:rtype: math_Vector") Multiplied;
+		math_Vector Multiplied (const math_Matrix & theRight);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -4453,8 +4453,8 @@ class math_Vector {
 		/****************** Normalized ******************/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "* Normalizes this vector (the norm of the result is equal to 1.0) and creates a new vector Exceptions Standard_NullValue if this vector is null (i.e. if its norm is less than or equal to Standard_Real::RealEpsilon().
-	:rtype: Standard_NODISCARD math_Vector") Normalized;
-		Standard_NODISCARD math_Vector Normalized ();
+	:rtype: math_Vector") Normalized;
+		math_Vector Normalized ();
 
 		/****************** Opposite ******************/
 		%feature("compactdefaultargs") Opposite;
@@ -4507,16 +4507,16 @@ class math_Vector {
 		%feature("autodoc", "* returns the subtraction of 'theRight' from 'me'. An exception is raised if the vectors have not the same length.
 	:param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") Subtracted;
-		Standard_NODISCARD math_Vector Subtracted (const math_Vector & theRight);
+	:rtype: math_Vector") Subtracted;
+		math_Vector Subtracted (const math_Vector & theRight);
 
 		/****************** TMultiplied ******************/
 		%feature("compactdefaultargs") TMultiplied;
 		%feature("autodoc", "* returns the product of a vector and a real value.
 	:param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") TMultiplied;
-		Standard_NODISCARD math_Vector TMultiplied (const Standard_Real theRight);
+	:rtype: math_Vector") TMultiplied;
+		math_Vector TMultiplied (const Standard_Real theRight);
 
 		/****************** TMultiply ******************/
 		%feature("compactdefaultargs") TMultiply;
@@ -4622,22 +4622,22 @@ class math_Vector {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") operator *;
-		Standard_NODISCARD math_Vector operator * (const Standard_Real theRight);
+	:rtype: math_Vector") operator *;
+		math_Vector operator * (const Standard_Real theRight);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD float") operator *;
-		Standard_NODISCARD Standard_Real operator * (const math_Vector & theRight);
+	:rtype: float") operator *;
+		Standard_Real operator * (const math_Vector & theRight);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_Matrix
-	:rtype: Standard_NODISCARD math_Vector") operator *;
-		Standard_NODISCARD math_Vector operator * (const math_Matrix & theRight);
+	:rtype: math_Vector") operator *;
+		math_Vector operator * (const math_Matrix & theRight);
 
 
         %extend{
@@ -4654,8 +4654,8 @@ class math_Vector {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") operator +;
-		Standard_NODISCARD math_Vector operator + (const math_Vector & theRight);
+	:rtype: math_Vector") operator +;
+		math_Vector operator + (const math_Vector & theRight);
 
 
         %extend{
@@ -4677,8 +4677,8 @@ class math_Vector {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") operator -;
-		Standard_NODISCARD math_Vector operator - (const math_Vector & theRight);
+	:rtype: math_Vector") operator -;
+		math_Vector operator - (const math_Vector & theRight);
 
 
         %extend{
@@ -4695,8 +4695,8 @@ class math_Vector {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") operator /;
-		Standard_NODISCARD math_Vector operator / (const Standard_Real theRight);
+	:rtype: math_Vector") operator /;
+		math_Vector operator / (const Standard_Real theRight);
 
 
         %extend{

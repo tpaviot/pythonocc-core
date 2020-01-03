@@ -135,6 +135,18 @@ enum SelectMgr_PickingStrategy {
 
 /* templates */
 %template(SelectMgr_FrustumCache) NCollection_DataMap <Standard_Integer , SelectMgr_SelectingVolumeManager>;
+
+%extend NCollection_DataMap <Standard_Integer , SelectMgr_SelectingVolumeManager> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (SelectMgr_FrustumCache::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(SelectMgr_SequenceOfFilter) NCollection_Sequence <opencascade::handle <SelectMgr_Filter>>;
 %template(SelectMgr_SequenceOfSelection) NCollection_Sequence <opencascade::handle <SelectMgr_Selection>>;
 %template(SelectMgr_Vec3) NCollection_Vec3 <Standard_Real>;

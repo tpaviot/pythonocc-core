@@ -368,8 +368,8 @@ class Bnd_B2d {
 		%feature("autodoc", "* Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
 	:param theTrsf:
 	:type theTrsf: gp_Trsf2d
-	:rtype: Standard_NODISCARD Bnd_B2d") Transformed;
-		Standard_NODISCARD Bnd_B2d Transformed (const gp_Trsf2d & theTrsf);
+	:rtype: Bnd_B2d") Transformed;
+		Bnd_B2d Transformed (const gp_Trsf2d & theTrsf);
 
 };
 
@@ -567,8 +567,8 @@ class Bnd_B2f {
 		%feature("autodoc", "* Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
 	:param theTrsf:
 	:type theTrsf: gp_Trsf2d
-	:rtype: Standard_NODISCARD Bnd_B2f") Transformed;
-		Standard_NODISCARD Bnd_B2f Transformed (const gp_Trsf2d & theTrsf);
+	:rtype: Bnd_B2f") Transformed;
+		Bnd_B2f Transformed (const gp_Trsf2d & theTrsf);
 
 };
 
@@ -768,8 +768,8 @@ class Bnd_B3d {
 		%feature("autodoc", "* Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
-	:rtype: Standard_NODISCARD Bnd_B3d") Transformed;
-		Standard_NODISCARD Bnd_B3d Transformed (const gp_Trsf & theTrsf);
+	:rtype: Bnd_B3d") Transformed;
+		Bnd_B3d Transformed (const gp_Trsf & theTrsf);
 
 };
 
@@ -969,8 +969,8 @@ class Bnd_B3f {
 		%feature("autodoc", "* Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
 	:param theTrsf:
 	:type theTrsf: gp_Trsf
-	:rtype: Standard_NODISCARD Bnd_B3f") Transformed;
-		Standard_NODISCARD Bnd_B3f Transformed (const gp_Trsf & theTrsf);
+	:rtype: Bnd_B3f") Transformed;
+		Bnd_B3f Transformed (const gp_Trsf & theTrsf);
 
 };
 
@@ -1508,8 +1508,8 @@ class Bnd_Box {
 		%feature("autodoc", "* Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
 	:param T:
 	:type T: gp_Trsf
-	:rtype: Standard_NODISCARD Bnd_Box") Transformed;
-		Standard_NODISCARD Bnd_Box Transformed (const gp_Trsf & T);
+	:rtype: Bnd_Box") Transformed;
+		Bnd_Box Transformed (const gp_Trsf & T);
 
 		/****************** Update ******************/
 		%feature("compactdefaultargs") Update;
@@ -1776,8 +1776,8 @@ class Bnd_Box2d {
 		%feature("autodoc", "* Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
 	:param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD Bnd_Box2d") Transformed;
-		Standard_NODISCARD Bnd_Box2d Transformed (const gp_Trsf2d & T);
+	:rtype: Bnd_Box2d") Transformed;
+		Bnd_Box2d Transformed (const gp_Trsf2d & T);
 
 		/****************** Update ******************/
 		%feature("compactdefaultargs") Update;

@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 318accf
+git revision : ff03467
 
-operating system : debian Linux 4.15.0-70-generic
+operating system : debian Linux 4.15.0-72-generic
 
 occt version targeted : 7.4.0
 
-date : 2019-12-03 04:41:43.469277
+date : 2020-01-03 07:48:42.372911
 ############################
 
 [INFO ]  Single process mode
@@ -5644,6 +5644,6 @@ date : 2019-12-03 04:41:43.469277
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 42.32s
+SWIG interface file generation completed in 44.75s
 #################################################
 

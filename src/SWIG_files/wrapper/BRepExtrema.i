@@ -82,6 +82,18 @@ enum BRepExtrema_SupportType {
 %template(BRepExtrema_SeqOfSolution) NCollection_Sequence <BRepExtrema_SolutionElem>;
 %template(BRepExtrema_ShapeList) NCollection_Vector <TopoDS_Face>;
 %template(BRepExtrema_MapOfIntegerPackedMapOfInteger) NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger>;
+
+%extend NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (BRepExtrema_MapOfIntegerPackedMapOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

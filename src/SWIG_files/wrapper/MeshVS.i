@@ -257,19 +257,127 @@ enum  {
 };
 %template(MeshVS_MapOfTwoNodes) NCollection_Map <MeshVS_TwoNodes , MeshVS_TwoNodesHasher>;
 %template(MeshVS_DataMapOfIntegerBoolean) NCollection_DataMap <Standard_Integer , Standard_Boolean , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Standard_Boolean , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerBoolean::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfTwoColorsMapOfInteger) NCollection_DataMap <MeshVS_TwoColors , TColStd_MapOfInteger , MeshVS_TwoColorsHasher>;
 %template(MeshVS_DataMapOfIntegerMeshEntityOwner) NCollection_DataMap <Standard_Integer , opencascade::handle <MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , opencascade::handle <MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerMeshEntityOwner::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfHArray1OfSequenceOfInteger) NCollection_DataMap <Standard_Integer , opencascade::handle <MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , opencascade::handle <MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfHArray1OfSequenceOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_TwoNodesHasher) NCollection_DefaultHasher <MeshVS_TwoNodes>;
 %template(MeshVS_SequenceOfPrsBuilder) NCollection_Sequence <opencascade::handle <MeshVS_PrsBuilder>>;
 %template(MeshVS_DataMapOfIntegerColor) NCollection_DataMap <Standard_Integer , Quantity_Color , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Quantity_Color , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerColor::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfIntegerOwner) NCollection_DataMap <Standard_Integer , opencascade::handle <SelectMgr_EntityOwner>, TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , opencascade::handle <SelectMgr_EntityOwner>, TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerOwner::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfIntegerTwoColors) NCollection_DataMap <Standard_Integer , MeshVS_TwoColors , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , MeshVS_TwoColors , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerTwoColors::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfIntegerVector) NCollection_DataMap <Standard_Integer , gp_Vec , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , gp_Vec , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerVector::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfIntegerAsciiString) NCollection_DataMap <Standard_Integer , TCollection_AsciiString , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TCollection_AsciiString , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerAsciiString::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_TwoColorsHasher) NCollection_DefaultHasher <MeshVS_TwoColors>;
 %template(MeshVS_DataMapOfColorMapOfInteger) NCollection_DataMap <Quantity_Color , TColStd_MapOfInteger , Quantity_ColorHasher>;
 %template(MeshVS_DataMapOfIntegerMaterial) NCollection_DataMap <Standard_Integer , Graphic3d_MaterialAspect , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Graphic3d_MaterialAspect , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerMaterial::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

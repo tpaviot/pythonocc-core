@@ -709,8 +709,8 @@ class Units_Token : public Standard_Transient {
 		%feature("autodoc", "* This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 	:param avalue:
 	:type avalue: float
-	:rtype: Standard_NODISCARD  float") Divided;
-		Standard_NODISCARD virtual Standard_Real Divided (const Standard_Real avalue);
+	:rtype: float") Divided;
+		virtual Standard_Real Divided (const Standard_Real avalue);
 
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
@@ -811,8 +811,8 @@ class Units_Token : public Standard_Transient {
 		%feature("autodoc", "* This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 	:param avalue:
 	:type avalue: float
-	:rtype: Standard_NODISCARD  float") Multiplied;
-		Standard_NODISCARD virtual Standard_Real Multiplied (const Standard_Real avalue);
+	:rtype: float") Multiplied;
+		virtual Standard_Real Multiplied (const Standard_Real avalue);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;

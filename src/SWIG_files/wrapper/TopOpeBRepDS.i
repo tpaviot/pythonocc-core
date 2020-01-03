@@ -128,10 +128,46 @@ enum TopOpeBRepDS_Kind {
 /* templates */
 %template(TopOpeBRepDS_IndexedDataMapOfVertexPoint) NCollection_IndexedDataMap <TopoDS_Shape , TopOpeBRepDS_Point , TopTools_ShapeMapHasher>;
 %template(TopOpeBRepDS_MapOfSurface) NCollection_DataMap <Standard_Integer , TopOpeBRepDS_SurfaceData , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TopOpeBRepDS_SurfaceData , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_MapOfSurface::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TopOpeBRepDS_MapOfShapeData) NCollection_IndexedDataMap <TopoDS_Shape , TopOpeBRepDS_ShapeData , TopTools_ShapeMapHasher>;
 %template(TopOpeBRepDS_DataMapOfIntegerListOfInterference) NCollection_DataMap <Standard_Integer , TopOpeBRepDS_ListOfInterference , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TopOpeBRepDS_ListOfInterference , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_DataMapOfIntegerListOfInterference::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State) NCollection_DataMap <TopoDS_Shape , TopOpeBRepDS_ListOfShapeOn1State , TopTools_ShapeMapHasher>;
 %template(TopOpeBRepDS_DataMapOfCheckStatus) NCollection_DataMap <Standard_Integer , TopOpeBRepDS_CheckStatus , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TopOpeBRepDS_CheckStatus , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_DataMapOfCheckStatus::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TopOpeBRepDS_DataMapOfShapeState) NCollection_DataMap <TopoDS_Shape , TopAbs_State , TopTools_ShapeMapHasher>;
 %template(TopOpeBRepDS_IndexedDataMapOfShapeWithState) NCollection_IndexedDataMap <TopoDS_Shape , TopOpeBRepDS_ShapeWithState , TopTools_ShapeMapHasher>;
 %template(TopOpeBRepDS_DataMapOfInterferenceListOfInterference) NCollection_DataMap <opencascade::handle <TopOpeBRepDS_Interference>, TopOpeBRepDS_ListOfInterference , TColStd_MapTransientHasher>;
@@ -175,8 +211,44 @@ enum TopOpeBRepDS_Kind {
     }
 };
 %template(TopOpeBRepDS_MapOfIntegerShapeData) NCollection_DataMap <Standard_Integer , TopOpeBRepDS_ShapeData , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TopOpeBRepDS_ShapeData , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_MapOfIntegerShapeData::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TopOpeBRepDS_MapOfPoint) NCollection_DataMap <Standard_Integer , TopOpeBRepDS_PointData , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TopOpeBRepDS_PointData , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_MapOfPoint::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TopOpeBRepDS_MapOfCurve) NCollection_DataMap <Standard_Integer , TopOpeBRepDS_CurveData , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TopOpeBRepDS_CurveData , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_MapOfCurve::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TopOpeBRepDS_DoubleMapOfIntegerShape) NCollection_DoubleMap <Standard_Integer , TopoDS_Shape , TColStd_MapIntegerHasher , TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
