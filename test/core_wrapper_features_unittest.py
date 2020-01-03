@@ -26,7 +26,9 @@ from contextlib import contextmanager
 
 from OCC.Core.Standard import Standard_Transient
 from OCC.Core.Bnd import Bnd_Box
+from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
 from OCC.Core.BRepBndLib import brepbndlib_Add
+from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeEdge)
@@ -706,6 +708,29 @@ class TestWrapperFeatures(unittest.TestCase):
         TopTools_HArray1OfShape(0, 3)
         TopTools_HArray2OfShape(0, 3, 0, 3)
         TopTools_HSequenceOfShape()
+
+    def test_ncollection_datamap_extension(self):
+        """ NCollection_DataMap class adds a Keys() method that return keys in a Python List
+        """
+        box1 = BRepPrimAPI_MakeBox(gp_Pnt(0, 0, 0), gp_Pnt(20, 20, 20)).Shape()
+        box2 = BRepPrimAPI_MakeBox(gp_Pnt(10, 10, 10), gp_Pnt(30, 30, 30)).Shape()
+
+        # Create meshes for the proximity algorithm
+        deflection = 1e-3
+        mesher1 = BRepMesh_IncrementalMesh(box1, deflection)
+        mesher2 = BRepMesh_IncrementalMesh(box2, deflection)
+        mesher1.Perform()
+        mesher2.Perform()
+
+        # Perform shape proximity check
+        tolerance = 0.1
+        isect_test = BRepExtrema_ShapeProximity(box1, box2, tolerance)
+        isect_test.Perform()
+
+        # Get intersect faces from Shape1
+        overlaps1 = isect_test.OverlapSubShapes1()
+        face_indices1 = overlaps1.Keys()
+        self.assertEqual(face_indices1, [1, 3, 5])
 
 
 def suite():
