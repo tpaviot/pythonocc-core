@@ -126,7 +126,6 @@ typedef Select3D_SensitiveEntity SelectBasics_SensitiveEntity;
 /********************************
 * class Select3D_BVHIndexBuffer *
 ********************************/
-%nodefaultctor Select3D_BVHIndexBuffer;
 class Select3D_BVHIndexBuffer : public Graphic3d_Buffer {
 	public:
 		/****************** HasPatches ******************/
@@ -204,7 +203,6 @@ class Select3D_BVHIndexBuffer : public Graphic3d_Buffer {
 /*********************
 * class Select3D_Pnt *
 *********************/
-%nodefaultctor Select3D_Pnt;
 class Select3D_Pnt {
 	public:
 		Standard_ShortReal x;
@@ -239,7 +237,6 @@ class Select3D_Pnt {
 /***************************
 * class Select3D_PointData *
 ***************************/
-%nodefaultctor Select3D_PointData;
 class Select3D_PointData {
 	public:
 		/****************** Pnt ******************/
@@ -301,7 +298,6 @@ class Select3D_PointData {
 /******************************
 * class Select3D_SensitiveBox *
 ******************************/
-%nodefaultctor Select3D_SensitiveBox;
 class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -381,7 +377,6 @@ class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
 /*******************************
 * class Select3D_SensitiveFace *
 *******************************/
-%nodefaultctor Select3D_SensitiveFace;
 class Select3D_SensitiveFace : public Select3D_SensitiveEntity {
 	public:
 		/****************** BVH ******************/
@@ -469,7 +464,6 @@ class Select3D_SensitiveFace : public Select3D_SensitiveEntity {
 /********************************
 * class Select3D_SensitivePoint *
 ********************************/
-%nodefaultctor Select3D_SensitivePoint;
 class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -535,7 +529,6 @@ class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
 /**********************************
 * class Select3D_SensitiveSegment *
 **********************************/
-%nodefaultctor Select3D_SensitiveSegment;
 class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -644,7 +637,6 @@ class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
 /***********************************
 * class Select3D_SensitiveTriangle *
 ***********************************/
-%nodefaultctor Select3D_SensitiveTriangle;
 class Select3D_SensitiveTriangle : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -728,7 +720,6 @@ class Select3D_SensitiveTriangle : public Select3D_SensitiveEntity {
 /*******************************************
 * class Select3D_InteriorSensitivePointSet *
 *******************************************/
-%nodefaultctor Select3D_InteriorSensitivePointSet;
 class Select3D_InteriorSensitivePointSet : public Select3D_SensitiveSet {
 	public:
 		/****************** BoundingBox ******************/
@@ -815,7 +806,6 @@ class Select3D_InteriorSensitivePointSet : public Select3D_SensitiveSet {
 /********************************
 * class Select3D_SensitiveGroup *
 ********************************/
-%nodefaultctor Select3D_SensitiveGroup;
 class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 	public:
 		/****************** Add ******************/
@@ -1020,7 +1010,6 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 /*******************************
 * class Select3D_SensitivePoly *
 *******************************/
-%nodefaultctor Select3D_SensitivePoly;
 class Select3D_SensitivePoly : public Select3D_SensitiveSet {
 	public:
 		/****************** BoundingBox ******************/
@@ -1133,7 +1122,6 @@ class Select3D_SensitivePoly : public Select3D_SensitiveSet {
 /*****************************************
 * class Select3D_SensitivePrimitiveArray *
 *****************************************/
-%nodefaultctor Select3D_SensitivePrimitiveArray;
 class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 	public:
 		/****************** BVH ******************/
@@ -1492,7 +1480,6 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 /*******************************
 * class Select3D_SensitiveWire *
 *******************************/
-%nodefaultctor Select3D_SensitiveWire;
 class Select3D_SensitiveWire : public Select3D_SensitiveSet {
 	public:
 		/****************** Add ******************/
@@ -1601,7 +1588,6 @@ class Select3D_SensitiveWire : public Select3D_SensitiveSet {
 /*********************************
 * class Select3D_SensitiveCircle *
 *********************************/
-%nodefaultctor Select3D_SensitiveCircle;
 class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 	public:
 		/****************** ArrayBounds ******************/
@@ -1717,7 +1703,6 @@ class Select3D_SensitiveCircle : public Select3D_SensitivePoly {
 /********************************
 * class Select3D_SensitiveCurve *
 ********************************/
-%nodefaultctor Select3D_SensitiveCurve;
 class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 	public:
 		/****************** GetConnected ******************/

@@ -421,7 +421,6 @@ typedef NCollection_DataMap <Standard_Integer , Graphic3d_MaterialAspect , TColS
 /**********************
 * class MeshVS_Buffer *
 **********************/
-%nodefaultctor MeshVS_Buffer;
 class MeshVS_Buffer {
 	public:
 		/****************** MeshVS_Buffer ******************/
@@ -468,7 +467,6 @@ class MeshVS_Buffer {
 /*************************************
 * class MeshVS_CommonSensitiveEntity *
 *************************************/
-%nodefaultctor MeshVS_CommonSensitiveEntity;
 class MeshVS_CommonSensitiveEntity : public Select3D_SensitiveSet {
 	public:
 		/****************** BoundingBox ******************/
@@ -804,7 +802,6 @@ class MeshVS_DataSource : public Standard_Transient {
 /**********************
 * class MeshVS_Drawer *
 **********************/
-%nodefaultctor MeshVS_Drawer;
 class MeshVS_Drawer : public Standard_Transient {
 	public:
 		/****************** Assign ******************/
@@ -979,7 +976,6 @@ class MeshVS_Drawer : public Standard_Transient {
 /************************************
 * class MeshVS_DummySensitiveEntity *
 ************************************/
-%nodefaultctor MeshVS_DummySensitiveEntity;
 class MeshVS_DummySensitiveEntity : public Select3D_SensitiveEntity {
 	public:
 		/****************** BVH ******************/
@@ -1047,7 +1043,6 @@ class MeshVS_DummySensitiveEntity : public Select3D_SensitiveEntity {
 /********************
 * class MeshVS_Mesh *
 ********************/
-%nodefaultctor MeshVS_Mesh;
 class MeshVS_Mesh : public AIS_InteractiveObject {
 	public:
 		/****************** AcceptDisplayMode ******************/
@@ -1360,7 +1355,6 @@ class MeshVS_Mesh : public AIS_InteractiveObject {
 /*******************************
 * class MeshVS_MeshEntityOwner *
 *******************************/
-%nodefaultctor MeshVS_MeshEntityOwner;
 class MeshVS_MeshEntityOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** Clear ******************/
@@ -1459,7 +1453,6 @@ class MeshVS_MeshEntityOwner : public SelectMgr_EntityOwner {
 /*************************
 * class MeshVS_MeshOwner *
 *************************/
-%nodefaultctor MeshVS_MeshOwner;
 class MeshVS_MeshOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** AddSelectedEntities ******************/
@@ -1706,7 +1699,6 @@ class MeshVS_PrsBuilder : public Standard_Transient {
 /*****************************
 * class MeshVS_SensitiveFace *
 *****************************/
-%nodefaultctor MeshVS_SensitiveFace;
 class MeshVS_SensitiveFace : public Select3D_SensitiveFace {
 	public:
 		/****************** MeshVS_SensitiveFace ******************/
@@ -1734,7 +1726,6 @@ class MeshVS_SensitiveFace : public Select3D_SensitiveFace {
 /*****************************
 * class MeshVS_SensitiveMesh *
 *****************************/
-%nodefaultctor MeshVS_SensitiveMesh;
 class MeshVS_SensitiveMesh : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -1798,7 +1789,6 @@ class MeshVS_SensitiveMesh : public Select3D_SensitiveEntity {
 /***********************************
 * class MeshVS_SensitivePolyhedron *
 ***********************************/
-%nodefaultctor MeshVS_SensitivePolyhedron;
 class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -1856,7 +1846,6 @@ class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
 /*****************************
 * class MeshVS_SensitiveQuad *
 *****************************/
-%nodefaultctor MeshVS_SensitiveQuad;
 class MeshVS_SensitiveQuad : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -1933,7 +1922,6 @@ class MeshVS_SensitiveQuad : public Select3D_SensitiveEntity {
 /********************************
 * class MeshVS_SensitiveSegment *
 ********************************/
-%nodefaultctor MeshVS_SensitiveSegment;
 class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment {
 	public:
 		/****************** MeshVS_SensitiveSegment ******************/
@@ -1961,7 +1949,6 @@ class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment {
 /***********************************
 * class MeshVS_SymmetricPairHasher *
 ***********************************/
-%nodefaultctor MeshVS_SymmetricPairHasher;
 class MeshVS_SymmetricPairHasher {
 	public:
 		/****************** HashCode ******************/
@@ -2081,7 +2068,6 @@ class MeshVS_Tool {
 /*************************
 * class MeshVS_TwoColors *
 *************************/
-%nodefaultctor MeshVS_TwoColors;
 class MeshVS_TwoColors {
 	public:
 		unsigned int r1;
@@ -2102,7 +2088,6 @@ class MeshVS_TwoColors {
 /************************
 * class MeshVS_TwoNodes *
 ************************/
-%nodefaultctor MeshVS_TwoNodes;
 class MeshVS_TwoNodes {
 	public:
 		int First;
@@ -2173,7 +2158,6 @@ class MeshVS_DataSource3D : public MeshVS_DataSource {
 /**********************************
 * class MeshVS_DeformedDataSource *
 **********************************/
-%nodefaultctor MeshVS_DeformedDataSource;
 class MeshVS_DeformedDataSource : public MeshVS_DataSource {
 	public:
 		/****************** Get3DGeom ******************/
@@ -2327,7 +2311,6 @@ class MeshVS_DeformedDataSource : public MeshVS_DataSource {
 /****************************************
 * class MeshVS_ElementalColorPrsBuilder *
 ****************************************/
-%nodefaultctor MeshVS_ElementalColorPrsBuilder;
 class MeshVS_ElementalColorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** Build ******************/
@@ -2480,7 +2463,6 @@ class MeshVS_ElementalColorPrsBuilder : public MeshVS_PrsBuilder {
 /******************************
 * class MeshVS_MeshPrsBuilder *
 ******************************/
-%nodefaultctor MeshVS_MeshPrsBuilder;
 class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** AddVolumePrs ******************/
@@ -2609,7 +2591,6 @@ class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
 /************************************
 * class MeshVS_NodalColorPrsBuilder *
 ************************************/
-%nodefaultctor MeshVS_NodalColorPrsBuilder;
 class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** AddVolumePrs ******************/
@@ -2793,7 +2774,6 @@ class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 /******************************
 * class MeshVS_TextPrsBuilder *
 ******************************/
-%nodefaultctor MeshVS_TextPrsBuilder;
 class MeshVS_TextPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** Build ******************/
@@ -2895,7 +2875,6 @@ class MeshVS_TextPrsBuilder : public MeshVS_PrsBuilder {
 /********************************
 * class MeshVS_VectorPrsBuilder *
 ********************************/
-%nodefaultctor MeshVS_VectorPrsBuilder;
 class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** Build ******************/

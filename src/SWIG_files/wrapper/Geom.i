@@ -267,7 +267,6 @@ class Geom_Geometry : public Standard_Transient {
 /*******************************
 * class Geom_OsculatingSurface *
 *******************************/
-%nodefaultctor Geom_OsculatingSurface;
 class Geom_OsculatingSurface : public Standard_Transient {
 	public:
 		/****************** BasisSurface ******************/
@@ -346,7 +345,6 @@ class Geom_OsculatingSurface : public Standard_Transient {
 /****************************
 * class Geom_Transformation *
 ****************************/
-%nodefaultctor Geom_Transformation;
 class Geom_Transformation : public Standard_Transient {
 	public:
 		/****************** Copy ******************/
@@ -1292,7 +1290,6 @@ class Geom_Vector : public Geom_Geometry {
 /****************************
 * class Geom_Axis1Placement *
 ****************************/
-%nodefaultctor Geom_Axis1Placement;
 class Geom_Axis1Placement : public Geom_AxisPlacement {
 	public:
 		/****************** Ax1 ******************/
@@ -1367,7 +1364,6 @@ class Geom_Axis1Placement : public Geom_AxisPlacement {
 /****************************
 * class Geom_Axis2Placement *
 ****************************/
-%nodefaultctor Geom_Axis2Placement;
 class Geom_Axis2Placement : public Geom_AxisPlacement {
 	public:
 		/****************** Ax2 ******************/
@@ -1514,7 +1510,6 @@ class Geom_BoundedSurface : public Geom_Surface {
 /****************************
 * class Geom_CartesianPoint *
 ****************************/
-%nodefaultctor Geom_CartesianPoint;
 class Geom_CartesianPoint : public Geom_Point {
 	public:
 		/****************** Coord ******************/
@@ -1750,7 +1745,6 @@ class Geom_Conic : public Geom_Curve {
 /***********************
 * class Geom_Direction *
 ***********************/
-%nodefaultctor Geom_Direction;
 class Geom_Direction : public Geom_Vector {
 	public:
 		/****************** Copy ******************/
@@ -2008,7 +2002,6 @@ class Geom_ElementarySurface : public Geom_Surface {
 /******************
 * class Geom_Line *
 ******************/
-%nodefaultctor Geom_Line;
 class Geom_Line : public Geom_Curve {
 	public:
 		/****************** Continuity ******************/
@@ -2241,7 +2234,6 @@ class Geom_Line : public Geom_Curve {
 /*************************
 * class Geom_OffsetCurve *
 *************************/
-%nodefaultctor Geom_OffsetCurve;
 class Geom_OffsetCurve : public Geom_Curve {
 	public:
 		/****************** BasisCurve ******************/
@@ -2473,7 +2465,6 @@ class Geom_OffsetCurve : public Geom_Curve {
 /***************************
 * class Geom_OffsetSurface *
 ***************************/
-%nodefaultctor Geom_OffsetSurface;
 class Geom_OffsetSurface : public Geom_Surface {
 	public:
 		/****************** BasisSurface ******************/
@@ -2857,7 +2848,6 @@ class Geom_SweptSurface : public Geom_Surface {
 /*********************************
 * class Geom_VectorWithMagnitude *
 *********************************/
-%nodefaultctor Geom_VectorWithMagnitude;
 class Geom_VectorWithMagnitude : public Geom_Vector {
 	public:
 		/****************** Add ******************/
@@ -3086,7 +3076,6 @@ class Geom_VectorWithMagnitude : public Geom_Vector {
 /**************************
 * class Geom_BSplineCurve *
 **************************/
-%nodefaultctor Geom_BSplineCurve;
 class Geom_BSplineCurve : public Geom_BoundedCurve {
 	public:
 		/****************** Continuity ******************/
@@ -3803,7 +3792,6 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 /****************************
 * class Geom_BSplineSurface *
 ****************************/
-%nodefaultctor Geom_BSplineSurface;
 class Geom_BSplineSurface : public Geom_BoundedSurface {
 	public:
 		/****************** Bounds ******************/
@@ -4991,7 +4979,6 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 /*************************
 * class Geom_BezierCurve *
 *************************/
-%nodefaultctor Geom_BezierCurve;
 class Geom_BezierCurve : public Geom_BoundedCurve {
 	public:
 		/****************** Continuity ******************/
@@ -5343,7 +5330,6 @@ class Geom_BezierCurve : public Geom_BoundedCurve {
 /***************************
 * class Geom_BezierSurface *
 ***************************/
-%nodefaultctor Geom_BezierSurface;
 class Geom_BezierSurface : public Geom_BoundedSurface {
 	public:
 		/****************** Bounds ******************/
@@ -5925,7 +5911,6 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 /********************
 * class Geom_Circle *
 ********************/
-%nodefaultctor Geom_Circle;
 class Geom_Circle : public Geom_Conic {
 	public:
 		/****************** Circ ******************/
@@ -6102,7 +6087,6 @@ class Geom_Circle : public Geom_Conic {
 /****************************
 * class Geom_ConicalSurface *
 ****************************/
-%nodefaultctor Geom_ConicalSurface;
 class Geom_ConicalSurface : public Geom_ElementarySurface {
 	public:
 		/****************** Apex ******************/
@@ -6417,7 +6401,6 @@ class Geom_ConicalSurface : public Geom_ElementarySurface {
 /********************************
 * class Geom_CylindricalSurface *
 ********************************/
-%nodefaultctor Geom_CylindricalSurface;
 class Geom_CylindricalSurface : public Geom_ElementarySurface {
 	public:
 		/****************** Bounds ******************/
@@ -6704,7 +6687,6 @@ class Geom_CylindricalSurface : public Geom_ElementarySurface {
 /*********************
 * class Geom_Ellipse *
 *********************/
-%nodefaultctor Geom_Ellipse;
 class Geom_Ellipse : public Geom_Conic {
 	public:
 		/****************** Copy ******************/
@@ -6932,7 +6914,6 @@ class Geom_Ellipse : public Geom_Conic {
 /***********************
 * class Geom_Hyperbola *
 ***********************/
-%nodefaultctor Geom_Hyperbola;
 class Geom_Hyperbola : public Geom_Conic {
 	public:
 		/****************** Asymptote1 ******************/
@@ -7191,7 +7172,6 @@ class Geom_Hyperbola : public Geom_Conic {
 /**********************
 * class Geom_Parabola *
 **********************/
-%nodefaultctor Geom_Parabola;
 class Geom_Parabola : public Geom_Conic {
 	public:
 		/****************** Copy ******************/
@@ -7414,7 +7394,6 @@ class Geom_Parabola : public Geom_Conic {
 /*******************
 * class Geom_Plane *
 *******************/
-%nodefaultctor Geom_Plane;
 class Geom_Plane : public Geom_ElementarySurface {
 	public:
 		/****************** Bounds ******************/
@@ -7709,7 +7688,6 @@ class Geom_Plane : public Geom_ElementarySurface {
 /***************************************
 * class Geom_RectangularTrimmedSurface *
 ***************************************/
-%nodefaultctor Geom_RectangularTrimmedSurface;
 class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 	public:
 		/****************** BasisSurface ******************/
@@ -8044,7 +8022,6 @@ class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 /******************************
 * class Geom_SphericalSurface *
 ******************************/
-%nodefaultctor Geom_SphericalSurface;
 class Geom_SphericalSurface : public Geom_ElementarySurface {
 	public:
 		/****************** Area ******************/
@@ -8323,7 +8300,6 @@ class Geom_SphericalSurface : public Geom_ElementarySurface {
 /**************************************
 * class Geom_SurfaceOfLinearExtrusion *
 **************************************/
-%nodefaultctor Geom_SurfaceOfLinearExtrusion;
 class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
 	public:
 		/****************** Bounds ******************/
@@ -8592,7 +8568,6 @@ class Geom_SurfaceOfLinearExtrusion : public Geom_SweptSurface {
 /*********************************
 * class Geom_SurfaceOfRevolution *
 *********************************/
-%nodefaultctor Geom_SurfaceOfRevolution;
 class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 	public:
 		/****************** Axis ******************/
@@ -8895,7 +8870,6 @@ class Geom_SurfaceOfRevolution : public Geom_SweptSurface {
 /*****************************
 * class Geom_ToroidalSurface *
 *****************************/
-%nodefaultctor Geom_ToroidalSurface;
 class Geom_ToroidalSurface : public Geom_ElementarySurface {
 	public:
 		/****************** Area ******************/
@@ -9172,7 +9146,6 @@ class Geom_ToroidalSurface : public Geom_ElementarySurface {
 /**************************
 * class Geom_TrimmedCurve *
 **************************/
-%nodefaultctor Geom_TrimmedCurve;
 class Geom_TrimmedCurve : public Geom_BoundedCurve {
 	public:
 		/****************** BasisCurve ******************/

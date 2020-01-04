@@ -171,7 +171,6 @@ class BRepAlgo {
 /***********************
 * class BRepAlgo_AsDes *
 ***********************/
-%nodefaultctor BRepAlgo_AsDes;
 class BRepAlgo_AsDes : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -348,7 +347,6 @@ class BRepAlgo_BooleanOperation : public BRepBuilderAPI_MakeShape {
 /********************************
 * class BRepAlgo_FaceRestrictor *
 ********************************/
-%nodefaultctor BRepAlgo_FaceRestrictor;
 class BRepAlgo_FaceRestrictor {
 	public:
 		/****************** Add ******************/
@@ -420,7 +418,6 @@ class BRepAlgo_FaceRestrictor {
 /***********************
 * class BRepAlgo_Image *
 ***********************/
-%nodefaultctor BRepAlgo_Image;
 class BRepAlgo_Image {
 	public:
 		/****************** Add ******************/
@@ -569,7 +566,6 @@ class BRepAlgo_Image {
 /**********************
 * class BRepAlgo_Loop *
 **********************/
-%nodefaultctor BRepAlgo_Loop;
 class BRepAlgo_Loop {
 	public:
 		/****************** AddConstEdge ******************/
@@ -682,7 +678,6 @@ class BRepAlgo_Loop {
 /**********************************
 * class BRepAlgo_NormalProjection *
 **********************************/
-%nodefaultctor BRepAlgo_NormalProjection;
 class BRepAlgo_NormalProjection {
 	public:
 		/****************** Add ******************/
@@ -850,7 +845,6 @@ class BRepAlgo_Tool {
 /************************
 * class BRepAlgo_Common *
 ************************/
-%nodefaultctor BRepAlgo_Common;
 class BRepAlgo_Common : public BRepAlgo_BooleanOperation {
 	public:
 		/****************** BRepAlgo_Common ******************/
@@ -875,7 +869,6 @@ class BRepAlgo_Common : public BRepAlgo_BooleanOperation {
 /*********************
 * class BRepAlgo_Cut *
 *********************/
-%nodefaultctor BRepAlgo_Cut;
 class BRepAlgo_Cut : public BRepAlgo_BooleanOperation {
 	public:
 		/****************** BRepAlgo_Cut ******************/
@@ -900,7 +893,6 @@ class BRepAlgo_Cut : public BRepAlgo_BooleanOperation {
 /**********************
 * class BRepAlgo_Fuse *
 **********************/
-%nodefaultctor BRepAlgo_Fuse;
 class BRepAlgo_Fuse : public BRepAlgo_BooleanOperation {
 	public:
 		/****************** BRepAlgo_Fuse ******************/
@@ -925,7 +917,6 @@ class BRepAlgo_Fuse : public BRepAlgo_BooleanOperation {
 /*************************
 * class BRepAlgo_Section *
 *************************/
-%nodefaultctor BRepAlgo_Section;
 class BRepAlgo_Section : public BRepAlgo_BooleanOperation {
 	public:
 		/****************** Approximation ******************/

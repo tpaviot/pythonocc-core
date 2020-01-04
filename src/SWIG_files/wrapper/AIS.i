@@ -919,7 +919,6 @@ class AIS {
 /**********************
 * class AIS_Animation *
 **********************/
-%nodefaultctor AIS_Animation;
 class AIS_Animation : public Standard_Transient {
 	public:
 		/****************** AIS_Animation ******************/
@@ -1110,7 +1109,6 @@ class AIS_Animation : public Standard_Transient {
 /******************************
 * class AIS_AnimationProgress *
 ******************************/
-%nodefaultctor AIS_AnimationProgress;
 class AIS_AnimationProgress {
 	public:
 		float Pts;
@@ -1134,7 +1132,6 @@ class AIS_AnimationProgress {
 /****************************
 * class AIS_AttributeFilter *
 ****************************/
-%nodefaultctor AIS_AttributeFilter;
 class AIS_AttributeFilter : public SelectMgr_Filter {
 	public:
 		/****************** AIS_AttributeFilter ******************/
@@ -1221,7 +1218,6 @@ class AIS_AttributeFilter : public SelectMgr_Filter {
 /**************************
 * class AIS_BadEdgeFilter *
 **************************/
-%nodefaultctor AIS_BadEdgeFilter;
 class AIS_BadEdgeFilter : public SelectMgr_Filter {
 	public:
 		/****************** AIS_BadEdgeFilter ******************/
@@ -1284,7 +1280,6 @@ class AIS_BadEdgeFilter : public SelectMgr_Filter {
 /*******************************
 * class AIS_C0RegularityFilter *
 *******************************/
-%nodefaultctor AIS_C0RegularityFilter;
 class AIS_C0RegularityFilter : public SelectMgr_Filter {
 	public:
 		/****************** AIS_C0RegularityFilter ******************/
@@ -1322,7 +1317,6 @@ class AIS_C0RegularityFilter : public SelectMgr_Filter {
 /**************************
 * class AIS_ColoredDrawer *
 **************************/
-%nodefaultctor AIS_ColoredDrawer;
 class AIS_ColoredDrawer : public Prs3d_Drawer {
 	public:
 		bool myIsHidden;
@@ -1414,7 +1408,6 @@ class AIS_ColoredDrawer : public Prs3d_Drawer {
 /***************************
 * class AIS_DimensionOwner *
 ***************************/
-%nodefaultctor AIS_DimensionOwner;
 class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** AIS_DimensionOwner ******************/
@@ -1479,7 +1472,6 @@ class AIS_DimensionOwner : public SelectMgr_EntityOwner {
 /****************************
 * class AIS_ExclusionFilter *
 ****************************/
-%nodefaultctor AIS_ExclusionFilter;
 class AIS_ExclusionFilter : public SelectMgr_Filter {
 	public:
 		/****************** AIS_ExclusionFilter ******************/
@@ -1606,7 +1598,6 @@ class AIS_ExclusionFilter : public SelectMgr_Filter {
 /*************************
 * class AIS_GlobalStatus *
 *************************/
-%nodefaultctor AIS_GlobalStatus;
 class AIS_GlobalStatus : public Standard_Transient {
 	public:
 		/****************** AIS_GlobalStatus ******************/
@@ -1845,7 +1836,6 @@ class AIS_GraphicTool {
 /*******************************
 * class AIS_InteractiveContext *
 *******************************/
-%nodefaultctor AIS_InteractiveContext;
 class AIS_InteractiveContext : public Standard_Transient {
 	public:
 		/****************** AIS_InteractiveContext ******************/
@@ -3867,7 +3857,6 @@ class AIS_InteractiveObject : public SelectMgr_SelectableObject {
 /*****************************
 * class AIS_ManipulatorOwner *
 *****************************/
-%nodefaultctor AIS_ManipulatorOwner;
 class AIS_ManipulatorOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** AIS_ManipulatorOwner ******************/
@@ -3937,7 +3926,6 @@ class AIS_ManipulatorOwner : public SelectMgr_EntityOwner {
 /****************************
 * class AIS_PointCloudOwner *
 ****************************/
-%nodefaultctor AIS_PointCloudOwner;
 class AIS_PointCloudOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** AIS_PointCloudOwner ******************/
@@ -4010,7 +3998,6 @@ class AIS_PointCloudOwner : public SelectMgr_EntityOwner {
 /**********************
 * class AIS_Selection *
 **********************/
-%nodefaultctor AIS_Selection;
 class AIS_Selection : public Standard_Transient {
 	public:
 		/****************** AIS_Selection ******************/
@@ -4113,7 +4100,6 @@ class AIS_Selection : public Standard_Transient {
 /***************************
 * class AIS_TrihedronOwner *
 ***************************/
-%nodefaultctor AIS_TrihedronOwner;
 class AIS_TrihedronOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** AIS_TrihedronOwner ******************/
@@ -4180,7 +4166,6 @@ class AIS_TrihedronOwner : public SelectMgr_EntityOwner {
 /***********************
 * class AIS_TypeFilter *
 ***********************/
-%nodefaultctor AIS_TypeFilter;
 class AIS_TypeFilter : public SelectMgr_Filter {
 	public:
 		/****************** AIS_TypeFilter ******************/
@@ -4213,7 +4198,6 @@ class AIS_TypeFilter : public SelectMgr_Filter {
 /***************************
 * class AIS_ViewController *
 ***************************/
-%nodefaultctor AIS_ViewController;
 class AIS_ViewController {
 	public:
 		/****************** AIS_ViewController ******************/
@@ -5096,7 +5080,6 @@ class AIS_ViewController {
 /**************************
 * class AIS_ViewCubeOwner *
 **************************/
-%nodefaultctor AIS_ViewCubeOwner;
 class AIS_ViewCubeOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** AIS_ViewCubeOwner ******************/
@@ -5149,7 +5132,6 @@ class AIS_ViewCubeOwner : public SelectMgr_EntityOwner {
 /****************************
 * class AIS_ViewInputBuffer *
 ****************************/
-%nodefaultctor AIS_ViewInputBuffer;
 class AIS_ViewInputBuffer {
 	public:
 		class _orientation {};
@@ -5193,7 +5175,6 @@ class AIS_ViewInputBuffer {
 /**********************
 * class AIS_WalkDelta *
 **********************/
-%nodefaultctor AIS_WalkDelta;
 class AIS_WalkDelta {
 	public:
 		/****************** AIS_WalkDelta ******************/
@@ -5274,7 +5255,6 @@ class AIS_WalkDelta {
 /*********************
 * class AIS_WalkPart *
 *********************/
-%nodefaultctor AIS_WalkPart;
 class AIS_WalkPart {
 	public:
 		float Value;
@@ -5304,7 +5284,6 @@ class AIS_WalkPart {
 /****************************
 * class AIS_AnimationCamera *
 ****************************/
-%nodefaultctor AIS_AnimationCamera;
 class AIS_AnimationCamera : public AIS_Animation {
 	public:
 		/****************** AIS_AnimationCamera ******************/
@@ -5373,7 +5352,6 @@ class AIS_AnimationCamera : public AIS_Animation {
 /****************************
 * class AIS_AnimationObject *
 ****************************/
-%nodefaultctor AIS_AnimationObject;
 class AIS_AnimationObject : public AIS_Animation {
 	public:
 		/****************** AIS_AnimationObject ******************/
@@ -5406,7 +5384,6 @@ class AIS_AnimationObject : public AIS_Animation {
 /**************************
 * class AIS_CameraFrustum *
 **************************/
-%nodefaultctor AIS_CameraFrustum;
 class AIS_CameraFrustum : public AIS_InteractiveObject {
 	public:
 /* public enums */
@@ -5471,7 +5448,6 @@ enum SelectionMode {
 /*******************
 * class AIS_Circle *
 *******************/
-%nodefaultctor AIS_Circle;
 class AIS_Circle : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_Circle ******************/
@@ -5615,7 +5591,6 @@ class AIS_Circle : public AIS_InteractiveObject {
 /***********************
 * class AIS_ColorScale *
 ***********************/
-%nodefaultctor AIS_ColorScale;
 class AIS_ColorScale : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_ColorScale ******************/
@@ -6203,7 +6178,6 @@ class AIS_ColorScale : public AIS_InteractiveObject {
 /*********************************
 * class AIS_ConnectedInteractive *
 *********************************/
-%nodefaultctor AIS_ConnectedInteractive;
 class AIS_ConnectedInteractive : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_ConnectedInteractive ******************/
@@ -6533,7 +6507,6 @@ enum ComputeMode {
 /*****************
 * class AIS_Line *
 *****************/
-%nodefaultctor AIS_Line;
 class AIS_Line : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_Line ******************/
@@ -6654,7 +6627,6 @@ class AIS_Line : public AIS_InteractiveObject {
 /************************
 * class AIS_Manipulator *
 ************************/
-%nodefaultctor AIS_Manipulator;
 class AIS_Manipulator : public AIS_InteractiveObject {
 	public:
 		class OptionsForAttach {};
@@ -6991,7 +6963,6 @@ class AIS_Manipulator : public AIS_InteractiveObject {
 /************************
 * class AIS_MediaPlayer *
 ************************/
-%nodefaultctor AIS_MediaPlayer;
 class AIS_MediaPlayer : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_MediaPlayer ******************/
@@ -7066,7 +7037,6 @@ class AIS_MediaPlayer : public AIS_InteractiveObject {
 /*****************************************
 * class AIS_MultipleConnectedInteractive *
 *****************************************/
-%nodefaultctor AIS_MultipleConnectedInteractive;
 class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_MultipleConnectedInteractive ******************/
@@ -7221,7 +7191,6 @@ class AIS_MultipleConnectedInteractive : public AIS_InteractiveObject {
 /******************
 * class AIS_Plane *
 ******************/
-%nodefaultctor AIS_Plane;
 class AIS_Plane : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_Plane ******************/
@@ -7495,7 +7464,6 @@ class AIS_Plane : public AIS_InteractiveObject {
 /***************************
 * class AIS_PlaneTrihedron *
 ***************************/
-%nodefaultctor AIS_PlaneTrihedron;
 class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_PlaneTrihedron ******************/
@@ -7619,7 +7587,6 @@ class AIS_PlaneTrihedron : public AIS_InteractiveObject {
 /******************
 * class AIS_Point *
 ******************/
-%nodefaultctor AIS_Point;
 class AIS_Point : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_Point ******************/
@@ -7730,7 +7697,6 @@ class AIS_Point : public AIS_InteractiveObject {
 /***********************
 * class AIS_PointCloud *
 ***********************/
-%nodefaultctor AIS_PointCloud;
 class AIS_PointCloud : public AIS_InteractiveObject {
 	public:
 /* public enums */
@@ -8041,7 +8007,6 @@ class AIS_Relation : public AIS_InteractiveObject {
 /***********************
 * class AIS_RubberBand *
 ***********************/
-%nodefaultctor AIS_RubberBand;
 class AIS_RubberBand : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_RubberBand ******************/
@@ -8244,7 +8209,6 @@ class AIS_RubberBand : public AIS_InteractiveObject {
 /******************
 * class AIS_Shape *
 ******************/
-%nodefaultctor AIS_Shape;
 class AIS_Shape : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_Shape ******************/
@@ -8603,7 +8567,6 @@ class AIS_Shape : public AIS_InteractiveObject {
 /****************************
 * class AIS_SignatureFilter *
 ****************************/
-%nodefaultctor AIS_SignatureFilter;
 class AIS_SignatureFilter : public AIS_TypeFilter {
 	public:
 		/****************** AIS_SignatureFilter ******************/
@@ -8638,7 +8601,6 @@ class AIS_SignatureFilter : public AIS_TypeFilter {
 /**********************
 * class AIS_TextLabel *
 **********************/
-%nodefaultctor AIS_TextLabel;
 class AIS_TextLabel : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_TextLabel ******************/
@@ -8823,7 +8785,6 @@ class AIS_TextLabel : public AIS_InteractiveObject {
 /**************************
 * class AIS_Triangulation *
 **************************/
-%nodefaultctor AIS_Triangulation;
 class AIS_Triangulation : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_Triangulation ******************/
@@ -8895,7 +8856,6 @@ class AIS_Triangulation : public AIS_InteractiveObject {
 /**********************
 * class AIS_Trihedron *
 **********************/
-%nodefaultctor AIS_Trihedron;
 class AIS_Trihedron : public AIS_InteractiveObject {
 	public:
 		/****************** AIS_Trihedron ******************/
@@ -9181,7 +9141,6 @@ class AIS_Trihedron : public AIS_InteractiveObject {
 /*********************
 * class AIS_ViewCube *
 *********************/
-%nodefaultctor AIS_ViewCube;
 class AIS_ViewCube : public AIS_InteractiveObject {
 	public:
 		class IntegerHasher {};
@@ -9769,7 +9728,6 @@ class AIS_ViewCube : public AIS_InteractiveObject {
 /***************************
 * class AIS_AngleDimension *
 ***************************/
-%nodefaultctor AIS_AngleDimension;
 class AIS_AngleDimension : public AIS_Dimension {
 	public:
 		/****************** AIS_AngleDimension ******************/
@@ -10017,7 +9975,6 @@ class AIS_AngleDimension : public AIS_Dimension {
 /*****************************
 * class AIS_Chamf2dDimension *
 *****************************/
-%nodefaultctor AIS_Chamf2dDimension;
 class AIS_Chamf2dDimension : public AIS_Relation {
 	public:
 		/****************** AIS_Chamf2dDimension ******************/
@@ -10092,7 +10049,6 @@ class AIS_Chamf2dDimension : public AIS_Relation {
 /*****************************
 * class AIS_Chamf3dDimension *
 *****************************/
-%nodefaultctor AIS_Chamf3dDimension;
 class AIS_Chamf3dDimension : public AIS_Relation {
 	public:
 		/****************** AIS_Chamf3dDimension ******************/
@@ -10163,7 +10119,6 @@ class AIS_Chamf3dDimension : public AIS_Relation {
 /*************************
 * class AIS_ColoredShape *
 *************************/
-%nodefaultctor AIS_ColoredShape;
 class AIS_ColoredShape : public AIS_Shape {
 	public:
 		/****************** AIS_ColoredShape ******************/
@@ -10306,7 +10261,6 @@ class AIS_ColoredShape : public AIS_Shape {
 /*******************************
 * class AIS_ConcentricRelation *
 *******************************/
-%nodefaultctor AIS_ConcentricRelation;
 class AIS_ConcentricRelation : public AIS_Relation {
 	public:
 		/****************** AIS_ConcentricRelation ******************/
@@ -10347,7 +10301,6 @@ class AIS_ConcentricRelation : public AIS_Relation {
 /******************************
 * class AIS_DiameterDimension *
 ******************************/
-%nodefaultctor AIS_DiameterDimension;
 class AIS_DiameterDimension : public AIS_Dimension {
 	public:
 		/****************** AIS_DiameterDimension ******************/
@@ -10504,7 +10457,6 @@ class AIS_EllipseRadiusDimension : public AIS_Relation {
 /**********************************
 * class AIS_EqualDistanceRelation *
 **********************************/
-%nodefaultctor AIS_EqualDistanceRelation;
 class AIS_EqualDistanceRelation : public AIS_Relation {
 	public:
 		/****************** AIS_EqualDistanceRelation ******************/
@@ -10687,7 +10639,6 @@ class AIS_EqualDistanceRelation : public AIS_Relation {
 /********************************
 * class AIS_EqualRadiusRelation *
 ********************************/
-%nodefaultctor AIS_EqualRadiusRelation;
 class AIS_EqualRadiusRelation : public AIS_Relation {
 	public:
 		/****************** AIS_EqualRadiusRelation ******************/
@@ -10728,7 +10679,6 @@ class AIS_EqualRadiusRelation : public AIS_Relation {
 /************************
 * class AIS_FixRelation *
 ************************/
-%nodefaultctor AIS_FixRelation;
 class AIS_FixRelation : public AIS_Relation {
 	public:
 		/****************** AIS_FixRelation ******************/
@@ -10829,7 +10779,6 @@ class AIS_FixRelation : public AIS_Relation {
 /****************************
 * class AIS_IdenticRelation *
 ****************************/
-%nodefaultctor AIS_IdenticRelation;
 class AIS_IdenticRelation : public AIS_Relation {
 	public:
 		/****************** AIS_IdenticRelation ******************/
@@ -10898,7 +10847,6 @@ class AIS_IdenticRelation : public AIS_Relation {
 /****************************
 * class AIS_LengthDimension *
 ****************************/
-%nodefaultctor AIS_LengthDimension;
 class AIS_LengthDimension : public AIS_Dimension {
 	public:
 		/****************** AIS_LengthDimension ******************/
@@ -11093,7 +11041,6 @@ class AIS_LengthDimension : public AIS_Dimension {
 /*****************************
 * class AIS_MidPointRelation *
 *****************************/
-%nodefaultctor AIS_MidPointRelation;
 class AIS_MidPointRelation : public AIS_Relation {
 	public:
 		/****************** AIS_MidPointRelation ******************/
@@ -11152,7 +11099,6 @@ class AIS_MidPointRelation : public AIS_Relation {
 /****************************
 * class AIS_OffsetDimension *
 ****************************/
-%nodefaultctor AIS_OffsetDimension;
 class AIS_OffsetDimension : public AIS_Relation {
 	public:
 		/****************** AIS_OffsetDimension ******************/
@@ -11215,7 +11161,6 @@ class AIS_OffsetDimension : public AIS_Relation {
 /*****************************
 * class AIS_ParallelRelation *
 *****************************/
-%nodefaultctor AIS_ParallelRelation;
 class AIS_ParallelRelation : public AIS_Relation {
 	public:
 		/****************** AIS_ParallelRelation ******************/
@@ -11280,7 +11225,6 @@ class AIS_ParallelRelation : public AIS_Relation {
 /**********************************
 * class AIS_PerpendicularRelation *
 **********************************/
-%nodefaultctor AIS_PerpendicularRelation;
 class AIS_PerpendicularRelation : public AIS_Relation {
 	public:
 		/****************** AIS_PerpendicularRelation ******************/
@@ -11331,7 +11275,6 @@ class AIS_PerpendicularRelation : public AIS_Relation {
 /****************************
 * class AIS_RadiusDimension *
 ****************************/
-%nodefaultctor AIS_RadiusDimension;
 class AIS_RadiusDimension : public AIS_Dimension {
 	public:
 		/****************** AIS_RadiusDimension ******************/
@@ -11470,7 +11413,6 @@ class AIS_RadiusDimension : public AIS_Dimension {
 /******************************
 * class AIS_SymmetricRelation *
 ******************************/
-%nodefaultctor AIS_SymmetricRelation;
 class AIS_SymmetricRelation : public AIS_Relation {
 	public:
 		/****************** AIS_SymmetricRelation ******************/
@@ -11533,7 +11475,6 @@ class AIS_SymmetricRelation : public AIS_Relation {
 /****************************
 * class AIS_TangentRelation *
 ****************************/
-%nodefaultctor AIS_TangentRelation;
 class AIS_TangentRelation : public AIS_Relation {
 	public:
 		/****************** AIS_TangentRelation ******************/
@@ -11590,7 +11531,6 @@ class AIS_TangentRelation : public AIS_Relation {
 /**************************
 * class AIS_TexturedShape *
 **************************/
-%nodefaultctor AIS_TexturedShape;
 class AIS_TexturedShape : public AIS_Shape {
 	public:
 		/****************** AIS_TexturedShape ******************/
@@ -11811,7 +11751,6 @@ class AIS_TexturedShape : public AIS_Shape {
 /*******************************
 * class AIS_MaxRadiusDimension *
 *******************************/
-%nodefaultctor AIS_MaxRadiusDimension;
 class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
 	public:
 		/****************** AIS_MaxRadiusDimension ******************/
@@ -11870,7 +11809,6 @@ class AIS_MaxRadiusDimension : public AIS_EllipseRadiusDimension {
 /*******************************
 * class AIS_MinRadiusDimension *
 *******************************/
-%nodefaultctor AIS_MinRadiusDimension;
 class AIS_MinRadiusDimension : public AIS_EllipseRadiusDimension {
 	public:
 		/****************** AIS_MinRadiusDimension ******************/

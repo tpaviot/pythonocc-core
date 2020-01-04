@@ -458,7 +458,6 @@ typedef NCollection_Array1 <StepAP203_ClassifiedItem> StepAP203_Array1OfClassifi
 /*******************************
 * class StepAP203_ApprovedItem *
 *******************************/
-%nodefaultctor StepAP203_ApprovedItem;
 class StepAP203_ApprovedItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -553,7 +552,6 @@ class StepAP203_ApprovedItem : public StepData_SelectType {
 /***********************************
 * class StepAP203_CcDesignApproval *
 ***********************************/
-%nodefaultctor StepAP203_CcDesignApproval;
 class StepAP203_CcDesignApproval : public StepBasic_ApprovalAssignment {
 	public:
 		/****************** Init ******************/
@@ -600,7 +598,6 @@ class StepAP203_CcDesignApproval : public StepBasic_ApprovalAssignment {
 /****************************************
 * class StepAP203_CcDesignCertification *
 ****************************************/
-%nodefaultctor StepAP203_CcDesignCertification;
 class StepAP203_CcDesignCertification : public StepBasic_CertificationAssignment {
 	public:
 		/****************** Init ******************/
@@ -647,7 +644,6 @@ class StepAP203_CcDesignCertification : public StepBasic_CertificationAssignment
 /***********************************
 * class StepAP203_CcDesignContract *
 ***********************************/
-%nodefaultctor StepAP203_CcDesignContract;
 class StepAP203_CcDesignContract : public StepBasic_ContractAssignment {
 	public:
 		/****************** Init ******************/
@@ -694,7 +690,6 @@ class StepAP203_CcDesignContract : public StepBasic_ContractAssignment {
 /************************************************
 * class StepAP203_CcDesignDateAndTimeAssignment *
 ************************************************/
-%nodefaultctor StepAP203_CcDesignDateAndTimeAssignment;
 class StepAP203_CcDesignDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
 		/****************** Init ******************/
@@ -743,7 +738,6 @@ class StepAP203_CcDesignDateAndTimeAssignment : public StepBasic_DateAndTimeAssi
 /**********************************************************
 * class StepAP203_CcDesignPersonAndOrganizationAssignment *
 **********************************************************/
-%nodefaultctor StepAP203_CcDesignPersonAndOrganizationAssignment;
 class StepAP203_CcDesignPersonAndOrganizationAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
 		/****************** Init ******************/
@@ -792,7 +786,6 @@ class StepAP203_CcDesignPersonAndOrganizationAssignment : public StepBasic_Perso
 /*************************************************
 * class StepAP203_CcDesignSecurityClassification *
 *************************************************/
-%nodefaultctor StepAP203_CcDesignSecurityClassification;
 class StepAP203_CcDesignSecurityClassification : public StepBasic_SecurityClassificationAssignment {
 	public:
 		/****************** Init ******************/
@@ -839,7 +832,6 @@ class StepAP203_CcDesignSecurityClassification : public StepBasic_SecurityClassi
 /*************************************************
 * class StepAP203_CcDesignSpecificationReference *
 *************************************************/
-%nodefaultctor StepAP203_CcDesignSpecificationReference;
 class StepAP203_CcDesignSpecificationReference : public StepBasic_DocumentReference {
 	public:
 		/****************** Init ******************/
@@ -888,7 +880,6 @@ class StepAP203_CcDesignSpecificationReference : public StepBasic_DocumentRefere
 /********************************
 * class StepAP203_CertifiedItem *
 ********************************/
-%nodefaultctor StepAP203_CertifiedItem;
 class StepAP203_CertifiedItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -923,7 +914,6 @@ class StepAP203_CertifiedItem : public StepData_SelectType {
 /*************************
 * class StepAP203_Change *
 *************************/
-%nodefaultctor StepAP203_Change;
 class StepAP203_Change : public StepBasic_ActionAssignment {
 	public:
 		/****************** Init ******************/
@@ -970,7 +960,6 @@ class StepAP203_Change : public StepBasic_ActionAssignment {
 /********************************
 * class StepAP203_ChangeRequest *
 ********************************/
-%nodefaultctor StepAP203_ChangeRequest;
 class StepAP203_ChangeRequest : public StepBasic_ActionRequestAssignment {
 	public:
 		/****************** Init ******************/
@@ -1017,7 +1006,6 @@ class StepAP203_ChangeRequest : public StepBasic_ActionRequestAssignment {
 /************************************
 * class StepAP203_ChangeRequestItem *
 ************************************/
-%nodefaultctor StepAP203_ChangeRequestItem;
 class StepAP203_ChangeRequestItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1052,7 +1040,6 @@ class StepAP203_ChangeRequestItem : public StepData_SelectType {
 /*********************************
 * class StepAP203_ClassifiedItem *
 *********************************/
-%nodefaultctor StepAP203_ClassifiedItem;
 class StepAP203_ClassifiedItem : public StepData_SelectType {
 	public:
 		/****************** AssemblyComponentUsage ******************/
@@ -1093,7 +1080,6 @@ class StepAP203_ClassifiedItem : public StepData_SelectType {
 /*********************************
 * class StepAP203_ContractedItem *
 *********************************/
-%nodefaultctor StepAP203_ContractedItem;
 class StepAP203_ContractedItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1128,7 +1114,6 @@ class StepAP203_ContractedItem : public StepData_SelectType {
 /*******************************
 * class StepAP203_DateTimeItem *
 *******************************/
-%nodefaultctor StepAP203_DateTimeItem;
 class StepAP203_DateTimeItem : public StepData_SelectType {
 	public:
 		/****************** ApprovalPersonOrganization ******************/
@@ -1211,7 +1196,6 @@ class StepAP203_DateTimeItem : public StepData_SelectType {
 /*****************************************
 * class StepAP203_PersonOrganizationItem *
 *****************************************/
-%nodefaultctor StepAP203_PersonOrganizationItem;
 class StepAP203_PersonOrganizationItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1300,7 +1284,6 @@ class StepAP203_PersonOrganizationItem : public StepData_SelectType {
 /********************************
 * class StepAP203_SpecifiedItem *
 ********************************/
-%nodefaultctor StepAP203_SpecifiedItem;
 class StepAP203_SpecifiedItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1341,7 +1324,6 @@ class StepAP203_SpecifiedItem : public StepData_SelectType {
 /*******************************
 * class StepAP203_StartRequest *
 *******************************/
-%nodefaultctor StepAP203_StartRequest;
 class StepAP203_StartRequest : public StepBasic_ActionRequestAssignment {
 	public:
 		/****************** Init ******************/
@@ -1388,7 +1370,6 @@ class StepAP203_StartRequest : public StepBasic_ActionRequestAssignment {
 /***********************************
 * class StepAP203_StartRequestItem *
 ***********************************/
-%nodefaultctor StepAP203_StartRequestItem;
 class StepAP203_StartRequestItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1423,7 +1404,6 @@ class StepAP203_StartRequestItem : public StepData_SelectType {
 /****************************
 * class StepAP203_StartWork *
 ****************************/
-%nodefaultctor StepAP203_StartWork;
 class StepAP203_StartWork : public StepBasic_ActionAssignment {
 	public:
 		/****************** Init ******************/
@@ -1470,7 +1450,6 @@ class StepAP203_StartWork : public StepBasic_ActionAssignment {
 /***************************
 * class StepAP203_WorkItem *
 ***************************/
-%nodefaultctor StepAP203_WorkItem;
 class StepAP203_WorkItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/

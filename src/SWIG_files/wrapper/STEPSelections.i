@@ -101,7 +101,6 @@ typedef NCollection_Sequence <opencascade::handle <STEPSelections_AssemblyCompon
 /*****************************************
 * class STEPSelections_AssemblyComponent *
 *****************************************/
-%nodefaultctor STEPSelections_AssemblyComponent;
 class STEPSelections_AssemblyComponent : public Standard_Transient {
 	public:
 		/****************** GetList ******************/
@@ -156,7 +155,6 @@ class STEPSelections_AssemblyComponent : public Standard_Transient {
 /****************************************
 * class STEPSelections_AssemblyExplorer *
 ****************************************/
-%nodefaultctor STEPSelections_AssemblyExplorer;
 class STEPSelections_AssemblyExplorer {
 	public:
 
@@ -228,7 +226,6 @@ class STEPSelections_AssemblyExplorer {
 /************************************
 * class STEPSelections_AssemblyLink *
 ************************************/
-%nodefaultctor STEPSelections_AssemblyLink;
 class STEPSelections_AssemblyLink : public Standard_Transient {
 	public:
 		/****************** GetComponent ******************/
@@ -297,7 +294,6 @@ class STEPSelections_AssemblyLink : public Standard_Transient {
 /*******************************
 * class STEPSelections_Counter *
 *******************************/
-%nodefaultctor STEPSelections_Counter;
 class STEPSelections_Counter {
 	public:
 		/****************** Clear ******************/
@@ -381,7 +377,6 @@ class STEPSelections_Counter {
 /**************************************
 * class STEPSelections_SelectAssembly *
 **************************************/
-%nodefaultctor STEPSelections_SelectAssembly;
 class STEPSelections_SelectAssembly : public IFSelect_SelectExplore {
 	public:
 		/****************** Explore ******************/
@@ -423,7 +418,6 @@ class STEPSelections_SelectAssembly : public IFSelect_SelectExplore {
 /*************************************
 * class STEPSelections_SelectDerived *
 *************************************/
-%nodefaultctor STEPSelections_SelectDerived;
 class STEPSelections_SelectDerived : public StepSelect_StepType {
 	public:
 		/****************** Matches ******************/
@@ -458,7 +452,6 @@ class STEPSelections_SelectDerived : public StepSelect_StepType {
 /***********************************
 * class STEPSelections_SelectFaces *
 ***********************************/
-%nodefaultctor STEPSelections_SelectFaces;
 class STEPSelections_SelectFaces : public IFSelect_SelectExplore {
 	public:
 		/****************** Explore ******************/
@@ -500,7 +493,6 @@ class STEPSelections_SelectFaces : public IFSelect_SelectExplore {
 /*****************************************
 * class STEPSelections_SelectForTransfer *
 *****************************************/
-%nodefaultctor STEPSelections_SelectForTransfer;
 class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
 	public:
 		/****************** RootResult ******************/
@@ -536,7 +528,6 @@ class STEPSelections_SelectForTransfer : public XSControl_SelectForTransfer {
 /**************************************
 * class STEPSelections_SelectGSCurves *
 **************************************/
-%nodefaultctor STEPSelections_SelectGSCurves;
 class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore {
 	public:
 		/****************** Explore ******************/
@@ -577,7 +568,6 @@ class STEPSelections_SelectGSCurves : public IFSelect_SelectExplore {
 /***************************************
 * class STEPSelections_SelectInstances *
 ***************************************/
-%nodefaultctor STEPSelections_SelectInstances;
 class STEPSelections_SelectInstances : public IFSelect_SelectExplore {
 	public:
 		/****************** Explore ******************/

@@ -216,7 +216,6 @@ class GccEnt {
 /*****************************
 * class GccEnt_QualifiedCirc *
 *****************************/
-%nodefaultctor GccEnt_QualifiedCirc;
 class GccEnt_QualifiedCirc {
 	public:
 		/****************** GccEnt_QualifiedCirc ******************/
@@ -277,7 +276,6 @@ class GccEnt_QualifiedCirc {
 /****************************
 * class GccEnt_QualifiedLin *
 ****************************/
-%nodefaultctor GccEnt_QualifiedLin;
 class GccEnt_QualifiedLin {
 	public:
 		/****************** GccEnt_QualifiedLin ******************/

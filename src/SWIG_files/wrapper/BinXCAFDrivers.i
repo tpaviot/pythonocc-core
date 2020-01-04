@@ -79,7 +79,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binxcafdrivers.ht
 * class BinXCAFDrivers *
 ***********************/
 %rename(binxcafdrivers) BinXCAFDrivers;
-%nodefaultctor BinXCAFDrivers;
 class BinXCAFDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -117,7 +116,6 @@ class BinXCAFDrivers {
 /***********************************************
 * class BinXCAFDrivers_DocumentRetrievalDriver *
 ***********************************************/
-%nodefaultctor BinXCAFDrivers_DocumentRetrievalDriver;
 class BinXCAFDrivers_DocumentRetrievalDriver : public BinDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -147,7 +145,6 @@ class BinXCAFDrivers_DocumentRetrievalDriver : public BinDrivers_DocumentRetriev
 /*********************************************
 * class BinXCAFDrivers_DocumentStorageDriver *
 *********************************************/
-%nodefaultctor BinXCAFDrivers_DocumentStorageDriver;
 class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDriver {
 	public:
 		/****************** AttributeDrivers ******************/

@@ -187,7 +187,6 @@ class ShapeCustom {
 /**************************
 * class ShapeCustom_Curve *
 **************************/
-%nodefaultctor ShapeCustom_Curve;
 class ShapeCustom_Curve {
 	public:
 		/****************** ConvertToPeriodic ******************/
@@ -330,7 +329,6 @@ class ShapeCustom_Modification : public BRepTools_Modification {
 /******************************************
 * class ShapeCustom_RestrictionParameters *
 ******************************************/
-%nodefaultctor ShapeCustom_RestrictionParameters;
 class ShapeCustom_RestrictionParameters : public Standard_Transient {
 	public:
 
@@ -561,7 +559,6 @@ class ShapeCustom_RestrictionParameters : public Standard_Transient {
 /****************************
 * class ShapeCustom_Surface *
 ****************************/
-%nodefaultctor ShapeCustom_Surface;
 class ShapeCustom_Surface {
 	public:
 		/****************** ConvertToAnalytical ******************/
@@ -621,7 +618,6 @@ class ShapeCustom_Surface {
 /*************************************
 * class ShapeCustom_TrsfModification *
 *************************************/
-%nodefaultctor ShapeCustom_TrsfModification;
 class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 	public:
 		/****************** NewCurve ******************/
@@ -725,7 +721,6 @@ class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 /*************************************
 * class ShapeCustom_ConvertToBSpline *
 *************************************/
-%nodefaultctor ShapeCustom_ConvertToBSpline;
 class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 	public:
 		/****************** Continuity ******************/
@@ -876,7 +871,6 @@ class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 /***************************************
 * class ShapeCustom_DirectModification *
 ***************************************/
-%nodefaultctor ShapeCustom_DirectModification;
 class ShapeCustom_DirectModification : public ShapeCustom_Modification {
 	public:
 		/****************** Continuity ******************/

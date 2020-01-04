@@ -170,7 +170,6 @@ class BinMDF_ADriver : public Standard_Transient {
 /****************************
 * class BinMDF_ADriverTable *
 ****************************/
-%nodefaultctor BinMDF_ADriverTable;
 class BinMDF_ADriverTable : public Standard_Transient {
 	public:
 		/****************** AddDriver ******************/
@@ -235,7 +234,6 @@ class BinMDF_ADriverTable : public Standard_Transient {
 /*******************************
 * class BinMDF_ReferenceDriver *
 *******************************/
-%nodefaultctor BinMDF_ReferenceDriver;
 class BinMDF_ReferenceDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDF_ReferenceDriver ******************/
@@ -286,7 +284,6 @@ class BinMDF_ReferenceDriver : public BinMDF_ADriver {
 /*******************************
 * class BinMDF_TagSourceDriver *
 *******************************/
-%nodefaultctor BinMDF_TagSourceDriver;
 class BinMDF_TagSourceDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDF_TagSourceDriver ******************/

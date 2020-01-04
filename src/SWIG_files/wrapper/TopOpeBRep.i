@@ -248,7 +248,6 @@ class TopOpeBRep {
 /***************************
 * class TopOpeBRep_Bipoint *
 ***************************/
-%nodefaultctor TopOpeBRep_Bipoint;
 class TopOpeBRep_Bipoint {
 	public:
 		/****************** I1 ******************/
@@ -287,7 +286,6 @@ class TopOpeBRep_Bipoint {
 /****************************
 * class TopOpeBRep_DSFiller *
 ****************************/
-%nodefaultctor TopOpeBRep_DSFiller;
 class TopOpeBRep_DSFiller {
 	public:
 		/****************** ChangeEdgesFiller ******************/
@@ -480,7 +478,6 @@ class TopOpeBRep_DSFiller {
 /*******************************
 * class TopOpeBRep_EdgesFiller *
 *******************************/
-%nodefaultctor TopOpeBRep_EdgesFiller;
 class TopOpeBRep_EdgesFiller {
 	public:
 		/****************** Face ******************/
@@ -529,7 +526,6 @@ class TopOpeBRep_EdgesFiller {
 /************************************
 * class TopOpeBRep_EdgesIntersector *
 ************************************/
-%nodefaultctor TopOpeBRep_EdgesIntersector;
 class TopOpeBRep_EdgesIntersector {
 	public:
 		/****************** Curve ******************/
@@ -744,7 +740,6 @@ class TopOpeBRep_EdgesIntersector {
 /****************************
 * class TopOpeBRep_FFDumper *
 ****************************/
-%nodefaultctor TopOpeBRep_FFDumper;
 class TopOpeBRep_FFDumper : public Standard_Transient {
 	public:
 		/****************** DumpDSP ******************/
@@ -904,7 +899,6 @@ class TopOpeBRep_FFTransitionTool {
 /**********************************
 * class TopOpeBRep_FaceEdgeFiller *
 **********************************/
-%nodefaultctor TopOpeBRep_FaceEdgeFiller;
 class TopOpeBRep_FaceEdgeFiller {
 	public:
 		/****************** Insert ******************/
@@ -937,7 +931,6 @@ class TopOpeBRep_FaceEdgeFiller {
 /***************************************
 * class TopOpeBRep_FaceEdgeIntersector *
 ***************************************/
-%nodefaultctor TopOpeBRep_FaceEdgeIntersector;
 class TopOpeBRep_FaceEdgeIntersector {
 	public:
 		/****************** ForceTolerance ******************/
@@ -1077,7 +1070,6 @@ class TopOpeBRep_FaceEdgeIntersector {
 /*******************************
 * class TopOpeBRep_FacesFiller *
 *******************************/
-%nodefaultctor TopOpeBRep_FacesFiller;
 class TopOpeBRep_FacesFiller {
 	public:
 		/****************** AddShapesLine ******************/
@@ -1530,7 +1522,6 @@ class TopOpeBRep_FacesFiller {
 /************************************
 * class TopOpeBRep_FacesIntersector *
 ************************************/
-%nodefaultctor TopOpeBRep_FacesIntersector;
 class TopOpeBRep_FacesIntersector {
 	public:
 		/****************** ChangeLine ******************/
@@ -1750,7 +1741,6 @@ class TopOpeBRep_GeomTool {
 /****************************
 * class TopOpeBRep_Hctxee2d *
 ****************************/
-%nodefaultctor TopOpeBRep_Hctxee2d;
 class TopOpeBRep_Hctxee2d : public Standard_Transient {
 	public:
 		/****************** Curve ******************/
@@ -1806,7 +1796,6 @@ class TopOpeBRep_Hctxee2d : public Standard_Transient {
 /****************************
 * class TopOpeBRep_Hctxff2d *
 ****************************/
-%nodefaultctor TopOpeBRep_Hctxff2d;
 class TopOpeBRep_Hctxff2d : public Standard_Transient {
 	public:
 		/****************** Face ******************/
@@ -1900,7 +1889,6 @@ class TopOpeBRep_Hctxff2d : public Standard_Transient {
 /*****************************
 * class TopOpeBRep_LineInter *
 *****************************/
-%nodefaultctor TopOpeBRep_LineInter;
 class TopOpeBRep_LineInter {
 	public:
 		/****************** Arc ******************/
@@ -2208,7 +2196,6 @@ class TopOpeBRep_LineInter {
 /***************************
 * class TopOpeBRep_Point2d *
 ***************************/
-%nodefaultctor TopOpeBRep_Point2d;
 class TopOpeBRep_Point2d {
 	public:
 		/****************** ChangeTransition ******************/
@@ -2463,7 +2450,6 @@ class TopOpeBRep_Point2d {
 /***********************************
 * class TopOpeBRep_PointClassifier *
 ***********************************/
-%nodefaultctor TopOpeBRep_PointClassifier;
 class TopOpeBRep_PointClassifier {
 	public:
 		/****************** Classify ******************/
@@ -2563,7 +2549,6 @@ class TopOpeBRep_PointGeomTool {
 /************************************
 * class TopOpeBRep_ShapeIntersector *
 ************************************/
-%nodefaultctor TopOpeBRep_ShapeIntersector;
 class TopOpeBRep_ShapeIntersector {
 	public:
 		/****************** ChangeEdgesIntersector ******************/
@@ -2688,7 +2673,6 @@ class TopOpeBRep_ShapeIntersector {
 /**************************************
 * class TopOpeBRep_ShapeIntersector2d *
 **************************************/
-%nodefaultctor TopOpeBRep_ShapeIntersector2d;
 class TopOpeBRep_ShapeIntersector2d {
 	public:
 		/****************** ChangeEdgesIntersector ******************/
@@ -2766,7 +2750,6 @@ class TopOpeBRep_ShapeIntersector2d {
 /********************************
 * class TopOpeBRep_ShapeScanner *
 ********************************/
-%nodefaultctor TopOpeBRep_ShapeScanner;
 class TopOpeBRep_ShapeScanner {
 	public:
 		/****************** AddBoxesMakeCOB ******************/
@@ -2854,7 +2837,6 @@ class TopOpeBRep_ShapeScanner {
 /*******************************
 * class TopOpeBRep_VPointInter *
 *******************************/
-%nodefaultctor TopOpeBRep_VPointInter;
 class TopOpeBRep_VPointInter {
 	public:
 		/****************** ArcOnS1 ******************/
@@ -3192,7 +3174,6 @@ class TopOpeBRep_VPointInter {
 /*****************************************
 * class TopOpeBRep_VPointInterClassifier *
 *****************************************/
-%nodefaultctor TopOpeBRep_VPointInterClassifier;
 class TopOpeBRep_VPointInterClassifier {
 	public:
 		/****************** Edge ******************/
@@ -3242,7 +3223,6 @@ class TopOpeBRep_VPointInterClassifier {
 /***************************************
 * class TopOpeBRep_VPointInterIterator *
 ***************************************/
-%nodefaultctor TopOpeBRep_VPointInterIterator;
 class TopOpeBRep_VPointInterIterator {
 	public:
 		/****************** ChangeCurrentVP ******************/
@@ -3313,7 +3293,6 @@ class TopOpeBRep_VPointInterIterator {
 /*******************************
 * class TopOpeBRep_WPointInter *
 *******************************/
-%nodefaultctor TopOpeBRep_WPointInter;
 class TopOpeBRep_WPointInter {
 	public:
 		/****************** PPntOn2SDummy ******************/
@@ -3391,7 +3370,6 @@ class TopOpeBRep_WPointInter {
 /***************************************
 * class TopOpeBRep_WPointInterIterator *
 ***************************************/
-%nodefaultctor TopOpeBRep_WPointInterIterator;
 class TopOpeBRep_WPointInterIterator {
 	public:
 		/****************** CurrentWP ******************/

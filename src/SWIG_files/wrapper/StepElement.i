@@ -478,7 +478,6 @@ typedef NCollection_Sequence <opencascade::handle <StepElement_CurveElementPurpo
 /*****************************************************
 * class StepElement_AnalysisItemWithinRepresentation *
 *****************************************************/
-%nodefaultctor StepElement_AnalysisItemWithinRepresentation;
 class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -571,7 +570,6 @@ class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 /*************************************************
 * class StepElement_CurveElementEndReleasePacket *
 *************************************************/
-%nodefaultctor StepElement_CurveElementEndReleasePacket;
 class StepElement_CurveElementEndReleasePacket : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -632,7 +630,6 @@ class StepElement_CurveElementEndReleasePacket : public Standard_Transient {
 /****************************************
 * class StepElement_CurveElementFreedom *
 ****************************************/
-%nodefaultctor StepElement_CurveElementFreedom;
 class StepElement_CurveElementFreedom : public StepData_SelectType {
 	public:
 		/****************** ApplicationDefinedDegreeOfFreedom ******************/
@@ -703,7 +700,6 @@ class StepElement_CurveElementFreedom : public StepData_SelectType {
 /**********************************************
 * class StepElement_CurveElementFreedomMember *
 **********************************************/
-%nodefaultctor StepElement_CurveElementFreedomMember;
 class StepElement_CurveElementFreedomMember : public StepData_SelectNamed {
 	public:
 		/****************** HasName ******************/
@@ -754,7 +750,6 @@ class StepElement_CurveElementFreedomMember : public StepData_SelectNamed {
 /****************************************
 * class StepElement_CurveElementPurpose *
 ****************************************/
-%nodefaultctor StepElement_CurveElementPurpose;
 class StepElement_CurveElementPurpose : public StepData_SelectType {
 	public:
 		/****************** ApplicationDefinedElementPurpose ******************/
@@ -825,7 +820,6 @@ class StepElement_CurveElementPurpose : public StepData_SelectType {
 /**********************************************
 * class StepElement_CurveElementPurposeMember *
 **********************************************/
-%nodefaultctor StepElement_CurveElementPurposeMember;
 class StepElement_CurveElementPurposeMember : public StepData_SelectNamed {
 	public:
 		/****************** HasName ******************/
@@ -876,7 +870,6 @@ class StepElement_CurveElementPurposeMember : public StepData_SelectNamed {
 /**************************************************
 * class StepElement_CurveElementSectionDefinition *
 **************************************************/
-%nodefaultctor StepElement_CurveElementSectionDefinition;
 class StepElement_CurveElementSectionDefinition : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -937,7 +930,6 @@ class StepElement_CurveElementSectionDefinition : public Standard_Transient {
 /**********************************
 * class StepElement_ElementAspect *
 **********************************/
-%nodefaultctor StepElement_ElementAspect;
 class StepElement_ElementAspect : public StepData_SelectType {
 	public:
 		/****************** CaseMem ******************/
@@ -1120,7 +1112,6 @@ class StepElement_ElementAspect : public StepData_SelectType {
 /****************************************
 * class StepElement_ElementAspectMember *
 ****************************************/
-%nodefaultctor StepElement_ElementAspectMember;
 class StepElement_ElementAspectMember : public StepData_SelectNamed {
 	public:
 		/****************** HasName ******************/
@@ -1171,7 +1162,6 @@ class StepElement_ElementAspectMember : public StepData_SelectNamed {
 /**************************************
 * class StepElement_ElementDescriptor *
 **************************************/
-%nodefaultctor StepElement_ElementDescriptor;
 class StepElement_ElementDescriptor : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1232,7 +1222,6 @@ class StepElement_ElementDescriptor : public Standard_Transient {
 /************************************
 * class StepElement_ElementMaterial *
 ************************************/
-%nodefaultctor StepElement_ElementMaterial;
 class StepElement_ElementMaterial : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1309,7 +1298,6 @@ class StepElement_ElementMaterial : public Standard_Transient {
 /**********************************************
 * class StepElement_MeasureOrUnspecifiedValue *
 **********************************************/
-%nodefaultctor StepElement_MeasureOrUnspecifiedValue;
 class StepElement_MeasureOrUnspecifiedValue : public StepData_SelectType {
 	public:
 		/****************** CaseMem ******************/
@@ -1380,7 +1368,6 @@ class StepElement_MeasureOrUnspecifiedValue : public StepData_SelectType {
 /****************************************************
 * class StepElement_MeasureOrUnspecifiedValueMember *
 ****************************************************/
-%nodefaultctor StepElement_MeasureOrUnspecifiedValueMember;
 class StepElement_MeasureOrUnspecifiedValueMember : public StepData_SelectNamed {
 	public:
 		/****************** HasName ******************/
@@ -1431,7 +1418,6 @@ class StepElement_MeasureOrUnspecifiedValueMember : public StepData_SelectNamed 
 /*******************************************
 * class StepElement_SurfaceElementProperty *
 *******************************************/
-%nodefaultctor StepElement_SurfaceElementProperty;
 class StepElement_SurfaceElementProperty : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1508,7 +1494,6 @@ class StepElement_SurfaceElementProperty : public Standard_Transient {
 /******************************************
 * class StepElement_SurfaceElementPurpose *
 ******************************************/
-%nodefaultctor StepElement_SurfaceElementPurpose;
 class StepElement_SurfaceElementPurpose : public StepData_SelectType {
 	public:
 		/****************** ApplicationDefinedElementPurpose ******************/
@@ -1579,7 +1564,6 @@ class StepElement_SurfaceElementPurpose : public StepData_SelectType {
 /************************************************
 * class StepElement_SurfaceElementPurposeMember *
 ************************************************/
-%nodefaultctor StepElement_SurfaceElementPurposeMember;
 class StepElement_SurfaceElementPurposeMember : public StepData_SelectNamed {
 	public:
 		/****************** HasName ******************/
@@ -1630,7 +1614,6 @@ class StepElement_SurfaceElementPurposeMember : public StepData_SelectNamed {
 /***********************************
 * class StepElement_SurfaceSection *
 ***********************************/
-%nodefaultctor StepElement_SurfaceSection;
 class StepElement_SurfaceSection : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1707,7 +1690,6 @@ class StepElement_SurfaceSection : public Standard_Transient {
 /****************************************
 * class StepElement_SurfaceSectionField *
 ****************************************/
-%nodefaultctor StepElement_SurfaceSectionField;
 class StepElement_SurfaceSectionField : public Standard_Transient {
 	public:
 		/****************** StepElement_SurfaceSectionField ******************/
@@ -1730,7 +1712,6 @@ class StepElement_SurfaceSectionField : public Standard_Transient {
 /*****************************************
 * class StepElement_VolumeElementPurpose *
 *****************************************/
-%nodefaultctor StepElement_VolumeElementPurpose;
 class StepElement_VolumeElementPurpose : public StepData_SelectType {
 	public:
 		/****************** ApplicationDefinedElementPurpose ******************/
@@ -1801,7 +1782,6 @@ class StepElement_VolumeElementPurpose : public StepData_SelectType {
 /***********************************************
 * class StepElement_VolumeElementPurposeMember *
 ***********************************************/
-%nodefaultctor StepElement_VolumeElementPurposeMember;
 class StepElement_VolumeElementPurposeMember : public StepData_SelectNamed {
 	public:
 		/****************** HasName ******************/
@@ -1852,7 +1832,6 @@ class StepElement_VolumeElementPurposeMember : public StepData_SelectNamed {
 /*********************************************
 * class StepElement_Curve3dElementDescriptor *
 *********************************************/
-%nodefaultctor StepElement_Curve3dElementDescriptor;
 class StepElement_Curve3dElementDescriptor : public StepElement_ElementDescriptor {
 	public:
 		/****************** Init ******************/
@@ -1901,7 +1880,6 @@ class StepElement_Curve3dElementDescriptor : public StepElement_ElementDescripto
 /**********************************************************
 * class StepElement_CurveElementSectionDerivedDefinitions *
 **********************************************************/
-%nodefaultctor StepElement_CurveElementSectionDerivedDefinitions;
 class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_CurveElementSectionDefinition {
 	public:
 		/****************** CrossSectionalArea ******************/
@@ -2094,7 +2072,6 @@ class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_Cur
 /***********************************************
 * class StepElement_Surface3dElementDescriptor *
 ***********************************************/
-%nodefaultctor StepElement_Surface3dElementDescriptor;
 class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescriptor {
 	public:
 		/****************** Init ******************/
@@ -2159,7 +2136,6 @@ class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescrip
 /************************************************
 * class StepElement_SurfaceSectionFieldConstant *
 ************************************************/
-%nodefaultctor StepElement_SurfaceSectionFieldConstant;
 class StepElement_SurfaceSectionFieldConstant : public StepElement_SurfaceSectionField {
 	public:
 		/****************** Definition ******************/
@@ -2204,7 +2180,6 @@ class StepElement_SurfaceSectionFieldConstant : public StepElement_SurfaceSectio
 /***********************************************
 * class StepElement_SurfaceSectionFieldVarying *
 ***********************************************/
-%nodefaultctor StepElement_SurfaceSectionFieldVarying;
 class StepElement_SurfaceSectionFieldVarying : public StepElement_SurfaceSectionField {
 	public:
 		/****************** AdditionalNodeValues ******************/
@@ -2265,7 +2240,6 @@ class StepElement_SurfaceSectionFieldVarying : public StepElement_SurfaceSection
 /******************************************
 * class StepElement_UniformSurfaceSection *
 ******************************************/
-%nodefaultctor StepElement_UniformSurfaceSection;
 class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
 	public:
 		/****************** BendingThickness ******************/
@@ -2348,7 +2322,6 @@ class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
 /**********************************************
 * class StepElement_Volume3dElementDescriptor *
 **********************************************/
-%nodefaultctor StepElement_Volume3dElementDescriptor;
 class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescriptor {
 	public:
 		/****************** Init ******************/

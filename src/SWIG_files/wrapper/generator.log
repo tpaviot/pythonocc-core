@@ -8,7 +8,7 @@ operating system : debian Linux 4.15.0-72-generic
 
 occt version targeted : 7.4.0
 
-date : 2020-01-03 07:48:42.372911
+date : 2020-01-04 17:06:27.881509
 ############################
 
 [INFO ]  Single process mode
@@ -34,6 +34,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BOPAlgo_Tools
 [INFO ]  BOPAlgo_WireEdgeSet
 [INFO ]  BOPAlgo_Algo
+[INFO ]  Class BOPAlgo_Algo is abstract, using %nodefaultctor directive.
 [INFO ]  BOPAlgo_MakeConnected
 [INFO ]  BOPAlgo_MakePeriodic
 [INFO ]  Wrap nested class BOPAlgo_MakePeriodic::PeriodicityParams
@@ -49,6 +50,7 @@ date : 2020-01-03 07:48:42.372911
 [WARNI]  Creating Get and Set methods for method StopOnFirstFaulty
 [WARNI]  Creating Get and Set methods for method TangentMode
 [INFO ]  BOPAlgo_BuilderArea
+[INFO ]  Class BOPAlgo_BuilderArea is abstract, using %nodefaultctor directive.
 [INFO ]  BOPAlgo_BuilderShape
 [INFO ]  BOPAlgo_PaveFiller
 [INFO ]  BOPAlgo_ShellSplitter
@@ -152,6 +154,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  BRep_Builder
 [INFO ]  BRep_CurveRepresentation
+[INFO ]  Class BRep_CurveRepresentation is abstract, using %nodefaultctor directive.
 [INFO ]  BRep_PointRepresentation
 [INFO ]  BRep_TEdge
 [INFO ]  BRep_TFace
@@ -159,6 +162,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BRep_Tool
 [INFO ]  BRep_CurveOn2Surfaces
 [INFO ]  BRep_GCurve
+[INFO ]  Class BRep_GCurve is abstract, using %nodefaultctor directive.
 [INFO ]  BRep_PointOnCurve
 [INFO ]  BRep_PointsOnSurface
 [INFO ]  BRep_Polygon3D
@@ -194,6 +198,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BRepTools
 [INFO ]  BRepTools_History
 [INFO ]  BRepTools_Modification
+[INFO ]  Class BRepTools_Modification is abstract, using %nodefaultctor directive.
 [INFO ]  BRepTools_Modifier
 [INFO ]  Wrap nested class BRepTools_Modifier::NewCurveInfo
 [INFO ]  Wrap nested class BRepTools_Modifier::NewSurfaceInfo
@@ -240,6 +245,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  TopoDS_Iterator
 [INFO ]  TopoDS_Shape
 [INFO ]  TopoDS_TShape
+[INFO ]  Class TopoDS_TShape is abstract, using %nodefaultctor directive.
 [INFO ]  TopoDS_CompSolid
 [INFO ]  TopoDS_Compound
 [INFO ]  TopoDS_Edge
@@ -294,6 +300,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  BinMDF
 [INFO ]  BinMDF_ADriver
+[INFO ]  Class BinMDF_ADriver is abstract, using %nodefaultctor directive.
 [INFO ]  BinMDF_ADriverTable
 [INFO ]  BinMDF_ReferenceDriver
 [INFO ]  BinMDF_TagSourceDriver
@@ -423,6 +430,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BRepFill_PipeShell
 [INFO ]  BRepFill_Section
 [INFO ]  BRepFill_SectionLaw
+[INFO ]  Class BRepFill_SectionLaw is abstract, using %nodefaultctor directive.
 [INFO ]  BRepFill_SectionPlacement
 [INFO ]  BRepFill_Sweep
 [INFO ]  BRepFill_TrimEdgeTool
@@ -483,6 +491,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  TopOpeBRepBuild_HBuilder
 [INFO ]  TopOpeBRepBuild_Loop
 [INFO ]  TopOpeBRepBuild_LoopClassifier
+[INFO ]  Class TopOpeBRepBuild_LoopClassifier is abstract, using %nodefaultctor directive.
 [INFO ]  TopOpeBRepBuild_LoopSet
 [INFO ]  TopOpeBRepBuild_ShapeListOfShape
 [INFO ]  TopOpeBRepBuild_ShapeSet
@@ -497,6 +506,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  TopOpeBRepBuild_Area3dBuilder
 [INFO ]  TopOpeBRepBuild_Builder1
 [INFO ]  TopOpeBRepBuild_CompositeClassifier
+[INFO ]  Class TopOpeBRepBuild_CompositeClassifier is abstract, using %nodefaultctor directive.
 [INFO ]  TopOpeBRepBuild_Pave
 [INFO ]  TopOpeBRepBuild_PaveClassifier
 [INFO ]  TopOpeBRepBuild_PaveSet
@@ -590,6 +600,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  TDataXtd_Constraint
 [INFO ]  TDataXtd_Geometry
 [INFO ]  TDataXtd_Pattern
+[INFO ]  Class TDataXtd_Pattern is abstract, using %nodefaultctor directive.
 [INFO ]  TDataXtd_Placement
 [INFO ]  TDataXtd_Plane
 [INFO ]  TDataXtd_Point
@@ -632,7 +643,9 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  CDF_Directory
 [INFO ]  CDF_DirectoryIterator
 [INFO ]  CDF_MetaDataDriver
+[INFO ]  Class CDF_MetaDataDriver is abstract, using %nodefaultctor directive.
 [INFO ]  CDF_MetaDataDriverFactory
+[INFO ]  Class CDF_MetaDataDriverFactory is abstract, using %nodefaultctor directive.
 [INFO ]  CDF_Session
 [INFO ]  CDF_Store
 [INFO ]  CDF_StoreList
@@ -640,7 +653,9 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module CDM
 [INFO ]  Wrap classes :
 [INFO ]  CDM_Application
+[INFO ]  Class CDM_Application is abstract, using %nodefaultctor directive.
 [INFO ]  CDM_Document
+[INFO ]  Class CDM_Document is abstract, using %nodefaultctor directive.
 [INFO ]  CDM_MetaData
 [INFO ]  CDM_Reference
 [INFO ]  CDM_ReferenceIterator
@@ -649,10 +664,13 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  PCDM
 [INFO ]  PCDM_ReadWriter
+[INFO ]  Class PCDM_ReadWriter is abstract, using %nodefaultctor directive.
 [INFO ]  PCDM_Reader
+[INFO ]  Class PCDM_Reader is abstract, using %nodefaultctor directive.
 [INFO ]  PCDM_Reference
 [INFO ]  PCDM_ReferenceIterator
 [INFO ]  PCDM_Writer
+[INFO ]  Class PCDM_Writer is abstract, using %nodefaultctor directive.
 [INFO ]  PCDM_ReadWriter_1
 [INFO ]  PCDM_RetrievalDriver
 [INFO ]  PCDM_StorageDriver
@@ -665,6 +683,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BRepFeat
 [INFO ]  BRepFeat_Builder
 [INFO ]  BRepFeat_Form
+[INFO ]  Class BRepFeat_Form is abstract, using %nodefaultctor directive.
 [INFO ]  BRepFeat_Gluer
 [INFO ]  BRepFeat_RibSlot
 [INFO ]  BRepFeat_SplitShape
@@ -686,6 +705,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  LocOpe_FindEdges
 [INFO ]  LocOpe_FindEdgesInFace
 [INFO ]  LocOpe_GeneratedShape
+[INFO ]  Class LocOpe_GeneratedShape is abstract, using %nodefaultctor directive.
 [INFO ]  LocOpe_Generator
 [INFO ]  LocOpe_Gluer
 [INFO ]  LocOpe_LinearForm
@@ -701,6 +721,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module BRepBlend
 [INFO ]  Wrap classes :
 [INFO ]  BRepBlend_AppFuncRoot
+[INFO ]  Class BRepBlend_AppFuncRoot is abstract, using %nodefaultctor directive.
 [INFO ]  BRepBlend_AppSurf
 [INFO ]  BRepBlend_AppSurface
 [INFO ]  BRepBlend_CSWalking
@@ -725,21 +746,31 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module BRepFilletAPI
 [INFO ]  Wrap classes :
 [INFO ]  BRepFilletAPI_LocalOperation
+[INFO ]  Class BRepFilletAPI_LocalOperation is abstract, using %nodefaultctor directive.
 [INFO ]  BRepFilletAPI_MakeFillet2d
 [INFO ]  BRepFilletAPI_MakeChamfer
 [INFO ]  BRepFilletAPI_MakeFillet
 [INFO ]  ## Processing module Blend
 [INFO ]  Wrap classes :
 [INFO ]  Blend_AppFunction
+[INFO ]  Class Blend_AppFunction is abstract, using %nodefaultctor directive.
 [INFO ]  Blend_CurvPointFuncInv
+[INFO ]  Class Blend_CurvPointFuncInv is abstract, using %nodefaultctor directive.
 [INFO ]  Blend_FuncInv
+[INFO ]  Class Blend_FuncInv is abstract, using %nodefaultctor directive.
 [INFO ]  Blend_Point
 [INFO ]  Blend_SurfCurvFuncInv
+[INFO ]  Class Blend_SurfCurvFuncInv is abstract, using %nodefaultctor directive.
 [INFO ]  Blend_SurfPointFuncInv
+[INFO ]  Class Blend_SurfPointFuncInv is abstract, using %nodefaultctor directive.
 [INFO ]  Blend_CSFunction
+[INFO ]  Class Blend_CSFunction is abstract, using %nodefaultctor directive.
 [INFO ]  Blend_Function
+[INFO ]  Class Blend_Function is abstract, using %nodefaultctor directive.
 [INFO ]  Blend_RstRstFunction
+[INFO ]  Class Blend_RstRstFunction is abstract, using %nodefaultctor directive.
 [INFO ]  Blend_SurfRstFunction
+[INFO ]  Class Blend_SurfRstFunction is abstract, using %nodefaultctor directive.
 [INFO ]  ## Processing module BlendFunc
 [INFO ]  Wrap classes :
 [INFO ]  BlendFunc
@@ -753,8 +784,10 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BlendFunc_EvolRad
 [INFO ]  BlendFunc_EvolRadInv
 [INFO ]  BlendFunc_GenChamfInv
+[INFO ]  Class BlendFunc_GenChamfInv is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class BlendFunc_GenChamfInv
 [INFO ]  BlendFunc_GenChamfer
+[INFO ]  Class BlendFunc_GenChamfer is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class BlendFunc_GenChamfer
 [INFO ]  BlendFunc_Ruled
 [INFO ]  BlendFunc_RuledInv
@@ -778,6 +811,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  ChFi3d
 [INFO ]  ChFi3d_Builder
+[INFO ]  Class ChFi3d_Builder is abstract, using %nodefaultctor directive.
 [INFO ]  ChFi3d_SearchSing
 [INFO ]  ChFi3d_ChBuilder
 [INFO ]  ChFi3d_FilBuilder
@@ -810,6 +844,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  Adaptor2d_Curve2d
 [INFO ]  Adaptor2d_HCurve2d
+[INFO ]  Class Adaptor2d_HCurve2d is abstract, using %nodefaultctor directive.
 [INFO ]  Adaptor2d_HLine2d
 [INFO ]  Adaptor2d_HOffsetCurve
 [INFO ]  Adaptor2d_Line2d
@@ -817,14 +852,20 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module Geom2d
 [INFO ]  Wrap classes :
 [INFO ]  Geom2d_Geometry
+[INFO ]  Class Geom2d_Geometry is abstract, using %nodefaultctor directive.
 [INFO ]  Geom2d_Transformation
 [INFO ]  Geom2d_AxisPlacement
 [INFO ]  Geom2d_Curve
+[INFO ]  Class Geom2d_Curve is abstract, using %nodefaultctor directive.
 [INFO ]  Geom2d_Point
+[INFO ]  Class Geom2d_Point is abstract, using %nodefaultctor directive.
 [INFO ]  Geom2d_Vector
+[INFO ]  Class Geom2d_Vector is abstract, using %nodefaultctor directive.
 [INFO ]  Geom2d_BoundedCurve
+[INFO ]  Class Geom2d_BoundedCurve is abstract, using %nodefaultctor directive.
 [INFO ]  Geom2d_CartesianPoint
 [INFO ]  Geom2d_Conic
+[INFO ]  Class Geom2d_Conic is abstract, using %nodefaultctor directive.
 [INFO ]  Geom2d_Direction
 [INFO ]  Geom2d_Line
 [INFO ]  Geom2d_OffsetCurve
@@ -845,6 +886,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module Geom2dEvaluator
 [INFO ]  Wrap classes :
 [INFO ]  Geom2dEvaluator_Curve
+[INFO ]  Class Geom2dEvaluator_Curve is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class Geom2dEvaluator_Curve
 [INFO ]  Geom2dEvaluator_OffsetCurve
 [INFO ]  ## Processing module Geom2dLProp
@@ -871,7 +913,9 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  Adaptor3d_Curve
 [INFO ]  Adaptor3d_HCurve
+[INFO ]  Class Adaptor3d_HCurve is abstract, using %nodefaultctor directive.
 [INFO ]  Adaptor3d_HSurface
+[INFO ]  Class Adaptor3d_HSurface is abstract, using %nodefaultctor directive.
 [INFO ]  Adaptor3d_HSurfaceTool
 [INFO ]  Adaptor3d_HVertex
 [INFO ]  Adaptor3d_InterFunc
@@ -885,6 +929,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  AdvApprox_ApproxAFunction
 [INFO ]  AdvApprox_Cutting
+[INFO ]  Class AdvApprox_Cutting is abstract, using %nodefaultctor directive.
 [INFO ]  AdvApprox_SimpleApprox
 [INFO ]  AdvApprox_DichoCutting
 [INFO ]  AdvApprox_PrefAndRec
@@ -903,21 +948,30 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Found HSEQUENCE definitionGeom_HSequenceOfBSplineSurface: Geom_SequenceOfBSplineSurface
 [INFO ]  Wrap classes :
 [INFO ]  Geom_Geometry
+[INFO ]  Class Geom_Geometry is abstract, using %nodefaultctor directive.
 [INFO ]  Geom_OsculatingSurface
 [INFO ]  Geom_Transformation
 [INFO ]  Geom_AxisPlacement
+[INFO ]  Class Geom_AxisPlacement is abstract, using %nodefaultctor directive.
 [INFO ]  Geom_Curve
+[INFO ]  Class Geom_Curve is abstract, using %nodefaultctor directive.
 [INFO ]  Geom_Point
+[INFO ]  Class Geom_Point is abstract, using %nodefaultctor directive.
 [INFO ]  Geom_Surface
+[INFO ]  Class Geom_Surface is abstract, using %nodefaultctor directive.
 [INFO ]  Geom_Vector
+[INFO ]  Class Geom_Vector is abstract, using %nodefaultctor directive.
 [INFO ]  Geom_Axis1Placement
 [INFO ]  Geom_Axis2Placement
 [INFO ]  Geom_BoundedCurve
+[INFO ]  Class Geom_BoundedCurve is abstract, using %nodefaultctor directive.
 [INFO ]  Geom_BoundedSurface
 [INFO ]  Geom_CartesianPoint
 [INFO ]  Geom_Conic
+[INFO ]  Class Geom_Conic is abstract, using %nodefaultctor directive.
 [INFO ]  Geom_Direction
 [INFO ]  Geom_ElementarySurface
+[INFO ]  Class Geom_ElementarySurface is abstract, using %nodefaultctor directive.
 [INFO ]  Geom_Line
 [INFO ]  Geom_OffsetCurve
 [INFO ]  Geom_OffsetSurface
@@ -956,8 +1010,10 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module GeomEvaluator
 [INFO ]  Wrap classes :
 [INFO ]  GeomEvaluator_Curve
+[INFO ]  Class GeomEvaluator_Curve is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class GeomEvaluator_Curve
 [INFO ]  GeomEvaluator_Surface
+[INFO ]  Class GeomEvaluator_Surface is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class GeomEvaluator_Surface
 [INFO ]  GeomEvaluator_OffsetCurve
 [INFO ]  GeomEvaluator_OffsetSurface
@@ -992,16 +1048,19 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module AppBlend
 [INFO ]  Wrap classes :
 [INFO ]  AppBlend_Approx
+[INFO ]  Class AppBlend_Approx is abstract, using %nodefaultctor directive.
 [INFO ]  ## Processing module ApproxInt
 [INFO ]  Wrap classes :
 [INFO ]  ApproxInt_KnotTools
 [INFO ]  ApproxInt_SvSurfaces
+[INFO ]  Class ApproxInt_SvSurfaces is abstract, using %nodefaultctor directive.
 [INFO ]  ## Processing module FairCurve
 [INFO ]  Wrap classes :
 [INFO ]  FairCurve_Batten
 [INFO ]  FairCurve_BattenLaw
 [INFO ]  FairCurve_DistributionOfEnergy
 [INFO ]  FairCurve_Energy
+[INFO ]  Class FairCurve_Energy is abstract, using %nodefaultctor directive.
 [INFO ]  FairCurve_Newton
 [INFO ]  FairCurve_DistributionOfJerk
 [INFO ]  FairCurve_DistributionOfSagging
@@ -1034,6 +1093,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module GccInt
 [INFO ]  Wrap classes :
 [INFO ]  GccInt_Bisec
+[INFO ]  Class GccInt_Bisec is abstract, using %nodefaultctor directive.
 [INFO ]  GccInt_BCirc
 [INFO ]  GccInt_BElips
 [INFO ]  GccInt_BHyper
@@ -1122,6 +1182,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  GeomFill_BSplineCurves
 [INFO ]  GeomFill_BezierCurves
 [INFO ]  GeomFill_Boundary
+[INFO ]  Class GeomFill_Boundary is abstract, using %nodefaultctor directive.
 [INFO ]  GeomFill_CircularBlendFunc
 [INFO ]  GeomFill_ConstrainedFilling
 [INFO ]  GeomFill_CoonsAlgPatch
@@ -1132,12 +1193,14 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  GeomFill_Line
 [INFO ]  GeomFill_LocFunction
 [INFO ]  GeomFill_LocationLaw
+[INFO ]  Class GeomFill_LocationLaw is abstract, using %nodefaultctor directive.
 [INFO ]  GeomFill_Pipe
 [INFO ]  GeomFill_PlanFunc
 [INFO ]  GeomFill_PolynomialConvertor
 [INFO ]  GeomFill_Profiler
 [INFO ]  GeomFill_QuasiAngularConvertor
 [INFO ]  GeomFill_SectionLaw
+[INFO ]  Class GeomFill_SectionLaw is abstract, using %nodefaultctor directive.
 [INFO ]  GeomFill_SectionPlacement
 [INFO ]  GeomFill_SnglrFunc
 [INFO ]  GeomFill_Sweep
@@ -1145,7 +1208,9 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  GeomFill_Tensor
 [WARNI]  Creating Get and Set methods for method ChangeValue
 [INFO ]  GeomFill_TgtField
+[INFO ]  Class GeomFill_TgtField is abstract, using %nodefaultctor directive.
 [INFO ]  GeomFill_TrihedronLaw
+[INFO ]  Class GeomFill_TrihedronLaw is abstract, using %nodefaultctor directive.
 [INFO ]  GeomFill_BoundWithSurf
 [INFO ]  GeomFill_ConstantBiNormal
 [INFO ]  GeomFill_Coons
@@ -1167,6 +1232,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  GeomFill_Stretch
 [INFO ]  GeomFill_TgtOnCoons
 [INFO ]  GeomFill_TrihedronWithGuide
+[INFO ]  Class GeomFill_TrihedronWithGuide is abstract, using %nodefaultctor directive.
 [INFO ]  GeomFill_UniformSection
 [INFO ]  GeomFill_GuideTrihedronAC
 [INFO ]  GeomFill_GuideTrihedronPlan
@@ -1224,6 +1290,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  HatchGen_Domain
 [INFO ]  HatchGen_IntersectionPoint
+[INFO ]  Class HatchGen_IntersectionPoint is abstract, using %nodefaultctor directive.
 [INFO ]  HatchGen_PointOnElement
 [INFO ]  HatchGen_PointOnHatching
 [INFO ]  ## Processing module IntCurve
@@ -1271,6 +1338,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  IntPatch_LineConstructor
 [INFO ]  IntPatch_Point
 [INFO ]  IntPatch_Polygo
+[INFO ]  Class IntPatch_Polygo is abstract, using %nodefaultctor directive.
 [INFO ]  IntPatch_PolyhedronTool
 [INFO ]  IntPatch_PrmPrmIntersection
 [INFO ]  IntPatch_PrmPrmIntersection_T3Bits
@@ -1287,6 +1355,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  IntPatch_ALine
 [INFO ]  IntPatch_GLine
 [INFO ]  IntPatch_PointLine
+[INFO ]  Class IntPatch_PointLine is abstract, using %nodefaultctor directive.
 [INFO ]  IntPatch_PolyArc
 [INFO ]  IntPatch_PolyLine
 [INFO ]  IntPatch_RLine
@@ -1313,6 +1382,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module IntStart
 [INFO ]  Wrap classes :
 [INFO ]  IntStart_SITopolTool
+[INFO ]  Class IntStart_SITopolTool is abstract, using %nodefaultctor directive.
 [INFO ]  ## Processing module IntSurf
 [INFO ]  Wrap classes :
 [INFO ]  IntSurf
@@ -1336,6 +1406,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Intf
 [INFO ]  Intf_Interference
 [INFO ]  Intf_Polygon2d
+[INFO ]  Class Intf_Polygon2d is abstract, using %nodefaultctor directive.
 [INFO ]  Intf_SectionLine
 [INFO ]  Intf_SectionPoint
 [INFO ]  Intf_TangentZone
@@ -1347,6 +1418,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Law_BSpline
 [INFO ]  Law_BSplineKnotSplitting
 [INFO ]  Law_Function
+[INFO ]  Class Law_Function is abstract, using %nodefaultctor directive.
 [INFO ]  Law_Interpolate
 [INFO ]  Law_BSpFunc
 [INFO ]  Law_Composite
@@ -1362,6 +1434,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module NLPlate
 [INFO ]  Wrap classes :
 [INFO ]  NLPlate_HGPPConstraint
+[INFO ]  Class NLPlate_HGPPConstraint is abstract, using %nodefaultctor directive.
 [INFO ]  NLPlate_NLPlate
 [INFO ]  NLPlate_HPG0Constraint
 [INFO ]  NLPlate_HPG1Constraint
@@ -1389,6 +1462,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module TopClass
 [INFO ]  Wrap classes :
 [INFO ]  TopClass_SolidExplorer
+[INFO ]  Class TopClass_SolidExplorer is abstract, using %nodefaultctor directive.
 [INFO ]  ## Processing module TopTrans
 [INFO ]  Wrap classes :
 [INFO ]  TopTrans_CurveTransition
@@ -1400,6 +1474,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  AdvApp2Var_ApproxF2var
 [INFO ]  AdvApp2Var_Context
 [INFO ]  AdvApp2Var_Criterion
+[INFO ]  Class AdvApp2Var_Criterion is abstract, using %nodefaultctor directive.
 [INFO ]  AdvApp2Var_Data
 [INFO ]  AdvApp2Var_Framework
 [INFO ]  AdvApp2Var_MathBase
@@ -1413,6 +1488,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module AppCont
 [INFO ]  Wrap classes :
 [INFO ]  AppCont_Function
+[INFO ]  Class AppCont_Function is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class AppCont_Function
 [INFO ]  AppCont_LeastSquare
 [INFO ]  ## Processing module AppDef
@@ -1442,6 +1518,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  AppDef_ResConstraintOfMyGradientbisOfBSplineCompute
 [INFO ]  AppDef_ResConstraintOfTheGradient
 [INFO ]  AppDef_SmoothCriterion
+[INFO ]  Class AppDef_SmoothCriterion is abstract, using %nodefaultctor directive.
 [INFO ]  AppDef_TheFunction
 [INFO ]  AppDef_TheGradient
 [INFO ]  AppDef_TheLeastSquares
@@ -1475,6 +1552,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Approx_SameParameter
 [INFO ]  Approx_SweepApproximation
 [INFO ]  Approx_SweepFunction
+[INFO ]  Class Approx_SweepFunction is abstract, using %nodefaultctor directive.
 [INFO ]  ## Processing module BndLib
 [INFO ]  Wrap classes :
 [INFO ]  BndLib
@@ -1562,8 +1640,10 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  FEmTool_Assembly
 [INFO ]  FEmTool_Curve
 [INFO ]  FEmTool_ElementaryCriterion
+[INFO ]  Class FEmTool_ElementaryCriterion is abstract, using %nodefaultctor directive.
 [INFO ]  FEmTool_ElementsOfRefMatrix
 [INFO ]  FEmTool_SparseMatrix
+[INFO ]  Class FEmTool_SparseMatrix is abstract, using %nodefaultctor directive.
 [INFO ]  FEmTool_LinearFlexion
 [INFO ]  FEmTool_LinearJerk
 [INFO ]  FEmTool_LinearTension
@@ -1866,7 +1946,9 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  IGESData_DirChecker
 [INFO ]  IGESData_DirPart
 [INFO ]  IGESData_FileRecognizer
+[INFO ]  Class IGESData_FileRecognizer is abstract, using %nodefaultctor directive.
 [INFO ]  IGESData_GeneralModule
+[INFO ]  Class IGESData_GeneralModule is abstract, using %nodefaultctor directive.
 [INFO ]  IGESData_GlobalNodeOfSpecificLib
 [INFO ]  IGESData_GlobalNodeOfWriterLib
 [INFO ]  IGESData_GlobalSection
@@ -1884,8 +1966,10 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  IGESData_ParamReader
 [INFO ]  IGESData_Protocol
 [INFO ]  IGESData_ReadWriteModule
+[INFO ]  Class IGESData_ReadWriteModule is abstract, using %nodefaultctor directive.
 [INFO ]  IGESData_SpecificLib
 [INFO ]  IGESData_SpecificModule
+[INFO ]  Class IGESData_SpecificModule is abstract, using %nodefaultctor directive.
 [INFO ]  IGESData_ToolLocation
 [INFO ]  IGESData_WriterLib
 [INFO ]  IGESData_ColorEntity
@@ -1894,12 +1978,17 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  IGESData_FileProtocol
 [INFO ]  IGESData_LabelDisplayEntity
 [INFO ]  IGESData_LevelListEntity
+[INFO ]  Class IGESData_LevelListEntity is abstract, using %nodefaultctor directive.
 [INFO ]  IGESData_LineFontEntity
 [INFO ]  IGESData_NameEntity
+[INFO ]  Class IGESData_NameEntity is abstract, using %nodefaultctor directive.
 [INFO ]  IGESData_SingleParentEntity
+[INFO ]  Class IGESData_SingleParentEntity is abstract, using %nodefaultctor directive.
 [INFO ]  IGESData_TransfEntity
+[INFO ]  Class IGESData_TransfEntity is abstract, using %nodefaultctor directive.
 [INFO ]  IGESData_UndefinedEntity
 [INFO ]  IGESData_ViewKindEntity
+[INFO ]  Class IGESData_ViewKindEntity is abstract, using %nodefaultctor directive.
 [INFO ]  IGESData_FreeFormatEntity
 [INFO ]  ## Processing module IGESToBRep
 [INFO ]  Wrap classes :
@@ -1937,7 +2026,9 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  TDF
 [INFO ]  TDF_Attribute
+[INFO ]  Class TDF_Attribute is abstract, using %nodefaultctor directive.
 [INFO ]  TDF_AttributeDelta
+[INFO ]  Class TDF_AttributeDelta is abstract, using %nodefaultctor directive.
 [INFO ]  TDF_AttributeIterator
 [INFO ]  TDF_ChildIDIterator
 [INFO ]  TDF_ChildIterator
@@ -2027,6 +2118,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Found HARRAY1 definitionTFunction_HArray1OfDataMapOfGUIDDriver: TFunction_Array1OfDataMapOfGUIDDriver
 [INFO ]  Wrap classes :
 [INFO ]  TFunction_Driver
+[INFO ]  Class TFunction_Driver is abstract, using %nodefaultctor directive.
 [INFO ]  TFunction_DriverTable
 [INFO ]  TFunction_Function
 [INFO ]  TFunction_GraphNode
@@ -2094,8 +2186,11 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  Expr
 [INFO ]  Expr_GeneralExpression
+[INFO ]  Class Expr_GeneralExpression is abstract, using %nodefaultctor directive.
 [INFO ]  Expr_GeneralFunction
+[INFO ]  Class Expr_GeneralFunction is abstract, using %nodefaultctor directive.
 [INFO ]  Expr_GeneralRelation
+[INFO ]  Class Expr_GeneralRelation is abstract, using %nodefaultctor directive.
 [INFO ]  Expr_RUIterator
 [INFO ]  Expr_RelationIterator
 [INFO ]  Expr_UnknownIterator
@@ -2157,6 +2252,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  PLib
 [INFO ]  PLib_Base
+[INFO ]  Class PLib_Base is abstract, using %nodefaultctor directive.
 [INFO ]  PLib_DoubleJacobiPolynomial
 [INFO ]  PLib_HermitJacobi
 [INFO ]  PLib_JacobiPolynomial
@@ -2276,11 +2372,13 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  math_EigenValuesSearcher
 [INFO ]  math_FRPR
 [INFO ]  math_Function
+[INFO ]  Class math_Function is abstract, using %nodefaultctor directive.
 [INFO ]  math_FunctionAllRoots
 [INFO ]  math_FunctionRoot
 [INFO ]  math_FunctionRoots
 [INFO ]  math_FunctionSample
 [INFO ]  math_FunctionSet
+[INFO ]  Class math_FunctionSet is abstract, using %nodefaultctor directive.
 [INFO ]  math_FunctionSetRoot
 [INFO ]  math_Gauss
 [INFO ]  math_GaussLeastSquare
@@ -2296,6 +2394,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  math_Matrix
 [WARNI]  Creating Get and Set methods for method Value
 [INFO ]  math_MultipleVarFunction
+[INFO ]  Class math_MultipleVarFunction is abstract, using %nodefaultctor directive.
 [INFO ]  math_NewtonFunctionRoot
 [INFO ]  math_NewtonFunctionSetRoot
 [INFO ]  math_NewtonMinimum
@@ -2308,14 +2407,19 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  math_ValueAndWeight
 [INFO ]  math_Vector
 [INFO ]  math_FunctionSetWithDerivatives
+[INFO ]  Class math_FunctionSetWithDerivatives is abstract, using %nodefaultctor directive.
 [INFO ]  math_FunctionWithDerivative
+[INFO ]  Class math_FunctionWithDerivative is abstract, using %nodefaultctor directive.
 [INFO ]  math_MultipleVarFunctionWithGradient
+[INFO ]  Class math_MultipleVarFunctionWithGradient is abstract, using %nodefaultctor directive.
 [INFO ]  math_MultipleVarFunctionWithHessian
+[INFO ]  Class math_MultipleVarFunctionWithHessian is abstract, using %nodefaultctor directive.
 [INFO ]  math_TrigonometricEquationFunction
 [INFO ]  Processing toolkit TKMesh ===
 [INFO ]  ## Processing module BRepMesh
 [INFO ]  Wrap classes :
 [INFO ]  BRepMesh_BaseMeshAlgo
+[INFO ]  Class BRepMesh_BaseMeshAlgo is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class BRepMesh_BaseMeshAlgo
 [INFO ]  BRepMesh_Circle
 [INFO ]  BRepMesh_CircleInspector
@@ -2328,6 +2432,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BRepMesh_Delaun
 [INFO ]  BRepMesh_DiscretFactory
 [INFO ]  BRepMesh_DiscretRoot
+[INFO ]  Class BRepMesh_DiscretRoot is abstract, using %nodefaultctor directive.
 [INFO ]  BRepMesh_EdgeDiscret
 [INFO ]  BRepMesh_FaceChecker
 [INFO ]  Wrap nested class BRepMesh_FaceChecker::Segment
@@ -2410,27 +2515,40 @@ date : 2020-01-03 07:48:42.372911
 [WARNI]  Template: IMeshData::Array1OfIntegerskipped because name does'nt contain _.
 [INFO ]  Wrap classes :
 [INFO ]  IMeshData_ParametersList
+[INFO ]  Class IMeshData_ParametersList is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshData_Shape
 [INFO ]  IMeshData_StatusOwner
 [INFO ]  IMeshData_Curve
+[INFO ]  Class IMeshData_Curve is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshData_Model
+[INFO ]  Class IMeshData_Model is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshData_PCurve
+[INFO ]  Class IMeshData_PCurve is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshData_TessellatedShape
 [INFO ]  IMeshData_Edge
+[INFO ]  Class IMeshData_Edge is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshData_Face
+[INFO ]  Class IMeshData_Face is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshData_Wire
+[INFO ]  Class IMeshData_Wire is abstract, using %nodefaultctor directive.
 [INFO ]  ## Processing module IMeshTools
 [INFO ]  Wrap classes :
 [INFO ]  IMeshTools_Context
 [INFO ]  IMeshTools_CurveTessellator
+[INFO ]  Class IMeshTools_CurveTessellator is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshTools_MeshAlgo
+[INFO ]  Class IMeshTools_MeshAlgo is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshTools_MeshAlgoFactory
+[INFO ]  Class IMeshTools_MeshAlgoFactory is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshTools_MeshBuilder
 [INFO ]  IMeshTools_ModelAlgo
+[INFO ]  Class IMeshTools_ModelAlgo is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshTools_ModelBuilder
+[INFO ]  Class IMeshTools_ModelBuilder is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshTools_Parameters
 [INFO ]  IMeshTools_ShapeExplorer
 [INFO ]  IMeshTools_ShapeVisitor
+[INFO ]  Class IMeshTools_ShapeVisitor is abstract, using %nodefaultctor directive.
 [INFO ]  Processing toolkit TKMeshVS ===
 [INFO ]  ## Processing module MeshVS
 [INFO ]  Found HARRAY1 definitionMeshVS_HArray1OfSequenceOfInteger: MeshVS_Array1OfSequenceOfInteger
@@ -2438,12 +2556,14 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  MeshVS_Buffer
 [INFO ]  MeshVS_CommonSensitiveEntity
 [INFO ]  MeshVS_DataSource
+[INFO ]  Class MeshVS_DataSource is abstract, using %nodefaultctor directive.
 [INFO ]  MeshVS_Drawer
 [INFO ]  MeshVS_DummySensitiveEntity
 [INFO ]  MeshVS_Mesh
 [INFO ]  MeshVS_MeshEntityOwner
 [INFO ]  MeshVS_MeshOwner
 [INFO ]  MeshVS_PrsBuilder
+[INFO ]  Class MeshVS_PrsBuilder is abstract, using %nodefaultctor directive.
 [INFO ]  MeshVS_SensitiveFace
 [INFO ]  MeshVS_SensitiveMesh
 [INFO ]  MeshVS_SensitivePolyhedron
@@ -2514,6 +2634,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BRepPrim_FaceBuilder
 [INFO ]  BRepPrim_GWedge
 [INFO ]  BRepPrim_OneAxis
+[INFO ]  Class BRepPrim_OneAxis is abstract, using %nodefaultctor directive.
 [INFO ]  BRepPrim_Revolution
 [INFO ]  BRepPrim_Wedge
 [INFO ]  BRepPrim_Cone
@@ -2525,7 +2646,9 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BRepPrimAPI_MakeBox
 [INFO ]  BRepPrimAPI_MakeHalfSpace
 [INFO ]  BRepPrimAPI_MakeOneAxis
+[INFO ]  Class BRepPrimAPI_MakeOneAxis is abstract, using %nodefaultctor directive.
 [INFO ]  BRepPrimAPI_MakeSweep
+[INFO ]  Class BRepPrimAPI_MakeSweep is abstract, using %nodefaultctor directive.
 [INFO ]  BRepPrimAPI_MakeWedge
 [INFO ]  BRepPrimAPI_MakeCone
 [INFO ]  BRepPrimAPI_MakeCylinder
@@ -2539,10 +2662,12 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BRepSweep_Builder
 [INFO ]  BRepSweep_Iterator
 [INFO ]  BRepSweep_NumLinearRegularSweep
+[INFO ]  Class BRepSweep_NumLinearRegularSweep is abstract, using %nodefaultctor directive.
 [INFO ]  BRepSweep_Prism
 [INFO ]  BRepSweep_Revol
 [INFO ]  BRepSweep_Tool
 [INFO ]  BRepSweep_Trsf
+[INFO ]  Class BRepSweep_Trsf is abstract, using %nodefaultctor directive.
 [INFO ]  BRepSweep_Rotation
 [INFO ]  BRepSweep_Translation
 [INFO ]  ## Processing module Sweep
@@ -2562,6 +2687,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module RWObj
 [INFO ]  Wrap classes :
 [INFO ]  RWObj_IShapeReceiver
+[INFO ]  Class RWObj_IShapeReceiver is abstract, using %nodefaultctor directive.
 [INFO ]  RWObj_Material
 [INFO ]  RWObj_SubMesh
 [INFO ]  Processing toolkit TKSTEP ===
@@ -3867,19 +3993,25 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  StepData
 [INFO ]  StepData_Described
+[INFO ]  Class StepData_Described is abstract, using %nodefaultctor directive.
 [INFO ]  StepData_EDescr
+[INFO ]  Class StepData_EDescr is abstract, using %nodefaultctor directive.
 [INFO ]  StepData_EnumTool
 [INFO ]  StepData_Field
 [INFO ]  StepData_FieldList
 [INFO ]  StepData_FileRecognizer
+[INFO ]  Class StepData_FileRecognizer is abstract, using %nodefaultctor directive.
 [INFO ]  StepData_GeneralModule
+[INFO ]  Class StepData_GeneralModule is abstract, using %nodefaultctor directive.
 [INFO ]  StepData_GlobalNodeOfWriterLib
 [INFO ]  StepData_NodeOfWriterLib
 [INFO ]  StepData_PDescr
 [INFO ]  StepData_Protocol
 [INFO ]  StepData_ReadWriteModule
+[INFO ]  Class StepData_ReadWriteModule is abstract, using %nodefaultctor directive.
 [INFO ]  StepData_SelectMember
 [INFO ]  StepData_SelectType
+[INFO ]  Class StepData_SelectType is abstract, using %nodefaultctor directive.
 [INFO ]  StepData_StepDumper
 [INFO ]  StepData_StepModel
 [INFO ]  StepData_StepReaderData
@@ -4221,12 +4353,14 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Aspect_DisplayConnection
 [INFO ]  Aspect_GenId
 [INFO ]  Aspect_Grid
+[INFO ]  Class Aspect_Grid is abstract, using %nodefaultctor directive.
 [INFO ]  Aspect_ScrollDelta
 [WARNI]  Wrong type in class property : NCollection_Vec2
 [INFO ]  Aspect_Touch
 [WARNI]  Wrong type in class property : NCollection_Vec2
 [WARNI]  Wrong type in class property : NCollection_Vec2
 [INFO ]  Aspect_Window
+[INFO ]  Class Aspect_Window is abstract, using %nodefaultctor directive.
 [INFO ]  Aspect_GradientBackground
 [INFO ]  ## Processing module Image
 [INFO ]  ## Processing module InterfaceGraphic
@@ -4236,6 +4370,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  SelectBasics
 [INFO ]  SelectBasics_PickResult
 [INFO ]  SelectBasics_SelectingVolumeManager
+[INFO ]  Class SelectBasics_SelectingVolumeManager is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class SelectBasics_SelectingVolumeManager
 [INFO ]  ## Processing module TColQuantity
 [INFO ]  Found HARRAY2 definitionTColQuantity_HArray2OfLength: TColQuantity_Array2OfLength
@@ -4320,6 +4455,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ShapeExtend
 [INFO ]  ShapeExtend_BasicMsgRegistrator
 [INFO ]  ShapeExtend_ComplexCurve
+[INFO ]  Class ShapeExtend_ComplexCurve is abstract, using %nodefaultctor directive.
 [INFO ]  ShapeExtend_CompositeSurface
 [INFO ]  ShapeExtend_Explorer
 [INFO ]  ShapeExtend_WireData
@@ -4409,6 +4545,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ShapeProcess_Context
 [INFO ]  ShapeProcess_OperLibrary
 [INFO ]  ShapeProcess_Operator
+[INFO ]  Class ShapeProcess_Operator is abstract, using %nodefaultctor directive.
 [INFO ]  ShapeProcess_ShapeContext
 [INFO ]  ShapeProcess_UOperator
 [INFO ]  ## Processing module ShapeProcessAPI
@@ -4463,9 +4600,11 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  TObj_Assistant
 [INFO ]  TObj_CheckModel
 [INFO ]  TObj_Model
+[INFO ]  Class TObj_Model is abstract, using %nodefaultctor directive.
 [INFO ]  TObj_Object
 [INFO ]  TObj_ObjectIterator
 [INFO ]  TObj_Persistence
+[INFO ]  Class TObj_Persistence is abstract, using %nodefaultctor directive.
 [INFO ]  TObj_TIntSparseArray
 [INFO ]  TObj_TModel
 [INFO ]  TObj_TNameContainer
@@ -4473,6 +4612,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  TObj_TReference
 [INFO ]  TObj_TXYZ
 [INFO ]  TObj_LabelIterator
+[INFO ]  Class TObj_LabelIterator is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class TObj_LabelIterator
 [INFO ]  TObj_ModelIterator
 [INFO ]  TObj_Partition
@@ -4546,6 +4686,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  BRepCheck
 [INFO ]  BRepCheck_Analyzer
 [INFO ]  BRepCheck_Result
+[INFO ]  Class BRepCheck_Result is abstract, using %nodefaultctor directive.
 [INFO ]  BRepCheck_Edge
 [INFO ]  BRepCheck_Face
 [INFO ]  BRepCheck_Shell
@@ -4634,6 +4775,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Bisector
 [INFO ]  Bisector_Bisec
 [INFO ]  Bisector_Curve
+[INFO ]  Class Bisector_Curve is abstract, using %nodefaultctor directive.
 [INFO ]  Bisector_FunctionH
 [INFO ]  Bisector_FunctionInter
 [INFO ]  Bisector_Inter
@@ -4774,6 +4916,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Graphic3d_BvhCStructureSet
 [INFO ]  Graphic3d_CLight
 [INFO ]  Graphic3d_CStructure
+[INFO ]  Class Graphic3d_CStructure is abstract, using %nodefaultctor directive.
 [INFO ]  Wrap nested class Graphic3d_CStructure::SubclassStructIterator
 [INFO ]  Wrap nested class Graphic3d_CStructure::SubclassGroupIterator
 [INFO ]  Graphic3d_CTexture
@@ -4786,13 +4929,16 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap nested class Graphic3d_CullingTool::Plane
 [INFO ]  Graphic3d_DataStructureManager
 [INFO ]  Graphic3d_FrameStats
+[INFO ]  Class Graphic3d_FrameStats is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class Graphic3d_FrameStats
 [WARNI]  Creating Get and Set methods for method ChangeTimer
 [INFO ]  Graphic3d_FrameStatsData
 [INFO ]  Graphic3d_Fresnel
 [INFO ]  Graphic3d_GraduatedTrihedron
 [INFO ]  Graphic3d_GraphicDriver
+[INFO ]  Class Graphic3d_GraphicDriver is abstract, using %nodefaultctor directive.
 [INFO ]  Graphic3d_Group
+[INFO ]  Class Graphic3d_Group is abstract, using %nodefaultctor directive.
 [INFO ]  Graphic3d_HatchStyle
 [INFO ]  Graphic3d_Layer
 [INFO ]  Graphic3d_LightSet
@@ -4823,6 +4969,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Graphic3d_UniformValueTypeID<Standard_ShortReal>
 [INFO ]  Graphic3d_ValidatedCubeMapOrder
 [INFO ]  Graphic3d_ValueInterface
+[INFO ]  Class Graphic3d_ValueInterface is abstract, using %nodefaultctor directive.
 [INFO ]  Graphic3d_Vertex
 [INFO ]  Graphic3d_ViewAffinity
 [INFO ]  Graphic3d_WorldViewProjState
@@ -4842,6 +4989,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Graphic3d_AspectText3d
 [INFO ]  Graphic3d_AttribBuffer
 [INFO ]  Graphic3d_CView
+[INFO ]  Class Graphic3d_CView is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class Graphic3d_CView
 [INFO ]  Graphic3d_FrameStatsDataTmp
 [WARNI]  Creating Get and Set methods for method ChangeFrameRate
@@ -4851,6 +4999,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Graphic3d_TextureEnv
 [INFO ]  Graphic3d_TextureMap
 [INFO ]  Graphic3d_CubeMap
+[INFO ]  Class Graphic3d_CubeMap is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class Graphic3d_CubeMap
 [WARNI]  Constructor skipped for abstract class Graphic3d_CubeMap
 [INFO ]  Graphic3d_MutableIndexBuffer
@@ -4866,6 +5015,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  Prs3d
 [INFO ]  Prs3d_BasicAspect
+[INFO ]  Class Prs3d_BasicAspect is abstract, using %nodefaultctor directive.
 [INFO ]  Prs3d_DimensionUnits
 [INFO ]  Prs3d_Drawer
 [INFO ]  Prs3d_PresentationShadow
@@ -4873,6 +5023,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Prs3d_Root
 [INFO ]  Prs3d_ShapeTool
 [INFO ]  Prs3d_ToolQuadric
+[INFO ]  Class Prs3d_ToolQuadric is abstract, using %nodefaultctor directive.
 [INFO ]  Prs3d_Arrow
 [INFO ]  Prs3d_ArrowAspect
 [INFO ]  Prs3d_DatumAspect
@@ -4891,6 +5042,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  ## Processing module PrsMgr
 [INFO ]  Wrap classes :
 [INFO ]  PrsMgr_PresentableObject
+[INFO ]  Class PrsMgr_PresentableObject is abstract, using %nodefaultctor directive.
 [INFO ]  PrsMgr_Presentation
 [INFO ]  PrsMgr_PresentationManager
 [INFO ]  ## Processing module Select3D
@@ -4916,7 +5068,9 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  SelectMgr_EntityOwner
 [INFO ]  SelectMgr_Filter
+[INFO ]  Class SelectMgr_Filter is abstract, using %nodefaultctor directive.
 [INFO ]  SelectMgr_SelectableObject
+[INFO ]  Class SelectMgr_SelectableObject is abstract, using %nodefaultctor directive.
 [INFO ]  SelectMgr_SelectableObjectSet
 [INFO ]  Wrap nested class SelectMgr_SelectableObjectSet::Iterator
 [INFO ]  SelectMgr_SelectingVolumeManager
@@ -4986,6 +5140,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  TPrsStd_ConstraintTools
 [INFO ]  TPrsStd_Driver
+[INFO ]  Class TPrsStd_Driver is abstract, using %nodefaultctor directive.
 [INFO ]  TPrsStd_DriverTable
 [INFO ]  TPrsStd_AxisDriver
 [INFO ]  TPrsStd_ConstraintDriver
@@ -5060,12 +5215,14 @@ date : 2020-01-03 07:48:42.372911
 [WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <TopoDS_TShape>, opencascade::handle <VrmlData_Appearance>>
 [INFO ]  Wrap classes :
 [INFO ]  VrmlData_Node
+[INFO ]  Class VrmlData_Node is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class VrmlData_Node
 [INFO ]  VrmlData_Scene
 [INFO ]  VrmlData_ShapeConvert
 [INFO ]  Wrap nested class VrmlData_ShapeConvert::ShapeData
 [INFO ]  VrmlData_Appearance
 [INFO ]  VrmlData_Geometry
+[INFO ]  Class VrmlData_Geometry is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class VrmlData_Geometry
 [WARNI]  Constructor skipped for abstract class VrmlData_Geometry
 [INFO ]  VrmlData_Group
@@ -5171,22 +5328,28 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  IFSelect
 [INFO ]  IFSelect_Activator
+[INFO ]  Class IFSelect_Activator is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_AppliedModifiers
 [INFO ]  IFSelect_ContextModif
 [INFO ]  IFSelect_ContextWrite
 [INFO ]  IFSelect_Dispatch
+[INFO ]  Class IFSelect_Dispatch is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_EditForm
 [WARNI]  Creating Get and Set methods for method EditKeepStatus
 [INFO ]  IFSelect_Editor
+[INFO ]  Class IFSelect_Editor is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_Functions
 [INFO ]  IFSelect_GeneralModifier
+[INFO ]  Class IFSelect_GeneralModifier is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_IntParam
 [INFO ]  IFSelect_ListEditor
 [INFO ]  IFSelect_ModelCopier
 [INFO ]  IFSelect_PacketList
 [INFO ]  IFSelect_Selection
+[INFO ]  Class IFSelect_Selection is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_SelectionIterator
 [INFO ]  IFSelect_SessionDumper
+[INFO ]  Class IFSelect_SessionDumper is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_SessionFile
 [INFO ]  IFSelect_ShareOut
 [INFO ]  IFSelect_ShareOutResult
@@ -5194,7 +5357,9 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  IFSelect_SignatureList
 [WARNI]  Creating Get and Set methods for method ModeSignOnly
 [INFO ]  IFSelect_Transformer
+[INFO ]  Class IFSelect_Transformer is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_WorkLibrary
+[INFO ]  Class IFSelect_WorkLibrary is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_WorkSession
 [WARNI]  Wrong type in class property : return
 [INFO ]  IFSelect_Act
@@ -5206,6 +5371,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  IFSelect_DispPerOne
 [INFO ]  IFSelect_DispPerSignature
 [INFO ]  IFSelect_Modifier
+[INFO ]  Class IFSelect_Modifier is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_ParamEditor
 [INFO ]  IFSelect_SelectBase
 [INFO ]  IFSelect_SelectCombine
@@ -5222,10 +5388,13 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  IFSelect_ModifEditForm
 [INFO ]  IFSelect_ModifReorder
 [INFO ]  IFSelect_SelectAnyList
+[INFO ]  Class IFSelect_SelectAnyList is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_SelectDiff
 [INFO ]  IFSelect_SelectEntityNumber
 [INFO ]  IFSelect_SelectExplore
+[INFO ]  Class IFSelect_SelectExplore is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_SelectExtract
+[INFO ]  Class IFSelect_SelectExtract is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_SelectIntersection
 [INFO ]  IFSelect_SelectModelEntities
 [INFO ]  IFSelect_SelectModelRoots
@@ -5236,9 +5405,11 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  IFSelect_SelectUnion
 [INFO ]  IFSelect_SignAncestor
 [INFO ]  IFSelect_SelectAnyType
+[INFO ]  Class IFSelect_SelectAnyType is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_SelectErrorEntities
 [INFO ]  IFSelect_SelectFlag
 [INFO ]  IFSelect_SelectInList
+[INFO ]  Class IFSelect_SelectInList is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_SelectRange
 [INFO ]  IFSelect_SelectRootComps
 [INFO ]  IFSelect_SelectRoots
@@ -5260,17 +5431,21 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Interface_CheckIterator
 [INFO ]  Interface_CheckTool
 [INFO ]  Interface_CopyControl
+[INFO ]  Class Interface_CopyControl is abstract, using %nodefaultctor directive.
 [INFO ]  Interface_CopyTool
 [INFO ]  Interface_EntityCluster
 [INFO ]  Interface_EntityIterator
 [INFO ]  Interface_EntityList
 [INFO ]  Interface_FileParameter
 [INFO ]  Interface_FileReaderData
+[INFO ]  Class Interface_FileReaderData is abstract, using %nodefaultctor directive.
 [INFO ]  Interface_FileReaderTool
+[INFO ]  Class Interface_FileReaderTool is abstract, using %nodefaultctor directive.
 [INFO ]  Interface_FloatWriter
 [INFO ]  Interface_GTool
 [INFO ]  Interface_GeneralLib
 [INFO ]  Interface_GeneralModule
+[INFO ]  Class Interface_GeneralModule is abstract, using %nodefaultctor directive.
 [INFO ]  Interface_GlobalNodeOfGeneralLib
 [INFO ]  Interface_GlobalNodeOfReaderLib
 [INFO ]  Interface_Graph
@@ -5279,6 +5454,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Interface_IntVal
 [WARNI]  Creating Get and Set methods for method CValue
 [INFO ]  Interface_InterfaceModel
+[INFO ]  Class Interface_InterfaceModel is abstract, using %nodefaultctor directive.
 [WARNI]  Creating Get and Set methods for method DispatchStatus
 [INFO ]  Interface_LineBuffer
 [INFO ]  Interface_MSG
@@ -5288,14 +5464,17 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Interface_ParamList
 [INFO ]  Interface_ParamSet
 [INFO ]  Interface_Protocol
+[INFO ]  Class Interface_Protocol is abstract, using %nodefaultctor directive.
 [INFO ]  Interface_ReaderLib
 [INFO ]  Interface_ReaderModule
+[INFO ]  Class Interface_ReaderModule is abstract, using %nodefaultctor directive.
 [INFO ]  Interface_ReportEntity
 [INFO ]  Interface_STAT
 [INFO ]  Interface_ShareFlags
 [INFO ]  Interface_ShareTool
 [INFO ]  Interface_SignLabel
 [INFO ]  Interface_SignType
+[INFO ]  Class Interface_SignType is abstract, using %nodefaultctor directive.
 [INFO ]  Interface_TypedValue
 [INFO ]  Interface_UndefinedContent
 [INFO ]  Interface_CopyMap
@@ -5310,12 +5489,14 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  MoniTool_DataInfo
 [INFO ]  MoniTool_ElemHasher
 [INFO ]  MoniTool_Element
+[INFO ]  Class MoniTool_Element is abstract, using %nodefaultctor directive.
 [INFO ]  MoniTool_IntVal
 [WARNI]  Creating Get and Set methods for method CValue
 [INFO ]  MoniTool_MTHasher
 [INFO ]  MoniTool_RealVal
 [WARNI]  Creating Get and Set methods for method CValue
 [INFO ]  MoniTool_SignText
+[INFO ]  Class MoniTool_SignText is abstract, using %nodefaultctor directive.
 [INFO ]  MoniTool_Stat
 [INFO ]  MoniTool_Timer
 [INFO ]  MoniTool_TimerSentry
@@ -5331,10 +5512,12 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Transfer_ActorOfProcessForFinder
 [INFO ]  Transfer_ActorOfProcessForTransient
 [INFO ]  Transfer_Binder
+[INFO ]  Class Transfer_Binder is abstract, using %nodefaultctor directive.
 [INFO ]  Transfer_DataInfo
 [INFO ]  Transfer_DispatchControl
 [INFO ]  Transfer_FindHasher
 [INFO ]  Transfer_Finder
+[INFO ]  Class Transfer_Finder is abstract, using %nodefaultctor directive.
 [INFO ]  Transfer_MapContainer
 [INFO ]  Transfer_ProcessForTransient
 [INFO ]  Transfer_ResultFromModel
@@ -5383,6 +5566,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  XSControl
 [INFO ]  XSControl_ConnectedShapes
 [INFO ]  XSControl_Controller
+[INFO ]  Class XSControl_Controller is abstract, using %nodefaultctor directive.
 [INFO ]  XSControl_FuncShape
 [INFO ]  XSControl_Functions
 [INFO ]  XSControl_Reader
@@ -5433,6 +5617,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap classes :
 [INFO ]  XmlMDF
 [INFO ]  XmlMDF_ADriver
+[INFO ]  Class XmlMDF_ADriver is abstract, using %nodefaultctor directive.
 [INFO ]  XmlMDF_ADriverTable
 [INFO ]  XmlMDF_ReferenceDriver
 [INFO ]  XmlMDF_TagSourceDriver
@@ -5562,6 +5747,7 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  Wrap nested class Standard_ErrorHandler::Callback
 [INFO ]  Standard_GUID
 [INFO ]  Standard_MMgrRoot
+[INFO ]  Class Standard_MMgrRoot is abstract, using %nodefaultctor directive.
 [INFO ]  Standard_Static_Assert<true>
 [INFO ]  Standard_Transient
 [INFO ]  Standard_MMgrOpt
@@ -5644,6 +5830,6 @@ date : 2020-01-03 07:48:42.372911
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 44.75s
+SWIG interface file generation completed in 47.79s
 #################################################
 

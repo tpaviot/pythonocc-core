@@ -120,7 +120,6 @@ typedef NCollection_Sequence <AdvApp2Var_Iso> AdvApp2Var_Strip;
 /***********************************
 * class AdvApp2Var_ApproxAFunc2Var *
 ***********************************/
-%nodefaultctor AdvApp2Var_ApproxAFunc2Var;
 class AdvApp2Var_ApproxAFunc2Var {
 	public:
 		/****************** AdvApp2Var_ApproxAFunc2Var ******************/
@@ -365,7 +364,6 @@ class AdvApp2Var_ApproxAFunc2Var {
 /*******************************
 * class AdvApp2Var_ApproxF2var *
 *******************************/
-%nodefaultctor AdvApp2Var_ApproxF2var;
 class AdvApp2Var_ApproxF2var {
 	public:
 		/****************** mma1her_ ******************/
@@ -779,7 +777,6 @@ class AdvApp2Var_ApproxF2var {
 /***************************
 * class AdvApp2Var_Context *
 ***************************/
-%nodefaultctor AdvApp2Var_Context;
 class AdvApp2Var_Context {
 	public:
 		/****************** AdvApp2Var_Context ******************/
@@ -970,7 +967,6 @@ class AdvApp2Var_Criterion {
 /************************
 * class AdvApp2Var_Data *
 ************************/
-%nodefaultctor AdvApp2Var_Data;
 class AdvApp2Var_Data {
 	public:
 		/****************** Getmaovpar ******************/
@@ -1043,7 +1039,6 @@ class AdvApp2Var_Data {
 /*****************************
 * class AdvApp2Var_Framework *
 *****************************/
-%nodefaultctor AdvApp2Var_Framework;
 class AdvApp2Var_Framework {
 	public:
 		/****************** AdvApp2Var_Framework ******************/
@@ -1199,7 +1194,6 @@ class AdvApp2Var_Framework {
 /****************************
 * class AdvApp2Var_MathBase *
 ****************************/
-%nodefaultctor AdvApp2Var_MathBase;
 class AdvApp2Var_MathBase {
 	public:
 		/****************** mdsptpt_ ******************/
@@ -1880,7 +1874,6 @@ class AdvApp2Var_MathBase {
 /***************************
 * class AdvApp2Var_Network *
 ***************************/
-%nodefaultctor AdvApp2Var_Network;
 class AdvApp2Var_Network {
 	public:
 		/****************** AdvApp2Var_Network ******************/
@@ -1991,7 +1984,6 @@ class AdvApp2Var_Network {
 /************************
 * class AdvApp2Var_Node *
 ************************/
-%nodefaultctor AdvApp2Var_Node;
 class AdvApp2Var_Node {
 	public:
 		/****************** AdvApp2Var_Node ******************/
@@ -2095,7 +2087,6 @@ class AdvApp2Var_Node {
 /*************************
 * class AdvApp2Var_Patch *
 *************************/
-%nodefaultctor AdvApp2Var_Patch;
 class AdvApp2Var_Patch {
 	public:
 		/****************** AddConstraints ******************/
@@ -2316,7 +2307,6 @@ class AdvApp2Var_Patch {
 /***************************
 * class AdvApp2Var_SysBase *
 ***************************/
-%nodefaultctor AdvApp2Var_SysBase;
 class AdvApp2Var_SysBase {
 	public:
 		class mitem {};

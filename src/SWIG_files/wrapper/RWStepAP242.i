@@ -79,7 +79,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepap242.html"
 /*****************************************************
 * class RWStepAP242_RWDraughtingModelItemAssociation *
 *****************************************************/
-%nodefaultctor RWStepAP242_RWDraughtingModelItemAssociation;
 class RWStepAP242_RWDraughtingModelItemAssociation {
 	public:
 		/****************** RWStepAP242_RWDraughtingModelItemAssociation ******************/
@@ -130,7 +129,6 @@ class RWStepAP242_RWDraughtingModelItemAssociation {
 /*************************************************
 * class RWStepAP242_RWGeometricItemSpecificUsage *
 *************************************************/
-%nodefaultctor RWStepAP242_RWGeometricItemSpecificUsage;
 class RWStepAP242_RWGeometricItemSpecificUsage {
 	public:
 		/****************** RWStepAP242_RWGeometricItemSpecificUsage ******************/
@@ -181,7 +179,6 @@ class RWStepAP242_RWGeometricItemSpecificUsage {
 /**********************************
 * class RWStepAP242_RWIdAttribute *
 **********************************/
-%nodefaultctor RWStepAP242_RWIdAttribute;
 class RWStepAP242_RWIdAttribute {
 	public:
 		/****************** RWStepAP242_RWIdAttribute ******************/
@@ -232,7 +229,6 @@ class RWStepAP242_RWIdAttribute {
 /********************************************************
 * class RWStepAP242_RWItemIdentifiedRepresentationUsage *
 ********************************************************/
-%nodefaultctor RWStepAP242_RWItemIdentifiedRepresentationUsage;
 class RWStepAP242_RWItemIdentifiedRepresentationUsage {
 	public:
 		/****************** RWStepAP242_RWItemIdentifiedRepresentationUsage ******************/

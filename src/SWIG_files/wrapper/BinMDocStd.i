@@ -99,7 +99,6 @@ class BinMDocStd {
 /*******************************
 * class BinMDocStd_XLinkDriver *
 *******************************/
-%nodefaultctor BinMDocStd_XLinkDriver;
 class BinMDocStd_XLinkDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDocStd_XLinkDriver ******************/

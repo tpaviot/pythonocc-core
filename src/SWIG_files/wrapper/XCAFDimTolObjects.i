@@ -327,7 +327,6 @@ typedef NCollection_Sequence <opencascade::handle <XCAFDimTolObjects_GeomToleran
 /**************************************
 * class XCAFDimTolObjects_DatumObject *
 **************************************/
-%nodefaultctor XCAFDimTolObjects_DatumObject;
 class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 	public:
 		/****************** AddModifier ******************/
@@ -626,7 +625,6 @@ class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 /******************************************
 * class XCAFDimTolObjects_DimensionObject *
 ******************************************/
-%nodefaultctor XCAFDimTolObjects_DimensionObject;
 class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 	public:
 		/****************** AddDescription ******************/
@@ -1046,7 +1044,6 @@ class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 /**********************************************
 * class XCAFDimTolObjects_GeomToleranceObject *
 **********************************************/
-%nodefaultctor XCAFDimTolObjects_GeomToleranceObject;
 class XCAFDimTolObjects_GeomToleranceObject : public Standard_Transient {
 	public:
 		/****************** AddModifier ******************/
@@ -1349,7 +1346,6 @@ class XCAFDimTolObjects_GeomToleranceObject : public Standard_Transient {
 /*******************************
 * class XCAFDimTolObjects_Tool *
 *******************************/
-%nodefaultctor XCAFDimTolObjects_Tool;
 class XCAFDimTolObjects_Tool {
 	public:
 		/****************** GetDimensions ******************/

@@ -125,7 +125,6 @@ typedef NCollection_Array1 <BRepAdaptor_Curve> BRepAdaptor_Array1OfCurve;
 /******************************
 * class BRepAdaptor_CompCurve *
 ******************************/
-%nodefaultctor BRepAdaptor_CompCurve;
 class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 	public:
 		/****************** BRepAdaptor_CompCurve ******************/
@@ -413,7 +412,6 @@ class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 /**************************
 * class BRepAdaptor_Curve *
 **************************/
-%nodefaultctor BRepAdaptor_Curve;
 class BRepAdaptor_Curve : public Adaptor3d_Curve {
 	public:
 		/****************** BRepAdaptor_Curve ******************/
@@ -723,7 +721,6 @@ class BRepAdaptor_Curve : public Adaptor3d_Curve {
 /****************************
 * class BRepAdaptor_Curve2d *
 ****************************/
-%nodefaultctor BRepAdaptor_Curve2d;
 class BRepAdaptor_Curve2d : public Geom2dAdaptor_Curve {
 	public:
 		/****************** BRepAdaptor_Curve2d ******************/
@@ -776,7 +773,6 @@ class BRepAdaptor_Curve2d : public Geom2dAdaptor_Curve {
 /*******************************
 * class BRepAdaptor_HCompCurve *
 *******************************/
-%nodefaultctor BRepAdaptor_HCompCurve;
 class BRepAdaptor_HCompCurve : public Adaptor3d_HCurve {
 	public:
 		/****************** BRepAdaptor_HCompCurve ******************/
@@ -833,7 +829,6 @@ class BRepAdaptor_HCompCurve : public Adaptor3d_HCurve {
 /***************************
 * class BRepAdaptor_HCurve *
 ***************************/
-%nodefaultctor BRepAdaptor_HCurve;
 class BRepAdaptor_HCurve : public Adaptor3d_HCurve {
 	public:
 		/****************** BRepAdaptor_HCurve ******************/
@@ -890,7 +885,6 @@ class BRepAdaptor_HCurve : public Adaptor3d_HCurve {
 /*****************************
 * class BRepAdaptor_HCurve2d *
 *****************************/
-%nodefaultctor BRepAdaptor_HCurve2d;
 class BRepAdaptor_HCurve2d : public Adaptor2d_HCurve2d {
 	public:
 		/****************** BRepAdaptor_HCurve2d ******************/
@@ -941,7 +935,6 @@ class BRepAdaptor_HCurve2d : public Adaptor2d_HCurve2d {
 /*****************************
 * class BRepAdaptor_HSurface *
 *****************************/
-%nodefaultctor BRepAdaptor_HSurface;
 class BRepAdaptor_HSurface : public Adaptor3d_HSurface {
 	public:
 		/****************** BRepAdaptor_HSurface ******************/
@@ -992,7 +985,6 @@ class BRepAdaptor_HSurface : public Adaptor3d_HSurface {
 /****************************
 * class BRepAdaptor_Surface *
 ****************************/
-%nodefaultctor BRepAdaptor_Surface;
 class BRepAdaptor_Surface : public Adaptor3d_Surface {
 	public:
 		/****************** AxeOfRevolution ******************/

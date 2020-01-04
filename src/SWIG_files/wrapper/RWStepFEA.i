@@ -76,7 +76,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepfea.html"
 /**********************************************************
 * class RWStepFEA_RWAlignedCurve3dElementCoordinateSystem *
 **********************************************************/
-%nodefaultctor RWStepFEA_RWAlignedCurve3dElementCoordinateSystem;
 class RWStepFEA_RWAlignedCurve3dElementCoordinateSystem {
 	public:
 		/****************** RWStepFEA_RWAlignedCurve3dElementCoordinateSystem ******************/
@@ -131,7 +130,6 @@ class RWStepFEA_RWAlignedCurve3dElementCoordinateSystem {
 /************************************************************
 * class RWStepFEA_RWAlignedSurface3dElementCoordinateSystem *
 ************************************************************/
-%nodefaultctor RWStepFEA_RWAlignedSurface3dElementCoordinateSystem;
 class RWStepFEA_RWAlignedSurface3dElementCoordinateSystem {
 	public:
 		/****************** RWStepFEA_RWAlignedSurface3dElementCoordinateSystem ******************/
@@ -186,7 +184,6 @@ class RWStepFEA_RWAlignedSurface3dElementCoordinateSystem {
 /*************************************************************
 * class RWStepFEA_RWArbitraryVolume3dElementCoordinateSystem *
 *************************************************************/
-%nodefaultctor RWStepFEA_RWArbitraryVolume3dElementCoordinateSystem;
 class RWStepFEA_RWArbitraryVolume3dElementCoordinateSystem {
 	public:
 		/****************** RWStepFEA_RWArbitraryVolume3dElementCoordinateSystem ******************/
@@ -241,7 +238,6 @@ class RWStepFEA_RWArbitraryVolume3dElementCoordinateSystem {
 /*************************************************************
 * class RWStepFEA_RWConstantSurface3dElementCoordinateSystem *
 *************************************************************/
-%nodefaultctor RWStepFEA_RWConstantSurface3dElementCoordinateSystem;
 class RWStepFEA_RWConstantSurface3dElementCoordinateSystem {
 	public:
 		/****************** RWStepFEA_RWConstantSurface3dElementCoordinateSystem ******************/
@@ -296,7 +292,6 @@ class RWStepFEA_RWConstantSurface3dElementCoordinateSystem {
 /*******************************************
 * class RWStepFEA_RWCurve3dElementProperty *
 *******************************************/
-%nodefaultctor RWStepFEA_RWCurve3dElementProperty;
 class RWStepFEA_RWCurve3dElementProperty {
 	public:
 		/****************** RWStepFEA_RWCurve3dElementProperty ******************/
@@ -351,7 +346,6 @@ class RWStepFEA_RWCurve3dElementProperty {
 /*************************************************
 * class RWStepFEA_RWCurve3dElementRepresentation *
 *************************************************/
-%nodefaultctor RWStepFEA_RWCurve3dElementRepresentation;
 class RWStepFEA_RWCurve3dElementRepresentation {
 	public:
 		/****************** RWStepFEA_RWCurve3dElementRepresentation ******************/
@@ -406,7 +400,6 @@ class RWStepFEA_RWCurve3dElementRepresentation {
 /******************************************
 * class RWStepFEA_RWCurveElementEndOffset *
 ******************************************/
-%nodefaultctor RWStepFEA_RWCurveElementEndOffset;
 class RWStepFEA_RWCurveElementEndOffset {
 	public:
 		/****************** RWStepFEA_RWCurveElementEndOffset ******************/
@@ -461,7 +454,6 @@ class RWStepFEA_RWCurveElementEndOffset {
 /*******************************************
 * class RWStepFEA_RWCurveElementEndRelease *
 *******************************************/
-%nodefaultctor RWStepFEA_RWCurveElementEndRelease;
 class RWStepFEA_RWCurveElementEndRelease {
 	public:
 		/****************** RWStepFEA_RWCurveElementEndRelease ******************/
@@ -516,7 +508,6 @@ class RWStepFEA_RWCurveElementEndRelease {
 /*****************************************
 * class RWStepFEA_RWCurveElementInterval *
 *****************************************/
-%nodefaultctor RWStepFEA_RWCurveElementInterval;
 class RWStepFEA_RWCurveElementInterval {
 	public:
 		/****************** RWStepFEA_RWCurveElementInterval ******************/
@@ -571,7 +562,6 @@ class RWStepFEA_RWCurveElementInterval {
 /*************************************************
 * class RWStepFEA_RWCurveElementIntervalConstant *
 *************************************************/
-%nodefaultctor RWStepFEA_RWCurveElementIntervalConstant;
 class RWStepFEA_RWCurveElementIntervalConstant {
 	public:
 		/****************** RWStepFEA_RWCurveElementIntervalConstant ******************/
@@ -626,7 +616,6 @@ class RWStepFEA_RWCurveElementIntervalConstant {
 /********************************************************
 * class RWStepFEA_RWCurveElementIntervalLinearlyVarying *
 ********************************************************/
-%nodefaultctor RWStepFEA_RWCurveElementIntervalLinearlyVarying;
 class RWStepFEA_RWCurveElementIntervalLinearlyVarying {
 	public:
 		/****************** RWStepFEA_RWCurveElementIntervalLinearlyVarying ******************/
@@ -681,7 +670,6 @@ class RWStepFEA_RWCurveElementIntervalLinearlyVarying {
 /*****************************************
 * class RWStepFEA_RWCurveElementLocation *
 *****************************************/
-%nodefaultctor RWStepFEA_RWCurveElementLocation;
 class RWStepFEA_RWCurveElementLocation {
 	public:
 		/****************** RWStepFEA_RWCurveElementLocation ******************/
@@ -736,7 +724,6 @@ class RWStepFEA_RWCurveElementLocation {
 /******************************
 * class RWStepFEA_RWDummyNode *
 ******************************/
-%nodefaultctor RWStepFEA_RWDummyNode;
 class RWStepFEA_RWDummyNode {
 	public:
 		/****************** RWStepFEA_RWDummyNode ******************/
@@ -791,7 +778,6 @@ class RWStepFEA_RWDummyNode {
 /*************************************************
 * class RWStepFEA_RWElementGeometricRelationship *
 *************************************************/
-%nodefaultctor RWStepFEA_RWElementGeometricRelationship;
 class RWStepFEA_RWElementGeometricRelationship {
 	public:
 		/****************** RWStepFEA_RWElementGeometricRelationship ******************/
@@ -846,7 +832,6 @@ class RWStepFEA_RWElementGeometricRelationship {
 /*********************************
 * class RWStepFEA_RWElementGroup *
 *********************************/
-%nodefaultctor RWStepFEA_RWElementGroup;
 class RWStepFEA_RWElementGroup {
 	public:
 		/****************** RWStepFEA_RWElementGroup ******************/
@@ -901,7 +886,6 @@ class RWStepFEA_RWElementGroup {
 /******************************************
 * class RWStepFEA_RWElementRepresentation *
 ******************************************/
-%nodefaultctor RWStepFEA_RWElementRepresentation;
 class RWStepFEA_RWElementRepresentation {
 	public:
 		/****************** RWStepFEA_RWElementRepresentation ******************/
@@ -956,7 +940,6 @@ class RWStepFEA_RWElementRepresentation {
 /***********************************
 * class RWStepFEA_RWFeaAreaDensity *
 ***********************************/
-%nodefaultctor RWStepFEA_RWFeaAreaDensity;
 class RWStepFEA_RWFeaAreaDensity {
 	public:
 		/****************** RWStepFEA_RWFeaAreaDensity ******************/
@@ -1011,7 +994,6 @@ class RWStepFEA_RWFeaAreaDensity {
 /****************************************
 * class RWStepFEA_RWFeaAxis2Placement3d *
 ****************************************/
-%nodefaultctor RWStepFEA_RWFeaAxis2Placement3d;
 class RWStepFEA_RWFeaAxis2Placement3d {
 	public:
 		/****************** RWStepFEA_RWFeaAxis2Placement3d ******************/
@@ -1066,7 +1048,6 @@ class RWStepFEA_RWFeaAxis2Placement3d {
 /*********************************************************
 * class RWStepFEA_RWFeaCurveSectionGeometricRelationship *
 *********************************************************/
-%nodefaultctor RWStepFEA_RWFeaCurveSectionGeometricRelationship;
 class RWStepFEA_RWFeaCurveSectionGeometricRelationship {
 	public:
 		/****************** RWStepFEA_RWFeaCurveSectionGeometricRelationship ******************/
@@ -1121,7 +1102,6 @@ class RWStepFEA_RWFeaCurveSectionGeometricRelationship {
 /*****************************
 * class RWStepFEA_RWFeaGroup *
 *****************************/
-%nodefaultctor RWStepFEA_RWFeaGroup;
 class RWStepFEA_RWFeaGroup {
 	public:
 		/****************** RWStepFEA_RWFeaGroup ******************/
@@ -1176,7 +1156,6 @@ class RWStepFEA_RWFeaGroup {
 /****************************************
 * class RWStepFEA_RWFeaLinearElasticity *
 ****************************************/
-%nodefaultctor RWStepFEA_RWFeaLinearElasticity;
 class RWStepFEA_RWFeaLinearElasticity {
 	public:
 		/****************** RWStepFEA_RWFeaLinearElasticity ******************/
@@ -1231,7 +1210,6 @@ class RWStepFEA_RWFeaLinearElasticity {
 /***********************************
 * class RWStepFEA_RWFeaMassDensity *
 ***********************************/
-%nodefaultctor RWStepFEA_RWFeaMassDensity;
 class RWStepFEA_RWFeaMassDensity {
 	public:
 		/****************** RWStepFEA_RWFeaMassDensity ******************/
@@ -1286,7 +1264,6 @@ class RWStepFEA_RWFeaMassDensity {
 /******************************************************
 * class RWStepFEA_RWFeaMaterialPropertyRepresentation *
 ******************************************************/
-%nodefaultctor RWStepFEA_RWFeaMaterialPropertyRepresentation;
 class RWStepFEA_RWFeaMaterialPropertyRepresentation {
 	public:
 		/****************** RWStepFEA_RWFeaMaterialPropertyRepresentation ******************/
@@ -1341,7 +1318,6 @@ class RWStepFEA_RWFeaMaterialPropertyRepresentation {
 /**********************************************************
 * class RWStepFEA_RWFeaMaterialPropertyRepresentationItem *
 **********************************************************/
-%nodefaultctor RWStepFEA_RWFeaMaterialPropertyRepresentationItem;
 class RWStepFEA_RWFeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** RWStepFEA_RWFeaMaterialPropertyRepresentationItem ******************/
@@ -1396,7 +1372,6 @@ class RWStepFEA_RWFeaMaterialPropertyRepresentationItem {
 /*****************************
 * class RWStepFEA_RWFeaModel *
 *****************************/
-%nodefaultctor RWStepFEA_RWFeaModel;
 class RWStepFEA_RWFeaModel {
 	public:
 		/****************** RWStepFEA_RWFeaModel ******************/
@@ -1451,7 +1426,6 @@ class RWStepFEA_RWFeaModel {
 /*******************************
 * class RWStepFEA_RWFeaModel3d *
 *******************************/
-%nodefaultctor RWStepFEA_RWFeaModel3d;
 class RWStepFEA_RWFeaModel3d {
 	public:
 		/****************** RWStepFEA_RWFeaModel3d ******************/
@@ -1506,7 +1480,6 @@ class RWStepFEA_RWFeaModel3d {
 /***************************************
 * class RWStepFEA_RWFeaModelDefinition *
 ***************************************/
-%nodefaultctor RWStepFEA_RWFeaModelDefinition;
 class RWStepFEA_RWFeaModelDefinition {
 	public:
 		/****************** RWStepFEA_RWFeaModelDefinition ******************/
@@ -1561,7 +1534,6 @@ class RWStepFEA_RWFeaModelDefinition {
 /******************************************
 * class RWStepFEA_RWFeaMoistureAbsorption *
 ******************************************/
-%nodefaultctor RWStepFEA_RWFeaMoistureAbsorption;
 class RWStepFEA_RWFeaMoistureAbsorption {
 	public:
 		/****************** RWStepFEA_RWFeaMoistureAbsorption ******************/
@@ -1616,7 +1588,6 @@ class RWStepFEA_RWFeaMoistureAbsorption {
 /***************************************
 * class RWStepFEA_RWFeaParametricPoint *
 ***************************************/
-%nodefaultctor RWStepFEA_RWFeaParametricPoint;
 class RWStepFEA_RWFeaParametricPoint {
 	public:
 		/****************** RWStepFEA_RWFeaParametricPoint ******************/
@@ -1671,7 +1642,6 @@ class RWStepFEA_RWFeaParametricPoint {
 /******************************************
 * class RWStepFEA_RWFeaRepresentationItem *
 ******************************************/
-%nodefaultctor RWStepFEA_RWFeaRepresentationItem;
 class RWStepFEA_RWFeaRepresentationItem {
 	public:
 		/****************** RWStepFEA_RWFeaRepresentationItem ******************/
@@ -1726,7 +1696,6 @@ class RWStepFEA_RWFeaRepresentationItem {
 /*****************************************************************
 * class RWStepFEA_RWFeaSecantCoefficientOfLinearThermalExpansion *
 *****************************************************************/
-%nodefaultctor RWStepFEA_RWFeaSecantCoefficientOfLinearThermalExpansion;
 class RWStepFEA_RWFeaSecantCoefficientOfLinearThermalExpansion {
 	public:
 		/****************** RWStepFEA_RWFeaSecantCoefficientOfLinearThermalExpansion ******************/
@@ -1781,7 +1750,6 @@ class RWStepFEA_RWFeaSecantCoefficientOfLinearThermalExpansion {
 /*********************************************
 * class RWStepFEA_RWFeaShellBendingStiffness *
 *********************************************/
-%nodefaultctor RWStepFEA_RWFeaShellBendingStiffness;
 class RWStepFEA_RWFeaShellBendingStiffness {
 	public:
 		/****************** RWStepFEA_RWFeaShellBendingStiffness ******************/
@@ -1836,7 +1804,6 @@ class RWStepFEA_RWFeaShellBendingStiffness {
 /*************************************************************
 * class RWStepFEA_RWFeaShellMembraneBendingCouplingStiffness *
 *************************************************************/
-%nodefaultctor RWStepFEA_RWFeaShellMembraneBendingCouplingStiffness;
 class RWStepFEA_RWFeaShellMembraneBendingCouplingStiffness {
 	public:
 		/****************** RWStepFEA_RWFeaShellMembraneBendingCouplingStiffness ******************/
@@ -1891,7 +1858,6 @@ class RWStepFEA_RWFeaShellMembraneBendingCouplingStiffness {
 /**********************************************
 * class RWStepFEA_RWFeaShellMembraneStiffness *
 **********************************************/
-%nodefaultctor RWStepFEA_RWFeaShellMembraneStiffness;
 class RWStepFEA_RWFeaShellMembraneStiffness {
 	public:
 		/****************** RWStepFEA_RWFeaShellMembraneStiffness ******************/
@@ -1946,7 +1912,6 @@ class RWStepFEA_RWFeaShellMembraneStiffness {
 /*******************************************
 * class RWStepFEA_RWFeaShellShearStiffness *
 *******************************************/
-%nodefaultctor RWStepFEA_RWFeaShellShearStiffness;
 class RWStepFEA_RWFeaShellShearStiffness {
 	public:
 		/****************** RWStepFEA_RWFeaShellShearStiffness ******************/
@@ -2001,7 +1966,6 @@ class RWStepFEA_RWFeaShellShearStiffness {
 /***********************************************************
 * class RWStepFEA_RWFeaSurfaceSectionGeometricRelationship *
 ***********************************************************/
-%nodefaultctor RWStepFEA_RWFeaSurfaceSectionGeometricRelationship;
 class RWStepFEA_RWFeaSurfaceSectionGeometricRelationship {
 	public:
 		/****************** RWStepFEA_RWFeaSurfaceSectionGeometricRelationship ******************/
@@ -2056,7 +2020,6 @@ class RWStepFEA_RWFeaSurfaceSectionGeometricRelationship {
 /*********************************************************************
 * class RWStepFEA_RWFeaTangentialCoefficientOfLinearThermalExpansion *
 *********************************************************************/
-%nodefaultctor RWStepFEA_RWFeaTangentialCoefficientOfLinearThermalExpansion;
 class RWStepFEA_RWFeaTangentialCoefficientOfLinearThermalExpansion {
 	public:
 		/****************** RWStepFEA_RWFeaTangentialCoefficientOfLinearThermalExpansion ******************/
@@ -2111,7 +2074,6 @@ class RWStepFEA_RWFeaTangentialCoefficientOfLinearThermalExpansion {
 /******************************************
 * class RWStepFEA_RWFreedomAndCoefficient *
 ******************************************/
-%nodefaultctor RWStepFEA_RWFreedomAndCoefficient;
 class RWStepFEA_RWFreedomAndCoefficient {
 	public:
 		/****************** RWStepFEA_RWFreedomAndCoefficient ******************/
@@ -2166,7 +2128,6 @@ class RWStepFEA_RWFreedomAndCoefficient {
 /*********************************
 * class RWStepFEA_RWFreedomsList *
 *********************************/
-%nodefaultctor RWStepFEA_RWFreedomsList;
 class RWStepFEA_RWFreedomsList {
 	public:
 		/****************** RWStepFEA_RWFreedomsList ******************/
@@ -2221,7 +2182,6 @@ class RWStepFEA_RWFreedomsList {
 /**********************************
 * class RWStepFEA_RWGeometricNode *
 **********************************/
-%nodefaultctor RWStepFEA_RWGeometricNode;
 class RWStepFEA_RWGeometricNode {
 	public:
 		/****************** RWStepFEA_RWGeometricNode ******************/
@@ -2276,7 +2236,6 @@ class RWStepFEA_RWGeometricNode {
 /*************************
 * class RWStepFEA_RWNode *
 *************************/
-%nodefaultctor RWStepFEA_RWNode;
 class RWStepFEA_RWNode {
 	public:
 		/****************** RWStepFEA_RWNode ******************/
@@ -2331,7 +2290,6 @@ class RWStepFEA_RWNode {
 /***********************************
 * class RWStepFEA_RWNodeDefinition *
 ***********************************/
-%nodefaultctor RWStepFEA_RWNodeDefinition;
 class RWStepFEA_RWNodeDefinition {
 	public:
 		/****************** RWStepFEA_RWNodeDefinition ******************/
@@ -2386,7 +2344,6 @@ class RWStepFEA_RWNodeDefinition {
 /******************************
 * class RWStepFEA_RWNodeGroup *
 ******************************/
-%nodefaultctor RWStepFEA_RWNodeGroup;
 class RWStepFEA_RWNodeGroup {
 	public:
 		/****************** RWStepFEA_RWNodeGroup ******************/
@@ -2441,7 +2398,6 @@ class RWStepFEA_RWNodeGroup {
 /***************************************
 * class RWStepFEA_RWNodeRepresentation *
 ***************************************/
-%nodefaultctor RWStepFEA_RWNodeRepresentation;
 class RWStepFEA_RWNodeRepresentation {
 	public:
 		/****************** RWStepFEA_RWNodeRepresentation ******************/
@@ -2496,7 +2452,6 @@ class RWStepFEA_RWNodeRepresentation {
 /****************************
 * class RWStepFEA_RWNodeSet *
 ****************************/
-%nodefaultctor RWStepFEA_RWNodeSet;
 class RWStepFEA_RWNodeSet {
 	public:
 		/****************** RWStepFEA_RWNodeSet ******************/
@@ -2551,7 +2506,6 @@ class RWStepFEA_RWNodeSet {
 /*****************************************************
 * class RWStepFEA_RWNodeWithSolutionCoordinateSystem *
 *****************************************************/
-%nodefaultctor RWStepFEA_RWNodeWithSolutionCoordinateSystem;
 class RWStepFEA_RWNodeWithSolutionCoordinateSystem {
 	public:
 		/****************** RWStepFEA_RWNodeWithSolutionCoordinateSystem ******************/
@@ -2606,7 +2560,6 @@ class RWStepFEA_RWNodeWithSolutionCoordinateSystem {
 /***********************************
 * class RWStepFEA_RWNodeWithVector *
 ***********************************/
-%nodefaultctor RWStepFEA_RWNodeWithVector;
 class RWStepFEA_RWNodeWithVector {
 	public:
 		/****************** RWStepFEA_RWNodeWithVector ******************/
@@ -2661,7 +2614,6 @@ class RWStepFEA_RWNodeWithVector {
 /****************************************************************
 * class RWStepFEA_RWParametricCurve3dElementCoordinateDirection *
 ****************************************************************/
-%nodefaultctor RWStepFEA_RWParametricCurve3dElementCoordinateDirection;
 class RWStepFEA_RWParametricCurve3dElementCoordinateDirection {
 	public:
 		/****************** RWStepFEA_RWParametricCurve3dElementCoordinateDirection ******************/
@@ -2716,7 +2668,6 @@ class RWStepFEA_RWParametricCurve3dElementCoordinateDirection {
 /*************************************************************
 * class RWStepFEA_RWParametricCurve3dElementCoordinateSystem *
 *************************************************************/
-%nodefaultctor RWStepFEA_RWParametricCurve3dElementCoordinateSystem;
 class RWStepFEA_RWParametricCurve3dElementCoordinateSystem {
 	public:
 		/****************** RWStepFEA_RWParametricCurve3dElementCoordinateSystem ******************/
@@ -2771,7 +2722,6 @@ class RWStepFEA_RWParametricCurve3dElementCoordinateSystem {
 /***************************************************************
 * class RWStepFEA_RWParametricSurface3dElementCoordinateSystem *
 ***************************************************************/
-%nodefaultctor RWStepFEA_RWParametricSurface3dElementCoordinateSystem;
 class RWStepFEA_RWParametricSurface3dElementCoordinateSystem {
 	public:
 		/****************** RWStepFEA_RWParametricSurface3dElementCoordinateSystem ******************/
@@ -2826,7 +2776,6 @@ class RWStepFEA_RWParametricSurface3dElementCoordinateSystem {
 /***************************************************
 * class RWStepFEA_RWSurface3dElementRepresentation *
 ***************************************************/
-%nodefaultctor RWStepFEA_RWSurface3dElementRepresentation;
 class RWStepFEA_RWSurface3dElementRepresentation {
 	public:
 		/****************** RWStepFEA_RWSurface3dElementRepresentation ******************/
@@ -2881,7 +2830,6 @@ class RWStepFEA_RWSurface3dElementRepresentation {
 /**************************************************
 * class RWStepFEA_RWVolume3dElementRepresentation *
 **************************************************/
-%nodefaultctor RWStepFEA_RWVolume3dElementRepresentation;
 class RWStepFEA_RWVolume3dElementRepresentation {
 	public:
 		/****************** RWStepFEA_RWVolume3dElementRepresentation ******************/

@@ -110,7 +110,6 @@ typedef NCollection_IndexedDataMap <TopoDS_Shape , opencascade::handle <Standard
 /**************************
 * class MoniTool_AttrList *
 **************************/
-%nodefaultctor MoniTool_AttrList;
 class MoniTool_AttrList {
 	public:
 		/****************** AttrList ******************/
@@ -295,7 +294,6 @@ class MoniTool_AttrList {
 /**************************
 * class MoniTool_CaseData *
 **************************/
-%nodefaultctor MoniTool_CaseData;
 class MoniTool_CaseData : public Standard_Transient {
 	public:
 		/****************** AddAny ******************/
@@ -849,7 +847,6 @@ class MoniTool_Element : public Standard_Transient {
 /************************
 * class MoniTool_IntVal *
 ************************/
-%nodefaultctor MoniTool_IntVal;
 class MoniTool_IntVal : public Standard_Transient {
 	public:
 
@@ -925,7 +922,6 @@ class MoniTool_MTHasher {
 /*************************
 * class MoniTool_RealVal *
 *************************/
-%nodefaultctor MoniTool_RealVal;
 class MoniTool_RealVal : public Standard_Transient {
 	public:
 
@@ -1008,7 +1004,6 @@ class MoniTool_SignText : public Standard_Transient {
 /**********************
 * class MoniTool_Stat *
 **********************/
-%nodefaultctor MoniTool_Stat;
 class MoniTool_Stat {
 	public:
 		/****************** Add ******************/
@@ -1103,7 +1098,6 @@ class MoniTool_Stat {
 /***********************
 * class MoniTool_Timer *
 ***********************/
-%nodefaultctor MoniTool_Timer;
 class MoniTool_Timer : public Standard_Transient {
 	public:
 		/****************** Amend ******************/
@@ -1248,7 +1242,6 @@ class MoniTool_Timer : public Standard_Transient {
 /*****************************
 * class MoniTool_TimerSentry *
 *****************************/
-%nodefaultctor MoniTool_TimerSentry;
 class MoniTool_TimerSentry {
 	public:
 		/****************** MoniTool_TimerSentry ******************/
@@ -1290,7 +1283,6 @@ class MoniTool_TimerSentry {
 /****************************
 * class MoniTool_TypedValue *
 ****************************/
-%nodefaultctor MoniTool_TypedValue;
 class MoniTool_TypedValue : public Standard_Transient {
 	public:
 		/****************** AddDef ******************/
@@ -1745,7 +1737,6 @@ class MoniTool_TypedValue : public Standard_Transient {
 /***************************
 * class MoniTool_SignShape *
 ***************************/
-%nodefaultctor MoniTool_SignShape;
 class MoniTool_SignShape : public MoniTool_SignText {
 	public:
 		/****************** MoniTool_SignShape ******************/
@@ -1783,7 +1774,6 @@ class MoniTool_SignShape : public MoniTool_SignText {
 /*******************************
 * class MoniTool_TransientElem *
 *******************************/
-%nodefaultctor MoniTool_TransientElem;
 class MoniTool_TransientElem : public MoniTool_Element {
 	public:
 		/****************** Equates ******************/

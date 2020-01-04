@@ -582,7 +582,6 @@ class TDF_AttributeDelta : public Standard_Transient {
 /******************************
 * class TDF_AttributeIterator *
 ******************************/
-%nodefaultctor TDF_AttributeIterator;
 class TDF_AttributeIterator {
 	public:
 		/****************** Initialize ******************/
@@ -650,7 +649,6 @@ class TDF_AttributeIterator {
 /****************************
 * class TDF_ChildIDIterator *
 ****************************/
-%nodefaultctor TDF_ChildIDIterator;
 class TDF_ChildIDIterator {
 	public:
 		/****************** Initialize ******************/
@@ -719,7 +717,6 @@ class TDF_ChildIDIterator {
 /**************************
 * class TDF_ChildIterator *
 **************************/
-%nodefaultctor TDF_ChildIterator;
 class TDF_ChildIterator {
 	public:
 		/****************** Initialize ******************/
@@ -784,7 +781,6 @@ class TDF_ChildIterator {
 /************************
 * class TDF_ClosureMode *
 ************************/
-%nodefaultctor TDF_ClosureMode;
 class TDF_ClosureMode {
 	public:
 		/****************** Descendants ******************/
@@ -963,7 +959,6 @@ class TDF_ComparisonTool {
 /**********************
 * class TDF_CopyLabel *
 **********************/
-%nodefaultctor TDF_CopyLabel;
 class TDF_CopyLabel {
 	public:
 		/****************** ExternalReferences ******************/
@@ -1109,7 +1104,6 @@ class TDF_CopyTool {
 /*****************
 * class TDF_Data *
 *****************/
-%nodefaultctor TDF_Data;
 class TDF_Data : public Standard_Transient {
 	public:
 		/****************** AllowModification ******************/
@@ -1207,7 +1201,6 @@ class TDF_Data : public Standard_Transient {
 /********************
 * class TDF_DataSet *
 ********************/
-%nodefaultctor TDF_DataSet;
 class TDF_DataSet : public Standard_Transient {
 	public:
 		/****************** AddAttribute ******************/
@@ -1308,7 +1301,6 @@ class TDF_DataSet : public Standard_Transient {
 /******************
 * class TDF_Delta *
 ******************/
-%nodefaultctor TDF_Delta;
 class TDF_Delta : public Standard_Transient {
 	public:
 		/****************** AttributeDeltas ******************/
@@ -1393,7 +1385,6 @@ class TDF_Delta : public Standard_Transient {
 /*********************
 * class TDF_IDFilter *
 *********************/
-%nodefaultctor TDF_IDFilter;
 class TDF_IDFilter {
 	public:
 		/****************** Copy ******************/
@@ -1518,7 +1509,6 @@ class TDF_IDFilter {
 /******************
 * class TDF_Label *
 ******************/
-%nodefaultctor TDF_Label;
 class TDF_Label {
 	public:
 		/****************** AddAttribute ******************/
@@ -1824,7 +1814,6 @@ class TDF_Label {
 /***************************
 * class TDF_LabelMapHasher *
 ***************************/
-%nodefaultctor TDF_LabelMapHasher;
 class TDF_LabelMapHasher {
 	public:
 		/****************** HashCode ******************/
@@ -1862,7 +1851,6 @@ class TDF_LabelMapHasher {
 /****************************
 * class TDF_RelocationTable *
 ****************************/
-%nodefaultctor TDF_RelocationTable;
 class TDF_RelocationTable : public Standard_Transient {
 	public:
 		/****************** AfterRelocate ******************/
@@ -2286,7 +2274,6 @@ class TDF_Tool {
 /************************
 * class TDF_Transaction *
 ************************/
-%nodefaultctor TDF_Transaction;
 class TDF_Transaction {
 	public:
 		/****************** Abort ******************/
@@ -2371,7 +2358,6 @@ class TDF_Transaction {
 /****************************
 * class TDF_DeltaOnAddition *
 ****************************/
-%nodefaultctor TDF_DeltaOnAddition;
 class TDF_DeltaOnAddition : public TDF_AttributeDelta {
 	public:
 		/****************** Apply ******************/
@@ -2402,7 +2388,6 @@ class TDF_DeltaOnAddition : public TDF_AttributeDelta {
 /**************************
 * class TDF_DeltaOnForget *
 **************************/
-%nodefaultctor TDF_DeltaOnForget;
 class TDF_DeltaOnForget : public TDF_AttributeDelta {
 	public:
 		/****************** Apply ******************/
@@ -2473,7 +2458,6 @@ class TDF_DeltaOnRemoval : public TDF_AttributeDelta {
 /**************************
 * class TDF_DeltaOnResume *
 **************************/
-%nodefaultctor TDF_DeltaOnResume;
 class TDF_DeltaOnResume : public TDF_AttributeDelta {
 	public:
 		/****************** Apply ******************/
@@ -2504,7 +2488,6 @@ class TDF_DeltaOnResume : public TDF_AttributeDelta {
 /**********************
 * class TDF_Reference *
 **********************/
-%nodefaultctor TDF_Reference;
 class TDF_Reference : public TDF_Attribute {
 	public:
 
@@ -2593,7 +2576,6 @@ class TDF_Reference : public TDF_Attribute {
 /**********************
 * class TDF_TagSource *
 **********************/
-%nodefaultctor TDF_TagSource;
 class TDF_TagSource : public TDF_Attribute {
 	public:
 		/****************** Get ******************/
@@ -2686,7 +2668,6 @@ class TDF_TagSource : public TDF_Attribute {
 /***************************************
 * class TDF_DefaultDeltaOnModification *
 ***************************************/
-%nodefaultctor TDF_DefaultDeltaOnModification;
 class TDF_DefaultDeltaOnModification : public TDF_DeltaOnModification {
 	public:
 		/****************** Apply ******************/
@@ -2717,7 +2698,6 @@ class TDF_DefaultDeltaOnModification : public TDF_DeltaOnModification {
 /**********************************
 * class TDF_DefaultDeltaOnRemoval *
 **********************************/
-%nodefaultctor TDF_DefaultDeltaOnRemoval;
 class TDF_DefaultDeltaOnRemoval : public TDF_DeltaOnRemoval {
 	public:
 		/****************** Apply ******************/

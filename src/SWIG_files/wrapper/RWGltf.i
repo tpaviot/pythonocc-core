@@ -150,7 +150,6 @@ enum RWGltf_GltfAccessorLayout {
 /****************************
 * class RWGltf_GltfAccessor *
 ****************************/
-%nodefaultctor RWGltf_GltfAccessor;
 class RWGltf_GltfAccessor {
 	public:
 		int Id;
@@ -178,7 +177,6 @@ class RWGltf_GltfAccessor {
 /******************************
 * class RWGltf_GltfBufferView *
 ******************************/
-%nodefaultctor RWGltf_GltfBufferView;
 class RWGltf_GltfBufferView {
 	public:
 		int Id;
@@ -203,7 +201,6 @@ class RWGltf_GltfBufferView {
 /************************
 * class RWGltf_GltfFace *
 ************************/
-%nodefaultctor RWGltf_GltfFace;
 class RWGltf_GltfFace {
 	public:
 		RWGltf_GltfAccessor NodePos;
@@ -225,7 +222,6 @@ class RWGltf_GltfFace {
 /*********************************
 * class RWGltf_GltfPrimArrayData *
 *********************************/
-%nodefaultctor RWGltf_GltfPrimArrayData;
 class RWGltf_GltfPrimArrayData {
 	public:
 		opencascade::handle<NCollection_Buffer> StreamData;
@@ -260,7 +256,6 @@ class RWGltf_GltfPrimArrayData {
 /******************************
 * class RWGltf_MaterialCommon *
 ******************************/
-%nodefaultctor RWGltf_MaterialCommon;
 class RWGltf_MaterialCommon : public Standard_Transient {
 	public:
 		opencascade::handle<Image_Texture> AmbientTexture;
@@ -293,7 +288,6 @@ class RWGltf_MaterialCommon : public Standard_Transient {
 /*****************************************
 * class RWGltf_MaterialMetallicRoughness *
 *****************************************/
-%nodefaultctor RWGltf_MaterialMetallicRoughness;
 class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 	public:
 		opencascade::handle<Image_Texture> BaseColorTexture;

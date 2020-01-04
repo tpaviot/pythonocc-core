@@ -75,7 +75,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepbasic.html"
 /*****************************
 * class RWStepBasic_RWAction *
 *****************************/
-%nodefaultctor RWStepBasic_RWAction;
 class RWStepBasic_RWAction {
 	public:
 		/****************** RWStepBasic_RWAction ******************/
@@ -130,7 +129,6 @@ class RWStepBasic_RWAction {
 /***************************************
 * class RWStepBasic_RWActionAssignment *
 ***************************************/
-%nodefaultctor RWStepBasic_RWActionAssignment;
 class RWStepBasic_RWActionAssignment {
 	public:
 		/****************** RWStepBasic_RWActionAssignment ******************/
@@ -185,7 +183,6 @@ class RWStepBasic_RWActionAssignment {
 /***********************************
 * class RWStepBasic_RWActionMethod *
 ***********************************/
-%nodefaultctor RWStepBasic_RWActionMethod;
 class RWStepBasic_RWActionMethod {
 	public:
 		/****************** RWStepBasic_RWActionMethod ******************/
@@ -240,7 +237,6 @@ class RWStepBasic_RWActionMethod {
 /**********************************************
 * class RWStepBasic_RWActionRequestAssignment *
 **********************************************/
-%nodefaultctor RWStepBasic_RWActionRequestAssignment;
 class RWStepBasic_RWActionRequestAssignment {
 	public:
 		/****************** RWStepBasic_RWActionRequestAssignment ******************/
@@ -295,7 +291,6 @@ class RWStepBasic_RWActionRequestAssignment {
 /********************************************
 * class RWStepBasic_RWActionRequestSolution *
 ********************************************/
-%nodefaultctor RWStepBasic_RWActionRequestSolution;
 class RWStepBasic_RWActionRequestSolution {
 	public:
 		/****************** RWStepBasic_RWActionRequestSolution ******************/
@@ -350,7 +345,6 @@ class RWStepBasic_RWActionRequestSolution {
 /******************************
 * class RWStepBasic_RWAddress *
 ******************************/
-%nodefaultctor RWStepBasic_RWAddress;
 class RWStepBasic_RWAddress {
 	public:
 		/****************** RWStepBasic_RWAddress ******************/
@@ -392,7 +386,6 @@ class RWStepBasic_RWAddress {
 /*****************************************
 * class RWStepBasic_RWApplicationContext *
 *****************************************/
-%nodefaultctor RWStepBasic_RWApplicationContext;
 class RWStepBasic_RWApplicationContext {
 	public:
 		/****************** RWStepBasic_RWApplicationContext ******************/
@@ -434,7 +427,6 @@ class RWStepBasic_RWApplicationContext {
 /************************************************
 * class RWStepBasic_RWApplicationContextElement *
 ************************************************/
-%nodefaultctor RWStepBasic_RWApplicationContextElement;
 class RWStepBasic_RWApplicationContextElement {
 	public:
 		/****************** RWStepBasic_RWApplicationContextElement ******************/
@@ -485,7 +477,6 @@ class RWStepBasic_RWApplicationContextElement {
 /****************************************************
 * class RWStepBasic_RWApplicationProtocolDefinition *
 ****************************************************/
-%nodefaultctor RWStepBasic_RWApplicationProtocolDefinition;
 class RWStepBasic_RWApplicationProtocolDefinition {
 	public:
 		/****************** RWStepBasic_RWApplicationProtocolDefinition ******************/
@@ -536,7 +527,6 @@ class RWStepBasic_RWApplicationProtocolDefinition {
 /*******************************
 * class RWStepBasic_RWApproval *
 *******************************/
-%nodefaultctor RWStepBasic_RWApproval;
 class RWStepBasic_RWApproval {
 	public:
 		/****************** RWStepBasic_RWApproval ******************/
@@ -587,7 +577,6 @@ class RWStepBasic_RWApproval {
 /***************************************
 * class RWStepBasic_RWApprovalDateTime *
 ***************************************/
-%nodefaultctor RWStepBasic_RWApprovalDateTime;
 class RWStepBasic_RWApprovalDateTime {
 	public:
 		/****************** RWStepBasic_RWApprovalDateTime ******************/
@@ -638,7 +627,6 @@ class RWStepBasic_RWApprovalDateTime {
 /*************************************************
 * class RWStepBasic_RWApprovalPersonOrganization *
 *************************************************/
-%nodefaultctor RWStepBasic_RWApprovalPersonOrganization;
 class RWStepBasic_RWApprovalPersonOrganization {
 	public:
 		/****************** RWStepBasic_RWApprovalPersonOrganization ******************/
@@ -689,7 +677,6 @@ class RWStepBasic_RWApprovalPersonOrganization {
 /*******************************************
 * class RWStepBasic_RWApprovalRelationship *
 *******************************************/
-%nodefaultctor RWStepBasic_RWApprovalRelationship;
 class RWStepBasic_RWApprovalRelationship {
 	public:
 		/****************** RWStepBasic_RWApprovalRelationship ******************/
@@ -740,7 +727,6 @@ class RWStepBasic_RWApprovalRelationship {
 /***********************************
 * class RWStepBasic_RWApprovalRole *
 ***********************************/
-%nodefaultctor RWStepBasic_RWApprovalRole;
 class RWStepBasic_RWApprovalRole {
 	public:
 		/****************** RWStepBasic_RWApprovalRole ******************/
@@ -782,7 +768,6 @@ class RWStepBasic_RWApprovalRole {
 /*************************************
 * class RWStepBasic_RWApprovalStatus *
 *************************************/
-%nodefaultctor RWStepBasic_RWApprovalStatus;
 class RWStepBasic_RWApprovalStatus {
 	public:
 		/****************** RWStepBasic_RWApprovalStatus ******************/
@@ -824,7 +809,6 @@ class RWStepBasic_RWApprovalStatus {
 /***********************************
 * class RWStepBasic_RWCalendarDate *
 ***********************************/
-%nodefaultctor RWStepBasic_RWCalendarDate;
 class RWStepBasic_RWCalendarDate {
 	public:
 		/****************** RWStepBasic_RWCalendarDate ******************/
@@ -866,7 +850,6 @@ class RWStepBasic_RWCalendarDate {
 /************************************
 * class RWStepBasic_RWCertification *
 ************************************/
-%nodefaultctor RWStepBasic_RWCertification;
 class RWStepBasic_RWCertification {
 	public:
 		/****************** RWStepBasic_RWCertification ******************/
@@ -921,7 +904,6 @@ class RWStepBasic_RWCertification {
 /**********************************************
 * class RWStepBasic_RWCertificationAssignment *
 **********************************************/
-%nodefaultctor RWStepBasic_RWCertificationAssignment;
 class RWStepBasic_RWCertificationAssignment {
 	public:
 		/****************** RWStepBasic_RWCertificationAssignment ******************/
@@ -976,7 +958,6 @@ class RWStepBasic_RWCertificationAssignment {
 /****************************************
 * class RWStepBasic_RWCertificationType *
 ****************************************/
-%nodefaultctor RWStepBasic_RWCertificationType;
 class RWStepBasic_RWCertificationType {
 	public:
 		/****************** RWStepBasic_RWCertificationType ******************/
@@ -1031,7 +1012,6 @@ class RWStepBasic_RWCertificationType {
 /******************************************
 * class RWStepBasic_RWCharacterizedObject *
 ******************************************/
-%nodefaultctor RWStepBasic_RWCharacterizedObject;
 class RWStepBasic_RWCharacterizedObject {
 	public:
 		/****************** RWStepBasic_RWCharacterizedObject ******************/
@@ -1086,7 +1066,6 @@ class RWStepBasic_RWCharacterizedObject {
 /*******************************
 * class RWStepBasic_RWContract *
 *******************************/
-%nodefaultctor RWStepBasic_RWContract;
 class RWStepBasic_RWContract {
 	public:
 		/****************** RWStepBasic_RWContract ******************/
@@ -1141,7 +1120,6 @@ class RWStepBasic_RWContract {
 /*****************************************
 * class RWStepBasic_RWContractAssignment *
 *****************************************/
-%nodefaultctor RWStepBasic_RWContractAssignment;
 class RWStepBasic_RWContractAssignment {
 	public:
 		/****************** RWStepBasic_RWContractAssignment ******************/
@@ -1196,7 +1174,6 @@ class RWStepBasic_RWContractAssignment {
 /***********************************
 * class RWStepBasic_RWContractType *
 ***********************************/
-%nodefaultctor RWStepBasic_RWContractType;
 class RWStepBasic_RWContractType {
 	public:
 		/****************** RWStepBasic_RWContractType ******************/
@@ -1251,7 +1228,6 @@ class RWStepBasic_RWContractType {
 /******************************************
 * class RWStepBasic_RWConversionBasedUnit *
 ******************************************/
-%nodefaultctor RWStepBasic_RWConversionBasedUnit;
 class RWStepBasic_RWConversionBasedUnit {
 	public:
 		/****************** RWStepBasic_RWConversionBasedUnit ******************/
@@ -1302,7 +1278,6 @@ class RWStepBasic_RWConversionBasedUnit {
 /*****************************************************
 * class RWStepBasic_RWConversionBasedUnitAndAreaUnit *
 *****************************************************/
-%nodefaultctor RWStepBasic_RWConversionBasedUnitAndAreaUnit;
 class RWStepBasic_RWConversionBasedUnitAndAreaUnit {
 	public:
 		/****************** RWStepBasic_RWConversionBasedUnitAndAreaUnit ******************/
@@ -1353,7 +1328,6 @@ class RWStepBasic_RWConversionBasedUnitAndAreaUnit {
 /*******************************************************
 * class RWStepBasic_RWConversionBasedUnitAndLengthUnit *
 *******************************************************/
-%nodefaultctor RWStepBasic_RWConversionBasedUnitAndLengthUnit;
 class RWStepBasic_RWConversionBasedUnitAndLengthUnit {
 	public:
 		/****************** RWStepBasic_RWConversionBasedUnitAndLengthUnit ******************/
@@ -1404,7 +1378,6 @@ class RWStepBasic_RWConversionBasedUnitAndLengthUnit {
 /*****************************************************
 * class RWStepBasic_RWConversionBasedUnitAndMassUnit *
 *****************************************************/
-%nodefaultctor RWStepBasic_RWConversionBasedUnitAndMassUnit;
 class RWStepBasic_RWConversionBasedUnitAndMassUnit {
 	public:
 		/****************** RWStepBasic_RWConversionBasedUnitAndMassUnit ******************/
@@ -1455,7 +1428,6 @@ class RWStepBasic_RWConversionBasedUnitAndMassUnit {
 /***********************************************************
 * class RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit *
 ***********************************************************/
-%nodefaultctor RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit;
 class RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit {
 	public:
 		/****************** RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit ******************/
@@ -1506,7 +1478,6 @@ class RWStepBasic_RWConversionBasedUnitAndPlaneAngleUnit {
 /******************************************************
 * class RWStepBasic_RWConversionBasedUnitAndRatioUnit *
 ******************************************************/
-%nodefaultctor RWStepBasic_RWConversionBasedUnitAndRatioUnit;
 class RWStepBasic_RWConversionBasedUnitAndRatioUnit {
 	public:
 		/****************** RWStepBasic_RWConversionBasedUnitAndRatioUnit ******************/
@@ -1557,7 +1528,6 @@ class RWStepBasic_RWConversionBasedUnitAndRatioUnit {
 /***********************************************************
 * class RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit *
 ***********************************************************/
-%nodefaultctor RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit;
 class RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit {
 	public:
 		/****************** RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit ******************/
@@ -1608,7 +1578,6 @@ class RWStepBasic_RWConversionBasedUnitAndSolidAngleUnit {
 /*****************************************************
 * class RWStepBasic_RWConversionBasedUnitAndTimeUnit *
 *****************************************************/
-%nodefaultctor RWStepBasic_RWConversionBasedUnitAndTimeUnit;
 class RWStepBasic_RWConversionBasedUnitAndTimeUnit {
 	public:
 		/****************** RWStepBasic_RWConversionBasedUnitAndTimeUnit ******************/
@@ -1659,7 +1628,6 @@ class RWStepBasic_RWConversionBasedUnitAndTimeUnit {
 /*******************************************************
 * class RWStepBasic_RWConversionBasedUnitAndVolumeUnit *
 *******************************************************/
-%nodefaultctor RWStepBasic_RWConversionBasedUnitAndVolumeUnit;
 class RWStepBasic_RWConversionBasedUnitAndVolumeUnit {
 	public:
 		/****************** RWStepBasic_RWConversionBasedUnitAndVolumeUnit ******************/
@@ -1710,7 +1678,6 @@ class RWStepBasic_RWConversionBasedUnitAndVolumeUnit {
 /*****************************************************
 * class RWStepBasic_RWCoordinatedUniversalTimeOffset *
 *****************************************************/
-%nodefaultctor RWStepBasic_RWCoordinatedUniversalTimeOffset;
 class RWStepBasic_RWCoordinatedUniversalTimeOffset {
 	public:
 		/****************** RWStepBasic_RWCoordinatedUniversalTimeOffset ******************/
@@ -1752,7 +1719,6 @@ class RWStepBasic_RWCoordinatedUniversalTimeOffset {
 /***************************
 * class RWStepBasic_RWDate *
 ***************************/
-%nodefaultctor RWStepBasic_RWDate;
 class RWStepBasic_RWDate {
 	public:
 		/****************** RWStepBasic_RWDate ******************/
@@ -1794,7 +1760,6 @@ class RWStepBasic_RWDate {
 /**********************************
 * class RWStepBasic_RWDateAndTime *
 **********************************/
-%nodefaultctor RWStepBasic_RWDateAndTime;
 class RWStepBasic_RWDateAndTime {
 	public:
 		/****************** RWStepBasic_RWDateAndTime ******************/
@@ -1845,7 +1810,6 @@ class RWStepBasic_RWDateAndTime {
 /*******************************
 * class RWStepBasic_RWDateRole *
 *******************************/
-%nodefaultctor RWStepBasic_RWDateRole;
 class RWStepBasic_RWDateRole {
 	public:
 		/****************** RWStepBasic_RWDateRole ******************/
@@ -1887,7 +1851,6 @@ class RWStepBasic_RWDateRole {
 /***********************************
 * class RWStepBasic_RWDateTimeRole *
 ***********************************/
-%nodefaultctor RWStepBasic_RWDateTimeRole;
 class RWStepBasic_RWDateTimeRole {
 	public:
 		/****************** RWStepBasic_RWDateTimeRole ******************/
@@ -1929,7 +1892,6 @@ class RWStepBasic_RWDateTimeRole {
 /**********************************
 * class RWStepBasic_RWDerivedUnit *
 **********************************/
-%nodefaultctor RWStepBasic_RWDerivedUnit;
 class RWStepBasic_RWDerivedUnit {
 	public:
 		/****************** RWStepBasic_RWDerivedUnit ******************/
@@ -1980,7 +1942,6 @@ class RWStepBasic_RWDerivedUnit {
 /*****************************************
 * class RWStepBasic_RWDerivedUnitElement *
 *****************************************/
-%nodefaultctor RWStepBasic_RWDerivedUnitElement;
 class RWStepBasic_RWDerivedUnitElement {
 	public:
 		/****************** RWStepBasic_RWDerivedUnitElement ******************/
@@ -2031,7 +1992,6 @@ class RWStepBasic_RWDerivedUnitElement {
 /*******************************************
 * class RWStepBasic_RWDimensionalExponents *
 *******************************************/
-%nodefaultctor RWStepBasic_RWDimensionalExponents;
 class RWStepBasic_RWDimensionalExponents {
 	public:
 		/****************** RWStepBasic_RWDimensionalExponents ******************/
@@ -2073,7 +2033,6 @@ class RWStepBasic_RWDimensionalExponents {
 /*******************************
 * class RWStepBasic_RWDocument *
 *******************************/
-%nodefaultctor RWStepBasic_RWDocument;
 class RWStepBasic_RWDocument {
 	public:
 		/****************** RWStepBasic_RWDocument ******************/
@@ -2128,7 +2087,6 @@ class RWStepBasic_RWDocument {
 /***********************************
 * class RWStepBasic_RWDocumentFile *
 ***********************************/
-%nodefaultctor RWStepBasic_RWDocumentFile;
 class RWStepBasic_RWDocumentFile {
 	public:
 		/****************** RWStepBasic_RWDocumentFile ******************/
@@ -2183,7 +2141,6 @@ class RWStepBasic_RWDocumentFile {
 /*************************************************
 * class RWStepBasic_RWDocumentProductAssociation *
 *************************************************/
-%nodefaultctor RWStepBasic_RWDocumentProductAssociation;
 class RWStepBasic_RWDocumentProductAssociation {
 	public:
 		/****************** RWStepBasic_RWDocumentProductAssociation ******************/
@@ -2238,7 +2195,6 @@ class RWStepBasic_RWDocumentProductAssociation {
 /*************************************************
 * class RWStepBasic_RWDocumentProductEquivalence *
 *************************************************/
-%nodefaultctor RWStepBasic_RWDocumentProductEquivalence;
 class RWStepBasic_RWDocumentProductEquivalence {
 	public:
 		/****************** RWStepBasic_RWDocumentProductEquivalence ******************/
@@ -2293,7 +2249,6 @@ class RWStepBasic_RWDocumentProductEquivalence {
 /*******************************************
 * class RWStepBasic_RWDocumentRelationship *
 *******************************************/
-%nodefaultctor RWStepBasic_RWDocumentRelationship;
 class RWStepBasic_RWDocumentRelationship {
 	public:
 		/****************** RWStepBasic_RWDocumentRelationship ******************/
@@ -2344,7 +2299,6 @@ class RWStepBasic_RWDocumentRelationship {
 /*************************************************
 * class RWStepBasic_RWDocumentRepresentationType *
 *************************************************/
-%nodefaultctor RWStepBasic_RWDocumentRepresentationType;
 class RWStepBasic_RWDocumentRepresentationType {
 	public:
 		/****************** RWStepBasic_RWDocumentRepresentationType ******************/
@@ -2399,7 +2353,6 @@ class RWStepBasic_RWDocumentRepresentationType {
 /***********************************
 * class RWStepBasic_RWDocumentType *
 ***********************************/
-%nodefaultctor RWStepBasic_RWDocumentType;
 class RWStepBasic_RWDocumentType {
 	public:
 		/****************** RWStepBasic_RWDocumentType ******************/
@@ -2450,7 +2403,6 @@ class RWStepBasic_RWDocumentType {
 /**********************************************
 * class RWStepBasic_RWDocumentUsageConstraint *
 **********************************************/
-%nodefaultctor RWStepBasic_RWDocumentUsageConstraint;
 class RWStepBasic_RWDocumentUsageConstraint {
 	public:
 		/****************** RWStepBasic_RWDocumentUsageConstraint ******************/
@@ -2501,7 +2453,6 @@ class RWStepBasic_RWDocumentUsageConstraint {
 /**********************************
 * class RWStepBasic_RWEffectivity *
 **********************************/
-%nodefaultctor RWStepBasic_RWEffectivity;
 class RWStepBasic_RWEffectivity {
 	public:
 		/****************** RWStepBasic_RWEffectivity ******************/
@@ -2552,7 +2503,6 @@ class RWStepBasic_RWEffectivity {
 /********************************************
 * class RWStepBasic_RWEffectivityAssignment *
 ********************************************/
-%nodefaultctor RWStepBasic_RWEffectivityAssignment;
 class RWStepBasic_RWEffectivityAssignment {
 	public:
 		/****************** RWStepBasic_RWEffectivityAssignment ******************/
@@ -2607,7 +2557,6 @@ class RWStepBasic_RWEffectivityAssignment {
 /**********************************
 * class RWStepBasic_RWEulerAngles *
 **********************************/
-%nodefaultctor RWStepBasic_RWEulerAngles;
 class RWStepBasic_RWEulerAngles {
 	public:
 		/****************** RWStepBasic_RWEulerAngles ******************/
@@ -2662,7 +2611,6 @@ class RWStepBasic_RWEulerAngles {
 /*******************************************************
 * class RWStepBasic_RWExternalIdentificationAssignment *
 *******************************************************/
-%nodefaultctor RWStepBasic_RWExternalIdentificationAssignment;
 class RWStepBasic_RWExternalIdentificationAssignment {
 	public:
 		/****************** RWStepBasic_RWExternalIdentificationAssignment ******************/
@@ -2717,7 +2665,6 @@ class RWStepBasic_RWExternalIdentificationAssignment {
 /*************************************
 * class RWStepBasic_RWExternalSource *
 *************************************/
-%nodefaultctor RWStepBasic_RWExternalSource;
 class RWStepBasic_RWExternalSource {
 	public:
 		/****************** RWStepBasic_RWExternalSource ******************/
@@ -2772,7 +2719,6 @@ class RWStepBasic_RWExternalSource {
 /********************************************
 * class RWStepBasic_RWExternallyDefinedItem *
 ********************************************/
-%nodefaultctor RWStepBasic_RWExternallyDefinedItem;
 class RWStepBasic_RWExternallyDefinedItem {
 	public:
 		/****************** RWStepBasic_RWExternallyDefinedItem ******************/
@@ -2827,7 +2773,6 @@ class RWStepBasic_RWExternallyDefinedItem {
 /**************************************
 * class RWStepBasic_RWGeneralProperty *
 **************************************/
-%nodefaultctor RWStepBasic_RWGeneralProperty;
 class RWStepBasic_RWGeneralProperty {
 	public:
 		/****************** RWStepBasic_RWGeneralProperty ******************/
@@ -2882,7 +2827,6 @@ class RWStepBasic_RWGeneralProperty {
 /****************************
 * class RWStepBasic_RWGroup *
 ****************************/
-%nodefaultctor RWStepBasic_RWGroup;
 class RWStepBasic_RWGroup {
 	public:
 		/****************** RWStepBasic_RWGroup ******************/
@@ -2937,7 +2881,6 @@ class RWStepBasic_RWGroup {
 /**************************************
 * class RWStepBasic_RWGroupAssignment *
 **************************************/
-%nodefaultctor RWStepBasic_RWGroupAssignment;
 class RWStepBasic_RWGroupAssignment {
 	public:
 		/****************** RWStepBasic_RWGroupAssignment ******************/
@@ -2992,7 +2935,6 @@ class RWStepBasic_RWGroupAssignment {
 /****************************************
 * class RWStepBasic_RWGroupRelationship *
 ****************************************/
-%nodefaultctor RWStepBasic_RWGroupRelationship;
 class RWStepBasic_RWGroupRelationship {
 	public:
 		/****************** RWStepBasic_RWGroupRelationship ******************/
@@ -3047,7 +2989,6 @@ class RWStepBasic_RWGroupRelationship {
 /***********************************************
 * class RWStepBasic_RWIdentificationAssignment *
 ***********************************************/
-%nodefaultctor RWStepBasic_RWIdentificationAssignment;
 class RWStepBasic_RWIdentificationAssignment {
 	public:
 		/****************** RWStepBasic_RWIdentificationAssignment ******************/
@@ -3102,7 +3043,6 @@ class RWStepBasic_RWIdentificationAssignment {
 /*****************************************
 * class RWStepBasic_RWIdentificationRole *
 *****************************************/
-%nodefaultctor RWStepBasic_RWIdentificationRole;
 class RWStepBasic_RWIdentificationRole {
 	public:
 		/****************** RWStepBasic_RWIdentificationRole ******************/
@@ -3157,7 +3097,6 @@ class RWStepBasic_RWIdentificationRole {
 /********************************************
 * class RWStepBasic_RWLengthMeasureWithUnit *
 ********************************************/
-%nodefaultctor RWStepBasic_RWLengthMeasureWithUnit;
 class RWStepBasic_RWLengthMeasureWithUnit {
 	public:
 		/****************** RWStepBasic_RWLengthMeasureWithUnit ******************/
@@ -3208,7 +3147,6 @@ class RWStepBasic_RWLengthMeasureWithUnit {
 /*********************************
 * class RWStepBasic_RWLengthUnit *
 *********************************/
-%nodefaultctor RWStepBasic_RWLengthUnit;
 class RWStepBasic_RWLengthUnit {
 	public:
 		/****************** RWStepBasic_RWLengthUnit ******************/
@@ -3259,7 +3197,6 @@ class RWStepBasic_RWLengthUnit {
 /********************************
 * class RWStepBasic_RWLocalTime *
 ********************************/
-%nodefaultctor RWStepBasic_RWLocalTime;
 class RWStepBasic_RWLocalTime {
 	public:
 		/****************** RWStepBasic_RWLocalTime ******************/
@@ -3310,7 +3247,6 @@ class RWStepBasic_RWLocalTime {
 /******************************************
 * class RWStepBasic_RWMassMeasureWithUnit *
 ******************************************/
-%nodefaultctor RWStepBasic_RWMassMeasureWithUnit;
 class RWStepBasic_RWMassMeasureWithUnit {
 	public:
 		/****************** RWStepBasic_RWMassMeasureWithUnit ******************/
@@ -3361,7 +3297,6 @@ class RWStepBasic_RWMassMeasureWithUnit {
 /*******************************
 * class RWStepBasic_RWMassUnit *
 *******************************/
-%nodefaultctor RWStepBasic_RWMassUnit;
 class RWStepBasic_RWMassUnit {
 	public:
 		/****************** RWStepBasic_RWMassUnit ******************/
@@ -3416,7 +3351,6 @@ class RWStepBasic_RWMassUnit {
 /**************************************
 * class RWStepBasic_RWMeasureWithUnit *
 **************************************/
-%nodefaultctor RWStepBasic_RWMeasureWithUnit;
 class RWStepBasic_RWMeasureWithUnit {
 	public:
 		/****************** RWStepBasic_RWMeasureWithUnit ******************/
@@ -3467,7 +3401,6 @@ class RWStepBasic_RWMeasureWithUnit {
 /****************************************
 * class RWStepBasic_RWMechanicalContext *
 ****************************************/
-%nodefaultctor RWStepBasic_RWMechanicalContext;
 class RWStepBasic_RWMechanicalContext {
 	public:
 		/****************** RWStepBasic_RWMechanicalContext ******************/
@@ -3518,7 +3451,6 @@ class RWStepBasic_RWMechanicalContext {
 /*************************************
 * class RWStepBasic_RWNameAssignment *
 *************************************/
-%nodefaultctor RWStepBasic_RWNameAssignment;
 class RWStepBasic_RWNameAssignment {
 	public:
 		/****************** RWStepBasic_RWNameAssignment ******************/
@@ -3573,7 +3505,6 @@ class RWStepBasic_RWNameAssignment {
 /********************************
 * class RWStepBasic_RWNamedUnit *
 ********************************/
-%nodefaultctor RWStepBasic_RWNamedUnit;
 class RWStepBasic_RWNamedUnit {
 	public:
 		/****************** RWStepBasic_RWNamedUnit ******************/
@@ -3624,7 +3555,6 @@ class RWStepBasic_RWNamedUnit {
 /*********************************
 * class RWStepBasic_RWObjectRole *
 *********************************/
-%nodefaultctor RWStepBasic_RWObjectRole;
 class RWStepBasic_RWObjectRole {
 	public:
 		/****************** RWStepBasic_RWObjectRole ******************/
@@ -3679,7 +3609,6 @@ class RWStepBasic_RWObjectRole {
 /**********************************
 * class RWStepBasic_RWOrdinalDate *
 **********************************/
-%nodefaultctor RWStepBasic_RWOrdinalDate;
 class RWStepBasic_RWOrdinalDate {
 	public:
 		/****************** RWStepBasic_RWOrdinalDate ******************/
@@ -3721,7 +3650,6 @@ class RWStepBasic_RWOrdinalDate {
 /***********************************
 * class RWStepBasic_RWOrganization *
 ***********************************/
-%nodefaultctor RWStepBasic_RWOrganization;
 class RWStepBasic_RWOrganization {
 	public:
 		/****************** RWStepBasic_RWOrganization ******************/
@@ -3763,7 +3691,6 @@ class RWStepBasic_RWOrganization {
 /***************************************
 * class RWStepBasic_RWOrganizationRole *
 ***************************************/
-%nodefaultctor RWStepBasic_RWOrganizationRole;
 class RWStepBasic_RWOrganizationRole {
 	public:
 		/****************** RWStepBasic_RWOrganizationRole ******************/
@@ -3805,7 +3732,6 @@ class RWStepBasic_RWOrganizationRole {
 /********************************************
 * class RWStepBasic_RWOrganizationalAddress *
 ********************************************/
-%nodefaultctor RWStepBasic_RWOrganizationalAddress;
 class RWStepBasic_RWOrganizationalAddress {
 	public:
 		/****************** RWStepBasic_RWOrganizationalAddress ******************/
@@ -3856,7 +3782,6 @@ class RWStepBasic_RWOrganizationalAddress {
 /*****************************
 * class RWStepBasic_RWPerson *
 *****************************/
-%nodefaultctor RWStepBasic_RWPerson;
 class RWStepBasic_RWPerson {
 	public:
 		/****************** RWStepBasic_RWPerson ******************/
@@ -3898,7 +3823,6 @@ class RWStepBasic_RWPerson {
 /********************************************
 * class RWStepBasic_RWPersonAndOrganization *
 ********************************************/
-%nodefaultctor RWStepBasic_RWPersonAndOrganization;
 class RWStepBasic_RWPersonAndOrganization {
 	public:
 		/****************** RWStepBasic_RWPersonAndOrganization ******************/
@@ -3949,7 +3873,6 @@ class RWStepBasic_RWPersonAndOrganization {
 /************************************************
 * class RWStepBasic_RWPersonAndOrganizationRole *
 ************************************************/
-%nodefaultctor RWStepBasic_RWPersonAndOrganizationRole;
 class RWStepBasic_RWPersonAndOrganizationRole {
 	public:
 		/****************** RWStepBasic_RWPersonAndOrganizationRole ******************/
@@ -3991,7 +3914,6 @@ class RWStepBasic_RWPersonAndOrganizationRole {
 /**************************************
 * class RWStepBasic_RWPersonalAddress *
 **************************************/
-%nodefaultctor RWStepBasic_RWPersonalAddress;
 class RWStepBasic_RWPersonalAddress {
 	public:
 		/****************** RWStepBasic_RWPersonalAddress ******************/
@@ -4042,7 +3964,6 @@ class RWStepBasic_RWPersonalAddress {
 /************************************************
 * class RWStepBasic_RWPlaneAngleMeasureWithUnit *
 ************************************************/
-%nodefaultctor RWStepBasic_RWPlaneAngleMeasureWithUnit;
 class RWStepBasic_RWPlaneAngleMeasureWithUnit {
 	public:
 		/****************** RWStepBasic_RWPlaneAngleMeasureWithUnit ******************/
@@ -4093,7 +4014,6 @@ class RWStepBasic_RWPlaneAngleMeasureWithUnit {
 /*************************************
 * class RWStepBasic_RWPlaneAngleUnit *
 *************************************/
-%nodefaultctor RWStepBasic_RWPlaneAngleUnit;
 class RWStepBasic_RWPlaneAngleUnit {
 	public:
 		/****************** RWStepBasic_RWPlaneAngleUnit ******************/
@@ -4144,7 +4064,6 @@ class RWStepBasic_RWPlaneAngleUnit {
 /******************************
 * class RWStepBasic_RWProduct *
 ******************************/
-%nodefaultctor RWStepBasic_RWProduct;
 class RWStepBasic_RWProduct {
 	public:
 		/****************** RWStepBasic_RWProduct ******************/
@@ -4195,7 +4114,6 @@ class RWStepBasic_RWProduct {
 /**************************************
 * class RWStepBasic_RWProductCategory *
 **************************************/
-%nodefaultctor RWStepBasic_RWProductCategory;
 class RWStepBasic_RWProductCategory {
 	public:
 		/****************** RWStepBasic_RWProductCategory ******************/
@@ -4237,7 +4155,6 @@ class RWStepBasic_RWProductCategory {
 /**************************************************
 * class RWStepBasic_RWProductCategoryRelationship *
 **************************************************/
-%nodefaultctor RWStepBasic_RWProductCategoryRelationship;
 class RWStepBasic_RWProductCategoryRelationship {
 	public:
 		/****************** RWStepBasic_RWProductCategoryRelationship ******************/
@@ -4292,7 +4209,6 @@ class RWStepBasic_RWProductCategoryRelationship {
 /********************************************
 * class RWStepBasic_RWProductConceptContext *
 ********************************************/
-%nodefaultctor RWStepBasic_RWProductConceptContext;
 class RWStepBasic_RWProductConceptContext {
 	public:
 		/****************** RWStepBasic_RWProductConceptContext ******************/
@@ -4347,7 +4263,6 @@ class RWStepBasic_RWProductConceptContext {
 /*************************************
 * class RWStepBasic_RWProductContext *
 *************************************/
-%nodefaultctor RWStepBasic_RWProductContext;
 class RWStepBasic_RWProductContext {
 	public:
 		/****************** RWStepBasic_RWProductContext ******************/
@@ -4398,7 +4313,6 @@ class RWStepBasic_RWProductContext {
 /****************************************
 * class RWStepBasic_RWProductDefinition *
 ****************************************/
-%nodefaultctor RWStepBasic_RWProductDefinition;
 class RWStepBasic_RWProductDefinition {
 	public:
 		/****************** RWStepBasic_RWProductDefinition ******************/
@@ -4449,7 +4363,6 @@ class RWStepBasic_RWProductDefinition {
 /***********************************************
 * class RWStepBasic_RWProductDefinitionContext *
 ***********************************************/
-%nodefaultctor RWStepBasic_RWProductDefinitionContext;
 class RWStepBasic_RWProductDefinitionContext {
 	public:
 		/****************** RWStepBasic_RWProductDefinitionContext ******************/
@@ -4500,7 +4413,6 @@ class RWStepBasic_RWProductDefinitionContext {
 /***************************************************
 * class RWStepBasic_RWProductDefinitionEffectivity *
 ***************************************************/
-%nodefaultctor RWStepBasic_RWProductDefinitionEffectivity;
 class RWStepBasic_RWProductDefinitionEffectivity {
 	public:
 		/****************** RWStepBasic_RWProductDefinitionEffectivity ******************/
@@ -4551,7 +4463,6 @@ class RWStepBasic_RWProductDefinitionEffectivity {
 /*************************************************
 * class RWStepBasic_RWProductDefinitionFormation *
 *************************************************/
-%nodefaultctor RWStepBasic_RWProductDefinitionFormation;
 class RWStepBasic_RWProductDefinitionFormation {
 	public:
 		/****************** RWStepBasic_RWProductDefinitionFormation ******************/
@@ -4602,7 +4513,6 @@ class RWStepBasic_RWProductDefinitionFormation {
 /*************************************************************
 * class RWStepBasic_RWProductDefinitionFormationRelationship *
 *************************************************************/
-%nodefaultctor RWStepBasic_RWProductDefinitionFormationRelationship;
 class RWStepBasic_RWProductDefinitionFormationRelationship {
 	public:
 		/****************** RWStepBasic_RWProductDefinitionFormationRelationship ******************/
@@ -4657,7 +4567,6 @@ class RWStepBasic_RWProductDefinitionFormationRelationship {
 /********************************************************************
 * class RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource *
 ********************************************************************/
-%nodefaultctor RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource;
 class RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource {
 	public:
 		/****************** RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource ******************/
@@ -4708,7 +4617,6 @@ class RWStepBasic_RWProductDefinitionFormationWithSpecifiedSource {
 /*************************************************
 * class RWStepBasic_RWProductDefinitionReference *
 *************************************************/
-%nodefaultctor RWStepBasic_RWProductDefinitionReference;
 class RWStepBasic_RWProductDefinitionReference {
 	public:
 		/****************** RWStepBasic_RWProductDefinitionReference ******************/
@@ -4759,7 +4667,6 @@ class RWStepBasic_RWProductDefinitionReference {
 /************************************************************************
 * class RWStepBasic_RWProductDefinitionReferenceWithLocalRepresentation *
 ************************************************************************/
-%nodefaultctor RWStepBasic_RWProductDefinitionReferenceWithLocalRepresentation;
 class RWStepBasic_RWProductDefinitionReferenceWithLocalRepresentation {
 	public:
 		/****************** RWStepBasic_RWProductDefinitionReferenceWithLocalRepresentation ******************/
@@ -4810,7 +4717,6 @@ class RWStepBasic_RWProductDefinitionReferenceWithLocalRepresentation {
 /****************************************************
 * class RWStepBasic_RWProductDefinitionRelationship *
 ****************************************************/
-%nodefaultctor RWStepBasic_RWProductDefinitionRelationship;
 class RWStepBasic_RWProductDefinitionRelationship {
 	public:
 		/****************** RWStepBasic_RWProductDefinitionRelationship ******************/
@@ -4865,7 +4771,6 @@ class RWStepBasic_RWProductDefinitionRelationship {
 /***************************************************************
 * class RWStepBasic_RWProductDefinitionWithAssociatedDocuments *
 ***************************************************************/
-%nodefaultctor RWStepBasic_RWProductDefinitionWithAssociatedDocuments;
 class RWStepBasic_RWProductDefinitionWithAssociatedDocuments {
 	public:
 		/****************** RWStepBasic_RWProductDefinitionWithAssociatedDocuments ******************/
@@ -4916,7 +4821,6 @@ class RWStepBasic_RWProductDefinitionWithAssociatedDocuments {
 /****************************************************
 * class RWStepBasic_RWProductRelatedProductCategory *
 ****************************************************/
-%nodefaultctor RWStepBasic_RWProductRelatedProductCategory;
 class RWStepBasic_RWProductRelatedProductCategory {
 	public:
 		/****************** RWStepBasic_RWProductRelatedProductCategory ******************/
@@ -4967,7 +4871,6 @@ class RWStepBasic_RWProductRelatedProductCategory {
 /**********************************
 * class RWStepBasic_RWProductType *
 **********************************/
-%nodefaultctor RWStepBasic_RWProductType;
 class RWStepBasic_RWProductType {
 	public:
 		/****************** RWStepBasic_RWProductType ******************/
@@ -5018,7 +4921,6 @@ class RWStepBasic_RWProductType {
 /*******************************************
 * class RWStepBasic_RWRatioMeasureWithUnit *
 *******************************************/
-%nodefaultctor RWStepBasic_RWRatioMeasureWithUnit;
 class RWStepBasic_RWRatioMeasureWithUnit {
 	public:
 		/****************** RWStepBasic_RWRatioMeasureWithUnit ******************/
@@ -5069,7 +4971,6 @@ class RWStepBasic_RWRatioMeasureWithUnit {
 /**************************************
 * class RWStepBasic_RWRoleAssociation *
 **************************************/
-%nodefaultctor RWStepBasic_RWRoleAssociation;
 class RWStepBasic_RWRoleAssociation {
 	public:
 		/****************** RWStepBasic_RWRoleAssociation ******************/
@@ -5124,7 +5025,6 @@ class RWStepBasic_RWRoleAssociation {
 /*********************************************
 * class RWStepBasic_RWSecurityClassification *
 *********************************************/
-%nodefaultctor RWStepBasic_RWSecurityClassification;
 class RWStepBasic_RWSecurityClassification {
 	public:
 		/****************** RWStepBasic_RWSecurityClassification ******************/
@@ -5175,7 +5075,6 @@ class RWStepBasic_RWSecurityClassification {
 /**************************************************
 * class RWStepBasic_RWSecurityClassificationLevel *
 **************************************************/
-%nodefaultctor RWStepBasic_RWSecurityClassificationLevel;
 class RWStepBasic_RWSecurityClassificationLevel {
 	public:
 		/****************** RWStepBasic_RWSecurityClassificationLevel ******************/
@@ -5217,7 +5116,6 @@ class RWStepBasic_RWSecurityClassificationLevel {
 /*****************************
 * class RWStepBasic_RWSiUnit *
 *****************************/
-%nodefaultctor RWStepBasic_RWSiUnit;
 class RWStepBasic_RWSiUnit {
 	public:
 		/****************** DecodeName ******************/
@@ -5291,7 +5189,6 @@ class RWStepBasic_RWSiUnit {
 /****************************************
 * class RWStepBasic_RWSiUnitAndAreaUnit *
 ****************************************/
-%nodefaultctor RWStepBasic_RWSiUnitAndAreaUnit;
 class RWStepBasic_RWSiUnitAndAreaUnit {
 	public:
 		/****************** RWStepBasic_RWSiUnitAndAreaUnit ******************/
@@ -5333,7 +5230,6 @@ class RWStepBasic_RWSiUnitAndAreaUnit {
 /******************************************
 * class RWStepBasic_RWSiUnitAndLengthUnit *
 ******************************************/
-%nodefaultctor RWStepBasic_RWSiUnitAndLengthUnit;
 class RWStepBasic_RWSiUnitAndLengthUnit {
 	public:
 		/****************** RWStepBasic_RWSiUnitAndLengthUnit ******************/
@@ -5375,7 +5271,6 @@ class RWStepBasic_RWSiUnitAndLengthUnit {
 /****************************************
 * class RWStepBasic_RWSiUnitAndMassUnit *
 ****************************************/
-%nodefaultctor RWStepBasic_RWSiUnitAndMassUnit;
 class RWStepBasic_RWSiUnitAndMassUnit {
 	public:
 		/****************** RWStepBasic_RWSiUnitAndMassUnit ******************/
@@ -5417,7 +5312,6 @@ class RWStepBasic_RWSiUnitAndMassUnit {
 /**********************************************
 * class RWStepBasic_RWSiUnitAndPlaneAngleUnit *
 **********************************************/
-%nodefaultctor RWStepBasic_RWSiUnitAndPlaneAngleUnit;
 class RWStepBasic_RWSiUnitAndPlaneAngleUnit {
 	public:
 		/****************** RWStepBasic_RWSiUnitAndPlaneAngleUnit ******************/
@@ -5459,7 +5353,6 @@ class RWStepBasic_RWSiUnitAndPlaneAngleUnit {
 /*****************************************
 * class RWStepBasic_RWSiUnitAndRatioUnit *
 *****************************************/
-%nodefaultctor RWStepBasic_RWSiUnitAndRatioUnit;
 class RWStepBasic_RWSiUnitAndRatioUnit {
 	public:
 		/****************** RWStepBasic_RWSiUnitAndRatioUnit ******************/
@@ -5501,7 +5394,6 @@ class RWStepBasic_RWSiUnitAndRatioUnit {
 /**********************************************
 * class RWStepBasic_RWSiUnitAndSolidAngleUnit *
 **********************************************/
-%nodefaultctor RWStepBasic_RWSiUnitAndSolidAngleUnit;
 class RWStepBasic_RWSiUnitAndSolidAngleUnit {
 	public:
 		/****************** RWStepBasic_RWSiUnitAndSolidAngleUnit ******************/
@@ -5543,7 +5435,6 @@ class RWStepBasic_RWSiUnitAndSolidAngleUnit {
 /************************************************************
 * class RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit *
 ************************************************************/
-%nodefaultctor RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit;
 class RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit {
 	public:
 		/****************** RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit ******************/
@@ -5585,7 +5476,6 @@ class RWStepBasic_RWSiUnitAndThermodynamicTemperatureUnit {
 /****************************************
 * class RWStepBasic_RWSiUnitAndTimeUnit *
 ****************************************/
-%nodefaultctor RWStepBasic_RWSiUnitAndTimeUnit;
 class RWStepBasic_RWSiUnitAndTimeUnit {
 	public:
 		/****************** RWStepBasic_RWSiUnitAndTimeUnit ******************/
@@ -5627,7 +5517,6 @@ class RWStepBasic_RWSiUnitAndTimeUnit {
 /******************************************
 * class RWStepBasic_RWSiUnitAndVolumeUnit *
 ******************************************/
-%nodefaultctor RWStepBasic_RWSiUnitAndVolumeUnit;
 class RWStepBasic_RWSiUnitAndVolumeUnit {
 	public:
 		/****************** RWStepBasic_RWSiUnitAndVolumeUnit ******************/
@@ -5669,7 +5558,6 @@ class RWStepBasic_RWSiUnitAndVolumeUnit {
 /************************************************
 * class RWStepBasic_RWSolidAngleMeasureWithUnit *
 ************************************************/
-%nodefaultctor RWStepBasic_RWSolidAngleMeasureWithUnit;
 class RWStepBasic_RWSolidAngleMeasureWithUnit {
 	public:
 		/****************** RWStepBasic_RWSolidAngleMeasureWithUnit ******************/
@@ -5720,7 +5608,6 @@ class RWStepBasic_RWSolidAngleMeasureWithUnit {
 /*************************************
 * class RWStepBasic_RWSolidAngleUnit *
 *************************************/
-%nodefaultctor RWStepBasic_RWSolidAngleUnit;
 class RWStepBasic_RWSolidAngleUnit {
 	public:
 		/****************** RWStepBasic_RWSolidAngleUnit ******************/
@@ -5771,7 +5658,6 @@ class RWStepBasic_RWSolidAngleUnit {
 /***************************************************
 * class RWStepBasic_RWThermodynamicTemperatureUnit *
 ***************************************************/
-%nodefaultctor RWStepBasic_RWThermodynamicTemperatureUnit;
 class RWStepBasic_RWThermodynamicTemperatureUnit {
 	public:
 		/****************** RWStepBasic_RWThermodynamicTemperatureUnit ******************/
@@ -5826,7 +5712,6 @@ class RWStepBasic_RWThermodynamicTemperatureUnit {
 /*************************************************
 * class RWStepBasic_RWUncertaintyMeasureWithUnit *
 *************************************************/
-%nodefaultctor RWStepBasic_RWUncertaintyMeasureWithUnit;
 class RWStepBasic_RWUncertaintyMeasureWithUnit {
 	public:
 		/****************** RWStepBasic_RWUncertaintyMeasureWithUnit ******************/
@@ -5877,7 +5762,6 @@ class RWStepBasic_RWUncertaintyMeasureWithUnit {
 /*********************************************
 * class RWStepBasic_RWVersionedActionRequest *
 *********************************************/
-%nodefaultctor RWStepBasic_RWVersionedActionRequest;
 class RWStepBasic_RWVersionedActionRequest {
 	public:
 		/****************** RWStepBasic_RWVersionedActionRequest ******************/
@@ -5932,7 +5816,6 @@ class RWStepBasic_RWVersionedActionRequest {
 /*******************************************
 * class RWStepBasic_RWWeekOfYearAndDayDate *
 *******************************************/
-%nodefaultctor RWStepBasic_RWWeekOfYearAndDayDate;
 class RWStepBasic_RWWeekOfYearAndDayDate {
 	public:
 		/****************** RWStepBasic_RWWeekOfYearAndDayDate ******************/

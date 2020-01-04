@@ -186,7 +186,6 @@ class math {
 /******************
 * class math_BFGS *
 ******************/
-%nodefaultctor math_BFGS;
 class math_BFGS {
 	public:
 
@@ -297,7 +296,6 @@ class math_BFGS {
 /**************************
 * class math_BissecNewton *
 **************************/
-%nodefaultctor math_BissecNewton;
 class math_BissecNewton {
 	public:
 		/****************** Derivative ******************/
@@ -374,7 +372,6 @@ class math_BissecNewton {
 /****************************
 * class math_BracketMinimum *
 ****************************/
-%nodefaultctor math_BracketMinimum;
 class math_BracketMinimum {
 	public:
 
@@ -513,7 +510,6 @@ class math_BracketMinimum {
 /***************************
 * class math_BracketedRoot *
 ***************************/
-%nodefaultctor math_BracketedRoot;
 class math_BracketedRoot {
 	public:
 
@@ -578,7 +574,6 @@ class math_BracketedRoot {
 /**************************
 * class math_BrentMinimum *
 **************************/
-%nodefaultctor math_BrentMinimum;
 class math_BrentMinimum {
 	public:
 
@@ -673,7 +668,6 @@ class math_BrentMinimum {
 /******************************
 * class math_BullardGenerator *
 ******************************/
-%nodefaultctor math_BullardGenerator;
 class math_BullardGenerator {
 	public:
 		/****************** NextInt ******************/
@@ -716,7 +710,6 @@ class math_BullardGenerator {
 /******************************************
 * class math_ComputeGaussPointsAndWeights *
 ******************************************/
-%nodefaultctor math_ComputeGaussPointsAndWeights;
 class math_ComputeGaussPointsAndWeights {
 	public:
 		/****************** IsDone ******************/
@@ -753,7 +746,6 @@ class math_ComputeGaussPointsAndWeights {
 /********************************************
 * class math_ComputeKronrodPointsAndWeights *
 ********************************************/
-%nodefaultctor math_ComputeKronrodPointsAndWeights;
 class math_ComputeKronrodPointsAndWeights {
 	public:
 		/****************** IsDone ******************/
@@ -790,7 +782,6 @@ class math_ComputeKronrodPointsAndWeights {
 /*******************
 * class math_Crout *
 *******************/
-%nodefaultctor math_Crout;
 class math_Crout {
 	public:
 		/****************** Determinant ******************/
@@ -859,7 +850,6 @@ class math_Crout {
 /***********************************
 * class math_DirectPolynomialRoots *
 ***********************************/
-%nodefaultctor math_DirectPolynomialRoots;
 class math_DirectPolynomialRoots {
 	public:
 
@@ -960,7 +950,6 @@ class math_DirectPolynomialRoots {
 /***********************
 * class math_DoubleTab *
 ***********************/
-%nodefaultctor math_DoubleTab;
 class math_DoubleTab {
 	public:
 		/****************** Copy ******************/
@@ -1056,7 +1045,6 @@ class math_DoubleTab {
 /*********************************
 * class math_EigenValuesSearcher *
 *********************************/
-%nodefaultctor math_EigenValuesSearcher;
 class math_EigenValuesSearcher {
 	public:
 		/****************** Dimension ******************/
@@ -1108,7 +1096,6 @@ class math_EigenValuesSearcher {
 /******************
 * class math_FRPR *
 ******************/
-%nodefaultctor math_FRPR;
 class math_FRPR {
 	public:
 
@@ -1240,7 +1227,6 @@ class math_Function {
 /******************************
 * class math_FunctionAllRoots *
 ******************************/
-%nodefaultctor math_FunctionAllRoots;
 class math_FunctionAllRoots {
 	public:
 
@@ -1337,7 +1323,6 @@ class math_FunctionAllRoots {
 /**************************
 * class math_FunctionRoot *
 **************************/
-%nodefaultctor math_FunctionRoot;
 class math_FunctionRoot {
 	public:
 		/****************** Derivative ******************/
@@ -1422,7 +1407,6 @@ class math_FunctionRoot {
 /***************************
 * class math_FunctionRoots *
 ***************************/
-%nodefaultctor math_FunctionRoots;
 class math_FunctionRoots {
 	public:
 
@@ -1501,7 +1485,6 @@ class math_FunctionRoots {
 /****************************
 * class math_FunctionSample *
 ****************************/
-%nodefaultctor math_FunctionSample;
 class math_FunctionSample {
 	public:
 		/****************** Bounds ******************/
@@ -1594,7 +1577,6 @@ class math_FunctionSet {
 /*****************************
 * class math_FunctionSetRoot *
 *****************************/
-%nodefaultctor math_FunctionSetRoot;
 class math_FunctionSetRoot {
 	public:
 		/****************** Derivative ******************/
@@ -1748,7 +1730,6 @@ class math_FunctionSetRoot {
 /*******************
 * class math_Gauss *
 *******************/
-%nodefaultctor math_Gauss;
 class math_Gauss {
 	public:
 		/****************** Determinant ******************/
@@ -1821,7 +1802,6 @@ class math_Gauss {
 /******************************
 * class math_GaussLeastSquare *
 ******************************/
-%nodefaultctor math_GaussLeastSquare;
 class math_GaussLeastSquare {
 	public:
 
@@ -1870,7 +1850,6 @@ class math_GaussLeastSquare {
 /**************************************
 * class math_GaussMultipleIntegration *
 **************************************/
-%nodefaultctor math_GaussMultipleIntegration;
 class math_GaussMultipleIntegration {
 	public:
 
@@ -1919,7 +1898,6 @@ class math_GaussMultipleIntegration {
 /*********************************
 * class math_GaussSetIntegration *
 *********************************/
-%nodefaultctor math_GaussSetIntegration;
 class math_GaussSetIntegration {
 	public:
 
@@ -1968,7 +1946,6 @@ class math_GaussSetIntegration {
 /************************************
 * class math_GaussSingleIntegration *
 ************************************/
-%nodefaultctor math_GaussSingleIntegration;
 class math_GaussSingleIntegration {
 	public:
 
@@ -2038,7 +2015,6 @@ class math_GaussSingleIntegration {
 /************************
 * class math_GlobOptMin *
 ************************/
-%nodefaultctor math_GlobOptMin;
 class math_GlobOptMin {
 	public:
 		class NCollection_CellFilter_Inspector {};
@@ -2189,7 +2165,6 @@ class math_GlobOptMin {
 /*************************
 * class math_Householder *
 *************************/
-%nodefaultctor math_Householder;
 class math_Householder {
 	public:
 		/****************** AllValues ******************/
@@ -2278,7 +2253,6 @@ class math_Householder {
 /***************************
 * class math_IntegerVector *
 ***************************/
-%nodefaultctor math_IntegerVector;
 class math_IntegerVector {
 	public:
 		/****************** Add ******************/
@@ -2624,7 +2598,6 @@ class math_IntegerVector {
 /********************
 * class math_Jacobi *
 ********************/
-%nodefaultctor math_Jacobi;
 class math_Jacobi {
 	public:
 
@@ -2691,7 +2664,6 @@ class math_Jacobi {
 /**************************************
 * class math_KronrodSingleIntegration *
 **************************************/
-%nodefaultctor math_KronrodSingleIntegration;
 class math_KronrodSingleIntegration {
 	public:
 		/****************** AbsolutError ******************/
@@ -2835,7 +2807,6 @@ class math_KronrodSingleIntegration {
 /********************
 * class math_Matrix *
 ********************/
-%nodefaultctor math_Matrix;
 class math_Matrix {
 	public:
 		/****************** Add ******************/
@@ -3393,7 +3364,6 @@ class math_MultipleVarFunction {
 /********************************
 * class math_NewtonFunctionRoot *
 ********************************/
-%nodefaultctor math_NewtonFunctionRoot;
 class math_NewtonFunctionRoot {
 	public:
 		/****************** Derivative ******************/
@@ -3508,7 +3478,6 @@ class math_NewtonFunctionRoot {
 /***********************************
 * class math_NewtonFunctionSetRoot *
 ***********************************/
-%nodefaultctor math_NewtonFunctionSetRoot;
 class math_NewtonFunctionSetRoot {
 	public:
 		/****************** Derivative ******************/
@@ -3651,7 +3620,6 @@ class math_NewtonFunctionSetRoot {
 /***************************
 * class math_NewtonMinimum *
 ***************************/
-%nodefaultctor math_NewtonMinimum;
 class math_NewtonMinimum {
 	public:
 
@@ -3768,7 +3736,6 @@ class math_NewtonMinimum {
 /*****************
 * class math_PSO *
 *****************/
-%nodefaultctor math_PSO;
 class math_PSO {
 	public:
 		/****************** Perform ******************/
@@ -3831,7 +3798,6 @@ class math_PSO {
 /******************************
 * class math_PSOParticlesPool *
 ******************************/
-%nodefaultctor math_PSOParticlesPool;
 class math_PSOParticlesPool {
 	public:
 		/****************** GetBestParticle ******************/
@@ -3872,7 +3838,6 @@ class math_PSOParticlesPool {
 /********************
 * class math_Powell *
 ********************/
-%nodefaultctor math_Powell;
 class math_Powell {
 	public:
 
@@ -3961,7 +3926,6 @@ class math_Powell {
 /*****************
 * class math_SVD *
 *****************/
-%nodefaultctor math_SVD;
 class math_SVD {
 	public:
 
@@ -4020,7 +3984,6 @@ class math_SVD {
 /****************************************
 * class math_TrigonometricFunctionRoots *
 ****************************************/
-%nodefaultctor math_TrigonometricFunctionRoots;
 class math_TrigonometricFunctionRoots {
 	public:
 
@@ -4119,7 +4082,6 @@ class math_TrigonometricFunctionRoots {
 /*******************
 * class math_Uzawa *
 *******************/
-%nodefaultctor math_Uzawa;
 class math_Uzawa {
 	public:
 		/****************** Duale ******************/
@@ -4226,7 +4188,6 @@ class math_Uzawa {
 /****************************
 * class math_ValueAndWeight *
 ****************************/
-%nodefaultctor math_ValueAndWeight;
 class math_ValueAndWeight {
 	public:
 		/****************** Value ******************/
@@ -4265,7 +4226,6 @@ class math_ValueAndWeight {
 /********************
 * class math_Vector *
 ********************/
-%nodefaultctor math_Vector;
 class math_Vector {
 	public:
 		/****************** Add ******************/
@@ -4954,7 +4914,6 @@ class math_MultipleVarFunctionWithHessian : public math_MultipleVarFunctionWithG
 /*******************************************
 * class math_TrigonometricEquationFunction *
 *******************************************/
-%nodefaultctor math_TrigonometricEquationFunction;
 class math_TrigonometricEquationFunction : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/

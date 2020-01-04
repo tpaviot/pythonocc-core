@@ -71,7 +71,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dlprop.html"
 /******************************
 * class Geom2dLProp_CLProps2d *
 ******************************/
-%nodefaultctor Geom2dLProp_CLProps2d;
 class Geom2dLProp_CLProps2d {
 	public:
 		/****************** CentreOfCurvature ******************/
@@ -198,7 +197,6 @@ class Geom2dLProp_CLProps2d {
 /********************************
 * class Geom2dLProp_CurAndInf2d *
 ********************************/
-%nodefaultctor Geom2dLProp_CurAndInf2d;
 class Geom2dLProp_CurAndInf2d : public LProp_CurAndInf {
 	public:
 		/****************** Geom2dLProp_CurAndInf2d ******************/
@@ -347,7 +345,6 @@ class Geom2dLProp_Curve2dTool {
 /*******************************
 * class Geom2dLProp_FuncCurExt *
 *******************************/
-%nodefaultctor Geom2dLProp_FuncCurExt;
 class Geom2dLProp_FuncCurExt : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -411,7 +408,6 @@ class Geom2dLProp_FuncCurExt : public math_FunctionWithDerivative {
 /*******************************
 * class Geom2dLProp_FuncCurNul *
 *******************************/
-%nodefaultctor Geom2dLProp_FuncCurNul;
 class Geom2dLProp_FuncCurNul : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -465,7 +461,6 @@ class Geom2dLProp_FuncCurNul : public math_FunctionWithDerivative {
 /************************************
 * class Geom2dLProp_NumericCurInf2d *
 ************************************/
-%nodefaultctor Geom2dLProp_NumericCurInf2d;
 class Geom2dLProp_NumericCurInf2d {
 	public:
 		/****************** Geom2dLProp_NumericCurInf2d ******************/

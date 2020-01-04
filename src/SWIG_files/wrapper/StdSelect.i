@@ -172,7 +172,6 @@ class StdSelect {
 /****************************
 * class StdSelect_BRepOwner *
 ****************************/
-%nodefaultctor StdSelect_BRepOwner;
 class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** Clear ******************/
@@ -467,7 +466,6 @@ class StdSelect_BRepSelectionTool {
 /*****************************
 * class StdSelect_EdgeFilter *
 *****************************/
-%nodefaultctor StdSelect_EdgeFilter;
 class StdSelect_EdgeFilter : public SelectMgr_Filter {
 	public:
 		/****************** ActsOn ******************/
@@ -520,7 +518,6 @@ class StdSelect_EdgeFilter : public SelectMgr_Filter {
 /*****************************
 * class StdSelect_FaceFilter *
 *****************************/
-%nodefaultctor StdSelect_FaceFilter;
 class StdSelect_FaceFilter : public SelectMgr_Filter {
 	public:
 		/****************** ActsOn ******************/
@@ -573,7 +570,6 @@ class StdSelect_FaceFilter : public SelectMgr_Filter {
 /**********************
 * class StdSelect_Prs *
 **********************/
-%nodefaultctor StdSelect_Prs;
 class StdSelect_Prs : public Prs3d_Presentation {
 	public:
 		/****************** Manager ******************/
@@ -602,7 +598,6 @@ class StdSelect_Prs : public Prs3d_Presentation {
 /************************
 * class StdSelect_Shape *
 ************************/
-%nodefaultctor StdSelect_Shape;
 class StdSelect_Shape : public PrsMgr_PresentableObject {
 	public:
 		/****************** Compute ******************/
@@ -663,7 +658,6 @@ class StdSelect_Shape : public PrsMgr_PresentableObject {
 /**********************************
 * class StdSelect_ShapeTypeFilter *
 **********************************/
-%nodefaultctor StdSelect_ShapeTypeFilter;
 class StdSelect_ShapeTypeFilter : public SelectMgr_Filter {
 	public:
 		/****************** ActsOn ******************/
@@ -708,7 +702,6 @@ class StdSelect_ShapeTypeFilter : public SelectMgr_Filter {
 /***********************************
 * class StdSelect_ViewerSelector3d *
 ***********************************/
-%nodefaultctor StdSelect_ViewerSelector3d;
 class StdSelect_ViewerSelector3d : public SelectMgr_ViewerSelector {
 	public:
 		/****************** ClearSensitive ******************/

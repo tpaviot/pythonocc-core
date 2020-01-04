@@ -207,7 +207,6 @@ class TDataStd {
 /*****************************
 * class TDataStd_AsciiString *
 *****************************/
-%nodefaultctor TDataStd_AsciiString;
 class TDataStd_AsciiString : public TDF_Attribute {
 	public:
 
@@ -322,7 +321,6 @@ class TDataStd_AsciiString : public TDF_Attribute {
 /******************************
 * class TDataStd_BooleanArray *
 ******************************/
-%nodefaultctor TDataStd_BooleanArray;
 class TDataStd_BooleanArray : public TDF_Attribute {
 	public:
 
@@ -482,7 +480,6 @@ class TDataStd_BooleanArray : public TDF_Attribute {
 /*****************************
 * class TDataStd_BooleanList *
 *****************************/
-%nodefaultctor TDataStd_BooleanList;
 class TDataStd_BooleanList : public TDF_Attribute {
 	public:
 		/****************** Append ******************/
@@ -649,7 +646,6 @@ class TDataStd_BooleanList : public TDF_Attribute {
 /***************************
 * class TDataStd_ByteArray *
 ***************************/
-%nodefaultctor TDataStd_ByteArray;
 class TDataStd_ByteArray : public TDF_Attribute {
 	public:
 		/****************** ChangeArray ******************/
@@ -837,7 +833,6 @@ class TDataStd_ByteArray : public TDF_Attribute {
 /***********************************
 * class TDataStd_ChildNodeIterator *
 ***********************************/
-%nodefaultctor TDataStd_ChildNodeIterator;
 class TDataStd_ChildNodeIterator {
 	public:
 		/****************** Initialize ******************/
@@ -902,7 +897,6 @@ class TDataStd_ChildNodeIterator {
 /*************************
 * class TDataStd_Comment *
 *************************/
-%nodefaultctor TDataStd_Comment;
 class TDataStd_Comment : public TDF_Attribute {
 	public:
 		/****************** AfterRetrieval ******************/
@@ -1002,7 +996,6 @@ class TDataStd_Comment : public TDF_Attribute {
 /*************************
 * class TDataStd_Current *
 *************************/
-%nodefaultctor TDataStd_Current;
 class TDataStd_Current : public TDF_Attribute {
 	public:
 
@@ -1100,7 +1093,6 @@ class TDataStd_Current : public TDF_Attribute {
 /************************************************
 * class TDataStd_DeltaOnModificationOfByteArray *
 ************************************************/
-%nodefaultctor TDataStd_DeltaOnModificationOfByteArray;
 class TDataStd_DeltaOnModificationOfByteArray : public TDF_DeltaOnModification {
 	public:
 		/****************** Apply ******************/
@@ -1131,7 +1123,6 @@ class TDataStd_DeltaOnModificationOfByteArray : public TDF_DeltaOnModification {
 /*****************************************************
 * class TDataStd_DeltaOnModificationOfExtStringArray *
 *****************************************************/
-%nodefaultctor TDataStd_DeltaOnModificationOfExtStringArray;
 class TDataStd_DeltaOnModificationOfExtStringArray : public TDF_DeltaOnModification {
 	public:
 		/****************** Apply ******************/
@@ -1162,7 +1153,6 @@ class TDataStd_DeltaOnModificationOfExtStringArray : public TDF_DeltaOnModificat
 /***********************************************
 * class TDataStd_DeltaOnModificationOfIntArray *
 ***********************************************/
-%nodefaultctor TDataStd_DeltaOnModificationOfIntArray;
 class TDataStd_DeltaOnModificationOfIntArray : public TDF_DeltaOnModification {
 	public:
 		/****************** Apply ******************/
@@ -1193,7 +1183,6 @@ class TDataStd_DeltaOnModificationOfIntArray : public TDF_DeltaOnModification {
 /***************************************************
 * class TDataStd_DeltaOnModificationOfIntPackedMap *
 ***************************************************/
-%nodefaultctor TDataStd_DeltaOnModificationOfIntPackedMap;
 class TDataStd_DeltaOnModificationOfIntPackedMap : public TDF_DeltaOnModification {
 	public:
 		/****************** Apply ******************/
@@ -1224,7 +1213,6 @@ class TDataStd_DeltaOnModificationOfIntPackedMap : public TDF_DeltaOnModificatio
 /************************************************
 * class TDataStd_DeltaOnModificationOfRealArray *
 ************************************************/
-%nodefaultctor TDataStd_DeltaOnModificationOfRealArray;
 class TDataStd_DeltaOnModificationOfRealArray : public TDF_DeltaOnModification {
 	public:
 		/****************** Apply ******************/
@@ -1255,7 +1243,6 @@ class TDataStd_DeltaOnModificationOfRealArray : public TDF_DeltaOnModification {
 /***************************
 * class TDataStd_Directory *
 ***************************/
-%nodefaultctor TDataStd_Directory;
 class TDataStd_Directory : public TDF_Attribute {
 	public:
 		/****************** AddDirectory ******************/
@@ -1358,7 +1345,6 @@ class TDataStd_Directory : public TDF_Attribute {
 /****************************
 * class TDataStd_Expression *
 ****************************/
-%nodefaultctor TDataStd_Expression;
 class TDataStd_Expression : public TDF_Attribute {
 	public:
 
@@ -1451,7 +1437,6 @@ class TDataStd_Expression : public TDF_Attribute {
 /********************************
 * class TDataStd_ExtStringArray *
 ********************************/
-%nodefaultctor TDataStd_ExtStringArray;
 class TDataStd_ExtStringArray : public TDF_Attribute {
 	public:
 		/****************** Array ******************/
@@ -1640,7 +1625,6 @@ class TDataStd_ExtStringArray : public TDF_Attribute {
 /*******************************
 * class TDataStd_ExtStringList *
 *******************************/
-%nodefaultctor TDataStd_ExtStringList;
 class TDataStd_ExtStringList : public TDF_Attribute {
 	public:
 		/****************** Append ******************/
@@ -1834,7 +1818,6 @@ class TDataStd_ExtStringList : public TDF_Attribute {
 /**************************************
 * class TDataStd_HDataMapOfStringByte *
 **************************************/
-%nodefaultctor TDataStd_HDataMapOfStringByte;
 class TDataStd_HDataMapOfStringByte : public Standard_Transient {
 	public:
 		/****************** ChangeMap ******************/
@@ -1875,7 +1858,6 @@ class TDataStd_HDataMapOfStringByte : public Standard_Transient {
 /**************************************************
 * class TDataStd_HDataMapOfStringHArray1OfInteger *
 **************************************************/
-%nodefaultctor TDataStd_HDataMapOfStringHArray1OfInteger;
 class TDataStd_HDataMapOfStringHArray1OfInteger : public Standard_Transient {
 	public:
 		/****************** ChangeMap ******************/
@@ -1916,7 +1898,6 @@ class TDataStd_HDataMapOfStringHArray1OfInteger : public Standard_Transient {
 /***********************************************
 * class TDataStd_HDataMapOfStringHArray1OfReal *
 ***********************************************/
-%nodefaultctor TDataStd_HDataMapOfStringHArray1OfReal;
 class TDataStd_HDataMapOfStringHArray1OfReal : public Standard_Transient {
 	public:
 		/****************** ChangeMap ******************/
@@ -1957,7 +1938,6 @@ class TDataStd_HDataMapOfStringHArray1OfReal : public Standard_Transient {
 /*****************************************
 * class TDataStd_HDataMapOfStringInteger *
 *****************************************/
-%nodefaultctor TDataStd_HDataMapOfStringInteger;
 class TDataStd_HDataMapOfStringInteger : public Standard_Transient {
 	public:
 		/****************** ChangeMap ******************/
@@ -1998,7 +1978,6 @@ class TDataStd_HDataMapOfStringInteger : public Standard_Transient {
 /**************************************
 * class TDataStd_HDataMapOfStringReal *
 **************************************/
-%nodefaultctor TDataStd_HDataMapOfStringReal;
 class TDataStd_HDataMapOfStringReal : public Standard_Transient {
 	public:
 		/****************** ChangeMap ******************/
@@ -2039,7 +2018,6 @@ class TDataStd_HDataMapOfStringReal : public Standard_Transient {
 /****************************************
 * class TDataStd_HDataMapOfStringString *
 ****************************************/
-%nodefaultctor TDataStd_HDataMapOfStringString;
 class TDataStd_HDataMapOfStringString : public Standard_Transient {
 	public:
 		/****************** ChangeMap ******************/
@@ -2080,7 +2058,6 @@ class TDataStd_HDataMapOfStringString : public Standard_Transient {
 /******************************
 * class TDataStd_IntPackedMap *
 ******************************/
-%nodefaultctor TDataStd_IntPackedMap;
 class TDataStd_IntPackedMap : public TDF_Attribute {
 	public:
 		/****************** Add ******************/
@@ -2233,7 +2210,6 @@ class TDataStd_IntPackedMap : public TDF_Attribute {
 /*************************
 * class TDataStd_Integer *
 *************************/
-%nodefaultctor TDataStd_Integer;
 class TDataStd_Integer : public TDF_Attribute {
 	public:
 
@@ -2351,7 +2327,6 @@ class TDataStd_Integer : public TDF_Attribute {
 /******************************
 * class TDataStd_IntegerArray *
 ******************************/
-%nodefaultctor TDataStd_IntegerArray;
 class TDataStd_IntegerArray : public TDF_Attribute {
 	public:
 		/****************** Array ******************/
@@ -2541,7 +2516,6 @@ class TDataStd_IntegerArray : public TDF_Attribute {
 /*****************************
 * class TDataStd_IntegerList *
 *****************************/
-%nodefaultctor TDataStd_IntegerList;
 class TDataStd_IntegerList : public TDF_Attribute {
 	public:
 		/****************** Append ******************/
@@ -2735,7 +2709,6 @@ class TDataStd_IntegerList : public TDF_Attribute {
 /**********************
 * class TDataStd_Name *
 **********************/
-%nodefaultctor TDataStd_Name;
 class TDataStd_Name : public TDF_Attribute {
 	public:
 
@@ -2847,7 +2820,6 @@ class TDataStd_Name : public TDF_Attribute {
 /***************************
 * class TDataStd_NamedData *
 ***************************/
-%nodefaultctor TDataStd_NamedData;
 class TDataStd_NamedData : public TDF_Attribute {
 	public:
 		/****************** ChangeArraysOfIntegers ******************/
@@ -3193,7 +3165,6 @@ class TDataStd_NamedData : public TDF_Attribute {
 /**************************
 * class TDataStd_NoteBook *
 **************************/
-%nodefaultctor TDataStd_NoteBook;
 class TDataStd_NoteBook : public TDF_Attribute {
 	public:
 		/****************** Append ******************/
@@ -3293,7 +3264,6 @@ class TDataStd_NoteBook : public TDF_Attribute {
 /**********************
 * class TDataStd_Real *
 **********************/
-%nodefaultctor TDataStd_Real;
 class TDataStd_Real : public TDF_Attribute {
 	public:
 
@@ -3425,7 +3395,6 @@ class TDataStd_Real : public TDF_Attribute {
 /***************************
 * class TDataStd_RealArray *
 ***************************/
-%nodefaultctor TDataStd_RealArray;
 class TDataStd_RealArray : public TDF_Attribute {
 	public:
 		/****************** Array ******************/
@@ -3615,7 +3584,6 @@ class TDataStd_RealArray : public TDF_Attribute {
 /**************************
 * class TDataStd_RealList *
 **************************/
-%nodefaultctor TDataStd_RealList;
 class TDataStd_RealList : public TDF_Attribute {
 	public:
 		/****************** Append ******************/
@@ -3809,7 +3777,6 @@ class TDataStd_RealList : public TDF_Attribute {
 /********************************
 * class TDataStd_ReferenceArray *
 ********************************/
-%nodefaultctor TDataStd_ReferenceArray;
 class TDataStd_ReferenceArray : public TDF_Attribute {
 	public:
 
@@ -3978,7 +3945,6 @@ class TDataStd_ReferenceArray : public TDF_Attribute {
 /*******************************
 * class TDataStd_ReferenceList *
 *******************************/
-%nodefaultctor TDataStd_ReferenceList;
 class TDataStd_ReferenceList : public TDF_Attribute {
 	public:
 		/****************** Append ******************/
@@ -4179,7 +4145,6 @@ class TDataStd_ReferenceList : public TDF_Attribute {
 /**************************
 * class TDataStd_Relation *
 **************************/
-%nodefaultctor TDataStd_Relation;
 class TDataStd_Relation : public TDF_Attribute {
 	public:
 
@@ -4272,7 +4237,6 @@ class TDataStd_Relation : public TDF_Attribute {
 /**********************
 * class TDataStd_Tick *
 **********************/
-%nodefaultctor TDataStd_Tick;
 class TDataStd_Tick : public TDF_Attribute {
 	public:
 
@@ -4342,7 +4306,6 @@ class TDataStd_Tick : public TDF_Attribute {
 /**************************
 * class TDataStd_TreeNode *
 **************************/
-%nodefaultctor TDataStd_TreeNode;
 class TDataStd_TreeNode : public TDF_Attribute {
 	public:
 		/****************** AfterAddition ******************/
@@ -4683,7 +4646,6 @@ class TDataStd_TreeNode : public TDF_Attribute {
 /****************************
 * class TDataStd_UAttribute *
 ****************************/
-%nodefaultctor TDataStd_UAttribute;
 class TDataStd_UAttribute : public TDF_Attribute {
 	public:
 
@@ -4763,7 +4725,6 @@ class TDataStd_UAttribute : public TDF_Attribute {
 /**************************
 * class TDataStd_Variable *
 **************************/
-%nodefaultctor TDataStd_Variable;
 class TDataStd_Variable : public TDF_Attribute {
 	public:
 		/****************** Assign ******************/

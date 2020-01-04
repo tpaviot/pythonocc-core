@@ -88,7 +88,6 @@ typedef NCollection_DataMap <TopoDS_Shape , MAT_SequenceOfBasicElt , TopTools_Sh
 /*********************************
 * class BRepMAT2d_BisectingLocus *
 *********************************/
-%nodefaultctor BRepMAT2d_BisectingLocus;
 class BRepMAT2d_BisectingLocus {
 	public:
 		/****************** BRepMAT2d_BisectingLocus ******************/
@@ -196,7 +195,6 @@ class BRepMAT2d_BisectingLocus {
 /***************************
 * class BRepMAT2d_Explorer *
 ***************************/
-%nodefaultctor BRepMAT2d_Explorer;
 class BRepMAT2d_Explorer {
 	public:
 		/****************** BRepMAT2d_Explorer ******************/
@@ -308,7 +306,6 @@ class BRepMAT2d_Explorer {
 /*******************************
 * class BRepMAT2d_LinkTopoBilo *
 *******************************/
-%nodefaultctor BRepMAT2d_LinkTopoBilo;
 class BRepMAT2d_LinkTopoBilo {
 	public:
 		/****************** BRepMAT2d_LinkTopoBilo ******************/

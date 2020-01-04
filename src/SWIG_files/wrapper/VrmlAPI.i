@@ -123,7 +123,6 @@ class VrmlAPI {
 /***********************
 * class VrmlAPI_Writer *
 ***********************/
-%nodefaultctor VrmlAPI_Writer;
 class VrmlAPI_Writer {
 	public:
 		/****************** Drawer ******************/

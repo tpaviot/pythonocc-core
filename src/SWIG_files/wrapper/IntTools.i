@@ -321,7 +321,6 @@ class IntTools {
 /*********************************
 * class IntTools_BaseRangeSample *
 *********************************/
-%nodefaultctor IntTools_BaseRangeSample;
 class IntTools_BaseRangeSample {
 	public:
 		/****************** GetDepth ******************/
@@ -360,7 +359,6 @@ class IntTools_BaseRangeSample {
 /*************************************
 * class IntTools_BeanFaceIntersector *
 *************************************/
-%nodefaultctor IntTools_BeanFaceIntersector;
 class IntTools_BeanFaceIntersector {
 	public:
 		/****************** Context ******************/
@@ -548,7 +546,6 @@ class IntTools_BeanFaceIntersector {
 /***************************
 * class IntTools_CommonPrt *
 ***************************/
-%nodefaultctor IntTools_CommonPrt;
 class IntTools_CommonPrt {
 	public:
 		/****************** AllNullFlag ******************/
@@ -767,7 +764,6 @@ class IntTools_CommonPrt {
 /*************************
 * class IntTools_Context *
 *************************/
-%nodefaultctor IntTools_Context;
 class IntTools_Context : public Standard_Transient {
 	public:
 		/****************** BndBox ******************/
@@ -1103,7 +1099,6 @@ class IntTools_Context : public Standard_Transient {
 /***********************
 * class IntTools_Curve *
 ***********************/
-%nodefaultctor IntTools_Curve;
 class IntTools_Curve {
 	public:
 		/****************** Bounds ******************/
@@ -1258,7 +1253,6 @@ class IntTools_Curve {
 /****************************************
 * class IntTools_CurveRangeLocalizeData *
 ****************************************/
-%nodefaultctor IntTools_CurveRangeLocalizeData;
 class IntTools_CurveRangeLocalizeData {
 	public:
 		/****************** AddBox ******************/
@@ -1365,7 +1359,6 @@ class IntTools_CurveRangeSampleMapHasher {
 /**************************
 * class IntTools_EdgeEdge *
 **************************/
-%nodefaultctor IntTools_EdgeEdge;
 class IntTools_EdgeEdge {
 	public:
 		/****************** CommonParts ******************/
@@ -1536,7 +1529,6 @@ class IntTools_EdgeEdge {
 /**************************
 * class IntTools_EdgeFace *
 **************************/
-%nodefaultctor IntTools_EdgeFace;
 class IntTools_EdgeFace {
 	public:
 		/****************** CommonParts ******************/
@@ -1675,7 +1667,6 @@ class IntTools_EdgeFace {
 /**************************
 * class IntTools_FClass2d *
 **************************/
-%nodefaultctor IntTools_FClass2d;
 class IntTools_FClass2d {
 	public:
 		/****************** Destroy ******************/
@@ -1755,7 +1746,6 @@ class IntTools_FClass2d {
 /**************************
 * class IntTools_FaceFace *
 **************************/
-%nodefaultctor IntTools_FaceFace;
 class IntTools_FaceFace {
 	public:
 		/****************** Context ******************/
@@ -1879,7 +1869,6 @@ class IntTools_FaceFace {
 /********************************
 * class IntTools_MarkedRangeSet *
 ********************************/
-%nodefaultctor IntTools_MarkedRangeSet;
 class IntTools_MarkedRangeSet {
 	public:
 		/****************** Flag ******************/
@@ -2049,7 +2038,6 @@ class IntTools_MarkedRangeSet {
 /*****************************
 * class IntTools_PntOn2Faces *
 *****************************/
-%nodefaultctor IntTools_PntOn2Faces;
 class IntTools_PntOn2Faces {
 	public:
 		/****************** IntTools_PntOn2Faces ******************/
@@ -2122,7 +2110,6 @@ class IntTools_PntOn2Faces {
 /***************************
 * class IntTools_PntOnFace *
 ***************************/
-%nodefaultctor IntTools_PntOnFace;
 class IntTools_PntOnFace {
 	public:
 		/****************** Face ******************/
@@ -2213,7 +2200,6 @@ class IntTools_PntOnFace {
 /***********************
 * class IntTools_Range *
 ***********************/
-%nodefaultctor IntTools_Range;
 class IntTools_Range {
 	public:
 		/****************** First ******************/
@@ -2282,7 +2268,6 @@ class IntTools_Range {
 /**********************
 * class IntTools_Root *
 **********************/
-%nodefaultctor IntTools_Root;
 class IntTools_Root {
 	public:
 		/****************** IntTools_Root ******************/
@@ -2417,7 +2402,6 @@ class IntTools_Root {
 /*****************************
 * class IntTools_ShrunkRange *
 *****************************/
-%nodefaultctor IntTools_ShrunkRange;
 class IntTools_ShrunkRange {
 	public:
 		/****************** BndBox ******************/
@@ -2515,7 +2499,6 @@ class IntTools_ShrunkRange {
 /******************************************
 * class IntTools_SurfaceRangeLocalizeData *
 ******************************************/
-%nodefaultctor IntTools_SurfaceRangeLocalizeData;
 class IntTools_SurfaceRangeLocalizeData {
 	public:
 		/****************** AddBox ******************/
@@ -2791,7 +2774,6 @@ class IntTools_SurfaceRangeLocalizeData {
 /************************************
 * class IntTools_SurfaceRangeSample *
 ************************************/
-%nodefaultctor IntTools_SurfaceRangeSample;
 class IntTools_SurfaceRangeSample {
 	public:
 		/****************** Assign ******************/
@@ -3348,7 +3330,6 @@ class IntTools_Tools {
 /***************************
 * class IntTools_TopolTool *
 ***************************/
-%nodefaultctor IntTools_TopolTool;
 class IntTools_TopolTool : public Adaptor3d_TopolTool {
 	public:
 		/****************** ComputeSamplePoints ******************/
@@ -3496,7 +3477,6 @@ class IntTools_WLineTool {
 /**********************************
 * class IntTools_CurveRangeSample *
 **********************************/
-%nodefaultctor IntTools_CurveRangeSample;
 class IntTools_CurveRangeSample : public IntTools_BaseRangeSample {
 	public:
 		/****************** GetRange ******************/

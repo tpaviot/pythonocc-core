@@ -123,7 +123,6 @@ class XmlMDataStd {
 /**************************************
 * class XmlMDataStd_AsciiStringDriver *
 **************************************/
-%nodefaultctor XmlMDataStd_AsciiStringDriver;
 class XmlMDataStd_AsciiStringDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -176,7 +175,6 @@ class XmlMDataStd_AsciiStringDriver : public XmlMDF_ADriver {
 /***************************************
 * class XmlMDataStd_BooleanArrayDriver *
 ***************************************/
-%nodefaultctor XmlMDataStd_BooleanArrayDriver;
 class XmlMDataStd_BooleanArrayDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -227,7 +225,6 @@ class XmlMDataStd_BooleanArrayDriver : public XmlMDF_ADriver {
 /**************************************
 * class XmlMDataStd_BooleanListDriver *
 **************************************/
-%nodefaultctor XmlMDataStd_BooleanListDriver;
 class XmlMDataStd_BooleanListDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -278,7 +275,6 @@ class XmlMDataStd_BooleanListDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMDataStd_ByteArrayDriver *
 ************************************/
-%nodefaultctor XmlMDataStd_ByteArrayDriver;
 class XmlMDataStd_ByteArrayDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -329,7 +325,6 @@ class XmlMDataStd_ByteArrayDriver : public XmlMDF_ADriver {
 /**********************************
 * class XmlMDataStd_CommentDriver *
 **********************************/
-%nodefaultctor XmlMDataStd_CommentDriver;
 class XmlMDataStd_CommentDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -380,7 +375,6 @@ class XmlMDataStd_CommentDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMDataStd_DirectoryDriver *
 ************************************/
-%nodefaultctor XmlMDataStd_DirectoryDriver;
 class XmlMDataStd_DirectoryDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -431,7 +425,6 @@ class XmlMDataStd_DirectoryDriver : public XmlMDF_ADriver {
 /*************************************
 * class XmlMDataStd_ExpressionDriver *
 *************************************/
-%nodefaultctor XmlMDataStd_ExpressionDriver;
 class XmlMDataStd_ExpressionDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -482,7 +475,6 @@ class XmlMDataStd_ExpressionDriver : public XmlMDF_ADriver {
 /*****************************************
 * class XmlMDataStd_ExtStringArrayDriver *
 *****************************************/
-%nodefaultctor XmlMDataStd_ExtStringArrayDriver;
 class XmlMDataStd_ExtStringArrayDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -533,7 +525,6 @@ class XmlMDataStd_ExtStringArrayDriver : public XmlMDF_ADriver {
 /****************************************
 * class XmlMDataStd_ExtStringListDriver *
 ****************************************/
-%nodefaultctor XmlMDataStd_ExtStringListDriver;
 class XmlMDataStd_ExtStringListDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -584,7 +575,6 @@ class XmlMDataStd_ExtStringListDriver : public XmlMDF_ADriver {
 /***************************************
 * class XmlMDataStd_IntPackedMapDriver *
 ***************************************/
-%nodefaultctor XmlMDataStd_IntPackedMapDriver;
 class XmlMDataStd_IntPackedMapDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -637,7 +627,6 @@ class XmlMDataStd_IntPackedMapDriver : public XmlMDF_ADriver {
 /***************************************
 * class XmlMDataStd_IntegerArrayDriver *
 ***************************************/
-%nodefaultctor XmlMDataStd_IntegerArrayDriver;
 class XmlMDataStd_IntegerArrayDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -688,7 +677,6 @@ class XmlMDataStd_IntegerArrayDriver : public XmlMDF_ADriver {
 /**********************************
 * class XmlMDataStd_IntegerDriver *
 **********************************/
-%nodefaultctor XmlMDataStd_IntegerDriver;
 class XmlMDataStd_IntegerDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -739,7 +727,6 @@ class XmlMDataStd_IntegerDriver : public XmlMDF_ADriver {
 /**************************************
 * class XmlMDataStd_IntegerListDriver *
 **************************************/
-%nodefaultctor XmlMDataStd_IntegerListDriver;
 class XmlMDataStd_IntegerListDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -790,7 +777,6 @@ class XmlMDataStd_IntegerListDriver : public XmlMDF_ADriver {
 /*******************************
 * class XmlMDataStd_NameDriver *
 *******************************/
-%nodefaultctor XmlMDataStd_NameDriver;
 class XmlMDataStd_NameDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -841,7 +827,6 @@ class XmlMDataStd_NameDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMDataStd_NamedDataDriver *
 ************************************/
-%nodefaultctor XmlMDataStd_NamedDataDriver;
 class XmlMDataStd_NamedDataDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -892,7 +877,6 @@ class XmlMDataStd_NamedDataDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMDataStd_NoteBookDriver *
 ***********************************/
-%nodefaultctor XmlMDataStd_NoteBookDriver;
 class XmlMDataStd_NoteBookDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -943,7 +927,6 @@ class XmlMDataStd_NoteBookDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMDataStd_RealArrayDriver *
 ************************************/
-%nodefaultctor XmlMDataStd_RealArrayDriver;
 class XmlMDataStd_RealArrayDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -994,7 +977,6 @@ class XmlMDataStd_RealArrayDriver : public XmlMDF_ADriver {
 /*******************************
 * class XmlMDataStd_RealDriver *
 *******************************/
-%nodefaultctor XmlMDataStd_RealDriver;
 class XmlMDataStd_RealDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1045,7 +1027,6 @@ class XmlMDataStd_RealDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMDataStd_RealListDriver *
 ***********************************/
-%nodefaultctor XmlMDataStd_RealListDriver;
 class XmlMDataStd_RealListDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1096,7 +1077,6 @@ class XmlMDataStd_RealListDriver : public XmlMDF_ADriver {
 /*****************************************
 * class XmlMDataStd_ReferenceArrayDriver *
 *****************************************/
-%nodefaultctor XmlMDataStd_ReferenceArrayDriver;
 class XmlMDataStd_ReferenceArrayDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1147,7 +1127,6 @@ class XmlMDataStd_ReferenceArrayDriver : public XmlMDF_ADriver {
 /****************************************
 * class XmlMDataStd_ReferenceListDriver *
 ****************************************/
-%nodefaultctor XmlMDataStd_ReferenceListDriver;
 class XmlMDataStd_ReferenceListDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1198,7 +1177,6 @@ class XmlMDataStd_ReferenceListDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMDataStd_RelationDriver *
 ***********************************/
-%nodefaultctor XmlMDataStd_RelationDriver;
 class XmlMDataStd_RelationDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1249,7 +1227,6 @@ class XmlMDataStd_RelationDriver : public XmlMDF_ADriver {
 /*******************************
 * class XmlMDataStd_TickDriver *
 *******************************/
-%nodefaultctor XmlMDataStd_TickDriver;
 class XmlMDataStd_TickDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1300,7 +1277,6 @@ class XmlMDataStd_TickDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMDataStd_TreeNodeDriver *
 ***********************************/
-%nodefaultctor XmlMDataStd_TreeNodeDriver;
 class XmlMDataStd_TreeNodeDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1351,7 +1327,6 @@ class XmlMDataStd_TreeNodeDriver : public XmlMDF_ADriver {
 /*************************************
 * class XmlMDataStd_UAttributeDriver *
 *************************************/
-%nodefaultctor XmlMDataStd_UAttributeDriver;
 class XmlMDataStd_UAttributeDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1402,7 +1377,6 @@ class XmlMDataStd_UAttributeDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMDataStd_VariableDriver *
 ***********************************/
-%nodefaultctor XmlMDataStd_VariableDriver;
 class XmlMDataStd_VariableDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/

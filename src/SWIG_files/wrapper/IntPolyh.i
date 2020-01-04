@@ -87,7 +87,6 @@ typedef IntPolyh_Array <IntPolyh_Point> IntPolyh_ArrayOfPoints;
 /************************
 * class IntPolyh_Couple *
 ************************/
-%nodefaultctor IntPolyh_Couple;
 class IntPolyh_Couple {
 	public:
 		/****************** Angle ******************/
@@ -199,7 +198,6 @@ class IntPolyh_Couple {
 /*********************************
 * class IntPolyh_CoupleMapHasher *
 *********************************/
-%nodefaultctor IntPolyh_CoupleMapHasher;
 class IntPolyh_CoupleMapHasher {
 	public:
 		/****************** HashCode ******************/
@@ -233,7 +231,6 @@ class IntPolyh_CoupleMapHasher {
 /**********************
 * class IntPolyh_Edge *
 **********************/
-%nodefaultctor IntPolyh_Edge;
 class IntPolyh_Edge {
 	public:
 		/****************** Dump ******************/
@@ -331,7 +328,6 @@ class IntPolyh_Edge {
 /******************************
 * class IntPolyh_Intersection *
 ******************************/
-%nodefaultctor IntPolyh_Intersection;
 class IntPolyh_Intersection {
 	public:
 		/****************** GetLinePoint ******************/
@@ -478,7 +474,6 @@ class IntPolyh_Intersection {
 /***********************
 * class IntPolyh_Point *
 ***********************/
-%nodefaultctor IntPolyh_Point;
 class IntPolyh_Point {
 	public:
 		/****************** Add ******************/
@@ -764,7 +759,6 @@ class IntPolyh_Point {
 /*****************************
 * class IntPolyh_PointNormal *
 *****************************/
-%nodefaultctor IntPolyh_PointNormal;
 class IntPolyh_PointNormal {
 	public:
 		gp_Pnt Point;
@@ -781,7 +775,6 @@ class IntPolyh_PointNormal {
 /*****************************
 * class IntPolyh_SectionLine *
 *****************************/
-%nodefaultctor IntPolyh_SectionLine;
 class IntPolyh_SectionLine {
 	public:
 		/****************** ChangeValue ******************/
@@ -875,7 +868,6 @@ class IntPolyh_SectionLine {
 /****************************
 * class IntPolyh_StartPoint *
 ****************************/
-%nodefaultctor IntPolyh_StartPoint;
 class IntPolyh_StartPoint {
 	public:
 		/****************** ChainList ******************/
@@ -1115,7 +1107,6 @@ class IntPolyh_StartPoint {
 /***********************
 * class IntPolyh_Tools *
 ***********************/
-%nodefaultctor IntPolyh_Tools;
 class IntPolyh_Tools {
 	public:
 		/****************** ComputeDeflection ******************/
@@ -1186,7 +1177,6 @@ class IntPolyh_Tools {
 /**************************
 * class IntPolyh_Triangle *
 **************************/
-%nodefaultctor IntPolyh_Triangle;
 class IntPolyh_Triangle {
 	public:
 		/****************** BoundingBox ******************/

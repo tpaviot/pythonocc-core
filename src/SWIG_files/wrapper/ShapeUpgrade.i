@@ -168,7 +168,6 @@ class ShapeUpgrade {
 /*************************************
 * class ShapeUpgrade_RemoveLocations *
 *************************************/
-%nodefaultctor ShapeUpgrade_RemoveLocations;
 class ShapeUpgrade_RemoveLocations : public Standard_Transient {
 	public:
 		/****************** GetResult ******************/
@@ -227,7 +226,6 @@ class ShapeUpgrade_RemoveLocations : public Standard_Transient {
 /*********************************
 * class ShapeUpgrade_ShapeDivide *
 *********************************/
-%nodefaultctor ShapeUpgrade_ShapeDivide;
 class ShapeUpgrade_ShapeDivide {
 	public:
 		/****************** GetContext ******************/
@@ -373,7 +371,6 @@ class ShapeUpgrade_ShapeDivide {
 /*********************************
 * class ShapeUpgrade_ShellSewing *
 *********************************/
-%nodefaultctor ShapeUpgrade_ShellSewing;
 class ShapeUpgrade_ShellSewing {
 	public:
 		/****************** ApplySewing ******************/
@@ -404,7 +401,6 @@ class ShapeUpgrade_ShellSewing {
 /********************************
 * class ShapeUpgrade_SplitCurve *
 ********************************/
-%nodefaultctor ShapeUpgrade_SplitCurve;
 class ShapeUpgrade_SplitCurve : public Standard_Transient {
 	public:
 		/****************** Build ******************/
@@ -481,7 +477,6 @@ class ShapeUpgrade_SplitCurve : public Standard_Transient {
 /**********************************
 * class ShapeUpgrade_SplitSurface *
 **********************************/
-%nodefaultctor ShapeUpgrade_SplitSurface;
 class ShapeUpgrade_SplitSurface : public Standard_Transient {
 	public:
 		/****************** Build ******************/
@@ -594,7 +589,6 @@ class ShapeUpgrade_SplitSurface : public Standard_Transient {
 /**************************
 * class ShapeUpgrade_Tool *
 **************************/
-%nodefaultctor ShapeUpgrade_Tool;
 class ShapeUpgrade_Tool : public Standard_Transient {
 	public:
 		/****************** Context ******************/
@@ -689,7 +683,6 @@ class ShapeUpgrade_Tool : public Standard_Transient {
 /*************************************
 * class ShapeUpgrade_UnifySameDomain *
 *************************************/
-%nodefaultctor ShapeUpgrade_UnifySameDomain;
 class ShapeUpgrade_UnifySameDomain : public Standard_Transient {
 	public:
 		/****************** AllowInternalEdges ******************/
@@ -812,7 +805,6 @@ class ShapeUpgrade_UnifySameDomain : public Standard_Transient {
 /*************************************************
 * class ShapeUpgrade_ConvertSurfaceToBezierBasis *
 *************************************************/
-%nodefaultctor ShapeUpgrade_ConvertSurfaceToBezierBasis;
 class ShapeUpgrade_ConvertSurfaceToBezierBasis : public ShapeUpgrade_SplitSurface {
 	public:
 		/****************** Build ******************/
@@ -913,7 +905,6 @@ class ShapeUpgrade_ConvertSurfaceToBezierBasis : public ShapeUpgrade_SplitSurfac
 /********************************
 * class ShapeUpgrade_EdgeDivide *
 ********************************/
-%nodefaultctor ShapeUpgrade_EdgeDivide;
 class ShapeUpgrade_EdgeDivide : public ShapeUpgrade_Tool {
 	public:
 		/****************** Clear ******************/
@@ -1004,7 +995,6 @@ class ShapeUpgrade_EdgeDivide : public ShapeUpgrade_Tool {
 /********************************
 * class ShapeUpgrade_FaceDivide *
 ********************************/
-%nodefaultctor ShapeUpgrade_FaceDivide;
 class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 	public:
 		/****************** GetSplitSurfaceTool ******************/
@@ -1111,7 +1101,6 @@ class ShapeUpgrade_FaceDivide : public ShapeUpgrade_Tool {
 /************************************
 * class ShapeUpgrade_FixSmallCurves *
 ************************************/
-%nodefaultctor ShapeUpgrade_FixSmallCurves;
 class ShapeUpgrade_FixSmallCurves : public ShapeUpgrade_Tool {
 	public:
 		/****************** Approx ******************/
@@ -1181,7 +1170,6 @@ class ShapeUpgrade_FixSmallCurves : public ShapeUpgrade_Tool {
 /*****************************************
 * class ShapeUpgrade_RemoveInternalWires *
 *****************************************/
-%nodefaultctor ShapeUpgrade_RemoveInternalWires;
 class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 	public:
 		/****************** GetResult ******************/
@@ -1285,7 +1273,6 @@ class ShapeUpgrade_RemoveInternalWires : public ShapeUpgrade_Tool {
 /******************************************
 * class ShapeUpgrade_ShapeConvertToBezier *
 ******************************************/
-%nodefaultctor ShapeUpgrade_ShapeConvertToBezier;
 class ShapeUpgrade_ShapeConvertToBezier : public ShapeUpgrade_ShapeDivide {
 	public:
 		/****************** Get2dConversion ******************/
@@ -1462,7 +1449,6 @@ class ShapeUpgrade_ShapeConvertToBezier : public ShapeUpgrade_ShapeDivide {
 /**************************************
 * class ShapeUpgrade_ShapeDivideAngle *
 **************************************/
-%nodefaultctor ShapeUpgrade_ShapeDivideAngle;
 class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 	public:
 		/****************** InitTool ******************/
@@ -1517,7 +1503,6 @@ class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 /*************************************
 * class ShapeUpgrade_ShapeDivideArea *
 *************************************/
-%nodefaultctor ShapeUpgrade_ShapeDivideArea;
 class ShapeUpgrade_ShapeDivideArea : public ShapeUpgrade_ShapeDivide {
 	public:
 
@@ -1558,7 +1543,6 @@ class ShapeUpgrade_ShapeDivideArea : public ShapeUpgrade_ShapeDivide {
 /***************************************
 * class ShapeUpgrade_ShapeDivideClosed *
 ***************************************/
-%nodefaultctor ShapeUpgrade_ShapeDivideClosed;
 class ShapeUpgrade_ShapeDivideClosed : public ShapeUpgrade_ShapeDivide {
 	public:
 		/****************** SetNbSplitPoints ******************/
@@ -1589,7 +1573,6 @@ class ShapeUpgrade_ShapeDivideClosed : public ShapeUpgrade_ShapeDivide {
 /********************************************
 * class ShapeUpgrade_ShapeDivideClosedEdges *
 ********************************************/
-%nodefaultctor ShapeUpgrade_ShapeDivideClosedEdges;
 class ShapeUpgrade_ShapeDivideClosedEdges : public ShapeUpgrade_ShapeDivide {
 	public:
 		/****************** SetNbSplitPoints ******************/
@@ -1620,7 +1603,6 @@ class ShapeUpgrade_ShapeDivideClosedEdges : public ShapeUpgrade_ShapeDivide {
 /*******************************************
 * class ShapeUpgrade_ShapeDivideContinuity *
 *******************************************/
-%nodefaultctor ShapeUpgrade_ShapeDivideContinuity;
 class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 	public:
 		/****************** SetBoundaryCriterion ******************/
@@ -1688,7 +1670,6 @@ class ShapeUpgrade_ShapeDivideContinuity : public ShapeUpgrade_ShapeDivide {
 /**********************************
 * class ShapeUpgrade_SplitCurve2d *
 **********************************/
-%nodefaultctor ShapeUpgrade_SplitCurve2d;
 class ShapeUpgrade_SplitCurve2d : public ShapeUpgrade_SplitCurve {
 	public:
 		/****************** Build ******************/
@@ -1744,7 +1725,6 @@ class ShapeUpgrade_SplitCurve2d : public ShapeUpgrade_SplitCurve {
 /**********************************
 * class ShapeUpgrade_SplitCurve3d *
 **********************************/
-%nodefaultctor ShapeUpgrade_SplitCurve3d;
 class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve {
 	public:
 		/****************** Build ******************/
@@ -1800,7 +1780,6 @@ class ShapeUpgrade_SplitCurve3d : public ShapeUpgrade_SplitCurve {
 /***************************************
 * class ShapeUpgrade_SplitSurfaceAngle *
 ***************************************/
-%nodefaultctor ShapeUpgrade_SplitSurfaceAngle;
 class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 	public:
 		/****************** Compute ******************/
@@ -1847,7 +1826,6 @@ class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 /**************************************
 * class ShapeUpgrade_SplitSurfaceArea *
 **************************************/
-%nodefaultctor ShapeUpgrade_SplitSurfaceArea;
 class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface {
 	public:
 		/****************** Compute ******************/
@@ -1890,7 +1868,6 @@ class ShapeUpgrade_SplitSurfaceArea : public ShapeUpgrade_SplitSurface {
 /********************************************
 * class ShapeUpgrade_SplitSurfaceContinuity *
 ********************************************/
-%nodefaultctor ShapeUpgrade_SplitSurfaceContinuity;
 class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface {
 	public:
 		/****************** Compute ******************/
@@ -1936,7 +1913,6 @@ class ShapeUpgrade_SplitSurfaceContinuity : public ShapeUpgrade_SplitSurface {
 /********************************
 * class ShapeUpgrade_WireDivide *
 ********************************/
-%nodefaultctor ShapeUpgrade_WireDivide;
 class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 	public:
 		/****************** GetEdgeDivideTool ******************/
@@ -2107,7 +2083,6 @@ class ShapeUpgrade_WireDivide : public ShapeUpgrade_Tool {
 /**************************************
 * class ShapeUpgrade_ClosedEdgeDivide *
 **************************************/
-%nodefaultctor ShapeUpgrade_ClosedEdgeDivide;
 class ShapeUpgrade_ClosedEdgeDivide : public ShapeUpgrade_EdgeDivide {
 	public:
 		/****************** Compute ******************/
@@ -2137,7 +2112,6 @@ class ShapeUpgrade_ClosedEdgeDivide : public ShapeUpgrade_EdgeDivide {
 /**************************************
 * class ShapeUpgrade_ClosedFaceDivide *
 **************************************/
-%nodefaultctor ShapeUpgrade_ClosedFaceDivide;
 class ShapeUpgrade_ClosedFaceDivide : public ShapeUpgrade_FaceDivide {
 	public:
 		/****************** GetNbSplitPoints ******************/
@@ -2188,7 +2162,6 @@ class ShapeUpgrade_ClosedFaceDivide : public ShapeUpgrade_FaceDivide {
 /********************************************
 * class ShapeUpgrade_ConvertCurve2dToBezier *
 ********************************************/
-%nodefaultctor ShapeUpgrade_ConvertCurve2dToBezier;
 class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d {
 	public:
 		/****************** Build ******************/
@@ -2231,7 +2204,6 @@ class ShapeUpgrade_ConvertCurve2dToBezier : public ShapeUpgrade_SplitCurve2d {
 /********************************************
 * class ShapeUpgrade_ConvertCurve3dToBezier *
 ********************************************/
-%nodefaultctor ShapeUpgrade_ConvertCurve3dToBezier;
 class ShapeUpgrade_ConvertCurve3dToBezier : public ShapeUpgrade_SplitCurve3d {
 	public:
 		/****************** Build ******************/
@@ -2316,7 +2288,6 @@ class ShapeUpgrade_ConvertCurve3dToBezier : public ShapeUpgrade_SplitCurve3d {
 /************************************
 * class ShapeUpgrade_FaceDivideArea *
 ************************************/
-%nodefaultctor ShapeUpgrade_FaceDivideArea;
 class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide {
 	public:
 
@@ -2365,7 +2336,6 @@ class ShapeUpgrade_FaceDivideArea : public ShapeUpgrade_FaceDivide {
 /******************************************
 * class ShapeUpgrade_FixSmallBezierCurves *
 ******************************************/
-%nodefaultctor ShapeUpgrade_FixSmallBezierCurves;
 class ShapeUpgrade_FixSmallBezierCurves : public ShapeUpgrade_FixSmallCurves {
 	public:
 		/****************** Approx ******************/
@@ -2402,7 +2372,6 @@ class ShapeUpgrade_FixSmallBezierCurves : public ShapeUpgrade_FixSmallCurves {
 /********************************************
 * class ShapeUpgrade_SplitCurve2dContinuity *
 ********************************************/
-%nodefaultctor ShapeUpgrade_SplitCurve2dContinuity;
 class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d {
 	public:
 		/****************** Compute ******************/
@@ -2447,7 +2416,6 @@ class ShapeUpgrade_SplitCurve2dContinuity : public ShapeUpgrade_SplitCurve2d {
 /********************************************
 * class ShapeUpgrade_SplitCurve3dContinuity *
 ********************************************/
-%nodefaultctor ShapeUpgrade_SplitCurve3dContinuity;
 class ShapeUpgrade_SplitCurve3dContinuity : public ShapeUpgrade_SplitCurve3d {
 	public:
 		/****************** Compute ******************/

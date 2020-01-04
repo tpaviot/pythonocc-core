@@ -642,7 +642,6 @@ typedef NCollection_Array1 <opencascade::handle <StepBasic_Person>> StepBasic_Ar
 /*************************
 * class StepBasic_Action *
 *************************/
-%nodefaultctor StepBasic_Action;
 class StepBasic_Action : public Standard_Transient {
 	public:
 		/****************** ChosenMethod ******************/
@@ -727,7 +726,6 @@ class StepBasic_Action : public Standard_Transient {
 /***********************************
 * class StepBasic_ActionAssignment *
 ***********************************/
-%nodefaultctor StepBasic_ActionAssignment;
 class StepBasic_ActionAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedAction ******************/
@@ -772,7 +770,6 @@ class StepBasic_ActionAssignment : public Standard_Transient {
 /*******************************
 * class StepBasic_ActionMethod *
 *******************************/
-%nodefaultctor StepBasic_ActionMethod;
 class StepBasic_ActionMethod : public Standard_Transient {
 	public:
 		/****************** Consequence ******************/
@@ -873,7 +870,6 @@ class StepBasic_ActionMethod : public Standard_Transient {
 /******************************************
 * class StepBasic_ActionRequestAssignment *
 ******************************************/
-%nodefaultctor StepBasic_ActionRequestAssignment;
 class StepBasic_ActionRequestAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedActionRequest ******************/
@@ -918,7 +914,6 @@ class StepBasic_ActionRequestAssignment : public Standard_Transient {
 /****************************************
 * class StepBasic_ActionRequestSolution *
 ****************************************/
-%nodefaultctor StepBasic_ActionRequestSolution;
 class StepBasic_ActionRequestSolution : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -979,7 +974,6 @@ class StepBasic_ActionRequestSolution : public Standard_Transient {
 /**************************
 * class StepBasic_Address *
 **************************/
-%nodefaultctor StepBasic_Address;
 class StepBasic_Address : public Standard_Transient {
 	public:
 		/****************** Country ******************/
@@ -1319,7 +1313,6 @@ class StepBasic_Address : public Standard_Transient {
 /*************************************
 * class StepBasic_ApplicationContext *
 *************************************/
-%nodefaultctor StepBasic_ApplicationContext;
 class StepBasic_ApplicationContext : public Standard_Transient {
 	public:
 		/****************** Application ******************/
@@ -1361,7 +1354,6 @@ class StepBasic_ApplicationContext : public Standard_Transient {
 /********************************************
 * class StepBasic_ApplicationContextElement *
 ********************************************/
-%nodefaultctor StepBasic_ApplicationContextElement;
 class StepBasic_ApplicationContextElement : public Standard_Transient {
 	public:
 		/****************** FrameOfReference ******************/
@@ -1417,7 +1409,6 @@ class StepBasic_ApplicationContextElement : public Standard_Transient {
 /************************************************
 * class StepBasic_ApplicationProtocolDefinition *
 ************************************************/
-%nodefaultctor StepBasic_ApplicationProtocolDefinition;
 class StepBasic_ApplicationProtocolDefinition : public Standard_Transient {
 	public:
 		/****************** Application ******************/
@@ -1501,7 +1492,6 @@ class StepBasic_ApplicationProtocolDefinition : public Standard_Transient {
 /***************************
 * class StepBasic_Approval *
 ***************************/
-%nodefaultctor StepBasic_Approval;
 class StepBasic_Approval : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1557,7 +1547,6 @@ class StepBasic_Approval : public Standard_Transient {
 /*************************************
 * class StepBasic_ApprovalAssignment *
 *************************************/
-%nodefaultctor StepBasic_ApprovalAssignment;
 class StepBasic_ApprovalAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedApproval ******************/
@@ -1593,7 +1582,6 @@ class StepBasic_ApprovalAssignment : public Standard_Transient {
 /***********************************
 * class StepBasic_ApprovalDateTime *
 ***********************************/
-%nodefaultctor StepBasic_ApprovalDateTime;
 class StepBasic_ApprovalDateTime : public Standard_Transient {
 	public:
 		/****************** DateTime ******************/
@@ -1648,7 +1636,6 @@ class StepBasic_ApprovalDateTime : public Standard_Transient {
 /*********************************************
 * class StepBasic_ApprovalPersonOrganization *
 *********************************************/
-%nodefaultctor StepBasic_ApprovalPersonOrganization;
 class StepBasic_ApprovalPersonOrganization : public Standard_Transient {
 	public:
 		/****************** AuthorizedApproval ******************/
@@ -1718,7 +1705,6 @@ class StepBasic_ApprovalPersonOrganization : public Standard_Transient {
 /***************************************
 * class StepBasic_ApprovalRelationship *
 ***************************************/
-%nodefaultctor StepBasic_ApprovalRelationship;
 class StepBasic_ApprovalRelationship : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1802,7 +1788,6 @@ class StepBasic_ApprovalRelationship : public Standard_Transient {
 /*******************************
 * class StepBasic_ApprovalRole *
 *******************************/
-%nodefaultctor StepBasic_ApprovalRole;
 class StepBasic_ApprovalRole : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1844,7 +1829,6 @@ class StepBasic_ApprovalRole : public Standard_Transient {
 /*********************************
 * class StepBasic_ApprovalStatus *
 *********************************/
-%nodefaultctor StepBasic_ApprovalStatus;
 class StepBasic_ApprovalStatus : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1886,7 +1870,6 @@ class StepBasic_ApprovalStatus : public Standard_Transient {
 /********************************
 * class StepBasic_Certification *
 ********************************/
-%nodefaultctor StepBasic_Certification;
 class StepBasic_Certification : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1963,7 +1946,6 @@ class StepBasic_Certification : public Standard_Transient {
 /******************************************
 * class StepBasic_CertificationAssignment *
 ******************************************/
-%nodefaultctor StepBasic_CertificationAssignment;
 class StepBasic_CertificationAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedCertification ******************/
@@ -2008,7 +1990,6 @@ class StepBasic_CertificationAssignment : public Standard_Transient {
 /************************************
 * class StepBasic_CertificationType *
 ************************************/
-%nodefaultctor StepBasic_CertificationType;
 class StepBasic_CertificationType : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -2053,7 +2034,6 @@ class StepBasic_CertificationType : public Standard_Transient {
 /**************************************
 * class StepBasic_CharacterizedObject *
 **************************************/
-%nodefaultctor StepBasic_CharacterizedObject;
 class StepBasic_CharacterizedObject : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -2122,7 +2102,6 @@ class StepBasic_CharacterizedObject : public Standard_Transient {
 /***************************
 * class StepBasic_Contract *
 ***************************/
-%nodefaultctor StepBasic_Contract;
 class StepBasic_Contract : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2199,7 +2178,6 @@ class StepBasic_Contract : public Standard_Transient {
 /*************************************
 * class StepBasic_ContractAssignment *
 *************************************/
-%nodefaultctor StepBasic_ContractAssignment;
 class StepBasic_ContractAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedContract ******************/
@@ -2244,7 +2222,6 @@ class StepBasic_ContractAssignment : public Standard_Transient {
 /*******************************
 * class StepBasic_ContractType *
 *******************************/
-%nodefaultctor StepBasic_ContractType;
 class StepBasic_ContractType : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -2289,7 +2266,6 @@ class StepBasic_ContractType : public Standard_Transient {
 /*************************************************
 * class StepBasic_CoordinatedUniversalTimeOffset *
 *************************************************/
-%nodefaultctor StepBasic_CoordinatedUniversalTimeOffset;
 class StepBasic_CoordinatedUniversalTimeOffset : public Standard_Transient {
 	public:
 		/****************** HasMinuteOffset ******************/
@@ -2371,7 +2347,6 @@ class StepBasic_CoordinatedUniversalTimeOffset : public Standard_Transient {
 /***********************
 * class StepBasic_Date *
 ***********************/
-%nodefaultctor StepBasic_Date;
 class StepBasic_Date : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2413,7 +2388,6 @@ class StepBasic_Date : public Standard_Transient {
 /******************************
 * class StepBasic_DateAndTime *
 ******************************/
-%nodefaultctor StepBasic_DateAndTime;
 class StepBasic_DateAndTime : public Standard_Transient {
 	public:
 		/****************** DateComponent ******************/
@@ -2469,7 +2443,6 @@ class StepBasic_DateAndTime : public Standard_Transient {
 /****************************************
 * class StepBasic_DateAndTimeAssignment *
 ****************************************/
-%nodefaultctor StepBasic_DateAndTimeAssignment;
 class StepBasic_DateAndTimeAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedDateAndTime ******************/
@@ -2519,7 +2492,6 @@ class StepBasic_DateAndTimeAssignment : public Standard_Transient {
 /*********************************
 * class StepBasic_DateAssignment *
 *********************************/
-%nodefaultctor StepBasic_DateAssignment;
 class StepBasic_DateAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedDate ******************/
@@ -2569,7 +2541,6 @@ class StepBasic_DateAssignment : public Standard_Transient {
 /***************************
 * class StepBasic_DateRole *
 ***************************/
-%nodefaultctor StepBasic_DateRole;
 class StepBasic_DateRole : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2611,7 +2582,6 @@ class StepBasic_DateRole : public Standard_Transient {
 /*******************************
 * class StepBasic_DateTimeRole *
 *******************************/
-%nodefaultctor StepBasic_DateTimeRole;
 class StepBasic_DateTimeRole : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2653,7 +2623,6 @@ class StepBasic_DateTimeRole : public Standard_Transient {
 /*********************************
 * class StepBasic_DateTimeSelect *
 *********************************/
-%nodefaultctor StepBasic_DateTimeSelect;
 class StepBasic_DateTimeSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2700,7 +2669,6 @@ class StepBasic_DateTimeSelect : public StepData_SelectType {
 /******************************
 * class StepBasic_DerivedUnit *
 ******************************/
-%nodefaultctor StepBasic_DerivedUnit;
 class StepBasic_DerivedUnit : public Standard_Transient {
 	public:
 		/****************** Elements ******************/
@@ -2753,7 +2721,6 @@ class StepBasic_DerivedUnit : public Standard_Transient {
 /*************************************
 * class StepBasic_DerivedUnitElement *
 *************************************/
-%nodefaultctor StepBasic_DerivedUnitElement;
 class StepBasic_DerivedUnitElement : public Standard_Transient {
 	public:
 		/****************** Exponent ******************/
@@ -2808,7 +2775,6 @@ class StepBasic_DerivedUnitElement : public Standard_Transient {
 /***************************************
 * class StepBasic_DimensionalExponents *
 ***************************************/
-%nodefaultctor StepBasic_DimensionalExponents;
 class StepBasic_DimensionalExponents : public Standard_Transient {
 	public:
 		/****************** AmountOfSubstanceExponent ******************/
@@ -2934,7 +2900,6 @@ class StepBasic_DimensionalExponents : public Standard_Transient {
 /***************************
 * class StepBasic_Document *
 ***************************/
-%nodefaultctor StepBasic_Document;
 class StepBasic_Document : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -3035,7 +3000,6 @@ class StepBasic_Document : public Standard_Transient {
 /*********************************************
 * class StepBasic_DocumentProductAssociation *
 *********************************************/
-%nodefaultctor StepBasic_DocumentProductAssociation;
 class StepBasic_DocumentProductAssociation : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -3136,7 +3100,6 @@ class StepBasic_DocumentProductAssociation : public Standard_Transient {
 /************************************
 * class StepBasic_DocumentReference *
 ************************************/
-%nodefaultctor StepBasic_DocumentReference;
 class StepBasic_DocumentReference : public Standard_Transient {
 	public:
 		/****************** AssignedDocument ******************/
@@ -3186,7 +3149,6 @@ class StepBasic_DocumentReference : public Standard_Transient {
 /***************************************
 * class StepBasic_DocumentRelationship *
 ***************************************/
-%nodefaultctor StepBasic_DocumentRelationship;
 class StepBasic_DocumentRelationship : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -3269,7 +3231,6 @@ class StepBasic_DocumentRelationship : public Standard_Transient {
 /*********************************************
 * class StepBasic_DocumentRepresentationType *
 *********************************************/
-%nodefaultctor StepBasic_DocumentRepresentationType;
 class StepBasic_DocumentRepresentationType : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3330,7 +3291,6 @@ class StepBasic_DocumentRepresentationType : public Standard_Transient {
 /*******************************
 * class StepBasic_DocumentType *
 *******************************/
-%nodefaultctor StepBasic_DocumentType;
 class StepBasic_DocumentType : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3371,7 +3331,6 @@ class StepBasic_DocumentType : public Standard_Transient {
 /******************************************
 * class StepBasic_DocumentUsageConstraint *
 ******************************************/
-%nodefaultctor StepBasic_DocumentUsageConstraint;
 class StepBasic_DocumentUsageConstraint : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3440,7 +3399,6 @@ class StepBasic_DocumentUsageConstraint : public Standard_Transient {
 /******************************
 * class StepBasic_Effectivity *
 ******************************/
-%nodefaultctor StepBasic_Effectivity;
 class StepBasic_Effectivity : public Standard_Transient {
 	public:
 		/****************** Id ******************/
@@ -3481,7 +3439,6 @@ class StepBasic_Effectivity : public Standard_Transient {
 /****************************************
 * class StepBasic_EffectivityAssignment *
 ****************************************/
-%nodefaultctor StepBasic_EffectivityAssignment;
 class StepBasic_EffectivityAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedEffectivity ******************/
@@ -3526,7 +3483,6 @@ class StepBasic_EffectivityAssignment : public Standard_Transient {
 /******************************
 * class StepBasic_EulerAngles *
 ******************************/
-%nodefaultctor StepBasic_EulerAngles;
 class StepBasic_EulerAngles : public Standard_Transient {
 	public:
 		/****************** Angles ******************/
@@ -3571,7 +3527,6 @@ class StepBasic_EulerAngles : public Standard_Transient {
 /*********************************
 * class StepBasic_ExternalSource *
 *********************************/
-%nodefaultctor StepBasic_ExternalSource;
 class StepBasic_ExternalSource : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3616,7 +3571,6 @@ class StepBasic_ExternalSource : public Standard_Transient {
 /****************************************
 * class StepBasic_ExternallyDefinedItem *
 ****************************************/
-%nodefaultctor StepBasic_ExternallyDefinedItem;
 class StepBasic_ExternallyDefinedItem : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3677,7 +3631,6 @@ class StepBasic_ExternallyDefinedItem : public Standard_Transient {
 /**********************************
 * class StepBasic_GeneralProperty *
 **********************************/
-%nodefaultctor StepBasic_GeneralProperty;
 class StepBasic_GeneralProperty : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -3762,7 +3715,6 @@ class StepBasic_GeneralProperty : public Standard_Transient {
 /************************
 * class StepBasic_Group *
 ************************/
-%nodefaultctor StepBasic_Group;
 class StepBasic_Group : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -3831,7 +3783,6 @@ class StepBasic_Group : public Standard_Transient {
 /**********************************
 * class StepBasic_GroupAssignment *
 **********************************/
-%nodefaultctor StepBasic_GroupAssignment;
 class StepBasic_GroupAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedGroup ******************/
@@ -3876,7 +3827,6 @@ class StepBasic_GroupAssignment : public Standard_Transient {
 /************************************
 * class StepBasic_GroupRelationship *
 ************************************/
-%nodefaultctor StepBasic_GroupRelationship;
 class StepBasic_GroupRelationship : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -3977,7 +3927,6 @@ class StepBasic_GroupRelationship : public Standard_Transient {
 /*******************************************
 * class StepBasic_IdentificationAssignment *
 *******************************************/
-%nodefaultctor StepBasic_IdentificationAssignment;
 class StepBasic_IdentificationAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedId ******************/
@@ -4038,7 +3987,6 @@ class StepBasic_IdentificationAssignment : public Standard_Transient {
 /*************************************
 * class StepBasic_IdentificationRole *
 *************************************/
-%nodefaultctor StepBasic_IdentificationRole;
 class StepBasic_IdentificationRole : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -4107,7 +4055,6 @@ class StepBasic_IdentificationRole : public Standard_Transient {
 /****************************
 * class StepBasic_LocalTime *
 ****************************/
-%nodefaultctor StepBasic_LocalTime;
 class StepBasic_LocalTime : public Standard_Transient {
 	public:
 		/****************** HasMinuteComponent ******************/
@@ -4215,7 +4162,6 @@ class StepBasic_LocalTime : public Standard_Transient {
 /*************************************
 * class StepBasic_MeasureValueMember *
 *************************************/
-%nodefaultctor StepBasic_MeasureValueMember;
 class StepBasic_MeasureValueMember : public StepData_SelectReal {
 	public:
 		/****************** HasName ******************/
@@ -4254,7 +4200,6 @@ class StepBasic_MeasureValueMember : public StepData_SelectReal {
 /**********************************
 * class StepBasic_MeasureWithUnit *
 **********************************/
-%nodefaultctor StepBasic_MeasureWithUnit;
 class StepBasic_MeasureWithUnit : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -4322,7 +4267,6 @@ class StepBasic_MeasureWithUnit : public Standard_Transient {
 /*********************************
 * class StepBasic_NameAssignment *
 *********************************/
-%nodefaultctor StepBasic_NameAssignment;
 class StepBasic_NameAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedName ******************/
@@ -4367,7 +4311,6 @@ class StepBasic_NameAssignment : public Standard_Transient {
 /****************************
 * class StepBasic_NamedUnit *
 ****************************/
-%nodefaultctor StepBasic_NamedUnit;
 class StepBasic_NamedUnit : public Standard_Transient {
 	public:
 		/****************** Dimensions ******************/
@@ -4409,7 +4352,6 @@ class StepBasic_NamedUnit : public Standard_Transient {
 /*****************************
 * class StepBasic_ObjectRole *
 *****************************/
-%nodefaultctor StepBasic_ObjectRole;
 class StepBasic_ObjectRole : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -4478,7 +4420,6 @@ class StepBasic_ObjectRole : public Standard_Transient {
 /*******************************
 * class StepBasic_Organization *
 *******************************/
-%nodefaultctor StepBasic_Organization;
 class StepBasic_Organization : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -4560,7 +4501,6 @@ class StepBasic_Organization : public Standard_Transient {
 /*****************************************
 * class StepBasic_OrganizationAssignment *
 *****************************************/
-%nodefaultctor StepBasic_OrganizationAssignment;
 class StepBasic_OrganizationAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedOrganization ******************/
@@ -4610,7 +4550,6 @@ class StepBasic_OrganizationAssignment : public Standard_Transient {
 /***********************************
 * class StepBasic_OrganizationRole *
 ***********************************/
-%nodefaultctor StepBasic_OrganizationRole;
 class StepBasic_OrganizationRole : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -4652,7 +4591,6 @@ class StepBasic_OrganizationRole : public Standard_Transient {
 /*************************
 * class StepBasic_Person *
 *************************/
-%nodefaultctor StepBasic_Person;
 class StepBasic_Person : public Standard_Transient {
 	public:
 		/****************** FirstName ******************/
@@ -4860,7 +4798,6 @@ class StepBasic_Person : public Standard_Transient {
 /****************************************
 * class StepBasic_PersonAndOrganization *
 ****************************************/
-%nodefaultctor StepBasic_PersonAndOrganization;
 class StepBasic_PersonAndOrganization : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -4916,7 +4853,6 @@ class StepBasic_PersonAndOrganization : public Standard_Transient {
 /**************************************************
 * class StepBasic_PersonAndOrganizationAssignment *
 **************************************************/
-%nodefaultctor StepBasic_PersonAndOrganizationAssignment;
 class StepBasic_PersonAndOrganizationAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedPersonAndOrganization ******************/
@@ -4966,7 +4902,6 @@ class StepBasic_PersonAndOrganizationAssignment : public Standard_Transient {
 /********************************************
 * class StepBasic_PersonAndOrganizationRole *
 ********************************************/
-%nodefaultctor StepBasic_PersonAndOrganizationRole;
 class StepBasic_PersonAndOrganizationRole : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -5008,7 +4943,6 @@ class StepBasic_PersonAndOrganizationRole : public Standard_Transient {
 /*******************************************
 * class StepBasic_PersonOrganizationSelect *
 *******************************************/
-%nodefaultctor StepBasic_PersonOrganizationSelect;
 class StepBasic_PersonOrganizationSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -5055,7 +4989,6 @@ class StepBasic_PersonOrganizationSelect : public StepData_SelectType {
 /**************************
 * class StepBasic_Product *
 **************************/
-%nodefaultctor StepBasic_Product;
 class StepBasic_Product : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -5151,7 +5084,6 @@ class StepBasic_Product : public Standard_Transient {
 /**********************************
 * class StepBasic_ProductCategory *
 **********************************/
-%nodefaultctor StepBasic_ProductCategory;
 class StepBasic_ProductCategory : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -5219,7 +5151,6 @@ class StepBasic_ProductCategory : public Standard_Transient {
 /**********************************************
 * class StepBasic_ProductCategoryRelationship *
 **********************************************/
-%nodefaultctor StepBasic_ProductCategoryRelationship;
 class StepBasic_ProductCategoryRelationship : public Standard_Transient {
 	public:
 		/****************** Category ******************/
@@ -5320,7 +5251,6 @@ class StepBasic_ProductCategoryRelationship : public Standard_Transient {
 /************************************
 * class StepBasic_ProductDefinition *
 ************************************/
-%nodefaultctor StepBasic_ProductDefinition;
 class StepBasic_ProductDefinition : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -5404,7 +5334,6 @@ class StepBasic_ProductDefinition : public Standard_Transient {
 /*********************************************
 * class StepBasic_ProductDefinitionFormation *
 *********************************************/
-%nodefaultctor StepBasic_ProductDefinitionFormation;
 class StepBasic_ProductDefinitionFormation : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -5474,7 +5403,6 @@ class StepBasic_ProductDefinitionFormation : public Standard_Transient {
 /*********************************************************
 * class StepBasic_ProductDefinitionFormationRelationship *
 *********************************************************/
-%nodefaultctor StepBasic_ProductDefinitionFormationRelationship;
 class StepBasic_ProductDefinitionFormationRelationship : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -5583,7 +5511,6 @@ class StepBasic_ProductDefinitionFormationRelationship : public Standard_Transie
 /***********************************************
 * class StepBasic_ProductDefinitionOrReference *
 ***********************************************/
-%nodefaultctor StepBasic_ProductDefinitionOrReference;
 class StepBasic_ProductDefinitionOrReference : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -5630,7 +5557,6 @@ class StepBasic_ProductDefinitionOrReference : public StepData_SelectType {
 /*********************************************
 * class StepBasic_ProductDefinitionReference *
 *********************************************/
-%nodefaultctor StepBasic_ProductDefinitionReference;
 class StepBasic_ProductDefinitionReference : public Standard_Transient {
 	public:
 		/****************** HasIdOwningOrganizationName ******************/
@@ -5759,7 +5685,6 @@ class StepBasic_ProductDefinitionReference : public Standard_Transient {
 /************************************************
 * class StepBasic_ProductDefinitionRelationship *
 ************************************************/
-%nodefaultctor StepBasic_ProductDefinitionRelationship;
 class StepBasic_ProductDefinitionRelationship : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -5922,7 +5847,6 @@ class StepBasic_ProductDefinitionRelationship : public Standard_Transient {
 /*************************************************
 * class StepBasic_ProductOrFormationOrDefinition *
 *************************************************/
-%nodefaultctor StepBasic_ProductOrFormationOrDefinition;
 class StepBasic_ProductOrFormationOrDefinition : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -5969,7 +5893,6 @@ class StepBasic_ProductOrFormationOrDefinition : public StepData_SelectType {
 /**********************************
 * class StepBasic_RoleAssociation *
 **********************************/
-%nodefaultctor StepBasic_RoleAssociation;
 class StepBasic_RoleAssociation : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -6030,7 +5953,6 @@ class StepBasic_RoleAssociation : public Standard_Transient {
 /*****************************
 * class StepBasic_RoleSelect *
 *****************************/
-%nodefaultctor StepBasic_RoleSelect;
 class StepBasic_RoleSelect : public StepData_SelectType {
 	public:
 		/****************** ActionAssignment ******************/
@@ -6125,7 +6047,6 @@ class StepBasic_RoleSelect : public StepData_SelectType {
 /*****************************************
 * class StepBasic_SecurityClassification *
 *****************************************/
-%nodefaultctor StepBasic_SecurityClassification;
 class StepBasic_SecurityClassification : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -6195,7 +6116,6 @@ class StepBasic_SecurityClassification : public Standard_Transient {
 /***************************************************
 * class StepBasic_SecurityClassificationAssignment *
 ***************************************************/
-%nodefaultctor StepBasic_SecurityClassificationAssignment;
 class StepBasic_SecurityClassificationAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedSecurityClassification ******************/
@@ -6231,7 +6151,6 @@ class StepBasic_SecurityClassificationAssignment : public Standard_Transient {
 /**********************************************
 * class StepBasic_SecurityClassificationLevel *
 **********************************************/
-%nodefaultctor StepBasic_SecurityClassificationLevel;
 class StepBasic_SecurityClassificationLevel : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -6273,7 +6192,6 @@ class StepBasic_SecurityClassificationLevel : public Standard_Transient {
 /*****************************
 * class StepBasic_SizeMember *
 *****************************/
-%nodefaultctor StepBasic_SizeMember;
 class StepBasic_SizeMember : public StepData_SelectReal {
 	public:
 		/****************** HasName ******************/
@@ -6312,7 +6230,6 @@ class StepBasic_SizeMember : public StepData_SelectReal {
 /*****************************
 * class StepBasic_SizeSelect *
 *****************************/
-%nodefaultctor StepBasic_SizeSelect;
 class StepBasic_SizeSelect : public StepData_SelectType {
 	public:
 		/****************** CaseMem ******************/
@@ -6368,7 +6285,6 @@ class StepBasic_SizeSelect : public StepData_SelectType {
 /*****************************
 * class StepBasic_SourceItem *
 *****************************/
-%nodefaultctor StepBasic_SourceItem;
 class StepBasic_SourceItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -6408,7 +6324,6 @@ class StepBasic_SourceItem : public StepData_SelectType {
 /***********************
 * class StepBasic_Unit *
 ***********************/
-%nodefaultctor StepBasic_Unit;
 class StepBasic_Unit : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -6449,7 +6364,6 @@ class StepBasic_Unit : public StepData_SelectType {
 /*****************************************
 * class StepBasic_VersionedActionRequest *
 *****************************************/
-%nodefaultctor StepBasic_VersionedActionRequest;
 class StepBasic_VersionedActionRequest : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -6550,7 +6464,6 @@ class StepBasic_VersionedActionRequest : public Standard_Transient {
 /***************************
 * class StepBasic_AreaUnit *
 ***************************/
-%nodefaultctor StepBasic_AreaUnit;
 class StepBasic_AreaUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** StepBasic_AreaUnit ******************/
@@ -6572,7 +6485,6 @@ class StepBasic_AreaUnit : public StepBasic_NamedUnit {
 /*******************************
 * class StepBasic_CalendarDate *
 *******************************/
-%nodefaultctor StepBasic_CalendarDate;
 class StepBasic_CalendarDate : public StepBasic_Date {
 	public:
 		/****************** DayComponent ******************/
@@ -6630,7 +6542,6 @@ class StepBasic_CalendarDate : public StepBasic_Date {
 /**************************************
 * class StepBasic_ConversionBasedUnit *
 **************************************/
-%nodefaultctor StepBasic_ConversionBasedUnit;
 class StepBasic_ConversionBasedUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** ConversionFactor ******************/
@@ -6688,7 +6599,6 @@ class StepBasic_ConversionBasedUnit : public StepBasic_NamedUnit {
 /**********************************
 * class StepBasic_DigitalDocument *
 **********************************/
-%nodefaultctor StepBasic_DigitalDocument;
 class StepBasic_DigitalDocument : public StepBasic_Document {
 	public:
 		/****************** StepBasic_DigitalDocument ******************/
@@ -6710,7 +6620,6 @@ class StepBasic_DigitalDocument : public StepBasic_Document {
 /*******************************
 * class StepBasic_DocumentFile *
 *******************************/
-%nodefaultctor StepBasic_DocumentFile;
 class StepBasic_DocumentFile : public StepBasic_Document {
 	public:
 		/****************** CharacterizedObject ******************/
@@ -6769,7 +6678,6 @@ class StepBasic_DocumentFile : public StepBasic_Document {
 /*********************************************
 * class StepBasic_DocumentProductEquivalence *
 *********************************************/
-%nodefaultctor StepBasic_DocumentProductEquivalence;
 class StepBasic_DocumentProductEquivalence : public StepBasic_DocumentProductAssociation {
 	public:
 		/****************** StepBasic_DocumentProductEquivalence ******************/
@@ -6792,7 +6700,6 @@ class StepBasic_DocumentProductEquivalence : public StepBasic_DocumentProductAss
 /***************************************************
 * class StepBasic_ExternalIdentificationAssignment *
 ***************************************************/
-%nodefaultctor StepBasic_ExternalIdentificationAssignment;
 class StepBasic_ExternalIdentificationAssignment : public StepBasic_IdentificationAssignment {
 	public:
 		/****************** Init ******************/
@@ -6841,7 +6748,6 @@ class StepBasic_ExternalIdentificationAssignment : public StepBasic_Identificati
 /****************************************
 * class StepBasic_LengthMeasureWithUnit *
 ****************************************/
-%nodefaultctor StepBasic_LengthMeasureWithUnit;
 class StepBasic_LengthMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
 		/****************** StepBasic_LengthMeasureWithUnit ******************/
@@ -6864,7 +6770,6 @@ class StepBasic_LengthMeasureWithUnit : public StepBasic_MeasureWithUnit {
 /*****************************
 * class StepBasic_LengthUnit *
 *****************************/
-%nodefaultctor StepBasic_LengthUnit;
 class StepBasic_LengthUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** StepBasic_LengthUnit ******************/
@@ -6887,7 +6792,6 @@ class StepBasic_LengthUnit : public StepBasic_NamedUnit {
 /**************************************
 * class StepBasic_MassMeasureWithUnit *
 **************************************/
-%nodefaultctor StepBasic_MassMeasureWithUnit;
 class StepBasic_MassMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
 		/****************** StepBasic_MassMeasureWithUnit ******************/
@@ -6910,7 +6814,6 @@ class StepBasic_MassMeasureWithUnit : public StepBasic_MeasureWithUnit {
 /***************************
 * class StepBasic_MassUnit *
 ***************************/
-%nodefaultctor StepBasic_MassUnit;
 class StepBasic_MassUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** StepBasic_MassUnit ******************/
@@ -6933,7 +6836,6 @@ class StepBasic_MassUnit : public StepBasic_NamedUnit {
 /******************************
 * class StepBasic_OrdinalDate *
 ******************************/
-%nodefaultctor StepBasic_OrdinalDate;
 class StepBasic_OrdinalDate : public StepBasic_Date {
 	public:
 		/****************** DayComponent ******************/
@@ -6977,7 +6879,6 @@ class StepBasic_OrdinalDate : public StepBasic_Date {
 /****************************************
 * class StepBasic_OrganizationalAddress *
 ****************************************/
-%nodefaultctor StepBasic_OrganizationalAddress;
 class StepBasic_OrganizationalAddress : public StepBasic_Address {
 	public:
 		/****************** Description ******************/
@@ -7093,7 +6994,6 @@ class StepBasic_OrganizationalAddress : public StepBasic_Address {
 /**********************************
 * class StepBasic_PersonalAddress *
 **********************************/
-%nodefaultctor StepBasic_PersonalAddress;
 class StepBasic_PersonalAddress : public StepBasic_Address {
 	public:
 		/****************** Description ******************/
@@ -7209,7 +7109,6 @@ class StepBasic_PersonalAddress : public StepBasic_Address {
 /*****************************************************
 * class StepBasic_PhysicallyModeledProductDefinition *
 *****************************************************/
-%nodefaultctor StepBasic_PhysicallyModeledProductDefinition;
 class StepBasic_PhysicallyModeledProductDefinition : public StepBasic_ProductDefinition {
 	public:
 		/****************** StepBasic_PhysicallyModeledProductDefinition ******************/
@@ -7231,7 +7130,6 @@ class StepBasic_PhysicallyModeledProductDefinition : public StepBasic_ProductDef
 /********************************************
 * class StepBasic_PlaneAngleMeasureWithUnit *
 ********************************************/
-%nodefaultctor StepBasic_PlaneAngleMeasureWithUnit;
 class StepBasic_PlaneAngleMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
 		/****************** StepBasic_PlaneAngleMeasureWithUnit ******************/
@@ -7254,7 +7152,6 @@ class StepBasic_PlaneAngleMeasureWithUnit : public StepBasic_MeasureWithUnit {
 /*********************************
 * class StepBasic_PlaneAngleUnit *
 *********************************/
-%nodefaultctor StepBasic_PlaneAngleUnit;
 class StepBasic_PlaneAngleUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** StepBasic_PlaneAngleUnit ******************/
@@ -7277,7 +7174,6 @@ class StepBasic_PlaneAngleUnit : public StepBasic_NamedUnit {
 /****************************************
 * class StepBasic_ProductConceptContext *
 ****************************************/
-%nodefaultctor StepBasic_ProductConceptContext;
 class StepBasic_ProductConceptContext : public StepBasic_ApplicationContextElement {
 	public:
 		/****************** Init ******************/
@@ -7326,7 +7222,6 @@ class StepBasic_ProductConceptContext : public StepBasic_ApplicationContextEleme
 /*********************************
 * class StepBasic_ProductContext *
 *********************************/
-%nodefaultctor StepBasic_ProductContext;
 class StepBasic_ProductContext : public StepBasic_ApplicationContextElement {
 	public:
 		/****************** DisciplineType ******************/
@@ -7372,7 +7267,6 @@ class StepBasic_ProductContext : public StepBasic_ApplicationContextElement {
 /*******************************************
 * class StepBasic_ProductDefinitionContext *
 *******************************************/
-%nodefaultctor StepBasic_ProductDefinitionContext;
 class StepBasic_ProductDefinitionContext : public StepBasic_ApplicationContextElement {
 	public:
 		/****************** Init ******************/
@@ -7418,7 +7312,6 @@ class StepBasic_ProductDefinitionContext : public StepBasic_ApplicationContextEl
 /***********************************************
 * class StepBasic_ProductDefinitionEffectivity *
 ***********************************************/
-%nodefaultctor StepBasic_ProductDefinitionEffectivity;
 class StepBasic_ProductDefinitionEffectivity : public StepBasic_Effectivity {
 	public:
 		/****************** Init ******************/
@@ -7461,7 +7354,6 @@ class StepBasic_ProductDefinitionEffectivity : public StepBasic_Effectivity {
 /****************************************************************
 * class StepBasic_ProductDefinitionFormationWithSpecifiedSource *
 ****************************************************************/
-%nodefaultctor StepBasic_ProductDefinitionFormationWithSpecifiedSource;
 class StepBasic_ProductDefinitionFormationWithSpecifiedSource : public StepBasic_ProductDefinitionFormation {
 	public:
 		/****************** Init ******************/
@@ -7509,7 +7401,6 @@ class StepBasic_ProductDefinitionFormationWithSpecifiedSource : public StepBasic
 /********************************************************************
 * class StepBasic_ProductDefinitionReferenceWithLocalRepresentation *
 ********************************************************************/
-%nodefaultctor StepBasic_ProductDefinitionReferenceWithLocalRepresentation;
 class StepBasic_ProductDefinitionReferenceWithLocalRepresentation : public StepBasic_ProductDefinition {
 	public:
 		/****************** Init ******************/
@@ -7561,7 +7452,6 @@ class StepBasic_ProductDefinitionReferenceWithLocalRepresentation : public StepB
 /***********************************************************
 * class StepBasic_ProductDefinitionWithAssociatedDocuments *
 ***********************************************************/
-%nodefaultctor StepBasic_ProductDefinitionWithAssociatedDocuments;
 class StepBasic_ProductDefinitionWithAssociatedDocuments : public StepBasic_ProductDefinition {
 	public:
 		/****************** DocIds ******************/
@@ -7631,7 +7521,6 @@ class StepBasic_ProductDefinitionWithAssociatedDocuments : public StepBasic_Prod
 /************************************************
 * class StepBasic_ProductRelatedProductCategory *
 ************************************************/
-%nodefaultctor StepBasic_ProductRelatedProductCategory;
 class StepBasic_ProductRelatedProductCategory : public StepBasic_ProductCategory {
 	public:
 		/****************** Init ******************/
@@ -7691,7 +7580,6 @@ class StepBasic_ProductRelatedProductCategory : public StepBasic_ProductCategory
 /***************************************
 * class StepBasic_RatioMeasureWithUnit *
 ***************************************/
-%nodefaultctor StepBasic_RatioMeasureWithUnit;
 class StepBasic_RatioMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
 		/****************** StepBasic_RatioMeasureWithUnit ******************/
@@ -7714,7 +7602,6 @@ class StepBasic_RatioMeasureWithUnit : public StepBasic_MeasureWithUnit {
 /****************************
 * class StepBasic_RatioUnit *
 ****************************/
-%nodefaultctor StepBasic_RatioUnit;
 class StepBasic_RatioUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** StepBasic_RatioUnit ******************/
@@ -7737,7 +7624,6 @@ class StepBasic_RatioUnit : public StepBasic_NamedUnit {
 /*************************
 * class StepBasic_SiUnit *
 *************************/
-%nodefaultctor StepBasic_SiUnit;
 class StepBasic_SiUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** Dimensions ******************/
@@ -7817,7 +7703,6 @@ class StepBasic_SiUnit : public StepBasic_NamedUnit {
 /********************************************
 * class StepBasic_SolidAngleMeasureWithUnit *
 ********************************************/
-%nodefaultctor StepBasic_SolidAngleMeasureWithUnit;
 class StepBasic_SolidAngleMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
 		/****************** StepBasic_SolidAngleMeasureWithUnit ******************/
@@ -7840,7 +7725,6 @@ class StepBasic_SolidAngleMeasureWithUnit : public StepBasic_MeasureWithUnit {
 /*********************************
 * class StepBasic_SolidAngleUnit *
 *********************************/
-%nodefaultctor StepBasic_SolidAngleUnit;
 class StepBasic_SolidAngleUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** StepBasic_SolidAngleUnit ******************/
@@ -7863,7 +7747,6 @@ class StepBasic_SolidAngleUnit : public StepBasic_NamedUnit {
 /***********************************************
 * class StepBasic_ThermodynamicTemperatureUnit *
 ***********************************************/
-%nodefaultctor StepBasic_ThermodynamicTemperatureUnit;
 class StepBasic_ThermodynamicTemperatureUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** StepBasic_ThermodynamicTemperatureUnit ******************/
@@ -7886,7 +7769,6 @@ class StepBasic_ThermodynamicTemperatureUnit : public StepBasic_NamedUnit {
 /**************************************
 * class StepBasic_TimeMeasureWithUnit *
 **************************************/
-%nodefaultctor StepBasic_TimeMeasureWithUnit;
 class StepBasic_TimeMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
 		/****************** StepBasic_TimeMeasureWithUnit ******************/
@@ -7909,7 +7791,6 @@ class StepBasic_TimeMeasureWithUnit : public StepBasic_MeasureWithUnit {
 /***************************
 * class StepBasic_TimeUnit *
 ***************************/
-%nodefaultctor StepBasic_TimeUnit;
 class StepBasic_TimeUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** StepBasic_TimeUnit ******************/
@@ -7932,7 +7813,6 @@ class StepBasic_TimeUnit : public StepBasic_NamedUnit {
 /*********************************************
 * class StepBasic_UncertaintyMeasureWithUnit *
 *********************************************/
-%nodefaultctor StepBasic_UncertaintyMeasureWithUnit;
 class StepBasic_UncertaintyMeasureWithUnit : public StepBasic_MeasureWithUnit {
 	public:
 		/****************** Description ******************/
@@ -7992,7 +7872,6 @@ class StepBasic_UncertaintyMeasureWithUnit : public StepBasic_MeasureWithUnit {
 /*****************************
 * class StepBasic_VolumeUnit *
 *****************************/
-%nodefaultctor StepBasic_VolumeUnit;
 class StepBasic_VolumeUnit : public StepBasic_NamedUnit {
 	public:
 		/****************** StepBasic_VolumeUnit ******************/
@@ -8014,7 +7893,6 @@ class StepBasic_VolumeUnit : public StepBasic_NamedUnit {
 /***************************************
 * class StepBasic_WeekOfYearAndDayDate *
 ***************************************/
-%nodefaultctor StepBasic_WeekOfYearAndDayDate;
 class StepBasic_WeekOfYearAndDayDate : public StepBasic_Date {
 	public:
 		/****************** DayComponent ******************/
@@ -8084,7 +7962,6 @@ class StepBasic_WeekOfYearAndDayDate : public StepBasic_Date {
 /*************************************************
 * class StepBasic_ConversionBasedUnitAndAreaUnit *
 *************************************************/
-%nodefaultctor StepBasic_ConversionBasedUnitAndAreaUnit;
 class StepBasic_ConversionBasedUnitAndAreaUnit : public StepBasic_ConversionBasedUnit {
 	public:
 		/****************** AreaUnit ******************/
@@ -8119,7 +7996,6 @@ class StepBasic_ConversionBasedUnitAndAreaUnit : public StepBasic_ConversionBase
 /***************************************************
 * class StepBasic_ConversionBasedUnitAndLengthUnit *
 ***************************************************/
-%nodefaultctor StepBasic_ConversionBasedUnitAndLengthUnit;
 class StepBasic_ConversionBasedUnitAndLengthUnit : public StepBasic_ConversionBasedUnit {
 	public:
 		/****************** Init ******************/
@@ -8165,7 +8041,6 @@ class StepBasic_ConversionBasedUnitAndLengthUnit : public StepBasic_ConversionBa
 /*************************************************
 * class StepBasic_ConversionBasedUnitAndMassUnit *
 *************************************************/
-%nodefaultctor StepBasic_ConversionBasedUnitAndMassUnit;
 class StepBasic_ConversionBasedUnitAndMassUnit : public StepBasic_ConversionBasedUnit {
 	public:
 		/****************** Init ******************/
@@ -8211,7 +8086,6 @@ class StepBasic_ConversionBasedUnitAndMassUnit : public StepBasic_ConversionBase
 /*******************************************************
 * class StepBasic_ConversionBasedUnitAndPlaneAngleUnit *
 *******************************************************/
-%nodefaultctor StepBasic_ConversionBasedUnitAndPlaneAngleUnit;
 class StepBasic_ConversionBasedUnitAndPlaneAngleUnit : public StepBasic_ConversionBasedUnit {
 	public:
 		/****************** Init ******************/
@@ -8257,7 +8131,6 @@ class StepBasic_ConversionBasedUnitAndPlaneAngleUnit : public StepBasic_Conversi
 /**************************************************
 * class StepBasic_ConversionBasedUnitAndRatioUnit *
 **************************************************/
-%nodefaultctor StepBasic_ConversionBasedUnitAndRatioUnit;
 class StepBasic_ConversionBasedUnitAndRatioUnit : public StepBasic_ConversionBasedUnit {
 	public:
 		/****************** Init ******************/
@@ -8303,7 +8176,6 @@ class StepBasic_ConversionBasedUnitAndRatioUnit : public StepBasic_ConversionBas
 /*******************************************************
 * class StepBasic_ConversionBasedUnitAndSolidAngleUnit *
 *******************************************************/
-%nodefaultctor StepBasic_ConversionBasedUnitAndSolidAngleUnit;
 class StepBasic_ConversionBasedUnitAndSolidAngleUnit : public StepBasic_ConversionBasedUnit {
 	public:
 		/****************** Init ******************/
@@ -8349,7 +8221,6 @@ class StepBasic_ConversionBasedUnitAndSolidAngleUnit : public StepBasic_Conversi
 /*************************************************
 * class StepBasic_ConversionBasedUnitAndTimeUnit *
 *************************************************/
-%nodefaultctor StepBasic_ConversionBasedUnitAndTimeUnit;
 class StepBasic_ConversionBasedUnitAndTimeUnit : public StepBasic_ConversionBasedUnit {
 	public:
 		/****************** Init ******************/
@@ -8395,7 +8266,6 @@ class StepBasic_ConversionBasedUnitAndTimeUnit : public StepBasic_ConversionBase
 /***************************************************
 * class StepBasic_ConversionBasedUnitAndVolumeUnit *
 ***************************************************/
-%nodefaultctor StepBasic_ConversionBasedUnitAndVolumeUnit;
 class StepBasic_ConversionBasedUnitAndVolumeUnit : public StepBasic_ConversionBasedUnit {
 	public:
 		/****************** SetVolumeUnit ******************/
@@ -8430,7 +8300,6 @@ class StepBasic_ConversionBasedUnitAndVolumeUnit : public StepBasic_ConversionBa
 /********************************
 * class StepBasic_DesignContext *
 ********************************/
-%nodefaultctor StepBasic_DesignContext;
 class StepBasic_DesignContext : public StepBasic_ProductDefinitionContext {
 	public:
 		/****************** StepBasic_DesignContext ******************/
@@ -8452,7 +8321,6 @@ class StepBasic_DesignContext : public StepBasic_ProductDefinitionContext {
 /************************************
 * class StepBasic_MechanicalContext *
 ************************************/
-%nodefaultctor StepBasic_MechanicalContext;
 class StepBasic_MechanicalContext : public StepBasic_ProductContext {
 	public:
 		/****************** StepBasic_MechanicalContext ******************/
@@ -8475,7 +8343,6 @@ class StepBasic_MechanicalContext : public StepBasic_ProductContext {
 /******************************
 * class StepBasic_ProductType *
 ******************************/
-%nodefaultctor StepBasic_ProductType;
 class StepBasic_ProductType : public StepBasic_ProductRelatedProductCategory {
 	public:
 		/****************** StepBasic_ProductType ******************/
@@ -8498,7 +8365,6 @@ class StepBasic_ProductType : public StepBasic_ProductRelatedProductCategory {
 /************************************
 * class StepBasic_SiUnitAndAreaUnit *
 ************************************/
-%nodefaultctor StepBasic_SiUnitAndAreaUnit;
 class StepBasic_SiUnitAndAreaUnit : public StepBasic_SiUnit {
 	public:
 		/****************** AreaUnit ******************/
@@ -8533,7 +8399,6 @@ class StepBasic_SiUnitAndAreaUnit : public StepBasic_SiUnit {
 /**************************************
 * class StepBasic_SiUnitAndLengthUnit *
 **************************************/
-%nodefaultctor StepBasic_SiUnitAndLengthUnit;
 class StepBasic_SiUnitAndLengthUnit : public StepBasic_SiUnit {
 	public:
 		/****************** Init ******************/
@@ -8579,7 +8444,6 @@ class StepBasic_SiUnitAndLengthUnit : public StepBasic_SiUnit {
 /************************************
 * class StepBasic_SiUnitAndMassUnit *
 ************************************/
-%nodefaultctor StepBasic_SiUnitAndMassUnit;
 class StepBasic_SiUnitAndMassUnit : public StepBasic_SiUnit {
 	public:
 		/****************** Init ******************/
@@ -8625,7 +8489,6 @@ class StepBasic_SiUnitAndMassUnit : public StepBasic_SiUnit {
 /******************************************
 * class StepBasic_SiUnitAndPlaneAngleUnit *
 ******************************************/
-%nodefaultctor StepBasic_SiUnitAndPlaneAngleUnit;
 class StepBasic_SiUnitAndPlaneAngleUnit : public StepBasic_SiUnit {
 	public:
 		/****************** Init ******************/
@@ -8671,7 +8534,6 @@ class StepBasic_SiUnitAndPlaneAngleUnit : public StepBasic_SiUnit {
 /*************************************
 * class StepBasic_SiUnitAndRatioUnit *
 *************************************/
-%nodefaultctor StepBasic_SiUnitAndRatioUnit;
 class StepBasic_SiUnitAndRatioUnit : public StepBasic_SiUnit {
 	public:
 		/****************** Init ******************/
@@ -8717,7 +8579,6 @@ class StepBasic_SiUnitAndRatioUnit : public StepBasic_SiUnit {
 /******************************************
 * class StepBasic_SiUnitAndSolidAngleUnit *
 ******************************************/
-%nodefaultctor StepBasic_SiUnitAndSolidAngleUnit;
 class StepBasic_SiUnitAndSolidAngleUnit : public StepBasic_SiUnit {
 	public:
 		/****************** Init ******************/
@@ -8763,7 +8624,6 @@ class StepBasic_SiUnitAndSolidAngleUnit : public StepBasic_SiUnit {
 /********************************************************
 * class StepBasic_SiUnitAndThermodynamicTemperatureUnit *
 ********************************************************/
-%nodefaultctor StepBasic_SiUnitAndThermodynamicTemperatureUnit;
 class StepBasic_SiUnitAndThermodynamicTemperatureUnit : public StepBasic_SiUnit {
 	public:
 		/****************** Init ******************/
@@ -8809,7 +8669,6 @@ class StepBasic_SiUnitAndThermodynamicTemperatureUnit : public StepBasic_SiUnit 
 /************************************
 * class StepBasic_SiUnitAndTimeUnit *
 ************************************/
-%nodefaultctor StepBasic_SiUnitAndTimeUnit;
 class StepBasic_SiUnitAndTimeUnit : public StepBasic_SiUnit {
 	public:
 		/****************** Init ******************/
@@ -8855,7 +8714,6 @@ class StepBasic_SiUnitAndTimeUnit : public StepBasic_SiUnit {
 /**************************************
 * class StepBasic_SiUnitAndVolumeUnit *
 **************************************/
-%nodefaultctor StepBasic_SiUnitAndVolumeUnit;
 class StepBasic_SiUnitAndVolumeUnit : public StepBasic_SiUnit {
 	public:
 		/****************** SetVolumeUnit ******************/

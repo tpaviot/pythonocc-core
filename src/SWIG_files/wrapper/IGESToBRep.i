@@ -193,7 +193,6 @@ class IGESToBRep {
 /*************************
 * class IGESToBRep_Actor *
 *************************/
-%nodefaultctor IGESToBRep_Actor;
 class IGESToBRep_Actor : public Transfer_ActorOfTransientProcess {
 	public:
 		/****************** GetContinuity ******************/
@@ -258,7 +257,6 @@ class IGESToBRep_Actor : public Transfer_ActorOfTransientProcess {
 /*********************************
 * class IGESToBRep_AlgoContainer *
 *********************************/
-%nodefaultctor IGESToBRep_AlgoContainer;
 class IGESToBRep_AlgoContainer : public Standard_Transient {
 	public:
 		/****************** IGESToBRep_AlgoContainer ******************/
@@ -295,7 +293,6 @@ class IGESToBRep_AlgoContainer : public Standard_Transient {
 /***********************************
 * class IGESToBRep_CurveAndSurface *
 ***********************************/
-%nodefaultctor IGESToBRep_CurveAndSurface;
 class IGESToBRep_CurveAndSurface {
 	public:
 		/****************** AddShapeResult ******************/
@@ -645,7 +642,6 @@ class IGESToBRep_CurveAndSurface {
 /********************************
 * class IGESToBRep_IGESBoundary *
 ********************************/
-%nodefaultctor IGESToBRep_IGESBoundary;
 class IGESToBRep_IGESBoundary : public Standard_Transient {
 	public:
 		/****************** Check ******************/
@@ -768,7 +764,6 @@ class IGESToBRep_IGESBoundary : public Standard_Transient {
 /**************************
 * class IGESToBRep_Reader *
 **************************/
-%nodefaultctor IGESToBRep_Reader;
 class IGESToBRep_Reader {
 	public:
 		/****************** Actor ******************/
@@ -893,7 +888,6 @@ class IGESToBRep_Reader {
 /*********************************
 * class IGESToBRep_ToolContainer *
 *********************************/
-%nodefaultctor IGESToBRep_ToolContainer;
 class IGESToBRep_ToolContainer : public Standard_Transient {
 	public:
 		/****************** IGESBoundary ******************/
@@ -922,7 +916,6 @@ class IGESToBRep_ToolContainer : public Standard_Transient {
 /******************************
 * class IGESToBRep_BRepEntity *
 ******************************/
-%nodefaultctor IGESToBRep_BRepEntity;
 class IGESToBRep_BRepEntity : public IGESToBRep_CurveAndSurface {
 	public:
 		/****************** IGESToBRep_BRepEntity ******************/
@@ -1035,7 +1028,6 @@ class IGESToBRep_BRepEntity : public IGESToBRep_CurveAndSurface {
 /******************************
 * class IGESToBRep_BasicCurve *
 ******************************/
-%nodefaultctor IGESToBRep_BasicCurve;
 class IGESToBRep_BasicCurve : public IGESToBRep_CurveAndSurface {
 	public:
 		/****************** IGESToBRep_BasicCurve ******************/
@@ -1189,7 +1181,6 @@ class IGESToBRep_BasicCurve : public IGESToBRep_CurveAndSurface {
 /********************************
 * class IGESToBRep_BasicSurface *
 ********************************/
-%nodefaultctor IGESToBRep_BasicSurface;
 class IGESToBRep_BasicSurface : public IGESToBRep_CurveAndSurface {
 	public:
 		/****************** IGESToBRep_BasicSurface ******************/
@@ -1300,7 +1291,6 @@ class IGESToBRep_BasicSurface : public IGESToBRep_CurveAndSurface {
 /*****************************
 * class IGESToBRep_TopoCurve *
 *****************************/
-%nodefaultctor IGESToBRep_TopoCurve;
 class IGESToBRep_TopoCurve : public IGESToBRep_CurveAndSurface {
 	public:
 		/****************** Approx2dBSplineCurve ******************/
@@ -1549,7 +1539,6 @@ class IGESToBRep_TopoCurve : public IGESToBRep_CurveAndSurface {
 /*******************************
 * class IGESToBRep_TopoSurface *
 *******************************/
-%nodefaultctor IGESToBRep_TopoSurface;
 class IGESToBRep_TopoSurface : public IGESToBRep_CurveAndSurface {
 	public:
 		/****************** IGESToBRep_TopoSurface ******************/

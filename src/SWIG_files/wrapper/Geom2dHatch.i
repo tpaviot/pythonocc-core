@@ -115,7 +115,6 @@ typedef NCollection_DataMap <Standard_Integer , Geom2dHatch_Hatching , TColStd_M
 /*******************************
 * class Geom2dHatch_Classifier *
 *******************************/
-%nodefaultctor Geom2dHatch_Classifier;
 class Geom2dHatch_Classifier {
 	public:
 		/****************** Edge ******************/
@@ -196,7 +195,6 @@ class Geom2dHatch_Classifier {
 /****************************
 * class Geom2dHatch_Element *
 ****************************/
-%nodefaultctor Geom2dHatch_Element;
 class Geom2dHatch_Element {
 	public:
 		/****************** ChangeCurve ******************/
@@ -260,7 +258,6 @@ class Geom2dHatch_Element {
 /*****************************
 * class Geom2dHatch_Elements *
 *****************************/
-%nodefaultctor Geom2dHatch_Elements;
 class Geom2dHatch_Elements {
 	public:
 		/****************** Bind ******************/
@@ -422,7 +419,6 @@ class Geom2dHatch_Elements {
 /*****************************************
 * class Geom2dHatch_FClass2dOfClassifier *
 *****************************************/
-%nodefaultctor Geom2dHatch_FClass2dOfClassifier;
 class Geom2dHatch_FClass2dOfClassifier {
 	public:
 		/****************** ClosestIntersection ******************/
@@ -495,7 +491,6 @@ class Geom2dHatch_FClass2dOfClassifier {
 /****************************
 * class Geom2dHatch_Hatcher *
 ****************************/
-%nodefaultctor Geom2dHatch_Hatcher;
 class Geom2dHatch_Hatcher {
 	public:
 		/****************** AddElement ******************/
@@ -782,7 +777,6 @@ class Geom2dHatch_Hatcher {
 /*****************************
 * class Geom2dHatch_Hatching *
 *****************************/
-%nodefaultctor Geom2dHatch_Hatching;
 class Geom2dHatch_Hatching {
 	public:
 		/****************** AddDomain ******************/
@@ -966,7 +960,6 @@ class Geom2dHatch_Hatching {
 /********************************
 * class Geom2dHatch_Intersector *
 ********************************/
-%nodefaultctor Geom2dHatch_Intersector;
 class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 	public:
 		/****************** ConfusionTolerance ******************/

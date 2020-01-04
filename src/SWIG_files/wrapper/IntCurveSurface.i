@@ -155,7 +155,6 @@ class IntCurveSurface_Intersection {
 /******************************************
 * class IntCurveSurface_IntersectionPoint *
 ******************************************/
-%nodefaultctor IntCurveSurface_IntersectionPoint;
 class IntCurveSurface_IntersectionPoint {
 	public:
 		/****************** Dump ******************/
@@ -260,7 +259,6 @@ class IntCurveSurface_IntersectionPoint {
 /********************************************
 * class IntCurveSurface_IntersectionSegment *
 ********************************************/
-%nodefaultctor IntCurveSurface_IntersectionSegment;
 class IntCurveSurface_IntersectionSegment {
 	public:
 		/****************** Dump ******************/
@@ -336,7 +334,6 @@ class IntCurveSurface_IntersectionSegment {
 /**********************************************
 * class IntCurveSurface_TheCSFunctionOfHInter *
 **********************************************/
-%nodefaultctor IntCurveSurface_TheCSFunctionOfHInter;
 class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** AuxillarCurve ******************/
@@ -419,7 +416,6 @@ class IntCurveSurface_TheCSFunctionOfHInter : public math_FunctionSetWithDerivat
 /***************************************
 * class IntCurveSurface_TheExactHInter *
 ***************************************/
-%nodefaultctor IntCurveSurface_TheExactHInter;
 class IntCurveSurface_TheExactHInter {
 	public:
 		/****************** Function ******************/
@@ -780,7 +776,6 @@ class IntCurveSurface_TheHCurveTool {
 /************************************************
 * class IntCurveSurface_TheInterferenceOfHInter *
 ************************************************/
-%nodefaultctor IntCurveSurface_TheInterferenceOfHInter;
 class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 	public:
 		/****************** IntCurveSurface_TheInterferenceOfHInter ******************/
@@ -955,7 +950,6 @@ class IntCurveSurface_TheInterferenceOfHInter : public Intf_Interference {
 /*******************************************
 * class IntCurveSurface_ThePolygonOfHInter *
 *******************************************/
-%nodefaultctor IntCurveSurface_ThePolygonOfHInter;
 class IntCurveSurface_ThePolygonOfHInter {
 	public:
 		/****************** ApproxParamOnCurve ******************/
@@ -1270,7 +1264,6 @@ class IntCurveSurface_ThePolyhedronToolOfHInter {
 /***********************************************
 * class IntCurveSurface_TheQuadCurvExactHInter *
 ***********************************************/
-%nodefaultctor IntCurveSurface_TheQuadCurvExactHInter;
 class IntCurveSurface_TheQuadCurvExactHInter {
 	public:
 		/****************** IntCurveSurface_TheQuadCurvExactHInter ******************/
@@ -1329,7 +1322,6 @@ class IntCurveSurface_TheQuadCurvExactHInter {
 /****************************************************************
 * class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter *
 ****************************************************************/
-%nodefaultctor IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter;
 class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -1386,7 +1378,6 @@ class IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter : public math_Func
 /*******************************
 * class IntCurveSurface_HInter *
 *******************************/
-%nodefaultctor IntCurveSurface_HInter;
 class IntCurveSurface_HInter : public IntCurveSurface_Intersection {
 	public:
 		/****************** IntCurveSurface_HInter ******************/

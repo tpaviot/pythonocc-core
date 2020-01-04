@@ -203,7 +203,6 @@ class BinTools {
 /****************************
 * class BinTools_Curve2dSet *
 ****************************/
-%nodefaultctor BinTools_Curve2dSet;
 class BinTools_Curve2dSet {
 	public:
 		/****************** Add ******************/
@@ -289,7 +288,6 @@ class BinTools_Curve2dSet {
 /**************************
 * class BinTools_CurveSet *
 **************************/
-%nodefaultctor BinTools_CurveSet;
 class BinTools_CurveSet {
 	public:
 		/****************** Add ******************/
@@ -375,7 +373,6 @@ class BinTools_CurveSet {
 /*****************************
 * class BinTools_LocationSet *
 *****************************/
-%nodefaultctor BinTools_LocationSet;
 class BinTools_LocationSet {
 	public:
 		/****************** Add ******************/
@@ -447,7 +444,6 @@ class BinTools_LocationSet {
 /**************************
 * class BinTools_ShapeSet *
 **************************/
-%nodefaultctor BinTools_ShapeSet;
 class BinTools_ShapeSet {
 	public:
 		/****************** Add ******************/
@@ -680,7 +676,6 @@ class BinTools_ShapeSet {
 /****************************
 * class BinTools_SurfaceSet *
 ****************************/
-%nodefaultctor BinTools_SurfaceSet;
 class BinTools_SurfaceSet {
 	public:
 		/****************** Add ******************/

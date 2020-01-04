@@ -143,7 +143,6 @@ class ShapeProcess {
 /*****************************
 * class ShapeProcess_Context *
 *****************************/
-%nodefaultctor ShapeProcess_Context;
 class ShapeProcess_Context : public Standard_Transient {
 	public:
 		/****************** BooleanVal ******************/
@@ -401,7 +400,6 @@ class ShapeProcess_Operator : public Standard_Transient {
 /**********************************
 * class ShapeProcess_ShapeContext *
 **********************************/
-%nodefaultctor ShapeProcess_ShapeContext;
 class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 	public:
 		/****************** AddMessage ******************/
@@ -586,7 +584,6 @@ class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 /*******************************
 * class ShapeProcess_UOperator *
 *******************************/
-%nodefaultctor ShapeProcess_UOperator;
 class ShapeProcess_UOperator : public ShapeProcess_Operator {
 	public:
 		/****************** Perform ******************/

@@ -101,7 +101,6 @@ class Bisector {
 /***********************
 * class Bisector_Bisec *
 ***********************/
-%nodefaultctor Bisector_Bisec;
 class Bisector_Bisec {
 	public:
 		/****************** Bisector_Bisec ******************/
@@ -279,7 +278,6 @@ class Bisector_Curve : public Geom2d_Curve {
 /***************************
 * class Bisector_FunctionH *
 ***************************/
-%nodefaultctor Bisector_FunctionH;
 class Bisector_FunctionH : public math_FunctionWithDerivative {
 	public:
 		/****************** Bisector_FunctionH ******************/
@@ -336,7 +334,6 @@ class Bisector_FunctionH : public math_FunctionWithDerivative {
 /*******************************
 * class Bisector_FunctionInter *
 *******************************/
-%nodefaultctor Bisector_FunctionInter;
 class Bisector_FunctionInter : public math_FunctionWithDerivative {
 	public:
 		/****************** Bisector_FunctionInter ******************/
@@ -409,7 +406,6 @@ class Bisector_FunctionInter : public math_FunctionWithDerivative {
 /***********************
 * class Bisector_Inter *
 ***********************/
-%nodefaultctor Bisector_Inter;
 class Bisector_Inter : public IntRes2d_Intersection {
 	public:
 		/****************** Bisector_Inter ******************/
@@ -469,7 +465,6 @@ class Bisector_Inter : public IntRes2d_Intersection {
 /****************************
 * class Bisector_PointOnBis *
 ****************************/
-%nodefaultctor Bisector_PointOnBis;
 class Bisector_PointOnBis {
 	public:
 		/****************** Bisector_PointOnBis ******************/
@@ -581,7 +576,6 @@ class Bisector_PointOnBis {
 /*************************
 * class Bisector_PolyBis *
 *************************/
-%nodefaultctor Bisector_PolyBis;
 class Bisector_PolyBis {
 	public:
 		/****************** Append ******************/
@@ -649,7 +643,6 @@ class Bisector_PolyBis {
 /**************************
 * class Bisector_BisecAna *
 **************************/
-%nodefaultctor Bisector_BisecAna;
 class Bisector_BisecAna : public Bisector_Curve {
 	public:
 		/****************** Bisector_BisecAna ******************/
@@ -963,7 +956,6 @@ class Bisector_BisecAna : public Bisector_Curve {
 /*************************
 * class Bisector_BisecCC *
 *************************/
-%nodefaultctor Bisector_BisecCC;
 class Bisector_BisecCC : public Bisector_Curve {
 	public:
 		/****************** Bisector_BisecCC ******************/
@@ -1256,7 +1248,6 @@ class Bisector_BisecCC : public Bisector_Curve {
 /*************************
 * class Bisector_BisecPC *
 *************************/
-%nodefaultctor Bisector_BisecPC;
 class Bisector_BisecPC : public Bisector_Curve {
 	public:
 		/****************** Bisector_BisecPC ******************/

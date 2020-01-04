@@ -176,7 +176,6 @@ typedef NCollection_DataMap <TopoDS_Shape , TopTools_MapOfShape , TopTools_Shape
 * class BRepOffset *
 *******************/
 %rename(brepoffset) BRepOffset;
-%nodefaultctor BRepOffset;
 class BRepOffset {
 	public:
 		/****************** CollapseSingularities ******************/
@@ -217,7 +216,6 @@ class BRepOffset {
 /***************************
 * class BRepOffset_Analyse *
 ***************************/
-%nodefaultctor BRepOffset_Analyse;
 class BRepOffset_Analyse {
 	public:
 		/****************** AddFaces ******************/
@@ -472,7 +470,6 @@ class BRepOffset_Inter2d {
 /***************************
 * class BRepOffset_Inter3d *
 ***************************/
-%nodefaultctor BRepOffset_Inter3d;
 class BRepOffset_Inter3d {
 	public:
 		/****************** AddCommonEdges ******************/
@@ -626,7 +623,6 @@ class BRepOffset_Inter3d {
 /****************************
 * class BRepOffset_Interval *
 ****************************/
-%nodefaultctor BRepOffset_Interval;
 class BRepOffset_Interval {
 	public:
 		/****************** BRepOffset_Interval ******************/
@@ -693,7 +689,6 @@ class BRepOffset_Interval {
 /*****************************
 * class BRepOffset_MakeLoops *
 *****************************/
-%nodefaultctor BRepOffset_MakeLoops;
 class BRepOffset_MakeLoops {
 	public:
 		/****************** BRepOffset_MakeLoops ******************/
@@ -750,7 +745,6 @@ class BRepOffset_MakeLoops {
 /******************************
 * class BRepOffset_MakeOffset *
 ******************************/
-%nodefaultctor BRepOffset_MakeOffset;
 class BRepOffset_MakeOffset {
 	public:
 		/****************** AddFace ******************/
@@ -901,7 +895,6 @@ class BRepOffset_MakeOffset {
 /************************************
 * class BRepOffset_MakeSimpleOffset *
 ************************************/
-%nodefaultctor BRepOffset_MakeSimpleOffset;
 class BRepOffset_MakeSimpleOffset {
 	public:
 		/****************** BRepOffset_MakeSimpleOffset ******************/
@@ -1030,7 +1023,6 @@ class BRepOffset_MakeSimpleOffset {
 /**************************
 * class BRepOffset_Offset *
 **************************/
-%nodefaultctor BRepOffset_Offset;
 class BRepOffset_Offset {
 	public:
 		/****************** BRepOffset_Offset ******************/
@@ -1259,7 +1251,6 @@ class BRepOffset_Offset {
 /********************************
 * class BRepOffset_SimpleOffset *
 ********************************/
-%nodefaultctor BRepOffset_SimpleOffset;
 class BRepOffset_SimpleOffset : public BRepTools_Modification {
 	public:
 		class NewFaceData {};

@@ -114,7 +114,6 @@ class GeomAdaptor {
 /**************************
 * class GeomAdaptor_Curve *
 **************************/
-%nodefaultctor GeomAdaptor_Curve;
 class GeomAdaptor_Curve : public Adaptor3d_Curve {
 	public:
 		/****************** BSpline ******************/
@@ -393,7 +392,6 @@ class GeomAdaptor_Curve : public Adaptor3d_Curve {
 /****************************
 * class GeomAdaptor_GHCurve *
 ****************************/
-%nodefaultctor GeomAdaptor_GHCurve;
 class GeomAdaptor_GHCurve : public Adaptor3d_HCurve {
 	public:
 		/****************** ChangeCurve ******************/
@@ -450,7 +448,6 @@ class GeomAdaptor_GHCurve : public Adaptor3d_HCurve {
 /******************************
 * class GeomAdaptor_GHSurface *
 ******************************/
-%nodefaultctor GeomAdaptor_GHSurface;
 class GeomAdaptor_GHSurface : public Adaptor3d_HSurface {
 	public:
 		/****************** ChangeSurface ******************/
@@ -501,7 +498,6 @@ class GeomAdaptor_GHSurface : public Adaptor3d_HSurface {
 /**********************************************
 * class GeomAdaptor_HSurfaceOfLinearExtrusion *
 **********************************************/
-%nodefaultctor GeomAdaptor_HSurfaceOfLinearExtrusion;
 class GeomAdaptor_HSurfaceOfLinearExtrusion : public Adaptor3d_HSurface {
 	public:
 		/****************** ChangeSurface ******************/
@@ -552,7 +548,6 @@ class GeomAdaptor_HSurfaceOfLinearExtrusion : public Adaptor3d_HSurface {
 /*****************************************
 * class GeomAdaptor_HSurfaceOfRevolution *
 *****************************************/
-%nodefaultctor GeomAdaptor_HSurfaceOfRevolution;
 class GeomAdaptor_HSurfaceOfRevolution : public Adaptor3d_HSurface {
 	public:
 		/****************** ChangeSurface ******************/
@@ -603,7 +598,6 @@ class GeomAdaptor_HSurfaceOfRevolution : public Adaptor3d_HSurface {
 /****************************
 * class GeomAdaptor_Surface *
 ****************************/
-%nodefaultctor GeomAdaptor_Surface;
 class GeomAdaptor_Surface : public Adaptor3d_Surface {
 	public:
 		/****************** AxeOfRevolution ******************/
@@ -1030,7 +1024,6 @@ class GeomAdaptor_Surface : public Adaptor3d_Surface {
 /***************************
 * class GeomAdaptor_HCurve *
 ***************************/
-%nodefaultctor GeomAdaptor_HCurve;
 class GeomAdaptor_HCurve : public GeomAdaptor_GHCurve {
 	public:
 		/****************** GeomAdaptor_HCurve ******************/
@@ -1078,7 +1071,6 @@ class GeomAdaptor_HCurve : public GeomAdaptor_GHCurve {
 /*****************************
 * class GeomAdaptor_HSurface *
 *****************************/
-%nodefaultctor GeomAdaptor_HSurface;
 class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface {
 	public:
 		/****************** GeomAdaptor_HSurface ******************/
@@ -1134,7 +1126,6 @@ class GeomAdaptor_HSurface : public GeomAdaptor_GHSurface {
 /*********************************************
 * class GeomAdaptor_SurfaceOfLinearExtrusion *
 *********************************************/
-%nodefaultctor GeomAdaptor_SurfaceOfLinearExtrusion;
 class GeomAdaptor_SurfaceOfLinearExtrusion : public GeomAdaptor_Surface {
 	public:
 		/****************** AxeOfRevolution ******************/
@@ -1401,7 +1392,6 @@ class GeomAdaptor_SurfaceOfLinearExtrusion : public GeomAdaptor_Surface {
 /****************************************
 * class GeomAdaptor_SurfaceOfRevolution *
 ****************************************/
-%nodefaultctor GeomAdaptor_SurfaceOfRevolution;
 class GeomAdaptor_SurfaceOfRevolution : public GeomAdaptor_Surface {
 	public:
 		/****************** AxeOfRevolution ******************/

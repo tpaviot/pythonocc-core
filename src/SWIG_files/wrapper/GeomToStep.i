@@ -104,7 +104,6 @@ class GeomToStep_Root {
 /**************************************
 * class GeomToStep_MakeAxis1Placement *
 **************************************/
-%nodefaultctor GeomToStep_MakeAxis1Placement;
 class GeomToStep_MakeAxis1Placement : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeAxis1Placement ******************/
@@ -152,7 +151,6 @@ class GeomToStep_MakeAxis1Placement : public GeomToStep_Root {
 /****************************************
 * class GeomToStep_MakeAxis2Placement2d *
 ****************************************/
-%nodefaultctor GeomToStep_MakeAxis2Placement2d;
 class GeomToStep_MakeAxis2Placement2d : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeAxis2Placement2d ******************/
@@ -186,7 +184,6 @@ class GeomToStep_MakeAxis2Placement2d : public GeomToStep_Root {
 /****************************************
 * class GeomToStep_MakeAxis2Placement3d *
 ****************************************/
-%nodefaultctor GeomToStep_MakeAxis2Placement3d;
 class GeomToStep_MakeAxis2Placement3d : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeAxis2Placement3d ******************/
@@ -239,7 +236,6 @@ class GeomToStep_MakeAxis2Placement3d : public GeomToStep_Root {
 /*********************************************
 * class GeomToStep_MakeBSplineCurveWithKnots *
 *********************************************/
-%nodefaultctor GeomToStep_MakeBSplineCurveWithKnots;
 class GeomToStep_MakeBSplineCurveWithKnots : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBSplineCurveWithKnots ******************/
@@ -273,7 +269,6 @@ class GeomToStep_MakeBSplineCurveWithKnots : public GeomToStep_Root {
 /********************************************************************
 * class GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve *
 ********************************************************************/
-%nodefaultctor GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
 class GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve ******************/
@@ -307,7 +302,6 @@ class GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve : public GeomT
 /***********************************************
 * class GeomToStep_MakeBSplineSurfaceWithKnots *
 ***********************************************/
-%nodefaultctor GeomToStep_MakeBSplineSurfaceWithKnots;
 class GeomToStep_MakeBSplineSurfaceWithKnots : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBSplineSurfaceWithKnots ******************/
@@ -334,7 +328,6 @@ class GeomToStep_MakeBSplineSurfaceWithKnots : public GeomToStep_Root {
 /************************************************************************
 * class GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface *
 ************************************************************************/
-%nodefaultctor GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 class GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface ******************/
@@ -361,7 +354,6 @@ class GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface : public G
 /************************************
 * class GeomToStep_MakeBoundedCurve *
 ************************************/
-%nodefaultctor GeomToStep_MakeBoundedCurve;
 class GeomToStep_MakeBoundedCurve : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBoundedCurve ******************/
@@ -395,7 +387,6 @@ class GeomToStep_MakeBoundedCurve : public GeomToStep_Root {
 /**************************************
 * class GeomToStep_MakeBoundedSurface *
 **************************************/
-%nodefaultctor GeomToStep_MakeBoundedSurface;
 class GeomToStep_MakeBoundedSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBoundedSurface ******************/
@@ -422,7 +413,6 @@ class GeomToStep_MakeBoundedSurface : public GeomToStep_Root {
 /**************************************
 * class GeomToStep_MakeCartesianPoint *
 **************************************/
-%nodefaultctor GeomToStep_MakeCartesianPoint;
 class GeomToStep_MakeCartesianPoint : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeCartesianPoint ******************/
@@ -470,7 +460,6 @@ class GeomToStep_MakeCartesianPoint : public GeomToStep_Root {
 /******************************
 * class GeomToStep_MakeCircle *
 ******************************/
-%nodefaultctor GeomToStep_MakeCircle;
 class GeomToStep_MakeCircle : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeCircle ******************/
@@ -511,7 +500,6 @@ class GeomToStep_MakeCircle : public GeomToStep_Root {
 /*****************************
 * class GeomToStep_MakeConic *
 *****************************/
-%nodefaultctor GeomToStep_MakeConic;
 class GeomToStep_MakeConic : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeConic ******************/
@@ -545,7 +533,6 @@ class GeomToStep_MakeConic : public GeomToStep_Root {
 /**************************************
 * class GeomToStep_MakeConicalSurface *
 **************************************/
-%nodefaultctor GeomToStep_MakeConicalSurface;
 class GeomToStep_MakeConicalSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeConicalSurface ******************/
@@ -572,7 +559,6 @@ class GeomToStep_MakeConicalSurface : public GeomToStep_Root {
 /*****************************
 * class GeomToStep_MakeCurve *
 *****************************/
-%nodefaultctor GeomToStep_MakeCurve;
 class GeomToStep_MakeCurve : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeCurve ******************/
@@ -606,7 +592,6 @@ class GeomToStep_MakeCurve : public GeomToStep_Root {
 /******************************************
 * class GeomToStep_MakeCylindricalSurface *
 ******************************************/
-%nodefaultctor GeomToStep_MakeCylindricalSurface;
 class GeomToStep_MakeCylindricalSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeCylindricalSurface ******************/
@@ -633,7 +618,6 @@ class GeomToStep_MakeCylindricalSurface : public GeomToStep_Root {
 /*********************************
 * class GeomToStep_MakeDirection *
 *********************************/
-%nodefaultctor GeomToStep_MakeDirection;
 class GeomToStep_MakeDirection : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeDirection ******************/
@@ -681,7 +665,6 @@ class GeomToStep_MakeDirection : public GeomToStep_Root {
 /*****************************************
 * class GeomToStep_MakeElementarySurface *
 *****************************************/
-%nodefaultctor GeomToStep_MakeElementarySurface;
 class GeomToStep_MakeElementarySurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeElementarySurface ******************/
@@ -708,7 +691,6 @@ class GeomToStep_MakeElementarySurface : public GeomToStep_Root {
 /*******************************
 * class GeomToStep_MakeEllipse *
 *******************************/
-%nodefaultctor GeomToStep_MakeEllipse;
 class GeomToStep_MakeEllipse : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeEllipse ******************/
@@ -749,7 +731,6 @@ class GeomToStep_MakeEllipse : public GeomToStep_Root {
 /*********************************
 * class GeomToStep_MakeHyperbola *
 *********************************/
-%nodefaultctor GeomToStep_MakeHyperbola;
 class GeomToStep_MakeHyperbola : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeHyperbola ******************/
@@ -783,7 +764,6 @@ class GeomToStep_MakeHyperbola : public GeomToStep_Root {
 /****************************
 * class GeomToStep_MakeLine *
 ****************************/
-%nodefaultctor GeomToStep_MakeLine;
 class GeomToStep_MakeLine : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeLine ******************/
@@ -831,7 +811,6 @@ class GeomToStep_MakeLine : public GeomToStep_Root {
 /********************************
 * class GeomToStep_MakeParabola *
 ********************************/
-%nodefaultctor GeomToStep_MakeParabola;
 class GeomToStep_MakeParabola : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeParabola ******************/
@@ -865,7 +844,6 @@ class GeomToStep_MakeParabola : public GeomToStep_Root {
 /*****************************
 * class GeomToStep_MakePlane *
 *****************************/
-%nodefaultctor GeomToStep_MakePlane;
 class GeomToStep_MakePlane : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakePlane ******************/
@@ -899,7 +877,6 @@ class GeomToStep_MakePlane : public GeomToStep_Root {
 /********************************
 * class GeomToStep_MakePolyline *
 ********************************/
-%nodefaultctor GeomToStep_MakePolyline;
 class GeomToStep_MakePolyline : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakePolyline ******************/
@@ -933,7 +910,6 @@ class GeomToStep_MakePolyline : public GeomToStep_Root {
 /*************************************************
 * class GeomToStep_MakeRectangularTrimmedSurface *
 *************************************************/
-%nodefaultctor GeomToStep_MakeRectangularTrimmedSurface;
 class GeomToStep_MakeRectangularTrimmedSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeRectangularTrimmedSurface ******************/
@@ -960,7 +936,6 @@ class GeomToStep_MakeRectangularTrimmedSurface : public GeomToStep_Root {
 /****************************************
 * class GeomToStep_MakeSphericalSurface *
 ****************************************/
-%nodefaultctor GeomToStep_MakeSphericalSurface;
 class GeomToStep_MakeSphericalSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSphericalSurface ******************/
@@ -987,7 +962,6 @@ class GeomToStep_MakeSphericalSurface : public GeomToStep_Root {
 /*******************************
 * class GeomToStep_MakeSurface *
 *******************************/
-%nodefaultctor GeomToStep_MakeSurface;
 class GeomToStep_MakeSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSurface ******************/
@@ -1014,7 +988,6 @@ class GeomToStep_MakeSurface : public GeomToStep_Root {
 /************************************************
 * class GeomToStep_MakeSurfaceOfLinearExtrusion *
 ************************************************/
-%nodefaultctor GeomToStep_MakeSurfaceOfLinearExtrusion;
 class GeomToStep_MakeSurfaceOfLinearExtrusion : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSurfaceOfLinearExtrusion ******************/
@@ -1041,7 +1014,6 @@ class GeomToStep_MakeSurfaceOfLinearExtrusion : public GeomToStep_Root {
 /*******************************************
 * class GeomToStep_MakeSurfaceOfRevolution *
 *******************************************/
-%nodefaultctor GeomToStep_MakeSurfaceOfRevolution;
 class GeomToStep_MakeSurfaceOfRevolution : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSurfaceOfRevolution ******************/
@@ -1068,7 +1040,6 @@ class GeomToStep_MakeSurfaceOfRevolution : public GeomToStep_Root {
 /************************************
 * class GeomToStep_MakeSweptSurface *
 ************************************/
-%nodefaultctor GeomToStep_MakeSweptSurface;
 class GeomToStep_MakeSweptSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSweptSurface ******************/
@@ -1095,7 +1066,6 @@ class GeomToStep_MakeSweptSurface : public GeomToStep_Root {
 /***************************************
 * class GeomToStep_MakeToroidalSurface *
 ***************************************/
-%nodefaultctor GeomToStep_MakeToroidalSurface;
 class GeomToStep_MakeToroidalSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeToroidalSurface ******************/
@@ -1122,7 +1092,6 @@ class GeomToStep_MakeToroidalSurface : public GeomToStep_Root {
 /******************************
 * class GeomToStep_MakeVector *
 ******************************/
-%nodefaultctor GeomToStep_MakeVector;
 class GeomToStep_MakeVector : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeVector ******************/

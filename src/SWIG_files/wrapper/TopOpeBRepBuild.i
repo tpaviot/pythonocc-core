@@ -127,7 +127,6 @@ typedef NCollection_List <TopOpeBRepBuild_ListOfLoop>::Iterator TopOpeBRepBuild_
 /************************************
 * class TopOpeBRepBuild_AreaBuilder *
 ************************************/
-%nodefaultctor TopOpeBRepBuild_AreaBuilder;
 class TopOpeBRepBuild_AreaBuilder {
 	public:
 		/****************** ADD_LISTOFLoop_TO_LISTOFLoop ******************/
@@ -246,7 +245,6 @@ class TopOpeBRepBuild_AreaBuilder {
 /*************************************
 * class TopOpeBRepBuild_BlockBuilder *
 *************************************/
-%nodefaultctor TopOpeBRepBuild_BlockBuilder;
 class TopOpeBRepBuild_BlockBuilder {
 	public:
 		/****************** AddElement ******************/
@@ -366,7 +364,6 @@ class TopOpeBRepBuild_BlockBuilder {
 /**************************************
 * class TopOpeBRepBuild_BlockIterator *
 **************************************/
-%nodefaultctor TopOpeBRepBuild_BlockIterator;
 class TopOpeBRepBuild_BlockIterator {
 	public:
 		/****************** Extent ******************/
@@ -420,7 +417,6 @@ class TopOpeBRepBuild_BlockIterator {
 /********************************
 * class TopOpeBRepBuild_Builder *
 ********************************/
-%nodefaultctor TopOpeBRepBuild_Builder;
 class TopOpeBRepBuild_Builder {
 	public:
 		/****************** AddONPatchesSFS ******************/
@@ -2182,7 +2178,6 @@ class TopOpeBRepBuild_Builder {
 /**********************************
 * class TopOpeBRepBuild_BuilderON *
 **********************************/
-%nodefaultctor TopOpeBRepBuild_BuilderON;
 class TopOpeBRepBuild_BuilderON {
 	public:
 		/****************** GFillONCheckI ******************/
@@ -2279,7 +2274,6 @@ class TopOpeBRepBuild_BuilderON {
 /**************************************
 * class TopOpeBRepBuild_CorrectFace2d *
 **************************************/
-%nodefaultctor TopOpeBRepBuild_CorrectFace2d;
 class TopOpeBRepBuild_CorrectFace2d {
 	public:
 		/****************** CheckList ******************/
@@ -2369,7 +2363,6 @@ class TopOpeBRepBuild_CorrectFace2d {
 /************************************
 * class TopOpeBRepBuild_FaceBuilder *
 ************************************/
-%nodefaultctor TopOpeBRepBuild_FaceBuilder;
 class TopOpeBRepBuild_FaceBuilder {
 	public:
 		/****************** AddEdgeWire ******************/
@@ -2530,7 +2523,6 @@ class TopOpeBRepBuild_FaceBuilder {
 /*********************************
 * class TopOpeBRepBuild_FuseFace *
 *********************************/
-%nodefaultctor TopOpeBRepBuild_FuseFace;
 class TopOpeBRepBuild_FuseFace {
 	public:
 		/****************** ClearEdge ******************/
@@ -2637,7 +2629,6 @@ class TopOpeBRepBuild_FuseFace {
 /******************************
 * class TopOpeBRepBuild_GIter *
 ******************************/
-%nodefaultctor TopOpeBRepBuild_GIter;
 class TopOpeBRepBuild_GIter {
 	public:
 		/****************** Current ******************/
@@ -2806,7 +2797,6 @@ class TopOpeBRepBuild_GTool {
 /******************************
 * class TopOpeBRepBuild_GTopo *
 ******************************/
-%nodefaultctor TopOpeBRepBuild_GTopo;
 class TopOpeBRepBuild_GTopo {
 	public:
 		/****************** ChangeConfig ******************/
@@ -3071,7 +3061,6 @@ class TopOpeBRepBuild_GTopo {
 /*********************************
 * class TopOpeBRepBuild_HBuilder *
 *********************************/
-%nodefaultctor TopOpeBRepBuild_HBuilder;
 class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 	public:
 		/****************** BuildTool ******************/
@@ -3372,7 +3361,6 @@ class TopOpeBRepBuild_HBuilder : public Standard_Transient {
 /*****************************
 * class TopOpeBRepBuild_Loop *
 *****************************/
-%nodefaultctor TopOpeBRepBuild_Loop;
 class TopOpeBRepBuild_Loop : public Standard_Transient {
 	public:
 		/****************** BlockIterator ******************/
@@ -3448,7 +3436,6 @@ class TopOpeBRepBuild_LoopClassifier {
 /********************************
 * class TopOpeBRepBuild_LoopSet *
 ********************************/
-%nodefaultctor TopOpeBRepBuild_LoopSet;
 class TopOpeBRepBuild_LoopSet {
 	public:
 		/****************** ChangeListOfLoop ******************/
@@ -3493,7 +3480,6 @@ class TopOpeBRepBuild_LoopSet {
 /*****************************************
 * class TopOpeBRepBuild_ShapeListOfShape *
 *****************************************/
-%nodefaultctor TopOpeBRepBuild_ShapeListOfShape;
 class TopOpeBRepBuild_ShapeListOfShape {
 	public:
 		/****************** ChangeList ******************/
@@ -3549,7 +3535,6 @@ class TopOpeBRepBuild_ShapeListOfShape {
 /*********************************
 * class TopOpeBRepBuild_ShapeSet *
 *********************************/
-%nodefaultctor TopOpeBRepBuild_ShapeSet;
 class TopOpeBRepBuild_ShapeSet {
 	public:
 		/****************** AddElement ******************/
@@ -3814,7 +3799,6 @@ class TopOpeBRepBuild_ShapeSet {
 /*************************************
 * class TopOpeBRepBuild_ShellToSolid *
 *************************************/
-%nodefaultctor TopOpeBRepBuild_ShellToSolid;
 class TopOpeBRepBuild_ShellToSolid {
 	public:
 		/****************** AddShell ******************/
@@ -3855,7 +3839,6 @@ class TopOpeBRepBuild_ShellToSolid {
 /*************************************
 * class TopOpeBRepBuild_SolidBuilder *
 *************************************/
-%nodefaultctor TopOpeBRepBuild_SolidBuilder;
 class TopOpeBRepBuild_SolidBuilder {
 	public:
 		/****************** Face ******************/
@@ -4270,7 +4253,6 @@ class TopOpeBRepBuild_Tools2d {
 /***********************************
 * class TopOpeBRepBuild_VertexInfo *
 ***********************************/
-%nodefaultctor TopOpeBRepBuild_VertexInfo;
 class TopOpeBRepBuild_VertexInfo {
 	public:
 		/****************** AddIn ******************/
@@ -4394,7 +4376,6 @@ class TopOpeBRepBuild_VertexInfo {
 /***********************************
 * class TopOpeBRepBuild_WireToFace *
 ***********************************/
-%nodefaultctor TopOpeBRepBuild_WireToFace;
 class TopOpeBRepBuild_WireToFace {
 	public:
 		/****************** AddWire ******************/
@@ -4435,7 +4416,6 @@ class TopOpeBRepBuild_WireToFace {
 /**************************************
 * class TopOpeBRepBuild_Area1dBuilder *
 **************************************/
-%nodefaultctor TopOpeBRepBuild_Area1dBuilder;
 class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 	public:
 		/****************** ADD_LISTOFLoop_TO_LISTOFLoop ******************/
@@ -4523,7 +4503,6 @@ class TopOpeBRepBuild_Area1dBuilder : public TopOpeBRepBuild_AreaBuilder {
 /**************************************
 * class TopOpeBRepBuild_Area2dBuilder *
 **************************************/
-%nodefaultctor TopOpeBRepBuild_Area2dBuilder;
 class TopOpeBRepBuild_Area2dBuilder : public TopOpeBRepBuild_AreaBuilder {
 	public:
 		/****************** InitAreaBuilder ******************/
@@ -4567,7 +4546,6 @@ class TopOpeBRepBuild_Area2dBuilder : public TopOpeBRepBuild_AreaBuilder {
 /**************************************
 * class TopOpeBRepBuild_Area3dBuilder *
 **************************************/
-%nodefaultctor TopOpeBRepBuild_Area3dBuilder;
 class TopOpeBRepBuild_Area3dBuilder : public TopOpeBRepBuild_AreaBuilder {
 	public:
 		/****************** InitAreaBuilder ******************/
@@ -4611,7 +4589,6 @@ class TopOpeBRepBuild_Area3dBuilder : public TopOpeBRepBuild_AreaBuilder {
 /*********************************
 * class TopOpeBRepBuild_Builder1 *
 *********************************/
-%nodefaultctor TopOpeBRepBuild_Builder1;
 class TopOpeBRepBuild_Builder1 : public TopOpeBRepBuild_Builder {
 	public:
 		/****************** Clear ******************/
@@ -4953,7 +4930,6 @@ class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifie
 /*****************************
 * class TopOpeBRepBuild_Pave *
 *****************************/
-%nodefaultctor TopOpeBRepBuild_Pave;
 class TopOpeBRepBuild_Pave : public TopOpeBRepBuild_Loop {
 	public:
 		/****************** ChangeVertex ******************/
@@ -5048,7 +5024,6 @@ class TopOpeBRepBuild_Pave : public TopOpeBRepBuild_Loop {
 /***************************************
 * class TopOpeBRepBuild_PaveClassifier *
 ***************************************/
-%nodefaultctor TopOpeBRepBuild_PaveClassifier;
 class TopOpeBRepBuild_PaveClassifier : public TopOpeBRepBuild_LoopClassifier {
 	public:
 		/****************** AdjustCase ******************/
@@ -5112,7 +5087,6 @@ class TopOpeBRepBuild_PaveClassifier : public TopOpeBRepBuild_LoopClassifier {
 /********************************
 * class TopOpeBRepBuild_PaveSet *
 ********************************/
-%nodefaultctor TopOpeBRepBuild_PaveSet;
 class TopOpeBRepBuild_PaveSet : public TopOpeBRepBuild_LoopSet {
 	public:
 		/****************** Append ******************/
@@ -5199,7 +5173,6 @@ class TopOpeBRepBuild_PaveSet : public TopOpeBRepBuild_LoopSet {
 /*************************************
 * class TopOpeBRepBuild_ShellFaceSet *
 *************************************/
-%nodefaultctor TopOpeBRepBuild_ShellFaceSet;
 class TopOpeBRepBuild_ShellFaceSet : public TopOpeBRepBuild_ShapeSet {
 	public:
 		/****************** AddElement ******************/
@@ -5305,7 +5278,6 @@ class TopOpeBRepBuild_ShellFaceSet : public TopOpeBRepBuild_ShapeSet {
 /************************************
 * class TopOpeBRepBuild_WireEdgeSet *
 ************************************/
-%nodefaultctor TopOpeBRepBuild_WireEdgeSet;
 class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 	public:
 		/****************** AddElement ******************/
@@ -5441,7 +5413,6 @@ class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 /************************************
 * class TopOpeBRepBuild_EdgeBuilder *
 ************************************/
-%nodefaultctor TopOpeBRepBuild_EdgeBuilder;
 class TopOpeBRepBuild_EdgeBuilder : public TopOpeBRepBuild_Area1dBuilder {
 	public:
 		/****************** InitEdge ******************/
@@ -5524,7 +5495,6 @@ class TopOpeBRepBuild_EdgeBuilder : public TopOpeBRepBuild_Area1dBuilder {
 /****************************************
 * class TopOpeBRepBuild_FaceAreaBuilder *
 ****************************************/
-%nodefaultctor TopOpeBRepBuild_FaceAreaBuilder;
 class TopOpeBRepBuild_FaceAreaBuilder : public TopOpeBRepBuild_Area2dBuilder {
 	public:
 		/****************** InitFaceAreaBuilder ******************/
@@ -5567,7 +5537,6 @@ class TopOpeBRepBuild_FaceAreaBuilder : public TopOpeBRepBuild_Area2dBuilder {
 /********************************************
 * class TopOpeBRepBuild_ShellFaceClassifier *
 ********************************************/
-%nodefaultctor TopOpeBRepBuild_ShellFaceClassifier;
 class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClassifier {
 	public:
 		/****************** Clear ******************/
@@ -5645,7 +5614,6 @@ class TopOpeBRepBuild_ShellFaceClassifier : public TopOpeBRepBuild_CompositeClas
 /*****************************************
 * class TopOpeBRepBuild_SolidAreaBuilder *
 *****************************************/
-%nodefaultctor TopOpeBRepBuild_SolidAreaBuilder;
 class TopOpeBRepBuild_SolidAreaBuilder : public TopOpeBRepBuild_Area3dBuilder {
 	public:
 		/****************** InitSolidAreaBuilder ******************/
@@ -5688,7 +5656,6 @@ class TopOpeBRepBuild_SolidAreaBuilder : public TopOpeBRepBuild_Area3dBuilder {
 /*******************************************
 * class TopOpeBRepBuild_WireEdgeClassifier *
 *******************************************/
-%nodefaultctor TopOpeBRepBuild_WireEdgeClassifier;
 class TopOpeBRepBuild_WireEdgeClassifier : public TopOpeBRepBuild_CompositeClassifier {
 	public:
 		/****************** Compare ******************/

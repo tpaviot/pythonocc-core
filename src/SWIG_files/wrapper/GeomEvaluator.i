@@ -270,7 +270,6 @@ class GeomEvaluator_Surface : public Standard_Transient {
 /**********************************
 * class GeomEvaluator_OffsetCurve *
 **********************************/
-%nodefaultctor GeomEvaluator_OffsetCurve;
 class GeomEvaluator_OffsetCurve : public GeomEvaluator_Curve {
 	public:
 		/****************** D0 ******************/
@@ -388,7 +387,6 @@ class GeomEvaluator_OffsetCurve : public GeomEvaluator_Curve {
 /************************************
 * class GeomEvaluator_OffsetSurface *
 ************************************/
-%nodefaultctor GeomEvaluator_OffsetSurface;
 class GeomEvaluator_OffsetSurface : public GeomEvaluator_Surface {
 	public:
 		/****************** D0 ******************/
@@ -531,7 +529,6 @@ class GeomEvaluator_OffsetSurface : public GeomEvaluator_Surface {
 /*****************************************
 * class GeomEvaluator_SurfaceOfExtrusion *
 *****************************************/
-%nodefaultctor GeomEvaluator_SurfaceOfExtrusion;
 class GeomEvaluator_SurfaceOfExtrusion : public GeomEvaluator_Surface {
 	public:
 		/****************** D0 ******************/
@@ -670,7 +667,6 @@ class GeomEvaluator_SurfaceOfExtrusion : public GeomEvaluator_Surface {
 /******************************************
 * class GeomEvaluator_SurfaceOfRevolution *
 ******************************************/
-%nodefaultctor GeomEvaluator_SurfaceOfRevolution;
 class GeomEvaluator_SurfaceOfRevolution : public GeomEvaluator_Surface {
 	public:
 		/****************** D0 ******************/

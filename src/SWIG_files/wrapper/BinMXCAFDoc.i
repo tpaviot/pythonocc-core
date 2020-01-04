@@ -133,7 +133,6 @@ class BinMXCAFDoc {
 /*******************************
 * class BinMXCAFDoc_AreaDriver *
 *******************************/
-%nodefaultctor BinMXCAFDoc_AreaDriver;
 class BinMXCAFDoc_AreaDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_AreaDriver ******************/
@@ -184,7 +183,6 @@ class BinMXCAFDoc_AreaDriver : public BinMDF_ADriver {
 /******************************************
 * class BinMXCAFDoc_AssemblyItemRefDriver *
 ******************************************/
-%nodefaultctor BinMXCAFDoc_AssemblyItemRefDriver;
 class BinMXCAFDoc_AssemblyItemRefDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_AssemblyItemRefDriver ******************/
@@ -235,7 +233,6 @@ class BinMXCAFDoc_AssemblyItemRefDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMXCAFDoc_CentroidDriver *
 ***********************************/
-%nodefaultctor BinMXCAFDoc_CentroidDriver;
 class BinMXCAFDoc_CentroidDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_CentroidDriver ******************/
@@ -286,7 +283,6 @@ class BinMXCAFDoc_CentroidDriver : public BinMDF_ADriver {
 /********************************************
 * class BinMXCAFDoc_ClippingPlaneToolDriver *
 ********************************************/
-%nodefaultctor BinMXCAFDoc_ClippingPlaneToolDriver;
 class BinMXCAFDoc_ClippingPlaneToolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_ClippingPlaneToolDriver ******************/
@@ -337,7 +333,6 @@ class BinMXCAFDoc_ClippingPlaneToolDriver : public BinMDF_ADriver {
 /********************************
 * class BinMXCAFDoc_ColorDriver *
 ********************************/
-%nodefaultctor BinMXCAFDoc_ColorDriver;
 class BinMXCAFDoc_ColorDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_ColorDriver ******************/
@@ -388,7 +383,6 @@ class BinMXCAFDoc_ColorDriver : public BinMDF_ADriver {
 /************************************
 * class BinMXCAFDoc_ColorToolDriver *
 ************************************/
-%nodefaultctor BinMXCAFDoc_ColorToolDriver;
 class BinMXCAFDoc_ColorToolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_ColorToolDriver ******************/
@@ -439,7 +433,6 @@ class BinMXCAFDoc_ColorToolDriver : public BinMDF_ADriver {
 /********************************
 * class BinMXCAFDoc_DatumDriver *
 ********************************/
-%nodefaultctor BinMXCAFDoc_DatumDriver;
 class BinMXCAFDoc_DatumDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_DatumDriver ******************/
@@ -490,7 +483,6 @@ class BinMXCAFDoc_DatumDriver : public BinMDF_ADriver {
 /*********************************
 * class BinMXCAFDoc_DimTolDriver *
 *********************************/
-%nodefaultctor BinMXCAFDoc_DimTolDriver;
 class BinMXCAFDoc_DimTolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_DimTolDriver ******************/
@@ -541,7 +533,6 @@ class BinMXCAFDoc_DimTolDriver : public BinMDF_ADriver {
 /*************************************
 * class BinMXCAFDoc_DimTolToolDriver *
 *************************************/
-%nodefaultctor BinMXCAFDoc_DimTolToolDriver;
 class BinMXCAFDoc_DimTolToolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_DimTolToolDriver ******************/
@@ -592,7 +583,6 @@ class BinMXCAFDoc_DimTolToolDriver : public BinMDF_ADriver {
 /************************************
 * class BinMXCAFDoc_DimensionDriver *
 ************************************/
-%nodefaultctor BinMXCAFDoc_DimensionDriver;
 class BinMXCAFDoc_DimensionDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_DimensionDriver ******************/
@@ -643,7 +633,6 @@ class BinMXCAFDoc_DimensionDriver : public BinMDF_ADriver {
 /***************************************
 * class BinMXCAFDoc_DocumentToolDriver *
 ***************************************/
-%nodefaultctor BinMXCAFDoc_DocumentToolDriver;
 class BinMXCAFDoc_DocumentToolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_DocumentToolDriver ******************/
@@ -694,7 +683,6 @@ class BinMXCAFDoc_DocumentToolDriver : public BinMDF_ADriver {
 /****************************************
 * class BinMXCAFDoc_GeomToleranceDriver *
 ****************************************/
-%nodefaultctor BinMXCAFDoc_GeomToleranceDriver;
 class BinMXCAFDoc_GeomToleranceDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_GeomToleranceDriver ******************/
@@ -745,7 +733,6 @@ class BinMXCAFDoc_GeomToleranceDriver : public BinMDF_ADriver {
 /************************************
 * class BinMXCAFDoc_GraphNodeDriver *
 ************************************/
-%nodefaultctor BinMXCAFDoc_GraphNodeDriver;
 class BinMXCAFDoc_GraphNodeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_GraphNodeDriver ******************/
@@ -796,7 +783,6 @@ class BinMXCAFDoc_GraphNodeDriver : public BinMDF_ADriver {
 /************************************
 * class BinMXCAFDoc_LayerToolDriver *
 ************************************/
-%nodefaultctor BinMXCAFDoc_LayerToolDriver;
 class BinMXCAFDoc_LayerToolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_LayerToolDriver ******************/
@@ -847,7 +833,6 @@ class BinMXCAFDoc_LayerToolDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMXCAFDoc_LocationDriver *
 ***********************************/
-%nodefaultctor BinMXCAFDoc_LocationDriver;
 class BinMXCAFDoc_LocationDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_LocationDriver ******************/
@@ -928,7 +913,6 @@ class BinMXCAFDoc_LocationDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMXCAFDoc_MaterialDriver *
 ***********************************/
-%nodefaultctor BinMXCAFDoc_MaterialDriver;
 class BinMXCAFDoc_MaterialDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_MaterialDriver ******************/
@@ -979,7 +963,6 @@ class BinMXCAFDoc_MaterialDriver : public BinMDF_ADriver {
 /***************************************
 * class BinMXCAFDoc_MaterialToolDriver *
 ***************************************/
-%nodefaultctor BinMXCAFDoc_MaterialToolDriver;
 class BinMXCAFDoc_MaterialToolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_MaterialToolDriver ******************/
@@ -1069,7 +1052,6 @@ class BinMXCAFDoc_NoteDriver : public BinMDF_ADriver {
 /************************************
 * class BinMXCAFDoc_NotesToolDriver *
 ************************************/
-%nodefaultctor BinMXCAFDoc_NotesToolDriver;
 class BinMXCAFDoc_NotesToolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_NotesToolDriver ******************/
@@ -1120,7 +1102,6 @@ class BinMXCAFDoc_NotesToolDriver : public BinMDF_ADriver {
 /************************************
 * class BinMXCAFDoc_ShapeToolDriver *
 ************************************/
-%nodefaultctor BinMXCAFDoc_ShapeToolDriver;
 class BinMXCAFDoc_ShapeToolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_ShapeToolDriver ******************/
@@ -1171,7 +1152,6 @@ class BinMXCAFDoc_ShapeToolDriver : public BinMDF_ADriver {
 /*******************************
 * class BinMXCAFDoc_ViewDriver *
 *******************************/
-%nodefaultctor BinMXCAFDoc_ViewDriver;
 class BinMXCAFDoc_ViewDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_ViewDriver ******************/
@@ -1222,7 +1202,6 @@ class BinMXCAFDoc_ViewDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMXCAFDoc_ViewToolDriver *
 ***********************************/
-%nodefaultctor BinMXCAFDoc_ViewToolDriver;
 class BinMXCAFDoc_ViewToolDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_ViewToolDriver ******************/
@@ -1273,7 +1252,6 @@ class BinMXCAFDoc_ViewToolDriver : public BinMDF_ADriver {
 /*********************************
 * class BinMXCAFDoc_VolumeDriver *
 *********************************/
-%nodefaultctor BinMXCAFDoc_VolumeDriver;
 class BinMXCAFDoc_VolumeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMXCAFDoc_VolumeDriver ******************/
@@ -1324,7 +1302,6 @@ class BinMXCAFDoc_VolumeDriver : public BinMDF_ADriver {
 /**************************************
 * class BinMXCAFDoc_NoteBinDataDriver *
 **************************************/
-%nodefaultctor BinMXCAFDoc_NoteBinDataDriver;
 class BinMXCAFDoc_NoteBinDataDriver : public BinMXCAFDoc_NoteDriver {
 	public:
 		/****************** BinMXCAFDoc_NoteBinDataDriver ******************/
@@ -1375,7 +1352,6 @@ class BinMXCAFDoc_NoteBinDataDriver : public BinMXCAFDoc_NoteDriver {
 /**************************************
 * class BinMXCAFDoc_NoteCommentDriver *
 **************************************/
-%nodefaultctor BinMXCAFDoc_NoteCommentDriver;
 class BinMXCAFDoc_NoteCommentDriver : public BinMXCAFDoc_NoteDriver {
 	public:
 		/****************** BinMXCAFDoc_NoteCommentDriver ******************/
@@ -1426,7 +1402,6 @@ class BinMXCAFDoc_NoteCommentDriver : public BinMXCAFDoc_NoteDriver {
 /**************************************
 * class BinMXCAFDoc_NoteBalloonDriver *
 **************************************/
-%nodefaultctor BinMXCAFDoc_NoteBalloonDriver;
 class BinMXCAFDoc_NoteBalloonDriver : public BinMXCAFDoc_NoteCommentDriver {
 	public:
 		/****************** BinMXCAFDoc_NoteBalloonDriver ******************/

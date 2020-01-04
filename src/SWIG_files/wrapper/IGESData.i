@@ -232,7 +232,6 @@ class IGESData {
 /*****************************
 * class IGESData_BasicEditor *
 *****************************/
-%nodefaultctor IGESData_BasicEditor;
 class IGESData_BasicEditor {
 	public:
 		/****************** ApplyUnit ******************/
@@ -399,7 +398,6 @@ class IGESData_BasicEditor {
 /***************************
 * class IGESData_DefSwitch *
 ***************************/
-%nodefaultctor IGESData_DefSwitch;
 class IGESData_DefSwitch {
 	public:
 		/****************** DefType ******************/
@@ -452,7 +450,6 @@ class IGESData_DefSwitch {
 /****************************
 * class IGESData_DirChecker *
 ****************************/
-%nodefaultctor IGESData_DirChecker;
 class IGESData_DirChecker {
 	public:
 		/****************** BlankStatusIgnored ******************/
@@ -639,7 +636,6 @@ class IGESData_DirChecker {
 /*************************
 * class IGESData_DirPart *
 *************************/
-%nodefaultctor IGESData_DirPart;
 class IGESData_DirPart {
 	public:
 		/****************** IGESData_DirPart ******************/
@@ -1016,7 +1012,6 @@ class IGESData_GeneralModule : public Interface_GeneralModule {
 /*****************************************
 * class IGESData_GlobalNodeOfSpecificLib *
 *****************************************/
-%nodefaultctor IGESData_GlobalNodeOfSpecificLib;
 class IGESData_GlobalNodeOfSpecificLib : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -1067,7 +1062,6 @@ class IGESData_GlobalNodeOfSpecificLib : public Standard_Transient {
 /***************************************
 * class IGESData_GlobalNodeOfWriterLib *
 ***************************************/
-%nodefaultctor IGESData_GlobalNodeOfWriterLib;
 class IGESData_GlobalNodeOfWriterLib : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -1118,7 +1112,6 @@ class IGESData_GlobalNodeOfWriterLib : public Standard_Transient {
 /*******************************
 * class IGESData_GlobalSection *
 *******************************/
-%nodefaultctor IGESData_GlobalSection;
 class IGESData_GlobalSection {
 	public:
 		/****************** ApplicationProtocol ******************/
@@ -1575,7 +1568,6 @@ class IGESData_GlobalSection {
 /****************************
 * class IGESData_IGESDumper *
 ****************************/
-%nodefaultctor IGESData_IGESDumper;
 class IGESData_IGESDumper {
 	public:
 		/****************** Dump ******************/
@@ -2120,7 +2112,6 @@ class IGESData_IGESEntity : public Standard_Transient {
 /***************************
 * class IGESData_IGESModel *
 ***************************/
-%nodefaultctor IGESData_IGESModel;
 class IGESData_IGESModel : public Interface_InterfaceModel {
 	public:
 		/****************** AddStartLine ******************/
@@ -2316,7 +2307,6 @@ class IGESData_IGESModel : public Interface_InterfaceModel {
 /********************************
 * class IGESData_IGESReaderData *
 ********************************/
-%nodefaultctor IGESData_IGESReaderData;
 class IGESData_IGESReaderData : public Interface_FileReaderData {
 	public:
 		/****************** AddGlobal ******************/
@@ -2535,7 +2525,6 @@ class IGESData_IGESReaderData : public Interface_FileReaderData {
 /********************************
 * class IGESData_IGESReaderTool *
 ********************************/
-%nodefaultctor IGESData_IGESReaderTool;
 class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 	public:
 		/****************** AnalyseRecord ******************/
@@ -2658,7 +2647,6 @@ class IGESData_IGESReaderTool : public Interface_FileReaderTool {
 /**************************
 * class IGESData_IGESType *
 **************************/
-%nodefaultctor IGESData_IGESType;
 class IGESData_IGESType {
 	public:
 		/****************** Form ******************/
@@ -2727,7 +2715,6 @@ class IGESData_IGESType {
 /****************************
 * class IGESData_IGESWriter *
 ****************************/
-%nodefaultctor IGESData_IGESWriter;
 class IGESData_IGESWriter {
 	public:
 		/****************** Associativities ******************/
@@ -2901,7 +2888,6 @@ class IGESData_IGESWriter {
 /***********************************
 * class IGESData_NodeOfSpecificLib *
 ***********************************/
-%nodefaultctor IGESData_NodeOfSpecificLib;
 class IGESData_NodeOfSpecificLib : public Standard_Transient {
 	public:
 		/****************** AddNode ******************/
@@ -2950,7 +2936,6 @@ class IGESData_NodeOfSpecificLib : public Standard_Transient {
 /*********************************
 * class IGESData_NodeOfWriterLib *
 *********************************/
-%nodefaultctor IGESData_NodeOfWriterLib;
 class IGESData_NodeOfWriterLib : public Standard_Transient {
 	public:
 		/****************** AddNode ******************/
@@ -2999,7 +2984,6 @@ class IGESData_NodeOfWriterLib : public Standard_Transient {
 /*****************************
 * class IGESData_ParamCursor *
 *****************************/
-%nodefaultctor IGESData_ParamCursor;
 class IGESData_ParamCursor {
 	public:
 		/****************** Advance ******************/
@@ -3118,7 +3102,6 @@ class IGESData_ParamCursor {
 /*****************************
 * class IGESData_ParamReader *
 *****************************/
-%nodefaultctor IGESData_ParamReader;
 class IGESData_ParamReader {
 	public:
 		/****************** AddFail ******************/
@@ -3677,7 +3660,6 @@ class IGESData_ParamReader {
 /**************************
 * class IGESData_Protocol *
 **************************/
-%nodefaultctor IGESData_Protocol;
 class IGESData_Protocol : public Interface_Protocol {
 	public:
 		/****************** IGESData_Protocol ******************/
@@ -3971,7 +3953,6 @@ class IGESData_SpecificModule : public Standard_Transient {
 /******************************
 * class IGESData_ToolLocation *
 ******************************/
-%nodefaultctor IGESData_ToolLocation;
 class IGESData_ToolLocation : public Standard_Transient {
 	public:
 		/****************** AnalyseLocation ******************/
@@ -4252,7 +4233,6 @@ class IGESData_WriterLib {
 /*****************************
 * class IGESData_ColorEntity *
 *****************************/
-%nodefaultctor IGESData_ColorEntity;
 class IGESData_ColorEntity : public IGESData_IGESEntity {
 	public:
 };
@@ -4269,7 +4249,6 @@ class IGESData_ColorEntity : public IGESData_IGESEntity {
 /********************************
 * class IGESData_DefaultGeneral *
 ********************************/
-%nodefaultctor IGESData_DefaultGeneral;
 class IGESData_DefaultGeneral : public IGESData_GeneralModule {
 	public:
 		/****************** DirChecker ******************/
@@ -4352,7 +4331,6 @@ class IGESData_DefaultGeneral : public IGESData_GeneralModule {
 /*********************************
 * class IGESData_DefaultSpecific *
 *********************************/
-%nodefaultctor IGESData_DefaultSpecific;
 class IGESData_DefaultSpecific : public IGESData_SpecificModule {
 	public:
 		/****************** IGESData_DefaultSpecific ******************/
@@ -4391,7 +4369,6 @@ class IGESData_DefaultSpecific : public IGESData_SpecificModule {
 /******************************
 * class IGESData_FileProtocol *
 ******************************/
-%nodefaultctor IGESData_FileProtocol;
 class IGESData_FileProtocol : public IGESData_Protocol {
 	public:
 		/****************** Add ******************/
@@ -4436,7 +4413,6 @@ class IGESData_FileProtocol : public IGESData_Protocol {
 /************************************
 * class IGESData_LabelDisplayEntity *
 ************************************/
-%nodefaultctor IGESData_LabelDisplayEntity;
 class IGESData_LabelDisplayEntity : public IGESData_IGESEntity {
 	public:
 };
@@ -4492,7 +4468,6 @@ class IGESData_LevelListEntity : public IGESData_IGESEntity {
 /********************************
 * class IGESData_LineFontEntity *
 ********************************/
-%nodefaultctor IGESData_LineFontEntity;
 class IGESData_LineFontEntity : public IGESData_IGESEntity {
 	public:
 };
@@ -4592,7 +4567,6 @@ class IGESData_TransfEntity : public IGESData_IGESEntity {
 /*********************************
 * class IGESData_UndefinedEntity *
 *********************************/
-%nodefaultctor IGESData_UndefinedEntity;
 class IGESData_UndefinedEntity : public IGESData_IGESEntity {
 	public:
 		/****************** ChangeableContent ******************/
@@ -4750,7 +4724,6 @@ class IGESData_ViewKindEntity : public IGESData_IGESEntity {
 /**********************************
 * class IGESData_FreeFormatEntity *
 **********************************/
-%nodefaultctor IGESData_FreeFormatEntity;
 class IGESData_FreeFormatEntity : public IGESData_UndefinedEntity {
 	public:
 		/****************** AddEntities ******************/

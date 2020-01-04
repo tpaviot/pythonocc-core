@@ -234,7 +234,6 @@ class NLPlate_HGPPConstraint : public Standard_Transient {
 /************************
 * class NLPlate_NLPlate *
 ************************/
-%nodefaultctor NLPlate_NLPlate;
 class NLPlate_NLPlate {
 	public:
 		/****************** ConstraintsSliding ******************/
@@ -346,7 +345,6 @@ class NLPlate_NLPlate {
 /*******************************
 * class NLPlate_HPG0Constraint *
 *******************************/
-%nodefaultctor NLPlate_HPG0Constraint;
 class NLPlate_HPG0Constraint : public NLPlate_HGPPConstraint {
 	public:
 		/****************** ActiveOrder ******************/
@@ -411,7 +409,6 @@ class NLPlate_HPG0Constraint : public NLPlate_HGPPConstraint {
 /*******************************
 * class NLPlate_HPG1Constraint *
 *******************************/
-%nodefaultctor NLPlate_HPG1Constraint;
 class NLPlate_HPG1Constraint : public NLPlate_HGPPConstraint {
 	public:
 		/****************** ActiveOrder ******************/
@@ -476,7 +473,6 @@ class NLPlate_HPG1Constraint : public NLPlate_HGPPConstraint {
 /*********************************
 * class NLPlate_HPG0G1Constraint *
 *********************************/
-%nodefaultctor NLPlate_HPG0G1Constraint;
 class NLPlate_HPG0G1Constraint : public NLPlate_HPG0Constraint {
 	public:
 		/****************** ActiveOrder ******************/
@@ -526,7 +522,6 @@ class NLPlate_HPG0G1Constraint : public NLPlate_HPG0Constraint {
 /*******************************
 * class NLPlate_HPG2Constraint *
 *******************************/
-%nodefaultctor NLPlate_HPG2Constraint;
 class NLPlate_HPG2Constraint : public NLPlate_HPG1Constraint {
 	public:
 		/****************** ActiveOrder ******************/
@@ -564,7 +559,6 @@ class NLPlate_HPG2Constraint : public NLPlate_HPG1Constraint {
 /*********************************
 * class NLPlate_HPG0G2Constraint *
 *********************************/
-%nodefaultctor NLPlate_HPG0G2Constraint;
 class NLPlate_HPG0G2Constraint : public NLPlate_HPG0G1Constraint {
 	public:
 		/****************** ActiveOrder ******************/
@@ -604,7 +598,6 @@ class NLPlate_HPG0G2Constraint : public NLPlate_HPG0G1Constraint {
 /*******************************
 * class NLPlate_HPG3Constraint *
 *******************************/
-%nodefaultctor NLPlate_HPG3Constraint;
 class NLPlate_HPG3Constraint : public NLPlate_HPG2Constraint {
 	public:
 		/****************** ActiveOrder ******************/
@@ -644,7 +637,6 @@ class NLPlate_HPG3Constraint : public NLPlate_HPG2Constraint {
 /*********************************
 * class NLPlate_HPG0G3Constraint *
 *********************************/
-%nodefaultctor NLPlate_HPG0G3Constraint;
 class NLPlate_HPG0G3Constraint : public NLPlate_HPG0G2Constraint {
 	public:
 		/****************** ActiveOrder ******************/

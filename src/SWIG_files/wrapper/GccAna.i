@@ -69,7 +69,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gccana.html"
 /****************************
 * class GccAna_Circ2d2TanOn *
 ****************************/
-%nodefaultctor GccAna_Circ2d2TanOn;
 class GccAna_Circ2d2TanOn {
 	public:
 		/****************** CenterOn3 ******************/
@@ -340,7 +339,6 @@ class GccAna_Circ2d2TanOn {
 /*****************************
 * class GccAna_Circ2d2TanRad *
 *****************************/
-%nodefaultctor GccAna_Circ2d2TanRad;
 class GccAna_Circ2d2TanRad {
 	public:
 		/****************** GccAna_Circ2d2TanRad ******************/
@@ -515,7 +513,6 @@ class GccAna_Circ2d2TanRad {
 /**************************
 * class GccAna_Circ2d3Tan *
 **************************/
-%nodefaultctor GccAna_Circ2d3Tan;
 class GccAna_Circ2d3Tan {
 	public:
 		/****************** GccAna_Circ2d3Tan ******************/
@@ -770,7 +767,6 @@ class GccAna_Circ2d3Tan {
 /***************************
 * class GccAna_Circ2dBisec *
 ***************************/
-%nodefaultctor GccAna_Circ2dBisec;
 class GccAna_Circ2dBisec {
 	public:
 		/****************** GccAna_Circ2dBisec ******************/
@@ -815,7 +811,6 @@ class GccAna_Circ2dBisec {
 /****************************
 * class GccAna_Circ2dTanCen *
 ****************************/
-%nodefaultctor GccAna_Circ2dTanCen;
 class GccAna_Circ2dTanCen {
 	public:
 		/****************** GccAna_Circ2dTanCen ******************/
@@ -914,7 +909,6 @@ class GccAna_Circ2dTanCen {
 /******************************
 * class GccAna_Circ2dTanOnRad *
 ******************************/
-%nodefaultctor GccAna_Circ2dTanOnRad;
 class GccAna_Circ2dTanOnRad {
 	public:
 		/****************** CenterOn3 ******************/
@@ -1077,7 +1071,6 @@ class GccAna_Circ2dTanOnRad {
 /******************************
 * class GccAna_CircLin2dBisec *
 ******************************/
-%nodefaultctor GccAna_CircLin2dBisec;
 class GccAna_CircLin2dBisec {
 	public:
 		/****************** GccAna_CircLin2dBisec ******************/
@@ -1122,7 +1115,6 @@ class GccAna_CircLin2dBisec {
 /******************************
 * class GccAna_CircPnt2dBisec *
 ******************************/
-%nodefaultctor GccAna_CircPnt2dBisec;
 class GccAna_CircPnt2dBisec {
 	public:
 		/****************** GccAna_CircPnt2dBisec ******************/
@@ -1179,7 +1171,6 @@ class GccAna_CircPnt2dBisec {
 /*************************
 * class GccAna_Lin2d2Tan *
 *************************/
-%nodefaultctor GccAna_Lin2d2Tan;
 class GccAna_Lin2d2Tan {
 	public:
 		/****************** GccAna_Lin2d2Tan ******************/
@@ -1290,7 +1281,6 @@ class GccAna_Lin2d2Tan {
 /**************************
 * class GccAna_Lin2dBisec *
 **************************/
-%nodefaultctor GccAna_Lin2dBisec;
 class GccAna_Lin2dBisec {
 	public:
 		/****************** GccAna_Lin2dBisec ******************/
@@ -1363,7 +1353,6 @@ class GccAna_Lin2dBisec {
 /***************************
 * class GccAna_Lin2dTanObl *
 ***************************/
-%nodefaultctor GccAna_Lin2dTanObl;
 class GccAna_Lin2dTanObl {
 	public:
 		/****************** GccAna_Lin2dTanObl ******************/
@@ -1460,7 +1449,6 @@ class GccAna_Lin2dTanObl {
 /***************************
 * class GccAna_Lin2dTanPar *
 ***************************/
-%nodefaultctor GccAna_Lin2dTanPar;
 class GccAna_Lin2dTanPar {
 	public:
 		/****************** GccAna_Lin2dTanPar ******************/
@@ -1539,7 +1527,6 @@ class GccAna_Lin2dTanPar {
 /***************************
 * class GccAna_Lin2dTanPer *
 ***************************/
-%nodefaultctor GccAna_Lin2dTanPer;
 class GccAna_Lin2dTanPer {
 	public:
 		/****************** GccAna_Lin2dTanPer ******************/
@@ -1652,7 +1639,6 @@ class GccAna_Lin2dTanPer {
 /*****************************
 * class GccAna_LinPnt2dBisec *
 *****************************/
-%nodefaultctor GccAna_LinPnt2dBisec;
 class GccAna_LinPnt2dBisec {
 	public:
 		/****************** GccAna_LinPnt2dBisec ******************/
@@ -1689,7 +1675,6 @@ class GccAna_LinPnt2dBisec {
 /**************************
 * class GccAna_Pnt2dBisec *
 **************************/
-%nodefaultctor GccAna_Pnt2dBisec;
 class GccAna_Pnt2dBisec {
 	public:
 		/****************** GccAna_Pnt2dBisec ******************/

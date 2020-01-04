@@ -82,7 +82,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmldrivers.html"
 * class XmlDrivers *
 *******************/
 %rename(xmldrivers) XmlDrivers;
-%nodefaultctor XmlDrivers;
 class XmlDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -119,7 +118,6 @@ class XmlDrivers {
 /*******************************************
 * class XmlDrivers_DocumentRetrievalDriver *
 *******************************************/
-%nodefaultctor XmlDrivers_DocumentRetrievalDriver;
 class XmlDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -164,7 +162,6 @@ class XmlDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrievalD
 /*****************************************
 * class XmlDrivers_DocumentStorageDriver *
 *****************************************/
-%nodefaultctor XmlDrivers_DocumentStorageDriver;
 class XmlDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDriver {
 	public:
 		/****************** AttributeDrivers ******************/

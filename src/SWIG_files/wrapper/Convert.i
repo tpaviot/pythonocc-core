@@ -84,7 +84,6 @@ typedef void Convert_CosAndSinEvalFunction ( Standard_Real , 	 	 	 	 	 const Sta
 /***************************************************
 * class Convert_CompBezierCurves2dToBSplineCurve2d *
 ***************************************************/
-%nodefaultctor Convert_CompBezierCurves2dToBSplineCurve2d;
 class Convert_CompBezierCurves2dToBSplineCurve2d {
 	public:
 		/****************** AddCurve ******************/
@@ -157,7 +156,6 @@ class Convert_CompBezierCurves2dToBSplineCurve2d {
 /***********************************************
 * class Convert_CompBezierCurvesToBSplineCurve *
 ***********************************************/
-%nodefaultctor Convert_CompBezierCurvesToBSplineCurve;
 class Convert_CompBezierCurvesToBSplineCurve {
 	public:
 		/****************** AddCurve ******************/
@@ -230,7 +228,6 @@ class Convert_CompBezierCurvesToBSplineCurve {
 /**************************************
 * class Convert_CompPolynomialToPoles *
 **************************************/
-%nodefaultctor Convert_CompPolynomialToPoles;
 class Convert_CompPolynomialToPoles {
 	public:
 		/****************** Convert_CompPolynomialToPoles ******************/
@@ -577,7 +574,6 @@ class Convert_ElementarySurfaceToBSplineSurface {
 /**************************************
 * class Convert_GridPolynomialToPoles *
 **************************************/
-%nodefaultctor Convert_GridPolynomialToPoles;
 class Convert_GridPolynomialToPoles {
 	public:
 		/****************** Convert_GridPolynomialToPoles ******************/
@@ -730,7 +726,6 @@ class Convert_GridPolynomialToPoles {
 /*************************************
 * class Convert_CircleToBSplineCurve *
 *************************************/
-%nodefaultctor Convert_CircleToBSplineCurve;
 class Convert_CircleToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
 		/****************** Convert_CircleToBSplineCurve ******************/
@@ -769,7 +764,6 @@ class Convert_CircleToBSplineCurve : public Convert_ConicToBSplineCurve {
 /*************************************
 * class Convert_ConeToBSplineSurface *
 *************************************/
-%nodefaultctor Convert_ConeToBSplineSurface;
 class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
 		/****************** Convert_ConeToBSplineSurface ******************/
@@ -812,7 +806,6 @@ class Convert_ConeToBSplineSurface : public Convert_ElementarySurfaceToBSplineSu
 /*****************************************
 * class Convert_CylinderToBSplineSurface *
 *****************************************/
-%nodefaultctor Convert_CylinderToBSplineSurface;
 class Convert_CylinderToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
 		/****************** Convert_CylinderToBSplineSurface ******************/
@@ -855,7 +848,6 @@ class Convert_CylinderToBSplineSurface : public Convert_ElementarySurfaceToBSpli
 /**************************************
 * class Convert_EllipseToBSplineCurve *
 **************************************/
-%nodefaultctor Convert_EllipseToBSplineCurve;
 class Convert_EllipseToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
 		/****************** Convert_EllipseToBSplineCurve ******************/
@@ -894,7 +886,6 @@ class Convert_EllipseToBSplineCurve : public Convert_ConicToBSplineCurve {
 /****************************************
 * class Convert_HyperbolaToBSplineCurve *
 ****************************************/
-%nodefaultctor Convert_HyperbolaToBSplineCurve;
 class Convert_HyperbolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
 		/****************** Convert_HyperbolaToBSplineCurve ******************/
@@ -921,7 +912,6 @@ class Convert_HyperbolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 /***************************************
 * class Convert_ParabolaToBSplineCurve *
 ***************************************/
-%nodefaultctor Convert_ParabolaToBSplineCurve;
 class Convert_ParabolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 	public:
 		/****************** Convert_ParabolaToBSplineCurve ******************/
@@ -948,7 +938,6 @@ class Convert_ParabolaToBSplineCurve : public Convert_ConicToBSplineCurve {
 /***************************************
 * class Convert_SphereToBSplineSurface *
 ***************************************/
-%nodefaultctor Convert_SphereToBSplineSurface;
 class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
 		/****************** Convert_SphereToBSplineSurface ******************/
@@ -1001,7 +990,6 @@ class Convert_SphereToBSplineSurface : public Convert_ElementarySurfaceToBSpline
 /**************************************
 * class Convert_TorusToBSplineSurface *
 **************************************/
-%nodefaultctor Convert_TorusToBSplineSurface;
 class Convert_TorusToBSplineSurface : public Convert_ElementarySurfaceToBSplineSurface {
 	public:
 		/****************** Convert_TorusToBSplineSurface ******************/

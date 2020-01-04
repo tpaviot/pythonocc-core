@@ -477,7 +477,6 @@ typedef NCollection_Array1 <opencascade::handle <StepGeom_CartesianPoint>> StepG
 /********************************
 * class StepGeom_Axis2Placement *
 ********************************/
-%nodefaultctor StepGeom_Axis2Placement;
 class StepGeom_Axis2Placement : public StepData_SelectType {
 	public:
 		/****************** Axis2Placement2d ******************/
@@ -518,7 +517,6 @@ class StepGeom_Axis2Placement : public StepData_SelectType {
 /***************************************
 * class StepGeom_CompositeCurveSegment *
 ***************************************/
-%nodefaultctor StepGeom_CompositeCurveSegment;
 class StepGeom_CompositeCurveSegment : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -588,7 +586,6 @@ class StepGeom_CompositeCurveSegment : public Standard_Transient {
 /********************************
 * class StepGeom_CurveOnSurface *
 ********************************/
-%nodefaultctor StepGeom_CurveOnSurface;
 class StepGeom_CurveOnSurface : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -635,7 +632,6 @@ class StepGeom_CurveOnSurface : public StepData_SelectType {
 /*************************************************************************
 * class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx *
 *************************************************************************/
-%nodefaultctor StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
 class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public StepRepr_RepresentationContext {
 	public:
 		/****************** CoordinateSpaceDimension ******************/
@@ -783,7 +779,6 @@ class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public 
 /************************************************
 * class StepGeom_GeometricRepresentationContext *
 ************************************************/
-%nodefaultctor StepGeom_GeometricRepresentationContext;
 class StepGeom_GeometricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
 		/****************** CoordinateSpaceDimension ******************/
@@ -829,7 +824,6 @@ class StepGeom_GeometricRepresentationContext : public StepRepr_RepresentationCo
 /****************************************************************************
 * class StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext *
 ****************************************************************************/
-%nodefaultctor StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
 class StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext : public StepRepr_RepresentationContext {
 	public:
 		/****************** CoordinateSpaceDimension ******************/
@@ -938,7 +932,6 @@ class StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext : publ
 /**********************************************************************************
 * class StepGeom_GeometricRepresentationContextAndParametricRepresentationContext *
 **********************************************************************************/
-%nodefaultctor StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
 class StepGeom_GeometricRepresentationContextAndParametricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
 		/****************** CoordinateSpaceDimension ******************/
@@ -1021,7 +1014,6 @@ class StepGeom_GeometricRepresentationContextAndParametricRepresentationContext 
 /*********************************************
 * class StepGeom_GeometricRepresentationItem *
 *********************************************/
-%nodefaultctor StepGeom_GeometricRepresentationItem;
 class StepGeom_GeometricRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** StepGeom_GeometricRepresentationItem ******************/
@@ -1044,7 +1036,6 @@ class StepGeom_GeometricRepresentationItem : public StepRepr_RepresentationItem 
 /*********************************
 * class StepGeom_PcurveOrSurface *
 *********************************/
-%nodefaultctor StepGeom_PcurveOrSurface;
 class StepGeom_PcurveOrSurface : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1085,7 +1076,6 @@ class StepGeom_PcurveOrSurface : public StepData_SelectType {
 /*********************************
 * class StepGeom_SurfaceBoundary *
 *********************************/
-%nodefaultctor StepGeom_SurfaceBoundary;
 class StepGeom_SurfaceBoundary : public StepData_SelectType {
 	public:
 		/****************** BoundaryCurve ******************/
@@ -1126,7 +1116,6 @@ class StepGeom_SurfaceBoundary : public StepData_SelectType {
 /******************************
 * class StepGeom_SurfacePatch *
 ******************************/
-%nodefaultctor StepGeom_SurfacePatch;
 class StepGeom_SurfacePatch : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1224,7 +1213,6 @@ class StepGeom_SurfacePatch : public Standard_Transient {
 /********************************
 * class StepGeom_TrimmingMember *
 ********************************/
-%nodefaultctor StepGeom_TrimmingMember;
 class StepGeom_TrimmingMember : public StepData_SelectReal {
 	public:
 		/****************** HasName ******************/
@@ -1263,7 +1251,6 @@ class StepGeom_TrimmingMember : public StepData_SelectReal {
 /********************************
 * class StepGeom_TrimmingSelect *
 ********************************/
-%nodefaultctor StepGeom_TrimmingSelect;
 class StepGeom_TrimmingSelect : public StepData_SelectType {
 	public:
 		/****************** CartesianPoint ******************/
@@ -1326,7 +1313,6 @@ class StepGeom_TrimmingSelect : public StepData_SelectType {
 /***********************************
 * class StepGeom_VectorOrDirection *
 ***********************************/
-%nodefaultctor StepGeom_VectorOrDirection;
 class StepGeom_VectorOrDirection : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1367,7 +1353,6 @@ class StepGeom_VectorOrDirection : public StepData_SelectType {
 /*************************************************
 * class StepGeom_CartesianTransformationOperator *
 *************************************************/
-%nodefaultctor StepGeom_CartesianTransformationOperator;
 class StepGeom_CartesianTransformationOperator : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Axis1 ******************/
@@ -1489,7 +1474,6 @@ class StepGeom_CartesianTransformationOperator : public StepGeom_GeometricRepres
 /***********************
 * class StepGeom_Curve *
 ***********************/
-%nodefaultctor StepGeom_Curve;
 class StepGeom_Curve : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** StepGeom_Curve ******************/
@@ -1512,7 +1496,6 @@ class StepGeom_Curve : public StepGeom_GeometricRepresentationItem {
 /***************************
 * class StepGeom_Direction *
 ***************************/
-%nodefaultctor StepGeom_Direction;
 class StepGeom_Direction : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** DirectionRatios ******************/
@@ -1568,7 +1551,6 @@ class StepGeom_Direction : public StepGeom_GeometricRepresentationItem {
 /***************************
 * class StepGeom_Placement *
 ***************************/
-%nodefaultctor StepGeom_Placement;
 class StepGeom_Placement : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -1612,7 +1594,6 @@ class StepGeom_Placement : public StepGeom_GeometricRepresentationItem {
 /***********************
 * class StepGeom_Point *
 ***********************/
-%nodefaultctor StepGeom_Point;
 class StepGeom_Point : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** StepGeom_Point ******************/
@@ -1635,7 +1616,6 @@ class StepGeom_Point : public StepGeom_GeometricRepresentationItem {
 /*****************************************************
 * class StepGeom_ReparametrisedCompositeCurveSegment *
 *****************************************************/
-%nodefaultctor StepGeom_ReparametrisedCompositeCurveSegment;
 class StepGeom_ReparametrisedCompositeCurveSegment : public StepGeom_CompositeCurveSegment {
 	public:
 		/****************** Init ******************/
@@ -1683,7 +1663,6 @@ class StepGeom_ReparametrisedCompositeCurveSegment : public StepGeom_CompositeCu
 /*************************
 * class StepGeom_Surface *
 *************************/
-%nodefaultctor StepGeom_Surface;
 class StepGeom_Surface : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** StepGeom_Surface ******************/
@@ -1706,7 +1685,6 @@ class StepGeom_Surface : public StepGeom_GeometricRepresentationItem {
 /************************
 * class StepGeom_Vector *
 ************************/
-%nodefaultctor StepGeom_Vector;
 class StepGeom_Vector : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -1764,7 +1742,6 @@ class StepGeom_Vector : public StepGeom_GeometricRepresentationItem {
 /********************************
 * class StepGeom_Axis1Placement *
 ********************************/
-%nodefaultctor StepGeom_Axis1Placement;
 class StepGeom_Axis1Placement : public StepGeom_Placement {
 	public:
 		/****************** Axis ******************/
@@ -1822,7 +1799,6 @@ class StepGeom_Axis1Placement : public StepGeom_Placement {
 /**********************************
 * class StepGeom_Axis2Placement2d *
 **********************************/
-%nodefaultctor StepGeom_Axis2Placement2d;
 class StepGeom_Axis2Placement2d : public StepGeom_Placement {
 	public:
 		/****************** HasRefDirection ******************/
@@ -1880,7 +1856,6 @@ class StepGeom_Axis2Placement2d : public StepGeom_Placement {
 /**********************************
 * class StepGeom_Axis2Placement3d *
 **********************************/
-%nodefaultctor StepGeom_Axis2Placement3d;
 class StepGeom_Axis2Placement3d : public StepGeom_Placement {
 	public:
 		/****************** Axis ******************/
@@ -1964,7 +1939,6 @@ class StepGeom_Axis2Placement3d : public StepGeom_Placement {
 /******************************
 * class StepGeom_BoundedCurve *
 ******************************/
-%nodefaultctor StepGeom_BoundedCurve;
 class StepGeom_BoundedCurve : public StepGeom_Curve {
 	public:
 		/****************** StepGeom_BoundedCurve ******************/
@@ -1987,7 +1961,6 @@ class StepGeom_BoundedCurve : public StepGeom_Curve {
 /********************************
 * class StepGeom_BoundedSurface *
 ********************************/
-%nodefaultctor StepGeom_BoundedSurface;
 class StepGeom_BoundedSurface : public StepGeom_Surface {
 	public:
 		/****************** StepGeom_BoundedSurface ******************/
@@ -2010,7 +1983,6 @@ class StepGeom_BoundedSurface : public StepGeom_Surface {
 /********************************
 * class StepGeom_CartesianPoint *
 ********************************/
-%nodefaultctor StepGeom_CartesianPoint;
 class StepGeom_CartesianPoint : public StepGeom_Point {
 	public:
 		/****************** Coordinates ******************/
@@ -2090,7 +2062,6 @@ class StepGeom_CartesianPoint : public StepGeom_Point {
 /***************************************************
 * class StepGeom_CartesianTransformationOperator2d *
 ***************************************************/
-%nodefaultctor StepGeom_CartesianTransformationOperator2d;
 class StepGeom_CartesianTransformationOperator2d : public StepGeom_CartesianTransformationOperator {
 	public:
 		/****************** StepGeom_CartesianTransformationOperator2d ******************/
@@ -2112,7 +2083,6 @@ class StepGeom_CartesianTransformationOperator2d : public StepGeom_CartesianTran
 /***************************************************
 * class StepGeom_CartesianTransformationOperator3d *
 ***************************************************/
-%nodefaultctor StepGeom_CartesianTransformationOperator3d;
 class StepGeom_CartesianTransformationOperator3d : public StepGeom_CartesianTransformationOperator {
 	public:
 		/****************** Axis3 ******************/
@@ -2182,7 +2152,6 @@ class StepGeom_CartesianTransformationOperator3d : public StepGeom_CartesianTran
 /***********************
 * class StepGeom_Conic *
 ***********************/
-%nodefaultctor StepGeom_Conic;
 class StepGeom_Conic : public StepGeom_Curve {
 	public:
 		/****************** Init ******************/
@@ -2226,7 +2195,6 @@ class StepGeom_Conic : public StepGeom_Curve {
 /******************************
 * class StepGeom_CurveReplica *
 ******************************/
-%nodefaultctor StepGeom_CurveReplica;
 class StepGeom_CurveReplica : public StepGeom_Curve {
 	public:
 		/****************** Init ******************/
@@ -2284,7 +2252,6 @@ class StepGeom_CurveReplica : public StepGeom_Curve {
 /**********************************
 * class StepGeom_DegeneratePcurve *
 **********************************/
-%nodefaultctor StepGeom_DegeneratePcurve;
 class StepGeom_DegeneratePcurve : public StepGeom_Point {
 	public:
 		/****************** BasisSurface ******************/
@@ -2342,7 +2309,6 @@ class StepGeom_DegeneratePcurve : public StepGeom_Point {
 /***********************************
 * class StepGeom_ElementarySurface *
 ***********************************/
-%nodefaultctor StepGeom_ElementarySurface;
 class StepGeom_ElementarySurface : public StepGeom_Surface {
 	public:
 		/****************** Init ******************/
@@ -2386,7 +2352,6 @@ class StepGeom_ElementarySurface : public StepGeom_Surface {
 /**********************
 * class StepGeom_Line *
 **********************/
-%nodefaultctor StepGeom_Line;
 class StepGeom_Line : public StepGeom_Curve {
 	public:
 		/****************** Dir ******************/
@@ -2444,7 +2409,6 @@ class StepGeom_Line : public StepGeom_Curve {
 /*******************************
 * class StepGeom_OffsetCurve3d *
 *******************************/
-%nodefaultctor StepGeom_OffsetCurve3d;
 class StepGeom_OffsetCurve3d : public StepGeom_Curve {
 	public:
 		/****************** BasisCurve ******************/
@@ -2530,7 +2494,6 @@ class StepGeom_OffsetCurve3d : public StepGeom_Curve {
 /*******************************
 * class StepGeom_OffsetSurface *
 *******************************/
-%nodefaultctor StepGeom_OffsetSurface;
 class StepGeom_OffsetSurface : public StepGeom_Surface {
 	public:
 		/****************** BasisSurface ******************/
@@ -2602,7 +2565,6 @@ class StepGeom_OffsetSurface : public StepGeom_Surface {
 /*********************************
 * class StepGeom_OrientedSurface *
 *********************************/
-%nodefaultctor StepGeom_OrientedSurface;
 class StepGeom_OrientedSurface : public StepGeom_Surface {
 	public:
 		/****************** Init ******************/
@@ -2649,7 +2611,6 @@ class StepGeom_OrientedSurface : public StepGeom_Surface {
 /************************
 * class StepGeom_Pcurve *
 ************************/
-%nodefaultctor StepGeom_Pcurve;
 class StepGeom_Pcurve : public StepGeom_Curve {
 	public:
 		/****************** BasisSurface ******************/
@@ -2707,7 +2668,6 @@ class StepGeom_Pcurve : public StepGeom_Curve {
 /******************************
 * class StepGeom_PointOnCurve *
 ******************************/
-%nodefaultctor StepGeom_PointOnCurve;
 class StepGeom_PointOnCurve : public StepGeom_Point {
 	public:
 		/****************** BasisCurve ******************/
@@ -2765,7 +2725,6 @@ class StepGeom_PointOnCurve : public StepGeom_Point {
 /********************************
 * class StepGeom_PointOnSurface *
 ********************************/
-%nodefaultctor StepGeom_PointOnSurface;
 class StepGeom_PointOnSurface : public StepGeom_Point {
 	public:
 		/****************** BasisSurface ******************/
@@ -2837,7 +2796,6 @@ class StepGeom_PointOnSurface : public StepGeom_Point {
 /******************************
 * class StepGeom_PointReplica *
 ******************************/
-%nodefaultctor StepGeom_PointReplica;
 class StepGeom_PointReplica : public StepGeom_Point {
 	public:
 		/****************** Init ******************/
@@ -2895,7 +2853,6 @@ class StepGeom_PointReplica : public StepGeom_Point {
 /******************************
 * class StepGeom_SurfaceCurve *
 ******************************/
-%nodefaultctor StepGeom_SurfaceCurve;
 class StepGeom_SurfaceCurve : public StepGeom_Curve {
 	public:
 		/****************** AssociatedGeometry ******************/
@@ -2979,7 +2936,6 @@ class StepGeom_SurfaceCurve : public StepGeom_Curve {
 /********************************
 * class StepGeom_SurfaceReplica *
 ********************************/
-%nodefaultctor StepGeom_SurfaceReplica;
 class StepGeom_SurfaceReplica : public StepGeom_Surface {
 	public:
 		/****************** Init ******************/
@@ -3037,7 +2993,6 @@ class StepGeom_SurfaceReplica : public StepGeom_Surface {
 /******************************
 * class StepGeom_SweptSurface *
 ******************************/
-%nodefaultctor StepGeom_SweptSurface;
 class StepGeom_SweptSurface : public StepGeom_Surface {
 	public:
 		/****************** Init ******************/
@@ -3081,7 +3036,6 @@ class StepGeom_SweptSurface : public StepGeom_Surface {
 /******************************
 * class StepGeom_BSplineCurve *
 ******************************/
-%nodefaultctor StepGeom_BSplineCurve;
 class StepGeom_BSplineCurve : public StepGeom_BoundedCurve {
 	public:
 		/****************** ClosedCurve ******************/
@@ -3193,7 +3147,6 @@ class StepGeom_BSplineCurve : public StepGeom_BoundedCurve {
 /********************************
 * class StepGeom_BSplineSurface *
 ********************************/
-%nodefaultctor StepGeom_BSplineSurface;
 class StepGeom_BSplineSurface : public StepGeom_BoundedSurface {
 	public:
 		/****************** ControlPointsList ******************/
@@ -3340,7 +3293,6 @@ class StepGeom_BSplineSurface : public StepGeom_BoundedSurface {
 /************************
 * class StepGeom_Circle *
 ************************/
-%nodefaultctor StepGeom_Circle;
 class StepGeom_Circle : public StepGeom_Conic {
 	public:
 		/****************** Init ******************/
@@ -3386,7 +3338,6 @@ class StepGeom_Circle : public StepGeom_Conic {
 /********************************
 * class StepGeom_CompositeCurve *
 ********************************/
-%nodefaultctor StepGeom_CompositeCurve;
 class StepGeom_CompositeCurve : public StepGeom_BoundedCurve {
 	public:
 		/****************** Init ******************/
@@ -3456,7 +3407,6 @@ class StepGeom_CompositeCurve : public StepGeom_BoundedCurve {
 /********************************
 * class StepGeom_ConicalSurface *
 ********************************/
-%nodefaultctor StepGeom_ConicalSurface;
 class StepGeom_ConicalSurface : public StepGeom_ElementarySurface {
 	public:
 		/****************** Init ******************/
@@ -3516,7 +3466,6 @@ class StepGeom_ConicalSurface : public StepGeom_ElementarySurface {
 /*************************************
 * class StepGeom_CurveBoundedSurface *
 *************************************/
-%nodefaultctor StepGeom_CurveBoundedSurface;
 class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface {
 	public:
 		/****************** BasisSurface ******************/
@@ -3595,7 +3544,6 @@ class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface {
 /************************************
 * class StepGeom_CylindricalSurface *
 ************************************/
-%nodefaultctor StepGeom_CylindricalSurface;
 class StepGeom_CylindricalSurface : public StepGeom_ElementarySurface {
 	public:
 		/****************** Init ******************/
@@ -3641,7 +3589,6 @@ class StepGeom_CylindricalSurface : public StepGeom_ElementarySurface {
 /*************************
 * class StepGeom_Ellipse *
 *************************/
-%nodefaultctor StepGeom_Ellipse;
 class StepGeom_Ellipse : public StepGeom_Conic {
 	public:
 		/****************** Init ******************/
@@ -3701,7 +3648,6 @@ class StepGeom_Ellipse : public StepGeom_Conic {
 /*******************************************
 * class StepGeom_EvaluatedDegeneratePcurve *
 *******************************************/
-%nodefaultctor StepGeom_EvaluatedDegeneratePcurve;
 class StepGeom_EvaluatedDegeneratePcurve : public StepGeom_DegeneratePcurve {
 	public:
 		/****************** EquivalentPoint ******************/
@@ -3749,7 +3695,6 @@ class StepGeom_EvaluatedDegeneratePcurve : public StepGeom_DegeneratePcurve {
 /***************************
 * class StepGeom_Hyperbola *
 ***************************/
-%nodefaultctor StepGeom_Hyperbola;
 class StepGeom_Hyperbola : public StepGeom_Conic {
 	public:
 		/****************** Init ******************/
@@ -3809,7 +3754,6 @@ class StepGeom_Hyperbola : public StepGeom_Conic {
 /***********************************
 * class StepGeom_IntersectionCurve *
 ***********************************/
-%nodefaultctor StepGeom_IntersectionCurve;
 class StepGeom_IntersectionCurve : public StepGeom_SurfaceCurve {
 	public:
 		/****************** StepGeom_IntersectionCurve ******************/
@@ -3832,7 +3776,6 @@ class StepGeom_IntersectionCurve : public StepGeom_SurfaceCurve {
 /**************************
 * class StepGeom_Parabola *
 **************************/
-%nodefaultctor StepGeom_Parabola;
 class StepGeom_Parabola : public StepGeom_Conic {
 	public:
 		/****************** FocalDist ******************/
@@ -3878,7 +3821,6 @@ class StepGeom_Parabola : public StepGeom_Conic {
 /***********************
 * class StepGeom_Plane *
 ***********************/
-%nodefaultctor StepGeom_Plane;
 class StepGeom_Plane : public StepGeom_ElementarySurface {
 	public:
 		/****************** StepGeom_Plane ******************/
@@ -3901,7 +3843,6 @@ class StepGeom_Plane : public StepGeom_ElementarySurface {
 /**************************
 * class StepGeom_Polyline *
 **************************/
-%nodefaultctor StepGeom_Polyline;
 class StepGeom_Polyline : public StepGeom_BoundedCurve {
 	public:
 		/****************** Init ******************/
@@ -3957,7 +3898,6 @@ class StepGeom_Polyline : public StepGeom_BoundedCurve {
 /*********************************************
 * class StepGeom_RectangularCompositeSurface *
 *********************************************/
-%nodefaultctor StepGeom_RectangularCompositeSurface;
 class StepGeom_RectangularCompositeSurface : public StepGeom_BoundedSurface {
 	public:
 		/****************** Init ******************/
@@ -4020,7 +3960,6 @@ class StepGeom_RectangularCompositeSurface : public StepGeom_BoundedSurface {
 /*******************************************
 * class StepGeom_RectangularTrimmedSurface *
 *******************************************/
-%nodefaultctor StepGeom_RectangularTrimmedSurface;
 class StepGeom_RectangularTrimmedSurface : public StepGeom_BoundedSurface {
 	public:
 		/****************** BasisSurface ******************/
@@ -4148,7 +4087,6 @@ class StepGeom_RectangularTrimmedSurface : public StepGeom_BoundedSurface {
 /***************************
 * class StepGeom_SeamCurve *
 ***************************/
-%nodefaultctor StepGeom_SeamCurve;
 class StepGeom_SeamCurve : public StepGeom_SurfaceCurve {
 	public:
 		/****************** StepGeom_SeamCurve ******************/
@@ -4171,7 +4109,6 @@ class StepGeom_SeamCurve : public StepGeom_SurfaceCurve {
 /**********************************
 * class StepGeom_SphericalSurface *
 **********************************/
-%nodefaultctor StepGeom_SphericalSurface;
 class StepGeom_SphericalSurface : public StepGeom_ElementarySurface {
 	public:
 		/****************** Init ******************/
@@ -4217,7 +4154,6 @@ class StepGeom_SphericalSurface : public StepGeom_ElementarySurface {
 /*********************************************
 * class StepGeom_SurfaceCurveAndBoundedCurve *
 *********************************************/
-%nodefaultctor StepGeom_SurfaceCurveAndBoundedCurve;
 class StepGeom_SurfaceCurveAndBoundedCurve : public StepGeom_SurfaceCurve {
 	public:
 		/****************** BoundedCurve ******************/
@@ -4246,7 +4182,6 @@ class StepGeom_SurfaceCurveAndBoundedCurve : public StepGeom_SurfaceCurve {
 /******************************************
 * class StepGeom_SurfaceOfLinearExtrusion *
 ******************************************/
-%nodefaultctor StepGeom_SurfaceOfLinearExtrusion;
 class StepGeom_SurfaceOfLinearExtrusion : public StepGeom_SweptSurface {
 	public:
 		/****************** ExtrusionAxis ******************/
@@ -4292,7 +4227,6 @@ class StepGeom_SurfaceOfLinearExtrusion : public StepGeom_SweptSurface {
 /*************************************
 * class StepGeom_SurfaceOfRevolution *
 *************************************/
-%nodefaultctor StepGeom_SurfaceOfRevolution;
 class StepGeom_SurfaceOfRevolution : public StepGeom_SweptSurface {
 	public:
 		/****************** AxisPosition ******************/
@@ -4338,7 +4272,6 @@ class StepGeom_SurfaceOfRevolution : public StepGeom_SweptSurface {
 /*********************************
 * class StepGeom_ToroidalSurface *
 *********************************/
-%nodefaultctor StepGeom_ToroidalSurface;
 class StepGeom_ToroidalSurface : public StepGeom_ElementarySurface {
 	public:
 		/****************** Init ******************/
@@ -4398,7 +4331,6 @@ class StepGeom_ToroidalSurface : public StepGeom_ElementarySurface {
 /******************************
 * class StepGeom_TrimmedCurve *
 ******************************/
-%nodefaultctor StepGeom_TrimmedCurve;
 class StepGeom_TrimmedCurve : public StepGeom_BoundedCurve {
 	public:
 		/****************** BasisCurve ******************/
@@ -4522,7 +4454,6 @@ class StepGeom_TrimmedCurve : public StepGeom_BoundedCurve {
 /***************************************
 * class StepGeom_BSplineCurveWithKnots *
 ***************************************/
-%nodefaultctor StepGeom_BSplineCurveWithKnots;
 class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve {
 	public:
 		/****************** Init ******************/
@@ -4628,7 +4559,6 @@ class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve {
 /**************************************************************
 * class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve *
 **************************************************************/
-%nodefaultctor StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
 class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
 		/****************** BSplineCurveWithKnots ******************/
@@ -4805,7 +4735,6 @@ class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public StepGeom_BS
 /*****************************************
 * class StepGeom_BSplineSurfaceWithKnots *
 *****************************************/
-%nodefaultctor StepGeom_BSplineSurfaceWithKnots;
 class StepGeom_BSplineSurfaceWithKnots : public StepGeom_BSplineSurface {
 	public:
 		/****************** Init ******************/
@@ -4967,7 +4896,6 @@ class StepGeom_BSplineSurfaceWithKnots : public StepGeom_BSplineSurface {
 /******************************************************************
 * class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface *
 ******************************************************************/
-%nodefaultctor StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
 class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
 		/****************** BSplineSurfaceWithKnots ******************/
@@ -5211,7 +5139,6 @@ class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public StepGeo
 /*****************************
 * class StepGeom_BezierCurve *
 *****************************/
-%nodefaultctor StepGeom_BezierCurve;
 class StepGeom_BezierCurve : public StepGeom_BSplineCurve {
 	public:
 		/****************** StepGeom_BezierCurve ******************/
@@ -5234,7 +5161,6 @@ class StepGeom_BezierCurve : public StepGeom_BSplineCurve {
 /****************************************************
 * class StepGeom_BezierCurveAndRationalBSplineCurve *
 ****************************************************/
-%nodefaultctor StepGeom_BezierCurveAndRationalBSplineCurve;
 class StepGeom_BezierCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
 		/****************** BezierCurve ******************/
@@ -5345,7 +5271,6 @@ class StepGeom_BezierCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve
 /*******************************
 * class StepGeom_BezierSurface *
 *******************************/
-%nodefaultctor StepGeom_BezierSurface;
 class StepGeom_BezierSurface : public StepGeom_BSplineSurface {
 	public:
 		/****************** StepGeom_BezierSurface ******************/
@@ -5368,7 +5293,6 @@ class StepGeom_BezierSurface : public StepGeom_BSplineSurface {
 /********************************************************
 * class StepGeom_BezierSurfaceAndRationalBSplineSurface *
 ********************************************************/
-%nodefaultctor StepGeom_BezierSurfaceAndRationalBSplineSurface;
 class StepGeom_BezierSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
 		/****************** BezierSurface ******************/
@@ -5494,7 +5418,6 @@ class StepGeom_BezierSurfaceAndRationalBSplineSurface : public StepGeom_BSplineS
 /*****************************************
 * class StepGeom_CompositeCurveOnSurface *
 *****************************************/
-%nodefaultctor StepGeom_CompositeCurveOnSurface;
 class StepGeom_CompositeCurveOnSurface : public StepGeom_CompositeCurve {
 	public:
 		/****************** StepGeom_CompositeCurveOnSurface ******************/
@@ -5517,7 +5440,6 @@ class StepGeom_CompositeCurveOnSurface : public StepGeom_CompositeCurve {
 /*******************************************
 * class StepGeom_DegenerateToroidalSurface *
 *******************************************/
-%nodefaultctor StepGeom_DegenerateToroidalSurface;
 class StepGeom_DegenerateToroidalSurface : public StepGeom_ToroidalSurface {
 	public:
 		/****************** Init ******************/
@@ -5567,7 +5489,6 @@ class StepGeom_DegenerateToroidalSurface : public StepGeom_ToroidalSurface {
 /***********************************
 * class StepGeom_QuasiUniformCurve *
 ***********************************/
-%nodefaultctor StepGeom_QuasiUniformCurve;
 class StepGeom_QuasiUniformCurve : public StepGeom_BSplineCurve {
 	public:
 		/****************** StepGeom_QuasiUniformCurve ******************/
@@ -5590,7 +5511,6 @@ class StepGeom_QuasiUniformCurve : public StepGeom_BSplineCurve {
 /**********************************************************
 * class StepGeom_QuasiUniformCurveAndRationalBSplineCurve *
 **********************************************************/
-%nodefaultctor StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
 class StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
 		/****************** Init ******************/
@@ -5701,7 +5621,6 @@ class StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public StepGeom_BSplin
 /*************************************
 * class StepGeom_QuasiUniformSurface *
 *************************************/
-%nodefaultctor StepGeom_QuasiUniformSurface;
 class StepGeom_QuasiUniformSurface : public StepGeom_BSplineSurface {
 	public:
 		/****************** StepGeom_QuasiUniformSurface ******************/
@@ -5724,7 +5643,6 @@ class StepGeom_QuasiUniformSurface : public StepGeom_BSplineSurface {
 /**************************************************************
 * class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface *
 **************************************************************/
-%nodefaultctor StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
 class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
 		/****************** Init ******************/
@@ -5850,7 +5768,6 @@ class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BS
 /**************************************
 * class StepGeom_RationalBSplineCurve *
 **************************************/
-%nodefaultctor StepGeom_RationalBSplineCurve;
 class StepGeom_RationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
 		/****************** Init ******************/
@@ -5916,7 +5833,6 @@ class StepGeom_RationalBSplineCurve : public StepGeom_BSplineCurve {
 /****************************************
 * class StepGeom_RationalBSplineSurface *
 ****************************************/
-%nodefaultctor StepGeom_RationalBSplineSurface;
 class StepGeom_RationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
 		/****************** Init ******************/
@@ -5993,7 +5909,6 @@ class StepGeom_RationalBSplineSurface : public StepGeom_BSplineSurface {
 /******************************
 * class StepGeom_UniformCurve *
 ******************************/
-%nodefaultctor StepGeom_UniformCurve;
 class StepGeom_UniformCurve : public StepGeom_BSplineCurve {
 	public:
 		/****************** StepGeom_UniformCurve ******************/
@@ -6016,7 +5931,6 @@ class StepGeom_UniformCurve : public StepGeom_BSplineCurve {
 /*****************************************************
 * class StepGeom_UniformCurveAndRationalBSplineCurve *
 *****************************************************/
-%nodefaultctor StepGeom_UniformCurveAndRationalBSplineCurve;
 class StepGeom_UniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
 		/****************** Init ******************/
@@ -6127,7 +6041,6 @@ class StepGeom_UniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurv
 /********************************
 * class StepGeom_UniformSurface *
 ********************************/
-%nodefaultctor StepGeom_UniformSurface;
 class StepGeom_UniformSurface : public StepGeom_BSplineSurface {
 	public:
 		/****************** StepGeom_UniformSurface ******************/
@@ -6150,7 +6063,6 @@ class StepGeom_UniformSurface : public StepGeom_BSplineSurface {
 /*********************************************************
 * class StepGeom_UniformSurfaceAndRationalBSplineSurface *
 *********************************************************/
-%nodefaultctor StepGeom_UniformSurfaceAndRationalBSplineSurface;
 class StepGeom_UniformSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
 		/****************** Init ******************/
@@ -6276,7 +6188,6 @@ class StepGeom_UniformSurfaceAndRationalBSplineSurface : public StepGeom_BSpline
 /*******************************
 * class StepGeom_BoundaryCurve *
 *******************************/
-%nodefaultctor StepGeom_BoundaryCurve;
 class StepGeom_BoundaryCurve : public StepGeom_CompositeCurveOnSurface {
 	public:
 		/****************** StepGeom_BoundaryCurve ******************/
@@ -6299,7 +6210,6 @@ class StepGeom_BoundaryCurve : public StepGeom_CompositeCurveOnSurface {
 /************************************
 * class StepGeom_OuterBoundaryCurve *
 ************************************/
-%nodefaultctor StepGeom_OuterBoundaryCurve;
 class StepGeom_OuterBoundaryCurve : public StepGeom_BoundaryCurve {
 	public:
 		/****************** StepGeom_OuterBoundaryCurve ******************/

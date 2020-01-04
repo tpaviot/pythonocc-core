@@ -140,7 +140,6 @@ class GccInt_Bisec : public Standard_Transient {
 /*********************
 * class GccInt_BCirc *
 *********************/
-%nodefaultctor GccInt_BCirc;
 class GccInt_BCirc : public GccInt_Bisec {
 	public:
 		/****************** ArcType ******************/
@@ -177,7 +176,6 @@ class GccInt_BCirc : public GccInt_Bisec {
 /**********************
 * class GccInt_BElips *
 **********************/
-%nodefaultctor GccInt_BElips;
 class GccInt_BElips : public GccInt_Bisec {
 	public:
 		/****************** ArcType ******************/
@@ -214,7 +212,6 @@ class GccInt_BElips : public GccInt_Bisec {
 /**********************
 * class GccInt_BHyper *
 **********************/
-%nodefaultctor GccInt_BHyper;
 class GccInt_BHyper : public GccInt_Bisec {
 	public:
 		/****************** ArcType ******************/
@@ -251,7 +248,6 @@ class GccInt_BHyper : public GccInt_Bisec {
 /*********************
 * class GccInt_BLine *
 *********************/
-%nodefaultctor GccInt_BLine;
 class GccInt_BLine : public GccInt_Bisec {
 	public:
 		/****************** ArcType ******************/
@@ -288,7 +284,6 @@ class GccInt_BLine : public GccInt_Bisec {
 /**********************
 * class GccInt_BParab *
 **********************/
-%nodefaultctor GccInt_BParab;
 class GccInt_BParab : public GccInt_Bisec {
 	public:
 		/****************** ArcType ******************/
@@ -325,7 +320,6 @@ class GccInt_BParab : public GccInt_Bisec {
 /**********************
 * class GccInt_BPoint *
 **********************/
-%nodefaultctor GccInt_BPoint;
 class GccInt_BPoint : public GccInt_Bisec {
 	public:
 		/****************** ArcType ******************/

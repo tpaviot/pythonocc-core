@@ -84,7 +84,6 @@ typedef NCollection_List <IntAna_Curve>::Iterator IntAna_ListIteratorOfListOfCur
 /*********************
 * class IntAna_Curve *
 *********************/
-%nodefaultctor IntAna_Curve;
 class IntAna_Curve {
 	public:
 		/****************** D1u ******************/
@@ -271,7 +270,6 @@ class IntAna_Curve {
 /***********************
 * class IntAna_Int3Pln *
 ***********************/
-%nodefaultctor IntAna_Int3Pln;
 class IntAna_Int3Pln {
 	public:
 		/****************** IntAna_Int3Pln ******************/
@@ -333,7 +331,6 @@ class IntAna_Int3Pln {
 /****************************
 * class IntAna_IntConicQuad *
 ****************************/
-%nodefaultctor IntAna_IntConicQuad;
 class IntAna_IntConicQuad {
 	public:
 		/****************** IntAna_IntConicQuad ******************/
@@ -630,7 +627,6 @@ class IntAna_IntConicQuad {
 /***************************
 * class IntAna_IntLinTorus *
 ***************************/
-%nodefaultctor IntAna_IntLinTorus;
 class IntAna_IntLinTorus {
 	public:
 		/****************** IntAna_IntLinTorus ******************/
@@ -710,7 +706,6 @@ class IntAna_IntLinTorus {
 /***************************
 * class IntAna_IntQuadQuad *
 ***************************/
-%nodefaultctor IntAna_IntQuadQuad;
 class IntAna_IntQuadQuad {
 	public:
 		/****************** Curve ******************/
@@ -867,7 +862,6 @@ class IntAna_IntQuadQuad {
 /***************************
 * class IntAna_QuadQuadGeo *
 ***************************/
-%nodefaultctor IntAna_QuadQuadGeo;
 class IntAna_QuadQuadGeo {
 	public:
 		/****************** Circle ******************/
@@ -1336,7 +1330,6 @@ class IntAna_QuadQuadGeo {
 /***********************
 * class IntAna_Quadric *
 ***********************/
-%nodefaultctor IntAna_Quadric;
 class IntAna_Quadric {
 	public:
 		/****************** Coefficients ******************/

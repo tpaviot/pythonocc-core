@@ -887,7 +887,6 @@ class CDM_Reference : public Standard_Transient {
 /******************************
 * class CDM_ReferenceIterator *
 ******************************/
-%nodefaultctor CDM_ReferenceIterator;
 class CDM_ReferenceIterator {
 	public:
 		/****************** CDM_ReferenceIterator ******************/

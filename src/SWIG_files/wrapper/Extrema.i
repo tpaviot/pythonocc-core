@@ -236,7 +236,6 @@ typedef NCollection_Array1 <Extrema_POnSurf> Extrema_Array1OfPOnSurf;
 /*******************************
 * class Extrema_CCLocFOfLocECC *
 *******************************/
-%nodefaultctor Extrema_CCLocFOfLocECC;
 class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** CurvePtr ******************/
@@ -391,7 +390,6 @@ class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
 /*********************************
 * class Extrema_CCLocFOfLocECC2d *
 *********************************/
-%nodefaultctor Extrema_CCLocFOfLocECC2d;
 class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** CurvePtr ******************/
@@ -1057,7 +1055,6 @@ class Extrema_CurveTool {
 /********************
 * class Extrema_ECC *
 ********************/
-%nodefaultctor Extrema_ECC;
 class Extrema_ECC {
 	public:
 		/****************** Extrema_ECC ******************/
@@ -1189,7 +1186,6 @@ class Extrema_ECC {
 /**********************
 * class Extrema_ECC2d *
 **********************/
-%nodefaultctor Extrema_ECC2d;
 class Extrema_ECC2d {
 	public:
 		/****************** Extrema_ECC2d ******************/
@@ -1321,7 +1317,6 @@ class Extrema_ECC2d {
 /**********************************
 * class Extrema_ELPCOfLocateExtPC *
 **********************************/
-%nodefaultctor Extrema_ELPCOfLocateExtPC;
 class Extrema_ELPCOfLocateExtPC {
 	public:
 		/****************** Extrema_ELPCOfLocateExtPC ******************/
@@ -1441,7 +1436,6 @@ class Extrema_ELPCOfLocateExtPC {
 /************************************
 * class Extrema_ELPCOfLocateExtPC2d *
 ************************************/
-%nodefaultctor Extrema_ELPCOfLocateExtPC2d;
 class Extrema_ELPCOfLocateExtPC2d {
 	public:
 		/****************** Extrema_ELPCOfLocateExtPC2d ******************/
@@ -1561,7 +1555,6 @@ class Extrema_ELPCOfLocateExtPC2d {
 /***************************************
 * class Extrema_EPCOfELPCOfLocateExtPC *
 ***************************************/
-%nodefaultctor Extrema_EPCOfELPCOfLocateExtPC;
 class Extrema_EPCOfELPCOfLocateExtPC {
 	public:
 		/****************** Extrema_EPCOfELPCOfLocateExtPC ******************/
@@ -1717,7 +1710,6 @@ class Extrema_EPCOfELPCOfLocateExtPC {
 /*****************************************
 * class Extrema_EPCOfELPCOfLocateExtPC2d *
 *****************************************/
-%nodefaultctor Extrema_EPCOfELPCOfLocateExtPC2d;
 class Extrema_EPCOfELPCOfLocateExtPC2d {
 	public:
 		/****************** Extrema_EPCOfELPCOfLocateExtPC2d ******************/
@@ -1873,7 +1865,6 @@ class Extrema_EPCOfELPCOfLocateExtPC2d {
 /***************************
 * class Extrema_EPCOfExtPC *
 ***************************/
-%nodefaultctor Extrema_EPCOfExtPC;
 class Extrema_EPCOfExtPC {
 	public:
 		/****************** Extrema_EPCOfExtPC ******************/
@@ -2029,7 +2020,6 @@ class Extrema_EPCOfExtPC {
 /*****************************
 * class Extrema_EPCOfExtPC2d *
 *****************************/
-%nodefaultctor Extrema_EPCOfExtPC2d;
 class Extrema_EPCOfExtPC2d {
 	public:
 		/****************** Extrema_EPCOfExtPC2d ******************/
@@ -2185,7 +2175,6 @@ class Extrema_EPCOfExtPC2d {
 /**********************
 * class Extrema_ExtCC *
 **********************/
-%nodefaultctor Extrema_ExtCC;
 class Extrema_ExtCC {
 	public:
 		/****************** Extrema_ExtCC ******************/
@@ -2366,7 +2355,6 @@ class Extrema_ExtCC {
 /************************
 * class Extrema_ExtCC2d *
 ************************/
-%nodefaultctor Extrema_ExtCC2d;
 class Extrema_ExtCC2d {
 	public:
 		/****************** Extrema_ExtCC2d ******************/
@@ -2523,7 +2511,6 @@ class Extrema_ExtCC2d {
 /**********************
 * class Extrema_ExtCS *
 **********************/
-%nodefaultctor Extrema_ExtCS;
 class Extrema_ExtCS {
 	public:
 		/****************** Extrema_ExtCS ******************/
@@ -2653,7 +2640,6 @@ class Extrema_ExtCS {
 /***********************
 * class Extrema_ExtElC *
 ***********************/
-%nodefaultctor Extrema_ExtElC;
 class Extrema_ExtElC {
 	public:
 		/****************** Extrema_ExtElC ******************/
@@ -2775,7 +2761,6 @@ class Extrema_ExtElC {
 /*************************
 * class Extrema_ExtElC2d *
 *************************/
-%nodefaultctor Extrema_ExtElC2d;
 class Extrema_ExtElC2d {
 	public:
 		/****************** Extrema_ExtElC2d ******************/
@@ -2927,7 +2912,6 @@ class Extrema_ExtElC2d {
 /************************
 * class Extrema_ExtElCS *
 ************************/
-%nodefaultctor Extrema_ExtElCS;
 class Extrema_ExtElCS {
 	public:
 		/****************** Extrema_ExtElCS ******************/
@@ -3194,7 +3178,6 @@ class Extrema_ExtElCS {
 /************************
 * class Extrema_ExtElSS *
 ************************/
-%nodefaultctor Extrema_ExtElSS;
 class Extrema_ExtElSS {
 	public:
 		/****************** Extrema_ExtElSS ******************/
@@ -3366,7 +3349,6 @@ class Extrema_ExtElSS {
 /**********************
 * class Extrema_ExtPC *
 **********************/
-%nodefaultctor Extrema_ExtPC;
 class Extrema_ExtPC {
 	public:
 		/****************** Extrema_ExtPC ******************/
@@ -3486,7 +3468,6 @@ class Extrema_ExtPC {
 /************************
 * class Extrema_ExtPC2d *
 ************************/
-%nodefaultctor Extrema_ExtPC2d;
 class Extrema_ExtPC2d {
 	public:
 		/****************** Extrema_ExtPC2d ******************/
@@ -3606,7 +3587,6 @@ class Extrema_ExtPC2d {
 /************************
 * class Extrema_ExtPElC *
 ************************/
-%nodefaultctor Extrema_ExtPElC;
 class Extrema_ExtPElC {
 	public:
 		/****************** Extrema_ExtPElC ******************/
@@ -3817,7 +3797,6 @@ class Extrema_ExtPElC {
 /**************************
 * class Extrema_ExtPElC2d *
 **************************/
-%nodefaultctor Extrema_ExtPElC2d;
 class Extrema_ExtPElC2d {
 	public:
 		/****************** Extrema_ExtPElC2d ******************/
@@ -4028,7 +4007,6 @@ class Extrema_ExtPElC2d {
 /************************
 * class Extrema_ExtPElS *
 ************************/
-%nodefaultctor Extrema_ExtPElS;
 class Extrema_ExtPElS {
 	public:
 		/****************** Extrema_ExtPElS ******************/
@@ -4191,7 +4169,6 @@ class Extrema_ExtPElS {
 /*************************
 * class Extrema_ExtPExtS *
 *************************/
-%nodefaultctor Extrema_ExtPExtS;
 class Extrema_ExtPExtS : public Standard_Transient {
 	public:
 		/****************** Extrema_ExtPExtS ******************/
@@ -4304,7 +4281,6 @@ class Extrema_ExtPExtS : public Standard_Transient {
 /*************************
 * class Extrema_ExtPRevS *
 *************************/
-%nodefaultctor Extrema_ExtPRevS;
 class Extrema_ExtPRevS : public Standard_Transient {
 	public:
 		/****************** Extrema_ExtPRevS ******************/
@@ -4416,7 +4392,6 @@ class Extrema_ExtPRevS : public Standard_Transient {
 /**********************
 * class Extrema_ExtPS *
 **********************/
-%nodefaultctor Extrema_ExtPS;
 class Extrema_ExtPS {
 	public:
 		/****************** Extrema_ExtPS ******************/
@@ -4572,7 +4547,6 @@ class Extrema_ExtPS {
 /**********************
 * class Extrema_ExtSS *
 **********************/
-%nodefaultctor Extrema_ExtSS;
 class Extrema_ExtSS {
 	public:
 		/****************** Extrema_ExtSS ******************/
@@ -4710,7 +4684,6 @@ class Extrema_ExtSS {
 /**************************
 * class Extrema_FuncExtCS *
 **************************/
-%nodefaultctor Extrema_FuncExtCS;
 class Extrema_FuncExtCS : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/
@@ -4827,7 +4800,6 @@ class Extrema_FuncExtCS : public math_FunctionSetWithDerivatives {
 /**************************
 * class Extrema_FuncExtSS *
 **************************/
-%nodefaultctor Extrema_FuncExtSS;
 class Extrema_FuncExtSS : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/
@@ -4944,7 +4916,6 @@ class Extrema_FuncExtSS : public math_FunctionSetWithDerivatives {
 /***************************
 * class Extrema_FuncPSDist *
 ***************************/
-%nodefaultctor Extrema_FuncPSDist;
 class Extrema_FuncPSDist : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** Extrema_FuncPSDist ******************/
@@ -5007,7 +4978,6 @@ class Extrema_FuncPSDist : public math_MultipleVarFunctionWithGradient {
 /***************************
 * class Extrema_FuncPSNorm *
 ***************************/
-%nodefaultctor Extrema_FuncPSNorm;
 class Extrema_FuncPSNorm : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/
@@ -5122,7 +5092,6 @@ class Extrema_FuncPSNorm : public math_FunctionSetWithDerivatives {
 /*************************
 * class Extrema_GenExtCS *
 *************************/
-%nodefaultctor Extrema_GenExtCS;
 class Extrema_GenExtCS {
 	public:
 		/****************** Extrema_GenExtCS ******************/
@@ -5292,7 +5261,6 @@ class Extrema_GenExtCS {
 /*************************
 * class Extrema_GenExtPS *
 *************************/
-%nodefaultctor Extrema_GenExtPS;
 class Extrema_GenExtPS {
 	public:
 		/****************** Extrema_GenExtPS ******************/
@@ -5452,7 +5420,6 @@ class Extrema_GenExtPS {
 /*************************
 * class Extrema_GenExtSS *
 *************************/
-%nodefaultctor Extrema_GenExtSS;
 class Extrema_GenExtSS {
 	public:
 		/****************** Extrema_GenExtSS ******************/
@@ -5622,7 +5589,6 @@ class Extrema_GenExtSS {
 /*******************************
 * class Extrema_GenLocateExtCS *
 *******************************/
-%nodefaultctor Extrema_GenLocateExtCS;
 class Extrema_GenLocateExtCS {
 	public:
 		/****************** Extrema_GenLocateExtCS ******************/
@@ -5705,7 +5671,6 @@ class Extrema_GenLocateExtCS {
 /*******************************
 * class Extrema_GenLocateExtPS *
 *******************************/
-%nodefaultctor Extrema_GenLocateExtPS;
 class Extrema_GenLocateExtPS {
 	public:
 		/****************** Extrema_GenLocateExtPS ******************/
@@ -5764,7 +5729,6 @@ class Extrema_GenLocateExtPS {
 /*******************************
 * class Extrema_GenLocateExtSS *
 *******************************/
-%nodefaultctor Extrema_GenLocateExtSS;
 class Extrema_GenLocateExtSS {
 	public:
 		/****************** Extrema_GenLocateExtSS ******************/
@@ -5851,7 +5815,6 @@ class Extrema_GenLocateExtSS {
 /********************************
 * class Extrema_GlobOptFuncCCC0 *
 ********************************/
-%nodefaultctor Extrema_GlobOptFuncCCC0;
 class Extrema_GlobOptFuncCCC0 : public math_MultipleVarFunction {
 	public:
 		/****************** Extrema_GlobOptFuncCCC0 ******************/
@@ -5898,7 +5861,6 @@ class Extrema_GlobOptFuncCCC0 : public math_MultipleVarFunction {
 /********************************
 * class Extrema_GlobOptFuncCCC1 *
 ********************************/
-%nodefaultctor Extrema_GlobOptFuncCCC1;
 class Extrema_GlobOptFuncCCC1 : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** Extrema_GlobOptFuncCCC1 ******************/
@@ -5965,7 +5927,6 @@ class Extrema_GlobOptFuncCCC1 : public math_MultipleVarFunctionWithGradient {
 /********************************
 * class Extrema_GlobOptFuncCCC2 *
 ********************************/
-%nodefaultctor Extrema_GlobOptFuncCCC2;
 class Extrema_GlobOptFuncCCC2 : public math_MultipleVarFunctionWithHessian {
 	public:
 		/****************** Extrema_GlobOptFuncCCC2 ******************/
@@ -6045,7 +6006,6 @@ class Extrema_GlobOptFuncCCC2 : public math_MultipleVarFunctionWithHessian {
 /******************************
 * class Extrema_GlobOptFuncCS *
 ******************************/
-%nodefaultctor Extrema_GlobOptFuncCS;
 class Extrema_GlobOptFuncCS : public math_MultipleVarFunctionWithHessian {
 	public:
 		/****************** Extrema_GlobOptFuncCS ******************/
@@ -6117,7 +6077,6 @@ class Extrema_GlobOptFuncCS : public math_MultipleVarFunctionWithHessian {
 /***********************
 * class Extrema_LocECC *
 ***********************/
-%nodefaultctor Extrema_LocECC;
 class Extrema_LocECC {
 	public:
 		/****************** Extrema_LocECC ******************/
@@ -6172,7 +6131,6 @@ class Extrema_LocECC {
 /*************************
 * class Extrema_LocECC2d *
 *************************/
-%nodefaultctor Extrema_LocECC2d;
 class Extrema_LocECC2d {
 	public:
 		/****************** Extrema_LocECC2d ******************/
@@ -6227,7 +6185,6 @@ class Extrema_LocECC2d {
 /************************************
 * class Extrema_LocEPCOfLocateExtPC *
 ************************************/
-%nodefaultctor Extrema_LocEPCOfLocateExtPC;
 class Extrema_LocEPCOfLocateExtPC {
 	public:
 		/****************** Extrema_LocEPCOfLocateExtPC ******************/
@@ -6327,7 +6284,6 @@ class Extrema_LocEPCOfLocateExtPC {
 /**************************************
 * class Extrema_LocEPCOfLocateExtPC2d *
 **************************************/
-%nodefaultctor Extrema_LocEPCOfLocateExtPC2d;
 class Extrema_LocEPCOfLocateExtPC2d {
 	public:
 		/****************** Extrema_LocEPCOfLocateExtPC2d ******************/
@@ -6427,7 +6383,6 @@ class Extrema_LocEPCOfLocateExtPC2d {
 /****************************
 * class Extrema_LocateExtCC *
 ****************************/
-%nodefaultctor Extrema_LocateExtCC;
 class Extrema_LocateExtCC {
 	public:
 		/****************** Extrema_LocateExtCC ******************/
@@ -6478,7 +6433,6 @@ class Extrema_LocateExtCC {
 /******************************
 * class Extrema_LocateExtCC2d *
 ******************************/
-%nodefaultctor Extrema_LocateExtCC2d;
 class Extrema_LocateExtCC2d {
 	public:
 		/****************** Extrema_LocateExtCC2d ******************/
@@ -6529,7 +6483,6 @@ class Extrema_LocateExtCC2d {
 /****************************
 * class Extrema_LocateExtPC *
 ****************************/
-%nodefaultctor Extrema_LocateExtPC;
 class Extrema_LocateExtPC {
 	public:
 		/****************** Extrema_LocateExtPC ******************/
@@ -6628,7 +6581,6 @@ class Extrema_LocateExtPC {
 /******************************
 * class Extrema_LocateExtPC2d *
 ******************************/
-%nodefaultctor Extrema_LocateExtPC2d;
 class Extrema_LocateExtPC2d {
 	public:
 		/****************** Extrema_LocateExtPC2d ******************/
@@ -6727,7 +6679,6 @@ class Extrema_LocateExtPC2d {
 /********************************************
 * class Extrema_PCFOfEPCOfELPCOfLocateExtPC *
 ********************************************/
-%nodefaultctor Extrema_PCFOfEPCOfELPCOfLocateExtPC;
 class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -6856,7 +6807,6 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
 /**********************************************
 * class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d *
 **********************************************/
-%nodefaultctor Extrema_PCFOfEPCOfELPCOfLocateExtPC2d;
 class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -6985,7 +6935,6 @@ class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative
 /********************************
 * class Extrema_PCFOfEPCOfExtPC *
 ********************************/
-%nodefaultctor Extrema_PCFOfEPCOfExtPC;
 class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -7114,7 +7063,6 @@ class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
 /**********************************
 * class Extrema_PCFOfEPCOfExtPC2d *
 **********************************/
-%nodefaultctor Extrema_PCFOfEPCOfExtPC2d;
 class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -7243,7 +7191,6 @@ class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
 /********************************************
 * class Extrema_PCLocFOfLocEPCOfLocateExtPC *
 ********************************************/
-%nodefaultctor Extrema_PCLocFOfLocEPCOfLocateExtPC;
 class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -7372,7 +7319,6 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
 /**********************************************
 * class Extrema_PCLocFOfLocEPCOfLocateExtPC2d *
 **********************************************/
-%nodefaultctor Extrema_PCLocFOfLocEPCOfLocateExtPC2d;
 class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -7501,7 +7447,6 @@ class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative
 /************************
 * class Extrema_POnCurv *
 ************************/
-%nodefaultctor Extrema_POnCurv;
 class Extrema_POnCurv {
 	public:
 		/****************** Extrema_POnCurv ******************/
@@ -7554,7 +7499,6 @@ class Extrema_POnCurv {
 /**************************
 * class Extrema_POnCurv2d *
 **************************/
-%nodefaultctor Extrema_POnCurv2d;
 class Extrema_POnCurv2d {
 	public:
 		/****************** Extrema_POnCurv2d ******************/
@@ -7607,7 +7551,6 @@ class Extrema_POnCurv2d {
 /************************
 * class Extrema_POnSurf *
 ************************/
-%nodefaultctor Extrema_POnSurf;
 class Extrema_POnSurf {
 	public:
 		/****************** Extrema_POnSurf ******************/
@@ -7668,7 +7611,6 @@ class Extrema_POnSurf {
 /******************************
 * class Extrema_POnSurfParams *
 ******************************/
-%nodefaultctor Extrema_POnSurfParams;
 class Extrema_POnSurfParams : public Extrema_POnSurf {
 	public:
 		/****************** Extrema_POnSurfParams ******************/

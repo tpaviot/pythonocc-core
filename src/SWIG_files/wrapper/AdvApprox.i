@@ -71,7 +71,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_advapprox.html"
 /**********************************
 * class AdvApprox_ApproxAFunction *
 **********************************/
-%nodefaultctor AdvApprox_ApproxAFunction;
 class AdvApprox_ApproxAFunction {
 	public:
 		/****************** AdvApprox_ApproxAFunction ******************/
@@ -353,7 +352,6 @@ class AdvApprox_Cutting {
 /*******************************
 * class AdvApprox_SimpleApprox *
 *******************************/
-%nodefaultctor AdvApprox_SimpleApprox;
 class AdvApprox_SimpleApprox {
 	public:
 		/****************** AdvApprox_SimpleApprox ******************/
@@ -463,7 +461,6 @@ class AdvApprox_SimpleApprox {
 /*******************************
 * class AdvApprox_DichoCutting *
 *******************************/
-%nodefaultctor AdvApprox_DichoCutting;
 class AdvApprox_DichoCutting : public AdvApprox_Cutting {
 	public:
 		/****************** AdvApprox_DichoCutting ******************/
@@ -494,7 +491,6 @@ class AdvApprox_DichoCutting : public AdvApprox_Cutting {
 /*****************************
 * class AdvApprox_PrefAndRec *
 *****************************/
-%nodefaultctor AdvApprox_PrefAndRec;
 class AdvApprox_PrefAndRec : public AdvApprox_Cutting {
 	public:
 		/****************** AdvApprox_PrefAndRec ******************/
@@ -532,7 +528,6 @@ class AdvApprox_PrefAndRec : public AdvApprox_Cutting {
 /******************************
 * class AdvApprox_PrefCutting *
 ******************************/
-%nodefaultctor AdvApprox_PrefCutting;
 class AdvApprox_PrefCutting : public AdvApprox_Cutting {
 	public:
 		/****************** AdvApprox_PrefCutting ******************/

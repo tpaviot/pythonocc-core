@@ -80,7 +80,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmlxcafdrivers.ht
 * class XmlXCAFDrivers *
 ***********************/
 %rename(xmlxcafdrivers) XmlXCAFDrivers;
-%nodefaultctor XmlXCAFDrivers;
 class XmlXCAFDrivers {
 	public:
 		/****************** DefineFormat ******************/
@@ -111,7 +110,6 @@ class XmlXCAFDrivers {
 /***********************************************
 * class XmlXCAFDrivers_DocumentRetrievalDriver *
 ***********************************************/
-%nodefaultctor XmlXCAFDrivers_DocumentRetrievalDriver;
 class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -140,7 +138,6 @@ class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetriev
 /*********************************************
 * class XmlXCAFDrivers_DocumentStorageDriver *
 *********************************************/
-%nodefaultctor XmlXCAFDrivers_DocumentStorageDriver;
 class XmlXCAFDrivers_DocumentStorageDriver : public XmlDrivers_DocumentStorageDriver {
 	public:
 		/****************** AttributeDrivers ******************/

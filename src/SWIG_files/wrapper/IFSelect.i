@@ -358,7 +358,6 @@ class IFSelect_Activator : public Standard_Transient {
 /**********************************
 * class IFSelect_AppliedModifiers *
 **********************************/
-%nodefaultctor IFSelect_AppliedModifiers;
 class IFSelect_AppliedModifiers : public Standard_Transient {
 	public:
 		/****************** AddModif ******************/
@@ -439,7 +438,6 @@ class IFSelect_AppliedModifiers : public Standard_Transient {
 /******************************
 * class IFSelect_ContextModif *
 ******************************/
-%nodefaultctor IFSelect_ContextModif;
 class IFSelect_ContextModif {
 	public:
 		/****************** AddCheck ******************/
@@ -674,7 +672,6 @@ class IFSelect_ContextModif {
 /******************************
 * class IFSelect_ContextWrite *
 ******************************/
-%nodefaultctor IFSelect_ContextWrite;
 class IFSelect_ContextWrite {
 	public:
 		/****************** AddCheck ******************/
@@ -976,7 +973,6 @@ class IFSelect_Dispatch : public Standard_Transient {
 /**************************
 * class IFSelect_EditForm *
 **************************/
-%nodefaultctor IFSelect_EditForm;
 class IFSelect_EditForm : public Standard_Transient {
 	public:
 		/****************** Apply ******************/
@@ -1720,7 +1716,6 @@ class IFSelect_GeneralModifier : public Standard_Transient {
 /**************************
 * class IFSelect_IntParam *
 **************************/
-%nodefaultctor IFSelect_IntParam;
 class IFSelect_IntParam : public Standard_Transient {
 	public:
 		/****************** IFSelect_IntParam ******************/
@@ -1765,7 +1760,6 @@ class IFSelect_IntParam : public Standard_Transient {
 /****************************
 * class IFSelect_ListEditor *
 ****************************/
-%nodefaultctor IFSelect_ListEditor;
 class IFSelect_ListEditor : public Standard_Transient {
 	public:
 		/****************** AddValue ******************/
@@ -1924,7 +1918,6 @@ class IFSelect_ListEditor : public Standard_Transient {
 /*****************************
 * class IFSelect_ModelCopier *
 *****************************/
-%nodefaultctor IFSelect_ModelCopier;
 class IFSelect_ModelCopier : public Standard_Transient {
 	public:
 		/****************** AddFile ******************/
@@ -2147,7 +2140,6 @@ class IFSelect_ModelCopier : public Standard_Transient {
 /****************************
 * class IFSelect_PacketList *
 ****************************/
-%nodefaultctor IFSelect_PacketList;
 class IFSelect_PacketList : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -2317,7 +2309,6 @@ class IFSelect_Selection : public Standard_Transient {
 /***********************************
 * class IFSelect_SelectionIterator *
 ***********************************/
-%nodefaultctor IFSelect_SelectionIterator;
 class IFSelect_SelectionIterator {
 	public:
 		/****************** AddFromIter ******************/
@@ -2439,7 +2430,6 @@ class IFSelect_SessionDumper : public Standard_Transient {
 /*****************************
 * class IFSelect_SessionFile *
 *****************************/
-%nodefaultctor IFSelect_SessionFile;
 class IFSelect_SessionFile {
 	public:
 		/****************** AddItem ******************/
@@ -2732,7 +2722,6 @@ class IFSelect_SessionFile {
 /**************************
 * class IFSelect_ShareOut *
 **************************/
-%nodefaultctor IFSelect_ShareOut;
 class IFSelect_ShareOut : public Standard_Transient {
 	public:
 		/****************** AddDispatch ******************/
@@ -3009,7 +2998,6 @@ class IFSelect_ShareOut : public Standard_Transient {
 /********************************
 * class IFSelect_ShareOutResult *
 ********************************/
-%nodefaultctor IFSelect_ShareOutResult;
 class IFSelect_ShareOutResult {
 	public:
 		/****************** Dispatch ******************/
@@ -3271,7 +3259,6 @@ class IFSelect_Signature : public Interface_SignType {
 /*******************************
 * class IFSelect_SignatureList *
 *******************************/
-%nodefaultctor IFSelect_SignatureList;
 class IFSelect_SignatureList : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -3604,7 +3591,6 @@ class IFSelect_WorkLibrary : public Standard_Transient {
 /*****************************
 * class IFSelect_WorkSession *
 *****************************/
-%nodefaultctor IFSelect_WorkSession;
 class IFSelect_WorkSession : public Standard_Transient {
 	public:
 		/****************** AddItem ******************/
@@ -4973,7 +4959,6 @@ class IFSelect_WorkSession : public Standard_Transient {
 /*********************
 * class IFSelect_Act *
 *********************/
-%nodefaultctor IFSelect_Act;
 class IFSelect_Act : public IFSelect_Activator {
 	public:
 		/****************** AddFSet ******************/
@@ -5054,7 +5039,6 @@ class IFSelect_Act : public IFSelect_Activator {
 /*****************************
 * class IFSelect_BasicDumper *
 *****************************/
-%nodefaultctor IFSelect_BasicDumper;
 class IFSelect_BasicDumper : public IFSelect_SessionDumper {
 	public:
 		/****************** IFSelect_BasicDumper ******************/
@@ -5099,7 +5083,6 @@ class IFSelect_BasicDumper : public IFSelect_SessionDumper {
 /******************************
 * class IFSelect_CheckCounter *
 ******************************/
-%nodefaultctor IFSelect_CheckCounter;
 class IFSelect_CheckCounter : public IFSelect_SignatureList {
 	public:
 		/****************** Analyse ******************/
@@ -5152,7 +5135,6 @@ class IFSelect_CheckCounter : public IFSelect_SignatureList {
 /****************************
 * class IFSelect_DispGlobal *
 ****************************/
-%nodefaultctor IFSelect_DispGlobal;
 class IFSelect_DispGlobal : public IFSelect_Dispatch {
 	public:
 		/****************** IFSelect_DispGlobal ******************/
@@ -5201,7 +5183,6 @@ class IFSelect_DispGlobal : public IFSelect_Dispatch {
 /******************************
 * class IFSelect_DispPerCount *
 ******************************/
-%nodefaultctor IFSelect_DispPerCount;
 class IFSelect_DispPerCount : public IFSelect_Dispatch {
 	public:
 		/****************** Count ******************/
@@ -5270,7 +5251,6 @@ class IFSelect_DispPerCount : public IFSelect_Dispatch {
 /******************************
 * class IFSelect_DispPerFiles *
 ******************************/
-%nodefaultctor IFSelect_DispPerFiles;
 class IFSelect_DispPerFiles : public IFSelect_Dispatch {
 	public:
 		/****************** Count ******************/
@@ -5339,7 +5319,6 @@ class IFSelect_DispPerFiles : public IFSelect_Dispatch {
 /****************************
 * class IFSelect_DispPerOne *
 ****************************/
-%nodefaultctor IFSelect_DispPerOne;
 class IFSelect_DispPerOne : public IFSelect_Dispatch {
 	public:
 		/****************** IFSelect_DispPerOne ******************/
@@ -5388,7 +5367,6 @@ class IFSelect_DispPerOne : public IFSelect_Dispatch {
 /**********************************
 * class IFSelect_DispPerSignature *
 **********************************/
-%nodefaultctor IFSelect_DispPerSignature;
 class IFSelect_DispPerSignature : public IFSelect_Dispatch {
 	public:
 		/****************** IFSelect_DispPerSignature ******************/
@@ -5488,7 +5466,6 @@ class IFSelect_Modifier : public IFSelect_GeneralModifier {
 /*****************************
 * class IFSelect_ParamEditor *
 *****************************/
-%nodefaultctor IFSelect_ParamEditor;
 class IFSelect_ParamEditor : public IFSelect_Editor {
 	public:
 		/****************** AddConstantText ******************/
@@ -5812,7 +5789,6 @@ class IFSelect_SelectDeduct : public IFSelect_Selection {
 /******************************
 * class IFSelect_SessionPilot *
 ******************************/
-%nodefaultctor IFSelect_SessionPilot;
 class IFSelect_SessionPilot : public IFSelect_Activator {
 	public:
 		/****************** Arg ******************/
@@ -6033,7 +6009,6 @@ class IFSelect_SessionPilot : public IFSelect_Activator {
 /******************************
 * class IFSelect_SignCategory *
 ******************************/
-%nodefaultctor IFSelect_SignCategory;
 class IFSelect_SignCategory : public IFSelect_Signature {
 	public:
 		/****************** IFSelect_SignCategory ******************/
@@ -6066,7 +6041,6 @@ class IFSelect_SignCategory : public IFSelect_Signature {
 /*****************************
 * class IFSelect_SignCounter *
 *****************************/
-%nodefaultctor IFSelect_SignCounter;
 class IFSelect_SignCounter : public IFSelect_SignatureList {
 	public:
 		/****************** AddEntity ******************/
@@ -6235,7 +6209,6 @@ class IFSelect_SignCounter : public IFSelect_SignatureList {
 /******************************
 * class IFSelect_SignMultiple *
 ******************************/
-%nodefaultctor IFSelect_SignMultiple;
 class IFSelect_SignMultiple : public IFSelect_Signature {
 	public:
 		/****************** Add ******************/
@@ -6296,7 +6269,6 @@ class IFSelect_SignMultiple : public IFSelect_Signature {
 /**************************
 * class IFSelect_SignType *
 **************************/
-%nodefaultctor IFSelect_SignType;
 class IFSelect_SignType : public IFSelect_Signature {
 	public:
 		/****************** IFSelect_SignType ******************/
@@ -6331,7 +6303,6 @@ class IFSelect_SignType : public IFSelect_Signature {
 /******************************
 * class IFSelect_SignValidity *
 ******************************/
-%nodefaultctor IFSelect_SignValidity;
 class IFSelect_SignValidity : public IFSelect_Signature {
 	public:
 		/****************** CVal ******************/
@@ -6374,7 +6345,6 @@ class IFSelect_SignValidity : public IFSelect_Signature {
 /***********************************
 * class IFSelect_TransformStandard *
 ***********************************/
-%nodefaultctor IFSelect_TransformStandard;
 class IFSelect_TransformStandard : public IFSelect_Transformer {
 	public:
 		/****************** AddModifier ******************/
@@ -6555,7 +6525,6 @@ class IFSelect_TransformStandard : public IFSelect_Transformer {
 /******************************
 * class IFSelect_GraphCounter *
 ******************************/
-%nodefaultctor IFSelect_GraphCounter;
 class IFSelect_GraphCounter : public IFSelect_SignCounter {
 	public:
 		/****************** AddWithGraph ******************/
@@ -6606,7 +6575,6 @@ class IFSelect_GraphCounter : public IFSelect_SignCounter {
 /*******************************
 * class IFSelect_ModifEditForm *
 *******************************/
-%nodefaultctor IFSelect_ModifEditForm;
 class IFSelect_ModifEditForm : public IFSelect_Modifier {
 	public:
 		/****************** EditForm ******************/
@@ -6657,7 +6625,6 @@ class IFSelect_ModifEditForm : public IFSelect_Modifier {
 /******************************
 * class IFSelect_ModifReorder *
 ******************************/
-%nodefaultctor IFSelect_ModifReorder;
 class IFSelect_ModifReorder : public IFSelect_Modifier {
 	public:
 		/****************** IFSelect_ModifReorder ******************/
@@ -6839,7 +6806,6 @@ class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 /****************************
 * class IFSelect_SelectDiff *
 ****************************/
-%nodefaultctor IFSelect_SelectDiff;
 class IFSelect_SelectDiff : public IFSelect_SelectControl {
 	public:
 		/****************** IFSelect_SelectDiff ******************/
@@ -6876,7 +6842,6 @@ class IFSelect_SelectDiff : public IFSelect_SelectControl {
 /************************************
 * class IFSelect_SelectEntityNumber *
 ************************************/
-%nodefaultctor IFSelect_SelectEntityNumber;
 class IFSelect_SelectEntityNumber : public IFSelect_SelectBase {
 	public:
 		/****************** IFSelect_SelectEntityNumber ******************/
@@ -7059,7 +7024,6 @@ class IFSelect_SelectExtract : public IFSelect_SelectDeduct {
 /************************************
 * class IFSelect_SelectIntersection *
 ************************************/
-%nodefaultctor IFSelect_SelectIntersection;
 class IFSelect_SelectIntersection : public IFSelect_SelectCombine {
 	public:
 		/****************** IFSelect_SelectIntersection ******************/
@@ -7096,7 +7060,6 @@ class IFSelect_SelectIntersection : public IFSelect_SelectCombine {
 /*************************************
 * class IFSelect_SelectModelEntities *
 *************************************/
-%nodefaultctor IFSelect_SelectModelEntities;
 class IFSelect_SelectModelEntities : public IFSelect_SelectBase {
 	public:
 		/****************** CompleteResult ******************/
@@ -7141,7 +7104,6 @@ class IFSelect_SelectModelEntities : public IFSelect_SelectBase {
 /**********************************
 * class IFSelect_SelectModelRoots *
 **********************************/
-%nodefaultctor IFSelect_SelectModelRoots;
 class IFSelect_SelectModelRoots : public IFSelect_SelectBase {
 	public:
 		/****************** IFSelect_SelectModelRoots ******************/
@@ -7178,7 +7140,6 @@ class IFSelect_SelectModelRoots : public IFSelect_SelectBase {
 /*******************************
 * class IFSelect_SelectPointed *
 *******************************/
-%nodefaultctor IFSelect_SelectPointed;
 class IFSelect_SelectPointed : public IFSelect_SelectBase {
 	public:
 		/****************** Add ******************/
@@ -7329,7 +7290,6 @@ class IFSelect_SelectPointed : public IFSelect_SelectBase {
 /******************************
 * class IFSelect_SelectShared *
 ******************************/
-%nodefaultctor IFSelect_SelectShared;
 class IFSelect_SelectShared : public IFSelect_SelectDeduct {
 	public:
 		/****************** IFSelect_SelectShared ******************/
@@ -7366,7 +7326,6 @@ class IFSelect_SelectShared : public IFSelect_SelectDeduct {
 /*******************************
 * class IFSelect_SelectSharing *
 *******************************/
-%nodefaultctor IFSelect_SelectSharing;
 class IFSelect_SelectSharing : public IFSelect_SelectDeduct {
 	public:
 		/****************** IFSelect_SelectSharing ******************/
@@ -7403,7 +7362,6 @@ class IFSelect_SelectSharing : public IFSelect_SelectDeduct {
 /*****************************
 * class IFSelect_SelectSuite *
 *****************************/
-%nodefaultctor IFSelect_SelectSuite;
 class IFSelect_SelectSuite : public IFSelect_SelectDeduct {
 	public:
 		/****************** AddInput ******************/
@@ -7486,7 +7444,6 @@ class IFSelect_SelectSuite : public IFSelect_SelectDeduct {
 /*****************************
 * class IFSelect_SelectUnion *
 *****************************/
-%nodefaultctor IFSelect_SelectUnion;
 class IFSelect_SelectUnion : public IFSelect_SelectCombine {
 	public:
 		/****************** IFSelect_SelectUnion ******************/
@@ -7523,7 +7480,6 @@ class IFSelect_SelectUnion : public IFSelect_SelectCombine {
 /******************************
 * class IFSelect_SignAncestor *
 ******************************/
-%nodefaultctor IFSelect_SignAncestor;
 class IFSelect_SignAncestor : public IFSelect_SignType {
 	public:
 		/****************** IFSelect_SignAncestor ******************/
@@ -7595,7 +7551,6 @@ class IFSelect_SelectAnyType : public IFSelect_SelectExtract {
 /*************************************
 * class IFSelect_SelectErrorEntities *
 *************************************/
-%nodefaultctor IFSelect_SelectErrorEntities;
 class IFSelect_SelectErrorEntities : public IFSelect_SelectExtract {
 	public:
 		/****************** ExtractLabel ******************/
@@ -7636,7 +7591,6 @@ class IFSelect_SelectErrorEntities : public IFSelect_SelectExtract {
 /****************************
 * class IFSelect_SelectFlag *
 ****************************/
-%nodefaultctor IFSelect_SelectFlag;
 class IFSelect_SelectFlag : public IFSelect_SelectExtract {
 	public:
 		/****************** ExtractLabel ******************/
@@ -7734,7 +7688,6 @@ class IFSelect_SelectInList : public IFSelect_SelectAnyList {
 /*****************************
 * class IFSelect_SelectRange *
 *****************************/
-%nodefaultctor IFSelect_SelectRange;
 class IFSelect_SelectRange : public IFSelect_SelectExtract {
 	public:
 		/****************** ExtractLabel ******************/
@@ -7845,7 +7798,6 @@ class IFSelect_SelectRange : public IFSelect_SelectExtract {
 /*********************************
 * class IFSelect_SelectRootComps *
 *********************************/
-%nodefaultctor IFSelect_SelectRootComps;
 class IFSelect_SelectRootComps : public IFSelect_SelectExtract {
 	public:
 		/****************** ExtractLabel ******************/
@@ -7894,7 +7846,6 @@ class IFSelect_SelectRootComps : public IFSelect_SelectExtract {
 /*****************************
 * class IFSelect_SelectRoots *
 *****************************/
-%nodefaultctor IFSelect_SelectRoots;
 class IFSelect_SelectRoots : public IFSelect_SelectExtract {
 	public:
 		/****************** ExtractLabel ******************/
@@ -7943,7 +7894,6 @@ class IFSelect_SelectRoots : public IFSelect_SelectExtract {
 /****************************
 * class IFSelect_SelectSent *
 ****************************/
-%nodefaultctor IFSelect_SelectSent;
 class IFSelect_SelectSent : public IFSelect_SelectExtract {
 	public:
 		/****************** AtLeast ******************/
@@ -8008,7 +7958,6 @@ class IFSelect_SelectSent : public IFSelect_SelectExtract {
 /*********************************
 * class IFSelect_SelectSignature *
 *********************************/
-%nodefaultctor IFSelect_SelectSignature;
 class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 	public:
 		/****************** Counter ******************/
@@ -8115,7 +8064,6 @@ class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 /************************************
 * class IFSelect_SelectSignedShared *
 ************************************/
-%nodefaultctor IFSelect_SelectSignedShared;
 class IFSelect_SelectSignedShared : public IFSelect_SelectExplore {
 	public:
 		/****************** Explore ******************/
@@ -8184,7 +8132,6 @@ class IFSelect_SelectSignedShared : public IFSelect_SelectExplore {
 /*************************************
 * class IFSelect_SelectSignedSharing *
 *************************************/
-%nodefaultctor IFSelect_SelectSignedSharing;
 class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore {
 	public:
 		/****************** Explore ******************/
@@ -8253,7 +8200,6 @@ class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore {
 /***************************************
 * class IFSelect_SelectUnknownEntities *
 ***************************************/
-%nodefaultctor IFSelect_SelectUnknownEntities;
 class IFSelect_SelectUnknownEntities : public IFSelect_SelectExtract {
 	public:
 		/****************** ExtractLabel ******************/
@@ -8294,7 +8240,6 @@ class IFSelect_SelectUnknownEntities : public IFSelect_SelectExtract {
 /*****************************************
 * class IFSelect_SelectIncorrectEntities *
 *****************************************/
-%nodefaultctor IFSelect_SelectIncorrectEntities;
 class IFSelect_SelectIncorrectEntities : public IFSelect_SelectFlag {
 	public:
 		/****************** IFSelect_SelectIncorrectEntities ******************/
@@ -8317,7 +8262,6 @@ class IFSelect_SelectIncorrectEntities : public IFSelect_SelectFlag {
 /****************************
 * class IFSelect_SelectType *
 ****************************/
-%nodefaultctor IFSelect_SelectType;
 class IFSelect_SelectType : public IFSelect_SelectAnyType {
 	public:
 		/****************** ExtractLabel ******************/

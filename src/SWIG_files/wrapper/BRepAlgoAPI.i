@@ -98,7 +98,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepalgoapi.html"
 /**************************
 * class BRepAlgoAPI_Check *
 **************************/
-%nodefaultctor BRepAlgoAPI_Check;
 class BRepAlgoAPI_Check : public BOPAlgo_Options {
 	public:
 		/****************** BRepAlgoAPI_Check ******************/
@@ -214,7 +213,6 @@ class BRepAlgoAPI_Algo : public BRepBuilderAPI_MakeShape, protected BOPAlgo_Opti
 /********************************
 * class BRepAlgoAPI_BuilderAlgo *
 ********************************/
-%nodefaultctor BRepAlgoAPI_BuilderAlgo;
 class BRepAlgoAPI_BuilderAlgo : public BRepAlgoAPI_Algo {
 	public:
 		/****************** Arguments ******************/
@@ -397,7 +395,6 @@ class BRepAlgoAPI_BuilderAlgo : public BRepAlgoAPI_Algo {
 /********************************
 * class BRepAlgoAPI_Defeaturing *
 ********************************/
-%nodefaultctor BRepAlgoAPI_Defeaturing;
 class BRepAlgoAPI_Defeaturing : public BRepAlgoAPI_Algo {
 	public:
 		/****************** AddFaceToRemove ******************/
@@ -522,7 +519,6 @@ class BRepAlgoAPI_Defeaturing : public BRepAlgoAPI_Algo {
 /*************************************
 * class BRepAlgoAPI_BooleanOperation *
 *************************************/
-%nodefaultctor BRepAlgoAPI_BooleanOperation;
 class BRepAlgoAPI_BooleanOperation : public BRepAlgoAPI_BuilderAlgo {
 	public:
 		/****************** BRepAlgoAPI_BooleanOperation ******************/
@@ -597,7 +593,6 @@ class BRepAlgoAPI_BooleanOperation : public BRepAlgoAPI_BuilderAlgo {
 /*****************************
 * class BRepAlgoAPI_Splitter *
 *****************************/
-%nodefaultctor BRepAlgoAPI_Splitter;
 class BRepAlgoAPI_Splitter : public BRepAlgoAPI_BuilderAlgo {
 	public:
 		/****************** BRepAlgoAPI_Splitter ******************/
@@ -646,7 +641,6 @@ class BRepAlgoAPI_Splitter : public BRepAlgoAPI_BuilderAlgo {
 /***************************
 * class BRepAlgoAPI_Common *
 ***************************/
-%nodefaultctor BRepAlgoAPI_Common;
 class BRepAlgoAPI_Common : public BRepAlgoAPI_BooleanOperation {
 	public:
 		/****************** BRepAlgoAPI_Common ******************/
@@ -697,7 +691,6 @@ class BRepAlgoAPI_Common : public BRepAlgoAPI_BooleanOperation {
 /************************
 * class BRepAlgoAPI_Cut *
 ************************/
-%nodefaultctor BRepAlgoAPI_Cut;
 class BRepAlgoAPI_Cut : public BRepAlgoAPI_BooleanOperation {
 	public:
 		/****************** BRepAlgoAPI_Cut ******************/
@@ -750,7 +743,6 @@ class BRepAlgoAPI_Cut : public BRepAlgoAPI_BooleanOperation {
 /*************************
 * class BRepAlgoAPI_Fuse *
 *************************/
-%nodefaultctor BRepAlgoAPI_Fuse;
 class BRepAlgoAPI_Fuse : public BRepAlgoAPI_BooleanOperation {
 	public:
 		/****************** BRepAlgoAPI_Fuse ******************/
@@ -801,7 +793,6 @@ class BRepAlgoAPI_Fuse : public BRepAlgoAPI_BooleanOperation {
 /****************************
 * class BRepAlgoAPI_Section *
 ****************************/
-%nodefaultctor BRepAlgoAPI_Section;
 class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 	public:
 		/****************** Approximation ******************/

@@ -251,7 +251,6 @@ class BRepFeat {
 /*************************
 * class BRepFeat_Builder *
 *************************/
-%nodefaultctor BRepFeat_Builder;
 class BRepFeat_Builder : public BOPAlgo_BOP {
 	public:
 		/****************** BRepFeat_Builder ******************/
@@ -506,7 +505,6 @@ class BRepFeat_Form : public BRepBuilderAPI_MakeShape {
 /***********************
 * class BRepFeat_Gluer *
 ***********************/
-%nodefaultctor BRepFeat_Gluer;
 class BRepFeat_Gluer : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepFeat_Gluer ******************/
@@ -705,7 +703,6 @@ class BRepFeat_RibSlot : public BRepBuilderAPI_MakeShape {
 /****************************
 * class BRepFeat_SplitShape *
 ****************************/
-%nodefaultctor BRepFeat_SplitShape;
 class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -832,7 +829,6 @@ class BRepFeat_SplitShape : public BRepBuilderAPI_MakeShape {
 /*************************************
 * class BRepFeat_MakeCylindricalHole *
 *************************************/
-%nodefaultctor BRepFeat_MakeCylindricalHole;
 class BRepFeat_MakeCylindricalHole : public BRepFeat_Builder {
 	public:
 		/****************** BRepFeat_MakeCylindricalHole ******************/
@@ -937,7 +933,6 @@ class BRepFeat_MakeCylindricalHole : public BRepFeat_Builder {
 /****************************
 * class BRepFeat_MakeDPrism *
 ****************************/
-%nodefaultctor BRepFeat_MakeDPrism;
 class BRepFeat_MakeDPrism : public BRepFeat_Form {
 	public:
 		/****************** Add ******************/
@@ -1089,7 +1084,6 @@ class BRepFeat_MakeDPrism : public BRepFeat_Form {
 /********************************
 * class BRepFeat_MakeLinearForm *
 ********************************/
-%nodefaultctor BRepFeat_MakeLinearForm;
 class BRepFeat_MakeLinearForm : public BRepFeat_RibSlot {
 	public:
 		/****************** Add ******************/
@@ -1181,7 +1175,6 @@ class BRepFeat_MakeLinearForm : public BRepFeat_RibSlot {
 /**************************
 * class BRepFeat_MakePipe *
 **************************/
-%nodefaultctor BRepFeat_MakePipe;
 class BRepFeat_MakePipe : public BRepFeat_Form {
 	public:
 		/****************** Add ******************/
@@ -1282,7 +1275,6 @@ class BRepFeat_MakePipe : public BRepFeat_Form {
 /***************************
 * class BRepFeat_MakePrism *
 ***************************/
-%nodefaultctor BRepFeat_MakePrism;
 class BRepFeat_MakePrism : public BRepFeat_Form {
 	public:
 		/****************** Add ******************/
@@ -1417,7 +1409,6 @@ class BRepFeat_MakePrism : public BRepFeat_Form {
 /***************************
 * class BRepFeat_MakeRevol *
 ***************************/
-%nodefaultctor BRepFeat_MakeRevol;
 class BRepFeat_MakeRevol : public BRepFeat_Form {
 	public:
 		/****************** Add ******************/
@@ -1535,7 +1526,6 @@ class BRepFeat_MakeRevol : public BRepFeat_Form {
 /************************************
 * class BRepFeat_MakeRevolutionForm *
 ************************************/
-%nodefaultctor BRepFeat_MakeRevolutionForm;
 class BRepFeat_MakeRevolutionForm : public BRepFeat_RibSlot {
 	public:
 		/****************** Add ******************/

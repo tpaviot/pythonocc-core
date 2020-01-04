@@ -83,7 +83,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intcurvesface.htm
 /**********************************
 * class IntCurvesFace_Intersector *
 **********************************/
-%nodefaultctor IntCurvesFace_Intersector;
 class IntCurvesFace_Intersector {
 	public:
 		/****************** Bounding ******************/
@@ -244,7 +243,6 @@ class IntCurvesFace_Intersector {
 /***************************************
 * class IntCurvesFace_ShapeIntersector *
 ***************************************/
-%nodefaultctor IntCurvesFace_ShapeIntersector;
 class IntCurvesFace_ShapeIntersector {
 	public:
 		/****************** Destroy ******************/

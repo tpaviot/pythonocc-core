@@ -152,7 +152,6 @@ class Geom2dEvaluator_Curve : public Standard_Transient {
 /************************************
 * class Geom2dEvaluator_OffsetCurve *
 ************************************/
-%nodefaultctor Geom2dEvaluator_OffsetCurve;
 class Geom2dEvaluator_OffsetCurve : public Geom2dEvaluator_Curve {
 	public:
 		/****************** D0 ******************/

@@ -167,7 +167,6 @@ typedef NCollection_DataMap <MAT2d_BiInt , Standard_Integer , MAT2d_MapBiIntHash
 /********************
 * class MAT2d_BiInt *
 ********************/
-%nodefaultctor MAT2d_BiInt;
 class MAT2d_BiInt {
 	public:
 		/****************** FirstIndex ******************/
@@ -236,7 +235,6 @@ class MAT2d_BiInt {
 /**********************
 * class MAT2d_Circuit *
 **********************/
-%nodefaultctor MAT2d_Circuit;
 class MAT2d_Circuit : public Standard_Transient {
 	public:
 		/****************** Connexion ******************/
@@ -323,7 +321,6 @@ class MAT2d_Circuit : public Standard_Transient {
 /************************
 * class MAT2d_Connexion *
 ************************/
-%nodefaultctor MAT2d_Connexion;
 class MAT2d_Connexion : public Standard_Transient {
 	public:
 		/****************** Distance ******************/
@@ -547,7 +544,6 @@ class MAT2d_MapBiIntHasher {
 /********************
 * class MAT2d_Mat2d *
 ********************/
-%nodefaultctor MAT2d_Mat2d;
 class MAT2d_Mat2d {
 	public:
 		/****************** Bisector ******************/
@@ -628,7 +624,6 @@ class MAT2d_Mat2d {
 /***********************
 * class MAT2d_MiniPath *
 ***********************/
-%nodefaultctor MAT2d_MiniPath;
 class MAT2d_MiniPath {
 	public:
 		/****************** ConnexionsFrom ******************/
@@ -704,7 +699,6 @@ class MAT2d_MiniPath {
 /*********************
 * class MAT2d_Tool2d *
 *********************/
-%nodefaultctor MAT2d_Tool2d;
 class MAT2d_Tool2d {
 	public:
 		/****************** BisecFusion ******************/

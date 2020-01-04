@@ -86,7 +86,6 @@ enum BRepPrim_Direction {
 /*************************
 * class BRepPrim_Builder *
 *************************/
-%nodefaultctor BRepPrim_Builder;
 class BRepPrim_Builder {
 	public:
 		/****************** AddEdgeVertex ******************/
@@ -336,7 +335,6 @@ class BRepPrim_Builder {
 /*****************************
 * class BRepPrim_FaceBuilder *
 *****************************/
-%nodefaultctor BRepPrim_FaceBuilder;
 class BRepPrim_FaceBuilder {
 	public:
 		/****************** BRepPrim_FaceBuilder ******************/
@@ -434,7 +432,6 @@ class BRepPrim_FaceBuilder {
 /************************
 * class BRepPrim_GWedge *
 ************************/
-%nodefaultctor BRepPrim_GWedge;
 class BRepPrim_GWedge {
 	public:
 		/****************** Axes ******************/
@@ -1043,7 +1040,6 @@ class BRepPrim_OneAxis {
 /****************************
 * class BRepPrim_Revolution *
 ****************************/
-%nodefaultctor BRepPrim_Revolution;
 class BRepPrim_Revolution : public BRepPrim_OneAxis {
 	public:
 		/****************** BRepPrim_Revolution ******************/
@@ -1106,7 +1102,6 @@ class BRepPrim_Revolution : public BRepPrim_OneAxis {
 /***********************
 * class BRepPrim_Wedge *
 ***********************/
-%nodefaultctor BRepPrim_Wedge;
 class BRepPrim_Wedge : public BRepPrim_GWedge {
 	public:
 		/****************** BRepPrim_Wedge ******************/
@@ -1179,7 +1174,6 @@ class BRepPrim_Wedge : public BRepPrim_GWedge {
 /**********************
 * class BRepPrim_Cone *
 **********************/
-%nodefaultctor BRepPrim_Cone;
 class BRepPrim_Cone : public BRepPrim_Revolution {
 	public:
 		/****************** BRepPrim_Cone ******************/
@@ -1282,7 +1276,6 @@ class BRepPrim_Cone : public BRepPrim_Revolution {
 /**************************
 * class BRepPrim_Cylinder *
 **************************/
-%nodefaultctor BRepPrim_Cylinder;
 class BRepPrim_Cylinder : public BRepPrim_Revolution {
 	public:
 		/****************** BRepPrim_Cylinder ******************/
@@ -1365,7 +1358,6 @@ class BRepPrim_Cylinder : public BRepPrim_Revolution {
 /************************
 * class BRepPrim_Sphere *
 ************************/
-%nodefaultctor BRepPrim_Sphere;
 class BRepPrim_Sphere : public BRepPrim_Revolution {
 	public:
 		/****************** BRepPrim_Sphere ******************/
@@ -1414,7 +1406,6 @@ class BRepPrim_Sphere : public BRepPrim_Revolution {
 /***********************
 * class BRepPrim_Torus *
 ***********************/
-%nodefaultctor BRepPrim_Torus;
 class BRepPrim_Torus : public BRepPrim_Revolution {
 	public:
 		/****************** BRepPrim_Torus ******************/

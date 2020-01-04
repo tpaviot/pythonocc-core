@@ -578,7 +578,6 @@ class Blend_FuncInv : public math_FunctionSetWithDerivatives {
 /********************
 * class Blend_Point *
 ********************/
-%nodefaultctor Blend_Point;
 class Blend_Point {
 	public:
 		/****************** Blend_Point ******************/

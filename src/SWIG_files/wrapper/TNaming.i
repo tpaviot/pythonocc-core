@@ -334,7 +334,6 @@ class TNaming {
 /************************
 * class TNaming_Builder *
 ************************/
-%nodefaultctor TNaming_Builder;
 class TNaming_Builder {
 	public:
 		/****************** Delete ******************/
@@ -459,7 +458,6 @@ class TNaming_CopyShape {
 /************************************
 * class TNaming_DeltaOnModification *
 ************************************/
-%nodefaultctor TNaming_DeltaOnModification;
 class TNaming_DeltaOnModification : public TDF_DeltaOnModification {
 	public:
 		/****************** Apply ******************/
@@ -490,7 +488,6 @@ class TNaming_DeltaOnModification : public TDF_DeltaOnModification {
 /*******************************
 * class TNaming_DeltaOnRemoval *
 *******************************/
-%nodefaultctor TNaming_DeltaOnRemoval;
 class TNaming_DeltaOnRemoval : public TDF_DeltaOnRemoval {
 	public:
 		/****************** Apply ******************/
@@ -521,7 +518,6 @@ class TNaming_DeltaOnRemoval : public TDF_DeltaOnRemoval {
 /***************************
 * class TNaming_Identifier *
 ***************************/
-%nodefaultctor TNaming_Identifier;
 class TNaming_Identifier {
 	public:
 		/****************** AncestorIdentification ******************/
@@ -658,7 +654,6 @@ class TNaming_Identifier {
 /*************************
 * class TNaming_Iterator *
 *************************/
-%nodefaultctor TNaming_Iterator;
 class TNaming_Iterator {
 	public:
 		/****************** Evolution ******************/
@@ -734,7 +729,6 @@ class TNaming_Iterator {
 /************************************
 * class TNaming_IteratorOnShapesSet *
 ************************************/
-%nodefaultctor TNaming_IteratorOnShapesSet;
 class TNaming_IteratorOnShapesSet {
 	public:
 		/****************** Init ******************/
@@ -786,7 +780,6 @@ class TNaming_IteratorOnShapesSet {
 /**************************
 * class TNaming_Localizer *
 **************************/
-%nodefaultctor TNaming_Localizer;
 class TNaming_Localizer {
 	public:
 		/****************** Ancestors ******************/
@@ -915,7 +908,6 @@ class TNaming_Localizer {
 /*********************
 * class TNaming_Name *
 *********************/
-%nodefaultctor TNaming_Name;
 class TNaming_Name {
 	public:
 		/****************** Append ******************/
@@ -1049,7 +1041,6 @@ class TNaming_Name {
 /***************************
 * class TNaming_NamedShape *
 ***************************/
-%nodefaultctor TNaming_NamedShape;
 class TNaming_NamedShape : public TDF_Attribute {
 	public:
 		/****************** AfterUndo ******************/
@@ -1212,7 +1203,6 @@ class TNaming_NamedShape : public TDF_Attribute {
 /***********************
 * class TNaming_Naming *
 ***********************/
-%nodefaultctor TNaming_Naming;
 class TNaming_Naming : public TDF_Attribute {
 	public:
 		/****************** ChangeName ******************/
@@ -1400,7 +1390,6 @@ class TNaming_NamingTool {
 /*********************************
 * class TNaming_NewShapeIterator *
 *********************************/
-%nodefaultctor TNaming_NewShapeIterator;
 class TNaming_NewShapeIterator {
 	public:
 		/****************** IsModification ******************/
@@ -1483,7 +1472,6 @@ class TNaming_NewShapeIterator {
 /*********************************
 * class TNaming_OldShapeIterator *
 *********************************/
-%nodefaultctor TNaming_OldShapeIterator;
 class TNaming_OldShapeIterator {
 	public:
 		/****************** IsModification ******************/
@@ -1565,7 +1553,6 @@ class TNaming_OldShapeIterator {
 /*************************
 * class TNaming_RefShape *
 *************************/
-%nodefaultctor TNaming_RefShape;
 class TNaming_RefShape {
 	public:
 		/****************** FirstUse ******************/
@@ -1626,7 +1613,6 @@ class TNaming_RefShape {
 /**********************************
 * class TNaming_SameShapeIterator *
 **********************************/
-%nodefaultctor TNaming_SameShapeIterator;
 class TNaming_SameShapeIterator {
 	public:
 		/****************** Label ******************/
@@ -1665,7 +1651,6 @@ class TNaming_SameShapeIterator {
 /**********************
 * class TNaming_Scope *
 **********************/
-%nodefaultctor TNaming_Scope;
 class TNaming_Scope {
 	public:
 		/****************** ChangeValid ******************/
@@ -1860,7 +1845,6 @@ class TNaming_Selector {
 /**************************
 * class TNaming_ShapesSet *
 **************************/
-%nodefaultctor TNaming_ShapesSet;
 class TNaming_ShapesSet {
 	public:
 		/****************** Add ******************/
@@ -2118,7 +2102,6 @@ class TNaming_Tool {
 /******************************
 * class TNaming_TranslateTool *
 ******************************/
-%nodefaultctor TNaming_TranslateTool;
 class TNaming_TranslateTool : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -2242,7 +2225,6 @@ class TNaming_TranslateTool : public Standard_Transient {
 /***************************
 * class TNaming_Translator *
 ***************************/
-%nodefaultctor TNaming_Translator;
 class TNaming_Translator {
 	public:
 		/****************** Add ******************/

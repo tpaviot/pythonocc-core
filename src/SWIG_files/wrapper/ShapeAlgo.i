@@ -125,7 +125,6 @@ class ShapeAlgo {
 /********************************
 * class ShapeAlgo_ToolContainer *
 ********************************/
-%nodefaultctor ShapeAlgo_ToolContainer;
 class ShapeAlgo_ToolContainer : public Standard_Transient {
 	public:
 		/****************** EdgeProjAux ******************/

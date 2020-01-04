@@ -125,7 +125,6 @@ class IGESCAFControl {
 /******************************
 * class IGESCAFControl_Reader *
 ******************************/
-%nodefaultctor IGESCAFControl_Reader;
 class IGESCAFControl_Reader : public IGESControl_Reader {
 	public:
 		/****************** GetColorMode ******************/
@@ -222,7 +221,6 @@ class IGESCAFControl_Reader : public IGESControl_Reader {
 /******************************
 * class IGESCAFControl_Writer *
 ******************************/
-%nodefaultctor IGESCAFControl_Writer;
 class IGESCAFControl_Writer : public IGESControl_Writer {
 	public:
 		/****************** GetColorMode ******************/

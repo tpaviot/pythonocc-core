@@ -325,7 +325,6 @@ class GCPnts_AbscissaPoint {
 /********************************
 * class GCPnts_DistFunction2dMV *
 ********************************/
-%nodefaultctor GCPnts_DistFunction2dMV;
 class GCPnts_DistFunction2dMV : public math_MultipleVarFunction {
 	public:
 		/****************** GCPnts_DistFunction2dMV ******************/
@@ -361,7 +360,6 @@ class GCPnts_DistFunction2dMV : public math_MultipleVarFunction {
 /******************************
 * class GCPnts_DistFunctionMV *
 ******************************/
-%nodefaultctor GCPnts_DistFunctionMV;
 class GCPnts_DistFunctionMV : public math_MultipleVarFunction {
 	public:
 		/****************** GCPnts_DistFunctionMV ******************/
@@ -397,7 +395,6 @@ class GCPnts_DistFunctionMV : public math_MultipleVarFunction {
 /************************************
 * class GCPnts_QuasiUniformAbscissa *
 ************************************/
-%nodefaultctor GCPnts_QuasiUniformAbscissa;
 class GCPnts_QuasiUniformAbscissa {
 	public:
 		/****************** GCPnts_QuasiUniformAbscissa ******************/
@@ -534,7 +531,6 @@ class GCPnts_QuasiUniformAbscissa {
 /**************************************
 * class GCPnts_QuasiUniformDeflection *
 **************************************/
-%nodefaultctor GCPnts_QuasiUniformDeflection;
 class GCPnts_QuasiUniformDeflection {
 	public:
 		/****************** Deflection ******************/
@@ -701,7 +697,6 @@ class GCPnts_QuasiUniformDeflection {
 /************************************
 * class GCPnts_TangentialDeflection *
 ************************************/
-%nodefaultctor GCPnts_TangentialDeflection;
 class GCPnts_TangentialDeflection {
 	public:
 		/****************** AddPoint ******************/
@@ -918,7 +913,6 @@ class GCPnts_TangentialDeflection {
 /*******************************
 * class GCPnts_UniformAbscissa *
 *******************************/
-%nodefaultctor GCPnts_UniformAbscissa;
 class GCPnts_UniformAbscissa {
 	public:
 		/****************** Abscissa ******************/
@@ -1187,7 +1181,6 @@ class GCPnts_UniformAbscissa {
 /*********************************
 * class GCPnts_UniformDeflection *
 *********************************/
-%nodefaultctor GCPnts_UniformDeflection;
 class GCPnts_UniformDeflection {
 	public:
 		/****************** Deflection ******************/

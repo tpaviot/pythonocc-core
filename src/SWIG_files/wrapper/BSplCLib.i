@@ -3045,7 +3045,6 @@ class BSplCLib {
 /***********************
 * class BSplCLib_Cache *
 ***********************/
-%nodefaultctor BSplCLib_Cache;
 class BSplCLib_Cache : public Standard_Transient {
 	public:
 		/****************** BSplCLib_Cache ******************/
@@ -3230,7 +3229,6 @@ class BSplCLib_Cache : public Standard_Transient {
 /*****************************
 * class BSplCLib_CacheParams *
 *****************************/
-%nodefaultctor BSplCLib_CacheParams;
 class BSplCLib_CacheParams {
 	public:
 		float SpanStart;

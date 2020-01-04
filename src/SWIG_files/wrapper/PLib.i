@@ -695,7 +695,6 @@ class PLib_Base : public Standard_Transient {
 /************************************
 * class PLib_DoubleJacobiPolynomial *
 ************************************/
-%nodefaultctor PLib_DoubleJacobiPolynomial;
 class PLib_DoubleJacobiPolynomial {
 	public:
 		/****************** AverageError ******************/
@@ -856,7 +855,6 @@ class PLib_DoubleJacobiPolynomial {
 /**************************
 * class PLib_HermitJacobi *
 **************************/
-%nodefaultctor PLib_HermitJacobi;
 class PLib_HermitJacobi : public PLib_Base {
 	public:
 		/****************** AverageError ******************/
@@ -1002,7 +1000,6 @@ class PLib_HermitJacobi : public PLib_Base {
 /******************************
 * class PLib_JacobiPolynomial *
 ******************************/
-%nodefaultctor PLib_JacobiPolynomial;
 class PLib_JacobiPolynomial : public PLib_Base {
 	public:
 		/****************** AverageError ******************/

@@ -93,7 +93,6 @@ enum BiTgte_ContactType {
 /*********************
 * class BiTgte_Blend *
 *********************/
-%nodefaultctor BiTgte_Blend;
 class BiTgte_Blend {
 	public:
 		/****************** BiTgte_Blend ******************/
@@ -332,7 +331,6 @@ class BiTgte_Blend {
 /***************************
 * class BiTgte_CurveOnEdge *
 ***************************/
-%nodefaultctor BiTgte_CurveOnEdge;
 class BiTgte_CurveOnEdge : public Adaptor3d_Curve {
 	public:
 		/****************** BSpline ******************/
@@ -569,7 +567,6 @@ class BiTgte_CurveOnEdge : public Adaptor3d_Curve {
 /*****************************
 * class BiTgte_CurveOnVertex *
 *****************************/
-%nodefaultctor BiTgte_CurveOnVertex;
 class BiTgte_CurveOnVertex : public Adaptor3d_Curve {
 	public:
 		/****************** BSpline ******************/
@@ -806,7 +803,6 @@ class BiTgte_CurveOnVertex : public Adaptor3d_Curve {
 /****************************
 * class BiTgte_HCurveOnEdge *
 ****************************/
-%nodefaultctor BiTgte_HCurveOnEdge;
 class BiTgte_HCurveOnEdge : public Adaptor3d_HCurve {
 	public:
 		/****************** BiTgte_HCurveOnEdge ******************/
@@ -863,7 +859,6 @@ class BiTgte_HCurveOnEdge : public Adaptor3d_HCurve {
 /******************************
 * class BiTgte_HCurveOnVertex *
 ******************************/
-%nodefaultctor BiTgte_HCurveOnVertex;
 class BiTgte_HCurveOnVertex : public Adaptor3d_HCurve {
 	public:
 		/****************** BiTgte_HCurveOnVertex ******************/

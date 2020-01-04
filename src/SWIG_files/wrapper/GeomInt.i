@@ -139,7 +139,6 @@ class GeomInt {
 /***************************************************************************
 * class GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox *
 ***************************************************************************/
-%nodefaultctor GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox : public math_BFGS {
 	public:
 		/****************** GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox ******************/
@@ -178,7 +177,6 @@ class GeomInt_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfWLApprox : publi
 /*************************************************************************
 * class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox *
 *************************************************************************/
-%nodefaultctor GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** CurveValue ******************/
@@ -337,7 +335,6 @@ class GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox : public 
 /****************************************************************************
 * class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox *
 ****************************************************************************/
-%nodefaultctor GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 	public:
 		/****************** BSplineValue ******************/
@@ -584,7 +581,6 @@ class GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox {
 /**************************************************************************
 * class GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox *
 **************************************************************************/
-%nodefaultctor GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox : public math_BFGS {
 	public:
 		/****************** GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox ******************/
@@ -623,7 +619,6 @@ class GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox : public
 /***********************************************************************
 * class GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox *
 ***********************************************************************/
-%nodefaultctor GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox : public math_BFGS {
 	public:
 		/****************** GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox ******************/
@@ -662,7 +657,6 @@ class GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox : public ma
 /**********************
 * class GeomInt_IntSS *
 **********************/
-%nodefaultctor GeomInt_IntSS;
 class GeomInt_IntSS {
 	public:
 		/****************** Boundary ******************/
@@ -954,7 +948,6 @@ class GeomInt_IntSS {
 /********************************
 * class GeomInt_LineConstructor *
 ********************************/
-%nodefaultctor GeomInt_LineConstructor;
 class GeomInt_LineConstructor {
 	public:
 		/****************** GeomInt_LineConstructor ******************/
@@ -1082,7 +1075,6 @@ class GeomInt_LineTool {
 /*********************************************************
 * class GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox *
 *********************************************************/
-%nodefaultctor GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox;
 class GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox {
 	public:
 		/****************** AverageError ******************/
@@ -1195,7 +1187,6 @@ class GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox {
 /***********************************************************
 * class GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox *
 ***********************************************************/
-%nodefaultctor GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox {
 	public:
 		/****************** AverageError ******************/
@@ -1272,7 +1263,6 @@ class GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox {
 /********************************************************
 * class GeomInt_MyGradientbisOfTheComputeLineOfWLApprox *
 ********************************************************/
-%nodefaultctor GeomInt_MyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_MyGradientbisOfTheComputeLineOfWLApprox {
 	public:
 		/****************** AverageError ******************/
@@ -1349,7 +1339,6 @@ class GeomInt_MyGradientbisOfTheComputeLineOfWLApprox {
 /************************************************************************
 * class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox *
 ************************************************************************/
-%nodefaultctor GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** CurveValue ******************/
@@ -1472,7 +1461,6 @@ class GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox : public m
 /*********************************************************************
 * class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox *
 *********************************************************************/
-%nodefaultctor GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** CurveValue ******************/
@@ -1595,7 +1583,6 @@ class GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox : public math
 /***************************************************************************
 * class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox *
 ***************************************************************************/
-%nodefaultctor GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 	public:
 		/****************** BSplineValue ******************/
@@ -1842,7 +1829,6 @@ class GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox {
 /************************************************************************
 * class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox *
 ************************************************************************/
-%nodefaultctor GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 	public:
 		/****************** BSplineValue ******************/
@@ -2089,7 +2075,6 @@ class GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox {
 /****************************************
 * class GeomInt_ParameterAndOrientation *
 ****************************************/
-%nodefaultctor GeomInt_ParameterAndOrientation;
 class GeomInt_ParameterAndOrientation {
 	public:
 		/****************** GeomInt_ParameterAndOrientation ******************/
@@ -2149,7 +2134,6 @@ class GeomInt_ParameterAndOrientation {
 /**************************************************************************
 * class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox *
 **************************************************************************/
-%nodefaultctor GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox;
 class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
 	public:
 		/****************** ConstraintDerivative ******************/
@@ -2223,7 +2207,6 @@ class GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox {
 /***********************************************************************
 * class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox *
 ***********************************************************************/
-%nodefaultctor GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
 class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
 	public:
 		/****************** ConstraintDerivative ******************/
@@ -2297,7 +2280,6 @@ class GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox {
 /***********************************************
 * class GeomInt_TheComputeLineBezierOfWLApprox *
 ***********************************************/
-%nodefaultctor GeomInt_TheComputeLineBezierOfWLApprox;
 class GeomInt_TheComputeLineBezierOfWLApprox {
 	public:
 		/****************** ChangeValue ******************/
@@ -2530,7 +2512,6 @@ class GeomInt_TheComputeLineBezierOfWLApprox {
 /*****************************************
 * class GeomInt_TheComputeLineOfWLApprox *
 *****************************************/
-%nodefaultctor GeomInt_TheComputeLineOfWLApprox;
 class GeomInt_TheComputeLineOfWLApprox {
 	public:
 		/****************** ChangeValue ******************/
@@ -2787,7 +2768,6 @@ class GeomInt_TheComputeLineOfWLApprox {
 /*********************************************************************
 * class GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox *
 *********************************************************************/
-%nodefaultctor GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 class GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** AuxillarSurface1 ******************/
@@ -2914,7 +2894,6 @@ class GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox : public math
 /**********************************************
 * class GeomInt_TheImpPrmSvSurfacesOfWLApprox *
 **********************************************/
-%nodefaultctor GeomInt_TheImpPrmSvSurfacesOfWLApprox;
 class GeomInt_TheImpPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 	public:
 		/****************** Compute ******************/
@@ -3044,7 +3023,6 @@ class GeomInt_TheImpPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 /********************************************************
 * class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox *
 ********************************************************/
-%nodefaultctor GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 	public:
 		/****************** ChangePoint ******************/
@@ -3161,7 +3139,6 @@ class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 /***************************************
 * class GeomInt_TheMultiLineOfWLApprox *
 ***************************************/
-%nodefaultctor GeomInt_TheMultiLineOfWLApprox;
 class GeomInt_TheMultiLineOfWLApprox {
 	public:
 		/****************** Dump ******************/
@@ -3587,7 +3564,6 @@ class GeomInt_TheMultiLineToolOfWLApprox {
 /**********************************************
 * class GeomInt_ThePrmPrmSvSurfacesOfWLApprox *
 **********************************************/
-%nodefaultctor GeomInt_ThePrmPrmSvSurfacesOfWLApprox;
 class GeomInt_ThePrmPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 	public:
 		/****************** Compute ******************/
@@ -3708,7 +3684,6 @@ class GeomInt_ThePrmPrmSvSurfacesOfWLApprox : public ApproxInt_SvSurfaces {
 /*************************************************************
 * class GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox *
 *************************************************************/
-%nodefaultctor GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox;
 class GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/

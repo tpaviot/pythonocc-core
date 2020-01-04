@@ -221,7 +221,6 @@ class Geom2dConvert {
 /**********************************
 * class Geom2dConvert_ApproxCurve *
 **********************************/
-%nodefaultctor Geom2dConvert_ApproxCurve;
 class Geom2dConvert_ApproxCurve {
 	public:
 		/****************** Curve ******************/
@@ -300,7 +299,6 @@ class Geom2dConvert_ApproxCurve {
 /************************************************
 * class Geom2dConvert_BSplineCurveKnotSplitting *
 ************************************************/
-%nodefaultctor Geom2dConvert_BSplineCurveKnotSplitting;
 class Geom2dConvert_BSplineCurveKnotSplitting {
 	public:
 		/****************** Geom2dConvert_BSplineCurveKnotSplitting ******************/
@@ -347,7 +345,6 @@ class Geom2dConvert_BSplineCurveKnotSplitting {
 /************************************************
 * class Geom2dConvert_BSplineCurveToBezierCurve *
 ************************************************/
-%nodefaultctor Geom2dConvert_BSplineCurveToBezierCurve;
 class Geom2dConvert_BSplineCurveToBezierCurve {
 	public:
 		/****************** Arc ******************/
@@ -414,7 +411,6 @@ class Geom2dConvert_BSplineCurveToBezierCurve {
 /**********************************************
 * class Geom2dConvert_CompCurveToBSplineCurve *
 **********************************************/
-%nodefaultctor Geom2dConvert_CompCurveToBSplineCurve;
 class Geom2dConvert_CompCurveToBSplineCurve {
 	public:
 		/****************** Add ******************/

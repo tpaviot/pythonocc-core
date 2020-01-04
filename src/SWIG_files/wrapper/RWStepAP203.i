@@ -76,7 +76,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepap203.html"
 /***************************************
 * class RWStepAP203_RWCcDesignApproval *
 ***************************************/
-%nodefaultctor RWStepAP203_RWCcDesignApproval;
 class RWStepAP203_RWCcDesignApproval {
 	public:
 		/****************** RWStepAP203_RWCcDesignApproval ******************/
@@ -131,7 +130,6 @@ class RWStepAP203_RWCcDesignApproval {
 /********************************************
 * class RWStepAP203_RWCcDesignCertification *
 ********************************************/
-%nodefaultctor RWStepAP203_RWCcDesignCertification;
 class RWStepAP203_RWCcDesignCertification {
 	public:
 		/****************** RWStepAP203_RWCcDesignCertification ******************/
@@ -186,7 +184,6 @@ class RWStepAP203_RWCcDesignCertification {
 /***************************************
 * class RWStepAP203_RWCcDesignContract *
 ***************************************/
-%nodefaultctor RWStepAP203_RWCcDesignContract;
 class RWStepAP203_RWCcDesignContract {
 	public:
 		/****************** RWStepAP203_RWCcDesignContract ******************/
@@ -241,7 +238,6 @@ class RWStepAP203_RWCcDesignContract {
 /****************************************************
 * class RWStepAP203_RWCcDesignDateAndTimeAssignment *
 ****************************************************/
-%nodefaultctor RWStepAP203_RWCcDesignDateAndTimeAssignment;
 class RWStepAP203_RWCcDesignDateAndTimeAssignment {
 	public:
 		/****************** RWStepAP203_RWCcDesignDateAndTimeAssignment ******************/
@@ -296,7 +292,6 @@ class RWStepAP203_RWCcDesignDateAndTimeAssignment {
 /**************************************************************
 * class RWStepAP203_RWCcDesignPersonAndOrganizationAssignment *
 **************************************************************/
-%nodefaultctor RWStepAP203_RWCcDesignPersonAndOrganizationAssignment;
 class RWStepAP203_RWCcDesignPersonAndOrganizationAssignment {
 	public:
 		/****************** RWStepAP203_RWCcDesignPersonAndOrganizationAssignment ******************/
@@ -351,7 +346,6 @@ class RWStepAP203_RWCcDesignPersonAndOrganizationAssignment {
 /*****************************************************
 * class RWStepAP203_RWCcDesignSecurityClassification *
 *****************************************************/
-%nodefaultctor RWStepAP203_RWCcDesignSecurityClassification;
 class RWStepAP203_RWCcDesignSecurityClassification {
 	public:
 		/****************** RWStepAP203_RWCcDesignSecurityClassification ******************/
@@ -406,7 +400,6 @@ class RWStepAP203_RWCcDesignSecurityClassification {
 /*****************************************************
 * class RWStepAP203_RWCcDesignSpecificationReference *
 *****************************************************/
-%nodefaultctor RWStepAP203_RWCcDesignSpecificationReference;
 class RWStepAP203_RWCcDesignSpecificationReference {
 	public:
 		/****************** RWStepAP203_RWCcDesignSpecificationReference ******************/
@@ -461,7 +454,6 @@ class RWStepAP203_RWCcDesignSpecificationReference {
 /*****************************
 * class RWStepAP203_RWChange *
 *****************************/
-%nodefaultctor RWStepAP203_RWChange;
 class RWStepAP203_RWChange {
 	public:
 		/****************** RWStepAP203_RWChange ******************/
@@ -516,7 +508,6 @@ class RWStepAP203_RWChange {
 /************************************
 * class RWStepAP203_RWChangeRequest *
 ************************************/
-%nodefaultctor RWStepAP203_RWChangeRequest;
 class RWStepAP203_RWChangeRequest {
 	public:
 		/****************** RWStepAP203_RWChangeRequest ******************/
@@ -571,7 +562,6 @@ class RWStepAP203_RWChangeRequest {
 /***********************************
 * class RWStepAP203_RWStartRequest *
 ***********************************/
-%nodefaultctor RWStepAP203_RWStartRequest;
 class RWStepAP203_RWStartRequest {
 	public:
 		/****************** RWStepAP203_RWStartRequest ******************/
@@ -626,7 +616,6 @@ class RWStepAP203_RWStartRequest {
 /********************************
 * class RWStepAP203_RWStartWork *
 ********************************/
-%nodefaultctor RWStepAP203_RWStartWork;
 class RWStepAP203_RWStartWork {
 	public:
 		/****************** RWStepAP203_RWStartWork ******************/

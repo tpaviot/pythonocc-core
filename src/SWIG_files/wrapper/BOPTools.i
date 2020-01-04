@@ -1342,7 +1342,6 @@ class BOPTools_AlgoTools3D {
 /********************************
 * class BOPTools_ConnexityBlock *
 ********************************/
-%nodefaultctor BOPTools_ConnexityBlock;
 class BOPTools_ConnexityBlock {
 	public:
 		/****************** BOPTools_ConnexityBlock ******************/
@@ -1401,7 +1400,6 @@ class BOPTools_ConnexityBlock {
 /*******************************
 * class BOPTools_CoupleOfShape *
 *******************************/
-%nodefaultctor BOPTools_CoupleOfShape;
 class BOPTools_CoupleOfShape {
 	public:
 		/****************** BOPTools_CoupleOfShape ******************/
@@ -1448,7 +1446,6 @@ class BOPTools_CoupleOfShape {
 /*********************
 * class BOPTools_Set *
 *********************/
-%nodefaultctor BOPTools_Set;
 class BOPTools_Set {
 	public:
 		/****************** Add ******************/

@@ -120,7 +120,6 @@ class XmlMDataXtd {
 /*******************************
 * class XmlMDataXtd_AxisDriver *
 *******************************/
-%nodefaultctor XmlMDataXtd_AxisDriver;
 class XmlMDataXtd_AxisDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -171,7 +170,6 @@ class XmlMDataXtd_AxisDriver : public XmlMDF_ADriver {
 /*************************************
 * class XmlMDataXtd_ConstraintDriver *
 *************************************/
-%nodefaultctor XmlMDataXtd_ConstraintDriver;
 class XmlMDataXtd_ConstraintDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -222,7 +220,6 @@ class XmlMDataXtd_ConstraintDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMDataXtd_GeometryDriver *
 ***********************************/
-%nodefaultctor XmlMDataXtd_GeometryDriver;
 class XmlMDataXtd_GeometryDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -273,7 +270,6 @@ class XmlMDataXtd_GeometryDriver : public XmlMDF_ADriver {
 /*************************************
 * class XmlMDataXtd_PatternStdDriver *
 *************************************/
-%nodefaultctor XmlMDataXtd_PatternStdDriver;
 class XmlMDataXtd_PatternStdDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -324,7 +320,6 @@ class XmlMDataXtd_PatternStdDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMDataXtd_PlacementDriver *
 ************************************/
-%nodefaultctor XmlMDataXtd_PlacementDriver;
 class XmlMDataXtd_PlacementDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -375,7 +370,6 @@ class XmlMDataXtd_PlacementDriver : public XmlMDF_ADriver {
 /********************************
 * class XmlMDataXtd_PlaneDriver *
 ********************************/
-%nodefaultctor XmlMDataXtd_PlaneDriver;
 class XmlMDataXtd_PlaneDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -426,7 +420,6 @@ class XmlMDataXtd_PlaneDriver : public XmlMDF_ADriver {
 /********************************
 * class XmlMDataXtd_PointDriver *
 ********************************/
-%nodefaultctor XmlMDataXtd_PointDriver;
 class XmlMDataXtd_PointDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -477,7 +470,6 @@ class XmlMDataXtd_PointDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMDataXtd_PositionDriver *
 ***********************************/
-%nodefaultctor XmlMDataXtd_PositionDriver;
 class XmlMDataXtd_PositionDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -528,7 +520,6 @@ class XmlMDataXtd_PositionDriver : public XmlMDF_ADriver {
 /***************************************
 * class XmlMDataXtd_PresentationDriver *
 ***************************************/
-%nodefaultctor XmlMDataXtd_PresentationDriver;
 class XmlMDataXtd_PresentationDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -579,7 +570,6 @@ class XmlMDataXtd_PresentationDriver : public XmlMDF_ADriver {
 /********************************
 * class XmlMDataXtd_ShapeDriver *
 ********************************/
-%nodefaultctor XmlMDataXtd_ShapeDriver;
 class XmlMDataXtd_ShapeDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -630,7 +620,6 @@ class XmlMDataXtd_ShapeDriver : public XmlMDF_ADriver {
 /****************************************
 * class XmlMDataXtd_TriangulationDriver *
 ****************************************/
-%nodefaultctor XmlMDataXtd_TriangulationDriver;
 class XmlMDataXtd_TriangulationDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/

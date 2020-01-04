@@ -311,7 +311,6 @@ class GeomConvert {
 /********************************
 * class GeomConvert_ApproxCurve *
 ********************************/
-%nodefaultctor GeomConvert_ApproxCurve;
 class GeomConvert_ApproxCurve {
 	public:
 		/****************** Curve ******************/
@@ -390,7 +389,6 @@ class GeomConvert_ApproxCurve {
 /**********************************
 * class GeomConvert_ApproxSurface *
 **********************************/
-%nodefaultctor GeomConvert_ApproxSurface;
 class GeomConvert_ApproxSurface {
 	public:
 
@@ -481,7 +479,6 @@ class GeomConvert_ApproxSurface {
 /**********************************************
 * class GeomConvert_BSplineCurveKnotSplitting *
 **********************************************/
-%nodefaultctor GeomConvert_BSplineCurveKnotSplitting;
 class GeomConvert_BSplineCurveKnotSplitting {
 	public:
 		/****************** GeomConvert_BSplineCurveKnotSplitting ******************/
@@ -528,7 +525,6 @@ class GeomConvert_BSplineCurveKnotSplitting {
 /**********************************************
 * class GeomConvert_BSplineCurveToBezierCurve *
 **********************************************/
-%nodefaultctor GeomConvert_BSplineCurveToBezierCurve;
 class GeomConvert_BSplineCurveToBezierCurve {
 	public:
 		/****************** Arc ******************/
@@ -595,7 +591,6 @@ class GeomConvert_BSplineCurveToBezierCurve {
 /************************************************
 * class GeomConvert_BSplineSurfaceKnotSplitting *
 ************************************************/
-%nodefaultctor GeomConvert_BSplineSurfaceKnotSplitting;
 class GeomConvert_BSplineSurfaceKnotSplitting {
 	public:
 		/****************** GeomConvert_BSplineSurfaceKnotSplitting ******************/
@@ -660,7 +655,6 @@ class GeomConvert_BSplineSurfaceKnotSplitting {
 /**************************************************
 * class GeomConvert_BSplineSurfaceToBezierSurface *
 **************************************************/
-%nodefaultctor GeomConvert_BSplineSurfaceToBezierSurface;
 class GeomConvert_BSplineSurfaceToBezierSurface {
 	public:
 		/****************** GeomConvert_BSplineSurfaceToBezierSurface ******************/
@@ -747,7 +741,6 @@ class GeomConvert_BSplineSurfaceToBezierSurface {
 /*******************************************************
 * class GeomConvert_CompBezierSurfacesToBSplineSurface *
 *******************************************************/
-%nodefaultctor GeomConvert_CompBezierSurfacesToBSplineSurface;
 class GeomConvert_CompBezierSurfacesToBSplineSurface {
 	public:
 		/****************** GeomConvert_CompBezierSurfacesToBSplineSurface ******************/
@@ -872,7 +865,6 @@ class GeomConvert_CompBezierSurfacesToBSplineSurface {
 /********************************************
 * class GeomConvert_CompCurveToBSplineCurve *
 ********************************************/
-%nodefaultctor GeomConvert_CompCurveToBSplineCurve;
 class GeomConvert_CompCurveToBSplineCurve {
 	public:
 		/****************** Add ******************/

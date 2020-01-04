@@ -96,7 +96,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepapprox.html"
 /**************************
 * class BRepApprox_Approx *
 **************************/
-%nodefaultctor BRepApprox_Approx;
 class BRepApprox_Approx {
 	public:
 		class Approx_Data {};
@@ -165,7 +164,6 @@ class BRepApprox_Approx {
 /******************************
 * class BRepApprox_ApproxLine *
 ******************************/
-%nodefaultctor BRepApprox_ApproxLine;
 class BRepApprox_ApproxLine : public Standard_Transient {
 	public:
 		/****************** BRepApprox_ApproxLine ******************/
@@ -215,7 +213,6 @@ class BRepApprox_ApproxLine : public Standard_Transient {
 /****************************************************************************
 * class BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox *
 ****************************************************************************/
-%nodefaultctor BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox : public math_BFGS {
 	public:
 		/****************** BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox ******************/
@@ -254,7 +251,6 @@ class BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox : publ
 /**************************************************************************
 * class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox *
 **************************************************************************/
-%nodefaultctor BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox ******************/
@@ -413,7 +409,6 @@ class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public
 /*****************************************************************************
 * class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox *
 *****************************************************************************/
-%nodefaultctor BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 	public:
 		/****************** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox ******************/
@@ -660,7 +655,6 @@ class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 /***************************************************************************
 * class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox *
 ***************************************************************************/
-%nodefaultctor BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox : public math_BFGS {
 	public:
 		/****************** BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox ******************/
@@ -699,7 +693,6 @@ class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox : publi
 /************************************************************************
 * class BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox *
 ************************************************************************/
-%nodefaultctor BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox : public math_BFGS {
 	public:
 		/****************** BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox ******************/
@@ -738,7 +731,6 @@ class BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox : public m
 /**********************************************************
 * class BRepApprox_MyBSplGradientOfTheComputeLineOfApprox *
 **********************************************************/
-%nodefaultctor BRepApprox_MyBSplGradientOfTheComputeLineOfApprox;
 class BRepApprox_MyBSplGradientOfTheComputeLineOfApprox {
 	public:
 		/****************** AverageError ******************/
@@ -851,7 +843,6 @@ class BRepApprox_MyBSplGradientOfTheComputeLineOfApprox {
 /************************************************************
 * class BRepApprox_MyGradientOfTheComputeLineBezierOfApprox *
 ************************************************************/
-%nodefaultctor BRepApprox_MyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_MyGradientOfTheComputeLineBezierOfApprox {
 	public:
 		/****************** AverageError ******************/
@@ -928,7 +919,6 @@ class BRepApprox_MyGradientOfTheComputeLineBezierOfApprox {
 /*********************************************************
 * class BRepApprox_MyGradientbisOfTheComputeLineOfApprox *
 *********************************************************/
-%nodefaultctor BRepApprox_MyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_MyGradientbisOfTheComputeLineOfApprox {
 	public:
 		/****************** AverageError ******************/
@@ -1005,7 +995,6 @@ class BRepApprox_MyGradientbisOfTheComputeLineOfApprox {
 /*************************************************************************
 * class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox *
 *************************************************************************/
-%nodefaultctor BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox ******************/
@@ -1128,7 +1117,6 @@ class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public 
 /**********************************************************************
 * class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox *
 **********************************************************************/
-%nodefaultctor BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox ******************/
@@ -1251,7 +1239,6 @@ class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public mat
 /****************************************************************************
 * class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox *
 ****************************************************************************/
-%nodefaultctor BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 	public:
 		/****************** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox ******************/
@@ -1498,7 +1485,6 @@ class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 /*************************************************************************
 * class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox *
 *************************************************************************/
-%nodefaultctor BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 	public:
 		/****************** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox ******************/
@@ -1745,7 +1731,6 @@ class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 /***************************************************************************
 * class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox *
 ***************************************************************************/
-%nodefaultctor BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
 class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
 	public:
 		/****************** BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox ******************/
@@ -1819,7 +1804,6 @@ class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
 /************************************************************************
 * class BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox *
 ************************************************************************/
-%nodefaultctor BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox;
 class BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
 	public:
 		/****************** BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox ******************/
@@ -1893,7 +1877,6 @@ class BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
 /************************************************
 * class BRepApprox_TheComputeLineBezierOfApprox *
 ************************************************/
-%nodefaultctor BRepApprox_TheComputeLineBezierOfApprox;
 class BRepApprox_TheComputeLineBezierOfApprox {
 	public:
 		/****************** BRepApprox_TheComputeLineBezierOfApprox ******************/
@@ -2126,7 +2109,6 @@ class BRepApprox_TheComputeLineBezierOfApprox {
 /******************************************
 * class BRepApprox_TheComputeLineOfApprox *
 ******************************************/
-%nodefaultctor BRepApprox_TheComputeLineOfApprox;
 class BRepApprox_TheComputeLineOfApprox {
 	public:
 		/****************** BRepApprox_TheComputeLineOfApprox ******************/
@@ -2383,7 +2365,6 @@ class BRepApprox_TheComputeLineOfApprox {
 /**********************************************************************
 * class BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox *
 **********************************************************************/
-%nodefaultctor BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox;
 class BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** AuxillarSurface1 ******************/
@@ -2510,7 +2491,6 @@ class BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox : public mat
 /***********************************************
 * class BRepApprox_TheImpPrmSvSurfacesOfApprox *
 ***********************************************/
-%nodefaultctor BRepApprox_TheImpPrmSvSurfacesOfApprox;
 class BRepApprox_TheImpPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 	public:
 		/****************** BRepApprox_TheImpPrmSvSurfacesOfApprox ******************/
@@ -2640,7 +2620,6 @@ class BRepApprox_TheImpPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 /*********************************************************
 * class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox *
 *********************************************************/
-%nodefaultctor BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
 class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 	public:
 		/****************** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox ******************/
@@ -2757,7 +2736,6 @@ class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 /****************************************
 * class BRepApprox_TheMultiLineOfApprox *
 ****************************************/
-%nodefaultctor BRepApprox_TheMultiLineOfApprox;
 class BRepApprox_TheMultiLineOfApprox {
 	public:
 		/****************** BRepApprox_TheMultiLineOfApprox ******************/
@@ -3183,7 +3161,6 @@ class BRepApprox_TheMultiLineToolOfApprox {
 /***********************************************
 * class BRepApprox_ThePrmPrmSvSurfacesOfApprox *
 ***********************************************/
-%nodefaultctor BRepApprox_ThePrmPrmSvSurfacesOfApprox;
 class BRepApprox_ThePrmPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 	public:
 		/****************** BRepApprox_ThePrmPrmSvSurfacesOfApprox ******************/
@@ -3304,7 +3281,6 @@ class BRepApprox_ThePrmPrmSvSurfacesOfApprox : public ApproxInt_SvSurfaces {
 /**************************************************************
 * class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox *
 **************************************************************/
-%nodefaultctor BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox;
 class BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox ******************/

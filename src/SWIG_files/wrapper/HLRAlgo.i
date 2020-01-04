@@ -325,7 +325,6 @@ class HLRAlgo {
 /************************
 * class HLRAlgo_BiPoint *
 ************************/
-%nodefaultctor HLRAlgo_BiPoint;
 class HLRAlgo_BiPoint {
 	public:
 		class IndicesT {};
@@ -659,7 +658,6 @@ class HLRAlgo_BiPoint {
 /****************************
 * class HLRAlgo_Coincidence *
 ****************************/
-%nodefaultctor HLRAlgo_Coincidence;
 class HLRAlgo_Coincidence {
 	public:
 		/****************** HLRAlgo_Coincidence ******************/
@@ -715,7 +713,6 @@ class HLRAlgo_Coincidence {
 /*****************************
 * class HLRAlgo_EdgeIterator *
 *****************************/
-%nodefaultctor HLRAlgo_EdgeIterator;
 class HLRAlgo_EdgeIterator {
 	public:
 		/****************** HLRAlgo_EdgeIterator ******************/
@@ -798,7 +795,6 @@ class HLRAlgo_EdgeIterator {
 /***************************
 * class HLRAlgo_EdgeStatus *
 ***************************/
-%nodefaultctor HLRAlgo_EdgeStatus;
 class HLRAlgo_EdgeStatus {
 	public:
 		/****************** AllHidden ******************/
@@ -933,7 +929,6 @@ class HLRAlgo_EdgeStatus {
 /***************************
 * class HLRAlgo_EdgesBlock *
 ***************************/
-%nodefaultctor HLRAlgo_EdgesBlock;
 class HLRAlgo_EdgesBlock : public Standard_Transient {
 	public:
 		class MinMaxIndices {};
@@ -1060,7 +1055,6 @@ class HLRAlgo_EdgesBlock : public Standard_Transient {
 /*****************************
 * class HLRAlgo_Interference *
 *****************************/
-%nodefaultctor HLRAlgo_Interference;
 class HLRAlgo_Interference {
 	public:
 		/****************** Boundary ******************/
@@ -1165,7 +1159,6 @@ class HLRAlgo_Interference {
 /*****************************
 * class HLRAlgo_Intersection *
 *****************************/
-%nodefaultctor HLRAlgo_Intersection;
 class HLRAlgo_Intersection {
 	public:
 		/****************** HLRAlgo_Intersection ******************/
@@ -1288,7 +1281,6 @@ class HLRAlgo_Intersection {
 /*************************
 * class HLRAlgo_PolyAlgo *
 *************************/
-%nodefaultctor HLRAlgo_PolyAlgo;
 class HLRAlgo_PolyAlgo : public Standard_Transient {
 	public:
 		/****************** Clear ******************/
@@ -1397,7 +1389,6 @@ class HLRAlgo_PolyAlgo : public Standard_Transient {
 /*************************
 * class HLRAlgo_PolyData *
 *************************/
-%nodefaultctor HLRAlgo_PolyData;
 class HLRAlgo_PolyData : public Standard_Transient {
 	public:
 		class FaceIndices {};
@@ -1475,7 +1466,6 @@ class HLRAlgo_PolyData : public Standard_Transient {
 /*********************************
 * class HLRAlgo_PolyInternalData *
 *********************************/
-%nodefaultctor HLRAlgo_PolyInternalData;
 class HLRAlgo_PolyInternalData : public Standard_Transient {
 	public:
 		/****************** AddNode ******************/
@@ -1657,7 +1647,6 @@ class HLRAlgo_PolyInternalData : public Standard_Transient {
 /*********************************
 * class HLRAlgo_PolyInternalNode *
 *********************************/
-%nodefaultctor HLRAlgo_PolyInternalNode;
 class HLRAlgo_PolyInternalNode : public Standard_Transient {
 	public:
 		class NodeIndices {};
@@ -1684,7 +1673,6 @@ class HLRAlgo_PolyInternalNode : public Standard_Transient {
 /******************************
 * class HLRAlgo_PolyShellData *
 ******************************/
-%nodefaultctor HLRAlgo_PolyShellData;
 class HLRAlgo_PolyShellData : public Standard_Transient {
 	public:
 		class ShellIndices {};
@@ -1743,7 +1731,6 @@ class HLRAlgo_PolyShellData : public Standard_Transient {
 /**************************
 * class HLRAlgo_Projector *
 **************************/
-%nodefaultctor HLRAlgo_Projector;
 class HLRAlgo_Projector {
 	public:
 		/****************** Directions ******************/
@@ -1936,7 +1923,6 @@ class HLRAlgo_Projector {
 /***************************
 * class HLRAlgo_WiresBlock *
 ***************************/
-%nodefaultctor HLRAlgo_WiresBlock;
 class HLRAlgo_WiresBlock : public Standard_Transient {
 	public:
 		/****************** HLRAlgo_WiresBlock ******************/

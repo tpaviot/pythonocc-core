@@ -88,7 +88,6 @@ typedef NCollection_List <opencascade::handle <Expr_GeneralExpression>>::Iterato
 * class ExprIntrp *
 ******************/
 %rename(exprintrp) ExprIntrp;
-%nodefaultctor ExprIntrp;
 class ExprIntrp {
 	public:
 };
@@ -103,7 +102,6 @@ class ExprIntrp {
 /***************************
 * class ExprIntrp_Analysis *
 ***************************/
-%nodefaultctor ExprIntrp_Analysis;
 class ExprIntrp_Analysis {
 	public:
 		/****************** ExprIntrp_Analysis ******************/

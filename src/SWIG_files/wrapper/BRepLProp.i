@@ -125,7 +125,6 @@ class BRepLProp {
 /**************************
 * class BRepLProp_CLProps *
 **************************/
-%nodefaultctor BRepLProp_CLProps;
 class BRepLProp_CLProps {
 	public:
 		/****************** BRepLProp_CLProps ******************/
@@ -350,7 +349,6 @@ class BRepLProp_CurveTool {
 /**************************
 * class BRepLProp_SLProps *
 **************************/
-%nodefaultctor BRepLProp_SLProps;
 class BRepLProp_SLProps {
 	public:
 		/****************** BRepLProp_SLProps ******************/

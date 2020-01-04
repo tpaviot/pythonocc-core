@@ -426,7 +426,6 @@ typedef unsigned int Aspect_VKeyMouse;
 /**************************
 * class Aspect_Background *
 **************************/
-%nodefaultctor Aspect_Background;
 class Aspect_Background {
 	public:
 		/****************** Aspect_Background ******************/
@@ -469,7 +468,6 @@ class Aspect_Background {
 /*********************************
 * class Aspect_DisplayConnection *
 *********************************/
-%nodefaultctor Aspect_DisplayConnection;
 class Aspect_DisplayConnection : public Standard_Transient {
 	public:
 };
@@ -486,7 +484,6 @@ class Aspect_DisplayConnection : public Standard_Transient {
 /*********************
 * class Aspect_GenId *
 *********************/
-%nodefaultctor Aspect_GenId;
 class Aspect_GenId {
 	public:
 		/****************** Aspect_GenId ******************/
@@ -749,7 +746,6 @@ class Aspect_Grid : public Standard_Transient {
 /***************************
 * class Aspect_ScrollDelta *
 ***************************/
-%nodefaultctor Aspect_ScrollDelta;
 class Aspect_ScrollDelta {
 	public:
 		float Delta;
@@ -806,7 +802,6 @@ class Aspect_ScrollDelta {
 /*********************
 * class Aspect_Touch *
 *********************/
-%nodefaultctor Aspect_Touch;
 class Aspect_Touch {
 	public:
 		bool IsPreciseDevice;
@@ -1026,7 +1021,6 @@ class Aspect_Window : public Standard_Transient {
 /**********************************
 * class Aspect_GradientBackground *
 **********************************/
-%nodefaultctor Aspect_GradientBackground;
 class Aspect_GradientBackground : public Aspect_Background {
 	public:
 		/****************** Aspect_GradientBackground ******************/

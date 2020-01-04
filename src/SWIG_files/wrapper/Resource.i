@@ -85,7 +85,6 @@ typedef NCollection_DataMap <TCollection_AsciiString , TCollection_ExtendedStrin
 /********************************
 * class Resource_LexicalCompare *
 ********************************/
-%nodefaultctor Resource_LexicalCompare;
 class Resource_LexicalCompare {
 	public:
 		/****************** IsLower ******************/
@@ -115,7 +114,6 @@ class Resource_LexicalCompare {
 /*************************
 * class Resource_Manager *
 *************************/
-%nodefaultctor Resource_Manager;
 class Resource_Manager : public Standard_Transient {
 	public:
 		/****************** ExtValue ******************/

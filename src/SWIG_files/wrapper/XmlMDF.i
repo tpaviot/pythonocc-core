@@ -200,7 +200,6 @@ class XmlMDF_ADriver : public Standard_Transient {
 /****************************
 * class XmlMDF_ADriverTable *
 ****************************/
-%nodefaultctor XmlMDF_ADriverTable;
 class XmlMDF_ADriverTable : public Standard_Transient {
 	public:
 		/****************** AddDriver ******************/
@@ -247,7 +246,6 @@ class XmlMDF_ADriverTable : public Standard_Transient {
 /*******************************
 * class XmlMDF_ReferenceDriver *
 *******************************/
-%nodefaultctor XmlMDF_ReferenceDriver;
 class XmlMDF_ReferenceDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -298,7 +296,6 @@ class XmlMDF_ReferenceDriver : public XmlMDF_ADriver {
 /*******************************
 * class XmlMDF_TagSourceDriver *
 *******************************/
-%nodefaultctor XmlMDF_TagSourceDriver;
 class XmlMDF_TagSourceDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/

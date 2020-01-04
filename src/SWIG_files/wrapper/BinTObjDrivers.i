@@ -88,7 +88,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bintobjdrivers.ht
 * class BinTObjDrivers *
 ***********************/
 %rename(bintobjdrivers) BinTObjDrivers;
-%nodefaultctor BinTObjDrivers;
 class BinTObjDrivers {
 	public:
 		/****************** AddDrivers ******************/
@@ -127,7 +126,6 @@ class BinTObjDrivers {
 /***********************************************
 * class BinTObjDrivers_DocumentRetrievalDriver *
 ***********************************************/
-%nodefaultctor BinTObjDrivers_DocumentRetrievalDriver;
 class BinTObjDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -156,7 +154,6 @@ class BinTObjDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrie
 /*********************************************
 * class BinTObjDrivers_DocumentStorageDriver *
 *********************************************/
-%nodefaultctor BinTObjDrivers_DocumentStorageDriver;
 class BinTObjDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -185,7 +182,6 @@ class BinTObjDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageD
 /********************************************
 * class BinTObjDrivers_IntSparseArrayDriver *
 ********************************************/
-%nodefaultctor BinTObjDrivers_IntSparseArrayDriver;
 class BinTObjDrivers_IntSparseArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinTObjDrivers_IntSparseArrayDriver ******************/
@@ -236,7 +232,6 @@ class BinTObjDrivers_IntSparseArrayDriver : public BinMDF_ADriver {
 /***********************************
 * class BinTObjDrivers_ModelDriver *
 ***********************************/
-%nodefaultctor BinTObjDrivers_ModelDriver;
 class BinTObjDrivers_ModelDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinTObjDrivers_ModelDriver ******************/
@@ -287,7 +282,6 @@ class BinTObjDrivers_ModelDriver : public BinMDF_ADriver {
 /************************************
 * class BinTObjDrivers_ObjectDriver *
 ************************************/
-%nodefaultctor BinTObjDrivers_ObjectDriver;
 class BinTObjDrivers_ObjectDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinTObjDrivers_ObjectDriver ******************/
@@ -338,7 +332,6 @@ class BinTObjDrivers_ObjectDriver : public BinMDF_ADriver {
 /***************************************
 * class BinTObjDrivers_ReferenceDriver *
 ***************************************/
-%nodefaultctor BinTObjDrivers_ReferenceDriver;
 class BinTObjDrivers_ReferenceDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinTObjDrivers_ReferenceDriver ******************/
@@ -389,7 +382,6 @@ class BinTObjDrivers_ReferenceDriver : public BinMDF_ADriver {
 /*********************************
 * class BinTObjDrivers_XYZDriver *
 *********************************/
-%nodefaultctor BinTObjDrivers_XYZDriver;
 class BinTObjDrivers_XYZDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinTObjDrivers_XYZDriver ******************/

@@ -304,7 +304,6 @@ typedef NCollection_Array1 <opencascade::handle <StepRepr_PropertyDefinitionRepr
 /**************************************************
 * class StepRepr_AssemblyComponentUsageSubstitute *
 **************************************************/
-%nodefaultctor StepRepr_AssemblyComponentUsageSubstitute;
 class StepRepr_AssemblyComponentUsageSubstitute : public Standard_Transient {
 	public:
 		/****************** Base ******************/
@@ -387,7 +386,6 @@ class StepRepr_AssemblyComponentUsageSubstitute : public Standard_Transient {
 /*****************************************
 * class StepRepr_CharacterizedDefinition *
 *****************************************/
-%nodefaultctor StepRepr_CharacterizedDefinition;
 class StepRepr_CharacterizedDefinition : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -458,7 +456,6 @@ class StepRepr_CharacterizedDefinition : public StepData_SelectType {
 /*************************************
 * class StepRepr_ConfigurationDesign *
 *************************************/
-%nodefaultctor StepRepr_ConfigurationDesign;
 class StepRepr_ConfigurationDesign : public Standard_Transient {
 	public:
 		/****************** Configuration ******************/
@@ -519,7 +516,6 @@ class StepRepr_ConfigurationDesign : public Standard_Transient {
 /*****************************************
 * class StepRepr_ConfigurationDesignItem *
 *****************************************/
-%nodefaultctor StepRepr_ConfigurationDesignItem;
 class StepRepr_ConfigurationDesignItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -560,7 +556,6 @@ class StepRepr_ConfigurationDesignItem : public StepData_SelectType {
 /******************************************
 * class StepRepr_ConfigurationEffectivity *
 ******************************************/
-%nodefaultctor StepRepr_ConfigurationEffectivity;
 class StepRepr_ConfigurationEffectivity : public StepBasic_ProductDefinitionEffectivity {
 	public:
 		/****************** Configuration ******************/
@@ -609,7 +604,6 @@ class StepRepr_ConfigurationEffectivity : public StepBasic_ProductDefinitionEffe
 /***********************************
 * class StepRepr_ConfigurationItem *
 ***********************************/
-%nodefaultctor StepRepr_ConfigurationItem;
 class StepRepr_ConfigurationItem : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -734,7 +728,6 @@ class StepRepr_ConfigurationItem : public Standard_Transient {
 /*********************************
 * class StepRepr_DataEnvironment *
 *********************************/
-%nodefaultctor StepRepr_DataEnvironment;
 class StepRepr_DataEnvironment : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -811,7 +804,6 @@ class StepRepr_DataEnvironment : public Standard_Transient {
 /***************************************************
 * class StepRepr_FunctionallyDefinedTransformation *
 ***************************************************/
-%nodefaultctor StepRepr_FunctionallyDefinedTransformation;
 class StepRepr_FunctionallyDefinedTransformation : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -867,7 +859,6 @@ class StepRepr_FunctionallyDefinedTransformation : public Standard_Transient {
 /*******************************************
 * class StepRepr_ItemDefinedTransformation *
 *******************************************/
-%nodefaultctor StepRepr_ItemDefinedTransformation;
 class StepRepr_ItemDefinedTransformation : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -950,7 +941,6 @@ class StepRepr_ItemDefinedTransformation : public Standard_Transient {
 /*************************************
 * class StepRepr_MaterialDesignation *
 *************************************/
-%nodefaultctor StepRepr_MaterialDesignation;
 class StepRepr_MaterialDesignation : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1005,7 +995,6 @@ class StepRepr_MaterialDesignation : public Standard_Transient {
 /********************************
 * class StepRepr_ProductConcept *
 ********************************/
-%nodefaultctor StepRepr_ProductConcept;
 class StepRepr_ProductConcept : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1106,7 +1095,6 @@ class StepRepr_ProductConcept : public Standard_Transient {
 /****************************************
 * class StepRepr_ProductDefinitionUsage *
 ****************************************/
-%nodefaultctor StepRepr_ProductDefinitionUsage;
 class StepRepr_ProductDefinitionUsage : public StepBasic_ProductDefinitionRelationship {
 	public:
 		/****************** StepRepr_ProductDefinitionUsage ******************/
@@ -1129,7 +1117,6 @@ class StepRepr_ProductDefinitionUsage : public StepBasic_ProductDefinitionRelati
 /************************************
 * class StepRepr_PropertyDefinition *
 ************************************/
-%nodefaultctor StepRepr_PropertyDefinition;
 class StepRepr_PropertyDefinition : public Standard_Transient {
 	public:
 		/****************** Definition ******************/
@@ -1214,7 +1201,6 @@ class StepRepr_PropertyDefinition : public Standard_Transient {
 /************************************************
 * class StepRepr_PropertyDefinitionRelationship *
 ************************************************/
-%nodefaultctor StepRepr_PropertyDefinitionRelationship;
 class StepRepr_PropertyDefinitionRelationship : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1307,7 +1293,6 @@ class StepRepr_PropertyDefinitionRelationship : public Standard_Transient {
 /**************************************************
 * class StepRepr_PropertyDefinitionRepresentation *
 **************************************************/
-%nodefaultctor StepRepr_PropertyDefinitionRepresentation;
 class StepRepr_PropertyDefinitionRepresentation : public Standard_Transient {
 	public:
 		/****************** Definition ******************/
@@ -1368,7 +1353,6 @@ class StepRepr_PropertyDefinitionRepresentation : public Standard_Transient {
 /********************************
 * class StepRepr_Representation *
 ********************************/
-%nodefaultctor StepRepr_Representation;
 class StepRepr_Representation : public Standard_Transient {
 	public:
 		/****************** ContextOfItems ******************/
@@ -1450,7 +1434,6 @@ class StepRepr_Representation : public Standard_Transient {
 /***************************************
 * class StepRepr_RepresentationContext *
 ***************************************/
-%nodefaultctor StepRepr_RepresentationContext;
 class StepRepr_RepresentationContext : public Standard_Transient {
 	public:
 		/****************** ContextIdentifier ******************/
@@ -1506,7 +1489,6 @@ class StepRepr_RepresentationContext : public Standard_Transient {
 /************************************
 * class StepRepr_RepresentationItem *
 ************************************/
-%nodefaultctor StepRepr_RepresentationItem;
 class StepRepr_RepresentationItem : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1548,7 +1530,6 @@ class StepRepr_RepresentationItem : public Standard_Transient {
 /***********************************
 * class StepRepr_RepresentationMap *
 ***********************************/
-%nodefaultctor StepRepr_RepresentationMap;
 class StepRepr_RepresentationMap : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1604,7 +1585,6 @@ class StepRepr_RepresentationMap : public Standard_Transient {
 /********************************************
 * class StepRepr_RepresentationRelationship *
 ********************************************/
-%nodefaultctor StepRepr_RepresentationRelationship;
 class StepRepr_RepresentationRelationship : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1688,7 +1668,6 @@ class StepRepr_RepresentationRelationship : public Standard_Transient {
 /***************************************
 * class StepRepr_RepresentedDefinition *
 ***************************************/
-%nodefaultctor StepRepr_RepresentedDefinition;
 class StepRepr_RepresentedDefinition : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1747,7 +1726,6 @@ class StepRepr_RepresentedDefinition : public StepData_SelectType {
 /*****************************
 * class StepRepr_ShapeAspect *
 *****************************/
-%nodefaultctor StepRepr_ShapeAspect;
 class StepRepr_ShapeAspect : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1831,7 +1809,6 @@ class StepRepr_ShapeAspect : public Standard_Transient {
 /*****************************************
 * class StepRepr_ShapeAspectRelationship *
 *****************************************/
-%nodefaultctor StepRepr_ShapeAspectRelationship;
 class StepRepr_ShapeAspectRelationship : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1932,7 +1909,6 @@ class StepRepr_ShapeAspectRelationship : public Standard_Transient {
 /*********************************
 * class StepRepr_ShapeDefinition *
 *********************************/
-%nodefaultctor StepRepr_ShapeDefinition;
 class StepRepr_ShapeDefinition : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1979,7 +1955,6 @@ class StepRepr_ShapeDefinition : public StepData_SelectType {
 /******************************************
 * class StepRepr_SuppliedPartRelationship *
 ******************************************/
-%nodefaultctor StepRepr_SuppliedPartRelationship;
 class StepRepr_SuppliedPartRelationship : public StepBasic_ProductDefinitionRelationship {
 	public:
 		/****************** StepRepr_SuppliedPartRelationship ******************/
@@ -2001,7 +1976,6 @@ class StepRepr_SuppliedPartRelationship : public StepBasic_ProductDefinitionRela
 /********************************
 * class StepRepr_Transformation *
 ********************************/
-%nodefaultctor StepRepr_Transformation;
 class StepRepr_Transformation : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2042,7 +2016,6 @@ class StepRepr_Transformation : public StepData_SelectType {
 /****************************************
 * class StepRepr_AssemblyComponentUsage *
 ****************************************/
-%nodefaultctor StepRepr_AssemblyComponentUsage;
 class StepRepr_AssemblyComponentUsage : public StepRepr_ProductDefinitionUsage {
 	public:
 		/****************** HasReferenceDesignator ******************/
@@ -2129,7 +2102,6 @@ class StepRepr_AssemblyComponentUsage : public StepRepr_ProductDefinitionUsage {
 /*********************************************
 * class StepRepr_CharacterizedRepresentation *
 *********************************************/
-%nodefaultctor StepRepr_CharacterizedRepresentation;
 class StepRepr_CharacterizedRepresentation : public StepRepr_Representation {
 	public:
 		/****************** Description ******************/
@@ -2177,7 +2149,6 @@ class StepRepr_CharacterizedRepresentation : public StepRepr_Representation {
 /***********************************************
 * class StepRepr_CompShAspAndDatumFeatAndShAsp *
 ***********************************************/
-%nodefaultctor StepRepr_CompShAspAndDatumFeatAndShAsp;
 class StepRepr_CompShAspAndDatumFeatAndShAsp : public StepRepr_ShapeAspect {
 	public:
 		/****************** StepRepr_CompShAspAndDatumFeatAndShAsp ******************/
@@ -2199,7 +2170,6 @@ class StepRepr_CompShAspAndDatumFeatAndShAsp : public StepRepr_ShapeAspect {
 /**************************************
 * class StepRepr_CompositeShapeAspect *
 **************************************/
-%nodefaultctor StepRepr_CompositeShapeAspect;
 class StepRepr_CompositeShapeAspect : public StepRepr_ShapeAspect {
 	public:
 		/****************** StepRepr_CompositeShapeAspect ******************/
@@ -2221,7 +2191,6 @@ class StepRepr_CompositeShapeAspect : public StepRepr_ShapeAspect {
 /********************************************
 * class StepRepr_CompoundRepresentationItem *
 ********************************************/
-%nodefaultctor StepRepr_CompoundRepresentationItem;
 class StepRepr_CompoundRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -2285,7 +2254,6 @@ class StepRepr_CompoundRepresentationItem : public StepRepr_RepresentationItem {
 /****************************************************
 * class StepRepr_ConstructiveGeometryRepresentation *
 ****************************************************/
-%nodefaultctor StepRepr_ConstructiveGeometryRepresentation;
 class StepRepr_ConstructiveGeometryRepresentation : public StepRepr_Representation {
 	public:
 		/****************** StepRepr_ConstructiveGeometryRepresentation ******************/
@@ -2308,7 +2276,6 @@ class StepRepr_ConstructiveGeometryRepresentation : public StepRepr_Representati
 /****************************************************************
 * class StepRepr_ConstructiveGeometryRepresentationRelationship *
 ****************************************************************/
-%nodefaultctor StepRepr_ConstructiveGeometryRepresentationRelationship;
 class StepRepr_ConstructiveGeometryRepresentationRelationship : public StepRepr_RepresentationRelationship {
 	public:
 		/****************** StepRepr_ConstructiveGeometryRepresentationRelationship ******************/
@@ -2330,7 +2297,6 @@ class StepRepr_ConstructiveGeometryRepresentationRelationship : public StepRepr_
 /********************************************
 * class StepRepr_DefinitionalRepresentation *
 ********************************************/
-%nodefaultctor StepRepr_DefinitionalRepresentation;
 class StepRepr_DefinitionalRepresentation : public StepRepr_Representation {
 	public:
 		/****************** StepRepr_DefinitionalRepresentation ******************/
@@ -2353,7 +2319,6 @@ class StepRepr_DefinitionalRepresentation : public StepRepr_Representation {
 /************************************
 * class StepRepr_DerivedShapeAspect *
 ************************************/
-%nodefaultctor StepRepr_DerivedShapeAspect;
 class StepRepr_DerivedShapeAspect : public StepRepr_ShapeAspect {
 	public:
 		/****************** StepRepr_DerivedShapeAspect ******************/
@@ -2375,7 +2340,6 @@ class StepRepr_DerivedShapeAspect : public StepRepr_ShapeAspect {
 /***********************************************
 * class StepRepr_DescriptiveRepresentationItem *
 ***********************************************/
-%nodefaultctor StepRepr_DescriptiveRepresentationItem;
 class StepRepr_DescriptiveRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** Description ******************/
@@ -2419,7 +2383,6 @@ class StepRepr_DescriptiveRepresentationItem : public StepRepr_RepresentationIte
 /*************************************************
 * class StepRepr_ExternallyDefinedRepresentation *
 *************************************************/
-%nodefaultctor StepRepr_ExternallyDefinedRepresentation;
 class StepRepr_ExternallyDefinedRepresentation : public StepRepr_Representation {
 	public:
 		/****************** StepRepr_ExternallyDefinedRepresentation ******************/
@@ -2441,7 +2404,6 @@ class StepRepr_ExternallyDefinedRepresentation : public StepRepr_Representation 
 /***************************************************
 * class StepRepr_FeatureForDatumTargetRelationship *
 ***************************************************/
-%nodefaultctor StepRepr_FeatureForDatumTargetRelationship;
 class StepRepr_FeatureForDatumTargetRelationship : public StepRepr_ShapeAspectRelationship {
 	public:
 		/****************** StepRepr_FeatureForDatumTargetRelationship ******************/
@@ -2464,7 +2426,6 @@ class StepRepr_FeatureForDatumTargetRelationship : public StepRepr_ShapeAspectRe
 /**************************************************
 * class StepRepr_GlobalUncertaintyAssignedContext *
 **************************************************/
-%nodefaultctor StepRepr_GlobalUncertaintyAssignedContext;
 class StepRepr_GlobalUncertaintyAssignedContext : public StepRepr_RepresentationContext {
 	public:
 		/****************** Init ******************/
@@ -2522,7 +2483,6 @@ class StepRepr_GlobalUncertaintyAssignedContext : public StepRepr_Representation
 /*******************************************
 * class StepRepr_GlobalUnitAssignedContext *
 *******************************************/
-%nodefaultctor StepRepr_GlobalUnitAssignedContext;
 class StepRepr_GlobalUnitAssignedContext : public StepRepr_RepresentationContext {
 	public:
 		/****************** Init ******************/
@@ -2580,7 +2540,6 @@ class StepRepr_GlobalUnitAssignedContext : public StepRepr_RepresentationContext
 /*******************************************
 * class StepRepr_IntegerRepresentationItem *
 *******************************************/
-%nodefaultctor StepRepr_IntegerRepresentationItem;
 class StepRepr_IntegerRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -2624,7 +2583,6 @@ class StepRepr_IntegerRepresentationItem : public StepRepr_RepresentationItem {
 /*************************************
 * class StepRepr_MakeFromUsageOption *
 *************************************/
-%nodefaultctor StepRepr_MakeFromUsageOption;
 class StepRepr_MakeFromUsageOption : public StepRepr_ProductDefinitionUsage {
 	public:
 		/****************** Init ******************/
@@ -2737,7 +2695,6 @@ class StepRepr_MakeFromUsageOption : public StepRepr_ProductDefinitionUsage {
 /****************************
 * class StepRepr_MappedItem *
 ****************************/
-%nodefaultctor StepRepr_MappedItem;
 class StepRepr_MappedItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -2795,7 +2752,6 @@ class StepRepr_MappedItem : public StepRepr_RepresentationItem {
 /**********************************
 * class StepRepr_MaterialProperty *
 **********************************/
-%nodefaultctor StepRepr_MaterialProperty;
 class StepRepr_MaterialProperty : public StepRepr_PropertyDefinition {
 	public:
 		/****************** StepRepr_MaterialProperty ******************/
@@ -2818,7 +2774,6 @@ class StepRepr_MaterialProperty : public StepRepr_PropertyDefinition {
 /************************************************
 * class StepRepr_MaterialPropertyRepresentation *
 ************************************************/
-%nodefaultctor StepRepr_MaterialPropertyRepresentation;
 class StepRepr_MaterialPropertyRepresentation : public StepRepr_PropertyDefinitionRepresentation {
 	public:
 		/****************** DependentEnvironment ******************/
@@ -2867,7 +2822,6 @@ class StepRepr_MaterialPropertyRepresentation : public StepRepr_PropertyDefiniti
 /*******************************************
 * class StepRepr_MeasureRepresentationItem *
 *******************************************/
-%nodefaultctor StepRepr_MeasureRepresentationItem;
 class StepRepr_MeasureRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -2914,7 +2868,6 @@ class StepRepr_MeasureRepresentationItem : public StepRepr_RepresentationItem {
 /*************************************************
 * class StepRepr_ParametricRepresentationContext *
 *************************************************/
-%nodefaultctor StepRepr_ParametricRepresentationContext;
 class StepRepr_ParametricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
 		/****************** StepRepr_ParametricRepresentationContext ******************/
@@ -2937,7 +2890,6 @@ class StepRepr_ParametricRepresentationContext : public StepRepr_RepresentationC
 /****************************************
 * class StepRepr_ProductDefinitionShape *
 ****************************************/
-%nodefaultctor StepRepr_ProductDefinitionShape;
 class StepRepr_ProductDefinitionShape : public StepRepr_PropertyDefinition {
 	public:
 		/****************** StepRepr_ProductDefinitionShape ******************/
@@ -2960,7 +2912,6 @@ class StepRepr_ProductDefinitionShape : public StepRepr_PropertyDefinition {
 /********************************************
 * class StepRepr_ReprItemAndMeasureWithUnit *
 ********************************************/
-%nodefaultctor StepRepr_ReprItemAndMeasureWithUnit;
 class StepRepr_ReprItemAndMeasureWithUnit : public StepRepr_RepresentationItem {
 	public:
 		/****************** GetMeasureRepresentationItem ******************/
@@ -3013,7 +2964,6 @@ class StepRepr_ReprItemAndMeasureWithUnit : public StepRepr_RepresentationItem {
 /*************************************************
 * class StepRepr_ShapeAspectDerivingRelationship *
 *************************************************/
-%nodefaultctor StepRepr_ShapeAspectDerivingRelationship;
 class StepRepr_ShapeAspectDerivingRelationship : public StepRepr_ShapeAspectRelationship {
 	public:
 		/****************** StepRepr_ShapeAspectDerivingRelationship ******************/
@@ -3035,7 +2985,6 @@ class StepRepr_ShapeAspectDerivingRelationship : public StepRepr_ShapeAspectRela
 /***************************************
 * class StepRepr_ShapeAspectTransition *
 ***************************************/
-%nodefaultctor StepRepr_ShapeAspectTransition;
 class StepRepr_ShapeAspectTransition : public StepRepr_ShapeAspectRelationship {
 	public:
 		/****************** StepRepr_ShapeAspectTransition ******************/
@@ -3058,7 +3007,6 @@ class StepRepr_ShapeAspectTransition : public StepRepr_ShapeAspectRelationship {
 /*************************************************
 * class StepRepr_ShapeRepresentationRelationship *
 *************************************************/
-%nodefaultctor StepRepr_ShapeRepresentationRelationship;
 class StepRepr_ShapeRepresentationRelationship : public StepRepr_RepresentationRelationship {
 	public:
 		/****************** StepRepr_ShapeRepresentationRelationship ******************/
@@ -3080,7 +3028,6 @@ class StepRepr_ShapeRepresentationRelationship : public StepRepr_RepresentationR
 /********************************************
 * class StepRepr_StructuralResponseProperty *
 ********************************************/
-%nodefaultctor StepRepr_StructuralResponseProperty;
 class StepRepr_StructuralResponseProperty : public StepRepr_PropertyDefinition {
 	public:
 		/****************** StepRepr_StructuralResponseProperty ******************/
@@ -3103,7 +3050,6 @@ class StepRepr_StructuralResponseProperty : public StepRepr_PropertyDefinition {
 /********************************************************************
 * class StepRepr_StructuralResponsePropertyDefinitionRepresentation *
 ********************************************************************/
-%nodefaultctor StepRepr_StructuralResponsePropertyDefinitionRepresentation;
 class StepRepr_StructuralResponsePropertyDefinitionRepresentation : public StepRepr_PropertyDefinitionRepresentation {
 	public:
 		/****************** StepRepr_StructuralResponsePropertyDefinitionRepresentation ******************/
@@ -3126,7 +3072,6 @@ class StepRepr_StructuralResponsePropertyDefinitionRepresentation : public StepR
 /*****************************************
 * class StepRepr_ValueRepresentationItem *
 *****************************************/
-%nodefaultctor StepRepr_ValueRepresentationItem;
 class StepRepr_ValueRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -3170,7 +3115,6 @@ class StepRepr_ValueRepresentationItem : public StepRepr_RepresentationItem {
 /**********************
 * class StepRepr_Apex *
 **********************/
-%nodefaultctor StepRepr_Apex;
 class StepRepr_Apex : public StepRepr_DerivedShapeAspect {
 	public:
 		/****************** StepRepr_Apex ******************/
@@ -3192,7 +3136,6 @@ class StepRepr_Apex : public StepRepr_DerivedShapeAspect {
 /**********************************
 * class StepRepr_CentreOfSymmetry *
 **********************************/
-%nodefaultctor StepRepr_CentreOfSymmetry;
 class StepRepr_CentreOfSymmetry : public StepRepr_DerivedShapeAspect {
 	public:
 		/****************** StepRepr_CentreOfSymmetry ******************/
@@ -3214,7 +3157,6 @@ class StepRepr_CentreOfSymmetry : public StepRepr_DerivedShapeAspect {
 /****************************************************************
 * class StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp *
 ****************************************************************/
-%nodefaultctor StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp;
 class StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp : public StepRepr_CompShAspAndDatumFeatAndShAsp {
 	public:
 		/****************** StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp ******************/
@@ -3236,7 +3178,6 @@ class StepRepr_CompGroupShAspAndCompShAspAndDatumFeatAndShAsp : public StepRepr_
 /*******************************************
 * class StepRepr_CompositeGroupShapeAspect *
 *******************************************/
-%nodefaultctor StepRepr_CompositeGroupShapeAspect;
 class StepRepr_CompositeGroupShapeAspect : public StepRepr_CompositeShapeAspect {
 	public:
 		/****************** StepRepr_CompositeGroupShapeAspect ******************/
@@ -3258,7 +3199,6 @@ class StepRepr_CompositeGroupShapeAspect : public StepRepr_CompositeShapeAspect 
 /**************************************
 * class StepRepr_ContinuosShapeAspect *
 **************************************/
-%nodefaultctor StepRepr_ContinuosShapeAspect;
 class StepRepr_ContinuosShapeAspect : public StepRepr_CompositeShapeAspect {
 	public:
 		/****************** StepRepr_ContinuosShapeAspect ******************/
@@ -3280,7 +3220,6 @@ class StepRepr_ContinuosShapeAspect : public StepRepr_CompositeShapeAspect {
 /***************************
 * class StepRepr_Extension *
 ***************************/
-%nodefaultctor StepRepr_Extension;
 class StepRepr_Extension : public StepRepr_DerivedShapeAspect {
 	public:
 		/****************** StepRepr_Extension ******************/
@@ -3302,7 +3241,6 @@ class StepRepr_Extension : public StepRepr_DerivedShapeAspect {
 /************************************
 * class StepRepr_GeometricAlignment *
 ************************************/
-%nodefaultctor StepRepr_GeometricAlignment;
 class StepRepr_GeometricAlignment : public StepRepr_DerivedShapeAspect {
 	public:
 		/****************** StepRepr_GeometricAlignment ******************/
@@ -3324,7 +3262,6 @@ class StepRepr_GeometricAlignment : public StepRepr_DerivedShapeAspect {
 /*********************************************
 * class StepRepr_NextAssemblyUsageOccurrence *
 *********************************************/
-%nodefaultctor StepRepr_NextAssemblyUsageOccurrence;
 class StepRepr_NextAssemblyUsageOccurrence : public StepRepr_AssemblyComponentUsage {
 	public:
 		/****************** StepRepr_NextAssemblyUsageOccurrence ******************/
@@ -3347,7 +3284,6 @@ class StepRepr_NextAssemblyUsageOccurrence : public StepRepr_AssemblyComponentUs
 /********************************
 * class StepRepr_ParallelOffset *
 ********************************/
-%nodefaultctor StepRepr_ParallelOffset;
 class StepRepr_ParallelOffset : public StepRepr_DerivedShapeAspect {
 	public:
 		/****************** Init ******************/
@@ -3399,7 +3335,6 @@ class StepRepr_ParallelOffset : public StepRepr_DerivedShapeAspect {
 /*********************************
 * class StepRepr_PerpendicularTo *
 *********************************/
-%nodefaultctor StepRepr_PerpendicularTo;
 class StepRepr_PerpendicularTo : public StepRepr_DerivedShapeAspect {
 	public:
 		/****************** StepRepr_PerpendicularTo ******************/
@@ -3421,7 +3356,6 @@ class StepRepr_PerpendicularTo : public StepRepr_DerivedShapeAspect {
 /*******************************************
 * class StepRepr_PromissoryUsageOccurrence *
 *******************************************/
-%nodefaultctor StepRepr_PromissoryUsageOccurrence;
 class StepRepr_PromissoryUsageOccurrence : public StepRepr_AssemblyComponentUsage {
 	public:
 		/****************** StepRepr_PromissoryUsageOccurrence ******************/
@@ -3443,7 +3377,6 @@ class StepRepr_PromissoryUsageOccurrence : public StepRepr_AssemblyComponentUsag
 /**************************************************
 * class StepRepr_QuantifiedAssemblyComponentUsage *
 **************************************************/
-%nodefaultctor StepRepr_QuantifiedAssemblyComponentUsage;
 class StepRepr_QuantifiedAssemblyComponentUsage : public StepRepr_AssemblyComponentUsage {
 	public:
 		/****************** Init ******************/
@@ -3528,7 +3461,6 @@ class StepRepr_QuantifiedAssemblyComponentUsage : public StepRepr_AssemblyCompon
 /**************************************************
 * class StepRepr_ReprItemAndLengthMeasureWithUnit *
 **************************************************/
-%nodefaultctor StepRepr_ReprItemAndLengthMeasureWithUnit;
 class StepRepr_ReprItemAndLengthMeasureWithUnit : public StepRepr_ReprItemAndMeasureWithUnit {
 	public:
 		/****************** GetLengthMeasureWithUnit ******************/
@@ -3565,7 +3497,6 @@ class StepRepr_ReprItemAndLengthMeasureWithUnit : public StepRepr_ReprItemAndMea
 /******************************************************
 * class StepRepr_ReprItemAndPlaneAngleMeasureWithUnit *
 ******************************************************/
-%nodefaultctor StepRepr_ReprItemAndPlaneAngleMeasureWithUnit;
 class StepRepr_ReprItemAndPlaneAngleMeasureWithUnit : public StepRepr_ReprItemAndMeasureWithUnit {
 	public:
 		/****************** GetPlaneAngleMeasureWithUnit ******************/
@@ -3599,7 +3530,6 @@ class StepRepr_ReprItemAndPlaneAngleMeasureWithUnit : public StepRepr_ReprItemAn
 /**************************************************************
 * class StepRepr_RepresentationRelationshipWithTransformation *
 **************************************************************/
-%nodefaultctor StepRepr_RepresentationRelationshipWithTransformation;
 class StepRepr_RepresentationRelationshipWithTransformation : public StepRepr_ShapeRepresentationRelationship {
 	public:
 		/****************** Init ******************/
@@ -3648,7 +3578,6 @@ class StepRepr_RepresentationRelationshipWithTransformation : public StepRepr_Sh
 /************************************************
 * class StepRepr_SpecifiedHigherUsageOccurrence *
 ************************************************/
-%nodefaultctor StepRepr_SpecifiedHigherUsageOccurrence;
 class StepRepr_SpecifiedHigherUsageOccurrence : public StepRepr_AssemblyComponentUsage {
 	public:
 		/****************** Init ******************/
@@ -3751,7 +3680,6 @@ class StepRepr_SpecifiedHigherUsageOccurrence : public StepRepr_AssemblyComponen
 /*************************
 * class StepRepr_Tangent *
 *************************/
-%nodefaultctor StepRepr_Tangent;
 class StepRepr_Tangent : public StepRepr_DerivedShapeAspect {
 	public:
 		/****************** StepRepr_Tangent ******************/
@@ -3773,7 +3701,6 @@ class StepRepr_Tangent : public StepRepr_DerivedShapeAspect {
 /****************************
 * class StepRepr_ValueRange *
 ****************************/
-%nodefaultctor StepRepr_ValueRange;
 class StepRepr_ValueRange : public StepRepr_CompoundRepresentationItem {
 	public:
 		/****************** StepRepr_ValueRange ******************/
@@ -3795,7 +3722,6 @@ class StepRepr_ValueRange : public StepRepr_CompoundRepresentationItem {
 /**************************************
 * class StepRepr_AllAroundShapeAspect *
 **************************************/
-%nodefaultctor StepRepr_AllAroundShapeAspect;
 class StepRepr_AllAroundShapeAspect : public StepRepr_ContinuosShapeAspect {
 	public:
 		/****************** StepRepr_AllAroundShapeAspect ******************/
@@ -3817,7 +3743,6 @@ class StepRepr_AllAroundShapeAspect : public StepRepr_ContinuosShapeAspect {
 /************************************
 * class StepRepr_BetweenShapeAspect *
 ************************************/
-%nodefaultctor StepRepr_BetweenShapeAspect;
 class StepRepr_BetweenShapeAspect : public StepRepr_ContinuosShapeAspect {
 	public:
 		/****************** StepRepr_BetweenShapeAspect ******************/
@@ -3839,7 +3764,6 @@ class StepRepr_BetweenShapeAspect : public StepRepr_ContinuosShapeAspect {
 /********************************************************
 * class StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI *
 ********************************************************/
-%nodefaultctor StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI;
 class StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI : public StepRepr_ReprItemAndMeasureWithUnitAndQRI {
 	public:
 		/****************** GetLengthMeasureWithUnit ******************/
@@ -3873,7 +3797,6 @@ class StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI : public StepRepr_ReprItem
 /************************************************************
 * class StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI *
 ************************************************************/
-%nodefaultctor StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI;
 class StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI : public StepRepr_ReprItemAndMeasureWithUnitAndQRI {
 	public:
 		/****************** GetPlaneAngleMeasureWithUnit ******************/
@@ -3907,7 +3830,6 @@ class StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI : public StepRepr_Repr
 /*******************************************************************
 * class StepRepr_ShapeRepresentationRelationshipWithTransformation *
 *******************************************************************/
-%nodefaultctor StepRepr_ShapeRepresentationRelationshipWithTransformation;
 class StepRepr_ShapeRepresentationRelationshipWithTransformation : public StepRepr_RepresentationRelationshipWithTransformation {
 	public:
 		/****************** StepRepr_ShapeRepresentationRelationshipWithTransformation ******************/

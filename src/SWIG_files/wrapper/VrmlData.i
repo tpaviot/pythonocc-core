@@ -271,7 +271,6 @@ class VrmlData_Node : public Standard_Transient {
 /***********************
 * class VrmlData_Scene *
 ***********************/
-%nodefaultctor VrmlData_Scene;
 class VrmlData_Scene {
 	public:
 typedef VrmlData_ListOfNode::Iterator Iterator;
@@ -537,7 +536,6 @@ typedef VrmlData_ListOfNode::Iterator Iterator;
 /******************************
 * class VrmlData_ShapeConvert *
 ******************************/
-%nodefaultctor VrmlData_ShapeConvert;
 class VrmlData_ShapeConvert {
 	public:
 		class ShapeData {};
@@ -595,7 +593,6 @@ class VrmlData_ShapeConvert {
 /****************************
 * class VrmlData_Appearance *
 ****************************/
-%nodefaultctor VrmlData_Appearance;
 class VrmlData_Appearance : public VrmlData_Node {
 	public:
 		/****************** Clone ******************/
@@ -726,7 +723,6 @@ class VrmlData_Geometry : public VrmlData_Node {
 /***********************
 * class VrmlData_Group *
 ***********************/
-%nodefaultctor VrmlData_Group;
 class VrmlData_Group : public VrmlData_Node {
 	public:
 typedef VrmlData_ListOfNode::Iterator Iterator;
@@ -864,7 +860,6 @@ typedef VrmlData_ListOfNode::Iterator Iterator;
 /**************************
 * class VrmlData_Material *
 **************************/
-%nodefaultctor VrmlData_Material;
 class VrmlData_Material : public VrmlData_Node {
 	public:
 		/****************** AmbientIntensity ******************/
@@ -1017,7 +1012,6 @@ class VrmlData_Material : public VrmlData_Node {
 /***************************
 * class VrmlData_ShapeNode *
 ***************************/
-%nodefaultctor VrmlData_ShapeNode;
 class VrmlData_ShapeNode : public VrmlData_Node {
 	public:
 		/****************** Appearance ******************/
@@ -1111,7 +1105,6 @@ class VrmlData_ShapeNode : public VrmlData_Node {
 /***********************************
 * class VrmlData_TextureCoordinate *
 ***********************************/
-%nodefaultctor VrmlData_TextureCoordinate;
 class VrmlData_TextureCoordinate : public VrmlData_Node {
 	public:
 		/****************** AllocateValues ******************/
@@ -1197,7 +1190,6 @@ class VrmlData_TextureCoordinate : public VrmlData_Node {
 /*****************************
 * class VrmlData_UnknownNode *
 *****************************/
-%nodefaultctor VrmlData_UnknownNode;
 class VrmlData_UnknownNode : public VrmlData_Node {
 	public:
 		/****************** GetTitle ******************/
@@ -1252,7 +1244,6 @@ class VrmlData_UnknownNode : public VrmlData_Node {
 /***************************
 * class VrmlData_WorldInfo *
 ***************************/
-%nodefaultctor VrmlData_WorldInfo;
 class VrmlData_WorldInfo : public VrmlData_Node {
 	public:
 		/****************** AddInfo ******************/
@@ -1345,7 +1336,6 @@ class VrmlData_WorldInfo : public VrmlData_Node {
 /*********************
 * class VrmlData_Box *
 *********************/
-%nodefaultctor VrmlData_Box;
 class VrmlData_Box : public VrmlData_Geometry {
 	public:
 		/****************** Clone ******************/
@@ -1428,7 +1418,6 @@ class VrmlData_Box : public VrmlData_Geometry {
 /***********************
 * class VrmlData_Color *
 ***********************/
-%nodefaultctor VrmlData_Color;
 class VrmlData_Color : public VrmlData_ArrayVec3d {
 	public:
 		/****************** Clone ******************/
@@ -1507,7 +1496,6 @@ class VrmlData_Color : public VrmlData_ArrayVec3d {
 /**********************
 * class VrmlData_Cone *
 **********************/
-%nodefaultctor VrmlData_Cone;
 class VrmlData_Cone : public VrmlData_Geometry {
 	public:
 		/****************** BottomRadius ******************/
@@ -1624,7 +1612,6 @@ class VrmlData_Cone : public VrmlData_Geometry {
 /****************************
 * class VrmlData_Coordinate *
 ****************************/
-%nodefaultctor VrmlData_Coordinate;
 class VrmlData_Coordinate : public VrmlData_ArrayVec3d {
 	public:
 		/****************** Clone ******************/
@@ -1693,7 +1680,6 @@ class VrmlData_Coordinate : public VrmlData_ArrayVec3d {
 /**************************
 * class VrmlData_Cylinder *
 **************************/
-%nodefaultctor VrmlData_Cylinder;
 class VrmlData_Cylinder : public VrmlData_Geometry {
 	public:
 		/****************** Clone ******************/
@@ -1821,7 +1807,6 @@ class VrmlData_Cylinder : public VrmlData_Geometry {
 /******************************
 * class VrmlData_ImageTexture *
 ******************************/
-%nodefaultctor VrmlData_ImageTexture;
 class VrmlData_ImageTexture : public VrmlData_Texture {
 	public:
 		/****************** Clone ******************/
@@ -1890,7 +1875,6 @@ class VrmlData_ImageTexture : public VrmlData_Texture {
 /********************************
 * class VrmlData_IndexedLineSet *
 ********************************/
-%nodefaultctor VrmlData_IndexedLineSet;
 class VrmlData_IndexedLineSet : public VrmlData_Geometry {
 	public:
 		/****************** ArrayColorInd ******************/
@@ -2053,7 +2037,6 @@ class VrmlData_IndexedLineSet : public VrmlData_Geometry {
 /************************
 * class VrmlData_Normal *
 ************************/
-%nodefaultctor VrmlData_Normal;
 class VrmlData_Normal : public VrmlData_ArrayVec3d {
 	public:
 		/****************** Clone ******************/
@@ -2122,7 +2105,6 @@ class VrmlData_Normal : public VrmlData_ArrayVec3d {
 /************************
 * class VrmlData_Sphere *
 ************************/
-%nodefaultctor VrmlData_Sphere;
 class VrmlData_Sphere : public VrmlData_Geometry {
 	public:
 		/****************** Clone ******************/
@@ -2201,7 +2183,6 @@ class VrmlData_Sphere : public VrmlData_Geometry {
 /********************************
 * class VrmlData_IndexedFaceSet *
 ********************************/
-%nodefaultctor VrmlData_IndexedFaceSet;
 class VrmlData_IndexedFaceSet : public VrmlData_Faceted {
 	public:
 		/****************** ArrayColorInd ******************/

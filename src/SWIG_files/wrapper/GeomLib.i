@@ -451,7 +451,6 @@ class GeomLib {
 /************************************
 * class GeomLib_Check2dBSplineCurve *
 ************************************/
-%nodefaultctor GeomLib_Check2dBSplineCurve;
 class GeomLib_Check2dBSplineCurve {
 	public:
 		/****************** FixTangent ******************/
@@ -510,7 +509,6 @@ class GeomLib_Check2dBSplineCurve {
 /**********************************
 * class GeomLib_CheckBSplineCurve *
 **********************************/
-%nodefaultctor GeomLib_CheckBSplineCurve;
 class GeomLib_CheckBSplineCurve {
 	public:
 		/****************** FixTangent ******************/
@@ -569,7 +567,6 @@ class GeomLib_CheckBSplineCurve {
 /************************************
 * class GeomLib_CheckCurveOnSurface *
 ************************************/
-%nodefaultctor GeomLib_CheckCurveOnSurface;
 class GeomLib_CheckCurveOnSurface {
 	public:
 		/****************** Curve ******************/
@@ -686,7 +683,6 @@ class GeomLib_CheckCurveOnSurface {
 /**************************************
 * class GeomLib_DenominatorMultiplier *
 **************************************/
-%nodefaultctor GeomLib_DenominatorMultiplier;
 class GeomLib_DenominatorMultiplier {
 	public:
 		/****************** GeomLib_DenominatorMultiplier ******************/
@@ -721,7 +717,6 @@ class GeomLib_DenominatorMultiplier {
 /****************************
 * class GeomLib_Interpolate *
 ****************************/
-%nodefaultctor GeomLib_Interpolate;
 class GeomLib_Interpolate {
 	public:
 		/****************** Curve ******************/
@@ -767,7 +762,6 @@ class GeomLib_Interpolate {
 /********************************
 * class GeomLib_IsPlanarSurface *
 ********************************/
-%nodefaultctor GeomLib_IsPlanarSurface;
 class GeomLib_IsPlanarSurface {
 	public:
 		/****************** GeomLib_IsPlanarSurface ******************/
@@ -803,7 +797,6 @@ class GeomLib_IsPlanarSurface {
 /**************************
 * class GeomLib_LogSample *
 **************************/
-%nodefaultctor GeomLib_LogSample;
 class GeomLib_LogSample : public math_FunctionSample {
 	public:
 		/****************** GeomLib_LogSample ******************/
@@ -837,7 +830,6 @@ class GeomLib_LogSample : public math_FunctionSample {
 /************************************
 * class GeomLib_MakeCurvefromApprox *
 ************************************/
-%nodefaultctor GeomLib_MakeCurvefromApprox;
 class GeomLib_MakeCurvefromApprox {
 	public:
 		/****************** Curve ******************/
@@ -928,7 +920,6 @@ class GeomLib_MakeCurvefromApprox {
 /*************************
 * class GeomLib_PolyFunc *
 *************************/
-%nodefaultctor GeomLib_PolyFunc;
 class GeomLib_PolyFunc : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/

@@ -389,7 +389,6 @@ class CPnts_AbscissaPoint {
 /******************************
 * class CPnts_MyGaussFunction *
 ******************************/
-%nodefaultctor CPnts_MyGaussFunction;
 class CPnts_MyGaussFunction : public math_Function {
 	public:
 		/****************** CPnts_MyGaussFunction ******************/
@@ -428,7 +427,6 @@ class CPnts_MyGaussFunction : public math_Function {
 /*****************************
 * class CPnts_MyRootFunction *
 *****************************/
-%nodefaultctor CPnts_MyRootFunction;
 class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 	public:
 		/****************** CPnts_MyRootFunction ******************/
@@ -513,7 +511,6 @@ class CPnts_MyRootFunction : public math_FunctionWithDerivative {
 /********************************
 * class CPnts_UniformDeflection *
 ********************************/
-%nodefaultctor CPnts_UniformDeflection;
 class CPnts_UniformDeflection {
 	public:
 		/****************** CPnts_UniformDeflection ******************/

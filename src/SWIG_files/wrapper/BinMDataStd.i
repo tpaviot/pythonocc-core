@@ -124,7 +124,6 @@ class BinMDataStd {
 /**************************************
 * class BinMDataStd_AsciiStringDriver *
 **************************************/
-%nodefaultctor BinMDataStd_AsciiStringDriver;
 class BinMDataStd_AsciiStringDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_AsciiStringDriver ******************/
@@ -177,7 +176,6 @@ class BinMDataStd_AsciiStringDriver : public BinMDF_ADriver {
 /***************************************
 * class BinMDataStd_BooleanArrayDriver *
 ***************************************/
-%nodefaultctor BinMDataStd_BooleanArrayDriver;
 class BinMDataStd_BooleanArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_BooleanArrayDriver ******************/
@@ -228,7 +226,6 @@ class BinMDataStd_BooleanArrayDriver : public BinMDF_ADriver {
 /**************************************
 * class BinMDataStd_BooleanListDriver *
 **************************************/
-%nodefaultctor BinMDataStd_BooleanListDriver;
 class BinMDataStd_BooleanListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_BooleanListDriver ******************/
@@ -279,7 +276,6 @@ class BinMDataStd_BooleanListDriver : public BinMDF_ADriver {
 /************************************
 * class BinMDataStd_ByteArrayDriver *
 ************************************/
-%nodefaultctor BinMDataStd_ByteArrayDriver;
 class BinMDataStd_ByteArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ByteArrayDriver ******************/
@@ -330,7 +326,6 @@ class BinMDataStd_ByteArrayDriver : public BinMDF_ADriver {
 /**********************************
 * class BinMDataStd_CommentDriver *
 **********************************/
-%nodefaultctor BinMDataStd_CommentDriver;
 class BinMDataStd_CommentDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_CommentDriver ******************/
@@ -381,7 +376,6 @@ class BinMDataStd_CommentDriver : public BinMDF_ADriver {
 /************************************
 * class BinMDataStd_DirectoryDriver *
 ************************************/
-%nodefaultctor BinMDataStd_DirectoryDriver;
 class BinMDataStd_DirectoryDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_DirectoryDriver ******************/
@@ -432,7 +426,6 @@ class BinMDataStd_DirectoryDriver : public BinMDF_ADriver {
 /*************************************
 * class BinMDataStd_ExpressionDriver *
 *************************************/
-%nodefaultctor BinMDataStd_ExpressionDriver;
 class BinMDataStd_ExpressionDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ExpressionDriver ******************/
@@ -483,7 +476,6 @@ class BinMDataStd_ExpressionDriver : public BinMDF_ADriver {
 /*****************************************
 * class BinMDataStd_ExtStringArrayDriver *
 *****************************************/
-%nodefaultctor BinMDataStd_ExtStringArrayDriver;
 class BinMDataStd_ExtStringArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ExtStringArrayDriver ******************/
@@ -534,7 +526,6 @@ class BinMDataStd_ExtStringArrayDriver : public BinMDF_ADriver {
 /****************************************
 * class BinMDataStd_ExtStringListDriver *
 ****************************************/
-%nodefaultctor BinMDataStd_ExtStringListDriver;
 class BinMDataStd_ExtStringListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ExtStringListDriver ******************/
@@ -585,7 +576,6 @@ class BinMDataStd_ExtStringListDriver : public BinMDF_ADriver {
 /***************************************
 * class BinMDataStd_IntPackedMapDriver *
 ***************************************/
-%nodefaultctor BinMDataStd_IntPackedMapDriver;
 class BinMDataStd_IntPackedMapDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_IntPackedMapDriver ******************/
@@ -638,7 +628,6 @@ class BinMDataStd_IntPackedMapDriver : public BinMDF_ADriver {
 /***************************************
 * class BinMDataStd_IntegerArrayDriver *
 ***************************************/
-%nodefaultctor BinMDataStd_IntegerArrayDriver;
 class BinMDataStd_IntegerArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_IntegerArrayDriver ******************/
@@ -689,7 +678,6 @@ class BinMDataStd_IntegerArrayDriver : public BinMDF_ADriver {
 /**********************************
 * class BinMDataStd_IntegerDriver *
 **********************************/
-%nodefaultctor BinMDataStd_IntegerDriver;
 class BinMDataStd_IntegerDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_IntegerDriver ******************/
@@ -740,7 +728,6 @@ class BinMDataStd_IntegerDriver : public BinMDF_ADriver {
 /**************************************
 * class BinMDataStd_IntegerListDriver *
 **************************************/
-%nodefaultctor BinMDataStd_IntegerListDriver;
 class BinMDataStd_IntegerListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_IntegerListDriver ******************/
@@ -791,7 +778,6 @@ class BinMDataStd_IntegerListDriver : public BinMDF_ADriver {
 /*******************************
 * class BinMDataStd_NameDriver *
 *******************************/
-%nodefaultctor BinMDataStd_NameDriver;
 class BinMDataStd_NameDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_NameDriver ******************/
@@ -844,7 +830,6 @@ class BinMDataStd_NameDriver : public BinMDF_ADriver {
 /************************************
 * class BinMDataStd_NamedDataDriver *
 ************************************/
-%nodefaultctor BinMDataStd_NamedDataDriver;
 class BinMDataStd_NamedDataDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_NamedDataDriver ******************/
@@ -895,7 +880,6 @@ class BinMDataStd_NamedDataDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMDataStd_NoteBookDriver *
 ***********************************/
-%nodefaultctor BinMDataStd_NoteBookDriver;
 class BinMDataStd_NoteBookDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_NoteBookDriver ******************/
@@ -946,7 +930,6 @@ class BinMDataStd_NoteBookDriver : public BinMDF_ADriver {
 /************************************
 * class BinMDataStd_RealArrayDriver *
 ************************************/
-%nodefaultctor BinMDataStd_RealArrayDriver;
 class BinMDataStd_RealArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_RealArrayDriver ******************/
@@ -997,7 +980,6 @@ class BinMDataStd_RealArrayDriver : public BinMDF_ADriver {
 /*******************************
 * class BinMDataStd_RealDriver *
 *******************************/
-%nodefaultctor BinMDataStd_RealDriver;
 class BinMDataStd_RealDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_RealDriver ******************/
@@ -1048,7 +1030,6 @@ class BinMDataStd_RealDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMDataStd_RealListDriver *
 ***********************************/
-%nodefaultctor BinMDataStd_RealListDriver;
 class BinMDataStd_RealListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_RealListDriver ******************/
@@ -1099,7 +1080,6 @@ class BinMDataStd_RealListDriver : public BinMDF_ADriver {
 /*****************************************
 * class BinMDataStd_ReferenceArrayDriver *
 *****************************************/
-%nodefaultctor BinMDataStd_ReferenceArrayDriver;
 class BinMDataStd_ReferenceArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ReferenceArrayDriver ******************/
@@ -1150,7 +1130,6 @@ class BinMDataStd_ReferenceArrayDriver : public BinMDF_ADriver {
 /****************************************
 * class BinMDataStd_ReferenceListDriver *
 ****************************************/
-%nodefaultctor BinMDataStd_ReferenceListDriver;
 class BinMDataStd_ReferenceListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ReferenceListDriver ******************/
@@ -1201,7 +1180,6 @@ class BinMDataStd_ReferenceListDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMDataStd_RelationDriver *
 ***********************************/
-%nodefaultctor BinMDataStd_RelationDriver;
 class BinMDataStd_RelationDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_RelationDriver ******************/
@@ -1252,7 +1230,6 @@ class BinMDataStd_RelationDriver : public BinMDF_ADriver {
 /*******************************
 * class BinMDataStd_TickDriver *
 *******************************/
-%nodefaultctor BinMDataStd_TickDriver;
 class BinMDataStd_TickDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_TickDriver ******************/
@@ -1303,7 +1280,6 @@ class BinMDataStd_TickDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMDataStd_TreeNodeDriver *
 ***********************************/
-%nodefaultctor BinMDataStd_TreeNodeDriver;
 class BinMDataStd_TreeNodeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_TreeNodeDriver ******************/
@@ -1354,7 +1330,6 @@ class BinMDataStd_TreeNodeDriver : public BinMDF_ADriver {
 /*************************************
 * class BinMDataStd_UAttributeDriver *
 *************************************/
-%nodefaultctor BinMDataStd_UAttributeDriver;
 class BinMDataStd_UAttributeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_UAttributeDriver ******************/
@@ -1405,7 +1380,6 @@ class BinMDataStd_UAttributeDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMDataStd_VariableDriver *
 ***********************************/
-%nodefaultctor BinMDataStd_VariableDriver;
 class BinMDataStd_VariableDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_VariableDriver ******************/

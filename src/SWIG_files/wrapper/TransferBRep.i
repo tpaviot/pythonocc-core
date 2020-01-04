@@ -283,7 +283,6 @@ class TransferBRep {
 /***********************************
 * class TransferBRep_BinderOfShape *
 ***********************************/
-%nodefaultctor TransferBRep_BinderOfShape;
 class TransferBRep_BinderOfShape : public Transfer_Binder {
 	public:
 		/****************** CResult ******************/
@@ -346,7 +345,6 @@ class TransferBRep_BinderOfShape : public Transfer_Binder {
 /*****************************************
 * class TransferBRep_OrientedShapeMapper *
 *****************************************/
-%nodefaultctor TransferBRep_OrientedShapeMapper;
 class TransferBRep_OrientedShapeMapper : public Transfer_Finder {
 	public:
 		/****************** Equates ******************/
@@ -397,7 +395,6 @@ class TransferBRep_OrientedShapeMapper : public Transfer_Finder {
 /****************************
 * class TransferBRep_Reader *
 ****************************/
-%nodefaultctor TransferBRep_Reader;
 class TransferBRep_Reader {
 	public:
 		/****************** Actor ******************/
@@ -669,7 +666,6 @@ class TransferBRep_ShapeInfo {
 /*************************************
 * class TransferBRep_ShapeListBinder *
 *************************************/
-%nodefaultctor TransferBRep_ShapeListBinder;
 class TransferBRep_ShapeListBinder : public Transfer_Binder {
 	public:
 		/****************** AddResult ******************/
@@ -811,7 +807,6 @@ class TransferBRep_ShapeListBinder : public Transfer_Binder {
 /*********************************
 * class TransferBRep_ShapeMapper *
 *********************************/
-%nodefaultctor TransferBRep_ShapeMapper;
 class TransferBRep_ShapeMapper : public Transfer_Finder {
 	public:
 		/****************** Equates ******************/
@@ -862,7 +857,6 @@ class TransferBRep_ShapeMapper : public Transfer_Finder {
 /****************************************
 * class TransferBRep_TransferResultInfo *
 ****************************************/
-%nodefaultctor TransferBRep_TransferResultInfo;
 class TransferBRep_TransferResultInfo : public Standard_Transient {
 	public:
 		/****************** Clear ******************/
@@ -995,7 +989,6 @@ class TransferBRep_TransferResultInfo : public Standard_Transient {
 /*********************************
 * class TransferBRep_ShapeBinder *
 *********************************/
-%nodefaultctor TransferBRep_ShapeBinder;
 class TransferBRep_ShapeBinder : public TransferBRep_BinderOfShape {
 	public:
 		/****************** CompSolid ******************/

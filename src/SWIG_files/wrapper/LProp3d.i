@@ -70,7 +70,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_lprop3d.html"
 /************************
 * class LProp3d_CLProps *
 ************************/
-%nodefaultctor LProp3d_CLProps;
 class LProp3d_CLProps {
 	public:
 		/****************** CentreOfCurvature ******************/
@@ -295,7 +294,6 @@ class LProp3d_CurveTool {
 /************************
 * class LProp3d_SLProps *
 ************************/
-%nodefaultctor LProp3d_SLProps;
 class LProp3d_SLProps {
 	public:
 		/****************** CurvatureDirections ******************/

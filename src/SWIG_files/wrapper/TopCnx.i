@@ -67,7 +67,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topcnx.html"
 /**********************************
 * class TopCnx_EdgeFaceTransition *
 **********************************/
-%nodefaultctor TopCnx_EdgeFaceTransition;
 class TopCnx_EdgeFaceTransition {
 	public:
 		/****************** AddInterference ******************/

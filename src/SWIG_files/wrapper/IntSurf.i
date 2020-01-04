@@ -144,7 +144,6 @@ class IntSurf {
 /***********************
 * class IntSurf_Couple *
 ***********************/
-%nodefaultctor IntSurf_Couple;
 class IntSurf_Couple {
 	public:
 		/****************** First ******************/
@@ -185,7 +184,6 @@ class IntSurf_Couple {
 /******************************
 * class IntSurf_InteriorPoint *
 ******************************/
-%nodefaultctor IntSurf_InteriorPoint;
 class IntSurf_InteriorPoint {
 	public:
 		/****************** Direction ******************/
@@ -325,7 +323,6 @@ class IntSurf_InteriorPointTool {
 /*************************
 * class IntSurf_LineOn2S *
 *************************/
-%nodefaultctor IntSurf_LineOn2S;
 class IntSurf_LineOn2S : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -454,7 +451,6 @@ class IntSurf_LineOn2S : public Standard_Transient {
 /**************************
 * class IntSurf_PathPoint *
 **************************/
-%nodefaultctor IntSurf_PathPoint;
 class IntSurf_PathPoint {
 	public:
 		/****************** AddUV ******************/
@@ -666,7 +662,6 @@ class IntSurf_PathPointTool {
 /************************
 * class IntSurf_PntOn2S *
 ************************/
-%nodefaultctor IntSurf_PntOn2S;
 class IntSurf_PntOn2S {
 	public:
 		/****************** IntSurf_PntOn2S ******************/
@@ -823,7 +818,6 @@ class IntSurf_PntOn2S {
 /************************
 * class IntSurf_Quadric *
 ************************/
-%nodefaultctor IntSurf_Quadric;
 class IntSurf_Quadric {
 	public:
 		/****************** Cone ******************/
@@ -1102,7 +1096,6 @@ class IntSurf_QuadricTool {
 /***************************
 * class IntSurf_Transition *
 ***************************/
-%nodefaultctor IntSurf_Transition;
 class IntSurf_Transition {
 	public:
 		/****************** IntSurf_Transition ******************/

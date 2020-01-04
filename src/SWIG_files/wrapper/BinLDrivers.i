@@ -90,7 +90,6 @@ typedef NCollection_Vector <BinLDrivers_DocumentSection> BinLDrivers_VectorOfDoc
 * class BinLDrivers *
 ********************/
 %rename(binldrivers) BinLDrivers;
-%nodefaultctor BinLDrivers;
 class BinLDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -134,7 +133,6 @@ class BinLDrivers {
 /********************************************
 * class BinLDrivers_DocumentRetrievalDriver *
 ********************************************/
-%nodefaultctor BinLDrivers_DocumentRetrievalDriver;
 class BinLDrivers_DocumentRetrievalDriver : public PCDM_RetrievalDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -195,7 +193,6 @@ class BinLDrivers_DocumentRetrievalDriver : public PCDM_RetrievalDriver {
 /************************************
 * class BinLDrivers_DocumentSection *
 ************************************/
-%nodefaultctor BinLDrivers_DocumentSection;
 class BinLDrivers_DocumentSection {
 	public:
 		/****************** BinLDrivers_DocumentSection ******************/
@@ -296,7 +293,6 @@ class BinLDrivers_DocumentSection {
 /******************************************
 * class BinLDrivers_DocumentStorageDriver *
 ******************************************/
-%nodefaultctor BinLDrivers_DocumentStorageDriver;
 class BinLDrivers_DocumentStorageDriver : public PCDM_StorageDriver {
 	public:
 		/****************** AddSection ******************/

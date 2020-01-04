@@ -123,7 +123,6 @@ class Draft {
 /***********************
 * class Draft_EdgeInfo *
 ***********************/
-%nodefaultctor Draft_EdgeInfo;
 class Draft_EdgeInfo {
 	public:
 		/****************** Add ******************/
@@ -247,7 +246,6 @@ class Draft_EdgeInfo {
 /***********************
 * class Draft_FaceInfo *
 ***********************/
-%nodefaultctor Draft_FaceInfo;
 class Draft_FaceInfo {
 	public:
 		/****************** Add ******************/
@@ -330,7 +328,6 @@ class Draft_FaceInfo {
 /***************************
 * class Draft_Modification *
 ***************************/
-%nodefaultctor Draft_Modification;
 class Draft_Modification : public BRepTools_Modification {
 	public:
 		/****************** Add ******************/
@@ -523,7 +520,6 @@ class Draft_Modification : public BRepTools_Modification {
 /*************************
 * class Draft_VertexInfo *
 *************************/
-%nodefaultctor Draft_VertexInfo;
 class Draft_VertexInfo {
 	public:
 		/****************** Add ******************/

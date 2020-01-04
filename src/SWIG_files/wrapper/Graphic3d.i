@@ -1621,7 +1621,6 @@ class Graphic3d_ArrayOfPrimitives : public Standard_Transient {
 /**************************
 * class Graphic3d_Aspects *
 **************************/
-%nodefaultctor Graphic3d_Aspects;
 class Graphic3d_Aspects : public Standard_Transient {
 	public:
 		/****************** AllowBackFace ******************/
@@ -2316,7 +2315,6 @@ class Graphic3d_Aspects : public Standard_Transient {
 /****************************
 * class Graphic3d_Attribute *
 ****************************/
-%nodefaultctor Graphic3d_Attribute;
 class Graphic3d_Attribute {
 	public:
 		Graphic3d_TypeOfAttribute Id;
@@ -2347,7 +2345,6 @@ class Graphic3d_Attribute {
 /*****************************
 * class Graphic3d_AxisAspect *
 *****************************/
-%nodefaultctor Graphic3d_AxisAspect;
 class Graphic3d_AxisAspect {
 	public:
 		/****************** Color ******************/
@@ -2509,7 +2506,6 @@ class Graphic3d_AxisAspect {
 /***********************
 * class Graphic3d_BSDF *
 ***********************/
-%nodefaultctor Graphic3d_BSDF;
 class Graphic3d_BSDF {
 	public:
 		Graphic3d_Vec4 Kc;
@@ -2604,7 +2600,6 @@ class Graphic3d_BSDF {
 /******************************
 * class Graphic3d_BoundBuffer *
 ******************************/
-%nodefaultctor Graphic3d_BoundBuffer;
 class Graphic3d_BoundBuffer : public NCollection_Buffer {
 	public:
 		Graphic3d_Vec4 * Colors;
@@ -2646,7 +2641,6 @@ class Graphic3d_BoundBuffer : public NCollection_Buffer {
 /******************************
 * class Graphic3d_BufferRange *
 ******************************/
-%nodefaultctor Graphic3d_BufferRange;
 class Graphic3d_BufferRange {
 	public:
 		int Start;
@@ -2760,7 +2754,6 @@ class Graphic3d_BvhCStructureSet : public BVH_PrimitiveSet3d {
 /*************************
 * class Graphic3d_CLight *
 *************************/
-%nodefaultctor Graphic3d_CLight;
 class Graphic3d_CLight : public Standard_Transient {
 	public:
 		/****************** Angle ******************/
@@ -3300,7 +3293,6 @@ class Graphic3d_CStructure : public Standard_Transient {
 /***************************
 * class Graphic3d_CTexture *
 ***************************/
-%nodefaultctor Graphic3d_CTexture;
 class Graphic3d_CTexture {
 	public:
 		opencascade::handle<Graphic3d_TextureMap> TextureMap;
@@ -3322,7 +3314,6 @@ class Graphic3d_CTexture {
 /*************************
 * class Graphic3d_Camera *
 *************************/
-%nodefaultctor Graphic3d_Camera;
 class Graphic3d_Camera : public Standard_Transient {
 	public:
 		class TransformMatrices {};
@@ -3883,7 +3874,6 @@ enum  {
 /*****************************
 * class Graphic3d_CameraTile *
 *****************************/
-%nodefaultctor Graphic3d_CameraTile;
 class Graphic3d_CameraTile {
 	public:
 		Graphic3d_Vec2i TotalSize;
@@ -3940,7 +3930,6 @@ class Graphic3d_CameraTile {
 /****************************
 * class Graphic3d_ClipPlane *
 ****************************/
-%nodefaultctor Graphic3d_ClipPlane;
 class Graphic3d_ClipPlane : public Standard_Transient {
 	public:
 typedef Graphic3d_Vec4d Equation;
@@ -4331,7 +4320,6 @@ typedef Graphic3d_Vec4d Equation;
 /******************************
 * class Graphic3d_CullingTool *
 ******************************/
-%nodefaultctor Graphic3d_CullingTool;
 class Graphic3d_CullingTool {
 	public:
 		class CullingContext {};
@@ -4712,7 +4700,6 @@ class Graphic3d_FrameStatsData {
 /**************************
 * class Graphic3d_Fresnel *
 **************************/
-%nodefaultctor Graphic3d_Fresnel;
 class Graphic3d_Fresnel {
 	public:
 		/****************** CreateConductor ******************/
@@ -4803,7 +4790,6 @@ class Graphic3d_Fresnel {
 /*************************************
 * class Graphic3d_GraduatedTrihedron *
 *************************************/
-%nodefaultctor Graphic3d_GraduatedTrihedron;
 class Graphic3d_GraduatedTrihedron {
 	public:
 		Graphic3d_CView * PtrView;
@@ -5550,7 +5536,6 @@ class Graphic3d_Group : public Standard_Transient {
 /*****************************
 * class Graphic3d_HatchStyle *
 *****************************/
-%nodefaultctor Graphic3d_HatchStyle;
 class Graphic3d_HatchStyle : public Standard_Transient {
 	public:
 		/****************** Graphic3d_HatchStyle ******************/
@@ -5777,7 +5762,6 @@ class Graphic3d_Layer : public Standard_Transient {
 /***************************
 * class Graphic3d_LightSet *
 ***************************/
-%nodefaultctor Graphic3d_LightSet;
 class Graphic3d_LightSet : public Standard_Transient {
 	public:
 		class Iterator {};
@@ -5919,7 +5903,6 @@ enum IterationFilter {
 /******************************
 * class Graphic3d_MarkerImage *
 ******************************/
-%nodefaultctor Graphic3d_MarkerImage;
 class Graphic3d_MarkerImage : public Standard_Transient {
 	public:
 		/****************** GetBitMapArray ******************/
@@ -6320,7 +6303,6 @@ class Graphic3d_MaterialAspect {
 /********************************
 * class Graphic3d_PolygonOffset *
 ********************************/
-%nodefaultctor Graphic3d_PolygonOffset;
 class Graphic3d_PolygonOffset {
 	public:
 		Aspect_PolygonOffsetMode Mode;
@@ -6366,7 +6348,6 @@ class Graphic3d_PolygonOffset {
 /*****************************************
 * class Graphic3d_PresentationAttributes *
 *****************************************/
-%nodefaultctor Graphic3d_PresentationAttributes;
 class Graphic3d_PresentationAttributes : public Standard_Transient {
 	public:
 		/****************** BasicFillAreaAspect ******************/
@@ -6479,7 +6460,6 @@ class Graphic3d_PresentationAttributes : public Standard_Transient {
 /**********************************
 * class Graphic3d_RenderingParams *
 **********************************/
-%nodefaultctor Graphic3d_RenderingParams;
 class Graphic3d_RenderingParams {
 	public:
 /* public enums */
@@ -6590,7 +6570,6 @@ enum FrustumCulling {
 /***************************************
 * class Graphic3d_SequenceOfHClipPlane *
 ***************************************/
-%nodefaultctor Graphic3d_SequenceOfHClipPlane;
 class Graphic3d_SequenceOfHClipPlane : public Standard_Transient {
 	public:
 		class Iterator {};
@@ -6676,7 +6655,6 @@ class Graphic3d_SequenceOfHClipPlane : public Standard_Transient {
 /**********************************
 * class Graphic3d_ShaderAttribute *
 **********************************/
-%nodefaultctor Graphic3d_ShaderAttribute;
 class Graphic3d_ShaderAttribute : public Standard_Transient {
 	public:
 		/****************** Graphic3d_ShaderAttribute ******************/
@@ -6782,7 +6760,6 @@ class Graphic3d_ShaderObject : public Standard_Transient {
 /********************************
 * class Graphic3d_ShaderProgram *
 ********************************/
-%nodefaultctor Graphic3d_ShaderProgram;
 class Graphic3d_ShaderProgram : public Standard_Transient {
 	public:
 		/****************** AppendToHeader ******************/
@@ -7100,7 +7077,6 @@ class Graphic3d_ShaderVariable : public Standard_Transient {
 /****************************
 * class Graphic3d_Structure *
 ****************************/
-%nodefaultctor Graphic3d_Structure;
 class Graphic3d_Structure : public Standard_Transient {
 	public:
 		/****************** AcceptConnection ******************/
@@ -7671,7 +7647,6 @@ class Graphic3d_Structure : public Standard_Transient {
 /***********************************
 * class Graphic3d_StructureManager *
 ***********************************/
-%nodefaultctor Graphic3d_StructureManager;
 class Graphic3d_StructureManager : public Standard_Transient {
 	public:
 		/****************** ChangeDisplayPriority ******************/
@@ -7939,7 +7914,6 @@ class Graphic3d_StructureManager : public Standard_Transient {
 /***********************
 * class Graphic3d_Text *
 ***********************/
-%nodefaultctor Graphic3d_Text;
 class Graphic3d_Text : public Standard_Transient {
 	public:
 		/****************** Graphic3d_Text ******************/
@@ -8090,7 +8064,6 @@ class Graphic3d_Text : public Standard_Transient {
 /********************************
 * class Graphic3d_TextureParams *
 ********************************/
-%nodefaultctor Graphic3d_TextureParams;
 class Graphic3d_TextureParams : public Standard_Transient {
 	public:
 		/****************** AnisoFilter ******************/
@@ -8341,7 +8314,6 @@ class Graphic3d_TextureRoot : public Standard_Transient {
 /*****************************************************
 * class Graphic3d_UniformValueTypeID<Graphic3d_Vec2> *
 *****************************************************/
-%nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec2>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
 	public:
 };
@@ -8356,7 +8328,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec2> {
 /******************************************************
 * class Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> *
 ******************************************************/
-%nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec2i>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> {
 	public:
 };
@@ -8371,7 +8342,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec2i> {
 /*****************************************************
 * class Graphic3d_UniformValueTypeID<Graphic3d_Vec3> *
 *****************************************************/
-%nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec3>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec3> {
 	public:
 };
@@ -8386,7 +8356,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec3> {
 /******************************************************
 * class Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> *
 ******************************************************/
-%nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec3i>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> {
 	public:
 };
@@ -8401,7 +8370,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec3i> {
 /*****************************************************
 * class Graphic3d_UniformValueTypeID<Graphic3d_Vec4> *
 *****************************************************/
-%nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec4>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec4> {
 	public:
 };
@@ -8416,7 +8384,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec4> {
 /******************************************************
 * class Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> *
 ******************************************************/
-%nodefaultctor Graphic3d_UniformValueTypeID<Graphic3d_Vec4i>;
 class Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> {
 	public:
 };
@@ -8431,7 +8398,6 @@ class Graphic3d_UniformValueTypeID<Graphic3d_Vec4i> {
 /*******************************************************
 * class Graphic3d_UniformValueTypeID<Standard_Integer> *
 *******************************************************/
-%nodefaultctor Graphic3d_UniformValueTypeID<Standard_Integer>;
 class Graphic3d_UniformValueTypeID<Standard_Integer> {
 	public:
 };
@@ -8446,7 +8412,6 @@ class Graphic3d_UniformValueTypeID<Standard_Integer> {
 /*********************************************************
 * class Graphic3d_UniformValueTypeID<Standard_ShortReal> *
 *********************************************************/
-%nodefaultctor Graphic3d_UniformValueTypeID<Standard_ShortReal>;
 class Graphic3d_UniformValueTypeID<Standard_ShortReal> {
 	public:
 };
@@ -8503,7 +8468,6 @@ class Graphic3d_ValueInterface {
 /*************************
 * class Graphic3d_Vertex *
 *************************/
-%nodefaultctor Graphic3d_Vertex;
 class Graphic3d_Vertex {
 	public:
 		float xyz[3];
@@ -8631,7 +8595,6 @@ class Graphic3d_Vertex {
 /*******************************
 * class Graphic3d_ViewAffinity *
 *******************************/
-%nodefaultctor Graphic3d_ViewAffinity;
 class Graphic3d_ViewAffinity : public Standard_Transient {
 	public:
 		/****************** Graphic3d_ViewAffinity ******************/
@@ -8680,7 +8643,6 @@ class Graphic3d_ViewAffinity : public Standard_Transient {
 /*************************************
 * class Graphic3d_WorldViewProjState *
 *************************************/
-%nodefaultctor Graphic3d_WorldViewProjState;
 class Graphic3d_WorldViewProjState {
 	public:
 		/****************** Graphic3d_WorldViewProjState ******************/
@@ -8803,7 +8765,6 @@ class Graphic3d_WorldViewProjState {
 /*********************************
 * class Graphic3d_ZLayerSettings *
 *********************************/
-%nodefaultctor Graphic3d_ZLayerSettings;
 class Graphic3d_ZLayerSettings {
 	public:
 		/****************** ChangePolygonOffset ******************/
@@ -9084,7 +9045,6 @@ class Graphic3d_ZLayerSettings {
 /********************************
 * class Graphic3d_ArrayOfPoints *
 ********************************/
-%nodefaultctor Graphic3d_ArrayOfPoints;
 class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 	public:
 		/****************** Graphic3d_ArrayOfPoints ******************/
@@ -9123,7 +9083,6 @@ class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 /**********************************
 * class Graphic3d_ArrayOfPolygons *
 **********************************/
-%nodefaultctor Graphic3d_ArrayOfPolygons;
 class Graphic3d_ArrayOfPolygons : public Graphic3d_ArrayOfPrimitives {
 	public:
 		/****************** Graphic3d_ArrayOfPolygons ******************/
@@ -9174,7 +9133,6 @@ class Graphic3d_ArrayOfPolygons : public Graphic3d_ArrayOfPrimitives {
 /***********************************
 * class Graphic3d_ArrayOfPolylines *
 ***********************************/
-%nodefaultctor Graphic3d_ArrayOfPolylines;
 class Graphic3d_ArrayOfPolylines : public Graphic3d_ArrayOfPrimitives {
 	public:
 		/****************** Graphic3d_ArrayOfPolylines ******************/
@@ -9221,7 +9179,6 @@ class Graphic3d_ArrayOfPolylines : public Graphic3d_ArrayOfPrimitives {
 /******************************************
 * class Graphic3d_ArrayOfQuadrangleStrips *
 ******************************************/
-%nodefaultctor Graphic3d_ArrayOfQuadrangleStrips;
 class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
 	public:
 		/****************** Graphic3d_ArrayOfQuadrangleStrips ******************/
@@ -9268,7 +9225,6 @@ class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
 /*************************************
 * class Graphic3d_ArrayOfQuadrangles *
 *************************************/
-%nodefaultctor Graphic3d_ArrayOfQuadrangles;
 class Graphic3d_ArrayOfQuadrangles : public Graphic3d_ArrayOfPrimitives {
 	public:
 		/****************** Graphic3d_ArrayOfQuadrangles ******************/
@@ -9313,7 +9269,6 @@ class Graphic3d_ArrayOfQuadrangles : public Graphic3d_ArrayOfPrimitives {
 /**********************************
 * class Graphic3d_ArrayOfSegments *
 **********************************/
-%nodefaultctor Graphic3d_ArrayOfSegments;
 class Graphic3d_ArrayOfSegments : public Graphic3d_ArrayOfPrimitives {
 	public:
 		/****************** Graphic3d_ArrayOfSegments ******************/
@@ -9354,7 +9309,6 @@ class Graphic3d_ArrayOfSegments : public Graphic3d_ArrayOfPrimitives {
 /**************************************
 * class Graphic3d_ArrayOfTriangleFans *
 **************************************/
-%nodefaultctor Graphic3d_ArrayOfTriangleFans;
 class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
 	public:
 		/****************** Graphic3d_ArrayOfTriangleFans ******************/
@@ -9401,7 +9355,6 @@ class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
 /****************************************
 * class Graphic3d_ArrayOfTriangleStrips *
 ****************************************/
-%nodefaultctor Graphic3d_ArrayOfTriangleStrips;
 class Graphic3d_ArrayOfTriangleStrips : public Graphic3d_ArrayOfPrimitives {
 	public:
 		/****************** Graphic3d_ArrayOfTriangleStrips ******************/
@@ -9448,7 +9401,6 @@ class Graphic3d_ArrayOfTriangleStrips : public Graphic3d_ArrayOfPrimitives {
 /***********************************
 * class Graphic3d_ArrayOfTriangles *
 ***********************************/
-%nodefaultctor Graphic3d_ArrayOfTriangles;
 class Graphic3d_ArrayOfTriangles : public Graphic3d_ArrayOfPrimitives {
 	public:
 		/****************** Graphic3d_ArrayOfTriangles ******************/
@@ -9493,7 +9445,6 @@ class Graphic3d_ArrayOfTriangles : public Graphic3d_ArrayOfPrimitives {
 /***********************************
 * class Graphic3d_AspectFillArea3d *
 ***********************************/
-%nodefaultctor Graphic3d_AspectFillArea3d;
 class Graphic3d_AspectFillArea3d : public Graphic3d_Aspects {
 	public:
 		/****************** Edge ******************/
@@ -9541,7 +9492,6 @@ class Graphic3d_AspectFillArea3d : public Graphic3d_Aspects {
 /*******************************
 * class Graphic3d_AspectLine3d *
 *******************************/
-%nodefaultctor Graphic3d_AspectLine3d;
 class Graphic3d_AspectLine3d : public Graphic3d_Aspects {
 	public:
 		/****************** Graphic3d_AspectLine3d ******************/
@@ -9612,7 +9562,6 @@ class Graphic3d_AspectLine3d : public Graphic3d_Aspects {
 /*********************************
 * class Graphic3d_AspectMarker3d *
 *********************************/
-%nodefaultctor Graphic3d_AspectMarker3d;
 class Graphic3d_AspectMarker3d : public Graphic3d_Aspects {
 	public:
 		/****************** GetMarkerImage ******************/
@@ -9731,7 +9680,6 @@ class Graphic3d_AspectMarker3d : public Graphic3d_Aspects {
 /*******************************
 * class Graphic3d_AspectText3d *
 *******************************/
-%nodefaultctor Graphic3d_AspectText3d;
 class Graphic3d_AspectText3d : public Graphic3d_Aspects {
 	public:
 		/****************** Color ******************/
@@ -9876,7 +9824,6 @@ class Graphic3d_AspectText3d : public Graphic3d_Aspects {
 /*******************************
 * class Graphic3d_AttribBuffer *
 *******************************/
-%nodefaultctor Graphic3d_AttribBuffer;
 class Graphic3d_AttribBuffer : public Graphic3d_Buffer {
 	public:
 		/****************** Graphic3d_AttribBuffer ******************/
@@ -10627,7 +10574,6 @@ class Graphic3d_CView : public Graphic3d_DataStructureManager {
 /************************************
 * class Graphic3d_FrameStatsDataTmp *
 ************************************/
-%nodefaultctor Graphic3d_FrameStatsDataTmp;
 class Graphic3d_FrameStatsDataTmp : public Graphic3d_FrameStatsData {
 	public:
 		/****************** ChangeCounterValue ******************/
@@ -10730,7 +10676,6 @@ class Graphic3d_FrameStatsDataTmp : public Graphic3d_FrameStatsData {
 /**********************************
 * class Graphic3d_MediaTextureSet *
 **********************************/
-%nodefaultctor Graphic3d_MediaTextureSet;
 class Graphic3d_MediaTextureSet : public Graphic3d_TextureSet, public Media_IFrameQueue {
 	public:
 		/****************** Duration ******************/
@@ -10823,7 +10768,6 @@ class Graphic3d_MediaTextureSet : public Graphic3d_TextureSet, public Media_IFra
 /*****************************
 * class Graphic3d_TextureEnv *
 *****************************/
-%nodefaultctor Graphic3d_TextureEnv;
 class Graphic3d_TextureEnv : public Graphic3d_TextureRoot {
 	public:
 		/****************** Graphic3d_TextureEnv ******************/
@@ -11039,7 +10983,6 @@ class Graphic3d_CubeMap : public Graphic3d_TextureMap {
 /*************************************
 * class Graphic3d_MutableIndexBuffer *
 *************************************/
-%nodefaultctor Graphic3d_MutableIndexBuffer;
 class Graphic3d_MutableIndexBuffer : public Graphic3d_IndexBuffer {
 	public:
 		/****************** Graphic3d_MutableIndexBuffer ******************/
@@ -11203,7 +11146,6 @@ class Graphic3d_Texture2D : public Graphic3d_TextureMap {
 /**********************************
 * class Graphic3d_CubeMapSeparate *
 **********************************/
-%nodefaultctor Graphic3d_CubeMapSeparate;
 class Graphic3d_CubeMapSeparate : public Graphic3d_CubeMap {
 	public:
 		/****************** GetImage ******************/
@@ -11254,7 +11196,6 @@ class Graphic3d_CubeMapSeparate : public Graphic3d_CubeMap {
 /*******************************
 * class Graphic3d_MediaTexture *
 *******************************/
-%nodefaultctor Graphic3d_MediaTexture;
 class Graphic3d_MediaTexture : public Graphic3d_Texture2D {
 	public:
 		/****************** Frame ******************/
@@ -11307,7 +11248,6 @@ class Graphic3d_MediaTexture : public Graphic3d_Texture2D {
 /**********************************
 * class Graphic3d_Texture1Dmanual *
 **********************************/
-%nodefaultctor Graphic3d_Texture1Dmanual;
 class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D {
 	public:
 		/****************** Graphic3d_Texture1Dmanual ******************/
@@ -11348,7 +11288,6 @@ class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D {
 /***********************************
 * class Graphic3d_Texture1Dsegment *
 ***********************************/
-%nodefaultctor Graphic3d_Texture1Dsegment;
 class Graphic3d_Texture1Dsegment : public Graphic3d_Texture1D {
 	public:
 		/****************** Graphic3d_Texture1Dsegment ******************/
@@ -11425,7 +11364,6 @@ class Graphic3d_Texture1Dsegment : public Graphic3d_Texture1D {
 /**********************************
 * class Graphic3d_Texture2Dmanual *
 **********************************/
-%nodefaultctor Graphic3d_Texture2Dmanual;
 class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D {
 	public:
 		/****************** Graphic3d_Texture2Dmanual ******************/
@@ -11466,7 +11404,6 @@ class Graphic3d_Texture2Dmanual : public Graphic3d_Texture2D {
 /*********************************
 * class Graphic3d_Texture2Dplane *
 *********************************/
-%nodefaultctor Graphic3d_Texture2Dplane;
 class Graphic3d_Texture2Dplane : public Graphic3d_Texture2D {
 	public:
 		/****************** Graphic3d_Texture2Dplane ******************/

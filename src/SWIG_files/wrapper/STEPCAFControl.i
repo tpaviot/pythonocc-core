@@ -140,7 +140,6 @@ typedef NCollection_DataMap <TDF_Label , TopoDS_Shape , TDF_LabelMapHasher>::Ite
 /**********************************
 * class STEPCAFControl_ActorWrite *
 **********************************/
-%nodefaultctor STEPCAFControl_ActorWrite;
 class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {
 	public:
 		/****************** ClearMap ******************/
@@ -192,7 +191,6 @@ class STEPCAFControl_ActorWrite : public STEPControl_ActorWrite {
 /**********************************
 * class STEPCAFControl_Controller *
 **********************************/
-%nodefaultctor STEPCAFControl_Controller;
 class STEPCAFControl_Controller : public STEPControl_Controller {
 	public:
 		/****************** Init ******************/
@@ -221,7 +219,6 @@ class STEPCAFControl_Controller : public STEPControl_Controller {
 /**********************************
 * class STEPCAFControl_ExternFile *
 **********************************/
-%nodefaultctor STEPCAFControl_ExternFile;
 class STEPCAFControl_ExternFile : public Standard_Transient {
 	public:
 		/****************** GetLabel ******************/
@@ -316,7 +313,6 @@ class STEPCAFControl_ExternFile : public Standard_Transient {
 /***********************************
 * class STEPCAFControl_GDTProperty *
 ***********************************/
-%nodefaultctor STEPCAFControl_GDTProperty;
 class STEPCAFControl_GDTProperty {
 	public:
 		/****************** GetDatumRefModifiers ******************/
@@ -502,7 +498,6 @@ class STEPCAFControl_GDTProperty {
 /******************************
 * class STEPCAFControl_Reader *
 ******************************/
-%nodefaultctor STEPCAFControl_Reader;
 class STEPCAFControl_Reader {
 	public:
 		/****************** ChangeReader ******************/
@@ -755,7 +750,6 @@ class STEPCAFControl_Reader {
 /******************************
 * class STEPCAFControl_Writer *
 ******************************/
-%nodefaultctor STEPCAFControl_Writer;
 class STEPCAFControl_Writer {
 	public:
 		/****************** ChangeWriter ******************/

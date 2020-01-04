@@ -230,7 +230,6 @@ class Geom2d_Geometry : public Standard_Transient {
 /******************************
 * class Geom2d_Transformation *
 ******************************/
-%nodefaultctor Geom2d_Transformation;
 class Geom2d_Transformation : public Standard_Transient {
 	public:
 		/****************** Copy ******************/
@@ -461,7 +460,6 @@ class Geom2d_Transformation : public Standard_Transient {
 /*****************************
 * class Geom2d_AxisPlacement *
 *****************************/
-%nodefaultctor Geom2d_AxisPlacement;
 class Geom2d_AxisPlacement : public Geom2d_Geometry {
 	public:
 		/****************** Angle ******************/
@@ -923,7 +921,6 @@ class Geom2d_BoundedCurve : public Geom2d_Curve {
 /******************************
 * class Geom2d_CartesianPoint *
 ******************************/
-%nodefaultctor Geom2d_CartesianPoint;
 class Geom2d_CartesianPoint : public Geom2d_Point {
 	public:
 		/****************** Coord ******************/
@@ -1137,7 +1134,6 @@ class Geom2d_Conic : public Geom2d_Curve {
 /*************************
 * class Geom2d_Direction *
 *************************/
-%nodefaultctor Geom2d_Direction;
 class Geom2d_Direction : public Geom2d_Vector {
 	public:
 		/****************** Copy ******************/
@@ -1246,7 +1242,6 @@ class Geom2d_Direction : public Geom2d_Vector {
 /********************
 * class Geom2d_Line *
 ********************/
-%nodefaultctor Geom2d_Line;
 class Geom2d_Line : public Geom2d_Curve {
 	public:
 		/****************** Continuity ******************/
@@ -1498,7 +1493,6 @@ class Geom2d_Line : public Geom2d_Curve {
 /***************************
 * class Geom2d_OffsetCurve *
 ***************************/
-%nodefaultctor Geom2d_OffsetCurve;
 class Geom2d_OffsetCurve : public Geom2d_Curve {
 	public:
 		/****************** BasisCurve ******************/
@@ -1715,7 +1709,6 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 /***********************************
 * class Geom2d_VectorWithMagnitude *
 ***********************************/
-%nodefaultctor Geom2d_VectorWithMagnitude;
 class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 	public:
 		/****************** Add ******************/
@@ -1968,7 +1961,6 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 /****************************
 * class Geom2d_BSplineCurve *
 ****************************/
-%nodefaultctor Geom2d_BSplineCurve;
 class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	public:
 		/****************** Continuity ******************/
@@ -2692,7 +2684,6 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 /***************************
 * class Geom2d_BezierCurve *
 ***************************/
-%nodefaultctor Geom2d_BezierCurve;
 class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 	public:
 		/****************** Continuity ******************/
@@ -3023,7 +3014,6 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 /**********************
 * class Geom2d_Circle *
 **********************/
-%nodefaultctor Geom2d_Circle;
 class Geom2d_Circle : public Geom2d_Conic {
 	public:
 		/****************** Circ2d ******************/
@@ -3211,7 +3201,6 @@ class Geom2d_Circle : public Geom2d_Conic {
 /***********************
 * class Geom2d_Ellipse *
 ***********************/
-%nodefaultctor Geom2d_Ellipse;
 class Geom2d_Ellipse : public Geom2d_Conic {
 	public:
 		/****************** Copy ******************/
@@ -3453,7 +3442,6 @@ class Geom2d_Ellipse : public Geom2d_Conic {
 /*************************
 * class Geom2d_Hyperbola *
 *************************/
-%nodefaultctor Geom2d_Hyperbola;
 class Geom2d_Hyperbola : public Geom2d_Conic {
 	public:
 		/****************** Asymptote1 ******************/
@@ -3726,7 +3714,6 @@ class Geom2d_Hyperbola : public Geom2d_Conic {
 /************************
 * class Geom2d_Parabola *
 ************************/
-%nodefaultctor Geom2d_Parabola;
 class Geom2d_Parabola : public Geom2d_Conic {
 	public:
 		/****************** Copy ******************/
@@ -3961,7 +3948,6 @@ class Geom2d_Parabola : public Geom2d_Conic {
 /****************************
 * class Geom2d_TrimmedCurve *
 ****************************/
-%nodefaultctor Geom2d_TrimmedCurve;
 class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 	public:
 		/****************** BasisCurve ******************/

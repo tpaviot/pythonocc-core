@@ -92,7 +92,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igescontrol.html"
 /*******************************
 * class IGESControl_ActorWrite *
 *******************************/
-%nodefaultctor IGESControl_ActorWrite;
 class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 	public:
 		/****************** IGESControl_ActorWrite ******************/
@@ -132,7 +131,6 @@ class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 /**********************************
 * class IGESControl_AlgoContainer *
 **********************************/
-%nodefaultctor IGESControl_AlgoContainer;
 class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer {
 	public:
 		/****************** IGESControl_AlgoContainer ******************/
@@ -155,7 +153,6 @@ class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer {
 /*******************************
 * class IGESControl_Controller *
 *******************************/
-%nodefaultctor IGESControl_Controller;
 class IGESControl_Controller : public XSControl_Controller {
 	public:
 		/****************** ActorRead ******************/
@@ -221,7 +218,6 @@ class IGESControl_Controller : public XSControl_Controller {
 /*********************************
 * class IGESControl_IGESBoundary *
 *********************************/
-%nodefaultctor IGESControl_IGESBoundary;
 class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 	public:
 		/****************** Check ******************/
@@ -266,7 +262,6 @@ class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 /***************************
 * class IGESControl_Reader *
 ***************************/
-%nodefaultctor IGESControl_Reader;
 class IGESControl_Reader : public XSControl_Reader {
 	public:
 		/****************** GetReadVisible ******************/
@@ -332,7 +327,6 @@ class IGESControl_Reader : public XSControl_Reader {
 /**********************************
 * class IGESControl_ToolContainer *
 **********************************/
-%nodefaultctor IGESControl_ToolContainer;
 class IGESControl_ToolContainer : public IGESToBRep_ToolContainer {
 	public:
 		/****************** IGESBoundary ******************/
@@ -361,7 +355,6 @@ class IGESControl_ToolContainer : public IGESToBRep_ToolContainer {
 /***************************
 * class IGESControl_Writer *
 ***************************/
-%nodefaultctor IGESControl_Writer;
 class IGESControl_Writer {
 	public:
 		/****************** AddEntity ******************/

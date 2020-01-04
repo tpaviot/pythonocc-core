@@ -505,7 +505,6 @@ class BRepLib {
 /************************************
 * class BRepLib_CheckCurveOnSurface *
 ************************************/
-%nodefaultctor BRepLib_CheckCurveOnSurface;
 class BRepLib_CheckCurveOnSurface {
 	public:
 		/****************** BRepLib_CheckCurveOnSurface ******************/
@@ -638,7 +637,6 @@ class BRepLib_Command {
 /****************************
 * class BRepLib_FindSurface *
 ****************************/
-%nodefaultctor BRepLib_FindSurface;
 class BRepLib_FindSurface {
 	public:
 		/****************** BRepLib_FindSurface ******************/
@@ -716,7 +714,6 @@ class BRepLib_FindSurface {
 /**************************
 * class BRepLib_FuseEdges *
 **************************/
-%nodefaultctor BRepLib_FuseEdges;
 class BRepLib_FuseEdges {
 	public:
 		/****************** AvoidEdges ******************/
@@ -876,7 +873,6 @@ class BRepLib_MakeShape : public BRepLib_Command {
 /*************************
 * class BRepLib_MakeEdge *
 *************************/
-%nodefaultctor BRepLib_MakeEdge;
 class BRepLib_MakeEdge : public BRepLib_MakeShape {
 	public:
 		/****************** BRepLib_MakeEdge ******************/
@@ -1446,7 +1442,6 @@ class BRepLib_MakeEdge : public BRepLib_MakeShape {
 /***************************
 * class BRepLib_MakeEdge2d *
 ***************************/
-%nodefaultctor BRepLib_MakeEdge2d;
 class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 	public:
 		/****************** BRepLib_MakeEdge2d ******************/
@@ -1847,7 +1842,6 @@ class BRepLib_MakeEdge2d : public BRepLib_MakeShape {
 /*************************
 * class BRepLib_MakeFace *
 *************************/
-%nodefaultctor BRepLib_MakeFace;
 class BRepLib_MakeFace : public BRepLib_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -2190,7 +2184,6 @@ class BRepLib_MakeFace : public BRepLib_MakeShape {
 /****************************
 * class BRepLib_MakePolygon *
 ****************************/
-%nodefaultctor BRepLib_MakePolygon;
 class BRepLib_MakePolygon : public BRepLib_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -2341,7 +2334,6 @@ class BRepLib_MakePolygon : public BRepLib_MakeShape {
 /**************************
 * class BRepLib_MakeShell *
 **************************/
-%nodefaultctor BRepLib_MakeShell;
 class BRepLib_MakeShell : public BRepLib_MakeShape {
 	public:
 		/****************** BRepLib_MakeShell ******************/
@@ -2422,7 +2414,6 @@ class BRepLib_MakeShell : public BRepLib_MakeShape {
 /**************************
 * class BRepLib_MakeSolid *
 **************************/
-%nodefaultctor BRepLib_MakeSolid;
 class BRepLib_MakeSolid : public BRepLib_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -2526,7 +2517,6 @@ class BRepLib_MakeSolid : public BRepLib_MakeShape {
 /***************************
 * class BRepLib_MakeVertex *
 ***************************/
-%nodefaultctor BRepLib_MakeVertex;
 class BRepLib_MakeVertex : public BRepLib_MakeShape {
 	public:
 		/****************** BRepLib_MakeVertex ******************/
@@ -2558,7 +2548,6 @@ class BRepLib_MakeVertex : public BRepLib_MakeShape {
 /*************************
 * class BRepLib_MakeWire *
 *************************/
-%nodefaultctor BRepLib_MakeWire;
 class BRepLib_MakeWire : public BRepLib_MakeShape {
 	public:
 		class BRepLib_BndBoxVertexSelector {};

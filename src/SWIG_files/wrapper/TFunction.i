@@ -198,7 +198,6 @@ class TFunction_Driver : public Standard_Transient {
 /******************************
 * class TFunction_DriverTable *
 ******************************/
-%nodefaultctor TFunction_DriverTable;
 class TFunction_DriverTable : public Standard_Transient {
 	public:
 		/****************** AddDriver ******************/
@@ -285,7 +284,6 @@ class TFunction_DriverTable : public Standard_Transient {
 /***************************
 * class TFunction_Function *
 ***************************/
-%nodefaultctor TFunction_Function;
 class TFunction_Function : public TDF_Attribute {
 	public:
 
@@ -406,7 +404,6 @@ class TFunction_Function : public TDF_Attribute {
 /****************************
 * class TFunction_GraphNode *
 ****************************/
-%nodefaultctor TFunction_GraphNode;
 class TFunction_GraphNode : public TDF_Attribute {
 	public:
 		/****************** AddNext ******************/
@@ -730,7 +727,6 @@ class TFunction_IFunction {
 /***************************
 * class TFunction_Iterator *
 ***************************/
-%nodefaultctor TFunction_Iterator;
 class TFunction_Iterator {
 	public:
 		/****************** Current ******************/
@@ -831,7 +827,6 @@ class TFunction_Iterator {
 /**************************
 * class TFunction_Logbook *
 **************************/
-%nodefaultctor TFunction_Logbook;
 class TFunction_Logbook : public TDF_Attribute {
 	public:
 		/****************** Clear ******************/
@@ -1001,7 +996,6 @@ class TFunction_Logbook : public TDF_Attribute {
 /************************
 * class TFunction_Scope *
 ************************/
-%nodefaultctor TFunction_Scope;
 class TFunction_Scope : public TDF_Attribute {
 	public:
 		/****************** AddFunction ******************/

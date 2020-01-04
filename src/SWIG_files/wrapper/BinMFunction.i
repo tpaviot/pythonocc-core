@@ -101,7 +101,6 @@ class BinMFunction {
 /************************************
 * class BinMFunction_FunctionDriver *
 ************************************/
-%nodefaultctor BinMFunction_FunctionDriver;
 class BinMFunction_FunctionDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMFunction_FunctionDriver ******************/
@@ -152,7 +151,6 @@ class BinMFunction_FunctionDriver : public BinMDF_ADriver {
 /*************************************
 * class BinMFunction_GraphNodeDriver *
 *************************************/
-%nodefaultctor BinMFunction_GraphNodeDriver;
 class BinMFunction_GraphNodeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMFunction_GraphNodeDriver ******************/
@@ -203,7 +201,6 @@ class BinMFunction_GraphNodeDriver : public BinMDF_ADriver {
 /*********************************
 * class BinMFunction_ScopeDriver *
 *********************************/
-%nodefaultctor BinMFunction_ScopeDriver;
 class BinMFunction_ScopeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMFunction_ScopeDriver ******************/

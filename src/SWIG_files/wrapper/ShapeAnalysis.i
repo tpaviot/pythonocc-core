@@ -209,7 +209,6 @@ class ShapeAnalysis {
 /*************************************
 * class ShapeAnalysis_CheckSmallFace *
 *************************************/
-%nodefaultctor ShapeAnalysis_CheckSmallFace;
 class ShapeAnalysis_CheckSmallFace {
 	public:
 		/****************** CheckPin ******************/
@@ -706,7 +705,6 @@ class ShapeAnalysis_Curve {
 /***************************
 * class ShapeAnalysis_Edge *
 ***************************/
-%nodefaultctor ShapeAnalysis_Edge;
 class ShapeAnalysis_Edge {
 	public:
 		/****************** BoundUV ******************/
@@ -1084,7 +1082,6 @@ class ShapeAnalysis_Edge {
 /************************************
 * class ShapeAnalysis_FreeBoundData *
 ************************************/
-%nodefaultctor ShapeAnalysis_FreeBoundData;
 class ShapeAnalysis_FreeBoundData : public Standard_Transient {
 	public:
 		/****************** AddNotch ******************/
@@ -1237,7 +1234,6 @@ class ShapeAnalysis_FreeBoundData : public Standard_Transient {
 /*********************************
 * class ShapeAnalysis_FreeBounds *
 *********************************/
-%nodefaultctor ShapeAnalysis_FreeBounds;
 class ShapeAnalysis_FreeBounds {
 	public:
 		/****************** ConnectEdgesToWires ******************/
@@ -1369,7 +1365,6 @@ class ShapeAnalysis_FreeBounds {
 /*******************************************
 * class ShapeAnalysis_FreeBoundsProperties *
 *******************************************/
-%nodefaultctor ShapeAnalysis_FreeBoundsProperties;
 class ShapeAnalysis_FreeBoundsProperties {
 	public:
 		/****************** CheckContours ******************/
@@ -1604,7 +1599,6 @@ class ShapeAnalysis_Geom {
 /************************************
 * class ShapeAnalysis_ShapeContents *
 ************************************/
-%nodefaultctor ShapeAnalysis_ShapeContents;
 class ShapeAnalysis_ShapeContents {
 	public:
 		/****************** BigSplineSec ******************/
@@ -1918,7 +1912,6 @@ class ShapeAnalysis_ShapeContents {
 /*************************************
 * class ShapeAnalysis_ShapeTolerance *
 *************************************/
-%nodefaultctor ShapeAnalysis_ShapeTolerance;
 class ShapeAnalysis_ShapeTolerance {
 	public:
 		/****************** AddTolerance ******************/
@@ -2093,7 +2086,6 @@ class ShapeAnalysis_Shell {
 /******************************
 * class ShapeAnalysis_Surface *
 ******************************/
-%nodefaultctor ShapeAnalysis_Surface;
 class ShapeAnalysis_Surface : public Standard_Transient {
 	public:
 		/****************** Adaptor3d ******************/
@@ -2423,7 +2415,6 @@ class ShapeAnalysis_Surface : public Standard_Transient {
 /*****************************************
 * class ShapeAnalysis_TransferParameters *
 *****************************************/
-%nodefaultctor ShapeAnalysis_TransferParameters;
 class ShapeAnalysis_TransferParameters : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2514,7 +2505,6 @@ class ShapeAnalysis_TransferParameters : public Standard_Transient {
 /***************************
 * class ShapeAnalysis_Wire *
 ***************************/
-%nodefaultctor ShapeAnalysis_Wire;
 class ShapeAnalysis_Wire : public Standard_Transient {
 	public:
 		/****************** CheckClosed ******************/
@@ -3163,7 +3153,6 @@ class ShapeAnalysis_Wire : public Standard_Transient {
 /********************************
 * class ShapeAnalysis_WireOrder *
 ********************************/
-%nodefaultctor ShapeAnalysis_WireOrder;
 class ShapeAnalysis_WireOrder {
 	public:
 		/****************** Add ******************/
@@ -3367,7 +3356,6 @@ class ShapeAnalysis_WireOrder {
 /*********************************
 * class ShapeAnalysis_WireVertex *
 *********************************/
-%nodefaultctor ShapeAnalysis_WireVertex;
 class ShapeAnalysis_WireVertex {
 	public:
 		/****************** Analyze ******************/
@@ -3593,7 +3581,6 @@ class ShapeAnalysis_WireVertex {
 /*********************************************
 * class ShapeAnalysis_TransferParametersProj *
 *********************************************/
-%nodefaultctor ShapeAnalysis_TransferParametersProj;
 class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParameters {
 	public:
 		/****************** CopyNMVertex ******************/

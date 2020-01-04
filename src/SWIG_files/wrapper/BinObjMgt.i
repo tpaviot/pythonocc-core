@@ -78,7 +78,6 @@ typedef Standard_Byte * BinObjMgt_PByte;
 /*****************************
 * class BinObjMgt_Persistent *
 *****************************/
-%nodefaultctor BinObjMgt_Persistent;
 class BinObjMgt_Persistent {
 	public:
 		/****************** BinObjMgt_Persistent ******************/
@@ -553,7 +552,6 @@ class BinObjMgt_Persistent {
 /***********************************
 * class BinObjMgt_RRelocationTable *
 ***********************************/
-%nodefaultctor BinObjMgt_RRelocationTable;
 class BinObjMgt_RRelocationTable : public TColStd_DataMapOfIntegerTransient {
 	public:
 		/****************** Clear ******************/

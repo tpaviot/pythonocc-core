@@ -581,7 +581,6 @@ class Expr_GeneralRelation : public Standard_Transient {
 /************************
 * class Expr_RUIterator *
 ************************/
-%nodefaultctor Expr_RUIterator;
 class Expr_RUIterator {
 	public:
 		/****************** Expr_RUIterator ******************/
@@ -621,7 +620,6 @@ class Expr_RUIterator {
 /******************************
 * class Expr_RelationIterator *
 ******************************/
-%nodefaultctor Expr_RelationIterator;
 class Expr_RelationIterator {
 	public:
 		/****************** Expr_RelationIterator ******************/
@@ -660,7 +658,6 @@ class Expr_RelationIterator {
 /*****************************
 * class Expr_UnknownIterator *
 *****************************/
-%nodefaultctor Expr_UnknownIterator;
 class Expr_UnknownIterator {
 	public:
 		/****************** Expr_UnknownIterator ******************/
@@ -784,7 +781,6 @@ class Expr_BinaryExpression : public Expr_GeneralExpression {
 /********************************
 * class Expr_FunctionDerivative *
 ********************************/
-%nodefaultctor Expr_FunctionDerivative;
 class Expr_FunctionDerivative : public Expr_GeneralFunction {
 	public:
 		/****************** Copy ******************/
@@ -959,7 +955,6 @@ class Expr_NamedExpression : public Expr_GeneralExpression {
 /***************************
 * class Expr_NamedFunction *
 ***************************/
-%nodefaultctor Expr_NamedFunction;
 class Expr_NamedFunction : public Expr_GeneralFunction {
 	public:
 		/****************** Copy ******************/
@@ -1085,7 +1080,6 @@ class Expr_NamedFunction : public Expr_GeneralFunction {
 /**************************
 * class Expr_NumericValue *
 **************************/
-%nodefaultctor Expr_NumericValue;
 class Expr_NumericValue : public Expr_GeneralExpression {
 	public:
 		/****************** Contains ******************/
@@ -1398,7 +1392,6 @@ class Expr_SingleRelation : public Expr_GeneralRelation {
 /****************************
 * class Expr_SystemRelation *
 ****************************/
-%nodefaultctor Expr_SystemRelation;
 class Expr_SystemRelation : public Expr_GeneralRelation {
 	public:
 		/****************** Add ******************/
@@ -1586,7 +1579,6 @@ class Expr_UnaryExpression : public Expr_GeneralExpression {
 /**********************
 * class Expr_Absolute *
 **********************/
-%nodefaultctor Expr_Absolute;
 class Expr_Absolute : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -1660,7 +1652,6 @@ class Expr_Absolute : public Expr_UnaryExpression {
 /***********************
 * class Expr_ArcCosine *
 ***********************/
-%nodefaultctor Expr_ArcCosine;
 class Expr_ArcCosine : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -1734,7 +1725,6 @@ class Expr_ArcCosine : public Expr_UnaryExpression {
 /*********************
 * class Expr_ArcSine *
 *********************/
-%nodefaultctor Expr_ArcSine;
 class Expr_ArcSine : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -1808,7 +1798,6 @@ class Expr_ArcSine : public Expr_UnaryExpression {
 /************************
 * class Expr_ArcTangent *
 ************************/
-%nodefaultctor Expr_ArcTangent;
 class Expr_ArcTangent : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -1882,7 +1871,6 @@ class Expr_ArcTangent : public Expr_UnaryExpression {
 /*********************
 * class Expr_ArgCosh *
 *********************/
-%nodefaultctor Expr_ArgCosh;
 class Expr_ArgCosh : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -1956,7 +1944,6 @@ class Expr_ArgCosh : public Expr_UnaryExpression {
 /*********************
 * class Expr_ArgSinh *
 *********************/
-%nodefaultctor Expr_ArgSinh;
 class Expr_ArgSinh : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -2030,7 +2017,6 @@ class Expr_ArgSinh : public Expr_UnaryExpression {
 /*********************
 * class Expr_ArgTanh *
 *********************/
-%nodefaultctor Expr_ArgTanh;
 class Expr_ArgTanh : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -2104,7 +2090,6 @@ class Expr_ArgTanh : public Expr_UnaryExpression {
 /****************************
 * class Expr_BinaryFunction *
 ****************************/
-%nodefaultctor Expr_BinaryFunction;
 class Expr_BinaryFunction : public Expr_BinaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -2188,7 +2173,6 @@ class Expr_BinaryFunction : public Expr_BinaryExpression {
 /******************
 * class Expr_Cosh *
 ******************/
-%nodefaultctor Expr_Cosh;
 class Expr_Cosh : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -2262,7 +2246,6 @@ class Expr_Cosh : public Expr_UnaryExpression {
 /********************
 * class Expr_Cosine *
 ********************/
-%nodefaultctor Expr_Cosine;
 class Expr_Cosine : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -2336,7 +2319,6 @@ class Expr_Cosine : public Expr_UnaryExpression {
 /************************
 * class Expr_Difference *
 ************************/
-%nodefaultctor Expr_Difference;
 class Expr_Difference : public Expr_BinaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -2422,7 +2404,6 @@ class Expr_Difference : public Expr_BinaryExpression {
 /***********************
 * class Expr_Different *
 ***********************/
-%nodefaultctor Expr_Different;
 class Expr_Different : public Expr_SingleRelation {
 	public:
 		/****************** Copy ******************/
@@ -2478,7 +2459,6 @@ class Expr_Different : public Expr_SingleRelation {
 /**********************
 * class Expr_Division *
 **********************/
-%nodefaultctor Expr_Division;
 class Expr_Division : public Expr_BinaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -2554,7 +2534,6 @@ class Expr_Division : public Expr_BinaryExpression {
 /*******************
 * class Expr_Equal *
 *******************/
-%nodefaultctor Expr_Equal;
 class Expr_Equal : public Expr_SingleRelation {
 	public:
 		/****************** Copy ******************/
@@ -2610,7 +2589,6 @@ class Expr_Equal : public Expr_SingleRelation {
 /*************************
 * class Expr_Exponential *
 *************************/
-%nodefaultctor Expr_Exponential;
 class Expr_Exponential : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -2684,7 +2662,6 @@ class Expr_Exponential : public Expr_UnaryExpression {
 /**************************
 * class Expr_Exponentiate *
 **************************/
-%nodefaultctor Expr_Exponentiate;
 class Expr_Exponentiate : public Expr_BinaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -2760,7 +2737,6 @@ class Expr_Exponentiate : public Expr_BinaryExpression {
 /*************************
 * class Expr_GreaterThan *
 *************************/
-%nodefaultctor Expr_GreaterThan;
 class Expr_GreaterThan : public Expr_SingleRelation {
 	public:
 		/****************** Copy ******************/
@@ -2816,7 +2792,6 @@ class Expr_GreaterThan : public Expr_SingleRelation {
 /********************************
 * class Expr_GreaterThanOrEqual *
 ********************************/
-%nodefaultctor Expr_GreaterThanOrEqual;
 class Expr_GreaterThanOrEqual : public Expr_SingleRelation {
 	public:
 		/****************** Copy ******************/
@@ -2872,7 +2847,6 @@ class Expr_GreaterThanOrEqual : public Expr_SingleRelation {
 /**********************
 * class Expr_LessThan *
 **********************/
-%nodefaultctor Expr_LessThan;
 class Expr_LessThan : public Expr_SingleRelation {
 	public:
 		/****************** Copy ******************/
@@ -2928,7 +2902,6 @@ class Expr_LessThan : public Expr_SingleRelation {
 /*****************************
 * class Expr_LessThanOrEqual *
 *****************************/
-%nodefaultctor Expr_LessThanOrEqual;
 class Expr_LessThanOrEqual : public Expr_SingleRelation {
 	public:
 		/****************** Copy ******************/
@@ -2984,7 +2957,6 @@ class Expr_LessThanOrEqual : public Expr_SingleRelation {
 /*********************
 * class Expr_LogOf10 *
 *********************/
-%nodefaultctor Expr_LogOf10;
 class Expr_LogOf10 : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -3058,7 +3030,6 @@ class Expr_LogOf10 : public Expr_UnaryExpression {
 /********************
 * class Expr_LogOfe *
 ********************/
-%nodefaultctor Expr_LogOfe;
 class Expr_LogOfe : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -3132,7 +3103,6 @@ class Expr_LogOfe : public Expr_UnaryExpression {
 /***************************
 * class Expr_NamedConstant *
 ***************************/
-%nodefaultctor Expr_NamedConstant;
 class Expr_NamedConstant : public Expr_NamedExpression {
 	public:
 		/****************** Contains ******************/
@@ -3253,7 +3223,6 @@ class Expr_NamedConstant : public Expr_NamedExpression {
 /**************************
 * class Expr_NamedUnknown *
 **************************/
-%nodefaultctor Expr_NamedUnknown;
 class Expr_NamedUnknown : public Expr_NamedExpression {
 	public:
 		/****************** Assign ******************/
@@ -3382,7 +3351,6 @@ class Expr_NamedUnknown : public Expr_NamedExpression {
 /**************************
 * class Expr_PolyFunction *
 **************************/
-%nodefaultctor Expr_PolyFunction;
 class Expr_PolyFunction : public Expr_PolyExpression {
 	public:
 		/****************** Copy ******************/
@@ -3464,7 +3432,6 @@ class Expr_PolyFunction : public Expr_PolyExpression {
 /*********************
 * class Expr_Product *
 *********************/
-%nodefaultctor Expr_Product;
 class Expr_Product : public Expr_PolyExpression {
 	public:
 		/****************** Copy ******************/
@@ -3551,7 +3518,6 @@ class Expr_Product : public Expr_PolyExpression {
 /******************
 * class Expr_Sine *
 ******************/
-%nodefaultctor Expr_Sine;
 class Expr_Sine : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -3625,7 +3591,6 @@ class Expr_Sine : public Expr_UnaryExpression {
 /******************
 * class Expr_Sinh *
 ******************/
-%nodefaultctor Expr_Sinh;
 class Expr_Sinh : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -3699,7 +3664,6 @@ class Expr_Sinh : public Expr_UnaryExpression {
 /********************
 * class Expr_Square *
 ********************/
-%nodefaultctor Expr_Square;
 class Expr_Square : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -3773,7 +3737,6 @@ class Expr_Square : public Expr_UnaryExpression {
 /************************
 * class Expr_SquareRoot *
 ************************/
-%nodefaultctor Expr_SquareRoot;
 class Expr_SquareRoot : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -3847,7 +3810,6 @@ class Expr_SquareRoot : public Expr_UnaryExpression {
 /*****************
 * class Expr_Sum *
 *****************/
-%nodefaultctor Expr_Sum;
 class Expr_Sum : public Expr_PolyExpression {
 	public:
 		/****************** Copy ******************/
@@ -3941,7 +3903,6 @@ class Expr_Sum : public Expr_PolyExpression {
 /*********************
 * class Expr_Tangent *
 *********************/
-%nodefaultctor Expr_Tangent;
 class Expr_Tangent : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -4015,7 +3976,6 @@ class Expr_Tangent : public Expr_UnaryExpression {
 /******************
 * class Expr_Tanh *
 ******************/
-%nodefaultctor Expr_Tanh;
 class Expr_Tanh : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -4089,7 +4049,6 @@ class Expr_Tanh : public Expr_UnaryExpression {
 /***************************
 * class Expr_UnaryFunction *
 ***************************/
-%nodefaultctor Expr_UnaryFunction;
 class Expr_UnaryFunction : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/
@@ -4171,7 +4130,6 @@ class Expr_UnaryFunction : public Expr_UnaryExpression {
 /************************
 * class Expr_UnaryMinus *
 ************************/
-%nodefaultctor Expr_UnaryMinus;
 class Expr_UnaryMinus : public Expr_UnaryExpression {
 	public:
 		/****************** Copy ******************/

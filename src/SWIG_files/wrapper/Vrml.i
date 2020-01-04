@@ -196,7 +196,6 @@ class Vrml {
 /***********************
 * class Vrml_AsciiText *
 ***********************/
-%nodefaultctor Vrml_AsciiText;
 class Vrml_AsciiText : public Standard_Transient {
 	public:
 		/****************** Justification ******************/
@@ -287,7 +286,6 @@ class Vrml_AsciiText : public Standard_Transient {
 /******************
 * class Vrml_Cone *
 ******************/
-%nodefaultctor Vrml_Cone;
 class Vrml_Cone {
 	public:
 		/****************** BottomRadius ******************/
@@ -357,7 +355,6 @@ class Vrml_Cone {
 /*************************
 * class Vrml_Coordinate3 *
 *************************/
-%nodefaultctor Vrml_Coordinate3;
 class Vrml_Coordinate3 : public Standard_Transient {
 	public:
 		/****************** Point ******************/
@@ -406,7 +403,6 @@ class Vrml_Coordinate3 : public Standard_Transient {
 /******************
 * class Vrml_Cube *
 ******************/
-%nodefaultctor Vrml_Cube;
 class Vrml_Cube {
 	public:
 		/****************** Depth ******************/
@@ -476,7 +472,6 @@ class Vrml_Cube {
 /**********************
 * class Vrml_Cylinder *
 **********************/
-%nodefaultctor Vrml_Cylinder;
 class Vrml_Cylinder {
 	public:
 		/****************** Height ******************/
@@ -546,7 +541,6 @@ class Vrml_Cylinder {
 /******************************
 * class Vrml_DirectionalLight *
 ******************************/
-%nodefaultctor Vrml_DirectionalLight;
 class Vrml_DirectionalLight {
 	public:
 		/****************** Color ******************/
@@ -635,7 +629,6 @@ class Vrml_DirectionalLight {
 /***********************
 * class Vrml_FontStyle *
 ***********************/
-%nodefaultctor Vrml_FontStyle;
 class Vrml_FontStyle {
 	public:
 		/****************** Family ******************/
@@ -705,7 +698,6 @@ class Vrml_FontStyle {
 /*******************
 * class Vrml_Group *
 *******************/
-%nodefaultctor Vrml_Group;
 class Vrml_Group {
 	public:
 
@@ -733,7 +725,6 @@ class Vrml_Group {
 /****************************
 * class Vrml_IndexedFaceSet *
 ****************************/
-%nodefaultctor Vrml_IndexedFaceSet;
 class Vrml_IndexedFaceSet : public Standard_Transient {
 	public:
 		/****************** CoordIndex ******************/
@@ -824,7 +815,6 @@ class Vrml_IndexedFaceSet : public Standard_Transient {
 /****************************
 * class Vrml_IndexedLineSet *
 ****************************/
-%nodefaultctor Vrml_IndexedLineSet;
 class Vrml_IndexedLineSet : public Standard_Transient {
 	public:
 		/****************** CoordIndex ******************/
@@ -915,7 +905,6 @@ class Vrml_IndexedLineSet : public Standard_Transient {
 /******************
 * class Vrml_Info *
 ******************/
-%nodefaultctor Vrml_Info;
 class Vrml_Info {
 	public:
 
@@ -957,7 +946,6 @@ class Vrml_Info {
 /************************
 * class Vrml_Instancing *
 ************************/
-%nodefaultctor Vrml_Instancing;
 class Vrml_Instancing {
 	public:
 
@@ -996,7 +984,6 @@ class Vrml_Instancing {
 /*****************
 * class Vrml_LOD *
 *****************/
-%nodefaultctor Vrml_LOD;
 class Vrml_LOD : public Standard_Transient {
 	public:
 		/****************** Center ******************/
@@ -1059,7 +1046,6 @@ class Vrml_LOD : public Standard_Transient {
 /**********************
 * class Vrml_Material *
 **********************/
-%nodefaultctor Vrml_Material;
 class Vrml_Material : public Standard_Transient {
 	public:
 		/****************** AmbientColor ******************/
@@ -1178,7 +1164,6 @@ class Vrml_Material : public Standard_Transient {
 /*****************************
 * class Vrml_MaterialBinding *
 *****************************/
-%nodefaultctor Vrml_MaterialBinding;
 class Vrml_MaterialBinding {
 	public:
 
@@ -1225,7 +1210,6 @@ class Vrml_MaterialBinding {
 /*****************************
 * class Vrml_MatrixTransform *
 *****************************/
-%nodefaultctor Vrml_MatrixTransform;
 class Vrml_MatrixTransform {
 	public:
 		/****************** Matrix ******************/
@@ -1272,7 +1256,6 @@ class Vrml_MatrixTransform {
 /********************
 * class Vrml_Normal *
 ********************/
-%nodefaultctor Vrml_Normal;
 class Vrml_Normal : public Standard_Transient {
 	public:
 
@@ -1321,7 +1304,6 @@ class Vrml_Normal : public Standard_Transient {
 /***************************
 * class Vrml_NormalBinding *
 ***************************/
-%nodefaultctor Vrml_NormalBinding;
 class Vrml_NormalBinding {
 	public:
 
@@ -1368,7 +1350,6 @@ class Vrml_NormalBinding {
 /********************************
 * class Vrml_OrthographicCamera *
 ********************************/
-%nodefaultctor Vrml_OrthographicCamera;
 class Vrml_OrthographicCamera {
 	public:
 		/****************** FocalDistance ******************/
@@ -1457,7 +1438,6 @@ class Vrml_OrthographicCamera {
 /*******************************
 * class Vrml_PerspectiveCamera *
 *******************************/
-%nodefaultctor Vrml_PerspectiveCamera;
 class Vrml_PerspectiveCamera {
 	public:
 		/****************** Angle ******************/
@@ -1546,7 +1526,6 @@ class Vrml_PerspectiveCamera {
 /************************
 * class Vrml_PointLight *
 ************************/
-%nodefaultctor Vrml_PointLight;
 class Vrml_PointLight {
 	public:
 		/****************** Color ******************/
@@ -1635,7 +1614,6 @@ class Vrml_PointLight {
 /**********************
 * class Vrml_PointSet *
 **********************/
-%nodefaultctor Vrml_PointSet;
 class Vrml_PointSet {
 	public:
 		/****************** NumPoints ******************/
@@ -1691,7 +1669,6 @@ class Vrml_PointSet {
 /**********************
 * class Vrml_Rotation *
 **********************/
-%nodefaultctor Vrml_Rotation;
 class Vrml_Rotation {
 	public:
 
@@ -1738,7 +1715,6 @@ class Vrml_Rotation {
 /*********************
 * class Vrml_SFImage *
 *********************/
-%nodefaultctor Vrml_SFImage;
 class Vrml_SFImage : public Standard_Transient {
 	public:
 		/****************** Array ******************/
@@ -1826,7 +1802,6 @@ class Vrml_SFImage : public Standard_Transient {
 /************************
 * class Vrml_SFRotation *
 ************************/
-%nodefaultctor Vrml_SFRotation;
 class Vrml_SFRotation {
 	public:
 		/****************** Angle ******************/
@@ -1907,7 +1882,6 @@ class Vrml_SFRotation {
 /*******************
 * class Vrml_Scale *
 *******************/
-%nodefaultctor Vrml_Scale;
 class Vrml_Scale {
 	public:
 
@@ -1954,7 +1928,6 @@ class Vrml_Scale {
 /***********************
 * class Vrml_Separator *
 ***********************/
-%nodefaultctor Vrml_Separator;
 class Vrml_Separator {
 	public:
 
@@ -2001,7 +1974,6 @@ class Vrml_Separator {
 /************************
 * class Vrml_ShapeHints *
 ************************/
-%nodefaultctor Vrml_ShapeHints;
 class Vrml_ShapeHints {
 	public:
 		/****************** Angle ******************/
@@ -2085,7 +2057,6 @@ class Vrml_ShapeHints {
 /********************
 * class Vrml_Sphere *
 ********************/
-%nodefaultctor Vrml_Sphere;
 class Vrml_Sphere {
 	public:
 
@@ -2127,7 +2098,6 @@ class Vrml_Sphere {
 /***********************
 * class Vrml_SpotLight *
 ***********************/
-%nodefaultctor Vrml_SpotLight;
 class Vrml_SpotLight {
 	public:
 		/****************** Color ******************/
@@ -2258,7 +2228,6 @@ class Vrml_SpotLight {
 /********************
 * class Vrml_Switch *
 ********************/
-%nodefaultctor Vrml_Switch;
 class Vrml_Switch {
 	public:
 
@@ -2300,7 +2269,6 @@ class Vrml_Switch {
 /**********************
 * class Vrml_Texture2 *
 **********************/
-%nodefaultctor Vrml_Texture2;
 class Vrml_Texture2 {
 	public:
 		/****************** Filename ******************/
@@ -2389,7 +2357,6 @@ class Vrml_Texture2 {
 /*******************************
 * class Vrml_Texture2Transform *
 *******************************/
-%nodefaultctor Vrml_Texture2Transform;
 class Vrml_Texture2Transform {
 	public:
 		/****************** Center ******************/
@@ -2478,7 +2445,6 @@ class Vrml_Texture2Transform {
 /********************************
 * class Vrml_TextureCoordinate2 *
 ********************************/
-%nodefaultctor Vrml_TextureCoordinate2;
 class Vrml_TextureCoordinate2 : public Standard_Transient {
 	public:
 		/****************** Point ******************/
@@ -2527,7 +2493,6 @@ class Vrml_TextureCoordinate2 : public Standard_Transient {
 /***********************
 * class Vrml_Transform *
 ***********************/
-%nodefaultctor Vrml_Transform;
 class Vrml_Transform {
 	public:
 		/****************** Center ******************/
@@ -2630,7 +2595,6 @@ class Vrml_Transform {
 /********************************
 * class Vrml_TransformSeparator *
 ********************************/
-%nodefaultctor Vrml_TransformSeparator;
 class Vrml_TransformSeparator {
 	public:
 
@@ -2658,7 +2622,6 @@ class Vrml_TransformSeparator {
 /*************************
 * class Vrml_Translation *
 *************************/
-%nodefaultctor Vrml_Translation;
 class Vrml_Translation {
 	public:
 
@@ -2705,7 +2668,6 @@ class Vrml_Translation {
 /***********************
 * class Vrml_WWWAnchor *
 ***********************/
-%nodefaultctor Vrml_WWWAnchor;
 class Vrml_WWWAnchor {
 	public:
 		/****************** Description ******************/
@@ -2775,7 +2737,6 @@ class Vrml_WWWAnchor {
 /***********************
 * class Vrml_WWWInline *
 ***********************/
-%nodefaultctor Vrml_WWWInline;
 class Vrml_WWWInline {
 	public:
 		/****************** BboxCenter ******************/

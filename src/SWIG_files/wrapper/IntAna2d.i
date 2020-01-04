@@ -65,7 +65,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intana2d.html"
 /*********************************
 * class IntAna2d_AnaIntersection *
 *********************************/
-%nodefaultctor IntAna2d_AnaIntersection;
 class IntAna2d_AnaIntersection {
 	public:
 		/****************** IdenticalElements ******************/
@@ -284,7 +283,6 @@ class IntAna2d_AnaIntersection {
 /***********************
 * class IntAna2d_Conic *
 ***********************/
-%nodefaultctor IntAna2d_Conic;
 class IntAna2d_Conic {
 	public:
 		/****************** Coefficients ******************/
@@ -406,7 +404,6 @@ class IntAna2d_Conic {
 /**************************
 * class IntAna2d_IntPoint *
 **************************/
-%nodefaultctor IntAna2d_IntPoint;
 class IntAna2d_IntPoint {
 	public:
 		/****************** IntAna2d_IntPoint ******************/

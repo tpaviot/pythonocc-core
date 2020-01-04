@@ -123,7 +123,6 @@ typedef NCollection_Array1 <AppDef_MultiPointConstraint> AppDef_Array1OfMultiPoi
 /****************************************************************
 * class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute *
 ****************************************************************/
-%nodefaultctor AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute : public math_BFGS {
 	public:
 		/****************** AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute ******************/
@@ -162,7 +161,6 @@ class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute : public math_BFGS
 /**************************************************************
 * class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute *
 **************************************************************/
-%nodefaultctor AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute ******************/
@@ -321,7 +319,6 @@ class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_Multip
 /*****************************************************************
 * class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute *
 *****************************************************************/
-%nodefaultctor AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 	public:
 		/****************** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute ******************/
@@ -568,7 +565,6 @@ class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 /******************************
 * class AppDef_BSplineCompute *
 ******************************/
-%nodefaultctor AppDef_BSplineCompute;
 class AppDef_BSplineCompute {
 	public:
 		/****************** AppDef_BSplineCompute ******************/
@@ -825,7 +821,6 @@ class AppDef_BSplineCompute {
 /***********************
 * class AppDef_Compute *
 ***********************/
-%nodefaultctor AppDef_Compute;
 class AppDef_Compute {
 	public:
 		/****************** AppDef_Compute ******************/
@@ -1058,7 +1053,6 @@ class AppDef_Compute {
 /**************************************************
 * class AppDef_Gradient_BFGSOfMyGradientOfCompute *
 **************************************************/
-%nodefaultctor AppDef_Gradient_BFGSOfMyGradientOfCompute;
 class AppDef_Gradient_BFGSOfMyGradientOfCompute : public math_BFGS {
 	public:
 		/****************** AppDef_Gradient_BFGSOfMyGradientOfCompute ******************/
@@ -1097,7 +1091,6 @@ class AppDef_Gradient_BFGSOfMyGradientOfCompute : public math_BFGS {
 /************************************************************
 * class AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute *
 ************************************************************/
-%nodefaultctor AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute;
 class AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute : public math_BFGS {
 	public:
 		/****************** AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute ******************/
@@ -1136,7 +1129,6 @@ class AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute : public math_BFGS {
 /******************************************
 * class AppDef_Gradient_BFGSOfTheGradient *
 ******************************************/
-%nodefaultctor AppDef_Gradient_BFGSOfTheGradient;
 class AppDef_Gradient_BFGSOfTheGradient : public math_BFGS {
 	public:
 		/****************** AppDef_Gradient_BFGSOfTheGradient ******************/
@@ -1175,7 +1167,6 @@ class AppDef_Gradient_BFGSOfTheGradient : public math_BFGS {
 /*************************
 * class AppDef_MultiLine *
 *************************/
-%nodefaultctor AppDef_MultiLine;
 class AppDef_MultiLine {
 	public:
 		/****************** AppDef_MultiLine ******************/
@@ -1266,7 +1257,6 @@ class AppDef_MultiLine {
 /************************************
 * class AppDef_MultiPointConstraint *
 ************************************/
-%nodefaultctor AppDef_MultiPointConstraint;
 class AppDef_MultiPointConstraint : public AppParCurves_MultiPoint {
 	public:
 		/****************** AppDef_MultiPointConstraint ******************/
@@ -1491,7 +1481,6 @@ class AppDef_MultiPointConstraint : public AppParCurves_MultiPoint {
 /**********************************************
 * class AppDef_MyBSplGradientOfBSplineCompute *
 **********************************************/
-%nodefaultctor AppDef_MyBSplGradientOfBSplineCompute;
 class AppDef_MyBSplGradientOfBSplineCompute {
 	public:
 		/****************** AppDef_MyBSplGradientOfBSplineCompute ******************/
@@ -1604,7 +1593,6 @@ class AppDef_MyBSplGradientOfBSplineCompute {
 /***********************************
 * class AppDef_MyGradientOfCompute *
 ***********************************/
-%nodefaultctor AppDef_MyGradientOfCompute;
 class AppDef_MyGradientOfCompute {
 	public:
 		/****************** AppDef_MyGradientOfCompute ******************/
@@ -1681,7 +1669,6 @@ class AppDef_MyGradientOfCompute {
 /*********************************************
 * class AppDef_MyGradientbisOfBSplineCompute *
 *********************************************/
-%nodefaultctor AppDef_MyGradientbisOfBSplineCompute;
 class AppDef_MyGradientbisOfBSplineCompute {
 	public:
 		/****************** AppDef_MyGradientbisOfBSplineCompute ******************/
@@ -1960,7 +1947,6 @@ class AppDef_MyLineTool {
 /************************************************
 * class AppDef_ParFunctionOfMyGradientOfCompute *
 ************************************************/
-%nodefaultctor AppDef_ParFunctionOfMyGradientOfCompute;
 class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** AppDef_ParFunctionOfMyGradientOfCompute ******************/
@@ -2083,7 +2069,6 @@ class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionW
 /**********************************************************
 * class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute *
 **********************************************************/
-%nodefaultctor AppDef_ParFunctionOfMyGradientbisOfBSplineCompute;
 class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute ******************/
@@ -2206,7 +2191,6 @@ class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVa
 /****************************************
 * class AppDef_ParFunctionOfTheGradient *
 ****************************************/
-%nodefaultctor AppDef_ParFunctionOfTheGradient;
 class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** AppDef_ParFunctionOfTheGradient ******************/
@@ -2329,7 +2313,6 @@ class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradi
 /***************************************************
 * class AppDef_ParLeastSquareOfMyGradientOfCompute *
 ***************************************************/
-%nodefaultctor AppDef_ParLeastSquareOfMyGradientOfCompute;
 class AppDef_ParLeastSquareOfMyGradientOfCompute {
 	public:
 		/****************** AppDef_ParLeastSquareOfMyGradientOfCompute ******************/
@@ -2576,7 +2559,6 @@ class AppDef_ParLeastSquareOfMyGradientOfCompute {
 /*************************************************************
 * class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute *
 *************************************************************/
-%nodefaultctor AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 	public:
 		/****************** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute ******************/
@@ -2823,7 +2805,6 @@ class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 /*******************************************
 * class AppDef_ParLeastSquareOfTheGradient *
 *******************************************/
-%nodefaultctor AppDef_ParLeastSquareOfTheGradient;
 class AppDef_ParLeastSquareOfTheGradient {
 	public:
 		/****************** AppDef_ParLeastSquareOfTheGradient ******************/
@@ -3070,7 +3051,6 @@ class AppDef_ParLeastSquareOfTheGradient {
 /**************************************************
 * class AppDef_ResConstraintOfMyGradientOfCompute *
 **************************************************/
-%nodefaultctor AppDef_ResConstraintOfMyGradientOfCompute;
 class AppDef_ResConstraintOfMyGradientOfCompute {
 	public:
 		/****************** AppDef_ResConstraintOfMyGradientOfCompute ******************/
@@ -3144,7 +3124,6 @@ class AppDef_ResConstraintOfMyGradientOfCompute {
 /************************************************************
 * class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute *
 ************************************************************/
-%nodefaultctor AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
 class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute {
 	public:
 		/****************** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute ******************/
@@ -3218,7 +3197,6 @@ class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute {
 /******************************************
 * class AppDef_ResConstraintOfTheGradient *
 ******************************************/
-%nodefaultctor AppDef_ResConstraintOfTheGradient;
 class AppDef_ResConstraintOfTheGradient {
 	public:
 		/****************** AppDef_ResConstraintOfTheGradient ******************/
@@ -3460,7 +3438,6 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 /***************************
 * class AppDef_TheFunction *
 ***************************/
-%nodefaultctor AppDef_TheFunction;
 class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****************** AppDef_TheFunction ******************/
@@ -3583,7 +3560,6 @@ class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 /***************************
 * class AppDef_TheGradient *
 ***************************/
-%nodefaultctor AppDef_TheGradient;
 class AppDef_TheGradient {
 	public:
 		/****************** AppDef_TheGradient ******************/
@@ -3660,7 +3636,6 @@ class AppDef_TheGradient {
 /*******************************
 * class AppDef_TheLeastSquares *
 *******************************/
-%nodefaultctor AppDef_TheLeastSquares;
 class AppDef_TheLeastSquares {
 	public:
 		/****************** AppDef_TheLeastSquares ******************/
@@ -3907,7 +3882,6 @@ class AppDef_TheLeastSquares {
 /************************
 * class AppDef_TheResol *
 ************************/
-%nodefaultctor AppDef_TheResol;
 class AppDef_TheResol {
 	public:
 		/****************** AppDef_TheResol ******************/
@@ -3981,7 +3955,6 @@ class AppDef_TheResol {
 /***************************
 * class AppDef_Variational *
 ***************************/
-%nodefaultctor AppDef_Variational;
 class AppDef_Variational {
 	public:
 		/****************** AppDef_Variational ******************/
@@ -4274,7 +4247,6 @@ class AppDef_Variational {
 /******************************
 * class AppDef_LinearCriteria *
 ******************************/
-%nodefaultctor AppDef_LinearCriteria;
 class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 	public:
 		/****************** AppDef_LinearCriteria ******************/

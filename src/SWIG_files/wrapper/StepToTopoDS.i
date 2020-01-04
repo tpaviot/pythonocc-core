@@ -323,7 +323,6 @@ class StepToTopoDS_GeometricTool {
 /****************************
 * class StepToTopoDS_NMTool *
 ****************************/
-%nodefaultctor StepToTopoDS_NMTool;
 class StepToTopoDS_NMTool {
 	public:
 		/****************** Bind ******************/
@@ -459,7 +458,6 @@ class StepToTopoDS_NMTool {
 /*******************************
 * class StepToTopoDS_PointPair *
 *******************************/
-%nodefaultctor StepToTopoDS_PointPair;
 class StepToTopoDS_PointPair {
 	public:
 		/****************** StepToTopoDS_PointPair ******************/
@@ -568,7 +566,6 @@ class StepToTopoDS_Root {
 /*************************************
 * class StepToTopoDS_MakeTransformed *
 *************************************/
-%nodefaultctor StepToTopoDS_MakeTransformed;
 class StepToTopoDS_MakeTransformed : public StepToTopoDS_Root {
 	public:
 		/****************** Compute ******************/
@@ -630,7 +627,6 @@ class StepToTopoDS_MakeTransformed : public StepToTopoDS_Root {
 /*********************************************
 * class StepToTopoDS_TranslateCompositeCurve *
 *********************************************/
-%nodefaultctor StepToTopoDS_TranslateCompositeCurve;
 class StepToTopoDS_TranslateCompositeCurve : public StepToTopoDS_Root {
 	public:
 		/****************** Init ******************/
@@ -711,7 +707,6 @@ class StepToTopoDS_TranslateCompositeCurve : public StepToTopoDS_Root {
 /**************************************************
 * class StepToTopoDS_TranslateCurveBoundedSurface *
 **************************************************/
-%nodefaultctor StepToTopoDS_TranslateCurveBoundedSurface;
 class StepToTopoDS_TranslateCurveBoundedSurface : public StepToTopoDS_Root {
 	public:
 		/****************** Init ******************/
@@ -758,7 +753,6 @@ class StepToTopoDS_TranslateCurveBoundedSurface : public StepToTopoDS_Root {
 /***********************************
 * class StepToTopoDS_TranslateEdge *
 ***********************************/
-%nodefaultctor StepToTopoDS_TranslateEdge;
 class StepToTopoDS_TranslateEdge : public StepToTopoDS_Root {
 	public:
 		/****************** Error ******************/
@@ -841,7 +835,6 @@ class StepToTopoDS_TranslateEdge : public StepToTopoDS_Root {
 /***************************************
 * class StepToTopoDS_TranslateEdgeLoop *
 ***************************************/
-%nodefaultctor StepToTopoDS_TranslateEdgeLoop;
 class StepToTopoDS_TranslateEdgeLoop : public StepToTopoDS_Root {
 	public:
 		/****************** Error ******************/
@@ -909,7 +902,6 @@ class StepToTopoDS_TranslateEdgeLoop : public StepToTopoDS_Root {
 /***********************************
 * class StepToTopoDS_TranslateFace *
 ***********************************/
-%nodefaultctor StepToTopoDS_TranslateFace;
 class StepToTopoDS_TranslateFace : public StepToTopoDS_Root {
 	public:
 		/****************** Error ******************/
@@ -961,7 +953,6 @@ class StepToTopoDS_TranslateFace : public StepToTopoDS_Root {
 /***************************************
 * class StepToTopoDS_TranslatePolyLoop *
 ***************************************/
-%nodefaultctor StepToTopoDS_TranslatePolyLoop;
 class StepToTopoDS_TranslatePolyLoop : public StepToTopoDS_Root {
 	public:
 		/****************** Error ******************/
@@ -1017,7 +1008,6 @@ class StepToTopoDS_TranslatePolyLoop : public StepToTopoDS_Root {
 /************************************
 * class StepToTopoDS_TranslateShell *
 ************************************/
-%nodefaultctor StepToTopoDS_TranslateShell;
 class StepToTopoDS_TranslateShell : public StepToTopoDS_Root {
 	public:
 		/****************** Error ******************/
@@ -1069,7 +1059,6 @@ class StepToTopoDS_TranslateShell : public StepToTopoDS_Root {
 /*************************************
 * class StepToTopoDS_TranslateVertex *
 *************************************/
-%nodefaultctor StepToTopoDS_TranslateVertex;
 class StepToTopoDS_TranslateVertex : public StepToTopoDS_Root {
 	public:
 		/****************** Error ******************/
@@ -1121,7 +1110,6 @@ class StepToTopoDS_TranslateVertex : public StepToTopoDS_Root {
 /*****************************************
 * class StepToTopoDS_TranslateVertexLoop *
 *****************************************/
-%nodefaultctor StepToTopoDS_TranslateVertexLoop;
 class StepToTopoDS_TranslateVertexLoop : public StepToTopoDS_Root {
 	public:
 		/****************** Error ******************/

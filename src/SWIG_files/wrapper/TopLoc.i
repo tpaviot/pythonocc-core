@@ -74,7 +74,6 @@ typedef NCollection_DefaultHasher <TopLoc_Location> TopLoc_MapLocationHasher;
 /***********************
 * class TopLoc_Datum3D *
 ***********************/
-%nodefaultctor TopLoc_Datum3D;
 class TopLoc_Datum3D : public Standard_Transient {
 	public:
 
@@ -127,7 +126,6 @@ class TopLoc_Datum3D : public Standard_Transient {
 /****************************
 * class TopLoc_ItemLocation *
 ****************************/
-%nodefaultctor TopLoc_ItemLocation;
 class TopLoc_ItemLocation {
 	public:
 
@@ -160,7 +158,6 @@ class TopLoc_ItemLocation {
 /************************
 * class TopLoc_Location *
 ************************/
-%nodefaultctor TopLoc_Location;
 class TopLoc_Location {
 	public:
 		/****************** Divided ******************/
@@ -350,7 +347,6 @@ class TopLoc_Location {
 /***************************************
 * class TopLoc_SListNodeOfItemLocation *
 ***************************************/
-%nodefaultctor TopLoc_SListNodeOfItemLocation;
 class TopLoc_SListNodeOfItemLocation : public Standard_Transient {
 	public:
 		/****************** Tail ******************/
@@ -386,7 +382,6 @@ class TopLoc_SListNodeOfItemLocation : public Standard_Transient {
 /***********************************
 * class TopLoc_SListOfItemLocation *
 ***********************************/
-%nodefaultctor TopLoc_SListOfItemLocation;
 class TopLoc_SListOfItemLocation {
 	public:
 		/****************** Assign ******************/

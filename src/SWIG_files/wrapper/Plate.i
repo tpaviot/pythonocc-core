@@ -114,7 +114,6 @@ typedef NCollection_Sequence <Plate_LinearScalarConstraint> Plate_SequenceOfLine
 /*****************
 * class Plate_D1 *
 *****************/
-%nodefaultctor Plate_D1;
 class Plate_D1 {
 	public:
 		/****************** DU ******************/
@@ -155,7 +154,6 @@ class Plate_D1 {
 /*****************
 * class Plate_D2 *
 *****************/
-%nodefaultctor Plate_D2;
 class Plate_D2 {
 	public:
 		/****************** Plate_D2 ******************/
@@ -188,7 +186,6 @@ class Plate_D2 {
 /*****************
 * class Plate_D3 *
 *****************/
-%nodefaultctor Plate_D3;
 class Plate_D3 {
 	public:
 		/****************** Plate_D3 ******************/
@@ -223,7 +220,6 @@ class Plate_D3 {
 /*********************************
 * class Plate_FreeGtoCConstraint *
 *********************************/
-%nodefaultctor Plate_FreeGtoCConstraint;
 class Plate_FreeGtoCConstraint {
 	public:
 		/****************** GetPPC ******************/
@@ -319,7 +315,6 @@ class Plate_FreeGtoCConstraint {
 /******************************************
 * class Plate_GlobalTranslationConstraint *
 ******************************************/
-%nodefaultctor Plate_GlobalTranslationConstraint;
 class Plate_GlobalTranslationConstraint {
 	public:
 		/****************** LXYZC ******************/
@@ -346,7 +341,6 @@ class Plate_GlobalTranslationConstraint {
 /*****************************
 * class Plate_GtoCConstraint *
 *****************************/
-%nodefaultctor Plate_GtoCConstraint;
 class Plate_GtoCConstraint {
 	public:
 		/****************** D1SurfInit ******************/
@@ -481,7 +475,6 @@ class Plate_GtoCConstraint {
 /*****************************
 * class Plate_LineConstraint *
 *****************************/
-%nodefaultctor Plate_LineConstraint;
 class Plate_LineConstraint {
 	public:
 		/****************** LSC ******************/
@@ -514,7 +507,6 @@ class Plate_LineConstraint {
 /*************************************
 * class Plate_LinearScalarConstraint *
 *************************************/
-%nodefaultctor Plate_LinearScalarConstraint;
 class Plate_LinearScalarConstraint {
 	public:
 		/****************** Coeff ******************/
@@ -602,7 +594,6 @@ class Plate_LinearScalarConstraint {
 /**********************************
 * class Plate_LinearXYZConstraint *
 **********************************/
-%nodefaultctor Plate_LinearXYZConstraint;
 class Plate_LinearXYZConstraint {
 	public:
 		/****************** Coeff ******************/
@@ -681,7 +672,6 @@ class Plate_LinearXYZConstraint {
 /*********************************
 * class Plate_PinpointConstraint *
 *********************************/
-%nodefaultctor Plate_PinpointConstraint;
 class Plate_PinpointConstraint {
 	public:
 		/****************** Idu ******************/
@@ -734,7 +724,6 @@ class Plate_PinpointConstraint {
 /******************************
 * class Plate_PlaneConstraint *
 ******************************/
-%nodefaultctor Plate_PlaneConstraint;
 class Plate_PlaneConstraint {
 	public:
 		/****************** LSC ******************/
@@ -767,7 +756,6 @@ class Plate_PlaneConstraint {
 /********************
 * class Plate_Plate *
 ********************/
-%nodefaultctor Plate_Plate;
 class Plate_Plate {
 	public:
 		/****************** CoefPol ******************/
@@ -956,7 +944,6 @@ class Plate_Plate {
 /*************************************
 * class Plate_SampledCurveConstraint *
 *************************************/
-%nodefaultctor Plate_SampledCurveConstraint;
 class Plate_SampledCurveConstraint {
 	public:
 		/****************** LXYZC ******************/

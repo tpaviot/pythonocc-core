@@ -89,7 +89,6 @@ typedef TColStd_SequenceOfAddress BRepTopAdaptor_SeqOfPtr;
 /********************************
 * class BRepTopAdaptor_FClass2d *
 ********************************/
-%nodefaultctor BRepTopAdaptor_FClass2d;
 class BRepTopAdaptor_FClass2d {
 	public:
 		/****************** BRepTopAdaptor_FClass2d ******************/
@@ -158,7 +157,6 @@ class BRepTopAdaptor_FClass2d {
 /*******************************
 * class BRepTopAdaptor_HVertex *
 *******************************/
-%nodefaultctor BRepTopAdaptor_HVertex;
 class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 	public:
 		/****************** BRepTopAdaptor_HVertex ******************/
@@ -226,7 +224,6 @@ class BRepTopAdaptor_HVertex : public Adaptor3d_HVertex {
 /****************************
 * class BRepTopAdaptor_Tool *
 ****************************/
-%nodefaultctor BRepTopAdaptor_Tool;
 class BRepTopAdaptor_Tool {
 	public:
 		/****************** BRepTopAdaptor_Tool ******************/
@@ -304,7 +301,6 @@ class BRepTopAdaptor_Tool {
 /*********************************
 * class BRepTopAdaptor_TopolTool *
 *********************************/
-%nodefaultctor BRepTopAdaptor_TopolTool;
 class BRepTopAdaptor_TopolTool : public Adaptor3d_TopolTool {
 	public:
 		/****************** BRepTopAdaptor_TopolTool ******************/

@@ -98,7 +98,6 @@ class XmlMDocStd {
 /*******************************
 * class XmlMDocStd_XLinkDriver *
 *******************************/
-%nodefaultctor XmlMDocStd_XLinkDriver;
 class XmlMDocStd_XLinkDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/

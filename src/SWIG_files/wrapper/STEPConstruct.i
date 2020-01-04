@@ -169,7 +169,6 @@ class STEPConstruct {
 /***********************************
 * class STEPConstruct_AP203Context *
 ***********************************/
-%nodefaultctor STEPConstruct_AP203Context;
 class STEPConstruct_AP203Context {
 	public:
 		/****************** Clear ******************/
@@ -394,7 +393,6 @@ class STEPConstruct_AP203Context {
 /*******************************
 * class STEPConstruct_Assembly *
 *******************************/
-%nodefaultctor STEPConstruct_Assembly;
 class STEPConstruct_Assembly {
 	public:
 		/****************** CheckSRRReversesNAUO ******************/
@@ -462,7 +460,6 @@ class STEPConstruct_Assembly {
 /**********************************
 * class STEPConstruct_ContextTool *
 **********************************/
-%nodefaultctor STEPConstruct_ContextTool;
 class STEPConstruct_ContextTool {
 	public:
 		/****************** AP203Context ******************/
@@ -657,7 +654,6 @@ class STEPConstruct_ContextTool {
 /***************************
 * class STEPConstruct_Part *
 ***************************/
-%nodefaultctor STEPConstruct_Part;
 class STEPConstruct_Part {
 	public:
 		/****************** AC ******************/
@@ -966,7 +962,6 @@ class STEPConstruct_PointHasher {
 /***************************
 * class STEPConstruct_Tool *
 ***************************/
-%nodefaultctor STEPConstruct_Tool;
 class STEPConstruct_Tool {
 	public:
 		/****************** FinderProcess ******************/
@@ -1027,7 +1022,6 @@ class STEPConstruct_Tool {
 /**********************************
 * class STEPConstruct_UnitContext *
 **********************************/
-%nodefaultctor STEPConstruct_UnitContext;
 class STEPConstruct_UnitContext {
 	public:
 		/****************** AreaDone ******************/
@@ -1179,7 +1173,6 @@ class STEPConstruct_UnitContext {
 /*********************************
 * class STEPConstruct_ExternRefs *
 *********************************/
-%nodefaultctor STEPConstruct_ExternRefs;
 class STEPConstruct_ExternRefs : public STEPConstruct_Tool {
 	public:
 		/****************** AddExternRef ******************/
@@ -1298,7 +1291,6 @@ class STEPConstruct_ExternRefs : public STEPConstruct_Tool {
 /*****************************
 * class STEPConstruct_Styles *
 *****************************/
-%nodefaultctor STEPConstruct_Styles;
 class STEPConstruct_Styles : public STEPConstruct_Tool {
 	public:
 		/****************** AddStyle ******************/
@@ -1501,7 +1493,6 @@ class STEPConstruct_Styles : public STEPConstruct_Tool {
 /**************************************
 * class STEPConstruct_ValidationProps *
 **************************************/
-%nodefaultctor STEPConstruct_ValidationProps;
 class STEPConstruct_ValidationProps : public STEPConstruct_Tool {
 	public:
 		/****************** AddArea ******************/

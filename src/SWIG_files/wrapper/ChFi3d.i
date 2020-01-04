@@ -474,7 +474,6 @@ class ChFi3d_Builder {
 /**************************
 * class ChFi3d_SearchSing *
 **************************/
-%nodefaultctor ChFi3d_SearchSing;
 class ChFi3d_SearchSing : public math_FunctionWithDerivative {
 	public:
 		/****************** ChFi3d_SearchSing ******************/
@@ -530,7 +529,6 @@ class ChFi3d_SearchSing : public math_FunctionWithDerivative {
 /*************************
 * class ChFi3d_ChBuilder *
 *************************/
-%nodefaultctor ChFi3d_ChBuilder;
 class ChFi3d_ChBuilder : public ChFi3d_Builder {
 	public:
 		/****************** Add ******************/
@@ -1127,7 +1125,6 @@ class ChFi3d_ChBuilder : public ChFi3d_Builder {
 /**************************
 * class ChFi3d_FilBuilder *
 **************************/
-%nodefaultctor ChFi3d_FilBuilder;
 class ChFi3d_FilBuilder : public ChFi3d_Builder {
 	public:
 		/****************** Add ******************/

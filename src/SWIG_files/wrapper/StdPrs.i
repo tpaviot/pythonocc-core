@@ -120,7 +120,6 @@ typedef Prs3d_Point <TopoDS_Vertex , StdPrs_ToolVertex> StdPrs_Vertex;
 /**********************
 * class StdPrs_BndBox *
 **********************/
-%nodefaultctor StdPrs_BndBox;
 class StdPrs_BndBox : public Prs3d_Root {
 	public:
 		/****************** Add ******************/
@@ -431,7 +430,6 @@ class StdPrs_HLRShape : public Prs3d_Root {
 /****************************
 * class StdPrs_HLRToolShape *
 ****************************/
-%nodefaultctor StdPrs_HLRToolShape;
 class StdPrs_HLRToolShape {
 	public:
 		/****************** Hidden ******************/
@@ -516,7 +514,6 @@ class StdPrs_HLRToolShape {
 /************************
 * class StdPrs_Isolines *
 ************************/
-%nodefaultctor StdPrs_Isolines;
 class StdPrs_Isolines : public Prs3d_Root {
 	public:
 		class PntOnIso {};
@@ -789,7 +786,6 @@ class StdPrs_PoleCurve : public Prs3d_Root {
 /***************************
 * class StdPrs_ShadedShape *
 ***************************/
-%nodefaultctor StdPrs_ShadedShape;
 class StdPrs_ShadedShape : public Prs3d_Root {
 	public:
 		/****************** Add ******************/
@@ -967,7 +963,6 @@ class StdPrs_ToolPoint {
 /*************************
 * class StdPrs_ToolRFace *
 *************************/
-%nodefaultctor StdPrs_ToolRFace;
 class StdPrs_ToolRFace {
 	public:
 		/****************** Init ******************/
@@ -1038,7 +1033,6 @@ class StdPrs_ToolRFace {
 /*************************************
 * class StdPrs_ToolTriangulatedShape *
 *************************************/
-%nodefaultctor StdPrs_ToolTriangulatedShape;
 class StdPrs_ToolTriangulatedShape {
 	public:
 		/****************** ClearOnOwnDeflectionChange ******************/
@@ -1512,7 +1506,6 @@ class StdPrs_WFRestrictedFace : public Prs3d_Root {
 /***********************
 * class StdPrs_WFShape *
 ***********************/
-%nodefaultctor StdPrs_WFShape;
 class StdPrs_WFShape : public Prs3d_Root {
 	public:
 		/****************** Add ******************/

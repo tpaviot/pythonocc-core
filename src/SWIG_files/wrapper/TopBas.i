@@ -70,7 +70,6 @@ typedef NCollection_List <TopBas_TestInterference>::Iterator TopBas_ListIterator
 /********************************
 * class TopBas_TestInterference *
 ********************************/
-%nodefaultctor TopBas_TestInterference;
 class TopBas_TestInterference {
 	public:
 		/****************** Boundary ******************/

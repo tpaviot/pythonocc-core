@@ -165,7 +165,6 @@ class ShapeExtend {
 /****************************************
 * class ShapeExtend_BasicMsgRegistrator *
 ****************************************/
-%nodefaultctor ShapeExtend_BasicMsgRegistrator;
 class ShapeExtend_BasicMsgRegistrator : public Standard_Transient {
 	public:
 		/****************** Send ******************/
@@ -401,7 +400,6 @@ class ShapeExtend_ComplexCurve : public Geom_Curve {
 /*************************************
 * class ShapeExtend_CompositeSurface *
 *************************************/
-%nodefaultctor ShapeExtend_CompositeSurface;
 class ShapeExtend_CompositeSurface : public Geom_Surface {
 	public:
 		/****************** Bounds ******************/
@@ -924,7 +922,6 @@ class ShapeExtend_CompositeSurface : public Geom_Surface {
 /*****************************
 * class ShapeExtend_Explorer *
 *****************************/
-%nodefaultctor ShapeExtend_Explorer;
 class ShapeExtend_Explorer {
 	public:
 		/****************** CompoundFromSeq ******************/
@@ -1031,7 +1028,6 @@ class ShapeExtend_Explorer {
 /*****************************
 * class ShapeExtend_WireData *
 *****************************/
-%nodefaultctor ShapeExtend_WireData;
 class ShapeExtend_WireData : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -1291,7 +1287,6 @@ class ShapeExtend_WireData : public Standard_Transient {
 /***********************************
 * class ShapeExtend_MsgRegistrator *
 ***********************************/
-%nodefaultctor ShapeExtend_MsgRegistrator;
 class ShapeExtend_MsgRegistrator : public ShapeExtend_BasicMsgRegistrator {
 	public:
 		/****************** MapShape ******************/

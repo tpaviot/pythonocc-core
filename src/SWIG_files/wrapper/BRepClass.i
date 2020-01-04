@@ -82,7 +82,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepclass.html"
 /***********************
 * class BRepClass_Edge *
 ***********************/
-%nodefaultctor BRepClass_Edge;
 class BRepClass_Edge {
 	public:
 		/****************** BRepClass_Edge ******************/
@@ -131,7 +130,6 @@ class BRepClass_Edge {
 /****************************************
 * class BRepClass_FClass2dOfFClassifier *
 ****************************************/
-%nodefaultctor BRepClass_FClass2dOfFClassifier;
 class BRepClass_FClass2dOfFClassifier {
 	public:
 		/****************** BRepClass_FClass2dOfFClassifier ******************/
@@ -204,7 +202,6 @@ class BRepClass_FClass2dOfFClassifier {
 /******************************
 * class BRepClass_FClassifier *
 ******************************/
-%nodefaultctor BRepClass_FClassifier;
 class BRepClass_FClassifier {
 	public:
 		/****************** BRepClass_FClassifier ******************/
@@ -285,7 +282,6 @@ class BRepClass_FClassifier {
 /*******************************
 * class BRepClass_FaceExplorer *
 *******************************/
-%nodefaultctor BRepClass_FaceExplorer;
 class BRepClass_FaceExplorer {
 	public:
 		/****************** BRepClass_FaceExplorer ******************/
@@ -413,7 +409,6 @@ class BRepClass_FaceExplorer {
 /****************************************
 * class BRepClass_FacePassiveClassifier *
 ****************************************/
-%nodefaultctor BRepClass_FacePassiveClassifier;
 class BRepClass_FacePassiveClassifier {
 	public:
 		/****************** BRepClass_FacePassiveClassifier ******************/
@@ -486,7 +481,6 @@ class BRepClass_FacePassiveClassifier {
 /******************************
 * class BRepClass_Intersector *
 ******************************/
-%nodefaultctor BRepClass_Intersector;
 class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 	public:
 		/****************** BRepClass_Intersector ******************/

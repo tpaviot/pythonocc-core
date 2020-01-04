@@ -792,7 +792,6 @@ typedef NCollection_Array1 <StepVisual_StyleContextSelect> StepVisual_Array1OfSt
 /**************************************
 * class StepVisual_AnnotationFillArea *
 **************************************/
-%nodefaultctor StepVisual_AnnotationFillArea;
 class StepVisual_AnnotationFillArea : public StepShape_GeometricCurveSet {
 	public:
 		/****************** StepVisual_AnnotationFillArea ******************/
@@ -815,7 +814,6 @@ class StepVisual_AnnotationFillArea : public StepShape_GeometricCurveSet {
 /******************************************
 * class StepVisual_AnnotationPlaneElement *
 ******************************************/
-%nodefaultctor StepVisual_AnnotationPlaneElement;
 class StepVisual_AnnotationPlaneElement : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -856,7 +854,6 @@ class StepVisual_AnnotationPlaneElement : public StepData_SelectType {
 /**********************************
 * class StepVisual_AnnotationText *
 **********************************/
-%nodefaultctor StepVisual_AnnotationText;
 class StepVisual_AnnotationText : public StepRepr_MappedItem {
 	public:
 		/****************** StepVisual_AnnotationText ******************/
@@ -879,7 +876,6 @@ class StepVisual_AnnotationText : public StepRepr_MappedItem {
 /*****************************
 * class StepVisual_AreaInSet *
 *****************************/
-%nodefaultctor StepVisual_AreaInSet;
 class StepVisual_AreaInSet : public Standard_Transient {
 	public:
 		/****************** Area ******************/
@@ -935,7 +931,6 @@ class StepVisual_AreaInSet : public Standard_Transient {
 /******************************
 * class StepVisual_AreaOrView *
 ******************************/
-%nodefaultctor StepVisual_AreaOrView;
 class StepVisual_AreaOrView : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -976,7 +971,6 @@ class StepVisual_AreaOrView : public StepData_SelectType {
 /*******************************************
 * class StepVisual_BoxCharacteristicSelect *
 *******************************************/
-%nodefaultctor StepVisual_BoxCharacteristicSelect;
 class StepVisual_BoxCharacteristicSelect {
 	public:
 		/****************** RealValue ******************/
@@ -1020,7 +1014,6 @@ class StepVisual_BoxCharacteristicSelect {
 /*******************************
 * class StepVisual_CameraImage *
 *******************************/
-%nodefaultctor StepVisual_CameraImage;
 class StepVisual_CameraImage : public StepRepr_MappedItem {
 	public:
 		/****************** StepVisual_CameraImage ******************/
@@ -1043,7 +1036,6 @@ class StepVisual_CameraImage : public StepRepr_MappedItem {
 /*******************************
 * class StepVisual_CameraModel *
 *******************************/
-%nodefaultctor StepVisual_CameraModel;
 class StepVisual_CameraModel : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** StepVisual_CameraModel ******************/
@@ -1066,7 +1058,6 @@ class StepVisual_CameraModel : public StepGeom_GeometricRepresentationItem {
 /***************************************************************
 * class StepVisual_CameraModelD3MultiClippingInterectionSelect *
 ***************************************************************/
-%nodefaultctor StepVisual_CameraModelD3MultiClippingInterectionSelect;
 class StepVisual_CameraModelD3MultiClippingInterectionSelect : public StepData_SelectType {
 	public:
 		/****************** CameraModelD3MultiClippingUnion ******************/
@@ -1107,7 +1098,6 @@ class StepVisual_CameraModelD3MultiClippingInterectionSelect : public StepData_S
 /**********************************************************
 * class StepVisual_CameraModelD3MultiClippingIntersection *
 **********************************************************/
-%nodefaultctor StepVisual_CameraModelD3MultiClippingIntersection;
 class StepVisual_CameraModelD3MultiClippingIntersection : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -1151,7 +1141,6 @@ class StepVisual_CameraModelD3MultiClippingIntersection : public StepGeom_Geomet
 /***************************************************
 * class StepVisual_CameraModelD3MultiClippingUnion *
 ***************************************************/
-%nodefaultctor StepVisual_CameraModelD3MultiClippingUnion;
 class StepVisual_CameraModelD3MultiClippingUnion : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -1195,7 +1184,6 @@ class StepVisual_CameraModelD3MultiClippingUnion : public StepGeom_GeometricRepr
 /*********************************************************
 * class StepVisual_CameraModelD3MultiClippingUnionSelect *
 *********************************************************/
-%nodefaultctor StepVisual_CameraModelD3MultiClippingUnionSelect;
 class StepVisual_CameraModelD3MultiClippingUnionSelect : public StepData_SelectType {
 	public:
 		/****************** CameraModelD3MultiClippingIntersection ******************/
@@ -1236,7 +1224,6 @@ class StepVisual_CameraModelD3MultiClippingUnionSelect : public StepData_SelectT
 /*******************************
 * class StepVisual_CameraUsage *
 *******************************/
-%nodefaultctor StepVisual_CameraUsage;
 class StepVisual_CameraUsage : public StepRepr_RepresentationMap {
 	public:
 		/****************** StepVisual_CameraUsage ******************/
@@ -1259,7 +1246,6 @@ class StepVisual_CameraUsage : public StepRepr_RepresentationMap {
 /**************************
 * class StepVisual_Colour *
 **************************/
-%nodefaultctor StepVisual_Colour;
 class StepVisual_Colour : public Standard_Transient {
 	public:
 		/****************** StepVisual_Colour ******************/
@@ -1282,7 +1268,6 @@ class StepVisual_Colour : public Standard_Transient {
 /*********************************
 * class StepVisual_CompositeText *
 *********************************/
-%nodefaultctor StepVisual_CompositeText;
 class StepVisual_CompositeText : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** CollectedText ******************/
@@ -1338,7 +1323,6 @@ class StepVisual_CompositeText : public StepGeom_GeometricRepresentationItem {
 /******************************
 * class StepVisual_CurveStyle *
 ******************************/
-%nodefaultctor StepVisual_CurveStyle;
 class StepVisual_CurveStyle : public Standard_Transient {
 	public:
 		/****************** CurveColour ******************/
@@ -1422,7 +1406,6 @@ class StepVisual_CurveStyle : public Standard_Transient {
 /**********************************
 * class StepVisual_CurveStyleFont *
 **********************************/
-%nodefaultctor StepVisual_CurveStyleFont;
 class StepVisual_CurveStyleFont : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1490,7 +1473,6 @@ class StepVisual_CurveStyleFont : public Standard_Transient {
 /*****************************************
 * class StepVisual_CurveStyleFontPattern *
 *****************************************/
-%nodefaultctor StepVisual_CurveStyleFontPattern;
 class StepVisual_CurveStyleFontPattern : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1546,7 +1528,6 @@ class StepVisual_CurveStyleFontPattern : public Standard_Transient {
 /****************************************
 * class StepVisual_CurveStyleFontSelect *
 ****************************************/
-%nodefaultctor StepVisual_CurveStyleFontSelect;
 class StepVisual_CurveStyleFontSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1593,7 +1574,6 @@ class StepVisual_CurveStyleFontSelect : public StepData_SelectType {
 /****************************************
 * class StepVisual_DirectionCountSelect *
 ****************************************/
-%nodefaultctor StepVisual_DirectionCountSelect;
 class StepVisual_DirectionCountSelect {
 	public:
 		/****************** SetTypeOfContent ******************/
@@ -1649,7 +1629,6 @@ class StepVisual_DirectionCountSelect {
 /*************************************
 * class StepVisual_DraughtingCallout *
 *************************************/
-%nodefaultctor StepVisual_DraughtingCallout;
 class StepVisual_DraughtingCallout : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Contents ******************/
@@ -1720,7 +1699,6 @@ class StepVisual_DraughtingCallout : public StepGeom_GeometricRepresentationItem
 /********************************************
 * class StepVisual_DraughtingCalloutElement *
 ********************************************/
-%nodefaultctor StepVisual_DraughtingCalloutElement;
 class StepVisual_DraughtingCalloutElement : public StepData_SelectType {
 	public:
 		/****************** AnnotationCurveOccurrence ******************/
@@ -1773,7 +1751,6 @@ class StepVisual_DraughtingCalloutElement : public StepData_SelectType {
 /***********************************
 * class StepVisual_DraughtingModel *
 ***********************************/
-%nodefaultctor StepVisual_DraughtingModel;
 class StepVisual_DraughtingModel : public StepRepr_Representation {
 	public:
 		/****************** StepVisual_DraughtingModel ******************/
@@ -1796,7 +1773,6 @@ class StepVisual_DraughtingModel : public StepRepr_Representation {
 /**********************************************
 * class StepVisual_ExternallyDefinedCurveFont *
 **********************************************/
-%nodefaultctor StepVisual_ExternallyDefinedCurveFont;
 class StepVisual_ExternallyDefinedCurveFont : public StepBasic_ExternallyDefinedItem {
 	public:
 		/****************** StepVisual_ExternallyDefinedCurveFont ******************/
@@ -1819,7 +1795,6 @@ class StepVisual_ExternallyDefinedCurveFont : public StepBasic_ExternallyDefined
 /*********************************************
 * class StepVisual_ExternallyDefinedTextFont *
 *********************************************/
-%nodefaultctor StepVisual_ExternallyDefinedTextFont;
 class StepVisual_ExternallyDefinedTextFont : public StepBasic_ExternallyDefinedItem {
 	public:
 		/****************** StepVisual_ExternallyDefinedTextFont ******************/
@@ -1842,7 +1817,6 @@ class StepVisual_ExternallyDefinedTextFont : public StepBasic_ExternallyDefinedI
 /*********************************
 * class StepVisual_FillAreaStyle *
 *********************************/
-%nodefaultctor StepVisual_FillAreaStyle;
 class StepVisual_FillAreaStyle : public Standard_Transient {
 	public:
 		/****************** FillStyles ******************/
@@ -1910,7 +1884,6 @@ class StepVisual_FillAreaStyle : public Standard_Transient {
 /***************************************
 * class StepVisual_FillAreaStyleColour *
 ***************************************/
-%nodefaultctor StepVisual_FillAreaStyleColour;
 class StepVisual_FillAreaStyleColour : public Standard_Transient {
 	public:
 		/****************** FillColour ******************/
@@ -1966,7 +1939,6 @@ class StepVisual_FillAreaStyleColour : public Standard_Transient {
 /***********************************
 * class StepVisual_FillStyleSelect *
 ***********************************/
-%nodefaultctor StepVisual_FillStyleSelect;
 class StepVisual_FillStyleSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2001,7 +1973,6 @@ class StepVisual_FillStyleSelect : public StepData_SelectType {
 /******************************
 * class StepVisual_FontSelect *
 ******************************/
-%nodefaultctor StepVisual_FontSelect;
 class StepVisual_FontSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2042,7 +2013,6 @@ class StepVisual_FontSelect : public StepData_SelectType {
 /********************************
 * class StepVisual_Invisibility *
 ********************************/
-%nodefaultctor StepVisual_Invisibility;
 class StepVisual_Invisibility : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2096,7 +2066,6 @@ class StepVisual_Invisibility : public Standard_Transient {
 /***************************************
 * class StepVisual_InvisibilityContext *
 ***************************************/
-%nodefaultctor StepVisual_InvisibilityContext;
 class StepVisual_InvisibilityContext : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2143,7 +2112,6 @@ class StepVisual_InvisibilityContext : public StepData_SelectType {
 /*********************************
 * class StepVisual_InvisibleItem *
 *********************************/
-%nodefaultctor StepVisual_InvisibleItem;
 class StepVisual_InvisibleItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2190,7 +2158,6 @@ class StepVisual_InvisibleItem : public StepData_SelectType {
 /*******************************
 * class StepVisual_LayeredItem *
 *******************************/
-%nodefaultctor StepVisual_LayeredItem;
 class StepVisual_LayeredItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2231,7 +2198,6 @@ class StepVisual_LayeredItem : public StepData_SelectType {
 /********************************
 * class StepVisual_MarkerMember *
 ********************************/
-%nodefaultctor StepVisual_MarkerMember;
 class StepVisual_MarkerMember : public StepData_SelectInt {
 	public:
 		/****************** EnumText ******************/
@@ -2296,7 +2262,6 @@ class StepVisual_MarkerMember : public StepData_SelectInt {
 /********************************
 * class StepVisual_MarkerSelect *
 ********************************/
-%nodefaultctor StepVisual_MarkerSelect;
 class StepVisual_MarkerSelect : public StepData_SelectType {
 	public:
 		/****************** CaseMem ******************/
@@ -2345,7 +2310,6 @@ class StepVisual_MarkerSelect : public StepData_SelectType {
 /***********************************
 * class StepVisual_NullStyleMember *
 ***********************************/
-%nodefaultctor StepVisual_NullStyleMember;
 class StepVisual_NullStyleMember : public StepData_SelectInt {
 	public:
 		/****************** EnumText ******************/
@@ -2415,7 +2379,6 @@ class StepVisual_NullStyleMember : public StepData_SelectInt {
 /********************************
 * class StepVisual_PlanarExtent *
 ********************************/
-%nodefaultctor StepVisual_PlanarExtent;
 class StepVisual_PlanarExtent : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -2473,7 +2436,6 @@ class StepVisual_PlanarExtent : public StepGeom_GeometricRepresentationItem {
 /******************************
 * class StepVisual_PointStyle *
 ******************************/
-%nodefaultctor StepVisual_PointStyle;
 class StepVisual_PointStyle : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2557,7 +2519,6 @@ class StepVisual_PointStyle : public Standard_Transient {
 /**********************************
 * class StepVisual_PreDefinedItem *
 **********************************/
-%nodefaultctor StepVisual_PreDefinedItem;
 class StepVisual_PreDefinedItem : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2599,7 +2560,6 @@ class StepVisual_PreDefinedItem : public Standard_Transient {
 /***********************************************
 * class StepVisual_PresentationLayerAssignment *
 ***********************************************/
-%nodefaultctor StepVisual_PresentationLayerAssignment;
 class StepVisual_PresentationLayerAssignment : public Standard_Transient {
 	public:
 		/****************** AssignedItems ******************/
@@ -2681,7 +2641,6 @@ class StepVisual_PresentationLayerAssignment : public Standard_Transient {
 /******************************************
 * class StepVisual_PresentationLayerUsage *
 ******************************************/
-%nodefaultctor StepVisual_PresentationLayerUsage;
 class StepVisual_PresentationLayerUsage : public Standard_Transient {
 	public:
 		/****************** Assignment ******************/
@@ -2736,7 +2695,6 @@ class StepVisual_PresentationLayerUsage : public Standard_Transient {
 /**********************************************
 * class StepVisual_PresentationRepresentation *
 **********************************************/
-%nodefaultctor StepVisual_PresentationRepresentation;
 class StepVisual_PresentationRepresentation : public StepRepr_Representation {
 	public:
 		/****************** StepVisual_PresentationRepresentation ******************/
@@ -2759,7 +2717,6 @@ class StepVisual_PresentationRepresentation : public StepRepr_Representation {
 /****************************************************
 * class StepVisual_PresentationRepresentationSelect *
 ****************************************************/
-%nodefaultctor StepVisual_PresentationRepresentationSelect;
 class StepVisual_PresentationRepresentationSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2800,7 +2757,6 @@ class StepVisual_PresentationRepresentationSelect : public StepData_SelectType {
 /***********************************
 * class StepVisual_PresentationSet *
 ***********************************/
-%nodefaultctor StepVisual_PresentationSet;
 class StepVisual_PresentationSet : public Standard_Transient {
 	public:
 		/****************** StepVisual_PresentationSet ******************/
@@ -2823,7 +2779,6 @@ class StepVisual_PresentationSet : public Standard_Transient {
 /************************************
 * class StepVisual_PresentationSize *
 ************************************/
-%nodefaultctor StepVisual_PresentationSize;
 class StepVisual_PresentationSize : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2879,7 +2834,6 @@ class StepVisual_PresentationSize : public Standard_Transient {
 /****************************************************
 * class StepVisual_PresentationSizeAssignmentSelect *
 ****************************************************/
-%nodefaultctor StepVisual_PresentationSizeAssignmentSelect;
 class StepVisual_PresentationSizeAssignmentSelect : public StepData_SelectType {
 	public:
 		/****************** AreaInSet ******************/
@@ -2926,7 +2880,6 @@ class StepVisual_PresentationSizeAssignmentSelect : public StepData_SelectType {
 /***********************************************
 * class StepVisual_PresentationStyleAssignment *
 ***********************************************/
-%nodefaultctor StepVisual_PresentationStyleAssignment;
 class StepVisual_PresentationStyleAssignment : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2980,7 +2933,6 @@ class StepVisual_PresentationStyleAssignment : public Standard_Transient {
 /*******************************************
 * class StepVisual_PresentationStyleSelect *
 *******************************************/
-%nodefaultctor StepVisual_PresentationStyleSelect;
 class StepVisual_PresentationStyleSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -3033,7 +2985,6 @@ class StepVisual_PresentationStyleSelect : public StepData_SelectType {
 /*********************************
 * class StepVisual_PresentedItem *
 *********************************/
-%nodefaultctor StepVisual_PresentedItem;
 class StepVisual_PresentedItem : public Standard_Transient {
 	public:
 };
@@ -3050,7 +3001,6 @@ class StepVisual_PresentedItem : public Standard_Transient {
 /***********************************************
 * class StepVisual_PresentedItemRepresentation *
 ***********************************************/
-%nodefaultctor StepVisual_PresentedItemRepresentation;
 class StepVisual_PresentedItemRepresentation : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3105,7 +3055,6 @@ class StepVisual_PresentedItemRepresentation : public Standard_Transient {
 /**************************************
 * class StepVisual_StyleContextSelect *
 **************************************/
-%nodefaultctor StepVisual_StyleContextSelect;
 class StepVisual_StyleContextSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -3152,7 +3101,6 @@ class StepVisual_StyleContextSelect : public StepData_SelectType {
 /******************************
 * class StepVisual_StyledItem *
 ******************************/
-%nodefaultctor StepVisual_StyledItem;
 class StepVisual_StyledItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -3234,7 +3182,6 @@ class StepVisual_StyledItem : public StepRepr_RepresentationItem {
 /************************************
 * class StepVisual_StyledItemTarget *
 ************************************/
-%nodefaultctor StepVisual_StyledItemTarget;
 class StepVisual_StyledItemTarget : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -3287,7 +3234,6 @@ class StepVisual_StyledItemTarget : public StepData_SelectType {
 /************************************
 * class StepVisual_SurfaceSideStyle *
 ************************************/
-%nodefaultctor StepVisual_SurfaceSideStyle;
 class StepVisual_SurfaceSideStyle : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3355,7 +3301,6 @@ class StepVisual_SurfaceSideStyle : public Standard_Transient {
 /****************************************
 * class StepVisual_SurfaceStyleBoundary *
 ****************************************/
-%nodefaultctor StepVisual_SurfaceStyleBoundary;
 class StepVisual_SurfaceStyleBoundary : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3397,7 +3342,6 @@ class StepVisual_SurfaceStyleBoundary : public Standard_Transient {
 /*******************************************
 * class StepVisual_SurfaceStyleControlGrid *
 *******************************************/
-%nodefaultctor StepVisual_SurfaceStyleControlGrid;
 class StepVisual_SurfaceStyleControlGrid : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3439,7 +3383,6 @@ class StepVisual_SurfaceStyleControlGrid : public Standard_Transient {
 /*********************************************
 * class StepVisual_SurfaceStyleElementSelect *
 *********************************************/
-%nodefaultctor StepVisual_SurfaceStyleElementSelect;
 class StepVisual_SurfaceStyleElementSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -3486,7 +3429,6 @@ class StepVisual_SurfaceStyleElementSelect : public StepData_SelectType {
 /****************************************
 * class StepVisual_SurfaceStyleFillArea *
 ****************************************/
-%nodefaultctor StepVisual_SurfaceStyleFillArea;
 class StepVisual_SurfaceStyleFillArea : public Standard_Transient {
 	public:
 		/****************** FillArea ******************/
@@ -3528,7 +3470,6 @@ class StepVisual_SurfaceStyleFillArea : public Standard_Transient {
 /*********************************************
 * class StepVisual_SurfaceStyleParameterLine *
 *********************************************/
-%nodefaultctor StepVisual_SurfaceStyleParameterLine;
 class StepVisual_SurfaceStyleParameterLine : public Standard_Transient {
 	public:
 		/****************** DirectionCounts ******************/
@@ -3596,7 +3537,6 @@ class StepVisual_SurfaceStyleParameterLine : public Standard_Transient {
 /*************************************************
 * class StepVisual_SurfaceStyleSegmentationCurve *
 *************************************************/
-%nodefaultctor StepVisual_SurfaceStyleSegmentationCurve;
 class StepVisual_SurfaceStyleSegmentationCurve : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3638,7 +3578,6 @@ class StepVisual_SurfaceStyleSegmentationCurve : public Standard_Transient {
 /******************************************
 * class StepVisual_SurfaceStyleSilhouette *
 ******************************************/
-%nodefaultctor StepVisual_SurfaceStyleSilhouette;
 class StepVisual_SurfaceStyleSilhouette : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3680,7 +3619,6 @@ class StepVisual_SurfaceStyleSilhouette : public Standard_Transient {
 /*************************************
 * class StepVisual_SurfaceStyleUsage *
 *************************************/
-%nodefaultctor StepVisual_SurfaceStyleUsage;
 class StepVisual_SurfaceStyleUsage : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -3736,7 +3674,6 @@ class StepVisual_SurfaceStyleUsage : public Standard_Transient {
 /****************************
 * class StepVisual_Template *
 ****************************/
-%nodefaultctor StepVisual_Template;
 class StepVisual_Template : public StepRepr_Representation {
 	public:
 		/****************** StepVisual_Template ******************/
@@ -3759,7 +3696,6 @@ class StepVisual_Template : public StepRepr_Representation {
 /************************************
 * class StepVisual_TemplateInstance *
 ************************************/
-%nodefaultctor StepVisual_TemplateInstance;
 class StepVisual_TemplateInstance : public StepRepr_MappedItem {
 	public:
 		/****************** StepVisual_TemplateInstance ******************/
@@ -3782,7 +3718,6 @@ class StepVisual_TemplateInstance : public StepRepr_MappedItem {
 /***********************************
 * class StepVisual_TessellatedItem *
 ***********************************/
-%nodefaultctor StepVisual_TessellatedItem;
 class StepVisual_TessellatedItem : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** StepVisual_TessellatedItem ******************/
@@ -3805,7 +3740,6 @@ class StepVisual_TessellatedItem : public StepGeom_GeometricRepresentationItem {
 /*******************************
 * class StepVisual_TextLiteral *
 *******************************/
-%nodefaultctor StepVisual_TextLiteral;
 class StepVisual_TextLiteral : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Alignment ******************/
@@ -3905,7 +3839,6 @@ class StepVisual_TextLiteral : public StepGeom_GeometricRepresentationItem {
 /***********************************
 * class StepVisual_TextOrCharacter *
 ***********************************/
-%nodefaultctor StepVisual_TextOrCharacter;
 class StepVisual_TextOrCharacter : public StepData_SelectType {
 	public:
 		/****************** AnnotationText ******************/
@@ -3952,7 +3885,6 @@ class StepVisual_TextOrCharacter : public StepData_SelectType {
 /*****************************
 * class StepVisual_TextStyle *
 *****************************/
-%nodefaultctor StepVisual_TextStyle;
 class StepVisual_TextStyle : public Standard_Transient {
 	public:
 		/****************** CharacterAppearance ******************/
@@ -4008,7 +3940,6 @@ class StepVisual_TextStyle : public Standard_Transient {
 /*******************************************
 * class StepVisual_TextStyleForDefinedFont *
 *******************************************/
-%nodefaultctor StepVisual_TextStyleForDefinedFont;
 class StepVisual_TextStyleForDefinedFont : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -4050,7 +3981,6 @@ class StepVisual_TextStyleForDefinedFont : public Standard_Transient {
 /******************************
 * class StepVisual_ViewVolume *
 ******************************/
-%nodefaultctor StepVisual_ViewVolume;
 class StepVisual_ViewVolume : public Standard_Transient {
 	public:
 		/****************** BackPlaneClipping ******************/
@@ -4204,7 +4134,6 @@ class StepVisual_ViewVolume : public Standard_Transient {
 /****************************************
 * class StepVisual_AnnotationOccurrence *
 ****************************************/
-%nodefaultctor StepVisual_AnnotationOccurrence;
 class StepVisual_AnnotationOccurrence : public StepVisual_StyledItem {
 	public:
 		/****************** StepVisual_AnnotationOccurrence ******************/
@@ -4227,7 +4156,6 @@ class StepVisual_AnnotationOccurrence : public StepVisual_StyledItem {
 /************************************
 * class StepVisual_BackgroundColour *
 ************************************/
-%nodefaultctor StepVisual_BackgroundColour;
 class StepVisual_BackgroundColour : public StepVisual_Colour {
 	public:
 		/****************** Init ******************/
@@ -4269,7 +4197,6 @@ class StepVisual_BackgroundColour : public StepVisual_Colour {
 /******************************************
 * class StepVisual_CameraImage2dWithScale *
 ******************************************/
-%nodefaultctor StepVisual_CameraImage2dWithScale;
 class StepVisual_CameraImage2dWithScale : public StepVisual_CameraImage {
 	public:
 		/****************** StepVisual_CameraImage2dWithScale ******************/
@@ -4291,7 +4218,6 @@ class StepVisual_CameraImage2dWithScale : public StepVisual_CameraImage {
 /******************************************
 * class StepVisual_CameraImage3dWithScale *
 ******************************************/
-%nodefaultctor StepVisual_CameraImage3dWithScale;
 class StepVisual_CameraImage3dWithScale : public StepVisual_CameraImage {
 	public:
 		/****************** StepVisual_CameraImage3dWithScale ******************/
@@ -4313,7 +4239,6 @@ class StepVisual_CameraImage3dWithScale : public StepVisual_CameraImage {
 /*********************************
 * class StepVisual_CameraModelD2 *
 *********************************/
-%nodefaultctor StepVisual_CameraModelD2;
 class StepVisual_CameraModelD2 : public StepVisual_CameraModel {
 	public:
 		/****************** Init ******************/
@@ -4371,7 +4296,6 @@ class StepVisual_CameraModelD2 : public StepVisual_CameraModel {
 /*********************************
 * class StepVisual_CameraModelD3 *
 *********************************/
-%nodefaultctor StepVisual_CameraModelD3;
 class StepVisual_CameraModelD3 : public StepVisual_CameraModel {
 	public:
 		/****************** Init ******************/
@@ -4429,7 +4353,6 @@ class StepVisual_CameraModelD3 : public StepVisual_CameraModel {
 /********************************************************************************************************
 * class StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation *
 ********************************************************************************************************/
-%nodefaultctor StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
 class StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation : public StepVisual_DraughtingModel {
 	public:
 		/****************** StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation ******************/
@@ -4451,7 +4374,6 @@ class StepVisual_CharacterizedObjectAndCharacterizedRepresentationAndDraughtingM
 /***************************************
 * class StepVisual_ColourSpecification *
 ***************************************/
-%nodefaultctor StepVisual_ColourSpecification;
 class StepVisual_ColourSpecification : public StepVisual_Colour {
 	public:
 		/****************** Init ******************/
@@ -4493,7 +4415,6 @@ class StepVisual_ColourSpecification : public StepVisual_Colour {
 /*******************************************
 * class StepVisual_CompositeTextWithExtent *
 *******************************************/
-%nodefaultctor StepVisual_CompositeTextWithExtent;
 class StepVisual_CompositeTextWithExtent : public StepVisual_CompositeText {
 	public:
 		/****************** Extent ******************/
@@ -4539,7 +4460,6 @@ class StepVisual_CompositeTextWithExtent : public StepVisual_CompositeText {
 /************************************************
 * class StepVisual_ContextDependentInvisibility *
 ************************************************/
-%nodefaultctor StepVisual_ContextDependentInvisibility;
 class StepVisual_ContextDependentInvisibility : public StepVisual_Invisibility {
 	public:
 		/****************** Init ******************/
@@ -4583,7 +4503,6 @@ class StepVisual_ContextDependentInvisibility : public StepVisual_Invisibility {
 /***********************************
 * class StepVisual_CoordinatesList *
 ***********************************/
-%nodefaultctor StepVisual_CoordinatesList;
 class StepVisual_CoordinatesList : public StepVisual_TessellatedItem {
 	public:
 		/****************** Init ******************/
@@ -4620,7 +4539,6 @@ class StepVisual_CoordinatesList : public StepVisual_TessellatedItem {
 /***********************************************************************
 * class StepVisual_MechanicalDesignGeometricPresentationRepresentation *
 ***********************************************************************/
-%nodefaultctor StepVisual_MechanicalDesignGeometricPresentationRepresentation;
 class StepVisual_MechanicalDesignGeometricPresentationRepresentation : public StepVisual_PresentationRepresentation {
 	public:
 		/****************** StepVisual_MechanicalDesignGeometricPresentationRepresentation ******************/
@@ -4643,7 +4561,6 @@ class StepVisual_MechanicalDesignGeometricPresentationRepresentation : public St
 /****************************************
 * class StepVisual_OverRidingStyledItem *
 ****************************************/
-%nodefaultctor StepVisual_OverRidingStyledItem;
 class StepVisual_OverRidingStyledItem : public StepVisual_StyledItem {
 	public:
 		/****************** Init ******************/
@@ -4691,7 +4608,6 @@ class StepVisual_OverRidingStyledItem : public StepVisual_StyledItem {
 /*****************************
 * class StepVisual_PlanarBox *
 *****************************/
-%nodefaultctor StepVisual_PlanarBox;
 class StepVisual_PlanarBox : public StepVisual_PlanarExtent {
 	public:
 		/****************** Init ******************/
@@ -4739,7 +4655,6 @@ class StepVisual_PlanarBox : public StepVisual_PlanarExtent {
 /************************************
 * class StepVisual_PreDefinedColour *
 ************************************/
-%nodefaultctor StepVisual_PreDefinedColour;
 class StepVisual_PreDefinedColour : public StepVisual_Colour {
 	public:
 		/****************** GetPreDefinedItem ******************/
@@ -4776,7 +4691,6 @@ class StepVisual_PreDefinedColour : public StepVisual_Colour {
 /***************************************
 * class StepVisual_PreDefinedCurveFont *
 ***************************************/
-%nodefaultctor StepVisual_PreDefinedCurveFont;
 class StepVisual_PreDefinedCurveFont : public StepVisual_PreDefinedItem {
 	public:
 		/****************** StepVisual_PreDefinedCurveFont ******************/
@@ -4799,7 +4713,6 @@ class StepVisual_PreDefinedCurveFont : public StepVisual_PreDefinedItem {
 /**************************************
 * class StepVisual_PreDefinedTextFont *
 **************************************/
-%nodefaultctor StepVisual_PreDefinedTextFont;
 class StepVisual_PreDefinedTextFont : public StepVisual_PreDefinedItem {
 	public:
 		/****************** StepVisual_PreDefinedTextFont ******************/
@@ -4822,7 +4735,6 @@ class StepVisual_PreDefinedTextFont : public StepVisual_PreDefinedItem {
 /************************************
 * class StepVisual_PresentationArea *
 ************************************/
-%nodefaultctor StepVisual_PresentationArea;
 class StepVisual_PresentationArea : public StepVisual_PresentationRepresentation {
 	public:
 		/****************** StepVisual_PresentationArea ******************/
@@ -4845,7 +4757,6 @@ class StepVisual_PresentationArea : public StepVisual_PresentationRepresentation
 /**********************************************
 * class StepVisual_PresentationStyleByContext *
 **********************************************/
-%nodefaultctor StepVisual_PresentationStyleByContext;
 class StepVisual_PresentationStyleByContext : public StepVisual_PresentationStyleAssignment {
 	public:
 		/****************** Init ******************/
@@ -4889,7 +4800,6 @@ class StepVisual_PresentationStyleByContext : public StepVisual_PresentationStyl
 /************************************
 * class StepVisual_PresentationView *
 ************************************/
-%nodefaultctor StepVisual_PresentationView;
 class StepVisual_PresentationView : public StepVisual_PresentationRepresentation {
 	public:
 		/****************** StepVisual_PresentationView ******************/
@@ -4912,7 +4822,6 @@ class StepVisual_PresentationView : public StepVisual_PresentationRepresentation
 /***************************************************
 * class StepVisual_TessellatedAnnotationOccurrence *
 ***************************************************/
-%nodefaultctor StepVisual_TessellatedAnnotationOccurrence;
 class StepVisual_TessellatedAnnotationOccurrence : public StepVisual_StyledItem {
 	public:
 		/****************** StepVisual_TessellatedAnnotationOccurrence ******************/
@@ -4935,7 +4844,6 @@ class StepVisual_TessellatedAnnotationOccurrence : public StepVisual_StyledItem 
 /***************************************
 * class StepVisual_TessellatedCurveSet *
 ***************************************/
-%nodefaultctor StepVisual_TessellatedCurveSet;
 class StepVisual_TessellatedCurveSet : public StepVisual_TessellatedItem {
 	public:
 		/****************** CoordList ******************/
@@ -4979,7 +4887,6 @@ class StepVisual_TessellatedCurveSet : public StepVisual_TessellatedItem {
 /*******************************************
 * class StepVisual_TessellatedGeometricSet *
 *******************************************/
-%nodefaultctor StepVisual_TessellatedGeometricSet;
 class StepVisual_TessellatedGeometricSet : public StepVisual_TessellatedItem {
 	public:
 		/****************** Init ******************/
@@ -5016,7 +4923,6 @@ class StepVisual_TessellatedGeometricSet : public StepVisual_TessellatedItem {
 /***************************************************
 * class StepVisual_TextStyleWithBoxCharacteristics *
 ***************************************************/
-%nodefaultctor StepVisual_TextStyleWithBoxCharacteristics;
 class StepVisual_TextStyleWithBoxCharacteristics : public StepVisual_TextStyle {
 	public:
 		/****************** Characteristics ******************/
@@ -5074,7 +4980,6 @@ class StepVisual_TextStyleWithBoxCharacteristics : public StepVisual_TextStyle {
 /*********************************************
 * class StepVisual_AnnotationCurveOccurrence *
 *********************************************/
-%nodefaultctor StepVisual_AnnotationCurveOccurrence;
 class StepVisual_AnnotationCurveOccurrence : public StepVisual_AnnotationOccurrence {
 	public:
 		/****************** StepVisual_AnnotationCurveOccurrence ******************/
@@ -5097,7 +5002,6 @@ class StepVisual_AnnotationCurveOccurrence : public StepVisual_AnnotationOccurre
 /************************************************
 * class StepVisual_AnnotationFillAreaOccurrence *
 ************************************************/
-%nodefaultctor StepVisual_AnnotationFillAreaOccurrence;
 class StepVisual_AnnotationFillAreaOccurrence : public StepVisual_AnnotationOccurrence {
 	public:
 		/****************** FillStyleTarget ******************/
@@ -5148,7 +5052,6 @@ class StepVisual_AnnotationFillAreaOccurrence : public StepVisual_AnnotationOccu
 /***********************************
 * class StepVisual_AnnotationPlane *
 ***********************************/
-%nodefaultctor StepVisual_AnnotationPlane;
 class StepVisual_AnnotationPlane : public StepVisual_AnnotationOccurrence {
 	public:
 		/****************** Elements ******************/
@@ -5222,7 +5125,6 @@ class StepVisual_AnnotationPlane : public StepVisual_AnnotationOccurrence {
 /********************************************
 * class StepVisual_AnnotationTextOccurrence *
 ********************************************/
-%nodefaultctor StepVisual_AnnotationTextOccurrence;
 class StepVisual_AnnotationTextOccurrence : public StepVisual_AnnotationOccurrence {
 	public:
 		/****************** StepVisual_AnnotationTextOccurrence ******************/
@@ -5245,7 +5147,6 @@ class StepVisual_AnnotationTextOccurrence : public StepVisual_AnnotationOccurren
 /**********************************************
 * class StepVisual_CameraModelD3MultiClipping *
 **********************************************/
-%nodefaultctor StepVisual_CameraModelD3MultiClipping;
 class StepVisual_CameraModelD3MultiClipping : public StepVisual_CameraModelD3 {
 	public:
 		/****************** Init ******************/
@@ -5293,7 +5194,6 @@ class StepVisual_CameraModelD3MultiClipping : public StepVisual_CameraModelD3 {
 /*****************************
 * class StepVisual_ColourRgb *
 *****************************/
-%nodefaultctor StepVisual_ColourRgb;
 class StepVisual_ColourRgb : public StepVisual_ColourSpecification {
 	public:
 		/****************** Blue ******************/
@@ -5365,7 +5265,6 @@ class StepVisual_ColourRgb : public StepVisual_ColourSpecification {
 /********************************************************
 * class StepVisual_ContextDependentOverRidingStyledItem *
 ********************************************************/
-%nodefaultctor StepVisual_ContextDependentOverRidingStyledItem;
 class StepVisual_ContextDependentOverRidingStyledItem : public StepVisual_OverRidingStyledItem {
 	public:
 		/****************** Init ******************/
@@ -5427,7 +5326,6 @@ class StepVisual_ContextDependentOverRidingStyledItem : public StepVisual_OverRi
 /**************************************************
 * class StepVisual_DraughtingAnnotationOccurrence *
 **************************************************/
-%nodefaultctor StepVisual_DraughtingAnnotationOccurrence;
 class StepVisual_DraughtingAnnotationOccurrence : public StepVisual_AnnotationOccurrence {
 	public:
 		/****************** StepVisual_DraughtingAnnotationOccurrence ******************/
@@ -5450,7 +5348,6 @@ class StepVisual_DraughtingAnnotationOccurrence : public StepVisual_AnnotationOc
 /**********************************************
 * class StepVisual_DraughtingPreDefinedColour *
 **********************************************/
-%nodefaultctor StepVisual_DraughtingPreDefinedColour;
 class StepVisual_DraughtingPreDefinedColour : public StepVisual_PreDefinedColour {
 	public:
 		/****************** StepVisual_DraughtingPreDefinedColour ******************/
@@ -5473,7 +5370,6 @@ class StepVisual_DraughtingPreDefinedColour : public StepVisual_PreDefinedColour
 /*************************************************
 * class StepVisual_DraughtingPreDefinedCurveFont *
 *************************************************/
-%nodefaultctor StepVisual_DraughtingPreDefinedCurveFont;
 class StepVisual_DraughtingPreDefinedCurveFont : public StepVisual_PreDefinedCurveFont {
 	public:
 		/****************** StepVisual_DraughtingPreDefinedCurveFont ******************/
@@ -5496,7 +5392,6 @@ class StepVisual_DraughtingPreDefinedCurveFont : public StepVisual_PreDefinedCur
 /*************************************************************
 * class StepVisual_MechanicalDesignGeometricPresentationArea *
 *************************************************************/
-%nodefaultctor StepVisual_MechanicalDesignGeometricPresentationArea;
 class StepVisual_MechanicalDesignGeometricPresentationArea : public StepVisual_PresentationArea {
 	public:
 		/****************** StepVisual_MechanicalDesignGeometricPresentationArea ******************/
@@ -5519,7 +5414,6 @@ class StepVisual_MechanicalDesignGeometricPresentationArea : public StepVisual_P
 /***********************************************************************************************************
 * class StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem *
 ***********************************************************************************************************/
-%nodefaultctor StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
 class StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem : public StepVisual_AnnotationCurveOccurrence {
 	public:
 		/****************** StepVisual_AnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem ******************/

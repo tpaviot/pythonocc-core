@@ -76,7 +76,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepvisual.html
 /*************************************************
 * class RWStepVisual_RWAnnotationCurveOccurrence *
 *************************************************/
-%nodefaultctor RWStepVisual_RWAnnotationCurveOccurrence;
 class RWStepVisual_RWAnnotationCurveOccurrence {
 	public:
 		/****************** RWStepVisual_RWAnnotationCurveOccurrence ******************/
@@ -127,7 +126,6 @@ class RWStepVisual_RWAnnotationCurveOccurrence {
 /***************************************************************************************************************
 * class RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem *
 ***************************************************************************************************************/
-%nodefaultctor RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem;
 class RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem {
 	public:
 		/****************** RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomReprItemAndReprItemAndStyledItem ******************/
@@ -178,7 +176,6 @@ class RWStepVisual_RWAnnotationCurveOccurrenceAndAnnotationOccurrenceAndGeomRepr
 /******************************************
 * class RWStepVisual_RWAnnotationFillArea *
 ******************************************/
-%nodefaultctor RWStepVisual_RWAnnotationFillArea;
 class RWStepVisual_RWAnnotationFillArea {
 	public:
 		/****************** RWStepVisual_RWAnnotationFillArea ******************/
@@ -229,7 +226,6 @@ class RWStepVisual_RWAnnotationFillArea {
 /****************************************************
 * class RWStepVisual_RWAnnotationFillAreaOccurrence *
 ****************************************************/
-%nodefaultctor RWStepVisual_RWAnnotationFillAreaOccurrence;
 class RWStepVisual_RWAnnotationFillAreaOccurrence {
 	public:
 		/****************** RWStepVisual_RWAnnotationFillAreaOccurrence ******************/
@@ -280,7 +276,6 @@ class RWStepVisual_RWAnnotationFillAreaOccurrence {
 /********************************************
 * class RWStepVisual_RWAnnotationOccurrence *
 ********************************************/
-%nodefaultctor RWStepVisual_RWAnnotationOccurrence;
 class RWStepVisual_RWAnnotationOccurrence {
 	public:
 		/****************** RWStepVisual_RWAnnotationOccurrence ******************/
@@ -331,7 +326,6 @@ class RWStepVisual_RWAnnotationOccurrence {
 /***************************************
 * class RWStepVisual_RWAnnotationPlane *
 ***************************************/
-%nodefaultctor RWStepVisual_RWAnnotationPlane;
 class RWStepVisual_RWAnnotationPlane {
 	public:
 		/****************** RWStepVisual_RWAnnotationPlane ******************/
@@ -382,7 +376,6 @@ class RWStepVisual_RWAnnotationPlane {
 /*********************************
 * class RWStepVisual_RWAreaInSet *
 *********************************/
-%nodefaultctor RWStepVisual_RWAreaInSet;
 class RWStepVisual_RWAreaInSet {
 	public:
 		/****************** RWStepVisual_RWAreaInSet ******************/
@@ -433,7 +426,6 @@ class RWStepVisual_RWAreaInSet {
 /****************************************
 * class RWStepVisual_RWBackgroundColour *
 ****************************************/
-%nodefaultctor RWStepVisual_RWBackgroundColour;
 class RWStepVisual_RWBackgroundColour {
 	public:
 		/****************** RWStepVisual_RWBackgroundColour ******************/
@@ -484,7 +476,6 @@ class RWStepVisual_RWBackgroundColour {
 /***********************************
 * class RWStepVisual_RWCameraImage *
 ***********************************/
-%nodefaultctor RWStepVisual_RWCameraImage;
 class RWStepVisual_RWCameraImage {
 	public:
 		/****************** RWStepVisual_RWCameraImage ******************/
@@ -535,7 +526,6 @@ class RWStepVisual_RWCameraImage {
 /***********************************
 * class RWStepVisual_RWCameraModel *
 ***********************************/
-%nodefaultctor RWStepVisual_RWCameraModel;
 class RWStepVisual_RWCameraModel {
 	public:
 		/****************** RWStepVisual_RWCameraModel ******************/
@@ -577,7 +567,6 @@ class RWStepVisual_RWCameraModel {
 /*************************************
 * class RWStepVisual_RWCameraModelD2 *
 *************************************/
-%nodefaultctor RWStepVisual_RWCameraModelD2;
 class RWStepVisual_RWCameraModelD2 {
 	public:
 		/****************** RWStepVisual_RWCameraModelD2 ******************/
@@ -628,7 +617,6 @@ class RWStepVisual_RWCameraModelD2 {
 /*************************************
 * class RWStepVisual_RWCameraModelD3 *
 *************************************/
-%nodefaultctor RWStepVisual_RWCameraModelD3;
 class RWStepVisual_RWCameraModelD3 {
 	public:
 		/****************** RWStepVisual_RWCameraModelD3 ******************/
@@ -679,7 +667,6 @@ class RWStepVisual_RWCameraModelD3 {
 /**************************************************
 * class RWStepVisual_RWCameraModelD3MultiClipping *
 **************************************************/
-%nodefaultctor RWStepVisual_RWCameraModelD3MultiClipping;
 class RWStepVisual_RWCameraModelD3MultiClipping {
 	public:
 		/****************** RWStepVisual_RWCameraModelD3MultiClipping ******************/
@@ -730,7 +717,6 @@ class RWStepVisual_RWCameraModelD3MultiClipping {
 /**************************************************************
 * class RWStepVisual_RWCameraModelD3MultiClippingIntersection *
 **************************************************************/
-%nodefaultctor RWStepVisual_RWCameraModelD3MultiClippingIntersection;
 class RWStepVisual_RWCameraModelD3MultiClippingIntersection {
 	public:
 		/****************** RWStepVisual_RWCameraModelD3MultiClippingIntersection ******************/
@@ -781,7 +767,6 @@ class RWStepVisual_RWCameraModelD3MultiClippingIntersection {
 /*******************************************************
 * class RWStepVisual_RWCameraModelD3MultiClippingUnion *
 *******************************************************/
-%nodefaultctor RWStepVisual_RWCameraModelD3MultiClippingUnion;
 class RWStepVisual_RWCameraModelD3MultiClippingUnion {
 	public:
 		/****************** RWStepVisual_RWCameraModelD3MultiClippingUnion ******************/
@@ -832,7 +817,6 @@ class RWStepVisual_RWCameraModelD3MultiClippingUnion {
 /***********************************
 * class RWStepVisual_RWCameraUsage *
 ***********************************/
-%nodefaultctor RWStepVisual_RWCameraUsage;
 class RWStepVisual_RWCameraUsage {
 	public:
 		/****************** RWStepVisual_RWCameraUsage ******************/
@@ -883,7 +867,6 @@ class RWStepVisual_RWCameraUsage {
 /************************************************************************************************************
 * class RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation *
 ************************************************************************************************************/
-%nodefaultctor RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation;
 class RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation {
 	public:
 		/****************** RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraughtingModelAndRepresentation ******************/
@@ -934,7 +917,6 @@ class RWStepVisual_RWCharacterizedObjectAndCharacterizedRepresentationAndDraught
 /******************************
 * class RWStepVisual_RWColour *
 ******************************/
-%nodefaultctor RWStepVisual_RWColour;
 class RWStepVisual_RWColour {
 	public:
 		/****************** RWStepVisual_RWColour ******************/
@@ -976,7 +958,6 @@ class RWStepVisual_RWColour {
 /*********************************
 * class RWStepVisual_RWColourRgb *
 *********************************/
-%nodefaultctor RWStepVisual_RWColourRgb;
 class RWStepVisual_RWColourRgb {
 	public:
 		/****************** RWStepVisual_RWColourRgb ******************/
@@ -1018,7 +999,6 @@ class RWStepVisual_RWColourRgb {
 /*******************************************
 * class RWStepVisual_RWColourSpecification *
 *******************************************/
-%nodefaultctor RWStepVisual_RWColourSpecification;
 class RWStepVisual_RWColourSpecification {
 	public:
 		/****************** RWStepVisual_RWColourSpecification ******************/
@@ -1060,7 +1040,6 @@ class RWStepVisual_RWColourSpecification {
 /*************************************
 * class RWStepVisual_RWCompositeText *
 *************************************/
-%nodefaultctor RWStepVisual_RWCompositeText;
 class RWStepVisual_RWCompositeText {
 	public:
 		/****************** RWStepVisual_RWCompositeText ******************/
@@ -1111,7 +1090,6 @@ class RWStepVisual_RWCompositeText {
 /***********************************************
 * class RWStepVisual_RWCompositeTextWithExtent *
 ***********************************************/
-%nodefaultctor RWStepVisual_RWCompositeTextWithExtent;
 class RWStepVisual_RWCompositeTextWithExtent {
 	public:
 		/****************** RWStepVisual_RWCompositeTextWithExtent ******************/
@@ -1162,7 +1140,6 @@ class RWStepVisual_RWCompositeTextWithExtent {
 /****************************************************
 * class RWStepVisual_RWContextDependentInvisibility *
 ****************************************************/
-%nodefaultctor RWStepVisual_RWContextDependentInvisibility;
 class RWStepVisual_RWContextDependentInvisibility {
 	public:
 		/****************** RWStepVisual_RWContextDependentInvisibility ******************/
@@ -1213,7 +1190,6 @@ class RWStepVisual_RWContextDependentInvisibility {
 /************************************************************
 * class RWStepVisual_RWContextDependentOverRidingStyledItem *
 ************************************************************/
-%nodefaultctor RWStepVisual_RWContextDependentOverRidingStyledItem;
 class RWStepVisual_RWContextDependentOverRidingStyledItem {
 	public:
 		/****************** RWStepVisual_RWContextDependentOverRidingStyledItem ******************/
@@ -1264,7 +1240,6 @@ class RWStepVisual_RWContextDependentOverRidingStyledItem {
 /***************************************
 * class RWStepVisual_RWCoordinatesList *
 ***************************************/
-%nodefaultctor RWStepVisual_RWCoordinatesList;
 class RWStepVisual_RWCoordinatesList {
 	public:
 		/****************** RWStepVisual_RWCoordinatesList ******************/
@@ -1306,7 +1281,6 @@ class RWStepVisual_RWCoordinatesList {
 /**********************************
 * class RWStepVisual_RWCurveStyle *
 **********************************/
-%nodefaultctor RWStepVisual_RWCurveStyle;
 class RWStepVisual_RWCurveStyle {
 	public:
 		/****************** RWStepVisual_RWCurveStyle ******************/
@@ -1357,7 +1331,6 @@ class RWStepVisual_RWCurveStyle {
 /**************************************
 * class RWStepVisual_RWCurveStyleFont *
 **************************************/
-%nodefaultctor RWStepVisual_RWCurveStyleFont;
 class RWStepVisual_RWCurveStyleFont {
 	public:
 		/****************** RWStepVisual_RWCurveStyleFont ******************/
@@ -1408,7 +1381,6 @@ class RWStepVisual_RWCurveStyleFont {
 /*********************************************
 * class RWStepVisual_RWCurveStyleFontPattern *
 *********************************************/
-%nodefaultctor RWStepVisual_RWCurveStyleFontPattern;
 class RWStepVisual_RWCurveStyleFontPattern {
 	public:
 		/****************** RWStepVisual_RWCurveStyleFontPattern ******************/
@@ -1450,7 +1422,6 @@ class RWStepVisual_RWCurveStyleFontPattern {
 /*****************************************
 * class RWStepVisual_RWDraughtingCallout *
 *****************************************/
-%nodefaultctor RWStepVisual_RWDraughtingCallout;
 class RWStepVisual_RWDraughtingCallout {
 	public:
 		/****************** RWStepVisual_RWDraughtingCallout ******************/
@@ -1501,7 +1472,6 @@ class RWStepVisual_RWDraughtingCallout {
 /***************************************
 * class RWStepVisual_RWDraughtingModel *
 ***************************************/
-%nodefaultctor RWStepVisual_RWDraughtingModel;
 class RWStepVisual_RWDraughtingModel {
 	public:
 		/****************** RWStepVisual_RWDraughtingModel ******************/
@@ -1556,7 +1526,6 @@ class RWStepVisual_RWDraughtingModel {
 /**************************************************
 * class RWStepVisual_RWDraughtingPreDefinedColour *
 **************************************************/
-%nodefaultctor RWStepVisual_RWDraughtingPreDefinedColour;
 class RWStepVisual_RWDraughtingPreDefinedColour {
 	public:
 		/****************** RWStepVisual_RWDraughtingPreDefinedColour ******************/
@@ -1598,7 +1567,6 @@ class RWStepVisual_RWDraughtingPreDefinedColour {
 /*****************************************************
 * class RWStepVisual_RWDraughtingPreDefinedCurveFont *
 *****************************************************/
-%nodefaultctor RWStepVisual_RWDraughtingPreDefinedCurveFont;
 class RWStepVisual_RWDraughtingPreDefinedCurveFont {
 	public:
 		/****************** RWStepVisual_RWDraughtingPreDefinedCurveFont ******************/
@@ -1640,7 +1608,6 @@ class RWStepVisual_RWDraughtingPreDefinedCurveFont {
 /**************************************************
 * class RWStepVisual_RWExternallyDefinedCurveFont *
 **************************************************/
-%nodefaultctor RWStepVisual_RWExternallyDefinedCurveFont;
 class RWStepVisual_RWExternallyDefinedCurveFont {
 	public:
 		/****************** RWStepVisual_RWExternallyDefinedCurveFont ******************/
@@ -1695,7 +1662,6 @@ class RWStepVisual_RWExternallyDefinedCurveFont {
 /*************************************
 * class RWStepVisual_RWFillAreaStyle *
 *************************************/
-%nodefaultctor RWStepVisual_RWFillAreaStyle;
 class RWStepVisual_RWFillAreaStyle {
 	public:
 		/****************** RWStepVisual_RWFillAreaStyle ******************/
@@ -1746,7 +1712,6 @@ class RWStepVisual_RWFillAreaStyle {
 /*******************************************
 * class RWStepVisual_RWFillAreaStyleColour *
 *******************************************/
-%nodefaultctor RWStepVisual_RWFillAreaStyleColour;
 class RWStepVisual_RWFillAreaStyleColour {
 	public:
 		/****************** RWStepVisual_RWFillAreaStyleColour ******************/
@@ -1797,7 +1762,6 @@ class RWStepVisual_RWFillAreaStyleColour {
 /************************************
 * class RWStepVisual_RWInvisibility *
 ************************************/
-%nodefaultctor RWStepVisual_RWInvisibility;
 class RWStepVisual_RWInvisibility {
 	public:
 		/****************** RWStepVisual_RWInvisibility ******************/
@@ -1848,7 +1812,6 @@ class RWStepVisual_RWInvisibility {
 /*****************************************************************
 * class RWStepVisual_RWMechanicalDesignGeometricPresentationArea *
 *****************************************************************/
-%nodefaultctor RWStepVisual_RWMechanicalDesignGeometricPresentationArea;
 class RWStepVisual_RWMechanicalDesignGeometricPresentationArea {
 	public:
 		/****************** RWStepVisual_RWMechanicalDesignGeometricPresentationArea ******************/
@@ -1899,7 +1862,6 @@ class RWStepVisual_RWMechanicalDesignGeometricPresentationArea {
 /***************************************************************************
 * class RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation *
 ***************************************************************************/
-%nodefaultctor RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation;
 class RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation {
 	public:
 		/****************** RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation ******************/
@@ -1950,7 +1912,6 @@ class RWStepVisual_RWMechanicalDesignGeometricPresentationRepresentation {
 /********************************************
 * class RWStepVisual_RWOverRidingStyledItem *
 ********************************************/
-%nodefaultctor RWStepVisual_RWOverRidingStyledItem;
 class RWStepVisual_RWOverRidingStyledItem {
 	public:
 		/****************** RWStepVisual_RWOverRidingStyledItem ******************/
@@ -2001,7 +1962,6 @@ class RWStepVisual_RWOverRidingStyledItem {
 /*********************************
 * class RWStepVisual_RWPlanarBox *
 *********************************/
-%nodefaultctor RWStepVisual_RWPlanarBox;
 class RWStepVisual_RWPlanarBox {
 	public:
 		/****************** RWStepVisual_RWPlanarBox ******************/
@@ -2052,7 +2012,6 @@ class RWStepVisual_RWPlanarBox {
 /************************************
 * class RWStepVisual_RWPlanarExtent *
 ************************************/
-%nodefaultctor RWStepVisual_RWPlanarExtent;
 class RWStepVisual_RWPlanarExtent {
 	public:
 		/****************** RWStepVisual_RWPlanarExtent ******************/
@@ -2094,7 +2053,6 @@ class RWStepVisual_RWPlanarExtent {
 /**********************************
 * class RWStepVisual_RWPointStyle *
 **********************************/
-%nodefaultctor RWStepVisual_RWPointStyle;
 class RWStepVisual_RWPointStyle {
 	public:
 		/****************** RWStepVisual_RWPointStyle ******************/
@@ -2145,7 +2103,6 @@ class RWStepVisual_RWPointStyle {
 /****************************************
 * class RWStepVisual_RWPreDefinedColour *
 ****************************************/
-%nodefaultctor RWStepVisual_RWPreDefinedColour;
 class RWStepVisual_RWPreDefinedColour {
 	public:
 		/****************** RWStepVisual_RWPreDefinedColour ******************/
@@ -2187,7 +2144,6 @@ class RWStepVisual_RWPreDefinedColour {
 /*******************************************
 * class RWStepVisual_RWPreDefinedCurveFont *
 *******************************************/
-%nodefaultctor RWStepVisual_RWPreDefinedCurveFont;
 class RWStepVisual_RWPreDefinedCurveFont {
 	public:
 		/****************** RWStepVisual_RWPreDefinedCurveFont ******************/
@@ -2229,7 +2185,6 @@ class RWStepVisual_RWPreDefinedCurveFont {
 /**************************************
 * class RWStepVisual_RWPreDefinedItem *
 **************************************/
-%nodefaultctor RWStepVisual_RWPreDefinedItem;
 class RWStepVisual_RWPreDefinedItem {
 	public:
 		/****************** RWStepVisual_RWPreDefinedItem ******************/
@@ -2271,7 +2226,6 @@ class RWStepVisual_RWPreDefinedItem {
 /****************************************
 * class RWStepVisual_RWPresentationArea *
 ****************************************/
-%nodefaultctor RWStepVisual_RWPresentationArea;
 class RWStepVisual_RWPresentationArea {
 	public:
 		/****************** RWStepVisual_RWPresentationArea ******************/
@@ -2322,7 +2276,6 @@ class RWStepVisual_RWPresentationArea {
 /***************************************************
 * class RWStepVisual_RWPresentationLayerAssignment *
 ***************************************************/
-%nodefaultctor RWStepVisual_RWPresentationLayerAssignment;
 class RWStepVisual_RWPresentationLayerAssignment {
 	public:
 		/****************** RWStepVisual_RWPresentationLayerAssignment ******************/
@@ -2373,7 +2326,6 @@ class RWStepVisual_RWPresentationLayerAssignment {
 /**********************************************
 * class RWStepVisual_RWPresentationLayerUsage *
 **********************************************/
-%nodefaultctor RWStepVisual_RWPresentationLayerUsage;
 class RWStepVisual_RWPresentationLayerUsage {
 	public:
 		/****************** RWStepVisual_RWPresentationLayerUsage ******************/
@@ -2424,7 +2376,6 @@ class RWStepVisual_RWPresentationLayerUsage {
 /**************************************************
 * class RWStepVisual_RWPresentationRepresentation *
 **************************************************/
-%nodefaultctor RWStepVisual_RWPresentationRepresentation;
 class RWStepVisual_RWPresentationRepresentation {
 	public:
 		/****************** RWStepVisual_RWPresentationRepresentation ******************/
@@ -2475,7 +2426,6 @@ class RWStepVisual_RWPresentationRepresentation {
 /***************************************
 * class RWStepVisual_RWPresentationSet *
 ***************************************/
-%nodefaultctor RWStepVisual_RWPresentationSet;
 class RWStepVisual_RWPresentationSet {
 	public:
 		/****************** RWStepVisual_RWPresentationSet ******************/
@@ -2517,7 +2467,6 @@ class RWStepVisual_RWPresentationSet {
 /****************************************
 * class RWStepVisual_RWPresentationSize *
 ****************************************/
-%nodefaultctor RWStepVisual_RWPresentationSize;
 class RWStepVisual_RWPresentationSize {
 	public:
 		/****************** RWStepVisual_RWPresentationSize ******************/
@@ -2568,7 +2517,6 @@ class RWStepVisual_RWPresentationSize {
 /***************************************************
 * class RWStepVisual_RWPresentationStyleAssignment *
 ***************************************************/
-%nodefaultctor RWStepVisual_RWPresentationStyleAssignment;
 class RWStepVisual_RWPresentationStyleAssignment {
 	public:
 		/****************** RWStepVisual_RWPresentationStyleAssignment ******************/
@@ -2619,7 +2567,6 @@ class RWStepVisual_RWPresentationStyleAssignment {
 /**************************************************
 * class RWStepVisual_RWPresentationStyleByContext *
 **************************************************/
-%nodefaultctor RWStepVisual_RWPresentationStyleByContext;
 class RWStepVisual_RWPresentationStyleByContext {
 	public:
 		/****************** RWStepVisual_RWPresentationStyleByContext ******************/
@@ -2670,7 +2617,6 @@ class RWStepVisual_RWPresentationStyleByContext {
 /****************************************
 * class RWStepVisual_RWPresentationView *
 ****************************************/
-%nodefaultctor RWStepVisual_RWPresentationView;
 class RWStepVisual_RWPresentationView {
 	public:
 		/****************** RWStepVisual_RWPresentationView ******************/
@@ -2721,7 +2667,6 @@ class RWStepVisual_RWPresentationView {
 /***************************************************
 * class RWStepVisual_RWPresentedItemRepresentation *
 ***************************************************/
-%nodefaultctor RWStepVisual_RWPresentedItemRepresentation;
 class RWStepVisual_RWPresentedItemRepresentation {
 	public:
 		/****************** RWStepVisual_RWPresentedItemRepresentation ******************/
@@ -2772,7 +2717,6 @@ class RWStepVisual_RWPresentedItemRepresentation {
 /**********************************
 * class RWStepVisual_RWStyledItem *
 **********************************/
-%nodefaultctor RWStepVisual_RWStyledItem;
 class RWStepVisual_RWStyledItem {
 	public:
 		/****************** RWStepVisual_RWStyledItem ******************/
@@ -2823,7 +2767,6 @@ class RWStepVisual_RWStyledItem {
 /****************************************
 * class RWStepVisual_RWSurfaceSideStyle *
 ****************************************/
-%nodefaultctor RWStepVisual_RWSurfaceSideStyle;
 class RWStepVisual_RWSurfaceSideStyle {
 	public:
 		/****************** RWStepVisual_RWSurfaceSideStyle ******************/
@@ -2874,7 +2817,6 @@ class RWStepVisual_RWSurfaceSideStyle {
 /********************************************
 * class RWStepVisual_RWSurfaceStyleBoundary *
 ********************************************/
-%nodefaultctor RWStepVisual_RWSurfaceStyleBoundary;
 class RWStepVisual_RWSurfaceStyleBoundary {
 	public:
 		/****************** RWStepVisual_RWSurfaceStyleBoundary ******************/
@@ -2925,7 +2867,6 @@ class RWStepVisual_RWSurfaceStyleBoundary {
 /***********************************************
 * class RWStepVisual_RWSurfaceStyleControlGrid *
 ***********************************************/
-%nodefaultctor RWStepVisual_RWSurfaceStyleControlGrid;
 class RWStepVisual_RWSurfaceStyleControlGrid {
 	public:
 		/****************** RWStepVisual_RWSurfaceStyleControlGrid ******************/
@@ -2976,7 +2917,6 @@ class RWStepVisual_RWSurfaceStyleControlGrid {
 /********************************************
 * class RWStepVisual_RWSurfaceStyleFillArea *
 ********************************************/
-%nodefaultctor RWStepVisual_RWSurfaceStyleFillArea;
 class RWStepVisual_RWSurfaceStyleFillArea {
 	public:
 		/****************** RWStepVisual_RWSurfaceStyleFillArea ******************/
@@ -3027,7 +2967,6 @@ class RWStepVisual_RWSurfaceStyleFillArea {
 /*************************************************
 * class RWStepVisual_RWSurfaceStyleParameterLine *
 *************************************************/
-%nodefaultctor RWStepVisual_RWSurfaceStyleParameterLine;
 class RWStepVisual_RWSurfaceStyleParameterLine {
 	public:
 		/****************** RWStepVisual_RWSurfaceStyleParameterLine ******************/
@@ -3078,7 +3017,6 @@ class RWStepVisual_RWSurfaceStyleParameterLine {
 /*****************************************************
 * class RWStepVisual_RWSurfaceStyleSegmentationCurve *
 *****************************************************/
-%nodefaultctor RWStepVisual_RWSurfaceStyleSegmentationCurve;
 class RWStepVisual_RWSurfaceStyleSegmentationCurve {
 	public:
 		/****************** RWStepVisual_RWSurfaceStyleSegmentationCurve ******************/
@@ -3129,7 +3067,6 @@ class RWStepVisual_RWSurfaceStyleSegmentationCurve {
 /**********************************************
 * class RWStepVisual_RWSurfaceStyleSilhouette *
 **********************************************/
-%nodefaultctor RWStepVisual_RWSurfaceStyleSilhouette;
 class RWStepVisual_RWSurfaceStyleSilhouette {
 	public:
 		/****************** RWStepVisual_RWSurfaceStyleSilhouette ******************/
@@ -3180,7 +3117,6 @@ class RWStepVisual_RWSurfaceStyleSilhouette {
 /*****************************************
 * class RWStepVisual_RWSurfaceStyleUsage *
 *****************************************/
-%nodefaultctor RWStepVisual_RWSurfaceStyleUsage;
 class RWStepVisual_RWSurfaceStyleUsage {
 	public:
 		/****************** RWStepVisual_RWSurfaceStyleUsage ******************/
@@ -3231,7 +3167,6 @@ class RWStepVisual_RWSurfaceStyleUsage {
 /********************************
 * class RWStepVisual_RWTemplate *
 ********************************/
-%nodefaultctor RWStepVisual_RWTemplate;
 class RWStepVisual_RWTemplate {
 	public:
 		/****************** RWStepVisual_RWTemplate ******************/
@@ -3282,7 +3217,6 @@ class RWStepVisual_RWTemplate {
 /****************************************
 * class RWStepVisual_RWTemplateInstance *
 ****************************************/
-%nodefaultctor RWStepVisual_RWTemplateInstance;
 class RWStepVisual_RWTemplateInstance {
 	public:
 		/****************** RWStepVisual_RWTemplateInstance ******************/
@@ -3333,7 +3267,6 @@ class RWStepVisual_RWTemplateInstance {
 /*******************************************************
 * class RWStepVisual_RWTessellatedAnnotationOccurrence *
 *******************************************************/
-%nodefaultctor RWStepVisual_RWTessellatedAnnotationOccurrence;
 class RWStepVisual_RWTessellatedAnnotationOccurrence {
 	public:
 		/****************** RWStepVisual_RWTessellatedAnnotationOccurrence ******************/
@@ -3384,7 +3317,6 @@ class RWStepVisual_RWTessellatedAnnotationOccurrence {
 /*******************************************
 * class RWStepVisual_RWTessellatedCurveSet *
 *******************************************/
-%nodefaultctor RWStepVisual_RWTessellatedCurveSet;
 class RWStepVisual_RWTessellatedCurveSet {
 	public:
 		/****************** RWStepVisual_RWTessellatedCurveSet ******************/
@@ -3435,7 +3367,6 @@ class RWStepVisual_RWTessellatedCurveSet {
 /***********************************************
 * class RWStepVisual_RWTessellatedGeometricSet *
 ***********************************************/
-%nodefaultctor RWStepVisual_RWTessellatedGeometricSet;
 class RWStepVisual_RWTessellatedGeometricSet {
 	public:
 		/****************** RWStepVisual_RWTessellatedGeometricSet ******************/
@@ -3486,7 +3417,6 @@ class RWStepVisual_RWTessellatedGeometricSet {
 /***************************************
 * class RWStepVisual_RWTessellatedItem *
 ***************************************/
-%nodefaultctor RWStepVisual_RWTessellatedItem;
 class RWStepVisual_RWTessellatedItem {
 	public:
 		/****************** RWStepVisual_RWTessellatedItem ******************/
@@ -3528,7 +3458,6 @@ class RWStepVisual_RWTessellatedItem {
 /***********************************
 * class RWStepVisual_RWTextLiteral *
 ***********************************/
-%nodefaultctor RWStepVisual_RWTextLiteral;
 class RWStepVisual_RWTextLiteral {
 	public:
 		/****************** RWStepVisual_RWTextLiteral ******************/
@@ -3579,7 +3508,6 @@ class RWStepVisual_RWTextLiteral {
 /*********************************
 * class RWStepVisual_RWTextStyle *
 *********************************/
-%nodefaultctor RWStepVisual_RWTextStyle;
 class RWStepVisual_RWTextStyle {
 	public:
 		/****************** RWStepVisual_RWTextStyle ******************/
@@ -3630,7 +3558,6 @@ class RWStepVisual_RWTextStyle {
 /***********************************************
 * class RWStepVisual_RWTextStyleForDefinedFont *
 ***********************************************/
-%nodefaultctor RWStepVisual_RWTextStyleForDefinedFont;
 class RWStepVisual_RWTextStyleForDefinedFont {
 	public:
 		/****************** RWStepVisual_RWTextStyleForDefinedFont ******************/
@@ -3681,7 +3608,6 @@ class RWStepVisual_RWTextStyleForDefinedFont {
 /*******************************************************
 * class RWStepVisual_RWTextStyleWithBoxCharacteristics *
 *******************************************************/
-%nodefaultctor RWStepVisual_RWTextStyleWithBoxCharacteristics;
 class RWStepVisual_RWTextStyleWithBoxCharacteristics {
 	public:
 		/****************** RWStepVisual_RWTextStyleWithBoxCharacteristics ******************/
@@ -3732,7 +3658,6 @@ class RWStepVisual_RWTextStyleWithBoxCharacteristics {
 /**********************************
 * class RWStepVisual_RWViewVolume *
 **********************************/
-%nodefaultctor RWStepVisual_RWViewVolume;
 class RWStepVisual_RWViewVolume {
 	public:
 		/****************** RWStepVisual_RWViewVolume ******************/

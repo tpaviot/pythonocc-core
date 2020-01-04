@@ -130,7 +130,6 @@ class XSControl {
 /**********************************
 * class XSControl_ConnectedShapes *
 **********************************/
-%nodefaultctor XSControl_ConnectedShapes;
 class XSControl_ConnectedShapes : public IFSelect_SelectExplore {
 	public:
 		/****************** AdjacentEntities ******************/
@@ -477,7 +476,6 @@ class XSControl_FuncShape {
 /****************************
 * class XSControl_Functions *
 ****************************/
-%nodefaultctor XSControl_Functions;
 class XSControl_Functions {
 	public:
 		/****************** Init ******************/
@@ -498,7 +496,6 @@ class XSControl_Functions {
 /*************************
 * class XSControl_Reader *
 *************************/
-%nodefaultctor XSControl_Reader;
 class XSControl_Reader {
 	public:
 		/****************** ClearShapes ******************/
@@ -717,7 +714,6 @@ class XSControl_Reader {
 /************************************
 * class XSControl_SelectForTransfer *
 ************************************/
-%nodefaultctor XSControl_SelectForTransfer;
 class XSControl_SelectForTransfer : public IFSelect_SelectExtract {
 	public:
 		/****************** Actor ******************/
@@ -794,7 +790,6 @@ class XSControl_SelectForTransfer : public IFSelect_SelectExtract {
 /*************************************
 * class XSControl_SignTransferStatus *
 *************************************/
-%nodefaultctor XSControl_SignTransferStatus;
 class XSControl_SignTransferStatus : public IFSelect_Signature {
 	public:
 		/****************** Map ******************/
@@ -863,7 +858,6 @@ class XSControl_SignTransferStatus : public IFSelect_Signature {
 /*********************************
 * class XSControl_TransferReader *
 *********************************/
-%nodefaultctor XSControl_TransferReader;
 class XSControl_TransferReader : public Standard_Transient {
 	public:
 		/****************** Actor ******************/
@@ -1278,7 +1272,6 @@ class XSControl_TransferReader : public Standard_Transient {
 /*********************************
 * class XSControl_TransferWriter *
 *********************************/
-%nodefaultctor XSControl_TransferWriter;
 class XSControl_TransferWriter : public Standard_Transient {
 	public:
 		/****************** CheckList ******************/
@@ -1411,7 +1404,6 @@ class XSControl_TransferWriter : public Standard_Transient {
 /************************
 * class XSControl_Utils *
 ************************/
-%nodefaultctor XSControl_Utils;
 class XSControl_Utils {
 	public:
 		/****************** AppendCStr ******************/
@@ -1754,7 +1746,6 @@ class XSControl_Utils {
 /***********************
 * class XSControl_Vars *
 ***********************/
-%nodefaultctor XSControl_Vars;
 class XSControl_Vars : public Standard_Transient {
 	public:
 		/****************** Get ******************/
@@ -1872,7 +1863,6 @@ class XSControl_Vars : public Standard_Transient {
 /******************************
 * class XSControl_WorkSession *
 ******************************/
-%nodefaultctor XSControl_WorkSession;
 class XSControl_WorkSession : public IFSelect_WorkSession {
 	public:
 		/****************** ClearContext ******************/
@@ -2072,7 +2062,6 @@ class XSControl_WorkSession : public IFSelect_WorkSession {
 /*************************
 * class XSControl_Writer *
 *************************/
-%nodefaultctor XSControl_Writer;
 class XSControl_Writer {
 	public:
 		/****************** Model ******************/

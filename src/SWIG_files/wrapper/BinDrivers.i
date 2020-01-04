@@ -88,7 +88,6 @@ enum BinDrivers_Marker {
 * class BinDrivers *
 *******************/
 %rename(bindrivers) BinDrivers;
-%nodefaultctor BinDrivers;
 class BinDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -132,7 +131,6 @@ class BinDrivers {
 /*******************************************
 * class BinDrivers_DocumentRetrievalDriver *
 *******************************************/
-%nodefaultctor BinDrivers_DocumentRetrievalDriver;
 class BinDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -188,7 +186,6 @@ class BinDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrievalD
 /*****************************************
 * class BinDrivers_DocumentStorageDriver *
 *****************************************/
-%nodefaultctor BinDrivers_DocumentStorageDriver;
 class BinDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageDriver {
 	public:
 		/****************** AttributeDrivers ******************/

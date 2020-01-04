@@ -100,7 +100,6 @@ class XmlMFunction {
 /************************************
 * class XmlMFunction_FunctionDriver *
 ************************************/
-%nodefaultctor XmlMFunction_FunctionDriver;
 class XmlMFunction_FunctionDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -151,7 +150,6 @@ class XmlMFunction_FunctionDriver : public XmlMDF_ADriver {
 /*************************************
 * class XmlMFunction_GraphNodeDriver *
 *************************************/
-%nodefaultctor XmlMFunction_GraphNodeDriver;
 class XmlMFunction_GraphNodeDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -202,7 +200,6 @@ class XmlMFunction_GraphNodeDriver : public XmlMDF_ADriver {
 /*********************************
 * class XmlMFunction_ScopeDriver *
 *********************************/
-%nodefaultctor XmlMFunction_ScopeDriver;
 class XmlMFunction_ScopeDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/

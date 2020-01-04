@@ -504,7 +504,6 @@ class Adaptor2d_HCurve2d : public Standard_Transient {
 /**************************
 * class Adaptor2d_HLine2d *
 **************************/
-%nodefaultctor Adaptor2d_HLine2d;
 class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d {
 	public:
 		/****************** Adaptor2d_HLine2d ******************/
@@ -555,7 +554,6 @@ class Adaptor2d_HLine2d : public Adaptor2d_HCurve2d {
 /*******************************
 * class Adaptor2d_HOffsetCurve *
 *******************************/
-%nodefaultctor Adaptor2d_HOffsetCurve;
 class Adaptor2d_HOffsetCurve : public Adaptor2d_HCurve2d {
 	public:
 		/****************** Adaptor2d_HOffsetCurve ******************/
@@ -606,7 +604,6 @@ class Adaptor2d_HOffsetCurve : public Adaptor2d_HCurve2d {
 /*************************
 * class Adaptor2d_Line2d *
 *************************/
-%nodefaultctor Adaptor2d_Line2d;
 class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 	public:
 		/****************** Adaptor2d_Line2d ******************/
@@ -848,7 +845,6 @@ class Adaptor2d_Line2d : public Adaptor2d_Curve2d {
 /******************************
 * class Adaptor2d_OffsetCurve *
 ******************************/
-%nodefaultctor Adaptor2d_OffsetCurve;
 class Adaptor2d_OffsetCurve : public Adaptor2d_Curve2d {
 	public:
 		/****************** Adaptor2d_OffsetCurve ******************/

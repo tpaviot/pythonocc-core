@@ -269,7 +269,6 @@ class BRepFilletAPI_LocalOperation : public BRepBuilderAPI_MakeShape {
 /***********************************
 * class BRepFilletAPI_MakeFillet2d *
 ***********************************/
-%nodefaultctor BRepFilletAPI_MakeFillet2d;
 class BRepFilletAPI_MakeFillet2d : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** AddChamfer ******************/
@@ -498,7 +497,6 @@ class BRepFilletAPI_MakeFillet2d : public BRepBuilderAPI_MakeShape {
 /**********************************
 * class BRepFilletAPI_MakeChamfer *
 **********************************/
-%nodefaultctor BRepFilletAPI_MakeChamfer;
 class BRepFilletAPI_MakeChamfer : public BRepFilletAPI_LocalOperation {
 	public:
 		/****************** Abscissa ******************/
@@ -844,7 +842,6 @@ class BRepFilletAPI_MakeChamfer : public BRepFilletAPI_LocalOperation {
 /*********************************
 * class BRepFilletAPI_MakeFillet *
 *********************************/
-%nodefaultctor BRepFilletAPI_MakeFillet;
 class BRepFilletAPI_MakeFillet : public BRepFilletAPI_LocalOperation {
 	public:
 		/****************** Abscissa ******************/

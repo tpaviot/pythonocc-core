@@ -270,7 +270,6 @@ class TopTools {
 /*****************************
 * class TopTools_LocationSet *
 *****************************/
-%nodefaultctor TopTools_LocationSet;
 class TopTools_LocationSet {
 	public:
 		/****************** Add ******************/
@@ -356,7 +355,6 @@ class TopTools_LocationSet {
 /***************************************
 * class TopTools_MutexForShapeProvider *
 ***************************************/
-%nodefaultctor TopTools_MutexForShapeProvider;
 class TopTools_MutexForShapeProvider {
 	public:
 		/****************** CreateMutexForShape ******************/
@@ -477,7 +475,6 @@ class TopTools_ShapeMapHasher {
 /**************************
 * class TopTools_ShapeSet *
 **************************/
-%nodefaultctor TopTools_ShapeSet;
 class TopTools_ShapeSet {
 	public:
 		/****************** Add ******************/

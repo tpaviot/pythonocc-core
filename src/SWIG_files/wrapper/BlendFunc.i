@@ -173,7 +173,6 @@ class BlendFunc {
 /*****************************
 * class BlendFunc_CSCircular *
 *****************************/
-%nodefaultctor BlendFunc_CSCircular;
 class BlendFunc_CSCircular : public Blend_CSFunction {
 	public:
 		/****************** BlendFunc_CSCircular ******************/
@@ -550,7 +549,6 @@ class BlendFunc_CSCircular : public Blend_CSFunction {
 /*****************************
 * class BlendFunc_CSConstRad *
 *****************************/
-%nodefaultctor BlendFunc_CSConstRad;
 class BlendFunc_CSConstRad : public Blend_CSFunction {
 	public:
 		/****************** BlendFunc_CSConstRad ******************/
@@ -919,7 +917,6 @@ class BlendFunc_CSConstRad : public Blend_CSFunction {
 /*************************
 * class BlendFunc_ChAsym *
 *************************/
-%nodefaultctor BlendFunc_ChAsym;
 class BlendFunc_ChAsym : public Blend_Function {
 	public:
 		/****************** BlendFunc_ChAsym ******************/
@@ -1298,7 +1295,6 @@ class BlendFunc_ChAsym : public Blend_Function {
 /****************************
 * class BlendFunc_ChAsymInv *
 ****************************/
-%nodefaultctor BlendFunc_ChAsymInv;
 class BlendFunc_ChAsymInv : public Blend_FuncInv {
 	public:
 		/****************** BlendFunc_ChAsymInv ******************/
@@ -1421,7 +1417,6 @@ class BlendFunc_ChAsymInv : public Blend_FuncInv {
 /***************************
 * class BlendFunc_ConstRad *
 ***************************/
-%nodefaultctor BlendFunc_ConstRad;
 class BlendFunc_ConstRad : public Blend_Function {
 	public:
 		/****************** AxeRot ******************/
@@ -1801,7 +1796,6 @@ class BlendFunc_ConstRad : public Blend_Function {
 /******************************
 * class BlendFunc_ConstRadInv *
 ******************************/
-%nodefaultctor BlendFunc_ConstRadInv;
 class BlendFunc_ConstRadInv : public Blend_FuncInv {
 	public:
 		/****************** BlendFunc_ConstRadInv ******************/
@@ -1910,7 +1904,6 @@ class BlendFunc_ConstRadInv : public Blend_FuncInv {
 /************************
 * class BlendFunc_Corde *
 ************************/
-%nodefaultctor BlendFunc_Corde;
 class BlendFunc_Corde {
 	public:
 		/****************** BlendFunc_Corde ******************/
@@ -2023,7 +2016,6 @@ class BlendFunc_Corde {
 /**************************
 * class BlendFunc_EvolRad *
 **************************/
-%nodefaultctor BlendFunc_EvolRad;
 class BlendFunc_EvolRad : public Blend_Function {
 	public:
 		/****************** BlendFunc_EvolRad ******************/
@@ -2395,7 +2387,6 @@ class BlendFunc_EvolRad : public Blend_Function {
 /*****************************
 * class BlendFunc_EvolRadInv *
 *****************************/
-%nodefaultctor BlendFunc_EvolRadInv;
 class BlendFunc_EvolRadInv : public Blend_FuncInv {
 	public:
 		/****************** BlendFunc_EvolRadInv ******************/
@@ -2831,7 +2822,6 @@ class BlendFunc_GenChamfer : public Blend_Function {
 /************************
 * class BlendFunc_Ruled *
 ************************/
-%nodefaultctor BlendFunc_Ruled;
 class BlendFunc_Ruled : public Blend_Function {
 	public:
 		/****************** AxeRot ******************/
@@ -3180,7 +3170,6 @@ class BlendFunc_Ruled : public Blend_Function {
 /***************************
 * class BlendFunc_RuledInv *
 ***************************/
-%nodefaultctor BlendFunc_RuledInv;
 class BlendFunc_RuledInv : public Blend_FuncInv {
 	public:
 		/****************** BlendFunc_RuledInv ******************/
@@ -3280,7 +3269,6 @@ class BlendFunc_RuledInv : public Blend_FuncInv {
 /*************************
 * class BlendFunc_Tensor *
 *************************/
-%nodefaultctor BlendFunc_Tensor;
 class BlendFunc_Tensor {
 	public:
 		/****************** BlendFunc_Tensor ******************/
@@ -3348,7 +3336,6 @@ class BlendFunc_Tensor {
 /***************************
 * class BlendFunc_ChamfInv *
 ***************************/
-%nodefaultctor BlendFunc_ChamfInv;
 class BlendFunc_ChamfInv : public BlendFunc_GenChamfInv {
 	public:
 		/****************** BlendFunc_ChamfInv ******************/
@@ -3414,7 +3401,6 @@ class BlendFunc_ChamfInv : public BlendFunc_GenChamfInv {
 /**************************
 * class BlendFunc_Chamfer *
 **************************/
-%nodefaultctor BlendFunc_Chamfer;
 class BlendFunc_Chamfer : public BlendFunc_GenChamfer {
 	public:
 		/****************** BlendFunc_Chamfer ******************/
@@ -3551,7 +3537,6 @@ class BlendFunc_Chamfer : public BlendFunc_GenChamfer {
 /******************************
 * class BlendFunc_ConstThroat *
 ******************************/
-%nodefaultctor BlendFunc_ConstThroat;
 class BlendFunc_ConstThroat : public BlendFunc_GenChamfer {
 	public:
 		/****************** BlendFunc_ConstThroat ******************/
@@ -3688,7 +3673,6 @@ class BlendFunc_ConstThroat : public BlendFunc_GenChamfer {
 /*********************************
 * class BlendFunc_ConstThroatInv *
 *********************************/
-%nodefaultctor BlendFunc_ConstThroatInv;
 class BlendFunc_ConstThroatInv : public BlendFunc_GenChamfInv {
 	public:
 		/****************** BlendFunc_ConstThroatInv ******************/
@@ -3754,7 +3738,6 @@ class BlendFunc_ConstThroatInv : public BlendFunc_GenChamfInv {
 /*********************************************
 * class BlendFunc_ConstThroatWithPenetration *
 *********************************************/
-%nodefaultctor BlendFunc_ConstThroatWithPenetration;
 class BlendFunc_ConstThroatWithPenetration : public BlendFunc_ConstThroat {
 	public:
 		/****************** BlendFunc_ConstThroatWithPenetration ******************/
@@ -3835,7 +3818,6 @@ class BlendFunc_ConstThroatWithPenetration : public BlendFunc_ConstThroat {
 /************************************************
 * class BlendFunc_ConstThroatWithPenetrationInv *
 ************************************************/
-%nodefaultctor BlendFunc_ConstThroatWithPenetrationInv;
 class BlendFunc_ConstThroatWithPenetrationInv : public BlendFunc_ConstThroatInv {
 	public:
 		/****************** BlendFunc_ConstThroatWithPenetrationInv ******************/

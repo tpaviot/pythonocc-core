@@ -553,7 +553,6 @@ typedef NCollection_DataMap <TCollection_AsciiString , Standard_Integer , TColle
 /************************************
 * class TColStd_HPackedMapOfInteger *
 ************************************/
-%nodefaultctor TColStd_HPackedMapOfInteger;
 class TColStd_HPackedMapOfInteger : public Standard_Transient {
 	public:
 		/****************** ChangeMap ******************/

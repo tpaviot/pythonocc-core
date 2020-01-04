@@ -107,7 +107,6 @@ class BinMNaming {
 /************************************
 * class BinMNaming_NamedShapeDriver *
 ************************************/
-%nodefaultctor BinMNaming_NamedShapeDriver;
 class BinMNaming_NamedShapeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMNaming_NamedShapeDriver ******************/
@@ -213,7 +212,6 @@ class BinMNaming_NamedShapeDriver : public BinMDF_ADriver {
 /********************************
 * class BinMNaming_NamingDriver *
 ********************************/
-%nodefaultctor BinMNaming_NamingDriver;
 class BinMNaming_NamingDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMNaming_NamingDriver ******************/

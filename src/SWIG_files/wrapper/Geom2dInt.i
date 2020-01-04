@@ -87,7 +87,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dint.html"
 /*********************************************************************
 * class Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter *
 *********************************************************************/
-%nodefaultctor Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter {
 	public:
 		/****************** AnErrorOccurred ******************/
@@ -166,7 +165,6 @@ class Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter {
 /*************************
 * class Geom2dInt_GInter *
 *************************/
-%nodefaultctor Geom2dInt_GInter;
 class Geom2dInt_GInter : public IntRes2d_Intersection {
 	public:
 		/****************** ComputeDomain ******************/
@@ -616,7 +614,6 @@ class Geom2dInt_Geom2dCurveTool {
 /****************************************
 * class Geom2dInt_IntConicCurveOfGInter *
 ****************************************/
-%nodefaultctor Geom2dInt_IntConicCurveOfGInter;
 class Geom2dInt_IntConicCurveOfGInter : public IntRes2d_Intersection {
 	public:
 		/****************** Geom2dInt_IntConicCurveOfGInter ******************/
@@ -817,7 +814,6 @@ class Geom2dInt_IntConicCurveOfGInter : public IntRes2d_Intersection {
 /*************************************************************************
 * class Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter *
 *************************************************************************/
-%nodefaultctor Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter;
 class Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -874,7 +870,6 @@ class Geom2dInt_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfGInter : public 
 /**************************************************************
 * class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter *
 **************************************************************/
-%nodefaultctor Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -1017,7 +1012,6 @@ class Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter {
 /********************************************************************
 * class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter *
 ********************************************************************/
-%nodefaultctor Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/
@@ -1085,7 +1079,6 @@ class Geom2dInt_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfGInter : public math_
 /*******************************************
 * class Geom2dInt_TheIntConicCurveOfGInter *
 *******************************************/
-%nodefaultctor Geom2dInt_TheIntConicCurveOfGInter;
 class Geom2dInt_TheIntConicCurveOfGInter : public IntRes2d_Intersection {
 	public:
 		/****************** Geom2dInt_TheIntConicCurveOfGInter ******************/
@@ -1286,7 +1279,6 @@ class Geom2dInt_TheIntConicCurveOfGInter : public IntRes2d_Intersection {
 /*********************************************
 * class Geom2dInt_TheIntPCurvePCurveOfGInter *
 *********************************************/
-%nodefaultctor Geom2dInt_TheIntPCurvePCurveOfGInter;
 class Geom2dInt_TheIntPCurvePCurveOfGInter : public IntRes2d_Intersection {
 	public:
 		/****************** Geom2dInt_TheIntPCurvePCurveOfGInter ******************/
@@ -1349,7 +1341,6 @@ class Geom2dInt_TheIntPCurvePCurveOfGInter : public IntRes2d_Intersection {
 /***********************************************************
 * class Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter *
 ***********************************************************/
-%nodefaultctor Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter;
 class Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter : public IntRes2d_Intersection {
 	public:
 		/****************** And_Domaine_Objet1_Intersections ******************/
@@ -1465,7 +1456,6 @@ class Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter : public IntRes2d_Inter
 /******************************************************
 * class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter *
 ******************************************************/
-%nodefaultctor Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter;
 class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter {
 	public:
 		/****************** Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter ******************/
@@ -1565,7 +1555,6 @@ class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter {
 /***********************************************************
 * class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter *
 ***********************************************************/
-%nodefaultctor Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter;
 class Geom2dInt_ThePolygon2dOfTheIntPCurvePCurveOfGInter : public Intf_Polygon2d {
 	public:
 		/****************** ApproxParamOnCurve ******************/

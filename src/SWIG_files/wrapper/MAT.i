@@ -143,7 +143,6 @@ typedef NCollection_DataMap <Standard_Integer , opencascade::handle <MAT_Node>, 
 /****************
 * class MAT_Arc *
 ****************/
-%nodefaultctor MAT_Arc;
 class MAT_Arc : public Standard_Transient {
 	public:
 		/****************** FirstElement ******************/
@@ -308,7 +307,6 @@ class MAT_Arc : public Standard_Transient {
 /*********************
 * class MAT_BasicElt *
 *********************/
-%nodefaultctor MAT_BasicElt;
 class MAT_BasicElt : public Standard_Transient {
 	public:
 		/****************** EndArc ******************/
@@ -385,7 +383,6 @@ class MAT_BasicElt : public Standard_Transient {
 /*********************
 * class MAT_Bisector *
 *********************/
-%nodefaultctor MAT_Bisector;
 class MAT_Bisector : public Standard_Transient {
 	public:
 		/****************** AddBisector ******************/
@@ -582,7 +579,6 @@ class MAT_Bisector : public Standard_Transient {
 /*****************
 * class MAT_Edge *
 *****************/
-%nodefaultctor MAT_Edge;
 class MAT_Edge : public Standard_Transient {
 	public:
 		/****************** Distance ******************/
@@ -673,7 +669,6 @@ class MAT_Edge : public Standard_Transient {
 /******************
 * class MAT_Graph *
 ******************/
-%nodefaultctor MAT_Graph;
 class MAT_Graph : public Standard_Transient {
 	public:
 		/****************** Arc ******************/
@@ -804,7 +799,6 @@ class MAT_Graph : public Standard_Transient {
 /***************************
 * class MAT_ListOfBisector *
 ***************************/
-%nodefaultctor MAT_ListOfBisector;
 class MAT_ListOfBisector : public Standard_Transient {
 	public:
 		/****************** BackAdd ******************/
@@ -964,7 +958,6 @@ class MAT_ListOfBisector : public Standard_Transient {
 /***********************
 * class MAT_ListOfEdge *
 ***********************/
-%nodefaultctor MAT_ListOfEdge;
 class MAT_ListOfEdge : public Standard_Transient {
 	public:
 		/****************** BackAdd ******************/
@@ -1124,7 +1117,6 @@ class MAT_ListOfEdge : public Standard_Transient {
 /*****************
 * class MAT_Node *
 *****************/
-%nodefaultctor MAT_Node;
 class MAT_Node : public Standard_Transient {
 	public:
 		/****************** Distance ******************/
@@ -1218,7 +1210,6 @@ class MAT_Node : public Standard_Transient {
 /**************************************
 * class MAT_TListNodeOfListOfBisector *
 **************************************/
-%nodefaultctor MAT_TListNodeOfListOfBisector;
 class MAT_TListNodeOfListOfBisector : public Standard_Transient {
 	public:
 		/****************** Dummy ******************/
@@ -1288,7 +1279,6 @@ class MAT_TListNodeOfListOfBisector : public Standard_Transient {
 /**********************************
 * class MAT_TListNodeOfListOfEdge *
 **********************************/
-%nodefaultctor MAT_TListNodeOfListOfEdge;
 class MAT_TListNodeOfListOfEdge : public Standard_Transient {
 	public:
 		/****************** Dummy ******************/
@@ -1358,7 +1348,6 @@ class MAT_TListNodeOfListOfEdge : public Standard_Transient {
 /*****************
 * class MAT_Zone *
 *****************/
-%nodefaultctor MAT_Zone;
 class MAT_Zone : public Standard_Transient {
 	public:
 		/****************** ArcOnFrontier ******************/

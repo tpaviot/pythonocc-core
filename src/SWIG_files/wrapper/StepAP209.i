@@ -96,7 +96,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepap209.html"
 /****************************
 * class StepAP209_Construct *
 ****************************/
-%nodefaultctor StepAP209_Construct;
 class StepAP209_Construct : public STEPConstruct_Tool {
 	public:
 		/****************** CreateAP203Structure ******************/

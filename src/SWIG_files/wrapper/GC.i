@@ -69,7 +69,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gc.html"
 /**********************
 * class GC_MakeMirror *
 **********************/
-%nodefaultctor GC_MakeMirror;
 class GC_MakeMirror {
 	public:
 		/****************** GC_MakeMirror ******************/
@@ -137,7 +136,6 @@ class GC_MakeMirror {
 /************************
 * class GC_MakeRotation *
 ************************/
-%nodefaultctor GC_MakeRotation;
 class GC_MakeRotation {
 	public:
 		/****************** GC_MakeRotation ******************/
@@ -190,7 +188,6 @@ class GC_MakeRotation {
 /*********************
 * class GC_MakeScale *
 *********************/
-%nodefaultctor GC_MakeScale;
 class GC_MakeScale {
 	public:
 		/****************** GC_MakeScale ******************/
@@ -221,7 +218,6 @@ class GC_MakeScale {
 /***************************
 * class GC_MakeTranslation *
 ***************************/
-%nodefaultctor GC_MakeTranslation;
 class GC_MakeTranslation {
 	public:
 		/****************** GC_MakeTranslation ******************/
@@ -286,7 +282,6 @@ class GC_Root {
 /***************************
 * class GC_MakeArcOfCircle *
 ***************************/
-%nodefaultctor GC_MakeArcOfCircle;
 class GC_MakeArcOfCircle : public GC_Root {
 	public:
 		/****************** GC_MakeArcOfCircle ******************/
@@ -373,7 +368,6 @@ class GC_MakeArcOfCircle : public GC_Root {
 /****************************
 * class GC_MakeArcOfEllipse *
 ****************************/
-%nodefaultctor GC_MakeArcOfEllipse;
 class GC_MakeArcOfEllipse : public GC_Root {
 	public:
 		/****************** GC_MakeArcOfEllipse ******************/
@@ -436,7 +430,6 @@ class GC_MakeArcOfEllipse : public GC_Root {
 /******************************
 * class GC_MakeArcOfHyperbola *
 ******************************/
-%nodefaultctor GC_MakeArcOfHyperbola;
 class GC_MakeArcOfHyperbola : public GC_Root {
 	public:
 		/****************** GC_MakeArcOfHyperbola ******************/
@@ -499,7 +492,6 @@ class GC_MakeArcOfHyperbola : public GC_Root {
 /*****************************
 * class GC_MakeArcOfParabola *
 *****************************/
-%nodefaultctor GC_MakeArcOfParabola;
 class GC_MakeArcOfParabola : public GC_Root {
 	public:
 		/****************** GC_MakeArcOfParabola ******************/
@@ -562,7 +554,6 @@ class GC_MakeArcOfParabola : public GC_Root {
 /**********************
 * class GC_MakeCircle *
 **********************/
-%nodefaultctor GC_MakeCircle;
 class GC_MakeCircle : public GC_Root {
 	public:
 		/****************** GC_MakeCircle ******************/
@@ -667,7 +658,6 @@ class GC_MakeCircle : public GC_Root {
 /******************************
 * class GC_MakeConicalSurface *
 ******************************/
-%nodefaultctor GC_MakeConicalSurface;
 class GC_MakeConicalSurface : public GC_Root {
 	public:
 		/****************** GC_MakeConicalSurface ******************/
@@ -736,7 +726,6 @@ class GC_MakeConicalSurface : public GC_Root {
 /**********************************
 * class GC_MakeCylindricalSurface *
 **********************************/
-%nodefaultctor GC_MakeCylindricalSurface;
 class GC_MakeCylindricalSurface : public GC_Root {
 	public:
 		/****************** GC_MakeCylindricalSurface ******************/
@@ -825,7 +814,6 @@ class GC_MakeCylindricalSurface : public GC_Root {
 /***********************
 * class GC_MakeEllipse *
 ***********************/
-%nodefaultctor GC_MakeEllipse;
 class GC_MakeEllipse : public GC_Root {
 	public:
 		/****************** GC_MakeEllipse ******************/
@@ -878,7 +866,6 @@ class GC_MakeEllipse : public GC_Root {
 /*************************
 * class GC_MakeHyperbola *
 *************************/
-%nodefaultctor GC_MakeHyperbola;
 class GC_MakeHyperbola : public GC_Root {
 	public:
 		/****************** GC_MakeHyperbola ******************/
@@ -931,7 +918,6 @@ class GC_MakeHyperbola : public GC_Root {
 /********************
 * class GC_MakeLine *
 ********************/
-%nodefaultctor GC_MakeLine;
 class GC_MakeLine : public GC_Root {
 	public:
 		/****************** GC_MakeLine ******************/
@@ -998,7 +984,6 @@ class GC_MakeLine : public GC_Root {
 /*********************
 * class GC_MakePlane *
 *********************/
-%nodefaultctor GC_MakePlane;
 class GC_MakePlane : public GC_Root {
 	public:
 		/****************** GC_MakePlane ******************/
@@ -1091,7 +1076,6 @@ class GC_MakePlane : public GC_Root {
 /***********************
 * class GC_MakeSegment *
 ***********************/
-%nodefaultctor GC_MakeSegment;
 class GC_MakeSegment : public GC_Root {
 	public:
 		/****************** GC_MakeSegment ******************/
@@ -1158,7 +1142,6 @@ class GC_MakeSegment : public GC_Root {
 /***************************
 * class GC_MakeTrimmedCone *
 ***************************/
-%nodefaultctor GC_MakeTrimmedCone;
 class GC_MakeTrimmedCone : public GC_Root {
 	public:
 		/****************** GC_MakeTrimmedCone ******************/
@@ -1207,7 +1190,6 @@ class GC_MakeTrimmedCone : public GC_Root {
 /*******************************
 * class GC_MakeTrimmedCylinder *
 *******************************/
-%nodefaultctor GC_MakeTrimmedCylinder;
 class GC_MakeTrimmedCylinder : public GC_Root {
 	public:
 		/****************** GC_MakeTrimmedCylinder ******************/

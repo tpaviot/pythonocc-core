@@ -88,7 +88,6 @@ enum ChFi2d_ConstructionError {
 * class ChFi2d *
 ***************/
 %rename(chfi2d) ChFi2d;
-%nodefaultctor ChFi2d;
 class ChFi2d {
 	public:
 };
@@ -103,7 +102,6 @@ class ChFi2d {
 /*****************************
 * class ChFi2d_AnaFilletAlgo *
 *****************************/
-%nodefaultctor ChFi2d_AnaFilletAlgo;
 class ChFi2d_AnaFilletAlgo {
 	public:
 		/****************** ChFi2d_AnaFilletAlgo ******************/
@@ -186,7 +184,6 @@ class ChFi2d_AnaFilletAlgo {
 /***********************
 * class ChFi2d_Builder *
 ***********************/
-%nodefaultctor ChFi2d_Builder;
 class ChFi2d_Builder {
 	public:
 		/****************** AddChamfer ******************/
@@ -387,7 +384,6 @@ class ChFi2d_Builder {
 /**************************
 * class ChFi2d_ChamferAPI *
 **************************/
-%nodefaultctor ChFi2d_ChamferAPI;
 class ChFi2d_ChamferAPI {
 	public:
 		/****************** ChFi2d_ChamferAPI ******************/
@@ -463,7 +459,6 @@ class ChFi2d_ChamferAPI {
 /*************************
 * class ChFi2d_FilletAPI *
 *************************/
-%nodefaultctor ChFi2d_FilletAPI;
 class ChFi2d_FilletAPI {
 	public:
 		/****************** ChFi2d_FilletAPI ******************/
@@ -558,7 +553,6 @@ class ChFi2d_FilletAPI {
 /**************************
 * class ChFi2d_FilletAlgo *
 **************************/
-%nodefaultctor ChFi2d_FilletAlgo;
 class ChFi2d_FilletAlgo {
 	public:
 		/****************** ChFi2d_FilletAlgo ******************/

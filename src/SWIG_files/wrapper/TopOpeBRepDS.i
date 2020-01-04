@@ -446,7 +446,6 @@ class TopOpeBRepDS {
 /*********************************
 * class TopOpeBRepDS_Association *
 *********************************/
-%nodefaultctor TopOpeBRepDS_Association;
 class TopOpeBRepDS_Association : public Standard_Transient {
 	public:
 		/****************** AreAssociated ******************/
@@ -509,7 +508,6 @@ class TopOpeBRepDS_Association : public Standard_Transient {
 /*******************************
 * class TopOpeBRepDS_BuildTool *
 *******************************/
-%nodefaultctor TopOpeBRepDS_BuildTool;
 class TopOpeBRepDS_BuildTool {
 	public:
 		/****************** AddEdgeVertex ******************/
@@ -961,7 +959,6 @@ class TopOpeBRepDS_BuildTool {
 /***************************
 * class TopOpeBRepDS_Check *
 ***************************/
-%nodefaultctor TopOpeBRepDS_Check;
 class TopOpeBRepDS_Check : public Standard_Transient {
 	public:
 		/****************** ChangeHDS ******************/
@@ -1082,7 +1079,6 @@ class TopOpeBRepDS_Check : public Standard_Transient {
 /***************************
 * class TopOpeBRepDS_Curve *
 ***************************/
-%nodefaultctor TopOpeBRepDS_Curve;
 class TopOpeBRepDS_Curve {
 	public:
 		/****************** ChangeCurve ******************/
@@ -1313,7 +1309,6 @@ class TopOpeBRepDS_Curve {
 /***********************************
 * class TopOpeBRepDS_CurveExplorer *
 ***********************************/
-%nodefaultctor TopOpeBRepDS_CurveExplorer;
 class TopOpeBRepDS_CurveExplorer {
 	public:
 		/****************** Curve ******************/
@@ -1397,7 +1392,6 @@ class TopOpeBRepDS_CurveExplorer {
 /***********************************
 * class TopOpeBRepDS_DataStructure *
 ***********************************/
-%nodefaultctor TopOpeBRepDS_DataStructure;
 class TopOpeBRepDS_DataStructure {
 	public:
 		/****************** AddCurve ******************/
@@ -2164,7 +2158,6 @@ class TopOpeBRepDS_DataStructure {
 /****************************
 * class TopOpeBRepDS_Dumper *
 ****************************/
-%nodefaultctor TopOpeBRepDS_Dumper;
 class TopOpeBRepDS_Dumper {
 	public:
 		/****************** SDumpRefOri ******************/
@@ -2234,7 +2227,6 @@ class TopOpeBRepDS_Dumper {
 /*************************
 * class TopOpeBRepDS_EIR *
 *************************/
-%nodefaultctor TopOpeBRepDS_EIR;
 class TopOpeBRepDS_EIR {
 	public:
 		/****************** ProcessEdgeInterferences ******************/
@@ -2268,7 +2260,6 @@ class TopOpeBRepDS_EIR {
 /********************************************
 * class TopOpeBRepDS_Edge3dInterferenceTool *
 ********************************************/
-%nodefaultctor TopOpeBRepDS_Edge3dInterferenceTool;
 class TopOpeBRepDS_Edge3dInterferenceTool {
 	public:
 		/****************** Add ******************/
@@ -2330,7 +2321,6 @@ class TopOpeBRepDS_Edge3dInterferenceTool {
 /******************************************
 * class TopOpeBRepDS_EdgeInterferenceTool *
 ******************************************/
-%nodefaultctor TopOpeBRepDS_EdgeInterferenceTool;
 class TopOpeBRepDS_EdgeInterferenceTool {
 	public:
 		/****************** Add ******************/
@@ -2388,7 +2378,6 @@ class TopOpeBRepDS_EdgeInterferenceTool {
 /******************************
 * class TopOpeBRepDS_Explorer *
 ******************************/
-%nodefaultctor TopOpeBRepDS_Explorer;
 class TopOpeBRepDS_Explorer {
 	public:
 		/****************** Current ******************/
@@ -2470,7 +2459,6 @@ class TopOpeBRepDS_Explorer {
 /*************************
 * class TopOpeBRepDS_FIR *
 *************************/
-%nodefaultctor TopOpeBRepDS_FIR;
 class TopOpeBRepDS_FIR {
 	public:
 		/****************** ProcessFaceInterferences ******************/
@@ -2508,7 +2496,6 @@ class TopOpeBRepDS_FIR {
 /******************************************
 * class TopOpeBRepDS_FaceInterferenceTool *
 ******************************************/
-%nodefaultctor TopOpeBRepDS_FaceInterferenceTool;
 class TopOpeBRepDS_FaceInterferenceTool {
 	public:
 		/****************** Add ******************/
@@ -2601,7 +2588,6 @@ class TopOpeBRepDS_FaceInterferenceTool {
 /****************************
 * class TopOpeBRepDS_Filter *
 ****************************/
-%nodefaultctor TopOpeBRepDS_Filter;
 class TopOpeBRepDS_Filter {
 	public:
 		/****************** ProcessCurveInterferences ******************/
@@ -2670,7 +2656,6 @@ class TopOpeBRepDS_Filter {
 /*******************************
 * class TopOpeBRepDS_GapFiller *
 *******************************/
-%nodefaultctor TopOpeBRepDS_GapFiller;
 class TopOpeBRepDS_GapFiller {
 	public:
 		/****************** AddPointsOnConnexShape ******************/
@@ -2797,7 +2782,6 @@ class TopOpeBRepDS_GapFiller {
 /*****************************
 * class TopOpeBRepDS_GapTool *
 *****************************/
-%nodefaultctor TopOpeBRepDS_GapTool;
 class TopOpeBRepDS_GapTool : public Standard_Transient {
 	public:
 		/****************** ChangeSameInterferences ******************/
@@ -2915,7 +2899,6 @@ class TopOpeBRepDS_GapTool : public Standard_Transient {
 /**********************************
 * class TopOpeBRepDS_GeometryData *
 **********************************/
-%nodefaultctor TopOpeBRepDS_GeometryData;
 class TopOpeBRepDS_GeometryData {
 	public:
 		/****************** AddInterference ******************/
@@ -2976,7 +2959,6 @@ class TopOpeBRepDS_GeometryData {
 /**********************************
 * class TopOpeBRepDS_Interference *
 **********************************/
-%nodefaultctor TopOpeBRepDS_Interference;
 class TopOpeBRepDS_Interference : public Standard_Transient {
 	public:
 		/****************** ChangeTransition ******************/
@@ -3120,7 +3102,6 @@ class TopOpeBRepDS_Interference : public Standard_Transient {
 /******************************************
 * class TopOpeBRepDS_InterferenceIterator *
 ******************************************/
-%nodefaultctor TopOpeBRepDS_InterferenceIterator;
 class TopOpeBRepDS_InterferenceIterator {
 	public:
 		/****************** ChangeIterator ******************/
@@ -3353,7 +3334,6 @@ class TopOpeBRepDS_InterferenceTool {
 /*****************************************
 * class TopOpeBRepDS_ListOfShapeOn1State *
 *****************************************/
-%nodefaultctor TopOpeBRepDS_ListOfShapeOn1State;
 class TopOpeBRepDS_ListOfShapeOn1State {
 	public:
 		/****************** ChangeListOnState ******************/
@@ -3400,7 +3380,6 @@ class TopOpeBRepDS_ListOfShapeOn1State {
 /****************************
 * class TopOpeBRepDS_Marker *
 ****************************/
-%nodefaultctor TopOpeBRepDS_Marker;
 class TopOpeBRepDS_Marker : public Standard_Transient {
 	public:
 		/****************** Allocate ******************/
@@ -3461,7 +3440,6 @@ class TopOpeBRepDS_Marker : public Standard_Transient {
 /***************************
 * class TopOpeBRepDS_Point *
 ***************************/
-%nodefaultctor TopOpeBRepDS_Point;
 class TopOpeBRepDS_Point {
 	public:
 		/****************** ChangeKeep ******************/
@@ -3538,7 +3516,6 @@ class TopOpeBRepDS_Point {
 /***********************************
 * class TopOpeBRepDS_PointExplorer *
 ***********************************/
-%nodefaultctor TopOpeBRepDS_PointExplorer;
 class TopOpeBRepDS_PointExplorer {
 	public:
 		/****************** Index ******************/
@@ -3622,7 +3599,6 @@ class TopOpeBRepDS_PointExplorer {
 /*****************************
 * class TopOpeBRepDS_Reducer *
 *****************************/
-%nodefaultctor TopOpeBRepDS_Reducer;
 class TopOpeBRepDS_Reducer {
 	public:
 		/****************** ProcessEdgeInterferences ******************/
@@ -3656,7 +3632,6 @@ class TopOpeBRepDS_Reducer {
 /*******************************
 * class TopOpeBRepDS_ShapeData *
 *******************************/
-%nodefaultctor TopOpeBRepDS_ShapeData;
 class TopOpeBRepDS_ShapeData {
 	public:
 		/****************** ChangeInterferences ******************/
@@ -3698,7 +3673,6 @@ class TopOpeBRepDS_ShapeData {
 /************************************
 * class TopOpeBRepDS_ShapeWithState *
 ************************************/
-%nodefaultctor TopOpeBRepDS_ShapeWithState;
 class TopOpeBRepDS_ShapeWithState {
 	public:
 		/****************** AddPart ******************/
@@ -3767,7 +3741,6 @@ class TopOpeBRepDS_ShapeWithState {
 /*****************************
 * class TopOpeBRepDS_Surface *
 *****************************/
-%nodefaultctor TopOpeBRepDS_Surface;
 class TopOpeBRepDS_Surface {
 	public:
 		/****************** Assign ******************/
@@ -3847,7 +3820,6 @@ class TopOpeBRepDS_Surface {
 /*************************************
 * class TopOpeBRepDS_SurfaceExplorer *
 *************************************/
-%nodefaultctor TopOpeBRepDS_SurfaceExplorer;
 class TopOpeBRepDS_SurfaceExplorer {
 	public:
 		/****************** Index ******************/
@@ -3931,7 +3903,6 @@ class TopOpeBRepDS_SurfaceExplorer {
 /*************************
 * class TopOpeBRepDS_TKI *
 *************************/
-%nodefaultctor TopOpeBRepDS_TKI;
 class TopOpeBRepDS_TKI {
 	public:
 		/****************** Add ******************/
@@ -4147,7 +4118,6 @@ class TopOpeBRepDS_TOOL {
 /********************************
 * class TopOpeBRepDS_Transition *
 ********************************/
-%nodefaultctor TopOpeBRepDS_Transition;
 class TopOpeBRepDS_Transition {
 	public:
 		/****************** After ******************/
@@ -4341,7 +4311,6 @@ class TopOpeBRepDS_Transition {
 /*******************************
 * class TopOpeBRepDS_CurveData *
 *******************************/
-%nodefaultctor TopOpeBRepDS_CurveData;
 class TopOpeBRepDS_CurveData : public TopOpeBRepDS_GeometryData {
 	public:
 		/****************** TopOpeBRepDS_CurveData ******************/
@@ -4368,7 +4337,6 @@ class TopOpeBRepDS_CurveData : public TopOpeBRepDS_GeometryData {
 /***********************************
 * class TopOpeBRepDS_CurveIterator *
 ***********************************/
-%nodefaultctor TopOpeBRepDS_CurveIterator;
 class TopOpeBRepDS_CurveIterator : public TopOpeBRepDS_InterferenceIterator {
 	public:
 		/****************** Current ******************/
@@ -4417,7 +4385,6 @@ class TopOpeBRepDS_CurveIterator : public TopOpeBRepDS_InterferenceIterator {
 /********************************************
 * class TopOpeBRepDS_CurvePointInterference *
 ********************************************/
-%nodefaultctor TopOpeBRepDS_CurvePointInterference;
 class TopOpeBRepDS_CurvePointInterference : public TopOpeBRepDS_Interference {
 	public:
 		/****************** Parameter ******************/
@@ -4463,7 +4430,6 @@ class TopOpeBRepDS_CurvePointInterference : public TopOpeBRepDS_Interference {
 /*******************************
 * class TopOpeBRepDS_PointData *
 *******************************/
-%nodefaultctor TopOpeBRepDS_PointData;
 class TopOpeBRepDS_PointData : public TopOpeBRepDS_GeometryData {
 	public:
 		/****************** GetShapes ******************/
@@ -4519,7 +4485,6 @@ class TopOpeBRepDS_PointData : public TopOpeBRepDS_GeometryData {
 /***********************************
 * class TopOpeBRepDS_PointIterator *
 ***********************************/
-%nodefaultctor TopOpeBRepDS_PointIterator;
 class TopOpeBRepDS_PointIterator : public TopOpeBRepDS_InterferenceIterator {
 	public:
 		/****************** Current ******************/
@@ -4593,7 +4558,6 @@ class TopOpeBRepDS_PointIterator : public TopOpeBRepDS_InterferenceIterator {
 /********************************************
 * class TopOpeBRepDS_ShapeShapeInterference *
 ********************************************/
-%nodefaultctor TopOpeBRepDS_ShapeShapeInterference;
 class TopOpeBRepDS_ShapeShapeInterference : public TopOpeBRepDS_Interference {
 	public:
 		/****************** Config ******************/
@@ -4647,7 +4611,6 @@ class TopOpeBRepDS_ShapeShapeInterference : public TopOpeBRepDS_Interference {
 /**********************************************
 * class TopOpeBRepDS_SolidSurfaceInterference *
 **********************************************/
-%nodefaultctor TopOpeBRepDS_SolidSurfaceInterference;
 class TopOpeBRepDS_SolidSurfaceInterference : public TopOpeBRepDS_Interference {
 	public:
 		/****************** TopOpeBRepDS_SolidSurfaceInterference ******************/
@@ -4679,7 +4642,6 @@ class TopOpeBRepDS_SolidSurfaceInterference : public TopOpeBRepDS_Interference {
 /**********************************************
 * class TopOpeBRepDS_SurfaceCurveInterference *
 **********************************************/
-%nodefaultctor TopOpeBRepDS_SurfaceCurveInterference;
 class TopOpeBRepDS_SurfaceCurveInterference : public TopOpeBRepDS_Interference {
 	public:
 		/****************** PCurve ******************/
@@ -4737,7 +4699,6 @@ class TopOpeBRepDS_SurfaceCurveInterference : public TopOpeBRepDS_Interference {
 /*********************************
 * class TopOpeBRepDS_SurfaceData *
 *********************************/
-%nodefaultctor TopOpeBRepDS_SurfaceData;
 class TopOpeBRepDS_SurfaceData : public TopOpeBRepDS_GeometryData {
 	public:
 		/****************** TopOpeBRepDS_SurfaceData ******************/
@@ -4764,7 +4725,6 @@ class TopOpeBRepDS_SurfaceData : public TopOpeBRepDS_GeometryData {
 /*************************************
 * class TopOpeBRepDS_SurfaceIterator *
 *************************************/
-%nodefaultctor TopOpeBRepDS_SurfaceIterator;
 class TopOpeBRepDS_SurfaceIterator : public TopOpeBRepDS_InterferenceIterator {
 	public:
 		/****************** Current ******************/
@@ -4800,7 +4760,6 @@ class TopOpeBRepDS_SurfaceIterator : public TopOpeBRepDS_InterferenceIterator {
 /********************************************
 * class TopOpeBRepDS_EdgeVertexInterference *
 ********************************************/
-%nodefaultctor TopOpeBRepDS_EdgeVertexInterference;
 class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterference {
 	public:
 		/****************** Parameter ******************/
@@ -4867,7 +4826,6 @@ class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterf
 /******************************************
 * class TopOpeBRepDS_FaceEdgeInterference *
 ******************************************/
-%nodefaultctor TopOpeBRepDS_FaceEdgeInterference;
 class TopOpeBRepDS_FaceEdgeInterference : public TopOpeBRepDS_ShapeShapeInterference {
 	public:
 		/****************** TopOpeBRepDS_FaceEdgeInterference ******************/

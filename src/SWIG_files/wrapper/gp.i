@@ -218,7 +218,6 @@ class gp {
 /***************
 * class gp_Ax1 *
 ***************/
-%nodefaultctor gp_Ax1;
 class gp_Ax1 {
 	public:
 		/****************** Angle ******************/
@@ -479,7 +478,6 @@ class gp_Ax1 {
 /***************
 * class gp_Ax2 *
 ***************/
-%nodefaultctor gp_Ax2;
 class gp_Ax2 {
 	public:
 		/****************** Angle ******************/
@@ -758,7 +756,6 @@ class gp_Ax2 {
 /*****************
 * class gp_Ax22d *
 *****************/
-%nodefaultctor gp_Ax22d;
 class gp_Ax22d {
 	public:
 		/****************** Location ******************/
@@ -1008,7 +1005,6 @@ class gp_Ax22d {
 /****************
 * class gp_Ax2d *
 ****************/
-%nodefaultctor gp_Ax2d;
 class gp_Ax2d {
 	public:
 		/****************** Angle ******************/
@@ -1246,7 +1242,6 @@ class gp_Ax2d {
 /***************
 * class gp_Ax3 *
 ***************/
-%nodefaultctor gp_Ax3;
 class gp_Ax3 {
 	public:
 		/****************** Angle ******************/
@@ -1561,7 +1556,6 @@ class gp_Ax3 {
 /****************
 * class gp_Circ *
 ****************/
-%nodefaultctor gp_Circ;
 class gp_Circ {
 	public:
 		/****************** Area ******************/
@@ -1830,7 +1824,6 @@ class gp_Circ {
 /******************
 * class gp_Circ2d *
 ******************/
-%nodefaultctor gp_Circ2d;
 class gp_Circ2d {
 	public:
 		/****************** Area ******************/
@@ -2140,7 +2133,6 @@ class gp_Circ2d {
 /****************
 * class gp_Cone *
 ****************/
-%nodefaultctor gp_Cone;
 class gp_Cone {
 	public:
 		/****************** Apex ******************/
@@ -2437,7 +2429,6 @@ class gp_Cone {
 /********************
 * class gp_Cylinder *
 ********************/
-%nodefaultctor gp_Cylinder;
 class gp_Cylinder {
 	public:
 		/****************** Axis ******************/
@@ -2712,7 +2703,6 @@ class gp_Cylinder {
 /***************
 * class gp_Dir *
 ***************/
-%nodefaultctor gp_Dir;
 class gp_Dir {
 	public:
 		/****************** Angle ******************/
@@ -3072,7 +3062,6 @@ class gp_Dir {
 /*****************
 * class gp_Dir2d *
 *****************/
-%nodefaultctor gp_Dir2d;
 class gp_Dir2d {
 	public:
 		/****************** Angle ******************/
@@ -3346,7 +3335,6 @@ class gp_Dir2d {
 /*****************
 * class gp_Elips *
 *****************/
-%nodefaultctor gp_Elips;
 class gp_Elips {
 	public:
 		/****************** Area ******************/
@@ -3641,7 +3629,6 @@ class gp_Elips {
 /*******************
 * class gp_Elips2d *
 *******************/
-%nodefaultctor gp_Elips2d;
 class gp_Elips2d {
 	public:
 		/****************** Area ******************/
@@ -3970,7 +3957,6 @@ class gp_Elips2d {
 /*****************
 * class gp_GTrsf *
 *****************/
-%nodefaultctor gp_GTrsf;
 class gp_GTrsf {
 	public:
 		/****************** Form ******************/
@@ -4203,7 +4189,6 @@ class gp_GTrsf {
 /*******************
 * class gp_GTrsf2d *
 *******************/
-%nodefaultctor gp_GTrsf2d;
 class gp_GTrsf2d {
 	public:
 		/****************** Form ******************/
@@ -4425,7 +4410,6 @@ class gp_GTrsf2d {
 /****************
 * class gp_Hypr *
 ****************/
-%nodefaultctor gp_Hypr;
 class gp_Hypr {
 	public:
 		/****************** Asymptote1 ******************/
@@ -4744,7 +4728,6 @@ class gp_Hypr {
 /******************
 * class gp_Hypr2d *
 ******************/
-%nodefaultctor gp_Hypr2d;
 class gp_Hypr2d {
 	public:
 		/****************** Asymptote1 ******************/
@@ -5099,7 +5082,6 @@ class gp_Hypr2d {
 /***************
 * class gp_Lin *
 ***************/
-%nodefaultctor gp_Lin;
 class gp_Lin {
 	public:
 		/****************** Angle ******************/
@@ -5381,7 +5363,6 @@ class gp_Lin {
 /*****************
 * class gp_Lin2d *
 *****************/
-%nodefaultctor gp_Lin2d;
 class gp_Lin2d {
 	public:
 		/****************** Angle ******************/
@@ -5672,7 +5653,6 @@ class gp_Lin2d {
 /***************
 * class gp_Mat *
 ***************/
-%nodefaultctor gp_Mat;
 class gp_Mat {
 	public:
 		/****************** Add ******************/
@@ -6111,7 +6091,6 @@ class gp_Mat {
 /*****************
 * class gp_Mat2d *
 *****************/
-%nodefaultctor gp_Mat2d;
 class gp_Mat2d {
 	public:
 		/****************** Add ******************/
@@ -6482,7 +6461,6 @@ class gp_Mat2d {
 /*****************
 * class gp_Parab *
 *****************/
-%nodefaultctor gp_Parab;
 class gp_Parab {
 	public:
 		/****************** Axis ******************/
@@ -6741,7 +6719,6 @@ class gp_Parab {
 /*******************
 * class gp_Parab2d *
 *******************/
-%nodefaultctor gp_Parab2d;
 class gp_Parab2d {
 	public:
 		/****************** Axis ******************/
@@ -7022,7 +6999,6 @@ class gp_Parab2d {
 /***************
 * class gp_Pln *
 ***************/
-%nodefaultctor gp_Pln;
 class gp_Pln {
 	public:
 		/****************** Axis ******************/
@@ -7363,7 +7339,6 @@ class gp_Pln {
 /***************
 * class gp_Pnt *
 ***************/
-%nodefaultctor gp_Pnt;
 class gp_Pnt {
 	public:
 		/****************** BaryCenter ******************/
@@ -7684,7 +7659,6 @@ class gp_Pnt {
 /*****************
 * class gp_Pnt2d *
 *****************/
-%nodefaultctor gp_Pnt2d;
 class gp_Pnt2d {
 	public:
 		/****************** ChangeCoord ******************/
@@ -7958,7 +7932,6 @@ class gp_Pnt2d {
 /**********************
 * class gp_Quaternion *
 **********************/
-%nodefaultctor gp_Quaternion;
 class gp_Quaternion {
 	public:
 		/****************** Add ******************/
@@ -8409,7 +8382,6 @@ class gp_Quaternion {
 /***************************
 * class gp_QuaternionNLerp *
 ***************************/
-%nodefaultctor gp_QuaternionNLerp;
 class gp_QuaternionNLerp {
 	public:
 		/****************** Init ******************/
@@ -8482,7 +8454,6 @@ class gp_QuaternionNLerp {
 /***************************
 * class gp_QuaternionSLerp *
 ***************************/
-%nodefaultctor gp_QuaternionSLerp;
 class gp_QuaternionSLerp {
 	public:
 		/****************** Init ******************/
@@ -8555,7 +8526,6 @@ class gp_QuaternionSLerp {
 /******************
 * class gp_Sphere *
 ******************/
-%nodefaultctor gp_Sphere;
 class gp_Sphere {
 	public:
 		/****************** Area ******************/
@@ -8828,7 +8798,6 @@ class gp_Sphere {
 /*****************
 * class gp_Torus *
 *****************/
-%nodefaultctor gp_Torus;
 class gp_Torus {
 	public:
 		/****************** Area ******************/
@@ -9105,7 +9074,6 @@ class gp_Torus {
 /****************
 * class gp_Trsf *
 ****************/
-%nodefaultctor gp_Trsf;
 class gp_Trsf {
 	public:
 
@@ -9451,7 +9419,6 @@ class gp_Trsf {
 /******************
 * class gp_Trsf2d *
 ******************/
-%nodefaultctor gp_Trsf2d;
 class gp_Trsf2d {
 	public:
 		/****************** Form ******************/
@@ -9722,7 +9689,6 @@ class gp_Trsf2d {
 /***************
 * class gp_Vec *
 ***************/
-%nodefaultctor gp_Vec;
 class gp_Vec {
 	public:
 		/****************** Add ******************/
@@ -10378,7 +10344,6 @@ class gp_Vec {
 /*****************
 * class gp_Vec2d *
 *****************/
-%nodefaultctor gp_Vec2d;
 class gp_Vec2d {
 	public:
 		/****************** Add ******************/
@@ -10910,7 +10875,6 @@ class gp_Vec2d {
 /**************
 * class gp_XY *
 **************/
-%nodefaultctor gp_XY;
 class gp_XY {
 	public:
 		/****************** Add ******************/
@@ -11359,7 +11323,6 @@ class gp_XY {
 /***************
 * class gp_XYZ *
 ***************/
-%nodefaultctor gp_XYZ;
 class gp_XYZ {
 	public:
 		/****************** Add ******************/

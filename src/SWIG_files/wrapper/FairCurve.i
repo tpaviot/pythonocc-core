@@ -80,7 +80,6 @@ enum FairCurve_AnalysisCode {
 /*************************
 * class FairCurve_Batten *
 *************************/
-%nodefaultctor FairCurve_Batten;
 class FairCurve_Batten {
 	public:
 		/****************** Compute ******************/
@@ -281,7 +280,6 @@ class FairCurve_Batten {
 /****************************
 * class FairCurve_BattenLaw *
 ****************************/
-%nodefaultctor FairCurve_BattenLaw;
 class FairCurve_BattenLaw : public math_Function {
 	public:
 		/****************** FairCurve_BattenLaw ******************/
@@ -457,7 +455,6 @@ class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 /*************************
 * class FairCurve_Newton *
 *************************/
-%nodefaultctor FairCurve_Newton;
 class FairCurve_Newton : public math_NewtonMinimum {
 	public:
 		/****************** FairCurve_Newton ******************/
@@ -496,7 +493,6 @@ class FairCurve_Newton : public math_NewtonMinimum {
 /*************************************
 * class FairCurve_DistributionOfJerk *
 *************************************/
-%nodefaultctor FairCurve_DistributionOfJerk;
 class FairCurve_DistributionOfJerk : public FairCurve_DistributionOfEnergy {
 	public:
 		/****************** FairCurve_DistributionOfJerk ******************/
@@ -538,7 +534,6 @@ class FairCurve_DistributionOfJerk : public FairCurve_DistributionOfEnergy {
 /****************************************
 * class FairCurve_DistributionOfSagging *
 ****************************************/
-%nodefaultctor FairCurve_DistributionOfSagging;
 class FairCurve_DistributionOfSagging : public FairCurve_DistributionOfEnergy {
 	public:
 		/****************** FairCurve_DistributionOfSagging ******************/
@@ -580,7 +575,6 @@ class FairCurve_DistributionOfSagging : public FairCurve_DistributionOfEnergy {
 /****************************************
 * class FairCurve_DistributionOfTension *
 ****************************************/
-%nodefaultctor FairCurve_DistributionOfTension;
 class FairCurve_DistributionOfTension : public FairCurve_DistributionOfEnergy {
 	public:
 		/****************** FairCurve_DistributionOfTension ******************/
@@ -634,7 +628,6 @@ class FairCurve_DistributionOfTension : public FairCurve_DistributionOfEnergy {
 /*********************************
 * class FairCurve_EnergyOfBatten *
 *********************************/
-%nodefaultctor FairCurve_EnergyOfBatten;
 class FairCurve_EnergyOfBatten : public FairCurve_Energy {
 	public:
 		/****************** FairCurve_EnergyOfBatten ******************/
@@ -695,7 +688,6 @@ class FairCurve_EnergyOfBatten : public FairCurve_Energy {
 /******************************
 * class FairCurve_EnergyOfMVC *
 ******************************/
-%nodefaultctor FairCurve_EnergyOfMVC;
 class FairCurve_EnergyOfMVC : public FairCurve_Energy {
 	public:
 		/****************** FairCurve_EnergyOfMVC ******************/
@@ -762,7 +754,6 @@ class FairCurve_EnergyOfMVC : public FairCurve_Energy {
 /***********************************
 * class FairCurve_MinimalVariation *
 ***********************************/
-%nodefaultctor FairCurve_MinimalVariation;
 class FairCurve_MinimalVariation : public FairCurve_Batten {
 	public:
 		/****************** Compute ******************/

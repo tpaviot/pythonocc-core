@@ -240,7 +240,6 @@ class BRepFill {
 /*********************************
 * class BRepFill_AdvancedEvolved *
 *********************************/
-%nodefaultctor BRepFill_AdvancedEvolved;
 class BRepFill_AdvancedEvolved {
 	public:
 		DEFINE_STANDARD_ALLOC ;
@@ -304,7 +303,6 @@ class BRepFill_AdvancedEvolved {
 /*******************************
 * class BRepFill_ApproxSeewing *
 *******************************/
-%nodefaultctor BRepFill_ApproxSeewing;
 class BRepFill_ApproxSeewing {
 	public:
 		/****************** BRepFill_ApproxSeewing ******************/
@@ -361,7 +359,6 @@ class BRepFill_ApproxSeewing {
 /*********************************
 * class BRepFill_CompatibleWires *
 *********************************/
-%nodefaultctor BRepFill_CompatibleWires;
 class BRepFill_CompatibleWires {
 	public:
 		/****************** BRepFill_CompatibleWires ******************/
@@ -444,7 +441,6 @@ class BRepFill_CompatibleWires {
 /******************************
 * class BRepFill_ComputeCLine *
 ******************************/
-%nodefaultctor BRepFill_ComputeCLine;
 class BRepFill_ComputeCLine {
 	public:
 		/****************** BRepFill_ComputeCLine ******************/
@@ -604,7 +600,6 @@ class BRepFill_ComputeCLine {
 /*********************************
 * class BRepFill_CurveConstraint *
 *********************************/
-%nodefaultctor BRepFill_CurveConstraint;
 class BRepFill_CurveConstraint : public GeomPlate_CurveConstraint {
 	public:
 		/****************** BRepFill_CurveConstraint ******************/
@@ -652,7 +647,6 @@ class BRepFill_CurveConstraint : public GeomPlate_CurveConstraint {
 /***********************
 * class BRepFill_Draft *
 ***********************/
-%nodefaultctor BRepFill_Draft;
 class BRepFill_Draft {
 	public:
 		/****************** BRepFill_Draft ******************/
@@ -745,7 +739,6 @@ class BRepFill_Draft {
 /**********************************
 * class BRepFill_EdgeFaceAndOrder *
 **********************************/
-%nodefaultctor BRepFill_EdgeFaceAndOrder;
 class BRepFill_EdgeFaceAndOrder {
 	public:
 		/****************** BRepFill_EdgeFaceAndOrder ******************/
@@ -776,7 +769,6 @@ class BRepFill_EdgeFaceAndOrder {
 /*************************
 * class BRepFill_Evolved *
 *************************/
-%nodefaultctor BRepFill_Evolved;
 class BRepFill_Evolved {
 	public:
 		/****************** BRepFill_Evolved ******************/
@@ -898,7 +890,6 @@ class BRepFill_Evolved {
 /******************************
 * class BRepFill_FaceAndOrder *
 ******************************/
-%nodefaultctor BRepFill_FaceAndOrder;
 class BRepFill_FaceAndOrder {
 	public:
 		/****************** BRepFill_FaceAndOrder ******************/
@@ -927,7 +918,6 @@ class BRepFill_FaceAndOrder {
 /*************************
 * class BRepFill_Filling *
 *************************/
-%nodefaultctor BRepFill_Filling;
 class BRepFill_Filling {
 	public:
 		/****************** Add ******************/
@@ -1132,7 +1122,6 @@ class BRepFill_Filling {
 /***************************
 * class BRepFill_Generator *
 ***************************/
-%nodefaultctor BRepFill_Generator;
 class BRepFill_Generator {
 	public:
 		/****************** AddWire ******************/
@@ -1184,7 +1173,6 @@ class BRepFill_Generator {
 /*****************************
 * class BRepFill_LocationLaw *
 *****************************/
-%nodefaultctor BRepFill_LocationLaw;
 class BRepFill_LocationLaw : public Standard_Transient {
 	public:
 		/****************** Abscissa ******************/
@@ -1353,7 +1341,6 @@ class BRepFill_LocationLaw : public Standard_Transient {
 /***************************
 * class BRepFill_MultiLine *
 ***************************/
-%nodefaultctor BRepFill_MultiLine;
 class BRepFill_MultiLine : public AppCont_Function {
 	public:
 		/****************** BRepFill_MultiLine ******************/
@@ -1489,7 +1476,6 @@ class BRepFill_MultiLine : public AppCont_Function {
 /*********************************
 * class BRepFill_OffsetAncestors *
 *********************************/
-%nodefaultctor BRepFill_OffsetAncestors;
 class BRepFill_OffsetAncestors {
 	public:
 		/****************** Ancestor ******************/
@@ -1543,7 +1529,6 @@ class BRepFill_OffsetAncestors {
 /****************************
 * class BRepFill_OffsetWire *
 ****************************/
-%nodefaultctor BRepFill_OffsetWire;
 class BRepFill_OffsetWire {
 	public:
 		/****************** BRepFill_OffsetWire ******************/
@@ -1643,7 +1628,6 @@ class BRepFill_OffsetWire {
 /**********************
 * class BRepFill_Pipe *
 **********************/
-%nodefaultctor BRepFill_Pipe;
 class BRepFill_Pipe {
 	public:
 		/****************** BRepFill_Pipe ******************/
@@ -1765,7 +1749,6 @@ class BRepFill_Pipe {
 /***************************
 * class BRepFill_PipeShell *
 ***************************/
-%nodefaultctor BRepFill_PipeShell;
 class BRepFill_PipeShell : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -2032,7 +2015,6 @@ class BRepFill_PipeShell : public Standard_Transient {
 /*************************
 * class BRepFill_Section *
 *************************/
-%nodefaultctor BRepFill_Section;
 class BRepFill_Section {
 	public:
 		/****************** BRepFill_Section ******************/
@@ -2229,7 +2211,6 @@ class BRepFill_SectionLaw : public Standard_Transient {
 /**********************************
 * class BRepFill_SectionPlacement *
 **********************************/
-%nodefaultctor BRepFill_SectionPlacement;
 class BRepFill_SectionPlacement {
 	public:
 		/****************** AbscissaOnPath ******************/
@@ -2284,7 +2265,6 @@ class BRepFill_SectionPlacement {
 /***********************
 * class BRepFill_Sweep *
 ***********************/
-%nodefaultctor BRepFill_Sweep;
 class BRepFill_Sweep {
 	public:
 		/****************** BRepFill_Sweep ******************/
@@ -2414,7 +2394,6 @@ class BRepFill_Sweep {
 /******************************
 * class BRepFill_TrimEdgeTool *
 ******************************/
-%nodefaultctor BRepFill_TrimEdgeTool;
 class BRepFill_TrimEdgeTool {
 	public:
 		/****************** AddOrConfuse ******************/
@@ -2490,7 +2469,6 @@ class BRepFill_TrimEdgeTool {
 /*********************************
 * class BRepFill_TrimShellCorner *
 *********************************/
-%nodefaultctor BRepFill_TrimShellCorner;
 class BRepFill_TrimShellCorner {
 	public:
 		/****************** AddBounds ******************/
@@ -2564,7 +2542,6 @@ class BRepFill_TrimShellCorner {
 /*********************************
 * class BRepFill_TrimSurfaceTool *
 *********************************/
-%nodefaultctor BRepFill_TrimSurfaceTool;
 class BRepFill_TrimSurfaceTool {
 	public:
 		/****************** BRepFill_TrimSurfaceTool ******************/
@@ -2645,7 +2622,6 @@ class BRepFill_TrimSurfaceTool {
 /************************
 * class BRepFill_ACRLaw *
 ************************/
-%nodefaultctor BRepFill_ACRLaw;
 class BRepFill_ACRLaw : public BRepFill_LocationLaw {
 	public:
 		/****************** BRepFill_ACRLaw ******************/
@@ -2671,7 +2647,6 @@ class BRepFill_ACRLaw : public BRepFill_LocationLaw {
 /***************************
 * class BRepFill_Edge3DLaw *
 ***************************/
-%nodefaultctor BRepFill_Edge3DLaw;
 class BRepFill_Edge3DLaw : public BRepFill_LocationLaw {
 	public:
 		/****************** BRepFill_Edge3DLaw ******************/
@@ -2697,7 +2672,6 @@ class BRepFill_Edge3DLaw : public BRepFill_LocationLaw {
 /*******************************
 * class BRepFill_EdgeOnSurfLaw *
 *******************************/
-%nodefaultctor BRepFill_EdgeOnSurfLaw;
 class BRepFill_EdgeOnSurfLaw : public BRepFill_LocationLaw {
 	public:
 		/****************** BRepFill_EdgeOnSurfLaw ******************/
@@ -2729,7 +2703,6 @@ class BRepFill_EdgeOnSurfLaw : public BRepFill_LocationLaw {
 /***************************
 * class BRepFill_NSections *
 ***************************/
-%nodefaultctor BRepFill_NSections;
 class BRepFill_NSections : public BRepFill_SectionLaw {
 	public:
 		/****************** BRepFill_NSections ******************/
@@ -2828,7 +2801,6 @@ class BRepFill_NSections : public BRepFill_SectionLaw {
 /**************************
 * class BRepFill_ShapeLaw *
 **************************/
-%nodefaultctor BRepFill_ShapeLaw;
 class BRepFill_ShapeLaw : public BRepFill_SectionLaw {
 	public:
 		/****************** BRepFill_ShapeLaw ******************/
@@ -2938,7 +2910,6 @@ class BRepFill_ShapeLaw : public BRepFill_SectionLaw {
 /**************************
 * class BRepFill_DraftLaw *
 **************************/
-%nodefaultctor BRepFill_DraftLaw;
 class BRepFill_DraftLaw : public BRepFill_Edge3DLaw {
 	public:
 		/****************** BRepFill_DraftLaw ******************/

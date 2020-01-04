@@ -85,7 +85,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dapi.html"
 /************************************
 * class Geom2dAPI_ExtremaCurveCurve *
 ************************************/
-%nodefaultctor Geom2dAPI_ExtremaCurveCurve;
 class Geom2dAPI_ExtremaCurveCurve {
 	public:
 		/****************** Distance ******************/
@@ -197,7 +196,6 @@ class Geom2dAPI_ExtremaCurveCurve {
 /**********************************
 * class Geom2dAPI_InterCurveCurve *
 **********************************/
-%nodefaultctor Geom2dAPI_InterCurveCurve;
 class Geom2dAPI_InterCurveCurve {
 	public:
 		/****************** Geom2dAPI_InterCurveCurve ******************/
@@ -300,7 +298,6 @@ class Geom2dAPI_InterCurveCurve {
 /******************************
 * class Geom2dAPI_Interpolate *
 ******************************/
-%nodefaultctor Geom2dAPI_Interpolate;
 class Geom2dAPI_Interpolate {
 	public:
 		/****************** Curve ******************/
@@ -383,7 +380,6 @@ class Geom2dAPI_Interpolate {
 /**********************************
 * class Geom2dAPI_PointsToBSpline *
 **********************************/
-%nodefaultctor Geom2dAPI_PointsToBSpline;
 class Geom2dAPI_PointsToBSpline {
 	public:
 		/****************** Curve ******************/
@@ -599,7 +595,6 @@ class Geom2dAPI_PointsToBSpline {
 /**************************************
 * class Geom2dAPI_ProjectPointOnCurve *
 **************************************/
-%nodefaultctor Geom2dAPI_ProjectPointOnCurve;
 class Geom2dAPI_ProjectPointOnCurve {
 	public:
 		/****************** Distance ******************/
