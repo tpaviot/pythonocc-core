@@ -494,12 +494,11 @@ class TestWrapperFeatures(unittest.TestCase):
         issue #259 -- Standard errors like Standard_OutOfRange not caught
 
         """
-        d = gp_Dir(0, 0, 1)
-        # testing exception segfaults on osx travis
-        # TODO : check why
-        if not os.getenv('TRAVIS_OS_NAME') == "osx":
-            with self.assertRaises(RuntimeError):
-                d.Coord(-1)  # Standard_OutOfRange
+        with self.assertRaises(RuntimeError):
+            gp_Dir(0, 0, 1).Coord(-1)
+        # StdFail_NotDone
+        with self.assertRaises(RuntimeError):
+            BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, 0), gp_Pnt(0, 0, 0)).Edge()
 
     def test_memory_handle_getobject(self):
         """
