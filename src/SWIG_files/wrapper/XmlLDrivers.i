@@ -85,7 +85,6 @@ typedef NCollection_Sequence <XmlLDrivers_NamespaceDef> XmlLDrivers_SequenceOfNa
 * class XmlLDrivers *
 ********************/
 %rename(xmlldrivers) XmlLDrivers;
-%nodefaultctor XmlLDrivers;
 class XmlLDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -132,7 +131,6 @@ class XmlLDrivers {
 /********************************************
 * class XmlLDrivers_DocumentRetrievalDriver *
 ********************************************/
-%nodefaultctor XmlLDrivers_DocumentRetrievalDriver;
 class XmlLDrivers_DocumentRetrievalDriver : public PCDM_RetrievalDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -190,7 +188,6 @@ class XmlLDrivers_DocumentRetrievalDriver : public PCDM_RetrievalDriver {
 /******************************************
 * class XmlLDrivers_DocumentStorageDriver *
 ******************************************/
-%nodefaultctor XmlLDrivers_DocumentStorageDriver;
 class XmlLDrivers_DocumentStorageDriver : public PCDM_StorageDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -239,7 +236,6 @@ class XmlLDrivers_DocumentStorageDriver : public PCDM_StorageDriver {
 /*********************************
 * class XmlLDrivers_NamespaceDef *
 *********************************/
-%nodefaultctor XmlLDrivers_NamespaceDef;
 class XmlLDrivers_NamespaceDef {
 	public:
 		/****************** Prefix ******************/

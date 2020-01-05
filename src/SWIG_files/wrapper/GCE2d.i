@@ -69,7 +69,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gce2d.html"
 /*************************
 * class GCE2d_MakeMirror *
 *************************/
-%nodefaultctor GCE2d_MakeMirror;
 class GCE2d_MakeMirror {
 	public:
 		/****************** GCE2d_MakeMirror ******************/
@@ -121,7 +120,6 @@ class GCE2d_MakeMirror {
 /***************************
 * class GCE2d_MakeRotation *
 ***************************/
-%nodefaultctor GCE2d_MakeRotation;
 class GCE2d_MakeRotation {
 	public:
 		/****************** GCE2d_MakeRotation ******************/
@@ -152,7 +150,6 @@ class GCE2d_MakeRotation {
 /************************
 * class GCE2d_MakeScale *
 ************************/
-%nodefaultctor GCE2d_MakeScale;
 class GCE2d_MakeScale {
 	public:
 		/****************** GCE2d_MakeScale ******************/
@@ -183,7 +180,6 @@ class GCE2d_MakeScale {
 /******************************
 * class GCE2d_MakeTranslation *
 ******************************/
-%nodefaultctor GCE2d_MakeTranslation;
 class GCE2d_MakeTranslation {
 	public:
 		/****************** GCE2d_MakeTranslation ******************/
@@ -248,7 +244,6 @@ class GCE2d_Root {
 /******************************
 * class GCE2d_MakeArcOfCircle *
 ******************************/
-%nodefaultctor GCE2d_MakeArcOfCircle;
 class GCE2d_MakeArcOfCircle : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeArcOfCircle ******************/
@@ -335,7 +330,6 @@ class GCE2d_MakeArcOfCircle : public GCE2d_Root {
 /*******************************
 * class GCE2d_MakeArcOfEllipse *
 *******************************/
-%nodefaultctor GCE2d_MakeArcOfEllipse;
 class GCE2d_MakeArcOfEllipse : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeArcOfEllipse ******************/
@@ -398,7 +392,6 @@ class GCE2d_MakeArcOfEllipse : public GCE2d_Root {
 /*********************************
 * class GCE2d_MakeArcOfHyperbola *
 *********************************/
-%nodefaultctor GCE2d_MakeArcOfHyperbola;
 class GCE2d_MakeArcOfHyperbola : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeArcOfHyperbola ******************/
@@ -461,7 +454,6 @@ class GCE2d_MakeArcOfHyperbola : public GCE2d_Root {
 /********************************
 * class GCE2d_MakeArcOfParabola *
 ********************************/
-%nodefaultctor GCE2d_MakeArcOfParabola;
 class GCE2d_MakeArcOfParabola : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeArcOfParabola ******************/
@@ -524,7 +516,6 @@ class GCE2d_MakeArcOfParabola : public GCE2d_Root {
 /*************************
 * class GCE2d_MakeCircle *
 *************************/
-%nodefaultctor GCE2d_MakeCircle;
 class GCE2d_MakeCircle : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeCircle ******************/
@@ -631,7 +622,6 @@ class GCE2d_MakeCircle : public GCE2d_Root {
 /**************************
 * class GCE2d_MakeEllipse *
 **************************/
-%nodefaultctor GCE2d_MakeEllipse;
 class GCE2d_MakeEllipse : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeEllipse ******************/
@@ -698,7 +688,6 @@ class GCE2d_MakeEllipse : public GCE2d_Root {
 /****************************
 * class GCE2d_MakeHyperbola *
 ****************************/
-%nodefaultctor GCE2d_MakeHyperbola;
 class GCE2d_MakeHyperbola : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeHyperbola ******************/
@@ -765,7 +754,6 @@ class GCE2d_MakeHyperbola : public GCE2d_Root {
 /***********************
 * class GCE2d_MakeLine *
 ***********************/
-%nodefaultctor GCE2d_MakeLine;
 class GCE2d_MakeLine : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeLine ******************/
@@ -842,7 +830,6 @@ class GCE2d_MakeLine : public GCE2d_Root {
 /***************************
 * class GCE2d_MakeParabola *
 ***************************/
-%nodefaultctor GCE2d_MakeParabola;
 class GCE2d_MakeParabola : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeParabola ******************/
@@ -915,7 +902,6 @@ class GCE2d_MakeParabola : public GCE2d_Root {
 /**************************
 * class GCE2d_MakeSegment *
 **************************/
-%nodefaultctor GCE2d_MakeSegment;
 class GCE2d_MakeSegment : public GCE2d_Root {
 	public:
 		/****************** GCE2d_MakeSegment ******************/

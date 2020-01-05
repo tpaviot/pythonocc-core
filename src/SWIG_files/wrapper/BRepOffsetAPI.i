@@ -134,7 +134,6 @@ typedef NCollection_Sequence <TopTools_SequenceOfShape> BRepOffsetAPI_SequenceOf
 /*********************************
 * class BRepOffsetAPI_DraftAngle *
 *********************************/
-%nodefaultctor BRepOffsetAPI_DraftAngle;
 class BRepOffsetAPI_DraftAngle : public BRepBuilderAPI_ModifyShape {
 	public:
 		/****************** Add ******************/
@@ -268,7 +267,6 @@ class BRepOffsetAPI_DraftAngle : public BRepBuilderAPI_ModifyShape {
 /*****************************************
 * class BRepOffsetAPI_FindContigousEdges *
 *****************************************/
-%nodefaultctor BRepOffsetAPI_FindContigousEdges;
 class BRepOffsetAPI_FindContigousEdges {
 	public:
 		/****************** Add ******************/
@@ -391,7 +389,6 @@ class BRepOffsetAPI_FindContigousEdges {
 /********************************
 * class BRepOffsetAPI_MakeDraft *
 ********************************/
-%nodefaultctor BRepOffsetAPI_MakeDraft;
 class BRepOffsetAPI_MakeDraft : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepOffsetAPI_MakeDraft ******************/
@@ -480,7 +477,6 @@ class BRepOffsetAPI_MakeDraft : public BRepBuilderAPI_MakeShape {
 /**********************************
 * class BRepOffsetAPI_MakeEvolved *
 **********************************/
-%nodefaultctor BRepOffsetAPI_MakeEvolved;
 class BRepOffsetAPI_MakeEvolved : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepOffsetAPI_MakeEvolved ******************/
@@ -557,7 +553,6 @@ class BRepOffsetAPI_MakeEvolved : public BRepBuilderAPI_MakeShape {
 /**********************************
 * class BRepOffsetAPI_MakeFilling *
 **********************************/
-%nodefaultctor BRepOffsetAPI_MakeFilling;
 class BRepOffsetAPI_MakeFilling : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -764,7 +759,6 @@ class BRepOffsetAPI_MakeFilling : public BRepBuilderAPI_MakeShape {
 /*********************************
 * class BRepOffsetAPI_MakeOffset *
 *********************************/
-%nodefaultctor BRepOffsetAPI_MakeOffset;
 class BRepOffsetAPI_MakeOffset : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** AddWire ******************/
@@ -862,7 +856,6 @@ class BRepOffsetAPI_MakeOffset : public BRepBuilderAPI_MakeShape {
 /**************************************
 * class BRepOffsetAPI_MakeOffsetShape *
 **************************************/
-%nodefaultctor BRepOffsetAPI_MakeOffsetShape;
 class BRepOffsetAPI_MakeOffsetShape : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepOffsetAPI_MakeOffsetShape ******************/
@@ -971,7 +964,6 @@ class BRepOffsetAPI_MakeOffsetShape : public BRepBuilderAPI_MakeShape {
 /*******************************
 * class BRepOffsetAPI_MakePipe *
 *******************************/
-%nodefaultctor BRepOffsetAPI_MakePipe;
 class BRepOffsetAPI_MakePipe : public BRepPrimAPI_MakeSweep {
 	public:
 		/****************** BRepOffsetAPI_MakePipe ******************/
@@ -1054,7 +1046,6 @@ class BRepOffsetAPI_MakePipe : public BRepPrimAPI_MakeSweep {
 /************************************
 * class BRepOffsetAPI_MakePipeShell *
 ************************************/
-%nodefaultctor BRepOffsetAPI_MakePipeShell;
 class BRepOffsetAPI_MakePipeShell : public BRepPrimAPI_MakeSweep {
 	public:
 		/****************** Add ******************/
@@ -1308,7 +1299,6 @@ class BRepOffsetAPI_MakePipeShell : public BRepPrimAPI_MakeSweep {
 /*********************************
 * class BRepOffsetAPI_MiddlePath *
 *********************************/
-%nodefaultctor BRepOffsetAPI_MiddlePath;
 class BRepOffsetAPI_MiddlePath : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepOffsetAPI_MiddlePath ******************/
@@ -1340,7 +1330,6 @@ class BRepOffsetAPI_MiddlePath : public BRepBuilderAPI_MakeShape {
 /***************************************
 * class BRepOffsetAPI_NormalProjection *
 ***************************************/
-%nodefaultctor BRepOffsetAPI_NormalProjection;
 class BRepOffsetAPI_NormalProjection : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -1475,7 +1464,6 @@ class BRepOffsetAPI_NormalProjection : public BRepBuilderAPI_MakeShape {
 /***********************************
 * class BRepOffsetAPI_ThruSections *
 ***********************************/
-%nodefaultctor BRepOffsetAPI_ThruSections;
 class BRepOffsetAPI_ThruSections : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** AddVertex ******************/
@@ -1657,7 +1645,6 @@ class BRepOffsetAPI_ThruSections : public BRepBuilderAPI_MakeShape {
 /*************************************
 * class BRepOffsetAPI_MakeThickSolid *
 *************************************/
-%nodefaultctor BRepOffsetAPI_MakeThickSolid;
 class BRepOffsetAPI_MakeThickSolid : public BRepOffsetAPI_MakeOffsetShape {
 	public:
 		/****************** BRepOffsetAPI_MakeThickSolid ******************/

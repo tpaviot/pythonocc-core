@@ -117,7 +117,6 @@ class BRepClass3d {
 /**********************************
 * class BRepClass3d_Intersector3d *
 **********************************/
-%nodefaultctor BRepClass3d_Intersector3d;
 class BRepClass3d_Intersector3d {
 	public:
 		/****************** BRepClass3d_Intersector3d ******************/
@@ -206,7 +205,6 @@ class BRepClass3d_Intersector3d {
 /********************************
 * class BRepClass3d_SClassifier *
 ********************************/
-%nodefaultctor BRepClass3d_SClassifier;
 class BRepClass3d_SClassifier {
 	public:
 		/****************** BRepClass3d_SClassifier ******************/
@@ -285,7 +283,6 @@ class BRepClass3d_SClassifier {
 /**********************************
 * class BRepClass3d_SolidExplorer *
 **********************************/
-%nodefaultctor BRepClass3d_SolidExplorer;
 class BRepClass3d_SolidExplorer {
 	public:
 		/****************** BRepClass3d_SolidExplorer ******************/
@@ -623,7 +620,6 @@ class BRepClass3d_SolidExplorer {
 /*******************************************
 * class BRepClass3d_SolidPassiveClassifier *
 *******************************************/
-%nodefaultctor BRepClass3d_SolidPassiveClassifier;
 class BRepClass3d_SolidPassiveClassifier {
 	public:
 		/****************** BRepClass3d_SolidPassiveClassifier ******************/
@@ -696,7 +692,6 @@ class BRepClass3d_SolidPassiveClassifier {
 /************************************
 * class BRepClass3d_SolidClassifier *
 ************************************/
-%nodefaultctor BRepClass3d_SolidClassifier;
 class BRepClass3d_SolidClassifier : public BRepClass3d_SClassifier {
 	public:
 		/****************** BRepClass3d_SolidClassifier ******************/

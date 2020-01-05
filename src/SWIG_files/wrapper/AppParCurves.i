@@ -297,7 +297,6 @@ class AppParCurves {
 /**************************************
 * class AppParCurves_ConstraintCouple *
 **************************************/
-%nodefaultctor AppParCurves_ConstraintCouple;
 class AppParCurves_ConstraintCouple {
 	public:
 		/****************** AppParCurves_ConstraintCouple ******************/
@@ -356,7 +355,6 @@ class AppParCurves_ConstraintCouple {
 /********************************
 * class AppParCurves_MultiCurve *
 ********************************/
-%nodefaultctor AppParCurves_MultiCurve;
 class AppParCurves_MultiCurve {
 	public:
 		/****************** AppParCurves_MultiCurve ******************/
@@ -613,7 +611,6 @@ class AppParCurves_MultiCurve {
 /********************************
 * class AppParCurves_MultiPoint *
 ********************************/
-%nodefaultctor AppParCurves_MultiPoint;
 class AppParCurves_MultiPoint {
 	public:
 		/****************** AppParCurves_MultiPoint ******************/
@@ -770,7 +767,6 @@ class AppParCurves_MultiPoint {
 /***********************************
 * class AppParCurves_MultiBSpCurve *
 ***********************************/
-%nodefaultctor AppParCurves_MultiBSpCurve;
 class AppParCurves_MultiBSpCurve : public AppParCurves_MultiCurve {
 	public:
 		/****************** AppParCurves_MultiBSpCurve ******************/

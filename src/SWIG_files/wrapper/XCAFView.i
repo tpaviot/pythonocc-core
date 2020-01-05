@@ -74,7 +74,6 @@ enum XCAFView_ProjectionType {
 /************************
 * class XCAFView_Object *
 ************************/
-%nodefaultctor XCAFView_Object;
 class XCAFView_Object : public Standard_Transient {
 	public:
 		/****************** BackPlaneDistance ******************/

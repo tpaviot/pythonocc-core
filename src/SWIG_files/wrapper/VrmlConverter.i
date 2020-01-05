@@ -275,7 +275,6 @@ class VrmlConverter_DeflectionCurve {
 /*****************************
 * class VrmlConverter_Drawer *
 *****************************/
-%nodefaultctor VrmlConverter_Drawer;
 class VrmlConverter_Drawer : public Standard_Transient {
 	public:
 		/****************** DeviationCoefficient ******************/
@@ -595,7 +594,6 @@ class VrmlConverter_HLRShape {
 /*********************************
 * class VrmlConverter_LineAspect *
 *********************************/
-%nodefaultctor VrmlConverter_LineAspect;
 class VrmlConverter_LineAspect : public Standard_Transient {
 	public:
 		/****************** HasMaterial ******************/
@@ -653,7 +651,6 @@ class VrmlConverter_LineAspect : public Standard_Transient {
 /**********************************
 * class VrmlConverter_PointAspect *
 **********************************/
-%nodefaultctor VrmlConverter_PointAspect;
 class VrmlConverter_PointAspect : public Standard_Transient {
 	public:
 		/****************** HasMaterial ******************/
@@ -711,7 +708,6 @@ class VrmlConverter_PointAspect : public Standard_Transient {
 /********************************
 * class VrmlConverter_Projector *
 ********************************/
-%nodefaultctor VrmlConverter_Projector;
 class VrmlConverter_Projector : public Standard_Transient {
 	public:
 
@@ -826,7 +822,6 @@ class VrmlConverter_ShadedShape {
 /************************************
 * class VrmlConverter_ShadingAspect *
 ************************************/
-%nodefaultctor VrmlConverter_ShadingAspect;
 class VrmlConverter_ShadingAspect : public Standard_Transient {
 	public:
 		/****************** FrontMaterial ******************/
@@ -1085,7 +1080,6 @@ class VrmlConverter_WFShape {
 /********************************
 * class VrmlConverter_IsoAspect *
 ********************************/
-%nodefaultctor VrmlConverter_IsoAspect;
 class VrmlConverter_IsoAspect : public VrmlConverter_LineAspect {
 	public:
 		/****************** Number ******************/

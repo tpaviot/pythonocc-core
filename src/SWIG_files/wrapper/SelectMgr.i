@@ -135,6 +135,18 @@ enum SelectMgr_PickingStrategy {
 
 /* templates */
 %template(SelectMgr_FrustumCache) NCollection_DataMap <Standard_Integer , SelectMgr_SelectingVolumeManager>;
+
+%extend NCollection_DataMap <Standard_Integer , SelectMgr_SelectingVolumeManager> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (SelectMgr_FrustumCache::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(SelectMgr_SequenceOfFilter) NCollection_Sequence <opencascade::handle <SelectMgr_Filter>>;
 %template(SelectMgr_SequenceOfSelection) NCollection_Sequence <opencascade::handle <SelectMgr_Selection>>;
 %template(SelectMgr_Vec3) NCollection_Vec3 <Standard_Real>;
@@ -171,7 +183,6 @@ typedef NCollection_Sequence <opencascade::handle <SelectMgr_EntityOwner>> Selec
 /******************************
 * class SelectMgr_EntityOwner *
 ******************************/
-%nodefaultctor SelectMgr_EntityOwner;
 class SelectMgr_EntityOwner : public Standard_Transient {
 	public:
 		/****************** Clear ******************/
@@ -724,7 +735,6 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 /**************************************
 * class SelectMgr_SelectableObjectSet *
 **************************************/
-%nodefaultctor SelectMgr_SelectableObjectSet;
 class SelectMgr_SelectableObjectSet {
 	public:
 		class Iterator {};
@@ -844,7 +854,6 @@ enum BVHSubset {
 /*****************************************
 * class SelectMgr_SelectingVolumeManager *
 *****************************************/
-%nodefaultctor SelectMgr_SelectingVolumeManager;
 class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeManager {
 	public:
 		/****************** AllowOverlapDetection ******************/
@@ -1203,7 +1212,6 @@ class SelectMgr_SelectingVolumeManager : public SelectBasics_SelectingVolumeMana
 /****************************
 * class SelectMgr_Selection *
 ****************************/
-%nodefaultctor SelectMgr_Selection;
 class SelectMgr_Selection : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -1348,7 +1356,6 @@ class SelectMgr_Selection : public Standard_Transient {
 /***********************************
 * class SelectMgr_SelectionManager *
 ***********************************/
-%nodefaultctor SelectMgr_SelectionManager;
 class SelectMgr_SelectionManager : public Standard_Transient {
 	public:
 		/****************** Activate ******************/
@@ -1519,7 +1526,6 @@ class SelectMgr_SelectionManager : public Standard_Transient {
 /**********************************
 * class SelectMgr_SensitiveEntity *
 **********************************/
-%nodefaultctor SelectMgr_SensitiveEntity;
 class SelectMgr_SensitiveEntity : public Standard_Transient {
 	public:
 		/****************** BaseSensitive ******************/
@@ -1577,7 +1583,6 @@ class SelectMgr_SensitiveEntity : public Standard_Transient {
 /********************************
 * class SelectMgr_SortCriterion *
 ********************************/
-%nodefaultctor SelectMgr_SortCriterion;
 class SelectMgr_SortCriterion {
 	public:
 		opencascade::handle<Select3D_SensitiveEntity> Entity;
@@ -1634,7 +1639,6 @@ class SelectMgr_SortCriterion {
 /********************************
 * class SelectMgr_ViewClipRange *
 ********************************/
-%nodefaultctor SelectMgr_ViewClipRange;
 class SelectMgr_ViewClipRange {
 	public:
 		/****************** AddClipSubRange ******************/
@@ -1792,7 +1796,6 @@ class SelectMgr_CompositionFilter : public SelectMgr_Filter {
 /****************************
 * class SelectMgr_AndFilter *
 ****************************/
-%nodefaultctor SelectMgr_AndFilter;
 class SelectMgr_AndFilter : public SelectMgr_CompositionFilter {
 	public:
 		/****************** IsOk ******************/
@@ -1822,7 +1825,6 @@ class SelectMgr_AndFilter : public SelectMgr_CompositionFilter {
 /***************************
 * class SelectMgr_OrFilter *
 ***************************/
-%nodefaultctor SelectMgr_OrFilter;
 class SelectMgr_OrFilter : public SelectMgr_CompositionFilter {
 	public:
 		/****************** IsOk ******************/

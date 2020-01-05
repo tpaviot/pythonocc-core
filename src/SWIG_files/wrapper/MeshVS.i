@@ -257,19 +257,127 @@ enum  {
 };
 %template(MeshVS_MapOfTwoNodes) NCollection_Map <MeshVS_TwoNodes , MeshVS_TwoNodesHasher>;
 %template(MeshVS_DataMapOfIntegerBoolean) NCollection_DataMap <Standard_Integer , Standard_Boolean , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Standard_Boolean , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerBoolean::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfTwoColorsMapOfInteger) NCollection_DataMap <MeshVS_TwoColors , TColStd_MapOfInteger , MeshVS_TwoColorsHasher>;
 %template(MeshVS_DataMapOfIntegerMeshEntityOwner) NCollection_DataMap <Standard_Integer , opencascade::handle <MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , opencascade::handle <MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerMeshEntityOwner::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfHArray1OfSequenceOfInteger) NCollection_DataMap <Standard_Integer , opencascade::handle <MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , opencascade::handle <MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfHArray1OfSequenceOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_TwoNodesHasher) NCollection_DefaultHasher <MeshVS_TwoNodes>;
 %template(MeshVS_SequenceOfPrsBuilder) NCollection_Sequence <opencascade::handle <MeshVS_PrsBuilder>>;
 %template(MeshVS_DataMapOfIntegerColor) NCollection_DataMap <Standard_Integer , Quantity_Color , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Quantity_Color , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerColor::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfIntegerOwner) NCollection_DataMap <Standard_Integer , opencascade::handle <SelectMgr_EntityOwner>, TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , opencascade::handle <SelectMgr_EntityOwner>, TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerOwner::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfIntegerTwoColors) NCollection_DataMap <Standard_Integer , MeshVS_TwoColors , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , MeshVS_TwoColors , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerTwoColors::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfIntegerVector) NCollection_DataMap <Standard_Integer , gp_Vec , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , gp_Vec , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerVector::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_DataMapOfIntegerAsciiString) NCollection_DataMap <Standard_Integer , TCollection_AsciiString , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TCollection_AsciiString , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerAsciiString::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MeshVS_TwoColorsHasher) NCollection_DefaultHasher <MeshVS_TwoColors>;
 %template(MeshVS_DataMapOfColorMapOfInteger) NCollection_DataMap <Quantity_Color , TColStd_MapOfInteger , Quantity_ColorHasher>;
 %template(MeshVS_DataMapOfIntegerMaterial) NCollection_DataMap <Standard_Integer , Graphic3d_MaterialAspect , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Graphic3d_MaterialAspect , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerMaterial::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 /* end templates declaration */
 
 /* typedefs */
@@ -313,7 +421,6 @@ typedef NCollection_DataMap <Standard_Integer , Graphic3d_MaterialAspect , TColS
 /**********************
 * class MeshVS_Buffer *
 **********************/
-%nodefaultctor MeshVS_Buffer;
 class MeshVS_Buffer {
 	public:
 		/****************** MeshVS_Buffer ******************/
@@ -360,7 +467,6 @@ class MeshVS_Buffer {
 /*************************************
 * class MeshVS_CommonSensitiveEntity *
 *************************************/
-%nodefaultctor MeshVS_CommonSensitiveEntity;
 class MeshVS_CommonSensitiveEntity : public Select3D_SensitiveSet {
 	public:
 		/****************** BoundingBox ******************/
@@ -696,7 +802,6 @@ class MeshVS_DataSource : public Standard_Transient {
 /**********************
 * class MeshVS_Drawer *
 **********************/
-%nodefaultctor MeshVS_Drawer;
 class MeshVS_Drawer : public Standard_Transient {
 	public:
 		/****************** Assign ******************/
@@ -871,7 +976,6 @@ class MeshVS_Drawer : public Standard_Transient {
 /************************************
 * class MeshVS_DummySensitiveEntity *
 ************************************/
-%nodefaultctor MeshVS_DummySensitiveEntity;
 class MeshVS_DummySensitiveEntity : public Select3D_SensitiveEntity {
 	public:
 		/****************** BVH ******************/
@@ -939,7 +1043,6 @@ class MeshVS_DummySensitiveEntity : public Select3D_SensitiveEntity {
 /********************
 * class MeshVS_Mesh *
 ********************/
-%nodefaultctor MeshVS_Mesh;
 class MeshVS_Mesh : public AIS_InteractiveObject {
 	public:
 		/****************** AcceptDisplayMode ******************/
@@ -1252,7 +1355,6 @@ class MeshVS_Mesh : public AIS_InteractiveObject {
 /*******************************
 * class MeshVS_MeshEntityOwner *
 *******************************/
-%nodefaultctor MeshVS_MeshEntityOwner;
 class MeshVS_MeshEntityOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** Clear ******************/
@@ -1351,7 +1453,6 @@ class MeshVS_MeshEntityOwner : public SelectMgr_EntityOwner {
 /*************************
 * class MeshVS_MeshOwner *
 *************************/
-%nodefaultctor MeshVS_MeshOwner;
 class MeshVS_MeshOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** AddSelectedEntities ******************/
@@ -1598,7 +1699,6 @@ class MeshVS_PrsBuilder : public Standard_Transient {
 /*****************************
 * class MeshVS_SensitiveFace *
 *****************************/
-%nodefaultctor MeshVS_SensitiveFace;
 class MeshVS_SensitiveFace : public Select3D_SensitiveFace {
 	public:
 		/****************** MeshVS_SensitiveFace ******************/
@@ -1626,7 +1726,6 @@ class MeshVS_SensitiveFace : public Select3D_SensitiveFace {
 /*****************************
 * class MeshVS_SensitiveMesh *
 *****************************/
-%nodefaultctor MeshVS_SensitiveMesh;
 class MeshVS_SensitiveMesh : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -1690,7 +1789,6 @@ class MeshVS_SensitiveMesh : public Select3D_SensitiveEntity {
 /***********************************
 * class MeshVS_SensitivePolyhedron *
 ***********************************/
-%nodefaultctor MeshVS_SensitivePolyhedron;
 class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -1748,7 +1846,6 @@ class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
 /*****************************
 * class MeshVS_SensitiveQuad *
 *****************************/
-%nodefaultctor MeshVS_SensitiveQuad;
 class MeshVS_SensitiveQuad : public Select3D_SensitiveEntity {
 	public:
 		/****************** BoundingBox ******************/
@@ -1825,7 +1922,6 @@ class MeshVS_SensitiveQuad : public Select3D_SensitiveEntity {
 /********************************
 * class MeshVS_SensitiveSegment *
 ********************************/
-%nodefaultctor MeshVS_SensitiveSegment;
 class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment {
 	public:
 		/****************** MeshVS_SensitiveSegment ******************/
@@ -1853,7 +1949,6 @@ class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment {
 /***********************************
 * class MeshVS_SymmetricPairHasher *
 ***********************************/
-%nodefaultctor MeshVS_SymmetricPairHasher;
 class MeshVS_SymmetricPairHasher {
 	public:
 		/****************** HashCode ******************/
@@ -1973,7 +2068,6 @@ class MeshVS_Tool {
 /*************************
 * class MeshVS_TwoColors *
 *************************/
-%nodefaultctor MeshVS_TwoColors;
 class MeshVS_TwoColors {
 	public:
 		unsigned int r1;
@@ -1994,7 +2088,6 @@ class MeshVS_TwoColors {
 /************************
 * class MeshVS_TwoNodes *
 ************************/
-%nodefaultctor MeshVS_TwoNodes;
 class MeshVS_TwoNodes {
 	public:
 		int First;
@@ -2065,7 +2158,6 @@ class MeshVS_DataSource3D : public MeshVS_DataSource {
 /**********************************
 * class MeshVS_DeformedDataSource *
 **********************************/
-%nodefaultctor MeshVS_DeformedDataSource;
 class MeshVS_DeformedDataSource : public MeshVS_DataSource {
 	public:
 		/****************** Get3DGeom ******************/
@@ -2219,7 +2311,6 @@ class MeshVS_DeformedDataSource : public MeshVS_DataSource {
 /****************************************
 * class MeshVS_ElementalColorPrsBuilder *
 ****************************************/
-%nodefaultctor MeshVS_ElementalColorPrsBuilder;
 class MeshVS_ElementalColorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** Build ******************/
@@ -2372,7 +2463,6 @@ class MeshVS_ElementalColorPrsBuilder : public MeshVS_PrsBuilder {
 /******************************
 * class MeshVS_MeshPrsBuilder *
 ******************************/
-%nodefaultctor MeshVS_MeshPrsBuilder;
 class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** AddVolumePrs ******************/
@@ -2501,7 +2591,6 @@ class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
 /************************************
 * class MeshVS_NodalColorPrsBuilder *
 ************************************/
-%nodefaultctor MeshVS_NodalColorPrsBuilder;
 class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** AddVolumePrs ******************/
@@ -2685,7 +2774,6 @@ class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 /******************************
 * class MeshVS_TextPrsBuilder *
 ******************************/
-%nodefaultctor MeshVS_TextPrsBuilder;
 class MeshVS_TextPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** Build ******************/
@@ -2787,7 +2875,6 @@ class MeshVS_TextPrsBuilder : public MeshVS_PrsBuilder {
 /********************************
 * class MeshVS_VectorPrsBuilder *
 ********************************/
-%nodefaultctor MeshVS_VectorPrsBuilder;
 class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** Build ******************/

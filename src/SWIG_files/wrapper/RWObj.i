@@ -120,7 +120,6 @@ class RWObj_IShapeReceiver {
 /***********************
 * class RWObj_Material *
 ***********************/
-%nodefaultctor RWObj_Material;
 class RWObj_Material {
 	public:
 		TCollection_AsciiString Name;
@@ -155,7 +154,6 @@ class RWObj_Material {
 /**********************
 * class RWObj_SubMesh *
 **********************/
-%nodefaultctor RWObj_SubMesh;
 class RWObj_SubMesh {
 	public:
 		TCollection_AsciiString Object;

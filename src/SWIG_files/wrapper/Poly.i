@@ -252,7 +252,6 @@ class Poly {
 /**************************
 * class Poly_CoherentLink *
 **************************/
-%nodefaultctor Poly_CoherentLink;
 class Poly_CoherentLink {
 	public:
 		/****************** GetAttribute ******************/
@@ -335,7 +334,6 @@ class Poly_CoherentLink {
 /**************************
 * class Poly_CoherentNode *
 **************************/
-%nodefaultctor Poly_CoherentNode;
 class Poly_CoherentNode : public gp_XYZ {
 	public:
 		/****************** AddTriangle ******************/
@@ -471,7 +469,6 @@ class Poly_CoherentNode : public gp_XYZ {
 /******************************
 * class Poly_CoherentTriangle *
 ******************************/
-%nodefaultctor Poly_CoherentTriangle;
 class Poly_CoherentTriangle {
 	public:
 		/****************** FindConnection ******************/
@@ -593,7 +590,6 @@ class Poly_CoherentTriangle {
 /*********************
 * class Poly_Connect *
 *********************/
-%nodefaultctor Poly_Connect;
 class Poly_Connect {
 	public:
 		/****************** Initialize ******************/
@@ -701,7 +697,6 @@ class Poly_Connect {
 /***********************
 * class Poly_Polygon2D *
 ***********************/
-%nodefaultctor Poly_Polygon2D;
 class Poly_Polygon2D : public Standard_Transient {
 	public:
 		/****************** Deflection ******************/
@@ -752,7 +747,6 @@ class Poly_Polygon2D : public Standard_Transient {
 /***********************
 * class Poly_Polygon3D *
 ***********************/
-%nodefaultctor Poly_Polygon3D;
 class Poly_Polygon3D : public Standard_Transient {
 	public:
 		/****************** ChangeParameters ******************/
@@ -837,7 +831,6 @@ class Poly_Polygon3D : public Standard_Transient {
 /************************************
 * class Poly_PolygonOnTriangulation *
 ************************************/
-%nodefaultctor Poly_PolygonOnTriangulation;
 class Poly_PolygonOnTriangulation : public Standard_Transient {
 	public:
 		/****************** Copy ******************/
@@ -916,7 +909,6 @@ class Poly_PolygonOnTriangulation : public Standard_Transient {
 /**********************
 * class Poly_Triangle *
 **********************/
-%nodefaultctor Poly_Triangle;
 class Poly_Triangle {
 	public:
 
@@ -1004,7 +996,6 @@ class Poly_Triangle {
 /***************************
 * class Poly_Triangulation *
 ***************************/
-%nodefaultctor Poly_Triangulation;
 class Poly_Triangulation : public Standard_Transient {
 	public:
 		/****************** ChangeNode ******************/

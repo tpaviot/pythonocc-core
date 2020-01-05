@@ -1098,7 +1098,6 @@ class BSplSLib {
 /***********************
 * class BSplSLib_Cache *
 ***********************/
-%nodefaultctor BSplSLib_Cache;
 class BSplSLib_Cache : public Standard_Transient {
 	public:
 		/****************** BSplSLib_Cache ******************/

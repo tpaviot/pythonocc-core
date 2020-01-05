@@ -188,7 +188,6 @@ class ShapeFix {
 /**********************
 * class ShapeFix_Edge *
 **********************/
-%nodefaultctor ShapeFix_Edge;
 class ShapeFix_Edge : public Standard_Transient {
 	public:
 		/****************** FixAddCurve3d ******************/
@@ -394,7 +393,6 @@ class ShapeFix_Edge : public Standard_Transient {
 /*****************************
 * class ShapeFix_EdgeConnect *
 *****************************/
-%nodefaultctor ShapeFix_EdgeConnect;
 class ShapeFix_EdgeConnect {
 	public:
 		/****************** Add ******************/
@@ -444,7 +442,6 @@ class ShapeFix_EdgeConnect {
 /*****************************
 * class ShapeFix_EdgeProjAux *
 *****************************/
-%nodefaultctor ShapeFix_EdgeProjAux;
 class ShapeFix_EdgeProjAux : public Standard_Transient {
 	public:
 		/****************** Compute ******************/
@@ -518,7 +515,6 @@ class ShapeFix_EdgeProjAux : public Standard_Transient {
 /*****************************
 * class ShapeFix_FaceConnect *
 *****************************/
-%nodefaultctor ShapeFix_FaceConnect;
 class ShapeFix_FaceConnect {
 	public:
 		/****************** Add ******************/
@@ -564,7 +560,6 @@ class ShapeFix_FaceConnect {
 /****************************
 * class ShapeFix_FreeBounds *
 ****************************/
-%nodefaultctor ShapeFix_FreeBounds;
 class ShapeFix_FreeBounds {
 	public:
 		/****************** GetClosedWires ******************/
@@ -633,7 +628,6 @@ class ShapeFix_FreeBounds {
 /**********************************
 * class ShapeFix_IntersectionTool *
 **********************************/
-%nodefaultctor ShapeFix_IntersectionTool;
 class ShapeFix_IntersectionTool {
 	public:
 		/****************** Context ******************/
@@ -724,7 +718,6 @@ class ShapeFix_IntersectionTool {
 /**********************
 * class ShapeFix_Root *
 **********************/
-%nodefaultctor ShapeFix_Root;
 class ShapeFix_Root : public Standard_Transient {
 	public:
 		/****************** Context ******************/
@@ -891,7 +884,6 @@ class ShapeFix_Root : public Standard_Transient {
 /********************************
 * class ShapeFix_ShapeTolerance *
 ********************************/
-%nodefaultctor ShapeFix_ShapeTolerance;
 class ShapeFix_ShapeTolerance {
 	public:
 		/****************** LimitTolerance ******************/
@@ -937,7 +929,6 @@ class ShapeFix_ShapeTolerance {
 /***************************
 * class ShapeFix_SplitTool *
 ***************************/
-%nodefaultctor ShapeFix_SplitTool;
 class ShapeFix_SplitTool {
 	public:
 		/****************** CutEdge ******************/
@@ -1051,7 +1042,6 @@ class ShapeFix_SplitTool {
 /****************************
 * class ShapeFix_WireVertex *
 ****************************/
-%nodefaultctor ShapeFix_WireVertex;
 class ShapeFix_WireVertex {
 	public:
 		/****************** Analyzer ******************/
@@ -1129,7 +1119,6 @@ class ShapeFix_WireVertex {
 /******************************
 * class ShapeFix_ComposeShell *
 ******************************/
-%nodefaultctor ShapeFix_ComposeShell;
 class ShapeFix_ComposeShell : public ShapeFix_Root {
 	public:
 
@@ -1229,7 +1218,6 @@ class ShapeFix_ComposeShell : public ShapeFix_Root {
 /**********************
 * class ShapeFix_Face *
 **********************/
-%nodefaultctor ShapeFix_Face;
 class ShapeFix_Face : public ShapeFix_Root {
 	public:
 		/****************** Add ******************/
@@ -1581,7 +1569,6 @@ class ShapeFix_Face : public ShapeFix_Root {
 /******************************
 * class ShapeFix_FixSmallFace *
 ******************************/
-%nodefaultctor ShapeFix_FixSmallFace;
 class ShapeFix_FixSmallFace : public ShapeFix_Root {
 	public:
 		/****************** ComputeSharedEdgeForStripFace ******************/
@@ -1727,7 +1714,6 @@ class ShapeFix_FixSmallFace : public ShapeFix_Root {
 /*******************************
 * class ShapeFix_FixSmallSolid *
 *******************************/
-%nodefaultctor ShapeFix_FixSmallSolid;
 class ShapeFix_FixSmallSolid : public ShapeFix_Root {
 	public:
 		/****************** Merge ******************/
@@ -1794,7 +1780,6 @@ class ShapeFix_FixSmallSolid : public ShapeFix_Root {
 /***********************
 * class ShapeFix_Shape *
 ***********************/
-%nodefaultctor ShapeFix_Shape;
 class ShapeFix_Shape : public ShapeFix_Root {
 	public:
 		/****************** FixEdgeTool ******************/
@@ -2008,7 +1993,6 @@ class ShapeFix_Shape : public ShapeFix_Root {
 /***********************
 * class ShapeFix_Shell *
 ***********************/
-%nodefaultctor ShapeFix_Shell;
 class ShapeFix_Shell : public ShapeFix_Root {
 	public:
 		/****************** ErrorFaces ******************/
@@ -2171,7 +2155,6 @@ class ShapeFix_Shell : public ShapeFix_Root {
 /***********************
 * class ShapeFix_Solid *
 ***********************/
-%nodefaultctor ShapeFix_Solid;
 class ShapeFix_Solid : public ShapeFix_Root {
 	public:
 
@@ -2323,7 +2306,6 @@ class ShapeFix_Solid : public ShapeFix_Root {
 /***********************************
 * class ShapeFix_SplitCommonVertex *
 ***********************************/
-%nodefaultctor ShapeFix_SplitCommonVertex;
 class ShapeFix_SplitCommonVertex : public ShapeFix_Root {
 	public:
 		/****************** Init ******************/
@@ -2362,7 +2344,6 @@ class ShapeFix_SplitCommonVertex : public ShapeFix_Root {
 /**********************
 * class ShapeFix_Wire *
 **********************/
-%nodefaultctor ShapeFix_Wire;
 class ShapeFix_Wire : public ShapeFix_Root {
 	public:
 		/****************** Analyzer ******************/
@@ -3192,7 +3173,6 @@ class ShapeFix_Wire : public ShapeFix_Root {
 /***************************
 * class ShapeFix_Wireframe *
 ***************************/
-%nodefaultctor ShapeFix_Wireframe;
 class ShapeFix_Wireframe : public ShapeFix_Root {
 	public:
 		/****************** CheckSmallEdges ******************/

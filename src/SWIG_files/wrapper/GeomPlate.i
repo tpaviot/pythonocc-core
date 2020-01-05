@@ -177,7 +177,6 @@ typedef NCollection_Sequence <opencascade::handle <GeomPlate_CurveConstraint>> G
 /**********************
 * class GeomPlate_Aij *
 **********************/
-%nodefaultctor GeomPlate_Aij;
 class GeomPlate_Aij {
 	public:
 		/****************** GeomPlate_Aij ******************/
@@ -208,7 +207,6 @@ class GeomPlate_Aij {
 /************************************
 * class GeomPlate_BuildAveragePlane *
 ************************************/
-%nodefaultctor GeomPlate_BuildAveragePlane;
 class GeomPlate_BuildAveragePlane {
 	public:
 		/****************** GeomPlate_BuildAveragePlane ******************/
@@ -302,7 +300,6 @@ class GeomPlate_BuildAveragePlane {
 /************************************
 * class GeomPlate_BuildPlateSurface *
 ************************************/
-%nodefaultctor GeomPlate_BuildPlateSurface;
 class GeomPlate_BuildPlateSurface {
 	public:
 		/****************** Add ******************/
@@ -547,7 +544,6 @@ class GeomPlate_BuildPlateSurface {
 /**********************************
 * class GeomPlate_CurveConstraint *
 **********************************/
-%nodefaultctor GeomPlate_CurveConstraint;
 class GeomPlate_CurveConstraint : public Standard_Transient {
 	public:
 		/****************** Curve2dOnSurf ******************/
@@ -763,7 +759,6 @@ class GeomPlate_CurveConstraint : public Standard_Transient {
 /*****************************
 * class GeomPlate_MakeApprox *
 *****************************/
-%nodefaultctor GeomPlate_MakeApprox;
 class GeomPlate_MakeApprox {
 	public:
 		/****************** ApproxError ******************/
@@ -838,7 +833,6 @@ class GeomPlate_MakeApprox {
 /***********************************
 * class GeomPlate_PlateG0Criterion *
 ***********************************/
-%nodefaultctor GeomPlate_PlateG0Criterion;
 class GeomPlate_PlateG0Criterion : public AdvApp2Var_Criterion {
 	public:
 		/****************** GeomPlate_PlateG0Criterion ******************/
@@ -884,7 +878,6 @@ class GeomPlate_PlateG0Criterion : public AdvApp2Var_Criterion {
 /***********************************
 * class GeomPlate_PlateG1Criterion *
 ***********************************/
-%nodefaultctor GeomPlate_PlateG1Criterion;
 class GeomPlate_PlateG1Criterion : public AdvApp2Var_Criterion {
 	public:
 		/****************** GeomPlate_PlateG1Criterion ******************/
@@ -930,7 +923,6 @@ class GeomPlate_PlateG1Criterion : public AdvApp2Var_Criterion {
 /**********************************
 * class GeomPlate_PointConstraint *
 **********************************/
-%nodefaultctor GeomPlate_PointConstraint;
 class GeomPlate_PointConstraint : public Standard_Transient {
 	public:
 		/****************** D0 ******************/
@@ -1091,7 +1083,6 @@ class GeomPlate_PointConstraint : public Standard_Transient {
 /**************************
 * class GeomPlate_Surface *
 **************************/
-%nodefaultctor GeomPlate_Surface;
 class GeomPlate_Surface : public Geom_Surface {
 	public:
 		/****************** Bounds ******************/

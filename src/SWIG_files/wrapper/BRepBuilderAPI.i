@@ -187,7 +187,6 @@ class BRepBuilderAPI {
 /*******************************
 * class BRepBuilderAPI_Collect *
 *******************************/
-%nodefaultctor BRepBuilderAPI_Collect;
 class BRepBuilderAPI_Collect {
 	public:
 		/****************** Add ******************/
@@ -277,7 +276,6 @@ class BRepBuilderAPI_Command {
 /**********************************
 * class BRepBuilderAPI_FastSewing *
 **********************************/
-%nodefaultctor BRepBuilderAPI_FastSewing;
 class BRepBuilderAPI_FastSewing : public Standard_Transient {
 	public:
 typedef unsigned int FS_VARStatuses;
@@ -366,7 +364,6 @@ enum FS_Statuses {
 /*********************************
 * class BRepBuilderAPI_FindPlane *
 *********************************/
-%nodefaultctor BRepBuilderAPI_FindPlane;
 class BRepBuilderAPI_FindPlane {
 	public:
 		/****************** BRepBuilderAPI_FindPlane ******************/
@@ -419,7 +416,6 @@ class BRepBuilderAPI_FindPlane {
 /******************************
 * class BRepBuilderAPI_Sewing *
 ******************************/
-%nodefaultctor BRepBuilderAPI_Sewing;
 class BRepBuilderAPI_Sewing : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -774,7 +770,6 @@ class BRepBuilderAPI_Sewing : public Standard_Transient {
 /***************************************
 * class BRepBuilderAPI_VertexInspector *
 ***************************************/
-%nodefaultctor BRepBuilderAPI_VertexInspector;
 class BRepBuilderAPI_VertexInspector : public NCollection_CellFilter_InspectorXYZ {
 	public:
 typedef Standard_Integer Target;
@@ -834,7 +829,6 @@ typedef Standard_Integer Target;
 /******************************************
 * class BRepBuilderAPI_BndBoxTreeSelector *
 ******************************************/
-%nodefaultctor BRepBuilderAPI_BndBoxTreeSelector;
 class BRepBuilderAPI_BndBoxTreeSelector : public BRepBuilderAPI_BndBoxTree::Selector {
 	public:
 		/****************** Accept ******************/
@@ -947,7 +941,6 @@ class BRepBuilderAPI_MakeShape : public BRepBuilderAPI_Command {
 /********************************
 * class BRepBuilderAPI_MakeEdge *
 ********************************/
-%nodefaultctor BRepBuilderAPI_MakeEdge;
 class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepBuilderAPI_MakeEdge ******************/
@@ -1526,7 +1519,6 @@ class BRepBuilderAPI_MakeEdge : public BRepBuilderAPI_MakeShape {
 /**********************************
 * class BRepBuilderAPI_MakeEdge2d *
 **********************************/
-%nodefaultctor BRepBuilderAPI_MakeEdge2d;
 class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepBuilderAPI_MakeEdge2d ******************/
@@ -1932,7 +1924,6 @@ class BRepBuilderAPI_MakeEdge2d : public BRepBuilderAPI_MakeShape {
 /********************************
 * class BRepBuilderAPI_MakeFace *
 ********************************/
-%nodefaultctor BRepBuilderAPI_MakeFace;
 class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -2270,7 +2261,6 @@ class BRepBuilderAPI_MakeFace : public BRepBuilderAPI_MakeShape {
 /***********************************
 * class BRepBuilderAPI_MakePolygon *
 ***********************************/
-%nodefaultctor BRepBuilderAPI_MakePolygon;
 class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -2433,7 +2423,6 @@ class BRepBuilderAPI_MakePolygon : public BRepBuilderAPI_MakeShape {
 /*********************************
 * class BRepBuilderAPI_MakeShell *
 *********************************/
-%nodefaultctor BRepBuilderAPI_MakeShell;
 class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepBuilderAPI_MakeShell ******************/
@@ -2523,7 +2512,6 @@ class BRepBuilderAPI_MakeShell : public BRepBuilderAPI_MakeShape {
 /*********************************
 * class BRepBuilderAPI_MakeSolid *
 *********************************/
-%nodefaultctor BRepBuilderAPI_MakeSolid;
 class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -2632,7 +2620,6 @@ class BRepBuilderAPI_MakeSolid : public BRepBuilderAPI_MakeShape {
 /**********************************
 * class BRepBuilderAPI_MakeVertex *
 **********************************/
-%nodefaultctor BRepBuilderAPI_MakeVertex;
 class BRepBuilderAPI_MakeVertex : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepBuilderAPI_MakeVertex ******************/
@@ -2666,7 +2653,6 @@ class BRepBuilderAPI_MakeVertex : public BRepBuilderAPI_MakeShape {
 /********************************
 * class BRepBuilderAPI_MakeWire *
 ********************************/
-%nodefaultctor BRepBuilderAPI_MakeWire;
 class BRepBuilderAPI_MakeWire : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** Add ******************/
@@ -2839,7 +2825,6 @@ class BRepBuilderAPI_ModifyShape : public BRepBuilderAPI_MakeShape {
 /****************************
 * class BRepBuilderAPI_Copy *
 ****************************/
-%nodefaultctor BRepBuilderAPI_Copy;
 class BRepBuilderAPI_Copy : public BRepBuilderAPI_ModifyShape {
 	public:
 		/****************** BRepBuilderAPI_Copy ******************/
@@ -2884,7 +2869,6 @@ class BRepBuilderAPI_Copy : public BRepBuilderAPI_ModifyShape {
 /**********************************
 * class BRepBuilderAPI_GTransform *
 **********************************/
-%nodefaultctor BRepBuilderAPI_GTransform;
 class BRepBuilderAPI_GTransform : public BRepBuilderAPI_ModifyShape {
 	public:
 		/****************** BRepBuilderAPI_GTransform ******************/
@@ -2945,7 +2929,6 @@ class BRepBuilderAPI_GTransform : public BRepBuilderAPI_ModifyShape {
 /************************************
 * class BRepBuilderAPI_NurbsConvert *
 ************************************/
-%nodefaultctor BRepBuilderAPI_NurbsConvert;
 class BRepBuilderAPI_NurbsConvert : public BRepBuilderAPI_ModifyShape {
 	public:
 		/****************** BRepBuilderAPI_NurbsConvert ******************/
@@ -3002,7 +2985,6 @@ class BRepBuilderAPI_NurbsConvert : public BRepBuilderAPI_ModifyShape {
 /*********************************
 * class BRepBuilderAPI_Transform *
 *********************************/
-%nodefaultctor BRepBuilderAPI_Transform;
 class BRepBuilderAPI_Transform : public BRepBuilderAPI_ModifyShape {
 	public:
 		/****************** BRepBuilderAPI_Transform ******************/

@@ -167,7 +167,6 @@ class XCAFPrs {
 /**************************
 * class XCAFPrs_AISObject *
 **************************/
-%nodefaultctor XCAFPrs_AISObject;
 class XCAFPrs_AISObject : public AIS_ColoredShape {
 	public:
 		/****************** DispatchStyles ******************/
@@ -222,7 +221,6 @@ class XCAFPrs_AISObject : public AIS_ColoredShape {
 /*********************************
 * class XCAFPrs_DocumentExplorer *
 *********************************/
-%nodefaultctor XCAFPrs_DocumentExplorer;
 class XCAFPrs_DocumentExplorer {
 	public:
 		/****************** ChangeCurrent ******************/
@@ -381,7 +379,6 @@ class XCAFPrs_DocumentExplorer {
 /***********************************
 * class XCAFPrs_DocumentIdIterator *
 ***********************************/
-%nodefaultctor XCAFPrs_DocumentIdIterator;
 class XCAFPrs_DocumentIdIterator {
 	public:
 		/****************** More ******************/
@@ -422,7 +419,6 @@ class XCAFPrs_DocumentIdIterator {
 /*****************************
 * class XCAFPrs_DocumentNode *
 *****************************/
-%nodefaultctor XCAFPrs_DocumentNode;
 class XCAFPrs_DocumentNode {
 	public:
 		TCollection_AsciiString Id;
@@ -451,7 +447,6 @@ class XCAFPrs_DocumentNode {
 /***********************
 * class XCAFPrs_Driver *
 ***********************/
-%nodefaultctor XCAFPrs_Driver;
 class XCAFPrs_Driver : public TPrsStd_Driver {
 	public:
 		/****************** GetID ******************/
@@ -483,7 +478,6 @@ class XCAFPrs_Driver : public TPrsStd_Driver {
 /**********************
 * class XCAFPrs_Style *
 **********************/
-%nodefaultctor XCAFPrs_Style;
 class XCAFPrs_Style {
 	public:
 

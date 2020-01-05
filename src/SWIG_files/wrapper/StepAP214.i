@@ -764,7 +764,6 @@ class StepAP214 {
 /********************************************
 * class StepAP214_AppliedApprovalAssignment *
 ********************************************/
-%nodefaultctor StepAP214_AppliedApprovalAssignment;
 class StepAP214_AppliedApprovalAssignment : public StepBasic_ApprovalAssignment {
 	public:
 		/****************** Init ******************/
@@ -820,7 +819,6 @@ class StepAP214_AppliedApprovalAssignment : public StepBasic_ApprovalAssignment 
 /***********************************************
 * class StepAP214_AppliedDateAndTimeAssignment *
 ***********************************************/
-%nodefaultctor StepAP214_AppliedDateAndTimeAssignment;
 class StepAP214_AppliedDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
 		/****************** Init ******************/
@@ -878,7 +876,6 @@ class StepAP214_AppliedDateAndTimeAssignment : public StepBasic_DateAndTimeAssig
 /****************************************
 * class StepAP214_AppliedDateAssignment *
 ****************************************/
-%nodefaultctor StepAP214_AppliedDateAssignment;
 class StepAP214_AppliedDateAssignment : public StepBasic_DateAssignment {
 	public:
 		/****************** Init ******************/
@@ -936,7 +933,6 @@ class StepAP214_AppliedDateAssignment : public StepBasic_DateAssignment {
 /*******************************************
 * class StepAP214_AppliedDocumentReference *
 *******************************************/
-%nodefaultctor StepAP214_AppliedDocumentReference;
 class StepAP214_AppliedDocumentReference : public StepBasic_DocumentReference {
 	public:
 		/****************** Init ******************/
@@ -993,7 +989,6 @@ class StepAP214_AppliedDocumentReference : public StepBasic_DocumentReference {
 /**********************************************************
 * class StepAP214_AppliedExternalIdentificationAssignment *
 **********************************************************/
-%nodefaultctor StepAP214_AppliedExternalIdentificationAssignment;
 class StepAP214_AppliedExternalIdentificationAssignment : public StepBasic_ExternalIdentificationAssignment {
 	public:
 		/****************** Init ******************/
@@ -1044,7 +1039,6 @@ class StepAP214_AppliedExternalIdentificationAssignment : public StepBasic_Exter
 /*****************************************
 * class StepAP214_AppliedGroupAssignment *
 *****************************************/
-%nodefaultctor StepAP214_AppliedGroupAssignment;
 class StepAP214_AppliedGroupAssignment : public StepBasic_GroupAssignment {
 	public:
 		/****************** Init ******************/
@@ -1091,7 +1085,6 @@ class StepAP214_AppliedGroupAssignment : public StepBasic_GroupAssignment {
 /************************************************
 * class StepAP214_AppliedOrganizationAssignment *
 ************************************************/
-%nodefaultctor StepAP214_AppliedOrganizationAssignment;
 class StepAP214_AppliedOrganizationAssignment : public StepBasic_OrganizationAssignment {
 	public:
 		/****************** Init ******************/
@@ -1149,7 +1142,6 @@ class StepAP214_AppliedOrganizationAssignment : public StepBasic_OrganizationAss
 /*********************************************************
 * class StepAP214_AppliedPersonAndOrganizationAssignment *
 *********************************************************/
-%nodefaultctor StepAP214_AppliedPersonAndOrganizationAssignment;
 class StepAP214_AppliedPersonAndOrganizationAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
 		/****************** Init ******************/
@@ -1207,7 +1199,6 @@ class StepAP214_AppliedPersonAndOrganizationAssignment : public StepBasic_Person
 /***************************************
 * class StepAP214_AppliedPresentedItem *
 ***************************************/
-%nodefaultctor StepAP214_AppliedPresentedItem;
 class StepAP214_AppliedPresentedItem : public StepVisual_PresentedItem {
 	public:
 		/****************** Init ******************/
@@ -1261,7 +1252,6 @@ class StepAP214_AppliedPresentedItem : public StepVisual_PresentedItem {
 /**********************************************************
 * class StepAP214_AppliedSecurityClassificationAssignment *
 **********************************************************/
-%nodefaultctor StepAP214_AppliedSecurityClassificationAssignment;
 class StepAP214_AppliedSecurityClassificationAssignment : public StepBasic_SecurityClassificationAssignment {
 	public:
 		/****************** Init ******************/
@@ -1317,7 +1307,6 @@ class StepAP214_AppliedSecurityClassificationAssignment : public StepBasic_Secur
 /*******************************
 * class StepAP214_ApprovalItem *
 *******************************/
-%nodefaultctor StepAP214_ApprovalItem;
 class StepAP214_ApprovalItem : public StepData_SelectType {
 	public:
 		/****************** AssemblyComponentUsageSubstitute ******************/
@@ -1472,7 +1461,6 @@ class StepAP214_ApprovalItem : public StepData_SelectType {
 /********************************************************
 * class StepAP214_AutoDesignActualDateAndTimeAssignment *
 ********************************************************/
-%nodefaultctor StepAP214_AutoDesignActualDateAndTimeAssignment;
 class StepAP214_AutoDesignActualDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
 		/****************** Init ******************/
@@ -1530,7 +1518,6 @@ class StepAP214_AutoDesignActualDateAndTimeAssignment : public StepBasic_DateAnd
 /*************************************************
 * class StepAP214_AutoDesignActualDateAssignment *
 *************************************************/
-%nodefaultctor StepAP214_AutoDesignActualDateAssignment;
 class StepAP214_AutoDesignActualDateAssignment : public StepBasic_DateAssignment {
 	public:
 		/****************** Init ******************/
@@ -1588,7 +1575,6 @@ class StepAP214_AutoDesignActualDateAssignment : public StepBasic_DateAssignment
 /***********************************************
 * class StepAP214_AutoDesignApprovalAssignment *
 ***********************************************/
-%nodefaultctor StepAP214_AutoDesignApprovalAssignment;
 class StepAP214_AutoDesignApprovalAssignment : public StepBasic_ApprovalAssignment {
 	public:
 		/****************** Init ******************/
@@ -1644,7 +1630,6 @@ class StepAP214_AutoDesignApprovalAssignment : public StepBasic_ApprovalAssignme
 /****************************************************
 * class StepAP214_AutoDesignDateAndPersonAssignment *
 ****************************************************/
-%nodefaultctor StepAP214_AutoDesignDateAndPersonAssignment;
 class StepAP214_AutoDesignDateAndPersonAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
 		/****************** Init ******************/
@@ -1702,7 +1687,6 @@ class StepAP214_AutoDesignDateAndPersonAssignment : public StepBasic_PersonAndOr
 /**********************************************
 * class StepAP214_AutoDesignDateAndPersonItem *
 **********************************************/
-%nodefaultctor StepAP214_AutoDesignDateAndPersonItem;
 class StepAP214_AutoDesignDateAndPersonItem : public StepData_SelectType {
 	public:
 		/****************** AutoDesignDocumentReference ******************/
@@ -1776,7 +1760,6 @@ class StepAP214_AutoDesignDateAndPersonItem : public StepData_SelectType {
 /********************************************
 * class StepAP214_AutoDesignDateAndTimeItem *
 ********************************************/
-%nodefaultctor StepAP214_AutoDesignDateAndTimeItem;
 class StepAP214_AutoDesignDateAndTimeItem : public StepData_SelectType {
 	public:
 		/****************** ApprovalPersonOrganization ******************/
@@ -1822,7 +1805,6 @@ class StepAP214_AutoDesignDateAndTimeItem : public StepData_SelectType {
 /**************************************
 * class StepAP214_AutoDesignDatedItem *
 **************************************/
-%nodefaultctor StepAP214_AutoDesignDatedItem;
 class StepAP214_AutoDesignDatedItem : public StepData_SelectType {
 	public:
 		/****************** ApprovalPersonOrganization ******************/
@@ -1869,7 +1851,6 @@ class StepAP214_AutoDesignDatedItem : public StepData_SelectType {
 /**********************************************
 * class StepAP214_AutoDesignDocumentReference *
 **********************************************/
-%nodefaultctor StepAP214_AutoDesignDocumentReference;
 class StepAP214_AutoDesignDocumentReference : public StepBasic_DocumentReference {
 	public:
 		/****************** Init ******************/
@@ -1926,7 +1907,6 @@ class StepAP214_AutoDesignDocumentReference : public StepBasic_DocumentReference
 /*******************************************
 * class StepAP214_AutoDesignGeneralOrgItem *
 *******************************************/
-%nodefaultctor StepAP214_AutoDesignGeneralOrgItem;
 class StepAP214_AutoDesignGeneralOrgItem : public StepData_SelectType {
 	public:
 		/****************** AutoDesignDocumentReference ******************/
@@ -2002,7 +1982,6 @@ class StepAP214_AutoDesignGeneralOrgItem : public StepData_SelectType {
 /********************************************
 * class StepAP214_AutoDesignGroupAssignment *
 ********************************************/
-%nodefaultctor StepAP214_AutoDesignGroupAssignment;
 class StepAP214_AutoDesignGroupAssignment : public StepBasic_GroupAssignment {
 	public:
 		/****************** Init ******************/
@@ -2058,7 +2037,6 @@ class StepAP214_AutoDesignGroupAssignment : public StepBasic_GroupAssignment {
 /****************************************
 * class StepAP214_AutoDesignGroupedItem *
 ****************************************/
-%nodefaultctor StepAP214_AutoDesignGroupedItem;
 class StepAP214_AutoDesignGroupedItem : public StepData_SelectType {
 	public:
 		/****************** AdvancedBrepShapeRepresentation ******************/
@@ -2153,7 +2131,6 @@ class StepAP214_AutoDesignGroupedItem : public StepData_SelectType {
 /*********************************************************
 * class StepAP214_AutoDesignNominalDateAndTimeAssignment *
 *********************************************************/
-%nodefaultctor StepAP214_AutoDesignNominalDateAndTimeAssignment;
 class StepAP214_AutoDesignNominalDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
 		/****************** Init ******************/
@@ -2211,7 +2188,6 @@ class StepAP214_AutoDesignNominalDateAndTimeAssignment : public StepBasic_DateAn
 /**************************************************
 * class StepAP214_AutoDesignNominalDateAssignment *
 **************************************************/
-%nodefaultctor StepAP214_AutoDesignNominalDateAssignment;
 class StepAP214_AutoDesignNominalDateAssignment : public StepBasic_DateAssignment {
 	public:
 		/****************** Init ******************/
@@ -2269,7 +2245,6 @@ class StepAP214_AutoDesignNominalDateAssignment : public StepBasic_DateAssignmen
 /***************************************************
 * class StepAP214_AutoDesignOrganizationAssignment *
 ***************************************************/
-%nodefaultctor StepAP214_AutoDesignOrganizationAssignment;
 class StepAP214_AutoDesignOrganizationAssignment : public StepBasic_OrganizationAssignment {
 	public:
 		/****************** Init ******************/
@@ -2327,7 +2302,6 @@ class StepAP214_AutoDesignOrganizationAssignment : public StepBasic_Organization
 /************************************************************
 * class StepAP214_AutoDesignPersonAndOrganizationAssignment *
 ************************************************************/
-%nodefaultctor StepAP214_AutoDesignPersonAndOrganizationAssignment;
 class StepAP214_AutoDesignPersonAndOrganizationAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
 		/****************** Init ******************/
@@ -2385,7 +2359,6 @@ class StepAP214_AutoDesignPersonAndOrganizationAssignment : public StepBasic_Per
 /******************************************
 * class StepAP214_AutoDesignPresentedItem *
 ******************************************/
-%nodefaultctor StepAP214_AutoDesignPresentedItem;
 class StepAP214_AutoDesignPresentedItem : public StepVisual_PresentedItem {
 	public:
 		/****************** Init ******************/
@@ -2439,7 +2412,6 @@ class StepAP214_AutoDesignPresentedItem : public StepVisual_PresentedItem {
 /************************************************
 * class StepAP214_AutoDesignPresentedItemSelect *
 ************************************************/
-%nodefaultctor StepAP214_AutoDesignPresentedItemSelect;
 class StepAP214_AutoDesignPresentedItemSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2504,7 +2476,6 @@ class StepAP214_AutoDesignPresentedItemSelect : public StepData_SelectType {
 /********************************************
 * class StepAP214_AutoDesignReferencingItem *
 ********************************************/
-%nodefaultctor StepAP214_AutoDesignReferencingItem;
 class StepAP214_AutoDesignReferencingItem : public StepData_SelectType {
 	public:
 		/****************** Approval ******************/
@@ -2603,7 +2574,6 @@ class StepAP214_AutoDesignReferencingItem : public StepData_SelectType {
 /*************************************************************
 * class StepAP214_AutoDesignSecurityClassificationAssignment *
 *************************************************************/
-%nodefaultctor StepAP214_AutoDesignSecurityClassificationAssignment;
 class StepAP214_AutoDesignSecurityClassificationAssignment : public StepBasic_SecurityClassificationAssignment {
 	public:
 		/****************** Init ******************/
@@ -2659,7 +2629,6 @@ class StepAP214_AutoDesignSecurityClassificationAssignment : public StepBasic_Se
 /************************
 * class StepAP214_Class *
 ************************/
-%nodefaultctor StepAP214_Class;
 class StepAP214_Class : public StepBasic_Group {
 	public:
 		/****************** StepAP214_Class ******************/
@@ -2682,7 +2651,6 @@ class StepAP214_Class : public StepBasic_Group {
 /****************************************
 * class StepAP214_DocumentReferenceItem *
 ****************************************/
-%nodefaultctor StepAP214_DocumentReferenceItem;
 class StepAP214_DocumentReferenceItem : public StepData_SelectType {
 	public:
 		/****************** AppliedExternalIdentificationAssignment ******************/
@@ -2831,7 +2799,6 @@ class StepAP214_DocumentReferenceItem : public StepData_SelectType {
 /*********************************************
 * class StepAP214_ExternalIdentificationItem *
 *********************************************/
-%nodefaultctor StepAP214_ExternalIdentificationItem;
 class StepAP214_ExternalIdentificationItem : public StepData_SelectType {
 	public:
 		/****************** AppliedOrganizationAssignment ******************/
@@ -2950,7 +2917,6 @@ class StepAP214_ExternalIdentificationItem : public StepData_SelectType {
 /***************************************************
 * class StepAP214_ExternallyDefinedGeneralProperty *
 ***************************************************/
-%nodefaultctor StepAP214_ExternallyDefinedGeneralProperty;
 class StepAP214_ExternallyDefinedGeneralProperty : public StepBasic_GeneralProperty {
 	public:
 		/****************** ExternallyDefinedItem ******************/
@@ -3005,7 +2971,6 @@ class StepAP214_ExternallyDefinedGeneralProperty : public StepBasic_GeneralPrope
 /****************************
 * class StepAP214_GroupItem *
 ****************************/
-%nodefaultctor StepAP214_GroupItem;
 class StepAP214_GroupItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -3118,7 +3083,6 @@ class StepAP214_GroupItem : public StepData_SelectType {
 /**************************************
 * class StepAP214_PresentedItemSelect *
 **************************************/
-%nodefaultctor StepAP214_PresentedItemSelect;
 class StepAP214_PresentedItemSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -3159,7 +3123,6 @@ class StepAP214_PresentedItemSelect : public StepData_SelectType {
 /***************************
 * class StepAP214_Protocol *
 ***************************/
-%nodefaultctor StepAP214_Protocol;
 class StepAP214_Protocol : public StepData_Protocol {
 	public:
 		/****************** NbResources ******************/
@@ -3208,7 +3171,6 @@ class StepAP214_Protocol : public StepData_Protocol {
 /*******************************
 * class StepAP214_RepItemGroup *
 *******************************/
-%nodefaultctor StepAP214_RepItemGroup;
 class StepAP214_RepItemGroup : public StepBasic_Group {
 	public:
 		/****************** Init ******************/
@@ -3259,7 +3221,6 @@ class StepAP214_RepItemGroup : public StepBasic_Group {
 /*********************************************
 * class StepAP214_AutoDesignOrganizationItem *
 *********************************************/
-%nodefaultctor StepAP214_AutoDesignOrganizationItem;
 class StepAP214_AutoDesignOrganizationItem : public StepAP214_AutoDesignGeneralOrgItem {
 	public:
 		/****************** CaseNum ******************/
@@ -3296,7 +3257,6 @@ class StepAP214_AutoDesignOrganizationItem : public StepAP214_AutoDesignGeneralO
 /**********************************
 * class StepAP214_DateAndTimeItem *
 **********************************/
-%nodefaultctor StepAP214_DateAndTimeItem;
 class StepAP214_DateAndTimeItem : public StepAP214_ApprovalItem {
 	public:
 		/****************** AppliedOrganizationAssignment ******************/
@@ -3343,7 +3303,6 @@ class StepAP214_DateAndTimeItem : public StepAP214_ApprovalItem {
 /***************************
 * class StepAP214_DateItem *
 ***************************/
-%nodefaultctor StepAP214_DateItem;
 class StepAP214_DateItem : public StepAP214_ApprovalItem {
 	public:
 		/****************** AppliedOrganizationAssignment ******************/
@@ -3396,7 +3355,6 @@ class StepAP214_DateItem : public StepAP214_ApprovalItem {
 /*****************************************
 * class StepAP214_ExternallyDefinedClass *
 *****************************************/
-%nodefaultctor StepAP214_ExternallyDefinedClass;
 class StepAP214_ExternallyDefinedClass : public StepAP214_Class {
 	public:
 		/****************** ExternallyDefinedItem ******************/
@@ -3449,7 +3407,6 @@ class StepAP214_ExternallyDefinedClass : public StepAP214_Class {
 /***********************************
 * class StepAP214_OrganizationItem *
 ***********************************/
-%nodefaultctor StepAP214_OrganizationItem;
 class StepAP214_OrganizationItem : public StepAP214_ApprovalItem {
 	public:
 		/****************** AppliedOrganizationAssignment ******************/
@@ -3496,7 +3453,6 @@ class StepAP214_OrganizationItem : public StepAP214_ApprovalItem {
 /********************************************
 * class StepAP214_PersonAndOrganizationItem *
 ********************************************/
-%nodefaultctor StepAP214_PersonAndOrganizationItem;
 class StepAP214_PersonAndOrganizationItem : public StepAP214_ApprovalItem {
 	public:
 		/****************** AppliedOrganizationAssignment ******************/
@@ -3543,7 +3499,6 @@ class StepAP214_PersonAndOrganizationItem : public StepAP214_ApprovalItem {
 /*********************************************
 * class StepAP214_SecurityClassificationItem *
 *********************************************/
-%nodefaultctor StepAP214_SecurityClassificationItem;
 class StepAP214_SecurityClassificationItem : public StepAP214_ApprovalItem {
 	public:
 		/****************** Action ******************/

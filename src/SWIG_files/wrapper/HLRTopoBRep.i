@@ -129,7 +129,6 @@ class HLRTopoBRep_DSFiller {
 /*************************
 * class HLRTopoBRep_Data *
 *************************/
-%nodefaultctor HLRTopoBRep_Data;
 class HLRTopoBRep_Data {
 	public:
 		/****************** AddIntL ******************/
@@ -402,7 +401,6 @@ class HLRTopoBRep_Data {
 /*****************************
 * class HLRTopoBRep_FaceData *
 *****************************/
-%nodefaultctor HLRTopoBRep_FaceData;
 class HLRTopoBRep_FaceData {
 	public:
 		/****************** AddIntL ******************/
@@ -515,7 +513,6 @@ class HLRTopoBRep_FaceIsoLiner {
 /*****************************
 * class HLRTopoBRep_OutLiner *
 *****************************/
-%nodefaultctor HLRTopoBRep_OutLiner;
 class HLRTopoBRep_OutLiner : public Standard_Transient {
 	public:
 		/****************** DataStructure ******************/
@@ -593,7 +590,6 @@ class HLRTopoBRep_OutLiner : public Standard_Transient {
 /**************************
 * class HLRTopoBRep_VData *
 **************************/
-%nodefaultctor HLRTopoBRep_VData;
 class HLRTopoBRep_VData {
 	public:
 		/****************** HLRTopoBRep_VData ******************/

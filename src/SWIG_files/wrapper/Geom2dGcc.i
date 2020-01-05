@@ -153,7 +153,6 @@ class Geom2dGcc {
 /*******************************
 * class Geom2dGcc_Circ2d2TanOn *
 *******************************/
-%nodefaultctor Geom2dGcc_Circ2d2TanOn;
 class Geom2dGcc_Circ2d2TanOn {
 	public:
 		/****************** CenterOn3 ******************/
@@ -322,7 +321,6 @@ class Geom2dGcc_Circ2d2TanOn {
 /**********************************
 * class Geom2dGcc_Circ2d2TanOnGeo *
 **********************************/
-%nodefaultctor Geom2dGcc_Circ2d2TanOnGeo;
 class Geom2dGcc_Circ2d2TanOnGeo {
 	public:
 		/****************** CenterOn3 ******************/
@@ -509,7 +507,6 @@ class Geom2dGcc_Circ2d2TanOnGeo {
 /***********************************
 * class Geom2dGcc_Circ2d2TanOnIter *
 ***********************************/
-%nodefaultctor Geom2dGcc_Circ2d2TanOnIter;
 class Geom2dGcc_Circ2d2TanOnIter {
 	public:
 		/****************** CenterOn3 ******************/
@@ -825,7 +822,6 @@ class Geom2dGcc_Circ2d2TanOnIter {
 /********************************
 * class Geom2dGcc_Circ2d2TanRad *
 ********************************/
-%nodefaultctor Geom2dGcc_Circ2d2TanRad;
 class Geom2dGcc_Circ2d2TanRad {
 	public:
 		/****************** Geom2dGcc_Circ2d2TanRad ******************/
@@ -970,7 +966,6 @@ class Geom2dGcc_Circ2d2TanRad {
 /***********************************
 * class Geom2dGcc_Circ2d2TanRadGeo *
 ***********************************/
-%nodefaultctor Geom2dGcc_Circ2d2TanRadGeo;
 class Geom2dGcc_Circ2d2TanRadGeo {
 	public:
 		/****************** Geom2dGcc_Circ2d2TanRadGeo ******************/
@@ -1117,7 +1112,6 @@ class Geom2dGcc_Circ2d2TanRadGeo {
 /*****************************
 * class Geom2dGcc_Circ2d3Tan *
 *****************************/
-%nodefaultctor Geom2dGcc_Circ2d3Tan;
 class Geom2dGcc_Circ2d3Tan {
 	public:
 		/****************** Geom2dGcc_Circ2d3Tan ******************/
@@ -1313,7 +1307,6 @@ class Geom2dGcc_Circ2d3Tan {
 /*********************************
 * class Geom2dGcc_Circ2d3TanIter *
 *********************************/
-%nodefaultctor Geom2dGcc_Circ2d3TanIter;
 class Geom2dGcc_Circ2d3TanIter {
 	public:
 		/****************** Geom2dGcc_Circ2d3TanIter ******************/
@@ -1595,7 +1588,6 @@ class Geom2dGcc_Circ2d3TanIter {
 /*******************************
 * class Geom2dGcc_Circ2dTanCen *
 *******************************/
-%nodefaultctor Geom2dGcc_Circ2dTanCen;
 class Geom2dGcc_Circ2dTanCen {
 	public:
 		/****************** Geom2dGcc_Circ2dTanCen ******************/
@@ -1674,7 +1666,6 @@ class Geom2dGcc_Circ2dTanCen {
 /**********************************
 * class Geom2dGcc_Circ2dTanCenGeo *
 **********************************/
-%nodefaultctor Geom2dGcc_Circ2dTanCenGeo;
 class Geom2dGcc_Circ2dTanCenGeo {
 	public:
 		/****************** Geom2dGcc_Circ2dTanCenGeo ******************/
@@ -1744,7 +1735,6 @@ class Geom2dGcc_Circ2dTanCenGeo {
 /*********************************
 * class Geom2dGcc_Circ2dTanOnRad *
 *********************************/
-%nodefaultctor Geom2dGcc_Circ2dTanOnRad;
 class Geom2dGcc_Circ2dTanOnRad {
 	public:
 		/****************** CenterOn3 ******************/
@@ -1865,7 +1855,6 @@ class Geom2dGcc_Circ2dTanOnRad {
 /************************************
 * class Geom2dGcc_Circ2dTanOnRadGeo *
 ************************************/
-%nodefaultctor Geom2dGcc_Circ2dTanOnRadGeo;
 class Geom2dGcc_Circ2dTanOnRadGeo {
 	public:
 		/****************** CenterOn3 ******************/
@@ -2125,7 +2114,6 @@ class Geom2dGcc_CurveTool {
 /***********************************
 * class Geom2dGcc_FunctionTanCirCu *
 ***********************************/
-%nodefaultctor Geom2dGcc_FunctionTanCirCu;
 class Geom2dGcc_FunctionTanCirCu : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -2181,7 +2169,6 @@ class Geom2dGcc_FunctionTanCirCu : public math_FunctionWithDerivative {
 /**********************************
 * class Geom2dGcc_FunctionTanCuCu *
 **********************************/
-%nodefaultctor Geom2dGcc_FunctionTanCuCu;
 class Geom2dGcc_FunctionTanCuCu : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/
@@ -2280,7 +2267,6 @@ class Geom2dGcc_FunctionTanCuCu : public math_FunctionSetWithDerivatives {
 /**************************************
 * class Geom2dGcc_FunctionTanCuCuOnCu *
 **************************************/
-%nodefaultctor Geom2dGcc_FunctionTanCuCuOnCu;
 class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/
@@ -2520,7 +2506,6 @@ class Geom2dGcc_FunctionTanCuCuOnCu : public math_FunctionSetWithDerivatives {
 /***********************************
 * class Geom2dGcc_FunctionTanCuPnt *
 ***********************************/
-%nodefaultctor Geom2dGcc_FunctionTanCuPnt;
 class Geom2dGcc_FunctionTanCuPnt : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -2576,7 +2561,6 @@ class Geom2dGcc_FunctionTanCuPnt : public math_FunctionWithDerivative {
 /*********************************
 * class Geom2dGcc_FunctionTanObl *
 *********************************/
-%nodefaultctor Geom2dGcc_FunctionTanObl;
 class Geom2dGcc_FunctionTanObl : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -2632,7 +2616,6 @@ class Geom2dGcc_FunctionTanObl : public math_FunctionWithDerivative {
 /****************************
 * class Geom2dGcc_Lin2d2Tan *
 ****************************/
-%nodefaultctor Geom2dGcc_Lin2d2Tan;
 class Geom2dGcc_Lin2d2Tan {
 	public:
 		/****************** Geom2dGcc_Lin2d2Tan ******************/
@@ -2761,7 +2744,6 @@ class Geom2dGcc_Lin2d2Tan {
 /********************************
 * class Geom2dGcc_Lin2d2TanIter *
 ********************************/
-%nodefaultctor Geom2dGcc_Lin2d2TanIter;
 class Geom2dGcc_Lin2d2TanIter {
 	public:
 		/****************** Geom2dGcc_Lin2d2TanIter ******************/
@@ -2864,7 +2846,6 @@ class Geom2dGcc_Lin2d2TanIter {
 /******************************
 * class Geom2dGcc_Lin2dTanObl *
 ******************************/
-%nodefaultctor Geom2dGcc_Lin2dTanObl;
 class Geom2dGcc_Lin2dTanObl {
 	public:
 		/****************** Geom2dGcc_Lin2dTanObl ******************/
@@ -2967,7 +2948,6 @@ class Geom2dGcc_Lin2dTanObl {
 /**********************************
 * class Geom2dGcc_Lin2dTanOblIter *
 **********************************/
-%nodefaultctor Geom2dGcc_Lin2dTanOblIter;
 class Geom2dGcc_Lin2dTanOblIter {
 	public:
 		/****************** Geom2dGcc_Lin2dTanOblIter ******************/
@@ -3043,7 +3023,6 @@ class Geom2dGcc_Lin2dTanOblIter {
 /*************************
 * class Geom2dGcc_QCurve *
 *************************/
-%nodefaultctor Geom2dGcc_QCurve;
 class Geom2dGcc_QCurve {
 	public:
 		/****************** Geom2dGcc_QCurve ******************/
@@ -3101,7 +3080,6 @@ class Geom2dGcc_QCurve {
 /*********************************
 * class Geom2dGcc_QualifiedCurve *
 *********************************/
-%nodefaultctor Geom2dGcc_QualifiedCurve;
 class Geom2dGcc_QualifiedCurve {
 	public:
 		/****************** Geom2dGcc_QualifiedCurve ******************/

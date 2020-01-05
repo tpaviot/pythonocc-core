@@ -114,7 +114,6 @@ enum FilletSurf_ErrorTypeStatus {
 /***************************
 * class FilletSurf_Builder *
 ***************************/
-%nodefaultctor FilletSurf_Builder;
 class FilletSurf_Builder {
 	public:
 		/****************** CurveOnFace1 ******************/
@@ -296,7 +295,6 @@ class FilletSurf_Builder {
 /***********************************
 * class FilletSurf_InternalBuilder *
 ***********************************/
-%nodefaultctor FilletSurf_InternalBuilder;
 class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	public:
 		/****************** Add ******************/

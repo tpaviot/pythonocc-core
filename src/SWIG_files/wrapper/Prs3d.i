@@ -287,7 +287,6 @@ class Prs3d_BasicAspect : public Standard_Transient {
 /*****************************
 * class Prs3d_DimensionUnits *
 *****************************/
-%nodefaultctor Prs3d_DimensionUnits;
 class Prs3d_DimensionUnits {
 	public:
 		/****************** GetAngleUnits ******************/
@@ -343,7 +342,6 @@ class Prs3d_DimensionUnits {
 /*********************
 * class Prs3d_Drawer *
 *********************/
-%nodefaultctor Prs3d_Drawer;
 class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 	public:
 		/****************** ArrowAspect ******************/
@@ -1379,7 +1377,6 @@ class Prs3d_Drawer : public Graphic3d_PresentationAttributes {
 /*********************************
 * class Prs3d_PresentationShadow *
 *********************************/
-%nodefaultctor Prs3d_PresentationShadow;
 class Prs3d_PresentationShadow : public Graphic3d_Structure {
 	public:
 		/****************** CalculateBoundBox ******************/
@@ -1424,7 +1421,6 @@ class Prs3d_PresentationShadow : public Graphic3d_Structure {
 /************************
 * class Prs3d_Projector *
 ************************/
-%nodefaultctor Prs3d_Projector;
 class Prs3d_Projector : public Standard_Transient {
 	public:
 		/****************** Projector ******************/
@@ -1512,7 +1508,6 @@ class Prs3d_Root {
 /************************
 * class Prs3d_ShapeTool *
 ************************/
-%nodefaultctor Prs3d_ShapeTool;
 class Prs3d_ShapeTool {
 	public:
 		/****************** CurrentTriangulation ******************/
@@ -1711,7 +1706,6 @@ class Prs3d_ToolQuadric {
 /********************
 * class Prs3d_Arrow *
 ********************/
-%nodefaultctor Prs3d_Arrow;
 class Prs3d_Arrow : public Prs3d_Root {
 	public:
 		/****************** Draw ******************/
@@ -1792,7 +1786,6 @@ class Prs3d_Arrow : public Prs3d_Root {
 /**************************
 * class Prs3d_ArrowAspect *
 **************************/
-%nodefaultctor Prs3d_ArrowAspect;
 class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 	public:
 		/****************** Angle ******************/
@@ -1887,7 +1880,6 @@ class Prs3d_ArrowAspect : public Prs3d_BasicAspect {
 /**************************
 * class Prs3d_DatumAspect *
 **************************/
-%nodefaultctor Prs3d_DatumAspect;
 class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 	public:
 		/****************** ArrowAspect ******************/
@@ -2143,7 +2135,6 @@ class Prs3d_DatumAspect : public Prs3d_BasicAspect {
 /******************************
 * class Prs3d_DimensionAspect *
 ******************************/
-%nodefaultctor Prs3d_DimensionAspect;
 class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 	public:
 		/****************** ArrowAspect ******************/
@@ -2364,7 +2355,6 @@ class Prs3d_DimensionAspect : public Prs3d_BasicAspect {
 /*************************
 * class Prs3d_LineAspect *
 *************************/
-%nodefaultctor Prs3d_LineAspect;
 class Prs3d_LineAspect : public Prs3d_BasicAspect {
 	public:
 		/****************** Aspect ******************/
@@ -2445,7 +2435,6 @@ class Prs3d_LineAspect : public Prs3d_BasicAspect {
 /**************************
 * class Prs3d_PlaneAspect *
 **************************/
-%nodefaultctor Prs3d_PlaneAspect;
 class Prs3d_PlaneAspect : public Prs3d_BasicAspect {
 	public:
 		/****************** ArrowAspect ******************/
@@ -2627,7 +2616,6 @@ class Prs3d_PlaneAspect : public Prs3d_BasicAspect {
 /**************************
 * class Prs3d_PointAspect *
 **************************/
-%nodefaultctor Prs3d_PointAspect;
 class Prs3d_PointAspect : public Prs3d_BasicAspect {
 	public:
 		/****************** Aspect ******************/
@@ -2736,7 +2724,6 @@ class Prs3d_PointAspect : public Prs3d_BasicAspect {
 /****************************
 * class Prs3d_ShadingAspect *
 ****************************/
-%nodefaultctor Prs3d_ShadingAspect;
 class Prs3d_ShadingAspect : public Prs3d_BasicAspect {
 	public:
 		/****************** Aspect ******************/
@@ -2930,7 +2917,6 @@ class Prs3d_Text : public Prs3d_Root {
 /*************************
 * class Prs3d_TextAspect *
 *************************/
-%nodefaultctor Prs3d_TextAspect;
 class Prs3d_TextAspect : public Prs3d_BasicAspect {
 	public:
 		/****************** Angle ******************/
@@ -3067,7 +3053,6 @@ class Prs3d_TextAspect : public Prs3d_BasicAspect {
 /***************************
 * class Prs3d_ToolCylinder *
 ***************************/
-%nodefaultctor Prs3d_ToolCylinder;
 class Prs3d_ToolCylinder : public Prs3d_ToolQuadric {
 	public:
 		/****************** Create ******************/
@@ -3116,7 +3101,6 @@ class Prs3d_ToolCylinder : public Prs3d_ToolQuadric {
 /***********************
 * class Prs3d_ToolDisk *
 ***********************/
-%nodefaultctor Prs3d_ToolDisk;
 class Prs3d_ToolDisk : public Prs3d_ToolQuadric {
 	public:
 		/****************** Create ******************/
@@ -3171,7 +3155,6 @@ class Prs3d_ToolDisk : public Prs3d_ToolQuadric {
 /*************************
 * class Prs3d_ToolSector *
 *************************/
-%nodefaultctor Prs3d_ToolSector;
 class Prs3d_ToolSector : public Prs3d_ToolQuadric {
 	public:
 		/****************** Create ******************/
@@ -3212,7 +3195,6 @@ class Prs3d_ToolSector : public Prs3d_ToolQuadric {
 /*************************
 * class Prs3d_ToolSphere *
 *************************/
-%nodefaultctor Prs3d_ToolSphere;
 class Prs3d_ToolSphere : public Prs3d_ToolQuadric {
 	public:
 		/****************** Create ******************/
@@ -3253,7 +3235,6 @@ class Prs3d_ToolSphere : public Prs3d_ToolQuadric {
 /************************
 * class Prs3d_IsoAspect *
 ************************/
-%nodefaultctor Prs3d_IsoAspect;
 class Prs3d_IsoAspect : public Prs3d_LineAspect {
 	public:
 		/****************** Number ******************/

@@ -135,7 +135,6 @@ typedef BOPAlgo_BOP * BOPAlgo_PBOP;
 /****************************
 * class BOPAlgo_CheckResult *
 ****************************/
-%nodefaultctor BOPAlgo_CheckResult;
 class BOPAlgo_CheckResult {
 	public:
 		/****************** AddFaultyShape1 ******************/
@@ -282,7 +281,6 @@ class BOPAlgo_CheckResult {
 /************************
 * class BOPAlgo_Options *
 ************************/
-%nodefaultctor BOPAlgo_Options;
 class BOPAlgo_Options {
 	public:
 		/****************** AddError ******************/
@@ -459,7 +457,6 @@ class BOPAlgo_Options {
 /*********************************
 * class BOPAlgo_SectionAttribute *
 *********************************/
-%nodefaultctor BOPAlgo_SectionAttribute;
 class BOPAlgo_SectionAttribute {
 	public:
 		/****************** Approximation ******************/
@@ -534,7 +531,6 @@ class BOPAlgo_SectionAttribute {
 /**********************
 * class BOPAlgo_Tools *
 **********************/
-%nodefaultctor BOPAlgo_Tools;
 class BOPAlgo_Tools {
 	public:
 		/****************** ClassifyFaces ******************/
@@ -672,7 +668,6 @@ class BOPAlgo_Tools {
 /****************************
 * class BOPAlgo_WireEdgeSet *
 ****************************/
-%nodefaultctor BOPAlgo_WireEdgeSet;
 class BOPAlgo_WireEdgeSet {
 	public:
 		/****************** AddShape ******************/
@@ -761,7 +756,6 @@ class BOPAlgo_Algo : public BOPAlgo_Options {
 /******************************
 * class BOPAlgo_MakeConnected *
 ******************************/
-%nodefaultctor BOPAlgo_MakeConnected;
 class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 	public:
 		/****************** AddArgument ******************/
@@ -896,7 +890,6 @@ class BOPAlgo_MakeConnected : public BOPAlgo_Options {
 /*****************************
 * class BOPAlgo_MakePeriodic *
 *****************************/
-%nodefaultctor BOPAlgo_MakePeriodic;
 class BOPAlgo_MakePeriodic : public BOPAlgo_Options {
 	public:
 		class PeriodicityParams {};
@@ -1213,7 +1206,6 @@ class BOPAlgo_MakePeriodic : public BOPAlgo_Options {
 /*********************************
 * class BOPAlgo_ArgumentAnalyzer *
 *********************************/
-%nodefaultctor BOPAlgo_ArgumentAnalyzer;
 class BOPAlgo_ArgumentAnalyzer : public BOPAlgo_Algo {
 	public:
 
@@ -1563,7 +1555,6 @@ class BOPAlgo_BuilderShape : public BOPAlgo_Algo {
 /***************************
 * class BOPAlgo_PaveFiller *
 ***************************/
-%nodefaultctor BOPAlgo_PaveFiller;
 class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 	public:
 		/****************** AddArgument ******************/
@@ -1681,7 +1672,6 @@ class BOPAlgo_PaveFiller : public BOPAlgo_Algo {
 /******************************
 * class BOPAlgo_ShellSplitter *
 ******************************/
-%nodefaultctor BOPAlgo_ShellSplitter;
 class BOPAlgo_ShellSplitter : public BOPAlgo_Algo {
 	public:
 		/****************** AddStartElement ******************/
@@ -1743,7 +1733,6 @@ class BOPAlgo_ShellSplitter : public BOPAlgo_Algo {
 /*****************************
 * class BOPAlgo_WireSplitter *
 *****************************/
-%nodefaultctor BOPAlgo_WireSplitter;
 class BOPAlgo_WireSplitter : public BOPAlgo_Algo {
 	public:
 		/****************** BOPAlgo_WireSplitter ******************/
@@ -1821,7 +1810,6 @@ class BOPAlgo_WireSplitter : public BOPAlgo_Algo {
 /************************
 * class BOPAlgo_Builder *
 ************************/
-%nodefaultctor BOPAlgo_Builder;
 class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 	public:
 		/****************** AddArgument ******************/
@@ -1999,7 +1987,6 @@ class BOPAlgo_Builder : public BOPAlgo_BuilderShape {
 /****************************
 * class BOPAlgo_BuilderFace *
 ****************************/
-%nodefaultctor BOPAlgo_BuilderFace;
 class BOPAlgo_BuilderFace : public BOPAlgo_BuilderArea {
 	public:
 		/****************** BOPAlgo_BuilderFace ******************/
@@ -2051,7 +2038,6 @@ class BOPAlgo_BuilderFace : public BOPAlgo_BuilderArea {
 /*****************************
 * class BOPAlgo_BuilderSolid *
 *****************************/
-%nodefaultctor BOPAlgo_BuilderSolid;
 class BOPAlgo_BuilderSolid : public BOPAlgo_BuilderArea {
 	public:
 		/****************** BOPAlgo_BuilderSolid ******************/
@@ -2092,7 +2078,6 @@ class BOPAlgo_BuilderSolid : public BOPAlgo_BuilderArea {
 /**************************
 * class BOPAlgo_CheckerSI *
 **************************/
-%nodefaultctor BOPAlgo_CheckerSI;
 class BOPAlgo_CheckerSI : public BOPAlgo_PaveFiller {
 	public:
 		/****************** BOPAlgo_CheckerSI ******************/
@@ -2125,7 +2110,6 @@ class BOPAlgo_CheckerSI : public BOPAlgo_PaveFiller {
 /*******************************
 * class BOPAlgo_RemoveFeatures *
 *******************************/
-%nodefaultctor BOPAlgo_RemoveFeatures;
 class BOPAlgo_RemoveFeatures : public BOPAlgo_BuilderShape {
 	public:
 		/****************** AddFaceToRemove ******************/
@@ -2194,7 +2178,6 @@ class BOPAlgo_RemoveFeatures : public BOPAlgo_BuilderShape {
 /*****************************
 * class BOPAlgo_CellsBuilder *
 *****************************/
-%nodefaultctor BOPAlgo_CellsBuilder;
 class BOPAlgo_CellsBuilder : public BOPAlgo_Builder {
 	public:
 		/****************** AddAllToResult ******************/
@@ -2285,7 +2268,6 @@ class BOPAlgo_CellsBuilder : public BOPAlgo_Builder {
 /****************************
 * class BOPAlgo_MakerVolume *
 ****************************/
-%nodefaultctor BOPAlgo_MakerVolume;
 class BOPAlgo_MakerVolume : public BOPAlgo_Builder {
 	public:
 		/****************** BOPAlgo_MakerVolume ******************/
@@ -2366,7 +2348,6 @@ class BOPAlgo_MakerVolume : public BOPAlgo_Builder {
 /************************
 * class BOPAlgo_Section *
 ************************/
-%nodefaultctor BOPAlgo_Section;
 class BOPAlgo_Section : public BOPAlgo_Builder {
 	public:
 		/****************** BOPAlgo_Section ******************/
@@ -2395,7 +2376,6 @@ class BOPAlgo_Section : public BOPAlgo_Builder {
 /******************************
 * class BOPAlgo_ToolsProvider *
 ******************************/
-%nodefaultctor BOPAlgo_ToolsProvider;
 class BOPAlgo_ToolsProvider : public BOPAlgo_Builder {
 	public:
 		/****************** AddTool ******************/
@@ -2451,7 +2431,6 @@ class BOPAlgo_ToolsProvider : public BOPAlgo_Builder {
 /********************
 * class BOPAlgo_BOP *
 ********************/
-%nodefaultctor BOPAlgo_BOP;
 class BOPAlgo_BOP : public BOPAlgo_ToolsProvider {
 	public:
 		/****************** BOPAlgo_BOP ******************/
@@ -2502,7 +2481,6 @@ class BOPAlgo_BOP : public BOPAlgo_ToolsProvider {
 /*************************
 * class BOPAlgo_Splitter *
 *************************/
-%nodefaultctor BOPAlgo_Splitter;
 class BOPAlgo_Splitter : public BOPAlgo_ToolsProvider {
 	public:
 		/****************** BOPAlgo_Splitter ******************/

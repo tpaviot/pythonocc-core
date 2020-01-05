@@ -827,7 +827,6 @@ class PrsMgr_Presentation : public Graphic3d_Structure {
 /***********************************
 * class PrsMgr_PresentationManager *
 ***********************************/
-%nodefaultctor PrsMgr_PresentationManager;
 class PrsMgr_PresentationManager : public Standard_Transient {
 	public:
 		/****************** AddToImmediateList ******************/

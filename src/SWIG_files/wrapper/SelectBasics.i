@@ -74,7 +74,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectbasics.html
 * class SelectBasics *
 *********************/
 %rename(selectbasics) SelectBasics;
-%nodefaultctor SelectBasics;
 class SelectBasics {
 	public:
 		/****************** MaxOwnerPriority ******************/
@@ -100,7 +99,6 @@ class SelectBasics {
 /********************************
 * class SelectBasics_PickResult *
 ********************************/
-%nodefaultctor SelectBasics_PickResult;
 class SelectBasics_PickResult {
 	public:
 		/****************** Depth ******************/

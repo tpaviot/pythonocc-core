@@ -97,7 +97,6 @@ class TCollection {
 /********************************
 * class TCollection_AsciiString *
 ********************************/
-%nodefaultctor TCollection_AsciiString;
 class TCollection_AsciiString {
 	public:
 		/****************** AssignCat ******************/
@@ -1098,7 +1097,6 @@ class TCollection_BasicMapIterator {
 /***********************************
 * class TCollection_ExtendedString *
 ***********************************/
-%nodefaultctor TCollection_ExtendedString;
 class TCollection_ExtendedString {
 	public:
 		/****************** AssignCat ******************/
@@ -1573,7 +1571,6 @@ class TCollection_ExtendedString {
 /*********************************
 * class TCollection_HAsciiString *
 *********************************/
-%nodefaultctor TCollection_HAsciiString;
 class TCollection_HAsciiString : public Standard_Transient {
 	public:
 		/****************** AssignCat ******************/
@@ -2133,7 +2130,6 @@ class TCollection_HAsciiString : public Standard_Transient {
 /************************************
 * class TCollection_HExtendedString *
 ************************************/
-%nodefaultctor TCollection_HExtendedString;
 class TCollection_HExtendedString : public Standard_Transient {
 	public:
 		/****************** AssignCat ******************/
@@ -2415,7 +2411,6 @@ class TCollection_HExtendedString : public Standard_Transient {
 /****************************
 * class TCollection_MapNode *
 ****************************/
-%nodefaultctor TCollection_MapNode;
 class TCollection_MapNode : public Standard_Transient {
 	public:
 		/****************** Next ******************/
@@ -2444,7 +2439,6 @@ class TCollection_MapNode : public Standard_Transient {
 /****************************
 * class TCollection_SeqNode *
 ****************************/
-%nodefaultctor TCollection_SeqNode;
 class TCollection_SeqNode : public Standard_Transient {
 	public:
 		/****************** Next ******************/

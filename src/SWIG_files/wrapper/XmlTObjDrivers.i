@@ -88,7 +88,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmltobjdrivers.ht
 * class XmlTObjDrivers *
 ***********************/
 %rename(xmltobjdrivers) XmlTObjDrivers;
-%nodefaultctor XmlTObjDrivers;
 class XmlTObjDrivers {
 	public:
 		/****************** AddDrivers ******************/
@@ -128,7 +127,6 @@ class XmlTObjDrivers {
 /***********************************************
 * class XmlTObjDrivers_DocumentRetrievalDriver *
 ***********************************************/
-%nodefaultctor XmlTObjDrivers_DocumentRetrievalDriver;
 class XmlTObjDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -157,7 +155,6 @@ class XmlTObjDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrie
 /*********************************************
 * class XmlTObjDrivers_DocumentStorageDriver *
 *********************************************/
-%nodefaultctor XmlTObjDrivers_DocumentStorageDriver;
 class XmlTObjDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDriver {
 	public:
 		/****************** AttributeDrivers ******************/
@@ -188,7 +185,6 @@ class XmlTObjDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageD
 /********************************************
 * class XmlTObjDrivers_IntSparseArrayDriver *
 ********************************************/
-%nodefaultctor XmlTObjDrivers_IntSparseArrayDriver;
 class XmlTObjDrivers_IntSparseArrayDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -239,7 +235,6 @@ class XmlTObjDrivers_IntSparseArrayDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlTObjDrivers_ModelDriver *
 ***********************************/
-%nodefaultctor XmlTObjDrivers_ModelDriver;
 class XmlTObjDrivers_ModelDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -290,7 +285,6 @@ class XmlTObjDrivers_ModelDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlTObjDrivers_ObjectDriver *
 ************************************/
-%nodefaultctor XmlTObjDrivers_ObjectDriver;
 class XmlTObjDrivers_ObjectDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -341,7 +335,6 @@ class XmlTObjDrivers_ObjectDriver : public XmlMDF_ADriver {
 /***************************************
 * class XmlTObjDrivers_ReferenceDriver *
 ***************************************/
-%nodefaultctor XmlTObjDrivers_ReferenceDriver;
 class XmlTObjDrivers_ReferenceDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -392,7 +385,6 @@ class XmlTObjDrivers_ReferenceDriver : public XmlMDF_ADriver {
 /*********************************
 * class XmlTObjDrivers_XYZDriver *
 *********************************/
-%nodefaultctor XmlTObjDrivers_XYZDriver;
 class XmlTObjDrivers_XYZDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/

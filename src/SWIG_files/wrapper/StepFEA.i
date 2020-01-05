@@ -399,7 +399,6 @@ typedef NCollection_Array1 <opencascade::handle <StepFEA_CurveElementEndOffset>>
 /***************************************
 * class StepFEA_Curve3dElementProperty *
 ***************************************/
-%nodefaultctor StepFEA_Curve3dElementProperty;
 class StepFEA_Curve3dElementProperty : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -508,7 +507,6 @@ class StepFEA_Curve3dElementProperty : public Standard_Transient {
 /************************************************
 * class StepFEA_CurveElementEndCoordinateSystem *
 ************************************************/
-%nodefaultctor StepFEA_CurveElementEndCoordinateSystem;
 class StepFEA_CurveElementEndCoordinateSystem : public StepData_SelectType {
 	public:
 		/****************** AlignedCurve3dElementCoordinateSystem ******************/
@@ -555,7 +553,6 @@ class StepFEA_CurveElementEndCoordinateSystem : public StepData_SelectType {
 /**************************************
 * class StepFEA_CurveElementEndOffset *
 **************************************/
-%nodefaultctor StepFEA_CurveElementEndOffset;
 class StepFEA_CurveElementEndOffset : public Standard_Transient {
 	public:
 		/****************** CoordinateSystem ******************/
@@ -616,7 +613,6 @@ class StepFEA_CurveElementEndOffset : public Standard_Transient {
 /***************************************
 * class StepFEA_CurveElementEndRelease *
 ***************************************/
-%nodefaultctor StepFEA_CurveElementEndRelease;
 class StepFEA_CurveElementEndRelease : public Standard_Transient {
 	public:
 		/****************** CoordinateSystem ******************/
@@ -677,7 +673,6 @@ class StepFEA_CurveElementEndRelease : public Standard_Transient {
 /*************************************
 * class StepFEA_CurveElementInterval *
 *************************************/
-%nodefaultctor StepFEA_CurveElementInterval;
 class StepFEA_CurveElementInterval : public Standard_Transient {
 	public:
 		/****************** EuAngles ******************/
@@ -738,7 +733,6 @@ class StepFEA_CurveElementInterval : public Standard_Transient {
 /*************************************
 * class StepFEA_CurveElementLocation *
 *************************************/
-%nodefaultctor StepFEA_CurveElementLocation;
 class StepFEA_CurveElementLocation : public Standard_Transient {
 	public:
 		/****************** Coordinate ******************/
@@ -783,7 +777,6 @@ class StepFEA_CurveElementLocation : public Standard_Transient {
 /********************************
 * class StepFEA_DegreeOfFreedom *
 ********************************/
-%nodefaultctor StepFEA_DegreeOfFreedom;
 class StepFEA_DegreeOfFreedom : public StepData_SelectType {
 	public:
 		/****************** ApplicationDefinedDegreeOfFreedom ******************/
@@ -854,7 +847,6 @@ class StepFEA_DegreeOfFreedom : public StepData_SelectType {
 /**************************************
 * class StepFEA_DegreeOfFreedomMember *
 **************************************/
-%nodefaultctor StepFEA_DegreeOfFreedomMember;
 class StepFEA_DegreeOfFreedomMember : public StepData_SelectNamed {
 	public:
 		/****************** HasName ******************/
@@ -905,7 +897,6 @@ class StepFEA_DegreeOfFreedomMember : public StepData_SelectNamed {
 /*********************************************
 * class StepFEA_ElementGeometricRelationship *
 *********************************************/
-%nodefaultctor StepFEA_ElementGeometricRelationship;
 class StepFEA_ElementGeometricRelationship : public Standard_Transient {
 	public:
 		/****************** Aspect ******************/
@@ -982,7 +973,6 @@ class StepFEA_ElementGeometricRelationship : public Standard_Transient {
 /**************************************
 * class StepFEA_ElementOrElementGroup *
 **************************************/
-%nodefaultctor StepFEA_ElementOrElementGroup;
 class StepFEA_ElementOrElementGroup : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1023,7 +1013,6 @@ class StepFEA_ElementOrElementGroup : public StepData_SelectType {
 /**************************************
 * class StepFEA_ElementRepresentation *
 **************************************/
-%nodefaultctor StepFEA_ElementRepresentation;
 class StepFEA_ElementRepresentation : public StepRepr_Representation {
 	public:
 		/****************** Init ******************/
@@ -1074,7 +1063,6 @@ class StepFEA_ElementRepresentation : public StepRepr_Representation {
 /************************************
 * class StepFEA_FeaAxis2Placement3d *
 ************************************/
-%nodefaultctor StepFEA_FeaAxis2Placement3d;
 class StepFEA_FeaAxis2Placement3d : public StepGeom_Axis2Placement3d {
 	public:
 		/****************** Description ******************/
@@ -1147,7 +1135,6 @@ class StepFEA_FeaAxis2Placement3d : public StepGeom_Axis2Placement3d {
 /*****************************************************
 * class StepFEA_FeaCurveSectionGeometricRelationship *
 *****************************************************/
-%nodefaultctor StepFEA_FeaCurveSectionGeometricRelationship;
 class StepFEA_FeaCurveSectionGeometricRelationship : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1208,7 +1195,6 @@ class StepFEA_FeaCurveSectionGeometricRelationship : public Standard_Transient {
 /*************************
 * class StepFEA_FeaGroup *
 *************************/
-%nodefaultctor StepFEA_FeaGroup;
 class StepFEA_FeaGroup : public StepBasic_Group {
 	public:
 		/****************** Init ******************/
@@ -1257,7 +1243,6 @@ class StepFEA_FeaGroup : public StepBasic_Group {
 /**************************************************
 * class StepFEA_FeaMaterialPropertyRepresentation *
 **************************************************/
-%nodefaultctor StepFEA_FeaMaterialPropertyRepresentation;
 class StepFEA_FeaMaterialPropertyRepresentation : public StepRepr_MaterialPropertyRepresentation {
 	public:
 		/****************** StepFEA_FeaMaterialPropertyRepresentation ******************/
@@ -1280,7 +1265,6 @@ class StepFEA_FeaMaterialPropertyRepresentation : public StepRepr_MaterialProper
 /******************************************************
 * class StepFEA_FeaMaterialPropertyRepresentationItem *
 ******************************************************/
-%nodefaultctor StepFEA_FeaMaterialPropertyRepresentationItem;
 class StepFEA_FeaMaterialPropertyRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** StepFEA_FeaMaterialPropertyRepresentationItem ******************/
@@ -1303,7 +1287,6 @@ class StepFEA_FeaMaterialPropertyRepresentationItem : public StepRepr_Representa
 /*************************
 * class StepFEA_FeaModel *
 *************************/
-%nodefaultctor StepFEA_FeaModel;
 class StepFEA_FeaModel : public StepRepr_Representation {
 	public:
 		/****************** AnalysisType ******************/
@@ -1402,7 +1385,6 @@ class StepFEA_FeaModel : public StepRepr_Representation {
 /***********************************
 * class StepFEA_FeaModelDefinition *
 ***********************************/
-%nodefaultctor StepFEA_FeaModelDefinition;
 class StepFEA_FeaModelDefinition : public StepRepr_ShapeAspect {
 	public:
 		/****************** StepFEA_FeaModelDefinition ******************/
@@ -1425,7 +1407,6 @@ class StepFEA_FeaModelDefinition : public StepRepr_ShapeAspect {
 /***********************************
 * class StepFEA_FeaParametricPoint *
 ***********************************/
-%nodefaultctor StepFEA_FeaParametricPoint;
 class StepFEA_FeaParametricPoint : public StepGeom_Point {
 	public:
 		/****************** Coordinates ******************/
@@ -1472,7 +1453,6 @@ class StepFEA_FeaParametricPoint : public StepGeom_Point {
 /**************************************
 * class StepFEA_FeaRepresentationItem *
 **************************************/
-%nodefaultctor StepFEA_FeaRepresentationItem;
 class StepFEA_FeaRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** StepFEA_FeaRepresentationItem ******************/
@@ -1495,7 +1475,6 @@ class StepFEA_FeaRepresentationItem : public StepRepr_RepresentationItem {
 /*******************************************************
 * class StepFEA_FeaSurfaceSectionGeometricRelationship *
 *******************************************************/
-%nodefaultctor StepFEA_FeaSurfaceSectionGeometricRelationship;
 class StepFEA_FeaSurfaceSectionGeometricRelationship : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1556,7 +1535,6 @@ class StepFEA_FeaSurfaceSectionGeometricRelationship : public Standard_Transient
 /**************************************
 * class StepFEA_FreedomAndCoefficient *
 **************************************/
-%nodefaultctor StepFEA_FreedomAndCoefficient;
 class StepFEA_FreedomAndCoefficient : public Standard_Transient {
 	public:
 		/****************** A ******************/
@@ -1617,7 +1595,6 @@ class StepFEA_FreedomAndCoefficient : public Standard_Transient {
 /*****************************
 * class StepFEA_FreedomsList *
 *****************************/
-%nodefaultctor StepFEA_FreedomsList;
 class StepFEA_FreedomsList : public Standard_Transient {
 	public:
 		/****************** Freedoms ******************/
@@ -1662,7 +1639,6 @@ class StepFEA_FreedomsList : public Standard_Transient {
 /*******************************
 * class StepFEA_NodeDefinition *
 *******************************/
-%nodefaultctor StepFEA_NodeDefinition;
 class StepFEA_NodeDefinition : public StepRepr_ShapeAspect {
 	public:
 		/****************** StepFEA_NodeDefinition ******************/
@@ -1685,7 +1661,6 @@ class StepFEA_NodeDefinition : public StepRepr_ShapeAspect {
 /***********************************
 * class StepFEA_NodeRepresentation *
 ***********************************/
-%nodefaultctor StepFEA_NodeRepresentation;
 class StepFEA_NodeRepresentation : public StepRepr_Representation {
 	public:
 		/****************** Init ******************/
@@ -1736,7 +1711,6 @@ class StepFEA_NodeRepresentation : public StepRepr_Representation {
 /************************
 * class StepFEA_NodeSet *
 ************************/
-%nodefaultctor StepFEA_NodeSet;
 class StepFEA_NodeSet : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -1783,7 +1757,6 @@ class StepFEA_NodeSet : public StepGeom_GeometricRepresentationItem {
 /***********************************
 * class StepFEA_SymmetricTensor22d *
 ***********************************/
-%nodefaultctor StepFEA_SymmetricTensor22d;
 class StepFEA_SymmetricTensor22d : public StepData_SelectType {
 	public:
 		/****************** AnisotropicSymmetricTensor22d ******************/
@@ -1818,7 +1791,6 @@ class StepFEA_SymmetricTensor22d : public StepData_SelectType {
 /***********************************
 * class StepFEA_SymmetricTensor23d *
 ***********************************/
-%nodefaultctor StepFEA_SymmetricTensor23d;
 class StepFEA_SymmetricTensor23d : public StepData_SelectType {
 	public:
 		/****************** AnisotropicSymmetricTensor23d ******************/
@@ -1903,7 +1875,6 @@ class StepFEA_SymmetricTensor23d : public StepData_SelectType {
 /*****************************************
 * class StepFEA_SymmetricTensor23dMember *
 *****************************************/
-%nodefaultctor StepFEA_SymmetricTensor23dMember;
 class StepFEA_SymmetricTensor23dMember : public StepData_SelectArrReal {
 	public:
 		/****************** HasName ******************/
@@ -1954,7 +1925,6 @@ class StepFEA_SymmetricTensor23dMember : public StepData_SelectArrReal {
 /***********************************
 * class StepFEA_SymmetricTensor42d *
 ***********************************/
-%nodefaultctor StepFEA_SymmetricTensor42d;
 class StepFEA_SymmetricTensor42d : public StepData_SelectType {
 	public:
 		/****************** AnisotropicSymmetricTensor42d ******************/
@@ -1989,7 +1959,6 @@ class StepFEA_SymmetricTensor42d : public StepData_SelectType {
 /***********************************
 * class StepFEA_SymmetricTensor43d *
 ***********************************/
-%nodefaultctor StepFEA_SymmetricTensor43d;
 class StepFEA_SymmetricTensor43d : public StepData_SelectType {
 	public:
 		/****************** AnisotropicSymmetricTensor43d ******************/
@@ -2061,7 +2030,6 @@ class StepFEA_SymmetricTensor43d : public StepData_SelectType {
 /*****************************************
 * class StepFEA_SymmetricTensor43dMember *
 *****************************************/
-%nodefaultctor StepFEA_SymmetricTensor43dMember;
 class StepFEA_SymmetricTensor43dMember : public StepData_SelectArrReal {
 	public:
 		/****************** HasName ******************/
@@ -2112,7 +2080,6 @@ class StepFEA_SymmetricTensor43dMember : public StepData_SelectArrReal {
 /******************************************************
 * class StepFEA_AlignedCurve3dElementCoordinateSystem *
 ******************************************************/
-%nodefaultctor StepFEA_AlignedCurve3dElementCoordinateSystem;
 class StepFEA_AlignedCurve3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
 		/****************** CoordinateSystem ******************/
@@ -2159,7 +2126,6 @@ class StepFEA_AlignedCurve3dElementCoordinateSystem : public StepFEA_FeaRepresen
 /********************************************************
 * class StepFEA_AlignedSurface3dElementCoordinateSystem *
 ********************************************************/
-%nodefaultctor StepFEA_AlignedSurface3dElementCoordinateSystem;
 class StepFEA_AlignedSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
 		/****************** CoordinateSystem ******************/
@@ -2206,7 +2172,6 @@ class StepFEA_AlignedSurface3dElementCoordinateSystem : public StepFEA_FeaRepres
 /*********************************************************
 * class StepFEA_ArbitraryVolume3dElementCoordinateSystem *
 *********************************************************/
-%nodefaultctor StepFEA_ArbitraryVolume3dElementCoordinateSystem;
 class StepFEA_ArbitraryVolume3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
 		/****************** CoordinateSystem ******************/
@@ -2253,7 +2218,6 @@ class StepFEA_ArbitraryVolume3dElementCoordinateSystem : public StepFEA_FeaRepre
 /*********************************************************
 * class StepFEA_ConstantSurface3dElementCoordinateSystem *
 *********************************************************/
-%nodefaultctor StepFEA_ConstantSurface3dElementCoordinateSystem;
 class StepFEA_ConstantSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
 		/****************** Angle ******************/
@@ -2316,7 +2280,6 @@ class StepFEA_ConstantSurface3dElementCoordinateSystem : public StepFEA_FeaRepre
 /*********************************************
 * class StepFEA_Curve3dElementRepresentation *
 *********************************************/
-%nodefaultctor StepFEA_Curve3dElementRepresentation;
 class StepFEA_Curve3dElementRepresentation : public StepFEA_ElementRepresentation {
 	public:
 		/****************** ElementDescriptor ******************/
@@ -2417,7 +2380,6 @@ class StepFEA_Curve3dElementRepresentation : public StepFEA_ElementRepresentatio
 /*********************************************
 * class StepFEA_CurveElementIntervalConstant *
 *********************************************/
-%nodefaultctor StepFEA_CurveElementIntervalConstant;
 class StepFEA_CurveElementIntervalConstant : public StepFEA_CurveElementInterval {
 	public:
 		/****************** Init ******************/
@@ -2466,7 +2428,6 @@ class StepFEA_CurveElementIntervalConstant : public StepFEA_CurveElementInterval
 /****************************************************
 * class StepFEA_CurveElementIntervalLinearlyVarying *
 ****************************************************/
-%nodefaultctor StepFEA_CurveElementIntervalLinearlyVarying;
 class StepFEA_CurveElementIntervalLinearlyVarying : public StepFEA_CurveElementInterval {
 	public:
 		/****************** Init ******************/
@@ -2515,7 +2476,6 @@ class StepFEA_CurveElementIntervalLinearlyVarying : public StepFEA_CurveElementI
 /**************************
 * class StepFEA_DummyNode *
 **************************/
-%nodefaultctor StepFEA_DummyNode;
 class StepFEA_DummyNode : public StepFEA_NodeRepresentation {
 	public:
 		/****************** StepFEA_DummyNode ******************/
@@ -2538,7 +2498,6 @@ class StepFEA_DummyNode : public StepFEA_NodeRepresentation {
 /*****************************
 * class StepFEA_ElementGroup *
 *****************************/
-%nodefaultctor StepFEA_ElementGroup;
 class StepFEA_ElementGroup : public StepFEA_FeaGroup {
 	public:
 		/****************** Elements ******************/
@@ -2589,7 +2548,6 @@ class StepFEA_ElementGroup : public StepFEA_FeaGroup {
 /*******************************
 * class StepFEA_FeaAreaDensity *
 *******************************/
-%nodefaultctor StepFEA_FeaAreaDensity;
 class StepFEA_FeaAreaDensity : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstant ******************/
@@ -2636,7 +2594,6 @@ class StepFEA_FeaAreaDensity : public StepFEA_FeaMaterialPropertyRepresentationI
 /************************************
 * class StepFEA_FeaLinearElasticity *
 ************************************/
-%nodefaultctor StepFEA_FeaLinearElasticity;
 class StepFEA_FeaLinearElasticity : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstants ******************/
@@ -2683,7 +2640,6 @@ class StepFEA_FeaLinearElasticity : public StepFEA_FeaMaterialPropertyRepresenta
 /*******************************
 * class StepFEA_FeaMassDensity *
 *******************************/
-%nodefaultctor StepFEA_FeaMassDensity;
 class StepFEA_FeaMassDensity : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstant ******************/
@@ -2730,7 +2686,6 @@ class StepFEA_FeaMassDensity : public StepFEA_FeaMaterialPropertyRepresentationI
 /***************************
 * class StepFEA_FeaModel3d *
 ***************************/
-%nodefaultctor StepFEA_FeaModel3d;
 class StepFEA_FeaModel3d : public StepFEA_FeaModel {
 	public:
 		/****************** StepFEA_FeaModel3d ******************/
@@ -2753,7 +2708,6 @@ class StepFEA_FeaModel3d : public StepFEA_FeaModel {
 /**************************************
 * class StepFEA_FeaMoistureAbsorption *
 **************************************/
-%nodefaultctor StepFEA_FeaMoistureAbsorption;
 class StepFEA_FeaMoistureAbsorption : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstants ******************/
@@ -2800,7 +2754,6 @@ class StepFEA_FeaMoistureAbsorption : public StepFEA_FeaMaterialPropertyRepresen
 /*************************************************************
 * class StepFEA_FeaSecantCoefficientOfLinearThermalExpansion *
 *************************************************************/
-%nodefaultctor StepFEA_FeaSecantCoefficientOfLinearThermalExpansion;
 class StepFEA_FeaSecantCoefficientOfLinearThermalExpansion : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstants ******************/
@@ -2863,7 +2816,6 @@ class StepFEA_FeaSecantCoefficientOfLinearThermalExpansion : public StepFEA_FeaM
 /*****************************************
 * class StepFEA_FeaShellBendingStiffness *
 *****************************************/
-%nodefaultctor StepFEA_FeaShellBendingStiffness;
 class StepFEA_FeaShellBendingStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstants ******************/
@@ -2910,7 +2862,6 @@ class StepFEA_FeaShellBendingStiffness : public StepFEA_FeaMaterialPropertyRepre
 /*********************************************************
 * class StepFEA_FeaShellMembraneBendingCouplingStiffness *
 *********************************************************/
-%nodefaultctor StepFEA_FeaShellMembraneBendingCouplingStiffness;
 class StepFEA_FeaShellMembraneBendingCouplingStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstants ******************/
@@ -2957,7 +2908,6 @@ class StepFEA_FeaShellMembraneBendingCouplingStiffness : public StepFEA_FeaMater
 /******************************************
 * class StepFEA_FeaShellMembraneStiffness *
 ******************************************/
-%nodefaultctor StepFEA_FeaShellMembraneStiffness;
 class StepFEA_FeaShellMembraneStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstants ******************/
@@ -3004,7 +2954,6 @@ class StepFEA_FeaShellMembraneStiffness : public StepFEA_FeaMaterialPropertyRepr
 /***************************************
 * class StepFEA_FeaShellShearStiffness *
 ***************************************/
-%nodefaultctor StepFEA_FeaShellShearStiffness;
 class StepFEA_FeaShellShearStiffness : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstants ******************/
@@ -3051,7 +3000,6 @@ class StepFEA_FeaShellShearStiffness : public StepFEA_FeaMaterialPropertyReprese
 /*****************************************************************
 * class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion *
 *****************************************************************/
-%nodefaultctor StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion;
 class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion : public StepFEA_FeaMaterialPropertyRepresentationItem {
 	public:
 		/****************** FeaConstants ******************/
@@ -3098,7 +3046,6 @@ class StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion : public StepFEA_
 /******************************
 * class StepFEA_GeometricNode *
 ******************************/
-%nodefaultctor StepFEA_GeometricNode;
 class StepFEA_GeometricNode : public StepFEA_NodeRepresentation {
 	public:
 		/****************** StepFEA_GeometricNode ******************/
@@ -3121,7 +3068,6 @@ class StepFEA_GeometricNode : public StepFEA_NodeRepresentation {
 /*********************
 * class StepFEA_Node *
 *********************/
-%nodefaultctor StepFEA_Node;
 class StepFEA_Node : public StepFEA_NodeRepresentation {
 	public:
 		/****************** StepFEA_Node ******************/
@@ -3144,7 +3090,6 @@ class StepFEA_Node : public StepFEA_NodeRepresentation {
 /**************************
 * class StepFEA_NodeGroup *
 **************************/
-%nodefaultctor StepFEA_NodeGroup;
 class StepFEA_NodeGroup : public StepFEA_FeaGroup {
 	public:
 		/****************** Init ******************/
@@ -3195,7 +3140,6 @@ class StepFEA_NodeGroup : public StepFEA_FeaGroup {
 /************************************************************
 * class StepFEA_ParametricCurve3dElementCoordinateDirection *
 ************************************************************/
-%nodefaultctor StepFEA_ParametricCurve3dElementCoordinateDirection;
 class StepFEA_ParametricCurve3dElementCoordinateDirection : public StepFEA_FeaRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -3242,7 +3186,6 @@ class StepFEA_ParametricCurve3dElementCoordinateDirection : public StepFEA_FeaRe
 /*********************************************************
 * class StepFEA_ParametricCurve3dElementCoordinateSystem *
 *********************************************************/
-%nodefaultctor StepFEA_ParametricCurve3dElementCoordinateSystem;
 class StepFEA_ParametricCurve3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
 		/****************** Direction ******************/
@@ -3289,7 +3232,6 @@ class StepFEA_ParametricCurve3dElementCoordinateSystem : public StepFEA_FeaRepre
 /***********************************************************
 * class StepFEA_ParametricSurface3dElementCoordinateSystem *
 ***********************************************************/
-%nodefaultctor StepFEA_ParametricSurface3dElementCoordinateSystem;
 class StepFEA_ParametricSurface3dElementCoordinateSystem : public StepFEA_FeaRepresentationItem {
 	public:
 		/****************** Angle ******************/
@@ -3352,7 +3294,6 @@ class StepFEA_ParametricSurface3dElementCoordinateSystem : public StepFEA_FeaRep
 /***********************************************
 * class StepFEA_Surface3dElementRepresentation *
 ***********************************************/
-%nodefaultctor StepFEA_Surface3dElementRepresentation;
 class StepFEA_Surface3dElementRepresentation : public StepFEA_ElementRepresentation {
 	public:
 		/****************** ElementDescriptor ******************/
@@ -3453,7 +3394,6 @@ class StepFEA_Surface3dElementRepresentation : public StepFEA_ElementRepresentat
 /**********************************************
 * class StepFEA_Volume3dElementRepresentation *
 **********************************************/
-%nodefaultctor StepFEA_Volume3dElementRepresentation;
 class StepFEA_Volume3dElementRepresentation : public StepFEA_ElementRepresentation {
 	public:
 		/****************** ElementDescriptor ******************/
@@ -3538,7 +3478,6 @@ class StepFEA_Volume3dElementRepresentation : public StepFEA_ElementRepresentati
 /*************************************************
 * class StepFEA_NodeWithSolutionCoordinateSystem *
 *************************************************/
-%nodefaultctor StepFEA_NodeWithSolutionCoordinateSystem;
 class StepFEA_NodeWithSolutionCoordinateSystem : public StepFEA_Node {
 	public:
 		/****************** StepFEA_NodeWithSolutionCoordinateSystem ******************/
@@ -3561,7 +3500,6 @@ class StepFEA_NodeWithSolutionCoordinateSystem : public StepFEA_Node {
 /*******************************
 * class StepFEA_NodeWithVector *
 *******************************/
-%nodefaultctor StepFEA_NodeWithVector;
 class StepFEA_NodeWithVector : public StepFEA_Node {
 	public:
 		/****************** StepFEA_NodeWithVector ******************/

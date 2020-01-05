@@ -837,7 +837,6 @@ class Intf_TangentZone {
 /******************
 * class Intf_Tool *
 ******************/
-%nodefaultctor Intf_Tool;
 class Intf_Tool {
 	public:
 		/****************** BeginParam ******************/
@@ -942,7 +941,6 @@ class Intf_Tool {
 /***********************************
 * class Intf_InterferencePolygon2d *
 ***********************************/
-%nodefaultctor Intf_InterferencePolygon2d;
 class Intf_InterferencePolygon2d : public Intf_Interference {
 	public:
 		/****************** Intf_InterferencePolygon2d ******************/

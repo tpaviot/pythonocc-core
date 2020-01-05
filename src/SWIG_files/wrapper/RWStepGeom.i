@@ -76,7 +76,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepgeom.html"
 /************************************
 * class RWStepGeom_RWAxis1Placement *
 ************************************/
-%nodefaultctor RWStepGeom_RWAxis1Placement;
 class RWStepGeom_RWAxis1Placement {
 	public:
 		/****************** RWStepGeom_RWAxis1Placement ******************/
@@ -127,7 +126,6 @@ class RWStepGeom_RWAxis1Placement {
 /**************************************
 * class RWStepGeom_RWAxis2Placement2d *
 **************************************/
-%nodefaultctor RWStepGeom_RWAxis2Placement2d;
 class RWStepGeom_RWAxis2Placement2d {
 	public:
 		/****************** RWStepGeom_RWAxis2Placement2d ******************/
@@ -178,7 +176,6 @@ class RWStepGeom_RWAxis2Placement2d {
 /**************************************
 * class RWStepGeom_RWAxis2Placement3d *
 **************************************/
-%nodefaultctor RWStepGeom_RWAxis2Placement3d;
 class RWStepGeom_RWAxis2Placement3d {
 	public:
 		/****************** RWStepGeom_RWAxis2Placement3d ******************/
@@ -229,7 +226,6 @@ class RWStepGeom_RWAxis2Placement3d {
 /**********************************
 * class RWStepGeom_RWBSplineCurve *
 **********************************/
-%nodefaultctor RWStepGeom_RWBSplineCurve;
 class RWStepGeom_RWBSplineCurve {
 	public:
 		/****************** RWStepGeom_RWBSplineCurve ******************/
@@ -280,7 +276,6 @@ class RWStepGeom_RWBSplineCurve {
 /*******************************************
 * class RWStepGeom_RWBSplineCurveWithKnots *
 *******************************************/
-%nodefaultctor RWStepGeom_RWBSplineCurveWithKnots;
 class RWStepGeom_RWBSplineCurveWithKnots {
 	public:
 		/****************** Check ******************/
@@ -342,7 +337,6 @@ class RWStepGeom_RWBSplineCurveWithKnots {
 /******************************************************************
 * class RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve *
 ******************************************************************/
-%nodefaultctor RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve;
 class RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve {
 	public:
 		/****************** Check ******************/
@@ -404,7 +398,6 @@ class RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve {
 /************************************
 * class RWStepGeom_RWBSplineSurface *
 ************************************/
-%nodefaultctor RWStepGeom_RWBSplineSurface;
 class RWStepGeom_RWBSplineSurface {
 	public:
 		/****************** RWStepGeom_RWBSplineSurface ******************/
@@ -455,7 +448,6 @@ class RWStepGeom_RWBSplineSurface {
 /*********************************************
 * class RWStepGeom_RWBSplineSurfaceWithKnots *
 *********************************************/
-%nodefaultctor RWStepGeom_RWBSplineSurfaceWithKnots;
 class RWStepGeom_RWBSplineSurfaceWithKnots {
 	public:
 		/****************** Check ******************/
@@ -517,7 +509,6 @@ class RWStepGeom_RWBSplineSurfaceWithKnots {
 /**********************************************************************
 * class RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface *
 **********************************************************************/
-%nodefaultctor RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 class RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface {
 	public:
 		/****************** Check ******************/
@@ -579,7 +570,6 @@ class RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface {
 /*********************************
 * class RWStepGeom_RWBezierCurve *
 *********************************/
-%nodefaultctor RWStepGeom_RWBezierCurve;
 class RWStepGeom_RWBezierCurve {
 	public:
 		/****************** RWStepGeom_RWBezierCurve ******************/
@@ -630,7 +620,6 @@ class RWStepGeom_RWBezierCurve {
 /********************************************************
 * class RWStepGeom_RWBezierCurveAndRationalBSplineCurve *
 ********************************************************/
-%nodefaultctor RWStepGeom_RWBezierCurveAndRationalBSplineCurve;
 class RWStepGeom_RWBezierCurveAndRationalBSplineCurve {
 	public:
 		/****************** RWStepGeom_RWBezierCurveAndRationalBSplineCurve ******************/
@@ -681,7 +670,6 @@ class RWStepGeom_RWBezierCurveAndRationalBSplineCurve {
 /***********************************
 * class RWStepGeom_RWBezierSurface *
 ***********************************/
-%nodefaultctor RWStepGeom_RWBezierSurface;
 class RWStepGeom_RWBezierSurface {
 	public:
 		/****************** RWStepGeom_RWBezierSurface ******************/
@@ -732,7 +720,6 @@ class RWStepGeom_RWBezierSurface {
 /************************************************************
 * class RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface *
 ************************************************************/
-%nodefaultctor RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface;
 class RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface {
 	public:
 		/****************** RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface ******************/
@@ -783,7 +770,6 @@ class RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface {
 /***********************************
 * class RWStepGeom_RWBoundaryCurve *
 ***********************************/
-%nodefaultctor RWStepGeom_RWBoundaryCurve;
 class RWStepGeom_RWBoundaryCurve {
 	public:
 		/****************** RWStepGeom_RWBoundaryCurve ******************/
@@ -834,7 +820,6 @@ class RWStepGeom_RWBoundaryCurve {
 /**********************************
 * class RWStepGeom_RWBoundedCurve *
 **********************************/
-%nodefaultctor RWStepGeom_RWBoundedCurve;
 class RWStepGeom_RWBoundedCurve {
 	public:
 		/****************** RWStepGeom_RWBoundedCurve ******************/
@@ -876,7 +861,6 @@ class RWStepGeom_RWBoundedCurve {
 /************************************
 * class RWStepGeom_RWBoundedSurface *
 ************************************/
-%nodefaultctor RWStepGeom_RWBoundedSurface;
 class RWStepGeom_RWBoundedSurface {
 	public:
 		/****************** RWStepGeom_RWBoundedSurface ******************/
@@ -918,7 +902,6 @@ class RWStepGeom_RWBoundedSurface {
 /************************************
 * class RWStepGeom_RWCartesianPoint *
 ************************************/
-%nodefaultctor RWStepGeom_RWCartesianPoint;
 class RWStepGeom_RWCartesianPoint {
 	public:
 		/****************** RWStepGeom_RWCartesianPoint ******************/
@@ -960,7 +943,6 @@ class RWStepGeom_RWCartesianPoint {
 /*****************************************************
 * class RWStepGeom_RWCartesianTransformationOperator *
 *****************************************************/
-%nodefaultctor RWStepGeom_RWCartesianTransformationOperator;
 class RWStepGeom_RWCartesianTransformationOperator {
 	public:
 		/****************** RWStepGeom_RWCartesianTransformationOperator ******************/
@@ -1011,7 +993,6 @@ class RWStepGeom_RWCartesianTransformationOperator {
 /*******************************************************
 * class RWStepGeom_RWCartesianTransformationOperator3d *
 *******************************************************/
-%nodefaultctor RWStepGeom_RWCartesianTransformationOperator3d;
 class RWStepGeom_RWCartesianTransformationOperator3d {
 	public:
 		/****************** RWStepGeom_RWCartesianTransformationOperator3d ******************/
@@ -1062,7 +1043,6 @@ class RWStepGeom_RWCartesianTransformationOperator3d {
 /****************************
 * class RWStepGeom_RWCircle *
 ****************************/
-%nodefaultctor RWStepGeom_RWCircle;
 class RWStepGeom_RWCircle {
 	public:
 		/****************** RWStepGeom_RWCircle ******************/
@@ -1113,7 +1093,6 @@ class RWStepGeom_RWCircle {
 /************************************
 * class RWStepGeom_RWCompositeCurve *
 ************************************/
-%nodefaultctor RWStepGeom_RWCompositeCurve;
 class RWStepGeom_RWCompositeCurve {
 	public:
 		/****************** RWStepGeom_RWCompositeCurve ******************/
@@ -1164,7 +1143,6 @@ class RWStepGeom_RWCompositeCurve {
 /*********************************************
 * class RWStepGeom_RWCompositeCurveOnSurface *
 *********************************************/
-%nodefaultctor RWStepGeom_RWCompositeCurveOnSurface;
 class RWStepGeom_RWCompositeCurveOnSurface {
 	public:
 		/****************** RWStepGeom_RWCompositeCurveOnSurface ******************/
@@ -1215,7 +1193,6 @@ class RWStepGeom_RWCompositeCurveOnSurface {
 /*******************************************
 * class RWStepGeom_RWCompositeCurveSegment *
 *******************************************/
-%nodefaultctor RWStepGeom_RWCompositeCurveSegment;
 class RWStepGeom_RWCompositeCurveSegment {
 	public:
 		/****************** RWStepGeom_RWCompositeCurveSegment ******************/
@@ -1266,7 +1243,6 @@ class RWStepGeom_RWCompositeCurveSegment {
 /***************************
 * class RWStepGeom_RWConic *
 ***************************/
-%nodefaultctor RWStepGeom_RWConic;
 class RWStepGeom_RWConic {
 	public:
 		/****************** RWStepGeom_RWConic ******************/
@@ -1317,7 +1293,6 @@ class RWStepGeom_RWConic {
 /************************************
 * class RWStepGeom_RWConicalSurface *
 ************************************/
-%nodefaultctor RWStepGeom_RWConicalSurface;
 class RWStepGeom_RWConicalSurface {
 	public:
 		/****************** RWStepGeom_RWConicalSurface ******************/
@@ -1368,7 +1343,6 @@ class RWStepGeom_RWConicalSurface {
 /***************************
 * class RWStepGeom_RWCurve *
 ***************************/
-%nodefaultctor RWStepGeom_RWCurve;
 class RWStepGeom_RWCurve {
 	public:
 		/****************** RWStepGeom_RWCurve ******************/
@@ -1410,7 +1384,6 @@ class RWStepGeom_RWCurve {
 /*****************************************
 * class RWStepGeom_RWCurveBoundedSurface *
 *****************************************/
-%nodefaultctor RWStepGeom_RWCurveBoundedSurface;
 class RWStepGeom_RWCurveBoundedSurface {
 	public:
 		/****************** RWStepGeom_RWCurveBoundedSurface ******************/
@@ -1465,7 +1438,6 @@ class RWStepGeom_RWCurveBoundedSurface {
 /**********************************
 * class RWStepGeom_RWCurveReplica *
 **********************************/
-%nodefaultctor RWStepGeom_RWCurveReplica;
 class RWStepGeom_RWCurveReplica {
 	public:
 		/****************** RWStepGeom_RWCurveReplica ******************/
@@ -1516,7 +1488,6 @@ class RWStepGeom_RWCurveReplica {
 /****************************************
 * class RWStepGeom_RWCylindricalSurface *
 ****************************************/
-%nodefaultctor RWStepGeom_RWCylindricalSurface;
 class RWStepGeom_RWCylindricalSurface {
 	public:
 		/****************** RWStepGeom_RWCylindricalSurface ******************/
@@ -1567,7 +1538,6 @@ class RWStepGeom_RWCylindricalSurface {
 /**************************************
 * class RWStepGeom_RWDegeneratePcurve *
 **************************************/
-%nodefaultctor RWStepGeom_RWDegeneratePcurve;
 class RWStepGeom_RWDegeneratePcurve {
 	public:
 		/****************** RWStepGeom_RWDegeneratePcurve ******************/
@@ -1618,7 +1588,6 @@ class RWStepGeom_RWDegeneratePcurve {
 /***********************************************
 * class RWStepGeom_RWDegenerateToroidalSurface *
 ***********************************************/
-%nodefaultctor RWStepGeom_RWDegenerateToroidalSurface;
 class RWStepGeom_RWDegenerateToroidalSurface {
 	public:
 		/****************** RWStepGeom_RWDegenerateToroidalSurface ******************/
@@ -1669,7 +1638,6 @@ class RWStepGeom_RWDegenerateToroidalSurface {
 /*******************************
 * class RWStepGeom_RWDirection *
 *******************************/
-%nodefaultctor RWStepGeom_RWDirection;
 class RWStepGeom_RWDirection {
 	public:
 		/****************** Check ******************/
@@ -1722,7 +1690,6 @@ class RWStepGeom_RWDirection {
 /***************************************
 * class RWStepGeom_RWElementarySurface *
 ***************************************/
-%nodefaultctor RWStepGeom_RWElementarySurface;
 class RWStepGeom_RWElementarySurface {
 	public:
 		/****************** RWStepGeom_RWElementarySurface ******************/
@@ -1773,7 +1740,6 @@ class RWStepGeom_RWElementarySurface {
 /*****************************
 * class RWStepGeom_RWEllipse *
 *****************************/
-%nodefaultctor RWStepGeom_RWEllipse;
 class RWStepGeom_RWEllipse {
 	public:
 		/****************** Check ******************/
@@ -1835,7 +1801,6 @@ class RWStepGeom_RWEllipse {
 /***********************************************
 * class RWStepGeom_RWEvaluatedDegeneratePcurve *
 ***********************************************/
-%nodefaultctor RWStepGeom_RWEvaluatedDegeneratePcurve;
 class RWStepGeom_RWEvaluatedDegeneratePcurve {
 	public:
 		/****************** RWStepGeom_RWEvaluatedDegeneratePcurve ******************/
@@ -1886,7 +1851,6 @@ class RWStepGeom_RWEvaluatedDegeneratePcurve {
 /*****************************************************************************
 * class RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx *
 *****************************************************************************/
-%nodefaultctor RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
 class RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
 	public:
 		/****************** RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx ******************/
@@ -1937,7 +1901,6 @@ class RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
 /****************************************************
 * class RWStepGeom_RWGeometricRepresentationContext *
 ****************************************************/
-%nodefaultctor RWStepGeom_RWGeometricRepresentationContext;
 class RWStepGeom_RWGeometricRepresentationContext {
 	public:
 		/****************** RWStepGeom_RWGeometricRepresentationContext ******************/
@@ -1979,7 +1942,6 @@ class RWStepGeom_RWGeometricRepresentationContext {
 /********************************************************************************
 * class RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext *
 ********************************************************************************/
-%nodefaultctor RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext;
 class RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext {
 	public:
 		/****************** RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext ******************/
@@ -2030,7 +1992,6 @@ class RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext {
 /**************************************************************************************
 * class RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext *
 **************************************************************************************/
-%nodefaultctor RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext;
 class RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext {
 	public:
 		/****************** RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext ******************/
@@ -2081,7 +2042,6 @@ class RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationCont
 /*************************************************
 * class RWStepGeom_RWGeometricRepresentationItem *
 *************************************************/
-%nodefaultctor RWStepGeom_RWGeometricRepresentationItem;
 class RWStepGeom_RWGeometricRepresentationItem {
 	public:
 		/****************** RWStepGeom_RWGeometricRepresentationItem ******************/
@@ -2123,7 +2083,6 @@ class RWStepGeom_RWGeometricRepresentationItem {
 /*******************************
 * class RWStepGeom_RWHyperbola *
 *******************************/
-%nodefaultctor RWStepGeom_RWHyperbola;
 class RWStepGeom_RWHyperbola {
 	public:
 		/****************** RWStepGeom_RWHyperbola ******************/
@@ -2174,7 +2133,6 @@ class RWStepGeom_RWHyperbola {
 /***************************************
 * class RWStepGeom_RWIntersectionCurve *
 ***************************************/
-%nodefaultctor RWStepGeom_RWIntersectionCurve;
 class RWStepGeom_RWIntersectionCurve {
 	public:
 		/****************** RWStepGeom_RWIntersectionCurve ******************/
@@ -2225,7 +2183,6 @@ class RWStepGeom_RWIntersectionCurve {
 /**************************
 * class RWStepGeom_RWLine *
 **************************/
-%nodefaultctor RWStepGeom_RWLine;
 class RWStepGeom_RWLine {
 	public:
 		/****************** RWStepGeom_RWLine ******************/
@@ -2276,7 +2233,6 @@ class RWStepGeom_RWLine {
 /***********************************
 * class RWStepGeom_RWOffsetCurve3d *
 ***********************************/
-%nodefaultctor RWStepGeom_RWOffsetCurve3d;
 class RWStepGeom_RWOffsetCurve3d {
 	public:
 		/****************** RWStepGeom_RWOffsetCurve3d ******************/
@@ -2327,7 +2283,6 @@ class RWStepGeom_RWOffsetCurve3d {
 /***********************************
 * class RWStepGeom_RWOffsetSurface *
 ***********************************/
-%nodefaultctor RWStepGeom_RWOffsetSurface;
 class RWStepGeom_RWOffsetSurface {
 	public:
 		/****************** RWStepGeom_RWOffsetSurface ******************/
@@ -2378,7 +2333,6 @@ class RWStepGeom_RWOffsetSurface {
 /*************************************
 * class RWStepGeom_RWOrientedSurface *
 *************************************/
-%nodefaultctor RWStepGeom_RWOrientedSurface;
 class RWStepGeom_RWOrientedSurface {
 	public:
 		/****************** RWStepGeom_RWOrientedSurface ******************/
@@ -2433,7 +2387,6 @@ class RWStepGeom_RWOrientedSurface {
 /****************************************
 * class RWStepGeom_RWOuterBoundaryCurve *
 ****************************************/
-%nodefaultctor RWStepGeom_RWOuterBoundaryCurve;
 class RWStepGeom_RWOuterBoundaryCurve {
 	public:
 		/****************** RWStepGeom_RWOuterBoundaryCurve ******************/
@@ -2484,7 +2437,6 @@ class RWStepGeom_RWOuterBoundaryCurve {
 /******************************
 * class RWStepGeom_RWParabola *
 ******************************/
-%nodefaultctor RWStepGeom_RWParabola;
 class RWStepGeom_RWParabola {
 	public:
 		/****************** RWStepGeom_RWParabola ******************/
@@ -2535,7 +2487,6 @@ class RWStepGeom_RWParabola {
 /****************************
 * class RWStepGeom_RWPcurve *
 ****************************/
-%nodefaultctor RWStepGeom_RWPcurve;
 class RWStepGeom_RWPcurve {
 	public:
 		/****************** RWStepGeom_RWPcurve ******************/
@@ -2586,7 +2537,6 @@ class RWStepGeom_RWPcurve {
 /*******************************
 * class RWStepGeom_RWPlacement *
 *******************************/
-%nodefaultctor RWStepGeom_RWPlacement;
 class RWStepGeom_RWPlacement {
 	public:
 		/****************** RWStepGeom_RWPlacement ******************/
@@ -2637,7 +2587,6 @@ class RWStepGeom_RWPlacement {
 /***************************
 * class RWStepGeom_RWPlane *
 ***************************/
-%nodefaultctor RWStepGeom_RWPlane;
 class RWStepGeom_RWPlane {
 	public:
 		/****************** RWStepGeom_RWPlane ******************/
@@ -2688,7 +2637,6 @@ class RWStepGeom_RWPlane {
 /***************************
 * class RWStepGeom_RWPoint *
 ***************************/
-%nodefaultctor RWStepGeom_RWPoint;
 class RWStepGeom_RWPoint {
 	public:
 		/****************** RWStepGeom_RWPoint ******************/
@@ -2730,7 +2678,6 @@ class RWStepGeom_RWPoint {
 /**********************************
 * class RWStepGeom_RWPointOnCurve *
 **********************************/
-%nodefaultctor RWStepGeom_RWPointOnCurve;
 class RWStepGeom_RWPointOnCurve {
 	public:
 		/****************** RWStepGeom_RWPointOnCurve ******************/
@@ -2781,7 +2728,6 @@ class RWStepGeom_RWPointOnCurve {
 /************************************
 * class RWStepGeom_RWPointOnSurface *
 ************************************/
-%nodefaultctor RWStepGeom_RWPointOnSurface;
 class RWStepGeom_RWPointOnSurface {
 	public:
 		/****************** RWStepGeom_RWPointOnSurface ******************/
@@ -2832,7 +2778,6 @@ class RWStepGeom_RWPointOnSurface {
 /**********************************
 * class RWStepGeom_RWPointReplica *
 **********************************/
-%nodefaultctor RWStepGeom_RWPointReplica;
 class RWStepGeom_RWPointReplica {
 	public:
 		/****************** RWStepGeom_RWPointReplica ******************/
@@ -2883,7 +2828,6 @@ class RWStepGeom_RWPointReplica {
 /******************************
 * class RWStepGeom_RWPolyline *
 ******************************/
-%nodefaultctor RWStepGeom_RWPolyline;
 class RWStepGeom_RWPolyline {
 	public:
 		/****************** RWStepGeom_RWPolyline ******************/
@@ -2934,7 +2878,6 @@ class RWStepGeom_RWPolyline {
 /***************************************
 * class RWStepGeom_RWQuasiUniformCurve *
 ***************************************/
-%nodefaultctor RWStepGeom_RWQuasiUniformCurve;
 class RWStepGeom_RWQuasiUniformCurve {
 	public:
 		/****************** RWStepGeom_RWQuasiUniformCurve ******************/
@@ -2985,7 +2928,6 @@ class RWStepGeom_RWQuasiUniformCurve {
 /**************************************************************
 * class RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve *
 **************************************************************/
-%nodefaultctor RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve;
 class RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve {
 	public:
 		/****************** RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve ******************/
@@ -3036,7 +2978,6 @@ class RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve {
 /*****************************************
 * class RWStepGeom_RWQuasiUniformSurface *
 *****************************************/
-%nodefaultctor RWStepGeom_RWQuasiUniformSurface;
 class RWStepGeom_RWQuasiUniformSurface {
 	public:
 		/****************** RWStepGeom_RWQuasiUniformSurface ******************/
@@ -3087,7 +3028,6 @@ class RWStepGeom_RWQuasiUniformSurface {
 /******************************************************************
 * class RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface *
 ******************************************************************/
-%nodefaultctor RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface;
 class RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface {
 	public:
 		/****************** RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface ******************/
@@ -3138,7 +3078,6 @@ class RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface {
 /******************************************
 * class RWStepGeom_RWRationalBSplineCurve *
 ******************************************/
-%nodefaultctor RWStepGeom_RWRationalBSplineCurve;
 class RWStepGeom_RWRationalBSplineCurve {
 	public:
 		/****************** Check ******************/
@@ -3200,7 +3139,6 @@ class RWStepGeom_RWRationalBSplineCurve {
 /********************************************
 * class RWStepGeom_RWRationalBSplineSurface *
 ********************************************/
-%nodefaultctor RWStepGeom_RWRationalBSplineSurface;
 class RWStepGeom_RWRationalBSplineSurface {
 	public:
 		/****************** Check ******************/
@@ -3262,7 +3200,6 @@ class RWStepGeom_RWRationalBSplineSurface {
 /*************************************************
 * class RWStepGeom_RWRectangularCompositeSurface *
 *************************************************/
-%nodefaultctor RWStepGeom_RWRectangularCompositeSurface;
 class RWStepGeom_RWRectangularCompositeSurface {
 	public:
 		/****************** RWStepGeom_RWRectangularCompositeSurface ******************/
@@ -3313,7 +3250,6 @@ class RWStepGeom_RWRectangularCompositeSurface {
 /***********************************************
 * class RWStepGeom_RWRectangularTrimmedSurface *
 ***********************************************/
-%nodefaultctor RWStepGeom_RWRectangularTrimmedSurface;
 class RWStepGeom_RWRectangularTrimmedSurface {
 	public:
 		/****************** RWStepGeom_RWRectangularTrimmedSurface ******************/
@@ -3364,7 +3300,6 @@ class RWStepGeom_RWRectangularTrimmedSurface {
 /*********************************************************
 * class RWStepGeom_RWReparametrisedCompositeCurveSegment *
 *********************************************************/
-%nodefaultctor RWStepGeom_RWReparametrisedCompositeCurveSegment;
 class RWStepGeom_RWReparametrisedCompositeCurveSegment {
 	public:
 		/****************** RWStepGeom_RWReparametrisedCompositeCurveSegment ******************/
@@ -3415,7 +3350,6 @@ class RWStepGeom_RWReparametrisedCompositeCurveSegment {
 /*******************************
 * class RWStepGeom_RWSeamCurve *
 *******************************/
-%nodefaultctor RWStepGeom_RWSeamCurve;
 class RWStepGeom_RWSeamCurve {
 	public:
 		/****************** RWStepGeom_RWSeamCurve ******************/
@@ -3466,7 +3400,6 @@ class RWStepGeom_RWSeamCurve {
 /**************************************
 * class RWStepGeom_RWSphericalSurface *
 **************************************/
-%nodefaultctor RWStepGeom_RWSphericalSurface;
 class RWStepGeom_RWSphericalSurface {
 	public:
 		/****************** RWStepGeom_RWSphericalSurface ******************/
@@ -3517,7 +3450,6 @@ class RWStepGeom_RWSphericalSurface {
 /*****************************
 * class RWStepGeom_RWSurface *
 *****************************/
-%nodefaultctor RWStepGeom_RWSurface;
 class RWStepGeom_RWSurface {
 	public:
 		/****************** RWStepGeom_RWSurface ******************/
@@ -3559,7 +3491,6 @@ class RWStepGeom_RWSurface {
 /**********************************
 * class RWStepGeom_RWSurfaceCurve *
 **********************************/
-%nodefaultctor RWStepGeom_RWSurfaceCurve;
 class RWStepGeom_RWSurfaceCurve {
 	public:
 		/****************** RWStepGeom_RWSurfaceCurve ******************/
@@ -3610,7 +3541,6 @@ class RWStepGeom_RWSurfaceCurve {
 /*************************************************
 * class RWStepGeom_RWSurfaceCurveAndBoundedCurve *
 *************************************************/
-%nodefaultctor RWStepGeom_RWSurfaceCurveAndBoundedCurve;
 class RWStepGeom_RWSurfaceCurveAndBoundedCurve {
 	public:
 		/****************** RWStepGeom_RWSurfaceCurveAndBoundedCurve ******************/
@@ -3661,7 +3591,6 @@ class RWStepGeom_RWSurfaceCurveAndBoundedCurve {
 /**********************************************
 * class RWStepGeom_RWSurfaceOfLinearExtrusion *
 **********************************************/
-%nodefaultctor RWStepGeom_RWSurfaceOfLinearExtrusion;
 class RWStepGeom_RWSurfaceOfLinearExtrusion {
 	public:
 		/****************** RWStepGeom_RWSurfaceOfLinearExtrusion ******************/
@@ -3712,7 +3641,6 @@ class RWStepGeom_RWSurfaceOfLinearExtrusion {
 /*****************************************
 * class RWStepGeom_RWSurfaceOfRevolution *
 *****************************************/
-%nodefaultctor RWStepGeom_RWSurfaceOfRevolution;
 class RWStepGeom_RWSurfaceOfRevolution {
 	public:
 		/****************** RWStepGeom_RWSurfaceOfRevolution ******************/
@@ -3763,7 +3691,6 @@ class RWStepGeom_RWSurfaceOfRevolution {
 /**********************************
 * class RWStepGeom_RWSurfacePatch *
 **********************************/
-%nodefaultctor RWStepGeom_RWSurfacePatch;
 class RWStepGeom_RWSurfacePatch {
 	public:
 		/****************** RWStepGeom_RWSurfacePatch ******************/
@@ -3814,7 +3741,6 @@ class RWStepGeom_RWSurfacePatch {
 /************************************
 * class RWStepGeom_RWSurfaceReplica *
 ************************************/
-%nodefaultctor RWStepGeom_RWSurfaceReplica;
 class RWStepGeom_RWSurfaceReplica {
 	public:
 		/****************** RWStepGeom_RWSurfaceReplica ******************/
@@ -3865,7 +3791,6 @@ class RWStepGeom_RWSurfaceReplica {
 /**********************************
 * class RWStepGeom_RWSweptSurface *
 **********************************/
-%nodefaultctor RWStepGeom_RWSweptSurface;
 class RWStepGeom_RWSweptSurface {
 	public:
 		/****************** RWStepGeom_RWSweptSurface ******************/
@@ -3916,7 +3841,6 @@ class RWStepGeom_RWSweptSurface {
 /*************************************
 * class RWStepGeom_RWToroidalSurface *
 *************************************/
-%nodefaultctor RWStepGeom_RWToroidalSurface;
 class RWStepGeom_RWToroidalSurface {
 	public:
 		/****************** Check ******************/
@@ -3978,7 +3902,6 @@ class RWStepGeom_RWToroidalSurface {
 /**********************************
 * class RWStepGeom_RWTrimmedCurve *
 **********************************/
-%nodefaultctor RWStepGeom_RWTrimmedCurve;
 class RWStepGeom_RWTrimmedCurve {
 	public:
 		/****************** RWStepGeom_RWTrimmedCurve ******************/
@@ -4029,7 +3952,6 @@ class RWStepGeom_RWTrimmedCurve {
 /**********************************
 * class RWStepGeom_RWUniformCurve *
 **********************************/
-%nodefaultctor RWStepGeom_RWUniformCurve;
 class RWStepGeom_RWUniformCurve {
 	public:
 		/****************** RWStepGeom_RWUniformCurve ******************/
@@ -4080,7 +4002,6 @@ class RWStepGeom_RWUniformCurve {
 /*********************************************************
 * class RWStepGeom_RWUniformCurveAndRationalBSplineCurve *
 *********************************************************/
-%nodefaultctor RWStepGeom_RWUniformCurveAndRationalBSplineCurve;
 class RWStepGeom_RWUniformCurveAndRationalBSplineCurve {
 	public:
 		/****************** RWStepGeom_RWUniformCurveAndRationalBSplineCurve ******************/
@@ -4131,7 +4052,6 @@ class RWStepGeom_RWUniformCurveAndRationalBSplineCurve {
 /************************************
 * class RWStepGeom_RWUniformSurface *
 ************************************/
-%nodefaultctor RWStepGeom_RWUniformSurface;
 class RWStepGeom_RWUniformSurface {
 	public:
 		/****************** RWStepGeom_RWUniformSurface ******************/
@@ -4182,7 +4102,6 @@ class RWStepGeom_RWUniformSurface {
 /*************************************************************
 * class RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface *
 *************************************************************/
-%nodefaultctor RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface;
 class RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface {
 	public:
 		/****************** RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface ******************/
@@ -4233,7 +4152,6 @@ class RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface {
 /****************************
 * class RWStepGeom_RWVector *
 ****************************/
-%nodefaultctor RWStepGeom_RWVector;
 class RWStepGeom_RWVector {
 	public:
 		/****************** Check ******************/

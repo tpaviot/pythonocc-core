@@ -65,7 +65,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_sweep.html"
 /***********************
 * class Sweep_NumShape *
 ***********************/
-%nodefaultctor Sweep_NumShape;
 class Sweep_NumShape {
 	public:
 		/****************** BegInfinite ******************/
@@ -148,7 +147,6 @@ class Sweep_NumShape {
 /*******************************
 * class Sweep_NumShapeIterator *
 *******************************/
-%nodefaultctor Sweep_NumShapeIterator;
 class Sweep_NumShapeIterator {
 	public:
 		/****************** Init ******************/
@@ -200,7 +198,6 @@ class Sweep_NumShapeIterator {
 /***************************
 * class Sweep_NumShapeTool *
 ***************************/
-%nodefaultctor Sweep_NumShapeTool;
 class Sweep_NumShapeTool {
 	public:
 		/****************** FirstVertex ******************/

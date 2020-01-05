@@ -199,7 +199,6 @@ class Law {
 /********************
 * class Law_BSpline *
 ********************/
-%nodefaultctor Law_BSpline;
 class Law_BSpline : public Standard_Transient {
 	public:
 		/****************** Continuity ******************/
@@ -820,7 +819,6 @@ class Law_BSpline : public Standard_Transient {
 /*********************************
 * class Law_BSplineKnotSplitting *
 *********************************/
-%nodefaultctor Law_BSplineKnotSplitting;
 class Law_BSplineKnotSplitting {
 	public:
 		/****************** Law_BSplineKnotSplitting ******************/
@@ -963,7 +961,6 @@ class Law_Function : public Standard_Transient {
 /************************
 * class Law_Interpolate *
 ************************/
-%nodefaultctor Law_Interpolate;
 class Law_Interpolate {
 	public:
 		/****************** Curve ******************/
@@ -1040,7 +1037,6 @@ class Law_Interpolate {
 /********************
 * class Law_BSpFunc *
 ********************/
-%nodefaultctor Law_BSpFunc;
 class Law_BSpFunc : public Law_Function {
 	public:
 		/****************** Bounds ******************/
@@ -1160,7 +1156,6 @@ class Law_BSpFunc : public Law_Function {
 /**********************
 * class Law_Composite *
 **********************/
-%nodefaultctor Law_Composite;
 class Law_Composite : public Law_Function {
 	public:
 		/****************** Bounds ******************/
@@ -1297,7 +1292,6 @@ class Law_Composite : public Law_Function {
 /*********************
 * class Law_Constant *
 *********************/
-%nodefaultctor Law_Constant;
 class Law_Constant : public Law_Function {
 	public:
 		/****************** Bounds ******************/
@@ -1409,7 +1403,6 @@ class Law_Constant : public Law_Function {
 /*******************
 * class Law_Linear *
 *******************/
-%nodefaultctor Law_Linear;
 class Law_Linear : public Law_Function {
 	public:
 		/****************** Bounds ******************/
@@ -1525,7 +1518,6 @@ class Law_Linear : public Law_Function {
 /*********************
 * class Law_Interpol *
 *********************/
-%nodefaultctor Law_Interpol;
 class Law_Interpol : public Law_BSpFunc {
 	public:
 		/****************** Law_Interpol ******************/
@@ -1602,7 +1594,6 @@ class Law_Interpol : public Law_BSpFunc {
 /**************
 * class Law_S *
 **************/
-%nodefaultctor Law_S;
 class Law_S : public Law_BSpFunc {
 	public:
 		/****************** Law_S ******************/

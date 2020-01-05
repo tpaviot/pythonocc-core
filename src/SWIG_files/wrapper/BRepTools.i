@@ -453,7 +453,6 @@ class BRepTools {
 /**************************
 * class BRepTools_History *
 **************************/
-%nodefaultctor BRepTools_History;
 class BRepTools_History : public Standard_Transient {
 	public:
 /* public enums */
@@ -734,7 +733,6 @@ class BRepTools_Modification : public Standard_Transient {
 /***************************
 * class BRepTools_Modifier *
 ***************************/
-%nodefaultctor BRepTools_Modifier;
 class BRepTools_Modifier {
 	public:
 		class NewCurveInfo {};
@@ -823,7 +821,6 @@ class BRepTools_Modifier {
 /************************
 * class BRepTools_Quilt *
 ************************/
-%nodefaultctor BRepTools_Quilt;
 class BRepTools_Quilt {
 	public:
 		/****************** Add ******************/
@@ -893,7 +890,6 @@ class BRepTools_Quilt {
 /**************************
 * class BRepTools_ReShape *
 **************************/
-%nodefaultctor BRepTools_ReShape;
 class BRepTools_ReShape : public Standard_Transient {
 	public:
 		class TReplacement {};
@@ -1028,7 +1024,6 @@ class BRepTools_ReShape : public Standard_Transient {
 /***************************
 * class BRepTools_ShapeSet *
 ***************************/
-%nodefaultctor BRepTools_ShapeSet;
 class BRepTools_ShapeSet : public TopTools_ShapeSet {
 	public:
 		/****************** AddGeometry ******************/
@@ -1224,7 +1219,6 @@ class BRepTools_ShapeSet : public TopTools_ShapeSet {
 /*******************************
 * class BRepTools_Substitution *
 *******************************/
-%nodefaultctor BRepTools_Substitution;
 class BRepTools_Substitution {
 	public:
 		/****************** BRepTools_Substitution ******************/
@@ -1284,7 +1278,6 @@ class BRepTools_Substitution {
 /*******************************
 * class BRepTools_WireExplorer *
 *******************************/
-%nodefaultctor BRepTools_WireExplorer;
 class BRepTools_WireExplorer {
 	public:
 		/****************** BRepTools_WireExplorer ******************/
@@ -1395,7 +1388,6 @@ class BRepTools_WireExplorer {
 /************************************
 * class BRepTools_GTrsfModification *
 ************************************/
-%nodefaultctor BRepTools_GTrsfModification;
 class BRepTools_GTrsfModification : public BRepTools_Modification {
 	public:
 		/****************** BRepTools_GTrsfModification ******************/
@@ -1519,7 +1511,6 @@ class BRepTools_GTrsfModification : public BRepTools_Modification {
 /*******************************************
 * class BRepTools_NurbsConvertModification *
 *******************************************/
-%nodefaultctor BRepTools_NurbsConvertModification;
 class BRepTools_NurbsConvertModification : public BRepTools_Modification {
 	public:
 		/****************** BRepTools_NurbsConvertModification ******************/
@@ -1640,7 +1631,6 @@ class BRepTools_NurbsConvertModification : public BRepTools_Modification {
 /***********************************
 * class BRepTools_TrsfModification *
 ***********************************/
-%nodefaultctor BRepTools_TrsfModification;
 class BRepTools_TrsfModification : public BRepTools_Modification {
 	public:
 		/****************** BRepTools_TrsfModification ******************/

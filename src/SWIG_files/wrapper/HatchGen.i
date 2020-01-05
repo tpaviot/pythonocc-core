@@ -88,7 +88,6 @@ typedef NCollection_Sequence <HatchGen_PointOnHatching> HatchGen_PointsOnHatchin
 /************************
 * class HatchGen_Domain *
 ************************/
-%nodefaultctor HatchGen_Domain;
 class HatchGen_Domain {
 	public:
 		/****************** Dump ******************/
@@ -327,7 +326,6 @@ class HatchGen_IntersectionPoint {
 /********************************
 * class HatchGen_PointOnElement *
 ********************************/
-%nodefaultctor HatchGen_PointOnElement;
 class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 	public:
 		/****************** Dump ******************/
@@ -406,7 +404,6 @@ class HatchGen_PointOnElement : public HatchGen_IntersectionPoint {
 /*********************************
 * class HatchGen_PointOnHatching *
 *********************************/
-%nodefaultctor HatchGen_PointOnHatching;
 class HatchGen_PointOnHatching : public HatchGen_IntersectionPoint {
 	public:
 		/****************** AddPoint ******************/

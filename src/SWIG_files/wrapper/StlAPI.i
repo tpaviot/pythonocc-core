@@ -104,7 +104,6 @@ class StlAPI {
 /**********************
 * class StlAPI_Reader *
 **********************/
-%nodefaultctor StlAPI_Reader;
 class StlAPI_Reader {
 	public:
 		/****************** Read ******************/
@@ -129,7 +128,6 @@ class StlAPI_Reader {
 /**********************
 * class StlAPI_Writer *
 **********************/
-%nodefaultctor StlAPI_Writer;
 class StlAPI_Writer {
 	public:
 

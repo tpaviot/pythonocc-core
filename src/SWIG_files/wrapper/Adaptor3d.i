@@ -1291,7 +1291,6 @@ class Adaptor3d_HSurfaceTool {
 /**************************
 * class Adaptor3d_HVertex *
 **************************/
-%nodefaultctor Adaptor3d_HVertex;
 class Adaptor3d_HVertex : public Standard_Transient {
 	public:
 		/****************** Adaptor3d_HVertex ******************/
@@ -1356,7 +1355,6 @@ class Adaptor3d_HVertex : public Standard_Transient {
 /****************************
 * class Adaptor3d_InterFunc *
 ****************************/
-%nodefaultctor Adaptor3d_InterFunc;
 class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 	public:
 		/****************** Adaptor3d_InterFunc ******************/
@@ -1775,7 +1773,6 @@ class Adaptor3d_Surface {
 /****************************
 * class Adaptor3d_TopolTool *
 ****************************/
-%nodefaultctor Adaptor3d_TopolTool;
 class Adaptor3d_TopolTool : public Standard_Transient {
 	public:
 		/****************** Adaptor3d_TopolTool ******************/
@@ -2031,7 +2028,6 @@ class Adaptor3d_TopolTool : public Standard_Transient {
 /*********************************
 * class Adaptor3d_CurveOnSurface *
 *********************************/
-%nodefaultctor Adaptor3d_CurveOnSurface;
 class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 	public:
 		/****************** Adaptor3d_CurveOnSurface ******************/
@@ -2313,7 +2309,6 @@ class Adaptor3d_CurveOnSurface : public Adaptor3d_Curve {
 /**********************************
 * class Adaptor3d_HCurveOnSurface *
 **********************************/
-%nodefaultctor Adaptor3d_HCurveOnSurface;
 class Adaptor3d_HCurveOnSurface : public Adaptor3d_HCurve {
 	public:
 		/****************** Adaptor3d_HCurveOnSurface ******************/
@@ -2370,7 +2365,6 @@ class Adaptor3d_HCurveOnSurface : public Adaptor3d_HCurve {
 /****************************
 * class Adaptor3d_HIsoCurve *
 ****************************/
-%nodefaultctor Adaptor3d_HIsoCurve;
 class Adaptor3d_HIsoCurve : public Adaptor3d_HCurve {
 	public:
 		/****************** Adaptor3d_HIsoCurve ******************/
@@ -2427,7 +2421,6 @@ class Adaptor3d_HIsoCurve : public Adaptor3d_HCurve {
 /***************************
 * class Adaptor3d_IsoCurve *
 ***************************/
-%nodefaultctor Adaptor3d_IsoCurve;
 class Adaptor3d_IsoCurve : public Adaptor3d_Curve {
 	public:
 		/****************** Adaptor3d_IsoCurve ******************/

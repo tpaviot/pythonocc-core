@@ -72,7 +72,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_appstdl.html"
 /****************************
 * class AppStdL_Application *
 ****************************/
-%nodefaultctor AppStdL_Application;
 class AppStdL_Application : public TDocStd_Application {
 	public:
 		/****************** ResourcesName ******************/

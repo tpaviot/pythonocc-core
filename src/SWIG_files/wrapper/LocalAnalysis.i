@@ -115,7 +115,6 @@ class LocalAnalysis {
 /**************************************
 * class LocalAnalysis_CurveContinuity *
 **************************************/
-%nodefaultctor LocalAnalysis_CurveContinuity;
 class LocalAnalysis_CurveContinuity {
 	public:
 		/****************** C0Value ******************/
@@ -242,7 +241,6 @@ class LocalAnalysis_CurveContinuity {
 /****************************************
 * class LocalAnalysis_SurfaceContinuity *
 ****************************************/
-%nodefaultctor LocalAnalysis_SurfaceContinuity;
 class LocalAnalysis_SurfaceContinuity {
 	public:
 		/****************** C0Value ******************/

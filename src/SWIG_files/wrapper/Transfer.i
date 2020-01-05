@@ -121,7 +121,6 @@ typedef NCollection_IndexedDataMap <opencascade::handle <Transfer_Finder>, openc
 /*****************************************
 * class Transfer_ActorOfProcessForFinder *
 *****************************************/
-%nodefaultctor Transfer_ActorOfProcessForFinder;
 class Transfer_ActorOfProcessForFinder : public Standard_Transient {
 	public:
 		/****************** IsLast ******************/
@@ -203,7 +202,6 @@ class Transfer_ActorOfProcessForFinder : public Standard_Transient {
 /********************************************
 * class Transfer_ActorOfProcessForTransient *
 ********************************************/
-%nodefaultctor Transfer_ActorOfProcessForTransient;
 class Transfer_ActorOfProcessForTransient : public Standard_Transient {
 	public:
 		/****************** IsLast ******************/
@@ -436,7 +434,6 @@ class Transfer_DataInfo {
 /*********************************
 * class Transfer_DispatchControl *
 *********************************/
-%nodefaultctor Transfer_DispatchControl;
 class Transfer_DispatchControl : public Interface_CopyControl {
 	public:
 		/****************** Bind ******************/
@@ -734,7 +731,6 @@ class Transfer_Finder : public Standard_Transient {
 /******************************
 * class Transfer_MapContainer *
 ******************************/
-%nodefaultctor Transfer_MapContainer;
 class Transfer_MapContainer : public Standard_Transient {
 	public:
 		/****************** GetMapObjects ******************/
@@ -773,7 +769,6 @@ class Transfer_MapContainer : public Standard_Transient {
 /*************************************
 * class Transfer_ProcessForTransient *
 *************************************/
-%nodefaultctor Transfer_ProcessForTransient;
 class Transfer_ProcessForTransient : public Standard_Transient {
 	public:
 		/****************** AbnormalResult ******************/
@@ -1337,7 +1332,6 @@ class Transfer_ProcessForTransient : public Standard_Transient {
 /*********************************
 * class Transfer_ResultFromModel *
 *********************************/
-%nodefaultctor Transfer_ResultFromModel;
 class Transfer_ResultFromModel : public Standard_Transient {
 	public:
 		/****************** CheckList ******************/
@@ -1504,7 +1498,6 @@ class Transfer_ResultFromModel : public Standard_Transient {
 /*************************************
 * class Transfer_ResultFromTransient *
 *************************************/
-%nodefaultctor Transfer_ResultFromTransient;
 class Transfer_ResultFromTransient : public Standard_Transient {
 	public:
 		/****************** AddSubResult ******************/
@@ -1639,7 +1632,6 @@ class Transfer_ResultFromTransient : public Standard_Transient {
 /**********************************
 * class Transfer_TransferDispatch *
 **********************************/
-%nodefaultctor Transfer_TransferDispatch;
 class Transfer_TransferDispatch : public Interface_CopyTool {
 	public:
 		/****************** Copy ******************/
@@ -1702,7 +1694,6 @@ class Transfer_TransferDispatch : public Interface_CopyTool {
 /*******************************
 * class Transfer_TransferInput *
 *******************************/
-%nodefaultctor Transfer_TransferInput;
 class Transfer_TransferInput {
 	public:
 		/****************** Entities ******************/
@@ -1779,7 +1770,6 @@ class Transfer_TransferInput {
 /**********************************
 * class Transfer_TransferIterator *
 **********************************/
-%nodefaultctor Transfer_TransferIterator;
 class Transfer_TransferIterator {
 	public:
 		/****************** AddItem ******************/
@@ -1930,7 +1920,6 @@ class Transfer_TransferIterator {
 /********************************
 * class Transfer_TransferOutput *
 ********************************/
-%nodefaultctor Transfer_TransferOutput;
 class Transfer_TransferOutput {
 	public:
 		/****************** ListForStatus ******************/
@@ -2029,7 +2018,6 @@ class Transfer_TransferOutput {
 /**************************************
 * class Transfer_ActorOfFinderProcess *
 **************************************/
-%nodefaultctor Transfer_ActorOfFinderProcess;
 class Transfer_ActorOfFinderProcess : public Transfer_ActorOfProcessForFinder {
 	public:
 
@@ -2091,7 +2079,6 @@ class Transfer_ActorOfFinderProcess : public Transfer_ActorOfProcessForFinder {
 /*****************************************
 * class Transfer_ActorOfTransientProcess *
 *****************************************/
-%nodefaultctor Transfer_ActorOfTransientProcess;
 class Transfer_ActorOfTransientProcess : public Transfer_ActorOfProcessForTransient {
 	public:
 		/****************** Transfer ******************/
@@ -2140,7 +2127,6 @@ class Transfer_ActorOfTransientProcess : public Transfer_ActorOfProcessForTransi
 /*******************************
 * class Transfer_FinderProcess *
 *******************************/
-%nodefaultctor Transfer_FinderProcess;
 class Transfer_FinderProcess : public Transfer_ProcessForFinder {
 	public:
 		/****************** Model ******************/
@@ -2217,7 +2203,6 @@ class Transfer_FinderProcess : public Transfer_ProcessForFinder {
 /********************************************
 * class Transfer_IteratorOfProcessForFinder *
 ********************************************/
-%nodefaultctor Transfer_IteratorOfProcessForFinder;
 class Transfer_IteratorOfProcessForFinder : public Transfer_TransferIterator {
 	public:
 		/****************** Add ******************/
@@ -2280,7 +2265,6 @@ class Transfer_IteratorOfProcessForFinder : public Transfer_TransferIterator {
 /***********************************************
 * class Transfer_IteratorOfProcessForTransient *
 ***********************************************/
-%nodefaultctor Transfer_IteratorOfProcessForTransient;
 class Transfer_IteratorOfProcessForTransient : public Transfer_TransferIterator {
 	public:
 		/****************** Add ******************/
@@ -2343,7 +2327,6 @@ class Transfer_IteratorOfProcessForTransient : public Transfer_TransferIterator 
 /********************************
 * class Transfer_MultipleBinder *
 ********************************/
-%nodefaultctor Transfer_MultipleBinder;
 class Transfer_MultipleBinder : public Transfer_Binder {
 	public:
 		/****************** AddResult ******************/
@@ -2420,7 +2403,6 @@ class Transfer_MultipleBinder : public Transfer_Binder {
 /*****************************************
 * class Transfer_SimpleBinderOfTransient *
 *****************************************/
-%nodefaultctor Transfer_SimpleBinderOfTransient;
 class Transfer_SimpleBinderOfTransient : public Transfer_Binder {
 	public:
 		/****************** GetTypedResult ******************/
@@ -2481,7 +2463,6 @@ class Transfer_SimpleBinderOfTransient : public Transfer_Binder {
 /*************************************
 * class Transfer_TransientListBinder *
 *************************************/
-%nodefaultctor Transfer_TransientListBinder;
 class Transfer_TransientListBinder : public Transfer_Binder {
 	public:
 		/****************** AddResult ******************/
@@ -2560,7 +2541,6 @@ class Transfer_TransientListBinder : public Transfer_Binder {
 /*********************************
 * class Transfer_TransientMapper *
 *********************************/
-%nodefaultctor Transfer_TransientMapper;
 class Transfer_TransientMapper : public Transfer_Finder {
 	public:
 		/****************** Equates ******************/
@@ -2611,7 +2591,6 @@ class Transfer_TransientMapper : public Transfer_Finder {
 /**********************************
 * class Transfer_TransientProcess *
 **********************************/
-%nodefaultctor Transfer_TransientProcess;
 class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 	public:
 		/****************** CheckNum ******************/
@@ -2760,7 +2739,6 @@ class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 /****************************
 * class Transfer_VoidBinder *
 ****************************/
-%nodefaultctor Transfer_VoidBinder;
 class Transfer_VoidBinder : public Transfer_Binder {
 	public:
 		/****************** ResultType ******************/
@@ -2795,7 +2773,6 @@ class Transfer_VoidBinder : public Transfer_Binder {
 /*******************************
 * class Transfer_ActorDispatch *
 *******************************/
-%nodefaultctor Transfer_ActorDispatch;
 class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
 	public:
 		/****************** AddActor ******************/
@@ -2864,7 +2841,6 @@ class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
 /******************************************
 * class Transfer_BinderOfTransientInteger *
 ******************************************/
-%nodefaultctor Transfer_BinderOfTransientInteger;
 class Transfer_BinderOfTransientInteger : public Transfer_SimpleBinderOfTransient {
 	public:
 		/****************** Integer ******************/

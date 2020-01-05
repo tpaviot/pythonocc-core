@@ -124,7 +124,6 @@ class GeomLProp {
 /**************************
 * class GeomLProp_CLProps *
 **************************/
-%nodefaultctor GeomLProp_CLProps;
 class GeomLProp_CLProps {
 	public:
 		/****************** CentreOfCurvature ******************/
@@ -349,7 +348,6 @@ class GeomLProp_CurveTool {
 /**************************
 * class GeomLProp_SLProps *
 **************************/
-%nodefaultctor GeomLProp_SLProps;
 class GeomLProp_SLProps {
 	public:
 		/****************** CurvatureDirections ******************/

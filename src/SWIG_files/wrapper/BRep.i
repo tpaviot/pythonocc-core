@@ -1192,7 +1192,6 @@ class BRep_PointRepresentation : public Standard_Transient {
 /*******************
 * class BRep_TEdge *
 *******************/
-%nodefaultctor BRep_TEdge;
 class BRep_TEdge : public TopoDS_TEdge {
 	public:
 		/****************** BRep_TEdge ******************/
@@ -1287,7 +1286,6 @@ class BRep_TEdge : public TopoDS_TEdge {
 /*******************
 * class BRep_TFace *
 *******************/
-%nodefaultctor BRep_TFace;
 class BRep_TFace : public TopoDS_TFace {
 	public:
 		/****************** BRep_TFace ******************/
@@ -1376,7 +1374,6 @@ class BRep_TFace : public TopoDS_TFace {
 /*********************
 * class BRep_TVertex *
 *********************/
-%nodefaultctor BRep_TVertex;
 class BRep_TVertex : public TopoDS_TVertex {
 	public:
 		/****************** BRep_TVertex ******************/
@@ -2050,7 +2047,6 @@ class BRep_Tool {
 /******************************
 * class BRep_CurveOn2Surfaces *
 ******************************/
-%nodefaultctor BRep_CurveOn2Surfaces;
 class BRep_CurveOn2Surfaces : public BRep_CurveRepresentation {
 	public:
 		/****************** BRep_CurveOn2Surfaces ******************/
@@ -2220,7 +2216,6 @@ class BRep_GCurve : public BRep_CurveRepresentation {
 /**************************
 * class BRep_PointOnCurve *
 **************************/
-%nodefaultctor BRep_PointOnCurve;
 class BRep_PointOnCurve : public BRep_PointRepresentation {
 	public:
 		/****************** BRep_PointOnCurve ******************/
@@ -2304,7 +2299,6 @@ class BRep_PointsOnSurface : public BRep_PointRepresentation {
 /***********************
 * class BRep_Polygon3D *
 ***********************/
-%nodefaultctor BRep_Polygon3D;
 class BRep_Polygon3D : public BRep_CurveRepresentation {
 	public:
 		/****************** BRep_Polygon3D ******************/
@@ -2354,7 +2348,6 @@ class BRep_Polygon3D : public BRep_CurveRepresentation {
 /******************************
 * class BRep_PolygonOnSurface *
 ******************************/
-%nodefaultctor BRep_PolygonOnSurface;
 class BRep_PolygonOnSurface : public BRep_CurveRepresentation {
 	public:
 		/****************** BRep_PolygonOnSurface ******************/
@@ -2421,7 +2414,6 @@ class BRep_PolygonOnSurface : public BRep_CurveRepresentation {
 /************************************
 * class BRep_PolygonOnTriangulation *
 ************************************/
-%nodefaultctor BRep_PolygonOnTriangulation;
 class BRep_PolygonOnTriangulation : public BRep_CurveRepresentation {
 	public:
 		/****************** BRep_PolygonOnTriangulation ******************/
@@ -2489,7 +2481,6 @@ class BRep_PolygonOnTriangulation : public BRep_CurveRepresentation {
 /*********************
 * class BRep_Curve3D *
 *********************/
-%nodefaultctor BRep_Curve3D;
 class BRep_Curve3D : public BRep_GCurve {
 	public:
 		/****************** BRep_Curve3D ******************/
@@ -2549,7 +2540,6 @@ class BRep_Curve3D : public BRep_GCurve {
 /****************************
 * class BRep_CurveOnSurface *
 ****************************/
-%nodefaultctor BRep_CurveOnSurface;
 class BRep_CurveOnSurface : public BRep_GCurve {
 	public:
 		/****************** BRep_CurveOnSurface ******************/
@@ -2650,7 +2640,6 @@ class BRep_CurveOnSurface : public BRep_GCurve {
 /***********************************
 * class BRep_PointOnCurveOnSurface *
 ***********************************/
-%nodefaultctor BRep_PointOnCurveOnSurface;
 class BRep_PointOnCurveOnSurface : public BRep_PointsOnSurface {
 	public:
 		/****************** BRep_PointOnCurveOnSurface ******************/
@@ -2709,7 +2698,6 @@ class BRep_PointOnCurveOnSurface : public BRep_PointsOnSurface {
 /****************************
 * class BRep_PointOnSurface *
 ****************************/
-%nodefaultctor BRep_PointOnSurface;
 class BRep_PointOnSurface : public BRep_PointsOnSurface {
 	public:
 		/****************** BRep_PointOnSurface ******************/
@@ -2765,7 +2753,6 @@ class BRep_PointOnSurface : public BRep_PointsOnSurface {
 /************************************
 * class BRep_PolygonOnClosedSurface *
 ************************************/
-%nodefaultctor BRep_PolygonOnClosedSurface;
 class BRep_PolygonOnClosedSurface : public BRep_PolygonOnSurface {
 	public:
 		/****************** BRep_PolygonOnClosedSurface ******************/
@@ -2819,7 +2806,6 @@ class BRep_PolygonOnClosedSurface : public BRep_PolygonOnSurface {
 /******************************************
 * class BRep_PolygonOnClosedTriangulation *
 ******************************************/
-%nodefaultctor BRep_PolygonOnClosedTriangulation;
 class BRep_PolygonOnClosedTriangulation : public BRep_PolygonOnTriangulation {
 	public:
 		/****************** BRep_PolygonOnClosedTriangulation ******************/
@@ -2873,7 +2859,6 @@ class BRep_PolygonOnClosedTriangulation : public BRep_PolygonOnTriangulation {
 /**********************************
 * class BRep_CurveOnClosedSurface *
 **********************************/
-%nodefaultctor BRep_CurveOnClosedSurface;
 class BRep_CurveOnClosedSurface : public BRep_CurveOnSurface {
 	public:
 		/****************** BRep_CurveOnClosedSurface ******************/

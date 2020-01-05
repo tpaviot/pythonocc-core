@@ -155,7 +155,6 @@ class Standard {
 /***********************************
 * class Standard_ArrayStreamBuffer *
 ***********************************/
-%nodefaultctor Standard_ArrayStreamBuffer;
 class Standard_ArrayStreamBuffer : public std::streambuf {
 	public:
 		/****************** Init ******************/
@@ -200,7 +199,6 @@ class Standard_ArrayStreamBuffer : public std::streambuf {
 /***************************
 * class Standard_Condition *
 ***************************/
-%nodefaultctor Standard_Condition;
 class Standard_Condition {
 	public:
 		/****************** Check ******************/
@@ -261,7 +259,6 @@ class Standard_Condition {
 /******************************
 * class Standard_ErrorHandler *
 ******************************/
-%nodefaultctor Standard_ErrorHandler;
 class Standard_ErrorHandler {
 	public:
 		class Callback {};
@@ -327,7 +324,6 @@ class Standard_ErrorHandler {
 /**********************
 * class Standard_GUID *
 **********************/
-%nodefaultctor Standard_GUID;
 class Standard_GUID {
 	public:
 		/****************** Assign ******************/
@@ -581,7 +577,6 @@ class Standard_MMgrRoot {
 /*************************************
 * class Standard_Static_Assert<true> *
 *************************************/
-%nodefaultctor Standard_Static_Assert<true>;
 class Standard_Static_Assert<true> {
 	public:
 		/****************** assert_ok ******************/
@@ -601,7 +596,6 @@ class Standard_Static_Assert<true> {
 /***************************
 * class Standard_Transient *
 ***************************/
-%nodefaultctor Standard_Transient;
 class Standard_Transient {
 	public:
 typedef void base_type;
@@ -762,7 +756,6 @@ typedef void base_type;
 /*************************
 * class Standard_MMgrOpt *
 *************************/
-%nodefaultctor Standard_MMgrOpt;
 class Standard_MMgrOpt : public Standard_MMgrRoot {
 	public:
 		/****************** Allocate ******************/
@@ -827,7 +820,6 @@ class Standard_MMgrOpt : public Standard_MMgrRoot {
 /*************************
 * class Standard_MMgrRaw *
 *************************/
-%nodefaultctor Standard_MMgrRaw;
 class Standard_MMgrRaw : public Standard_MMgrRoot {
 	public:
 		/****************** Allocate ******************/
@@ -876,7 +868,6 @@ class Standard_MMgrRaw : public Standard_MMgrRoot {
 /******************************
 * class Standard_MMgrTBBalloc *
 ******************************/
-%nodefaultctor Standard_MMgrTBBalloc;
 class Standard_MMgrTBBalloc : public Standard_MMgrRoot {
 	public:
 		/****************** Allocate ******************/
@@ -928,7 +919,6 @@ class Standard_MMgrTBBalloc : public Standard_MMgrRoot {
 /*****************************
 * class Standard_OutOfMemory *
 *****************************/
-%nodefaultctor Standard_OutOfMemory;
 class Standard_OutOfMemory : public Standard_ProgramError {
 	public:
 		/****************** GetMessageString ******************/
@@ -991,7 +981,6 @@ class Standard_OutOfMemory : public Standard_ProgramError {
 /****************************
 * class Standard_Persistent *
 ****************************/
-%nodefaultctor Standard_Persistent;
 class Standard_Persistent : public Standard_Transient {
 	public:
 		/****************** Standard_Persistent ******************/

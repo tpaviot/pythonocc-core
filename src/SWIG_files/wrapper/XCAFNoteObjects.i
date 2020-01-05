@@ -68,7 +68,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafnoteobjects.h
 /***********************************
 * class XCAFNoteObjects_NoteObject *
 ***********************************/
-%nodefaultctor XCAFNoteObjects_NoteObject;
 class XCAFNoteObjects_NoteObject : public Standard_Transient {
 	public:
 		/****************** GetPlane ******************/

@@ -284,7 +284,6 @@ class XCAFDoc {
 /*********************
 * class XCAFDoc_Area *
 *********************/
-%nodefaultctor XCAFDoc_Area;
 class XCAFDoc_Area : public TDF_Attribute {
 	public:
 
@@ -379,7 +378,6 @@ class XCAFDoc_Area : public TDF_Attribute {
 /*******************************
 * class XCAFDoc_AssemblyItemId *
 *******************************/
-%nodefaultctor XCAFDoc_AssemblyItemId;
 class XCAFDoc_AssemblyItemId {
 	public:
 		class Hasher {};
@@ -481,7 +479,6 @@ class XCAFDoc_AssemblyItemId {
 /********************************
 * class XCAFDoc_AssemblyItemRef *
 ********************************/
-%nodefaultctor XCAFDoc_AssemblyItemRef;
 class XCAFDoc_AssemblyItemRef : public TDF_Attribute {
 	public:
 		/****************** ClearExtraRef ******************/
@@ -673,7 +670,6 @@ class XCAFDoc_AssemblyItemRef : public TDF_Attribute {
 /*************************
 * class XCAFDoc_Centroid *
 *************************/
-%nodefaultctor XCAFDoc_Centroid;
 class XCAFDoc_Centroid : public TDF_Attribute {
 	public:
 
@@ -767,7 +763,6 @@ class XCAFDoc_Centroid : public TDF_Attribute {
 /**********************************
 * class XCAFDoc_ClippingPlaneTool *
 **********************************/
-%nodefaultctor XCAFDoc_ClippingPlaneTool;
 class XCAFDoc_ClippingPlaneTool : public TDF_Attribute {
 	public:
 		/****************** AddClippingPlane ******************/
@@ -970,7 +965,6 @@ class XCAFDoc_ClippingPlaneTool : public TDF_Attribute {
 /**********************
 * class XCAFDoc_Color *
 **********************/
-%nodefaultctor XCAFDoc_Color;
 class XCAFDoc_Color : public TDF_Attribute {
 	public:
 		/****************** GetAlpha ******************/
@@ -1131,7 +1125,6 @@ class XCAFDoc_Color : public TDF_Attribute {
 /**************************
 * class XCAFDoc_ColorTool *
 **************************/
-%nodefaultctor XCAFDoc_ColorTool;
 class XCAFDoc_ColorTool : public TDF_Attribute {
 	public:
 		/****************** AddColor ******************/
@@ -1586,7 +1579,6 @@ class XCAFDoc_ColorTool : public TDF_Attribute {
 /**********************
 * class XCAFDoc_Datum *
 **********************/
-%nodefaultctor XCAFDoc_Datum;
 class XCAFDoc_Datum : public TDF_Attribute {
 	public:
 		/****************** GetDescription ******************/
@@ -1699,7 +1691,6 @@ class XCAFDoc_Datum : public TDF_Attribute {
 /***********************
 * class XCAFDoc_DimTol *
 ***********************/
-%nodefaultctor XCAFDoc_DimTol;
 class XCAFDoc_DimTol : public TDF_Attribute {
 	public:
 		/****************** GetDescription ******************/
@@ -1803,7 +1794,6 @@ class XCAFDoc_DimTol : public TDF_Attribute {
 /**************************
 * class XCAFDoc_Dimension *
 **************************/
-%nodefaultctor XCAFDoc_Dimension;
 class XCAFDoc_Dimension : public TDF_Attribute {
 	public:
 		/****************** GetID ******************/
@@ -1877,7 +1867,6 @@ class XCAFDoc_Dimension : public TDF_Attribute {
 /*****************************
 * class XCAFDoc_DocumentTool *
 *****************************/
-%nodefaultctor XCAFDoc_DocumentTool;
 class XCAFDoc_DocumentTool : public TDF_Attribute {
 	public:
 		/****************** ClippingPlaneTool ******************/
@@ -2128,7 +2117,6 @@ class XCAFDoc_Editor {
 /**************************
 * class XCAFDoc_GraphNode *
 **************************/
-%nodefaultctor XCAFDoc_GraphNode;
 class XCAFDoc_GraphNode : public TDF_Attribute {
 	public:
 		/****************** BeforeForget ******************/
@@ -2346,7 +2334,6 @@ class XCAFDoc_GraphNode : public TDF_Attribute {
 /**************************
 * class XCAFDoc_LayerTool *
 **************************/
-%nodefaultctor XCAFDoc_LayerTool;
 class XCAFDoc_LayerTool : public TDF_Attribute {
 	public:
 		/****************** AddLayer ******************/
@@ -2707,7 +2694,6 @@ class XCAFDoc_LayerTool : public TDF_Attribute {
 /*************************
 * class XCAFDoc_Location *
 *************************/
-%nodefaultctor XCAFDoc_Location;
 class XCAFDoc_Location : public TDF_Attribute {
 	public:
 		/****************** Get ******************/
@@ -2784,7 +2770,6 @@ class XCAFDoc_Location : public TDF_Attribute {
 /*************************
 * class XCAFDoc_Material *
 *************************/
-%nodefaultctor XCAFDoc_Material;
 class XCAFDoc_Material : public TDF_Attribute {
 	public:
 		/****************** GetDensName ******************/
@@ -2894,7 +2879,6 @@ class XCAFDoc_Material : public TDF_Attribute {
 /*****************************
 * class XCAFDoc_MaterialTool *
 *****************************/
-%nodefaultctor XCAFDoc_MaterialTool;
 class XCAFDoc_MaterialTool : public TDF_Attribute {
 	public:
 		/****************** AddMaterial ******************/
@@ -3152,7 +3136,6 @@ class XCAFDoc_Note : public TDF_Attribute {
 /**************************
 * class XCAFDoc_NotesTool *
 **************************/
-%nodefaultctor XCAFDoc_NotesTool;
 class XCAFDoc_NotesTool : public TDF_Attribute {
 	public:
 		/****************** AddNote ******************/
@@ -3694,7 +3677,6 @@ class XCAFDoc_NotesTool : public TDF_Attribute {
 /*****************************
 * class XCAFDoc_ShapeMapTool *
 *****************************/
-%nodefaultctor XCAFDoc_ShapeMapTool;
 class XCAFDoc_ShapeMapTool : public TDF_Attribute {
 	public:
 		/****************** GetID ******************/
@@ -3777,7 +3759,6 @@ class XCAFDoc_ShapeMapTool : public TDF_Attribute {
 /**************************
 * class XCAFDoc_ShapeTool *
 **************************/
-%nodefaultctor XCAFDoc_ShapeTool;
 class XCAFDoc_ShapeTool : public TDF_Attribute {
 	public:
 		/****************** AddComponent ******************/
@@ -4432,7 +4413,6 @@ class XCAFDoc_ShapeTool : public TDF_Attribute {
 /*********************
 * class XCAFDoc_View *
 *********************/
-%nodefaultctor XCAFDoc_View;
 class XCAFDoc_View : public TDF_Attribute {
 	public:
 		/****************** GetID ******************/
@@ -4506,7 +4486,6 @@ class XCAFDoc_View : public TDF_Attribute {
 /*************************
 * class XCAFDoc_ViewTool *
 *************************/
-%nodefaultctor XCAFDoc_ViewTool;
 class XCAFDoc_ViewTool : public TDF_Attribute {
 	public:
 		/****************** AddView ******************/
@@ -4781,7 +4760,6 @@ class XCAFDoc_ViewTool : public TDF_Attribute {
 /***********************
 * class XCAFDoc_Volume *
 ***********************/
-%nodefaultctor XCAFDoc_Volume;
 class XCAFDoc_Volume : public TDF_Attribute {
 	public:
 
@@ -4876,7 +4854,6 @@ class XCAFDoc_Volume : public TDF_Attribute {
 /****************************
 * class XCAFDoc_NoteBinData *
 ****************************/
-%nodefaultctor XCAFDoc_NoteBinData;
 class XCAFDoc_NoteBinData : public XCAFDoc_Note {
 	public:
 		/****************** Data ******************/
@@ -5031,7 +5008,6 @@ class XCAFDoc_NoteBinData : public XCAFDoc_Note {
 /****************************
 * class XCAFDoc_NoteComment *
 ****************************/
-%nodefaultctor XCAFDoc_NoteComment;
 class XCAFDoc_NoteComment : public XCAFDoc_Note {
 	public:
 		/****************** Comment ******************/
@@ -5130,7 +5106,6 @@ class XCAFDoc_NoteComment : public XCAFDoc_Note {
 /****************************
 * class XCAFDoc_NoteBalloon *
 ****************************/
-%nodefaultctor XCAFDoc_NoteBalloon;
 class XCAFDoc_NoteBalloon : public XCAFDoc_NoteComment {
 	public:
 		/****************** Get ******************/

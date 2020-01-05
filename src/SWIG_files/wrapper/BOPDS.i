@@ -160,6 +160,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopds.html"
 %template(BOPDS_VectorOfInterfEF) NCollection_Vector <BOPDS_InterfEF>;
 %template(BOPDS_VectorOfInterfVE) NCollection_Vector <BOPDS_InterfVE>;
 %template(BOPDS_DataMapOfIntegerListOfPaveBlock) NCollection_DataMap <Standard_Integer , BOPDS_ListOfPaveBlock , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , BOPDS_ListOfPaveBlock , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (BOPDS_DataMapOfIntegerListOfPaveBlock::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(BOPDS_MapOfPair) NCollection_Map <BOPDS_Pair , BOPDS_PairMapHasher>;
 %template(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock) NCollection_IndexedDataMap <opencascade::handle <BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock , TColStd_MapTransientHasher>;
 %template(BOPDS_ListOfPaveBlock) NCollection_List <opencascade::handle <BOPDS_PaveBlock>>;
@@ -218,7 +230,6 @@ typedef BOPDS_MapOfPaveBlock::Iterator BOPDS_MapIteratorOfMapOfPaveBlock;
 /**************************
 * class BOPDS_CommonBlock *
 **************************/
-%nodefaultctor BOPDS_CommonBlock;
 class BOPDS_CommonBlock : public Standard_Transient {
 	public:
 		/****************** AddFace ******************/
@@ -388,7 +399,6 @@ class BOPDS_CommonBlock : public Standard_Transient {
 /*********************************
 * class BOPDS_CoupleOfPaveBlocks *
 *********************************/
-%nodefaultctor BOPDS_CoupleOfPaveBlocks;
 class BOPDS_CoupleOfPaveBlocks {
 	public:
 		/****************** BOPDS_CoupleOfPaveBlocks ******************/
@@ -509,7 +519,6 @@ class BOPDS_CoupleOfPaveBlocks {
 /********************
 * class BOPDS_Curve *
 ********************/
-%nodefaultctor BOPDS_Curve;
 class BOPDS_Curve {
 	public:
 		/****************** BOPDS_Curve ******************/
@@ -641,7 +650,6 @@ class BOPDS_Curve {
 /*****************
 * class BOPDS_DS *
 *****************/
-%nodefaultctor BOPDS_DS;
 class BOPDS_DS {
 	public:
 		/****************** AddInterf ******************/
@@ -1263,7 +1271,6 @@ class BOPDS_DS {
 /***********************
 * class BOPDS_FaceInfo *
 ***********************/
-%nodefaultctor BOPDS_FaceInfo;
 class BOPDS_FaceInfo {
 	public:
 		/****************** BOPDS_FaceInfo ******************/
@@ -1383,7 +1390,6 @@ class BOPDS_FaceInfo {
 /*************************
 * class BOPDS_IndexRange *
 *************************/
-%nodefaultctor BOPDS_IndexRange;
 class BOPDS_IndexRange {
 	public:
 		/****************** BOPDS_IndexRange ******************/
@@ -1468,7 +1474,6 @@ class BOPDS_IndexRange {
 /***********************
 * class BOPDS_Iterator *
 ***********************/
-%nodefaultctor BOPDS_Iterator;
 class BOPDS_Iterator {
 	public:
 		/****************** BOPDS_Iterator ******************/
@@ -1595,7 +1600,6 @@ class BOPDS_Iterator {
 /*******************
 * class BOPDS_Pair *
 *******************/
-%nodefaultctor BOPDS_Pair;
 class BOPDS_Pair {
 	public:
 		/****************** BOPDS_Pair ******************/
@@ -1699,7 +1703,6 @@ class BOPDS_PairMapHasher {
 /*******************
 * class BOPDS_Pave *
 *******************/
-%nodefaultctor BOPDS_Pave;
 class BOPDS_Pave {
 	public:
 		/****************** BOPDS_Pave ******************/
@@ -1793,7 +1796,6 @@ class BOPDS_Pave {
 /************************
 * class BOPDS_PaveBlock *
 ************************/
-%nodefaultctor BOPDS_PaveBlock;
 class BOPDS_PaveBlock : public Standard_Transient {
 	public:
 		/****************** AppendExtPave ******************/
@@ -2070,7 +2072,6 @@ class BOPDS_PaveMapHasher {
 /********************
 * class BOPDS_Point *
 ********************/
-%nodefaultctor BOPDS_Point;
 class BOPDS_Point {
 	public:
 		/****************** BOPDS_Point ******************/
@@ -2147,7 +2148,6 @@ class BOPDS_Point {
 /************************
 * class BOPDS_ShapeInfo *
 ************************/
-%nodefaultctor BOPDS_ShapeInfo;
 class BOPDS_ShapeInfo {
 	public:
 		/****************** BOPDS_ShapeInfo ******************/
@@ -2308,7 +2308,6 @@ class BOPDS_ShapeInfo {
 /**************************
 * class BOPDS_SubIterator *
 **************************/
-%nodefaultctor BOPDS_SubIterator;
 class BOPDS_SubIterator {
 	public:
 		/****************** BOPDS_SubIterator ******************/
@@ -2467,7 +2466,6 @@ class BOPDS_Tools {
 /***********************
 * class BOPDS_InterfEE *
 ***********************/
-%nodefaultctor BOPDS_InterfEE;
 class BOPDS_InterfEE : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfEE ******************/
@@ -2510,7 +2508,6 @@ class BOPDS_InterfEE : public BOPDS_Interf {
 /***********************
 * class BOPDS_InterfEF *
 ***********************/
-%nodefaultctor BOPDS_InterfEF;
 class BOPDS_InterfEF : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfEF ******************/
@@ -2553,7 +2550,6 @@ class BOPDS_InterfEF : public BOPDS_Interf {
 /***********************
 * class BOPDS_InterfEZ *
 ***********************/
-%nodefaultctor BOPDS_InterfEZ;
 class BOPDS_InterfEZ : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfEZ ******************/
@@ -2582,7 +2578,6 @@ class BOPDS_InterfEZ : public BOPDS_Interf {
 /***********************
 * class BOPDS_InterfFF *
 ***********************/
-%nodefaultctor BOPDS_InterfFF;
 class BOPDS_InterfFF : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfFF ******************/
@@ -2651,7 +2646,6 @@ class BOPDS_InterfFF : public BOPDS_Interf {
 /***********************
 * class BOPDS_InterfFZ *
 ***********************/
-%nodefaultctor BOPDS_InterfFZ;
 class BOPDS_InterfFZ : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfFZ ******************/
@@ -2680,7 +2674,6 @@ class BOPDS_InterfFZ : public BOPDS_Interf {
 /***********************
 * class BOPDS_InterfVE *
 ***********************/
-%nodefaultctor BOPDS_InterfVE;
 class BOPDS_InterfVE : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfVE ******************/
@@ -2723,7 +2716,6 @@ class BOPDS_InterfVE : public BOPDS_Interf {
 /***********************
 * class BOPDS_InterfVF *
 ***********************/
-%nodefaultctor BOPDS_InterfVF;
 class BOPDS_InterfVF : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfVF ******************/
@@ -2772,7 +2764,6 @@ class BOPDS_InterfVF : public BOPDS_Interf {
 /***********************
 * class BOPDS_InterfVV *
 ***********************/
-%nodefaultctor BOPDS_InterfVV;
 class BOPDS_InterfVV : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfVV ******************/
@@ -2801,7 +2792,6 @@ class BOPDS_InterfVV : public BOPDS_Interf {
 /***********************
 * class BOPDS_InterfVZ *
 ***********************/
-%nodefaultctor BOPDS_InterfVZ;
 class BOPDS_InterfVZ : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfVZ ******************/
@@ -2830,7 +2820,6 @@ class BOPDS_InterfVZ : public BOPDS_Interf {
 /***********************
 * class BOPDS_InterfZZ *
 ***********************/
-%nodefaultctor BOPDS_InterfZZ;
 class BOPDS_InterfZZ : public BOPDS_Interf {
 	public:
 		/****************** BOPDS_InterfZZ ******************/
@@ -2859,7 +2848,6 @@ class BOPDS_InterfZZ : public BOPDS_Interf {
 /*************************
 * class BOPDS_IteratorSI *
 *************************/
-%nodefaultctor BOPDS_IteratorSI;
 class BOPDS_IteratorSI : public BOPDS_Iterator {
 	public:
 		/****************** BOPDS_IteratorSI ******************/

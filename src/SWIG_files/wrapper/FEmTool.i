@@ -88,7 +88,6 @@ typedef NCollection_List <opencascade::handle <TColStd_HArray1OfReal>>::Iterator
 /*************************
 * class FEmTool_Assembly *
 *************************/
-%nodefaultctor FEmTool_Assembly;
 class FEmTool_Assembly {
 	public:
 		/****************** AddConstraint ******************/
@@ -202,7 +201,6 @@ class FEmTool_Assembly {
 /**********************
 * class FEmTool_Curve *
 **********************/
-%nodefaultctor FEmTool_Curve;
 class FEmTool_Curve : public Standard_Transient {
 	public:
 		/****************** Base ******************/
@@ -414,7 +412,6 @@ class FEmTool_ElementaryCriterion : public Standard_Transient {
 /************************************
 * class FEmTool_ElementsOfRefMatrix *
 ************************************/
-%nodefaultctor FEmTool_ElementsOfRefMatrix;
 class FEmTool_ElementsOfRefMatrix : public math_FunctionSet {
 	public:
 		/****************** FEmTool_ElementsOfRefMatrix ******************/
@@ -555,7 +552,6 @@ class FEmTool_SparseMatrix : public Standard_Transient {
 /******************************
 * class FEmTool_LinearFlexion *
 ******************************/
-%nodefaultctor FEmTool_LinearFlexion;
 class FEmTool_LinearFlexion : public FEmTool_ElementaryCriterion {
 	public:
 		/****************** DependenceTable ******************/
@@ -611,7 +607,6 @@ class FEmTool_LinearFlexion : public FEmTool_ElementaryCriterion {
 /***************************
 * class FEmTool_LinearJerk *
 ***************************/
-%nodefaultctor FEmTool_LinearJerk;
 class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
 	public:
 		/****************** DependenceTable ******************/
@@ -667,7 +662,6 @@ class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
 /******************************
 * class FEmTool_LinearTension *
 ******************************/
-%nodefaultctor FEmTool_LinearTension;
 class FEmTool_LinearTension : public FEmTool_ElementaryCriterion {
 	public:
 		/****************** DependenceTable ******************/
@@ -723,7 +717,6 @@ class FEmTool_LinearTension : public FEmTool_ElementaryCriterion {
 /******************************
 * class FEmTool_ProfileMatrix *
 ******************************/
-%nodefaultctor FEmTool_ProfileMatrix;
 class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 	public:
 

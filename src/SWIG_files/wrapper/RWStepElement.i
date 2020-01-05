@@ -76,7 +76,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepelement.htm
 /*********************************************************
 * class RWStepElement_RWAnalysisItemWithinRepresentation *
 *********************************************************/
-%nodefaultctor RWStepElement_RWAnalysisItemWithinRepresentation;
 class RWStepElement_RWAnalysisItemWithinRepresentation {
 	public:
 		/****************** RWStepElement_RWAnalysisItemWithinRepresentation ******************/
@@ -131,7 +130,6 @@ class RWStepElement_RWAnalysisItemWithinRepresentation {
 /*************************************************
 * class RWStepElement_RWCurve3dElementDescriptor *
 *************************************************/
-%nodefaultctor RWStepElement_RWCurve3dElementDescriptor;
 class RWStepElement_RWCurve3dElementDescriptor {
 	public:
 		/****************** RWStepElement_RWCurve3dElementDescriptor ******************/
@@ -186,7 +184,6 @@ class RWStepElement_RWCurve3dElementDescriptor {
 /*****************************************************
 * class RWStepElement_RWCurveElementEndReleasePacket *
 *****************************************************/
-%nodefaultctor RWStepElement_RWCurveElementEndReleasePacket;
 class RWStepElement_RWCurveElementEndReleasePacket {
 	public:
 		/****************** RWStepElement_RWCurveElementEndReleasePacket ******************/
@@ -241,7 +238,6 @@ class RWStepElement_RWCurveElementEndReleasePacket {
 /******************************************************
 * class RWStepElement_RWCurveElementSectionDefinition *
 ******************************************************/
-%nodefaultctor RWStepElement_RWCurveElementSectionDefinition;
 class RWStepElement_RWCurveElementSectionDefinition {
 	public:
 		/****************** RWStepElement_RWCurveElementSectionDefinition ******************/
@@ -296,7 +292,6 @@ class RWStepElement_RWCurveElementSectionDefinition {
 /**************************************************************
 * class RWStepElement_RWCurveElementSectionDerivedDefinitions *
 **************************************************************/
-%nodefaultctor RWStepElement_RWCurveElementSectionDerivedDefinitions;
 class RWStepElement_RWCurveElementSectionDerivedDefinitions {
 	public:
 		/****************** RWStepElement_RWCurveElementSectionDerivedDefinitions ******************/
@@ -351,7 +346,6 @@ class RWStepElement_RWCurveElementSectionDerivedDefinitions {
 /******************************************
 * class RWStepElement_RWElementDescriptor *
 ******************************************/
-%nodefaultctor RWStepElement_RWElementDescriptor;
 class RWStepElement_RWElementDescriptor {
 	public:
 		/****************** RWStepElement_RWElementDescriptor ******************/
@@ -406,7 +400,6 @@ class RWStepElement_RWElementDescriptor {
 /****************************************
 * class RWStepElement_RWElementMaterial *
 ****************************************/
-%nodefaultctor RWStepElement_RWElementMaterial;
 class RWStepElement_RWElementMaterial {
 	public:
 		/****************** RWStepElement_RWElementMaterial ******************/
@@ -461,7 +454,6 @@ class RWStepElement_RWElementMaterial {
 /***************************************************
 * class RWStepElement_RWSurface3dElementDescriptor *
 ***************************************************/
-%nodefaultctor RWStepElement_RWSurface3dElementDescriptor;
 class RWStepElement_RWSurface3dElementDescriptor {
 	public:
 		/****************** RWStepElement_RWSurface3dElementDescriptor ******************/
@@ -516,7 +508,6 @@ class RWStepElement_RWSurface3dElementDescriptor {
 /***********************************************
 * class RWStepElement_RWSurfaceElementProperty *
 ***********************************************/
-%nodefaultctor RWStepElement_RWSurfaceElementProperty;
 class RWStepElement_RWSurfaceElementProperty {
 	public:
 		/****************** RWStepElement_RWSurfaceElementProperty ******************/
@@ -571,7 +562,6 @@ class RWStepElement_RWSurfaceElementProperty {
 /***************************************
 * class RWStepElement_RWSurfaceSection *
 ***************************************/
-%nodefaultctor RWStepElement_RWSurfaceSection;
 class RWStepElement_RWSurfaceSection {
 	public:
 		/****************** RWStepElement_RWSurfaceSection ******************/
@@ -626,7 +616,6 @@ class RWStepElement_RWSurfaceSection {
 /********************************************
 * class RWStepElement_RWSurfaceSectionField *
 ********************************************/
-%nodefaultctor RWStepElement_RWSurfaceSectionField;
 class RWStepElement_RWSurfaceSectionField {
 	public:
 		/****************** RWStepElement_RWSurfaceSectionField ******************/
@@ -681,7 +670,6 @@ class RWStepElement_RWSurfaceSectionField {
 /****************************************************
 * class RWStepElement_RWSurfaceSectionFieldConstant *
 ****************************************************/
-%nodefaultctor RWStepElement_RWSurfaceSectionFieldConstant;
 class RWStepElement_RWSurfaceSectionFieldConstant {
 	public:
 		/****************** RWStepElement_RWSurfaceSectionFieldConstant ******************/
@@ -736,7 +724,6 @@ class RWStepElement_RWSurfaceSectionFieldConstant {
 /***************************************************
 * class RWStepElement_RWSurfaceSectionFieldVarying *
 ***************************************************/
-%nodefaultctor RWStepElement_RWSurfaceSectionFieldVarying;
 class RWStepElement_RWSurfaceSectionFieldVarying {
 	public:
 		/****************** RWStepElement_RWSurfaceSectionFieldVarying ******************/
@@ -791,7 +778,6 @@ class RWStepElement_RWSurfaceSectionFieldVarying {
 /**********************************************
 * class RWStepElement_RWUniformSurfaceSection *
 **********************************************/
-%nodefaultctor RWStepElement_RWUniformSurfaceSection;
 class RWStepElement_RWUniformSurfaceSection {
 	public:
 		/****************** RWStepElement_RWUniformSurfaceSection ******************/
@@ -846,7 +832,6 @@ class RWStepElement_RWUniformSurfaceSection {
 /**************************************************
 * class RWStepElement_RWVolume3dElementDescriptor *
 **************************************************/
-%nodefaultctor RWStepElement_RWVolume3dElementDescriptor;
 class RWStepElement_RWVolume3dElementDescriptor {
 	public:
 		/****************** RWStepElement_RWVolume3dElementDescriptor ******************/

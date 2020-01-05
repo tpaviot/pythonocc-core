@@ -357,7 +357,6 @@ class ShapeConstruct_Curve {
 /*****************************************
 * class ShapeConstruct_MakeTriangulation *
 *****************************************/
-%nodefaultctor ShapeConstruct_MakeTriangulation;
 class ShapeConstruct_MakeTriangulation : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** Build ******************/
@@ -400,7 +399,6 @@ class ShapeConstruct_MakeTriangulation : public BRepBuilderAPI_MakeShape {
 /*********************************************
 * class ShapeConstruct_ProjectCurveOnSurface *
 *********************************************/
-%nodefaultctor ShapeConstruct_ProjectCurveOnSurface;
 class ShapeConstruct_ProjectCurveOnSurface : public Standard_Transient {
 	public:
 

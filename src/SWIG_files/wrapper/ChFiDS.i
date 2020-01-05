@@ -220,7 +220,6 @@ typedef NCollection_List <ChFiDS_Regul>::Iterator ChFiDS_ListIteratorOfRegularit
 /***************************
 * class ChFiDS_CircSection *
 ***************************/
-%nodefaultctor ChFiDS_CircSection;
 class ChFiDS_CircSection {
 	public:
 		/****************** ChFiDS_CircSection ******************/
@@ -284,7 +283,6 @@ class ChFiDS_CircSection {
 /***************************
 * class ChFiDS_CommonPoint *
 ***************************/
-%nodefaultctor ChFiDS_CommonPoint;
 class ChFiDS_CommonPoint {
 	public:
 		/****************** Arc ******************/
@@ -431,7 +429,6 @@ class ChFiDS_CommonPoint {
 /***********************
 * class ChFiDS_ElSpine *
 ***********************/
-%nodefaultctor ChFiDS_ElSpine;
 class ChFiDS_ElSpine : public Adaptor3d_Curve {
 	public:
 		/****************** AddVertexWithTangent ******************/
@@ -736,7 +733,6 @@ class ChFiDS_ElSpine : public Adaptor3d_Curve {
 /********************************
 * class ChFiDS_FaceInterference *
 ********************************/
-%nodefaultctor ChFiDS_FaceInterference;
 class ChFiDS_FaceInterference {
 	public:
 		/****************** ChFiDS_FaceInterference ******************/
@@ -853,7 +849,6 @@ class ChFiDS_FaceInterference {
 /************************
 * class ChFiDS_HElSpine *
 ************************/
-%nodefaultctor ChFiDS_HElSpine;
 class ChFiDS_HElSpine : public Adaptor3d_HCurve {
 	public:
 		/****************** ChFiDS_HElSpine ******************/
@@ -910,7 +905,6 @@ class ChFiDS_HElSpine : public Adaptor3d_HCurve {
 /*******************
 * class ChFiDS_Map *
 *******************/
-%nodefaultctor ChFiDS_Map;
 class ChFiDS_Map {
 	public:
 		/****************** ChFiDS_Map ******************/
@@ -964,7 +958,6 @@ class ChFiDS_Map {
 /*********************
 * class ChFiDS_Regul *
 *********************/
-%nodefaultctor ChFiDS_Regul;
 class ChFiDS_Regul {
 	public:
 		/****************** ChFiDS_Regul ******************/
@@ -1034,7 +1027,6 @@ class ChFiDS_Regul {
 /*********************
 * class ChFiDS_Spine *
 *********************/
-%nodefaultctor ChFiDS_Spine;
 class ChFiDS_Spine : public Standard_Transient {
 	public:
 		/****************** Absc ******************/
@@ -1526,7 +1518,6 @@ class ChFiDS_Spine : public Standard_Transient {
 /**********************
 * class ChFiDS_Stripe *
 **********************/
-%nodefaultctor ChFiDS_Stripe;
 class ChFiDS_Stripe : public Standard_Transient {
 	public:
 		/****************** ChFiDS_Stripe ******************/
@@ -1896,7 +1887,6 @@ class ChFiDS_Stripe : public Standard_Transient {
 /*************************
 * class ChFiDS_StripeMap *
 *************************/
-%nodefaultctor ChFiDS_StripeMap;
 class ChFiDS_StripeMap {
 	public:
 		/****************** Add ******************/
@@ -1956,7 +1946,6 @@ class ChFiDS_StripeMap {
 /************************
 * class ChFiDS_SurfData *
 ************************/
-%nodefaultctor ChFiDS_SurfData;
 class ChFiDS_SurfData : public Standard_Transient {
 	public:
 		/****************** ChFiDS_SurfData ******************/
@@ -2304,7 +2293,6 @@ class ChFiDS_SurfData : public Standard_Transient {
 /**************************
 * class ChFiDS_ChamfSpine *
 **************************/
-%nodefaultctor ChFiDS_ChamfSpine;
 class ChFiDS_ChamfSpine : public ChFiDS_Spine {
 	public:
 		/****************** ChFiDS_ChamfSpine ******************/
@@ -2396,7 +2384,6 @@ class ChFiDS_ChamfSpine : public ChFiDS_Spine {
 /************************
 * class ChFiDS_FilSpine *
 ************************/
-%nodefaultctor ChFiDS_FilSpine;
 class ChFiDS_FilSpine : public ChFiDS_Spine {
 	public:
 		/****************** AppendElSpine ******************/

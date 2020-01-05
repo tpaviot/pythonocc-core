@@ -186,7 +186,6 @@ class math {
 /******************
 * class math_BFGS *
 ******************/
-%nodefaultctor math_BFGS;
 class math_BFGS {
 	public:
 
@@ -297,7 +296,6 @@ class math_BFGS {
 /**************************
 * class math_BissecNewton *
 **************************/
-%nodefaultctor math_BissecNewton;
 class math_BissecNewton {
 	public:
 		/****************** Derivative ******************/
@@ -374,7 +372,6 @@ class math_BissecNewton {
 /****************************
 * class math_BracketMinimum *
 ****************************/
-%nodefaultctor math_BracketMinimum;
 class math_BracketMinimum {
 	public:
 
@@ -513,7 +510,6 @@ class math_BracketMinimum {
 /***************************
 * class math_BracketedRoot *
 ***************************/
-%nodefaultctor math_BracketedRoot;
 class math_BracketedRoot {
 	public:
 
@@ -578,7 +574,6 @@ class math_BracketedRoot {
 /**************************
 * class math_BrentMinimum *
 **************************/
-%nodefaultctor math_BrentMinimum;
 class math_BrentMinimum {
 	public:
 
@@ -673,7 +668,6 @@ class math_BrentMinimum {
 /******************************
 * class math_BullardGenerator *
 ******************************/
-%nodefaultctor math_BullardGenerator;
 class math_BullardGenerator {
 	public:
 		/****************** NextInt ******************/
@@ -716,7 +710,6 @@ class math_BullardGenerator {
 /******************************************
 * class math_ComputeGaussPointsAndWeights *
 ******************************************/
-%nodefaultctor math_ComputeGaussPointsAndWeights;
 class math_ComputeGaussPointsAndWeights {
 	public:
 		/****************** IsDone ******************/
@@ -753,7 +746,6 @@ class math_ComputeGaussPointsAndWeights {
 /********************************************
 * class math_ComputeKronrodPointsAndWeights *
 ********************************************/
-%nodefaultctor math_ComputeKronrodPointsAndWeights;
 class math_ComputeKronrodPointsAndWeights {
 	public:
 		/****************** IsDone ******************/
@@ -790,7 +782,6 @@ class math_ComputeKronrodPointsAndWeights {
 /*******************
 * class math_Crout *
 *******************/
-%nodefaultctor math_Crout;
 class math_Crout {
 	public:
 		/****************** Determinant ******************/
@@ -859,7 +850,6 @@ class math_Crout {
 /***********************************
 * class math_DirectPolynomialRoots *
 ***********************************/
-%nodefaultctor math_DirectPolynomialRoots;
 class math_DirectPolynomialRoots {
 	public:
 
@@ -960,7 +950,6 @@ class math_DirectPolynomialRoots {
 /***********************
 * class math_DoubleTab *
 ***********************/
-%nodefaultctor math_DoubleTab;
 class math_DoubleTab {
 	public:
 		/****************** Copy ******************/
@@ -1056,7 +1045,6 @@ class math_DoubleTab {
 /*********************************
 * class math_EigenValuesSearcher *
 *********************************/
-%nodefaultctor math_EigenValuesSearcher;
 class math_EigenValuesSearcher {
 	public:
 		/****************** Dimension ******************/
@@ -1108,7 +1096,6 @@ class math_EigenValuesSearcher {
 /******************
 * class math_FRPR *
 ******************/
-%nodefaultctor math_FRPR;
 class math_FRPR {
 	public:
 
@@ -1240,7 +1227,6 @@ class math_Function {
 /******************************
 * class math_FunctionAllRoots *
 ******************************/
-%nodefaultctor math_FunctionAllRoots;
 class math_FunctionAllRoots {
 	public:
 
@@ -1337,7 +1323,6 @@ class math_FunctionAllRoots {
 /**************************
 * class math_FunctionRoot *
 **************************/
-%nodefaultctor math_FunctionRoot;
 class math_FunctionRoot {
 	public:
 		/****************** Derivative ******************/
@@ -1422,7 +1407,6 @@ class math_FunctionRoot {
 /***************************
 * class math_FunctionRoots *
 ***************************/
-%nodefaultctor math_FunctionRoots;
 class math_FunctionRoots {
 	public:
 
@@ -1501,7 +1485,6 @@ class math_FunctionRoots {
 /****************************
 * class math_FunctionSample *
 ****************************/
-%nodefaultctor math_FunctionSample;
 class math_FunctionSample {
 	public:
 		/****************** Bounds ******************/
@@ -1594,7 +1577,6 @@ class math_FunctionSet {
 /*****************************
 * class math_FunctionSetRoot *
 *****************************/
-%nodefaultctor math_FunctionSetRoot;
 class math_FunctionSetRoot {
 	public:
 		/****************** Derivative ******************/
@@ -1748,7 +1730,6 @@ class math_FunctionSetRoot {
 /*******************
 * class math_Gauss *
 *******************/
-%nodefaultctor math_Gauss;
 class math_Gauss {
 	public:
 		/****************** Determinant ******************/
@@ -1821,7 +1802,6 @@ class math_Gauss {
 /******************************
 * class math_GaussLeastSquare *
 ******************************/
-%nodefaultctor math_GaussLeastSquare;
 class math_GaussLeastSquare {
 	public:
 
@@ -1870,7 +1850,6 @@ class math_GaussLeastSquare {
 /**************************************
 * class math_GaussMultipleIntegration *
 **************************************/
-%nodefaultctor math_GaussMultipleIntegration;
 class math_GaussMultipleIntegration {
 	public:
 
@@ -1919,7 +1898,6 @@ class math_GaussMultipleIntegration {
 /*********************************
 * class math_GaussSetIntegration *
 *********************************/
-%nodefaultctor math_GaussSetIntegration;
 class math_GaussSetIntegration {
 	public:
 
@@ -1968,7 +1946,6 @@ class math_GaussSetIntegration {
 /************************************
 * class math_GaussSingleIntegration *
 ************************************/
-%nodefaultctor math_GaussSingleIntegration;
 class math_GaussSingleIntegration {
 	public:
 
@@ -2038,7 +2015,6 @@ class math_GaussSingleIntegration {
 /************************
 * class math_GlobOptMin *
 ************************/
-%nodefaultctor math_GlobOptMin;
 class math_GlobOptMin {
 	public:
 		class NCollection_CellFilter_Inspector {};
@@ -2189,7 +2165,6 @@ class math_GlobOptMin {
 /*************************
 * class math_Householder *
 *************************/
-%nodefaultctor math_Householder;
 class math_Householder {
 	public:
 		/****************** AllValues ******************/
@@ -2278,7 +2253,6 @@ class math_Householder {
 /***************************
 * class math_IntegerVector *
 ***************************/
-%nodefaultctor math_IntegerVector;
 class math_IntegerVector {
 	public:
 		/****************** Add ******************/
@@ -2304,8 +2278,8 @@ class math_IntegerVector {
 		%feature("autodoc", "* adds the IntegerVector 'theRight' to an IntegerVector. An exception is raised if the IntegerVectors have not the same length. An exception is raised if the lengths are not equal.
 	:param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD math_IntegerVector") Added;
-		Standard_NODISCARD math_IntegerVector Added (const math_IntegerVector & theRight);
+	:rtype: math_IntegerVector") Added;
+		math_IntegerVector Added (const math_IntegerVector & theRight);
 
 
         %feature("autodoc", "1");
@@ -2372,16 +2346,16 @@ class math_IntegerVector {
 		%feature("autodoc", "* returns the product of an IntegerVector by an integer value.
 	:param theRight:
 	:type theRight: int
-	:rtype: Standard_NODISCARD math_IntegerVector") Multiplied;
-		Standard_NODISCARD math_IntegerVector Multiplied (const Standard_Integer theRight);
+	:rtype: math_IntegerVector") Multiplied;
+		math_IntegerVector Multiplied (const Standard_Integer theRight);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* returns the inner product of 2 IntegerVectors. An exception is raised if the lengths are not equal.
 	:param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD int") Multiplied;
-		Standard_NODISCARD Standard_Integer Multiplied (const math_IntegerVector & theRight);
+	:rtype: int") Multiplied;
+		Standard_Integer Multiplied (const math_IntegerVector & theRight);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -2464,16 +2438,16 @@ class math_IntegerVector {
 		%feature("autodoc", "* returns the subtraction of 'theRight' from 'me'. An exception is raised if the IntegerVectors have not the same length.
 	:param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD math_IntegerVector") Subtracted;
-		Standard_NODISCARD math_IntegerVector Subtracted (const math_IntegerVector & theRight);
+	:rtype: math_IntegerVector") Subtracted;
+		math_IntegerVector Subtracted (const math_IntegerVector & theRight);
 
 		/****************** TMultiplied ******************/
 		%feature("compactdefaultargs") TMultiplied;
 		%feature("autodoc", "* returns the product of a vector and a real value.
 	:param theRight:
 	:type theRight: int
-	:rtype: Standard_NODISCARD math_IntegerVector") TMultiplied;
-		Standard_NODISCARD math_IntegerVector TMultiplied (const Standard_Integer theRight);
+	:rtype: math_IntegerVector") TMultiplied;
+		math_IntegerVector TMultiplied (const Standard_Integer theRight);
 
 		/****************** Upper ******************/
 		%feature("compactdefaultargs") Upper;
@@ -2543,15 +2517,15 @@ class math_IntegerVector {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: int
-	:rtype: Standard_NODISCARD math_IntegerVector") operator *;
-		Standard_NODISCARD math_IntegerVector operator * (const Standard_Integer theRight);
+	:rtype: math_IntegerVector") operator *;
+		math_IntegerVector operator * (const Standard_Integer theRight);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD int") operator *;
-		Standard_NODISCARD Standard_Integer operator * (const math_IntegerVector & theRight);
+	:rtype: int") operator *;
+		Standard_Integer operator * (const math_IntegerVector & theRight);
 
 
         %extend{
@@ -2568,8 +2542,8 @@ class math_IntegerVector {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD math_IntegerVector") operator +;
-		Standard_NODISCARD math_IntegerVector operator + (const math_IntegerVector & theRight);
+	:rtype: math_IntegerVector") operator +;
+		math_IntegerVector operator + (const math_IntegerVector & theRight);
 
 
         %extend{
@@ -2591,8 +2565,8 @@ class math_IntegerVector {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_IntegerVector
-	:rtype: Standard_NODISCARD math_IntegerVector") operator -;
-		Standard_NODISCARD math_IntegerVector operator - (const math_IntegerVector & theRight);
+	:rtype: math_IntegerVector") operator -;
+		math_IntegerVector operator - (const math_IntegerVector & theRight);
 
 
         %extend{
@@ -2624,7 +2598,6 @@ class math_IntegerVector {
 /********************
 * class math_Jacobi *
 ********************/
-%nodefaultctor math_Jacobi;
 class math_Jacobi {
 	public:
 
@@ -2691,7 +2664,6 @@ class math_Jacobi {
 /**************************************
 * class math_KronrodSingleIntegration *
 **************************************/
-%nodefaultctor math_KronrodSingleIntegration;
 class math_KronrodSingleIntegration {
 	public:
 		/****************** AbsolutError ******************/
@@ -2835,7 +2807,6 @@ class math_KronrodSingleIntegration {
 /********************
 * class math_Matrix *
 ********************/
-%nodefaultctor math_Matrix;
 class math_Matrix {
 	public:
 		/****************** Add ******************/
@@ -2861,8 +2832,8 @@ class math_Matrix {
 		%feature("autodoc", "* adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different.
 	:param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") Added;
-		Standard_NODISCARD math_Matrix Added (const math_Matrix & Right);
+	:rtype: math_Matrix") Added;
+		math_Matrix Added (const math_Matrix & Right);
 
 		/****************** Col ******************/
 		%feature("compactdefaultargs") Col;
@@ -2897,8 +2868,8 @@ class math_Matrix {
 		%feature("autodoc", "* divides all the elements of a matrix by the value <Right>. An exception is raised if <Right> = 0.
 	:param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") Divided;
-		Standard_NODISCARD math_Matrix Divided (const Standard_Real Right);
+	:rtype: math_Matrix") Divided;
+		math_Matrix Divided (const Standard_Real Right);
 
 
         %feature("autodoc", "1");
@@ -2953,24 +2924,24 @@ class math_Matrix {
 		%feature("autodoc", "* multiplies all the elements of a matrix by the value <Right>.
 	:param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") Multiplied;
-		Standard_NODISCARD math_Matrix Multiplied (const Standard_Real Right);
+	:rtype: math_Matrix") Multiplied;
+		math_Matrix Multiplied (const Standard_Real Right);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* Returns the product of 2 matrices. An exception is raised if the dimensions are different.
 	:param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") Multiplied;
-		Standard_NODISCARD math_Matrix Multiplied (const math_Matrix & Right);
+	:rtype: math_Matrix") Multiplied;
+		math_Matrix Multiplied (const math_Matrix & Right);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* Returns the product of a matrix by a vector. An exception is raised if the dimensions are different.
 	:param Right:
 	:type Right: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") Multiplied;
-		Standard_NODISCARD math_Vector Multiplied (const math_Vector & Right);
+	:rtype: math_Vector") Multiplied;
+		math_Vector Multiplied (const math_Vector & Right);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -3095,8 +3066,8 @@ class math_Matrix {
 		%feature("autodoc", "* Returns the result of the subtraction of <Right> from <self>. An exception is raised if the dimensions are different.
 	:param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") Subtracted;
-		Standard_NODISCARD math_Matrix Subtracted (const math_Matrix & Right);
+	:rtype: math_Matrix") Subtracted;
+		math_Matrix Subtracted (const math_Matrix & Right);
 
 		/****************** SwapCol ******************/
 		%feature("compactdefaultargs") SwapCol;
@@ -3123,8 +3094,8 @@ class math_Matrix {
 		%feature("autodoc", "* Sets this matrix to the product of the transposed matrix TLeft, and the matrix Right. Example math_Matrix A (1, 3, 1, 3); math_Matrix B (1, 3, 1, 3); // A = ... , B = ... math_Matrix C (1, 3, 1, 3); C.Multiply(A, B); Exceptions Standard_DimensionError if matrices are of incompatible dimensions, i.e. if: - the number of columns of matrix Left, or the number of rows of matrix TLeft is not equal to the number of rows of matrix Right, or - the number of rows of matrix Left, or the number of columns of matrix TLeft is not equal to the number of rows of this matrix, or - the number of columns of matrix Right is not equal to the number of columns of this matrix.
 	:param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") TMultiplied;
-		Standard_NODISCARD math_Matrix TMultiplied (const Standard_Real Right);
+	:rtype: math_Matrix") TMultiplied;
+		math_Matrix TMultiplied (const Standard_Real Right);
 
 		/****************** TMultiply ******************/
 		%feature("compactdefaultargs") TMultiply;
@@ -3153,8 +3124,8 @@ class math_Matrix {
 		/****************** Transposed ******************/
 		%feature("compactdefaultargs") Transposed;
 		%feature("autodoc", "* Teturns the transposed of a matrix. An exception is raised if the matrix is not a square matrix.
-	:rtype: Standard_NODISCARD math_Matrix") Transposed;
-		Standard_NODISCARD math_Matrix Transposed ();
+	:rtype: math_Matrix") Transposed;
+		math_Matrix Transposed ();
 
 		/****************** UpperCol ******************/
 		%feature("compactdefaultargs") UpperCol;
@@ -3239,22 +3210,22 @@ class math_Matrix {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") operator *;
-		Standard_NODISCARD math_Matrix operator * (const Standard_Real Right);
+	:rtype: math_Matrix") operator *;
+		math_Matrix operator * (const Standard_Real Right);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") operator *;
-		Standard_NODISCARD math_Matrix operator * (const math_Matrix & Right);
+	:rtype: math_Matrix") operator *;
+		math_Matrix operator * (const math_Matrix & Right);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Right:
 	:type Right: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") operator *;
-		Standard_NODISCARD math_Vector operator * (const math_Vector & Right);
+	:rtype: math_Vector") operator *;
+		math_Vector operator * (const math_Vector & Right);
 
 
         %extend{
@@ -3282,8 +3253,8 @@ class math_Matrix {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") operator +;
-		Standard_NODISCARD math_Matrix operator + (const math_Matrix & Right);
+	:rtype: math_Matrix") operator +;
+		math_Matrix operator + (const math_Matrix & Right);
 
 
         %extend{
@@ -3300,8 +3271,8 @@ class math_Matrix {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Right:
 	:type Right: math_Matrix
-	:rtype: Standard_NODISCARD math_Matrix") operator -;
-		Standard_NODISCARD math_Matrix operator - (const math_Matrix & Right);
+	:rtype: math_Matrix") operator -;
+		math_Matrix operator - (const math_Matrix & Right);
 
 		/****************** operator - ******************/
 		%feature("compactdefaultargs") operator -;
@@ -3323,8 +3294,8 @@ class math_Matrix {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Right:
 	:type Right: float
-	:rtype: Standard_NODISCARD math_Matrix") operator /;
-		Standard_NODISCARD math_Matrix operator / (const Standard_Real Right);
+	:rtype: math_Matrix") operator /;
+		math_Matrix operator / (const Standard_Real Right);
 
 
         %extend{
@@ -3393,7 +3364,6 @@ class math_MultipleVarFunction {
 /********************************
 * class math_NewtonFunctionRoot *
 ********************************/
-%nodefaultctor math_NewtonFunctionRoot;
 class math_NewtonFunctionRoot {
 	public:
 		/****************** Derivative ******************/
@@ -3508,7 +3478,6 @@ class math_NewtonFunctionRoot {
 /***********************************
 * class math_NewtonFunctionSetRoot *
 ***********************************/
-%nodefaultctor math_NewtonFunctionSetRoot;
 class math_NewtonFunctionSetRoot {
 	public:
 		/****************** Derivative ******************/
@@ -3651,7 +3620,6 @@ class math_NewtonFunctionSetRoot {
 /***************************
 * class math_NewtonMinimum *
 ***************************/
-%nodefaultctor math_NewtonMinimum;
 class math_NewtonMinimum {
 	public:
 
@@ -3768,7 +3736,6 @@ class math_NewtonMinimum {
 /*****************
 * class math_PSO *
 *****************/
-%nodefaultctor math_PSO;
 class math_PSO {
 	public:
 		/****************** Perform ******************/
@@ -3831,7 +3798,6 @@ class math_PSO {
 /******************************
 * class math_PSOParticlesPool *
 ******************************/
-%nodefaultctor math_PSOParticlesPool;
 class math_PSOParticlesPool {
 	public:
 		/****************** GetBestParticle ******************/
@@ -3872,7 +3838,6 @@ class math_PSOParticlesPool {
 /********************
 * class math_Powell *
 ********************/
-%nodefaultctor math_Powell;
 class math_Powell {
 	public:
 
@@ -3961,7 +3926,6 @@ class math_Powell {
 /*****************
 * class math_SVD *
 *****************/
-%nodefaultctor math_SVD;
 class math_SVD {
 	public:
 
@@ -4020,7 +3984,6 @@ class math_SVD {
 /****************************************
 * class math_TrigonometricFunctionRoots *
 ****************************************/
-%nodefaultctor math_TrigonometricFunctionRoots;
 class math_TrigonometricFunctionRoots {
 	public:
 
@@ -4119,7 +4082,6 @@ class math_TrigonometricFunctionRoots {
 /*******************
 * class math_Uzawa *
 *******************/
-%nodefaultctor math_Uzawa;
 class math_Uzawa {
 	public:
 		/****************** Duale ******************/
@@ -4226,7 +4188,6 @@ class math_Uzawa {
 /****************************
 * class math_ValueAndWeight *
 ****************************/
-%nodefaultctor math_ValueAndWeight;
 class math_ValueAndWeight {
 	public:
 		/****************** Value ******************/
@@ -4265,7 +4226,6 @@ class math_ValueAndWeight {
 /********************
 * class math_Vector *
 ********************/
-%nodefaultctor math_Vector;
 class math_Vector {
 	public:
 		/****************** Add ******************/
@@ -4291,8 +4251,8 @@ class math_Vector {
 		%feature("autodoc", "* adds the vector theRight to a vector. An exception is raised if the vectors have not the same length. An exception is raised if the lengths are not equal.
 	:param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") Added;
-		Standard_NODISCARD math_Vector Added (const math_Vector & theRight);
+	:rtype: math_Vector") Added;
+		math_Vector Added (const math_Vector & theRight);
 
 		/****************** Divide ******************/
 		%feature("compactdefaultargs") Divide;
@@ -4307,8 +4267,8 @@ class math_Vector {
 		%feature("autodoc", "* divides a vector by the value 'theRight'. An exception is raised if 'theRight' = 0.
 	:param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") Divided;
-		Standard_NODISCARD math_Vector Divided (const Standard_Real theRight);
+	:rtype: math_Vector") Divided;
+		math_Vector Divided (const Standard_Real theRight);
 
 
         %feature("autodoc", "1");
@@ -4375,24 +4335,24 @@ class math_Vector {
 		%feature("autodoc", "* returns the product of a vector and a real value.
 	:param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") Multiplied;
-		Standard_NODISCARD math_Vector Multiplied (const Standard_Real theRight);
+	:rtype: math_Vector") Multiplied;
+		math_Vector Multiplied (const Standard_Real theRight);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* returns the inner product of 2 vectors. An exception is raised if the lengths are not equal.
 	:param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD float") Multiplied;
-		Standard_NODISCARD Standard_Real Multiplied (const math_Vector & theRight);
+	:rtype: float") Multiplied;
+		Standard_Real Multiplied (const math_Vector & theRight);
 
 		/****************** Multiplied ******************/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "* returns the product of a vector by a matrix.
 	:param theRight:
 	:type theRight: math_Matrix
-	:rtype: Standard_NODISCARD math_Vector") Multiplied;
-		Standard_NODISCARD math_Vector Multiplied (const math_Matrix & theRight);
+	:rtype: math_Vector") Multiplied;
+		math_Vector Multiplied (const math_Matrix & theRight);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -4453,8 +4413,8 @@ class math_Vector {
 		/****************** Normalized ******************/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "* Normalizes this vector (the norm of the result is equal to 1.0) and creates a new vector Exceptions Standard_NullValue if this vector is null (i.e. if its norm is less than or equal to Standard_Real::RealEpsilon().
-	:rtype: Standard_NODISCARD math_Vector") Normalized;
-		Standard_NODISCARD math_Vector Normalized ();
+	:rtype: math_Vector") Normalized;
+		math_Vector Normalized ();
 
 		/****************** Opposite ******************/
 		%feature("compactdefaultargs") Opposite;
@@ -4507,16 +4467,16 @@ class math_Vector {
 		%feature("autodoc", "* returns the subtraction of 'theRight' from 'me'. An exception is raised if the vectors have not the same length.
 	:param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") Subtracted;
-		Standard_NODISCARD math_Vector Subtracted (const math_Vector & theRight);
+	:rtype: math_Vector") Subtracted;
+		math_Vector Subtracted (const math_Vector & theRight);
 
 		/****************** TMultiplied ******************/
 		%feature("compactdefaultargs") TMultiplied;
 		%feature("autodoc", "* returns the product of a vector and a real value.
 	:param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") TMultiplied;
-		Standard_NODISCARD math_Vector TMultiplied (const Standard_Real theRight);
+	:rtype: math_Vector") TMultiplied;
+		math_Vector TMultiplied (const Standard_Real theRight);
 
 		/****************** TMultiply ******************/
 		%feature("compactdefaultargs") TMultiply;
@@ -4622,22 +4582,22 @@ class math_Vector {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") operator *;
-		Standard_NODISCARD math_Vector operator * (const Standard_Real theRight);
+	:rtype: math_Vector") operator *;
+		math_Vector operator * (const Standard_Real theRight);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD float") operator *;
-		Standard_NODISCARD Standard_Real operator * (const math_Vector & theRight);
+	:rtype: float") operator *;
+		Standard_Real operator * (const math_Vector & theRight);
 
 		/****************** operator * ******************/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_Matrix
-	:rtype: Standard_NODISCARD math_Vector") operator *;
-		Standard_NODISCARD math_Vector operator * (const math_Matrix & theRight);
+	:rtype: math_Vector") operator *;
+		math_Vector operator * (const math_Matrix & theRight);
 
 
         %extend{
@@ -4654,8 +4614,8 @@ class math_Vector {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") operator +;
-		Standard_NODISCARD math_Vector operator + (const math_Vector & theRight);
+	:rtype: math_Vector") operator +;
+		math_Vector operator + (const math_Vector & theRight);
 
 
         %extend{
@@ -4677,8 +4637,8 @@ class math_Vector {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param theRight:
 	:type theRight: math_Vector
-	:rtype: Standard_NODISCARD math_Vector") operator -;
-		Standard_NODISCARD math_Vector operator - (const math_Vector & theRight);
+	:rtype: math_Vector") operator -;
+		math_Vector operator - (const math_Vector & theRight);
 
 
         %extend{
@@ -4695,8 +4655,8 @@ class math_Vector {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param theRight:
 	:type theRight: float
-	:rtype: Standard_NODISCARD math_Vector") operator /;
-		Standard_NODISCARD math_Vector operator / (const Standard_Real theRight);
+	:rtype: math_Vector") operator /;
+		math_Vector operator / (const Standard_Real theRight);
 
 
         %extend{
@@ -4954,7 +4914,6 @@ class math_MultipleVarFunctionWithHessian : public math_MultipleVarFunctionWithG
 /*******************************************
 * class math_TrigonometricEquationFunction *
 *******************************************/
-%nodefaultctor math_TrigonometricEquationFunction;
 class math_TrigonometricEquationFunction : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/

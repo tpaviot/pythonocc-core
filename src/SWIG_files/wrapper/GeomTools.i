@@ -199,7 +199,6 @@ class GeomTools {
 /*****************************
 * class GeomTools_Curve2dSet *
 *****************************/
-%nodefaultctor GeomTools_Curve2dSet;
 class GeomTools_Curve2dSet {
 	public:
 		/****************** Add ******************/
@@ -304,7 +303,6 @@ class GeomTools_Curve2dSet {
 /***************************
 * class GeomTools_CurveSet *
 ***************************/
-%nodefaultctor GeomTools_CurveSet;
 class GeomTools_CurveSet {
 	public:
 		/****************** Add ******************/
@@ -409,7 +407,6 @@ class GeomTools_CurveSet {
 /*****************************
 * class GeomTools_SurfaceSet *
 *****************************/
-%nodefaultctor GeomTools_SurfaceSet;
 class GeomTools_SurfaceSet {
 	public:
 		/****************** Add ******************/
@@ -514,7 +511,6 @@ class GeomTools_SurfaceSet {
 /***************************************
 * class GeomTools_UndefinedTypeHandler *
 ***************************************/
-%nodefaultctor GeomTools_UndefinedTypeHandler;
 class GeomTools_UndefinedTypeHandler : public Standard_Transient {
 	public:
 		/****************** GeomTools_UndefinedTypeHandler ******************/

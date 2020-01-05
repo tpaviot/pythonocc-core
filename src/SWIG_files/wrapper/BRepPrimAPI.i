@@ -85,7 +85,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepprimapi.html"
 /****************************
 * class BRepPrimAPI_MakeBox *
 ****************************/
-%nodefaultctor BRepPrimAPI_MakeBox;
 class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepPrimAPI_MakeBox ******************/
@@ -220,7 +219,6 @@ class BRepPrimAPI_MakeBox : public BRepBuilderAPI_MakeShape {
 /**********************************
 * class BRepPrimAPI_MakeHalfSpace *
 **********************************/
-%nodefaultctor BRepPrimAPI_MakeHalfSpace;
 class BRepPrimAPI_MakeHalfSpace : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepPrimAPI_MakeHalfSpace ******************/
@@ -353,7 +351,6 @@ class BRepPrimAPI_MakeSweep : public BRepBuilderAPI_MakeShape {
 /******************************
 * class BRepPrimAPI_MakeWedge *
 ******************************/
-%nodefaultctor BRepPrimAPI_MakeWedge;
 class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 	public:
 		/****************** BRepPrimAPI_MakeWedge ******************/
@@ -474,7 +471,6 @@ class BRepPrimAPI_MakeWedge : public BRepBuilderAPI_MakeShape {
 /*****************************
 * class BRepPrimAPI_MakeCone *
 *****************************/
-%nodefaultctor BRepPrimAPI_MakeCone;
 class BRepPrimAPI_MakeCone : public BRepPrimAPI_MakeOneAxis {
 	public:
 		/****************** BRepPrimAPI_MakeCone ******************/
@@ -557,7 +553,6 @@ class BRepPrimAPI_MakeCone : public BRepPrimAPI_MakeOneAxis {
 /*********************************
 * class BRepPrimAPI_MakeCylinder *
 *********************************/
-%nodefaultctor BRepPrimAPI_MakeCylinder;
 class BRepPrimAPI_MakeCylinder : public BRepPrimAPI_MakeOneAxis {
 	public:
 		/****************** BRepPrimAPI_MakeCylinder ******************/
@@ -632,7 +627,6 @@ class BRepPrimAPI_MakeCylinder : public BRepPrimAPI_MakeOneAxis {
 /******************************
 * class BRepPrimAPI_MakePrism *
 ******************************/
-%nodefaultctor BRepPrimAPI_MakePrism;
 class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 	public:
 		/****************** BRepPrimAPI_MakePrism ******************/
@@ -733,7 +727,6 @@ class BRepPrimAPI_MakePrism : public BRepPrimAPI_MakeSweep {
 /******************************
 * class BRepPrimAPI_MakeRevol *
 ******************************/
-%nodefaultctor BRepPrimAPI_MakeRevol;
 class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 	public:
 		/****************** BRepPrimAPI_MakeRevol ******************/
@@ -842,7 +835,6 @@ class BRepPrimAPI_MakeRevol : public BRepPrimAPI_MakeSweep {
 /***********************************
 * class BRepPrimAPI_MakeRevolution *
 ***********************************/
-%nodefaultctor BRepPrimAPI_MakeRevolution;
 class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 	public:
 		/****************** BRepPrimAPI_MakeRevolution ******************/
@@ -965,7 +957,6 @@ class BRepPrimAPI_MakeRevolution : public BRepPrimAPI_MakeOneAxis {
 /*******************************
 * class BRepPrimAPI_MakeSphere *
 *******************************/
-%nodefaultctor BRepPrimAPI_MakeSphere;
 class BRepPrimAPI_MakeSphere : public BRepPrimAPI_MakeOneAxis {
 	public:
 		/****************** BRepPrimAPI_MakeSphere ******************/
@@ -1140,7 +1131,6 @@ class BRepPrimAPI_MakeSphere : public BRepPrimAPI_MakeOneAxis {
 /******************************
 * class BRepPrimAPI_MakeTorus *
 ******************************/
-%nodefaultctor BRepPrimAPI_MakeTorus;
 class BRepPrimAPI_MakeTorus : public BRepPrimAPI_MakeOneAxis {
 	public:
 		/****************** BRepPrimAPI_MakeTorus ******************/

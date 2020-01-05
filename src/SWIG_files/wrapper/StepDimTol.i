@@ -468,7 +468,6 @@ typedef NCollection_Array1 <opencascade::handle <StepDimTol_DatumReference>> Ste
 /*******************************
 * class StepDimTol_CommonDatum *
 *******************************/
-%nodefaultctor StepDimTol_CommonDatum;
 class StepDimTol_CommonDatum : public StepRepr_CompositeShapeAspect {
 	public:
 		/****************** Datum ******************/
@@ -529,7 +528,6 @@ class StepDimTol_CommonDatum : public StepRepr_CompositeShapeAspect {
 /*************************
 * class StepDimTol_Datum *
 *************************/
-%nodefaultctor StepDimTol_Datum;
 class StepDimTol_Datum : public StepRepr_ShapeAspect {
 	public:
 		/****************** Identification ******************/
@@ -582,7 +580,6 @@ class StepDimTol_Datum : public StepRepr_ShapeAspect {
 /********************************
 * class StepDimTol_DatumFeature *
 ********************************/
-%nodefaultctor StepDimTol_DatumFeature;
 class StepDimTol_DatumFeature : public StepRepr_ShapeAspect {
 	public:
 		/****************** StepDimTol_DatumFeature ******************/
@@ -605,7 +602,6 @@ class StepDimTol_DatumFeature : public StepRepr_ShapeAspect {
 /**************************************
 * class StepDimTol_DatumOrCommonDatum *
 **************************************/
-%nodefaultctor StepDimTol_DatumOrCommonDatum;
 class StepDimTol_DatumOrCommonDatum : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -646,7 +642,6 @@ class StepDimTol_DatumOrCommonDatum : public StepData_SelectType {
 /**********************************
 * class StepDimTol_DatumReference *
 **********************************/
-%nodefaultctor StepDimTol_DatumReference;
 class StepDimTol_DatumReference : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -707,7 +702,6 @@ class StepDimTol_DatumReference : public Standard_Transient {
 /******************************************
 * class StepDimTol_DatumReferenceModifier *
 ******************************************/
-%nodefaultctor StepDimTol_DatumReferenceModifier;
 class StepDimTol_DatumReferenceModifier : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -748,7 +742,6 @@ class StepDimTol_DatumReferenceModifier : public StepData_SelectType {
 /***************************************************
 * class StepDimTol_DatumReferenceModifierWithValue *
 ***************************************************/
-%nodefaultctor StepDimTol_DatumReferenceModifierWithValue;
 class StepDimTol_DatumReferenceModifierWithValue : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -809,7 +802,6 @@ class StepDimTol_DatumReferenceModifierWithValue : public Standard_Transient {
 /*******************************
 * class StepDimTol_DatumSystem *
 *******************************/
-%nodefaultctor StepDimTol_DatumSystem;
 class StepDimTol_DatumSystem : public StepRepr_ShapeAspect {
 	public:
 		/****************** Constituents ******************/
@@ -886,7 +878,6 @@ class StepDimTol_DatumSystem : public StepRepr_ShapeAspect {
 /******************************************
 * class StepDimTol_DatumSystemOrReference *
 ******************************************/
-%nodefaultctor StepDimTol_DatumSystemOrReference;
 class StepDimTol_DatumSystemOrReference : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -927,7 +918,6 @@ class StepDimTol_DatumSystemOrReference : public StepData_SelectType {
 /*******************************
 * class StepDimTol_DatumTarget *
 *******************************/
-%nodefaultctor StepDimTol_DatumTarget;
 class StepDimTol_DatumTarget : public StepRepr_ShapeAspect {
 	public:
 		/****************** Init ******************/
@@ -980,7 +970,6 @@ class StepDimTol_DatumTarget : public StepRepr_ShapeAspect {
 /*****************************************
 * class StepDimTol_GeneralDatumReference *
 *****************************************/
-%nodefaultctor StepDimTol_GeneralDatumReference;
 class StepDimTol_GeneralDatumReference : public StepRepr_ShapeAspect {
 	public:
 		/****************** Base ******************/
@@ -1081,7 +1070,6 @@ class StepDimTol_GeneralDatumReference : public StepRepr_ShapeAspect {
 /**************************************
 * class StepDimTol_GeometricTolerance *
 **************************************/
-%nodefaultctor StepDimTol_GeometricTolerance;
 class StepDimTol_GeometricTolerance : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1196,7 +1184,6 @@ class StepDimTol_GeometricTolerance : public Standard_Transient {
 /**************************************************
 * class StepDimTol_GeometricToleranceRelationship *
 **************************************************/
-%nodefaultctor StepDimTol_GeometricToleranceRelationship;
 class StepDimTol_GeometricToleranceRelationship : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1289,7 +1276,6 @@ class StepDimTol_GeometricToleranceRelationship : public Standard_Transient {
 /********************************************
 * class StepDimTol_GeometricToleranceTarget *
 ********************************************/
-%nodefaultctor StepDimTol_GeometricToleranceTarget;
 class StepDimTol_GeometricToleranceTarget : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1342,7 +1328,6 @@ class StepDimTol_GeometricToleranceTarget : public StepData_SelectType {
 /*****************************************
 * class StepDimTol_RunoutZoneOrientation *
 *****************************************/
-%nodefaultctor StepDimTol_RunoutZoneOrientation;
 class StepDimTol_RunoutZoneOrientation : public Standard_Transient {
 	public:
 		/****************** Angle ******************/
@@ -1386,7 +1371,6 @@ class StepDimTol_RunoutZoneOrientation : public Standard_Transient {
 /****************************************
 * class StepDimTol_ShapeToleranceSelect *
 ****************************************/
-%nodefaultctor StepDimTol_ShapeToleranceSelect;
 class StepDimTol_ShapeToleranceSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1427,7 +1411,6 @@ class StepDimTol_ShapeToleranceSelect : public StepData_SelectType {
 /******************************************************
 * class StepDimTol_SimpleDatumReferenceModifierMember *
 ******************************************************/
-%nodefaultctor StepDimTol_SimpleDatumReferenceModifierMember;
 class StepDimTol_SimpleDatumReferenceModifierMember : public StepData_SelectInt {
 	public:
 		/****************** EnumText ******************/
@@ -1497,7 +1480,6 @@ class StepDimTol_SimpleDatumReferenceModifierMember : public StepData_SelectInt 
 /*********************************
 * class StepDimTol_ToleranceZone *
 *********************************/
-%nodefaultctor StepDimTol_ToleranceZone;
 class StepDimTol_ToleranceZone : public StepRepr_ShapeAspect {
 	public:
 		/****************** DefiningTolerance ******************/
@@ -1590,7 +1572,6 @@ class StepDimTol_ToleranceZone : public StepRepr_ShapeAspect {
 /*******************************************
 * class StepDimTol_ToleranceZoneDefinition *
 *******************************************/
-%nodefaultctor StepDimTol_ToleranceZoneDefinition;
 class StepDimTol_ToleranceZoneDefinition : public Standard_Transient {
 	public:
 		/****************** Boundaries ******************/
@@ -1675,7 +1656,6 @@ class StepDimTol_ToleranceZoneDefinition : public Standard_Transient {
 /*************************************
 * class StepDimTol_ToleranceZoneForm *
 *************************************/
-%nodefaultctor StepDimTol_ToleranceZoneForm;
 class StepDimTol_ToleranceZoneForm : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1719,7 +1699,6 @@ class StepDimTol_ToleranceZoneForm : public Standard_Transient {
 /***************************************
 * class StepDimTol_ToleranceZoneTarget *
 ***************************************/
-%nodefaultctor StepDimTol_ToleranceZoneTarget;
 class StepDimTol_ToleranceZoneTarget : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1772,7 +1751,6 @@ class StepDimTol_ToleranceZoneTarget : public StepData_SelectType {
 /*****************************************
 * class StepDimTol_CylindricityTolerance *
 *****************************************/
-%nodefaultctor StepDimTol_CylindricityTolerance;
 class StepDimTol_CylindricityTolerance : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** StepDimTol_CylindricityTolerance ******************/
@@ -1795,7 +1773,6 @@ class StepDimTol_CylindricityTolerance : public StepDimTol_GeometricTolerance {
 /*********************************************
 * class StepDimTol_DatumReferenceCompartment *
 *********************************************/
-%nodefaultctor StepDimTol_DatumReferenceCompartment;
 class StepDimTol_DatumReferenceCompartment : public StepDimTol_GeneralDatumReference {
 	public:
 		/****************** StepDimTol_DatumReferenceCompartment ******************/
@@ -1818,7 +1795,6 @@ class StepDimTol_DatumReferenceCompartment : public StepDimTol_GeneralDatumRefer
 /*****************************************
 * class StepDimTol_DatumReferenceElement *
 *****************************************/
-%nodefaultctor StepDimTol_DatumReferenceElement;
 class StepDimTol_DatumReferenceElement : public StepDimTol_GeneralDatumReference {
 	public:
 		/****************** StepDimTol_DatumReferenceElement ******************/
@@ -1841,7 +1817,6 @@ class StepDimTol_DatumReferenceElement : public StepDimTol_GeneralDatumReference
 /*************************************
 * class StepDimTol_FlatnessTolerance *
 *************************************/
-%nodefaultctor StepDimTol_FlatnessTolerance;
 class StepDimTol_FlatnessTolerance : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** StepDimTol_FlatnessTolerance ******************/
@@ -1864,7 +1839,6 @@ class StepDimTol_FlatnessTolerance : public StepDimTol_GeometricTolerance {
 /********************************************
 * class StepDimTol_GeoTolAndGeoTolWthDatRef *
 ********************************************/
-%nodefaultctor StepDimTol_GeoTolAndGeoTolWthDatRef;
 class StepDimTol_GeoTolAndGeoTolWthDatRef : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** GetGeometricToleranceWithDatumReference ******************/
@@ -1944,7 +1918,6 @@ class StepDimTol_GeoTolAndGeoTolWthDatRef : public StepDimTol_GeometricTolerance
 /***********************************************************
 * class StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod *
 ***********************************************************/
-%nodefaultctor StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod;
 class StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** GetGeometricToleranceWithDatumReference ******************/
@@ -2040,7 +2013,6 @@ class StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod : public StepDimTol_Geo
 /*****************************************************************
 * class StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol *
 *****************************************************************/
-%nodefaultctor StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol;
 class StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** GetGeometricToleranceWithDatumReference ******************/
@@ -2132,7 +2104,6 @@ class StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol : public StepDimT
 /*****************************************
 * class StepDimTol_GeoTolAndGeoTolWthMod *
 *****************************************/
-%nodefaultctor StepDimTol_GeoTolAndGeoTolWthMod;
 class StepDimTol_GeoTolAndGeoTolWthMod : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** GetGeometricToleranceWithModifiers ******************/
@@ -2212,7 +2183,6 @@ class StepDimTol_GeoTolAndGeoTolWthMod : public StepDimTol_GeometricTolerance {
 /********************************************************
 * class StepDimTol_GeometricToleranceWithDatumReference *
 ********************************************************/
-%nodefaultctor StepDimTol_GeometricToleranceWithDatumReference;
 class StepDimTol_GeometricToleranceWithDatumReference : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** DatumSystem ******************/
@@ -2295,7 +2265,6 @@ class StepDimTol_GeometricToleranceWithDatumReference : public StepDimTol_Geomet
 /*****************************************************
 * class StepDimTol_GeometricToleranceWithDefinedUnit *
 *****************************************************/
-%nodefaultctor StepDimTol_GeometricToleranceWithDefinedUnit;
 class StepDimTol_GeometricToleranceWithDefinedUnit : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** Init ******************/
@@ -2364,7 +2333,6 @@ class StepDimTol_GeometricToleranceWithDefinedUnit : public StepDimTol_Geometric
 /***************************************************
 * class StepDimTol_GeometricToleranceWithModifiers *
 ***************************************************/
-%nodefaultctor StepDimTol_GeometricToleranceWithModifiers;
 class StepDimTol_GeometricToleranceWithModifiers : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** Init ******************/
@@ -2441,7 +2409,6 @@ class StepDimTol_GeometricToleranceWithModifiers : public StepDimTol_GeometricTo
 /****************************************
 * class StepDimTol_LineProfileTolerance *
 ****************************************/
-%nodefaultctor StepDimTol_LineProfileTolerance;
 class StepDimTol_LineProfileTolerance : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** StepDimTol_LineProfileTolerance ******************/
@@ -2464,7 +2431,6 @@ class StepDimTol_LineProfileTolerance : public StepDimTol_GeometricTolerance {
 /**********************************************
 * class StepDimTol_ModifiedGeometricTolerance *
 **********************************************/
-%nodefaultctor StepDimTol_ModifiedGeometricTolerance;
 class StepDimTol_ModifiedGeometricTolerance : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** Init ******************/
@@ -2533,7 +2499,6 @@ class StepDimTol_ModifiedGeometricTolerance : public StepDimTol_GeometricToleran
 /********************************************
 * class StepDimTol_NonUniformZoneDefinition *
 ********************************************/
-%nodefaultctor StepDimTol_NonUniformZoneDefinition;
 class StepDimTol_NonUniformZoneDefinition : public StepDimTol_ToleranceZoneDefinition {
 	public:
 		/****************** StepDimTol_NonUniformZoneDefinition ******************/
@@ -2556,7 +2521,6 @@ class StepDimTol_NonUniformZoneDefinition : public StepDimTol_ToleranceZoneDefin
 /********************************************
 * class StepDimTol_PlacedDatumTargetFeature *
 ********************************************/
-%nodefaultctor StepDimTol_PlacedDatumTargetFeature;
 class StepDimTol_PlacedDatumTargetFeature : public StepDimTol_DatumTarget {
 	public:
 		/****************** StepDimTol_PlacedDatumTargetFeature ******************/
@@ -2579,7 +2543,6 @@ class StepDimTol_PlacedDatumTargetFeature : public StepDimTol_DatumTarget {
 /*************************************
 * class StepDimTol_PositionTolerance *
 *************************************/
-%nodefaultctor StepDimTol_PositionTolerance;
 class StepDimTol_PositionTolerance : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** StepDimTol_PositionTolerance ******************/
@@ -2602,7 +2565,6 @@ class StepDimTol_PositionTolerance : public StepDimTol_GeometricTolerance {
 /*******************************************
 * class StepDimTol_ProjectedZoneDefinition *
 *******************************************/
-%nodefaultctor StepDimTol_ProjectedZoneDefinition;
 class StepDimTol_ProjectedZoneDefinition : public StepDimTol_ToleranceZoneDefinition {
 	public:
 		/****************** Init ******************/
@@ -2667,7 +2629,6 @@ class StepDimTol_ProjectedZoneDefinition : public StepDimTol_ToleranceZoneDefini
 /**************************************
 * class StepDimTol_RoundnessTolerance *
 **************************************/
-%nodefaultctor StepDimTol_RoundnessTolerance;
 class StepDimTol_RoundnessTolerance : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** StepDimTol_RoundnessTolerance ******************/
@@ -2690,7 +2651,6 @@ class StepDimTol_RoundnessTolerance : public StepDimTol_GeometricTolerance {
 /****************************************
 * class StepDimTol_RunoutZoneDefinition *
 ****************************************/
-%nodefaultctor StepDimTol_RunoutZoneDefinition;
 class StepDimTol_RunoutZoneDefinition : public StepDimTol_ToleranceZoneDefinition {
 	public:
 		/****************** Init ******************/
@@ -2739,7 +2699,6 @@ class StepDimTol_RunoutZoneDefinition : public StepDimTol_ToleranceZoneDefinitio
 /*****************************************
 * class StepDimTol_StraightnessTolerance *
 *****************************************/
-%nodefaultctor StepDimTol_StraightnessTolerance;
 class StepDimTol_StraightnessTolerance : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** StepDimTol_StraightnessTolerance ******************/
@@ -2762,7 +2721,6 @@ class StepDimTol_StraightnessTolerance : public StepDimTol_GeometricTolerance {
 /*******************************************
 * class StepDimTol_SurfaceProfileTolerance *
 *******************************************/
-%nodefaultctor StepDimTol_SurfaceProfileTolerance;
 class StepDimTol_SurfaceProfileTolerance : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** StepDimTol_SurfaceProfileTolerance ******************/
@@ -2785,7 +2743,6 @@ class StepDimTol_SurfaceProfileTolerance : public StepDimTol_GeometricTolerance 
 /*******************************************************
 * class StepDimTol_UnequallyDisposedGeometricTolerance *
 *******************************************************/
-%nodefaultctor StepDimTol_UnequallyDisposedGeometricTolerance;
 class StepDimTol_UnequallyDisposedGeometricTolerance : public StepDimTol_GeometricTolerance {
 	public:
 		/****************** Displacement ******************/
@@ -2838,7 +2795,6 @@ class StepDimTol_UnequallyDisposedGeometricTolerance : public StepDimTol_Geometr
 /***************************************
 * class StepDimTol_AngularityTolerance *
 ***************************************/
-%nodefaultctor StepDimTol_AngularityTolerance;
 class StepDimTol_AngularityTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
 	public:
 		/****************** StepDimTol_AngularityTolerance ******************/
@@ -2861,7 +2817,6 @@ class StepDimTol_AngularityTolerance : public StepDimTol_GeometricToleranceWithD
 /*******************************************
 * class StepDimTol_CircularRunoutTolerance *
 *******************************************/
-%nodefaultctor StepDimTol_CircularRunoutTolerance;
 class StepDimTol_CircularRunoutTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
 	public:
 		/****************** StepDimTol_CircularRunoutTolerance ******************/
@@ -2884,7 +2839,6 @@ class StepDimTol_CircularRunoutTolerance : public StepDimTol_GeometricToleranceW
 /***************************************
 * class StepDimTol_CoaxialityTolerance *
 ***************************************/
-%nodefaultctor StepDimTol_CoaxialityTolerance;
 class StepDimTol_CoaxialityTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
 	public:
 		/****************** StepDimTol_CoaxialityTolerance ******************/
@@ -2907,7 +2861,6 @@ class StepDimTol_CoaxialityTolerance : public StepDimTol_GeometricToleranceWithD
 /******************************************
 * class StepDimTol_ConcentricityTolerance *
 ******************************************/
-%nodefaultctor StepDimTol_ConcentricityTolerance;
 class StepDimTol_ConcentricityTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
 	public:
 		/****************** StepDimTol_ConcentricityTolerance ******************/
@@ -2930,7 +2883,6 @@ class StepDimTol_ConcentricityTolerance : public StepDimTol_GeometricToleranceWi
 /**************************************************************
 * class StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol *
 **************************************************************/
-%nodefaultctor StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol;
 class StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol : public StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
 	public:
 		/****************** GetMaxTolerance ******************/
@@ -3006,7 +2958,6 @@ class StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol : public StepDimTol_
 /************************************************************
 * class StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol *
 ************************************************************/
-%nodefaultctor StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol;
 class StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol : public StepDimTol_GeoTolAndGeoTolWthDatRef {
 	public:
 		/****************** GetUnequallyDisposedGeometricTolerance ******************/
@@ -3078,7 +3029,6 @@ class StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol : public StepDimTol_Ge
 /********************************************
 * class StepDimTol_GeoTolAndGeoTolWthMaxTol *
 ********************************************/
-%nodefaultctor StepDimTol_GeoTolAndGeoTolWthMaxTol;
 class StepDimTol_GeoTolAndGeoTolWthMaxTol : public StepDimTol_GeoTolAndGeoTolWthMod {
 	public:
 		/****************** GetMaxTolerance ******************/
@@ -3150,7 +3100,6 @@ class StepDimTol_GeoTolAndGeoTolWthMaxTol : public StepDimTol_GeoTolAndGeoTolWth
 /*********************************************************
 * class StepDimTol_GeometricToleranceWithDefinedAreaUnit *
 *********************************************************/
-%nodefaultctor StepDimTol_GeometricToleranceWithDefinedAreaUnit;
 class StepDimTol_GeometricToleranceWithDefinedAreaUnit : public StepDimTol_GeometricToleranceWithDefinedUnit {
 	public:
 		/****************** AreaType ******************/
@@ -3229,7 +3178,6 @@ class StepDimTol_GeometricToleranceWithDefinedAreaUnit : public StepDimTol_Geome
 /**********************************************************
 * class StepDimTol_GeometricToleranceWithMaximumTolerance *
 **********************************************************/
-%nodefaultctor StepDimTol_GeometricToleranceWithMaximumTolerance;
 class StepDimTol_GeometricToleranceWithMaximumTolerance : public StepDimTol_GeometricToleranceWithModifiers {
 	public:
 		/****************** Init ******************/
@@ -3284,7 +3232,6 @@ class StepDimTol_GeometricToleranceWithMaximumTolerance : public StepDimTol_Geom
 /****************************************
 * class StepDimTol_ParallelismTolerance *
 ****************************************/
-%nodefaultctor StepDimTol_ParallelismTolerance;
 class StepDimTol_ParallelismTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
 	public:
 		/****************** StepDimTol_ParallelismTolerance ******************/
@@ -3307,7 +3254,6 @@ class StepDimTol_ParallelismTolerance : public StepDimTol_GeometricToleranceWith
 /*********************************************
 * class StepDimTol_PerpendicularityTolerance *
 *********************************************/
-%nodefaultctor StepDimTol_PerpendicularityTolerance;
 class StepDimTol_PerpendicularityTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
 	public:
 		/****************** StepDimTol_PerpendicularityTolerance ******************/
@@ -3330,7 +3276,6 @@ class StepDimTol_PerpendicularityTolerance : public StepDimTol_GeometricToleranc
 /*************************************
 * class StepDimTol_SymmetryTolerance *
 *************************************/
-%nodefaultctor StepDimTol_SymmetryTolerance;
 class StepDimTol_SymmetryTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
 	public:
 		/****************** StepDimTol_SymmetryTolerance ******************/
@@ -3353,7 +3298,6 @@ class StepDimTol_SymmetryTolerance : public StepDimTol_GeometricToleranceWithDat
 /****************************************
 * class StepDimTol_TotalRunoutTolerance *
 ****************************************/
-%nodefaultctor StepDimTol_TotalRunoutTolerance;
 class StepDimTol_TotalRunoutTolerance : public StepDimTol_GeometricToleranceWithDatumReference {
 	public:
 		/****************** StepDimTol_TotalRunoutTolerance ******************/

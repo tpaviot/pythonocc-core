@@ -216,7 +216,6 @@ class TDataXtd {
 /**********************
 * class TDataXtd_Axis *
 **********************/
-%nodefaultctor TDataXtd_Axis;
 class TDataXtd_Axis : public TDF_Attribute {
 	public:
 
@@ -296,7 +295,6 @@ class TDataXtd_Axis : public TDF_Attribute {
 /****************************
 * class TDataXtd_Constraint *
 ****************************/
-%nodefaultctor TDataXtd_Constraint;
 class TDataXtd_Constraint : public TDF_Attribute {
 	public:
 		/****************** ClearGeometries ******************/
@@ -557,7 +555,6 @@ class TDataXtd_Constraint : public TDF_Attribute {
 /**************************
 * class TDataXtd_Geometry *
 **************************/
-%nodefaultctor TDataXtd_Geometry;
 class TDataXtd_Geometry : public TDF_Attribute {
 	public:
 		/****************** Axis ******************/
@@ -846,7 +843,6 @@ class TDataXtd_Pattern : public TDF_Attribute {
 /***************************
 * class TDataXtd_Placement *
 ***************************/
-%nodefaultctor TDataXtd_Placement;
 class TDataXtd_Placement : public TDF_Attribute {
 	public:
 
@@ -916,7 +912,6 @@ class TDataXtd_Placement : public TDF_Attribute {
 /***********************
 * class TDataXtd_Plane *
 ***********************/
-%nodefaultctor TDataXtd_Plane;
 class TDataXtd_Plane : public TDF_Attribute {
 	public:
 
@@ -996,7 +991,6 @@ class TDataXtd_Plane : public TDF_Attribute {
 /***********************
 * class TDataXtd_Point *
 ***********************/
-%nodefaultctor TDataXtd_Point;
 class TDataXtd_Point : public TDF_Attribute {
 	public:
 
@@ -1076,7 +1070,6 @@ class TDataXtd_Point : public TDF_Attribute {
 /**************************
 * class TDataXtd_Position *
 **************************/
-%nodefaultctor TDataXtd_Position;
 class TDataXtd_Position : public TDF_Attribute {
 	public:
 		/****************** Get ******************/
@@ -1174,7 +1167,6 @@ class TDataXtd_Position : public TDF_Attribute {
 /******************************
 * class TDataXtd_Presentation *
 ******************************/
-%nodefaultctor TDataXtd_Presentation;
 class TDataXtd_Presentation : public TDF_Attribute {
 	public:
 		/****************** AddSelectionMode ******************/
@@ -1434,7 +1426,6 @@ class TDataXtd_Presentation : public TDF_Attribute {
 /***********************
 * class TDataXtd_Shape *
 ***********************/
-%nodefaultctor TDataXtd_Shape;
 class TDataXtd_Shape : public TDF_Attribute {
 	public:
 
@@ -1539,7 +1530,6 @@ class TDataXtd_Shape : public TDF_Attribute {
 /*******************************
 * class TDataXtd_Triangulation *
 *******************************/
-%nodefaultctor TDataXtd_Triangulation;
 class TDataXtd_Triangulation : public TDF_Attribute {
 	public:
 		/****************** Deflection ******************/
@@ -1759,7 +1749,6 @@ class TDataXtd_Triangulation : public TDF_Attribute {
 /****************************
 * class TDataXtd_PatternStd *
 ****************************/
-%nodefaultctor TDataXtd_PatternStd;
 class TDataXtd_PatternStd : public TDataXtd_Pattern {
 	public:
 		/****************** Axis1 ******************/

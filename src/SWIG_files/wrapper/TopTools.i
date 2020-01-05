@@ -71,6 +71,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_toptools.html"
 
 /* templates */
 %template(TopTools_DataMapOfIntegerListOfShape) NCollection_DataMap <Standard_Integer , TopTools_ListOfShape , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TopTools_ListOfShape , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopTools_DataMapOfIntegerListOfShape::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TopTools_DataMapOfShapeSequenceOfShape) NCollection_DataMap <TopoDS_Shape , TopTools_SequenceOfShape , TopTools_ShapeMapHasher>;
 %template(TopTools_SequenceOfShape) NCollection_Sequence <TopoDS_Shape>;
 %template(TopTools_IndexedDataMapOfShapeShape) NCollection_IndexedDataMap <TopoDS_Shape , TopoDS_Shape , TopTools_ShapeMapHasher>;
@@ -155,6 +167,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_toptools.html"
 %template(TopTools_IndexedDataMapOfShapeListOfShape) NCollection_IndexedDataMap <TopoDS_Shape , TopTools_ListOfShape , TopTools_ShapeMapHasher>;
 %template(TopTools_DataMapOfShapeShape) NCollection_DataMap <TopoDS_Shape , TopoDS_Shape , TopTools_ShapeMapHasher>;
 %template(TopTools_DataMapOfIntegerShape) NCollection_DataMap <Standard_Integer , TopoDS_Shape , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TopoDS_Shape , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopTools_DataMapOfIntegerShape::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TopTools_DataMapOfShapeReal) NCollection_DataMap <TopoDS_Shape , Standard_Real , TopTools_ShapeMapHasher>;
 %template(TopTools_IndexedDataMapOfShapeAddress) NCollection_IndexedDataMap <TopoDS_Shape , Standard_Address , TopTools_ShapeMapHasher>;
 %template(TopTools_IndexedDataMapOfShapeReal) NCollection_IndexedDataMap <TopoDS_Shape , Standard_Real , TopTools_ShapeMapHasher>;
@@ -246,7 +270,6 @@ class TopTools {
 /*****************************
 * class TopTools_LocationSet *
 *****************************/
-%nodefaultctor TopTools_LocationSet;
 class TopTools_LocationSet {
 	public:
 		/****************** Add ******************/
@@ -332,7 +355,6 @@ class TopTools_LocationSet {
 /***************************************
 * class TopTools_MutexForShapeProvider *
 ***************************************/
-%nodefaultctor TopTools_MutexForShapeProvider;
 class TopTools_MutexForShapeProvider {
 	public:
 		/****************** CreateMutexForShape ******************/
@@ -453,7 +475,6 @@ class TopTools_ShapeMapHasher {
 /**************************
 * class TopTools_ShapeSet *
 **************************/
-%nodefaultctor TopTools_ShapeSet;
 class TopTools_ShapeSet {
 	public:
 		/****************** Add ******************/

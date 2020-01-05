@@ -161,7 +161,6 @@ typedef NCollection_Shared <NCollection_Vector <gp_Pnt>> VectorOfPnt;
 /************************
 * class BRepMesh_Circle *
 ************************/
-%nodefaultctor BRepMesh_Circle;
 class BRepMesh_Circle {
 	public:
 		/****************** BRepMesh_Circle ******************/
@@ -220,7 +219,6 @@ class BRepMesh_Circle {
 /*********************************
 * class BRepMesh_CircleInspector *
 *********************************/
-%nodefaultctor BRepMesh_CircleInspector;
 class BRepMesh_CircleInspector : public NCollection_CellFilter_InspectorXY {
 	public:
 typedef Standard_Integer Target;
@@ -304,7 +302,6 @@ typedef Standard_Integer Target;
 /****************************
 * class BRepMesh_CircleTool *
 ****************************/
-%nodefaultctor BRepMesh_CircleTool;
 class BRepMesh_CircleTool {
 	public:
 		/****************** BRepMesh_CircleTool ******************/
@@ -443,7 +440,6 @@ class BRepMesh_CircleTool {
 /****************************
 * class BRepMesh_Classifier *
 ****************************/
-%nodefaultctor BRepMesh_Classifier;
 class BRepMesh_Classifier : public Standard_Transient {
 	public:
 		/****************** BRepMesh_Classifier ******************/
@@ -488,7 +484,6 @@ class BRepMesh_Classifier : public Standard_Transient {
 /*************************
 * class BRepMesh_Context *
 *************************/
-%nodefaultctor BRepMesh_Context;
 class BRepMesh_Context : public IMeshTools_Context {
 	public:
 		/****************** BRepMesh_Context ******************/
@@ -509,7 +504,6 @@ class BRepMesh_Context : public IMeshTools_Context {
 /**********************************
 * class BRepMesh_CurveTessellator *
 **********************************/
-%nodefaultctor BRepMesh_CurveTessellator;
 class BRepMesh_CurveTessellator : public IMeshTools_CurveTessellator {
 	public:
 		/****************** BRepMesh_CurveTessellator ******************/
@@ -569,7 +563,6 @@ class BRepMesh_CurveTessellator : public IMeshTools_CurveTessellator {
 /***************************************
 * class BRepMesh_DataStructureOfDelaun *
 ***************************************/
-%nodefaultctor BRepMesh_DataStructureOfDelaun;
 class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 	public:
 		/****************** AddElement ******************/
@@ -815,7 +808,6 @@ class BRepMesh_DataStructureOfDelaun : public Standard_Transient {
 /****************************
 * class BRepMesh_Deflection *
 ****************************/
-%nodefaultctor BRepMesh_Deflection;
 class BRepMesh_Deflection : public Standard_Transient {
 	public:
 		/****************** ComputeAbsoluteDeflection ******************/
@@ -876,7 +868,6 @@ class BRepMesh_Deflection : public Standard_Transient {
 /************************
 * class BRepMesh_Delaun *
 ************************/
-%nodefaultctor BRepMesh_Delaun;
 class BRepMesh_Delaun {
 	public:
 		/****************** AddVertices ******************/
@@ -1165,7 +1156,6 @@ class BRepMesh_DiscretRoot : public Standard_Transient {
 /*****************************
 * class BRepMesh_EdgeDiscret *
 *****************************/
-%nodefaultctor BRepMesh_EdgeDiscret;
 class BRepMesh_EdgeDiscret : public IMeshTools_ModelAlgo {
 	public:
 		/****************** BRepMesh_EdgeDiscret ******************/
@@ -1248,7 +1238,6 @@ class BRepMesh_EdgeDiscret : public IMeshTools_ModelAlgo {
 /*****************************
 * class BRepMesh_FaceChecker *
 *****************************/
-%nodefaultctor BRepMesh_FaceChecker;
 class BRepMesh_FaceChecker : public Standard_Transient {
 	public:
 typedef NCollection_Shared <NCollection_Vector <Segment>> Segments;
@@ -1284,7 +1273,6 @@ typedef NCollection_Shared <NCollection_Array1 <opencascade::handle <Segments>>>
 /*****************************
 * class BRepMesh_FaceDiscret *
 *****************************/
-%nodefaultctor BRepMesh_FaceDiscret;
 class BRepMesh_FaceDiscret : public IMeshTools_ModelAlgo {
 	public:
 		/****************** BRepMesh_FaceDiscret ******************/
@@ -1307,7 +1295,6 @@ class BRepMesh_FaceDiscret : public IMeshTools_ModelAlgo {
 /**************************
 * class BRepMesh_GeomTool *
 **************************/
-%nodefaultctor BRepMesh_GeomTool;
 class BRepMesh_GeomTool {
 	public:
 /* public enums */
@@ -1453,7 +1440,6 @@ enum IntFlag {
 /*********************************
 * class BRepMesh_MeshAlgoFactory *
 *********************************/
-%nodefaultctor BRepMesh_MeshAlgoFactory;
 class BRepMesh_MeshAlgoFactory : public IMeshTools_MeshAlgoFactory {
 	public:
 		/****************** BRepMesh_MeshAlgoFactory ******************/
@@ -1484,7 +1470,6 @@ class BRepMesh_MeshAlgoFactory : public IMeshTools_MeshAlgoFactory {
 /**************************
 * class BRepMesh_MeshTool *
 **************************/
-%nodefaultctor BRepMesh_MeshTool;
 class BRepMesh_MeshTool : public Standard_Transient {
 	public:
 		class NodeClassifier {};
@@ -1602,7 +1587,6 @@ class BRepMesh_MeshTool : public Standard_Transient {
 /******************************
 * class BRepMesh_ModelBuilder *
 ******************************/
-%nodefaultctor BRepMesh_ModelBuilder;
 class BRepMesh_ModelBuilder : public IMeshTools_ModelBuilder {
 	public:
 		/****************** BRepMesh_ModelBuilder ******************/
@@ -1623,7 +1607,6 @@ class BRepMesh_ModelBuilder : public IMeshTools_ModelBuilder {
 /*****************************
 * class BRepMesh_ModelHealer *
 *****************************/
-%nodefaultctor BRepMesh_ModelHealer;
 class BRepMesh_ModelHealer : public IMeshTools_ModelAlgo {
 	public:
 		/****************** BRepMesh_ModelHealer ******************/
@@ -1644,7 +1627,6 @@ class BRepMesh_ModelHealer : public IMeshTools_ModelAlgo {
 /************************************
 * class BRepMesh_ModelPostProcessor *
 ************************************/
-%nodefaultctor BRepMesh_ModelPostProcessor;
 class BRepMesh_ModelPostProcessor : public IMeshTools_ModelAlgo {
 	public:
 		/****************** BRepMesh_ModelPostProcessor ******************/
@@ -1665,7 +1647,6 @@ class BRepMesh_ModelPostProcessor : public IMeshTools_ModelAlgo {
 /***********************************
 * class BRepMesh_ModelPreProcessor *
 ***********************************/
-%nodefaultctor BRepMesh_ModelPreProcessor;
 class BRepMesh_ModelPreProcessor : public IMeshTools_ModelAlgo {
 	public:
 		/****************** BRepMesh_ModelPreProcessor ******************/
@@ -1689,7 +1670,6 @@ class BRepMesh_ModelPreProcessor : public IMeshTools_ModelAlgo {
 /******************************
 * class BRepMesh_OrientedEdge *
 ******************************/
-%nodefaultctor BRepMesh_OrientedEdge;
 class BRepMesh_OrientedEdge {
 	public:
 		/****************** BRepMesh_OrientedEdge ******************/
@@ -1768,7 +1748,6 @@ class BRepMesh_OrientedEdge {
 /*****************************
 * class BRepMesh_PairOfIndex *
 *****************************/
-%nodefaultctor BRepMesh_PairOfIndex;
 class BRepMesh_PairOfIndex {
 	public:
 		/****************** Append ******************/
@@ -1861,7 +1840,6 @@ class BRepMesh_PairOfIndex {
 /*************************************************
 * class BRepMesh_SelectorOfDataStructureOfDelaun *
 *************************************************/
-%nodefaultctor BRepMesh_SelectorOfDataStructureOfDelaun;
 class BRepMesh_SelectorOfDataStructureOfDelaun : public Standard_Transient {
 	public:
 		/****************** AddNeighbours ******************/
@@ -1994,7 +1972,6 @@ class BRepMesh_SelectorOfDataStructureOfDelaun : public Standard_Transient {
 /***************************
 * class BRepMesh_ShapeTool *
 ***************************/
-%nodefaultctor BRepMesh_ShapeTool;
 class BRepMesh_ShapeTool : public Standard_Transient {
 	public:
 		/****************** AddInFace ******************/
@@ -2179,7 +2156,6 @@ class BRepMesh_ShapeTool : public Standard_Transient {
 /******************************
 * class BRepMesh_ShapeVisitor *
 ******************************/
-%nodefaultctor BRepMesh_ShapeVisitor;
 class BRepMesh_ShapeVisitor : public IMeshTools_ShapeVisitor {
 	public:
 		/****************** BRepMesh_ShapeVisitor ******************/
@@ -2218,7 +2194,6 @@ class BRepMesh_ShapeVisitor : public IMeshTools_ShapeVisitor {
 /**************************
 * class BRepMesh_Triangle *
 **************************/
-%nodefaultctor BRepMesh_Triangle;
 class BRepMesh_Triangle {
 	public:
 		int myEdges[3];
@@ -2326,7 +2301,6 @@ class BRepMesh_Triangle {
 /************************
 * class BRepMesh_Vertex *
 ************************/
-%nodefaultctor BRepMesh_Vertex;
 class BRepMesh_Vertex {
 	public:
 		/****************** BRepMesh_Vertex ******************/
@@ -2451,7 +2425,6 @@ class BRepMesh_Vertex {
 /*********************************
 * class BRepMesh_VertexInspector *
 *********************************/
-%nodefaultctor BRepMesh_VertexInspector;
 class BRepMesh_VertexInspector : public NCollection_CellFilter_InspectorXY {
 	public:
 typedef Standard_Integer Target;
@@ -2567,7 +2540,6 @@ typedef Standard_Integer Target;
 /****************************
 * class BRepMesh_VertexTool *
 ****************************/
-%nodefaultctor BRepMesh_VertexTool;
 class BRepMesh_VertexTool : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -2723,7 +2695,6 @@ class BRepMesh_VertexTool : public Standard_Transient {
 /**********************
 * class BRepMesh_Edge *
 **********************/
-%nodefaultctor BRepMesh_Edge;
 class BRepMesh_Edge : public BRepMesh_OrientedEdge {
 	public:
 		/****************** BRepMesh_Edge ******************/
@@ -2800,7 +2771,6 @@ class BRepMesh_Edge : public BRepMesh_OrientedEdge {
 /*********************************
 * class BRepMesh_IncrementalMesh *
 *********************************/
-%nodefaultctor BRepMesh_IncrementalMesh;
 class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 	public:
 		/****************** BRepMesh_IncrementalMesh ******************/
@@ -2915,7 +2885,6 @@ class BRepMesh_IncrementalMesh : public BRepMesh_DiscretRoot {
 /**************************************
 * class BRepMesh_DelaunayBaseMeshAlgo *
 **************************************/
-%nodefaultctor BRepMesh_DelaunayBaseMeshAlgo;
 class BRepMesh_DelaunayBaseMeshAlgo : public BRepMesh_ConstrainedBaseMeshAlgo {
 	public:
 		/****************** BRepMesh_DelaunayBaseMeshAlgo ******************/

@@ -78,7 +78,31 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom2dhatch.html"
 
 /* templates */
 %template(Geom2dHatch_MapOfElements) NCollection_DataMap <Standard_Integer , Geom2dHatch_Element , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Geom2dHatch_Element , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (Geom2dHatch_MapOfElements::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(Geom2dHatch_Hatchings) NCollection_DataMap <Standard_Integer , Geom2dHatch_Hatching , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Geom2dHatch_Hatching , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (Geom2dHatch_Hatchings::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 /* end templates declaration */
 
 /* typedefs */
@@ -91,7 +115,6 @@ typedef NCollection_DataMap <Standard_Integer , Geom2dHatch_Hatching , TColStd_M
 /*******************************
 * class Geom2dHatch_Classifier *
 *******************************/
-%nodefaultctor Geom2dHatch_Classifier;
 class Geom2dHatch_Classifier {
 	public:
 		/****************** Edge ******************/
@@ -172,7 +195,6 @@ class Geom2dHatch_Classifier {
 /****************************
 * class Geom2dHatch_Element *
 ****************************/
-%nodefaultctor Geom2dHatch_Element;
 class Geom2dHatch_Element {
 	public:
 		/****************** ChangeCurve ******************/
@@ -236,7 +258,6 @@ class Geom2dHatch_Element {
 /*****************************
 * class Geom2dHatch_Elements *
 *****************************/
-%nodefaultctor Geom2dHatch_Elements;
 class Geom2dHatch_Elements {
 	public:
 		/****************** Bind ******************/
@@ -398,7 +419,6 @@ class Geom2dHatch_Elements {
 /*****************************************
 * class Geom2dHatch_FClass2dOfClassifier *
 *****************************************/
-%nodefaultctor Geom2dHatch_FClass2dOfClassifier;
 class Geom2dHatch_FClass2dOfClassifier {
 	public:
 		/****************** ClosestIntersection ******************/
@@ -471,7 +491,6 @@ class Geom2dHatch_FClass2dOfClassifier {
 /****************************
 * class Geom2dHatch_Hatcher *
 ****************************/
-%nodefaultctor Geom2dHatch_Hatcher;
 class Geom2dHatch_Hatcher {
 	public:
 		/****************** AddElement ******************/
@@ -758,7 +777,6 @@ class Geom2dHatch_Hatcher {
 /*****************************
 * class Geom2dHatch_Hatching *
 *****************************/
-%nodefaultctor Geom2dHatch_Hatching;
 class Geom2dHatch_Hatching {
 	public:
 		/****************** AddDomain ******************/
@@ -942,7 +960,6 @@ class Geom2dHatch_Hatching {
 /********************************
 * class Geom2dHatch_Intersector *
 ********************************/
-%nodefaultctor Geom2dHatch_Intersector;
 class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 	public:
 		/****************** ConfusionTolerance ******************/

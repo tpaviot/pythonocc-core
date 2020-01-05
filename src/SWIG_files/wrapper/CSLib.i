@@ -238,7 +238,6 @@ class CSLib {
 /**********************
 * class CSLib_Class2d *
 **********************/
-%nodefaultctor CSLib_Class2d;
 class CSLib_Class2d {
 	public:
 		/****************** CSLib_Class2d ******************/
@@ -327,7 +326,6 @@ class CSLib_Class2d {
 /****************************
 * class CSLib_NormalPolyDef *
 ****************************/
-%nodefaultctor CSLib_NormalPolyDef;
 class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 	public:
 		/****************** CSLib_NormalPolyDef ******************/

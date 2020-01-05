@@ -218,7 +218,6 @@ class TopoDS {
 /******************************
 * class TopoDS_AlertWithShape *
 ******************************/
-%nodefaultctor TopoDS_AlertWithShape;
 class TopoDS_AlertWithShape : public Message_Alert {
 	public:
 		/****************** GetShape ******************/
@@ -343,7 +342,6 @@ class TopoDS_Builder {
 /**********************
 * class TopoDS_HShape *
 **********************/
-%nodefaultctor TopoDS_HShape;
 class TopoDS_HShape : public Standard_Transient {
 	public:
 		/****************** ChangeShape ******************/
@@ -394,7 +392,6 @@ class TopoDS_HShape : public Standard_Transient {
 /************************
 * class TopoDS_Iterator *
 ************************/
-%nodefaultctor TopoDS_Iterator;
 class TopoDS_Iterator {
 	public:
 		/****************** Initialize ******************/
@@ -457,7 +454,6 @@ class TopoDS_Iterator {
 /*********************
 * class TopoDS_Shape *
 *********************/
-%nodefaultctor TopoDS_Shape;
 class TopoDS_Shape {
 	public:
 		%feature("autodoc", "1");
@@ -984,7 +980,6 @@ class TopoDS_TShape : public Standard_Transient {
 /*************************
 * class TopoDS_CompSolid *
 *************************/
-%nodefaultctor TopoDS_CompSolid;
 class TopoDS_CompSolid : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_CompSolid ******************/
@@ -1005,7 +1000,6 @@ class TopoDS_CompSolid : public TopoDS_Shape {
 /************************
 * class TopoDS_Compound *
 ************************/
-%nodefaultctor TopoDS_Compound;
 class TopoDS_Compound : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Compound ******************/
@@ -1026,7 +1020,6 @@ class TopoDS_Compound : public TopoDS_Shape {
 /********************
 * class TopoDS_Edge *
 ********************/
-%nodefaultctor TopoDS_Edge;
 class TopoDS_Edge : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Edge ******************/
@@ -1047,7 +1040,6 @@ class TopoDS_Edge : public TopoDS_Shape {
 /********************
 * class TopoDS_Face *
 ********************/
-%nodefaultctor TopoDS_Face;
 class TopoDS_Face : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Face ******************/
@@ -1068,7 +1060,6 @@ class TopoDS_Face : public TopoDS_Shape {
 /*********************
 * class TopoDS_Shell *
 *********************/
-%nodefaultctor TopoDS_Shell;
 class TopoDS_Shell : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Shell ******************/
@@ -1089,7 +1080,6 @@ class TopoDS_Shell : public TopoDS_Shape {
 /*********************
 * class TopoDS_Solid *
 *********************/
-%nodefaultctor TopoDS_Solid;
 class TopoDS_Solid : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Solid ******************/
@@ -1110,7 +1100,6 @@ class TopoDS_Solid : public TopoDS_Shape {
 /**************************
 * class TopoDS_TCompSolid *
 **************************/
-%nodefaultctor TopoDS_TCompSolid;
 class TopoDS_TCompSolid : public TopoDS_TShape {
 	public:
 		/****************** EmptyCopy ******************/
@@ -1145,7 +1134,6 @@ class TopoDS_TCompSolid : public TopoDS_TShape {
 /*************************
 * class TopoDS_TCompound *
 *************************/
-%nodefaultctor TopoDS_TCompound;
 class TopoDS_TCompound : public TopoDS_TShape {
 	public:
 		/****************** EmptyCopy ******************/
@@ -1203,7 +1191,6 @@ class TopoDS_TEdge : public TopoDS_TShape {
 /*********************
 * class TopoDS_TFace *
 *********************/
-%nodefaultctor TopoDS_TFace;
 class TopoDS_TFace : public TopoDS_TShape {
 	public:
 		/****************** EmptyCopy ******************/
@@ -1238,7 +1225,6 @@ class TopoDS_TFace : public TopoDS_TShape {
 /**********************
 * class TopoDS_TShell *
 **********************/
-%nodefaultctor TopoDS_TShell;
 class TopoDS_TShell : public TopoDS_TShape {
 	public:
 		/****************** EmptyCopy ******************/
@@ -1273,7 +1259,6 @@ class TopoDS_TShell : public TopoDS_TShape {
 /**********************
 * class TopoDS_TSolid *
 **********************/
-%nodefaultctor TopoDS_TSolid;
 class TopoDS_TSolid : public TopoDS_TShape {
 	public:
 		/****************** EmptyCopy ******************/
@@ -1331,7 +1316,6 @@ class TopoDS_TVertex : public TopoDS_TShape {
 /*********************
 * class TopoDS_TWire *
 *********************/
-%nodefaultctor TopoDS_TWire;
 class TopoDS_TWire : public TopoDS_TShape {
 	public:
 		/****************** EmptyCopy ******************/
@@ -1366,7 +1350,6 @@ class TopoDS_TWire : public TopoDS_TShape {
 /**********************
 * class TopoDS_Vertex *
 **********************/
-%nodefaultctor TopoDS_Vertex;
 class TopoDS_Vertex : public TopoDS_Shape {
 	public:
 		%feature("autodoc", "1");
@@ -1389,7 +1372,6 @@ class TopoDS_Vertex : public TopoDS_Shape {
 /********************
 * class TopoDS_Wire *
 ********************/
-%nodefaultctor TopoDS_Wire;
 class TopoDS_Wire : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Wire ******************/

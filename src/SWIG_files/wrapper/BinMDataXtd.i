@@ -121,7 +121,6 @@ class BinMDataXtd {
 /*******************************
 * class BinMDataXtd_AxisDriver *
 *******************************/
-%nodefaultctor BinMDataXtd_AxisDriver;
 class BinMDataXtd_AxisDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_AxisDriver ******************/
@@ -172,7 +171,6 @@ class BinMDataXtd_AxisDriver : public BinMDF_ADriver {
 /*************************************
 * class BinMDataXtd_ConstraintDriver *
 *************************************/
-%nodefaultctor BinMDataXtd_ConstraintDriver;
 class BinMDataXtd_ConstraintDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_ConstraintDriver ******************/
@@ -223,7 +221,6 @@ class BinMDataXtd_ConstraintDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMDataXtd_GeometryDriver *
 ***********************************/
-%nodefaultctor BinMDataXtd_GeometryDriver;
 class BinMDataXtd_GeometryDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_GeometryDriver ******************/
@@ -274,7 +271,6 @@ class BinMDataXtd_GeometryDriver : public BinMDF_ADriver {
 /*************************************
 * class BinMDataXtd_PatternStdDriver *
 *************************************/
-%nodefaultctor BinMDataXtd_PatternStdDriver;
 class BinMDataXtd_PatternStdDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_PatternStdDriver ******************/
@@ -325,7 +321,6 @@ class BinMDataXtd_PatternStdDriver : public BinMDF_ADriver {
 /************************************
 * class BinMDataXtd_PlacementDriver *
 ************************************/
-%nodefaultctor BinMDataXtd_PlacementDriver;
 class BinMDataXtd_PlacementDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_PlacementDriver ******************/
@@ -376,7 +371,6 @@ class BinMDataXtd_PlacementDriver : public BinMDF_ADriver {
 /********************************
 * class BinMDataXtd_PlaneDriver *
 ********************************/
-%nodefaultctor BinMDataXtd_PlaneDriver;
 class BinMDataXtd_PlaneDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_PlaneDriver ******************/
@@ -427,7 +421,6 @@ class BinMDataXtd_PlaneDriver : public BinMDF_ADriver {
 /********************************
 * class BinMDataXtd_PointDriver *
 ********************************/
-%nodefaultctor BinMDataXtd_PointDriver;
 class BinMDataXtd_PointDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_PointDriver ******************/
@@ -478,7 +471,6 @@ class BinMDataXtd_PointDriver : public BinMDF_ADriver {
 /***********************************
 * class BinMDataXtd_PositionDriver *
 ***********************************/
-%nodefaultctor BinMDataXtd_PositionDriver;
 class BinMDataXtd_PositionDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_PositionDriver ******************/
@@ -529,7 +521,6 @@ class BinMDataXtd_PositionDriver : public BinMDF_ADriver {
 /***************************************
 * class BinMDataXtd_PresentationDriver *
 ***************************************/
-%nodefaultctor BinMDataXtd_PresentationDriver;
 class BinMDataXtd_PresentationDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_PresentationDriver ******************/
@@ -580,7 +571,6 @@ class BinMDataXtd_PresentationDriver : public BinMDF_ADriver {
 /********************************
 * class BinMDataXtd_ShapeDriver *
 ********************************/
-%nodefaultctor BinMDataXtd_ShapeDriver;
 class BinMDataXtd_ShapeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_ShapeDriver ******************/
@@ -631,7 +621,6 @@ class BinMDataXtd_ShapeDriver : public BinMDF_ADriver {
 /****************************************
 * class BinMDataXtd_TriangulationDriver *
 ****************************************/
-%nodefaultctor BinMDataXtd_TriangulationDriver;
 class BinMDataXtd_TriangulationDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataXtd_TriangulationDriver ******************/

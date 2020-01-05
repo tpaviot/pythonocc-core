@@ -247,7 +247,6 @@ class TopoDSToStep_Root {
 /**************************
 * class TopoDSToStep_Tool *
 **************************/
-%nodefaultctor TopoDSToStep_Tool;
 class TopoDSToStep_Tool {
 	public:
 		/****************** Bind ******************/
@@ -401,7 +400,6 @@ class TopoDSToStep_Tool {
 /*****************************
 * class TopoDSToStep_Builder *
 *****************************/
-%nodefaultctor TopoDSToStep_Builder;
 class TopoDSToStep_Builder : public TopoDSToStep_Root {
 	public:
 		/****************** Error ******************/
@@ -453,7 +451,6 @@ class TopoDSToStep_Builder : public TopoDSToStep_Root {
 /***************************************
 * class TopoDSToStep_MakeBrepWithVoids *
 ***************************************/
-%nodefaultctor TopoDSToStep_MakeBrepWithVoids;
 class TopoDSToStep_MakeBrepWithVoids : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeBrepWithVoids ******************/
@@ -482,7 +479,6 @@ class TopoDSToStep_MakeBrepWithVoids : public TopoDSToStep_Root {
 /*************************************
 * class TopoDSToStep_MakeFacetedBrep *
 *************************************/
-%nodefaultctor TopoDSToStep_MakeFacetedBrep;
 class TopoDSToStep_MakeFacetedBrep : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeFacetedBrep ******************/
@@ -520,7 +516,6 @@ class TopoDSToStep_MakeFacetedBrep : public TopoDSToStep_Root {
 /*****************************************************
 * class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids *
 *****************************************************/
-%nodefaultctor TopoDSToStep_MakeFacetedBrepAndBrepWithVoids;
 class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeFacetedBrepAndBrepWithVoids ******************/
@@ -549,7 +544,6 @@ class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids : public TopoDSToStep_Root {
 /*******************************************
 * class TopoDSToStep_MakeGeometricCurveSet *
 *******************************************/
-%nodefaultctor TopoDSToStep_MakeGeometricCurveSet;
 class TopoDSToStep_MakeGeometricCurveSet : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeGeometricCurveSet ******************/
@@ -578,7 +572,6 @@ class TopoDSToStep_MakeGeometricCurveSet : public TopoDSToStep_Root {
 /*******************************************
 * class TopoDSToStep_MakeManifoldSolidBrep *
 *******************************************/
-%nodefaultctor TopoDSToStep_MakeManifoldSolidBrep;
 class TopoDSToStep_MakeManifoldSolidBrep : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeManifoldSolidBrep ******************/
@@ -616,7 +609,6 @@ class TopoDSToStep_MakeManifoldSolidBrep : public TopoDSToStep_Root {
 /************************************************
 * class TopoDSToStep_MakeShellBasedSurfaceModel *
 ************************************************/
-%nodefaultctor TopoDSToStep_MakeShellBasedSurfaceModel;
 class TopoDSToStep_MakeShellBasedSurfaceModel : public TopoDSToStep_Root {
 	public:
 		/****************** TopoDSToStep_MakeShellBasedSurfaceModel ******************/
@@ -663,7 +655,6 @@ class TopoDSToStep_MakeShellBasedSurfaceModel : public TopoDSToStep_Root {
 /**********************************
 * class TopoDSToStep_MakeStepEdge *
 **********************************/
-%nodefaultctor TopoDSToStep_MakeStepEdge;
 class TopoDSToStep_MakeStepEdge : public TopoDSToStep_Root {
 	public:
 		/****************** Error ******************/
@@ -715,7 +706,6 @@ class TopoDSToStep_MakeStepEdge : public TopoDSToStep_Root {
 /**********************************
 * class TopoDSToStep_MakeStepFace *
 **********************************/
-%nodefaultctor TopoDSToStep_MakeStepFace;
 class TopoDSToStep_MakeStepFace : public TopoDSToStep_Root {
 	public:
 		/****************** Error ******************/
@@ -767,7 +757,6 @@ class TopoDSToStep_MakeStepFace : public TopoDSToStep_Root {
 /************************************
 * class TopoDSToStep_MakeStepVertex *
 ************************************/
-%nodefaultctor TopoDSToStep_MakeStepVertex;
 class TopoDSToStep_MakeStepVertex : public TopoDSToStep_Root {
 	public:
 		/****************** Error ******************/
@@ -819,7 +808,6 @@ class TopoDSToStep_MakeStepVertex : public TopoDSToStep_Root {
 /**********************************
 * class TopoDSToStep_MakeStepWire *
 **********************************/
-%nodefaultctor TopoDSToStep_MakeStepWire;
 class TopoDSToStep_MakeStepWire : public TopoDSToStep_Root {
 	public:
 		/****************** Error ******************/
@@ -871,7 +859,6 @@ class TopoDSToStep_MakeStepWire : public TopoDSToStep_Root {
 /**************************************
 * class TopoDSToStep_WireframeBuilder *
 **************************************/
-%nodefaultctor TopoDSToStep_WireframeBuilder;
 class TopoDSToStep_WireframeBuilder : public TopoDSToStep_Root {
 	public:
 		/****************** Error ******************/

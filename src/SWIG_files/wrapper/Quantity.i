@@ -779,7 +779,6 @@ typedef Standard_Real Quantity_Constant;
 /***********************
 * class Quantity_Color *
 ***********************/
-%nodefaultctor Quantity_Color;
 class Quantity_Color {
 	public:
 		/****************** Argb2color ******************/
@@ -1126,7 +1125,6 @@ class Quantity_Color {
 /*****************************
 * class Quantity_ColorHasher *
 *****************************/
-%nodefaultctor Quantity_ColorHasher;
 class Quantity_ColorHasher {
 	public:
 		/****************** HashCode ******************/
@@ -1161,7 +1159,6 @@ class Quantity_ColorHasher {
 /***************************
 * class Quantity_ColorRGBA *
 ***************************/
-%nodefaultctor Quantity_ColorRGBA;
 class Quantity_ColorRGBA {
 	public:
 		/****************** Alpha ******************/
@@ -1340,7 +1337,6 @@ class Quantity_ColorRGBA {
 /*********************************
 * class Quantity_ColorRGBAHasher *
 *********************************/
-%nodefaultctor Quantity_ColorRGBAHasher;
 class Quantity_ColorRGBAHasher {
 	public:
 		/****************** HashCode ******************/
@@ -1375,7 +1371,6 @@ class Quantity_ColorRGBAHasher {
 /**********************
 * class Quantity_Date *
 **********************/
-%nodefaultctor Quantity_Date;
 class Quantity_Date {
 	public:
 		/****************** Add ******************/
@@ -1623,7 +1618,6 @@ class Quantity_Date {
 /************************
 * class Quantity_Period *
 ************************/
-%nodefaultctor Quantity_Period;
 class Quantity_Period {
 	public:
 		/****************** Add ******************/

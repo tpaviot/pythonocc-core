@@ -589,7 +589,6 @@ typedef NCollection_Array1 <opencascade::handle <StepShape_Edge>> StepShape_Arra
 /************************
 * class StepShape_Block *
 ************************/
-%nodefaultctor StepShape_Block;
 class StepShape_Block : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -675,7 +674,6 @@ class StepShape_Block : public StepGeom_GeometricRepresentationItem {
 /*********************************
 * class StepShape_BooleanOperand *
 *********************************/
-%nodefaultctor StepShape_BooleanOperand;
 class StepShape_BooleanOperand {
 	public:
 		/****************** BooleanResult ******************/
@@ -760,7 +758,6 @@ class StepShape_BooleanOperand {
 /********************************
 * class StepShape_BooleanResult *
 ********************************/
-%nodefaultctor StepShape_BooleanResult;
 class StepShape_BooleanResult : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** FirstOperand ******************/
@@ -832,7 +829,6 @@ class StepShape_BooleanResult : public StepGeom_GeometricRepresentationItem {
 /****************************
 * class StepShape_BoxDomain *
 ****************************/
-%nodefaultctor StepShape_BoxDomain;
 class StepShape_BoxDomain : public Standard_Transient {
 	public:
 		/****************** Corner ******************/
@@ -916,7 +912,6 @@ class StepShape_BoxDomain : public Standard_Transient {
 /***************************************************
 * class StepShape_ConnectedFaceShapeRepresentation *
 ***************************************************/
-%nodefaultctor StepShape_ConnectedFaceShapeRepresentation;
 class StepShape_ConnectedFaceShapeRepresentation : public StepRepr_Representation {
 	public:
 		/****************** StepShape_ConnectedFaceShapeRepresentation ******************/
@@ -939,7 +934,6 @@ class StepShape_ConnectedFaceShapeRepresentation : public StepRepr_Representatio
 /******************************************************
 * class StepShape_ContextDependentShapeRepresentation *
 ******************************************************/
-%nodefaultctor StepShape_ContextDependentShapeRepresentation;
 class StepShape_ContextDependentShapeRepresentation : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -994,7 +988,6 @@ class StepShape_ContextDependentShapeRepresentation : public Standard_Transient 
 /*******************************
 * class StepShape_CsgPrimitive *
 *******************************/
-%nodefaultctor StepShape_CsgPrimitive;
 class StepShape_CsgPrimitive : public StepData_SelectType {
 	public:
 		/****************** Block ******************/
@@ -1059,7 +1052,6 @@ class StepShape_CsgPrimitive : public StepData_SelectType {
 /****************************
 * class StepShape_CsgSelect *
 ****************************/
-%nodefaultctor StepShape_CsgSelect;
 class StepShape_CsgSelect {
 	public:
 		/****************** BooleanResult ******************/
@@ -1118,7 +1110,6 @@ class StepShape_CsgSelect {
 /*******************************************************************
 * class StepShape_DefinitionalRepresentationAndShapeRepresentation *
 *******************************************************************/
-%nodefaultctor StepShape_DefinitionalRepresentationAndShapeRepresentation;
 class StepShape_DefinitionalRepresentationAndShapeRepresentation : public StepRepr_DefinitionalRepresentation {
 	public:
 		/****************** StepShape_DefinitionalRepresentationAndShapeRepresentation ******************/
@@ -1140,7 +1131,6 @@ class StepShape_DefinitionalRepresentationAndShapeRepresentation : public StepRe
 /********************************************
 * class StepShape_DimensionalCharacteristic *
 ********************************************/
-%nodefaultctor StepShape_DimensionalCharacteristic;
 class StepShape_DimensionalCharacteristic : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1181,7 +1171,6 @@ class StepShape_DimensionalCharacteristic : public StepData_SelectType {
 /**********************************************************
 * class StepShape_DimensionalCharacteristicRepresentation *
 **********************************************************/
-%nodefaultctor StepShape_DimensionalCharacteristicRepresentation;
 class StepShape_DimensionalCharacteristicRepresentation : public Standard_Transient {
 	public:
 		/****************** Dimension ******************/
@@ -1242,7 +1231,6 @@ class StepShape_DimensionalCharacteristicRepresentation : public Standard_Transi
 /**************************************
 * class StepShape_DimensionalLocation *
 **************************************/
-%nodefaultctor StepShape_DimensionalLocation;
 class StepShape_DimensionalLocation : public StepRepr_ShapeAspectRelationship {
 	public:
 		/****************** StepShape_DimensionalLocation ******************/
@@ -1265,7 +1253,6 @@ class StepShape_DimensionalLocation : public StepRepr_ShapeAspectRelationship {
 /**********************************
 * class StepShape_DimensionalSize *
 **********************************/
-%nodefaultctor StepShape_DimensionalSize;
 class StepShape_DimensionalSize : public Standard_Transient {
 	public:
 		/****************** AppliesTo ******************/
@@ -1326,7 +1313,6 @@ class StepShape_DimensionalSize : public Standard_Transient {
 /******************************************
 * class StepShape_EdgeBasedWireframeModel *
 ******************************************/
-%nodefaultctor StepShape_EdgeBasedWireframeModel;
 class StepShape_EdgeBasedWireframeModel : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** EbwmBoundary ******************/
@@ -1373,7 +1359,6 @@ class StepShape_EdgeBasedWireframeModel : public StepGeom_GeometricRepresentatio
 /****************************************
 * class StepShape_FaceBasedSurfaceModel *
 ****************************************/
-%nodefaultctor StepShape_FaceBasedSurfaceModel;
 class StepShape_FaceBasedSurfaceModel : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** FbsmFaces ******************/
@@ -1420,7 +1405,6 @@ class StepShape_FaceBasedSurfaceModel : public StepGeom_GeometricRepresentationI
 /*******************************
 * class StepShape_GeometricSet *
 *******************************/
-%nodefaultctor StepShape_GeometricSet;
 class StepShape_GeometricSet : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Elements ******************/
@@ -1476,7 +1460,6 @@ class StepShape_GeometricSet : public StepGeom_GeometricRepresentationItem {
 /*************************************
 * class StepShape_GeometricSetSelect *
 *************************************/
-%nodefaultctor StepShape_GeometricSetSelect;
 class StepShape_GeometricSetSelect : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -1523,7 +1506,6 @@ class StepShape_GeometricSetSelect : public StepData_SelectType {
 /*********************************
 * class StepShape_HalfSpaceSolid *
 *********************************/
-%nodefaultctor StepShape_HalfSpaceSolid;
 class StepShape_HalfSpaceSolid : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** AgreementFlag ******************/
@@ -1581,7 +1563,6 @@ class StepShape_HalfSpaceSolid : public StepGeom_GeometricRepresentationItem {
 /********************************
 * class StepShape_LimitsAndFits *
 ********************************/
-%nodefaultctor StepShape_LimitsAndFits;
 class StepShape_LimitsAndFits : public Standard_Transient {
 	public:
 		/****************** FormVariance ******************/
@@ -1664,7 +1645,6 @@ class StepShape_LimitsAndFits : public Standard_Transient {
 /***************************************
 * class StepShape_MeasureQualification *
 ***************************************/
-%nodefaultctor StepShape_MeasureQualification;
 class StepShape_MeasureQualification : public Standard_Transient {
 	public:
 		/****************** Description ******************/
@@ -1768,7 +1748,6 @@ class StepShape_MeasureQualification : public Standard_Transient {
 /**************************************************************************
 * class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem *
 **************************************************************************/
-%nodefaultctor StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem;
 class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -1848,7 +1827,6 @@ class StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem : public
 /*************************************
 * class StepShape_PlusMinusTolerance *
 *************************************/
-%nodefaultctor StepShape_PlusMinusTolerance;
 class StepShape_PlusMinusTolerance : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1903,7 +1881,6 @@ class StepShape_PlusMinusTolerance : public Standard_Transient {
 /*************************************
 * class StepShape_PrecisionQualifier *
 *************************************/
-%nodefaultctor StepShape_PrecisionQualifier;
 class StepShape_PrecisionQualifier : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -1944,7 +1921,6 @@ class StepShape_PrecisionQualifier : public Standard_Transient {
 /**********************************************
 * class StepShape_QualifiedRepresentationItem *
 **********************************************/
-%nodefaultctor StepShape_QualifiedRepresentationItem;
 class StepShape_QualifiedRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -2008,7 +1984,6 @@ class StepShape_QualifiedRepresentationItem : public StepRepr_RepresentationItem
 /*****************************************
 * class StepShape_ReversibleTopologyItem *
 *****************************************/
-%nodefaultctor StepShape_ReversibleTopologyItem;
 class StepShape_ReversibleTopologyItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2073,7 +2048,6 @@ class StepShape_ReversibleTopologyItem : public StepData_SelectType {
 /************************************
 * class StepShape_RightAngularWedge *
 ************************************/
-%nodefaultctor StepShape_RightAngularWedge;
 class StepShape_RightAngularWedge : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -2173,7 +2147,6 @@ class StepShape_RightAngularWedge : public StepGeom_GeometricRepresentationItem 
 /************************************
 * class StepShape_RightCircularCone *
 ************************************/
-%nodefaultctor StepShape_RightCircularCone;
 class StepShape_RightCircularCone : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Height ******************/
@@ -2259,7 +2232,6 @@ class StepShape_RightCircularCone : public StepGeom_GeometricRepresentationItem 
 /****************************************
 * class StepShape_RightCircularCylinder *
 ****************************************/
-%nodefaultctor StepShape_RightCircularCylinder;
 class StepShape_RightCircularCylinder : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Height ******************/
@@ -2331,7 +2303,6 @@ class StepShape_RightCircularCylinder : public StepGeom_GeometricRepresentationI
 /************************************************
 * class StepShape_ShapeDefinitionRepresentation *
 ************************************************/
-%nodefaultctor StepShape_ShapeDefinitionRepresentation;
 class StepShape_ShapeDefinitionRepresentation : public StepRepr_PropertyDefinitionRepresentation {
 	public:
 		/****************** StepShape_ShapeDefinitionRepresentation ******************/
@@ -2354,7 +2325,6 @@ class StepShape_ShapeDefinitionRepresentation : public StepRepr_PropertyDefiniti
 /***************************************************
 * class StepShape_ShapeDimensionRepresentationItem *
 ***************************************************/
-%nodefaultctor StepShape_ShapeDimensionRepresentationItem;
 class StepShape_ShapeDimensionRepresentationItem : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2407,7 +2377,6 @@ class StepShape_ShapeDimensionRepresentationItem : public StepData_SelectType {
 /**************************************
 * class StepShape_ShapeRepresentation *
 **************************************/
-%nodefaultctor StepShape_ShapeRepresentation;
 class StepShape_ShapeRepresentation : public StepRepr_Representation {
 	public:
 		/****************** StepShape_ShapeRepresentation ******************/
@@ -2430,7 +2399,6 @@ class StepShape_ShapeRepresentation : public StepRepr_Representation {
 /************************
 * class StepShape_Shell *
 ************************/
-%nodefaultctor StepShape_Shell;
 class StepShape_Shell : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2471,7 +2439,6 @@ class StepShape_Shell : public StepData_SelectType {
 /*****************************************
 * class StepShape_ShellBasedSurfaceModel *
 *****************************************/
-%nodefaultctor StepShape_ShellBasedSurfaceModel;
 class StepShape_ShellBasedSurfaceModel : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -2527,7 +2494,6 @@ class StepShape_ShellBasedSurfaceModel : public StepGeom_GeometricRepresentation
 /*****************************
 * class StepShape_SolidModel *
 *****************************/
-%nodefaultctor StepShape_SolidModel;
 class StepShape_SolidModel : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** StepShape_SolidModel ******************/
@@ -2550,7 +2516,6 @@ class StepShape_SolidModel : public StepGeom_GeometricRepresentationItem {
 /*************************
 * class StepShape_Sphere *
 *************************/
-%nodefaultctor StepShape_Sphere;
 class StepShape_Sphere : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Centre ******************/
@@ -2608,7 +2573,6 @@ class StepShape_Sphere : public StepGeom_GeometricRepresentationItem {
 /*******************************
 * class StepShape_SurfaceModel *
 *******************************/
-%nodefaultctor StepShape_SurfaceModel;
 class StepShape_SurfaceModel : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2643,7 +2607,6 @@ class StepShape_SurfaceModel : public StepData_SelectType {
 /********************************************
 * class StepShape_ToleranceMethodDefinition *
 ********************************************/
-%nodefaultctor StepShape_ToleranceMethodDefinition;
 class StepShape_ToleranceMethodDefinition : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2683,7 +2646,6 @@ class StepShape_ToleranceMethodDefinition : public StepData_SelectType {
 /*********************************
 * class StepShape_ToleranceValue *
 *********************************/
-%nodefaultctor StepShape_ToleranceValue;
 class StepShape_ToleranceValue : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2738,7 +2700,6 @@ class StepShape_ToleranceValue : public Standard_Transient {
 /************************************************
 * class StepShape_TopologicalRepresentationItem *
 ************************************************/
-%nodefaultctor StepShape_TopologicalRepresentationItem;
 class StepShape_TopologicalRepresentationItem : public StepRepr_RepresentationItem {
 	public:
 		/****************** StepShape_TopologicalRepresentationItem ******************/
@@ -2761,7 +2722,6 @@ class StepShape_TopologicalRepresentationItem : public StepRepr_RepresentationIt
 /************************
 * class StepShape_Torus *
 ************************/
-%nodefaultctor StepShape_Torus;
 class StepShape_Torus : public StepGeom_GeometricRepresentationItem {
 	public:
 		/****************** Init ******************/
@@ -2833,7 +2793,6 @@ class StepShape_Torus : public StepGeom_GeometricRepresentationItem {
 /********************************
 * class StepShape_TypeQualifier *
 ********************************/
-%nodefaultctor StepShape_TypeQualifier;
 class StepShape_TypeQualifier : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -2874,7 +2833,6 @@ class StepShape_TypeQualifier : public Standard_Transient {
 /*******************************************
 * class StepShape_ValueFormatTypeQualifier *
 *******************************************/
-%nodefaultctor StepShape_ValueFormatTypeQualifier;
 class StepShape_ValueFormatTypeQualifier : public Standard_Transient {
 	public:
 		/****************** FormatType ******************/
@@ -2918,7 +2876,6 @@ class StepShape_ValueFormatTypeQualifier : public Standard_Transient {
 /*********************************
 * class StepShape_ValueQualifier *
 *********************************/
-%nodefaultctor StepShape_ValueQualifier;
 class StepShape_ValueQualifier : public StepData_SelectType {
 	public:
 		/****************** CaseNum ******************/
@@ -2964,7 +2921,6 @@ class StepShape_ValueQualifier : public StepData_SelectType {
 /**************************************************
 * class StepShape_AdvancedBrepShapeRepresentation *
 **************************************************/
-%nodefaultctor StepShape_AdvancedBrepShapeRepresentation;
 class StepShape_AdvancedBrepShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_AdvancedBrepShapeRepresentation ******************/
@@ -2987,7 +2943,6 @@ class StepShape_AdvancedBrepShapeRepresentation : public StepShape_ShapeRepresen
 /**********************************
 * class StepShape_AngularLocation *
 **********************************/
-%nodefaultctor StepShape_AngularLocation;
 class StepShape_AngularLocation : public StepShape_DimensionalLocation {
 	public:
 		/****************** AngleSelection ******************/
@@ -3042,7 +2997,6 @@ class StepShape_AngularLocation : public StepShape_DimensionalLocation {
 /******************************
 * class StepShape_AngularSize *
 ******************************/
-%nodefaultctor StepShape_AngularSize;
 class StepShape_AngularSize : public StepShape_DimensionalSize {
 	public:
 		/****************** AngleSelection ******************/
@@ -3091,7 +3045,6 @@ class StepShape_AngularSize : public StepShape_DimensionalSize {
 /*********************************
 * class StepShape_BoxedHalfSpace *
 *********************************/
-%nodefaultctor StepShape_BoxedHalfSpace;
 class StepShape_BoxedHalfSpace : public StepShape_HalfSpaceSolid {
 	public:
 		/****************** Enclosure ******************/
@@ -3139,7 +3092,6 @@ class StepShape_BoxedHalfSpace : public StepShape_HalfSpaceSolid {
 /**********************************************
 * class StepShape_CompoundShapeRepresentation *
 **********************************************/
-%nodefaultctor StepShape_CompoundShapeRepresentation;
 class StepShape_CompoundShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_CompoundShapeRepresentation ******************/
@@ -3162,7 +3114,6 @@ class StepShape_CompoundShapeRepresentation : public StepShape_ShapeRepresentati
 /***********************************
 * class StepShape_ConnectedEdgeSet *
 ***********************************/
-%nodefaultctor StepShape_ConnectedEdgeSet;
 class StepShape_ConnectedEdgeSet : public StepShape_TopologicalRepresentationItem {
 	public:
 		/****************** CesEdges ******************/
@@ -3209,7 +3160,6 @@ class StepShape_ConnectedEdgeSet : public StepShape_TopologicalRepresentationIte
 /***********************************
 * class StepShape_ConnectedFaceSet *
 ***********************************/
-%nodefaultctor StepShape_ConnectedFaceSet;
 class StepShape_ConnectedFaceSet : public StepShape_TopologicalRepresentationItem {
 	public:
 		/****************** CfsFaces ******************/
@@ -3265,7 +3215,6 @@ class StepShape_ConnectedFaceSet : public StepShape_TopologicalRepresentationIte
 /*****************************************
 * class StepShape_CsgShapeRepresentation *
 *****************************************/
-%nodefaultctor StepShape_CsgShapeRepresentation;
 class StepShape_CsgShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_CsgShapeRepresentation ******************/
@@ -3288,7 +3237,6 @@ class StepShape_CsgShapeRepresentation : public StepShape_ShapeRepresentation {
 /***************************
 * class StepShape_CsgSolid *
 ***************************/
-%nodefaultctor StepShape_CsgSolid;
 class StepShape_CsgSolid : public StepShape_SolidModel {
 	public:
 		/****************** Init ******************/
@@ -3332,7 +3280,6 @@ class StepShape_CsgSolid : public StepShape_SolidModel {
 /**********************************************
 * class StepShape_DimensionalLocationWithPath *
 **********************************************/
-%nodefaultctor StepShape_DimensionalLocationWithPath;
 class StepShape_DimensionalLocationWithPath : public StepShape_DimensionalLocation {
 	public:
 		/****************** Init ******************/
@@ -3387,7 +3334,6 @@ class StepShape_DimensionalLocationWithPath : public StepShape_DimensionalLocati
 /******************************************
 * class StepShape_DimensionalSizeWithPath *
 ******************************************/
-%nodefaultctor StepShape_DimensionalSizeWithPath;
 class StepShape_DimensionalSizeWithPath : public StepShape_DimensionalSize {
 	public:
 		/****************** Init ******************/
@@ -3436,7 +3382,6 @@ class StepShape_DimensionalSizeWithPath : public StepShape_DimensionalSize {
 /**********************************************
 * class StepShape_DirectedDimensionalLocation *
 **********************************************/
-%nodefaultctor StepShape_DirectedDimensionalLocation;
 class StepShape_DirectedDimensionalLocation : public StepShape_DimensionalLocation {
 	public:
 		/****************** StepShape_DirectedDimensionalLocation ******************/
@@ -3459,7 +3404,6 @@ class StepShape_DirectedDimensionalLocation : public StepShape_DimensionalLocati
 /***********************
 * class StepShape_Edge *
 ***********************/
-%nodefaultctor StepShape_Edge;
 class StepShape_Edge : public StepShape_TopologicalRepresentationItem {
 	public:
 		/****************** EdgeEnd ******************/
@@ -3517,7 +3461,6 @@ class StepShape_Edge : public StepShape_TopologicalRepresentationItem {
 /********************************************************
 * class StepShape_EdgeBasedWireframeShapeRepresentation *
 ********************************************************/
-%nodefaultctor StepShape_EdgeBasedWireframeShapeRepresentation;
 class StepShape_EdgeBasedWireframeShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_EdgeBasedWireframeShapeRepresentation ******************/
@@ -3540,7 +3483,6 @@ class StepShape_EdgeBasedWireframeShapeRepresentation : public StepShape_ShapeRe
 /***********************
 * class StepShape_Face *
 ***********************/
-%nodefaultctor StepShape_Face;
 class StepShape_Face : public StepShape_TopologicalRepresentationItem {
 	public:
 		/****************** Bounds ******************/
@@ -3596,7 +3538,6 @@ class StepShape_Face : public StepShape_TopologicalRepresentationItem {
 /****************************
 * class StepShape_FaceBound *
 ****************************/
-%nodefaultctor StepShape_FaceBound;
 class StepShape_FaceBound : public StepShape_TopologicalRepresentationItem {
 	public:
 		/****************** Bound ******************/
@@ -3654,7 +3595,6 @@ class StepShape_FaceBound : public StepShape_TopologicalRepresentationItem {
 /*************************************************
 * class StepShape_FacetedBrepShapeRepresentation *
 *************************************************/
-%nodefaultctor StepShape_FacetedBrepShapeRepresentation;
 class StepShape_FacetedBrepShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_FacetedBrepShapeRepresentation ******************/
@@ -3677,7 +3617,6 @@ class StepShape_FacetedBrepShapeRepresentation : public StepShape_ShapeRepresent
 /************************************
 * class StepShape_GeometricCurveSet *
 ************************************/
-%nodefaultctor StepShape_GeometricCurveSet;
 class StepShape_GeometricCurveSet : public StepShape_GeometricSet {
 	public:
 		/****************** StepShape_GeometricCurveSet ******************/
@@ -3700,7 +3639,6 @@ class StepShape_GeometricCurveSet : public StepShape_GeometricSet {
 /*****************************************************************
 * class StepShape_GeometricallyBoundedSurfaceShapeRepresentation *
 *****************************************************************/
-%nodefaultctor StepShape_GeometricallyBoundedSurfaceShapeRepresentation;
 class StepShape_GeometricallyBoundedSurfaceShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_GeometricallyBoundedSurfaceShapeRepresentation ******************/
@@ -3723,7 +3661,6 @@ class StepShape_GeometricallyBoundedSurfaceShapeRepresentation : public StepShap
 /*******************************************************************
 * class StepShape_GeometricallyBoundedWireframeShapeRepresentation *
 *******************************************************************/
-%nodefaultctor StepShape_GeometricallyBoundedWireframeShapeRepresentation;
 class StepShape_GeometricallyBoundedWireframeShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_GeometricallyBoundedWireframeShapeRepresentation ******************/
@@ -3746,7 +3683,6 @@ class StepShape_GeometricallyBoundedWireframeShapeRepresentation : public StepSh
 /***********************
 * class StepShape_Loop *
 ***********************/
-%nodefaultctor StepShape_Loop;
 class StepShape_Loop : public StepShape_TopologicalRepresentationItem {
 	public:
 		/****************** StepShape_Loop ******************/
@@ -3769,7 +3705,6 @@ class StepShape_Loop : public StepShape_TopologicalRepresentationItem {
 /******************************
 * class StepShape_LoopAndPath *
 ******************************/
-%nodefaultctor StepShape_LoopAndPath;
 class StepShape_LoopAndPath : public StepShape_TopologicalRepresentationItem {
 	public:
 		/****************** EdgeList ******************/
@@ -3860,7 +3795,6 @@ class StepShape_LoopAndPath : public StepShape_TopologicalRepresentationItem {
 /************************************
 * class StepShape_ManifoldSolidBrep *
 ************************************/
-%nodefaultctor StepShape_ManifoldSolidBrep;
 class StepShape_ManifoldSolidBrep : public StepShape_SolidModel {
 	public:
 		/****************** Init ******************/
@@ -3913,7 +3847,6 @@ class StepShape_ManifoldSolidBrep : public StepShape_SolidModel {
 /*****************************************************
 * class StepShape_ManifoldSurfaceShapeRepresentation *
 *****************************************************/
-%nodefaultctor StepShape_ManifoldSurfaceShapeRepresentation;
 class StepShape_ManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_ManifoldSurfaceShapeRepresentation ******************/
@@ -3936,7 +3869,6 @@ class StepShape_ManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepre
 /********************************************************
 * class StepShape_NonManifoldSurfaceShapeRepresentation *
 ********************************************************/
-%nodefaultctor StepShape_NonManifoldSurfaceShapeRepresentation;
 class StepShape_NonManifoldSurfaceShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_NonManifoldSurfaceShapeRepresentation ******************/
@@ -3959,7 +3891,6 @@ class StepShape_NonManifoldSurfaceShapeRepresentation : public StepShape_ShapeRe
 /***********************
 * class StepShape_Path *
 ***********************/
-%nodefaultctor StepShape_Path;
 class StepShape_Path : public StepShape_TopologicalRepresentationItem {
 	public:
 		/****************** EdgeList ******************/
@@ -4015,7 +3946,6 @@ class StepShape_Path : public StepShape_TopologicalRepresentationItem {
 /**************************************
 * class StepShape_PointRepresentation *
 **************************************/
-%nodefaultctor StepShape_PointRepresentation;
 class StepShape_PointRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_PointRepresentation ******************/
@@ -4038,7 +3968,6 @@ class StepShape_PointRepresentation : public StepShape_ShapeRepresentation {
 /***********************************************
 * class StepShape_ShapeDimensionRepresentation *
 ***********************************************/
-%nodefaultctor StepShape_ShapeDimensionRepresentation;
 class StepShape_ShapeDimensionRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** Init ******************/
@@ -4097,7 +4026,6 @@ class StepShape_ShapeDimensionRepresentation : public StepShape_ShapeRepresentat
 /****************************************************
 * class StepShape_ShapeRepresentationWithParameters *
 ****************************************************/
-%nodefaultctor StepShape_ShapeRepresentationWithParameters;
 class StepShape_ShapeRepresentationWithParameters : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_ShapeRepresentationWithParameters ******************/
@@ -4120,7 +4048,6 @@ class StepShape_ShapeRepresentationWithParameters : public StepShape_ShapeRepres
 /*******************************
 * class StepShape_SolidReplica *
 *******************************/
-%nodefaultctor StepShape_SolidReplica;
 class StepShape_SolidReplica : public StepShape_SolidModel {
 	public:
 		/****************** Init ******************/
@@ -4178,7 +4105,6 @@ class StepShape_SolidReplica : public StepShape_SolidModel {
 /*********************************
 * class StepShape_SweptAreaSolid *
 *********************************/
-%nodefaultctor StepShape_SweptAreaSolid;
 class StepShape_SweptAreaSolid : public StepShape_SolidModel {
 	public:
 		/****************** Init ******************/
@@ -4222,7 +4148,6 @@ class StepShape_SweptAreaSolid : public StepShape_SolidModel {
 /*********************************
 * class StepShape_SweptFaceSolid *
 *********************************/
-%nodefaultctor StepShape_SweptFaceSolid;
 class StepShape_SweptFaceSolid : public StepShape_SolidModel {
 	public:
 		/****************** Init ******************/
@@ -4266,7 +4191,6 @@ class StepShape_SweptFaceSolid : public StepShape_SolidModel {
 /**************************************************
 * class StepShape_TransitionalShapeRepresentation *
 **************************************************/
-%nodefaultctor StepShape_TransitionalShapeRepresentation;
 class StepShape_TransitionalShapeRepresentation : public StepShape_ShapeRepresentation {
 	public:
 		/****************** StepShape_TransitionalShapeRepresentation ******************/
@@ -4289,7 +4213,6 @@ class StepShape_TransitionalShapeRepresentation : public StepShape_ShapeRepresen
 /*************************
 * class StepShape_Vertex *
 *************************/
-%nodefaultctor StepShape_Vertex;
 class StepShape_Vertex : public StepShape_TopologicalRepresentationItem {
 	public:
 		/****************** StepShape_Vertex ******************/
@@ -4312,7 +4235,6 @@ class StepShape_Vertex : public StepShape_TopologicalRepresentationItem {
 /********************************
 * class StepShape_BrepWithVoids *
 ********************************/
-%nodefaultctor StepShape_BrepWithVoids;
 class StepShape_BrepWithVoids : public StepShape_ManifoldSolidBrep {
 	public:
 		/****************** Init ******************/
@@ -4370,7 +4292,6 @@ class StepShape_BrepWithVoids : public StepShape_ManifoldSolidBrep {
 /******************************
 * class StepShape_ClosedShell *
 ******************************/
-%nodefaultctor StepShape_ClosedShell;
 class StepShape_ClosedShell : public StepShape_ConnectedFaceSet {
 	public:
 		/****************** StepShape_ClosedShell ******************/
@@ -4393,7 +4314,6 @@ class StepShape_ClosedShell : public StepShape_ConnectedFaceSet {
 /**************************************
 * class StepShape_ConnectedFaceSubSet *
 **************************************/
-%nodefaultctor StepShape_ConnectedFaceSubSet;
 class StepShape_ConnectedFaceSubSet : public StepShape_ConnectedFaceSet {
 	public:
 		/****************** Init ******************/
@@ -4442,7 +4362,6 @@ class StepShape_ConnectedFaceSubSet : public StepShape_ConnectedFaceSet {
 /****************************
 * class StepShape_EdgeCurve *
 ****************************/
-%nodefaultctor StepShape_EdgeCurve;
 class StepShape_EdgeCurve : public StepShape_Edge {
 	public:
 		/****************** EdgeGeometry ******************/
@@ -4504,7 +4423,6 @@ class StepShape_EdgeCurve : public StepShape_Edge {
 /***************************
 * class StepShape_EdgeLoop *
 ***************************/
-%nodefaultctor StepShape_EdgeLoop;
 class StepShape_EdgeLoop : public StepShape_Loop {
 	public:
 		/****************** EdgeList ******************/
@@ -4560,7 +4478,6 @@ class StepShape_EdgeLoop : public StepShape_Loop {
 /************************************
 * class StepShape_ExtrudedAreaSolid *
 ************************************/
-%nodefaultctor StepShape_ExtrudedAreaSolid;
 class StepShape_ExtrudedAreaSolid : public StepShape_SweptAreaSolid {
 	public:
 		/****************** Depth ******************/
@@ -4620,7 +4537,6 @@ class StepShape_ExtrudedAreaSolid : public StepShape_SweptAreaSolid {
 /************************************
 * class StepShape_ExtrudedFaceSolid *
 ************************************/
-%nodefaultctor StepShape_ExtrudedFaceSolid;
 class StepShape_ExtrudedFaceSolid : public StepShape_SweptFaceSolid {
 	public:
 		/****************** Depth ******************/
@@ -4680,7 +4596,6 @@ class StepShape_ExtrudedFaceSolid : public StepShape_SweptFaceSolid {
 /*********************************
 * class StepShape_FaceOuterBound *
 *********************************/
-%nodefaultctor StepShape_FaceOuterBound;
 class StepShape_FaceOuterBound : public StepShape_FaceBound {
 	public:
 		/****************** StepShape_FaceOuterBound ******************/
@@ -4703,7 +4618,6 @@ class StepShape_FaceOuterBound : public StepShape_FaceBound {
 /******************************
 * class StepShape_FaceSurface *
 ******************************/
-%nodefaultctor StepShape_FaceSurface;
 class StepShape_FaceSurface : public StepShape_Face {
 	public:
 		/****************** FaceGeometry ******************/
@@ -4763,7 +4677,6 @@ class StepShape_FaceSurface : public StepShape_Face {
 /******************************
 * class StepShape_FacetedBrep *
 ******************************/
-%nodefaultctor StepShape_FacetedBrep;
 class StepShape_FacetedBrep : public StepShape_ManifoldSolidBrep {
 	public:
 		/****************** StepShape_FacetedBrep ******************/
@@ -4786,7 +4699,6 @@ class StepShape_FacetedBrep : public StepShape_ManifoldSolidBrep {
 /**********************************************
 * class StepShape_FacetedBrepAndBrepWithVoids *
 **********************************************/
-%nodefaultctor StepShape_FacetedBrepAndBrepWithVoids;
 class StepShape_FacetedBrepAndBrepWithVoids : public StepShape_ManifoldSolidBrep {
 	public:
 		/****************** BrepWithVoids ******************/
@@ -4881,7 +4793,6 @@ class StepShape_FacetedBrepAndBrepWithVoids : public StepShape_ManifoldSolidBrep
 /****************************
 * class StepShape_OpenShell *
 ****************************/
-%nodefaultctor StepShape_OpenShell;
 class StepShape_OpenShell : public StepShape_ConnectedFaceSet {
 	public:
 		/****************** StepShape_OpenShell ******************/
@@ -4904,7 +4815,6 @@ class StepShape_OpenShell : public StepShape_ConnectedFaceSet {
 /*******************************
 * class StepShape_OrientedEdge *
 *******************************/
-%nodefaultctor StepShape_OrientedEdge;
 class StepShape_OrientedEdge : public StepShape_Edge {
 	public:
 		/****************** EdgeElement ******************/
@@ -4986,7 +4896,6 @@ class StepShape_OrientedEdge : public StepShape_Edge {
 /*******************************
 * class StepShape_OrientedFace *
 *******************************/
-%nodefaultctor StepShape_OrientedFace;
 class StepShape_OrientedFace : public StepShape_Face {
 	public:
 		/****************** Bounds ******************/
@@ -5068,7 +4977,6 @@ class StepShape_OrientedFace : public StepShape_Face {
 /*******************************
 * class StepShape_OrientedPath *
 *******************************/
-%nodefaultctor StepShape_OrientedPath;
 class StepShape_OrientedPath : public StepShape_Path {
 	public:
 		/****************** EdgeList ******************/
@@ -5150,7 +5058,6 @@ class StepShape_OrientedPath : public StepShape_Path {
 /***************************
 * class StepShape_PolyLoop *
 ***************************/
-%nodefaultctor StepShape_PolyLoop;
 class StepShape_PolyLoop : public StepShape_Loop {
 	public:
 		/****************** Init ******************/
@@ -5206,7 +5113,6 @@ class StepShape_PolyLoop : public StepShape_Loop {
 /************************************
 * class StepShape_RevolvedAreaSolid *
 ************************************/
-%nodefaultctor StepShape_RevolvedAreaSolid;
 class StepShape_RevolvedAreaSolid : public StepShape_SweptAreaSolid {
 	public:
 		/****************** Angle ******************/
@@ -5266,7 +5172,6 @@ class StepShape_RevolvedAreaSolid : public StepShape_SweptAreaSolid {
 /************************************
 * class StepShape_RevolvedFaceSolid *
 ************************************/
-%nodefaultctor StepShape_RevolvedFaceSolid;
 class StepShape_RevolvedFaceSolid : public StepShape_SweptFaceSolid {
 	public:
 		/****************** Angle ******************/
@@ -5335,7 +5240,6 @@ class StepShape_RevolvedFaceSolid : public StepShape_SweptFaceSolid {
 /**************************
 * class StepShape_Subedge *
 **************************/
-%nodefaultctor StepShape_Subedge;
 class StepShape_Subedge : public StepShape_Edge {
 	public:
 		/****************** Init ******************/
@@ -5386,7 +5290,6 @@ class StepShape_Subedge : public StepShape_Edge {
 /**************************
 * class StepShape_Subface *
 **************************/
-%nodefaultctor StepShape_Subface;
 class StepShape_Subface : public StepShape_Face {
 	public:
 		/****************** Init ******************/
@@ -5435,7 +5338,6 @@ class StepShape_Subface : public StepShape_Face {
 /*****************************
 * class StepShape_VertexLoop *
 *****************************/
-%nodefaultctor StepShape_VertexLoop;
 class StepShape_VertexLoop : public StepShape_Loop {
 	public:
 		/****************** Init ******************/
@@ -5479,7 +5381,6 @@ class StepShape_VertexLoop : public StepShape_Loop {
 /******************************
 * class StepShape_VertexPoint *
 ******************************/
-%nodefaultctor StepShape_VertexPoint;
 class StepShape_VertexPoint : public StepShape_Vertex {
 	public:
 		/****************** Init ******************/
@@ -5523,7 +5424,6 @@ class StepShape_VertexPoint : public StepShape_Vertex {
 /*******************************
 * class StepShape_AdvancedFace *
 *******************************/
-%nodefaultctor StepShape_AdvancedFace;
 class StepShape_AdvancedFace : public StepShape_FaceSurface {
 	public:
 		/****************** StepShape_AdvancedFace ******************/
@@ -5546,7 +5446,6 @@ class StepShape_AdvancedFace : public StepShape_FaceSurface {
 /**************************************
 * class StepShape_OrientedClosedShell *
 **************************************/
-%nodefaultctor StepShape_OrientedClosedShell;
 class StepShape_OrientedClosedShell : public StepShape_ClosedShell {
 	public:
 		/****************** CfsFaces ******************/
@@ -5628,7 +5527,6 @@ class StepShape_OrientedClosedShell : public StepShape_ClosedShell {
 /************************************
 * class StepShape_OrientedOpenShell *
 ************************************/
-%nodefaultctor StepShape_OrientedOpenShell;
 class StepShape_OrientedOpenShell : public StepShape_OpenShell {
 	public:
 		/****************** CfsFaces ******************/
@@ -5710,7 +5608,6 @@ class StepShape_OrientedOpenShell : public StepShape_OpenShell {
 /***************************
 * class StepShape_SeamEdge *
 ***************************/
-%nodefaultctor StepShape_SeamEdge;
 class StepShape_SeamEdge : public StepShape_OrientedEdge {
 	public:
 		/****************** Init ******************/

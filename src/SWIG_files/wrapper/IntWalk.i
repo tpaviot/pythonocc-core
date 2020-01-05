@@ -88,7 +88,6 @@ enum IntWalk_StatusDeflection {
 /**************************************
 * class IntWalk_TheFunctionOfTheInt2S *
 **************************************/
-%nodefaultctor IntWalk_TheFunctionOfTheInt2S;
 class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** AuxillarSurface1 ******************/
@@ -215,7 +214,6 @@ class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 /*************************
 * class IntWalk_TheInt2S *
 *************************/
-%nodefaultctor IntWalk_TheInt2S;
 class IntWalk_TheInt2S {
 	public:
 		/****************** ChangePoint ******************/
@@ -332,7 +330,6 @@ class IntWalk_TheInt2S {
 /****************************
 * class IntWalk_WalkingData *
 ****************************/
-%nodefaultctor IntWalk_WalkingData;
 class IntWalk_WalkingData {
 	public:
 		float ustart;

@@ -166,7 +166,6 @@ class LocOpe {
 /**************************
 * class LocOpe_BuildShape *
 **************************/
-%nodefaultctor LocOpe_BuildShape;
 class LocOpe_BuildShape {
 	public:
 		/****************** LocOpe_BuildShape ******************/
@@ -207,7 +206,6 @@ class LocOpe_BuildShape {
 /**************************
 * class LocOpe_BuildWires *
 **************************/
-%nodefaultctor LocOpe_BuildWires;
 class LocOpe_BuildWires {
 	public:
 		/****************** IsDone ******************/
@@ -255,7 +253,6 @@ class LocOpe_BuildWires {
 /*****************************
 * class LocOpe_CSIntersector *
 *****************************/
-%nodefaultctor LocOpe_CSIntersector;
 class LocOpe_CSIntersector {
 	public:
 		/****************** Destroy ******************/
@@ -414,7 +411,6 @@ class LocOpe_CSIntersector {
 /*************************************
 * class LocOpe_CurveShapeIntersector *
 *************************************/
-%nodefaultctor LocOpe_CurveShapeIntersector;
 class LocOpe_CurveShapeIntersector {
 	public:
 		/****************** Init ******************/
@@ -551,7 +547,6 @@ class LocOpe_CurveShapeIntersector {
 /**********************
 * class LocOpe_DPrism *
 **********************/
-%nodefaultctor LocOpe_DPrism;
 class LocOpe_DPrism {
 	public:
 		/****************** BarycCurve ******************/
@@ -639,7 +634,6 @@ class LocOpe_DPrism {
 /*************************
 * class LocOpe_FindEdges *
 *************************/
-%nodefaultctor LocOpe_FindEdges;
 class LocOpe_FindEdges {
 	public:
 		/****************** EdgeFrom ******************/
@@ -702,7 +696,6 @@ class LocOpe_FindEdges {
 /*******************************
 * class LocOpe_FindEdgesInFace *
 *******************************/
-%nodefaultctor LocOpe_FindEdgesInFace;
 class LocOpe_FindEdgesInFace {
 	public:
 		/****************** Edge ******************/
@@ -804,7 +797,6 @@ class LocOpe_GeneratedShape : public Standard_Transient {
 /*************************
 * class LocOpe_Generator *
 *************************/
-%nodefaultctor LocOpe_Generator;
 class LocOpe_Generator {
 	public:
 		/****************** DescendantFace ******************/
@@ -873,7 +865,6 @@ class LocOpe_Generator {
 /*********************
 * class LocOpe_Gluer *
 *********************/
-%nodefaultctor LocOpe_Gluer;
 class LocOpe_Gluer {
 	public:
 		/****************** BasisShape ******************/
@@ -976,7 +967,6 @@ class LocOpe_Gluer {
 /**************************
 * class LocOpe_LinearForm *
 **************************/
-%nodefaultctor LocOpe_LinearForm;
 class LocOpe_LinearForm {
 	public:
 		/****************** FirstShape ******************/
@@ -1074,7 +1064,6 @@ class LocOpe_LinearForm {
 /********************
 * class LocOpe_Pipe *
 ********************/
-%nodefaultctor LocOpe_Pipe;
 class LocOpe_Pipe {
 	public:
 		/****************** BarycCurve ******************/
@@ -1142,7 +1131,6 @@ class LocOpe_Pipe {
 /***********************
 * class LocOpe_PntFace *
 ***********************/
-%nodefaultctor LocOpe_PntFace;
 class LocOpe_PntFace {
 	public:
 		/****************** ChangeOrientation ******************/
@@ -1215,7 +1203,6 @@ class LocOpe_PntFace {
 /*********************
 * class LocOpe_Prism *
 *********************/
-%nodefaultctor LocOpe_Prism;
 class LocOpe_Prism {
 	public:
 		/****************** BarycCurve ******************/
@@ -1315,7 +1302,6 @@ class LocOpe_Prism {
 /***************************
 * class LocOpe_SplitDrafts *
 ***************************/
-%nodefaultctor LocOpe_SplitDrafts;
 class LocOpe_SplitDrafts {
 	public:
 		/****************** Init ******************/
@@ -1419,7 +1405,6 @@ class LocOpe_SplitDrafts {
 /**************************
 * class LocOpe_SplitShape *
 **************************/
-%nodefaultctor LocOpe_SplitShape;
 class LocOpe_SplitShape {
 	public:
 		/****************** Add ******************/
@@ -1520,7 +1505,6 @@ class LocOpe_SplitShape {
 /***********************
 * class LocOpe_Spliter *
 ***********************/
-%nodefaultctor LocOpe_Spliter;
 class LocOpe_Spliter {
 	public:
 		/****************** DescendantShapes ******************/
@@ -1601,7 +1585,6 @@ class LocOpe_Spliter {
 /****************************
 * class LocOpe_WiresOnShape *
 ****************************/
-%nodefaultctor LocOpe_WiresOnShape;
 class LocOpe_WiresOnShape : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -1771,7 +1754,6 @@ class LocOpe_WiresOnShape : public Standard_Transient {
 /**************************
 * class LocOpe_GluedShape *
 **************************/
-%nodefaultctor LocOpe_GluedShape;
 class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 	public:
 		/****************** Generated ******************/

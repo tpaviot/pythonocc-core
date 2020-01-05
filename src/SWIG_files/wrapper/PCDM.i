@@ -129,7 +129,6 @@ typedef NCollection_Sequence <PCDM_Reference> PCDM_SequenceOfReference;
 * class PCDM *
 *************/
 %rename(pcdm) PCDM;
-%nodefaultctor PCDM;
 class PCDM {
 	public:
 		/****************** FileDriverType ******************/
@@ -373,7 +372,6 @@ class PCDM_Reader : public Standard_Transient {
 /***********************
 * class PCDM_Reference *
 ***********************/
-%nodefaultctor PCDM_Reference;
 class PCDM_Reference {
 	public:
 		/****************** DocumentVersion ******************/
@@ -419,7 +417,6 @@ class PCDM_Reference {
 /*******************************
 * class PCDM_ReferenceIterator *
 *******************************/
-%nodefaultctor PCDM_ReferenceIterator;
 class PCDM_ReferenceIterator : public Standard_Transient {
 	public:
 		/****************** Init ******************/
@@ -500,7 +497,6 @@ class PCDM_Writer : public Standard_Transient {
 /**************************
 * class PCDM_ReadWriter_1 *
 **************************/
-%nodefaultctor PCDM_ReadWriter_1;
 class PCDM_ReadWriter_1 : public PCDM_ReadWriter {
 	public:
 		/****************** PCDM_ReadWriter_1 ******************/
@@ -653,7 +649,6 @@ class PCDM_RetrievalDriver : public PCDM_Reader {
 /***************************
 * class PCDM_StorageDriver *
 ***************************/
-%nodefaultctor PCDM_StorageDriver;
 class PCDM_StorageDriver : public PCDM_Writer {
 	public:
 		/****************** GetFormat ******************/

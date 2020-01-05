@@ -212,7 +212,6 @@ typedef NCollection_IndexedMap <TCollection_AsciiString , Interface_MapAsciiStri
 /*************************
 * class Interface_BitMap *
 *************************/
-%nodefaultctor Interface_BitMap;
 class Interface_BitMap {
 	public:
 		/****************** AddFlag ******************/
@@ -445,7 +444,6 @@ class Interface_BitMap {
 /***************************
 * class Interface_Category *
 ***************************/
-%nodefaultctor Interface_Category;
 class Interface_Category {
 	public:
 		/****************** AddCategory ******************/
@@ -560,7 +558,6 @@ class Interface_Category {
 /************************
 * class Interface_Check *
 ************************/
-%nodefaultctor Interface_Check;
 class Interface_Check : public Standard_Transient {
 	public:
 		/****************** AddFail ******************/
@@ -941,7 +938,6 @@ class Interface_Check : public Standard_Transient {
 /********************************
 * class Interface_CheckIterator *
 ********************************/
-%nodefaultctor Interface_CheckIterator;
 class Interface_CheckIterator {
 	public:
 		/****************** Add ******************/
@@ -1180,7 +1176,6 @@ class Interface_CheckIterator {
 /****************************
 * class Interface_CheckTool *
 ****************************/
-%nodefaultctor Interface_CheckTool;
 class Interface_CheckTool {
 	public:
 		/****************** AnalyseCheckList ******************/
@@ -1355,7 +1350,6 @@ class Interface_CopyControl : public Standard_Transient {
 /***************************
 * class Interface_CopyTool *
 ***************************/
-%nodefaultctor Interface_CopyTool;
 class Interface_CopyTool {
 	public:
 		/****************** Bind ******************/
@@ -1522,7 +1516,6 @@ class Interface_CopyTool {
 /********************************
 * class Interface_EntityCluster *
 ********************************/
-%nodefaultctor Interface_EntityCluster;
 class Interface_EntityCluster : public Standard_Transient {
 	public:
 		/****************** Append ******************/
@@ -1627,7 +1620,6 @@ class Interface_EntityCluster : public Standard_Transient {
 /*********************************
 * class Interface_EntityIterator *
 *********************************/
-%nodefaultctor Interface_EntityIterator;
 class Interface_EntityIterator {
 	public:
 		/****************** AddItem ******************/
@@ -1748,7 +1740,6 @@ class Interface_EntityIterator {
 /*****************************
 * class Interface_EntityList *
 *****************************/
-%nodefaultctor Interface_EntityList;
 class Interface_EntityList {
 	public:
 		/****************** Add ******************/
@@ -1863,7 +1854,6 @@ class Interface_EntityList {
 /********************************
 * class Interface_FileParameter *
 ********************************/
-%nodefaultctor Interface_FileParameter;
 class Interface_FileParameter {
 	public:
 		/****************** CValue ******************/
@@ -2357,7 +2347,6 @@ class Interface_FileReaderTool {
 /******************************
 * class Interface_FloatWriter *
 ******************************/
-%nodefaultctor Interface_FloatWriter;
 class Interface_FloatWriter {
 	public:
 		/****************** Convert ******************/
@@ -2474,7 +2463,6 @@ class Interface_FloatWriter {
 /************************
 * class Interface_GTool *
 ************************/
-%nodefaultctor Interface_GTool;
 class Interface_GTool : public Standard_Transient {
 	public:
 		/****************** ClearEntities ******************/
@@ -2894,7 +2882,6 @@ class Interface_GeneralModule : public Standard_Transient {
 /*****************************************
 * class Interface_GlobalNodeOfGeneralLib *
 *****************************************/
-%nodefaultctor Interface_GlobalNodeOfGeneralLib;
 class Interface_GlobalNodeOfGeneralLib : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -2945,7 +2932,6 @@ class Interface_GlobalNodeOfGeneralLib : public Standard_Transient {
 /****************************************
 * class Interface_GlobalNodeOfReaderLib *
 ****************************************/
-%nodefaultctor Interface_GlobalNodeOfReaderLib;
 class Interface_GlobalNodeOfReaderLib : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -2996,7 +2982,6 @@ class Interface_GlobalNodeOfReaderLib : public Standard_Transient {
 /************************
 * class Interface_Graph *
 ************************/
-%nodefaultctor Interface_Graph;
 class Interface_Graph {
 	public:
 		/****************** BitMap ******************/
@@ -3337,7 +3322,6 @@ class Interface_Graph {
 /*************************
 * class Interface_HGraph *
 *************************/
-%nodefaultctor Interface_HGraph;
 class Interface_HGraph : public Standard_Transient {
 	public:
 		/****************** CGraph ******************/
@@ -3420,7 +3404,6 @@ class Interface_HGraph : public Standard_Transient {
 /**************************
 * class Interface_IntList *
 **************************/
-%nodefaultctor Interface_IntList;
 class Interface_IntList {
 	public:
 		/****************** Add ******************/
@@ -3585,7 +3568,6 @@ class Interface_IntList {
 /*************************
 * class Interface_IntVal *
 *************************/
-%nodefaultctor Interface_IntVal;
 class Interface_IntVal : public Standard_Transient {
 	public:
 
@@ -4157,7 +4139,6 @@ class Interface_InterfaceModel : public Standard_Transient {
 /*****************************
 * class Interface_LineBuffer *
 *****************************/
-%nodefaultctor Interface_LineBuffer;
 class Interface_LineBuffer {
 	public:
 		/****************** Add ******************/
@@ -4290,7 +4271,6 @@ class Interface_LineBuffer {
 /**********************
 * class Interface_MSG *
 **********************/
-%nodefaultctor Interface_MSG;
 class Interface_MSG {
 	public:
 		/****************** Blanks ******************/
@@ -4604,7 +4584,6 @@ class Interface_MapAsciiStringHasher {
 /***********************************
 * class Interface_NodeOfGeneralLib *
 ***********************************/
-%nodefaultctor Interface_NodeOfGeneralLib;
 class Interface_NodeOfGeneralLib : public Standard_Transient {
 	public:
 		/****************** AddNode ******************/
@@ -4653,7 +4632,6 @@ class Interface_NodeOfGeneralLib : public Standard_Transient {
 /**********************************
 * class Interface_NodeOfReaderLib *
 **********************************/
-%nodefaultctor Interface_NodeOfReaderLib;
 class Interface_NodeOfReaderLib : public Standard_Transient {
 	public:
 		/****************** AddNode ******************/
@@ -4702,7 +4680,6 @@ class Interface_NodeOfReaderLib : public Standard_Transient {
 /****************************
 * class Interface_ParamList *
 ****************************/
-%nodefaultctor Interface_ParamList;
 class Interface_ParamList : public Standard_Transient {
 	public:
 		/****************** ChangeValue ******************/
@@ -4776,7 +4753,6 @@ class Interface_ParamList : public Standard_Transient {
 /***************************
 * class Interface_ParamSet *
 ***************************/
-%nodefaultctor Interface_ParamSet;
 class Interface_ParamSet : public Standard_Transient {
 	public:
 		/****************** Append ******************/
@@ -5163,7 +5139,6 @@ class Interface_ReaderModule : public Standard_Transient {
 /*******************************
 * class Interface_ReportEntity *
 *******************************/
-%nodefaultctor Interface_ReportEntity;
 class Interface_ReportEntity : public Standard_Transient {
 	public:
 		/****************** CCheck ******************/
@@ -5254,7 +5229,6 @@ class Interface_ReportEntity : public Standard_Transient {
 /***********************
 * class Interface_STAT *
 ***********************/
-%nodefaultctor Interface_STAT;
 class Interface_STAT {
 	public:
 		/****************** AddPhase ******************/
@@ -5443,7 +5417,6 @@ class Interface_STAT {
 /*****************************
 * class Interface_ShareFlags *
 *****************************/
-%nodefaultctor Interface_ShareFlags;
 class Interface_ShareFlags {
 	public:
 		/****************** Interface_ShareFlags ******************/
@@ -5538,7 +5511,6 @@ class Interface_ShareFlags {
 /****************************
 * class Interface_ShareTool *
 ****************************/
-%nodefaultctor Interface_ShareTool;
 class Interface_ShareTool {
 	public:
 		/****************** All ******************/
@@ -5689,7 +5661,6 @@ class Interface_ShareTool {
 /****************************
 * class Interface_SignLabel *
 ****************************/
-%nodefaultctor Interface_SignLabel;
 class Interface_SignLabel : public MoniTool_SignText {
 	public:
 		/****************** Interface_SignLabel ******************/
@@ -5772,7 +5743,6 @@ class Interface_SignType : public MoniTool_SignText {
 /*****************************
 * class Interface_TypedValue *
 *****************************/
-%nodefaultctor Interface_TypedValue;
 class Interface_TypedValue : public MoniTool_TypedValue {
 	public:
 		/****************** Interface_TypedValue ******************/
@@ -5823,7 +5793,6 @@ class Interface_TypedValue : public MoniTool_TypedValue {
 /***********************************
 * class Interface_UndefinedContent *
 ***********************************/
-%nodefaultctor Interface_UndefinedContent;
 class Interface_UndefinedContent : public Standard_Transient {
 	public:
 		/****************** AddEntity ******************/
@@ -5992,7 +5961,6 @@ class Interface_UndefinedContent : public Standard_Transient {
 /**************************
 * class Interface_CopyMap *
 **************************/
-%nodefaultctor Interface_CopyMap;
 class Interface_CopyMap : public Interface_CopyControl {
 	public:
 		/****************** Bind ******************/
@@ -6049,7 +6017,6 @@ class Interface_CopyMap : public Interface_CopyControl {
 /*******************************
 * class Interface_GraphContent *
 *******************************/
-%nodefaultctor Interface_GraphContent;
 class Interface_GraphContent : public Interface_EntityIterator {
 	public:
 		/****************** Begin ******************/
@@ -6134,7 +6101,6 @@ class Interface_GraphContent : public Interface_EntityIterator {
 /*************************
 * class Interface_Static *
 *************************/
-%nodefaultctor Interface_Static;
 class Interface_Static : public Interface_TypedValue {
 	public:
 		/****************** CDef ******************/

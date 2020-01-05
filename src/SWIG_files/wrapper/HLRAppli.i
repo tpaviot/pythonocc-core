@@ -84,7 +84,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlrappli.html"
 /******************************
 * class HLRAppli_ReflectLines *
 ******************************/
-%nodefaultctor HLRAppli_ReflectLines;
 class HLRAppli_ReflectLines {
 	public:
 		/****************** GetCompoundOf3dEdges ******************/

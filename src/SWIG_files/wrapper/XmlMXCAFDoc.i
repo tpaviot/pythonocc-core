@@ -127,7 +127,6 @@ class XmlMXCAFDoc {
 /*******************************
 * class XmlMXCAFDoc_AreaDriver *
 *******************************/
-%nodefaultctor XmlMXCAFDoc_AreaDriver;
 class XmlMXCAFDoc_AreaDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -178,7 +177,6 @@ class XmlMXCAFDoc_AreaDriver : public XmlMDF_ADriver {
 /******************************************
 * class XmlMXCAFDoc_AssemblyItemRefDriver *
 ******************************************/
-%nodefaultctor XmlMXCAFDoc_AssemblyItemRefDriver;
 class XmlMXCAFDoc_AssemblyItemRefDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -229,7 +227,6 @@ class XmlMXCAFDoc_AssemblyItemRefDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMXCAFDoc_CentroidDriver *
 ***********************************/
-%nodefaultctor XmlMXCAFDoc_CentroidDriver;
 class XmlMXCAFDoc_CentroidDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -280,7 +277,6 @@ class XmlMXCAFDoc_CentroidDriver : public XmlMDF_ADriver {
 /********************************************
 * class XmlMXCAFDoc_ClippingPlaneToolDriver *
 ********************************************/
-%nodefaultctor XmlMXCAFDoc_ClippingPlaneToolDriver;
 class XmlMXCAFDoc_ClippingPlaneToolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -331,7 +327,6 @@ class XmlMXCAFDoc_ClippingPlaneToolDriver : public XmlMDF_ADriver {
 /********************************
 * class XmlMXCAFDoc_ColorDriver *
 ********************************/
-%nodefaultctor XmlMXCAFDoc_ColorDriver;
 class XmlMXCAFDoc_ColorDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -382,7 +377,6 @@ class XmlMXCAFDoc_ColorDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMXCAFDoc_ColorToolDriver *
 ************************************/
-%nodefaultctor XmlMXCAFDoc_ColorToolDriver;
 class XmlMXCAFDoc_ColorToolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -433,7 +427,6 @@ class XmlMXCAFDoc_ColorToolDriver : public XmlMDF_ADriver {
 /********************************
 * class XmlMXCAFDoc_DatumDriver *
 ********************************/
-%nodefaultctor XmlMXCAFDoc_DatumDriver;
 class XmlMXCAFDoc_DatumDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -484,7 +477,6 @@ class XmlMXCAFDoc_DatumDriver : public XmlMDF_ADriver {
 /*********************************
 * class XmlMXCAFDoc_DimTolDriver *
 *********************************/
-%nodefaultctor XmlMXCAFDoc_DimTolDriver;
 class XmlMXCAFDoc_DimTolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -535,7 +527,6 @@ class XmlMXCAFDoc_DimTolDriver : public XmlMDF_ADriver {
 /*************************************
 * class XmlMXCAFDoc_DimTolToolDriver *
 *************************************/
-%nodefaultctor XmlMXCAFDoc_DimTolToolDriver;
 class XmlMXCAFDoc_DimTolToolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -586,7 +577,6 @@ class XmlMXCAFDoc_DimTolToolDriver : public XmlMDF_ADriver {
 /***************************************
 * class XmlMXCAFDoc_DocumentToolDriver *
 ***************************************/
-%nodefaultctor XmlMXCAFDoc_DocumentToolDriver;
 class XmlMXCAFDoc_DocumentToolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -637,7 +627,6 @@ class XmlMXCAFDoc_DocumentToolDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMXCAFDoc_GraphNodeDriver *
 ************************************/
-%nodefaultctor XmlMXCAFDoc_GraphNodeDriver;
 class XmlMXCAFDoc_GraphNodeDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -688,7 +677,6 @@ class XmlMXCAFDoc_GraphNodeDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMXCAFDoc_LayerToolDriver *
 ************************************/
-%nodefaultctor XmlMXCAFDoc_LayerToolDriver;
 class XmlMXCAFDoc_LayerToolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -739,7 +727,6 @@ class XmlMXCAFDoc_LayerToolDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMXCAFDoc_LocationDriver *
 ***********************************/
-%nodefaultctor XmlMXCAFDoc_LocationDriver;
 class XmlMXCAFDoc_LocationDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -821,7 +808,6 @@ class XmlMXCAFDoc_LocationDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMXCAFDoc_MaterialDriver *
 ***********************************/
-%nodefaultctor XmlMXCAFDoc_MaterialDriver;
 class XmlMXCAFDoc_MaterialDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -872,7 +858,6 @@ class XmlMXCAFDoc_MaterialDriver : public XmlMDF_ADriver {
 /***************************************
 * class XmlMXCAFDoc_MaterialToolDriver *
 ***************************************/
-%nodefaultctor XmlMXCAFDoc_MaterialToolDriver;
 class XmlMXCAFDoc_MaterialToolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -962,7 +947,6 @@ class XmlMXCAFDoc_NoteDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMXCAFDoc_NotesToolDriver *
 ************************************/
-%nodefaultctor XmlMXCAFDoc_NotesToolDriver;
 class XmlMXCAFDoc_NotesToolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1013,7 +997,6 @@ class XmlMXCAFDoc_NotesToolDriver : public XmlMDF_ADriver {
 /************************************
 * class XmlMXCAFDoc_ShapeToolDriver *
 ************************************/
-%nodefaultctor XmlMXCAFDoc_ShapeToolDriver;
 class XmlMXCAFDoc_ShapeToolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1064,7 +1047,6 @@ class XmlMXCAFDoc_ShapeToolDriver : public XmlMDF_ADriver {
 /***********************************
 * class XmlMXCAFDoc_ViewToolDriver *
 ***********************************/
-%nodefaultctor XmlMXCAFDoc_ViewToolDriver;
 class XmlMXCAFDoc_ViewToolDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1115,7 +1097,6 @@ class XmlMXCAFDoc_ViewToolDriver : public XmlMDF_ADriver {
 /*********************************
 * class XmlMXCAFDoc_VolumeDriver *
 *********************************/
-%nodefaultctor XmlMXCAFDoc_VolumeDriver;
 class XmlMXCAFDoc_VolumeDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1166,7 +1147,6 @@ class XmlMXCAFDoc_VolumeDriver : public XmlMDF_ADriver {
 /**************************************
 * class XmlMXCAFDoc_NoteBinDataDriver *
 **************************************/
-%nodefaultctor XmlMXCAFDoc_NoteBinDataDriver;
 class XmlMXCAFDoc_NoteBinDataDriver : public XmlMXCAFDoc_NoteDriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1217,7 +1197,6 @@ class XmlMXCAFDoc_NoteBinDataDriver : public XmlMXCAFDoc_NoteDriver {
 /**************************************
 * class XmlMXCAFDoc_NoteCommentDriver *
 **************************************/
-%nodefaultctor XmlMXCAFDoc_NoteCommentDriver;
 class XmlMXCAFDoc_NoteCommentDriver : public XmlMXCAFDoc_NoteDriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -1268,7 +1247,6 @@ class XmlMXCAFDoc_NoteCommentDriver : public XmlMXCAFDoc_NoteDriver {
 /**************************************
 * class XmlMXCAFDoc_NoteBalloonDriver *
 **************************************/
-%nodefaultctor XmlMXCAFDoc_NoteBalloonDriver;
 class XmlMXCAFDoc_NoteBalloonDriver : public XmlMXCAFDoc_NoteCommentDriver {
 	public:
 		/****************** NewEmpty ******************/

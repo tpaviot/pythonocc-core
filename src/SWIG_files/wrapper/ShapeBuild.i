@@ -358,7 +358,6 @@ class ShapeBuild_Edge {
 /***************************
 * class ShapeBuild_ReShape *
 ***************************/
-%nodefaultctor ShapeBuild_ReShape;
 class ShapeBuild_ReShape : public BRepTools_ReShape {
 	public:
 		/****************** Apply ******************/

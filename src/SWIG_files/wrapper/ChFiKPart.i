@@ -94,6 +94,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfikpart.html"
 
 /* templates */
 %template(ChFiKPart_RstMap) NCollection_DataMap <Standard_Integer , opencascade::handle <Adaptor2d_HCurve2d>, TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , opencascade::handle <Adaptor2d_HCurve2d>, TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (ChFiKPart_RstMap::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

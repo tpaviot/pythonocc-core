@@ -75,7 +75,6 @@ typedef NCollection_Sequence <Hatch_Parameter> Hatch_SequenceOfParameter;
 /**********************
 * class Hatch_Hatcher *
 **********************/
-%nodefaultctor Hatch_Hatcher;
 class Hatch_Hatcher {
 	public:
 		/****************** AddLine ******************/
@@ -292,7 +291,6 @@ class Hatch_Hatcher {
 /*******************
 * class Hatch_Line *
 *******************/
-%nodefaultctor Hatch_Line;
 class Hatch_Line {
 	public:
 		/****************** AddIntersection ******************/
@@ -337,7 +335,6 @@ class Hatch_Line {
 /************************
 * class Hatch_Parameter *
 ************************/
-%nodefaultctor Hatch_Parameter;
 class Hatch_Parameter {
 	public:
 		/****************** Hatch_Parameter ******************/

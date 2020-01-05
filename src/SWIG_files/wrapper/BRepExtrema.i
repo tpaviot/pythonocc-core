@@ -82,6 +82,18 @@ enum BRepExtrema_SupportType {
 %template(BRepExtrema_SeqOfSolution) NCollection_Sequence <BRepExtrema_SolutionElem>;
 %template(BRepExtrema_ShapeList) NCollection_Vector <TopoDS_Face>;
 %template(BRepExtrema_MapOfIntegerPackedMapOfInteger) NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger>;
+
+%extend NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (BRepExtrema_MapOfIntegerPackedMapOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 /* end templates declaration */
 
 /* typedefs */
@@ -93,7 +105,6 @@ typedef NCollection_DataMap <Standard_Integer , TColStd_PackedMapOfInteger> BRep
 /***********************************
 * class BRepExtrema_DistShapeShape *
 ***********************************/
-%nodefaultctor BRepExtrema_DistShapeShape;
 class BRepExtrema_DistShapeShape {
 	public:
 		/****************** BRepExtrema_DistShapeShape ******************/
@@ -311,7 +322,6 @@ class BRepExtrema_DistShapeShape {
 /*******************************
 * class BRepExtrema_DistanceSS *
 *******************************/
-%nodefaultctor BRepExtrema_DistanceSS;
 class BRepExtrema_DistanceSS {
 	public:
 		/****************** BRepExtrema_DistanceSS ******************/
@@ -408,7 +418,6 @@ class BRepExtrema_DistanceSS {
 /**********************************
 * class BRepExtrema_ElementFilter *
 **********************************/
-%nodefaultctor BRepExtrema_ElementFilter;
 class BRepExtrema_ElementFilter {
 	public:
 /* public enums */
@@ -442,7 +451,6 @@ enum FilterResult {
 /**************************
 * class BRepExtrema_ExtCC *
 **************************/
-%nodefaultctor BRepExtrema_ExtCC;
 class BRepExtrema_ExtCC {
 	public:
 		/****************** BRepExtrema_ExtCC ******************/
@@ -567,7 +575,6 @@ class BRepExtrema_ExtCC {
 /**************************
 * class BRepExtrema_ExtCF *
 **************************/
-%nodefaultctor BRepExtrema_ExtCF;
 class BRepExtrema_ExtCF {
 	public:
 		/****************** BRepExtrema_ExtCF ******************/
@@ -678,7 +685,6 @@ class BRepExtrema_ExtCF {
 /**************************
 * class BRepExtrema_ExtFF *
 **************************/
-%nodefaultctor BRepExtrema_ExtFF;
 class BRepExtrema_ExtFF {
 	public:
 		/****************** BRepExtrema_ExtFF ******************/
@@ -791,7 +797,6 @@ class BRepExtrema_ExtFF {
 /**************************
 * class BRepExtrema_ExtPC *
 **************************/
-%nodefaultctor BRepExtrema_ExtPC;
 class BRepExtrema_ExtPC {
 	public:
 		/****************** BRepExtrema_ExtPC ******************/
@@ -894,7 +899,6 @@ class BRepExtrema_ExtPC {
 /**************************
 * class BRepExtrema_ExtPF *
 **************************/
-%nodefaultctor BRepExtrema_ExtPF;
 class BRepExtrema_ExtPF {
 	public:
 		/****************** BRepExtrema_ExtPF ******************/
@@ -1003,7 +1007,6 @@ class BRepExtrema_ExtPF {
 /*************************
 * class BRepExtrema_Poly *
 *************************/
-%nodefaultctor BRepExtrema_Poly;
 class BRepExtrema_Poly {
 	public:
 		/****************** Distance ******************/
@@ -1034,7 +1037,6 @@ class BRepExtrema_Poly {
 /***********************************
 * class BRepExtrema_ShapeProximity *
 ***********************************/
-%nodefaultctor BRepExtrema_ShapeProximity;
 class BRepExtrema_ShapeProximity {
 	public:
 		/****************** BRepExtrema_ShapeProximity ******************/
@@ -1151,7 +1153,6 @@ class BRepExtrema_ShapeProximity {
 /*********************************
 * class BRepExtrema_SolutionElem *
 *********************************/
-%nodefaultctor BRepExtrema_SolutionElem;
 class BRepExtrema_SolutionElem {
 	public:
 		/****************** BRepExtrema_SolutionElem ******************/
@@ -1274,7 +1275,6 @@ class BRepExtrema_SolutionElem {
 /********************************
 * class BRepExtrema_TriangleSet *
 ********************************/
-%nodefaultctor BRepExtrema_TriangleSet;
 class BRepExtrema_TriangleSet : public BVH_PrimitiveSet3d {
 	public:
 		/****************** BRepExtrema_TriangleSet ******************/
@@ -1378,7 +1378,6 @@ class BRepExtrema_TriangleSet : public BVH_PrimitiveSet3d {
 /*************************************
 * class BRepExtrema_SelfIntersection *
 *************************************/
-%nodefaultctor BRepExtrema_SelfIntersection;
 class BRepExtrema_SelfIntersection : public BRepExtrema_ElementFilter {
 	public:
 		/****************** BRepExtrema_SelfIntersection ******************/

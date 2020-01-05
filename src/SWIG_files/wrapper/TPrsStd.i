@@ -359,7 +359,6 @@ class TPrsStd_Driver : public Standard_Transient {
 /****************************
 * class TPrsStd_DriverTable *
 ****************************/
-%nodefaultctor TPrsStd_DriverTable;
 class TPrsStd_DriverTable : public Standard_Transient {
 	public:
 		/****************** AddDriver ******************/
@@ -428,7 +427,6 @@ class TPrsStd_DriverTable : public Standard_Transient {
 /***************************
 * class TPrsStd_AxisDriver *
 ***************************/
-%nodefaultctor TPrsStd_AxisDriver;
 class TPrsStd_AxisDriver : public TPrsStd_Driver {
 	public:
 		/****************** TPrsStd_AxisDriver ******************/
@@ -461,7 +459,6 @@ class TPrsStd_AxisDriver : public TPrsStd_Driver {
 /*********************************
 * class TPrsStd_ConstraintDriver *
 *********************************/
-%nodefaultctor TPrsStd_ConstraintDriver;
 class TPrsStd_ConstraintDriver : public TPrsStd_Driver {
 	public:
 		/****************** TPrsStd_ConstraintDriver ******************/
@@ -494,7 +491,6 @@ class TPrsStd_ConstraintDriver : public TPrsStd_Driver {
 /*******************************
 * class TPrsStd_GeometryDriver *
 *******************************/
-%nodefaultctor TPrsStd_GeometryDriver;
 class TPrsStd_GeometryDriver : public TPrsStd_Driver {
 	public:
 		/****************** TPrsStd_GeometryDriver ******************/
@@ -527,7 +523,6 @@ class TPrsStd_GeometryDriver : public TPrsStd_Driver {
 /*********************************
 * class TPrsStd_NamedShapeDriver *
 *********************************/
-%nodefaultctor TPrsStd_NamedShapeDriver;
 class TPrsStd_NamedShapeDriver : public TPrsStd_Driver {
 	public:
 		/****************** TPrsStd_NamedShapeDriver ******************/
@@ -560,7 +555,6 @@ class TPrsStd_NamedShapeDriver : public TPrsStd_Driver {
 /****************************
 * class TPrsStd_PlaneDriver *
 ****************************/
-%nodefaultctor TPrsStd_PlaneDriver;
 class TPrsStd_PlaneDriver : public TPrsStd_Driver {
 	public:
 		/****************** TPrsStd_PlaneDriver ******************/
@@ -593,7 +587,6 @@ class TPrsStd_PlaneDriver : public TPrsStd_Driver {
 /****************************
 * class TPrsStd_PointDriver *
 ****************************/
-%nodefaultctor TPrsStd_PointDriver;
 class TPrsStd_PointDriver : public TPrsStd_Driver {
 	public:
 		/****************** TPrsStd_PointDriver ******************/

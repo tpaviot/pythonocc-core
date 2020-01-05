@@ -447,7 +447,6 @@ class GeomFill {
 /*************************
 * class GeomFill_AppSurf *
 *************************/
-%nodefaultctor GeomFill_AppSurf;
 class GeomFill_AppSurf : public AppBlend_Approx {
 	public:
 		/****************** Continuity ******************/
@@ -730,7 +729,6 @@ class GeomFill_AppSurf : public AppBlend_Approx {
 /**************************
 * class GeomFill_AppSweep *
 **************************/
-%nodefaultctor GeomFill_AppSweep;
 class GeomFill_AppSweep : public AppBlend_Approx {
 	public:
 		/****************** Continuity ******************/
@@ -1013,7 +1011,6 @@ class GeomFill_AppSweep : public AppBlend_Approx {
 /*******************************
 * class GeomFill_BSplineCurves *
 *******************************/
-%nodefaultctor GeomFill_BSplineCurves;
 class GeomFill_BSplineCurves {
 	public:
 		/****************** GeomFill_BSplineCurves ******************/
@@ -1122,7 +1119,6 @@ class GeomFill_BSplineCurves {
 /******************************
 * class GeomFill_BezierCurves *
 ******************************/
-%nodefaultctor GeomFill_BezierCurves;
 class GeomFill_BezierCurves {
 	public:
 		/****************** GeomFill_BezierCurves ******************/
@@ -1357,7 +1353,6 @@ class GeomFill_Boundary : public Standard_Transient {
 /***********************************
 * class GeomFill_CircularBlendFunc *
 ***********************************/
-%nodefaultctor GeomFill_CircularBlendFunc;
 class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 	public:
 		/****************** BarycentreOfSurf ******************/
@@ -1574,7 +1569,6 @@ class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 /************************************
 * class GeomFill_ConstrainedFilling *
 ************************************/
-%nodefaultctor GeomFill_ConstrainedFilling;
 class GeomFill_ConstrainedFilling {
 	public:
 		/****************** Boundary ******************/
@@ -1702,7 +1696,6 @@ class GeomFill_ConstrainedFilling {
 /*******************************
 * class GeomFill_CoonsAlgPatch *
 *******************************/
-%nodefaultctor GeomFill_CoonsAlgPatch;
 class GeomFill_CoonsAlgPatch : public Standard_Transient {
 	public:
 		/****************** Bound ******************/
@@ -1814,7 +1807,6 @@ class GeomFill_CoonsAlgPatch : public Standard_Transient {
 /*****************************
 * class GeomFill_CornerState *
 *****************************/
-%nodefaultctor GeomFill_CornerState;
 class GeomFill_CornerState {
 	public:
 		/****************** Constraint ******************/
@@ -1894,7 +1886,6 @@ class GeomFill_CornerState {
 /*************************
 * class GeomFill_Filling *
 *************************/
-%nodefaultctor GeomFill_Filling;
 class GeomFill_Filling {
 	public:
 		/****************** GeomFill_Filling ******************/
@@ -1943,7 +1934,6 @@ class GeomFill_Filling {
 /*******************************
 * class GeomFill_FunctionDraft *
 *******************************/
-%nodefaultctor GeomFill_FunctionDraft;
 class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Deriv2T ******************/
@@ -2069,7 +2059,6 @@ class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 /*******************************
 * class GeomFill_FunctionGuide *
 *******************************/
-%nodefaultctor GeomFill_FunctionGuide;
 class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** DerivT ******************/
@@ -2166,7 +2155,6 @@ class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 /**********************
 * class GeomFill_Line *
 **********************/
-%nodefaultctor GeomFill_Line;
 class GeomFill_Line : public Standard_Transient {
 	public:
 		/****************** GeomFill_Line ******************/
@@ -2207,7 +2195,6 @@ class GeomFill_Line : public Standard_Transient {
 /*****************************
 * class GeomFill_LocFunction *
 *****************************/
-%nodefaultctor GeomFill_LocFunction;
 class GeomFill_LocFunction {
 	public:
 		/****************** D0 ******************/
@@ -2537,7 +2524,6 @@ class GeomFill_LocationLaw : public Standard_Transient {
 /**********************
 * class GeomFill_Pipe *
 **********************/
-%nodefaultctor GeomFill_Pipe;
 class GeomFill_Pipe {
 	public:
 		/****************** ErrorOnSurf ******************/
@@ -2825,7 +2811,6 @@ class GeomFill_Pipe {
 /**************************
 * class GeomFill_PlanFunc *
 **************************/
-%nodefaultctor GeomFill_PlanFunc;
 class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	public:
 		/****************** D2 ******************/
@@ -2930,7 +2915,6 @@ class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 /*************************************
 * class GeomFill_PolynomialConvertor *
 *************************************/
-%nodefaultctor GeomFill_PolynomialConvertor;
 class GeomFill_PolynomialConvertor {
 	public:
 		/****************** GeomFill_PolynomialConvertor ******************/
@@ -3036,7 +3020,6 @@ class GeomFill_PolynomialConvertor {
 /**************************
 * class GeomFill_Profiler *
 **************************/
-%nodefaultctor GeomFill_Profiler;
 class GeomFill_Profiler {
 	public:
 		/****************** AddCurve ******************/
@@ -3131,7 +3114,6 @@ class GeomFill_Profiler {
 /***************************************
 * class GeomFill_QuasiAngularConvertor *
 ***************************************/
-%nodefaultctor GeomFill_QuasiAngularConvertor;
 class GeomFill_QuasiAngularConvertor {
 	public:
 		/****************** GeomFill_QuasiAngularConvertor ******************/
@@ -3488,7 +3470,6 @@ class GeomFill_SectionLaw : public Standard_Transient {
 /**********************************
 * class GeomFill_SectionPlacement *
 **********************************/
-%nodefaultctor GeomFill_SectionPlacement;
 class GeomFill_SectionPlacement {
 	public:
 		/****************** Angle ******************/
@@ -3595,7 +3576,6 @@ class GeomFill_SectionPlacement {
 /***************************
 * class GeomFill_SnglrFunc *
 ***************************/
-%nodefaultctor GeomFill_SnglrFunc;
 class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 	public:
 		/****************** D0 ******************/
@@ -3746,7 +3726,6 @@ class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 /***********************
 * class GeomFill_Sweep *
 ***********************/
-%nodefaultctor GeomFill_Sweep;
 class GeomFill_Sweep {
 	public:
 		/****************** Build ******************/
@@ -3900,7 +3879,6 @@ class GeomFill_Sweep {
 /*******************************
 * class GeomFill_SweepFunction *
 *******************************/
-%nodefaultctor GeomFill_SweepFunction;
 class GeomFill_SweepFunction : public Approx_SweepFunction {
 	public:
 		/****************** BarycentreOfSurf ******************/
@@ -4133,7 +4111,6 @@ class GeomFill_SweepFunction : public Approx_SweepFunction {
 /************************
 * class GeomFill_Tensor *
 ************************/
-%nodefaultctor GeomFill_Tensor;
 class GeomFill_Tensor {
 	public:
 
@@ -4415,7 +4392,6 @@ class GeomFill_TrihedronLaw : public Standard_Transient {
 /*******************************
 * class GeomFill_BoundWithSurf *
 *******************************/
-%nodefaultctor GeomFill_BoundWithSurf;
 class GeomFill_BoundWithSurf : public GeomFill_Boundary {
 	public:
 		/****************** Bounds ******************/
@@ -4518,7 +4494,6 @@ class GeomFill_BoundWithSurf : public GeomFill_Boundary {
 /**********************************
 * class GeomFill_ConstantBiNormal *
 **********************************/
-%nodefaultctor GeomFill_ConstantBiNormal;
 class GeomFill_ConstantBiNormal : public GeomFill_TrihedronLaw {
 	public:
 		/****************** Copy ******************/
@@ -4656,7 +4631,6 @@ class GeomFill_ConstantBiNormal : public GeomFill_TrihedronLaw {
 /***********************
 * class GeomFill_Coons *
 ***********************/
-%nodefaultctor GeomFill_Coons;
 class GeomFill_Coons : public GeomFill_Filling {
 	public:
 		/****************** GeomFill_Coons ******************/
@@ -4744,7 +4718,6 @@ class GeomFill_Coons : public GeomFill_Filling {
 /*********************************
 * class GeomFill_CorrectedFrenet *
 *********************************/
-%nodefaultctor GeomFill_CorrectedFrenet;
 class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
 	public:
 		/****************** Copy ******************/
@@ -4902,7 +4875,6 @@ class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
 /***********************************
 * class GeomFill_CurveAndTrihedron *
 ***********************************/
-%nodefaultctor GeomFill_CurveAndTrihedron;
 class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 	public:
 		/****************** Copy ******************/
@@ -5110,7 +5082,6 @@ class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 /************************
 * class GeomFill_Curved *
 ************************/
-%nodefaultctor GeomFill_Curved;
 class GeomFill_Curved : public GeomFill_Filling {
 	public:
 		/****************** GeomFill_Curved ******************/
@@ -5242,7 +5213,6 @@ class GeomFill_Curved : public GeomFill_Filling {
 /*************************
 * class GeomFill_Darboux *
 *************************/
-%nodefaultctor GeomFill_Darboux;
 class GeomFill_Darboux : public GeomFill_TrihedronLaw {
 	public:
 		/****************** Copy ******************/
@@ -5371,7 +5341,6 @@ class GeomFill_Darboux : public GeomFill_TrihedronLaw {
 /**********************************
 * class GeomFill_DegeneratedBound *
 **********************************/
-%nodefaultctor GeomFill_DegeneratedBound;
 class GeomFill_DegeneratedBound : public GeomFill_Boundary {
 	public:
 		/****************** Bounds ******************/
@@ -5454,7 +5423,6 @@ class GeomFill_DegeneratedBound : public GeomFill_Boundary {
 /***********************************
 * class GeomFill_DiscreteTrihedron *
 ***********************************/
-%nodefaultctor GeomFill_DiscreteTrihedron;
 class GeomFill_DiscreteTrihedron : public GeomFill_TrihedronLaw {
 	public:
 		/****************** Copy ******************/
@@ -5595,7 +5563,6 @@ class GeomFill_DiscreteTrihedron : public GeomFill_TrihedronLaw {
 /********************************
 * class GeomFill_DraftTrihedron *
 ********************************/
-%nodefaultctor GeomFill_DraftTrihedron;
 class GeomFill_DraftTrihedron : public GeomFill_TrihedronLaw {
 	public:
 		/****************** Copy ******************/
@@ -5734,7 +5701,6 @@ class GeomFill_DraftTrihedron : public GeomFill_TrihedronLaw {
 /********************************
 * class GeomFill_EvolvedSection *
 ********************************/
-%nodefaultctor GeomFill_EvolvedSection;
 class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 	public:
 		/****************** BSplineSurface ******************/
@@ -5957,7 +5923,6 @@ class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 /***********************
 * class GeomFill_Fixed *
 ***********************/
-%nodefaultctor GeomFill_Fixed;
 class GeomFill_Fixed : public GeomFill_TrihedronLaw {
 	public:
 		/****************** Copy ******************/
@@ -6084,7 +6049,6 @@ class GeomFill_Fixed : public GeomFill_TrihedronLaw {
 /************************
 * class GeomFill_Frenet *
 ************************/
-%nodefaultctor GeomFill_Frenet;
 class GeomFill_Frenet : public GeomFill_TrihedronLaw {
 	public:
 		/****************** Copy ******************/
@@ -6225,7 +6189,6 @@ class GeomFill_Frenet : public GeomFill_TrihedronLaw {
 /***************************
 * class GeomFill_Generator *
 ***************************/
-%nodefaultctor GeomFill_Generator;
 class GeomFill_Generator : public GeomFill_Profiler {
 	public:
 		/****************** GeomFill_Generator ******************/
@@ -6258,7 +6221,6 @@ class GeomFill_Generator : public GeomFill_Profiler {
 /*******************************
 * class GeomFill_LocationDraft *
 *******************************/
-%nodefaultctor GeomFill_LocationDraft;
 class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 	public:
 		/****************** Copy ******************/
@@ -6524,7 +6486,6 @@ class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 /*******************************
 * class GeomFill_LocationGuide *
 *******************************/
-%nodefaultctor GeomFill_LocationGuide;
 class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 	public:
 		/****************** ComputeAutomaticLaw ******************/
@@ -6830,7 +6791,6 @@ class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 /**********************************
 * class GeomFill_SectionGenerator *
 **********************************/
-%nodefaultctor GeomFill_SectionGenerator;
 class GeomFill_SectionGenerator : public GeomFill_Profiler {
 	public:
 		/****************** GeomFill_SectionGenerator ******************/
@@ -6925,7 +6885,6 @@ class GeomFill_SectionGenerator : public GeomFill_Profiler {
 /*****************************
 * class GeomFill_SimpleBound *
 *****************************/
-%nodefaultctor GeomFill_SimpleBound;
 class GeomFill_SimpleBound : public GeomFill_Boundary {
 	public:
 		/****************** Bounds ******************/
@@ -7005,7 +6964,6 @@ class GeomFill_SimpleBound : public GeomFill_Boundary {
 /*************************
 * class GeomFill_Stretch *
 *************************/
-%nodefaultctor GeomFill_Stretch;
 class GeomFill_Stretch : public GeomFill_Filling {
 	public:
 		/****************** GeomFill_Stretch ******************/
@@ -7093,7 +7051,6 @@ class GeomFill_Stretch : public GeomFill_Filling {
 /****************************
 * class GeomFill_TgtOnCoons *
 ****************************/
-%nodefaultctor GeomFill_TgtOnCoons;
 class GeomFill_TgtOnCoons : public GeomFill_TgtField {
 	public:
 		/****************** D1 ******************/
@@ -7184,7 +7141,6 @@ class GeomFill_TrihedronWithGuide : public GeomFill_TrihedronLaw {
 /********************************
 * class GeomFill_UniformSection *
 ********************************/
-%nodefaultctor GeomFill_UniformSection;
 class GeomFill_UniformSection : public GeomFill_SectionLaw {
 	public:
 		/****************** BSplineSurface ******************/
@@ -7409,7 +7365,6 @@ class GeomFill_UniformSection : public GeomFill_SectionLaw {
 /**********************************
 * class GeomFill_GuideTrihedronAC *
 **********************************/
-%nodefaultctor GeomFill_GuideTrihedronAC;
 class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
 	public:
 		/****************** Copy ******************/
@@ -7568,7 +7523,6 @@ class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
 /************************************
 * class GeomFill_GuideTrihedronPlan *
 ************************************/
-%nodefaultctor GeomFill_GuideTrihedronPlan;
 class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 	public:
 		/****************** Copy ******************/

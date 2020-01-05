@@ -267,7 +267,6 @@ class ProjLib {
 /***********************************
 * class ProjLib_CompProjectedCurve *
 ***********************************/
-%nodefaultctor ProjLib_CompProjectedCurve;
 class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 	public:
 		/****************** Bounds ******************/
@@ -521,7 +520,6 @@ class ProjLib_CompProjectedCurve : public Adaptor2d_Curve2d {
 /******************************
 * class ProjLib_ComputeApprox *
 ******************************/
-%nodefaultctor ProjLib_ComputeApprox;
 class ProjLib_ComputeApprox {
 	public:
 		/****************** BSpline ******************/
@@ -614,7 +612,6 @@ class ProjLib_ComputeApprox {
 /********************************************
 * class ProjLib_ComputeApproxOnPolarSurface *
 ********************************************/
-%nodefaultctor ProjLib_ComputeApproxOnPolarSurface;
 class ProjLib_ComputeApproxOnPolarSurface {
 	public:
 		/****************** BSpline ******************/
@@ -786,7 +783,6 @@ class ProjLib_ComputeApproxOnPolarSurface {
 /************************************
 * class ProjLib_HCompProjectedCurve *
 ************************************/
-%nodefaultctor ProjLib_HCompProjectedCurve;
 class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
 	public:
 		/****************** ChangeCurve2d ******************/
@@ -837,7 +833,6 @@ class ProjLib_HCompProjectedCurve : public Adaptor2d_HCurve2d {
 /********************************
 * class ProjLib_HProjectedCurve *
 ********************************/
-%nodefaultctor ProjLib_HProjectedCurve;
 class ProjLib_HProjectedCurve : public Adaptor2d_HCurve2d {
 	public:
 		/****************** ChangeCurve2d ******************/
@@ -888,7 +883,6 @@ class ProjLib_HProjectedCurve : public Adaptor2d_HCurve2d {
 /************************
 * class ProjLib_PrjFunc *
 ************************/
-%nodefaultctor ProjLib_PrjFunc;
 class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/
@@ -966,7 +960,6 @@ class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 /***************************
 * class ProjLib_PrjResolve *
 ***************************/
-%nodefaultctor ProjLib_PrjResolve;
 class ProjLib_PrjResolve {
 	public:
 		/****************** IsDone ******************/
@@ -1026,7 +1019,6 @@ class ProjLib_PrjResolve {
 /*******************************
 * class ProjLib_ProjectOnPlane *
 *******************************/
-%nodefaultctor ProjLib_ProjectOnPlane;
 class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 	public:
 		/****************** BSpline ******************/
@@ -1298,7 +1290,6 @@ class ProjLib_ProjectOnPlane : public Adaptor3d_Curve {
 /*********************************
 * class ProjLib_ProjectOnSurface *
 *********************************/
-%nodefaultctor ProjLib_ProjectOnSurface;
 class ProjLib_ProjectOnSurface {
 	public:
 		/****************** BSpline ******************/
@@ -1337,7 +1328,6 @@ class ProjLib_ProjectOnSurface {
 /*******************************
 * class ProjLib_ProjectedCurve *
 *******************************/
-%nodefaultctor ProjLib_ProjectedCurve;
 class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 	public:
 		/****************** BSpline ******************/
@@ -1647,7 +1637,6 @@ class ProjLib_ProjectedCurve : public Adaptor2d_Curve2d {
 /**************************
 * class ProjLib_Projector *
 **************************/
-%nodefaultctor ProjLib_Projector;
 class ProjLib_Projector {
 	public:
 		/****************** BSpline ******************/
@@ -1813,7 +1802,6 @@ class ProjLib_Projector {
 /*********************
 * class ProjLib_Cone *
 *********************/
-%nodefaultctor ProjLib_Cone;
 class ProjLib_Cone : public ProjLib_Projector {
 	public:
 		/****************** Init ******************/
@@ -1904,7 +1892,6 @@ class ProjLib_Cone : public ProjLib_Projector {
 /*************************
 * class ProjLib_Cylinder *
 *************************/
-%nodefaultctor ProjLib_Cylinder;
 class ProjLib_Cylinder : public ProjLib_Projector {
 	public:
 		/****************** Init ******************/
@@ -2005,7 +1992,6 @@ class ProjLib_Cylinder : public ProjLib_Projector {
 /**********************
 * class ProjLib_Plane *
 **********************/
-%nodefaultctor ProjLib_Plane;
 class ProjLib_Plane : public ProjLib_Projector {
 	public:
 		/****************** Init ******************/
@@ -2126,7 +2112,6 @@ class ProjLib_Plane : public ProjLib_Projector {
 /***********************
 * class ProjLib_Sphere *
 ***********************/
-%nodefaultctor ProjLib_Sphere;
 class ProjLib_Sphere : public ProjLib_Projector {
 	public:
 		/****************** Init ******************/
@@ -2215,7 +2200,6 @@ class ProjLib_Sphere : public ProjLib_Projector {
 /**********************
 * class ProjLib_Torus *
 **********************/
-%nodefaultctor ProjLib_Torus;
 class ProjLib_Torus : public ProjLib_Projector {
 	public:
 		/****************** Init ******************/

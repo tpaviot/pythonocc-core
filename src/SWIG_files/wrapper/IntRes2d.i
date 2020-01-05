@@ -88,7 +88,6 @@ typedef NCollection_Sequence <IntRes2d_IntersectionPoint> IntRes2d_SequenceOfInt
 /************************
 * class IntRes2d_Domain *
 ************************/
-%nodefaultctor IntRes2d_Domain;
 class IntRes2d_Domain {
 	public:
 		/****************** EquivalentParameters ******************/
@@ -316,7 +315,6 @@ class IntRes2d_Intersection {
 /***********************************
 * class IntRes2d_IntersectionPoint *
 ***********************************/
-%nodefaultctor IntRes2d_IntersectionPoint;
 class IntRes2d_IntersectionPoint {
 	public:
 		/****************** IntRes2d_IntersectionPoint ******************/
@@ -403,7 +401,6 @@ class IntRes2d_IntersectionPoint {
 /*************************************
 * class IntRes2d_IntersectionSegment *
 *************************************/
-%nodefaultctor IntRes2d_IntersectionSegment;
 class IntRes2d_IntersectionSegment {
 	public:
 		/****************** FirstPoint ******************/
@@ -488,7 +485,6 @@ class IntRes2d_IntersectionSegment {
 /****************************
 * class IntRes2d_Transition *
 ****************************/
-%nodefaultctor IntRes2d_Transition;
 class IntRes2d_Transition {
 	public:
 		/****************** IntRes2d_Transition ******************/

@@ -88,7 +88,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepap242.html"
 /******************************
 * class StepAP242_IdAttribute *
 ******************************/
-%nodefaultctor StepAP242_IdAttribute;
 class StepAP242_IdAttribute : public Standard_Transient {
 	public:
 		/****************** AttributeValue ******************/
@@ -148,7 +147,6 @@ class StepAP242_IdAttribute : public Standard_Transient {
 /************************************
 * class StepAP242_IdAttributeSelect *
 ************************************/
-%nodefaultctor StepAP242_IdAttributeSelect;
 class StepAP242_IdAttributeSelect : public StepData_SelectType {
 	public:
 		/****************** Action ******************/
@@ -243,7 +241,6 @@ class StepAP242_IdAttributeSelect : public StepData_SelectType {
 /****************************************************
 * class StepAP242_ItemIdentifiedRepresentationUsage *
 ****************************************************/
-%nodefaultctor StepAP242_ItemIdentifiedRepresentationUsage;
 class StepAP242_ItemIdentifiedRepresentationUsage : public Standard_Transient {
 	public:
 		/****************** Definition ******************/
@@ -376,7 +373,6 @@ class StepAP242_ItemIdentifiedRepresentationUsage : public Standard_Transient {
 /**************************************************************
 * class StepAP242_ItemIdentifiedRepresentationUsageDefinition *
 **************************************************************/
-%nodefaultctor StepAP242_ItemIdentifiedRepresentationUsageDefinition;
 class StepAP242_ItemIdentifiedRepresentationUsageDefinition : public StepData_SelectType {
 	public:
 		/****************** AppliedApprovalAssignment ******************/
@@ -507,7 +503,6 @@ class StepAP242_ItemIdentifiedRepresentationUsageDefinition : public StepData_Se
 /*************************************************
 * class StepAP242_DraughtingModelItemAssociation *
 *************************************************/
-%nodefaultctor StepAP242_DraughtingModelItemAssociation;
 class StepAP242_DraughtingModelItemAssociation : public StepAP242_ItemIdentifiedRepresentationUsage {
 	public:
 		/****************** StepAP242_DraughtingModelItemAssociation ******************/
@@ -529,7 +524,6 @@ class StepAP242_DraughtingModelItemAssociation : public StepAP242_ItemIdentified
 /*********************************************
 * class StepAP242_GeometricItemSpecificUsage *
 *********************************************/
-%nodefaultctor StepAP242_GeometricItemSpecificUsage;
 class StepAP242_GeometricItemSpecificUsage : public StepAP242_ItemIdentifiedRepresentationUsage {
 	public:
 		/****************** StepAP242_GeometricItemSpecificUsage ******************/

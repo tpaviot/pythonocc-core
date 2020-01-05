@@ -71,10 +71,70 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_mat2d.html"
 
 /* templates */
 %template(MAT2d_DataMapOfIntegerSequenceOfConnexion) NCollection_DataMap <Standard_Integer , MAT2d_SequenceOfConnexion , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , MAT2d_SequenceOfConnexion , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerSequenceOfConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MAT2d_DataMapOfIntegerConnexion) NCollection_DataMap <Standard_Integer , opencascade::handle <MAT2d_Connexion>, TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , opencascade::handle <MAT2d_Connexion>, TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MAT2d_DataMapOfIntegerPnt2d) NCollection_DataMap <Standard_Integer , gp_Pnt2d , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , gp_Pnt2d , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerPnt2d::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MAT2d_DataMapOfIntegerVec2d) NCollection_DataMap <Standard_Integer , gp_Vec2d , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , gp_Vec2d , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerVec2d::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MAT2d_DataMapOfIntegerBisec) NCollection_DataMap <Standard_Integer , Bisector_Bisec , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Bisector_Bisec , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerBisec::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MAT2d_Array2OfConnexion) NCollection_Array2 <opencascade::handle <MAT2d_Connexion>>;
 %template(MAT2d_SequenceOfSequenceOfCurve) NCollection_Sequence <TColGeom2d_SequenceOfCurve>;
 %template(MAT2d_SequenceOfSequenceOfGeometry) NCollection_Sequence <TColGeom2d_SequenceOfGeometry>;
@@ -107,7 +167,6 @@ typedef NCollection_DataMap <MAT2d_BiInt , Standard_Integer , MAT2d_MapBiIntHash
 /********************
 * class MAT2d_BiInt *
 ********************/
-%nodefaultctor MAT2d_BiInt;
 class MAT2d_BiInt {
 	public:
 		/****************** FirstIndex ******************/
@@ -176,7 +235,6 @@ class MAT2d_BiInt {
 /**********************
 * class MAT2d_Circuit *
 **********************/
-%nodefaultctor MAT2d_Circuit;
 class MAT2d_Circuit : public Standard_Transient {
 	public:
 		/****************** Connexion ******************/
@@ -263,7 +321,6 @@ class MAT2d_Circuit : public Standard_Transient {
 /************************
 * class MAT2d_Connexion *
 ************************/
-%nodefaultctor MAT2d_Connexion;
 class MAT2d_Connexion : public Standard_Transient {
 	public:
 		/****************** Distance ******************/
@@ -487,7 +544,6 @@ class MAT2d_MapBiIntHasher {
 /********************
 * class MAT2d_Mat2d *
 ********************/
-%nodefaultctor MAT2d_Mat2d;
 class MAT2d_Mat2d {
 	public:
 		/****************** Bisector ******************/
@@ -568,7 +624,6 @@ class MAT2d_Mat2d {
 /***********************
 * class MAT2d_MiniPath *
 ***********************/
-%nodefaultctor MAT2d_MiniPath;
 class MAT2d_MiniPath {
 	public:
 		/****************** ConnexionsFrom ******************/
@@ -644,7 +699,6 @@ class MAT2d_MiniPath {
 /*********************
 * class MAT2d_Tool2d *
 *********************/
-%nodefaultctor MAT2d_Tool2d;
 class MAT2d_Tool2d {
 	public:
 		/****************** BisecFusion ******************/

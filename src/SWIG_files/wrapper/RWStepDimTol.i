@@ -76,7 +76,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepdimtol.html
 /*******************************************
 * class RWStepDimTol_RWAngularityTolerance *
 *******************************************/
-%nodefaultctor RWStepDimTol_RWAngularityTolerance;
 class RWStepDimTol_RWAngularityTolerance {
 	public:
 		/****************** RWStepDimTol_RWAngularityTolerance ******************/
@@ -131,7 +130,6 @@ class RWStepDimTol_RWAngularityTolerance {
 /***********************************************
 * class RWStepDimTol_RWCircularRunoutTolerance *
 ***********************************************/
-%nodefaultctor RWStepDimTol_RWCircularRunoutTolerance;
 class RWStepDimTol_RWCircularRunoutTolerance {
 	public:
 		/****************** RWStepDimTol_RWCircularRunoutTolerance ******************/
@@ -186,7 +184,6 @@ class RWStepDimTol_RWCircularRunoutTolerance {
 /*******************************************
 * class RWStepDimTol_RWCoaxialityTolerance *
 *******************************************/
-%nodefaultctor RWStepDimTol_RWCoaxialityTolerance;
 class RWStepDimTol_RWCoaxialityTolerance {
 	public:
 		/****************** RWStepDimTol_RWCoaxialityTolerance ******************/
@@ -241,7 +238,6 @@ class RWStepDimTol_RWCoaxialityTolerance {
 /***********************************
 * class RWStepDimTol_RWCommonDatum *
 ***********************************/
-%nodefaultctor RWStepDimTol_RWCommonDatum;
 class RWStepDimTol_RWCommonDatum {
 	public:
 		/****************** RWStepDimTol_RWCommonDatum ******************/
@@ -296,7 +292,6 @@ class RWStepDimTol_RWCommonDatum {
 /**********************************************
 * class RWStepDimTol_RWConcentricityTolerance *
 **********************************************/
-%nodefaultctor RWStepDimTol_RWConcentricityTolerance;
 class RWStepDimTol_RWConcentricityTolerance {
 	public:
 		/****************** RWStepDimTol_RWConcentricityTolerance ******************/
@@ -351,7 +346,6 @@ class RWStepDimTol_RWConcentricityTolerance {
 /*********************************************
 * class RWStepDimTol_RWCylindricityTolerance *
 *********************************************/
-%nodefaultctor RWStepDimTol_RWCylindricityTolerance;
 class RWStepDimTol_RWCylindricityTolerance {
 	public:
 		/****************** RWStepDimTol_RWCylindricityTolerance ******************/
@@ -406,7 +400,6 @@ class RWStepDimTol_RWCylindricityTolerance {
 /*****************************
 * class RWStepDimTol_RWDatum *
 *****************************/
-%nodefaultctor RWStepDimTol_RWDatum;
 class RWStepDimTol_RWDatum {
 	public:
 		/****************** RWStepDimTol_RWDatum ******************/
@@ -461,7 +454,6 @@ class RWStepDimTol_RWDatum {
 /************************************
 * class RWStepDimTol_RWDatumFeature *
 ************************************/
-%nodefaultctor RWStepDimTol_RWDatumFeature;
 class RWStepDimTol_RWDatumFeature {
 	public:
 		/****************** RWStepDimTol_RWDatumFeature ******************/
@@ -516,7 +508,6 @@ class RWStepDimTol_RWDatumFeature {
 /**************************************
 * class RWStepDimTol_RWDatumReference *
 **************************************/
-%nodefaultctor RWStepDimTol_RWDatumReference;
 class RWStepDimTol_RWDatumReference {
 	public:
 		/****************** RWStepDimTol_RWDatumReference ******************/
@@ -571,7 +562,6 @@ class RWStepDimTol_RWDatumReference {
 /*************************************************
 * class RWStepDimTol_RWDatumReferenceCompartment *
 *************************************************/
-%nodefaultctor RWStepDimTol_RWDatumReferenceCompartment;
 class RWStepDimTol_RWDatumReferenceCompartment {
 	public:
 		/****************** RWStepDimTol_RWDatumReferenceCompartment ******************/
@@ -626,7 +616,6 @@ class RWStepDimTol_RWDatumReferenceCompartment {
 /*********************************************
 * class RWStepDimTol_RWDatumReferenceElement *
 *********************************************/
-%nodefaultctor RWStepDimTol_RWDatumReferenceElement;
 class RWStepDimTol_RWDatumReferenceElement {
 	public:
 		/****************** RWStepDimTol_RWDatumReferenceElement ******************/
@@ -681,7 +670,6 @@ class RWStepDimTol_RWDatumReferenceElement {
 /*******************************************************
 * class RWStepDimTol_RWDatumReferenceModifierWithValue *
 *******************************************************/
-%nodefaultctor RWStepDimTol_RWDatumReferenceModifierWithValue;
 class RWStepDimTol_RWDatumReferenceModifierWithValue {
 	public:
 		/****************** RWStepDimTol_RWDatumReferenceModifierWithValue ******************/
@@ -726,7 +714,6 @@ class RWStepDimTol_RWDatumReferenceModifierWithValue {
 /***********************************
 * class RWStepDimTol_RWDatumSystem *
 ***********************************/
-%nodefaultctor RWStepDimTol_RWDatumSystem;
 class RWStepDimTol_RWDatumSystem {
 	public:
 		/****************** RWStepDimTol_RWDatumSystem ******************/
@@ -781,7 +768,6 @@ class RWStepDimTol_RWDatumSystem {
 /***********************************
 * class RWStepDimTol_RWDatumTarget *
 ***********************************/
-%nodefaultctor RWStepDimTol_RWDatumTarget;
 class RWStepDimTol_RWDatumTarget {
 	public:
 		/****************** RWStepDimTol_RWDatumTarget ******************/
@@ -836,7 +822,6 @@ class RWStepDimTol_RWDatumTarget {
 /*****************************************
 * class RWStepDimTol_RWFlatnessTolerance *
 *****************************************/
-%nodefaultctor RWStepDimTol_RWFlatnessTolerance;
 class RWStepDimTol_RWFlatnessTolerance {
 	public:
 		/****************** RWStepDimTol_RWFlatnessTolerance ******************/
@@ -891,7 +876,6 @@ class RWStepDimTol_RWFlatnessTolerance {
 /*********************************************
 * class RWStepDimTol_RWGeneralDatumReference *
 *********************************************/
-%nodefaultctor RWStepDimTol_RWGeneralDatumReference;
 class RWStepDimTol_RWGeneralDatumReference {
 	public:
 		/****************** RWStepDimTol_RWGeneralDatumReference ******************/
@@ -946,7 +930,6 @@ class RWStepDimTol_RWGeneralDatumReference {
 /************************************************
 * class RWStepDimTol_RWGeoTolAndGeoTolWthDatRef *
 ************************************************/
-%nodefaultctor RWStepDimTol_RWGeoTolAndGeoTolWthDatRef;
 class RWStepDimTol_RWGeoTolAndGeoTolWthDatRef {
 	public:
 		/****************** RWStepDimTol_RWGeoTolAndGeoTolWthDatRef ******************/
@@ -997,7 +980,6 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRef {
 /******************************************************************
 * class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol *
 ******************************************************************/
-%nodefaultctor RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol;
 class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
 	public:
 		/****************** RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol ******************/
@@ -1048,7 +1030,6 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol {
 /***************************************************************
 * class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMod *
 ***************************************************************/
-%nodefaultctor RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMod;
 class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
 	public:
 		/****************** RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMod ******************/
@@ -1099,7 +1080,6 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndGeoTolWthMod {
 /*********************************************************************
 * class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol *
 *********************************************************************/
-%nodefaultctor RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol;
 class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
 	public:
 		/****************** RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol ******************/
@@ -1150,7 +1130,6 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol {
 /****************************************************************
 * class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol *
 ****************************************************************/
-%nodefaultctor RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol;
 class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
 	public:
 		/****************** RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol ******************/
@@ -1201,7 +1180,6 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthDatRefAndUneqDisGeoTol {
 /************************************************
 * class RWStepDimTol_RWGeoTolAndGeoTolWthMaxTol *
 ************************************************/
-%nodefaultctor RWStepDimTol_RWGeoTolAndGeoTolWthMaxTol;
 class RWStepDimTol_RWGeoTolAndGeoTolWthMaxTol {
 	public:
 		/****************** RWStepDimTol_RWGeoTolAndGeoTolWthMaxTol ******************/
@@ -1252,7 +1230,6 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthMaxTol {
 /*********************************************
 * class RWStepDimTol_RWGeoTolAndGeoTolWthMod *
 *********************************************/
-%nodefaultctor RWStepDimTol_RWGeoTolAndGeoTolWthMod;
 class RWStepDimTol_RWGeoTolAndGeoTolWthMod {
 	public:
 		/****************** RWStepDimTol_RWGeoTolAndGeoTolWthMod ******************/
@@ -1303,7 +1280,6 @@ class RWStepDimTol_RWGeoTolAndGeoTolWthMod {
 /******************************************
 * class RWStepDimTol_RWGeometricTolerance *
 ******************************************/
-%nodefaultctor RWStepDimTol_RWGeometricTolerance;
 class RWStepDimTol_RWGeometricTolerance {
 	public:
 		/****************** RWStepDimTol_RWGeometricTolerance ******************/
@@ -1358,7 +1334,6 @@ class RWStepDimTol_RWGeometricTolerance {
 /******************************************************
 * class RWStepDimTol_RWGeometricToleranceRelationship *
 ******************************************************/
-%nodefaultctor RWStepDimTol_RWGeometricToleranceRelationship;
 class RWStepDimTol_RWGeometricToleranceRelationship {
 	public:
 		/****************** RWStepDimTol_RWGeometricToleranceRelationship ******************/
@@ -1413,7 +1388,6 @@ class RWStepDimTol_RWGeometricToleranceRelationship {
 /************************************************************
 * class RWStepDimTol_RWGeometricToleranceWithDatumReference *
 ************************************************************/
-%nodefaultctor RWStepDimTol_RWGeometricToleranceWithDatumReference;
 class RWStepDimTol_RWGeometricToleranceWithDatumReference {
 	public:
 		/****************** RWStepDimTol_RWGeometricToleranceWithDatumReference ******************/
@@ -1468,7 +1442,6 @@ class RWStepDimTol_RWGeometricToleranceWithDatumReference {
 /*************************************************************
 * class RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit *
 *************************************************************/
-%nodefaultctor RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit;
 class RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit {
 	public:
 		/****************** RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit ******************/
@@ -1523,7 +1496,6 @@ class RWStepDimTol_RWGeometricToleranceWithDefinedAreaUnit {
 /*********************************************************
 * class RWStepDimTol_RWGeometricToleranceWithDefinedUnit *
 *********************************************************/
-%nodefaultctor RWStepDimTol_RWGeometricToleranceWithDefinedUnit;
 class RWStepDimTol_RWGeometricToleranceWithDefinedUnit {
 	public:
 		/****************** RWStepDimTol_RWGeometricToleranceWithDefinedUnit ******************/
@@ -1578,7 +1550,6 @@ class RWStepDimTol_RWGeometricToleranceWithDefinedUnit {
 /**************************************************************
 * class RWStepDimTol_RWGeometricToleranceWithMaximumTolerance *
 **************************************************************/
-%nodefaultctor RWStepDimTol_RWGeometricToleranceWithMaximumTolerance;
 class RWStepDimTol_RWGeometricToleranceWithMaximumTolerance {
 	public:
 		/****************** RWStepDimTol_RWGeometricToleranceWithMaximumTolerance ******************/
@@ -1633,7 +1604,6 @@ class RWStepDimTol_RWGeometricToleranceWithMaximumTolerance {
 /*******************************************************
 * class RWStepDimTol_RWGeometricToleranceWithModifiers *
 *******************************************************/
-%nodefaultctor RWStepDimTol_RWGeometricToleranceWithModifiers;
 class RWStepDimTol_RWGeometricToleranceWithModifiers {
 	public:
 		/****************** RWStepDimTol_RWGeometricToleranceWithModifiers ******************/
@@ -1688,7 +1658,6 @@ class RWStepDimTol_RWGeometricToleranceWithModifiers {
 /********************************************
 * class RWStepDimTol_RWLineProfileTolerance *
 ********************************************/
-%nodefaultctor RWStepDimTol_RWLineProfileTolerance;
 class RWStepDimTol_RWLineProfileTolerance {
 	public:
 		/****************** RWStepDimTol_RWLineProfileTolerance ******************/
@@ -1743,7 +1712,6 @@ class RWStepDimTol_RWLineProfileTolerance {
 /**************************************************
 * class RWStepDimTol_RWModifiedGeometricTolerance *
 **************************************************/
-%nodefaultctor RWStepDimTol_RWModifiedGeometricTolerance;
 class RWStepDimTol_RWModifiedGeometricTolerance {
 	public:
 		/****************** RWStepDimTol_RWModifiedGeometricTolerance ******************/
@@ -1798,7 +1766,6 @@ class RWStepDimTol_RWModifiedGeometricTolerance {
 /************************************************
 * class RWStepDimTol_RWNonUniformZoneDefinition *
 ************************************************/
-%nodefaultctor RWStepDimTol_RWNonUniformZoneDefinition;
 class RWStepDimTol_RWNonUniformZoneDefinition {
 	public:
 		/****************** RWStepDimTol_RWNonUniformZoneDefinition ******************/
@@ -1853,7 +1820,6 @@ class RWStepDimTol_RWNonUniformZoneDefinition {
 /********************************************
 * class RWStepDimTol_RWParallelismTolerance *
 ********************************************/
-%nodefaultctor RWStepDimTol_RWParallelismTolerance;
 class RWStepDimTol_RWParallelismTolerance {
 	public:
 		/****************** RWStepDimTol_RWParallelismTolerance ******************/
@@ -1908,7 +1874,6 @@ class RWStepDimTol_RWParallelismTolerance {
 /*************************************************
 * class RWStepDimTol_RWPerpendicularityTolerance *
 *************************************************/
-%nodefaultctor RWStepDimTol_RWPerpendicularityTolerance;
 class RWStepDimTol_RWPerpendicularityTolerance {
 	public:
 		/****************** RWStepDimTol_RWPerpendicularityTolerance ******************/
@@ -1963,7 +1928,6 @@ class RWStepDimTol_RWPerpendicularityTolerance {
 /************************************************
 * class RWStepDimTol_RWPlacedDatumTargetFeature *
 ************************************************/
-%nodefaultctor RWStepDimTol_RWPlacedDatumTargetFeature;
 class RWStepDimTol_RWPlacedDatumTargetFeature {
 	public:
 		/****************** RWStepDimTol_RWPlacedDatumTargetFeature ******************/
@@ -2018,7 +1982,6 @@ class RWStepDimTol_RWPlacedDatumTargetFeature {
 /*****************************************
 * class RWStepDimTol_RWPositionTolerance *
 *****************************************/
-%nodefaultctor RWStepDimTol_RWPositionTolerance;
 class RWStepDimTol_RWPositionTolerance {
 	public:
 		/****************** RWStepDimTol_RWPositionTolerance ******************/
@@ -2073,7 +2036,6 @@ class RWStepDimTol_RWPositionTolerance {
 /***********************************************
 * class RWStepDimTol_RWProjectedZoneDefinition *
 ***********************************************/
-%nodefaultctor RWStepDimTol_RWProjectedZoneDefinition;
 class RWStepDimTol_RWProjectedZoneDefinition {
 	public:
 		/****************** RWStepDimTol_RWProjectedZoneDefinition ******************/
@@ -2128,7 +2090,6 @@ class RWStepDimTol_RWProjectedZoneDefinition {
 /******************************************
 * class RWStepDimTol_RWRoundnessTolerance *
 ******************************************/
-%nodefaultctor RWStepDimTol_RWRoundnessTolerance;
 class RWStepDimTol_RWRoundnessTolerance {
 	public:
 		/****************** RWStepDimTol_RWRoundnessTolerance ******************/
@@ -2183,7 +2144,6 @@ class RWStepDimTol_RWRoundnessTolerance {
 /********************************************
 * class RWStepDimTol_RWRunoutZoneDefinition *
 ********************************************/
-%nodefaultctor RWStepDimTol_RWRunoutZoneDefinition;
 class RWStepDimTol_RWRunoutZoneDefinition {
 	public:
 		/****************** RWStepDimTol_RWRunoutZoneDefinition ******************/
@@ -2238,7 +2198,6 @@ class RWStepDimTol_RWRunoutZoneDefinition {
 /*********************************************
 * class RWStepDimTol_RWRunoutZoneOrientation *
 *********************************************/
-%nodefaultctor RWStepDimTol_RWRunoutZoneOrientation;
 class RWStepDimTol_RWRunoutZoneOrientation {
 	public:
 		/****************** RWStepDimTol_RWRunoutZoneOrientation ******************/
@@ -2283,7 +2242,6 @@ class RWStepDimTol_RWRunoutZoneOrientation {
 /*********************************************
 * class RWStepDimTol_RWStraightnessTolerance *
 *********************************************/
-%nodefaultctor RWStepDimTol_RWStraightnessTolerance;
 class RWStepDimTol_RWStraightnessTolerance {
 	public:
 		/****************** RWStepDimTol_RWStraightnessTolerance ******************/
@@ -2338,7 +2296,6 @@ class RWStepDimTol_RWStraightnessTolerance {
 /***********************************************
 * class RWStepDimTol_RWSurfaceProfileTolerance *
 ***********************************************/
-%nodefaultctor RWStepDimTol_RWSurfaceProfileTolerance;
 class RWStepDimTol_RWSurfaceProfileTolerance {
 	public:
 		/****************** RWStepDimTol_RWSurfaceProfileTolerance ******************/
@@ -2393,7 +2350,6 @@ class RWStepDimTol_RWSurfaceProfileTolerance {
 /*****************************************
 * class RWStepDimTol_RWSymmetryTolerance *
 *****************************************/
-%nodefaultctor RWStepDimTol_RWSymmetryTolerance;
 class RWStepDimTol_RWSymmetryTolerance {
 	public:
 		/****************** RWStepDimTol_RWSymmetryTolerance ******************/
@@ -2448,7 +2404,6 @@ class RWStepDimTol_RWSymmetryTolerance {
 /*************************************
 * class RWStepDimTol_RWToleranceZone *
 *************************************/
-%nodefaultctor RWStepDimTol_RWToleranceZone;
 class RWStepDimTol_RWToleranceZone {
 	public:
 		/****************** RWStepDimTol_RWToleranceZone ******************/
@@ -2503,7 +2458,6 @@ class RWStepDimTol_RWToleranceZone {
 /***********************************************
 * class RWStepDimTol_RWToleranceZoneDefinition *
 ***********************************************/
-%nodefaultctor RWStepDimTol_RWToleranceZoneDefinition;
 class RWStepDimTol_RWToleranceZoneDefinition {
 	public:
 		/****************** RWStepDimTol_RWToleranceZoneDefinition ******************/
@@ -2558,7 +2512,6 @@ class RWStepDimTol_RWToleranceZoneDefinition {
 /*****************************************
 * class RWStepDimTol_RWToleranceZoneForm *
 *****************************************/
-%nodefaultctor RWStepDimTol_RWToleranceZoneForm;
 class RWStepDimTol_RWToleranceZoneForm {
 	public:
 		/****************** RWStepDimTol_RWToleranceZoneForm ******************/
@@ -2603,7 +2556,6 @@ class RWStepDimTol_RWToleranceZoneForm {
 /********************************************
 * class RWStepDimTol_RWTotalRunoutTolerance *
 ********************************************/
-%nodefaultctor RWStepDimTol_RWTotalRunoutTolerance;
 class RWStepDimTol_RWTotalRunoutTolerance {
 	public:
 		/****************** RWStepDimTol_RWTotalRunoutTolerance ******************/
@@ -2658,7 +2610,6 @@ class RWStepDimTol_RWTotalRunoutTolerance {
 /***********************************************************
 * class RWStepDimTol_RWUnequallyDisposedGeometricTolerance *
 ***********************************************************/
-%nodefaultctor RWStepDimTol_RWUnequallyDisposedGeometricTolerance;
 class RWStepDimTol_RWUnequallyDisposedGeometricTolerance {
 	public:
 		/****************** RWStepDimTol_RWUnequallyDisposedGeometricTolerance ******************/

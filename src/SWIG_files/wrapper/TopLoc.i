@@ -74,7 +74,6 @@ typedef NCollection_DefaultHasher <TopLoc_Location> TopLoc_MapLocationHasher;
 /***********************
 * class TopLoc_Datum3D *
 ***********************/
-%nodefaultctor TopLoc_Datum3D;
 class TopLoc_Datum3D : public Standard_Transient {
 	public:
 
@@ -127,7 +126,6 @@ class TopLoc_Datum3D : public Standard_Transient {
 /****************************
 * class TopLoc_ItemLocation *
 ****************************/
-%nodefaultctor TopLoc_ItemLocation;
 class TopLoc_ItemLocation {
 	public:
 
@@ -160,7 +158,6 @@ class TopLoc_ItemLocation {
 /************************
 * class TopLoc_Location *
 ************************/
-%nodefaultctor TopLoc_Location;
 class TopLoc_Location {
 	public:
 		/****************** Divided ******************/
@@ -168,8 +165,8 @@ class TopLoc_Location {
 		%feature("autodoc", "* Returns <self> / <Other>.
 	:param Other:
 	:type Other: TopLoc_Location
-	:rtype: Standard_NODISCARD TopLoc_Location") Divided;
-		Standard_NODISCARD TopLoc_Location Divided (const TopLoc_Location & Other);
+	:rtype: TopLoc_Location") Divided;
+		TopLoc_Location Divided (const TopLoc_Location & Other);
 
 
         %feature("autodoc", "1");
@@ -214,8 +211,8 @@ class TopLoc_Location {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Returns the inverse of <self>. //! <self> * Inverted() is an Identity.
-	:rtype: Standard_NODISCARD TopLoc_Location") Inverted;
-		Standard_NODISCARD TopLoc_Location Inverted ();
+	:rtype: TopLoc_Location") Inverted;
+		TopLoc_Location Inverted ();
 
 		/****************** IsDifferent ******************/
 		%feature("compactdefaultargs") IsDifferent;
@@ -244,8 +241,8 @@ class TopLoc_Location {
 		%feature("autodoc", "* Returns <self> * <Other>, the elementary datums are concatenated.
 	:param Other:
 	:type Other: TopLoc_Location
-	:rtype: Standard_NODISCARD TopLoc_Location") Multiplied;
-		Standard_NODISCARD TopLoc_Location Multiplied (const TopLoc_Location & Other);
+	:rtype: TopLoc_Location") Multiplied;
+		TopLoc_Location Multiplied (const TopLoc_Location & Other);
 
 		/****************** NextLocation ******************/
 		%feature("compactdefaultargs") NextLocation;
@@ -258,16 +255,16 @@ class TopLoc_Location {
 		%feature("autodoc", "* Returns me at the power <pwr>. If <pwr> is zero returns Identity. <pwr> can be lower than zero (usual meaning for powers).
 	:param pwr:
 	:type pwr: int
-	:rtype: Standard_NODISCARD TopLoc_Location") Powered;
-		Standard_NODISCARD TopLoc_Location Powered (const Standard_Integer pwr);
+	:rtype: TopLoc_Location") Powered;
+		TopLoc_Location Powered (const Standard_Integer pwr);
 
 		/****************** Predivided ******************/
 		%feature("compactdefaultargs") Predivided;
 		%feature("autodoc", "* Returns <Other>.Inverted() * <self>.
 	:param Other:
 	:type Other: TopLoc_Location
-	:rtype: Standard_NODISCARD TopLoc_Location") Predivided;
-		Standard_NODISCARD TopLoc_Location Predivided (const TopLoc_Location & Other);
+	:rtype: TopLoc_Location") Predivided;
+		TopLoc_Location Predivided (const TopLoc_Location & Other);
 
 
         %feature("autodoc", "1");
@@ -309,15 +306,15 @@ class TopLoc_Location {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Other:
 	:type Other: TopLoc_Location
-	:rtype: Standard_NODISCARD TopLoc_Location") operator *;
-		Standard_NODISCARD TopLoc_Location operator * (const TopLoc_Location & Other);
+	:rtype: TopLoc_Location") operator *;
+		TopLoc_Location operator * (const TopLoc_Location & Other);
 
 		/****************** operator / ******************/
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Other:
 	:type Other: TopLoc_Location
-	:rtype: Standard_NODISCARD TopLoc_Location") operator /;
-		Standard_NODISCARD TopLoc_Location operator / (const TopLoc_Location & Other);
+	:rtype: TopLoc_Location") operator /;
+		TopLoc_Location operator / (const TopLoc_Location & Other);
 
 
         %extend{
@@ -350,7 +347,6 @@ class TopLoc_Location {
 /***************************************
 * class TopLoc_SListNodeOfItemLocation *
 ***************************************/
-%nodefaultctor TopLoc_SListNodeOfItemLocation;
 class TopLoc_SListNodeOfItemLocation : public Standard_Transient {
 	public:
 		/****************** Tail ******************/
@@ -386,7 +382,6 @@ class TopLoc_SListNodeOfItemLocation : public Standard_Transient {
 /***********************************
 * class TopLoc_SListOfItemLocation *
 ***********************************/
-%nodefaultctor TopLoc_SListOfItemLocation;
 class TopLoc_SListOfItemLocation {
 	public:
 		/****************** Assign ******************/

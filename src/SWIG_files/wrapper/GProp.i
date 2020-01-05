@@ -120,7 +120,6 @@ class GProp {
 /*********************
 * class GProp_GProps *
 *********************/
-%nodefaultctor GProp_GProps;
 class GProp_GProps {
 	public:
 		/****************** Add ******************/
@@ -211,7 +210,6 @@ class GProp_GProps {
 /************************
 * class GProp_PEquation *
 ************************/
-%nodefaultctor GProp_PEquation;
 class GProp_PEquation {
 	public:
 		/****************** Box ******************/
@@ -292,7 +290,6 @@ class GProp_PEquation {
 /*****************************
 * class GProp_PrincipalProps *
 *****************************/
-%nodefaultctor GProp_PrincipalProps;
 class GProp_PrincipalProps {
 	public:
 		/****************** FirstAxisOfInertia ******************/
@@ -383,7 +380,6 @@ class GProp_PrincipalProps {
 /************************
 * class GProp_CelGProps *
 ************************/
-%nodefaultctor GProp_CelGProps;
 class GProp_CelGProps : public GProp_GProps {
 	public:
 		/****************** GProp_CelGProps ******************/
@@ -467,7 +463,6 @@ class GProp_CelGProps : public GProp_GProps {
 /**********************
 * class GProp_PGProps *
 **********************/
-%nodefaultctor GProp_PGProps;
 class GProp_PGProps : public GProp_GProps {
 	public:
 		/****************** AddPoint ******************/
@@ -586,7 +581,6 @@ class GProp_PGProps : public GProp_GProps {
 /************************
 * class GProp_SelGProps *
 ************************/
-%nodefaultctor GProp_SelGProps;
 class GProp_SelGProps : public GProp_GProps {
 	public:
 		/****************** GProp_SelGProps ******************/
@@ -741,7 +735,6 @@ class GProp_SelGProps : public GProp_GProps {
 /************************
 * class GProp_VelGProps *
 ************************/
-%nodefaultctor GProp_VelGProps;
 class GProp_VelGProps : public GProp_GProps {
 	public:
 		/****************** GProp_VelGProps ******************/

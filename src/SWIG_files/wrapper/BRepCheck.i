@@ -194,7 +194,6 @@ class BRepCheck {
 /***************************
 * class BRepCheck_Analyzer *
 ***************************/
-%nodefaultctor BRepCheck_Analyzer;
 class BRepCheck_Analyzer {
 	public:
 		/****************** BRepCheck_Analyzer ******************/
@@ -346,7 +345,6 @@ class BRepCheck_Result : public Standard_Transient {
 /***********************
 * class BRepCheck_Edge *
 ***********************/
-%nodefaultctor BRepCheck_Edge;
 class BRepCheck_Edge : public BRepCheck_Result {
 	public:
 		/****************** BRepCheck_Edge ******************/
@@ -420,7 +418,6 @@ class BRepCheck_Edge : public BRepCheck_Result {
 /***********************
 * class BRepCheck_Face *
 ***********************/
-%nodefaultctor BRepCheck_Face;
 class BRepCheck_Face : public BRepCheck_Result {
 	public:
 		/****************** BRepCheck_Face ******************/
@@ -512,7 +509,6 @@ class BRepCheck_Face : public BRepCheck_Result {
 /************************
 * class BRepCheck_Shell *
 ************************/
-%nodefaultctor BRepCheck_Shell;
 class BRepCheck_Shell : public BRepCheck_Result {
 	public:
 		/****************** BRepCheck_Shell ******************/
@@ -586,7 +582,6 @@ class BRepCheck_Shell : public BRepCheck_Result {
 /************************
 * class BRepCheck_Solid *
 ************************/
-%nodefaultctor BRepCheck_Solid;
 class BRepCheck_Solid : public BRepCheck_Result {
 	public:
 		/****************** BRepCheck_Solid ******************/
@@ -631,7 +626,6 @@ class BRepCheck_Solid : public BRepCheck_Result {
 /*************************
 * class BRepCheck_Vertex *
 *************************/
-%nodefaultctor BRepCheck_Vertex;
 class BRepCheck_Vertex : public BRepCheck_Result {
 	public:
 		/****************** BRepCheck_Vertex ******************/
@@ -677,7 +671,6 @@ class BRepCheck_Vertex : public BRepCheck_Result {
 /***********************
 * class BRepCheck_Wire *
 ***********************/
-%nodefaultctor BRepCheck_Wire;
 class BRepCheck_Wire : public BRepCheck_Result {
 	public:
 		/****************** BRepCheck_Wire ******************/

@@ -98,7 +98,6 @@ class Geom2dAdaptor {
 /****************************
 * class Geom2dAdaptor_Curve *
 ****************************/
-%nodefaultctor Geom2dAdaptor_Curve;
 class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 	public:
 		/****************** BSpline ******************/
@@ -370,7 +369,6 @@ class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 /******************************
 * class Geom2dAdaptor_GHCurve *
 ******************************/
-%nodefaultctor Geom2dAdaptor_GHCurve;
 class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 	public:
 		/****************** ChangeCurve2d ******************/
@@ -421,7 +419,6 @@ class Geom2dAdaptor_GHCurve : public Adaptor2d_HCurve2d {
 /*****************************
 * class Geom2dAdaptor_HCurve *
 *****************************/
-%nodefaultctor Geom2dAdaptor_HCurve;
 class Geom2dAdaptor_HCurve : public Geom2dAdaptor_GHCurve {
 	public:
 		/****************** Geom2dAdaptor_HCurve ******************/

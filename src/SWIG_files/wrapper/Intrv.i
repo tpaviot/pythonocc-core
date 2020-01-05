@@ -81,7 +81,6 @@ typedef NCollection_Sequence <Intrv_Interval> Intrv_SequenceOfInterval;
 /***********************
 * class Intrv_Interval *
 ***********************/
-%nodefaultctor Intrv_Interval;
 class Intrv_Interval {
 	public:
 		/****************** Bounds ******************/
@@ -332,7 +331,6 @@ class Intrv_Interval {
 /************************
 * class Intrv_Intervals *
 ************************/
-%nodefaultctor Intrv_Intervals;
 class Intrv_Intervals {
 	public:
 		/****************** Intersect ******************/

@@ -119,15 +119,15 @@ class Geom2d_Geometry : public Standard_Transient {
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", ":param P:
 	:type P: gp_Pnt2d
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Geometry>") Mirrored;
-		Standard_NODISCARD opencascade::handle<Geom2d_Geometry> Mirrored (const gp_Pnt2d & P);
+	:rtype: opencascade::handle<Geom2d_Geometry>") Mirrored;
+		opencascade::handle<Geom2d_Geometry> Mirrored (const gp_Pnt2d & P);
 
 		/****************** Mirrored ******************/
 		%feature("compactdefaultargs") Mirrored;
 		%feature("autodoc", ":param A:
 	:type A: gp_Ax2d
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Geometry>") Mirrored;
-		Standard_NODISCARD opencascade::handle<Geom2d_Geometry> Mirrored (const gp_Ax2d & A);
+	:rtype: opencascade::handle<Geom2d_Geometry>") Mirrored;
+		opencascade::handle<Geom2d_Geometry> Mirrored (const gp_Ax2d & A);
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
@@ -145,8 +145,8 @@ class Geom2d_Geometry : public Standard_Transient {
 	:type P: gp_Pnt2d
 	:param Ang:
 	:type Ang: float
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Geometry>") Rotated;
-		Standard_NODISCARD opencascade::handle<Geom2d_Geometry> Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
+	:rtype: opencascade::handle<Geom2d_Geometry>") Rotated;
+		opencascade::handle<Geom2d_Geometry> Rotated (const gp_Pnt2d & P,const Standard_Real Ang);
 
 		/****************** Scale ******************/
 		%feature("compactdefaultargs") Scale;
@@ -164,8 +164,8 @@ class Geom2d_Geometry : public Standard_Transient {
 	:type P: gp_Pnt2d
 	:param S:
 	:type S: float
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Geometry>") Scaled;
-		Standard_NODISCARD opencascade::handle<Geom2d_Geometry> Scaled (const gp_Pnt2d & P,const Standard_Real S);
+	:rtype: opencascade::handle<Geom2d_Geometry>") Scaled;
+		opencascade::handle<Geom2d_Geometry> Scaled (const gp_Pnt2d & P,const Standard_Real S);
 
 		/****************** Transform ******************/
 		%feature("compactdefaultargs") Transform;
@@ -179,8 +179,8 @@ class Geom2d_Geometry : public Standard_Transient {
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", ":param T:
 	:type T: gp_Trsf2d
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Geometry>") Transformed;
-		Standard_NODISCARD opencascade::handle<Geom2d_Geometry> Transformed (const gp_Trsf2d & T);
+	:rtype: opencascade::handle<Geom2d_Geometry>") Transformed;
+		opencascade::handle<Geom2d_Geometry> Transformed (const gp_Trsf2d & T);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
@@ -204,8 +204,8 @@ class Geom2d_Geometry : public Standard_Transient {
 		%feature("compactdefaultargs") Translated;
 		%feature("autodoc", ":param V:
 	:type V: gp_Vec2d
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Geometry>") Translated;
-		Standard_NODISCARD opencascade::handle<Geom2d_Geometry> Translated (const gp_Vec2d & V);
+	:rtype: opencascade::handle<Geom2d_Geometry>") Translated;
+		opencascade::handle<Geom2d_Geometry> Translated (const gp_Vec2d & V);
 
 		/****************** Translated ******************/
 		%feature("compactdefaultargs") Translated;
@@ -213,8 +213,8 @@ class Geom2d_Geometry : public Standard_Transient {
 	:type P1: gp_Pnt2d
 	:param P2:
 	:type P2: gp_Pnt2d
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Geometry>") Translated;
-		Standard_NODISCARD opencascade::handle<Geom2d_Geometry> Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
+	:rtype: opencascade::handle<Geom2d_Geometry>") Translated;
+		opencascade::handle<Geom2d_Geometry> Translated (const gp_Pnt2d & P1,const gp_Pnt2d & P2);
 
 };
 
@@ -230,7 +230,6 @@ class Geom2d_Geometry : public Standard_Transient {
 /******************************
 * class Geom2d_Transformation *
 ******************************/
-%nodefaultctor Geom2d_Transformation;
 class Geom2d_Transformation : public Standard_Transient {
 	public:
 		/****************** Copy ******************/
@@ -268,8 +267,8 @@ class Geom2d_Transformation : public Standard_Transient {
 		/****************** Inverted ******************/
 		%feature("compactdefaultargs") Inverted;
 		%feature("autodoc", "* Computes the inverse of this transformation and creates a new one. Raises ConstructionError if the the transformation is singular. This means that the ScaleFactor is lower or equal to Resolution from package gp.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Transformation>") Inverted;
-		Standard_NODISCARD opencascade::handle<Geom2d_Transformation> Inverted ();
+	:rtype: opencascade::handle<Geom2d_Transformation>") Inverted;
+		opencascade::handle<Geom2d_Transformation> Inverted ();
 
 		/****************** IsNegative ******************/
 		%feature("compactdefaultargs") IsNegative;
@@ -282,8 +281,8 @@ class Geom2d_Transformation : public Standard_Transient {
 		%feature("autodoc", "* Computes the transformation composed with Other and <self>. <self> * Other. Returns a new transformation
 	:param Other:
 	:type Other: Geom2d_Transformation
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Transformation>") Multiplied;
-		Standard_NODISCARD opencascade::handle<Geom2d_Transformation> Multiplied (const opencascade::handle<Geom2d_Transformation> & Other);
+	:rtype: opencascade::handle<Geom2d_Transformation>") Multiplied;
+		opencascade::handle<Geom2d_Transformation> Multiplied (const opencascade::handle<Geom2d_Transformation> & Other);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -433,8 +432,8 @@ class Geom2d_Transformation : public Standard_Transient {
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", ":param Other:
 	:type Other: Geom2d_Transformation
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Transformation>") operator *;
-		Standard_NODISCARD opencascade::handle<Geom2d_Transformation> operator * (const opencascade::handle<Geom2d_Transformation> & Other);
+	:rtype: opencascade::handle<Geom2d_Transformation>") operator *;
+		opencascade::handle<Geom2d_Transformation> operator * (const opencascade::handle<Geom2d_Transformation> & Other);
 
 
         %extend{
@@ -461,7 +460,6 @@ class Geom2d_Transformation : public Standard_Transient {
 /*****************************
 * class Geom2d_AxisPlacement *
 *****************************/
-%nodefaultctor Geom2d_AxisPlacement;
 class Geom2d_AxisPlacement : public Geom2d_Geometry {
 	public:
 		/****************** Angle ******************/
@@ -522,8 +520,8 @@ class Geom2d_AxisPlacement : public Geom2d_Geometry {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Reverses the unit vector of this axis. Note: - Reverse assigns the result to this axis, while - Reversed creates a new one.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_AxisPlacement>") Reversed;
-		Standard_NODISCARD opencascade::handle<Geom2d_AxisPlacement> Reversed ();
+	:rtype: opencascade::handle<Geom2d_AxisPlacement>") Reversed;
+		opencascade::handle<Geom2d_AxisPlacement> Reversed ();
 
 		/****************** SetAxis ******************/
 		%feature("compactdefaultargs") SetAxis;
@@ -697,8 +695,8 @@ class Geom2d_Curve : public Geom2d_Geometry {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Creates a reversed duplicate Changes the orientation of this curve. The first and last parameters are not changed, but the parametric direction of the curve is reversed. If the curve is bounded: - the start point of the initial curve becomes the end point of the reversed curve, and - the end point of the initial curve becomes the start point of the reversed curve. - Reversed creates a new curve.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Curve>") Reversed;
-		Standard_NODISCARD opencascade::handle<Geom2d_Curve> Reversed ();
+	:rtype: opencascade::handle<Geom2d_Curve>") Reversed;
+		opencascade::handle<Geom2d_Curve> Reversed ();
 
 		/****************** ReversedParameter ******************/
 		%feature("compactdefaultargs") ReversedParameter;
@@ -853,8 +851,8 @@ class Geom2d_Vector : public Geom2d_Geometry {
 		/****************** Reversed ******************/
 		%feature("compactdefaultargs") Reversed;
 		%feature("autodoc", "* Returns a copy of <self> reversed.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_Vector>") Reversed;
-		Standard_NODISCARD opencascade::handle<Geom2d_Vector> Reversed ();
+	:rtype: opencascade::handle<Geom2d_Vector>") Reversed;
+		opencascade::handle<Geom2d_Vector> Reversed ();
 
 		/****************** SquareMagnitude ******************/
 		%feature("compactdefaultargs") SquareMagnitude;
@@ -923,7 +921,6 @@ class Geom2d_BoundedCurve : public Geom2d_Curve {
 /******************************
 * class Geom2d_CartesianPoint *
 ******************************/
-%nodefaultctor Geom2d_CartesianPoint;
 class Geom2d_CartesianPoint : public Geom2d_Point {
 	public:
 		/****************** Coord ******************/
@@ -1137,7 +1134,6 @@ class Geom2d_Conic : public Geom2d_Curve {
 /*************************
 * class Geom2d_Direction *
 *************************/
-%nodefaultctor Geom2d_Direction;
 class Geom2d_Direction : public Geom2d_Vector {
 	public:
 		/****************** Copy ******************/
@@ -1246,7 +1242,6 @@ class Geom2d_Direction : public Geom2d_Vector {
 /********************
 * class Geom2d_Line *
 ********************/
-%nodefaultctor Geom2d_Line;
 class Geom2d_Line : public Geom2d_Curve {
 	public:
 		/****************** Continuity ******************/
@@ -1498,7 +1493,6 @@ class Geom2d_Line : public Geom2d_Curve {
 /***************************
 * class Geom2d_OffsetCurve *
 ***************************/
-%nodefaultctor Geom2d_OffsetCurve;
 class Geom2d_OffsetCurve : public Geom2d_Curve {
 	public:
 		/****************** BasisCurve ******************/
@@ -1715,7 +1709,6 @@ class Geom2d_OffsetCurve : public Geom2d_Curve {
 /***********************************
 * class Geom2d_VectorWithMagnitude *
 ***********************************/
-%nodefaultctor Geom2d_VectorWithMagnitude;
 class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 	public:
 		/****************** Add ******************/
@@ -1731,8 +1724,8 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "* Adds the vector Other to <self>.
 	:param Other:
 	:type Other: Geom2d_Vector
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") Added;
-		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> Added (const opencascade::handle<Geom2d_Vector> & Other);
+	:rtype: opencascade::handle<Geom2d_VectorWithMagnitude>") Added;
+		opencascade::handle<Geom2d_VectorWithMagnitude> Added (const opencascade::handle<Geom2d_Vector> & Other);
 
 		/****************** Copy ******************/
 		%feature("compactdefaultargs") Copy;
@@ -1761,8 +1754,8 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "* Divides <self> by a scalar. A new vector is returned.
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") Divided;
-		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> Divided (const Standard_Real Scalar);
+	:rtype: opencascade::handle<Geom2d_VectorWithMagnitude>") Divided;
+		opencascade::handle<Geom2d_VectorWithMagnitude> Divided (const Standard_Real Scalar);
 
 		/****************** Geom2d_VectorWithMagnitude ******************/
 		%feature("compactdefaultargs") Geom2d_VectorWithMagnitude;
@@ -1803,8 +1796,8 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "* Computes the product of the vector <self> by a scalar. A new vector is returned. //! -C++: alias operator * Collision with same operator defined for the class Vector!
 	:param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") Multiplied;
-		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> Multiplied (const Standard_Real Scalar);
+	:rtype: opencascade::handle<Geom2d_VectorWithMagnitude>") Multiplied;
+		opencascade::handle<Geom2d_VectorWithMagnitude> Multiplied (const Standard_Real Scalar);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -1823,8 +1816,8 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		/****************** Normalized ******************/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "* Returns a copy of <self> Normalized. //! Raised if the magnitude of the vector is lower or equal to Resolution from package gp.
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") Normalized;
-		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> Normalized ();
+	:rtype: opencascade::handle<Geom2d_VectorWithMagnitude>") Normalized;
+		opencascade::handle<Geom2d_VectorWithMagnitude> Normalized ();
 
 		/****************** SetCoord ******************/
 		%feature("compactdefaultargs") SetCoord;
@@ -1878,8 +1871,8 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("autodoc", "* Subtracts the vector Other to <self>. A new vector is returned.
 	:param Other:
 	:type Other: Geom2d_Vector
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") Subtracted;
-		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> Subtracted (const opencascade::handle<Geom2d_Vector> & Other);
+	:rtype: opencascade::handle<Geom2d_VectorWithMagnitude>") Subtracted;
+		opencascade::handle<Geom2d_VectorWithMagnitude> Subtracted (const opencascade::handle<Geom2d_Vector> & Other);
 
 		/****************** Transform ******************/
 		%feature("compactdefaultargs") Transform;
@@ -1904,8 +1897,8 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", ":param Other:
 	:type Other: Geom2d_Vector
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") operator +;
-		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> operator + (const opencascade::handle<Geom2d_Vector> & Other);
+	:rtype: opencascade::handle<Geom2d_VectorWithMagnitude>") operator +;
+		opencascade::handle<Geom2d_VectorWithMagnitude> operator + (const opencascade::handle<Geom2d_Vector> & Other);
 
 
         %extend{
@@ -1922,8 +1915,8 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", ":param Other:
 	:type Other: Geom2d_Vector
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") operator -;
-		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> operator - (const opencascade::handle<Geom2d_Vector> & Other);
+	:rtype: opencascade::handle<Geom2d_VectorWithMagnitude>") operator -;
+		opencascade::handle<Geom2d_VectorWithMagnitude> operator - (const opencascade::handle<Geom2d_Vector> & Other);
 
 
         %extend{
@@ -1940,8 +1933,8 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", ":param Scalar:
 	:type Scalar: float
-	:rtype: Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude>") operator /;
-		Standard_NODISCARD opencascade::handle<Geom2d_VectorWithMagnitude> operator / (const Standard_Real Scalar);
+	:rtype: opencascade::handle<Geom2d_VectorWithMagnitude>") operator /;
+		opencascade::handle<Geom2d_VectorWithMagnitude> operator / (const Standard_Real Scalar);
 
 
         %extend{
@@ -1968,7 +1961,6 @@ class Geom2d_VectorWithMagnitude : public Geom2d_Vector {
 /****************************
 * class Geom2d_BSplineCurve *
 ****************************/
-%nodefaultctor Geom2d_BSplineCurve;
 class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 	public:
 		/****************** Continuity ******************/
@@ -2692,7 +2684,6 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 /***************************
 * class Geom2d_BezierCurve *
 ***************************/
-%nodefaultctor Geom2d_BezierCurve;
 class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 	public:
 		/****************** Continuity ******************/
@@ -3023,7 +3014,6 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 /**********************
 * class Geom2d_Circle *
 **********************/
-%nodefaultctor Geom2d_Circle;
 class Geom2d_Circle : public Geom2d_Conic {
 	public:
 		/****************** Circ2d ******************/
@@ -3211,7 +3201,6 @@ class Geom2d_Circle : public Geom2d_Conic {
 /***********************
 * class Geom2d_Ellipse *
 ***********************/
-%nodefaultctor Geom2d_Ellipse;
 class Geom2d_Ellipse : public Geom2d_Conic {
 	public:
 		/****************** Copy ******************/
@@ -3453,7 +3442,6 @@ class Geom2d_Ellipse : public Geom2d_Conic {
 /*************************
 * class Geom2d_Hyperbola *
 *************************/
-%nodefaultctor Geom2d_Hyperbola;
 class Geom2d_Hyperbola : public Geom2d_Conic {
 	public:
 		/****************** Asymptote1 ******************/
@@ -3726,7 +3714,6 @@ class Geom2d_Hyperbola : public Geom2d_Conic {
 /************************
 * class Geom2d_Parabola *
 ************************/
-%nodefaultctor Geom2d_Parabola;
 class Geom2d_Parabola : public Geom2d_Conic {
 	public:
 		/****************** Copy ******************/
@@ -3961,7 +3948,6 @@ class Geom2d_Parabola : public Geom2d_Conic {
 /****************************
 * class Geom2d_TrimmedCurve *
 ****************************/
-%nodefaultctor Geom2d_TrimmedCurve;
 class Geom2d_TrimmedCurve : public Geom2d_BoundedCurve {
 	public:
 		/****************** BasisCurve ******************/

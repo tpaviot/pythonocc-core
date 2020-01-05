@@ -103,7 +103,6 @@ class RWStepAP214 {
 /**********************************
 * class RWStepAP214_GeneralModule *
 **********************************/
-%nodefaultctor RWStepAP214_GeneralModule;
 class RWStepAP214_GeneralModule : public StepData_GeneralModule {
 	public:
 		/****************** CategoryNumber ******************/
@@ -198,7 +197,6 @@ class RWStepAP214_GeneralModule : public StepData_GeneralModule {
 /************************************************
 * class RWStepAP214_RWAppliedApprovalAssignment *
 ************************************************/
-%nodefaultctor RWStepAP214_RWAppliedApprovalAssignment;
 class RWStepAP214_RWAppliedApprovalAssignment {
 	public:
 		/****************** RWStepAP214_RWAppliedApprovalAssignment ******************/
@@ -249,7 +247,6 @@ class RWStepAP214_RWAppliedApprovalAssignment {
 /***************************************************
 * class RWStepAP214_RWAppliedDateAndTimeAssignment *
 ***************************************************/
-%nodefaultctor RWStepAP214_RWAppliedDateAndTimeAssignment;
 class RWStepAP214_RWAppliedDateAndTimeAssignment {
 	public:
 		/****************** RWStepAP214_RWAppliedDateAndTimeAssignment ******************/
@@ -300,7 +297,6 @@ class RWStepAP214_RWAppliedDateAndTimeAssignment {
 /********************************************
 * class RWStepAP214_RWAppliedDateAssignment *
 ********************************************/
-%nodefaultctor RWStepAP214_RWAppliedDateAssignment;
 class RWStepAP214_RWAppliedDateAssignment {
 	public:
 		/****************** RWStepAP214_RWAppliedDateAssignment ******************/
@@ -351,7 +347,6 @@ class RWStepAP214_RWAppliedDateAssignment {
 /***********************************************
 * class RWStepAP214_RWAppliedDocumentReference *
 ***********************************************/
-%nodefaultctor RWStepAP214_RWAppliedDocumentReference;
 class RWStepAP214_RWAppliedDocumentReference {
 	public:
 		/****************** RWStepAP214_RWAppliedDocumentReference ******************/
@@ -402,7 +397,6 @@ class RWStepAP214_RWAppliedDocumentReference {
 /**************************************************************
 * class RWStepAP214_RWAppliedExternalIdentificationAssignment *
 **************************************************************/
-%nodefaultctor RWStepAP214_RWAppliedExternalIdentificationAssignment;
 class RWStepAP214_RWAppliedExternalIdentificationAssignment {
 	public:
 		/****************** RWStepAP214_RWAppliedExternalIdentificationAssignment ******************/
@@ -457,7 +451,6 @@ class RWStepAP214_RWAppliedExternalIdentificationAssignment {
 /*********************************************
 * class RWStepAP214_RWAppliedGroupAssignment *
 *********************************************/
-%nodefaultctor RWStepAP214_RWAppliedGroupAssignment;
 class RWStepAP214_RWAppliedGroupAssignment {
 	public:
 		/****************** RWStepAP214_RWAppliedGroupAssignment ******************/
@@ -512,7 +505,6 @@ class RWStepAP214_RWAppliedGroupAssignment {
 /****************************************************
 * class RWStepAP214_RWAppliedOrganizationAssignment *
 ****************************************************/
-%nodefaultctor RWStepAP214_RWAppliedOrganizationAssignment;
 class RWStepAP214_RWAppliedOrganizationAssignment {
 	public:
 		/****************** RWStepAP214_RWAppliedOrganizationAssignment ******************/
@@ -563,7 +555,6 @@ class RWStepAP214_RWAppliedOrganizationAssignment {
 /*************************************************************
 * class RWStepAP214_RWAppliedPersonAndOrganizationAssignment *
 *************************************************************/
-%nodefaultctor RWStepAP214_RWAppliedPersonAndOrganizationAssignment;
 class RWStepAP214_RWAppliedPersonAndOrganizationAssignment {
 	public:
 		/****************** RWStepAP214_RWAppliedPersonAndOrganizationAssignment ******************/
@@ -614,7 +605,6 @@ class RWStepAP214_RWAppliedPersonAndOrganizationAssignment {
 /*******************************************
 * class RWStepAP214_RWAppliedPresentedItem *
 *******************************************/
-%nodefaultctor RWStepAP214_RWAppliedPresentedItem;
 class RWStepAP214_RWAppliedPresentedItem {
 	public:
 		/****************** RWStepAP214_RWAppliedPresentedItem ******************/
@@ -665,7 +655,6 @@ class RWStepAP214_RWAppliedPresentedItem {
 /**************************************************************
 * class RWStepAP214_RWAppliedSecurityClassificationAssignment *
 **************************************************************/
-%nodefaultctor RWStepAP214_RWAppliedSecurityClassificationAssignment;
 class RWStepAP214_RWAppliedSecurityClassificationAssignment {
 	public:
 		/****************** RWStepAP214_RWAppliedSecurityClassificationAssignment ******************/
@@ -716,7 +705,6 @@ class RWStepAP214_RWAppliedSecurityClassificationAssignment {
 /************************************************************
 * class RWStepAP214_RWAutoDesignActualDateAndTimeAssignment *
 ************************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignActualDateAndTimeAssignment;
 class RWStepAP214_RWAutoDesignActualDateAndTimeAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignActualDateAndTimeAssignment ******************/
@@ -767,7 +755,6 @@ class RWStepAP214_RWAutoDesignActualDateAndTimeAssignment {
 /*****************************************************
 * class RWStepAP214_RWAutoDesignActualDateAssignment *
 *****************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignActualDateAssignment;
 class RWStepAP214_RWAutoDesignActualDateAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignActualDateAssignment ******************/
@@ -818,7 +805,6 @@ class RWStepAP214_RWAutoDesignActualDateAssignment {
 /***************************************************
 * class RWStepAP214_RWAutoDesignApprovalAssignment *
 ***************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignApprovalAssignment;
 class RWStepAP214_RWAutoDesignApprovalAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignApprovalAssignment ******************/
@@ -869,7 +855,6 @@ class RWStepAP214_RWAutoDesignApprovalAssignment {
 /********************************************************
 * class RWStepAP214_RWAutoDesignDateAndPersonAssignment *
 ********************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignDateAndPersonAssignment;
 class RWStepAP214_RWAutoDesignDateAndPersonAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignDateAndPersonAssignment ******************/
@@ -920,7 +905,6 @@ class RWStepAP214_RWAutoDesignDateAndPersonAssignment {
 /**************************************************
 * class RWStepAP214_RWAutoDesignDocumentReference *
 **************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignDocumentReference;
 class RWStepAP214_RWAutoDesignDocumentReference {
 	public:
 		/****************** RWStepAP214_RWAutoDesignDocumentReference ******************/
@@ -971,7 +955,6 @@ class RWStepAP214_RWAutoDesignDocumentReference {
 /************************************************
 * class RWStepAP214_RWAutoDesignGroupAssignment *
 ************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignGroupAssignment;
 class RWStepAP214_RWAutoDesignGroupAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignGroupAssignment ******************/
@@ -1022,7 +1005,6 @@ class RWStepAP214_RWAutoDesignGroupAssignment {
 /*************************************************************
 * class RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment *
 *************************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment;
 class RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment ******************/
@@ -1073,7 +1055,6 @@ class RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment {
 /******************************************************
 * class RWStepAP214_RWAutoDesignNominalDateAssignment *
 ******************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignNominalDateAssignment;
 class RWStepAP214_RWAutoDesignNominalDateAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignNominalDateAssignment ******************/
@@ -1124,7 +1105,6 @@ class RWStepAP214_RWAutoDesignNominalDateAssignment {
 /*******************************************************
 * class RWStepAP214_RWAutoDesignOrganizationAssignment *
 *******************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignOrganizationAssignment;
 class RWStepAP214_RWAutoDesignOrganizationAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignOrganizationAssignment ******************/
@@ -1175,7 +1155,6 @@ class RWStepAP214_RWAutoDesignOrganizationAssignment {
 /****************************************************************
 * class RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment *
 ****************************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment;
 class RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment ******************/
@@ -1226,7 +1205,6 @@ class RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment {
 /**********************************************
 * class RWStepAP214_RWAutoDesignPresentedItem *
 **********************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignPresentedItem;
 class RWStepAP214_RWAutoDesignPresentedItem {
 	public:
 		/****************** RWStepAP214_RWAutoDesignPresentedItem ******************/
@@ -1277,7 +1255,6 @@ class RWStepAP214_RWAutoDesignPresentedItem {
 /*****************************************************************
 * class RWStepAP214_RWAutoDesignSecurityClassificationAssignment *
 *****************************************************************/
-%nodefaultctor RWStepAP214_RWAutoDesignSecurityClassificationAssignment;
 class RWStepAP214_RWAutoDesignSecurityClassificationAssignment {
 	public:
 		/****************** RWStepAP214_RWAutoDesignSecurityClassificationAssignment ******************/
@@ -1328,7 +1305,6 @@ class RWStepAP214_RWAutoDesignSecurityClassificationAssignment {
 /****************************
 * class RWStepAP214_RWClass *
 ****************************/
-%nodefaultctor RWStepAP214_RWClass;
 class RWStepAP214_RWClass {
 	public:
 		/****************** RWStepAP214_RWClass ******************/
@@ -1383,7 +1359,6 @@ class RWStepAP214_RWClass {
 /*********************************************
 * class RWStepAP214_RWExternallyDefinedClass *
 *********************************************/
-%nodefaultctor RWStepAP214_RWExternallyDefinedClass;
 class RWStepAP214_RWExternallyDefinedClass {
 	public:
 		/****************** RWStepAP214_RWExternallyDefinedClass ******************/
@@ -1438,7 +1413,6 @@ class RWStepAP214_RWExternallyDefinedClass {
 /*******************************************************
 * class RWStepAP214_RWExternallyDefinedGeneralProperty *
 *******************************************************/
-%nodefaultctor RWStepAP214_RWExternallyDefinedGeneralProperty;
 class RWStepAP214_RWExternallyDefinedGeneralProperty {
 	public:
 		/****************** RWStepAP214_RWExternallyDefinedGeneralProperty ******************/
@@ -1493,7 +1467,6 @@ class RWStepAP214_RWExternallyDefinedGeneralProperty {
 /***********************************
 * class RWStepAP214_RWRepItemGroup *
 ***********************************/
-%nodefaultctor RWStepAP214_RWRepItemGroup;
 class RWStepAP214_RWRepItemGroup {
 	public:
 		/****************** RWStepAP214_RWRepItemGroup ******************/
@@ -1548,7 +1521,6 @@ class RWStepAP214_RWRepItemGroup {
 /************************************
 * class RWStepAP214_ReadWriteModule *
 ************************************/
-%nodefaultctor RWStepAP214_ReadWriteModule;
 class RWStepAP214_ReadWriteModule : public StepData_ReadWriteModule {
 	public:
 		/****************** CaseStep ******************/

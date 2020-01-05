@@ -293,7 +293,6 @@ class TopOpeBRepTool_AncestorsTool {
 /*******************************
 * class TopOpeBRepTool_BoxSort *
 *******************************/
-%nodefaultctor TopOpeBRepTool_BoxSort;
 class TopOpeBRepTool_BoxSort {
 	public:
 		/****************** AddBoxes ******************/
@@ -423,7 +422,6 @@ class TopOpeBRepTool_BoxSort {
 /****************************
 * class TopOpeBRepTool_C2DF *
 ****************************/
-%nodefaultctor TopOpeBRepTool_C2DF;
 class TopOpeBRepTool_C2DF {
 	public:
 		/****************** Face ******************/
@@ -508,7 +506,6 @@ class TopOpeBRepTool_C2DF {
 /******************************
 * class TopOpeBRepTool_CLASSI *
 ******************************/
-%nodefaultctor TopOpeBRepTool_CLASSI;
 class TopOpeBRepTool_CLASSI {
 	public:
 		/****************** Add2d ******************/
@@ -598,7 +595,6 @@ class TopOpeBRepTool_CLASSI {
 /*******************************
 * class TopOpeBRepTool_CORRISO *
 *******************************/
-%nodefaultctor TopOpeBRepTool_CORRISO;
 class TopOpeBRepTool_CORRISO {
 	public:
 		/****************** AddNewConnexity ******************/
@@ -815,7 +811,6 @@ class TopOpeBRepTool_CORRISO {
 /*********************************
 * class TopOpeBRepTool_CurveTool *
 *********************************/
-%nodefaultctor TopOpeBRepTool_CurveTool;
 class TopOpeBRepTool_CurveTool {
 	public:
 		/****************** ChangeGeomTool ******************/
@@ -934,7 +929,6 @@ class TopOpeBRepTool_CurveTool {
 /*********************************
 * class TopOpeBRepTool_FuseEdges *
 *********************************/
-%nodefaultctor TopOpeBRepTool_FuseEdges;
 class TopOpeBRepTool_FuseEdges {
 	public:
 		/****************** AvoidEdges ******************/
@@ -1009,7 +1003,6 @@ class TopOpeBRepTool_FuseEdges {
 /********************************
 * class TopOpeBRepTool_GeomTool *
 ********************************/
-%nodefaultctor TopOpeBRepTool_GeomTool;
 class TopOpeBRepTool_GeomTool {
 	public:
 		/****************** CompC3D ******************/
@@ -1136,7 +1129,6 @@ class TopOpeBRepTool_GeomTool {
 /********************************
 * class TopOpeBRepTool_HBoxTool *
 ********************************/
-%nodefaultctor TopOpeBRepTool_HBoxTool;
 class TopOpeBRepTool_HBoxTool : public Standard_Transient {
 	public:
 		/****************** AddBox ******************/
@@ -1256,7 +1248,6 @@ class TopOpeBRepTool_HBoxTool : public Standard_Transient {
 /******************************************
 * class TopOpeBRepTool_PurgeInternalEdges *
 ******************************************/
-%nodefaultctor TopOpeBRepTool_PurgeInternalEdges;
 class TopOpeBRepTool_PurgeInternalEdges {
 	public:
 		/****************** Faces ******************/
@@ -1313,7 +1304,6 @@ class TopOpeBRepTool_PurgeInternalEdges {
 /*****************************
 * class TopOpeBRepTool_REGUS *
 *****************************/
-%nodefaultctor TopOpeBRepTool_REGUS;
 class TopOpeBRepTool_REGUS {
 	public:
 		/****************** GetFsplits ******************/
@@ -1429,7 +1419,6 @@ class TopOpeBRepTool_REGUS {
 /*****************************
 * class TopOpeBRepTool_REGUW *
 *****************************/
-%nodefaultctor TopOpeBRepTool_REGUW;
 class TopOpeBRepTool_REGUW {
 	public:
 		/****************** AddNewConnexity ******************/
@@ -1594,7 +1583,6 @@ class TopOpeBRepTool_REGUW {
 /***************************************
 * class TopOpeBRepTool_ShapeClassifier *
 ***************************************/
-%nodefaultctor TopOpeBRepTool_ShapeClassifier;
 class TopOpeBRepTool_ShapeClassifier {
 	public:
 		/****************** ChangeSolidClassifier ******************/
@@ -1748,7 +1736,6 @@ class TopOpeBRepTool_ShapeClassifier {
 /*************************************
 * class TopOpeBRepTool_ShapeExplorer *
 *************************************/
-%nodefaultctor TopOpeBRepTool_ShapeExplorer;
 class TopOpeBRepTool_ShapeExplorer : public TopExp_Explorer {
 	public:
 
@@ -2054,7 +2041,6 @@ class TopOpeBRepTool_ShapeTool {
 /***************************************
 * class TopOpeBRepTool_SolidClassifier *
 ***************************************/
-%nodefaultctor TopOpeBRepTool_SolidClassifier;
 class TopOpeBRepTool_SolidClassifier {
 	public:
 		/****************** Classify ******************/
@@ -2764,7 +2750,6 @@ class TopOpeBRepTool_TOOL {
 /*********************************
 * class TopOpeBRepTool_connexity *
 *********************************/
-%nodefaultctor TopOpeBRepTool_connexity;
 class TopOpeBRepTool_connexity {
 	public:
 		/****************** AddItem ******************/
@@ -2877,7 +2862,6 @@ class TopOpeBRepTool_connexity {
 /****************************
 * class TopOpeBRepTool_face *
 ****************************/
-%nodefaultctor TopOpeBRepTool_face;
 class TopOpeBRepTool_face {
 	public:
 		/****************** Ffinite ******************/
@@ -2931,7 +2915,6 @@ class TopOpeBRepTool_face {
 /**************************************
 * class TopOpeBRepTool_makeTransition *
 **************************************/
-%nodefaultctor TopOpeBRepTool_makeTransition;
 class TopOpeBRepTool_makeTransition {
 	public:
 		/****************** Getfactor ******************/

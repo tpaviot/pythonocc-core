@@ -222,7 +222,6 @@ class Units {
 /***********************
 * class Units_Explorer *
 ***********************/
-%nodefaultctor Units_Explorer;
 class Units_Explorer {
 	public:
 		/****************** Init ******************/
@@ -357,7 +356,6 @@ class Units_Explorer {
 /**********************
 * class Units_Lexicon *
 **********************/
-%nodefaultctor Units_Lexicon;
 class Units_Lexicon : public Standard_Transient {
 	public:
 		/****************** AddToken ******************/
@@ -410,7 +408,6 @@ class Units_Lexicon : public Standard_Transient {
 /**************************
 * class Units_Measurement *
 **************************/
-%nodefaultctor Units_Measurement;
 class Units_Measurement {
 	public:
 		/****************** Add ******************/
@@ -595,7 +592,6 @@ class Units_Measurement {
 /***********************
 * class Units_Sentence *
 ***********************/
-%nodefaultctor Units_Sentence;
 class Units_Sentence {
 	public:
 		/****************** Dump ******************/
@@ -658,7 +654,6 @@ class Units_Sentence {
 /********************
 * class Units_Token *
 ********************/
-%nodefaultctor Units_Token;
 class Units_Token : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -709,8 +704,8 @@ class Units_Token : public Standard_Transient {
 		%feature("autodoc", "* This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 	:param avalue:
 	:type avalue: float
-	:rtype: Standard_NODISCARD  float") Divided;
-		Standard_NODISCARD virtual Standard_Real Divided (const Standard_Real avalue);
+	:rtype: float") Divided;
+		virtual Standard_Real Divided (const Standard_Real avalue);
 
 		/****************** Dump ******************/
 		%feature("compactdefaultargs") Dump;
@@ -811,8 +806,8 @@ class Units_Token : public Standard_Transient {
 		%feature("autodoc", "* This virtual method is called by the Measurement methods, to compute the measurement during a conversion.
 	:param avalue:
 	:type avalue: float
-	:rtype: Standard_NODISCARD  float") Multiplied;
-		Standard_NODISCARD virtual Standard_Real Multiplied (const Standard_Real avalue);
+	:rtype: float") Multiplied;
+		virtual Standard_Real Multiplied (const Standard_Real avalue);
 
 		/****************** Multiply ******************/
 		%feature("compactdefaultargs") Multiply;
@@ -954,7 +949,6 @@ class Units_Token : public Standard_Transient {
 /*******************
 * class Units_Unit *
 *******************/
-%nodefaultctor Units_Unit;
 class Units_Unit : public Standard_Transient {
 	public:
 		/****************** Dump ******************/
@@ -1075,7 +1069,6 @@ class Units_Unit : public Standard_Transient {
 /******************************
 * class Units_UnitsDictionary *
 ******************************/
-%nodefaultctor Units_UnitsDictionary;
 class Units_UnitsDictionary : public Standard_Transient {
 	public:
 		/****************** ActiveUnit ******************/
@@ -1134,7 +1127,6 @@ class Units_UnitsDictionary : public Standard_Transient {
 /**************************
 * class Units_UnitsSystem *
 **************************/
-%nodefaultctor Units_UnitsSystem;
 class Units_UnitsSystem : public Standard_Transient {
 	public:
 		/****************** Activate ******************/
@@ -1266,7 +1258,6 @@ class Units_UnitsSystem : public Standard_Transient {
 /***************************
 * class Units_MathSentence *
 ***************************/
-%nodefaultctor Units_MathSentence;
 class Units_MathSentence : public Units_Sentence {
 	public:
 		/****************** Units_MathSentence ******************/
@@ -1289,7 +1280,6 @@ class Units_MathSentence : public Units_Sentence {
 /***************************
 * class Units_ShiftedToken *
 ***************************/
-%nodefaultctor Units_ShiftedToken;
 class Units_ShiftedToken : public Units_Token {
 	public:
 		/****************** Creates ******************/
@@ -1359,7 +1349,6 @@ class Units_ShiftedToken : public Units_Token {
 /**************************
 * class Units_ShiftedUnit *
 **************************/
-%nodefaultctor Units_ShiftedUnit;
 class Units_ShiftedUnit : public Units_Unit {
 	public:
 		/****************** Dump ******************/
@@ -1439,7 +1428,6 @@ class Units_ShiftedUnit : public Units_Unit {
 /***************************
 * class Units_UnitSentence *
 ***************************/
-%nodefaultctor Units_UnitSentence;
 class Units_UnitSentence : public Units_Sentence {
 	public:
 		/****************** Analyse ******************/
@@ -1486,7 +1474,6 @@ class Units_UnitSentence : public Units_Sentence {
 /***************************
 * class Units_UnitsLexicon *
 ***************************/
-%nodefaultctor Units_UnitsLexicon;
 class Units_UnitsLexicon : public Units_Lexicon {
 	public:
 		/****************** Creates ******************/

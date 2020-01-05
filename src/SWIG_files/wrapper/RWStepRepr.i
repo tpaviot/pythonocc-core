@@ -77,7 +77,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwsteprepr.html"
 /******************************************
 * class RWStepRepr_RWAllAroundShapeAspect *
 ******************************************/
-%nodefaultctor RWStepRepr_RWAllAroundShapeAspect;
 class RWStepRepr_RWAllAroundShapeAspect {
 	public:
 		/****************** RWStepRepr_RWAllAroundShapeAspect ******************/
@@ -132,7 +131,6 @@ class RWStepRepr_RWAllAroundShapeAspect {
 /**************************
 * class RWStepRepr_RWApex *
 **************************/
-%nodefaultctor RWStepRepr_RWApex;
 class RWStepRepr_RWApex {
 	public:
 		/****************** RWStepRepr_RWApex ******************/
@@ -187,7 +185,6 @@ class RWStepRepr_RWApex {
 /********************************************
 * class RWStepRepr_RWAssemblyComponentUsage *
 ********************************************/
-%nodefaultctor RWStepRepr_RWAssemblyComponentUsage;
 class RWStepRepr_RWAssemblyComponentUsage {
 	public:
 		/****************** RWStepRepr_RWAssemblyComponentUsage ******************/
@@ -242,7 +239,6 @@ class RWStepRepr_RWAssemblyComponentUsage {
 /******************************************************
 * class RWStepRepr_RWAssemblyComponentUsageSubstitute *
 ******************************************************/
-%nodefaultctor RWStepRepr_RWAssemblyComponentUsageSubstitute;
 class RWStepRepr_RWAssemblyComponentUsageSubstitute {
 	public:
 		/****************** RWStepRepr_RWAssemblyComponentUsageSubstitute ******************/
@@ -293,7 +289,6 @@ class RWStepRepr_RWAssemblyComponentUsageSubstitute {
 /****************************************
 * class RWStepRepr_RWBetweenShapeAspect *
 ****************************************/
-%nodefaultctor RWStepRepr_RWBetweenShapeAspect;
 class RWStepRepr_RWBetweenShapeAspect {
 	public:
 		/****************** RWStepRepr_RWBetweenShapeAspect ******************/
@@ -348,7 +343,6 @@ class RWStepRepr_RWBetweenShapeAspect {
 /**************************************
 * class RWStepRepr_RWCentreOfSymmetry *
 **************************************/
-%nodefaultctor RWStepRepr_RWCentreOfSymmetry;
 class RWStepRepr_RWCentreOfSymmetry {
 	public:
 		/****************** RWStepRepr_RWCentreOfSymmetry ******************/
@@ -403,7 +397,6 @@ class RWStepRepr_RWCentreOfSymmetry {
 /*************************************************
 * class RWStepRepr_RWCharacterizedRepresentation *
 *************************************************/
-%nodefaultctor RWStepRepr_RWCharacterizedRepresentation;
 class RWStepRepr_RWCharacterizedRepresentation {
 	public:
 		/****************** RWStepRepr_RWCharacterizedRepresentation ******************/
@@ -454,7 +447,6 @@ class RWStepRepr_RWCharacterizedRepresentation {
 /********************************************************************
 * class RWStepRepr_RWCompGroupShAspAndCompShAspAndDatumFeatAndShAsp *
 ********************************************************************/
-%nodefaultctor RWStepRepr_RWCompGroupShAspAndCompShAspAndDatumFeatAndShAsp;
 class RWStepRepr_RWCompGroupShAspAndCompShAspAndDatumFeatAndShAsp {
 	public:
 		/****************** RWStepRepr_RWCompGroupShAspAndCompShAspAndDatumFeatAndShAsp ******************/
@@ -505,7 +497,6 @@ class RWStepRepr_RWCompGroupShAspAndCompShAspAndDatumFeatAndShAsp {
 /***************************************************
 * class RWStepRepr_RWCompShAspAndDatumFeatAndShAsp *
 ***************************************************/
-%nodefaultctor RWStepRepr_RWCompShAspAndDatumFeatAndShAsp;
 class RWStepRepr_RWCompShAspAndDatumFeatAndShAsp {
 	public:
 		/****************** RWStepRepr_RWCompShAspAndDatumFeatAndShAsp ******************/
@@ -556,7 +547,6 @@ class RWStepRepr_RWCompShAspAndDatumFeatAndShAsp {
 /***********************************************
 * class RWStepRepr_RWCompositeGroupShapeAspect *
 ***********************************************/
-%nodefaultctor RWStepRepr_RWCompositeGroupShapeAspect;
 class RWStepRepr_RWCompositeGroupShapeAspect {
 	public:
 		/****************** RWStepRepr_RWCompositeGroupShapeAspect ******************/
@@ -611,7 +601,6 @@ class RWStepRepr_RWCompositeGroupShapeAspect {
 /******************************************
 * class RWStepRepr_RWCompositeShapeAspect *
 ******************************************/
-%nodefaultctor RWStepRepr_RWCompositeShapeAspect;
 class RWStepRepr_RWCompositeShapeAspect {
 	public:
 		/****************** RWStepRepr_RWCompositeShapeAspect ******************/
@@ -666,7 +655,6 @@ class RWStepRepr_RWCompositeShapeAspect {
 /************************************************
 * class RWStepRepr_RWCompoundRepresentationItem *
 ************************************************/
-%nodefaultctor RWStepRepr_RWCompoundRepresentationItem;
 class RWStepRepr_RWCompoundRepresentationItem {
 	public:
 		/****************** RWStepRepr_RWCompoundRepresentationItem ******************/
@@ -718,7 +706,6 @@ class RWStepRepr_RWCompoundRepresentationItem {
 /*****************************************
 * class RWStepRepr_RWConfigurationDesign *
 *****************************************/
-%nodefaultctor RWStepRepr_RWConfigurationDesign;
 class RWStepRepr_RWConfigurationDesign {
 	public:
 		/****************** RWStepRepr_RWConfigurationDesign ******************/
@@ -773,7 +760,6 @@ class RWStepRepr_RWConfigurationDesign {
 /**********************************************
 * class RWStepRepr_RWConfigurationEffectivity *
 **********************************************/
-%nodefaultctor RWStepRepr_RWConfigurationEffectivity;
 class RWStepRepr_RWConfigurationEffectivity {
 	public:
 		/****************** RWStepRepr_RWConfigurationEffectivity ******************/
@@ -828,7 +814,6 @@ class RWStepRepr_RWConfigurationEffectivity {
 /***************************************
 * class RWStepRepr_RWConfigurationItem *
 ***************************************/
-%nodefaultctor RWStepRepr_RWConfigurationItem;
 class RWStepRepr_RWConfigurationItem {
 	public:
 		/****************** RWStepRepr_RWConfigurationItem ******************/
@@ -883,7 +868,6 @@ class RWStepRepr_RWConfigurationItem {
 /********************************************************
 * class RWStepRepr_RWConstructiveGeometryRepresentation *
 ********************************************************/
-%nodefaultctor RWStepRepr_RWConstructiveGeometryRepresentation;
 class RWStepRepr_RWConstructiveGeometryRepresentation {
 	public:
 		/****************** RWStepRepr_RWConstructiveGeometryRepresentation ******************/
@@ -934,7 +918,6 @@ class RWStepRepr_RWConstructiveGeometryRepresentation {
 /********************************************************************
 * class RWStepRepr_RWConstructiveGeometryRepresentationRelationship *
 ********************************************************************/
-%nodefaultctor RWStepRepr_RWConstructiveGeometryRepresentationRelationship;
 class RWStepRepr_RWConstructiveGeometryRepresentationRelationship {
 	public:
 		/****************** RWStepRepr_RWConstructiveGeometryRepresentationRelationship ******************/
@@ -985,7 +968,6 @@ class RWStepRepr_RWConstructiveGeometryRepresentationRelationship {
 /******************************************
 * class RWStepRepr_RWContinuosShapeAspect *
 ******************************************/
-%nodefaultctor RWStepRepr_RWContinuosShapeAspect;
 class RWStepRepr_RWContinuosShapeAspect {
 	public:
 		/****************** RWStepRepr_RWContinuosShapeAspect ******************/
@@ -1040,7 +1022,6 @@ class RWStepRepr_RWContinuosShapeAspect {
 /*************************************
 * class RWStepRepr_RWDataEnvironment *
 *************************************/
-%nodefaultctor RWStepRepr_RWDataEnvironment;
 class RWStepRepr_RWDataEnvironment {
 	public:
 		/****************** RWStepRepr_RWDataEnvironment ******************/
@@ -1095,7 +1076,6 @@ class RWStepRepr_RWDataEnvironment {
 /************************************************
 * class RWStepRepr_RWDefinitionalRepresentation *
 ************************************************/
-%nodefaultctor RWStepRepr_RWDefinitionalRepresentation;
 class RWStepRepr_RWDefinitionalRepresentation {
 	public:
 		/****************** RWStepRepr_RWDefinitionalRepresentation ******************/
@@ -1146,7 +1126,6 @@ class RWStepRepr_RWDefinitionalRepresentation {
 /****************************************
 * class RWStepRepr_RWDerivedShapeAspect *
 ****************************************/
-%nodefaultctor RWStepRepr_RWDerivedShapeAspect;
 class RWStepRepr_RWDerivedShapeAspect {
 	public:
 		/****************** RWStepRepr_RWDerivedShapeAspect ******************/
@@ -1201,7 +1180,6 @@ class RWStepRepr_RWDerivedShapeAspect {
 /***************************************************
 * class RWStepRepr_RWDescriptiveRepresentationItem *
 ***************************************************/
-%nodefaultctor RWStepRepr_RWDescriptiveRepresentationItem;
 class RWStepRepr_RWDescriptiveRepresentationItem {
 	public:
 		/****************** RWStepRepr_RWDescriptiveRepresentationItem ******************/
@@ -1243,7 +1221,6 @@ class RWStepRepr_RWDescriptiveRepresentationItem {
 /*******************************
 * class RWStepRepr_RWExtension *
 *******************************/
-%nodefaultctor RWStepRepr_RWExtension;
 class RWStepRepr_RWExtension {
 	public:
 		/****************** RWStepRepr_RWExtension ******************/
@@ -1298,7 +1275,6 @@ class RWStepRepr_RWExtension {
 /*******************************************************
 * class RWStepRepr_RWFeatureForDatumTargetRelationship *
 *******************************************************/
-%nodefaultctor RWStepRepr_RWFeatureForDatumTargetRelationship;
 class RWStepRepr_RWFeatureForDatumTargetRelationship {
 	public:
 		/****************** RWStepRepr_RWFeatureForDatumTargetRelationship ******************/
@@ -1353,7 +1329,6 @@ class RWStepRepr_RWFeatureForDatumTargetRelationship {
 /*******************************************************
 * class RWStepRepr_RWFunctionallyDefinedTransformation *
 *******************************************************/
-%nodefaultctor RWStepRepr_RWFunctionallyDefinedTransformation;
 class RWStepRepr_RWFunctionallyDefinedTransformation {
 	public:
 		/****************** RWStepRepr_RWFunctionallyDefinedTransformation ******************/
@@ -1395,7 +1370,6 @@ class RWStepRepr_RWFunctionallyDefinedTransformation {
 /****************************************
 * class RWStepRepr_RWGeometricAlignment *
 ****************************************/
-%nodefaultctor RWStepRepr_RWGeometricAlignment;
 class RWStepRepr_RWGeometricAlignment {
 	public:
 		/****************** RWStepRepr_RWGeometricAlignment ******************/
@@ -1450,7 +1424,6 @@ class RWStepRepr_RWGeometricAlignment {
 /******************************************************
 * class RWStepRepr_RWGlobalUncertaintyAssignedContext *
 ******************************************************/
-%nodefaultctor RWStepRepr_RWGlobalUncertaintyAssignedContext;
 class RWStepRepr_RWGlobalUncertaintyAssignedContext {
 	public:
 		/****************** RWStepRepr_RWGlobalUncertaintyAssignedContext ******************/
@@ -1501,7 +1474,6 @@ class RWStepRepr_RWGlobalUncertaintyAssignedContext {
 /***********************************************
 * class RWStepRepr_RWGlobalUnitAssignedContext *
 ***********************************************/
-%nodefaultctor RWStepRepr_RWGlobalUnitAssignedContext;
 class RWStepRepr_RWGlobalUnitAssignedContext {
 	public:
 		/****************** RWStepRepr_RWGlobalUnitAssignedContext ******************/
@@ -1552,7 +1524,6 @@ class RWStepRepr_RWGlobalUnitAssignedContext {
 /***********************************************
 * class RWStepRepr_RWIntegerRepresentationItem *
 ***********************************************/
-%nodefaultctor RWStepRepr_RWIntegerRepresentationItem;
 class RWStepRepr_RWIntegerRepresentationItem {
 	public:
 		/****************** RWStepRepr_RWIntegerRepresentationItem ******************/
@@ -1594,7 +1565,6 @@ class RWStepRepr_RWIntegerRepresentationItem {
 /***********************************************
 * class RWStepRepr_RWItemDefinedTransformation *
 ***********************************************/
-%nodefaultctor RWStepRepr_RWItemDefinedTransformation;
 class RWStepRepr_RWItemDefinedTransformation {
 	public:
 		/****************** RWStepRepr_RWItemDefinedTransformation ******************/
@@ -1645,7 +1615,6 @@ class RWStepRepr_RWItemDefinedTransformation {
 /*****************************************
 * class RWStepRepr_RWMakeFromUsageOption *
 *****************************************/
-%nodefaultctor RWStepRepr_RWMakeFromUsageOption;
 class RWStepRepr_RWMakeFromUsageOption {
 	public:
 		/****************** RWStepRepr_RWMakeFromUsageOption ******************/
@@ -1700,7 +1669,6 @@ class RWStepRepr_RWMakeFromUsageOption {
 /********************************
 * class RWStepRepr_RWMappedItem *
 ********************************/
-%nodefaultctor RWStepRepr_RWMappedItem;
 class RWStepRepr_RWMappedItem {
 	public:
 		/****************** RWStepRepr_RWMappedItem ******************/
@@ -1751,7 +1719,6 @@ class RWStepRepr_RWMappedItem {
 /*****************************************
 * class RWStepRepr_RWMaterialDesignation *
 *****************************************/
-%nodefaultctor RWStepRepr_RWMaterialDesignation;
 class RWStepRepr_RWMaterialDesignation {
 	public:
 		/****************** RWStepRepr_RWMaterialDesignation ******************/
@@ -1802,7 +1769,6 @@ class RWStepRepr_RWMaterialDesignation {
 /**************************************
 * class RWStepRepr_RWMaterialProperty *
 **************************************/
-%nodefaultctor RWStepRepr_RWMaterialProperty;
 class RWStepRepr_RWMaterialProperty {
 	public:
 		/****************** RWStepRepr_RWMaterialProperty ******************/
@@ -1857,7 +1823,6 @@ class RWStepRepr_RWMaterialProperty {
 /****************************************************
 * class RWStepRepr_RWMaterialPropertyRepresentation *
 ****************************************************/
-%nodefaultctor RWStepRepr_RWMaterialPropertyRepresentation;
 class RWStepRepr_RWMaterialPropertyRepresentation {
 	public:
 		/****************** RWStepRepr_RWMaterialPropertyRepresentation ******************/
@@ -1912,7 +1877,6 @@ class RWStepRepr_RWMaterialPropertyRepresentation {
 /***********************************************
 * class RWStepRepr_RWMeasureRepresentationItem *
 ***********************************************/
-%nodefaultctor RWStepRepr_RWMeasureRepresentationItem;
 class RWStepRepr_RWMeasureRepresentationItem {
 	public:
 		/****************** RWStepRepr_RWMeasureRepresentationItem ******************/
@@ -1963,7 +1927,6 @@ class RWStepRepr_RWMeasureRepresentationItem {
 /************************************
 * class RWStepRepr_RWParallelOffset *
 ************************************/
-%nodefaultctor RWStepRepr_RWParallelOffset;
 class RWStepRepr_RWParallelOffset {
 	public:
 		/****************** RWStepRepr_RWParallelOffset ******************/
@@ -2018,7 +1981,6 @@ class RWStepRepr_RWParallelOffset {
 /*****************************************************
 * class RWStepRepr_RWParametricRepresentationContext *
 *****************************************************/
-%nodefaultctor RWStepRepr_RWParametricRepresentationContext;
 class RWStepRepr_RWParametricRepresentationContext {
 	public:
 		/****************** RWStepRepr_RWParametricRepresentationContext ******************/
@@ -2060,7 +2022,6 @@ class RWStepRepr_RWParametricRepresentationContext {
 /*************************************
 * class RWStepRepr_RWPerpendicularTo *
 *************************************/
-%nodefaultctor RWStepRepr_RWPerpendicularTo;
 class RWStepRepr_RWPerpendicularTo {
 	public:
 		/****************** RWStepRepr_RWPerpendicularTo ******************/
@@ -2115,7 +2076,6 @@ class RWStepRepr_RWPerpendicularTo {
 /************************************
 * class RWStepRepr_RWProductConcept *
 ************************************/
-%nodefaultctor RWStepRepr_RWProductConcept;
 class RWStepRepr_RWProductConcept {
 	public:
 		/****************** RWStepRepr_RWProductConcept ******************/
@@ -2170,7 +2130,6 @@ class RWStepRepr_RWProductConcept {
 /********************************************
 * class RWStepRepr_RWProductDefinitionShape *
 ********************************************/
-%nodefaultctor RWStepRepr_RWProductDefinitionShape;
 class RWStepRepr_RWProductDefinitionShape {
 	public:
 		/****************** RWStepRepr_RWProductDefinitionShape ******************/
@@ -2225,7 +2184,6 @@ class RWStepRepr_RWProductDefinitionShape {
 /****************************************
 * class RWStepRepr_RWPropertyDefinition *
 ****************************************/
-%nodefaultctor RWStepRepr_RWPropertyDefinition;
 class RWStepRepr_RWPropertyDefinition {
 	public:
 		/****************** RWStepRepr_RWPropertyDefinition ******************/
@@ -2280,7 +2238,6 @@ class RWStepRepr_RWPropertyDefinition {
 /****************************************************
 * class RWStepRepr_RWPropertyDefinitionRelationship *
 ****************************************************/
-%nodefaultctor RWStepRepr_RWPropertyDefinitionRelationship;
 class RWStepRepr_RWPropertyDefinitionRelationship {
 	public:
 		/****************** RWStepRepr_RWPropertyDefinitionRelationship ******************/
@@ -2335,7 +2292,6 @@ class RWStepRepr_RWPropertyDefinitionRelationship {
 /******************************************************
 * class RWStepRepr_RWPropertyDefinitionRepresentation *
 ******************************************************/
-%nodefaultctor RWStepRepr_RWPropertyDefinitionRepresentation;
 class RWStepRepr_RWPropertyDefinitionRepresentation {
 	public:
 		/****************** RWStepRepr_RWPropertyDefinitionRepresentation ******************/
@@ -2390,7 +2346,6 @@ class RWStepRepr_RWPropertyDefinitionRepresentation {
 /******************************************************
 * class RWStepRepr_RWQuantifiedAssemblyComponentUsage *
 ******************************************************/
-%nodefaultctor RWStepRepr_RWQuantifiedAssemblyComponentUsage;
 class RWStepRepr_RWQuantifiedAssemblyComponentUsage {
 	public:
 		/****************** RWStepRepr_RWQuantifiedAssemblyComponentUsage ******************/
@@ -2445,7 +2400,6 @@ class RWStepRepr_RWQuantifiedAssemblyComponentUsage {
 /******************************************************
 * class RWStepRepr_RWReprItemAndLengthMeasureWithUnit *
 ******************************************************/
-%nodefaultctor RWStepRepr_RWReprItemAndLengthMeasureWithUnit;
 class RWStepRepr_RWReprItemAndLengthMeasureWithUnit {
 	public:
 		/****************** RWStepRepr_RWReprItemAndLengthMeasureWithUnit ******************/
@@ -2487,7 +2441,6 @@ class RWStepRepr_RWReprItemAndLengthMeasureWithUnit {
 /************************************************************
 * class RWStepRepr_RWReprItemAndLengthMeasureWithUnitAndQRI *
 ************************************************************/
-%nodefaultctor RWStepRepr_RWReprItemAndLengthMeasureWithUnitAndQRI;
 class RWStepRepr_RWReprItemAndLengthMeasureWithUnitAndQRI {
 	public:
 		/****************** RWStepRepr_RWReprItemAndLengthMeasureWithUnitAndQRI ******************/
@@ -2529,7 +2482,6 @@ class RWStepRepr_RWReprItemAndLengthMeasureWithUnitAndQRI {
 /**********************************************************
 * class RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnit *
 **********************************************************/
-%nodefaultctor RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnit;
 class RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnit {
 	public:
 		/****************** RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnit ******************/
@@ -2571,7 +2523,6 @@ class RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnit {
 /****************************************************************
 * class RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnitAndQRI *
 ****************************************************************/
-%nodefaultctor RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnitAndQRI;
 class RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnitAndQRI {
 	public:
 		/****************** RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnitAndQRI ******************/
@@ -2613,7 +2564,6 @@ class RWStepRepr_RWReprItemAndPlaneAngleMeasureWithUnitAndQRI {
 /************************************
 * class RWStepRepr_RWRepresentation *
 ************************************/
-%nodefaultctor RWStepRepr_RWRepresentation;
 class RWStepRepr_RWRepresentation {
 	public:
 		/****************** RWStepRepr_RWRepresentation ******************/
@@ -2664,7 +2614,6 @@ class RWStepRepr_RWRepresentation {
 /*******************************************
 * class RWStepRepr_RWRepresentationContext *
 *******************************************/
-%nodefaultctor RWStepRepr_RWRepresentationContext;
 class RWStepRepr_RWRepresentationContext {
 	public:
 		/****************** RWStepRepr_RWRepresentationContext ******************/
@@ -2706,7 +2655,6 @@ class RWStepRepr_RWRepresentationContext {
 /****************************************
 * class RWStepRepr_RWRepresentationItem *
 ****************************************/
-%nodefaultctor RWStepRepr_RWRepresentationItem;
 class RWStepRepr_RWRepresentationItem {
 	public:
 		/****************** RWStepRepr_RWRepresentationItem ******************/
@@ -2748,7 +2696,6 @@ class RWStepRepr_RWRepresentationItem {
 /***************************************
 * class RWStepRepr_RWRepresentationMap *
 ***************************************/
-%nodefaultctor RWStepRepr_RWRepresentationMap;
 class RWStepRepr_RWRepresentationMap {
 	public:
 		/****************** RWStepRepr_RWRepresentationMap ******************/
@@ -2799,7 +2746,6 @@ class RWStepRepr_RWRepresentationMap {
 /************************************************
 * class RWStepRepr_RWRepresentationRelationship *
 ************************************************/
-%nodefaultctor RWStepRepr_RWRepresentationRelationship;
 class RWStepRepr_RWRepresentationRelationship {
 	public:
 		/****************** RWStepRepr_RWRepresentationRelationship ******************/
@@ -2850,7 +2796,6 @@ class RWStepRepr_RWRepresentationRelationship {
 /******************************************************************
 * class RWStepRepr_RWRepresentationRelationshipWithTransformation *
 ******************************************************************/
-%nodefaultctor RWStepRepr_RWRepresentationRelationshipWithTransformation;
 class RWStepRepr_RWRepresentationRelationshipWithTransformation {
 	public:
 		/****************** RWStepRepr_RWRepresentationRelationshipWithTransformation ******************/
@@ -2901,7 +2846,6 @@ class RWStepRepr_RWRepresentationRelationshipWithTransformation {
 /*********************************
 * class RWStepRepr_RWShapeAspect *
 *********************************/
-%nodefaultctor RWStepRepr_RWShapeAspect;
 class RWStepRepr_RWShapeAspect {
 	public:
 		/****************** RWStepRepr_RWShapeAspect ******************/
@@ -2952,7 +2896,6 @@ class RWStepRepr_RWShapeAspect {
 /*****************************************************
 * class RWStepRepr_RWShapeAspectDerivingRelationship *
 *****************************************************/
-%nodefaultctor RWStepRepr_RWShapeAspectDerivingRelationship;
 class RWStepRepr_RWShapeAspectDerivingRelationship {
 	public:
 		/****************** RWStepRepr_RWShapeAspectDerivingRelationship ******************/
@@ -3007,7 +2950,6 @@ class RWStepRepr_RWShapeAspectDerivingRelationship {
 /*********************************************
 * class RWStepRepr_RWShapeAspectRelationship *
 *********************************************/
-%nodefaultctor RWStepRepr_RWShapeAspectRelationship;
 class RWStepRepr_RWShapeAspectRelationship {
 	public:
 		/****************** RWStepRepr_RWShapeAspectRelationship ******************/
@@ -3062,7 +3004,6 @@ class RWStepRepr_RWShapeAspectRelationship {
 /*******************************************
 * class RWStepRepr_RWShapeAspectTransition *
 *******************************************/
-%nodefaultctor RWStepRepr_RWShapeAspectTransition;
 class RWStepRepr_RWShapeAspectTransition {
 	public:
 		/****************** RWStepRepr_RWShapeAspectTransition ******************/
@@ -3117,7 +3058,6 @@ class RWStepRepr_RWShapeAspectTransition {
 /***********************************************************************
 * class RWStepRepr_RWShapeRepresentationRelationshipWithTransformation *
 ***********************************************************************/
-%nodefaultctor RWStepRepr_RWShapeRepresentationRelationshipWithTransformation;
 class RWStepRepr_RWShapeRepresentationRelationshipWithTransformation {
 	public:
 		/****************** RWStepRepr_RWShapeRepresentationRelationshipWithTransformation ******************/
@@ -3168,7 +3108,6 @@ class RWStepRepr_RWShapeRepresentationRelationshipWithTransformation {
 /****************************************************
 * class RWStepRepr_RWSpecifiedHigherUsageOccurrence *
 ****************************************************/
-%nodefaultctor RWStepRepr_RWSpecifiedHigherUsageOccurrence;
 class RWStepRepr_RWSpecifiedHigherUsageOccurrence {
 	public:
 		/****************** RWStepRepr_RWSpecifiedHigherUsageOccurrence ******************/
@@ -3223,7 +3162,6 @@ class RWStepRepr_RWSpecifiedHigherUsageOccurrence {
 /************************************************
 * class RWStepRepr_RWStructuralResponseProperty *
 ************************************************/
-%nodefaultctor RWStepRepr_RWStructuralResponseProperty;
 class RWStepRepr_RWStructuralResponseProperty {
 	public:
 		/****************** RWStepRepr_RWStructuralResponseProperty ******************/
@@ -3278,7 +3216,6 @@ class RWStepRepr_RWStructuralResponseProperty {
 /************************************************************************
 * class RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation *
 ************************************************************************/
-%nodefaultctor RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation;
 class RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation {
 	public:
 		/****************** RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation ******************/
@@ -3333,7 +3270,6 @@ class RWStepRepr_RWStructuralResponsePropertyDefinitionRepresentation {
 /*****************************
 * class RWStepRepr_RWTangent *
 *****************************/
-%nodefaultctor RWStepRepr_RWTangent;
 class RWStepRepr_RWTangent {
 	public:
 		/****************** RWStepRepr_RWTangent ******************/
@@ -3388,7 +3324,6 @@ class RWStepRepr_RWTangent {
 /*********************************************
 * class RWStepRepr_RWValueRepresentationItem *
 *********************************************/
-%nodefaultctor RWStepRepr_RWValueRepresentationItem;
 class RWStepRepr_RWValueRepresentationItem {
 	public:
 		/****************** RWStepRepr_RWValueRepresentationItem ******************/

@@ -119,7 +119,6 @@ class TDocStd {
 /****************************
 * class TDocStd_Application *
 ****************************/
-%nodefaultctor TDocStd_Application;
 class TDocStd_Application : public CDF_Application {
 	public:
 		/****************** Close ******************/
@@ -354,7 +353,6 @@ class TDocStd_Application : public CDF_Application {
 /*********************************
 * class TDocStd_ApplicationDelta *
 *********************************/
-%nodefaultctor TDocStd_ApplicationDelta;
 class TDocStd_ApplicationDelta : public Standard_Transient {
 	public:
 
@@ -401,7 +399,6 @@ class TDocStd_ApplicationDelta : public Standard_Transient {
 /******************************
 * class TDocStd_CompoundDelta *
 ******************************/
-%nodefaultctor TDocStd_CompoundDelta;
 class TDocStd_CompoundDelta : public TDF_Delta {
 	public:
 		/****************** TDocStd_CompoundDelta ******************/
@@ -424,7 +421,6 @@ class TDocStd_CompoundDelta : public TDF_Delta {
 /************************
 * class TDocStd_Context *
 ************************/
-%nodefaultctor TDocStd_Context;
 class TDocStd_Context {
 	public:
 		/****************** ModifiedReferences ******************/
@@ -456,7 +452,6 @@ class TDocStd_Context {
 /*************************
 * class TDocStd_Document *
 *************************/
-%nodefaultctor TDocStd_Document;
 class TDocStd_Document : public CDM_Document {
 	public:
 		/****************** AbortCommand ******************/
@@ -778,7 +773,6 @@ class TDocStd_Document : public CDM_Document {
 /*************************
 * class TDocStd_Modified *
 *************************/
-%nodefaultctor TDocStd_Modified;
 class TDocStd_Modified : public TDF_Attribute {
 	public:
 		/****************** Add ******************/
@@ -917,7 +911,6 @@ class TDocStd_Modified : public TDF_Attribute {
 /****************************************
 * class TDocStd_MultiTransactionManager *
 ****************************************/
-%nodefaultctor TDocStd_MultiTransactionManager;
 class TDocStd_MultiTransactionManager : public Standard_Transient {
 	public:
 		/****************** AbortCommand ******************/
@@ -1086,7 +1079,6 @@ class TDocStd_MultiTransactionManager : public Standard_Transient {
 /**********************
 * class TDocStd_Owner *
 **********************/
-%nodefaultctor TDocStd_Owner;
 class TDocStd_Owner : public TDF_Attribute {
 	public:
 
@@ -1177,7 +1169,6 @@ class TDocStd_Owner : public TDF_Attribute {
 /***************************
 * class TDocStd_PathParser *
 ***************************/
-%nodefaultctor TDocStd_PathParser;
 class TDocStd_PathParser {
 	public:
 		/****************** Extension ******************/
@@ -1229,7 +1220,6 @@ class TDocStd_PathParser {
 /**********************
 * class TDocStd_XLink *
 **********************/
-%nodefaultctor TDocStd_XLink;
 class TDocStd_XLink : public TDF_Attribute {
 	public:
 		/****************** AfterAddition ******************/
@@ -1384,7 +1374,6 @@ class TDocStd_XLink : public TDF_Attribute {
 /******************************
 * class TDocStd_XLinkIterator *
 ******************************/
-%nodefaultctor TDocStd_XLinkIterator;
 class TDocStd_XLinkIterator {
 	public:
 		/****************** Initialize ******************/
@@ -1530,7 +1519,6 @@ class TDocStd_XLinkRoot : public TDF_Attribute {
 /**************************
 * class TDocStd_XLinkTool *
 **************************/
-%nodefaultctor TDocStd_XLinkTool;
 class TDocStd_XLinkTool {
 	public:
 		/****************** Copy ******************/

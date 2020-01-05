@@ -104,7 +104,6 @@ enum CDF_StoreSetNameStatus {
 * class CDF *
 ************/
 %rename(cdf) CDF;
-%nodefaultctor CDF;
 class CDF {
 	public:
 		/****************** GetLicense ******************/
@@ -278,7 +277,6 @@ class CDF_Application : public CDM_Application {
 /**********************
 * class CDF_Directory *
 **********************/
-%nodefaultctor CDF_Directory;
 class CDF_Directory : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -343,7 +341,6 @@ class CDF_Directory : public Standard_Transient {
 /******************************
 * class CDF_DirectoryIterator *
 ******************************/
-%nodefaultctor CDF_DirectoryIterator;
 class CDF_DirectoryIterator {
 	public:
 		/****************** CDF_DirectoryIterator ******************/
@@ -574,7 +571,6 @@ class CDF_MetaDataDriverFactory : public Standard_Transient {
 /********************
 * class CDF_Session *
 ********************/
-%nodefaultctor CDF_Session;
 class CDF_Session : public Standard_Transient {
 	public:
 		/****************** CDF_Session ******************/
@@ -646,7 +642,6 @@ class CDF_Session : public Standard_Transient {
 /******************
 * class CDF_Store *
 ******************/
-%nodefaultctor CDF_Store;
 class CDF_Store {
 	public:
 		/****************** AssociatedStatusText ******************/
@@ -862,7 +857,6 @@ class CDF_Store {
 /**********************
 * class CDF_StoreList *
 **********************/
-%nodefaultctor CDF_StoreList;
 class CDF_StoreList : public Standard_Transient {
 	public:
 		/****************** CDF_StoreList ******************/
@@ -921,7 +915,6 @@ class CDF_StoreList : public Standard_Transient {
 /***********************
 * class CDF_FWOSDriver *
 ***********************/
-%nodefaultctor CDF_FWOSDriver;
 class CDF_FWOSDriver : public CDF_MetaDataDriver {
 	public:
 		/****************** BuildFileName ******************/

@@ -129,7 +129,6 @@ class STEPEdit {
 /*****************************
 * class STEPEdit_EditContext *
 *****************************/
-%nodefaultctor STEPEdit_EditContext;
 class STEPEdit_EditContext : public IFSelect_Editor {
 	public:
 		/****************** Apply ******************/
@@ -194,7 +193,6 @@ class STEPEdit_EditContext : public IFSelect_Editor {
 /*************************
 * class STEPEdit_EditSDR *
 *************************/
-%nodefaultctor STEPEdit_EditSDR;
 class STEPEdit_EditSDR : public IFSelect_Editor {
 	public:
 		/****************** Apply ******************/

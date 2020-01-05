@@ -207,7 +207,6 @@ class TopExp {
 /************************
 * class TopExp_Explorer *
 ************************/
-%nodefaultctor TopExp_Explorer;
 class TopExp_Explorer {
 	public:
 		/****************** Clear ******************/

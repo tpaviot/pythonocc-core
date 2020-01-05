@@ -258,7 +258,6 @@ class HLRBRep {
 /**************************
 * class HLRBRep_AreaLimit *
 **************************/
-%nodefaultctor HLRBRep_AreaLimit;
 class HLRBRep_AreaLimit : public Standard_Transient {
 	public:
 		/****************** Clear ******************/
@@ -676,7 +675,6 @@ class HLRBRep_BCurveTool {
 /************************
 * class HLRBRep_BiPnt2D *
 ************************/
-%nodefaultctor HLRBRep_BiPnt2D;
 class HLRBRep_BiPnt2D {
 	public:
 		/****************** HLRBRep_BiPnt2D ******************/
@@ -808,7 +806,6 @@ class HLRBRep_BiPnt2D {
 /************************
 * class HLRBRep_BiPoint *
 ************************/
-%nodefaultctor HLRBRep_BiPoint;
 class HLRBRep_BiPoint {
 	public:
 		/****************** HLRBRep_BiPoint ******************/
@@ -925,7 +922,6 @@ class HLRBRep_BiPoint {
 /***********************
 * class HLRBRep_CInter *
 ***********************/
-%nodefaultctor HLRBRep_CInter;
 class HLRBRep_CInter : public IntRes2d_Intersection {
 	public:
 		/****************** ComputeDomain ******************/
@@ -1149,7 +1145,6 @@ class HLRBRep_CInter : public IntRes2d_Intersection {
 /************************
 * class HLRBRep_CLProps *
 ************************/
-%nodefaultctor HLRBRep_CLProps;
 class HLRBRep_CLProps {
 	public:
 		/****************** CentreOfCurvature ******************/
@@ -1374,7 +1369,6 @@ class HLRBRep_CLPropsATool {
 /**********************
 * class HLRBRep_Curve *
 **********************/
-%nodefaultctor HLRBRep_Curve;
 class HLRBRep_Curve {
 	public:
 		/****************** Circle ******************/
@@ -2014,7 +2008,6 @@ class HLRBRep_CurveTool {
 /*********************
 * class HLRBRep_Data *
 *********************/
-%nodefaultctor HLRBRep_Data;
 class HLRBRep_Data : public Standard_Transient {
 	public:
 		/****************** AboveInterference ******************/
@@ -2323,7 +2316,6 @@ class HLRBRep_Data : public Standard_Transient {
 /****************************
 * class HLRBRep_EdgeBuilder *
 ****************************/
-%nodefaultctor HLRBRep_EdgeBuilder;
 class HLRBRep_EdgeBuilder {
 	public:
 		/****************** AreaEdgeState ******************/
@@ -2455,7 +2447,6 @@ class HLRBRep_EdgeBuilder {
 /*************************
 * class HLRBRep_EdgeData *
 *************************/
-%nodefaultctor HLRBRep_EdgeData;
 class HLRBRep_EdgeData {
 	public:
 		/****************** AutoIntersectionDone ******************/
@@ -2814,7 +2805,6 @@ class HLRBRep_EdgeIList {
 /*************************************
 * class HLRBRep_EdgeInterferenceTool *
 *************************************/
-%nodefaultctor HLRBRep_EdgeInterferenceTool;
 class HLRBRep_EdgeInterferenceTool {
 	public:
 		/****************** CurrentOrientation ******************/
@@ -2929,7 +2919,6 @@ class HLRBRep_EdgeInterferenceTool {
 /*******************************************************************
 * class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter *
 *******************************************************************/
-%nodefaultctor HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 	public:
 		/****************** AnErrorOccurred ******************/
@@ -3008,7 +2997,6 @@ class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 /*************************
 * class HLRBRep_FaceData *
 *************************/
-%nodefaultctor HLRBRep_FaceData;
 class HLRBRep_FaceData {
 	public:
 		/****************** Back ******************/
@@ -3269,7 +3257,6 @@ class HLRBRep_FaceData {
 /*****************************
 * class HLRBRep_FaceIterator *
 *****************************/
-%nodefaultctor HLRBRep_FaceIterator;
 class HLRBRep_FaceIterator {
 	public:
 		/****************** BeginningOfWire ******************/
@@ -3361,7 +3348,6 @@ class HLRBRep_FaceIterator {
 /***************************
 * class HLRBRep_HLRToShape *
 ***************************/
-%nodefaultctor HLRBRep_HLRToShape;
 class HLRBRep_HLRToShape {
 	public:
 		/****************** CompoundOfEdges ******************/
@@ -3535,7 +3521,6 @@ class HLRBRep_HLRToShape {
 /**********************
 * class HLRBRep_Hider *
 **********************/
-%nodefaultctor HLRBRep_Hider;
 class HLRBRep_Hider {
 	public:
 		/****************** HLRBRep_Hider ******************/
@@ -3576,7 +3561,6 @@ class HLRBRep_Hider {
 /**************************************
 * class HLRBRep_IntConicCurveOfCInter *
 **************************************/
-%nodefaultctor HLRBRep_IntConicCurveOfCInter;
 class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 	public:
 		/****************** HLRBRep_IntConicCurveOfCInter ******************/
@@ -3777,7 +3761,6 @@ class HLRBRep_IntConicCurveOfCInter : public IntRes2d_Intersection {
 /***************************
 * class HLRBRep_InterCSurf *
 ***************************/
-%nodefaultctor HLRBRep_InterCSurf;
 class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 	public:
 		/****************** HLRBRep_InterCSurf ******************/
@@ -3862,7 +3845,6 @@ class HLRBRep_InterCSurf : public IntCurveSurface_Intersection {
 /*****************************
 * class HLRBRep_InternalAlgo *
 *****************************/
-%nodefaultctor HLRBRep_InternalAlgo;
 class HLRBRep_InternalAlgo : public Standard_Transient {
 	public:
 		/****************** DataStructure ******************/
@@ -4087,7 +4069,6 @@ class HLRBRep_InternalAlgo : public Standard_Transient {
 /****************************
 * class HLRBRep_Intersector *
 ****************************/
-%nodefaultctor HLRBRep_Intersector;
 class HLRBRep_Intersector {
 	public:
 		/****************** CSPoint ******************/
@@ -4558,7 +4539,6 @@ class HLRBRep_LineTool {
 /***********************************************************************
 * class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter *
 ***********************************************************************/
-%nodefaultctor HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter;
 class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -4615,7 +4595,6 @@ class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public ma
 /************************************************************
 * class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter *
 ************************************************************/
-%nodefaultctor HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
 class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -4744,7 +4723,6 @@ class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_Function
 /*************************
 * class HLRBRep_PolyAlgo *
 *************************/
-%nodefaultctor HLRBRep_PolyAlgo;
 class HLRBRep_PolyAlgo : public Standard_Transient {
 	public:
 		/****************** Algo ******************/
@@ -4959,7 +4937,6 @@ class HLRBRep_PolyAlgo : public Standard_Transient {
 /*******************************
 * class HLRBRep_PolyHLRToShape *
 *******************************/
-%nodefaultctor HLRBRep_PolyHLRToShape;
 class HLRBRep_PolyHLRToShape {
 	public:
 		/****************** HCompound ******************/
@@ -5099,7 +5076,6 @@ class HLRBRep_PolyHLRToShape {
 /************************
 * class HLRBRep_SLProps *
 ************************/
-%nodefaultctor HLRBRep_SLProps;
 class HLRBRep_SLProps {
 	public:
 		/****************** CurvatureDirections ******************/
@@ -5401,7 +5377,6 @@ class HLRBRep_SLPropsATool {
 /****************************
 * class HLRBRep_ShapeBounds *
 ****************************/
-%nodefaultctor HLRBRep_ShapeBounds;
 class HLRBRep_ShapeBounds {
 	public:
 		/****************** Bounds ******************/
@@ -5990,7 +5965,6 @@ class HLRBRep_SurfaceTool {
 /******************************************
 * class HLRBRep_TheCSFunctionOfInterCSurf *
 ******************************************/
-%nodefaultctor HLRBRep_TheCSFunctionOfInterCSurf;
 class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** AuxillarCurve ******************/
@@ -6076,7 +6050,6 @@ class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives
 /******************************************************************
 * class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter *
 ******************************************************************/
-%nodefaultctor HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/
@@ -6144,7 +6117,6 @@ class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_Fu
 /***********************************
 * class HLRBRep_TheExactInterCSurf *
 ***********************************/
-%nodefaultctor HLRBRep_TheExactInterCSurf;
 class HLRBRep_TheExactInterCSurf {
 	public:
 		/****************** Function ******************/
@@ -6250,7 +6222,6 @@ class HLRBRep_TheExactInterCSurf {
 /*****************************************
 * class HLRBRep_TheIntConicCurveOfCInter *
 *****************************************/
-%nodefaultctor HLRBRep_TheIntConicCurveOfCInter;
 class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	public:
 		/****************** HLRBRep_TheIntConicCurveOfCInter ******************/
@@ -6451,7 +6422,6 @@ class HLRBRep_TheIntConicCurveOfCInter : public IntRes2d_Intersection {
 /*******************************************
 * class HLRBRep_TheIntPCurvePCurveOfCInter *
 *******************************************/
-%nodefaultctor HLRBRep_TheIntPCurvePCurveOfCInter;
 class HLRBRep_TheIntPCurvePCurveOfCInter : public IntRes2d_Intersection {
 	public:
 		/****************** GetMinNbSamples ******************/
@@ -6514,7 +6484,6 @@ class HLRBRep_TheIntPCurvePCurveOfCInter : public IntRes2d_Intersection {
 /********************************************
 * class HLRBRep_TheInterferenceOfInterCSurf *
 ********************************************/
-%nodefaultctor HLRBRep_TheInterferenceOfInterCSurf;
 class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 	public:
 		/****************** HLRBRep_TheInterferenceOfInterCSurf ******************/
@@ -6689,7 +6658,6 @@ class HLRBRep_TheInterferenceOfInterCSurf : public Intf_Interference {
 /*********************************************************
 * class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter *
 *********************************************************/
-%nodefaultctor HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter;
 class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Intersection {
 	public:
 		/****************** And_Domaine_Objet1_Intersections ******************/
@@ -6805,7 +6773,6 @@ class HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter : public IntRes2d_Interse
 /****************************************************
 * class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter *
 ****************************************************/
-%nodefaultctor HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
 class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 	public:
 		/****************** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter ******************/
@@ -6905,7 +6872,6 @@ class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 /*********************************************************
 * class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter *
 *********************************************************/
-%nodefaultctor HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
 class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 	public:
 		/****************** ApproxParamOnCurve ******************/
@@ -7036,7 +7002,6 @@ class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 /***************************************
 * class HLRBRep_ThePolygonOfInterCSurf *
 ***************************************/
-%nodefaultctor HLRBRep_ThePolygonOfInterCSurf;
 class HLRBRep_ThePolygonOfInterCSurf {
 	public:
 		/****************** ApproxParamOnCurve ******************/
@@ -7393,7 +7358,6 @@ class HLRBRep_TheProjPCurOfCInter {
 /*******************************************
 * class HLRBRep_TheQuadCurvExactInterCSurf *
 *******************************************/
-%nodefaultctor HLRBRep_TheQuadCurvExactInterCSurf;
 class HLRBRep_TheQuadCurvExactInterCSurf {
 	public:
 		/****************** HLRBRep_TheQuadCurvExactInterCSurf ******************/
@@ -7452,7 +7416,6 @@ class HLRBRep_TheQuadCurvExactInterCSurf {
 /************************************************************
 * class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf *
 ************************************************************/
-%nodefaultctor HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf;
 class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -7509,7 +7472,6 @@ class HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf : public math_Function
 /***************************
 * class HLRBRep_VertexList *
 ***************************/
-%nodefaultctor HLRBRep_VertexList;
 class HLRBRep_VertexList {
 	public:
 		/****************** BoundaryTransition ******************/
@@ -7587,7 +7549,6 @@ class HLRBRep_VertexList {
 /*********************
 * class HLRBRep_Algo *
 *********************/
-%nodefaultctor HLRBRep_Algo;
 class HLRBRep_Algo : public HLRBRep_InternalAlgo {
 	public:
 		/****************** Add ******************/

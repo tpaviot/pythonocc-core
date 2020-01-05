@@ -300,7 +300,6 @@ class StepData_EDescr : public Standard_Transient {
 /**************************
 * class StepData_EnumTool *
 **************************/
-%nodefaultctor StepData_EnumTool;
 class StepData_EnumTool {
 	public:
 		/****************** AddDefinition ******************/
@@ -459,7 +458,6 @@ class StepData_EnumTool {
 /***********************
 * class StepData_Field *
 ***********************/
-%nodefaultctor StepData_Field;
 class StepData_Field {
 	public:
 		/****************** Arity ******************/
@@ -990,7 +988,6 @@ class StepData_GeneralModule : public Interface_GeneralModule {
 /***************************************
 * class StepData_GlobalNodeOfWriterLib *
 ***************************************/
-%nodefaultctor StepData_GlobalNodeOfWriterLib;
 class StepData_GlobalNodeOfWriterLib : public Standard_Transient {
 	public:
 		/****************** Add ******************/
@@ -1041,7 +1038,6 @@ class StepData_GlobalNodeOfWriterLib : public Standard_Transient {
 /*********************************
 * class StepData_NodeOfWriterLib *
 *********************************/
-%nodefaultctor StepData_NodeOfWriterLib;
 class StepData_NodeOfWriterLib : public Standard_Transient {
 	public:
 		/****************** AddNode ******************/
@@ -1090,7 +1086,6 @@ class StepData_NodeOfWriterLib : public Standard_Transient {
 /************************
 * class StepData_PDescr *
 ************************/
-%nodefaultctor StepData_PDescr;
 class StepData_PDescr : public Standard_Transient {
 	public:
 		/****************** AddArity ******************/
@@ -1412,7 +1407,6 @@ class StepData_PDescr : public Standard_Transient {
 /**************************
 * class StepData_Protocol *
 **************************/
-%nodefaultctor StepData_Protocol;
 class StepData_Protocol : public Interface_Protocol {
 	public:
 		/****************** AddBasicDescr ******************/
@@ -1717,7 +1711,6 @@ class StepData_ReadWriteModule : public Interface_ReaderModule {
 /******************************
 * class StepData_SelectMember *
 ******************************/
-%nodefaultctor StepData_SelectMember;
 class StepData_SelectMember : public Standard_Transient {
 	public:
 		/****************** Boolean ******************/
@@ -2067,7 +2060,6 @@ class StepData_SelectType {
 /****************************
 * class StepData_StepDumper *
 ****************************/
-%nodefaultctor StepData_StepDumper;
 class StepData_StepDumper {
 	public:
 		/****************** Dump ******************/
@@ -2124,7 +2116,6 @@ class StepData_StepDumper {
 /***************************
 * class StepData_StepModel *
 ***************************/
-%nodefaultctor StepData_StepModel;
 class StepData_StepModel : public Interface_InterfaceModel {
 	public:
 		/****************** AddHeaderEntity ******************/
@@ -2265,7 +2256,6 @@ class StepData_StepModel : public Interface_InterfaceModel {
 /********************************
 * class StepData_StepReaderData *
 ********************************/
-%nodefaultctor StepData_StepReaderData;
 class StepData_StepReaderData : public Interface_FileReaderData {
 	public:
 		/****************** AddStepParam ******************/
@@ -2761,7 +2751,6 @@ class StepData_StepReaderData : public Interface_FileReaderData {
 /********************************
 * class StepData_StepReaderTool *
 ********************************/
-%nodefaultctor StepData_StepReaderTool;
 class StepData_StepReaderTool : public Interface_FileReaderTool {
 	public:
 		/****************** AnalyseRecord ******************/
@@ -2852,7 +2841,6 @@ class StepData_StepReaderTool : public Interface_FileReaderTool {
 /****************************
 * class StepData_StepWriter *
 ****************************/
-%nodefaultctor StepData_StepWriter;
 class StepData_StepWriter {
 	public:
 		/****************** AddParam ******************/
@@ -3350,7 +3338,6 @@ class StepData_WriterLib {
 /********************************
 * class StepData_DefaultGeneral *
 ********************************/
-%nodefaultctor StepData_DefaultGeneral;
 class StepData_DefaultGeneral : public StepData_GeneralModule {
 	public:
 		/****************** CheckCase ******************/
@@ -3423,7 +3410,6 @@ class StepData_DefaultGeneral : public StepData_GeneralModule {
 /*************************
 * class StepData_ECDescr *
 *************************/
-%nodefaultctor StepData_ECDescr;
 class StepData_ECDescr : public StepData_EDescr {
 	public:
 		/****************** Add ******************/
@@ -3494,7 +3480,6 @@ class StepData_ECDescr : public StepData_EDescr {
 /*************************
 * class StepData_ESDescr *
 *************************/
-%nodefaultctor StepData_ESDescr;
 class StepData_ESDescr : public StepData_EDescr {
 	public:
 		/****************** Base ******************/
@@ -3645,7 +3630,6 @@ class StepData_ESDescr : public StepData_EDescr {
 /****************************
 * class StepData_FieldList1 *
 ****************************/
-%nodefaultctor StepData_FieldList1;
 class StepData_FieldList1 : public StepData_FieldList {
 	public:
 		/****************** CField ******************/
@@ -3688,7 +3672,6 @@ class StepData_FieldList1 : public StepData_FieldList {
 /****************************
 * class StepData_FieldListD *
 ****************************/
-%nodefaultctor StepData_FieldListD;
 class StepData_FieldListD : public StepData_FieldList {
 	public:
 		/****************** CField ******************/
@@ -3741,7 +3724,6 @@ class StepData_FieldListD : public StepData_FieldList {
 /****************************
 * class StepData_FieldListN *
 ****************************/
-%nodefaultctor StepData_FieldListN;
 class StepData_FieldListN : public StepData_FieldList {
 	public:
 		/****************** CField ******************/
@@ -3786,7 +3768,6 @@ class StepData_FieldListN : public StepData_FieldList {
 /******************************
 * class StepData_FileProtocol *
 ******************************/
-%nodefaultctor StepData_FileProtocol;
 class StepData_FileProtocol : public StepData_Protocol {
 	public:
 		/****************** Add ******************/
@@ -3855,7 +3836,6 @@ class StepData_FileProtocol : public StepData_Protocol {
 /**********************
 * class StepData_Plex *
 **********************/
-%nodefaultctor StepData_Plex;
 class StepData_Plex : public StepData_Described {
 	public:
 		/****************** Add ******************/
@@ -3976,7 +3956,6 @@ class StepData_Plex : public StepData_Described {
 /***************************
 * class StepData_SelectInt *
 ***************************/
-%nodefaultctor StepData_SelectInt;
 class StepData_SelectInt : public StepData_SelectMember {
 	public:
 		/****************** Int ******************/
@@ -4022,7 +4001,6 @@ class StepData_SelectInt : public StepData_SelectMember {
 /*****************************
 * class StepData_SelectNamed *
 *****************************/
-%nodefaultctor StepData_SelectNamed;
 class StepData_SelectNamed : public StepData_SelectMember {
 	public:
 		/****************** CField ******************/
@@ -4121,7 +4099,6 @@ class StepData_SelectNamed : public StepData_SelectMember {
 /****************************
 * class StepData_SelectReal *
 ****************************/
-%nodefaultctor StepData_SelectReal;
 class StepData_SelectReal : public StepData_SelectMember {
 	public:
 		/****************** Kind ******************/
@@ -4160,7 +4137,6 @@ class StepData_SelectReal : public StepData_SelectMember {
 /************************
 * class StepData_Simple *
 ************************/
-%nodefaultctor StepData_Simple;
 class StepData_Simple : public StepData_Described {
 	public:
 		/****************** As ******************/
@@ -4293,7 +4269,6 @@ class StepData_Simple : public StepData_Described {
 /*******************************
 * class StepData_SelectArrReal *
 *******************************/
-%nodefaultctor StepData_SelectArrReal;
 class StepData_SelectArrReal : public StepData_SelectNamed {
 	public:
 		/****************** ArrReal ******************/

@@ -80,7 +80,6 @@ typedef NCollection_Sequence <LProp_CIType> LProp_SequenceOfCIType;
 /*****************************
 * class LProp_AnalyticCurInf *
 *****************************/
-%nodefaultctor LProp_AnalyticCurInf;
 class LProp_AnalyticCurInf {
 	public:
 		/****************** LProp_AnalyticCurInf ******************/
@@ -113,7 +112,6 @@ class LProp_AnalyticCurInf {
 /************************
 * class LProp_CurAndInf *
 ************************/
-%nodefaultctor LProp_CurAndInf;
 class LProp_CurAndInf {
 	public:
 		/****************** AddExtCur ******************/

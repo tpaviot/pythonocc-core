@@ -69,7 +69,6 @@ typedef NCollection_Array2 <TopAbs_Orientation> TopTrans_Array2OfOrientation;
 /*********************************
 * class TopTrans_CurveTransition *
 *********************************/
-%nodefaultctor TopTrans_CurveTransition;
 class TopTrans_CurveTransition {
 	public:
 		/****************** Compare ******************/
@@ -140,7 +139,6 @@ class TopTrans_CurveTransition {
 /***********************************
 * class TopTrans_SurfaceTransition *
 ***********************************/
-%nodefaultctor TopTrans_SurfaceTransition;
 class TopTrans_SurfaceTransition {
 	public:
 		/****************** Compare ******************/

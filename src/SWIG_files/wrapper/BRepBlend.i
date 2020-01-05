@@ -371,7 +371,6 @@ class BRepBlend_AppFuncRoot : public Approx_SweepFunction {
 /**************************
 * class BRepBlend_AppSurf *
 **************************/
-%nodefaultctor BRepBlend_AppSurf;
 class BRepBlend_AppSurf : public AppBlend_Approx {
 	public:
 		/****************** BRepBlend_AppSurf ******************/
@@ -654,7 +653,6 @@ class BRepBlend_AppSurf : public AppBlend_Approx {
 /*****************************
 * class BRepBlend_AppSurface *
 *****************************/
-%nodefaultctor BRepBlend_AppSurface;
 class BRepBlend_AppSurface : public AppBlend_Approx {
 	public:
 		/****************** BRepBlend_AppSurface ******************/
@@ -852,7 +850,6 @@ class BRepBlend_AppSurface : public AppBlend_Approx {
 /****************************
 * class BRepBlend_CSWalking *
 ****************************/
-%nodefaultctor BRepBlend_CSWalking;
 class BRepBlend_CSWalking {
 	public:
 		/****************** BRepBlend_CSWalking ******************/
@@ -920,7 +917,6 @@ class BRepBlend_CSWalking {
 /**********************************
 * class BRepBlend_CurvPointRadInv *
 **********************************/
-%nodefaultctor BRepBlend_CurvPointRadInv;
 class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 	public:
 		/****************** BRepBlend_CurvPointRadInv ******************/
@@ -1027,7 +1023,6 @@ class BRepBlend_CurvPointRadInv : public Blend_CurvPointFuncInv {
 /****************************
 * class BRepBlend_Extremity *
 ****************************/
-%nodefaultctor BRepBlend_Extremity;
 class BRepBlend_Extremity {
 	public:
 		/****************** AddArc ******************/
@@ -1242,7 +1237,6 @@ class BRepBlend_Extremity {
 /***********************
 * class BRepBlend_Line *
 ***********************/
-%nodefaultctor BRepBlend_Line;
 class BRepBlend_Line : public Standard_Transient {
 	public:
 		/****************** Append ******************/
@@ -1400,7 +1394,6 @@ class BRepBlend_Line : public Standard_Transient {
 /*****************************
 * class BRepBlend_PointOnRst *
 *****************************/
-%nodefaultctor BRepBlend_PointOnRst;
 class BRepBlend_PointOnRst {
 	public:
 		/****************** Arc ******************/
@@ -1473,7 +1466,6 @@ class BRepBlend_PointOnRst {
 /*********************************
 * class BRepBlend_RstRstConstRad *
 *********************************/
-%nodefaultctor BRepBlend_RstRstConstRad;
 class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 	public:
 		/****************** BRepBlend_RstRstConstRad ******************/
@@ -1888,7 +1880,6 @@ class BRepBlend_RstRstConstRad : public Blend_RstRstFunction {
 /********************************
 * class BRepBlend_RstRstEvolRad *
 ********************************/
-%nodefaultctor BRepBlend_RstRstEvolRad;
 class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 	public:
 		/****************** BRepBlend_RstRstEvolRad ******************/
@@ -2303,7 +2294,6 @@ class BRepBlend_RstRstEvolRad : public Blend_RstRstFunction {
 /************************************
 * class BRepBlend_RstRstLineBuilder *
 ************************************/
-%nodefaultctor BRepBlend_RstRstLineBuilder;
 class BRepBlend_RstRstLineBuilder {
 	public:
 		/****************** BRepBlend_RstRstLineBuilder ******************/
@@ -2450,7 +2440,6 @@ class BRepBlend_RstRstLineBuilder {
 /**************************************
 * class BRepBlend_SurfCurvConstRadInv *
 **************************************/
-%nodefaultctor BRepBlend_SurfCurvConstRadInv;
 class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 	public:
 		/****************** BRepBlend_SurfCurvConstRadInv ******************/
@@ -2561,7 +2550,6 @@ class BRepBlend_SurfCurvConstRadInv : public Blend_SurfCurvFuncInv {
 /*************************************
 * class BRepBlend_SurfCurvEvolRadInv *
 *************************************/
-%nodefaultctor BRepBlend_SurfCurvEvolRadInv;
 class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 	public:
 		/****************** BRepBlend_SurfCurvEvolRadInv ******************/
@@ -2672,7 +2660,6 @@ class BRepBlend_SurfCurvEvolRadInv : public Blend_SurfCurvFuncInv {
 /***************************************
 * class BRepBlend_SurfPointConstRadInv *
 ***************************************/
-%nodefaultctor BRepBlend_SurfPointConstRadInv;
 class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 	public:
 		/****************** BRepBlend_SurfPointConstRadInv ******************/
@@ -2781,7 +2768,6 @@ class BRepBlend_SurfPointConstRadInv : public Blend_SurfPointFuncInv {
 /**************************************
 * class BRepBlend_SurfPointEvolRadInv *
 **************************************/
-%nodefaultctor BRepBlend_SurfPointEvolRadInv;
 class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 	public:
 		/****************** BRepBlend_SurfPointEvolRadInv ******************/
@@ -2890,7 +2876,6 @@ class BRepBlend_SurfPointEvolRadInv : public Blend_SurfPointFuncInv {
 /**********************************
 * class BRepBlend_SurfRstConstRad *
 **********************************/
-%nodefaultctor BRepBlend_SurfRstConstRad;
 class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 	public:
 		/****************** BRepBlend_SurfRstConstRad ******************/
@@ -3275,7 +3260,6 @@ class BRepBlend_SurfRstConstRad : public Blend_SurfRstFunction {
 /*********************************
 * class BRepBlend_SurfRstEvolRad *
 *********************************/
-%nodefaultctor BRepBlend_SurfRstEvolRad;
 class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 	public:
 		/****************** BRepBlend_SurfRstEvolRad ******************/
@@ -3660,7 +3644,6 @@ class BRepBlend_SurfRstEvolRad : public Blend_SurfRstFunction {
 /*************************************
 * class BRepBlend_SurfRstLineBuilder *
 *************************************/
-%nodefaultctor BRepBlend_SurfRstLineBuilder;
 class BRepBlend_SurfRstLineBuilder {
 	public:
 		/****************** ArcToRecadre ******************/
@@ -3802,7 +3785,6 @@ class BRepBlend_SurfRstLineBuilder {
 /**************************
 * class BRepBlend_Walking *
 **************************/
-%nodefaultctor BRepBlend_Walking;
 class BRepBlend_Walking {
 	public:
 		/****************** AddSingularPoint ******************/
@@ -4004,7 +3986,6 @@ class BRepBlend_Walking {
 /**************************
 * class BRepBlend_AppFunc *
 **************************/
-%nodefaultctor BRepBlend_AppFunc;
 class BRepBlend_AppFunc : public BRepBlend_AppFuncRoot {
 	public:
 		/****************** BRepBlend_AppFunc ******************/
@@ -4056,7 +4037,6 @@ class BRepBlend_AppFunc : public BRepBlend_AppFuncRoot {
 /*****************************
 * class BRepBlend_AppFuncRst *
 *****************************/
-%nodefaultctor BRepBlend_AppFuncRst;
 class BRepBlend_AppFuncRst : public BRepBlend_AppFuncRoot {
 	public:
 		/****************** BRepBlend_AppFuncRst ******************/
@@ -4108,7 +4088,6 @@ class BRepBlend_AppFuncRst : public BRepBlend_AppFuncRoot {
 /********************************
 * class BRepBlend_AppFuncRstRst *
 ********************************/
-%nodefaultctor BRepBlend_AppFuncRstRst;
 class BRepBlend_AppFuncRstRst : public BRepBlend_AppFuncRoot {
 	public:
 		/****************** BRepBlend_AppFuncRstRst ******************/

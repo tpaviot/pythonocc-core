@@ -211,7 +211,6 @@ class XmlObjMgt {
 /*************************
 * class XmlObjMgt_Array1 *
 *************************/
-%nodefaultctor XmlObjMgt_Array1;
 class XmlObjMgt_Array1 {
 	public:
 		/****************** CreateArrayElement ******************/
@@ -360,7 +359,6 @@ class XmlObjMgt_GP {
 /*****************************
 * class XmlObjMgt_Persistent *
 *****************************/
-%nodefaultctor XmlObjMgt_Persistent;
 class XmlObjMgt_Persistent {
 	public:
 		/****************** CreateElement ******************/
@@ -445,7 +443,6 @@ class XmlObjMgt_Persistent {
 /***********************************
 * class XmlObjMgt_RRelocationTable *
 ***********************************/
-%nodefaultctor XmlObjMgt_RRelocationTable;
 class XmlObjMgt_RRelocationTable : public TColStd_DataMapOfIntegerTransient {
 	public:
 		/****************** Clear ******************/
@@ -481,7 +478,6 @@ class XmlObjMgt_RRelocationTable : public TColStd_DataMapOfIntegerTransient {
 /***********************************
 * class XmlObjMgt_SRelocationTable *
 ***********************************/
-%nodefaultctor XmlObjMgt_SRelocationTable;
 class XmlObjMgt_SRelocationTable : public TColStd_IndexedMapOfTransient {
 	public:
 		/****************** Clear ******************/

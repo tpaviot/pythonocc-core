@@ -125,7 +125,6 @@ typedef NCollection_Sequence <opencascade::handle <IntPatch_TheIWLineOfTheIWalki
 /******************************
 * class IntPatch_ALineToWLine *
 ******************************/
-%nodefaultctor IntPatch_ALineToWLine;
 class IntPatch_ALineToWLine {
 	public:
 		/****************** IntPatch_ALineToWLine ******************/
@@ -212,7 +211,6 @@ class IntPatch_ALineToWLine {
 /*****************************
 * class IntPatch_ArcFunction *
 *****************************/
-%nodefaultctor IntPatch_ArcFunction;
 class IntPatch_ArcFunction : public math_FunctionWithDerivative {
 	public:
 		/****************** Arc ******************/
@@ -320,7 +318,6 @@ class IntPatch_ArcFunction : public math_FunctionWithDerivative {
 /****************************
 * class IntPatch_CSFunction *
 ****************************/
-%nodefaultctor IntPatch_CSFunction;
 class IntPatch_CSFunction : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** AuxillarCurve ******************/
@@ -406,7 +403,6 @@ class IntPatch_CSFunction : public math_FunctionSetWithDerivatives {
 /*****************************
 * class IntPatch_CurvIntSurf *
 *****************************/
-%nodefaultctor IntPatch_CurvIntSurf;
 class IntPatch_CurvIntSurf {
 	public:
 		/****************** Function ******************/
@@ -750,7 +746,6 @@ class IntPatch_HCurve2dTool {
 /****************************
 * class IntPatch_HInterTool *
 ****************************/
-%nodefaultctor IntPatch_HInterTool;
 class IntPatch_HInterTool {
 	public:
 		/****************** Bounds ******************/
@@ -988,7 +983,6 @@ class IntPatch_HInterTool {
 /************************************
 * class IntPatch_ImpImpIntersection *
 ************************************/
-%nodefaultctor IntPatch_ImpImpIntersection;
 class IntPatch_ImpImpIntersection {
 	public:
 		/****************** IntPatch_ImpImpIntersection ******************/
@@ -1100,7 +1094,6 @@ class IntPatch_ImpImpIntersection {
 /************************************
 * class IntPatch_ImpPrmIntersection *
 ************************************/
-%nodefaultctor IntPatch_ImpPrmIntersection;
 class IntPatch_ImpPrmIntersection {
 	public:
 		/****************** IntPatch_ImpPrmIntersection ******************/
@@ -1212,7 +1205,6 @@ class IntPatch_ImpPrmIntersection {
 /****************************************
 * class IntPatch_InterferencePolyhedron *
 ****************************************/
-%nodefaultctor IntPatch_InterferencePolyhedron;
 class IntPatch_InterferencePolyhedron : public Intf_Interference {
 	public:
 		/****************** IntPatch_InterferencePolyhedron ******************/
@@ -1269,7 +1261,6 @@ class IntPatch_InterferencePolyhedron : public Intf_Interference {
 /******************************
 * class IntPatch_Intersection *
 ******************************/
-%nodefaultctor IntPatch_Intersection;
 class IntPatch_Intersection {
 	public:
 		/****************** Dump ******************/
@@ -1587,7 +1578,6 @@ class IntPatch_Line : public Standard_Transient {
 /*********************************
 * class IntPatch_LineConstructor *
 *********************************/
-%nodefaultctor IntPatch_LineConstructor;
 class IntPatch_LineConstructor {
 	public:
 		/****************** IntPatch_LineConstructor ******************/
@@ -1640,7 +1630,6 @@ class IntPatch_LineConstructor {
 /***********************
 * class IntPatch_Point *
 ***********************/
-%nodefaultctor IntPatch_Point;
 class IntPatch_Point {
 	public:
 		/****************** ArcOnS1 ******************/
@@ -2069,7 +2058,6 @@ class IntPatch_PolyhedronTool {
 /************************************
 * class IntPatch_PrmPrmIntersection *
 ************************************/
-%nodefaultctor IntPatch_PrmPrmIntersection;
 class IntPatch_PrmPrmIntersection {
 	public:
 		/****************** CodeReject ******************/
@@ -2458,7 +2446,6 @@ class IntPatch_PrmPrmIntersection {
 /*******************************************
 * class IntPatch_PrmPrmIntersection_T3Bits *
 *******************************************/
-%nodefaultctor IntPatch_PrmPrmIntersection_T3Bits;
 class IntPatch_PrmPrmIntersection_T3Bits {
 	public:
 		/****************** Add ******************/
@@ -2551,7 +2538,6 @@ class IntPatch_RstInt {
 /*******************************
 * class IntPatch_SpecialPoints *
 *******************************/
-%nodefaultctor IntPatch_SpecialPoints;
 class IntPatch_SpecialPoints {
 	public:
 		/****************** AddCrossUVIsoPoint ******************/
@@ -2666,7 +2652,6 @@ class IntPatch_SpecialPoints {
 /****************************************
 * class IntPatch_TheIWLineOfTheIWalking *
 ****************************************/
-%nodefaultctor IntPatch_TheIWLineOfTheIWalking;
 class IntPatch_TheIWLineOfTheIWalking : public Standard_Transient {
 	public:
 		/****************** AddIndexPassing ******************/
@@ -2891,7 +2876,6 @@ class IntPatch_TheIWLineOfTheIWalking : public Standard_Transient {
 /*****************************
 * class IntPatch_TheIWalking *
 *****************************/
-%nodefaultctor IntPatch_TheIWalking;
 class IntPatch_TheIWalking {
 	public:
 		/****************** IntPatch_TheIWalking ******************/
@@ -2996,7 +2980,6 @@ class IntPatch_TheIWalking {
 /********************************************
 * class IntPatch_ThePathPointOfTheSOnBounds *
 ********************************************/
-%nodefaultctor IntPatch_ThePathPointOfTheSOnBounds;
 class IntPatch_ThePathPointOfTheSOnBounds {
 	public:
 		/****************** Arc ******************/
@@ -3102,7 +3085,6 @@ class IntPatch_ThePathPointOfTheSOnBounds {
 /******************************
 * class IntPatch_TheSOnBounds *
 ******************************/
-%nodefaultctor IntPatch_TheSOnBounds;
 class IntPatch_TheSOnBounds {
 	public:
 		/****************** AllArcSolution ******************/
@@ -3179,7 +3161,6 @@ class IntPatch_TheSOnBounds {
 /*********************************
 * class IntPatch_TheSearchInside *
 *********************************/
-%nodefaultctor IntPatch_TheSearchInside;
 class IntPatch_TheSearchInside {
 	public:
 		/****************** IntPatch_TheSearchInside ******************/
@@ -3257,7 +3238,6 @@ class IntPatch_TheSearchInside {
 /******************************************
 * class IntPatch_TheSegmentOfTheSOnBounds *
 ******************************************/
-%nodefaultctor IntPatch_TheSegmentOfTheSOnBounds;
 class IntPatch_TheSegmentOfTheSOnBounds {
 	public:
 		/****************** Curve ******************/
@@ -3326,7 +3306,6 @@ class IntPatch_TheSegmentOfTheSOnBounds {
 /*********************************
 * class IntPatch_TheSurfFunction *
 *********************************/
-%nodefaultctor IntPatch_TheSurfFunction;
 class IntPatch_TheSurfFunction : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Derivatives ******************/
@@ -3531,7 +3510,6 @@ class IntPatch_WLineTool {
 /***********************
 * class IntPatch_ALine *
 ***********************/
-%nodefaultctor IntPatch_ALine;
 class IntPatch_ALine : public IntPatch_Line {
 	public:
 		/****************** AddVertex ******************/
@@ -3722,7 +3700,6 @@ class IntPatch_ALine : public IntPatch_Line {
 /***********************
 * class IntPatch_GLine *
 ***********************/
-%nodefaultctor IntPatch_GLine;
 class IntPatch_GLine : public IntPatch_Line {
 	public:
 		/****************** AddVertex ******************/
@@ -4155,7 +4132,6 @@ class IntPatch_PointLine : public IntPatch_Line {
 /*************************
 * class IntPatch_PolyArc *
 *************************/
-%nodefaultctor IntPatch_PolyArc;
 class IntPatch_PolyArc : public IntPatch_Polygo {
 	public:
 		/****************** Closed ******************/
@@ -4219,7 +4195,6 @@ class IntPatch_PolyArc : public IntPatch_Polygo {
 /**************************
 * class IntPatch_PolyLine *
 **************************/
-%nodefaultctor IntPatch_PolyLine;
 class IntPatch_PolyLine : public IntPatch_Polygo {
 	public:
 		/****************** IntPatch_PolyLine ******************/
@@ -4281,7 +4256,6 @@ class IntPatch_PolyLine : public IntPatch_Polygo {
 /***********************
 * class IntPatch_RLine *
 ***********************/
-%nodefaultctor IntPatch_RLine;
 class IntPatch_RLine : public IntPatch_PointLine {
 	public:
 		/****************** Add ******************/
@@ -4569,7 +4543,6 @@ class IntPatch_RLine : public IntPatch_PointLine {
 /***********************
 * class IntPatch_WLine *
 ***********************/
-%nodefaultctor IntPatch_WLine;
 class IntPatch_WLine : public IntPatch_PointLine {
 	public:
 /* public enums */

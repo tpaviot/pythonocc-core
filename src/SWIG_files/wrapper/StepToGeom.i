@@ -81,7 +81,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptogeom.html"
 * class StepToGeom *
 *******************/
 %rename(steptogeom) StepToGeom;
-%nodefaultctor StepToGeom;
 class StepToGeom {
 	public:
 		/****************** MakeAxis1Placement ******************/

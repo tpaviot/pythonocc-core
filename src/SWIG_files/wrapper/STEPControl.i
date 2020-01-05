@@ -109,7 +109,6 @@ enum STEPControl_StepModelType {
 /******************************
 * class STEPControl_ActorRead *
 ******************************/
-%nodefaultctor STEPControl_ActorRead;
 class STEPControl_ActorRead : public Transfer_ActorOfTransientProcess {
 	public:
 		/****************** ComputeSRRWT ******************/
@@ -204,7 +203,6 @@ class STEPControl_ActorRead : public Transfer_ActorOfTransientProcess {
 /*******************************
 * class STEPControl_ActorWrite *
 *******************************/
-%nodefaultctor STEPControl_ActorWrite;
 class STEPControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 	public:
 		/****************** GroupMode ******************/
@@ -324,7 +322,6 @@ class STEPControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 /*******************************
 * class STEPControl_Controller *
 *******************************/
-%nodefaultctor STEPControl_Controller;
 class STEPControl_Controller : public XSControl_Controller {
 	public:
 		/****************** Customise ******************/
@@ -380,7 +377,6 @@ class STEPControl_Controller : public XSControl_Controller {
 /***************************
 * class STEPControl_Reader *
 ***************************/
-%nodefaultctor STEPControl_Reader;
 class STEPControl_Reader : public XSControl_Reader {
 	public:
 		/****************** FileUnits ******************/
@@ -443,7 +439,6 @@ class STEPControl_Reader : public XSControl_Reader {
 /***************************
 * class STEPControl_Writer *
 ***************************/
-%nodefaultctor STEPControl_Writer;
 class STEPControl_Writer {
 	public:
 		/****************** Model ******************/

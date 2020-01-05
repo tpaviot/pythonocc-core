@@ -152,7 +152,6 @@ class AppCont_Function {
 /****************************
 * class AppCont_LeastSquare *
 ****************************/
-%nodefaultctor AppCont_LeastSquare;
 class AppCont_LeastSquare {
 	public:
 		/****************** AppCont_LeastSquare ******************/

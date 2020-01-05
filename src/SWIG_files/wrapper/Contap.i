@@ -109,7 +109,6 @@ typedef NCollection_Sequence <Contap_ThePathPointOfTheSearch> Contap_SequenceOfP
 /***************************
 * class Contap_ArcFunction *
 ***************************/
-%nodefaultctor Contap_ArcFunction;
 class Contap_ArcFunction : public math_FunctionWithDerivative {
 	public:
 		/****************** Contap_ArcFunction ******************/
@@ -238,7 +237,6 @@ class Contap_ArcFunction : public math_FunctionWithDerivative {
 /***********************
 * class Contap_ContAna *
 ***********************/
-%nodefaultctor Contap_ContAna;
 class Contap_ContAna {
 	public:
 		/****************** Circle ******************/
@@ -373,7 +371,6 @@ class Contap_ContAna {
 /***********************
 * class Contap_Contour *
 ***********************/
-%nodefaultctor Contap_Contour;
 class Contap_Contour {
 	public:
 		/****************** Contap_Contour ******************/
@@ -996,7 +993,6 @@ class Contap_HCurve2dTool {
 /********************
 * class Contap_Line *
 ********************/
-%nodefaultctor Contap_Line;
 class Contap_Line {
 	public:
 		/****************** Add ******************/
@@ -1132,7 +1128,6 @@ class Contap_Line {
 /*********************
 * class Contap_Point *
 *********************/
-%nodefaultctor Contap_Point;
 class Contap_Point {
 	public:
 		/****************** Arc ******************/
@@ -1293,7 +1288,6 @@ class Contap_Point {
 /****************************
 * class Contap_SurfFunction *
 ****************************/
-%nodefaultctor Contap_SurfFunction;
 class Contap_SurfFunction : public math_FunctionSetWithDerivatives {
 	public:
 		/****************** Angle ******************/
@@ -1536,7 +1530,6 @@ class Contap_SurfProps {
 /**************************************
 * class Contap_TheIWLineOfTheIWalking *
 **************************************/
-%nodefaultctor Contap_TheIWLineOfTheIWalking;
 class Contap_TheIWLineOfTheIWalking : public Standard_Transient {
 	public:
 		/****************** AddIndexPassing ******************/
@@ -1761,7 +1754,6 @@ class Contap_TheIWLineOfTheIWalking : public Standard_Transient {
 /***************************
 * class Contap_TheIWalking *
 ***************************/
-%nodefaultctor Contap_TheIWalking;
 class Contap_TheIWalking {
 	public:
 		/****************** Contap_TheIWalking ******************/
@@ -1866,7 +1858,6 @@ class Contap_TheIWalking {
 /***************************************
 * class Contap_ThePathPointOfTheSearch *
 ***************************************/
-%nodefaultctor Contap_ThePathPointOfTheSearch;
 class Contap_ThePathPointOfTheSearch {
 	public:
 		/****************** Arc ******************/
@@ -1972,7 +1963,6 @@ class Contap_ThePathPointOfTheSearch {
 /*************************
 * class Contap_TheSearch *
 *************************/
-%nodefaultctor Contap_TheSearch;
 class Contap_TheSearch {
 	public:
 		/****************** AllArcSolution ******************/
@@ -2049,7 +2039,6 @@ class Contap_TheSearch {
 /*******************************
 * class Contap_TheSearchInside *
 *******************************/
-%nodefaultctor Contap_TheSearchInside;
 class Contap_TheSearchInside {
 	public:
 		/****************** Contap_TheSearchInside ******************/
@@ -2127,7 +2116,6 @@ class Contap_TheSearchInside {
 /*************************************
 * class Contap_TheSegmentOfTheSearch *
 *************************************/
-%nodefaultctor Contap_TheSegmentOfTheSearch;
 class Contap_TheSegmentOfTheSearch {
 	public:
 		/****************** Contap_TheSegmentOfTheSearch ******************/

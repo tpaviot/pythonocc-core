@@ -40,7 +40,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ncollection.html"
 
 //Dependencies
 #include<Standard_module.hxx>
-#include<NCollection_module.hxx>
 #include<gp_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -48,7 +47,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ncollection.html"
 #include<Storage_module.hxx>
 %};
 %import Standard.i
-%import NCollection.i
 
 %include "NCollection_TypeDef.hxx";
 %include "NCollection_Array1.hxx";

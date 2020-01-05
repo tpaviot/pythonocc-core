@@ -76,7 +76,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepshape.html"
 /******************************************************
 * class RWStepShape_RWAdvancedBrepShapeRepresentation *
 ******************************************************/
-%nodefaultctor RWStepShape_RWAdvancedBrepShapeRepresentation;
 class RWStepShape_RWAdvancedBrepShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWAdvancedBrepShapeRepresentation ******************/
@@ -127,7 +126,6 @@ class RWStepShape_RWAdvancedBrepShapeRepresentation {
 /***********************************
 * class RWStepShape_RWAdvancedFace *
 ***********************************/
-%nodefaultctor RWStepShape_RWAdvancedFace;
 class RWStepShape_RWAdvancedFace {
 	public:
 		/****************** RWStepShape_RWAdvancedFace ******************/
@@ -178,7 +176,6 @@ class RWStepShape_RWAdvancedFace {
 /**************************************
 * class RWStepShape_RWAngularLocation *
 **************************************/
-%nodefaultctor RWStepShape_RWAngularLocation;
 class RWStepShape_RWAngularLocation {
 	public:
 		/****************** RWStepShape_RWAngularLocation ******************/
@@ -233,7 +230,6 @@ class RWStepShape_RWAngularLocation {
 /**********************************
 * class RWStepShape_RWAngularSize *
 **********************************/
-%nodefaultctor RWStepShape_RWAngularSize;
 class RWStepShape_RWAngularSize {
 	public:
 		/****************** RWStepShape_RWAngularSize ******************/
@@ -288,7 +284,6 @@ class RWStepShape_RWAngularSize {
 /****************************
 * class RWStepShape_RWBlock *
 ****************************/
-%nodefaultctor RWStepShape_RWBlock;
 class RWStepShape_RWBlock {
 	public:
 		/****************** RWStepShape_RWBlock ******************/
@@ -339,7 +334,6 @@ class RWStepShape_RWBlock {
 /************************************
 * class RWStepShape_RWBooleanResult *
 ************************************/
-%nodefaultctor RWStepShape_RWBooleanResult;
 class RWStepShape_RWBooleanResult {
 	public:
 		/****************** RWStepShape_RWBooleanResult ******************/
@@ -390,7 +384,6 @@ class RWStepShape_RWBooleanResult {
 /********************************
 * class RWStepShape_RWBoxDomain *
 ********************************/
-%nodefaultctor RWStepShape_RWBoxDomain;
 class RWStepShape_RWBoxDomain {
 	public:
 		/****************** RWStepShape_RWBoxDomain ******************/
@@ -441,7 +434,6 @@ class RWStepShape_RWBoxDomain {
 /*************************************
 * class RWStepShape_RWBoxedHalfSpace *
 *************************************/
-%nodefaultctor RWStepShape_RWBoxedHalfSpace;
 class RWStepShape_RWBoxedHalfSpace {
 	public:
 		/****************** RWStepShape_RWBoxedHalfSpace ******************/
@@ -492,7 +484,6 @@ class RWStepShape_RWBoxedHalfSpace {
 /************************************
 * class RWStepShape_RWBrepWithVoids *
 ************************************/
-%nodefaultctor RWStepShape_RWBrepWithVoids;
 class RWStepShape_RWBrepWithVoids {
 	public:
 		/****************** Check ******************/
@@ -554,7 +545,6 @@ class RWStepShape_RWBrepWithVoids {
 /**********************************
 * class RWStepShape_RWClosedShell *
 **********************************/
-%nodefaultctor RWStepShape_RWClosedShell;
 class RWStepShape_RWClosedShell {
 	public:
 		/****************** RWStepShape_RWClosedShell ******************/
@@ -605,7 +595,6 @@ class RWStepShape_RWClosedShell {
 /**************************************************
 * class RWStepShape_RWCompoundShapeRepresentation *
 **************************************************/
-%nodefaultctor RWStepShape_RWCompoundShapeRepresentation;
 class RWStepShape_RWCompoundShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWCompoundShapeRepresentation ******************/
@@ -660,7 +649,6 @@ class RWStepShape_RWCompoundShapeRepresentation {
 /***************************************
 * class RWStepShape_RWConnectedEdgeSet *
 ***************************************/
-%nodefaultctor RWStepShape_RWConnectedEdgeSet;
 class RWStepShape_RWConnectedEdgeSet {
 	public:
 		/****************** RWStepShape_RWConnectedEdgeSet ******************/
@@ -715,7 +703,6 @@ class RWStepShape_RWConnectedEdgeSet {
 /***************************************
 * class RWStepShape_RWConnectedFaceSet *
 ***************************************/
-%nodefaultctor RWStepShape_RWConnectedFaceSet;
 class RWStepShape_RWConnectedFaceSet {
 	public:
 		/****************** RWStepShape_RWConnectedFaceSet ******************/
@@ -766,7 +753,6 @@ class RWStepShape_RWConnectedFaceSet {
 /*******************************************************
 * class RWStepShape_RWConnectedFaceShapeRepresentation *
 *******************************************************/
-%nodefaultctor RWStepShape_RWConnectedFaceShapeRepresentation;
 class RWStepShape_RWConnectedFaceShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWConnectedFaceShapeRepresentation ******************/
@@ -821,7 +807,6 @@ class RWStepShape_RWConnectedFaceShapeRepresentation {
 /******************************************
 * class RWStepShape_RWConnectedFaceSubSet *
 ******************************************/
-%nodefaultctor RWStepShape_RWConnectedFaceSubSet;
 class RWStepShape_RWConnectedFaceSubSet {
 	public:
 		/****************** RWStepShape_RWConnectedFaceSubSet ******************/
@@ -876,7 +861,6 @@ class RWStepShape_RWConnectedFaceSubSet {
 /**********************************************************
 * class RWStepShape_RWContextDependentShapeRepresentation *
 **********************************************************/
-%nodefaultctor RWStepShape_RWContextDependentShapeRepresentation;
 class RWStepShape_RWContextDependentShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWContextDependentShapeRepresentation ******************/
@@ -927,7 +911,6 @@ class RWStepShape_RWContextDependentShapeRepresentation {
 /*********************************************
 * class RWStepShape_RWCsgShapeRepresentation *
 *********************************************/
-%nodefaultctor RWStepShape_RWCsgShapeRepresentation;
 class RWStepShape_RWCsgShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWCsgShapeRepresentation ******************/
@@ -978,7 +961,6 @@ class RWStepShape_RWCsgShapeRepresentation {
 /*******************************
 * class RWStepShape_RWCsgSolid *
 *******************************/
-%nodefaultctor RWStepShape_RWCsgSolid;
 class RWStepShape_RWCsgSolid {
 	public:
 		/****************** RWStepShape_RWCsgSolid ******************/
@@ -1029,7 +1011,6 @@ class RWStepShape_RWCsgSolid {
 /***********************************************************************
 * class RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation *
 ***********************************************************************/
-%nodefaultctor RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation;
 class RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation ******************/
@@ -1080,7 +1061,6 @@ class RWStepShape_RWDefinitionalRepresentationAndShapeRepresentation {
 /**************************************************************
 * class RWStepShape_RWDimensionalCharacteristicRepresentation *
 **************************************************************/
-%nodefaultctor RWStepShape_RWDimensionalCharacteristicRepresentation;
 class RWStepShape_RWDimensionalCharacteristicRepresentation {
 	public:
 		/****************** RWStepShape_RWDimensionalCharacteristicRepresentation ******************/
@@ -1135,7 +1115,6 @@ class RWStepShape_RWDimensionalCharacteristicRepresentation {
 /******************************************
 * class RWStepShape_RWDimensionalLocation *
 ******************************************/
-%nodefaultctor RWStepShape_RWDimensionalLocation;
 class RWStepShape_RWDimensionalLocation {
 	public:
 		/****************** RWStepShape_RWDimensionalLocation ******************/
@@ -1190,7 +1169,6 @@ class RWStepShape_RWDimensionalLocation {
 /**************************************************
 * class RWStepShape_RWDimensionalLocationWithPath *
 **************************************************/
-%nodefaultctor RWStepShape_RWDimensionalLocationWithPath;
 class RWStepShape_RWDimensionalLocationWithPath {
 	public:
 		/****************** RWStepShape_RWDimensionalLocationWithPath ******************/
@@ -1245,7 +1223,6 @@ class RWStepShape_RWDimensionalLocationWithPath {
 /**************************************
 * class RWStepShape_RWDimensionalSize *
 **************************************/
-%nodefaultctor RWStepShape_RWDimensionalSize;
 class RWStepShape_RWDimensionalSize {
 	public:
 		/****************** RWStepShape_RWDimensionalSize ******************/
@@ -1300,7 +1277,6 @@ class RWStepShape_RWDimensionalSize {
 /**********************************************
 * class RWStepShape_RWDimensionalSizeWithPath *
 **********************************************/
-%nodefaultctor RWStepShape_RWDimensionalSizeWithPath;
 class RWStepShape_RWDimensionalSizeWithPath {
 	public:
 		/****************** RWStepShape_RWDimensionalSizeWithPath ******************/
@@ -1355,7 +1331,6 @@ class RWStepShape_RWDimensionalSizeWithPath {
 /***************************
 * class RWStepShape_RWEdge *
 ***************************/
-%nodefaultctor RWStepShape_RWEdge;
 class RWStepShape_RWEdge {
 	public:
 		/****************** RWStepShape_RWEdge ******************/
@@ -1406,7 +1381,6 @@ class RWStepShape_RWEdge {
 /**********************************************
 * class RWStepShape_RWEdgeBasedWireframeModel *
 **********************************************/
-%nodefaultctor RWStepShape_RWEdgeBasedWireframeModel;
 class RWStepShape_RWEdgeBasedWireframeModel {
 	public:
 		/****************** RWStepShape_RWEdgeBasedWireframeModel ******************/
@@ -1461,7 +1435,6 @@ class RWStepShape_RWEdgeBasedWireframeModel {
 /************************************************************
 * class RWStepShape_RWEdgeBasedWireframeShapeRepresentation *
 ************************************************************/
-%nodefaultctor RWStepShape_RWEdgeBasedWireframeShapeRepresentation;
 class RWStepShape_RWEdgeBasedWireframeShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWEdgeBasedWireframeShapeRepresentation ******************/
@@ -1516,7 +1489,6 @@ class RWStepShape_RWEdgeBasedWireframeShapeRepresentation {
 /********************************
 * class RWStepShape_RWEdgeCurve *
 ********************************/
-%nodefaultctor RWStepShape_RWEdgeCurve;
 class RWStepShape_RWEdgeCurve {
 	public:
 		/****************** Check ******************/
@@ -1578,7 +1550,6 @@ class RWStepShape_RWEdgeCurve {
 /*******************************
 * class RWStepShape_RWEdgeLoop *
 *******************************/
-%nodefaultctor RWStepShape_RWEdgeLoop;
 class RWStepShape_RWEdgeLoop {
 	public:
 		/****************** Check ******************/
@@ -1640,7 +1611,6 @@ class RWStepShape_RWEdgeLoop {
 /****************************************
 * class RWStepShape_RWExtrudedAreaSolid *
 ****************************************/
-%nodefaultctor RWStepShape_RWExtrudedAreaSolid;
 class RWStepShape_RWExtrudedAreaSolid {
 	public:
 		/****************** RWStepShape_RWExtrudedAreaSolid ******************/
@@ -1691,7 +1661,6 @@ class RWStepShape_RWExtrudedAreaSolid {
 /****************************************
 * class RWStepShape_RWExtrudedFaceSolid *
 ****************************************/
-%nodefaultctor RWStepShape_RWExtrudedFaceSolid;
 class RWStepShape_RWExtrudedFaceSolid {
 	public:
 		/****************** RWStepShape_RWExtrudedFaceSolid ******************/
@@ -1742,7 +1711,6 @@ class RWStepShape_RWExtrudedFaceSolid {
 /***************************
 * class RWStepShape_RWFace *
 ***************************/
-%nodefaultctor RWStepShape_RWFace;
 class RWStepShape_RWFace {
 	public:
 		/****************** RWStepShape_RWFace ******************/
@@ -1793,7 +1761,6 @@ class RWStepShape_RWFace {
 /********************************************
 * class RWStepShape_RWFaceBasedSurfaceModel *
 ********************************************/
-%nodefaultctor RWStepShape_RWFaceBasedSurfaceModel;
 class RWStepShape_RWFaceBasedSurfaceModel {
 	public:
 		/****************** RWStepShape_RWFaceBasedSurfaceModel ******************/
@@ -1848,7 +1815,6 @@ class RWStepShape_RWFaceBasedSurfaceModel {
 /********************************
 * class RWStepShape_RWFaceBound *
 ********************************/
-%nodefaultctor RWStepShape_RWFaceBound;
 class RWStepShape_RWFaceBound {
 	public:
 		/****************** Check ******************/
@@ -1910,7 +1876,6 @@ class RWStepShape_RWFaceBound {
 /*************************************
 * class RWStepShape_RWFaceOuterBound *
 *************************************/
-%nodefaultctor RWStepShape_RWFaceOuterBound;
 class RWStepShape_RWFaceOuterBound {
 	public:
 		/****************** RWStepShape_RWFaceOuterBound ******************/
@@ -1961,7 +1926,6 @@ class RWStepShape_RWFaceOuterBound {
 /**********************************
 * class RWStepShape_RWFaceSurface *
 **********************************/
-%nodefaultctor RWStepShape_RWFaceSurface;
 class RWStepShape_RWFaceSurface {
 	public:
 		/****************** RWStepShape_RWFaceSurface ******************/
@@ -2012,7 +1976,6 @@ class RWStepShape_RWFaceSurface {
 /**********************************
 * class RWStepShape_RWFacetedBrep *
 **********************************/
-%nodefaultctor RWStepShape_RWFacetedBrep;
 class RWStepShape_RWFacetedBrep {
 	public:
 		/****************** RWStepShape_RWFacetedBrep ******************/
@@ -2063,7 +2026,6 @@ class RWStepShape_RWFacetedBrep {
 /**************************************************
 * class RWStepShape_RWFacetedBrepAndBrepWithVoids *
 **************************************************/
-%nodefaultctor RWStepShape_RWFacetedBrepAndBrepWithVoids;
 class RWStepShape_RWFacetedBrepAndBrepWithVoids {
 	public:
 		/****************** RWStepShape_RWFacetedBrepAndBrepWithVoids ******************/
@@ -2114,7 +2076,6 @@ class RWStepShape_RWFacetedBrepAndBrepWithVoids {
 /*****************************************************
 * class RWStepShape_RWFacetedBrepShapeRepresentation *
 *****************************************************/
-%nodefaultctor RWStepShape_RWFacetedBrepShapeRepresentation;
 class RWStepShape_RWFacetedBrepShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWFacetedBrepShapeRepresentation ******************/
@@ -2165,7 +2126,6 @@ class RWStepShape_RWFacetedBrepShapeRepresentation {
 /****************************************
 * class RWStepShape_RWGeometricCurveSet *
 ****************************************/
-%nodefaultctor RWStepShape_RWGeometricCurveSet;
 class RWStepShape_RWGeometricCurveSet {
 	public:
 		/****************** RWStepShape_RWGeometricCurveSet ******************/
@@ -2216,7 +2176,6 @@ class RWStepShape_RWGeometricCurveSet {
 /***********************************
 * class RWStepShape_RWGeometricSet *
 ***********************************/
-%nodefaultctor RWStepShape_RWGeometricSet;
 class RWStepShape_RWGeometricSet {
 	public:
 		/****************** RWStepShape_RWGeometricSet ******************/
@@ -2267,7 +2226,6 @@ class RWStepShape_RWGeometricSet {
 /*********************************************************************
 * class RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation *
 *********************************************************************/
-%nodefaultctor RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation;
 class RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation ******************/
@@ -2318,7 +2276,6 @@ class RWStepShape_RWGeometricallyBoundedSurfaceShapeRepresentation {
 /***********************************************************************
 * class RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation *
 ***********************************************************************/
-%nodefaultctor RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation;
 class RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation ******************/
@@ -2369,7 +2326,6 @@ class RWStepShape_RWGeometricallyBoundedWireframeShapeRepresentation {
 /*************************************
 * class RWStepShape_RWHalfSpaceSolid *
 *************************************/
-%nodefaultctor RWStepShape_RWHalfSpaceSolid;
 class RWStepShape_RWHalfSpaceSolid {
 	public:
 		/****************** RWStepShape_RWHalfSpaceSolid ******************/
@@ -2420,7 +2376,6 @@ class RWStepShape_RWHalfSpaceSolid {
 /************************************
 * class RWStepShape_RWLimitsAndFits *
 ************************************/
-%nodefaultctor RWStepShape_RWLimitsAndFits;
 class RWStepShape_RWLimitsAndFits {
 	public:
 		/****************** RWStepShape_RWLimitsAndFits ******************/
@@ -2462,7 +2417,6 @@ class RWStepShape_RWLimitsAndFits {
 /***************************
 * class RWStepShape_RWLoop *
 ***************************/
-%nodefaultctor RWStepShape_RWLoop;
 class RWStepShape_RWLoop {
 	public:
 		/****************** RWStepShape_RWLoop ******************/
@@ -2504,7 +2458,6 @@ class RWStepShape_RWLoop {
 /**********************************
 * class RWStepShape_RWLoopAndPath *
 **********************************/
-%nodefaultctor RWStepShape_RWLoopAndPath;
 class RWStepShape_RWLoopAndPath {
 	public:
 		/****************** RWStepShape_RWLoopAndPath ******************/
@@ -2555,7 +2508,6 @@ class RWStepShape_RWLoopAndPath {
 /****************************************
 * class RWStepShape_RWManifoldSolidBrep *
 ****************************************/
-%nodefaultctor RWStepShape_RWManifoldSolidBrep;
 class RWStepShape_RWManifoldSolidBrep {
 	public:
 		/****************** RWStepShape_RWManifoldSolidBrep ******************/
@@ -2606,7 +2558,6 @@ class RWStepShape_RWManifoldSolidBrep {
 /*********************************************************
 * class RWStepShape_RWManifoldSurfaceShapeRepresentation *
 *********************************************************/
-%nodefaultctor RWStepShape_RWManifoldSurfaceShapeRepresentation;
 class RWStepShape_RWManifoldSurfaceShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWManifoldSurfaceShapeRepresentation ******************/
@@ -2657,7 +2608,6 @@ class RWStepShape_RWManifoldSurfaceShapeRepresentation {
 /*******************************************
 * class RWStepShape_RWMeasureQualification *
 *******************************************/
-%nodefaultctor RWStepShape_RWMeasureQualification;
 class RWStepShape_RWMeasureQualification {
 	public:
 		/****************** RWStepShape_RWMeasureQualification ******************/
@@ -2708,7 +2658,6 @@ class RWStepShape_RWMeasureQualification {
 /******************************************************************************
 * class RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem *
 ******************************************************************************/
-%nodefaultctor RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem;
 class RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem {
 	public:
 		/****************** RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem ******************/
@@ -2759,7 +2708,6 @@ class RWStepShape_RWMeasureRepresentationItemAndQualifiedRepresentationItem {
 /************************************************************
 * class RWStepShape_RWNonManifoldSurfaceShapeRepresentation *
 ************************************************************/
-%nodefaultctor RWStepShape_RWNonManifoldSurfaceShapeRepresentation;
 class RWStepShape_RWNonManifoldSurfaceShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWNonManifoldSurfaceShapeRepresentation ******************/
@@ -2814,7 +2762,6 @@ class RWStepShape_RWNonManifoldSurfaceShapeRepresentation {
 /********************************
 * class RWStepShape_RWOpenShell *
 ********************************/
-%nodefaultctor RWStepShape_RWOpenShell;
 class RWStepShape_RWOpenShell {
 	public:
 		/****************** RWStepShape_RWOpenShell ******************/
@@ -2865,7 +2812,6 @@ class RWStepShape_RWOpenShell {
 /******************************************
 * class RWStepShape_RWOrientedClosedShell *
 ******************************************/
-%nodefaultctor RWStepShape_RWOrientedClosedShell;
 class RWStepShape_RWOrientedClosedShell {
 	public:
 		/****************** RWStepShape_RWOrientedClosedShell ******************/
@@ -2916,7 +2862,6 @@ class RWStepShape_RWOrientedClosedShell {
 /***********************************
 * class RWStepShape_RWOrientedEdge *
 ***********************************/
-%nodefaultctor RWStepShape_RWOrientedEdge;
 class RWStepShape_RWOrientedEdge {
 	public:
 		/****************** RWStepShape_RWOrientedEdge ******************/
@@ -2967,7 +2912,6 @@ class RWStepShape_RWOrientedEdge {
 /***********************************
 * class RWStepShape_RWOrientedFace *
 ***********************************/
-%nodefaultctor RWStepShape_RWOrientedFace;
 class RWStepShape_RWOrientedFace {
 	public:
 		/****************** RWStepShape_RWOrientedFace ******************/
@@ -3018,7 +2962,6 @@ class RWStepShape_RWOrientedFace {
 /****************************************
 * class RWStepShape_RWOrientedOpenShell *
 ****************************************/
-%nodefaultctor RWStepShape_RWOrientedOpenShell;
 class RWStepShape_RWOrientedOpenShell {
 	public:
 		/****************** RWStepShape_RWOrientedOpenShell ******************/
@@ -3069,7 +3012,6 @@ class RWStepShape_RWOrientedOpenShell {
 /***********************************
 * class RWStepShape_RWOrientedPath *
 ***********************************/
-%nodefaultctor RWStepShape_RWOrientedPath;
 class RWStepShape_RWOrientedPath {
 	public:
 		/****************** RWStepShape_RWOrientedPath ******************/
@@ -3120,7 +3062,6 @@ class RWStepShape_RWOrientedPath {
 /***************************
 * class RWStepShape_RWPath *
 ***************************/
-%nodefaultctor RWStepShape_RWPath;
 class RWStepShape_RWPath {
 	public:
 		/****************** RWStepShape_RWPath ******************/
@@ -3171,7 +3112,6 @@ class RWStepShape_RWPath {
 /*****************************************
 * class RWStepShape_RWPlusMinusTolerance *
 *****************************************/
-%nodefaultctor RWStepShape_RWPlusMinusTolerance;
 class RWStepShape_RWPlusMinusTolerance {
 	public:
 		/****************** RWStepShape_RWPlusMinusTolerance ******************/
@@ -3222,7 +3162,6 @@ class RWStepShape_RWPlusMinusTolerance {
 /******************************************
 * class RWStepShape_RWPointRepresentation *
 ******************************************/
-%nodefaultctor RWStepShape_RWPointRepresentation;
 class RWStepShape_RWPointRepresentation {
 	public:
 		/****************** RWStepShape_RWPointRepresentation ******************/
@@ -3277,7 +3216,6 @@ class RWStepShape_RWPointRepresentation {
 /*******************************
 * class RWStepShape_RWPolyLoop *
 *******************************/
-%nodefaultctor RWStepShape_RWPolyLoop;
 class RWStepShape_RWPolyLoop {
 	public:
 		/****************** RWStepShape_RWPolyLoop ******************/
@@ -3328,7 +3266,6 @@ class RWStepShape_RWPolyLoop {
 /*****************************************
 * class RWStepShape_RWPrecisionQualifier *
 *****************************************/
-%nodefaultctor RWStepShape_RWPrecisionQualifier;
 class RWStepShape_RWPrecisionQualifier {
 	public:
 		/****************** RWStepShape_RWPrecisionQualifier ******************/
@@ -3370,7 +3307,6 @@ class RWStepShape_RWPrecisionQualifier {
 /**************************************************
 * class RWStepShape_RWQualifiedRepresentationItem *
 **************************************************/
-%nodefaultctor RWStepShape_RWQualifiedRepresentationItem;
 class RWStepShape_RWQualifiedRepresentationItem {
 	public:
 		/****************** RWStepShape_RWQualifiedRepresentationItem ******************/
@@ -3421,7 +3357,6 @@ class RWStepShape_RWQualifiedRepresentationItem {
 /****************************************
 * class RWStepShape_RWRevolvedAreaSolid *
 ****************************************/
-%nodefaultctor RWStepShape_RWRevolvedAreaSolid;
 class RWStepShape_RWRevolvedAreaSolid {
 	public:
 		/****************** RWStepShape_RWRevolvedAreaSolid ******************/
@@ -3472,7 +3407,6 @@ class RWStepShape_RWRevolvedAreaSolid {
 /****************************************
 * class RWStepShape_RWRevolvedFaceSolid *
 ****************************************/
-%nodefaultctor RWStepShape_RWRevolvedFaceSolid;
 class RWStepShape_RWRevolvedFaceSolid {
 	public:
 		/****************** RWStepShape_RWRevolvedFaceSolid ******************/
@@ -3523,7 +3457,6 @@ class RWStepShape_RWRevolvedFaceSolid {
 /****************************************
 * class RWStepShape_RWRightAngularWedge *
 ****************************************/
-%nodefaultctor RWStepShape_RWRightAngularWedge;
 class RWStepShape_RWRightAngularWedge {
 	public:
 		/****************** RWStepShape_RWRightAngularWedge ******************/
@@ -3574,7 +3507,6 @@ class RWStepShape_RWRightAngularWedge {
 /****************************************
 * class RWStepShape_RWRightCircularCone *
 ****************************************/
-%nodefaultctor RWStepShape_RWRightCircularCone;
 class RWStepShape_RWRightCircularCone {
 	public:
 		/****************** RWStepShape_RWRightCircularCone ******************/
@@ -3625,7 +3557,6 @@ class RWStepShape_RWRightCircularCone {
 /********************************************
 * class RWStepShape_RWRightCircularCylinder *
 ********************************************/
-%nodefaultctor RWStepShape_RWRightCircularCylinder;
 class RWStepShape_RWRightCircularCylinder {
 	public:
 		/****************** RWStepShape_RWRightCircularCylinder ******************/
@@ -3676,7 +3607,6 @@ class RWStepShape_RWRightCircularCylinder {
 /*******************************
 * class RWStepShape_RWSeamEdge *
 *******************************/
-%nodefaultctor RWStepShape_RWSeamEdge;
 class RWStepShape_RWSeamEdge {
 	public:
 		/****************** RWStepShape_RWSeamEdge ******************/
@@ -3731,7 +3661,6 @@ class RWStepShape_RWSeamEdge {
 /****************************************************
 * class RWStepShape_RWShapeDefinitionRepresentation *
 ****************************************************/
-%nodefaultctor RWStepShape_RWShapeDefinitionRepresentation;
 class RWStepShape_RWShapeDefinitionRepresentation {
 	public:
 		/****************** RWStepShape_RWShapeDefinitionRepresentation ******************/
@@ -3786,7 +3715,6 @@ class RWStepShape_RWShapeDefinitionRepresentation {
 /***************************************************
 * class RWStepShape_RWShapeDimensionRepresentation *
 ***************************************************/
-%nodefaultctor RWStepShape_RWShapeDimensionRepresentation;
 class RWStepShape_RWShapeDimensionRepresentation {
 	public:
 		/****************** RWStepShape_RWShapeDimensionRepresentation ******************/
@@ -3841,7 +3769,6 @@ class RWStepShape_RWShapeDimensionRepresentation {
 /******************************************
 * class RWStepShape_RWShapeRepresentation *
 ******************************************/
-%nodefaultctor RWStepShape_RWShapeRepresentation;
 class RWStepShape_RWShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWShapeRepresentation ******************/
@@ -3892,7 +3819,6 @@ class RWStepShape_RWShapeRepresentation {
 /********************************************************
 * class RWStepShape_RWShapeRepresentationWithParameters *
 ********************************************************/
-%nodefaultctor RWStepShape_RWShapeRepresentationWithParameters;
 class RWStepShape_RWShapeRepresentationWithParameters {
 	public:
 		/****************** RWStepShape_RWShapeRepresentationWithParameters ******************/
@@ -3947,7 +3873,6 @@ class RWStepShape_RWShapeRepresentationWithParameters {
 /*********************************************
 * class RWStepShape_RWShellBasedSurfaceModel *
 *********************************************/
-%nodefaultctor RWStepShape_RWShellBasedSurfaceModel;
 class RWStepShape_RWShellBasedSurfaceModel {
 	public:
 		/****************** RWStepShape_RWShellBasedSurfaceModel ******************/
@@ -3998,7 +3923,6 @@ class RWStepShape_RWShellBasedSurfaceModel {
 /*********************************
 * class RWStepShape_RWSolidModel *
 *********************************/
-%nodefaultctor RWStepShape_RWSolidModel;
 class RWStepShape_RWSolidModel {
 	public:
 		/****************** RWStepShape_RWSolidModel ******************/
@@ -4040,7 +3964,6 @@ class RWStepShape_RWSolidModel {
 /***********************************
 * class RWStepShape_RWSolidReplica *
 ***********************************/
-%nodefaultctor RWStepShape_RWSolidReplica;
 class RWStepShape_RWSolidReplica {
 	public:
 		/****************** RWStepShape_RWSolidReplica ******************/
@@ -4091,7 +4014,6 @@ class RWStepShape_RWSolidReplica {
 /*****************************
 * class RWStepShape_RWSphere *
 *****************************/
-%nodefaultctor RWStepShape_RWSphere;
 class RWStepShape_RWSphere {
 	public:
 		/****************** RWStepShape_RWSphere ******************/
@@ -4142,7 +4064,6 @@ class RWStepShape_RWSphere {
 /******************************
 * class RWStepShape_RWSubedge *
 ******************************/
-%nodefaultctor RWStepShape_RWSubedge;
 class RWStepShape_RWSubedge {
 	public:
 		/****************** RWStepShape_RWSubedge ******************/
@@ -4197,7 +4118,6 @@ class RWStepShape_RWSubedge {
 /******************************
 * class RWStepShape_RWSubface *
 ******************************/
-%nodefaultctor RWStepShape_RWSubface;
 class RWStepShape_RWSubface {
 	public:
 		/****************** RWStepShape_RWSubface ******************/
@@ -4252,7 +4172,6 @@ class RWStepShape_RWSubface {
 /*************************************
 * class RWStepShape_RWSweptAreaSolid *
 *************************************/
-%nodefaultctor RWStepShape_RWSweptAreaSolid;
 class RWStepShape_RWSweptAreaSolid {
 	public:
 		/****************** RWStepShape_RWSweptAreaSolid ******************/
@@ -4303,7 +4222,6 @@ class RWStepShape_RWSweptAreaSolid {
 /*************************************
 * class RWStepShape_RWSweptFaceSolid *
 *************************************/
-%nodefaultctor RWStepShape_RWSweptFaceSolid;
 class RWStepShape_RWSweptFaceSolid {
 	public:
 		/****************** RWStepShape_RWSweptFaceSolid ******************/
@@ -4354,7 +4272,6 @@ class RWStepShape_RWSweptFaceSolid {
 /*************************************
 * class RWStepShape_RWToleranceValue *
 *************************************/
-%nodefaultctor RWStepShape_RWToleranceValue;
 class RWStepShape_RWToleranceValue {
 	public:
 		/****************** RWStepShape_RWToleranceValue ******************/
@@ -4405,7 +4322,6 @@ class RWStepShape_RWToleranceValue {
 /****************************************************
 * class RWStepShape_RWTopologicalRepresentationItem *
 ****************************************************/
-%nodefaultctor RWStepShape_RWTopologicalRepresentationItem;
 class RWStepShape_RWTopologicalRepresentationItem {
 	public:
 		/****************** RWStepShape_RWTopologicalRepresentationItem ******************/
@@ -4447,7 +4363,6 @@ class RWStepShape_RWTopologicalRepresentationItem {
 /****************************
 * class RWStepShape_RWTorus *
 ****************************/
-%nodefaultctor RWStepShape_RWTorus;
 class RWStepShape_RWTorus {
 	public:
 		/****************** RWStepShape_RWTorus ******************/
@@ -4498,7 +4413,6 @@ class RWStepShape_RWTorus {
 /******************************************************
 * class RWStepShape_RWTransitionalShapeRepresentation *
 ******************************************************/
-%nodefaultctor RWStepShape_RWTransitionalShapeRepresentation;
 class RWStepShape_RWTransitionalShapeRepresentation {
 	public:
 		/****************** RWStepShape_RWTransitionalShapeRepresentation ******************/
@@ -4549,7 +4463,6 @@ class RWStepShape_RWTransitionalShapeRepresentation {
 /************************************
 * class RWStepShape_RWTypeQualifier *
 ************************************/
-%nodefaultctor RWStepShape_RWTypeQualifier;
 class RWStepShape_RWTypeQualifier {
 	public:
 		/****************** RWStepShape_RWTypeQualifier ******************/
@@ -4591,7 +4504,6 @@ class RWStepShape_RWTypeQualifier {
 /***********************************************
 * class RWStepShape_RWValueFormatTypeQualifier *
 ***********************************************/
-%nodefaultctor RWStepShape_RWValueFormatTypeQualifier;
 class RWStepShape_RWValueFormatTypeQualifier {
 	public:
 		/****************** RWStepShape_RWValueFormatTypeQualifier ******************/
@@ -4636,7 +4548,6 @@ class RWStepShape_RWValueFormatTypeQualifier {
 /*****************************
 * class RWStepShape_RWVertex *
 *****************************/
-%nodefaultctor RWStepShape_RWVertex;
 class RWStepShape_RWVertex {
 	public:
 		/****************** RWStepShape_RWVertex ******************/
@@ -4678,7 +4589,6 @@ class RWStepShape_RWVertex {
 /*********************************
 * class RWStepShape_RWVertexLoop *
 *********************************/
-%nodefaultctor RWStepShape_RWVertexLoop;
 class RWStepShape_RWVertexLoop {
 	public:
 		/****************** RWStepShape_RWVertexLoop ******************/
@@ -4729,7 +4639,6 @@ class RWStepShape_RWVertexLoop {
 /**********************************
 * class RWStepShape_RWVertexPoint *
 **********************************/
-%nodefaultctor RWStepShape_RWVertexPoint;
 class RWStepShape_RWVertexPoint {
 	public:
 		/****************** RWStepShape_RWVertexPoint ******************/

@@ -118,7 +118,6 @@ class GeomAPI {
 /**********************************
 * class GeomAPI_ExtremaCurveCurve *
 **********************************/
-%nodefaultctor GeomAPI_ExtremaCurveCurve;
 class GeomAPI_ExtremaCurveCurve {
 	public:
 		/****************** Distance ******************/
@@ -301,7 +300,6 @@ class GeomAPI_ExtremaCurveCurve {
 /************************************
 * class GeomAPI_ExtremaCurveSurface *
 ************************************/
-%nodefaultctor GeomAPI_ExtremaCurveSurface;
 class GeomAPI_ExtremaCurveSurface {
 	public:
 		/****************** Distance ******************/
@@ -470,7 +468,6 @@ class GeomAPI_ExtremaCurveSurface {
 /**************************************
 * class GeomAPI_ExtremaSurfaceSurface *
 **************************************/
-%nodefaultctor GeomAPI_ExtremaSurfaceSurface;
 class GeomAPI_ExtremaSurfaceSurface {
 	public:
 		/****************** Distance ******************/
@@ -651,7 +648,6 @@ class GeomAPI_ExtremaSurfaceSurface {
 /**********************
 * class GeomAPI_IntCS *
 **********************/
-%nodefaultctor GeomAPI_IntCS;
 class GeomAPI_IntCS {
 	public:
 		/****************** GeomAPI_IntCS ******************/
@@ -756,7 +752,6 @@ class GeomAPI_IntCS {
 /**********************
 * class GeomAPI_IntSS *
 **********************/
-%nodefaultctor GeomAPI_IntSS;
 class GeomAPI_IntSS {
 	public:
 		/****************** GeomAPI_IntSS ******************/
@@ -821,7 +816,6 @@ class GeomAPI_IntSS {
 /****************************
 * class GeomAPI_Interpolate *
 ****************************/
-%nodefaultctor GeomAPI_Interpolate;
 class GeomAPI_Interpolate {
 	public:
 		/****************** Curve ******************/
@@ -904,7 +898,6 @@ class GeomAPI_Interpolate {
 /********************************
 * class GeomAPI_PointsToBSpline *
 ********************************/
-%nodefaultctor GeomAPI_PointsToBSpline;
 class GeomAPI_PointsToBSpline {
 	public:
 		/****************** Curve ******************/
@@ -1080,7 +1073,6 @@ class GeomAPI_PointsToBSpline {
 /***************************************
 * class GeomAPI_PointsToBSplineSurface *
 ***************************************/
-%nodefaultctor GeomAPI_PointsToBSplineSurface;
 class GeomAPI_PointsToBSplineSurface {
 	public:
 		/****************** GeomAPI_PointsToBSplineSurface ******************/
@@ -1308,7 +1300,6 @@ class GeomAPI_PointsToBSplineSurface {
 /************************************
 * class GeomAPI_ProjectPointOnCurve *
 ************************************/
-%nodefaultctor GeomAPI_ProjectPointOnCurve;
 class GeomAPI_ProjectPointOnCurve {
 	public:
 		/****************** Distance ******************/
@@ -1476,7 +1467,6 @@ class GeomAPI_ProjectPointOnCurve {
 /***********************************
 * class GeomAPI_ProjectPointOnSurf *
 ***********************************/
-%nodefaultctor GeomAPI_ProjectPointOnSurf;
 class GeomAPI_ProjectPointOnSurf {
 	public:
 		/****************** Distance ******************/

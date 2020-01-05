@@ -81,10 +81,34 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolstd.html"
 /* templates */
 %template(TColStd_Array2OfBoolean) NCollection_Array2 <Standard_Boolean>;
 %template(TColStd_DataMapOfIntegerTransient) NCollection_DataMap <Standard_Integer , opencascade::handle <Standard_Transient>, TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , opencascade::handle <Standard_Transient>, TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TColStd_DataMapOfIntegerTransient::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TColStd_ListOfInteger) NCollection_List <Standard_Integer>;
 %template(TColStd_ListIteratorOfListOfInteger) NCollection_TListIterator<Standard_Integer>;
 %template(TColStd_SequenceOfAddress) NCollection_Sequence <Standard_Address>;
 %template(TColStd_DataMapOfIntegerInteger) NCollection_DataMap <Standard_Integer , Standard_Integer , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Standard_Integer , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TColStd_DataMapOfIntegerInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TColStd_Array2OfCharacter) NCollection_Array2 <Standard_Character>;
 %template(TColStd_IndexedMapOfTransient) NCollection_IndexedMap <opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher>;
 %template(TColStd_Array1OfReal) NCollection_Array1 <Standard_Real>;
@@ -284,7 +308,31 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolstd.html"
 };
 %template(TColStd_Array2OfTransient) NCollection_Array2 <opencascade::handle <Standard_Transient>>;
 %template(TColStd_DataMapOfIntegerReal) NCollection_DataMap <Standard_Integer , Standard_Real , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , Standard_Real , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TColStd_DataMapOfIntegerReal::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TColStd_DataMapOfIntegerListOfInteger) NCollection_DataMap <Standard_Integer , TColStd_ListOfInteger , TColStd_MapIntegerHasher>;
+
+%extend NCollection_DataMap <Standard_Integer , TColStd_ListOfInteger , TColStd_MapIntegerHasher> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TColStd_DataMapOfIntegerListOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(TColStd_IndexedMapOfInteger) NCollection_IndexedMap <Standard_Integer , TColStd_MapIntegerHasher>;
 %template(TColStd_MapTransientHasher) NCollection_DefaultHasher <opencascade::handle <Standard_Transient>>;
 %template(TColStd_SequenceOfExtendedString) NCollection_Sequence <TCollection_ExtendedString>;
@@ -505,7 +553,6 @@ typedef NCollection_DataMap <TCollection_AsciiString , Standard_Integer , TColle
 /************************************
 * class TColStd_HPackedMapOfInteger *
 ************************************/
-%nodefaultctor TColStd_HPackedMapOfInteger;
 class TColStd_HPackedMapOfInteger : public Standard_Transient {
 	public:
 		/****************** ChangeMap ******************/

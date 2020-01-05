@@ -82,7 +82,6 @@ enum gce_ErrorType {
 /***********************
 * class gce_MakeMirror *
 ***********************/
-%nodefaultctor gce_MakeMirror;
 class gce_MakeMirror {
 	public:
 		/****************** Operator ******************/
@@ -160,7 +159,6 @@ class gce_MakeMirror {
 /*************************
 * class gce_MakeMirror2d *
 *************************/
-%nodefaultctor gce_MakeMirror2d;
 class gce_MakeMirror2d {
 	public:
 		/****************** Operator ******************/
@@ -222,7 +220,6 @@ class gce_MakeMirror2d {
 /*************************
 * class gce_MakeRotation *
 *************************/
-%nodefaultctor gce_MakeRotation;
 class gce_MakeRotation {
 	public:
 		/****************** Operator ******************/
@@ -285,7 +282,6 @@ class gce_MakeRotation {
 /***************************
 * class gce_MakeRotation2d *
 ***************************/
-%nodefaultctor gce_MakeRotation2d;
 class gce_MakeRotation2d {
 	public:
 		/****************** Operator ******************/
@@ -326,7 +322,6 @@ class gce_MakeRotation2d {
 /**********************
 * class gce_MakeScale *
 **********************/
-%nodefaultctor gce_MakeScale;
 class gce_MakeScale {
 	public:
 		/****************** Operator ******************/
@@ -367,7 +362,6 @@ class gce_MakeScale {
 /************************
 * class gce_MakeScale2d *
 ************************/
-%nodefaultctor gce_MakeScale2d;
 class gce_MakeScale2d {
 	public:
 		/****************** Operator ******************/
@@ -408,7 +402,6 @@ class gce_MakeScale2d {
 /****************************
 * class gce_MakeTranslation *
 ****************************/
-%nodefaultctor gce_MakeTranslation;
 class gce_MakeTranslation {
 	public:
 		/****************** Operator ******************/
@@ -457,7 +450,6 @@ class gce_MakeTranslation {
 /******************************
 * class gce_MakeTranslation2d *
 ******************************/
-%nodefaultctor gce_MakeTranslation2d;
 class gce_MakeTranslation2d {
 	public:
 		/****************** Operator ******************/
@@ -532,7 +524,6 @@ class gce_Root {
 /*********************
 * class gce_MakeCirc *
 *********************/
-%nodefaultctor gce_MakeCirc;
 class gce_MakeCirc : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -651,7 +642,6 @@ class gce_MakeCirc : public gce_Root {
 /***********************
 * class gce_MakeCirc2d *
 ***********************/
-%nodefaultctor gce_MakeCirc2d;
 class gce_MakeCirc2d : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -760,7 +750,6 @@ class gce_MakeCirc2d : public gce_Root {
 /*********************
 * class gce_MakeCone *
 *********************/
-%nodefaultctor gce_MakeCone;
 class gce_MakeCone : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -875,7 +864,6 @@ class gce_MakeCone : public gce_Root {
 /*************************
 * class gce_MakeCylinder *
 *************************/
-%nodefaultctor gce_MakeCylinder;
 class gce_MakeCylinder : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -966,7 +954,6 @@ class gce_MakeCylinder : public gce_Root {
 /********************
 * class gce_MakeDir *
 ********************/
-%nodefaultctor gce_MakeDir;
 class gce_MakeDir : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1035,7 +1022,6 @@ class gce_MakeDir : public gce_Root {
 /**********************
 * class gce_MakeDir2d *
 **********************/
-%nodefaultctor gce_MakeDir2d;
 class gce_MakeDir2d : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1102,7 +1088,6 @@ class gce_MakeDir2d : public gce_Root {
 /**********************
 * class gce_MakeElips *
 **********************/
-%nodefaultctor gce_MakeElips;
 class gce_MakeElips : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1157,7 +1142,6 @@ class gce_MakeElips : public gce_Root {
 /************************
 * class gce_MakeElips2d *
 ************************/
-%nodefaultctor gce_MakeElips2d;
 class gce_MakeElips2d : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1226,7 +1210,6 @@ class gce_MakeElips2d : public gce_Root {
 /*********************
 * class gce_MakeHypr *
 *********************/
-%nodefaultctor gce_MakeHypr;
 class gce_MakeHypr : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1281,7 +1264,6 @@ class gce_MakeHypr : public gce_Root {
 /***********************
 * class gce_MakeHypr2d *
 ***********************/
-%nodefaultctor gce_MakeHypr2d;
 class gce_MakeHypr2d : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1350,7 +1332,6 @@ class gce_MakeHypr2d : public gce_Root {
 /********************
 * class gce_MakeLin *
 ********************/
-%nodefaultctor gce_MakeLin;
 class gce_MakeLin : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1419,7 +1400,6 @@ class gce_MakeLin : public gce_Root {
 /**********************
 * class gce_MakeLin2d *
 **********************/
-%nodefaultctor gce_MakeLin2d;
 class gce_MakeLin2d : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1510,7 +1490,6 @@ class gce_MakeLin2d : public gce_Root {
 /**********************
 * class gce_MakeParab *
 **********************/
-%nodefaultctor gce_MakeParab;
 class gce_MakeParab : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1561,7 +1540,6 @@ class gce_MakeParab : public gce_Root {
 /************************
 * class gce_MakeParab2d *
 ************************/
-%nodefaultctor gce_MakeParab2d;
 class gce_MakeParab2d : public gce_Root {
 	public:
 		/****************** Operator ******************/
@@ -1638,7 +1616,6 @@ class gce_MakeParab2d : public gce_Root {
 /********************
 * class gce_MakePln *
 ********************/
-%nodefaultctor gce_MakePln;
 class gce_MakePln : public gce_Root {
 	public:
 		/****************** Operator ******************/

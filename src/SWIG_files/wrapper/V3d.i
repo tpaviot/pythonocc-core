@@ -318,7 +318,6 @@ class V3d {
 /*************************
 * class V3d_AmbientLight *
 *************************/
-%nodefaultctor V3d_AmbientLight;
 class V3d_AmbientLight : public Graphic3d_CLight {
 	public:
 		/****************** V3d_AmbientLight ******************/
@@ -353,7 +352,6 @@ class V3d_AmbientLight : public Graphic3d_CLight {
 /*************************
 * class V3d_CircularGrid *
 *************************/
-%nodefaultctor V3d_CircularGrid;
 class V3d_CircularGrid : public Aspect_CircularGrid {
 	public:
 		/****************** Display ******************/
@@ -423,7 +421,6 @@ class V3d_CircularGrid : public Aspect_CircularGrid {
 /*****************************
 * class V3d_ImageDumpOptions *
 *****************************/
-%nodefaultctor V3d_ImageDumpOptions;
 class V3d_ImageDumpOptions {
 	public:
 		int Width;
@@ -450,7 +447,6 @@ class V3d_ImageDumpOptions {
 /******************
 * class V3d_Plane *
 ******************/
-%nodefaultctor V3d_Plane;
 class V3d_Plane : public Standard_Transient {
 	public:
 		/****************** ClipPlane ******************/
@@ -554,7 +550,6 @@ class V3d_PositionLight : public Graphic3d_CLight {
 /****************************
 * class V3d_RectangularGrid *
 ****************************/
-%nodefaultctor V3d_RectangularGrid;
 class V3d_RectangularGrid : public Aspect_RectangularGrid {
 	public:
 		/****************** Display ******************/
@@ -628,7 +623,6 @@ class V3d_RectangularGrid : public Aspect_RectangularGrid {
 /**********************
 * class V3d_Trihedron *
 **********************/
-%nodefaultctor V3d_Trihedron;
 class V3d_Trihedron : public Standard_Transient {
 	public:
 		/****************** Display ******************/
@@ -733,7 +727,6 @@ class V3d_Trihedron : public Standard_Transient {
 /*****************
 * class V3d_View *
 *****************/
-%nodefaultctor V3d_View;
 class V3d_View : public Standard_Transient {
 	public:
 		/****************** ActiveLight ******************/
@@ -2322,7 +2315,6 @@ class V3d_View : public Standard_Transient {
 /*******************
 * class V3d_Viewer *
 *******************/
-%nodefaultctor V3d_Viewer;
 class V3d_Viewer : public Standard_Transient {
 	public:
 		/****************** ActivateGrid ******************/
@@ -3111,7 +3103,6 @@ class V3d_Viewer : public Standard_Transient {
 /*****************************
 * class V3d_DirectionalLight *
 *****************************/
-%nodefaultctor V3d_DirectionalLight;
 class V3d_DirectionalLight : public V3d_PositionLight {
 	public:
 		/****************** SetDirection ******************/
@@ -3197,7 +3188,6 @@ class V3d_DirectionalLight : public V3d_PositionLight {
 /****************************
 * class V3d_PositionalLight *
 ****************************/
-%nodefaultctor V3d_PositionalLight;
 class V3d_PositionalLight : public V3d_PositionLight {
 	public:
 		/****************** V3d_PositionalLight ******************/
@@ -3243,7 +3233,6 @@ class V3d_PositionalLight : public V3d_PositionLight {
 /**********************
 * class V3d_SpotLight *
 **********************/
-%nodefaultctor V3d_SpotLight;
 class V3d_SpotLight : public V3d_PositionLight {
 	public:
 		/****************** SetDirection ******************/

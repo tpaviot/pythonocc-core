@@ -80,7 +80,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepsweep.html"
 /**************************
 * class BRepSweep_Builder *
 **************************/
-%nodefaultctor BRepSweep_Builder;
 class BRepSweep_Builder {
 	public:
 		/****************** Add ******************/
@@ -170,7 +169,6 @@ class BRepSweep_Builder {
 /***************************
 * class BRepSweep_Iterator *
 ***************************/
-%nodefaultctor BRepSweep_Iterator;
 class BRepSweep_Iterator {
 	public:
 		/****************** BRepSweep_Iterator ******************/
@@ -546,7 +544,6 @@ class BRepSweep_NumLinearRegularSweep {
 /************************
 * class BRepSweep_Prism *
 ************************/
-%nodefaultctor BRepSweep_Prism;
 class BRepSweep_Prism {
 	public:
 		/****************** BRepSweep_Prism ******************/
@@ -655,7 +652,6 @@ class BRepSweep_Prism {
 /************************
 * class BRepSweep_Revol *
 ************************/
-%nodefaultctor BRepSweep_Revol;
 class BRepSweep_Revol {
 	public:
 		/****************** Angle ******************/
@@ -758,7 +754,6 @@ class BRepSweep_Revol {
 /***********************
 * class BRepSweep_Tool *
 ***********************/
-%nodefaultctor BRepSweep_Tool;
 class BRepSweep_Tool {
 	public:
 		/****************** BRepSweep_Tool ******************/
@@ -1078,7 +1073,6 @@ class BRepSweep_Trsf : public BRepSweep_NumLinearRegularSweep {
 /***************************
 * class BRepSweep_Rotation *
 ***************************/
-%nodefaultctor BRepSweep_Rotation;
 class BRepSweep_Rotation : public BRepSweep_Trsf {
 	public:
 		/****************** Angle ******************/
@@ -1349,7 +1343,6 @@ class BRepSweep_Rotation : public BRepSweep_Trsf {
 /******************************
 * class BRepSweep_Translation *
 ******************************/
-%nodefaultctor BRepSweep_Translation;
 class BRepSweep_Translation : public BRepSweep_Trsf {
 	public:
 		/****************** BRepSweep_Translation ******************/

@@ -223,7 +223,6 @@ class BRepGProp {
 /*************************
 * class BRepGProp_Cinert *
 *************************/
-%nodefaultctor BRepGProp_Cinert;
 class BRepGProp_Cinert : public GProp_GProps {
 	public:
 		/****************** BRepGProp_Cinert ******************/
@@ -266,7 +265,6 @@ class BRepGProp_Cinert : public GProp_GProps {
 /*************************
 * class BRepGProp_Domain *
 *************************/
-%nodefaultctor BRepGProp_Domain;
 class BRepGProp_Domain {
 	public:
 		/****************** BRepGProp_Domain ******************/
@@ -411,7 +409,6 @@ class BRepGProp_EdgeTool {
 /***********************
 * class BRepGProp_Face *
 ***********************/
-%nodefaultctor BRepGProp_Face;
 class BRepGProp_Face {
 	public:
 		/****************** BRepGProp_Face ******************/
@@ -632,7 +629,6 @@ class BRepGProp_Face {
 /************************
 * class BRepGProp_Gauss *
 ************************/
-%nodefaultctor BRepGProp_Gauss;
 class BRepGProp_Gauss {
 	public:
 		class Inertia {};
@@ -664,7 +660,6 @@ enum BRepGProp_GaussType {
 /*****************************
 * class BRepGProp_MeshCinert *
 *****************************/
-%nodefaultctor BRepGProp_MeshCinert;
 class BRepGProp_MeshCinert : public GProp_GProps {
 	public:
 		/****************** BRepGProp_MeshCinert ******************/
@@ -712,7 +707,6 @@ class BRepGProp_MeshCinert : public GProp_GProps {
 /*************************
 * class BRepGProp_Sinert *
 *************************/
-%nodefaultctor BRepGProp_Sinert;
 class BRepGProp_Sinert : public GProp_GProps {
 	public:
 		/****************** BRepGProp_Sinert ******************/
@@ -826,7 +820,6 @@ class BRepGProp_Sinert : public GProp_GProps {
 /****************************
 * class BRepGProp_TFunction *
 ****************************/
-%nodefaultctor BRepGProp_TFunction;
 class BRepGProp_TFunction : public math_Function {
 	public:
 		/****************** AbsolutError ******************/
@@ -916,7 +909,6 @@ class BRepGProp_TFunction : public math_Function {
 /****************************
 * class BRepGProp_UFunction *
 ****************************/
-%nodefaultctor BRepGProp_UFunction;
 class BRepGProp_UFunction : public math_Function {
 	public:
 		/****************** BRepGProp_UFunction ******************/
@@ -971,7 +963,6 @@ class BRepGProp_UFunction : public math_Function {
 /*************************
 * class BRepGProp_Vinert *
 *************************/
-%nodefaultctor BRepGProp_Vinert;
 class BRepGProp_Vinert : public GProp_GProps {
 	public:
 		/****************** BRepGProp_Vinert ******************/
@@ -1288,7 +1279,6 @@ class BRepGProp_Vinert : public GProp_GProps {
 /***************************
 * class BRepGProp_VinertGK *
 ***************************/
-%nodefaultctor BRepGProp_VinertGK;
 class BRepGProp_VinertGK : public GProp_GProps {
 	public:
 		/****************** BRepGProp_VinertGK ******************/

@@ -213,7 +213,6 @@ class TObj_Application : public TDocStd_Application {
 /***********************
 * class TObj_Assistant *
 ***********************/
-%nodefaultctor TObj_Assistant;
 class TObj_Assistant {
 	public:
 		/****************** BindModel ******************/
@@ -306,7 +305,6 @@ class TObj_Assistant {
 /************************
 * class TObj_CheckModel *
 ************************/
-%nodefaultctor TObj_CheckModel;
 class TObj_CheckModel : public Message_Algorithm {
 	public:
 		/****************** GetModel ******************/
@@ -1051,7 +1049,6 @@ enum ObjectState {
 /****************************
 * class TObj_ObjectIterator *
 ****************************/
-%nodefaultctor TObj_ObjectIterator;
 class TObj_ObjectIterator : public Standard_Transient {
 	public:
 		/****************** More ******************/
@@ -1120,7 +1117,6 @@ class TObj_Persistence {
 /*****************************
 * class TObj_TIntSparseArray *
 *****************************/
-%nodefaultctor TObj_TIntSparseArray;
 class TObj_TIntSparseArray : public TDF_Attribute {
 	public:
 typedef TObj_TIntSparseArray_VecOfData::ConstIterator Iterator;
@@ -1283,7 +1279,6 @@ typedef TObj_TIntSparseArray_VecOfData::ConstIterator Iterator;
 /********************
 * class TObj_TModel *
 ********************/
-%nodefaultctor TObj_TModel;
 class TObj_TModel : public TDF_Attribute {
 	public:
 		/****************** GetID ******************/
@@ -1356,7 +1351,6 @@ class TObj_TModel : public TDF_Attribute {
 /****************************
 * class TObj_TNameContainer *
 ****************************/
-%nodefaultctor TObj_TNameContainer;
 class TObj_TNameContainer : public TDF_Attribute {
 	public:
 		/****************** Clear ******************/
@@ -1469,7 +1463,6 @@ class TObj_TNameContainer : public TDF_Attribute {
 /*********************
 * class TObj_TObject *
 *********************/
-%nodefaultctor TObj_TObject;
 class TObj_TObject : public TDF_Attribute {
 	public:
 		/****************** AfterUndo ******************/
@@ -1568,7 +1561,6 @@ class TObj_TObject : public TDF_Attribute {
 /************************
 * class TObj_TReference *
 ************************/
-%nodefaultctor TObj_TReference;
 class TObj_TReference : public TDF_Attribute {
 	public:
 		/****************** AfterResume ******************/
@@ -1717,7 +1709,6 @@ class TObj_TReference : public TDF_Attribute {
 /******************
 * class TObj_TXYZ *
 ******************/
-%nodefaultctor TObj_TXYZ;
 class TObj_TXYZ : public TDF_Attribute {
 	public:
 
@@ -1849,7 +1840,6 @@ class TObj_LabelIterator : public TObj_ObjectIterator {
 /***************************
 * class TObj_ModelIterator *
 ***************************/
-%nodefaultctor TObj_ModelIterator;
 class TObj_ModelIterator : public TObj_ObjectIterator {
 	public:
 		/****************** More ******************/
@@ -1987,7 +1977,6 @@ class TObj_Partition : public TObj_Object {
 /******************************
 * class TObj_SequenceIterator *
 ******************************/
-%nodefaultctor TObj_SequenceIterator;
 class TObj_SequenceIterator : public TObj_ObjectIterator {
 	public:
 		/****************** More ******************/
@@ -2032,7 +2021,6 @@ class TObj_SequenceIterator : public TObj_ObjectIterator {
 /*****************************
 * class TObj_HiddenPartition *
 *****************************/
-%nodefaultctor TObj_HiddenPartition;
 class TObj_HiddenPartition : public TObj_Partition {
 	public:
 		/****************** GetTypeFlags ******************/
@@ -2063,7 +2051,6 @@ class TObj_HiddenPartition : public TObj_Partition {
 /********************************
 * class TObj_OcafObjectIterator *
 ********************************/
-%nodefaultctor TObj_OcafObjectIterator;
 class TObj_OcafObjectIterator : public TObj_LabelIterator {
 	public:
 		/****************** TObj_OcafObjectIterator ******************/
@@ -2092,7 +2079,6 @@ class TObj_OcafObjectIterator : public TObj_LabelIterator {
 /*******************************
 * class TObj_ReferenceIterator *
 *******************************/
-%nodefaultctor TObj_ReferenceIterator;
 class TObj_ReferenceIterator : public TObj_LabelIterator {
 	public:
 		/****************** TObj_ReferenceIterator ******************/

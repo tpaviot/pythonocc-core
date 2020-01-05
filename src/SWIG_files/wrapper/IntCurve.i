@@ -74,7 +74,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intcurve.html"
 /****************************
 * class IntCurve_IConicTool *
 ****************************/
-%nodefaultctor IntCurve_IConicTool;
 class IntCurve_IConicTool {
 	public:
 		/****************** D1 ******************/
@@ -191,7 +190,6 @@ class IntCurve_IConicTool {
 /*******************************
 * class IntCurve_IntConicConic *
 *******************************/
-%nodefaultctor IntCurve_IntConicConic;
 class IntCurve_IntConicConic : public IntRes2d_Intersection {
 	public:
 		/****************** IntCurve_IntConicConic ******************/
@@ -752,7 +750,6 @@ class IntCurve_IntConicConic : public IntRes2d_Intersection {
 /*************************************
 * class IntCurve_IntImpConicParConic *
 *************************************/
-%nodefaultctor IntCurve_IntImpConicParConic;
 class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 	public:
 		/****************** And_Domaine_Objet1_Intersections ******************/
@@ -868,7 +865,6 @@ class IntCurve_IntImpConicParConic : public IntRes2d_Intersection {
 /***************************************************
 * class IntCurve_MyImpParToolOfIntImpConicParConic *
 ***************************************************/
-%nodefaultctor IntCurve_MyImpParToolOfIntImpConicParConic;
 class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDerivative {
 	public:
 		/****************** Derivative ******************/
@@ -925,7 +921,6 @@ class IntCurve_MyImpParToolOfIntImpConicParConic : public math_FunctionWithDeriv
 /************************
 * class IntCurve_PConic *
 ************************/
-%nodefaultctor IntCurve_PConic;
 class IntCurve_PConic {
 	public:
 		/****************** Accuracy ******************/

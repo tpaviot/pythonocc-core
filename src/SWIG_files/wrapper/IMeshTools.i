@@ -87,7 +87,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_imeshtools.html"
 /***************************
 * class IMeshTools_Context *
 ***************************/
-%nodefaultctor IMeshTools_Context;
 class IMeshTools_Context : public IMeshData_Shape {
 	public:
 		/****************** BuildModel ******************/
@@ -343,7 +342,6 @@ class IMeshTools_MeshAlgoFactory : public Standard_Transient {
 /*******************************
 * class IMeshTools_MeshBuilder *
 *******************************/
-%nodefaultctor IMeshTools_MeshBuilder;
 class IMeshTools_MeshBuilder : public Message_Algorithm {
 	public:
 		/****************** GetContext ******************/
@@ -444,7 +442,6 @@ class IMeshTools_ModelBuilder : public Message_Algorithm {
 /******************************
 * class IMeshTools_Parameters *
 ******************************/
-%nodefaultctor IMeshTools_Parameters;
 class IMeshTools_Parameters {
 	public:
 		float Angle;
@@ -482,7 +479,6 @@ class IMeshTools_Parameters {
 /*********************************
 * class IMeshTools_ShapeExplorer *
 *********************************/
-%nodefaultctor IMeshTools_ShapeExplorer;
 class IMeshTools_ShapeExplorer : public IMeshData_Shape {
 	public:
 		/****************** Accept ******************/

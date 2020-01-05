@@ -241,7 +241,6 @@ class BRepMeshData_Face : public IMeshData_Face {
 /***************************
 * class BRepMeshData_Model *
 ***************************/
-%nodefaultctor BRepMeshData_Model;
 class BRepMeshData_Model : public IMeshData_Model {
 	public:
 		/****************** AddEdge ******************/

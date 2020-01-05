@@ -71,7 +71,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstl.html"
 * class RWStl *
 **************/
 %rename(rwstl) RWStl;
-%nodefaultctor RWStl;
 class RWStl {
 	public:
 		/****************** ReadAscii ******************/

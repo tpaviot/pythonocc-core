@@ -175,7 +175,6 @@ typedef NCollection_Array1 <opencascade::handle <Adaptor3d_HSurface>> Approx_Arr
 /***********************
 * class Approx_Curve2d *
 ***********************/
-%nodefaultctor Approx_Curve2d;
 class Approx_Curve2d {
 	public:
 		/****************** Approx_Curve2d ******************/
@@ -236,7 +235,6 @@ class Approx_Curve2d {
 /***********************
 * class Approx_Curve3d *
 ***********************/
-%nodefaultctor Approx_Curve3d;
 class Approx_Curve3d {
 	public:
 		/****************** Approx_Curve3d ******************/
@@ -298,7 +296,6 @@ class Approx_Curve3d {
 /******************************
 * class Approx_CurveOnSurface *
 ******************************/
-%nodefaultctor Approx_CurveOnSurface;
 class Approx_CurveOnSurface {
 	public:
 		/****************** Approx_CurveOnSurface ******************/
@@ -374,7 +371,6 @@ class Approx_CurveOnSurface {
 /************************************
 * class Approx_CurvilinearParameter *
 ************************************/
-%nodefaultctor Approx_CurvilinearParameter;
 class Approx_CurvilinearParameter {
 	public:
 		/****************** Approx_CurvilinearParameter ******************/
@@ -499,7 +495,6 @@ class Approx_CurvilinearParameter {
 /***************************
 * class Approx_CurvlinFunc *
 ***************************/
-%nodefaultctor Approx_CurvlinFunc;
 class Approx_CurvlinFunc : public Standard_Transient {
 	public:
 		/****************** Approx_CurvlinFunc ******************/
@@ -678,7 +673,6 @@ class Approx_CurvlinFunc : public Standard_Transient {
 /****************************
 * class Approx_FitAndDivide *
 ****************************/
-%nodefaultctor Approx_FitAndDivide;
 class Approx_FitAndDivide {
 	public:
 		/****************** Approx_FitAndDivide ******************/
@@ -838,7 +832,6 @@ class Approx_FitAndDivide {
 /******************************
 * class Approx_FitAndDivide2d *
 ******************************/
-%nodefaultctor Approx_FitAndDivide2d;
 class Approx_FitAndDivide2d {
 	public:
 		/****************** Approx_FitAndDivide2d ******************/
@@ -998,7 +991,6 @@ class Approx_FitAndDivide2d {
 /*********************************
 * class Approx_MCurvesToBSpCurve *
 *********************************/
-%nodefaultctor Approx_MCurvesToBSpCurve;
 class Approx_MCurvesToBSpCurve {
 	public:
 		/****************** Append ******************/
@@ -1054,7 +1046,6 @@ class Approx_MCurvesToBSpCurve {
 /*****************************
 * class Approx_SameParameter *
 *****************************/
-%nodefaultctor Approx_SameParameter;
 class Approx_SameParameter {
 	public:
 		/****************** Approx_SameParameter ******************/
@@ -1132,7 +1123,6 @@ class Approx_SameParameter {
 /**********************************
 * class Approx_SweepApproximation *
 **********************************/
-%nodefaultctor Approx_SweepApproximation;
 class Approx_SweepApproximation {
 	public:
 		/****************** Approx_SweepApproximation ******************/

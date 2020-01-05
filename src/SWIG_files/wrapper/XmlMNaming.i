@@ -107,7 +107,6 @@ class XmlMNaming {
 /************************************
 * class XmlMNaming_NamedShapeDriver *
 ************************************/
-%nodefaultctor XmlMNaming_NamedShapeDriver;
 class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 	public:
 		/****************** Clear ******************/
@@ -186,7 +185,6 @@ class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 /********************************
 * class XmlMNaming_NamingDriver *
 ********************************/
-%nodefaultctor XmlMNaming_NamingDriver;
 class XmlMNaming_NamingDriver : public XmlMDF_ADriver {
 	public:
 		/****************** NewEmpty ******************/
@@ -237,7 +235,6 @@ class XmlMNaming_NamingDriver : public XmlMDF_ADriver {
 /**************************
 * class XmlMNaming_Shape1 *
 **************************/
-%nodefaultctor XmlMNaming_Shape1;
 class XmlMNaming_Shape1 {
 	public:
 		/****************** Element ******************/
