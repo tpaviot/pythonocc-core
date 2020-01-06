@@ -519,7 +519,7 @@ class JupyterRenderer(object):
             'position': BufferAttribute(np_edge_vertices),
             'index'   : BufferAttribute(np_edge_indices)
         })
-        edge_material = LineBasicMaterial(color=color, linewidth=2, fog=True)
+        edge_material = LineBasicMaterial(color=color, linewidth=1)
         edge_lines = LineSegments(geometry=edge_geometry, material=edge_material)
 
         # Add geometries to pickable or non pickable objects
