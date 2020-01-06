@@ -27,7 +27,7 @@ try:
     from pythreejs import (CombinedCamera, BufferAttribute, BufferGeometry, Mesh,
                            LineSegmentsGeometry, LineMaterial, LineSegments2, AmbientLight,
                            DirectionalLight, Scene, OrbitControls, Renderer, PerspectiveCamera,
-                           Picker, Group, GridHelper, LineSegments,
+                           Picker, Group, GridHelper, LineSegments, Line,
                            ShaderMaterial, ShaderLib, MeshPhongMaterial, LineBasicMaterial)
     from IPython.display import display
     from ipywidgets import HTML, HBox
@@ -520,7 +520,7 @@ class JupyterRenderer(object):
             'index'   : BufferAttribute(np_edge_indices)
         })
         edge_material = LineBasicMaterial(color=color, linewidth=1)
-        edge_lines = LineSegments(geometry=edge_geometry, material=edge_material)
+        edge_lines = Line(geometry=edge_geometry, material=edge_material)
 
         # Add geometries to pickable or non pickable objects
         self._displayed_pickable_objects.add(edge_lines)
