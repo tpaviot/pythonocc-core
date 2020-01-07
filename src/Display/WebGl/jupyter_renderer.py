@@ -1,4 +1,4 @@
-##Copyright 20117-2018 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -19,6 +19,7 @@ import enum
 from functools import reduce
 import itertools
 import math
+import os
 import uuid
 import sys
 
@@ -28,9 +29,10 @@ try:
                            LineSegmentsGeometry, LineMaterial, LineSegments2, AmbientLight,
                            DirectionalLight, Scene, OrbitControls, Renderer, PerspectiveCamera,
                            Picker, Group, GridHelper, LineSegments, Line,
-                           ShaderMaterial, ShaderLib, MeshPhongMaterial, LineBasicMaterial)
-    from IPython.display import display
-    from ipywidgets import HTML, HBox
+                           ShaderMaterial, ShaderLib, MeshPhongMaterial, LineBasicMaterial,
+                           PointsMaterial, Points, make_text)
+    from IPython.display import display, SVG
+    from ipywidgets import HTML, HBox, VBox, Checkbox, Button, Layout, Dropdown, embed
     import numpy as np
 except ImportError:
     error_log = """ Error You must install pythreejs/ipywidgets/numpy to run the jupyter notebook renderer.
@@ -39,35 +41,102 @@ $ conda install -c conda-forge pythreejs"""
     print(error_log)
     sys.exit(0)
 
+
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
 from OCC.Core.BRepBndLib import brepbndlib_Add
+from OCC.Core.gp import gp_Pnt, gp_Dir
+from OCC.Core.TopoDS import TopoDS_Compound
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
+from OCC.Core.BRep import BRep_Builder
 from OCC.Core.Visualization import Tesselator
 
-from OCC.Extend.TopologyUtils import (TopologyExplorer, is_edge, is_wire, discretize_edge,
+from OCC.Extend.TopologyUtils import (TopologyExplorer, is_edge, is_wire, is_face, discretize_edge,
                                       discretize_wire, get_type_as_string)
+from OCC.Extend.ShapeFactory import (get_oriented_boundingbox,
+                                     get_aligned_boundingbox,
+                                     measure_shape_mass_center_of_gravity,
+                                     recognize_face)
+from OCC.Extend.DataExchange import export_shape_to_svg
 
-try:
-    from OCC.Core.SMESH import SMESH_Mesh
-    HAVE_SMESH = True
-except ImportError:
-    HAVE_SMESH = False
+#
+# Util mathematical functions
+#
+def _add(vec1, vec2):
+    return list(v1 + v2 for v1, v2 in zip(vec1, vec2))
 
-# default values
+
+def _explode(edge_list):
+    return [[edge_list[i], edge_list[i + 1]] for i in range(len(edge_list) - 1)]
+
+
+def _flatten(nested_dict):
+    return [y for x in nested_dict for y in x]
+
 
 def format_color(r, g, b):
     return '#%02x%02x%02x' % (r, g, b)
 
-default_shape_color = format_color(166, 166, 166)
-default_mesh_color = 'white'
-default_edge_color = format_color(0, 0, 0)
 
-def distance(v1, v2):
+def _distance(v1, v2):
     return np.linalg.norm([x - y for x, y in zip(v1, v2)])
 
 
-class Helpers(object):
+def _bool_or_new(val):
+    return val if isinstance(val, bool) else val["new"]
 
+
+def _opt(b1, b2):
+    return (min(b1[0], b2[0]), max(b1[1], b2[1]), min(b1[2], b2[2]),
+            max(b1[3], b2[3]), min(b1[4], b2[4]), max(b1[5], b2[5]))
+
+
+def _shift(v, offset):
+    return [x + o for x, o in zip(v, offset)]
+
+
+# https://stackoverflow.com/questions/4947682/intelligently-calculating-chart-tick-positions
+def _nice_number(value, round_=False):
+    exponent = math.floor(math.log(value, 10))
+    fraction = value / 10**exponent
+
+    if round_:
+        if fraction < 1.5:
+            nice_fraction = 1.
+        elif fraction < 3.:
+            nice_fraction = 2.
+        elif fraction < 7.:
+            nice_fraction = 5.
+        else:
+            nice_fraction = 10.
+    else:
+        if fraction <= 1:
+            nice_fraction = 1.
+        elif fraction <= 2:
+            nice_fraction = 2.
+        elif fraction <= 5:
+            nice_fraction = 5.
+        else:
+            nice_fraction = 10.
+
+    return nice_fraction * 10**exponent
+
+def _nice_bounds(axis_start, axis_end, num_ticks=10):
+    axis_width = axis_end - axis_start
+    if axis_width == 0:
+        nice_tick = 0
+    else:
+        nice_range = _nice_number(axis_width)
+        nice_tick = _nice_number(nice_range / (num_ticks - 1), round_=True)
+        axis_start = math.floor(axis_start / nice_tick) * nice_tick
+        axis_end = math.ceil(axis_end / nice_tick) * nice_tick
+
+    return axis_start, axis_end, nice_tick
+
+#
+# Helpers
+#
+class Helpers:
     def __init__(self, bb_center):
         self.bb_center = bb_center
         self.center = (0, 0, 0)
@@ -84,56 +153,18 @@ class Helpers(object):
     def set_center(self, change):
         self.set_position(self._center(change))
 
-
+#
+# Grid helper
+#
 class Grid(Helpers):
-
     def __init__(self, bb_center=None, maximum=5, ticks=10, colorCenterLine='#aaa', colorGrid='#ddd'):
         super().__init__(bb_center)
-        self.maximum = maximum
-        axis_start, axis_end, nice_tick = self.nice_bounds(-maximum, maximum, 2 * ticks)
+        axis_start, axis_end, nice_tick = _nice_bounds(-maximum, maximum, 2 * ticks)
         self.step = nice_tick
         self.size = axis_end - axis_start
-        self.grid = GridHelper(
-            self.size, int(self.size / self.step), colorCenterLine=colorCenterLine, colorGrid=colorGrid)
+        self.grid = GridHelper(self.size, int(self.size / self.step),
+                               colorCenterLine=colorCenterLine, colorGrid=colorGrid)
         self.set_center(True)
-
-    # https://stackoverflow.com/questions/4947682/intelligently-calculating-chart-tick-positions
-    def _nice_number(self, value, round_=False):
-        exponent = math.floor(math.log(value, 10))
-        fraction = value / 10**exponent
-
-        if round_:
-            if fraction < 1.5:
-                nice_fraction = 1.
-            elif fraction < 3.:
-                nice_fraction = 2.
-            elif fraction < 7.:
-                nice_fraction = 5.
-            else:
-                nice_fraction = 10.
-        else:
-            if fraction <= 1:
-                nice_fraction = 1.
-            elif fraction <= 2:
-                nice_fraction = 2.
-            elif fraction <= 5:
-                nice_fraction = 5.
-            else:
-                nice_fraction = 10.
-
-        return nice_fraction * 10**exponent
-
-    def nice_bounds(self, axis_start, axis_end, num_ticks=10):
-        axis_width = axis_end - axis_start
-        if axis_width == 0:
-            nice_tick = 0
-        else:
-            nice_range = self._nice_number(axis_width)
-            nice_tick = self._nice_number(nice_range / (num_ticks - 1), round_=True)
-            axis_start = math.floor(axis_start / nice_tick) * nice_tick
-            axis_end = math.ceil(axis_end / nice_tick) * nice_tick
-
-        return axis_start, axis_end, nice_tick
 
     def set_position(self, position):
         self.grid.position = position
@@ -145,24 +176,33 @@ class Grid(Helpers):
         self.grid.rotation = rotation
 
 
+#
+# Axes helper
+#
 class Axes(Helpers):
     """ X, Y and Z axis
     X is red
     Y is green
     Z is blue
     """
-    def __init__(self, bb_center, length=1, width=3):
+    def __init__(self, bb_center, length=1, width=3, display_labels=False):
         super().__init__(bb_center)
 
         self.axes = []
         for vector, color in zip(([length, 0, 0], [0, length, 0], [0, 0, length]), ('red', 'green', 'blue')):
-            self.axes.append(
-                LineSegments2(
-                    LineSegmentsGeometry(positions=[[self.center, self._shift(self.center, vector)]]),
-                    LineMaterial(linewidth=width, color=color)))
+            self.axes.append(LineSegments2(LineSegmentsGeometry(positions=[[self.center,
+                                                                            _shift(self.center, vector)]]),
+                                           LineMaterial(linewidth=width, color=color)))
 
-    def _shift(self, v, offset):
-        return [x + o for x, o in zip(v, offset)]
+        if display_labels:
+            # add x, y and z labels
+            x_text = make_text("X", [length, 0, 0])
+            y_text = make_text("Y", [0, length, 0])
+            z_text = make_text("Z", [0, 0, length])
+
+            self.axes.append(x_text)
+            self.axes.append(y_text)
+            self.axes.append(z_text)
 
     def set_position(self, position):
         for i in range(3):
@@ -172,9 +212,10 @@ class Axes(Helpers):
         for i in range(3):
             self.axes[i].visible = change
 
-
+#
+# Custom Material helper
+#
 class CustomMaterial(ShaderMaterial):
-
     def __init__(self, typ):
         self.types = {'diffuse': 'c', 'uvTransform': 'm3', 'normalScale': 'v2', 'fogColor': 'c', 'emissive': 'c'}
 
@@ -224,26 +265,30 @@ class CustomMaterial(ShaderMaterial):
         self.uniforms = uniforms
         self.needsUpdate = True
 
-
-class BoundingBox(object):
+#
+# Bounding Box
+#
+class BoundingBox:
     def __init__(self, objects, tol=1e-5):
         self.tol = tol
-        
-        bbox = reduce(self._opt, [self.bbox(obj) for obj in objects])
+
+        bbox = reduce(_opt, [self._bbox(obj) for obj in objects])
         self.xmin, self.xmax, self.ymin, self.ymax, self.zmin, self.zmax = bbox
         self.xsize = self.xmax - self.xmin
         self.ysize = self.ymax - self.ymin
         self.zsize = self.zmax - self.zmin
         self.center = (self.xmin + self.xsize / 2.0, self.ymin + self.ysize / 2.0, self.zmin + self.zsize / 2.0)
         self.max = reduce(lambda a, b: max(abs(a), abs(b)), bbox)
-        self.diagonal = max([
-            distance(self.center, v)
-            for v in itertools.product((self.xmin, self.xmax), (self.ymin, self.ymax), (self.zmin, self.zmax))
-        ])
 
-    def _opt(self, b1, b2):
-        return (min(b1[0], b2[0]), max(b1[1], b2[1]), min(b1[2], b2[2]), max(b1[3], b2[3]), min(b1[4], b2[4]),
-                max(b1[5], b2[5]))
+    def _max_dist_from_center(self):
+        return max([_distance(self.center, v)
+                    for v in itertools.product((self.xmin, self.xmax), (self.ymin, self.ymax), (self.zmin, self.zmax))
+                   ])
+
+    def _max_dist_from_origin(self):
+        return max([np.linalg.norm(v)
+                    for v in itertools.product((self.xmin, self.xmax), (self.ymin, self.ymax), (self.zmin, self.zmax))
+                   ])
 
     def _bounding_box(self, obj, tol=1e-5):
         bbox = Bnd_Box()
@@ -252,8 +297,8 @@ class BoundingBox(object):
         values = bbox.Get()
         return (values[0], values[3], values[1], values[4], values[2], values[5])
 
-    def bbox(self, objects):
-        bb = reduce(self._opt, [self._bounding_box(obj) for obj in objects])
+    def _bbox(self, objects):
+        bb = reduce(_opt, [self._bounding_box(obj) for obj in objects])
         return bb
 
     def __repr__(self):
@@ -266,11 +311,15 @@ class NORMAL(enum.Enum):
     CLIENT_SIDE = 2
 
 
-class JupyterRenderer(object):
+class JupyterRenderer:
     def __init__(self,
                  size=(640, 480),
                  compute_normals_mode=NORMAL.SERVER_SIDE,
-                 parallel=False):
+                 default_shape_color=format_color(166, 166, 166), # light grey
+                 default_edge_color=format_color(32, 32, 32), # dark grey
+                 default_vertex_color=format_color(8, 8, 8), # darker grey
+                 pick_color=format_color(232, 176, 36), # orange
+                 background_color='white'):
         """ Creates a jupyter renderer.
         size: a tuple (width, height). Must be a square, or shapes will look like deformed
         compute_normals_mode: optional, set to SERVER_SIDE by default. This flag lets you choose the
@@ -283,15 +332,20 @@ class JupyterRenderer(object):
           choose this option (mobile terminals for instance)
         * CLIENT_SIDE: lower server load, loading time decreased, higher client load. Higher performance clients will
                             choose this option (laptops, desktop machines).
-        * parallel: optional, False by default. If set to True, meshing runs in parallelized mode.
+        * default_shape_color
+        * default_e1dge_color:
+        * default_pick_color:
+        * background_color:
         """
-        self._background = 'white'
+        self._default_shape_color = default_shape_color
+        self._default_edge_color = default_edge_color
+        self._default_vertex_color = default_vertex_color
+        self._pick_color = pick_color
+
+        self._background = background_color
         self._background_opacity = 1
         self._size = size
         self._compute_normals_mode = compute_normals_mode
-        self._parallel = parallel
-
-        self.html = HTML("Selected shape : None")
 
         self._bb = None  # the bounding box, necessary to compute camera position
 
@@ -299,6 +353,8 @@ class JupyterRenderer(object):
         self._camera_target = [0., 0., 0.]  # the point to look at
         self._camera_position = [0, 0., 100.]  # the camera initial position
         self._camera = None
+        self._camera_distance_factor = 6
+        self._camera_initial_zoom = 2.5
 
         # a dictionnary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
@@ -314,30 +370,142 @@ class JupyterRenderer(object):
         self._displayed_non_pickable_objects = Group()
 
         # event manager/selection manager
-        self._picker = Picker(controlling=self._displayed_pickable_objects, event='mousedown')
+        self._picker = None
 
         self._current_shape_selection = None
         self._current_mesh_selection = None
+        self._savestate = None
+
         self._selection_color = format_color(232, 176, 36)
 
         self._select_callbacks = []  # a list of all functions called after an object is selected
 
+        # UI
+        self.layout = Layout(width='auto', height='auto')
+        self._toggle_shp_visibility_button = self.create_button("Hide/Show", "Toggle Shape Visibility",
+                                                                True, self.toggle_shape_visibility)
+        self._shp_properties_button = Dropdown(options=['Compute', 'Inertia', 'Recognize Face', 'Aligned BBox', 'Oriented BBox'],
+                                               value='Compute',
+                                               description='',
+                                               layout=self.layout,
+                                               disabled=True)
+        self._shp_properties_button.observe(self.on_compute_change)
+        self._remove_shp_button = self.create_button("Remove", "Permanently remove the shape from the Scene",
+                                                     True, self.remove_shape)
+        self._controls = [self.create_checkbox("axes", "Axes", True, self.toggle_axes_visibility),
+                          self.create_checkbox("grid", "Grid", True, self.toggle_grid_visibility),
+                          self.create_button("Reset View", "Restore default view", False, self._reset),
+                          self._shp_properties_button,
+                          self._toggle_shp_visibility_button,
+                          self._remove_shp_button]
+        self.html = HTML("")
 
-        def click(value):
-            """ called whenever a shape  or edge is clicked
-            """
-            obj = value.owner.object
+    def create_button(self, description, tooltip, disabled, handler):
+        button = Button(disabled=disabled, tooltip=tooltip,
+                        description=description, layout=self.layout)
+        button.on_click(handler)
+        return button
+
+    def create_checkbox(self, kind, description, value, handler):
+        checkbox = Checkbox(value=value, description=description, layout=self.layout)
+        checkbox.observe(handler, "value")
+        checkbox.add_class("view_%s" % kind)
+        return checkbox
+
+    def remove_shape(self, *kargs):
+        self.clicked_obj.visible = not self.clicked_obj.visible
+        # remove shape fro mthe mapping dict
+        cur_id = self.clicked_obj.name
+        del self._shapes[cur_id]
+        self._remove_shp_button.disabled = True
+
+    def on_compute_change(self, change):
+        if change['type'] == 'change' and change['name'] == 'value':
+            selection = change['new']
+            output = ""
+            if 'Inertia' in selection:
+                cog, mass, mass_property = measure_shape_mass_center_of_gravity(self._current_shape_selection)
+                # display this point (type gp_Pnt)
+                self.DisplayShape([cog])
+                output += "<u><b>Center of Gravity</b></u>:<br><b>Xcog=</b>%.3f<br><b>Ycog=</b>%.3f<br><b>Zcog=</b>%.3f<br>" % (cog.X(), cog.Y(), cog.Z())
+                output += "<u><b>%s=</b></u>:<b>%.3f</b><br>" % (mass_property, mass)
+            elif 'Oriented' in selection:
+                center, dim, oobb_shp = get_oriented_boundingbox(self._current_shape_selection)
+                self.DisplayShape(oobb_shp,
+                                  render_edges=True,
+                                  transparency=True,
+                                  opacity=0.2,
+                                  selectable=False)
+                output += "<u><b>OOBB center</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>" % (center.X(), center.Y(), center.Z())
+                output += "<u><b>OOBB dimensions</b></u>:<br><b>dX=</b>%.3f<br><b>dY=</b>%.3f<br><b>dZ=</b>%.3f<br>" % (dim[0], dim[1], dim[2])
+                output += "<u><b>OOBB volume</b></u>:<br><b>V=</b>%.3f<br>" % (dim[0] * dim[1] * dim[2])
+            elif 'Aligned' in selection:
+                center, dim, albb_shp = get_aligned_boundingbox(self._current_shape_selection)
+                self.DisplayShape(albb_shp,
+                                  render_edges=True,
+                                  transparency=True,
+                                  opacity=0.2,
+                                  selectable=False)
+                output += "<u><b>ABB center</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>" % (center.X(), center.Y(), center.Z())
+                output += "<u><b>ABB dimensions</b></u>:<br><b>dX=</b>%.3f<br><b>dY=</b>%.3f<br><b>dZ=</b>%.3f<br>" % (dim[0], dim[1], dim[2])
+                output += "<u><b>ABB volume</b></u>:<br><b>V=</b>%.3f<br>" % (dim[0] * dim[1] * dim[2])
+            elif 'Recognize' in selection:
+                # try featrue recognition
+                kind, pnt, vec = recognize_face(self._current_shape_selection)
+                output += "<u><b>Type</b></u>: %s<br>" % kind
+                if kind == "Plane":
+                    self.DisplayShape([pnt])
+                    output += "<u><b>Properties</b></u>:<br>"
+                    output += "<u><b>Point</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>" % (pnt.X(), pnt.Y(), pnt.Z())
+                    output += "<u><b>Normal</b></u>:<br><b>u=</b>%.3f<br><b>v=</b>%.3f<br><b>w=</b>%.3f<br>" % (vec.X(), vec.Y(), vec.Z())
+                elif kind == "Cylinder":
+                    self.DisplayShape([pnt])
+                    output += "<u><b>Properties</b></u>:<br>"
+                    output += "<u><b>Axis point</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>" % (pnt.X(), pnt.Y(), pnt.Z())
+                    output += "<u><b>Axis direction</b></u>:<br><b>u=</b>%.3f<br><b>v=</b>%.3f<br><b>w=</b>%.3f<br>" % (vec.X(), vec.Y(), vec.Z())
+            self.html.value = output
+
+    def toggle_shape_visibility(self, *kargs):
+        self.clicked_obj.visible = not self.clicked_obj.visible
+
+    def toggle_axes_visibility(self, change):
+        self.axes.set_visibility(_bool_or_new(change))
+
+    def toggle_grid_visibility(self, change):
+        self.horizontal_grid.set_visibility(_bool_or_new(change))
+        self.vertical_grid.set_visibility(_bool_or_new(change))
+
+    def click(self, value):
+        """ called whenever a shape  or edge is clicked
+        """
+        obj = value.owner.object
+        self.clicked_obj = obj
+        if self._current_mesh_selection != obj:
             if self._current_mesh_selection is not None:
                 self._current_mesh_selection.material.color = self._current_selection_material_color
+                self._current_mesh_selection.material.transparent = False
+                self._current_mesh_selection = None
+                self._current_selection_material_color = None
+                self._shp_properties_button.value = "Compute"
+                self._shp_properties_button.disabled = True
+                self._toggle_shp_visibility_button.disabled = True
+                self._remove_shp_button.disabled = True
+                self._current_shape_selection = None
             if obj is not None:
+                self._shp_properties_button.disabled = False
+                self._toggle_shp_visibility_button.disabled = False
+                self._remove_shp_button.disabled = False
                 id_clicked = obj.name  # the mesh id clicked
                 self._current_mesh_selection = obj
                 self._current_selection_material_color = obj.material.color
                 obj.material.color = self._selection_color
+                # selected part becomes transparent
+                obj.material.transparent = True
+                obj.material.opacity = 0.5
                 # get the shape from this mesh id
                 selected_shape = self._shapes[id_clicked]
                 html_value = "<b>Shape type:</b> %s<br>" % get_type_as_string(selected_shape)
-                html_value += "<b>Shape id:</b> %s<br>" % selected_shape
+                html_value += "<b>Shape id:</b> %s<br>" % id_clicked
                 self.html.value = html_value
                 self._current_shape_selection = selected_shape
             else:
@@ -345,9 +513,6 @@ class JupyterRenderer(object):
             # then execute calbacks
             for callback in self._select_callbacks:
                 callback(self._current_shape_selection)
-
-        self._picker.observe(click)
-
 
     def register_select_callback(self, callback):
         """ Adds a callback that will be called each time a shape is selected
@@ -357,121 +522,46 @@ class JupyterRenderer(object):
         else:
             self._select_callbacks.append(callback)
 
-
     def unregister_callback(self, callback):
         """ Remove a callback from the callback list
         """
-        if not callback in self._select_callbacks:
+        if callback not in self._select_callbacks:
             raise AssertionError("This callback is not registered")
         else:
             self._select_callbacks.remove(callback)
-
 
     def GetSelectedShape(self):
         """ Returns the selected shape
         """
         return self._current_shape_selection
 
-
-    def DisplayMesh(self,
-                    mesh,
-                    color=default_mesh_color):
-        """ Display a MEFISTO2 triangle mesh
-        """
-        if not HAVE_SMESH:
-            print("SMESH not installed, DisplayMesh method unavailable.")
-            return
-        if not isinstance(mesh, SMESH_Mesh):
-            raise AssertionError("You mush provide an SMESH_Mesh instance")
-        mesh_ds = mesh.GetMeshDS()  # the mesh data source
-        face_iter = mesh_ds.facesIterator()
-        # vertices positions are stored to a liste
-        vertices_position = []
-        for _ in range(mesh_ds.NbFaces()-1):
-            face = face_iter.next()
-            #print('Face %i, type %i' % (i, face.GetType()))
-            #print(dir(face))
-            # if face.GetType == 3 : triangle mesh, then 3 nodes
-            for j in range(3):
-                node = face.GetNode(j)
-                #print('Coordinates of node %i:(%f,%f,%f)'%(i, node.X(), node.Y(), node.Z()))
-                vertices_position.append(node.X())
-                vertices_position.append(node.Y())
-                vertices_position.append(node.Z())
-        number_of_vertices = len(vertices_position)
-        # then we build the vertex and faces collections as numpy ndarrays
-        np_vertices = np.array(vertices_position, dtype='float32').reshape(int(number_of_vertices / 3), 3)
-        # Note: np_faces is just [0, 1, 2, 3, 4, 5, ...], thus arange is used
-        np_faces = np.arange(np_vertices.shape[0], dtype='uint32')
-        # set geometry properties
-        buffer_geometry_properties = {'position': BufferAttribute(np_vertices),
-                                      'index'   : BufferAttribute(np_faces)}
-        # build a BufferGeometry instance
-        mesh_geometry = BufferGeometry(attributes=buffer_geometry_properties)
-
-        mesh_geometry.exec_three_obj_method('computeVertexNormals')
-
-        # then a default material
-        mesh_material = MeshPhongMaterial(color=color,
-                                          polygonOffset=True,
-                                          polygonOffsetFactor=1,
-                                          polygonOffsetUnits=1,
-                                          shininess=0.5,
-                                          wireframe=False,
-                                          side='DoubleSide')
-        edges_material = MeshPhongMaterial(color='black',
-                                           polygonOffset=True,
-                                           polygonOffsetFactor=1,
-                                           polygonOffsetUnits=1,
-                                           shininess=0.5,
-                                           wireframe=True)
-        # create a mesh unique id
-        mesh_id = uuid.uuid4().hex
-
-        # finally create the mash
-        shape_mesh = Mesh(geometry=mesh_geometry,
-                          material=mesh_material,
-                          name=mesh_id)
-        edges_mesh = Mesh(geometry=mesh_geometry,
-                          material=edges_material,
-                          name=mesh_id)
-
-
-        # a special display for the mesh
-        camera_target = [0., 0., 0.]  # the point to look at
-        camera_position = [0, 0., 100.]  # the camera initial position
-        camera = PerspectiveCamera(position=camera_position,
-                                   lookAt=camera_target,
-                                   up=[0, 0, 1],
-                                   fov=50,
-                                   children=[DirectionalLight(color='#ffffff',
-                                                              position=[50, 50, 50],
-                                                              intensity=0.9)])
-        scene_shp = Scene(children=[shape_mesh, edges_mesh, camera, AmbientLight(color='#101010')])
-
-        renderer = Renderer(camera=camera,
-                            background=self._background,
-                            background_opacity=self._background_opacity,
-                            scene=scene_shp,
-                            controls=[OrbitControls(controlling=camera, target=camera_target)],
-                            width=self._size[0],
-                            height=self._size[1],
-                            antialias=True)
-
-        display(renderer)
-
+    def DisplayShapeAsSVG(self,
+                          shp,
+                          export_hidden_edges=True,
+                          location=gp_Pnt(0, 0, 0),
+                          direction=gp_Dir(1, 1, 1),
+                          color="black",
+                          line_width=0.5):
+        svg_string = export_shape_to_svg(shp, export_hidden_edges=export_hidden_edges,
+                                         location=location, direction=direction,
+                                         color=color, line_width=line_width,
+                                         margin_left=0, margin_top=0)
+        svg = SVG(data=svg_string)
+        display(svg)
 
     def DisplayShape(self,
-                     shp,  # the TopoDS_Shape to be displayed
-                     shape_color=default_shape_color,  # the default
+                     shp,
+                     shape_color=None,
                      render_edges=False,
-                     edge_color=default_edge_color,
-                     compute_uv_coords=False,
+                     edge_color=None,
+                     edge_deflection=0.05,
+                     vertex_color=None,
                      quality=1.0,
                      transparency=False,
                      opacity=1.,
                      topo_level='default',
-                     update=False):
+                     update=False,
+                     selectable=True):
         """ Displays a topods_shape in the renderer instance.
         shp: the TopoDS_Shape to render
         shape_color: the shape color, in html corm, eg '#abe000'
@@ -479,8 +569,8 @@ class JupyterRenderer(object):
                       edges as a linear interpolation of segments.
         edge_color: optional, black by default. The color used for edge rendering,
                     in html form eg '#ff00ee'
-        compute_uv_coords: optional, false by default. If True, compute texture
-                           coordinates (required if the shape has to be textured)
+        edge_deflection: optional, 0.05 by default
+        vertex_color: optional
         quality: optional, 1.0 by default. If set to something lower than 1.0,
                       mesh will be more precise. If set to something higher than 1.0,
                       mesh will be less precise, i.e. lower numer of triangles.
@@ -489,49 +579,106 @@ class JupyterRenderer(object):
                  0. is fully opaque, 1. is fully transparent.
         topo_level: "default" by default. The value should be either "compound", "shape", "vertex".
         update: optional, False by default. If True, render all the shapes.
+        selectable: if True, can be doubleclicked from the 3d window
         """
-        if is_wire(shp) or is_edge(shp):
-            self.AddCurveToScene(shp, shape_color)
-        if topo_level != "default":
+        if edge_color is None:
+            edge_color = self._default_edge_color
+        if shape_color is None:
+            shape_color = self._default_shape_color
+        if vertex_color is None:
+            vertex_color = self._default_vertex_color
+
+        output = [] # a list of all geometries created from the shape
+        # is it list of gp_Pnt ?
+        if isinstance(shp, list) and isinstance(shp[0], gp_Pnt):
+            result = self.AddVerticesToScene(shp, vertex_color)
+            output.append(result)
+        # or a 1d element such as edge or wire ?
+        elif is_wire(shp) or is_edge(shp):
+            result = self.AddCurveToScene(shp, edge_color, edge_deflection)
+            output.append(result)
+        elif topo_level != "default":
             t = TopologyExplorer(shp)
             map_type_and_methods = {"Solid": t.solids, "Face": t.faces, "Shell": t.shells,
                                     "Compound": t.compounds, "Compsolid": t.comp_solids}
             for subshape in map_type_and_methods[topo_level]():
-                self.AddShapeToScene(subshape, shape_color, render_edges, edge_color, compute_uv_coords, quality,
-                                     transparency, opacity)
+                result = self.AddShapeToScene(subshape, shape_color, render_edges, edge_color,
+                                              vertex_color, quality, transparency, opacity)
+                output.append(result)
         else:
-            self.AddShapeToScene(shp, shape_color, render_edges, edge_color, compute_uv_coords, quality,
-                                 transparency, opacity)
+            result = self.AddShapeToScene(shp, shape_color, render_edges,
+                                          edge_color, vertex_color, quality,
+                                          transparency, opacity)
+            output.append(result)
+
+        if selectable:# Add geometries to pickable or non pickable objects
+            for elem in output:
+                self._displayed_pickable_objects.add(elem)
+
         if update:
             self.Display()
 
+    def AddVerticesToScene(self, pnt_list, vertex_color, vertex_width=5):
+        """ shp is a list of gp_Pnt
+        """
+        vertices_list = []  # will be passed to pythreejs
+        BB = BRep_Builder()
+        compound = TopoDS_Compound()
+        BB.MakeCompound(compound)
 
-    def AddCurveToScene(self, shp, color):
+        for vertex in pnt_list:
+            vertex_to_add = p = BRepBuilderAPI_MakeVertex(vertex).Shape()
+            BB.Add(compound, vertex_to_add)
+            vertices_list.append([vertex.X(), vertex.Y(), vertex.Z()])
+
+        # map the Points and the AIS_PointCloud
+        # and to the dict of shapes, to have a mapping between meshes and shapes
+        point_cloud_id = "%s" % uuid.uuid4().hex
+        self._shapes[point_cloud_id] = compound
+
+        vertices_list = np.array(vertices_list, dtype=np.float32)
+        attributes = {"position": BufferAttribute(vertices_list, normalized=False)}
+        mat = PointsMaterial(color=vertex_color, sizeAttenuation=True, size=vertex_width)
+        geom = BufferGeometry(attributes=attributes)
+        points = Points(geometry=geom, material=mat, name=point_cloud_id)
+        return points
+
+    def AddCurveToScene(self, shp, edge_color, deflection):
         """ shp is either a TopoDS_Wire or a TopodS_Edge.
         """
         if is_edge(shp):
-            pnts = discretize_edge(shp)
+            pnts = discretize_edge(shp, deflection)
         elif is_wire(shp):
-            pnts = discretize_wire(shp)
+            pnts = discretize_wire(shp, deflection)
         np_edge_vertices = np.array(pnts, dtype=np.float32)
         np_edge_indices = np.arange(np_edge_vertices.shape[0], dtype=np.uint32)
         edge_geometry = BufferGeometry(attributes={
             'position': BufferAttribute(np_edge_vertices),
-            'index'   : BufferAttribute(np_edge_indices)
+            'index': BufferAttribute(np_edge_indices)
         })
-        edge_material = LineBasicMaterial(color=color, linewidth=1)
-        edge_lines = Line(geometry=edge_geometry, material=edge_material)
+        edge_material = LineBasicMaterial(color=edge_color, linewidth=1)
 
-        # Add geometries to pickable or non pickable objects
-        self._displayed_pickable_objects.add(edge_lines)
+        # and to the dict of shapes, to have a mapping between meshes and shapes
+        edge_id = "%s" % uuid.uuid4().hex
+        self._shapes[edge_id] = shp
+
+        edge_line = Line(geometry=edge_geometry,
+                         material=edge_material,
+                         name=edge_id)
+
+        # and to the dict of shapes, to have a mapping between meshes and shapes
+        edge_id = "%s" % uuid.uuid4().hex
+        self._shapes[edge_id] = shp
+
+        return edge_line
 
 
     def AddShapeToScene(self,
-                        shp,  # the TopoDS_Shape to be displayed
-                        shape_color=default_shape_color,  # the default
+                        shp,
+                        shape_color=None,  # the default
                         render_edges=False,
-                        edge_color=default_edge_color,
-                        compute_uv_coords=False,
+                        edge_color=None,
+                        vertex_color=None,
                         quality=1.0,
                         transparency=False,
                         opacity=1.):
@@ -539,7 +686,7 @@ class JupyterRenderer(object):
         tess = Tesselator(shp)
         tess.Compute(compute_edges=render_edges,
                      mesh_quality=quality,
-                     parallel=self._parallel)
+                     parallel=True)
         # get vertices and normals
         vertices_position = tess.GetVerticesPositionAsTuple()
 
@@ -559,7 +706,7 @@ class JupyterRenderer(object):
 
         # set geometry properties
         buffer_geometry_properties = {'position': BufferAttribute(np_vertices),
-                                      'index'   : BufferAttribute(np_faces)}
+                                      'index': BufferAttribute(np_faces)}
         if self._compute_normals_mode == NORMAL.SERVER_SIDE:
             # get the normal list, converts to a numpy ndarray. This should not raise
             # any issue, since normals have been computed by the server, and are available
@@ -579,53 +726,40 @@ class JupyterRenderer(object):
 
         # then a default material
         shp_material = self._material(shape_color, transparent=transparency, opacity=opacity)
-        # create a mesh unique id
-        mesh_id = uuid.uuid4().hex
 
-        # finally create the mash
+        # and to the dict of shapes, to have a mapping between meshes and shapes
+        mesh_id = "%s" % uuid.uuid4().hex
+        self._shapes[mesh_id] = shp
+
+        # finally create the mesh
         shape_mesh = Mesh(geometry=shape_geometry,
                           material=shp_material,
                           name=mesh_id)
 
-
-        # and to the dict of shapes, to have a mapping between meshes and shapes
-        self._shapes[mesh_id] = shp
-
         # edge rendering, if set to True
-        edge_lines = None
         if render_edges:
             edges = list(map(lambda i_edge: [tess.GetEdgeVertex(i_edge, i_vert) for i_vert in range(tess.ObjEdgeGetVertexCount(i_edge))], range(tess.ObjGetEdgeCount())))
-            edges = list(filter(lambda edge: len(edge) == 2, edges))
-            np_edge_vertices = np.array(edges, dtype=np.float32).reshape(-1, 3)
-            np_edge_indices = np.arange(np_edge_vertices.shape[0], dtype=np.uint32)
-            edge_geometry = BufferGeometry(attributes={
-                'position': BufferAttribute(np_edge_vertices),
-                'index'   : BufferAttribute(np_edge_indices)
-            })
-            edge_material = LineBasicMaterial(color=edge_color, linewidth=1)
-            edge_lines = LineSegments(geometry=edge_geometry, material=edge_material)
-
-        # Add geometries to pickable or non pickable objects
-        self._displayed_pickable_objects.add(shape_mesh)
-        if render_edges:
+            edge_list = _flatten(list(map(_explode, edges)))
+            lines = LineSegmentsGeometry(positions=edge_list)
+            mat = LineMaterial(linewidth=1, color=edge_color)
+            edge_lines = LineSegments2(lines, mat)
             self._displayed_non_pickable_objects.add(edge_lines)
 
+        return shape_mesh
+
     def _scale(self, vec):
-        r = self._bb.diagonal * 2.5
+        r = self._bb._max_dist_from_center() * self._camera_distance_factor
         n = np.linalg.norm(vec)
         new_vec = [v / n * r for v in vec]
-        return self._add(new_vec, self._bb.center)
-
-    def _add(self, vec1, vec2):
-        return list(v1 + v2 for v1, v2 in zip(vec1, vec2))
+        return new_vec
 
     def _material(self, color, transparent=False, opacity=1.0):
+        #material = MeshPhongMaterial()
         material = CustomMaterial("standard")
         material.color = color
         material.clipping = True
         material.side = "DoubleSide"
-        material.alpha = 0.7
-        material.polygonOffset = False
+        material.polygonOffset = True
         material.polygonOffsetFactor = 1
         material.polygonOffsetUnits = 1
         material.transparent = transparent
@@ -642,49 +776,62 @@ class JupyterRenderer(object):
         self._current_selection_material = None
         self._renderer.scene = Scene(children=[])
 
-
-    def Display(self):
+    def Display(self, position=None, rotation=None):
         # Get the overall bounding box
         if self._shapes:
             self._bb = BoundingBox([self._shapes.values()])
         else:  # if nothing registered yet, create a fake bb
             self._bb = BoundingBox([[BRepPrimAPI_MakeSphere(5.).Shape()]])
         bb_max = self._bb.max
-        bb_diag = 2 * self._bb.diagonal
+        orbit_radius = 1.5 * self._bb._max_dist_from_center()
 
         # Set up camera
         camera_target = self._bb.center
-        camera_position = self._scale([1, 1, 1])
-
+        camera_position = _add(self._bb.center,
+                               self._scale([1, 1, 1] if position is None else self._scale(position)))
+        camera_zoom = self._camera_initial_zoom
 
         self._camera = CombinedCamera(position=camera_position,
-                                      width=self._size[0], height=self._size[1],
-                                      far=10 * bb_diag, orthoFar=10 * bb_diag)
+                                      width=self._size[0], height=self._size[1])
         self._camera.up = (0.0, 0.0, 1.0)
-        self._camera.lookAt(camera_target)
         self._camera.mode = 'orthographic'
         self._camera_target = camera_target
         self._camera.position = camera_position
-
+        if rotation is not None:
+            self._camera.rotation = rotation
         # Set up lights in every of the 8 corners of the global bounding box
-        key_lights = [
-            DirectionalLight(color='white', position=position, intensity=0.12)
-            for position in list(itertools.product((-bb_diag, bb_diag), (-bb_diag, bb_diag), (-bb_diag, bb_diag)))
-        ]
-        ambient_light = AmbientLight(intensity=1.0)
+        positions = list(itertools.product(*[(-orbit_radius, orbit_radius)] * 3))
+        key_lights = [DirectionalLight(color='white',
+                                       position=position,
+                                       intensity=0.5) for position in positions]
+        ambient_light = AmbientLight(intensity=0.1)
 
         # Set up Helpers
         self.axes = Axes(bb_center=self._bb.center, length=bb_max * 1.1)
-        self.grid = Grid(bb_center=self._bb.center, maximum=bb_max, colorCenterLine='#aaa', colorGrid='#ddd')
-
+        self.horizontal_grid = Grid(bb_center=self._bb.center, maximum=bb_max,
+                                    colorCenterLine='#aaa', colorGrid='#ddd')
+        self.vertical_grid = Grid(bb_center=self._bb.center, maximum=bb_max,
+                                  colorCenterLine='#aaa', colorGrid='#ddd')
         # Set up scene
-        environment = self.axes.axes + key_lights + [ambient_light, self.grid.grid, self._camera]
+        environment = self.axes.axes + key_lights + [ambient_light,
+                                                     self.horizontal_grid.grid,
+                                                     self.vertical_grid.grid,
+                                                     self._camera]
 
         scene_shp = Scene(children=[self._displayed_pickable_objects,
                                     self._displayed_non_pickable_objects] + environment)
 
         # Set up Controllers
-        self._controller = OrbitControls(controlling=self._camera, target=camera_target)
+        self._controller = OrbitControls(controlling=self._camera,
+                                         target=camera_target,
+                                         target0=camera_target)
+        # Update controller to instantiate camera position
+        self._camera.zoom = camera_zoom
+        self._update()
+
+        # setup Picker
+        self._picker = Picker(controlling=self._displayed_pickable_objects, event='dblclick')
+        self._picker.observe(self.click)
 
         self._renderer = Renderer(camera=self._camera,
                                   background=self._background,
@@ -695,18 +842,27 @@ class JupyterRenderer(object):
                                   height=self._size[1],
                                   antialias=True)
 
-        # needs to be done after setup of camera
-        self.grid.set_rotation((math.pi / 2.0, 0, 0, "XYZ"))
-        self.grid.set_position((0, 0, 0))
+        # set rotation and position for each grid
+        self.horizontal_grid.set_position((0, 0, 0))
+        self.horizontal_grid.set_rotation((math.pi / 2.0, 0, 0, "XYZ"))
 
-        # Workaround: Zoom forth and back to update frame. Sometimes necessary :(
-        self._camera.zoom = 1.01
-        self._update()
-        self._camera.zoom = 1.0
-        self._update()
+        self.vertical_grid.set_position((0, - bb_max, 0))
+
+        self._savestate = (self._camera.rotation, self._controller.target)
 
         # then display both 3d widgets and webui
-        display(HBox([self._renderer, self.html]))
+        display(HBox([VBox([HBox(self._controls), self._renderer]),
+                      self.html]))
+
+
+    def ExportToHTML(self, filename):
+        embed.embed_minimal_html(filename, views=self._renderer, title='pythonocc')
+
+    def _reset(self, *kargs):
+        self._camera.rotation, self._controller.target = self._savestate
+        self._camera.position = _add(self._bb.center, self._scale((1, 1, 1)))
+        self._camera.zoom = self._camera_initial_zoom
+        self._update()
 
     def _update(self):
         self._controller.exec_three_obj_method('update')

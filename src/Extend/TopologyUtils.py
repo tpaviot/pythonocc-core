@@ -481,7 +481,7 @@ def dump_topology_to_string(shape, level=0, buffer=""):
 # Edge and wire discretizers
 #
 
-def discretize_wire(a_topods_wire):
+def discretize_wire(a_topods_wire, deflection=0.5):
     """ Returns a set of points
     """
     if not is_wire(a_topods_wire):
@@ -490,7 +490,7 @@ def discretize_wire(a_topods_wire):
     wire_pnts = []
     # loop over ordered edges
     for edg in wire_explorer.ordered_edges():
-        edg_pnts = discretize_edge(edg)
+        edg_pnts = discretize_edge(edg, deflection)
         wire_pnts += edg_pnts
     return wire_pnts
 
