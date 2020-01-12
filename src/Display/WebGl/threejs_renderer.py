@@ -15,8 +15,6 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function, absolute_import
-
 import os
 import sys
 import tempfile
@@ -30,7 +28,7 @@ from OCC import VERSION as OCC_VERSION
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
 from OCC.Display.WebGl.simple_server import start_server
 
-THREEJS_RELEASE = "r111"
+THREEJS_RELEASE = "r112"
 
 def spinning_cursor():
     while True:
@@ -343,7 +341,7 @@ BODY_PART2 = """
 """
 
 
-class HTMLHeader(object):
+class HTMLHeader:
     def __init__(self, bg_gradient_color1="#ced7de", bg_gradient_color2="#808080"):
         self._bg_gradient_color1 = bg_gradient_color1
         self._bg_gradient_color2 = bg_gradient_color2
@@ -355,7 +353,7 @@ class HTMLHeader(object):
         return header_str
 
 
-class HTMLBody_Part1(object):
+class HTMLBody_Part1:
     def __init__(self, vertex_shader=None, fragment_shader=None, uniforms=None):
         self._vertex_shader = vertex_shader
         self._fragment_shader = fragment_shader
@@ -398,7 +396,7 @@ class HTMLBody_Part1(object):
         return body_str
 
 
-class ThreejsRenderer(object):
+class ThreejsRenderer:
     def __init__(self, path=None):
         if not path:
             self._path = tempfile.mkdtemp()
