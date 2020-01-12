@@ -15,12 +15,11 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function, absolute_import, division
-
 import os
 import sys
 import tempfile
 import uuid
+from xml.etree import ElementTree
 
 from OCC.Core.Visualization import Tesselator
 from OCC import VERSION as OCC_VERSION
@@ -164,7 +163,7 @@ BODY = """
 """
 
 
-def ExportEdgeToILS(edge_point_set):
+def export_edge_to_indexed_lineset(edge_point_set):
     str_x3d_to_return = "\t<LineSet vertexCount='%i'>" % len(edge_point_set)
     str_x3d_to_return += "<Coordinate point='"
     for p in edge_point_set:
@@ -186,7 +185,8 @@ def indexed_lineset_to_x3d_string(str_linesets, header=True, footer=True, ils_id
     ils_id = 0
     for str_lineset in str_linesets:
         x3dfile_str += "\t\t<Transform scale='1 1 1'><Shape DEF='edg%s'>\n" % ils_id
-        x3dfile_str += "\t\t\t<Appearance><Material emissiveColor='0 0 0'/></Appearance>\n\t\t"  # empty appearance, but the x3d validator complains if nothing set
+        # empty appearance, but the x3d validator complains if nothing set
+        x3dfile_str += "\t\t\t<Appearance><Material emissiveColor='0 0 0'/></Appearance>\n\t\t"
         x3dfile_str += str_lineset
         x3dfile_str += "\t\t</Shape></Transform>\n"
         ils_id += 1
@@ -243,10 +243,7 @@ class HTMLBody:
             sys.stdout.write("\r%s meshing shapes... %i%%" % (next(self.spinning_cursor),
                                                               int(cur_shp / nb_shape * 100)))
             sys.stdout.flush()
-            # TODO: here is the code related to orientation/translation
-            # trans, ori = self._x3d_shapes_dict[shp]
-            # vx, vy, vz = trans
-            # ori_vx, ori_vy, ori_vz, angle = ori
+
             x3dcontent += '\t\t\t<Inline onload="fitCamera()" mapDEFToID="true" url="%s.x3d"></Inline>\n' % shp_uid
             cur_shp += 1
         x3dcontent += '</transform>'
@@ -302,7 +299,7 @@ class X3DExporter:
                 nbr_vertices = shape_tesselator.ObjEdgeGetVertexCount(i_edge)
                 for i_vert in range(nbr_vertices):
                     edge_point_set.append(shape_tesselator.GetEdgeVertex(i_edge, i_vert))
-                ils = ExportEdgeToILS(edge_point_set)
+                ils = export_edge_to_indexed_lineset(edge_point_set)
                 self._line_sets.append(ils)
 
     def to_x3dfile_string(self, shape_id):
@@ -342,7 +339,14 @@ class X3DExporter:
 
             x3dfile_str += indexed_lineset_to_x3d_string(self._line_sets, header=False, footer=False)
         x3dfile_str += '</Scene>\n</X3D>\n'
-        return x3dfile_str
+
+        #
+        # use ElementTree to ensure xml file quality
+        #
+        xml_et = ElementTree.fromstring(x3dfile_str)
+        clean_x3d_str = ElementTree.tostring(xml_et, encoding='utf8', method='xmll').decode('utf8')
+
+        return clean_x3d_str
 
     def write_to_file(self, filename, shape_id):
         with open(filename, "w") as f:
@@ -383,7 +387,7 @@ class X3DomRenderer:
             print("X3D exporter, discretize an edge")
             pnts = discretize_edge(shape)
             edge_hash = "edg%s" % uuid.uuid4().hex
-            line_set = ExportEdgeToILS(pnts)
+            line_set = export_edge_to_indexed_lineset(pnts)
             x3dfile_content = indexed_lineset_to_x3d_string([line_set], ils_id=edge_hash)
             edge_full_path = os.path.join(self._path, edge_hash + '.x3d')
             with open(edge_full_path, "w") as edge_file:
@@ -391,11 +395,12 @@ class X3DomRenderer:
             # store this edge hash
             self._x3d_edges[edge_hash] = [color, line_width]
             return self._x3d_shapes, self._x3d_edges
-        elif is_wire(shape):
+
+        if is_wire(shape):
             print("X3D exporter, discretize a wire")
             pnts = discretize_wire(shape)
             wire_hash = "wir%s" % uuid.uuid4().hex
-            line_set = ExportEdgeToILS(pnts)
+            line_set = export_edge_to_indexed_lineset(pnts)
             x3dfile_content = indexed_lineset_to_x3d_string([line_set], ils_id=wire_hash)
             wire_full_path = os.path.join(self._path, wire_hash + '.x3d')
             with open(wire_full_path, "w") as wire_file:
@@ -403,6 +408,7 @@ class X3DomRenderer:
             # store this edge hash
             self._x3d_edges[wire_hash] = [color, line_width]
             return self._x3d_shapes, self._x3d_edges
+
         shape_uuid = uuid.uuid4().hex
         shape_hash = "shp%s" % shape_uuid
         x3d_exporter = X3DExporter(shape, vertex_shader, fragment_shader,
@@ -423,40 +429,21 @@ class X3DomRenderer:
         """ Call the render() method to display the X3D scene.
         """
         # first generate the HTML root file
-        self.GenerateHTMLFile(self._axes_plane, self._axes_plane_zoom_factor)
+        self.generate_html_file(self._axes_plane, self._axes_plane_zoom_factor)
         # then create a simple web server
         start_server(addr, server_port, self._path, open_webbrowser)
 
-    def GenerateHTMLFile(self, axes_plane, axes_plane_zoom_factor):
+    def generate_html_file(self, axes_plane, axes_plane_zoom_factor):
         """ Generate the HTML file to be rendered wy the web browser
         axes_plane: a boolean, telles wether or not display axes
         """
-        with open(self._html_filename, "w") as fp:
-            fp.write("<!DOCTYPE HTML>\n")
-            fp.write('<html lang="en">')
+        with open(self._html_filename, "w") as html_file:
+            html_file.write("<!DOCTYPE HTML>\n")
+            html_file.write('<html lang="en">')
             # header
-            fp.write(HTMLHeader().get_str())
+            html_file.write(HTMLHeader().get_str())
             # body
             # merge shapes and edges keys
             all_shapes = list(self._x3d_shapes) + list(self._x3d_edges)
-            fp.write(HTMLBody(all_shapes, axes_plane, axes_plane_zoom_factor).get_str())
-            fp.write("</html>\n")
-
-
-if __name__ == "__main__":
-    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
-    from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
-    from OCC.Core.gp import gp_Trsf, gp_Vec
-    def translate_shp(shp, vec, copy=False):
-        trns = gp_Trsf()
-        trns.SetTranslation(vec)
-        brep_trns = BRepBuilderAPI_Transform(shp, trns, copy)
-        brep_trns.Build()
-        return brep_trns.Shape()
-    box = BRepPrimAPI_MakeBox(100., 200., 300.).Shape()
-    torus = BRepPrimAPI_MakeTorus(300., 105).Shape()
-    t_torus = translate_shp(torus, gp_Vec(700, 0, 0))
-    my_ren = X3DomRenderer()
-    my_ren.DisplayShape(box)
-    my_ren.DisplayShape(t_torus)
-    my_ren.render()
+            html_file.write(HTMLBody(all_shapes, axes_plane, axes_plane_zoom_factor).get_str())
+            html_file.write("</html>\n")
