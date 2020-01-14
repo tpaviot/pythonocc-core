@@ -344,7 +344,7 @@ class X3DExporter:
         # use ElementTree to ensure xml file quality
         #
         xml_et = ElementTree.fromstring(x3dfile_str)
-        clean_x3d_str = ElementTree.tostring(xml_et, encoding='utf8', method='xmll').decode('utf8')
+        clean_x3d_str = ElementTree.tostring(xml_et, encoding='utf8').decode('utf8')
 
         return clean_x3d_str
 
