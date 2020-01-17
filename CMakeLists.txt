@@ -90,7 +90,6 @@ else(OPENGL_FOUND)
 endif(OPENGL_FOUND)
 option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
 option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCE Application Framework wrapper" ON)
-option_with_default(PYTHONOCC_WRAP_SMESH "Compile SMESH wrapper" OFF)
 option_with_default(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
 option_with_default(OCE_HIDE_DEPRECATED "Check this option if you want a less verbose swig output." ON)
 
@@ -147,20 +146,6 @@ else(OCE_INCLUDE_PATH)
     link_directories(${OCE_LIB_PATH})
   endif(OpenCASCADE_FOUND)
 endif(DEFINED OCE_INCLUDE_PATH)
-
-################################
-# OCE include and lib location #
-################################
-if(PYTHONOCC_WRAP_SMESH)
-  set(SMESH_INCLUDE_PATH /usr/local/include/smesh CACHE PATH "SMESH include path")
-  set(SMESH_LIB_PATH /usr/local/lib CACHE PATH "SMESH lib path")
-  include_directories(${SMESH_INCLUDE_PATH})
-  link_directories(${SMESH_LIB_PATH})
-  set(SMESH_LIBRARIES DriverDAT Driver DriverSTL DriverUNV SMESHDS SMDS StdMeshers SMESH)
-  if(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN)
-    set(SMESH_LIBRARIES NETGENPlugin ${SMESH_LIBRARIES})
-  endif(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN)
-endif(PYTHONOCC_WRAP_SMESH)
 
 ##############################################
 # Installation directory                     #
@@ -260,17 +245,6 @@ else(WIN32)
 endif(WIN32)
 set(CMAKE_SWIG_OUTDIR ${LIBRARY_OUTPUT_PATH})
 
-######################
-# SMESH Modules list #
-######################
-if(PYTHONOCC_WRAP_SMESH)
-  option_with_default(PYTHONOCC_WRAP_SMESH_NETGENPLUGIN "Compile NETGENPlugin wrapper" OFF)
-  include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/SMESH_Modules.cmake)
-  # need vtk headers to compile
-  #find_package(VTK COMPONENTS vtkCommonCore vtkCommonDataModel vtkIOLegacy vtkFiltersVerdict)
-  #include_directories(${VTK_INCLUDE_DIRS})
-endif(PYTHONOCC_WRAP_SMESH)
-
 ##################
 # MODEL Toolkits #
 ##################
@@ -341,18 +315,6 @@ if(PYTHONOCC_WRAP_OCAF)
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
-#########
-# SMESH #
-#########
-if(PYTHONOCC_WRAP_SMESH)
-  foreach(SMESH_MODULE ${SMESH_TOOLKIT})
-    set(FILE ${SWIG_FILES_PATH}/${SMESH_MODULE}.i)
-    set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
-    swig_add_library(${SMESH_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${SMESH_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} ${OCE_OCAF_LIBRARIES} ${SMESH_LIBRARIES} Python3::Module)
-  endforeach(SMESH_MODULE)
-endif(PYTHONOCC_WRAP_SMESH)
-
 ##########
 # Addons #
 ##########
@@ -421,14 +383,6 @@ endif(PYTHONOCC_WRAP_VISU)
 install(FILES ${BUILD_DIR}/Addons.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
 install(TARGETS _Addons DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core )
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY} )
-
-# instal SMESH
-if(PYTHONOCC_WRAP_SMESH)
-foreach(SMESH_MODULE ${SMESH_TOOLKIT})
-    install(FILES ${BUILD_DIR}/${SMESH_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-    install(FILES ${BUILD_DIR}/_${SMESH_MODULE}.${EXTENSION} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
-endforeach(SMESH_MODULE)
-endif(PYTHONOCC_WRAP_SMESH)
 
 # install Display
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
