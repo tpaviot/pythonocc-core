@@ -593,9 +593,9 @@ class PrsMgr_PresentableObject : public Standard_Transient {
 		%feature("compactdefaultargs") SetZLayer;
 		%feature("autodoc", "* Set Z layer ID and update all presentations of the presentable object. The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: void") SetZLayer;
-		virtual void SetZLayer (const Graphic3d_ZLayerId theLayerId);
+		virtual void SetZLayer (int theLayerId);
 
 		/****************** SynchronizeAspects ******************/
 		%feature("compactdefaultargs") SynchronizeAspects;
@@ -871,9 +871,9 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 	:param theSelObj: default value is NULL
 	:type theSelObj: PrsMgr_PresentableObject
 	:param theImmediateStructLayerId: default value is Graphic3d_ZLayerId_Topmost
-	:type theImmediateStructLayerId: Graphic3d_ZLayerId
+	:type theImmediateStructLayerId: int
 	:rtype: None") Color;
-		void Color (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const opencascade::handle<Prs3d_Drawer> & theStyle,const Standard_Integer theMode = 0,const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL,const Graphic3d_ZLayerId theImmediateStructLayerId = Graphic3d_ZLayerId_Topmost);
+		void Color (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const opencascade::handle<Prs3d_Drawer> & theStyle,const Standard_Integer theMode = 0,const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL,int theImmediateStructLayerId = Graphic3d_ZLayerId_Topmost);
 
 		/****************** Connect ******************/
 		%feature("compactdefaultargs") Connect;
@@ -1029,9 +1029,9 @@ class PrsMgr_PresentationManager : public Standard_Transient {
 	:param thePrsObject:
 	:type thePrsObject: PrsMgr_PresentableObject
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: None") SetZLayer;
-		void SetZLayer (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,const Graphic3d_ZLayerId theLayerId);
+		void SetZLayer (const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject,int theLayerId);
 
 		/****************** StructureManager ******************/
 		%feature("compactdefaultargs") StructureManager;

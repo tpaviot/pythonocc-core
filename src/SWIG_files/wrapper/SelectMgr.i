@@ -389,9 +389,9 @@ class SelectMgr_EntityOwner : public Standard_Transient {
 		%feature("compactdefaultargs") SetZLayer;
 		%feature("autodoc", "* Set Z layer ID and update all presentations.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: None") SetZLayer;
-		void SetZLayer (const Graphic3d_ZLayerId theLayerId);
+		void SetZLayer (int theLayerId);
 
 		/****************** State ******************/
 		%feature("compactdefaultargs") State;
@@ -695,9 +695,9 @@ class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 		%feature("compactdefaultargs") SetZLayer;
 		%feature("autodoc", "* Set Z layer ID and update all presentations of the selectable object. The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: void") SetZLayer;
-		virtual void SetZLayer (const Graphic3d_ZLayerId theLayerId);
+		virtual void SetZLayer (int theLayerId);
 
 		/****************** UpdateSelection ******************/
 		%feature("compactdefaultargs") UpdateSelection;

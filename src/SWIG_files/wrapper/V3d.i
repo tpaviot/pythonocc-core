@@ -2361,11 +2361,11 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") AddZLayer;
 		%feature("autodoc", "* Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value. The Z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. Custom layers will be inserted before Graphic3d_ZLayerId_Top (e.g. between Graphic3d_ZLayerId_Default and before Graphic3d_ZLayerId_Top). @param theLayerId [out] id of created layer @param theSettings [in] new layer settings returns False if the layer can not be created
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int OutValue
 	:param theSettings: default value is Graphic3d_ZLayerSettings()
 	:type theSettings: Graphic3d_ZLayerSettings
 	:rtype: bool") AddZLayer;
-		Standard_Boolean AddZLayer (Graphic3d_ZLayerId & theLayerId,const Graphic3d_ZLayerSettings & theSettings = Graphic3d_ZLayerSettings());
+		Standard_Boolean AddZLayer (Standard_Integer &OutValue,const Graphic3d_ZLayerSettings & theSettings = Graphic3d_ZLayerSettings());
 
 		/****************** CircularGridGraphicValues ******************/
 		%feature("compactdefaultargs") CircularGridGraphicValues;
@@ -2613,25 +2613,25 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") InsertLayerAfter;
 		%feature("autodoc", "* Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value. The Z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. Layer rendering order is defined by its position in list (altered by theLayerAfter) and IsImmediate() flag (all layers with IsImmediate() flag are drawn afterwards); @param theNewLayerId [out] id of created layer; layer id is arbitrary and does not depend on layer position in the list @param theSettings [in] new layer settings @param theLayerBefore [in] id of layer to append new layer after returns False if the layer can not be created
 	:param theNewLayerId:
-	:type theNewLayerId: Graphic3d_ZLayerId
+	:type theNewLayerId: int OutValue
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings
 	:param theLayerBefore:
-	:type theLayerBefore: Graphic3d_ZLayerId
+	:type theLayerBefore: int
 	:rtype: bool") InsertLayerAfter;
-		Standard_Boolean InsertLayerAfter (Graphic3d_ZLayerId & theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,const Graphic3d_ZLayerId theLayerBefore);
+		Standard_Boolean InsertLayerAfter (Standard_Integer &OutValue,const Graphic3d_ZLayerSettings & theSettings,int theLayerBefore);
 
 		/****************** InsertLayerBefore ******************/
 		%feature("compactdefaultargs") InsertLayerBefore;
 		%feature("autodoc", "* Add a new top-level Z layer to all managed views and get its ID as <theLayerId> value. The Z layers are controlled entirely by viewer, it is not possible to add a layer to a particular view. Layer rendering order is defined by its position in list (altered by theLayerAfter) and IsImmediate() flag (all layers with IsImmediate() flag are drawn afterwards); @param theNewLayerId [out] id of created layer; layer id is arbitrary and does not depend on layer position in the list @param theSettings [in] new layer settings @param theLayerAfter [in] id of layer to append new layer before returns False if the layer can not be created
 	:param theNewLayerId:
-	:type theNewLayerId: Graphic3d_ZLayerId
+	:type theNewLayerId: int OutValue
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings
 	:param theLayerAfter:
-	:type theLayerAfter: Graphic3d_ZLayerId
+	:type theLayerAfter: int
 	:rtype: bool") InsertLayerBefore;
-		Standard_Boolean InsertLayerBefore (Graphic3d_ZLayerId & theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,const Graphic3d_ZLayerId theLayerAfter);
+		Standard_Boolean InsertLayerBefore (Standard_Integer &OutValue,const Graphic3d_ZLayerSettings & theSettings,int theLayerAfter);
 
 		/****************** Invalidate ******************/
 		%feature("compactdefaultargs") Invalidate;
@@ -2762,9 +2762,9 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveZLayer;
 		%feature("autodoc", "* Remove Z layer with ID <theLayerId>. Method returns Standard_False if the layer can not be removed or doesn't exists. By default, there are always default bottom-level layer that can't be removed.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: bool") RemoveZLayer;
-		Standard_Boolean RemoveZLayer (const Graphic3d_ZLayerId theLayerId);
+		Standard_Boolean RemoveZLayer (int theLayerId);
 
 		/****************** SetCircularGridGraphicValues ******************/
 		%feature("compactdefaultargs") SetCircularGridGraphicValues;
@@ -3007,11 +3007,11 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") SetZLayerSettings;
 		%feature("autodoc", "* Sets the settings for a single Z layer.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings
 	:rtype: None") SetZLayerSettings;
-		void SetZLayerSettings (const Graphic3d_ZLayerId theLayerId,const Graphic3d_ZLayerSettings & theSettings);
+		void SetZLayerSettings (int theLayerId,const Graphic3d_ZLayerSettings & theSettings);
 
 		/****************** ShowGridEcho ******************/
 		%feature("compactdefaultargs") ShowGridEcho;
@@ -3085,9 +3085,9 @@ class V3d_Viewer : public Standard_Transient {
 		%feature("compactdefaultargs") ZLayerSettings;
 		%feature("autodoc", "* Returns the settings of a single Z layer.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: Graphic3d_ZLayerSettings") ZLayerSettings;
-		const Graphic3d_ZLayerSettings & ZLayerSettings (const Graphic3d_ZLayerId theLayerId);
+		const Graphic3d_ZLayerSettings & ZLayerSettings (int theLayerId);
 
 };
 
