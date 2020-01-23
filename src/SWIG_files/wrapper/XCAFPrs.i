@@ -303,11 +303,11 @@ class XCAFPrs_DocumentExplorer {
 	:param theRoot:
 	:type theRoot: TDF_Label
 	:param theFlags:
-	:type theFlags: XCAFPrs_DocumentExplorerFlags
+	:type theFlags: int
 	:param theDefStyle: default value is XCAFPrs_Style()
 	:type theDefStyle: XCAFPrs_Style
 	:rtype: None") Init;
-		void Init (const opencascade::handle<TDocStd_Document> & theDocument,const TDF_Label & theRoot,const XCAFPrs_DocumentExplorerFlags theFlags,const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
+		void Init (const opencascade::handle<TDocStd_Document> & theDocument,const TDF_Label & theRoot,int theFlags,const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
@@ -317,11 +317,11 @@ class XCAFPrs_DocumentExplorer {
 	:param theRoots:
 	:type theRoots: TDF_LabelSequence
 	:param theFlags:
-	:type theFlags: XCAFPrs_DocumentExplorerFlags
+	:type theFlags: int
 	:param theDefStyle: default value is XCAFPrs_Style()
 	:type theDefStyle: XCAFPrs_Style
 	:rtype: None") Init;
-		void Init (const opencascade::handle<TDocStd_Document> & theDocument,const TDF_LabelSequence & theRoots,const XCAFPrs_DocumentExplorerFlags theFlags,const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
+		void Init (const opencascade::handle<TDocStd_Document> & theDocument,const TDF_LabelSequence & theRoots,int theFlags,const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****************** More ******************/
 		%feature("compactdefaultargs") More;
@@ -347,11 +347,11 @@ class XCAFPrs_DocumentExplorer {
 	:param theDocument:
 	:type theDocument: TDocStd_Document
 	:param theFlags:
-	:type theFlags: XCAFPrs_DocumentExplorerFlags
+	:type theFlags: int
 	:param theDefStyle: default value is XCAFPrs_Style()
 	:type theDefStyle: XCAFPrs_Style
 	:rtype: None") XCAFPrs_DocumentExplorer;
-		 XCAFPrs_DocumentExplorer (const opencascade::handle<TDocStd_Document> & theDocument,const XCAFPrs_DocumentExplorerFlags theFlags,const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
+		 XCAFPrs_DocumentExplorer (const opencascade::handle<TDocStd_Document> & theDocument,int theFlags,const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****************** XCAFPrs_DocumentExplorer ******************/
 		%feature("compactdefaultargs") XCAFPrs_DocumentExplorer;
@@ -361,11 +361,11 @@ class XCAFPrs_DocumentExplorer {
 	:param theRoots:
 	:type theRoots: TDF_LabelSequence
 	:param theFlags:
-	:type theFlags: XCAFPrs_DocumentExplorerFlags
+	:type theFlags: int
 	:param theDefStyle: default value is XCAFPrs_Style()
 	:type theDefStyle: XCAFPrs_Style
 	:rtype: None") XCAFPrs_DocumentExplorer;
-		 XCAFPrs_DocumentExplorer (const opencascade::handle<TDocStd_Document> & theDocument,const TDF_LabelSequence & theRoots,const XCAFPrs_DocumentExplorerFlags theFlags,const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
+		 XCAFPrs_DocumentExplorer (const opencascade::handle<TDocStd_Document> & theDocument,const TDF_LabelSequence & theRoots,int theFlags,const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 };
 

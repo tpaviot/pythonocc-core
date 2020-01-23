@@ -2391,15 +2391,15 @@ class MeshVS_ElementalColorPrsBuilder : public MeshVS_PrsBuilder {
 	:param Parent:
 	:type Parent: MeshVS_Mesh
 	:param Flags: default value is MeshVS_DMF_ElementalColorDataPrs
-	:type Flags: MeshVS_DisplayModeFlags
+	:type Flags: int
 	:param DS: default value is 0
 	:type DS: MeshVS_DataSource
 	:param Id: default value is -1
 	:type Id: int
 	:param Priority: default value is MeshVS_BP_ElemColor
-	:type Priority: MeshVS_BuilderPriority
+	:type Priority: int
 	:rtype: None") MeshVS_ElementalColorPrsBuilder;
-		 MeshVS_ElementalColorPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_ElementalColorDataPrs,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_ElemColor);
+		 MeshVS_ElementalColorPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,int Flags = MeshVS_DMF_ElementalColorDataPrs,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,int Priority = MeshVS_BP_ElemColor);
 
 		/****************** SetColor1 ******************/
 		%feature("compactdefaultargs") SetColor1;
@@ -2567,15 +2567,15 @@ class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
 	:param Parent:
 	:type Parent: MeshVS_Mesh
 	:param Flags: default value is MeshVS_DMF_OCCMask
-	:type Flags: MeshVS_DisplayModeFlags
+	:type Flags: int
 	:param DS: default value is 0
 	:type DS: MeshVS_DataSource
 	:param Id: default value is -1
 	:type Id: int
 	:param Priority: default value is MeshVS_BP_Mesh
-	:type Priority: MeshVS_BuilderPriority
+	:type Priority: int
 	:rtype: None") MeshVS_MeshPrsBuilder;
-		 MeshVS_MeshPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_OCCMask,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_Mesh);
+		 MeshVS_MeshPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,int Flags = MeshVS_DMF_OCCMask,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,int Priority = MeshVS_BP_Mesh);
 
 };
 
@@ -2690,15 +2690,15 @@ class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 		%feature("autodoc", ":param Parent:
 	:type Parent: MeshVS_Mesh
 	:param Flags: default value is MeshVS_DMF_NodalColorDataPrs
-	:type Flags: MeshVS_DisplayModeFlags
+	:type Flags: int
 	:param DS: default value is 0
 	:type DS: MeshVS_DataSource
 	:param Id: default value is -1
 	:type Id: int
 	:param Priority: default value is MeshVS_BP_NodalColor
-	:type Priority: MeshVS_BuilderPriority
+	:type Priority: int
 	:rtype: None") MeshVS_NodalColorPrsBuilder;
-		 MeshVS_NodalColorPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_NodalColorDataPrs,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_NodalColor);
+		 MeshVS_NodalColorPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,int Flags = MeshVS_DMF_NodalColorDataPrs,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,int Priority = MeshVS_BP_NodalColor);
 
 		/****************** SetColor ******************/
 		%feature("compactdefaultargs") SetColor;
@@ -2829,15 +2829,15 @@ class MeshVS_TextPrsBuilder : public MeshVS_PrsBuilder {
 	:param Color:
 	:type Color: Quantity_Color
 	:param Flags: default value is MeshVS_DMF_TextDataPrs
-	:type Flags: MeshVS_DisplayModeFlags
+	:type Flags: int
 	:param DS: default value is 0
 	:type DS: MeshVS_DataSource
 	:param Id: default value is -1
 	:type Id: int
 	:param Priority: default value is MeshVS_BP_Text
-	:type Priority: MeshVS_BuilderPriority
+	:type Priority: int
 	:rtype: None") MeshVS_TextPrsBuilder;
-		 MeshVS_TextPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,const Standard_Real Height,const Quantity_Color & Color,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_TextDataPrs,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_Text);
+		 MeshVS_TextPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,const Standard_Real Height,const Quantity_Color & Color,int Flags = MeshVS_DMF_TextDataPrs,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,int Priority = MeshVS_BP_Text);
 
 		/****************** SetText ******************/
 		%feature("compactdefaultargs") SetText;
@@ -2962,17 +2962,17 @@ class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 	:param VectorColor:
 	:type VectorColor: Quantity_Color
 	:param Flags: default value is MeshVS_DMF_VectorDataPrs
-	:type Flags: MeshVS_DisplayModeFlags
+	:type Flags: int
 	:param DS: default value is 0
 	:type DS: MeshVS_DataSource
 	:param Id: default value is -1
 	:type Id: int
 	:param Priority: default value is MeshVS_BP_Vector
-	:type Priority: MeshVS_BuilderPriority
+	:type Priority: int
 	:param IsSimplePrs: default value is Standard_False
 	:type IsSimplePrs: bool
 	:rtype: None") MeshVS_VectorPrsBuilder;
-		 MeshVS_VectorPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,const Standard_Real MaxLength,const Quantity_Color & VectorColor,const MeshVS_DisplayModeFlags & Flags = MeshVS_DMF_VectorDataPrs,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,const MeshVS_BuilderPriority & Priority = MeshVS_BP_Vector,const Standard_Boolean IsSimplePrs = Standard_False);
+		 MeshVS_VectorPrsBuilder (const opencascade::handle<MeshVS_Mesh> & Parent,const Standard_Real MaxLength,const Quantity_Color & VectorColor,int Flags = MeshVS_DMF_VectorDataPrs,const opencascade::handle<MeshVS_DataSource> & DS = 0,const Standard_Integer Id = -1,int Priority = MeshVS_BP_Vector,const Standard_Boolean IsSimplePrs = Standard_False);
 
 		/****************** SetSimplePrsMode ******************/
 		%feature("compactdefaultargs") SetSimplePrsMode;

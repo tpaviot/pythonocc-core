@@ -3243,9 +3243,9 @@ class Graphic3d_CStructure : public Standard_Transient {
 		%feature("compactdefaultargs") SetZLayer;
 		%feature("autodoc", "* Set z layer ID to display the structure in specified layer
 	:param theLayerIndex:
-	:type theLayerIndex: Graphic3d_ZLayerId
+	:type theLayerIndex: int
 	:rtype: None") SetZLayer;
-		void SetZLayer (const Graphic3d_ZLayerId theLayerIndex);
+		void SetZLayer (int theLayerIndex);
 
 		/****************** ShadowLink ******************/
 		%feature("compactdefaultargs") ShadowLink;
@@ -5063,25 +5063,25 @@ class Graphic3d_GraphicDriver : public Standard_Transient {
 		%feature("compactdefaultargs") InsertLayerAfter;
 		%feature("autodoc", "* Adds a layer to all views. @param theNewLayerId [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param theSettings [in] new layer settings @param theLayerBefore [in] id of layer to append new layer after
 	:param theNewLayerId:
-	:type theNewLayerId: Graphic3d_ZLayerId
+	:type theNewLayerId: int
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings
 	:param theLayerBefore:
-	:type theLayerBefore: Graphic3d_ZLayerId
+	:type theLayerBefore: int
 	:rtype: void") InsertLayerAfter;
-		virtual void InsertLayerAfter (const Graphic3d_ZLayerId theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,const Graphic3d_ZLayerId theLayerBefore);
+		virtual void InsertLayerAfter (int theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,int theLayerBefore);
 
 		/****************** InsertLayerBefore ******************/
 		%feature("compactdefaultargs") InsertLayerBefore;
 		%feature("autodoc", "* Adds a layer to all views. To add a structure to desired layer on display it is necessary to set the layer ID for the structure. @param theNewLayerId [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param theSettings [in] new layer settings @param theLayerAfter [in] id of layer to append new layer before
 	:param theNewLayerId:
-	:type theNewLayerId: Graphic3d_ZLayerId
+	:type theNewLayerId: int
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings
 	:param theLayerAfter:
-	:type theLayerAfter: Graphic3d_ZLayerId
+	:type theLayerAfter: int
 	:rtype: void") InsertLayerBefore;
-		virtual void InsertLayerBefore (const Graphic3d_ZLayerId theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,const Graphic3d_ZLayerId theLayerAfter);
+		virtual void InsertLayerBefore (int theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,int theLayerAfter);
 
 		/****************** MemoryInfo ******************/
 		%feature("compactdefaultargs") MemoryInfo;
@@ -5127,19 +5127,19 @@ class Graphic3d_GraphicDriver : public Standard_Transient {
 		%feature("compactdefaultargs") RemoveZLayer;
 		%feature("autodoc", "* Removes Z layer. All structures displayed at the moment in layer will be displayed in default layer (the bottom-level z layer). By default, there are always default bottom-level layer that can't be removed. The passed theLayerId should be not less than 0 (reserved for default layers that can not be removed).
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: void") RemoveZLayer;
-		virtual void RemoveZLayer (const Graphic3d_ZLayerId theLayerId);
+		virtual void RemoveZLayer (int theLayerId);
 
 		/****************** SetZLayerSettings ******************/
 		%feature("compactdefaultargs") SetZLayerSettings;
 		%feature("autodoc", "* Sets the settings for a single Z layer.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings
 	:rtype: void") SetZLayerSettings;
-		virtual void SetZLayerSettings (const Graphic3d_ZLayerId theLayerId,const Graphic3d_ZLayerSettings & theSettings);
+		virtual void SetZLayerSettings (int theLayerId,const Graphic3d_ZLayerSettings & theSettings);
 
 		/****************** TextSize ******************/
 		%feature("compactdefaultargs") TextSize;
@@ -5173,9 +5173,9 @@ class Graphic3d_GraphicDriver : public Standard_Transient {
 		%feature("compactdefaultargs") ZLayerSettings;
 		%feature("autodoc", "* Returns the settings of a single Z layer.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: Graphic3d_ZLayerSettings") ZLayerSettings;
-		virtual const Graphic3d_ZLayerSettings & ZLayerSettings (const Graphic3d_ZLayerId theLayerId);
+		virtual const Graphic3d_ZLayerSettings & ZLayerSettings (int theLayerId);
 
 		/****************** ZLayers ******************/
 		%feature("compactdefaultargs") ZLayers;
@@ -6430,9 +6430,9 @@ class Graphic3d_PresentationAttributes : public Standard_Transient {
 		%feature("compactdefaultargs") SetZLayer;
 		%feature("autodoc", "* Sets presentation Zlayer.
 	:param theLayer:
-	:type theLayer: Graphic3d_ZLayerId
+	:type theLayer: int
 	:rtype: None") SetZLayer;
-		void SetZLayer (const Graphic3d_ZLayerId theLayer);
+		void SetZLayer (int theLayer);
 
 		/****************** Transparency ******************/
 		%feature("compactdefaultargs") Transparency;
@@ -7568,9 +7568,9 @@ class Graphic3d_Structure : public Standard_Transient {
 		%feature("compactdefaultargs") SetZLayer;
 		%feature("autodoc", "* Set Z layer ID for the structure. The Z layer mechanism allows to display structures presented in higher layers in overlay of structures in lower layers by switching off z buffer depth test between layers
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: None") SetZLayer;
-		void SetZLayer (const Graphic3d_ZLayerId theLayerId);
+		void SetZLayer (int theLayerId);
 
 		/****************** SetZoomLimit ******************/
 		%feature("compactdefaultargs") SetZoomLimit;
@@ -7667,9 +7667,9 @@ class Graphic3d_StructureManager : public Standard_Transient {
 	:param theStructure:
 	:type theStructure: Graphic3d_Structure
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: void") ChangeZLayer;
-		virtual void ChangeZLayer (const opencascade::handle<Graphic3d_Structure> & theStructure,const Graphic3d_ZLayerId theLayerId);
+		virtual void ChangeZLayer (const opencascade::handle<Graphic3d_Structure> & theStructure,int theLayerId);
 
 		/****************** Clear ******************/
 		%feature("compactdefaultargs") Clear;
@@ -7896,9 +7896,9 @@ class Graphic3d_StructureManager : public Standard_Transient {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* Invalidates bounding box of specified ZLayerId.
 	:param theLayerId: default value is Graphic3d_ZLayerId_UNKNOWN
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: void") Update;
-		virtual void Update (const Graphic3d_ZLayerId theLayerId = Graphic3d_ZLayerId_UNKNOWN);
+		virtual void Update (int theLayerId = Graphic3d_ZLayerId_UNKNOWN);
 
 };
 
@@ -10196,25 +10196,25 @@ class Graphic3d_CView : public Graphic3d_DataStructureManager {
 		%feature("compactdefaultargs") InsertLayerAfter;
 		%feature("autodoc", "* Add a layer to the view. @param theNewLayerId [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param theSettings [in] new layer settings @param theLayerBefore [in] id of layer to append new layer after
 	:param theNewLayerId:
-	:type theNewLayerId: Graphic3d_ZLayerId
+	:type theNewLayerId: int
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings
 	:param theLayerBefore:
-	:type theLayerBefore: Graphic3d_ZLayerId
+	:type theLayerBefore: int
 	:rtype: None") InsertLayerAfter;
-		void InsertLayerAfter (const Graphic3d_ZLayerId theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,const Graphic3d_ZLayerId theLayerBefore);
+		void InsertLayerAfter (int theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,int theLayerBefore);
 
 		/****************** InsertLayerBefore ******************/
 		%feature("compactdefaultargs") InsertLayerBefore;
 		%feature("autodoc", "* Add a layer to the view. @param theNewLayerId [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param theSettings [in] new layer settings @param theLayerAfter [in] id of layer to append new layer before
 	:param theNewLayerId:
-	:type theNewLayerId: Graphic3d_ZLayerId
+	:type theNewLayerId: int
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings
 	:param theLayerAfter:
-	:type theLayerAfter: Graphic3d_ZLayerId
+	:type theLayerAfter: int
 	:rtype: None") InsertLayerBefore;
-		void InsertLayerBefore (const Graphic3d_ZLayerId theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,const Graphic3d_ZLayerId theLayerAfter);
+		void InsertLayerBefore (int theNewLayerId,const Graphic3d_ZLayerSettings & theSettings,int theLayerAfter);
 
 		/****************** Invalidate ******************/
 		%feature("compactdefaultargs") Invalidate;
@@ -10226,17 +10226,17 @@ class Graphic3d_CView : public Graphic3d_DataStructureManager {
 		%feature("compactdefaultargs") InvalidateBVHData;
 		%feature("autodoc", "* Marks BVH tree and the set of BVH primitives of correspondent priority list with id theLayerId as outdated.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: None") InvalidateBVHData;
-		void InvalidateBVHData (const Graphic3d_ZLayerId theLayerId);
+		void InvalidateBVHData (int theLayerId);
 
 		/****************** InvalidateZLayerBoundingBox ******************/
 		%feature("compactdefaultargs") InvalidateZLayerBoundingBox;
 		%feature("autodoc", "* Returns the bounding box of all structures displayed in the Z layer.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: void") InvalidateZLayerBoundingBox;
-		virtual void InvalidateZLayerBoundingBox (const Graphic3d_ZLayerId theLayerId);
+		virtual void InvalidateZLayerBoundingBox (int theLayerId);
 
 		/****************** IsActive ******************/
 		%feature("compactdefaultargs") IsActive;
@@ -10276,9 +10276,9 @@ class Graphic3d_CView : public Graphic3d_DataStructureManager {
 		%feature("compactdefaultargs") Layer;
 		%feature("autodoc", "* Returns layer with given ID or NULL if undefined.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: opencascade::handle<Graphic3d_Layer>") Layer;
-		opencascade::handle<Graphic3d_Layer> Layer (const Graphic3d_ZLayerId theLayerId);
+		opencascade::handle<Graphic3d_Layer> Layer (int theLayerId);
 
 		/****************** Layers ******************/
 		%feature("compactdefaultargs") Layers;
@@ -10346,9 +10346,9 @@ class Graphic3d_CView : public Graphic3d_DataStructureManager {
 		%feature("compactdefaultargs") RemoveZLayer;
 		%feature("autodoc", "* Remove Z layer from the specified view. All structures displayed at the moment in layer will be displayed in default layer ( the bottom-level z layer ). To unset layer ID from associated structures use method UnsetZLayer (...).
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: None") RemoveZLayer;
-		void RemoveZLayer (const Graphic3d_ZLayerId theLayerId);
+		void RemoveZLayer (int theLayerId);
 
 		/****************** RenderingParams ******************/
 		%feature("compactdefaultargs") RenderingParams;
@@ -10496,11 +10496,11 @@ class Graphic3d_CView : public Graphic3d_DataStructureManager {
 		%feature("compactdefaultargs") SetZLayerSettings;
 		%feature("autodoc", "* Sets the settings for a single Z layer of specified view.
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:param theSettings:
 	:type theSettings: Graphic3d_ZLayerSettings
 	:rtype: None") SetZLayerSettings;
-		void SetZLayerSettings (const Graphic3d_ZLayerId theLayerId,const Graphic3d_ZLayerSettings & theSettings);
+		void SetZLayerSettings (int theLayerId,const Graphic3d_ZLayerSettings & theSettings);
 
 		/****************** ShadingModel ******************/
 		%feature("compactdefaultargs") ShadingModel;
@@ -10538,9 +10538,9 @@ class Graphic3d_CView : public Graphic3d_DataStructureManager {
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "* Invalidates bounding box of specified ZLayerId.
 	:param theLayerId: default value is Graphic3d_ZLayerId_UNKNOWN
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: None") Update;
-		void Update (const Graphic3d_ZLayerId theLayerId = Graphic3d_ZLayerId_UNKNOWN);
+		void Update (int theLayerId = Graphic3d_ZLayerId_UNKNOWN);
 
 		/****************** VisualizationType ******************/
 		%feature("compactdefaultargs") VisualizationType;

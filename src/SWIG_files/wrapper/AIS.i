@@ -3522,9 +3522,9 @@ class AIS_InteractiveContext : public Standard_Transient {
 	:param theIObj:
 	:type theIObj: AIS_InteractiveObject
 	:param theLayerId:
-	:type theLayerId: Graphic3d_ZLayerId
+	:type theLayerId: int
 	:rtype: None") SetZLayer;
-		void SetZLayer (const opencascade::handle<AIS_InteractiveObject> & theIObj,const Graphic3d_ZLayerId theLayerId);
+		void SetZLayer (const opencascade::handle<AIS_InteractiveObject> & theIObj,int theLayerId);
 
 		/****************** ShiftSelect ******************/
 		%feature("compactdefaultargs") ShiftSelect;
