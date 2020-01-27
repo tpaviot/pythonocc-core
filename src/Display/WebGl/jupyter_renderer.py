@@ -537,8 +537,7 @@ class JupyterRenderer(object):
                         opacity=1.):
         # first, compute the tesselation
         tess = Tesselator(shp)
-        tess.Compute(uv_coords=compute_uv_coords,
-                     compute_edges=render_edges,
+        tess.Compute(compute_edges=render_edges,
                      mesh_quality=quality,
                      parallel=self._parallel)
         # get vertices and normals

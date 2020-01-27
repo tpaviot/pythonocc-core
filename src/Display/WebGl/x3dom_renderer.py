@@ -287,7 +287,6 @@ class X3DExporter:
         shape_tesselator = Tesselator(self._shape)
         shape_tesselator.Compute(compute_edges=self._export_edges,
                                  mesh_quality=self._mesh_quality,
-                                 uv_coords=False,
                                  parallel=True)
         self._triangle_sets.append(shape_tesselator.ExportShapeToX3DIndexedFaceSet())
         # then process edges

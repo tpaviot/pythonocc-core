@@ -447,7 +447,6 @@ class ThreejsRenderer:
         tess = Tesselator(shape)
         tess.Compute(compute_edges=export_edges,
                      mesh_quality=mesh_quality,
-                     uv_coords=False,
                      parallel=True)
         # update spinning cursor
         sys.stdout.write("\r%s mesh shape %s, %i triangles     " % (next(self.spinning_cursor),
