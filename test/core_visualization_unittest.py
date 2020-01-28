@@ -23,7 +23,7 @@ import os
 import unittest
 import json
 
-from OCC.Core.Visualization import Tesselator, atNormal
+from OCC.Core.Visualization import Tesselator
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeSphere
 
 
@@ -32,8 +32,7 @@ class TestTesselator(unittest.TestCase):
     def test_tesselate_box(self):
         """ 1st test : tesselation of a box """
         a_box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-        tess = Tesselator(a_box, atNormal, 1.0, 1, 0.01, 0.1, 0.1, 0.1, 0.1,
-                          0.1, 0.1, 0.)
+        tess = Tesselator(a_box)
         tess.Compute()
         self.assertEqual(tess.ObjGetTriangleCount(), 12)
         self.assertEqual(tess.ObjGetNormalCount(), 24)
@@ -41,8 +40,7 @@ class TestTesselator(unittest.TestCase):
     def test_tesselate_torus(self):
         """ 2st test : tesselation of a torus """
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
-        tess = Tesselator(a_torus, atNormal, 1.0, 1, 0.01, 0.1, 0.1, 0.1, 0.1,
-                          0.1, 0.1, 0.)
+        tess = Tesselator(a_torus)
         tess.Compute()
         self.assertGreater(tess.ObjGetTriangleCount(), 100)
         self.assertGreater(tess.ObjGetNormalCount(), 100)
@@ -50,8 +48,7 @@ class TestTesselator(unittest.TestCase):
     def test_tesselate_torus_with_edges(self):
         """ 2st test : tesselation of a torus """
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
-        tess = Tesselator(a_torus, atNormal, 1.0, 1, 0.01, 0.1, 0.1, 0.1, 0.1,
-                          0.1, 0.1, 0.)
+        tess = Tesselator(a_torus)
         tess.Compute(compute_edges=True)
         self.assertGreater(tess.ObjGetTriangleCount(), 100)
         self.assertGreater(tess.ObjGetNormalCount(), 100)
@@ -59,8 +56,7 @@ class TestTesselator(unittest.TestCase):
     def test_tesselate_torus_with_bad_quality(self):
         """ 2st test : tesselation of a torus """
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
-        tess = Tesselator(a_torus, atNormal, 1.0, 1, 0.01, 0.1, 0.1, 0.1, 0.1,
-                          0.1, 0.1, 0.)
+        tess = Tesselator(a_torus)
         tess.Compute(mesh_quality=40.)
         # since mesh quality is much lower, we should count less vertices and
         # triangles
