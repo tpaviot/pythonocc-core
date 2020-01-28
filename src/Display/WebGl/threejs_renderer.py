@@ -416,7 +416,7 @@ class ThreejsRenderer:
                      shininess=0.9,
                      transparency=0.,
                      line_color=(0, 0., 0.),
-                     line_width=2.,
+                     line_width=1.,
                      mesh_quality=1.):
         # if the shape is an edge or a wire, use the related functions
         if is_edge(shape):
@@ -447,7 +447,6 @@ class ThreejsRenderer:
         tess = Tesselator(shape)
         tess.Compute(compute_edges=export_edges,
                      mesh_quality=mesh_quality,
-                     uv_coords=False,
                      parallel=True)
         # update spinning cursor
         sys.stdout.write("\r%s mesh shape %s, %i triangles     " % (next(self.spinning_cursor),
@@ -483,7 +482,7 @@ class ThreejsRenderer:
                 with open(edge_full_path, "w") as edge_file:
                     edge_file.write(str_to_write)
                 # store this edge hash, with black color
-                self._3js_edges[hash] = [(0, 0, 0), line_width]
+                self._3js_edges[edge_hash] = [(0, 0, 0), line_width]
         return self._3js_shapes, self._3js_edges
 
 

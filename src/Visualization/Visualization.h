@@ -47,7 +47,6 @@
 #include <cstdlib>
   
 
-
 class Display3d 
 {	
 public:
