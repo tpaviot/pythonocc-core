@@ -18,12 +18,13 @@
 from math import pi, radians
 
 from OCC.Core.BRepBndLib import brepbndlib_Add, brepbndlib_AddOBB
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism, BRepPrimAPI_MakeSphere
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                      BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeWire,
                                      BRepBuilderAPI_MakeFace, BRepBuilderAPI_MakeEdge2d,
                                      BRepBuilderAPI_Transform)
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_GTransform
 from OCC.Core.BRepFill import BRepFill_Filling
 from OCC.Core.Bnd import Bnd_Box, Bnd_OBB
 from OCC.Core.GeomAbs import (GeomAbs_C0, GeomAbs_Plane, GeomAbs_Cylinder, GeomAbs_Cone,
@@ -51,7 +52,7 @@ def assert_shape_not_null(shp):
         raise AssertionError("Shape is Null.")
 
 
-def assert_isdone(int, message):
+def assert_isdone(inst, message):
     if not inst.IsDone():
         raise AssertionError(message)
 
@@ -330,7 +331,7 @@ def scale_shape(shape, fx, fy, fz):
     rot = gp_Mat(fx, 0., 0., 0., fy, 0., 0., 0., fz)
     scale_trsf.SetVectorialPart(rot)
     shp = BRepBuilderAPI_GTransform(shape, scale_trsf).Shape()
-    return Shape(shp)
+    return shp
 
 
 def _test_scale_shape():
@@ -357,7 +358,7 @@ def make_extrusion(face, length, vector=gp_Vec(0., 0., 1.)):
 def recognize_face(topods_face):
     """ returns True if the TopoDS_Face is a planar surface
     """
-    if not type(topods_face) is TopoDS_Face:
+    if not isinstance(topods_face, TopoDS_Face):
         return "Not a face", None, None
     surf = BRepAdaptor_Surface(topods_face, True)
     surf_type = surf.GetType()
@@ -424,12 +425,12 @@ def _test_measure_shape_volume():
     a = 10.
     b = 23.
     c = 98.1
-    box = make_box(a, b, c)
+    box = BRepPrimAPI_MakeBox(a, b, c).Shape()
     box_volume = measure_shape_volume(box)
     assert_real_equal(box_volume, a*b*c)
     # for a sphere of radius r, it should be 4/3.pi.r^3
     r = 9.8775  # a random radius
-    sph = make_sphere(r)
+    sph = BRepPrimAPI_MakeSphere(r)
     sph_volume = measure_shape_volume(sph)
     assert_real_equal(sph_volume, 4./3.*pi*r*r*r)
 
@@ -477,9 +478,9 @@ def _test_measure_shape_center_of_gravity():
     # we compute the cog of a sphere centered at a point P
     # then the cog must be P
     x, y, z = 10., 3., -2.44  # random values for point P
-    vector = make_vector(x, y, z)
-    sph = translate_shape(make_sphere(20.), vector)
-    cog = measure_shape_center_of_gravity(sph)
+    vector = gp_Pnt(x, y, z)
+    sph = translate_shp(BRepPrimAPI_MakeSphere(20.).Shape(), vector)
+    cog, mass, mass_property = measure_shape_mass_center_of_gravity(sph)
     assert_real_equal(cog.X(), x)
     assert_real_equal(cog.Y(), y)
     assert_real_equal(cog.Z(), z)

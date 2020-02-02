@@ -536,8 +536,7 @@ def export_shape_to_svg(shape, filename=None,
 
 
 if __name__ == "__main__":
-    from OCC.Core.BRepPrimAPI import (BRepPrimAPI_MakeSphere,
-                                      BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus)
+    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere, BRepPrimAPI_MakeBox
     sphere_shape = BRepPrimAPI_MakeSphere(30.).Shape()
     write_step_file(sphere_shape, "s_203.stp", application_protocol="AP203")
     write_step_file(sphere_shape, "s_214.stp", application_protocol="AP214IS")

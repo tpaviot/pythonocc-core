@@ -19,7 +19,6 @@ import enum
 from functools import reduce
 import itertools
 import math
-import os
 import uuid
 import sys
 
@@ -51,7 +50,7 @@ from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.Visualization import Tesselator
 
-from OCC.Extend.TopologyUtils import (TopologyExplorer, is_edge, is_wire, is_face, discretize_edge,
+from OCC.Extend.TopologyUtils import (TopologyExplorer, is_edge, is_wire, discretize_edge,
                                       discretize_wire, get_type_as_string)
 from OCC.Extend.ShapeFactory import (get_oriented_boundingbox,
                                      get_aligned_boundingbox,
@@ -627,7 +626,7 @@ class JupyterRenderer:
         BB.MakeCompound(compound)
 
         for vertex in pnt_list:
-            vertex_to_add = p = BRepBuilderAPI_MakeVertex(vertex).Shape()
+            vertex_to_add = BRepBuilderAPI_MakeVertex(vertex).Shape()
             BB.Add(compound, vertex_to_add)
             vertices_list.append([vertex.X(), vertex.Y(), vertex.Z()])
 
@@ -802,8 +801,8 @@ class JupyterRenderer:
         # Set up lights in every of the 8 corners of the global bounding box
         positions = list(itertools.product(*[(-orbit_radius, orbit_radius)] * 3))
         key_lights = [DirectionalLight(color='white',
-                                       position=position,
-                                       intensity=0.5) for position in positions]
+                                       position=pos,
+                                       intensity=0.5) for pos in positions]
         ambient_light = AmbientLight(intensity=0.1)
 
         # Set up Helpers
