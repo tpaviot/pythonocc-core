@@ -17,7 +17,7 @@
 
 from math import pi, radians
 
-from OCC.Core.BRepBndLib import brepbndlib_Add, brepbndlib_AddOBB
+from OCC.Core.BRepBndLib import brepbndlib_Add, brepbndlib_AddOptimal, brepbndlib_AddOBB
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism, BRepPrimAPI_MakeSphere
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                      BRepBuilderAPI_MakeVertex,
@@ -117,7 +117,7 @@ def points_to_bspline(pnts):
 def edge_to_bezier(topods_edge):
     """ take an edge and returns:
     * a bool is_bezier
-    * the bezer curve
+    * the bezier curve
     * degrees
     * poles
     """
@@ -146,7 +146,7 @@ def make_face(*args):
     return result
 
 
-def get_aligned_boundingbox(shape, tol=1e-6):
+def get_aligned_boundingbox(shape, tol=1e-6, optimal_BB=True):
     """ return the bounding box of the TopoDS_Shape `shape`
 
     Parameters
@@ -158,8 +158,8 @@ def get_aligned_boundingbox(shape, tol=1e-6):
     tol: float
         tolerance of the computed boundingbox
 
-    as_pnt : bool
-        wether to return the lower and upper point of the bounding box as gp_Pnt instances
+    use_triangulation : bool, True by default
+        This makes the computation more accurate
 
     Returns
     -------
@@ -171,7 +171,14 @@ def get_aligned_boundingbox(shape, tol=1e-6):
     """
     bbox = Bnd_Box()
     bbox.SetGap(tol)
-    brepbndlib_Add(shape, bbox)
+
+    # note: useTriangulation is True by default, we set it explicitely, but t's not necessary
+    if optimal_BB:
+        use_triangulation = True
+        use_shapetolerance = True
+        brepbndlib_AddOptimal(shape, bbox, use_triangulation, use_shapetolerance)
+    else:
+        brepbndlib_Add(shape, bbox)
     xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
     corner1 = gp_Pnt(xmin, ymin, zmin)
     corner2 = gp_Pnt(xmax, ymax, zmax)
@@ -182,7 +189,8 @@ def get_aligned_boundingbox(shape, tol=1e-6):
     box_shp = BRepPrimAPI_MakeBox(corner1, corner2).Shape()
     return center, [dx, dy, dz], box_shp
 
-def get_oriented_boundingbox(shape):
+
+def get_oriented_boundingbox(shape, optimal_OBB=True):
     """ return the oriented bounding box of the TopoDS_Shape `shape`
 
     Parameters
@@ -190,6 +198,9 @@ def get_oriented_boundingbox(shape):
 
     shape : TopoDS_Shape or a subclass such as TopoDS_Face
         the shape to compute the bounding box from
+    optimal_OBB : bool, True by default. If set to True, compute the
+        optimal (i.e. the smallest oriented bounding box). Optimal OBB is
+        a bit longer.
     Returns
     -------
         a list with center, x, y and z sizes
@@ -197,7 +208,13 @@ def get_oriented_boundingbox(shape):
         a shape
     """
     obb = Bnd_OBB()
-    brepbndlib_AddOBB(shape, obb)
+    if optimal_OBB:
+        is_triangulationUsed = True
+        is_optimal = True
+        is_shapeToleranceUsed = False
+        brepbndlib_AddOBB(shape, obb, is_triangulationUsed, is_optimal, is_shapeToleranceUsed)
+    else:
+        brepbndlib_AddOBB(shape, obb)
 
     # converts the bounding box to a shape
     aBaryCenter = obb.Center()
@@ -430,7 +447,7 @@ def _test_measure_shape_volume():
     assert_real_equal(box_volume, a*b*c)
     # for a sphere of radius r, it should be 4/3.pi.r^3
     r = 9.8775  # a random radius
-    sph = BRepPrimAPI_MakeSphere(r)
+    sph = BRepPrimAPI_MakeSphere(r).Shape()
     sph_volume = measure_shape_volume(sph)
     assert_real_equal(sph_volume, 4./3.*pi*r*r*r)
 
@@ -448,7 +465,7 @@ def measure_shape_bounding_box(shape):
 
 def _test_measure_shape_bounding_box():
     # compute the bounding box of a sphere of radius centered at the origin
-    sph = make_sphere(5.)
+    sph = BRepPrimAPI_MakeSphere(5.).Shape()
     bb_dx, bb_dy, bb_dz = measure_shape_bounding_box(sph)
     assert_real_equal(bb_dx, 10.)
     assert_real_equal(bb_dy, 10.)
@@ -478,12 +495,13 @@ def _test_measure_shape_center_of_gravity():
     # we compute the cog of a sphere centered at a point P
     # then the cog must be P
     x, y, z = 10., 3., -2.44  # random values for point P
-    vector = gp_Pnt(x, y, z)
+    vector = gp_Vec(x, y, z)
     sph = translate_shp(BRepPrimAPI_MakeSphere(20.).Shape(), vector)
     cog, mass, mass_property = measure_shape_mass_center_of_gravity(sph)
     assert_real_equal(cog.X(), x)
     assert_real_equal(cog.Y(), y)
     assert_real_equal(cog.Z(), z)
+    assert mass_property == "Volume"
 
 
 if __name__ == "__main__":
@@ -497,3 +515,8 @@ if __name__ == "__main__":
     t = TopologyExplorer(b)
     for ed in t.edges():
         print(edge_to_bezier(ed))
+    _test_midpoint()
+    _test_scale_shape()
+    _test_measure_shape_volume()
+    _test_measure_shape_bounding_box()
+    _test_measure_shape_center_of_gravity()
