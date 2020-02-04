@@ -15,10 +15,10 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from math import pi, radians
+from math import radians
 
 from OCC.Core.BRepBndLib import brepbndlib_Add, brepbndlib_AddOptimal, brepbndlib_AddOBB
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism, BRepPrimAPI_MakeSphere
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeEdge,
                                      BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeWire,
@@ -55,11 +55,6 @@ def assert_shape_not_null(shp):
 def assert_isdone(inst, message):
     if not inst.IsDone():
         raise AssertionError(message)
-
-
-def assert_real_equal(a, b, eps=1e-6):
-    if abs(a - b) >= eps:
-        raise AssertionError("a and be are not equal")
 
 
 def point_list_to_TColgp_Array1OfPnt(li):
@@ -255,13 +250,6 @@ def midpoint(pntA, pntB):
     return gp_Pnt(veccie.XYZ())
 
 
-def _test_midpoint():
-    p1 = gp_Pnt(0, 0, 0)
-    p2 = gp_Pnt(4, 5, 6)
-    p3 = midpoint(p1, p2)
-    assert [p3.X(), p3.Y(), p3.Z()] == [2, 2.5, 3.]
-
-
 def center_boundingbox(shape):
     """ compute the center point of a TopoDS_Shape, based on its bounding box
 
@@ -334,7 +322,6 @@ def rotate_shp_3_axis(shape, rx, ry, rz, unity="deg"):
     return shp
 
 
-
 def scale_shape(shape, fx, fy, fz):
     """ Scale a shape along the 3 directions
     @param fx : scale factor in the x direction
@@ -349,14 +336,6 @@ def scale_shape(shape, fx, fy, fz):
     scale_trsf.SetVectorialPart(rot)
     shp = BRepBuilderAPI_GTransform(shape, scale_trsf).Shape()
     return shp
-
-
-def _test_scale_shape():
-    box = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
-    box2 = scale_shape(box, 2.0, 1.0, 1.0)
-    # volume should be double
-    box2_volume = measure_shape_volume(box2)
-    assert_real_equal(box2_volume, 2000.)
 
 
 def make_extrusion(face, length, vector=gp_Vec(0., 0., 1.)):
@@ -437,41 +416,6 @@ def measure_shape_volume(shape):
     return mass
 
 
-def _test_measure_shape_volume():
-    # first the colume of a box a,b,c should be a*b*c
-    a = 10.
-    b = 23.
-    c = 98.1
-    box = BRepPrimAPI_MakeBox(a, b, c).Shape()
-    box_volume = measure_shape_volume(box)
-    assert_real_equal(box_volume, a*b*c)
-    # for a sphere of radius r, it should be 4/3.pi.r^3
-    r = 9.8775  # a random radius
-    sph = BRepPrimAPI_MakeSphere(r).Shape()
-    sph_volume = measure_shape_volume(sph)
-    assert_real_equal(sph_volume, 4./3.*pi*r*r*r)
-
-
-def measure_shape_bounding_box(shape):
-    """ Returns the dimension of the bounding box """
-    bbox = Bnd_Box()
-    brepbndlib_Add(shape, bbox)
-    xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
-    dx = xmax - xmin
-    dy = ymax - ymin
-    dz = zmax - zmin
-    return dx, dy, dz
-
-
-def _test_measure_shape_bounding_box():
-    # compute the bounding box of a sphere of radius centered at the origin
-    sph = BRepPrimAPI_MakeSphere(5.).Shape()
-    bb_dx, bb_dy, bb_dz = measure_shape_bounding_box(sph)
-    assert_real_equal(bb_dx, 10.)
-    assert_real_equal(bb_dy, 10.)
-    assert_real_equal(bb_dz, 10.)
-
-
 def measure_shape_mass_center_of_gravity(shape):
     """ Returns the shape center of gravity
     Returns a gp_Pnt if requested (set as_Pnt to True)
@@ -489,34 +433,3 @@ def measure_shape_mass_center_of_gravity(shape):
     cog = inertia_props.CentreOfMass()
     mass = inertia_props.Mass()
     return cog, mass, mass_property
-
-
-def _test_measure_shape_center_of_gravity():
-    # we compute the cog of a sphere centered at a point P
-    # then the cog must be P
-    x, y, z = 10., 3., -2.44  # random values for point P
-    vector = gp_Vec(x, y, z)
-    sph = translate_shp(BRepPrimAPI_MakeSphere(20.).Shape(), vector)
-    cog, mass, mass_property = measure_shape_mass_center_of_gravity(sph)
-    assert_real_equal(cog.X(), x)
-    assert_real_equal(cog.Y(), y)
-    assert_real_equal(cog.Z(), z)
-    assert mass_property == "Volume"
-
-
-if __name__ == "__main__":
-    # test assert shape is not null
-    _test_midpoint()
-    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
-    b = BRepPrimAPI_MakeTorus(30, 10).Shape()
-    measure_shape_mass_center_of_gravity(b)
-    get_oriented_boundingbox(b)
-    from OCC.Extend.TopologyUtils import TopologyExplorer
-    t = TopologyExplorer(b)
-    for ed in t.edges():
-        print(edge_to_bezier(ed))
-    _test_midpoint()
-    _test_scale_shape()
-    _test_measure_shape_volume()
-    _test_measure_shape_bounding_box()
-    _test_measure_shape_center_of_gravity()
