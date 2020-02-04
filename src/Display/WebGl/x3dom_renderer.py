@@ -241,7 +241,7 @@ class HTMLBody:
         x3dcontent += '<transform id="glbal_scene_rotation_Id" rotation="1 0 0 -1.57079632679">'
         for shp_uid in self._x3d_shapes:
             sys.stdout.write("\r%s meshing shapes... %i%%" % (next(self.spinning_cursor),
-                                                              int(cur_shp / nb_shape * 100)))
+                                                              round(cur_shp / nb_shape * 100)))
             sys.stdout.flush()
 
             x3dcontent += '\t\t\t<Inline onload="fitCamera()" mapDEFToID="true" url="%s.x3d"></Inline>\n' % shp_uid

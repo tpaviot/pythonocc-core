@@ -26,9 +26,9 @@ import sys
 try:
     from pythreejs import (CombinedCamera, BufferAttribute, BufferGeometry, Mesh,
                            LineSegmentsGeometry, LineMaterial, LineSegments2, AmbientLight,
-                           DirectionalLight, Scene, OrbitControls, Renderer, PerspectiveCamera,
-                           Picker, Group, GridHelper, LineSegments, Line,
-                           ShaderMaterial, ShaderLib, MeshPhongMaterial, LineBasicMaterial,
+                           DirectionalLight, Scene, OrbitControls, Renderer,
+                           Picker, Group, GridHelper, Line,
+                           ShaderMaterial, ShaderLib, LineBasicMaterial,
                            PointsMaterial, Points, make_text)
     from IPython.display import display, SVG
     from ipywidgets import HTML, HBox, VBox, Checkbox, Button, Layout, Dropdown, embed
@@ -157,7 +157,7 @@ class Helpers:
 #
 class Grid(Helpers):
     def __init__(self, bb_center=None, maximum=5, ticks=10, colorCenterLine='#aaa', colorGrid='#ddd'):
-        super().__init__(bb_center)
+        Helpers.__init__(self, bb_center)
         axis_start, axis_end, nice_tick = _nice_bounds(-maximum, maximum, 2 * ticks)
         self.step = nice_tick
         self.size = axis_end - axis_start
@@ -185,7 +185,7 @@ class Axes(Helpers):
     Z is blue
     """
     def __init__(self, bb_center, length=1, width=3, display_labels=False):
-        super().__init__(bb_center)
+        Helpers.__init__(self, bb_center)
 
         self.axes = []
         for vector, color in zip(([length, 0, 0], [0, length, 0], [0, 0, length]), ('red', 'green', 'blue')):
@@ -236,7 +236,7 @@ class CustomMaterial(ShaderMaterial):
         uniforms = shader["uniforms"]
         uniforms["alpha"] = dict(value=0.7)
 
-        super().__init__(uniforms=uniforms, vertexShader=vertexShader, fragmentShader=fragmentShader)
+        ShaderMaterial.__init__(self, uniforms=uniforms, vertexShader=vertexShader, fragmentShader=fragmentShader)
         self.lights = True
 
     @property
