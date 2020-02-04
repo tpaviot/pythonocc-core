@@ -1,3 +1,5 @@
+# see https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops
+# to check available agents
 trigger:
 - master
 - review/*
@@ -19,8 +21,8 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: macOS_10_13_python36
-    vmImage: 'macOS-10.13'
+    name: macOS_10_14_python36
+    vmImage: 'macOS-10.14'
     py_maj: 3
     py_min: 6
 
@@ -49,15 +51,15 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: macOS_10_13_python37
-    vmImage: 'macOS-10.13'
+    name: macOS_10_14_python37
+    vmImage: 'macOS-10.14'
     py_maj: 3
     py_min: 7
 
 - template:  conda-build.yml
   parameters:
-    name: macOS_10_14_python37
-    vmImage: 'macOS-10.14'
+    name: macOS_10_15_python37
+    vmImage: 'macOS-10.15'
     py_maj: 3
     py_min: 7
 
