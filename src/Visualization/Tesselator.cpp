@@ -715,6 +715,6 @@ void Tesselator::JoinPrimitives()
     delete myface;
     myface = NULL;
 
-    anIterator++;
+    ++anIterator;
   }
 }
