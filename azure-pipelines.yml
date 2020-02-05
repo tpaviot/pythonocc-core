@@ -58,13 +58,6 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: macOS_10_15_python37
-    vmImage: 'macOS-10.15'
-    py_maj: 3
-    py_min: 7
-
-- template:  conda-build.yml
-  parameters:
     name: Windows_VS2017_python37
     vmImage: 'vs2017-win2016'
     py_maj: 3
