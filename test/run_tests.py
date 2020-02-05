@@ -23,40 +23,24 @@ import core_wrapper_features_unittest
 import core_geometry_unittest
 import core_visualization_unittest
 import core_extend_topology_unittest
-try:
-    import core_ocaf_unittest
-    HAVE_OCAF = True
-except:
-    HAVE_OCAF = False
-# Create test suite
 import core_webgl_unittest
-try:
-    import core_smesh_unittest
-    HAVE_SMESH = True
-except:
-    HAVE_SMESH = False
 import core_extend_dataexchange_unittest
+import core_extend_shapefactory_unittest
+import core_ocaf_unittest
+
 suite = unittest.TestSuite()
 
 # Get all test suites from modules
 suite1 = core_wrapper_features_unittest.suite()
 suite2 = core_geometry_unittest.suite()
 suite3 = core_visualization_unittest.suite()
-tests = [suite1, suite2, suite3]
-if HAVE_OCAF:
-    suite4 = core_ocaf_unittest.suite()
-    tests.append(suite4)
+suite4 = core_ocaf_unittest.suite()
 suite5 = core_webgl_unittest.suite()
-tests.append(suite5)
-if HAVE_SMESH:
-    suite6 = core_smesh_unittest.suite()
-    tests.append(suite6)
-suite7 = core_extend_topology_unittest.suite()
-tests.append(suite7)
-suite8 = core_extend_dataexchange_unittest.suite()
-tests.append(suite8)
-
+suite6 = core_extend_topology_unittest.suite()
+suite7 = core_extend_dataexchange_unittest.suite()
+suite8 = core_extend_shapefactory_unittest.suite()
 # Add test cases
+tests = [suite1, suite2, suite3, suite4, suite5, suite6, suite7, suite8]
 suite.addTests(tests)
 
 # Run test suite

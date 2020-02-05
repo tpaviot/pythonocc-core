@@ -17,8 +17,6 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
-
 import os
 import os.path
 import time
@@ -29,7 +27,6 @@ import itertools
 import OCC
 from OCC.Core.Aspect import Aspect_GFM_VER
 from OCC.Core.AIS import AIS_Shape, AIS_Shaded, AIS_TexturedShape, AIS_WireFrame, AIS_Shape_SelectionMode
-from OCC.Core.TopoDS import TopoDS_Shape
 from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
                                      BRepBuilderAPI_MakeEdge,
