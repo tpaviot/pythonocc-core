@@ -28,7 +28,7 @@ from OCC.Extend.ShapeFactory import (midpoint, scale_shape, measure_shape_volume
                                      translate_shp, measure_shape_mass_center_of_gravity,
                                      edge_to_bezier)
 from OCC.Extend.TopologyUtils import TopologyExplorer
-    
+
 
 class TestExtendShapeFactory(unittest.TestCase):
 
@@ -67,12 +67,14 @@ class TestExtendShapeFactory(unittest.TestCase):
         # we compute the cog of a sphere centered at a point P
         # then the cog must be P
         x, y, z = 10., 3., -2.44  # random values for point P
+        radius = 20.
         vector = gp_Vec(x, y, z)
-        sph = translate_shp(BRepPrimAPI_MakeSphere(20.).Shape(), vector)
+        sph = translate_shp(BRepPrimAPI_MakeSphere(radius).Shape(), vector)
         cog, mass, mass_property = measure_shape_mass_center_of_gravity(sph)
         self.assertAlmostEqual(cog.X(), x, places=6)
         self.assertAlmostEqual(cog.Y(), y, places=6)
         self.assertAlmostEqual(cog.Z(), z, places=6)
+        self.assertAlmostEqual(mass, 4 / 3 * math.pi * radius ** 3, places=6)
         self.assertEqual(mass_property, "Volume")
 
 
@@ -81,7 +83,12 @@ class TestExtendShapeFactory(unittest.TestCase):
         t = TopologyExplorer(b)
         for ed in t.edges():
             is_bezier, bezier_curve, degree = edge_to_bezier(ed)
-
+            self.assertTrue(isinstance(is_bezier, bool))
+            if not is_bezier:
+                self.assertTrue(degree is None)
+                self.assertTrue(bezier_curve is None)
+            else:
+                self.assertTrue(isinstance(degree, int))
 
 def suite():
     test_suite = unittest.TestSuite()
