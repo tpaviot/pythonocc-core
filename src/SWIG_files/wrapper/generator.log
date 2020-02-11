@@ -2,29 +2,16 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : ff03467
+git revision : 8b0e70d
 
-operating system : debian Linux 4.15.0-72-generic
+operating system : debian Linux 4.15.0-76-generic
 
 occt version targeted : 7.4.0
 
-date : 2020-01-04 17:06:27.881509
+date : 2020-02-11 16:22:43.579343
 ############################
 
 [INFO ]  Single process mode
-[INFO ]  Processing toolkit SMESH ===
-[INFO ]  ## Processing module NETGENPlugin
-[INFO ]  Wrap classes :
-[INFO ]  ## Processing module SMDS
-[INFO ]  Wrap classes :
-[INFO ]  ## Processing module SMDSAbs
-[INFO ]  Wrap classes :
-[INFO ]  ## Processing module SMESH
-[INFO ]  Wrap classes :
-[INFO ]  ## Processing module SMESHDS
-[INFO ]  Wrap classes :
-[INFO ]  ## Processing module StdMeshers
-[INFO ]  Wrap classes :
 [INFO ]  Processing toolkit TKBO ===
 [INFO ]  ## Processing module BOPAlgo
 [INFO ]  Wrap classes :
@@ -5830,6 +5817,6 @@ date : 2020-01-04 17:06:27.881509
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 47.79s
+SWIG interface file generation completed in 31.27s
 #################################################
 

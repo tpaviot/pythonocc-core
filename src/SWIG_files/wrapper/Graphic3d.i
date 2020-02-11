@@ -1257,9 +1257,9 @@ class Graphic3d_ArrayOfPrimitives : public Standard_Transient {
 	:param theMaxEdges:
 	:type theMaxEdges: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: opencascade::handle<Graphic3d_ArrayOfPrimitives>") CreateArray;
-		static opencascade::handle<Graphic3d_ArrayOfPrimitives> CreateArray (Graphic3d_TypeOfPrimitiveArray theType,Standard_Integer theMaxVertexs,Standard_Integer theMaxEdges,Graphic3d_ArrayFlags theArrayFlags);
+		static opencascade::handle<Graphic3d_ArrayOfPrimitives> CreateArray (Graphic3d_TypeOfPrimitiveArray theType,Standard_Integer theMaxVertexs,Standard_Integer theMaxEdges,int theArrayFlags);
 
 		/****************** CreateArray ******************/
 		%feature("compactdefaultargs") CreateArray;
@@ -1273,9 +1273,9 @@ class Graphic3d_ArrayOfPrimitives : public Standard_Transient {
 	:param theMaxEdges:
 	:type theMaxEdges: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: opencascade::handle<Graphic3d_ArrayOfPrimitives>") CreateArray;
-		static opencascade::handle<Graphic3d_ArrayOfPrimitives> CreateArray (Graphic3d_TypeOfPrimitiveArray theType,Standard_Integer theMaxVertexs,Standard_Integer theMaxBounds,Standard_Integer theMaxEdges,Graphic3d_ArrayFlags theArrayFlags);
+		static opencascade::handle<Graphic3d_ArrayOfPrimitives> CreateArray (Graphic3d_TypeOfPrimitiveArray theType,Standard_Integer theMaxVertexs,Standard_Integer theMaxBounds,Standard_Integer theMaxEdges,int theArrayFlags);
 
 		/****************** Edge ******************/
 		%feature("compactdefaultargs") Edge;
@@ -9053,9 +9053,9 @@ class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 	:param theMaxVertexs:
 	:type theMaxVertexs: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: None") Graphic3d_ArrayOfPoints;
-		 Graphic3d_ArrayOfPoints (Standard_Integer theMaxVertexs,Graphic3d_ArrayFlags theArrayFlags);
+		 Graphic3d_ArrayOfPoints (Standard_Integer theMaxVertexs,int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfPoints ******************/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfPoints;
@@ -9095,9 +9095,9 @@ class Graphic3d_ArrayOfPolygons : public Graphic3d_ArrayOfPrimitives {
 	:param theMaxEdges:
 	:type theMaxEdges: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: None") Graphic3d_ArrayOfPolygons;
-		 Graphic3d_ArrayOfPolygons (Standard_Integer theMaxVertexs,Standard_Integer theMaxBounds,Standard_Integer theMaxEdges,Graphic3d_ArrayFlags theArrayFlags);
+		 Graphic3d_ArrayOfPolygons (Standard_Integer theMaxVertexs,Standard_Integer theMaxBounds,Standard_Integer theMaxEdges,int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfPolygons ******************/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfPolygons;
@@ -9145,9 +9145,9 @@ class Graphic3d_ArrayOfPolylines : public Graphic3d_ArrayOfPrimitives {
 	:param theMaxEdges:
 	:type theMaxEdges: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: None") Graphic3d_ArrayOfPolylines;
-		 Graphic3d_ArrayOfPolylines (Standard_Integer theMaxVertexs,Standard_Integer theMaxBounds,Standard_Integer theMaxEdges,Graphic3d_ArrayFlags theArrayFlags);
+		 Graphic3d_ArrayOfPolylines (Standard_Integer theMaxVertexs,Standard_Integer theMaxBounds,Standard_Integer theMaxEdges,int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfPolylines ******************/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfPolylines;
@@ -9189,9 +9189,9 @@ class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
 	:param theMaxStrips:
 	:type theMaxStrips: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: None") Graphic3d_ArrayOfQuadrangleStrips;
-		 Graphic3d_ArrayOfQuadrangleStrips (Standard_Integer theMaxVertexs,Standard_Integer theMaxStrips,Graphic3d_ArrayFlags theArrayFlags);
+		 Graphic3d_ArrayOfQuadrangleStrips (Standard_Integer theMaxVertexs,Standard_Integer theMaxStrips,int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfQuadrangleStrips ******************/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfQuadrangleStrips;
@@ -9235,9 +9235,9 @@ class Graphic3d_ArrayOfQuadrangles : public Graphic3d_ArrayOfPrimitives {
 	:param theMaxEdges:
 	:type theMaxEdges: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: None") Graphic3d_ArrayOfQuadrangles;
-		 Graphic3d_ArrayOfQuadrangles (Standard_Integer theMaxVertexs,Standard_Integer theMaxEdges,Graphic3d_ArrayFlags theArrayFlags);
+		 Graphic3d_ArrayOfQuadrangles (Standard_Integer theMaxVertexs,Standard_Integer theMaxEdges,int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfQuadrangles ******************/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfQuadrangles;
@@ -9279,9 +9279,9 @@ class Graphic3d_ArrayOfSegments : public Graphic3d_ArrayOfPrimitives {
 	:param theMaxEdges:
 	:type theMaxEdges: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: None") Graphic3d_ArrayOfSegments;
-		 Graphic3d_ArrayOfSegments (Standard_Integer theMaxVertexs,Standard_Integer theMaxEdges,Graphic3d_ArrayFlags theArrayFlags);
+		 Graphic3d_ArrayOfSegments (Standard_Integer theMaxVertexs,Standard_Integer theMaxEdges,int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfSegments ******************/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfSegments;
@@ -9319,9 +9319,9 @@ class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
 	:param theMaxFans:
 	:type theMaxFans: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: None") Graphic3d_ArrayOfTriangleFans;
-		 Graphic3d_ArrayOfTriangleFans (Standard_Integer theMaxVertexs,Standard_Integer theMaxFans,Graphic3d_ArrayFlags theArrayFlags);
+		 Graphic3d_ArrayOfTriangleFans (Standard_Integer theMaxVertexs,Standard_Integer theMaxFans,int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfTriangleFans ******************/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfTriangleFans;
@@ -9365,9 +9365,9 @@ class Graphic3d_ArrayOfTriangleStrips : public Graphic3d_ArrayOfPrimitives {
 	:param theMaxStrips:
 	:type theMaxStrips: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: None") Graphic3d_ArrayOfTriangleStrips;
-		 Graphic3d_ArrayOfTriangleStrips (Standard_Integer theMaxVertexs,Standard_Integer theMaxStrips,Graphic3d_ArrayFlags theArrayFlags);
+		 Graphic3d_ArrayOfTriangleStrips (Standard_Integer theMaxVertexs,Standard_Integer theMaxStrips,int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfTriangleStrips ******************/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfTriangleStrips;
@@ -9411,9 +9411,9 @@ class Graphic3d_ArrayOfTriangles : public Graphic3d_ArrayOfPrimitives {
 	:param theMaxEdges:
 	:type theMaxEdges: int
 	:param theArrayFlags:
-	:type theArrayFlags: Graphic3d_ArrayFlags
+	:type theArrayFlags: int
 	:rtype: None") Graphic3d_ArrayOfTriangles;
-		 Graphic3d_ArrayOfTriangles (Standard_Integer theMaxVertexs,Standard_Integer theMaxEdges,Graphic3d_ArrayFlags theArrayFlags);
+		 Graphic3d_ArrayOfTriangles (Standard_Integer theMaxVertexs,Standard_Integer theMaxEdges,int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfTriangles ******************/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfTriangles;
