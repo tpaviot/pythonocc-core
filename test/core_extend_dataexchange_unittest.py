@@ -40,6 +40,7 @@ def get_test_fullname(filename):
 # the sample files
 STEP_AP203_SAMPLE_FILE = get_test_fullname('as1_pe_203.stp')
 STEP_AP214_SAMPLE_FILE = get_test_fullname('as1-oc-214.stp')
+STEP_MULTIPLE_ROOT = get_test_fullname('stp_mulitple_shp_at_root.stp')
 IGES_SAMPLE_FILE = get_test_fullname('sunglasses_lens.igs')
 STL_ASCII_SAMPLE_FILE = get_test_fullname('bottle_ascii.stl')
 STL_BINARY_SAMPLE_FILE = get_test_fullname('cube_binary.stl')
@@ -52,6 +53,11 @@ class TestExtendDataExchange(unittest.TestCase):
     def test_read_step_file(self):
         read_step_file(STEP_AP203_SAMPLE_FILE)
         read_step_file(STEP_AP214_SAMPLE_FILE)
+
+
+    def test_read_step_file_multiple_shape_as_root(self):
+        read_step_file(STEP_MULTIPLE_ROOT, as_compound=True)
+        read_step_file(STEP_MULTIPLE_ROOT, as_compound=False)
 
 
     def test_read_step_file_names_colors(self):

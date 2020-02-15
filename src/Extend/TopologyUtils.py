@@ -17,7 +17,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.Core.BRep import BRep_Tool
+from OCC.Core.BRep import BRep_Tool, BRep_Builder
 from OCC.Core.BRepTools import BRepTools_WireExplorer
 from OCC.Core.gp import gp_Ax2, gp_Dir, gp_Pnt
 from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
@@ -638,3 +638,22 @@ def get_sorted_hlr_edges(topods_shape, position=gp_Pnt(), direction=gp_Dir(), ex
             hidden += list(TopologyExplorer(hidden_contour_edges_as_compound).edges())
 
     return visible, hidden
+
+
+def list_of_shapes_to_compound(list_of_shapes):
+    """ takes a list of shape in input, gather all shapes into one compound
+    returns the compund and a boolean, True if all shapes were added to the compund,
+    False otherwise
+    """
+    all_shapes_converted = True
+    the_compound = TopoDS_Compound()
+    the_builder = BRep_Builder()
+    the_builder.MakeCompound(the_compound)
+    for shp in list_of_shapes:
+        # first ensure the shape is not Null
+        if shp.IsNull():
+            all_shapes_converted = False
+            continue
+        else:
+            the_builder.Add(the_compound, shp)
+    return the_compound, all_shapes_converted

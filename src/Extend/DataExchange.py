@@ -38,9 +38,8 @@ from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Core.TopLoc import TopLoc_Location
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
 
-from OCC.Extend.TopologyUtils import (TopologyExplorer,
-                                      discretize_edge,
-                                      get_sorted_hlr_edges)
+from OCC.Extend.TopologyUtils import (TopologyExplorer, discretize_edge,
+                                      get_sorted_hlr_edges, list_of_shapes_to_compound)
 
 try:
     import svgwrite
@@ -51,12 +50,12 @@ except ImportError:
 ##########################
 # Step import and export #
 ##########################
-def read_step_file(filename, return_as_shapes=False, verbosity=True):
+def read_step_file(filename, as_compound=True, verbosity=True):
     """ read the STEP file and returns a compound
     filename: the file path
-    return_as_shapes: optional, False by default. If True returns a list of shapes,
-                      else returns a single compound
     verbosity: optional, False by default.
+    as_compound: True by default. If there are more than one shape at root,
+    gather all shapes into one compound. Otherwise returns a list of shapes.
     """
     if not os.path.isfile(filename):
         raise FileNotFoundError("%s not found." % filename)
@@ -69,21 +68,32 @@ def read_step_file(filename, return_as_shapes=False, verbosity=True):
             failsonly = False
             step_reader.PrintCheckLoad(failsonly, IFSelect_ItemsByEntity)
             step_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
-        transfer_result = step_reader.TransferRoot(1)
+        transfer_result = step_reader.TransferRoots()
         if not transfer_result:
             raise AssertionError("Transfer failed.")
         _nbs = step_reader.NbShapes()
-        if _nbs != 1:
-            raise AssertionError("Number of shapes is not one.")
-        shape_to_return = step_reader.Shape(1)  # a compound
-        if shape_to_return.IsNull():
-            raise AssertionError("Shape is null.")
+        if _nbs == 0:
+            raise AssertionError("No shape to transfer.")
+        if _nbs == 1:  # most cases
+            return step_reader.Shape(1)
+        elif _nbs > 1 :
+            print("Number of shapes:", _nbs)
+            shps = []
+            # loop over root shapes
+            for k in range(1, _nbs + 1):
+                new_shp = step_reader.Shape(k)
+                if not new_shp.IsNull():
+                    shps.append(new_shp)
+            if as_compound:
+                compound, result = list_of_shapes_to_compound(shps)
+                if not result:
+                    print("Warning: all shapes were not added to the compound")
+                return compound
+            else:
+                print("Warning, returns a list of shapes.")
+                return shps
     else:
         raise AssertionError("Error: can't read file.")
-    if return_as_shapes:
-        shape_to_return = TopologyExplorer(shape_to_return).solids()
-
-    return shape_to_return
 
 
 def write_step_file(a_shape, filename, application_protocol="AP203"):
