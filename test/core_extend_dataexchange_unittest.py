@@ -21,6 +21,7 @@ import os
 import unittest
 
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
+from OCC.Core.TopoDS import TopoDS_Compound
 
 from OCC.Extend.DataExchange import (read_step_file,
                                      read_step_file_with_names_colors,
@@ -56,8 +57,11 @@ class TestExtendDataExchange(unittest.TestCase):
 
 
     def test_read_step_file_multiple_shape_as_root(self):
-        read_step_file(STEP_MULTIPLE_ROOT, as_compound=True)
-        read_step_file(STEP_MULTIPLE_ROOT, as_compound=False)
+        t = read_step_file(STEP_MULTIPLE_ROOT, as_compound=True)
+        self.assertTrue(isinstance(t, TopoDS_Compound))
+
+        l = read_step_file(STEP_MULTIPLE_ROOT, as_compound=False)
+        self.assertEqual(len(l), 3)
 
 
     def test_read_step_file_names_colors(self):
