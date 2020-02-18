@@ -17,7 +17,6 @@ CAD/PDM/PLM applications.
 
 Latest release : [pythonocc-core 7.4.0rc1 (december 2019)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.4.0rc1)
 
-
 Build from source
 -----------------
 
@@ -40,31 +39,31 @@ Conda packages are provided for python 3.6 and 3.7.
 Other pythonocc related resources
 ---------------------------------
 
-* Demos: python examples, as well as jupyter notebooks https://github.com/tpaviot/pythonocc-demos
+*   Demos: python examples, as well as jupyter notebooks <https://github.com/tpaviot/pythonocc-demos>
 
-* Docker, binderhub: docker and online jupyter notebooks https://github.com/tpaviot/pythonocc-binderhub
+*   Docker, binderhub: docker and online jupyter notebooks <https://github.com/tpaviot/pythonocc-binderhub>
 
-* Documentation: https://github.com/tpaviot/pythonocc-documentation
+*   Documentation: <https://github.com/tpaviot/pythonocc-documentation>
 
 Online resources for development
 --------------------------------
 
 We use the following online resources:
 
-* Homepage: http://www.pythonocc.org
+*   Homepage: <http://www.pythonocc.org>
 
-* Mailing list: http://groups.google.com/group/pythonocc
+*   Mailing list: <http://groups.google.com/group/pythonocc>
 
-* Twitter : https://twitter.com/pythonocc
+*   Twitter : <https://twitter.com/pythonocc>
 
-* LGTM code quality review: https://lgtm.com/projects/g/tpaviot/honocc-core/
+*   LGTM code quality review: <https://lgtm.com/projects/g/tpaviot/honocc-core/>
 
-* Codacy quality checker: https://app.codacy.com/app/tpaviot/pythonocc-core
+*   Codacy quality checker: <https://app.codacy.com/app/tpaviot/pythonocc-core>
 
 pythonocc, oce and opencascade dependencies
 -------------------------------------------
 
-From release 7.4.0, pythonocc-core depends on the official OpenCascade-7.4.0 library (https://dev.opencascade.org)
+From release 7.4.0, pythonocc-core depends on the official OpenCascade-7.4.0 library (<https://dev.opencascade.org>)
 
 Former releases rely on oce (OpenCascade Community Edition), available at  
 [oce C++ library / CAD kernel](https://github.com/tpaviot/oce).

@@ -17,8 +17,6 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
-
 import unittest
 
 from OCC.Core.gp import (gp_Pnt, gp_Pnt2d, gp_Ax3, gp_Vec, gp_Pln,
@@ -184,6 +182,7 @@ class TestGeometry(unittest.TestCase):
                 Q = PPS.Point(i)
                 distance = PPS.Distance(i)
                 pstring = "Q" + repr(i) + ": at Distance :" + repr(PPS.Distance(i))
+                print(pstring)
 
     def test_points_from_intersection(self):
         '''Test: points from intersection'''
@@ -237,7 +236,7 @@ class TestGeometry(unittest.TestCase):
         AXDirection = A.XDirection()
         self.assertIsInstance(AXDirection, gp_Dir)
         AYDirection = A.YDirection()
-        self.assertIsInstance(AXDirection, gp_Dir)
+        self.assertIsInstance(AYDirection, gp_Dir)
         P2 = gp_Pnt(5, 3, 4)
         A2 = gp_Ax3(P2, D)
         A2.YReverse()
