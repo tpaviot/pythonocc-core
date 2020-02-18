@@ -43,7 +43,8 @@ class WireExplorer:
     Wire traversal
     '''
     def __init__(self, wire):
-        assert isinstance(wire, TopoDS_Wire), 'not a TopoDS_Wire'
+        if not isinstance(wire, TopoDS_Wire):
+            raise AsssertionError('not a TopoDS_Wire')
         self.wire = wire
         self.wire_explorer = BRepTools_WireExplorer(self.wire)
         self.done = False
@@ -148,7 +149,8 @@ class TopologyExplorer:
                      TopAbs_COMPOUND: TopoDS_Compound,
                      TopAbs_COMPSOLID: TopoDS_CompSolid}
 
-        assert topologyType in topoTypes.keys(), '%s not one of %s' % (topologyType, topoTypes.keys())
+        if topologyType not in topoTypes.keys():
+            raise AssertionError("%s not one of %s" % (topologyType, topoTypes.keys()))
         # use self.myShape if nothing is specified
         if topologicalEntity is None and topologyTypeToAvoid is None:
             self.topExp.Init(self.myShape, topologyType)
@@ -191,7 +193,7 @@ class TopologyExplorer:
 
     def _number_of_topo(self, iterable):
         n = 0
-        for i in iterable:
+        for _ in iterable:
             n += 1
         return n
 
@@ -366,7 +368,7 @@ class TopologyExplorer:
 
     def number_of_edges_from_face(self, face):
         cnt = 0
-        for i in self._loop_topo(TopAbs_EDGE, face):
+        for _ in self._loop_topo(TopAbs_EDGE, face):
             cnt += 1
         return cnt
 
