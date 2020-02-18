@@ -19,12 +19,12 @@ Requirements
 pythonOCC needs the following libraries or programs to be installed before you
 can compile/use it :
 
-- the python programming language (http://www.python.org). Python 3.x is required. Python 2
+*   the python programming language (<http://www.python.org>). Python 3.x is required. Python 2
 is officially dropped since the release 7.4.0.
 
-- OpenCascade 7.4.0 (https://dev.opencascade.org),
+*   OpenCascade 7.4.0 (<https://dev.opencascade.org>),
 
-- SWIG 3.0.11 or higher (http://www.swig.org),
+*   SWIG 3.0.11 or higher (<http://www.swig.org>),
 
 Create a local copy of the repository
 -------------------------------------
@@ -46,7 +46,6 @@ libraries in /usr/local/include/lib. If these paths don't match your
 installation, you have to set OCE_INCLUDE_PATH and OCE_LIB_PATH:
 
     cmake -DOCE_INCLUDE_PATH=/your_oce_headers -DOCE_LIB_PATH=/your_lib_dir ..
-
 
 And launch the build process
 
@@ -76,4 +75,4 @@ In order to check that everything is ok, run the pythonocc unittest suite:
 
 demos
 -----
-Download/test demos available at https://github.com/tpaviot/pythonocc-demos
+Download/test demos available at <https://github.com/tpaviot/pythonocc-demos>
