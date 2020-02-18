@@ -26,8 +26,6 @@ TopoDS_Shape text_to_brep(const char* aText,
                           bool anIsCompositeCurve)
 {
 
-  Standard_Integer anArgIt = 1;
-
   Font_BRepFont           aFont;
   TCollection_AsciiString aFontName (aName);
   gp_Ax3                  aPenAx3    (gp::XOY());
