@@ -38,8 +38,8 @@ from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Core.TopLoc import TopLoc_Location
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
 
-from OCC.Extend.TopologyUtils import (TopologyExplorer, discretize_edge,
-                                      get_sorted_hlr_edges, list_of_shapes_to_compound)
+from OCC.Extend.TopologyUtils import (discretize_edge, get_sorted_hlr_edges,
+                                      list_of_shapes_to_compound)
 
 try:
     import svgwrite
@@ -74,9 +74,9 @@ def read_step_file(filename, as_compound=True, verbosity=True):
         _nbs = step_reader.NbShapes()
         if _nbs == 0:
             raise AssertionError("No shape to transfer.")
-        if _nbs == 1:  # most cases
+        elif _nbs == 1:  # most cases
             return step_reader.Shape(1)
-        elif _nbs > 1 :
+        elif _nbs > 1:
             print("Number of shapes:", _nbs)
             shps = []
             # loop over root shapes
@@ -94,6 +94,7 @@ def read_step_file(filename, as_compound=True, verbosity=True):
                 return shps
     else:
         raise AssertionError("Error: can't read file.")
+    return None
 
 
 def write_step_file(a_shape, filename, application_protocol="AP203"):
@@ -256,7 +257,7 @@ def read_step_file_with_names_colors(filename):
                 if (color_tool.GetColor(lab, 0, c) or
                         color_tool.GetColor(lab, 1, c) or
                         color_tool.GetColor(lab, 2, c)):
-                    
+
                     color_tool.SetInstanceColor(shape, 0, c)
                     color_tool.SetInstanceColor(shape, 1, c)
                     color_tool.SetInstanceColor(shape, 2, c)
@@ -392,7 +393,7 @@ def read_iges_file(filename, return_as_shapes=False, verbosity=False, visible_on
             iges_reader.PrintCheckTransfer(failsonly, IFSelect_ItemsByEntity)
         iges_reader.TransferRoots()
         nbr = iges_reader.NbRootsForTransfer()
-        for n in range(1, nbr+1):
+        for _ in range(1, nbr+1):
             nbs = iges_reader.NbShapes()
             if nbs == 0:
                 print("At least one shape in IGES cannot be transfered")
@@ -450,9 +451,9 @@ def edge_to_svg_polyline(topods_edge, tol=0.1, unit="mm"):
     """
     unit_factor = 1  # by default
 
-    if unit=="mm":
+    if unit == "mm":
         unit_factor = 1
-    elif unit=="m":
+    elif unit == "m":
         unit_factor = 1e3
 
     points_3d = discretize_edge(topods_edge, tol)
@@ -465,7 +466,7 @@ def edge_to_svg_polyline(topods_edge, tol=0.1, unit="mm"):
         y_p = point[1] * unit_factor
         box2d.Add(gp_Pnt2d(x_p, y_p))
         points_2d.append((x_p, y_p))
-    
+
     return svgwrite.shapes.Polyline(points_2d, fill="none"), box2d
 
 def export_shape_to_svg(shape, filename=None,
@@ -543,34 +544,3 @@ def export_shape_to_svg(shape, filename=None,
         print("Shape successfully exported to %s" % filename)
         return True
     return dwg.tostring()
-
-
-if __name__ == "__main__":
-    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere, BRepPrimAPI_MakeBox
-    sphere_shape = BRepPrimAPI_MakeSphere(30.).Shape()
-    write_step_file(sphere_shape, "s_203.stp", application_protocol="AP203")
-    write_step_file(sphere_shape, "s_214.stp", application_protocol="AP214IS")
-    read_step_file("s_203.stp")
-    read_step_file("s_214.stp")
-    read_step_file("s_214.stp", return_as_shapes=True)
-    write_stl_file(sphere_shape, "s_stl_ascii.stl")
-    write_stl_file(sphere_shape, "s_stl_binary.stl", mode="binary")
-    read_stl_file("s_stl_ascii.stl")
-    read_stl_file("s_stl_binary.stl")
-    # improve the precision by a factor 2
-    write_stl_file(sphere_shape, "s_stl_precise_ascii.stl", linear_deflection=0.1, angular_deflection=0.2)
-    read_stl_file("s_stl_precise_ascii.stl")
-    # iges test
-    write_iges_file(sphere_shape, "s_iges.igs")
-    # write IGES with special character
-    write_iges_file(sphere_shape, "sphère.igs")
-    read_iges_file("sphère.igs")
-    read_iges_file("s_iges.igs")
-    read_iges_file("s_iges.igs", return_as_shapes=True)
-    # test step with colors
-    read_step_file_with_names_colors("s_214.stp")
-    # create a box
-    box_shp = BRepPrimAPI_MakeBox(10, 50, 300).Shape()
-    get_sorted_hlr_edges(box_shp)
-    export_shape_to_svg(box_shp, filename="box.svg", width="297mm", height="210mm",
-                        export_hidden_edges=False)
