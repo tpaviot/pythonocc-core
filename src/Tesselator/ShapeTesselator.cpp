@@ -325,21 +325,18 @@ std::vector<float> ShapeTesselator::GetVerticesPositionAsTuple()
   std::vector<float> vertices_position;
   vertices_position.reserve(tot_triangle_count);
   // loop over tertices
-  int pID = 0;
-  int qID = 0;
-  int rID = 0;
   for (int i=0;i<tot_triangle_count;i++) {
-      pID = locTriIndices[(i * 3) + 0] * 3;
+      int pID = locTriIndices[(i * 3) + 0] * 3;
       vertices_position.push_back(locVertexcoord[pID]);
       vertices_position.push_back(locVertexcoord[pID+1]);
       vertices_position.push_back(locVertexcoord[pID+2]);
       // Second vertex
-      qID = locTriIndices[(i * 3) + 1] * 3;
+      int qID = locTriIndices[(i * 3) + 1] * 3;
       vertices_position.push_back(locVertexcoord[qID]);
       vertices_position.push_back(locVertexcoord[qID+1]);
       vertices_position.push_back(locVertexcoord[qID+2]);
       // Third vertex
-      rID = locTriIndices[(i * 3) + 2] * 3;
+      int rID = locTriIndices[(i * 3) + 2] * 3;
       vertices_position.push_back(locVertexcoord[rID]);
       vertices_position.push_back(locVertexcoord[rID+1]);
       vertices_position.push_back(locVertexcoord[rID+2]);
@@ -670,7 +667,7 @@ void ShapeTesselator::JoinPrimitives()
     tot_normal_count = tot_normal_count + myface->number_of_normals;
     tot_invalid_normal_count = tot_invalid_normal_count + myface->number_of_invalid_normals;
 
-    anIterator++;
+    ++anIterator;
   }
 
   locTriIndices= new Standard_Integer[tot_triangle_count * 3 ];
