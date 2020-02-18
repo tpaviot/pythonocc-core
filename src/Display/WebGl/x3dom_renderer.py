@@ -21,7 +21,7 @@ import tempfile
 import uuid
 from xml.etree import ElementTree
 
-from OCC.Core.Visualization import Tesselator
+from OCC.Core.Tesselator import ShapeTesselator
 from OCC import VERSION as OCC_VERSION
 
 from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
@@ -284,7 +284,7 @@ class X3DExporter:
         self._x3d_string = ""  # the string that contains the x3d description
 
     def compute(self):
-        shape_tesselator = Tesselator(self._shape)
+        shape_tesselator = ShapeTesselator(self._shape)
         shape_tesselator.Compute(compute_edges=self._export_edges,
                                  mesh_quality=self._mesh_quality,
                                  parallel=True)

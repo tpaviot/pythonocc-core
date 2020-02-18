@@ -23,7 +23,7 @@ import os
 import unittest
 import json
 
-from OCC.Core.Visualization import Tesselator
+from OCC.Core.Tesselator import ShapeTesselator
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeSphere
 
 
@@ -32,7 +32,7 @@ class TestTesselator(unittest.TestCase):
     def test_tesselate_box(self):
         """ 1st test : tesselation of a box """
         a_box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-        tess = Tesselator(a_box)
+        tess = ShapeTesselator(a_box)
         tess.Compute()
         self.assertEqual(tess.ObjGetTriangleCount(), 12)
         self.assertEqual(tess.ObjGetNormalCount(), 24)
@@ -40,7 +40,7 @@ class TestTesselator(unittest.TestCase):
     def test_tesselate_torus(self):
         """ 2st test : tesselation of a torus """
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
-        tess = Tesselator(a_torus)
+        tess = ShapeTesselator(a_torus)
         tess.Compute()
         self.assertGreater(tess.ObjGetTriangleCount(), 100)
         self.assertGreater(tess.ObjGetNormalCount(), 100)
@@ -48,7 +48,7 @@ class TestTesselator(unittest.TestCase):
     def test_tesselate_torus_with_edges(self):
         """ 2st test : tesselation of a torus """
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
-        tess = Tesselator(a_torus)
+        tess = ShapeTesselator(a_torus)
         tess.Compute(compute_edges=True)
         self.assertGreater(tess.ObjGetTriangleCount(), 100)
         self.assertGreater(tess.ObjGetNormalCount(), 100)
@@ -56,7 +56,7 @@ class TestTesselator(unittest.TestCase):
     def test_tesselate_torus_with_bad_quality(self):
         """ 2st test : tesselation of a torus """
         a_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
-        tess = Tesselator(a_torus)
+        tess = ShapeTesselator(a_torus)
         tess.Compute(mesh_quality=40.)
         # since mesh quality is much lower, we should count less vertices and
         # triangles
@@ -68,7 +68,7 @@ class TestTesselator(unittest.TestCase):
     def test_export_to_x3d(self):
         """ 3rd test : export a sphere to X3D file format """
         a_sphere = BRepPrimAPI_MakeSphere(10.).Shape()
-        tess = Tesselator(a_sphere)
+        tess = ShapeTesselator(a_sphere)
         tess.Compute()
         tess.ExportShapeToX3D(os.path.join("test_io", "sphere.x3d"))
         self.assertTrue(os.path.exists(os.path.join("test_io", "sphere.x3d")))
@@ -76,7 +76,7 @@ class TestTesselator(unittest.TestCase):
     def test_export_to_x3d_TriangleSet(self):
         """ 3rd test : export a sphere to an X3D TriangleSet triangle mesh """
         a_sphere = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
-        tess = Tesselator(a_sphere)
+        tess = ShapeTesselator(a_sphere)
         tess.Compute()
         ifs = tess.ExportShapeToX3DIndexedFaceSet()
         self.assertTrue(ifs.startswith("<TriangleSet"))
@@ -85,7 +85,7 @@ class TestTesselator(unittest.TestCase):
 
     def test_export_to_3js_JSON(self):
         a_box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-        tess = Tesselator(a_box)
+        tess = ShapeTesselator(a_box)
         tess.Compute()
         # get the JSON string
         JSON_str = tess.ExportShapeToThreejsJSONString("myshapeid")

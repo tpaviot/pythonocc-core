@@ -256,6 +256,19 @@ foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
     swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} Python3::Module)
 endforeach(OCE_MODULE)
 
+##############
+# Tesselator #
+##############
+execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Tesselator)
+set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/Tesselator.i PROPERTIES CPLUSPLUS ON)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator)
+set(TESSELATOR_SOURCE_FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/Tesselator.i
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/ShapeTesselator.cpp)
+
+swig_add_library(Tesselator LANGUAGE python SOURCES ${TESSELATOR_SOURCE_FILES} TYPE MODULE)
+swig_link_libraries(Tesselator ${OCE_MODEL_LIBRARIES} Python3::Module)
+
 #################
 # Visualisation #
 #################
@@ -277,8 +290,7 @@ if(PYTHONOCC_WRAP_VISU)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization)
   set(VISUALIZATION_SOURCE_FILES
       ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i
-      ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp
-      ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Tesselator.cpp)
+      ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp)
 
     swig_add_library(Visualization LANGUAGE python SOURCES ${VISUALIZATION_SOURCE_FILES} TYPE MODULE)
     swig_link_libraries(Visualization  ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
@@ -354,6 +366,10 @@ foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
     install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
     install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endforeach(OCE_MODULE)
+# install tesselator
+install(FILES ${BUILD_DIR}/Tesselator.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+install(TARGETS _Tesselator DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+
 if(PYTHONOCC_WRAP_VISU)
 foreach(OCE_MODULE ${OCE_TOOLKIT_VISUALIZATION})
     install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)

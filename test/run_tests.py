@@ -21,7 +21,7 @@ import unittest
 
 import core_wrapper_features_unittest
 import core_geometry_unittest
-import core_visualization_unittest
+import core_tesselator_unittest
 import core_extend_topology_unittest
 import core_webgl_unittest
 import core_extend_dataexchange_unittest
@@ -33,7 +33,7 @@ suite = unittest.TestSuite()
 # Get all test suites from modules
 suite1 = core_wrapper_features_unittest.suite()
 suite2 = core_geometry_unittest.suite()
-suite3 = core_visualization_unittest.suite()
+suite3 = core_tesselator_unittest.suite()
 suite4 = core_ocaf_unittest.suite()
 suite5 = core_webgl_unittest.suite()
 suite6 = core_extend_topology_unittest.suite()

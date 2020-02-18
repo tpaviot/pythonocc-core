@@ -42,7 +42,7 @@ struct aedge {
   Standard_Integer number_of_coords;
 };
 
-class Tesselator
+class ShapeTesselator
 {
   protected:
       Standard_Boolean computed;
@@ -66,8 +66,8 @@ class Tesselator
       void EnsureMeshIsComputed();
 
   public:
-      Tesselator(TopoDS_Shape aShape);
-      ~Tesselator();
+      ShapeTesselator(TopoDS_Shape aShape);
+      ~ShapeTesselator();
       void Compute(bool compute_edges=false, float mesh_quality=1.0, bool parallel=false);
       void Tesselate(bool compute_edges, float mesh_quality, bool parallel);
       void JoinPrimitives();
