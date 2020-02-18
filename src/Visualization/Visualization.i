@@ -20,7 +20,6 @@
 
 %{
 #include <Visualization.h>
-#include <Tesselator.h>
 #include <Standard.hxx>
 %}
 
@@ -33,47 +32,6 @@
 %wrap_handle(AIS_InteractiveContext)
 %wrap_handle(V3d_View)
 %wrap_handle(V3d_Viewer)
-
-%template(vector_float) std::vector<float>;
-
-%typemap(out) float [ANY] {
-  int i;
-  $result = PyList_New($1_dim0);
-  for (i = 0; i < $1_dim0; i++) {
-    PyObject *o = PyFloat_FromFloat((float) $1[i]);
-    PyList_SetItem($result,i,o);
-  }
-}
-
-%apply int& OUTPUT {int& v1, int& v2, int& v3}
-%apply float& OUTPUT {float& x, float& y, float& z}
-
-class Tesselator {
- public:
-    %feature("autodoc", "1");
-    Tesselator(TopoDS_Shape aShape);
-    %feature("autodoc", "1");
-    ~Tesselator();
-    %feature("kwargs") Compute;
-    void Compute(bool compute_edges=false, float mesh_quality=1.0, bool parallel=false);
-    void GetVertex(int ivert, float& x, float& y, float& z);
-    void GetNormal(int inorm, float& x, float& y, float& z);
-    void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);
-    void GetEdgeVertex(int iEdge, int ivert, float& x, float& y, float& z);
-    float* VerticesList();
-    int ObjGetTriangleCount();
-    int ObjGetInvalidTriangleCount();
-    int ObjGetVertexCount();
-    int ObjGetNormalCount();
-    int ObjGetEdgeCount();
-    int ObjEdgeGetVertexCount(int iEdge);
-    std::string ExportShapeToX3DIndexedFaceSet();
-    std::string ExportShapeToThreejsJSONString(char *shape_function_name);
-    %feature("kwargs") ExportShapeToX3D;
-    void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);
-    std::vector<float> GetVerticesPositionAsTuple();
-    std::vector<float> GetNormalsAsTuple();
-};
 
 class Display3d {
  public:
@@ -136,5 +94,4 @@ class Display3d {
         }
         Py_RETURN_NONE;
     }
-
 };

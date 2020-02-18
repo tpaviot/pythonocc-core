@@ -48,7 +48,7 @@ from OCC.Core.gp import gp_Pnt, gp_Dir
 from OCC.Core.TopoDS import TopoDS_Compound
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
 from OCC.Core.BRep import BRep_Builder
-from OCC.Core.Visualization import Tesselator
+from OCC.Core.Tesselator import ShapeTesselator
 
 from OCC.Extend.TopologyUtils import (TopologyExplorer, is_edge, is_wire, discretize_edge,
                                       discretize_wire, get_type_as_string)
@@ -682,7 +682,7 @@ class JupyterRenderer:
                         transparency=False,
                         opacity=1.):
         # first, compute the tesselation
-        tess = Tesselator(shp)
+        tess = ShapeTesselator(shp)
         tess.Compute(compute_edges=render_edges,
                      mesh_quality=quality,
                      parallel=True)
