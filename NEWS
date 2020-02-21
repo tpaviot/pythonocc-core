@@ -1,4 +1,27 @@
 ==========================
+Version 7.4.0 - February2020
+
+This release requires opencascade 7.4.0
+
+* jupyter : improved webgl display, added utility fonctions (abb, oobb, mass computation etc.), fixed edges display wrong line type (dash)
+
+* display : added PySide2 to the backend list
+
+* DataExchange : fixes step loader when more than one root
+
+* DataExchange : added SVG exporter (possibility to render svg in jupyter)
+
+* wrapper : fixed for Standard_Integer parameters returned by reference
+
+* wrapper : improved wrapper for NCollection_DataMap
+
+* wrapper : removed unnecessary %nodefaultctor swig directive, that prevent using default constructor for many classes
+
+* demos : many fixes, improvements, and new examples
+
+* lgtm and codacy quality fixes
+
+==========================
 Version 7.4.0rc1 - December 2019
 
 This release requires opencascade 7.4.0
@@ -14,7 +37,6 @@ This release requires opencascade 7.4.0
 * webgl : html and js fixes in x3dom and threejs renderers, simple_server uses flask if available
 
 * minor lgtm fixes
-
 
 ==========================
 Version 7.4.0beta2 - December 2019

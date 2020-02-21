@@ -55,8 +55,7 @@ If you have many cpus, you can increase the compilation speed with:
 
     make -j$ncpus
 
-According to your machine/os/ncpus, the total compilation time shold be
-between 5 to 15 minutes.
+According to your machine/os/ncpus, the total compilation time should be around 15 minutes.
 
 Then
 

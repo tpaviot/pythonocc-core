@@ -3,7 +3,7 @@
 [![Downloads Badge](https://anaconda.org/pythonocc/pythonocc-core/badges/downloads.svg)](https://anaconda.org/pythonocc/pythonocc-core)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tpaviot/pythonocc-core.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tpaviot/pythonocc-core/context:python)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67c121324b8d4f37bc27029464c87020)](https://www.codacy.com/app/tpaviot/pythonocc-core?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tpaviot/pythonocc-core&amp;utm_campaign=Badge_Grade)
-[![Join the chat at https://gitter.im/tpaviot/pythonocc-core](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tpaviot/pythonocc-core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/master)
 
 pythonocc-core
 --------------
@@ -12,29 +12,47 @@ About
 -----
 
 pythonocc is a python package whose purpose is to provide 3D modeling
-features. It is intended to developers who aim at developing
-CAD/PDM/PLM applications.
+features. It is intended to CAD/PDM/PLM and BIM related development.
 
-Latest release : [pythonocc-core 7.4.0rc1 (december 2019)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.4.0rc1)
+Latest release : [pythonocc-core 7.4.0 (february 2020)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.4.0)
 
-Build from source
------------------
+Features
+--------
+pythonocc provides the following features:
 
-Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INSTALL.md) instructions where you find compilation instructions for all platforms.
+*   a full access from Python to almost all af the thousand OpenCascade C++ classes. Classes and methods/functions share the same names, and, as possible as it can be, the same signature
+
+*   3D visualization from the most famous Python Gui (pyQt, PySide1 and 2, wxPython)
+
+*   3D visualization in a web browser using WebGl and/or x3dom renderers
+
+*   3D visualization and work within a jupyter notebook
+
+*   Various utility Python classes/methods for DataExchange, Topology operations, intertia computations etc.
+
+Try online at mybinder
+----------------------
+
+Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/master) to open a jupyter notebook running pythonocc-core 7.4.0, gmesh 4.5.2 (<http://gmsh.info/>) and latest IfcOpenshell (<https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.6.0>) dev branch.
 
 Download/install binaries for Linux/OSX/Windows
 -----------------------------------------------
 
-pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc and conda-forge conda channels) for python 3.5, 3.6 and 3.7. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.7:
+pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the dlr-sc and conda-forge conda channels) for python 3.6 and 3.7. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.7:
 
 ```bash
 # first create an environment
 conda create --name=whatever-name python=3.7
 source activate whatever-name
-conda install -c dlr-sc -c pythonocc pythonocc-core=7.4.0rc1
+conda install -c dlr-sc -c pythonocc pythonocc-core=7.4.0
 ```
 
 Conda packages are provided for python 3.6 and 3.7.
+
+Build from source by yourself
+-----------------------------
+
+Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INSTALL.md) instructions where you find compilation instructions for all platforms.
 
 Other pythonocc related resources
 ---------------------------------
