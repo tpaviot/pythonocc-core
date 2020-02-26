@@ -31,7 +31,8 @@ from OCC.Core.BRepBndLib import brepbndlib_Add
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
 from OCC.Core.BRepBuilderAPI import (BRepBuilderAPI_MakeVertex,
-                                     BRepBuilderAPI_MakeEdge)
+                                     BRepBuilderAPI_MakeEdge,
+                                     BRepBuilderAPI_Sewing)
 from OCC.Core.gp import (gp_Pnt, gp_Vec, gp_Pnt2d, gp_Lin, gp_Dir, gp_Ax2,
                          gp_Quaternion, gp_QuaternionSLerp, gp_XYZ, gp_Mat)
 from OCC.Core.math import math_Matrix, math_Vector
@@ -488,19 +489,23 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertIsInstance(s, ShapeAnalysis_Curve)
 
     def test_handling_exceptions(self):
-        """ asserts that handling of OCC exceptions is handled correctly in pythonocc
-
-        See Also
-        --------
-
-        issue #259 -- Standard errors like Standard_OutOfRange not caught
-
+        """ asserts that handling of OCC exceptions is handled correctly catched
+        see issue #259 -- Standard errors like Standard_OutOfRange not caught
         """
+        # Standard_OutOfRange
         with self.assertRaises(RuntimeError):
             gp_Dir(0, 0, 1).Coord(-1)
         # StdFail_NotDone
         with self.assertRaises(RuntimeError):
             BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, 0), gp_Pnt(0, 0, 0)).Edge()
+        # Standard_DomainError
+        with self.assertRaises(RuntimeError):
+            BRepPrimAPI_MakeBox(0, 0, 0)
+        # Standard_OutOfRange, related to specific issue in #778
+        # Note: the exception is raised if and only if OCCT is compiled
+        # using -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF
+        with self.assertRaises(RuntimeError):
+            BRepBuilderAPI_Sewing().FreeEdge(-1)
 
     def test_memory_handle_getobject(self):
         """
