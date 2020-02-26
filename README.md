@@ -3,7 +3,7 @@
 [![Downloads Badge](https://anaconda.org/pythonocc/pythonocc-core/badges/downloads.svg)](https://anaconda.org/pythonocc/pythonocc-core)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tpaviot/pythonocc-core.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tpaviot/pythonocc-core/context:python)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67c121324b8d4f37bc27029464c87020)](https://www.codacy.com/app/tpaviot/pythonocc-core?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tpaviot/pythonocc-core&amp;utm_campaign=Badge_Grade)
-[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/master)
+[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.4.0)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3686916.svg)](https://doi.org/10.5281/zenodo.3686916)
 
 pythonocc-core
@@ -34,7 +34,7 @@ pythonocc provides the following features:
 Try online at mybinder
 ----------------------
 
-Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/master) to open a jupyter notebook running pythonocc-core 7.4.0, gmesh 4.5.2 (<http://gmsh.info/>) and latest IfcOpenshell (<https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.6.0>) dev branch.
+Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.4.0) to open a jupyter notebook running latest pythonocc-core 7.4.0, gmesh 4.5.3 (<http://gmsh.info/>) and latest IfcOpenshell (<https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.6.0>) dev branch.
 
 Download/install binaries for Linux/OSX/Windows
 -----------------------------------------------
@@ -45,10 +45,16 @@ pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/p
 # first create an environment
 conda create --name=whatever-name python=3.7
 source activate whatever-name
-conda install -c dlr-sc -c pythonocc pythonocc-core=7.4.0
+conda install -c dlr-sc pythonocc-core=7.4.0
 ```
 
-Conda packages are provided for python 3.6 and 3.7.
+Conda packages are provided for python 3.6 and 3.7 at dlr-sc channel. conda-forge provides 3.7 and 3.8 binaries:
+```bash
+# first create an environment
+conda create --name=whatever-name python=3.8
+source activate whatever-name
+conda install -c conda-forge pythonocc-core=7.4.0
+```
 
 Build from source by yourself
 -----------------------------
