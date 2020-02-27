@@ -118,6 +118,7 @@ modes = itertools.cycle([TopAbs_FACE, TopAbs_EDGE,
 class Viewer3d(Display3d):
     def __init__(self, window_handle, parent=None):
         Display3d.__init__(self)
+        # enable antialiasing by default
         self._parent = parent  # the parent opengl GUI container
         self._window_handle = window_handle
         self._inited = False
@@ -205,20 +206,8 @@ class Viewer3d(Display3d):
         # necessary for text rendering
         self._struc_mgr = self.Context.MainPrsMgr().StructureManager()
 
-        # overlayer
-        ## TODO : code below is deprecated
-        ## for overlayers see
-        ## https://dev.opencascade.org/doc/overview/html/occt_dev_guides__upgrade.html
-        ##
-        # self.OverLayer = self.Viewer.Viewer().OverLayer()
-        # if self.OverLayer is None:
-        #     aMgr = V3d_LayerMgr(self.View)
-        #     self.OverLayer = aMgr.Overlay()
-        #     self.View.SetLayerMgr(aMgr)
-        # print("Layer manager created")
-        # height, width = self.View.Window().Size()
-        # print("Layer dimensions: %i, %i" % (height, width))
-        # self.OverLayer.SetViewport(height, width)
+        # by default, enable antialisaing
+        self.EnableAntiAliasing()
 
         # turn self._inited flag to True
         self._inited = True
@@ -542,14 +531,10 @@ class Viewer3d(Display3d):
         return self.DisplayShape(shapes, color=clr, update=update)
 
     def EnableAntiAliasing(self):
-        #self.View.SetAntialiasingOn()
-        #self.Repaint()
-        print("Warning: EnableAntiAliasing does not work as exce$")
+        self.SetNbMsaaSample(4)
 
     def DisableAntiAliasing(self):
-        #self.View.SetAntialiasingOff()
-        #self.Repaint()
-        print("Warning: DisableAntiAliasing does not work as exce$")
+        self.SetNbMsaaSample(0)
 
     def EraseAll(self):
         # nessecary to remove text added by DisplayMessage

@@ -213,6 +213,14 @@ void Display3d::ChangeRenderingParams(int Method,
   myV3dView->Redraw();
 }
 
+
+void Display3d::SetNbMsaaSample(int nb)
+{
+  Graphic3d_RenderingParams& aParams = myV3dView->ChangeRenderingParams();
+  aParams.NbMsaaSamples = nb;
+  myV3dView->Redraw();
+}
+
 void Display3d::SetAnaglyphMode(int mode)
 {
   Handle(Graphic3d_Camera) aCamera = myV3dView->Camera();

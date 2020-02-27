@@ -44,6 +44,8 @@ class Display3d {
     %feature("autodoc", "1");
     void SetAnaglyphMode(int mode);
     %feature("autodoc", "1");
+    void SetNbMsaaSample(int nb);
+    %feature("autodoc", "1");
     void ChangeRenderingParams(int  Method,
                                int  RaytracingDepth,
                                bool IsShadowEnabled,

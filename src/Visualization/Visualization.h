@@ -54,6 +54,7 @@ public:
 	Standard_EXPORT virtual ~Display3d();
 	Standard_EXPORT void Init(long window_handle);
   Standard_EXPORT void SetAnaglyphMode(int mode);
+  Standard_EXPORT void SetNbMsaaSample(int nb);
   Standard_EXPORT void ChangeRenderingParams(int Method,
                                              Standard_Integer        RaytracingDepth,
                                              Standard_Boolean        IsShadowEnabled,
