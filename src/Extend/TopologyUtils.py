@@ -44,7 +44,7 @@ class WireExplorer:
     '''
     def __init__(self, wire):
         if not isinstance(wire, TopoDS_Wire):
-            raise AsssertionError('not a TopoDS_Wire')
+            raise AssertionError('not a TopoDS_Wire')
         self.wire = wire
         self.wire_explorer = BRepTools_WireExplorer(self.wire)
         self.done = False
