@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -41,10 +41,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_localanalysis.htm
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<GeomAbs_module.hxx>
 #include<Geom_module.hxx>
-#include<GeomLProp_module.hxx>
+#include<GeomAbs_module.hxx>
 #include<Geom2d_module.hxx>
+#include<GeomLProp_module.hxx>
 #include<Geom2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -53,10 +53,15 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_localanalysis.htm
 %};
 %import Standard.i
 %import NCollection.i
-%import GeomAbs.i
 %import Geom.i
-%import GeomLProp.i
+%import GeomAbs.i
 %import Geom2d.i
+%import GeomLProp.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum LocalAnalysis_StatusErrorType {
 	LocalAnalysis_NullFirstDerivative = 0,
@@ -67,6 +72,18 @@ enum LocalAnalysis_StatusErrorType {
 };
 
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+
+class LocalAnalysis_StatusErrorType:
+	LocalAnalysis_NullFirstDerivative = 0
+	LocalAnalysis_NullSecondDerivative = 1
+	LocalAnalysis_TangentNotDefined = 2
+	LocalAnalysis_NormalNotDefined = 3
+	LocalAnalysis_CurvatureNotDefined = 4
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */
@@ -83,26 +100,6 @@ enum LocalAnalysis_StatusErrorType {
 %rename(localanalysis) LocalAnalysis;
 class LocalAnalysis {
 	public:
-		/****************** Dump ******************/
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "* This class compute s and gives tools to check the local continuity between two points situated on 2 curves) //! This fonction gives informations about a variable CurveContinuity
-	:param surfconti:
-	:type surfconti: LocalAnalysis_SurfaceContinuity
-	:param o:
-	:type o: Standard_OStream
-	:rtype: void") Dump;
-		static void Dump (const LocalAnalysis_SurfaceContinuity & surfconti,Standard_OStream & o);
-
-		/****************** Dump ******************/
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "* This fonction gives informations about a variable SurfaceContinuity
-	:param curvconti:
-	:type curvconti: LocalAnalysis_CurveContinuity
-	:param o:
-	:type o: Standard_OStream
-	:rtype: void") Dump;
-		static void Dump (const LocalAnalysis_CurveContinuity & curvconti,Standard_OStream & o);
-
 };
 
 
@@ -117,117 +114,199 @@ class LocalAnalysis {
 **************************************/
 class LocalAnalysis_CurveContinuity {
 	public:
+		/****************** LocalAnalysis_CurveContinuity ******************/
+		%feature("compactdefaultargs") LocalAnalysis_CurveContinuity;
+		%feature("autodoc", "-u1 is the parameter of the point on curv1 -u2 is the parameter of the point on curv2 -order is the required continuity: geomabs_c0 geomabs_c1 geomabs_c2 geomabs_g1 geomabs_g2 //! -epsnul is used to detect a a vector with nul magnitude (in mm) //! -epsc0 is used for c0 continuity to confuse two points (in mm) //! -epsc1 is an angular tolerance in radians used for c1 continuity to compare the angle between the first derivatives //! -epsc2 is an angular tolerance in radians used for c2 continuity to compare the angle between the second derivatives //! -epsg1 is an angular tolerance in radians used for g1 continuity to compare the angle between the tangents //! -epsg2 is an angular tolerance in radians used for g2 continuity to compare the angle between the normals //! - percent : percentage of curvature variation (unitless) used for g2 continuity //! - maxlen is the maximum length of curv1 or curv2 in meters used to detect nul curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case c0 -------- - the distance between p1 and p2 with p1=curv1 (u1) and p2=curv2(u2) //! case c1 ------- //! - the angle between the first derivatives dcurv1(u1)  dcurv2(u2) -------- and --------- du  du //! - the ratio between the magnitudes of the first derivatives //! the angle value is between 0 and pi/2 //! case c2 ------- - the angle between the second derivatives 2  2 d curv1(u1) d curv2(u2) ---------- ---------- 2  2 du du //! the angle value is between 0 and pi/2 //! - the ratio between the magnitudes of the second derivatives //! case g1 ------- the angle between the tangents at each point //! the angle value is between 0 and pi/2 //! case g2 ------- -the angle between the normals at each point //! the angle value is between 0 and pi/2 //! - the relative variation of curvature: |curvat1-curvat2| ------------------ 1/2 (curvat1*curvat2) //! where curvat1 is the curvature at the first point and curvat2 the curvature at the second point.
+
+Parameters
+----------
+Curv1: Geom_Curve
+u1: float
+Curv2: Geom_Curve
+u2: float
+Order: GeomAbs_Shape
+EpsNul: float,optional
+	default value is 0.001
+EpsC0: float,optional
+	default value is 0.001
+EpsC1: float,optional
+	default value is 0.001
+EpsC2: float,optional
+	default value is 0.001
+EpsG1: float,optional
+	default value is 0.001
+EpsG2: float,optional
+	default value is 0.001
+Percent: float,optional
+	default value is 0.01
+Maxlen: float,optional
+	default value is 10000
+
+Returns
+-------
+None
+") LocalAnalysis_CurveContinuity;
+		 LocalAnalysis_CurveContinuity(const opencascade::handle<Geom_Curve> & Curv1, const Standard_Real u1, const opencascade::handle<Geom_Curve> & Curv2, const Standard_Real u2, const GeomAbs_Shape Order, const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real EpsG2 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
+
 		/****************** C0Value ******************/
 		%feature("compactdefaultargs") C0Value;
-		%feature("autodoc", ":rtype: float") C0Value;
-		Standard_Real C0Value ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C0Value;
+		Standard_Real C0Value();
 
 		/****************** C1Angle ******************/
 		%feature("compactdefaultargs") C1Angle;
-		%feature("autodoc", ":rtype: float") C1Angle;
-		Standard_Real C1Angle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C1Angle;
+		Standard_Real C1Angle();
 
 		/****************** C1Ratio ******************/
 		%feature("compactdefaultargs") C1Ratio;
-		%feature("autodoc", ":rtype: float") C1Ratio;
-		Standard_Real C1Ratio ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C1Ratio;
+		Standard_Real C1Ratio();
 
 		/****************** C2Angle ******************/
 		%feature("compactdefaultargs") C2Angle;
-		%feature("autodoc", ":rtype: float") C2Angle;
-		Standard_Real C2Angle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C2Angle;
+		Standard_Real C2Angle();
 
 		/****************** C2Ratio ******************/
 		%feature("compactdefaultargs") C2Ratio;
-		%feature("autodoc", ":rtype: float") C2Ratio;
-		Standard_Real C2Ratio ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C2Ratio;
+		Standard_Real C2Ratio();
 
 		/****************** ContinuityStatus ******************/
 		%feature("compactdefaultargs") ContinuityStatus;
-		%feature("autodoc", ":rtype: GeomAbs_Shape") ContinuityStatus;
-		GeomAbs_Shape ContinuityStatus ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+GeomAbs_Shape
+") ContinuityStatus;
+		GeomAbs_Shape ContinuityStatus();
 
 		/****************** G1Angle ******************/
 		%feature("compactdefaultargs") G1Angle;
-		%feature("autodoc", ":rtype: float") G1Angle;
-		Standard_Real G1Angle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") G1Angle;
+		Standard_Real G1Angle();
 
 		/****************** G2Angle ******************/
 		%feature("compactdefaultargs") G2Angle;
-		%feature("autodoc", ":rtype: float") G2Angle;
-		Standard_Real G2Angle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") G2Angle;
+		Standard_Real G2Angle();
 
 		/****************** G2CurvatureVariation ******************/
 		%feature("compactdefaultargs") G2CurvatureVariation;
-		%feature("autodoc", ":rtype: float") G2CurvatureVariation;
-		Standard_Real G2CurvatureVariation ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") G2CurvatureVariation;
+		Standard_Real G2CurvatureVariation();
 
 		/****************** IsC0 ******************/
 		%feature("compactdefaultargs") IsC0;
-		%feature("autodoc", ":rtype: bool") IsC0;
-		Standard_Boolean IsC0 ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsC0;
+		Standard_Boolean IsC0();
 
 		/****************** IsC1 ******************/
 		%feature("compactdefaultargs") IsC1;
-		%feature("autodoc", ":rtype: bool") IsC1;
-		Standard_Boolean IsC1 ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsC1;
+		Standard_Boolean IsC1();
 
 		/****************** IsC2 ******************/
 		%feature("compactdefaultargs") IsC2;
-		%feature("autodoc", ":rtype: bool") IsC2;
-		Standard_Boolean IsC2 ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsC2;
+		Standard_Boolean IsC2();
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", ":rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** IsG1 ******************/
 		%feature("compactdefaultargs") IsG1;
-		%feature("autodoc", ":rtype: bool") IsG1;
-		Standard_Boolean IsG1 ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsG1;
+		Standard_Boolean IsG1();
 
 		/****************** IsG2 ******************/
 		%feature("compactdefaultargs") IsG2;
-		%feature("autodoc", ":rtype: bool") IsG2;
-		Standard_Boolean IsG2 ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** LocalAnalysis_CurveContinuity ******************/
-		%feature("compactdefaultargs") LocalAnalysis_CurveContinuity;
-		%feature("autodoc", "* -u1 is the parameter of the point on Curv1 -u2 is the parameter of the point on Curv2 -Order is the required continuity: GeomAbs_C0 GeomAbs_C1 GeomAbs_C2 GeomAbs_G1 GeomAbs_G2 //! -EpsNul is used to detect a a vector with nul magnitude (in mm) //! -EpsC0 is used for C0 continuity to confuse two points (in mm) //! -EpsC1 is an angular tolerance in radians used for C1 continuity to compare the angle between the first derivatives //! -EpsC2 is an angular tolerance in radians used for C2 continuity to compare the angle between the second derivatives //! -EpsG1 is an angular tolerance in radians used for G1 continuity to compare the angle between the tangents //! -EpsG2 is an angular tolerance in radians used for G2 continuity to compare the angle between the normals //! - percent : percentage of curvature variation (unitless) used for G2 continuity //! - Maxlen is the maximum length of Curv1 or Curv2 in meters used to detect nul curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case C0 -------- - the distance between P1 and P2 with P1=Curv1 (u1) and P2=Curv2(u2) //! case C1 ------- //! - the angle between the first derivatives dCurv1(u1)  dCurv2(u2) -------- and --------- du  du //! - the ratio between the magnitudes of the first derivatives //! the angle value is between 0 and PI/2 //! case C2 ------- - the angle between the second derivatives 2  2 d Curv1(u1) d Curv2(u2) ---------- ---------- 2  2 du du //! the angle value is between 0 and PI/2 //! - the ratio between the magnitudes of the second derivatives //! case G1 ------- the angle between the tangents at each point //! the angle value is between 0 and PI/2 //! case G2 ------- -the angle between the normals at each point //! the angle value is between 0 and PI/2 //! - the relative variation of curvature: |curvat1-curvat2| ------------------ 1/2 (curvat1*curvat2) //! where curvat1 is the curvature at the first point and curvat2 the curvature at the second point
-	:param Curv1:
-	:type Curv1: Geom_Curve
-	:param u1:
-	:type u1: float
-	:param Curv2:
-	:type Curv2: Geom_Curve
-	:param u2:
-	:type u2: float
-	:param Order:
-	:type Order: GeomAbs_Shape
-	:param EpsNul: default value is 0.001
-	:type EpsNul: float
-	:param EpsC0: default value is 0.001
-	:type EpsC0: float
-	:param EpsC1: default value is 0.001
-	:type EpsC1: float
-	:param EpsC2: default value is 0.001
-	:type EpsC2: float
-	:param EpsG1: default value is 0.001
-	:type EpsG1: float
-	:param EpsG2: default value is 0.001
-	:type EpsG2: float
-	:param Percent: default value is 0.01
-	:type Percent: float
-	:param Maxlen: default value is 10000
-	:type Maxlen: float
-	:rtype: None") LocalAnalysis_CurveContinuity;
-		 LocalAnalysis_CurveContinuity (const opencascade::handle<Geom_Curve> & Curv1,const Standard_Real u1,const opencascade::handle<Geom_Curve> & Curv2,const Standard_Real u2,const GeomAbs_Shape Order,const Standard_Real EpsNul = 0.001,const Standard_Real EpsC0 = 0.001,const Standard_Real EpsC1 = 0.001,const Standard_Real EpsC2 = 0.001,const Standard_Real EpsG1 = 0.001,const Standard_Real EpsG2 = 0.001,const Standard_Real Percent = 0.01,const Standard_Real Maxlen = 10000);
+Returns
+-------
+bool
+") IsG2;
+		Standard_Boolean IsG2();
 
 		/****************** StatusError ******************/
 		%feature("compactdefaultargs") StatusError;
-		%feature("autodoc", ":rtype: LocalAnalysis_StatusErrorType") StatusError;
-		LocalAnalysis_StatusErrorType StatusError ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+LocalAnalysis_StatusErrorType
+") StatusError;
+		LocalAnalysis_StatusErrorType StatusError();
 
 };
 
@@ -243,196 +322,305 @@ class LocalAnalysis_CurveContinuity {
 ****************************************/
 class LocalAnalysis_SurfaceContinuity {
 	public:
+		/****************** LocalAnalysis_SurfaceContinuity ******************/
+		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
+		%feature("autodoc", "-u1,v1 are the parameters of the point on surf1 -u2,v2 are the parameters of the point on surf2 -order is the required continuity: geomabs_c0 geomabs_c1 geomabs_c2 geomabs_g1 geomabs_g2 //! -epsnul is used to detect a a vector with nul magnitude //! -epsc0 is used for c0 continuity to confuse two points (in mm) //! -epsc1 is an angular tolerance in radians used for c1 continuity to compare the angle between the first derivatives //! -epsc2 is an angular tolerance in radians used for c2 continuity to compare the angle between the second derivatives //! -epsg1 is an angular tolerance in radians used for g1 continuity to compare the angle between the normals //! -percent : percentage of curvature variation (unitless) used for g2 continuity //! - maxlen is the maximum length of surf1 or surf2 in meters used to detect null curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case c0 -------- - the distance between p1 and p2 with p1=surf (u1,v1) and p2=surfv2(u2,v2) //! case c1 ------- //! - the angle between the first derivatives in u : //! dsurf1(u1,v1) dsurf2(u2,v2) ----------- and --------- du  du //! the angle value is between 0 and pi/2 //! - the angle between the first derivatives in v : //! dsurf1(u1,v1) dsurf2(u2,v2) -------- and --------- dv  dv //! - the ratio between the magnitudes of the first derivatives in u - the ratio between the magnitudes of the first derivatives in v //! the angle value is between 0 and pi/2 //! case c2 ------- - the angle between the second derivatives in u 2 2 d surf1(u1,v1) d surf2(u2,v2) ---------- ---------- 2 2 d u d u //! - the ratio between the magnitudes of the second derivatives in u - the ratio between the magnitudes of the second derivatives in v //! the angle value is between 0 and pi/2 //! case g1 ------- -the angle between the normals at each point the angle value is between 0 and pi/2 //! case g2 ------- - the maximum normal curvature gap between the two points.
+
+Parameters
+----------
+Surf1: Geom_Surface
+u1: float
+v1: float
+Surf2: Geom_Surface
+u2: float
+v2: float
+Order: GeomAbs_Shape
+EpsNul: float,optional
+	default value is 0.001
+EpsC0: float,optional
+	default value is 0.001
+EpsC1: float,optional
+	default value is 0.001
+EpsC2: float,optional
+	default value is 0.001
+EpsG1: float,optional
+	default value is 0.001
+Percent: float,optional
+	default value is 0.01
+Maxlen: float,optional
+	default value is 10000
+
+Returns
+-------
+None
+") LocalAnalysis_SurfaceContinuity;
+		 LocalAnalysis_SurfaceContinuity(const opencascade::handle<Geom_Surface> & Surf1, const Standard_Real u1, const Standard_Real v1, const opencascade::handle<Geom_Surface> & Surf2, const Standard_Real u2, const Standard_Real v2, const GeomAbs_Shape Order, const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
+
+		/****************** LocalAnalysis_SurfaceContinuity ******************/
+		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+curv1: Geom2d_Curve
+curv2: Geom2d_Curve
+U: float
+Surf1: Geom_Surface
+Surf2: Geom_Surface
+Order: GeomAbs_Shape
+EpsNul: float,optional
+	default value is 0.001
+EpsC0: float,optional
+	default value is 0.001
+EpsC1: float,optional
+	default value is 0.001
+EpsC2: float,optional
+	default value is 0.001
+EpsG1: float,optional
+	default value is 0.001
+Percent: float,optional
+	default value is 0.01
+Maxlen: float,optional
+	default value is 10000
+
+Returns
+-------
+None
+") LocalAnalysis_SurfaceContinuity;
+		 LocalAnalysis_SurfaceContinuity(const opencascade::handle<Geom2d_Curve> & curv1, const opencascade::handle<Geom2d_Curve> & curv2, const Standard_Real U, const opencascade::handle<Geom_Surface> & Surf1, const opencascade::handle<Geom_Surface> & Surf2, const GeomAbs_Shape Order, const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
+
+		/****************** LocalAnalysis_SurfaceContinuity ******************/
+		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
+		%feature("autodoc", "This constructor is used when we want to compute many analysis. after we use the method computeanalysis.
+
+Parameters
+----------
+EpsNul: float,optional
+	default value is 0.001
+EpsC0: float,optional
+	default value is 0.001
+EpsC1: float,optional
+	default value is 0.001
+EpsC2: float,optional
+	default value is 0.001
+EpsG1: float,optional
+	default value is 0.001
+Percent: float,optional
+	default value is 0.01
+Maxlen: float,optional
+	default value is 10000
+
+Returns
+-------
+None
+") LocalAnalysis_SurfaceContinuity;
+		 LocalAnalysis_SurfaceContinuity(const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
+
 		/****************** C0Value ******************/
 		%feature("compactdefaultargs") C0Value;
-		%feature("autodoc", ":rtype: float") C0Value;
-		Standard_Real C0Value ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C0Value;
+		Standard_Real C0Value();
 
 		/****************** C1UAngle ******************/
 		%feature("compactdefaultargs") C1UAngle;
-		%feature("autodoc", ":rtype: float") C1UAngle;
-		Standard_Real C1UAngle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C1UAngle;
+		Standard_Real C1UAngle();
 
 		/****************** C1URatio ******************/
 		%feature("compactdefaultargs") C1URatio;
-		%feature("autodoc", ":rtype: float") C1URatio;
-		Standard_Real C1URatio ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C1URatio;
+		Standard_Real C1URatio();
 
 		/****************** C1VAngle ******************/
 		%feature("compactdefaultargs") C1VAngle;
-		%feature("autodoc", ":rtype: float") C1VAngle;
-		Standard_Real C1VAngle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C1VAngle;
+		Standard_Real C1VAngle();
 
 		/****************** C1VRatio ******************/
 		%feature("compactdefaultargs") C1VRatio;
-		%feature("autodoc", ":rtype: float") C1VRatio;
-		Standard_Real C1VRatio ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C1VRatio;
+		Standard_Real C1VRatio();
 
 		/****************** C2UAngle ******************/
 		%feature("compactdefaultargs") C2UAngle;
-		%feature("autodoc", ":rtype: float") C2UAngle;
-		Standard_Real C2UAngle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C2UAngle;
+		Standard_Real C2UAngle();
 
 		/****************** C2URatio ******************/
 		%feature("compactdefaultargs") C2URatio;
-		%feature("autodoc", ":rtype: float") C2URatio;
-		Standard_Real C2URatio ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C2URatio;
+		Standard_Real C2URatio();
 
 		/****************** C2VAngle ******************/
 		%feature("compactdefaultargs") C2VAngle;
-		%feature("autodoc", ":rtype: float") C2VAngle;
-		Standard_Real C2VAngle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C2VAngle;
+		Standard_Real C2VAngle();
 
 		/****************** C2VRatio ******************/
 		%feature("compactdefaultargs") C2VRatio;
-		%feature("autodoc", ":rtype: float") C2VRatio;
-		Standard_Real C2VRatio ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") C2VRatio;
+		Standard_Real C2VRatio();
 
 		/****************** ComputeAnalysis ******************/
 		%feature("compactdefaultargs") ComputeAnalysis;
-		%feature("autodoc", ":param Surf1:
-	:type Surf1: GeomLProp_SLProps
-	:param Surf2:
-	:type Surf2: GeomLProp_SLProps
-	:param Order:
-	:type Order: GeomAbs_Shape
-	:rtype: None") ComputeAnalysis;
-		void ComputeAnalysis (GeomLProp_SLProps & Surf1,GeomLProp_SLProps & Surf2,const GeomAbs_Shape Order);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Surf1: GeomLProp_SLProps
+Surf2: GeomLProp_SLProps
+Order: GeomAbs_Shape
+
+Returns
+-------
+None
+") ComputeAnalysis;
+		void ComputeAnalysis(GeomLProp_SLProps & Surf1, GeomLProp_SLProps & Surf2, const GeomAbs_Shape Order);
 
 		/****************** ContinuityStatus ******************/
 		%feature("compactdefaultargs") ContinuityStatus;
-		%feature("autodoc", ":rtype: GeomAbs_Shape") ContinuityStatus;
-		GeomAbs_Shape ContinuityStatus ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+GeomAbs_Shape
+") ContinuityStatus;
+		GeomAbs_Shape ContinuityStatus();
 
 		/****************** G1Angle ******************/
 		%feature("compactdefaultargs") G1Angle;
-		%feature("autodoc", ":rtype: float") G1Angle;
-		Standard_Real G1Angle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") G1Angle;
+		Standard_Real G1Angle();
 
 		/****************** G2CurvatureGap ******************/
 		%feature("compactdefaultargs") G2CurvatureGap;
-		%feature("autodoc", ":rtype: float") G2CurvatureGap;
-		Standard_Real G2CurvatureGap ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") G2CurvatureGap;
+		Standard_Real G2CurvatureGap();
 
 		/****************** IsC0 ******************/
 		%feature("compactdefaultargs") IsC0;
-		%feature("autodoc", ":rtype: bool") IsC0;
-		Standard_Boolean IsC0 ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsC0;
+		Standard_Boolean IsC0();
 
 		/****************** IsC1 ******************/
 		%feature("compactdefaultargs") IsC1;
-		%feature("autodoc", ":rtype: bool") IsC1;
-		Standard_Boolean IsC1 ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsC1;
+		Standard_Boolean IsC1();
 
 		/****************** IsC2 ******************/
 		%feature("compactdefaultargs") IsC2;
-		%feature("autodoc", ":rtype: bool") IsC2;
-		Standard_Boolean IsC2 ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsC2;
+		Standard_Boolean IsC2();
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", ":rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** IsG1 ******************/
 		%feature("compactdefaultargs") IsG1;
-		%feature("autodoc", ":rtype: bool") IsG1;
-		Standard_Boolean IsG1 ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsG1;
+		Standard_Boolean IsG1();
 
 		/****************** IsG2 ******************/
 		%feature("compactdefaultargs") IsG2;
-		%feature("autodoc", ":rtype: bool") IsG2;
-		Standard_Boolean IsG2 ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** LocalAnalysis_SurfaceContinuity ******************/
-		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
-		%feature("autodoc", "* -u1,v1 are the parameters of the point on Surf1 -u2,v2 are the parameters of the point on Surf2 -Order is the required continuity: GeomAbs_C0 GeomAbs_C1 GeomAbs_C2 GeomAbs_G1 GeomAbs_G2 //! -EpsNul is used to detect a a vector with nul magnitude //! -EpsC0 is used for C0 continuity to confuse two points (in mm) //! -EpsC1 is an angular tolerance in radians used for C1 continuity to compare the angle between the first derivatives //! -EpsC2 is an angular tolerance in radians used for C2 continuity to compare the angle between the second derivatives //! -EpsG1 is an angular tolerance in radians used for G1 continuity to compare the angle between the normals //! -Percent : percentage of curvature variation (unitless) used for G2 continuity //! - Maxlen is the maximum length of Surf1 or Surf2 in meters used to detect null curvature (in mm) //! the constructor computes the quantities which are necessary to check the continuity in the following cases: //! case C0 -------- - the distance between P1 and P2 with P1=Surf (u1,v1) and P2=Surfv2(u2,v2) //! case C1 ------- //! - the angle between the first derivatives in u : //! dSurf1(u1,v1) dSurf2(u2,v2) ----------- and --------- du  du //! the angle value is between 0 and PI/2 //! - the angle between the first derivatives in v : //! dSurf1(u1,v1) dSurf2(u2,v2) -------- and --------- dv  dv //! - the ratio between the magnitudes of the first derivatives in u - the ratio between the magnitudes of the first derivatives in v //! the angle value is between 0 and pi/2 //! case C2 ------- - the angle between the second derivatives in u 2 2 d Surf1(u1,v1) d Surf2(u2,v2) ---------- ---------- 2 2 d u d u //! - the ratio between the magnitudes of the second derivatives in u - the ratio between the magnitudes of the second derivatives in v //! the angle value is between 0 and PI/2 //! case G1 ------- -the angle between the normals at each point the angle value is between 0 and PI/2 //! case G2 ------- - the maximum normal curvature gap between the two points
-	:param Surf1:
-	:type Surf1: Geom_Surface
-	:param u1:
-	:type u1: float
-	:param v1:
-	:type v1: float
-	:param Surf2:
-	:type Surf2: Geom_Surface
-	:param u2:
-	:type u2: float
-	:param v2:
-	:type v2: float
-	:param Order:
-	:type Order: GeomAbs_Shape
-	:param EpsNul: default value is 0.001
-	:type EpsNul: float
-	:param EpsC0: default value is 0.001
-	:type EpsC0: float
-	:param EpsC1: default value is 0.001
-	:type EpsC1: float
-	:param EpsC2: default value is 0.001
-	:type EpsC2: float
-	:param EpsG1: default value is 0.001
-	:type EpsG1: float
-	:param Percent: default value is 0.01
-	:type Percent: float
-	:param Maxlen: default value is 10000
-	:type Maxlen: float
-	:rtype: None") LocalAnalysis_SurfaceContinuity;
-		 LocalAnalysis_SurfaceContinuity (const opencascade::handle<Geom_Surface> & Surf1,const Standard_Real u1,const Standard_Real v1,const opencascade::handle<Geom_Surface> & Surf2,const Standard_Real u2,const Standard_Real v2,const GeomAbs_Shape Order,const Standard_Real EpsNul = 0.001,const Standard_Real EpsC0 = 0.001,const Standard_Real EpsC1 = 0.001,const Standard_Real EpsC2 = 0.001,const Standard_Real EpsG1 = 0.001,const Standard_Real Percent = 0.01,const Standard_Real Maxlen = 10000);
-
-		/****************** LocalAnalysis_SurfaceContinuity ******************/
-		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
-		%feature("autodoc", ":param curv1:
-	:type curv1: Geom2d_Curve
-	:param curv2:
-	:type curv2: Geom2d_Curve
-	:param U:
-	:type U: float
-	:param Surf1:
-	:type Surf1: Geom_Surface
-	:param Surf2:
-	:type Surf2: Geom_Surface
-	:param Order:
-	:type Order: GeomAbs_Shape
-	:param EpsNul: default value is 0.001
-	:type EpsNul: float
-	:param EpsC0: default value is 0.001
-	:type EpsC0: float
-	:param EpsC1: default value is 0.001
-	:type EpsC1: float
-	:param EpsC2: default value is 0.001
-	:type EpsC2: float
-	:param EpsG1: default value is 0.001
-	:type EpsG1: float
-	:param Percent: default value is 0.01
-	:type Percent: float
-	:param Maxlen: default value is 10000
-	:type Maxlen: float
-	:rtype: None") LocalAnalysis_SurfaceContinuity;
-		 LocalAnalysis_SurfaceContinuity (const opencascade::handle<Geom2d_Curve> & curv1,const opencascade::handle<Geom2d_Curve> & curv2,const Standard_Real U,const opencascade::handle<Geom_Surface> & Surf1,const opencascade::handle<Geom_Surface> & Surf2,const GeomAbs_Shape Order,const Standard_Real EpsNul = 0.001,const Standard_Real EpsC0 = 0.001,const Standard_Real EpsC1 = 0.001,const Standard_Real EpsC2 = 0.001,const Standard_Real EpsG1 = 0.001,const Standard_Real Percent = 0.01,const Standard_Real Maxlen = 10000);
-
-		/****************** LocalAnalysis_SurfaceContinuity ******************/
-		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
-		%feature("autodoc", "* This constructor is used when we want to compute many analysis. After we use the method ComputeAnalysis
-	:param EpsNul: default value is 0.001
-	:type EpsNul: float
-	:param EpsC0: default value is 0.001
-	:type EpsC0: float
-	:param EpsC1: default value is 0.001
-	:type EpsC1: float
-	:param EpsC2: default value is 0.001
-	:type EpsC2: float
-	:param EpsG1: default value is 0.001
-	:type EpsG1: float
-	:param Percent: default value is 0.01
-	:type Percent: float
-	:param Maxlen: default value is 10000
-	:type Maxlen: float
-	:rtype: None") LocalAnalysis_SurfaceContinuity;
-		 LocalAnalysis_SurfaceContinuity (const Standard_Real EpsNul = 0.001,const Standard_Real EpsC0 = 0.001,const Standard_Real EpsC1 = 0.001,const Standard_Real EpsC2 = 0.001,const Standard_Real EpsG1 = 0.001,const Standard_Real Percent = 0.01,const Standard_Real Maxlen = 10000);
+Returns
+-------
+bool
+") IsG2;
+		Standard_Boolean IsG2();
 
 		/****************** StatusError ******************/
 		%feature("compactdefaultargs") StatusError;
-		%feature("autodoc", ":rtype: LocalAnalysis_StatusErrorType") StatusError;
-		LocalAnalysis_StatusErrorType StatusError ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+LocalAnalysis_StatusErrorType
+") StatusError;
+		LocalAnalysis_StatusErrorType StatusError();
 
 };
 

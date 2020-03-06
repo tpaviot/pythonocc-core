@@ -1,0 +1,13 @@
+from typing import NewType, Optional, Tuple
+
+from OCC.Core.TColStd import *
+from OCC.Core.Standard import *
+from OCC.Core.NCollection import *
+from OCC.Core.TCollection import *
+
+
+class TColStd_HPackedMapOfInteger(Standard_Transient):
+	def __init__(self, NbBuckets: Optional[int]) -> None: ...
+	def __init__(self, theOther: TColStd_PackedMapOfInteger) -> None: ...
+	def ChangeMap(self) -> TColStd_PackedMapOfInteger: ...
+	def Map(self) -> TColStd_PackedMapOfInteger: ...

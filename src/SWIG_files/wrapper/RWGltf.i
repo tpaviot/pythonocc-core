@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -56,6 +56,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwgltf.html"
 %};
 %import Standard.i
 %import NCollection.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum RWGltf_GltfPrimitiveMode {
 	RWGltf_GltfPrimitiveMode_UNKNOWN = - 1,
@@ -133,6 +138,79 @@ enum RWGltf_GltfAccessorLayout {
 
 /* end public enums declaration */
 
+/* python proy classes for enums */
+%pythoncode {
+
+class RWGltf_GltfPrimitiveMode:
+	RWGltf_GltfPrimitiveMode_UNKNOWN = - 1
+	RWGltf_GltfPrimitiveMode_Points = 0
+	RWGltf_GltfPrimitiveMode_Lines = 1
+	RWGltf_GltfPrimitiveMode_LineLoop = 2
+	RWGltf_GltfPrimitiveMode_LineStrip = 3
+	RWGltf_GltfPrimitiveMode_Triangles = 4
+	RWGltf_GltfPrimitiveMode_TriangleStrip = 5
+	RWGltf_GltfPrimitiveMode_TriangleFan = 6
+
+class RWGltf_GltfBufferViewTarget:
+	RWGltf_GltfBufferViewTarget_UNKNOWN = 0
+	RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = 34962
+	RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = 34963
+
+class RWGltf_GltfArrayType:
+	RWGltf_GltfArrayType_UNKNOWN = 0
+	RWGltf_GltfArrayType_Indices = 1
+	RWGltf_GltfArrayType_Position = 2
+	RWGltf_GltfArrayType_Normal = 3
+	RWGltf_GltfArrayType_Color = 4
+	RWGltf_GltfArrayType_TCoord0 = 5
+	RWGltf_GltfArrayType_TCoord1 = 6
+	RWGltf_GltfArrayType_Joint = 7
+	RWGltf_GltfArrayType_Weight = 8
+
+class RWGltf_GltfRootElement:
+	RWGltf_GltfRootElement_Asset = 0
+	RWGltf_GltfRootElement_Scenes = 1
+	RWGltf_GltfRootElement_Scene = 2
+	RWGltf_GltfRootElement_Nodes = 3
+	RWGltf_GltfRootElement_Meshes = 4
+	RWGltf_GltfRootElement_Accessors = 5
+	RWGltf_GltfRootElement_BufferViews = 6
+	RWGltf_GltfRootElement_Buffers = 7
+	RWGltf_GltfRootElement_NB_MANDATORY = 8
+	RWGltf_GltfRootElement_Animations = RWGltf_GltfRootElement_NB_MANDATORY
+	RWGltf_GltfRootElement_Materials = 10
+	RWGltf_GltfRootElement_Programs = 11
+	RWGltf_GltfRootElement_Samplers = 12
+	RWGltf_GltfRootElement_Shaders = 13
+	RWGltf_GltfRootElement_Skins = 14
+	RWGltf_GltfRootElement_Techniques = 15
+	RWGltf_GltfRootElement_Textures = 16
+	RWGltf_GltfRootElement_Images = 17
+	RWGltf_GltfRootElement_ExtensionsUsed = 18
+	RWGltf_GltfRootElement_ExtensionsRequired = 19
+	RWGltf_GltfRootElement_NB = 20
+
+class RWGltf_GltfAccessorCompType:
+	RWGltf_GltfAccessorCompType_UNKNOWN = 0
+	RWGltf_GltfAccessorCompType_Int8 = 5120
+	RWGltf_GltfAccessorCompType_UInt8 = 5121
+	RWGltf_GltfAccessorCompType_Int16 = 5122
+	RWGltf_GltfAccessorCompType_UInt16 = 5123
+	RWGltf_GltfAccessorCompType_UInt32 = 5125
+	RWGltf_GltfAccessorCompType_Float32 = 5126
+
+class RWGltf_GltfAccessorLayout:
+	RWGltf_GltfAccessorLayout_UNKNOWN = 0
+	RWGltf_GltfAccessorLayout_Scalar = 1
+	RWGltf_GltfAccessorLayout_Vec2 = 2
+	RWGltf_GltfAccessorLayout_Vec3 = 3
+	RWGltf_GltfAccessorLayout_Vec4 = 4
+	RWGltf_GltfAccessorLayout_Mat2 = 5
+	RWGltf_GltfAccessorLayout_Mat3 = 6
+	RWGltf_GltfAccessorLayout_Mat4 = 7
+};
+/* end python proxy for enums */
+
 /* handles */
 %wrap_handle(RWGltf_MaterialCommon)
 %wrap_handle(RWGltf_MaterialMetallicRoughness)
@@ -161,9 +239,13 @@ class RWGltf_GltfAccessor {
 		Graphic3d_BndBox3d BndBox;
 		/****************** RWGltf_GltfAccessor ******************/
 		%feature("compactdefaultargs") RWGltf_GltfAccessor;
-		%feature("autodoc", "* //!< bounding box Empty constructor.
-	:rtype: None") RWGltf_GltfAccessor;
-		 RWGltf_GltfAccessor ();
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") RWGltf_GltfAccessor;
+		 RWGltf_GltfAccessor();
 
 };
 
@@ -186,8 +268,13 @@ class RWGltf_GltfBufferView {
 		RWGltf_GltfBufferViewTarget Target;
 		/****************** RWGltf_GltfBufferView ******************/
 		%feature("compactdefaultargs") RWGltf_GltfBufferView;
-		%feature("autodoc", ":rtype: None") RWGltf_GltfBufferView;
-		 RWGltf_GltfBufferView ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWGltf_GltfBufferView;
+		 RWGltf_GltfBufferView();
 
 };
 
@@ -224,22 +311,34 @@ class RWGltf_GltfFace {
 *********************************/
 class RWGltf_GltfPrimArrayData {
 	public:
-		opencascade::handle<NCollection_Buffer> StreamData;
+		opencascade::handle<NCollection_Buffer > StreamData;
 		TCollection_AsciiString StreamUri;
 		int64_t StreamOffset;
 		RWGltf_GltfAccessor Accessor;
 		RWGltf_GltfArrayType Type;
 		/****************** RWGltf_GltfPrimArrayData ******************/
 		%feature("compactdefaultargs") RWGltf_GltfPrimArrayData;
-		%feature("autodoc", ":rtype: None") RWGltf_GltfPrimArrayData;
-		 RWGltf_GltfPrimArrayData ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWGltf_GltfPrimArrayData;
+		 RWGltf_GltfPrimArrayData();
 
 		/****************** RWGltf_GltfPrimArrayData ******************/
 		%feature("compactdefaultargs") RWGltf_GltfPrimArrayData;
-		%feature("autodoc", ":param theType:
-	:type theType: RWGltf_GltfArrayType
-	:rtype: None") RWGltf_GltfPrimArrayData;
-		 RWGltf_GltfPrimArrayData (RWGltf_GltfArrayType theType);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theType: RWGltf_GltfArrayType
+
+Returns
+-------
+None
+") RWGltf_GltfPrimArrayData;
+		 RWGltf_GltfPrimArrayData(RWGltf_GltfArrayType theType);
 
 };
 
@@ -258,9 +357,9 @@ class RWGltf_GltfPrimArrayData {
 ******************************/
 class RWGltf_MaterialCommon : public Standard_Transient {
 	public:
-		opencascade::handle<Image_Texture> AmbientTexture;
-		opencascade::handle<Image_Texture> DiffuseTexture;
-		opencascade::handle<Image_Texture> SpecularTexture;
+		opencascade::handle<Image_Texture > AmbientTexture;
+		opencascade::handle<Image_Texture > DiffuseTexture;
+		opencascade::handle<Image_Texture > SpecularTexture;
 		TCollection_AsciiString Id;
 		TCollection_AsciiString Name;
 		Quantity_Color AmbientColor;
@@ -271,8 +370,13 @@ class RWGltf_MaterialCommon : public Standard_Transient {
 		Standard_ShortReal Transparency;
 		/****************** RWGltf_MaterialCommon ******************/
 		%feature("compactdefaultargs") RWGltf_MaterialCommon;
-		%feature("autodoc", ":rtype: None") RWGltf_MaterialCommon;
-		 RWGltf_MaterialCommon ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWGltf_MaterialCommon;
+		 RWGltf_MaterialCommon();
 
 };
 
@@ -290,11 +394,11 @@ class RWGltf_MaterialCommon : public Standard_Transient {
 *****************************************/
 class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 	public:
-		opencascade::handle<Image_Texture> BaseColorTexture;
-		opencascade::handle<Image_Texture> MetallicRoughnessTexture;
-		opencascade::handle<Image_Texture> EmissiveTexture;
-		opencascade::handle<Image_Texture> OcclusionTexture;
-		opencascade::handle<Image_Texture> NormalTexture;
+		opencascade::handle<Image_Texture > BaseColorTexture;
+		opencascade::handle<Image_Texture > MetallicRoughnessTexture;
+		opencascade::handle<Image_Texture > EmissiveTexture;
+		opencascade::handle<Image_Texture > OcclusionTexture;
+		opencascade::handle<Image_Texture > NormalTexture;
 		TCollection_AsciiString Id;
 		TCollection_AsciiString Name;
 		Quantity_ColorRGBA BaseColor;
@@ -303,9 +407,13 @@ class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 		Standard_ShortReal Roughness;
 		/****************** RWGltf_MaterialMetallicRoughness ******************/
 		%feature("compactdefaultargs") RWGltf_MaterialMetallicRoughness;
-		%feature("autodoc", "* //!< roughness (or scale factor to the texture) within range [0.0, 1.0]; 1.0 by default
-	:rtype: None") RWGltf_MaterialMetallicRoughness;
-		 RWGltf_MaterialMetallicRoughness ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWGltf_MaterialMetallicRoughness;
+		 RWGltf_MaterialMetallicRoughness();
 
 };
 
@@ -324,6 +432,30 @@ class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 /***********************************
 * class RWGltf_TriangulationReader *
 ***********************************/
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class RWGltf_GltfSharedIStream:
+	pass
+
+@classnotwrapped
+class RWGltf_TriangulationReader:
+	pass
+
+@classnotwrapped
+class RWGltf_GltfLatePrimitiveArray:
+	pass
+
+@classnotwrapped
+class RWGltf_PrimitiveArrayReader:
+	pass
+
+@classnotwrapped
+class RWGltf_CafReader:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

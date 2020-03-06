@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -64,6 +64,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tnaming.html"
 %import gp.i
 %import TColStd.i
 %import TopAbs.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum TNaming_Evolution {
 	TNaming_PRIMITIVE = 0,
@@ -91,6 +96,33 @@ enum TNaming_NameType {
 
 /* end public enums declaration */
 
+/* python proy classes for enums */
+%pythoncode {
+
+class TNaming_Evolution:
+	TNaming_PRIMITIVE = 0
+	TNaming_GENERATED = 1
+	TNaming_MODIFY = 2
+	TNaming_DELETE = 3
+	TNaming_REPLACE = 4
+	TNaming_SELECTED = 5
+
+class TNaming_NameType:
+	TNaming_UNKNOWN = 0
+	TNaming_IDENTITY = 1
+	TNaming_MODIFUNTIL = 2
+	TNaming_GENERATION = 3
+	TNaming_INTERSECTION = 4
+	TNaming_UNION = 5
+	TNaming_SUBSTRACTION = 6
+	TNaming_CONSTSHAPE = 7
+	TNaming_FILTERBYNEIGHBOURGS = 8
+	TNaming_ORIENTATION = 9
+	TNaming_WIREIN = 10
+	TNaming_SHELLIN = 11
+};
+/* end python proxy for enums */
+
 /* handles */
 %wrap_handle(TNaming_DeltaOnModification)
 %wrap_handle(TNaming_DeltaOnRemoval)
@@ -101,41 +133,41 @@ enum TNaming_NameType {
 /* end handles declaration */
 
 /* templates */
-%template(TNaming_DataMapOfShapePtrRefShape) NCollection_DataMap <TopoDS_Shape , TNaming_PtrRefShape , TopTools_ShapeMapHasher>;
-%template(TNaming_ListOfIndexedDataMapOfShapeListOfShape) NCollection_List <TopTools_IndexedDataMapOfShapeListOfShape>;
+%template(TNaming_DataMapOfShapeMapOfShape) NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>;
+%template(TNaming_DataMapOfShapePtrRefShape) NCollection_DataMap<TopoDS_Shape,TNaming_PtrRefShape,TopTools_ShapeMapHasher>;
+%template(TNaming_DataMapOfShapeShapesSet) NCollection_DataMap<TopoDS_Shape,TNaming_ShapesSet,TopTools_ShapeMapHasher>;
 %template(TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape) NCollection_TListIterator<TopTools_IndexedDataMapOfShapeListOfShape>;
-%template(TNaming_NamedShapeHasher) NCollection_DefaultHasher <opencascade::handle <TNaming_NamedShape>>;
-%template(TNaming_MapOfShape) NCollection_Map <TopoDS_Shape>;
-%template(TNaming_DataMapOfShapeMapOfShape) NCollection_DataMap <TopoDS_Shape , TNaming_MapOfShape>;
-%template(TNaming_MapOfNamedShape) NCollection_Map <opencascade::handle <TNaming_NamedShape>, TNaming_NamedShapeHasher>;
-%template(TNaming_ListOfNamedShape) NCollection_List <opencascade::handle <TNaming_NamedShape>>;
-%template(TNaming_ListIteratorOfListOfNamedShape) NCollection_TListIterator<opencascade::handle<TNaming_NamedShape>>;
-%template(TNaming_DataMapOfShapeShapesSet) NCollection_DataMap <TopoDS_Shape , TNaming_ShapesSet , TopTools_ShapeMapHasher>;
-%template(TNaming_ListOfMapOfShape) NCollection_List <TopTools_MapOfShape>;
 %template(TNaming_ListIteratorOfListOfMapOfShape) NCollection_TListIterator<TopTools_MapOfShape>;
+%template(TNaming_ListIteratorOfListOfNamedShape) NCollection_TListIterator<opencascade::handle<TNaming_NamedShape>>;
+%template(TNaming_ListOfIndexedDataMapOfShapeListOfShape) NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape>;
+%template(TNaming_ListOfMapOfShape) NCollection_List<TopTools_MapOfShape>;
+%template(TNaming_ListOfNamedShape) NCollection_List<opencascade::handle<TNaming_NamedShape>>;
+%template(TNaming_MapOfNamedShape) NCollection_Map<opencascade::handle<TNaming_NamedShape>,TNaming_NamedShapeHasher>;
+%template(TNaming_MapOfShape) NCollection_Map<TopoDS_Shape>;
+%template(TNaming_NamedShapeHasher) NCollection_DefaultHasher<opencascade::handle<TNaming_NamedShape>>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap <TopoDS_Shape , TNaming_PtrRefShape , TopTools_ShapeMapHasher> TNaming_DataMapOfShapePtrRefShape;
-typedef NCollection_DataMap <TopoDS_Shape , TNaming_PtrRefShape , TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape;
-typedef NCollection_List <TopTools_IndexedDataMapOfShapeListOfShape> TNaming_ListOfIndexedDataMapOfShapeListOfShape;
-typedef NCollection_List <TopTools_IndexedDataMapOfShapeListOfShape>::Iterator TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
-typedef TNaming_NamedShape * TNaming_PtrAttribute;
-typedef NCollection_DefaultHasher <opencascade::handle <TNaming_NamedShape>> TNaming_NamedShapeHasher;
-typedef NCollection_Map <TopoDS_Shape> TNaming_MapOfShape;
-typedef TNaming_MapOfShape::Iterator TNaming_MapIteratorOfMapOfShape;
-typedef NCollection_DataMap <TopoDS_Shape , TNaming_MapOfShape> TNaming_DataMapOfShapeMapOfShape;
 typedef TNaming_DataMapOfShapeMapOfShape::Iterator TNaming_DataMapIteratorOfDataMapOfShapeMapOfShape;
-typedef TNaming_RefShape * TNaming_PtrRefShape;
-typedef NCollection_Map <opencascade::handle <TNaming_NamedShape>, TNaming_NamedShapeHasher> TNaming_MapOfNamedShape;
-typedef NCollection_Map <opencascade::handle <TNaming_NamedShape>, TNaming_NamedShapeHasher>::Iterator TNaming_MapIteratorOfMapOfNamedShape;
-typedef NCollection_List <opencascade::handle <TNaming_NamedShape>> TNaming_ListOfNamedShape;
-typedef NCollection_List <opencascade::handle <TNaming_NamedShape>>::Iterator TNaming_ListIteratorOfListOfNamedShape;
-typedef NCollection_DataMap <TopoDS_Shape , TNaming_ShapesSet , TopTools_ShapeMapHasher> TNaming_DataMapOfShapeShapesSet;
-typedef NCollection_DataMap <TopoDS_Shape , TNaming_ShapesSet , TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapeShapesSet;
-typedef NCollection_List <TopTools_MapOfShape> TNaming_ListOfMapOfShape;
-typedef NCollection_List <TopTools_MapOfShape>::Iterator TNaming_ListIteratorOfListOfMapOfShape;
+typedef NCollection_DataMap<TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape;
+typedef NCollection_DataMap<TopoDS_Shape, TNaming_ShapesSet, TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapeShapesSet;
+typedef NCollection_DataMap<TopoDS_Shape, TNaming_MapOfShape> TNaming_DataMapOfShapeMapOfShape;
+typedef NCollection_DataMap<TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher> TNaming_DataMapOfShapePtrRefShape;
+typedef NCollection_DataMap<TopoDS_Shape, TNaming_ShapesSet, TopTools_ShapeMapHasher> TNaming_DataMapOfShapeShapesSet;
+typedef NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape>::Iterator TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape;
+typedef NCollection_List<TopTools_MapOfShape>::Iterator TNaming_ListIteratorOfListOfMapOfShape;
+typedef NCollection_List<opencascade::handle<TNaming_NamedShape>>::Iterator TNaming_ListIteratorOfListOfNamedShape;
+typedef NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape> TNaming_ListOfIndexedDataMapOfShapeListOfShape;
+typedef NCollection_List<TopTools_MapOfShape> TNaming_ListOfMapOfShape;
+typedef NCollection_List<opencascade::handle<TNaming_NamedShape>> TNaming_ListOfNamedShape;
+typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>, TNaming_NamedShapeHasher>::Iterator TNaming_MapIteratorOfMapOfNamedShape;
+typedef TNaming_MapOfShape::Iterator TNaming_MapIteratorOfMapOfShape;
+typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>, TNaming_NamedShapeHasher> TNaming_MapOfNamedShape;
+typedef NCollection_Map<TopoDS_Shape> TNaming_MapOfShape;
+typedef NCollection_DefaultHasher<opencascade::handle<TNaming_NamedShape>> TNaming_NamedShapeHasher;
+typedef TNaming_NamedShape * TNaming_PtrAttribute;
 typedef TNaming_Node * TNaming_PtrNode;
+typedef TNaming_RefShape * TNaming_PtrRefShape;
 /* end typedefs declaration */
 
 /****************
@@ -146,181 +178,218 @@ class TNaming {
 	public:
 		/****************** ChangeShapes ******************/
 		%feature("compactdefaultargs") ChangeShapes;
-		%feature("autodoc", "* Remplace les shapes du label et des sous-labels par des copies.
-	:param label:
-	:type label: TDF_Label
-	:param M:
-	:type M: TopTools_DataMapOfShapeShape
-	:rtype: void") ChangeShapes;
-		static void ChangeShapes (const TDF_Label & label,TopTools_DataMapOfShapeShape & M);
+		%feature("autodoc", "Remplace les shapes du label et des sous-labels par des copies.
+
+Parameters
+----------
+label: TDF_Label
+M: TopTools_DataMapOfShapeShape
+
+Returns
+-------
+None
+") ChangeShapes;
+		static void ChangeShapes(const TDF_Label & label, TopTools_DataMapOfShapeShape & M);
 
 		/****************** Displace ******************/
 		%feature("compactdefaultargs") Displace;
-		%feature("autodoc", "* Application de la Location sur les shapes du label et de ses sous labels.
-	:param label:
-	:type label: TDF_Label
-	:param aLocation:
-	:type aLocation: TopLoc_Location
-	:param WithOld: default value is Standard_True
-	:type WithOld: bool
-	:rtype: void") Displace;
-		static void Displace (const TDF_Label & label,const TopLoc_Location & aLocation,const Standard_Boolean WithOld = Standard_True);
+		%feature("autodoc", "Application de la location sur les shapes du label et de ses sous labels.
+
+Parameters
+----------
+label: TDF_Label
+aLocation: TopLoc_Location
+WithOld: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") Displace;
+		static void Displace(const TDF_Label & label, const TopLoc_Location & aLocation, const Standard_Boolean WithOld = Standard_True);
 
 		/****************** FindUniqueContext ******************/
 		%feature("compactdefaultargs") FindUniqueContext;
-		%feature("autodoc", "* Find unique context of shape <S>
-	:param S:
-	:type S: TopoDS_Shape
-	:param Context:
-	:type Context: TopoDS_Shape
-	:rtype: TopoDS_Shape") FindUniqueContext;
-		static TopoDS_Shape FindUniqueContext (const TopoDS_Shape & S,const TopoDS_Shape & Context);
+		%feature("autodoc", "Find unique context of shape <s>.
+
+Parameters
+----------
+S: TopoDS_Shape
+Context: TopoDS_Shape
+
+Returns
+-------
+TopoDS_Shape
+") FindUniqueContext;
+		static TopoDS_Shape FindUniqueContext(const TopoDS_Shape & S, const TopoDS_Shape & Context);
 
 		/****************** FindUniqueContextSet ******************/
 		%feature("compactdefaultargs") FindUniqueContextSet;
-		%feature("autodoc", "* Find unique context of shape <S>,which is pure concatenation of atomic shapes (Compound). The result is concatenation of single contexts
-	:param S:
-	:type S: TopoDS_Shape
-	:param Context:
-	:type Context: TopoDS_Shape
-	:param Arr:
-	:type Arr: TopTools_HArray1OfShape
-	:rtype: TopoDS_Shape") FindUniqueContextSet;
-		static TopoDS_Shape FindUniqueContextSet (const TopoDS_Shape & S,const TopoDS_Shape & Context,opencascade::handle<TopTools_HArray1OfShape> & Arr);
+		%feature("autodoc", "Find unique context of shape <s>,which is pure concatenation of atomic shapes (compound). the result is concatenation of single contexts.
+
+Parameters
+----------
+S: TopoDS_Shape
+Context: TopoDS_Shape
+Arr: TopTools_HArray1OfShape
+
+Returns
+-------
+TopoDS_Shape
+") FindUniqueContextSet;
+		static TopoDS_Shape FindUniqueContextSet(const TopoDS_Shape & S, const TopoDS_Shape & Context, opencascade::handle<TopTools_HArray1OfShape> & Arr);
 
 		/****************** IDList ******************/
 		%feature("compactdefaultargs") IDList;
-		%feature("autodoc", "* Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
-	:param anIDList:
-	:type anIDList: TDF_IDList
-	:rtype: void") IDList;
-		static void IDList (TDF_IDList & anIDList);
+		%feature("autodoc", "Appends to <anidlist> the list of the attributes ids of this package. caution: <anidlist> is not cleared before use.
+
+Parameters
+----------
+anIDList: TDF_IDList
+
+Returns
+-------
+None
+") IDList;
+		static void IDList(TDF_IDList & anIDList);
 
 		/****************** MakeShape ******************/
 		%feature("compactdefaultargs") MakeShape;
-		%feature("autodoc", "* Builds shape from map content
-	:param MS:
-	:type MS: TopTools_MapOfShape
-	:rtype: TopoDS_Shape") MakeShape;
-		static TopoDS_Shape MakeShape (const TopTools_MapOfShape & MS);
+		%feature("autodoc", "Builds shape from map content.
+
+Parameters
+----------
+MS: TopTools_MapOfShape
+
+Returns
+-------
+TopoDS_Shape
+") MakeShape;
+		static TopoDS_Shape MakeShape(const TopTools_MapOfShape & MS);
 
 		/****************** OuterShell ******************/
 		%feature("compactdefaultargs") OuterShell;
-		%feature("autodoc", "* Returns True if outer Shell is found and the found shell in <theShell>. Print of TNaming enumeration =============================
-	:param theSolid:
-	:type theSolid: TopoDS_Solid
-	:param theShell:
-	:type theShell: TopoDS_Shell
-	:rtype: bool") OuterShell;
-		static Standard_Boolean OuterShell (const TopoDS_Solid & theSolid,TopoDS_Shell & theShell);
+		%feature("autodoc", "Returns true if outer shell is found and the found shell in <theshell>. print of tnaming enumeration =============================.
+
+Parameters
+----------
+theSolid: TopoDS_Solid
+theShell: TopoDS_Shell
+
+Returns
+-------
+bool
+") OuterShell;
+		static Standard_Boolean OuterShell(const TopoDS_Solid & theSolid, TopoDS_Shell & theShell);
 
 		/****************** OuterWire ******************/
 		%feature("compactdefaultargs") OuterWire;
-		%feature("autodoc", "* Returns True if outer wire is found and the found wire in <theWire>.
-	:param theFace:
-	:type theFace: TopoDS_Face
-	:param theWire:
-	:type theWire: TopoDS_Wire
-	:rtype: bool") OuterWire;
-		static Standard_Boolean OuterWire (const TopoDS_Face & theFace,TopoDS_Wire & theWire);
+		%feature("autodoc", "Returns true if outer wire is found and the found wire in <thewire>.
 
-		/****************** Print ******************/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "* Prints the evolution <EVOL> as a String on the Stream <S> and returns <S>.
-	:param EVOL:
-	:type EVOL: TNaming_Evolution
-	:param S:
-	:type S: Standard_OStream
-	:rtype: Standard_OStream") Print;
-		static Standard_OStream & Print (const TNaming_Evolution EVOL,Standard_OStream & S);
+Parameters
+----------
+theFace: TopoDS_Face
+theWire: TopoDS_Wire
 
-		/****************** Print ******************/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "* Prints the name of name type <NAME> as a String on the Stream <S> and returns <S>.
-	:param NAME:
-	:type NAME: TNaming_NameType
-	:param S:
-	:type S: Standard_OStream
-	:rtype: Standard_OStream") Print;
-		static Standard_OStream & Print (const TNaming_NameType NAME,Standard_OStream & S);
-
-		/****************** Print ******************/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "* Prints the content of UsedShapes private attribute as a String Table on the Stream <S> and returns <S>.
-	:param ACCESS:
-	:type ACCESS: TDF_Label
-	:param S:
-	:type S: Standard_OStream
-	:rtype: Standard_OStream") Print;
-		static Standard_OStream & Print (const TDF_Label & ACCESS,Standard_OStream & S);
+Returns
+-------
+bool
+") OuterWire;
+		static Standard_Boolean OuterWire(const TopoDS_Face & theFace, TopoDS_Wire & theWire);
 
 		/****************** Replicate ******************/
 		%feature("compactdefaultargs") Replicate;
-		%feature("autodoc", "* Replicates the named shape with the transformation <T> on the label <L> (and sub-labels if necessary) (TNaming_GENERATED is set)
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:param T:
-	:type T: gp_Trsf
-	:param L:
-	:type L: TDF_Label
-	:rtype: void") Replicate;
-		static void Replicate (const opencascade::handle<TNaming_NamedShape> & NS,const gp_Trsf & T,const TDF_Label & L);
+		%feature("autodoc", "Replicates the named shape with the transformation <t> on the label <l> (and sub-labels if necessary) (tnaming_generated is set).
+
+Parameters
+----------
+NS: TNaming_NamedShape
+T: gp_Trsf
+L: TDF_Label
+
+Returns
+-------
+None
+") Replicate;
+		static void Replicate(const opencascade::handle<TNaming_NamedShape> & NS, const gp_Trsf & T, const TDF_Label & L);
 
 		/****************** Replicate ******************/
 		%feature("compactdefaultargs") Replicate;
-		%feature("autodoc", "* Replicates the shape with the transformation <T> on the label <L> (and sub-labels if necessary) (TNaming_GENERATED is set)
-	:param SH:
-	:type SH: TopoDS_Shape
-	:param T:
-	:type T: gp_Trsf
-	:param L:
-	:type L: TDF_Label
-	:rtype: void") Replicate;
-		static void Replicate (const TopoDS_Shape & SH,const gp_Trsf & T,const TDF_Label & L);
+		%feature("autodoc", "Replicates the shape with the transformation <t> on the label <l> (and sub-labels if necessary) (tnaming_generated is set).
+
+Parameters
+----------
+SH: TopoDS_Shape
+T: gp_Trsf
+L: TDF_Label
+
+Returns
+-------
+None
+") Replicate;
+		static void Replicate(const TopoDS_Shape & SH, const gp_Trsf & T, const TDF_Label & L);
 
 		/****************** Substitute ******************/
 		%feature("compactdefaultargs") Substitute;
-		%feature("autodoc", "* Subtituter les shapes sur les structures de source vers cible
-	:param labelsource:
-	:type labelsource: TDF_Label
-	:param labelcible:
-	:type labelcible: TDF_Label
-	:param mapOldNew:
-	:type mapOldNew: TopTools_DataMapOfShapeShape
-	:rtype: void") Substitute;
-		static void Substitute (const TDF_Label & labelsource,const TDF_Label & labelcible,TopTools_DataMapOfShapeShape & mapOldNew);
+		%feature("autodoc", "Subtituter les shapes sur les structures de source vers cible.
+
+Parameters
+----------
+labelsource: TDF_Label
+labelcible: TDF_Label
+mapOldNew: TopTools_DataMapOfShapeShape
+
+Returns
+-------
+None
+") Substitute;
+		static void Substitute(const TDF_Label & labelsource, const TDF_Label & labelcible, TopTools_DataMapOfShapeShape & mapOldNew);
 
 		/****************** SubstituteSShape ******************/
 		%feature("compactdefaultargs") SubstituteSShape;
-		%feature("autodoc", "* Subtitutes shape in source structure
-	:param accesslabel:
-	:type accesslabel: TDF_Label
-	:param From:
-	:type From: TopoDS_Shape
-	:param To:
-	:type To: TopoDS_Shape
-	:rtype: bool") SubstituteSShape;
-		static Standard_Boolean SubstituteSShape (const TDF_Label & accesslabel,const TopoDS_Shape & From,TopoDS_Shape & To);
+		%feature("autodoc", "Subtitutes shape in source structure.
+
+Parameters
+----------
+accesslabel: TDF_Label
+From: TopoDS_Shape
+To: TopoDS_Shape
+
+Returns
+-------
+bool
+") SubstituteSShape;
+		static Standard_Boolean SubstituteSShape(const TDF_Label & accesslabel, const TopoDS_Shape & From, TopoDS_Shape & To);
 
 		/****************** Transform ******************/
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "* Application de la transformation sur les shapes du label et de ses sous labels. Warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <Label>.
-	:param label:
-	:type label: TDF_Label
-	:param aTransformation:
-	:type aTransformation: gp_Trsf
-	:rtype: void") Transform;
-		static void Transform (const TDF_Label & label,const gp_Trsf & aTransformation);
+		%feature("autodoc", "Application de la transformation sur les shapes du label et de ses sous labels. warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <label>.
+
+Parameters
+----------
+label: TDF_Label
+aTransformation: gp_Trsf
+
+Returns
+-------
+None
+") Transform;
+		static void Transform(const TDF_Label & label, const gp_Trsf & aTransformation);
 
 		/****************** Update ******************/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "* Mise a jour des shapes du label et de ses fils en tenant compte des substitutions decrite par mapOldNew. //! Warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <Label>.
-	:param label:
-	:type label: TDF_Label
-	:param mapOldNew:
-	:type mapOldNew: TopTools_DataMapOfShapeShape
-	:rtype: void") Update;
-		static void Update (const TDF_Label & label,TopTools_DataMapOfShapeShape & mapOldNew);
+		%feature("autodoc", "Mise a jour des shapes du label et de ses fils en tenant compte des substitutions decrite par mapoldnew. //! warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <label>.
+
+Parameters
+----------
+label: TDF_Label
+mapOldNew: TopTools_DataMapOfShapeShape
+
+Returns
+-------
+None
+") Update;
+		static void Update(const TDF_Label & label, TopTools_DataMapOfShapeShape & mapOldNew);
 
 };
 
@@ -336,65 +405,102 @@ class TNaming {
 ************************/
 class TNaming_Builder {
 	public:
+		/****************** TNaming_Builder ******************/
+		%feature("compactdefaultargs") TNaming_Builder;
+		%feature("autodoc", "Create an builder. warning: before addition copies the current value, and clear.
+
+Parameters
+----------
+aLabel: TDF_Label
+
+Returns
+-------
+None
+") TNaming_Builder;
+		 TNaming_Builder(const TDF_Label & aLabel);
+
 		/****************** Delete ******************/
 		%feature("compactdefaultargs") Delete;
-		%feature("autodoc", "* Records the shape oldShape which was deleted from the current label. As an example, consider the case of a face removed by a Boolean operation.
-	:param oldShape:
-	:type oldShape: TopoDS_Shape
-	:rtype: None") Delete;
-		void Delete (const TopoDS_Shape & oldShape);
+		%feature("autodoc", "Records the shape oldshape which was deleted from the current label. as an example, consider the case of a face removed by a boolean operation.
+
+Parameters
+----------
+oldShape: TopoDS_Shape
+
+Returns
+-------
+None
+") Delete;
+		void Delete(const TopoDS_Shape & oldShape);
 
 		/****************** Generated ******************/
 		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "* Records the shape newShape which was generated during a topological construction. As an example, consider the case of a face generated in construction of a box.
-	:param newShape:
-	:type newShape: TopoDS_Shape
-	:rtype: None") Generated;
-		void Generated (const TopoDS_Shape & newShape);
+		%feature("autodoc", "Records the shape newshape which was generated during a topological construction. as an example, consider the case of a face generated in construction of a box.
+
+Parameters
+----------
+newShape: TopoDS_Shape
+
+Returns
+-------
+None
+") Generated;
+		void Generated(const TopoDS_Shape & newShape);
 
 		/****************** Generated ******************/
 		%feature("compactdefaultargs") Generated;
-		%feature("autodoc", "* Records the shape newShape which was generated from the shape oldShape during a topological construction. As an example, consider the case of a face generated from an edge in construction of a prism.
-	:param oldShape:
-	:type oldShape: TopoDS_Shape
-	:param newShape:
-	:type newShape: TopoDS_Shape
-	:rtype: None") Generated;
-		void Generated (const TopoDS_Shape & oldShape,const TopoDS_Shape & newShape);
+		%feature("autodoc", "Records the shape newshape which was generated from the shape oldshape during a topological construction. as an example, consider the case of a face generated from an edge in construction of a prism.
+
+Parameters
+----------
+oldShape: TopoDS_Shape
+newShape: TopoDS_Shape
+
+Returns
+-------
+None
+") Generated;
+		void Generated(const TopoDS_Shape & oldShape, const TopoDS_Shape & newShape);
 
 		/****************** Modify ******************/
 		%feature("compactdefaultargs") Modify;
-		%feature("autodoc", "* Records the shape newShape which is a modification of the shape oldShape. As an example, consider the case of a face split or merged in a Boolean operation.
-	:param oldShape:
-	:type oldShape: TopoDS_Shape
-	:param newShape:
-	:type newShape: TopoDS_Shape
-	:rtype: None") Modify;
-		void Modify (const TopoDS_Shape & oldShape,const TopoDS_Shape & newShape);
+		%feature("autodoc", "Records the shape newshape which is a modification of the shape oldshape. as an example, consider the case of a face split or merged in a boolean operation.
+
+Parameters
+----------
+oldShape: TopoDS_Shape
+newShape: TopoDS_Shape
+
+Returns
+-------
+None
+") Modify;
+		void Modify(const TopoDS_Shape & oldShape, const TopoDS_Shape & newShape);
 
 		/****************** NamedShape ******************/
 		%feature("compactdefaultargs") NamedShape;
-		%feature("autodoc", "* Returns the NamedShape which has been built or is under construction.
-	:rtype: opencascade::handle<TNaming_NamedShape>") NamedShape;
-		opencascade::handle<TNaming_NamedShape> NamedShape ();
+		%feature("autodoc", "Returns the namedshape which has been built or is under construction.
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") NamedShape;
+		opencascade::handle<TNaming_NamedShape> NamedShape();
 
 		/****************** Select ******************/
 		%feature("compactdefaultargs") Select;
-		%feature("autodoc", "* Add a Shape to the current label , This Shape is unmodified. Used for example to define a set of shapes under a label.
-	:param aShape:
-	:type aShape: TopoDS_Shape
-	:param inShape:
-	:type inShape: TopoDS_Shape
-	:rtype: None") Select;
-		void Select (const TopoDS_Shape & aShape,const TopoDS_Shape & inShape);
+		%feature("autodoc", "Add a shape to the current label , this shape is unmodified. used for example to define a set of shapes under a label.
 
-		/****************** TNaming_Builder ******************/
-		%feature("compactdefaultargs") TNaming_Builder;
-		%feature("autodoc", "* Create an Builder. Warning: Before Addition copies the current Value, and clear
-	:param aLabel:
-	:type aLabel: TDF_Label
-	:rtype: None") TNaming_Builder;
-		 TNaming_Builder (const TDF_Label & aLabel);
+Parameters
+----------
+aShape: TopoDS_Shape
+inShape: TopoDS_Shape
+
+Returns
+-------
+None
+") Select;
+		void Select(const TopoDS_Shape & aShape, const TopoDS_Shape & inShape);
 
 };
 
@@ -412,39 +518,51 @@ class TNaming_CopyShape {
 	public:
 		/****************** CopyTool ******************/
 		%feature("compactdefaultargs") CopyTool;
-		%feature("autodoc", "* Makes copy a set of shape(s), using the aMap
-	:param aShape:
-	:type aShape: TopoDS_Shape
-	:param aMap:
-	:type aMap: TColStd_IndexedDataMapOfTransientTransient
-	:param aResult:
-	:type aResult: TopoDS_Shape
-	:rtype: void") CopyTool;
-		static void CopyTool (const TopoDS_Shape & aShape,TColStd_IndexedDataMapOfTransientTransient & aMap,TopoDS_Shape & aResult);
+		%feature("autodoc", "Makes copy a set of shape(s), using the amap.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+aMap: TColStd_IndexedDataMapOfTransientTransient
+aResult: TopoDS_Shape
+
+Returns
+-------
+None
+") CopyTool;
+		static void CopyTool(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "* Translates a Transient shape(s) to Transient
-	:param aShape:
-	:type aShape: TopoDS_Shape
-	:param aMap:
-	:type aMap: TColStd_IndexedDataMapOfTransientTransient
-	:param aResult:
-	:type aResult: TopoDS_Shape
-	:param TrTool:
-	:type TrTool: TNaming_TranslateTool
-	:rtype: void") Translate;
-		static void Translate (const TopoDS_Shape & aShape,TColStd_IndexedDataMapOfTransientTransient & aMap,TopoDS_Shape & aResult,const opencascade::handle<TNaming_TranslateTool> & TrTool);
+		%feature("autodoc", "Translates a transient shape(s) to transient.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+aMap: TColStd_IndexedDataMapOfTransientTransient
+aResult: TopoDS_Shape
+TrTool: TNaming_TranslateTool
+
+Returns
+-------
+None
+") Translate;
+		static void Translate(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult, const opencascade::handle<TNaming_TranslateTool> & TrTool);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "* Translates a Topological Location to an other Top. Location
-	:param L:
-	:type L: TopLoc_Location
-	:param aMap:
-	:type aMap: TColStd_IndexedDataMapOfTransientTransient
-	:rtype: TopLoc_Location") Translate;
-		static TopLoc_Location Translate (const TopLoc_Location & L,TColStd_IndexedDataMapOfTransientTransient & aMap);
+		%feature("autodoc", "Translates a topological location to an other top. location.
+
+Parameters
+----------
+L: TopLoc_Location
+aMap: TColStd_IndexedDataMapOfTransientTransient
+
+Returns
+-------
+TopLoc_Location
+") Translate;
+		static TopLoc_Location Translate(const TopLoc_Location & L, TColStd_IndexedDataMapOfTransientTransient & aMap);
 
 };
 
@@ -460,19 +578,29 @@ class TNaming_CopyShape {
 ************************************/
 class TNaming_DeltaOnModification : public TDF_DeltaOnModification {
 	public:
-		/****************** Apply ******************/
-		%feature("compactdefaultargs") Apply;
-		%feature("autodoc", "* Applies the delta to the attribute.
-	:rtype: void") Apply;
-		virtual void Apply ();
-
 		/****************** TNaming_DeltaOnModification ******************/
 		%feature("compactdefaultargs") TNaming_DeltaOnModification;
-		%feature("autodoc", "* Initializes a TDF_DeltaOnModification.
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: None") TNaming_DeltaOnModification;
-		 TNaming_DeltaOnModification (const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "Initializes a tdf_deltaonmodification.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+
+Returns
+-------
+None
+") TNaming_DeltaOnModification;
+		 TNaming_DeltaOnModification(const opencascade::handle<TNaming_NamedShape> & NS);
+
+		/****************** Apply ******************/
+		%feature("compactdefaultargs") Apply;
+		%feature("autodoc", "Applies the delta to the attribute.
+
+Returns
+-------
+None
+") Apply;
+		virtual void Apply();
 
 };
 
@@ -490,19 +618,29 @@ class TNaming_DeltaOnModification : public TDF_DeltaOnModification {
 *******************************/
 class TNaming_DeltaOnRemoval : public TDF_DeltaOnRemoval {
 	public:
-		/****************** Apply ******************/
-		%feature("compactdefaultargs") Apply;
-		%feature("autodoc", "* Applies the delta to the attribute.
-	:rtype: void") Apply;
-		virtual void Apply ();
-
 		/****************** TNaming_DeltaOnRemoval ******************/
 		%feature("compactdefaultargs") TNaming_DeltaOnRemoval;
-		%feature("autodoc", "* Initializes a TDF_DeltaOnModification.
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: None") TNaming_DeltaOnRemoval;
-		 TNaming_DeltaOnRemoval (const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "Initializes a tdf_deltaonmodification.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+
+Returns
+-------
+None
+") TNaming_DeltaOnRemoval;
+		 TNaming_DeltaOnRemoval(const opencascade::handle<TNaming_NamedShape> & NS);
+
+		/****************** Apply ******************/
+		%feature("compactdefaultargs") Apply;
+		%feature("autodoc", "Applies the delta to the attribute.
+
+Returns
+-------
+None
+") Apply;
+		virtual void Apply();
 
 };
 
@@ -520,127 +658,219 @@ class TNaming_DeltaOnRemoval : public TDF_DeltaOnRemoval {
 ***************************/
 class TNaming_Identifier {
 	public:
+		/****************** TNaming_Identifier ******************/
+		%feature("compactdefaultargs") TNaming_Identifier;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Lab: TDF_Label
+S: TopoDS_Shape
+Context: TopoDS_Shape
+Geom: bool
+
+Returns
+-------
+None
+") TNaming_Identifier;
+		 TNaming_Identifier(const TDF_Label & Lab, const TopoDS_Shape & S, const TopoDS_Shape & Context, const Standard_Boolean Geom);
+
+		/****************** TNaming_Identifier ******************/
+		%feature("compactdefaultargs") TNaming_Identifier;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Lab: TDF_Label
+S: TopoDS_Shape
+ContextNS: TNaming_NamedShape
+Geom: bool
+
+Returns
+-------
+None
+") TNaming_Identifier;
+		 TNaming_Identifier(const TDF_Label & Lab, const TopoDS_Shape & S, const opencascade::handle<TNaming_NamedShape> & ContextNS, const Standard_Boolean Geom);
+
 		/****************** AncestorIdentification ******************/
 		%feature("compactdefaultargs") AncestorIdentification;
-		%feature("autodoc", ":param Localizer:
-	:type Localizer: TNaming_Localizer
-	:param Context:
-	:type Context: TopoDS_Shape
-	:rtype: None") AncestorIdentification;
-		void AncestorIdentification (TNaming_Localizer & Localizer,const TopoDS_Shape & Context);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Localizer: TNaming_Localizer
+Context: TopoDS_Shape
+
+Returns
+-------
+None
+") AncestorIdentification;
+		void AncestorIdentification(TNaming_Localizer & Localizer, const TopoDS_Shape & Context);
 
 		/****************** ArgIsFeature ******************/
 		%feature("compactdefaultargs") ArgIsFeature;
-		%feature("autodoc", ":rtype: bool") ArgIsFeature;
-		Standard_Boolean ArgIsFeature ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") ArgIsFeature;
+		Standard_Boolean ArgIsFeature();
 
 		/****************** Feature ******************/
 		%feature("compactdefaultargs") Feature;
-		%feature("autodoc", ":rtype: opencascade::handle<TNaming_NamedShape>") Feature;
-		opencascade::handle<TNaming_NamedShape> Feature ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") Feature;
+		opencascade::handle<TNaming_NamedShape> Feature();
 
 		/****************** FeatureArg ******************/
 		%feature("compactdefaultargs") FeatureArg;
-		%feature("autodoc", ":rtype: opencascade::handle<TNaming_NamedShape>") FeatureArg;
-		opencascade::handle<TNaming_NamedShape> FeatureArg ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") FeatureArg;
+		opencascade::handle<TNaming_NamedShape> FeatureArg();
 
 		/****************** GeneratedIdentification ******************/
 		%feature("compactdefaultargs") GeneratedIdentification;
-		%feature("autodoc", ":param Localizer:
-	:type Localizer: TNaming_Localizer
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: None") GeneratedIdentification;
-		void GeneratedIdentification (TNaming_Localizer & Localizer,const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Localizer: TNaming_Localizer
+NS: TNaming_NamedShape
+
+Returns
+-------
+None
+") GeneratedIdentification;
+		void GeneratedIdentification(TNaming_Localizer & Localizer, const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****************** Identification ******************/
 		%feature("compactdefaultargs") Identification;
-		%feature("autodoc", ":param Localizer:
-	:type Localizer: TNaming_Localizer
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: None") Identification;
-		void Identification (TNaming_Localizer & Localizer,const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Localizer: TNaming_Localizer
+NS: TNaming_NamedShape
+
+Returns
+-------
+None
+") Identification;
+		void Identification(TNaming_Localizer & Localizer, const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****************** InitArgs ******************/
 		%feature("compactdefaultargs") InitArgs;
-		%feature("autodoc", ":rtype: None") InitArgs;
-		void InitArgs ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") InitArgs;
+		void InitArgs();
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", ":rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** IsFeature ******************/
 		%feature("compactdefaultargs") IsFeature;
-		%feature("autodoc", ":rtype: bool") IsFeature;
-		Standard_Boolean IsFeature ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsFeature;
+		Standard_Boolean IsFeature();
 
 		/****************** MoreArgs ******************/
 		%feature("compactdefaultargs") MoreArgs;
-		%feature("autodoc", ":rtype: bool") MoreArgs;
-		Standard_Boolean MoreArgs ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") MoreArgs;
+		Standard_Boolean MoreArgs();
 
 		/****************** NamedShapeOfGeneration ******************/
 		%feature("compactdefaultargs") NamedShapeOfGeneration;
-		%feature("autodoc", ":rtype: opencascade::handle<TNaming_NamedShape>") NamedShapeOfGeneration;
-		opencascade::handle<TNaming_NamedShape> NamedShapeOfGeneration ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") NamedShapeOfGeneration;
+		opencascade::handle<TNaming_NamedShape> NamedShapeOfGeneration();
 
 		/****************** NextArg ******************/
 		%feature("compactdefaultargs") NextArg;
-		%feature("autodoc", ":rtype: None") NextArg;
-		void NextArg ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") NextArg;
+		void NextArg();
 
 		/****************** PrimitiveIdentification ******************/
 		%feature("compactdefaultargs") PrimitiveIdentification;
-		%feature("autodoc", ":param Localizer:
-	:type Localizer: TNaming_Localizer
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: None") PrimitiveIdentification;
-		void PrimitiveIdentification (TNaming_Localizer & Localizer,const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Localizer: TNaming_Localizer
+NS: TNaming_NamedShape
+
+Returns
+-------
+None
+") PrimitiveIdentification;
+		void PrimitiveIdentification(TNaming_Localizer & Localizer, const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****************** ShapeArg ******************/
 		%feature("compactdefaultargs") ShapeArg;
-		%feature("autodoc", ":rtype: TopoDS_Shape") ShapeArg;
-		TopoDS_Shape ShapeArg ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Shape
+") ShapeArg;
+		TopoDS_Shape ShapeArg();
 
 		/****************** ShapeContext ******************/
 		%feature("compactdefaultargs") ShapeContext;
-		%feature("autodoc", ":rtype: TopoDS_Shape") ShapeContext;
-		TopoDS_Shape ShapeContext ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** TNaming_Identifier ******************/
-		%feature("compactdefaultargs") TNaming_Identifier;
-		%feature("autodoc", ":param Lab:
-	:type Lab: TDF_Label
-	:param S:
-	:type S: TopoDS_Shape
-	:param Context:
-	:type Context: TopoDS_Shape
-	:param Geom:
-	:type Geom: bool
-	:rtype: None") TNaming_Identifier;
-		 TNaming_Identifier (const TDF_Label & Lab,const TopoDS_Shape & S,const TopoDS_Shape & Context,const Standard_Boolean Geom);
-
-		/****************** TNaming_Identifier ******************/
-		%feature("compactdefaultargs") TNaming_Identifier;
-		%feature("autodoc", ":param Lab:
-	:type Lab: TDF_Label
-	:param S:
-	:type S: TopoDS_Shape
-	:param ContextNS:
-	:type ContextNS: TNaming_NamedShape
-	:param Geom:
-	:type Geom: bool
-	:rtype: None") TNaming_Identifier;
-		 TNaming_Identifier (const TDF_Label & Lab,const TopoDS_Shape & S,const opencascade::handle<TNaming_NamedShape> & ContextNS,const Standard_Boolean Geom);
+Returns
+-------
+TopoDS_Shape
+") ShapeContext;
+		TopoDS_Shape ShapeContext();
 
 		/****************** Type ******************/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", ":rtype: TNaming_NameType") Type;
-		TNaming_NameType Type ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TNaming_NameType
+") Type;
+		TNaming_NameType Type();
 
 };
 
@@ -656,66 +886,108 @@ class TNaming_Identifier {
 *************************/
 class TNaming_Iterator {
 	public:
+		/****************** TNaming_Iterator ******************/
+		%feature("compactdefaultargs") TNaming_Iterator;
+		%feature("autodoc", "Iterates on all the history records in <anatt>.
+
+Parameters
+----------
+anAtt: TNaming_NamedShape
+
+Returns
+-------
+None
+") TNaming_Iterator;
+		 TNaming_Iterator(const opencascade::handle<TNaming_NamedShape> & anAtt);
+
+		/****************** TNaming_Iterator ******************/
+		%feature("compactdefaultargs") TNaming_Iterator;
+		%feature("autodoc", "Iterates on all the history records in the current transaction.
+
+Parameters
+----------
+aLabel: TDF_Label
+
+Returns
+-------
+None
+") TNaming_Iterator;
+		 TNaming_Iterator(const TDF_Label & aLabel);
+
+		/****************** TNaming_Iterator ******************/
+		%feature("compactdefaultargs") TNaming_Iterator;
+		%feature("autodoc", "Iterates on all the history records in the transaction <atrans>.
+
+Parameters
+----------
+aLabel: TDF_Label
+aTrans: int
+
+Returns
+-------
+None
+") TNaming_Iterator;
+		 TNaming_Iterator(const TDF_Label & aLabel, const Standard_Integer aTrans);
+
 		/****************** Evolution ******************/
 		%feature("compactdefaultargs") Evolution;
-		%feature("autodoc", ":rtype: TNaming_Evolution") Evolution;
-		TNaming_Evolution Evolution ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TNaming_Evolution
+") Evolution;
+		TNaming_Evolution Evolution();
 
 		/****************** IsModification ******************/
 		%feature("compactdefaultargs") IsModification;
-		%feature("autodoc", "* Returns true if the new shape is a modification (split, fuse,etc...) of the old shape.
-	:rtype: bool") IsModification;
-		Standard_Boolean IsModification ();
+		%feature("autodoc", "Returns true if the new shape is a modification (split, fuse,etc...) of the old shape.
+
+Returns
+-------
+bool
+") IsModification;
+		Standard_Boolean IsModification();
 
 		/****************** More ******************/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "* Returns True if there is a current Item in the iteration.
-	:rtype: bool") More;
-		Standard_Boolean More ();
+		%feature("autodoc", "Returns true if there is a current item in the iteration.
+
+Returns
+-------
+bool
+") More;
+		Standard_Boolean More();
 
 		/****************** NewShape ******************/
 		%feature("compactdefaultargs") NewShape;
-		%feature("autodoc", "* Returns the new shape in this iterator object.
-	:rtype: TopoDS_Shape") NewShape;
-		const TopoDS_Shape  NewShape ();
+		%feature("autodoc", "Returns the new shape in this iterator object.
+
+Returns
+-------
+TopoDS_Shape
+") NewShape;
+		const TopoDS_Shape NewShape();
 
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "* Moves the iteration to the next Item
-	:rtype: None") Next;
-		void Next ();
+		%feature("autodoc", "Moves the iteration to the next item.
+
+Returns
+-------
+None
+") Next;
+		void Next();
 
 		/****************** OldShape ******************/
 		%feature("compactdefaultargs") OldShape;
-		%feature("autodoc", "* Returns the old shape in this iterator object. This shape can be a null one.
-	:rtype: TopoDS_Shape") OldShape;
-		const TopoDS_Shape  OldShape ();
+		%feature("autodoc", "Returns the old shape in this iterator object. this shape can be a null one.
 
-		/****************** TNaming_Iterator ******************/
-		%feature("compactdefaultargs") TNaming_Iterator;
-		%feature("autodoc", "* Iterates on all the history records in <anAtt>.
-	:param anAtt:
-	:type anAtt: TNaming_NamedShape
-	:rtype: None") TNaming_Iterator;
-		 TNaming_Iterator (const opencascade::handle<TNaming_NamedShape> & anAtt);
-
-		/****************** TNaming_Iterator ******************/
-		%feature("compactdefaultargs") TNaming_Iterator;
-		%feature("autodoc", "* Iterates on all the history records in the current transaction
-	:param aLabel:
-	:type aLabel: TDF_Label
-	:rtype: None") TNaming_Iterator;
-		 TNaming_Iterator (const TDF_Label & aLabel);
-
-		/****************** TNaming_Iterator ******************/
-		%feature("compactdefaultargs") TNaming_Iterator;
-		%feature("autodoc", "* Iterates on all the history records in the transaction <aTrans>
-	:param aLabel:
-	:type aLabel: TDF_Label
-	:param aTrans:
-	:type aTrans: int
-	:rtype: None") TNaming_Iterator;
-		 TNaming_Iterator (const TDF_Label & aLabel,const Standard_Integer aTrans);
+Returns
+-------
+TopoDS_Shape
+") OldShape;
+		const TopoDS_Shape OldShape();
 
 };
 
@@ -731,42 +1003,73 @@ class TNaming_Iterator {
 ************************************/
 class TNaming_IteratorOnShapesSet {
 	public:
+		/****************** TNaming_IteratorOnShapesSet ******************/
+		%feature("compactdefaultargs") TNaming_IteratorOnShapesSet;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TNaming_IteratorOnShapesSet;
+		 TNaming_IteratorOnShapesSet();
+
+		/****************** TNaming_IteratorOnShapesSet ******************/
+		%feature("compactdefaultargs") TNaming_IteratorOnShapesSet;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TNaming_ShapesSet
+
+Returns
+-------
+None
+") TNaming_IteratorOnShapesSet;
+		 TNaming_IteratorOnShapesSet(const TNaming_ShapesSet & S);
+
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "* Initialize the iteration
-	:param S:
-	:type S: TNaming_ShapesSet
-	:rtype: None") Init;
-		void Init (const TNaming_ShapesSet & S);
+		%feature("autodoc", "Initialize the iteration.
+
+Parameters
+----------
+S: TNaming_ShapesSet
+
+Returns
+-------
+None
+") Init;
+		void Init(const TNaming_ShapesSet & S);
 
 		/****************** More ******************/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "* Returns True if there is a current Item in the iteration.
-	:rtype: bool") More;
-		Standard_Boolean More ();
+		%feature("autodoc", "Returns true if there is a current item in the iteration.
+
+Returns
+-------
+bool
+") More;
+		Standard_Boolean More();
 
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "* Move to the next Item
-	:rtype: None") Next;
-		void Next ();
+		%feature("autodoc", "Move to the next item.
 
-		/****************** TNaming_IteratorOnShapesSet ******************/
-		%feature("compactdefaultargs") TNaming_IteratorOnShapesSet;
-		%feature("autodoc", ":rtype: None") TNaming_IteratorOnShapesSet;
-		 TNaming_IteratorOnShapesSet ();
-
-		/****************** TNaming_IteratorOnShapesSet ******************/
-		%feature("compactdefaultargs") TNaming_IteratorOnShapesSet;
-		%feature("autodoc", ":param S:
-	:type S: TNaming_ShapesSet
-	:rtype: None") TNaming_IteratorOnShapesSet;
-		 TNaming_IteratorOnShapesSet (const TNaming_ShapesSet & S);
+Returns
+-------
+None
+") Next;
+		void Next();
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", ":rtype: TopoDS_Shape") Value;
-		const TopoDS_Shape  Value ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Shape
+") Value;
+		const TopoDS_Shape Value();
 
 };
 
@@ -782,119 +1085,174 @@ class TNaming_IteratorOnShapesSet {
 **************************/
 class TNaming_Localizer {
 	public:
+		/****************** TNaming_Localizer ******************/
+		%feature("compactdefaultargs") TNaming_Localizer;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TNaming_Localizer;
+		 TNaming_Localizer();
+
 		/****************** Ancestors ******************/
 		%feature("compactdefaultargs") Ancestors;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:param Type:
-	:type Type: TopAbs_ShapeEnum
-	:rtype: TopTools_IndexedDataMapOfShapeListOfShape") Ancestors;
-		const TopTools_IndexedDataMapOfShapeListOfShape & Ancestors (const TopoDS_Shape & S,const TopAbs_ShapeEnum Type);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+Type: TopAbs_ShapeEnum
+
+Returns
+-------
+TopTools_IndexedDataMapOfShapeListOfShape
+") Ancestors;
+		const TopTools_IndexedDataMapOfShapeListOfShape & Ancestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
 
 		/****************** Backward ******************/
 		%feature("compactdefaultargs") Backward;
-		%feature("autodoc", ":param NS:
-	:type NS: TNaming_NamedShape
-	:param S:
-	:type S: TopoDS_Shape
-	:param Primitives:
-	:type Primitives: TNaming_MapOfNamedShape
-	:param ValidShapes:
-	:type ValidShapes: TopTools_MapOfShape
-	:rtype: None") Backward;
-		void Backward (const opencascade::handle<TNaming_NamedShape> & NS,const TopoDS_Shape & S,TNaming_MapOfNamedShape & Primitives,TopTools_MapOfShape & ValidShapes);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+S: TopoDS_Shape
+Primitives: TNaming_MapOfNamedShape
+ValidShapes: TopTools_MapOfShape
+
+Returns
+-------
+None
+") Backward;
+		void Backward(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, TNaming_MapOfNamedShape & Primitives, TopTools_MapOfShape & ValidShapes);
 
 		/****************** FindFeaturesInAncestors ******************/
 		%feature("compactdefaultargs") FindFeaturesInAncestors;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:param In:
-	:type In: TopoDS_Shape
-	:param AncInFeatures:
-	:type AncInFeatures: TopTools_MapOfShape
-	:rtype: None") FindFeaturesInAncestors;
-		void FindFeaturesInAncestors (const TopoDS_Shape & S,const TopoDS_Shape & In,TopTools_MapOfShape & AncInFeatures);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+In: TopoDS_Shape
+AncInFeatures: TopTools_MapOfShape
+
+Returns
+-------
+None
+") FindFeaturesInAncestors;
+		void FindFeaturesInAncestors(const TopoDS_Shape & S, const TopoDS_Shape & In, TopTools_MapOfShape & AncInFeatures);
 
 		/****************** FindGenerator ******************/
 		%feature("compactdefaultargs") FindGenerator;
-		%feature("autodoc", ":param NS:
-	:type NS: TNaming_NamedShape
-	:param S:
-	:type S: TopoDS_Shape
-	:param theListOfGenerators:
-	:type theListOfGenerators: TopTools_ListOfShape
-	:rtype: void") FindGenerator;
-		static void FindGenerator (const opencascade::handle<TNaming_NamedShape> & NS,const TopoDS_Shape & S,TopTools_ListOfShape & theListOfGenerators);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+S: TopoDS_Shape
+theListOfGenerators: TopTools_ListOfShape
+
+Returns
+-------
+None
+") FindGenerator;
+		static void FindGenerator(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, TopTools_ListOfShape & theListOfGenerators);
 
 		/****************** FindNeighbourg ******************/
 		%feature("compactdefaultargs") FindNeighbourg;
-		%feature("autodoc", ":param Cont:
-	:type Cont: TopoDS_Shape
-	:param S:
-	:type S: TopoDS_Shape
-	:param Neighbourg:
-	:type Neighbourg: TopTools_MapOfShape
-	:rtype: None") FindNeighbourg;
-		void FindNeighbourg (const TopoDS_Shape & Cont,const TopoDS_Shape & S,TopTools_MapOfShape & Neighbourg);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Cont: TopoDS_Shape
+S: TopoDS_Shape
+Neighbourg: TopTools_MapOfShape
+
+Returns
+-------
+None
+") FindNeighbourg;
+		void FindNeighbourg(const TopoDS_Shape & Cont, const TopoDS_Shape & S, TopTools_MapOfShape & Neighbourg);
 
 		/****************** FindShapeContext ******************/
 		%feature("compactdefaultargs") FindShapeContext;
-		%feature("autodoc", "* Finds context of the shape <S>.
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:param theS:
-	:type theS: TopoDS_Shape
-	:param theSC:
-	:type theSC: TopoDS_Shape
-	:rtype: void") FindShapeContext;
-		static void FindShapeContext (const opencascade::handle<TNaming_NamedShape> & NS,const TopoDS_Shape & theS,TopoDS_Shape & theSC);
+		%feature("autodoc", "Finds context of the shape <s>.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+theS: TopoDS_Shape
+theSC: TopoDS_Shape
+
+Returns
+-------
+None
+") FindShapeContext;
+		static void FindShapeContext(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & theS, TopoDS_Shape & theSC);
 
 		/****************** GoBack ******************/
 		%feature("compactdefaultargs") GoBack;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:param Lab:
-	:type Lab: TDF_Label
-	:param Evol:
-	:type Evol: TNaming_Evolution
-	:param OldS:
-	:type OldS: TopTools_ListOfShape
-	:param OldLab:
-	:type OldLab: TNaming_ListOfNamedShape
-	:rtype: None") GoBack;
-		void GoBack (const TopoDS_Shape & S,const TDF_Label & Lab,const TNaming_Evolution Evol,TopTools_ListOfShape & OldS,TNaming_ListOfNamedShape & OldLab);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+Lab: TDF_Label
+Evol: TNaming_Evolution
+OldS: TopTools_ListOfShape
+OldLab: TNaming_ListOfNamedShape
+
+Returns
+-------
+None
+") GoBack;
+		void GoBack(const TopoDS_Shape & S, const TDF_Label & Lab, const TNaming_Evolution Evol, TopTools_ListOfShape & OldS, TNaming_ListOfNamedShape & OldLab);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", ":param US:
-	:type US: TNaming_UsedShapes
-	:param CurTrans:
-	:type CurTrans: int
-	:rtype: None") Init;
-		void Init (const opencascade::handle<TNaming_UsedShapes> & US,const Standard_Integer CurTrans);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+US: TNaming_UsedShapes
+CurTrans: int
+
+Returns
+-------
+None
+") Init;
+		void Init(const opencascade::handle<TNaming_UsedShapes> & US, const Standard_Integer CurTrans);
 
 		/****************** IsNew ******************/
 		%feature("compactdefaultargs") IsNew;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: bool") IsNew;
-		static Standard_Boolean IsNew (const TopoDS_Shape & S,const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+NS: TNaming_NamedShape
+
+Returns
+-------
+bool
+") IsNew;
+		static Standard_Boolean IsNew(const TopoDS_Shape & S, const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****************** SubShapes ******************/
 		%feature("compactdefaultargs") SubShapes;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:param Type:
-	:type Type: TopAbs_ShapeEnum
-	:rtype: TopTools_MapOfShape") SubShapes;
-		const TopTools_MapOfShape & SubShapes (const TopoDS_Shape & S,const TopAbs_ShapeEnum Type);
+		%feature("autodoc", "No available documentation.
 
-		/****************** TNaming_Localizer ******************/
-		%feature("compactdefaultargs") TNaming_Localizer;
-		%feature("autodoc", ":rtype: None") TNaming_Localizer;
-		 TNaming_Localizer ();
+Parameters
+----------
+S: TopoDS_Shape
+Type: TopAbs_ShapeEnum
+
+Returns
+-------
+TopTools_MapOfShape
+") SubShapes;
+		const TopTools_MapOfShape & SubShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
 
 };
 
@@ -910,124 +1268,237 @@ class TNaming_Localizer {
 *********************/
 class TNaming_Name {
 	public:
+		/****************** TNaming_Name ******************/
+		%feature("compactdefaultargs") TNaming_Name;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TNaming_Name;
+		 TNaming_Name();
+
 		/****************** Append ******************/
 		%feature("compactdefaultargs") Append;
-		%feature("autodoc", ":param arg:
-	:type arg: TNaming_NamedShape
-	:rtype: None") Append;
-		void Append (const opencascade::handle<TNaming_NamedShape> & arg);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+arg: TNaming_NamedShape
+
+Returns
+-------
+None
+") Append;
+		void Append(const opencascade::handle<TNaming_NamedShape> & arg);
 
 		/****************** Arguments ******************/
 		%feature("compactdefaultargs") Arguments;
-		%feature("autodoc", ":rtype: TNaming_ListOfNamedShape") Arguments;
-		const TNaming_ListOfNamedShape & Arguments ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TNaming_ListOfNamedShape
+") Arguments;
+		const TNaming_ListOfNamedShape & Arguments();
 
 		/****************** ContextLabel ******************/
 		%feature("compactdefaultargs") ContextLabel;
-		%feature("autodoc", ":param theLab:
-	:type theLab: TDF_Label
-	:rtype: None") ContextLabel;
-		void ContextLabel (const TDF_Label & theLab);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theLab: TDF_Label
+
+Returns
+-------
+None
+") ContextLabel;
+		void ContextLabel(const TDF_Label & theLab);
 
 		/****************** ContextLabel ******************/
 		%feature("compactdefaultargs") ContextLabel;
-		%feature("autodoc", ":rtype: TDF_Label") ContextLabel;
-		const TDF_Label & ContextLabel ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TDF_Label
+") ContextLabel;
+		const TDF_Label & ContextLabel();
 
 		/****************** Index ******************/
 		%feature("compactdefaultargs") Index;
-		%feature("autodoc", ":param I:
-	:type I: int
-	:rtype: None") Index;
-		void Index (const Standard_Integer I);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+None
+") Index;
+		void Index(const Standard_Integer I);
 
 		/****************** Index ******************/
 		%feature("compactdefaultargs") Index;
-		%feature("autodoc", ":rtype: int") Index;
-		Standard_Integer Index ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") Index;
+		Standard_Integer Index();
 
 		/****************** Orientation ******************/
 		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", ":param theOrientation:
-	:type theOrientation: TopAbs_Orientation
-	:rtype: None") Orientation;
-		void Orientation (const TopAbs_Orientation theOrientation);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theOrientation: TopAbs_Orientation
+
+Returns
+-------
+None
+") Orientation;
+		void Orientation(const TopAbs_Orientation theOrientation);
 
 		/****************** Orientation ******************/
 		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", ":rtype: TopAbs_Orientation") Orientation;
-		TopAbs_Orientation Orientation ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopAbs_Orientation
+") Orientation;
+		TopAbs_Orientation Orientation();
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", ":param into:
-	:type into: TNaming_Name
-	:param RT:
-	:type RT: TDF_RelocationTable
-	:rtype: None") Paste;
-		void Paste (TNaming_Name & into,const opencascade::handle<TDF_RelocationTable> & RT);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+into: TNaming_Name
+RT: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		void Paste(TNaming_Name & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", ":param theShape:
-	:type theShape: TopoDS_Shape
-	:rtype: None") Shape;
-		void Shape (const TopoDS_Shape & theShape);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+None
+") Shape;
+		void Shape(const TopoDS_Shape & theShape);
 
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", ":rtype: TopoDS_Shape") Shape;
-		TopoDS_Shape Shape ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Shape
+") Shape;
+		TopoDS_Shape Shape();
 
 		/****************** ShapeType ******************/
 		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", ":param aType:
-	:type aType: TopAbs_ShapeEnum
-	:rtype: None") ShapeType;
-		void ShapeType (const TopAbs_ShapeEnum aType);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aType: TopAbs_ShapeEnum
+
+Returns
+-------
+None
+") ShapeType;
+		void ShapeType(const TopAbs_ShapeEnum aType);
 
 		/****************** ShapeType ******************/
 		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", ":rtype: TopAbs_ShapeEnum") ShapeType;
-		TopAbs_ShapeEnum ShapeType ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopAbs_ShapeEnum
+") ShapeType;
+		TopAbs_ShapeEnum ShapeType();
 
 		/****************** Solve ******************/
 		%feature("compactdefaultargs") Solve;
-		%feature("autodoc", ":param aLab:
-	:type aLab: TDF_Label
-	:param Valid:
-	:type Valid: TDF_LabelMap
-	:rtype: bool") Solve;
-		Standard_Boolean Solve (const TDF_Label & aLab,const TDF_LabelMap & Valid);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aLab: TDF_Label
+Valid: TDF_LabelMap
+
+Returns
+-------
+bool
+") Solve;
+		Standard_Boolean Solve(const TDF_Label & aLab, const TDF_LabelMap & Valid);
 
 		/****************** StopNamedShape ******************/
 		%feature("compactdefaultargs") StopNamedShape;
-		%feature("autodoc", ":param arg:
-	:type arg: TNaming_NamedShape
-	:rtype: None") StopNamedShape;
-		void StopNamedShape (const opencascade::handle<TNaming_NamedShape> & arg);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+arg: TNaming_NamedShape
+
+Returns
+-------
+None
+") StopNamedShape;
+		void StopNamedShape(const opencascade::handle<TNaming_NamedShape> & arg);
 
 		/****************** StopNamedShape ******************/
 		%feature("compactdefaultargs") StopNamedShape;
-		%feature("autodoc", ":rtype: opencascade::handle<TNaming_NamedShape>") StopNamedShape;
-		opencascade::handle<TNaming_NamedShape> StopNamedShape ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** TNaming_Name ******************/
-		%feature("compactdefaultargs") TNaming_Name;
-		%feature("autodoc", ":rtype: None") TNaming_Name;
-		 TNaming_Name ();
-
-		/****************** Type ******************/
-		%feature("compactdefaultargs") Type;
-		%feature("autodoc", ":param aType:
-	:type aType: TNaming_NameType
-	:rtype: None") Type;
-		void Type (const TNaming_NameType aType);
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") StopNamedShape;
+		opencascade::handle<TNaming_NamedShape> StopNamedShape();
 
 		/****************** Type ******************/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", ":rtype: TNaming_NameType") Type;
-		TNaming_NameType Type ();
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aType: TNaming_NameType
+
+Returns
+-------
+None
+") Type;
+		void Type(const TNaming_NameType aType);
+
+		/****************** Type ******************/
+		%feature("compactdefaultargs") Type;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TNaming_NameType
+") Type;
+		TNaming_NameType Type();
 
 };
 
@@ -1043,63 +1514,115 @@ class TNaming_Name {
 ***************************/
 class TNaming_NamedShape : public TDF_Attribute {
 	public:
+		/****************** TNaming_NamedShape ******************/
+		%feature("compactdefaultargs") TNaming_NamedShape;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TNaming_NamedShape;
+		 TNaming_NamedShape();
+
 		/****************** AfterUndo ******************/
 		%feature("compactdefaultargs") AfterUndo;
-		%feature("autodoc", "* Something to do after applying <anAttDelta>.
-	:param anAttDelta:
-	:type anAttDelta: TDF_AttributeDelta
-	:param forceIt: default value is Standard_False
-	:type forceIt: bool
-	:rtype: bool") AfterUndo;
-		virtual Standard_Boolean AfterUndo (const opencascade::handle<TDF_AttributeDelta> & anAttDelta,const Standard_Boolean forceIt = Standard_False);
+		%feature("autodoc", "Something to do after applying <anattdelta>.
+
+Parameters
+----------
+anAttDelta: TDF_AttributeDelta
+forceIt: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") AfterUndo;
+		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
 		/****************** BackupCopy ******************/
 		%feature("compactdefaultargs") BackupCopy;
-		%feature("autodoc", "* Copies the attribute contents into a new other attribute. It is used by Backup().
-	:rtype: opencascade::handle<TDF_Attribute>") BackupCopy;
-		virtual opencascade::handle<TDF_Attribute> BackupCopy ();
+		%feature("autodoc", "Copies the attribute contents into a new other attribute. it is used by backup().
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") BackupCopy;
+		virtual opencascade::handle<TDF_Attribute> BackupCopy();
 
 		/****************** BeforeRemoval ******************/
 		%feature("compactdefaultargs") BeforeRemoval;
-		%feature("autodoc", ":rtype: void") BeforeRemoval;
-		virtual void BeforeRemoval ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") BeforeRemoval;
+		virtual void BeforeRemoval();
 
 		/****************** BeforeUndo ******************/
 		%feature("compactdefaultargs") BeforeUndo;
-		%feature("autodoc", "* Something to do before applying <anAttDelta>
-	:param anAttDelta:
-	:type anAttDelta: TDF_AttributeDelta
-	:param forceIt: default value is Standard_False
-	:type forceIt: bool
-	:rtype: bool") BeforeUndo;
-		virtual Standard_Boolean BeforeUndo (const opencascade::handle<TDF_AttributeDelta> & anAttDelta,const Standard_Boolean forceIt = Standard_False);
+		%feature("autodoc", "Something to do before applying <anattdelta>.
+
+Parameters
+----------
+anAttDelta: TDF_AttributeDelta
+forceIt: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") BeforeUndo;
+		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
 		/****************** Clear ******************/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", ":rtype: None") Clear;
-		void Clear ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Clear;
+		void Clear();
 
 		/****************** DeltaOnModification ******************/
 		%feature("compactdefaultargs") DeltaOnModification;
-		%feature("autodoc", "* Makes a DeltaOnModification between <self> and <anOldAttribute.
-	:param anOldAttribute:
-	:type anOldAttribute: TDF_Attribute
-	:rtype: opencascade::handle<TDF_DeltaOnModification>") DeltaOnModification;
-		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification (const opencascade::handle<TDF_Attribute> & anOldAttribute);
+		%feature("autodoc", "Makes a deltaonmodification between <self> and <anoldattribute.
+
+Parameters
+----------
+anOldAttribute: TDF_Attribute
+
+Returns
+-------
+opencascade::handle<TDF_DeltaOnModification>
+") DeltaOnModification;
+		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
 		/****************** DeltaOnModification ******************/
 		%feature("compactdefaultargs") DeltaOnModification;
-		%feature("autodoc", "* Applies a DeltaOnModification to <self>.
-	:param aDelta:
-	:type aDelta: TDF_DeltaOnModification
-	:rtype: void") DeltaOnModification;
-		virtual void DeltaOnModification (const opencascade::handle<TDF_DeltaOnModification> & aDelta);
+		%feature("autodoc", "Applies a deltaonmodification to <self>.
+
+Parameters
+----------
+aDelta: TDF_DeltaOnModification
+
+Returns
+-------
+None
+") DeltaOnModification;
+		virtual void DeltaOnModification(const opencascade::handle<TDF_DeltaOnModification> & aDelta);
 
 		/****************** DeltaOnRemoval ******************/
 		%feature("compactdefaultargs") DeltaOnRemoval;
-		%feature("autodoc", "* Makes a DeltaOnRemoval on <self> because <self> has disappeared from the DS.
-	:rtype: opencascade::handle<TDF_DeltaOnRemoval>") DeltaOnRemoval;
-		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval ();
+		%feature("autodoc", "Makes a deltaonremoval on <self> because <self> has disappeared from the ds.
+
+Returns
+-------
+opencascade::handle<TDF_DeltaOnRemoval>
+") DeltaOnRemoval;
+		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
 
         %feature("autodoc", "1");
@@ -1109,85 +1632,132 @@ class TNaming_NamedShape : public TDF_Attribute {
             self->Dump(s);
             return s.str();}
         };
-        		/****************** Evolution ******************/
+		/****************** Evolution ******************/
 		%feature("compactdefaultargs") Evolution;
-		%feature("autodoc", "* Returns the Evolution of the attribute.
-	:rtype: TNaming_Evolution") Evolution;
-		TNaming_Evolution Evolution ();
+		%feature("autodoc", "Returns the evolution of the attribute.
+
+Returns
+-------
+TNaming_Evolution
+") Evolution;
+		TNaming_Evolution Evolution();
 
 		/****************** Get ******************/
 		%feature("compactdefaultargs") Get;
-		%feature("autodoc", "* Returns the shapes contained in <NS>. Returns a null shape if IsEmpty.
-	:rtype: TopoDS_Shape") Get;
-		TopoDS_Shape Get ();
+		%feature("autodoc", "Returns the shapes contained in <ns>. returns a null shape if isempty.
+
+Returns
+-------
+TopoDS_Shape
+") Get;
+		TopoDS_Shape Get();
 
 		/****************** GetID ******************/
 		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "* class method ============ Returns the GUID for named shapes.
-	:rtype: Standard_GUID") GetID;
-		static const Standard_GUID & GetID ();
+		%feature("autodoc", "Class method ============ returns the guid for named shapes.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
 
 		/****************** ID ******************/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "* Returns the ID of the attribute.
-	:rtype: Standard_GUID") ID;
-		const Standard_GUID & ID ();
+		%feature("autodoc", "Returns the id of the attribute.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		const Standard_GUID & ID();
 
 		/****************** IsEmpty ******************/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", ":rtype: bool") IsEmpty;
-		Standard_Boolean IsEmpty ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsEmpty;
+		Standard_Boolean IsEmpty();
 
 		/****************** NewEmpty ******************/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "* Returns an new empty attribute from the good end type. It is used by the copy algorithm.
-	:rtype: opencascade::handle<TDF_Attribute>") NewEmpty;
-		virtual opencascade::handle<TDF_Attribute> NewEmpty ();
+		%feature("autodoc", "Returns an new empty attribute from the good end type. it is used by the copy algorithm.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "* This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
-	:param intoAttribute:
-	:type intoAttribute: TDF_Attribute
-	:param aRelocTationable:
-	:type aRelocTationable: TDF_RelocationTable
-	:rtype: void") Paste;
-		virtual void Paste (const opencascade::handle<TDF_Attribute> & intoAttribute,const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
+		%feature("autodoc", "This method is different from the 'copy' one, because it is used when copying an attribute from a source structure into a target structure. this method pastes the current attribute to the label corresponding to the insertor. the pasted attribute may be a brand new one or a new version of the previous one.
+
+Parameters
+----------
+intoAttribute: TDF_Attribute
+aRelocTationable: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
 		/****************** References ******************/
 		%feature("compactdefaultargs") References;
-		%feature("autodoc", "* Adds the directly referenced attributes and labels to <aDataSet>. 'Directly' means we have only to look at the first level of references.
-	:param aDataSet:
-	:type aDataSet: TDF_DataSet
-	:rtype: void") References;
-		virtual void References (const opencascade::handle<TDF_DataSet> & aDataSet);
+		%feature("autodoc", "Adds the directly referenced attributes and labels to <adataset>. 'directly' means we have only to look at the first level of references.
+
+Parameters
+----------
+aDataSet: TDF_DataSet
+
+Returns
+-------
+None
+") References;
+		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "* Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
-	:param anAttribute:
-	:type anAttribute: TDF_Attribute
-	:rtype: void") Restore;
-		virtual void Restore (const opencascade::handle<TDF_Attribute> & anAttribute);
+		%feature("autodoc", "Restores the contents from <anattribute> into this one. it is used when aborting a transaction.
+
+Parameters
+----------
+anAttribute: TDF_Attribute
+
+Returns
+-------
+None
+") Restore;
+		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 
 		/****************** SetVersion ******************/
 		%feature("compactdefaultargs") SetVersion;
-		%feature("autodoc", "* Set the Version of the attribute.
-	:param version:
-	:type version: int
-	:rtype: None") SetVersion;
-		void SetVersion (const Standard_Integer version);
+		%feature("autodoc", "Set the version of the attribute.
 
-		/****************** TNaming_NamedShape ******************/
-		%feature("compactdefaultargs") TNaming_NamedShape;
-		%feature("autodoc", ":rtype: None") TNaming_NamedShape;
-		 TNaming_NamedShape ();
+Parameters
+----------
+version: int
+
+Returns
+-------
+None
+") SetVersion;
+		void SetVersion(const Standard_Integer version);
 
 		/****************** Version ******************/
 		%feature("compactdefaultargs") Version;
-		%feature("autodoc", "* Returns the Version of the attribute.
-	:rtype: int") Version;
-		Standard_Integer Version ();
+		%feature("autodoc", "Returns the version of the attribute.
+
+Returns
+-------
+int
+") Version;
+		Standard_Integer Version();
 
 };
 
@@ -1205,10 +1775,25 @@ class TNaming_NamedShape : public TDF_Attribute {
 ***********************/
 class TNaming_Naming : public TDF_Attribute {
 	public:
+		/****************** TNaming_Naming ******************/
+		%feature("compactdefaultargs") TNaming_Naming;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TNaming_Naming;
+		 TNaming_Naming();
+
 		/****************** ChangeName ******************/
 		%feature("compactdefaultargs") ChangeName;
-		%feature("autodoc", ":rtype: TNaming_Name") ChangeName;
-		TNaming_Name & ChangeName ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TNaming_Name
+") ChangeName;
+		TNaming_Name & ChangeName();
 
 
         %feature("autodoc", "1");
@@ -1218,112 +1803,162 @@ class TNaming_Naming : public TDF_Attribute {
             self->Dump(s);
             return s.str();}
         };
-        		/****************** ExtendedDump ******************/
-		%feature("compactdefaultargs") ExtendedDump;
-		%feature("autodoc", ":param anOS:
-	:type anOS: Standard_OStream
-	:param aFilter:
-	:type aFilter: TDF_IDFilter
-	:param aMap:
-	:type aMap: TDF_AttributeIndexedMap
-	:rtype: void") ExtendedDump;
-		virtual void ExtendedDump (Standard_OStream & anOS,const TDF_IDFilter & aFilter,TDF_AttributeIndexedMap & aMap);
-
 		/****************** GetID ******************/
 		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "* following code from TDesignStd ==============================
-	:rtype: Standard_GUID") GetID;
-		static const Standard_GUID & GetID ();
+		%feature("autodoc", "Following code from tdesignstd ==============================.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
 
 		/****************** GetName ******************/
 		%feature("compactdefaultargs") GetName;
-		%feature("autodoc", ":rtype: TNaming_Name") GetName;
-		const TNaming_Name & GetName ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TNaming_Name
+") GetName;
+		const TNaming_Name & GetName();
 
 		/****************** ID ******************/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "* Deferred methods from TDF_Attribute ===================================
-	:rtype: Standard_GUID") ID;
-		virtual const Standard_GUID & ID ();
+		%feature("autodoc", "Deferred methods from tdf_attribute ===================================.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		virtual const Standard_GUID & ID();
 
 		/****************** Insert ******************/
 		%feature("compactdefaultargs") Insert;
-		%feature("autodoc", ":param under:
-	:type under: TDF_Label
-	:rtype: opencascade::handle<TNaming_Naming>") Insert;
-		static opencascade::handle<TNaming_Naming> Insert (const TDF_Label & under);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+under: TDF_Label
+
+Returns
+-------
+opencascade::handle<TNaming_Naming>
+") Insert;
+		static opencascade::handle<TNaming_Naming> Insert(const TDF_Label & under);
 
 		/****************** IsDefined ******************/
 		%feature("compactdefaultargs") IsDefined;
-		%feature("autodoc", ":rtype: bool") IsDefined;
-		Standard_Boolean IsDefined ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsDefined;
+		Standard_Boolean IsDefined();
 
 		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "* Creates a Namimg attribute at label <where> to identify the shape <Selection>. Geometry is Standard_True if we are only interested by the underlying geometry (e.g. setting a constraint). <Context> is used to find neighbours of <S> when required by the naming. If KeepOrientation is True the Selection orientation is taken into account. BNproblem == True points out that Context sub-shapes in DF have orientation differences with Context shape itself. instance method ===============
-	:param where:
-	:type where: TDF_Label
-	:param Selection:
-	:type Selection: TopoDS_Shape
-	:param Context:
-	:type Context: TopoDS_Shape
-	:param Geometry: default value is Standard_False
-	:type Geometry: bool
-	:param KeepOrientation: default value is Standard_False
-	:type KeepOrientation: bool
-	:param BNproblem: default value is Standard_False
-	:type BNproblem: bool
-	:rtype: opencascade::handle<TNaming_NamedShape>") Name;
-		static opencascade::handle<TNaming_NamedShape> Name (const TDF_Label & where,const TopoDS_Shape & Selection,const TopoDS_Shape & Context,const Standard_Boolean Geometry = Standard_False,const Standard_Boolean KeepOrientation = Standard_False,const Standard_Boolean BNproblem = Standard_False);
+		%feature("autodoc", "Creates a namimg attribute at label <where> to identify the shape <selection>. geometry is standard_true if we are only interested by the underlying geometry (e.g. setting a constraint). <context> is used to find neighbours of <s> when required by the naming. if keeporientation is true the selection orientation is taken into account. bnproblem == true points out that context sub-shapes in df have orientation differences with context shape itself. instance method ===============.
+
+Parameters
+----------
+where: TDF_Label
+Selection: TopoDS_Shape
+Context: TopoDS_Shape
+Geometry: bool,optional
+	default value is Standard_False
+KeepOrientation: bool,optional
+	default value is Standard_False
+BNproblem: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") Name;
+		static opencascade::handle<TNaming_NamedShape> Name(const TDF_Label & where, const TopoDS_Shape & Selection, const TopoDS_Shape & Context, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientation = Standard_False, const Standard_Boolean BNproblem = Standard_False);
 
 		/****************** NewEmpty ******************/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", ":rtype: opencascade::handle<TDF_Attribute>") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", ":param Into:
-	:type Into: TDF_Attribute
-	:param RT:
-	:type RT: TDF_RelocationTable
-	:rtype: None") Paste;
-		void Paste (const opencascade::handle<TDF_Attribute> & Into,const opencascade::handle<TDF_RelocationTable> & RT);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Into: TDF_Attribute
+RT: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****************** References ******************/
 		%feature("compactdefaultargs") References;
-		%feature("autodoc", ":param aDataSet:
-	:type aDataSet: TDF_DataSet
-	:rtype: void") References;
-		virtual void References (const opencascade::handle<TDF_DataSet> & aDataSet);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aDataSet: TDF_DataSet
+
+Returns
+-------
+None
+") References;
+		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
 		/****************** Regenerate ******************/
 		%feature("compactdefaultargs") Regenerate;
-		%feature("autodoc", "* regenerate only the Name associated to me
-	:param scope:
-	:type scope: TDF_LabelMap
-	:rtype: bool") Regenerate;
-		Standard_Boolean Regenerate (TDF_LabelMap & scope);
+		%feature("autodoc", "Regenerate only the name associated to me.
+
+Parameters
+----------
+scope: TDF_LabelMap
+
+Returns
+-------
+bool
+") Regenerate;
+		Standard_Boolean Regenerate(TDF_LabelMap & scope);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", ":param With:
-	:type With: TDF_Attribute
-	:rtype: None") Restore;
-		void Restore (const opencascade::handle<TDF_Attribute> & With);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+With: TDF_Attribute
+
+Returns
+-------
+None
+") Restore;
+		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****************** Solve ******************/
 		%feature("compactdefaultargs") Solve;
-		%feature("autodoc", "* Regenerate recursively the whole name with scope. If scope is empty it means that all the labels of the framework are valid.
-	:param scope:
-	:type scope: TDF_LabelMap
-	:rtype: bool") Solve;
-		Standard_Boolean Solve (TDF_LabelMap & scope);
+		%feature("autodoc", "Regenerate recursively the whole name with scope. if scope is empty it means that all the labels of the framework are valid.
 
-		/****************** TNaming_Naming ******************/
-		%feature("compactdefaultargs") TNaming_Naming;
-		%feature("autodoc", ":rtype: None") TNaming_Naming;
-		 TNaming_Naming ();
+Parameters
+----------
+scope: TDF_LabelMap
+
+Returns
+-------
+bool
+") Solve;
+		Standard_Boolean Solve(TDF_LabelMap & scope);
 
 };
 
@@ -1343,40 +1978,53 @@ class TNaming_NamingTool {
 	public:
 		/****************** BuildDescendants ******************/
 		%feature("compactdefaultargs") BuildDescendants;
-		%feature("autodoc", ":param NS:
-	:type NS: TNaming_NamedShape
-	:param Labels:
-	:type Labels: TDF_LabelMap
-	:rtype: void") BuildDescendants;
-		static void BuildDescendants (const opencascade::handle<TNaming_NamedShape> & NS,TDF_LabelMap & Labels);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+Labels: TDF_LabelMap
+
+Returns
+-------
+None
+") BuildDescendants;
+		static void BuildDescendants(const opencascade::handle<TNaming_NamedShape> & NS, TDF_LabelMap & Labels);
 
 		/****************** CurrentShape ******************/
 		%feature("compactdefaultargs") CurrentShape;
-		%feature("autodoc", ":param Valid:
-	:type Valid: TDF_LabelMap
-	:param Forbiden:
-	:type Forbiden: TDF_LabelMap
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:param MS:
-	:type MS: TopTools_IndexedMapOfShape
-	:rtype: void") CurrentShape;
-		static void CurrentShape (const TDF_LabelMap & Valid,const TDF_LabelMap & Forbiden,const opencascade::handle<TNaming_NamedShape> & NS,TopTools_IndexedMapOfShape & MS);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Valid: TDF_LabelMap
+Forbiden: TDF_LabelMap
+NS: TNaming_NamedShape
+MS: TopTools_IndexedMapOfShape
+
+Returns
+-------
+None
+") CurrentShape;
+		static void CurrentShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const opencascade::handle<TNaming_NamedShape> & NS, TopTools_IndexedMapOfShape & MS);
 
 		/****************** CurrentShapeFromShape ******************/
 		%feature("compactdefaultargs") CurrentShapeFromShape;
-		%feature("autodoc", ":param Valid:
-	:type Valid: TDF_LabelMap
-	:param Forbiden:
-	:type Forbiden: TDF_LabelMap
-	:param Acces:
-	:type Acces: TDF_Label
-	:param S:
-	:type S: TopoDS_Shape
-	:param MS:
-	:type MS: TopTools_IndexedMapOfShape
-	:rtype: void") CurrentShapeFromShape;
-		static void CurrentShapeFromShape (const TDF_LabelMap & Valid,const TDF_LabelMap & Forbiden,const TDF_Label & Acces,const TopoDS_Shape & S,TopTools_IndexedMapOfShape & MS);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Valid: TDF_LabelMap
+Forbiden: TDF_LabelMap
+Acces: TDF_Label
+S: TopoDS_Shape
+MS: TopTools_IndexedMapOfShape
+
+Returns
+-------
+None
+") CurrentShapeFromShape;
+		static void CurrentShapeFromShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const TDF_Label & Acces, const TopoDS_Shape & S, TopTools_IndexedMapOfShape & MS);
 
 };
 
@@ -1392,73 +2040,124 @@ class TNaming_NamingTool {
 *********************************/
 class TNaming_NewShapeIterator {
 	public:
+		/****************** TNaming_NewShapeIterator ******************/
+		%feature("compactdefaultargs") TNaming_NewShapeIterator;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+Transaction: int
+access: TDF_Label
+
+Returns
+-------
+None
+") TNaming_NewShapeIterator;
+		 TNaming_NewShapeIterator(const TopoDS_Shape & aShape, const Standard_Integer Transaction, const TDF_Label & access);
+
+		/****************** TNaming_NewShapeIterator ******************/
+		%feature("compactdefaultargs") TNaming_NewShapeIterator;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+access: TDF_Label
+
+Returns
+-------
+None
+") TNaming_NewShapeIterator;
+		 TNaming_NewShapeIterator(const TopoDS_Shape & aShape, const TDF_Label & access);
+
+		/****************** TNaming_NewShapeIterator ******************/
+		%feature("compactdefaultargs") TNaming_NewShapeIterator;
+		%feature("autodoc", "Iterates from the current shape in <aniterator>.
+
+Parameters
+----------
+anIterator: TNaming_NewShapeIterator
+
+Returns
+-------
+None
+") TNaming_NewShapeIterator;
+		 TNaming_NewShapeIterator(const TNaming_NewShapeIterator & anIterator);
+
+		/****************** TNaming_NewShapeIterator ******************/
+		%feature("compactdefaultargs") TNaming_NewShapeIterator;
+		%feature("autodoc", "Iterates from the current shape in <aniterator>.
+
+Parameters
+----------
+anIterator: TNaming_Iterator
+
+Returns
+-------
+None
+") TNaming_NewShapeIterator;
+		 TNaming_NewShapeIterator(const TNaming_Iterator & anIterator);
+
 		/****************** IsModification ******************/
 		%feature("compactdefaultargs") IsModification;
-		%feature("autodoc", "* True if the new shape is a modification (split, fuse,etc...) of the old shape.
-	:rtype: bool") IsModification;
-		Standard_Boolean IsModification ();
+		%feature("autodoc", "True if the new shape is a modification (split, fuse,etc...) of the old shape.
+
+Returns
+-------
+bool
+") IsModification;
+		Standard_Boolean IsModification();
 
 		/****************** Label ******************/
 		%feature("compactdefaultargs") Label;
-		%feature("autodoc", ":rtype: TDF_Label") Label;
-		TDF_Label Label ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TDF_Label
+") Label;
+		TDF_Label Label();
 
 		/****************** More ******************/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", ":rtype: bool") More;
-		Standard_Boolean More ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") More;
+		Standard_Boolean More();
 
 		/****************** NamedShape ******************/
 		%feature("compactdefaultargs") NamedShape;
-		%feature("autodoc", ":rtype: opencascade::handle<TNaming_NamedShape>") NamedShape;
-		opencascade::handle<TNaming_NamedShape> NamedShape ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") NamedShape;
+		opencascade::handle<TNaming_NamedShape> NamedShape();
 
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", ":rtype: None") Next;
-		void Next ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Next;
+		void Next();
 
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "* Warning! Can be a Null Shape if a descendant is deleted.
-	:rtype: TopoDS_Shape") Shape;
-		const TopoDS_Shape  Shape ();
+		%feature("autodoc", "Warning! can be a null shape if a descendant is deleted.
 
-		/****************** TNaming_NewShapeIterator ******************/
-		%feature("compactdefaultargs") TNaming_NewShapeIterator;
-		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape
-	:param Transaction:
-	:type Transaction: int
-	:param access:
-	:type access: TDF_Label
-	:rtype: None") TNaming_NewShapeIterator;
-		 TNaming_NewShapeIterator (const TopoDS_Shape & aShape,const Standard_Integer Transaction,const TDF_Label & access);
-
-		/****************** TNaming_NewShapeIterator ******************/
-		%feature("compactdefaultargs") TNaming_NewShapeIterator;
-		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape
-	:param access:
-	:type access: TDF_Label
-	:rtype: None") TNaming_NewShapeIterator;
-		 TNaming_NewShapeIterator (const TopoDS_Shape & aShape,const TDF_Label & access);
-
-		/****************** TNaming_NewShapeIterator ******************/
-		%feature("compactdefaultargs") TNaming_NewShapeIterator;
-		%feature("autodoc", "* Iterates from the current Shape in <anIterator>
-	:param anIterator:
-	:type anIterator: TNaming_NewShapeIterator
-	:rtype: None") TNaming_NewShapeIterator;
-		 TNaming_NewShapeIterator (const TNaming_NewShapeIterator & anIterator);
-
-		/****************** TNaming_NewShapeIterator ******************/
-		%feature("compactdefaultargs") TNaming_NewShapeIterator;
-		%feature("autodoc", "* Iterates from the current Shape in <anIterator>
-	:param anIterator:
-	:type anIterator: TNaming_Iterator
-	:rtype: None") TNaming_NewShapeIterator;
-		 TNaming_NewShapeIterator (const TNaming_Iterator & anIterator);
+Returns
+-------
+TopoDS_Shape
+") Shape;
+		const TopoDS_Shape Shape();
 
 };
 
@@ -1474,72 +2173,124 @@ class TNaming_NewShapeIterator {
 *********************************/
 class TNaming_OldShapeIterator {
 	public:
+		/****************** TNaming_OldShapeIterator ******************/
+		%feature("compactdefaultargs") TNaming_OldShapeIterator;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+Transaction: int
+access: TDF_Label
+
+Returns
+-------
+None
+") TNaming_OldShapeIterator;
+		 TNaming_OldShapeIterator(const TopoDS_Shape & aShape, const Standard_Integer Transaction, const TDF_Label & access);
+
+		/****************** TNaming_OldShapeIterator ******************/
+		%feature("compactdefaultargs") TNaming_OldShapeIterator;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+access: TDF_Label
+
+Returns
+-------
+None
+") TNaming_OldShapeIterator;
+		 TNaming_OldShapeIterator(const TopoDS_Shape & aShape, const TDF_Label & access);
+
+		/****************** TNaming_OldShapeIterator ******************/
+		%feature("compactdefaultargs") TNaming_OldShapeIterator;
+		%feature("autodoc", "Iterates from the current shape in <aniterator>.
+
+Parameters
+----------
+anIterator: TNaming_OldShapeIterator
+
+Returns
+-------
+None
+") TNaming_OldShapeIterator;
+		 TNaming_OldShapeIterator(const TNaming_OldShapeIterator & anIterator);
+
+		/****************** TNaming_OldShapeIterator ******************/
+		%feature("compactdefaultargs") TNaming_OldShapeIterator;
+		%feature("autodoc", "Iterates from the current shape in <aniterator>.
+
+Parameters
+----------
+anIterator: TNaming_Iterator
+
+Returns
+-------
+None
+") TNaming_OldShapeIterator;
+		 TNaming_OldShapeIterator(const TNaming_Iterator & anIterator);
+
 		/****************** IsModification ******************/
 		%feature("compactdefaultargs") IsModification;
-		%feature("autodoc", "* True if the new shape is a modification (split, fuse,etc...) of the old shape.
-	:rtype: bool") IsModification;
-		Standard_Boolean IsModification ();
+		%feature("autodoc", "True if the new shape is a modification (split, fuse,etc...) of the old shape.
+
+Returns
+-------
+bool
+") IsModification;
+		Standard_Boolean IsModification();
 
 		/****************** Label ******************/
 		%feature("compactdefaultargs") Label;
-		%feature("autodoc", ":rtype: TDF_Label") Label;
-		TDF_Label Label ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TDF_Label
+") Label;
+		TDF_Label Label();
 
 		/****************** More ******************/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", ":rtype: bool") More;
-		Standard_Boolean More ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") More;
+		Standard_Boolean More();
 
 		/****************** NamedShape ******************/
 		%feature("compactdefaultargs") NamedShape;
-		%feature("autodoc", ":rtype: opencascade::handle<TNaming_NamedShape>") NamedShape;
-		opencascade::handle<TNaming_NamedShape> NamedShape ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") NamedShape;
+		opencascade::handle<TNaming_NamedShape> NamedShape();
 
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", ":rtype: None") Next;
-		void Next ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Next;
+		void Next();
 
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", ":rtype: TopoDS_Shape") Shape;
-		const TopoDS_Shape  Shape ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** TNaming_OldShapeIterator ******************/
-		%feature("compactdefaultargs") TNaming_OldShapeIterator;
-		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape
-	:param Transaction:
-	:type Transaction: int
-	:param access:
-	:type access: TDF_Label
-	:rtype: None") TNaming_OldShapeIterator;
-		 TNaming_OldShapeIterator (const TopoDS_Shape & aShape,const Standard_Integer Transaction,const TDF_Label & access);
-
-		/****************** TNaming_OldShapeIterator ******************/
-		%feature("compactdefaultargs") TNaming_OldShapeIterator;
-		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape
-	:param access:
-	:type access: TDF_Label
-	:rtype: None") TNaming_OldShapeIterator;
-		 TNaming_OldShapeIterator (const TopoDS_Shape & aShape,const TDF_Label & access);
-
-		/****************** TNaming_OldShapeIterator ******************/
-		%feature("compactdefaultargs") TNaming_OldShapeIterator;
-		%feature("autodoc", "* Iterates from the current Shape in <anIterator>
-	:param anIterator:
-	:type anIterator: TNaming_OldShapeIterator
-	:rtype: None") TNaming_OldShapeIterator;
-		 TNaming_OldShapeIterator (const TNaming_OldShapeIterator & anIterator);
-
-		/****************** TNaming_OldShapeIterator ******************/
-		%feature("compactdefaultargs") TNaming_OldShapeIterator;
-		%feature("autodoc", "* Iterates from the current Shape in <anIterator>
-	:param anIterator:
-	:type anIterator: TNaming_Iterator
-	:rtype: None") TNaming_OldShapeIterator;
-		 TNaming_OldShapeIterator (const TNaming_Iterator & anIterator);
+Returns
+-------
+TopoDS_Shape
+") Shape;
+		const TopoDS_Shape Shape();
 
 };
 
@@ -1555,51 +2306,97 @@ class TNaming_OldShapeIterator {
 *************************/
 class TNaming_RefShape {
 	public:
-		/****************** FirstUse ******************/
-		%feature("compactdefaultargs") FirstUse;
-		%feature("autodoc", ":param aPtr:
-	:type aPtr: TNaming_PtrNode
-	:rtype: None") FirstUse;
-		void FirstUse (const TNaming_PtrNode & aPtr);
+		/****************** TNaming_RefShape ******************/
+		%feature("compactdefaultargs") TNaming_RefShape;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TNaming_RefShape;
+		 TNaming_RefShape();
+
+		/****************** TNaming_RefShape ******************/
+		%feature("compactdefaultargs") TNaming_RefShape;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") TNaming_RefShape;
+		 TNaming_RefShape(const TopoDS_Shape & S);
 
 		/****************** FirstUse ******************/
 		%feature("compactdefaultargs") FirstUse;
-		%feature("autodoc", ":rtype: TNaming_PtrNode") FirstUse;
-		TNaming_PtrNode FirstUse ();
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aPtr: TNaming_PtrNode
+
+Returns
+-------
+None
+") FirstUse;
+		void FirstUse(const TNaming_PtrNode & aPtr);
+
+		/****************** FirstUse ******************/
+		%feature("compactdefaultargs") FirstUse;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TNaming_PtrNode
+") FirstUse;
+		TNaming_PtrNode FirstUse();
 
 		/****************** Label ******************/
 		%feature("compactdefaultargs") Label;
-		%feature("autodoc", ":rtype: TDF_Label") Label;
-		TDF_Label Label ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TDF_Label
+") Label;
+		TDF_Label Label();
 
 		/****************** NamedShape ******************/
 		%feature("compactdefaultargs") NamedShape;
-		%feature("autodoc", ":rtype: opencascade::handle<TNaming_NamedShape>") NamedShape;
-		opencascade::handle<TNaming_NamedShape> NamedShape ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") NamedShape;
+		opencascade::handle<TNaming_NamedShape> NamedShape();
 
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") Shape;
-		void Shape (const TopoDS_Shape & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") Shape;
+		void Shape(const TopoDS_Shape & S);
 
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", ":rtype: TopoDS_Shape") Shape;
-		const TopoDS_Shape  Shape ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** TNaming_RefShape ******************/
-		%feature("compactdefaultargs") TNaming_RefShape;
-		%feature("autodoc", ":rtype: None") TNaming_RefShape;
-		 TNaming_RefShape ();
-
-		/****************** TNaming_RefShape ******************/
-		%feature("compactdefaultargs") TNaming_RefShape;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") TNaming_RefShape;
-		 TNaming_RefShape (const TopoDS_Shape & S);
+Returns
+-------
+TopoDS_Shape
+") Shape;
+		const TopoDS_Shape Shape();
 
 };
 
@@ -1615,29 +2412,50 @@ class TNaming_RefShape {
 **********************************/
 class TNaming_SameShapeIterator {
 	public:
+		/****************** TNaming_SameShapeIterator ******************/
+		%feature("compactdefaultargs") TNaming_SameShapeIterator;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+access: TDF_Label
+
+Returns
+-------
+None
+") TNaming_SameShapeIterator;
+		 TNaming_SameShapeIterator(const TopoDS_Shape & aShape, const TDF_Label & access);
+
 		/****************** Label ******************/
 		%feature("compactdefaultargs") Label;
-		%feature("autodoc", ":rtype: TDF_Label") Label;
-		TDF_Label Label ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TDF_Label
+") Label;
+		TDF_Label Label();
 
 		/****************** More ******************/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", ":rtype: bool") More;
-		Standard_Boolean More ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") More;
+		Standard_Boolean More();
 
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", ":rtype: None") Next;
-		void Next ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** TNaming_SameShapeIterator ******************/
-		%feature("compactdefaultargs") TNaming_SameShapeIterator;
-		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape
-	:param access:
-	:type access: TDF_Label
-	:rtype: None") TNaming_SameShapeIterator;
-		 TNaming_SameShapeIterator (const TopoDS_Shape & aShape,const TDF_Label & access);
+Returns
+-------
+None
+") Next;
+		void Next();
 
 };
 
@@ -1653,101 +2471,185 @@ class TNaming_SameShapeIterator {
 **********************/
 class TNaming_Scope {
 	public:
+		/****************** TNaming_Scope ******************/
+		%feature("compactdefaultargs") TNaming_Scope;
+		%feature("autodoc", "Withvalid = false.
+
+Returns
+-------
+None
+") TNaming_Scope;
+		 TNaming_Scope();
+
+		/****************** TNaming_Scope ******************/
+		%feature("compactdefaultargs") TNaming_Scope;
+		%feature("autodoc", "If <withvalid> the scope is defined by the map. if not on the whole framework.
+
+Parameters
+----------
+WithValid: bool
+
+Returns
+-------
+None
+") TNaming_Scope;
+		 TNaming_Scope(const Standard_Boolean WithValid);
+
+		/****************** TNaming_Scope ******************/
+		%feature("compactdefaultargs") TNaming_Scope;
+		%feature("autodoc", "Create a scope with a map. withvalid = true.
+
+Parameters
+----------
+valid: TDF_LabelMap
+
+Returns
+-------
+None
+") TNaming_Scope;
+		 TNaming_Scope(TDF_LabelMap & valid);
+
 		/****************** ChangeValid ******************/
 		%feature("compactdefaultargs") ChangeValid;
-		%feature("autodoc", ":rtype: TDF_LabelMap") ChangeValid;
-		TDF_LabelMap & ChangeValid ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TDF_LabelMap
+") ChangeValid;
+		TDF_LabelMap & ChangeValid();
 
 		/****************** ClearValid ******************/
 		%feature("compactdefaultargs") ClearValid;
-		%feature("autodoc", ":rtype: None") ClearValid;
-		void ClearValid ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") ClearValid;
+		void ClearValid();
 
 		/****************** CurrentShape ******************/
 		%feature("compactdefaultargs") CurrentShape;
-		%feature("autodoc", "* Returns the current value of <NS> according to the Valid Scope.
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: TopoDS_Shape") CurrentShape;
-		TopoDS_Shape CurrentShape (const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "Returns the current value of <ns> according to the valid scope.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+
+Returns
+-------
+TopoDS_Shape
+") CurrentShape;
+		TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****************** GetValid ******************/
 		%feature("compactdefaultargs") GetValid;
-		%feature("autodoc", ":rtype: TDF_LabelMap") GetValid;
-		const TDF_LabelMap & GetValid ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TDF_LabelMap
+") GetValid;
+		const TDF_LabelMap & GetValid();
 
 		/****************** IsValid ******************/
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", ":param L:
-	:type L: TDF_Label
-	:rtype: bool") IsValid;
-		Standard_Boolean IsValid (const TDF_Label & L);
+		%feature("autodoc", "No available documentation.
 
-		/****************** TNaming_Scope ******************/
-		%feature("compactdefaultargs") TNaming_Scope;
-		%feature("autodoc", "* WithValid = False
-	:rtype: None") TNaming_Scope;
-		 TNaming_Scope ();
+Parameters
+----------
+L: TDF_Label
 
-		/****************** TNaming_Scope ******************/
-		%feature("compactdefaultargs") TNaming_Scope;
-		%feature("autodoc", "* if <WithValid> the scope is defined by the map. If not on the whole framework.
-	:param WithValid:
-	:type WithValid: bool
-	:rtype: None") TNaming_Scope;
-		 TNaming_Scope (const Standard_Boolean WithValid);
-
-		/****************** TNaming_Scope ******************/
-		%feature("compactdefaultargs") TNaming_Scope;
-		%feature("autodoc", "* create a scope with a map. WithValid = True.
-	:param valid:
-	:type valid: TDF_LabelMap
-	:rtype: None") TNaming_Scope;
-		 TNaming_Scope (TDF_LabelMap & valid);
+Returns
+-------
+bool
+") IsValid;
+		Standard_Boolean IsValid(const TDF_Label & L);
 
 		/****************** Unvalid ******************/
 		%feature("compactdefaultargs") Unvalid;
-		%feature("autodoc", ":param L:
-	:type L: TDF_Label
-	:rtype: None") Unvalid;
-		void Unvalid (const TDF_Label & L);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+L: TDF_Label
+
+Returns
+-------
+None
+") Unvalid;
+		void Unvalid(const TDF_Label & L);
 
 		/****************** UnvalidChildren ******************/
 		%feature("compactdefaultargs") UnvalidChildren;
-		%feature("autodoc", ":param L:
-	:type L: TDF_Label
-	:param withroot: default value is Standard_True
-	:type withroot: bool
-	:rtype: None") UnvalidChildren;
-		void UnvalidChildren (const TDF_Label & L,const Standard_Boolean withroot = Standard_True);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+L: TDF_Label
+withroot: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") UnvalidChildren;
+		void UnvalidChildren(const TDF_Label & L, const Standard_Boolean withroot = Standard_True);
 
 		/****************** Valid ******************/
 		%feature("compactdefaultargs") Valid;
-		%feature("autodoc", ":param L:
-	:type L: TDF_Label
-	:rtype: None") Valid;
-		void Valid (const TDF_Label & L);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+L: TDF_Label
+
+Returns
+-------
+None
+") Valid;
+		void Valid(const TDF_Label & L);
 
 		/****************** ValidChildren ******************/
 		%feature("compactdefaultargs") ValidChildren;
-		%feature("autodoc", ":param L:
-	:type L: TDF_Label
-	:param withroot: default value is Standard_True
-	:type withroot: bool
-	:rtype: None") ValidChildren;
-		void ValidChildren (const TDF_Label & L,const Standard_Boolean withroot = Standard_True);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+L: TDF_Label
+withroot: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") ValidChildren;
+		void ValidChildren(const TDF_Label & L, const Standard_Boolean withroot = Standard_True);
 
 		/****************** WithValid ******************/
 		%feature("compactdefaultargs") WithValid;
-		%feature("autodoc", ":rtype: bool") WithValid;
-		Standard_Boolean WithValid ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") WithValid;
+		Standard_Boolean WithValid();
 
 		/****************** WithValid ******************/
 		%feature("compactdefaultargs") WithValid;
-		%feature("autodoc", ":param mode:
-	:type mode: bool
-	:rtype: None") WithValid;
-		void WithValid (const Standard_Boolean mode);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+mode: bool
+
+Returns
+-------
+None
+") WithValid;
+		void WithValid(const Standard_Boolean mode);
 
 };
 
@@ -1763,75 +2665,112 @@ class TNaming_Scope {
 *************************/
 class TNaming_Selector {
 	public:
+		/****************** TNaming_Selector ******************/
+		%feature("compactdefaultargs") TNaming_Selector;
+		%feature("autodoc", "Create a selector on this label to select a shape. ==================.
+
+Parameters
+----------
+aLabel: TDF_Label
+
+Returns
+-------
+None
+") TNaming_Selector;
+		 TNaming_Selector(const TDF_Label & aLabel);
+
 		/****************** Arguments ******************/
 		%feature("compactdefaultargs") Arguments;
-		%feature("autodoc", "* Returns the attribute list args. This list contains the named shape on which the topological naming was built.
-	:param args:
-	:type args: TDF_AttributeMap
-	:rtype: None") Arguments;
-		void Arguments (TDF_AttributeMap & args);
+		%feature("autodoc", "Returns the attribute list args. this list contains the named shape on which the topological naming was built.
+
+Parameters
+----------
+args: TDF_AttributeMap
+
+Returns
+-------
+None
+") Arguments;
+		void Arguments(TDF_AttributeMap & args);
 
 		/****************** IsIdentified ******************/
 		%feature("compactdefaultargs") IsIdentified;
-		%feature("autodoc", "* To know if a shape is already identified (not selected) ======================================================= //! The label access defines the point of access to the data framework. selection is the shape for which we want to know whether it is identified or not. If true, NS is returned as the identity of selection. If Geometry is true, NS will be the named shape containing the first appearance of selection and not any other shape. In other words, selection must be the only shape stored in NS.
-	:param access:
-	:type access: TDF_Label
-	:param selection:
-	:type selection: TopoDS_Shape
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:param Geometry: default value is Standard_False
-	:type Geometry: bool
-	:rtype: bool") IsIdentified;
-		static Standard_Boolean IsIdentified (const TDF_Label & access,const TopoDS_Shape & selection,opencascade::handle<TNaming_NamedShape> & NS,const Standard_Boolean Geometry = Standard_False);
+		%feature("autodoc", "To know if a shape is already identified (not selected) ======================================================= //! the label access defines the point of access to the data framework. selection is the shape for which we want to know whether it is identified or not. if true, ns is returned as the identity of selection. if geometry is true, ns will be the named shape containing the first appearance of selection and not any other shape. in other words, selection must be the only shape stored in ns.
+
+Parameters
+----------
+access: TDF_Label
+selection: TopoDS_Shape
+NS: TNaming_NamedShape
+Geometry: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") IsIdentified;
+		static Standard_Boolean IsIdentified(const TDF_Label & access, const TopoDS_Shape & selection, opencascade::handle<TNaming_NamedShape> & NS, const Standard_Boolean Geometry = Standard_False);
 
 		/****************** NamedShape ******************/
 		%feature("compactdefaultargs") NamedShape;
-		%feature("autodoc", "* Returns the NamedShape build or under construction, which contains the topological naming..
-	:rtype: opencascade::handle<TNaming_NamedShape>") NamedShape;
-		opencascade::handle<TNaming_NamedShape> NamedShape ();
+		%feature("autodoc", "Returns the namedshape build or under construction, which contains the topological naming..
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") NamedShape;
+		opencascade::handle<TNaming_NamedShape> NamedShape();
 
 		/****************** Select ******************/
 		%feature("compactdefaultargs") Select;
-		%feature("autodoc", "* Creates a topological naming on the label aLabel given as an argument at construction time. If successful, the shape Selection - found in the shape Context - is now identified in the named shape returned in NamedShape. If Geometry is true, NamedShape contains the first appearance of Selection. This syntax is more robust than the previous syntax for this method.
-	:param Selection:
-	:type Selection: TopoDS_Shape
-	:param Context:
-	:type Context: TopoDS_Shape
-	:param Geometry: default value is Standard_False
-	:type Geometry: bool
-	:param KeepOrientatation: default value is Standard_False
-	:type KeepOrientatation: bool
-	:rtype: bool") Select;
-		Standard_Boolean Select (const TopoDS_Shape & Selection,const TopoDS_Shape & Context,const Standard_Boolean Geometry = Standard_False,const Standard_Boolean KeepOrientatation = Standard_False);
+		%feature("autodoc", "Creates a topological naming on the label alabel given as an argument at construction time. if successful, the shape selection - found in the shape context - is now identified in the named shape returned in namedshape. if geometry is true, namedshape contains the first appearance of selection. this syntax is more robust than the previous syntax for this method.
+
+Parameters
+----------
+Selection: TopoDS_Shape
+Context: TopoDS_Shape
+Geometry: bool,optional
+	default value is Standard_False
+KeepOrientatation: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") Select;
+		Standard_Boolean Select(const TopoDS_Shape & Selection, const TopoDS_Shape & Context, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientatation = Standard_False);
 
 		/****************** Select ******************/
 		%feature("compactdefaultargs") Select;
-		%feature("autodoc", "* Creates a topological naming on the label aLabel given as an argument at construction time. If successful, the shape Selection is now identified in the named shape returned in NamedShape. If Geometry is true, NamedShape contains the first appearance of Selection.
-	:param Selection:
-	:type Selection: TopoDS_Shape
-	:param Geometry: default value is Standard_False
-	:type Geometry: bool
-	:param KeepOrientatation: default value is Standard_False
-	:type KeepOrientatation: bool
-	:rtype: bool") Select;
-		Standard_Boolean Select (const TopoDS_Shape & Selection,const Standard_Boolean Geometry = Standard_False,const Standard_Boolean KeepOrientatation = Standard_False);
+		%feature("autodoc", "Creates a topological naming on the label alabel given as an argument at construction time. if successful, the shape selection is now identified in the named shape returned in namedshape. if geometry is true, namedshape contains the first appearance of selection.
+
+Parameters
+----------
+Selection: TopoDS_Shape
+Geometry: bool,optional
+	default value is Standard_False
+KeepOrientatation: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") Select;
+		Standard_Boolean Select(const TopoDS_Shape & Selection, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientatation = Standard_False);
 
 		/****************** Solve ******************/
 		%feature("compactdefaultargs") Solve;
-		%feature("autodoc", "* Updates the topological naming on the label aLabel given as an argument at construction time. The underlying shape returned in the method NamedShape is updated. To read this shape, use the method TNaming_Tool::GetShape
-	:param Valid:
-	:type Valid: TDF_LabelMap
-	:rtype: bool") Solve;
-		Standard_Boolean Solve (TDF_LabelMap & Valid);
+		%feature("autodoc", "Updates the topological naming on the label alabel given as an argument at construction time. the underlying shape returned in the method namedshape is updated. to read this shape, use the method tnaming_tool::getshape.
 
-		/****************** TNaming_Selector ******************/
-		%feature("compactdefaultargs") TNaming_Selector;
-		%feature("autodoc", "* Create a selector on this label to select a shape. ==================
-	:param aLabel:
-	:type aLabel: TDF_Label
-	:rtype: None") TNaming_Selector;
-		 TNaming_Selector (const TDF_Label & aLabel);
+Parameters
+----------
+Valid: TDF_LabelMap
+
+Returns
+-------
+bool
+") Solve;
+		Standard_Boolean Solve(TDF_LabelMap & Valid);
 
 };
 
@@ -1847,93 +2786,165 @@ class TNaming_Selector {
 **************************/
 class TNaming_ShapesSet {
 	public:
-		/****************** Add ******************/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "* Adds the Shape <S>
-	:param S:
-	:type S: TopoDS_Shape
-	:rtype: bool") Add;
-		Standard_Boolean Add (const TopoDS_Shape & S);
+		/****************** TNaming_ShapesSet ******************/
+		%feature("compactdefaultargs") TNaming_ShapesSet;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TNaming_ShapesSet;
+		 TNaming_ShapesSet();
+
+		/****************** TNaming_ShapesSet ******************/
+		%feature("compactdefaultargs") TNaming_ShapesSet;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+Type: TopAbs_ShapeEnum,optional
+	default value is TopAbs_SHAPE
+
+Returns
+-------
+None
+") TNaming_ShapesSet;
+		 TNaming_ShapesSet(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type = TopAbs_SHAPE);
 
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "* Adds the shapes contained in <Shapes>.
-	:param Shapes:
-	:type Shapes: TNaming_ShapesSet
-	:rtype: None") Add;
-		void Add (const TNaming_ShapesSet & Shapes);
+		%feature("autodoc", "Adds the shape <s>.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+bool
+") Add;
+		Standard_Boolean Add(const TopoDS_Shape & S);
+
+		/****************** Add ******************/
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "Adds the shapes contained in <shapes>.
+
+Parameters
+----------
+Shapes: TNaming_ShapesSet
+
+Returns
+-------
+None
+") Add;
+		void Add(const TNaming_ShapesSet & Shapes);
 
 		/****************** ChangeMap ******************/
 		%feature("compactdefaultargs") ChangeMap;
-		%feature("autodoc", ":rtype: TopTools_MapOfShape") ChangeMap;
-		TopTools_MapOfShape & ChangeMap ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopTools_MapOfShape
+") ChangeMap;
+		TopTools_MapOfShape & ChangeMap();
 
 		/****************** Clear ******************/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "* Removes all Shapes
-	:rtype: None") Clear;
-		void Clear ();
+		%feature("autodoc", "Removes all shapes.
+
+Returns
+-------
+None
+") Clear;
+		void Clear();
 
 		/****************** Contains ******************/
 		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "* Returns True if <S> is in <self>
-	:param S:
-	:type S: TopoDS_Shape
-	:rtype: bool") Contains;
-		Standard_Boolean Contains (const TopoDS_Shape & S);
+		%feature("autodoc", "Returns true if <s> is in <self>.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+bool
+") Contains;
+		Standard_Boolean Contains(const TopoDS_Shape & S);
 
 		/****************** Filter ******************/
 		%feature("compactdefaultargs") Filter;
-		%feature("autodoc", "* Erases in <self> the shapes not contained in <Shapes>
-	:param Shapes:
-	:type Shapes: TNaming_ShapesSet
-	:rtype: None") Filter;
-		void Filter (const TNaming_ShapesSet & Shapes);
+		%feature("autodoc", "Erases in <self> the shapes not contained in <shapes>.
+
+Parameters
+----------
+Shapes: TNaming_ShapesSet
+
+Returns
+-------
+None
+") Filter;
+		void Filter(const TNaming_ShapesSet & Shapes);
 
 		/****************** IsEmpty ******************/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", ":rtype: bool") IsEmpty;
-		Standard_Boolean IsEmpty ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsEmpty;
+		Standard_Boolean IsEmpty();
 
 		/****************** Map ******************/
 		%feature("compactdefaultargs") Map;
-		%feature("autodoc", ":rtype: TopTools_MapOfShape") Map;
-		const TopTools_MapOfShape & Map ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopTools_MapOfShape
+") Map;
+		const TopTools_MapOfShape & Map();
 
 		/****************** NbShapes ******************/
 		%feature("compactdefaultargs") NbShapes;
-		%feature("autodoc", ":rtype: int") NbShapes;
-		Standard_Integer NbShapes ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbShapes;
+		Standard_Integer NbShapes();
 
 		/****************** Remove ******************/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "* Removes <S> in <self>.
-	:param S:
-	:type S: TopoDS_Shape
-	:rtype: bool") Remove;
-		Standard_Boolean Remove (const TopoDS_Shape & S);
+		%feature("autodoc", "Removes <s> in <self>.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+bool
+") Remove;
+		Standard_Boolean Remove(const TopoDS_Shape & S);
 
 		/****************** Remove ******************/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "* Removes in <self> the shapes contained in <Shapes>
-	:param Shapes:
-	:type Shapes: TNaming_ShapesSet
-	:rtype: None") Remove;
-		void Remove (const TNaming_ShapesSet & Shapes);
+		%feature("autodoc", "Removes in <self> the shapes contained in <shapes>.
 
-		/****************** TNaming_ShapesSet ******************/
-		%feature("compactdefaultargs") TNaming_ShapesSet;
-		%feature("autodoc", ":rtype: None") TNaming_ShapesSet;
-		 TNaming_ShapesSet ();
+Parameters
+----------
+Shapes: TNaming_ShapesSet
 
-		/****************** TNaming_ShapesSet ******************/
-		%feature("compactdefaultargs") TNaming_ShapesSet;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:param Type: default value is TopAbs_SHAPE
-	:type Type: TopAbs_ShapeEnum
-	:rtype: None") TNaming_ShapesSet;
-		 TNaming_ShapesSet (const TopoDS_Shape & S,const TopAbs_ShapeEnum Type = TopAbs_SHAPE);
+Returns
+-------
+None
+") Remove;
+		void Remove(const TNaming_ShapesSet & Shapes);
 
 };
 
@@ -1951,144 +2962,214 @@ class TNaming_Tool {
 	public:
 		/****************** Collect ******************/
 		%feature("compactdefaultargs") Collect;
-		%feature("autodoc", ":param NS:
-	:type NS: TNaming_NamedShape
-	:param Labels:
-	:type Labels: TNaming_MapOfNamedShape
-	:param OnlyModif: default value is Standard_True
-	:type OnlyModif: bool
-	:rtype: void") Collect;
-		static void Collect (const opencascade::handle<TNaming_NamedShape> & NS,TNaming_MapOfNamedShape & Labels,const Standard_Boolean OnlyModif = Standard_True);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+Labels: TNaming_MapOfNamedShape
+OnlyModif: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") Collect;
+		static void Collect(const opencascade::handle<TNaming_NamedShape> & NS, TNaming_MapOfNamedShape & Labels, const Standard_Boolean OnlyModif = Standard_True);
 
 		/****************** CurrentNamedShape ******************/
 		%feature("compactdefaultargs") CurrentNamedShape;
-		%feature("autodoc", "* Returns the NamedShape of the last Modification of <NS>. This shape is identified by a label.
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:param Updated:
-	:type Updated: TDF_LabelMap
-	:rtype: opencascade::handle<TNaming_NamedShape>") CurrentNamedShape;
-		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape (const opencascade::handle<TNaming_NamedShape> & NS,const TDF_LabelMap & Updated);
+		%feature("autodoc", "Returns the namedshape of the last modification of <ns>. this shape is identified by a label.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+Updated: TDF_LabelMap
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") CurrentNamedShape;
+		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape(const opencascade::handle<TNaming_NamedShape> & NS, const TDF_LabelMap & Updated);
 
 		/****************** CurrentNamedShape ******************/
 		%feature("compactdefaultargs") CurrentNamedShape;
-		%feature("autodoc", "* Returns NamedShape the last Modification of <NS>.
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: opencascade::handle<TNaming_NamedShape>") CurrentNamedShape;
-		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape (const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "Returns namedshape the last modification of <ns>.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") CurrentNamedShape;
+		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****************** CurrentShape ******************/
 		%feature("compactdefaultargs") CurrentShape;
-		%feature("autodoc", "* Returns the last Modification of <NS>. Returns the shape CurrentShape contained in the named shape attribute NS. CurrentShape is the current state of the entities if they have been modified in other attributes of the same data structure. Each call to this function creates a new compound.
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: TopoDS_Shape") CurrentShape;
-		static TopoDS_Shape CurrentShape (const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "Returns the last modification of <ns>. returns the shape currentshape contained in the named shape attribute ns. currentshape is the current state of the entities if they have been modified in other attributes of the same data structure. each call to this function creates a new compound.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+
+Returns
+-------
+TopoDS_Shape
+") CurrentShape;
+		static TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****************** CurrentShape ******************/
 		%feature("compactdefaultargs") CurrentShape;
-		%feature("autodoc", "* Returns the shape CurrentShape contained in the named shape attribute NS, and present in the updated attribute map Updated. CurrentShape is the current state of the entities if they have been modified in other attributes of the same data structure. Each call to this function creates a new compound. Warning Only the contents of Updated are searched.R
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:param Updated:
-	:type Updated: TDF_LabelMap
-	:rtype: TopoDS_Shape") CurrentShape;
-		static TopoDS_Shape CurrentShape (const opencascade::handle<TNaming_NamedShape> & NS,const TDF_LabelMap & Updated);
+		%feature("autodoc", "Returns the shape currentshape contained in the named shape attribute ns, and present in the updated attribute map updated. currentshape is the current state of the entities if they have been modified in other attributes of the same data structure. each call to this function creates a new compound. warning only the contents of updated are searched.r.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+Updated: TDF_LabelMap
+
+Returns
+-------
+TopoDS_Shape
+") CurrentShape;
+		static TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS, const TDF_LabelMap & Updated);
 
 		/****************** FindShape ******************/
 		%feature("compactdefaultargs") FindShape;
-		%feature("autodoc", "* Returns the current shape (a Wire or a Shell) built (in the data framework) from the the shapes of the argument named shape. It is used for IDENTITY name type computation.
-	:param Valid:
-	:type Valid: TDF_LabelMap
-	:param Forbiden:
-	:type Forbiden: TDF_LabelMap
-	:param Arg:
-	:type Arg: TNaming_NamedShape
-	:param S:
-	:type S: TopoDS_Shape
-	:rtype: void") FindShape;
-		static void FindShape (const TDF_LabelMap & Valid,const TDF_LabelMap & Forbiden,const opencascade::handle<TNaming_NamedShape> & Arg,TopoDS_Shape & S);
+		%feature("autodoc", "Returns the current shape (a wire or a shell) built (in the data framework) from the the shapes of the argument named shape. it is used for identity name type computation.
+
+Parameters
+----------
+Valid: TDF_LabelMap
+Forbiden: TDF_LabelMap
+Arg: TNaming_NamedShape
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") FindShape;
+		static void FindShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const opencascade::handle<TNaming_NamedShape> & Arg, TopoDS_Shape & S);
 
 		/****************** GeneratedShape ******************/
 		%feature("compactdefaultargs") GeneratedShape;
-		%feature("autodoc", "* Returns the shape generated from S or by a modification of S and contained in the named shape Generation.
-	:param S:
-	:type S: TopoDS_Shape
-	:param Generation:
-	:type Generation: TNaming_NamedShape
-	:rtype: TopoDS_Shape") GeneratedShape;
-		static TopoDS_Shape GeneratedShape (const TopoDS_Shape & S,const opencascade::handle<TNaming_NamedShape> & Generation);
+		%feature("autodoc", "Returns the shape generated from s or by a modification of s and contained in the named shape generation.
+
+Parameters
+----------
+S: TopoDS_Shape
+Generation: TNaming_NamedShape
+
+Returns
+-------
+TopoDS_Shape
+") GeneratedShape;
+		static TopoDS_Shape GeneratedShape(const TopoDS_Shape & S, const opencascade::handle<TNaming_NamedShape> & Generation);
 
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
-		%feature("autodoc", "* Returns the entities stored in the named shape attribute NS. If there is only one old-new pair, the new shape is returned. Otherwise, a Compound is returned. This compound is made out of all the new shapes found. Each call to this function creates a new compound.
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: TopoDS_Shape") GetShape;
-		static TopoDS_Shape GetShape (const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "Returns the entities stored in the named shape attribute ns. if there is only one old-new pair, the new shape is returned. otherwise, a compound is returned. this compound is made out of all the new shapes found. each call to this function creates a new compound.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+
+Returns
+-------
+TopoDS_Shape
+") GetShape;
+		static TopoDS_Shape GetShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****************** HasLabel ******************/
 		%feature("compactdefaultargs") HasLabel;
-		%feature("autodoc", "* Returns True if <aShape> appears under a label.(DP)
-	:param access:
-	:type access: TDF_Label
-	:param aShape:
-	:type aShape: TopoDS_Shape
-	:rtype: bool") HasLabel;
-		static Standard_Boolean HasLabel (const TDF_Label & access,const TopoDS_Shape & aShape);
+		%feature("autodoc", "Returns true if <ashape> appears under a label.(dp).
+
+Parameters
+----------
+access: TDF_Label
+aShape: TopoDS_Shape
+
+Returns
+-------
+bool
+") HasLabel;
+		static Standard_Boolean HasLabel(const TDF_Label & access, const TopoDS_Shape & aShape);
 
 		/****************** InitialShape ******************/
 		%feature("compactdefaultargs") InitialShape;
-		%feature("autodoc", "* Returns the shape created from the shape aShape contained in the attribute anAcces.
-	:param aShape:
-	:type aShape: TopoDS_Shape
-	:param anAcces:
-	:type anAcces: TDF_Label
-	:param Labels:
-	:type Labels: TDF_LabelList
-	:rtype: TopoDS_Shape") InitialShape;
-		static TopoDS_Shape InitialShape (const TopoDS_Shape & aShape,const TDF_Label & anAcces,TDF_LabelList & Labels);
+		%feature("autodoc", "Returns the shape created from the shape ashape contained in the attribute anacces.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+anAcces: TDF_Label
+Labels: TDF_LabelList
+
+Returns
+-------
+TopoDS_Shape
+") InitialShape;
+		static TopoDS_Shape InitialShape(const TopoDS_Shape & aShape, const TDF_Label & anAcces, TDF_LabelList & Labels);
 
 		/****************** Label ******************/
 		%feature("compactdefaultargs") Label;
-		%feature("autodoc", "* Returns the label of the first apparition of <aShape>. Transdef is a value of the transaction of the first apparition of <aShape>.
-	:param access:
-	:type access: TDF_Label
-	:param aShape:
-	:type aShape: TopoDS_Shape
-	:param TransDef:
-	:type TransDef: int
-	:rtype: TDF_Label") Label;
-		static TDF_Label Label (const TDF_Label & access,const TopoDS_Shape & aShape,Standard_Integer &OutValue);
+		%feature("autodoc", "Returns the label of the first apparition of <ashape>. transdef is a value of the transaction of the first apparition of <ashape>.
+
+Parameters
+----------
+access: TDF_Label
+aShape: TopoDS_Shape
+
+Returns
+-------
+TransDef: int
+") Label;
+		static TDF_Label Label(const TDF_Label & access, const TopoDS_Shape & aShape, Standard_Integer &OutValue);
 
 		/****************** NamedShape ******************/
 		%feature("compactdefaultargs") NamedShape;
-		%feature("autodoc", "* Returns the named shape attribute defined by the shape aShape and the label anAccess. This attribute is returned as a new shape. You call this function, if you need to create a topological attribute for existing data. Example class MyPkg_MyClass { public: Standard_Boolean SameEdge(const opencascade::handle<OCafTest_Line>& , const opencascade::handle<CafTest_Line>& ); }; //! Standard_Boolean MyPkg_MyClass::SameEdge (const opencascade::handle<OCafTest_Line>& L1 const opencascade::handle<OCafTest_Line>& L2) { opencascade::handle<TNaming_NamedShape> NS1 = L1->NamedShape(); opencascade::handle<TNaming_NamedShape> NS2 = L2->NamedShape(); //! return BRepTools::Compare(NS1->Get(),NS2->Get()); } In the example above, the function SameEdge is created to compare the edges having two lines for geometric supports. If these edges are found by BRepTools::Compare to be within the same tolerance, they are considered to be the same. Warning To avoid sharing of names, a SELECTED attribute will not be returned. Sharing of names makes it harder to manage the data structure. When the user of the name is removed, for example, it is difficult to know whether the name should be destroyed.
-	:param aShape:
-	:type aShape: TopoDS_Shape
-	:param anAcces:
-	:type anAcces: TDF_Label
-	:rtype: opencascade::handle<TNaming_NamedShape>") NamedShape;
-		static opencascade::handle<TNaming_NamedShape> NamedShape (const TopoDS_Shape & aShape,const TDF_Label & anAcces);
+		%feature("autodoc", "Returns the named shape attribute defined by the shape ashape and the label anaccess. this attribute is returned as a new shape. you call this function, if you need to create a topological attribute for existing data. example class mypkg_myclass { public: standard_boolean sameedge(const opencascade::handle<ocaftest_line>& , const opencascade::handle<caftest_line>& ); }; //! standard_boolean mypkg_myclass::sameedge (const opencascade::handle<ocaftest_line>& l1 const opencascade::handle<ocaftest_line>& l2) { opencascade::handle<tnaming_namedshape> ns1 = l1->namedshape(); opencascade::handle<tnaming_namedshape> ns2 = l2->namedshape(); //! return breptools::compare(ns1->get(),ns2->get()); } in the example above, the function sameedge is created to compare the edges having two lines for geometric supports. if these edges are found by breptools::compare to be within the same tolerance, they are considered to be the same. warning to avoid sharing of names, a selected attribute will not be returned. sharing of names makes it harder to manage the data structure. when the user of the name is removed, for example, it is difficult to know whether the name should be destroyed.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+anAcces: TDF_Label
+
+Returns
+-------
+opencascade::handle<TNaming_NamedShape>
+") NamedShape;
+		static opencascade::handle<TNaming_NamedShape> NamedShape(const TopoDS_Shape & aShape, const TDF_Label & anAcces);
 
 		/****************** OriginalShape ******************/
 		%feature("compactdefaultargs") OriginalShape;
-		%feature("autodoc", "* Returns the shape contained as OldShape in <NS>
-	:param NS:
-	:type NS: TNaming_NamedShape
-	:rtype: TopoDS_Shape") OriginalShape;
-		static TopoDS_Shape OriginalShape (const opencascade::handle<TNaming_NamedShape> & NS);
+		%feature("autodoc", "Returns the shape contained as oldshape in <ns>.
+
+Parameters
+----------
+NS: TNaming_NamedShape
+
+Returns
+-------
+TopoDS_Shape
+") OriginalShape;
+		static TopoDS_Shape OriginalShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****************** ValidUntil ******************/
 		%feature("compactdefaultargs") ValidUntil;
-		%feature("autodoc", "* Returns the last transaction where the creation of S is valid.
-	:param access:
-	:type access: TDF_Label
-	:param S:
-	:type S: TopoDS_Shape
-	:rtype: int") ValidUntil;
-		static Standard_Integer ValidUntil (const TDF_Label & access,const TopoDS_Shape & S);
+		%feature("autodoc", "Returns the last transaction where the creation of s is valid.
+
+Parameters
+----------
+access: TDF_Label
+S: TopoDS_Shape
+
+Returns
+-------
+int
+") ValidUntil;
+		static Standard_Integer ValidUntil(const TDF_Label & access, const TopoDS_Shape & S);
 
 };
 
@@ -2106,110 +3187,193 @@ class TNaming_TranslateTool : public Standard_Transient {
 	public:
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape
-	:param S2:
-	:type S2: TopoDS_Shape
-	:rtype: None") Add;
-		void Add (TopoDS_Shape & S1,const TopoDS_Shape & S2);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S1: TopoDS_Shape
+S2: TopoDS_Shape
+
+Returns
+-------
+None
+") Add;
+		void Add(TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
 		/****************** MakeCompSolid ******************/
 		%feature("compactdefaultargs") MakeCompSolid;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") MakeCompSolid;
-		void MakeCompSolid (TopoDS_Shape & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") MakeCompSolid;
+		void MakeCompSolid(TopoDS_Shape & S);
 
 		/****************** MakeCompound ******************/
 		%feature("compactdefaultargs") MakeCompound;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") MakeCompound;
-		void MakeCompound (TopoDS_Shape & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") MakeCompound;
+		void MakeCompound(TopoDS_Shape & S);
 
 		/****************** MakeEdge ******************/
 		%feature("compactdefaultargs") MakeEdge;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") MakeEdge;
-		void MakeEdge (TopoDS_Shape & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") MakeEdge;
+		void MakeEdge(TopoDS_Shape & S);
 
 		/****************** MakeFace ******************/
 		%feature("compactdefaultargs") MakeFace;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") MakeFace;
-		void MakeFace (TopoDS_Shape & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") MakeFace;
+		void MakeFace(TopoDS_Shape & S);
 
 		/****************** MakeShell ******************/
 		%feature("compactdefaultargs") MakeShell;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") MakeShell;
-		void MakeShell (TopoDS_Shape & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") MakeShell;
+		void MakeShell(TopoDS_Shape & S);
 
 		/****************** MakeSolid ******************/
 		%feature("compactdefaultargs") MakeSolid;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") MakeSolid;
-		void MakeSolid (TopoDS_Shape & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") MakeSolid;
+		void MakeSolid(TopoDS_Shape & S);
 
 		/****************** MakeVertex ******************/
 		%feature("compactdefaultargs") MakeVertex;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") MakeVertex;
-		void MakeVertex (TopoDS_Shape & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") MakeVertex;
+		void MakeVertex(TopoDS_Shape & S);
 
 		/****************** MakeWire ******************/
 		%feature("compactdefaultargs") MakeWire;
-		%feature("autodoc", ":param S:
-	:type S: TopoDS_Shape
-	:rtype: None") MakeWire;
-		void MakeWire (TopoDS_Shape & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") MakeWire;
+		void MakeWire(TopoDS_Shape & S);
 
 		/****************** UpdateEdge ******************/
 		%feature("compactdefaultargs") UpdateEdge;
-		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape
-	:param S2:
-	:type S2: TopoDS_Shape
-	:param M:
-	:type M: TColStd_IndexedDataMapOfTransientTransient
-	:rtype: None") UpdateEdge;
-		void UpdateEdge (const TopoDS_Shape & S1,TopoDS_Shape & S2,TColStd_IndexedDataMapOfTransientTransient & M);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S1: TopoDS_Shape
+S2: TopoDS_Shape
+M: TColStd_IndexedDataMapOfTransientTransient
+
+Returns
+-------
+None
+") UpdateEdge;
+		void UpdateEdge(const TopoDS_Shape & S1, TopoDS_Shape & S2, TColStd_IndexedDataMapOfTransientTransient & M);
 
 		/****************** UpdateFace ******************/
 		%feature("compactdefaultargs") UpdateFace;
-		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape
-	:param S2:
-	:type S2: TopoDS_Shape
-	:param M:
-	:type M: TColStd_IndexedDataMapOfTransientTransient
-	:rtype: None") UpdateFace;
-		void UpdateFace (const TopoDS_Shape & S1,TopoDS_Shape & S2,TColStd_IndexedDataMapOfTransientTransient & M);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S1: TopoDS_Shape
+S2: TopoDS_Shape
+M: TColStd_IndexedDataMapOfTransientTransient
+
+Returns
+-------
+None
+") UpdateFace;
+		void UpdateFace(const TopoDS_Shape & S1, TopoDS_Shape & S2, TColStd_IndexedDataMapOfTransientTransient & M);
 
 		/****************** UpdateShape ******************/
 		%feature("compactdefaultargs") UpdateShape;
-		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape
-	:param S2:
-	:type S2: TopoDS_Shape
-	:rtype: None") UpdateShape;
-		void UpdateShape (const TopoDS_Shape & S1,TopoDS_Shape & S2);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S1: TopoDS_Shape
+S2: TopoDS_Shape
+
+Returns
+-------
+None
+") UpdateShape;
+		void UpdateShape(const TopoDS_Shape & S1, TopoDS_Shape & S2);
 
 		/****************** UpdateVertex ******************/
 		%feature("compactdefaultargs") UpdateVertex;
-		%feature("autodoc", ":param S1:
-	:type S1: TopoDS_Shape
-	:param S2:
-	:type S2: TopoDS_Shape
-	:param M:
-	:type M: TColStd_IndexedDataMapOfTransientTransient
-	:rtype: None") UpdateVertex;
-		void UpdateVertex (const TopoDS_Shape & S1,TopoDS_Shape & S2,TColStd_IndexedDataMapOfTransientTransient & M);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S1: TopoDS_Shape
+S2: TopoDS_Shape
+M: TColStd_IndexedDataMapOfTransientTransient
+
+Returns
+-------
+None
+") UpdateVertex;
+		void UpdateVertex(const TopoDS_Shape & S1, TopoDS_Shape & S2, TColStd_IndexedDataMapOfTransientTransient & M);
 
 };
 
@@ -2227,48 +3391,88 @@ class TNaming_TranslateTool : public Standard_Transient {
 ***************************/
 class TNaming_Translator {
 	public:
+		/****************** TNaming_Translator ******************/
+		%feature("compactdefaultargs") TNaming_Translator;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TNaming_Translator;
+		 TNaming_Translator();
+
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", ":param aShape:
-	:type aShape: TopoDS_Shape
-	:rtype: None") Add;
-		void Add (const TopoDS_Shape & aShape);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+
+Returns
+-------
+None
+") Add;
+		void Add(const TopoDS_Shape & aShape);
 
 		/****************** Copied ******************/
 		%feature("compactdefaultargs") Copied;
-		%feature("autodoc", "* returns copied shape
-	:param aShape:
-	:type aShape: TopoDS_Shape
-	:rtype: TopoDS_Shape") Copied;
-		const TopoDS_Shape Copied (const TopoDS_Shape & aShape);
+		%feature("autodoc", "Returns copied shape.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+
+Returns
+-------
+TopoDS_Shape
+") Copied;
+		const TopoDS_Shape Copied(const TopoDS_Shape & aShape);
 
 		/****************** Copied ******************/
 		%feature("compactdefaultargs") Copied;
-		%feature("autodoc", "* returns DataMap of results; (shape <-> copied shape)
-	:rtype: TopTools_DataMapOfShapeShape") Copied;
-		const TopTools_DataMapOfShapeShape & Copied ();
+		%feature("autodoc", "Returns datamap of results; (shape <-> copied shape).
+
+Returns
+-------
+TopTools_DataMapOfShapeShape
+") Copied;
+		const TopTools_DataMapOfShapeShape & Copied();
 
 		/****************** DumpMap ******************/
 		%feature("compactdefaultargs") DumpMap;
-		%feature("autodoc", ":param isWrite: default value is Standard_False
-	:type isWrite: bool
-	:rtype: None") DumpMap;
-		void DumpMap (const Standard_Boolean isWrite = Standard_False);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+isWrite: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") DumpMap;
+		void DumpMap(const Standard_Boolean isWrite = Standard_False);
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", ":rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":rtype: None") Perform;
-		void Perform ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** TNaming_Translator ******************/
-		%feature("compactdefaultargs") TNaming_Translator;
-		%feature("autodoc", ":rtype: None") TNaming_Translator;
-		 TNaming_Translator ();
+Returns
+-------
+None
+") Perform;
+		void Perform();
 
 };
 
@@ -2287,42 +3491,69 @@ class TNaming_UsedShapes : public TDF_Attribute {
 	public:
 		/****************** AfterUndo ******************/
 		%feature("compactdefaultargs") AfterUndo;
-		%feature("autodoc", "* Something to do after applying <anAttDelta>.
-	:param anAttDelta:
-	:type anAttDelta: TDF_AttributeDelta
-	:param forceIt: default value is Standard_False
-	:type forceIt: bool
-	:rtype: bool") AfterUndo;
-		virtual Standard_Boolean AfterUndo (const opencascade::handle<TDF_AttributeDelta> & anAttDelta,const Standard_Boolean forceIt = Standard_False);
+		%feature("autodoc", "Something to do after applying <anattdelta>.
+
+Parameters
+----------
+anAttDelta: TDF_AttributeDelta
+forceIt: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") AfterUndo;
+		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
 		/****************** BackupCopy ******************/
 		%feature("compactdefaultargs") BackupCopy;
-		%feature("autodoc", "* Copies the attribute contents into a new other attribute. It is used by Backup().
-	:rtype: opencascade::handle<TDF_Attribute>") BackupCopy;
-		virtual opencascade::handle<TDF_Attribute> BackupCopy ();
+		%feature("autodoc", "Copies the attribute contents into a new other attribute. it is used by backup().
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") BackupCopy;
+		virtual opencascade::handle<TDF_Attribute> BackupCopy();
 
 		/****************** BeforeRemoval ******************/
 		%feature("compactdefaultargs") BeforeRemoval;
-		%feature("autodoc", "* Clears the table.
-	:rtype: void") BeforeRemoval;
-		virtual void BeforeRemoval ();
+		%feature("autodoc", "Clears the table.
+
+Returns
+-------
+None
+") BeforeRemoval;
+		virtual void BeforeRemoval();
 
 		/****************** DeltaOnAddition ******************/
 		%feature("compactdefaultargs") DeltaOnAddition;
-		%feature("autodoc", "* this method returns a null handle (no delta).
-	:rtype: opencascade::handle<TDF_DeltaOnAddition>") DeltaOnAddition;
-		virtual opencascade::handle<TDF_DeltaOnAddition> DeltaOnAddition ();
+		%feature("autodoc", "This method returns a null handle (no delta).
+
+Returns
+-------
+opencascade::handle<TDF_DeltaOnAddition>
+") DeltaOnAddition;
+		virtual opencascade::handle<TDF_DeltaOnAddition> DeltaOnAddition();
 
 		/****************** DeltaOnRemoval ******************/
 		%feature("compactdefaultargs") DeltaOnRemoval;
-		%feature("autodoc", "* this method returns a null handle (no delta).
-	:rtype: opencascade::handle<TDF_DeltaOnRemoval>") DeltaOnRemoval;
-		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval ();
+		%feature("autodoc", "This method returns a null handle (no delta).
+
+Returns
+-------
+opencascade::handle<TDF_DeltaOnRemoval>
+") DeltaOnRemoval;
+		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
 		/****************** Destroy ******************/
 		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", ":rtype: None") Destroy;
-		void Destroy ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Destroy;
+		void Destroy();
 
 
         %feature("autodoc", "1");
@@ -2332,54 +3563,88 @@ class TNaming_UsedShapes : public TDF_Attribute {
             self->Dump(s);
             return s.str();}
         };
-        		/****************** GetID ******************/
+		/****************** GetID ******************/
 		%feature("compactdefaultargs") GetID;
-		%feature("autodoc", "* Returns the ID: 2a96b614-ec8b-11d0-bee7-080009dc3333.
-	:rtype: Standard_GUID") GetID;
-		static const Standard_GUID & GetID ();
+		%feature("autodoc", "Returns the id: 2a96b614-ec8b-11d0-bee7-080009dc3333.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
 
 		/****************** ID ******************/
 		%feature("compactdefaultargs") ID;
-		%feature("autodoc", "* Returns the ID of the attribute.
-	:rtype: Standard_GUID") ID;
-		const Standard_GUID & ID ();
+		%feature("autodoc", "Returns the id of the attribute.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		const Standard_GUID & ID();
 
 		/****************** Map ******************/
 		%feature("compactdefaultargs") Map;
-		%feature("autodoc", ":rtype: TNaming_DataMapOfShapePtrRefShape") Map;
-		TNaming_DataMapOfShapePtrRefShape & Map ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TNaming_DataMapOfShapePtrRefShape
+") Map;
+		TNaming_DataMapOfShapePtrRefShape & Map();
 
 		/****************** NewEmpty ******************/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", "* Returns an new empty attribute from the good end type. It is used by the copy algorithm.
-	:rtype: opencascade::handle<TDF_Attribute>") NewEmpty;
-		virtual opencascade::handle<TDF_Attribute> NewEmpty ();
+		%feature("autodoc", "Returns an new empty attribute from the good end type. it is used by the copy algorithm.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", "* This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
-	:param intoAttribute:
-	:type intoAttribute: TDF_Attribute
-	:param aRelocTationable:
-	:type aRelocTationable: TDF_RelocationTable
-	:rtype: void") Paste;
-		virtual void Paste (const opencascade::handle<TDF_Attribute> & intoAttribute,const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
+		%feature("autodoc", "This method is different from the 'copy' one, because it is used when copying an attribute from a source structure into a target structure. this method pastes the current attribute to the label corresponding to the insertor. the pasted attribute may be a brand new one or a new version of the previous one.
+
+Parameters
+----------
+intoAttribute: TDF_Attribute
+aRelocTationable: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
 		/****************** References ******************/
 		%feature("compactdefaultargs") References;
-		%feature("autodoc", "* Adds the directly referenced attributes and labels to <aDataSet>. 'Directly' means we have only to look at the first level of references. //! For this, use only the AddLabel() & AddAttribute() from DataSet and do not try to modify information previously stored in <aDataSet>.
-	:param aDataSet:
-	:type aDataSet: TDF_DataSet
-	:rtype: void") References;
-		virtual void References (const opencascade::handle<TDF_DataSet> & aDataSet);
+		%feature("autodoc", "Adds the directly referenced attributes and labels to <adataset>. 'directly' means we have only to look at the first level of references. //! for this, use only the addlabel() & addattribute() from dataset and do not try to modify information previously stored in <adataset>.
+
+Parameters
+----------
+aDataSet: TDF_DataSet
+
+Returns
+-------
+None
+") References;
+		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
 		/****************** Restore ******************/
 		%feature("compactdefaultargs") Restore;
-		%feature("autodoc", "* Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
-	:param anAttribute:
-	:type anAttribute: TDF_Attribute
-	:rtype: void") Restore;
-		virtual void Restore (const opencascade::handle<TDF_Attribute> & anAttribute);
+		%feature("autodoc", "Restores the contents from <anattribute> into this one. it is used when aborting a transaction.
+
+Parameters
+----------
+anAttribute: TDF_Attribute
+
+Returns
+-------
+None
+") Restore;
+		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 
 };
 

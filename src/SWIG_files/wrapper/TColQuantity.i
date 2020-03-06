@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -48,8 +48,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolquantity.html
 %};
 %import Standard.i
 %import NCollection.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 %wrap_handle(TColQuantity_HArray1OfLength)
@@ -57,9 +67,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolquantity.html
 /* end handles declaration */
 
 /* templates */
-%template(TColQuantity_Array1OfLength) NCollection_Array1 <Quantity_Length>;
+%template(TColQuantity_Array1OfLength) NCollection_Array1<Quantity_Length>;
 
-%extend NCollection_Array1 <Quantity_Length> {
+%extend NCollection_Array1<Quantity_Length> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -92,12 +102,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolquantity.html
     __next__ = next
     }
 };
-%template(TColQuantity_Array2OfLength) NCollection_Array2 <Quantity_Length>;
+%template(TColQuantity_Array2OfLength) NCollection_Array2<Quantity_Length>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array1 <Quantity_Length> TColQuantity_Array1OfLength;
-typedef NCollection_Array2 <Quantity_Length> TColQuantity_Array2OfLength;
+typedef NCollection_Array1<Quantity_Length> TColQuantity_Array1OfLength;
+typedef NCollection_Array2<Quantity_Length> TColQuantity_Array2OfLength;
 /* end typedefs declaration */
 
 /* harray1 classes */

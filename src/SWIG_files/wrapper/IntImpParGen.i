@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -52,8 +52,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intimppargen.html
 %import NCollection.i
 %import IntRes2d.i
 %import gp.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */
@@ -72,68 +82,76 @@ class IntImpParGen {
 	public:
 		/****************** DeterminePosition ******************/
 		%feature("compactdefaultargs") DeterminePosition;
-		%feature("autodoc", ":param Pos1:
-	:type Pos1: IntRes2d_Position
-	:param Dom1:
-	:type Dom1: IntRes2d_Domain
-	:param P1:
-	:type P1: gp_Pnt2d
-	:param Tol:
-	:type Tol: float
-	:rtype: void") DeterminePosition;
-		static void DeterminePosition (IntRes2d_Position & Pos1,const IntRes2d_Domain & Dom1,const gp_Pnt2d & P1,const Standard_Real Tol);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Pos1: IntRes2d_Position
+Dom1: IntRes2d_Domain
+P1: gp_Pnt2d
+Tol: float
+
+Returns
+-------
+None
+") DeterminePosition;
+		static void DeterminePosition(IntRes2d_Position & Pos1, const IntRes2d_Domain & Dom1, const gp_Pnt2d & P1, const Standard_Real Tol);
 
 		/****************** DetermineTransition ******************/
 		%feature("compactdefaultargs") DetermineTransition;
-		%feature("autodoc", "* Template class for an implicit curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen
-	:param Pos1:
-	:type Pos1: IntRes2d_Position
-	:param Tan1:
-	:type Tan1: gp_Vec2d
-	:param Norm1:
-	:type Norm1: gp_Vec2d
-	:param Trans1:
-	:type Trans1: IntRes2d_Transition
-	:param Pos2:
-	:type Pos2: IntRes2d_Position
-	:param Tan2:
-	:type Tan2: gp_Vec2d
-	:param Norm2:
-	:type Norm2: gp_Vec2d
-	:param Trans2:
-	:type Trans2: IntRes2d_Transition
-	:param Tol:
-	:type Tol: float
-	:rtype: void") DetermineTransition;
-		static void DetermineTransition (const IntRes2d_Position Pos1,gp_Vec2d & Tan1,const gp_Vec2d & Norm1,IntRes2d_Transition & Trans1,const IntRes2d_Position Pos2,gp_Vec2d & Tan2,const gp_Vec2d & Norm2,IntRes2d_Transition & Trans2,const Standard_Real Tol);
+		%feature("autodoc", "Template class for an implicit curve. math function, instantiated inside the intersector. tool used by the package intcurve and intimppargen.
+
+Parameters
+----------
+Pos1: IntRes2d_Position
+Tan1: gp_Vec2d
+Norm1: gp_Vec2d
+Trans1: IntRes2d_Transition
+Pos2: IntRes2d_Position
+Tan2: gp_Vec2d
+Norm2: gp_Vec2d
+Trans2: IntRes2d_Transition
+Tol: float
+
+Returns
+-------
+None
+") DetermineTransition;
+		static void DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, const gp_Vec2d & Norm1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, const gp_Vec2d & Norm2, IntRes2d_Transition & Trans2, const Standard_Real Tol);
 
 		/****************** DetermineTransition ******************/
 		%feature("compactdefaultargs") DetermineTransition;
-		%feature("autodoc", ":param Pos1:
-	:type Pos1: IntRes2d_Position
-	:param Tan1:
-	:type Tan1: gp_Vec2d
-	:param Trans1:
-	:type Trans1: IntRes2d_Transition
-	:param Pos2:
-	:type Pos2: IntRes2d_Position
-	:param Tan2:
-	:type Tan2: gp_Vec2d
-	:param Trans2:
-	:type Trans2: IntRes2d_Transition
-	:param Tol:
-	:type Tol: float
-	:rtype: bool") DetermineTransition;
-		static Standard_Boolean DetermineTransition (const IntRes2d_Position Pos1,gp_Vec2d & Tan1,IntRes2d_Transition & Trans1,const IntRes2d_Position Pos2,gp_Vec2d & Tan2,IntRes2d_Transition & Trans2,const Standard_Real Tol);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Pos1: IntRes2d_Position
+Tan1: gp_Vec2d
+Trans1: IntRes2d_Transition
+Pos2: IntRes2d_Position
+Tan2: gp_Vec2d
+Trans2: IntRes2d_Transition
+Tol: float
+
+Returns
+-------
+bool
+") DetermineTransition;
+		static Standard_Boolean DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, IntRes2d_Transition & Trans2, const Standard_Real Tol);
 
 		/****************** NormalizeOnDomain ******************/
 		%feature("compactdefaultargs") NormalizeOnDomain;
-		%feature("autodoc", ":param Par1:
-	:type Par1: float
-	:param Dom1:
-	:type Dom1: IntRes2d_Domain
-	:rtype: float") NormalizeOnDomain;
-		static Standard_Real NormalizeOnDomain (Standard_Real &OutValue,const IntRes2d_Domain & Dom1);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Dom1: IntRes2d_Domain
+
+Returns
+-------
+Par1: float
+") NormalizeOnDomain;
+		static Standard_Real NormalizeOnDomain(Standard_Real &OutValue, const IntRes2d_Domain & Dom1);
 
 };
 
@@ -147,6 +165,14 @@ class IntImpParGen {
 /*****************************
 * class IntImpParGen_ImpTool *
 *****************************/
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class IntImpParGen_ImpTool:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

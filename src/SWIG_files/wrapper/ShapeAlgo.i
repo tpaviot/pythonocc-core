@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -71,8 +71,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapealgo.html"
 %import Standard.i
 %import NCollection.i
 %import ShapeFix.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 %wrap_handle(ShapeAlgo_ToolContainer)
@@ -92,23 +102,37 @@ class ShapeAlgo {
 	public:
 		/****************** AlgoContainer ******************/
 		%feature("compactdefaultargs") AlgoContainer;
-		%feature("autodoc", "* Returns default AlgoContainer
-	:rtype: opencascade::handle<ShapeAlgo_AlgoContainer>") AlgoContainer;
-		static opencascade::handle<ShapeAlgo_AlgoContainer> AlgoContainer ();
+		%feature("autodoc", "Returns default algocontainer.
+
+Returns
+-------
+opencascade::handle<ShapeAlgo_AlgoContainer>
+") AlgoContainer;
+		static opencascade::handle<ShapeAlgo_AlgoContainer> AlgoContainer();
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "* Provides initerface to the algorithms from Shape Healing. Creates and initializes default AlgoContainer.
-	:rtype: void") Init;
-		static void Init ();
+		%feature("autodoc", "Provides initerface to the algorithms from shape healing. creates and initializes default algocontainer.
+
+Returns
+-------
+None
+") Init;
+		static void Init();
 
 		/****************** SetAlgoContainer ******************/
 		%feature("compactdefaultargs") SetAlgoContainer;
-		%feature("autodoc", "* Sets default AlgoContainer
-	:param aContainer:
-	:type aContainer: ShapeAlgo_AlgoContainer
-	:rtype: void") SetAlgoContainer;
-		static void SetAlgoContainer (const opencascade::handle<ShapeAlgo_AlgoContainer> & aContainer);
+		%feature("autodoc", "Sets default algocontainer.
+
+Parameters
+----------
+aContainer: ShapeAlgo_AlgoContainer
+
+Returns
+-------
+None
+") SetAlgoContainer;
+		static void SetAlgoContainer(const opencascade::handle<ShapeAlgo_AlgoContainer> & aContainer);
 
 };
 
@@ -127,23 +151,35 @@ class ShapeAlgo {
 ********************************/
 class ShapeAlgo_ToolContainer : public Standard_Transient {
 	public:
+		/****************** ShapeAlgo_ToolContainer ******************/
+		%feature("compactdefaultargs") ShapeAlgo_ToolContainer;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") ShapeAlgo_ToolContainer;
+		 ShapeAlgo_ToolContainer();
+
 		/****************** EdgeProjAux ******************/
 		%feature("compactdefaultargs") EdgeProjAux;
-		%feature("autodoc", "* Returns ShapeFix_EdgeProjAux
-	:rtype: opencascade::handle<ShapeFix_EdgeProjAux>") EdgeProjAux;
-		virtual opencascade::handle<ShapeFix_EdgeProjAux> EdgeProjAux ();
+		%feature("autodoc", "Returns shapefix_edgeprojaux.
+
+Returns
+-------
+opencascade::handle<ShapeFix_EdgeProjAux>
+") EdgeProjAux;
+		virtual opencascade::handle<ShapeFix_EdgeProjAux> EdgeProjAux();
 
 		/****************** FixShape ******************/
 		%feature("compactdefaultargs") FixShape;
-		%feature("autodoc", "* Returns ShapeFix_Shape
-	:rtype: opencascade::handle<ShapeFix_Shape>") FixShape;
-		virtual opencascade::handle<ShapeFix_Shape> FixShape ();
+		%feature("autodoc", "Returns shapefix_shape.
 
-		/****************** ShapeAlgo_ToolContainer ******************/
-		%feature("compactdefaultargs") ShapeAlgo_ToolContainer;
-		%feature("autodoc", "* Empty constructor
-	:rtype: None") ShapeAlgo_ToolContainer;
-		 ShapeAlgo_ToolContainer ();
+Returns
+-------
+opencascade::handle<ShapeFix_Shape>
+") FixShape;
+		virtual opencascade::handle<ShapeFix_Shape> FixShape();
 
 };
 
@@ -156,6 +192,14 @@ class ShapeAlgo_ToolContainer : public Standard_Transient {
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class ShapeAlgo_AlgoContainer:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

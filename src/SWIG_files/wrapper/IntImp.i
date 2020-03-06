@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -50,6 +50,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intimp.html"
 %import Standard.i
 %import NCollection.i
 %import gp.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum IntImp_ConstIsoparametric {
 	IntImp_UIsoparametricOnCaro1 = 0,
@@ -59,6 +64,17 @@ enum IntImp_ConstIsoparametric {
 };
 
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+
+class IntImp_ConstIsoparametric:
+	IntImp_UIsoparametricOnCaro1 = 0
+	IntImp_VIsoparametricOnCaro1 = 1
+	IntImp_UIsoparametricOnCaro2 = 2
+	IntImp_VIsoparametricOnCaro2 = 3
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */

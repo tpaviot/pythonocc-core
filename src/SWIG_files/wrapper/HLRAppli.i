@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -41,8 +41,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlrappli.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<HLRBRep_module.hxx>
 #include<TopoDS_module.hxx>
+#include<HLRBRep_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Geom2dAdaptor_module.hxx>
 #include<GeomAdaptor_module.hxx>
@@ -67,10 +67,20 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlrappli.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import HLRBRep.i
 %import TopoDS.i
+%import HLRBRep.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */
@@ -86,60 +96,77 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlrappli.html"
 ******************************/
 class HLRAppli_ReflectLines {
 	public:
+		/****************** HLRAppli_ReflectLines ******************/
+		%feature("compactdefaultargs") HLRAppli_ReflectLines;
+		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+aShape: TopoDS_Shape
+
+Returns
+-------
+None
+") HLRAppli_ReflectLines;
+		 HLRAppli_ReflectLines(const TopoDS_Shape & aShape);
+
 		/****************** GetCompoundOf3dEdges ******************/
 		%feature("compactdefaultargs") GetCompoundOf3dEdges;
-		%feature("autodoc", "* returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d
-	:param type:
-	:type type: HLRBRep_TypeOfResultingEdge
-	:param visible:
-	:type visible: bool
-	:param In3d:
-	:type In3d: bool
-	:rtype: TopoDS_Shape") GetCompoundOf3dEdges;
-		TopoDS_Shape GetCompoundOf3dEdges (const HLRBRep_TypeOfResultingEdge type,const Standard_Boolean visible,const Standard_Boolean In3d);
+		%feature("autodoc", "Returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d.
+
+Parameters
+----------
+type: HLRBRep_TypeOfResultingEdge
+visible: bool
+In3d: bool
+
+Returns
+-------
+TopoDS_Shape
+") GetCompoundOf3dEdges;
+		TopoDS_Shape GetCompoundOf3dEdges(const HLRBRep_TypeOfResultingEdge type, const Standard_Boolean visible, const Standard_Boolean In3d);
 
 		/****************** GetResult ******************/
 		%feature("compactdefaultargs") GetResult;
-		%feature("autodoc", "* returns resulting compound of reflect lines represented by edges in 3d
-	:rtype: TopoDS_Shape") GetResult;
-		TopoDS_Shape GetResult ();
+		%feature("autodoc", "Returns resulting compound of reflect lines represented by edges in 3d.
 
-		/****************** HLRAppli_ReflectLines ******************/
-		%feature("compactdefaultargs") HLRAppli_ReflectLines;
-		%feature("autodoc", "* Constructor
-	:param aShape:
-	:type aShape: TopoDS_Shape
-	:rtype: None") HLRAppli_ReflectLines;
-		 HLRAppli_ReflectLines (const TopoDS_Shape & aShape);
+Returns
+-------
+TopoDS_Shape
+") GetResult;
+		TopoDS_Shape GetResult();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":rtype: None") Perform;
-		void Perform ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Perform;
+		void Perform();
 
 		/****************** SetAxes ******************/
 		%feature("compactdefaultargs") SetAxes;
-		%feature("autodoc", "* Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
-	:param Nx:
-	:type Nx: float
-	:param Ny:
-	:type Ny: float
-	:param Nz:
-	:type Nz: float
-	:param XAt:
-	:type XAt: float
-	:param YAt:
-	:type YAt: float
-	:param ZAt:
-	:type ZAt: float
-	:param XUp:
-	:type XUp: float
-	:param YUp:
-	:type YUp: float
-	:param ZUp:
-	:type ZUp: float
-	:rtype: None") SetAxes;
-		void SetAxes (const Standard_Real Nx,const Standard_Real Ny,const Standard_Real Nz,const Standard_Real XAt,const Standard_Real YAt,const Standard_Real ZAt,const Standard_Real XUp,const Standard_Real YUp,const Standard_Real ZUp);
+		%feature("autodoc", "Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
+
+Parameters
+----------
+Nx: float
+Ny: float
+Nz: float
+XAt: float
+YAt: float
+ZAt: float
+XUp: float
+YUp: float
+ZUp: float
+
+Returns
+-------
+None
+") SetAxes;
+		void SetAxes(const Standard_Real Nx, const Standard_Real Ny, const Standard_Real Nz, const Standard_Real XAt, const Standard_Real YAt, const Standard_Real ZAt, const Standard_Real XUp, const Standard_Real YUp, const Standard_Real ZUp);
 
 };
 

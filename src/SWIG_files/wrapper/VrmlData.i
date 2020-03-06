@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -65,6 +65,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_vrmldata.html"
 %import TDocStd.i
 %import Bnd.i
 %import Quantity.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum VrmlData_ErrorStatus {
 	VrmlData_StatusOK = 0,
@@ -89,6 +94,31 @@ enum VrmlData_ErrorStatus {
 
 /* end public enums declaration */
 
+/* python proy classes for enums */
+%pythoncode {
+
+class VrmlData_ErrorStatus:
+	VrmlData_StatusOK = 0
+	VrmlData_EmptyData = 1
+	VrmlData_UnrecoverableError = 2
+	VrmlData_GeneralError = 3
+	VrmlData_EndOfFile = 4
+	VrmlData_NotVrmlFile = 5
+	VrmlData_CannotOpenFile = 6
+	VrmlData_VrmlFormatError = 7
+	VrmlData_NumericInputError = 8
+	VrmlData_IrrelevantNumber = 9
+	VrmlData_BooleanInputError = 10
+	VrmlData_StringInputError = 11
+	VrmlData_NodeNameUnknown = 12
+	VrmlData_NonPositiveSize = 13
+	VrmlData_ReadUnknownNode = 14
+	VrmlData_NonSupportedFeature = 15
+	VrmlData_OutputStreamUndefined = 16
+	VrmlData_NotImplemented = 17
+};
+/* end python proxy for enums */
+
 /* handles */
 %wrap_handle(VrmlData_Node)
 %wrap_handle(VrmlData_Appearance)
@@ -112,15 +142,15 @@ enum VrmlData_ErrorStatus {
 /* end handles declaration */
 
 /* templates */
-%template(VrmlData_DataMapOfShapeAppearance) NCollection_DataMap <opencascade::handle <TopoDS_TShape>, opencascade::handle <VrmlData_Appearance>>;
-%template(VrmlData_MapOfNode) NCollection_Map <opencascade::handle <VrmlData_Node>>;
-%template(VrmlData_ListOfNode) NCollection_List <opencascade::handle <VrmlData_Node>>;
+%template(VrmlData_DataMapOfShapeAppearance) NCollection_DataMap<opencascade::handle<TopoDS_TShape>,opencascade::handle<VrmlData_Appearance>>;
+%template(VrmlData_ListOfNode) NCollection_List<opencascade::handle<VrmlData_Node>>;
+%template(VrmlData_MapOfNode) NCollection_Map<opencascade::handle<VrmlData_Node>>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap <opencascade::handle <TopoDS_TShape>, opencascade::handle <VrmlData_Appearance>> VrmlData_DataMapOfShapeAppearance;
-typedef NCollection_Map <opencascade::handle <VrmlData_Node>> VrmlData_MapOfNode;
-typedef NCollection_List <opencascade::handle <VrmlData_Node>> VrmlData_ListOfNode;
+typedef NCollection_DataMap<opencascade::handle<TopoDS_TShape>, opencascade::handle<VrmlData_Appearance>> VrmlData_DataMapOfShapeAppearance;
+typedef NCollection_List<opencascade::handle<VrmlData_Node>> VrmlData_ListOfNode;
+typedef NCollection_Map<opencascade::handle<VrmlData_Node>> VrmlData_MapOfNode;
 /* end typedefs declaration */
 
 /******************
@@ -137,125 +167,200 @@ class VrmlData_Node : public Standard_Transient {
 	public:
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified.<p> * This method nullifies the argument node if its member myScene differs * from that one of the current instance. */
-	:param &:
-	:type &: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> &);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified.<p> * this method nullifies the argument node if its member myscene differs * from that one of the current instance. */.
+
+Parameters
+----------
+&: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node > &);
 
 		/****************** GlobalIndent ******************/
 		%feature("compactdefaultargs") GlobalIndent;
-		%feature("autodoc", "* /** * Define the common Indent in spaces, for writing all nodes. */
-	:rtype: inline int") GlobalIndent;
-		static inline Standard_Integer GlobalIndent ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+inline int
+") GlobalIndent;
+		static inline Standard_Integer GlobalIndent();
 
 		/****************** IsDefault ******************/
 		%feature("compactdefaultargs") IsDefault;
-		%feature("autodoc", "* /** * Returns True if the node is default, then it would not be written. */
-	:rtype: bool") IsDefault;
-		virtual Standard_Boolean IsDefault ();
+		%feature("autodoc", "/** * returns true if the node is default, then it would not be written. */.
+
+Returns
+-------
+bool
+") IsDefault;
+		virtual Standard_Boolean IsDefault();
 
 		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "* /** * Query the name */
-	:rtype: inline  char *") Name;
-		inline const char * Name ();
+		%feature("autodoc", "/** * query the name */.
+
+Returns
+-------
+char *
+") Name;
+		const char * Name();
 
 		/****************** OK ******************/
 		%feature("compactdefaultargs") OK;
-		%feature("autodoc", ":param theStat:
-	:type theStat: VrmlData_ErrorStatus
-	:rtype: inline bool") OK;
-		static inline Standard_Boolean OK (const VrmlData_ErrorStatus theStat);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theStat: VrmlData_ErrorStatus
+
+Returns
+-------
+inline bool
+") OK;
+		static inline Standard_Boolean OK(const VrmlData_ErrorStatus theStat);
 
 		/****************** OK ******************/
 		%feature("compactdefaultargs") OK;
-		%feature("autodoc", ":param outStat:
-	:type outStat: VrmlData_ErrorStatus
-	:param theStat:
-	:type theStat: VrmlData_ErrorStatus
-	:rtype: inline bool") OK;
-		static inline Standard_Boolean OK (VrmlData_ErrorStatus & outStat,const VrmlData_ErrorStatus theStat);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+outStat: VrmlData_ErrorStatus
+theStat: VrmlData_ErrorStatus
+
+Returns
+-------
+inline bool
+") OK;
+		static inline Standard_Boolean OK(VrmlData_ErrorStatus & outStat, const VrmlData_ErrorStatus theStat);
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** ReadBoolean ******************/
 		%feature("compactdefaultargs") ReadBoolean;
-		%feature("autodoc", "* /** * Read one boolean value (True or False). */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theResult:
-	:type theResult: bool
-	:rtype: VrmlData_ErrorStatus") ReadBoolean;
-		static VrmlData_ErrorStatus ReadBoolean (VrmlData_InBuffer & theBuffer,Standard_Boolean &OutValue);
+		%feature("autodoc", "/** * read one boolean value (true or false). */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+theResult: bool
+") ReadBoolean;
+		static VrmlData_ErrorStatus ReadBoolean(VrmlData_InBuffer & theBuffer, Standard_Boolean &OutValue);
 
 		/****************** ReadInteger ******************/
 		%feature("compactdefaultargs") ReadInteger;
-		%feature("autodoc", "* /** * Read one integer value. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theResult:
-	:type theResult: long
-	:rtype: VrmlData_ErrorStatus") ReadInteger;
-		static VrmlData_ErrorStatus ReadInteger (VrmlData_InBuffer & theBuffer,long & theResult);
+		%feature("autodoc", "/** * read one integer value. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+theResult: long
+
+Returns
+-------
+VrmlData_ErrorStatus
+") ReadInteger;
+		static VrmlData_ErrorStatus ReadInteger(VrmlData_InBuffer & theBuffer, long & theResult);
 
 		/****************** ReadMultiString ******************/
 		%feature("compactdefaultargs") ReadMultiString;
-		%feature("autodoc", "* /** * Read one quoted string, the quotes are removed. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theRes:
-	:type theRes: NCollection_List<TCollection_AsciiString>
-	:rtype: VrmlData_ErrorStatus") ReadMultiString;
-		static VrmlData_ErrorStatus ReadMultiString (VrmlData_InBuffer & theBuffer,NCollection_List<TCollection_AsciiString> & theRes);
+		%feature("autodoc", "/** * read one quoted string, the quotes are removed. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+theRes: NCollection_List<TCollection_AsciiString>
+
+Returns
+-------
+VrmlData_ErrorStatus
+") ReadMultiString;
+		static VrmlData_ErrorStatus ReadMultiString(VrmlData_InBuffer & theBuffer, NCollection_List<TCollection_AsciiString> & theRes);
 
 		/****************** ReadNode ******************/
 		%feature("compactdefaultargs") ReadNode;
-		%feature("autodoc", "* /** * Read a complete node definition from VRML stream * @param theBuffer * Buffer receiving the input data. * @param theNode * <tt>[out]</tt> Node restored from the buffer data * @param Type * Node type to be checked. If it is NULL(default) no type checking is done. * Otherwise the created node is matched and an error is returned if * no match detected. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theNode:
-	:type theNode: VrmlData_Node
-	:param Type: default value is NULL
-	:type Type: Standard_Type
-	:rtype: VrmlData_ErrorStatus") ReadNode;
-		VrmlData_ErrorStatus ReadNode (VrmlData_InBuffer & theBuffer,opencascade::handle<VrmlData_Node> & theNode,const opencascade::handle<Standard_Type> & Type = NULL);
+		%feature("autodoc", "/** * read a complete node definition from vrml stream * @param thebuffer * buffer receiving the input data. * @param thenode * <tt>[out]</tt> node restored from the buffer data * @param type * node type to be checked. if it is null(default) no type checking is done. * otherwise the created node is matched and an error is returned if * no match detected. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+theNode: VrmlData_Node
+Type: Standard_Type,optional
+	default value is NULL
+
+Returns
+-------
+VrmlData_ErrorStatus
+") ReadNode;
+		VrmlData_ErrorStatus ReadNode(VrmlData_InBuffer & theBuffer, opencascade::handle<VrmlData_Node> & theNode, const opencascade::handle<Standard_Type> & Type = NULL);
 
 		/****************** ReadString ******************/
 		%feature("compactdefaultargs") ReadString;
-		%feature("autodoc", "* /** * Read one quoted string, the quotes are removed. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theRes:
-	:type theRes: TCollection_AsciiString
-	:rtype: VrmlData_ErrorStatus") ReadString;
-		static VrmlData_ErrorStatus ReadString (VrmlData_InBuffer & theBuffer,TCollection_AsciiString & theRes);
+		%feature("autodoc", "/** * read one quoted string, the quotes are removed. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+theRes: TCollection_AsciiString
+
+Returns
+-------
+VrmlData_ErrorStatus
+") ReadString;
+		static VrmlData_ErrorStatus ReadString(VrmlData_InBuffer & theBuffer, TCollection_AsciiString & theRes);
 
 		/****************** Scene ******************/
 		%feature("compactdefaultargs") Scene;
-		%feature("autodoc", "* /** * Query the Scene that contains this Node */
-	:rtype: inline  VrmlData_Scene") Scene;
-		inline const VrmlData_Scene & Scene ();
+		%feature("autodoc", "/** * query the scene that contains this node */.
+
+Returns
+-------
+VrmlData_Scene
+") Scene;
+		const VrmlData_Scene & Scene();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 		/****************** WriteClosing ******************/
 		%feature("compactdefaultargs") WriteClosing;
-		%feature("autodoc", "* /** * Write the closing brace in the end of a node output. */
-	:rtype: VrmlData_ErrorStatus") WriteClosing;
-		VrmlData_ErrorStatus WriteClosing ();
+		%feature("autodoc", "/** * write the closing brace in the end of a node output. */.
+
+Returns
+-------
+VrmlData_ErrorStatus
+") WriteClosing;
+		VrmlData_ErrorStatus WriteClosing();
 
 };
 
@@ -273,22 +378,47 @@ class VrmlData_Node : public Standard_Transient {
 ***********************/
 class VrmlData_Scene {
 	public:
-typedef VrmlData_ListOfNode::Iterator Iterator;
+typedef VrmlData_ListOfNode ::Iterator Iterator;
+		/****************** VrmlData_Scene ******************/
+		%feature("compactdefaultargs") VrmlData_Scene;
+		%feature("autodoc", "/** * constructor. */.
+
+Parameters
+----------
+&: NCollection_IncAllocator,optional
+	default value is 0L
+
+Returns
+-------
+None
+") VrmlData_Scene;
+		 VrmlData_Scene(const opencascade::handle<NCollection_IncAllocator > & = 0L);
+
 		/****************** AddNode ******************/
 		%feature("compactdefaultargs") AddNode;
-		%feature("autodoc", "* /** * Add a Node. If theN belongs to another Scene, it is cloned. * <p>VrmlData_WorldInfo cannot be added, in this case the method * returns a NULL handle. */
-	:param theN:
-	:type theN: VrmlData_Node
-	:param isTopLevel: default value is Standard_True
-	:type isTopLevel: bool
-	:rtype: opencascade::handle<VrmlData_Node>") AddNode;
-		const opencascade::handle<VrmlData_Node> & AddNode (const opencascade::handle<VrmlData_Node> & theN,const Standard_Boolean isTopLevel = Standard_True);
+		%feature("autodoc", "/** * add a node. if then belongs to another scene, it is cloned. * <p>vrmldata_worldinfo cannot be added, in this case the method * returns a null handle. */.
+
+Parameters
+----------
+theN: VrmlData_Node
+isTopLevel: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") AddNode;
+		const opencascade::handle<VrmlData_Node> & AddNode(const opencascade::handle<VrmlData_Node> & theN, const Standard_Boolean isTopLevel = Standard_True);
 
 		/****************** Allocator ******************/
 		%feature("compactdefaultargs") Allocator;
-		%feature("autodoc", "* /** * Allocator used by all nodes contained in the Scene. */
-	:rtype: inline  opencascade::handle<NCollection_IncAllocator>") Allocator;
-		inline const opencascade::handle<NCollection_IncAllocator> & Allocator ();
+		%feature("autodoc", "/** * allocator used by all nodes contained in the scene. */.
+
+Returns
+-------
+opencascade::handle<NCollection_IncAllocator>
+") Allocator;
+		const opencascade::handle<NCollection_IncAllocator> & Allocator();
 
 
         %feature("autodoc", "1");
@@ -298,231 +428,323 @@ typedef VrmlData_ListOfNode::Iterator Iterator;
             self->Dump(s);
             return s.str();}
         };
-        		/****************** FindNode ******************/
+		/****************** FindNode ******************/
 		%feature("compactdefaultargs") FindNode;
-		%feature("autodoc", "* /** * Find a node by its name. * @param theName * Name of the node to find. * @param theType * Type to match. If this value is NULL, the first found node with the * given name is returned. If theType is given, only the node that has * that type is returned. */
-	:param theName:
-	:type theName: char *
-	:param theType: default value is 0L
-	:type theType: Standard_Type
-	:rtype: opencascade::handle<VrmlData_Node>") FindNode;
-		opencascade::handle<VrmlData_Node> FindNode (const char * theName,const opencascade::handle<Standard_Type> & theType = 0L);
+		%feature("autodoc", "/** * find a node by its name. * @param thename * name of the node to find. * @param thetype * type to match. if this value is null, the first found node with the * given name is returned. if thetype is given, only the node that has * that type is returned. */.
+
+Parameters
+----------
+theName: char *
+theType: Standard_Type,optional
+	default value is 0L
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") FindNode;
+		opencascade::handle<VrmlData_Node> FindNode(const char * theName, const opencascade::handle<Standard_Type> & theType = 0L);
 
 		/****************** FindNode ******************/
 		%feature("compactdefaultargs") FindNode;
-		%feature("autodoc", "* /** * Find a node by its name. * @param theName * Name of the node to search for. * @param theLocation * Location of the found node with respect to the whole VRML shape. */
-	:param theName:
-	:type theName: char *
-	:param theLocation:
-	:type theLocation: gp_Trsf
-	:rtype: opencascade::handle<VrmlData_Node>") FindNode;
-		opencascade::handle<VrmlData_Node> FindNode (const char * theName,gp_Trsf & theLocation);
+		%feature("autodoc", "/** * find a node by its name. * @param thename * name of the node to search for. * @param thelocation * location of the found node with respect to the whole vrml shape. */.
+
+Parameters
+----------
+theName: char *
+theLocation: gp_Trsf
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") FindNode;
+		opencascade::handle<VrmlData_Node> FindNode(const char * theName, gp_Trsf & theLocation);
 
 		/****************** GetIterator ******************/
 		%feature("compactdefaultargs") GetIterator;
-		%feature("autodoc", "* /** * Iterator of Nodes */
-	:rtype: inline Iterator") GetIterator;
-		inline Iterator GetIterator ();
+		%feature("autodoc", "/** * iterator of nodes */.
+
+Returns
+-------
+Iterator
+") GetIterator;
+		Iterator GetIterator();
 
 		/****************** GetLineError ******************/
 		%feature("compactdefaultargs") GetLineError;
-		%feature("autodoc", "* /** * Query the line where the error occurred (if the status is not OK) */
-	:rtype: inline int") GetLineError;
-		inline Standard_Integer GetLineError ();
+		%feature("autodoc", "/** * query the line where the error occurred (if the status is not ok) */.
+
+Returns
+-------
+int
+") GetLineError;
+		Standard_Integer GetLineError();
 
 		/****************** GetShape ******************/
 		%feature("compactdefaultargs") GetShape;
-		%feature("autodoc", "* /** * Convert the scene to a Shape, with the information on materials defined * for each sub-shape. This method should be used instead of TopoDS_Shape * explicit conversion operator when you need to retrieve the material * aspect for each face or edge in the returned topological object. * @param M * Data Map that binds an Appearance instance to each created TFace or * TEdge if the Appearance node is defined in VRML scene for that geometry. * returns * TopoDS_Shape (Compound) holding all the scene, similar to the result of * explicit TopoDS_Shape conversion operator. */
-	:param M:
-	:type M: VrmlData_DataMapOfShapeAppearance
-	:rtype: TopoDS_Shape") GetShape;
-		TopoDS_Shape GetShape (VrmlData_DataMapOfShapeAppearance & M);
+		%feature("autodoc", "/** * convert the scene to a shape, with the information on materials defined * for each sub-shape. this method should be used instead of topods_shape * explicit conversion operator when you need to retrieve the material * aspect for each face or edge in the returned topological object. * @param m * data map that binds an appearance instance to each created tface or * tedge if the appearance node is defined in vrml scene for that geometry. * returns * topods_shape (compound) holding all the scene, similar to the result of * explicit topods_shape conversion operator. */.
+
+Parameters
+----------
+M: VrmlData_DataMapOfShapeAppearance
+
+Returns
+-------
+TopoDS_Shape
+") GetShape;
+		TopoDS_Shape GetShape(VrmlData_DataMapOfShapeAppearance & M);
 
 		/****************** IsDummyWrite ******************/
 		%feature("compactdefaultargs") IsDummyWrite;
-		%feature("autodoc", "* /** * Query if the current write operation is dummy, i.e., for the purpose of * collecting information before the real write is commenced. */
-	:rtype: inline bool") IsDummyWrite;
-		inline Standard_Boolean IsDummyWrite ();
+		%feature("autodoc", "/** * query if the current write operation is dummy, i.e., for the purpose of * collecting information before the real write is commenced. */.
+
+Returns
+-------
+bool
+") IsDummyWrite;
+		Standard_Boolean IsDummyWrite();
 
 		/****************** NamedNodesIterator ******************/
 		%feature("compactdefaultargs") NamedNodesIterator;
-		%feature("autodoc", "* /** * Get the iterator of named nodes. */
-	:rtype: inline VrmlData_MapOfNode::Iterator") NamedNodesIterator;
-		inline VrmlData_MapOfNode::Iterator NamedNodesIterator ();
+		%feature("autodoc", "/** * get the iterator of named nodes. */.
+
+Returns
+-------
+VrmlData_MapOfNode::Iterator
+") NamedNodesIterator;
+		VrmlData_MapOfNode::Iterator NamedNodesIterator();
 
 		/****************** ReadArrIndex ******************/
 		%feature("compactdefaultargs") ReadArrIndex;
-		%feature("autodoc", "* /** * Read an array of integer indices, for IndexedfaceSet and IndexedLineSet. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theArr:
-	:type theArr: int * *
-	:param theNBl:
-	:type theNBl: Standard_Size
-	:rtype: VrmlData_ErrorStatus") ReadArrIndex;
-		VrmlData_ErrorStatus ReadArrIndex (VrmlData_InBuffer & theBuffer,const Standard_Integer * * & theArr,Standard_Size & theNBl);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+theArr: int * *
+theNBl: Standard_Size
+
+Returns
+-------
+VrmlData_ErrorStatus
+") ReadArrIndex;
+		VrmlData_ErrorStatus ReadArrIndex(VrmlData_InBuffer & theBuffer, const Standard_Integer * * & theArr, Standard_Size & theNBl);
 
 		/****************** ReadLine ******************/
 		%feature("compactdefaultargs") ReadLine;
-		%feature("autodoc", "* /** * Read a VRML line. Empty lines and comments are skipped. * The processing starts here from theBuffer.LinePtr; if there is at least * one non-empty character (neither space nor comment), this line is used * without reading the next one. * @param theLine * Buffer receiving the input line * @param theInput * Input stream * @param theLen * Length of the input buffer (maximal line length) */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") ReadLine;
-		static VrmlData_ErrorStatus ReadLine (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read a vrml line. empty lines and comments are skipped. * the processing starts here from thebuffer.lineptr; if there is at least * one non-empty character (neither space nor comment), this line is used * without reading the next one. * @param theline * buffer receiving the input line * @param theinput * input stream * @param thelen * length of the input buffer (maximal line length) */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") ReadLine;
+		static VrmlData_ErrorStatus ReadLine(VrmlData_InBuffer & theBuffer);
 
 		/****************** ReadReal ******************/
 		%feature("compactdefaultargs") ReadReal;
-		%feature("autodoc", "* /** * Read one real value. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theResult:
-	:type theResult: float
-	:param isApplyScale:
-	:type isApplyScale: bool
-	:param isOnlyPositive:
-	:type isOnlyPositive: bool
-	:rtype: VrmlData_ErrorStatus") ReadReal;
-		VrmlData_ErrorStatus ReadReal (VrmlData_InBuffer & theBuffer,Standard_Real &OutValue,Standard_Boolean isApplyScale,Standard_Boolean isOnlyPositive);
+		%feature("autodoc", "/** * read one real value. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+isApplyScale: bool
+isOnlyPositive: bool
+
+Returns
+-------
+theResult: float
+") ReadReal;
+		VrmlData_ErrorStatus ReadReal(VrmlData_InBuffer & theBuffer, Standard_Real &OutValue, Standard_Boolean isApplyScale, Standard_Boolean isOnlyPositive);
 
 		/****************** ReadWord ******************/
 		%feature("compactdefaultargs") ReadWord;
-		%feature("autodoc", "* /** * Read a singel word from the input stream, delimited by whitespace. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theStr:
-	:type theStr: TCollection_AsciiString
-	:rtype: VrmlData_ErrorStatus") ReadWord;
-		static VrmlData_ErrorStatus ReadWord (VrmlData_InBuffer & theBuffer,TCollection_AsciiString & theStr);
+		%feature("autodoc", "/** * read a singel word from the input stream, delimited by whitespace. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+theStr: TCollection_AsciiString
+
+Returns
+-------
+VrmlData_ErrorStatus
+") ReadWord;
+		static VrmlData_ErrorStatus ReadWord(VrmlData_InBuffer & theBuffer, TCollection_AsciiString & theStr);
 
 		/****************** ReadXY ******************/
 		%feature("compactdefaultargs") ReadXY;
-		%feature("autodoc", "* /** * Read one doublet of real values. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theXYZ:
-	:type theXYZ: gp_XY
-	:param isApplyScale:
-	:type isApplyScale: bool
-	:param isOnlyPositive:
-	:type isOnlyPositive: bool
-	:rtype: VrmlData_ErrorStatus") ReadXY;
-		VrmlData_ErrorStatus ReadXY (VrmlData_InBuffer & theBuffer,gp_XY & theXYZ,Standard_Boolean isApplyScale,Standard_Boolean isOnlyPositive);
+		%feature("autodoc", "/** * read one doublet of real values. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+theXYZ: gp_XY
+isApplyScale: bool
+isOnlyPositive: bool
+
+Returns
+-------
+VrmlData_ErrorStatus
+") ReadXY;
+		VrmlData_ErrorStatus ReadXY(VrmlData_InBuffer & theBuffer, gp_XY & theXYZ, Standard_Boolean isApplyScale, Standard_Boolean isOnlyPositive);
 
 		/****************** ReadXYZ ******************/
 		%feature("compactdefaultargs") ReadXYZ;
-		%feature("autodoc", "* /** * Read one triplet of real values. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:param theXYZ:
-	:type theXYZ: gp_XYZ
-	:param isApplyScale:
-	:type isApplyScale: bool
-	:param isOnlyPositive:
-	:type isOnlyPositive: bool
-	:rtype: VrmlData_ErrorStatus") ReadXYZ;
-		VrmlData_ErrorStatus ReadXYZ (VrmlData_InBuffer & theBuffer,gp_XYZ & theXYZ,Standard_Boolean isApplyScale,Standard_Boolean isOnlyPositive);
+		%feature("autodoc", "/** * read one triplet of real values. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+theXYZ: gp_XYZ
+isApplyScale: bool
+isOnlyPositive: bool
+
+Returns
+-------
+VrmlData_ErrorStatus
+") ReadXYZ;
+		VrmlData_ErrorStatus ReadXYZ(VrmlData_InBuffer & theBuffer, gp_XYZ & theXYZ, Standard_Boolean isApplyScale, Standard_Boolean isOnlyPositive);
 
 		/****************** SetIndent ******************/
 		%feature("compactdefaultargs") SetIndent;
-		%feature("autodoc", "* /** * Store the indentation for VRML output. * @param nSpc * number of spaces to insert at every indentation level */
-	:param nSpc:
-	:type nSpc: int
-	:rtype: inline void") SetIndent;
-		inline void SetIndent (const Standard_Integer nSpc);
+		%feature("autodoc", "/** * store the indentation for vrml output. * @param nspc * number of spaces to insert at every indentation level */.
+
+Parameters
+----------
+nSpc: int
+
+Returns
+-------
+None
+") SetIndent;
+		void SetIndent(const Standard_Integer nSpc);
 
 		/****************** SetLinearScale ******************/
 		%feature("compactdefaultargs") SetLinearScale;
-		%feature("autodoc", "* /** * Set the scale factor that would be further used in methods * ReadReal, ReadXYZ and ReadXY. All coordinates, distances and sized are * multiplied by this factor during reading the data. */
-	:param theScale:
-	:type theScale: float
-	:rtype: inline void") SetLinearScale;
-		inline void SetLinearScale (const Standard_Real theScale);
+		%feature("autodoc", "/** * set the scale factor that would be further used in methods * readreal, readxyz and readxy. all coordinates, distances and sized are * multiplied by this factor during reading the data. */.
+
+Parameters
+----------
+theScale: float
+
+Returns
+-------
+None
+") SetLinearScale;
+		void SetLinearScale(const Standard_Real theScale);
 
 		/****************** SetVrmlDir ******************/
 		%feature("compactdefaultargs") SetVrmlDir;
-		%feature("autodoc", "* /** * Add the given directory path to the list of VRML file search directories. * This method forms the list of directories ordered according to the * sequence of this method calls. When an Inline node is found, the URLs * in that node are matched with these directories. * The last (implicit) search directory is the current process directory * ('.'). It takes effect if the list is empty or if there is no match with * exisiting directories. */
-	:param &:
-	:type &: TCollection_ExtendedString
-	:rtype: None") SetVrmlDir;
-		void SetVrmlDir (const TCollection_ExtendedString &);
+		%feature("autodoc", "/** * add the given directory path to the list of vrml file search directories. * this method forms the list of directories ordered according to the * sequence of this method calls. when an inline node is found, the urls * in that node are matched with these directories. * the last (implicit) search directory is the current process directory * ('.'). it takes effect if the list is empty or if there is no match with * exisiting directories. */.
+
+Parameters
+----------
+&: TCollection_ExtendedString
+
+Returns
+-------
+None
+") SetVrmlDir;
+		void SetVrmlDir(const TCollection_ExtendedString &);
 
 		/****************** Status ******************/
 		%feature("compactdefaultargs") Status;
-		%feature("autodoc", "* /** * Query the status of the previous operation. * Normally it should be equal to VrmlData_StatusOK (no error). */
-	:rtype: inline VrmlData_ErrorStatus") Status;
-		inline VrmlData_ErrorStatus Status ();
+		%feature("autodoc", "/** * query the status of the previous operation. * normally it should be equal to vrmldata_statusok (no error). */.
 
-		/****************** VrmlData_Scene ******************/
-		%feature("compactdefaultargs") VrmlData_Scene;
-		%feature("autodoc", "* /** * Constructor. */
-	:param &: default value is 0L
-	:type &: NCollection_IncAllocator
-	:rtype: None") VrmlData_Scene;
-		 VrmlData_Scene (const opencascade::handle<NCollection_IncAllocator> & = 0L);
+Returns
+-------
+VrmlData_ErrorStatus
+") Status;
+		VrmlData_ErrorStatus Status();
 
 		/****************** VrmlDirIterator ******************/
 		%feature("compactdefaultargs") VrmlDirIterator;
-		%feature("autodoc", "* /** * Returns the directory iterator, to check the presence of requested VRML * file in each iterated directory. */
-	:rtype: inline NCollection_List<TCollection_ExtendedString>::Iterator") VrmlDirIterator;
-		inline NCollection_List<TCollection_ExtendedString>::Iterator VrmlDirIterator ();
+		%feature("autodoc", "/** * returns the directory iterator, to check the presence of requested vrml * file in each iterated directory. */.
+
+Returns
+-------
+NCollection_List<TCollection_ExtendedString >::Iterator
+") VrmlDirIterator;
+		NCollection_List<TCollection_ExtendedString >::Iterator VrmlDirIterator();
 
 		/****************** WorldInfo ******************/
 		%feature("compactdefaultargs") WorldInfo;
-		%feature("autodoc", "* /** * Query the WorldInfo member. */
-	:rtype: opencascade::handle<VrmlData_WorldInfo>") WorldInfo;
-		const opencascade::handle<VrmlData_WorldInfo> & WorldInfo ();
+		%feature("autodoc", "/** * query the worldinfo member. */.
+
+Returns
+-------
+opencascade::handle<VrmlData_WorldInfo>
+") WorldInfo;
+		const opencascade::handle<VrmlData_WorldInfo> & WorldInfo();
 
 		/****************** WriteArrIndex ******************/
 		%feature("compactdefaultargs") WriteArrIndex;
-		%feature("autodoc", "* /** * Write an array of integer indices, for IndexedFaceSet and IndexedLineSet. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:param theArr:
-	:type theArr: int * *
-	:param theNbBl:
-	:type theNbBl: Standard_Size
-	:rtype: VrmlData_ErrorStatus") WriteArrIndex;
-		VrmlData_ErrorStatus WriteArrIndex (const char * thePrefix,const Standard_Integer * * theArr,const Standard_Size theNbBl);
+		%feature("autodoc", "/** * write an array of integer indices, for indexedfaceset and indexedlineset. */.
+
+Parameters
+----------
+thePrefix: char *
+theArr: int * *
+theNbBl: Standard_Size
+
+Returns
+-------
+VrmlData_ErrorStatus
+") WriteArrIndex;
+		VrmlData_ErrorStatus WriteArrIndex(const char * thePrefix, const Standard_Integer * * theArr, const Standard_Size theNbBl);
 
 		/****************** WriteLine ******************/
 		%feature("compactdefaultargs") WriteLine;
-		%feature("autodoc", "* /** * Write a string to the output stream respecting the indentation. The string * can be defined as two substrings that will be separated by a space. * Each of the substrings can be NULL, then it is ignored. If both * are NULL, then a single newline is output (without indent). * @param theLine0 * The first part of string to output * @param theLine1 * The second part of string to output * @param theIndent * - 0 value ignored. * - negative decreases the current indent and then outputs. * - positive outputs and then increases the current indent. * returns * Error status of the stream, or a special error if myOutput == NULL. */
-	:param theLine0:
-	:type theLine0: char *
-	:param theLine1: default value is 0L
-	:type theLine1: char *
-	:param theIndent: default value is 0
-	:type theIndent: int
-	:rtype: VrmlData_ErrorStatus") WriteLine;
-		VrmlData_ErrorStatus WriteLine (const char * theLine0,const char * theLine1 = 0L,const Standard_Integer theIndent = 0);
+		%feature("autodoc", "/** * write a string to the output stream respecting the indentation. the string * can be defined as two substrings that will be separated by a space. * each of the substrings can be null, then it is ignored. if both * are null, then a single newline is output (without indent). * @param theline0 * the first part of string to output * @param theline1 * the second part of string to output * @param theindent * - 0 value ignored. * - negative decreases the current indent and then outputs. * - positive outputs and then increases the current indent. * returns * error status of the stream, or a special error if myoutput == null. */.
+
+Parameters
+----------
+theLine0: char *
+theLine1: char *,optional
+	default value is 0L
+theIndent: int,optional
+	default value is 0
+
+Returns
+-------
+VrmlData_ErrorStatus
+") WriteLine;
+		VrmlData_ErrorStatus WriteLine(const char * theLine0, const char * theLine1 = 0L, const Standard_Integer theIndent = 0);
 
 		/****************** WriteNode ******************/
 		%feature("compactdefaultargs") WriteNode;
-		%feature("autodoc", "* /** * Write the given node to output stream 'myOutput'. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:param &:
-	:type &: VrmlData_Node
-	:rtype: VrmlData_ErrorStatus") WriteNode;
-		VrmlData_ErrorStatus WriteNode (const char * thePrefix,const opencascade::handle<VrmlData_Node> &);
+		%feature("autodoc", "/** * write the given node to output stream 'myoutput'. */.
+
+Parameters
+----------
+thePrefix: char *
+&: VrmlData_Node
+
+Returns
+-------
+VrmlData_ErrorStatus
+") WriteNode;
+		VrmlData_ErrorStatus WriteNode(const char * thePrefix, const opencascade::handle<VrmlData_Node > &);
 
 		/****************** WriteXYZ ******************/
 		%feature("compactdefaultargs") WriteXYZ;
-		%feature("autodoc", "* /** * Write a triplet of real values on a separate line. * @param theXYZ * The value to be output. * @param isScale * If True, then each component is divided by myLinearScale. * @param thePostfix * Optional string that is added before the end of the line. */
-	:param theXYZ:
-	:type theXYZ: gp_XYZ
-	:param isScale:
-	:type isScale: bool
-	:param thePostfix: default value is 0L
-	:type thePostfix: char *
-	:rtype: VrmlData_ErrorStatus") WriteXYZ;
-		VrmlData_ErrorStatus WriteXYZ (const gp_XYZ & theXYZ,const Standard_Boolean isScale,const char * thePostfix = 0L);
+		%feature("autodoc", "/** * write a triplet of real values on a separate line. * @param thexyz * the value to be output. * @param isscale * if true, then each component is divided by mylinearscale. * @param thepostfix * optional string that is added before the end of the line. */.
 
-		/****************** operator TopoDS_Shape ******************/
-		%feature("compactdefaultargs") operator TopoDS_Shape;
-		%feature("autodoc", "* /** * Convert the scene to a Shape. */
-	:rtype:") operator TopoDS_Shape;
-		 operator TopoDS_Shape ();
+Parameters
+----------
+theXYZ: gp_XYZ
+isScale: bool
+thePostfix: char *,optional
+	default value is 0L
+
+Returns
+-------
+VrmlData_ErrorStatus
+") WriteXYZ;
+		VrmlData_ErrorStatus WriteXYZ(const gp_XYZ & theXYZ, const Standard_Boolean isScale, const char * thePostfix = 0L);
 
 };
 
@@ -539,47 +761,70 @@ typedef VrmlData_ListOfNode::Iterator Iterator;
 class VrmlData_ShapeConvert {
 	public:
 		class ShapeData {};
+		/****************** VrmlData_ShapeConvert ******************/
+		%feature("compactdefaultargs") VrmlData_ShapeConvert;
+		%feature("autodoc", "/** * constructor. * @param thescene * scene receiving all vrml data. * @param thescale * scale factor, considering that vrml standard specifies coordinates in * meters. so if your data are in mm, you should provide thescale=0.001 */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theScale: float,optional
+	default value is 1
+
+Returns
+-------
+None
+") VrmlData_ShapeConvert;
+		 VrmlData_ShapeConvert(VrmlData_Scene & theScene, const Standard_Real theScale = 1);
+
 		/****************** AddShape ******************/
 		%feature("compactdefaultargs") AddShape;
-		%feature("autodoc", "* /** * Add one shape to the internal list, may be called several times with * different shapes. */
-	:param theShape:
-	:type theShape: TopoDS_Shape
-	:param theName: default value is 0L
-	:type theName: char *
-	:rtype: None") AddShape;
-		void AddShape (const TopoDS_Shape & theShape,const char * theName = 0L);
+		%feature("autodoc", "/** * add one shape to the internal list, may be called several times with * different shapes. */.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theName: char *,optional
+	default value is 0L
+
+Returns
+-------
+None
+") AddShape;
+		void AddShape(const TopoDS_Shape & theShape, const char * theName = 0L);
 
 		/****************** Convert ******************/
 		%feature("compactdefaultargs") Convert;
-		%feature("autodoc", "* /** * Convert all accumulated shapes and store them in myScene. * The internal data structures are cleared in the end of convertion. * @param theExtractFaces * If True, converter extracst faces from the shapes. * @param theExtractEdges * If True, converter extracts edges from the shapes. * @param theDeflection * Deflection for tessellation of geometrical lines/surfaces. Existing mesh * is used if its deflection is smaller than the one given by this * parameter. * @param theDeflAngle * Angular deflection for tessellation of geometrical lines. */
-	:param theExtractFaces:
-	:type theExtractFaces: bool
-	:param theExtractEdges:
-	:type theExtractEdges: bool
-	:param theDeflection: default value is 0.01
-	:type theDeflection: float
-	:param theDeflAngle: default value is 20*M_PI/180
-	:type theDeflAngle: float
-	:rtype: None") Convert;
-		void Convert (const Standard_Boolean theExtractFaces,const Standard_Boolean theExtractEdges,const Standard_Real theDeflection = 0.01,const Standard_Real theDeflAngle = 20*M_PI/180);
+		%feature("autodoc", "/** * convert all accumulated shapes and store them in myscene. * the internal data structures are cleared in the end of convertion. * @param theextractfaces * if true, converter extracst faces from the shapes. * @param theextractedges * if true, converter extracts edges from the shapes. * @param thedeflection * deflection for tessellation of geometrical lines/surfaces. existing mesh * is used if its deflection is smaller than the one given by this * parameter. * @param thedeflangle * angular deflection for tessellation of geometrical lines. */.
+
+Parameters
+----------
+theExtractFaces: bool
+theExtractEdges: bool
+theDeflection: float,optional
+	default value is 0.01
+theDeflAngle: float,optional
+	default value is 20*M_PI/180
+
+Returns
+-------
+None
+") Convert;
+		void Convert(const Standard_Boolean theExtractFaces, const Standard_Boolean theExtractEdges, const Standard_Real theDeflection = 0.01, const Standard_Real theDeflAngle = 20*M_PI/180);
 
 		/****************** ConvertDocument ******************/
 		%feature("compactdefaultargs") ConvertDocument;
-		%feature("autodoc", "* /** * Add all shapes start from given document with colors and names to the internal structure */
-	:param theDoc:
-	:type theDoc: TDocStd_Document
-	:rtype: None") ConvertDocument;
-		void ConvertDocument (const opencascade::handle<TDocStd_Document> & theDoc);
+		%feature("autodoc", "/** * add all shapes start from given document with colors and names to the internal structure */.
 
-		/****************** VrmlData_ShapeConvert ******************/
-		%feature("compactdefaultargs") VrmlData_ShapeConvert;
-		%feature("autodoc", "* /** * Constructor. * @param theScene * Scene receiving all Vrml data. * @param theScale * Scale factor, considering that VRML standard specifies coordinates in * meters. So if your data are in mm, you should provide theScale=0.001 */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theScale: default value is 1
-	:type theScale: float
-	:rtype: None") VrmlData_ShapeConvert;
-		 VrmlData_ShapeConvert (VrmlData_Scene & theScene,const Standard_Real theScale = 1);
+Parameters
+----------
+theDoc: TDocStd_Document
+
+Returns
+-------
+None
+") ConvertDocument;
+		void ConvertDocument(const opencascade::handle<TDocStd_Document> & theDoc);
 
 };
 
@@ -595,93 +840,154 @@ class VrmlData_ShapeConvert {
 ****************************/
 class VrmlData_Appearance : public VrmlData_Node {
 	public:
+		/****************** VrmlData_Appearance ******************/
+		%feature("compactdefaultargs") VrmlData_Appearance;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_Appearance;
+		 VrmlData_Appearance();
+
+		/****************** VrmlData_Appearance ******************/
+		%feature("compactdefaultargs") VrmlData_Appearance;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+
+Returns
+-------
+None
+") VrmlData_Appearance;
+		 VrmlData_Appearance(const VrmlData_Scene & theScene, const char * theName);
+
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified.<p> */
-	:param &:
-	:type &: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> &);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified.<p> */.
+
+Parameters
+----------
+&: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node > &);
 
 		/****************** IsDefault ******************/
 		%feature("compactdefaultargs") IsDefault;
-		%feature("autodoc", "* /** * Returns True if the node is default, so that it should not be written. */
-	:rtype: bool") IsDefault;
-		virtual Standard_Boolean IsDefault ();
+		%feature("autodoc", "/** * returns true if the node is default, so that it should not be written. */.
+
+Returns
+-------
+bool
+") IsDefault;
+		virtual Standard_Boolean IsDefault();
 
 		/****************** Material ******************/
 		%feature("compactdefaultargs") Material;
-		%feature("autodoc", "* /** * Query the Material */
-	:rtype: inline  opencascade::handle<VrmlData_Material>") Material;
-		inline const opencascade::handle<VrmlData_Material> & Material ();
+		%feature("autodoc", "/** * query the material */.
+
+Returns
+-------
+opencascade::handle<VrmlData_Material>
+") Material;
+		const opencascade::handle<VrmlData_Material> & Material();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetMaterial ******************/
 		%feature("compactdefaultargs") SetMaterial;
-		%feature("autodoc", "* /** * Set the Material */
-	:param theMat:
-	:type theMat: VrmlData_Material
-	:rtype: inline void") SetMaterial;
-		inline void SetMaterial (const opencascade::handle<VrmlData_Material> & theMat);
+		%feature("autodoc", "/** * set the material */.
+
+Parameters
+----------
+theMat: VrmlData_Material
+
+Returns
+-------
+None
+") SetMaterial;
+		void SetMaterial(const opencascade::handle<VrmlData_Material> & theMat);
 
 		/****************** SetTexture ******************/
 		%feature("compactdefaultargs") SetTexture;
-		%feature("autodoc", "* /** * Set the Texture */
-	:param theTexture:
-	:type theTexture: VrmlData_Texture
-	:rtype: inline void") SetTexture;
-		inline void SetTexture (const opencascade::handle<VrmlData_Texture> & theTexture);
+		%feature("autodoc", "/** * set the texture */.
+
+Parameters
+----------
+theTexture: VrmlData_Texture
+
+Returns
+-------
+None
+") SetTexture;
+		void SetTexture(const opencascade::handle<VrmlData_Texture> & theTexture);
 
 		/****************** SetTextureTransform ******************/
 		%feature("compactdefaultargs") SetTextureTransform;
-		%feature("autodoc", "* /** * Set the Texture Transform */
-	:param theTT:
-	:type theTT: VrmlData_TextureTransform
-	:rtype: inline void") SetTextureTransform;
-		inline void SetTextureTransform (const opencascade::handle<VrmlData_TextureTransform> & theTT);
+		%feature("autodoc", "/** * set the texture transform */.
+
+Parameters
+----------
+theTT: VrmlData_TextureTransform
+
+Returns
+-------
+None
+") SetTextureTransform;
+		void SetTextureTransform(const opencascade::handle<VrmlData_TextureTransform> & theTT);
 
 		/****************** Texture ******************/
 		%feature("compactdefaultargs") Texture;
-		%feature("autodoc", "* /** * Query the Texture */
-	:rtype: inline  opencascade::handle<VrmlData_Texture>") Texture;
-		inline const opencascade::handle<VrmlData_Texture> & Texture ();
+		%feature("autodoc", "/** * query the texture */.
+
+Returns
+-------
+opencascade::handle<VrmlData_Texture>
+") Texture;
+		const opencascade::handle<VrmlData_Texture> & Texture();
 
 		/****************** TextureTransform ******************/
 		%feature("compactdefaultargs") TextureTransform;
-		%feature("autodoc", "* /** * Query the TextureTransform */
-	:rtype: inline  opencascade::handle<VrmlData_TextureTransform>") TextureTransform;
-		inline const opencascade::handle<VrmlData_TextureTransform> & TextureTransform ();
+		%feature("autodoc", "/** * query the texturetransform */.
 
-		/****************** VrmlData_Appearance ******************/
-		%feature("compactdefaultargs") VrmlData_Appearance;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_Appearance;
-		 VrmlData_Appearance ();
-
-		/****************** VrmlData_Appearance ******************/
-		%feature("compactdefaultargs") VrmlData_Appearance;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:rtype: None") VrmlData_Appearance;
-		 VrmlData_Appearance (const VrmlData_Scene & theScene,const char * theName);
+Returns
+-------
+opencascade::handle<VrmlData_TextureTransform>
+") TextureTransform;
+		const opencascade::handle<VrmlData_TextureTransform> & TextureTransform();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node from input stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node from input stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -705,9 +1011,13 @@ class VrmlData_Geometry : public VrmlData_Node {
 	public:
 		/****************** TShape ******************/
 		%feature("compactdefaultargs") TShape;
-		%feature("autodoc", "* /** * Query the shape. This method checks the flag myIsModified; if True it * should rebuild the shape presentation. */
-	:rtype: opencascade::handle<TopoDS_TShape>") TShape;
-		virtual const opencascade::handle<TopoDS_TShape>  TShape ();
+		%feature("autodoc", "/** * query the shape. this method checks the flag myismodified; if true it * should rebuild the shape presentation. */.
+
+Returns
+-------
+opencascade::handle<TopoDS_TShape>
+") TShape;
+		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
 };
 
@@ -725,126 +1035,206 @@ class VrmlData_Geometry : public VrmlData_Node {
 ***********************/
 class VrmlData_Group : public VrmlData_Node {
 	public:
-typedef VrmlData_ListOfNode::Iterator Iterator;
+typedef VrmlData_ListOfNode ::Iterator Iterator;
+		/****************** VrmlData_Group ******************/
+		%feature("compactdefaultargs") VrmlData_Group;
+		%feature("autodoc", "/** * empty constructor. * @param istransform * true if the group of type transform is defined * @param thealloc * allocator used for the list of children */.
+
+Parameters
+----------
+isTransform: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") VrmlData_Group;
+		 VrmlData_Group(const Standard_Boolean isTransform = Standard_False);
+
+		/****************** VrmlData_Group ******************/
+		%feature("compactdefaultargs") VrmlData_Group;
+		%feature("autodoc", "/** * constructor. * @param thename * name of the group node * @param istransform * true if the group of type transform is defined * @param thealloc * allocator used for the list of children */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+isTransform: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") VrmlData_Group;
+		 VrmlData_Group(const VrmlData_Scene & theScene, const char * theName, const Standard_Boolean isTransform = Standard_False);
+
 		/****************** AddNode ******************/
 		%feature("compactdefaultargs") AddNode;
-		%feature("autodoc", "* /** * Add one node to the Group. */
-	:param theNode:
-	:type theNode: VrmlData_Node
-	:rtype: inline opencascade::handle<VrmlData_Node>") AddNode;
-		inline opencascade::handle<VrmlData_Node> & AddNode (const opencascade::handle<VrmlData_Node> & theNode);
+		%feature("autodoc", "/** * add one node to the group. */.
+
+Parameters
+----------
+theNode: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") AddNode;
+		opencascade::handle<VrmlData_Node> & AddNode(const opencascade::handle<VrmlData_Node> & theNode);
 
 		/****************** Box ******************/
 		%feature("compactdefaultargs") Box;
-		%feature("autodoc", "* /** * Query the bounding box. */
-	:rtype: inline  Bnd_B3f") Box;
-		inline const Bnd_B3f & Box ();
+		%feature("autodoc", "/** * query the bounding box. */.
+
+Returns
+-------
+Bnd_B3f
+") Box;
+		const Bnd_B3f & Box();
 
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** FindNode ******************/
 		%feature("compactdefaultargs") FindNode;
-		%feature("autodoc", "* /** * Find a node by its name, inside this Group * @param theName * Name of the node to search for. * @param theLocation * Location of the found node with respect to this Group. */
-	:param theName:
-	:type theName: char *
-	:param theLocation:
-	:type theLocation: gp_Trsf
-	:rtype: opencascade::handle<VrmlData_Node>") FindNode;
-		opencascade::handle<VrmlData_Node> FindNode (const char * theName,gp_Trsf & theLocation);
+		%feature("autodoc", "/** * find a node by its name, inside this group * @param thename * name of the node to search for. * @param thelocation * location of the found node with respect to this group. */.
+
+Parameters
+----------
+theName: char *
+theLocation: gp_Trsf
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") FindNode;
+		opencascade::handle<VrmlData_Node> FindNode(const char * theName, gp_Trsf & theLocation);
 
 		/****************** GetTransform ******************/
 		%feature("compactdefaultargs") GetTransform;
-		%feature("autodoc", "* /** * Query the transform value. * For group without transformation this always returns Identity */
-	:rtype: inline  gp_Trsf") GetTransform;
-		inline const gp_Trsf  GetTransform ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+gp_Trsf
+") GetTransform;
+		const gp_Trsf GetTransform();
 
 		/****************** IsTransform ******************/
 		%feature("compactdefaultargs") IsTransform;
-		%feature("autodoc", "* /** * Query if the node is Transform type. */
-	:rtype: inline bool") IsTransform;
-		inline Standard_Boolean IsTransform ();
+		%feature("autodoc", "/** * query if the node is transform type. */.
+
+Returns
+-------
+bool
+") IsTransform;
+		Standard_Boolean IsTransform();
 
 		/****************** NodeIterator ******************/
 		%feature("compactdefaultargs") NodeIterator;
-		%feature("autodoc", "* /** * Create iterator on nodes belonging to the Group. */
-	:rtype: inline Iterator") NodeIterator;
-		inline Iterator NodeIterator ();
+		%feature("autodoc", "/** * create iterator on nodes belonging to the group. */.
+
+Returns
+-------
+Iterator
+") NodeIterator;
+		Iterator NodeIterator();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Fill the Node internal data from the given input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * fill the node internal data from the given input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** RemoveNode ******************/
 		%feature("compactdefaultargs") RemoveNode;
-		%feature("autodoc", "* /** * Remove one node from the Group. * returns * True if the node was located and removed, False if none removed. */
-	:param theNode:
-	:type theNode: VrmlData_Node
-	:rtype: bool") RemoveNode;
-		Standard_Boolean RemoveNode (const opencascade::handle<VrmlData_Node> & theNode);
+		%feature("autodoc", "/** * remove one node from the group. * returns * true if the node was located and removed, false if none removed. */.
+
+Parameters
+----------
+theNode: VrmlData_Node
+
+Returns
+-------
+bool
+") RemoveNode;
+		Standard_Boolean RemoveNode(const opencascade::handle<VrmlData_Node> & theNode);
 
 		/****************** SetBox ******************/
 		%feature("compactdefaultargs") SetBox;
-		%feature("autodoc", "* /** * Set the bounding box. */
-	:param theBox:
-	:type theBox: Bnd_B3f
-	:rtype: inline void") SetBox;
-		inline void SetBox (const Bnd_B3f & theBox);
+		%feature("autodoc", "/** * set the bounding box. */.
+
+Parameters
+----------
+theBox: Bnd_B3f
+
+Returns
+-------
+None
+") SetBox;
+		void SetBox(const Bnd_B3f & theBox);
 
 		/****************** SetTransform ******************/
 		%feature("compactdefaultargs") SetTransform;
-		%feature("autodoc", "* /** * Set the transformation. Returns True if the group is Transform type, * otherwise do nothing and return False. */
-	:param theTrsf:
-	:type theTrsf: gp_Trsf
-	:rtype: bool") SetTransform;
-		Standard_Boolean SetTransform (const gp_Trsf & theTrsf);
+		%feature("autodoc", "/** * set the transformation. returns true if the group is transform type, * otherwise do nothing and return false. */.
+
+Parameters
+----------
+theTrsf: gp_Trsf
+
+Returns
+-------
+bool
+") SetTransform;
+		Standard_Boolean SetTransform(const gp_Trsf & theTrsf);
 
 		/****************** Shape ******************/
 		%feature("compactdefaultargs") Shape;
-		%feature("autodoc", "* /** * Get the shape representing the group geometry. */
-	:param theShape:
-	:type theShape: TopoDS_Shape
-	:param pMapApp:
-	:type pMapApp: VrmlData_DataMapOfShapeAppearance *
-	:rtype: None") Shape;
-		void Shape (TopoDS_Shape & theShape,VrmlData_DataMapOfShapeAppearance * pMapApp);
+		%feature("autodoc", "/** * get the shape representing the group geometry. */.
 
-		/****************** VrmlData_Group ******************/
-		%feature("compactdefaultargs") VrmlData_Group;
-		%feature("autodoc", "* /** * Empty constructor. * @param isTransform * True if the group of type Transform is defined * @param theAlloc * Allocator used for the list of children */
-	:param isTransform: default value is Standard_False
-	:type isTransform: bool
-	:rtype: None") VrmlData_Group;
-		 VrmlData_Group (const Standard_Boolean isTransform = Standard_False);
+Parameters
+----------
+theShape: TopoDS_Shape
+pMapApp: VrmlData_DataMapOfShapeAppearance *
 
-		/****************** VrmlData_Group ******************/
-		%feature("compactdefaultargs") VrmlData_Group;
-		%feature("autodoc", "* /** * Constructor. * @param theName * Name of the Group node * @param isTransform * True if the group of type Transform is defined * @param theAlloc * Allocator used for the list of children */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param isTransform: default value is Standard_False
-	:type isTransform: bool
-	:rtype: None") VrmlData_Group;
-		 VrmlData_Group (const VrmlData_Scene & theScene,const char * theName,const Standard_Boolean isTransform = Standard_False);
+Returns
+-------
+None
+") Shape;
+		void Shape(TopoDS_Shape & theShape, VrmlData_DataMapOfShapeAppearance * pMapApp);
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -862,141 +1252,232 @@ typedef VrmlData_ListOfNode::Iterator Iterator;
 **************************/
 class VrmlData_Material : public VrmlData_Node {
 	public:
+		/****************** VrmlData_Material ******************/
+		%feature("compactdefaultargs") VrmlData_Material;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_Material;
+		 VrmlData_Material();
+
+		/****************** VrmlData_Material ******************/
+		%feature("compactdefaultargs") VrmlData_Material;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+theAmbientIntensity: float,optional
+	default value is -1
+theShininess: float,optional
+	default value is -1
+theTransparency: float,optional
+	default value is -1
+
+Returns
+-------
+None
+") VrmlData_Material;
+		 VrmlData_Material(const VrmlData_Scene & theScene, const char * theName, const Standard_Real theAmbientIntensity = -1, const Standard_Real theShininess = -1, const Standard_Real theTransparency = -1);
+
 		/****************** AmbientIntensity ******************/
 		%feature("compactdefaultargs") AmbientIntensity;
-		%feature("autodoc", "* /** * Query the Ambient Intensity value */
-	:rtype: inline float") AmbientIntensity;
-		inline Standard_Real AmbientIntensity ();
+		%feature("autodoc", "/** * query the ambient intensity value */.
+
+Returns
+-------
+float
+") AmbientIntensity;
+		Standard_Real AmbientIntensity();
 
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** DiffuseColor ******************/
 		%feature("compactdefaultargs") DiffuseColor;
-		%feature("autodoc", "* /** * Query the Diffuse color */
-	:rtype: inline  Quantity_Color") DiffuseColor;
-		inline const Quantity_Color & DiffuseColor ();
+		%feature("autodoc", "/** * query the diffuse color */.
+
+Returns
+-------
+Quantity_Color
+") DiffuseColor;
+		const Quantity_Color & DiffuseColor();
 
 		/****************** EmissiveColor ******************/
 		%feature("compactdefaultargs") EmissiveColor;
-		%feature("autodoc", "* /** * Query the Emissive color */
-	:rtype: inline  Quantity_Color") EmissiveColor;
-		inline const Quantity_Color & EmissiveColor ();
+		%feature("autodoc", "/** * query the emissive color */.
+
+Returns
+-------
+Quantity_Color
+") EmissiveColor;
+		const Quantity_Color & EmissiveColor();
 
 		/****************** IsDefault ******************/
 		%feature("compactdefaultargs") IsDefault;
-		%feature("autodoc", "* /** * Returns True if the node is default, so that it should not be written. */
-	:rtype: bool") IsDefault;
-		virtual Standard_Boolean IsDefault ();
+		%feature("autodoc", "/** * returns true if the node is default, so that it should not be written. */.
+
+Returns
+-------
+bool
+") IsDefault;
+		virtual Standard_Boolean IsDefault();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetAmbientIntensity ******************/
 		%feature("compactdefaultargs") SetAmbientIntensity;
-		%feature("autodoc", "* /** * Set the Ambient Intensity value */
-	:param theAmbientIntensity:
-	:type theAmbientIntensity: float
-	:rtype: inline void") SetAmbientIntensity;
-		inline void SetAmbientIntensity (const Standard_Real theAmbientIntensity);
+		%feature("autodoc", "/** * set the ambient intensity value */.
+
+Parameters
+----------
+theAmbientIntensity: float
+
+Returns
+-------
+None
+") SetAmbientIntensity;
+		void SetAmbientIntensity(const Standard_Real theAmbientIntensity);
 
 		/****************** SetDiffuseColor ******************/
 		%feature("compactdefaultargs") SetDiffuseColor;
-		%feature("autodoc", "* /** * Query the Diffuse color */
-	:param theColor:
-	:type theColor: Quantity_Color
-	:rtype: inline void") SetDiffuseColor;
-		inline void SetDiffuseColor (const Quantity_Color & theColor);
+		%feature("autodoc", "/** * query the diffuse color */.
+
+Parameters
+----------
+theColor: Quantity_Color
+
+Returns
+-------
+None
+") SetDiffuseColor;
+		void SetDiffuseColor(const Quantity_Color & theColor);
 
 		/****************** SetEmissiveColor ******************/
 		%feature("compactdefaultargs") SetEmissiveColor;
-		%feature("autodoc", "* /** * Query the Emissive color */
-	:param theColor:
-	:type theColor: Quantity_Color
-	:rtype: inline void") SetEmissiveColor;
-		inline void SetEmissiveColor (const Quantity_Color & theColor);
+		%feature("autodoc", "/** * query the emissive color */.
+
+Parameters
+----------
+theColor: Quantity_Color
+
+Returns
+-------
+None
+") SetEmissiveColor;
+		void SetEmissiveColor(const Quantity_Color & theColor);
 
 		/****************** SetShininess ******************/
 		%feature("compactdefaultargs") SetShininess;
-		%feature("autodoc", "* /** * Set the Shininess value */
-	:param theShininess:
-	:type theShininess: float
-	:rtype: inline void") SetShininess;
-		inline void SetShininess (const Standard_Real theShininess);
+		%feature("autodoc", "/** * set the shininess value */.
+
+Parameters
+----------
+theShininess: float
+
+Returns
+-------
+None
+") SetShininess;
+		void SetShininess(const Standard_Real theShininess);
 
 		/****************** SetSpecularColor ******************/
 		%feature("compactdefaultargs") SetSpecularColor;
-		%feature("autodoc", "* /** * Query the Specular color */
-	:param theColor:
-	:type theColor: Quantity_Color
-	:rtype: inline void") SetSpecularColor;
-		inline void SetSpecularColor (const Quantity_Color & theColor);
+		%feature("autodoc", "/** * query the specular color */.
+
+Parameters
+----------
+theColor: Quantity_Color
+
+Returns
+-------
+None
+") SetSpecularColor;
+		void SetSpecularColor(const Quantity_Color & theColor);
 
 		/****************** SetTransparency ******************/
 		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "* /** * Set the Transparency value */
-	:param theTransparency:
-	:type theTransparency: float
-	:rtype: inline void") SetTransparency;
-		inline void SetTransparency (const Standard_Real theTransparency);
+		%feature("autodoc", "/** * set the transparency value */.
+
+Parameters
+----------
+theTransparency: float
+
+Returns
+-------
+None
+") SetTransparency;
+		void SetTransparency(const Standard_Real theTransparency);
 
 		/****************** Shininess ******************/
 		%feature("compactdefaultargs") Shininess;
-		%feature("autodoc", "* /** * Query the Shininess value */
-	:rtype: inline float") Shininess;
-		inline Standard_Real Shininess ();
+		%feature("autodoc", "/** * query the shininess value */.
+
+Returns
+-------
+float
+") Shininess;
+		Standard_Real Shininess();
 
 		/****************** SpecularColor ******************/
 		%feature("compactdefaultargs") SpecularColor;
-		%feature("autodoc", "* /** * Query the Specular color */
-	:rtype: inline  Quantity_Color") SpecularColor;
-		inline const Quantity_Color & SpecularColor ();
+		%feature("autodoc", "/** * query the specular color */.
+
+Returns
+-------
+Quantity_Color
+") SpecularColor;
+		const Quantity_Color & SpecularColor();
 
 		/****************** Transparency ******************/
 		%feature("compactdefaultargs") Transparency;
-		%feature("autodoc", "* /** * Query the Transparency value */
-	:rtype: inline float") Transparency;
-		inline Standard_Real Transparency ();
+		%feature("autodoc", "/** * query the transparency value */.
 
-		/****************** VrmlData_Material ******************/
-		%feature("compactdefaultargs") VrmlData_Material;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_Material;
-		 VrmlData_Material ();
-
-		/****************** VrmlData_Material ******************/
-		%feature("compactdefaultargs") VrmlData_Material;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param theAmbientIntensity: default value is -1
-	:type theAmbientIntensity: float
-	:param theShininess: default value is -1
-	:type theShininess: float
-	:param theTransparency: default value is -1
-	:type theTransparency: float
-	:rtype: None") VrmlData_Material;
-		 VrmlData_Material (const VrmlData_Scene & theScene,const char * theName,const Standard_Real theAmbientIntensity = -1,const Standard_Real theShininess = -1,const Standard_Real theTransparency = -1);
+Returns
+-------
+float
+") Transparency;
+		Standard_Real Transparency();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to the Scene output. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to the scene output. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -1014,79 +1495,130 @@ class VrmlData_Material : public VrmlData_Node {
 ***************************/
 class VrmlData_ShapeNode : public VrmlData_Node {
 	public:
+		/****************** VrmlData_ShapeNode ******************/
+		%feature("compactdefaultargs") VrmlData_ShapeNode;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_ShapeNode;
+		 VrmlData_ShapeNode();
+
+		/****************** VrmlData_ShapeNode ******************/
+		%feature("compactdefaultargs") VrmlData_ShapeNode;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+
+Returns
+-------
+None
+") VrmlData_ShapeNode;
+		 VrmlData_ShapeNode(const VrmlData_Scene & theScene, const char * theName);
+
 		/****************** Appearance ******************/
 		%feature("compactdefaultargs") Appearance;
-		%feature("autodoc", "* /** * Query the Appearance. */
-	:rtype: inline  opencascade::handle<VrmlData_Appearance>") Appearance;
-		inline const opencascade::handle<VrmlData_Appearance> & Appearance ();
+		%feature("autodoc", "/** * query the appearance. */.
+
+Returns
+-------
+opencascade::handle<VrmlData_Appearance>
+") Appearance;
+		const opencascade::handle<VrmlData_Appearance> & Appearance();
 
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Geometry ******************/
 		%feature("compactdefaultargs") Geometry;
-		%feature("autodoc", "* /** * Query the Geometry. */
-	:rtype: inline  opencascade::handle<VrmlData_Geometry>") Geometry;
-		inline const opencascade::handle<VrmlData_Geometry> & Geometry ();
+		%feature("autodoc", "/** * query the geometry. */.
+
+Returns
+-------
+opencascade::handle<VrmlData_Geometry>
+") Geometry;
+		const opencascade::handle<VrmlData_Geometry> & Geometry();
 
 		/****************** IsDefault ******************/
 		%feature("compactdefaultargs") IsDefault;
-		%feature("autodoc", "* /** * Check if the Shape Node is writeable. */
-	:rtype: bool") IsDefault;
-		virtual Standard_Boolean IsDefault ();
+		%feature("autodoc", "/** * check if the shape node is writeable. */.
+
+Returns
+-------
+bool
+") IsDefault;
+		virtual Standard_Boolean IsDefault();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Fill the Node internal data from the given input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * fill the node internal data from the given input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetAppearance ******************/
 		%feature("compactdefaultargs") SetAppearance;
-		%feature("autodoc", "* /** * Set the Appearance */
-	:param theAppear:
-	:type theAppear: VrmlData_Appearance
-	:rtype: inline void") SetAppearance;
-		inline void SetAppearance (const opencascade::handle<VrmlData_Appearance> & theAppear);
+		%feature("autodoc", "/** * set the appearance */.
+
+Parameters
+----------
+theAppear: VrmlData_Appearance
+
+Returns
+-------
+None
+") SetAppearance;
+		void SetAppearance(const opencascade::handle<VrmlData_Appearance> & theAppear);
 
 		/****************** SetGeometry ******************/
 		%feature("compactdefaultargs") SetGeometry;
-		%feature("autodoc", "* /** * Set the Geometry */
-	:param theGeometry:
-	:type theGeometry: VrmlData_Geometry
-	:rtype: inline void") SetGeometry;
-		inline void SetGeometry (const opencascade::handle<VrmlData_Geometry> & theGeometry);
+		%feature("autodoc", "/** * set the geometry */.
 
-		/****************** VrmlData_ShapeNode ******************/
-		%feature("compactdefaultargs") VrmlData_ShapeNode;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_ShapeNode;
-		 VrmlData_ShapeNode ();
+Parameters
+----------
+theGeometry: VrmlData_Geometry
 
-		/****************** VrmlData_ShapeNode ******************/
-		%feature("compactdefaultargs") VrmlData_ShapeNode;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:rtype: None") VrmlData_ShapeNode;
-		 VrmlData_ShapeNode (const VrmlData_Scene & theScene,const char * theName);
+Returns
+-------
+None
+") SetGeometry;
+		void SetGeometry(const opencascade::handle<VrmlData_Geometry> & theGeometry);
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -1107,71 +1639,111 @@ class VrmlData_ShapeNode : public VrmlData_Node {
 ***********************************/
 class VrmlData_TextureCoordinate : public VrmlData_Node {
 	public:
+		/****************** VrmlData_TextureCoordinate ******************/
+		%feature("compactdefaultargs") VrmlData_TextureCoordinate;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_TextureCoordinate;
+		 VrmlData_TextureCoordinate();
+
+		/****************** VrmlData_TextureCoordinate ******************/
+		%feature("compactdefaultargs") VrmlData_TextureCoordinate;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+nPoints: size_t,optional
+	default value is 0
+arrPoints: gp_XY *,optional
+	default value is 0L
+
+Returns
+-------
+None
+") VrmlData_TextureCoordinate;
+		 VrmlData_TextureCoordinate(const VrmlData_Scene & theScene, const char * theName, const size_t nPoints = 0, const gp_XY * arrPoints = 0L);
+
 		/****************** AllocateValues ******************/
 		%feature("compactdefaultargs") AllocateValues;
-		%feature("autodoc", "* /** * Create a data array and assign the field myArray. * returns * True if allocation was successful. */
-	:param theLength:
-	:type theLength: Standard_Size
-	:rtype: bool") AllocateValues;
-		Standard_Boolean AllocateValues (const Standard_Size theLength);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theLength: Standard_Size
+
+Returns
+-------
+bool
+") AllocateValues;
+		Standard_Boolean AllocateValues(const Standard_Size theLength);
 
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Length ******************/
 		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "* /** * Query the number of points */
-	:rtype: inline size_t") Length;
-		inline size_t Length ();
+		%feature("autodoc", "/** * query the number of points */.
+
+Returns
+-------
+size_t
+") Length;
+		size_t Length();
 
 		/****************** Points ******************/
 		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "* /** * Query the points */
-	:rtype: inline  gp_XY *") Points;
-		inline const gp_XY * Points ();
+		%feature("autodoc", "/** * query the points */.
+
+Returns
+-------
+gp_XY *
+") Points;
+		const gp_XY * Points();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetPoints ******************/
 		%feature("compactdefaultargs") SetPoints;
-		%feature("autodoc", "* /** * Set the points array */
-	:param nPoints:
-	:type nPoints: size_t
-	:param arrPoints:
-	:type arrPoints: gp_XY *
-	:rtype: inline void") SetPoints;
-		inline void SetPoints (const size_t nPoints,const gp_XY * arrPoints);
+		%feature("autodoc", "/** * set the points array */.
 
-		/****************** VrmlData_TextureCoordinate ******************/
-		%feature("compactdefaultargs") VrmlData_TextureCoordinate;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_TextureCoordinate;
-		 VrmlData_TextureCoordinate ();
+Parameters
+----------
+nPoints: size_t
+arrPoints: gp_XY *
 
-		/****************** VrmlData_TextureCoordinate ******************/
-		%feature("compactdefaultargs") VrmlData_TextureCoordinate;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param nPoints: default value is 0
-	:type nPoints: size_t
-	:param arrPoints: default value is 0L
-	:type arrPoints: gp_XY *
-	:rtype: None") VrmlData_TextureCoordinate;
-		 VrmlData_TextureCoordinate (const VrmlData_Scene & theScene,const char * theName,const size_t nPoints = 0,const gp_XY * arrPoints = 0L);
+Returns
+-------
+None
+") SetPoints;
+		void SetPoints(const size_t nPoints, const gp_XY * arrPoints);
 
 };
 
@@ -1192,43 +1764,67 @@ class VrmlData_TextureCoordinate : public VrmlData_Node {
 *****************************/
 class VrmlData_UnknownNode : public VrmlData_Node {
 	public:
+		/****************** VrmlData_UnknownNode ******************/
+		%feature("compactdefaultargs") VrmlData_UnknownNode;
+		%feature("autodoc", "/** * empty constructor. */.
+
+Returns
+-------
+None
+") VrmlData_UnknownNode;
+		 VrmlData_UnknownNode();
+
+		/****************** VrmlData_UnknownNode ******************/
+		%feature("compactdefaultargs") VrmlData_UnknownNode;
+		%feature("autodoc", "/** * constructor. */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *,optional
+	default value is 0L
+theTitle: char *,optional
+	default value is 0L
+
+Returns
+-------
+None
+") VrmlData_UnknownNode;
+		 VrmlData_UnknownNode(const VrmlData_Scene & theScene, const char * theName = 0L, const char * theTitle = 0L);
+
 		/****************** GetTitle ******************/
 		%feature("compactdefaultargs") GetTitle;
-		%feature("autodoc", "* /** * Query the title of the unknown node. */
-	:rtype: inline  TCollection_AsciiString") GetTitle;
-		inline const TCollection_AsciiString & GetTitle ();
+		%feature("autodoc", "/** * query the title of the unknown node. */.
+
+Returns
+-------
+TCollection_AsciiString
+") GetTitle;
+		const TCollection_AsciiString & GetTitle();
 
 		/****************** IsDefault ******************/
 		%feature("compactdefaultargs") IsDefault;
-		%feature("autodoc", "* /** * Check if the Node is non-writeable -- always returns true. */
-	:rtype: bool") IsDefault;
-		virtual Standard_Boolean IsDefault ();
+		%feature("autodoc", "/** * check if the node is non-writeable -- always returns true. */.
+
+Returns
+-------
+bool
+") IsDefault;
+		virtual Standard_Boolean IsDefault();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the unknown node, till the last closing brace of it. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the unknown node, till the last closing brace of it. */.
 
-		/****************** VrmlData_UnknownNode ******************/
-		%feature("compactdefaultargs") VrmlData_UnknownNode;
-		%feature("autodoc", "* /** * Empty Constructor. */
-	:rtype: None") VrmlData_UnknownNode;
-		 VrmlData_UnknownNode ();
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
 
-		/****************** VrmlData_UnknownNode ******************/
-		%feature("compactdefaultargs") VrmlData_UnknownNode;
-		%feature("autodoc", "* /** * Constructor. */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName: default value is 0L
-	:type theName: char *
-	:param theTitle: default value is 0L
-	:type theTitle: char *
-	:rtype: None") VrmlData_UnknownNode;
-		 VrmlData_UnknownNode (const VrmlData_Scene & theScene,const char * theName = 0L,const char * theTitle = 0L);
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 };
 
@@ -1246,81 +1842,133 @@ class VrmlData_UnknownNode : public VrmlData_Node {
 ***************************/
 class VrmlData_WorldInfo : public VrmlData_Node {
 	public:
+		/****************** VrmlData_WorldInfo ******************/
+		%feature("compactdefaultargs") VrmlData_WorldInfo;
+		%feature("autodoc", "/** * empty constructor. */.
+
+Returns
+-------
+None
+") VrmlData_WorldInfo;
+		 VrmlData_WorldInfo();
+
+		/****************** VrmlData_WorldInfo ******************/
+		%feature("compactdefaultargs") VrmlData_WorldInfo;
+		%feature("autodoc", "/** * constructor. */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *,optional
+	default value is 0L
+theTitle: char *,optional
+	default value is 0L
+
+Returns
+-------
+None
+") VrmlData_WorldInfo;
+		 VrmlData_WorldInfo(const VrmlData_Scene & theScene, const char * theName = 0L, const char * theTitle = 0L);
+
 		/****************** AddInfo ******************/
 		%feature("compactdefaultargs") AddInfo;
-		%feature("autodoc", "* /** * Add a string to the list of info strings. */
-	:param theString:
-	:type theString: char *
-	:rtype: None") AddInfo;
-		void AddInfo (const char * theString);
+		%feature("autodoc", "/** * add a string to the list of info strings. */.
+
+Parameters
+----------
+theString: char *
+
+Returns
+-------
+None
+") AddInfo;
+		void AddInfo(const char * theString);
 
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** InfoIterator ******************/
 		%feature("compactdefaultargs") InfoIterator;
-		%feature("autodoc", "* /** * Return the iterator of Info strings. */
-	:rtype: inline NCollection_List< char *>::Iterator") InfoIterator;
-		inline NCollection_List<const char *>::Iterator InfoIterator ();
+		%feature("autodoc", "/** * return the iterator of info strings. */.
+
+Returns
+-------
+NCollection_List< char * >::Iterator
+") InfoIterator;
+		NCollection_List<const char * >::Iterator InfoIterator();
 
 		/****************** IsDefault ******************/
 		%feature("compactdefaultargs") IsDefault;
-		%feature("autodoc", "* /** * Returns True if the node is default, then it would not be written. */
-	:rtype: bool") IsDefault;
-		virtual Standard_Boolean IsDefault ();
+		%feature("autodoc", "/** * returns true if the node is default, then it would not be written. */.
+
+Returns
+-------
+bool
+") IsDefault;
+		virtual Standard_Boolean IsDefault();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetTitle ******************/
 		%feature("compactdefaultargs") SetTitle;
-		%feature("autodoc", "* /** * Set or modify the title. */
-	:param theString:
-	:type theString: char *
-	:rtype: None") SetTitle;
-		void SetTitle (const char * theString);
+		%feature("autodoc", "/** * set or modify the title. */.
+
+Parameters
+----------
+theString: char *
+
+Returns
+-------
+None
+") SetTitle;
+		void SetTitle(const char * theString);
 
 		/****************** Title ******************/
 		%feature("compactdefaultargs") Title;
-		%feature("autodoc", "* /** * Query the title string. */
-	:rtype: inline  char *") Title;
-		inline const char * Title ();
+		%feature("autodoc", "/** * query the title string. */.
 
-		/****************** VrmlData_WorldInfo ******************/
-		%feature("compactdefaultargs") VrmlData_WorldInfo;
-		%feature("autodoc", "* /** * Empty Constructor. */
-	:rtype: None") VrmlData_WorldInfo;
-		 VrmlData_WorldInfo ();
-
-		/****************** VrmlData_WorldInfo ******************/
-		%feature("compactdefaultargs") VrmlData_WorldInfo;
-		%feature("autodoc", "* /** * Constructor. */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName: default value is 0L
-	:type theName: char *
-	:param theTitle: default value is 0L
-	:type theTitle: char *
-	:rtype: None") VrmlData_WorldInfo;
-		 VrmlData_WorldInfo (const VrmlData_Scene & theScene,const char * theName = 0L,const char * theTitle = 0L);
+Returns
+-------
+char *
+") Title;
+		const char * Title();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to the Scene output. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to the scene output. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -1338,71 +1986,112 @@ class VrmlData_WorldInfo : public VrmlData_Node {
 *********************/
 class VrmlData_Box : public VrmlData_Geometry {
 	public:
+		/****************** VrmlData_Box ******************/
+		%feature("compactdefaultargs") VrmlData_Box;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_Box;
+		 VrmlData_Box();
+
+		/****************** VrmlData_Box ******************/
+		%feature("compactdefaultargs") VrmlData_Box;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+sizeX: float,optional
+	default value is 2
+sizeY: float,optional
+	default value is 2
+sizeZ: float,optional
+	default value is 2
+
+Returns
+-------
+None
+") VrmlData_Box;
+		 VrmlData_Box(const VrmlData_Scene & theScene, const char * theName, const Standard_Real sizeX = 2, const Standard_Real sizeY = 2, const Standard_Real sizeZ = 2);
+
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Fill the Node internal data from the given input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * fill the node internal data from the given input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetSize ******************/
 		%feature("compactdefaultargs") SetSize;
-		%feature("autodoc", "* /** * Set the Box Size */
-	:param theSize:
-	:type theSize: gp_XYZ
-	:rtype: inline void") SetSize;
-		inline void SetSize (const gp_XYZ & theSize);
+		%feature("autodoc", "/** * set the box size */.
+
+Parameters
+----------
+theSize: gp_XYZ
+
+Returns
+-------
+None
+") SetSize;
+		void SetSize(const gp_XYZ & theSize);
 
 		/****************** Size ******************/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "* /** * Query the Box size */
-	:rtype: inline  gp_XYZ") Size;
-		inline const gp_XYZ  Size ();
+		%feature("autodoc", "/** * query the box size */.
+
+Returns
+-------
+gp_XYZ
+") Size;
+		const gp_XYZ Size();
 
 		/****************** TShape ******************/
 		%feature("compactdefaultargs") TShape;
-		%feature("autodoc", "* /** * Query the primitive topology. This method returns a Null shape if there * is an internal error during the primitive creation (zero radius, etc.) */
-	:rtype: opencascade::handle<TopoDS_TShape>") TShape;
-		virtual const opencascade::handle<TopoDS_TShape>  TShape ();
+		%feature("autodoc", "/** * query the primitive topology. this method returns a null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
 
-		/****************** VrmlData_Box ******************/
-		%feature("compactdefaultargs") VrmlData_Box;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_Box;
-		 VrmlData_Box ();
-
-		/****************** VrmlData_Box ******************/
-		%feature("compactdefaultargs") VrmlData_Box;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param sizeX: default value is 2
-	:type sizeX: float
-	:param sizeY: default value is 2
-	:type sizeY: float
-	:param sizeZ: default value is 2
-	:type sizeZ: float
-	:rtype: None") VrmlData_Box;
-		 VrmlData_Box (const VrmlData_Scene & theScene,const char * theName,const Standard_Real sizeX = 2,const Standard_Real sizeY = 2,const Standard_Real sizeZ = 2);
+Returns
+-------
+opencascade::handle<TopoDS_TShape>
+") TShape;
+		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -1420,67 +2109,105 @@ class VrmlData_Box : public VrmlData_Geometry {
 ***********************/
 class VrmlData_Color : public VrmlData_ArrayVec3d {
 	public:
+		/****************** VrmlData_Color ******************/
+		%feature("compactdefaultargs") VrmlData_Color;
+		%feature("autodoc", "/** * empty constructor. */.
+
+Returns
+-------
+None
+") VrmlData_Color;
+		 VrmlData_Color();
+
+		/****************** VrmlData_Color ******************/
+		%feature("compactdefaultargs") VrmlData_Color;
+		%feature("autodoc", "/** * constructor. */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+nColors: size_t,optional
+	default value is 0
+arrColors: gp_XYZ *,optional
+	default value is 0L
+
+Returns
+-------
+None
+") VrmlData_Color;
+		 VrmlData_Color(const VrmlData_Scene & theScene, const char * theName, const size_t nColors = 0, const gp_XYZ * arrColors = 0L);
+
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified.<p> */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified.<p> */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Color ******************/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "* /** * Query one color * @param i * index in the array of colors [0 .. N-1] * returns * the color value for the index. If index irrelevant, returns (0., 0., 0.) */
-	:param i:
-	:type i: int
-	:rtype: inline  Quantity_Color") Color;
-		inline const Quantity_Color Color (const Standard_Integer i);
+		%feature("autodoc", "/** * query one color * @param i * index in the array of colors [0 .. n-1] * returns * the color value for the index. if index irrelevant, returns (0., 0., 0.) */.
+
+Parameters
+----------
+i: int
+
+Returns
+-------
+Quantity_Color
+") Color;
+		const Quantity_Color Color(const Standard_Integer i);
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetColors ******************/
 		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "* /** * Set the array data */
-	:param nColors:
-	:type nColors: size_t
-	:param arrColors:
-	:type arrColors: gp_XYZ *
-	:rtype: inline void") SetColors;
-		inline void SetColors (const size_t nColors,const gp_XYZ * arrColors);
+		%feature("autodoc", "/** * set the array data */.
 
-		/****************** VrmlData_Color ******************/
-		%feature("compactdefaultargs") VrmlData_Color;
-		%feature("autodoc", "* /** * Empty constructor. */
-	:rtype: None") VrmlData_Color;
-		 VrmlData_Color ();
+Parameters
+----------
+nColors: size_t
+arrColors: gp_XYZ *
 
-		/****************** VrmlData_Color ******************/
-		%feature("compactdefaultargs") VrmlData_Color;
-		%feature("autodoc", "* /** * Constructor. */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param nColors: default value is 0
-	:type nColors: size_t
-	:param arrColors: default value is 0L
-	:type arrColors: gp_XYZ *
-	:rtype: None") VrmlData_Color;
-		 VrmlData_Color (const VrmlData_Scene & theScene,const char * theName,const size_t nColors = 0,const gp_XYZ * arrColors = 0L);
+Returns
+-------
+None
+") SetColors;
+		void SetColors(const size_t nColors, const gp_XYZ * arrColors);
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to the Scene output. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to the scene output. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -1498,105 +2225,169 @@ class VrmlData_Color : public VrmlData_ArrayVec3d {
 **********************/
 class VrmlData_Cone : public VrmlData_Geometry {
 	public:
+		/****************** VrmlData_Cone ******************/
+		%feature("compactdefaultargs") VrmlData_Cone;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_Cone;
+		 VrmlData_Cone();
+
+		/****************** VrmlData_Cone ******************/
+		%feature("compactdefaultargs") VrmlData_Cone;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+theBottomRadius: float,optional
+	default value is 1
+theHeight: float,optional
+	default value is 2
+
+Returns
+-------
+None
+") VrmlData_Cone;
+		 VrmlData_Cone(const VrmlData_Scene & theScene, const char * theName, const Standard_Real theBottomRadius = 1, const Standard_Real theHeight = 2);
+
 		/****************** BottomRadius ******************/
 		%feature("compactdefaultargs") BottomRadius;
-		%feature("autodoc", "* /** * Query the Bottom Radius */
-	:rtype: inline float") BottomRadius;
-		inline Standard_Real BottomRadius ();
+		%feature("autodoc", "/** * query the bottom radius */.
+
+Returns
+-------
+float
+") BottomRadius;
+		Standard_Real BottomRadius();
 
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** HasBottom ******************/
 		%feature("compactdefaultargs") HasBottom;
-		%feature("autodoc", "* /** * Query if the bottom circle is included */
-	:rtype: inline bool") HasBottom;
-		inline Standard_Boolean HasBottom ();
+		%feature("autodoc", "/** * query if the bottom circle is included */.
+
+Returns
+-------
+bool
+") HasBottom;
+		Standard_Boolean HasBottom();
 
 		/****************** HasSide ******************/
 		%feature("compactdefaultargs") HasSide;
-		%feature("autodoc", "* /** * Query if the side surface is included */
-	:rtype: inline bool") HasSide;
-		inline Standard_Boolean HasSide ();
+		%feature("autodoc", "/** * query if the side surface is included */.
+
+Returns
+-------
+bool
+") HasSide;
+		Standard_Boolean HasSide();
 
 		/****************** Height ******************/
 		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "* /** * Query the Height */
-	:rtype: inline float") Height;
-		inline Standard_Real Height ();
+		%feature("autodoc", "/** * query the height */.
+
+Returns
+-------
+float
+") Height;
+		Standard_Real Height();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Fill the Node internal data from the given input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * fill the node internal data from the given input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetBottomRadius ******************/
 		%feature("compactdefaultargs") SetBottomRadius;
-		%feature("autodoc", "* /** * Set the Bottom Radius */
-	:param theRadius:
-	:type theRadius: float
-	:rtype: inline void") SetBottomRadius;
-		inline void SetBottomRadius (const Standard_Real theRadius);
+		%feature("autodoc", "/** * set the bottom radius */.
+
+Parameters
+----------
+theRadius: float
+
+Returns
+-------
+None
+") SetBottomRadius;
+		void SetBottomRadius(const Standard_Real theRadius);
 
 		/****************** SetFaces ******************/
 		%feature("compactdefaultargs") SetFaces;
-		%feature("autodoc", "* /** * Set which faces are included */
-	:param hasBottom:
-	:type hasBottom: bool
-	:param hasSide:
-	:type hasSide: bool
-	:rtype: inline void") SetFaces;
-		inline void SetFaces (const Standard_Boolean hasBottom,const Standard_Boolean hasSide);
+		%feature("autodoc", "/** * set which faces are included */.
+
+Parameters
+----------
+hasBottom: bool
+hasSide: bool
+
+Returns
+-------
+None
+") SetFaces;
+		void SetFaces(const Standard_Boolean hasBottom, const Standard_Boolean hasSide);
 
 		/****************** SetHeight ******************/
 		%feature("compactdefaultargs") SetHeight;
-		%feature("autodoc", "* /** * Set the Height */
-	:param theHeight:
-	:type theHeight: float
-	:rtype: inline void") SetHeight;
-		inline void SetHeight (const Standard_Real theHeight);
+		%feature("autodoc", "/** * set the height */.
+
+Parameters
+----------
+theHeight: float
+
+Returns
+-------
+None
+") SetHeight;
+		void SetHeight(const Standard_Real theHeight);
 
 		/****************** TShape ******************/
 		%feature("compactdefaultargs") TShape;
-		%feature("autodoc", "* /** * Query the primitive topology. This method returns a Null shape if there * is an internal error during the primitive creation (zero radius, etc.) */
-	:rtype: opencascade::handle<TopoDS_TShape>") TShape;
-		virtual const opencascade::handle<TopoDS_TShape>  TShape ();
+		%feature("autodoc", "/** * query the primitive topology. this method returns a null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
 
-		/****************** VrmlData_Cone ******************/
-		%feature("compactdefaultargs") VrmlData_Cone;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_Cone;
-		 VrmlData_Cone ();
-
-		/****************** VrmlData_Cone ******************/
-		%feature("compactdefaultargs") VrmlData_Cone;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param theBottomRadius: default value is 1
-	:type theBottomRadius: float
-	:param theHeight: default value is 2
-	:type theHeight: float
-	:rtype: None") VrmlData_Cone;
-		 VrmlData_Cone (const VrmlData_Scene & theScene,const char * theName,const Standard_Real theBottomRadius = 1,const Standard_Real theHeight = 2);
+Returns
+-------
+opencascade::handle<TopoDS_TShape>
+") TShape;
+		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -1614,57 +2405,90 @@ class VrmlData_Cone : public VrmlData_Geometry {
 ****************************/
 class VrmlData_Coordinate : public VrmlData_ArrayVec3d {
 	public:
+		/****************** VrmlData_Coordinate ******************/
+		%feature("compactdefaultargs") VrmlData_Coordinate;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_Coordinate;
+		 VrmlData_Coordinate();
+
+		/****************** VrmlData_Coordinate ******************/
+		%feature("compactdefaultargs") VrmlData_Coordinate;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+nPoints: size_t,optional
+	default value is 0
+arrPoints: gp_XYZ *,optional
+	default value is 0L
+
+Returns
+-------
+None
+") VrmlData_Coordinate;
+		 VrmlData_Coordinate(const VrmlData_Scene & theScene, const char * theName, const size_t nPoints = 0, const gp_XYZ * arrPoints = 0L);
+
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Coordinate ******************/
 		%feature("compactdefaultargs") Coordinate;
-		%feature("autodoc", "* /** * Query one point * @param i * index in the array of points [0 .. N-1] * returns * the coordinate for the index. If index irrelevant, returns (0., 0., 0.) */
-	:param i:
-	:type i: int
-	:rtype: inline  gp_XYZ") Coordinate;
-		inline const gp_XYZ  Coordinate (const Standard_Integer i);
+		%feature("autodoc", "/** * query one point * @param i * index in the array of points [0 .. n-1] * returns * the coordinate for the index. if index irrelevant, returns (0., 0., 0.) */.
+
+Parameters
+----------
+i: int
+
+Returns
+-------
+gp_XYZ
+") Coordinate;
+		const gp_XYZ Coordinate(const Standard_Integer i);
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
 
-		/****************** VrmlData_Coordinate ******************/
-		%feature("compactdefaultargs") VrmlData_Coordinate;
-		%feature("autodoc", "* /** * Empty Constructor */
-	:rtype: None") VrmlData_Coordinate;
-		 VrmlData_Coordinate ();
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
 
-		/****************** VrmlData_Coordinate ******************/
-		%feature("compactdefaultargs") VrmlData_Coordinate;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param nPoints: default value is 0
-	:type nPoints: size_t
-	:param arrPoints: default value is 0L
-	:type arrPoints: gp_XYZ *
-	:rtype: None") VrmlData_Coordinate;
-		 VrmlData_Coordinate (const VrmlData_Scene & theScene,const char * theName,const size_t nPoints = 0,const gp_XYZ * arrPoints = 0L);
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to the Scene output. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to the scene output. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -1682,113 +2506,180 @@ class VrmlData_Coordinate : public VrmlData_ArrayVec3d {
 **************************/
 class VrmlData_Cylinder : public VrmlData_Geometry {
 	public:
+		/****************** VrmlData_Cylinder ******************/
+		%feature("compactdefaultargs") VrmlData_Cylinder;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_Cylinder;
+		 VrmlData_Cylinder();
+
+		/****************** VrmlData_Cylinder ******************/
+		%feature("compactdefaultargs") VrmlData_Cylinder;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+theRadius: float,optional
+	default value is 1
+theHeight: float,optional
+	default value is 2
+
+Returns
+-------
+None
+") VrmlData_Cylinder;
+		 VrmlData_Cylinder(const VrmlData_Scene & theScene, const char * theName, const Standard_Real theRadius = 1, const Standard_Real theHeight = 2);
+
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** HasBottom ******************/
 		%feature("compactdefaultargs") HasBottom;
-		%feature("autodoc", "* /** * Query if the bottom circle is included */
-	:rtype: inline bool") HasBottom;
-		inline Standard_Boolean HasBottom ();
+		%feature("autodoc", "/** * query if the bottom circle is included */.
+
+Returns
+-------
+bool
+") HasBottom;
+		Standard_Boolean HasBottom();
 
 		/****************** HasSide ******************/
 		%feature("compactdefaultargs") HasSide;
-		%feature("autodoc", "* /** * Query if the side surface is included */
-	:rtype: inline bool") HasSide;
-		inline Standard_Boolean HasSide ();
+		%feature("autodoc", "/** * query if the side surface is included */.
+
+Returns
+-------
+bool
+") HasSide;
+		Standard_Boolean HasSide();
 
 		/****************** HasTop ******************/
 		%feature("compactdefaultargs") HasTop;
-		%feature("autodoc", "* /** * Query if the top surface is included */
-	:rtype: inline bool") HasTop;
-		inline Standard_Boolean HasTop ();
+		%feature("autodoc", "/** * query if the top surface is included */.
+
+Returns
+-------
+bool
+") HasTop;
+		Standard_Boolean HasTop();
 
 		/****************** Height ******************/
 		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "* /** * Query the Height */
-	:rtype: inline float") Height;
-		inline Standard_Real Height ();
+		%feature("autodoc", "/** * query the height */.
+
+Returns
+-------
+float
+") Height;
+		Standard_Real Height();
 
 		/****************** Radius ******************/
 		%feature("compactdefaultargs") Radius;
-		%feature("autodoc", "* /** * Query the Radius */
-	:rtype: inline float") Radius;
-		inline Standard_Real Radius ();
+		%feature("autodoc", "/** * query the radius */.
+
+Returns
+-------
+float
+") Radius;
+		Standard_Real Radius();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Fill the Node internal data from the given input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * fill the node internal data from the given input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetFaces ******************/
 		%feature("compactdefaultargs") SetFaces;
-		%feature("autodoc", "* /** * Set which faces are included */
-	:param hasBottom:
-	:type hasBottom: bool
-	:param hasSide:
-	:type hasSide: bool
-	:param hasTop:
-	:type hasTop: bool
-	:rtype: inline void") SetFaces;
-		inline void SetFaces (const Standard_Boolean hasBottom,const Standard_Boolean hasSide,const Standard_Boolean hasTop);
+		%feature("autodoc", "/** * set which faces are included */.
+
+Parameters
+----------
+hasBottom: bool
+hasSide: bool
+hasTop: bool
+
+Returns
+-------
+None
+") SetFaces;
+		void SetFaces(const Standard_Boolean hasBottom, const Standard_Boolean hasSide, const Standard_Boolean hasTop);
 
 		/****************** SetHeight ******************/
 		%feature("compactdefaultargs") SetHeight;
-		%feature("autodoc", "* /** * Set the Height */
-	:param theHeight:
-	:type theHeight: float
-	:rtype: inline void") SetHeight;
-		inline void SetHeight (const Standard_Real theHeight);
+		%feature("autodoc", "/** * set the height */.
+
+Parameters
+----------
+theHeight: float
+
+Returns
+-------
+None
+") SetHeight;
+		void SetHeight(const Standard_Real theHeight);
 
 		/****************** SetRadius ******************/
 		%feature("compactdefaultargs") SetRadius;
-		%feature("autodoc", "* /** * Set the Radius */
-	:param theRadius:
-	:type theRadius: float
-	:rtype: inline void") SetRadius;
-		inline void SetRadius (const Standard_Real theRadius);
+		%feature("autodoc", "/** * set the radius */.
+
+Parameters
+----------
+theRadius: float
+
+Returns
+-------
+None
+") SetRadius;
+		void SetRadius(const Standard_Real theRadius);
 
 		/****************** TShape ******************/
 		%feature("compactdefaultargs") TShape;
-		%feature("autodoc", "* /** * Query the primitive topology. This method returns a Null shape if there * is an internal error during the primitive creation (zero radius, etc.) */
-	:rtype: opencascade::handle<TopoDS_TShape>") TShape;
-		virtual const opencascade::handle<TopoDS_TShape>  TShape ();
+		%feature("autodoc", "/** * query the primitive topology. this method returns a null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
 
-		/****************** VrmlData_Cylinder ******************/
-		%feature("compactdefaultargs") VrmlData_Cylinder;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_Cylinder;
-		 VrmlData_Cylinder ();
-
-		/****************** VrmlData_Cylinder ******************/
-		%feature("compactdefaultargs") VrmlData_Cylinder;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param theRadius: default value is 1
-	:type theRadius: float
-	:param theHeight: default value is 2
-	:type theHeight: float
-	:rtype: None") VrmlData_Cylinder;
-		 VrmlData_Cylinder (const VrmlData_Scene & theScene,const char * theName,const Standard_Real theRadius = 1,const Standard_Real theHeight = 2);
+Returns
+-------
+opencascade::handle<TopoDS_TShape>
+") TShape;
+		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -1809,57 +2700,88 @@ class VrmlData_Cylinder : public VrmlData_Geometry {
 ******************************/
 class VrmlData_ImageTexture : public VrmlData_Texture {
 	public:
+		/****************** VrmlData_ImageTexture ******************/
+		%feature("compactdefaultargs") VrmlData_ImageTexture;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_ImageTexture;
+		 VrmlData_ImageTexture();
+
+		/****************** VrmlData_ImageTexture ******************/
+		%feature("compactdefaultargs") VrmlData_ImageTexture;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+theURL: char *,optional
+	default value is 0L
+theRepS: bool,optional
+	default value is Standard_False
+theRepT: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") VrmlData_ImageTexture;
+		 VrmlData_ImageTexture(const VrmlData_Scene & theScene, const char * theName, const char * theURL = 0L, const Standard_Boolean theRepS = Standard_False, const Standard_Boolean theRepT = Standard_False);
+
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** URL ******************/
 		%feature("compactdefaultargs") URL;
-		%feature("autodoc", "* /** * Query the associated URL. */
-	:rtype: inline  NCollection_List<TCollection_AsciiString>") URL;
-		inline const NCollection_List<TCollection_AsciiString> & URL ();
+		%feature("autodoc", "/** * query the associated url. */.
 
-		/****************** VrmlData_ImageTexture ******************/
-		%feature("compactdefaultargs") VrmlData_ImageTexture;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_ImageTexture;
-		 VrmlData_ImageTexture ();
-
-		/****************** VrmlData_ImageTexture ******************/
-		%feature("compactdefaultargs") VrmlData_ImageTexture;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param theURL: default value is 0L
-	:type theURL: char *
-	:param theRepS: default value is Standard_False
-	:type theRepS: bool
-	:param theRepT: default value is Standard_False
-	:type theRepT: bool
-	:rtype: None") VrmlData_ImageTexture;
-		 VrmlData_ImageTexture (const VrmlData_Scene & theScene,const char * theName,const char * theURL = 0L,const Standard_Boolean theRepS = Standard_False,const Standard_Boolean theRepT = Standard_False);
+Returns
+-------
+NCollection_List<TCollection_AsciiString>
+") URL;
+		const NCollection_List<TCollection_AsciiString> & URL();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -1877,151 +2799,244 @@ class VrmlData_ImageTexture : public VrmlData_Texture {
 ********************************/
 class VrmlData_IndexedLineSet : public VrmlData_Geometry {
 	public:
+		/****************** VrmlData_IndexedLineSet ******************/
+		%feature("compactdefaultargs") VrmlData_IndexedLineSet;
+		%feature("autodoc", "/** * empty constructor. */.
+
+Returns
+-------
+None
+") VrmlData_IndexedLineSet;
+		 VrmlData_IndexedLineSet();
+
+		/****************** VrmlData_IndexedLineSet ******************/
+		%feature("compactdefaultargs") VrmlData_IndexedLineSet;
+		%feature("autodoc", "/** * constructor. */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+isColorPerVertex: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") VrmlData_IndexedLineSet;
+		 VrmlData_IndexedLineSet(const VrmlData_Scene & theScene, const char * theName, const Standard_Boolean isColorPerVertex = Standard_True);
+
 		/****************** ArrayColorInd ******************/
 		%feature("compactdefaultargs") ArrayColorInd;
-		%feature("autodoc", "* /** * Query the array of color indice * @param arrColorInd * <tt>[out]</tt> array of colorIndex as it is described in VRML2.0 spec * returns * Number of integers in the array arrColorInd. */
-	:param arrColorInd:
-	:type arrColorInd: int * *
-	:rtype: inline size_t") ArrayColorInd;
-		inline size_t ArrayColorInd (const Standard_Integer * * & arrColorInd);
+		%feature("autodoc", "/** * query the array of color indice * @param arrcolorind * <tt>[out]</tt> array of colorindex as it is described in vrml2.0 spec * returns * number of integers in the array arrcolorind. */.
+
+Parameters
+----------
+arrColorInd: int * *
+
+Returns
+-------
+size_t
+") ArrayColorInd;
+		size_t ArrayColorInd(const Standard_Integer * * & arrColorInd);
 
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Colors ******************/
 		%feature("compactdefaultargs") Colors;
-		%feature("autodoc", "* /** * Query the Colors. */
-	:rtype: inline  opencascade::handle<VrmlData_Color>") Colors;
-		inline const opencascade::handle<VrmlData_Color> & Colors ();
+		%feature("autodoc", "/** * query the colors. */.
+
+Returns
+-------
+opencascade::handle<VrmlData_Color>
+") Colors;
+		const opencascade::handle<VrmlData_Color> & Colors();
 
 		/****************** Coordinates ******************/
 		%feature("compactdefaultargs") Coordinates;
-		%feature("autodoc", "* /** * Query the Coordinates. */
-	:rtype: inline  opencascade::handle<VrmlData_Coordinate>") Coordinates;
-		inline const opencascade::handle<VrmlData_Coordinate> & Coordinates ();
+		%feature("autodoc", "/** * query the coordinates. */.
+
+Returns
+-------
+opencascade::handle<VrmlData_Coordinate>
+") Coordinates;
+		const opencascade::handle<VrmlData_Coordinate> & Coordinates();
 
 		/****************** GetColor ******************/
 		%feature("compactdefaultargs") GetColor;
-		%feature("autodoc", "* /** * Query a color for one node in the given element. The color is * interpreted according to fields myColors, myArrColorInd, * myColorPerVertex, as defined in VRML 2.0. * @param iFace * rank of the polygon [0 .. N-1] * @param iVertex * rank of the vertex in the polygon [0 .. M-1]. This parameter is ignored * if (myColorPerVertex == False) * returns * Color value (RGB); if the color is indefinite then returns (0., 0., 0.) */
-	:param iFace:
-	:type iFace: int
-	:param iVertex:
-	:type iVertex: int
-	:rtype: Quantity_Color") GetColor;
-		Quantity_Color GetColor (const Standard_Integer iFace,const Standard_Integer iVertex);
+		%feature("autodoc", "/** * query a color for one node in the given element. the color is * interpreted according to fields mycolors, myarrcolorind, * mycolorpervertex, as defined in vrml 2.0. * @param iface * rank of the polygon [0 .. n-1] * @param ivertex * rank of the vertex in the polygon [0 .. m-1]. this parameter is ignored * if (mycolorpervertex == false) * returns * color value (rgb); if the color is indefinite then returns (0., 0., 0.) */.
+
+Parameters
+----------
+iFace: int
+iVertex: int
+
+Returns
+-------
+Quantity_Color
+") GetColor;
+		Quantity_Color GetColor(const Standard_Integer iFace, const Standard_Integer iVertex);
 
 		/****************** IsDefault ******************/
 		%feature("compactdefaultargs") IsDefault;
-		%feature("autodoc", "* /** * Returns True if the node is default, so that it should not be written. */
-	:rtype: bool") IsDefault;
-		virtual Standard_Boolean IsDefault ();
+		%feature("autodoc", "/** * returns true if the node is default, so that it should not be written. */.
+
+Returns
+-------
+bool
+") IsDefault;
+		virtual Standard_Boolean IsDefault();
 
 		/****************** Polygon ******************/
 		%feature("compactdefaultargs") Polygon;
-		%feature("autodoc", "* /** * Query one polygon. * @param iPolygon * rank of the polygon [0 .. N-1] * @param outIndice * <tt>[out]</tt> array of vertex indice * returns * number of vertice in the polygon - the dimension of outIndice array */
-	:param iPolygon:
-	:type iPolygon: int
-	:param outIndice:
-	:type outIndice: int *
-	:rtype: inline int") Polygon;
-		inline Standard_Integer Polygon (const Standard_Integer iPolygon,const Standard_Integer * & outIndice);
+		%feature("autodoc", "/** * query one polygon. * @param ipolygon * rank of the polygon [0 .. n-1] * @param outindice * <tt>[out]</tt> array of vertex indice * returns * number of vertice in the polygon - the dimension of outindice array */.
+
+Parameters
+----------
+iPolygon: int
+outIndice: int *
+
+Returns
+-------
+int
+") Polygon;
+		Standard_Integer Polygon(const Standard_Integer iPolygon, const Standard_Integer * & outIndice);
 
 		/****************** Polygons ******************/
 		%feature("compactdefaultargs") Polygons;
-		%feature("autodoc", "* /** * Query the array of polygons */
-	:param arrPolygons:
-	:type arrPolygons: int * *
-	:rtype: inline size_t") Polygons;
-		inline size_t Polygons (const Standard_Integer * * & arrPolygons);
+		%feature("autodoc", "/** * query the array of polygons */.
+
+Parameters
+----------
+arrPolygons: int * *
+
+Returns
+-------
+size_t
+") Polygons;
+		size_t Polygons(const Standard_Integer * * & arrPolygons);
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetColorInd ******************/
 		%feature("compactdefaultargs") SetColorInd;
-		%feature("autodoc", "* /** * Set the colors array of indice */
-	:param nIndice:
-	:type nIndice: Standard_Size
-	:param theIndice:
-	:type theIndice: int * *
-	:rtype: inline void") SetColorInd;
-		inline void SetColorInd (const Standard_Size nIndice,const Standard_Integer * * theIndice);
+		%feature("autodoc", "/** * set the colors array of indice */.
+
+Parameters
+----------
+nIndice: Standard_Size
+theIndice: int * *
+
+Returns
+-------
+None
+") SetColorInd;
+		void SetColorInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
 		/****************** SetColorPerVertex ******************/
 		%feature("compactdefaultargs") SetColorPerVertex;
-		%feature("autodoc", "* /** * Set the boolean value 'colorPerVertex' */
-	:param isColorPerVertex:
-	:type isColorPerVertex: bool
-	:rtype: inline void") SetColorPerVertex;
-		inline void SetColorPerVertex (const Standard_Boolean isColorPerVertex);
+		%feature("autodoc", "/** * set the boolean value 'colorpervertex' */.
+
+Parameters
+----------
+isColorPerVertex: bool
+
+Returns
+-------
+None
+") SetColorPerVertex;
+		void SetColorPerVertex(const Standard_Boolean isColorPerVertex);
 
 		/****************** SetColors ******************/
 		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "* /** * Set the Color node */
-	:param theColors:
-	:type theColors: VrmlData_Color
-	:rtype: inline void") SetColors;
-		inline void SetColors (const opencascade::handle<VrmlData_Color> & theColors);
+		%feature("autodoc", "/** * set the color node */.
+
+Parameters
+----------
+theColors: VrmlData_Color
+
+Returns
+-------
+None
+") SetColors;
+		void SetColors(const opencascade::handle<VrmlData_Color> & theColors);
 
 		/****************** SetCoordinates ******************/
 		%feature("compactdefaultargs") SetCoordinates;
-		%feature("autodoc", "* /** * Set the nodes */
-	:param theCoord:
-	:type theCoord: VrmlData_Coordinate
-	:rtype: inline void") SetCoordinates;
-		inline void SetCoordinates (const opencascade::handle<VrmlData_Coordinate> & theCoord);
+		%feature("autodoc", "/** * set the nodes */.
+
+Parameters
+----------
+theCoord: VrmlData_Coordinate
+
+Returns
+-------
+None
+") SetCoordinates;
+		void SetCoordinates(const opencascade::handle<VrmlData_Coordinate> & theCoord);
 
 		/****************** SetPolygons ******************/
 		%feature("compactdefaultargs") SetPolygons;
-		%feature("autodoc", "* /** * Set the polygons */
-	:param nPolygons:
-	:type nPolygons: Standard_Size
-	:param thePolygons:
-	:type thePolygons: int * *
-	:rtype: inline void") SetPolygons;
-		inline void SetPolygons (const Standard_Size nPolygons,const Standard_Integer * * thePolygons);
+		%feature("autodoc", "/** * set the polygons */.
+
+Parameters
+----------
+nPolygons: Standard_Size
+thePolygons: int * *
+
+Returns
+-------
+None
+") SetPolygons;
+		void SetPolygons(const Standard_Size nPolygons, const Standard_Integer * * thePolygons);
 
 		/****************** TShape ******************/
 		%feature("compactdefaultargs") TShape;
-		%feature("autodoc", "* /** * Query the shape. This method checks the flag myIsModified; if True it * should rebuild the shape presentation. */
-	:rtype: opencascade::handle<TopoDS_TShape>") TShape;
-		virtual const opencascade::handle<TopoDS_TShape>  TShape ();
+		%feature("autodoc", "/** * query the shape. this method checks the flag myismodified; if true it * should rebuild the shape presentation. */.
 
-		/****************** VrmlData_IndexedLineSet ******************/
-		%feature("compactdefaultargs") VrmlData_IndexedLineSet;
-		%feature("autodoc", "* /** * Empty constructor. */
-	:rtype: None") VrmlData_IndexedLineSet;
-		 VrmlData_IndexedLineSet ();
-
-		/****************** VrmlData_IndexedLineSet ******************/
-		%feature("compactdefaultargs") VrmlData_IndexedLineSet;
-		%feature("autodoc", "* /** * Constructor. */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param isColorPerVertex: default value is Standard_True
-	:type isColorPerVertex: bool
-	:rtype: None") VrmlData_IndexedLineSet;
-		 VrmlData_IndexedLineSet (const VrmlData_Scene & theScene,const char * theName,const Standard_Boolean isColorPerVertex = Standard_True);
+Returns
+-------
+opencascade::handle<TopoDS_TShape>
+") TShape;
+		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -2039,57 +3054,90 @@ class VrmlData_IndexedLineSet : public VrmlData_Geometry {
 ************************/
 class VrmlData_Normal : public VrmlData_ArrayVec3d {
 	public:
+		/****************** VrmlData_Normal ******************/
+		%feature("compactdefaultargs") VrmlData_Normal;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_Normal;
+		 VrmlData_Normal();
+
+		/****************** VrmlData_Normal ******************/
+		%feature("compactdefaultargs") VrmlData_Normal;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+nVec: size_t,optional
+	default value is 0
+arrVec: gp_XYZ *,optional
+	default value is 0L
+
+Returns
+-------
+None
+") VrmlData_Normal;
+		 VrmlData_Normal(const VrmlData_Scene & theScene, const char * theName, const size_t nVec = 0, const gp_XYZ * arrVec = 0L);
+
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Normal ******************/
 		%feature("compactdefaultargs") Normal;
-		%feature("autodoc", "* /** * Query one normal * @param i * index in the array of normals [0 .. N-1] * returns * the normal value for the index. If index irrelevant, returns (0., 0., 0.) */
-	:param i:
-	:type i: int
-	:rtype: inline  gp_XYZ") Normal;
-		inline const gp_XYZ  Normal (const Standard_Integer i);
+		%feature("autodoc", "/** * query one normal * @param i * index in the array of normals [0 .. n-1] * returns * the normal value for the index. if index irrelevant, returns (0., 0., 0.) */.
+
+Parameters
+----------
+i: int
+
+Returns
+-------
+gp_XYZ
+") Normal;
+		const gp_XYZ Normal(const Standard_Integer i);
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
 
-		/****************** VrmlData_Normal ******************/
-		%feature("compactdefaultargs") VrmlData_Normal;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_Normal;
-		 VrmlData_Normal ();
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
 
-		/****************** VrmlData_Normal ******************/
-		%feature("compactdefaultargs") VrmlData_Normal;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param nVec: default value is 0
-	:type nVec: size_t
-	:param arrVec: default value is 0L
-	:type arrVec: gp_XYZ *
-	:rtype: None") VrmlData_Normal;
-		 VrmlData_Normal (const VrmlData_Scene & theScene,const char * theName,const size_t nVec = 0,const gp_XYZ * arrVec = 0L);
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to the Scene output. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to the scene output. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -2107,67 +3155,108 @@ class VrmlData_Normal : public VrmlData_ArrayVec3d {
 ************************/
 class VrmlData_Sphere : public VrmlData_Geometry {
 	public:
+		/****************** VrmlData_Sphere ******************/
+		%feature("compactdefaultargs") VrmlData_Sphere;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_Sphere;
+		 VrmlData_Sphere();
+
+		/****************** VrmlData_Sphere ******************/
+		%feature("compactdefaultargs") VrmlData_Sphere;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+theRadius: float,optional
+	default value is 1
+
+Returns
+-------
+None
+") VrmlData_Sphere;
+		 VrmlData_Sphere(const VrmlData_Scene & theScene, const char * theName, const Standard_Real theRadius = 1);
+
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Radius ******************/
 		%feature("compactdefaultargs") Radius;
-		%feature("autodoc", "* /** * Query the sphere radius */
-	:rtype: inline float") Radius;
-		inline Standard_Real Radius ();
+		%feature("autodoc", "/** * query the sphere radius */.
+
+Returns
+-------
+float
+") Radius;
+		Standard_Real Radius();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Fill the Node internal data from the given input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * fill the node internal data from the given input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetRadius ******************/
 		%feature("compactdefaultargs") SetRadius;
-		%feature("autodoc", "* /** * Set the spere radius */
-	:param theRadius:
-	:type theRadius: float
-	:rtype: inline void") SetRadius;
-		inline void SetRadius (const Standard_Real theRadius);
+		%feature("autodoc", "/** * set the spere radius */.
+
+Parameters
+----------
+theRadius: float
+
+Returns
+-------
+None
+") SetRadius;
+		void SetRadius(const Standard_Real theRadius);
 
 		/****************** TShape ******************/
 		%feature("compactdefaultargs") TShape;
-		%feature("autodoc", "* /** * Query the primitive topology. This method returns a Null shape if there * is an internal error during the primitive creation (zero radius, etc.) */
-	:rtype: opencascade::handle<TopoDS_TShape>") TShape;
-		virtual const opencascade::handle<TopoDS_TShape>  TShape ();
+		%feature("autodoc", "/** * query the primitive topology. this method returns a null shape if there * is an internal error during the primitive creation (zero radius, etc.) */.
 
-		/****************** VrmlData_Sphere ******************/
-		%feature("compactdefaultargs") VrmlData_Sphere;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_Sphere;
-		 VrmlData_Sphere ();
-
-		/****************** VrmlData_Sphere ******************/
-		%feature("compactdefaultargs") VrmlData_Sphere;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param theRadius: default value is 1
-	:type theRadius: float
-	:rtype: None") VrmlData_Sphere;
-		 VrmlData_Sphere (const VrmlData_Scene & theScene,const char * theName,const Standard_Real theRadius = 1);
+Returns
+-------
+opencascade::handle<TopoDS_TShape>
+") TShape;
+		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -2185,239 +3274,385 @@ class VrmlData_Sphere : public VrmlData_Geometry {
 ********************************/
 class VrmlData_IndexedFaceSet : public VrmlData_Faceted {
 	public:
+		/****************** VrmlData_IndexedFaceSet ******************/
+		%feature("compactdefaultargs") VrmlData_IndexedFaceSet;
+		%feature("autodoc", "/** * empty constructor */.
+
+Returns
+-------
+None
+") VrmlData_IndexedFaceSet;
+		 VrmlData_IndexedFaceSet();
+
+		/****************** VrmlData_IndexedFaceSet ******************/
+		%feature("compactdefaultargs") VrmlData_IndexedFaceSet;
+		%feature("autodoc", "/** * constructor */.
+
+Parameters
+----------
+theScene: VrmlData_Scene
+theName: char *
+isCCW: bool,optional
+	default value is Standard_True
+isSolid: bool,optional
+	default value is Standard_True
+isConvex: bool,optional
+	default value is Standard_True
+theCreaseAngle: float,optional
+	default value is 0
+
+Returns
+-------
+None
+") VrmlData_IndexedFaceSet;
+		 VrmlData_IndexedFaceSet(const VrmlData_Scene & theScene, const char * theName, const Standard_Boolean isCCW = Standard_True, const Standard_Boolean isSolid = Standard_True, const Standard_Boolean isConvex = Standard_True, const Standard_Real theCreaseAngle = 0);
+
 		/****************** ArrayColorInd ******************/
 		%feature("compactdefaultargs") ArrayColorInd;
-		%feature("autodoc", "* /** * Query the array of color indice * @param arrColorInd * <tt>[out]</tt> array of colorIndex as it is described in VRML2.0 spec * returns * Number of integers in the array arrColorInd. */
-	:param arrColorInd:
-	:type arrColorInd: int * *
-	:rtype: inline size_t") ArrayColorInd;
-		inline size_t ArrayColorInd (const Standard_Integer * * & arrColorInd);
+		%feature("autodoc", "/** * query the array of color indice * @param arrcolorind * <tt>[out]</tt> array of colorindex as it is described in vrml2.0 spec * returns * number of integers in the array arrcolorind. */.
+
+Parameters
+----------
+arrColorInd: int * *
+
+Returns
+-------
+size_t
+") ArrayColorInd;
+		size_t ArrayColorInd(const Standard_Integer * * & arrColorInd);
 
 		/****************** ArrayNormalInd ******************/
 		%feature("compactdefaultargs") ArrayNormalInd;
-		%feature("autodoc", "* /** * Query the array of normal indice * @param arrNormalInd * <tt>[out]</tt> array of normalIndex as it is described in VRML2.0 spec * returns * Number of integers in the array arrNormalInd. */
-	:param arrNormalInd:
-	:type arrNormalInd: int * *
-	:rtype: inline size_t") ArrayNormalInd;
-		inline size_t ArrayNormalInd (const Standard_Integer * * & arrNormalInd);
+		%feature("autodoc", "/** * query the array of normal indice * @param arrnormalind * <tt>[out]</tt> array of normalindex as it is described in vrml2.0 spec * returns * number of integers in the array arrnormalind. */.
+
+Parameters
+----------
+arrNormalInd: int * *
+
+Returns
+-------
+size_t
+") ArrayNormalInd;
+		size_t ArrayNormalInd(const Standard_Integer * * & arrNormalInd);
 
 		/****************** ArrayTextureCoordInd ******************/
 		%feature("compactdefaultargs") ArrayTextureCoordInd;
-		%feature("autodoc", "* /** * Query the array of texture coordinate indice * @param arrTextureCoordInd * <tt>[out]</tt> array of texCoordIndex as it is described in VRML2.0 spec * returns * Number of integers in the array texCoordIndex. */
-	:param arrTextureCoordInd:
-	:type arrTextureCoordInd: int * *
-	:rtype: inline size_t") ArrayTextureCoordInd;
-		inline size_t ArrayTextureCoordInd (const Standard_Integer * * & arrTextureCoordInd);
+		%feature("autodoc", "/** * query the array of texture coordinate indice * @param arrtexturecoordind * <tt>[out]</tt> array of texcoordindex as it is described in vrml2.0 spec * returns * number of integers in the array texcoordindex. */.
+
+Parameters
+----------
+arrTextureCoordInd: int * *
+
+Returns
+-------
+size_t
+") ArrayTextureCoordInd;
+		size_t ArrayTextureCoordInd(const Standard_Integer * * & arrTextureCoordInd);
 
 		/****************** Clone ******************/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "* /** * Create a copy of this node. * If the parameter is null, a new copied node is created. Otherwise new node * is not created, but rather the given one is modified. */
-	:param theOther:
-	:type theOther: VrmlData_Node
-	:rtype: opencascade::handle<VrmlData_Node>") Clone;
-		virtual opencascade::handle<VrmlData_Node> Clone (const opencascade::handle<VrmlData_Node> & theOther);
+		%feature("autodoc", "/** * create a copy of this node. * if the parameter is null, a new copied node is created. otherwise new node * is not created, but rather the given one is modified. */.
+
+Parameters
+----------
+theOther: VrmlData_Node
+
+Returns
+-------
+opencascade::handle<VrmlData_Node>
+") Clone;
+		virtual opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
 		/****************** Colors ******************/
 		%feature("compactdefaultargs") Colors;
-		%feature("autodoc", "* /** * Query the Colors. */
-	:rtype: inline  opencascade::handle<VrmlData_Color>") Colors;
-		inline const opencascade::handle<VrmlData_Color> & Colors ();
+		%feature("autodoc", "/** * query the colors. */.
+
+Returns
+-------
+opencascade::handle<VrmlData_Color>
+") Colors;
+		const opencascade::handle<VrmlData_Color> & Colors();
 
 		/****************** Coordinates ******************/
 		%feature("compactdefaultargs") Coordinates;
-		%feature("autodoc", "* /** * Query the Coordinates. */
-	:rtype: inline  opencascade::handle<VrmlData_Coordinate>") Coordinates;
-		inline const opencascade::handle<VrmlData_Coordinate> & Coordinates ();
+		%feature("autodoc", "/** * query the coordinates. */.
+
+Returns
+-------
+opencascade::handle<VrmlData_Coordinate>
+") Coordinates;
+		const opencascade::handle<VrmlData_Coordinate> & Coordinates();
 
 		/****************** GetColor ******************/
 		%feature("compactdefaultargs") GetColor;
-		%feature("autodoc", "* /** * Query a color for one node in the given element. The color is * interpreted according to fields myColors, myArrColorInd, * myColorPerVertex, as defined in VRML 2.0. * @param iFace * rank of the polygon [0 .. N-1] * @param iVertex * rank of the vertex in the polygon [0 .. M-1]. This parameter is ignored * if (myColorPerVertex == False) * returns * Color value (RGB); if the color is indefinite then returns (0., 0., 0.) */
-	:param iFace:
-	:type iFace: int
-	:param iVertex:
-	:type iVertex: int
-	:rtype: Quantity_Color") GetColor;
-		Quantity_Color GetColor (const Standard_Integer iFace,const Standard_Integer iVertex);
+		%feature("autodoc", "/** * query a color for one node in the given element. the color is * interpreted according to fields mycolors, myarrcolorind, * mycolorpervertex, as defined in vrml 2.0. * @param iface * rank of the polygon [0 .. n-1] * @param ivertex * rank of the vertex in the polygon [0 .. m-1]. this parameter is ignored * if (mycolorpervertex == false) * returns * color value (rgb); if the color is indefinite then returns (0., 0., 0.) */.
+
+Parameters
+----------
+iFace: int
+iVertex: int
+
+Returns
+-------
+Quantity_Color
+") GetColor;
+		Quantity_Color GetColor(const Standard_Integer iFace, const Standard_Integer iVertex);
 
 		/****************** IndiceNormals ******************/
 		%feature("compactdefaultargs") IndiceNormals;
-		%feature("autodoc", "* /** * Query normals indice for one face. This method should be called after * checking myArrNormalInd != NULL, otherwise exception will be thrown. * @param iFace * rank of the face [0 .. N-1] * @param outIndice * <tt>[out]</tt> array of normals indice * returns * number of indice in the array - the dimension of outIndice array */
-	:param iFace:
-	:type iFace: int
-	:param outIndice:
-	:type outIndice: int *
-	:rtype: inline int") IndiceNormals;
-		inline Standard_Integer IndiceNormals (const Standard_Integer iFace,const Standard_Integer * & outIndice);
+		%feature("autodoc", "/** * query normals indice for one face. this method should be called after * checking myarrnormalind != null, otherwise exception will be thrown. * @param iface * rank of the face [0 .. n-1] * @param outindice * <tt>[out]</tt> array of normals indice * returns * number of indice in the array - the dimension of outindice array */.
+
+Parameters
+----------
+iFace: int
+outIndice: int *
+
+Returns
+-------
+int
+") IndiceNormals;
+		Standard_Integer IndiceNormals(const Standard_Integer iFace, const Standard_Integer * & outIndice);
 
 		/****************** IsDefault ******************/
 		%feature("compactdefaultargs") IsDefault;
-		%feature("autodoc", "* /** * Returns True if the node is default, so that it should not be written. */
-	:rtype: bool") IsDefault;
-		virtual Standard_Boolean IsDefault ();
+		%feature("autodoc", "/** * returns true if the node is default, so that it should not be written. */.
+
+Returns
+-------
+bool
+") IsDefault;
+		virtual Standard_Boolean IsDefault();
 
 		/****************** Normals ******************/
 		%feature("compactdefaultargs") Normals;
-		%feature("autodoc", "* /** * Query the Normals. */
-	:rtype: inline  opencascade::handle<VrmlData_Normal>") Normals;
-		inline const opencascade::handle<VrmlData_Normal> & Normals ();
+		%feature("autodoc", "/** * query the normals. */.
+
+Returns
+-------
+opencascade::handle<VrmlData_Normal>
+") Normals;
+		const opencascade::handle<VrmlData_Normal> & Normals();
 
 		/****************** Polygon ******************/
 		%feature("compactdefaultargs") Polygon;
-		%feature("autodoc", "* /** * Query one polygon. * @param iFace * rank of the polygon [0 .. N-1] * @param outIndice * <tt>[out]</tt> array of vertex indice * returns * number of vertice in the polygon - the dimension of outIndice array */
-	:param iFace:
-	:type iFace: int
-	:param outIndice:
-	:type outIndice: int *
-	:rtype: inline int") Polygon;
-		inline Standard_Integer Polygon (const Standard_Integer iFace,const Standard_Integer * & outIndice);
+		%feature("autodoc", "/** * query one polygon. * @param iface * rank of the polygon [0 .. n-1] * @param outindice * <tt>[out]</tt> array of vertex indice * returns * number of vertice in the polygon - the dimension of outindice array */.
+
+Parameters
+----------
+iFace: int
+outIndice: int *
+
+Returns
+-------
+int
+") Polygon;
+		Standard_Integer Polygon(const Standard_Integer iFace, const Standard_Integer * & outIndice);
 
 		/****************** Polygons ******************/
 		%feature("compactdefaultargs") Polygons;
-		%feature("autodoc", "* /** * Query the array of polygons */
-	:param arrPolygons:
-	:type arrPolygons: int * *
-	:rtype: inline size_t") Polygons;
-		inline size_t Polygons (const Standard_Integer * * & arrPolygons);
+		%feature("autodoc", "/** * query the array of polygons */.
+
+Parameters
+----------
+arrPolygons: int * *
+
+Returns
+-------
+size_t
+") Polygons;
+		size_t Polygons(const Standard_Integer * * & arrPolygons);
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* /** * Read the Node from input stream. */
-	:param theBuffer:
-	:type theBuffer: VrmlData_InBuffer
-	:rtype: VrmlData_ErrorStatus") Read;
-		virtual VrmlData_ErrorStatus Read (VrmlData_InBuffer & theBuffer);
+		%feature("autodoc", "/** * read the node from input stream. */.
+
+Parameters
+----------
+theBuffer: VrmlData_InBuffer
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Read;
+		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
 		/****************** SetColorInd ******************/
 		%feature("compactdefaultargs") SetColorInd;
-		%feature("autodoc", "* /** * Set the colors array of indice */
-	:param nIndice:
-	:type nIndice: Standard_Size
-	:param theIndice:
-	:type theIndice: int * *
-	:rtype: inline void") SetColorInd;
-		inline void SetColorInd (const Standard_Size nIndice,const Standard_Integer * * theIndice);
+		%feature("autodoc", "/** * set the colors array of indice */.
+
+Parameters
+----------
+nIndice: Standard_Size
+theIndice: int * *
+
+Returns
+-------
+None
+") SetColorInd;
+		void SetColorInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
 		/****************** SetColorPerVertex ******************/
 		%feature("compactdefaultargs") SetColorPerVertex;
-		%feature("autodoc", "* /** * Set the boolean value 'colorPerVertex' */
-	:param isColorPerVertex:
-	:type isColorPerVertex: bool
-	:rtype: inline void") SetColorPerVertex;
-		inline void SetColorPerVertex (const Standard_Boolean isColorPerVertex);
+		%feature("autodoc", "/** * set the boolean value 'colorpervertex' */.
+
+Parameters
+----------
+isColorPerVertex: bool
+
+Returns
+-------
+None
+") SetColorPerVertex;
+		void SetColorPerVertex(const Standard_Boolean isColorPerVertex);
 
 		/****************** SetColors ******************/
 		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "* /** * Set the Color node */
-	:param theColors:
-	:type theColors: VrmlData_Color
-	:rtype: inline void") SetColors;
-		inline void SetColors (const opencascade::handle<VrmlData_Color> & theColors);
+		%feature("autodoc", "/** * set the color node */.
+
+Parameters
+----------
+theColors: VrmlData_Color
+
+Returns
+-------
+None
+") SetColors;
+		void SetColors(const opencascade::handle<VrmlData_Color> & theColors);
 
 		/****************** SetCoordinates ******************/
 		%feature("compactdefaultargs") SetCoordinates;
-		%feature("autodoc", "* /** * Set the nodes */
-	:param theCoord:
-	:type theCoord: VrmlData_Coordinate
-	:rtype: inline void") SetCoordinates;
-		inline void SetCoordinates (const opencascade::handle<VrmlData_Coordinate> & theCoord);
+		%feature("autodoc", "/** * set the nodes */.
+
+Parameters
+----------
+theCoord: VrmlData_Coordinate
+
+Returns
+-------
+None
+") SetCoordinates;
+		void SetCoordinates(const opencascade::handle<VrmlData_Coordinate> & theCoord);
 
 		/****************** SetNormalInd ******************/
 		%feature("compactdefaultargs") SetNormalInd;
-		%feature("autodoc", "* /** * Set the normals array of indice */
-	:param nIndice:
-	:type nIndice: Standard_Size
-	:param theIndice:
-	:type theIndice: int * *
-	:rtype: inline void") SetNormalInd;
-		inline void SetNormalInd (const Standard_Size nIndice,const Standard_Integer * * theIndice);
+		%feature("autodoc", "/** * set the normals array of indice */.
+
+Parameters
+----------
+nIndice: Standard_Size
+theIndice: int * *
+
+Returns
+-------
+None
+") SetNormalInd;
+		void SetNormalInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
 		/****************** SetNormalPerVertex ******************/
 		%feature("compactdefaultargs") SetNormalPerVertex;
-		%feature("autodoc", "* /** * Set the boolean value 'normalPerVertex' */
-	:param isNormalPerVertex:
-	:type isNormalPerVertex: bool
-	:rtype: inline void") SetNormalPerVertex;
-		inline void SetNormalPerVertex (const Standard_Boolean isNormalPerVertex);
+		%feature("autodoc", "/** * set the boolean value 'normalpervertex' */.
+
+Parameters
+----------
+isNormalPerVertex: bool
+
+Returns
+-------
+None
+") SetNormalPerVertex;
+		void SetNormalPerVertex(const Standard_Boolean isNormalPerVertex);
 
 		/****************** SetNormals ******************/
 		%feature("compactdefaultargs") SetNormals;
-		%feature("autodoc", "* /** * Set the normals node */
-	:param theNormals:
-	:type theNormals: VrmlData_Normal
-	:rtype: inline void") SetNormals;
-		inline void SetNormals (const opencascade::handle<VrmlData_Normal> & theNormals);
+		%feature("autodoc", "/** * set the normals node */.
+
+Parameters
+----------
+theNormals: VrmlData_Normal
+
+Returns
+-------
+None
+") SetNormals;
+		void SetNormals(const opencascade::handle<VrmlData_Normal> & theNormals);
 
 		/****************** SetPolygons ******************/
 		%feature("compactdefaultargs") SetPolygons;
-		%feature("autodoc", "* /** * Set the polygons */
-	:param nPolygons:
-	:type nPolygons: Standard_Size
-	:param thePolygons:
-	:type thePolygons: int * *
-	:rtype: inline void") SetPolygons;
-		inline void SetPolygons (const Standard_Size nPolygons,const Standard_Integer * * thePolygons);
+		%feature("autodoc", "/** * set the polygons */.
+
+Parameters
+----------
+nPolygons: Standard_Size
+thePolygons: int * *
+
+Returns
+-------
+None
+") SetPolygons;
+		void SetPolygons(const Standard_Size nPolygons, const Standard_Integer * * thePolygons);
 
 		/****************** SetTextureCoordInd ******************/
 		%feature("compactdefaultargs") SetTextureCoordInd;
-		%feature("autodoc", "* /** * Set the TexCoordiante array of indice */
-	:param nIndice:
-	:type nIndice: Standard_Size
-	:param theIndice:
-	:type theIndice: int * *
-	:rtype: inline void") SetTextureCoordInd;
-		inline void SetTextureCoordInd (const Standard_Size nIndice,const Standard_Integer * * theIndice);
+		%feature("autodoc", "/** * set the texcoordiante array of indice */.
+
+Parameters
+----------
+nIndice: Standard_Size
+theIndice: int * *
+
+Returns
+-------
+None
+") SetTextureCoordInd;
+		void SetTextureCoordInd(const Standard_Size nIndice, const Standard_Integer * * theIndice);
 
 		/****************** SetTextureCoords ******************/
 		%feature("compactdefaultargs") SetTextureCoords;
-		%feature("autodoc", "* /** * Set the Texture Coordinate node */
-	:param tc:
-	:type tc: VrmlData_TextureCoordinate
-	:rtype: inline void") SetTextureCoords;
-		inline void SetTextureCoords (const opencascade::handle<VrmlData_TextureCoordinate> & tc);
+		%feature("autodoc", "/** * set the texture coordinate node */.
+
+Parameters
+----------
+tc: VrmlData_TextureCoordinate
+
+Returns
+-------
+None
+") SetTextureCoords;
+		void SetTextureCoords(const opencascade::handle<VrmlData_TextureCoordinate> & tc);
 
 		/****************** TShape ******************/
 		%feature("compactdefaultargs") TShape;
-		%feature("autodoc", "* /** * Query the shape. This method checks the flag myIsModified; if True it * should rebuild the shape presentation. */
-	:rtype: opencascade::handle<TopoDS_TShape>") TShape;
-		virtual const opencascade::handle<TopoDS_TShape>  TShape ();
+		%feature("autodoc", "/** * query the shape. this method checks the flag myismodified; if true it * should rebuild the shape presentation. */.
+
+Returns
+-------
+opencascade::handle<TopoDS_TShape>
+") TShape;
+		virtual const opencascade::handle<TopoDS_TShape> TShape();
 
 		/****************** TextureCoords ******************/
 		%feature("compactdefaultargs") TextureCoords;
-		%feature("autodoc", "* /** * Query the Texture Coordinates. */
-	:rtype: inline  opencascade::handle<VrmlData_TextureCoordinate>") TextureCoords;
-		inline const opencascade::handle<VrmlData_TextureCoordinate> & TextureCoords ();
+		%feature("autodoc", "/** * query the texture coordinates. */.
 
-		/****************** VrmlData_IndexedFaceSet ******************/
-		%feature("compactdefaultargs") VrmlData_IndexedFaceSet;
-		%feature("autodoc", "* /** * Empty constructor */
-	:rtype: None") VrmlData_IndexedFaceSet;
-		 VrmlData_IndexedFaceSet ();
-
-		/****************** VrmlData_IndexedFaceSet ******************/
-		%feature("compactdefaultargs") VrmlData_IndexedFaceSet;
-		%feature("autodoc", "* /** * Constructor */
-	:param theScene:
-	:type theScene: VrmlData_Scene
-	:param theName:
-	:type theName: char *
-	:param isCCW: default value is Standard_True
-	:type isCCW: bool
-	:param isSolid: default value is Standard_True
-	:type isSolid: bool
-	:param isConvex: default value is Standard_True
-	:type isConvex: bool
-	:param theCreaseAngle: default value is 0
-	:type theCreaseAngle: float
-	:rtype: None") VrmlData_IndexedFaceSet;
-		 VrmlData_IndexedFaceSet (const VrmlData_Scene & theScene,const char * theName,const Standard_Boolean isCCW = Standard_True,const Standard_Boolean isSolid = Standard_True,const Standard_Boolean isConvex = Standard_True,const Standard_Real theCreaseAngle = 0);
+Returns
+-------
+opencascade::handle<VrmlData_TextureCoordinate>
+") TextureCoords;
+		const opencascade::handle<VrmlData_TextureCoordinate> & TextureCoords();
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* /** * Write the Node to output stream. */
-	:param thePrefix:
-	:type thePrefix: char *
-	:rtype: VrmlData_ErrorStatus") Write;
-		virtual VrmlData_ErrorStatus Write (const char * thePrefix);
+		%feature("autodoc", "/** * write the node to output stream. */.
+
+Parameters
+----------
+thePrefix: char *
+
+Returns
+-------
+VrmlData_ErrorStatus
+") Write;
+		virtual VrmlData_ErrorStatus Write(const char * thePrefix);
 
 };
 
@@ -2427,9 +3662,37 @@ class VrmlData_IndexedFaceSet : public VrmlData_Faceted {
 %extend VrmlData_IndexedFaceSet {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def GetNormal(self):
+		pass
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class VrmlData_InBuffer:
+	pass
+
+@classnotwrapped
+class VrmlData_ArrayVec3d:
+	pass
+
+@classnotwrapped
+class VrmlData_Texture:
+	pass
+
+@classnotwrapped
+class VrmlData_TextureTransform:
+	pass
+
+@classnotwrapped
+class VrmlData_Faceted:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

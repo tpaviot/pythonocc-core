@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -51,8 +51,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom2d.html"
 %import Standard.i
 %import NCollection.i
 %import Geom2d.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 %wrap_handle(TColGeom2d_HArray1OfCurve)
@@ -63,11 +73,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom2d.html"
 /* end handles declaration */
 
 /* templates */
-%template(TColGeom2d_SequenceOfCurve) NCollection_Sequence <opencascade::handle <Geom2d_Curve>>;
-%template(TColGeom2d_SequenceOfGeometry) NCollection_Sequence <opencascade::handle <Geom2d_Geometry>>;
-%template(TColGeom2d_Array1OfCurve) NCollection_Array1 <opencascade::handle <Geom2d_Curve>>;
+%template(TColGeom2d_Array1OfBSplineCurve) NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve>>;
 
-%extend NCollection_Array1 <opencascade::handle <Geom2d_Curve>> {
+%extend NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -100,10 +108,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom2d.html"
     __next__ = next
     }
 };
-%template(TColGeom2d_SequenceOfBoundedCurve) NCollection_Sequence <opencascade::handle <Geom2d_BoundedCurve>>;
-%template(TColGeom2d_Array1OfBezierCurve) NCollection_Array1 <opencascade::handle <Geom2d_BezierCurve>>;
+%template(TColGeom2d_Array1OfBezierCurve) NCollection_Array1<opencascade::handle<Geom2d_BezierCurve>>;
 
-%extend NCollection_Array1 <opencascade::handle <Geom2d_BezierCurve>> {
+%extend NCollection_Array1<opencascade::handle<Geom2d_BezierCurve>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -136,9 +143,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom2d.html"
     __next__ = next
     }
 };
-%template(TColGeom2d_Array1OfBSplineCurve) NCollection_Array1 <opencascade::handle <Geom2d_BSplineCurve>>;
+%template(TColGeom2d_Array1OfCurve) NCollection_Array1<opencascade::handle<Geom2d_Curve>>;
 
-%extend NCollection_Array1 <opencascade::handle <Geom2d_BSplineCurve>> {
+%extend NCollection_Array1<opencascade::handle<Geom2d_Curve>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -171,15 +178,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom2d.html"
     __next__ = next
     }
 };
+%template(TColGeom2d_SequenceOfBoundedCurve) NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>>;
+%template(TColGeom2d_SequenceOfCurve) NCollection_Sequence<opencascade::handle<Geom2d_Curve>>;
+%template(TColGeom2d_SequenceOfGeometry) NCollection_Sequence<opencascade::handle<Geom2d_Geometry>>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence <opencascade::handle <Geom2d_Curve>> TColGeom2d_SequenceOfCurve;
-typedef NCollection_Sequence <opencascade::handle <Geom2d_Geometry>> TColGeom2d_SequenceOfGeometry;
-typedef NCollection_Array1 <opencascade::handle <Geom2d_Curve>> TColGeom2d_Array1OfCurve;
-typedef NCollection_Sequence <opencascade::handle <Geom2d_BoundedCurve>> TColGeom2d_SequenceOfBoundedCurve;
-typedef NCollection_Array1 <opencascade::handle <Geom2d_BezierCurve>> TColGeom2d_Array1OfBezierCurve;
-typedef NCollection_Array1 <opencascade::handle <Geom2d_BSplineCurve>> TColGeom2d_Array1OfBSplineCurve;
+typedef NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve>> TColGeom2d_Array1OfBSplineCurve;
+typedef NCollection_Array1<opencascade::handle<Geom2d_BezierCurve>> TColGeom2d_Array1OfBezierCurve;
+typedef NCollection_Array1<opencascade::handle<Geom2d_Curve>> TColGeom2d_Array1OfCurve;
+typedef NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>> TColGeom2d_SequenceOfBoundedCurve;
+typedef NCollection_Sequence<opencascade::handle<Geom2d_Curve>> TColGeom2d_SequenceOfCurve;
+typedef NCollection_Sequence<opencascade::handle<Geom2d_Geometry>> TColGeom2d_SequenceOfGeometry;
 /* end typedefs declaration */
 
 /* harray1 classes */

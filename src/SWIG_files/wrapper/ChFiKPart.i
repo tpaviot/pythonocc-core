@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -86,16 +86,26 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfikpart.html"
 %import Geom.i
 %import Geom2d.i
 %import GeomAdaptor.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */
 
 /* templates */
-%template(ChFiKPart_RstMap) NCollection_DataMap <Standard_Integer , opencascade::handle <Adaptor2d_HCurve2d>, TColStd_MapIntegerHasher>;
+%template(ChFiKPart_RstMap) NCollection_DataMap<Standard_Integer,opencascade::handle<Adaptor2d_HCurve2d>,TColStd_MapIntegerHasher>;
 
-%extend NCollection_DataMap <Standard_Integer , opencascade::handle <Adaptor2d_HCurve2d>, TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,opencascade::handle<Adaptor2d_HCurve2d>,TColStd_MapIntegerHasher> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (ChFiKPart_RstMap::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -109,8 +119,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfikpart.html"
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap <Standard_Integer , opencascade::handle <Adaptor2d_HCurve2d>, TColStd_MapIntegerHasher> ChFiKPart_RstMap;
-typedef NCollection_DataMap <Standard_Integer , opencascade::handle <Adaptor2d_HCurve2d>, TColStd_MapIntegerHasher>::Iterator ChFiKPart_DataMapIteratorOfRstMap;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<Adaptor2d_HCurve2d>, TColStd_MapIntegerHasher>::Iterator ChFiKPart_DataMapIteratorOfRstMap;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<Adaptor2d_HCurve2d>, TColStd_MapIntegerHasher> ChFiKPart_RstMap;
 /* end typedefs declaration */
 
 /******************************
@@ -120,115 +130,99 @@ class ChFiKPart_ComputeData {
 	public:
 		/****************** Compute ******************/
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "* Computes a simple fillet in several particular cases.
-	:param DStr:
-	:type DStr: TopOpeBRepDS_DataStructure
-	:param Data:
-	:type Data: ChFiDS_SurfData
-	:param S1:
-	:type S1: Adaptor3d_HSurface
-	:param S2:
-	:type S2: Adaptor3d_HSurface
-	:param Or1:
-	:type Or1: TopAbs_Orientation
-	:param Or2:
-	:type Or2: TopAbs_Orientation
-	:param Sp:
-	:type Sp: ChFiDS_Spine
-	:param Iedge:
-	:type Iedge: int
-	:rtype: bool") Compute;
-		static Standard_Boolean Compute (TopOpeBRepDS_DataStructure & DStr,opencascade::handle<ChFiDS_SurfData> & Data,const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2,const opencascade::handle<ChFiDS_Spine> & Sp,const Standard_Integer Iedge);
+		%feature("autodoc", "Computes a simple fillet in several particular cases.
+
+Parameters
+----------
+DStr: TopOpeBRepDS_DataStructure
+Data: ChFiDS_SurfData
+S1: Adaptor3d_HSurface
+S2: Adaptor3d_HSurface
+Or1: TopAbs_Orientation
+Or2: TopAbs_Orientation
+Sp: ChFiDS_Spine
+Iedge: int
+
+Returns
+-------
+bool
+") Compute;
+		static Standard_Boolean Compute(TopOpeBRepDS_DataStructure & DStr, opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const opencascade::handle<ChFiDS_Spine> & Sp, const Standard_Integer Iedge);
 
 		/****************** ComputeCorner ******************/
 		%feature("compactdefaultargs") ComputeCorner;
-		%feature("autodoc", "* Computes a toric or spheric corner fillet.
-	:param DStr:
-	:type DStr: TopOpeBRepDS_DataStructure
-	:param Data:
-	:type Data: ChFiDS_SurfData
-	:param S1:
-	:type S1: Adaptor3d_HSurface
-	:param S2:
-	:type S2: Adaptor3d_HSurface
-	:param OrFace1:
-	:type OrFace1: TopAbs_Orientation
-	:param OrFace2:
-	:type OrFace2: TopAbs_Orientation
-	:param Or1:
-	:type Or1: TopAbs_Orientation
-	:param Or2:
-	:type Or2: TopAbs_Orientation
-	:param minRad:
-	:type minRad: float
-	:param majRad:
-	:type majRad: float
-	:param P1S1:
-	:type P1S1: gp_Pnt2d
-	:param P2S1:
-	:type P2S1: gp_Pnt2d
-	:param P1S2:
-	:type P1S2: gp_Pnt2d
-	:param P2S2:
-	:type P2S2: gp_Pnt2d
-	:rtype: bool") ComputeCorner;
-		static Standard_Boolean ComputeCorner (TopOpeBRepDS_DataStructure & DStr,const opencascade::handle<ChFiDS_SurfData> & Data,const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const TopAbs_Orientation OrFace1,const TopAbs_Orientation OrFace2,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2,const Standard_Real minRad,const Standard_Real majRad,const gp_Pnt2d & P1S1,const gp_Pnt2d & P2S1,const gp_Pnt2d & P1S2,const gp_Pnt2d & P2S2);
+		%feature("autodoc", "Computes a toric or spheric corner fillet.
+
+Parameters
+----------
+DStr: TopOpeBRepDS_DataStructure
+Data: ChFiDS_SurfData
+S1: Adaptor3d_HSurface
+S2: Adaptor3d_HSurface
+OrFace1: TopAbs_Orientation
+OrFace2: TopAbs_Orientation
+Or1: TopAbs_Orientation
+Or2: TopAbs_Orientation
+minRad: float
+majRad: float
+P1S1: gp_Pnt2d
+P2S1: gp_Pnt2d
+P1S2: gp_Pnt2d
+P2S2: gp_Pnt2d
+
+Returns
+-------
+bool
+") ComputeCorner;
+		static Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure & DStr, const opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const TopAbs_Orientation OrFace1, const TopAbs_Orientation OrFace2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const Standard_Real minRad, const Standard_Real majRad, const gp_Pnt2d & P1S1, const gp_Pnt2d & P2S1, const gp_Pnt2d & P1S2, const gp_Pnt2d & P2S2);
 
 		/****************** ComputeCorner ******************/
 		%feature("compactdefaultargs") ComputeCorner;
-		%feature("autodoc", "* Computes spheric corner fillet with non iso pcurve on S2.
-	:param DStr:
-	:type DStr: TopOpeBRepDS_DataStructure
-	:param Data:
-	:type Data: ChFiDS_SurfData
-	:param S1:
-	:type S1: Adaptor3d_HSurface
-	:param S2:
-	:type S2: Adaptor3d_HSurface
-	:param OrFace1:
-	:type OrFace1: TopAbs_Orientation
-	:param OrFace2:
-	:type OrFace2: TopAbs_Orientation
-	:param Or1:
-	:type Or1: TopAbs_Orientation
-	:param Or2:
-	:type Or2: TopAbs_Orientation
-	:param Rad:
-	:type Rad: float
-	:param PS1:
-	:type PS1: gp_Pnt2d
-	:param P1S2:
-	:type P1S2: gp_Pnt2d
-	:param P2S2:
-	:type P2S2: gp_Pnt2d
-	:rtype: bool") ComputeCorner;
-		static Standard_Boolean ComputeCorner (TopOpeBRepDS_DataStructure & DStr,const opencascade::handle<ChFiDS_SurfData> & Data,const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const TopAbs_Orientation OrFace1,const TopAbs_Orientation OrFace2,const TopAbs_Orientation Or1,const TopAbs_Orientation Or2,const Standard_Real Rad,const gp_Pnt2d & PS1,const gp_Pnt2d & P1S2,const gp_Pnt2d & P2S2);
+		%feature("autodoc", "Computes spheric corner fillet with non iso pcurve on s2.
+
+Parameters
+----------
+DStr: TopOpeBRepDS_DataStructure
+Data: ChFiDS_SurfData
+S1: Adaptor3d_HSurface
+S2: Adaptor3d_HSurface
+OrFace1: TopAbs_Orientation
+OrFace2: TopAbs_Orientation
+Or1: TopAbs_Orientation
+Or2: TopAbs_Orientation
+Rad: float
+PS1: gp_Pnt2d
+P1S2: gp_Pnt2d
+P2S2: gp_Pnt2d
+
+Returns
+-------
+bool
+") ComputeCorner;
+		static Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure & DStr, const opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const TopAbs_Orientation OrFace1, const TopAbs_Orientation OrFace2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const Standard_Real Rad, const gp_Pnt2d & PS1, const gp_Pnt2d & P1S2, const gp_Pnt2d & P2S2);
 
 		/****************** ComputeCorner ******************/
 		%feature("compactdefaultargs") ComputeCorner;
-		%feature("autodoc", "* Computes a toric corner rotule.
-	:param DStr:
-	:type DStr: TopOpeBRepDS_DataStructure
-	:param Data:
-	:type Data: ChFiDS_SurfData
-	:param S:
-	:type S: Adaptor3d_HSurface
-	:param S1:
-	:type S1: Adaptor3d_HSurface
-	:param S2:
-	:type S2: Adaptor3d_HSurface
-	:param OfS:
-	:type OfS: TopAbs_Orientation
-	:param OS:
-	:type OS: TopAbs_Orientation
-	:param OS1:
-	:type OS1: TopAbs_Orientation
-	:param OS2:
-	:type OS2: TopAbs_Orientation
-	:param Radius:
-	:type Radius: float
-	:rtype: bool") ComputeCorner;
-		static Standard_Boolean ComputeCorner (TopOpeBRepDS_DataStructure & DStr,const opencascade::handle<ChFiDS_SurfData> & Data,const opencascade::handle<Adaptor3d_HSurface> & S,const opencascade::handle<Adaptor3d_HSurface> & S1,const opencascade::handle<Adaptor3d_HSurface> & S2,const TopAbs_Orientation OfS,const TopAbs_Orientation OS,const TopAbs_Orientation OS1,const TopAbs_Orientation OS2,const Standard_Real Radius);
+		%feature("autodoc", "Computes a toric corner rotule.
+
+Parameters
+----------
+DStr: TopOpeBRepDS_DataStructure
+Data: ChFiDS_SurfData
+S: Adaptor3d_HSurface
+S1: Adaptor3d_HSurface
+S2: Adaptor3d_HSurface
+OfS: TopAbs_Orientation
+OS: TopAbs_Orientation
+OS1: TopAbs_Orientation
+OS2: TopAbs_Orientation
+Radius: float
+
+Returns
+-------
+bool
+") ComputeCorner;
+		static Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure & DStr, const opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_HSurface> & S, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const TopAbs_Orientation OfS, const TopAbs_Orientation OS, const TopAbs_Orientation OS1, const TopAbs_Orientation OS2, const Standard_Real Radius);
 
 };
 

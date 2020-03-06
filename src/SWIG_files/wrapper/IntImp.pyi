@@ -1,0 +1,13 @@
+from typing import NewType, Optional, Tuple
+
+from OCC.Core.IntImp import *
+from OCC.Core.Standard import *
+from OCC.Core.NCollection import *
+from OCC.Core.gp import *
+
+
+class IntImp_ConstIsoparametric:
+	IntImp_UIsoparametricOnCaro1: int = ...
+	IntImp_VIsoparametricOnCaro1: int = ...
+	IntImp_UIsoparametricOnCaro2: int = ...
+	IntImp_VIsoparametricOnCaro2: int = ...

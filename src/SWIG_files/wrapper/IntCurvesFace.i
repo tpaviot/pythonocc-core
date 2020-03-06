@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -41,10 +41,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intcurvesface.htm
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TopoDS_module.hxx>
 #include<Bnd_module.hxx>
 #include<gp_module.hxx>
 #include<TopAbs_module.hxx>
-#include<TopoDS_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<IntCurveSurface_module.hxx>
@@ -61,15 +61,25 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intcurvesface.htm
 %};
 %import Standard.i
 %import NCollection.i
+%import TopoDS.i
 %import Bnd.i
 %import gp.i
 %import TopAbs.i
-%import TopoDS.i
 %import Adaptor3d.i
 %import GeomAbs.i
 %import IntCurveSurface.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */
@@ -85,151 +95,248 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intcurvesface.htm
 **********************************/
 class IntCurvesFace_Intersector {
 	public:
+		/****************** IntCurvesFace_Intersector ******************/
+		%feature("compactdefaultargs") IntCurvesFace_Intersector;
+		%feature("autodoc", "Load a face. //! the tolerance <tol> is used to determine if the first point of the segment is near the face. in that case, the parameter of the intersection point on the line can be a negative value (greater than -tol). if arestr = true uv bounding box of face is used to restrict it's underlined surface, otherwise surface is not restricted. if usebtoler = false then the 2d-point of intersection is classified with null-tolerance (relative to face); otherwise it's using maximium between input tolerance(atol) and tolerances of face bounds (edges).
+
+Parameters
+----------
+F: TopoDS_Face
+aTol: float
+aRestr: bool,optional
+	default value is Standard_True
+UseBToler: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") IntCurvesFace_Intersector;
+		 IntCurvesFace_Intersector(const TopoDS_Face & F, const Standard_Real aTol, const Standard_Boolean aRestr = Standard_True, const Standard_Boolean UseBToler = Standard_True);
+
 		/****************** Bounding ******************/
 		%feature("compactdefaultargs") Bounding;
-		%feature("autodoc", ":rtype: Bnd_Box") Bounding;
-		Bnd_Box Bounding ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Bnd_Box
+") Bounding;
+		Bnd_Box Bounding();
 
 		/****************** ClassifyUVPoint ******************/
 		%feature("compactdefaultargs") ClassifyUVPoint;
-		%feature("autodoc", ":param Puv:
-	:type Puv: gp_Pnt2d
-	:rtype: TopAbs_State") ClassifyUVPoint;
-		TopAbs_State ClassifyUVPoint (const gp_Pnt2d & Puv);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Puv: gp_Pnt2d
+
+Returns
+-------
+TopAbs_State
+") ClassifyUVPoint;
+		TopAbs_State ClassifyUVPoint(const gp_Pnt2d & Puv);
 
 		/****************** Destroy ******************/
 		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", ":rtype: None") Destroy;
-		void Destroy ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Destroy;
+		void Destroy();
 
 		/****************** Face ******************/
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "* Returns the significant face used to determine the intersection.
-	:rtype: TopoDS_Face") Face;
-		const TopoDS_Face  Face ();
+		%feature("autodoc", "Returns the significant face used to determine the intersection.
+
+Returns
+-------
+TopoDS_Face
+") Face;
+		const TopoDS_Face Face();
 
 		/****************** GetUseBoundToler ******************/
 		%feature("compactdefaultargs") GetUseBoundToler;
-		%feature("autodoc", "* Returns the boundary tolerance flag
-	:rtype: bool") GetUseBoundToler;
-		Standard_Boolean GetUseBoundToler ();
+		%feature("autodoc", "Returns the boundary tolerance flag.
 
-		/****************** IntCurvesFace_Intersector ******************/
-		%feature("compactdefaultargs") IntCurvesFace_Intersector;
-		%feature("autodoc", "* Load a Face. //! The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol). If aRestr = true UV bounding box of face is used to restrict it's underlined surface, otherwise surface is not restricted. If UseBToler = false then the 2d-point of intersection is classified with null-tolerance (relative to face); otherwise it's using maximium between input tolerance(aTol) and tolerances of face bounds (edges).
-	:param F:
-	:type F: TopoDS_Face
-	:param aTol:
-	:type aTol: float
-	:param aRestr: default value is Standard_True
-	:type aRestr: bool
-	:param UseBToler: default value is Standard_True
-	:type UseBToler: bool
-	:rtype: None") IntCurvesFace_Intersector;
-		 IntCurvesFace_Intersector (const TopoDS_Face & F,const Standard_Real aTol,const Standard_Boolean aRestr = Standard_True,const Standard_Boolean UseBToler = Standard_True);
+Returns
+-------
+bool
+") GetUseBoundToler;
+		Standard_Boolean GetUseBoundToler();
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "* True is returned when the intersection have been computed.
-	:rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "True is returned when the intersection have been computed.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** IsParallel ******************/
 		%feature("compactdefaultargs") IsParallel;
-		%feature("autodoc", "* Returns true if curve is parallel or belongs face surface This case is recognized only for some pairs of analytical curves and surfaces (plane - line, ...)
-	:rtype: bool") IsParallel;
-		Standard_Boolean IsParallel ();
+		%feature("autodoc", "Returns true if curve is parallel or belongs face surface this case is recognized only for some pairs of analytical curves and surfaces (plane - line, ...).
+
+Returns
+-------
+bool
+") IsParallel;
+		Standard_Boolean IsParallel();
 
 		/****************** NbPnt ******************/
 		%feature("compactdefaultargs") NbPnt;
-		%feature("autodoc", ":rtype: int") NbPnt;
-		Standard_Integer NbPnt ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbPnt;
+		Standard_Integer NbPnt();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Perform the intersection between the segment L and the loaded face. //! PInf is the smallest parameter on the line PSup is the highest parmaeter on the line //! For an infinite line PInf and PSup can be +/- RealLast.
-	:param L:
-	:type L: gp_Lin
-	:param PInf:
-	:type PInf: float
-	:param PSup:
-	:type PSup: float
-	:rtype: None") Perform;
-		void Perform (const gp_Lin & L,const Standard_Real PInf,const Standard_Real PSup);
+		%feature("autodoc", "Perform the intersection between the segment l and the loaded face. //! pinf is the smallest parameter on the line psup is the highest parmaeter on the line //! for an infinite line pinf and psup can be +/- reallast.
+
+Parameters
+----------
+L: gp_Lin
+PInf: float
+PSup: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* same method for a HCurve from Adaptor3d. PInf an PSup can also be - and + INF.
-	:param HCu:
-	:type HCu: Adaptor3d_HCurve
-	:param PInf:
-	:type PInf: float
-	:param PSup:
-	:type PSup: float
-	:rtype: None") Perform;
-		void Perform (const opencascade::handle<Adaptor3d_HCurve> & HCu,const Standard_Real PInf,const Standard_Real PSup);
+		%feature("autodoc", "Same method for a hcurve from adaptor3d. pinf an psup can also be - and + inf.
+
+Parameters
+----------
+HCu: Adaptor3d_HCurve
+PInf: float
+PSup: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const opencascade::handle<Adaptor3d_HCurve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** Pnt ******************/
 		%feature("compactdefaultargs") Pnt;
-		%feature("autodoc", "* Returns the geometric point of the ith intersection between the line and the surface.
-	:param I:
-	:type I: int
-	:rtype: gp_Pnt") Pnt;
-		const gp_Pnt  Pnt (const Standard_Integer I);
+		%feature("autodoc", "Returns the geometric point of the ith intersection between the line and the surface.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+gp_Pnt
+") Pnt;
+		const gp_Pnt Pnt(const Standard_Integer I);
 
 		/****************** SetUseBoundToler ******************/
 		%feature("compactdefaultargs") SetUseBoundToler;
-		%feature("autodoc", "* Sets the boundary tolerance flag
-	:param UseBToler:
-	:type UseBToler: bool
-	:rtype: None") SetUseBoundToler;
-		void SetUseBoundToler (Standard_Boolean UseBToler);
+		%feature("autodoc", "Sets the boundary tolerance flag.
+
+Parameters
+----------
+UseBToler: bool
+
+Returns
+-------
+None
+") SetUseBoundToler;
+		void SetUseBoundToler(Standard_Boolean UseBToler);
 
 		/****************** State ******************/
 		%feature("compactdefaultargs") State;
-		%feature("autodoc", "* Returns the ith state of the point on the face. The values can be either TopAbs_IN ( the point is in the face) or TopAbs_ON ( the point is on a boudary of the face).
-	:param I:
-	:type I: int
-	:rtype: TopAbs_State") State;
-		TopAbs_State State (const Standard_Integer I);
+		%feature("autodoc", "Returns the ith state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boudary of the face).
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+TopAbs_State
+") State;
+		TopAbs_State State(const Standard_Integer I);
 
 		/****************** SurfaceType ******************/
 		%feature("compactdefaultargs") SurfaceType;
-		%feature("autodoc", "* Return the surface type
-	:rtype: GeomAbs_SurfaceType") SurfaceType;
-		GeomAbs_SurfaceType SurfaceType ();
+		%feature("autodoc", "Return the surface type.
+
+Returns
+-------
+GeomAbs_SurfaceType
+") SurfaceType;
+		GeomAbs_SurfaceType SurfaceType();
 
 		/****************** Transition ******************/
 		%feature("compactdefaultargs") Transition;
-		%feature("autodoc", "* Returns the ith transition of the line on the surface.
-	:param I:
-	:type I: int
-	:rtype: IntCurveSurface_TransitionOnCurve") Transition;
-		IntCurveSurface_TransitionOnCurve Transition (const Standard_Integer I);
+		%feature("autodoc", "Returns the ith transition of the line on the surface.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+IntCurveSurface_TransitionOnCurve
+") Transition;
+		IntCurveSurface_TransitionOnCurve Transition(const Standard_Integer I);
 
 		/****************** UParameter ******************/
 		%feature("compactdefaultargs") UParameter;
-		%feature("autodoc", "* Returns the U parameter of the ith intersection point on the surface.
-	:param I:
-	:type I: int
-	:rtype: float") UParameter;
-		Standard_Real UParameter (const Standard_Integer I);
+		%feature("autodoc", "Returns the u parameter of the ith intersection point on the surface.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+float
+") UParameter;
+		Standard_Real UParameter(const Standard_Integer I);
 
 		/****************** VParameter ******************/
 		%feature("compactdefaultargs") VParameter;
-		%feature("autodoc", "* Returns the V parameter of the ith intersection point on the surface.
-	:param I:
-	:type I: int
-	:rtype: float") VParameter;
-		Standard_Real VParameter (const Standard_Integer I);
+		%feature("autodoc", "Returns the v parameter of the ith intersection point on the surface.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+float
+") VParameter;
+		Standard_Real VParameter(const Standard_Integer I);
 
 		/****************** WParameter ******************/
 		%feature("compactdefaultargs") WParameter;
-		%feature("autodoc", "* Returns the parameter of the ith intersection point on the line.
-	:param I:
-	:type I: int
-	:rtype: float") WParameter;
-		Standard_Real WParameter (const Standard_Integer I);
+		%feature("autodoc", "Returns the parameter of the ith intersection point on the line.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+float
+") WParameter;
+		Standard_Real WParameter(const Standard_Integer I);
 
 };
 
@@ -245,133 +352,216 @@ class IntCurvesFace_Intersector {
 ***************************************/
 class IntCurvesFace_ShapeIntersector {
 	public:
+		/****************** IntCurvesFace_ShapeIntersector ******************/
+		%feature("compactdefaultargs") IntCurvesFace_ShapeIntersector;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") IntCurvesFace_ShapeIntersector;
+		 IntCurvesFace_ShapeIntersector();
+
 		/****************** Destroy ******************/
 		%feature("compactdefaultargs") Destroy;
-		%feature("autodoc", ":rtype: None") Destroy;
-		void Destroy ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Destroy;
+		void Destroy();
 
 		/****************** Face ******************/
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "* Returns the significant face used to determine the intersection.
-	:param I:
-	:type I: int
-	:rtype: TopoDS_Face") Face;
-		const TopoDS_Face  Face (const Standard_Integer I);
+		%feature("autodoc", "Returns the significant face used to determine the intersection.
 
-		/****************** IntCurvesFace_ShapeIntersector ******************/
-		%feature("compactdefaultargs") IntCurvesFace_ShapeIntersector;
-		%feature("autodoc", ":rtype: None") IntCurvesFace_ShapeIntersector;
-		 IntCurvesFace_ShapeIntersector ();
+Parameters
+----------
+I: int
+
+Returns
+-------
+TopoDS_Face
+") Face;
+		const TopoDS_Face Face(const Standard_Integer I);
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "* True is returned when the intersection have been computed.
-	:rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "True is returned when the intersection have been computed.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** Load ******************/
 		%feature("compactdefaultargs") Load;
-		%feature("autodoc", ":param Sh:
-	:type Sh: TopoDS_Shape
-	:param Tol:
-	:type Tol: float
-	:rtype: None") Load;
-		void Load (const TopoDS_Shape & Sh,const Standard_Real Tol);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Sh: TopoDS_Shape
+Tol: float
+
+Returns
+-------
+None
+") Load;
+		void Load(const TopoDS_Shape & Sh, const Standard_Real Tol);
 
 		/****************** NbPnt ******************/
 		%feature("compactdefaultargs") NbPnt;
-		%feature("autodoc", ":rtype: int") NbPnt;
-		Standard_Integer NbPnt ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbPnt;
+		Standard_Integer NbPnt();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Perform the intersection between the segment L and the loaded shape. //! PInf is the smallest parameter on the line PSup is the highest parammter on the line //! For an infinite line PInf and PSup can be +/- RealLast.
-	:param L:
-	:type L: gp_Lin
-	:param PInf:
-	:type PInf: float
-	:param PSup:
-	:type PSup: float
-	:rtype: None") Perform;
-		void Perform (const gp_Lin & L,const Standard_Real PInf,const Standard_Real PSup);
+		%feature("autodoc", "Perform the intersection between the segment l and the loaded shape. //! pinf is the smallest parameter on the line psup is the highest parammter on the line //! for an infinite line pinf and psup can be +/- reallast.
+
+Parameters
+----------
+L: gp_Lin
+PInf: float
+PSup: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* same method for a HCurve from Adaptor3d. PInf an PSup can also be - and + INF.
-	:param HCu:
-	:type HCu: Adaptor3d_HCurve
-	:param PInf:
-	:type PInf: float
-	:param PSup:
-	:type PSup: float
-	:rtype: None") Perform;
-		void Perform (const opencascade::handle<Adaptor3d_HCurve> & HCu,const Standard_Real PInf,const Standard_Real PSup);
+		%feature("autodoc", "Same method for a hcurve from adaptor3d. pinf an psup can also be - and + inf.
+
+Parameters
+----------
+HCu: Adaptor3d_HCurve
+PInf: float
+PSup: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const opencascade::handle<Adaptor3d_HCurve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** PerformNearest ******************/
 		%feature("compactdefaultargs") PerformNearest;
-		%feature("autodoc", "* Perform the intersection between the segment L and the loaded shape. //! PInf is the smallest parameter on the line PSup is the highest parammter on the line //! For an infinite line PInf and PSup can be +/- RealLast.
-	:param L:
-	:type L: gp_Lin
-	:param PInf:
-	:type PInf: float
-	:param PSup:
-	:type PSup: float
-	:rtype: None") PerformNearest;
-		void PerformNearest (const gp_Lin & L,const Standard_Real PInf,const Standard_Real PSup);
+		%feature("autodoc", "Perform the intersection between the segment l and the loaded shape. //! pinf is the smallest parameter on the line psup is the highest parammter on the line //! for an infinite line pinf and psup can be +/- reallast.
+
+Parameters
+----------
+L: gp_Lin
+PInf: float
+PSup: float
+
+Returns
+-------
+None
+") PerformNearest;
+		void PerformNearest(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
 
 		/****************** Pnt ******************/
 		%feature("compactdefaultargs") Pnt;
-		%feature("autodoc", "* Returns the geometric point of the ith intersection between the line and the surface.
-	:param I:
-	:type I: int
-	:rtype: gp_Pnt") Pnt;
-		const gp_Pnt  Pnt (const Standard_Integer I);
+		%feature("autodoc", "Returns the geometric point of the ith intersection between the line and the surface.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+gp_Pnt
+") Pnt;
+		const gp_Pnt Pnt(const Standard_Integer I);
 
 		/****************** SortResult ******************/
 		%feature("compactdefaultargs") SortResult;
-		%feature("autodoc", "* Internal method. Sort the result on the Curve parameter.
-	:rtype: None") SortResult;
-		void SortResult ();
+		%feature("autodoc", "Internal method. sort the result on the curve parameter.
+
+Returns
+-------
+None
+") SortResult;
+		void SortResult();
 
 		/****************** State ******************/
 		%feature("compactdefaultargs") State;
-		%feature("autodoc", "* Returns the ith state of the point on the face. The values can be either TopAbs_IN ( the point is in the face) or TopAbs_ON ( the point is on a boudary of the face).
-	:param I:
-	:type I: int
-	:rtype: TopAbs_State") State;
-		TopAbs_State State (const Standard_Integer I);
+		%feature("autodoc", "Returns the ith state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boudary of the face).
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+TopAbs_State
+") State;
+		TopAbs_State State(const Standard_Integer I);
 
 		/****************** Transition ******************/
 		%feature("compactdefaultargs") Transition;
-		%feature("autodoc", "* Returns the ith transition of the line on the surface.
-	:param I:
-	:type I: int
-	:rtype: IntCurveSurface_TransitionOnCurve") Transition;
-		IntCurveSurface_TransitionOnCurve Transition (const Standard_Integer I);
+		%feature("autodoc", "Returns the ith transition of the line on the surface.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+IntCurveSurface_TransitionOnCurve
+") Transition;
+		IntCurveSurface_TransitionOnCurve Transition(const Standard_Integer I);
 
 		/****************** UParameter ******************/
 		%feature("compactdefaultargs") UParameter;
-		%feature("autodoc", "* Returns the U parameter of the ith intersection point on the surface.
-	:param I:
-	:type I: int
-	:rtype: float") UParameter;
-		Standard_Real UParameter (const Standard_Integer I);
+		%feature("autodoc", "Returns the u parameter of the ith intersection point on the surface.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+float
+") UParameter;
+		Standard_Real UParameter(const Standard_Integer I);
 
 		/****************** VParameter ******************/
 		%feature("compactdefaultargs") VParameter;
-		%feature("autodoc", "* Returns the V parameter of the ith intersection point on the surface.
-	:param I:
-	:type I: int
-	:rtype: float") VParameter;
-		Standard_Real VParameter (const Standard_Integer I);
+		%feature("autodoc", "Returns the v parameter of the ith intersection point on the surface.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+float
+") VParameter;
+		Standard_Real VParameter(const Standard_Integer I);
 
 		/****************** WParameter ******************/
 		%feature("compactdefaultargs") WParameter;
-		%feature("autodoc", "* Returns the parameter of the ith intersection point on the line.
-	:param I:
-	:type I: int
-	:rtype: float") WParameter;
-		Standard_Real WParameter (const Standard_Integer I);
+		%feature("autodoc", "Returns the parameter of the ith intersection point on the line.
+
+Parameters
+----------
+I: int
+
+Returns
+-------
+float
+") WParameter;
+		Standard_Real WParameter(const Standard_Integer I);
 
 };
 

@@ -2,16 +2,15 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 8b0e70d
+git revision : f2467d4
 
-operating system : debian Linux 4.15.0-76-generic
+operating system : Linux 64bit 4.15.0-91-generic
 
 occt version targeted : 7.4.0
 
-date : 2020-02-11 16:22:43.579343
+date : 2020-04-03 16:19:47.481756
 ############################
 
-[INFO ]  Single process mode
 [INFO ]  Processing toolkit TKBO ===
 [INFO ]  ## Processing module BOPAlgo
 [INFO ]  Wrap classes :
@@ -23,19 +22,22 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BOPAlgo_Algo
 [INFO ]  Class BOPAlgo_Algo is abstract, using %nodefaultctor directive.
 [INFO ]  BOPAlgo_MakeConnected
+[WARNI]  [TypeHint] Skip type BOPAlgo_MakePeriodic::PeriodicityParams, because of trailing :
 [INFO ]  BOPAlgo_MakePeriodic
 [INFO ]  Wrap nested class BOPAlgo_MakePeriodic::PeriodicityParams
+[WARNI]  [TypeHint] Skip type BOPAlgo_MakePeriodic::PeriodicityParams, because of trailing :
+[WARNI]  [TypeHint] Skipping type PeriodicityParams, should contain _
 [INFO ]  BOPAlgo_ArgumentAnalyzer
-[WARNI]  Creating Get and Set methods for method ArgumentTypeMode
-[WARNI]  Creating Get and Set methods for method ContinuityMode
-[WARNI]  Creating Get and Set methods for method CurveOnSurfaceMode
-[WARNI]  Creating Get and Set methods for method MergeEdgeMode
-[WARNI]  Creating Get and Set methods for method MergeVertexMode
-[WARNI]  Creating Get and Set methods for method RebuildFaceMode
-[WARNI]  Creating Get and Set methods for method SelfInterMode
-[WARNI]  Creating Get and Set methods for method SmallEdgeMode
-[WARNI]  Creating Get and Set methods for method StopOnFirstFaulty
-[WARNI]  Creating Get and Set methods for method TangentMode
+[INFO ]  Creating Get and Set methods for method ArgumentTypeMode
+[INFO ]  Creating Get and Set methods for method ContinuityMode
+[INFO ]  Creating Get and Set methods for method CurveOnSurfaceMode
+[INFO ]  Creating Get and Set methods for method MergeEdgeMode
+[INFO ]  Creating Get and Set methods for method MergeVertexMode
+[INFO ]  Creating Get and Set methods for method RebuildFaceMode
+[INFO ]  Creating Get and Set methods for method SelfInterMode
+[INFO ]  Creating Get and Set methods for method SmallEdgeMode
+[INFO ]  Creating Get and Set methods for method StopOnFirstFaulty
+[INFO ]  Creating Get and Set methods for method TangentMode
 [INFO ]  BOPAlgo_BuilderArea
 [INFO ]  Class BOPAlgo_BuilderArea is abstract, using %nodefaultctor directive.
 [INFO ]  BOPAlgo_BuilderShape
@@ -83,12 +85,6 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BOPDS_InterfZZ
 [INFO ]  BOPDS_IteratorSI
 [INFO ]  ## Processing module BOPTools
-[WARNI]  Class BOPTools_BoxSet has 3 ancestors and is skipped.
-[WARNI]  Class BOPTools_BoxSelector has 6 ancestors and is skipped.
-[WARNI]  Class BOPTools_PairSelector has 4 ancestors and is skipped.
-[WARNI]  Class BOPTools_BoxSet has 3 ancestors and is skipped.
-[WARNI]  Class BOPTools_BoxSelector has 6 ancestors and is skipped.
-[WARNI]  Class BOPTools_PairSelector has 4 ancestors and is skipped.
 [INFO ]  Wrap classes :
 [INFO ]  BOPTools_AlgoTools
 [INFO ]  BOPTools_AlgoTools2D
@@ -192,7 +188,6 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BRepTools_Quilt
 [INFO ]  BRepTools_ReShape
 [INFO ]  Wrap nested class BRepTools_ReShape::TReplacement
-[WARNI]  Creating Get and Set methods for method ModeConsiderLocation
 [INFO ]  BRepTools_ShapeSet
 [INFO ]  BRepTools_Substitution
 [INFO ]  BRepTools_WireExplorer
@@ -280,10 +275,14 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BinLDrivers
 [INFO ]  BinLDrivers_DocumentRetrievalDriver
 [INFO ]  BinLDrivers_DocumentSection
+[WARNI]  [TypeHint] Skipping unknown type, uint64 not in module list
+[WARNI]  [TypeHint] Skipping unknown type, uint64 not in module list
+[WARNI]  [TypeHint] Skipping unknown type, uint64 not in module list
+[WARNI]  [TypeHint] Skipping unknown type, uint64 not in module list
 [INFO ]  BinLDrivers_DocumentStorageDriver
 [INFO ]  ## Processing module BinMDF
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <BinMDF_ADriver>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <BinMDF_ADriver>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<BinMDF_ADriver>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<BinMDF_ADriver>, TColStd_MapTransientHasher>::Iterator
 [INFO ]  Wrap classes :
 [INFO ]  BinMDF
 [INFO ]  BinMDF_ADriver
@@ -411,6 +410,8 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BRepFill_Generator
 [INFO ]  BRepFill_LocationLaw
 [INFO ]  BRepFill_MultiLine
+[WARNI]  [TypeHint] Skipping type NCollection_Array1<gp_Vec2d>, seems to be a template
+[WARNI]  [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d>, seems to be a template
 [INFO ]  BRepFill_OffsetAncestors
 [INFO ]  BRepFill_OffsetWire
 [INFO ]  BRepFill_Pipe
@@ -575,6 +576,10 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  TopOpeBRepTool_connexity
 [INFO ]  TopOpeBRepTool_face
 [INFO ]  TopOpeBRepTool_makeTransition
+[WARNI]  [TypeHint] Skipping unknown type, Draw not in module list
+[WARNI]  [TypeHint] Skipping unknown type, Draw not in module list
+[WARNI]  [TypeHint] Skipping unknown type, Draw not in module list
+[WARNI]  [TypeHint] Skipping unknown type, Draw not in module list
 [INFO ]  Processing toolkit TKCAF ===
 [INFO ]  ## Processing module AppStd
 [INFO ]  Wrap classes :
@@ -647,6 +652,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  CDM_Reference
 [INFO ]  CDM_ReferenceIterator
 [INFO ]  ## Processing module LDOM
+[INFO ]  Wrap classes :
 [INFO ]  ## Processing module PCDM
 [INFO ]  Wrap classes :
 [INFO ]  PCDM
@@ -779,11 +785,13 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BlendFunc_Ruled
 [INFO ]  BlendFunc_RuledInv
 [INFO ]  BlendFunc_Tensor
-[WARNI]  Creating Get and Set methods for method ChangeValue
+[INFO ]  Creating Get and Set methods for method ChangeValue
 [INFO ]  BlendFunc_ChamfInv
 [INFO ]  BlendFunc_Chamfer
 [INFO ]  BlendFunc_ConstThroat
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  BlendFunc_ConstThroatInv
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  BlendFunc_ConstThroatWithPenetration
 [INFO ]  BlendFunc_ConstThroatWithPenetrationInv
 [INFO ]  ## Processing module ChFi2d
@@ -1039,6 +1047,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ## Processing module ApproxInt
 [INFO ]  Wrap classes :
 [INFO ]  ApproxInt_KnotTools
+[WARNI]  [TypeHint] Skipping type NCollection_Vector<int>, seems to be a template
 [INFO ]  ApproxInt_SvSurfaces
 [INFO ]  Class ApproxInt_SvSurfaces is abstract, using %nodefaultctor directive.
 [INFO ]  ## Processing module FairCurve
@@ -1193,7 +1202,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  GeomFill_Sweep
 [INFO ]  GeomFill_SweepFunction
 [INFO ]  GeomFill_Tensor
-[WARNI]  Creating Get and Set methods for method ChangeValue
+[INFO ]  Creating Get and Set methods for method ChangeValue
 [INFO ]  GeomFill_TgtField
 [INFO ]  Class GeomFill_TgtField is abstract, using %nodefaultctor directive.
 [INFO ]  GeomFill_TrihedronLaw
@@ -1289,6 +1298,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  IntCurve_PConic
 [INFO ]  IntCurve_PConicTool
 [INFO ]  IntCurve_ProjectOnPConicTool
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  ## Processing module IntCurveSurface
 [INFO ]  Wrap classes :
 [INFO ]  IntCurveSurface_Intersection
@@ -1309,6 +1319,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ## Processing module IntImpParGen
 [INFO ]  Wrap classes :
 [INFO ]  IntImpParGen
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  ## Processing module IntPatch
 [INFO ]  Wrap classes :
 [INFO ]  IntPatch_ALineToWLine
@@ -1339,6 +1350,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  IntPatch_TheSegmentOfTheSOnBounds
 [INFO ]  IntPatch_TheSurfFunction
 [INFO ]  IntPatch_WLineTool
+[WARNI]  [TypeHint] Skipping type NCollection_List<gp_Pnt>, seems to be a template
 [INFO ]  IntPatch_ALine
 [INFO ]  IntPatch_GLine
 [INFO ]  IntPatch_PointLine
@@ -1347,12 +1359,14 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  IntPatch_PolyLine
 [INFO ]  IntPatch_RLine
 [INFO ]  IntPatch_WLine
+[WARNI]  [TypeHint] Skip type IntPatch_WLine::IntPatch_WLType, because of trailing :
 [INFO ]  ## Processing module IntPolyh
 [INFO ]  Wrap classes :
 [INFO ]  IntPolyh_Couple
 [INFO ]  IntPolyh_CoupleMapHasher
 [INFO ]  IntPolyh_Edge
 [INFO ]  IntPolyh_Intersection
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  IntPolyh_Point
 [INFO ]  IntPolyh_PointNormal
 [INFO ]  IntPolyh_SectionLine
@@ -1459,24 +1473,115 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Wrap classes :
 [INFO ]  AdvApp2Var_ApproxAFunc2Var
 [INFO ]  AdvApp2Var_ApproxF2var
+[WARNI]  [TypeHint] Skipping type doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type const doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type const doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type const doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type const doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type doublereal *, should contain _
 [INFO ]  AdvApp2Var_Context
 [INFO ]  AdvApp2Var_Criterion
 [INFO ]  Class AdvApp2Var_Criterion is abstract, using %nodefaultctor directive.
 [INFO ]  AdvApp2Var_Data
+[WARNI]  [TypeHint] Skipping unknown type, maovpar not in module list
+[WARNI]  [TypeHint] Skipping unknown type, maovpch not in module list
+[WARNI]  [TypeHint] Skipping unknown type, mdnombr not in module list
+[WARNI]  [TypeHint] Skipping unknown type, minombr not in module list
+[WARNI]  [TypeHint] Skipping unknown type, mlgdrtl not in module list
+[WARNI]  [TypeHint] Skipping unknown type, mmapgs0 not in module list
+[WARNI]  [TypeHint] Skipping unknown type, mmapgs1 not in module list
+[WARNI]  [TypeHint] Skipping unknown type, mmapgs2 not in module list
+[WARNI]  [TypeHint] Skipping unknown type, mmapgss not in module list
+[WARNI]  [TypeHint] Skipping unknown type, mmcmcnp not in module list
+[WARNI]  [TypeHint] Skipping unknown type, mmjcobi not in module list
 [INFO ]  AdvApp2Var_Framework
 [INFO ]  AdvApp2Var_MathBase
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type const doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type doublereal *, should contain _
+[WARNI]  [TypeHint] Skipping type static doublereal, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type static doublereal, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type static doublereal, should contain _
+[WARNI]  [TypeHint] Skipping type doublereal *, should contain _
 [INFO ]  AdvApp2Var_Network
 [INFO ]  AdvApp2Var_Node
 [INFO ]  AdvApp2Var_Patch
 [INFO ]  AdvApp2Var_SysBase
 [INFO ]  Wrap nested class AdvApp2Var_SysBase::mitem
-[INFO ]  Wrap nested class AdvApp2Var_SysBase::
-[INFO ]  Wrap nested class AdvApp2Var_SysBase::
+[WARNI]  [TypeHint] Skipping type int *, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type ftnlen, should contain _
+[WARNI]  [TypeHint] Skipping type ftnlen, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
+[WARNI]  [TypeHint] Skipping type ftnlen, should contain _
+[WARNI]  [TypeHint] Skipping type integer *, should contain _
 [INFO ]  ## Processing module AppCont
 [INFO ]  Wrap classes :
 [INFO ]  AppCont_Function
 [INFO ]  Class AppCont_Function is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class AppCont_Function
+[WARNI]  [TypeHint] Skipping type NCollection_Array1<gp_Vec2d>, seems to be a template
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d>, seems to be a template
 [INFO ]  AppCont_LeastSquare
 [INFO ]  ## Processing module AppDef
 [INFO ]  Found HARRAY1 definitionAppDef_HArray1OfMultiPointConstraint: AppDef_Array1OfMultiPointConstraint
@@ -1512,7 +1617,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  AppDef_TheResol
 [INFO ]  AppDef_Variational
 [INFO ]  AppDef_LinearCriteria
-[WARNI]  Creating Get and Set methods for method EstLength
+[INFO ]  Creating Get and Set methods for method EstLength
 [INFO ]  ## Processing module AppParCurves
 [INFO ]  Found HARRAY1 definitionAppParCurves_HArray1OfMultiCurve: AppParCurves_Array1OfMultiCurve
 [INFO ]  Found HARRAY1 definitionAppParCurves_HArray1OfConstraintCouple: AppParCurves_Array1OfConstraintCouple
@@ -1635,7 +1740,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  FEmTool_LinearJerk
 [INFO ]  FEmTool_LinearTension
 [INFO ]  FEmTool_ProfileMatrix
-[WARNI]  Creating Get and Set methods for method ChangeValue
+[INFO ]  Creating Get and Set methods for method ChangeValue
 [INFO ]  ## Processing module GC
 [INFO ]  Wrap classes :
 [INFO ]  GC_MakeMirror
@@ -1737,6 +1842,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  IntAna_IntQuadQuad
 [INFO ]  IntAna_QuadQuadGeo
 [INFO ]  IntAna_Quadric
+[WARNI]  [TypeHint] Skipping type NCollection_List<gp_Pnt>, seems to be a template
 [INFO ]  ## Processing module IntAna2d
 [INFO ]  Wrap classes :
 [INFO ]  IntAna2d_AnaIntersection
@@ -1814,6 +1920,11 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Found HARRAY1 definitionHLRAlgo_HArray1OfPISeg: HLRAlgo_Array1OfPISeg
 [INFO ]  Wrap classes :
 [INFO ]  HLRAlgo
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [INFO ]  HLRAlgo_BiPoint
 [INFO ]  Wrap nested class HLRAlgo_BiPoint::IndicesT
 [INFO ]  Wrap nested class HLRAlgo_BiPoint::PointsT
@@ -1822,21 +1933,28 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  HLRAlgo_EdgeStatus
 [INFO ]  HLRAlgo_EdgesBlock
 [INFO ]  Wrap nested class HLRAlgo_EdgesBlock::MinMaxIndices
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [INFO ]  HLRAlgo_Interference
 [INFO ]  HLRAlgo_Intersection
 [INFO ]  HLRAlgo_PolyAlgo
+[WARNI]  [TypeHint] Skip type HLRAlgo_BiPoint::PointsT, because of trailing :
+[WARNI]  [TypeHint] Skip type HLRAlgo_BiPoint::PointsT, because of trailing :
 [INFO ]  HLRAlgo_PolyData
 [INFO ]  Wrap nested class HLRAlgo_PolyData::FaceIndices
 [INFO ]  Wrap nested class HLRAlgo_PolyData::Triangle
 [INFO ]  Wrap nested class HLRAlgo_PolyData::Box
 [INFO ]  HLRAlgo_PolyInternalData
+[WARNI]  [TypeHint] Skip type HLRAlgo_PolyInternalNode::NodeData, because of trailing :
 [INFO ]  HLRAlgo_PolyInternalNode
 [INFO ]  Wrap nested class HLRAlgo_PolyInternalNode::NodeIndices
 [INFO ]  Wrap nested class HLRAlgo_PolyInternalNode::NodeData
 [INFO ]  HLRAlgo_PolyShellData
 [INFO ]  Wrap nested class HLRAlgo_PolyShellData::ShellIndices
+[WARNI]  [TypeHint] Skip type HLRAlgo_PolyData::Box, because of trailing :
 [INFO ]  HLRAlgo_Projector
 [INFO ]  HLRAlgo_WiresBlock
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [INFO ]  ## Processing module HLRAppli
 [INFO ]  Wrap classes :
 [INFO ]  HLRAppli_ReflectLines
@@ -1853,8 +1971,11 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  HLRBRep_Curve
 [INFO ]  HLRBRep_CurveTool
 [INFO ]  HLRBRep_Data
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [INFO ]  HLRBRep_EdgeBuilder
 [INFO ]  HLRBRep_EdgeData
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [INFO ]  HLRBRep_EdgeFaceTool
 [INFO ]  HLRBRep_EdgeIList
 [INFO ]  HLRBRep_EdgeInterferenceTool
@@ -1871,10 +1992,14 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter
 [INFO ]  HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter
 [INFO ]  HLRBRep_PolyAlgo
+[WARNI]  [TypeHint] Skip type HLRAlgo_BiPoint::PointsT, because of trailing :
+[WARNI]  [TypeHint] Skip type HLRAlgo_BiPoint::PointsT, because of trailing :
 [INFO ]  HLRBRep_PolyHLRToShape
 [INFO ]  HLRBRep_SLProps
 [INFO ]  HLRBRep_SLPropsATool
 [INFO ]  HLRBRep_ShapeBounds
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
+[WARNI]  [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [INFO ]  HLRBRep_ShapeToHLR
 [INFO ]  HLRBRep_SurfaceTool
 [INFO ]  HLRBRep_TheCSFunctionOfInterCSurf
@@ -1909,8 +2034,8 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ## Processing module TopBas
 [INFO ]  Wrap classes :
 [INFO ]  TopBas_TestInterference
-[WARNI]  Creating Get and Set methods for method ChangeBoundary
-[WARNI]  Creating Get and Set methods for method ChangeIntersection
+[INFO ]  Creating Get and Set methods for method ChangeBoundary
+[INFO ]  Creating Get and Set methods for method ChangeIntersection
 [INFO ]  ## Processing module TopCnx
 [INFO ]  Wrap classes :
 [INFO ]  TopCnx_EdgeFaceTransition
@@ -1946,7 +2071,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  IGESData_IGESReaderTool
 [INFO ]  IGESData_IGESType
 [INFO ]  IGESData_IGESWriter
-[WARNI]  Creating Get and Set methods for method WriteMode
+[INFO ]  Creating Get and Set methods for method WriteMode
 [INFO ]  IGESData_NodeOfSpecificLib
 [INFO ]  IGESData_NodeOfWriterLib
 [INFO ]  IGESData_ParamCursor
@@ -1987,10 +2112,54 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  IGESToBRep_Reader
 [INFO ]  IGESToBRep_ToolContainer
 [INFO ]  IGESToBRep_BRepEntity
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
 [INFO ]  IGESToBRep_BasicCurve
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
 [INFO ]  IGESToBRep_BasicSurface
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESSolid not in module list
 [INFO ]  IGESToBRep_TopoCurve
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
 [INFO ]  IGESToBRep_TopoSurface
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESBasic not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
+[WARNI]  [TypeHint] Skipping unknown type, IGESGeom not in module list
 [INFO ]  Processing toolkit TKIVtk ===
 [INFO ]  ## Processing module IVtk
 [INFO ]  Wrap classes :
@@ -2006,10 +2175,10 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  AppStdL_Application
 [INFO ]  ## Processing module TDF
 [INFO ]  Found HARRAY1 definitionTDF_HAttributeArray1: TDF_AttributeArray1
-[WARNI]  This template type cannot be handled: NCollection_DoubleMap <opencascade::handle <TDF_Attribute>, opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher , TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DoubleMap <opencascade::handle <TDF_Attribute>, opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher , TColStd_MapTransientHasher>::Iterator
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <TDF_Attribute>, opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <TDF_Attribute>, opencascade::handle <TDF_Attribute>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher>::Iterator
 [INFO ]  Wrap classes :
 [INFO ]  TDF
 [INFO ]  TDF_Attribute
@@ -2124,7 +2293,20 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BSplSLib
 [INFO ]  BSplSLib_Cache
 [INFO ]  ## Processing module BVH
-[WARNI]  Template: Rangeskipped because name does'nt contain _.
+[INFO ]  Wrap classes :
+[INFO ]  BVH_AxisSelector<T,2>
+[INFO ]  BVH_Tree<T,N,BVH_BinaryTree>
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type BVH_Box<T,, seems to be a template
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type BVH_Box<T,, seems to be a template
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type BVH_Tree<T,, seems to be a template
+[WARNI]  [TypeHint] Skipping type T, should contain _
+[INFO ]  BVH_Tree<T,N,BVH_QuadTree>
 [INFO ]  ## Processing module Bnd
 [INFO ]  Found HARRAY1 definitionBnd_HArray1OfBox: Bnd_Array1OfBox
 [INFO ]  Found HARRAY1 definitionBnd_HArray1OfSphere: Bnd_Array1OfSphere
@@ -2140,8 +2322,11 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Bnd_Box2d
 [INFO ]  Bnd_OBB
 [INFO ]  Bnd_Range
+[WARNI]  [TypeHint] Skipping type NCollection_List<Bnd_Range>, seems to be a template
 [INFO ]  Bnd_Sphere
 [INFO ]  Bnd_Tools
+[WARNI]  [TypeHint] Skipping type BVH_Box<float,, seems to be a template
+[WARNI]  [TypeHint] Skipping type BVH_Box<float,, seems to be a template
 [INFO ]  ## Processing module CSLib
 [INFO ]  Wrap classes :
 [INFO ]  CSLib
@@ -2163,6 +2348,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Convert_ParabolaToBSplineCurve
 [INFO ]  Convert_SphereToBSplineSurface
 [INFO ]  Convert_TorusToBSplineSurface
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  ## Processing module ElCLib
 [INFO ]  Wrap classes :
 [INFO ]  ElCLib
@@ -2233,6 +2419,9 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ExprIntrp_GenExp
 [INFO ]  ExprIntrp_GenFct
 [INFO ]  ExprIntrp_GenRel
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  ## Processing module GeomAbs
 [INFO ]  Wrap classes :
 [INFO ]  ## Processing module PLib
@@ -2249,14 +2438,17 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Poly
 [INFO ]  Poly_CoherentLink
 [INFO ]  Poly_CoherentNode
+[WARNI]  [TypeHint] Skip type Poly_CoherentTriPtr::Iterator, because of trailing :
 [INFO ]  Poly_CoherentTriangle
 [INFO ]  Poly_Connect
 [INFO ]  Poly_Polygon2D
 [INFO ]  Poly_Polygon3D
 [INFO ]  Poly_PolygonOnTriangulation
 [INFO ]  Poly_Triangle
-[WARNI]  Creating Get and Set methods for method ChangeValue
+[INFO ]  Creating Get and Set methods for method ChangeValue
 [INFO ]  Poly_Triangulation
+[WARNI]  [TypeHint] Skip type Poly_MakeLoops::Link, because of trailing :
+[WARNI]  [TypeHint] Skip type Poly_MakeLoops::Link, because of trailing :
 [INFO ]  ## Processing module Precision
 [INFO ]  Wrap classes :
 [INFO ]  Precision
@@ -2320,9 +2512,9 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  gp_Lin
 [INFO ]  gp_Lin2d
 [INFO ]  gp_Mat
-[WARNI]  Creating Get and Set methods for method ChangeValue
+[INFO ]  Creating Get and Set methods for method ChangeValue
 [INFO ]  gp_Mat2d
-[WARNI]  Creating Get and Set methods for method ChangeValue
+[INFO ]  Creating Get and Set methods for method ChangeValue
 [INFO ]  gp_Parab
 [INFO ]  gp_Parab2d
 [INFO ]  gp_Pln
@@ -2338,9 +2530,9 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  gp_Vec
 [INFO ]  gp_Vec2d
 [INFO ]  gp_XY
-[WARNI]  Creating Get and Set methods for method ChangeCoord
+[INFO ]  Creating Get and Set methods for method ChangeCoord
 [INFO ]  gp_XYZ
-[WARNI]  Creating Get and Set methods for method ChangeCoord
+[INFO ]  Creating Get and Set methods for method ChangeCoord
 [INFO ]  ## Processing module math
 [INFO ]  Wrap classes :
 [INFO ]  math
@@ -2355,7 +2547,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  math_Crout
 [INFO ]  math_DirectPolynomialRoots
 [INFO ]  math_DoubleTab
-[WARNI]  Creating Get and Set methods for method Value
+[INFO ]  Creating Get and Set methods for method Value
 [INFO ]  math_EigenValuesSearcher
 [INFO ]  math_FRPR
 [INFO ]  math_Function
@@ -2376,10 +2568,11 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Wrap nested class math_GlobOptMin::NCollection_CellFilter_Inspector
 [INFO ]  math_Householder
 [INFO ]  math_IntegerVector
+[INFO ]  Creating Get and Set methods for method Value
 [INFO ]  math_Jacobi
 [INFO ]  math_KronrodSingleIntegration
 [INFO ]  math_Matrix
-[WARNI]  Creating Get and Set methods for method Value
+[INFO ]  Creating Get and Set methods for method Value
 [INFO ]  math_MultipleVarFunction
 [INFO ]  Class math_MultipleVarFunction is abstract, using %nodefaultctor directive.
 [INFO ]  math_NewtonFunctionRoot
@@ -2387,12 +2580,16 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  math_NewtonMinimum
 [INFO ]  math_PSO
 [INFO ]  math_PSOParticlesPool
+[WARNI]  [TypeHint] Skipping unknown type, PSO not in module list
+[WARNI]  [TypeHint] Skipping unknown type, PSO not in module list
+[WARNI]  [TypeHint] Skipping unknown type, PSO not in module list
 [INFO ]  math_Powell
 [INFO ]  math_SVD
 [INFO ]  math_TrigonometricFunctionRoots
 [INFO ]  math_Uzawa
 [INFO ]  math_ValueAndWeight
 [INFO ]  math_Vector
+[INFO ]  Creating Get and Set methods for method Value
 [INFO ]  math_FunctionSetWithDerivatives
 [INFO ]  Class math_FunctionSetWithDerivatives is abstract, using %nodefaultctor directive.
 [INFO ]  math_FunctionWithDerivative
@@ -2408,26 +2605,55 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BRepMesh_BaseMeshAlgo
 [INFO ]  Class BRepMesh_BaseMeshAlgo is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class BRepMesh_BaseMeshAlgo
+[WARNI]  [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  BRepMesh_Circle
 [INFO ]  BRepMesh_CircleInspector
+[WARNI]  [TypeHint] Skipping type const IMeshData::VectorOfCircle &, should contain _
+[WARNI]  [TypeHint] Skipping type IMeshData::ListOfInteger &, should contain _
 [INFO ]  BRepMesh_CircleTool
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type IMeshData::ListOfInteger &, should contain _
 [INFO ]  BRepMesh_Classifier
+[WARNI]  [TypeHint] Skipping type NCollection_Sequence<const, seems to be a template
 [INFO ]  BRepMesh_Context
 [INFO ]  BRepMesh_CurveTessellator
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [INFO ]  BRepMesh_DataStructureOfDelaun
+[WARNI]  [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::ListOfInteger &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
 [INFO ]  BRepMesh_Deflection
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IWireHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  BRepMesh_Delaun
+[WARNI]  [TypeHint] Skipping type IMeshData::Array1OfVertexOfDelaun &, should contain _
+[WARNI]  [TypeHint] Skipping type IMeshData::Array1OfVertexOfDelaun &, should contain _
+[WARNI]  [TypeHint] Skipping type IMeshData::VectorOfInteger &, should contain _
+[WARNI]  [TypeHint] Skipping type IMeshData::VectorOfInteger &, should contain _
+[WARNI]  [TypeHint] Skipping type IMeshData::VectorOfInteger &, should contain _
+[WARNI]  [TypeHint] Skipping type IMeshData::Array1OfVertexOfDelaun &, should contain _
 [INFO ]  BRepMesh_DiscretFactory
 [INFO ]  BRepMesh_DiscretRoot
 [INFO ]  Class BRepMesh_DiscretRoot is abstract, using %nodefaultctor directive.
 [INFO ]  BRepMesh_EdgeDiscret
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [INFO ]  BRepMesh_FaceChecker
 [INFO ]  Wrap nested class BRepMesh_FaceChecker::Segment
+[WARNI]  [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  BRepMesh_FaceDiscret
 [INFO ]  BRepMesh_GeomTool
+[WARNI]  [TypeHint] Skip type std::pair<int,, because of trailing :
 [INFO ]  BRepMesh_MeshAlgoFactory
 [INFO ]  BRepMesh_MeshTool
 [INFO ]  Wrap nested class BRepMesh_MeshTool::NodeClassifier
+[WARNI]  [TypeHint] Skipping type const IMeshData::MapOfIntegerInteger &, should contain _
+[WARNI]  [TypeHint] Skipping type IMeshData::MapOfIntegerInteger &, should contain _
 [INFO ]  BRepMesh_ModelBuilder
 [INFO ]  BRepMesh_ModelHealer
 [INFO ]  BRepMesh_ModelPostProcessor
@@ -2435,12 +2661,19 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BRepMesh_OrientedEdge
 [INFO ]  BRepMesh_PairOfIndex
 [INFO ]  BRepMesh_SelectorOfDataStructureOfDelaun
+[WARNI]  [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
 [INFO ]  BRepMesh_ShapeTool
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [INFO ]  BRepMesh_ShapeVisitor
 [INFO ]  BRepMesh_Triangle
 [INFO ]  BRepMesh_Vertex
 [INFO ]  BRepMesh_VertexInspector
+[WARNI]  [TypeHint] Skipping type const IMeshData::ListOfInteger &, should contain _
 [INFO ]  BRepMesh_VertexTool
+[WARNI]  [TypeHint] Skipping type const IMeshData::ListOfInteger &, should contain _
 [INFO ]  BRepMesh_Edge
 [INFO ]  BRepMesh_IncrementalMesh
 [INFO ]  BRepMesh_DelaunayBaseMeshAlgo
@@ -2448,58 +2681,71 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Wrap classes :
 [INFO ]  BRepMeshData_Curve
 [INFO ]  BRepMeshData_Edge
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
 [INFO ]  BRepMeshData_Face
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IWireHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IWireHandle &, should contain _
 [INFO ]  BRepMeshData_Model
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IFaceHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IFaceHandle &, should contain _
 [INFO ]  BRepMeshData_PCurve
 [INFO ]  BRepMeshData_Wire
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgePtr &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IEdgePtr &, should contain _
 [INFO ]  ## Processing module IMeshData
-[WARNI]  This template type cannot be handled: NCollection_Shared <NCollection_DataMap <IFacePtr , opencascade::handle <MapOfIEdgePtr>, WeakEqual <IMeshData_Face>>>
-[WARNI]  Template: IMeshData::IEdgeHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IWireHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IFaceHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ICurveHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IPCurveHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ICurveArrayAdaptorHandleskipped because name does'nt contain _.
+[WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_DataMap<IFacePtr, opencascade::handle<MapOfIEdgePtr>, WeakEqual<IMeshData_Face>>>
+[WARNI]  Template: IMeshData::Array1OfIntegerskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::Array1OfVertexOfDelaunskipped because name does'nt contain _.
 [WARNI]  Template: IMeshData::BndBox2dTreeskipped because name does'nt contain _.
 [WARNI]  Template: IMeshData::BndBox2dTreeFillerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIFaceHandlesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIWireHandlesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIEdgeHandlesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIPCurveHandlesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIEdgePtrsskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfBooleanskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfOrientationskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfElementsskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfCircleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::Array1OfVertexOfDelaunskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfVertexskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::SequenceOfBndB2dskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::SequenceOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::SequenceOfRealskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::CircleCellFilterskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::DMapOfIFacePtrsListOfIntegerskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::DMapOfIFacePtrsMapOfIEdgePtrsskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::DMapOfIntegerListOfIntegerskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::DMapOfShapeIntegerskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::ICurveArrayAdaptorHandleskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::ICurveHandleskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::IDMapOfIFacePtrsListOfIPCurvesskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::IDMapOfLinkskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::IEdgeHandleskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::IFaceHandleskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::IMapOfRealskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::IPCurveHandleskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::IWireHandleskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::ListOfIPCurvesskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::ListOfIntegerskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::ListOfPnt2dskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::MapOfIEdgePtrskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::MapOfIFacePtrskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::MapOfIntegerskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::MapOfIntegerIntegerskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::MapOfOrientedEdgesskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::MapOfRealskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::Model::SequenceOfIntegerskipped because name does'nt contain _.
 [WARNI]  Template: IMeshData::Model::SequenceOfPntskipped because name does'nt contain _.
 [WARNI]  Template: IMeshData::Model::SequenceOfPnt2dskipped because name does'nt contain _.
 [WARNI]  Template: IMeshData::Model::SequenceOfRealskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::Model::SequenceOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ListOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ListOfPnt2dskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ListOfIPCurvesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::CircleCellFilterskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::SequenceOfBndB2dskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::SequenceOfIntegerskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::SequenceOfRealskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfBooleanskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfCircleskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfElementsskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfIEdgeHandlesskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfIEdgePtrsskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfIFaceHandlesskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfIPCurveHandlesskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfIWireHandlesskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfIntegerskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfOrientationskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::VectorOfVertexskipped because name does'nt contain _.
 [WARNI]  Template: IMeshData::VertexCellFilterskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::DMapOfShapeIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::DMapOfIFacePtrsListOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfIEdgePtrskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfIFacePtrskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfOrientedEdgesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfRealskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IDMapOfIFacePtrsListOfIPCurvesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::DMapOfIFacePtrsMapOfIEdgePtrsskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IDMapOfLinkskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::DMapOfIntegerListOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfIntegerIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IMapOfRealskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::Array1OfIntegerskipped because name does'nt contain _.
 [INFO ]  Wrap classes :
 [INFO ]  IMeshData_ParametersList
 [INFO ]  Class IMeshData_ParametersList is abstract, using %nodefaultctor directive.
@@ -2509,15 +2755,31 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Class IMeshData_Curve is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshData_Model
 [INFO ]  Class IMeshData_Model is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IFaceHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IEdgeHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IFaceHandle &, should contain _
 [INFO ]  IMeshData_PCurve
 [INFO ]  Class IMeshData_PCurve is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
 [INFO ]  IMeshData_TessellatedShape
 [INFO ]  IMeshData_Edge
 [INFO ]  Class IMeshData_Edge is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::ICurveHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type const IMeshData::ICurveHandle &, should contain _
 [INFO ]  IMeshData_Face
 [INFO ]  Class IMeshData_Face is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IWireHandle &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IWireHandle &, should contain _
 [INFO ]  IMeshData_Wire
 [INFO ]  Class IMeshData_Wire is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type const IMeshData::IEdgePtr &, should contain _
+[WARNI]  [TypeHint] Skipping type virtual const IMeshData::IEdgePtr &, should contain _
 [INFO ]  ## Processing module IMeshTools
 [INFO ]  Wrap classes :
 [INFO ]  IMeshTools_Context
@@ -2525,6 +2787,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Class IMeshTools_CurveTessellator is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshTools_MeshAlgo
 [INFO ]  Class IMeshTools_MeshAlgo is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  IMeshTools_MeshAlgoFactory
 [INFO ]  Class IMeshTools_MeshAlgoFactory is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshTools_MeshBuilder
@@ -2532,6 +2795,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Class IMeshTools_ModelAlgo is abstract, using %nodefaultctor directive.
 [INFO ]  IMeshTools_ModelBuilder
 [INFO ]  Class IMeshTools_ModelBuilder is abstract, using %nodefaultctor directive.
+[WARNI]  Constructor skipped for abstract class IMeshTools_ModelBuilder
 [INFO ]  IMeshTools_Parameters
 [INFO ]  IMeshTools_ShapeExplorer
 [INFO ]  IMeshTools_ShapeVisitor
@@ -2563,10 +2827,16 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  MeshVS_DataSource3D
 [INFO ]  MeshVS_DeformedDataSource
 [INFO ]  MeshVS_ElementalColorPrsBuilder
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  MeshVS_MeshPrsBuilder
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  MeshVS_NodalColorPrsBuilder
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  MeshVS_TextPrsBuilder
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  MeshVS_VectorPrsBuilder
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  Processing toolkit TKOffset ===
 [INFO ]  ## Processing module BRepOffset
 [INFO ]  Wrap classes :
@@ -2578,6 +2848,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BRepOffset_MakeLoops
 [INFO ]  BRepOffset_MakeOffset
 [INFO ]  BRepOffset_MakeSimpleOffset
+[WARNI]  [TypeHint] Skipping unknown type, BRepOffsetSimple not in module list
 [INFO ]  BRepOffset_Offset
 [INFO ]  BRepOffset_SimpleOffset
 [INFO ]  Wrap nested class BRepOffset_SimpleOffset::NewFaceData
@@ -2613,7 +2884,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Draft_FaceInfo
 [INFO ]  Draft_Modification
 [INFO ]  Draft_VertexInfo
-[WARNI]  Creating Get and Set methods for method ChangeParameter
+[INFO ]  Creating Get and Set methods for method ChangeParameter
 [INFO ]  Processing toolkit TKPrim ===
 [INFO ]  ## Processing module BRepPrim
 [INFO ]  Wrap classes :
@@ -2634,6 +2905,9 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BRepPrimAPI_MakeHalfSpace
 [INFO ]  BRepPrimAPI_MakeOneAxis
 [INFO ]  Class BRepPrimAPI_MakeOneAxis is abstract, using %nodefaultctor directive.
+[WARNI]  Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
+[WARNI]  Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
+[WARNI]  Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
 [INFO ]  BRepPrimAPI_MakeSweep
 [INFO ]  Class BRepPrimAPI_MakeSweep is abstract, using %nodefaultctor directive.
 [INFO ]  BRepPrimAPI_MakeWedge
@@ -2677,6 +2951,11 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Class RWObj_IShapeReceiver is abstract, using %nodefaultctor directive.
 [INFO ]  RWObj_Material
 [INFO ]  RWObj_SubMesh
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const char, should contain _
 [INFO ]  Processing toolkit TKSTEP ===
 [INFO ]  ## Processing module GeomToStep
 [INFO ]  Wrap classes :
@@ -2936,7 +3215,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  TopoDSToStep
 [INFO ]  TopoDSToStep_FacetedTool
 [INFO ]  TopoDSToStep_Root
-[WARNI]  Creating Get and Set methods for method Tolerance
+[INFO ]  Creating Get and Set methods for method Tolerance
 [INFO ]  TopoDSToStep_Tool
 [INFO ]  TopoDSToStep_Builder
 [INFO ]  TopoDSToStep_MakeBrepWithVoids
@@ -3295,6 +3574,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  StepDimTol_RunoutZoneOrientation
 [INFO ]  StepDimTol_ShapeToleranceSelect
 [INFO ]  StepDimTol_SimpleDatumReferenceModifierMember
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  StepDimTol_ToleranceZone
 [INFO ]  StepDimTol_ToleranceZoneDefinition
 [INFO ]  StepDimTol_ToleranceZoneForm
@@ -3387,6 +3667,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  StepVisual_MarkerMember
 [INFO ]  StepVisual_MarkerSelect
 [INFO ]  StepVisual_NullStyleMember
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  StepVisual_PlanarExtent
 [INFO ]  StepVisual_PointStyle
 [INFO ]  StepVisual_PreDefinedItem
@@ -3443,7 +3724,11 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  StepVisual_PresentationView
 [INFO ]  StepVisual_TessellatedAnnotationOccurrence
 [INFO ]  StepVisual_TessellatedCurveSet
+[WARNI]  [TypeHint] Skipping type NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger, seems to be a template
+[WARNI]  [TypeHint] Skipping type NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>, seems to be a template
 [INFO ]  StepVisual_TessellatedGeometricSet
+[WARNI]  [TypeHint] Skipping type NCollection_Handle<StepVisual_Array1OfTessellatedItem>, seems to be a template
+[WARNI]  [TypeHint] Skipping type NCollection_Handle<StepVisual_Array1OfTessellatedItem, seems to be a template
 [INFO ]  StepVisual_TextStyleWithBoxCharacteristics
 [INFO ]  StepVisual_AnnotationCurveOccurrence
 [INFO ]  StepVisual_AnnotationFillAreaOccurrence
@@ -3975,51 +4260,6 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  StepBasic_SiUnitAndThermodynamicTemperatureUnit
 [INFO ]  StepBasic_SiUnitAndTimeUnit
 [INFO ]  StepBasic_SiUnitAndVolumeUnit
-[INFO ]  ## Processing module StepData
-[INFO ]  Found HARRAY1 definitionStepData_HArray1OfField: StepData_Array1OfField
-[INFO ]  Wrap classes :
-[INFO ]  StepData
-[INFO ]  StepData_Described
-[INFO ]  Class StepData_Described is abstract, using %nodefaultctor directive.
-[INFO ]  StepData_EDescr
-[INFO ]  Class StepData_EDescr is abstract, using %nodefaultctor directive.
-[INFO ]  StepData_EnumTool
-[INFO ]  StepData_Field
-[INFO ]  StepData_FieldList
-[INFO ]  StepData_FileRecognizer
-[INFO ]  Class StepData_FileRecognizer is abstract, using %nodefaultctor directive.
-[INFO ]  StepData_GeneralModule
-[INFO ]  Class StepData_GeneralModule is abstract, using %nodefaultctor directive.
-[INFO ]  StepData_GlobalNodeOfWriterLib
-[INFO ]  StepData_NodeOfWriterLib
-[INFO ]  StepData_PDescr
-[INFO ]  StepData_Protocol
-[INFO ]  StepData_ReadWriteModule
-[INFO ]  Class StepData_ReadWriteModule is abstract, using %nodefaultctor directive.
-[INFO ]  StepData_SelectMember
-[INFO ]  StepData_SelectType
-[INFO ]  Class StepData_SelectType is abstract, using %nodefaultctor directive.
-[INFO ]  StepData_StepDumper
-[INFO ]  StepData_StepModel
-[INFO ]  StepData_StepReaderData
-[INFO ]  StepData_StepReaderTool
-[INFO ]  StepData_StepWriter
-[WARNI]  Creating Get and Set methods for method LabelMode
-[WARNI]  Creating Get and Set methods for method TypeMode
-[INFO ]  StepData_WriterLib
-[INFO ]  StepData_DefaultGeneral
-[INFO ]  StepData_ECDescr
-[INFO ]  StepData_ESDescr
-[INFO ]  StepData_FieldList1
-[INFO ]  StepData_FieldListD
-[INFO ]  StepData_FieldListN
-[INFO ]  StepData_FileProtocol
-[INFO ]  StepData_Plex
-[INFO ]  StepData_SelectInt
-[INFO ]  StepData_SelectNamed
-[INFO ]  StepData_SelectReal
-[INFO ]  StepData_Simple
-[INFO ]  StepData_SelectArrReal
 [INFO ]  ## Processing module StepGeom
 [INFO ]  Found HARRAY1 definitionStepGeom_HArray1OfCartesianPoint: StepGeom_Array1OfCartesianPoint
 [INFO ]  Found HARRAY1 definitionStepGeom_HArray1OfPcurveOrSurface: StepGeom_Array1OfPcurveOrSurface
@@ -4332,7 +4572,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  StlAPI
 [INFO ]  StlAPI_Reader
 [INFO ]  StlAPI_Writer
-[WARNI]  Creating Get and Set methods for method ASCIIMode
+[INFO ]  Creating Get and Set methods for method ASCIIMode
 [INFO ]  Processing toolkit TKService ===
 [INFO ]  ## Processing module Aspect
 [INFO ]  Wrap classes :
@@ -4343,22 +4583,110 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Class Aspect_Grid is abstract, using %nodefaultctor directive.
 [INFO ]  Aspect_ScrollDelta
 [WARNI]  Wrong type in class property : NCollection_Vec2
+[WARNI]  [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Aspect_Touch
 [WARNI]  Wrong type in class property : NCollection_Vec2
 [WARNI]  Wrong type in class property : NCollection_Vec2
+[WARNI]  [TypeHint] Skipping type NCollection_Vec2<float>, seems to be a template
+[WARNI]  [TypeHint] Skipping type NCollection_Vec2<float, seems to be a template
 [INFO ]  Aspect_Window
 [INFO ]  Class Aspect_Window is abstract, using %nodefaultctor directive.
 [INFO ]  Aspect_GradientBackground
 [INFO ]  ## Processing module Image
+[INFO ]  Wrap classes :
 [INFO ]  ## Processing module InterfaceGraphic
 [INFO ]  Wrap classes :
-[INFO ]  ## Processing module SelectBasics
+[INFO ]  ## Processing module Media
 [INFO ]  Wrap classes :
-[INFO ]  SelectBasics
-[INFO ]  SelectBasics_PickResult
-[INFO ]  SelectBasics_SelectingVolumeManager
-[INFO ]  Class SelectBasics_SelectingVolumeManager is abstract, using %nodefaultctor directive.
-[WARNI]  Constructor skipped for abstract class SelectBasics_SelectingVolumeManager
+[INFO ]  Media_BufferPool
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type AVBufferRef *, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[INFO ]  Media_CodecContext
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type AVCodecContext *, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const AVStream &, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const AVStream &, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[INFO ]  Media_FormatContext
+[WARNI]  [TypeHint] Skipping type AVFormatContext *, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type static double, should contain _
+[WARNI]  [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type const AVRational &, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type const AVStream &, should contain _
+[WARNI]  [TypeHint] Skipping type AVCodecContext *, should contain _
+[WARNI]  [TypeHint] Skipping type const AVStream &, should contain _
+[WARNI]  [TypeHint] Skipping type static double, should contain _
+[WARNI]  [TypeHint] Skipping type const AVStream &, should contain _
+[WARNI]  [TypeHint] Skipping type static double, should contain _
+[WARNI]  [TypeHint] Skipping type const AVRational &, should contain _
+[INFO ]  Media_Frame
+[WARNI]  [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]  [TypeHint] Skipping type AVFrame *, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type const AVFrame *, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping unknown type, uint8 not in module list
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[INFO ]  Media_IFrameQueue
+[INFO ]  Class Media_IFrameQueue is abstract, using %nodefaultctor directive.
+[INFO ]  Media_Packet
+[WARNI]  [TypeHint] Skipping unknown type, uint8 not in module list
+[WARNI]  [TypeHint] Skipping type AVPacket *, should contain _
+[WARNI]  [TypeHint] Skipping unknown type, uint8 not in module list
+[WARNI]  [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]  [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const AVPacket *, should contain _
+[WARNI]  [TypeHint] Skipping unknown type, int64 not in module list
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[INFO ]  Media_PlayerContext
+[WARNI]  [TypeHint] Skipping type static bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[INFO ]  Media_Scaler
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[INFO ]  Media_Timer
 [INFO ]  ## Processing module TColQuantity
 [INFO ]  Found HARRAY2 definitionTColQuantity_HArray2OfLength: TColQuantity_Array2OfLength
 [INFO ]  Found HARRAY1 definitionTColQuantity_HArray1OfLength: TColQuantity_Array1OfLength
@@ -4380,22 +4708,22 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ShapeAnalysis_FreeBoundsProperties
 [INFO ]  ShapeAnalysis_Geom
 [INFO ]  ShapeAnalysis_ShapeContents
-[WARNI]  Creating Get and Set methods for method ModifyBigSplineMode
-[WARNI]  Creating Get and Set methods for method ModifyIndirectMode
-[WARNI]  Creating Get and Set methods for method ModifyOffestSurfaceMode
-[WARNI]  Creating Get and Set methods for method ModifyOffsetCurveMode
-[WARNI]  Creating Get and Set methods for method ModifyTrimmed2dMode
-[WARNI]  Creating Get and Set methods for method ModifyTrimmed3dMode
+[INFO ]  Creating Get and Set methods for method ModifyBigSplineMode
+[INFO ]  Creating Get and Set methods for method ModifyIndirectMode
+[INFO ]  Creating Get and Set methods for method ModifyOffestSurfaceMode
+[INFO ]  Creating Get and Set methods for method ModifyOffsetCurveMode
+[INFO ]  Creating Get and Set methods for method ModifyTrimmed2dMode
+[INFO ]  Creating Get and Set methods for method ModifyTrimmed3dMode
 [INFO ]  ShapeAnalysis_ShapeTolerance
 [INFO ]  ShapeAnalysis_Shell
 [INFO ]  ShapeAnalysis_Surface
 [INFO ]  ShapeAnalysis_TransferParameters
 [INFO ]  ShapeAnalysis_Wire
 [INFO ]  ShapeAnalysis_WireOrder
-[WARNI]  Creating Get and Set methods for method KeepLoopsMode
+[INFO ]  Creating Get and Set methods for method KeepLoopsMode
 [INFO ]  ShapeAnalysis_WireVertex
 [INFO ]  ShapeAnalysis_TransferParametersProj
-[WARNI]  Creating Get and Set methods for method ForceProjection
+[INFO ]  Creating Get and Set methods for method ForceProjection
 [INFO ]  ## Processing module ShapeBuild
 [INFO ]  Wrap classes :
 [INFO ]  ShapeBuild
@@ -4408,8 +4736,8 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ShapeConstruct_Curve
 [INFO ]  ShapeConstruct_MakeTriangulation
 [INFO ]  ShapeConstruct_ProjectCurveOnSurface
-[WARNI]  Creating Get and Set methods for method AdjustOverDegenMode
-[WARNI]  Creating Get and Set methods for method BuildCurveMode
+[INFO ]  Creating Get and Set methods for method AdjustOverDegenMode
+[INFO ]  Creating Get and Set methods for method BuildCurveMode
 [INFO ]  ## Processing module ShapeCustom
 [INFO ]  Wrap classes :
 [INFO ]  ShapeCustom
@@ -4417,22 +4745,22 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ShapeCustom_Curve2d
 [INFO ]  ShapeCustom_Modification
 [INFO ]  ShapeCustom_RestrictionParameters
-[WARNI]  Creating Get and Set methods for method ConvertBezierSurf
-[WARNI]  Creating Get and Set methods for method ConvertConicalSurf
-[WARNI]  Creating Get and Set methods for method ConvertCurve2d
-[WARNI]  Creating Get and Set methods for method ConvertCurve3d
-[WARNI]  Creating Get and Set methods for method ConvertCylindricalSurf
-[WARNI]  Creating Get and Set methods for method ConvertExtrusionSurf
-[WARNI]  Creating Get and Set methods for method ConvertOffsetCurv2d
-[WARNI]  Creating Get and Set methods for method ConvertOffsetCurv3d
-[WARNI]  Creating Get and Set methods for method ConvertOffsetSurf
-[WARNI]  Creating Get and Set methods for method ConvertPlane
-[WARNI]  Creating Get and Set methods for method ConvertRevolutionSurf
-[WARNI]  Creating Get and Set methods for method ConvertSphericalSurf
-[WARNI]  Creating Get and Set methods for method ConvertToroidalSurf
-[WARNI]  Creating Get and Set methods for method GMaxDegree
-[WARNI]  Creating Get and Set methods for method GMaxSeg
-[WARNI]  Creating Get and Set methods for method SegmentSurfaceMode
+[INFO ]  Creating Get and Set methods for method ConvertBezierSurf
+[INFO ]  Creating Get and Set methods for method ConvertConicalSurf
+[INFO ]  Creating Get and Set methods for method ConvertCurve2d
+[INFO ]  Creating Get and Set methods for method ConvertCurve3d
+[INFO ]  Creating Get and Set methods for method ConvertCylindricalSurf
+[INFO ]  Creating Get and Set methods for method ConvertExtrusionSurf
+[INFO ]  Creating Get and Set methods for method ConvertOffsetCurv2d
+[INFO ]  Creating Get and Set methods for method ConvertOffsetCurv3d
+[INFO ]  Creating Get and Set methods for method ConvertOffsetSurf
+[INFO ]  Creating Get and Set methods for method ConvertPlane
+[INFO ]  Creating Get and Set methods for method ConvertRevolutionSurf
+[INFO ]  Creating Get and Set methods for method ConvertSphericalSurf
+[INFO ]  Creating Get and Set methods for method ConvertToroidalSurf
+[INFO ]  Creating Get and Set methods for method GMaxDegree
+[INFO ]  Creating Get and Set methods for method GMaxSeg
+[INFO ]  Creating Get and Set methods for method SegmentSurfaceMode
 [INFO ]  ShapeCustom_Surface
 [INFO ]  ShapeCustom_TrsfModification
 [INFO ]  ShapeCustom_ConvertToBSpline
@@ -4446,7 +4774,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ShapeExtend_CompositeSurface
 [INFO ]  ShapeExtend_Explorer
 [INFO ]  ShapeExtend_WireData
-[WARNI]  Creating Get and Set methods for method ManifoldMode
+[INFO ]  Creating Get and Set methods for method ManifoldMode
 [INFO ]  ShapeExtend_MsgRegistrator
 [INFO ]  ## Processing module ShapeFix
 [INFO ]  Wrap classes :
@@ -4462,69 +4790,69 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ShapeFix_SplitTool
 [INFO ]  ShapeFix_WireVertex
 [INFO ]  ShapeFix_ComposeShell
-[WARNI]  Creating Get and Set methods for method ClosedMode
+[INFO ]  Creating Get and Set methods for method ClosedMode
 [INFO ]  ShapeFix_Face
-[WARNI]  Creating Get and Set methods for method AutoCorrectPrecisionMode
-[WARNI]  Creating Get and Set methods for method FixAddNaturalBoundMode
-[WARNI]  Creating Get and Set methods for method FixIntersectingWiresMode
-[WARNI]  Creating Get and Set methods for method FixLoopWiresMode
-[WARNI]  Creating Get and Set methods for method FixMissingSeamMode
-[WARNI]  Creating Get and Set methods for method FixOrientationMode
-[WARNI]  Creating Get and Set methods for method FixPeriodicDegeneratedMode
-[WARNI]  Creating Get and Set methods for method FixSmallAreaWireMode
-[WARNI]  Creating Get and Set methods for method FixSplitFaceMode
-[WARNI]  Creating Get and Set methods for method FixWireMode
-[WARNI]  Creating Get and Set methods for method RemoveSmallAreaFaceMode
+[INFO ]  Creating Get and Set methods for method AutoCorrectPrecisionMode
+[INFO ]  Creating Get and Set methods for method FixAddNaturalBoundMode
+[INFO ]  Creating Get and Set methods for method FixIntersectingWiresMode
+[INFO ]  Creating Get and Set methods for method FixLoopWiresMode
+[INFO ]  Creating Get and Set methods for method FixMissingSeamMode
+[INFO ]  Creating Get and Set methods for method FixOrientationMode
+[INFO ]  Creating Get and Set methods for method FixPeriodicDegeneratedMode
+[INFO ]  Creating Get and Set methods for method FixSmallAreaWireMode
+[INFO ]  Creating Get and Set methods for method FixSplitFaceMode
+[INFO ]  Creating Get and Set methods for method FixWireMode
+[INFO ]  Creating Get and Set methods for method RemoveSmallAreaFaceMode
 [INFO ]  ShapeFix_FixSmallFace
 [INFO ]  ShapeFix_FixSmallSolid
 [INFO ]  ShapeFix_Shape
-[WARNI]  Creating Get and Set methods for method FixFreeFaceMode
-[WARNI]  Creating Get and Set methods for method FixFreeShellMode
-[WARNI]  Creating Get and Set methods for method FixFreeWireMode
-[WARNI]  Creating Get and Set methods for method FixSameParameterMode
-[WARNI]  Creating Get and Set methods for method FixSolidMode
-[WARNI]  Creating Get and Set methods for method FixVertexPositionMode
-[WARNI]  Creating Get and Set methods for method FixVertexTolMode
+[INFO ]  Creating Get and Set methods for method FixFreeFaceMode
+[INFO ]  Creating Get and Set methods for method FixFreeShellMode
+[INFO ]  Creating Get and Set methods for method FixFreeWireMode
+[INFO ]  Creating Get and Set methods for method FixSameParameterMode
+[INFO ]  Creating Get and Set methods for method FixSolidMode
+[INFO ]  Creating Get and Set methods for method FixVertexPositionMode
+[INFO ]  Creating Get and Set methods for method FixVertexTolMode
 [INFO ]  ShapeFix_Shell
-[WARNI]  Creating Get and Set methods for method FixFaceMode
-[WARNI]  Creating Get and Set methods for method FixOrientationMode
+[INFO ]  Creating Get and Set methods for method FixFaceMode
+[INFO ]  Creating Get and Set methods for method FixOrientationMode
 [INFO ]  ShapeFix_Solid
-[WARNI]  Creating Get and Set methods for method CreateOpenSolidMode
-[WARNI]  Creating Get and Set methods for method FixShellMode
-[WARNI]  Creating Get and Set methods for method FixShellOrientationMode
+[INFO ]  Creating Get and Set methods for method CreateOpenSolidMode
+[INFO ]  Creating Get and Set methods for method FixShellMode
+[INFO ]  Creating Get and Set methods for method FixShellOrientationMode
 [INFO ]  ShapeFix_SplitCommonVertex
 [INFO ]  ShapeFix_Wire
-[WARNI]  Creating Get and Set methods for method ClosedWireMode
-[WARNI]  Creating Get and Set methods for method FixAddCurve3dMode
-[WARNI]  Creating Get and Set methods for method FixAddPCurveMode
-[WARNI]  Creating Get and Set methods for method FixConnectedMode
-[WARNI]  Creating Get and Set methods for method FixDegeneratedMode
-[WARNI]  Creating Get and Set methods for method FixEdgeCurvesMode
-[WARNI]  Creating Get and Set methods for method FixGaps2dMode
-[WARNI]  Creating Get and Set methods for method FixGaps3dMode
-[WARNI]  Creating Get and Set methods for method FixGapsByRangesMode
-[WARNI]  Creating Get and Set methods for method FixIntersectingEdgesMode
-[WARNI]  Creating Get and Set methods for method FixLackingMode
-[WARNI]  Creating Get and Set methods for method FixNonAdjacentIntersectingEdgesMode
-[WARNI]  Creating Get and Set methods for method FixNotchedEdgesMode
-[WARNI]  Creating Get and Set methods for method FixRemoveCurve3dMode
-[WARNI]  Creating Get and Set methods for method FixRemovePCurveMode
-[WARNI]  Creating Get and Set methods for method FixReorderMode
-[WARNI]  Creating Get and Set methods for method FixReversed2dMode
-[WARNI]  Creating Get and Set methods for method FixSameParameterMode
-[WARNI]  Creating Get and Set methods for method FixSeamMode
-[WARNI]  Creating Get and Set methods for method FixSelfIntersectingEdgeMode
-[WARNI]  Creating Get and Set methods for method FixSelfIntersectionMode
-[WARNI]  Creating Get and Set methods for method FixShiftedMode
-[WARNI]  Creating Get and Set methods for method FixSmallMode
-[WARNI]  Creating Get and Set methods for method FixTailMode
-[WARNI]  Creating Get and Set methods for method FixVertexToleranceMode
-[WARNI]  Creating Get and Set methods for method ModifyGeometryMode
-[WARNI]  Creating Get and Set methods for method ModifyRemoveLoopMode
-[WARNI]  Creating Get and Set methods for method ModifyTopologyMode
-[WARNI]  Creating Get and Set methods for method PreferencePCurveMode
+[INFO ]  Creating Get and Set methods for method ClosedWireMode
+[INFO ]  Creating Get and Set methods for method FixAddCurve3dMode
+[INFO ]  Creating Get and Set methods for method FixAddPCurveMode
+[INFO ]  Creating Get and Set methods for method FixConnectedMode
+[INFO ]  Creating Get and Set methods for method FixDegeneratedMode
+[INFO ]  Creating Get and Set methods for method FixEdgeCurvesMode
+[INFO ]  Creating Get and Set methods for method FixGaps2dMode
+[INFO ]  Creating Get and Set methods for method FixGaps3dMode
+[INFO ]  Creating Get and Set methods for method FixGapsByRangesMode
+[INFO ]  Creating Get and Set methods for method FixIntersectingEdgesMode
+[INFO ]  Creating Get and Set methods for method FixLackingMode
+[INFO ]  Creating Get and Set methods for method FixNonAdjacentIntersectingEdgesMode
+[INFO ]  Creating Get and Set methods for method FixNotchedEdgesMode
+[INFO ]  Creating Get and Set methods for method FixRemoveCurve3dMode
+[INFO ]  Creating Get and Set methods for method FixRemovePCurveMode
+[INFO ]  Creating Get and Set methods for method FixReorderMode
+[INFO ]  Creating Get and Set methods for method FixReversed2dMode
+[INFO ]  Creating Get and Set methods for method FixSameParameterMode
+[INFO ]  Creating Get and Set methods for method FixSeamMode
+[INFO ]  Creating Get and Set methods for method FixSelfIntersectingEdgeMode
+[INFO ]  Creating Get and Set methods for method FixSelfIntersectionMode
+[INFO ]  Creating Get and Set methods for method FixShiftedMode
+[INFO ]  Creating Get and Set methods for method FixSmallMode
+[INFO ]  Creating Get and Set methods for method FixTailMode
+[INFO ]  Creating Get and Set methods for method FixVertexToleranceMode
+[INFO ]  Creating Get and Set methods for method ModifyGeometryMode
+[INFO ]  Creating Get and Set methods for method ModifyRemoveLoopMode
+[INFO ]  Creating Get and Set methods for method ModifyTopologyMode
+[INFO ]  Creating Get and Set methods for method PreferencePCurveMode
 [INFO ]  ShapeFix_Wireframe
-[WARNI]  Creating Get and Set methods for method ModeDropSmallEdges
+[INFO ]  Creating Get and Set methods for method ModeDropSmallEdges
 [INFO ]  ## Processing module ShapeProcess
 [WARNI]  Template: )skipped because name does'nt contain _.
 [INFO ]  Wrap classes :
@@ -4553,12 +4881,12 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ShapeUpgrade_FaceDivide
 [INFO ]  ShapeUpgrade_FixSmallCurves
 [INFO ]  ShapeUpgrade_RemoveInternalWires
-[WARNI]  Creating Get and Set methods for method MinArea
-[WARNI]  Creating Get and Set methods for method RemoveFaceMode
+[INFO ]  Creating Get and Set methods for method MinArea
+[INFO ]  Creating Get and Set methods for method RemoveFaceMode
 [INFO ]  ShapeUpgrade_ShapeConvertToBezier
 [INFO ]  ShapeUpgrade_ShapeDivideAngle
 [INFO ]  ShapeUpgrade_ShapeDivideArea
-[WARNI]  Creating Get and Set methods for method MaxArea
+[INFO ]  Creating Get and Set methods for method MaxArea
 [INFO ]  ShapeUpgrade_ShapeDivideClosed
 [INFO ]  ShapeUpgrade_ShapeDivideClosedEdges
 [INFO ]  ShapeUpgrade_ShapeDivideContinuity
@@ -4566,7 +4894,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ShapeUpgrade_SplitCurve3d
 [INFO ]  ShapeUpgrade_SplitSurfaceAngle
 [INFO ]  ShapeUpgrade_SplitSurfaceArea
-[WARNI]  Creating Get and Set methods for method NbParts
+[INFO ]  Creating Get and Set methods for method NbParts
 [INFO ]  ShapeUpgrade_SplitSurfaceContinuity
 [INFO ]  ShapeUpgrade_WireDivide
 [INFO ]  ShapeUpgrade_ClosedEdgeDivide
@@ -4574,14 +4902,14 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ShapeUpgrade_ConvertCurve2dToBezier
 [INFO ]  ShapeUpgrade_ConvertCurve3dToBezier
 [INFO ]  ShapeUpgrade_FaceDivideArea
-[WARNI]  Creating Get and Set methods for method MaxArea
+[INFO ]  Creating Get and Set methods for method MaxArea
 [INFO ]  ShapeUpgrade_FixSmallBezierCurves
 [INFO ]  ShapeUpgrade_SplitCurve2dContinuity
 [INFO ]  ShapeUpgrade_SplitCurve3dContinuity
 [INFO ]  Processing toolkit TKTObj ===
 [INFO ]  ## Processing module TObj
 [INFO ]  Found HSEQUENCE definitionTObj_HSequenceOfObject: TObj_SequenceOfObject
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <TObj_Object>, opencascade::handle <TObj_HSequenceOfObject>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<TObj_Object>, opencascade::handle<TObj_HSequenceOfObject>>
 [INFO ]  Wrap classes :
 [INFO ]  TObj_Application
 [INFO ]  TObj_Assistant
@@ -4593,6 +4921,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  TObj_Persistence
 [INFO ]  Class TObj_Persistence is abstract, using %nodefaultctor directive.
 [INFO ]  TObj_TIntSparseArray
+[WARNI]  [TypeHint] Skipping type Iterator, should contain _
 [INFO ]  TObj_TModel
 [INFO ]  TObj_TNameContainer
 [INFO ]  TObj_TObject
@@ -4701,6 +5030,8 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BRepExtrema_DistShapeShape
 [INFO ]  BRepExtrema_DistanceSS
 [INFO ]  BRepExtrema_ElementFilter
+[WARNI]  [TypeHint] Skip type BRepExtrema_ElementFilter::FilterResult, because of trailing :
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  BRepExtrema_ExtCC
 [INFO ]  BRepExtrema_ExtCF
 [INFO ]  BRepExtrema_ExtFF
@@ -4710,6 +5041,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BRepExtrema_ShapeProximity
 [INFO ]  BRepExtrema_SolutionElem
 [INFO ]  BRepExtrema_TriangleSet
+[WARNI]  [TypeHint] Skipping type BVH_Box<float,, seems to be a template
 [INFO ]  BRepExtrema_SelfIntersection
 [INFO ]  ## Processing module BRepGProp
 [INFO ]  Wrap classes :
@@ -4718,6 +5050,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  BRepGProp_Domain
 [INFO ]  BRepGProp_EdgeTool
 [INFO ]  BRepGProp_Face
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  BRepGProp_Gauss
 [INFO ]  Wrap nested class BRepGProp_Gauss::Inertia
 [INFO ]  BRepGProp_MeshCinert
@@ -4732,6 +5065,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  ## Processing module BRepLib
 [INFO ]  Wrap classes :
 [INFO ]  BRepLib
+[WARNI]  [TypeHint] Skipping type NCollection_List<TopoDS_Shape>, seems to be a template
 [INFO ]  BRepLib_CheckCurveOnSurface
 [INFO ]  BRepLib_Command
 [INFO ]  BRepLib_FindSurface
@@ -4799,22 +5133,31 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  MAT2d_Tool2d
 [INFO ]  Processing toolkit TKV3d ===
 [INFO ]  ## Processing module AIS
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <AIS_InteractiveObject>, opencascade::handle <AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, opencascade::handle <Prs3d_Presentation>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, opencascade::handle<Prs3d_Presentation>, TColStd_MapTransientHasher>
 [INFO ]  Wrap classes :
 [INFO ]  AIS
 [INFO ]  AIS_Animation
+[WARNI]  [TypeHint] Skip type NCollection_Sequence<opencascade::handle<AIS_Animation>>, because of trailing :
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  AIS_AnimationProgress
 [INFO ]  AIS_AttributeFilter
 [INFO ]  AIS_BadEdgeFilter
 [INFO ]  AIS_C0RegularityFilter
 [INFO ]  AIS_ColoredDrawer
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  AIS_DimensionOwner
 [INFO ]  AIS_ExclusionFilter
 [INFO ]  AIS_GlobalStatus
 [INFO ]  AIS_GraphicTool
 [INFO ]  AIS_InteractiveContext
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  AIS_InteractiveObject
 [INFO ]  AIS_ManipulatorOwner
 [INFO ]  AIS_PointCloudOwner
@@ -4822,7 +5165,83 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  AIS_TrihedronOwner
 [INFO ]  AIS_TypeFilter
 [INFO ]  AIS_ViewController
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type NCollection_Sequence<Graphic3d_Vec2i>, seems to be a template
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  AIS_ViewCubeOwner
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  AIS_ViewInputBuffer
 [INFO ]  Wrap nested class AIS_ViewInputBuffer::_orientation
 [INFO ]  Wrap nested class AIS_ViewInputBuffer::_highlighting
@@ -4833,12 +5252,23 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Wrap nested class AIS_ViewInputBuffer::_viewRotation
 [INFO ]  Wrap nested class AIS_ViewInputBuffer::_zrotateParams
 [INFO ]  AIS_WalkDelta
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  AIS_WalkPart
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  AIS_AnimationCamera
 [INFO ]  AIS_AnimationObject
 [INFO ]  AIS_CameraFrustum
 [INFO ]  AIS_Circle
 [INFO ]  AIS_ColorScale
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  AIS_ConnectedInteractive
 [INFO ]  AIS_Dimension
 [INFO ]  Wrap nested class AIS_Dimension::SelectionGeometry
@@ -4852,7 +5282,12 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Wrap nested class AIS_Manipulator::Cube
 [INFO ]  Wrap nested class AIS_Manipulator::Sector
 [INFO ]  Wrap nested class AIS_Manipulator::Axis
+[WARNI]  [TypeHint] Skipping type OptionsForAttach, should contain _
+[WARNI]  [TypeHint] Skipping type OptionsForAttach, should contain _
 [INFO ]  AIS_MediaPlayer
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skip type Graphic3d_MediaTextureSet::CallbackOnUpdate_t, because of trailing :
 [INFO ]  AIS_MultipleConnectedInteractive
 [INFO ]  AIS_Plane
 [INFO ]  AIS_PlaneTrihedron
@@ -4860,13 +5295,20 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  AIS_PointCloud
 [INFO ]  AIS_Relation
 [INFO ]  AIS_RubberBand
+[WARNI]  [TypeHint] Skipping type NCollection_Sequence<Graphic3d_Vec2i>, seems to be a template
 [INFO ]  AIS_Shape
 [INFO ]  AIS_SignatureFilter
 [INFO ]  AIS_TextLabel
+[WARNI]  [TypeHint] Skipping unknown type, Font not in module list
 [INFO ]  AIS_Triangulation
 [INFO ]  AIS_Trihedron
 [INFO ]  AIS_ViewCube
 [INFO ]  Wrap nested class AIS_ViewCube::IntegerHasher
+[WARNI]  [TypeHint] Skipping type static bool, should contain _
+[WARNI]  [TypeHint] Skipping type static bool, should contain _
+[WARNI]  [TypeHint] Skipping type static bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  AIS_AngleDimension
 [INFO ]  AIS_Chamf2dDimension
 [INFO ]  AIS_Chamf3dDimension
@@ -4890,59 +5332,145 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  AIS_MaxRadiusDimension
 [INFO ]  AIS_MinRadiusDimension
 [INFO ]  ## Processing module DsgPrs
+[INFO ]  Wrap classes :
 [INFO ]  ## Processing module Graphic3d
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <Graphic3d_Aspects>, opencascade::handle <Graphic3d_Aspects>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Graphic3d_Aspects>, opencascade::handle<Graphic3d_Aspects>>
 [INFO ]  Wrap classes :
 [INFO ]  Graphic3d_ArrayOfPrimitives
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_Aspects
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Graphic3d_Attribute
 [INFO ]  Graphic3d_AxisAspect
 [INFO ]  Graphic3d_BSDF
 [INFO ]  Graphic3d_BoundBuffer
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Graphic3d_BufferRange
 [INFO ]  Graphic3d_BvhCStructureSet
+[WARNI]  [TypeHint] Skipping type NCollection_IndexedMap<const, seems to be a template
 [INFO ]  Graphic3d_CLight
 [INFO ]  Graphic3d_CStructure
 [INFO ]  Class Graphic3d_CStructure is abstract, using %nodefaultctor directive.
 [INFO ]  Wrap nested class Graphic3d_CStructure::SubclassStructIterator
 [INFO ]  Wrap nested class Graphic3d_CStructure::SubclassGroupIterator
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_CTexture
 [INFO ]  Graphic3d_Camera
 [INFO ]  Wrap nested class Graphic3d_Camera::TransformMatrices
+[WARNI]  [TypeHint] Skipping type NCollection_Array1<Graphic3d_Vec3d>, seems to be a template
+[WARNI]  [TypeHint] Skip type Graphic3d_Camera::IODType, because of trailing :
+[WARNI]  [TypeHint] Skip type Graphic3d_Camera::Projection, because of trailing :
+[WARNI]  [TypeHint] Skipping type IODType, should contain _
+[WARNI]  [TypeHint] Skipping type Projection, should contain _
+[WARNI]  [TypeHint] Skipping type FocusType, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skip type Graphic3d_Camera::FocusType, because of trailing :
 [INFO ]  Graphic3d_CameraTile
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Graphic3d_ClipPlane
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Graphic3d_CullingTool
 [INFO ]  Wrap nested class Graphic3d_CullingTool::CullingContext
 [INFO ]  Wrap nested class Graphic3d_CullingTool::Plane
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type CullingContext, should contain _
+[WARNI]  [TypeHint] Skipping type CullingContext, should contain _
+[WARNI]  [TypeHint] Skipping type CullingContext, should contain _
 [INFO ]  Graphic3d_DataStructureManager
 [INFO ]  Graphic3d_FrameStats
 [INFO ]  Class Graphic3d_FrameStats is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class Graphic3d_FrameStats
-[WARNI]  Creating Get and Set methods for method ChangeTimer
+[WARNI]  [TypeHint] Skipping type NCollection_Array1<Graphic3d_FrameStatsData>, seems to be a template
+[INFO ]  Creating Get and Set methods for method ChangeTimer
+[WARNI]  [TypeHint] Skipping type NCollection_Array1<Graphic3d_FrameStatsData>, seems to be a template
+[WARNI]  [TypeHint] Skip type Graphic3d_RenderingParams::PerfCounters, because of trailing :
+[WARNI]  [TypeHint] Skip type Graphic3d_RenderingParams::PerfCounters, because of trailing :
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Graphic3d_FrameStatsData
 [INFO ]  Graphic3d_Fresnel
 [INFO ]  Graphic3d_GraduatedTrihedron
+[WARNI]  [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]  [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]  [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]  [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]  [TypeHint] Skipping unknown type, Font not in module list
 [INFO ]  Graphic3d_GraphicDriver
 [INFO ]  Class Graphic3d_GraphicDriver is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_Group
 [INFO ]  Class Graphic3d_Group is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
 [INFO ]  Graphic3d_HatchStyle
 [INFO ]  Graphic3d_Layer
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type NCollection_IndexedMap<const, seems to be a template
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skip type Graphic3d_RenderingParams::FrustumCulling, because of trailing :
 [INFO ]  Graphic3d_LightSet
 [INFO ]  Wrap nested class Graphic3d_LightSet::Iterator
 [INFO ]  Graphic3d_MarkerImage
 [INFO ]  Graphic3d_MaterialAspect
 [INFO ]  Graphic3d_PolygonOffset
 [INFO ]  Graphic3d_PresentationAttributes
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_RenderingParams
 [INFO ]  Graphic3d_SequenceOfHClipPlane
 [INFO ]  Wrap nested class Graphic3d_SequenceOfHClipPlane::Iterator
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type Iterator, should contain _
 [INFO ]  Graphic3d_ShaderAttribute
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_ShaderObject
 [INFO ]  Graphic3d_ShaderProgram
+[WARNI]  [TypeHint] Skipping type const float, should contain _
 [INFO ]  Graphic3d_ShaderVariable
 [INFO ]  Graphic3d_Structure
+[WARNI]  [TypeHint] Skipping type NCollection_Map<Graphic3d_Structure, seems to be a template
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_StructureManager
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type NCollection_Map<Graphic3d_Structure, seems to be a template
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_Text
 [INFO ]  Graphic3d_TextureParams
 [INFO ]  Graphic3d_TextureRoot
@@ -4959,30 +5487,58 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Class Graphic3d_ValueInterface is abstract, using %nodefaultctor directive.
 [INFO ]  Graphic3d_Vertex
 [INFO ]  Graphic3d_ViewAffinity
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
 [INFO ]  Graphic3d_WorldViewProjState
 [INFO ]  Graphic3d_ZLayerSettings
 [INFO ]  Graphic3d_ArrayOfPoints
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_ArrayOfPolygons
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_ArrayOfPolylines
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_ArrayOfQuadrangleStrips
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_ArrayOfQuadrangles
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_ArrayOfSegments
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_ArrayOfTriangleFans
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_ArrayOfTriangleStrips
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_ArrayOfTriangles
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_AspectFillArea3d
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Graphic3d_AspectLine3d
 [INFO ]  Graphic3d_AspectMarker3d
 [INFO ]  Graphic3d_AspectText3d
+[WARNI]  [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Graphic3d_AttribBuffer
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Graphic3d_CView
 [INFO ]  Class Graphic3d_CView is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class Graphic3d_CView
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skip type NCollection_List<opencascade::handle<Graphic3d_Layer>>, because of trailing :
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Graphic3d_FrameStatsDataTmp
-[WARNI]  Creating Get and Set methods for method ChangeFrameRate
-[WARNI]  Creating Get and Set methods for method ChangeFrameRateCpu
-[WARNI]  Creating Get and Set methods for method ChangeTimerValue
+[INFO ]  Creating Get and Set methods for method ChangeFrameRate
+[INFO ]  Creating Get and Set methods for method ChangeFrameRateCpu
+[INFO ]  Creating Get and Set methods for method ChangeTimerValue
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Graphic3d_MediaTextureSet
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
 [INFO ]  Graphic3d_TextureEnv
 [INFO ]  Graphic3d_TextureMap
 [INFO ]  Graphic3d_CubeMap
@@ -4993,6 +5549,8 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Graphic3d_Texture1D
 [INFO ]  Graphic3d_Texture2D
 [INFO ]  Graphic3d_CubeMapSeparate
+[WARNI]  [TypeHint] Skipping type NCollection_Array1<TCollection_AsciiString>, seems to be a template
+[WARNI]  [TypeHint] Skip type NCollection_Array1<opencascade::handle<Image_PixMap>, because of trailing :
 [INFO ]  Graphic3d_MediaTexture
 [INFO ]  Graphic3d_Texture1Dmanual
 [INFO ]  Graphic3d_Texture1Dsegment
@@ -5005,6 +5563,10 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Class Prs3d_BasicAspect is abstract, using %nodefaultctor directive.
 [INFO ]  Prs3d_DimensionUnits
 [INFO ]  Prs3d_Drawer
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Prs3d_PresentationShadow
 [INFO ]  Prs3d_Projector
 [INFO ]  Prs3d_Root
@@ -5030,11 +5592,17 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Wrap classes :
 [INFO ]  PrsMgr_PresentableObject
 [INFO ]  Class PrsMgr_PresentableObject is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  PrsMgr_Presentation
 [INFO ]  PrsMgr_PresentationManager
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  ## Processing module Select3D
 [INFO ]  Wrap classes :
 [INFO ]  Select3D_BVHIndexBuffer
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
 [INFO ]  Select3D_Pnt
 [INFO ]  Select3D_PointData
 [INFO ]  Select3D_SensitiveBox
@@ -5046,25 +5614,72 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Select3D_SensitiveGroup
 [INFO ]  Select3D_SensitivePoly
 [INFO ]  Select3D_SensitivePrimitiveArray
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type const float, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  Select3D_SensitiveWire
+[WARNI]  [TypeHint] Skip type NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>>, because of trailing :
 [INFO ]  Select3D_SensitiveCircle
 [INFO ]  Select3D_SensitiveCurve
+[INFO ]  ## Processing module SelectBasics
+[INFO ]  Wrap classes :
+[INFO ]  SelectBasics
+[INFO ]  SelectBasics_PickResult
+[INFO ]  SelectBasics_SelectingVolumeManager
+[INFO ]  Class SelectBasics_SelectingVolumeManager is abstract, using %nodefaultctor directive.
+[WARNI]  Constructor skipped for abstract class SelectBasics_SelectingVolumeManager
+[WARNI]  [TypeHint] Skipping type NCollection_Vector<NCollection_Vec4<float>, seems to be a template
+[WARNI]  [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
+[WARNI]  [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
 [INFO ]  ## Processing module SelectMgr
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <SelectMgr_SelectableObject>, opencascade::handle <SelectMgr_SensitiveEntitySet>>::Iterator
-[WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_IndexedMap <opencascade::handle <SelectMgr_EntityOwner>>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<SelectMgr_SelectableObject>, opencascade::handle<SelectMgr_SensitiveEntitySet>>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>>
 [INFO ]  Wrap classes :
 [INFO ]  SelectMgr_EntityOwner
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  SelectMgr_Filter
 [INFO ]  Class SelectMgr_Filter is abstract, using %nodefaultctor directive.
 [INFO ]  SelectMgr_SelectableObject
 [INFO ]  Class SelectMgr_SelectableObject is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  SelectMgr_SelectableObjectSet
 [INFO ]  Wrap nested class SelectMgr_SelectableObjectSet::Iterator
+[WARNI]  [TypeHint] Skipping type BVH_Tree<float,, seems to be a template
+[WARNI]  [TypeHint] Skipping type BVHSubset, should contain _
+[WARNI]  [TypeHint] Skipping type BVHSubset, should contain _
+[WARNI]  [TypeHint] Skipping type BVHSubset, should contain _
 [INFO ]  SelectMgr_SelectingVolumeManager
+[WARNI]  [TypeHint] Skipping type NCollection_Vector<SelectMgr_Vec4>, seems to be a template
+[WARNI]  [TypeHint] Skipping type const SelectionType &, should contain _
 [INFO ]  SelectMgr_Selection
+[WARNI]  [TypeHint] Skip type NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>, because of trailing :
+[WARNI]  [TypeHint] Skip type NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>, because of trailing :
 [INFO ]  SelectMgr_SelectionManager
 [INFO ]  SelectMgr_SensitiveEntity
 [INFO ]  SelectMgr_SortCriterion
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  SelectMgr_ViewClipRange
 [INFO ]  SelectMgr_CompositionFilter
 [INFO ]  SelectMgr_AndFilter
@@ -5094,7 +5709,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  StdPrs_WFShape
 [INFO ]  StdPrs_WFSurface
 [INFO ]  ## Processing module StdSelect
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap <opencascade::handle <SelectMgr_EntityOwner>, opencascade::handle <StdSelect_Prs>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, opencascade::handle<StdSelect_Prs>, TColStd_MapTransientHasher>
 [INFO ]  Wrap classes :
 [INFO ]  StdSelect
 [INFO ]  StdSelect_BRepOwner
@@ -5117,11 +5732,14 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  V3d_Trihedron
 [INFO ]  V3d_View
 [INFO ]  V3d_Viewer
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  V3d_DirectionalLight
 [INFO ]  V3d_PositionalLight
 [INFO ]  V3d_SpotLight
-[INFO ]  ## Processing module Visual3d
-[INFO ]  Wrap classes :
 [INFO ]  Processing toolkit TKVAF ===
 [INFO ]  ## Processing module TPrsStd
 [INFO ]  Wrap classes :
@@ -5199,12 +5817,17 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  VrmlConverter_WFShape
 [INFO ]  VrmlConverter_IsoAspect
 [INFO ]  ## Processing module VrmlData
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <TopoDS_TShape>, opencascade::handle <VrmlData_Appearance>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<TopoDS_TShape>, opencascade::handle<VrmlData_Appearance>>
 [INFO ]  Wrap classes :
 [INFO ]  VrmlData_Node
 [INFO ]  Class VrmlData_Node is abstract, using %nodefaultctor directive.
 [WARNI]  Constructor skipped for abstract class VrmlData_Node
+[WARNI]  [TypeHint] Skipping type long &, should contain _
+[WARNI]  [TypeHint] Skipping type NCollection_List<TCollection_AsciiString>, seems to be a template
 [INFO ]  VrmlData_Scene
+[WARNI]  [TypeHint] Skipping type Iterator, should contain _
+[WARNI]  [TypeHint] Skip type VrmlData_MapOfNode::Iterator, because of trailing :
+[WARNI]  [TypeHint] Skipping type NCollection_List<TCollection_ExtendedString, seems to be a template
 [INFO ]  VrmlData_ShapeConvert
 [INFO ]  Wrap nested class VrmlData_ShapeConvert::ShapeData
 [INFO ]  VrmlData_Appearance
@@ -5213,31 +5836,47 @@ date : 2020-02-11 16:22:43.579343
 [WARNI]  Constructor skipped for abstract class VrmlData_Geometry
 [WARNI]  Constructor skipped for abstract class VrmlData_Geometry
 [INFO ]  VrmlData_Group
+[WARNI]  [TypeHint] Skipping type Iterator, should contain _
 [INFO ]  VrmlData_Material
 [INFO ]  VrmlData_ShapeNode
 [INFO ]  VrmlData_TextureCoordinate
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
 [INFO ]  VrmlData_UnknownNode
 [INFO ]  VrmlData_WorldInfo
 [INFO ]  VrmlData_Box
 [INFO ]  VrmlData_Color
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
 [INFO ]  VrmlData_Cone
 [INFO ]  VrmlData_Coordinate
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
 [INFO ]  VrmlData_Cylinder
 [INFO ]  VrmlData_ImageTexture
+[WARNI]  [TypeHint] Skipping type NCollection_List<TCollection_AsciiString>, seems to be a template
 [INFO ]  VrmlData_IndexedLineSet
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
 [INFO ]  VrmlData_Normal
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
 [INFO ]  VrmlData_Sphere
 [INFO ]  VrmlData_IndexedFaceSet
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
 [INFO ]  Processing toolkit TKXCAF ===
 [INFO ]  ## Processing module XCAFApp
 [INFO ]  Wrap classes :
 [INFO ]  XCAFApp_Application
 [INFO ]  ## Processing module XCAFDimTolObjects
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle <XCAFDimTolObjects_DatumObject>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle<XCAFDimTolObjects_DatumObject>, TColStd_MapTransientHasher>
 [INFO ]  Wrap classes :
 [INFO ]  XCAFDimTolObjects_DatumObject
 [INFO ]  XCAFDimTolObjects_DimensionObject
 [INFO ]  XCAFDimTolObjects_GeomToleranceObject
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  XCAFDimTolObjects_Tool
 [INFO ]  ## Processing module XCAFDoc
 [INFO ]  Wrap classes :
@@ -5278,7 +5917,12 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  XCAFPrs
 [INFO ]  XCAFPrs_AISObject
 [INFO ]  XCAFPrs_DocumentExplorer
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  XCAFPrs_DocumentIdIterator
+[WARNI]  [TypeHint] Skipping type bool, should contain _
 [INFO ]  XCAFPrs_DocumentNode
 [INFO ]  XCAFPrs_Driver
 [INFO ]  XCAFPrs_Style
@@ -5293,17 +5937,19 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  IGESCAFControl_Writer
 [INFO ]  Processing toolkit TKXDESTEP ===
 [INFO ]  ## Processing module STEPCAFControl
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <StepBasic_ProductDefinition>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <StepBasic_ProductDefinition>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <StepShape_ShapeDefinitionRepresentation>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <StepShape_ShapeDefinitionRepresentation>, opencascade::handle <STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator
 [INFO ]  Wrap classes :
 [INFO ]  STEPCAFControl_ActorWrite
 [INFO ]  STEPCAFControl_Controller
 [INFO ]  STEPCAFControl_ExternFile
 [INFO ]  STEPCAFControl_GDTProperty
 [INFO ]  STEPCAFControl_Reader
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  STEPCAFControl_Writer
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  Processing toolkit TKXMesh ===
 [INFO ]  ## Processing module XBRepMesh
 [INFO ]  Wrap classes :
@@ -5321,8 +5967,9 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  IFSelect_ContextWrite
 [INFO ]  IFSelect_Dispatch
 [INFO ]  Class IFSelect_Dispatch is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping unknown type, IFGraph not in module list
 [INFO ]  IFSelect_EditForm
-[WARNI]  Creating Get and Set methods for method EditKeepStatus
+[INFO ]  Creating Get and Set methods for method EditKeepStatus
 [INFO ]  IFSelect_Editor
 [INFO ]  Class IFSelect_Editor is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_Functions
@@ -5342,21 +5989,27 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  IFSelect_ShareOutResult
 [INFO ]  IFSelect_Signature
 [INFO ]  IFSelect_SignatureList
-[WARNI]  Creating Get and Set methods for method ModeSignOnly
+[WARNI]  [TypeHint] Skipping type NCollection_IndexedDataMap<TCollection_AsciiString,, seems to be a template
+[INFO ]  Creating Get and Set methods for method ModeSignOnly
 [INFO ]  IFSelect_Transformer
 [INFO ]  Class IFSelect_Transformer is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_WorkLibrary
 [INFO ]  Class IFSelect_WorkLibrary is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_WorkSession
-[WARNI]  Wrong type in class property : return
+[WARNI]  [TypeHint] Skip type NCollection_Vector<opencascade::handle<Standard_Transient>, because of trailing :
 [INFO ]  IFSelect_Act
 [INFO ]  IFSelect_BasicDumper
 [INFO ]  IFSelect_CheckCounter
 [INFO ]  IFSelect_DispGlobal
+[WARNI]  [TypeHint] Skipping unknown type, IFGraph not in module list
 [INFO ]  IFSelect_DispPerCount
+[WARNI]  [TypeHint] Skipping unknown type, IFGraph not in module list
 [INFO ]  IFSelect_DispPerFiles
+[WARNI]  [TypeHint] Skipping unknown type, IFGraph not in module list
 [INFO ]  IFSelect_DispPerOne
+[WARNI]  [TypeHint] Skipping unknown type, IFGraph not in module list
 [INFO ]  IFSelect_DispPerSignature
+[WARNI]  [TypeHint] Skipping unknown type, IFGraph not in module list
 [INFO ]  IFSelect_Modifier
 [INFO ]  Class IFSelect_Modifier is abstract, using %nodefaultctor directive.
 [INFO ]  IFSelect_ParamEditor
@@ -5439,10 +6092,10 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Interface_HGraph
 [INFO ]  Interface_IntList
 [INFO ]  Interface_IntVal
-[WARNI]  Creating Get and Set methods for method CValue
+[INFO ]  Creating Get and Set methods for method CValue
 [INFO ]  Interface_InterfaceModel
 [INFO ]  Class Interface_InterfaceModel is abstract, using %nodefaultctor directive.
-[WARNI]  Creating Get and Set methods for method DispatchStatus
+[INFO ]  Creating Get and Set methods for method DispatchStatus
 [INFO ]  Interface_LineBuffer
 [INFO ]  Interface_MSG
 [INFO ]  Interface_MapAsciiStringHasher
@@ -5472,29 +6125,76 @@ date : 2020-02-11 16:22:43.579343
 [WARNI]  Template: )skipped because name does'nt contain _.
 [INFO ]  Wrap classes :
 [INFO ]  MoniTool_AttrList
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  MoniTool_CaseData
 [INFO ]  MoniTool_DataInfo
 [INFO ]  MoniTool_ElemHasher
 [INFO ]  MoniTool_Element
 [INFO ]  Class MoniTool_Element is abstract, using %nodefaultctor directive.
 [INFO ]  MoniTool_IntVal
-[WARNI]  Creating Get and Set methods for method CValue
+[INFO ]  Creating Get and Set methods for method CValue
 [INFO ]  MoniTool_MTHasher
 [INFO ]  MoniTool_RealVal
-[WARNI]  Creating Get and Set methods for method CValue
+[INFO ]  Creating Get and Set methods for method CValue
 [INFO ]  MoniTool_SignText
 [INFO ]  Class MoniTool_SignText is abstract, using %nodefaultctor directive.
 [INFO ]  MoniTool_Stat
 [INFO ]  MoniTool_Timer
 [INFO ]  MoniTool_TimerSentry
 [INFO ]  MoniTool_TypedValue
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  MoniTool_SignShape
 [INFO ]  MoniTool_TransientElem
+[INFO ]  ## Processing module StepData
+[INFO ]  Found HARRAY1 definitionStepData_HArray1OfField: StepData_Array1OfField
+[INFO ]  Wrap classes :
+[INFO ]  StepData
+[INFO ]  StepData_Described
+[INFO ]  Class StepData_Described is abstract, using %nodefaultctor directive.
+[INFO ]  StepData_EDescr
+[INFO ]  Class StepData_EDescr is abstract, using %nodefaultctor directive.
+[INFO ]  StepData_EnumTool
+[INFO ]  StepData_Field
+[INFO ]  StepData_FieldList
+[INFO ]  StepData_FileRecognizer
+[INFO ]  Class StepData_FileRecognizer is abstract, using %nodefaultctor directive.
+[INFO ]  StepData_GeneralModule
+[INFO ]  Class StepData_GeneralModule is abstract, using %nodefaultctor directive.
+[INFO ]  StepData_GlobalNodeOfWriterLib
+[INFO ]  StepData_NodeOfWriterLib
+[INFO ]  StepData_PDescr
+[INFO ]  StepData_Protocol
+[INFO ]  StepData_ReadWriteModule
+[INFO ]  Class StepData_ReadWriteModule is abstract, using %nodefaultctor directive.
+[INFO ]  StepData_SelectMember
+[INFO ]  StepData_SelectType
+[INFO ]  Class StepData_SelectType is abstract, using %nodefaultctor directive.
+[INFO ]  StepData_StepDumper
+[INFO ]  StepData_StepModel
+[INFO ]  StepData_StepReaderData
+[INFO ]  StepData_StepReaderTool
+[INFO ]  StepData_StepWriter
+[INFO ]  Creating Get and Set methods for method LabelMode
+[INFO ]  Creating Get and Set methods for method TypeMode
+[INFO ]  StepData_WriterLib
+[INFO ]  StepData_DefaultGeneral
+[INFO ]  StepData_ECDescr
+[INFO ]  StepData_ESDescr
+[INFO ]  StepData_FieldList1
+[INFO ]  StepData_FieldListD
+[INFO ]  StepData_FieldListN
+[INFO ]  StepData_FileProtocol
+[INFO ]  StepData_Plex
+[INFO ]  StepData_SelectInt
+[INFO ]  StepData_SelectNamed
+[INFO ]  StepData_SelectReal
+[INFO ]  StepData_Simple
+[INFO ]  StepData_SelectArrReal
 [INFO ]  ## Processing module Transfer
 [INFO ]  Found HSEQUENCE definitionTransfer_HSequenceOfBinder: Transfer_SequenceOfBinder
 [INFO ]  Found HSEQUENCE definitionTransfer_HSequenceOfFinder: Transfer_SequenceOfFinder
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Transfer_Binder>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap <opencascade::handle <Transfer_Finder>, opencascade::handle <Transfer_Binder>, Transfer_FindHasher>
+[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Transfer_Binder>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Transfer_Finder>, opencascade::handle<Transfer_Binder>, Transfer_FindHasher>
 [INFO ]  Wrap classes :
 [INFO ]  Transfer_ActorOfProcessForFinder
 [INFO ]  Transfer_ActorOfProcessForTransient
@@ -5505,6 +6205,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Transfer_FindHasher
 [INFO ]  Transfer_Finder
 [INFO ]  Class Transfer_Finder is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  Transfer_MapContainer
 [INFO ]  Transfer_ProcessForTransient
 [INFO ]  Transfer_ResultFromModel
@@ -5514,7 +6215,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Transfer_TransferIterator
 [INFO ]  Transfer_TransferOutput
 [INFO ]  Transfer_ActorOfFinderProcess
-[WARNI]  Creating Get and Set methods for method ModeTrans
+[INFO ]  Creating Get and Set methods for method ModeTrans
 [INFO ]  Transfer_ActorOfTransientProcess
 [INFO ]  Transfer_FinderProcess
 [INFO ]  Transfer_IteratorOfProcessForFinder
@@ -5524,6 +6225,7 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Transfer_TransientListBinder
 [INFO ]  Transfer_TransientMapper
 [INFO ]  Transfer_TransientProcess
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  Transfer_VoidBinder
 [INFO ]  Transfer_ActorDispatch
 [INFO ]  Transfer_BinderOfTransientInteger
@@ -5534,19 +6236,19 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  TransferBRep_BinderOfShape
 [INFO ]  TransferBRep_OrientedShapeMapper
 [INFO ]  TransferBRep_Reader
-[WARNI]  Creating Get and Set methods for method ModeNewTransfer
+[INFO ]  Creating Get and Set methods for method ModeNewTransfer
 [INFO ]  TransferBRep_ShapeInfo
 [INFO ]  TransferBRep_ShapeListBinder
 [INFO ]  TransferBRep_ShapeMapper
 [INFO ]  TransferBRep_TransferResultInfo
-[WARNI]  Creating Get and Set methods for method NoResult
-[WARNI]  Creating Get and Set methods for method NoResultFail
-[WARNI]  Creating Get and Set methods for method NoResultWarning
-[WARNI]  Creating Get and Set methods for method NoResultWarningFail
-[WARNI]  Creating Get and Set methods for method Result
-[WARNI]  Creating Get and Set methods for method ResultFail
-[WARNI]  Creating Get and Set methods for method ResultWarning
-[WARNI]  Creating Get and Set methods for method ResultWarningFail
+[INFO ]  Creating Get and Set methods for method NoResult
+[INFO ]  Creating Get and Set methods for method NoResultFail
+[INFO ]  Creating Get and Set methods for method NoResultWarning
+[INFO ]  Creating Get and Set methods for method NoResultWarningFail
+[INFO ]  Creating Get and Set methods for method Result
+[INFO ]  Creating Get and Set methods for method ResultFail
+[INFO ]  Creating Get and Set methods for method ResultWarning
+[INFO ]  Creating Get and Set methods for method ResultWarningFail
 [INFO ]  TransferBRep_ShapeBinder
 [INFO ]  ## Processing module XSControl
 [INFO ]  Wrap classes :
@@ -5554,16 +6256,20 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  XSControl_ConnectedShapes
 [INFO ]  XSControl_Controller
 [INFO ]  Class XSControl_Controller is abstract, using %nodefaultctor directive.
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  XSControl_FuncShape
 [INFO ]  XSControl_Functions
 [INFO ]  XSControl_Reader
 [INFO ]  XSControl_SelectForTransfer
 [INFO ]  XSControl_SignTransferStatus
 [INFO ]  XSControl_TransferReader
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  XSControl_TransferWriter
 [INFO ]  XSControl_Utils
 [INFO ]  XSControl_Vars
 [INFO ]  XSControl_WorkSession
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
+[WARNI]  [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  XSControl_Writer
 [INFO ]  Processing toolkit TKXml ===
 [INFO ]  ## Processing module XmlDrivers
@@ -5599,8 +6305,8 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  XmlLDrivers_DocumentStorageDriver
 [INFO ]  XmlLDrivers_NamespaceDef
 [INFO ]  ## Processing module XmlMDF
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <XmlMDF_ADriver>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <Standard_Type>, opencascade::handle <XmlMDF_ADriver>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>, TColStd_MapTransientHasher>::Iterator
 [INFO ]  Wrap classes :
 [INFO ]  XmlMDF
 [INFO ]  XmlMDF_ADriver
@@ -5700,22 +6406,62 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  XmlXCAFDrivers_DocumentStorageDriver
 [INFO ]  Processing toolkit TKernel ===
 [INFO ]  ## Processing module FSD
+[INFO ]  Wrap classes :
 [INFO ]  ## Processing module MMgt
 [INFO ]  Wrap classes :
 [INFO ]  ## Processing module Message
+[INFO ]  Wrap classes :
+[INFO ]  Message
+[INFO ]  Message_Alert
+[INFO ]  Message_Algorithm
+[INFO ]  Message_ExecStatus
+[INFO ]  Message_Messenger
+[INFO ]  Message_Msg
+[INFO ]  Message_MsgFile
+[INFO ]  Message_Printer
+[INFO ]  Class Message_Printer is abstract, using %nodefaultctor directive.
+[INFO ]  Message_ProgressIndicator
+[INFO ]  Class Message_ProgressIndicator is abstract, using %nodefaultctor directive.
+[INFO ]  Message_ProgressScale
+[INFO ]  Message_ProgressSentry
+[INFO ]  Message_Report
+[INFO ]  Message_PrinterOStream
 [INFO ]  ## Processing module NCollection
 [INFO ]  Found HARRAY1 definitionHClassName: _Array1Type_
 [INFO ]  Found HARRAY2 definitionHClassName: _Array2Type_
 [INFO ]  Found HSEQUENCE definitionHClassName: _SequenceType_
 [WARNI]  Template: )skipped because name does'nt contain _.
+[INFO ]  Wrap classes :
+[INFO ]  NCollection_StdAllocator<void>
+[INFO ]  Wrap nested class NCollection_StdAllocator<void>::rebind
 [INFO ]  ## Processing module OSD
+[INFO ]  Wrap classes :
+[WARNI]  [TypeHint] Skipping type FILE *, should contain _
+[WARNI]  [TypeHint] Skipping type FILE *, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skip type ::std::ios_base::openmode, because of trailing :
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type ::std::filebuf &, should contain _
 [INFO ]  ## Processing module Plugin
+[INFO ]  Wrap classes :
 [INFO ]  ## Processing module Quantity
 [INFO ]  Found HARRAY1 definitionQuantity_HArray1OfColor: Quantity_Array1OfColor
 [INFO ]  Wrap classes :
 [INFO ]  Quantity_Color
+[WARNI]  [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
+[WARNI]  [TypeHint] Skipping type static bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
 [INFO ]  Quantity_ColorHasher
 [INFO ]  Quantity_ColorRGBA
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
+[WARNI]  [TypeHint] Skipping type float, should contain _
+[WARNI]  [TypeHint] Skipping type static bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type const bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type float, should contain _
 [INFO ]  Quantity_ColorRGBAHasher
 [INFO ]  Quantity_Date
 [INFO ]  Quantity_Period
@@ -5728,8 +6474,16 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Wrap classes :
 [INFO ]  Standard
 [INFO ]  Standard_ArrayStreamBuffer
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
+[WARNI]  [TypeHint] Skipping unknown type, size not in module list
+[WARNI]  [TypeHint] Skipping type virtual std::streamsize, should contain _
+[WARNI]  [TypeHint] Skipping type std::streamsize, should contain _
 [INFO ]  Standard_Condition
-[WARNI]  Wrong type in class property : return
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
 [INFO ]  Standard_ErrorHandler
 [INFO ]  Wrap nested class Standard_ErrorHandler::Callback
 [INFO ]  Standard_GUID
@@ -5742,13 +6496,68 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Standard_MMgrTBBalloc
 [INFO ]  Standard_OutOfMemory
 [INFO ]  Standard_Persistent
-[WARNI]  Creating Get and Set methods for method TypeNum
+[INFO ]  Creating Get and Set methods for method TypeNum
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type FILE *, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type bool, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type int, should contain _
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping type long, should contain _
+[WARNI]  [TypeHint] Skipping type long volatile *, should contain _
+[WARNI]  [TypeHint] Skipping type long, should contain _
+[WARNI]  [TypeHint] Skipping type volatile long *, should contain _
+[WARNI]  [TypeHint] Skipping type long, should contain _
+[WARNI]  [TypeHint] Skipping type volatile long *, should contain _
+[WARNI]  [TypeHint] Skipping unknown type,  not in module list
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping unknown type,  not in module list
+[WARNI]  [TypeHint] Skipping type double, should contain _
+[WARNI]  [TypeHint] Skipping unknown type,  not in module list
+[WARNI]  [TypeHint] Skipping type double, should contain _
 [INFO ]  ## Processing module StdFail
+[INFO ]  Wrap classes :
 [INFO ]  ## Processing module Storage
 [INFO ]  Found HARRAY1 definitionStorage_HArrayOfSchema: Storage_ArrayOfSchema
 [INFO ]  Found HARRAY1 definitionStorage_HPArray: Storage_PArray
 [INFO ]  Found HSEQUENCE definitionStorage_HSeqOfRoot: Storage_SeqOfRoot
 [INFO ]  Found HARRAY1 definitionStorage_HArrayOfCallBack: Storage_ArrayOfCallBack
+[INFO ]  Wrap classes :
 [INFO ]  ## Processing module TColStd
 [INFO ]  Found HARRAY1 definitionTColStd_HArray1OfExtendedString: TColStd_Array1OfExtendedString
 [INFO ]  Found HARRAY2 definitionTColStd_HArray2OfBoolean: TColStd_Array2OfBoolean
@@ -5771,9 +6580,9 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Found HARRAY2 definitionTColStd_HArray2OfCharacter: TColStd_Array2OfCharacter
 [INFO ]  Found HARRAY1 definitionTColStd_HArray1OfByte: TColStd_Array1OfByte
 [INFO ]  Found HSEQUENCE definitionTColStd_HSequenceOfReal: TColStd_SequenceOfReal
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher>::Iterator
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap <opencascade::handle <Standard_Transient>, opencascade::handle <Standard_Transient>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher>
 [INFO ]  Wrap classes :
 [INFO ]  TColStd_HPackedMapOfInteger
 [INFO ]  ## Processing module TCollection
@@ -5812,11 +6621,15 @@ date : 2020-02-11 16:22:43.579343
 [INFO ]  Units_ShiftedUnit
 [INFO ]  Units_UnitSentence
 [INFO ]  Units_UnitsLexicon
+[WARNI]  [TypeHint] Skipping type const, should contain _
+[WARNI]  [TypeHint] Skipping type const, should contain _
 [INFO ]  ## Processing module UnitsAPI
 [INFO ]  Wrap classes :
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 31.27s
+SWIG interface file generation completed in 28.57s
 #################################################
 
+[INFO ]  Number of classes: 4452
+[INFO ]  Number of methods: 44394

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -48,6 +48,11 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomabs.html"
 %};
 %import Standard.i
 %import NCollection.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum GeomAbs_IsoType {
 	GeomAbs_IsoU = 0,
@@ -133,6 +138,85 @@ enum GeomAbs_UVSense {
 };
 
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+
+class GeomAbs_IsoType:
+	GeomAbs_IsoU = 0
+	GeomAbs_IsoV = 1
+	GeomAbs_NoneIso = 2
+
+class GeomAbs_JoinType:
+	GeomAbs_Arc = 0
+	GeomAbs_Tangent = 1
+	GeomAbs_Intersection = 2
+
+class GeomAbs_SurfaceType:
+	GeomAbs_Plane = 0
+	GeomAbs_Cylinder = 1
+	GeomAbs_Cone = 2
+	GeomAbs_Sphere = 3
+	GeomAbs_Torus = 4
+	GeomAbs_BezierSurface = 5
+	GeomAbs_BSplineSurface = 6
+	GeomAbs_SurfaceOfRevolution = 7
+	GeomAbs_SurfaceOfExtrusion = 8
+	GeomAbs_OffsetSurface = 9
+	GeomAbs_OtherSurface = 10
+
+class GeomAbs_CurveType:
+	GeomAbs_Line = 0
+	GeomAbs_Circle = 1
+	GeomAbs_Ellipse = 2
+	GeomAbs_Hyperbola = 3
+	GeomAbs_Parabola = 4
+	GeomAbs_BezierCurve = 5
+	GeomAbs_BSplineCurve = 6
+	GeomAbs_OffsetCurve = 7
+	GeomAbs_OtherCurve = 8
+
+class GeomAbs_SurfaceForm:
+	GeomAbs_PlanarForm = 0
+	GeomAbs_ConicalForm = 1
+	GeomAbs_CylindricalForm = 2
+	GeomAbs_ToroidalForm = 3
+	GeomAbs_SphericalForm = 4
+	GeomAbs_RevolutionForm = 5
+	GeomAbs_RuledForm = 6
+	GeomAbs_QuadricForm = 7
+	GeomAbs_OtherSurfaceForm = 8
+
+class GeomAbs_Shape:
+	GeomAbs_C0 = 0
+	GeomAbs_G1 = 1
+	GeomAbs_C1 = 2
+	GeomAbs_G2 = 3
+	GeomAbs_C2 = 4
+	GeomAbs_C3 = 5
+	GeomAbs_CN = 6
+
+class GeomAbs_BSplKnotDistribution:
+	GeomAbs_NonUniform = 0
+	GeomAbs_Uniform = 1
+	GeomAbs_QuasiUniform = 2
+	GeomAbs_PiecewiseBezier = 3
+
+class GeomAbs_CurveForm:
+	GeomAbs_PolylineForm = 0
+	GeomAbs_CircularForm = 1
+	GeomAbs_EllipticForm = 2
+	GeomAbs_HyperbolicForm = 3
+	GeomAbs_ParabolicForm = 4
+	GeomAbs_OtherCurveForm = 5
+
+class GeomAbs_UVSense:
+	GeomAbs_SameUV = 0
+	GeomAbs_SameU = 1
+	GeomAbs_SameV = 2
+	GeomAbs_OppositeUV = 3
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */

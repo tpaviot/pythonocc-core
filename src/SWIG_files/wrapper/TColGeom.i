@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -51,8 +51,18 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom.html"
 %import Standard.i
 %import NCollection.i
 %import Geom.i
+
+%pythoncode {
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 %wrap_handle(TColGeom_HArray1OfSurface)
@@ -65,10 +75,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom.html"
 /* end handles declaration */
 
 /* templates */
-%template(TColGeom_Array2OfBezierSurface) NCollection_Array2 <opencascade::handle <Geom_BezierSurface>>;
-%template(TColGeom_Array1OfBezierCurve) NCollection_Array1 <opencascade::handle <Geom_BezierCurve>>;
+%template(TColGeom_Array1OfBSplineCurve) NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>;
 
-%extend NCollection_Array1 <opencascade::handle <Geom_BezierCurve>> {
+%extend NCollection_Array1<opencascade::handle<Geom_BSplineCurve>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -101,9 +110,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom.html"
     __next__ = next
     }
 };
-%template(TColGeom_Array1OfSurface) NCollection_Array1 <opencascade::handle <Geom_Surface>>;
+%template(TColGeom_Array1OfBezierCurve) NCollection_Array1<opencascade::handle<Geom_BezierCurve>>;
 
-%extend NCollection_Array1 <opencascade::handle <Geom_Surface>> {
+%extend NCollection_Array1<opencascade::handle<Geom_BezierCurve>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -136,12 +145,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom.html"
     __next__ = next
     }
 };
-%template(TColGeom_Array2OfSurface) NCollection_Array2 <opencascade::handle <Geom_Surface>>;
-%template(TColGeom_SequenceOfBoundedCurve) NCollection_Sequence <opencascade::handle <Geom_BoundedCurve>>;
-%template(TColGeom_SequenceOfSurface) NCollection_Sequence <opencascade::handle <Geom_Surface>>;
-%template(TColGeom_Array1OfCurve) NCollection_Array1 <opencascade::handle <Geom_Curve>>;
+%template(TColGeom_Array1OfCurve) NCollection_Array1<opencascade::handle<Geom_Curve>>;
 
-%extend NCollection_Array1 <opencascade::handle <Geom_Curve>> {
+%extend NCollection_Array1<opencascade::handle<Geom_Curve>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -174,10 +180,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom.html"
     __next__ = next
     }
 };
-%template(TColGeom_SequenceOfCurve) NCollection_Sequence <opencascade::handle <Geom_Curve>>;
-%template(TColGeom_Array1OfBSplineCurve) NCollection_Array1 <opencascade::handle <Geom_BSplineCurve>>;
+%template(TColGeom_Array1OfSurface) NCollection_Array1<opencascade::handle<Geom_Surface>>;
 
-%extend NCollection_Array1 <opencascade::handle <Geom_BSplineCurve>> {
+%extend NCollection_Array1<opencascade::handle<Geom_Surface>> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -210,18 +215,23 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom.html"
     __next__ = next
     }
 };
+%template(TColGeom_Array2OfBezierSurface) NCollection_Array2<opencascade::handle<Geom_BezierSurface>>;
+%template(TColGeom_Array2OfSurface) NCollection_Array2<opencascade::handle<Geom_Surface>>;
+%template(TColGeom_SequenceOfBoundedCurve) NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>>;
+%template(TColGeom_SequenceOfCurve) NCollection_Sequence<opencascade::handle<Geom_Curve>>;
+%template(TColGeom_SequenceOfSurface) NCollection_Sequence<opencascade::handle<Geom_Surface>>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Array2 <opencascade::handle <Geom_BezierSurface>> TColGeom_Array2OfBezierSurface;
-typedef NCollection_Array1 <opencascade::handle <Geom_BezierCurve>> TColGeom_Array1OfBezierCurve;
-typedef NCollection_Array1 <opencascade::handle <Geom_Surface>> TColGeom_Array1OfSurface;
-typedef NCollection_Array2 <opencascade::handle <Geom_Surface>> TColGeom_Array2OfSurface;
-typedef NCollection_Sequence <opencascade::handle <Geom_BoundedCurve>> TColGeom_SequenceOfBoundedCurve;
-typedef NCollection_Sequence <opencascade::handle <Geom_Surface>> TColGeom_SequenceOfSurface;
-typedef NCollection_Array1 <opencascade::handle <Geom_Curve>> TColGeom_Array1OfCurve;
-typedef NCollection_Sequence <opencascade::handle <Geom_Curve>> TColGeom_SequenceOfCurve;
-typedef NCollection_Array1 <opencascade::handle <Geom_BSplineCurve>> TColGeom_Array1OfBSplineCurve;
+typedef NCollection_Array1<opencascade::handle<Geom_BSplineCurve>> TColGeom_Array1OfBSplineCurve;
+typedef NCollection_Array1<opencascade::handle<Geom_BezierCurve>> TColGeom_Array1OfBezierCurve;
+typedef NCollection_Array1<opencascade::handle<Geom_Curve>> TColGeom_Array1OfCurve;
+typedef NCollection_Array1<opencascade::handle<Geom_Surface>> TColGeom_Array1OfSurface;
+typedef NCollection_Array2<opencascade::handle<Geom_BezierSurface>> TColGeom_Array2OfBezierSurface;
+typedef NCollection_Array2<opencascade::handle<Geom_Surface>> TColGeom_Array2OfSurface;
+typedef NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>> TColGeom_SequenceOfBoundedCurve;
+typedef NCollection_Sequence<opencascade::handle<Geom_Curve>> TColGeom_SequenceOfCurve;
+typedef NCollection_Sequence<opencascade::handle<Geom_Surface>> TColGeom_SequenceOfSurface;
 /* end typedefs declaration */
 
 /* harray1 classes */
