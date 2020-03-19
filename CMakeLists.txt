@@ -107,11 +107,10 @@ message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
 find_package(SWIG 3.0.11 REQUIRED)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
+set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual -py3)
 if(SWIG_HIDE_WARNINGS)
   message(STATUS "Disabled SWIG warnings")
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -O -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404 -py3)
-else()
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -py3)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404)
 endif()
     
 ################################
@@ -384,7 +383,11 @@ endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 if(PYTHONOCC_WRAP_OCAF)
 foreach(OCE_MODULE ${OCE_TOOLKIT_OCAF})
+    # install the python interface file (python module)
     install(FILES ${BUILD_DIR}/${OCE_MODULE}.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+    # install the type hing stub file to the same location than the related module
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/SWIG_files/wrapper/${OCE_MODULE}.pyi DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+
     install(TARGETS _${OCE_MODULE} DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
@@ -412,6 +415,9 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS DESTINATION ${PYTHONOCC_INSTAL
 # install __init__.py file
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/__init__.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
+
+# install Exception.py module
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Exception.py DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 
 # install Extend
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Extend DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
