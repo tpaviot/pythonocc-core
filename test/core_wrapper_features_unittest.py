@@ -24,6 +24,7 @@ from math import sqrt
 import warnings
 from contextlib import contextmanager
 
+from OCC.Core.AIS import AIS_Manipulator
 from OCC.Core.Standard import Standard_Transient
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
@@ -63,6 +64,9 @@ from OCC.Core.HLRAlgo import HLRAlgo_Projector
 from OCC.Core.TopTools import (TopTools_HArray1OfShape,
                                TopTools_HArray2OfShape,
                                TopTools_HSequenceOfShape)
+from OCC.Core.TDF import TDF_LabelNode
+from OCC.Core.Exception import (methodnotwrapped, classnotwrapped,
+                                MethodNotWrappedError, ClassNotWrappedError)
 
 @contextmanager
 def assert_warns_deprecated():
@@ -736,6 +740,40 @@ class TestWrapperFeatures(unittest.TestCase):
         face_indices1 = overlaps1.Keys()
         self.assertEqual(face_indices1, [1, 3, 5])
 
+    def test_class_not_wrapped_exception(self):
+        """ checks that calling a non wrapped class raises
+        an ClassNotWrapped exception
+        """
+        @classnotwrapped
+        class TestNotWrapped:
+            pass
+        with self.assertRaises(ClassNotWrappedError):
+            TestNotWrapped()
+
+        # now check with some non wrapped classes/methods from occt
+        # TDF_LabelNode is excluded from the wrapper.
+        # I don't remember why but that's not the point
+        with self.assertRaises(ClassNotWrappedError):
+            TDF_LabelNode()
+
+    def test_method_not_wrapped_exception(self):
+        """ checks that calling a non wrapped class raises
+        an ClassNotWrapped exception
+        """
+        class TestClass:
+            def meth1(self):
+                pass  # does not raise any exception
+            @methodnotwrapped
+            def meth2(self):
+                pass  # calling this method will raise an exception
+        a = TestClass()
+        a.meth1()
+        with self.assertRaises(MethodNotWrappedError):
+            a.meth2()
+        # test with OCC
+        m = AIS_Manipulator()
+        with self.assertRaises(MethodNotWrappedError):
+            m.TransformBehavior()
 
 def suite():
     test_suite = unittest.TestSuite()
