@@ -619,7 +619,7 @@ def get_sorted_hlr_edges(topods_shape, position=gp_Pnt(), direction=gp_Dir(), ex
         visible += list(TopologyExplorer(visible_sharp_edges_as_compound).edges())
     visible_smooth_edges_as_compound = hlr_shapes.Rg1LineVCompound()
     if visible_smooth_edges_as_compound:
-        visible += list(TopologyExplorer(visible_sharp_edges_as_compound).edges())
+        visible += list(TopologyExplorer(visible_smooth_edges_as_compound).edges())
     #visible_sewn_edges_as_compound = hlr_shapes.RgNLineVCompound()
     #if visible_sewn_edges_as_compound:
     #    visible += list(TopologyExplorer(visible_sewn_edges_as_compound).edges())
