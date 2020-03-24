@@ -3,6 +3,8 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 # TKernel
 	FSD
 	MMgt
+	Message
+	NCollection
 	OSD
 	Plugin
 	Quantity
@@ -15,27 +17,25 @@ LIST(APPEND OCE_TOOLKIT_MODEL
 	TShort
 	Units
 	UnitsAPI
-	NCollection
-	Message
 # TKMath
-	math
-	ElCLib
-	ElSLib
 	BSplCLib
 	BSplSLib
-	PLib
-	Precision
-	GeomAbs
-	Poly
+	BVH
+	Bnd
 	CSLib
 	Convert
-	Bnd
-	gp
-	TColgp
-	TopLoc
-	BVH
+	ElCLib
+	ElSLib
 	Expr
 	ExprIntrp
+	GeomAbs
+	PLib
+	Poly
+	Precision
+	TColgp
+	TopLoc
+	gp
+	math
 # TKBRep
 	TopoDS
 	TopExp
@@ -208,22 +208,22 @@ LIST(APPEND OCE_TOOLKIT_VISUALIZATION
 
 # TKService
 	Aspect
-	SelectBasics
 	Image
 	InterfaceGraphic
+	Media
 	TColQuantity
 # TKV3d
-	V3d
-	Graphic3d
-	Visual3d
-	Select3D
-	Prs3d
-	StdPrs
-	SelectMgr
-	PrsMgr
 	AIS
 	DsgPrs
+	Graphic3d
+	Prs3d
+	PrsMgr
+	Select3D
+	SelectBasics
+	SelectMgr
+	StdPrs
 	StdSelect
+	V3d
 # TKMeshVS
 	MeshVS
 )
