@@ -1,7 +1,13 @@
 """ A flask webserver. """
 
-from OCC.Display.WebGl.threejs_renderer import *
-# for function to build vertex (or point cloud) in WebGL
+import sys
+import uuid
+
+from OCC.Display.WebGl.threejs_renderer import ThreejsRenderer, OCC_VERSION, \
+        THREEJS_RELEASE, color_to_hex, export_edgedata_to_json, spinning_cursor
+from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
+from OCC.Core.Tesselator import ShapeTesselator
+# Import following for building vertex (or point cloud) in WebGL
 from OCC.Core.gp import gp_Pnt
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.TopoDS import TopoDS_Compound
@@ -87,7 +93,6 @@ class RenderWraper(ThreejsRenderer):
         sys.stdout.flush()
         # export to 3JS
         # generate the mesh
-        #tess.ExportShapeToThreejs(shape_hash, shape_full_path)
         shape_content = tess.ExportShapeToThreejsJSONString(shape_uuid)
         # add this shape to the shape dict, sotres everything related to it
         self._3js_shapes[shape_hash] = [export_edges, color, specular_color, shininess, transparency,
@@ -167,4 +172,4 @@ if __name__ == '__main__':
                                render_cfg=render_cfg, occ_shapes=my_ren._3js_shapes, occ_edges=my_ren._3js_edges,
                                occ_vertex=my_ren._3js_vertex)
 
-    app.run(host='localhost', port=8080, debug=True)
+    app.run(host='localhost', port=8080, debug=False)
