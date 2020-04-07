@@ -50,6 +50,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intrv.html"
 %import NCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -75,7 +76,7 @@ enum Intrv_Position {
 /* python proy classes for enums */
 %pythoncode {
 
-class Intrv_Position:
+class Intrv_Position(IntEnum):
 	Intrv_Before = 0
 	Intrv_JustBefore = 1
 	Intrv_OverlappingAtStart = 2
@@ -89,6 +90,19 @@ class Intrv_Position:
 	Intrv_OverlappingAtEnd = 10
 	Intrv_JustAfter = 11
 	Intrv_After = 12
+Intrv_Before = Intrv_Position.Intrv_Before
+Intrv_JustBefore = Intrv_Position.Intrv_JustBefore
+Intrv_OverlappingAtStart = Intrv_Position.Intrv_OverlappingAtStart
+Intrv_JustEnclosingAtEnd = Intrv_Position.Intrv_JustEnclosingAtEnd
+Intrv_Enclosing = Intrv_Position.Intrv_Enclosing
+Intrv_JustOverlappingAtStart = Intrv_Position.Intrv_JustOverlappingAtStart
+Intrv_Similar = Intrv_Position.Intrv_Similar
+Intrv_JustEnclosingAtStart = Intrv_Position.Intrv_JustEnclosingAtStart
+Intrv_Inside = Intrv_Position.Intrv_Inside
+Intrv_JustOverlappingAtEnd = Intrv_Position.Intrv_JustOverlappingAtEnd
+Intrv_OverlappingAtEnd = Intrv_Position.Intrv_OverlappingAtEnd
+Intrv_JustAfter = Intrv_Position.Intrv_JustAfter
+Intrv_After = Intrv_Position.Intrv_After
 };
 /* end python proxy for enums */
 

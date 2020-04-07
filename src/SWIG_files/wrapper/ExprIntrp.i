@@ -54,6 +54,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_exprintrp.html"
 %import TCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -79,8 +80,29 @@ from OCC.Core.Exception import *
 %template(ExprIntrp_SequenceOfNamedExpression) NCollection_Sequence<opencascade::handle<Expr_NamedExpression>>;
 %template(ExprIntrp_SequenceOfNamedFunction) NCollection_Sequence<opencascade::handle<Expr_NamedFunction>>;
 %template(ExprIntrp_StackOfGeneralExpression) NCollection_List<opencascade::handle<Expr_GeneralExpression>>;
+
+%extend NCollection_List<opencascade::handle<Expr_GeneralExpression>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(ExprIntrp_StackOfGeneralFunction) NCollection_List<opencascade::handle<Expr_GeneralFunction>>;
+
+%extend NCollection_List<opencascade::handle<Expr_GeneralFunction>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(ExprIntrp_StackOfGeneralRelation) NCollection_List<opencascade::handle<Expr_GeneralRelation>>;
+
+%extend NCollection_List<opencascade::handle<Expr_GeneralRelation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

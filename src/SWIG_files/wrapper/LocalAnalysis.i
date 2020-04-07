@@ -59,6 +59,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_localanalysis.htm
 %import GeomLProp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -76,12 +77,17 @@ enum LocalAnalysis_StatusErrorType {
 /* python proy classes for enums */
 %pythoncode {
 
-class LocalAnalysis_StatusErrorType:
+class LocalAnalysis_StatusErrorType(IntEnum):
 	LocalAnalysis_NullFirstDerivative = 0
 	LocalAnalysis_NullSecondDerivative = 1
 	LocalAnalysis_TangentNotDefined = 2
 	LocalAnalysis_NormalNotDefined = 3
 	LocalAnalysis_CurvatureNotDefined = 4
+LocalAnalysis_NullFirstDerivative = LocalAnalysis_StatusErrorType.LocalAnalysis_NullFirstDerivative
+LocalAnalysis_NullSecondDerivative = LocalAnalysis_StatusErrorType.LocalAnalysis_NullSecondDerivative
+LocalAnalysis_TangentNotDefined = LocalAnalysis_StatusErrorType.LocalAnalysis_TangentNotDefined
+LocalAnalysis_NormalNotDefined = LocalAnalysis_StatusErrorType.LocalAnalysis_NormalNotDefined
+LocalAnalysis_CurvatureNotDefined = LocalAnalysis_StatusErrorType.LocalAnalysis_CurvatureNotDefined
 };
 /* end python proxy for enums */
 

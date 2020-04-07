@@ -90,6 +90,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepmesh.html"
 %import IMeshData.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -116,13 +117,17 @@ enum BRepMesh_DegreeOfFreedom {
 /* python proy classes for enums */
 %pythoncode {
 
-class BRepMesh_FactoryError:
+class BRepMesh_FactoryError(IntEnum):
 	BRepMesh_FE_NOERROR = 0
 	BRepMesh_FE_LIBRARYNOTFOUND = 1
 	BRepMesh_FE_FUNCTIONNOTFOUND = 2
 	BRepMesh_FE_CANNOTCREATEALGO = 3
+BRepMesh_FE_NOERROR = BRepMesh_FactoryError.BRepMesh_FE_NOERROR
+BRepMesh_FE_LIBRARYNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_LIBRARYNOTFOUND
+BRepMesh_FE_FUNCTIONNOTFOUND = BRepMesh_FactoryError.BRepMesh_FE_FUNCTIONNOTFOUND
+BRepMesh_FE_CANNOTCREATEALGO = BRepMesh_FactoryError.BRepMesh_FE_CANNOTCREATEALGO
 
-class BRepMesh_DegreeOfFreedom:
+class BRepMesh_DegreeOfFreedom(IntEnum):
 	BRepMesh_Free = 0
 	BRepMesh_InVolume = 1
 	BRepMesh_OnSurface = 2
@@ -130,6 +135,13 @@ class BRepMesh_DegreeOfFreedom:
 	BRepMesh_Fixed = 4
 	BRepMesh_Frontier = 5
 	BRepMesh_Deleted = 6
+BRepMesh_Free = BRepMesh_DegreeOfFreedom.BRepMesh_Free
+BRepMesh_InVolume = BRepMesh_DegreeOfFreedom.BRepMesh_InVolume
+BRepMesh_OnSurface = BRepMesh_DegreeOfFreedom.BRepMesh_OnSurface
+BRepMesh_OnCurve = BRepMesh_DegreeOfFreedom.BRepMesh_OnCurve
+BRepMesh_Fixed = BRepMesh_DegreeOfFreedom.BRepMesh_Fixed
+BRepMesh_Frontier = BRepMesh_DegreeOfFreedom.BRepMesh_Frontier
+BRepMesh_Deleted = BRepMesh_DegreeOfFreedom.BRepMesh_Deleted
 };
 /* end python proxy for enums */
 
@@ -1868,13 +1880,19 @@ enum IntFlag {
 /* python proy classes for enums */
 %pythoncode {
 
-class IntFlag:
+class IntFlag(IntEnum):
 	NoIntersection = 0
 	Cross = 1
 	EndPointTouch = 2
 	PointOnSegment = 3
 	Glued = 4
 	Same = 5
+NoIntersection = IntFlag.NoIntersection
+Cross = IntFlag.Cross
+EndPointTouch = IntFlag.EndPointTouch
+PointOnSegment = IntFlag.PointOnSegment
+Glued = IntFlag.Glued
+Same = IntFlag.Same
 };
 /* end python proxy for enums */
 

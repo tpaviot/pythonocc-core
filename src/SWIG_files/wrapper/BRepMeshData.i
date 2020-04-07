@@ -66,6 +66,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepmeshdata.html
 %import TopoDS.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 

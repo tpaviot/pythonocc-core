@@ -76,6 +76,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_breptools.html"
 %import TopAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -577,10 +578,13 @@ enum TRelationType {
 /* python proy classes for enums */
 %pythoncode {
 
-class TRelationType:
+class TRelationType(IntEnum):
 	TRelationType_Removed = 0
 	TRelationType_Generated = 1
 	TRelationType_Modified = 2
+TRelationType_Removed = TRelationType.TRelationType_Removed
+TRelationType_Generated = TRelationType.TRelationType_Generated
+TRelationType_Modified = TRelationType.TRelationType_Modified
 };
 /* end python proxy for enums */
 

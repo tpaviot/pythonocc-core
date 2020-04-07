@@ -91,6 +91,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_meshvs.html"
 %import Aspect.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -201,7 +202,7 @@ enum  {
 /* python proy classes for enums */
 %pythoncode {
 
-class MeshVS_EntityType:
+class MeshVS_EntityType(IntEnum):
 	MeshVS_ET_NONE = 0
 	MeshVS_ET_Node = 1
 	MeshVS_ET_0D = 2
@@ -210,13 +211,24 @@ class MeshVS_EntityType:
 	MeshVS_ET_Volume = 16
 	MeshVS_ET_Element = MeshVS_ET_0D | MeshVS_ET_Link | MeshVS_ET_Face | MeshVS_ET_Volume
 	MeshVS_ET_All = MeshVS_ET_Element | MeshVS_ET_Node
+MeshVS_ET_NONE = MeshVS_EntityType.MeshVS_ET_NONE
+MeshVS_ET_Node = MeshVS_EntityType.MeshVS_ET_Node
+MeshVS_ET_0D = MeshVS_EntityType.MeshVS_ET_0D
+MeshVS_ET_Link = MeshVS_EntityType.MeshVS_ET_Link
+MeshVS_ET_Face = MeshVS_EntityType.MeshVS_ET_Face
+MeshVS_ET_Volume = MeshVS_EntityType.MeshVS_ET_Volume
+MeshVS_ET_Element = MeshVS_EntityType.MeshVS_ET_Element
+MeshVS_ET_All = MeshVS_EntityType.MeshVS_ET_All
 
-class MeshVS_MeshSelectionMethod:
+class MeshVS_MeshSelectionMethod(IntEnum):
 	MeshVS_MSM_PRECISE = 0
 	MeshVS_MSM_NODES = 1
 	MeshVS_MSM_BOX = 2
+MeshVS_MSM_PRECISE = MeshVS_MeshSelectionMethod.MeshVS_MSM_PRECISE
+MeshVS_MSM_NODES = MeshVS_MeshSelectionMethod.MeshVS_MSM_NODES
+MeshVS_MSM_BOX = MeshVS_MeshSelectionMethod.MeshVS_MSM_BOX
 
-class MeshVS_SelectionModeFlags:
+class MeshVS_SelectionModeFlags(IntEnum):
 	MeshVS_SMF_Mesh = 0
 	MeshVS_SMF_Node = 1
 	MeshVS_SMF_0D = 2
@@ -226,8 +238,17 @@ class MeshVS_SelectionModeFlags:
 	MeshVS_SMF_Element = MeshVS_SMF_0D | MeshVS_SMF_Link | MeshVS_SMF_Face | MeshVS_SMF_Volume
 	MeshVS_SMF_All = MeshVS_SMF_Element | MeshVS_SMF_Node
 	MeshVS_SMF_Group = 256
+MeshVS_SMF_Mesh = MeshVS_SelectionModeFlags.MeshVS_SMF_Mesh
+MeshVS_SMF_Node = MeshVS_SelectionModeFlags.MeshVS_SMF_Node
+MeshVS_SMF_0D = MeshVS_SelectionModeFlags.MeshVS_SMF_0D
+MeshVS_SMF_Link = MeshVS_SelectionModeFlags.MeshVS_SMF_Link
+MeshVS_SMF_Face = MeshVS_SelectionModeFlags.MeshVS_SMF_Face
+MeshVS_SMF_Volume = MeshVS_SelectionModeFlags.MeshVS_SMF_Volume
+MeshVS_SMF_Element = MeshVS_SelectionModeFlags.MeshVS_SMF_Element
+MeshVS_SMF_All = MeshVS_SelectionModeFlags.MeshVS_SMF_All
+MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
 
-class MeshVS_DrawerAttribute:
+class MeshVS_DrawerAttribute(IntEnum):
 	MeshVS_DA_InteriorStyle = 0
 	MeshVS_DA_InteriorColor = 1
 	MeshVS_DA_BackInteriorColor = 2
@@ -268,6 +289,46 @@ class MeshVS_DrawerAttribute:
 	MeshVS_DA_SmoothShading = 37
 	MeshVS_DA_SupressBackFaces = 38
 	MeshVS_DA_User = 39
+MeshVS_DA_InteriorStyle = MeshVS_DrawerAttribute.MeshVS_DA_InteriorStyle
+MeshVS_DA_InteriorColor = MeshVS_DrawerAttribute.MeshVS_DA_InteriorColor
+MeshVS_DA_BackInteriorColor = MeshVS_DrawerAttribute.MeshVS_DA_BackInteriorColor
+MeshVS_DA_EdgeColor = MeshVS_DrawerAttribute.MeshVS_DA_EdgeColor
+MeshVS_DA_EdgeType = MeshVS_DrawerAttribute.MeshVS_DA_EdgeType
+MeshVS_DA_EdgeWidth = MeshVS_DrawerAttribute.MeshVS_DA_EdgeWidth
+MeshVS_DA_HatchStyle = MeshVS_DrawerAttribute.MeshVS_DA_HatchStyle
+MeshVS_DA_FrontMaterial = MeshVS_DrawerAttribute.MeshVS_DA_FrontMaterial
+MeshVS_DA_BackMaterial = MeshVS_DrawerAttribute.MeshVS_DA_BackMaterial
+MeshVS_DA_BeamType = MeshVS_DrawerAttribute.MeshVS_DA_BeamType
+MeshVS_DA_BeamWidth = MeshVS_DrawerAttribute.MeshVS_DA_BeamWidth
+MeshVS_DA_BeamColor = MeshVS_DrawerAttribute.MeshVS_DA_BeamColor
+MeshVS_DA_MarkerType = MeshVS_DrawerAttribute.MeshVS_DA_MarkerType
+MeshVS_DA_MarkerColor = MeshVS_DrawerAttribute.MeshVS_DA_MarkerColor
+MeshVS_DA_MarkerScale = MeshVS_DrawerAttribute.MeshVS_DA_MarkerScale
+MeshVS_DA_TextColor = MeshVS_DrawerAttribute.MeshVS_DA_TextColor
+MeshVS_DA_TextHeight = MeshVS_DrawerAttribute.MeshVS_DA_TextHeight
+MeshVS_DA_TextFont = MeshVS_DrawerAttribute.MeshVS_DA_TextFont
+MeshVS_DA_TextExpansionFactor = MeshVS_DrawerAttribute.MeshVS_DA_TextExpansionFactor
+MeshVS_DA_TextSpace = MeshVS_DrawerAttribute.MeshVS_DA_TextSpace
+MeshVS_DA_TextStyle = MeshVS_DrawerAttribute.MeshVS_DA_TextStyle
+MeshVS_DA_TextDisplayType = MeshVS_DrawerAttribute.MeshVS_DA_TextDisplayType
+MeshVS_DA_TextTexFont = MeshVS_DrawerAttribute.MeshVS_DA_TextTexFont
+MeshVS_DA_TextFontAspect = MeshVS_DrawerAttribute.MeshVS_DA_TextFontAspect
+MeshVS_DA_VectorColor = MeshVS_DrawerAttribute.MeshVS_DA_VectorColor
+MeshVS_DA_VectorMaxLength = MeshVS_DrawerAttribute.MeshVS_DA_VectorMaxLength
+MeshVS_DA_VectorArrowPart = MeshVS_DrawerAttribute.MeshVS_DA_VectorArrowPart
+MeshVS_DA_IsAllowOverlapped = MeshVS_DrawerAttribute.MeshVS_DA_IsAllowOverlapped
+MeshVS_DA_Reflection = MeshVS_DrawerAttribute.MeshVS_DA_Reflection
+MeshVS_DA_ColorReflection = MeshVS_DrawerAttribute.MeshVS_DA_ColorReflection
+MeshVS_DA_ShrinkCoeff = MeshVS_DrawerAttribute.MeshVS_DA_ShrinkCoeff
+MeshVS_DA_MaxFaceNodes = MeshVS_DrawerAttribute.MeshVS_DA_MaxFaceNodes
+MeshVS_DA_ComputeTime = MeshVS_DrawerAttribute.MeshVS_DA_ComputeTime
+MeshVS_DA_ComputeSelectionTime = MeshVS_DrawerAttribute.MeshVS_DA_ComputeSelectionTime
+MeshVS_DA_DisplayNodes = MeshVS_DrawerAttribute.MeshVS_DA_DisplayNodes
+MeshVS_DA_SelectableAuto = MeshVS_DrawerAttribute.MeshVS_DA_SelectableAuto
+MeshVS_DA_ShowEdges = MeshVS_DrawerAttribute.MeshVS_DA_ShowEdges
+MeshVS_DA_SmoothShading = MeshVS_DrawerAttribute.MeshVS_DA_SmoothShading
+MeshVS_DA_SupressBackFaces = MeshVS_DrawerAttribute.MeshVS_DA_SupressBackFaces
+MeshVS_DA_User = MeshVS_DrawerAttribute.MeshVS_DA_User
 };
 /* end python proxy for enums */
 
@@ -452,6 +513,13 @@ class MeshVS_DrawerAttribute:
 %template(MeshVS_DataMapOfTwoColorsMapOfInteger) NCollection_DataMap<MeshVS_TwoColors,TColStd_MapOfInteger,MeshVS_TwoColorsHasher>;
 %template(MeshVS_MapOfTwoNodes) NCollection_Map<MeshVS_TwoNodes,MeshVS_TwoNodesHasher>;
 %template(MeshVS_PolyhedronVerts) NCollection_List<opencascade::handle<TColgp_HArray1OfPnt>>;
+
+%extend NCollection_List<opencascade::handle<TColgp_HArray1OfPnt>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(MeshVS_PolyhedronVertsIter) NCollection_TListIterator<MeshVS_PolyhedronVerts>;
 %template(MeshVS_SequenceOfPrsBuilder) NCollection_Sequence<opencascade::handle<MeshVS_PrsBuilder>>;
 %template(MeshVS_TwoColorsHasher) NCollection_DefaultHasher<MeshVS_TwoColors>;
@@ -4245,16 +4313,16 @@ float
 };
 
 /* harray1 classes */
-class MeshVS_HArray1OfSequenceOfInteger : public  MeshVS_Array1OfSequenceOfInteger, public Standard_Transient {
+
+class MeshVS_HArray1OfSequenceOfInteger : public MeshVS_Array1OfSequenceOfInteger, public Standard_Transient {
   public:
     MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
-    MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper, const  MeshVS_Array1OfSequenceOfInteger::value_type& theValue);
-    MeshVS_HArray1OfSequenceOfInteger(const  MeshVS_Array1OfSequenceOfInteger& theOther);
-    const  MeshVS_Array1OfSequenceOfInteger& Array1();
-     MeshVS_Array1OfSequenceOfInteger& ChangeArray1();
+    MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper, const MeshVS_Array1OfSequenceOfInteger::value_type& theValue);
+    MeshVS_HArray1OfSequenceOfInteger(const MeshVS_Array1OfSequenceOfInteger& theOther);
+    const MeshVS_Array1OfSequenceOfInteger& Array1();
+    MeshVS_Array1OfSequenceOfInteger& ChangeArray1();
 };
 %make_alias(MeshVS_HArray1OfSequenceOfInteger)
-
 
 /* harray2 classes */
 /* hsequence classes */

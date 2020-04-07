@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.VrmlConverter import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Adaptor3d import *
@@ -15,16 +15,23 @@ from OCC.Core.TColgp import *
 from OCC.Core.BRepAdaptor import *
 
 
-class VrmlConverter_TypeOfLight:
+class VrmlConverter_TypeOfLight(IntEnum):
 	VrmlConverter_NoLight: int = ...
 	VrmlConverter_DirectionLight: int = ...
 	VrmlConverter_PointLight: int = ...
 	VrmlConverter_SpotLight: int = ...
+VrmlConverter_NoLight = VrmlConverter_TypeOfLight.VrmlConverter_NoLight
+VrmlConverter_DirectionLight = VrmlConverter_TypeOfLight.VrmlConverter_DirectionLight
+VrmlConverter_PointLight = VrmlConverter_TypeOfLight.VrmlConverter_PointLight
+VrmlConverter_SpotLight = VrmlConverter_TypeOfLight.VrmlConverter_SpotLight
 
-class VrmlConverter_TypeOfCamera:
+class VrmlConverter_TypeOfCamera(IntEnum):
 	VrmlConverter_NoCamera: int = ...
 	VrmlConverter_PerspectiveCamera: int = ...
 	VrmlConverter_OrthographicCamera: int = ...
+VrmlConverter_NoCamera = VrmlConverter_TypeOfCamera.VrmlConverter_NoCamera
+VrmlConverter_PerspectiveCamera = VrmlConverter_TypeOfCamera.VrmlConverter_PerspectiveCamera
+VrmlConverter_OrthographicCamera = VrmlConverter_TypeOfCamera.VrmlConverter_OrthographicCamera
 
 class VrmlConverter_Curve:
 	pass
@@ -100,7 +107,7 @@ class VrmlConverter_PointAspect(Standard_Transient):
 	def SetMaterial(self, aMaterial: Vrml_Material) -> None: ...
 
 class VrmlConverter_Projector(Standard_Transient):
-	def __init__(self, Shapes: TopTools_Array1OfShape, Focus: float, DX: float, DY: float, DZ: float, XUp: float, YUp: float, ZUp: float, Camera: Optional[VrmlConverter_TypeOfCamera], Light: Optional[VrmlConverter_TypeOfLight]) -> None: ...
+	def __init__(self, Shapes: TopTools_Array1OfShape, Focus: float, DX: float, DY: float, DZ: float, XUp: float, YUp: float, ZUp: float, Camera: Optional[VrmlConverter_TypeOfCamera] = VrmlConverter_NoCamera, Light: Optional[VrmlConverter_TypeOfLight] = VrmlConverter_NoLight) -> None: ...
 	def Camera(self) -> VrmlConverter_TypeOfCamera: ...
 	def Light(self) -> VrmlConverter_TypeOfLight: ...
 	def Projector(self) -> HLRAlgo_Projector: ...
@@ -109,7 +116,7 @@ class VrmlConverter_Projector(Standard_Transient):
 
 class VrmlConverter_ShadedShape:
 	@staticmethod
-	def ComputeNormal(self, aFace: TopoDS_Face, pc: Poly_Connect, Nor: TColgp_Array1OfDir) -> None: ...
+	def ComputeNormal(aFace: TopoDS_Face, pc: Poly_Connect, Nor: TColgp_Array1OfDir) -> None: ...
 
 class VrmlConverter_ShadingAspect(Standard_Transient):
 	def __init__(self) -> None: ...
@@ -141,3 +148,30 @@ class VrmlConverter_IsoAspect(VrmlConverter_LineAspect):
 	def __init__(self, aMaterial: Vrml_Material, OnOff: bool, aNumber: int) -> None: ...
 	def Number(self) -> int: ...
 	def SetNumber(self, aNumber: int) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+VrmlConverter_Curve_Add = VrmlConverter_Curve.Add
+VrmlConverter_Curve_Add = VrmlConverter_Curve.Add
+VrmlConverter_Curve_Add = VrmlConverter_Curve.Add
+VrmlConverter_DeflectionCurve_Add = VrmlConverter_DeflectionCurve.Add
+VrmlConverter_DeflectionCurve_Add = VrmlConverter_DeflectionCurve.Add
+VrmlConverter_DeflectionCurve_Add = VrmlConverter_DeflectionCurve.Add
+VrmlConverter_DeflectionCurve_Add = VrmlConverter_DeflectionCurve.Add
+VrmlConverter_DeflectionCurve_Add = VrmlConverter_DeflectionCurve.Add
+VrmlConverter_DeflectionCurve_Add = VrmlConverter_DeflectionCurve.Add
+VrmlConverter_HLRShape_Add = VrmlConverter_HLRShape.Add
+VrmlConverter_ShadedShape_Add = VrmlConverter_ShadedShape.Add
+VrmlConverter_ShadedShape_ComputeNormal = VrmlConverter_ShadedShape.ComputeNormal
+VrmlConverter_WFDeflectionRestrictedFace_Add = VrmlConverter_WFDeflectionRestrictedFace.Add
+VrmlConverter_WFDeflectionRestrictedFace_Add = VrmlConverter_WFDeflectionRestrictedFace.Add
+VrmlConverter_WFDeflectionRestrictedFace_AddUIso = VrmlConverter_WFDeflectionRestrictedFace.AddUIso
+VrmlConverter_WFDeflectionRestrictedFace_AddVIso = VrmlConverter_WFDeflectionRestrictedFace.AddVIso
+VrmlConverter_WFDeflectionShape_Add = VrmlConverter_WFDeflectionShape.Add
+VrmlConverter_WFRestrictedFace_Add = VrmlConverter_WFRestrictedFace.Add
+VrmlConverter_WFRestrictedFace_Add = VrmlConverter_WFRestrictedFace.Add
+VrmlConverter_WFRestrictedFace_AddUIso = VrmlConverter_WFRestrictedFace.AddUIso
+VrmlConverter_WFRestrictedFace_AddVIso = VrmlConverter_WFRestrictedFace.AddVIso
+VrmlConverter_WFShape_Add = VrmlConverter_WFShape.Add

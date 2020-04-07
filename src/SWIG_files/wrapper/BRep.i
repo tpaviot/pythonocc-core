@@ -68,6 +68,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brep.html"
 %import TopAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -105,7 +106,21 @@ from OCC.Core.Exception import *
 %template(BRep_ListIteratorOfListOfCurveRepresentation) NCollection_TListIterator<opencascade::handle<BRep_CurveRepresentation>>;
 %template(BRep_ListIteratorOfListOfPointRepresentation) NCollection_TListIterator<opencascade::handle<BRep_PointRepresentation>>;
 %template(BRep_ListOfCurveRepresentation) NCollection_List<opencascade::handle<BRep_CurveRepresentation>>;
+
+%extend NCollection_List<opencascade::handle<BRep_CurveRepresentation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BRep_ListOfPointRepresentation) NCollection_List<opencascade::handle<BRep_PointRepresentation>>;
+
+%extend NCollection_List<opencascade::handle<BRep_PointRepresentation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

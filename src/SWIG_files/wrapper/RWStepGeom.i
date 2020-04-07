@@ -64,6 +64,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwstepgeom.html"
 %import StepGeom.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 

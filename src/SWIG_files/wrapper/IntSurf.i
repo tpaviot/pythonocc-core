@@ -60,6 +60,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intsurf.html"
 %import GeomAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -82,16 +83,23 @@ enum IntSurf_TypeTrans {
 /* python proy classes for enums */
 %pythoncode {
 
-class IntSurf_Situation:
+class IntSurf_Situation(IntEnum):
 	IntSurf_Inside = 0
 	IntSurf_Outside = 1
 	IntSurf_Unknown = 2
+IntSurf_Inside = IntSurf_Situation.IntSurf_Inside
+IntSurf_Outside = IntSurf_Situation.IntSurf_Outside
+IntSurf_Unknown = IntSurf_Situation.IntSurf_Unknown
 
-class IntSurf_TypeTrans:
+class IntSurf_TypeTrans(IntEnum):
 	IntSurf_In = 0
 	IntSurf_Out = 1
 	IntSurf_Touch = 2
 	IntSurf_Undecided = 3
+IntSurf_In = IntSurf_TypeTrans.IntSurf_In
+IntSurf_Out = IntSurf_TypeTrans.IntSurf_Out
+IntSurf_Touch = IntSurf_TypeTrans.IntSurf_Touch
+IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
 };
 /* end python proxy for enums */
 
@@ -103,6 +111,13 @@ class IntSurf_TypeTrans:
 %template(IntSurf_Allocator) opencascade::handle<NCollection_BaseAllocator>;
 %template(IntSurf_ListIteratorOfListOfPntOn2S) NCollection_TListIterator<IntSurf_PntOn2S>;
 %template(IntSurf_ListOfPntOn2S) NCollection_List<IntSurf_PntOn2S>;
+
+%extend NCollection_List<IntSurf_PntOn2S> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntSurf_SequenceOfCouple) NCollection_Sequence<IntSurf_Couple>;
 %template(IntSurf_SequenceOfInteriorPoint) NCollection_Sequence<IntSurf_InteriorPoint>;
 %template(IntSurf_SequenceOfPathPoint) NCollection_Sequence<IntSurf_PathPoint>;

@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.RWStepElement import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.StepData import *
@@ -97,3 +97,8 @@ class RWStepElement_RWVolume3dElementDescriptor:
 	def ReadStep(self, data: StepData_StepReaderData, num: int, ach: Interface_Check, ent: StepElement_Volume3dElementDescriptor) -> None: ...
 	def Share(self, ent: StepElement_Volume3dElementDescriptor, iter: Interface_EntityIterator) -> None: ...
 	def WriteStep(self, SW: StepData_StepWriter, ent: StepElement_Volume3dElementDescriptor) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

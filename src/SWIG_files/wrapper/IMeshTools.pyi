@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.IMeshTools import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.IMeshData import *
@@ -59,12 +59,20 @@ class IMeshTools_ModelBuilder(Message_Algorithm):
 class IMeshTools_Parameters:
 	def __init__(self) -> None: ...
 	@staticmethod
-	def RelMinSize(self) -> float: ...
+	def RelMinSize() -> float: ...
 
 class IMeshTools_ShapeExplorer(IMeshData_Shape):
 	def __init__(self, theShape: TopoDS_Shape) -> None: ...
 	def Accept(self, theVisitor: IMeshTools_ShapeVisitor) -> None: ...
 
 class IMeshTools_ShapeVisitor(Standard_Transient):
+	@overload
 	def Visit(self, theFace: TopoDS_Face) -> None: ...
+	@overload
 	def Visit(self, theEdge: TopoDS_Edge) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+IMeshTools_Parameters_RelMinSize = IMeshTools_Parameters.RelMinSize

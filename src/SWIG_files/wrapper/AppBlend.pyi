@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.AppBlend import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TColgp import *
@@ -28,3 +28,8 @@ class AppBlend_Approx:
 	def TolReached(self) -> Tuple[float, float]: ...
 	def UDegree(self) -> int: ...
 	def VDegree(self) -> int: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

@@ -81,6 +81,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomfill.html"
 %import TColGeom.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -121,11 +122,13 @@ enum GeomFill_PipeError {
 /* python proy classes for enums */
 %pythoncode {
 
-class GeomFill_ApproxStyle:
+class GeomFill_ApproxStyle(IntEnum):
 	GeomFill_Section = 0
 	GeomFill_Location = 1
+GeomFill_Section = GeomFill_ApproxStyle.GeomFill_Section
+GeomFill_Location = GeomFill_ApproxStyle.GeomFill_Location
 
-class GeomFill_Trihedron:
+class GeomFill_Trihedron(IntEnum):
 	GeomFill_IsCorrectedFrenet = 0
 	GeomFill_IsFixed = 1
 	GeomFill_IsFrenet = 2
@@ -136,17 +139,34 @@ class GeomFill_Trihedron:
 	GeomFill_IsGuideACWithContact = 7
 	GeomFill_IsGuidePlanWithContact = 8
 	GeomFill_IsDiscreteTrihedron = 9
+GeomFill_IsCorrectedFrenet = GeomFill_Trihedron.GeomFill_IsCorrectedFrenet
+GeomFill_IsFixed = GeomFill_Trihedron.GeomFill_IsFixed
+GeomFill_IsFrenet = GeomFill_Trihedron.GeomFill_IsFrenet
+GeomFill_IsConstantNormal = GeomFill_Trihedron.GeomFill_IsConstantNormal
+GeomFill_IsDarboux = GeomFill_Trihedron.GeomFill_IsDarboux
+GeomFill_IsGuideAC = GeomFill_Trihedron.GeomFill_IsGuideAC
+GeomFill_IsGuidePlan = GeomFill_Trihedron.GeomFill_IsGuidePlan
+GeomFill_IsGuideACWithContact = GeomFill_Trihedron.GeomFill_IsGuideACWithContact
+GeomFill_IsGuidePlanWithContact = GeomFill_Trihedron.GeomFill_IsGuidePlanWithContact
+GeomFill_IsDiscreteTrihedron = GeomFill_Trihedron.GeomFill_IsDiscreteTrihedron
 
-class GeomFill_FillingStyle:
+class GeomFill_FillingStyle(IntEnum):
 	GeomFill_StretchStyle = 0
 	GeomFill_CoonsStyle = 1
 	GeomFill_CurvedStyle = 2
+GeomFill_StretchStyle = GeomFill_FillingStyle.GeomFill_StretchStyle
+GeomFill_CoonsStyle = GeomFill_FillingStyle.GeomFill_CoonsStyle
+GeomFill_CurvedStyle = GeomFill_FillingStyle.GeomFill_CurvedStyle
 
-class GeomFill_PipeError:
+class GeomFill_PipeError(IntEnum):
 	GeomFill_PipeOk = 0
 	GeomFill_PipeNotOk = 1
 	GeomFill_PlaneNotIntersectGuide = 2
 	GeomFill_ImpossibleContact = 3
+GeomFill_PipeOk = GeomFill_PipeError.GeomFill_PipeOk
+GeomFill_PipeNotOk = GeomFill_PipeError.GeomFill_PipeNotOk
+GeomFill_PlaneNotIntersectGuide = GeomFill_PipeError.GeomFill_PlaneNotIntersectGuide
+GeomFill_ImpossibleContact = GeomFill_PipeError.GeomFill_ImpossibleContact
 };
 /* end python proxy for enums */
 
@@ -10538,38 +10558,38 @@ class GeomFill_SweepSectionGenerator:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
-class GeomFill_HArray1OfLocationLaw : public  GeomFill_Array1OfLocationLaw, public Standard_Transient {
+
+class GeomFill_HArray1OfLocationLaw : public GeomFill_Array1OfLocationLaw, public Standard_Transient {
   public:
     GeomFill_HArray1OfLocationLaw(const Standard_Integer theLower, const Standard_Integer theUpper);
-    GeomFill_HArray1OfLocationLaw(const Standard_Integer theLower, const Standard_Integer theUpper, const  GeomFill_Array1OfLocationLaw::value_type& theValue);
-    GeomFill_HArray1OfLocationLaw(const  GeomFill_Array1OfLocationLaw& theOther);
-    const  GeomFill_Array1OfLocationLaw& Array1();
-     GeomFill_Array1OfLocationLaw& ChangeArray1();
+    GeomFill_HArray1OfLocationLaw(const Standard_Integer theLower, const Standard_Integer theUpper, const GeomFill_Array1OfLocationLaw::value_type& theValue);
+    GeomFill_HArray1OfLocationLaw(const GeomFill_Array1OfLocationLaw& theOther);
+    const GeomFill_Array1OfLocationLaw& Array1();
+    GeomFill_Array1OfLocationLaw& ChangeArray1();
 };
 %make_alias(GeomFill_HArray1OfLocationLaw)
 
 
-class GeomFill_HArray1OfSectionLaw : public  GeomFill_Array1OfSectionLaw, public Standard_Transient {
+class GeomFill_HArray1OfSectionLaw : public GeomFill_Array1OfSectionLaw, public Standard_Transient {
   public:
     GeomFill_HArray1OfSectionLaw(const Standard_Integer theLower, const Standard_Integer theUpper);
-    GeomFill_HArray1OfSectionLaw(const Standard_Integer theLower, const Standard_Integer theUpper, const  GeomFill_Array1OfSectionLaw::value_type& theValue);
-    GeomFill_HArray1OfSectionLaw(const  GeomFill_Array1OfSectionLaw& theOther);
-    const  GeomFill_Array1OfSectionLaw& Array1();
-     GeomFill_Array1OfSectionLaw& ChangeArray1();
+    GeomFill_HArray1OfSectionLaw(const Standard_Integer theLower, const Standard_Integer theUpper, const GeomFill_Array1OfSectionLaw::value_type& theValue);
+    GeomFill_HArray1OfSectionLaw(const GeomFill_Array1OfSectionLaw& theOther);
+    const GeomFill_Array1OfSectionLaw& Array1();
+    GeomFill_Array1OfSectionLaw& ChangeArray1();
 };
 %make_alias(GeomFill_HArray1OfSectionLaw)
 
-
 /* harray2 classes */
 /* hsequence classes */
-class GeomFill_HSequenceOfAx2 : public  GeomFill_SequenceOfAx2, public Standard_Transient {
+class GeomFill_HSequenceOfAx2 : public GeomFill_SequenceOfAx2, public Standard_Transient {
   public:
     GeomFill_HSequenceOfAx2();
-    GeomFill_HSequenceOfAx2(const  GeomFill_SequenceOfAx2& theOther);
-    const  GeomFill_SequenceOfAx2& Sequence();
-    void Append (const  GeomFill_SequenceOfAx2::value_type& theItem);
-    void Append ( GeomFill_SequenceOfAx2& theSequence);
-     GeomFill_SequenceOfAx2& ChangeSequence();
+    GeomFill_HSequenceOfAx2(const GeomFill_SequenceOfAx2& theOther);
+    const GeomFill_SequenceOfAx2& Sequence();
+    void Append (const GeomFill_SequenceOfAx2::value_type& theItem);
+    void Append (GeomFill_SequenceOfAx2& theSequence);
+    GeomFill_SequenceOfAx2& ChangeSequence();
 };
 %make_alias(GeomFill_HSequenceOfAx2)
 

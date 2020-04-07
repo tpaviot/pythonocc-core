@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.XmlDrivers import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Message import *
@@ -11,13 +11,13 @@ from OCC.Core.XmlObjMgt import *
 from OCC.Core.TCollection import *
 
 
-class XmlDrivers:
+class xmldrivers:
 	@staticmethod
-	def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> XmlMDF_ADriverTable: ...
+	def AttributeDrivers(theMsgDriver: Message_Messenger) -> XmlMDF_ADriverTable: ...
 	@staticmethod
-	def DefineFormat(self, theApp: TDocStd_Application) -> None: ...
+	def DefineFormat(theApp: TDocStd_Application) -> None: ...
 	@staticmethod
-	def Factory(self, theGUID: Standard_GUID) -> Standard_Transient: ...
+	def Factory(theGUID: Standard_GUID) -> Standard_Transient: ...
 
 class XmlDrivers_DocumentRetrievalDriver(XmlLDrivers_DocumentRetrievalDriver):
 	def __init__(self) -> None: ...
@@ -29,3 +29,11 @@ class XmlDrivers_DocumentStorageDriver(XmlLDrivers_DocumentStorageDriver):
 	def __init__(self, theCopyright: TCollection_ExtendedString) -> None: ...
 	def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> XmlMDF_ADriverTable: ...
 	def WriteShapeSection(self, thePDoc: XmlObjMgt_Element) -> bool: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+xmldrivers_AttributeDrivers = xmldrivers.AttributeDrivers
+xmldrivers_DefineFormat = xmldrivers.DefineFormat
+xmldrivers_Factory = xmldrivers.Factory

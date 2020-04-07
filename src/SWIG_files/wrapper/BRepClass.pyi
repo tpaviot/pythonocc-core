@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.BRepClass import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
@@ -15,9 +15,13 @@ class BRepClass_Edge:
 	def __init__(self) -> None: ...
 	@overload
 	def __init__(self, E: TopoDS_Edge, F: TopoDS_Face) -> None: ...
+	@overload
 	def Edge(self) -> TopoDS_Edge: ...
+	@overload
 	def Edge(self) -> TopoDS_Edge: ...
+	@overload
 	def Face(self) -> TopoDS_Face: ...
+	@overload
 	def Face(self) -> TopoDS_Face: ...
 
 class BRepClass_FClass2dOfFClassifier:
@@ -73,3 +77,11 @@ class BRepClass_Intersector(Geom2dInt_IntConicCurveOfGInter):
 	def __init__(self) -> None: ...
 	def LocalGeometry(self, E: BRepClass_Edge, U: float, T: gp_Dir2d, N: gp_Dir2d) -> float: ...
 	def Perform(self, L: gp_Lin2d, P: float, Tol: float, E: BRepClass_Edge) -> None: ...
+
+#classnotwrapped
+class BRepClass_FaceClassifier: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gce.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -78,7 +79,7 @@ enum gce_ErrorType {
 /* python proy classes for enums */
 %pythoncode {
 
-class gce_ErrorType:
+class gce_ErrorType(IntEnum):
 	gce_Done = 0
 	gce_ConfusedPoints = 1
 	gce_NegativeRadius = 2
@@ -93,6 +94,20 @@ class gce_ErrorType:
 	gce_NullFocusLength = 11
 	gce_NullVector = 12
 	gce_BadEquation = 13
+gce_Done = gce_ErrorType.gce_Done
+gce_ConfusedPoints = gce_ErrorType.gce_ConfusedPoints
+gce_NegativeRadius = gce_ErrorType.gce_NegativeRadius
+gce_ColinearPoints = gce_ErrorType.gce_ColinearPoints
+gce_IntersectionError = gce_ErrorType.gce_IntersectionError
+gce_NullAxis = gce_ErrorType.gce_NullAxis
+gce_NullAngle = gce_ErrorType.gce_NullAngle
+gce_NullRadius = gce_ErrorType.gce_NullRadius
+gce_InvertAxis = gce_ErrorType.gce_InvertAxis
+gce_BadAngle = gce_ErrorType.gce_BadAngle
+gce_InvertRadius = gce_ErrorType.gce_InvertRadius
+gce_NullFocusLength = gce_ErrorType.gce_NullFocusLength
+gce_NullVector = gce_ErrorType.gce_NullVector
+gce_BadEquation = gce_ErrorType.gce_BadEquation
 };
 /* end python proxy for enums */
 

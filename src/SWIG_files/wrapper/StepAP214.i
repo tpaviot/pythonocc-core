@@ -75,6 +75,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepap214.html"
 %import Interface.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -5198,192 +5199,192 @@ opencascade::handle<StepBasic_VersionedActionRequest>
 };
 
 /* harray1 classes */
-class StepAP214_HArray1OfDateItem : public  StepAP214_Array1OfDateItem, public Standard_Transient {
+
+class StepAP214_HArray1OfDateItem : public StepAP214_Array1OfDateItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfDateItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfDateItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfDateItem::value_type& theValue);
-    StepAP214_HArray1OfDateItem(const  StepAP214_Array1OfDateItem& theOther);
-    const  StepAP214_Array1OfDateItem& Array1();
-     StepAP214_Array1OfDateItem& ChangeArray1();
+    StepAP214_HArray1OfDateItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfDateItem::value_type& theValue);
+    StepAP214_HArray1OfDateItem(const StepAP214_Array1OfDateItem& theOther);
+    const StepAP214_Array1OfDateItem& Array1();
+    StepAP214_Array1OfDateItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfDateItem)
 
 
-class StepAP214_HArray1OfSecurityClassificationItem : public  StepAP214_Array1OfSecurityClassificationItem, public Standard_Transient {
+class StepAP214_HArray1OfSecurityClassificationItem : public StepAP214_Array1OfSecurityClassificationItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfSecurityClassificationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfSecurityClassificationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfSecurityClassificationItem::value_type& theValue);
-    StepAP214_HArray1OfSecurityClassificationItem(const  StepAP214_Array1OfSecurityClassificationItem& theOther);
-    const  StepAP214_Array1OfSecurityClassificationItem& Array1();
-     StepAP214_Array1OfSecurityClassificationItem& ChangeArray1();
+    StepAP214_HArray1OfSecurityClassificationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfSecurityClassificationItem::value_type& theValue);
+    StepAP214_HArray1OfSecurityClassificationItem(const StepAP214_Array1OfSecurityClassificationItem& theOther);
+    const StepAP214_Array1OfSecurityClassificationItem& Array1();
+    StepAP214_Array1OfSecurityClassificationItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfSecurityClassificationItem)
 
 
-class StepAP214_HArray1OfExternalIdentificationItem : public  StepAP214_Array1OfExternalIdentificationItem, public Standard_Transient {
+class StepAP214_HArray1OfExternalIdentificationItem : public StepAP214_Array1OfExternalIdentificationItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfExternalIdentificationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfExternalIdentificationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfExternalIdentificationItem::value_type& theValue);
-    StepAP214_HArray1OfExternalIdentificationItem(const  StepAP214_Array1OfExternalIdentificationItem& theOther);
-    const  StepAP214_Array1OfExternalIdentificationItem& Array1();
-     StepAP214_Array1OfExternalIdentificationItem& ChangeArray1();
+    StepAP214_HArray1OfExternalIdentificationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfExternalIdentificationItem::value_type& theValue);
+    StepAP214_HArray1OfExternalIdentificationItem(const StepAP214_Array1OfExternalIdentificationItem& theOther);
+    const StepAP214_Array1OfExternalIdentificationItem& Array1();
+    StepAP214_Array1OfExternalIdentificationItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfExternalIdentificationItem)
 
 
-class StepAP214_HArray1OfAutoDesignDatedItem : public  StepAP214_Array1OfAutoDesignDatedItem, public Standard_Transient {
+class StepAP214_HArray1OfAutoDesignDatedItem : public StepAP214_Array1OfAutoDesignDatedItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfAutoDesignDatedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfAutoDesignDatedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfAutoDesignDatedItem::value_type& theValue);
-    StepAP214_HArray1OfAutoDesignDatedItem(const  StepAP214_Array1OfAutoDesignDatedItem& theOther);
-    const  StepAP214_Array1OfAutoDesignDatedItem& Array1();
-     StepAP214_Array1OfAutoDesignDatedItem& ChangeArray1();
+    StepAP214_HArray1OfAutoDesignDatedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfAutoDesignDatedItem::value_type& theValue);
+    StepAP214_HArray1OfAutoDesignDatedItem(const StepAP214_Array1OfAutoDesignDatedItem& theOther);
+    const StepAP214_Array1OfAutoDesignDatedItem& Array1();
+    StepAP214_Array1OfAutoDesignDatedItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignDatedItem)
 
 
-class StepAP214_HArray1OfPersonAndOrganizationItem : public  StepAP214_Array1OfPersonAndOrganizationItem, public Standard_Transient {
+class StepAP214_HArray1OfPersonAndOrganizationItem : public StepAP214_Array1OfPersonAndOrganizationItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfPersonAndOrganizationItem::value_type& theValue);
-    StepAP214_HArray1OfPersonAndOrganizationItem(const  StepAP214_Array1OfPersonAndOrganizationItem& theOther);
-    const  StepAP214_Array1OfPersonAndOrganizationItem& Array1();
-     StepAP214_Array1OfPersonAndOrganizationItem& ChangeArray1();
+    StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfPersonAndOrganizationItem::value_type& theValue);
+    StepAP214_HArray1OfPersonAndOrganizationItem(const StepAP214_Array1OfPersonAndOrganizationItem& theOther);
+    const StepAP214_Array1OfPersonAndOrganizationItem& Array1();
+    StepAP214_Array1OfPersonAndOrganizationItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfPersonAndOrganizationItem)
 
 
-class StepAP214_HArray1OfAutoDesignDateAndPersonItem : public  StepAP214_Array1OfAutoDesignDateAndPersonItem, public Standard_Transient {
+class StepAP214_HArray1OfAutoDesignDateAndPersonItem : public StepAP214_Array1OfAutoDesignDateAndPersonItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfAutoDesignDateAndPersonItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfAutoDesignDateAndPersonItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfAutoDesignDateAndPersonItem::value_type& theValue);
-    StepAP214_HArray1OfAutoDesignDateAndPersonItem(const  StepAP214_Array1OfAutoDesignDateAndPersonItem& theOther);
-    const  StepAP214_Array1OfAutoDesignDateAndPersonItem& Array1();
-     StepAP214_Array1OfAutoDesignDateAndPersonItem& ChangeArray1();
+    StepAP214_HArray1OfAutoDesignDateAndPersonItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfAutoDesignDateAndPersonItem::value_type& theValue);
+    StepAP214_HArray1OfAutoDesignDateAndPersonItem(const StepAP214_Array1OfAutoDesignDateAndPersonItem& theOther);
+    const StepAP214_Array1OfAutoDesignDateAndPersonItem& Array1();
+    StepAP214_Array1OfAutoDesignDateAndPersonItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignDateAndPersonItem)
 
 
-class StepAP214_HArray1OfAutoDesignGroupedItem : public  StepAP214_Array1OfAutoDesignGroupedItem, public Standard_Transient {
+class StepAP214_HArray1OfAutoDesignGroupedItem : public StepAP214_Array1OfAutoDesignGroupedItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfAutoDesignGroupedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfAutoDesignGroupedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfAutoDesignGroupedItem::value_type& theValue);
-    StepAP214_HArray1OfAutoDesignGroupedItem(const  StepAP214_Array1OfAutoDesignGroupedItem& theOther);
-    const  StepAP214_Array1OfAutoDesignGroupedItem& Array1();
-     StepAP214_Array1OfAutoDesignGroupedItem& ChangeArray1();
+    StepAP214_HArray1OfAutoDesignGroupedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfAutoDesignGroupedItem::value_type& theValue);
+    StepAP214_HArray1OfAutoDesignGroupedItem(const StepAP214_Array1OfAutoDesignGroupedItem& theOther);
+    const StepAP214_Array1OfAutoDesignGroupedItem& Array1();
+    StepAP214_Array1OfAutoDesignGroupedItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignGroupedItem)
 
 
-class StepAP214_HArray1OfPresentedItemSelect : public  StepAP214_Array1OfPresentedItemSelect, public Standard_Transient {
+class StepAP214_HArray1OfPresentedItemSelect : public StepAP214_Array1OfPresentedItemSelect, public Standard_Transient {
   public:
     StepAP214_HArray1OfPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfPresentedItemSelect::value_type& theValue);
-    StepAP214_HArray1OfPresentedItemSelect(const  StepAP214_Array1OfPresentedItemSelect& theOther);
-    const  StepAP214_Array1OfPresentedItemSelect& Array1();
-     StepAP214_Array1OfPresentedItemSelect& ChangeArray1();
+    StepAP214_HArray1OfPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfPresentedItemSelect::value_type& theValue);
+    StepAP214_HArray1OfPresentedItemSelect(const StepAP214_Array1OfPresentedItemSelect& theOther);
+    const StepAP214_Array1OfPresentedItemSelect& Array1();
+    StepAP214_Array1OfPresentedItemSelect& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfPresentedItemSelect)
 
 
-class StepAP214_HArray1OfAutoDesignGeneralOrgItem : public  StepAP214_Array1OfAutoDesignGeneralOrgItem, public Standard_Transient {
+class StepAP214_HArray1OfAutoDesignGeneralOrgItem : public StepAP214_Array1OfAutoDesignGeneralOrgItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfAutoDesignGeneralOrgItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfAutoDesignGeneralOrgItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfAutoDesignGeneralOrgItem::value_type& theValue);
-    StepAP214_HArray1OfAutoDesignGeneralOrgItem(const  StepAP214_Array1OfAutoDesignGeneralOrgItem& theOther);
-    const  StepAP214_Array1OfAutoDesignGeneralOrgItem& Array1();
-     StepAP214_Array1OfAutoDesignGeneralOrgItem& ChangeArray1();
+    StepAP214_HArray1OfAutoDesignGeneralOrgItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfAutoDesignGeneralOrgItem::value_type& theValue);
+    StepAP214_HArray1OfAutoDesignGeneralOrgItem(const StepAP214_Array1OfAutoDesignGeneralOrgItem& theOther);
+    const StepAP214_Array1OfAutoDesignGeneralOrgItem& Array1();
+    StepAP214_Array1OfAutoDesignGeneralOrgItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignGeneralOrgItem)
 
 
-class StepAP214_HArray1OfAutoDesignDateAndTimeItem : public  StepAP214_Array1OfAutoDesignDateAndTimeItem, public Standard_Transient {
+class StepAP214_HArray1OfAutoDesignDateAndTimeItem : public StepAP214_Array1OfAutoDesignDateAndTimeItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfAutoDesignDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfAutoDesignDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfAutoDesignDateAndTimeItem::value_type& theValue);
-    StepAP214_HArray1OfAutoDesignDateAndTimeItem(const  StepAP214_Array1OfAutoDesignDateAndTimeItem& theOther);
-    const  StepAP214_Array1OfAutoDesignDateAndTimeItem& Array1();
-     StepAP214_Array1OfAutoDesignDateAndTimeItem& ChangeArray1();
+    StepAP214_HArray1OfAutoDesignDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfAutoDesignDateAndTimeItem::value_type& theValue);
+    StepAP214_HArray1OfAutoDesignDateAndTimeItem(const StepAP214_Array1OfAutoDesignDateAndTimeItem& theOther);
+    const StepAP214_Array1OfAutoDesignDateAndTimeItem& Array1();
+    StepAP214_Array1OfAutoDesignDateAndTimeItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignDateAndTimeItem)
 
 
-class StepAP214_HArray1OfAutoDesignPresentedItemSelect : public  StepAP214_Array1OfAutoDesignPresentedItemSelect, public Standard_Transient {
+class StepAP214_HArray1OfAutoDesignPresentedItemSelect : public StepAP214_Array1OfAutoDesignPresentedItemSelect, public Standard_Transient {
   public:
     StepAP214_HArray1OfAutoDesignPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfAutoDesignPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfAutoDesignPresentedItemSelect::value_type& theValue);
-    StepAP214_HArray1OfAutoDesignPresentedItemSelect(const  StepAP214_Array1OfAutoDesignPresentedItemSelect& theOther);
-    const  StepAP214_Array1OfAutoDesignPresentedItemSelect& Array1();
-     StepAP214_Array1OfAutoDesignPresentedItemSelect& ChangeArray1();
+    StepAP214_HArray1OfAutoDesignPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfAutoDesignPresentedItemSelect::value_type& theValue);
+    StepAP214_HArray1OfAutoDesignPresentedItemSelect(const StepAP214_Array1OfAutoDesignPresentedItemSelect& theOther);
+    const StepAP214_Array1OfAutoDesignPresentedItemSelect& Array1();
+    StepAP214_Array1OfAutoDesignPresentedItemSelect& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignPresentedItemSelect)
 
 
-class StepAP214_HArray1OfAutoDesignReferencingItem : public  StepAP214_Array1OfAutoDesignReferencingItem, public Standard_Transient {
+class StepAP214_HArray1OfAutoDesignReferencingItem : public StepAP214_Array1OfAutoDesignReferencingItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfAutoDesignReferencingItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfAutoDesignReferencingItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfAutoDesignReferencingItem::value_type& theValue);
-    StepAP214_HArray1OfAutoDesignReferencingItem(const  StepAP214_Array1OfAutoDesignReferencingItem& theOther);
-    const  StepAP214_Array1OfAutoDesignReferencingItem& Array1();
-     StepAP214_Array1OfAutoDesignReferencingItem& ChangeArray1();
+    StepAP214_HArray1OfAutoDesignReferencingItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfAutoDesignReferencingItem::value_type& theValue);
+    StepAP214_HArray1OfAutoDesignReferencingItem(const StepAP214_Array1OfAutoDesignReferencingItem& theOther);
+    const StepAP214_Array1OfAutoDesignReferencingItem& Array1();
+    StepAP214_Array1OfAutoDesignReferencingItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignReferencingItem)
 
 
-class StepAP214_HArray1OfDocumentReferenceItem : public  StepAP214_Array1OfDocumentReferenceItem, public Standard_Transient {
+class StepAP214_HArray1OfDocumentReferenceItem : public StepAP214_Array1OfDocumentReferenceItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfDocumentReferenceItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfDocumentReferenceItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfDocumentReferenceItem::value_type& theValue);
-    StepAP214_HArray1OfDocumentReferenceItem(const  StepAP214_Array1OfDocumentReferenceItem& theOther);
-    const  StepAP214_Array1OfDocumentReferenceItem& Array1();
-     StepAP214_Array1OfDocumentReferenceItem& ChangeArray1();
+    StepAP214_HArray1OfDocumentReferenceItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfDocumentReferenceItem::value_type& theValue);
+    StepAP214_HArray1OfDocumentReferenceItem(const StepAP214_Array1OfDocumentReferenceItem& theOther);
+    const StepAP214_Array1OfDocumentReferenceItem& Array1();
+    StepAP214_Array1OfDocumentReferenceItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfDocumentReferenceItem)
 
 
-class StepAP214_HArray1OfOrganizationItem : public  StepAP214_Array1OfOrganizationItem, public Standard_Transient {
+class StepAP214_HArray1OfOrganizationItem : public StepAP214_Array1OfOrganizationItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfOrganizationItem::value_type& theValue);
-    StepAP214_HArray1OfOrganizationItem(const  StepAP214_Array1OfOrganizationItem& theOther);
-    const  StepAP214_Array1OfOrganizationItem& Array1();
-     StepAP214_Array1OfOrganizationItem& ChangeArray1();
+    StepAP214_HArray1OfOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfOrganizationItem::value_type& theValue);
+    StepAP214_HArray1OfOrganizationItem(const StepAP214_Array1OfOrganizationItem& theOther);
+    const StepAP214_Array1OfOrganizationItem& Array1();
+    StepAP214_Array1OfOrganizationItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfOrganizationItem)
 
 
-class StepAP214_HArray1OfApprovalItem : public  StepAP214_Array1OfApprovalItem, public Standard_Transient {
+class StepAP214_HArray1OfApprovalItem : public StepAP214_Array1OfApprovalItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfApprovalItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfApprovalItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfApprovalItem::value_type& theValue);
-    StepAP214_HArray1OfApprovalItem(const  StepAP214_Array1OfApprovalItem& theOther);
-    const  StepAP214_Array1OfApprovalItem& Array1();
-     StepAP214_Array1OfApprovalItem& ChangeArray1();
+    StepAP214_HArray1OfApprovalItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfApprovalItem::value_type& theValue);
+    StepAP214_HArray1OfApprovalItem(const StepAP214_Array1OfApprovalItem& theOther);
+    const StepAP214_Array1OfApprovalItem& Array1();
+    StepAP214_Array1OfApprovalItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfApprovalItem)
 
 
-class StepAP214_HArray1OfGroupItem : public  StepAP214_Array1OfGroupItem, public Standard_Transient {
+class StepAP214_HArray1OfGroupItem : public StepAP214_Array1OfGroupItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfGroupItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfGroupItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfGroupItem::value_type& theValue);
-    StepAP214_HArray1OfGroupItem(const  StepAP214_Array1OfGroupItem& theOther);
-    const  StepAP214_Array1OfGroupItem& Array1();
-     StepAP214_Array1OfGroupItem& ChangeArray1();
+    StepAP214_HArray1OfGroupItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfGroupItem::value_type& theValue);
+    StepAP214_HArray1OfGroupItem(const StepAP214_Array1OfGroupItem& theOther);
+    const StepAP214_Array1OfGroupItem& Array1();
+    StepAP214_Array1OfGroupItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfGroupItem)
 
 
-class StepAP214_HArray1OfDateAndTimeItem : public  StepAP214_Array1OfDateAndTimeItem, public Standard_Transient {
+class StepAP214_HArray1OfDateAndTimeItem : public StepAP214_Array1OfDateAndTimeItem, public Standard_Transient {
   public:
     StepAP214_HArray1OfDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP214_HArray1OfDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepAP214_Array1OfDateAndTimeItem::value_type& theValue);
-    StepAP214_HArray1OfDateAndTimeItem(const  StepAP214_Array1OfDateAndTimeItem& theOther);
-    const  StepAP214_Array1OfDateAndTimeItem& Array1();
-     StepAP214_Array1OfDateAndTimeItem& ChangeArray1();
+    StepAP214_HArray1OfDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP214_Array1OfDateAndTimeItem::value_type& theValue);
+    StepAP214_HArray1OfDateAndTimeItem(const StepAP214_Array1OfDateAndTimeItem& theOther);
+    const StepAP214_Array1OfDateAndTimeItem& Array1();
+    StepAP214_Array1OfDateAndTimeItem& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfDateAndTimeItem)
-
 
 /* harray2 classes */
 /* hsequence classes */

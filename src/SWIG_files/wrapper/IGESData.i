@@ -62,6 +62,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igesdata.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -103,33 +104,53 @@ enum IGESData_DefType {
 /* python proy classes for enums */
 %pythoncode {
 
-class IGESData_ReadStage:
+class IGESData_ReadStage(IntEnum):
 	IGESData_ReadDir = 0
 	IGESData_ReadOwn = 1
 	IGESData_ReadAssocs = 2
 	IGESData_ReadProps = 3
 	IGESData_ReadEnd = 4
+IGESData_ReadDir = IGESData_ReadStage.IGESData_ReadDir
+IGESData_ReadOwn = IGESData_ReadStage.IGESData_ReadOwn
+IGESData_ReadAssocs = IGESData_ReadStage.IGESData_ReadAssocs
+IGESData_ReadProps = IGESData_ReadStage.IGESData_ReadProps
+IGESData_ReadEnd = IGESData_ReadStage.IGESData_ReadEnd
 
-class IGESData_DefList:
+class IGESData_DefList(IntEnum):
 	IGESData_DefNone = 0
 	IGESData_DefOne = 1
 	IGESData_DefSeveral = 2
 	IGESData_ErrorOne = 3
 	IGESData_ErrorSeveral = 4
+IGESData_DefNone = IGESData_DefList.IGESData_DefNone
+IGESData_DefOne = IGESData_DefList.IGESData_DefOne
+IGESData_DefSeveral = IGESData_DefList.IGESData_DefSeveral
+IGESData_ErrorOne = IGESData_DefList.IGESData_ErrorOne
+IGESData_ErrorSeveral = IGESData_DefList.IGESData_ErrorSeveral
 
-class IGESData_Status:
+class IGESData_Status(IntEnum):
 	IGESData_EntityOK = 0
 	IGESData_EntityError = 1
 	IGESData_ReferenceError = 2
 	IGESData_TypeError = 3
+IGESData_EntityOK = IGESData_Status.IGESData_EntityOK
+IGESData_EntityError = IGESData_Status.IGESData_EntityError
+IGESData_ReferenceError = IGESData_Status.IGESData_ReferenceError
+IGESData_TypeError = IGESData_Status.IGESData_TypeError
 
-class IGESData_DefType:
+class IGESData_DefType(IntEnum):
 	IGESData_DefVoid = 0
 	IGESData_DefValue = 1
 	IGESData_DefReference = 2
 	IGESData_DefAny = 3
 	IGESData_ErrorVal = 4
 	IGESData_ErrorRef = 5
+IGESData_DefVoid = IGESData_DefType.IGESData_DefVoid
+IGESData_DefValue = IGESData_DefType.IGESData_DefValue
+IGESData_DefReference = IGESData_DefType.IGESData_DefReference
+IGESData_DefAny = IGESData_DefType.IGESData_DefAny
+IGESData_ErrorVal = IGESData_DefType.IGESData_ErrorVal
+IGESData_ErrorRef = IGESData_DefType.IGESData_ErrorRef
 };
 /* end python proxy for enums */
 
@@ -7205,16 +7226,16 @@ None
 };
 
 /* harray1 classes */
-class IGESData_HArray1OfIGESEntity : public  IGESData_Array1OfIGESEntity, public Standard_Transient {
+
+class IGESData_HArray1OfIGESEntity : public IGESData_Array1OfIGESEntity, public Standard_Transient {
   public:
     IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper);
-    IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper, const  IGESData_Array1OfIGESEntity::value_type& theValue);
-    IGESData_HArray1OfIGESEntity(const  IGESData_Array1OfIGESEntity& theOther);
-    const  IGESData_Array1OfIGESEntity& Array1();
-     IGESData_Array1OfIGESEntity& ChangeArray1();
+    IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper, const IGESData_Array1OfIGESEntity::value_type& theValue);
+    IGESData_HArray1OfIGESEntity(const IGESData_Array1OfIGESEntity& theOther);
+    const IGESData_Array1OfIGESEntity& Array1();
+    IGESData_Array1OfIGESEntity& ChangeArray1();
 };
 %make_alias(IGESData_HArray1OfIGESEntity)
-
 
 /* harray2 classes */
 /* hsequence classes */

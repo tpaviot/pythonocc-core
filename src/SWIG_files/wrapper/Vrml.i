@@ -60,6 +60,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_vrml.html"
 %import TCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -151,47 +152,71 @@ enum Vrml_FontStyleStyle {
 /* python proy classes for enums */
 %pythoncode {
 
-class Vrml_VertexOrdering:
+class Vrml_VertexOrdering(IntEnum):
 	Vrml_UNKNOWN_ORDERING = 0
 	Vrml_CLOCKWISE = 1
 	Vrml_COUNTERCLOCKWISE = 2
+Vrml_UNKNOWN_ORDERING = Vrml_VertexOrdering.Vrml_UNKNOWN_ORDERING
+Vrml_CLOCKWISE = Vrml_VertexOrdering.Vrml_CLOCKWISE
+Vrml_COUNTERCLOCKWISE = Vrml_VertexOrdering.Vrml_COUNTERCLOCKWISE
 
-class Vrml_FontStyleFamily:
+class Vrml_FontStyleFamily(IntEnum):
 	Vrml_SERIF = 0
 	Vrml_SANS = 1
 	Vrml_TYPEWRITER = 2
+Vrml_SERIF = Vrml_FontStyleFamily.Vrml_SERIF
+Vrml_SANS = Vrml_FontStyleFamily.Vrml_SANS
+Vrml_TYPEWRITER = Vrml_FontStyleFamily.Vrml_TYPEWRITER
 
-class Vrml_SeparatorRenderCulling:
+class Vrml_SeparatorRenderCulling(IntEnum):
 	Vrml_OFF = 0
 	Vrml_ON = 1
 	Vrml_AUTO = 2
+Vrml_OFF = Vrml_SeparatorRenderCulling.Vrml_OFF
+Vrml_ON = Vrml_SeparatorRenderCulling.Vrml_ON
+Vrml_AUTO = Vrml_SeparatorRenderCulling.Vrml_AUTO
 
-class Vrml_Texture2Wrap:
+class Vrml_Texture2Wrap(IntEnum):
 	Vrml_REPEAT = 0
 	Vrml_CLAMP = 1
+Vrml_REPEAT = Vrml_Texture2Wrap.Vrml_REPEAT
+Vrml_CLAMP = Vrml_Texture2Wrap.Vrml_CLAMP
 
-class Vrml_FaceType:
+class Vrml_FaceType(IntEnum):
 	Vrml_UNKNOWN_FACE_TYPE = 0
 	Vrml_CONVEX = 1
+Vrml_UNKNOWN_FACE_TYPE = Vrml_FaceType.Vrml_UNKNOWN_FACE_TYPE
+Vrml_CONVEX = Vrml_FaceType.Vrml_CONVEX
 
-class Vrml_AsciiTextJustification:
+class Vrml_AsciiTextJustification(IntEnum):
 	Vrml_LEFT = 0
 	Vrml_CENTER = 1
 	Vrml_RIGHT = 2
+Vrml_LEFT = Vrml_AsciiTextJustification.Vrml_LEFT
+Vrml_CENTER = Vrml_AsciiTextJustification.Vrml_CENTER
+Vrml_RIGHT = Vrml_AsciiTextJustification.Vrml_RIGHT
 
-class Vrml_ConeParts:
+class Vrml_ConeParts(IntEnum):
 	Vrml_ConeSIDES = 0
 	Vrml_ConeBOTTOM = 1
 	Vrml_ConeALL = 2
+Vrml_ConeSIDES = Vrml_ConeParts.Vrml_ConeSIDES
+Vrml_ConeBOTTOM = Vrml_ConeParts.Vrml_ConeBOTTOM
+Vrml_ConeALL = Vrml_ConeParts.Vrml_ConeALL
 
-class Vrml_SFImageNumber:
+class Vrml_SFImageNumber(IntEnum):
 	Vrml_NULL = 0
 	Vrml_ONE = 1
 	Vrml_TWO = 2
 	Vrml_THREE = 3
 	Vrml_FOUR = 4
+Vrml_NULL = Vrml_SFImageNumber.Vrml_NULL
+Vrml_ONE = Vrml_SFImageNumber.Vrml_ONE
+Vrml_TWO = Vrml_SFImageNumber.Vrml_TWO
+Vrml_THREE = Vrml_SFImageNumber.Vrml_THREE
+Vrml_FOUR = Vrml_SFImageNumber.Vrml_FOUR
 
-class Vrml_MaterialBindingAndNormalBinding:
+class Vrml_MaterialBindingAndNormalBinding(IntEnum):
 	Vrml_DEFAULT = 0
 	Vrml_OVERALL = 1
 	Vrml_PER_PART = 2
@@ -200,25 +225,44 @@ class Vrml_MaterialBindingAndNormalBinding:
 	Vrml_PER_FACE_INDEXED = 5
 	Vrml_PER_VERTEX = 6
 	Vrml_PER_VERTEX_INDEXED = 7
+Vrml_DEFAULT = Vrml_MaterialBindingAndNormalBinding.Vrml_DEFAULT
+Vrml_OVERALL = Vrml_MaterialBindingAndNormalBinding.Vrml_OVERALL
+Vrml_PER_PART = Vrml_MaterialBindingAndNormalBinding.Vrml_PER_PART
+Vrml_PER_PART_INDEXED = Vrml_MaterialBindingAndNormalBinding.Vrml_PER_PART_INDEXED
+Vrml_PER_FACE = Vrml_MaterialBindingAndNormalBinding.Vrml_PER_FACE
+Vrml_PER_FACE_INDEXED = Vrml_MaterialBindingAndNormalBinding.Vrml_PER_FACE_INDEXED
+Vrml_PER_VERTEX = Vrml_MaterialBindingAndNormalBinding.Vrml_PER_VERTEX
+Vrml_PER_VERTEX_INDEXED = Vrml_MaterialBindingAndNormalBinding.Vrml_PER_VERTEX_INDEXED
 
-class Vrml_ShapeType:
+class Vrml_ShapeType(IntEnum):
 	Vrml_UNKNOWN_SHAPE_TYPE = 0
 	Vrml_SOLID = 1
+Vrml_UNKNOWN_SHAPE_TYPE = Vrml_ShapeType.Vrml_UNKNOWN_SHAPE_TYPE
+Vrml_SOLID = Vrml_ShapeType.Vrml_SOLID
 
-class Vrml_WWWAnchorMap:
+class Vrml_WWWAnchorMap(IntEnum):
 	Vrml_MAP_NONE = 0
 	Vrml_POINT = 1
+Vrml_MAP_NONE = Vrml_WWWAnchorMap.Vrml_MAP_NONE
+Vrml_POINT = Vrml_WWWAnchorMap.Vrml_POINT
 
-class Vrml_CylinderParts:
+class Vrml_CylinderParts(IntEnum):
 	Vrml_CylinderSIDES = 0
 	Vrml_CylinderTOP = 1
 	Vrml_CylinderBOTTOM = 2
 	Vrml_CylinderALL = 3
+Vrml_CylinderSIDES = Vrml_CylinderParts.Vrml_CylinderSIDES
+Vrml_CylinderTOP = Vrml_CylinderParts.Vrml_CylinderTOP
+Vrml_CylinderBOTTOM = Vrml_CylinderParts.Vrml_CylinderBOTTOM
+Vrml_CylinderALL = Vrml_CylinderParts.Vrml_CylinderALL
 
-class Vrml_FontStyleStyle:
+class Vrml_FontStyleStyle(IntEnum):
 	Vrml_NONE = 0
 	Vrml_BOLD = 1
 	Vrml_ITALIC = 2
+Vrml_NONE = Vrml_FontStyleStyle.Vrml_NONE
+Vrml_BOLD = Vrml_FontStyleStyle.Vrml_BOLD
+Vrml_ITALIC = Vrml_FontStyleStyle.Vrml_ITALIC
 };
 /* end python proxy for enums */
 

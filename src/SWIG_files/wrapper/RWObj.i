@@ -70,6 +70,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -86,11 +87,15 @@ enum RWObj_SubMeshReason {
 /* python proy classes for enums */
 %pythoncode {
 
-class RWObj_SubMeshReason:
+class RWObj_SubMeshReason(IntEnum):
 	RWObj_SubMeshReason_NewObject = 0
 	RWObj_SubMeshReason_NewGroup = 1
 	RWObj_SubMeshReason_NewMaterial = 2
 	RWObj_SubMeshReason_NewSmoothGroup = 3
+RWObj_SubMeshReason_NewObject = RWObj_SubMeshReason.RWObj_SubMeshReason_NewObject
+RWObj_SubMeshReason_NewGroup = RWObj_SubMeshReason.RWObj_SubMeshReason_NewGroup
+RWObj_SubMeshReason_NewMaterial = RWObj_SubMeshReason.RWObj_SubMeshReason_NewMaterial
+RWObj_SubMeshReason_NewSmoothGroup = RWObj_SubMeshReason.RWObj_SubMeshReason_NewSmoothGroup
 };
 /* end python proxy for enums */
 

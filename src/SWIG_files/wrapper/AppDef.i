@@ -72,6 +72,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_appdef.html"
 %import GeomAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -5977,16 +5978,16 @@ None
 };
 
 /* harray1 classes */
-class AppDef_HArray1OfMultiPointConstraint : public  AppDef_Array1OfMultiPointConstraint, public Standard_Transient {
+
+class AppDef_HArray1OfMultiPointConstraint : public AppDef_Array1OfMultiPointConstraint, public Standard_Transient {
   public:
     AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper);
-    AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const  AppDef_Array1OfMultiPointConstraint::value_type& theValue);
-    AppDef_HArray1OfMultiPointConstraint(const  AppDef_Array1OfMultiPointConstraint& theOther);
-    const  AppDef_Array1OfMultiPointConstraint& Array1();
-     AppDef_Array1OfMultiPointConstraint& ChangeArray1();
+    AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const AppDef_Array1OfMultiPointConstraint::value_type& theValue);
+    AppDef_HArray1OfMultiPointConstraint(const AppDef_Array1OfMultiPointConstraint& theOther);
+    const AppDef_Array1OfMultiPointConstraint& Array1();
+    AppDef_Array1OfMultiPointConstraint& ChangeArray1();
 };
 %make_alias(AppDef_HArray1OfMultiPointConstraint)
-
 
 /* harray2 classes */
 /* hsequence classes */

@@ -1,18 +1,27 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.BRepBndLib import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
 from OCC.Core.Bnd import *
 
 
-class BRepBndLib:
+class brepbndlib:
 	@staticmethod
-	def Add(self, S: TopoDS_Shape, B: Bnd_Box, useTriangulation: Optional[bool]) -> None: ...
+	def Add(S: TopoDS_Shape, B: Bnd_Box, useTriangulation: Optional[bool] = True) -> None: ...
 	@staticmethod
-	def AddClose(self, S: TopoDS_Shape, B: Bnd_Box) -> None: ...
+	def AddClose(S: TopoDS_Shape, B: Bnd_Box) -> None: ...
 	@staticmethod
-	def AddOBB(self, theS: TopoDS_Shape, theOBB: Bnd_OBB, theIsTriangulationUsed: Optional[bool], theIsOptimal: Optional[bool], theIsShapeToleranceUsed: Optional[bool]) -> None: ...
+	def AddOBB(theS: TopoDS_Shape, theOBB: Bnd_OBB, theIsTriangulationUsed: Optional[bool] = True, theIsOptimal: Optional[bool] = False, theIsShapeToleranceUsed: Optional[bool] = True) -> None: ...
 	@staticmethod
-	def AddOptimal(self, S: TopoDS_Shape, B: Bnd_Box, useTriangulation: Optional[bool], useShapeTolerance: Optional[bool]) -> None: ...
+	def AddOptimal(S: TopoDS_Shape, B: Bnd_Box, useTriangulation: Optional[bool] = True, useShapeTolerance: Optional[bool] = False) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+brepbndlib_Add = brepbndlib.Add
+brepbndlib_AddClose = brepbndlib.AddClose
+brepbndlib_AddOBB = brepbndlib.AddOBB
+brepbndlib_AddOptimal = brepbndlib.AddOptimal

@@ -1,16 +1,19 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.XCAFView import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TCollection import *
 from OCC.Core.gp import *
 
 
-class XCAFView_ProjectionType:
+class XCAFView_ProjectionType(IntEnum):
 	XCAFView_ProjectionType_NoCamera: int = ...
 	XCAFView_ProjectionType_Parallel: int = ...
 	XCAFView_ProjectionType_Central: int = ...
+XCAFView_ProjectionType_NoCamera = XCAFView_ProjectionType.XCAFView_ProjectionType_NoCamera
+XCAFView_ProjectionType_Parallel = XCAFView_ProjectionType.XCAFView_ProjectionType_Parallel
+XCAFView_ProjectionType_Central = XCAFView_ProjectionType.XCAFView_ProjectionType_Central
 
 class XCAFView_Object(Standard_Transient):
 	@overload
@@ -50,3 +53,8 @@ class XCAFView_Object(Standard_Transient):
 	def WindowHorizontalSize(self) -> float: ...
 	def WindowVerticalSize(self) -> float: ...
 	def ZoomFactor(self) -> float: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

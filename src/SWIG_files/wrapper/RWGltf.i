@@ -58,6 +58,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwgltf.html"
 %import NCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -141,7 +142,7 @@ enum RWGltf_GltfAccessorLayout {
 /* python proy classes for enums */
 %pythoncode {
 
-class RWGltf_GltfPrimitiveMode:
+class RWGltf_GltfPrimitiveMode(IntEnum):
 	RWGltf_GltfPrimitiveMode_UNKNOWN = - 1
 	RWGltf_GltfPrimitiveMode_Points = 0
 	RWGltf_GltfPrimitiveMode_Lines = 1
@@ -150,13 +151,24 @@ class RWGltf_GltfPrimitiveMode:
 	RWGltf_GltfPrimitiveMode_Triangles = 4
 	RWGltf_GltfPrimitiveMode_TriangleStrip = 5
 	RWGltf_GltfPrimitiveMode_TriangleFan = 6
+RWGltf_GltfPrimitiveMode_UNKNOWN = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_UNKNOWN
+RWGltf_GltfPrimitiveMode_Points = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Points
+RWGltf_GltfPrimitiveMode_Lines = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Lines
+RWGltf_GltfPrimitiveMode_LineLoop = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineLoop
+RWGltf_GltfPrimitiveMode_LineStrip = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_LineStrip
+RWGltf_GltfPrimitiveMode_Triangles = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_Triangles
+RWGltf_GltfPrimitiveMode_TriangleStrip = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleStrip
+RWGltf_GltfPrimitiveMode_TriangleFan = RWGltf_GltfPrimitiveMode.RWGltf_GltfPrimitiveMode_TriangleFan
 
-class RWGltf_GltfBufferViewTarget:
+class RWGltf_GltfBufferViewTarget(IntEnum):
 	RWGltf_GltfBufferViewTarget_UNKNOWN = 0
 	RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = 34962
 	RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = 34963
+RWGltf_GltfBufferViewTarget_UNKNOWN = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_UNKNOWN
+RWGltf_GltfBufferViewTarget_ARRAY_BUFFER = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ARRAY_BUFFER
+RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER = RWGltf_GltfBufferViewTarget.RWGltf_GltfBufferViewTarget_ELEMENT_ARRAY_BUFFER
 
-class RWGltf_GltfArrayType:
+class RWGltf_GltfArrayType(IntEnum):
 	RWGltf_GltfArrayType_UNKNOWN = 0
 	RWGltf_GltfArrayType_Indices = 1
 	RWGltf_GltfArrayType_Position = 2
@@ -166,8 +178,17 @@ class RWGltf_GltfArrayType:
 	RWGltf_GltfArrayType_TCoord1 = 6
 	RWGltf_GltfArrayType_Joint = 7
 	RWGltf_GltfArrayType_Weight = 8
+RWGltf_GltfArrayType_UNKNOWN = RWGltf_GltfArrayType.RWGltf_GltfArrayType_UNKNOWN
+RWGltf_GltfArrayType_Indices = RWGltf_GltfArrayType.RWGltf_GltfArrayType_Indices
+RWGltf_GltfArrayType_Position = RWGltf_GltfArrayType.RWGltf_GltfArrayType_Position
+RWGltf_GltfArrayType_Normal = RWGltf_GltfArrayType.RWGltf_GltfArrayType_Normal
+RWGltf_GltfArrayType_Color = RWGltf_GltfArrayType.RWGltf_GltfArrayType_Color
+RWGltf_GltfArrayType_TCoord0 = RWGltf_GltfArrayType.RWGltf_GltfArrayType_TCoord0
+RWGltf_GltfArrayType_TCoord1 = RWGltf_GltfArrayType.RWGltf_GltfArrayType_TCoord1
+RWGltf_GltfArrayType_Joint = RWGltf_GltfArrayType.RWGltf_GltfArrayType_Joint
+RWGltf_GltfArrayType_Weight = RWGltf_GltfArrayType.RWGltf_GltfArrayType_Weight
 
-class RWGltf_GltfRootElement:
+class RWGltf_GltfRootElement(IntEnum):
 	RWGltf_GltfRootElement_Asset = 0
 	RWGltf_GltfRootElement_Scenes = 1
 	RWGltf_GltfRootElement_Scene = 2
@@ -189,8 +210,29 @@ class RWGltf_GltfRootElement:
 	RWGltf_GltfRootElement_ExtensionsUsed = 18
 	RWGltf_GltfRootElement_ExtensionsRequired = 19
 	RWGltf_GltfRootElement_NB = 20
+RWGltf_GltfRootElement_Asset = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Asset
+RWGltf_GltfRootElement_Scenes = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Scenes
+RWGltf_GltfRootElement_Scene = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Scene
+RWGltf_GltfRootElement_Nodes = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Nodes
+RWGltf_GltfRootElement_Meshes = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Meshes
+RWGltf_GltfRootElement_Accessors = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Accessors
+RWGltf_GltfRootElement_BufferViews = RWGltf_GltfRootElement.RWGltf_GltfRootElement_BufferViews
+RWGltf_GltfRootElement_Buffers = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Buffers
+RWGltf_GltfRootElement_NB_MANDATORY = RWGltf_GltfRootElement.RWGltf_GltfRootElement_NB_MANDATORY
+RWGltf_GltfRootElement_Animations = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Animations
+RWGltf_GltfRootElement_Materials = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Materials
+RWGltf_GltfRootElement_Programs = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Programs
+RWGltf_GltfRootElement_Samplers = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Samplers
+RWGltf_GltfRootElement_Shaders = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Shaders
+RWGltf_GltfRootElement_Skins = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Skins
+RWGltf_GltfRootElement_Techniques = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Techniques
+RWGltf_GltfRootElement_Textures = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Textures
+RWGltf_GltfRootElement_Images = RWGltf_GltfRootElement.RWGltf_GltfRootElement_Images
+RWGltf_GltfRootElement_ExtensionsUsed = RWGltf_GltfRootElement.RWGltf_GltfRootElement_ExtensionsUsed
+RWGltf_GltfRootElement_ExtensionsRequired = RWGltf_GltfRootElement.RWGltf_GltfRootElement_ExtensionsRequired
+RWGltf_GltfRootElement_NB = RWGltf_GltfRootElement.RWGltf_GltfRootElement_NB
 
-class RWGltf_GltfAccessorCompType:
+class RWGltf_GltfAccessorCompType(IntEnum):
 	RWGltf_GltfAccessorCompType_UNKNOWN = 0
 	RWGltf_GltfAccessorCompType_Int8 = 5120
 	RWGltf_GltfAccessorCompType_UInt8 = 5121
@@ -198,8 +240,15 @@ class RWGltf_GltfAccessorCompType:
 	RWGltf_GltfAccessorCompType_UInt16 = 5123
 	RWGltf_GltfAccessorCompType_UInt32 = 5125
 	RWGltf_GltfAccessorCompType_Float32 = 5126
+RWGltf_GltfAccessorCompType_UNKNOWN = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UNKNOWN
+RWGltf_GltfAccessorCompType_Int8 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int8
+RWGltf_GltfAccessorCompType_UInt8 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt8
+RWGltf_GltfAccessorCompType_Int16 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Int16
+RWGltf_GltfAccessorCompType_UInt16 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt16
+RWGltf_GltfAccessorCompType_UInt32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_UInt32
+RWGltf_GltfAccessorCompType_Float32 = RWGltf_GltfAccessorCompType.RWGltf_GltfAccessorCompType_Float32
 
-class RWGltf_GltfAccessorLayout:
+class RWGltf_GltfAccessorLayout(IntEnum):
 	RWGltf_GltfAccessorLayout_UNKNOWN = 0
 	RWGltf_GltfAccessorLayout_Scalar = 1
 	RWGltf_GltfAccessorLayout_Vec2 = 2
@@ -208,6 +257,14 @@ class RWGltf_GltfAccessorLayout:
 	RWGltf_GltfAccessorLayout_Mat2 = 5
 	RWGltf_GltfAccessorLayout_Mat3 = 6
 	RWGltf_GltfAccessorLayout_Mat4 = 7
+RWGltf_GltfAccessorLayout_UNKNOWN = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_UNKNOWN
+RWGltf_GltfAccessorLayout_Scalar = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Scalar
+RWGltf_GltfAccessorLayout_Vec2 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec2
+RWGltf_GltfAccessorLayout_Vec3 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec3
+RWGltf_GltfAccessorLayout_Vec4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Vec4
+RWGltf_GltfAccessorLayout_Mat2 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat2
+RWGltf_GltfAccessorLayout_Mat3 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat3
+RWGltf_GltfAccessorLayout_Mat4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLayout_Mat4
 };
 /* end python proxy for enums */
 

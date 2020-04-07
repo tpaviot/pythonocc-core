@@ -58,6 +58,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_plate.html"
 %import Message.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -1402,16 +1403,16 @@ Plate_LinearXYZConstraint
 };
 
 /* harray1 classes */
-class Plate_HArray1OfPinpointConstraint : public  Plate_Array1OfPinpointConstraint, public Standard_Transient {
+
+class Plate_HArray1OfPinpointConstraint : public Plate_Array1OfPinpointConstraint, public Standard_Transient {
   public:
     Plate_HArray1OfPinpointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Plate_HArray1OfPinpointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const  Plate_Array1OfPinpointConstraint::value_type& theValue);
-    Plate_HArray1OfPinpointConstraint(const  Plate_Array1OfPinpointConstraint& theOther);
-    const  Plate_Array1OfPinpointConstraint& Array1();
-     Plate_Array1OfPinpointConstraint& ChangeArray1();
+    Plate_HArray1OfPinpointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const Plate_Array1OfPinpointConstraint::value_type& theValue);
+    Plate_HArray1OfPinpointConstraint(const Plate_Array1OfPinpointConstraint& theOther);
+    const Plate_Array1OfPinpointConstraint& Array1();
+    Plate_Array1OfPinpointConstraint& ChangeArray1();
 };
 %make_alias(Plate_HArray1OfPinpointConstraint)
-
 
 /* harray2 classes */
 /* hsequence classes */

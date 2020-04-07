@@ -58,6 +58,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geom.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -13434,14 +13435,14 @@ float
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class Geom_HSequenceOfBSplineSurface : public  Geom_SequenceOfBSplineSurface, public Standard_Transient {
+class Geom_HSequenceOfBSplineSurface : public Geom_SequenceOfBSplineSurface, public Standard_Transient {
   public:
     Geom_HSequenceOfBSplineSurface();
-    Geom_HSequenceOfBSplineSurface(const  Geom_SequenceOfBSplineSurface& theOther);
-    const  Geom_SequenceOfBSplineSurface& Sequence();
-    void Append (const  Geom_SequenceOfBSplineSurface::value_type& theItem);
-    void Append ( Geom_SequenceOfBSplineSurface& theSequence);
-     Geom_SequenceOfBSplineSurface& ChangeSequence();
+    Geom_HSequenceOfBSplineSurface(const Geom_SequenceOfBSplineSurface& theOther);
+    const Geom_SequenceOfBSplineSurface& Sequence();
+    void Append (const Geom_SequenceOfBSplineSurface::value_type& theItem);
+    void Append (Geom_SequenceOfBSplineSurface& theSequence);
+    Geom_SequenceOfBSplineSurface& ChangeSequence();
 };
 %make_alias(Geom_HSequenceOfBSplineSurface)
 

@@ -59,6 +59,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_appparcurves.html
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -75,11 +76,15 @@ enum AppParCurves_Constraint {
 /* python proy classes for enums */
 %pythoncode {
 
-class AppParCurves_Constraint:
+class AppParCurves_Constraint(IntEnum):
 	AppParCurves_NoConstraint = 0
 	AppParCurves_PassPoint = 1
 	AppParCurves_TangencyPoint = 2
 	AppParCurves_CurvaturePoint = 3
+AppParCurves_NoConstraint = AppParCurves_Constraint.AppParCurves_NoConstraint
+AppParCurves_PassPoint = AppParCurves_Constraint.AppParCurves_PassPoint
+AppParCurves_TangencyPoint = AppParCurves_Constraint.AppParCurves_TangencyPoint
+AppParCurves_CurvaturePoint = AppParCurves_Constraint.AppParCurves_CurvaturePoint
 };
 /* end python proxy for enums */
 
@@ -1220,49 +1225,49 @@ None
 };
 
 /* harray1 classes */
-class AppParCurves_HArray1OfMultiCurve : public  AppParCurves_Array1OfMultiCurve, public Standard_Transient {
+
+class AppParCurves_HArray1OfMultiCurve : public AppParCurves_Array1OfMultiCurve, public Standard_Transient {
   public:
     AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  AppParCurves_Array1OfMultiCurve::value_type& theValue);
-    AppParCurves_HArray1OfMultiCurve(const  AppParCurves_Array1OfMultiCurve& theOther);
-    const  AppParCurves_Array1OfMultiCurve& Array1();
-     AppParCurves_Array1OfMultiCurve& ChangeArray1();
+    AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const AppParCurves_Array1OfMultiCurve::value_type& theValue);
+    AppParCurves_HArray1OfMultiCurve(const AppParCurves_Array1OfMultiCurve& theOther);
+    const AppParCurves_Array1OfMultiCurve& Array1();
+    AppParCurves_Array1OfMultiCurve& ChangeArray1();
 };
 %make_alias(AppParCurves_HArray1OfMultiCurve)
 
 
-class AppParCurves_HArray1OfConstraintCouple : public  AppParCurves_Array1OfConstraintCouple, public Standard_Transient {
+class AppParCurves_HArray1OfConstraintCouple : public AppParCurves_Array1OfConstraintCouple, public Standard_Transient {
   public:
     AppParCurves_HArray1OfConstraintCouple(const Standard_Integer theLower, const Standard_Integer theUpper);
-    AppParCurves_HArray1OfConstraintCouple(const Standard_Integer theLower, const Standard_Integer theUpper, const  AppParCurves_Array1OfConstraintCouple::value_type& theValue);
-    AppParCurves_HArray1OfConstraintCouple(const  AppParCurves_Array1OfConstraintCouple& theOther);
-    const  AppParCurves_Array1OfConstraintCouple& Array1();
-     AppParCurves_Array1OfConstraintCouple& ChangeArray1();
+    AppParCurves_HArray1OfConstraintCouple(const Standard_Integer theLower, const Standard_Integer theUpper, const AppParCurves_Array1OfConstraintCouple::value_type& theValue);
+    AppParCurves_HArray1OfConstraintCouple(const AppParCurves_Array1OfConstraintCouple& theOther);
+    const AppParCurves_Array1OfConstraintCouple& Array1();
+    AppParCurves_Array1OfConstraintCouple& ChangeArray1();
 };
 %make_alias(AppParCurves_HArray1OfConstraintCouple)
 
 
-class AppParCurves_HArray1OfMultiPoint : public  AppParCurves_Array1OfMultiPoint, public Standard_Transient {
+class AppParCurves_HArray1OfMultiPoint : public AppParCurves_Array1OfMultiPoint, public Standard_Transient {
   public:
     AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
-    AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const  AppParCurves_Array1OfMultiPoint::value_type& theValue);
-    AppParCurves_HArray1OfMultiPoint(const  AppParCurves_Array1OfMultiPoint& theOther);
-    const  AppParCurves_Array1OfMultiPoint& Array1();
-     AppParCurves_Array1OfMultiPoint& ChangeArray1();
+    AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const AppParCurves_Array1OfMultiPoint::value_type& theValue);
+    AppParCurves_HArray1OfMultiPoint(const AppParCurves_Array1OfMultiPoint& theOther);
+    const AppParCurves_Array1OfMultiPoint& Array1();
+    AppParCurves_Array1OfMultiPoint& ChangeArray1();
 };
 %make_alias(AppParCurves_HArray1OfMultiPoint)
 
 
-class AppParCurves_HArray1OfMultiBSpCurve : public  AppParCurves_Array1OfMultiBSpCurve, public Standard_Transient {
+class AppParCurves_HArray1OfMultiBSpCurve : public AppParCurves_Array1OfMultiBSpCurve, public Standard_Transient {
   public:
     AppParCurves_HArray1OfMultiBSpCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    AppParCurves_HArray1OfMultiBSpCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  AppParCurves_Array1OfMultiBSpCurve::value_type& theValue);
-    AppParCurves_HArray1OfMultiBSpCurve(const  AppParCurves_Array1OfMultiBSpCurve& theOther);
-    const  AppParCurves_Array1OfMultiBSpCurve& Array1();
-     AppParCurves_Array1OfMultiBSpCurve& ChangeArray1();
+    AppParCurves_HArray1OfMultiBSpCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const AppParCurves_Array1OfMultiBSpCurve::value_type& theValue);
+    AppParCurves_HArray1OfMultiBSpCurve(const AppParCurves_Array1OfMultiBSpCurve& theOther);
+    const AppParCurves_Array1OfMultiBSpCurve& Array1();
+    AppParCurves_Array1OfMultiBSpCurve& ChangeArray1();
 };
 %make_alias(AppParCurves_HArray1OfMultiBSpCurve)
-
 
 /* harray2 classes */
 /* hsequence classes */

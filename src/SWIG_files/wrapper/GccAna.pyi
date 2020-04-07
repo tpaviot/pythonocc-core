@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.GccAna import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.GccEnt import *
@@ -224,3 +224,8 @@ class GccAna_Pnt2dBisec:
 	def HasSolution(self) -> bool: ...
 	def IsDone(self) -> bool: ...
 	def ThisSolution(self) -> gp_Lin2d: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

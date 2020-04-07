@@ -106,6 +106,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_inttools.html"
 %import GeomInt.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -199,8 +200,29 @@ from OCC.Core.Exception import *
 %template(IntTools_ListIteratorOfListOfCurveRangeSample) NCollection_TListIterator<IntTools_CurveRangeSample>;
 %template(IntTools_ListIteratorOfListOfSurfaceRangeSample) NCollection_TListIterator<IntTools_SurfaceRangeSample>;
 %template(IntTools_ListOfBox) NCollection_List<Bnd_Box>;
+
+%extend NCollection_List<Bnd_Box> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntTools_ListOfCurveRangeSample) NCollection_List<IntTools_CurveRangeSample>;
+
+%extend NCollection_List<IntTools_CurveRangeSample> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntTools_ListOfSurfaceRangeSample) NCollection_List<IntTools_SurfaceRangeSample>;
+
+%extend NCollection_List<IntTools_SurfaceRangeSample> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntTools_MapOfCurveSample) NCollection_Map<IntTools_CurveRangeSample,IntTools_CurveRangeSampleMapHasher>;
 %template(IntTools_MapOfSurfaceSample) NCollection_Map<IntTools_SurfaceRangeSample,IntTools_SurfaceRangeSampleMapHasher>;
 %template(IntTools_SequenceOfCommonPrts) NCollection_Sequence<IntTools_CommonPrt>;

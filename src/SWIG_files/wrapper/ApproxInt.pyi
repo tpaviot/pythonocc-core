@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.ApproxInt import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TColgp import *
@@ -19,3 +19,9 @@ class ApproxInt_SvSurfaces:
 	def Tangency(self, u1: float, v1: float, u2: float, v2: float, Tg: gp_Vec) -> bool: ...
 	def TangencyOnSurf1(self, u1: float, v1: float, u2: float, v2: float, Tg: gp_Vec2d) -> bool: ...
 	def TangencyOnSurf2(self, u1: float, v1: float, u2: float, v2: float, Tg: gp_Vec2d) -> bool: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+ApproxInt_KnotTools_BuildKnots = ApproxInt_KnotTools.BuildKnots

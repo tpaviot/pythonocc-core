@@ -84,6 +84,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapefix.html"
 %import TopTools.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 

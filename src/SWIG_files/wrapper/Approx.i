@@ -73,6 +73,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_approx.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -94,15 +95,21 @@ enum Approx_ParametrizationType {
 /* python proy classes for enums */
 %pythoncode {
 
-class Approx_Status:
+class Approx_Status(IntEnum):
 	Approx_PointsAdded = 0
 	Approx_NoPointsAdded = 1
 	Approx_NoApproximation = 2
+Approx_PointsAdded = Approx_Status.Approx_PointsAdded
+Approx_NoPointsAdded = Approx_Status.Approx_NoPointsAdded
+Approx_NoApproximation = Approx_Status.Approx_NoApproximation
 
-class Approx_ParametrizationType:
+class Approx_ParametrizationType(IntEnum):
 	Approx_ChordLength = 0
 	Approx_Centripetal = 1
 	Approx_IsoParametric = 2
+Approx_ChordLength = Approx_ParametrizationType.Approx_ChordLength
+Approx_Centripetal = Approx_ParametrizationType.Approx_Centripetal
+Approx_IsoParametric = Approx_ParametrizationType.Approx_IsoParametric
 };
 /* end python proxy for enums */
 
@@ -2170,27 +2177,27 @@ None
 };
 
 /* harray1 classes */
-class Approx_HArray1OfGTrsf2d : public  Approx_Array1OfGTrsf2d, public Standard_Transient {
+
+class Approx_HArray1OfGTrsf2d : public Approx_Array1OfGTrsf2d, public Standard_Transient {
   public:
     Approx_HArray1OfGTrsf2d(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Approx_HArray1OfGTrsf2d(const Standard_Integer theLower, const Standard_Integer theUpper, const  Approx_Array1OfGTrsf2d::value_type& theValue);
-    Approx_HArray1OfGTrsf2d(const  Approx_Array1OfGTrsf2d& theOther);
-    const  Approx_Array1OfGTrsf2d& Array1();
-     Approx_Array1OfGTrsf2d& ChangeArray1();
+    Approx_HArray1OfGTrsf2d(const Standard_Integer theLower, const Standard_Integer theUpper, const Approx_Array1OfGTrsf2d::value_type& theValue);
+    Approx_HArray1OfGTrsf2d(const Approx_Array1OfGTrsf2d& theOther);
+    const Approx_Array1OfGTrsf2d& Array1();
+    Approx_Array1OfGTrsf2d& ChangeArray1();
 };
 %make_alias(Approx_HArray1OfGTrsf2d)
 
 
-class Approx_HArray1OfAdHSurface : public  Approx_Array1OfAdHSurface, public Standard_Transient {
+class Approx_HArray1OfAdHSurface : public Approx_Array1OfAdHSurface, public Standard_Transient {
   public:
     Approx_HArray1OfAdHSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Approx_HArray1OfAdHSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const  Approx_Array1OfAdHSurface::value_type& theValue);
-    Approx_HArray1OfAdHSurface(const  Approx_Array1OfAdHSurface& theOther);
-    const  Approx_Array1OfAdHSurface& Array1();
-     Approx_Array1OfAdHSurface& ChangeArray1();
+    Approx_HArray1OfAdHSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const Approx_Array1OfAdHSurface::value_type& theValue);
+    Approx_HArray1OfAdHSurface(const Approx_Array1OfAdHSurface& theOther);
+    const Approx_Array1OfAdHSurface& Array1();
+    Approx_Array1OfAdHSurface& ChangeArray1();
 };
 %make_alias(Approx_HArray1OfAdHSurface)
-
 
 /* harray2 classes */
 /* hsequence classes */

@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.RWStepAP214 import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.StepData import *
@@ -10,9 +10,9 @@ from OCC.Core.StepAP214 import *
 from OCC.Core.TColStd import *
 
 
-class RWStepAP214:
+class rwstepap214:
 	@staticmethod
-	def Init(self) -> None: ...
+	def Init() -> None: ...
 
 class RWStepAP214_GeneralModule(StepData_GeneralModule):
 	def __init__(self) -> None: ...
@@ -181,10 +181,18 @@ class RWStepAP214_RWRepItemGroup:
 
 class RWStepAP214_ReadWriteModule(StepData_ReadWriteModule):
 	def __init__(self) -> None: ...
+	@overload
 	def CaseStep(self, atype: TCollection_AsciiString) -> int: ...
+	@overload
 	def CaseStep(self, types: TColStd_SequenceOfAsciiString) -> int: ...
 	def ComplexType(self, CN: int, types: TColStd_SequenceOfAsciiString) -> bool: ...
 	def IsComplex(self, CN: int) -> bool: ...
 	def ReadStep(self, CN: int, data: StepData_StepReaderData, num: int, ach: Interface_Check, ent: Standard_Transient) -> None: ...
 	def StepType(self, CN: int) -> TCollection_AsciiString: ...
 	def WriteStep(self, CN: int, SW: StepData_StepWriter, ent: Standard_Transient) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+rwstepap214_Init = rwstepap214.Init

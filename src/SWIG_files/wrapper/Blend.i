@@ -64,6 +64,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_blend.html"
 %import Adaptor2d.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -91,7 +92,7 @@ enum Blend_DecrochStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class Blend_Status:
+class Blend_Status(IntEnum):
 	Blend_StepTooLarge = 0
 	Blend_StepTooSmall = 1
 	Blend_Backward = 2
@@ -100,12 +101,24 @@ class Blend_Status:
 	Blend_OnRst2 = 5
 	Blend_OnRst12 = 6
 	Blend_OK = 7
+Blend_StepTooLarge = Blend_Status.Blend_StepTooLarge
+Blend_StepTooSmall = Blend_Status.Blend_StepTooSmall
+Blend_Backward = Blend_Status.Blend_Backward
+Blend_SamePoints = Blend_Status.Blend_SamePoints
+Blend_OnRst1 = Blend_Status.Blend_OnRst1
+Blend_OnRst2 = Blend_Status.Blend_OnRst2
+Blend_OnRst12 = Blend_Status.Blend_OnRst12
+Blend_OK = Blend_Status.Blend_OK
 
-class Blend_DecrochStatus:
+class Blend_DecrochStatus(IntEnum):
 	Blend_NoDecroch = 0
 	Blend_DecrochRst1 = 1
 	Blend_DecrochRst2 = 2
 	Blend_DecrochBoth = 3
+Blend_NoDecroch = Blend_DecrochStatus.Blend_NoDecroch
+Blend_DecrochRst1 = Blend_DecrochStatus.Blend_DecrochRst1
+Blend_DecrochRst2 = Blend_DecrochStatus.Blend_DecrochRst2
+Blend_DecrochBoth = Blend_DecrochStatus.Blend_DecrochBoth
 };
 /* end python proxy for enums */
 

@@ -67,6 +67,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepgeom.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -125,13 +126,17 @@ enum StepGeom_TransitionCode {
 /* python proy classes for enums */
 %pythoncode {
 
-class StepGeom_KnotType:
+class StepGeom_KnotType(IntEnum):
 	StepGeom_ktUniformKnots = 0
 	StepGeom_ktUnspecified = 1
 	StepGeom_ktQuasiUniformKnots = 2
 	StepGeom_ktPiecewiseBezierKnots = 3
+StepGeom_ktUniformKnots = StepGeom_KnotType.StepGeom_ktUniformKnots
+StepGeom_ktUnspecified = StepGeom_KnotType.StepGeom_ktUnspecified
+StepGeom_ktQuasiUniformKnots = StepGeom_KnotType.StepGeom_ktQuasiUniformKnots
+StepGeom_ktPiecewiseBezierKnots = StepGeom_KnotType.StepGeom_ktPiecewiseBezierKnots
 
-class StepGeom_BSplineSurfaceForm:
+class StepGeom_BSplineSurfaceForm(IntEnum):
 	StepGeom_bssfPlaneSurf = 0
 	StepGeom_bssfCylindricalSurf = 1
 	StepGeom_bssfConicalSurf = 2
@@ -143,30 +148,57 @@ class StepGeom_BSplineSurfaceForm:
 	StepGeom_bssfQuadricSurf = 8
 	StepGeom_bssfSurfOfLinearExtrusion = 9
 	StepGeom_bssfUnspecified = 10
+StepGeom_bssfPlaneSurf = StepGeom_BSplineSurfaceForm.StepGeom_bssfPlaneSurf
+StepGeom_bssfCylindricalSurf = StepGeom_BSplineSurfaceForm.StepGeom_bssfCylindricalSurf
+StepGeom_bssfConicalSurf = StepGeom_BSplineSurfaceForm.StepGeom_bssfConicalSurf
+StepGeom_bssfSphericalSurf = StepGeom_BSplineSurfaceForm.StepGeom_bssfSphericalSurf
+StepGeom_bssfToroidalSurf = StepGeom_BSplineSurfaceForm.StepGeom_bssfToroidalSurf
+StepGeom_bssfSurfOfRevolution = StepGeom_BSplineSurfaceForm.StepGeom_bssfSurfOfRevolution
+StepGeom_bssfRuledSurf = StepGeom_BSplineSurfaceForm.StepGeom_bssfRuledSurf
+StepGeom_bssfGeneralisedCone = StepGeom_BSplineSurfaceForm.StepGeom_bssfGeneralisedCone
+StepGeom_bssfQuadricSurf = StepGeom_BSplineSurfaceForm.StepGeom_bssfQuadricSurf
+StepGeom_bssfSurfOfLinearExtrusion = StepGeom_BSplineSurfaceForm.StepGeom_bssfSurfOfLinearExtrusion
+StepGeom_bssfUnspecified = StepGeom_BSplineSurfaceForm.StepGeom_bssfUnspecified
 
-class StepGeom_BSplineCurveForm:
+class StepGeom_BSplineCurveForm(IntEnum):
 	StepGeom_bscfPolylineForm = 0
 	StepGeom_bscfCircularArc = 1
 	StepGeom_bscfEllipticArc = 2
 	StepGeom_bscfParabolicArc = 3
 	StepGeom_bscfHyperbolicArc = 4
 	StepGeom_bscfUnspecified = 5
+StepGeom_bscfPolylineForm = StepGeom_BSplineCurveForm.StepGeom_bscfPolylineForm
+StepGeom_bscfCircularArc = StepGeom_BSplineCurveForm.StepGeom_bscfCircularArc
+StepGeom_bscfEllipticArc = StepGeom_BSplineCurveForm.StepGeom_bscfEllipticArc
+StepGeom_bscfParabolicArc = StepGeom_BSplineCurveForm.StepGeom_bscfParabolicArc
+StepGeom_bscfHyperbolicArc = StepGeom_BSplineCurveForm.StepGeom_bscfHyperbolicArc
+StepGeom_bscfUnspecified = StepGeom_BSplineCurveForm.StepGeom_bscfUnspecified
 
-class StepGeom_TrimmingPreference:
+class StepGeom_TrimmingPreference(IntEnum):
 	StepGeom_tpCartesian = 0
 	StepGeom_tpParameter = 1
 	StepGeom_tpUnspecified = 2
+StepGeom_tpCartesian = StepGeom_TrimmingPreference.StepGeom_tpCartesian
+StepGeom_tpParameter = StepGeom_TrimmingPreference.StepGeom_tpParameter
+StepGeom_tpUnspecified = StepGeom_TrimmingPreference.StepGeom_tpUnspecified
 
-class StepGeom_PreferredSurfaceCurveRepresentation:
+class StepGeom_PreferredSurfaceCurveRepresentation(IntEnum):
 	StepGeom_pscrCurve3d = 0
 	StepGeom_pscrPcurveS1 = 1
 	StepGeom_pscrPcurveS2 = 2
+StepGeom_pscrCurve3d = StepGeom_PreferredSurfaceCurveRepresentation.StepGeom_pscrCurve3d
+StepGeom_pscrPcurveS1 = StepGeom_PreferredSurfaceCurveRepresentation.StepGeom_pscrPcurveS1
+StepGeom_pscrPcurveS2 = StepGeom_PreferredSurfaceCurveRepresentation.StepGeom_pscrPcurveS2
 
-class StepGeom_TransitionCode:
+class StepGeom_TransitionCode(IntEnum):
 	StepGeom_tcDiscontinuous = 0
 	StepGeom_tcContinuous = 1
 	StepGeom_tcContSameGradient = 2
 	StepGeom_tcContSameGradientSameCurvature = 3
+StepGeom_tcDiscontinuous = StepGeom_TransitionCode.StepGeom_tcDiscontinuous
+StepGeom_tcContinuous = StepGeom_TransitionCode.StepGeom_tcContinuous
+StepGeom_tcContSameGradient = StepGeom_TransitionCode.StepGeom_tcContSameGradient
+StepGeom_tcContSameGradientSameCurvature = StepGeom_TransitionCode.StepGeom_tcContSameGradientSameCurvature
 };
 /* end python proxy for enums */
 
@@ -9384,106 +9416,106 @@ None
 };
 
 /* harray1 classes */
-class StepGeom_HArray1OfCartesianPoint : public  StepGeom_Array1OfCartesianPoint, public Standard_Transient {
+
+class StepGeom_HArray1OfCartesianPoint : public StepGeom_Array1OfCartesianPoint, public Standard_Transient {
   public:
     StepGeom_HArray1OfCartesianPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepGeom_HArray1OfCartesianPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfCartesianPoint::value_type& theValue);
-    StepGeom_HArray1OfCartesianPoint(const  StepGeom_Array1OfCartesianPoint& theOther);
-    const  StepGeom_Array1OfCartesianPoint& Array1();
-     StepGeom_Array1OfCartesianPoint& ChangeArray1();
+    StepGeom_HArray1OfCartesianPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const StepGeom_Array1OfCartesianPoint::value_type& theValue);
+    StepGeom_HArray1OfCartesianPoint(const StepGeom_Array1OfCartesianPoint& theOther);
+    const StepGeom_Array1OfCartesianPoint& Array1();
+    StepGeom_Array1OfCartesianPoint& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfCartesianPoint)
 
 
-class StepGeom_HArray1OfPcurveOrSurface : public  StepGeom_Array1OfPcurveOrSurface, public Standard_Transient {
+class StepGeom_HArray1OfPcurveOrSurface : public StepGeom_Array1OfPcurveOrSurface, public Standard_Transient {
   public:
     StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfPcurveOrSurface::value_type& theValue);
-    StepGeom_HArray1OfPcurveOrSurface(const  StepGeom_Array1OfPcurveOrSurface& theOther);
-    const  StepGeom_Array1OfPcurveOrSurface& Array1();
-     StepGeom_Array1OfPcurveOrSurface& ChangeArray1();
+    StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const StepGeom_Array1OfPcurveOrSurface::value_type& theValue);
+    StepGeom_HArray1OfPcurveOrSurface(const StepGeom_Array1OfPcurveOrSurface& theOther);
+    const StepGeom_Array1OfPcurveOrSurface& Array1();
+    StepGeom_Array1OfPcurveOrSurface& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfPcurveOrSurface)
 
 
-class StepGeom_HArray1OfSurfaceBoundary : public  StepGeom_Array1OfSurfaceBoundary, public Standard_Transient {
+class StepGeom_HArray1OfSurfaceBoundary : public StepGeom_Array1OfSurfaceBoundary, public Standard_Transient {
   public:
     StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfSurfaceBoundary::value_type& theValue);
-    StepGeom_HArray1OfSurfaceBoundary(const  StepGeom_Array1OfSurfaceBoundary& theOther);
-    const  StepGeom_Array1OfSurfaceBoundary& Array1();
-     StepGeom_Array1OfSurfaceBoundary& ChangeArray1();
+    StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer theLower, const Standard_Integer theUpper, const StepGeom_Array1OfSurfaceBoundary::value_type& theValue);
+    StepGeom_HArray1OfSurfaceBoundary(const StepGeom_Array1OfSurfaceBoundary& theOther);
+    const StepGeom_Array1OfSurfaceBoundary& Array1();
+    StepGeom_Array1OfSurfaceBoundary& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfSurfaceBoundary)
 
 
-class StepGeom_HArray1OfBoundaryCurve : public  StepGeom_Array1OfBoundaryCurve, public Standard_Transient {
+class StepGeom_HArray1OfBoundaryCurve : public StepGeom_Array1OfBoundaryCurve, public Standard_Transient {
   public:
     StepGeom_HArray1OfBoundaryCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepGeom_HArray1OfBoundaryCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfBoundaryCurve::value_type& theValue);
-    StepGeom_HArray1OfBoundaryCurve(const  StepGeom_Array1OfBoundaryCurve& theOther);
-    const  StepGeom_Array1OfBoundaryCurve& Array1();
-     StepGeom_Array1OfBoundaryCurve& ChangeArray1();
+    StepGeom_HArray1OfBoundaryCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const StepGeom_Array1OfBoundaryCurve::value_type& theValue);
+    StepGeom_HArray1OfBoundaryCurve(const StepGeom_Array1OfBoundaryCurve& theOther);
+    const StepGeom_Array1OfBoundaryCurve& Array1();
+    StepGeom_Array1OfBoundaryCurve& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfBoundaryCurve)
 
 
-class StepGeom_HArray1OfCompositeCurveSegment : public  StepGeom_Array1OfCompositeCurveSegment, public Standard_Transient {
+class StepGeom_HArray1OfCompositeCurveSegment : public StepGeom_Array1OfCompositeCurveSegment, public Standard_Transient {
   public:
     StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfCompositeCurveSegment::value_type& theValue);
-    StepGeom_HArray1OfCompositeCurveSegment(const  StepGeom_Array1OfCompositeCurveSegment& theOther);
-    const  StepGeom_Array1OfCompositeCurveSegment& Array1();
-     StepGeom_Array1OfCompositeCurveSegment& ChangeArray1();
+    StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer theLower, const Standard_Integer theUpper, const StepGeom_Array1OfCompositeCurveSegment::value_type& theValue);
+    StepGeom_HArray1OfCompositeCurveSegment(const StepGeom_Array1OfCompositeCurveSegment& theOther);
+    const StepGeom_Array1OfCompositeCurveSegment& Array1();
+    StepGeom_Array1OfCompositeCurveSegment& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfCompositeCurveSegment)
 
 
-class StepGeom_HArray1OfCurve : public  StepGeom_Array1OfCurve, public Standard_Transient {
+class StepGeom_HArray1OfCurve : public StepGeom_Array1OfCurve, public Standard_Transient {
   public:
     StepGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfCurve::value_type& theValue);
-    StepGeom_HArray1OfCurve(const  StepGeom_Array1OfCurve& theOther);
-    const  StepGeom_Array1OfCurve& Array1();
-     StepGeom_Array1OfCurve& ChangeArray1();
+    StepGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const StepGeom_Array1OfCurve::value_type& theValue);
+    StepGeom_HArray1OfCurve(const StepGeom_Array1OfCurve& theOther);
+    const StepGeom_Array1OfCurve& Array1();
+    StepGeom_Array1OfCurve& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfCurve)
 
 
-class StepGeom_HArray1OfTrimmingSelect : public  StepGeom_Array1OfTrimmingSelect, public Standard_Transient {
+class StepGeom_HArray1OfTrimmingSelect : public StepGeom_Array1OfTrimmingSelect, public Standard_Transient {
   public:
     StepGeom_HArray1OfTrimmingSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepGeom_HArray1OfTrimmingSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepGeom_Array1OfTrimmingSelect::value_type& theValue);
-    StepGeom_HArray1OfTrimmingSelect(const  StepGeom_Array1OfTrimmingSelect& theOther);
-    const  StepGeom_Array1OfTrimmingSelect& Array1();
-     StepGeom_Array1OfTrimmingSelect& ChangeArray1();
+    StepGeom_HArray1OfTrimmingSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepGeom_Array1OfTrimmingSelect::value_type& theValue);
+    StepGeom_HArray1OfTrimmingSelect(const StepGeom_Array1OfTrimmingSelect& theOther);
+    const StepGeom_Array1OfTrimmingSelect& Array1();
+    StepGeom_Array1OfTrimmingSelect& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfTrimmingSelect)
 
-
 /* harray2 classes */
-class StepGeom_HArray2OfSurfacePatch : public  StepGeom_Array2OfSurfacePatch, public Standard_Transient {
+class StepGeom_HArray2OfSurfacePatch : public StepGeom_Array2OfSurfacePatch, public Standard_Transient {
   public:
     StepGeom_HArray2OfSurfacePatch(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     StepGeom_HArray2OfSurfacePatch(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const  StepGeom_Array2OfSurfacePatch::value_type& theValue);
-    StepGeom_HArray2OfSurfacePatch(const  StepGeom_Array2OfSurfacePatch& theOther);
-    const  StepGeom_Array2OfSurfacePatch& Array2 ();
-     StepGeom_Array2OfSurfacePatch& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const StepGeom_Array2OfSurfacePatch::value_type& theValue);
+    StepGeom_HArray2OfSurfacePatch(const StepGeom_Array2OfSurfacePatch& theOther);
+    const StepGeom_Array2OfSurfacePatch& Array2 ();
+    StepGeom_Array2OfSurfacePatch& ChangeArray2 (); 
 };
 %make_alias(StepGeom_HArray2OfSurfacePatch)
 
 
-class StepGeom_HArray2OfCartesianPoint : public  StepGeom_Array2OfCartesianPoint, public Standard_Transient {
+class StepGeom_HArray2OfCartesianPoint : public StepGeom_Array2OfCartesianPoint, public Standard_Transient {
   public:
     StepGeom_HArray2OfCartesianPoint(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     StepGeom_HArray2OfCartesianPoint(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const  StepGeom_Array2OfCartesianPoint::value_type& theValue);
-    StepGeom_HArray2OfCartesianPoint(const  StepGeom_Array2OfCartesianPoint& theOther);
-    const  StepGeom_Array2OfCartesianPoint& Array2 ();
-     StepGeom_Array2OfCartesianPoint& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const StepGeom_Array2OfCartesianPoint::value_type& theValue);
+    StepGeom_HArray2OfCartesianPoint(const StepGeom_Array2OfCartesianPoint& theOther);
+    const StepGeom_Array2OfCartesianPoint& Array2 ();
+    StepGeom_Array2OfCartesianPoint& ChangeArray2 (); 
 };
 %make_alias(StepGeom_HArray2OfCartesianPoint)
 

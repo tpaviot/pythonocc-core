@@ -60,6 +60,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepdata.html"
 %import Message.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -75,10 +76,13 @@ enum StepData_Logical {
 /* python proy classes for enums */
 %pythoncode {
 
-class StepData_Logical:
+class StepData_Logical(IntEnum):
 	StepData_LFalse = 0
 	StepData_LTrue = 1
 	StepData_LUnknown = 2
+StepData_LFalse = StepData_Logical.StepData_LFalse
+StepData_LTrue = StepData_Logical.StepData_LTrue
+StepData_LUnknown = StepData_Logical.StepData_LUnknown
 };
 /* end python proxy for enums */
 
@@ -6587,16 +6591,16 @@ class StepData_UndefinedEntity:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
-class StepData_HArray1OfField : public  StepData_Array1OfField, public Standard_Transient {
+
+class StepData_HArray1OfField : public StepData_Array1OfField, public Standard_Transient {
   public:
     StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepData_Array1OfField::value_type& theValue);
-    StepData_HArray1OfField(const  StepData_Array1OfField& theOther);
-    const  StepData_Array1OfField& Array1();
-     StepData_Array1OfField& ChangeArray1();
+    StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper, const StepData_Array1OfField::value_type& theValue);
+    StepData_HArray1OfField(const StepData_Array1OfField& theOther);
+    const StepData_Array1OfField& Array1();
+    StepData_Array1OfField& ChangeArray1();
 };
 %make_alias(StepData_HArray1OfField)
-
 
 /* harray2 classes */
 /* hsequence classes */

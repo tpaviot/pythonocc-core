@@ -54,6 +54,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intana.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -76,7 +77,7 @@ enum IntAna_ResultType {
 /* python proy classes for enums */
 %pythoncode {
 
-class IntAna_ResultType:
+class IntAna_ResultType(IntEnum):
 	IntAna_Point = 0
 	IntAna_Line = 1
 	IntAna_Circle = 2
@@ -87,6 +88,16 @@ class IntAna_ResultType:
 	IntAna_Empty = 7
 	IntAna_Same = 8
 	IntAna_NoGeometricSolution = 9
+IntAna_Point = IntAna_ResultType.IntAna_Point
+IntAna_Line = IntAna_ResultType.IntAna_Line
+IntAna_Circle = IntAna_ResultType.IntAna_Circle
+IntAna_PointAndCircle = IntAna_ResultType.IntAna_PointAndCircle
+IntAna_Ellipse = IntAna_ResultType.IntAna_Ellipse
+IntAna_Parabola = IntAna_ResultType.IntAna_Parabola
+IntAna_Hyperbola = IntAna_ResultType.IntAna_Hyperbola
+IntAna_Empty = IntAna_ResultType.IntAna_Empty
+IntAna_Same = IntAna_ResultType.IntAna_Same
+IntAna_NoGeometricSolution = IntAna_ResultType.IntAna_NoGeometricSolution
 };
 /* end python proxy for enums */
 
@@ -96,6 +107,13 @@ class IntAna_ResultType:
 /* templates */
 %template(IntAna_ListIteratorOfListOfCurve) NCollection_TListIterator<IntAna_Curve>;
 %template(IntAna_ListOfCurve) NCollection_List<IntAna_Curve>;
+
+%extend NCollection_List<IntAna_Curve> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

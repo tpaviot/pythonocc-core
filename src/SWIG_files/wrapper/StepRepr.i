@@ -65,6 +65,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steprepr.html"
 %import StepBasic.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -5431,72 +5432,72 @@ class StepRepr_ReprItemAndMeasureWithUnitAndQRI:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
-class StepRepr_HArray1OfMaterialPropertyRepresentation : public  StepRepr_Array1OfMaterialPropertyRepresentation, public Standard_Transient {
+
+class StepRepr_HArray1OfMaterialPropertyRepresentation : public StepRepr_Array1OfMaterialPropertyRepresentation, public Standard_Transient {
   public:
     StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepRepr_Array1OfMaterialPropertyRepresentation::value_type& theValue);
-    StepRepr_HArray1OfMaterialPropertyRepresentation(const  StepRepr_Array1OfMaterialPropertyRepresentation& theOther);
-    const  StepRepr_Array1OfMaterialPropertyRepresentation& Array1();
-     StepRepr_Array1OfMaterialPropertyRepresentation& ChangeArray1();
+    StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfMaterialPropertyRepresentation::value_type& theValue);
+    StepRepr_HArray1OfMaterialPropertyRepresentation(const StepRepr_Array1OfMaterialPropertyRepresentation& theOther);
+    const StepRepr_Array1OfMaterialPropertyRepresentation& Array1();
+    StepRepr_Array1OfMaterialPropertyRepresentation& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfMaterialPropertyRepresentation)
 
 
-class StepRepr_HArray1OfRepresentationItem : public  StepRepr_Array1OfRepresentationItem, public Standard_Transient {
+class StepRepr_HArray1OfRepresentationItem : public StepRepr_Array1OfRepresentationItem, public Standard_Transient {
   public:
     StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepRepr_Array1OfRepresentationItem::value_type& theValue);
-    StepRepr_HArray1OfRepresentationItem(const  StepRepr_Array1OfRepresentationItem& theOther);
-    const  StepRepr_Array1OfRepresentationItem& Array1();
-     StepRepr_Array1OfRepresentationItem& ChangeArray1();
+    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfRepresentationItem::value_type& theValue);
+    StepRepr_HArray1OfRepresentationItem(const StepRepr_Array1OfRepresentationItem& theOther);
+    const StepRepr_Array1OfRepresentationItem& Array1();
+    StepRepr_Array1OfRepresentationItem& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfRepresentationItem)
 
 
-class StepRepr_HArray1OfPropertyDefinitionRepresentation : public  StepRepr_Array1OfPropertyDefinitionRepresentation, public Standard_Transient {
+class StepRepr_HArray1OfPropertyDefinitionRepresentation : public StepRepr_Array1OfPropertyDefinitionRepresentation, public Standard_Transient {
   public:
     StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepRepr_Array1OfPropertyDefinitionRepresentation::value_type& theValue);
-    StepRepr_HArray1OfPropertyDefinitionRepresentation(const  StepRepr_Array1OfPropertyDefinitionRepresentation& theOther);
-    const  StepRepr_Array1OfPropertyDefinitionRepresentation& Array1();
-     StepRepr_Array1OfPropertyDefinitionRepresentation& ChangeArray1();
+    StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfPropertyDefinitionRepresentation::value_type& theValue);
+    StepRepr_HArray1OfPropertyDefinitionRepresentation(const StepRepr_Array1OfPropertyDefinitionRepresentation& theOther);
+    const StepRepr_Array1OfPropertyDefinitionRepresentation& Array1();
+    StepRepr_Array1OfPropertyDefinitionRepresentation& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfPropertyDefinitionRepresentation)
 
 
-class StepRepr_HArray1OfShapeAspect : public  StepRepr_Array1OfShapeAspect, public Standard_Transient {
+class StepRepr_HArray1OfShapeAspect : public StepRepr_Array1OfShapeAspect, public Standard_Transient {
   public:
     StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepRepr_Array1OfShapeAspect::value_type& theValue);
-    StepRepr_HArray1OfShapeAspect(const  StepRepr_Array1OfShapeAspect& theOther);
-    const  StepRepr_Array1OfShapeAspect& Array1();
-     StepRepr_Array1OfShapeAspect& ChangeArray1();
+    StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfShapeAspect::value_type& theValue);
+    StepRepr_HArray1OfShapeAspect(const StepRepr_Array1OfShapeAspect& theOther);
+    const StepRepr_Array1OfShapeAspect& Array1();
+    StepRepr_Array1OfShapeAspect& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfShapeAspect)
 
-
 /* harray2 classes */
 /* hsequence classes */
-class StepRepr_HSequenceOfRepresentationItem : public  StepRepr_SequenceOfRepresentationItem, public Standard_Transient {
+class StepRepr_HSequenceOfRepresentationItem : public StepRepr_SequenceOfRepresentationItem, public Standard_Transient {
   public:
     StepRepr_HSequenceOfRepresentationItem();
-    StepRepr_HSequenceOfRepresentationItem(const  StepRepr_SequenceOfRepresentationItem& theOther);
-    const  StepRepr_SequenceOfRepresentationItem& Sequence();
-    void Append (const  StepRepr_SequenceOfRepresentationItem::value_type& theItem);
-    void Append ( StepRepr_SequenceOfRepresentationItem& theSequence);
-     StepRepr_SequenceOfRepresentationItem& ChangeSequence();
+    StepRepr_HSequenceOfRepresentationItem(const StepRepr_SequenceOfRepresentationItem& theOther);
+    const StepRepr_SequenceOfRepresentationItem& Sequence();
+    void Append (const StepRepr_SequenceOfRepresentationItem::value_type& theItem);
+    void Append (StepRepr_SequenceOfRepresentationItem& theSequence);
+    StepRepr_SequenceOfRepresentationItem& ChangeSequence();
 };
 %make_alias(StepRepr_HSequenceOfRepresentationItem)
 
 
-class StepRepr_HSequenceOfMaterialPropertyRepresentation : public  StepRepr_SequenceOfMaterialPropertyRepresentation, public Standard_Transient {
+class StepRepr_HSequenceOfMaterialPropertyRepresentation : public StepRepr_SequenceOfMaterialPropertyRepresentation, public Standard_Transient {
   public:
     StepRepr_HSequenceOfMaterialPropertyRepresentation();
-    StepRepr_HSequenceOfMaterialPropertyRepresentation(const  StepRepr_SequenceOfMaterialPropertyRepresentation& theOther);
-    const  StepRepr_SequenceOfMaterialPropertyRepresentation& Sequence();
-    void Append (const  StepRepr_SequenceOfMaterialPropertyRepresentation::value_type& theItem);
-    void Append ( StepRepr_SequenceOfMaterialPropertyRepresentation& theSequence);
-     StepRepr_SequenceOfMaterialPropertyRepresentation& ChangeSequence();
+    StepRepr_HSequenceOfMaterialPropertyRepresentation(const StepRepr_SequenceOfMaterialPropertyRepresentation& theOther);
+    const StepRepr_SequenceOfMaterialPropertyRepresentation& Sequence();
+    void Append (const StepRepr_SequenceOfMaterialPropertyRepresentation::value_type& theItem);
+    void Append (StepRepr_SequenceOfMaterialPropertyRepresentation& theSequence);
+    StepRepr_SequenceOfMaterialPropertyRepresentation& ChangeSequence();
 };
 %make_alias(StepRepr_HSequenceOfMaterialPropertyRepresentation)
 

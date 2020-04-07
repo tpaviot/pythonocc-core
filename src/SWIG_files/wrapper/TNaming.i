@@ -66,6 +66,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tnaming.html"
 %import TopAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -99,15 +100,21 @@ enum TNaming_NameType {
 /* python proy classes for enums */
 %pythoncode {
 
-class TNaming_Evolution:
+class TNaming_Evolution(IntEnum):
 	TNaming_PRIMITIVE = 0
 	TNaming_GENERATED = 1
 	TNaming_MODIFY = 2
 	TNaming_DELETE = 3
 	TNaming_REPLACE = 4
 	TNaming_SELECTED = 5
+TNaming_PRIMITIVE = TNaming_Evolution.TNaming_PRIMITIVE
+TNaming_GENERATED = TNaming_Evolution.TNaming_GENERATED
+TNaming_MODIFY = TNaming_Evolution.TNaming_MODIFY
+TNaming_DELETE = TNaming_Evolution.TNaming_DELETE
+TNaming_REPLACE = TNaming_Evolution.TNaming_REPLACE
+TNaming_SELECTED = TNaming_Evolution.TNaming_SELECTED
 
-class TNaming_NameType:
+class TNaming_NameType(IntEnum):
 	TNaming_UNKNOWN = 0
 	TNaming_IDENTITY = 1
 	TNaming_MODIFUNTIL = 2
@@ -120,6 +127,18 @@ class TNaming_NameType:
 	TNaming_ORIENTATION = 9
 	TNaming_WIREIN = 10
 	TNaming_SHELLIN = 11
+TNaming_UNKNOWN = TNaming_NameType.TNaming_UNKNOWN
+TNaming_IDENTITY = TNaming_NameType.TNaming_IDENTITY
+TNaming_MODIFUNTIL = TNaming_NameType.TNaming_MODIFUNTIL
+TNaming_GENERATION = TNaming_NameType.TNaming_GENERATION
+TNaming_INTERSECTION = TNaming_NameType.TNaming_INTERSECTION
+TNaming_UNION = TNaming_NameType.TNaming_UNION
+TNaming_SUBSTRACTION = TNaming_NameType.TNaming_SUBSTRACTION
+TNaming_CONSTSHAPE = TNaming_NameType.TNaming_CONSTSHAPE
+TNaming_FILTERBYNEIGHBOURGS = TNaming_NameType.TNaming_FILTERBYNEIGHBOURGS
+TNaming_ORIENTATION = TNaming_NameType.TNaming_ORIENTATION
+TNaming_WIREIN = TNaming_NameType.TNaming_WIREIN
+TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
 };
 /* end python proxy for enums */
 
@@ -140,8 +159,29 @@ class TNaming_NameType:
 %template(TNaming_ListIteratorOfListOfMapOfShape) NCollection_TListIterator<TopTools_MapOfShape>;
 %template(TNaming_ListIteratorOfListOfNamedShape) NCollection_TListIterator<opencascade::handle<TNaming_NamedShape>>;
 %template(TNaming_ListOfIndexedDataMapOfShapeListOfShape) NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape>;
+
+%extend NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TNaming_ListOfMapOfShape) NCollection_List<TopTools_MapOfShape>;
+
+%extend NCollection_List<TopTools_MapOfShape> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TNaming_ListOfNamedShape) NCollection_List<opencascade::handle<TNaming_NamedShape>>;
+
+%extend NCollection_List<opencascade::handle<TNaming_NamedShape>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TNaming_MapOfNamedShape) NCollection_Map<opencascade::handle<TNaming_NamedShape>,TNaming_NamedShapeHasher>;
 %template(TNaming_MapOfShape) NCollection_Map<TopoDS_Shape>;
 %template(TNaming_NamedShapeHasher) NCollection_DefaultHasher<opencascade::handle<TNaming_NamedShape>>;

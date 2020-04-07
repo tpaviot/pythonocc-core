@@ -75,6 +75,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlrtopobrep.html"
 %import HLRAlgo.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -94,6 +95,13 @@ from OCC.Core.Exception import *
 %template(HLRTopoBRep_DataMapOfShapeFaceData) NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_FaceData,TopTools_ShapeMapHasher>;
 %template(HLRTopoBRep_ListIteratorOfListOfVData) NCollection_TListIterator<HLRTopoBRep_VData>;
 %template(HLRTopoBRep_ListOfVData) NCollection_List<HLRTopoBRep_VData>;
+
+%extend NCollection_List<HLRTopoBRep_VData> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(HLRTopoBRep_MapOfShapeListOfVData) NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_ListOfVData,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 

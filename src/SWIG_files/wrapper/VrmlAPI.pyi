@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.VrmlAPI import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
@@ -10,14 +10,17 @@ from OCC.Core.Quantity import *
 from OCC.Core.TDocStd import *
 
 
-class VrmlAPI_RepresentationOfShape:
+class VrmlAPI_RepresentationOfShape(IntEnum):
 	VrmlAPI_ShadedRepresentation: int = ...
 	VrmlAPI_WireFrameRepresentation: int = ...
 	VrmlAPI_BothRepresentation: int = ...
+VrmlAPI_ShadedRepresentation = VrmlAPI_RepresentationOfShape.VrmlAPI_ShadedRepresentation
+VrmlAPI_WireFrameRepresentation = VrmlAPI_RepresentationOfShape.VrmlAPI_WireFrameRepresentation
+VrmlAPI_BothRepresentation = VrmlAPI_RepresentationOfShape.VrmlAPI_BothRepresentation
 
-class VrmlAPI:
+class vrmlapi:
 	@staticmethod
-	def Write(self, aShape: TopoDS_Shape, aFileName: str, aVersion: Optional[int]) -> bool: ...
+	def Write(aShape: TopoDS_Shape, aFileName: str, aVersion: Optional[int] = 2) -> bool: ...
 
 class VrmlAPI_Writer:
 	def __init__(self) -> None: ...
@@ -40,5 +43,11 @@ class VrmlAPI_Writer:
 	def SetShininessToMaterial(self, aMaterial: Vrml_Material, aShininess: float) -> None: ...
 	def SetSpecularColorToMaterial(self, aMaterial: Vrml_Material, Color: Quantity_HArray1OfColor) -> None: ...
 	def SetTransparencyToMaterial(self, aMaterial: Vrml_Material, aTransparency: float) -> None: ...
-	def Write(self, aShape: TopoDS_Shape, aFile: str, aVersion: Optional[int]) -> bool: ...
+	def Write(self, aShape: TopoDS_Shape, aFile: str, aVersion: Optional[int] = 2) -> bool: ...
 	def WriteDoc(self, theDoc: TDocStd_Document, theFile: str, theScale: float) -> bool: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+vrmlapi_Write = vrmlapi.Write

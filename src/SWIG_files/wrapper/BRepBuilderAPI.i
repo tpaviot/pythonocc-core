@@ -72,6 +72,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepbuilderapi.ht
 %import Geom2d.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -134,20 +135,29 @@ enum BRepBuilderAPI_ShellError {
 /* python proy classes for enums */
 %pythoncode {
 
-class BRepBuilderAPI_ShapeModification:
+class BRepBuilderAPI_ShapeModification(IntEnum):
 	BRepBuilderAPI_Preserved = 0
 	BRepBuilderAPI_Deleted = 1
 	BRepBuilderAPI_Trimmed = 2
 	BRepBuilderAPI_Merged = 3
 	BRepBuilderAPI_BoundaryModified = 4
+BRepBuilderAPI_Preserved = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Preserved
+BRepBuilderAPI_Deleted = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Deleted
+BRepBuilderAPI_Trimmed = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Trimmed
+BRepBuilderAPI_Merged = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_Merged
+BRepBuilderAPI_BoundaryModified = BRepBuilderAPI_ShapeModification.BRepBuilderAPI_BoundaryModified
 
-class BRepBuilderAPI_WireError:
+class BRepBuilderAPI_WireError(IntEnum):
 	BRepBuilderAPI_WireDone = 0
 	BRepBuilderAPI_EmptyWire = 1
 	BRepBuilderAPI_DisconnectedWire = 2
 	BRepBuilderAPI_NonManifoldWire = 3
+BRepBuilderAPI_WireDone = BRepBuilderAPI_WireError.BRepBuilderAPI_WireDone
+BRepBuilderAPI_EmptyWire = BRepBuilderAPI_WireError.BRepBuilderAPI_EmptyWire
+BRepBuilderAPI_DisconnectedWire = BRepBuilderAPI_WireError.BRepBuilderAPI_DisconnectedWire
+BRepBuilderAPI_NonManifoldWire = BRepBuilderAPI_WireError.BRepBuilderAPI_NonManifoldWire
 
-class BRepBuilderAPI_EdgeError:
+class BRepBuilderAPI_EdgeError(IntEnum):
 	BRepBuilderAPI_EdgeDone = 0
 	BRepBuilderAPI_PointProjectionFailed = 1
 	BRepBuilderAPI_ParameterOutOfRange = 2
@@ -155,30 +165,53 @@ class BRepBuilderAPI_EdgeError:
 	BRepBuilderAPI_PointWithInfiniteParameter = 4
 	BRepBuilderAPI_DifferentsPointAndParameter = 5
 	BRepBuilderAPI_LineThroughIdenticPoints = 6
+BRepBuilderAPI_EdgeDone = BRepBuilderAPI_EdgeError.BRepBuilderAPI_EdgeDone
+BRepBuilderAPI_PointProjectionFailed = BRepBuilderAPI_EdgeError.BRepBuilderAPI_PointProjectionFailed
+BRepBuilderAPI_ParameterOutOfRange = BRepBuilderAPI_EdgeError.BRepBuilderAPI_ParameterOutOfRange
+BRepBuilderAPI_DifferentPointsOnClosedCurve = BRepBuilderAPI_EdgeError.BRepBuilderAPI_DifferentPointsOnClosedCurve
+BRepBuilderAPI_PointWithInfiniteParameter = BRepBuilderAPI_EdgeError.BRepBuilderAPI_PointWithInfiniteParameter
+BRepBuilderAPI_DifferentsPointAndParameter = BRepBuilderAPI_EdgeError.BRepBuilderAPI_DifferentsPointAndParameter
+BRepBuilderAPI_LineThroughIdenticPoints = BRepBuilderAPI_EdgeError.BRepBuilderAPI_LineThroughIdenticPoints
 
-class BRepBuilderAPI_PipeError:
+class BRepBuilderAPI_PipeError(IntEnum):
 	BRepBuilderAPI_PipeDone = 0
 	BRepBuilderAPI_PipeNotDone = 1
 	BRepBuilderAPI_PlaneNotIntersectGuide = 2
 	BRepBuilderAPI_ImpossibleContact = 3
+BRepBuilderAPI_PipeDone = BRepBuilderAPI_PipeError.BRepBuilderAPI_PipeDone
+BRepBuilderAPI_PipeNotDone = BRepBuilderAPI_PipeError.BRepBuilderAPI_PipeNotDone
+BRepBuilderAPI_PlaneNotIntersectGuide = BRepBuilderAPI_PipeError.BRepBuilderAPI_PlaneNotIntersectGuide
+BRepBuilderAPI_ImpossibleContact = BRepBuilderAPI_PipeError.BRepBuilderAPI_ImpossibleContact
 
-class BRepBuilderAPI_TransitionMode:
+class BRepBuilderAPI_TransitionMode(IntEnum):
 	BRepBuilderAPI_Transformed = 0
 	BRepBuilderAPI_RightCorner = 1
 	BRepBuilderAPI_RoundCorner = 2
+BRepBuilderAPI_Transformed = BRepBuilderAPI_TransitionMode.BRepBuilderAPI_Transformed
+BRepBuilderAPI_RightCorner = BRepBuilderAPI_TransitionMode.BRepBuilderAPI_RightCorner
+BRepBuilderAPI_RoundCorner = BRepBuilderAPI_TransitionMode.BRepBuilderAPI_RoundCorner
 
-class BRepBuilderAPI_FaceError:
+class BRepBuilderAPI_FaceError(IntEnum):
 	BRepBuilderAPI_FaceDone = 0
 	BRepBuilderAPI_NoFace = 1
 	BRepBuilderAPI_NotPlanar = 2
 	BRepBuilderAPI_CurveProjectionFailed = 3
 	BRepBuilderAPI_ParametersOutOfRange = 4
+BRepBuilderAPI_FaceDone = BRepBuilderAPI_FaceError.BRepBuilderAPI_FaceDone
+BRepBuilderAPI_NoFace = BRepBuilderAPI_FaceError.BRepBuilderAPI_NoFace
+BRepBuilderAPI_NotPlanar = BRepBuilderAPI_FaceError.BRepBuilderAPI_NotPlanar
+BRepBuilderAPI_CurveProjectionFailed = BRepBuilderAPI_FaceError.BRepBuilderAPI_CurveProjectionFailed
+BRepBuilderAPI_ParametersOutOfRange = BRepBuilderAPI_FaceError.BRepBuilderAPI_ParametersOutOfRange
 
-class BRepBuilderAPI_ShellError:
+class BRepBuilderAPI_ShellError(IntEnum):
 	BRepBuilderAPI_ShellDone = 0
 	BRepBuilderAPI_EmptyShell = 1
 	BRepBuilderAPI_DisconnectedShell = 2
 	BRepBuilderAPI_ShellParametersOutOfRange = 3
+BRepBuilderAPI_ShellDone = BRepBuilderAPI_ShellError.BRepBuilderAPI_ShellDone
+BRepBuilderAPI_EmptyShell = BRepBuilderAPI_ShellError.BRepBuilderAPI_EmptyShell
+BRepBuilderAPI_DisconnectedShell = BRepBuilderAPI_ShellError.BRepBuilderAPI_DisconnectedShell
+BRepBuilderAPI_ShellParametersOutOfRange = BRepBuilderAPI_ShellError.BRepBuilderAPI_ShellParametersOutOfRange
 };
 /* end python proxy for enums */
 
@@ -426,7 +459,7 @@ enum FS_Statuses {
 /* python proy classes for enums */
 %pythoncode {
 
-class FS_Statuses:
+class FS_Statuses(IntEnum):
 	FS_OK = 0
 	FS_Degenerated = 1
 	FS_FindVertexError = 2
@@ -436,6 +469,15 @@ class FS_Statuses:
 	FS_InfiniteSurface = 32
 	FS_EmptyInput = 64
 	FS_Exception = 128
+FS_OK = FS_Statuses.FS_OK
+FS_Degenerated = FS_Statuses.FS_Degenerated
+FS_FindVertexError = FS_Statuses.FS_FindVertexError
+FS_FindEdgeError = FS_Statuses.FS_FindEdgeError
+FS_FaceWithNullSurface = FS_Statuses.FS_FaceWithNullSurface
+FS_NotNaturalBoundsFace = FS_Statuses.FS_NotNaturalBoundsFace
+FS_InfiniteSurface = FS_Statuses.FS_InfiniteSurface
+FS_EmptyInput = FS_Statuses.FS_EmptyInput
+FS_Exception = FS_Statuses.FS_Exception
 };
 /* end python proxy for enums */
 

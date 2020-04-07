@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.RWStepBasic import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.StepData import *
@@ -686,3 +686,8 @@ class RWStepBasic_RWWeekOfYearAndDayDate:
 	def __init__(self) -> None: ...
 	def ReadStep(self, data: StepData_StepReaderData, num: int, ach: Interface_Check, ent: StepBasic_WeekOfYearAndDayDate) -> None: ...
 	def WriteStep(self, SW: StepData_StepWriter, ent: StepBasic_WeekOfYearAndDayDate) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

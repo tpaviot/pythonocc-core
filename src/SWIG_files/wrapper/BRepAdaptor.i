@@ -71,6 +71,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepadaptor.html"
 %import Adaptor2d.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -2145,16 +2146,16 @@ gp_Pnt
 };
 
 /* harray1 classes */
-class BRepAdaptor_HArray1OfCurve : public  BRepAdaptor_Array1OfCurve, public Standard_Transient {
+
+class BRepAdaptor_HArray1OfCurve : public BRepAdaptor_Array1OfCurve, public Standard_Transient {
   public:
     BRepAdaptor_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    BRepAdaptor_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  BRepAdaptor_Array1OfCurve::value_type& theValue);
-    BRepAdaptor_HArray1OfCurve(const  BRepAdaptor_Array1OfCurve& theOther);
-    const  BRepAdaptor_Array1OfCurve& Array1();
-     BRepAdaptor_Array1OfCurve& ChangeArray1();
+    BRepAdaptor_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const BRepAdaptor_Array1OfCurve::value_type& theValue);
+    BRepAdaptor_HArray1OfCurve(const BRepAdaptor_Array1OfCurve& theOther);
+    const BRepAdaptor_Array1OfCurve& Array1();
+    BRepAdaptor_Array1OfCurve& ChangeArray1();
 };
 %make_alias(BRepAdaptor_HArray1OfCurve)
-
 
 /* harray2 classes */
 /* hsequence classes */

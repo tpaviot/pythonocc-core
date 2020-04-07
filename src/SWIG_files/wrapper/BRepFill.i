@@ -99,6 +99,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepfill.html"
 %import TColgp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -120,15 +121,21 @@ enum BRepFill_TransitionStyle {
 /* python proy classes for enums */
 %pythoncode {
 
-class BRepFill_TypeOfContact:
+class BRepFill_TypeOfContact(IntEnum):
 	BRepFill_NoContact = 0
 	BRepFill_Contact = 1
 	BRepFill_ContactOnBorder = 2
+BRepFill_NoContact = BRepFill_TypeOfContact.BRepFill_NoContact
+BRepFill_Contact = BRepFill_TypeOfContact.BRepFill_Contact
+BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
 
-class BRepFill_TransitionStyle:
+class BRepFill_TransitionStyle(IntEnum):
 	BRepFill_Modified = 0
 	BRepFill_Right = 1
 	BRepFill_Round = 2
+BRepFill_Modified = BRepFill_TransitionStyle.BRepFill_Modified
+BRepFill_Right = BRepFill_TransitionStyle.BRepFill_Right
+BRepFill_Round = BRepFill_TransitionStyle.BRepFill_Round
 };
 /* end python proxy for enums */
 
@@ -156,6 +163,13 @@ class BRepFill_TransitionStyle:
 %template(BRepFill_IndexedDataMapOfOrientedShapeListOfShape) NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_OrientedShapeMapHasher>;
 %template(BRepFill_ListIteratorOfListOfOffsetWire) NCollection_TListIterator<BRepFill_OffsetWire>;
 %template(BRepFill_ListOfOffsetWire) NCollection_List<BRepFill_OffsetWire>;
+
+%extend NCollection_List<BRepFill_OffsetWire> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BRepFill_SequenceOfEdgeFaceAndOrder) NCollection_Sequence<BRepFill_EdgeFaceAndOrder>;
 %template(BRepFill_SequenceOfFaceAndOrder) NCollection_Sequence<BRepFill_FaceAndOrder>;
 %template(BRepFill_SequenceOfSection) NCollection_Sequence<BRepFill_Section>;

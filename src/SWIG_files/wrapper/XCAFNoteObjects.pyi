@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.XCAFNoteObjects import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
@@ -24,3 +24,8 @@ class XCAFNoteObjects_NoteObject(Standard_Transient):
 	def SetPoint(self, thePnt: gp_Pnt) -> None: ...
 	def SetPointText(self, thePnt: gp_Pnt) -> None: ...
 	def SetPresentation(self, thePresentation: TopoDS_Shape) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

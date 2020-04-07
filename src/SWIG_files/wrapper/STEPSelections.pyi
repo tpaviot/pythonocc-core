@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.STEPSelections import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.StepShape import *
@@ -11,6 +11,10 @@ from OCC.Core.IFSelect import *
 from OCC.Core.TCollection import *
 from OCC.Core.XSControl import *
 
+#the following typedef cannot be wrapped as is
+STEPSelections_SequenceOfAssemblyComponent = NewType('STEPSelections_SequenceOfAssemblyComponent', Any)
+#the following typedef cannot be wrapped as is
+STEPSelections_SequenceOfAssemblyLink = NewType('STEPSelections_SequenceOfAssemblyLink', Any)
 
 class STEPSelections_AssemblyComponent(Standard_Transient):
 	@overload
@@ -29,7 +33,7 @@ class STEPSelections_AssemblyExplorer:
 	def FindSDRWithProduct(self, product: StepBasic_ProductDefinition) -> StepShape_ShapeDefinitionRepresentation: ...
 	def Init(self, G: Interface_Graph) -> None: ...
 	def NbAssemblies(self) -> int: ...
-	def Root(self, rank: Optional[int]) -> STEPSelections_AssemblyComponent: ...
+	def Root(self, rank: Optional[int] = 1) -> STEPSelections_AssemblyComponent: ...
 
 class STEPSelections_AssemblyLink(Standard_Transient):
 	@overload
@@ -89,3 +93,17 @@ class STEPSelections_SelectInstances(IFSelect_SelectExplore):
 	def Explore(self, level: int, ent: Standard_Transient, G: Interface_Graph, explored: Interface_EntityIterator) -> bool: ...
 	def ExploreLabel(self) -> TCollection_AsciiString: ...
 	def RootResult(self, G: Interface_Graph) -> Interface_EntityIterator: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+class STEPSelections_HSequenceOfAssemblyLink(STEPSelections_SequenceOfAssemblyLink, Standard_Transient):
+    @overload
+    def __init__(self) -> None: ...
+    @overload
+    def __init__(self, other: STEPSelections_SequenceOfAssemblyLink) -> None: ...
+    def Sequence(self) -> STEPSelections_SequenceOfAssemblyLink: ...
+    def Append(self, theSequence: STEPSelections_SequenceOfAssemblyLink) -> None: ...
+
+

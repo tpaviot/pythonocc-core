@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gccent.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -69,12 +70,17 @@ enum GccEnt_Position {
 /* python proy classes for enums */
 %pythoncode {
 
-class GccEnt_Position:
+class GccEnt_Position(IntEnum):
 	GccEnt_unqualified = 0
 	GccEnt_enclosing = 1
 	GccEnt_enclosed = 2
 	GccEnt_outside = 3
 	GccEnt_noqualifier = 4
+GccEnt_unqualified = GccEnt_Position.GccEnt_unqualified
+GccEnt_enclosing = GccEnt_Position.GccEnt_enclosing
+GccEnt_enclosed = GccEnt_Position.GccEnt_enclosed
+GccEnt_outside = GccEnt_Position.GccEnt_outside
+GccEnt_noqualifier = GccEnt_Position.GccEnt_noqualifier
 };
 /* end python proxy for enums */
 

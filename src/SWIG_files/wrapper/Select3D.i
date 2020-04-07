@@ -84,6 +84,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_select3d.html"
 %import Geom.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -98,9 +99,11 @@ enum Select3D_TypeOfSensitivity {
 /* python proy classes for enums */
 %pythoncode {
 
-class Select3D_TypeOfSensitivity:
+class Select3D_TypeOfSensitivity(IntEnum):
 	Select3D_TOS_INTERIOR = 0
 	Select3D_TOS_BOUNDARY = 1
+Select3D_TOS_INTERIOR = Select3D_TypeOfSensitivity.Select3D_TOS_INTERIOR
+Select3D_TOS_BOUNDARY = Select3D_TypeOfSensitivity.Select3D_TOS_BOUNDARY
 };
 /* end python proxy for enums */
 

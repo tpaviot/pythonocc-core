@@ -70,6 +70,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topodstostep.html
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -116,36 +117,55 @@ enum TopoDSToStep_FacetedError {
 /* python proy classes for enums */
 %pythoncode {
 
-class TopoDSToStep_MakeEdgeError:
+class TopoDSToStep_MakeEdgeError(IntEnum):
 	TopoDSToStep_EdgeDone = 0
 	TopoDSToStep_NonManifoldEdge = 1
 	TopoDSToStep_EdgeOther = 2
+TopoDSToStep_EdgeDone = TopoDSToStep_MakeEdgeError.TopoDSToStep_EdgeDone
+TopoDSToStep_NonManifoldEdge = TopoDSToStep_MakeEdgeError.TopoDSToStep_NonManifoldEdge
+TopoDSToStep_EdgeOther = TopoDSToStep_MakeEdgeError.TopoDSToStep_EdgeOther
 
-class TopoDSToStep_BuilderError:
+class TopoDSToStep_BuilderError(IntEnum):
 	TopoDSToStep_BuilderDone = 0
 	TopoDSToStep_NoFaceMapped = 1
 	TopoDSToStep_BuilderOther = 2
+TopoDSToStep_BuilderDone = TopoDSToStep_BuilderError.TopoDSToStep_BuilderDone
+TopoDSToStep_NoFaceMapped = TopoDSToStep_BuilderError.TopoDSToStep_NoFaceMapped
+TopoDSToStep_BuilderOther = TopoDSToStep_BuilderError.TopoDSToStep_BuilderOther
 
-class TopoDSToStep_MakeVertexError:
+class TopoDSToStep_MakeVertexError(IntEnum):
 	TopoDSToStep_VertexDone = 0
 	TopoDSToStep_VertexOther = 1
+TopoDSToStep_VertexDone = TopoDSToStep_MakeVertexError.TopoDSToStep_VertexDone
+TopoDSToStep_VertexOther = TopoDSToStep_MakeVertexError.TopoDSToStep_VertexOther
 
-class TopoDSToStep_MakeWireError:
+class TopoDSToStep_MakeWireError(IntEnum):
 	TopoDSToStep_WireDone = 0
 	TopoDSToStep_NonManifoldWire = 1
 	TopoDSToStep_WireOther = 2
+TopoDSToStep_WireDone = TopoDSToStep_MakeWireError.TopoDSToStep_WireDone
+TopoDSToStep_NonManifoldWire = TopoDSToStep_MakeWireError.TopoDSToStep_NonManifoldWire
+TopoDSToStep_WireOther = TopoDSToStep_MakeWireError.TopoDSToStep_WireOther
 
-class TopoDSToStep_MakeFaceError:
+class TopoDSToStep_MakeFaceError(IntEnum):
 	TopoDSToStep_FaceDone = 0
 	TopoDSToStep_InfiniteFace = 1
 	TopoDSToStep_NonManifoldFace = 2
 	TopoDSToStep_NoWireMapped = 3
 	TopoDSToStep_FaceOther = 4
+TopoDSToStep_FaceDone = TopoDSToStep_MakeFaceError.TopoDSToStep_FaceDone
+TopoDSToStep_InfiniteFace = TopoDSToStep_MakeFaceError.TopoDSToStep_InfiniteFace
+TopoDSToStep_NonManifoldFace = TopoDSToStep_MakeFaceError.TopoDSToStep_NonManifoldFace
+TopoDSToStep_NoWireMapped = TopoDSToStep_MakeFaceError.TopoDSToStep_NoWireMapped
+TopoDSToStep_FaceOther = TopoDSToStep_MakeFaceError.TopoDSToStep_FaceOther
 
-class TopoDSToStep_FacetedError:
+class TopoDSToStep_FacetedError(IntEnum):
 	TopoDSToStep_FacetedDone = 0
 	TopoDSToStep_SurfaceNotPlane = 1
 	TopoDSToStep_PCurveNotLinear = 2
+TopoDSToStep_FacetedDone = TopoDSToStep_FacetedError.TopoDSToStep_FacetedDone
+TopoDSToStep_SurfaceNotPlane = TopoDSToStep_FacetedError.TopoDSToStep_SurfaceNotPlane
+TopoDSToStep_PCurveNotLinear = TopoDSToStep_FacetedError.TopoDSToStep_PCurveNotLinear
 };
 /* end python proxy for enums */
 

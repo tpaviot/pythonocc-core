@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.Geom2dAdaptor import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Adaptor2d import *
@@ -10,9 +10,9 @@ from OCC.Core.GeomAbs import *
 from OCC.Core.TColStd import *
 
 
-class Geom2dAdaptor:
+class geom2dadaptor:
 	@staticmethod
-	def MakeCurve(self, HC: Adaptor2d_Curve2d) -> Geom2d_Curve: ...
+	def MakeCurve(HC: Adaptor2d_Curve2d) -> Geom2d_Curve: ...
 
 class Geom2dAdaptor_Curve(Adaptor2d_Curve2d):
 	@overload
@@ -42,7 +42,9 @@ class Geom2dAdaptor_Curve(Adaptor2d_Curve2d):
 	def IsRational(self) -> bool: ...
 	def LastParameter(self) -> float: ...
 	def Line(self) -> gp_Lin2d: ...
+	@overload
 	def Load(self, C: Geom2d_Curve) -> None: ...
+	@overload
 	def Load(self, C: Geom2d_Curve, UFirst: float, ULast: float) -> None: ...
 	def NbIntervals(self, S: GeomAbs_Shape) -> int: ...
 	def NbKnots(self) -> int: ...
@@ -73,3 +75,9 @@ class Geom2dAdaptor_HCurve(Geom2dAdaptor_GHCurve):
 	def __init__(self, S: Geom2d_Curve) -> None: ...
 	@overload
 	def __init__(self, S: Geom2d_Curve, UFirst: float, ULast: float) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+geom2dadaptor_MakeCurve = geom2dadaptor.MakeCurve

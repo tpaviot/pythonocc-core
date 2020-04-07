@@ -71,6 +71,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdataxtd.html"
 %import TShort.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -120,7 +121,7 @@ enum TDataXtd_GeometryEnum {
 /* python proy classes for enums */
 %pythoncode {
 
-class TDataXtd_ConstraintEnum:
+class TDataXtd_ConstraintEnum(IntEnum):
 	TDataXtd_RADIUS = 0
 	TDataXtd_DIAMETER = 1
 	TDataXtd_MINOR_RADIUS = 2
@@ -147,8 +148,34 @@ class TDataXtd_ConstraintEnum:
 	TDataXtd_FACES_ANGLE = 23
 	TDataXtd_ROUND = 24
 	TDataXtd_OFFSET = 25
+TDataXtd_RADIUS = TDataXtd_ConstraintEnum.TDataXtd_RADIUS
+TDataXtd_DIAMETER = TDataXtd_ConstraintEnum.TDataXtd_DIAMETER
+TDataXtd_MINOR_RADIUS = TDataXtd_ConstraintEnum.TDataXtd_MINOR_RADIUS
+TDataXtd_MAJOR_RADIUS = TDataXtd_ConstraintEnum.TDataXtd_MAJOR_RADIUS
+TDataXtd_TANGENT = TDataXtd_ConstraintEnum.TDataXtd_TANGENT
+TDataXtd_PARALLEL = TDataXtd_ConstraintEnum.TDataXtd_PARALLEL
+TDataXtd_PERPENDICULAR = TDataXtd_ConstraintEnum.TDataXtd_PERPENDICULAR
+TDataXtd_CONCENTRIC = TDataXtd_ConstraintEnum.TDataXtd_CONCENTRIC
+TDataXtd_COINCIDENT = TDataXtd_ConstraintEnum.TDataXtd_COINCIDENT
+TDataXtd_DISTANCE = TDataXtd_ConstraintEnum.TDataXtd_DISTANCE
+TDataXtd_ANGLE = TDataXtd_ConstraintEnum.TDataXtd_ANGLE
+TDataXtd_EQUAL_RADIUS = TDataXtd_ConstraintEnum.TDataXtd_EQUAL_RADIUS
+TDataXtd_SYMMETRY = TDataXtd_ConstraintEnum.TDataXtd_SYMMETRY
+TDataXtd_MIDPOINT = TDataXtd_ConstraintEnum.TDataXtd_MIDPOINT
+TDataXtd_EQUAL_DISTANCE = TDataXtd_ConstraintEnum.TDataXtd_EQUAL_DISTANCE
+TDataXtd_FIX = TDataXtd_ConstraintEnum.TDataXtd_FIX
+TDataXtd_RIGID = TDataXtd_ConstraintEnum.TDataXtd_RIGID
+TDataXtd_FROM = TDataXtd_ConstraintEnum.TDataXtd_FROM
+TDataXtd_AXIS = TDataXtd_ConstraintEnum.TDataXtd_AXIS
+TDataXtd_MATE = TDataXtd_ConstraintEnum.TDataXtd_MATE
+TDataXtd_ALIGN_FACES = TDataXtd_ConstraintEnum.TDataXtd_ALIGN_FACES
+TDataXtd_ALIGN_AXES = TDataXtd_ConstraintEnum.TDataXtd_ALIGN_AXES
+TDataXtd_AXES_ANGLE = TDataXtd_ConstraintEnum.TDataXtd_AXES_ANGLE
+TDataXtd_FACES_ANGLE = TDataXtd_ConstraintEnum.TDataXtd_FACES_ANGLE
+TDataXtd_ROUND = TDataXtd_ConstraintEnum.TDataXtd_ROUND
+TDataXtd_OFFSET = TDataXtd_ConstraintEnum.TDataXtd_OFFSET
 
-class TDataXtd_GeometryEnum:
+class TDataXtd_GeometryEnum(IntEnum):
 	TDataXtd_ANY_GEOM = 0
 	TDataXtd_POINT = 1
 	TDataXtd_LINE = 2
@@ -157,6 +184,14 @@ class TDataXtd_GeometryEnum:
 	TDataXtd_SPLINE = 5
 	TDataXtd_PLANE = 6
 	TDataXtd_CYLINDER = 7
+TDataXtd_ANY_GEOM = TDataXtd_GeometryEnum.TDataXtd_ANY_GEOM
+TDataXtd_POINT = TDataXtd_GeometryEnum.TDataXtd_POINT
+TDataXtd_LINE = TDataXtd_GeometryEnum.TDataXtd_LINE
+TDataXtd_CIRCLE = TDataXtd_GeometryEnum.TDataXtd_CIRCLE
+TDataXtd_ELLIPSE = TDataXtd_GeometryEnum.TDataXtd_ELLIPSE
+TDataXtd_SPLINE = TDataXtd_GeometryEnum.TDataXtd_SPLINE
+TDataXtd_PLANE = TDataXtd_GeometryEnum.TDataXtd_PLANE
+TDataXtd_CYLINDER = TDataXtd_GeometryEnum.TDataXtd_CYLINDER
 };
 /* end python proxy for enums */
 
@@ -3098,16 +3133,16 @@ opencascade::handle<TDataStd_Real>
 };
 
 /* harray1 classes */
-class TDataXtd_HArray1OfTrsf : public  TDataXtd_Array1OfTrsf, public Standard_Transient {
+
+class TDataXtd_HArray1OfTrsf : public TDataXtd_Array1OfTrsf, public Standard_Transient {
   public:
     TDataXtd_HArray1OfTrsf(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TDataXtd_HArray1OfTrsf(const Standard_Integer theLower, const Standard_Integer theUpper, const  TDataXtd_Array1OfTrsf::value_type& theValue);
-    TDataXtd_HArray1OfTrsf(const  TDataXtd_Array1OfTrsf& theOther);
-    const  TDataXtd_Array1OfTrsf& Array1();
-     TDataXtd_Array1OfTrsf& ChangeArray1();
+    TDataXtd_HArray1OfTrsf(const Standard_Integer theLower, const Standard_Integer theUpper, const TDataXtd_Array1OfTrsf::value_type& theValue);
+    TDataXtd_HArray1OfTrsf(const TDataXtd_Array1OfTrsf& theOther);
+    const TDataXtd_Array1OfTrsf& Array1();
+    TDataXtd_Array1OfTrsf& ChangeArray1();
 };
 %make_alias(TDataXtd_HArray1OfTrsf)
-
 
 /* harray2 classes */
 /* hsequence classes */

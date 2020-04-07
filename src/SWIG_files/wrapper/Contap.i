@@ -71,6 +71,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_contap.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -94,17 +95,25 @@ enum Contap_TFunction {
 /* python proy classes for enums */
 %pythoncode {
 
-class Contap_IType:
+class Contap_IType(IntEnum):
 	Contap_Lin = 0
 	Contap_Circle = 1
 	Contap_Walking = 2
 	Contap_Restriction = 3
+Contap_Lin = Contap_IType.Contap_Lin
+Contap_Circle = Contap_IType.Contap_Circle
+Contap_Walking = Contap_IType.Contap_Walking
+Contap_Restriction = Contap_IType.Contap_Restriction
 
-class Contap_TFunction:
+class Contap_TFunction(IntEnum):
 	Contap_ContourStd = 0
 	Contap_ContourPrs = 1
 	Contap_DraftStd = 2
 	Contap_DraftPrs = 3
+Contap_ContourStd = Contap_TFunction.Contap_ContourStd
+Contap_ContourPrs = Contap_TFunction.Contap_ContourPrs
+Contap_DraftStd = Contap_TFunction.Contap_DraftStd
+Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
 };
 /* end python proxy for enums */
 
@@ -3349,14 +3358,14 @@ None
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class Contap_TheHSequenceOfPoint : public  Contap_TheSequenceOfPoint, public Standard_Transient {
+class Contap_TheHSequenceOfPoint : public Contap_TheSequenceOfPoint, public Standard_Transient {
   public:
     Contap_TheHSequenceOfPoint();
-    Contap_TheHSequenceOfPoint(const  Contap_TheSequenceOfPoint& theOther);
-    const  Contap_TheSequenceOfPoint& Sequence();
-    void Append (const  Contap_TheSequenceOfPoint::value_type& theItem);
-    void Append ( Contap_TheSequenceOfPoint& theSequence);
-     Contap_TheSequenceOfPoint& ChangeSequence();
+    Contap_TheHSequenceOfPoint(const Contap_TheSequenceOfPoint& theOther);
+    const Contap_TheSequenceOfPoint& Sequence();
+    void Append (const Contap_TheSequenceOfPoint::value_type& theItem);
+    void Append (Contap_TheSequenceOfPoint& theSequence);
+    Contap_TheSequenceOfPoint& ChangeSequence();
 };
 %make_alias(Contap_TheHSequenceOfPoint)
 

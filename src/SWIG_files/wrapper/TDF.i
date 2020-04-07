@@ -55,6 +55,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdf.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -130,21 +131,56 @@ enum  {
 };
 %template(TDF_AttributeDataMap) NCollection_DataMap<opencascade::handle<TDF_Attribute>,opencascade::handle<TDF_Attribute>,TColStd_MapTransientHasher>;
 %template(TDF_AttributeDeltaList) NCollection_List<opencascade::handle<TDF_AttributeDelta>>;
+
+%extend NCollection_List<opencascade::handle<TDF_AttributeDelta>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TDF_AttributeDoubleMap) NCollection_DoubleMap<opencascade::handle<TDF_Attribute>,opencascade::handle<TDF_Attribute>,TColStd_MapTransientHasher,TColStd_MapTransientHasher>;
 %template(TDF_AttributeIndexedMap) NCollection_IndexedMap<opencascade::handle<TDF_Attribute>,TColStd_MapTransientHasher>;
 %template(TDF_AttributeList) NCollection_List<opencascade::handle<TDF_Attribute>>;
+
+%extend NCollection_List<opencascade::handle<TDF_Attribute>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TDF_AttributeMap) NCollection_Map<opencascade::handle<TDF_Attribute>,TColStd_MapTransientHasher>;
 %template(TDF_AttributeSequence) NCollection_Sequence<opencascade::handle<TDF_Attribute>>;
 %template(TDF_DeltaList) NCollection_List<opencascade::handle<TDF_Delta>>;
+
+%extend NCollection_List<opencascade::handle<TDF_Delta>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TDF_GUIDProgIDMap) NCollection_DoubleMap<Standard_GUID,TCollection_ExtendedString,Standard_GUID,TCollection_ExtendedString>;
 %template(TDF_HAllocator) opencascade::handle<NCollection_BaseAllocator>;
 %template(TDF_IDList) NCollection_List<Standard_GUID>;
+
+%extend NCollection_List<Standard_GUID> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TDF_IDMap) NCollection_Map<Standard_GUID,Standard_GUID>;
 %template(TDF_LabelDataMap) NCollection_DataMap<TDF_Label,TDF_Label,TDF_LabelMapHasher>;
 %template(TDF_LabelDoubleMap) NCollection_DoubleMap<TDF_Label,TDF_Label,TDF_LabelMapHasher,TDF_LabelMapHasher>;
 %template(TDF_LabelIndexedMap) NCollection_IndexedMap<TDF_Label,TDF_LabelMapHasher>;
 %template(TDF_LabelIntegerMap) NCollection_DataMap<TDF_Label,Standard_Integer,TDF_LabelMapHasher>;
 %template(TDF_LabelList) NCollection_List<TDF_Label>;
+
+%extend NCollection_List<TDF_Label> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TDF_LabelMap) NCollection_Map<TDF_Label,TDF_LabelMapHasher>;
 %template(TDF_LabelSequence) NCollection_Sequence<TDF_Label>;
 %template(TDF_ListIteratorOfAttributeDeltaList) NCollection_TListIterator<opencascade::handle<TDF_AttributeDelta>>;
@@ -3898,16 +3934,16 @@ class TDF_LabelNode:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
-class TDF_HAttributeArray1 : public  TDF_AttributeArray1, public Standard_Transient {
+
+class TDF_HAttributeArray1 : public TDF_AttributeArray1, public Standard_Transient {
   public:
     TDF_HAttributeArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TDF_HAttributeArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const  TDF_AttributeArray1::value_type& theValue);
-    TDF_HAttributeArray1(const  TDF_AttributeArray1& theOther);
-    const  TDF_AttributeArray1& Array1();
-     TDF_AttributeArray1& ChangeArray1();
+    TDF_HAttributeArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const TDF_AttributeArray1::value_type& theValue);
+    TDF_HAttributeArray1(const TDF_AttributeArray1& theOther);
+    const TDF_AttributeArray1& Array1();
+    TDF_AttributeArray1& ChangeArray1();
 };
 %make_alias(TDF_HAttributeArray1)
-
 
 /* harray2 classes */
 /* hsequence classes */

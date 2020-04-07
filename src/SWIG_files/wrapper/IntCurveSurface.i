@@ -71,6 +71,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intcurvesurface.h
 %import IntSurf.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -86,10 +87,13 @@ enum IntCurveSurface_TransitionOnCurve {
 /* python proy classes for enums */
 %pythoncode {
 
-class IntCurveSurface_TransitionOnCurve:
+class IntCurveSurface_TransitionOnCurve(IntEnum):
 	IntCurveSurface_Tangent = 0
 	IntCurveSurface_In = 1
 	IntCurveSurface_Out = 2
+IntCurveSurface_Tangent = IntCurveSurface_TransitionOnCurve.IntCurveSurface_Tangent
+IntCurveSurface_In = IntCurveSurface_TransitionOnCurve.IntCurveSurface_In
+IntCurveSurface_Out = IntCurveSurface_TransitionOnCurve.IntCurveSurface_Out
 };
 /* end python proxy for enums */
 

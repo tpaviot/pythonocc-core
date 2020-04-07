@@ -61,6 +61,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_pcdm.html"
 %import CDM.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -112,7 +113,7 @@ enum PCDM_ReaderStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class PCDM_StoreStatus:
+class PCDM_StoreStatus(IntEnum):
 	PCDM_SS_OK = 0
 	PCDM_SS_DriverFailure = 1
 	PCDM_SS_WriteFailure = 2
@@ -120,14 +121,25 @@ class PCDM_StoreStatus:
 	PCDM_SS_Doc_IsNull = 4
 	PCDM_SS_No_Obj = 5
 	PCDM_SS_Info_Section_Error = 6
+PCDM_SS_OK = PCDM_StoreStatus.PCDM_SS_OK
+PCDM_SS_DriverFailure = PCDM_StoreStatus.PCDM_SS_DriverFailure
+PCDM_SS_WriteFailure = PCDM_StoreStatus.PCDM_SS_WriteFailure
+PCDM_SS_Failure = PCDM_StoreStatus.PCDM_SS_Failure
+PCDM_SS_Doc_IsNull = PCDM_StoreStatus.PCDM_SS_Doc_IsNull
+PCDM_SS_No_Obj = PCDM_StoreStatus.PCDM_SS_No_Obj
+PCDM_SS_Info_Section_Error = PCDM_StoreStatus.PCDM_SS_Info_Section_Error
 
-class PCDM_TypeOfFileDriver:
+class PCDM_TypeOfFileDriver(IntEnum):
 	PCDM_TOFD_File = 0
 	PCDM_TOFD_CmpFile = 1
 	PCDM_TOFD_XmlFile = 2
 	PCDM_TOFD_Unknown = 3
+PCDM_TOFD_File = PCDM_TypeOfFileDriver.PCDM_TOFD_File
+PCDM_TOFD_CmpFile = PCDM_TypeOfFileDriver.PCDM_TOFD_CmpFile
+PCDM_TOFD_XmlFile = PCDM_TypeOfFileDriver.PCDM_TOFD_XmlFile
+PCDM_TOFD_Unknown = PCDM_TypeOfFileDriver.PCDM_TOFD_Unknown
 
-class PCDM_ReaderStatus:
+class PCDM_ReaderStatus(IntEnum):
 	PCDM_RS_OK = 0
 	PCDM_RS_NoDriver = 1
 	PCDM_RS_UnknownFileDriver = 2
@@ -150,6 +162,28 @@ class PCDM_ReaderStatus:
 	PCDM_RS_WrongResource = 19
 	PCDM_RS_ReaderException = 20
 	PCDM_RS_NoModel = 21
+PCDM_RS_OK = PCDM_ReaderStatus.PCDM_RS_OK
+PCDM_RS_NoDriver = PCDM_ReaderStatus.PCDM_RS_NoDriver
+PCDM_RS_UnknownFileDriver = PCDM_ReaderStatus.PCDM_RS_UnknownFileDriver
+PCDM_RS_OpenError = PCDM_ReaderStatus.PCDM_RS_OpenError
+PCDM_RS_NoVersion = PCDM_ReaderStatus.PCDM_RS_NoVersion
+PCDM_RS_NoSchema = PCDM_ReaderStatus.PCDM_RS_NoSchema
+PCDM_RS_NoDocument = PCDM_ReaderStatus.PCDM_RS_NoDocument
+PCDM_RS_ExtensionFailure = PCDM_ReaderStatus.PCDM_RS_ExtensionFailure
+PCDM_RS_WrongStreamMode = PCDM_ReaderStatus.PCDM_RS_WrongStreamMode
+PCDM_RS_FormatFailure = PCDM_ReaderStatus.PCDM_RS_FormatFailure
+PCDM_RS_TypeFailure = PCDM_ReaderStatus.PCDM_RS_TypeFailure
+PCDM_RS_TypeNotFoundInSchema = PCDM_ReaderStatus.PCDM_RS_TypeNotFoundInSchema
+PCDM_RS_UnrecognizedFileFormat = PCDM_ReaderStatus.PCDM_RS_UnrecognizedFileFormat
+PCDM_RS_MakeFailure = PCDM_ReaderStatus.PCDM_RS_MakeFailure
+PCDM_RS_PermissionDenied = PCDM_ReaderStatus.PCDM_RS_PermissionDenied
+PCDM_RS_DriverFailure = PCDM_ReaderStatus.PCDM_RS_DriverFailure
+PCDM_RS_AlreadyRetrievedAndModified = PCDM_ReaderStatus.PCDM_RS_AlreadyRetrievedAndModified
+PCDM_RS_AlreadyRetrieved = PCDM_ReaderStatus.PCDM_RS_AlreadyRetrieved
+PCDM_RS_UnknownDocument = PCDM_ReaderStatus.PCDM_RS_UnknownDocument
+PCDM_RS_WrongResource = PCDM_ReaderStatus.PCDM_RS_WrongResource
+PCDM_RS_ReaderException = PCDM_ReaderStatus.PCDM_RS_ReaderException
+PCDM_RS_NoModel = PCDM_ReaderStatus.PCDM_RS_NoModel
 };
 /* end python proxy for enums */
 

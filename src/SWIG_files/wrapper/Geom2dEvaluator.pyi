@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.Geom2dEvaluator import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
@@ -26,3 +26,8 @@ class Geom2dEvaluator_OffsetCurve(Geom2dEvaluator_Curve):
 	def D3(self, theU: float, theValue: gp_Pnt2d, theD1: gp_Vec2d, theD2: gp_Vec2d, theD3: gp_Vec2d) -> None: ...
 	def DN(self, theU: float, theDeriv: int) -> gp_Vec2d: ...
 	def SetOffsetValue(self, theOffset: float) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

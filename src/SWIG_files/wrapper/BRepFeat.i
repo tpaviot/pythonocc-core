@@ -90,6 +90,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepfeat.html"
 %import LocOpe.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -144,12 +145,15 @@ enum BRepFeat_PerfSelection {
 /* python proy classes for enums */
 %pythoncode {
 
-class BRepFeat_Status:
+class BRepFeat_Status(IntEnum):
 	BRepFeat_NoError = 0
 	BRepFeat_InvalidPlacement = 1
 	BRepFeat_HoleTooLong = 2
+BRepFeat_NoError = BRepFeat_Status.BRepFeat_NoError
+BRepFeat_InvalidPlacement = BRepFeat_Status.BRepFeat_InvalidPlacement
+BRepFeat_HoleTooLong = BRepFeat_Status.BRepFeat_HoleTooLong
 
-class BRepFeat_StatusError:
+class BRepFeat_StatusError(IntEnum):
 	BRepFeat_OK = 0
 	BRepFeat_BadDirect = 1
 	BRepFeat_BadIntersect = 2
@@ -178,13 +182,46 @@ class BRepFeat_StatusError:
 	BRepFeat_NullRealTool = 25
 	BRepFeat_NullToolF = 26
 	BRepFeat_NullToolU = 27
+BRepFeat_OK = BRepFeat_StatusError.BRepFeat_OK
+BRepFeat_BadDirect = BRepFeat_StatusError.BRepFeat_BadDirect
+BRepFeat_BadIntersect = BRepFeat_StatusError.BRepFeat_BadIntersect
+BRepFeat_EmptyBaryCurve = BRepFeat_StatusError.BRepFeat_EmptyBaryCurve
+BRepFeat_EmptyCutResult = BRepFeat_StatusError.BRepFeat_EmptyCutResult
+BRepFeat_FalseSide = BRepFeat_StatusError.BRepFeat_FalseSide
+BRepFeat_IncDirection = BRepFeat_StatusError.BRepFeat_IncDirection
+BRepFeat_IncSlidFace = BRepFeat_StatusError.BRepFeat_IncSlidFace
+BRepFeat_IncParameter = BRepFeat_StatusError.BRepFeat_IncParameter
+BRepFeat_IncTypes = BRepFeat_StatusError.BRepFeat_IncTypes
+BRepFeat_IntervalOverlap = BRepFeat_StatusError.BRepFeat_IntervalOverlap
+BRepFeat_InvFirstShape = BRepFeat_StatusError.BRepFeat_InvFirstShape
+BRepFeat_InvOption = BRepFeat_StatusError.BRepFeat_InvOption
+BRepFeat_InvShape = BRepFeat_StatusError.BRepFeat_InvShape
+BRepFeat_LocOpeNotDone = BRepFeat_StatusError.BRepFeat_LocOpeNotDone
+BRepFeat_LocOpeInvNotDone = BRepFeat_StatusError.BRepFeat_LocOpeInvNotDone
+BRepFeat_NoExtFace = BRepFeat_StatusError.BRepFeat_NoExtFace
+BRepFeat_NoFaceProf = BRepFeat_StatusError.BRepFeat_NoFaceProf
+BRepFeat_NoGluer = BRepFeat_StatusError.BRepFeat_NoGluer
+BRepFeat_NoIntersectF = BRepFeat_StatusError.BRepFeat_NoIntersectF
+BRepFeat_NoIntersectU = BRepFeat_StatusError.BRepFeat_NoIntersectU
+BRepFeat_NoParts = BRepFeat_StatusError.BRepFeat_NoParts
+BRepFeat_NoProjPt = BRepFeat_StatusError.BRepFeat_NoProjPt
+BRepFeat_NotInitialized = BRepFeat_StatusError.BRepFeat_NotInitialized
+BRepFeat_NotYetImplemented = BRepFeat_StatusError.BRepFeat_NotYetImplemented
+BRepFeat_NullRealTool = BRepFeat_StatusError.BRepFeat_NullRealTool
+BRepFeat_NullToolF = BRepFeat_StatusError.BRepFeat_NullToolF
+BRepFeat_NullToolU = BRepFeat_StatusError.BRepFeat_NullToolU
 
-class BRepFeat_PerfSelection:
+class BRepFeat_PerfSelection(IntEnum):
 	BRepFeat_NoSelection = 0
 	BRepFeat_SelectionFU = 1
 	BRepFeat_SelectionU = 2
 	BRepFeat_SelectionSh = 3
 	BRepFeat_SelectionShU = 4
+BRepFeat_NoSelection = BRepFeat_PerfSelection.BRepFeat_NoSelection
+BRepFeat_SelectionFU = BRepFeat_PerfSelection.BRepFeat_SelectionFU
+BRepFeat_SelectionU = BRepFeat_PerfSelection.BRepFeat_SelectionU
+BRepFeat_SelectionSh = BRepFeat_PerfSelection.BRepFeat_SelectionSh
+BRepFeat_SelectionShU = BRepFeat_PerfSelection.BRepFeat_SelectionShU
 };
 /* end python proxy for enums */
 

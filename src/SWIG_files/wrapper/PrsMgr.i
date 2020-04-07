@@ -84,6 +84,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prsmgr.html"
 %import V3d.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -98,9 +99,11 @@ enum PrsMgr_TypeOfPresentation3d {
 /* python proy classes for enums */
 %pythoncode {
 
-class PrsMgr_TypeOfPresentation3d:
+class PrsMgr_TypeOfPresentation3d(IntEnum):
 	PrsMgr_TOP_AllView = 0
 	PrsMgr_TOP_ProjectorDependant = 1
+PrsMgr_TOP_AllView = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_AllView
+PrsMgr_TOP_ProjectorDependant = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_ProjectorDependant
 };
 /* end python proxy for enums */
 
@@ -112,8 +115,22 @@ class PrsMgr_TypeOfPresentation3d:
 
 /* templates */
 %template(PrsMgr_ListOfPresentableObjects) NCollection_List<opencascade::handle<PrsMgr_PresentableObject>>;
+
+%extend NCollection_List<opencascade::handle<PrsMgr_PresentableObject>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(PrsMgr_ListOfPresentableObjectsIter) NCollection_TListIterator<PrsMgr_ListOfPresentableObjects>;
 %template(PrsMgr_ListOfPresentations) NCollection_List<opencascade::handle<Prs3d_Presentation>>;
+
+%extend NCollection_List<opencascade::handle<Prs3d_Presentation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(PrsMgr_Presentations) NCollection_Sequence<opencascade::handle<PrsMgr_Presentation>>;
 /* end templates declaration */
 

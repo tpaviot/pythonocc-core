@@ -79,6 +79,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfids.html"
 %import Law.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -118,7 +119,7 @@ enum ChFiDS_ErrorStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class ChFiDS_State:
+class ChFiDS_State(IntEnum):
 	ChFiDS_OnSame = 0
 	ChFiDS_OnDiff = 1
 	ChFiDS_AllSame = 2
@@ -126,23 +127,41 @@ class ChFiDS_State:
 	ChFiDS_FreeBoundary = 4
 	ChFiDS_Closed = 5
 	ChFiDS_Tangent = 6
+ChFiDS_OnSame = ChFiDS_State.ChFiDS_OnSame
+ChFiDS_OnDiff = ChFiDS_State.ChFiDS_OnDiff
+ChFiDS_AllSame = ChFiDS_State.ChFiDS_AllSame
+ChFiDS_BreakPoint = ChFiDS_State.ChFiDS_BreakPoint
+ChFiDS_FreeBoundary = ChFiDS_State.ChFiDS_FreeBoundary
+ChFiDS_Closed = ChFiDS_State.ChFiDS_Closed
+ChFiDS_Tangent = ChFiDS_State.ChFiDS_Tangent
 
-class ChFiDS_ChamfMethod:
+class ChFiDS_ChamfMethod(IntEnum):
 	ChFiDS_Sym = 0
 	ChFiDS_TwoDist = 1
 	ChFiDS_DistAngle = 2
+ChFiDS_Sym = ChFiDS_ChamfMethod.ChFiDS_Sym
+ChFiDS_TwoDist = ChFiDS_ChamfMethod.ChFiDS_TwoDist
+ChFiDS_DistAngle = ChFiDS_ChamfMethod.ChFiDS_DistAngle
 
-class ChFiDS_ChamfMode:
+class ChFiDS_ChamfMode(IntEnum):
 	ChFiDS_ClassicChamfer = 0
 	ChFiDS_ConstThroatChamfer = 1
 	ChFiDS_ConstThroatWithPenetrationChamfer = 2
+ChFiDS_ClassicChamfer = ChFiDS_ChamfMode.ChFiDS_ClassicChamfer
+ChFiDS_ConstThroatChamfer = ChFiDS_ChamfMode.ChFiDS_ConstThroatChamfer
+ChFiDS_ConstThroatWithPenetrationChamfer = ChFiDS_ChamfMode.ChFiDS_ConstThroatWithPenetrationChamfer
 
-class ChFiDS_ErrorStatus:
+class ChFiDS_ErrorStatus(IntEnum):
 	ChFiDS_Ok = 0
 	ChFiDS_Error = 1
 	ChFiDS_WalkingFailure = 2
 	ChFiDS_StartsolFailure = 3
 	ChFiDS_TwistedSurface = 4
+ChFiDS_Ok = ChFiDS_ErrorStatus.ChFiDS_Ok
+ChFiDS_Error = ChFiDS_ErrorStatus.ChFiDS_Error
+ChFiDS_WalkingFailure = ChFiDS_ErrorStatus.ChFiDS_WalkingFailure
+ChFiDS_StartsolFailure = ChFiDS_ErrorStatus.ChFiDS_StartsolFailure
+ChFiDS_TwistedSurface = ChFiDS_ErrorStatus.ChFiDS_TwistedSurface
 };
 /* end python proxy for enums */
 
@@ -163,8 +182,29 @@ class ChFiDS_ErrorStatus:
 %template(ChFiDS_ListIteratorOfListOfStripe) NCollection_TListIterator<opencascade::handle<ChFiDS_Stripe>>;
 %template(ChFiDS_ListIteratorOfRegularities) NCollection_TListIterator<ChFiDS_Regul>;
 %template(ChFiDS_ListOfHElSpine) NCollection_List<opencascade::handle<ChFiDS_HElSpine>>;
+
+%extend NCollection_List<opencascade::handle<ChFiDS_HElSpine>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(ChFiDS_ListOfStripe) NCollection_List<opencascade::handle<ChFiDS_Stripe>>;
+
+%extend NCollection_List<opencascade::handle<ChFiDS_Stripe>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(ChFiDS_Regularities) NCollection_List<ChFiDS_Regul>;
+
+%extend NCollection_List<ChFiDS_Regul> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(ChFiDS_SecArray1) NCollection_Array1<ChFiDS_CircSection>;
 
 %extend NCollection_Array1<ChFiDS_CircSection> {
@@ -4330,27 +4370,27 @@ None
 };
 
 /* harray1 classes */
-class ChFiDS_SecHArray1 : public  ChFiDS_SecArray1, public Standard_Transient {
+
+class ChFiDS_SecHArray1 : public ChFiDS_SecArray1, public Standard_Transient {
   public:
     ChFiDS_SecHArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
-    ChFiDS_SecHArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const  ChFiDS_SecArray1::value_type& theValue);
-    ChFiDS_SecHArray1(const  ChFiDS_SecArray1& theOther);
-    const  ChFiDS_SecArray1& Array1();
-     ChFiDS_SecArray1& ChangeArray1();
+    ChFiDS_SecHArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const ChFiDS_SecArray1::value_type& theValue);
+    ChFiDS_SecHArray1(const ChFiDS_SecArray1& theOther);
+    const ChFiDS_SecArray1& Array1();
+    ChFiDS_SecArray1& ChangeArray1();
 };
 %make_alias(ChFiDS_SecHArray1)
 
-
 /* harray2 classes */
 /* hsequence classes */
-class ChFiDS_HData : public  ChFiDS_SequenceOfSurfData, public Standard_Transient {
+class ChFiDS_HData : public ChFiDS_SequenceOfSurfData, public Standard_Transient {
   public:
     ChFiDS_HData();
-    ChFiDS_HData(const  ChFiDS_SequenceOfSurfData& theOther);
-    const  ChFiDS_SequenceOfSurfData& Sequence();
-    void Append (const  ChFiDS_SequenceOfSurfData::value_type& theItem);
-    void Append ( ChFiDS_SequenceOfSurfData& theSequence);
-     ChFiDS_SequenceOfSurfData& ChangeSequence();
+    ChFiDS_HData(const ChFiDS_SequenceOfSurfData& theOther);
+    const ChFiDS_SequenceOfSurfData& Sequence();
+    void Append (const ChFiDS_SequenceOfSurfData::value_type& theItem);
+    void Append (ChFiDS_SequenceOfSurfData& theSequence);
+    ChFiDS_SequenceOfSurfData& ChangeSequence();
 };
 %make_alias(ChFiDS_HData)
 

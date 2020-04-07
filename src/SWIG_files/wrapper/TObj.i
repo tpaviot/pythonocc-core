@@ -64,6 +64,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tobj.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -79,10 +80,13 @@ enum TObj_DeletingMode {
 /* python proy classes for enums */
 %pythoncode {
 
-class TObj_DeletingMode:
+class TObj_DeletingMode(IntEnum):
 	TObj_FreeOnly = 0
 	TObj_KeepDepending = 1
 	TObj_Forced = 2
+TObj_FreeOnly = TObj_DeletingMode.TObj_FreeOnly
+TObj_KeepDepending = TObj_DeletingMode.TObj_KeepDepending
+TObj_Forced = TObj_DeletingMode.TObj_Forced
 };
 /* end python proxy for enums */
 
@@ -981,15 +985,21 @@ enum ObjectState {
 /* python proy classes for enums */
 %pythoncode {
 
-class TypeFlags:
+class TypeFlags(IntEnum):
 	Visible = 1
+Visible = TypeFlags.Visible
 
-class ObjectState:
+class ObjectState(IntEnum):
 	ObjectState_Hidden = 1
 	ObjectState_Saved = 2
 	ObjectState_Imported = 4
 	ObjectState_ImportedByFile = 8
 	ObjectState_Ordered = 16
+ObjectState_Hidden = ObjectState.ObjectState_Hidden
+ObjectState_Saved = ObjectState.ObjectState_Saved
+ObjectState_Imported = ObjectState.ObjectState_Imported
+ObjectState_ImportedByFile = ObjectState.ObjectState_ImportedByFile
+ObjectState_Ordered = ObjectState.ObjectState_Ordered
 };
 /* end python proxy for enums */
 
@@ -3217,14 +3227,14 @@ None
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class TObj_HSequenceOfObject : public  TObj_SequenceOfObject, public Standard_Transient {
+class TObj_HSequenceOfObject : public TObj_SequenceOfObject, public Standard_Transient {
   public:
     TObj_HSequenceOfObject();
-    TObj_HSequenceOfObject(const  TObj_SequenceOfObject& theOther);
-    const  TObj_SequenceOfObject& Sequence();
-    void Append (const  TObj_SequenceOfObject::value_type& theItem);
-    void Append ( TObj_SequenceOfObject& theSequence);
-     TObj_SequenceOfObject& ChangeSequence();
+    TObj_HSequenceOfObject(const TObj_SequenceOfObject& theOther);
+    const TObj_SequenceOfObject& Sequence();
+    void Append (const TObj_SequenceOfObject::value_type& theItem);
+    void Append (TObj_SequenceOfObject& theSequence);
+    TObj_SequenceOfObject& ChangeSequence();
 };
 %make_alias(TObj_HSequenceOfObject)
 

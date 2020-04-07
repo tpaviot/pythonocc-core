@@ -51,6 +51,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_storage.html"
 %import NCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -90,12 +91,15 @@ enum Storage_OpenMode {
 /* python proy classes for enums */
 %pythoncode {
 
-class Storage_SolveMode:
+class Storage_SolveMode(IntEnum):
 	Storage_AddSolve = 0
 	Storage_WriteSolve = 1
 	Storage_ReadSolve = 2
+Storage_AddSolve = Storage_SolveMode.Storage_AddSolve
+Storage_WriteSolve = Storage_SolveMode.Storage_WriteSolve
+Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
 
-class Storage_Error:
+class Storage_Error(IntEnum):
 	Storage_VSOk = 0
 	Storage_VSOpenError = 1
 	Storage_VSModeError = 2
@@ -110,12 +114,30 @@ class Storage_Error:
 	Storage_VSInternalError = 11
 	Storage_VSExtCharParityError = 12
 	Storage_VSWrongFileDriver = 13
+Storage_VSOk = Storage_Error.Storage_VSOk
+Storage_VSOpenError = Storage_Error.Storage_VSOpenError
+Storage_VSModeError = Storage_Error.Storage_VSModeError
+Storage_VSCloseError = Storage_Error.Storage_VSCloseError
+Storage_VSAlreadyOpen = Storage_Error.Storage_VSAlreadyOpen
+Storage_VSNotOpen = Storage_Error.Storage_VSNotOpen
+Storage_VSSectionNotFound = Storage_Error.Storage_VSSectionNotFound
+Storage_VSWriteError = Storage_Error.Storage_VSWriteError
+Storage_VSFormatError = Storage_Error.Storage_VSFormatError
+Storage_VSUnknownType = Storage_Error.Storage_VSUnknownType
+Storage_VSTypeMismatch = Storage_Error.Storage_VSTypeMismatch
+Storage_VSInternalError = Storage_Error.Storage_VSInternalError
+Storage_VSExtCharParityError = Storage_Error.Storage_VSExtCharParityError
+Storage_VSWrongFileDriver = Storage_Error.Storage_VSWrongFileDriver
 
-class Storage_OpenMode:
+class Storage_OpenMode(IntEnum):
 	Storage_VSNone = 0
 	Storage_VSRead = 1
 	Storage_VSWrite = 2
 	Storage_VSReadWrite = 3
+Storage_VSNone = Storage_OpenMode.Storage_VSNone
+Storage_VSRead = Storage_OpenMode.Storage_VSRead
+Storage_VSWrite = Storage_OpenMode.Storage_VSWrite
+Storage_VSReadWrite = Storage_OpenMode.Storage_VSReadWrite
 };
 /* end python proxy for enums */
 
@@ -318,49 +340,49 @@ class Storage:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
-class Storage_HArrayOfSchema : public  Storage_ArrayOfSchema, public Standard_Transient {
+
+class Storage_HArrayOfSchema : public Storage_ArrayOfSchema, public Standard_Transient {
   public:
     Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper, const  Storage_ArrayOfSchema::value_type& theValue);
-    Storage_HArrayOfSchema(const  Storage_ArrayOfSchema& theOther);
-    const  Storage_ArrayOfSchema& Array1();
-     Storage_ArrayOfSchema& ChangeArray1();
+    Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_ArrayOfSchema::value_type& theValue);
+    Storage_HArrayOfSchema(const Storage_ArrayOfSchema& theOther);
+    const Storage_ArrayOfSchema& Array1();
+    Storage_ArrayOfSchema& ChangeArray1();
 };
 %make_alias(Storage_HArrayOfSchema)
 
 
-class Storage_HPArray : public  Storage_PArray, public Standard_Transient {
+class Storage_HPArray : public Storage_PArray, public Standard_Transient {
   public:
     Storage_HPArray(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Storage_HPArray(const Standard_Integer theLower, const Standard_Integer theUpper, const  Storage_PArray::value_type& theValue);
-    Storage_HPArray(const  Storage_PArray& theOther);
-    const  Storage_PArray& Array1();
-     Storage_PArray& ChangeArray1();
+    Storage_HPArray(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_PArray::value_type& theValue);
+    Storage_HPArray(const Storage_PArray& theOther);
+    const Storage_PArray& Array1();
+    Storage_PArray& ChangeArray1();
 };
 %make_alias(Storage_HPArray)
 
 
-class Storage_HArrayOfCallBack : public  Storage_ArrayOfCallBack, public Standard_Transient {
+class Storage_HArrayOfCallBack : public Storage_ArrayOfCallBack, public Standard_Transient {
   public:
     Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper, const  Storage_ArrayOfCallBack::value_type& theValue);
-    Storage_HArrayOfCallBack(const  Storage_ArrayOfCallBack& theOther);
-    const  Storage_ArrayOfCallBack& Array1();
-     Storage_ArrayOfCallBack& ChangeArray1();
+    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_ArrayOfCallBack::value_type& theValue);
+    Storage_HArrayOfCallBack(const Storage_ArrayOfCallBack& theOther);
+    const Storage_ArrayOfCallBack& Array1();
+    Storage_ArrayOfCallBack& ChangeArray1();
 };
 %make_alias(Storage_HArrayOfCallBack)
 
-
 /* harray2 classes */
 /* hsequence classes */
-class Storage_HSeqOfRoot : public  Storage_SeqOfRoot, public Standard_Transient {
+class Storage_HSeqOfRoot : public Storage_SeqOfRoot, public Standard_Transient {
   public:
     Storage_HSeqOfRoot();
-    Storage_HSeqOfRoot(const  Storage_SeqOfRoot& theOther);
-    const  Storage_SeqOfRoot& Sequence();
-    void Append (const  Storage_SeqOfRoot::value_type& theItem);
-    void Append ( Storage_SeqOfRoot& theSequence);
-     Storage_SeqOfRoot& ChangeSequence();
+    Storage_HSeqOfRoot(const Storage_SeqOfRoot& theOther);
+    const Storage_SeqOfRoot& Sequence();
+    void Append (const Storage_SeqOfRoot::value_type& theItem);
+    void Append (Storage_SeqOfRoot& theSequence);
+    Storage_SeqOfRoot& ChangeSequence();
 };
 %make_alias(Storage_HSeqOfRoot)
 

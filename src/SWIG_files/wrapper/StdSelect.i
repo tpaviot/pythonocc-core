@@ -85,6 +85,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stdselect.html"
 %import Image.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -136,15 +137,19 @@ enum StdSelect_TypeOfSelectionImage {
 /* python proy classes for enums */
 %pythoncode {
 
-class StdSelect_TypeOfResult:
+class StdSelect_TypeOfResult(IntEnum):
 	StdSelect_TOR_SIMPLE = 0
 	StdSelect_TOR_MULTIPLE = 1
+StdSelect_TOR_SIMPLE = StdSelect_TypeOfResult.StdSelect_TOR_SIMPLE
+StdSelect_TOR_MULTIPLE = StdSelect_TypeOfResult.StdSelect_TOR_MULTIPLE
 
-class StdSelect_SensitivityMode:
+class StdSelect_SensitivityMode(IntEnum):
 	StdSelect_SM_WINDOW = 0
 	StdSelect_SM_VIEW = 1
+StdSelect_SM_WINDOW = StdSelect_SensitivityMode.StdSelect_SM_WINDOW
+StdSelect_SM_VIEW = StdSelect_SensitivityMode.StdSelect_SM_VIEW
 
-class StdSelect_TypeOfFace:
+class StdSelect_TypeOfFace(IntEnum):
 	StdSelect_AnyFace = 0
 	StdSelect_Plane = 1
 	StdSelect_Cylinder = 2
@@ -152,18 +157,31 @@ class StdSelect_TypeOfFace:
 	StdSelect_Torus = 4
 	StdSelect_Revol = 5
 	StdSelect_Cone = 6
+StdSelect_AnyFace = StdSelect_TypeOfFace.StdSelect_AnyFace
+StdSelect_Plane = StdSelect_TypeOfFace.StdSelect_Plane
+StdSelect_Cylinder = StdSelect_TypeOfFace.StdSelect_Cylinder
+StdSelect_Sphere = StdSelect_TypeOfFace.StdSelect_Sphere
+StdSelect_Torus = StdSelect_TypeOfFace.StdSelect_Torus
+StdSelect_Revol = StdSelect_TypeOfFace.StdSelect_Revol
+StdSelect_Cone = StdSelect_TypeOfFace.StdSelect_Cone
 
-class StdSelect_TypeOfEdge:
+class StdSelect_TypeOfEdge(IntEnum):
 	StdSelect_AnyEdge = 0
 	StdSelect_Line = 1
 	StdSelect_Circle = 2
+StdSelect_AnyEdge = StdSelect_TypeOfEdge.StdSelect_AnyEdge
+StdSelect_Line = StdSelect_TypeOfEdge.StdSelect_Line
+StdSelect_Circle = StdSelect_TypeOfEdge.StdSelect_Circle
 
-class StdSelect_DisplayMode:
+class StdSelect_DisplayMode(IntEnum):
 	StdSelect_DM_Wireframe = 0
 	StdSelect_DM_Shading = 1
 	StdSelect_DM_HLR = 2
+StdSelect_DM_Wireframe = StdSelect_DisplayMode.StdSelect_DM_Wireframe
+StdSelect_DM_Shading = StdSelect_DisplayMode.StdSelect_DM_Shading
+StdSelect_DM_HLR = StdSelect_DisplayMode.StdSelect_DM_HLR
 
-class StdSelect_TypeOfSelectionImage:
+class StdSelect_TypeOfSelectionImage(IntEnum):
 	StdSelect_TypeOfSelectionImage_NormalizedDepth = 0
 	StdSelect_TypeOfSelectionImage_NormalizedDepthInverted = 1
 	StdSelect_TypeOfSelectionImage_UnnormalizedDepth = 2
@@ -171,6 +189,13 @@ class StdSelect_TypeOfSelectionImage:
 	StdSelect_TypeOfSelectionImage_ColoredEntity = 4
 	StdSelect_TypeOfSelectionImage_ColoredOwner = 5
 	StdSelect_TypeOfSelectionImage_ColoredSelectionMode = 6
+StdSelect_TypeOfSelectionImage_NormalizedDepth = StdSelect_TypeOfSelectionImage.StdSelect_TypeOfSelectionImage_NormalizedDepth
+StdSelect_TypeOfSelectionImage_NormalizedDepthInverted = StdSelect_TypeOfSelectionImage.StdSelect_TypeOfSelectionImage_NormalizedDepthInverted
+StdSelect_TypeOfSelectionImage_UnnormalizedDepth = StdSelect_TypeOfSelectionImage.StdSelect_TypeOfSelectionImage_UnnormalizedDepth
+StdSelect_TypeOfSelectionImage_ColoredDetectedObject = StdSelect_TypeOfSelectionImage.StdSelect_TypeOfSelectionImage_ColoredDetectedObject
+StdSelect_TypeOfSelectionImage_ColoredEntity = StdSelect_TypeOfSelectionImage.StdSelect_TypeOfSelectionImage_ColoredEntity
+StdSelect_TypeOfSelectionImage_ColoredOwner = StdSelect_TypeOfSelectionImage.StdSelect_TypeOfSelectionImage_ColoredOwner
+StdSelect_TypeOfSelectionImage_ColoredSelectionMode = StdSelect_TypeOfSelectionImage.StdSelect_TypeOfSelectionImage_ColoredSelectionMode
 };
 /* end python proxy for enums */
 

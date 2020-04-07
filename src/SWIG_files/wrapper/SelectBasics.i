@@ -60,6 +60,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectbasics.html
 %import TColgp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -291,11 +292,15 @@ enum SelectionType {
 /* python proy classes for enums */
 %pythoncode {
 
-class SelectionType:
+class SelectionType(IntEnum):
 	Point = 0
 	Box = 1
 	Polyline = 2
 	Unknown = 3
+Point = SelectionType.Point
+Box = SelectionType.Box
+Polyline = SelectionType.Polyline
+Unknown = SelectionType.Unknown
 };
 /* end python proxy for enums */
 

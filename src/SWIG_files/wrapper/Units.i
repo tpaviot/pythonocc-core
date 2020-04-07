@@ -54,6 +54,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_units.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -2318,38 +2319,38 @@ class Units_Dimensions:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class Units_TokensSequence : public  Units_TksSequence, public Standard_Transient {
+class Units_TokensSequence : public Units_TksSequence, public Standard_Transient {
   public:
     Units_TokensSequence();
-    Units_TokensSequence(const  Units_TksSequence& theOther);
-    const  Units_TksSequence& Sequence();
-    void Append (const  Units_TksSequence::value_type& theItem);
-    void Append ( Units_TksSequence& theSequence);
-     Units_TksSequence& ChangeSequence();
+    Units_TokensSequence(const Units_TksSequence& theOther);
+    const Units_TksSequence& Sequence();
+    void Append (const Units_TksSequence::value_type& theItem);
+    void Append (Units_TksSequence& theSequence);
+    Units_TksSequence& ChangeSequence();
 };
 %make_alias(Units_TokensSequence)
 
 
-class Units_QuantitiesSequence : public  Units_QtsSequence, public Standard_Transient {
+class Units_QuantitiesSequence : public Units_QtsSequence, public Standard_Transient {
   public:
     Units_QuantitiesSequence();
-    Units_QuantitiesSequence(const  Units_QtsSequence& theOther);
-    const  Units_QtsSequence& Sequence();
-    void Append (const  Units_QtsSequence::value_type& theItem);
-    void Append ( Units_QtsSequence& theSequence);
-     Units_QtsSequence& ChangeSequence();
+    Units_QuantitiesSequence(const Units_QtsSequence& theOther);
+    const Units_QtsSequence& Sequence();
+    void Append (const Units_QtsSequence::value_type& theItem);
+    void Append (Units_QtsSequence& theSequence);
+    Units_QtsSequence& ChangeSequence();
 };
 %make_alias(Units_QuantitiesSequence)
 
 
-class Units_UnitsSequence : public  Units_UtsSequence, public Standard_Transient {
+class Units_UnitsSequence : public Units_UtsSequence, public Standard_Transient {
   public:
     Units_UnitsSequence();
-    Units_UnitsSequence(const  Units_UtsSequence& theOther);
-    const  Units_UtsSequence& Sequence();
-    void Append (const  Units_UtsSequence::value_type& theItem);
-    void Append ( Units_UtsSequence& theSequence);
-     Units_UtsSequence& ChangeSequence();
+    Units_UnitsSequence(const Units_UtsSequence& theOther);
+    const Units_UtsSequence& Sequence();
+    void Append (const Units_UtsSequence::value_type& theItem);
+    void Append (Units_UtsSequence& theSequence);
+    Units_UtsSequence& ChangeSequence();
 };
 %make_alias(Units_UnitsSequence)
 

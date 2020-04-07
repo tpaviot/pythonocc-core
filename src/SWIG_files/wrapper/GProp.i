@@ -56,6 +56,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gprop.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -87,14 +88,19 @@ enum GProp_ValueType {
 /* python proy classes for enums */
 %pythoncode {
 
-class GProp_EquaType:
+class GProp_EquaType(IntEnum):
 	GProp_Plane = 0
 	GProp_Line = 1
 	GProp_Point = 2
 	GProp_Space = 3
 	GProp_None = 4
+GProp_Plane = GProp_EquaType.GProp_Plane
+GProp_Line = GProp_EquaType.GProp_Line
+GProp_Point = GProp_EquaType.GProp_Point
+GProp_Space = GProp_EquaType.GProp_Space
+GProp_None = GProp_EquaType.GProp_None
 
-class GProp_ValueType:
+class GProp_ValueType(IntEnum):
 	GProp_Mass = 0
 	GProp_CenterMassX = 1
 	GProp_CenterMassY = 2
@@ -106,6 +112,17 @@ class GProp_ValueType:
 	GProp_InertiaXZ = 8
 	GProp_InertiaYZ = 9
 	GProp_Unknown = 10
+GProp_Mass = GProp_ValueType.GProp_Mass
+GProp_CenterMassX = GProp_ValueType.GProp_CenterMassX
+GProp_CenterMassY = GProp_ValueType.GProp_CenterMassY
+GProp_CenterMassZ = GProp_ValueType.GProp_CenterMassZ
+GProp_InertiaXX = GProp_ValueType.GProp_InertiaXX
+GProp_InertiaYY = GProp_ValueType.GProp_InertiaYY
+GProp_InertiaZZ = GProp_ValueType.GProp_InertiaZZ
+GProp_InertiaXY = GProp_ValueType.GProp_InertiaXY
+GProp_InertiaXZ = GProp_ValueType.GProp_InertiaXZ
+GProp_InertiaYZ = GProp_ValueType.GProp_InertiaYZ
+GProp_Unknown = GProp_ValueType.GProp_Unknown
 };
 /* end python proxy for enums */
 

@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.BRepProj import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
@@ -18,3 +18,8 @@ class BRepProj_Projection:
 	def More(self) -> bool: ...
 	def Next(self) -> None: ...
 	def Shape(self) -> TopoDS_Compound: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

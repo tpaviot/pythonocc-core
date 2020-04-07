@@ -54,6 +54,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xcafview.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -69,10 +70,13 @@ enum XCAFView_ProjectionType {
 /* python proy classes for enums */
 %pythoncode {
 
-class XCAFView_ProjectionType:
+class XCAFView_ProjectionType(IntEnum):
 	XCAFView_ProjectionType_NoCamera = 0
 	XCAFView_ProjectionType_Parallel = 1
 	XCAFView_ProjectionType_Central = 2
+XCAFView_ProjectionType_NoCamera = XCAFView_ProjectionType.XCAFView_ProjectionType_NoCamera
+XCAFView_ProjectionType_Parallel = XCAFView_ProjectionType.XCAFView_ProjectionType_Parallel
+XCAFView_ProjectionType_Central = XCAFView_ProjectionType.XCAFView_ProjectionType_Central
 };
 /* end python proxy for enums */
 

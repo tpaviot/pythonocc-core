@@ -101,6 +101,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 %import Image.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -387,13 +388,17 @@ enum AIS_DisplayStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class AIS_TrihedronSelectionMode:
+class AIS_TrihedronSelectionMode(IntEnum):
 	AIS_TrihedronSelectionMode_EntireObject = 0
 	AIS_TrihedronSelectionMode_Origin = 1
 	AIS_TrihedronSelectionMode_Axes = 2
 	AIS_TrihedronSelectionMode_MainPlanes = 3
+AIS_TrihedronSelectionMode_EntireObject = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_EntireObject
+AIS_TrihedronSelectionMode_Origin = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Origin
+AIS_TrihedronSelectionMode_Axes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_Axes
+AIS_TrihedronSelectionMode_MainPlanes = AIS_TrihedronSelectionMode.AIS_TrihedronSelectionMode_MainPlanes
 
-class AIS_MouseGesture:
+class AIS_MouseGesture(IntEnum):
 	AIS_MouseGesture_NONE = 0
 	AIS_MouseGesture_SelectRectangle = 1
 	AIS_MouseGesture_SelectLasso = 2
@@ -401,15 +406,27 @@ class AIS_MouseGesture:
 	AIS_MouseGesture_Pan = 4
 	AIS_MouseGesture_RotateOrbit = 5
 	AIS_MouseGesture_RotateView = 6
+AIS_MouseGesture_NONE = AIS_MouseGesture.AIS_MouseGesture_NONE
+AIS_MouseGesture_SelectRectangle = AIS_MouseGesture.AIS_MouseGesture_SelectRectangle
+AIS_MouseGesture_SelectLasso = AIS_MouseGesture.AIS_MouseGesture_SelectLasso
+AIS_MouseGesture_Zoom = AIS_MouseGesture.AIS_MouseGesture_Zoom
+AIS_MouseGesture_Pan = AIS_MouseGesture.AIS_MouseGesture_Pan
+AIS_MouseGesture_RotateOrbit = AIS_MouseGesture.AIS_MouseGesture_RotateOrbit
+AIS_MouseGesture_RotateView = AIS_MouseGesture.AIS_MouseGesture_RotateView
 
-class AIS_ClearMode:
+class AIS_ClearMode(IntEnum):
 	AIS_CM_All = 0
 	AIS_CM_Interactive = 1
 	AIS_CM_Filters = 2
 	AIS_CM_StandardModes = 3
 	AIS_CM_TemporaryShapePrs = 4
+AIS_CM_All = AIS_ClearMode.AIS_CM_All
+AIS_CM_Interactive = AIS_ClearMode.AIS_CM_Interactive
+AIS_CM_Filters = AIS_ClearMode.AIS_CM_Filters
+AIS_CM_StandardModes = AIS_ClearMode.AIS_CM_StandardModes
+AIS_CM_TemporaryShapePrs = AIS_ClearMode.AIS_CM_TemporaryShapePrs
 
-class AIS_TypeOfAttribute:
+class AIS_TypeOfAttribute(IntEnum):
 	AIS_TOA_Line = 0
 	AIS_TOA_Dimension = 1
 	AIS_TOA_Wire = 2
@@ -426,27 +443,56 @@ class AIS_TypeOfAttribute:
 	AIS_TOA_FirstAxis = 13
 	AIS_TOA_SecondAxis = 14
 	AIS_TOA_ThirdAxis = 15
+AIS_TOA_Line = AIS_TypeOfAttribute.AIS_TOA_Line
+AIS_TOA_Dimension = AIS_TypeOfAttribute.AIS_TOA_Dimension
+AIS_TOA_Wire = AIS_TypeOfAttribute.AIS_TOA_Wire
+AIS_TOA_Plane = AIS_TypeOfAttribute.AIS_TOA_Plane
+AIS_TOA_Vector = AIS_TypeOfAttribute.AIS_TOA_Vector
+AIS_TOA_UIso = AIS_TypeOfAttribute.AIS_TOA_UIso
+AIS_TOA_VIso = AIS_TypeOfAttribute.AIS_TOA_VIso
+AIS_TOA_Free = AIS_TypeOfAttribute.AIS_TOA_Free
+AIS_TOA_UnFree = AIS_TypeOfAttribute.AIS_TOA_UnFree
+AIS_TOA_Section = AIS_TypeOfAttribute.AIS_TOA_Section
+AIS_TOA_Hidden = AIS_TypeOfAttribute.AIS_TOA_Hidden
+AIS_TOA_Seen = AIS_TypeOfAttribute.AIS_TOA_Seen
+AIS_TOA_FaceBoundary = AIS_TypeOfAttribute.AIS_TOA_FaceBoundary
+AIS_TOA_FirstAxis = AIS_TypeOfAttribute.AIS_TOA_FirstAxis
+AIS_TOA_SecondAxis = AIS_TypeOfAttribute.AIS_TOA_SecondAxis
+AIS_TOA_ThirdAxis = AIS_TypeOfAttribute.AIS_TOA_ThirdAxis
 
-class AIS_TypeOfAngleArrowVisibility:
+class AIS_TypeOfAngleArrowVisibility(IntEnum):
 	AIS_TOAV_Both = 0
 	AIS_TOAV_First = 1
 	AIS_TOAV_Second = 2
 	AIS_TOAV_None = 3
+AIS_TOAV_Both = AIS_TypeOfAngleArrowVisibility.AIS_TOAV_Both
+AIS_TOAV_First = AIS_TypeOfAngleArrowVisibility.AIS_TOAV_First
+AIS_TOAV_Second = AIS_TypeOfAngleArrowVisibility.AIS_TOAV_Second
+AIS_TOAV_None = AIS_TypeOfAngleArrowVisibility.AIS_TOAV_None
 
-class AIS_DimensionSelectionMode:
+class AIS_DimensionSelectionMode(IntEnum):
 	AIS_DSM_All = 0
 	AIS_DSM_Line = 1
 	AIS_DSM_Text = 2
+AIS_DSM_All = AIS_DimensionSelectionMode.AIS_DSM_All
+AIS_DSM_Line = AIS_DimensionSelectionMode.AIS_DSM_Line
+AIS_DSM_Text = AIS_DimensionSelectionMode.AIS_DSM_Text
 
-class AIS_KindOfInteractive:
+class AIS_KindOfInteractive(IntEnum):
 	AIS_KOI_None = 0
 	AIS_KOI_Datum = 1
 	AIS_KOI_Shape = 2
 	AIS_KOI_Object = 3
 	AIS_KOI_Relation = 4
 	AIS_KOI_Dimension = 5
+AIS_KOI_None = AIS_KindOfInteractive.AIS_KOI_None
+AIS_KOI_Datum = AIS_KindOfInteractive.AIS_KOI_Datum
+AIS_KOI_Shape = AIS_KindOfInteractive.AIS_KOI_Shape
+AIS_KOI_Object = AIS_KindOfInteractive.AIS_KOI_Object
+AIS_KOI_Relation = AIS_KindOfInteractive.AIS_KOI_Relation
+AIS_KOI_Dimension = AIS_KindOfInteractive.AIS_KOI_Dimension
 
-class AIS_KindOfDimension:
+class AIS_KindOfDimension(IntEnum):
 	AIS_KOD_NONE = 0
 	AIS_KOD_LENGTH = 1
 	AIS_KOD_PLANEANGLE = 2
@@ -461,19 +507,40 @@ class AIS_KindOfDimension:
 	AIS_KOD_CHAMF3D = 11
 	AIS_KOD_OFFSET = 12
 	AIS_KOD_ELLIPSERADIUS = 13
+AIS_KOD_NONE = AIS_KindOfDimension.AIS_KOD_NONE
+AIS_KOD_LENGTH = AIS_KindOfDimension.AIS_KOD_LENGTH
+AIS_KOD_PLANEANGLE = AIS_KindOfDimension.AIS_KOD_PLANEANGLE
+AIS_KOD_SOLIDANGLE = AIS_KindOfDimension.AIS_KOD_SOLIDANGLE
+AIS_KOD_AREA = AIS_KindOfDimension.AIS_KOD_AREA
+AIS_KOD_VOLUME = AIS_KindOfDimension.AIS_KOD_VOLUME
+AIS_KOD_MASS = AIS_KindOfDimension.AIS_KOD_MASS
+AIS_KOD_TIME = AIS_KindOfDimension.AIS_KOD_TIME
+AIS_KOD_RADIUS = AIS_KindOfDimension.AIS_KOD_RADIUS
+AIS_KOD_DIAMETER = AIS_KindOfDimension.AIS_KOD_DIAMETER
+AIS_KOD_CHAMF2D = AIS_KindOfDimension.AIS_KOD_CHAMF2D
+AIS_KOD_CHAMF3D = AIS_KindOfDimension.AIS_KOD_CHAMF3D
+AIS_KOD_OFFSET = AIS_KindOfDimension.AIS_KOD_OFFSET
+AIS_KOD_ELLIPSERADIUS = AIS_KindOfDimension.AIS_KOD_ELLIPSERADIUS
 
-class AIS_SelectStatus:
+class AIS_SelectStatus(IntEnum):
 	AIS_SS_Added = 0
 	AIS_SS_Removed = 1
 	AIS_SS_NotDone = 2
+AIS_SS_Added = AIS_SelectStatus.AIS_SS_Added
+AIS_SS_Removed = AIS_SelectStatus.AIS_SS_Removed
+AIS_SS_NotDone = AIS_SelectStatus.AIS_SS_NotDone
 
-class AIS_TypeOfAxis:
+class AIS_TypeOfAxis(IntEnum):
 	AIS_TOAX_Unknown = 0
 	AIS_TOAX_XAxis = 1
 	AIS_TOAX_YAxis = 2
 	AIS_TOAX_ZAxis = 3
+AIS_TOAX_Unknown = AIS_TypeOfAxis.AIS_TOAX_Unknown
+AIS_TOAX_XAxis = AIS_TypeOfAxis.AIS_TOAX_XAxis
+AIS_TOAX_YAxis = AIS_TypeOfAxis.AIS_TOAX_YAxis
+AIS_TOAX_ZAxis = AIS_TypeOfAxis.AIS_TOAX_ZAxis
 
-class AIS_KindOfUnit:
+class AIS_KindOfUnit(IntEnum):
 	AIS_TOU_LENGTH = 0
 	AIS_TOU_SURFACE = 1
 	AIS_TOU_VOLUME = 2
@@ -482,44 +549,74 @@ class AIS_KindOfUnit:
 	AIS_TOU_MASS = 5
 	AIS_TOU_FORCE = 6
 	AIS_TOU_TIME = 7
+AIS_TOU_LENGTH = AIS_KindOfUnit.AIS_TOU_LENGTH
+AIS_TOU_SURFACE = AIS_KindOfUnit.AIS_TOU_SURFACE
+AIS_TOU_VOLUME = AIS_KindOfUnit.AIS_TOU_VOLUME
+AIS_TOU_PLANE_ANGLE = AIS_KindOfUnit.AIS_TOU_PLANE_ANGLE
+AIS_TOU_SOLID_ANGLE = AIS_KindOfUnit.AIS_TOU_SOLID_ANGLE
+AIS_TOU_MASS = AIS_KindOfUnit.AIS_TOU_MASS
+AIS_TOU_FORCE = AIS_KindOfUnit.AIS_TOU_FORCE
+AIS_TOU_TIME = AIS_KindOfUnit.AIS_TOU_TIME
 
-class AIS_TypeOfAngle:
+class AIS_TypeOfAngle(IntEnum):
 	AIS_TOA_Interior = 0
 	AIS_TOA_Exterior = 1
+AIS_TOA_Interior = AIS_TypeOfAngle.AIS_TOA_Interior
+AIS_TOA_Exterior = AIS_TypeOfAngle.AIS_TOA_Exterior
 
-class AIS_ConnectStatus:
+class AIS_ConnectStatus(IntEnum):
 	AIS_CS_None = 0
 	AIS_CS_Connection = 1
 	AIS_CS_Transform = 2
 	AIS_CS_Both = 3
+AIS_CS_None = AIS_ConnectStatus.AIS_CS_None
+AIS_CS_Connection = AIS_ConnectStatus.AIS_CS_Connection
+AIS_CS_Transform = AIS_ConnectStatus.AIS_CS_Transform
+AIS_CS_Both = AIS_ConnectStatus.AIS_CS_Both
 
-class AIS_RotationMode:
+class AIS_RotationMode(IntEnum):
 	AIS_RotationMode_BndBoxActive = 0
 	AIS_RotationMode_PickLast = 1
 	AIS_RotationMode_PickCenter = 2
 	AIS_RotationMode_CameraAt = 3
 	AIS_RotationMode_BndBoxScene = 4
+AIS_RotationMode_BndBoxActive = AIS_RotationMode.AIS_RotationMode_BndBoxActive
+AIS_RotationMode_PickLast = AIS_RotationMode.AIS_RotationMode_PickLast
+AIS_RotationMode_PickCenter = AIS_RotationMode.AIS_RotationMode_PickCenter
+AIS_RotationMode_CameraAt = AIS_RotationMode.AIS_RotationMode_CameraAt
+AIS_RotationMode_BndBoxScene = AIS_RotationMode.AIS_RotationMode_BndBoxScene
 
-class AIS_ViewSelectionTool:
+class AIS_ViewSelectionTool(IntEnum):
 	AIS_ViewSelectionTool_Picking = 0
 	AIS_ViewSelectionTool_RubberBand = 1
 	AIS_ViewSelectionTool_Polygon = 2
+AIS_ViewSelectionTool_Picking = AIS_ViewSelectionTool.AIS_ViewSelectionTool_Picking
+AIS_ViewSelectionTool_RubberBand = AIS_ViewSelectionTool.AIS_ViewSelectionTool_RubberBand
+AIS_ViewSelectionTool_Polygon = AIS_ViewSelectionTool.AIS_ViewSelectionTool_Polygon
 
-class AIS_ViewInputBufferType:
+class AIS_ViewInputBufferType(IntEnum):
 	AIS_ViewInputBufferType_UI = 0
 	AIS_ViewInputBufferType_GL = 1
+AIS_ViewInputBufferType_UI = AIS_ViewInputBufferType.AIS_ViewInputBufferType_UI
+AIS_ViewInputBufferType_GL = AIS_ViewInputBufferType.AIS_ViewInputBufferType_GL
 
-class AIS_NavigationMode:
+class AIS_NavigationMode(IntEnum):
 	AIS_NavigationMode_Orbit = 0
 	AIS_NavigationMode_FirstPersonFlight = 1
 	AIS_NavigationMode_FirstPersonWalk = 2
+AIS_NavigationMode_Orbit = AIS_NavigationMode.AIS_NavigationMode_Orbit
+AIS_NavigationMode_FirstPersonFlight = AIS_NavigationMode.AIS_NavigationMode_FirstPersonFlight
+AIS_NavigationMode_FirstPersonWalk = AIS_NavigationMode.AIS_NavigationMode_FirstPersonWalk
 
-class AIS_TypeOfIso:
+class AIS_TypeOfIso(IntEnum):
 	AIS_TOI_IsoU = 0
 	AIS_TOI_IsoV = 1
 	AIS_TOI_Both = 2
+AIS_TOI_IsoU = AIS_TypeOfIso.AIS_TOI_IsoU
+AIS_TOI_IsoV = AIS_TypeOfIso.AIS_TOI_IsoV
+AIS_TOI_Both = AIS_TypeOfIso.AIS_TOI_Both
 
-class AIS_KindOfRelation:
+class AIS_KindOfRelation(IntEnum):
 	AIS_KOR_NONE = 0
 	AIS_KOR_CONCENTRIC = 1
 	AIS_KOR_EQUALDISTANCE = 2
@@ -531,8 +628,19 @@ class AIS_KindOfRelation:
 	AIS_KOR_PERPENDICULAR = 8
 	AIS_KOR_TANGENT = 9
 	AIS_KOR_SYMMETRIC = 10
+AIS_KOR_NONE = AIS_KindOfRelation.AIS_KOR_NONE
+AIS_KOR_CONCENTRIC = AIS_KindOfRelation.AIS_KOR_CONCENTRIC
+AIS_KOR_EQUALDISTANCE = AIS_KindOfRelation.AIS_KOR_EQUALDISTANCE
+AIS_KOR_EQUALRADIUS = AIS_KindOfRelation.AIS_KOR_EQUALRADIUS
+AIS_KOR_FIX = AIS_KindOfRelation.AIS_KOR_FIX
+AIS_KOR_IDENTIC = AIS_KindOfRelation.AIS_KOR_IDENTIC
+AIS_KOR_OFFSET = AIS_KindOfRelation.AIS_KOR_OFFSET
+AIS_KOR_PARALLEL = AIS_KindOfRelation.AIS_KOR_PARALLEL
+AIS_KOR_PERPENDICULAR = AIS_KindOfRelation.AIS_KOR_PERPENDICULAR
+AIS_KOR_TANGENT = AIS_KindOfRelation.AIS_KOR_TANGENT
+AIS_KOR_SYMMETRIC = AIS_KindOfRelation.AIS_KOR_SYMMETRIC
 
-class AIS_StatusOfDetection:
+class AIS_StatusOfDetection(IntEnum):
 	AIS_SOD_Error = 0
 	AIS_SOD_Nothing = 1
 	AIS_SOD_AllBad = 2
@@ -540,30 +648,51 @@ class AIS_StatusOfDetection:
 	AIS_SOD_OnlyOneDetected = 4
 	AIS_SOD_OnlyOneGood = 5
 	AIS_SOD_SeveralGood = 6
+AIS_SOD_Error = AIS_StatusOfDetection.AIS_SOD_Error
+AIS_SOD_Nothing = AIS_StatusOfDetection.AIS_SOD_Nothing
+AIS_SOD_AllBad = AIS_StatusOfDetection.AIS_SOD_AllBad
+AIS_SOD_Selected = AIS_StatusOfDetection.AIS_SOD_Selected
+AIS_SOD_OnlyOneDetected = AIS_StatusOfDetection.AIS_SOD_OnlyOneDetected
+AIS_SOD_OnlyOneGood = AIS_StatusOfDetection.AIS_SOD_OnlyOneGood
+AIS_SOD_SeveralGood = AIS_StatusOfDetection.AIS_SOD_SeveralGood
 
-class AIS_WalkTranslation:
+class AIS_WalkTranslation(IntEnum):
 	AIS_WalkTranslation_Forward = 0
 	AIS_WalkTranslation_Side = 1
 	AIS_WalkTranslation_Up = 2
+AIS_WalkTranslation_Forward = AIS_WalkTranslation.AIS_WalkTranslation_Forward
+AIS_WalkTranslation_Side = AIS_WalkTranslation.AIS_WalkTranslation_Side
+AIS_WalkTranslation_Up = AIS_WalkTranslation.AIS_WalkTranslation_Up
 
-class AIS_WalkRotation:
+class AIS_WalkRotation(IntEnum):
 	AIS_WalkRotation_Yaw = 0
 	AIS_WalkRotation_Pitch = 1
 	AIS_WalkRotation_Roll = 2
+AIS_WalkRotation_Yaw = AIS_WalkRotation.AIS_WalkRotation_Yaw
+AIS_WalkRotation_Pitch = AIS_WalkRotation.AIS_WalkRotation_Pitch
+AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
 
-class AIS_ManipulatorMode:
+class AIS_ManipulatorMode(IntEnum):
 	AIS_MM_None = 0
 	AIS_MM_Translation = 1
 	AIS_MM_Rotation = 2
 	AIS_MM_Scaling = 3
 	AIS_MM_TranslationPlane = 4
+AIS_MM_None = AIS_ManipulatorMode.AIS_MM_None
+AIS_MM_Translation = AIS_ManipulatorMode.AIS_MM_Translation
+AIS_MM_Rotation = AIS_ManipulatorMode.AIS_MM_Rotation
+AIS_MM_Scaling = AIS_ManipulatorMode.AIS_MM_Scaling
+AIS_MM_TranslationPlane = AIS_ManipulatorMode.AIS_MM_TranslationPlane
 
-class AIS_SelectionModesConcurrency:
+class AIS_SelectionModesConcurrency(IntEnum):
 	AIS_SelectionModesConcurrency_Single = 0
 	AIS_SelectionModesConcurrency_GlobalOrLocal = 1
 	AIS_SelectionModesConcurrency_Multiple = 2
+AIS_SelectionModesConcurrency_Single = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Single
+AIS_SelectionModesConcurrency_GlobalOrLocal = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_GlobalOrLocal
+AIS_SelectionModesConcurrency_Multiple = AIS_SelectionModesConcurrency.AIS_SelectionModesConcurrency_Multiple
 
-class AIS_KindOfSurface:
+class AIS_KindOfSurface(IntEnum):
 	AIS_KOS_Plane = 0
 	AIS_KOS_Cylinder = 1
 	AIS_KOS_Cone = 2
@@ -572,8 +701,16 @@ class AIS_KindOfSurface:
 	AIS_KOS_Revolution = 5
 	AIS_KOS_Extrusion = 6
 	AIS_KOS_OtherSurface = 7
+AIS_KOS_Plane = AIS_KindOfSurface.AIS_KOS_Plane
+AIS_KOS_Cylinder = AIS_KindOfSurface.AIS_KOS_Cylinder
+AIS_KOS_Cone = AIS_KindOfSurface.AIS_KOS_Cone
+AIS_KOS_Sphere = AIS_KindOfSurface.AIS_KOS_Sphere
+AIS_KOS_Torus = AIS_KindOfSurface.AIS_KOS_Torus
+AIS_KOS_Revolution = AIS_KindOfSurface.AIS_KOS_Revolution
+AIS_KOS_Extrusion = AIS_KindOfSurface.AIS_KOS_Extrusion
+AIS_KOS_OtherSurface = AIS_KindOfSurface.AIS_KOS_OtherSurface
 
-class AIS_StandardDatum:
+class AIS_StandardDatum(IntEnum):
 	AIS_SD_None = 0
 	AIS_SD_Point = 1
 	AIS_SD_Axis = 2
@@ -582,44 +719,76 @@ class AIS_StandardDatum:
 	AIS_SD_Line = 5
 	AIS_SD_Circle = 6
 	AIS_SD_Plane = 7
+AIS_SD_None = AIS_StandardDatum.AIS_SD_None
+AIS_SD_Point = AIS_StandardDatum.AIS_SD_Point
+AIS_SD_Axis = AIS_StandardDatum.AIS_SD_Axis
+AIS_SD_Trihedron = AIS_StandardDatum.AIS_SD_Trihedron
+AIS_SD_PlaneTrihedron = AIS_StandardDatum.AIS_SD_PlaneTrihedron
+AIS_SD_Line = AIS_StandardDatum.AIS_SD_Line
+AIS_SD_Circle = AIS_StandardDatum.AIS_SD_Circle
+AIS_SD_Plane = AIS_StandardDatum.AIS_SD_Plane
 
-class AIS_DisplayMode:
+class AIS_DisplayMode(IntEnum):
 	AIS_WireFrame = 0
 	AIS_Shaded = 1
+AIS_WireFrame = AIS_DisplayMode.AIS_WireFrame
+AIS_Shaded = AIS_DisplayMode.AIS_Shaded
 
-class AIS_StatusOfPick:
+class AIS_StatusOfPick(IntEnum):
 	AIS_SOP_Error = 0
 	AIS_SOP_NothingSelected = 1
 	AIS_SOP_Removed = 2
 	AIS_SOP_OneSelected = 3
 	AIS_SOP_SeveralSelected = 4
+AIS_SOP_Error = AIS_StatusOfPick.AIS_SOP_Error
+AIS_SOP_NothingSelected = AIS_StatusOfPick.AIS_SOP_NothingSelected
+AIS_SOP_Removed = AIS_StatusOfPick.AIS_SOP_Removed
+AIS_SOP_OneSelected = AIS_StatusOfPick.AIS_SOP_OneSelected
+AIS_SOP_SeveralSelected = AIS_StatusOfPick.AIS_SOP_SeveralSelected
 
-class AIS_DragAction:
+class AIS_DragAction(IntEnum):
 	AIS_DragAction_Start = 0
 	AIS_DragAction_Update = 1
 	AIS_DragAction_Stop = 2
 	AIS_DragAction_Abort = 3
+AIS_DragAction_Start = AIS_DragAction.AIS_DragAction_Start
+AIS_DragAction_Update = AIS_DragAction.AIS_DragAction_Update
+AIS_DragAction_Stop = AIS_DragAction.AIS_DragAction_Stop
+AIS_DragAction_Abort = AIS_DragAction.AIS_DragAction_Abort
 
-class AIS_DisplaySpecialSymbol:
+class AIS_DisplaySpecialSymbol(IntEnum):
 	AIS_DSS_No = 0
 	AIS_DSS_Before = 1
 	AIS_DSS_After = 2
+AIS_DSS_No = AIS_DisplaySpecialSymbol.AIS_DSS_No
+AIS_DSS_Before = AIS_DisplaySpecialSymbol.AIS_DSS_Before
+AIS_DSS_After = AIS_DisplaySpecialSymbol.AIS_DSS_After
 
-class AIS_TypeOfDist:
+class AIS_TypeOfDist(IntEnum):
 	AIS_TOD_Unknown = 0
 	AIS_TOD_Horizontal = 1
 	AIS_TOD_Vertical = 2
+AIS_TOD_Unknown = AIS_TypeOfDist.AIS_TOD_Unknown
+AIS_TOD_Horizontal = AIS_TypeOfDist.AIS_TOD_Horizontal
+AIS_TOD_Vertical = AIS_TypeOfDist.AIS_TOD_Vertical
 
-class AIS_TypeOfPlane:
+class AIS_TypeOfPlane(IntEnum):
 	AIS_TOPL_Unknown = 0
 	AIS_TOPL_XYPlane = 1
 	AIS_TOPL_XZPlane = 2
 	AIS_TOPL_YZPlane = 3
+AIS_TOPL_Unknown = AIS_TypeOfPlane.AIS_TOPL_Unknown
+AIS_TOPL_XYPlane = AIS_TypeOfPlane.AIS_TOPL_XYPlane
+AIS_TOPL_XZPlane = AIS_TypeOfPlane.AIS_TOPL_XZPlane
+AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
 
-class AIS_DisplayStatus:
+class AIS_DisplayStatus(IntEnum):
 	AIS_DS_Displayed = 0
 	AIS_DS_Erased = 1
 	AIS_DS_None = 2
+AIS_DS_Displayed = AIS_DisplayStatus.AIS_DS_Displayed
+AIS_DS_Erased = AIS_DisplayStatus.AIS_DS_Erased
+AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
 };
 /* end python proxy for enums */
 
@@ -701,9 +870,23 @@ class AIS_DisplayStatus:
 %template(AIS_IndexedDataMapOfOwnerPrs) NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>,opencascade::handle<Prs3d_Presentation>,TColStd_MapTransientHasher>;
 %template(AIS_ListIteratorOfListOfInteractive) NCollection_TListIterator<opencascade::handle<AIS_InteractiveObject>>;
 %template(AIS_ListOfInteractive) NCollection_List<opencascade::handle<AIS_InteractiveObject>>;
+
+%extend NCollection_List<opencascade::handle<AIS_InteractiveObject>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(AIS_MapOfInteractive) NCollection_Map<opencascade::handle<AIS_InteractiveObject>,TColStd_MapTransientHasher>;
 %template(AIS_MouseGestureMap) NCollection_DataMap<unsigned int, AIS_MouseGesture>;
 %template(AIS_NListOfEntityOwner) NCollection_List<opencascade::handle<SelectMgr_EntityOwner>>;
+
+%extend NCollection_List<opencascade::handle<SelectMgr_EntityOwner>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(AIS_SequenceOfDimension) NCollection_Sequence<opencascade::handle<AIS_Relation>>;
 %template(AIS_SequenceOfInteractive) NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>;
 /* end templates declaration */
@@ -8161,9 +8344,11 @@ enum SelectionMode {
 /* python proy classes for enums */
 %pythoncode {
 
-class SelectionMode:
+class SelectionMode(IntEnum):
 	SelectionMode_Edges = 0
 	SelectionMode_Volume = 1
+SelectionMode_Edges = SelectionMode.SelectionMode_Edges
+SelectionMode_Volume = SelectionMode.SelectionMode_Volume
 };
 /* end python proxy for enums */
 
@@ -9563,10 +9748,13 @@ enum ComputeMode {
 /* python proy classes for enums */
 %pythoncode {
 
-class ComputeMode:
+class ComputeMode(IntEnum):
 	ComputeMode_All = 0
 	ComputeMode_Line = 1
 	ComputeMode_Text = 2
+ComputeMode_All = ComputeMode.ComputeMode_All
+ComputeMode_Line = ComputeMode.ComputeMode_Line
+ComputeMode_Text = ComputeMode.ComputeMode_Text
 };
 /* end python proxy for enums */
 
@@ -11828,14 +12016,19 @@ enum SelectionMode {
 /* python proy classes for enums */
 %pythoncode {
 
-class DisplayMode:
+class DisplayMode(IntEnum):
 	DM_Points = 0
 	DM_BndBox = 2
+DM_Points = DisplayMode.DM_Points
+DM_BndBox = DisplayMode.DM_BndBox
 
-class SelectionMode:
+class SelectionMode(IntEnum):
 	SM_Points = 0
 	SM_SubsetOfPoints = 1
 	SM_BndBox = 2
+SM_Points = SelectionMode.SM_Points
+SM_SubsetOfPoints = SelectionMode.SM_SubsetOfPoints
+SM_BndBox = SelectionMode.SM_BndBox
 };
 /* end python proxy for enums */
 

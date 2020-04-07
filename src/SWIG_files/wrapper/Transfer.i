@@ -58,6 +58,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_transfer.html"
 %import Message.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -88,23 +89,35 @@ enum Transfer_StatusResult {
 /* python proy classes for enums */
 %pythoncode {
 
-class Transfer_StatusExec:
+class Transfer_StatusExec(IntEnum):
 	Transfer_StatusInitial = 0
 	Transfer_StatusRun = 1
 	Transfer_StatusDone = 2
 	Transfer_StatusError = 3
 	Transfer_StatusLoop = 4
+Transfer_StatusInitial = Transfer_StatusExec.Transfer_StatusInitial
+Transfer_StatusRun = Transfer_StatusExec.Transfer_StatusRun
+Transfer_StatusDone = Transfer_StatusExec.Transfer_StatusDone
+Transfer_StatusError = Transfer_StatusExec.Transfer_StatusError
+Transfer_StatusLoop = Transfer_StatusExec.Transfer_StatusLoop
 
-class Transfer_UndefMode:
+class Transfer_UndefMode(IntEnum):
 	Transfer_UndefIgnore = 0
 	Transfer_UndefFailure = 1
 	Transfer_UndefContent = 2
 	Transfer_UndefUser = 3
+Transfer_UndefIgnore = Transfer_UndefMode.Transfer_UndefIgnore
+Transfer_UndefFailure = Transfer_UndefMode.Transfer_UndefFailure
+Transfer_UndefContent = Transfer_UndefMode.Transfer_UndefContent
+Transfer_UndefUser = Transfer_UndefMode.Transfer_UndefUser
 
-class Transfer_StatusResult:
+class Transfer_StatusResult(IntEnum):
 	Transfer_StatusVoid = 0
 	Transfer_StatusDefined = 1
 	Transfer_StatusUsed = 2
+Transfer_StatusVoid = Transfer_StatusResult.Transfer_StatusVoid
+Transfer_StatusDefined = Transfer_StatusResult.Transfer_StatusDefined
+Transfer_StatusUsed = Transfer_StatusResult.Transfer_StatusUsed
 };
 /* end python proxy for enums */
 
@@ -4422,26 +4435,26 @@ class Transfer_ProcessForFinder:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class Transfer_HSequenceOfBinder : public  Transfer_SequenceOfBinder, public Standard_Transient {
+class Transfer_HSequenceOfBinder : public Transfer_SequenceOfBinder, public Standard_Transient {
   public:
     Transfer_HSequenceOfBinder();
-    Transfer_HSequenceOfBinder(const  Transfer_SequenceOfBinder& theOther);
-    const  Transfer_SequenceOfBinder& Sequence();
-    void Append (const  Transfer_SequenceOfBinder::value_type& theItem);
-    void Append ( Transfer_SequenceOfBinder& theSequence);
-     Transfer_SequenceOfBinder& ChangeSequence();
+    Transfer_HSequenceOfBinder(const Transfer_SequenceOfBinder& theOther);
+    const Transfer_SequenceOfBinder& Sequence();
+    void Append (const Transfer_SequenceOfBinder::value_type& theItem);
+    void Append (Transfer_SequenceOfBinder& theSequence);
+    Transfer_SequenceOfBinder& ChangeSequence();
 };
 %make_alias(Transfer_HSequenceOfBinder)
 
 
-class Transfer_HSequenceOfFinder : public  Transfer_SequenceOfFinder, public Standard_Transient {
+class Transfer_HSequenceOfFinder : public Transfer_SequenceOfFinder, public Standard_Transient {
   public:
     Transfer_HSequenceOfFinder();
-    Transfer_HSequenceOfFinder(const  Transfer_SequenceOfFinder& theOther);
-    const  Transfer_SequenceOfFinder& Sequence();
-    void Append (const  Transfer_SequenceOfFinder::value_type& theItem);
-    void Append ( Transfer_SequenceOfFinder& theSequence);
-     Transfer_SequenceOfFinder& ChangeSequence();
+    Transfer_HSequenceOfFinder(const Transfer_SequenceOfFinder& theOther);
+    const Transfer_SequenceOfFinder& Sequence();
+    void Append (const Transfer_SequenceOfFinder::value_type& theItem);
+    void Append (Transfer_SequenceOfFinder& theSequence);
+    Transfer_SequenceOfFinder& ChangeSequence();
 };
 %make_alias(Transfer_HSequenceOfFinder)
 

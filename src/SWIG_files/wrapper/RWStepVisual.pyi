@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.RWStepVisual import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.StepData import *
@@ -443,3 +443,8 @@ class RWStepVisual_RWViewVolume:
 	def ReadStep(self, data: StepData_StepReaderData, num: int, ach: Interface_Check, ent: StepVisual_ViewVolume) -> None: ...
 	def Share(self, ent: StepVisual_ViewVolume, iter: Interface_EntityIterator) -> None: ...
 	def WriteStep(self, SW: StepData_StepWriter, ent: StepVisual_ViewVolume) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

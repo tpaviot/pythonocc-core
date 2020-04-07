@@ -59,6 +59,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_interface.html"
 %import MoniTool.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -101,7 +102,7 @@ enum Interface_CheckStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class Interface_ParamType:
+class Interface_ParamType(IntEnum):
 	Interface_ParamMisc = 0
 	Interface_ParamInteger = 1
 	Interface_ParamReal = 2
@@ -113,8 +114,19 @@ class Interface_ParamType:
 	Interface_ParamSub = 8
 	Interface_ParamHexa = 9
 	Interface_ParamBinary = 10
+Interface_ParamMisc = Interface_ParamType.Interface_ParamMisc
+Interface_ParamInteger = Interface_ParamType.Interface_ParamInteger
+Interface_ParamReal = Interface_ParamType.Interface_ParamReal
+Interface_ParamIdent = Interface_ParamType.Interface_ParamIdent
+Interface_ParamVoid = Interface_ParamType.Interface_ParamVoid
+Interface_ParamText = Interface_ParamType.Interface_ParamText
+Interface_ParamEnum = Interface_ParamType.Interface_ParamEnum
+Interface_ParamLogical = Interface_ParamType.Interface_ParamLogical
+Interface_ParamSub = Interface_ParamType.Interface_ParamSub
+Interface_ParamHexa = Interface_ParamType.Interface_ParamHexa
+Interface_ParamBinary = Interface_ParamType.Interface_ParamBinary
 
-class Interface_DataState:
+class Interface_DataState(IntEnum):
 	Interface_StateOK = 0
 	Interface_LoadWarning = 1
 	Interface_LoadFail = 2
@@ -122,14 +134,27 @@ class Interface_DataState:
 	Interface_DataFail = 4
 	Interface_StateUnloaded = 5
 	Interface_StateUnknown = 6
+Interface_StateOK = Interface_DataState.Interface_StateOK
+Interface_LoadWarning = Interface_DataState.Interface_LoadWarning
+Interface_LoadFail = Interface_DataState.Interface_LoadFail
+Interface_DataWarning = Interface_DataState.Interface_DataWarning
+Interface_DataFail = Interface_DataState.Interface_DataFail
+Interface_StateUnloaded = Interface_DataState.Interface_StateUnloaded
+Interface_StateUnknown = Interface_DataState.Interface_StateUnknown
 
-class Interface_CheckStatus:
+class Interface_CheckStatus(IntEnum):
 	Interface_CheckOK = 0
 	Interface_CheckWarning = 1
 	Interface_CheckFail = 2
 	Interface_CheckAny = 3
 	Interface_CheckMessage = 4
 	Interface_CheckNoFail = 5
+Interface_CheckOK = Interface_CheckStatus.Interface_CheckOK
+Interface_CheckWarning = Interface_CheckStatus.Interface_CheckWarning
+Interface_CheckFail = Interface_CheckStatus.Interface_CheckFail
+Interface_CheckAny = Interface_CheckStatus.Interface_CheckAny
+Interface_CheckMessage = Interface_CheckStatus.Interface_CheckMessage
+Interface_CheckNoFail = Interface_CheckStatus.Interface_CheckNoFail
 };
 /* end python proxy for enums */
 
@@ -9566,27 +9591,27 @@ opencascade::handle<Interface_Static>
 };
 
 /* harray1 classes */
-class Interface_HArray1OfHAsciiString : public  Interface_Array1OfHAsciiString, public Standard_Transient {
+
+class Interface_HArray1OfHAsciiString : public Interface_Array1OfHAsciiString, public Standard_Transient {
   public:
     Interface_HArray1OfHAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Interface_HArray1OfHAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const  Interface_Array1OfHAsciiString::value_type& theValue);
-    Interface_HArray1OfHAsciiString(const  Interface_Array1OfHAsciiString& theOther);
-    const  Interface_Array1OfHAsciiString& Array1();
-     Interface_Array1OfHAsciiString& ChangeArray1();
+    Interface_HArray1OfHAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const Interface_Array1OfHAsciiString::value_type& theValue);
+    Interface_HArray1OfHAsciiString(const Interface_Array1OfHAsciiString& theOther);
+    const Interface_Array1OfHAsciiString& Array1();
+    Interface_Array1OfHAsciiString& ChangeArray1();
 };
 %make_alias(Interface_HArray1OfHAsciiString)
 
-
 /* harray2 classes */
 /* hsequence classes */
-class Interface_HSequenceOfCheck : public  Interface_SequenceOfCheck, public Standard_Transient {
+class Interface_HSequenceOfCheck : public Interface_SequenceOfCheck, public Standard_Transient {
   public:
     Interface_HSequenceOfCheck();
-    Interface_HSequenceOfCheck(const  Interface_SequenceOfCheck& theOther);
-    const  Interface_SequenceOfCheck& Sequence();
-    void Append (const  Interface_SequenceOfCheck::value_type& theItem);
-    void Append ( Interface_SequenceOfCheck& theSequence);
-     Interface_SequenceOfCheck& ChangeSequence();
+    Interface_HSequenceOfCheck(const Interface_SequenceOfCheck& theOther);
+    const Interface_SequenceOfCheck& Sequence();
+    void Append (const Interface_SequenceOfCheck::value_type& theItem);
+    void Append (Interface_SequenceOfCheck& theSequence);
+    Interface_SequenceOfCheck& ChangeSequence();
 };
 %make_alias(Interface_HSequenceOfCheck)
 

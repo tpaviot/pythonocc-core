@@ -64,6 +64,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepprim.html"
 %import Geom2d.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -82,13 +83,19 @@ enum BRepPrim_Direction {
 /* python proy classes for enums */
 %pythoncode {
 
-class BRepPrim_Direction:
+class BRepPrim_Direction(IntEnum):
 	BRepPrim_XMin = 0
 	BRepPrim_XMax = 1
 	BRepPrim_YMin = 2
 	BRepPrim_YMax = 3
 	BRepPrim_ZMin = 4
 	BRepPrim_ZMax = 5
+BRepPrim_XMin = BRepPrim_Direction.BRepPrim_XMin
+BRepPrim_XMax = BRepPrim_Direction.BRepPrim_XMax
+BRepPrim_YMin = BRepPrim_Direction.BRepPrim_YMin
+BRepPrim_YMax = BRepPrim_Direction.BRepPrim_YMax
+BRepPrim_ZMin = BRepPrim_Direction.BRepPrim_ZMin
+BRepPrim_ZMax = BRepPrim_Direction.BRepPrim_ZMax
 };
 /* end python proxy for enums */
 

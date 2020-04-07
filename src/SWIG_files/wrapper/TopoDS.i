@@ -56,6 +56,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topods.html"
 %import TopLoc.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -83,6 +84,13 @@ from OCC.Core.Exception import *
 /* templates */
 %template(TopoDS_ListIteratorOfListOfShape) NCollection_TListIterator<TopoDS_Shape>;
 %template(TopoDS_ListOfShape) NCollection_List<TopoDS_Shape>;
+
+%extend NCollection_List<TopoDS_Shape> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

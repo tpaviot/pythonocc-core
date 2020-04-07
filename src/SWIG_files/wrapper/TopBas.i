@@ -53,6 +53,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topbas.html"
 %import TopAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -70,6 +71,13 @@ from OCC.Core.Exception import *
 /* templates */
 %template(TopBas_ListIteratorOfListOfTestInterference) NCollection_TListIterator<TopBas_TestInterference>;
 %template(TopBas_ListOfTestInterference) NCollection_List<TopBas_TestInterference>;
+
+%extend NCollection_List<TopBas_TestInterference> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

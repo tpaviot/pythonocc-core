@@ -56,6 +56,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdatastd.html"
 %import TCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -71,10 +72,13 @@ enum TDataStd_RealEnum {
 /* python proy classes for enums */
 %pythoncode {
 
-class TDataStd_RealEnum:
+class TDataStd_RealEnum(IntEnum):
 	TDataStd_SCALAR = 0
 	TDataStd_LENGTH = 1
 	TDataStd_ANGULAR = 2
+TDataStd_SCALAR = TDataStd_RealEnum.TDataStd_SCALAR
+TDataStd_LENGTH = TDataStd_RealEnum.TDataStd_LENGTH
+TDataStd_ANGULAR = TDataStd_RealEnum.TDataStd_ANGULAR
 };
 /* end python proxy for enums */
 
@@ -164,7 +168,21 @@ class TDataStd_RealEnum:
 %template(TDataStd_ListIteratorOfListOfByte) NCollection_TListIterator<Standard_Byte>;
 %template(TDataStd_ListIteratorOfListOfExtendedString) NCollection_TListIterator<TCollection_ExtendedString>;
 %template(TDataStd_ListOfByte) NCollection_List<Standard_Byte>;
+
+%extend NCollection_List<Standard_Byte> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TDataStd_ListOfExtendedString) NCollection_List<TCollection_ExtendedString>;
+
+%extend NCollection_List<TCollection_ExtendedString> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */
@@ -7789,16 +7807,16 @@ TCollection_AsciiString
 };
 
 /* harray1 classes */
-class TDataStd_HLabelArray1 : public  TDataStd_LabelArray1, public Standard_Transient {
+
+class TDataStd_HLabelArray1 : public TDataStd_LabelArray1, public Standard_Transient {
   public:
     TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const  TDataStd_LabelArray1::value_type& theValue);
-    TDataStd_HLabelArray1(const  TDataStd_LabelArray1& theOther);
-    const  TDataStd_LabelArray1& Array1();
-     TDataStd_LabelArray1& ChangeArray1();
+    TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const TDataStd_LabelArray1::value_type& theValue);
+    TDataStd_HLabelArray1(const TDataStd_LabelArray1& theOther);
+    const TDataStd_LabelArray1& Array1();
+    TDataStd_LabelArray1& ChangeArray1();
 };
 %make_alias(TDataStd_HLabelArray1)
-
 
 /* harray2 classes */
 /* hsequence classes */

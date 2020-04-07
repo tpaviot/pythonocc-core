@@ -54,6 +54,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tfunction.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -71,12 +72,17 @@ enum TFunction_ExecutionStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class TFunction_ExecutionStatus:
+class TFunction_ExecutionStatus(IntEnum):
 	TFunction_ES_WrongDefinition = 0
 	TFunction_ES_NotExecuted = 1
 	TFunction_ES_Executing = 2
 	TFunction_ES_Succeeded = 3
 	TFunction_ES_Failed = 4
+TFunction_ES_WrongDefinition = TFunction_ExecutionStatus.TFunction_ES_WrongDefinition
+TFunction_ES_NotExecuted = TFunction_ExecutionStatus.TFunction_ES_NotExecuted
+TFunction_ES_Executing = TFunction_ExecutionStatus.TFunction_ES_Executing
+TFunction_ES_Succeeded = TFunction_ExecutionStatus.TFunction_ES_Succeeded
+TFunction_ES_Failed = TFunction_ExecutionStatus.TFunction_ES_Failed
 };
 /* end python proxy for enums */
 
@@ -1798,16 +1804,16 @@ None
 };
 
 /* harray1 classes */
-class TFunction_HArray1OfDataMapOfGUIDDriver : public  TFunction_Array1OfDataMapOfGUIDDriver, public Standard_Transient {
+
+class TFunction_HArray1OfDataMapOfGUIDDriver : public TFunction_Array1OfDataMapOfGUIDDriver, public Standard_Transient {
   public:
     TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer theLower, const Standard_Integer theUpper, const  TFunction_Array1OfDataMapOfGUIDDriver::value_type& theValue);
-    TFunction_HArray1OfDataMapOfGUIDDriver(const  TFunction_Array1OfDataMapOfGUIDDriver& theOther);
-    const  TFunction_Array1OfDataMapOfGUIDDriver& Array1();
-     TFunction_Array1OfDataMapOfGUIDDriver& ChangeArray1();
+    TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer theLower, const Standard_Integer theUpper, const TFunction_Array1OfDataMapOfGUIDDriver::value_type& theValue);
+    TFunction_HArray1OfDataMapOfGUIDDriver(const TFunction_Array1OfDataMapOfGUIDDriver& theOther);
+    const TFunction_Array1OfDataMapOfGUIDDriver& Array1();
+    TFunction_Array1OfDataMapOfGUIDDriver& ChangeArray1();
 };
 %make_alias(TFunction_HArray1OfDataMapOfGUIDDriver)
-
 
 /* harray2 classes */
 /* hsequence classes */

@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.RWStepDimTol import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.StepData import *
@@ -298,3 +298,8 @@ class RWStepDimTol_RWUnequallyDisposedGeometricTolerance:
 	def ReadStep(self, data: StepData_StepReaderData, num: int, ach: Interface_Check, ent: StepDimTol_UnequallyDisposedGeometricTolerance) -> None: ...
 	def Share(self, ent: StepDimTol_UnequallyDisposedGeometricTolerance, iter: Interface_EntityIterator) -> None: ...
 	def WriteStep(self, SW: StepData_StepWriter, ent: StepDimTol_UnequallyDisposedGeometricTolerance) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

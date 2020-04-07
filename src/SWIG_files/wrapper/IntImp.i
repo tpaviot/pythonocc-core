@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intimp.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -68,11 +69,15 @@ enum IntImp_ConstIsoparametric {
 /* python proy classes for enums */
 %pythoncode {
 
-class IntImp_ConstIsoparametric:
+class IntImp_ConstIsoparametric(IntEnum):
 	IntImp_UIsoparametricOnCaro1 = 0
 	IntImp_VIsoparametricOnCaro1 = 1
 	IntImp_UIsoparametricOnCaro2 = 2
 	IntImp_VIsoparametricOnCaro2 = 3
+IntImp_UIsoparametricOnCaro1 = IntImp_ConstIsoparametric.IntImp_UIsoparametricOnCaro1
+IntImp_VIsoparametricOnCaro1 = IntImp_ConstIsoparametric.IntImp_VIsoparametricOnCaro1
+IntImp_UIsoparametricOnCaro2 = IntImp_ConstIsoparametric.IntImp_UIsoparametricOnCaro2
+IntImp_VIsoparametricOnCaro2 = IntImp_ConstIsoparametric.IntImp_VIsoparametricOnCaro2
 };
 /* end python proxy for enums */
 

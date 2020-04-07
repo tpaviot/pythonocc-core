@@ -80,6 +80,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_boptools.html"
 %import BRepAdaptor.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -97,7 +98,21 @@ from OCC.Core.Exception import *
 /* templates */
 %template(BOPTools_IndexedDataMapOfSetShape) NCollection_IndexedDataMap<BOPTools_Set,TopoDS_Shape,BOPTools_SetMapHasher>;
 %template(BOPTools_ListOfConnexityBlock) NCollection_List<BOPTools_ConnexityBlock>;
+
+%extend NCollection_List<BOPTools_ConnexityBlock> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BOPTools_ListOfCoupleOfShape) NCollection_List<BOPTools_CoupleOfShape>;
+
+%extend NCollection_List<BOPTools_CoupleOfShape> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BOPTools_MapOfSet) NCollection_Map<BOPTools_Set,BOPTools_SetMapHasher>;
 /* end templates declaration */
 

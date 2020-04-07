@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.AdvApp2Var import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TColStd import *
@@ -10,34 +10,54 @@ from OCC.Core.Geom import *
 from OCC.Core.gp import *
 from OCC.Core.TColgp import *
 
+#the following typedef cannot be wrapped as is
+AdvApp2Var_SequenceOfNode = NewType('AdvApp2Var_SequenceOfNode', Any)
+#the following typedef cannot be wrapped as is
+AdvApp2Var_SequenceOfPatch = NewType('AdvApp2Var_SequenceOfPatch', Any)
+#the following typedef cannot be wrapped as is
+AdvApp2Var_SequenceOfStrip = NewType('AdvApp2Var_SequenceOfStrip', Any)
+#the following typedef cannot be wrapped as is
+AdvApp2Var_Strip = NewType('AdvApp2Var_Strip', Any)
 
-class AdvApp2Var_CriterionRepartition:
+class AdvApp2Var_CriterionRepartition(IntEnum):
 	AdvApp2Var_Regular: int = ...
 	AdvApp2Var_Incremental: int = ...
+AdvApp2Var_Regular = AdvApp2Var_CriterionRepartition.AdvApp2Var_Regular
+AdvApp2Var_Incremental = AdvApp2Var_CriterionRepartition.AdvApp2Var_Incremental
 
-class AdvApp2Var_CriterionType:
+class AdvApp2Var_CriterionType(IntEnum):
 	AdvApp2Var_Absolute: int = ...
 	AdvApp2Var_Relative: int = ...
+AdvApp2Var_Absolute = AdvApp2Var_CriterionType.AdvApp2Var_Absolute
+AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 
 class AdvApp2Var_ApproxAFunc2Var:
 	@overload
 	def __init__(self, Num1DSS: int, Num2DSS: int, Num3DSS: int, OneDTol: TColStd_HArray1OfReal, TwoDTol: TColStd_HArray1OfReal, ThreeDTol: TColStd_HArray1OfReal, OneDTolFr: TColStd_HArray2OfReal, TwoDTolFr: TColStd_HArray2OfReal, ThreeDTolFr: TColStd_HArray2OfReal, FirstInU: float, LastInU: float, FirstInV: float, LastInV: float, FavorIso: GeomAbs_IsoType, ContInU: GeomAbs_Shape, ContInV: GeomAbs_Shape, PrecisCode: int, MaxDegInU: int, MaxDegInV: int, MaxPatch: int, Func: AdvApp2Var_EvaluatorFunc2Var, UChoice: AdvApprox_Cutting, VChoice: AdvApprox_Cutting) -> None: ...
 	@overload
 	def __init__(self, Num1DSS: int, Num2DSS: int, Num3DSS: int, OneDTol: TColStd_HArray1OfReal, TwoDTol: TColStd_HArray1OfReal, ThreeDTol: TColStd_HArray1OfReal, OneDTolFr: TColStd_HArray2OfReal, TwoDTolFr: TColStd_HArray2OfReal, ThreeDTolFr: TColStd_HArray2OfReal, FirstInU: float, LastInU: float, FirstInV: float, LastInV: float, FavorIso: GeomAbs_IsoType, ContInU: GeomAbs_Shape, ContInV: GeomAbs_Shape, PrecisCode: int, MaxDegInU: int, MaxDegInV: int, MaxPatch: int, Func: AdvApp2Var_EvaluatorFunc2Var, Crit: AdvApp2Var_Criterion, UChoice: AdvApprox_Cutting, VChoice: AdvApprox_Cutting) -> None: ...
+	@overload
 	def AverageError(self, Dimension: int) -> TColStd_HArray1OfReal: ...
+	@overload
 	def AverageError(self, Dimension: int, Index: int) -> float: ...
 	def CritError(self, Dimension: int, Index: int) -> float: ...
 	def HasResult(self) -> bool: ...
 	def IsDone(self) -> bool: ...
+	@overload
 	def MaxError(self, Dimension: int) -> TColStd_HArray1OfReal: ...
+	@overload
 	def MaxError(self, Dimension: int, Index: int) -> float: ...
 	def NumSubSpaces(self, Dimension: int) -> int: ...
 	def Surface(self, Index: int) -> Geom_BSplineSurface: ...
 	def UDegree(self) -> int: ...
+	@overload
 	def UFrontError(self, Dimension: int) -> TColStd_HArray1OfReal: ...
+	@overload
 	def UFrontError(self, Dimension: int, Index: int) -> float: ...
 	def VDegree(self) -> int: ...
+	@overload
 	def VFrontError(self, Dimension: int) -> TColStd_HArray1OfReal: ...
+	@overload
 	def VFrontError(self, Dimension: int, Index: int) -> float: ...
 
 class AdvApp2Var_ApproxF2var:
@@ -76,27 +96,27 @@ class AdvApp2Var_Criterion:
 
 class AdvApp2Var_Data:
 	@staticmethod
-	def Getmaovpar(self) -> False: ...
+	def Getmaovpar() -> False: ...
 	@staticmethod
-	def Getmaovpch(self) -> False: ...
+	def Getmaovpch() -> False: ...
 	@staticmethod
-	def Getmdnombr(self) -> False: ...
+	def Getmdnombr() -> False: ...
 	@staticmethod
-	def Getminombr(self) -> False: ...
+	def Getminombr() -> False: ...
 	@staticmethod
-	def Getmlgdrtl(self) -> False: ...
+	def Getmlgdrtl() -> False: ...
 	@staticmethod
-	def Getmmapgs0(self) -> False: ...
+	def Getmmapgs0() -> False: ...
 	@staticmethod
-	def Getmmapgs1(self) -> False: ...
+	def Getmmapgs1() -> False: ...
 	@staticmethod
-	def Getmmapgs2(self) -> False: ...
+	def Getmmapgs2() -> False: ...
 	@staticmethod
-	def Getmmapgss(self) -> False: ...
+	def Getmmapgss() -> False: ...
 	@staticmethod
-	def Getmmcmcnp(self) -> False: ...
+	def Getmmcmcnp() -> False: ...
 	@staticmethod
-	def Getmmjcobi(self) -> False: ...
+	def Getmmjcobi() -> False: ...
 
 class AdvApp2Var_Framework:
 	@overload
@@ -110,7 +130,9 @@ class AdvApp2Var_Framework:
 	def IsoU(self, U: float, V0: float, V1: float) -> AdvApp2Var_Iso: ...
 	def IsoV(self, U0: float, U1: float, V: float) -> AdvApp2Var_Iso: ...
 	def LastNode(self, Type: GeomAbs_IsoType, IndexIso: int, IndexStrip: int) -> int: ...
+	@overload
 	def Node(self, IndexNode: int) -> AdvApp2Var_Node: ...
+	@overload
 	def Node(self, U: float, V: float) -> AdvApp2Var_Node: ...
 	def UEquation(self, IndexIso: int, IndexStrip: int) -> TColStd_HArray1OfReal: ...
 	def UpdateInU(self, CuttingValue: float) -> None: ...
@@ -165,7 +187,9 @@ class AdvApp2Var_Patch:
 	def ChangeNbCoeff(self, NbCoeffU: int, NbCoeffV: int) -> None: ...
 	def Coefficients(self, SSPIndex: int, Conditions: AdvApp2Var_Context) -> TColStd_HArray1OfReal: ...
 	def CritValue(self) -> float: ...
+	@overload
 	def CutSense(self) -> int: ...
+	@overload
 	def CutSense(self, Crit: AdvApp2Var_Criterion, NumDec: int) -> int: ...
 	def Discretise(self, Conditions: AdvApp2Var_Context, Constraints: AdvApp2Var_Framework, func: AdvApp2Var_EvaluatorFunc2Var) -> None: ...
 	def HasResult(self) -> bool: ...
@@ -190,9 +214,97 @@ class AdvApp2Var_Patch:
 class AdvApp2Var_SysBase:
 	def __init__(self) -> None: ...
 	@staticmethod
-	def do__fio(self) -> int: ...
+	def do__fio() -> int: ...
 	@staticmethod
-	def do__lio(self) -> int: ...
+	def do__lio() -> int: ...
 	def mainial_(self) -> False: ...
 	@staticmethod
-	def mnfndeb_(self) -> int: ...
+	def mnfndeb_() -> int: ...
+
+#classnotwrapped
+class AdvApp2Var_EvaluatorFunc2Var: ...
+
+#classnotwrapped
+class AdvApp2Var_Iso: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+AdvApp2Var_ApproxF2var_mma1her_ = AdvApp2Var_ApproxF2var.mma1her_
+AdvApp2Var_ApproxF2var_mma2ac1_ = AdvApp2Var_ApproxF2var.mma2ac1_
+AdvApp2Var_ApproxF2var_mma2ac2_ = AdvApp2Var_ApproxF2var.mma2ac2_
+AdvApp2Var_ApproxF2var_mma2ac3_ = AdvApp2Var_ApproxF2var.mma2ac3_
+AdvApp2Var_ApproxF2var_mma2can_ = AdvApp2Var_ApproxF2var.mma2can_
+AdvApp2Var_ApproxF2var_mma2cdi_ = AdvApp2Var_ApproxF2var.mma2cdi_
+AdvApp2Var_ApproxF2var_mma2ce1_ = AdvApp2Var_ApproxF2var.mma2ce1_
+AdvApp2Var_ApproxF2var_mma2ds1_ = AdvApp2Var_ApproxF2var.mma2ds1_
+AdvApp2Var_ApproxF2var_mma2fnc_ = AdvApp2Var_ApproxF2var.mma2fnc_
+AdvApp2Var_ApproxF2var_mma2fx6_ = AdvApp2Var_ApproxF2var.mma2fx6_
+AdvApp2Var_ApproxF2var_mma2jmx_ = AdvApp2Var_ApproxF2var.mma2jmx_
+AdvApp2Var_ApproxF2var_mma2roo_ = AdvApp2Var_ApproxF2var.mma2roo_
+AdvApp2Var_ApproxF2var_mmapptt_ = AdvApp2Var_ApproxF2var.mmapptt_
+AdvApp2Var_Data_Getmaovpar = AdvApp2Var_Data.Getmaovpar
+AdvApp2Var_Data_Getmaovpch = AdvApp2Var_Data.Getmaovpch
+AdvApp2Var_Data_Getmdnombr = AdvApp2Var_Data.Getmdnombr
+AdvApp2Var_Data_Getminombr = AdvApp2Var_Data.Getminombr
+AdvApp2Var_Data_Getmlgdrtl = AdvApp2Var_Data.Getmlgdrtl
+AdvApp2Var_Data_Getmmapgs0 = AdvApp2Var_Data.Getmmapgs0
+AdvApp2Var_Data_Getmmapgs1 = AdvApp2Var_Data.Getmmapgs1
+AdvApp2Var_Data_Getmmapgs2 = AdvApp2Var_Data.Getmmapgs2
+AdvApp2Var_Data_Getmmapgss = AdvApp2Var_Data.Getmmapgss
+AdvApp2Var_Data_Getmmcmcnp = AdvApp2Var_Data.Getmmcmcnp
+AdvApp2Var_Data_Getmmjcobi = AdvApp2Var_Data.Getmmjcobi
+AdvApp2Var_MathBase_mdsptpt_ = AdvApp2Var_MathBase.mdsptpt_
+AdvApp2Var_MathBase_mmapcmp_ = AdvApp2Var_MathBase.mmapcmp_
+AdvApp2Var_MathBase_mmaperx_ = AdvApp2Var_MathBase.mmaperx_
+AdvApp2Var_MathBase_mmarcin_ = AdvApp2Var_MathBase.mmarcin_
+AdvApp2Var_MathBase_mmbulld_ = AdvApp2Var_MathBase.mmbulld_
+AdvApp2Var_MathBase_mmcdriv_ = AdvApp2Var_MathBase.mmcdriv_
+AdvApp2Var_MathBase_mmcglc1_ = AdvApp2Var_MathBase.mmcglc1_
+AdvApp2Var_MathBase_mmcvctx_ = AdvApp2Var_MathBase.mmcvctx_
+AdvApp2Var_MathBase_mmcvinv_ = AdvApp2Var_MathBase.mmcvinv_
+AdvApp2Var_MathBase_mmdrc11_ = AdvApp2Var_MathBase.mmdrc11_
+AdvApp2Var_MathBase_mmdrvck_ = AdvApp2Var_MathBase.mmdrvck_
+AdvApp2Var_MathBase_mmeps1_ = AdvApp2Var_MathBase.mmeps1_
+AdvApp2Var_MathBase_mmfmca8_ = AdvApp2Var_MathBase.mmfmca8_
+AdvApp2Var_MathBase_mmfmca9_ = AdvApp2Var_MathBase.mmfmca9_
+AdvApp2Var_MathBase_mmfmcar_ = AdvApp2Var_MathBase.mmfmcar_
+AdvApp2Var_MathBase_mmfmcb5_ = AdvApp2Var_MathBase.mmfmcb5_
+AdvApp2Var_MathBase_mmfmtb1_ = AdvApp2Var_MathBase.mmfmtb1_
+AdvApp2Var_MathBase_mmhjcan_ = AdvApp2Var_MathBase.mmhjcan_
+AdvApp2Var_MathBase_mminltt_ = AdvApp2Var_MathBase.mminltt_
+AdvApp2Var_MathBase_mmjacan_ = AdvApp2Var_MathBase.mmjacan_
+AdvApp2Var_MathBase_mmjaccv_ = AdvApp2Var_MathBase.mmjaccv_
+AdvApp2Var_MathBase_mmmpocur_ = AdvApp2Var_MathBase.mmmpocur_
+AdvApp2Var_MathBase_mmmrslwd_ = AdvApp2Var_MathBase.mmmrslwd_
+AdvApp2Var_MathBase_mmpobas_ = AdvApp2Var_MathBase.mmpobas_
+AdvApp2Var_MathBase_mmpocrb_ = AdvApp2Var_MathBase.mmpocrb_
+AdvApp2Var_MathBase_mmposui_ = AdvApp2Var_MathBase.mmposui_
+AdvApp2Var_MathBase_mmresol_ = AdvApp2Var_MathBase.mmresol_
+AdvApp2Var_MathBase_mmrtptt_ = AdvApp2Var_MathBase.mmrtptt_
+AdvApp2Var_MathBase_mmsrre2_ = AdvApp2Var_MathBase.mmsrre2_
+AdvApp2Var_MathBase_mmtrpjj_ = AdvApp2Var_MathBase.mmtrpjj_
+AdvApp2Var_MathBase_mmunivt_ = AdvApp2Var_MathBase.mmunivt_
+AdvApp2Var_MathBase_mmveps3_ = AdvApp2Var_MathBase.mmveps3_
+AdvApp2Var_MathBase_mmvncol_ = AdvApp2Var_MathBase.mmvncol_
+AdvApp2Var_MathBase_mmwprcs_ = AdvApp2Var_MathBase.mmwprcs_
+AdvApp2Var_MathBase_msc_ = AdvApp2Var_MathBase.msc_
+AdvApp2Var_MathBase_mvsheld_ = AdvApp2Var_MathBase.mvsheld_
+AdvApp2Var_MathBase_mzsnorm_ = AdvApp2Var_MathBase.mzsnorm_
+AdvApp2Var_MathBase_pow__di = AdvApp2Var_MathBase.pow__di
+AdvApp2Var_SysBase_do__fio = AdvApp2Var_SysBase.do__fio
+AdvApp2Var_SysBase_do__lio = AdvApp2Var_SysBase.do__lio
+AdvApp2Var_SysBase_macinit_ = AdvApp2Var_SysBase.macinit_
+AdvApp2Var_SysBase_maermsg_ = AdvApp2Var_SysBase.maermsg_
+AdvApp2Var_SysBase_maitbr8_ = AdvApp2Var_SysBase.maitbr8_
+AdvApp2Var_SysBase_maovsr8_ = AdvApp2Var_SysBase.maovsr8_
+AdvApp2Var_SysBase_mcrfill_ = AdvApp2Var_SysBase.mcrfill_
+AdvApp2Var_SysBase_mgenmsg_ = AdvApp2Var_SysBase.mgenmsg_
+AdvApp2Var_SysBase_mgsomsg_ = AdvApp2Var_SysBase.mgsomsg_
+AdvApp2Var_SysBase_miraz_ = AdvApp2Var_SysBase.miraz_
+AdvApp2Var_SysBase_mnfndeb_ = AdvApp2Var_SysBase.mnfndeb_
+AdvApp2Var_SysBase_msifill_ = AdvApp2Var_SysBase.msifill_
+AdvApp2Var_SysBase_msrfill_ = AdvApp2Var_SysBase.msrfill_
+AdvApp2Var_SysBase_mswrdbg_ = AdvApp2Var_SysBase.mswrdbg_
+AdvApp2Var_SysBase_mvriraz_ = AdvApp2Var_SysBase.mvriraz_

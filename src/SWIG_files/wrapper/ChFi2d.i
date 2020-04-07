@@ -58,6 +58,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_chfi2d.html"
 %import TopTools.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -83,7 +84,7 @@ enum ChFi2d_ConstructionError {
 /* python proy classes for enums */
 %pythoncode {
 
-class ChFi2d_ConstructionError:
+class ChFi2d_ConstructionError(IntEnum):
 	ChFi2d_NotPlanar = 0
 	ChFi2d_NoFace = 1
 	ChFi2d_InitialisationError = 2
@@ -97,6 +98,19 @@ class ChFi2d_ConstructionError:
 	ChFi2d_LastEdgeDegenerated = 10
 	ChFi2d_BothEdgesDegenerated = 11
 	ChFi2d_NotAuthorized = 12
+ChFi2d_NotPlanar = ChFi2d_ConstructionError.ChFi2d_NotPlanar
+ChFi2d_NoFace = ChFi2d_ConstructionError.ChFi2d_NoFace
+ChFi2d_InitialisationError = ChFi2d_ConstructionError.ChFi2d_InitialisationError
+ChFi2d_ParametersError = ChFi2d_ConstructionError.ChFi2d_ParametersError
+ChFi2d_Ready = ChFi2d_ConstructionError.ChFi2d_Ready
+ChFi2d_IsDone = ChFi2d_ConstructionError.ChFi2d_IsDone
+ChFi2d_ComputationError = ChFi2d_ConstructionError.ChFi2d_ComputationError
+ChFi2d_ConnexionError = ChFi2d_ConstructionError.ChFi2d_ConnexionError
+ChFi2d_TangencyError = ChFi2d_ConstructionError.ChFi2d_TangencyError
+ChFi2d_FirstEdgeDegenerated = ChFi2d_ConstructionError.ChFi2d_FirstEdgeDegenerated
+ChFi2d_LastEdgeDegenerated = ChFi2d_ConstructionError.ChFi2d_LastEdgeDegenerated
+ChFi2d_BothEdgesDegenerated = ChFi2d_ConstructionError.ChFi2d_BothEdgesDegenerated
+ChFi2d_NotAuthorized = ChFi2d_ConstructionError.ChFi2d_NotAuthorized
 };
 /* end python proxy for enums */
 

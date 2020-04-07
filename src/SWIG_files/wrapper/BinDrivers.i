@@ -67,6 +67,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bindrivers.html"
 %import Storage.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -81,9 +82,11 @@ enum BinDrivers_Marker {
 /* python proy classes for enums */
 %pythoncode {
 
-class BinDrivers_Marker:
+class BinDrivers_Marker(IntEnum):
 	BinDrivers_ENDATTRLIST = - 1
 	BinDrivers_ENDLABEL = - 2
+BinDrivers_ENDATTRLIST = BinDrivers_Marker.BinDrivers_ENDATTRLIST
+BinDrivers_ENDLABEL = BinDrivers_Marker.BinDrivers_ENDLABEL
 };
 /* end python proxy for enums */
 

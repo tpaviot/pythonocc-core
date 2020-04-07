@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.StepAP242 import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TCollection import *
@@ -78,3 +78,8 @@ class StepAP242_DraughtingModelItemAssociation(StepAP242_ItemIdentifiedRepresent
 
 class StepAP242_GeometricItemSpecificUsage(StepAP242_ItemIdentifiedRepresentationUsage):
 	def __init__(self) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

@@ -59,6 +59,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlralgo.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -84,7 +85,7 @@ enum HLRAlgo_PolyMask {
 /* python proy classes for enums */
 %pythoncode {
 
-class HLRAlgo_PolyMask:
+class HLRAlgo_PolyMask(IntEnum):
 	HLRAlgo_PolyMask_EMskOutLin1 = 1
 	HLRAlgo_PolyMask_EMskOutLin2 = 2
 	HLRAlgo_PolyMask_EMskOutLin3 = 4
@@ -98,6 +99,19 @@ class HLRAlgo_PolyMask:
 	HLRAlgo_PolyMask_FMskOnOutL = 1024
 	HLRAlgo_PolyMask_FMskOrBack = 2048
 	HLRAlgo_PolyMask_FMskFrBack = 4096
+HLRAlgo_PolyMask_EMskOutLin1 = HLRAlgo_PolyMask.HLRAlgo_PolyMask_EMskOutLin1
+HLRAlgo_PolyMask_EMskOutLin2 = HLRAlgo_PolyMask.HLRAlgo_PolyMask_EMskOutLin2
+HLRAlgo_PolyMask_EMskOutLin3 = HLRAlgo_PolyMask.HLRAlgo_PolyMask_EMskOutLin3
+HLRAlgo_PolyMask_EMskGrALin1 = HLRAlgo_PolyMask.HLRAlgo_PolyMask_EMskGrALin1
+HLRAlgo_PolyMask_EMskGrALin2 = HLRAlgo_PolyMask.HLRAlgo_PolyMask_EMskGrALin2
+HLRAlgo_PolyMask_EMskGrALin3 = HLRAlgo_PolyMask.HLRAlgo_PolyMask_EMskGrALin3
+HLRAlgo_PolyMask_FMskBack = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskBack
+HLRAlgo_PolyMask_FMskSide = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskSide
+HLRAlgo_PolyMask_FMskHiding = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskHiding
+HLRAlgo_PolyMask_FMskFlat = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskFlat
+HLRAlgo_PolyMask_FMskOnOutL = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskOnOutL
+HLRAlgo_PolyMask_FMskOrBack = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskOrBack
+HLRAlgo_PolyMask_FMskFrBack = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskFrBack
 };
 /* end python proxy for enums */
 
@@ -222,9 +236,23 @@ class HLRAlgo_PolyMask:
     }
 };
 %template(HLRAlgo_InterferenceList) NCollection_List<HLRAlgo_Interference>;
+
+%extend NCollection_List<HLRAlgo_Interference> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(HLRAlgo_ListIteratorOfInterferenceList) NCollection_TListIterator<HLRAlgo_Interference>;
 %template(HLRAlgo_ListIteratorOfListOfBPoint) NCollection_TListIterator<HLRAlgo_BiPoint>;
 %template(HLRAlgo_ListOfBPoint) NCollection_List<HLRAlgo_BiPoint>;
+
+%extend NCollection_List<HLRAlgo_BiPoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */
@@ -2870,49 +2898,49 @@ class HLRAlgo_PolyHidingData:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
-class HLRAlgo_HArray1OfPINod : public  HLRAlgo_Array1OfPINod, public Standard_Transient {
+
+class HLRAlgo_HArray1OfPINod : public HLRAlgo_Array1OfPINod, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper, const  HLRAlgo_Array1OfPINod::value_type& theValue);
-    HLRAlgo_HArray1OfPINod(const  HLRAlgo_Array1OfPINod& theOther);
-    const  HLRAlgo_Array1OfPINod& Array1();
-     HLRAlgo_Array1OfPINod& ChangeArray1();
+    HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPINod::value_type& theValue);
+    HLRAlgo_HArray1OfPINod(const HLRAlgo_Array1OfPINod& theOther);
+    const HLRAlgo_Array1OfPINod& Array1();
+    HLRAlgo_Array1OfPINod& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPINod)
 
 
-class HLRAlgo_HArray1OfPHDat : public  HLRAlgo_Array1OfPHDat, public Standard_Transient {
+class HLRAlgo_HArray1OfPHDat : public HLRAlgo_Array1OfPHDat, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper, const  HLRAlgo_Array1OfPHDat::value_type& theValue);
-    HLRAlgo_HArray1OfPHDat(const  HLRAlgo_Array1OfPHDat& theOther);
-    const  HLRAlgo_Array1OfPHDat& Array1();
-     HLRAlgo_Array1OfPHDat& ChangeArray1();
+    HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPHDat::value_type& theValue);
+    HLRAlgo_HArray1OfPHDat(const HLRAlgo_Array1OfPHDat& theOther);
+    const HLRAlgo_Array1OfPHDat& Array1();
+    HLRAlgo_Array1OfPHDat& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPHDat)
 
 
-class HLRAlgo_HArray1OfTData : public  HLRAlgo_Array1OfTData, public Standard_Transient {
+class HLRAlgo_HArray1OfTData : public HLRAlgo_Array1OfTData, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper, const  HLRAlgo_Array1OfTData::value_type& theValue);
-    HLRAlgo_HArray1OfTData(const  HLRAlgo_Array1OfTData& theOther);
-    const  HLRAlgo_Array1OfTData& Array1();
-     HLRAlgo_Array1OfTData& ChangeArray1();
+    HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfTData::value_type& theValue);
+    HLRAlgo_HArray1OfTData(const HLRAlgo_Array1OfTData& theOther);
+    const HLRAlgo_Array1OfTData& Array1();
+    HLRAlgo_Array1OfTData& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfTData)
 
 
-class HLRAlgo_HArray1OfPISeg : public  HLRAlgo_Array1OfPISeg, public Standard_Transient {
+class HLRAlgo_HArray1OfPISeg : public HLRAlgo_Array1OfPISeg, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper, const  HLRAlgo_Array1OfPISeg::value_type& theValue);
-    HLRAlgo_HArray1OfPISeg(const  HLRAlgo_Array1OfPISeg& theOther);
-    const  HLRAlgo_Array1OfPISeg& Array1();
-     HLRAlgo_Array1OfPISeg& ChangeArray1();
+    HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPISeg::value_type& theValue);
+    HLRAlgo_HArray1OfPISeg(const HLRAlgo_Array1OfPISeg& theOther);
+    const HLRAlgo_Array1OfPISeg& Array1();
+    HLRAlgo_Array1OfPISeg& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPISeg)
-
 
 /* harray2 classes */
 /* hsequence classes */

@@ -61,6 +61,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_faircurve.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -77,11 +78,15 @@ enum FairCurve_AnalysisCode {
 /* python proy classes for enums */
 %pythoncode {
 
-class FairCurve_AnalysisCode:
+class FairCurve_AnalysisCode(IntEnum):
 	FairCurve_OK = 0
 	FairCurve_NotConverged = 1
 	FairCurve_InfiniteSliding = 2
 	FairCurve_NullHeight = 3
+FairCurve_OK = FairCurve_AnalysisCode.FairCurve_OK
+FairCurve_NotConverged = FairCurve_AnalysisCode.FairCurve_NotConverged
+FairCurve_InfiniteSliding = FairCurve_AnalysisCode.FairCurve_InfiniteSliding
+FairCurve_NullHeight = FairCurve_AnalysisCode.FairCurve_NullHeight
 };
 /* end python proxy for enums */
 

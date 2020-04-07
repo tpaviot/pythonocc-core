@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_lprop.html"
 %import GeomAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -74,16 +75,23 @@ enum LProp_CIType {
 /* python proy classes for enums */
 %pythoncode {
 
-class LProp_Status:
+class LProp_Status(IntEnum):
 	LProp_Undecided = 0
 	LProp_Undefined = 1
 	LProp_Defined = 2
 	LProp_Computed = 3
+LProp_Undecided = LProp_Status.LProp_Undecided
+LProp_Undefined = LProp_Status.LProp_Undefined
+LProp_Defined = LProp_Status.LProp_Defined
+LProp_Computed = LProp_Status.LProp_Computed
 
-class LProp_CIType:
+class LProp_CIType(IntEnum):
 	LProp_Inflection = 0
 	LProp_MinCur = 1
 	LProp_MaxCur = 2
+LProp_Inflection = LProp_CIType.LProp_Inflection
+LProp_MinCur = LProp_CIType.LProp_MinCur
+LProp_MaxCur = LProp_CIType.LProp_MaxCur
 };
 /* end python proxy for enums */
 

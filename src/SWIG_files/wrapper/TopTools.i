@@ -61,6 +61,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_toptools.html"
 %import TCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -194,7 +195,21 @@ from OCC.Core.Exception import *
 %template(TopTools_IndexedMapOfShape) NCollection_IndexedMap<TopoDS_Shape,TopTools_ShapeMapHasher>;
 %template(TopTools_ListIteratorOfListOfShape) NCollection_TListIterator<TopoDS_Shape>;
 %template(TopTools_ListOfListOfShape) NCollection_List<TopTools_ListOfShape>;
+
+%extend NCollection_List<TopTools_ListOfShape> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
+
+%extend NCollection_List<TopoDS_Shape> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TopTools_MapOfOrientedShape) NCollection_Map<TopoDS_Shape,TopTools_OrientedShapeMapHasher>;
 %template(TopTools_MapOfShape) NCollection_Map<TopoDS_Shape,TopTools_ShapeMapHasher>;
 %template(TopTools_SequenceOfShape) NCollection_Sequence<TopoDS_Shape>;
@@ -828,51 +843,51 @@ TopoDS_Shape
 };
 
 /* harray1 classes */
-class TopTools_HArray1OfShape : public  TopTools_Array1OfShape, public Standard_Transient {
+
+class TopTools_HArray1OfShape : public TopTools_Array1OfShape, public Standard_Transient {
   public:
     TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const  TopTools_Array1OfShape::value_type& theValue);
-    TopTools_HArray1OfShape(const  TopTools_Array1OfShape& theOther);
-    const  TopTools_Array1OfShape& Array1();
-     TopTools_Array1OfShape& ChangeArray1();
+    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const TopTools_Array1OfShape::value_type& theValue);
+    TopTools_HArray1OfShape(const TopTools_Array1OfShape& theOther);
+    const TopTools_Array1OfShape& Array1();
+    TopTools_Array1OfShape& ChangeArray1();
 };
 %make_alias(TopTools_HArray1OfShape)
 
 
-class TopTools_HArray1OfListOfShape : public  TopTools_Array1OfListOfShape, public Standard_Transient {
+class TopTools_HArray1OfListOfShape : public TopTools_Array1OfListOfShape, public Standard_Transient {
   public:
     TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const  TopTools_Array1OfListOfShape::value_type& theValue);
-    TopTools_HArray1OfListOfShape(const  TopTools_Array1OfListOfShape& theOther);
-    const  TopTools_Array1OfListOfShape& Array1();
-     TopTools_Array1OfListOfShape& ChangeArray1();
+    TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const TopTools_Array1OfListOfShape::value_type& theValue);
+    TopTools_HArray1OfListOfShape(const TopTools_Array1OfListOfShape& theOther);
+    const TopTools_Array1OfListOfShape& Array1();
+    TopTools_Array1OfListOfShape& ChangeArray1();
 };
 %make_alias(TopTools_HArray1OfListOfShape)
 
-
 /* harray2 classes */
-class TopTools_HArray2OfShape : public  TopTools_Array2OfShape, public Standard_Transient {
+class TopTools_HArray2OfShape : public TopTools_Array2OfShape, public Standard_Transient {
   public:
     TopTools_HArray2OfShape(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     TopTools_HArray2OfShape(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const  TopTools_Array2OfShape::value_type& theValue);
-    TopTools_HArray2OfShape(const  TopTools_Array2OfShape& theOther);
-    const  TopTools_Array2OfShape& Array2 ();
-     TopTools_Array2OfShape& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const TopTools_Array2OfShape::value_type& theValue);
+    TopTools_HArray2OfShape(const TopTools_Array2OfShape& theOther);
+    const TopTools_Array2OfShape& Array2 ();
+    TopTools_Array2OfShape& ChangeArray2 (); 
 };
 %make_alias(TopTools_HArray2OfShape)
 
 
 /* hsequence classes */
-class TopTools_HSequenceOfShape : public  TopTools_SequenceOfShape, public Standard_Transient {
+class TopTools_HSequenceOfShape : public TopTools_SequenceOfShape, public Standard_Transient {
   public:
     TopTools_HSequenceOfShape();
-    TopTools_HSequenceOfShape(const  TopTools_SequenceOfShape& theOther);
-    const  TopTools_SequenceOfShape& Sequence();
-    void Append (const  TopTools_SequenceOfShape::value_type& theItem);
-    void Append ( TopTools_SequenceOfShape& theSequence);
-     TopTools_SequenceOfShape& ChangeSequence();
+    TopTools_HSequenceOfShape(const TopTools_SequenceOfShape& theOther);
+    const TopTools_SequenceOfShape& Sequence();
+    void Append (const TopTools_SequenceOfShape::value_type& theItem);
+    void Append (TopTools_SequenceOfShape& theSequence);
+    TopTools_SequenceOfShape& ChangeSequence();
 };
 %make_alias(TopTools_HSequenceOfShape)
 

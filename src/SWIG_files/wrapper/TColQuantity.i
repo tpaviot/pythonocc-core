@@ -50,6 +50,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolquantity.html
 %import NCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -111,27 +112,27 @@ typedef NCollection_Array2<Quantity_Length> TColQuantity_Array2OfLength;
 /* end typedefs declaration */
 
 /* harray1 classes */
-class TColQuantity_HArray1OfLength : public  TColQuantity_Array1OfLength, public Standard_Transient {
+
+class TColQuantity_HArray1OfLength : public TColQuantity_Array1OfLength, public Standard_Transient {
   public:
     TColQuantity_HArray1OfLength(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColQuantity_HArray1OfLength(const Standard_Integer theLower, const Standard_Integer theUpper, const  TColQuantity_Array1OfLength::value_type& theValue);
-    TColQuantity_HArray1OfLength(const  TColQuantity_Array1OfLength& theOther);
-    const  TColQuantity_Array1OfLength& Array1();
-     TColQuantity_Array1OfLength& ChangeArray1();
+    TColQuantity_HArray1OfLength(const Standard_Integer theLower, const Standard_Integer theUpper, const TColQuantity_Array1OfLength::value_type& theValue);
+    TColQuantity_HArray1OfLength(const TColQuantity_Array1OfLength& theOther);
+    const TColQuantity_Array1OfLength& Array1();
+    TColQuantity_Array1OfLength& ChangeArray1();
 };
 %make_alias(TColQuantity_HArray1OfLength)
 
-
 /* harray2 classes */
-class TColQuantity_HArray2OfLength : public  TColQuantity_Array2OfLength, public Standard_Transient {
+class TColQuantity_HArray2OfLength : public TColQuantity_Array2OfLength, public Standard_Transient {
   public:
     TColQuantity_HArray2OfLength(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     TColQuantity_HArray2OfLength(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const  TColQuantity_Array2OfLength::value_type& theValue);
-    TColQuantity_HArray2OfLength(const  TColQuantity_Array2OfLength& theOther);
-    const  TColQuantity_Array2OfLength& Array2 ();
-     TColQuantity_Array2OfLength& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const TColQuantity_Array2OfLength::value_type& theValue);
+    TColQuantity_HArray2OfLength(const TColQuantity_Array2OfLength& theOther);
+    const TColQuantity_Array2OfLength& Array2 ();
+    TColQuantity_Array2OfLength& ChangeArray2 (); 
 };
 %make_alias(TColQuantity_HArray2OfLength)
 

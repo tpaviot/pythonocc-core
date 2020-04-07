@@ -62,6 +62,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_monitool.html"
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -85,7 +86,7 @@ enum MoniTool_ValueType {
 /* python proy classes for enums */
 %pythoncode {
 
-class MoniTool_ValueType:
+class MoniTool_ValueType(IntEnum):
 	MoniTool_ValueMisc = 0
 	MoniTool_ValueInteger = 1
 	MoniTool_ValueReal = 2
@@ -97,6 +98,17 @@ class MoniTool_ValueType:
 	MoniTool_ValueSub = 8
 	MoniTool_ValueHexa = 9
 	MoniTool_ValueBinary = 10
+MoniTool_ValueMisc = MoniTool_ValueType.MoniTool_ValueMisc
+MoniTool_ValueInteger = MoniTool_ValueType.MoniTool_ValueInteger
+MoniTool_ValueReal = MoniTool_ValueType.MoniTool_ValueReal
+MoniTool_ValueIdent = MoniTool_ValueType.MoniTool_ValueIdent
+MoniTool_ValueVoid = MoniTool_ValueType.MoniTool_ValueVoid
+MoniTool_ValueText = MoniTool_ValueType.MoniTool_ValueText
+MoniTool_ValueEnum = MoniTool_ValueType.MoniTool_ValueEnum
+MoniTool_ValueLogical = MoniTool_ValueType.MoniTool_ValueLogical
+MoniTool_ValueSub = MoniTool_ValueType.MoniTool_ValueSub
+MoniTool_ValueHexa = MoniTool_ValueType.MoniTool_ValueHexa
+MoniTool_ValueBinary = MoniTool_ValueType.MoniTool_ValueBinary
 };
 /* end python proxy for enums */
 
@@ -2766,14 +2778,14 @@ char *
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class MoniTool_HSequenceOfElement : public  MoniTool_SequenceOfElement, public Standard_Transient {
+class MoniTool_HSequenceOfElement : public MoniTool_SequenceOfElement, public Standard_Transient {
   public:
     MoniTool_HSequenceOfElement();
-    MoniTool_HSequenceOfElement(const  MoniTool_SequenceOfElement& theOther);
-    const  MoniTool_SequenceOfElement& Sequence();
-    void Append (const  MoniTool_SequenceOfElement::value_type& theItem);
-    void Append ( MoniTool_SequenceOfElement& theSequence);
-     MoniTool_SequenceOfElement& ChangeSequence();
+    MoniTool_HSequenceOfElement(const MoniTool_SequenceOfElement& theOther);
+    const MoniTool_SequenceOfElement& Sequence();
+    void Append (const MoniTool_SequenceOfElement::value_type& theItem);
+    void Append (MoniTool_SequenceOfElement& theSequence);
+    MoniTool_SequenceOfElement& ChangeSequence();
 };
 %make_alias(MoniTool_HSequenceOfElement)
 

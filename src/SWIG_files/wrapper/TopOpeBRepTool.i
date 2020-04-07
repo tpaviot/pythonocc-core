@@ -97,6 +97,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topopebreptool.ht
 %import Extrema.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -112,10 +113,13 @@ enum TopOpeBRepTool_OutCurveType {
 /* python proy classes for enums */
 %pythoncode {
 
-class TopOpeBRepTool_OutCurveType:
+class TopOpeBRepTool_OutCurveType(IntEnum):
 	TopOpeBRepTool_BSPLINE1 = 0
 	TopOpeBRepTool_APPROX = 1
 	TopOpeBRepTool_INTERPOL = 2
+TopOpeBRepTool_BSPLINE1 = TopOpeBRepTool_OutCurveType.TopOpeBRepTool_BSPLINE1
+TopOpeBRepTool_APPROX = TopOpeBRepTool_OutCurveType.TopOpeBRepTool_APPROX
+TopOpeBRepTool_INTERPOL = TopOpeBRepTool_OutCurveType.TopOpeBRepTool_INTERPOL
 };
 /* end python proxy for enums */
 
@@ -132,6 +136,13 @@ class TopOpeBRepTool_OutCurveType:
 %template(TopOpeBRepTool_IndexedDataMapOfShapeconnexity) NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepTool_connexity,TopTools_ShapeMapHasher>;
 %template(TopOpeBRepTool_ListIteratorOfListOfC2DF) NCollection_TListIterator<TopOpeBRepTool_C2DF>;
 %template(TopOpeBRepTool_ListOfC2DF) NCollection_List<TopOpeBRepTool_C2DF>;
+
+%extend NCollection_List<TopOpeBRepTool_C2DF> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

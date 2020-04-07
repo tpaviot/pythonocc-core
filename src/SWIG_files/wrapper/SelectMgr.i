@@ -94,6 +94,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 %import Bnd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -129,27 +130,41 @@ enum SelectMgr_PickingStrategy {
 /* python proy classes for enums */
 %pythoncode {
 
-class SelectMgr_TypeOfUpdate:
+class SelectMgr_TypeOfUpdate(IntEnum):
 	SelectMgr_TOU_Full = 0
 	SelectMgr_TOU_Partial = 1
 	SelectMgr_TOU_None = 2
+SelectMgr_TOU_Full = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Full
+SelectMgr_TOU_Partial = SelectMgr_TypeOfUpdate.SelectMgr_TOU_Partial
+SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
 
-class SelectMgr_TypeOfBVHUpdate:
+class SelectMgr_TypeOfBVHUpdate(IntEnum):
 	SelectMgr_TBU_Add = 0
 	SelectMgr_TBU_Remove = 1
 	SelectMgr_TBU_Renew = 2
 	SelectMgr_TBU_Invalidate = 3
 	SelectMgr_TBU_None = 4
+SelectMgr_TBU_Add = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_Add
+SelectMgr_TBU_Remove = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_Remove
+SelectMgr_TBU_Renew = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_Renew
+SelectMgr_TBU_Invalidate = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_Invalidate
+SelectMgr_TBU_None = SelectMgr_TypeOfBVHUpdate.SelectMgr_TBU_None
 
-class SelectMgr_StateOfSelection:
+class SelectMgr_StateOfSelection(IntEnum):
 	SelectMgr_SOS_Any = - 2
 	SelectMgr_SOS_Unknown = - 1
 	SelectMgr_SOS_Deactivated = 0
 	SelectMgr_SOS_Activated = 1
+SelectMgr_SOS_Any = SelectMgr_StateOfSelection.SelectMgr_SOS_Any
+SelectMgr_SOS_Unknown = SelectMgr_StateOfSelection.SelectMgr_SOS_Unknown
+SelectMgr_SOS_Deactivated = SelectMgr_StateOfSelection.SelectMgr_SOS_Deactivated
+SelectMgr_SOS_Activated = SelectMgr_StateOfSelection.SelectMgr_SOS_Activated
 
-class SelectMgr_PickingStrategy:
+class SelectMgr_PickingStrategy(IntEnum):
 	SelectMgr_PickingStrategy_FirstAcceptable = 0
 	SelectMgr_PickingStrategy_OnlyTopmost = 1
+SelectMgr_PickingStrategy_FirstAcceptable = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_FirstAcceptable
+SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_PickingStrategy_OnlyTopmost
 };
 /* end python proxy for enums */
 
@@ -183,6 +198,13 @@ class SelectMgr_PickingStrategy:
 %template(SelectMgr_IndexedMapOfHSensitive) NCollection_IndexedMap<opencascade::handle<SelectMgr_SensitiveEntity>>;
 %template(SelectMgr_ListIteratorOfListOfFilter) NCollection_TListIterator<opencascade::handle<SelectMgr_Filter>>;
 %template(SelectMgr_ListOfFilter) NCollection_List<opencascade::handle<SelectMgr_Filter>>;
+
+%extend NCollection_List<opencascade::handle<SelectMgr_Filter>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(SelectMgr_Mat4) NCollection_Mat4<Standard_Real>;
 %template(SelectMgr_SequenceOfFilter) NCollection_Sequence<opencascade::handle<SelectMgr_Filter>>;
 %template(SelectMgr_SequenceOfOwner) NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>>;
@@ -1104,11 +1126,15 @@ enum BVHSubset {
 /* python proy classes for enums */
 %pythoncode {
 
-class BVHSubset:
+class BVHSubset(IntEnum):
 	BVHSubset_3d = 0
 	BVHSubset_3dPersistent = 1
 	BVHSubset_2dPersistent = 2
 	BVHSubsetNb = 3
+BVHSubset_3d = BVHSubset.BVHSubset_3d
+BVHSubset_3dPersistent = BVHSubset.BVHSubset_3dPersistent
+BVHSubset_2dPersistent = BVHSubset.BVHSubset_2dPersistent
+BVHSubsetNb = BVHSubset.BVHSubsetNb
 };
 /* end python proxy for enums */
 

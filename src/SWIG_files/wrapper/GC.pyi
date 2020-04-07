@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.GC import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
@@ -208,3 +208,8 @@ class GC_MakeTrimmedCylinder(GC_Root):
 	@overload
 	def __init__(self, A1: gp_Ax1, Radius: float, Height: float) -> None: ...
 	def Value(self) -> Geom_RectangularTrimmedSurface: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

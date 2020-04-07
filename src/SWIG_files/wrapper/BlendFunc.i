@@ -73,6 +73,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_blendfunc.html"
 %import Adaptor2d.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -89,11 +90,15 @@ enum BlendFunc_SectionShape {
 /* python proy classes for enums */
 %pythoncode {
 
-class BlendFunc_SectionShape:
+class BlendFunc_SectionShape(IntEnum):
 	BlendFunc_Rational = 0
 	BlendFunc_QuasiAngular = 1
 	BlendFunc_Polynomial = 2
 	BlendFunc_Linear = 3
+BlendFunc_Rational = BlendFunc_SectionShape.BlendFunc_Rational
+BlendFunc_QuasiAngular = BlendFunc_SectionShape.BlendFunc_QuasiAngular
+BlendFunc_Polynomial = BlendFunc_SectionShape.BlendFunc_Polynomial
+BlendFunc_Linear = BlendFunc_SectionShape.BlendFunc_Linear
 };
 /* end python proxy for enums */
 

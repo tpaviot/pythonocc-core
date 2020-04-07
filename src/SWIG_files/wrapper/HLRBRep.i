@@ -101,6 +101,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hlrbrep.html"
 %import IntSurf.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -119,13 +120,19 @@ enum HLRBRep_TypeOfResultingEdge {
 /* python proy classes for enums */
 %pythoncode {
 
-class HLRBRep_TypeOfResultingEdge:
+class HLRBRep_TypeOfResultingEdge(IntEnum):
 	HLRBRep_Undefined = 0
 	HLRBRep_IsoLine = 1
 	HLRBRep_OutLine = 2
 	HLRBRep_Rg1Line = 3
 	HLRBRep_RgNLine = 4
 	HLRBRep_Sharp = 5
+HLRBRep_Undefined = HLRBRep_TypeOfResultingEdge.HLRBRep_Undefined
+HLRBRep_IsoLine = HLRBRep_TypeOfResultingEdge.HLRBRep_IsoLine
+HLRBRep_OutLine = HLRBRep_TypeOfResultingEdge.HLRBRep_OutLine
+HLRBRep_Rg1Line = HLRBRep_TypeOfResultingEdge.HLRBRep_Rg1Line
+HLRBRep_RgNLine = HLRBRep_TypeOfResultingEdge.HLRBRep_RgNLine
+HLRBRep_Sharp = HLRBRep_TypeOfResultingEdge.HLRBRep_Sharp
 };
 /* end python proxy for enums */
 
@@ -211,7 +218,21 @@ class HLRBRep_TypeOfResultingEdge:
 %template(HLRBRep_ListIteratorOfListOfBPnt2D) NCollection_TListIterator<HLRBRep_BiPnt2D>;
 %template(HLRBRep_ListIteratorOfListOfBPoint) NCollection_TListIterator<HLRBRep_BiPoint>;
 %template(HLRBRep_ListOfBPnt2D) NCollection_List<HLRBRep_BiPnt2D>;
+
+%extend NCollection_List<HLRBRep_BiPnt2D> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(HLRBRep_ListOfBPoint) NCollection_List<HLRBRep_BiPoint>;
+
+%extend NCollection_List<HLRBRep_BiPoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(HLRBRep_SeqOfShapeBounds) NCollection_Sequence<HLRBRep_ShapeBounds>;
 /* end templates declaration */
 

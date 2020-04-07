@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hatch.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -67,10 +68,13 @@ enum Hatch_LineForm {
 /* python proy classes for enums */
 %pythoncode {
 
-class Hatch_LineForm:
+class Hatch_LineForm(IntEnum):
 	Hatch_XLINE = 0
 	Hatch_YLINE = 1
 	Hatch_ANYLINE = 2
+Hatch_XLINE = Hatch_LineForm.Hatch_XLINE
+Hatch_YLINE = Hatch_LineForm.Hatch_YLINE
+Hatch_ANYLINE = Hatch_LineForm.Hatch_ANYLINE
 };
 /* end python proxy for enums */
 

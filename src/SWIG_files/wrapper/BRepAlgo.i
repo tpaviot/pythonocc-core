@@ -87,6 +87,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepalgo.html"
 %import Geom.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -101,9 +102,11 @@ enum BRepAlgo_CheckStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class BRepAlgo_CheckStatus:
+class BRepAlgo_CheckStatus(IntEnum):
 	BRepAlgo_OK = 0
 	BRepAlgo_NOK = 1
+BRepAlgo_OK = BRepAlgo_CheckStatus.BRepAlgo_OK
+BRepAlgo_NOK = BRepAlgo_CheckStatus.BRepAlgo_NOK
 };
 /* end python proxy for enums */
 

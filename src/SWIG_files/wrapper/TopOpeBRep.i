@@ -97,6 +97,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topopebrep.html"
 %import Geom.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -126,14 +127,19 @@ enum TopOpeBRep_TypeLineCurve {
 /* python proy classes for enums */
 %pythoncode {
 
-class TopOpeBRep_P2Dstatus:
+class TopOpeBRep_P2Dstatus(IntEnum):
 	TopOpeBRep_P2DUNK = 0
 	TopOpeBRep_P2DINT = 1
 	TopOpeBRep_P2DSGF = 2
 	TopOpeBRep_P2DSGL = 3
 	TopOpeBRep_P2DNEW = 4
+TopOpeBRep_P2DUNK = TopOpeBRep_P2Dstatus.TopOpeBRep_P2DUNK
+TopOpeBRep_P2DINT = TopOpeBRep_P2Dstatus.TopOpeBRep_P2DINT
+TopOpeBRep_P2DSGF = TopOpeBRep_P2Dstatus.TopOpeBRep_P2DSGF
+TopOpeBRep_P2DSGL = TopOpeBRep_P2Dstatus.TopOpeBRep_P2DSGL
+TopOpeBRep_P2DNEW = TopOpeBRep_P2Dstatus.TopOpeBRep_P2DNEW
 
-class TopOpeBRep_TypeLineCurve:
+class TopOpeBRep_TypeLineCurve(IntEnum):
 	TopOpeBRep_ANALYTIC = 0
 	TopOpeBRep_RESTRICTION = 1
 	TopOpeBRep_WALKING = 2
@@ -143,6 +149,15 @@ class TopOpeBRep_TypeLineCurve:
 	TopOpeBRep_PARABOLA = 6
 	TopOpeBRep_HYPERBOLA = 7
 	TopOpeBRep_OTHERTYPE = 8
+TopOpeBRep_ANALYTIC = TopOpeBRep_TypeLineCurve.TopOpeBRep_ANALYTIC
+TopOpeBRep_RESTRICTION = TopOpeBRep_TypeLineCurve.TopOpeBRep_RESTRICTION
+TopOpeBRep_WALKING = TopOpeBRep_TypeLineCurve.TopOpeBRep_WALKING
+TopOpeBRep_LINE = TopOpeBRep_TypeLineCurve.TopOpeBRep_LINE
+TopOpeBRep_CIRCLE = TopOpeBRep_TypeLineCurve.TopOpeBRep_CIRCLE
+TopOpeBRep_ELLIPSE = TopOpeBRep_TypeLineCurve.TopOpeBRep_ELLIPSE
+TopOpeBRep_PARABOLA = TopOpeBRep_TypeLineCurve.TopOpeBRep_PARABOLA
+TopOpeBRep_HYPERBOLA = TopOpeBRep_TypeLineCurve.TopOpeBRep_HYPERBOLA
+TopOpeBRep_OTHERTYPE = TopOpeBRep_TypeLineCurve.TopOpeBRep_OTHERTYPE
 };
 /* end python proxy for enums */
 
@@ -228,6 +243,13 @@ class TopOpeBRep_TypeLineCurve:
 %template(TopOpeBRep_DataMapOfTopolTool) NCollection_DataMap<TopoDS_Shape,opencascade::handle<BRepTopAdaptor_TopolTool>,TopTools_ShapeMapHasher>;
 %template(TopOpeBRep_ListIteratorOfListOfBipoint) NCollection_TListIterator<TopOpeBRep_Bipoint>;
 %template(TopOpeBRep_ListOfBipoint) NCollection_List<TopOpeBRep_Bipoint>;
+
+%extend NCollection_List<TopOpeBRep_Bipoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TopOpeBRep_SequenceOfPoint2d) NCollection_Sequence<TopOpeBRep_Point2d>;
 /* end templates declaration */
 
@@ -5471,27 +5493,27 @@ class TopOpeBRep_traceSIFF:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
-class TopOpeBRep_HArray1OfVPointInter : public  TopOpeBRep_Array1OfVPointInter, public Standard_Transient {
+
+class TopOpeBRep_HArray1OfVPointInter : public TopOpeBRep_Array1OfVPointInter, public Standard_Transient {
   public:
     TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper, const  TopOpeBRep_Array1OfVPointInter::value_type& theValue);
-    TopOpeBRep_HArray1OfVPointInter(const  TopOpeBRep_Array1OfVPointInter& theOther);
-    const  TopOpeBRep_Array1OfVPointInter& Array1();
-     TopOpeBRep_Array1OfVPointInter& ChangeArray1();
+    TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper, const TopOpeBRep_Array1OfVPointInter::value_type& theValue);
+    TopOpeBRep_HArray1OfVPointInter(const TopOpeBRep_Array1OfVPointInter& theOther);
+    const TopOpeBRep_Array1OfVPointInter& Array1();
+    TopOpeBRep_Array1OfVPointInter& ChangeArray1();
 };
 %make_alias(TopOpeBRep_HArray1OfVPointInter)
 
 
-class TopOpeBRep_HArray1OfLineInter : public  TopOpeBRep_Array1OfLineInter, public Standard_Transient {
+class TopOpeBRep_HArray1OfLineInter : public TopOpeBRep_Array1OfLineInter, public Standard_Transient {
   public:
     TopOpeBRep_HArray1OfLineInter(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopOpeBRep_HArray1OfLineInter(const Standard_Integer theLower, const Standard_Integer theUpper, const  TopOpeBRep_Array1OfLineInter::value_type& theValue);
-    TopOpeBRep_HArray1OfLineInter(const  TopOpeBRep_Array1OfLineInter& theOther);
-    const  TopOpeBRep_Array1OfLineInter& Array1();
-     TopOpeBRep_Array1OfLineInter& ChangeArray1();
+    TopOpeBRep_HArray1OfLineInter(const Standard_Integer theLower, const Standard_Integer theUpper, const TopOpeBRep_Array1OfLineInter::value_type& theValue);
+    TopOpeBRep_HArray1OfLineInter(const TopOpeBRep_Array1OfLineInter& theOther);
+    const TopOpeBRep_Array1OfLineInter& Array1();
+    TopOpeBRep_Array1OfLineInter& ChangeArray1();
 };
 %make_alias(TopOpeBRep_HArray1OfLineInter)
-
 
 /* harray2 classes */
 /* hsequence classes */

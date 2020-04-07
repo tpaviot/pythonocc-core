@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.Aspect import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Quantity import *
@@ -11,12 +11,18 @@ Aspect_Drawable = NewType('Aspect_Drawable', int)
 Aspect_FBConfig = NewType('Aspect_FBConfig', None)
 Aspect_Handle = NewType('Aspect_Handle', int)
 Aspect_RenderingContext = NewType('Aspect_RenderingContext', None)
+#the following typedef cannot be wrapped as is
+Aspect_SequenceOfColor = NewType('Aspect_SequenceOfColor', Any)
+#the following typedef cannot be wrapped as is
+Aspect_TouchMap = NewType('Aspect_TouchMap', Any)
 Aspect_VKey = NewType('Aspect_VKey', int)
 Aspect_VKeyFlags = NewType('Aspect_VKeyFlags', int)
 Aspect_VKeyMouse = NewType('Aspect_VKeyMouse', int)
+#the following typedef cannot be wrapped as is
+GLXFBConfig = NewType('GLXFBConfig', Any)
 HANDLE = NewType('HANDLE', None)
 
-class Aspect_VKeyBasic:
+class Aspect_VKeyBasic(IntEnum):
 	Aspect_VKey_UNKNOWN: int = ...
 	Aspect_VKey_A: int = ...
 	Aspect_VKey_B: int = ...
@@ -148,20 +154,159 @@ class Aspect_VKeyBasic:
 	Aspect_VKey_NavThrustStop: int = ...
 	Aspect_VKey_NavSpeedIncrease: int = ...
 	Aspect_VKey_NavSpeedDecrease: int = ...
+Aspect_VKey_UNKNOWN = Aspect_VKeyBasic.Aspect_VKey_UNKNOWN
+Aspect_VKey_A = Aspect_VKeyBasic.Aspect_VKey_A
+Aspect_VKey_B = Aspect_VKeyBasic.Aspect_VKey_B
+Aspect_VKey_C = Aspect_VKeyBasic.Aspect_VKey_C
+Aspect_VKey_D = Aspect_VKeyBasic.Aspect_VKey_D
+Aspect_VKey_E = Aspect_VKeyBasic.Aspect_VKey_E
+Aspect_VKey_F = Aspect_VKeyBasic.Aspect_VKey_F
+Aspect_VKey_G = Aspect_VKeyBasic.Aspect_VKey_G
+Aspect_VKey_H = Aspect_VKeyBasic.Aspect_VKey_H
+Aspect_VKey_I = Aspect_VKeyBasic.Aspect_VKey_I
+Aspect_VKey_J = Aspect_VKeyBasic.Aspect_VKey_J
+Aspect_VKey_K = Aspect_VKeyBasic.Aspect_VKey_K
+Aspect_VKey_L = Aspect_VKeyBasic.Aspect_VKey_L
+Aspect_VKey_M = Aspect_VKeyBasic.Aspect_VKey_M
+Aspect_VKey_N = Aspect_VKeyBasic.Aspect_VKey_N
+Aspect_VKey_O = Aspect_VKeyBasic.Aspect_VKey_O
+Aspect_VKey_P = Aspect_VKeyBasic.Aspect_VKey_P
+Aspect_VKey_Q = Aspect_VKeyBasic.Aspect_VKey_Q
+Aspect_VKey_R = Aspect_VKeyBasic.Aspect_VKey_R
+Aspect_VKey_S = Aspect_VKeyBasic.Aspect_VKey_S
+Aspect_VKey_T = Aspect_VKeyBasic.Aspect_VKey_T
+Aspect_VKey_U = Aspect_VKeyBasic.Aspect_VKey_U
+Aspect_VKey_V = Aspect_VKeyBasic.Aspect_VKey_V
+Aspect_VKey_W = Aspect_VKeyBasic.Aspect_VKey_W
+Aspect_VKey_X = Aspect_VKeyBasic.Aspect_VKey_X
+Aspect_VKey_Y = Aspect_VKeyBasic.Aspect_VKey_Y
+Aspect_VKey_Z = Aspect_VKeyBasic.Aspect_VKey_Z
+Aspect_VKey_0 = Aspect_VKeyBasic.Aspect_VKey_0
+Aspect_VKey_1 = Aspect_VKeyBasic.Aspect_VKey_1
+Aspect_VKey_2 = Aspect_VKeyBasic.Aspect_VKey_2
+Aspect_VKey_3 = Aspect_VKeyBasic.Aspect_VKey_3
+Aspect_VKey_4 = Aspect_VKeyBasic.Aspect_VKey_4
+Aspect_VKey_5 = Aspect_VKeyBasic.Aspect_VKey_5
+Aspect_VKey_6 = Aspect_VKeyBasic.Aspect_VKey_6
+Aspect_VKey_7 = Aspect_VKeyBasic.Aspect_VKey_7
+Aspect_VKey_8 = Aspect_VKeyBasic.Aspect_VKey_8
+Aspect_VKey_9 = Aspect_VKeyBasic.Aspect_VKey_9
+Aspect_VKey_F1 = Aspect_VKeyBasic.Aspect_VKey_F1
+Aspect_VKey_F2 = Aspect_VKeyBasic.Aspect_VKey_F2
+Aspect_VKey_F3 = Aspect_VKeyBasic.Aspect_VKey_F3
+Aspect_VKey_F4 = Aspect_VKeyBasic.Aspect_VKey_F4
+Aspect_VKey_F5 = Aspect_VKeyBasic.Aspect_VKey_F5
+Aspect_VKey_F6 = Aspect_VKeyBasic.Aspect_VKey_F6
+Aspect_VKey_F7 = Aspect_VKeyBasic.Aspect_VKey_F7
+Aspect_VKey_F8 = Aspect_VKeyBasic.Aspect_VKey_F8
+Aspect_VKey_F9 = Aspect_VKeyBasic.Aspect_VKey_F9
+Aspect_VKey_F10 = Aspect_VKeyBasic.Aspect_VKey_F10
+Aspect_VKey_F11 = Aspect_VKeyBasic.Aspect_VKey_F11
+Aspect_VKey_F12 = Aspect_VKeyBasic.Aspect_VKey_F12
+Aspect_VKey_Up = Aspect_VKeyBasic.Aspect_VKey_Up
+Aspect_VKey_Down = Aspect_VKeyBasic.Aspect_VKey_Down
+Aspect_VKey_Left = Aspect_VKeyBasic.Aspect_VKey_Left
+Aspect_VKey_Right = Aspect_VKeyBasic.Aspect_VKey_Right
+Aspect_VKey_Plus = Aspect_VKeyBasic.Aspect_VKey_Plus
+Aspect_VKey_Minus = Aspect_VKeyBasic.Aspect_VKey_Minus
+Aspect_VKey_Equal = Aspect_VKeyBasic.Aspect_VKey_Equal
+Aspect_VKey_PageUp = Aspect_VKeyBasic.Aspect_VKey_PageUp
+Aspect_VKey_PageDown = Aspect_VKeyBasic.Aspect_VKey_PageDown
+Aspect_VKey_Home = Aspect_VKeyBasic.Aspect_VKey_Home
+Aspect_VKey_End = Aspect_VKeyBasic.Aspect_VKey_End
+Aspect_VKey_Escape = Aspect_VKeyBasic.Aspect_VKey_Escape
+Aspect_VKey_Back = Aspect_VKeyBasic.Aspect_VKey_Back
+Aspect_VKey_Enter = Aspect_VKeyBasic.Aspect_VKey_Enter
+Aspect_VKey_Backspace = Aspect_VKeyBasic.Aspect_VKey_Backspace
+Aspect_VKey_Space = Aspect_VKeyBasic.Aspect_VKey_Space
+Aspect_VKey_Delete = Aspect_VKeyBasic.Aspect_VKey_Delete
+Aspect_VKey_Tilde = Aspect_VKeyBasic.Aspect_VKey_Tilde
+Aspect_VKey_Tab = Aspect_VKeyBasic.Aspect_VKey_Tab
+Aspect_VKey_Comma = Aspect_VKeyBasic.Aspect_VKey_Comma
+Aspect_VKey_Period = Aspect_VKeyBasic.Aspect_VKey_Period
+Aspect_VKey_Semicolon = Aspect_VKeyBasic.Aspect_VKey_Semicolon
+Aspect_VKey_Slash = Aspect_VKeyBasic.Aspect_VKey_Slash
+Aspect_VKey_BracketLeft = Aspect_VKeyBasic.Aspect_VKey_BracketLeft
+Aspect_VKey_Backslash = Aspect_VKeyBasic.Aspect_VKey_Backslash
+Aspect_VKey_BracketRight = Aspect_VKeyBasic.Aspect_VKey_BracketRight
+Aspect_VKey_Apostrophe = Aspect_VKeyBasic.Aspect_VKey_Apostrophe
+Aspect_VKey_Numlock = Aspect_VKeyBasic.Aspect_VKey_Numlock
+Aspect_VKey_Scroll = Aspect_VKeyBasic.Aspect_VKey_Scroll
+Aspect_VKey_Numpad0 = Aspect_VKeyBasic.Aspect_VKey_Numpad0
+Aspect_VKey_Numpad1 = Aspect_VKeyBasic.Aspect_VKey_Numpad1
+Aspect_VKey_Numpad2 = Aspect_VKeyBasic.Aspect_VKey_Numpad2
+Aspect_VKey_Numpad3 = Aspect_VKeyBasic.Aspect_VKey_Numpad3
+Aspect_VKey_Numpad4 = Aspect_VKeyBasic.Aspect_VKey_Numpad4
+Aspect_VKey_Numpad5 = Aspect_VKeyBasic.Aspect_VKey_Numpad5
+Aspect_VKey_Numpad6 = Aspect_VKeyBasic.Aspect_VKey_Numpad6
+Aspect_VKey_Numpad7 = Aspect_VKeyBasic.Aspect_VKey_Numpad7
+Aspect_VKey_Numpad8 = Aspect_VKeyBasic.Aspect_VKey_Numpad8
+Aspect_VKey_Numpad9 = Aspect_VKeyBasic.Aspect_VKey_Numpad9
+Aspect_VKey_NumpadMultiply = Aspect_VKeyBasic.Aspect_VKey_NumpadMultiply
+Aspect_VKey_NumpadAdd = Aspect_VKeyBasic.Aspect_VKey_NumpadAdd
+Aspect_VKey_NumpadSubtract = Aspect_VKeyBasic.Aspect_VKey_NumpadSubtract
+Aspect_VKey_NumpadDivide = Aspect_VKeyBasic.Aspect_VKey_NumpadDivide
+Aspect_VKey_MediaNextTrack = Aspect_VKeyBasic.Aspect_VKey_MediaNextTrack
+Aspect_VKey_MediaPreviousTrack = Aspect_VKeyBasic.Aspect_VKey_MediaPreviousTrack
+Aspect_VKey_MediaStop = Aspect_VKeyBasic.Aspect_VKey_MediaStop
+Aspect_VKey_MediaPlayPause = Aspect_VKeyBasic.Aspect_VKey_MediaPlayPause
+Aspect_VKey_VolumeMute = Aspect_VKeyBasic.Aspect_VKey_VolumeMute
+Aspect_VKey_VolumeDown = Aspect_VKeyBasic.Aspect_VKey_VolumeDown
+Aspect_VKey_VolumeUp = Aspect_VKeyBasic.Aspect_VKey_VolumeUp
+Aspect_VKey_BrowserBack = Aspect_VKeyBasic.Aspect_VKey_BrowserBack
+Aspect_VKey_BrowserForward = Aspect_VKeyBasic.Aspect_VKey_BrowserForward
+Aspect_VKey_BrowserRefresh = Aspect_VKeyBasic.Aspect_VKey_BrowserRefresh
+Aspect_VKey_BrowserStop = Aspect_VKeyBasic.Aspect_VKey_BrowserStop
+Aspect_VKey_BrowserSearch = Aspect_VKeyBasic.Aspect_VKey_BrowserSearch
+Aspect_VKey_BrowserFavorites = Aspect_VKeyBasic.Aspect_VKey_BrowserFavorites
+Aspect_VKey_BrowserHome = Aspect_VKeyBasic.Aspect_VKey_BrowserHome
+Aspect_VKey_Shift = Aspect_VKeyBasic.Aspect_VKey_Shift
+Aspect_VKey_Control = Aspect_VKeyBasic.Aspect_VKey_Control
+Aspect_VKey_Alt = Aspect_VKeyBasic.Aspect_VKey_Alt
+Aspect_VKey_Menu = Aspect_VKeyBasic.Aspect_VKey_Menu
+Aspect_VKey_Meta = Aspect_VKeyBasic.Aspect_VKey_Meta
+Aspect_VKey_NavInteract = Aspect_VKeyBasic.Aspect_VKey_NavInteract
+Aspect_VKey_NavForward = Aspect_VKeyBasic.Aspect_VKey_NavForward
+Aspect_VKey_NavBackward = Aspect_VKeyBasic.Aspect_VKey_NavBackward
+Aspect_VKey_NavSlideLeft = Aspect_VKeyBasic.Aspect_VKey_NavSlideLeft
+Aspect_VKey_NavSlideRight = Aspect_VKeyBasic.Aspect_VKey_NavSlideRight
+Aspect_VKey_NavSlideUp = Aspect_VKeyBasic.Aspect_VKey_NavSlideUp
+Aspect_VKey_NavSlideDown = Aspect_VKeyBasic.Aspect_VKey_NavSlideDown
+Aspect_VKey_NavRollCCW = Aspect_VKeyBasic.Aspect_VKey_NavRollCCW
+Aspect_VKey_NavRollCW = Aspect_VKeyBasic.Aspect_VKey_NavRollCW
+Aspect_VKey_NavLookLeft = Aspect_VKeyBasic.Aspect_VKey_NavLookLeft
+Aspect_VKey_NavLookRight = Aspect_VKeyBasic.Aspect_VKey_NavLookRight
+Aspect_VKey_NavLookUp = Aspect_VKeyBasic.Aspect_VKey_NavLookUp
+Aspect_VKey_NavLookDown = Aspect_VKeyBasic.Aspect_VKey_NavLookDown
+Aspect_VKey_NavCrouch = Aspect_VKeyBasic.Aspect_VKey_NavCrouch
+Aspect_VKey_NavJump = Aspect_VKeyBasic.Aspect_VKey_NavJump
+Aspect_VKey_NavThrustForward = Aspect_VKeyBasic.Aspect_VKey_NavThrustForward
+Aspect_VKey_NavThrustBackward = Aspect_VKeyBasic.Aspect_VKey_NavThrustBackward
+Aspect_VKey_NavThrustStop = Aspect_VKeyBasic.Aspect_VKey_NavThrustStop
+Aspect_VKey_NavSpeedIncrease = Aspect_VKeyBasic.Aspect_VKey_NavSpeedIncrease
+Aspect_VKey_NavSpeedDecrease = Aspect_VKeyBasic.Aspect_VKey_NavSpeedDecrease
 
-class Aspect_TypeOfDeflection:
+class Aspect_TypeOfDeflection(IntEnum):
 	Aspect_TOD_RELATIVE: int = ...
 	Aspect_TOD_ABSOLUTE: int = ...
+Aspect_TOD_RELATIVE = Aspect_TypeOfDeflection.Aspect_TOD_RELATIVE
+Aspect_TOD_ABSOLUTE = Aspect_TypeOfDeflection.Aspect_TOD_ABSOLUTE
 
-class Aspect_TypeOfLine:
+class Aspect_TypeOfLine(IntEnum):
 	Aspect_TOL_EMPTY: int = ...
 	Aspect_TOL_SOLID: int = ...
 	Aspect_TOL_DASH: int = ...
 	Aspect_TOL_DOT: int = ...
 	Aspect_TOL_DOTDASH: int = ...
 	Aspect_TOL_USERDEFINED: int = ...
+Aspect_TOL_EMPTY = Aspect_TypeOfLine.Aspect_TOL_EMPTY
+Aspect_TOL_SOLID = Aspect_TypeOfLine.Aspect_TOL_SOLID
+Aspect_TOL_DASH = Aspect_TypeOfLine.Aspect_TOL_DASH
+Aspect_TOL_DOT = Aspect_TypeOfLine.Aspect_TOL_DOT
+Aspect_TOL_DOTDASH = Aspect_TypeOfLine.Aspect_TOL_DOTDASH
+Aspect_TOL_USERDEFINED = Aspect_TypeOfLine.Aspect_TOL_USERDEFINED
 
-class Aspect_GradientFillMethod:
+class Aspect_GradientFillMethod(IntEnum):
 	Aspect_GFM_NONE: int = ...
 	Aspect_GFM_HOR: int = ...
 	Aspect_GFM_VER: int = ...
@@ -171,12 +316,23 @@ class Aspect_GradientFillMethod:
 	Aspect_GFM_CORNER2: int = ...
 	Aspect_GFM_CORNER3: int = ...
 	Aspect_GFM_CORNER4: int = ...
+Aspect_GFM_NONE = Aspect_GradientFillMethod.Aspect_GFM_NONE
+Aspect_GFM_HOR = Aspect_GradientFillMethod.Aspect_GFM_HOR
+Aspect_GFM_VER = Aspect_GradientFillMethod.Aspect_GFM_VER
+Aspect_GFM_DIAG1 = Aspect_GradientFillMethod.Aspect_GFM_DIAG1
+Aspect_GFM_DIAG2 = Aspect_GradientFillMethod.Aspect_GFM_DIAG2
+Aspect_GFM_CORNER1 = Aspect_GradientFillMethod.Aspect_GFM_CORNER1
+Aspect_GFM_CORNER2 = Aspect_GradientFillMethod.Aspect_GFM_CORNER2
+Aspect_GFM_CORNER3 = Aspect_GradientFillMethod.Aspect_GFM_CORNER3
+Aspect_GFM_CORNER4 = Aspect_GradientFillMethod.Aspect_GFM_CORNER4
 
-class Aspect_TypeOfHighlightMethod:
+class Aspect_TypeOfHighlightMethod(IntEnum):
 	Aspect_TOHM_COLOR: int = ...
 	Aspect_TOHM_BOUNDBOX: int = ...
+Aspect_TOHM_COLOR = Aspect_TypeOfHighlightMethod.Aspect_TOHM_COLOR
+Aspect_TOHM_BOUNDBOX = Aspect_TypeOfHighlightMethod.Aspect_TOHM_BOUNDBOX
 
-class Aspect_TypeOfResize:
+class Aspect_TypeOfResize(IntEnum):
 	Aspect_TOR_UNKNOWN: int = ...
 	Aspect_TOR_NO_BORDER: int = ...
 	Aspect_TOR_TOP_BORDER: int = ...
@@ -187,20 +343,36 @@ class Aspect_TypeOfResize:
 	Aspect_TOR_RIGHT_AND_BOTTOM_BORDER: int = ...
 	Aspect_TOR_BOTTOM_AND_LEFT_BORDER: int = ...
 	Aspect_TOR_LEFT_AND_TOP_BORDER: int = ...
+Aspect_TOR_UNKNOWN = Aspect_TypeOfResize.Aspect_TOR_UNKNOWN
+Aspect_TOR_NO_BORDER = Aspect_TypeOfResize.Aspect_TOR_NO_BORDER
+Aspect_TOR_TOP_BORDER = Aspect_TypeOfResize.Aspect_TOR_TOP_BORDER
+Aspect_TOR_RIGHT_BORDER = Aspect_TypeOfResize.Aspect_TOR_RIGHT_BORDER
+Aspect_TOR_BOTTOM_BORDER = Aspect_TypeOfResize.Aspect_TOR_BOTTOM_BORDER
+Aspect_TOR_LEFT_BORDER = Aspect_TypeOfResize.Aspect_TOR_LEFT_BORDER
+Aspect_TOR_TOP_AND_RIGHT_BORDER = Aspect_TypeOfResize.Aspect_TOR_TOP_AND_RIGHT_BORDER
+Aspect_TOR_RIGHT_AND_BOTTOM_BORDER = Aspect_TypeOfResize.Aspect_TOR_RIGHT_AND_BOTTOM_BORDER
+Aspect_TOR_BOTTOM_AND_LEFT_BORDER = Aspect_TypeOfResize.Aspect_TOR_BOTTOM_AND_LEFT_BORDER
+Aspect_TOR_LEFT_AND_TOP_BORDER = Aspect_TypeOfResize.Aspect_TOR_LEFT_AND_TOP_BORDER
 
-class Aspect_GridType:
+class Aspect_GridType(IntEnum):
 	Aspect_GT_Rectangular: int = ...
 	Aspect_GT_Circular: int = ...
+Aspect_GT_Rectangular = Aspect_GridType.Aspect_GT_Rectangular
+Aspect_GT_Circular = Aspect_GridType.Aspect_GT_Circular
 
-class Aspect_TypeOfColorScaleData:
+class Aspect_TypeOfColorScaleData(IntEnum):
 	Aspect_TOCSD_AUTO: int = ...
 	Aspect_TOCSD_USER: int = ...
+Aspect_TOCSD_AUTO = Aspect_TypeOfColorScaleData.Aspect_TOCSD_AUTO
+Aspect_TOCSD_USER = Aspect_TypeOfColorScaleData.Aspect_TOCSD_USER
 
-class Aspect_TypeOfStyleText:
+class Aspect_TypeOfStyleText(IntEnum):
 	Aspect_TOST_NORMAL: int = ...
 	Aspect_TOST_ANNOTATION: int = ...
+Aspect_TOST_NORMAL = Aspect_TypeOfStyleText.Aspect_TOST_NORMAL
+Aspect_TOST_ANNOTATION = Aspect_TypeOfStyleText.Aspect_TOST_ANNOTATION
 
-class Aspect_TypeOfMarker:
+class Aspect_TypeOfMarker(IntEnum):
 	Aspect_TOM_EMPTY: int = ...
 	Aspect_TOM_POINT: int = ...
 	Aspect_TOM_PLUS: int = ...
@@ -216,25 +388,51 @@ class Aspect_TypeOfMarker:
 	Aspect_TOM_RING3: int = ...
 	Aspect_TOM_BALL: int = ...
 	Aspect_TOM_USERDEFINED: int = ...
+Aspect_TOM_EMPTY = Aspect_TypeOfMarker.Aspect_TOM_EMPTY
+Aspect_TOM_POINT = Aspect_TypeOfMarker.Aspect_TOM_POINT
+Aspect_TOM_PLUS = Aspect_TypeOfMarker.Aspect_TOM_PLUS
+Aspect_TOM_STAR = Aspect_TypeOfMarker.Aspect_TOM_STAR
+Aspect_TOM_X = Aspect_TypeOfMarker.Aspect_TOM_X
+Aspect_TOM_O = Aspect_TypeOfMarker.Aspect_TOM_O
+Aspect_TOM_O_POINT = Aspect_TypeOfMarker.Aspect_TOM_O_POINT
+Aspect_TOM_O_PLUS = Aspect_TypeOfMarker.Aspect_TOM_O_PLUS
+Aspect_TOM_O_STAR = Aspect_TypeOfMarker.Aspect_TOM_O_STAR
+Aspect_TOM_O_X = Aspect_TypeOfMarker.Aspect_TOM_O_X
+Aspect_TOM_RING1 = Aspect_TypeOfMarker.Aspect_TOM_RING1
+Aspect_TOM_RING2 = Aspect_TypeOfMarker.Aspect_TOM_RING2
+Aspect_TOM_RING3 = Aspect_TypeOfMarker.Aspect_TOM_RING3
+Aspect_TOM_BALL = Aspect_TypeOfMarker.Aspect_TOM_BALL
+Aspect_TOM_USERDEFINED = Aspect_TypeOfMarker.Aspect_TOM_USERDEFINED
 
-class Aspect_TypeOfColorScaleOrientation:
+class Aspect_TypeOfColorScaleOrientation(IntEnum):
 	Aspect_TOCSO_NONE: int = ...
 	Aspect_TOCSO_LEFT: int = ...
 	Aspect_TOCSO_RIGHT: int = ...
 	Aspect_TOCSO_CENTER: int = ...
+Aspect_TOCSO_NONE = Aspect_TypeOfColorScaleOrientation.Aspect_TOCSO_NONE
+Aspect_TOCSO_LEFT = Aspect_TypeOfColorScaleOrientation.Aspect_TOCSO_LEFT
+Aspect_TOCSO_RIGHT = Aspect_TypeOfColorScaleOrientation.Aspect_TOCSO_RIGHT
+Aspect_TOCSO_CENTER = Aspect_TypeOfColorScaleOrientation.Aspect_TOCSO_CENTER
 
-class Aspect_TypeOfFacingModel:
+class Aspect_TypeOfFacingModel(IntEnum):
 	Aspect_TOFM_BOTH_SIDE: int = ...
 	Aspect_TOFM_BACK_SIDE: int = ...
 	Aspect_TOFM_FRONT_SIDE: int = ...
+Aspect_TOFM_BOTH_SIDE = Aspect_TypeOfFacingModel.Aspect_TOFM_BOTH_SIDE
+Aspect_TOFM_BACK_SIDE = Aspect_TypeOfFacingModel.Aspect_TOFM_BACK_SIDE
+Aspect_TOFM_FRONT_SIDE = Aspect_TypeOfFacingModel.Aspect_TOFM_FRONT_SIDE
 
-class Aspect_FillMethod:
+class Aspect_FillMethod(IntEnum):
 	Aspect_FM_NONE: int = ...
 	Aspect_FM_CENTERED: int = ...
 	Aspect_FM_TILED: int = ...
 	Aspect_FM_STRETCH: int = ...
+Aspect_FM_NONE = Aspect_FillMethod.Aspect_FM_NONE
+Aspect_FM_CENTERED = Aspect_FillMethod.Aspect_FM_CENTERED
+Aspect_FM_TILED = Aspect_FillMethod.Aspect_FM_TILED
+Aspect_FM_STRETCH = Aspect_FillMethod.Aspect_FM_STRETCH
 
-class Aspect_HatchStyle:
+class Aspect_HatchStyle(IntEnum):
 	Aspect_HS_SOLID: int = ...
 	Aspect_HS_HORIZONTAL: int = ...
 	Aspect_HS_HORIZONTAL_WIDE: int = ...
@@ -249,8 +447,22 @@ class Aspect_HatchStyle:
 	Aspect_HS_GRID_DIAGONAL: int = ...
 	Aspect_HS_GRID_DIAGONAL_WIDE: int = ...
 	Aspect_HS_NB: int = ...
+Aspect_HS_SOLID = Aspect_HatchStyle.Aspect_HS_SOLID
+Aspect_HS_HORIZONTAL = Aspect_HatchStyle.Aspect_HS_HORIZONTAL
+Aspect_HS_HORIZONTAL_WIDE = Aspect_HatchStyle.Aspect_HS_HORIZONTAL_WIDE
+Aspect_HS_VERTICAL = Aspect_HatchStyle.Aspect_HS_VERTICAL
+Aspect_HS_VERTICAL_WIDE = Aspect_HatchStyle.Aspect_HS_VERTICAL_WIDE
+Aspect_HS_DIAGONAL_45 = Aspect_HatchStyle.Aspect_HS_DIAGONAL_45
+Aspect_HS_DIAGONAL_45_WIDE = Aspect_HatchStyle.Aspect_HS_DIAGONAL_45_WIDE
+Aspect_HS_DIAGONAL_135 = Aspect_HatchStyle.Aspect_HS_DIAGONAL_135
+Aspect_HS_DIAGONAL_135_WIDE = Aspect_HatchStyle.Aspect_HS_DIAGONAL_135_WIDE
+Aspect_HS_GRID = Aspect_HatchStyle.Aspect_HS_GRID
+Aspect_HS_GRID_WIDE = Aspect_HatchStyle.Aspect_HS_GRID_WIDE
+Aspect_HS_GRID_DIAGONAL = Aspect_HatchStyle.Aspect_HS_GRID_DIAGONAL
+Aspect_HS_GRID_DIAGONAL_WIDE = Aspect_HatchStyle.Aspect_HS_GRID_DIAGONAL_WIDE
+Aspect_HS_NB = Aspect_HatchStyle.Aspect_HS_NB
 
-class Aspect_PolygonOffsetMode:
+class Aspect_PolygonOffsetMode(IntEnum):
 	Aspect_POM_Off: int = ...
 	Aspect_POM_Fill: int = ...
 	Aspect_POM_Line: int = ...
@@ -258,17 +470,29 @@ class Aspect_PolygonOffsetMode:
 	Aspect_POM_All: int = ...
 	Aspect_POM_None: int = ...
 	Aspect_POM_Mask: int = ...
+Aspect_POM_Off = Aspect_PolygonOffsetMode.Aspect_POM_Off
+Aspect_POM_Fill = Aspect_PolygonOffsetMode.Aspect_POM_Fill
+Aspect_POM_Line = Aspect_PolygonOffsetMode.Aspect_POM_Line
+Aspect_POM_Point = Aspect_PolygonOffsetMode.Aspect_POM_Point
+Aspect_POM_All = Aspect_PolygonOffsetMode.Aspect_POM_All
+Aspect_POM_None = Aspect_PolygonOffsetMode.Aspect_POM_None
+Aspect_POM_Mask = Aspect_PolygonOffsetMode.Aspect_POM_Mask
 
-class Aspect_TypeOfColorScalePosition:
+class Aspect_TypeOfColorScalePosition(IntEnum):
 	Aspect_TOCSP_NONE: int = ...
 	Aspect_TOCSP_LEFT: int = ...
 	Aspect_TOCSP_RIGHT: int = ...
 	Aspect_TOCSP_CENTER: int = ...
+Aspect_TOCSP_NONE = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_NONE
+Aspect_TOCSP_LEFT = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_LEFT
+Aspect_TOCSP_RIGHT = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_RIGHT
+Aspect_TOCSP_CENTER = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_CENTER
 
-class Aspect_XAtom:
+class Aspect_XAtom(IntEnum):
 	Aspect_XA_DELETE_WINDOW: int = ...
+Aspect_XA_DELETE_WINDOW = Aspect_XAtom.Aspect_XA_DELETE_WINDOW
 
-class Aspect_TypeOfTriedronPosition:
+class Aspect_TypeOfTriedronPosition(IntEnum):
 	Aspect_TOTP_CENTER: int = ...
 	Aspect_TOTP_TOP: int = ...
 	Aspect_TOTP_BOTTOM: int = ...
@@ -278,34 +502,63 @@ class Aspect_TypeOfTriedronPosition:
 	Aspect_TOTP_LEFT_UPPER: int = ...
 	Aspect_TOTP_RIGHT_LOWER: int = ...
 	Aspect_TOTP_RIGHT_UPPER: int = ...
+Aspect_TOTP_CENTER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_CENTER
+Aspect_TOTP_TOP = Aspect_TypeOfTriedronPosition.Aspect_TOTP_TOP
+Aspect_TOTP_BOTTOM = Aspect_TypeOfTriedronPosition.Aspect_TOTP_BOTTOM
+Aspect_TOTP_LEFT = Aspect_TypeOfTriedronPosition.Aspect_TOTP_LEFT
+Aspect_TOTP_RIGHT = Aspect_TypeOfTriedronPosition.Aspect_TOTP_RIGHT
+Aspect_TOTP_LEFT_LOWER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_LEFT_LOWER
+Aspect_TOTP_LEFT_UPPER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_LEFT_UPPER
+Aspect_TOTP_RIGHT_LOWER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_RIGHT_LOWER
+Aspect_TOTP_RIGHT_UPPER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_RIGHT_UPPER
 
-class Aspect_GridDrawMode:
+class Aspect_GridDrawMode(IntEnum):
 	Aspect_GDM_Lines: int = ...
 	Aspect_GDM_Points: int = ...
 	Aspect_GDM_None: int = ...
+Aspect_GDM_Lines = Aspect_GridDrawMode.Aspect_GDM_Lines
+Aspect_GDM_Points = Aspect_GridDrawMode.Aspect_GDM_Points
+Aspect_GDM_None = Aspect_GridDrawMode.Aspect_GDM_None
 
-class Aspect_WidthOfLine:
+class Aspect_WidthOfLine(IntEnum):
 	Aspect_WOL_THIN: int = ...
 	Aspect_WOL_MEDIUM: int = ...
 	Aspect_WOL_THICK: int = ...
 	Aspect_WOL_VERYTHICK: int = ...
 	Aspect_WOL_USERDEFINED: int = ...
+Aspect_WOL_THIN = Aspect_WidthOfLine.Aspect_WOL_THIN
+Aspect_WOL_MEDIUM = Aspect_WidthOfLine.Aspect_WOL_MEDIUM
+Aspect_WOL_THICK = Aspect_WidthOfLine.Aspect_WOL_THICK
+Aspect_WOL_VERYTHICK = Aspect_WidthOfLine.Aspect_WOL_VERYTHICK
+Aspect_WOL_USERDEFINED = Aspect_WidthOfLine.Aspect_WOL_USERDEFINED
 
-class Aspect_TypeOfDisplayText:
+class Aspect_TypeOfDisplayText(IntEnum):
 	Aspect_TODT_NORMAL: int = ...
 	Aspect_TODT_SUBTITLE: int = ...
 	Aspect_TODT_DEKALE: int = ...
 	Aspect_TODT_BLEND: int = ...
 	Aspect_TODT_DIMENSION: int = ...
 	Aspect_TODT_SHADOW: int = ...
+Aspect_TODT_NORMAL = Aspect_TypeOfDisplayText.Aspect_TODT_NORMAL
+Aspect_TODT_SUBTITLE = Aspect_TypeOfDisplayText.Aspect_TODT_SUBTITLE
+Aspect_TODT_DEKALE = Aspect_TypeOfDisplayText.Aspect_TODT_DEKALE
+Aspect_TODT_BLEND = Aspect_TypeOfDisplayText.Aspect_TODT_BLEND
+Aspect_TODT_DIMENSION = Aspect_TypeOfDisplayText.Aspect_TODT_DIMENSION
+Aspect_TODT_SHADOW = Aspect_TypeOfDisplayText.Aspect_TODT_SHADOW
 
-class Aspect_InteriorStyle:
+class Aspect_InteriorStyle(IntEnum):
 	Aspect_IS_EMPTY: int = ...
 	Aspect_IS_SOLID: int = ...
 	Aspect_IS_HATCH: int = ...
 	Aspect_IS_HIDDENLINE: int = ...
 	Aspect_IS_POINT: int = ...
 	Aspect_IS_HOLLOW: int = ...
+Aspect_IS_EMPTY = Aspect_InteriorStyle.Aspect_IS_EMPTY
+Aspect_IS_SOLID = Aspect_InteriorStyle.Aspect_IS_SOLID
+Aspect_IS_HATCH = Aspect_InteriorStyle.Aspect_IS_HATCH
+Aspect_IS_HIDDENLINE = Aspect_InteriorStyle.Aspect_IS_HIDDENLINE
+Aspect_IS_POINT = Aspect_InteriorStyle.Aspect_IS_POINT
+Aspect_IS_HOLLOW = Aspect_InteriorStyle.Aspect_IS_HOLLOW
 
 class Aspect_Background:
 	@overload
@@ -324,11 +577,15 @@ class Aspect_GenId:
 	@overload
 	def __init__(self, theLow: int, theUpper: int) -> None: ...
 	def Available(self) -> int: ...
+	@overload
 	def Free(self) -> None: ...
+	@overload
 	def Free(self, theId: int) -> None: ...
 	def HasFree(self) -> bool: ...
 	def Lower(self) -> int: ...
+	@overload
 	def Next(self) -> int: ...
+	@overload
 	def Next(self) -> Tuple[bool, int]: ...
 	def Upper(self) -> int: ...
 
@@ -359,7 +616,7 @@ class Aspect_ScrollDelta:
 	@overload
 	def __init__(self) -> None: ...
 	@overload
-	def __init__(self, theValue: float, theFlags: Optional[Aspect_VKeyFlags]) -> None: ...
+	def __init__(self, theValue: float, theFlags: Optional[Aspect_VKeyFlags] = Aspect_VKeyFlags_NONE) -> None: ...
 	def HasPoint(self) -> False: ...
 	def ResetPoint(self) -> None: ...
 
@@ -383,9 +640,13 @@ class Aspect_Window(Standard_Transient):
 	def NativeFBConfig(self) -> Aspect_FBConfig: ...
 	def Position(self) -> Tuple[int, int, int, int]: ...
 	def Ratio(self) -> float: ...
+	@overload
 	def SetBackground(self, ABack: Aspect_Background) -> None: ...
+	@overload
 	def SetBackground(self, color: Quantity_Color) -> None: ...
+	@overload
 	def SetBackground(self, ABackground: Aspect_GradientBackground) -> None: ...
+	@overload
 	def SetBackground(self, theFirstColor: Quantity_Color, theSecondColor: Quantity_Color, theFillMethod: Aspect_GradientFillMethod) -> None: ...
 	def SetTitle(self, theTitle: TCollection_AsciiString) -> None: ...
 	def SetVirtual(self, theVirtual: bool) -> None: ...
@@ -396,7 +657,21 @@ class Aspect_GradientBackground(Aspect_Background):
 	@overload
 	def __init__(self) -> None: ...
 	@overload
-	def __init__(self, AColor1: Quantity_Color, AColor2: Quantity_Color, AMethod: Optional[Aspect_GradientFillMethod]) -> None: ...
+	def __init__(self, AColor1: Quantity_Color, AColor2: Quantity_Color, AMethod: Optional[Aspect_GradientFillMethod] = Aspect_GFM_HOR) -> None: ...
 	def BgGradientFillMethod(self) -> Aspect_GradientFillMethod: ...
 	def Colors(self, AColor1: Quantity_Color, AColor2: Quantity_Color) -> None: ...
-	def SetColors(self, AColor1: Quantity_Color, AColor2: Quantity_Color, AMethod: Optional[Aspect_GradientFillMethod]) -> None: ...
+	def SetColors(self, AColor1: Quantity_Color, AColor2: Quantity_Color, AMethod: Optional[Aspect_GradientFillMethod] = Aspect_GFM_HOR) -> None: ...
+
+#classnotwrapped
+class Aspect_CircularGrid: ...
+
+#classnotwrapped
+class Aspect_NeutralWindow: ...
+
+#classnotwrapped
+class Aspect_RectangularGrid: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

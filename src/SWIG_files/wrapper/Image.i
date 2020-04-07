@@ -50,6 +50,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_image.html"
 %import NCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -77,7 +78,7 @@ enum Image_Format {
 /* python proy classes for enums */
 %pythoncode {
 
-class Image_Format:
+class Image_Format(IntEnum):
 	Image_Format_UNKNOWN = 0
 	Image_Format_Gray = 1
 	Image_Format_Alpha = 2
@@ -93,6 +94,21 @@ class Image_Format:
 	Image_Format_BGRF = 12
 	Image_Format_RGBAF = 13
 	Image_Format_BGRAF = 14
+Image_Format_UNKNOWN = Image_Format.Image_Format_UNKNOWN
+Image_Format_Gray = Image_Format.Image_Format_Gray
+Image_Format_Alpha = Image_Format.Image_Format_Alpha
+Image_Format_RGB = Image_Format.Image_Format_RGB
+Image_Format_BGR = Image_Format.Image_Format_BGR
+Image_Format_RGB32 = Image_Format.Image_Format_RGB32
+Image_Format_BGR32 = Image_Format.Image_Format_BGR32
+Image_Format_RGBA = Image_Format.Image_Format_RGBA
+Image_Format_BGRA = Image_Format.Image_Format_BGRA
+Image_Format_GrayF = Image_Format.Image_Format_GrayF
+Image_Format_AlphaF = Image_Format.Image_Format_AlphaF
+Image_Format_RGBF = Image_Format.Image_Format_RGBF
+Image_Format_BGRF = Image_Format.Image_Format_BGRF
+Image_Format_RGBAF = Image_Format.Image_Format_RGBAF
+Image_Format_BGRAF = Image_Format.Image_Format_BGRAF
 };
 /* end python proxy for enums */
 

@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.GeomToStep import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
@@ -220,3 +220,8 @@ class GeomToStep_MakeVector(GeomToStep_Root):
 	@overload
 	def __init__(self, V: Geom2d_Vector) -> None: ...
 	def Value(self) -> StepGeom_Vector: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

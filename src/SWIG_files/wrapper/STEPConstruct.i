@@ -91,6 +91,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepconstruct.htm
 %import Quantity.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 

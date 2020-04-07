@@ -83,6 +83,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topopebrepds.html
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -118,16 +119,21 @@ enum TopOpeBRepDS_Kind {
 /* python proy classes for enums */
 %pythoncode {
 
-class TopOpeBRepDS_Config:
+class TopOpeBRepDS_Config(IntEnum):
 	TopOpeBRepDS_UNSHGEOMETRY = 0
 	TopOpeBRepDS_SAMEORIENTED = 1
 	TopOpeBRepDS_DIFFORIENTED = 2
+TopOpeBRepDS_UNSHGEOMETRY = TopOpeBRepDS_Config.TopOpeBRepDS_UNSHGEOMETRY
+TopOpeBRepDS_SAMEORIENTED = TopOpeBRepDS_Config.TopOpeBRepDS_SAMEORIENTED
+TopOpeBRepDS_DIFFORIENTED = TopOpeBRepDS_Config.TopOpeBRepDS_DIFFORIENTED
 
-class TopOpeBRepDS_CheckStatus:
+class TopOpeBRepDS_CheckStatus(IntEnum):
 	TopOpeBRepDS_OK = 0
 	TopOpeBRepDS_NOK = 1
+TopOpeBRepDS_OK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_OK
+TopOpeBRepDS_NOK = TopOpeBRepDS_CheckStatus.TopOpeBRepDS_NOK
 
-class TopOpeBRepDS_Kind:
+class TopOpeBRepDS_Kind(IntEnum):
 	TopOpeBRepDS_POINT = 0
 	TopOpeBRepDS_CURVE = 1
 	TopOpeBRepDS_SURFACE = 2
@@ -140,6 +146,18 @@ class TopOpeBRepDS_Kind:
 	TopOpeBRepDS_COMPSOLID = 9
 	TopOpeBRepDS_COMPOUND = 10
 	TopOpeBRepDS_UNKNOWN = 11
+TopOpeBRepDS_POINT = TopOpeBRepDS_Kind.TopOpeBRepDS_POINT
+TopOpeBRepDS_CURVE = TopOpeBRepDS_Kind.TopOpeBRepDS_CURVE
+TopOpeBRepDS_SURFACE = TopOpeBRepDS_Kind.TopOpeBRepDS_SURFACE
+TopOpeBRepDS_VERTEX = TopOpeBRepDS_Kind.TopOpeBRepDS_VERTEX
+TopOpeBRepDS_EDGE = TopOpeBRepDS_Kind.TopOpeBRepDS_EDGE
+TopOpeBRepDS_WIRE = TopOpeBRepDS_Kind.TopOpeBRepDS_WIRE
+TopOpeBRepDS_FACE = TopOpeBRepDS_Kind.TopOpeBRepDS_FACE
+TopOpeBRepDS_SHELL = TopOpeBRepDS_Kind.TopOpeBRepDS_SHELL
+TopOpeBRepDS_SOLID = TopOpeBRepDS_Kind.TopOpeBRepDS_SOLID
+TopOpeBRepDS_COMPSOLID = TopOpeBRepDS_Kind.TopOpeBRepDS_COMPSOLID
+TopOpeBRepDS_COMPOUND = TopOpeBRepDS_Kind.TopOpeBRepDS_COMPOUND
+TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
 };
 /* end python proxy for enums */
 
@@ -229,6 +247,13 @@ class TopOpeBRepDS_Kind:
 %template(TopOpeBRepDS_IndexedDataMapOfVertexPoint) NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_Point,TopTools_ShapeMapHasher>;
 %template(TopOpeBRepDS_ListIteratorOfListOfInterference) NCollection_TListIterator<opencascade::handle<TopOpeBRepDS_Interference>>;
 %template(TopOpeBRepDS_ListOfInterference) NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>;
+
+%extend NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TopOpeBRepDS_MapOfCurve) NCollection_DataMap<Standard_Integer,TopOpeBRepDS_CurveData,TColStd_MapIntegerHasher>;
 
 %extend NCollection_DataMap<Standard_Integer,TopOpeBRepDS_CurveData,TColStd_MapIntegerHasher> {
@@ -7610,16 +7635,16 @@ class TopOpeBRepDS_HDataStructure:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
-class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference, public Standard_Transient {
+
+class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference, public Standard_Transient {
   public:
     TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper, const  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference::value_type& theValue);
-    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& theOther);
-    const  TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Array1();
-     TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& ChangeArray1();
+    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper, const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference::value_type& theValue);
+    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& theOther);
+    const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Array1();
+    TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& ChangeArray1();
 };
 %make_alias(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference)
-
 
 /* harray2 classes */
 /* hsequence classes */

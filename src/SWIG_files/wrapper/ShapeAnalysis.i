@@ -82,6 +82,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_shapeanalysis.htm
 %import IntRes2d.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -5402,14 +5403,14 @@ class ShapeCustom_ConvertToRevolution:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class ShapeAnalysis_HSequenceOfFreeBounds : public  ShapeAnalysis_SequenceOfFreeBounds, public Standard_Transient {
+class ShapeAnalysis_HSequenceOfFreeBounds : public ShapeAnalysis_SequenceOfFreeBounds, public Standard_Transient {
   public:
     ShapeAnalysis_HSequenceOfFreeBounds();
-    ShapeAnalysis_HSequenceOfFreeBounds(const  ShapeAnalysis_SequenceOfFreeBounds& theOther);
-    const  ShapeAnalysis_SequenceOfFreeBounds& Sequence();
-    void Append (const  ShapeAnalysis_SequenceOfFreeBounds::value_type& theItem);
-    void Append ( ShapeAnalysis_SequenceOfFreeBounds& theSequence);
-     ShapeAnalysis_SequenceOfFreeBounds& ChangeSequence();
+    ShapeAnalysis_HSequenceOfFreeBounds(const ShapeAnalysis_SequenceOfFreeBounds& theOther);
+    const ShapeAnalysis_SequenceOfFreeBounds& Sequence();
+    void Append (const ShapeAnalysis_SequenceOfFreeBounds::value_type& theItem);
+    void Append (ShapeAnalysis_SequenceOfFreeBounds& theSequence);
+    ShapeAnalysis_SequenceOfFreeBounds& ChangeSequence();
 };
 %make_alias(ShapeAnalysis_HSequenceOfFreeBounds)
 

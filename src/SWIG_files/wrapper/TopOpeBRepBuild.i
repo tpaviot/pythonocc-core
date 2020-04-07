@@ -81,6 +81,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topopebrepbuild.h
 %import TColStd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -96,10 +97,13 @@ enum TopOpeBRepBuild_LoopEnum {
 /* python proy classes for enums */
 %pythoncode {
 
-class TopOpeBRepBuild_LoopEnum:
+class TopOpeBRepBuild_LoopEnum(IntEnum):
 	TopOpeBRepBuild_ANYLOOP = 0
 	TopOpeBRepBuild_BOUNDARY = 1
 	TopOpeBRepBuild_BLOCK = 2
+TopOpeBRepBuild_ANYLOOP = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_ANYLOOP
+TopOpeBRepBuild_BOUNDARY = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BOUNDARY
+TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
 };
 /* end python proxy for enums */
 
@@ -117,9 +121,37 @@ class TopOpeBRepBuild_LoopEnum:
 %template(TopOpeBRepBuild_ListIteratorOfListOfPave) NCollection_TListIterator<opencascade::handle<TopOpeBRepBuild_Pave>>;
 %template(TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape) NCollection_TListIterator<TopOpeBRepBuild_ShapeListOfShape>;
 %template(TopOpeBRepBuild_ListOfListOfLoop) NCollection_List<TopOpeBRepBuild_ListOfLoop>;
+
+%extend NCollection_List<TopOpeBRepBuild_ListOfLoop> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TopOpeBRepBuild_ListOfLoop) NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>>;
+
+%extend NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TopOpeBRepBuild_ListOfPave) NCollection_List<opencascade::handle<TopOpeBRepBuild_Pave>>;
+
+%extend NCollection_List<opencascade::handle<TopOpeBRepBuild_Pave>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TopOpeBRepBuild_ListOfShapeListOfShape) NCollection_List<TopOpeBRepBuild_ShapeListOfShape>;
+
+%extend NCollection_List<TopOpeBRepBuild_ShapeListOfShape> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

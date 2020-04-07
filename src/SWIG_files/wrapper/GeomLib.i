@@ -72,6 +72,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomlib.html"
 %import AdvApprox.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -88,11 +89,15 @@ enum GeomLib_InterpolationErrors {
 /* python proy classes for enums */
 %pythoncode {
 
-class GeomLib_InterpolationErrors:
+class GeomLib_InterpolationErrors(IntEnum):
 	GeomLib_NoError = 0
 	GeomLib_NotEnoughtPoints = 1
 	GeomLib_DegreeSmallerThan3 = 2
 	GeomLib_InversionProblem = 3
+GeomLib_NoError = GeomLib_InterpolationErrors.GeomLib_NoError
+GeomLib_NotEnoughtPoints = GeomLib_InterpolationErrors.GeomLib_NotEnoughtPoints
+GeomLib_DegreeSmallerThan3 = GeomLib_InterpolationErrors.GeomLib_DegreeSmallerThan3
+GeomLib_InversionProblem = GeomLib_InterpolationErrors.GeomLib_InversionProblem
 };
 /* end python proxy for enums */
 

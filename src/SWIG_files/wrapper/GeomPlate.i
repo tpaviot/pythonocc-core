@@ -79,6 +79,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomplate.html"
 %import Plate.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -1946,50 +1947,50 @@ float
 };
 
 /* harray1 classes */
-class GeomPlate_HArray1OfSequenceOfReal : public  GeomPlate_Array1OfSequenceOfReal, public Standard_Transient {
+
+class GeomPlate_HArray1OfSequenceOfReal : public GeomPlate_Array1OfSequenceOfReal, public Standard_Transient {
   public:
     GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
-    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const  GeomPlate_Array1OfSequenceOfReal::value_type& theValue);
-    GeomPlate_HArray1OfSequenceOfReal(const  GeomPlate_Array1OfSequenceOfReal& theOther);
-    const  GeomPlate_Array1OfSequenceOfReal& Array1();
-     GeomPlate_Array1OfSequenceOfReal& ChangeArray1();
+    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const GeomPlate_Array1OfSequenceOfReal::value_type& theValue);
+    GeomPlate_HArray1OfSequenceOfReal(const GeomPlate_Array1OfSequenceOfReal& theOther);
+    const GeomPlate_Array1OfSequenceOfReal& Array1();
+    GeomPlate_Array1OfSequenceOfReal& ChangeArray1();
 };
 %make_alias(GeomPlate_HArray1OfSequenceOfReal)
 
 
-class GeomPlate_HArray1OfHCurve : public  GeomPlate_Array1OfHCurve, public Standard_Transient {
+class GeomPlate_HArray1OfHCurve : public GeomPlate_Array1OfHCurve, public Standard_Transient {
   public:
     GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  GeomPlate_Array1OfHCurve::value_type& theValue);
-    GeomPlate_HArray1OfHCurve(const  GeomPlate_Array1OfHCurve& theOther);
-    const  GeomPlate_Array1OfHCurve& Array1();
-     GeomPlate_Array1OfHCurve& ChangeArray1();
+    GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const GeomPlate_Array1OfHCurve::value_type& theValue);
+    GeomPlate_HArray1OfHCurve(const GeomPlate_Array1OfHCurve& theOther);
+    const GeomPlate_Array1OfHCurve& Array1();
+    GeomPlate_Array1OfHCurve& ChangeArray1();
 };
 %make_alias(GeomPlate_HArray1OfHCurve)
 
-
 /* harray2 classes */
 /* hsequence classes */
-class GeomPlate_HSequenceOfPointConstraint : public  GeomPlate_SequenceOfPointConstraint, public Standard_Transient {
+class GeomPlate_HSequenceOfPointConstraint : public GeomPlate_SequenceOfPointConstraint, public Standard_Transient {
   public:
     GeomPlate_HSequenceOfPointConstraint();
-    GeomPlate_HSequenceOfPointConstraint(const  GeomPlate_SequenceOfPointConstraint& theOther);
-    const  GeomPlate_SequenceOfPointConstraint& Sequence();
-    void Append (const  GeomPlate_SequenceOfPointConstraint::value_type& theItem);
-    void Append ( GeomPlate_SequenceOfPointConstraint& theSequence);
-     GeomPlate_SequenceOfPointConstraint& ChangeSequence();
+    GeomPlate_HSequenceOfPointConstraint(const GeomPlate_SequenceOfPointConstraint& theOther);
+    const GeomPlate_SequenceOfPointConstraint& Sequence();
+    void Append (const GeomPlate_SequenceOfPointConstraint::value_type& theItem);
+    void Append (GeomPlate_SequenceOfPointConstraint& theSequence);
+    GeomPlate_SequenceOfPointConstraint& ChangeSequence();
 };
 %make_alias(GeomPlate_HSequenceOfPointConstraint)
 
 
-class GeomPlate_HSequenceOfCurveConstraint : public  GeomPlate_SequenceOfCurveConstraint, public Standard_Transient {
+class GeomPlate_HSequenceOfCurveConstraint : public GeomPlate_SequenceOfCurveConstraint, public Standard_Transient {
   public:
     GeomPlate_HSequenceOfCurveConstraint();
-    GeomPlate_HSequenceOfCurveConstraint(const  GeomPlate_SequenceOfCurveConstraint& theOther);
-    const  GeomPlate_SequenceOfCurveConstraint& Sequence();
-    void Append (const  GeomPlate_SequenceOfCurveConstraint::value_type& theItem);
-    void Append ( GeomPlate_SequenceOfCurveConstraint& theSequence);
-     GeomPlate_SequenceOfCurveConstraint& ChangeSequence();
+    GeomPlate_HSequenceOfCurveConstraint(const GeomPlate_SequenceOfCurveConstraint& theOther);
+    const GeomPlate_SequenceOfCurveConstraint& Sequence();
+    void Append (const GeomPlate_SequenceOfCurveConstraint::value_type& theItem);
+    void Append (GeomPlate_SequenceOfCurveConstraint& theSequence);
+    GeomPlate_SequenceOfCurveConstraint& ChangeSequence();
 };
 %make_alias(GeomPlate_HSequenceOfCurveConstraint)
 

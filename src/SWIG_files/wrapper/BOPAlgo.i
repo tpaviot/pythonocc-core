@@ -83,6 +83,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopalgo.html"
 %import TopAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -122,7 +123,7 @@ enum BOPAlgo_GlueEnum {
 /* python proy classes for enums */
 %pythoncode {
 
-class BOPAlgo_CheckStatus:
+class BOPAlgo_CheckStatus(IntEnum):
 	BOPAlgo_CheckUnknown = 0
 	BOPAlgo_BadType = 1
 	BOPAlgo_SelfIntersect = 2
@@ -135,19 +136,40 @@ class BOPAlgo_CheckStatus:
 	BOPAlgo_GeomAbs_C0 = 9
 	BOPAlgo_InvalidCurveOnSurface = 10
 	BOPAlgo_NotValid = 11
+BOPAlgo_CheckUnknown = BOPAlgo_CheckStatus.BOPAlgo_CheckUnknown
+BOPAlgo_BadType = BOPAlgo_CheckStatus.BOPAlgo_BadType
+BOPAlgo_SelfIntersect = BOPAlgo_CheckStatus.BOPAlgo_SelfIntersect
+BOPAlgo_TooSmallEdge = BOPAlgo_CheckStatus.BOPAlgo_TooSmallEdge
+BOPAlgo_NonRecoverableFace = BOPAlgo_CheckStatus.BOPAlgo_NonRecoverableFace
+BOPAlgo_IncompatibilityOfVertex = BOPAlgo_CheckStatus.BOPAlgo_IncompatibilityOfVertex
+BOPAlgo_IncompatibilityOfEdge = BOPAlgo_CheckStatus.BOPAlgo_IncompatibilityOfEdge
+BOPAlgo_IncompatibilityOfFace = BOPAlgo_CheckStatus.BOPAlgo_IncompatibilityOfFace
+BOPAlgo_OperationAborted = BOPAlgo_CheckStatus.BOPAlgo_OperationAborted
+BOPAlgo_GeomAbs_C0 = BOPAlgo_CheckStatus.BOPAlgo_GeomAbs_C0
+BOPAlgo_InvalidCurveOnSurface = BOPAlgo_CheckStatus.BOPAlgo_InvalidCurveOnSurface
+BOPAlgo_NotValid = BOPAlgo_CheckStatus.BOPAlgo_NotValid
 
-class BOPAlgo_Operation:
+class BOPAlgo_Operation(IntEnum):
 	BOPAlgo_COMMON = 0
 	BOPAlgo_FUSE = 1
 	BOPAlgo_CUT = 2
 	BOPAlgo_CUT21 = 3
 	BOPAlgo_SECTION = 4
 	BOPAlgo_UNKNOWN = 5
+BOPAlgo_COMMON = BOPAlgo_Operation.BOPAlgo_COMMON
+BOPAlgo_FUSE = BOPAlgo_Operation.BOPAlgo_FUSE
+BOPAlgo_CUT = BOPAlgo_Operation.BOPAlgo_CUT
+BOPAlgo_CUT21 = BOPAlgo_Operation.BOPAlgo_CUT21
+BOPAlgo_SECTION = BOPAlgo_Operation.BOPAlgo_SECTION
+BOPAlgo_UNKNOWN = BOPAlgo_Operation.BOPAlgo_UNKNOWN
 
-class BOPAlgo_GlueEnum:
+class BOPAlgo_GlueEnum(IntEnum):
 	BOPAlgo_GlueOff = 0
 	BOPAlgo_GlueShift = 1
 	BOPAlgo_GlueFull = 2
+BOPAlgo_GlueOff = BOPAlgo_GlueEnum.BOPAlgo_GlueOff
+BOPAlgo_GlueShift = BOPAlgo_GlueEnum.BOPAlgo_GlueShift
+BOPAlgo_GlueFull = BOPAlgo_GlueEnum.BOPAlgo_GlueFull
 };
 /* end python proxy for enums */
 
@@ -156,6 +178,13 @@ class BOPAlgo_GlueEnum:
 
 /* templates */
 %template(BOPAlgo_ListOfCheckResult) NCollection_List<BOPAlgo_CheckResult>;
+
+%extend NCollection_List<BOPAlgo_CheckResult> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

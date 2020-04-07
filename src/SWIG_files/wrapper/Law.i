@@ -62,6 +62,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_law.html"
 %import TColgp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -86,6 +87,13 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(Law_Laws) NCollection_List<opencascade::handle<Law_Function>>;
+
+%extend NCollection_List<opencascade::handle<Law_Function>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Law_ListIteratorOfLaws) NCollection_TListIterator<opencascade::handle<Law_Function>>;
 /* end templates declaration */
 

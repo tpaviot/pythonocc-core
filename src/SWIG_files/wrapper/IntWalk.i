@@ -67,6 +67,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intwalk.html"
 %import IntSurf.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -85,13 +86,19 @@ enum IntWalk_StatusDeflection {
 /* python proy classes for enums */
 %pythoncode {
 
-class IntWalk_StatusDeflection:
+class IntWalk_StatusDeflection(IntEnum):
 	IntWalk_PasTropGrand = 0
 	IntWalk_StepTooSmall = 1
 	IntWalk_PointConfondu = 2
 	IntWalk_ArretSurPointPrecedent = 3
 	IntWalk_ArretSurPoint = 4
 	IntWalk_OK = 5
+IntWalk_PasTropGrand = IntWalk_StatusDeflection.IntWalk_PasTropGrand
+IntWalk_StepTooSmall = IntWalk_StatusDeflection.IntWalk_StepTooSmall
+IntWalk_PointConfondu = IntWalk_StatusDeflection.IntWalk_PointConfondu
+IntWalk_ArretSurPointPrecedent = IntWalk_StatusDeflection.IntWalk_ArretSurPointPrecedent
+IntWalk_ArretSurPoint = IntWalk_StatusDeflection.IntWalk_ArretSurPoint
+IntWalk_OK = IntWalk_StatusDeflection.IntWalk_OK
 };
 /* end python proxy for enums */
 

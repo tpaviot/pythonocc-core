@@ -75,6 +75,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intpatch.html"
 %import IntAna.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -104,15 +105,21 @@ enum IntPatch_IType {
 /* python proy classes for enums */
 %pythoncode {
 
-class IntPatch_SpecPntType:
+class IntPatch_SpecPntType(IntEnum):
 	IntPatch_SPntNone = 0
 	IntPatch_SPntSeamU = 1
 	IntPatch_SPntSeamV = 2
 	IntPatch_SPntSeamUV = 3
 	IntPatch_SPntPoleSeamU = 4
 	IntPatch_SPntPole = 5
+IntPatch_SPntNone = IntPatch_SpecPntType.IntPatch_SPntNone
+IntPatch_SPntSeamU = IntPatch_SpecPntType.IntPatch_SPntSeamU
+IntPatch_SPntSeamV = IntPatch_SpecPntType.IntPatch_SPntSeamV
+IntPatch_SPntSeamUV = IntPatch_SpecPntType.IntPatch_SPntSeamUV
+IntPatch_SPntPoleSeamU = IntPatch_SpecPntType.IntPatch_SPntPoleSeamU
+IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 
-class IntPatch_IType:
+class IntPatch_IType(IntEnum):
 	IntPatch_Lin = 0
 	IntPatch_Circle = 1
 	IntPatch_Ellipse = 2
@@ -121,6 +128,14 @@ class IntPatch_IType:
 	IntPatch_Analytic = 5
 	IntPatch_Walking = 6
 	IntPatch_Restriction = 7
+IntPatch_Lin = IntPatch_IType.IntPatch_Lin
+IntPatch_Circle = IntPatch_IType.IntPatch_Circle
+IntPatch_Ellipse = IntPatch_IType.IntPatch_Ellipse
+IntPatch_Parabola = IntPatch_IType.IntPatch_Parabola
+IntPatch_Hyperbola = IntPatch_IType.IntPatch_Hyperbola
+IntPatch_Analytic = IntPatch_IType.IntPatch_Analytic
+IntPatch_Walking = IntPatch_IType.IntPatch_Walking
+IntPatch_Restriction = IntPatch_IType.IntPatch_Restriction
 };
 /* end python proxy for enums */
 
@@ -1482,10 +1497,13 @@ enum IntStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class IntStatus:
+class IntStatus(IntEnum):
 	IntStatus_OK = 0
 	IntStatus_InfiniteSectionCurve = 1
 	IntStatus_Fail = 2
+IntStatus_OK = IntStatus.IntStatus_OK
+IntStatus_InfiniteSectionCurve = IntStatus.IntStatus_InfiniteSectionCurve
+IntStatus_Fail = IntStatus.IntStatus_Fail
 };
 /* end python proxy for enums */
 
@@ -6608,11 +6626,15 @@ enum IntPatch_WLType {
 /* python proy classes for enums */
 %pythoncode {
 
-class IntPatch_WLType:
+class IntPatch_WLType(IntEnum):
 	IntPatch_WLUnknown = 0
 	IntPatch_WLImpImp = 1
 	IntPatch_WLImpPrm = 2
 	IntPatch_WLPrmPrm = 3
+IntPatch_WLUnknown = IntPatch_WLType.IntPatch_WLUnknown
+IntPatch_WLImpImp = IntPatch_WLType.IntPatch_WLImpImp
+IntPatch_WLImpPrm = IntPatch_WLType.IntPatch_WLImpPrm
+IntPatch_WLPrmPrm = IntPatch_WLType.IntPatch_WLPrmPrm
 };
 /* end python proxy for enums */
 

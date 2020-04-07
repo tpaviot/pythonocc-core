@@ -58,6 +58,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_cdm.html"
 %import Resource.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -75,12 +76,17 @@ enum CDM_CanCloseStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class CDM_CanCloseStatus:
+class CDM_CanCloseStatus(IntEnum):
 	CDM_CCS_OK = 0
 	CDM_CCS_NotOpen = 1
 	CDM_CCS_UnstoredReferenced = 2
 	CDM_CCS_ModifiedReferenced = 3
 	CDM_CCS_ReferenceRejection = 4
+CDM_CCS_OK = CDM_CanCloseStatus.CDM_CCS_OK
+CDM_CCS_NotOpen = CDM_CanCloseStatus.CDM_CCS_NotOpen
+CDM_CCS_UnstoredReferenced = CDM_CanCloseStatus.CDM_CCS_UnstoredReferenced
+CDM_CCS_ModifiedReferenced = CDM_CanCloseStatus.CDM_CCS_ModifiedReferenced
+CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
 };
 /* end python proxy for enums */
 
@@ -96,7 +102,21 @@ class CDM_CanCloseStatus:
 %template(CDM_ListIteratorOfListOfDocument) NCollection_TListIterator<opencascade::handle<CDM_Document>>;
 %template(CDM_ListIteratorOfListOfReferences) NCollection_TListIterator<opencascade::handle<CDM_Reference>>;
 %template(CDM_ListOfDocument) NCollection_List<opencascade::handle<CDM_Document>>;
+
+%extend NCollection_List<opencascade::handle<CDM_Document>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(CDM_ListOfReferences) NCollection_List<opencascade::handle<CDM_Reference>>;
+
+%extend NCollection_List<opencascade::handle<CDM_Reference>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(CDM_MapOfDocument) NCollection_Map<opencascade::handle<CDM_Document>,CDM_DocumentHasher>;
 %template(CDM_MetaDataLookUpTable) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<CDM_MetaData>,TCollection_ExtendedString>;
 %template(CDM_PresentationDirectory) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<CDM_Document>,TCollection_ExtendedString>;

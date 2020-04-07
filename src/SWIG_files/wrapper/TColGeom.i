@@ -53,6 +53,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcolgeom.html"
 %import Geom.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -235,85 +236,85 @@ typedef NCollection_Sequence<opencascade::handle<Geom_Surface>> TColGeom_Sequenc
 /* end typedefs declaration */
 
 /* harray1 classes */
-class TColGeom_HArray1OfSurface : public  TColGeom_Array1OfSurface, public Standard_Transient {
+
+class TColGeom_HArray1OfSurface : public TColGeom_Array1OfSurface, public Standard_Transient {
   public:
     TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const  TColGeom_Array1OfSurface::value_type& theValue);
-    TColGeom_HArray1OfSurface(const  TColGeom_Array1OfSurface& theOther);
-    const  TColGeom_Array1OfSurface& Array1();
-     TColGeom_Array1OfSurface& ChangeArray1();
+    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom_Array1OfSurface::value_type& theValue);
+    TColGeom_HArray1OfSurface(const TColGeom_Array1OfSurface& theOther);
+    const TColGeom_Array1OfSurface& Array1();
+    TColGeom_Array1OfSurface& ChangeArray1();
 };
 %make_alias(TColGeom_HArray1OfSurface)
 
 
-class TColGeom_HArray1OfBezierCurve : public  TColGeom_Array1OfBezierCurve, public Standard_Transient {
+class TColGeom_HArray1OfBezierCurve : public TColGeom_Array1OfBezierCurve, public Standard_Transient {
   public:
     TColGeom_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColGeom_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  TColGeom_Array1OfBezierCurve::value_type& theValue);
-    TColGeom_HArray1OfBezierCurve(const  TColGeom_Array1OfBezierCurve& theOther);
-    const  TColGeom_Array1OfBezierCurve& Array1();
-     TColGeom_Array1OfBezierCurve& ChangeArray1();
+    TColGeom_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom_Array1OfBezierCurve::value_type& theValue);
+    TColGeom_HArray1OfBezierCurve(const TColGeom_Array1OfBezierCurve& theOther);
+    const TColGeom_Array1OfBezierCurve& Array1();
+    TColGeom_Array1OfBezierCurve& ChangeArray1();
 };
 %make_alias(TColGeom_HArray1OfBezierCurve)
 
 
-class TColGeom_HArray1OfBSplineCurve : public  TColGeom_Array1OfBSplineCurve, public Standard_Transient {
+class TColGeom_HArray1OfBSplineCurve : public TColGeom_Array1OfBSplineCurve, public Standard_Transient {
   public:
     TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  TColGeom_Array1OfBSplineCurve::value_type& theValue);
-    TColGeom_HArray1OfBSplineCurve(const  TColGeom_Array1OfBSplineCurve& theOther);
-    const  TColGeom_Array1OfBSplineCurve& Array1();
-     TColGeom_Array1OfBSplineCurve& ChangeArray1();
+    TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom_Array1OfBSplineCurve::value_type& theValue);
+    TColGeom_HArray1OfBSplineCurve(const TColGeom_Array1OfBSplineCurve& theOther);
+    const TColGeom_Array1OfBSplineCurve& Array1();
+    TColGeom_Array1OfBSplineCurve& ChangeArray1();
 };
 %make_alias(TColGeom_HArray1OfBSplineCurve)
 
 
-class TColGeom_HArray1OfCurve : public  TColGeom_Array1OfCurve, public Standard_Transient {
+class TColGeom_HArray1OfCurve : public TColGeom_Array1OfCurve, public Standard_Transient {
   public:
     TColGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const  TColGeom_Array1OfCurve::value_type& theValue);
-    TColGeom_HArray1OfCurve(const  TColGeom_Array1OfCurve& theOther);
-    const  TColGeom_Array1OfCurve& Array1();
-     TColGeom_Array1OfCurve& ChangeArray1();
+    TColGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom_Array1OfCurve::value_type& theValue);
+    TColGeom_HArray1OfCurve(const TColGeom_Array1OfCurve& theOther);
+    const TColGeom_Array1OfCurve& Array1();
+    TColGeom_Array1OfCurve& ChangeArray1();
 };
 %make_alias(TColGeom_HArray1OfCurve)
 
-
 /* harray2 classes */
-class TColGeom_HArray2OfSurface : public  TColGeom_Array2OfSurface, public Standard_Transient {
+class TColGeom_HArray2OfSurface : public TColGeom_Array2OfSurface, public Standard_Transient {
   public:
     TColGeom_HArray2OfSurface(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     TColGeom_HArray2OfSurface(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const  TColGeom_Array2OfSurface::value_type& theValue);
-    TColGeom_HArray2OfSurface(const  TColGeom_Array2OfSurface& theOther);
-    const  TColGeom_Array2OfSurface& Array2 ();
-     TColGeom_Array2OfSurface& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const TColGeom_Array2OfSurface::value_type& theValue);
+    TColGeom_HArray2OfSurface(const TColGeom_Array2OfSurface& theOther);
+    const TColGeom_Array2OfSurface& Array2 ();
+    TColGeom_Array2OfSurface& ChangeArray2 (); 
 };
 %make_alias(TColGeom_HArray2OfSurface)
 
 
 /* hsequence classes */
-class TColGeom_HSequenceOfBoundedCurve : public  TColGeom_SequenceOfBoundedCurve, public Standard_Transient {
+class TColGeom_HSequenceOfBoundedCurve : public TColGeom_SequenceOfBoundedCurve, public Standard_Transient {
   public:
     TColGeom_HSequenceOfBoundedCurve();
-    TColGeom_HSequenceOfBoundedCurve(const  TColGeom_SequenceOfBoundedCurve& theOther);
-    const  TColGeom_SequenceOfBoundedCurve& Sequence();
-    void Append (const  TColGeom_SequenceOfBoundedCurve::value_type& theItem);
-    void Append ( TColGeom_SequenceOfBoundedCurve& theSequence);
-     TColGeom_SequenceOfBoundedCurve& ChangeSequence();
+    TColGeom_HSequenceOfBoundedCurve(const TColGeom_SequenceOfBoundedCurve& theOther);
+    const TColGeom_SequenceOfBoundedCurve& Sequence();
+    void Append (const TColGeom_SequenceOfBoundedCurve::value_type& theItem);
+    void Append (TColGeom_SequenceOfBoundedCurve& theSequence);
+    TColGeom_SequenceOfBoundedCurve& ChangeSequence();
 };
 %make_alias(TColGeom_HSequenceOfBoundedCurve)
 
 
-class TColGeom_HSequenceOfCurve : public  TColGeom_SequenceOfCurve, public Standard_Transient {
+class TColGeom_HSequenceOfCurve : public TColGeom_SequenceOfCurve, public Standard_Transient {
   public:
     TColGeom_HSequenceOfCurve();
-    TColGeom_HSequenceOfCurve(const  TColGeom_SequenceOfCurve& theOther);
-    const  TColGeom_SequenceOfCurve& Sequence();
-    void Append (const  TColGeom_SequenceOfCurve::value_type& theItem);
-    void Append ( TColGeom_SequenceOfCurve& theSequence);
-     TColGeom_SequenceOfCurve& ChangeSequence();
+    TColGeom_HSequenceOfCurve(const TColGeom_SequenceOfCurve& theOther);
+    const TColGeom_SequenceOfCurve& Sequence();
+    void Append (const TColGeom_SequenceOfCurve::value_type& theItem);
+    void Append (TColGeom_SequenceOfCurve& theSequence);
+    TColGeom_SequenceOfCurve& ChangeSequence();
 };
 %make_alias(TColGeom_HSequenceOfCurve)
 

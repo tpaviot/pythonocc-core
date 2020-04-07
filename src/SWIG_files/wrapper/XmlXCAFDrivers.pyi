@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.XmlXCAFDrivers import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TDocStd import *
@@ -10,11 +10,11 @@ from OCC.Core.XmlMDF import *
 from OCC.Core.TCollection import *
 
 
-class XmlXCAFDrivers:
+class xmlxcafdrivers:
 	@staticmethod
-	def DefineFormat(self, theApp: TDocStd_Application) -> None: ...
+	def DefineFormat(theApp: TDocStd_Application) -> None: ...
 	@staticmethod
-	def Factory(self, aGUID: Standard_GUID) -> Standard_Transient: ...
+	def Factory(aGUID: Standard_GUID) -> Standard_Transient: ...
 
 class XmlXCAFDrivers_DocumentRetrievalDriver(XmlDrivers_DocumentRetrievalDriver):
 	def __init__(self) -> None: ...
@@ -23,3 +23,10 @@ class XmlXCAFDrivers_DocumentRetrievalDriver(XmlDrivers_DocumentRetrievalDriver)
 class XmlXCAFDrivers_DocumentStorageDriver(XmlDrivers_DocumentStorageDriver):
 	def __init__(self, theCopyright: TCollection_ExtendedString) -> None: ...
 	def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> XmlMDF_ADriverTable: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+xmlxcafdrivers_DefineFormat = xmlxcafdrivers.DefineFormat
+xmlxcafdrivers_Factory = xmlxcafdrivers.Factory

@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.Quantity import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TCollection import *
@@ -13,6 +13,8 @@ Quantity_Admittance = NewType('Quantity_Admittance', Standard_Real)
 Quantity_AmountOfSubstance = NewType('Quantity_AmountOfSubstance', Standard_Real)
 Quantity_AngularVelocity = NewType('Quantity_AngularVelocity', Standard_Real)
 Quantity_Area = NewType('Quantity_Area', Standard_Real)
+#the following typedef cannot be wrapped as is
+Quantity_Array2OfColor = NewType('Quantity_Array2OfColor', Any)
 Quantity_Capacitance = NewType('Quantity_Capacitance', Standard_Real)
 Quantity_Coefficient = NewType('Quantity_Coefficient', Standard_Real)
 Quantity_CoefficientOfExpansion = NewType('Quantity_CoefficientOfExpansion', Standard_Real)
@@ -85,7 +87,31 @@ Quantity_VolumeFlow = NewType('Quantity_VolumeFlow', Standard_Real)
 Quantity_Weight = NewType('Quantity_Weight', Standard_Real)
 Quantity_Work = NewType('Quantity_Work', Standard_Real)
 
-class Quantity_NameOfColor:
+class Quantity_Array1OfColor:
+    @overload
+    def __init__(self) -> None: ...
+    @overload
+    def __init__(self, theLower: int, theUpper: int) -> None: ...
+    def __getitem__(self, index: int) -> Quantity_Color: ...
+    def __setitem__(self, index: int, value: Quantity_Color) -> None: ...
+    def __len__(self) -> int: ...
+    def __iter__(self) -> Iterator[Quantity_Color]: ...
+    def next(self) -> Quantity_Color: ...
+    __next__ = next
+    def Init(self, theValue: Quantity_Color) -> None: ...
+    def Size(self) -> int: ...
+    def Length(self) -> int: ...
+    def IsEmpty(self) -> bool: ...
+    def Lower(self) -> int: ...
+    def Upper(self) -> int: ...
+    def IsDetectable(self) -> bool: ...
+    def IsAllocated(self) -> bool: ...
+    def First(self) -> Quantity_Color: ...
+    def Last(self) -> Quantity_Color: ...
+    def Value(self, theIndex: int) -> Quantity_Color: ...
+    def SetValue(self, theIndex: int, theValue: Quantity_Color) -> None: ...
+
+class Quantity_NameOfColor(IntEnum):
 	Quantity_NOC_BLACK: int = ...
 	Quantity_NOC_MATRABLUE: int = ...
 	Quantity_NOC_MATRAGRAY: int = ...
@@ -603,12 +629,531 @@ class Quantity_NameOfColor:
 	Quantity_NOC_YELLOW4: int = ...
 	Quantity_NOC_YELLOWGREEN: int = ...
 	Quantity_NOC_WHITE: int = ...
+Quantity_NOC_BLACK = Quantity_NameOfColor.Quantity_NOC_BLACK
+Quantity_NOC_MATRABLUE = Quantity_NameOfColor.Quantity_NOC_MATRABLUE
+Quantity_NOC_MATRAGRAY = Quantity_NameOfColor.Quantity_NOC_MATRAGRAY
+Quantity_NOC_ALICEBLUE = Quantity_NameOfColor.Quantity_NOC_ALICEBLUE
+Quantity_NOC_ANTIQUEWHITE = Quantity_NameOfColor.Quantity_NOC_ANTIQUEWHITE
+Quantity_NOC_ANTIQUEWHITE1 = Quantity_NameOfColor.Quantity_NOC_ANTIQUEWHITE1
+Quantity_NOC_ANTIQUEWHITE2 = Quantity_NameOfColor.Quantity_NOC_ANTIQUEWHITE2
+Quantity_NOC_ANTIQUEWHITE3 = Quantity_NameOfColor.Quantity_NOC_ANTIQUEWHITE3
+Quantity_NOC_ANTIQUEWHITE4 = Quantity_NameOfColor.Quantity_NOC_ANTIQUEWHITE4
+Quantity_NOC_AQUAMARINE1 = Quantity_NameOfColor.Quantity_NOC_AQUAMARINE1
+Quantity_NOC_AQUAMARINE2 = Quantity_NameOfColor.Quantity_NOC_AQUAMARINE2
+Quantity_NOC_AQUAMARINE4 = Quantity_NameOfColor.Quantity_NOC_AQUAMARINE4
+Quantity_NOC_AZURE = Quantity_NameOfColor.Quantity_NOC_AZURE
+Quantity_NOC_AZURE2 = Quantity_NameOfColor.Quantity_NOC_AZURE2
+Quantity_NOC_AZURE3 = Quantity_NameOfColor.Quantity_NOC_AZURE3
+Quantity_NOC_AZURE4 = Quantity_NameOfColor.Quantity_NOC_AZURE4
+Quantity_NOC_BEIGE = Quantity_NameOfColor.Quantity_NOC_BEIGE
+Quantity_NOC_BISQUE = Quantity_NameOfColor.Quantity_NOC_BISQUE
+Quantity_NOC_BISQUE2 = Quantity_NameOfColor.Quantity_NOC_BISQUE2
+Quantity_NOC_BISQUE3 = Quantity_NameOfColor.Quantity_NOC_BISQUE3
+Quantity_NOC_BISQUE4 = Quantity_NameOfColor.Quantity_NOC_BISQUE4
+Quantity_NOC_BLANCHEDALMOND = Quantity_NameOfColor.Quantity_NOC_BLANCHEDALMOND
+Quantity_NOC_BLUE1 = Quantity_NameOfColor.Quantity_NOC_BLUE1
+Quantity_NOC_BLUE2 = Quantity_NameOfColor.Quantity_NOC_BLUE2
+Quantity_NOC_BLUE3 = Quantity_NameOfColor.Quantity_NOC_BLUE3
+Quantity_NOC_BLUE4 = Quantity_NameOfColor.Quantity_NOC_BLUE4
+Quantity_NOC_BLUEVIOLET = Quantity_NameOfColor.Quantity_NOC_BLUEVIOLET
+Quantity_NOC_BROWN = Quantity_NameOfColor.Quantity_NOC_BROWN
+Quantity_NOC_BROWN1 = Quantity_NameOfColor.Quantity_NOC_BROWN1
+Quantity_NOC_BROWN2 = Quantity_NameOfColor.Quantity_NOC_BROWN2
+Quantity_NOC_BROWN3 = Quantity_NameOfColor.Quantity_NOC_BROWN3
+Quantity_NOC_BROWN4 = Quantity_NameOfColor.Quantity_NOC_BROWN4
+Quantity_NOC_BURLYWOOD = Quantity_NameOfColor.Quantity_NOC_BURLYWOOD
+Quantity_NOC_BURLYWOOD1 = Quantity_NameOfColor.Quantity_NOC_BURLYWOOD1
+Quantity_NOC_BURLYWOOD2 = Quantity_NameOfColor.Quantity_NOC_BURLYWOOD2
+Quantity_NOC_BURLYWOOD3 = Quantity_NameOfColor.Quantity_NOC_BURLYWOOD3
+Quantity_NOC_BURLYWOOD4 = Quantity_NameOfColor.Quantity_NOC_BURLYWOOD4
+Quantity_NOC_CADETBLUE = Quantity_NameOfColor.Quantity_NOC_CADETBLUE
+Quantity_NOC_CADETBLUE1 = Quantity_NameOfColor.Quantity_NOC_CADETBLUE1
+Quantity_NOC_CADETBLUE2 = Quantity_NameOfColor.Quantity_NOC_CADETBLUE2
+Quantity_NOC_CADETBLUE3 = Quantity_NameOfColor.Quantity_NOC_CADETBLUE3
+Quantity_NOC_CADETBLUE4 = Quantity_NameOfColor.Quantity_NOC_CADETBLUE4
+Quantity_NOC_CHARTREUSE = Quantity_NameOfColor.Quantity_NOC_CHARTREUSE
+Quantity_NOC_CHARTREUSE1 = Quantity_NameOfColor.Quantity_NOC_CHARTREUSE1
+Quantity_NOC_CHARTREUSE2 = Quantity_NameOfColor.Quantity_NOC_CHARTREUSE2
+Quantity_NOC_CHARTREUSE3 = Quantity_NameOfColor.Quantity_NOC_CHARTREUSE3
+Quantity_NOC_CHARTREUSE4 = Quantity_NameOfColor.Quantity_NOC_CHARTREUSE4
+Quantity_NOC_CHOCOLATE = Quantity_NameOfColor.Quantity_NOC_CHOCOLATE
+Quantity_NOC_CHOCOLATE1 = Quantity_NameOfColor.Quantity_NOC_CHOCOLATE1
+Quantity_NOC_CHOCOLATE2 = Quantity_NameOfColor.Quantity_NOC_CHOCOLATE2
+Quantity_NOC_CHOCOLATE3 = Quantity_NameOfColor.Quantity_NOC_CHOCOLATE3
+Quantity_NOC_CHOCOLATE4 = Quantity_NameOfColor.Quantity_NOC_CHOCOLATE4
+Quantity_NOC_CORAL = Quantity_NameOfColor.Quantity_NOC_CORAL
+Quantity_NOC_CORAL1 = Quantity_NameOfColor.Quantity_NOC_CORAL1
+Quantity_NOC_CORAL2 = Quantity_NameOfColor.Quantity_NOC_CORAL2
+Quantity_NOC_CORAL3 = Quantity_NameOfColor.Quantity_NOC_CORAL3
+Quantity_NOC_CORAL4 = Quantity_NameOfColor.Quantity_NOC_CORAL4
+Quantity_NOC_CORNFLOWERBLUE = Quantity_NameOfColor.Quantity_NOC_CORNFLOWERBLUE
+Quantity_NOC_CORNSILK1 = Quantity_NameOfColor.Quantity_NOC_CORNSILK1
+Quantity_NOC_CORNSILK2 = Quantity_NameOfColor.Quantity_NOC_CORNSILK2
+Quantity_NOC_CORNSILK3 = Quantity_NameOfColor.Quantity_NOC_CORNSILK3
+Quantity_NOC_CORNSILK4 = Quantity_NameOfColor.Quantity_NOC_CORNSILK4
+Quantity_NOC_CYAN1 = Quantity_NameOfColor.Quantity_NOC_CYAN1
+Quantity_NOC_CYAN2 = Quantity_NameOfColor.Quantity_NOC_CYAN2
+Quantity_NOC_CYAN3 = Quantity_NameOfColor.Quantity_NOC_CYAN3
+Quantity_NOC_CYAN4 = Quantity_NameOfColor.Quantity_NOC_CYAN4
+Quantity_NOC_DARKGOLDENROD = Quantity_NameOfColor.Quantity_NOC_DARKGOLDENROD
+Quantity_NOC_DARKGOLDENROD1 = Quantity_NameOfColor.Quantity_NOC_DARKGOLDENROD1
+Quantity_NOC_DARKGOLDENROD2 = Quantity_NameOfColor.Quantity_NOC_DARKGOLDENROD2
+Quantity_NOC_DARKGOLDENROD3 = Quantity_NameOfColor.Quantity_NOC_DARKGOLDENROD3
+Quantity_NOC_DARKGOLDENROD4 = Quantity_NameOfColor.Quantity_NOC_DARKGOLDENROD4
+Quantity_NOC_DARKGREEN = Quantity_NameOfColor.Quantity_NOC_DARKGREEN
+Quantity_NOC_DARKKHAKI = Quantity_NameOfColor.Quantity_NOC_DARKKHAKI
+Quantity_NOC_DARKOLIVEGREEN = Quantity_NameOfColor.Quantity_NOC_DARKOLIVEGREEN
+Quantity_NOC_DARKOLIVEGREEN1 = Quantity_NameOfColor.Quantity_NOC_DARKOLIVEGREEN1
+Quantity_NOC_DARKOLIVEGREEN2 = Quantity_NameOfColor.Quantity_NOC_DARKOLIVEGREEN2
+Quantity_NOC_DARKOLIVEGREEN3 = Quantity_NameOfColor.Quantity_NOC_DARKOLIVEGREEN3
+Quantity_NOC_DARKOLIVEGREEN4 = Quantity_NameOfColor.Quantity_NOC_DARKOLIVEGREEN4
+Quantity_NOC_DARKORANGE = Quantity_NameOfColor.Quantity_NOC_DARKORANGE
+Quantity_NOC_DARKORANGE1 = Quantity_NameOfColor.Quantity_NOC_DARKORANGE1
+Quantity_NOC_DARKORANGE2 = Quantity_NameOfColor.Quantity_NOC_DARKORANGE2
+Quantity_NOC_DARKORANGE3 = Quantity_NameOfColor.Quantity_NOC_DARKORANGE3
+Quantity_NOC_DARKORANGE4 = Quantity_NameOfColor.Quantity_NOC_DARKORANGE4
+Quantity_NOC_DARKORCHID = Quantity_NameOfColor.Quantity_NOC_DARKORCHID
+Quantity_NOC_DARKORCHID1 = Quantity_NameOfColor.Quantity_NOC_DARKORCHID1
+Quantity_NOC_DARKORCHID2 = Quantity_NameOfColor.Quantity_NOC_DARKORCHID2
+Quantity_NOC_DARKORCHID3 = Quantity_NameOfColor.Quantity_NOC_DARKORCHID3
+Quantity_NOC_DARKORCHID4 = Quantity_NameOfColor.Quantity_NOC_DARKORCHID4
+Quantity_NOC_DARKSALMON = Quantity_NameOfColor.Quantity_NOC_DARKSALMON
+Quantity_NOC_DARKSEAGREEN = Quantity_NameOfColor.Quantity_NOC_DARKSEAGREEN
+Quantity_NOC_DARKSEAGREEN1 = Quantity_NameOfColor.Quantity_NOC_DARKSEAGREEN1
+Quantity_NOC_DARKSEAGREEN2 = Quantity_NameOfColor.Quantity_NOC_DARKSEAGREEN2
+Quantity_NOC_DARKSEAGREEN3 = Quantity_NameOfColor.Quantity_NOC_DARKSEAGREEN3
+Quantity_NOC_DARKSEAGREEN4 = Quantity_NameOfColor.Quantity_NOC_DARKSEAGREEN4
+Quantity_NOC_DARKSLATEBLUE = Quantity_NameOfColor.Quantity_NOC_DARKSLATEBLUE
+Quantity_NOC_DARKSLATEGRAY1 = Quantity_NameOfColor.Quantity_NOC_DARKSLATEGRAY1
+Quantity_NOC_DARKSLATEGRAY2 = Quantity_NameOfColor.Quantity_NOC_DARKSLATEGRAY2
+Quantity_NOC_DARKSLATEGRAY3 = Quantity_NameOfColor.Quantity_NOC_DARKSLATEGRAY3
+Quantity_NOC_DARKSLATEGRAY4 = Quantity_NameOfColor.Quantity_NOC_DARKSLATEGRAY4
+Quantity_NOC_DARKSLATEGRAY = Quantity_NameOfColor.Quantity_NOC_DARKSLATEGRAY
+Quantity_NOC_DARKTURQUOISE = Quantity_NameOfColor.Quantity_NOC_DARKTURQUOISE
+Quantity_NOC_DARKVIOLET = Quantity_NameOfColor.Quantity_NOC_DARKVIOLET
+Quantity_NOC_DEEPPINK = Quantity_NameOfColor.Quantity_NOC_DEEPPINK
+Quantity_NOC_DEEPPINK2 = Quantity_NameOfColor.Quantity_NOC_DEEPPINK2
+Quantity_NOC_DEEPPINK3 = Quantity_NameOfColor.Quantity_NOC_DEEPPINK3
+Quantity_NOC_DEEPPINK4 = Quantity_NameOfColor.Quantity_NOC_DEEPPINK4
+Quantity_NOC_DEEPSKYBLUE1 = Quantity_NameOfColor.Quantity_NOC_DEEPSKYBLUE1
+Quantity_NOC_DEEPSKYBLUE2 = Quantity_NameOfColor.Quantity_NOC_DEEPSKYBLUE2
+Quantity_NOC_DEEPSKYBLUE3 = Quantity_NameOfColor.Quantity_NOC_DEEPSKYBLUE3
+Quantity_NOC_DEEPSKYBLUE4 = Quantity_NameOfColor.Quantity_NOC_DEEPSKYBLUE4
+Quantity_NOC_DODGERBLUE1 = Quantity_NameOfColor.Quantity_NOC_DODGERBLUE1
+Quantity_NOC_DODGERBLUE2 = Quantity_NameOfColor.Quantity_NOC_DODGERBLUE2
+Quantity_NOC_DODGERBLUE3 = Quantity_NameOfColor.Quantity_NOC_DODGERBLUE3
+Quantity_NOC_DODGERBLUE4 = Quantity_NameOfColor.Quantity_NOC_DODGERBLUE4
+Quantity_NOC_FIREBRICK = Quantity_NameOfColor.Quantity_NOC_FIREBRICK
+Quantity_NOC_FIREBRICK1 = Quantity_NameOfColor.Quantity_NOC_FIREBRICK1
+Quantity_NOC_FIREBRICK2 = Quantity_NameOfColor.Quantity_NOC_FIREBRICK2
+Quantity_NOC_FIREBRICK3 = Quantity_NameOfColor.Quantity_NOC_FIREBRICK3
+Quantity_NOC_FIREBRICK4 = Quantity_NameOfColor.Quantity_NOC_FIREBRICK4
+Quantity_NOC_FLORALWHITE = Quantity_NameOfColor.Quantity_NOC_FLORALWHITE
+Quantity_NOC_FORESTGREEN = Quantity_NameOfColor.Quantity_NOC_FORESTGREEN
+Quantity_NOC_GAINSBORO = Quantity_NameOfColor.Quantity_NOC_GAINSBORO
+Quantity_NOC_GHOSTWHITE = Quantity_NameOfColor.Quantity_NOC_GHOSTWHITE
+Quantity_NOC_GOLD = Quantity_NameOfColor.Quantity_NOC_GOLD
+Quantity_NOC_GOLD1 = Quantity_NameOfColor.Quantity_NOC_GOLD1
+Quantity_NOC_GOLD2 = Quantity_NameOfColor.Quantity_NOC_GOLD2
+Quantity_NOC_GOLD3 = Quantity_NameOfColor.Quantity_NOC_GOLD3
+Quantity_NOC_GOLD4 = Quantity_NameOfColor.Quantity_NOC_GOLD4
+Quantity_NOC_GOLDENROD = Quantity_NameOfColor.Quantity_NOC_GOLDENROD
+Quantity_NOC_GOLDENROD1 = Quantity_NameOfColor.Quantity_NOC_GOLDENROD1
+Quantity_NOC_GOLDENROD2 = Quantity_NameOfColor.Quantity_NOC_GOLDENROD2
+Quantity_NOC_GOLDENROD3 = Quantity_NameOfColor.Quantity_NOC_GOLDENROD3
+Quantity_NOC_GOLDENROD4 = Quantity_NameOfColor.Quantity_NOC_GOLDENROD4
+Quantity_NOC_GRAY = Quantity_NameOfColor.Quantity_NOC_GRAY
+Quantity_NOC_GRAY0 = Quantity_NameOfColor.Quantity_NOC_GRAY0
+Quantity_NOC_GRAY1 = Quantity_NameOfColor.Quantity_NOC_GRAY1
+Quantity_NOC_GRAY10 = Quantity_NameOfColor.Quantity_NOC_GRAY10
+Quantity_NOC_GRAY11 = Quantity_NameOfColor.Quantity_NOC_GRAY11
+Quantity_NOC_GRAY12 = Quantity_NameOfColor.Quantity_NOC_GRAY12
+Quantity_NOC_GRAY13 = Quantity_NameOfColor.Quantity_NOC_GRAY13
+Quantity_NOC_GRAY14 = Quantity_NameOfColor.Quantity_NOC_GRAY14
+Quantity_NOC_GRAY15 = Quantity_NameOfColor.Quantity_NOC_GRAY15
+Quantity_NOC_GRAY16 = Quantity_NameOfColor.Quantity_NOC_GRAY16
+Quantity_NOC_GRAY17 = Quantity_NameOfColor.Quantity_NOC_GRAY17
+Quantity_NOC_GRAY18 = Quantity_NameOfColor.Quantity_NOC_GRAY18
+Quantity_NOC_GRAY19 = Quantity_NameOfColor.Quantity_NOC_GRAY19
+Quantity_NOC_GRAY2 = Quantity_NameOfColor.Quantity_NOC_GRAY2
+Quantity_NOC_GRAY20 = Quantity_NameOfColor.Quantity_NOC_GRAY20
+Quantity_NOC_GRAY21 = Quantity_NameOfColor.Quantity_NOC_GRAY21
+Quantity_NOC_GRAY22 = Quantity_NameOfColor.Quantity_NOC_GRAY22
+Quantity_NOC_GRAY23 = Quantity_NameOfColor.Quantity_NOC_GRAY23
+Quantity_NOC_GRAY24 = Quantity_NameOfColor.Quantity_NOC_GRAY24
+Quantity_NOC_GRAY25 = Quantity_NameOfColor.Quantity_NOC_GRAY25
+Quantity_NOC_GRAY26 = Quantity_NameOfColor.Quantity_NOC_GRAY26
+Quantity_NOC_GRAY27 = Quantity_NameOfColor.Quantity_NOC_GRAY27
+Quantity_NOC_GRAY28 = Quantity_NameOfColor.Quantity_NOC_GRAY28
+Quantity_NOC_GRAY29 = Quantity_NameOfColor.Quantity_NOC_GRAY29
+Quantity_NOC_GRAY3 = Quantity_NameOfColor.Quantity_NOC_GRAY3
+Quantity_NOC_GRAY30 = Quantity_NameOfColor.Quantity_NOC_GRAY30
+Quantity_NOC_GRAY31 = Quantity_NameOfColor.Quantity_NOC_GRAY31
+Quantity_NOC_GRAY32 = Quantity_NameOfColor.Quantity_NOC_GRAY32
+Quantity_NOC_GRAY33 = Quantity_NameOfColor.Quantity_NOC_GRAY33
+Quantity_NOC_GRAY34 = Quantity_NameOfColor.Quantity_NOC_GRAY34
+Quantity_NOC_GRAY35 = Quantity_NameOfColor.Quantity_NOC_GRAY35
+Quantity_NOC_GRAY36 = Quantity_NameOfColor.Quantity_NOC_GRAY36
+Quantity_NOC_GRAY37 = Quantity_NameOfColor.Quantity_NOC_GRAY37
+Quantity_NOC_GRAY38 = Quantity_NameOfColor.Quantity_NOC_GRAY38
+Quantity_NOC_GRAY39 = Quantity_NameOfColor.Quantity_NOC_GRAY39
+Quantity_NOC_GRAY4 = Quantity_NameOfColor.Quantity_NOC_GRAY4
+Quantity_NOC_GRAY40 = Quantity_NameOfColor.Quantity_NOC_GRAY40
+Quantity_NOC_GRAY41 = Quantity_NameOfColor.Quantity_NOC_GRAY41
+Quantity_NOC_GRAY42 = Quantity_NameOfColor.Quantity_NOC_GRAY42
+Quantity_NOC_GRAY43 = Quantity_NameOfColor.Quantity_NOC_GRAY43
+Quantity_NOC_GRAY44 = Quantity_NameOfColor.Quantity_NOC_GRAY44
+Quantity_NOC_GRAY45 = Quantity_NameOfColor.Quantity_NOC_GRAY45
+Quantity_NOC_GRAY46 = Quantity_NameOfColor.Quantity_NOC_GRAY46
+Quantity_NOC_GRAY47 = Quantity_NameOfColor.Quantity_NOC_GRAY47
+Quantity_NOC_GRAY48 = Quantity_NameOfColor.Quantity_NOC_GRAY48
+Quantity_NOC_GRAY49 = Quantity_NameOfColor.Quantity_NOC_GRAY49
+Quantity_NOC_GRAY5 = Quantity_NameOfColor.Quantity_NOC_GRAY5
+Quantity_NOC_GRAY50 = Quantity_NameOfColor.Quantity_NOC_GRAY50
+Quantity_NOC_GRAY51 = Quantity_NameOfColor.Quantity_NOC_GRAY51
+Quantity_NOC_GRAY52 = Quantity_NameOfColor.Quantity_NOC_GRAY52
+Quantity_NOC_GRAY53 = Quantity_NameOfColor.Quantity_NOC_GRAY53
+Quantity_NOC_GRAY54 = Quantity_NameOfColor.Quantity_NOC_GRAY54
+Quantity_NOC_GRAY55 = Quantity_NameOfColor.Quantity_NOC_GRAY55
+Quantity_NOC_GRAY56 = Quantity_NameOfColor.Quantity_NOC_GRAY56
+Quantity_NOC_GRAY57 = Quantity_NameOfColor.Quantity_NOC_GRAY57
+Quantity_NOC_GRAY58 = Quantity_NameOfColor.Quantity_NOC_GRAY58
+Quantity_NOC_GRAY59 = Quantity_NameOfColor.Quantity_NOC_GRAY59
+Quantity_NOC_GRAY6 = Quantity_NameOfColor.Quantity_NOC_GRAY6
+Quantity_NOC_GRAY60 = Quantity_NameOfColor.Quantity_NOC_GRAY60
+Quantity_NOC_GRAY61 = Quantity_NameOfColor.Quantity_NOC_GRAY61
+Quantity_NOC_GRAY62 = Quantity_NameOfColor.Quantity_NOC_GRAY62
+Quantity_NOC_GRAY63 = Quantity_NameOfColor.Quantity_NOC_GRAY63
+Quantity_NOC_GRAY64 = Quantity_NameOfColor.Quantity_NOC_GRAY64
+Quantity_NOC_GRAY65 = Quantity_NameOfColor.Quantity_NOC_GRAY65
+Quantity_NOC_GRAY66 = Quantity_NameOfColor.Quantity_NOC_GRAY66
+Quantity_NOC_GRAY67 = Quantity_NameOfColor.Quantity_NOC_GRAY67
+Quantity_NOC_GRAY68 = Quantity_NameOfColor.Quantity_NOC_GRAY68
+Quantity_NOC_GRAY69 = Quantity_NameOfColor.Quantity_NOC_GRAY69
+Quantity_NOC_GRAY7 = Quantity_NameOfColor.Quantity_NOC_GRAY7
+Quantity_NOC_GRAY70 = Quantity_NameOfColor.Quantity_NOC_GRAY70
+Quantity_NOC_GRAY71 = Quantity_NameOfColor.Quantity_NOC_GRAY71
+Quantity_NOC_GRAY72 = Quantity_NameOfColor.Quantity_NOC_GRAY72
+Quantity_NOC_GRAY73 = Quantity_NameOfColor.Quantity_NOC_GRAY73
+Quantity_NOC_GRAY74 = Quantity_NameOfColor.Quantity_NOC_GRAY74
+Quantity_NOC_GRAY75 = Quantity_NameOfColor.Quantity_NOC_GRAY75
+Quantity_NOC_GRAY76 = Quantity_NameOfColor.Quantity_NOC_GRAY76
+Quantity_NOC_GRAY77 = Quantity_NameOfColor.Quantity_NOC_GRAY77
+Quantity_NOC_GRAY78 = Quantity_NameOfColor.Quantity_NOC_GRAY78
+Quantity_NOC_GRAY79 = Quantity_NameOfColor.Quantity_NOC_GRAY79
+Quantity_NOC_GRAY8 = Quantity_NameOfColor.Quantity_NOC_GRAY8
+Quantity_NOC_GRAY80 = Quantity_NameOfColor.Quantity_NOC_GRAY80
+Quantity_NOC_GRAY81 = Quantity_NameOfColor.Quantity_NOC_GRAY81
+Quantity_NOC_GRAY82 = Quantity_NameOfColor.Quantity_NOC_GRAY82
+Quantity_NOC_GRAY83 = Quantity_NameOfColor.Quantity_NOC_GRAY83
+Quantity_NOC_GRAY85 = Quantity_NameOfColor.Quantity_NOC_GRAY85
+Quantity_NOC_GRAY86 = Quantity_NameOfColor.Quantity_NOC_GRAY86
+Quantity_NOC_GRAY87 = Quantity_NameOfColor.Quantity_NOC_GRAY87
+Quantity_NOC_GRAY88 = Quantity_NameOfColor.Quantity_NOC_GRAY88
+Quantity_NOC_GRAY89 = Quantity_NameOfColor.Quantity_NOC_GRAY89
+Quantity_NOC_GRAY9 = Quantity_NameOfColor.Quantity_NOC_GRAY9
+Quantity_NOC_GRAY90 = Quantity_NameOfColor.Quantity_NOC_GRAY90
+Quantity_NOC_GRAY91 = Quantity_NameOfColor.Quantity_NOC_GRAY91
+Quantity_NOC_GRAY92 = Quantity_NameOfColor.Quantity_NOC_GRAY92
+Quantity_NOC_GRAY93 = Quantity_NameOfColor.Quantity_NOC_GRAY93
+Quantity_NOC_GRAY94 = Quantity_NameOfColor.Quantity_NOC_GRAY94
+Quantity_NOC_GRAY95 = Quantity_NameOfColor.Quantity_NOC_GRAY95
+Quantity_NOC_GREEN = Quantity_NameOfColor.Quantity_NOC_GREEN
+Quantity_NOC_GREEN1 = Quantity_NameOfColor.Quantity_NOC_GREEN1
+Quantity_NOC_GREEN2 = Quantity_NameOfColor.Quantity_NOC_GREEN2
+Quantity_NOC_GREEN3 = Quantity_NameOfColor.Quantity_NOC_GREEN3
+Quantity_NOC_GREEN4 = Quantity_NameOfColor.Quantity_NOC_GREEN4
+Quantity_NOC_GREENYELLOW = Quantity_NameOfColor.Quantity_NOC_GREENYELLOW
+Quantity_NOC_GRAY97 = Quantity_NameOfColor.Quantity_NOC_GRAY97
+Quantity_NOC_GRAY98 = Quantity_NameOfColor.Quantity_NOC_GRAY98
+Quantity_NOC_GRAY99 = Quantity_NameOfColor.Quantity_NOC_GRAY99
+Quantity_NOC_HONEYDEW = Quantity_NameOfColor.Quantity_NOC_HONEYDEW
+Quantity_NOC_HONEYDEW2 = Quantity_NameOfColor.Quantity_NOC_HONEYDEW2
+Quantity_NOC_HONEYDEW3 = Quantity_NameOfColor.Quantity_NOC_HONEYDEW3
+Quantity_NOC_HONEYDEW4 = Quantity_NameOfColor.Quantity_NOC_HONEYDEW4
+Quantity_NOC_HOTPINK = Quantity_NameOfColor.Quantity_NOC_HOTPINK
+Quantity_NOC_HOTPINK1 = Quantity_NameOfColor.Quantity_NOC_HOTPINK1
+Quantity_NOC_HOTPINK2 = Quantity_NameOfColor.Quantity_NOC_HOTPINK2
+Quantity_NOC_HOTPINK3 = Quantity_NameOfColor.Quantity_NOC_HOTPINK3
+Quantity_NOC_HOTPINK4 = Quantity_NameOfColor.Quantity_NOC_HOTPINK4
+Quantity_NOC_INDIANRED = Quantity_NameOfColor.Quantity_NOC_INDIANRED
+Quantity_NOC_INDIANRED1 = Quantity_NameOfColor.Quantity_NOC_INDIANRED1
+Quantity_NOC_INDIANRED2 = Quantity_NameOfColor.Quantity_NOC_INDIANRED2
+Quantity_NOC_INDIANRED3 = Quantity_NameOfColor.Quantity_NOC_INDIANRED3
+Quantity_NOC_INDIANRED4 = Quantity_NameOfColor.Quantity_NOC_INDIANRED4
+Quantity_NOC_IVORY = Quantity_NameOfColor.Quantity_NOC_IVORY
+Quantity_NOC_IVORY2 = Quantity_NameOfColor.Quantity_NOC_IVORY2
+Quantity_NOC_IVORY3 = Quantity_NameOfColor.Quantity_NOC_IVORY3
+Quantity_NOC_IVORY4 = Quantity_NameOfColor.Quantity_NOC_IVORY4
+Quantity_NOC_KHAKI = Quantity_NameOfColor.Quantity_NOC_KHAKI
+Quantity_NOC_KHAKI1 = Quantity_NameOfColor.Quantity_NOC_KHAKI1
+Quantity_NOC_KHAKI2 = Quantity_NameOfColor.Quantity_NOC_KHAKI2
+Quantity_NOC_KHAKI3 = Quantity_NameOfColor.Quantity_NOC_KHAKI3
+Quantity_NOC_KHAKI4 = Quantity_NameOfColor.Quantity_NOC_KHAKI4
+Quantity_NOC_LAVENDER = Quantity_NameOfColor.Quantity_NOC_LAVENDER
+Quantity_NOC_LAVENDERBLUSH1 = Quantity_NameOfColor.Quantity_NOC_LAVENDERBLUSH1
+Quantity_NOC_LAVENDERBLUSH2 = Quantity_NameOfColor.Quantity_NOC_LAVENDERBLUSH2
+Quantity_NOC_LAVENDERBLUSH3 = Quantity_NameOfColor.Quantity_NOC_LAVENDERBLUSH3
+Quantity_NOC_LAVENDERBLUSH4 = Quantity_NameOfColor.Quantity_NOC_LAVENDERBLUSH4
+Quantity_NOC_LAWNGREEN = Quantity_NameOfColor.Quantity_NOC_LAWNGREEN
+Quantity_NOC_LEMONCHIFFON1 = Quantity_NameOfColor.Quantity_NOC_LEMONCHIFFON1
+Quantity_NOC_LEMONCHIFFON2 = Quantity_NameOfColor.Quantity_NOC_LEMONCHIFFON2
+Quantity_NOC_LEMONCHIFFON3 = Quantity_NameOfColor.Quantity_NOC_LEMONCHIFFON3
+Quantity_NOC_LEMONCHIFFON4 = Quantity_NameOfColor.Quantity_NOC_LEMONCHIFFON4
+Quantity_NOC_LIGHTBLUE = Quantity_NameOfColor.Quantity_NOC_LIGHTBLUE
+Quantity_NOC_LIGHTBLUE1 = Quantity_NameOfColor.Quantity_NOC_LIGHTBLUE1
+Quantity_NOC_LIGHTBLUE2 = Quantity_NameOfColor.Quantity_NOC_LIGHTBLUE2
+Quantity_NOC_LIGHTBLUE3 = Quantity_NameOfColor.Quantity_NOC_LIGHTBLUE3
+Quantity_NOC_LIGHTBLUE4 = Quantity_NameOfColor.Quantity_NOC_LIGHTBLUE4
+Quantity_NOC_LIGHTCORAL = Quantity_NameOfColor.Quantity_NOC_LIGHTCORAL
+Quantity_NOC_LIGHTCYAN1 = Quantity_NameOfColor.Quantity_NOC_LIGHTCYAN1
+Quantity_NOC_LIGHTCYAN2 = Quantity_NameOfColor.Quantity_NOC_LIGHTCYAN2
+Quantity_NOC_LIGHTCYAN3 = Quantity_NameOfColor.Quantity_NOC_LIGHTCYAN3
+Quantity_NOC_LIGHTCYAN4 = Quantity_NameOfColor.Quantity_NOC_LIGHTCYAN4
+Quantity_NOC_LIGHTGOLDENROD = Quantity_NameOfColor.Quantity_NOC_LIGHTGOLDENROD
+Quantity_NOC_LIGHTGOLDENROD1 = Quantity_NameOfColor.Quantity_NOC_LIGHTGOLDENROD1
+Quantity_NOC_LIGHTGOLDENROD2 = Quantity_NameOfColor.Quantity_NOC_LIGHTGOLDENROD2
+Quantity_NOC_LIGHTGOLDENROD3 = Quantity_NameOfColor.Quantity_NOC_LIGHTGOLDENROD3
+Quantity_NOC_LIGHTGOLDENROD4 = Quantity_NameOfColor.Quantity_NOC_LIGHTGOLDENROD4
+Quantity_NOC_LIGHTGOLDENRODYELLOW = Quantity_NameOfColor.Quantity_NOC_LIGHTGOLDENRODYELLOW
+Quantity_NOC_LIGHTGRAY = Quantity_NameOfColor.Quantity_NOC_LIGHTGRAY
+Quantity_NOC_LIGHTPINK = Quantity_NameOfColor.Quantity_NOC_LIGHTPINK
+Quantity_NOC_LIGHTPINK1 = Quantity_NameOfColor.Quantity_NOC_LIGHTPINK1
+Quantity_NOC_LIGHTPINK2 = Quantity_NameOfColor.Quantity_NOC_LIGHTPINK2
+Quantity_NOC_LIGHTPINK3 = Quantity_NameOfColor.Quantity_NOC_LIGHTPINK3
+Quantity_NOC_LIGHTPINK4 = Quantity_NameOfColor.Quantity_NOC_LIGHTPINK4
+Quantity_NOC_LIGHTSALMON1 = Quantity_NameOfColor.Quantity_NOC_LIGHTSALMON1
+Quantity_NOC_LIGHTSALMON2 = Quantity_NameOfColor.Quantity_NOC_LIGHTSALMON2
+Quantity_NOC_LIGHTSALMON3 = Quantity_NameOfColor.Quantity_NOC_LIGHTSALMON3
+Quantity_NOC_LIGHTSALMON4 = Quantity_NameOfColor.Quantity_NOC_LIGHTSALMON4
+Quantity_NOC_LIGHTSEAGREEN = Quantity_NameOfColor.Quantity_NOC_LIGHTSEAGREEN
+Quantity_NOC_LIGHTSKYBLUE = Quantity_NameOfColor.Quantity_NOC_LIGHTSKYBLUE
+Quantity_NOC_LIGHTSKYBLUE1 = Quantity_NameOfColor.Quantity_NOC_LIGHTSKYBLUE1
+Quantity_NOC_LIGHTSKYBLUE2 = Quantity_NameOfColor.Quantity_NOC_LIGHTSKYBLUE2
+Quantity_NOC_LIGHTSKYBLUE3 = Quantity_NameOfColor.Quantity_NOC_LIGHTSKYBLUE3
+Quantity_NOC_LIGHTSKYBLUE4 = Quantity_NameOfColor.Quantity_NOC_LIGHTSKYBLUE4
+Quantity_NOC_LIGHTSLATEBLUE = Quantity_NameOfColor.Quantity_NOC_LIGHTSLATEBLUE
+Quantity_NOC_LIGHTSLATEGRAY = Quantity_NameOfColor.Quantity_NOC_LIGHTSLATEGRAY
+Quantity_NOC_LIGHTSTEELBLUE = Quantity_NameOfColor.Quantity_NOC_LIGHTSTEELBLUE
+Quantity_NOC_LIGHTSTEELBLUE1 = Quantity_NameOfColor.Quantity_NOC_LIGHTSTEELBLUE1
+Quantity_NOC_LIGHTSTEELBLUE2 = Quantity_NameOfColor.Quantity_NOC_LIGHTSTEELBLUE2
+Quantity_NOC_LIGHTSTEELBLUE3 = Quantity_NameOfColor.Quantity_NOC_LIGHTSTEELBLUE3
+Quantity_NOC_LIGHTSTEELBLUE4 = Quantity_NameOfColor.Quantity_NOC_LIGHTSTEELBLUE4
+Quantity_NOC_LIGHTYELLOW = Quantity_NameOfColor.Quantity_NOC_LIGHTYELLOW
+Quantity_NOC_LIGHTYELLOW2 = Quantity_NameOfColor.Quantity_NOC_LIGHTYELLOW2
+Quantity_NOC_LIGHTYELLOW3 = Quantity_NameOfColor.Quantity_NOC_LIGHTYELLOW3
+Quantity_NOC_LIGHTYELLOW4 = Quantity_NameOfColor.Quantity_NOC_LIGHTYELLOW4
+Quantity_NOC_LIMEGREEN = Quantity_NameOfColor.Quantity_NOC_LIMEGREEN
+Quantity_NOC_LINEN = Quantity_NameOfColor.Quantity_NOC_LINEN
+Quantity_NOC_MAGENTA1 = Quantity_NameOfColor.Quantity_NOC_MAGENTA1
+Quantity_NOC_MAGENTA2 = Quantity_NameOfColor.Quantity_NOC_MAGENTA2
+Quantity_NOC_MAGENTA3 = Quantity_NameOfColor.Quantity_NOC_MAGENTA3
+Quantity_NOC_MAGENTA4 = Quantity_NameOfColor.Quantity_NOC_MAGENTA4
+Quantity_NOC_MAROON = Quantity_NameOfColor.Quantity_NOC_MAROON
+Quantity_NOC_MAROON1 = Quantity_NameOfColor.Quantity_NOC_MAROON1
+Quantity_NOC_MAROON2 = Quantity_NameOfColor.Quantity_NOC_MAROON2
+Quantity_NOC_MAROON3 = Quantity_NameOfColor.Quantity_NOC_MAROON3
+Quantity_NOC_MAROON4 = Quantity_NameOfColor.Quantity_NOC_MAROON4
+Quantity_NOC_MEDIUMAQUAMARINE = Quantity_NameOfColor.Quantity_NOC_MEDIUMAQUAMARINE
+Quantity_NOC_MEDIUMORCHID = Quantity_NameOfColor.Quantity_NOC_MEDIUMORCHID
+Quantity_NOC_MEDIUMORCHID1 = Quantity_NameOfColor.Quantity_NOC_MEDIUMORCHID1
+Quantity_NOC_MEDIUMORCHID2 = Quantity_NameOfColor.Quantity_NOC_MEDIUMORCHID2
+Quantity_NOC_MEDIUMORCHID3 = Quantity_NameOfColor.Quantity_NOC_MEDIUMORCHID3
+Quantity_NOC_MEDIUMORCHID4 = Quantity_NameOfColor.Quantity_NOC_MEDIUMORCHID4
+Quantity_NOC_MEDIUMPURPLE = Quantity_NameOfColor.Quantity_NOC_MEDIUMPURPLE
+Quantity_NOC_MEDIUMPURPLE1 = Quantity_NameOfColor.Quantity_NOC_MEDIUMPURPLE1
+Quantity_NOC_MEDIUMPURPLE2 = Quantity_NameOfColor.Quantity_NOC_MEDIUMPURPLE2
+Quantity_NOC_MEDIUMPURPLE3 = Quantity_NameOfColor.Quantity_NOC_MEDIUMPURPLE3
+Quantity_NOC_MEDIUMPURPLE4 = Quantity_NameOfColor.Quantity_NOC_MEDIUMPURPLE4
+Quantity_NOC_MEDIUMSEAGREEN = Quantity_NameOfColor.Quantity_NOC_MEDIUMSEAGREEN
+Quantity_NOC_MEDIUMSLATEBLUE = Quantity_NameOfColor.Quantity_NOC_MEDIUMSLATEBLUE
+Quantity_NOC_MEDIUMSPRINGGREEN = Quantity_NameOfColor.Quantity_NOC_MEDIUMSPRINGGREEN
+Quantity_NOC_MEDIUMTURQUOISE = Quantity_NameOfColor.Quantity_NOC_MEDIUMTURQUOISE
+Quantity_NOC_MEDIUMVIOLETRED = Quantity_NameOfColor.Quantity_NOC_MEDIUMVIOLETRED
+Quantity_NOC_MIDNIGHTBLUE = Quantity_NameOfColor.Quantity_NOC_MIDNIGHTBLUE
+Quantity_NOC_MINTCREAM = Quantity_NameOfColor.Quantity_NOC_MINTCREAM
+Quantity_NOC_MISTYROSE = Quantity_NameOfColor.Quantity_NOC_MISTYROSE
+Quantity_NOC_MISTYROSE2 = Quantity_NameOfColor.Quantity_NOC_MISTYROSE2
+Quantity_NOC_MISTYROSE3 = Quantity_NameOfColor.Quantity_NOC_MISTYROSE3
+Quantity_NOC_MISTYROSE4 = Quantity_NameOfColor.Quantity_NOC_MISTYROSE4
+Quantity_NOC_MOCCASIN = Quantity_NameOfColor.Quantity_NOC_MOCCASIN
+Quantity_NOC_NAVAJOWHITE1 = Quantity_NameOfColor.Quantity_NOC_NAVAJOWHITE1
+Quantity_NOC_NAVAJOWHITE2 = Quantity_NameOfColor.Quantity_NOC_NAVAJOWHITE2
+Quantity_NOC_NAVAJOWHITE3 = Quantity_NameOfColor.Quantity_NOC_NAVAJOWHITE3
+Quantity_NOC_NAVAJOWHITE4 = Quantity_NameOfColor.Quantity_NOC_NAVAJOWHITE4
+Quantity_NOC_NAVYBLUE = Quantity_NameOfColor.Quantity_NOC_NAVYBLUE
+Quantity_NOC_OLDLACE = Quantity_NameOfColor.Quantity_NOC_OLDLACE
+Quantity_NOC_OLIVEDRAB = Quantity_NameOfColor.Quantity_NOC_OLIVEDRAB
+Quantity_NOC_OLIVEDRAB1 = Quantity_NameOfColor.Quantity_NOC_OLIVEDRAB1
+Quantity_NOC_OLIVEDRAB2 = Quantity_NameOfColor.Quantity_NOC_OLIVEDRAB2
+Quantity_NOC_OLIVEDRAB3 = Quantity_NameOfColor.Quantity_NOC_OLIVEDRAB3
+Quantity_NOC_OLIVEDRAB4 = Quantity_NameOfColor.Quantity_NOC_OLIVEDRAB4
+Quantity_NOC_ORANGE = Quantity_NameOfColor.Quantity_NOC_ORANGE
+Quantity_NOC_ORANGE1 = Quantity_NameOfColor.Quantity_NOC_ORANGE1
+Quantity_NOC_ORANGE2 = Quantity_NameOfColor.Quantity_NOC_ORANGE2
+Quantity_NOC_ORANGE3 = Quantity_NameOfColor.Quantity_NOC_ORANGE3
+Quantity_NOC_ORANGE4 = Quantity_NameOfColor.Quantity_NOC_ORANGE4
+Quantity_NOC_ORANGERED = Quantity_NameOfColor.Quantity_NOC_ORANGERED
+Quantity_NOC_ORANGERED1 = Quantity_NameOfColor.Quantity_NOC_ORANGERED1
+Quantity_NOC_ORANGERED2 = Quantity_NameOfColor.Quantity_NOC_ORANGERED2
+Quantity_NOC_ORANGERED3 = Quantity_NameOfColor.Quantity_NOC_ORANGERED3
+Quantity_NOC_ORANGERED4 = Quantity_NameOfColor.Quantity_NOC_ORANGERED4
+Quantity_NOC_ORCHID = Quantity_NameOfColor.Quantity_NOC_ORCHID
+Quantity_NOC_ORCHID1 = Quantity_NameOfColor.Quantity_NOC_ORCHID1
+Quantity_NOC_ORCHID2 = Quantity_NameOfColor.Quantity_NOC_ORCHID2
+Quantity_NOC_ORCHID3 = Quantity_NameOfColor.Quantity_NOC_ORCHID3
+Quantity_NOC_ORCHID4 = Quantity_NameOfColor.Quantity_NOC_ORCHID4
+Quantity_NOC_PALEGOLDENROD = Quantity_NameOfColor.Quantity_NOC_PALEGOLDENROD
+Quantity_NOC_PALEGREEN = Quantity_NameOfColor.Quantity_NOC_PALEGREEN
+Quantity_NOC_PALEGREEN1 = Quantity_NameOfColor.Quantity_NOC_PALEGREEN1
+Quantity_NOC_PALEGREEN2 = Quantity_NameOfColor.Quantity_NOC_PALEGREEN2
+Quantity_NOC_PALEGREEN3 = Quantity_NameOfColor.Quantity_NOC_PALEGREEN3
+Quantity_NOC_PALEGREEN4 = Quantity_NameOfColor.Quantity_NOC_PALEGREEN4
+Quantity_NOC_PALETURQUOISE = Quantity_NameOfColor.Quantity_NOC_PALETURQUOISE
+Quantity_NOC_PALETURQUOISE1 = Quantity_NameOfColor.Quantity_NOC_PALETURQUOISE1
+Quantity_NOC_PALETURQUOISE2 = Quantity_NameOfColor.Quantity_NOC_PALETURQUOISE2
+Quantity_NOC_PALETURQUOISE3 = Quantity_NameOfColor.Quantity_NOC_PALETURQUOISE3
+Quantity_NOC_PALETURQUOISE4 = Quantity_NameOfColor.Quantity_NOC_PALETURQUOISE4
+Quantity_NOC_PALEVIOLETRED = Quantity_NameOfColor.Quantity_NOC_PALEVIOLETRED
+Quantity_NOC_PALEVIOLETRED1 = Quantity_NameOfColor.Quantity_NOC_PALEVIOLETRED1
+Quantity_NOC_PALEVIOLETRED2 = Quantity_NameOfColor.Quantity_NOC_PALEVIOLETRED2
+Quantity_NOC_PALEVIOLETRED3 = Quantity_NameOfColor.Quantity_NOC_PALEVIOLETRED3
+Quantity_NOC_PALEVIOLETRED4 = Quantity_NameOfColor.Quantity_NOC_PALEVIOLETRED4
+Quantity_NOC_PAPAYAWHIP = Quantity_NameOfColor.Quantity_NOC_PAPAYAWHIP
+Quantity_NOC_PEACHPUFF = Quantity_NameOfColor.Quantity_NOC_PEACHPUFF
+Quantity_NOC_PEACHPUFF2 = Quantity_NameOfColor.Quantity_NOC_PEACHPUFF2
+Quantity_NOC_PEACHPUFF3 = Quantity_NameOfColor.Quantity_NOC_PEACHPUFF3
+Quantity_NOC_PEACHPUFF4 = Quantity_NameOfColor.Quantity_NOC_PEACHPUFF4
+Quantity_NOC_PERU = Quantity_NameOfColor.Quantity_NOC_PERU
+Quantity_NOC_PINK = Quantity_NameOfColor.Quantity_NOC_PINK
+Quantity_NOC_PINK1 = Quantity_NameOfColor.Quantity_NOC_PINK1
+Quantity_NOC_PINK2 = Quantity_NameOfColor.Quantity_NOC_PINK2
+Quantity_NOC_PINK3 = Quantity_NameOfColor.Quantity_NOC_PINK3
+Quantity_NOC_PINK4 = Quantity_NameOfColor.Quantity_NOC_PINK4
+Quantity_NOC_PLUM = Quantity_NameOfColor.Quantity_NOC_PLUM
+Quantity_NOC_PLUM1 = Quantity_NameOfColor.Quantity_NOC_PLUM1
+Quantity_NOC_PLUM2 = Quantity_NameOfColor.Quantity_NOC_PLUM2
+Quantity_NOC_PLUM3 = Quantity_NameOfColor.Quantity_NOC_PLUM3
+Quantity_NOC_PLUM4 = Quantity_NameOfColor.Quantity_NOC_PLUM4
+Quantity_NOC_POWDERBLUE = Quantity_NameOfColor.Quantity_NOC_POWDERBLUE
+Quantity_NOC_PURPLE = Quantity_NameOfColor.Quantity_NOC_PURPLE
+Quantity_NOC_PURPLE1 = Quantity_NameOfColor.Quantity_NOC_PURPLE1
+Quantity_NOC_PURPLE2 = Quantity_NameOfColor.Quantity_NOC_PURPLE2
+Quantity_NOC_PURPLE3 = Quantity_NameOfColor.Quantity_NOC_PURPLE3
+Quantity_NOC_PURPLE4 = Quantity_NameOfColor.Quantity_NOC_PURPLE4
+Quantity_NOC_RED = Quantity_NameOfColor.Quantity_NOC_RED
+Quantity_NOC_RED1 = Quantity_NameOfColor.Quantity_NOC_RED1
+Quantity_NOC_RED2 = Quantity_NameOfColor.Quantity_NOC_RED2
+Quantity_NOC_RED3 = Quantity_NameOfColor.Quantity_NOC_RED3
+Quantity_NOC_RED4 = Quantity_NameOfColor.Quantity_NOC_RED4
+Quantity_NOC_ROSYBROWN = Quantity_NameOfColor.Quantity_NOC_ROSYBROWN
+Quantity_NOC_ROSYBROWN1 = Quantity_NameOfColor.Quantity_NOC_ROSYBROWN1
+Quantity_NOC_ROSYBROWN2 = Quantity_NameOfColor.Quantity_NOC_ROSYBROWN2
+Quantity_NOC_ROSYBROWN3 = Quantity_NameOfColor.Quantity_NOC_ROSYBROWN3
+Quantity_NOC_ROSYBROWN4 = Quantity_NameOfColor.Quantity_NOC_ROSYBROWN4
+Quantity_NOC_ROYALBLUE = Quantity_NameOfColor.Quantity_NOC_ROYALBLUE
+Quantity_NOC_ROYALBLUE1 = Quantity_NameOfColor.Quantity_NOC_ROYALBLUE1
+Quantity_NOC_ROYALBLUE2 = Quantity_NameOfColor.Quantity_NOC_ROYALBLUE2
+Quantity_NOC_ROYALBLUE3 = Quantity_NameOfColor.Quantity_NOC_ROYALBLUE3
+Quantity_NOC_ROYALBLUE4 = Quantity_NameOfColor.Quantity_NOC_ROYALBLUE4
+Quantity_NOC_SADDLEBROWN = Quantity_NameOfColor.Quantity_NOC_SADDLEBROWN
+Quantity_NOC_SALMON = Quantity_NameOfColor.Quantity_NOC_SALMON
+Quantity_NOC_SALMON1 = Quantity_NameOfColor.Quantity_NOC_SALMON1
+Quantity_NOC_SALMON2 = Quantity_NameOfColor.Quantity_NOC_SALMON2
+Quantity_NOC_SALMON3 = Quantity_NameOfColor.Quantity_NOC_SALMON3
+Quantity_NOC_SALMON4 = Quantity_NameOfColor.Quantity_NOC_SALMON4
+Quantity_NOC_SANDYBROWN = Quantity_NameOfColor.Quantity_NOC_SANDYBROWN
+Quantity_NOC_SEAGREEN = Quantity_NameOfColor.Quantity_NOC_SEAGREEN
+Quantity_NOC_SEAGREEN1 = Quantity_NameOfColor.Quantity_NOC_SEAGREEN1
+Quantity_NOC_SEAGREEN2 = Quantity_NameOfColor.Quantity_NOC_SEAGREEN2
+Quantity_NOC_SEAGREEN3 = Quantity_NameOfColor.Quantity_NOC_SEAGREEN3
+Quantity_NOC_SEAGREEN4 = Quantity_NameOfColor.Quantity_NOC_SEAGREEN4
+Quantity_NOC_SEASHELL = Quantity_NameOfColor.Quantity_NOC_SEASHELL
+Quantity_NOC_SEASHELL2 = Quantity_NameOfColor.Quantity_NOC_SEASHELL2
+Quantity_NOC_SEASHELL3 = Quantity_NameOfColor.Quantity_NOC_SEASHELL3
+Quantity_NOC_SEASHELL4 = Quantity_NameOfColor.Quantity_NOC_SEASHELL4
+Quantity_NOC_BEET = Quantity_NameOfColor.Quantity_NOC_BEET
+Quantity_NOC_TEAL = Quantity_NameOfColor.Quantity_NOC_TEAL
+Quantity_NOC_SIENNA = Quantity_NameOfColor.Quantity_NOC_SIENNA
+Quantity_NOC_SIENNA1 = Quantity_NameOfColor.Quantity_NOC_SIENNA1
+Quantity_NOC_SIENNA2 = Quantity_NameOfColor.Quantity_NOC_SIENNA2
+Quantity_NOC_SIENNA3 = Quantity_NameOfColor.Quantity_NOC_SIENNA3
+Quantity_NOC_SIENNA4 = Quantity_NameOfColor.Quantity_NOC_SIENNA4
+Quantity_NOC_SKYBLUE = Quantity_NameOfColor.Quantity_NOC_SKYBLUE
+Quantity_NOC_SKYBLUE1 = Quantity_NameOfColor.Quantity_NOC_SKYBLUE1
+Quantity_NOC_SKYBLUE2 = Quantity_NameOfColor.Quantity_NOC_SKYBLUE2
+Quantity_NOC_SKYBLUE3 = Quantity_NameOfColor.Quantity_NOC_SKYBLUE3
+Quantity_NOC_SKYBLUE4 = Quantity_NameOfColor.Quantity_NOC_SKYBLUE4
+Quantity_NOC_SLATEBLUE = Quantity_NameOfColor.Quantity_NOC_SLATEBLUE
+Quantity_NOC_SLATEBLUE1 = Quantity_NameOfColor.Quantity_NOC_SLATEBLUE1
+Quantity_NOC_SLATEBLUE2 = Quantity_NameOfColor.Quantity_NOC_SLATEBLUE2
+Quantity_NOC_SLATEBLUE3 = Quantity_NameOfColor.Quantity_NOC_SLATEBLUE3
+Quantity_NOC_SLATEBLUE4 = Quantity_NameOfColor.Quantity_NOC_SLATEBLUE4
+Quantity_NOC_SLATEGRAY1 = Quantity_NameOfColor.Quantity_NOC_SLATEGRAY1
+Quantity_NOC_SLATEGRAY2 = Quantity_NameOfColor.Quantity_NOC_SLATEGRAY2
+Quantity_NOC_SLATEGRAY3 = Quantity_NameOfColor.Quantity_NOC_SLATEGRAY3
+Quantity_NOC_SLATEGRAY4 = Quantity_NameOfColor.Quantity_NOC_SLATEGRAY4
+Quantity_NOC_SLATEGRAY = Quantity_NameOfColor.Quantity_NOC_SLATEGRAY
+Quantity_NOC_SNOW = Quantity_NameOfColor.Quantity_NOC_SNOW
+Quantity_NOC_SNOW2 = Quantity_NameOfColor.Quantity_NOC_SNOW2
+Quantity_NOC_SNOW3 = Quantity_NameOfColor.Quantity_NOC_SNOW3
+Quantity_NOC_SNOW4 = Quantity_NameOfColor.Quantity_NOC_SNOW4
+Quantity_NOC_SPRINGGREEN = Quantity_NameOfColor.Quantity_NOC_SPRINGGREEN
+Quantity_NOC_SPRINGGREEN2 = Quantity_NameOfColor.Quantity_NOC_SPRINGGREEN2
+Quantity_NOC_SPRINGGREEN3 = Quantity_NameOfColor.Quantity_NOC_SPRINGGREEN3
+Quantity_NOC_SPRINGGREEN4 = Quantity_NameOfColor.Quantity_NOC_SPRINGGREEN4
+Quantity_NOC_STEELBLUE = Quantity_NameOfColor.Quantity_NOC_STEELBLUE
+Quantity_NOC_STEELBLUE1 = Quantity_NameOfColor.Quantity_NOC_STEELBLUE1
+Quantity_NOC_STEELBLUE2 = Quantity_NameOfColor.Quantity_NOC_STEELBLUE2
+Quantity_NOC_STEELBLUE3 = Quantity_NameOfColor.Quantity_NOC_STEELBLUE3
+Quantity_NOC_STEELBLUE4 = Quantity_NameOfColor.Quantity_NOC_STEELBLUE4
+Quantity_NOC_TAN = Quantity_NameOfColor.Quantity_NOC_TAN
+Quantity_NOC_TAN1 = Quantity_NameOfColor.Quantity_NOC_TAN1
+Quantity_NOC_TAN2 = Quantity_NameOfColor.Quantity_NOC_TAN2
+Quantity_NOC_TAN3 = Quantity_NameOfColor.Quantity_NOC_TAN3
+Quantity_NOC_TAN4 = Quantity_NameOfColor.Quantity_NOC_TAN4
+Quantity_NOC_THISTLE = Quantity_NameOfColor.Quantity_NOC_THISTLE
+Quantity_NOC_THISTLE1 = Quantity_NameOfColor.Quantity_NOC_THISTLE1
+Quantity_NOC_THISTLE2 = Quantity_NameOfColor.Quantity_NOC_THISTLE2
+Quantity_NOC_THISTLE3 = Quantity_NameOfColor.Quantity_NOC_THISTLE3
+Quantity_NOC_THISTLE4 = Quantity_NameOfColor.Quantity_NOC_THISTLE4
+Quantity_NOC_TOMATO = Quantity_NameOfColor.Quantity_NOC_TOMATO
+Quantity_NOC_TOMATO1 = Quantity_NameOfColor.Quantity_NOC_TOMATO1
+Quantity_NOC_TOMATO2 = Quantity_NameOfColor.Quantity_NOC_TOMATO2
+Quantity_NOC_TOMATO3 = Quantity_NameOfColor.Quantity_NOC_TOMATO3
+Quantity_NOC_TOMATO4 = Quantity_NameOfColor.Quantity_NOC_TOMATO4
+Quantity_NOC_TURQUOISE = Quantity_NameOfColor.Quantity_NOC_TURQUOISE
+Quantity_NOC_TURQUOISE1 = Quantity_NameOfColor.Quantity_NOC_TURQUOISE1
+Quantity_NOC_TURQUOISE2 = Quantity_NameOfColor.Quantity_NOC_TURQUOISE2
+Quantity_NOC_TURQUOISE3 = Quantity_NameOfColor.Quantity_NOC_TURQUOISE3
+Quantity_NOC_TURQUOISE4 = Quantity_NameOfColor.Quantity_NOC_TURQUOISE4
+Quantity_NOC_VIOLET = Quantity_NameOfColor.Quantity_NOC_VIOLET
+Quantity_NOC_VIOLETRED = Quantity_NameOfColor.Quantity_NOC_VIOLETRED
+Quantity_NOC_VIOLETRED1 = Quantity_NameOfColor.Quantity_NOC_VIOLETRED1
+Quantity_NOC_VIOLETRED2 = Quantity_NameOfColor.Quantity_NOC_VIOLETRED2
+Quantity_NOC_VIOLETRED3 = Quantity_NameOfColor.Quantity_NOC_VIOLETRED3
+Quantity_NOC_VIOLETRED4 = Quantity_NameOfColor.Quantity_NOC_VIOLETRED4
+Quantity_NOC_WHEAT = Quantity_NameOfColor.Quantity_NOC_WHEAT
+Quantity_NOC_WHEAT1 = Quantity_NameOfColor.Quantity_NOC_WHEAT1
+Quantity_NOC_WHEAT2 = Quantity_NameOfColor.Quantity_NOC_WHEAT2
+Quantity_NOC_WHEAT3 = Quantity_NameOfColor.Quantity_NOC_WHEAT3
+Quantity_NOC_WHEAT4 = Quantity_NameOfColor.Quantity_NOC_WHEAT4
+Quantity_NOC_WHITESMOKE = Quantity_NameOfColor.Quantity_NOC_WHITESMOKE
+Quantity_NOC_YELLOW = Quantity_NameOfColor.Quantity_NOC_YELLOW
+Quantity_NOC_YELLOW1 = Quantity_NameOfColor.Quantity_NOC_YELLOW1
+Quantity_NOC_YELLOW2 = Quantity_NameOfColor.Quantity_NOC_YELLOW2
+Quantity_NOC_YELLOW3 = Quantity_NameOfColor.Quantity_NOC_YELLOW3
+Quantity_NOC_YELLOW4 = Quantity_NameOfColor.Quantity_NOC_YELLOW4
+Quantity_NOC_YELLOWGREEN = Quantity_NameOfColor.Quantity_NOC_YELLOWGREEN
+Quantity_NOC_WHITE = Quantity_NameOfColor.Quantity_NOC_WHITE
 
-class Quantity_TypeOfColor:
+class Quantity_TypeOfColor(IntEnum):
 	Quantity_TOC_RGB: int = ...
 	Quantity_TOC_HLS: int = ...
+Quantity_TOC_RGB = Quantity_TypeOfColor.Quantity_TOC_RGB
+Quantity_TOC_HLS = Quantity_TypeOfColor.Quantity_TOC_HLS
 
-class Quantity_PhysicalQuantity:
+class Quantity_PhysicalQuantity(IntEnum):
 	Quantity_MASS: int = ...
 	Quantity_PLANEANGLE: int = ...
 	Quantity_SOLIDANGLE: int = ...
@@ -677,6 +1222,74 @@ class Quantity_PhysicalQuantity:
 	Quantity_ACTIVITY: int = ...
 	Quantity_ABSORBEDDOSE: int = ...
 	Quantity_DOSEEQUIVALENT: int = ...
+Quantity_MASS = Quantity_PhysicalQuantity.Quantity_MASS
+Quantity_PLANEANGLE = Quantity_PhysicalQuantity.Quantity_PLANEANGLE
+Quantity_SOLIDANGLE = Quantity_PhysicalQuantity.Quantity_SOLIDANGLE
+Quantity_LENGTH = Quantity_PhysicalQuantity.Quantity_LENGTH
+Quantity_AREA = Quantity_PhysicalQuantity.Quantity_AREA
+Quantity_VOLUME = Quantity_PhysicalQuantity.Quantity_VOLUME
+Quantity_SPEED = Quantity_PhysicalQuantity.Quantity_SPEED
+Quantity_VELOCITY = Quantity_PhysicalQuantity.Quantity_VELOCITY
+Quantity_ACCELERATION = Quantity_PhysicalQuantity.Quantity_ACCELERATION
+Quantity_ANGULARVELOCITY = Quantity_PhysicalQuantity.Quantity_ANGULARVELOCITY
+Quantity_FREQUENCY = Quantity_PhysicalQuantity.Quantity_FREQUENCY
+Quantity_TEMPERATURE = Quantity_PhysicalQuantity.Quantity_TEMPERATURE
+Quantity_AMOUNTOFSUBSTANCE = Quantity_PhysicalQuantity.Quantity_AMOUNTOFSUBSTANCE
+Quantity_DENSITY = Quantity_PhysicalQuantity.Quantity_DENSITY
+Quantity_MASSFLOW = Quantity_PhysicalQuantity.Quantity_MASSFLOW
+Quantity_VOLUMEFLOW = Quantity_PhysicalQuantity.Quantity_VOLUMEFLOW
+Quantity_CONSUMPTION = Quantity_PhysicalQuantity.Quantity_CONSUMPTION
+Quantity_MOMENTUM = Quantity_PhysicalQuantity.Quantity_MOMENTUM
+Quantity_KINETICMOMENT = Quantity_PhysicalQuantity.Quantity_KINETICMOMENT
+Quantity_MOMENTOFINERTIA = Quantity_PhysicalQuantity.Quantity_MOMENTOFINERTIA
+Quantity_FORCE = Quantity_PhysicalQuantity.Quantity_FORCE
+Quantity_MOMENTOFAFORCE = Quantity_PhysicalQuantity.Quantity_MOMENTOFAFORCE
+Quantity_TORQUE = Quantity_PhysicalQuantity.Quantity_TORQUE
+Quantity_WEIGHT = Quantity_PhysicalQuantity.Quantity_WEIGHT
+Quantity_PRESSURE = Quantity_PhysicalQuantity.Quantity_PRESSURE
+Quantity_VISCOSITY = Quantity_PhysicalQuantity.Quantity_VISCOSITY
+Quantity_KINEMATICVISCOSITY = Quantity_PhysicalQuantity.Quantity_KINEMATICVISCOSITY
+Quantity_ENERGY = Quantity_PhysicalQuantity.Quantity_ENERGY
+Quantity_WORK = Quantity_PhysicalQuantity.Quantity_WORK
+Quantity_POWER = Quantity_PhysicalQuantity.Quantity_POWER
+Quantity_SURFACETENSION = Quantity_PhysicalQuantity.Quantity_SURFACETENSION
+Quantity_COEFFICIENTOFEXPANSION = Quantity_PhysicalQuantity.Quantity_COEFFICIENTOFEXPANSION
+Quantity_THERMALCONDUCTIVITY = Quantity_PhysicalQuantity.Quantity_THERMALCONDUCTIVITY
+Quantity_SPECIFICHEATCAPACITY = Quantity_PhysicalQuantity.Quantity_SPECIFICHEATCAPACITY
+Quantity_ENTROPY = Quantity_PhysicalQuantity.Quantity_ENTROPY
+Quantity_ENTHALPY = Quantity_PhysicalQuantity.Quantity_ENTHALPY
+Quantity_LUMINOUSINTENSITY = Quantity_PhysicalQuantity.Quantity_LUMINOUSINTENSITY
+Quantity_LUMINOUSFLUX = Quantity_PhysicalQuantity.Quantity_LUMINOUSFLUX
+Quantity_LUMINANCE = Quantity_PhysicalQuantity.Quantity_LUMINANCE
+Quantity_ILLUMINANCE = Quantity_PhysicalQuantity.Quantity_ILLUMINANCE
+Quantity_LUMINOUSEXPOSITION = Quantity_PhysicalQuantity.Quantity_LUMINOUSEXPOSITION
+Quantity_LUMINOUSEFFICACITY = Quantity_PhysicalQuantity.Quantity_LUMINOUSEFFICACITY
+Quantity_ELECTRICCHARGE = Quantity_PhysicalQuantity.Quantity_ELECTRICCHARGE
+Quantity_ELECTRICCURRENT = Quantity_PhysicalQuantity.Quantity_ELECTRICCURRENT
+Quantity_ELECTRICFIELDSTRENGTH = Quantity_PhysicalQuantity.Quantity_ELECTRICFIELDSTRENGTH
+Quantity_ELECTRICPOTENTIAL = Quantity_PhysicalQuantity.Quantity_ELECTRICPOTENTIAL
+Quantity_ELECTRICCAPACITANCE = Quantity_PhysicalQuantity.Quantity_ELECTRICCAPACITANCE
+Quantity_MAGNETICFLUX = Quantity_PhysicalQuantity.Quantity_MAGNETICFLUX
+Quantity_MAGNETICFLUXDENSITY = Quantity_PhysicalQuantity.Quantity_MAGNETICFLUXDENSITY
+Quantity_MAGNETICFIELDSTRENGTH = Quantity_PhysicalQuantity.Quantity_MAGNETICFIELDSTRENGTH
+Quantity_RELUCTANCE = Quantity_PhysicalQuantity.Quantity_RELUCTANCE
+Quantity_RESISTANCE = Quantity_PhysicalQuantity.Quantity_RESISTANCE
+Quantity_INDUCTANCE = Quantity_PhysicalQuantity.Quantity_INDUCTANCE
+Quantity_CAPACITANCE = Quantity_PhysicalQuantity.Quantity_CAPACITANCE
+Quantity_IMPEDANCE = Quantity_PhysicalQuantity.Quantity_IMPEDANCE
+Quantity_ADMITTANCE = Quantity_PhysicalQuantity.Quantity_ADMITTANCE
+Quantity_RESISTIVITY = Quantity_PhysicalQuantity.Quantity_RESISTIVITY
+Quantity_CONDUCTIVITY = Quantity_PhysicalQuantity.Quantity_CONDUCTIVITY
+Quantity_MOLARMASS = Quantity_PhysicalQuantity.Quantity_MOLARMASS
+Quantity_MOLARVOLUME = Quantity_PhysicalQuantity.Quantity_MOLARVOLUME
+Quantity_CONCENTRATION = Quantity_PhysicalQuantity.Quantity_CONCENTRATION
+Quantity_MOLARCONCENTRATION = Quantity_PhysicalQuantity.Quantity_MOLARCONCENTRATION
+Quantity_MOLARITY = Quantity_PhysicalQuantity.Quantity_MOLARITY
+Quantity_SOUNDINTENSITY = Quantity_PhysicalQuantity.Quantity_SOUNDINTENSITY
+Quantity_ACOUSTICINTENSITY = Quantity_PhysicalQuantity.Quantity_ACOUSTICINTENSITY
+Quantity_ACTIVITY = Quantity_PhysicalQuantity.Quantity_ACTIVITY
+Quantity_ABSORBEDDOSE = Quantity_PhysicalQuantity.Quantity_ABSORBEDDOSE
+Quantity_DOSEEQUIVALENT = Quantity_PhysicalQuantity.Quantity_DOSEEQUIVALENT
 
 class Quantity_Color:
 	@overload
@@ -686,79 +1299,85 @@ class Quantity_Color:
 	@overload
 	def __init__(self, theR1: float, theR2: float, theR3: float, theType: Quantity_TypeOfColor) -> None: ...
 	@staticmethod
-	def Argb2color(self, theARGB: int, theColor: Quantity_Color) -> None: ...
+	def Argb2color(theARGB: int, theColor: Quantity_Color) -> None: ...
 	def Blue(self) -> float: ...
 	def ChangeContrast(self, ADelta: float) -> None: ...
 	def ChangeIntensity(self, ADelta: float) -> None: ...
 	@staticmethod
-	def Color2argb(self, theColor: Quantity_Color) -> int: ...
+	def Color2argb(theColor: Quantity_Color) -> int: ...
 	@staticmethod
-	def ColorFromHex(self, theHexColorString: str, theColor: Quantity_Color) -> False: ...
+	def ColorFromHex(theHexColorString: str, theColor: Quantity_Color) -> False: ...
+	@overload
 	@staticmethod
-	def ColorFromName(self, theName: str, theColor: Quantity_NameOfColor) -> bool: ...
+	def ColorFromName(theName: str, theColor: Quantity_NameOfColor) -> bool: ...
+	@overload
 	@staticmethod
-	def ColorFromName(self, theColorNameString: str, theColor: Quantity_Color) -> bool: ...
+	def ColorFromName(theColorNameString: str, theColor: Quantity_Color) -> bool: ...
 	def Delta(self, AColor: Quantity_Color) -> Tuple[float, float]: ...
 	def Distance(self, AColor: Quantity_Color) -> float: ...
 	@staticmethod
-	def Epsilon(self) -> float: ...
+	def Epsilon() -> float: ...
 	def Green(self) -> float: ...
 	@staticmethod
-	def HlsRgb(self, H: float, L: float, S: float) -> Tuple[float, float, float]: ...
+	def HlsRgb(H: float, L: float, S: float) -> Tuple[float, float, float]: ...
 	def Hue(self) -> float: ...
 	def IsDifferent(self, Other: Quantity_Color) -> bool: ...
 	def IsEqual(self, Other: Quantity_Color) -> bool: ...
 	def Light(self) -> float: ...
+	@overload
 	def Name(self) -> Quantity_NameOfColor: ...
+	@overload
 	@staticmethod
-	def Name(self, R: float, G: float, B: float) -> Quantity_NameOfColor: ...
+	def Name(R: float, G: float, B: float) -> Quantity_NameOfColor: ...
 	def Red(self) -> float: ...
 	@staticmethod
-	def RgbHls(self, R: float, G: float, B: float) -> Tuple[float, float, float]: ...
+	def RgbHls(R: float, G: float, B: float) -> Tuple[float, float, float]: ...
 	def Saturation(self) -> float: ...
 	@staticmethod
-	def SetEpsilon(self, AnEpsilon: float) -> None: ...
+	def SetEpsilon(AnEpsilon: float) -> None: ...
+	@overload
 	def SetValues(self, AName: Quantity_NameOfColor) -> None: ...
+	@overload
 	def SetValues(self, theR1: float, theR2: float, theR3: float, theType: Quantity_TypeOfColor) -> None: ...
 	def SquareDistance(self, AColor: Quantity_Color) -> float: ...
 	@staticmethod
-	def StringName(self, AColor: Quantity_NameOfColor) -> str: ...
+	def StringName(AColor: Quantity_NameOfColor) -> str: ...
 	@staticmethod
-	def Test(self) -> None: ...
+	def Test() -> None: ...
 	def Values(self, theType: Quantity_TypeOfColor) -> Tuple[float, float, float]: ...
 
 class Quantity_ColorHasher:
 	@staticmethod
-	def HashCode(self, theColor: Quantity_Color, theUpperBound: int) -> int: ...
+	def HashCode(theColor: Quantity_Color, theUpperBound: int) -> int: ...
 	@staticmethod
-	def IsEqual(self, theColor1: Quantity_Color, theColor2: Quantity_Color) -> bool: ...
+	def IsEqual(theColor1: Quantity_Color, theColor2: Quantity_Color) -> bool: ...
 
 class Quantity_ColorRGBA:
 	@overload
 	def __init__(self) -> None: ...
 	@overload
 	def __init__(self, theRgb: Quantity_Color) -> None: ...
-	def Alpha(self) -> Standard_ShortReal: ...
+	def Alpha(self) -> float: ...
 	def ChangeRGB(self) -> Quantity_Color: ...
 	@staticmethod
-	def ColorFromName(self, theColorNameString: str, theColor: Quantity_ColorRGBA) -> bool: ...
+	def ColorFromName(theColorNameString: str, theColor: Quantity_ColorRGBA) -> bool: ...
 	def GetRGB(self) -> Quantity_Color: ...
 	def IsDifferent(self, theOther: Quantity_ColorRGBA) -> False: ...
 	def IsEqual(self, theOther: Quantity_ColorRGBA) -> False: ...
-	def SetAlpha(self, theAlpha: Standard_ShortReal) -> None: ...
+	def SetAlpha(self, theAlpha: float) -> None: ...
 	def SetRGB(self, theRgb: Quantity_Color) -> None: ...
 
 class Quantity_ColorRGBAHasher:
 	@staticmethod
-	def HashCode(self, theColor: Quantity_ColorRGBA, theUpperBound: int) -> int: ...
+	def HashCode(theColor: Quantity_ColorRGBA, theUpperBound: int) -> int: ...
 	@staticmethod
-	def IsEqual(self, theColor1: Quantity_ColorRGBA, theColor2: Quantity_ColorRGBA) -> bool: ...
+	def IsEqual(theColor1: Quantity_ColorRGBA, theColor2: Quantity_ColorRGBA) -> bool: ...
 
 class Quantity_Date:
 	@overload
 	def __init__(self) -> None: ...
 	@overload
-	def __init__(self, mm: int, dd: int, yyyy: int, hh: int, mn: int, ss: int, mis: Optional[int], mics: Optional[int]) -> None: ...
+	def __init__(self, mm: int, dd: int, yyyy: int, hh: int, mn: int, ss: int, mis: Optional[int] = 0, mics: Optional[int] = 0) -> None: ...
 	def Add(self, aPeriod: Quantity_Period) -> Quantity_Date: ...
 	def Day(self) -> int: ...
 	def Difference(self, anOther: Quantity_Date) -> Quantity_Period: ...
@@ -767,34 +1386,74 @@ class Quantity_Date:
 	def IsEqual(self, anOther: Quantity_Date) -> bool: ...
 	def IsLater(self, anOther: Quantity_Date) -> bool: ...
 	@staticmethod
-	def IsLeap(self, yy: int) -> bool: ...
+	def IsLeap(yy: int) -> bool: ...
 	@staticmethod
-	def IsValid(self, mm: int, dd: int, yy: int, hh: int, mn: int, ss: int, mis: Optional[int], mics: Optional[int]) -> bool: ...
+	def IsValid(mm: int, dd: int, yy: int, hh: int, mn: int, ss: int, mis: Optional[int] = 0, mics: Optional[int] = 0) -> bool: ...
 	def MicroSecond(self) -> int: ...
 	def MilliSecond(self) -> int: ...
 	def Minute(self) -> int: ...
 	def Month(self) -> int: ...
 	def Second(self) -> int: ...
-	def SetValues(self, mm: int, dd: int, yy: int, hh: int, mn: int, ss: int, mis: Optional[int], mics: Optional[int]) -> None: ...
+	def SetValues(self, mm: int, dd: int, yy: int, hh: int, mn: int, ss: int, mis: Optional[int] = 0, mics: Optional[int] = 0) -> None: ...
 	def Subtract(self, aPeriod: Quantity_Period) -> Quantity_Date: ...
 	def Values(self) -> Tuple[int, int, int, int, int, int, int, int]: ...
 	def Year(self) -> int: ...
 
 class Quantity_Period:
 	@overload
-	def __init__(self, dd: int, hh: int, mn: int, ss: int, mis: Optional[int], mics: Optional[int]) -> None: ...
+	def __init__(self, dd: int, hh: int, mn: int, ss: int, mis: Optional[int] = 0, mics: Optional[int] = 0) -> None: ...
 	@overload
-	def __init__(self, ss: int, mics: Optional[int]) -> None: ...
+	def __init__(self, ss: int, mics: Optional[int] = 0) -> None: ...
 	def Add(self, anOther: Quantity_Period) -> Quantity_Period: ...
 	def IsEqual(self, anOther: Quantity_Period) -> bool: ...
 	def IsLonger(self, anOther: Quantity_Period) -> bool: ...
 	def IsShorter(self, anOther: Quantity_Period) -> bool: ...
+	@overload
 	@staticmethod
-	def IsValid(self, dd: int, hh: int, mn: int, ss: int, mis: Optional[int], mics: Optional[int]) -> bool: ...
+	def IsValid(dd: int, hh: int, mn: int, ss: int, mis: Optional[int] = 0, mics: Optional[int] = 0) -> bool: ...
+	@overload
 	@staticmethod
-	def IsValid(self, ss: int, mics: Optional[int]) -> bool: ...
-	def SetValues(self, dd: int, hh: int, mn: int, ss: int, mis: Optional[int], mics: Optional[int]) -> None: ...
-	def SetValues(self, ss: int, mics: Optional[int]) -> None: ...
+	def IsValid(ss: int, mics: Optional[int] = 0) -> bool: ...
+	@overload
+	def SetValues(self, dd: int, hh: int, mn: int, ss: int, mis: Optional[int] = 0, mics: Optional[int] = 0) -> None: ...
+	@overload
+	def SetValues(self, ss: int, mics: Optional[int] = 0) -> None: ...
 	def Subtract(self, anOther: Quantity_Period) -> Quantity_Period: ...
+	@overload
 	def Values(self) -> Tuple[int, int, int, int, int, int]: ...
+	@overload
 	def Values(self) -> Tuple[int, int]: ...
+
+# harray1 classes
+
+class Quantity_HArray1OfColor(Quantity_Array1OfColor, Standard_Transient):
+    def __init__(self, theLower: int, theUpper: int) -> None: ...
+    def Array1(self) -> Quantity_Array1OfColor: ...
+
+# harray2 classes
+# hsequence classes
+
+Quantity_Color_Argb2color = Quantity_Color.Argb2color
+Quantity_Color_Color2argb = Quantity_Color.Color2argb
+Quantity_Color_ColorFromHex = Quantity_Color.ColorFromHex
+Quantity_Color_ColorFromName = Quantity_Color.ColorFromName
+Quantity_Color_ColorFromName = Quantity_Color.ColorFromName
+Quantity_Color_ColorToHex = Quantity_Color.ColorToHex
+Quantity_Color_Epsilon = Quantity_Color.Epsilon
+Quantity_Color_HlsRgb = Quantity_Color.HlsRgb
+Quantity_Color_Name = Quantity_Color.Name
+Quantity_Color_RgbHls = Quantity_Color.RgbHls
+Quantity_Color_SetEpsilon = Quantity_Color.SetEpsilon
+Quantity_Color_StringName = Quantity_Color.StringName
+Quantity_Color_Test = Quantity_Color.Test
+Quantity_ColorHasher_HashCode = Quantity_ColorHasher.HashCode
+Quantity_ColorHasher_IsEqual = Quantity_ColorHasher.IsEqual
+Quantity_ColorRGBA_ColorFromHex = Quantity_ColorRGBA.ColorFromHex
+Quantity_ColorRGBA_ColorFromName = Quantity_ColorRGBA.ColorFromName
+Quantity_ColorRGBA_ColorToHex = Quantity_ColorRGBA.ColorToHex
+Quantity_ColorRGBAHasher_HashCode = Quantity_ColorRGBAHasher.HashCode
+Quantity_ColorRGBAHasher_IsEqual = Quantity_ColorRGBAHasher.IsEqual
+Quantity_Date_IsLeap = Quantity_Date.IsLeap
+Quantity_Date_IsValid = Quantity_Date.IsValid
+Quantity_Period_IsValid = Quantity_Period.IsValid
+Quantity_Period_IsValid = Quantity_Period.IsValid

@@ -52,6 +52,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gccint.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -70,13 +71,19 @@ enum GccInt_IType {
 /* python proy classes for enums */
 %pythoncode {
 
-class GccInt_IType:
+class GccInt_IType(IntEnum):
 	GccInt_Lin = 0
 	GccInt_Cir = 1
 	GccInt_Ell = 2
 	GccInt_Par = 3
 	GccInt_Hpr = 4
 	GccInt_Pnt = 5
+GccInt_Lin = GccInt_IType.GccInt_Lin
+GccInt_Cir = GccInt_IType.GccInt_Cir
+GccInt_Ell = GccInt_IType.GccInt_Ell
+GccInt_Par = GccInt_IType.GccInt_Par
+GccInt_Hpr = GccInt_IType.GccInt_Hpr
+GccInt_Pnt = GccInt_IType.GccInt_Pnt
 };
 /* end python proxy for enums */
 

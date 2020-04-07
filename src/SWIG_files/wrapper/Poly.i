@@ -59,6 +59,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_poly.html"
 %import TShort.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -115,6 +116,13 @@ from OCC.Core.Exception import *
     }
 };
 %template(Poly_ListOfTriangulation) NCollection_List<opencascade::handle<Poly_Triangulation>>;
+
+%extend NCollection_List<opencascade::handle<Poly_Triangulation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */
@@ -1722,16 +1730,16 @@ class Poly_MakeLoops2D:
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
-class Poly_HArray1OfTriangle : public  Poly_Array1OfTriangle, public Standard_Transient {
+
+class Poly_HArray1OfTriangle : public Poly_Array1OfTriangle, public Standard_Transient {
   public:
     Poly_HArray1OfTriangle(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Poly_HArray1OfTriangle(const Standard_Integer theLower, const Standard_Integer theUpper, const  Poly_Array1OfTriangle::value_type& theValue);
-    Poly_HArray1OfTriangle(const  Poly_Array1OfTriangle& theOther);
-    const  Poly_Array1OfTriangle& Array1();
-     Poly_Array1OfTriangle& ChangeArray1();
+    Poly_HArray1OfTriangle(const Standard_Integer theLower, const Standard_Integer theUpper, const Poly_Array1OfTriangle::value_type& theValue);
+    Poly_HArray1OfTriangle(const Poly_Array1OfTriangle& theOther);
+    const Poly_Array1OfTriangle& Array1();
+    Poly_Array1OfTriangle& ChangeArray1();
 };
 %make_alias(Poly_HArray1OfTriangle)
-
 
 /* harray2 classes */
 /* hsequence classes */

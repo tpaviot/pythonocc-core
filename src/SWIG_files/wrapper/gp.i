@@ -50,6 +50,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gp.html"
 %import NCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -100,7 +101,7 @@ enum gp_EulerSequence {
 /* python proy classes for enums */
 %pythoncode {
 
-class gp_TrsfForm:
+class gp_TrsfForm(IntEnum):
 	gp_Identity = 0
 	gp_Rotation = 1
 	gp_Translation = 2
@@ -110,8 +111,17 @@ class gp_TrsfForm:
 	gp_Scale = 6
 	gp_CompoundTrsf = 7
 	gp_Other = 8
+gp_Identity = gp_TrsfForm.gp_Identity
+gp_Rotation = gp_TrsfForm.gp_Rotation
+gp_Translation = gp_TrsfForm.gp_Translation
+gp_PntMirror = gp_TrsfForm.gp_PntMirror
+gp_Ax1Mirror = gp_TrsfForm.gp_Ax1Mirror
+gp_Ax2Mirror = gp_TrsfForm.gp_Ax2Mirror
+gp_Scale = gp_TrsfForm.gp_Scale
+gp_CompoundTrsf = gp_TrsfForm.gp_CompoundTrsf
+gp_Other = gp_TrsfForm.gp_Other
 
-class gp_EulerSequence:
+class gp_EulerSequence(IntEnum):
 	gp_EulerAngles = 0
 	gp_YawPitchRoll = 1
 	gp_Extrinsic_XYZ = 2
@@ -138,6 +148,32 @@ class gp_EulerSequence:
 	gp_Intrinsic_YXY = 23
 	gp_Intrinsic_ZXZ = 24
 	gp_Intrinsic_ZYZ = 25
+gp_EulerAngles = gp_EulerSequence.gp_EulerAngles
+gp_YawPitchRoll = gp_EulerSequence.gp_YawPitchRoll
+gp_Extrinsic_XYZ = gp_EulerSequence.gp_Extrinsic_XYZ
+gp_Extrinsic_XZY = gp_EulerSequence.gp_Extrinsic_XZY
+gp_Extrinsic_YZX = gp_EulerSequence.gp_Extrinsic_YZX
+gp_Extrinsic_YXZ = gp_EulerSequence.gp_Extrinsic_YXZ
+gp_Extrinsic_ZXY = gp_EulerSequence.gp_Extrinsic_ZXY
+gp_Extrinsic_ZYX = gp_EulerSequence.gp_Extrinsic_ZYX
+gp_Intrinsic_XYZ = gp_EulerSequence.gp_Intrinsic_XYZ
+gp_Intrinsic_XZY = gp_EulerSequence.gp_Intrinsic_XZY
+gp_Intrinsic_YZX = gp_EulerSequence.gp_Intrinsic_YZX
+gp_Intrinsic_YXZ = gp_EulerSequence.gp_Intrinsic_YXZ
+gp_Intrinsic_ZXY = gp_EulerSequence.gp_Intrinsic_ZXY
+gp_Intrinsic_ZYX = gp_EulerSequence.gp_Intrinsic_ZYX
+gp_Extrinsic_XYX = gp_EulerSequence.gp_Extrinsic_XYX
+gp_Extrinsic_XZX = gp_EulerSequence.gp_Extrinsic_XZX
+gp_Extrinsic_YZY = gp_EulerSequence.gp_Extrinsic_YZY
+gp_Extrinsic_YXY = gp_EulerSequence.gp_Extrinsic_YXY
+gp_Extrinsic_ZYZ = gp_EulerSequence.gp_Extrinsic_ZYZ
+gp_Extrinsic_ZXZ = gp_EulerSequence.gp_Extrinsic_ZXZ
+gp_Intrinsic_XYX = gp_EulerSequence.gp_Intrinsic_XYX
+gp_Intrinsic_XZX = gp_EulerSequence.gp_Intrinsic_XZX
+gp_Intrinsic_YZY = gp_EulerSequence.gp_Intrinsic_YZY
+gp_Intrinsic_YXY = gp_EulerSequence.gp_Intrinsic_YXY
+gp_Intrinsic_ZXZ = gp_EulerSequence.gp_Intrinsic_ZXZ
+gp_Intrinsic_ZYZ = gp_EulerSequence.gp_Intrinsic_ZYZ
 };
 /* end python proxy for enums */
 

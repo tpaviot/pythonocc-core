@@ -67,6 +67,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepdimtol.html"
 %import StepShape.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -156,12 +157,15 @@ enum StepDimTol_GeometricToleranceModifier {
 /* python proy classes for enums */
 %pythoncode {
 
-class StepDimTol_LimitCondition:
+class StepDimTol_LimitCondition(IntEnum):
 	StepDimTol_MaximumMaterialCondition = 0
 	StepDimTol_LeastMaterialCondition = 1
 	StepDimTol_RegardlessOfFeatureSize = 2
+StepDimTol_MaximumMaterialCondition = StepDimTol_LimitCondition.StepDimTol_MaximumMaterialCondition
+StepDimTol_LeastMaterialCondition = StepDimTol_LimitCondition.StepDimTol_LeastMaterialCondition
+StepDimTol_RegardlessOfFeatureSize = StepDimTol_LimitCondition.StepDimTol_RegardlessOfFeatureSize
 
-class StepDimTol_GeometricToleranceType:
+class StepDimTol_GeometricToleranceType(IntEnum):
 	StepDimTol_GTTAngularityTolerance = 0
 	StepDimTol_GTTCircularRunoutTolerance = 1
 	StepDimTol_GTTCoaxialityTolerance = 2
@@ -177,14 +181,33 @@ class StepDimTol_GeometricToleranceType:
 	StepDimTol_GTTSurfaceProfileTolerance = 12
 	StepDimTol_GTTSymmetryTolerance = 13
 	StepDimTol_GTTTotalRunoutTolerance = 14
+StepDimTol_GTTAngularityTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTAngularityTolerance
+StepDimTol_GTTCircularRunoutTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTCircularRunoutTolerance
+StepDimTol_GTTCoaxialityTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTCoaxialityTolerance
+StepDimTol_GTTConcentricityTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTConcentricityTolerance
+StepDimTol_GTTCylindricityTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTCylindricityTolerance
+StepDimTol_GTTFlatnessTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTFlatnessTolerance
+StepDimTol_GTTLineProfileTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTLineProfileTolerance
+StepDimTol_GTTParallelismTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTParallelismTolerance
+StepDimTol_GTTPerpendicularityTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTPerpendicularityTolerance
+StepDimTol_GTTPositionTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTPositionTolerance
+StepDimTol_GTTRoundnessTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTRoundnessTolerance
+StepDimTol_GTTStraightnessTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTStraightnessTolerance
+StepDimTol_GTTSurfaceProfileTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTSurfaceProfileTolerance
+StepDimTol_GTTSymmetryTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTSymmetryTolerance
+StepDimTol_GTTTotalRunoutTolerance = StepDimTol_GeometricToleranceType.StepDimTol_GTTTotalRunoutTolerance
 
-class StepDimTol_DatumReferenceModifierType:
+class StepDimTol_DatumReferenceModifierType(IntEnum):
 	StepDimTol_CircularOrCylindrical = 0
 	StepDimTol_Distance = 1
 	StepDimTol_Projected = 2
 	StepDimTol_Spherical = 3
+StepDimTol_CircularOrCylindrical = StepDimTol_DatumReferenceModifierType.StepDimTol_CircularOrCylindrical
+StepDimTol_Distance = StepDimTol_DatumReferenceModifierType.StepDimTol_Distance
+StepDimTol_Projected = StepDimTol_DatumReferenceModifierType.StepDimTol_Projected
+StepDimTol_Spherical = StepDimTol_DatumReferenceModifierType.StepDimTol_Spherical
 
-class StepDimTol_SimpleDatumReferenceModifier:
+class StepDimTol_SimpleDatumReferenceModifier(IntEnum):
 	StepDimTol_SDRMAnyCrossSection = 0
 	StepDimTol_SDRMAnyLongitudinalSection = 1
 	StepDimTol_SDRMBasic = 2
@@ -207,13 +230,38 @@ class StepDimTol_SimpleDatumReferenceModifier:
 	StepDimTol_SDRMPlane = 19
 	StepDimTol_SDRMPoint = 20
 	StepDimTol_SDRMTranslation = 21
+StepDimTol_SDRMAnyCrossSection = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMAnyCrossSection
+StepDimTol_SDRMAnyLongitudinalSection = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMAnyLongitudinalSection
+StepDimTol_SDRMBasic = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMBasic
+StepDimTol_SDRMContactingFeature = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMContactingFeature
+StepDimTol_SDRMDegreeOfFreedomConstraintU = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMDegreeOfFreedomConstraintU
+StepDimTol_SDRMDegreeOfFreedomConstraintV = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMDegreeOfFreedomConstraintV
+StepDimTol_SDRMDegreeOfFreedomConstraintW = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMDegreeOfFreedomConstraintW
+StepDimTol_SDRMDegreeOfFreedomConstraintX = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMDegreeOfFreedomConstraintX
+StepDimTol_SDRMDegreeOfFreedomConstraintY = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMDegreeOfFreedomConstraintY
+StepDimTol_SDRMDegreeOfFreedomConstraintZ = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMDegreeOfFreedomConstraintZ
+StepDimTol_SDRMDistanceVariable = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMDistanceVariable
+StepDimTol_SDRMFreeState = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMFreeState
+StepDimTol_SDRMLeastMaterialRequirement = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMLeastMaterialRequirement
+StepDimTol_SDRMLine = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMLine
+StepDimTol_SDRMMajorDiameter = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMMajorDiameter
+StepDimTol_SDRMMaximumMaterialRequirement = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMMaximumMaterialRequirement
+StepDimTol_SDRMMinorDiameter = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMMinorDiameter
+StepDimTol_SDRMOrientation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMOrientation
+StepDimTol_SDRMPitchDiameter = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMPitchDiameter
+StepDimTol_SDRMPlane = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMPlane
+StepDimTol_SDRMPoint = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMPoint
+StepDimTol_SDRMTranslation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_SDRMTranslation
 
-class StepDimTol_AreaUnitType:
+class StepDimTol_AreaUnitType(IntEnum):
 	StepDimTol_Circular = 0
 	StepDimTol_Rectangular = 1
 	StepDimTol_Square = 2
+StepDimTol_Circular = StepDimTol_AreaUnitType.StepDimTol_Circular
+StepDimTol_Rectangular = StepDimTol_AreaUnitType.StepDimTol_Rectangular
+StepDimTol_Square = StepDimTol_AreaUnitType.StepDimTol_Square
 
-class StepDimTol_GeometricToleranceModifier:
+class StepDimTol_GeometricToleranceModifier(IntEnum):
 	StepDimTol_GTMAnyCrossSection = 0
 	StepDimTol_GTMCommonZone = 1
 	StepDimTol_GTMEachRadialElement = 2
@@ -229,6 +277,21 @@ class StepDimTol_GeometricToleranceModifier:
 	StepDimTol_GTMSeparateRequirement = 12
 	StepDimTol_GTMStatisticalTolerance = 13
 	StepDimTol_GTMTangentPlane = 14
+StepDimTol_GTMAnyCrossSection = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMAnyCrossSection
+StepDimTol_GTMCommonZone = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMCommonZone
+StepDimTol_GTMEachRadialElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMEachRadialElement
+StepDimTol_GTMFreeState = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMFreeState
+StepDimTol_GTMLeastMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLeastMaterialRequirement
+StepDimTol_GTMLineElement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMLineElement
+StepDimTol_GTMMajorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMajorDiameter
+StepDimTol_GTMMaximumMaterialRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMaximumMaterialRequirement
+StepDimTol_GTMMinorDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMMinorDiameter
+StepDimTol_GTMNotConvex = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMNotConvex
+StepDimTol_GTMPitchDiameter = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMPitchDiameter
+StepDimTol_GTMReciprocityRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMReciprocityRequirement
+StepDimTol_GTMSeparateRequirement = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMSeparateRequirement
+StepDimTol_GTMStatisticalTolerance = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMStatisticalTolerance
+StepDimTol_GTMTangentPlane = StepDimTol_GeometricToleranceModifier.StepDimTol_GTMTangentPlane
 };
 /* end python proxy for enums */
 
@@ -4469,82 +4532,82 @@ None
 };
 
 /* harray1 classes */
-class StepDimTol_HArray1OfToleranceZoneTarget : public  StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
+
+class StepDimTol_HArray1OfToleranceZoneTarget : public StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
   public:
     StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepDimTol_Array1OfToleranceZoneTarget::value_type& theValue);
-    StepDimTol_HArray1OfToleranceZoneTarget(const  StepDimTol_Array1OfToleranceZoneTarget& theOther);
-    const  StepDimTol_Array1OfToleranceZoneTarget& Array1();
-     StepDimTol_Array1OfToleranceZoneTarget& ChangeArray1();
+    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfToleranceZoneTarget::value_type& theValue);
+    StepDimTol_HArray1OfToleranceZoneTarget(const StepDimTol_Array1OfToleranceZoneTarget& theOther);
+    const StepDimTol_Array1OfToleranceZoneTarget& Array1();
+    StepDimTol_Array1OfToleranceZoneTarget& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfToleranceZoneTarget)
 
 
-class StepDimTol_HArray1OfDatumReference : public  StepDimTol_Array1OfDatumReference, public Standard_Transient {
+class StepDimTol_HArray1OfDatumReference : public StepDimTol_Array1OfDatumReference, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepDimTol_Array1OfDatumReference::value_type& theValue);
-    StepDimTol_HArray1OfDatumReference(const  StepDimTol_Array1OfDatumReference& theOther);
-    const  StepDimTol_Array1OfDatumReference& Array1();
-     StepDimTol_Array1OfDatumReference& ChangeArray1();
+    StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReference::value_type& theValue);
+    StepDimTol_HArray1OfDatumReference(const StepDimTol_Array1OfDatumReference& theOther);
+    const StepDimTol_Array1OfDatumReference& Array1();
+    StepDimTol_Array1OfDatumReference& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReference)
 
 
-class StepDimTol_HArray1OfDatumReferenceElement : public  StepDimTol_Array1OfDatumReferenceElement, public Standard_Transient {
+class StepDimTol_HArray1OfDatumReferenceElement : public StepDimTol_Array1OfDatumReferenceElement, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepDimTol_Array1OfDatumReferenceElement::value_type& theValue);
-    StepDimTol_HArray1OfDatumReferenceElement(const  StepDimTol_Array1OfDatumReferenceElement& theOther);
-    const  StepDimTol_Array1OfDatumReferenceElement& Array1();
-     StepDimTol_Array1OfDatumReferenceElement& ChangeArray1();
+    StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceElement::value_type& theValue);
+    StepDimTol_HArray1OfDatumReferenceElement(const StepDimTol_Array1OfDatumReferenceElement& theOther);
+    const StepDimTol_Array1OfDatumReferenceElement& Array1();
+    StepDimTol_Array1OfDatumReferenceElement& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceElement)
 
 
-class StepDimTol_HArray1OfDatumSystemOrReference : public  StepDimTol_Array1OfDatumSystemOrReference, public Standard_Transient {
+class StepDimTol_HArray1OfDatumSystemOrReference : public StepDimTol_Array1OfDatumSystemOrReference, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepDimTol_Array1OfDatumSystemOrReference::value_type& theValue);
-    StepDimTol_HArray1OfDatumSystemOrReference(const  StepDimTol_Array1OfDatumSystemOrReference& theOther);
-    const  StepDimTol_Array1OfDatumSystemOrReference& Array1();
-     StepDimTol_Array1OfDatumSystemOrReference& ChangeArray1();
+    StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumSystemOrReference::value_type& theValue);
+    StepDimTol_HArray1OfDatumSystemOrReference(const StepDimTol_Array1OfDatumSystemOrReference& theOther);
+    const StepDimTol_Array1OfDatumSystemOrReference& Array1();
+    StepDimTol_Array1OfDatumSystemOrReference& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumSystemOrReference)
 
 
-class StepDimTol_HArray1OfDatumReferenceCompartment : public  StepDimTol_Array1OfDatumReferenceCompartment, public Standard_Transient {
+class StepDimTol_HArray1OfDatumReferenceCompartment : public StepDimTol_Array1OfDatumReferenceCompartment, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepDimTol_Array1OfDatumReferenceCompartment::value_type& theValue);
-    StepDimTol_HArray1OfDatumReferenceCompartment(const  StepDimTol_Array1OfDatumReferenceCompartment& theOther);
-    const  StepDimTol_Array1OfDatumReferenceCompartment& Array1();
-     StepDimTol_Array1OfDatumReferenceCompartment& ChangeArray1();
+    StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceCompartment::value_type& theValue);
+    StepDimTol_HArray1OfDatumReferenceCompartment(const StepDimTol_Array1OfDatumReferenceCompartment& theOther);
+    const StepDimTol_Array1OfDatumReferenceCompartment& Array1();
+    StepDimTol_Array1OfDatumReferenceCompartment& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceCompartment)
 
 
-class StepDimTol_HArray1OfDatumReferenceModifier : public  StepDimTol_Array1OfDatumReferenceModifier, public Standard_Transient {
+class StepDimTol_HArray1OfDatumReferenceModifier : public StepDimTol_Array1OfDatumReferenceModifier, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepDimTol_Array1OfDatumReferenceModifier::value_type& theValue);
-    StepDimTol_HArray1OfDatumReferenceModifier(const  StepDimTol_Array1OfDatumReferenceModifier& theOther);
-    const  StepDimTol_Array1OfDatumReferenceModifier& Array1();
-     StepDimTol_Array1OfDatumReferenceModifier& ChangeArray1();
+    StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceModifier::value_type& theValue);
+    StepDimTol_HArray1OfDatumReferenceModifier(const StepDimTol_Array1OfDatumReferenceModifier& theOther);
+    const StepDimTol_Array1OfDatumReferenceModifier& Array1();
+    StepDimTol_Array1OfDatumReferenceModifier& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceModifier)
 
 
-class StepDimTol_HArray1OfGeometricToleranceModifier : public  StepDimTol_Array1OfGeometricToleranceModifier, public Standard_Transient {
+class StepDimTol_HArray1OfGeometricToleranceModifier : public StepDimTol_Array1OfGeometricToleranceModifier, public Standard_Transient {
   public:
     StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const  StepDimTol_Array1OfGeometricToleranceModifier::value_type& theValue);
-    StepDimTol_HArray1OfGeometricToleranceModifier(const  StepDimTol_Array1OfGeometricToleranceModifier& theOther);
-    const  StepDimTol_Array1OfGeometricToleranceModifier& Array1();
-     StepDimTol_Array1OfGeometricToleranceModifier& ChangeArray1();
+    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfGeometricToleranceModifier::value_type& theValue);
+    StepDimTol_HArray1OfGeometricToleranceModifier(const StepDimTol_Array1OfGeometricToleranceModifier& theOther);
+    const StepDimTol_Array1OfGeometricToleranceModifier& Array1();
+    StepDimTol_Array1OfGeometricToleranceModifier& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfGeometricToleranceModifier)
-
 
 /* harray2 classes */
 /* hsequence classes */

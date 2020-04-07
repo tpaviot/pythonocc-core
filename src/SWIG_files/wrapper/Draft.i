@@ -71,6 +71,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_draft.html"
 %import TopLoc.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -87,11 +88,15 @@ enum Draft_ErrorStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class Draft_ErrorStatus:
+class Draft_ErrorStatus(IntEnum):
 	Draft_NoError = 0
 	Draft_FaceRecomputation = 1
 	Draft_EdgeRecomputation = 2
 	Draft_VertexRecomputation = 3
+Draft_NoError = Draft_ErrorStatus.Draft_NoError
+Draft_FaceRecomputation = Draft_ErrorStatus.Draft_FaceRecomputation
+Draft_EdgeRecomputation = Draft_ErrorStatus.Draft_EdgeRecomputation
+Draft_VertexRecomputation = Draft_ErrorStatus.Draft_VertexRecomputation
 };
 /* end python proxy for enums */
 

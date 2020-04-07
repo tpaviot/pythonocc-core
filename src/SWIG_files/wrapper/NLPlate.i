@@ -57,6 +57,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_nlplate.html"
 %import Geom.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -83,6 +84,13 @@ from OCC.Core.Exception import *
 %template(NLPlate_ListIteratorOfStackOfPlate) NCollection_TListIterator<Plate_Plate>;
 %template(NLPlate_SequenceOfHGPPConstraint) NCollection_Sequence<opencascade::handle<NLPlate_HGPPConstraint>>;
 %template(NLPlate_StackOfPlate) NCollection_List<Plate_Plate>;
+
+%extend NCollection_List<Plate_Plate> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -90,6 +90,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bopds.html"
 %import gp.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -128,7 +129,21 @@ from OCC.Core.Exception import *
 %template(BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks) NCollection_IndexedDataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>;
 %template(BOPDS_IndexedMapOfPaveBlock) NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_MapTransientHasher>;
 %template(BOPDS_ListOfPave) NCollection_List<BOPDS_Pave>;
+
+%extend NCollection_List<BOPDS_Pave> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BOPDS_ListOfPaveBlock) NCollection_List<opencascade::handle<BOPDS_PaveBlock>>;
+
+%extend NCollection_List<opencascade::handle<BOPDS_PaveBlock>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BOPDS_MapOfCommonBlock) NCollection_Map<opencascade::handle<BOPDS_CommonBlock>,TColStd_MapTransientHasher>;
 %template(BOPDS_MapOfPair) NCollection_Map<BOPDS_Pair,BOPDS_PairMapHasher>;
 %template(BOPDS_MapOfPave) NCollection_Map<BOPDS_Pave,BOPDS_PaveMapHasher>;

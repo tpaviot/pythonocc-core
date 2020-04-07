@@ -76,6 +76,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_steptotopods.html
 %import Geom2d.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -134,45 +135,67 @@ enum StepToTopoDS_TranslateVertexError {
 /* python proy classes for enums */
 %pythoncode {
 
-class StepToTopoDS_GeometricToolError:
+class StepToTopoDS_GeometricToolError(IntEnum):
 	StepToTopoDS_GeometricToolDone = 0
 	StepToTopoDS_GeometricToolIsDegenerated = 1
 	StepToTopoDS_GeometricToolHasNoPCurve = 2
 	StepToTopoDS_GeometricToolWrong3dParameters = 3
 	StepToTopoDS_GeometricToolNoProjectiOnCurve = 4
 	StepToTopoDS_GeometricToolOther = 5
+StepToTopoDS_GeometricToolDone = StepToTopoDS_GeometricToolError.StepToTopoDS_GeometricToolDone
+StepToTopoDS_GeometricToolIsDegenerated = StepToTopoDS_GeometricToolError.StepToTopoDS_GeometricToolIsDegenerated
+StepToTopoDS_GeometricToolHasNoPCurve = StepToTopoDS_GeometricToolError.StepToTopoDS_GeometricToolHasNoPCurve
+StepToTopoDS_GeometricToolWrong3dParameters = StepToTopoDS_GeometricToolError.StepToTopoDS_GeometricToolWrong3dParameters
+StepToTopoDS_GeometricToolNoProjectiOnCurve = StepToTopoDS_GeometricToolError.StepToTopoDS_GeometricToolNoProjectiOnCurve
+StepToTopoDS_GeometricToolOther = StepToTopoDS_GeometricToolError.StepToTopoDS_GeometricToolOther
 
-class StepToTopoDS_TranslateShellError:
+class StepToTopoDS_TranslateShellError(IntEnum):
 	StepToTopoDS_TranslateShellDone = 0
 	StepToTopoDS_TranslateShellOther = 1
+StepToTopoDS_TranslateShellDone = StepToTopoDS_TranslateShellError.StepToTopoDS_TranslateShellDone
+StepToTopoDS_TranslateShellOther = StepToTopoDS_TranslateShellError.StepToTopoDS_TranslateShellOther
 
-class StepToTopoDS_TranslatePolyLoopError:
+class StepToTopoDS_TranslatePolyLoopError(IntEnum):
 	StepToTopoDS_TranslatePolyLoopDone = 0
 	StepToTopoDS_TranslatePolyLoopOther = 1
+StepToTopoDS_TranslatePolyLoopDone = StepToTopoDS_TranslatePolyLoopError.StepToTopoDS_TranslatePolyLoopDone
+StepToTopoDS_TranslatePolyLoopOther = StepToTopoDS_TranslatePolyLoopError.StepToTopoDS_TranslatePolyLoopOther
 
-class StepToTopoDS_TranslateEdgeError:
+class StepToTopoDS_TranslateEdgeError(IntEnum):
 	StepToTopoDS_TranslateEdgeDone = 0
 	StepToTopoDS_TranslateEdgeOther = 1
+StepToTopoDS_TranslateEdgeDone = StepToTopoDS_TranslateEdgeError.StepToTopoDS_TranslateEdgeDone
+StepToTopoDS_TranslateEdgeOther = StepToTopoDS_TranslateEdgeError.StepToTopoDS_TranslateEdgeOther
 
-class StepToTopoDS_BuilderError:
+class StepToTopoDS_BuilderError(IntEnum):
 	StepToTopoDS_BuilderDone = 0
 	StepToTopoDS_BuilderOther = 1
+StepToTopoDS_BuilderDone = StepToTopoDS_BuilderError.StepToTopoDS_BuilderDone
+StepToTopoDS_BuilderOther = StepToTopoDS_BuilderError.StepToTopoDS_BuilderOther
 
-class StepToTopoDS_TranslateFaceError:
+class StepToTopoDS_TranslateFaceError(IntEnum):
 	StepToTopoDS_TranslateFaceDone = 0
 	StepToTopoDS_TranslateFaceOther = 1
+StepToTopoDS_TranslateFaceDone = StepToTopoDS_TranslateFaceError.StepToTopoDS_TranslateFaceDone
+StepToTopoDS_TranslateFaceOther = StepToTopoDS_TranslateFaceError.StepToTopoDS_TranslateFaceOther
 
-class StepToTopoDS_TranslateVertexLoopError:
+class StepToTopoDS_TranslateVertexLoopError(IntEnum):
 	StepToTopoDS_TranslateVertexLoopDone = 0
 	StepToTopoDS_TranslateVertexLoopOther = 1
+StepToTopoDS_TranslateVertexLoopDone = StepToTopoDS_TranslateVertexLoopError.StepToTopoDS_TranslateVertexLoopDone
+StepToTopoDS_TranslateVertexLoopOther = StepToTopoDS_TranslateVertexLoopError.StepToTopoDS_TranslateVertexLoopOther
 
-class StepToTopoDS_TranslateEdgeLoopError:
+class StepToTopoDS_TranslateEdgeLoopError(IntEnum):
 	StepToTopoDS_TranslateEdgeLoopDone = 0
 	StepToTopoDS_TranslateEdgeLoopOther = 1
+StepToTopoDS_TranslateEdgeLoopDone = StepToTopoDS_TranslateEdgeLoopError.StepToTopoDS_TranslateEdgeLoopDone
+StepToTopoDS_TranslateEdgeLoopOther = StepToTopoDS_TranslateEdgeLoopError.StepToTopoDS_TranslateEdgeLoopOther
 
-class StepToTopoDS_TranslateVertexError:
+class StepToTopoDS_TranslateVertexError(IntEnum):
 	StepToTopoDS_TranslateVertexDone = 0
 	StepToTopoDS_TranslateVertexOther = 1
+StepToTopoDS_TranslateVertexDone = StepToTopoDS_TranslateVertexError.StepToTopoDS_TranslateVertexDone
+StepToTopoDS_TranslateVertexOther = StepToTopoDS_TranslateVertexError.StepToTopoDS_TranslateVertexOther
 };
 /* end python proxy for enums */
 

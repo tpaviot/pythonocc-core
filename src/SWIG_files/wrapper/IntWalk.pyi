@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.IntWalk import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.math import *
@@ -11,13 +11,19 @@ from OCC.Core.gp import *
 from OCC.Core.IntSurf import *
 
 
-class IntWalk_StatusDeflection:
+class IntWalk_StatusDeflection(IntEnum):
 	IntWalk_PasTropGrand: int = ...
 	IntWalk_StepTooSmall: int = ...
 	IntWalk_PointConfondu: int = ...
 	IntWalk_ArretSurPointPrecedent: int = ...
 	IntWalk_ArretSurPoint: int = ...
 	IntWalk_OK: int = ...
+IntWalk_PasTropGrand = IntWalk_StatusDeflection.IntWalk_PasTropGrand
+IntWalk_StepTooSmall = IntWalk_StatusDeflection.IntWalk_StepTooSmall
+IntWalk_PointConfondu = IntWalk_StatusDeflection.IntWalk_PointConfondu
+IntWalk_ArretSurPointPrecedent = IntWalk_StatusDeflection.IntWalk_ArretSurPointPrecedent
+IntWalk_ArretSurPoint = IntWalk_StatusDeflection.IntWalk_ArretSurPoint
+IntWalk_OK = IntWalk_StatusDeflection.IntWalk_OK
 
 class IntWalk_TheFunctionOfTheInt2S(math_FunctionSetWithDerivatives):
 	def __init__(self, S1: Adaptor3d_HSurface, S2: Adaptor3d_HSurface) -> None: ...
@@ -49,9 +55,16 @@ class IntWalk_TheInt2S:
 	def IsDone(self) -> bool: ...
 	def IsEmpty(self) -> bool: ...
 	def IsTangent(self) -> bool: ...
+	@overload
 	def Perform(self, Param: TColStd_Array1OfReal, Rsnld: math_FunctionSetRoot) -> IntImp_ConstIsoparametric: ...
+	@overload
 	def Perform(self, Param: TColStd_Array1OfReal, Rsnld: math_FunctionSetRoot, ChoixIso: IntImp_ConstIsoparametric) -> IntImp_ConstIsoparametric: ...
 	def Point(self) -> IntSurf_PntOn2S: ...
 
 class IntWalk_WalkingData:
 	pass
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

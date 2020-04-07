@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.AppCont import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.AppParCurves import *
@@ -19,3 +19,8 @@ class AppCont_LeastSquare:
 	def Error(self) -> Tuple[float, float, float]: ...
 	def IsDone(self) -> bool: ...
 	def Value(self) -> AppParCurves_MultiCurve: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

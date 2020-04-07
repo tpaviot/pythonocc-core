@@ -58,6 +58,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bnd.html"
 %import BVH.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -3742,38 +3743,38 @@ BVH_Box<float, 3 >
 };
 
 /* harray1 classes */
-class Bnd_HArray1OfBox : public  Bnd_Array1OfBox, public Standard_Transient {
+
+class Bnd_HArray1OfBox : public Bnd_Array1OfBox, public Standard_Transient {
   public:
     Bnd_HArray1OfBox(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Bnd_HArray1OfBox(const Standard_Integer theLower, const Standard_Integer theUpper, const  Bnd_Array1OfBox::value_type& theValue);
-    Bnd_HArray1OfBox(const  Bnd_Array1OfBox& theOther);
-    const  Bnd_Array1OfBox& Array1();
-     Bnd_Array1OfBox& ChangeArray1();
+    Bnd_HArray1OfBox(const Standard_Integer theLower, const Standard_Integer theUpper, const Bnd_Array1OfBox::value_type& theValue);
+    Bnd_HArray1OfBox(const Bnd_Array1OfBox& theOther);
+    const Bnd_Array1OfBox& Array1();
+    Bnd_Array1OfBox& ChangeArray1();
 };
 %make_alias(Bnd_HArray1OfBox)
 
 
-class Bnd_HArray1OfSphere : public  Bnd_Array1OfSphere, public Standard_Transient {
+class Bnd_HArray1OfSphere : public Bnd_Array1OfSphere, public Standard_Transient {
   public:
     Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper, const  Bnd_Array1OfSphere::value_type& theValue);
-    Bnd_HArray1OfSphere(const  Bnd_Array1OfSphere& theOther);
-    const  Bnd_Array1OfSphere& Array1();
-     Bnd_Array1OfSphere& ChangeArray1();
+    Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper, const Bnd_Array1OfSphere::value_type& theValue);
+    Bnd_HArray1OfSphere(const Bnd_Array1OfSphere& theOther);
+    const Bnd_Array1OfSphere& Array1();
+    Bnd_Array1OfSphere& ChangeArray1();
 };
 %make_alias(Bnd_HArray1OfSphere)
 
 
-class Bnd_HArray1OfBox2d : public  Bnd_Array1OfBox2d, public Standard_Transient {
+class Bnd_HArray1OfBox2d : public Bnd_Array1OfBox2d, public Standard_Transient {
   public:
     Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper, const  Bnd_Array1OfBox2d::value_type& theValue);
-    Bnd_HArray1OfBox2d(const  Bnd_Array1OfBox2d& theOther);
-    const  Bnd_Array1OfBox2d& Array1();
-     Bnd_Array1OfBox2d& ChangeArray1();
+    Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper, const Bnd_Array1OfBox2d::value_type& theValue);
+    Bnd_HArray1OfBox2d(const Bnd_Array1OfBox2d& theOther);
+    const Bnd_Array1OfBox2d& Array1();
+    Bnd_Array1OfBox2d& ChangeArray1();
 };
 %make_alias(Bnd_HArray1OfBox2d)
-
 
 /* harray2 classes */
 /* hsequence classes */

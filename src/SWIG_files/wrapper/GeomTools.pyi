@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.GeomTools import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Geom import *
@@ -8,11 +8,11 @@ from OCC.Core.Geom2d import *
 from OCC.Core.Message import *
 
 
-class GeomTools:
+class geomtools:
 	@staticmethod
-	def GetUndefinedTypeHandler(self) -> GeomTools_UndefinedTypeHandler: ...
+	def GetUndefinedTypeHandler() -> GeomTools_UndefinedTypeHandler: ...
 	@staticmethod
-	def SetUndefinedTypeHandler(self, aHandler: GeomTools_UndefinedTypeHandler) -> None: ...
+	def SetUndefinedTypeHandler(aHandler: GeomTools_UndefinedTypeHandler) -> None: ...
 
 class GeomTools_Curve2dSet:
 	def __init__(self) -> None: ...
@@ -43,3 +43,23 @@ class GeomTools_SurfaceSet:
 
 class GeomTools_UndefinedTypeHandler(Standard_Transient):
 	def __init__(self) -> None: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+
+geomtools_Dump = geomtools.Dump
+geomtools_Dump = geomtools.Dump
+geomtools_Dump = geomtools.Dump
+geomtools_GetReal = geomtools.GetReal
+geomtools_GetUndefinedTypeHandler = geomtools.GetUndefinedTypeHandler
+geomtools_Read = geomtools.Read
+geomtools_Read = geomtools.Read
+geomtools_Read = geomtools.Read
+geomtools_SetUndefinedTypeHandler = geomtools.SetUndefinedTypeHandler
+geomtools_Write = geomtools.Write
+geomtools_Write = geomtools.Write
+geomtools_Write = geomtools.Write
+GeomTools_Curve2dSet_PrintCurve2d = GeomTools_Curve2dSet.PrintCurve2d
+GeomTools_CurveSet_PrintCurve = GeomTools_CurveSet.PrintCurve
+GeomTools_SurfaceSet_PrintSurface = GeomTools_SurfaceSet.PrintSurface

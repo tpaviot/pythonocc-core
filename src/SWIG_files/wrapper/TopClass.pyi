@@ -1,6 +1,6 @@
+from enum import IntEnum
 from typing import overload, NewType, Optional, Tuple
 
-from OCC.Core.TopClass import *
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
@@ -20,3 +20,8 @@ class TopClass_SolidExplorer:
 	def RejectFace(self, L: gp_Lin, Par: float) -> bool: ...
 	def RejectShell(self, L: gp_Lin, Par: float) -> bool: ...
 	def Segment(self, P: gp_Pnt, L: gp_Lin) -> float: ...
+
+# harray1 classes
+# harray2 classes
+# hsequence classes
+

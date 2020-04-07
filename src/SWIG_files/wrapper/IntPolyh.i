@@ -60,6 +60,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_intpolyh.html"
 %import Bnd.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -76,6 +77,13 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(IntPolyh_ListOfCouples) NCollection_List<IntPolyh_Couple>;
+
+%extend NCollection_List<IntPolyh_Couple> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntPolyh_SeqOfStartPoints) NCollection_Sequence<IntPolyh_StartPoint>;
 /* end templates declaration */
 

@@ -46,6 +46,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_standard.html"
 %};
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -61,10 +62,13 @@ enum Standard_HandlerStatus {
 /* python proy classes for enums */
 %pythoncode {
 
-class Standard_HandlerStatus:
+class Standard_HandlerStatus(IntEnum):
 	Standard_HandlerVoid = 0
 	Standard_HandlerJumped = 1
 	Standard_HandlerProcessed = 2
+Standard_HandlerVoid = Standard_HandlerStatus.Standard_HandlerVoid
+Standard_HandlerJumped = Standard_HandlerStatus.Standard_HandlerJumped
+Standard_HandlerProcessed = Standard_HandlerStatus.Standard_HandlerProcessed
 };
 /* end python proxy for enums */
 

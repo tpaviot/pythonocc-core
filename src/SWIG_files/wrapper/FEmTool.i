@@ -59,6 +59,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_femtool.html"
 %import GeomAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -85,6 +86,13 @@ from OCC.Core.Exception import *
 %template(FEmTool_AssemblyTable) NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>;
 %template(FEmTool_ListIteratorOfListOfVectors) NCollection_TListIterator<opencascade::handle<TColStd_HArray1OfReal>>;
 %template(FEmTool_ListOfVectors) NCollection_List<opencascade::handle<TColStd_HArray1OfReal>>;
+
+%extend NCollection_List<opencascade::handle<TColStd_HArray1OfReal>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(FEmTool_SeqOfLinConstr) NCollection_Sequence<FEmTool_ListOfVectors>;
 /* end templates declaration */
 
@@ -1214,15 +1222,15 @@ None
 
 /* harray1 classes */
 /* harray2 classes */
-class FEmTool_HAssemblyTable : public  FEmTool_AssemblyTable, public Standard_Transient {
+class FEmTool_HAssemblyTable : public FEmTool_AssemblyTable, public Standard_Transient {
   public:
     FEmTool_HAssemblyTable(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     FEmTool_HAssemblyTable(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const  FEmTool_AssemblyTable::value_type& theValue);
-    FEmTool_HAssemblyTable(const  FEmTool_AssemblyTable& theOther);
-    const  FEmTool_AssemblyTable& Array2 ();
-     FEmTool_AssemblyTable& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const FEmTool_AssemblyTable::value_type& theValue);
+    FEmTool_HAssemblyTable(const FEmTool_AssemblyTable& theOther);
+    const FEmTool_AssemblyTable& Array2 ();
+    FEmTool_AssemblyTable& ChangeArray2 (); 
 };
 %make_alias(FEmTool_HAssemblyTable)
 

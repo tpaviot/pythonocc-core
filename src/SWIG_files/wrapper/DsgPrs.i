@@ -50,6 +50,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_dsgprs.html"
 %import NCollection.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -71,7 +72,7 @@ enum DsgPrs_ArrowSide {
 /* python proy classes for enums */
 %pythoncode {
 
-class DsgPrs_ArrowSide:
+class DsgPrs_ArrowSide(IntEnum):
 	DsgPrs_AS_NONE = 0
 	DsgPrs_AS_FIRSTAR = 1
 	DsgPrs_AS_LASTAR = 2
@@ -81,6 +82,15 @@ class DsgPrs_ArrowSide:
 	DsgPrs_AS_BOTHPT = 6
 	DsgPrs_AS_FIRSTAR_LASTPT = 7
 	DsgPrs_AS_FIRSTPT_LASTAR = 8
+DsgPrs_AS_NONE = DsgPrs_ArrowSide.DsgPrs_AS_NONE
+DsgPrs_AS_FIRSTAR = DsgPrs_ArrowSide.DsgPrs_AS_FIRSTAR
+DsgPrs_AS_LASTAR = DsgPrs_ArrowSide.DsgPrs_AS_LASTAR
+DsgPrs_AS_BOTHAR = DsgPrs_ArrowSide.DsgPrs_AS_BOTHAR
+DsgPrs_AS_FIRSTPT = DsgPrs_ArrowSide.DsgPrs_AS_FIRSTPT
+DsgPrs_AS_LASTPT = DsgPrs_ArrowSide.DsgPrs_AS_LASTPT
+DsgPrs_AS_BOTHPT = DsgPrs_ArrowSide.DsgPrs_AS_BOTHPT
+DsgPrs_AS_FIRSTAR_LASTPT = DsgPrs_ArrowSide.DsgPrs_AS_FIRSTAR_LASTPT
+DsgPrs_AS_FIRSTPT_LASTAR = DsgPrs_ArrowSide.DsgPrs_AS_FIRSTPT_LASTAR
 };
 /* end python proxy for enums */
 

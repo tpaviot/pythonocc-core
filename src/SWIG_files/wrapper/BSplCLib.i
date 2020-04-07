@@ -61,6 +61,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bsplclib.html"
 %import GeomAbs.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -81,14 +82,19 @@ enum BSplCLib_KnotDistribution {
 /* python proy classes for enums */
 %pythoncode {
 
-class BSplCLib_MultDistribution:
+class BSplCLib_MultDistribution(IntEnum):
 	BSplCLib_NonConstant = 0
 	BSplCLib_Constant = 1
 	BSplCLib_QuasiConstant = 2
+BSplCLib_NonConstant = BSplCLib_MultDistribution.BSplCLib_NonConstant
+BSplCLib_Constant = BSplCLib_MultDistribution.BSplCLib_Constant
+BSplCLib_QuasiConstant = BSplCLib_MultDistribution.BSplCLib_QuasiConstant
 
-class BSplCLib_KnotDistribution:
+class BSplCLib_KnotDistribution(IntEnum):
 	BSplCLib_NonUniform = 0
 	BSplCLib_Uniform = 1
+BSplCLib_NonUniform = BSplCLib_KnotDistribution.BSplCLib_NonUniform
+BSplCLib_Uniform = BSplCLib_KnotDistribution.BSplCLib_Uniform
 };
 /* end python proxy for enums */
 

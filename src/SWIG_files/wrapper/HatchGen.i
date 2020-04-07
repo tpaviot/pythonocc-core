@@ -54,6 +54,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_hatchgen.html"
 %import IntRes2d.i
 
 %pythoncode {
+from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
@@ -78,18 +79,27 @@ enum HatchGen_IntersectionType {
 /* python proy classes for enums */
 %pythoncode {
 
-class HatchGen_ErrorStatus:
+class HatchGen_ErrorStatus(IntEnum):
 	HatchGen_NoProblem = 0
 	HatchGen_TrimFailure = 1
 	HatchGen_TransitionFailure = 2
 	HatchGen_IncoherentParity = 3
 	HatchGen_IncompatibleStates = 4
+HatchGen_NoProblem = HatchGen_ErrorStatus.HatchGen_NoProblem
+HatchGen_TrimFailure = HatchGen_ErrorStatus.HatchGen_TrimFailure
+HatchGen_TransitionFailure = HatchGen_ErrorStatus.HatchGen_TransitionFailure
+HatchGen_IncoherentParity = HatchGen_ErrorStatus.HatchGen_IncoherentParity
+HatchGen_IncompatibleStates = HatchGen_ErrorStatus.HatchGen_IncompatibleStates
 
-class HatchGen_IntersectionType:
+class HatchGen_IntersectionType(IntEnum):
 	HatchGen_TRUE = 0
 	HatchGen_TOUCH = 1
 	HatchGen_TANGENT = 2
 	HatchGen_UNDETERMINED = 3
+HatchGen_TRUE = HatchGen_IntersectionType.HatchGen_TRUE
+HatchGen_TOUCH = HatchGen_IntersectionType.HatchGen_TOUCH
+HatchGen_TANGENT = HatchGen_IntersectionType.HatchGen_TANGENT
+HatchGen_UNDETERMINED = HatchGen_IntersectionType.HatchGen_UNDETERMINED
 };
 /* end python proxy for enums */
 
