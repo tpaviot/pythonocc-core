@@ -36,6 +36,7 @@ test:
     - OCC.Core.BRepPrimAPI
   requires:
     - pyqt >=5
+    - mypy
 
 about:
   home: https://github.com/tpaviot/pythonocc-core
