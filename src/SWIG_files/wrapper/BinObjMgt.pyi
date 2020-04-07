@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.BinObjMgt import *
 from OCC.Core.Standard import *
@@ -17,6 +17,7 @@ BinObjMgt_PShortReal = NewType('BinObjMgt_PShortReal', Standard_ShortReal)
 BinObjMgt_SRelocationTable = NewType('BinObjMgt_SRelocationTable', TColStd_IndexedMapOfTransient)
 
 class BinObjMgt_Persistent:
+	@overload
 	def __init__(self) -> None: ...
 	def Destroy(self) -> None: ...
 	def GetAsciiString(self, theValue: TCollection_AsciiString) -> BinObjMgt_Persistent: ...

@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Hatch import *
 from OCC.Core.Standard import *
@@ -36,10 +36,14 @@ class Hatch_Hatcher:
 	def Trim(self, P1: gp_Pnt2d, P2: gp_Pnt2d, Index: Optional[int]) -> None: ...
 
 class Hatch_Line:
+	@overload
 	def __init__(self) -> None: ...
+	@overload
 	def __init__(self, L: gp_Lin2d, T: Hatch_LineForm) -> None: ...
 	def AddIntersection(self, Par1: float, Start: bool, Index: int, Par2: float, theToler: float) -> None: ...
 
 class Hatch_Parameter:
+	@overload
 	def __init__(self) -> None: ...
+	@overload
 	def __init__(self, Par1: float, Start: bool, Index: Optional[int], Par2: Optional[float]) -> None: ...

@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.StepAP209 import *
 from OCC.Core.Standard import *
@@ -14,7 +14,9 @@ from OCC.Core.StepShape import *
 
 
 class StepAP209_Construct(STEPConstruct_Tool):
+	@overload
 	def __init__(self) -> None: ...
+	@overload
 	def __init__(self, WS: XSControl_WorkSession) -> None: ...
 	def CreateAP203Structure(self) -> StepData_StepModel: ...
 	def CreateAdding203Entities(self, PD: StepBasic_ProductDefinition, aModel: StepData_StepModel) -> bool: ...

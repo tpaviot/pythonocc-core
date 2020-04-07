@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.BRepProj import *
 from OCC.Core.Standard import *
@@ -8,7 +8,9 @@ from OCC.Core.gp import *
 
 
 class BRepProj_Projection:
+	@overload
 	def __init__(self, Wire: TopoDS_Shape, Shape: TopoDS_Shape, D: gp_Dir) -> None: ...
+	@overload
 	def __init__(self, Wire: TopoDS_Shape, Shape: TopoDS_Shape, P: gp_Pnt) -> None: ...
 	def Current(self) -> TopoDS_Wire: ...
 	def Init(self) -> None: ...

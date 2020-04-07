@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.XCAFPrs import *
 from OCC.Core.Standard import *
@@ -31,6 +31,7 @@ class XCAFPrs_AISObject(AIS_ColoredShape):
 	def SetMaterial(self, theMaterial: Graphic3d_MaterialAspect) -> None: ...
 
 class XCAFPrs_DocumentExplorer:
+	@overload
 	def __init__(self) -> None: ...
 	def ChangeCurrent(self) -> XCAFPrs_DocumentNode: ...
 	def Current(self) -> XCAFPrs_DocumentNode: ...

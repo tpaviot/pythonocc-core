@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.TopBas import *
 from OCC.Core.Standard import *
@@ -7,7 +7,9 @@ from OCC.Core.TopAbs import *
 
 
 class TopBas_TestInterference:
+	@overload
 	def __init__(self) -> None: ...
+	@overload
 	def __init__(self, Inters: float, Bound: int, Orient: TopAbs_Orientation, Trans: TopAbs_Orientation, BTrans: TopAbs_Orientation) -> None: ...
 	def Boundary(self, B: int) -> None: ...
 	def Boundary(self) -> int: ...

@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.RWGltf import *
 from OCC.Core.Standard import *
@@ -83,7 +83,9 @@ class RWGltf_GltfFace:
 	pass
 
 class RWGltf_GltfPrimArrayData:
+	@overload
 	def __init__(self) -> None: ...
+	@overload
 	def __init__(self, theType: RWGltf_GltfArrayType) -> None: ...
 
 class RWGltf_MaterialCommon(Standard_Transient):

@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.AdvApprox import *
 from OCC.Core.Standard import *
@@ -10,7 +10,9 @@ from OCC.Core.PLib import *
 
 
 class AdvApprox_ApproxAFunction:
+	@overload
 	def __init__(self, Num1DSS: int, Num2DSS: int, Num3DSS: int, OneDTol: TColStd_HArray1OfReal, TwoDTol: TColStd_HArray1OfReal, ThreeDTol: TColStd_HArray1OfReal, First: float, Last: float, Continuity: GeomAbs_Shape, MaxDeg: int, MaxSeg: int, Func: AdvApprox_EvaluatorFunction) -> None: ...
+	@overload
 	def __init__(self, Num1DSS: int, Num2DSS: int, Num3DSS: int, OneDTol: TColStd_HArray1OfReal, TwoDTol: TColStd_HArray1OfReal, ThreeDTol: TColStd_HArray1OfReal, First: float, Last: float, Continuity: GeomAbs_Shape, MaxDeg: int, MaxSeg: int, Func: AdvApprox_EvaluatorFunction, CutTool: AdvApprox_Cutting) -> None: ...
 	@staticmethod
 	def Approximation(self, TotalDimension: int, TotalNumSS: int, LocalDimension: TColStd_Array1OfInteger, First: float, Last: float, Evaluator: AdvApprox_EvaluatorFunction, CutTool: AdvApprox_Cutting, ContinuityOrder: int, NumMaxCoeffs: int, MaxSegments: int, TolerancesArray: TColStd_Array1OfReal, code_precis: int, NumCoeffPerCurveArray: TColStd_Array1OfInteger, LocalCoefficientArray: TColStd_Array1OfReal, IntervalsArray: TColStd_Array1OfReal, ErrorMaxArray: TColStd_Array1OfReal, AverageErrorArray: TColStd_Array1OfReal) -> Tuple[int, int]: ...

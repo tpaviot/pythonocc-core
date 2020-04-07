@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.XCAFNoteObjects import *
 from OCC.Core.Standard import *
@@ -8,7 +8,9 @@ from OCC.Core.TopoDS import *
 
 
 class XCAFNoteObjects_NoteObject(Standard_Transient):
+	@overload
 	def __init__(self) -> None: ...
+	@overload
 	def __init__(self, theObj: XCAFNoteObjects_NoteObject) -> None: ...
 	def GetPlane(self) -> gp_Ax2: ...
 	def GetPoint(self) -> gp_Pnt: ...

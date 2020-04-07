@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Geom2dLProp import *
 from OCC.Core.Standard import *
@@ -10,8 +10,11 @@ from OCC.Core.math import *
 
 
 class Geom2dLProp_CLProps2d:
+	@overload
 	def __init__(self, C: Geom2d_Curve, N: int, Resolution: float) -> None: ...
+	@overload
 	def __init__(self, C: Geom2d_Curve, U: float, N: int, Resolution: float) -> None: ...
+	@overload
 	def __init__(self, N: int, Resolution: float) -> None: ...
 	def CentreOfCurvature(self, P: gp_Pnt2d) -> None: ...
 	def Curvature(self) -> float: ...

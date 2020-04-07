@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.MeshVS import *
 from OCC.Core.Standard import *
@@ -92,6 +92,7 @@ class MeshVS_DrawerAttribute:
 	MeshVS_DA_User: int = ...
 
 class MeshVS_Buffer:
+	@overload
 	def __init__(self, theSize: int) -> None: ...
 
 class MeshVS_CommonSensitiveEntity(Select3D_SensitiveSet):
@@ -261,7 +262,9 @@ class MeshVS_SensitivePolyhedron(Select3D_SensitiveEntity):
 	def NbSubElements(self) -> int: ...
 
 class MeshVS_SensitiveQuad(Select3D_SensitiveEntity):
+	@overload
 	def __init__(self, theOwner: SelectMgr_EntityOwner, theQuadVerts: TColgp_Array1OfPnt) -> None: ...
+	@overload
 	def __init__(self, theOwner: SelectMgr_EntityOwner, thePnt1: gp_Pnt, thePnt2: gp_Pnt, thePnt3: gp_Pnt, thePnt4: gp_Pnt) -> None: ...
 	def BoundingBox(self) -> Select3D_BndBox3d: ...
 	def CenterOfGeometry(self) -> gp_Pnt: ...

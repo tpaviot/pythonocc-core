@@ -1,4 +1,4 @@
-from typing import NewType, Optional, Tuple
+from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Sweep import *
 from OCC.Core.Standard import *
@@ -7,7 +7,9 @@ from OCC.Core.TopAbs import *
 
 
 class Sweep_NumShape:
+	@overload
 	def __init__(self) -> None: ...
+	@overload
 	def __init__(self, Index: int, Type: TopAbs_ShapeEnum, Closed: Optional[bool], BegInf: Optional[bool], EndInf: Optional[bool]) -> None: ...
 	def BegInfinite(self) -> bool: ...
 	def Closed(self) -> bool: ...
