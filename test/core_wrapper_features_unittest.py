@@ -23,6 +23,7 @@ from math import sqrt
 import importlib
 import os
 import pickle
+from typing import Any, Iterator, List
 import unittest
 import warnings
 
@@ -66,13 +67,14 @@ from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
 from OCC.Core.HLRAlgo import HLRAlgo_Projector
 from OCC.Core.TopTools import (TopTools_HArray1OfShape,
                                TopTools_HArray2OfShape,
-                               TopTools_HSequenceOfShape)
+                               TopTools_HSequenceOfShape,
+                               TopTools_ListOfShape)
 from OCC.Core.TDF import TDF_LabelNode
 from OCC.Core.Exception import (methodnotwrapped, classnotwrapped,
                                 MethodNotWrappedError, ClassNotWrappedError)
 
 @contextmanager
-def assert_warns_deprecated():
+def assert_warns_deprecated() -> Iterator[Any]:
     with warnings.catch_warnings(record=True) as w:
         warnings.simplefilter("always")
         yield w
@@ -85,7 +87,7 @@ def assert_warns_deprecated():
 
 
 class TestWrapperFeatures(unittest.TestCase):
-    def test_hash(self):
+    def test_hash(self) -> None:
         '''
         Check whether the __hash__ function is equal to HashCode()
         '''
@@ -94,7 +96,7 @@ class TestWrapperFeatures(unittest.TestCase):
         hash1_s = s.__hash__()
         self.assertNotEqual(id_s, hash1_s)
 
-    def test_const_Standard_Real_byref(self):
+    def test_const_Standard_Real_byref(self) -> None:
         '''
         Test wrapper for const Standard_Real &
         '''
@@ -102,7 +104,7 @@ class TestWrapperFeatures(unittest.TestCase):
         t.SetValue(3, 3.14)
         self.assertEqual(t.Value(3), 3.14)
 
-    def test_const_Standard_Integer_byref(self):
+    def test_const_Standard_Integer_byref(self) -> None:
         '''
         Test wrapper for const Standard_Integer &
         '''
@@ -112,15 +114,15 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(t.Value(1), 3)
         self.assertEqual(t.Value(2), 33)
 
-    def test_handle_standard_transient_copy(self):
-        def evil_function(t):
+    def test_handle_standard_transient_copy(self) -> None:
+        def evil_function(t: Standard_Transient) -> Standard_Transient:
             handle = Standard_Transient(t)
             return handle
         t = Standard_Transient()
         self.assertIsNotNone(t)
         self.assertIsNotNone(evil_function(t))
 
-    def test_list(self):
+    def test_list(self) -> None:
         '''
         Test python lists features
         '''
@@ -148,7 +150,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(vl.index(V1), 1)
         self.assertEqual(vl.index(V2), 0)
 
-    def test_dict(self):
+    def test_dict(self) -> None:
         '''
         Test python dict features
         '''
@@ -158,18 +160,18 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(d[P1] == 'P1', True)
         self.assertEqual(d[P2] == 'P2', True)
 
-    def test_topology(self):
+    def test_topology(self) -> None:
         '''
         Checks the Topology.py utility script.
         '''
-        def get_shape():
+        def get_shape() -> TopoDS_Shape:
             shape = BRepPrimAPI_MakeBox(10., 10., 10.).Shape()
             self.assertEqual(shape.IsNull(), False)
             return shape
         returned_shape = get_shape()
         self.assertEqual(returned_shape.IsNull(), False)
 
-    def test_gp_Vec_operators(self):
+    def test_gp_Vec_operators(self) -> None:
         '''
         Test gp_Vec division by a float number or an integer
         This test fails on py3k with SWIG versions older than 3.0.8
@@ -192,7 +194,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual((v6.X(), v6.Y(), v6.Z()), (-5, -3, -1))
 
 
-    def test_gp_Quaternion(self):
+    def test_gp_Quaternion(self) -> None:
         '''
         Test Interpolate method of qp_QuaternionSLerp.
         This method takes a by ref parameter q.
@@ -220,13 +222,13 @@ class TestWrapperFeatures(unittest.TestCase):
                 self.assertLess(q.W(), 1.)
 
 
-    def test_traverse_box_topology(self):
+    def test_traverse_box_topology(self) -> None:
         '''
         Test traversing faces for a box. Assert 6 faces are returned
         '''
         box_shp = BRepPrimAPI_MakeBox(10., 20., 30.).Shape()
 
-        def get_faces(shp):
+        def get_faces(shp) -> List[TopoDS_Shape]:
             ex = TopExp_Explorer(shp, TopAbs_FACE)
             seq = []
             while ex.More():
@@ -239,7 +241,7 @@ class TestWrapperFeatures(unittest.TestCase):
         for f in faces:
             self.assertEqual(f.IsNull(), False)
 
-    def test_static_method(self):
+    def test_static_method(self) -> None:
         '''
         Test wrapper for static methods.
 
@@ -287,7 +289,7 @@ class TestWrapperFeatures(unittest.TestCase):
         l = Interface_Static_CVal("write.step.schema")
         self.assertEqual(l, "AP203")
 
-    def test_ft1(self):
+    def test_ft1(self) -> None:
         """ Test: Standard_Integer & by reference transformator """
         p = gp_Pnt(1, 2, 3.2)
         p_coord = p.Coord()
@@ -295,7 +297,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(p_coord[1], 2.)
         self.assertEqual(p_coord[2], 3.2)
 
-    def test_Standard_Real_by_ref_passed_returned(self):
+    def test_Standard_Real_by_ref_passed_returned(self) -> None:
         '''
         Check getters and setters for method that take/return
         Standard_Real by reference. Ref github Issue #710
@@ -316,7 +318,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(mat.GetValue(1, 0), 4)
         self.assertEqual(mat.GetValue(1, 1), 5.5)
 
-    def test_Standard_Integer_by_ref_passed_returned(self):
+    def test_Standard_Integer_by_ref_passed_returned(self) -> None:
         '''
         Checks the Standard_Integer & byreference return parameter
         '''
@@ -324,7 +326,7 @@ class TestWrapperFeatures(unittest.TestCase):
         sfs.SetFixShellMode(5)
         self.assertEqual(sfs.GetFixShellMode(), 5)
 
-    def test_Standard_Boolean_by_ref_passed_returned(self):
+    def test_Standard_Boolean_by_ref_passed_returned(self) -> None:
         '''
         Checks the Standard_Boolean & byreference return parameter
         '''
@@ -334,7 +336,7 @@ class TestWrapperFeatures(unittest.TestCase):
         sfw.SetModifyGeometryMode(False)
         self.assertEqual(sfw.GetModifyGeometryMode(), False)
 
-    def test_TopoDS_byref_arguments(self):
+    def test_TopoDS_byref_arguments(self) -> None:
         '''
         Test byref pass arguments to TopoDS
         '''
@@ -348,7 +350,7 @@ class TestWrapperFeatures(unittest.TestCase):
             bb.Add(c, child)
         self.assertFalse(c.IsNull())
 
-    def test_Standard_Boolean_byref(self):
+    def test_Standard_Boolean_byref(self) -> None:
         '''
         Test byref returned standard_boolean
         '''
@@ -356,7 +358,7 @@ class TestWrapperFeatures(unittest.TestCase):
         cs.SetDistAngle(1., 45)
         self.assertEqual(cs.GetDistAngle(), (1.0, 45.))
 
-    def test_pickle_topods_shape_to_from(self):
+    def test_pickle_topods_shape_to_from(self) -> None:
         '''
         Checks if the pickle python module works for TopoDS_Shapes
         '''
@@ -374,26 +376,26 @@ class TestWrapperFeatures(unittest.TestCase):
             pickled_shape = pickle.load(dump_from_file)
         self.assertFalse(pickled_shape.IsNull())       
 
-    def test_sub_class(self):
+    def test_sub_class(self) -> None:
         """ Test: subclass """
         # Checks that OCC objects can be subclassed, and passed as parameters.
         # In this test, we create
         # a MyPoint and MyVec class, inheriting from gp_Pnt and gp_Vec.
 
         class MyPoint(gp_Pnt):
-            def __init__(self, *kargs):
+            def __init__(self, *kargs: float) -> None:
                 gp_Pnt.__init__(self, *kargs)
                 self.x = 4
 
-            def get_x(self):
+            def get_x(self) -> int:
                 return self.x
 
         class MyVec(gp_Vec):
-            def __init__(self, *kargs):
+            def __init__(self, *kargs: float) -> None:
                 gp_Vec.__init__(self, *kargs)
                 self._an_attribute = "something"
 
-            def get_attribute(self):
+            def get_attribute(self) -> Any:
                 return self._an_attribute
 
         # Create the first point
@@ -411,13 +413,13 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(vec.Magnitude(), 1.)
         self.assertEqual(vec.get_attribute(), "something")
 
-    def test_protected_constructor(self):
+    def test_protected_constructor(self) -> None:
         """ Test: protected constructor """
         # 1st, class with no subclass
         tds_builder = TopoDS_Builder()
         self.assertTrue(hasattr(tds_builder, "MakeCompound"))
 
-    def test_auto_import_of_dependent_modules(self):
+    def test_auto_import_of_dependent_modules(self) -> None:
         """ Test: automatic import of dependent modules """
         returned_object = GCE2d_MakeSegment(gp_Pnt2d(1, 1),
                                             gp_Pnt2d(3, 4)).Value()
@@ -427,7 +429,7 @@ class TestWrapperFeatures(unittest.TestCase):
         returned_object_type = '%s' % type(returned_object)
         self.assertEqual(returned_object_type, "<class 'OCC.Core.Geom2d.Geom2d_TrimmedCurve'>")
 
-    def test_hash_eq_operator(self):
+    def test_hash_eq_operator(self) -> None:
         ''' test that the == wrapper is ok
         '''
         # test Standard
@@ -442,14 +444,14 @@ class TestWrapperFeatures(unittest.TestCase):
         res = items.index(line)
         self.assertEqual(res, 1.)
 
-    def test_eq_operator(self):
+    def test_eq_operator(self) -> None:
         shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         self.assertFalse(shape_1 == shape_2)
         self.assertTrue(shape_1 == shape_1)
         self.assertFalse(shape_1 == "some_string")
 
-    def test_neq_operator(self):
+    def test_neq_operator(self) -> None:
          # test Standard
         s = Standard_Transient()
         s2 = Standard_Transient()
@@ -461,10 +463,10 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertFalse(shape_1 != shape_1)
         self.assertTrue(shape_1 != "some_string")
 
-    def test_inherit_topods_shape(self):
+    def test_inherit_topods_shape(self) -> None:
         t = self
         class InheritEdge(TopoDS_Edge):
-            def __init__(self, edge):
+            def __init__(self, edge: TopoDS_Edge) -> None:
                 # following constructor creates an empy TopoDS_Edge
                 super(InheritEdge, self).__init__()
                 # we need to copy the base shape using the following three
@@ -484,7 +486,7 @@ class TestWrapperFeatures(unittest.TestCase):
         length = g1.Mass()
         self.assertEqual(length, 50.)
 
-    def test_default_constructor_DEFINE_STANDARD_ALLOC(self):
+    def test_default_constructor_DEFINE_STANDARD_ALLOC(self) -> None:
         ''' OCE classes the defines standard alllocator can be instanciated
         if they're not abstract nor define any protected or private
         constructor '''
@@ -495,7 +497,7 @@ class TestWrapperFeatures(unittest.TestCase):
         s = ShapeAnalysis_Curve()
         self.assertIsInstance(s, ShapeAnalysis_Curve)
 
-    def test_handling_exceptions(self):
+    def test_handling_exceptions(self) -> None:
         """ asserts that handling of OCC exceptions is handled correctly catched
         see issue #259 -- Standard errors like Standard_OutOfRange not caught
         """
@@ -514,7 +516,7 @@ class TestWrapperFeatures(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             BRepBuilderAPI_Sewing().FreeEdge(-1)
 
-    def test_memory_handle_getobject(self):
+    def test_memory_handle_getobject(self) -> None:
         """
         See https://github.com/tpaviot/pythonocc-generator/pull/24
         This commit tries to fix the issue tpaviot/pythonocc-core#292.
@@ -534,7 +536,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertTrue(b.IsEqual(line3.EndPoint(), 0.01))
         self.assertTrue(b.IsEqual(GC_MakeSegment(a, b).Value().EndPoint(), 0.01))
 
-    def test_local_properties(self):
+    def test_local_properties(self) -> None:
         """ Get and modify class local properties
         """
         graphic_params = Graphic3d_RenderingParams()
@@ -542,7 +544,7 @@ class TestWrapperFeatures(unittest.TestCase):
         graphic_params.RaytracingDepth = 5
         self.assertEqual(graphic_params.RaytracingDepth, 5)
 
-    def test_repr_overload(self):
+    def test_repr_overload(self) -> None:
         """ Test if repr string is properly returned
         """
         p = gp_Pnt(1, 2, 3)
@@ -552,7 +554,7 @@ class TestWrapperFeatures(unittest.TestCase):
         shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
         self.assertEqual(repr(shp), "<class 'TopoDS_Solid'>")
 
-    def test_downcast_curve(self):
+    def test_downcast_curve(self) -> None:
         """ Test if a GeomCurve can be DownCasted to a GeomLine
         """
         edge = BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, 0),
@@ -566,7 +568,7 @@ class TestWrapperFeatures(unittest.TestCase):
         bspline = Geom_BSplineCurve.DownCast(curve)
         self.assertTrue(bspline is None)
 
-    def test_return_enum(self):
+    def test_return_enum(self) -> None:
         """ Check that returned enums are properly handled, wether they're returned
         by reference or not. To check that point, we use the BRepCheck_ListOfStatus class,
         where methods take and return BRepCheck_Status values
@@ -585,7 +587,7 @@ class TestWrapperFeatures(unittest.TestCase):
             self.assertTrue(isinstance(it.Value(), int))
             it.Next()
 
-    def test_array_iterator(self):
+    def test_array_iterator(self) -> None:
         P0 = gp_Pnt(1, 2, 3)
         list_of_points = TColgp_Array1OfPnt(5, 8)
         self.assertEqual(len(list_of_points), 4)
@@ -605,14 +607,14 @@ class TestWrapperFeatures(unittest.TestCase):
         for pnt in list_of_points:
             self.assertTrue(isinstance(pnt, gp_Pnt))
 
-    def test_repr_for_null_TopoDS_Shape(self):
+    def test_repr_for_null_TopoDS_Shape(self) -> None:
         # create null vertex and shape
         v = TopoDS_Vertex()
         self.assertTrue('Null' in v.__repr__())
         s = TopoDS_Shape()
         self.assertTrue('Null' in s.__repr__())
 
-    def test_in_place_operators(self):
+    def test_in_place_operators(self) -> None:
         # operator +=
         a = gp_XYZ(1., 2., 3.)
         self.assertEqual(a.X(), 1.)
@@ -670,7 +672,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(d.Y(), 7.)
         self.assertEqual(d.Z(), 9.)
 
-    def test_shape_conversion_as_py_none(self):
+    def test_shape_conversion_as_py_none(self) -> None:
         """ see issue #600 and PR #614
         a null topods_shape should be returned as Py_None by the TopoDS transformer
         the following test case returns a null topods_shape
@@ -686,7 +688,7 @@ class TestWrapperFeatures(unittest.TestCase):
         visible_smooth_edges = hlr_shapes.Rg1LineVCompound()
         self.assertTrue(visible_smooth_edges is None)
 
-    def test_DumpToString(self):
+    def test_DumpToString(self) -> None:
         """ some objects can be serialized to a string
         """
         v = math_Vector(0, 2)
@@ -695,7 +697,7 @@ class TestWrapperFeatures(unittest.TestCase):
         expected_output = 'math_Vector of Length = 3\nmath_Vector(0) = 0\nmath_Vector(1) = 0\nmath_Vector(2) = 0\n'
         self.assertEqual(expected_output, serialized_v)
 
-    def test_DumpJsonToString(self):
+    def test_DumpJsonToString(self) -> None:
         """ Since opencascade 7x, some objects can be serialized to json
         """
         # create a sphere with a radius of 10.
@@ -712,7 +714,7 @@ class TestWrapperFeatures(unittest.TestCase):
         expected_output = '"Bnd_Box": {"CornerMin": [-10, -10, -10], "CornerMax": [10, 10, 10], "Gap": 1e-07, "Flags": 0}'
         self.assertEqual(json_string, expected_output)
 
-    def test_harray1_harray2_hsequence(self):
+    def test_harray1_harray2_hsequence(self) -> None:
         """ Check that special wrappers for harray1, harray2 and hsequence.
         Only check that related classes can be instanciated.
         """
@@ -720,7 +722,20 @@ class TestWrapperFeatures(unittest.TestCase):
         TopTools_HArray2OfShape(0, 3, 0, 3)
         TopTools_HSequenceOfShape()
 
-    def test_ncollection_datamap_extension(self):
+    def test_NCollection_list(self) -> None:
+        """ Check that python proxy for NCollection_List is ok
+        """
+        l = TopTools_ListOfShape()
+        shp1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+        shp2 = BRepPrimAPI_MakeBox(20, 30, 40).Shape()
+        l.Append(shp1)
+        l.Append(shp2)
+        self.assertEqual(l.Size(), 2)
+        self.assertEqual(len(l), 2)
+        l.RemoveFirst()
+        self.assertEqual(len(l), 1)
+    
+    def test_ncollection_datamap_extension(self) -> None:
         """ NCollection_DataMap class adds a Keys() method that return keys in a Python List
         """
         box1 = BRepPrimAPI_MakeBox(gp_Pnt(0, 0, 0), gp_Pnt(20, 20, 20)).Shape()
@@ -743,7 +758,7 @@ class TestWrapperFeatures(unittest.TestCase):
         face_indices1 = overlaps1.Keys()
         self.assertEqual(face_indices1, [1, 3, 5])
 
-    def test_class_not_wrapped_exception(self):
+    def test_class_not_wrapped_exception(self) -> None:
         """ checks that calling a non wrapped class raises
         an ClassNotWrapped exception
         """
@@ -759,15 +774,15 @@ class TestWrapperFeatures(unittest.TestCase):
         with self.assertRaises(ClassNotWrappedError):
             TDF_LabelNode()
 
-    def test_method_not_wrapped_exception(self):
+    def test_method_not_wrapped_exception(self) -> None:
         """ checks that calling a non wrapped class raises
         an ClassNotWrapped exception
         """
         class TestClass:
-            def meth1(self):
+            def meth1(self) -> None:
                 pass  # does not raise any exception
             @methodnotwrapped
-            def meth2(self):
+            def meth2(self) -> None:
                 pass  # calling this method will raise an exception
         a = TestClass()
         a.meth1()
@@ -778,7 +793,7 @@ class TestWrapperFeatures(unittest.TestCase):
         with self.assertRaises(MethodNotWrappedError):
             m.TransformBehavior()
 
-    def test_import_all_modules(self):
+    def test_import_all_modules(self) -> None:
         """ try to import all modules, and look for linking errors
         or syntax errors in the pytho ninterface generated by SWIG
         """
@@ -792,8 +807,7 @@ class TestWrapperFeatures(unittest.TestCase):
             module_name = os.path.basename(core_module).split('.')[0]
             importlib.import_module('OCC.Core.%s' % module_name)
 
-
-def suite():
+def suite() -> unittest.TestSuite:
     test_suite = unittest.TestSuite()
     test_suite.addTest(unittest.makeSuite(TestWrapperFeatures))
     return test_suite
