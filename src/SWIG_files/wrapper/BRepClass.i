@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -67,8 +67,19 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepclass.html"
 %import gp.i
 %import IntRes2d.i
 %import Geom2dInt.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */
@@ -86,37 +97,68 @@ class BRepClass_Edge {
 	public:
 		/****************** BRepClass_Edge ******************/
 		%feature("compactdefaultargs") BRepClass_Edge;
-		%feature("autodoc", ":rtype: None") BRepClass_Edge;
-		 BRepClass_Edge ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") BRepClass_Edge;
+		 BRepClass_Edge();
 
 		/****************** BRepClass_Edge ******************/
 		%feature("compactdefaultargs") BRepClass_Edge;
-		%feature("autodoc", ":param E:
-	:type E: TopoDS_Edge
-	:param F:
-	:type F: TopoDS_Face
-	:rtype: None") BRepClass_Edge;
-		 BRepClass_Edge (const TopoDS_Edge & E,const TopoDS_Face & F);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+E: TopoDS_Edge
+F: TopoDS_Face
+
+Returns
+-------
+None
+") BRepClass_Edge;
+		 BRepClass_Edge(const TopoDS_Edge & E, const TopoDS_Face & F);
 
 		/****************** Edge ******************/
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", ":rtype: TopoDS_Edge") Edge;
-		TopoDS_Edge  Edge ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Edge
+") Edge;
+		TopoDS_Edge Edge();
 
 		/****************** Edge ******************/
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", ":rtype: TopoDS_Edge") Edge;
-		const TopoDS_Edge  Edge ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Edge
+") Edge;
+		const TopoDS_Edge Edge();
 
 		/****************** Face ******************/
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", ":rtype: TopoDS_Face") Face;
-		TopoDS_Face  Face ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Face
+") Face;
+		TopoDS_Face Face();
 
 		/****************** Face ******************/
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", ":rtype: TopoDS_Face") Face;
-		const TopoDS_Face  Face ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TopoDS_Face
+") Face;
+		const TopoDS_Face Face();
 
 };
 
@@ -134,61 +176,94 @@ class BRepClass_FClass2dOfFClassifier {
 	public:
 		/****************** BRepClass_FClass2dOfFClassifier ******************/
 		%feature("compactdefaultargs") BRepClass_FClass2dOfFClassifier;
-		%feature("autodoc", "* Creates an undefined classifier.
-	:rtype: None") BRepClass_FClass2dOfFClassifier;
-		 BRepClass_FClass2dOfFClassifier ();
+		%feature("autodoc", "Creates an undefined classifier.
+
+Returns
+-------
+None
+") BRepClass_FClass2dOfFClassifier;
+		 BRepClass_FClass2dOfFClassifier();
 
 		/****************** ClosestIntersection ******************/
 		%feature("compactdefaultargs") ClosestIntersection;
-		%feature("autodoc", "* Returns 0 if the last compared edge had no relevant intersection. Else returns the index of this intersection in the last intersection algorithm.
-	:rtype: int") ClosestIntersection;
-		Standard_Integer ClosestIntersection ();
+		%feature("autodoc", "Returns 0 if the last compared edge had no relevant intersection. else returns the index of this intersection in the last intersection algorithm.
+
+Returns
+-------
+int
+") ClosestIntersection;
+		Standard_Integer ClosestIntersection();
 
 		/****************** Compare ******************/
 		%feature("compactdefaultargs") Compare;
-		%feature("autodoc", "* Updates the classification process with the edge <E> from the boundary.
-	:param E:
-	:type E: BRepClass_Edge
-	:param Or:
-	:type Or: TopAbs_Orientation
-	:rtype: None") Compare;
-		void Compare (const BRepClass_Edge & E,const TopAbs_Orientation Or);
+		%feature("autodoc", "Updates the classification process with the edge <e> from the boundary.
+
+Parameters
+----------
+E: BRepClass_Edge
+Or: TopAbs_Orientation
+
+Returns
+-------
+None
+") Compare;
+		void Compare(const BRepClass_Edge & E, const TopAbs_Orientation Or);
 
 		/****************** Intersector ******************/
 		%feature("compactdefaultargs") Intersector;
-		%feature("autodoc", "* Returns the intersecting algorithm.
-	:rtype: BRepClass_Intersector") Intersector;
-		BRepClass_Intersector & Intersector ();
+		%feature("autodoc", "Returns the intersecting algorithm.
+
+Returns
+-------
+BRepClass_Intersector
+") Intersector;
+		BRepClass_Intersector & Intersector();
 
 		/****************** IsHeadOrEnd ******************/
 		%feature("compactdefaultargs") IsHeadOrEnd;
-		%feature("autodoc", "* Returns the Standard_True if the closest intersection point represents head or end of the edge. Returns Standard_False otherwise.
-	:rtype: bool") IsHeadOrEnd;
-		Standard_Boolean IsHeadOrEnd ();
+		%feature("autodoc", "Returns the standard_true if the closest intersection point represents head or end of the edge. returns standard_false otherwise.
+
+Returns
+-------
+bool
+") IsHeadOrEnd;
+		Standard_Boolean IsHeadOrEnd();
 
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "* Returns the current value of the parameter.
-	:rtype: float") Parameter;
-		Standard_Real Parameter ();
+		%feature("autodoc", "Returns the current value of the parameter.
+
+Returns
+-------
+float
+") Parameter;
+		Standard_Real Parameter();
 
 		/****************** Reset ******************/
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "* Starts a classification process. The point to classify is the origin of the line <L>. <P> is the original length of the segment on <L> used to compute intersections. <Tol> is the tolerance attached to the line segment in intersections.
-	:param L:
-	:type L: gp_Lin2d
-	:param P:
-	:type P: float
-	:param Tol:
-	:type Tol: float
-	:rtype: None") Reset;
-		void Reset (const gp_Lin2d & L,const Standard_Real P,const Standard_Real Tol);
+		%feature("autodoc", "Starts a classification process. the point to classify is the origin of the line <l>. <p> is the original length of the segment on <l> used to compute intersections. <tol> is the tolerance attached to the line segment in intersections.
+
+Parameters
+----------
+L: gp_Lin2d
+P: float
+Tol: float
+
+Returns
+-------
+None
+") Reset;
+		void Reset(const gp_Lin2d & L, const Standard_Real P, const Standard_Real Tol);
 
 		/****************** State ******************/
 		%feature("compactdefaultargs") State;
-		%feature("autodoc", "* Returns the current state of the point.
-	:rtype: TopAbs_State") State;
-		TopAbs_State State ();
+		%feature("autodoc", "Returns the current state of the point.
+
+Returns
+-------
+TopAbs_State
+") State;
+		TopAbs_State State();
 
 };
 
@@ -206,69 +281,105 @@ class BRepClass_FClassifier {
 	public:
 		/****************** BRepClass_FClassifier ******************/
 		%feature("compactdefaultargs") BRepClass_FClassifier;
-		%feature("autodoc", "* Empty constructor, undefined algorithm.
-	:rtype: None") BRepClass_FClassifier;
-		 BRepClass_FClassifier ();
+		%feature("autodoc", "Empty constructor, undefined algorithm.
+
+Returns
+-------
+None
+") BRepClass_FClassifier;
+		 BRepClass_FClassifier();
 
 		/****************** BRepClass_FClassifier ******************/
 		%feature("compactdefaultargs") BRepClass_FClassifier;
-		%feature("autodoc", "* Creates an algorithm to classify the Point P with Tolerance <T> on the face described by <F>.
-	:param F:
-	:type F: BRepClass_FaceExplorer
-	:param P:
-	:type P: gp_Pnt2d
-	:param Tol:
-	:type Tol: float
-	:rtype: None") BRepClass_FClassifier;
-		 BRepClass_FClassifier (BRepClass_FaceExplorer & F,const gp_Pnt2d & P,const Standard_Real Tol);
+		%feature("autodoc", "Creates an algorithm to classify the point p with tolerance <t> on the face described by <f>.
+
+Parameters
+----------
+F: BRepClass_FaceExplorer
+P: gp_Pnt2d
+Tol: float
+
+Returns
+-------
+None
+") BRepClass_FClassifier;
+		 BRepClass_FClassifier(BRepClass_FaceExplorer & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
 		/****************** Edge ******************/
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "* Returns the Edge used to determine the classification. When the State is ON this is the Edge containing the point.
-	:rtype: BRepClass_Edge") Edge;
-		const BRepClass_Edge & Edge ();
+		%feature("autodoc", "Returns the edge used to determine the classification. when the state is on this is the edge containing the point.
+
+Returns
+-------
+BRepClass_Edge
+") Edge;
+		const BRepClass_Edge & Edge();
 
 		/****************** EdgeParameter ******************/
 		%feature("compactdefaultargs") EdgeParameter;
-		%feature("autodoc", "* Returns the parameter on Edge() used to determine the classification.
-	:rtype: float") EdgeParameter;
-		Standard_Real EdgeParameter ();
+		%feature("autodoc", "Returns the parameter on edge() used to determine the classification.
+
+Returns
+-------
+float
+") EdgeParameter;
+		Standard_Real EdgeParameter();
 
 		/****************** NoWires ******************/
 		%feature("compactdefaultargs") NoWires;
-		%feature("autodoc", "* Returns True if the face contains no wire. The state is IN.
-	:rtype: bool") NoWires;
-		Standard_Boolean NoWires ();
+		%feature("autodoc", "Returns true if the face contains no wire. the state is in.
+
+Returns
+-------
+bool
+") NoWires;
+		Standard_Boolean NoWires();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Classify the Point P with Tolerance <T> on the face described by <F>.
-	:param F:
-	:type F: BRepClass_FaceExplorer
-	:param P:
-	:type P: gp_Pnt2d
-	:param Tol:
-	:type Tol: float
-	:rtype: None") Perform;
-		void Perform (BRepClass_FaceExplorer & F,const gp_Pnt2d & P,const Standard_Real Tol);
+		%feature("autodoc", "Classify the point p with tolerance <t> on the face described by <f>.
+
+Parameters
+----------
+F: BRepClass_FaceExplorer
+P: gp_Pnt2d
+Tol: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(BRepClass_FaceExplorer & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
 		/****************** Position ******************/
 		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "* Returns the position of the point on the edge returned by Edge.
-	:rtype: IntRes2d_Position") Position;
-		IntRes2d_Position Position ();
+		%feature("autodoc", "Returns the position of the point on the edge returned by edge.
+
+Returns
+-------
+IntRes2d_Position
+") Position;
+		IntRes2d_Position Position();
 
 		/****************** Rejected ******************/
 		%feature("compactdefaultargs") Rejected;
-		%feature("autodoc", "* Returns True when the state was computed by a rejection. The state is OUT.
-	:rtype: bool") Rejected;
-		Standard_Boolean Rejected ();
+		%feature("autodoc", "Returns true when the state was computed by a rejection. the state is out.
+
+Returns
+-------
+bool
+") Rejected;
+		Standard_Boolean Rejected();
 
 		/****************** State ******************/
 		%feature("compactdefaultargs") State;
-		%feature("autodoc", "* Returns the result of the classification.
-	:rtype: TopAbs_State") State;
-		TopAbs_State State ();
+		%feature("autodoc", "Returns the result of the classification.
+
+Returns
+-------
+TopAbs_State
+") State;
+		TopAbs_State State();
 
 };
 
@@ -286,116 +397,180 @@ class BRepClass_FaceExplorer {
 	public:
 		/****************** BRepClass_FaceExplorer ******************/
 		%feature("compactdefaultargs") BRepClass_FaceExplorer;
-		%feature("autodoc", ":param F:
-	:type F: TopoDS_Face
-	:rtype: None") BRepClass_FaceExplorer;
-		 BRepClass_FaceExplorer (const TopoDS_Face & F);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+F: TopoDS_Face
+
+Returns
+-------
+None
+") BRepClass_FaceExplorer;
+		 BRepClass_FaceExplorer(const TopoDS_Face & F);
 
 		/****************** CheckPoint ******************/
 		%feature("compactdefaultargs") CheckPoint;
-		%feature("autodoc", "* Checks the point and change its coords if it is located too far from the bounding box of the face. New Coordinates of the point will be on the line between the point and the center of the bounding box. Returns True if point was not changed.
-	:param thePoint:
-	:type thePoint: gp_Pnt2d
-	:rtype: bool") CheckPoint;
-		Standard_Boolean CheckPoint (gp_Pnt2d & thePoint);
+		%feature("autodoc", "Checks the point and change its coords if it is located too far from the bounding box of the face. new coordinates of the point will be on the line between the point and the center of the bounding box. returns true if point was not changed.
+
+Parameters
+----------
+thePoint: gp_Pnt2d
+
+Returns
+-------
+bool
+") CheckPoint;
+		Standard_Boolean CheckPoint(gp_Pnt2d & thePoint);
 
 		/****************** CurrentEdge ******************/
 		%feature("compactdefaultargs") CurrentEdge;
-		%feature("autodoc", "* Current edge in current wire and its orientation.
-	:param E:
-	:type E: BRepClass_Edge
-	:param Or:
-	:type Or: TopAbs_Orientation
-	:rtype: None") CurrentEdge;
-		void CurrentEdge (BRepClass_Edge & E,TopAbs_Orientation & Or);
+		%feature("autodoc", "Current edge in current wire and its orientation.
+
+Parameters
+----------
+E: BRepClass_Edge
+Or: TopAbs_Orientation
+
+Returns
+-------
+None
+") CurrentEdge;
+		void CurrentEdge(BRepClass_Edge & E, TopAbs_Orientation & Or);
 
 		/****************** InitEdges ******************/
 		%feature("compactdefaultargs") InitEdges;
-		%feature("autodoc", "* Starts an exploration of the edges of the current wire.
-	:rtype: None") InitEdges;
-		void InitEdges ();
+		%feature("autodoc", "Starts an exploration of the edges of the current wire.
+
+Returns
+-------
+None
+") InitEdges;
+		void InitEdges();
 
 		/****************** InitWires ******************/
 		%feature("compactdefaultargs") InitWires;
-		%feature("autodoc", "* Starts an exploration of the wires.
-	:rtype: None") InitWires;
-		void InitWires ();
+		%feature("autodoc", "Starts an exploration of the wires.
+
+Returns
+-------
+None
+") InitWires;
+		void InitWires();
 
 		/****************** MoreEdges ******************/
 		%feature("compactdefaultargs") MoreEdges;
-		%feature("autodoc", "* Returns True if there is a current edge.
-	:rtype: bool") MoreEdges;
-		Standard_Boolean MoreEdges ();
+		%feature("autodoc", "Returns true if there is a current edge.
+
+Returns
+-------
+bool
+") MoreEdges;
+		Standard_Boolean MoreEdges();
 
 		/****************** MoreWires ******************/
 		%feature("compactdefaultargs") MoreWires;
-		%feature("autodoc", "* Returns True if there is a current wire.
-	:rtype: bool") MoreWires;
-		Standard_Boolean MoreWires ();
+		%feature("autodoc", "Returns true if there is a current wire.
+
+Returns
+-------
+bool
+") MoreWires;
+		Standard_Boolean MoreWires();
 
 		/****************** NextEdge ******************/
 		%feature("compactdefaultargs") NextEdge;
-		%feature("autodoc", "* Sets the explorer to the next edge.
-	:rtype: None") NextEdge;
-		void NextEdge ();
+		%feature("autodoc", "Sets the explorer to the next edge.
+
+Returns
+-------
+None
+") NextEdge;
+		void NextEdge();
 
 		/****************** NextWire ******************/
 		%feature("compactdefaultargs") NextWire;
-		%feature("autodoc", "* Sets the explorer to the next wire.
-	:rtype: None") NextWire;
-		void NextWire ();
+		%feature("autodoc", "Sets the explorer to the next wire.
+
+Returns
+-------
+None
+") NextWire;
+		void NextWire();
 
 		/****************** OtherSegment ******************/
 		%feature("compactdefaultargs") OtherSegment;
-		%feature("autodoc", "* Returns in <L>, <Par> a segment having at least one intersection with the face boundary to compute intersections. Each call gives another segment.
-	:param P:
-	:type P: gp_Pnt2d
-	:param L:
-	:type L: gp_Lin2d
-	:param Par:
-	:type Par: float
-	:rtype: bool") OtherSegment;
-		Standard_Boolean OtherSegment (const gp_Pnt2d & P,gp_Lin2d & L,Standard_Real &OutValue);
+		%feature("autodoc", "Returns in <l>, <par> a segment having at least one intersection with the face boundary to compute intersections. each call gives another segment.
+
+Parameters
+----------
+P: gp_Pnt2d
+L: gp_Lin2d
+
+Returns
+-------
+Par: float
+") OtherSegment;
+		Standard_Boolean OtherSegment(const gp_Pnt2d & P, gp_Lin2d & L, Standard_Real &OutValue);
 
 		/****************** Reject ******************/
 		%feature("compactdefaultargs") Reject;
-		%feature("autodoc", "* Should return True if the point is outside a bounding volume of the face.
-	:param P:
-	:type P: gp_Pnt2d
-	:rtype: bool") Reject;
-		Standard_Boolean Reject (const gp_Pnt2d & P);
+		%feature("autodoc", "Should return true if the point is outside a bounding volume of the face.
+
+Parameters
+----------
+P: gp_Pnt2d
+
+Returns
+-------
+bool
+") Reject;
+		Standard_Boolean Reject(const gp_Pnt2d & P);
 
 		/****************** RejectEdge ******************/
 		%feature("compactdefaultargs") RejectEdge;
-		%feature("autodoc", "* Returns True if the edge bounding volume does not intersect the segment.
-	:param L:
-	:type L: gp_Lin2d
-	:param Par:
-	:type Par: float
-	:rtype: bool") RejectEdge;
-		Standard_Boolean RejectEdge (const gp_Lin2d & L,const Standard_Real Par);
+		%feature("autodoc", "Returns true if the edge bounding volume does not intersect the segment.
+
+Parameters
+----------
+L: gp_Lin2d
+Par: float
+
+Returns
+-------
+bool
+") RejectEdge;
+		Standard_Boolean RejectEdge(const gp_Lin2d & L, const Standard_Real Par);
 
 		/****************** RejectWire ******************/
 		%feature("compactdefaultargs") RejectWire;
-		%feature("autodoc", "* Returns True if the wire bounding volume does not intersect the segment.
-	:param L:
-	:type L: gp_Lin2d
-	:param Par:
-	:type Par: float
-	:rtype: bool") RejectWire;
-		Standard_Boolean RejectWire (const gp_Lin2d & L,const Standard_Real Par);
+		%feature("autodoc", "Returns true if the wire bounding volume does not intersect the segment.
+
+Parameters
+----------
+L: gp_Lin2d
+Par: float
+
+Returns
+-------
+bool
+") RejectWire;
+		Standard_Boolean RejectWire(const gp_Lin2d & L, const Standard_Real Par);
 
 		/****************** Segment ******************/
 		%feature("compactdefaultargs") Segment;
-		%feature("autodoc", "* Returns in <L>, <Par> a segment having at least one intersection with the face boundary to compute intersections.
-	:param P:
-	:type P: gp_Pnt2d
-	:param L:
-	:type L: gp_Lin2d
-	:param Par:
-	:type Par: float
-	:rtype: bool") Segment;
-		Standard_Boolean Segment (const gp_Pnt2d & P,gp_Lin2d & L,Standard_Real &OutValue);
+		%feature("autodoc", "Returns in <l>, <par> a segment having at least one intersection with the face boundary to compute intersections.
+
+Parameters
+----------
+P: gp_Pnt2d
+L: gp_Lin2d
+
+Returns
+-------
+Par: float
+") Segment;
+		Standard_Boolean Segment(const gp_Pnt2d & P, gp_Lin2d & L, Standard_Real &OutValue);
 
 };
 
@@ -413,61 +588,94 @@ class BRepClass_FacePassiveClassifier {
 	public:
 		/****************** BRepClass_FacePassiveClassifier ******************/
 		%feature("compactdefaultargs") BRepClass_FacePassiveClassifier;
-		%feature("autodoc", "* Creates an undefined classifier.
-	:rtype: None") BRepClass_FacePassiveClassifier;
-		 BRepClass_FacePassiveClassifier ();
+		%feature("autodoc", "Creates an undefined classifier.
+
+Returns
+-------
+None
+") BRepClass_FacePassiveClassifier;
+		 BRepClass_FacePassiveClassifier();
 
 		/****************** ClosestIntersection ******************/
 		%feature("compactdefaultargs") ClosestIntersection;
-		%feature("autodoc", "* Returns 0 if the last compared edge had no relevant intersection. Else returns the index of this intersection in the last intersection algorithm.
-	:rtype: int") ClosestIntersection;
-		Standard_Integer ClosestIntersection ();
+		%feature("autodoc", "Returns 0 if the last compared edge had no relevant intersection. else returns the index of this intersection in the last intersection algorithm.
+
+Returns
+-------
+int
+") ClosestIntersection;
+		Standard_Integer ClosestIntersection();
 
 		/****************** Compare ******************/
 		%feature("compactdefaultargs") Compare;
-		%feature("autodoc", "* Updates the classification process with the edge <E> from the boundary.
-	:param E:
-	:type E: BRepClass_Edge
-	:param Or:
-	:type Or: TopAbs_Orientation
-	:rtype: None") Compare;
-		void Compare (const BRepClass_Edge & E,const TopAbs_Orientation Or);
+		%feature("autodoc", "Updates the classification process with the edge <e> from the boundary.
+
+Parameters
+----------
+E: BRepClass_Edge
+Or: TopAbs_Orientation
+
+Returns
+-------
+None
+") Compare;
+		void Compare(const BRepClass_Edge & E, const TopAbs_Orientation Or);
 
 		/****************** Intersector ******************/
 		%feature("compactdefaultargs") Intersector;
-		%feature("autodoc", "* Returns the intersecting algorithm.
-	:rtype: BRepClass_Intersector") Intersector;
-		BRepClass_Intersector & Intersector ();
+		%feature("autodoc", "Returns the intersecting algorithm.
+
+Returns
+-------
+BRepClass_Intersector
+") Intersector;
+		BRepClass_Intersector & Intersector();
 
 		/****************** IsHeadOrEnd ******************/
 		%feature("compactdefaultargs") IsHeadOrEnd;
-		%feature("autodoc", "* Returns the Standard_True if the closest intersection point represents head or end of the edge. Returns Standard_False otherwise.
-	:rtype: bool") IsHeadOrEnd;
-		Standard_Boolean IsHeadOrEnd ();
+		%feature("autodoc", "Returns the standard_true if the closest intersection point represents head or end of the edge. returns standard_false otherwise.
+
+Returns
+-------
+bool
+") IsHeadOrEnd;
+		Standard_Boolean IsHeadOrEnd();
 
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "* Returns the current value of the parameter.
-	:rtype: float") Parameter;
-		Standard_Real Parameter ();
+		%feature("autodoc", "Returns the current value of the parameter.
+
+Returns
+-------
+float
+") Parameter;
+		Standard_Real Parameter();
 
 		/****************** Reset ******************/
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "* Starts a classification process. The point to classify is the origin of the line <L>. <P> is the original length of the segment on <L> used to compute intersections. <Tol> is the tolerance attached to the line segment in intersections.
-	:param L:
-	:type L: gp_Lin2d
-	:param P:
-	:type P: float
-	:param Tol:
-	:type Tol: float
-	:rtype: None") Reset;
-		void Reset (const gp_Lin2d & L,const Standard_Real P,const Standard_Real Tol);
+		%feature("autodoc", "Starts a classification process. the point to classify is the origin of the line <l>. <p> is the original length of the segment on <l> used to compute intersections. <tol> is the tolerance attached to the line segment in intersections.
+
+Parameters
+----------
+L: gp_Lin2d
+P: float
+Tol: float
+
+Returns
+-------
+None
+") Reset;
+		void Reset(const gp_Lin2d & L, const Standard_Real P, const Standard_Real Tol);
 
 		/****************** State ******************/
 		%feature("compactdefaultargs") State;
-		%feature("autodoc", "* Returns the current state of the point.
-	:rtype: TopAbs_State") State;
-		TopAbs_State State ();
+		%feature("autodoc", "Returns the current state of the point.
+
+Returns
+-------
+TopAbs_State
+") State;
+		TopAbs_State State();
 
 };
 
@@ -485,38 +693,47 @@ class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 	public:
 		/****************** BRepClass_Intersector ******************/
 		%feature("compactdefaultargs") BRepClass_Intersector;
-		%feature("autodoc", ":rtype: None") BRepClass_Intersector;
-		 BRepClass_Intersector ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") BRepClass_Intersector;
+		 BRepClass_Intersector();
 
 		/****************** LocalGeometry ******************/
 		%feature("compactdefaultargs") LocalGeometry;
-		%feature("autodoc", "* Returns in <T>, <N> and <C> the tangent, normal and curvature of the edge <E> at parameter value <U>.
-	:param E:
-	:type E: BRepClass_Edge
-	:param U:
-	:type U: float
-	:param T:
-	:type T: gp_Dir2d
-	:param N:
-	:type N: gp_Dir2d
-	:param C:
-	:type C: float
-	:rtype: None") LocalGeometry;
-		void LocalGeometry (const BRepClass_Edge & E,const Standard_Real U,gp_Dir2d & T,gp_Dir2d & N,Standard_Real &OutValue);
+		%feature("autodoc", "Returns in <t>, <n> and <c> the tangent, normal and curvature of the edge <e> at parameter value <u>.
+
+Parameters
+----------
+E: BRepClass_Edge
+U: float
+T: gp_Dir2d
+N: gp_Dir2d
+
+Returns
+-------
+C: float
+") LocalGeometry;
+		void LocalGeometry(const BRepClass_Edge & E, const Standard_Real U, gp_Dir2d & T, gp_Dir2d & N, Standard_Real &OutValue);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Intersect the line segment and the edge.
-	:param L:
-	:type L: gp_Lin2d
-	:param P:
-	:type P: float
-	:param Tol:
-	:type Tol: float
-	:param E:
-	:type E: BRepClass_Edge
-	:rtype: None") Perform;
-		void Perform (const gp_Lin2d & L,const Standard_Real P,const Standard_Real Tol,const BRepClass_Edge & E);
+		%feature("autodoc", "Intersect the line segment and the edge.
+
+Parameters
+----------
+L: gp_Lin2d
+P: float
+Tol: float
+E: BRepClass_Edge
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Lin2d & L, const Standard_Real P, const Standard_Real Tol, const BRepClass_Edge & E);
 
 };
 
@@ -530,6 +747,14 @@ class BRepClass_Intersector : public Geom2dInt_IntConicCurveOfGInter {
 /*********************************
 * class BRepClass_FaceClassifier *
 *********************************/
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class BRepClass_FaceClassifier:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

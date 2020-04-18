@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -54,8 +54,19 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_geomprojlib.html"
 %import Geom.i
 %import Geom2d.i
 %import gp.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */
@@ -74,129 +85,143 @@ class GeomProjLib {
 	public:
 		/****************** Curve2d ******************/
 		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ) The 3dCurve is taken between the parametrization range [First, Last] <Tolerance> is used as input if the projection needs an approximation. In this case, the reached tolerance is set in <Tolerance> as output. WARNING : if the projection has failed, this method returns a null Handle.
-	:param C:
-	:type C: Geom_Curve
-	:param First:
-	:type First: float
-	:param Last:
-	:type Last: float
-	:param S:
-	:type S: Geom_Surface
-	:param UFirst:
-	:type UFirst: float
-	:param ULast:
-	:type ULast: float
-	:param VFirst:
-	:type VFirst: float
-	:param VLast:
-	:type VLast: float
-	:param Tolerance:
-	:type Tolerance: float
-	:rtype: opencascade::handle<Geom2d_Curve>") Curve2d;
-		static opencascade::handle<Geom2d_Curve> Curve2d (const opencascade::handle<Geom_Curve> & C,const Standard_Real First,const Standard_Real Last,const opencascade::handle<Geom_Surface> & S,const Standard_Real UFirst,const Standard_Real ULast,const Standard_Real VFirst,const Standard_Real VLast,Standard_Real &OutValue);
+		%feature("autodoc", "Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ) the 3dcurve is taken between the parametrization range [first, last] <tolerance> is used as input if the projection needs an approximation. in this case, the reached tolerance is set in <tolerance> as output. warning : if the projection has failed, this method returns a null handle.
+
+Parameters
+----------
+C: Geom_Curve
+First: float
+Last: float
+S: Geom_Surface
+UFirst: float
+ULast: float
+VFirst: float
+VLast: float
+
+Returns
+-------
+Tolerance: float
+") Curve2d;
+		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last, const opencascade::handle<Geom_Surface> & S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, Standard_Real &OutValue);
 
 		/****************** Curve2d ******************/
 		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ) The 3dCurve is taken between the parametrization range [First, Last] <Tolerance> is used as input if the projection needs an approximation. In this case, the reached tolerance is set in <Tolerance> as output. WARNING : if the projection has failed, this method returns a null Handle.
-	:param C:
-	:type C: Geom_Curve
-	:param First:
-	:type First: float
-	:param Last:
-	:type Last: float
-	:param S:
-	:type S: Geom_Surface
-	:param Tolerance:
-	:type Tolerance: float
-	:rtype: opencascade::handle<Geom2d_Curve>") Curve2d;
-		static opencascade::handle<Geom2d_Curve> Curve2d (const opencascade::handle<Geom_Curve> & C,const Standard_Real First,const Standard_Real Last,const opencascade::handle<Geom_Surface> & S,Standard_Real &OutValue);
+		%feature("autodoc", "Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ) the 3dcurve is taken between the parametrization range [first, last] <tolerance> is used as input if the projection needs an approximation. in this case, the reached tolerance is set in <tolerance> as output. warning : if the projection has failed, this method returns a null handle.
+
+Parameters
+----------
+C: Geom_Curve
+First: float
+Last: float
+S: Geom_Surface
+
+Returns
+-------
+Tolerance: float
+") Curve2d;
+		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last, const opencascade::handle<Geom_Surface> & S, Standard_Real &OutValue);
 
 		/****************** Curve2d ******************/
 		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ) The 3dCurve is taken between the parametrization range [First, Last] If the projection needs an approximation, Precision::PApproximation() is used. WARNING : if the projection has failed, this method returns a null Handle.
-	:param C:
-	:type C: Geom_Curve
-	:param First:
-	:type First: float
-	:param Last:
-	:type Last: float
-	:param S:
-	:type S: Geom_Surface
-	:rtype: opencascade::handle<Geom2d_Curve>") Curve2d;
-		static opencascade::handle<Geom2d_Curve> Curve2d (const opencascade::handle<Geom_Curve> & C,const Standard_Real First,const Standard_Real Last,const opencascade::handle<Geom_Surface> & S);
+		%feature("autodoc", "Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ) the 3dcurve is taken between the parametrization range [first, last] if the projection needs an approximation, precision::papproximation() is used. warning : if the projection has failed, this method returns a null handle.
+
+Parameters
+----------
+C: Geom_Curve
+First: float
+Last: float
+S: Geom_Surface
+
+Returns
+-------
+opencascade::handle<Geom2d_Curve>
+") Curve2d;
+		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last, const opencascade::handle<Geom_Surface> & S);
 
 		/****************** Curve2d ******************/
 		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ). If the projection needs an approximation, Precision::PApproximation() is used. WARNING : if the projection has failed, this method returns a null Handle.
-	:param C:
-	:type C: Geom_Curve
-	:param S:
-	:type S: Geom_Surface
-	:rtype: opencascade::handle<Geom2d_Curve>") Curve2d;
-		static opencascade::handle<Geom2d_Curve> Curve2d (const opencascade::handle<Geom_Curve> & C,const opencascade::handle<Geom_Surface> & S);
+		%feature("autodoc", "Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ). if the projection needs an approximation, precision::papproximation() is used. warning : if the projection has failed, this method returns a null handle.
+
+Parameters
+----------
+C: Geom_Curve
+S: Geom_Surface
+
+Returns
+-------
+opencascade::handle<Geom2d_Curve>
+") Curve2d;
+		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
 		/****************** Curve2d ******************/
 		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ). If the projection needs an approximation, Precision::PApproximation() is used. WARNING : if the projection has failed, this method returns a null Handle. can expand a little the bounds of surface
-	:param C:
-	:type C: Geom_Curve
-	:param S:
-	:type S: Geom_Surface
-	:param UDeb:
-	:type UDeb: float
-	:param UFin:
-	:type UFin: float
-	:param VDeb:
-	:type VDeb: float
-	:param VFin:
-	:type VFin: float
-	:rtype: opencascade::handle<Geom2d_Curve>") Curve2d;
-		static opencascade::handle<Geom2d_Curve> Curve2d (const opencascade::handle<Geom_Curve> & C,const opencascade::handle<Geom_Surface> & S,const Standard_Real UDeb,const Standard_Real UFin,const Standard_Real VDeb,const Standard_Real VFin);
+		%feature("autodoc", "Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ). if the projection needs an approximation, precision::papproximation() is used. warning : if the projection has failed, this method returns a null handle. can expand a little the bounds of surface.
+
+Parameters
+----------
+C: Geom_Curve
+S: Geom_Surface
+UDeb: float
+UFin: float
+VDeb: float
+VFin: float
+
+Returns
+-------
+opencascade::handle<Geom2d_Curve>
+") Curve2d;
+		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S, const Standard_Real UDeb, const Standard_Real UFin, const Standard_Real VDeb, const Standard_Real VFin);
 
 		/****************** Curve2d ******************/
 		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "* gives the 2d-curve of a 3d-curve lying on a surface ( uses GeomProjLib_ProjectedCurve ). If the projection needs an approximation, Precision::PApproximation() is used. WARNING : if the projection has failed, this method returns a null Handle. can expand a little the bounds of surface
-	:param C:
-	:type C: Geom_Curve
-	:param S:
-	:type S: Geom_Surface
-	:param UDeb:
-	:type UDeb: float
-	:param UFin:
-	:type UFin: float
-	:param VDeb:
-	:type VDeb: float
-	:param VFin:
-	:type VFin: float
-	:param Tolerance:
-	:type Tolerance: float
-	:rtype: opencascade::handle<Geom2d_Curve>") Curve2d;
-		static opencascade::handle<Geom2d_Curve> Curve2d (const opencascade::handle<Geom_Curve> & C,const opencascade::handle<Geom_Surface> & S,const Standard_Real UDeb,const Standard_Real UFin,const Standard_Real VDeb,const Standard_Real VFin,Standard_Real &OutValue);
+		%feature("autodoc", "Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projectedcurve ). if the projection needs an approximation, precision::papproximation() is used. warning : if the projection has failed, this method returns a null handle. can expand a little the bounds of surface.
+
+Parameters
+----------
+C: Geom_Curve
+S: Geom_Surface
+UDeb: float
+UFin: float
+VDeb: float
+VFin: float
+
+Returns
+-------
+Tolerance: float
+") Curve2d;
+		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S, const Standard_Real UDeb, const Standard_Real UFin, const Standard_Real VDeb, const Standard_Real VFin, Standard_Real &OutValue);
 
 		/****************** Project ******************/
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "* Constructs the 3d-curve from the normal projection of the Curve <C> on the surface <S>. WARNING : if the projection has failes returns a null Handle.
-	:param C:
-	:type C: Geom_Curve
-	:param S:
-	:type S: Geom_Surface
-	:rtype: opencascade::handle<Geom_Curve>") Project;
-		static opencascade::handle<Geom_Curve> Project (const opencascade::handle<Geom_Curve> & C,const opencascade::handle<Geom_Surface> & S);
+		%feature("autodoc", "Constructs the 3d-curve from the normal projection of the curve <c> on the surface <s>. warning : if the projection has failes returns a null handle.
+
+Parameters
+----------
+C: Geom_Curve
+S: Geom_Surface
+
+Returns
+-------
+opencascade::handle<Geom_Curve>
+") Project;
+		static opencascade::handle<Geom_Curve> Project(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
 		/****************** ProjectOnPlane ******************/
 		%feature("compactdefaultargs") ProjectOnPlane;
-		%feature("autodoc", "* Constructs the 3d-curves from the projection of the curve <Curve> on the plane <Plane> along the direction <Dir>. If <KeepParametrization> is true, the parametrization of the Projected Curve <PC> will be the same as the parametrization of the initial curve <C>. It meens: proj(C(u)) = PC(u) for each u. Otherwize, the parametrization may change.
-	:param Curve:
-	:type Curve: Geom_Curve
-	:param Plane:
-	:type Plane: Geom_Plane
-	:param Dir:
-	:type Dir: gp_Dir
-	:param KeepParametrization:
-	:type KeepParametrization: bool
-	:rtype: opencascade::handle<Geom_Curve>") ProjectOnPlane;
-		static opencascade::handle<Geom_Curve> ProjectOnPlane (const opencascade::handle<Geom_Curve> & Curve,const opencascade::handle<Geom_Plane> & Plane,const gp_Dir & Dir,const Standard_Boolean KeepParametrization);
+		%feature("autodoc", "Constructs the 3d-curves from the projection of the curve <curve> on the plane <plane> along the direction <dir>. if <keepparametrization> is true, the parametrization of the projected curve <pc> will be the same as the parametrization of the initial curve <c>. it meens: proj(c(u)) = pc(u) for each u. otherwize, the parametrization may change.
+
+Parameters
+----------
+Curve: Geom_Curve
+Plane: Geom_Plane
+Dir: gp_Dir
+KeepParametrization: bool
+
+Returns
+-------
+opencascade::handle<Geom_Curve>
+") ProjectOnPlane;
+		static opencascade::handle<Geom_Curve> ProjectOnPlane(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Plane> & Plane, const gp_Dir & Dir, const Standard_Boolean KeepParametrization);
 
 };
 

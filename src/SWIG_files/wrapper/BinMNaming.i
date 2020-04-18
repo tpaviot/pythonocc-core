@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -65,8 +65,19 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binmnaming.html"
 %import BinTools.i
 %import TDF.i
 %import BinObjMgt.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 %wrap_handle(BinMNaming_NamedShapeDriver)
@@ -87,13 +98,18 @@ class BinMNaming {
 	public:
 		/****************** AddDrivers ******************/
 		%feature("compactdefaultargs") AddDrivers;
-		%feature("autodoc", "* Adds the attribute drivers to <theDriverTable>.
-	:param theDriverTable:
-	:type theDriverTable: BinMDF_ADriverTable
-	:param aMsgDrv:
-	:type aMsgDrv: Message_Messenger
-	:rtype: void") AddDrivers;
-		static void AddDrivers (const opencascade::handle<BinMDF_ADriverTable> & theDriverTable,const opencascade::handle<Message_Messenger> & aMsgDrv);
+		%feature("autodoc", "Adds the attribute drivers to <thedrivertable>.
+
+Parameters
+----------
+theDriverTable: BinMDF_ADriverTable
+aMsgDrv: Message_Messenger
+
+Returns
+-------
+None
+") AddDrivers;
+		static void AddDrivers(const opencascade::handle<BinMDF_ADriverTable> & theDriverTable, const opencascade::handle<Message_Messenger> & aMsgDrv);
 
 };
 
@@ -111,84 +127,134 @@ class BinMNaming_NamedShapeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMNaming_NamedShapeDriver ******************/
 		%feature("compactdefaultargs") BinMNaming_NamedShapeDriver;
-		%feature("autodoc", ":param theMessageDriver:
-	:type theMessageDriver: Message_Messenger
-	:rtype: None") BinMNaming_NamedShapeDriver;
-		 BinMNaming_NamedShapeDriver (const opencascade::handle<Message_Messenger> & theMessageDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theMessageDriver: Message_Messenger
+
+Returns
+-------
+None
+") BinMNaming_NamedShapeDriver;
+		 BinMNaming_NamedShapeDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** Clear ******************/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "* Clear myShapeSet
-	:rtype: None") Clear;
-		void Clear ();
+		%feature("autodoc", "Clear myshapeset.
+
+Returns
+-------
+None
+") Clear;
+		void Clear();
 
 		/****************** GetFormatNb ******************/
 		%feature("compactdefaultargs") GetFormatNb;
-		%feature("autodoc", "* get the format of topology
-	:rtype: int") GetFormatNb;
-		Standard_Integer GetFormatNb ();
+		%feature("autodoc", "Get the format of topology.
+
+Returns
+-------
+int
+") GetFormatNb;
+		Standard_Integer GetFormatNb();
 
 		/****************** GetShapesLocations ******************/
 		%feature("compactdefaultargs") GetShapesLocations;
-		%feature("autodoc", "* get the format of topology
-	:rtype: BinTools_LocationSet") GetShapesLocations;
-		BinTools_LocationSet & GetShapesLocations ();
+		%feature("autodoc", "Get the format of topology.
+
+Returns
+-------
+BinTools_LocationSet
+") GetShapesLocations;
+		BinTools_LocationSet & GetShapesLocations();
 
 		/****************** IsWithTriangles ******************/
 		%feature("compactdefaultargs") IsWithTriangles;
-		%feature("autodoc", "* Return true if shape should be stored with triangles.
-	:rtype: bool") IsWithTriangles;
-		Standard_Boolean IsWithTriangles ();
+		%feature("autodoc", "Return true if shape should be stored with triangles.
+
+Returns
+-------
+bool
+") IsWithTriangles;
+		Standard_Boolean IsWithTriangles();
 
 		/****************** NewEmpty ******************/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", ":rtype: opencascade::handle<TDF_Attribute>") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", ":param Source:
-	:type Source: BinObjMgt_Persistent
-	:param Target:
-	:type Target: TDF_Attribute
-	:param RelocTable:
-	:type RelocTable: BinObjMgt_RRelocationTable
-	:rtype: bool") Paste;
-		Standard_Boolean Paste (const BinObjMgt_Persistent & Source,const opencascade::handle<TDF_Attribute> & Target,BinObjMgt_RRelocationTable & RelocTable);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Source: BinObjMgt_Persistent
+Target: TDF_Attribute
+RelocTable: BinObjMgt_RRelocationTable
+
+Returns
+-------
+bool
+") Paste;
+		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", ":param Source:
-	:type Source: TDF_Attribute
-	:param Target:
-	:type Target: BinObjMgt_Persistent
-	:param RelocTable:
-	:type RelocTable: BinObjMgt_SRelocationTable
-	:rtype: None") Paste;
-		void Paste (const opencascade::handle<TDF_Attribute> & Source,BinObjMgt_Persistent & Target,BinObjMgt_SRelocationTable & RelocTable);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Source: TDF_Attribute
+Target: BinObjMgt_Persistent
+RelocTable: BinObjMgt_SRelocationTable
+
+Returns
+-------
+None
+") Paste;
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, BinObjMgt_SRelocationTable & RelocTable);
 
 
-        %feature("autodoc", "1");
-        %extend{
-            void ReadShapeSectionFromString(std::string src) {
-            std::stringstream s(src);
-            self->ReadShapeSection(s);}
-        };
-        		/****************** SetFormatNb ******************/
+            %feature("autodoc", "1");
+            %extend{
+                void ReadShapeSectionFromString(std::string src) {
+                std::stringstream s(src);
+                self->ReadShapeSection(s);}
+            };
+		/****************** SetFormatNb ******************/
 		%feature("compactdefaultargs") SetFormatNb;
-		%feature("autodoc", "* set the format of topology First : does not write CurveOnSurface UV Points into the file on reading calls Check() method. Second: stores CurveOnSurface UV Points.
-	:param theFormat:
-	:type theFormat: int
-	:rtype: None") SetFormatNb;
-		void SetFormatNb (const Standard_Integer theFormat);
+		%feature("autodoc", "Set the format of topology first : does not write curveonsurface uv points into the file on reading calls check() method. second: stores curveonsurface uv points.
+
+Parameters
+----------
+theFormat: int
+
+Returns
+-------
+None
+") SetFormatNb;
+		void SetFormatNb(const Standard_Integer theFormat);
 
 		/****************** SetWithTriangles ******************/
 		%feature("compactdefaultargs") SetWithTriangles;
-		%feature("autodoc", "* set whether to store triangulation
-	:param isWithTriangles:
-	:type isWithTriangles: bool
-	:rtype: None") SetWithTriangles;
-		void SetWithTriangles (const Standard_Boolean isWithTriangles);
+		%feature("autodoc", "Set whether to store triangulation.
+
+Parameters
+----------
+isWithTriangles: bool
+
+Returns
+-------
+None
+") SetWithTriangles;
+		void SetWithTriangles(const Standard_Boolean isWithTriangles);
 
 
         %feature("autodoc", "1");
@@ -198,7 +264,7 @@ class BinMNaming_NamedShapeDriver : public BinMDF_ADriver {
             self->WriteShapeSection(s);
             return s.str();}
         };
-        };
+};
 
 
 %make_alias(BinMNaming_NamedShapeDriver)
@@ -216,37 +282,59 @@ class BinMNaming_NamingDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMNaming_NamingDriver ******************/
 		%feature("compactdefaultargs") BinMNaming_NamingDriver;
-		%feature("autodoc", ":param theMessageDriver:
-	:type theMessageDriver: Message_Messenger
-	:rtype: None") BinMNaming_NamingDriver;
-		 BinMNaming_NamingDriver (const opencascade::handle<Message_Messenger> & theMessageDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theMessageDriver: Message_Messenger
+
+Returns
+-------
+None
+") BinMNaming_NamingDriver;
+		 BinMNaming_NamingDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
 		%feature("compactdefaultargs") NewEmpty;
-		%feature("autodoc", ":rtype: opencascade::handle<TDF_Attribute>") NewEmpty;
-		opencascade::handle<TDF_Attribute> NewEmpty ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", ":param Source:
-	:type Source: BinObjMgt_Persistent
-	:param Target:
-	:type Target: TDF_Attribute
-	:param RelocTable:
-	:type RelocTable: BinObjMgt_RRelocationTable
-	:rtype: bool") Paste;
-		Standard_Boolean Paste (const BinObjMgt_Persistent & Source,const opencascade::handle<TDF_Attribute> & Target,BinObjMgt_RRelocationTable & RelocTable);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Source: BinObjMgt_Persistent
+Target: TDF_Attribute
+RelocTable: BinObjMgt_RRelocationTable
+
+Returns
+-------
+bool
+") Paste;
+		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
 		%feature("compactdefaultargs") Paste;
-		%feature("autodoc", ":param Source:
-	:type Source: TDF_Attribute
-	:param Target:
-	:type Target: BinObjMgt_Persistent
-	:param RelocTable:
-	:type RelocTable: BinObjMgt_SRelocationTable
-	:rtype: None") Paste;
-		void Paste (const opencascade::handle<TDF_Attribute> & Source,BinObjMgt_Persistent & Target,BinObjMgt_SRelocationTable & RelocTable);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Source: TDF_Attribute
+Target: BinObjMgt_Persistent
+RelocTable: BinObjMgt_SRelocationTable
+
+Returns
+-------
+None
+") Paste;
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, BinObjMgt_SRelocationTable & RelocTable);
 
 };
 

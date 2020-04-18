@@ -1,8 +1,5 @@
-#ifndef BREPLPROP_HXX
-#define BREPLPROP_HXX
-
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -18,6 +15,9 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
+#ifndef BREPLPROP_HXX
+#define BREPLPROP_HXX
+
 
 #include<BRepLProp.hxx>
 #include<BRepLProp_CLProps.hxx>

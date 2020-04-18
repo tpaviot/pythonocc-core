@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -61,8 +61,19 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binxcafdrivers.ht
 %import BinMDF.i
 %import TDocStd.i
 %import BinDrivers.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 %wrap_handle(BinXCAFDrivers_DocumentRetrievalDriver)
@@ -83,26 +94,45 @@ class BinXCAFDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "* Creates the table of drivers of types supported
-	:param MsgDrv:
-	:type MsgDrv: Message_Messenger
-	:rtype: opencascade::handle<BinMDF_ADriverTable>") AttributeDrivers;
-		static opencascade::handle<BinMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & MsgDrv);
+		%feature("autodoc", "Creates the table of drivers of types supported.
+
+Parameters
+----------
+MsgDrv: Message_Messenger
+
+Returns
+-------
+opencascade::handle<BinMDF_ADriverTable>
+") AttributeDrivers;
+		static opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & MsgDrv);
 
 		/****************** DefineFormat ******************/
 		%feature("compactdefaultargs") DefineFormat;
-		%feature("autodoc", "* Defines format 'BinXCAF' and registers its read and write drivers in the specified application
-	:param theApp:
-	:type theApp: TDocStd_Application
-	:rtype: void") DefineFormat;
-		static void DefineFormat (const opencascade::handle<TDocStd_Application> & theApp);
+		%feature("autodoc", "Defines format 'binxcaf' and registers its read and write drivers in the specified application.
+
+Parameters
+----------
+theApp: TDocStd_Application
+
+Returns
+-------
+None
+") DefineFormat;
+		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
 		%feature("compactdefaultargs") Factory;
-		%feature("autodoc", ":param theGUID:
-	:type theGUID: Standard_GUID
-	:rtype: opencascade::handle<Standard_Transient>") Factory;
-		static const opencascade::handle<Standard_Transient> & Factory (const Standard_GUID & theGUID);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theGUID: Standard_GUID
+
+Returns
+-------
+opencascade::handle<Standard_Transient>
+") Factory;
+		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & theGUID);
 
 };
 
@@ -118,18 +148,29 @@ class BinXCAFDrivers {
 ***********************************************/
 class BinXCAFDrivers_DocumentRetrievalDriver : public BinDrivers_DocumentRetrievalDriver {
 	public:
-		/****************** AttributeDrivers ******************/
-		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", ":param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: opencascade::handle<BinMDF_ADriverTable>") AttributeDrivers;
-		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
-
 		/****************** BinXCAFDrivers_DocumentRetrievalDriver ******************/
 		%feature("compactdefaultargs") BinXCAFDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "* Constructor
-	:rtype: None") BinXCAFDrivers_DocumentRetrievalDriver;
-		 BinXCAFDrivers_DocumentRetrievalDriver ();
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") BinXCAFDrivers_DocumentRetrievalDriver;
+		 BinXCAFDrivers_DocumentRetrievalDriver();
+
+		/****************** AttributeDrivers ******************/
+		%feature("compactdefaultargs") AttributeDrivers;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+opencascade::handle<BinMDF_ADriverTable>
+") AttributeDrivers;
+		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 
@@ -147,18 +188,29 @@ class BinXCAFDrivers_DocumentRetrievalDriver : public BinDrivers_DocumentRetriev
 *********************************************/
 class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDriver {
 	public:
-		/****************** AttributeDrivers ******************/
-		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", ":param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: opencascade::handle<BinMDF_ADriverTable>") AttributeDrivers;
-		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers (const opencascade::handle<Message_Messenger> & theMsgDriver);
-
 		/****************** BinXCAFDrivers_DocumentStorageDriver ******************/
 		%feature("compactdefaultargs") BinXCAFDrivers_DocumentStorageDriver;
-		%feature("autodoc", "* Constructor
-	:rtype: None") BinXCAFDrivers_DocumentStorageDriver;
-		 BinXCAFDrivers_DocumentStorageDriver ();
+		%feature("autodoc", "Constructor.
+
+Returns
+-------
+None
+") BinXCAFDrivers_DocumentStorageDriver;
+		 BinXCAFDrivers_DocumentStorageDriver();
+
+		/****************** AttributeDrivers ******************/
+		%feature("compactdefaultargs") AttributeDrivers;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+opencascade::handle<BinMDF_ADriverTable>
+") AttributeDrivers;
+		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 

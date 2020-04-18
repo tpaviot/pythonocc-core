@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -52,6 +52,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_aspect.html"
 %import NCollection.i
 %import Quantity.i
 %import TCollection.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum Aspect_VKeyBasic {
 	Aspect_VKey_UNKNOWN = 0,
@@ -397,6 +403,549 @@ enum Aspect_InteriorStyle {
 
 /* end public enums declaration */
 
+/* python proy classes for enums */
+%pythoncode {
+
+class Aspect_VKeyBasic(IntEnum):
+	Aspect_VKey_UNKNOWN = 0
+	Aspect_VKey_A = 1
+	Aspect_VKey_B = 2
+	Aspect_VKey_C = 3
+	Aspect_VKey_D = 4
+	Aspect_VKey_E = 5
+	Aspect_VKey_F = 6
+	Aspect_VKey_G = 7
+	Aspect_VKey_H = 8
+	Aspect_VKey_I = 9
+	Aspect_VKey_J = 10
+	Aspect_VKey_K = 11
+	Aspect_VKey_L = 12
+	Aspect_VKey_M = 13
+	Aspect_VKey_N = 14
+	Aspect_VKey_O = 15
+	Aspect_VKey_P = 16
+	Aspect_VKey_Q = 17
+	Aspect_VKey_R = 18
+	Aspect_VKey_S = 19
+	Aspect_VKey_T = 20
+	Aspect_VKey_U = 21
+	Aspect_VKey_V = 22
+	Aspect_VKey_W = 23
+	Aspect_VKey_X = 24
+	Aspect_VKey_Y = 25
+	Aspect_VKey_Z = 26
+	Aspect_VKey_0 = 27
+	Aspect_VKey_1 = 28
+	Aspect_VKey_2 = 29
+	Aspect_VKey_3 = 30
+	Aspect_VKey_4 = 31
+	Aspect_VKey_5 = 32
+	Aspect_VKey_6 = 33
+	Aspect_VKey_7 = 34
+	Aspect_VKey_8 = 35
+	Aspect_VKey_9 = 36
+	Aspect_VKey_F1 = 37
+	Aspect_VKey_F2 = 38
+	Aspect_VKey_F3 = 39
+	Aspect_VKey_F4 = 40
+	Aspect_VKey_F5 = 41
+	Aspect_VKey_F6 = 42
+	Aspect_VKey_F7 = 43
+	Aspect_VKey_F8 = 44
+	Aspect_VKey_F9 = 45
+	Aspect_VKey_F10 = 46
+	Aspect_VKey_F11 = 47
+	Aspect_VKey_F12 = 48
+	Aspect_VKey_Up = 49
+	Aspect_VKey_Down = 50
+	Aspect_VKey_Left = 51
+	Aspect_VKey_Right = 52
+	Aspect_VKey_Plus = 53
+	Aspect_VKey_Minus = 54
+	Aspect_VKey_Equal = 55
+	Aspect_VKey_PageUp = 56
+	Aspect_VKey_PageDown = 57
+	Aspect_VKey_Home = 58
+	Aspect_VKey_End = 59
+	Aspect_VKey_Escape = 60
+	Aspect_VKey_Back = 61
+	Aspect_VKey_Enter = 62
+	Aspect_VKey_Backspace = 63
+	Aspect_VKey_Space = 64
+	Aspect_VKey_Delete = 65
+	Aspect_VKey_Tilde = 66
+	Aspect_VKey_Tab = 67
+	Aspect_VKey_Comma = 68
+	Aspect_VKey_Period = 69
+	Aspect_VKey_Semicolon = 70
+	Aspect_VKey_Slash = 71
+	Aspect_VKey_BracketLeft = 72
+	Aspect_VKey_Backslash = 73
+	Aspect_VKey_BracketRight = 74
+	Aspect_VKey_Apostrophe = 75
+	Aspect_VKey_Numlock = 76
+	Aspect_VKey_Scroll = 77
+	Aspect_VKey_Numpad0 = 78
+	Aspect_VKey_Numpad1 = 79
+	Aspect_VKey_Numpad2 = 80
+	Aspect_VKey_Numpad3 = 81
+	Aspect_VKey_Numpad4 = 82
+	Aspect_VKey_Numpad5 = 83
+	Aspect_VKey_Numpad6 = 84
+	Aspect_VKey_Numpad7 = 85
+	Aspect_VKey_Numpad8 = 86
+	Aspect_VKey_Numpad9 = 87
+	Aspect_VKey_NumpadMultiply = 88
+	Aspect_VKey_NumpadAdd = 89
+	Aspect_VKey_NumpadSubtract = 90
+	Aspect_VKey_NumpadDivide = 91
+	Aspect_VKey_MediaNextTrack = 92
+	Aspect_VKey_MediaPreviousTrack = 93
+	Aspect_VKey_MediaStop = 94
+	Aspect_VKey_MediaPlayPause = 95
+	Aspect_VKey_VolumeMute = 96
+	Aspect_VKey_VolumeDown = 97
+	Aspect_VKey_VolumeUp = 98
+	Aspect_VKey_BrowserBack = 99
+	Aspect_VKey_BrowserForward = 100
+	Aspect_VKey_BrowserRefresh = 101
+	Aspect_VKey_BrowserStop = 102
+	Aspect_VKey_BrowserSearch = 103
+	Aspect_VKey_BrowserFavorites = 104
+	Aspect_VKey_BrowserHome = 105
+	Aspect_VKey_Shift = 106
+	Aspect_VKey_Control = 107
+	Aspect_VKey_Alt = 108
+	Aspect_VKey_Menu = 109
+	Aspect_VKey_Meta = 110
+	Aspect_VKey_NavInteract = 111
+	Aspect_VKey_NavForward = 112
+	Aspect_VKey_NavBackward = 113
+	Aspect_VKey_NavSlideLeft = 114
+	Aspect_VKey_NavSlideRight = 115
+	Aspect_VKey_NavSlideUp = 116
+	Aspect_VKey_NavSlideDown = 117
+	Aspect_VKey_NavRollCCW = 118
+	Aspect_VKey_NavRollCW = 119
+	Aspect_VKey_NavLookLeft = 120
+	Aspect_VKey_NavLookRight = 121
+	Aspect_VKey_NavLookUp = 122
+	Aspect_VKey_NavLookDown = 123
+	Aspect_VKey_NavCrouch = 124
+	Aspect_VKey_NavJump = 125
+	Aspect_VKey_NavThrustForward = 126
+	Aspect_VKey_NavThrustBackward = 127
+	Aspect_VKey_NavThrustStop = 128
+	Aspect_VKey_NavSpeedIncrease = 129
+	Aspect_VKey_NavSpeedDecrease = 130
+Aspect_VKey_UNKNOWN = Aspect_VKeyBasic.Aspect_VKey_UNKNOWN
+Aspect_VKey_A = Aspect_VKeyBasic.Aspect_VKey_A
+Aspect_VKey_B = Aspect_VKeyBasic.Aspect_VKey_B
+Aspect_VKey_C = Aspect_VKeyBasic.Aspect_VKey_C
+Aspect_VKey_D = Aspect_VKeyBasic.Aspect_VKey_D
+Aspect_VKey_E = Aspect_VKeyBasic.Aspect_VKey_E
+Aspect_VKey_F = Aspect_VKeyBasic.Aspect_VKey_F
+Aspect_VKey_G = Aspect_VKeyBasic.Aspect_VKey_G
+Aspect_VKey_H = Aspect_VKeyBasic.Aspect_VKey_H
+Aspect_VKey_I = Aspect_VKeyBasic.Aspect_VKey_I
+Aspect_VKey_J = Aspect_VKeyBasic.Aspect_VKey_J
+Aspect_VKey_K = Aspect_VKeyBasic.Aspect_VKey_K
+Aspect_VKey_L = Aspect_VKeyBasic.Aspect_VKey_L
+Aspect_VKey_M = Aspect_VKeyBasic.Aspect_VKey_M
+Aspect_VKey_N = Aspect_VKeyBasic.Aspect_VKey_N
+Aspect_VKey_O = Aspect_VKeyBasic.Aspect_VKey_O
+Aspect_VKey_P = Aspect_VKeyBasic.Aspect_VKey_P
+Aspect_VKey_Q = Aspect_VKeyBasic.Aspect_VKey_Q
+Aspect_VKey_R = Aspect_VKeyBasic.Aspect_VKey_R
+Aspect_VKey_S = Aspect_VKeyBasic.Aspect_VKey_S
+Aspect_VKey_T = Aspect_VKeyBasic.Aspect_VKey_T
+Aspect_VKey_U = Aspect_VKeyBasic.Aspect_VKey_U
+Aspect_VKey_V = Aspect_VKeyBasic.Aspect_VKey_V
+Aspect_VKey_W = Aspect_VKeyBasic.Aspect_VKey_W
+Aspect_VKey_X = Aspect_VKeyBasic.Aspect_VKey_X
+Aspect_VKey_Y = Aspect_VKeyBasic.Aspect_VKey_Y
+Aspect_VKey_Z = Aspect_VKeyBasic.Aspect_VKey_Z
+Aspect_VKey_0 = Aspect_VKeyBasic.Aspect_VKey_0
+Aspect_VKey_1 = Aspect_VKeyBasic.Aspect_VKey_1
+Aspect_VKey_2 = Aspect_VKeyBasic.Aspect_VKey_2
+Aspect_VKey_3 = Aspect_VKeyBasic.Aspect_VKey_3
+Aspect_VKey_4 = Aspect_VKeyBasic.Aspect_VKey_4
+Aspect_VKey_5 = Aspect_VKeyBasic.Aspect_VKey_5
+Aspect_VKey_6 = Aspect_VKeyBasic.Aspect_VKey_6
+Aspect_VKey_7 = Aspect_VKeyBasic.Aspect_VKey_7
+Aspect_VKey_8 = Aspect_VKeyBasic.Aspect_VKey_8
+Aspect_VKey_9 = Aspect_VKeyBasic.Aspect_VKey_9
+Aspect_VKey_F1 = Aspect_VKeyBasic.Aspect_VKey_F1
+Aspect_VKey_F2 = Aspect_VKeyBasic.Aspect_VKey_F2
+Aspect_VKey_F3 = Aspect_VKeyBasic.Aspect_VKey_F3
+Aspect_VKey_F4 = Aspect_VKeyBasic.Aspect_VKey_F4
+Aspect_VKey_F5 = Aspect_VKeyBasic.Aspect_VKey_F5
+Aspect_VKey_F6 = Aspect_VKeyBasic.Aspect_VKey_F6
+Aspect_VKey_F7 = Aspect_VKeyBasic.Aspect_VKey_F7
+Aspect_VKey_F8 = Aspect_VKeyBasic.Aspect_VKey_F8
+Aspect_VKey_F9 = Aspect_VKeyBasic.Aspect_VKey_F9
+Aspect_VKey_F10 = Aspect_VKeyBasic.Aspect_VKey_F10
+Aspect_VKey_F11 = Aspect_VKeyBasic.Aspect_VKey_F11
+Aspect_VKey_F12 = Aspect_VKeyBasic.Aspect_VKey_F12
+Aspect_VKey_Up = Aspect_VKeyBasic.Aspect_VKey_Up
+Aspect_VKey_Down = Aspect_VKeyBasic.Aspect_VKey_Down
+Aspect_VKey_Left = Aspect_VKeyBasic.Aspect_VKey_Left
+Aspect_VKey_Right = Aspect_VKeyBasic.Aspect_VKey_Right
+Aspect_VKey_Plus = Aspect_VKeyBasic.Aspect_VKey_Plus
+Aspect_VKey_Minus = Aspect_VKeyBasic.Aspect_VKey_Minus
+Aspect_VKey_Equal = Aspect_VKeyBasic.Aspect_VKey_Equal
+Aspect_VKey_PageUp = Aspect_VKeyBasic.Aspect_VKey_PageUp
+Aspect_VKey_PageDown = Aspect_VKeyBasic.Aspect_VKey_PageDown
+Aspect_VKey_Home = Aspect_VKeyBasic.Aspect_VKey_Home
+Aspect_VKey_End = Aspect_VKeyBasic.Aspect_VKey_End
+Aspect_VKey_Escape = Aspect_VKeyBasic.Aspect_VKey_Escape
+Aspect_VKey_Back = Aspect_VKeyBasic.Aspect_VKey_Back
+Aspect_VKey_Enter = Aspect_VKeyBasic.Aspect_VKey_Enter
+Aspect_VKey_Backspace = Aspect_VKeyBasic.Aspect_VKey_Backspace
+Aspect_VKey_Space = Aspect_VKeyBasic.Aspect_VKey_Space
+Aspect_VKey_Delete = Aspect_VKeyBasic.Aspect_VKey_Delete
+Aspect_VKey_Tilde = Aspect_VKeyBasic.Aspect_VKey_Tilde
+Aspect_VKey_Tab = Aspect_VKeyBasic.Aspect_VKey_Tab
+Aspect_VKey_Comma = Aspect_VKeyBasic.Aspect_VKey_Comma
+Aspect_VKey_Period = Aspect_VKeyBasic.Aspect_VKey_Period
+Aspect_VKey_Semicolon = Aspect_VKeyBasic.Aspect_VKey_Semicolon
+Aspect_VKey_Slash = Aspect_VKeyBasic.Aspect_VKey_Slash
+Aspect_VKey_BracketLeft = Aspect_VKeyBasic.Aspect_VKey_BracketLeft
+Aspect_VKey_Backslash = Aspect_VKeyBasic.Aspect_VKey_Backslash
+Aspect_VKey_BracketRight = Aspect_VKeyBasic.Aspect_VKey_BracketRight
+Aspect_VKey_Apostrophe = Aspect_VKeyBasic.Aspect_VKey_Apostrophe
+Aspect_VKey_Numlock = Aspect_VKeyBasic.Aspect_VKey_Numlock
+Aspect_VKey_Scroll = Aspect_VKeyBasic.Aspect_VKey_Scroll
+Aspect_VKey_Numpad0 = Aspect_VKeyBasic.Aspect_VKey_Numpad0
+Aspect_VKey_Numpad1 = Aspect_VKeyBasic.Aspect_VKey_Numpad1
+Aspect_VKey_Numpad2 = Aspect_VKeyBasic.Aspect_VKey_Numpad2
+Aspect_VKey_Numpad3 = Aspect_VKeyBasic.Aspect_VKey_Numpad3
+Aspect_VKey_Numpad4 = Aspect_VKeyBasic.Aspect_VKey_Numpad4
+Aspect_VKey_Numpad5 = Aspect_VKeyBasic.Aspect_VKey_Numpad5
+Aspect_VKey_Numpad6 = Aspect_VKeyBasic.Aspect_VKey_Numpad6
+Aspect_VKey_Numpad7 = Aspect_VKeyBasic.Aspect_VKey_Numpad7
+Aspect_VKey_Numpad8 = Aspect_VKeyBasic.Aspect_VKey_Numpad8
+Aspect_VKey_Numpad9 = Aspect_VKeyBasic.Aspect_VKey_Numpad9
+Aspect_VKey_NumpadMultiply = Aspect_VKeyBasic.Aspect_VKey_NumpadMultiply
+Aspect_VKey_NumpadAdd = Aspect_VKeyBasic.Aspect_VKey_NumpadAdd
+Aspect_VKey_NumpadSubtract = Aspect_VKeyBasic.Aspect_VKey_NumpadSubtract
+Aspect_VKey_NumpadDivide = Aspect_VKeyBasic.Aspect_VKey_NumpadDivide
+Aspect_VKey_MediaNextTrack = Aspect_VKeyBasic.Aspect_VKey_MediaNextTrack
+Aspect_VKey_MediaPreviousTrack = Aspect_VKeyBasic.Aspect_VKey_MediaPreviousTrack
+Aspect_VKey_MediaStop = Aspect_VKeyBasic.Aspect_VKey_MediaStop
+Aspect_VKey_MediaPlayPause = Aspect_VKeyBasic.Aspect_VKey_MediaPlayPause
+Aspect_VKey_VolumeMute = Aspect_VKeyBasic.Aspect_VKey_VolumeMute
+Aspect_VKey_VolumeDown = Aspect_VKeyBasic.Aspect_VKey_VolumeDown
+Aspect_VKey_VolumeUp = Aspect_VKeyBasic.Aspect_VKey_VolumeUp
+Aspect_VKey_BrowserBack = Aspect_VKeyBasic.Aspect_VKey_BrowserBack
+Aspect_VKey_BrowserForward = Aspect_VKeyBasic.Aspect_VKey_BrowserForward
+Aspect_VKey_BrowserRefresh = Aspect_VKeyBasic.Aspect_VKey_BrowserRefresh
+Aspect_VKey_BrowserStop = Aspect_VKeyBasic.Aspect_VKey_BrowserStop
+Aspect_VKey_BrowserSearch = Aspect_VKeyBasic.Aspect_VKey_BrowserSearch
+Aspect_VKey_BrowserFavorites = Aspect_VKeyBasic.Aspect_VKey_BrowserFavorites
+Aspect_VKey_BrowserHome = Aspect_VKeyBasic.Aspect_VKey_BrowserHome
+Aspect_VKey_Shift = Aspect_VKeyBasic.Aspect_VKey_Shift
+Aspect_VKey_Control = Aspect_VKeyBasic.Aspect_VKey_Control
+Aspect_VKey_Alt = Aspect_VKeyBasic.Aspect_VKey_Alt
+Aspect_VKey_Menu = Aspect_VKeyBasic.Aspect_VKey_Menu
+Aspect_VKey_Meta = Aspect_VKeyBasic.Aspect_VKey_Meta
+Aspect_VKey_NavInteract = Aspect_VKeyBasic.Aspect_VKey_NavInteract
+Aspect_VKey_NavForward = Aspect_VKeyBasic.Aspect_VKey_NavForward
+Aspect_VKey_NavBackward = Aspect_VKeyBasic.Aspect_VKey_NavBackward
+Aspect_VKey_NavSlideLeft = Aspect_VKeyBasic.Aspect_VKey_NavSlideLeft
+Aspect_VKey_NavSlideRight = Aspect_VKeyBasic.Aspect_VKey_NavSlideRight
+Aspect_VKey_NavSlideUp = Aspect_VKeyBasic.Aspect_VKey_NavSlideUp
+Aspect_VKey_NavSlideDown = Aspect_VKeyBasic.Aspect_VKey_NavSlideDown
+Aspect_VKey_NavRollCCW = Aspect_VKeyBasic.Aspect_VKey_NavRollCCW
+Aspect_VKey_NavRollCW = Aspect_VKeyBasic.Aspect_VKey_NavRollCW
+Aspect_VKey_NavLookLeft = Aspect_VKeyBasic.Aspect_VKey_NavLookLeft
+Aspect_VKey_NavLookRight = Aspect_VKeyBasic.Aspect_VKey_NavLookRight
+Aspect_VKey_NavLookUp = Aspect_VKeyBasic.Aspect_VKey_NavLookUp
+Aspect_VKey_NavLookDown = Aspect_VKeyBasic.Aspect_VKey_NavLookDown
+Aspect_VKey_NavCrouch = Aspect_VKeyBasic.Aspect_VKey_NavCrouch
+Aspect_VKey_NavJump = Aspect_VKeyBasic.Aspect_VKey_NavJump
+Aspect_VKey_NavThrustForward = Aspect_VKeyBasic.Aspect_VKey_NavThrustForward
+Aspect_VKey_NavThrustBackward = Aspect_VKeyBasic.Aspect_VKey_NavThrustBackward
+Aspect_VKey_NavThrustStop = Aspect_VKeyBasic.Aspect_VKey_NavThrustStop
+Aspect_VKey_NavSpeedIncrease = Aspect_VKeyBasic.Aspect_VKey_NavSpeedIncrease
+Aspect_VKey_NavSpeedDecrease = Aspect_VKeyBasic.Aspect_VKey_NavSpeedDecrease
+
+class Aspect_TypeOfDeflection(IntEnum):
+	Aspect_TOD_RELATIVE = 0
+	Aspect_TOD_ABSOLUTE = 1
+Aspect_TOD_RELATIVE = Aspect_TypeOfDeflection.Aspect_TOD_RELATIVE
+Aspect_TOD_ABSOLUTE = Aspect_TypeOfDeflection.Aspect_TOD_ABSOLUTE
+
+class Aspect_TypeOfLine(IntEnum):
+	Aspect_TOL_EMPTY = - 1
+	Aspect_TOL_SOLID = 0
+	Aspect_TOL_DASH = 1
+	Aspect_TOL_DOT = 2
+	Aspect_TOL_DOTDASH = 3
+	Aspect_TOL_USERDEFINED = 4
+Aspect_TOL_EMPTY = Aspect_TypeOfLine.Aspect_TOL_EMPTY
+Aspect_TOL_SOLID = Aspect_TypeOfLine.Aspect_TOL_SOLID
+Aspect_TOL_DASH = Aspect_TypeOfLine.Aspect_TOL_DASH
+Aspect_TOL_DOT = Aspect_TypeOfLine.Aspect_TOL_DOT
+Aspect_TOL_DOTDASH = Aspect_TypeOfLine.Aspect_TOL_DOTDASH
+Aspect_TOL_USERDEFINED = Aspect_TypeOfLine.Aspect_TOL_USERDEFINED
+
+class Aspect_GradientFillMethod(IntEnum):
+	Aspect_GFM_NONE = 0
+	Aspect_GFM_HOR = 1
+	Aspect_GFM_VER = 2
+	Aspect_GFM_DIAG1 = 3
+	Aspect_GFM_DIAG2 = 4
+	Aspect_GFM_CORNER1 = 5
+	Aspect_GFM_CORNER2 = 6
+	Aspect_GFM_CORNER3 = 7
+	Aspect_GFM_CORNER4 = 8
+Aspect_GFM_NONE = Aspect_GradientFillMethod.Aspect_GFM_NONE
+Aspect_GFM_HOR = Aspect_GradientFillMethod.Aspect_GFM_HOR
+Aspect_GFM_VER = Aspect_GradientFillMethod.Aspect_GFM_VER
+Aspect_GFM_DIAG1 = Aspect_GradientFillMethod.Aspect_GFM_DIAG1
+Aspect_GFM_DIAG2 = Aspect_GradientFillMethod.Aspect_GFM_DIAG2
+Aspect_GFM_CORNER1 = Aspect_GradientFillMethod.Aspect_GFM_CORNER1
+Aspect_GFM_CORNER2 = Aspect_GradientFillMethod.Aspect_GFM_CORNER2
+Aspect_GFM_CORNER3 = Aspect_GradientFillMethod.Aspect_GFM_CORNER3
+Aspect_GFM_CORNER4 = Aspect_GradientFillMethod.Aspect_GFM_CORNER4
+
+class Aspect_TypeOfHighlightMethod(IntEnum):
+	Aspect_TOHM_COLOR = 0
+	Aspect_TOHM_BOUNDBOX = 1
+Aspect_TOHM_COLOR = Aspect_TypeOfHighlightMethod.Aspect_TOHM_COLOR
+Aspect_TOHM_BOUNDBOX = Aspect_TypeOfHighlightMethod.Aspect_TOHM_BOUNDBOX
+
+class Aspect_TypeOfResize(IntEnum):
+	Aspect_TOR_UNKNOWN = 0
+	Aspect_TOR_NO_BORDER = 1
+	Aspect_TOR_TOP_BORDER = 2
+	Aspect_TOR_RIGHT_BORDER = 3
+	Aspect_TOR_BOTTOM_BORDER = 4
+	Aspect_TOR_LEFT_BORDER = 5
+	Aspect_TOR_TOP_AND_RIGHT_BORDER = 6
+	Aspect_TOR_RIGHT_AND_BOTTOM_BORDER = 7
+	Aspect_TOR_BOTTOM_AND_LEFT_BORDER = 8
+	Aspect_TOR_LEFT_AND_TOP_BORDER = 9
+Aspect_TOR_UNKNOWN = Aspect_TypeOfResize.Aspect_TOR_UNKNOWN
+Aspect_TOR_NO_BORDER = Aspect_TypeOfResize.Aspect_TOR_NO_BORDER
+Aspect_TOR_TOP_BORDER = Aspect_TypeOfResize.Aspect_TOR_TOP_BORDER
+Aspect_TOR_RIGHT_BORDER = Aspect_TypeOfResize.Aspect_TOR_RIGHT_BORDER
+Aspect_TOR_BOTTOM_BORDER = Aspect_TypeOfResize.Aspect_TOR_BOTTOM_BORDER
+Aspect_TOR_LEFT_BORDER = Aspect_TypeOfResize.Aspect_TOR_LEFT_BORDER
+Aspect_TOR_TOP_AND_RIGHT_BORDER = Aspect_TypeOfResize.Aspect_TOR_TOP_AND_RIGHT_BORDER
+Aspect_TOR_RIGHT_AND_BOTTOM_BORDER = Aspect_TypeOfResize.Aspect_TOR_RIGHT_AND_BOTTOM_BORDER
+Aspect_TOR_BOTTOM_AND_LEFT_BORDER = Aspect_TypeOfResize.Aspect_TOR_BOTTOM_AND_LEFT_BORDER
+Aspect_TOR_LEFT_AND_TOP_BORDER = Aspect_TypeOfResize.Aspect_TOR_LEFT_AND_TOP_BORDER
+
+class Aspect_GridType(IntEnum):
+	Aspect_GT_Rectangular = 0
+	Aspect_GT_Circular = 1
+Aspect_GT_Rectangular = Aspect_GridType.Aspect_GT_Rectangular
+Aspect_GT_Circular = Aspect_GridType.Aspect_GT_Circular
+
+class Aspect_TypeOfColorScaleData(IntEnum):
+	Aspect_TOCSD_AUTO = 0
+	Aspect_TOCSD_USER = 1
+Aspect_TOCSD_AUTO = Aspect_TypeOfColorScaleData.Aspect_TOCSD_AUTO
+Aspect_TOCSD_USER = Aspect_TypeOfColorScaleData.Aspect_TOCSD_USER
+
+class Aspect_TypeOfStyleText(IntEnum):
+	Aspect_TOST_NORMAL = 0
+	Aspect_TOST_ANNOTATION = 1
+Aspect_TOST_NORMAL = Aspect_TypeOfStyleText.Aspect_TOST_NORMAL
+Aspect_TOST_ANNOTATION = Aspect_TypeOfStyleText.Aspect_TOST_ANNOTATION
+
+class Aspect_TypeOfMarker(IntEnum):
+	Aspect_TOM_EMPTY = - 1
+	Aspect_TOM_POINT = 0
+	Aspect_TOM_PLUS = 1
+	Aspect_TOM_STAR = 2
+	Aspect_TOM_X = 3
+	Aspect_TOM_O = 4
+	Aspect_TOM_O_POINT = 5
+	Aspect_TOM_O_PLUS = 6
+	Aspect_TOM_O_STAR = 7
+	Aspect_TOM_O_X = 8
+	Aspect_TOM_RING1 = 9
+	Aspect_TOM_RING2 = 10
+	Aspect_TOM_RING3 = 11
+	Aspect_TOM_BALL = 12
+	Aspect_TOM_USERDEFINED = 13
+Aspect_TOM_EMPTY = Aspect_TypeOfMarker.Aspect_TOM_EMPTY
+Aspect_TOM_POINT = Aspect_TypeOfMarker.Aspect_TOM_POINT
+Aspect_TOM_PLUS = Aspect_TypeOfMarker.Aspect_TOM_PLUS
+Aspect_TOM_STAR = Aspect_TypeOfMarker.Aspect_TOM_STAR
+Aspect_TOM_X = Aspect_TypeOfMarker.Aspect_TOM_X
+Aspect_TOM_O = Aspect_TypeOfMarker.Aspect_TOM_O
+Aspect_TOM_O_POINT = Aspect_TypeOfMarker.Aspect_TOM_O_POINT
+Aspect_TOM_O_PLUS = Aspect_TypeOfMarker.Aspect_TOM_O_PLUS
+Aspect_TOM_O_STAR = Aspect_TypeOfMarker.Aspect_TOM_O_STAR
+Aspect_TOM_O_X = Aspect_TypeOfMarker.Aspect_TOM_O_X
+Aspect_TOM_RING1 = Aspect_TypeOfMarker.Aspect_TOM_RING1
+Aspect_TOM_RING2 = Aspect_TypeOfMarker.Aspect_TOM_RING2
+Aspect_TOM_RING3 = Aspect_TypeOfMarker.Aspect_TOM_RING3
+Aspect_TOM_BALL = Aspect_TypeOfMarker.Aspect_TOM_BALL
+Aspect_TOM_USERDEFINED = Aspect_TypeOfMarker.Aspect_TOM_USERDEFINED
+
+class Aspect_TypeOfColorScaleOrientation(IntEnum):
+	Aspect_TOCSO_NONE = 0
+	Aspect_TOCSO_LEFT = 1
+	Aspect_TOCSO_RIGHT = 2
+	Aspect_TOCSO_CENTER = 3
+Aspect_TOCSO_NONE = Aspect_TypeOfColorScaleOrientation.Aspect_TOCSO_NONE
+Aspect_TOCSO_LEFT = Aspect_TypeOfColorScaleOrientation.Aspect_TOCSO_LEFT
+Aspect_TOCSO_RIGHT = Aspect_TypeOfColorScaleOrientation.Aspect_TOCSO_RIGHT
+Aspect_TOCSO_CENTER = Aspect_TypeOfColorScaleOrientation.Aspect_TOCSO_CENTER
+
+class Aspect_TypeOfFacingModel(IntEnum):
+	Aspect_TOFM_BOTH_SIDE = 0
+	Aspect_TOFM_BACK_SIDE = 1
+	Aspect_TOFM_FRONT_SIDE = 2
+Aspect_TOFM_BOTH_SIDE = Aspect_TypeOfFacingModel.Aspect_TOFM_BOTH_SIDE
+Aspect_TOFM_BACK_SIDE = Aspect_TypeOfFacingModel.Aspect_TOFM_BACK_SIDE
+Aspect_TOFM_FRONT_SIDE = Aspect_TypeOfFacingModel.Aspect_TOFM_FRONT_SIDE
+
+class Aspect_FillMethod(IntEnum):
+	Aspect_FM_NONE = 0
+	Aspect_FM_CENTERED = 1
+	Aspect_FM_TILED = 2
+	Aspect_FM_STRETCH = 3
+Aspect_FM_NONE = Aspect_FillMethod.Aspect_FM_NONE
+Aspect_FM_CENTERED = Aspect_FillMethod.Aspect_FM_CENTERED
+Aspect_FM_TILED = Aspect_FillMethod.Aspect_FM_TILED
+Aspect_FM_STRETCH = Aspect_FillMethod.Aspect_FM_STRETCH
+
+class Aspect_HatchStyle(IntEnum):
+	Aspect_HS_SOLID = 0
+	Aspect_HS_HORIZONTAL = 7
+	Aspect_HS_HORIZONTAL_WIDE = 11
+	Aspect_HS_VERTICAL = 8
+	Aspect_HS_VERTICAL_WIDE = 12
+	Aspect_HS_DIAGONAL_45 = 5
+	Aspect_HS_DIAGONAL_45_WIDE = 9
+	Aspect_HS_DIAGONAL_135 = 6
+	Aspect_HS_DIAGONAL_135_WIDE = 10
+	Aspect_HS_GRID = 3
+	Aspect_HS_GRID_WIDE = 4
+	Aspect_HS_GRID_DIAGONAL = 1
+	Aspect_HS_GRID_DIAGONAL_WIDE = 2
+	Aspect_HS_NB = 13
+Aspect_HS_SOLID = Aspect_HatchStyle.Aspect_HS_SOLID
+Aspect_HS_HORIZONTAL = Aspect_HatchStyle.Aspect_HS_HORIZONTAL
+Aspect_HS_HORIZONTAL_WIDE = Aspect_HatchStyle.Aspect_HS_HORIZONTAL_WIDE
+Aspect_HS_VERTICAL = Aspect_HatchStyle.Aspect_HS_VERTICAL
+Aspect_HS_VERTICAL_WIDE = Aspect_HatchStyle.Aspect_HS_VERTICAL_WIDE
+Aspect_HS_DIAGONAL_45 = Aspect_HatchStyle.Aspect_HS_DIAGONAL_45
+Aspect_HS_DIAGONAL_45_WIDE = Aspect_HatchStyle.Aspect_HS_DIAGONAL_45_WIDE
+Aspect_HS_DIAGONAL_135 = Aspect_HatchStyle.Aspect_HS_DIAGONAL_135
+Aspect_HS_DIAGONAL_135_WIDE = Aspect_HatchStyle.Aspect_HS_DIAGONAL_135_WIDE
+Aspect_HS_GRID = Aspect_HatchStyle.Aspect_HS_GRID
+Aspect_HS_GRID_WIDE = Aspect_HatchStyle.Aspect_HS_GRID_WIDE
+Aspect_HS_GRID_DIAGONAL = Aspect_HatchStyle.Aspect_HS_GRID_DIAGONAL
+Aspect_HS_GRID_DIAGONAL_WIDE = Aspect_HatchStyle.Aspect_HS_GRID_DIAGONAL_WIDE
+Aspect_HS_NB = Aspect_HatchStyle.Aspect_HS_NB
+
+class Aspect_PolygonOffsetMode(IntEnum):
+	Aspect_POM_Off = 0
+	Aspect_POM_Fill = 1
+	Aspect_POM_Line = 2
+	Aspect_POM_Point = 4
+	Aspect_POM_All = Aspect_POM_Fill | Aspect_POM_Line | Aspect_POM_Point
+	Aspect_POM_None = 8
+	Aspect_POM_Mask = Aspect_POM_All | Aspect_POM_None
+Aspect_POM_Off = Aspect_PolygonOffsetMode.Aspect_POM_Off
+Aspect_POM_Fill = Aspect_PolygonOffsetMode.Aspect_POM_Fill
+Aspect_POM_Line = Aspect_PolygonOffsetMode.Aspect_POM_Line
+Aspect_POM_Point = Aspect_PolygonOffsetMode.Aspect_POM_Point
+Aspect_POM_All = Aspect_PolygonOffsetMode.Aspect_POM_All
+Aspect_POM_None = Aspect_PolygonOffsetMode.Aspect_POM_None
+Aspect_POM_Mask = Aspect_PolygonOffsetMode.Aspect_POM_Mask
+
+class Aspect_TypeOfColorScalePosition(IntEnum):
+	Aspect_TOCSP_NONE = 0
+	Aspect_TOCSP_LEFT = 1
+	Aspect_TOCSP_RIGHT = 2
+	Aspect_TOCSP_CENTER = 3
+Aspect_TOCSP_NONE = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_NONE
+Aspect_TOCSP_LEFT = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_LEFT
+Aspect_TOCSP_RIGHT = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_RIGHT
+Aspect_TOCSP_CENTER = Aspect_TypeOfColorScalePosition.Aspect_TOCSP_CENTER
+
+class Aspect_XAtom(IntEnum):
+	Aspect_XA_DELETE_WINDOW = 0
+Aspect_XA_DELETE_WINDOW = Aspect_XAtom.Aspect_XA_DELETE_WINDOW
+
+class Aspect_TypeOfTriedronPosition(IntEnum):
+	Aspect_TOTP_CENTER = 0
+	Aspect_TOTP_TOP = 1
+	Aspect_TOTP_BOTTOM = 2
+	Aspect_TOTP_LEFT = 4
+	Aspect_TOTP_RIGHT = 8
+	Aspect_TOTP_LEFT_LOWER = Aspect_TOTP_BOTTOM | Aspect_TOTP_LEFT
+	Aspect_TOTP_LEFT_UPPER = Aspect_TOTP_TOP | Aspect_TOTP_LEFT
+	Aspect_TOTP_RIGHT_LOWER = Aspect_TOTP_BOTTOM | Aspect_TOTP_RIGHT
+	Aspect_TOTP_RIGHT_UPPER = Aspect_TOTP_TOP | Aspect_TOTP_RIGHT
+Aspect_TOTP_CENTER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_CENTER
+Aspect_TOTP_TOP = Aspect_TypeOfTriedronPosition.Aspect_TOTP_TOP
+Aspect_TOTP_BOTTOM = Aspect_TypeOfTriedronPosition.Aspect_TOTP_BOTTOM
+Aspect_TOTP_LEFT = Aspect_TypeOfTriedronPosition.Aspect_TOTP_LEFT
+Aspect_TOTP_RIGHT = Aspect_TypeOfTriedronPosition.Aspect_TOTP_RIGHT
+Aspect_TOTP_LEFT_LOWER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_LEFT_LOWER
+Aspect_TOTP_LEFT_UPPER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_LEFT_UPPER
+Aspect_TOTP_RIGHT_LOWER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_RIGHT_LOWER
+Aspect_TOTP_RIGHT_UPPER = Aspect_TypeOfTriedronPosition.Aspect_TOTP_RIGHT_UPPER
+
+class Aspect_GridDrawMode(IntEnum):
+	Aspect_GDM_Lines = 0
+	Aspect_GDM_Points = 1
+	Aspect_GDM_None = 2
+Aspect_GDM_Lines = Aspect_GridDrawMode.Aspect_GDM_Lines
+Aspect_GDM_Points = Aspect_GridDrawMode.Aspect_GDM_Points
+Aspect_GDM_None = Aspect_GridDrawMode.Aspect_GDM_None
+
+class Aspect_WidthOfLine(IntEnum):
+	Aspect_WOL_THIN = 0
+	Aspect_WOL_MEDIUM = 1
+	Aspect_WOL_THICK = 2
+	Aspect_WOL_VERYTHICK = 3
+	Aspect_WOL_USERDEFINED = 4
+Aspect_WOL_THIN = Aspect_WidthOfLine.Aspect_WOL_THIN
+Aspect_WOL_MEDIUM = Aspect_WidthOfLine.Aspect_WOL_MEDIUM
+Aspect_WOL_THICK = Aspect_WidthOfLine.Aspect_WOL_THICK
+Aspect_WOL_VERYTHICK = Aspect_WidthOfLine.Aspect_WOL_VERYTHICK
+Aspect_WOL_USERDEFINED = Aspect_WidthOfLine.Aspect_WOL_USERDEFINED
+
+class Aspect_TypeOfDisplayText(IntEnum):
+	Aspect_TODT_NORMAL = 0
+	Aspect_TODT_SUBTITLE = 1
+	Aspect_TODT_DEKALE = 2
+	Aspect_TODT_BLEND = 3
+	Aspect_TODT_DIMENSION = 4
+	Aspect_TODT_SHADOW = 5
+Aspect_TODT_NORMAL = Aspect_TypeOfDisplayText.Aspect_TODT_NORMAL
+Aspect_TODT_SUBTITLE = Aspect_TypeOfDisplayText.Aspect_TODT_SUBTITLE
+Aspect_TODT_DEKALE = Aspect_TypeOfDisplayText.Aspect_TODT_DEKALE
+Aspect_TODT_BLEND = Aspect_TypeOfDisplayText.Aspect_TODT_BLEND
+Aspect_TODT_DIMENSION = Aspect_TypeOfDisplayText.Aspect_TODT_DIMENSION
+Aspect_TODT_SHADOW = Aspect_TypeOfDisplayText.Aspect_TODT_SHADOW
+
+class Aspect_InteriorStyle(IntEnum):
+	Aspect_IS_EMPTY = - 1
+	Aspect_IS_SOLID = 0
+	Aspect_IS_HATCH = 1
+	Aspect_IS_HIDDENLINE = 2
+	Aspect_IS_POINT = 3
+	Aspect_IS_HOLLOW = Aspect_IS_EMPTY
+Aspect_IS_EMPTY = Aspect_InteriorStyle.Aspect_IS_EMPTY
+Aspect_IS_SOLID = Aspect_InteriorStyle.Aspect_IS_SOLID
+Aspect_IS_HATCH = Aspect_InteriorStyle.Aspect_IS_HATCH
+Aspect_IS_HIDDENLINE = Aspect_InteriorStyle.Aspect_IS_HIDDENLINE
+Aspect_IS_POINT = Aspect_InteriorStyle.Aspect_IS_POINT
+Aspect_IS_HOLLOW = Aspect_InteriorStyle.Aspect_IS_HOLLOW
+};
+/* end python proxy for enums */
+
 /* handles */
 %wrap_handle(Aspect_DisplayConnection)
 %wrap_handle(Aspect_Grid)
@@ -404,23 +953,23 @@ enum Aspect_InteriorStyle {
 /* end handles declaration */
 
 /* templates */
-%template(Aspect_SequenceOfColor) NCollection_Sequence <Quantity_Color>;
-%template(Aspect_TouchMap) NCollection_IndexedDataMap <Standard_Size , Aspect_Touch>;
+%template(Aspect_SequenceOfColor) NCollection_Sequence<Quantity_Color>;
+%template(Aspect_TouchMap) NCollection_IndexedDataMap<Standard_Size,Aspect_Touch>;
 /* end templates declaration */
 
 /* typedefs */
-typedef unsigned long Aspect_Drawable;
-typedef unsigned int Aspect_VKey;
-typedef NCollection_Sequence <Quantity_Color> Aspect_SequenceOfColor;
-typedef NCollection_IndexedDataMap <Standard_Size , Aspect_Touch> Aspect_TouchMap;
-typedef void * Aspect_RenderingContext;
 typedef void * Aspect_Display;
-typedef void * HANDLE;
-typedef unsigned long Aspect_Handle;
-typedef struct __GLXFBConfigRec * GLXFBConfig;
+typedef unsigned long Aspect_Drawable;
 typedef void * Aspect_FBConfig;
+typedef unsigned long Aspect_Handle;
+typedef void * Aspect_RenderingContext;
+typedef NCollection_Sequence<Quantity_Color> Aspect_SequenceOfColor;
+typedef NCollection_IndexedDataMap<Standard_Size, Aspect_Touch> Aspect_TouchMap;
+typedef unsigned int Aspect_VKey;
 typedef unsigned int Aspect_VKeyFlags;
 typedef unsigned int Aspect_VKeyMouse;
+typedef struct __GLXFBConfigRec * GLXFBConfig;
+typedef void * HANDLE;
 /* end typedefs declaration */
 
 /**************************
@@ -430,31 +979,51 @@ class Aspect_Background {
 	public:
 		/****************** Aspect_Background ******************/
 		%feature("compactdefaultargs") Aspect_Background;
-		%feature("autodoc", "* Creates a window background. Default color : NOC_MATRAGRAY.
-	:rtype: None") Aspect_Background;
-		 Aspect_Background ();
+		%feature("autodoc", "Creates a window background. default color : noc_matragray.
+
+Returns
+-------
+None
+") Aspect_Background;
+		 Aspect_Background();
 
 		/****************** Aspect_Background ******************/
 		%feature("compactdefaultargs") Aspect_Background;
-		%feature("autodoc", "* Creates a window background with the colour <AColor>.
-	:param AColor:
-	:type AColor: Quantity_Color
-	:rtype: None") Aspect_Background;
-		 Aspect_Background (const Quantity_Color & AColor);
+		%feature("autodoc", "Creates a window background with the colour <acolor>.
+
+Parameters
+----------
+AColor: Quantity_Color
+
+Returns
+-------
+None
+") Aspect_Background;
+		 Aspect_Background(const Quantity_Color & AColor);
 
 		/****************** Color ******************/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "* Returns the colour of the window background <self>.
-	:rtype: Quantity_Color") Color;
-		Quantity_Color Color ();
+		%feature("autodoc", "Returns the colour of the window background <self>.
+
+Returns
+-------
+Quantity_Color
+") Color;
+		Quantity_Color Color();
 
 		/****************** SetColor ******************/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "* Modifies the colour of the window background <self>.
-	:param AColor:
-	:type AColor: Quantity_Color
-	:rtype: None") SetColor;
-		void SetColor (const Quantity_Color & AColor);
+		%feature("autodoc", "Modifies the colour of the window background <self>.
+
+Parameters
+----------
+AColor: Quantity_Color
+
+Returns
+-------
+None
+") SetColor;
+		void SetColor(const Quantity_Color & AColor);
 
 };
 
@@ -478,6 +1047,30 @@ class Aspect_DisplayConnection : public Standard_Transient {
 %extend Aspect_DisplayConnection {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Aspect_DisplayConnection(self):
+		pass
+
+	@methodnotwrapped
+	def GetAtom(self):
+		pass
+
+	@methodnotwrapped
+	def GetDisplay(self):
+		pass
+
+	@methodnotwrapped
+	def GetDisplayName(self):
+		pass
+
+	@methodnotwrapped
+	def Init(self):
+		pass
+
+	@methodnotwrapped
+	def IsOwnDisplay(self):
+		pass
 	}
 };
 
@@ -488,71 +1081,115 @@ class Aspect_GenId {
 	public:
 		/****************** Aspect_GenId ******************/
 		%feature("compactdefaultargs") Aspect_GenId;
-		%feature("autodoc", "* Creates an available set of identifiers with the lower bound 0 and the upper bound INT_MAX / 2.
-	:rtype: None") Aspect_GenId;
-		 Aspect_GenId ();
+		%feature("autodoc", "Creates an available set of identifiers with the lower bound 0 and the upper bound int_max / 2.
+
+Returns
+-------
+None
+") Aspect_GenId;
+		 Aspect_GenId();
 
 		/****************** Aspect_GenId ******************/
 		%feature("compactdefaultargs") Aspect_GenId;
-		%feature("autodoc", "* Creates an available set of identifiers with specified range. Raises IdentDefinitionError if theUpper is less than theLow.
-	:param theLow:
-	:type theLow: int
-	:param theUpper:
-	:type theUpper: int
-	:rtype: None") Aspect_GenId;
-		 Aspect_GenId (const Standard_Integer theLow,const Standard_Integer theUpper);
+		%feature("autodoc", "Creates an available set of identifiers with specified range. raises identdefinitionerror if theupper is less than thelow.
+
+Parameters
+----------
+theLow: int
+theUpper: int
+
+Returns
+-------
+None
+") Aspect_GenId;
+		 Aspect_GenId(const Standard_Integer theLow, const Standard_Integer theUpper);
 
 		/****************** Available ******************/
 		%feature("compactdefaultargs") Available;
-		%feature("autodoc", "* Returns the number of available identifiers.
-	:rtype: int") Available;
-		Standard_Integer Available ();
+		%feature("autodoc", "Returns the number of available identifiers.
+
+Returns
+-------
+int
+") Available;
+		Standard_Integer Available();
 
 		/****************** Free ******************/
 		%feature("compactdefaultargs") Free;
-		%feature("autodoc", "* Free all identifiers - make the whole range available again.
-	:rtype: None") Free;
-		void Free ();
+		%feature("autodoc", "Free all identifiers - make the whole range available again.
+
+Returns
+-------
+None
+") Free;
+		void Free();
 
 		/****************** Free ******************/
 		%feature("compactdefaultargs") Free;
-		%feature("autodoc", "* Free specified identifier. Warning - method has no protection against double-freeing!
-	:param theId:
-	:type theId: int
-	:rtype: None") Free;
-		void Free (const Standard_Integer theId);
+		%feature("autodoc", "Free specified identifier. warning - method has no protection against double-freeing!.
+
+Parameters
+----------
+theId: int
+
+Returns
+-------
+None
+") Free;
+		void Free(const Standard_Integer theId);
 
 		/****************** HasFree ******************/
 		%feature("compactdefaultargs") HasFree;
-		%feature("autodoc", "* Returns true if there are available identifiers in range.
-	:rtype: bool") HasFree;
-		Standard_Boolean HasFree ();
+		%feature("autodoc", "Returns true if there are available identifiers in range.
+
+Returns
+-------
+bool
+") HasFree;
+		Standard_Boolean HasFree();
 
 		/****************** Lower ******************/
 		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "* Returns the lower identifier in range.
-	:rtype: int") Lower;
-		Standard_Integer Lower ();
+		%feature("autodoc", "Returns the lower identifier in range.
+
+Returns
+-------
+int
+") Lower;
+		Standard_Integer Lower();
 
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "* Returns the next available identifier. Warning: Raises IdentDefinitionError if all identifiers are busy.
-	:rtype: int") Next;
-		Standard_Integer Next ();
+		%feature("autodoc", "Returns the next available identifier. warning: raises identdefinitionerror if all identifiers are busy.
+
+Returns
+-------
+int
+") Next;
+		Standard_Integer Next();
 
 		/****************** Next ******************/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "* Generates the next available identifier. @param theId [out] generated identifier returns False if all identifiers are busy.
-	:param theId:
-	:type theId: int
-	:rtype: bool") Next;
-		Standard_Boolean Next (Standard_Integer &OutValue);
+		%feature("autodoc", "Generates the next available identifier. @param theid [out] generated identifier returns false if all identifiers are busy.
+
+Parameters
+----------
+
+Returns
+-------
+theId: int
+") Next;
+		Standard_Boolean Next(Standard_Integer &OutValue);
 
 		/****************** Upper ******************/
 		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "* Returns the upper identifier in range.
-	:rtype: int") Upper;
-		Standard_Integer Upper ();
+		%feature("autodoc", "Returns the upper identifier in range.
+
+Returns
+-------
+int
+") Upper;
+		Standard_Integer Upper();
 
 };
 
@@ -571,166 +1208,260 @@ class Aspect_Grid : public Standard_Transient {
 	public:
 		/****************** Activate ******************/
 		%feature("compactdefaultargs") Activate;
-		%feature("autodoc", "* activates the grid. The Hit method will return gridx and gridx computed according to the steps of the grid.
-	:rtype: None") Activate;
-		void Activate ();
+		%feature("autodoc", "Activates the grid. the hit method will return gridx and gridx computed according to the steps of the grid.
+
+Returns
+-------
+None
+") Activate;
+		void Activate();
 
 		/****************** Colors ******************/
 		%feature("compactdefaultargs") Colors;
-		%feature("autodoc", "* Returns the colors of the grid.
-	:param aColor:
-	:type aColor: Quantity_Color
-	:param aTenthColor:
-	:type aTenthColor: Quantity_Color
-	:rtype: None") Colors;
-		void Colors (Quantity_Color & aColor,Quantity_Color & aTenthColor);
+		%feature("autodoc", "Returns the colors of the grid.
+
+Parameters
+----------
+aColor: Quantity_Color
+aTenthColor: Quantity_Color
+
+Returns
+-------
+None
+") Colors;
+		void Colors(Quantity_Color & aColor, Quantity_Color & aTenthColor);
 
 		/****************** Compute ******************/
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "* returns the point of the grid the closest to the point X,Y
-	:param X:
-	:type X: float
-	:param Y:
-	:type Y: float
-	:param gridX:
-	:type gridX: float
-	:param gridY:
-	:type gridY: float
-	:rtype: void") Compute;
-		virtual void Compute (const Standard_Real X,const Standard_Real Y,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Returns the point of the grid the closest to the point x,y.
+
+Parameters
+----------
+X: float
+Y: float
+
+Returns
+-------
+gridX: float
+gridY: float
+") Compute;
+		virtual void Compute(const Standard_Real X, const Standard_Real Y, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Deactivate ******************/
 		%feature("compactdefaultargs") Deactivate;
-		%feature("autodoc", "* deactivates the grid. The hit method will return gridx and gridx as the enter value X & Y.
-	:rtype: None") Deactivate;
-		void Deactivate ();
+		%feature("autodoc", "Deactivates the grid. the hit method will return gridx and gridx as the enter value x & y.
+
+Returns
+-------
+None
+") Deactivate;
+		void Deactivate();
 
 		/****************** Display ******************/
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "* Display the grid at screen.
-	:rtype: void") Display;
-		virtual void Display ();
+		%feature("autodoc", "Display the grid at screen.
+
+Returns
+-------
+None
+") Display;
+		virtual void Display();
 
 		/****************** DrawMode ******************/
 		%feature("compactdefaultargs") DrawMode;
-		%feature("autodoc", "* Returns the grid aspect.
-	:rtype: Aspect_GridDrawMode") DrawMode;
-		Aspect_GridDrawMode DrawMode ();
+		%feature("autodoc", "Returns the grid aspect.
+
+Returns
+-------
+Aspect_GridDrawMode
+") DrawMode;
+		Aspect_GridDrawMode DrawMode();
 
 		/****************** Erase ******************/
 		%feature("compactdefaultargs") Erase;
-		%feature("autodoc", "* Erase the grid from screen.
-	:rtype: void") Erase;
-		virtual void Erase ();
+		%feature("autodoc", "Erase the grid from screen.
+
+Returns
+-------
+None
+") Erase;
+		virtual void Erase();
 
 		/****************** Hit ******************/
 		%feature("compactdefaultargs") Hit;
-		%feature("autodoc", "* returns the point of the grid the closest to the point X,Y if the grid is active. If the grid is not active returns X,Y.
-	:param X:
-	:type X: float
-	:param Y:
-	:type Y: float
-	:param gridX:
-	:type gridX: float
-	:param gridY:
-	:type gridY: float
-	:rtype: None") Hit;
-		void Hit (const Standard_Real X,const Standard_Real Y,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Returns the point of the grid the closest to the point x,y if the grid is active. if the grid is not active returns x,y.
+
+Parameters
+----------
+X: float
+Y: float
+
+Returns
+-------
+gridX: float
+gridY: float
+") Hit;
+		void Hit(const Standard_Real X, const Standard_Real Y, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", ":rtype: void") Init;
-		virtual void Init ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Init;
+		virtual void Init();
 
 		/****************** IsActive ******************/
 		%feature("compactdefaultargs") IsActive;
-		%feature("autodoc", "* Returns True when the grid is active.
-	:rtype: bool") IsActive;
-		Standard_Boolean IsActive ();
+		%feature("autodoc", "Returns true when the grid is active.
+
+Returns
+-------
+bool
+") IsActive;
+		Standard_Boolean IsActive();
 
 		/****************** IsDisplayed ******************/
 		%feature("compactdefaultargs") IsDisplayed;
-		%feature("autodoc", "* Returns True when the grid is displayed at screen.
-	:rtype: bool") IsDisplayed;
-		virtual Standard_Boolean IsDisplayed ();
+		%feature("autodoc", "Returns true when the grid is displayed at screen.
+
+Returns
+-------
+bool
+") IsDisplayed;
+		virtual Standard_Boolean IsDisplayed();
 
 		/****************** Rotate ******************/
 		%feature("compactdefaultargs") Rotate;
-		%feature("autodoc", "* Rotate the grid from a relative angle.
-	:param anAngle:
-	:type anAngle: float
-	:rtype: None") Rotate;
-		void Rotate (const Standard_Real anAngle);
+		%feature("autodoc", "Rotate the grid from a relative angle.
+
+Parameters
+----------
+anAngle: float
+
+Returns
+-------
+None
+") Rotate;
+		void Rotate(const Standard_Real anAngle);
 
 		/****************** RotationAngle ******************/
 		%feature("compactdefaultargs") RotationAngle;
-		%feature("autodoc", "* returns the x Angle of the grid.
-	:rtype: float") RotationAngle;
-		Standard_Real RotationAngle ();
+		%feature("autodoc", "Returns the x angle of the grid.
+
+Returns
+-------
+float
+") RotationAngle;
+		Standard_Real RotationAngle();
 
 		/****************** SetColors ******************/
 		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "* Change the colors of the grid
-	:param aColor:
-	:type aColor: Quantity_Color
-	:param aTenthColor:
-	:type aTenthColor: Quantity_Color
-	:rtype: void") SetColors;
-		virtual void SetColors (const Quantity_Color & aColor,const Quantity_Color & aTenthColor);
+		%feature("autodoc", "Change the colors of the grid.
+
+Parameters
+----------
+aColor: Quantity_Color
+aTenthColor: Quantity_Color
+
+Returns
+-------
+None
+") SetColors;
+		virtual void SetColors(const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
 		/****************** SetDrawMode ******************/
 		%feature("compactdefaultargs") SetDrawMode;
-		%feature("autodoc", "* Change the grid aspect.
-	:param aDrawMode:
-	:type aDrawMode: Aspect_GridDrawMode
-	:rtype: None") SetDrawMode;
-		void SetDrawMode (const Aspect_GridDrawMode aDrawMode);
+		%feature("autodoc", "Change the grid aspect.
+
+Parameters
+----------
+aDrawMode: Aspect_GridDrawMode
+
+Returns
+-------
+None
+") SetDrawMode;
+		void SetDrawMode(const Aspect_GridDrawMode aDrawMode);
 
 		/****************** SetRotationAngle ******************/
 		%feature("compactdefaultargs") SetRotationAngle;
-		%feature("autodoc", "* defines the orientation of the grid.
-	:param anAngle:
-	:type anAngle: float
-	:rtype: None") SetRotationAngle;
-		void SetRotationAngle (const Standard_Real anAngle);
+		%feature("autodoc", "Defines the orientation of the grid.
+
+Parameters
+----------
+anAngle: float
+
+Returns
+-------
+None
+") SetRotationAngle;
+		void SetRotationAngle(const Standard_Real anAngle);
 
 		/****************** SetXOrigin ******************/
 		%feature("compactdefaultargs") SetXOrigin;
-		%feature("autodoc", "* defines the x Origin of the grid.
-	:param anOrigin:
-	:type anOrigin: float
-	:rtype: None") SetXOrigin;
-		void SetXOrigin (const Standard_Real anOrigin);
+		%feature("autodoc", "Defines the x origin of the grid.
+
+Parameters
+----------
+anOrigin: float
+
+Returns
+-------
+None
+") SetXOrigin;
+		void SetXOrigin(const Standard_Real anOrigin);
 
 		/****************** SetYOrigin ******************/
 		%feature("compactdefaultargs") SetYOrigin;
-		%feature("autodoc", "* defines the y Origin of the grid.
-	:param anOrigin:
-	:type anOrigin: float
-	:rtype: None") SetYOrigin;
-		void SetYOrigin (const Standard_Real anOrigin);
+		%feature("autodoc", "Defines the y origin of the grid.
+
+Parameters
+----------
+anOrigin: float
+
+Returns
+-------
+None
+") SetYOrigin;
+		void SetYOrigin(const Standard_Real anOrigin);
 
 		/****************** Translate ******************/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "* Translate the grid from a relative distance.
-	:param aDx:
-	:type aDx: float
-	:param aDy:
-	:type aDy: float
-	:rtype: None") Translate;
-		void Translate (const Standard_Real aDx,const Standard_Real aDy);
+		%feature("autodoc", "Translate the grid from a relative distance.
+
+Parameters
+----------
+aDx: float
+aDy: float
+
+Returns
+-------
+None
+") Translate;
+		void Translate(const Standard_Real aDx, const Standard_Real aDy);
 
 		/****************** XOrigin ******************/
 		%feature("compactdefaultargs") XOrigin;
-		%feature("autodoc", "* returns the x Origin of the grid.
-	:rtype: float") XOrigin;
-		Standard_Real XOrigin ();
+		%feature("autodoc", "Returns the x origin of the grid.
+
+Returns
+-------
+float
+") XOrigin;
+		Standard_Real XOrigin();
 
 		/****************** YOrigin ******************/
 		%feature("compactdefaultargs") YOrigin;
-		%feature("autodoc", "* returns the x Origin of the grid.
-	:rtype: float") YOrigin;
-		Standard_Real YOrigin ();
+		%feature("autodoc", "Returns the x origin of the grid.
+
+Returns
+-------
+float
+") YOrigin;
+		Standard_Real YOrigin();
 
 };
 
@@ -752,43 +1483,66 @@ class Aspect_ScrollDelta {
 		Aspect_VKeyFlags Flags;
 		/****************** Aspect_ScrollDelta ******************/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
-		%feature("autodoc", "* Empty constructor.
-	:rtype: None") Aspect_ScrollDelta;
-		 Aspect_ScrollDelta ();
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Aspect_ScrollDelta;
+		 Aspect_ScrollDelta();
 
 		/****************** Aspect_ScrollDelta ******************/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
-		%feature("autodoc", "* Constructor.
-	:param thePnt:
-	:type thePnt: NCollection_Vec2<int>
-	:param theValue:
-	:type theValue: float
-	:param theFlags: default value is Aspect_VKeyFlags_NONE
-	:type theFlags: Aspect_VKeyFlags
-	:rtype: None") Aspect_ScrollDelta;
-		 Aspect_ScrollDelta (const NCollection_Vec2<int> & thePnt,Standard_Real theValue,Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
+		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+thePnt: NCollection_Vec2<int>
+theValue: float
+theFlags: Aspect_VKeyFlags,optional
+	default value is Aspect_VKeyFlags_NONE
+
+Returns
+-------
+None
+") Aspect_ScrollDelta;
+		 Aspect_ScrollDelta(const NCollection_Vec2<int> & thePnt, Standard_Real theValue, Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
 
 		/****************** Aspect_ScrollDelta ******************/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
-		%feature("autodoc", "* Constructor with undefined point.
-	:param theValue:
-	:type theValue: float
-	:param theFlags: default value is Aspect_VKeyFlags_NONE
-	:type theFlags: Aspect_VKeyFlags
-	:rtype: None") Aspect_ScrollDelta;
-		 Aspect_ScrollDelta (Standard_Real theValue,Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
+		%feature("autodoc", "Constructor with undefined point.
+
+Parameters
+----------
+theValue: float
+theFlags: Aspect_VKeyFlags,optional
+	default value is Aspect_VKeyFlags_NONE
+
+Returns
+-------
+None
+") Aspect_ScrollDelta;
+		 Aspect_ScrollDelta(Standard_Real theValue, Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
 
 		/****************** HasPoint ******************/
 		%feature("compactdefaultargs") HasPoint;
-		%feature("autodoc", "* //!< key flags Return true if action has point defined.
-	:rtype: bool") HasPoint;
-		bool HasPoint ();
+		%feature("autodoc", "Return true if action has point defined.
+
+Returns
+-------
+bool
+") HasPoint;
+		bool HasPoint();
 
 		/****************** ResetPoint ******************/
 		%feature("compactdefaultargs") ResetPoint;
-		%feature("autodoc", "* Reset at point.
-	:rtype: None") ResetPoint;
-		void ResetPoint ();
+		%feature("autodoc", "Reset at point.
+
+Returns
+-------
+None
+") ResetPoint;
+		void ResetPoint();
 
 };
 
@@ -807,37 +1561,54 @@ class Aspect_Touch {
 		bool IsPreciseDevice;
 		/****************** Aspect_Touch ******************/
 		%feature("compactdefaultargs") Aspect_Touch;
-		%feature("autodoc", "* Empty constructor
-	:rtype: None") Aspect_Touch;
-		 Aspect_Touch ();
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Aspect_Touch;
+		 Aspect_Touch();
 
 		/****************** Aspect_Touch ******************/
 		%feature("compactdefaultargs") Aspect_Touch;
-		%feature("autodoc", "* Constructor with initialization.
-	:param thePnt:
-	:type thePnt: NCollection_Vec2<float>
-	:param theIsPreciseDevice:
-	:type theIsPreciseDevice: bool
-	:rtype: None") Aspect_Touch;
-		 Aspect_Touch (const NCollection_Vec2<Standard_Real> & thePnt,Standard_Boolean theIsPreciseDevice);
+		%feature("autodoc", "Constructor with initialization.
+
+Parameters
+----------
+thePnt: NCollection_Vec2<float>
+theIsPreciseDevice: bool
+
+Returns
+-------
+None
+") Aspect_Touch;
+		 Aspect_Touch(const NCollection_Vec2<Standard_Real> & thePnt, Standard_Boolean theIsPreciseDevice);
 
 		/****************** Aspect_Touch ******************/
 		%feature("compactdefaultargs") Aspect_Touch;
-		%feature("autodoc", "* Constructor with initialization.
-	:param theX:
-	:type theX: float
-	:param theY:
-	:type theY: float
-	:param theIsPreciseDevice:
-	:type theIsPreciseDevice: bool
-	:rtype: None") Aspect_Touch;
-		 Aspect_Touch (Standard_Real theX,Standard_Real theY,Standard_Boolean theIsPreciseDevice);
+		%feature("autodoc", "Constructor with initialization.
+
+Parameters
+----------
+theX: float
+theY: float
+theIsPreciseDevice: bool
+
+Returns
+-------
+None
+") Aspect_Touch;
+		 Aspect_Touch(Standard_Real theX, Standard_Real theY, Standard_Boolean theIsPreciseDevice);
 
 		/****************** Delta ******************/
 		%feature("compactdefaultargs") Delta;
-		%feature("autodoc", "* //!< precise device input (e.g. mouse cursor, NOT emulated from touch screen) Return values delta.
-	:rtype: NCollection_Vec2<float>") Delta;
-		NCollection_Vec2<Standard_Real> Delta ();
+		%feature("autodoc", "Return values delta.
+
+Returns
+-------
+NCollection_Vec2<float >
+") Delta;
+		NCollection_Vec2<Standard_Real > Delta();
 
 };
 
@@ -856,153 +1627,243 @@ class Aspect_Window : public Standard_Transient {
 	public:
 		/****************** Background ******************/
 		%feature("compactdefaultargs") Background;
-		%feature("autodoc", "* Returns the window background.
-	:rtype: Aspect_Background") Background;
-		Aspect_Background Background ();
+		%feature("autodoc", "Returns the window background.
+
+Returns
+-------
+Aspect_Background
+") Background;
+		Aspect_Background Background();
 
 		/****************** BackgroundFillMethod ******************/
 		%feature("compactdefaultargs") BackgroundFillMethod;
-		%feature("autodoc", "* Returns the current image background fill mode.
-	:rtype: Aspect_FillMethod") BackgroundFillMethod;
-		Aspect_FillMethod BackgroundFillMethod ();
+		%feature("autodoc", "Returns the current image background fill mode.
+
+Returns
+-------
+Aspect_FillMethod
+") BackgroundFillMethod;
+		Aspect_FillMethod BackgroundFillMethod();
 
 		/****************** DoMapping ******************/
 		%feature("compactdefaultargs") DoMapping;
-		%feature("autodoc", "* Apply the mapping change to the window <self>. and returns True if the window is mapped at screen.
-	:rtype: bool") DoMapping;
-		virtual Standard_Boolean DoMapping ();
+		%feature("autodoc", "Apply the mapping change to the window <self>. and returns true if the window is mapped at screen.
+
+Returns
+-------
+bool
+") DoMapping;
+		virtual Standard_Boolean DoMapping();
 
 		/****************** DoResize ******************/
 		%feature("compactdefaultargs") DoResize;
-		%feature("autodoc", "* Apply the resizing to the window <self>.
-	:rtype: Aspect_TypeOfResize") DoResize;
-		virtual Aspect_TypeOfResize DoResize ();
+		%feature("autodoc", "Apply the resizing to the window <self>.
+
+Returns
+-------
+Aspect_TypeOfResize
+") DoResize;
+		virtual Aspect_TypeOfResize DoResize();
 
 		/****************** GradientBackground ******************/
 		%feature("compactdefaultargs") GradientBackground;
-		%feature("autodoc", "* Returns the window gradient background.
-	:rtype: Aspect_GradientBackground") GradientBackground;
-		Aspect_GradientBackground GradientBackground ();
+		%feature("autodoc", "Returns the window gradient background.
+
+Returns
+-------
+Aspect_GradientBackground
+") GradientBackground;
+		Aspect_GradientBackground GradientBackground();
 
 		/****************** InvalidateContent ******************/
 		%feature("compactdefaultargs") InvalidateContent;
-		%feature("autodoc", "* Invalidate entire window content. //! Implementation is expected to allow calling this method from non-GUI thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! Optional display argument should be passed when called from non-GUI thread on platforms implementing thread-unsafe connections to display. NULL can be passed instead otherwise.
-	:param theDisp:
-	:type theDisp: Aspect_DisplayConnection
-	:rtype: None") InvalidateContent;
-		void InvalidateContent (const opencascade::handle<Aspect_DisplayConnection> & theDisp);
+		%feature("autodoc", "Invalidate entire window content. //! implementation is expected to allow calling this method from non-gui thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! optional display argument should be passed when called from non-gui thread on platforms implementing thread-unsafe connections to display. null can be passed instead otherwise.
+
+Parameters
+----------
+theDisp: Aspect_DisplayConnection
+
+Returns
+-------
+None
+") InvalidateContent;
+		virtual void InvalidateContent(const opencascade::handle<Aspect_DisplayConnection> & theDisp);
 
 		/****************** IsMapped ******************/
 		%feature("compactdefaultargs") IsMapped;
-		%feature("autodoc", "* Returns True if the window <self> is opened and False if the window is closed.
-	:rtype: bool") IsMapped;
-		virtual Standard_Boolean IsMapped ();
+		%feature("autodoc", "Returns true if the window <self> is opened and false if the window is closed.
+
+Returns
+-------
+bool
+") IsMapped;
+		virtual Standard_Boolean IsMapped();
 
 		/****************** IsVirtual ******************/
 		%feature("compactdefaultargs") IsVirtual;
-		%feature("autodoc", "* Returns True if the window <self> is virtual
-	:rtype: bool") IsVirtual;
-		Standard_Boolean IsVirtual ();
+		%feature("autodoc", "Returns true if the window <self> is virtual.
+
+Returns
+-------
+bool
+") IsVirtual;
+		Standard_Boolean IsVirtual();
 
 		/****************** Map ******************/
 		%feature("compactdefaultargs") Map;
-		%feature("autodoc", "* Opens the window <self>.
-	:rtype: void") Map;
-		virtual void Map ();
+		%feature("autodoc", "Opens the window <self>.
+
+Returns
+-------
+None
+") Map;
+		virtual void Map();
 
 		/****************** NativeFBConfig ******************/
 		%feature("compactdefaultargs") NativeFBConfig;
-		%feature("autodoc", "* Returns native Window FB config (GLXFBConfig on Xlib)
-	:rtype: Aspect_FBConfig") NativeFBConfig;
-		virtual Aspect_FBConfig NativeFBConfig ();
+		%feature("autodoc", "Returns native window fb config (glxfbconfig on xlib).
+
+Returns
+-------
+Aspect_FBConfig
+") NativeFBConfig;
+		virtual Aspect_FBConfig NativeFBConfig();
 
 		/****************** Position ******************/
 		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "* Returns The Window POSITION in PIXEL
-	:param X1:
-	:type X1: int
-	:param Y1:
-	:type Y1: int
-	:param X2:
-	:type X2: int
-	:param Y2:
-	:type Y2: int
-	:rtype: void") Position;
-		virtual void Position (Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Returns the window position in pixel.
+
+Parameters
+----------
+
+Returns
+-------
+X1: int
+Y1: int
+X2: int
+Y2: int
+") Position;
+		virtual void Position(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** Ratio ******************/
 		%feature("compactdefaultargs") Ratio;
-		%feature("autodoc", "* Returns The Window RATIO equal to the physical WIDTH/HEIGHT dimensions
-	:rtype: float") Ratio;
-		virtual Standard_Real Ratio ();
+		%feature("autodoc", "Returns the window ratio equal to the physical width/height dimensions.
+
+Returns
+-------
+float
+") Ratio;
+		virtual Standard_Real Ratio();
 
 		/****************** SetBackground ******************/
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "* Modifies the window background.
-	:param ABack:
-	:type ABack: Aspect_Background
-	:rtype: None") SetBackground;
-		void SetBackground (const Aspect_Background & ABack);
+		%feature("autodoc", "Modifies the window background.
+
+Parameters
+----------
+ABack: Aspect_Background
+
+Returns
+-------
+None
+") SetBackground;
+		void SetBackground(const Aspect_Background & ABack);
 
 		/****************** SetBackground ******************/
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "* Modifies the window background.
-	:param color:
-	:type color: Quantity_Color
-	:rtype: None") SetBackground;
-		void SetBackground (const Quantity_Color & color);
+		%feature("autodoc", "Modifies the window background.
+
+Parameters
+----------
+color: Quantity_Color
+
+Returns
+-------
+None
+") SetBackground;
+		void SetBackground(const Quantity_Color & color);
 
 		/****************** SetBackground ******************/
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "* Modifies the window gradient background.
-	:param ABackground:
-	:type ABackground: Aspect_GradientBackground
-	:rtype: None") SetBackground;
-		void SetBackground (const Aspect_GradientBackground & ABackground);
+		%feature("autodoc", "Modifies the window gradient background.
+
+Parameters
+----------
+ABackground: Aspect_GradientBackground
+
+Returns
+-------
+None
+") SetBackground;
+		void SetBackground(const Aspect_GradientBackground & ABackground);
 
 		/****************** SetBackground ******************/
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "* Modifies the window gradient background.
-	:param theFirstColor:
-	:type theFirstColor: Quantity_Color
-	:param theSecondColor:
-	:type theSecondColor: Quantity_Color
-	:param theFillMethod:
-	:type theFillMethod: Aspect_GradientFillMethod
-	:rtype: None") SetBackground;
-		void SetBackground (const Quantity_Color & theFirstColor,const Quantity_Color & theSecondColor,const Aspect_GradientFillMethod theFillMethod);
+		%feature("autodoc", "Modifies the window gradient background.
+
+Parameters
+----------
+theFirstColor: Quantity_Color
+theSecondColor: Quantity_Color
+theFillMethod: Aspect_GradientFillMethod
+
+Returns
+-------
+None
+") SetBackground;
+		void SetBackground(const Quantity_Color & theFirstColor, const Quantity_Color & theSecondColor, const Aspect_GradientFillMethod theFillMethod);
 
 		/****************** SetTitle ******************/
 		%feature("compactdefaultargs") SetTitle;
-		%feature("autodoc", "* Sets window title.
-	:param theTitle:
-	:type theTitle: TCollection_AsciiString
-	:rtype: None") SetTitle;
-		void SetTitle (const TCollection_AsciiString & theTitle);
+		%feature("autodoc", "Sets window title.
+
+Parameters
+----------
+theTitle: TCollection_AsciiString
+
+Returns
+-------
+None
+") SetTitle;
+		virtual void SetTitle(const TCollection_AsciiString & theTitle);
 
 		/****************** SetVirtual ******************/
 		%feature("compactdefaultargs") SetVirtual;
-		%feature("autodoc", "* Setup the virtual state
-	:param theVirtual:
-	:type theVirtual: bool
-	:rtype: None") SetVirtual;
-		void SetVirtual (const Standard_Boolean theVirtual);
+		%feature("autodoc", "Setup the virtual state.
+
+Parameters
+----------
+theVirtual: bool
+
+Returns
+-------
+None
+") SetVirtual;
+		void SetVirtual(const Standard_Boolean theVirtual);
 
 		/****************** Size ******************/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "* Returns The Window SIZE in PIXEL
-	:param Width:
-	:type Width: int
-	:param Height:
-	:type Height: int
-	:rtype: void") Size;
-		virtual void Size (Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Returns the window size in pixel.
+
+Parameters
+----------
+
+Returns
+-------
+Width: int
+Height: int
+") Size;
+		virtual void Size(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** Unmap ******************/
 		%feature("compactdefaultargs") Unmap;
-		%feature("autodoc", "* Closes the window <self>.
-	:rtype: void") Unmap;
-		virtual void Unmap ();
+		%feature("autodoc", "Closes the window <self>.
+
+Returns
+-------
+None
+") Unmap;
+		virtual void Unmap();
 
 };
 
@@ -1012,6 +1873,14 @@ class Aspect_Window : public Standard_Transient {
 %extend Aspect_Window {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def NativeHandle(self):
+		pass
+
+	@methodnotwrapped
+	def NativeParentHandle(self):
+		pass
 	}
 };
 
@@ -1025,49 +1894,72 @@ class Aspect_GradientBackground : public Aspect_Background {
 	public:
 		/****************** Aspect_GradientBackground ******************/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
-		%feature("autodoc", "* Creates a window gradient background. Default colors : Quantity_NOC_BLACK. Default fill method : Aspect_GFM_NONE
-	:rtype: None") Aspect_GradientBackground;
-		 Aspect_GradientBackground ();
+		%feature("autodoc", "Creates a window gradient background. default colors : quantity_noc_black. default fill method : aspect_gfm_none.
+
+Returns
+-------
+None
+") Aspect_GradientBackground;
+		 Aspect_GradientBackground();
 
 		/****************** Aspect_GradientBackground ******************/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
-		%feature("autodoc", "* Creates a window gradient background with colours <AColor1, AColor2>.
-	:param AColor1:
-	:type AColor1: Quantity_Color
-	:param AColor2:
-	:type AColor2: Quantity_Color
-	:param AMethod: default value is Aspect_GFM_HOR
-	:type AMethod: Aspect_GradientFillMethod
-	:rtype: None") Aspect_GradientBackground;
-		 Aspect_GradientBackground (const Quantity_Color & AColor1,const Quantity_Color & AColor2,const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
+		%feature("autodoc", "Creates a window gradient background with colours <acolor1, acolor2>.
+
+Parameters
+----------
+AColor1: Quantity_Color
+AColor2: Quantity_Color
+AMethod: Aspect_GradientFillMethod,optional
+	default value is Aspect_GFM_HOR
+
+Returns
+-------
+None
+") Aspect_GradientBackground;
+		 Aspect_GradientBackground(const Quantity_Color & AColor1, const Quantity_Color & AColor2, const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
 
 		/****************** BgGradientFillMethod ******************/
 		%feature("compactdefaultargs") BgGradientFillMethod;
-		%feature("autodoc", "* Returns the current gradient background fill mode.
-	:rtype: Aspect_GradientFillMethod") BgGradientFillMethod;
-		Aspect_GradientFillMethod BgGradientFillMethod ();
+		%feature("autodoc", "Returns the current gradient background fill mode.
+
+Returns
+-------
+Aspect_GradientFillMethod
+") BgGradientFillMethod;
+		Aspect_GradientFillMethod BgGradientFillMethod();
 
 		/****************** Colors ******************/
 		%feature("compactdefaultargs") Colors;
-		%feature("autodoc", "* Returns colours of the window gradient background <self>.
-	:param AColor1:
-	:type AColor1: Quantity_Color
-	:param AColor2:
-	:type AColor2: Quantity_Color
-	:rtype: None") Colors;
-		void Colors (Quantity_Color & AColor1,Quantity_Color & AColor2);
+		%feature("autodoc", "Returns colours of the window gradient background <self>.
+
+Parameters
+----------
+AColor1: Quantity_Color
+AColor2: Quantity_Color
+
+Returns
+-------
+None
+") Colors;
+		void Colors(Quantity_Color & AColor1, Quantity_Color & AColor2);
 
 		/****************** SetColors ******************/
 		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "* Modifies the colours of the window gradient background <self>.
-	:param AColor1:
-	:type AColor1: Quantity_Color
-	:param AColor2:
-	:type AColor2: Quantity_Color
-	:param AMethod: default value is Aspect_GFM_HOR
-	:type AMethod: Aspect_GradientFillMethod
-	:rtype: None") SetColors;
-		void SetColors (const Quantity_Color & AColor1,const Quantity_Color & AColor2,const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
+		%feature("autodoc", "Modifies the colours of the window gradient background <self>.
+
+Parameters
+----------
+AColor1: Quantity_Color
+AColor2: Quantity_Color
+AMethod: Aspect_GradientFillMethod,optional
+	default value is Aspect_GFM_HOR
+
+Returns
+-------
+None
+") SetColors;
+		void SetColors(const Quantity_Color & AColor1, const Quantity_Color & AColor2, const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
 
 };
 
@@ -1084,6 +1976,22 @@ class Aspect_GradientBackground : public Aspect_Background {
 /*******************************
 * class Aspect_RectangularGrid *
 *******************************/
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class Aspect_CircularGrid:
+	pass
+
+@classnotwrapped
+class Aspect_NeutralWindow:
+	pass
+
+@classnotwrapped
+class Aspect_RectangularGrid:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

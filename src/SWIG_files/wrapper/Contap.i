@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -53,6 +53,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_contap.html"
 #include<Geom_module.hxx>
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
+#include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -68,6 +69,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_contap.html"
 %import GeomAbs.i
 %import Geom2d.i
 %import TColStd.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum Contap_IType {
 	Contap_Lin = 0,
@@ -85,25 +92,50 @@ enum Contap_TFunction {
 
 /* end public enums declaration */
 
+/* python proy classes for enums */
+%pythoncode {
+
+class Contap_IType(IntEnum):
+	Contap_Lin = 0
+	Contap_Circle = 1
+	Contap_Walking = 2
+	Contap_Restriction = 3
+Contap_Lin = Contap_IType.Contap_Lin
+Contap_Circle = Contap_IType.Contap_Circle
+Contap_Walking = Contap_IType.Contap_Walking
+Contap_Restriction = Contap_IType.Contap_Restriction
+
+class Contap_TFunction(IntEnum):
+	Contap_ContourStd = 0
+	Contap_ContourPrs = 1
+	Contap_DraftStd = 2
+	Contap_DraftPrs = 3
+Contap_ContourStd = Contap_TFunction.Contap_ContourStd
+Contap_ContourPrs = Contap_TFunction.Contap_ContourPrs
+Contap_DraftStd = Contap_TFunction.Contap_DraftStd
+Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
+};
+/* end python proxy for enums */
+
 /* handles */
 %wrap_handle(Contap_TheIWLineOfTheIWalking)
 %wrap_handle(Contap_TheHSequenceOfPoint)
 /* end handles declaration */
 
 /* templates */
-%template(Contap_TheSequenceOfPoint) NCollection_Sequence <Contap_Point>;
-%template(Contap_SequenceOfSegmentOfTheSearch) NCollection_Sequence <Contap_TheSegmentOfTheSearch>;
-%template(Contap_TheSequenceOfLine) NCollection_Sequence <Contap_Line>;
-%template(Contap_SequenceOfIWLineOfTheIWalking) NCollection_Sequence <opencascade::handle <Contap_TheIWLineOfTheIWalking>>;
-%template(Contap_SequenceOfPathPointOfTheSearch) NCollection_Sequence <Contap_ThePathPointOfTheSearch>;
+%template(Contap_SequenceOfIWLineOfTheIWalking) NCollection_Sequence<opencascade::handle<Contap_TheIWLineOfTheIWalking>>;
+%template(Contap_SequenceOfPathPointOfTheSearch) NCollection_Sequence<Contap_ThePathPointOfTheSearch>;
+%template(Contap_SequenceOfSegmentOfTheSearch) NCollection_Sequence<Contap_TheSegmentOfTheSearch>;
+%template(Contap_TheSequenceOfLine) NCollection_Sequence<Contap_Line>;
+%template(Contap_TheSequenceOfPoint) NCollection_Sequence<Contap_Point>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence <Contap_Point> Contap_TheSequenceOfPoint;
-typedef NCollection_Sequence <Contap_TheSegmentOfTheSearch> Contap_SequenceOfSegmentOfTheSearch;
-typedef NCollection_Sequence <Contap_Line> Contap_TheSequenceOfLine;
-typedef NCollection_Sequence <opencascade::handle <Contap_TheIWLineOfTheIWalking>> Contap_SequenceOfIWLineOfTheIWalking;
-typedef NCollection_Sequence <Contap_ThePathPointOfTheSearch> Contap_SequenceOfPathPointOfTheSearch;
+typedef NCollection_Sequence<opencascade::handle<Contap_TheIWLineOfTheIWalking>> Contap_SequenceOfIWLineOfTheIWalking;
+typedef NCollection_Sequence<Contap_ThePathPointOfTheSearch> Contap_SequenceOfPathPointOfTheSearch;
+typedef NCollection_Sequence<Contap_TheSegmentOfTheSearch> Contap_SequenceOfSegmentOfTheSearch;
+typedef NCollection_Sequence<Contap_Line> Contap_TheSequenceOfLine;
+typedef NCollection_Sequence<Contap_Point> Contap_TheSequenceOfPoint;
 /* end typedefs declaration */
 
 /***************************
@@ -113,117 +145,206 @@ class Contap_ArcFunction : public math_FunctionWithDerivative {
 	public:
 		/****************** Contap_ArcFunction ******************/
 		%feature("compactdefaultargs") Contap_ArcFunction;
-		%feature("autodoc", ":rtype: None") Contap_ArcFunction;
-		 Contap_ArcFunction ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Contap_ArcFunction;
+		 Contap_ArcFunction();
 
 		/****************** Derivative ******************/
 		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", ":param X:
-	:type X: float
-	:param D:
-	:type D: float
-	:rtype: bool") Derivative;
-		Standard_Boolean Derivative (const Standard_Real X,Standard_Real &OutValue);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+X: float
+
+Returns
+-------
+D: float
+") Derivative;
+		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
 		/****************** GetStateNumber ******************/
 		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", ":rtype: int") GetStateNumber;
-		virtual Standard_Integer GetStateNumber ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") GetStateNumber;
+		virtual Standard_Integer GetStateNumber();
 
 		/****************** LastComputedPoint ******************/
 		%feature("compactdefaultargs") LastComputedPoint;
-		%feature("autodoc", "* Returns the point, which has been computed while the last calling Value() method
-	:rtype: gp_Pnt") LastComputedPoint;
-		const gp_Pnt  LastComputedPoint ();
+		%feature("autodoc", "Returns the point, which has been computed while the last calling value() method.
+
+Returns
+-------
+gp_Pnt
+") LastComputedPoint;
+		const gp_Pnt LastComputedPoint();
 
 		/****************** NbSamples ******************/
 		%feature("compactdefaultargs") NbSamples;
-		%feature("autodoc", ":rtype: int") NbSamples;
-		Standard_Integer NbSamples ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbSamples;
+		Standard_Integer NbSamples();
 
 		/****************** Quadric ******************/
 		%feature("compactdefaultargs") Quadric;
-		%feature("autodoc", ":rtype: IntSurf_Quadric") Quadric;
-		const IntSurf_Quadric & Quadric ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+IntSurf_Quadric
+") Quadric;
+		const IntSurf_Quadric & Quadric();
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_HSurface
-	:rtype: None") Set;
-		void Set (const opencascade::handle<Adaptor3d_HSurface> & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_HSurface
+
+Returns
+-------
+None
+") Set;
+		void Set(const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param Direction:
-	:type Direction: gp_Dir
-	:rtype: None") Set;
-		void Set (const gp_Dir & Direction);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Direction: gp_Dir
+
+Returns
+-------
+None
+") Set;
+		void Set(const gp_Dir & Direction);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param Direction:
-	:type Direction: gp_Dir
-	:param Angle:
-	:type Angle: float
-	:rtype: None") Set;
-		void Set (const gp_Dir & Direction,const Standard_Real Angle);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Direction: gp_Dir
+Angle: float
+
+Returns
+-------
+None
+") Set;
+		void Set(const gp_Dir & Direction, const Standard_Real Angle);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param Eye:
-	:type Eye: gp_Pnt
-	:rtype: None") Set;
-		void Set (const gp_Pnt & Eye);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Eye: gp_Pnt
+
+Returns
+-------
+None
+") Set;
+		void Set(const gp_Pnt & Eye);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param Eye:
-	:type Eye: gp_Pnt
-	:param Angle:
-	:type Angle: float
-	:rtype: None") Set;
-		void Set (const gp_Pnt & Eye,const Standard_Real Angle);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Eye: gp_Pnt
+Angle: float
+
+Returns
+-------
+None
+") Set;
+		void Set(const gp_Pnt & Eye, const Standard_Real Angle);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param A:
-	:type A: Adaptor2d_HCurve2d
-	:rtype: None") Set;
-		void Set (const opencascade::handle<Adaptor2d_HCurve2d> & A);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+A: Adaptor2d_HCurve2d
+
+Returns
+-------
+None
+") Set;
+		void Set(const opencascade::handle<Adaptor2d_HCurve2d> & A);
 
 		/****************** Surface ******************/
 		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "* Returns mySurf field
-	:rtype: opencascade::handle<Adaptor3d_HSurface>") Surface;
-		const opencascade::handle<Adaptor3d_HSurface> & Surface ();
+		%feature("autodoc", "Returns mysurf field.
+
+Returns
+-------
+opencascade::handle<Adaptor3d_HSurface>
+") Surface;
+		const opencascade::handle<Adaptor3d_HSurface> & Surface();
 
 		/****************** Valpoint ******************/
 		%feature("compactdefaultargs") Valpoint;
-		%feature("autodoc", ":param Index:
-	:type Index: int
-	:rtype: gp_Pnt") Valpoint;
-		const gp_Pnt  Valpoint (const Standard_Integer Index);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+gp_Pnt
+") Valpoint;
+		const gp_Pnt Valpoint(const Standard_Integer Index);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", ":param X:
-	:type X: float
-	:param F:
-	:type F: float
-	:rtype: bool") Value;
-		Standard_Boolean Value (const Standard_Real X,Standard_Real &OutValue);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+X: float
+
+Returns
+-------
+F: float
+") Value;
+		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", ":param X:
-	:type X: float
-	:param F:
-	:type F: float
-	:param D:
-	:type D: float
-	:rtype: bool") Values;
-		Standard_Boolean Values (const Standard_Real X,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+X: float
+
+Returns
+-------
+F: float
+D: float
+") Values;
+		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -239,125 +360,207 @@ class Contap_ArcFunction : public math_FunctionWithDerivative {
 ***********************/
 class Contap_ContAna {
 	public:
-		/****************** Circle ******************/
-		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", ":rtype: gp_Circ") Circle;
-		gp_Circ Circle ();
-
 		/****************** Contap_ContAna ******************/
 		%feature("compactdefaultargs") Contap_ContAna;
-		%feature("autodoc", ":rtype: None") Contap_ContAna;
-		 Contap_ContAna ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Contap_ContAna;
+		 Contap_ContAna();
+
+		/****************** Circle ******************/
+		%feature("compactdefaultargs") Circle;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+gp_Circ
+") Circle;
+		gp_Circ Circle();
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", ":rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
-		%feature("autodoc", ":param Index:
-	:type Index: int
-	:rtype: gp_Lin") Line;
-		gp_Lin Line (const Standard_Integer Index);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+gp_Lin
+") Line;
+		gp_Lin Line(const Standard_Integer Index);
 
 		/****************** NbContours ******************/
 		%feature("compactdefaultargs") NbContours;
-		%feature("autodoc", ":rtype: int") NbContours;
-		Standard_Integer NbContours ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbContours;
+		Standard_Integer NbContours();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param S:
-	:type S: gp_Sphere
-	:param D:
-	:type D: gp_Dir
-	:rtype: None") Perform;
-		void Perform (const gp_Sphere & S,const gp_Dir & D);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: gp_Sphere
+D: gp_Dir
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Sphere & S, const gp_Dir & D);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param S:
-	:type S: gp_Sphere
-	:param D:
-	:type D: gp_Dir
-	:param Ang:
-	:type Ang: float
-	:rtype: None") Perform;
-		void Perform (const gp_Sphere & S,const gp_Dir & D,const Standard_Real Ang);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: gp_Sphere
+D: gp_Dir
+Ang: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Sphere & S, const gp_Dir & D, const Standard_Real Ang);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param S:
-	:type S: gp_Sphere
-	:param Eye:
-	:type Eye: gp_Pnt
-	:rtype: None") Perform;
-		void Perform (const gp_Sphere & S,const gp_Pnt & Eye);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: gp_Sphere
+Eye: gp_Pnt
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Sphere & S, const gp_Pnt & Eye);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param C:
-	:type C: gp_Cylinder
-	:param D:
-	:type D: gp_Dir
-	:rtype: None") Perform;
-		void Perform (const gp_Cylinder & C,const gp_Dir & D);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: gp_Cylinder
+D: gp_Dir
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Cylinder & C, const gp_Dir & D);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param C:
-	:type C: gp_Cylinder
-	:param D:
-	:type D: gp_Dir
-	:param Ang:
-	:type Ang: float
-	:rtype: None") Perform;
-		void Perform (const gp_Cylinder & C,const gp_Dir & D,const Standard_Real Ang);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: gp_Cylinder
+D: gp_Dir
+Ang: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Cylinder & C, const gp_Dir & D, const Standard_Real Ang);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param C:
-	:type C: gp_Cylinder
-	:param Eye:
-	:type Eye: gp_Pnt
-	:rtype: None") Perform;
-		void Perform (const gp_Cylinder & C,const gp_Pnt & Eye);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: gp_Cylinder
+Eye: gp_Pnt
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Cylinder & C, const gp_Pnt & Eye);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param C:
-	:type C: gp_Cone
-	:param D:
-	:type D: gp_Dir
-	:rtype: None") Perform;
-		void Perform (const gp_Cone & C,const gp_Dir & D);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: gp_Cone
+D: gp_Dir
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Cone & C, const gp_Dir & D);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param C:
-	:type C: gp_Cone
-	:param D:
-	:type D: gp_Dir
-	:param Ang:
-	:type Ang: float
-	:rtype: None") Perform;
-		void Perform (const gp_Cone & C,const gp_Dir & D,const Standard_Real Ang);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: gp_Cone
+D: gp_Dir
+Ang: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Cone & C, const gp_Dir & D, const Standard_Real Ang);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param C:
-	:type C: gp_Cone
-	:param Eye:
-	:type Eye: gp_Pnt
-	:rtype: None") Perform;
-		void Perform (const gp_Cone & C,const gp_Pnt & Eye);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: gp_Cone
+Eye: gp_Pnt
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const gp_Cone & C, const gp_Pnt & Eye);
 
 		/****************** TypeContour ******************/
 		%feature("compactdefaultargs") TypeContour;
-		%feature("autodoc", "* Returns GeomAbs_Line or GeomAbs_Circle, when IsDone() returns True.
-	:rtype: GeomAbs_CurveType") TypeContour;
-		GeomAbs_CurveType TypeContour ();
+		%feature("autodoc", "Returns geomabs_line or geomabs_circle, when isdone() returns true.
+
+Returns
+-------
+GeomAbs_CurveType
+") TypeContour;
+		GeomAbs_CurveType TypeContour();
 
 };
 
@@ -375,169 +578,266 @@ class Contap_Contour {
 	public:
 		/****************** Contap_Contour ******************/
 		%feature("compactdefaultargs") Contap_Contour;
-		%feature("autodoc", ":rtype: None") Contap_Contour;
-		 Contap_Contour ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Contap_Contour;
+		 Contap_Contour();
 
 		/****************** Contap_Contour ******************/
 		%feature("compactdefaultargs") Contap_Contour;
-		%feature("autodoc", ":param Direction:
-	:type Direction: gp_Vec
-	:rtype: None") Contap_Contour;
-		 Contap_Contour (const gp_Vec & Direction);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Direction: gp_Vec
+
+Returns
+-------
+None
+") Contap_Contour;
+		 Contap_Contour(const gp_Vec & Direction);
 
 		/****************** Contap_Contour ******************/
 		%feature("compactdefaultargs") Contap_Contour;
-		%feature("autodoc", ":param Direction:
-	:type Direction: gp_Vec
-	:param Angle:
-	:type Angle: float
-	:rtype: None") Contap_Contour;
-		 Contap_Contour (const gp_Vec & Direction,const Standard_Real Angle);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Direction: gp_Vec
+Angle: float
+
+Returns
+-------
+None
+") Contap_Contour;
+		 Contap_Contour(const gp_Vec & Direction, const Standard_Real Angle);
 
 		/****************** Contap_Contour ******************/
 		%feature("compactdefaultargs") Contap_Contour;
-		%feature("autodoc", ":param Eye:
-	:type Eye: gp_Pnt
-	:rtype: None") Contap_Contour;
-		 Contap_Contour (const gp_Pnt & Eye);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Eye: gp_Pnt
+
+Returns
+-------
+None
+") Contap_Contour;
+		 Contap_Contour(const gp_Pnt & Eye);
 
 		/****************** Contap_Contour ******************/
 		%feature("compactdefaultargs") Contap_Contour;
-		%feature("autodoc", "* Creates the contour in a given direction.
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param Domain:
-	:type Domain: Adaptor3d_TopolTool
-	:param Direction:
-	:type Direction: gp_Vec
-	:rtype: None") Contap_Contour;
-		 Contap_Contour (const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & Domain,const gp_Vec & Direction);
+		%feature("autodoc", "Creates the contour in a given direction.
+
+Parameters
+----------
+Surf: Adaptor3d_HSurface
+Domain: Adaptor3d_TopolTool
+Direction: gp_Vec
+
+Returns
+-------
+None
+") Contap_Contour;
+		 Contap_Contour(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction);
 
 		/****************** Contap_Contour ******************/
 		%feature("compactdefaultargs") Contap_Contour;
-		%feature("autodoc", "* Creates the contour in a given direction.
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param Domain:
-	:type Domain: Adaptor3d_TopolTool
-	:param Direction:
-	:type Direction: gp_Vec
-	:param Angle:
-	:type Angle: float
-	:rtype: None") Contap_Contour;
-		 Contap_Contour (const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & Domain,const gp_Vec & Direction,const Standard_Real Angle);
+		%feature("autodoc", "Creates the contour in a given direction.
+
+Parameters
+----------
+Surf: Adaptor3d_HSurface
+Domain: Adaptor3d_TopolTool
+Direction: gp_Vec
+Angle: float
+
+Returns
+-------
+None
+") Contap_Contour;
+		 Contap_Contour(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction, const Standard_Real Angle);
 
 		/****************** Contap_Contour ******************/
 		%feature("compactdefaultargs") Contap_Contour;
-		%feature("autodoc", "* Creates the contour for a perspective view.
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param Domain:
-	:type Domain: Adaptor3d_TopolTool
-	:param Eye:
-	:type Eye: gp_Pnt
-	:rtype: None") Contap_Contour;
-		 Contap_Contour (const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & Domain,const gp_Pnt & Eye);
+		%feature("autodoc", "Creates the contour for a perspective view.
+
+Parameters
+----------
+Surf: Adaptor3d_HSurface
+Domain: Adaptor3d_TopolTool
+Eye: gp_Pnt
+
+Returns
+-------
+None
+") Contap_Contour;
+		 Contap_Contour(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Pnt & Eye);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", ":param Direction:
-	:type Direction: gp_Vec
-	:rtype: None") Init;
-		void Init (const gp_Vec & Direction);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Direction: gp_Vec
+
+Returns
+-------
+None
+") Init;
+		void Init(const gp_Vec & Direction);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", ":param Direction:
-	:type Direction: gp_Vec
-	:param Angle:
-	:type Angle: float
-	:rtype: None") Init;
-		void Init (const gp_Vec & Direction,const Standard_Real Angle);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Direction: gp_Vec
+Angle: float
+
+Returns
+-------
+None
+") Init;
+		void Init(const gp_Vec & Direction, const Standard_Real Angle);
 
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", ":param Eye:
-	:type Eye: gp_Pnt
-	:rtype: None") Init;
-		void Init (const gp_Pnt & Eye);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Eye: gp_Pnt
+
+Returns
+-------
+None
+") Init;
+		void Init(const gp_Pnt & Eye);
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", ":rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** IsEmpty ******************/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "* Returns true if the is no line.
-	:rtype: bool") IsEmpty;
-		Standard_Boolean IsEmpty ();
+		%feature("autodoc", "Returns true if the is no line.
+
+Returns
+-------
+bool
+") IsEmpty;
+		Standard_Boolean IsEmpty();
 
 		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
-		%feature("autodoc", ":param Index:
-	:type Index: int
-	:rtype: Contap_Line") Line;
-		const Contap_Line & Line (const Standard_Integer Index);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+Contap_Line
+") Line;
+		const Contap_Line & Line(const Standard_Integer Index);
 
 		/****************** NbLines ******************/
 		%feature("compactdefaultargs") NbLines;
-		%feature("autodoc", ":rtype: int") NbLines;
-		Standard_Integer NbLines ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbLines;
+		Standard_Integer NbLines();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Creates the contour in a given direction.
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param Domain:
-	:type Domain: Adaptor3d_TopolTool
-	:rtype: None") Perform;
-		void Perform (const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & Domain);
+		%feature("autodoc", "Creates the contour in a given direction.
+
+Parameters
+----------
+Surf: Adaptor3d_HSurface
+Domain: Adaptor3d_TopolTool
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Creates the contour in a given direction.
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param Domain:
-	:type Domain: Adaptor3d_TopolTool
-	:param Direction:
-	:type Direction: gp_Vec
-	:rtype: None") Perform;
-		void Perform (const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & Domain,const gp_Vec & Direction);
+		%feature("autodoc", "Creates the contour in a given direction.
+
+Parameters
+----------
+Surf: Adaptor3d_HSurface
+Domain: Adaptor3d_TopolTool
+Direction: gp_Vec
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Creates the contour in a given direction.
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param Domain:
-	:type Domain: Adaptor3d_TopolTool
-	:param Direction:
-	:type Direction: gp_Vec
-	:param Angle:
-	:type Angle: float
-	:rtype: None") Perform;
-		void Perform (const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & Domain,const gp_Vec & Direction,const Standard_Real Angle);
+		%feature("autodoc", "Creates the contour in a given direction.
+
+Parameters
+----------
+Surf: Adaptor3d_HSurface
+Domain: Adaptor3d_TopolTool
+Direction: gp_Vec
+Angle: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Vec & Direction, const Standard_Real Angle);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Creates the contour for a perspective view.
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param Domain:
-	:type Domain: Adaptor3d_TopolTool
-	:param Eye:
-	:type Eye: gp_Pnt
-	:rtype: None") Perform;
-		void Perform (const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & Domain,const gp_Pnt & Eye);
+		%feature("autodoc", "Creates the contour for a perspective view.
+
+Parameters
+----------
+Surf: Adaptor3d_HSurface
+Domain: Adaptor3d_TopolTool
+Eye: gp_Pnt
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Pnt & Eye);
 
 		/****************** SurfaceFunction ******************/
 		%feature("compactdefaultargs") SurfaceFunction;
-		%feature("autodoc", "* Returns a reference on the internal SurfaceFunction. This is used to compute tangents on the lines.
-	:rtype: Contap_SurfFunction") SurfaceFunction;
-		Contap_SurfFunction & SurfaceFunction ();
+		%feature("autodoc", "Returns a reference on the internal surfacefunction. this is used to compute tangents on the lines.
+
+Returns
+-------
+Contap_SurfFunction
+") SurfaceFunction;
+		Contap_SurfFunction & SurfaceFunction();
 
 };
 
@@ -555,193 +855,274 @@ class Contap_HContTool {
 	public:
 		/****************** Bounds ******************/
 		%feature("compactdefaultargs") Bounds;
-		%feature("autodoc", "* Returns the parametric limits on the arc C. These limits must be finite : they are either the real limits of the arc, for a finite arc, or a bounding box for an infinite arc.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param Ufirst:
-	:type Ufirst: float
-	:param Ulast:
-	:type Ulast: float
-	:rtype: void") Bounds;
-		static void Bounds (const opencascade::handle<Adaptor2d_HCurve2d> & C,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Returns the parametric limits on the arc c. these limits must be finite : they are either the real limits of the arc, for a finite arc, or a bounding box for an infinite arc.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+Ufirst: float
+Ulast: float
+") Bounds;
+		static void Bounds(const opencascade::handle<Adaptor2d_HCurve2d> & C, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** HasBeenSeen ******************/
 		%feature("compactdefaultargs") HasBeenSeen;
-		%feature("autodoc", "* Returns True if all the intersection point and edges are known on the Arc. The intersection point are given as vertices. The intersection edges are given as intervals between two vertices.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: bool") HasBeenSeen;
-		static Standard_Boolean HasBeenSeen (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "Returns true if all the intersection point and edges are known on the arc. the intersection point are given as vertices. the intersection edges are given as intervals between two vertices.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+bool
+") HasBeenSeen;
+		static Standard_Boolean HasBeenSeen(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** HasFirstPoint ******************/
 		%feature("compactdefaultargs") HasFirstPoint;
-		%feature("autodoc", "* Returns True when the segment of range Index is not open at the left side. In that case, IndFirst is the range in the list intersection points (see NbPoints) of the one which defines the left bound of the segment. Otherwise, the method has to return False, and IndFirst has no meaning.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param Index:
-	:type Index: int
-	:param IndFirst:
-	:type IndFirst: int
-	:rtype: bool") HasFirstPoint;
-		static Standard_Boolean HasFirstPoint (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Integer Index,Standard_Integer &OutValue);
+		%feature("autodoc", "Returns true when the segment of range index is not open at the left side. in that case, indfirst is the range in the list intersection points (see nbpoints) of the one which defines the left bound of the segment. otherwise, the method has to return false, and indfirst has no meaning.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+Index: int
+
+Returns
+-------
+IndFirst: int
+") HasFirstPoint;
+		static Standard_Boolean HasFirstPoint(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
 
 		/****************** HasLastPoint ******************/
 		%feature("compactdefaultargs") HasLastPoint;
-		%feature("autodoc", "* Returns True when the segment of range Index is not open at the right side. In that case, IndLast is the range in the list intersection points (see NbPoints) of the one which defines the right bound of the segment. Otherwise, the method has to return False, and IndLast has no meaning.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param Index:
-	:type Index: int
-	:param IndLast:
-	:type IndLast: int
-	:rtype: bool") HasLastPoint;
-		static Standard_Boolean HasLastPoint (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Integer Index,Standard_Integer &OutValue);
+		%feature("autodoc", "Returns true when the segment of range index is not open at the right side. in that case, indlast is the range in the list intersection points (see nbpoints) of the one which defines the right bound of the segment. otherwise, the method has to return false, and indlast has no meaning.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+Index: int
+
+Returns
+-------
+IndLast: int
+") HasLastPoint;
+		static Standard_Boolean HasLastPoint(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
 
 		/****************** IsAllSolution ******************/
 		%feature("compactdefaultargs") IsAllSolution;
-		%feature("autodoc", "* Returns True when the whole restriction is solution of the intersection problem.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: bool") IsAllSolution;
-		static Standard_Boolean IsAllSolution (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "Returns true when the whole restriction is solution of the intersection problem.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+bool
+") IsAllSolution;
+		static Standard_Boolean IsAllSolution(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** IsVertex ******************/
 		%feature("compactdefaultargs") IsVertex;
-		%feature("autodoc", "* Returns True if the intersection point of range Index corresponds with a vertex on the arc A.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param Index:
-	:type Index: int
-	:rtype: bool") IsVertex;
-		static Standard_Boolean IsVertex (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Integer Index);
+		%feature("autodoc", "Returns true if the intersection point of range index corresponds with a vertex on the arc a.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+Index: int
+
+Returns
+-------
+bool
+") IsVertex;
+		static Standard_Boolean IsVertex(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index);
 
 		/****************** NbPoints ******************/
 		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "* Returns the number of intersection points on the arc A.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: int") NbPoints;
-		static Standard_Integer NbPoints (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "Returns the number of intersection points on the arc a.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+int
+") NbPoints;
+		static Standard_Integer NbPoints(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** NbSamplePoints ******************/
 		%feature("compactdefaultargs") NbSamplePoints;
-		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_HSurface
-	:rtype: int") NbSamplePoints;
-		static Standard_Integer NbSamplePoints (const opencascade::handle<Adaptor3d_HSurface> & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_HSurface
+
+Returns
+-------
+int
+") NbSamplePoints;
+		static Standard_Integer NbSamplePoints(const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** NbSamplesOnArc ******************/
 		%feature("compactdefaultargs") NbSamplesOnArc;
-		%feature("autodoc", "* returns the number of points which is used to make a sample on the arc. this number is a function of the Surface and the CurveOnSurface complexity.
-	:param A:
-	:type A: Adaptor2d_HCurve2d
-	:rtype: int") NbSamplesOnArc;
-		static Standard_Integer NbSamplesOnArc (const opencascade::handle<Adaptor2d_HCurve2d> & A);
+		%feature("autodoc", "Returns the number of points which is used to make a sample on the arc. this number is a function of the surface and the curveonsurface complexity.
+
+Parameters
+----------
+A: Adaptor2d_HCurve2d
+
+Returns
+-------
+int
+") NbSamplesOnArc;
+		static Standard_Integer NbSamplesOnArc(const opencascade::handle<Adaptor2d_HCurve2d> & A);
 
 		/****************** NbSamplesU ******************/
 		%feature("compactdefaultargs") NbSamplesU;
-		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_HSurface
-	:param u1:
-	:type u1: float
-	:param u2:
-	:type u2: float
-	:rtype: int") NbSamplesU;
-		static Standard_Integer NbSamplesU (const opencascade::handle<Adaptor3d_HSurface> & S,const Standard_Real u1,const Standard_Real u2);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_HSurface
+u1: float
+u2: float
+
+Returns
+-------
+int
+") NbSamplesU;
+		static Standard_Integer NbSamplesU(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real u1, const Standard_Real u2);
 
 		/****************** NbSamplesV ******************/
 		%feature("compactdefaultargs") NbSamplesV;
-		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_HSurface
-	:param v1:
-	:type v1: float
-	:param v2:
-	:type v2: float
-	:rtype: int") NbSamplesV;
-		static Standard_Integer NbSamplesV (const opencascade::handle<Adaptor3d_HSurface> & S,const Standard_Real v1,const Standard_Real v2);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_HSurface
+v1: float
+v2: float
+
+Returns
+-------
+int
+") NbSamplesV;
+		static Standard_Integer NbSamplesV(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real v1, const Standard_Real v2);
 
 		/****************** NbSegments ******************/
 		%feature("compactdefaultargs") NbSegments;
-		%feature("autodoc", "* returns the number of part of A solution of the of intersection problem.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: int") NbSegments;
-		static Standard_Integer NbSegments (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "Returns the number of part of a solution of the of intersection problem.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+int
+") NbSegments;
+		static Standard_Integer NbSegments(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", "* Returns the parameter of the vertex V on the arc A.
-	:param V:
-	:type V: Adaptor3d_HVertex
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: float") Parameter;
-		static Standard_Real Parameter (const opencascade::handle<Adaptor3d_HVertex> & V,const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "Returns the parameter of the vertex v on the arc a.
+
+Parameters
+----------
+V: Adaptor3d_HVertex
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+float
+") Parameter;
+		static Standard_Real Parameter(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Project ******************/
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "* Projects the point P on the arc C. If the methods returns Standard_True, the projection is successful, and Paramproj is the parameter on the arc of the projected point, Ptproj is the projected Point. If the method returns Standard_False, Param proj and Ptproj are not significant.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param P:
-	:type P: gp_Pnt2d
-	:param Paramproj:
-	:type Paramproj: float
-	:param Ptproj:
-	:type Ptproj: gp_Pnt2d
-	:rtype: bool") Project;
-		static Standard_Boolean Project (const opencascade::handle<Adaptor2d_HCurve2d> & C,const gp_Pnt2d & P,Standard_Real &OutValue,gp_Pnt2d & Ptproj);
+		%feature("autodoc", "Projects the point p on the arc c. if the methods returns standard_true, the projection is successful, and paramproj is the parameter on the arc of the projected point, ptproj is the projected point. if the method returns standard_false, param proj and ptproj are not significant.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+P: gp_Pnt2d
+Ptproj: gp_Pnt2d
+
+Returns
+-------
+Paramproj: float
+") Project;
+		static Standard_Boolean Project(const opencascade::handle<Adaptor2d_HCurve2d> & C, const gp_Pnt2d & P, Standard_Real &OutValue, gp_Pnt2d & Ptproj);
 
 		/****************** SamplePoint ******************/
 		%feature("compactdefaultargs") SamplePoint;
-		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_HSurface
-	:param Index:
-	:type Index: int
-	:param U:
-	:type U: float
-	:param V:
-	:type V: float
-	:rtype: void") SamplePoint;
-		static void SamplePoint (const opencascade::handle<Adaptor3d_HSurface> & S,const Standard_Integer Index,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_HSurface
+Index: int
+
+Returns
+-------
+U: float
+V: float
+") SamplePoint;
+		static void SamplePoint(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Tolerance ******************/
 		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "* Returns the parametric tolerance used to consider that the vertex and another point meet, i-e if Abs(parameter(Vertex) - parameter(OtherPnt))<= Tolerance, the points are 'merged'.
-	:param V:
-	:type V: Adaptor3d_HVertex
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: float") Tolerance;
-		static Standard_Real Tolerance (const opencascade::handle<Adaptor3d_HVertex> & V,const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "Returns the parametric tolerance used to consider that the vertex and another point meet, i-e if abs(parameter(vertex) - parameter(otherpnt))<= tolerance, the points are 'merged'.
+
+Parameters
+----------
+V: Adaptor3d_HVertex
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+float
+") Tolerance;
+		static Standard_Real Tolerance(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "* Returns the value (Pt), the tolerance (Tol), and the parameter (U) on the arc A , of the intersection point of range Index.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param Index:
-	:type Index: int
-	:param Pt:
-	:type Pt: gp_Pnt
-	:param Tol:
-	:type Tol: float
-	:param U:
-	:type U: float
-	:rtype: void") Value;
-		static void Value (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Integer Index,gp_Pnt & Pt,Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Returns the value (pt), the tolerance (tol), and the parameter (u) on the arc a , of the intersection point of range index.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+Index: int
+Pt: gp_Pnt
+
+Returns
+-------
+Tol: float
+U: float
+") Value;
+		static void Value(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index, gp_Pnt & Pt, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Vertex ******************/
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "* When IsVertex returns True, this method returns the vertex on the arc A.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param Index:
-	:type Index: int
-	:param V:
-	:type V: Adaptor3d_HVertex
-	:rtype: void") Vertex;
-		static void Vertex (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Integer Index,opencascade::handle<Adaptor3d_HVertex> & V);
+		%feature("autodoc", "When isvertex returns true, this method returns the vertex on the arc a.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+Index: int
+V: Adaptor3d_HVertex
+
+Returns
+-------
+None
+") Vertex;
+		static void Vertex(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Integer Index, opencascade::handle<Adaptor3d_HVertex> & V);
 
 };
 
@@ -759,227 +1140,362 @@ class Contap_HCurve2dTool {
 	public:
 		/****************** BSpline ******************/
 		%feature("compactdefaultargs") BSpline;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: opencascade::handle<Geom2d_BSplineCurve>") BSpline;
-		static opencascade::handle<Geom2d_BSplineCurve> BSpline (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+opencascade::handle<Geom2d_BSplineCurve>
+") BSpline;
+		static opencascade::handle<Geom2d_BSplineCurve> BSpline(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Bezier ******************/
 		%feature("compactdefaultargs") Bezier;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: opencascade::handle<Geom2d_BezierCurve>") Bezier;
-		static opencascade::handle<Geom2d_BezierCurve> Bezier (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+opencascade::handle<Geom2d_BezierCurve>
+") Bezier;
+		static opencascade::handle<Geom2d_BezierCurve> Bezier(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Circle ******************/
 		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: gp_Circ2d") Circle;
-		static gp_Circ2d Circle (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+gp_Circ2d
+") Circle;
+		static gp_Circ2d Circle(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Continuity ******************/
 		%feature("compactdefaultargs") Continuity;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: GeomAbs_Shape") Continuity;
-		static GeomAbs_Shape Continuity (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+GeomAbs_Shape
+") Continuity;
+		static GeomAbs_Shape Continuity(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** D0 ******************/
 		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "* Computes the point of parameter U on the curve.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:rtype: None") D0;
-		static void D0 (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real U,gp_Pnt2d & P);
+		%feature("autodoc", "Computes the point of parameter u on the curve.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+U: float
+P: gp_Pnt2d
+
+Returns
+-------
+None
+") D0;
+		static void D0(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, gp_Pnt2d & P);
 
 		/****************** D1 ******************/
 		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "* Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V:
-	:type V: gp_Vec2d
-	:rtype: None") D1;
-		static void D1 (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V);
+		%feature("autodoc", "Computes the point of parameter u on the curve with its first derivative. raised if the continuity of the current interval is not c1.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+U: float
+P: gp_Pnt2d
+V: gp_Vec2d
+
+Returns
+-------
+None
+") D1;
+		static void D1(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****************** D2 ******************/
 		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "* Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V1:
-	:type V1: gp_Vec2d
-	:param V2:
-	:type V2: gp_Vec2d
-	:rtype: None") D2;
-		static void D2 (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2);
+		%feature("autodoc", "Returns the point p of parameter u, the first and second derivatives v1 and v2. raised if the continuity of the current interval is not c2.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+U: float
+P: gp_Pnt2d
+V1: gp_Vec2d
+V2: gp_Vec2d
+
+Returns
+-------
+None
+") D2;
+		static void D2(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****************** D3 ******************/
 		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "* Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param U:
-	:type U: float
-	:param P:
-	:type P: gp_Pnt2d
-	:param V1:
-	:type V1: gp_Vec2d
-	:param V2:
-	:type V2: gp_Vec2d
-	:param V3:
-	:type V3: gp_Vec2d
-	:rtype: None") D3;
-		static void D3 (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real U,gp_Pnt2d & P,gp_Vec2d & V1,gp_Vec2d & V2,gp_Vec2d & V3);
+		%feature("autodoc", "Returns the point p of parameter u, the first, the second and the third derivative. raised if the continuity of the current interval is not c3.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+U: float
+P: gp_Pnt2d
+V1: gp_Vec2d
+V2: gp_Vec2d
+V3: gp_Vec2d
+
+Returns
+-------
+None
+") D3;
+		static void D3(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****************** DN ******************/
 		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "* The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param U:
-	:type U: float
-	:param N:
-	:type N: int
-	:rtype: gp_Vec2d") DN;
-		static gp_Vec2d DN (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real U,const Standard_Integer N);
+		%feature("autodoc", "The returned vector gives the value of the derivative for the order of derivation n. raised if the continuity of the current interval is not cn. raised if n < 1.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+U: float
+N: int
+
+Returns
+-------
+gp_Vec2d
+") DN;
+		static gp_Vec2d DN(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U, const Standard_Integer N);
 
 		/****************** Ellipse ******************/
 		%feature("compactdefaultargs") Ellipse;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: gp_Elips2d") Ellipse;
-		static gp_Elips2d Ellipse (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+gp_Elips2d
+") Ellipse;
+		static gp_Elips2d Ellipse(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** FirstParameter ******************/
 		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: float") FirstParameter;
-		static Standard_Real FirstParameter (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+float
+") FirstParameter;
+		static Standard_Real FirstParameter(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** GetType ******************/
 		%feature("compactdefaultargs") GetType;
-		%feature("autodoc", "* Returns the type of the curve in the current interval : Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: GeomAbs_CurveType") GetType;
-		static GeomAbs_CurveType GetType (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "Returns the type of the curve in the current interval : line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+GeomAbs_CurveType
+") GetType;
+		static GeomAbs_CurveType GetType(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Hyperbola ******************/
 		%feature("compactdefaultargs") Hyperbola;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: gp_Hypr2d") Hyperbola;
-		static gp_Hypr2d Hyperbola (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+gp_Hypr2d
+") Hyperbola;
+		static gp_Hypr2d Hyperbola(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Intervals ******************/
 		%feature("compactdefaultargs") Intervals;
-		%feature("autodoc", "* Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accomodate for the parameters. i.e. T.Length() > NbIntervals()
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param T:
-	:type T: TColStd_Array1OfReal
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: None") Intervals;
-		static void Intervals (const opencascade::handle<Adaptor2d_HCurve2d> & C,TColStd_Array1OfReal & T,const GeomAbs_Shape S);
+		%feature("autodoc", "Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accomodate for the parameters. i.e. t.length() > nbintervals().
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+T: TColStd_Array1OfReal
+S: GeomAbs_Shape
+
+Returns
+-------
+None
+") Intervals;
+		static void Intervals(const opencascade::handle<Adaptor2d_HCurve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****************** IsClosed ******************/
 		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: bool") IsClosed;
-		static Standard_Boolean IsClosed (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+bool
+") IsClosed;
+		static Standard_Boolean IsClosed(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** IsPeriodic ******************/
 		%feature("compactdefaultargs") IsPeriodic;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: bool") IsPeriodic;
-		static Standard_Boolean IsPeriodic (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+bool
+") IsPeriodic;
+		static Standard_Boolean IsPeriodic(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** LastParameter ******************/
 		%feature("compactdefaultargs") LastParameter;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: float") LastParameter;
-		static Standard_Real LastParameter (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+float
+") LastParameter;
+		static Standard_Real LastParameter(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: gp_Lin2d") Line;
-		static gp_Lin2d Line (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+gp_Lin2d
+") Line;
+		static gp_Lin2d Line(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** NbIntervals ******************/
 		%feature("compactdefaultargs") NbIntervals;
-		%feature("autodoc", "* Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param S:
-	:type S: GeomAbs_Shape
-	:rtype: int") NbIntervals;
-		static Standard_Integer NbIntervals (const opencascade::handle<Adaptor2d_HCurve2d> & C,const GeomAbs_Shape S);
+		%feature("autodoc", "Returns the number of intervals for continuity <s>. may be one if continuity(myclass) >= <s>.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+S: GeomAbs_Shape
+
+Returns
+-------
+int
+") NbIntervals;
+		static Standard_Integer NbIntervals(const opencascade::handle<Adaptor2d_HCurve2d> & C, const GeomAbs_Shape S);
 
 		/****************** NbSamples ******************/
 		%feature("compactdefaultargs") NbSamples;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:param U0:
-	:type U0: float
-	:param U1:
-	:type U1: float
-	:rtype: int") NbSamples;
-		static Standard_Integer NbSamples (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real U0,const Standard_Real U1);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+U0: float
+U1: float
+
+Returns
+-------
+int
+") NbSamples;
+		static Standard_Integer NbSamples(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U0, const Standard_Real U1);
 
 		/****************** Parabola ******************/
 		%feature("compactdefaultargs") Parabola;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: gp_Parab2d") Parabola;
-		static gp_Parab2d Parabola (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+gp_Parab2d
+") Parabola;
+		static gp_Parab2d Parabola(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Period ******************/
 		%feature("compactdefaultargs") Period;
-		%feature("autodoc", ":param C:
-	:type C: Adaptor2d_HCurve2d
-	:rtype: float") Period;
-		static Standard_Real Period (const opencascade::handle<Adaptor2d_HCurve2d> & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+
+Returns
+-------
+float
+") Period;
+		static Standard_Real Period(const opencascade::handle<Adaptor2d_HCurve2d> & C);
 
 		/****************** Resolution ******************/
 		%feature("compactdefaultargs") Resolution;
-		%feature("autodoc", "* Returns the parametric resolution corresponding to the real space resolution <R3d>.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param R3d:
-	:type R3d: float
-	:rtype: float") Resolution;
-		static Standard_Real Resolution (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real R3d);
+		%feature("autodoc", "Returns the parametric resolution corresponding to the real space resolution <r3d>.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+R3d: float
+
+Returns
+-------
+float
+") Resolution;
+		static Standard_Real Resolution(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real R3d);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "* Computes the point of parameter U on the curve.
-	:param C:
-	:type C: Adaptor2d_HCurve2d
-	:param U:
-	:type U: float
-	:rtype: gp_Pnt2d") Value;
-		static gp_Pnt2d Value (const opencascade::handle<Adaptor2d_HCurve2d> & C,const Standard_Real U);
+		%feature("autodoc", "Computes the point of parameter u on the curve.
+
+Parameters
+----------
+C: Adaptor2d_HCurve2d
+U: float
+
+Returns
+-------
+gp_Pnt2d
+") Value;
+		static gp_Pnt2d Value(const opencascade::handle<Adaptor2d_HCurve2d> & C, const Standard_Real U);
 
 };
 
@@ -995,126 +1511,241 @@ class Contap_HCurve2dTool {
 ********************/
 class Contap_Line {
 	public:
-		/****************** Add ******************/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", ":param P:
-	:type P: IntSurf_PntOn2S
-	:rtype: None") Add;
-		void Add (const IntSurf_PntOn2S & P);
+		/****************** Contap_Line ******************/
+		%feature("compactdefaultargs") Contap_Line;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Contap_Line;
+		 Contap_Line();
 
 		/****************** Add ******************/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", ":param P:
-	:type P: Contap_Point
-	:rtype: None") Add;
-		void Add (const Contap_Point & P);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+P: IntSurf_PntOn2S
+
+Returns
+-------
+None
+") Add;
+		void Add(const IntSurf_PntOn2S & P);
+
+		/****************** Add ******************/
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+P: Contap_Point
+
+Returns
+-------
+None
+") Add;
+		void Add(const Contap_Point & P);
 
 		/****************** Arc ******************/
 		%feature("compactdefaultargs") Arc;
-		%feature("autodoc", ":rtype: opencascade::handle<Adaptor2d_HCurve2d>") Arc;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Arc ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Adaptor2d_HCurve2d>
+") Arc;
+		const opencascade::handle<Adaptor2d_HCurve2d> & Arc();
 
 		/****************** Circle ******************/
 		%feature("compactdefaultargs") Circle;
-		%feature("autodoc", ":rtype: gp_Circ") Circle;
-		gp_Circ Circle ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+gp_Circ
+") Circle;
+		gp_Circ Circle();
 
 		/****************** Clear ******************/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", ":rtype: None") Clear;
-		void Clear ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** Contap_Line ******************/
-		%feature("compactdefaultargs") Contap_Line;
-		%feature("autodoc", ":rtype: None") Contap_Line;
-		 Contap_Line ();
+Returns
+-------
+None
+") Clear;
+		void Clear();
 
 		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
-		%feature("autodoc", ":rtype: gp_Lin") Line;
-		gp_Lin Line ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+gp_Lin
+") Line;
+		gp_Lin Line();
 
 		/****************** LineOn2S ******************/
 		%feature("compactdefaultargs") LineOn2S;
-		%feature("autodoc", ":rtype: opencascade::handle<IntSurf_LineOn2S>") LineOn2S;
-		const opencascade::handle<IntSurf_LineOn2S> & LineOn2S ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<IntSurf_LineOn2S>
+") LineOn2S;
+		const opencascade::handle<IntSurf_LineOn2S> & LineOn2S();
 
 		/****************** NbPnts ******************/
 		%feature("compactdefaultargs") NbPnts;
-		%feature("autodoc", ":rtype: int") NbPnts;
-		Standard_Integer NbPnts ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbPnts;
+		Standard_Integer NbPnts();
 
 		/****************** NbVertex ******************/
 		%feature("compactdefaultargs") NbVertex;
-		%feature("autodoc", ":rtype: int") NbVertex;
-		Standard_Integer NbVertex ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") NbVertex;
+		Standard_Integer NbVertex();
 
 		/****************** Point ******************/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", ":param Index:
-	:type Index: int
-	:rtype: IntSurf_PntOn2S") Point;
-		const IntSurf_PntOn2S & Point (const Standard_Integer Index);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+IntSurf_PntOn2S
+") Point;
+		const IntSurf_PntOn2S & Point(const Standard_Integer Index);
 
 		/****************** ResetSeqOfVertex ******************/
 		%feature("compactdefaultargs") ResetSeqOfVertex;
-		%feature("autodoc", ":rtype: None") ResetSeqOfVertex;
-		void ResetSeqOfVertex ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") ResetSeqOfVertex;
+		void ResetSeqOfVertex();
 
 		/****************** SetLineOn2S ******************/
 		%feature("compactdefaultargs") SetLineOn2S;
-		%feature("autodoc", ":param L:
-	:type L: IntSurf_LineOn2S
-	:rtype: None") SetLineOn2S;
-		void SetLineOn2S (const opencascade::handle<IntSurf_LineOn2S> & L);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+L: IntSurf_LineOn2S
+
+Returns
+-------
+None
+") SetLineOn2S;
+		void SetLineOn2S(const opencascade::handle<IntSurf_LineOn2S> & L);
 
 		/****************** SetTransitionOnS ******************/
 		%feature("compactdefaultargs") SetTransitionOnS;
-		%feature("autodoc", "* Set The Tansition of the line.
-	:param T:
-	:type T: IntSurf_TypeTrans
-	:rtype: None") SetTransitionOnS;
-		void SetTransitionOnS (const IntSurf_TypeTrans T);
+		%feature("autodoc", "Set the tansition of the line.
+
+Parameters
+----------
+T: IntSurf_TypeTrans
+
+Returns
+-------
+None
+") SetTransitionOnS;
+		void SetTransitionOnS(const IntSurf_TypeTrans T);
 
 		/****************** SetValue ******************/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", ":param L:
-	:type L: gp_Lin
-	:rtype: None") SetValue;
-		void SetValue (const gp_Lin & L);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+L: gp_Lin
+
+Returns
+-------
+None
+") SetValue;
+		void SetValue(const gp_Lin & L);
 
 		/****************** SetValue ******************/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", ":param C:
-	:type C: gp_Circ
-	:rtype: None") SetValue;
-		void SetValue (const gp_Circ & C);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+C: gp_Circ
+
+Returns
+-------
+None
+") SetValue;
+		void SetValue(const gp_Circ & C);
 
 		/****************** SetValue ******************/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", ":param A:
-	:type A: Adaptor2d_HCurve2d
-	:rtype: None") SetValue;
-		void SetValue (const opencascade::handle<Adaptor2d_HCurve2d> & A);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+A: Adaptor2d_HCurve2d
+
+Returns
+-------
+None
+") SetValue;
+		void SetValue(const opencascade::handle<Adaptor2d_HCurve2d> & A);
 
 		/****************** TransitionOnS ******************/
 		%feature("compactdefaultargs") TransitionOnS;
-		%feature("autodoc", "* returns IN if at the 'left' of the line, the normale of the surface is oriented to the observator.
-	:rtype: IntSurf_TypeTrans") TransitionOnS;
-		IntSurf_TypeTrans TransitionOnS ();
+		%feature("autodoc", "Returns in if at the 'left' of the line, the normale of the surface is oriented to the observator.
+
+Returns
+-------
+IntSurf_TypeTrans
+") TransitionOnS;
+		IntSurf_TypeTrans TransitionOnS();
 
 		/****************** TypeContour ******************/
 		%feature("compactdefaultargs") TypeContour;
-		%feature("autodoc", "* Returns Contap_Lin for a line, Contap_Circle for a circle, and Contap_Walking for a Walking line, Contap_Restriction for a part of boundarie.
-	:rtype: Contap_IType") TypeContour;
-		Contap_IType TypeContour ();
+		%feature("autodoc", "Returns contap_lin for a line, contap_circle for a circle, and contap_walking for a walking line, contap_restriction for a part of boundarie.
+
+Returns
+-------
+Contap_IType
+") TypeContour;
+		Contap_IType TypeContour();
 
 		/****************** Vertex ******************/
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", ":param Index:
-	:type Index: int
-	:rtype: Contap_Point") Vertex;
-		Contap_Point & Vertex (const Standard_Integer Index);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+Contap_Point
+") Vertex;
+		Contap_Point & Vertex(const Standard_Integer Index);
 
 };
 
@@ -1130,151 +1761,236 @@ class Contap_Line {
 *********************/
 class Contap_Point {
 	public:
+		/****************** Contap_Point ******************/
+		%feature("compactdefaultargs") Contap_Point;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Contap_Point;
+		 Contap_Point();
+
+		/****************** Contap_Point ******************/
+		%feature("compactdefaultargs") Contap_Point;
+		%feature("autodoc", "Creates a point.
+
+Parameters
+----------
+Pt: gp_Pnt
+U: float
+V: float
+
+Returns
+-------
+None
+") Contap_Point;
+		 Contap_Point(const gp_Pnt & Pt, const Standard_Real U, const Standard_Real V);
+
 		/****************** Arc ******************/
 		%feature("compactdefaultargs") Arc;
-		%feature("autodoc", "* Returns the arc of restriction containing the vertex.
-	:rtype: opencascade::handle<Adaptor2d_HCurve2d>") Arc;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Arc ();
+		%feature("autodoc", "Returns the arc of restriction containing the vertex.
 
-		/****************** Contap_Point ******************/
-		%feature("compactdefaultargs") Contap_Point;
-		%feature("autodoc", "* Empty constructor.
-	:rtype: None") Contap_Point;
-		 Contap_Point ();
-
-		/****************** Contap_Point ******************/
-		%feature("compactdefaultargs") Contap_Point;
-		%feature("autodoc", "* Creates a point.
-	:param Pt:
-	:type Pt: gp_Pnt
-	:param U:
-	:type U: float
-	:param V:
-	:type V: float
-	:rtype: None") Contap_Point;
-		 Contap_Point (const gp_Pnt & Pt,const Standard_Real U,const Standard_Real V);
+Returns
+-------
+opencascade::handle<Adaptor2d_HCurve2d>
+") Arc;
+		const opencascade::handle<Adaptor2d_HCurve2d> & Arc();
 
 		/****************** IsInternal ******************/
 		%feature("compactdefaultargs") IsInternal;
-		%feature("autodoc", "* Returns True if the point is an internal one, i.e if the tangent to the line on the point and the eye direction are parallel.
-	:rtype: bool") IsInternal;
-		Standard_Boolean IsInternal ();
+		%feature("autodoc", "Returns true if the point is an internal one, i.e if the tangent to the line on the point and the eye direction are parallel.
+
+Returns
+-------
+bool
+") IsInternal;
+		Standard_Boolean IsInternal();
 
 		/****************** IsMultiple ******************/
 		%feature("compactdefaultargs") IsMultiple;
-		%feature("autodoc", "* Returns True if the point belongs to several lines.
-	:rtype: bool") IsMultiple;
-		Standard_Boolean IsMultiple ();
+		%feature("autodoc", "Returns true if the point belongs to several lines.
+
+Returns
+-------
+bool
+") IsMultiple;
+		Standard_Boolean IsMultiple();
 
 		/****************** IsOnArc ******************/
 		%feature("compactdefaultargs") IsOnArc;
-		%feature("autodoc", "* Returns True when the point is an intersection between the contour and a restriction.
-	:rtype: bool") IsOnArc;
-		Standard_Boolean IsOnArc ();
+		%feature("autodoc", "Returns true when the point is an intersection between the contour and a restriction.
+
+Returns
+-------
+bool
+") IsOnArc;
+		Standard_Boolean IsOnArc();
 
 		/****************** IsVertex ******************/
 		%feature("compactdefaultargs") IsVertex;
-		%feature("autodoc", "* Returns True if the point is a vertex on the initial restriction facet of the surface.
-	:rtype: bool") IsVertex;
-		Standard_Boolean IsVertex ();
+		%feature("autodoc", "Returns true if the point is a vertex on the initial restriction facet of the surface.
+
+Returns
+-------
+bool
+") IsVertex;
+		Standard_Boolean IsVertex();
 
 		/****************** ParameterOnArc ******************/
 		%feature("compactdefaultargs") ParameterOnArc;
-		%feature("autodoc", "* Returns the parameter of the point on the arc returned by the method Arc().
-	:rtype: float") ParameterOnArc;
-		Standard_Real ParameterOnArc ();
+		%feature("autodoc", "Returns the parameter of the point on the arc returned by the method arc().
+
+Returns
+-------
+float
+") ParameterOnArc;
+		Standard_Real ParameterOnArc();
 
 		/****************** ParameterOnLine ******************/
 		%feature("compactdefaultargs") ParameterOnLine;
-		%feature("autodoc", "* This method returns the parameter of the point on the intersection line. If the points does not belong to an intersection line, the value returned does not have any sens.
-	:rtype: float") ParameterOnLine;
-		Standard_Real ParameterOnLine ();
+		%feature("autodoc", "This method returns the parameter of the point on the intersection line. if the points does not belong to an intersection line, the value returned does not have any sens.
+
+Returns
+-------
+float
+") ParameterOnLine;
+		Standard_Real ParameterOnLine();
 
 		/****************** Parameters ******************/
 		%feature("compactdefaultargs") Parameters;
-		%feature("autodoc", "* Returns the parameters on the surface of the point.
-	:param U1:
-	:type U1: float
-	:param V1:
-	:type V1: float
-	:rtype: None") Parameters;
-		void Parameters (Standard_Real &OutValue,Standard_Real &OutValue);
+		%feature("autodoc", "Returns the parameters on the surface of the point.
+
+Parameters
+----------
+
+Returns
+-------
+U1: float
+V1: float
+") Parameters;
+		void Parameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** SetArc ******************/
 		%feature("compactdefaultargs") SetArc;
-		%feature("autodoc", "* Sets the value of the arc and of the parameter on this arc of the point.
-	:param A:
-	:type A: Adaptor2d_HCurve2d
-	:param Param:
-	:type Param: float
-	:param TLine:
-	:type TLine: IntSurf_Transition
-	:param TArc:
-	:type TArc: IntSurf_Transition
-	:rtype: None") SetArc;
-		void SetArc (const opencascade::handle<Adaptor2d_HCurve2d> & A,const Standard_Real Param,const IntSurf_Transition & TLine,const IntSurf_Transition & TArc);
+		%feature("autodoc", "Sets the value of the arc and of the parameter on this arc of the point.
+
+Parameters
+----------
+A: Adaptor2d_HCurve2d
+Param: float
+TLine: IntSurf_Transition
+TArc: IntSurf_Transition
+
+Returns
+-------
+None
+") SetArc;
+		void SetArc(const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
 		/****************** SetInternal ******************/
 		%feature("compactdefaultargs") SetInternal;
-		%feature("autodoc", ":rtype: None") SetInternal;
-		void SetInternal ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") SetInternal;
+		void SetInternal();
 
 		/****************** SetMultiple ******************/
 		%feature("compactdefaultargs") SetMultiple;
-		%feature("autodoc", ":rtype: None") SetMultiple;
-		void SetMultiple ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") SetMultiple;
+		void SetMultiple();
 
 		/****************** SetParameter ******************/
 		%feature("compactdefaultargs") SetParameter;
-		%feature("autodoc", "* Set the value of the parameter on the intersection line.
-	:param Para:
-	:type Para: float
-	:rtype: None") SetParameter;
-		void SetParameter (const Standard_Real Para);
+		%feature("autodoc", "Set the value of the parameter on the intersection line.
+
+Parameters
+----------
+Para: float
+
+Returns
+-------
+None
+") SetParameter;
+		void SetParameter(const Standard_Real Para);
 
 		/****************** SetValue ******************/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "* Sets the values for a point.
-	:param Pt:
-	:type Pt: gp_Pnt
-	:param U:
-	:type U: float
-	:param V:
-	:type V: float
-	:rtype: None") SetValue;
-		void SetValue (const gp_Pnt & Pt,const Standard_Real U,const Standard_Real V);
+		%feature("autodoc", "Sets the values for a point.
+
+Parameters
+----------
+Pt: gp_Pnt
+U: float
+V: float
+
+Returns
+-------
+None
+") SetValue;
+		void SetValue(const gp_Pnt & Pt, const Standard_Real U, const Standard_Real V);
 
 		/****************** SetVertex ******************/
 		%feature("compactdefaultargs") SetVertex;
-		%feature("autodoc", "* Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface.
-	:param V:
-	:type V: Adaptor3d_HVertex
-	:rtype: None") SetVertex;
-		void SetVertex (const opencascade::handle<Adaptor3d_HVertex> & V);
+		%feature("autodoc", "Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface.
+
+Parameters
+----------
+V: Adaptor3d_HVertex
+
+Returns
+-------
+None
+") SetVertex;
+		void SetVertex(const opencascade::handle<Adaptor3d_HVertex> & V);
 
 		/****************** TransitionOnArc ******************/
 		%feature("compactdefaultargs") TransitionOnArc;
-		%feature("autodoc", "* Returns the transition of the point on the arc.
-	:rtype: IntSurf_Transition") TransitionOnArc;
-		const IntSurf_Transition & TransitionOnArc ();
+		%feature("autodoc", "Returns the transition of the point on the arc.
+
+Returns
+-------
+IntSurf_Transition
+") TransitionOnArc;
+		const IntSurf_Transition & TransitionOnArc();
 
 		/****************** TransitionOnLine ******************/
 		%feature("compactdefaultargs") TransitionOnLine;
-		%feature("autodoc", "* Returns the transition of the point on the contour.
-	:rtype: IntSurf_Transition") TransitionOnLine;
-		const IntSurf_Transition & TransitionOnLine ();
+		%feature("autodoc", "Returns the transition of the point on the contour.
+
+Returns
+-------
+IntSurf_Transition
+") TransitionOnLine;
+		const IntSurf_Transition & TransitionOnLine();
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "* Returns the intersection point (geometric information).
-	:rtype: gp_Pnt") Value;
-		const gp_Pnt  Value ();
+		%feature("autodoc", "Returns the intersection point (geometric information).
+
+Returns
+-------
+gp_Pnt
+") Value;
+		const gp_Pnt Value();
 
 		/****************** Vertex ******************/
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", "* Returns the information about the point when it is on the domain of the patch, i-e when the function IsVertex returns True. Otherwise, an exception is raised.
-	:rtype: opencascade::handle<Adaptor3d_HVertex>") Vertex;
-		const opencascade::handle<Adaptor3d_HVertex> & Vertex ();
+		%feature("autodoc", "Returns the information about the point when it is on the domain of the patch, i-e when the function isvertex returns true. otherwise, an exception is raised.
+
+Returns
+-------
+opencascade::handle<Adaptor3d_HVertex>
+") Vertex;
+		const opencascade::handle<Adaptor3d_HVertex> & Vertex();
 
 };
 
@@ -1290,163 +2006,287 @@ class Contap_Point {
 ****************************/
 class Contap_SurfFunction : public math_FunctionSetWithDerivatives {
 	public:
-		/****************** Angle ******************/
-		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", ":rtype: float") Angle;
-		Standard_Real Angle ();
-
 		/****************** Contap_SurfFunction ******************/
 		%feature("compactdefaultargs") Contap_SurfFunction;
-		%feature("autodoc", ":rtype: None") Contap_SurfFunction;
-		 Contap_SurfFunction ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Contap_SurfFunction;
+		 Contap_SurfFunction();
+
+		/****************** Angle ******************/
+		%feature("compactdefaultargs") Angle;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") Angle;
+		Standard_Real Angle();
 
 		/****************** Derivatives ******************/
 		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "* The dimension of D is (1,2).
-	:param X:
-	:type X: math_Vector
-	:param D:
-	:type D: math_Matrix
-	:rtype: bool") Derivatives;
-		Standard_Boolean Derivatives (const math_Vector & X,math_Matrix & D);
+		%feature("autodoc", "The dimension of d is (1,2).
+
+Parameters
+----------
+X: math_Vector
+D: math_Matrix
+
+Returns
+-------
+bool
+") Derivatives;
+		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****************** Direction ******************/
 		%feature("compactdefaultargs") Direction;
-		%feature("autodoc", ":rtype: gp_Dir") Direction;
-		const gp_Dir  Direction ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+gp_Dir
+") Direction;
+		const gp_Dir Direction();
 
 		/****************** Direction2d ******************/
 		%feature("compactdefaultargs") Direction2d;
-		%feature("autodoc", ":rtype: gp_Dir2d") Direction2d;
-		const gp_Dir2d  Direction2d ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+gp_Dir2d
+") Direction2d;
+		const gp_Dir2d Direction2d();
 
 		/****************** Direction3d ******************/
 		%feature("compactdefaultargs") Direction3d;
-		%feature("autodoc", ":rtype: gp_Vec") Direction3d;
-		const gp_Vec  Direction3d ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+gp_Vec
+") Direction3d;
+		const gp_Vec Direction3d();
 
 		/****************** Eye ******************/
 		%feature("compactdefaultargs") Eye;
-		%feature("autodoc", ":rtype: gp_Pnt") Eye;
-		const gp_Pnt  Eye ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+gp_Pnt
+") Eye;
+		const gp_Pnt Eye();
 
 		/****************** FunctionType ******************/
 		%feature("compactdefaultargs") FunctionType;
-		%feature("autodoc", ":rtype: Contap_TFunction") FunctionType;
-		Contap_TFunction FunctionType ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Contap_TFunction
+") FunctionType;
+		Contap_TFunction FunctionType();
 
 		/****************** IsTangent ******************/
 		%feature("compactdefaultargs") IsTangent;
-		%feature("autodoc", ":rtype: bool") IsTangent;
-		Standard_Boolean IsTangent ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsTangent;
+		Standard_Boolean IsTangent();
 
 		/****************** NbEquations ******************/
 		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "* This method has to return 1.
-	:rtype: int") NbEquations;
-		Standard_Integer NbEquations ();
+		%feature("autodoc", "This method has to return 1.
+
+Returns
+-------
+int
+") NbEquations;
+		Standard_Integer NbEquations();
 
 		/****************** NbVariables ******************/
 		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "* This method has to return 2.
-	:rtype: int") NbVariables;
-		Standard_Integer NbVariables ();
+		%feature("autodoc", "This method has to return 2.
+
+Returns
+-------
+int
+") NbVariables;
+		Standard_Integer NbVariables();
 
 		/****************** PSurface ******************/
 		%feature("compactdefaultargs") PSurface;
-		%feature("autodoc", "* Method is entered for compatibility with IntPatch_TheSurfFunction.
-	:rtype: opencascade::handle<Adaptor3d_HSurface>") PSurface;
-		const opencascade::handle<Adaptor3d_HSurface> & PSurface ();
+		%feature("autodoc", "Method is entered for compatibility with intpatch_thesurffunction.
+
+Returns
+-------
+opencascade::handle<Adaptor3d_HSurface>
+") PSurface;
+		const opencascade::handle<Adaptor3d_HSurface> & PSurface();
 
 		/****************** Point ******************/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "* Returns the value of the solution point on the surface.
-	:rtype: gp_Pnt") Point;
-		const gp_Pnt  Point ();
+		%feature("autodoc", "Returns the value of the solution point on the surface.
+
+Returns
+-------
+gp_Pnt
+") Point;
+		const gp_Pnt Point();
 
 		/****************** Root ******************/
 		%feature("compactdefaultargs") Root;
-		%feature("autodoc", "* Root is the value of the function at the solution. It is a vector of dimension 1, i-e a real.
-	:rtype: float") Root;
-		Standard_Real Root ();
+		%feature("autodoc", "Root is the value of the function at the solution. it is a vector of dimension 1, i-e a real.
+
+Returns
+-------
+float
+") Root;
+		Standard_Real Root();
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param S:
-	:type S: Adaptor3d_HSurface
-	:rtype: None") Set;
-		void Set (const opencascade::handle<Adaptor3d_HSurface> & S);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+S: Adaptor3d_HSurface
+
+Returns
+-------
+None
+") Set;
+		void Set(const opencascade::handle<Adaptor3d_HSurface> & S);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param Eye:
-	:type Eye: gp_Pnt
-	:rtype: None") Set;
-		void Set (const gp_Pnt & Eye);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Eye: gp_Pnt
+
+Returns
+-------
+None
+") Set;
+		void Set(const gp_Pnt & Eye);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param Dir:
-	:type Dir: gp_Dir
-	:rtype: None") Set;
-		void Set (const gp_Dir & Dir);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Dir: gp_Dir
+
+Returns
+-------
+None
+") Set;
+		void Set(const gp_Dir & Dir);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param Dir:
-	:type Dir: gp_Dir
-	:param Angle:
-	:type Angle: float
-	:rtype: None") Set;
-		void Set (const gp_Dir & Dir,const Standard_Real Angle);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Dir: gp_Dir
+Angle: float
+
+Returns
+-------
+None
+") Set;
+		void Set(const gp_Dir & Dir, const Standard_Real Angle);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param Eye:
-	:type Eye: gp_Pnt
-	:param Angle:
-	:type Angle: float
-	:rtype: None") Set;
-		void Set (const gp_Pnt & Eye,const Standard_Real Angle);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Eye: gp_Pnt
+Angle: float
+
+Returns
+-------
+None
+") Set;
+		void Set(const gp_Pnt & Eye, const Standard_Real Angle);
 
 		/****************** Set ******************/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", ":param Tolerance:
-	:type Tolerance: float
-	:rtype: None") Set;
-		void Set (const Standard_Real Tolerance);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Tolerance: float
+
+Returns
+-------
+None
+") Set;
+		void Set(const Standard_Real Tolerance);
 
 		/****************** Surface ******************/
 		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", ":rtype: opencascade::handle<Adaptor3d_HSurface>") Surface;
-		const opencascade::handle<Adaptor3d_HSurface> & Surface ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Adaptor3d_HSurface>
+") Surface;
+		const opencascade::handle<Adaptor3d_HSurface> & Surface();
 
 		/****************** Tolerance ******************/
 		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "* Returns the value Tol so that if Abs(Func.Root())<Tol the function is considered null.
-	:rtype: float") Tolerance;
-		Standard_Real Tolerance ();
+		%feature("autodoc", "Returns the value tol so that if abs(func.root())<tol the function is considered null.
+
+Returns
+-------
+float
+") Tolerance;
+		Standard_Real Tolerance();
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "* The dimension of F is 1.
-	:param X:
-	:type X: math_Vector
-	:param F:
-	:type F: math_Vector
-	:rtype: bool") Value;
-		Standard_Boolean Value (const math_Vector & X,math_Vector & F);
+		%feature("autodoc", "The dimension of f is 1.
+
+Parameters
+----------
+X: math_Vector
+F: math_Vector
+
+Returns
+-------
+bool
+") Value;
+		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
 		/****************** Values ******************/
 		%feature("compactdefaultargs") Values;
-		%feature("autodoc", ":param X:
-	:type X: math_Vector
-	:param F:
-	:type F: math_Vector
-	:param D:
-	:type D: math_Matrix
-	:rtype: bool") Values;
-		Standard_Boolean Values (const math_Vector & X,math_Vector & F,math_Matrix & D);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+X: math_Vector
+F: math_Vector
+D: math_Matrix
+
+Returns
+-------
+bool
+") Values;
+		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 
@@ -1464,59 +2304,61 @@ class Contap_SurfProps {
 	public:
 		/****************** DerivAndNorm ******************/
 		%feature("compactdefaultargs") DerivAndNorm;
-		%feature("autodoc", "* Computes the point <P>, and normal vector <N> on <S> at parameters U,V.
-	:param S:
-	:type S: Adaptor3d_HSurface
-	:param U:
-	:type U: float
-	:param V:
-	:type V: float
-	:param P:
-	:type P: gp_Pnt
-	:param d1u:
-	:type d1u: gp_Vec
-	:param d1v:
-	:type d1v: gp_Vec
-	:param N:
-	:type N: gp_Vec
-	:rtype: void") DerivAndNorm;
-		static void DerivAndNorm (const opencascade::handle<Adaptor3d_HSurface> & S,const Standard_Real U,const Standard_Real V,gp_Pnt & P,gp_Vec & d1u,gp_Vec & d1v,gp_Vec & N);
+		%feature("autodoc", "Computes the point <p>, and normal vector <n> on <s> at parameters u,v.
+
+Parameters
+----------
+S: Adaptor3d_HSurface
+U: float
+V: float
+P: gp_Pnt
+d1u: gp_Vec
+d1v: gp_Vec
+N: gp_Vec
+
+Returns
+-------
+None
+") DerivAndNorm;
+		static void DerivAndNorm(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & d1u, gp_Vec & d1v, gp_Vec & N);
 
 		/****************** NormAndDn ******************/
 		%feature("compactdefaultargs") NormAndDn;
-		%feature("autodoc", "* Computes the point <P>, normal vector <N>, and its derivatives <Dnu> and <Dnv> on <S> at parameters U,V.
-	:param S:
-	:type S: Adaptor3d_HSurface
-	:param U:
-	:type U: float
-	:param V:
-	:type V: float
-	:param P:
-	:type P: gp_Pnt
-	:param N:
-	:type N: gp_Vec
-	:param Dnu:
-	:type Dnu: gp_Vec
-	:param Dnv:
-	:type Dnv: gp_Vec
-	:rtype: void") NormAndDn;
-		static void NormAndDn (const opencascade::handle<Adaptor3d_HSurface> & S,const Standard_Real U,const Standard_Real V,gp_Pnt & P,gp_Vec & N,gp_Vec & Dnu,gp_Vec & Dnv);
+		%feature("autodoc", "Computes the point <p>, normal vector <n>, and its derivatives <dnu> and <dnv> on <s> at parameters u,v.
+
+Parameters
+----------
+S: Adaptor3d_HSurface
+U: float
+V: float
+P: gp_Pnt
+N: gp_Vec
+Dnu: gp_Vec
+Dnv: gp_Vec
+
+Returns
+-------
+None
+") NormAndDn;
+		static void NormAndDn(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & N, gp_Vec & Dnu, gp_Vec & Dnv);
 
 		/****************** Normale ******************/
 		%feature("compactdefaultargs") Normale;
-		%feature("autodoc", "* Computes the point <P>, and normal vector <N> on <S> at parameters U,V.
-	:param S:
-	:type S: Adaptor3d_HSurface
-	:param U:
-	:type U: float
-	:param V:
-	:type V: float
-	:param P:
-	:type P: gp_Pnt
-	:param N:
-	:type N: gp_Vec
-	:rtype: void") Normale;
-		static void Normale (const opencascade::handle<Adaptor3d_HSurface> & S,const Standard_Real U,const Standard_Real V,gp_Pnt & P,gp_Vec & N);
+		%feature("autodoc", "Computes the point <p>, and normal vector <n> on <s> at parameters u,v.
+
+Parameters
+----------
+S: Adaptor3d_HSurface
+U: float
+V: float
+P: gp_Pnt
+N: gp_Vec
+
+Returns
+-------
+None
+") Normale;
+		static void Normale(const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & N);
 
 };
 
@@ -1532,213 +2374,355 @@ class Contap_SurfProps {
 **************************************/
 class Contap_TheIWLineOfTheIWalking : public Standard_Transient {
 	public:
+		/****************** Contap_TheIWLineOfTheIWalking ******************/
+		%feature("compactdefaultargs") Contap_TheIWLineOfTheIWalking;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theAllocator: IntSurf_Allocator,optional
+	default value is 0
+
+Returns
+-------
+None
+") Contap_TheIWLineOfTheIWalking;
+		 Contap_TheIWLineOfTheIWalking(const IntSurf_Allocator & theAllocator = 0);
+
 		/****************** AddIndexPassing ******************/
 		%feature("compactdefaultargs") AddIndexPassing;
-		%feature("autodoc", "* associer a l 'indice du point sur la ligne l'indice du point passant dans l'iterateur de depart
-	:param Index:
-	:type Index: int
-	:rtype: None") AddIndexPassing;
-		void AddIndexPassing (const Standard_Integer Index);
+		%feature("autodoc", "Associer a l 'indice du point sur la ligne l'indice du point passant dans l'iterateur de depart.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+None
+") AddIndexPassing;
+		void AddIndexPassing(const Standard_Integer Index);
 
 		/****************** AddPoint ******************/
 		%feature("compactdefaultargs") AddPoint;
-		%feature("autodoc", "* Add a point in the line.
-	:param P:
-	:type P: IntSurf_PntOn2S
-	:rtype: None") AddPoint;
-		void AddPoint (const IntSurf_PntOn2S & P);
+		%feature("autodoc", "Add a point in the line.
+
+Parameters
+----------
+P: IntSurf_PntOn2S
+
+Returns
+-------
+None
+") AddPoint;
+		void AddPoint(const IntSurf_PntOn2S & P);
 
 		/****************** AddStatusFirst ******************/
 		%feature("compactdefaultargs") AddStatusFirst;
-		%feature("autodoc", ":param Closed:
-	:type Closed: bool
-	:param HasFirst:
-	:type HasFirst: bool
-	:rtype: None") AddStatusFirst;
-		void AddStatusFirst (const Standard_Boolean Closed,const Standard_Boolean HasFirst);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Closed: bool
+HasFirst: bool
+
+Returns
+-------
+None
+") AddStatusFirst;
+		void AddStatusFirst(const Standard_Boolean Closed, const Standard_Boolean HasFirst);
 
 		/****************** AddStatusFirst ******************/
 		%feature("compactdefaultargs") AddStatusFirst;
-		%feature("autodoc", ":param Closed:
-	:type Closed: bool
-	:param HasLast:
-	:type HasLast: bool
-	:param Index:
-	:type Index: int
-	:param P:
-	:type P: IntSurf_PathPoint
-	:rtype: None") AddStatusFirst;
-		void AddStatusFirst (const Standard_Boolean Closed,const Standard_Boolean HasLast,const Standard_Integer Index,const IntSurf_PathPoint & P);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Closed: bool
+HasLast: bool
+Index: int
+P: IntSurf_PathPoint
+
+Returns
+-------
+None
+") AddStatusFirst;
+		void AddStatusFirst(const Standard_Boolean Closed, const Standard_Boolean HasLast, const Standard_Integer Index, const IntSurf_PathPoint & P);
 
 		/****************** AddStatusFirstLast ******************/
 		%feature("compactdefaultargs") AddStatusFirstLast;
-		%feature("autodoc", ":param Closed:
-	:type Closed: bool
-	:param HasFirst:
-	:type HasFirst: bool
-	:param HasLast:
-	:type HasLast: bool
-	:rtype: None") AddStatusFirstLast;
-		void AddStatusFirstLast (const Standard_Boolean Closed,const Standard_Boolean HasFirst,const Standard_Boolean HasLast);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Closed: bool
+HasFirst: bool
+HasLast: bool
+
+Returns
+-------
+None
+") AddStatusFirstLast;
+		void AddStatusFirstLast(const Standard_Boolean Closed, const Standard_Boolean HasFirst, const Standard_Boolean HasLast);
 
 		/****************** AddStatusLast ******************/
 		%feature("compactdefaultargs") AddStatusLast;
-		%feature("autodoc", ":param HasLast:
-	:type HasLast: bool
-	:rtype: None") AddStatusLast;
-		void AddStatusLast (const Standard_Boolean HasLast);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+HasLast: bool
+
+Returns
+-------
+None
+") AddStatusLast;
+		void AddStatusLast(const Standard_Boolean HasLast);
 
 		/****************** AddStatusLast ******************/
 		%feature("compactdefaultargs") AddStatusLast;
-		%feature("autodoc", ":param HasLast:
-	:type HasLast: bool
-	:param Index:
-	:type Index: int
-	:param P:
-	:type P: IntSurf_PathPoint
-	:rtype: None") AddStatusLast;
-		void AddStatusLast (const Standard_Boolean HasLast,const Standard_Integer Index,const IntSurf_PathPoint & P);
+		%feature("autodoc", "No available documentation.
 
-		/****************** Contap_TheIWLineOfTheIWalking ******************/
-		%feature("compactdefaultargs") Contap_TheIWLineOfTheIWalking;
-		%feature("autodoc", ":param theAllocator: default value is 0
-	:type theAllocator: IntSurf_Allocator
-	:rtype: None") Contap_TheIWLineOfTheIWalking;
-		 Contap_TheIWLineOfTheIWalking (const IntSurf_Allocator & theAllocator = 0);
+Parameters
+----------
+HasLast: bool
+Index: int
+P: IntSurf_PathPoint
+
+Returns
+-------
+None
+") AddStatusLast;
+		void AddStatusLast(const Standard_Boolean HasLast, const Standard_Integer Index, const IntSurf_PathPoint & P);
 
 		/****************** Cut ******************/
 		%feature("compactdefaultargs") Cut;
-		%feature("autodoc", "* Cut the line at the point of rank Index.
-	:param Index:
-	:type Index: int
-	:rtype: None") Cut;
-		void Cut (const Standard_Integer Index);
+		%feature("autodoc", "Cut the line at the point of rank index.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+None
+") Cut;
+		void Cut(const Standard_Integer Index);
 
 		/****************** FirstPoint ******************/
 		%feature("compactdefaultargs") FirstPoint;
-		%feature("autodoc", "* Returns the first point of the line when it is a marching point. An exception is raised if HasFirstPoint returns False.
-	:rtype: IntSurf_PathPoint") FirstPoint;
-		const IntSurf_PathPoint & FirstPoint ();
+		%feature("autodoc", "Returns the first point of the line when it is a marching point. an exception is raised if hasfirstpoint returns false.
+
+Returns
+-------
+IntSurf_PathPoint
+") FirstPoint;
+		const IntSurf_PathPoint & FirstPoint();
 
 		/****************** FirstPointIndex ******************/
 		%feature("compactdefaultargs") FirstPointIndex;
-		%feature("autodoc", "* Returns the Index of first point of the line when it is a marching point.This index is the index in the PointStartIterator. An exception is raised if HasFirstPoint returns False.
-	:rtype: int") FirstPointIndex;
-		Standard_Integer FirstPointIndex ();
+		%feature("autodoc", "Returns the index of first point of the line when it is a marching point.this index is the index in the pointstartiterator. an exception is raised if hasfirstpoint returns false.
+
+Returns
+-------
+int
+") FirstPointIndex;
+		Standard_Integer FirstPointIndex();
 
 		/****************** HasFirstPoint ******************/
 		%feature("compactdefaultargs") HasFirstPoint;
-		%feature("autodoc", "* Returns True if the first point of the line is a marching point . when is HasFirstPoint==False ,the line begins on the natural bound of the surface.the line can be too long
-	:rtype: bool") HasFirstPoint;
-		Standard_Boolean HasFirstPoint ();
+		%feature("autodoc", "Returns true if the first point of the line is a marching point . when is hasfirstpoint==false ,the line begins on the natural bound of the surface.the line can be too long.
+
+Returns
+-------
+bool
+") HasFirstPoint;
+		Standard_Boolean HasFirstPoint();
 
 		/****************** HasLastPoint ******************/
 		%feature("compactdefaultargs") HasLastPoint;
-		%feature("autodoc", "* Returns True if the end point of the line is a marching point (Point from IntWS). when is HasFirstPoint==False ,the line ends on the natural bound of the surface.the line can be too long.
-	:rtype: bool") HasLastPoint;
-		Standard_Boolean HasLastPoint ();
+		%feature("autodoc", "Returns true if the end point of the line is a marching point (point from intws). when is hasfirstpoint==false ,the line ends on the natural bound of the surface.the line can be too long.
+
+Returns
+-------
+bool
+") HasLastPoint;
+		Standard_Boolean HasLastPoint();
 
 		/****************** IsClosed ******************/
 		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "* Returns True if the line is closed.
-	:rtype: bool") IsClosed;
-		Standard_Boolean IsClosed ();
+		%feature("autodoc", "Returns true if the line is closed.
+
+Returns
+-------
+bool
+") IsClosed;
+		Standard_Boolean IsClosed();
 
 		/****************** IsTangentAtBegining ******************/
 		%feature("compactdefaultargs") IsTangentAtBegining;
-		%feature("autodoc", ":rtype: bool") IsTangentAtBegining;
-		Standard_Boolean IsTangentAtBegining ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsTangentAtBegining;
+		Standard_Boolean IsTangentAtBegining();
 
 		/****************** IsTangentAtEnd ******************/
 		%feature("compactdefaultargs") IsTangentAtEnd;
-		%feature("autodoc", ":rtype: bool") IsTangentAtEnd;
-		Standard_Boolean IsTangentAtEnd ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsTangentAtEnd;
+		Standard_Boolean IsTangentAtEnd();
 
 		/****************** LastPoint ******************/
 		%feature("compactdefaultargs") LastPoint;
-		%feature("autodoc", "* Returns the last point of the line when it is a marching point. An exception is raised if HasLastPoint returns False.
-	:rtype: IntSurf_PathPoint") LastPoint;
-		const IntSurf_PathPoint & LastPoint ();
+		%feature("autodoc", "Returns the last point of the line when it is a marching point. an exception is raised if haslastpoint returns false.
+
+Returns
+-------
+IntSurf_PathPoint
+") LastPoint;
+		const IntSurf_PathPoint & LastPoint();
 
 		/****************** LastPointIndex ******************/
 		%feature("compactdefaultargs") LastPointIndex;
-		%feature("autodoc", "* Returns the index of last point of the line when it is a marching point.This index is the index in the PointStartIterator. An exception is raised if HasLastPoint returns False.
-	:rtype: int") LastPointIndex;
-		Standard_Integer LastPointIndex ();
+		%feature("autodoc", "Returns the index of last point of the line when it is a marching point.this index is the index in the pointstartiterator. an exception is raised if haslastpoint returns false.
+
+Returns
+-------
+int
+") LastPointIndex;
+		Standard_Integer LastPointIndex();
 
 		/****************** Line ******************/
 		%feature("compactdefaultargs") Line;
-		%feature("autodoc", "* Returns the LineOn2S contained in the walking line.
-	:rtype: opencascade::handle<IntSurf_LineOn2S>") Line;
-		const opencascade::handle<IntSurf_LineOn2S> & Line ();
+		%feature("autodoc", "Returns the lineon2s contained in the walking line.
+
+Returns
+-------
+opencascade::handle<IntSurf_LineOn2S>
+") Line;
+		const opencascade::handle<IntSurf_LineOn2S> & Line();
 
 		/****************** NbPassingPoint ******************/
 		%feature("compactdefaultargs") NbPassingPoint;
-		%feature("autodoc", "* returns the number of points belonging to Pnts1 which are passing point.
-	:rtype: int") NbPassingPoint;
-		Standard_Integer NbPassingPoint ();
+		%feature("autodoc", "Returns the number of points belonging to pnts1 which are passing point.
+
+Returns
+-------
+int
+") NbPassingPoint;
+		Standard_Integer NbPassingPoint();
 
 		/****************** NbPoints ******************/
 		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "* Returns the number of points of the line (including first point and end point : see HasLastPoint and HasFirstPoint).
-	:rtype: int") NbPoints;
-		Standard_Integer NbPoints ();
+		%feature("autodoc", "Returns the number of points of the line (including first point and end point : see haslastpoint and hasfirstpoint).
+
+Returns
+-------
+int
+") NbPoints;
+		Standard_Integer NbPoints();
 
 		/****************** PassingPoint ******************/
 		%feature("compactdefaultargs") PassingPoint;
-		%feature("autodoc", "* returns the index of the point belonging to the line which is associated to the passing point belonging to Pnts1 an exception is raised if Index > NbPassingPoint()
-	:param Index:
-	:type Index: int
-	:param IndexLine:
-	:type IndexLine: int
-	:param IndexPnts:
-	:type IndexPnts: int
-	:rtype: None") PassingPoint;
-		void PassingPoint (const Standard_Integer Index,Standard_Integer &OutValue,Standard_Integer &OutValue);
+		%feature("autodoc", "Returns the index of the point belonging to the line which is associated to the passing point belonging to pnts1 an exception is raised if index > nbpassingpoint().
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+IndexLine: int
+IndexPnts: int
+") PassingPoint;
+		void PassingPoint(const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** Reverse ******************/
 		%feature("compactdefaultargs") Reverse;
-		%feature("autodoc", "* reverse the points in the line. Hasfirst, HasLast are kept.
-	:rtype: None") Reverse;
-		void Reverse ();
+		%feature("autodoc", "Reverse the points in the line. hasfirst, haslast are kept.
+
+Returns
+-------
+None
+") Reverse;
+		void Reverse();
 
 		/****************** SetTangencyAtBegining ******************/
 		%feature("compactdefaultargs") SetTangencyAtBegining;
-		%feature("autodoc", ":param IsTangent:
-	:type IsTangent: bool
-	:rtype: None") SetTangencyAtBegining;
-		void SetTangencyAtBegining (const Standard_Boolean IsTangent);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+IsTangent: bool
+
+Returns
+-------
+None
+") SetTangencyAtBegining;
+		void SetTangencyAtBegining(const Standard_Boolean IsTangent);
 
 		/****************** SetTangencyAtEnd ******************/
 		%feature("compactdefaultargs") SetTangencyAtEnd;
-		%feature("autodoc", ":param IsTangent:
-	:type IsTangent: bool
-	:rtype: None") SetTangencyAtEnd;
-		void SetTangencyAtEnd (const Standard_Boolean IsTangent);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+IsTangent: bool
+
+Returns
+-------
+None
+") SetTangencyAtEnd;
+		void SetTangencyAtEnd(const Standard_Boolean IsTangent);
 
 		/****************** SetTangentVector ******************/
 		%feature("compactdefaultargs") SetTangentVector;
-		%feature("autodoc", ":param V:
-	:type V: gp_Vec
-	:param Index:
-	:type Index: int
-	:rtype: None") SetTangentVector;
-		void SetTangentVector (const gp_Vec & V,const Standard_Integer Index);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+V: gp_Vec
+Index: int
+
+Returns
+-------
+None
+") SetTangentVector;
+		void SetTangentVector(const gp_Vec & V, const Standard_Integer Index);
 
 		/****************** TangentVector ******************/
 		%feature("compactdefaultargs") TangentVector;
-		%feature("autodoc", ":param Index:
-	:type Index: int
-	:rtype: gp_Vec") TangentVector;
-		const gp_Vec  TangentVector (Standard_Integer &OutValue);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+
+Returns
+-------
+Index: int
+") TangentVector;
+		const gp_Vec TangentVector(Standard_Integer &OutValue);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "* Returns the point of range Index. If index <= 0 or Index > NbPoints, an exception is raised.
-	:param Index:
-	:type Index: int
-	:rtype: IntSurf_PntOn2S") Value;
-		const IntSurf_PntOn2S & Value (const Standard_Integer Index);
+		%feature("autodoc", "Returns the point of range index. if index <= 0 or index > nbpoints, an exception is raised.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+IntSurf_PntOn2S
+") Value;
+		const IntSurf_PntOn2S & Value(const Standard_Integer Index);
 
 };
 
@@ -1758,93 +2742,132 @@ class Contap_TheIWalking {
 	public:
 		/****************** Contap_TheIWalking ******************/
 		%feature("compactdefaultargs") Contap_TheIWalking;
-		%feature("autodoc", "* Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. Step is the maximum increment admitted between two consecutive points (in 2d space). Epsilon is the tolerance beyond which 2 points are confused. theToFillHoles is the flag defining whether possible holes between resulting curves are filled or not in case of Contap walking theToFillHoles is True
-	:param Epsilon:
-	:type Epsilon: float
-	:param Deflection:
-	:type Deflection: float
-	:param Step:
-	:type Step: float
-	:param theToFillHoles: default value is Standard_False
-	:type theToFillHoles: bool
-	:rtype: None") Contap_TheIWalking;
-		 Contap_TheIWalking (const Standard_Real Epsilon,const Standard_Real Deflection,const Standard_Real Step,const Standard_Boolean theToFillHoles = Standard_False);
+		%feature("autodoc", "Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. step is the maximum increment admitted between two consecutive points (in 2d space). epsilon is the tolerance beyond which 2 points are confused. thetofillholes is the flag defining whether possible holes between resulting curves are filled or not in case of contap walking thetofillholes is true.
+
+Parameters
+----------
+Epsilon: float
+Deflection: float
+Step: float
+theToFillHoles: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") Contap_TheIWalking;
+		 Contap_TheIWalking(const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Step, const Standard_Boolean theToFillHoles = Standard_False);
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "* Returns true if the calculus was successful.
-	:rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "Returns true if the calculus was successful.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** NbLines ******************/
 		%feature("compactdefaultargs") NbLines;
-		%feature("autodoc", "* Returns the number of resulting polylines. An exception is raised if IsDone returns False.
-	:rtype: int") NbLines;
-		Standard_Integer NbLines ();
+		%feature("autodoc", "Returns the number of resulting polylines. an exception is raised if isdone returns false.
+
+Returns
+-------
+int
+") NbLines;
+		Standard_Integer NbLines();
 
 		/****************** NbSinglePnts ******************/
 		%feature("compactdefaultargs") NbSinglePnts;
-		%feature("autodoc", "* Returns the number of points belonging to Pnts on which no line starts or ends. An exception is raised if IsDone returns False.
-	:rtype: int") NbSinglePnts;
-		Standard_Integer NbSinglePnts ();
+		%feature("autodoc", "Returns the number of points belonging to pnts on which no line starts or ends. an exception is raised if isdone returns false.
+
+Returns
+-------
+int
+") NbSinglePnts;
+		Standard_Integer NbSinglePnts();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Searches a set of polylines starting on a point of Pnts1 or Pnts2. Each point on a resulting polyline verifies F(u,v)=0
-	:param Pnts1:
-	:type Pnts1: IntSurf_SequenceOfPathPoint
-	:param Pnts2:
-	:type Pnts2: IntSurf_SequenceOfInteriorPoint
-	:param Func:
-	:type Func: Contap_SurfFunction
-	:param S:
-	:type S: Adaptor3d_HSurface
-	:param Reversed: default value is Standard_False
-	:type Reversed: bool
-	:rtype: None") Perform;
-		void Perform (const IntSurf_SequenceOfPathPoint & Pnts1,const IntSurf_SequenceOfInteriorPoint & Pnts2,Contap_SurfFunction & Func,const opencascade::handle<Adaptor3d_HSurface> & S,const Standard_Boolean Reversed = Standard_False);
+		%feature("autodoc", "Searches a set of polylines starting on a point of pnts1 or pnts2. each point on a resulting polyline verifies f(u,v)=0.
+
+Parameters
+----------
+Pnts1: IntSurf_SequenceOfPathPoint
+Pnts2: IntSurf_SequenceOfInteriorPoint
+Func: Contap_SurfFunction
+S: Adaptor3d_HSurface
+Reversed: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, const IntSurf_SequenceOfInteriorPoint & Pnts2, Contap_SurfFunction & Func, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Boolean Reversed = Standard_False);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Searches a set of polylines starting on a point of Pnts1. Each point on a resulting polyline verifies F(u,v)=0
-	:param Pnts1:
-	:type Pnts1: IntSurf_SequenceOfPathPoint
-	:param Func:
-	:type Func: Contap_SurfFunction
-	:param S:
-	:type S: Adaptor3d_HSurface
-	:param Reversed: default value is Standard_False
-	:type Reversed: bool
-	:rtype: None") Perform;
-		void Perform (const IntSurf_SequenceOfPathPoint & Pnts1,Contap_SurfFunction & Func,const opencascade::handle<Adaptor3d_HSurface> & S,const Standard_Boolean Reversed = Standard_False);
+		%feature("autodoc", "Searches a set of polylines starting on a point of pnts1. each point on a resulting polyline verifies f(u,v)=0.
+
+Parameters
+----------
+Pnts1: IntSurf_SequenceOfPathPoint
+Func: Contap_SurfFunction
+S: Adaptor3d_HSurface
+Reversed: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, Contap_SurfFunction & Func, const opencascade::handle<Adaptor3d_HSurface> & S, const Standard_Boolean Reversed = Standard_False);
 
 		/****************** SetTolerance ******************/
 		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "* Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. Step is the maximum increment admitted between two consecutive points (in 2d space). Epsilon is the tolerance beyond which 2 points are confused
-	:param Epsilon:
-	:type Epsilon: float
-	:param Deflection:
-	:type Deflection: float
-	:param Step:
-	:type Step: float
-	:rtype: None") SetTolerance;
-		void SetTolerance (const Standard_Real Epsilon,const Standard_Real Deflection,const Standard_Real Step);
+		%feature("autodoc", "Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. step is the maximum increment admitted between two consecutive points (in 2d space). epsilon is the tolerance beyond which 2 points are confused.
+
+Parameters
+----------
+Epsilon: float
+Deflection: float
+Step: float
+
+Returns
+-------
+None
+") SetTolerance;
+		void SetTolerance(const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Step);
 
 		/****************** SinglePnt ******************/
 		%feature("compactdefaultargs") SinglePnt;
-		%feature("autodoc", "* Returns the point of range Index . An exception is raised if IsDone returns False. An exception is raised if Index<=0 or Index > NbSinglePnts.
-	:param Index:
-	:type Index: int
-	:rtype: IntSurf_PathPoint") SinglePnt;
-		const IntSurf_PathPoint & SinglePnt (const Standard_Integer Index);
+		%feature("autodoc", "Returns the point of range index . an exception is raised if isdone returns false. an exception is raised if index<=0 or index > nbsinglepnts.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+IntSurf_PathPoint
+") SinglePnt;
+		const IntSurf_PathPoint & SinglePnt(const Standard_Integer Index);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "* Returns the polyline of range Index. An exception is raised if IsDone is False. An exception is raised if Index<=0 or Index>NbLines.
-	:param Index:
-	:type Index: int
-	:rtype: opencascade::handle<Contap_TheIWLineOfTheIWalking>") Value;
-		const opencascade::handle<Contap_TheIWLineOfTheIWalking> & Value (const Standard_Integer Index);
+		%feature("autodoc", "Returns the polyline of range index. an exception is raised if isdone is false. an exception is raised if index<=0 or index>nblines.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+opencascade::handle<Contap_TheIWLineOfTheIWalking>
+") Value;
+		const opencascade::handle<Contap_TheIWLineOfTheIWalking> & Value(const Standard_Integer Index);
 
 };
 
@@ -1860,96 +2883,145 @@ class Contap_TheIWalking {
 ***************************************/
 class Contap_ThePathPointOfTheSearch {
 	public:
+		/****************** Contap_ThePathPointOfTheSearch ******************/
+		%feature("compactdefaultargs") Contap_ThePathPointOfTheSearch;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Contap_ThePathPointOfTheSearch;
+		 Contap_ThePathPointOfTheSearch();
+
+		/****************** Contap_ThePathPointOfTheSearch ******************/
+		%feature("compactdefaultargs") Contap_ThePathPointOfTheSearch;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+P: gp_Pnt
+Tol: float
+V: Adaptor3d_HVertex
+A: Adaptor2d_HCurve2d
+Parameter: float
+
+Returns
+-------
+None
+") Contap_ThePathPointOfTheSearch;
+		 Contap_ThePathPointOfTheSearch(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Parameter);
+
+		/****************** Contap_ThePathPointOfTheSearch ******************/
+		%feature("compactdefaultargs") Contap_ThePathPointOfTheSearch;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+P: gp_Pnt
+Tol: float
+A: Adaptor2d_HCurve2d
+Parameter: float
+
+Returns
+-------
+None
+") Contap_ThePathPointOfTheSearch;
+		 Contap_ThePathPointOfTheSearch(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Parameter);
+
 		/****************** Arc ******************/
 		%feature("compactdefaultargs") Arc;
-		%feature("autodoc", ":rtype: opencascade::handle<Adaptor2d_HCurve2d>") Arc;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Arc ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** Contap_ThePathPointOfTheSearch ******************/
-		%feature("compactdefaultargs") Contap_ThePathPointOfTheSearch;
-		%feature("autodoc", ":rtype: None") Contap_ThePathPointOfTheSearch;
-		 Contap_ThePathPointOfTheSearch ();
-
-		/****************** Contap_ThePathPointOfTheSearch ******************/
-		%feature("compactdefaultargs") Contap_ThePathPointOfTheSearch;
-		%feature("autodoc", ":param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float
-	:param V:
-	:type V: Adaptor3d_HVertex
-	:param A:
-	:type A: Adaptor2d_HCurve2d
-	:param Parameter:
-	:type Parameter: float
-	:rtype: None") Contap_ThePathPointOfTheSearch;
-		 Contap_ThePathPointOfTheSearch (const gp_Pnt & P,const Standard_Real Tol,const opencascade::handle<Adaptor3d_HVertex> & V,const opencascade::handle<Adaptor2d_HCurve2d> & A,const Standard_Real Parameter);
-
-		/****************** Contap_ThePathPointOfTheSearch ******************/
-		%feature("compactdefaultargs") Contap_ThePathPointOfTheSearch;
-		%feature("autodoc", ":param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float
-	:param A:
-	:type A: Adaptor2d_HCurve2d
-	:param Parameter:
-	:type Parameter: float
-	:rtype: None") Contap_ThePathPointOfTheSearch;
-		 Contap_ThePathPointOfTheSearch (const gp_Pnt & P,const Standard_Real Tol,const opencascade::handle<Adaptor2d_HCurve2d> & A,const Standard_Real Parameter);
+Returns
+-------
+opencascade::handle<Adaptor2d_HCurve2d>
+") Arc;
+		const opencascade::handle<Adaptor2d_HCurve2d> & Arc();
 
 		/****************** IsNew ******************/
 		%feature("compactdefaultargs") IsNew;
-		%feature("autodoc", ":rtype: bool") IsNew;
-		Standard_Boolean IsNew ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsNew;
+		Standard_Boolean IsNew();
 
 		/****************** Parameter ******************/
 		%feature("compactdefaultargs") Parameter;
-		%feature("autodoc", ":rtype: float") Parameter;
-		Standard_Real Parameter ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") Parameter;
+		Standard_Real Parameter();
 
 		/****************** SetValue ******************/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", ":param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float
-	:param V:
-	:type V: Adaptor3d_HVertex
-	:param A:
-	:type A: Adaptor2d_HCurve2d
-	:param Parameter:
-	:type Parameter: float
-	:rtype: None") SetValue;
-		void SetValue (const gp_Pnt & P,const Standard_Real Tol,const opencascade::handle<Adaptor3d_HVertex> & V,const opencascade::handle<Adaptor2d_HCurve2d> & A,const Standard_Real Parameter);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+P: gp_Pnt
+Tol: float
+V: Adaptor3d_HVertex
+A: Adaptor2d_HCurve2d
+Parameter: float
+
+Returns
+-------
+None
+") SetValue;
+		void SetValue(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Parameter);
 
 		/****************** SetValue ******************/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", ":param P:
-	:type P: gp_Pnt
-	:param Tol:
-	:type Tol: float
-	:param A:
-	:type A: Adaptor2d_HCurve2d
-	:param Parameter:
-	:type Parameter: float
-	:rtype: None") SetValue;
-		void SetValue (const gp_Pnt & P,const Standard_Real Tol,const opencascade::handle<Adaptor2d_HCurve2d> & A,const Standard_Real Parameter);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+P: gp_Pnt
+Tol: float
+A: Adaptor2d_HCurve2d
+Parameter: float
+
+Returns
+-------
+None
+") SetValue;
+		void SetValue(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor2d_HCurve2d> & A, const Standard_Real Parameter);
 
 		/****************** Tolerance ******************/
 		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", ":rtype: float") Tolerance;
-		Standard_Real Tolerance ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") Tolerance;
+		Standard_Real Tolerance();
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", ":rtype: gp_Pnt") Value;
-		const gp_Pnt  Value ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+gp_Pnt
+") Value;
+		const gp_Pnt Value();
 
 		/****************** Vertex ******************/
 		%feature("compactdefaultargs") Vertex;
-		%feature("autodoc", ":rtype: opencascade::handle<Adaptor3d_HVertex>") Vertex;
-		const opencascade::handle<Adaptor3d_HVertex> & Vertex ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Adaptor3d_HVertex>
+") Vertex;
+		const opencascade::handle<Adaptor3d_HVertex> & Vertex();
 
 };
 
@@ -1965,67 +3037,102 @@ class Contap_ThePathPointOfTheSearch {
 *************************/
 class Contap_TheSearch {
 	public:
-		/****************** AllArcSolution ******************/
-		%feature("compactdefaultargs") AllArcSolution;
-		%feature("autodoc", "* Returns true if all arc of the Arcs are solution (inside the surface). An exception is raised if IsDone returns False.
-	:rtype: bool") AllArcSolution;
-		Standard_Boolean AllArcSolution ();
-
 		/****************** Contap_TheSearch ******************/
 		%feature("compactdefaultargs") Contap_TheSearch;
-		%feature("autodoc", "* Empty constructor.
-	:rtype: None") Contap_TheSearch;
-		 Contap_TheSearch ();
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Contap_TheSearch;
+		 Contap_TheSearch();
+
+		/****************** AllArcSolution ******************/
+		%feature("compactdefaultargs") AllArcSolution;
+		%feature("autodoc", "Returns true if all arc of the arcs are solution (inside the surface). an exception is raised if isdone returns false.
+
+Returns
+-------
+bool
+") AllArcSolution;
+		Standard_Boolean AllArcSolution();
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "* Returns True if the calculus was successful.
-	:rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "Returns true if the calculus was successful.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** NbPoints ******************/
 		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "* Returns the number of resulting points. An exception is raised if IsDone returns False (NotDone).
-	:rtype: int") NbPoints;
-		Standard_Integer NbPoints ();
+		%feature("autodoc", "Returns the number of resulting points. an exception is raised if isdone returns false (notdone).
+
+Returns
+-------
+int
+") NbPoints;
+		Standard_Integer NbPoints();
 
 		/****************** NbSegments ******************/
 		%feature("compactdefaultargs") NbSegments;
-		%feature("autodoc", "* Returns the number of the resulting segments. An exception is raised if IsDone returns False (NotDone).
-	:rtype: int") NbSegments;
-		Standard_Integer NbSegments ();
+		%feature("autodoc", "Returns the number of the resulting segments. an exception is raised if isdone returns false (notdone).
+
+Returns
+-------
+int
+") NbSegments;
+		Standard_Integer NbSegments();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "* Algorithm to find the points and parts of curves of Domain (domain of of restriction of a surface) which verify F = 0. TolBoundary defines if a curve is on Q. TolTangency defines if a point is on Q.
-	:param F:
-	:type F: Contap_ArcFunction
-	:param Domain:
-	:type Domain: Adaptor3d_TopolTool
-	:param TolBoundary:
-	:type TolBoundary: float
-	:param TolTangency:
-	:type TolTangency: float
-	:param RecheckOnRegularity: default value is Standard_False
-	:type RecheckOnRegularity: bool
-	:rtype: None") Perform;
-		void Perform (Contap_ArcFunction & F,const opencascade::handle<Adaptor3d_TopolTool> & Domain,const Standard_Real TolBoundary,const Standard_Real TolTangency,const Standard_Boolean RecheckOnRegularity = Standard_False);
+		%feature("autodoc", "Algorithm to find the points and parts of curves of domain (domain of of restriction of a surface) which verify f = 0. tolboundary defines if a curve is on q. toltangency defines if a point is on q.
+
+Parameters
+----------
+F: Contap_ArcFunction
+Domain: Adaptor3d_TopolTool
+TolBoundary: float
+TolTangency: float
+RecheckOnRegularity: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") Perform;
+		void Perform(Contap_ArcFunction & F, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const Standard_Real TolBoundary, const Standard_Real TolTangency, const Standard_Boolean RecheckOnRegularity = Standard_False);
 
 		/****************** Point ******************/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "* Returns the resulting point of range Index. The exception NotDone is raised if IsDone() returns False. The exception OutOfRange is raised if Index <= 0 or Index > NbPoints.
-	:param Index:
-	:type Index: int
-	:rtype: Contap_ThePathPointOfTheSearch") Point;
-		const Contap_ThePathPointOfTheSearch & Point (const Standard_Integer Index);
+		%feature("autodoc", "Returns the resulting point of range index. the exception notdone is raised if isdone() returns false. the exception outofrange is raised if index <= 0 or index > nbpoints.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+Contap_ThePathPointOfTheSearch
+") Point;
+		const Contap_ThePathPointOfTheSearch & Point(const Standard_Integer Index);
 
 		/****************** Segment ******************/
 		%feature("compactdefaultargs") Segment;
-		%feature("autodoc", "* Returns the resulting segment of range Index. The exception NotDone is raised if IsDone() returns False. The exception OutOfRange is raised if Index <= 0 or Index > NbPoints.
-	:param Index:
-	:type Index: int
-	:rtype: Contap_TheSegmentOfTheSearch") Segment;
-		const Contap_TheSegmentOfTheSearch & Segment (const Standard_Integer Index);
+		%feature("autodoc", "Returns the resulting segment of range index. the exception notdone is raised if isdone() returns false. the exception outofrange is raised if index <= 0 or index > nbpoints.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+Contap_TheSegmentOfTheSearch
+") Segment;
+		const Contap_TheSegmentOfTheSearch & Segment(const Standard_Integer Index);
 
 };
 
@@ -2043,66 +3150,98 @@ class Contap_TheSearchInside {
 	public:
 		/****************** Contap_TheSearchInside ******************/
 		%feature("compactdefaultargs") Contap_TheSearchInside;
-		%feature("autodoc", ":rtype: None") Contap_TheSearchInside;
-		 Contap_TheSearchInside ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Contap_TheSearchInside;
+		 Contap_TheSearchInside();
 
 		/****************** Contap_TheSearchInside ******************/
 		%feature("compactdefaultargs") Contap_TheSearchInside;
-		%feature("autodoc", ":param F:
-	:type F: Contap_SurfFunction
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param T:
-	:type T: Adaptor3d_TopolTool
-	:param Epsilon:
-	:type Epsilon: float
-	:rtype: None") Contap_TheSearchInside;
-		 Contap_TheSearchInside (Contap_SurfFunction & F,const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & T,const Standard_Real Epsilon);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+F: Contap_SurfFunction
+Surf: Adaptor3d_HSurface
+T: Adaptor3d_TopolTool
+Epsilon: float
+
+Returns
+-------
+None
+") Contap_TheSearchInside;
+		 Contap_TheSearchInside(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const Standard_Real Epsilon);
 
 		/****************** IsDone ******************/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", ":rtype: bool") IsDone;
-		Standard_Boolean IsDone ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsDone;
+		Standard_Boolean IsDone();
 
 		/****************** NbPoints ******************/
 		%feature("compactdefaultargs") NbPoints;
-		%feature("autodoc", "* Returns the number of points. The exception NotDone if raised if IsDone returns False.
-	:rtype: int") NbPoints;
-		Standard_Integer NbPoints ();
+		%feature("autodoc", "Returns the number of points. the exception notdone if raised if isdone returns false.
+
+Returns
+-------
+int
+") NbPoints;
+		Standard_Integer NbPoints();
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param F:
-	:type F: Contap_SurfFunction
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param T:
-	:type T: Adaptor3d_TopolTool
-	:param Epsilon:
-	:type Epsilon: float
-	:rtype: None") Perform;
-		void Perform (Contap_SurfFunction & F,const opencascade::handle<Adaptor3d_HSurface> & Surf,const opencascade::handle<Adaptor3d_TopolTool> & T,const Standard_Real Epsilon);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+F: Contap_SurfFunction
+Surf: Adaptor3d_HSurface
+T: Adaptor3d_TopolTool
+Epsilon: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_HSurface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const Standard_Real Epsilon);
 
 		/****************** Perform ******************/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", ":param F:
-	:type F: Contap_SurfFunction
-	:param Surf:
-	:type Surf: Adaptor3d_HSurface
-	:param UStart:
-	:type UStart: float
-	:param VStart:
-	:type VStart: float
-	:rtype: None") Perform;
-		void Perform (Contap_SurfFunction & F,const opencascade::handle<Adaptor3d_HSurface> & Surf,const Standard_Real UStart,const Standard_Real VStart);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+F: Contap_SurfFunction
+Surf: Adaptor3d_HSurface
+UStart: float
+VStart: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_HSurface> & Surf, const Standard_Real UStart, const Standard_Real VStart);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "* Returns the point of range Index. The exception NotDone if raised if IsDone returns False. The exception OutOfRange if raised if Index <= 0 or Index > NbPoints.
-	:param Index:
-	:type Index: int
-	:rtype: IntSurf_InteriorPoint") Value;
-		const IntSurf_InteriorPoint & Value (const Standard_Integer Index);
+		%feature("autodoc", "Returns the point of range index. the exception notdone if raised if isdone returns false. the exception outofrange if raised if index <= 0 or index > nbpoints.
+
+Parameters
+----------
+Index: int
+
+Returns
+-------
+IntSurf_InteriorPoint
+") Value;
+		const IntSurf_InteriorPoint & Value(const Standard_Integer Index);
 
 };
 
@@ -2120,57 +3259,92 @@ class Contap_TheSegmentOfTheSearch {
 	public:
 		/****************** Contap_TheSegmentOfTheSearch ******************/
 		%feature("compactdefaultargs") Contap_TheSegmentOfTheSearch;
-		%feature("autodoc", "* Empty constructor.
-	:rtype: None") Contap_TheSegmentOfTheSearch;
-		 Contap_TheSegmentOfTheSearch ();
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") Contap_TheSegmentOfTheSearch;
+		 Contap_TheSegmentOfTheSearch();
 
 		/****************** Curve ******************/
 		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "* Returns the geometric curve on the surface 's domain which is solution.
-	:rtype: opencascade::handle<Adaptor2d_HCurve2d>") Curve;
-		const opencascade::handle<Adaptor2d_HCurve2d> & Curve ();
+		%feature("autodoc", "Returns the geometric curve on the surface 's domain which is solution.
+
+Returns
+-------
+opencascade::handle<Adaptor2d_HCurve2d>
+") Curve;
+		const opencascade::handle<Adaptor2d_HCurve2d> & Curve();
 
 		/****************** FirstPoint ******************/
 		%feature("compactdefaultargs") FirstPoint;
-		%feature("autodoc", "* Returns the first point.
-	:rtype: Contap_ThePathPointOfTheSearch") FirstPoint;
-		const Contap_ThePathPointOfTheSearch & FirstPoint ();
+		%feature("autodoc", "Returns the first point.
+
+Returns
+-------
+Contap_ThePathPointOfTheSearch
+") FirstPoint;
+		const Contap_ThePathPointOfTheSearch & FirstPoint();
 
 		/****************** HasFirstPoint ******************/
 		%feature("compactdefaultargs") HasFirstPoint;
-		%feature("autodoc", "* Returns True if there is a vertex (ThePathPoint) defining the lowest valid parameter on the arc.
-	:rtype: bool") HasFirstPoint;
-		Standard_Boolean HasFirstPoint ();
+		%feature("autodoc", "Returns true if there is a vertex (thepathpoint) defining the lowest valid parameter on the arc.
+
+Returns
+-------
+bool
+") HasFirstPoint;
+		Standard_Boolean HasFirstPoint();
 
 		/****************** HasLastPoint ******************/
 		%feature("compactdefaultargs") HasLastPoint;
-		%feature("autodoc", "* Returns True if there is a vertex (ThePathPoint) defining the greatest valid parameter on the arc.
-	:rtype: bool") HasLastPoint;
-		Standard_Boolean HasLastPoint ();
+		%feature("autodoc", "Returns true if there is a vertex (thepathpoint) defining the greatest valid parameter on the arc.
+
+Returns
+-------
+bool
+") HasLastPoint;
+		Standard_Boolean HasLastPoint();
 
 		/****************** LastPoint ******************/
 		%feature("compactdefaultargs") LastPoint;
-		%feature("autodoc", "* Returns the last point.
-	:rtype: Contap_ThePathPointOfTheSearch") LastPoint;
-		const Contap_ThePathPointOfTheSearch & LastPoint ();
+		%feature("autodoc", "Returns the last point.
+
+Returns
+-------
+Contap_ThePathPointOfTheSearch
+") LastPoint;
+		const Contap_ThePathPointOfTheSearch & LastPoint();
 
 		/****************** SetLimitPoint ******************/
 		%feature("compactdefaultargs") SetLimitPoint;
-		%feature("autodoc", "* Defines the first point or the last point, depending on the value of the boolean First.
-	:param V:
-	:type V: Contap_ThePathPointOfTheSearch
-	:param First:
-	:type First: bool
-	:rtype: None") SetLimitPoint;
-		void SetLimitPoint (const Contap_ThePathPointOfTheSearch & V,const Standard_Boolean First);
+		%feature("autodoc", "Defines the first point or the last point, depending on the value of the boolean first.
+
+Parameters
+----------
+V: Contap_ThePathPointOfTheSearch
+First: bool
+
+Returns
+-------
+None
+") SetLimitPoint;
+		void SetLimitPoint(const Contap_ThePathPointOfTheSearch & V, const Standard_Boolean First);
 
 		/****************** SetValue ******************/
 		%feature("compactdefaultargs") SetValue;
-		%feature("autodoc", "* Defines the concerned arc.
-	:param A:
-	:type A: Adaptor2d_HCurve2d
-	:rtype: None") SetValue;
-		void SetValue (const opencascade::handle<Adaptor2d_HCurve2d> & A);
+		%feature("autodoc", "Defines the concerned arc.
+
+Parameters
+----------
+A: Adaptor2d_HCurve2d
+
+Returns
+-------
+None
+") SetValue;
+		void SetValue(const opencascade::handle<Adaptor2d_HCurve2d> & A);
 
 };
 
@@ -2184,14 +3358,14 @@ class Contap_TheSegmentOfTheSearch {
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class Contap_TheHSequenceOfPoint : public  Contap_TheSequenceOfPoint, public Standard_Transient {
+class Contap_TheHSequenceOfPoint : public Contap_TheSequenceOfPoint, public Standard_Transient {
   public:
     Contap_TheHSequenceOfPoint();
-    Contap_TheHSequenceOfPoint(const  Contap_TheSequenceOfPoint& theOther);
-    const  Contap_TheSequenceOfPoint& Sequence();
-    void Append (const  Contap_TheSequenceOfPoint::value_type& theItem);
-    void Append ( Contap_TheSequenceOfPoint& theSequence);
-     Contap_TheSequenceOfPoint& ChangeSequence();
+    Contap_TheHSequenceOfPoint(const Contap_TheSequenceOfPoint& theOther);
+    const Contap_TheSequenceOfPoint& Sequence();
+    void Append (const Contap_TheSequenceOfPoint::value_type& theItem);
+    void Append (Contap_TheSequenceOfPoint& theSequence);
+    Contap_TheSequenceOfPoint& ChangeSequence();
 };
 %make_alias(Contap_TheHSequenceOfPoint)
 

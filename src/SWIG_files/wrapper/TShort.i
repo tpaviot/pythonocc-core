@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -49,8 +49,19 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tshort.html"
 %};
 %import Standard.i
 %import NCollection.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 %wrap_handle(TShort_HArray1OfShortReal)
@@ -59,11 +70,9 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tshort.html"
 /* end handles declaration */
 
 /* templates */
-%template(TShort_SequenceOfShortReal) NCollection_Sequence <Standard_ShortReal>;
-%template(TShort_Array2OfShortReal) NCollection_Array2 <Standard_ShortReal>;
-%template(TShort_Array1OfShortReal) NCollection_Array1 <Standard_ShortReal>;
+%template(TShort_Array1OfShortReal) NCollection_Array1<Standard_ShortReal>;
 
-%extend NCollection_Array1 <Standard_ShortReal> {
+%extend NCollection_Array1<Standard_ShortReal> {
     %pythoncode {
     def __getitem__(self, index):
         if index + self.Lower() > self.Upper():
@@ -96,49 +105,51 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tshort.html"
     __next__ = next
     }
 };
+%template(TShort_Array2OfShortReal) NCollection_Array2<Standard_ShortReal>;
+%template(TShort_SequenceOfShortReal) NCollection_Sequence<Standard_ShortReal>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence <Standard_ShortReal> TShort_SequenceOfShortReal;
-typedef NCollection_Array2 <Standard_ShortReal> TShort_Array2OfShortReal;
-typedef NCollection_Array1 <Standard_ShortReal> TShort_Array1OfShortReal;
+typedef NCollection_Array1<Standard_ShortReal> TShort_Array1OfShortReal;
+typedef NCollection_Array2<Standard_ShortReal> TShort_Array2OfShortReal;
+typedef NCollection_Sequence<Standard_ShortReal> TShort_SequenceOfShortReal;
 /* end typedefs declaration */
 
 /* harray1 classes */
-class TShort_HArray1OfShortReal : public  TShort_Array1OfShortReal, public Standard_Transient {
+
+class TShort_HArray1OfShortReal : public TShort_Array1OfShortReal, public Standard_Transient {
   public:
     TShort_HArray1OfShortReal(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TShort_HArray1OfShortReal(const Standard_Integer theLower, const Standard_Integer theUpper, const  TShort_Array1OfShortReal::value_type& theValue);
-    TShort_HArray1OfShortReal(const  TShort_Array1OfShortReal& theOther);
-    const  TShort_Array1OfShortReal& Array1();
-     TShort_Array1OfShortReal& ChangeArray1();
+    TShort_HArray1OfShortReal(const Standard_Integer theLower, const Standard_Integer theUpper, const TShort_Array1OfShortReal::value_type& theValue);
+    TShort_HArray1OfShortReal(const TShort_Array1OfShortReal& theOther);
+    const TShort_Array1OfShortReal& Array1();
+    TShort_Array1OfShortReal& ChangeArray1();
 };
 %make_alias(TShort_HArray1OfShortReal)
 
-
 /* harray2 classes */
-class TShort_HArray2OfShortReal : public  TShort_Array2OfShortReal, public Standard_Transient {
+class TShort_HArray2OfShortReal : public TShort_Array2OfShortReal, public Standard_Transient {
   public:
     TShort_HArray2OfShortReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     TShort_HArray2OfShortReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const  TShort_Array2OfShortReal::value_type& theValue);
-    TShort_HArray2OfShortReal(const  TShort_Array2OfShortReal& theOther);
-    const  TShort_Array2OfShortReal& Array2 ();
-     TShort_Array2OfShortReal& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const TShort_Array2OfShortReal::value_type& theValue);
+    TShort_HArray2OfShortReal(const TShort_Array2OfShortReal& theOther);
+    const TShort_Array2OfShortReal& Array2 ();
+    TShort_Array2OfShortReal& ChangeArray2 (); 
 };
 %make_alias(TShort_HArray2OfShortReal)
 
 
 /* hsequence classes */
-class TShort_HSequenceOfShortReal : public  TShort_SequenceOfShortReal, public Standard_Transient {
+class TShort_HSequenceOfShortReal : public TShort_SequenceOfShortReal, public Standard_Transient {
   public:
     TShort_HSequenceOfShortReal();
-    TShort_HSequenceOfShortReal(const  TShort_SequenceOfShortReal& theOther);
-    const  TShort_SequenceOfShortReal& Sequence();
-    void Append (const  TShort_SequenceOfShortReal::value_type& theItem);
-    void Append ( TShort_SequenceOfShortReal& theSequence);
-     TShort_SequenceOfShortReal& ChangeSequence();
+    TShort_HSequenceOfShortReal(const TShort_SequenceOfShortReal& theOther);
+    const TShort_SequenceOfShortReal& Sequence();
+    void Append (const TShort_SequenceOfShortReal::value_type& theItem);
+    void Append (TShort_SequenceOfShortReal& theSequence);
+    TShort_SequenceOfShortReal& ChangeSequence();
 };
 %make_alias(TShort_HSequenceOfShortReal)
 

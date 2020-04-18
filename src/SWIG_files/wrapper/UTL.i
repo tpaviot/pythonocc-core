@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -56,8 +56,19 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_utl.html"
 %import TCollection.i
 %import OSD.i
 %import Resource.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */
@@ -76,139 +87,257 @@ class UTL {
 	public:
 		/****************** AddToUserInfo ******************/
 		%feature("compactdefaultargs") AddToUserInfo;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param anInfo:
-	:type anInfo: TCollection_ExtendedString
-	:rtype: void") AddToUserInfo;
-		static void AddToUserInfo (const opencascade::handle<Storage_Data> & aData,const TCollection_ExtendedString & anInfo);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+anInfo: TCollection_ExtendedString
+
+Returns
+-------
+None
+") AddToUserInfo;
+		static void AddToUserInfo(const opencascade::handle<Storage_Data> & aData, const TCollection_ExtendedString & anInfo);
 
 		/****************** CString ******************/
 		%feature("compactdefaultargs") CString;
-		%feature("autodoc", ":param anExtendedString:
-	:type anExtendedString: TCollection_ExtendedString
-	:rtype: char *") CString;
-		static const char * CString (const TCollection_ExtendedString & anExtendedString);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+anExtendedString: TCollection_ExtendedString
+
+Returns
+-------
+char *
+") CString;
+		static const char * CString(const TCollection_ExtendedString & anExtendedString);
 
 		/****************** Disk ******************/
 		%feature("compactdefaultargs") Disk;
-		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path
-	:rtype: TCollection_ExtendedString") Disk;
-		static TCollection_ExtendedString Disk (const OSD_Path & aPath);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aPath: OSD_Path
+
+Returns
+-------
+TCollection_ExtendedString
+") Disk;
+		static TCollection_ExtendedString Disk(const OSD_Path & aPath);
 
 		/****************** ExtendedString ******************/
 		%feature("compactdefaultargs") ExtendedString;
-		%feature("autodoc", ":param anAsciiString:
-	:type anAsciiString: TCollection_AsciiString
-	:rtype: TCollection_ExtendedString") ExtendedString;
-		static TCollection_ExtendedString ExtendedString (const TCollection_AsciiString & anAsciiString);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+anAsciiString: TCollection_AsciiString
+
+Returns
+-------
+TCollection_ExtendedString
+") ExtendedString;
+		static TCollection_ExtendedString ExtendedString(const TCollection_AsciiString & anAsciiString);
 
 		/****************** Extension ******************/
 		%feature("compactdefaultargs") Extension;
-		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path
-	:rtype: TCollection_ExtendedString") Extension;
-		static TCollection_ExtendedString Extension (const OSD_Path & aPath);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aPath: OSD_Path
+
+Returns
+-------
+TCollection_ExtendedString
+") Extension;
+		static TCollection_ExtendedString Extension(const OSD_Path & aPath);
 
 		/****************** Extension ******************/
 		%feature("compactdefaultargs") Extension;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:rtype: TCollection_ExtendedString") Extension;
-		static TCollection_ExtendedString Extension (const TCollection_ExtendedString & aFileName);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+
+Returns
+-------
+TCollection_ExtendedString
+") Extension;
+		static TCollection_ExtendedString Extension(const TCollection_ExtendedString & aFileName);
 
 		/****************** FileIterator ******************/
 		%feature("compactdefaultargs") FileIterator;
-		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path
-	:param aMask:
-	:type aMask: TCollection_ExtendedString
-	:rtype: OSD_FileIterator") FileIterator;
-		static OSD_FileIterator FileIterator (const OSD_Path & aPath,const TCollection_ExtendedString & aMask);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aPath: OSD_Path
+aMask: TCollection_ExtendedString
+
+Returns
+-------
+OSD_FileIterator
+") FileIterator;
+		static OSD_FileIterator FileIterator(const OSD_Path & aPath, const TCollection_ExtendedString & aMask);
 
 		/****************** Find ******************/
 		%feature("compactdefaultargs") Find;
-		%feature("autodoc", ":param aResourceManager:
-	:type aResourceManager: Resource_Manager
-	:param aResourceName:
-	:type aResourceName: TCollection_ExtendedString
-	:rtype: bool") Find;
-		static Standard_Boolean Find (const opencascade::handle<Resource_Manager> & aResourceManager,const TCollection_ExtendedString & aResourceName);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aResourceManager: Resource_Manager
+aResourceName: TCollection_ExtendedString
+
+Returns
+-------
+bool
+") Find;
+		static Standard_Boolean Find(const opencascade::handle<Resource_Manager> & aResourceManager, const TCollection_ExtendedString & aResourceName);
 
 		/****************** GUID ******************/
 		%feature("compactdefaultargs") GUID;
-		%feature("autodoc", ":param anXString:
-	:type anXString: TCollection_ExtendedString
-	:rtype: Standard_GUID") GUID;
-		static Standard_GUID GUID (const TCollection_ExtendedString & anXString);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+anXString: TCollection_ExtendedString
+
+Returns
+-------
+Standard_GUID
+") GUID;
+		static Standard_GUID GUID(const TCollection_ExtendedString & anXString);
 
 		/****************** IntegerValue ******************/
 		%feature("compactdefaultargs") IntegerValue;
-		%feature("autodoc", ":param anExtendedString:
-	:type anExtendedString: TCollection_ExtendedString
-	:rtype: int") IntegerValue;
-		static Standard_Integer IntegerValue (const TCollection_ExtendedString & anExtendedString);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+anExtendedString: TCollection_ExtendedString
+
+Returns
+-------
+int
+") IntegerValue;
+		static Standard_Integer IntegerValue(const TCollection_ExtendedString & anExtendedString);
 
 		/****************** IsReadOnly ******************/
 		%feature("compactdefaultargs") IsReadOnly;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:rtype: bool") IsReadOnly;
-		static Standard_Boolean IsReadOnly (const TCollection_ExtendedString & aFileName);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+
+Returns
+-------
+bool
+") IsReadOnly;
+		static Standard_Boolean IsReadOnly(const TCollection_ExtendedString & aFileName);
 
 		/****************** LocalHost ******************/
 		%feature("compactdefaultargs") LocalHost;
-		%feature("autodoc", ":rtype: TCollection_ExtendedString") LocalHost;
-		static TCollection_ExtendedString LocalHost ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TCollection_ExtendedString
+") LocalHost;
+		static TCollection_ExtendedString LocalHost();
 
 		/****************** Name ******************/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path
-	:rtype: TCollection_ExtendedString") Name;
-		static TCollection_ExtendedString Name (const OSD_Path & aPath);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aPath: OSD_Path
+
+Returns
+-------
+TCollection_ExtendedString
+") Name;
+		static TCollection_ExtendedString Name(const OSD_Path & aPath);
 
 		/****************** OpenFile ******************/
 		%feature("compactdefaultargs") OpenFile;
-		%feature("autodoc", ":param aFile:
-	:type aFile: Storage_BaseDriver
-	:param aName:
-	:type aName: TCollection_ExtendedString
-	:param aMode:
-	:type aMode: Storage_OpenMode
-	:rtype: Storage_Error") OpenFile;
-		static Storage_Error OpenFile (Storage_BaseDriver & aFile,const TCollection_ExtendedString & aName,const Storage_OpenMode aMode);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFile: Storage_BaseDriver
+aName: TCollection_ExtendedString
+aMode: Storage_OpenMode
+
+Returns
+-------
+Storage_Error
+") OpenFile;
+		static Storage_Error OpenFile(Storage_BaseDriver & aFile, const TCollection_ExtendedString & aName, const Storage_OpenMode aMode);
 
 		/****************** Path ******************/
 		%feature("compactdefaultargs") Path;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:rtype: OSD_Path") Path;
-		static OSD_Path Path (const TCollection_ExtendedString & aFileName);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+
+Returns
+-------
+OSD_Path
+") Path;
+		static OSD_Path Path(const TCollection_ExtendedString & aFileName);
 
 		/****************** Trek ******************/
 		%feature("compactdefaultargs") Trek;
-		%feature("autodoc", ":param aPath:
-	:type aPath: OSD_Path
-	:rtype: TCollection_ExtendedString") Trek;
-		static TCollection_ExtendedString Trek (const OSD_Path & aPath);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aPath: OSD_Path
+
+Returns
+-------
+TCollection_ExtendedString
+") Trek;
+		static TCollection_ExtendedString Trek(const OSD_Path & aPath);
 
 		/****************** Value ******************/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", ":param aResourceManager:
-	:type aResourceManager: Resource_Manager
-	:param aResourceName:
-	:type aResourceName: TCollection_ExtendedString
-	:rtype: TCollection_ExtendedString") Value;
-		static TCollection_ExtendedString Value (const opencascade::handle<Resource_Manager> & aResourceManager,const TCollection_ExtendedString & aResourceName);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aResourceManager: Resource_Manager
+aResourceName: TCollection_ExtendedString
+
+Returns
+-------
+TCollection_ExtendedString
+") Value;
+		static TCollection_ExtendedString Value(const opencascade::handle<Resource_Manager> & aResourceManager, const TCollection_ExtendedString & aResourceName);
 
 		/****************** xgetenv ******************/
 		%feature("compactdefaultargs") xgetenv;
-		%feature("autodoc", ":param aCString:
-	:type aCString: char *
-	:rtype: TCollection_ExtendedString") xgetenv;
-		static TCollection_ExtendedString xgetenv (const char * aCString);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aCString: char *
+
+Returns
+-------
+TCollection_ExtendedString
+") xgetenv;
+		static TCollection_ExtendedString xgetenv(const char * aCString);
 
 };
 

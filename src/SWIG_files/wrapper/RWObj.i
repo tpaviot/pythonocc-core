@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -55,6 +55,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
 #include<Aspect_module.hxx>
 #include<Bnd_module.hxx>
 #include<Quantity_module.hxx>
+#include<Message_module.hxx>
+#include<Media_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -66,6 +68,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwobj.html"
 %import TCollection.i
 %import Graphic3d.i
 %import gp.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum RWObj_SubMeshReason {
 	RWObj_SubMeshReason_NewObject = 0,
@@ -75,6 +83,21 @@ enum RWObj_SubMeshReason {
 };
 
 /* end public enums declaration */
+
+/* python proy classes for enums */
+%pythoncode {
+
+class RWObj_SubMeshReason(IntEnum):
+	RWObj_SubMeshReason_NewObject = 0
+	RWObj_SubMeshReason_NewGroup = 1
+	RWObj_SubMeshReason_NewMaterial = 2
+	RWObj_SubMeshReason_NewSmoothGroup = 3
+RWObj_SubMeshReason_NewObject = RWObj_SubMeshReason.RWObj_SubMeshReason_NewObject
+RWObj_SubMeshReason_NewGroup = RWObj_SubMeshReason.RWObj_SubMeshReason_NewGroup
+RWObj_SubMeshReason_NewMaterial = RWObj_SubMeshReason.RWObj_SubMeshReason_NewMaterial
+RWObj_SubMeshReason_NewSmoothGroup = RWObj_SubMeshReason.RWObj_SubMeshReason_NewSmoothGroup
+};
+/* end python proxy for enums */
 
 /* handles */
 /* end handles declaration */
@@ -96,17 +119,20 @@ class RWObj_IShapeReceiver {
 	public:
 		/****************** BindNamedShape ******************/
 		%feature("compactdefaultargs") BindNamedShape;
-		%feature("autodoc", "* @param theShape shape to register @param theName shape name @param theMaterial shape material @param theIsRootShape indicates that this is a root object (free shape)
-	:param theShape:
-	:type theShape: TopoDS_Shape
-	:param theName:
-	:type theName: TCollection_AsciiString
-	:param theMaterial:
-	:type theMaterial: RWObj_Material *
-	:param theIsRootShape:
-	:type theIsRootShape: bool
-	:rtype: None") BindNamedShape;
-		void BindNamedShape (const TopoDS_Shape & theShape,const TCollection_AsciiString & theName,const RWObj_Material * theMaterial,const Standard_Boolean theIsRootShape);
+		%feature("autodoc", "@param theshape shape to register @param thename shape name @param thematerial shape material @param theisrootshape indicates that this is a root object (free shape).
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theName: TCollection_AsciiString
+theMaterial: RWObj_Material *
+theIsRootShape: bool
+
+Returns
+-------
+None
+") BindNamedShape;
+		virtual void BindNamedShape(const TopoDS_Shape & theShape, const TCollection_AsciiString & theName, const RWObj_Material * theMaterial, const Standard_Boolean theIsRootShape);
 
 };
 
@@ -133,8 +159,13 @@ class RWObj_Material {
 		Standard_ShortReal Transparency;
 		/****************** RWObj_Material ******************/
 		%feature("compactdefaultargs") RWObj_Material;
-		%feature("autodoc", ":rtype: None") RWObj_Material;
-		 RWObj_Material ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") RWObj_Material;
+		 RWObj_Material();
 
 };
 
@@ -175,6 +206,30 @@ class RWObj_SubMesh {
 /**********************************
 * class RWObj_TriangulationReader *
 **********************************/
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class RWObj:
+	pass
+
+@classnotwrapped
+class RWObj_MtlReader:
+	pass
+
+@classnotwrapped
+class RWObj_CafReader:
+	pass
+
+@classnotwrapped
+class RWObj_TriangulationReader:
+	pass
+
+@classnotwrapped
+class RWObj_Reader:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

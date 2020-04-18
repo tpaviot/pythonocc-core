@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2019 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2020 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -59,6 +59,12 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_pcdm.html"
 %import Message.i
 %import TColStd.i
 %import CDM.i
+
+%pythoncode {
+from enum import IntEnum
+from OCC.Core.Exception import *
+};
+
 /* public enums */
 enum PCDM_StoreStatus {
 	PCDM_SS_OK = 0,
@@ -104,6 +110,83 @@ enum PCDM_ReaderStatus {
 
 /* end public enums declaration */
 
+/* python proy classes for enums */
+%pythoncode {
+
+class PCDM_StoreStatus(IntEnum):
+	PCDM_SS_OK = 0
+	PCDM_SS_DriverFailure = 1
+	PCDM_SS_WriteFailure = 2
+	PCDM_SS_Failure = 3
+	PCDM_SS_Doc_IsNull = 4
+	PCDM_SS_No_Obj = 5
+	PCDM_SS_Info_Section_Error = 6
+PCDM_SS_OK = PCDM_StoreStatus.PCDM_SS_OK
+PCDM_SS_DriverFailure = PCDM_StoreStatus.PCDM_SS_DriverFailure
+PCDM_SS_WriteFailure = PCDM_StoreStatus.PCDM_SS_WriteFailure
+PCDM_SS_Failure = PCDM_StoreStatus.PCDM_SS_Failure
+PCDM_SS_Doc_IsNull = PCDM_StoreStatus.PCDM_SS_Doc_IsNull
+PCDM_SS_No_Obj = PCDM_StoreStatus.PCDM_SS_No_Obj
+PCDM_SS_Info_Section_Error = PCDM_StoreStatus.PCDM_SS_Info_Section_Error
+
+class PCDM_TypeOfFileDriver(IntEnum):
+	PCDM_TOFD_File = 0
+	PCDM_TOFD_CmpFile = 1
+	PCDM_TOFD_XmlFile = 2
+	PCDM_TOFD_Unknown = 3
+PCDM_TOFD_File = PCDM_TypeOfFileDriver.PCDM_TOFD_File
+PCDM_TOFD_CmpFile = PCDM_TypeOfFileDriver.PCDM_TOFD_CmpFile
+PCDM_TOFD_XmlFile = PCDM_TypeOfFileDriver.PCDM_TOFD_XmlFile
+PCDM_TOFD_Unknown = PCDM_TypeOfFileDriver.PCDM_TOFD_Unknown
+
+class PCDM_ReaderStatus(IntEnum):
+	PCDM_RS_OK = 0
+	PCDM_RS_NoDriver = 1
+	PCDM_RS_UnknownFileDriver = 2
+	PCDM_RS_OpenError = 3
+	PCDM_RS_NoVersion = 4
+	PCDM_RS_NoSchema = 5
+	PCDM_RS_NoDocument = 6
+	PCDM_RS_ExtensionFailure = 7
+	PCDM_RS_WrongStreamMode = 8
+	PCDM_RS_FormatFailure = 9
+	PCDM_RS_TypeFailure = 10
+	PCDM_RS_TypeNotFoundInSchema = 11
+	PCDM_RS_UnrecognizedFileFormat = 12
+	PCDM_RS_MakeFailure = 13
+	PCDM_RS_PermissionDenied = 14
+	PCDM_RS_DriverFailure = 15
+	PCDM_RS_AlreadyRetrievedAndModified = 16
+	PCDM_RS_AlreadyRetrieved = 17
+	PCDM_RS_UnknownDocument = 18
+	PCDM_RS_WrongResource = 19
+	PCDM_RS_ReaderException = 20
+	PCDM_RS_NoModel = 21
+PCDM_RS_OK = PCDM_ReaderStatus.PCDM_RS_OK
+PCDM_RS_NoDriver = PCDM_ReaderStatus.PCDM_RS_NoDriver
+PCDM_RS_UnknownFileDriver = PCDM_ReaderStatus.PCDM_RS_UnknownFileDriver
+PCDM_RS_OpenError = PCDM_ReaderStatus.PCDM_RS_OpenError
+PCDM_RS_NoVersion = PCDM_ReaderStatus.PCDM_RS_NoVersion
+PCDM_RS_NoSchema = PCDM_ReaderStatus.PCDM_RS_NoSchema
+PCDM_RS_NoDocument = PCDM_ReaderStatus.PCDM_RS_NoDocument
+PCDM_RS_ExtensionFailure = PCDM_ReaderStatus.PCDM_RS_ExtensionFailure
+PCDM_RS_WrongStreamMode = PCDM_ReaderStatus.PCDM_RS_WrongStreamMode
+PCDM_RS_FormatFailure = PCDM_ReaderStatus.PCDM_RS_FormatFailure
+PCDM_RS_TypeFailure = PCDM_ReaderStatus.PCDM_RS_TypeFailure
+PCDM_RS_TypeNotFoundInSchema = PCDM_ReaderStatus.PCDM_RS_TypeNotFoundInSchema
+PCDM_RS_UnrecognizedFileFormat = PCDM_ReaderStatus.PCDM_RS_UnrecognizedFileFormat
+PCDM_RS_MakeFailure = PCDM_ReaderStatus.PCDM_RS_MakeFailure
+PCDM_RS_PermissionDenied = PCDM_ReaderStatus.PCDM_RS_PermissionDenied
+PCDM_RS_DriverFailure = PCDM_ReaderStatus.PCDM_RS_DriverFailure
+PCDM_RS_AlreadyRetrievedAndModified = PCDM_ReaderStatus.PCDM_RS_AlreadyRetrievedAndModified
+PCDM_RS_AlreadyRetrieved = PCDM_ReaderStatus.PCDM_RS_AlreadyRetrieved
+PCDM_RS_UnknownDocument = PCDM_ReaderStatus.PCDM_RS_UnknownDocument
+PCDM_RS_WrongResource = PCDM_ReaderStatus.PCDM_RS_WrongResource
+PCDM_RS_ReaderException = PCDM_ReaderStatus.PCDM_RS_ReaderException
+PCDM_RS_NoModel = PCDM_ReaderStatus.PCDM_RS_NoModel
+};
+/* end python proxy for enums */
+
 /* handles */
 %wrap_handle(PCDM_ReadWriter)
 %wrap_handle(PCDM_Reader)
@@ -115,14 +198,14 @@ enum PCDM_ReaderStatus {
 /* end handles declaration */
 
 /* templates */
-%template(PCDM_SequenceOfDocument) NCollection_Sequence <opencascade::handle <PCDM_Document>>;
-%template(PCDM_SequenceOfReference) NCollection_Sequence <PCDM_Reference>;
+%template(PCDM_SequenceOfDocument) NCollection_Sequence<opencascade::handle<PCDM_Document>>;
+%template(PCDM_SequenceOfReference) NCollection_Sequence<PCDM_Reference>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence <opencascade::handle <PCDM_Document>> PCDM_SequenceOfDocument;
 typedef Storage_BaseDriver * PCDM_BaseDriverPointer;
-typedef NCollection_Sequence <PCDM_Reference> PCDM_SequenceOfReference;
+typedef NCollection_Sequence<opencascade::handle<PCDM_Document>> PCDM_SequenceOfDocument;
+typedef NCollection_Sequence<PCDM_Reference> PCDM_SequenceOfReference;
 /* end typedefs declaration */
 
 /*************
@@ -133,21 +216,18 @@ class PCDM {
 	public:
 		/****************** FileDriverType ******************/
 		%feature("compactdefaultargs") FileDriverType;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_AsciiString
-	:param aBaseDriver:
-	:type aBaseDriver: PCDM_BaseDriverPointer
-	:rtype: PCDM_TypeOfFileDriver") FileDriverType;
-		static PCDM_TypeOfFileDriver FileDriverType (const TCollection_AsciiString & aFileName,PCDM_BaseDriverPointer & aBaseDriver);
+		%feature("autodoc", "No available documentation.
 
-		/****************** FileDriverType ******************/
-		%feature("compactdefaultargs") FileDriverType;
-		%feature("autodoc", ":param theIStream:
-	:type theIStream: Standard_IStream
-	:param theBaseDriver:
-	:type theBaseDriver: PCDM_BaseDriverPointer
-	:rtype: PCDM_TypeOfFileDriver") FileDriverType;
-		static PCDM_TypeOfFileDriver FileDriverType (Standard_IStream & theIStream,PCDM_BaseDriverPointer & theBaseDriver);
+Parameters
+----------
+aFileName: TCollection_AsciiString
+aBaseDriver: PCDM_BaseDriverPointer
+
+Returns
+-------
+PCDM_TypeOfFileDriver
+") FileDriverType;
+		static PCDM_TypeOfFileDriver FileDriverType(const TCollection_AsciiString & aFileName, PCDM_BaseDriverPointer & aBaseDriver);
 
 };
 
@@ -172,138 +252,205 @@ class PCDM_ReadWriter : public Standard_Transient {
 	public:
 		/****************** FileFormat ******************/
 		%feature("compactdefaultargs") FileFormat;
-		%feature("autodoc", "* tries to get a format in the file. returns an empty string if the file could not be read or does not have a FileFormat information.
-	:param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:rtype: TCollection_ExtendedString") FileFormat;
-		static TCollection_ExtendedString FileFormat (const TCollection_ExtendedString & aFileName);
+		%feature("autodoc", "Tries to get a format in the file. returns an empty string if the file could not be read or does not have a fileformat information.
 
-		/****************** FileFormat ******************/
-		%feature("compactdefaultargs") FileFormat;
-		%feature("autodoc", "* tries to get a format from the stream. returns an empty string if the file could not be read or does not have a FileFormat information.
-	:param theIStream:
-	:type theIStream: Standard_IStream
-	:param theData:
-	:type theData: Storage_Data
-	:rtype: TCollection_ExtendedString") FileFormat;
-		static TCollection_ExtendedString FileFormat (Standard_IStream & theIStream,opencascade::handle<Storage_Data> & theData);
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+
+Returns
+-------
+TCollection_ExtendedString
+") FileFormat;
+		static TCollection_ExtendedString FileFormat(const TCollection_ExtendedString & aFileName);
 
 		/****************** Open ******************/
 		%feature("compactdefaultargs") Open;
-		%feature("autodoc", ":param aDriver:
-	:type aDriver: Storage_BaseDriver
-	:param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param anOpenMode:
-	:type anOpenMode: Storage_OpenMode
-	:rtype: void") Open;
-		static void Open (Storage_BaseDriver & aDriver,const TCollection_ExtendedString & aFileName,const Storage_OpenMode anOpenMode);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aDriver: Storage_BaseDriver
+aFileName: TCollection_ExtendedString
+anOpenMode: Storage_OpenMode
+
+Returns
+-------
+None
+") Open;
+		static void Open(Storage_BaseDriver & aDriver, const TCollection_ExtendedString & aFileName, const Storage_OpenMode anOpenMode);
 
 		/****************** ReadDocumentVersion ******************/
 		%feature("compactdefaultargs") ReadDocumentVersion;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: int") ReadDocumentVersion;
-		virtual Standard_Integer ReadDocumentVersion (const TCollection_ExtendedString & aFileName,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+int
+") ReadDocumentVersion;
+		virtual Standard_Integer ReadDocumentVersion(const TCollection_ExtendedString & aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadExtensions ******************/
 		%feature("compactdefaultargs") ReadExtensions;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param theExtensions:
-	:type theExtensions: TColStd_SequenceOfExtendedString
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: void") ReadExtensions;
-		virtual void ReadExtensions (const TCollection_ExtendedString & aFileName,TColStd_SequenceOfExtendedString & theExtensions,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+theExtensions: TColStd_SequenceOfExtendedString
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+None
+") ReadExtensions;
+		virtual void ReadExtensions(const TCollection_ExtendedString & aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferenceCounter ******************/
 		%feature("compactdefaultargs") ReadReferenceCounter;
-		%feature("autodoc", ":param theFileName:
-	:type theFileName: TCollection_ExtendedString
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: int") ReadReferenceCounter;
-		virtual Standard_Integer ReadReferenceCounter (const TCollection_ExtendedString & theFileName,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theFileName: TCollection_ExtendedString
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+int
+") ReadReferenceCounter;
+		virtual Standard_Integer ReadReferenceCounter(const TCollection_ExtendedString & theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferences ******************/
 		%feature("compactdefaultargs") ReadReferences;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param theReferences:
-	:type theReferences: PCDM_SequenceOfReference
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: void") ReadReferences;
-		virtual void ReadReferences (const TCollection_ExtendedString & aFileName,PCDM_SequenceOfReference & theReferences,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+theReferences: PCDM_SequenceOfReference
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+None
+") ReadReferences;
+		virtual void ReadReferences(const TCollection_ExtendedString & aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Reader ******************/
 		%feature("compactdefaultargs") Reader;
-		%feature("autodoc", "* returns the convenient Reader for a File.
-	:param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:rtype: opencascade::handle<PCDM_ReadWriter>") Reader;
-		static opencascade::handle<PCDM_ReadWriter> Reader (const TCollection_ExtendedString & aFileName);
+		%feature("autodoc", "Returns the convenient reader for a file.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+
+Returns
+-------
+opencascade::handle<PCDM_ReadWriter>
+") Reader;
+		static opencascade::handle<PCDM_ReadWriter> Reader(const TCollection_ExtendedString & aFileName);
 
 		/****************** Version ******************/
 		%feature("compactdefaultargs") Version;
-		%feature("autodoc", "* returns PCDM_ReadWriter_1.
-	:rtype: TCollection_AsciiString") Version;
-		virtual TCollection_AsciiString Version ();
+		%feature("autodoc", "Returns pcdm_readwriter_1.
+
+Returns
+-------
+TCollection_AsciiString
+") Version;
+		virtual TCollection_AsciiString Version();
 
 		/****************** WriteExtensions ******************/
 		%feature("compactdefaultargs") WriteExtensions;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:rtype: void") WriteExtensions;
-		virtual void WriteExtensions (const opencascade::handle<Storage_Data> & aData,const opencascade::handle<CDM_Document> & aDocument);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+aDocument: CDM_Document
+
+Returns
+-------
+None
+") WriteExtensions;
+		virtual void WriteExtensions(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteFileFormat ******************/
 		%feature("compactdefaultargs") WriteFileFormat;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:rtype: void") WriteFileFormat;
-		static void WriteFileFormat (const opencascade::handle<Storage_Data> & aData,const opencascade::handle<CDM_Document> & aDocument);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+aDocument: CDM_Document
+
+Returns
+-------
+None
+") WriteFileFormat;
+		static void WriteFileFormat(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteReferenceCounter ******************/
 		%feature("compactdefaultargs") WriteReferenceCounter;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:rtype: void") WriteReferenceCounter;
-		virtual void WriteReferenceCounter (const opencascade::handle<Storage_Data> & aData,const opencascade::handle<CDM_Document> & aDocument);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+aDocument: CDM_Document
+
+Returns
+-------
+None
+") WriteReferenceCounter;
+		virtual void WriteReferenceCounter(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteReferences ******************/
 		%feature("compactdefaultargs") WriteReferences;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:param theReferencerFileName:
-	:type theReferencerFileName: TCollection_ExtendedString
-	:rtype: void") WriteReferences;
-		virtual void WriteReferences (const opencascade::handle<Storage_Data> & aData,const opencascade::handle<CDM_Document> & aDocument,const TCollection_ExtendedString & theReferencerFileName);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+aDocument: CDM_Document
+theReferencerFileName: TCollection_ExtendedString
+
+Returns
+-------
+None
+") WriteReferences;
+		virtual void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & theReferencerFileName);
 
 		/****************** WriteVersion ******************/
 		%feature("compactdefaultargs") WriteVersion;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:rtype: void") WriteVersion;
-		virtual void WriteVersion (const opencascade::handle<Storage_Data> & aData,const opencascade::handle<CDM_Document> & aDocument);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+aDocument: CDM_Document
+
+Returns
+-------
+None
+") WriteVersion;
+		virtual void WriteVersion(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** Writer ******************/
 		%feature("compactdefaultargs") Writer;
-		%feature("autodoc", ":rtype: opencascade::handle<PCDM_ReadWriter>") Writer;
-		static opencascade::handle<PCDM_ReadWriter> Writer ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<PCDM_ReadWriter>
+") Writer;
+		static opencascade::handle<PCDM_ReadWriter> Writer();
 
 };
 
@@ -324,39 +471,39 @@ class PCDM_Reader : public Standard_Transient {
 	public:
 		/****************** CreateDocument ******************/
 		%feature("compactdefaultargs") CreateDocument;
-		%feature("autodoc", "* this method is called by the framework before the read method.
-	:rtype: opencascade::handle<CDM_Document>") CreateDocument;
-		virtual opencascade::handle<CDM_Document> CreateDocument ();
+		%feature("autodoc", "This method is called by the framework before the read method.
+
+Returns
+-------
+opencascade::handle<CDM_Document>
+") CreateDocument;
+		virtual opencascade::handle<CDM_Document> CreateDocument();
 
 		/****************** GetStatus ******************/
 		%feature("compactdefaultargs") GetStatus;
-		%feature("autodoc", ":rtype: PCDM_ReaderStatus") GetStatus;
-		PCDM_ReaderStatus GetStatus ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+PCDM_ReaderStatus
+") GetStatus;
+		PCDM_ReaderStatus GetStatus();
 
 		/****************** Read ******************/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "* retrieves the content of the file into a new Document.
-	:param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param aNewDocument:
-	:type aNewDocument: CDM_Document
-	:param anApplication:
-	:type anApplication: CDM_Application
-	:rtype: void") Read;
-		virtual void Read (const TCollection_ExtendedString & aFileName,const opencascade::handle<CDM_Document> & aNewDocument,const opencascade::handle<CDM_Application> & anApplication);
+		%feature("autodoc", "Retrieves the content of the file into a new document.
 
-		/****************** Read ******************/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", ":param theIStream:
-	:type theIStream: Standard_IStream
-	:param theStorageData:
-	:type theStorageData: Storage_Data
-	:param theDoc:
-	:type theDoc: CDM_Document
-	:param theApplication:
-	:type theApplication: CDM_Application
-	:rtype: void") Read;
-		virtual void Read (Standard_IStream & theIStream,const opencascade::handle<Storage_Data> & theStorageData,const opencascade::handle<CDM_Document> & theDoc,const opencascade::handle<CDM_Application> & theApplication);
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+aNewDocument: CDM_Document
+anApplication: CDM_Application
+
+Returns
+-------
+None
+") Read;
+		virtual void Read(const TCollection_ExtendedString & aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication);
 
 };
 
@@ -374,36 +521,61 @@ class PCDM_Reader : public Standard_Transient {
 ***********************/
 class PCDM_Reference {
 	public:
+		/****************** PCDM_Reference ******************/
+		%feature("compactdefaultargs") PCDM_Reference;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") PCDM_Reference;
+		 PCDM_Reference();
+
+		/****************** PCDM_Reference ******************/
+		%feature("compactdefaultargs") PCDM_Reference;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aReferenceIdentifier: int
+aFileName: TCollection_ExtendedString
+aDocumentVersion: int
+
+Returns
+-------
+None
+") PCDM_Reference;
+		 PCDM_Reference(const Standard_Integer aReferenceIdentifier, const TCollection_ExtendedString & aFileName, const Standard_Integer aDocumentVersion);
+
 		/****************** DocumentVersion ******************/
 		%feature("compactdefaultargs") DocumentVersion;
-		%feature("autodoc", ":rtype: int") DocumentVersion;
-		Standard_Integer DocumentVersion ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") DocumentVersion;
+		Standard_Integer DocumentVersion();
 
 		/****************** FileName ******************/
 		%feature("compactdefaultargs") FileName;
-		%feature("autodoc", ":rtype: TCollection_ExtendedString") FileName;
-		TCollection_ExtendedString FileName ();
+		%feature("autodoc", "No available documentation.
 
-		/****************** PCDM_Reference ******************/
-		%feature("compactdefaultargs") PCDM_Reference;
-		%feature("autodoc", ":rtype: None") PCDM_Reference;
-		 PCDM_Reference ();
-
-		/****************** PCDM_Reference ******************/
-		%feature("compactdefaultargs") PCDM_Reference;
-		%feature("autodoc", ":param aReferenceIdentifier:
-	:type aReferenceIdentifier: int
-	:param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param aDocumentVersion:
-	:type aDocumentVersion: int
-	:rtype: None") PCDM_Reference;
-		 PCDM_Reference (const Standard_Integer aReferenceIdentifier,const TCollection_ExtendedString & aFileName,const Standard_Integer aDocumentVersion);
+Returns
+-------
+TCollection_ExtendedString
+") FileName;
+		TCollection_ExtendedString FileName();
 
 		/****************** ReferenceIdentifier ******************/
 		%feature("compactdefaultargs") ReferenceIdentifier;
-		%feature("autodoc", ":rtype: int") ReferenceIdentifier;
-		Standard_Integer ReferenceIdentifier ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") ReferenceIdentifier;
+		Standard_Integer ReferenceIdentifier();
 
 };
 
@@ -419,33 +591,50 @@ class PCDM_Reference {
 *******************************/
 class PCDM_ReferenceIterator : public Standard_Transient {
 	public:
+		/****************** PCDM_ReferenceIterator ******************/
+		%feature("compactdefaultargs") PCDM_ReferenceIterator;
+		%feature("autodoc", "Warning! the constructor does not initialization.
+
+Parameters
+----------
+theMessageDriver: Message_Messenger
+
+Returns
+-------
+None
+") PCDM_ReferenceIterator;
+		 PCDM_ReferenceIterator(const opencascade::handle<Message_Messenger> & theMessageDriver);
+
 		/****************** Init ******************/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", ":param aMetaData:
-	:type aMetaData: CDM_MetaData
-	:rtype: void") Init;
-		virtual void Init (const opencascade::handle<CDM_MetaData> & aMetaData);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aMetaData: CDM_MetaData
+
+Returns
+-------
+None
+") Init;
+		virtual void Init(const opencascade::handle<CDM_MetaData> & aMetaData);
 
 		/****************** LoadReferences ******************/
 		%feature("compactdefaultargs") LoadReferences;
-		%feature("autodoc", ":param aDocument:
-	:type aDocument: CDM_Document
-	:param aMetaData:
-	:type aMetaData: CDM_MetaData
-	:param anApplication:
-	:type anApplication: CDM_Application
-	:param UseStorageConfiguration:
-	:type UseStorageConfiguration: bool
-	:rtype: None") LoadReferences;
-		void LoadReferences (const opencascade::handle<CDM_Document> & aDocument,const opencascade::handle<CDM_MetaData> & aMetaData,const opencascade::handle<CDM_Application> & anApplication,const Standard_Boolean UseStorageConfiguration);
+		%feature("autodoc", "No available documentation.
 
-		/****************** PCDM_ReferenceIterator ******************/
-		%feature("compactdefaultargs") PCDM_ReferenceIterator;
-		%feature("autodoc", "* Warning! The constructor does not initialization.
-	:param theMessageDriver:
-	:type theMessageDriver: Message_Messenger
-	:rtype: None") PCDM_ReferenceIterator;
-		 PCDM_ReferenceIterator (const opencascade::handle<Message_Messenger> & theMessageDriver);
+Parameters
+----------
+aDocument: CDM_Document
+aMetaData: CDM_MetaData
+anApplication: CDM_Application
+UseStorageConfiguration: bool
+
+Returns
+-------
+None
+") LoadReferences;
+		void LoadReferences(const opencascade::handle<CDM_Document> & aDocument, const opencascade::handle<CDM_MetaData> & aMetaData, const opencascade::handle<CDM_Application> & anApplication, const Standard_Boolean UseStorageConfiguration);
 
 };
 
@@ -466,22 +655,18 @@ class PCDM_Writer : public Standard_Transient {
 	public:
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", ":param aDocument:
-	:type aDocument: CDM_Document
-	:param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:rtype: void") Write;
-		virtual void Write (const opencascade::handle<CDM_Document> & aDocument,const TCollection_ExtendedString & aFileName);
+		%feature("autodoc", "No available documentation.
 
-		/****************** Write ******************/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* Write <theDocument> to theOStream
-	:param theDocument:
-	:type theDocument: CDM_Document
-	:param theOStream:
-	:type theOStream: Standard_OStream
-	:rtype: void") Write;
-		virtual void Write (const opencascade::handle<CDM_Document> & theDocument,Standard_OStream & theOStream);
+Parameters
+----------
+aDocument: CDM_Document
+aFileName: TCollection_ExtendedString
+
+Returns
+-------
+None
+") Write;
+		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName);
 
 };
 
@@ -501,92 +686,146 @@ class PCDM_ReadWriter_1 : public PCDM_ReadWriter {
 	public:
 		/****************** PCDM_ReadWriter_1 ******************/
 		%feature("compactdefaultargs") PCDM_ReadWriter_1;
-		%feature("autodoc", ":rtype: None") PCDM_ReadWriter_1;
-		 PCDM_ReadWriter_1 ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") PCDM_ReadWriter_1;
+		 PCDM_ReadWriter_1();
 
 		/****************** ReadDocumentVersion ******************/
 		%feature("compactdefaultargs") ReadDocumentVersion;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: int") ReadDocumentVersion;
-		Standard_Integer ReadDocumentVersion (const TCollection_ExtendedString & aFileName,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+int
+") ReadDocumentVersion;
+		Standard_Integer ReadDocumentVersion(const TCollection_ExtendedString & aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadExtensions ******************/
 		%feature("compactdefaultargs") ReadExtensions;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param theExtensions:
-	:type theExtensions: TColStd_SequenceOfExtendedString
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: None") ReadExtensions;
-		void ReadExtensions (const TCollection_ExtendedString & aFileName,TColStd_SequenceOfExtendedString & theExtensions,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+theExtensions: TColStd_SequenceOfExtendedString
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+None
+") ReadExtensions;
+		void ReadExtensions(const TCollection_ExtendedString & aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferenceCounter ******************/
 		%feature("compactdefaultargs") ReadReferenceCounter;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: int") ReadReferenceCounter;
-		Standard_Integer ReadReferenceCounter (const TCollection_ExtendedString & aFileName,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+int
+") ReadReferenceCounter;
+		Standard_Integer ReadReferenceCounter(const TCollection_ExtendedString & aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferences ******************/
 		%feature("compactdefaultargs") ReadReferences;
-		%feature("autodoc", ":param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:param theReferences:
-	:type theReferences: PCDM_SequenceOfReference
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: None") ReadReferences;
-		void ReadReferences (const TCollection_ExtendedString & aFileName,PCDM_SequenceOfReference & theReferences,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFileName: TCollection_ExtendedString
+theReferences: PCDM_SequenceOfReference
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+None
+") ReadReferences;
+		void ReadReferences(const TCollection_ExtendedString & aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Version ******************/
 		%feature("compactdefaultargs") Version;
-		%feature("autodoc", "* returns PCDM_ReadWriter_1.
-	:rtype: TCollection_AsciiString") Version;
-		TCollection_AsciiString Version ();
+		%feature("autodoc", "Returns pcdm_readwriter_1.
+
+Returns
+-------
+TCollection_AsciiString
+") Version;
+		TCollection_AsciiString Version();
 
 		/****************** WriteExtensions ******************/
 		%feature("compactdefaultargs") WriteExtensions;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:rtype: None") WriteExtensions;
-		void WriteExtensions (const opencascade::handle<Storage_Data> & aData,const opencascade::handle<CDM_Document> & aDocument);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+aDocument: CDM_Document
+
+Returns
+-------
+None
+") WriteExtensions;
+		void WriteExtensions(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteReferenceCounter ******************/
 		%feature("compactdefaultargs") WriteReferenceCounter;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:rtype: None") WriteReferenceCounter;
-		void WriteReferenceCounter (const opencascade::handle<Storage_Data> & aData,const opencascade::handle<CDM_Document> & aDocument);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+aDocument: CDM_Document
+
+Returns
+-------
+None
+") WriteReferenceCounter;
+		void WriteReferenceCounter(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteReferences ******************/
 		%feature("compactdefaultargs") WriteReferences;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:param theReferencerFileName:
-	:type theReferencerFileName: TCollection_ExtendedString
-	:rtype: None") WriteReferences;
-		void WriteReferences (const opencascade::handle<Storage_Data> & aData,const opencascade::handle<CDM_Document> & aDocument,const TCollection_ExtendedString & theReferencerFileName);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+aDocument: CDM_Document
+theReferencerFileName: TCollection_ExtendedString
+
+Returns
+-------
+None
+") WriteReferences;
+		void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & theReferencerFileName);
 
 		/****************** WriteVersion ******************/
 		%feature("compactdefaultargs") WriteVersion;
-		%feature("autodoc", ":param aData:
-	:type aData: Storage_Data
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:rtype: None") WriteVersion;
-		void WriteVersion (const opencascade::handle<Storage_Data> & aData,const opencascade::handle<CDM_Document> & aDocument);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aData: Storage_Data
+aDocument: CDM_Document
+
+Returns
+-------
+None
+") WriteVersion;
+		void WriteVersion(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 };
 
@@ -607,33 +846,57 @@ class PCDM_RetrievalDriver : public PCDM_Reader {
 	public:
 		/****************** DocumentVersion ******************/
 		%feature("compactdefaultargs") DocumentVersion;
-		%feature("autodoc", ":param theFileName:
-	:type theFileName: TCollection_ExtendedString
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: int") DocumentVersion;
-		static Standard_Integer DocumentVersion (const TCollection_ExtendedString & theFileName,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theFileName: TCollection_ExtendedString
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+int
+") DocumentVersion;
+		static Standard_Integer DocumentVersion(const TCollection_ExtendedString & theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** GetFormat ******************/
 		%feature("compactdefaultargs") GetFormat;
-		%feature("autodoc", ":rtype: TCollection_ExtendedString") GetFormat;
-		TCollection_ExtendedString GetFormat ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TCollection_ExtendedString
+") GetFormat;
+		TCollection_ExtendedString GetFormat();
 
 		/****************** ReferenceCounter ******************/
 		%feature("compactdefaultargs") ReferenceCounter;
-		%feature("autodoc", ":param theFileName:
-	:type theFileName: TCollection_ExtendedString
-	:param theMsgDriver:
-	:type theMsgDriver: Message_Messenger
-	:rtype: int") ReferenceCounter;
-		static Standard_Integer ReferenceCounter (const TCollection_ExtendedString & theFileName,const opencascade::handle<Message_Messenger> & theMsgDriver);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theFileName: TCollection_ExtendedString
+theMsgDriver: Message_Messenger
+
+Returns
+-------
+int
+") ReferenceCounter;
+		static Standard_Integer ReferenceCounter(const TCollection_ExtendedString & theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** SetFormat ******************/
 		%feature("compactdefaultargs") SetFormat;
-		%feature("autodoc", ":param aformat:
-	:type aformat: TCollection_ExtendedString
-	:rtype: None") SetFormat;
-		void SetFormat (const TCollection_ExtendedString & aformat);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aformat: TCollection_ExtendedString
+
+Returns
+-------
+None
+") SetFormat;
+		void SetFormat(const TCollection_ExtendedString & aformat);
 
 };
 
@@ -653,77 +916,119 @@ class PCDM_StorageDriver : public PCDM_Writer {
 	public:
 		/****************** GetFormat ******************/
 		%feature("compactdefaultargs") GetFormat;
-		%feature("autodoc", ":rtype: TCollection_ExtendedString") GetFormat;
-		TCollection_ExtendedString GetFormat ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+TCollection_ExtendedString
+") GetFormat;
+		TCollection_ExtendedString GetFormat();
 
 		/****************** GetStoreStatus ******************/
 		%feature("compactdefaultargs") GetStoreStatus;
-		%feature("autodoc", ":rtype: PCDM_StoreStatus") GetStoreStatus;
-		PCDM_StoreStatus GetStoreStatus ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+PCDM_StoreStatus
+") GetStoreStatus;
+		PCDM_StoreStatus GetStoreStatus();
 
 		/****************** IsError ******************/
 		%feature("compactdefaultargs") IsError;
-		%feature("autodoc", ":rtype: bool") IsError;
-		Standard_Boolean IsError ();
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") IsError;
+		Standard_Boolean IsError();
 
 		/****************** Make ******************/
 		%feature("compactdefaultargs") Make;
-		%feature("autodoc", "* raises NotImplemented.
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:rtype: opencascade::handle<PCDM_Document>") Make;
-		virtual opencascade::handle<PCDM_Document> Make (const opencascade::handle<CDM_Document> & aDocument);
+		%feature("autodoc", "Raises notimplemented.
+
+Parameters
+----------
+aDocument: CDM_Document
+
+Returns
+-------
+opencascade::handle<PCDM_Document>
+") Make;
+		virtual opencascade::handle<PCDM_Document> Make(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** Make ******************/
 		%feature("compactdefaultargs") Make;
-		%feature("autodoc", "* By default, puts in the Sequence the document returns by the previous Make method.
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:param Documents:
-	:type Documents: PCDM_SequenceOfDocument
-	:rtype: void") Make;
-		virtual void Make (const opencascade::handle<CDM_Document> & aDocument,PCDM_SequenceOfDocument & Documents);
+		%feature("autodoc", "By default, puts in the sequence the document returns by the previous make method.
+
+Parameters
+----------
+aDocument: CDM_Document
+Documents: PCDM_SequenceOfDocument
+
+Returns
+-------
+None
+") Make;
+		virtual void Make(const opencascade::handle<CDM_Document> & aDocument, PCDM_SequenceOfDocument & Documents);
 
 		/****************** SetFormat ******************/
 		%feature("compactdefaultargs") SetFormat;
-		%feature("autodoc", ":param aformat:
-	:type aformat: TCollection_ExtendedString
-	:rtype: None") SetFormat;
-		void SetFormat (const TCollection_ExtendedString & aformat);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aformat: TCollection_ExtendedString
+
+Returns
+-------
+None
+") SetFormat;
+		void SetFormat(const TCollection_ExtendedString & aformat);
 
 		/****************** SetIsError ******************/
 		%feature("compactdefaultargs") SetIsError;
-		%feature("autodoc", ":param theIsError:
-	:type theIsError: bool
-	:rtype: None") SetIsError;
-		void SetIsError (const Standard_Boolean theIsError);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theIsError: bool
+
+Returns
+-------
+None
+") SetIsError;
+		void SetIsError(const Standard_Boolean theIsError);
 
 		/****************** SetStoreStatus ******************/
 		%feature("compactdefaultargs") SetStoreStatus;
-		%feature("autodoc", ":param theStoreStatus:
-	:type theStoreStatus: PCDM_StoreStatus
-	:rtype: None") SetStoreStatus;
-		void SetStoreStatus (const PCDM_StoreStatus theStoreStatus);
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theStoreStatus: PCDM_StoreStatus
+
+Returns
+-------
+None
+") SetStoreStatus;
+		void SetStoreStatus(const PCDM_StoreStatus theStoreStatus);
 
 		/****************** Write ******************/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* Warning! raises DriverError if an error occurs during inside the Make method. stores the content of the Document into a new file. //! by default Write will use Make method to build a persistent document and the Schema method to write the persistent document.
-	:param aDocument:
-	:type aDocument: CDM_Document
-	:param aFileName:
-	:type aFileName: TCollection_ExtendedString
-	:rtype: void") Write;
-		virtual void Write (const opencascade::handle<CDM_Document> & aDocument,const TCollection_ExtendedString & aFileName);
+		%feature("autodoc", "Warning! raises drivererror if an error occurs during inside the make method. stores the content of the document into a new file. //! by default write will use make method to build a persistent document and the schema method to write the persistent document.
 
-		/****************** Write ******************/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "* Write <theDocument> to theOStream
-	:param theDocument:
-	:type theDocument: CDM_Document
-	:param theOStream:
-	:type theOStream: Standard_OStream
-	:rtype: void") Write;
-		virtual void Write (const opencascade::handle<CDM_Document> & theDocument,Standard_OStream & theOStream);
+Parameters
+----------
+aDocument: CDM_Document
+aFileName: TCollection_ExtendedString
+
+Returns
+-------
+None
+") Write;
+		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName);
 
 };
 
@@ -736,6 +1041,18 @@ class PCDM_StorageDriver : public PCDM_Writer {
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class PCDM_DOMHeaderParser:
+	pass
+
+@classnotwrapped
+class PCDM_Document:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
