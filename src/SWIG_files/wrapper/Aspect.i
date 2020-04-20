@@ -954,6 +954,13 @@ Aspect_IS_HOLLOW = Aspect_InteriorStyle.Aspect_IS_HOLLOW
 
 /* templates */
 %template(Aspect_SequenceOfColor) NCollection_Sequence<Quantity_Color>;
+
+%extend NCollection_Sequence<Quantity_Color> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Aspect_TouchMap) NCollection_IndexedDataMap<Standard_Size,Aspect_Touch>;
 /* end templates declaration */
 

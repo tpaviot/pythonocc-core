@@ -522,6 +522,13 @@ MeshVS_DA_User = MeshVS_DrawerAttribute.MeshVS_DA_User
 };
 %template(MeshVS_PolyhedronVertsIter) NCollection_TListIterator<MeshVS_PolyhedronVerts>;
 %template(MeshVS_SequenceOfPrsBuilder) NCollection_Sequence<opencascade::handle<MeshVS_PrsBuilder>>;
+
+%extend NCollection_Sequence<opencascade::handle<MeshVS_PrsBuilder>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(MeshVS_TwoColorsHasher) NCollection_DefaultHasher<MeshVS_TwoColors>;
 %template(MeshVS_TwoNodesHasher) NCollection_DefaultHasher<MeshVS_TwoNodes>;
 /* end templates declaration */

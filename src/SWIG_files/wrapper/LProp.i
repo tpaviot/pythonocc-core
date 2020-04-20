@@ -100,6 +100,13 @@ LProp_MaxCur = LProp_CIType.LProp_MaxCur
 
 /* templates */
 %template(LProp_SequenceOfCIType) NCollection_Sequence<LProp_CIType>;
+
+%extend NCollection_Sequence<LProp_CIType> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

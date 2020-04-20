@@ -102,7 +102,21 @@ IntCurveSurface_Out = IntCurveSurface_TransitionOnCurve.IntCurveSurface_Out
 
 /* templates */
 %template(IntCurveSurface_SequenceOfPnt) NCollection_Sequence<IntCurveSurface_IntersectionPoint>;
+
+%extend NCollection_Sequence<IntCurveSurface_IntersectionPoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntCurveSurface_SequenceOfSeg) NCollection_Sequence<IntCurveSurface_IntersectionSegment>;
+
+%extend NCollection_Sequence<IntCurveSurface_IntersectionSegment> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

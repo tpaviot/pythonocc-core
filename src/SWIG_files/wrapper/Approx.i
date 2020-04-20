@@ -192,6 +192,13 @@ Approx_IsoParametric = Approx_ParametrizationType.Approx_IsoParametric
     }
 };
 %template(Approx_SequenceOfHArray1OfReal) NCollection_Sequence<opencascade::handle<TColStd_HArray1OfReal>>;
+
+%extend NCollection_Sequence<opencascade::handle<TColStd_HArray1OfReal>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

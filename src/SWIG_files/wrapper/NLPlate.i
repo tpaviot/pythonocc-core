@@ -83,6 +83,13 @@ from OCC.Core.Exception import *
 /* templates */
 %template(NLPlate_ListIteratorOfStackOfPlate) NCollection_TListIterator<Plate_Plate>;
 %template(NLPlate_SequenceOfHGPPConstraint) NCollection_Sequence<opencascade::handle<NLPlate_HGPPConstraint>>;
+
+%extend NCollection_Sequence<opencascade::handle<NLPlate_HGPPConstraint>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(NLPlate_StackOfPlate) NCollection_List<Plate_Plate>;
 
 %extend NCollection_List<Plate_Plate> {

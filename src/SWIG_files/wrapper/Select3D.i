@@ -125,6 +125,13 @@ Select3D_TOS_BOUNDARY = Select3D_TypeOfSensitivity.Select3D_TOS_BOUNDARY
 
 /* templates */
 %template(Select3D_EntitySequence) NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity>>;
+
+%extend NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Select3D_EntitySequenceIter) NCollection_TListIterator<Select3D_EntitySequence>;
 %template(Select3D_IndexedMapOfEntity) NCollection_IndexedMap<opencascade::handle<Select3D_SensitiveEntity>>;
 %template(Select3D_Vec3) NCollection_Vec3<Standard_Real>;

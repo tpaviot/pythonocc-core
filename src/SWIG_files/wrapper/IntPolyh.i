@@ -85,6 +85,13 @@ from OCC.Core.Exception import *
     }
 };
 %template(IntPolyh_SeqOfStartPoints) NCollection_Sequence<IntPolyh_StartPoint>;
+
+%extend NCollection_Sequence<IntPolyh_StartPoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -93,6 +93,13 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(ProjLib_SequenceOfHSequenceOfPnt) NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>;
+
+%extend NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

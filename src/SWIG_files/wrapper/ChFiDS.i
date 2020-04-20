@@ -241,7 +241,21 @@ ChFiDS_TwistedSurface = ChFiDS_ErrorStatus.ChFiDS_TwistedSurface
     }
 };
 %template(ChFiDS_SequenceOfSpine) NCollection_Sequence<opencascade::handle<ChFiDS_Spine>>;
+
+%extend NCollection_Sequence<opencascade::handle<ChFiDS_Spine>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(ChFiDS_SequenceOfSurfData) NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>;
+
+%extend NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(ChFiDS_StripeArray1) NCollection_Array1<opencascade::handle<ChFiDS_Stripe>>;
 
 %extend NCollection_Array1<opencascade::handle<ChFiDS_Stripe>> {

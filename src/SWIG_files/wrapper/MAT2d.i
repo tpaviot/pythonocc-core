@@ -151,8 +151,29 @@ from OCC.Core.Exception import *
     }
 };
 %template(MAT2d_SequenceOfConnexion) NCollection_Sequence<opencascade::handle<MAT2d_Connexion>>;
+
+%extend NCollection_Sequence<opencascade::handle<MAT2d_Connexion>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(MAT2d_SequenceOfSequenceOfCurve) NCollection_Sequence<TColGeom2d_SequenceOfCurve>;
+
+%extend NCollection_Sequence<TColGeom2d_SequenceOfCurve> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(MAT2d_SequenceOfSequenceOfGeometry) NCollection_Sequence<TColGeom2d_SequenceOfGeometry>;
+
+%extend NCollection_Sequence<TColGeom2d_SequenceOfGeometry> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -114,7 +114,21 @@ IntRes2d_Undecided = IntRes2d_TypeTrans.IntRes2d_Undecided
 
 /* templates */
 %template(IntRes2d_SequenceOfIntersectionPoint) NCollection_Sequence<IntRes2d_IntersectionPoint>;
+
+%extend NCollection_Sequence<IntRes2d_IntersectionPoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntRes2d_SequenceOfIntersectionSegment) NCollection_Sequence<IntRes2d_IntersectionSegment>;
+
+%extend NCollection_Sequence<IntRes2d_IntersectionSegment> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

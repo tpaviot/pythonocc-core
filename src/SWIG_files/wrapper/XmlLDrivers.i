@@ -86,6 +86,13 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(XmlLDrivers_SequenceOfNamespaceDef) NCollection_Sequence<XmlLDrivers_NamespaceDef>;
+
+%extend NCollection_Sequence<XmlLDrivers_NamespaceDef> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

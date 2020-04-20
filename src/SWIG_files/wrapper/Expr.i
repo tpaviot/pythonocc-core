@@ -224,7 +224,21 @@ from OCC.Core.Exception import *
 };
 %template(Expr_MapOfNamedUnknown) NCollection_IndexedMap<opencascade::handle<Expr_NamedUnknown>,TColStd_MapTransientHasher>;
 %template(Expr_SequenceOfGeneralExpression) NCollection_Sequence<opencascade::handle<Expr_GeneralExpression>>;
+
+%extend NCollection_Sequence<opencascade::handle<Expr_GeneralExpression>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Expr_SequenceOfGeneralRelation) NCollection_Sequence<opencascade::handle<Expr_GeneralRelation>>;
+
+%extend NCollection_Sequence<opencascade::handle<Expr_GeneralRelation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

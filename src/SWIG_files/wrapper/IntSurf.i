@@ -119,9 +119,37 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
     }
 };
 %template(IntSurf_SequenceOfCouple) NCollection_Sequence<IntSurf_Couple>;
+
+%extend NCollection_Sequence<IntSurf_Couple> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntSurf_SequenceOfInteriorPoint) NCollection_Sequence<IntSurf_InteriorPoint>;
+
+%extend NCollection_Sequence<IntSurf_InteriorPoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntSurf_SequenceOfPathPoint) NCollection_Sequence<IntSurf_PathPoint>;
+
+%extend NCollection_Sequence<IntSurf_PathPoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntSurf_SequenceOfPntOn2S) NCollection_Sequence<IntSurf_PntOn2S>;
+
+%extend NCollection_Sequence<IntSurf_PntOn2S> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

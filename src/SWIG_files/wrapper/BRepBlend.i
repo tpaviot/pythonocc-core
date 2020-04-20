@@ -118,7 +118,21 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(BRepBlend_SequenceOfLine) NCollection_Sequence<opencascade::handle<BRepBlend_Line>>;
+
+%extend NCollection_Sequence<opencascade::handle<BRepBlend_Line>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BRepBlend_SequenceOfPointOnRst) NCollection_Sequence<BRepBlend_PointOnRst>;
+
+%extend NCollection_Sequence<BRepBlend_PointOnRst> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

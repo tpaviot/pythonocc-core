@@ -108,8 +108,29 @@ HatchGen_UNDETERMINED = HatchGen_IntersectionType.HatchGen_UNDETERMINED
 
 /* templates */
 %template(HatchGen_Domains) NCollection_Sequence<HatchGen_Domain>;
+
+%extend NCollection_Sequence<HatchGen_Domain> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(HatchGen_PointsOnElement) NCollection_Sequence<HatchGen_PointOnElement>;
+
+%extend NCollection_Sequence<HatchGen_PointOnElement> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(HatchGen_PointsOnHatching) NCollection_Sequence<HatchGen_PointOnHatching>;
+
+%extend NCollection_Sequence<HatchGen_PointOnHatching> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -219,8 +219,29 @@ from OCC.Core.Exception import *
 %template(TColGeom_Array2OfBezierSurface) NCollection_Array2<opencascade::handle<Geom_BezierSurface>>;
 %template(TColGeom_Array2OfSurface) NCollection_Array2<opencascade::handle<Geom_Surface>>;
 %template(TColGeom_SequenceOfBoundedCurve) NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>>;
+
+%extend NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColGeom_SequenceOfCurve) NCollection_Sequence<opencascade::handle<Geom_Curve>>;
+
+%extend NCollection_Sequence<opencascade::handle<Geom_Curve>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColGeom_SequenceOfSurface) NCollection_Sequence<opencascade::handle<Geom_Surface>>;
+
+%extend NCollection_Sequence<opencascade::handle<Geom_Surface>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

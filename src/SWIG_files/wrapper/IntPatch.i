@@ -151,10 +151,45 @@ IntPatch_Restriction = IntPatch_IType.IntPatch_Restriction
 
 /* templates */
 %template(IntPatch_SequenceOfIWLineOfTheIWalking) NCollection_Sequence<opencascade::handle<IntPatch_TheIWLineOfTheIWalking>>;
+
+%extend NCollection_Sequence<opencascade::handle<IntPatch_TheIWLineOfTheIWalking>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntPatch_SequenceOfLine) NCollection_Sequence<opencascade::handle<IntPatch_Line>>;
+
+%extend NCollection_Sequence<opencascade::handle<IntPatch_Line>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntPatch_SequenceOfPathPointOfTheSOnBounds) NCollection_Sequence<IntPatch_ThePathPointOfTheSOnBounds>;
+
+%extend NCollection_Sequence<IntPatch_ThePathPointOfTheSOnBounds> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntPatch_SequenceOfPoint) NCollection_Sequence<IntPatch_Point>;
+
+%extend NCollection_Sequence<IntPatch_Point> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntPatch_SequenceOfSegmentOfTheSOnBounds) NCollection_Sequence<IntPatch_TheSegmentOfTheSOnBounds>;
+
+%extend NCollection_Sequence<IntPatch_TheSegmentOfTheSOnBounds> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

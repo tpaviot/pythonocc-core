@@ -524,7 +524,21 @@ Message_FAIL = Message_StatusType.Message_FAIL
     }
 };
 %template(Message_SequenceOfPrinters) NCollection_Sequence<opencascade::handle<Message_Printer>>;
+
+%extend NCollection_Sequence<opencascade::handle<Message_Printer>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Message_SequenceOfProgressScale) NCollection_Sequence<Message_ProgressScale>;
+
+%extend NCollection_Sequence<Message_ProgressScale> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

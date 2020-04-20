@@ -247,8 +247,29 @@ Extrema_Face = Extrema_ElementType.Extrema_Face
 %template(Extrema_Array2OfPOnSurf) NCollection_Array2<Extrema_POnSurf>;
 %template(Extrema_Array2OfPOnSurfParams) NCollection_Array2<Extrema_POnSurfParams>;
 %template(Extrema_SequenceOfPOnCurv) NCollection_Sequence<Extrema_POnCurv>;
+
+%extend NCollection_Sequence<Extrema_POnCurv> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Extrema_SequenceOfPOnCurv2d) NCollection_Sequence<Extrema_POnCurv2d>;
+
+%extend NCollection_Sequence<Extrema_POnCurv2d> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Extrema_SequenceOfPOnSurf) NCollection_Sequence<Extrema_POnSurf>;
+
+%extend NCollection_Sequence<Extrema_POnSurf> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Extrema_UBTreeFillerOfSphere) NCollection_UBTreeFiller<Standard_Integer,Bnd_Sphere>;
 %template(Extrema_UBTreeOfSphere) NCollection_UBTree<Standard_Integer,Bnd_Sphere>;
 /* end templates declaration */

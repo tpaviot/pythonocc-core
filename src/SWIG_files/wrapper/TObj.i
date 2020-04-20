@@ -117,7 +117,21 @@ TObj_Forced = TObj_DeletingMode.TObj_Forced
 %template(TObj_DataMapOfObjectHSequenceOcafObjects) NCollection_DataMap<opencascade::handle<TObj_Object>,opencascade::handle<TObj_HSequenceOfObject>>;
 %template(TObj_DataMapOfStringPointer) NCollection_DataMap<TCollection_AsciiString,Standard_Address>;
 %template(TObj_SequenceOfIterator) NCollection_Sequence<opencascade::handle<TObj_ObjectIterator>>;
+
+%extend NCollection_Sequence<opencascade::handle<TObj_ObjectIterator>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TObj_SequenceOfObject) NCollection_Sequence<opencascade::handle<TObj_Object>>;
+
+%extend NCollection_Sequence<opencascade::handle<TObj_Object>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TObj_TIntSparseArray_MapOfData) NCollection_SparseArray<Standard_Integer>;
 %template(TObj_TIntSparseArray_VecOfData) NCollection_SparseArray<Standard_Integer>;
 /* end templates declaration */

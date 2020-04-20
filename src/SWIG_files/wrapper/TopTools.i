@@ -213,6 +213,13 @@ from OCC.Core.Exception import *
 %template(TopTools_MapOfOrientedShape) NCollection_Map<TopoDS_Shape,TopTools_OrientedShapeMapHasher>;
 %template(TopTools_MapOfShape) NCollection_Map<TopoDS_Shape,TopTools_ShapeMapHasher>;
 %template(TopTools_SequenceOfShape) NCollection_Sequence<TopoDS_Shape>;
+
+%extend NCollection_Sequence<TopoDS_Shape> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

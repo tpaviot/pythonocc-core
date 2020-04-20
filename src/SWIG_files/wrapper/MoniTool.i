@@ -130,6 +130,13 @@ MoniTool_ValueBinary = MoniTool_ValueType.MoniTool_ValueBinary
 %template(MoniTool_DataMapOfTimer) NCollection_DataMap<Standard_CString,opencascade::handle<MoniTool_Timer>,MoniTool_MTHasher>;
 %template(MoniTool_IndexedDataMapOfShapeTransient) NCollection_IndexedDataMap<TopoDS_Shape,opencascade::handle<Standard_Transient>,TopTools_ShapeMapHasher>;
 %template(MoniTool_SequenceOfElement) NCollection_Sequence<opencascade::handle<MoniTool_Element>>;
+
+%extend NCollection_Sequence<opencascade::handle<MoniTool_Element>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

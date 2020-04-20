@@ -150,6 +150,13 @@ enum  {
 };
 %template(TDF_AttributeMap) NCollection_Map<opencascade::handle<TDF_Attribute>,TColStd_MapTransientHasher>;
 %template(TDF_AttributeSequence) NCollection_Sequence<opencascade::handle<TDF_Attribute>>;
+
+%extend NCollection_Sequence<opencascade::handle<TDF_Attribute>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TDF_DeltaList) NCollection_List<opencascade::handle<TDF_Delta>>;
 
 %extend NCollection_List<opencascade::handle<TDF_Delta>> {
@@ -183,6 +190,13 @@ enum  {
 };
 %template(TDF_LabelMap) NCollection_Map<TDF_Label,TDF_LabelMapHasher>;
 %template(TDF_LabelSequence) NCollection_Sequence<TDF_Label>;
+
+%extend NCollection_Sequence<TDF_Label> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TDF_ListIteratorOfAttributeDeltaList) NCollection_TListIterator<opencascade::handle<TDF_AttributeDelta>>;
 %template(TDF_ListIteratorOfAttributeList) NCollection_TListIterator<opencascade::handle<TDF_Attribute>>;
 %template(TDF_ListIteratorOfDeltaList) NCollection_TListIterator<opencascade::handle<TDF_Delta>>;

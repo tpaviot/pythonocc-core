@@ -720,11 +720,53 @@ XCAFDimTolObjects_DimensionGrade_IT18 = XCAFDimTolObjects_DimensionGrade.XCAFDim
 /* templates */
 %template(XCAFDimTolObjects_DataMapOfToleranceDatum) NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>,opencascade::handle<XCAFDimTolObjects_DatumObject>,TColStd_MapTransientHasher>;
 %template(XCAFDimTolObjects_DatumModifiersSequence) NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif>;
+
+%extend NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(XCAFDimTolObjects_DatumObjectSequence) NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DatumObject>>;
+
+%extend NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DatumObject>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(XCAFDimTolObjects_DimensionModifiersSequence) NCollection_Sequence<XCAFDimTolObjects_DimensionModif>;
+
+%extend NCollection_Sequence<XCAFDimTolObjects_DimensionModif> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(XCAFDimTolObjects_DimensionObjectSequence) NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DimensionObject>>;
+
+%extend NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DimensionObject>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(XCAFDimTolObjects_GeomToleranceModifiersSequence) NCollection_Sequence<XCAFDimTolObjects_GeomToleranceModif>;
+
+%extend NCollection_Sequence<XCAFDimTolObjects_GeomToleranceModif> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(XCAFDimTolObjects_GeomToleranceObjectSequence) NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>>;
+
+%extend NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -90,6 +90,13 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(TransferBRep_SequenceOfTransferResultInfo) NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>;
+
+%extend NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

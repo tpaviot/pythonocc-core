@@ -102,7 +102,21 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(STEPSelections_SequenceOfAssemblyComponent) NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyComponent>>;
+
+%extend NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyComponent>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(STEPSelections_SequenceOfAssemblyLink) NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>;
+
+%extend NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

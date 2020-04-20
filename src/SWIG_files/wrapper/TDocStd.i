@@ -93,7 +93,21 @@ from OCC.Core.Exception import *
 /* templates */
 %template(TDocStd_LabelIDMapDataMap) NCollection_DataMap<TDF_Label,TDF_IDMap,TDF_LabelMapHasher>;
 %template(TDocStd_SequenceOfApplicationDelta) NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>>;
+
+%extend NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TDocStd_SequenceOfDocument) NCollection_Sequence<opencascade::handle<TDocStd_Document>>;
+
+%extend NCollection_Sequence<opencascade::handle<TDocStd_Document>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

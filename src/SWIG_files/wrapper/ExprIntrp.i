@@ -78,7 +78,21 @@ from OCC.Core.Exception import *
 %template(ExprIntrp_ListIteratorOfStackOfGeneralFunction) NCollection_TListIterator<opencascade::handle<Expr_GeneralFunction>>;
 %template(ExprIntrp_ListIteratorOfStackOfGeneralRelation) NCollection_TListIterator<opencascade::handle<Expr_GeneralRelation>>;
 %template(ExprIntrp_SequenceOfNamedExpression) NCollection_Sequence<opencascade::handle<Expr_NamedExpression>>;
+
+%extend NCollection_Sequence<opencascade::handle<Expr_NamedExpression>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(ExprIntrp_SequenceOfNamedFunction) NCollection_Sequence<opencascade::handle<Expr_NamedFunction>>;
+
+%extend NCollection_Sequence<opencascade::handle<Expr_NamedFunction>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(ExprIntrp_StackOfGeneralExpression) NCollection_List<opencascade::handle<Expr_GeneralExpression>>;
 
 %extend NCollection_List<opencascade::handle<Expr_GeneralExpression>> {

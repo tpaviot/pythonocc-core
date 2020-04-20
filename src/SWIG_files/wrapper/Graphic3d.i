@@ -1372,10 +1372,45 @@ Graphic3d_NOT_ENV_UNKNOWN = Graphic3d_NameOfTextureEnv.Graphic3d_NOT_ENV_UNKNOWN
 %template(Graphic3d_Mat4) NCollection_Mat4<Standard_ShortReal>;
 %template(Graphic3d_Mat4d) NCollection_Mat4<Standard_Real>;
 %template(Graphic3d_SequenceOfGroup) NCollection_Sequence<opencascade::handle<Graphic3d_Group>>;
+
+%extend NCollection_Sequence<opencascade::handle<Graphic3d_Group>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Graphic3d_SequenceOfStructure) NCollection_Sequence<opencascade::handle<Graphic3d_Structure>>;
+
+%extend NCollection_Sequence<opencascade::handle<Graphic3d_Structure>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Graphic3d_ShaderAttributeList) NCollection_Sequence<opencascade::handle<Graphic3d_ShaderAttribute>>;
+
+%extend NCollection_Sequence<opencascade::handle<Graphic3d_ShaderAttribute>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Graphic3d_ShaderObjectList) NCollection_Sequence<opencascade::handle<Graphic3d_ShaderObject>>;
+
+%extend NCollection_Sequence<opencascade::handle<Graphic3d_ShaderObject>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Graphic3d_ShaderVariableList) NCollection_Sequence<opencascade::handle<Graphic3d_ShaderVariable>>;
+
+%extend NCollection_Sequence<opencascade::handle<Graphic3d_ShaderVariable>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Graphic3d_Vec2) NCollection_Vec2<Standard_ShortReal>;
 %template(Graphic3d_Vec2b) NCollection_Vec2<Standard_Character>;
 %template(Graphic3d_Vec2d) NCollection_Vec2<Standard_Real>;

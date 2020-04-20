@@ -114,6 +114,13 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(Geom_SequenceOfBSplineSurface) NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>;
+
+%extend NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -112,6 +112,13 @@ BRepExtrema_IsInFace = BRepExtrema_SupportType.BRepExtrema_IsInFace
     }
 };
 %template(BRepExtrema_SeqOfSolution) NCollection_Sequence<BRepExtrema_SolutionElem>;
+
+%extend NCollection_Sequence<BRepExtrema_SolutionElem> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BRepExtrema_ShapeList) NCollection_Vector<TopoDS_Face>;
 /* end templates declaration */
 

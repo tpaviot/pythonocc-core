@@ -123,8 +123,29 @@ Intf_VERTEX = Intf_PIType.Intf_VERTEX
     }
 };
 %template(Intf_SeqOfSectionLine) NCollection_Sequence<Intf_SectionLine>;
+
+%extend NCollection_Sequence<Intf_SectionLine> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Intf_SeqOfSectionPoint) NCollection_Sequence<Intf_SectionPoint>;
+
+%extend NCollection_Sequence<Intf_SectionPoint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Intf_SeqOfTangentZone) NCollection_Sequence<Intf_TangentZone>;
+
+%extend NCollection_Sequence<Intf_TangentZone> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */
