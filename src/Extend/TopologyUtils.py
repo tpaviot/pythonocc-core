@@ -414,10 +414,10 @@ class TopologyExplorer:
     # ======================================================================
     # WIRE <-> FACE
     # ======================================================================
-    def wires_from_face(self, face):
+    def wires_from_face(self, face: TopoDS_Face) -> Iterator[TopoDS_Wire]:
         return self._loop_topo(TopAbs_WIRE, face)
 
-    def number_of_wires_from_face(self, face):
+    def number_of_wires_from_face(self, face: TopoDS_Face) -> int:
         cnt = 0
         for _ in self._loop_topo(TopAbs_WIRE, face):
             cnt += 1
@@ -438,10 +438,10 @@ class TopologyExplorer:
     def number_of_faces_from_vertex(self, vertex):
         return self._number_shapes_ancestors(TopAbs_VERTEX, TopAbs_FACE, vertex)
 
-    def vertices_from_face(self, face):
+    def vertices_from_face(self, face: TopoDS_Face) -> Iterator[TopoDS_Vertex]:
         return self._loop_topo(TopAbs_VERTEX, face)
 
-    def number_of_vertices_from_face(self, face):
+    def number_of_vertices_from_face(self, face: TopoDS_Face) -> int:
         cnt = 0
         for _ in self._loop_topo(TopAbs_VERTEX, face):
             cnt += 1
@@ -456,17 +456,19 @@ class TopologyExplorer:
     def number_of_solids_from_face(self, face):
         return self._number_shapes_ancestors(TopAbs_FACE, TopAbs_SOLID, face)
 
-    def faces_from_solids(self, solid):
+    def faces_from_solids(self, solid: TopoDS_Solid) -> Iterator[TopoDS_Face]:
         return self._loop_topo(TopAbs_FACE, solid)
 
-    def number_of_faces_from_solids(self, solid):
+    def number_of_faces_from_solids(self, solid: TopoDS_Solid) -> int:
         cnt = 0
         for _ in self._loop_topo(TopAbs_FACE, solid):
             cnt += 1
         return cnt
 
 
-def dump_topology_to_string(shape, level=0, buffer="") -> None:
+def dump_topology_to_string(shape: TopoDS_Shape,
+                            level: Optional[int]=0,
+                            buffer: Optional[str]="") -> None:
     """
     Return the details of an object from the top down
     """
@@ -488,7 +490,7 @@ def dump_topology_to_string(shape, level=0, buffer="") -> None:
 # Edge and wire discretizers
 #
 
-def discretize_wire(a_topods_wire: TopoDS_Wire, deflection=0.5):
+def discretize_wire(a_topods_wire: TopoDS_Wire, deflection: Optional[int]=0.5) -> List[gp_Pnt]:
     """ Returns a set of points
     """
     if not is_wire(a_topods_wire):
@@ -541,37 +543,37 @@ def discretize_edge(a_topods_edge: TopoDS_Edge, deflection=0.2, algorithm="Quasi
 #
 # TopoDS_Shape type utils
 #
-def is_vertex(topods_shape):
+def is_vertex(topods_shape: TopoDS_Shape) -> bool:
     if not hasattr(topods_shape, "ShapeType"):
         return False
     return topods_shape.ShapeType() == TopAbs_VERTEX
 
 
-def is_solid(topods_shape):
+def is_solid(topods_shape: TopoDS_Shape) -> bool:
     if not hasattr(topods_shape, "ShapeType"):
         return False
     return topods_shape.ShapeType() == TopAbs_SOLID
 
 
-def is_edge(topods_shape):
+def is_edge(topods_shape: TopoDS_Shape) -> bool:
     if not hasattr(topods_shape, "ShapeType"):
         return False
     return topods_shape.ShapeType() == TopAbs_EDGE
 
 
-def is_face(topods_shape):
+def is_face(topods_shape: TopoDS_Shape) -> bool:
     if not hasattr(topods_shape, "ShapeType"):
         return False
     return topods_shape.ShapeType() == TopAbs_FACE
 
 
-def is_shell(topods_shape):
+def is_shell(topods_shape: TopoDS_Shape) -> bool:
     if not hasattr(topods_shape, "ShapeType"):
         return False
     return topods_shape.ShapeType() == TopAbs_SHELL
 
 
-def is_wire(topods_shape):
+def is_wire(topods_shape: TopoDS_Shape) -> bool:
     if not hasattr(topods_shape, "ShapeType"):
         return False
     return topods_shape.ShapeType() == TopAbs_WIRE
