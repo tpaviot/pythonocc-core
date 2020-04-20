@@ -50,6 +50,7 @@ from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Builder, TopoDS_Edge, TopoDS
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
 from OCC.Core.TColgp import TColgp_Array1OfPnt
+from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopAbs import TopAbs_FACE
 from OCC.Core.GProp import GProp_GProps
@@ -722,7 +723,7 @@ class TestWrapperFeatures(unittest.TestCase):
         TopTools_HArray2OfShape(0, 3, 0, 3)
         TopTools_HSequenceOfShape()
 
-    def test_NCollection_list(self) -> None:
+    def test_NCollection_List(self) -> None:
         """ Check that python proxy for NCollection_List is ok
         """
         l = TopTools_ListOfShape()
@@ -734,8 +735,15 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(len(l), 2)
         l.RemoveFirst()
         self.assertEqual(len(l), 1)
-    
-    def test_ncollection_datamap_extension(self) -> None:
+
+    def test_NCollection_Sequence(self) -> None:
+        """ Check that python proxy for NCollection_Sequence is ok
+        """
+        l = TDF_LabelSequence()
+        self.assertEqual(l.Size(), 0)
+        self.assertEqual(len(l), 0)
+
+    def test_NCollection_Datamap_extension(self) -> None:
         """ NCollection_DataMap class adds a Keys() method that return keys in a Python List
         """
         box1 = BRepPrimAPI_MakeBox(gp_Pnt(0, 0, 0), gp_Pnt(20, 20, 20)).Shape()
