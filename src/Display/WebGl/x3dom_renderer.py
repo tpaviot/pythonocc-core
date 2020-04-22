@@ -278,7 +278,7 @@ class X3DExporter:
         self._mesh_quality = mesh_quality
         # the list of indexed face sets that compose the shape
         # if ever the map_faces_to_mesh option is enabled, this list
-        # maybe composed of dozains of IndexedFaceSet
+        # maybe composed of dozains of TriangleSet
         self._triangle_sets = []
         self._line_sets = []
         self._x3d_string = ""  # the string that contains the x3d description
@@ -288,7 +288,7 @@ class X3DExporter:
         shape_tesselator.Compute(compute_edges=self._export_edges,
                                  mesh_quality=self._mesh_quality,
                                  parallel=True)
-        self._triangle_sets.append(shape_tesselator.ExportShapeToX3DIndexedFaceSet())
+        self._triangle_sets.append(shape_tesselator.ExportShapeToX3DTriangleSet())
         # then process edges
         if self._export_edges:
             # get number of edges

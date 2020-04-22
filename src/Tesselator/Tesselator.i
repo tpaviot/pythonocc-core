@@ -62,7 +62,7 @@ class ShapeTesselator {
         int ObjGetNormalCount();
         int ObjGetEdgeCount();
         int ObjEdgeGetVertexCount(int iEdge);
-        std::string ExportShapeToX3DIndexedFaceSet();
+        std::string ExportShapeToX3DTriangleSet();
         std::string ExportShapeToThreejsJSONString(char *shape_function_name);
         %feature("kwargs") ExportShapeToX3D;
         void ExportShapeToX3D(char *filename, int diffR=1, int diffG=0, int diffB=0);

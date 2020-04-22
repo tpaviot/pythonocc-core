@@ -370,7 +370,7 @@ std::vector<float> ShapeTesselator::GetNormalsAsTuple()
   return normals;
 }
 
-std::string ShapeTesselator::ExportShapeToX3DIndexedFaceSet()
+std::string ShapeTesselator::ExportShapeToX3DTriangleSet()
 {
   EnsureMeshIsComputed();
   std::stringstream str_ifs, str_vertices, str_normals;
@@ -439,7 +439,7 @@ void ShapeTesselator::ExportShapeToX3D(char * filename, int diffR, int diffG, in
     X3Dfile << "<Scene><Transform scale='1 1 1'><Shape><Appearance><Material DEF='Shape_Mat' diffuseColor='0.65 0.65 0.7' ";
     X3Dfile << "specularColor='0.2 0.2 0.2'></Material></Appearance>";
     // write tesselation
-    X3Dfile << ExportShapeToX3DIndexedFaceSet();
+    X3Dfile << ExportShapeToX3DTriangleSet();
     X3Dfile << "</Shape></Transform></Scene></X3D>\n";
     X3Dfile.close();
 
