@@ -52,7 +52,9 @@ ShapeTesselator::ShapeTesselator(TopoDS_Shape aShape):
 
 void ShapeTesselator::Compute(bool compute_edges, float mesh_quality, bool parallel)
 {
-    Tesselate(compute_edges, mesh_quality, parallel);
+    if (!computed) {
+      Tesselate(compute_edges, mesh_quality, parallel);
+    }
     computed=true;
 }
 

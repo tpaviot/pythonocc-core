@@ -120,7 +120,14 @@ class TestTesselator(unittest.TestCase):
 
         # free edges have been excluded, then should work as expected
         stp_file_tesselator.Compute(compute_edges=True)
-        stp_file_tesselator.Compute()
+
+    def test_tesselate_twice(self):
+        """ calling Compte() many times should no raise an exception
+        """
+        another_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
+        torus_tess = ShapeTesselator(another_torus)
+        torus_tess.Compute()
+        torus_tess.Compute()
 
 
 def suite():
