@@ -29,6 +29,7 @@ from OCC.Core.BRepPrimAPI import (BRepPrimAPI_MakeBox,
                                   BRepPrimAPI_MakeSphere)
 from OCC.Core.Tesselator import ShapeTesselator
 
+from OCC.Extend.DataExchange import read_step_file
 
 class TestTesselator(unittest.TestCase):
     """ A class for testing tesselation algorithm """
@@ -109,6 +110,18 @@ class TestTesselator(unittest.TestCase):
         with open(output_x3d_filename, "r") as x3d_file:
             x3d_content = x3d_file.read()
             ET.fromstring(x3d_content)  # raise an exception if not valid xml
+
+    def test_tesselate_STEP_file(self):
+        """ loads a step file, tesselate. The as1_pe_203 contains
+        free edges"""
+        stp_file = os.path.join(os.path.join("test_io", "as1_pe_203.stp"))
+        stp_file_shape = read_step_file(stp_file)
+        stp_file_tesselator = ShapeTesselator(stp_file_shape)
+
+        # free edges have been excluded, then should work as expected
+        stp_file_tesselator.Compute(compute_edges=True)
+        stp_file_tesselator.Compute()
+
 
 def suite():
     """ builds the test suite """

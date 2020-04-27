@@ -223,11 +223,15 @@ void ShapeTesselator::ComputeEdges()
   TopExp::MapShapesAndAncestors(myShape, TopAbs_EDGE, TopAbs_FACE, edgeMap);
 
   for (int iEdge = 1 ; iEdge <= edgeMap.Extent (); iEdge++) {
-    // reject free edges
-    //const TopTools_ListOfShape& faceList = edgeMap.FindFromIndex (iEdge);
-    //if (faceList.Extent() == 0) {
-    //  continue;
-    //}
+
+    // skip free edges, might be the case if the shape passed to
+    // the tesselator is a Compound
+    const TopTools_ListOfShape& faceList = edgeMap.FindFromIndex(iEdge);
+
+    if (faceList.Extent() == 0) {
+      printf("Skipped free edge during shape tesselation/edges computation.\n");
+      continue;
+    }
 
     // take one of the shared edges and get edge triangulation
     //const TopoDS_Face& aFace  = TopoDS::Face (faceList.First ());
