@@ -1,4 +1,4 @@
-##Copyright 2018 Thomas Paviot (tpaviot@gmail.com)
+##Copyright Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -35,20 +35,7 @@ from OCC.Core.STEPControl import (
     STEPControl_Writer,
     STEPControl_AsIs,
 )
-from OCC.Core.Interface import Interface_Static_SetCVal
-from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
-from OCC.Core.TDocStd import TDocStd_Document
-from OCC.Core.XCAFDoc import (
-    XCAFDoc_DocumentTool_ShapeTool,
-    XCAFDoc_DocumentTool_ColorTool,
-)
-from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
-from OCC.Core.TDF import TDF_LabelSequence, TDF_Label
-from OCC.Core.TCollection import TCollection_ExtendedString
-from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
-from OCC.Core.TopLoc import TopLoc_Location
-from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
-
+from OCC.Core.STEPControl import STEPControl_Reader, STEPControl_Writer, STEPControl_AsIs
 from OCC.Extend.TopologyUtils import (
     discretize_edge,
     get_sorted_hlr_edges,
@@ -61,6 +48,7 @@ try:
     HAVE_SVGWRITE = True
 except ImportError:
     HAVE_SVGWRITE = False
+
 
 ##########################
 # Step import and export #
@@ -369,6 +357,7 @@ def read_step_file_with_names_colors(filename):
 
     _get_shapes()
     return output_shapes
+<<<<<<< HEAD:src/Extend/DataExchange.py
 
 
 #########################
@@ -633,3 +622,5 @@ def export_shape_to_svg(
         print(f"Shape successfully exported to {filename}")
         return True
     return dwg.tostring()
+=======
+>>>>>>> Refactored DataExchange as a package including STEP, STL, IGES, SVG, XDE and X3D modules:src/Extend/DataExchange/STEP.py
