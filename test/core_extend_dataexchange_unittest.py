@@ -23,14 +23,11 @@ import unittest
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
 from OCC.Core.TopoDS import TopoDS_Compound
 
-from OCC.Extend.DataExchange import (read_step_file,
-                                     read_step_file_with_names_colors,
-                                     read_stl_file,
-                                     read_iges_file,
-                                     write_step_file,
-                                     write_stl_file,
-                                     write_iges_file,
-                                     export_shape_to_svg)
+from OCC.Extend.DataExchange.STEP import (read_step_file, write_step_file,
+                                          read_step_file_with_names_colors)
+from OCC.Extend.DataExchange.STL import read_stl_file, write_stl_file
+from OCC.Extend.DataExchange.IGES import read_iges_file, write_iges_file
+from OCC.Extend.DataExchange.SVG import export_shape_to_svg
 
 
 SAMPLES_DIRECTORY = os.path.join('.', 'test_io')

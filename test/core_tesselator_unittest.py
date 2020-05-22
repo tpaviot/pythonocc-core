@@ -29,7 +29,7 @@ from OCC.Core.BRepPrimAPI import (BRepPrimAPI_MakeBox,
                                   BRepPrimAPI_MakeSphere)
 from OCC.Core.Tesselator import ShapeTesselator
 
-from OCC.Extend.DataExchange import read_step_file
+from OCC.Extend.DataExchange.STEP import read_step_file
 
 class TestTesselator(unittest.TestCase):
     """ A class for testing tesselation algorithm """
