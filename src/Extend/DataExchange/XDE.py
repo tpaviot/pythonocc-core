@@ -164,6 +164,7 @@ class SceneGrapheFromDoc:
             ##subshapes
             l_subss = TDF_LabelSequence()
             self._shape_tool.GetSubShapes(lab, l_subss)
+            subcolorsUniform = True
 
             if (l_subss.Length() == 0 and labloc.IsIdentity()): # does not need transform
                 # but still needs transform wrapper for proper USE reference
@@ -194,7 +195,7 @@ class SceneGrapheFromDoc:
                         'children': []
                         }
 
-                shapenode = {'node' : 'Shape',
+                supershapenode = {'node' : 'Shape',
                              'label' : lab,
                              'shape' : shape,
                              'shapeType' : shape_type,
@@ -204,9 +205,9 @@ class SceneGrapheFromDoc:
                              'colorDEF' : clabelString
                             }
 
-                if l_subss.Length() == 0: # only attach if no subshapes
-                    #print("no subshapes: "+shape_type+" for :"+name)
-                    node['children'].append(shapenode)
+#                 if l_subss.Length() == 0: # only attach if no subshapes
+#                     #print("no subshapes: "+shape_type+" for :"+name)
+#                     node['children'].append(shapenode)
 
             for i in range(l_subss.Length()):
 
@@ -282,7 +283,7 @@ class SceneGrapheFromDoc:
                                      'shape' : shape_sub,
                                      'shapeType' : shape_type,
                                      'DEF' : def_name,
-                                     'name' : node_name+'-group',
+                                     'name' : node_name+'-colorshells',
                                      'children' : []
                                     }
                         f = 0
@@ -300,6 +301,8 @@ class SceneGrapheFromDoc:
                             c = colorColors[entry]
                             clabel = self._color_tool.FindColor(c)
                             clabelString = clabel.EntryDumpToString()
+                            if (clabelString != supershapenode['labelString']):
+                                subcolorsUniform = False
                             shellnode = {'node' : 'SubShape',
                                          'label' : lab_subs,
                                          'shape' : subshell,
@@ -315,6 +318,21 @@ class SceneGrapheFromDoc:
                         #hasMultiColor = True
                     #//end grouping into single color
                 #//end face color check
+                # only attach container shape if all face colors have the same color, required for buggy suspension
+                # TODO: look for less heuristics
+                if (subcolorsUniform):
+                    supershapenode = {
+                        'node' : 'Shape',
+                        'DEF' : labelString+'-supershape',
+                        'label' : lab,
+                        'shape' : shape,
+                        'shapeType' : shape_type,
+                        'name' : name + '-shape',
+                        'colorString' : f"{c.Red()} {c.Green()} {c.Blue()}",
+                        'color' : (c.Red(), c.Green(), c.Blue()),
+                        'colorDEF' : clabelString
+                    }
+                    node['children'].append(supershapenode)
                 node['children'].append(shapenode)
             #//end subshapes
         parent.append(node)
