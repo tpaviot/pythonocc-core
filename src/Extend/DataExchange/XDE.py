@@ -75,7 +75,12 @@ class SceneGrapheFromDoc:
         self._log = log
 
         self._get_shapes()
-
+    
+    def get_scene(self):
+        return self._scene
+    
+    def get_internalFaceEntries(self):
+        return self._facesInSubshapes
 
     def _print_log(self, message):  # TODO: replace with the logging module functions
         if self._log:
@@ -249,9 +254,9 @@ class SceneGrapheFromDoc:
                     for i in range(0, len(solidfaces)):
                         found = self._shape_tool.FindSubShape(lab, solidfaces[i], facelabel)
                         if found:
-                            facesInSubshapes.add(facelabel.EntryDumpToString())
-                            c = _set_color(facelabel, solidfaces[i])
-                            clabel = color_tool.FindColor(c)
+                            self._facesInSubshapes.add(facelabel.EntryDumpToString())
+                            c = self._set_color(facelabel, solidfaces[i])
+                            clabel = self._color_tool.FindColor(c)
                             clabelString = clabel.EntryDumpToString()
                             if clabelString not in colorColors:
                                 colorFaceLists[clabelString] = []
@@ -259,7 +264,7 @@ class SceneGrapheFromDoc:
                             colorColors[clabelString] = c # collect color
                     
                     # override default color, if only one color, is last color
-                    clabel = color_tool.FindColor(c)
+                    clabel = self._color_tool.FindColor(c)
                     clabelString = clabel.EntryDumpToString()
                     shapenode['colorString'] = f"{c.Red()} {c.Green()} {c.Blue()}"
                     shapenode['color'] = (c.Red(), c.Green(), c.Blue())
@@ -293,7 +298,7 @@ class SceneGrapheFromDoc:
                             #shape_type = get_type_as_string(subshell)
                             shape_type = "Shell"
                             c = colorColors[entry]
-                            clabel = color_tool.FindColor(c)
+                            clabel = self._color_tool.FindColor(c)
                             clabelString = clabel.EntryDumpToString()
                             shellnode = {'node' : 'SubShape',
                                          'label' : lab_subs,
