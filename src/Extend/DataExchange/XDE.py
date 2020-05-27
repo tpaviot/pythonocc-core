@@ -87,7 +87,6 @@ class SceneGrapheFromDoc:
             print(message)
         return
 
-
     def _get_shapes(self):
         labels = TDF_LabelSequence()
         self._shape_tool.GetFreeShapes(labels)
@@ -97,7 +96,6 @@ class SceneGrapheFromDoc:
         for i in range(labels.Length()):
             root_item = labels.Value(i+1)
             self._get_sub_shapes(root_item, None, self._scene)
-
 
     def _get_sub_shapes(self, lab, loc, parent):
 
@@ -205,10 +203,6 @@ class SceneGrapheFromDoc:
                              'colorDEF' : clabelString
                             }
 
-#                 if l_subss.Length() == 0: # only attach if no subshapes
-#                     #print("no subshapes: "+shape_type+" for :"+name)
-#                     node['children'].append(shapenode)
-
             for i in range(l_subss.Length()):
 
                 lab_subs = l_subss.Value(i+1)
@@ -225,11 +219,9 @@ class SceneGrapheFromDoc:
                 clabel = self._color_tool.FindColor(c)
                 clabelString = clabel.EntryDumpToString()
                 n = c.Name(c.Red(), c.Green(), c.Blue())
-                #print('    solidshape color RGB: ', c.Red(), c.Green(), c.Blue(), n)
                 node_name = self._unescapeStep(lab_subs.GetLabelName())
                 def_name = lab_subs.EntryDumpToString()
                 subloc = self._shape_tool.GetLocation(lab_subs) # assume identity, otherwise we need another wrapper
-                #print("    subshape Transform: ", subloc.HashCode(100))
                 #default subshape
                 shapenode = {'node': 'SubShape',
                              'label': lab_subs,
