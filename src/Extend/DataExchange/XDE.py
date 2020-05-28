@@ -87,7 +87,6 @@ class SceneGrapheFromDoc:
             print(message)
         return
 
-
     def _get_shapes(self):
         labels = TDF_LabelSequence()
         self._shape_tool.GetFreeShapes(labels)
@@ -97,7 +96,6 @@ class SceneGrapheFromDoc:
         for i in range(labels.Length()):
             root_item = labels.Value(i+1)
             self._get_sub_shapes(root_item, None, self._scene)
-
 
     def _get_sub_shapes(self, lab, loc, parent):
 
@@ -346,7 +344,8 @@ class SceneGrapheFromDoc:
         reg3 = re.compile(r'\\X4\\(........)\\X0\\')
         
         return reg3.sub(_toUnicode, reg2.sub(_toUnicode, reg1.sub(_toUnicode, name)))
-
+      
+      
 if __name__ == "__main__":
     # test with the as1_pe.stp file
     stp_filename = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
