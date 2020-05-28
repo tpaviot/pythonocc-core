@@ -352,4 +352,4 @@ if __name__ == "__main__":
     stp_filename = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
     doc_exp = DocFromSTEP(stp_filename)
     doc = doc_exp.get_doc()
-    SceneGrapheFromDoc(doc, log=False)
+    SceneGrapheFromDoc(doc, log=True)
