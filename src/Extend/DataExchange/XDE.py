@@ -344,8 +344,8 @@ class SceneGrapheFromDoc:
         reg3 = re.compile(r'\\X4\\(........)\\X0\\')
         
         return reg3.sub(_toUnicode, reg2.sub(_toUnicode, reg1.sub(_toUnicode, name)))
-      
-      
+
+
 if __name__ == "__main__":
     # test with the as1_pe.stp file
     stp_filename = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
