@@ -16,3 +16,8 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 __doc__ = "Everything related to X3D export """
+
+import OCC.Extend.DataExchange.x3d_standard.x3d as XX3D
+
+if __name__ == "__main__":
+	pass
