@@ -87,9 +87,10 @@ class TestExtendDataExchange(unittest.TestCase):
         read_stl_file(STL_BINARY_SAMPLE_FILE)
 
     def test_export_shape_to_svg(self):
-        svg_filename = get_test_fullname("sample.svg")
-        export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
-        self.assertTrue(os.path.isfile(svg_filename))
+        if HAVE_SVGWRITE:
+            svg_filename = get_test_fullname('sample.svg')
+            export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
+            self.assertTrue(os.path.isfile(svg_filename))
 
     def test_write_step_ap203(self):
         ap203_filename = get_test_fullname("sample_ap_203.stp")
