@@ -28,7 +28,7 @@ try:
     HAVE_SVGWRITE = True
 except ImportError:
     HAVE_SVGWRITE = False
-    raise ImportError("svg exporter not available because the svgwrite package is not installed.")
+    print("svg exporter not available because the svgwrite package is not installed.")
 
 
 def edge_to_svg_polyline(topods_edge, tol=0.1, unit="mm"):
