@@ -34,6 +34,7 @@ from OCC.Extend.DataExchange import (
     export_shape_to_svg,
 )
 from OCC.Extend.TopologyUtils import TopologyExplorer
+import OCC.Extend.DataExchange.X3D
 
 SAMPLES_DIRECTORY = os.path.join(".", "test_io")
 
@@ -122,6 +123,10 @@ class TestExtendDataExchange(unittest.TestCase):
         write_stl_file(A_TOPODS_SHAPE, stl_binary_filename, mode="binary")
         self.assertTrue(os.path.isfile(stl_binary_filename))
 
+    def test_doc_from_step(self):
+        doc_exp = DocFromSTEP(STEP_AP203_SAMPLE_FILE)
+        document = doc_exp.get_doc()
+        SceneGrapheFromDoc(document, log=True)
 
 def suite():
     test_suite = unittest.TestSuite()
