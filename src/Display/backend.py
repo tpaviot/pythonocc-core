@@ -1,5 +1,4 @@
 import logging
-import sys
 
 # backend constants
 WX = "wx"
