@@ -14,8 +14,8 @@ HAVE_PYQT5, HAVE_PYQT4, HAVE_PYSIDE, HAVE_WX = False, False, False, False
 HAVE_BACKEND = False
 BACKEND_MODULE = "No backend loaded"
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 log = logging.getLogger(__name__)
+log.set_level(logging.DEBUG)
 
 
 def load_pyqt5():
