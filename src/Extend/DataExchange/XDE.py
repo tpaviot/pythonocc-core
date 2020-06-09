@@ -56,7 +56,7 @@ class DocFromSTEP:
         return self._doc
 
 
-class SceneGrapheFromDoc:
+class SceneGraphFromDoc:
     def __init__(self, doc, log=False):
         self._output_shapes = {}
         self._scene = []
@@ -341,4 +341,4 @@ if __name__ == "__main__":
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
     doc_exp = DocFromSTEP(step_file)
     document = doc_exp.get_doc()
-    SceneGrapheFromDoc(document, log=True)
+    SceneGraphFromDoc(document, log=True)
