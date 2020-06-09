@@ -801,8 +801,8 @@ HANIMSEGMENTNAMEVALUES = (
 
 HANIMVERSIONCHOICES = (
     # strict set of allowed values follow, no other values are valid
-    '1.0', # International standard HAnim 19774 version 1 approved by ISO in 2006. Note that HAnim version 2.0 has more capabilties, while version 1.0 includes several small incompatibilities. Since it was never formally approved, version 1.1 is no longer an allowed value.
-    '2.0' # Revised standard HAnim 19774 version 2 parts 1 and 2 were approved by ISO in Novemer 2019, published by Web3D Consortium May 2020.
+    '1.0', # International standard HAnim 19774 version 1 approved by ISO in 2006. Note that HAnim version 2.0 has more capabilties, while version 1.0 includes several small incompatibilities. Since no other versions were formally approved, no other values are allowed for earlier HAnim versions.
+    '2.0' # Revised standard HAnim 19774 version 2 (parts 1 and 2) were approved by ISO in November 2019, published by Web3D Consortium May 2020.
 )
 def assertValidHanimVersion(fieldName, value):
     """
@@ -5611,7 +5611,7 @@ class SFNode(_X3DField):
     def DEFAULT_VALUE(self):
         return None
     def FIELD_DECLARATIONS(self):
-        return [('value', 'None', FieldType.SFNode, AccessType.inputOutput, 'SFNode')]
+        return [('value', 'None', FieldType.SFNode, AccessType.inputOutput, NAME)]
     def ARRAY_TYPE(self):
         return False
     def TUPLE_SIZE(self):
@@ -5662,7 +5662,7 @@ class MFNode(_X3DField):
     def DEFAULT_VALUE(self):
         return [] # use empty list object, don't keep resetting a mutable python DEFAULT_VALUE
     def FIELD_DECLARATIONS(self):
-        return [('value', None, FieldType.MFNode, AccessType.inputOutput, 'MFNode')]
+        return [('value', None, FieldType.MFNode, AccessType.inputOutput, NAME)]
     def ARRAY_TYPE(self):
         return True
     def TUPLE_SIZE(self):
@@ -8123,7 +8123,7 @@ class ExternProtoDeclare(_X3DStatement):
             field = MFNode.DEFAULT_VALUE(self)
         # TODO type-aware checks for field
         if field: # walk each child in MFNode list, if any
-            for each in __field:
+            for each in field:
                 assertValidFieldInitializationValue(each.name, type(each.value), each.value, parent='ExternProtoDeclare/field')
         self.__field = field
     # hasChild() function - - - - - - - - - -
@@ -8327,7 +8327,7 @@ class field(_X3DStatement):
         if self.type:
             result += " type='" + self.type + "'"
         if self.value:
-            result += " value='" + SFString(self.value).XML() + "'"
+            result += " value='" + str(self.value) + "'"
         if not self.hasChild():
             if syntax.upper() == "HTML5":
                 result += '></field>' + '\n' # no self-closing tags allowed by HTML5
@@ -8450,7 +8450,7 @@ class fieldValue(_X3DStatement):
         if self.name:
             result += " name='" + self.name + "'"
         if self.value:
-            result += " value='" + SFString(self.value).XML() + "'"
+            result += " value='" + str(self.value) + "'"
         if not self.hasChild():
             if syntax.upper() == "HTML5":
                 result += '></fieldValue>' + '\n' # no self-closing tags allowed by HTML5
@@ -9177,7 +9177,7 @@ class ProtoInterface(_X3DStatement):
             field = MFNode.DEFAULT_VALUE(self)
         # TODO type-aware checks for field
         if field: # walk each child in MFNode list, if any
-            for each in __field:
+            for each in field:
                 assertValidFieldInitializationValue(each.name, each.type, each.value, parent='ProtoInterface')
         self.__field = field
     # hasChild() function - - - - - - - - - -
@@ -9797,9 +9797,9 @@ class Anchor(_X3DGroupingNode, _X3DUrlObject):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
         ('description', '', FieldType.SFString, AccessType.inputOutput, 'Anchor'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('parameter', list(), FieldType.MFString, AccessType.inputOutput, 'Anchor'),
         ('url', list(), FieldType.MFString, AccessType.inputOutput, 'X3DUrlObject'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
@@ -9811,9 +9811,9 @@ class Anchor(_X3DGroupingNode, _X3DUrlObject):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  description='',
-                 displayBBox=False,
                  parameter=list(),
                  url=list(),
                  visible=True,
@@ -9826,9 +9826,9 @@ class Anchor(_X3DGroupingNode, _X3DUrlObject):
         # if _DEBUG: print('... in ConcreteNode Anchor __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.description = description
-        self.displayBBox = displayBBox
         self.parameter = parameter
         self.url = url
         self.visible = visible
@@ -9844,6 +9844,16 @@ class Anchor(_X3DGroupingNode, _X3DUrlObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -9856,7 +9866,7 @@ class Anchor(_X3DGroupingNode, _X3DUrlObject):
         self.__bboxSize = bboxSize
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -9864,15 +9874,6 @@ class Anchor(_X3DGroupingNode, _X3DUrlObject):
             description = SFString.DEFAULT_VALUE(self)
         assertValidSFString(description)
         self.__description = description
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def parameter(self):
         """If provided, parameter tells the X3D player where to to redirect the loaded url."""
@@ -9895,6 +9896,7 @@ class Anchor(_X3DGroupingNode, _X3DUrlObject):
         self.__url = url
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -9931,14 +9933,14 @@ class Anchor(_X3DGroupingNode, _X3DUrlObject):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
         if self.description:
             result += " description='" + self.description + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.parameter != list():
             result += " parameter='" + MFString(self.parameter).XML() + "'"
         if self.url != list():
@@ -9986,14 +9988,14 @@ class Anchor(_X3DGroupingNode, _X3DUrlObject):
             result += 'Anchor' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
         if self.description:
             result += " description " +  '"' + self.description + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.parameter != list():
             result += " parameter " + MFString(self.parameter).VRML() + ""
         if self.url != list():
@@ -10619,7 +10621,7 @@ class AudioClip(_X3DSoundSourceNode, _X3DUrlObject):
         self.url = url
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -11255,8 +11257,8 @@ class Billboard(_X3DGroupingNode):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('axisOfRotation', (0, 1, 0), FieldType.SFVec3f, AccessType.inputOutput, 'Billboard'),
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('children', list(), FieldType.MFNode, AccessType.inputOutput, 'X3DGroupingNode'),
         ('DEF', '', FieldType.SFString, AccessType.inputOutput, 'X3DNode'),
@@ -11267,8 +11269,8 @@ class Billboard(_X3DGroupingNode):
     def __init__(self,
                  axisOfRotation=(0, 1, 0),
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  visible=True,
                  children=None,
                  DEF='',
@@ -11280,8 +11282,8 @@ class Billboard(_X3DGroupingNode):
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.axisOfRotation = axisOfRotation
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.visible = visible
         self.children = children
     @property # getter - - - - - - - - - -
@@ -11305,6 +11307,16 @@ class Billboard(_X3DGroupingNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -11316,16 +11328,8 @@ class Billboard(_X3DGroupingNode):
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -11364,12 +11368,12 @@ class Billboard(_X3DGroupingNode):
             result += " axisOfRotation='" + SFVec3f(self.axisOfRotation).XML() + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.visible != True:
             result += " visible='" + SFBool(self.visible).XML() + "'"
         if not self.hasChild():
@@ -11415,12 +11419,12 @@ class Billboard(_X3DGroupingNode):
             result += " axisOfRotation " + SFVec3f(self.axisOfRotation).VRML() + ""
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.visible != True:
             result += " visible " + SFBool(self.visible).VRML() + ""
         if self.IS: # output this SFNode
@@ -12528,8 +12532,8 @@ class CADAssembly(_X3DGroupingNode, _X3DProductStructureChildNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('name', '', FieldType.SFString, AccessType.inputOutput, 'X3DProductStructureChildNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('children', list(), FieldType.MFNode, AccessType.inputOutput, 'X3DGroupingNode'),
@@ -12540,8 +12544,8 @@ class CADAssembly(_X3DGroupingNode, _X3DProductStructureChildNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  name='',
                  visible=True,
                  children=None,
@@ -12553,8 +12557,8 @@ class CADAssembly(_X3DGroupingNode, _X3DProductStructureChildNode):
         # if _DEBUG: print('... in ConcreteNode CADAssembly __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.name = name
         self.visible = visible
         self.children = children
@@ -12569,6 +12573,16 @@ class CADAssembly(_X3DGroupingNode, _X3DProductStructureChildNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -12579,15 +12593,6 @@ class CADAssembly(_X3DGroupingNode, _X3DProductStructureChildNode):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def name(self):
         """Optional name for this particular CAD node."""
@@ -12600,6 +12605,7 @@ class CADAssembly(_X3DGroupingNode, _X3DProductStructureChildNode):
         self.__name = name
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -12636,12 +12642,12 @@ class CADAssembly(_X3DGroupingNode, _X3DProductStructureChildNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.name:
             result += " name='" + self.name + "'"
         if self.visible != True:
@@ -12687,12 +12693,12 @@ class CADAssembly(_X3DGroupingNode, _X3DProductStructureChildNode):
             result += 'CADAssembly' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.name:
             result += " name " +  '"' + self.name + '"' + ""
         if self.visible != True:
@@ -12722,8 +12728,8 @@ class CADFace(_X3DProductStructureChildNode, _X3DBoundedObject):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('name', '', FieldType.SFString, AccessType.inputOutput, 'X3DProductStructureChildNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('shape', None, FieldType.SFNode, AccessType.inputOutput, 'CADFace'),
@@ -12734,8 +12740,8 @@ class CADFace(_X3DProductStructureChildNode, _X3DBoundedObject):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  name='',
                  visible=True,
                  shape=None,
@@ -12747,8 +12753,8 @@ class CADFace(_X3DProductStructureChildNode, _X3DBoundedObject):
         # if _DEBUG: print('... in ConcreteNode CADFace __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.name = name
         self.visible = visible
         self.shape = shape
@@ -12763,6 +12769,16 @@ class CADFace(_X3DProductStructureChildNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -12773,15 +12789,6 @@ class CADFace(_X3DProductStructureChildNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def name(self):
         """Optional name for this particular CAD node."""
@@ -12794,6 +12801,7 @@ class CADFace(_X3DProductStructureChildNode, _X3DBoundedObject):
         self.__name = name
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -12833,12 +12841,12 @@ class CADFace(_X3DProductStructureChildNode, _X3DBoundedObject):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.name:
             result += " name='" + self.name + "'"
         if self.visible != True:
@@ -12882,12 +12890,12 @@ class CADFace(_X3DProductStructureChildNode, _X3DBoundedObject):
             result += 'CADFace' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.name:
             result += " name " +  '"' + self.name + '"' + ""
         if self.visible != True:
@@ -12916,8 +12924,8 @@ class CADLayer(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('name', '', FieldType.SFString, AccessType.inputOutput, 'CADLayer'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('children', list(), FieldType.MFNode, AccessType.inputOutput, 'X3DGroupingNode'),
@@ -12928,8 +12936,8 @@ class CADLayer(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  name='',
                  visible=True,
                  children=None,
@@ -12941,8 +12949,8 @@ class CADLayer(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode CADLayer __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.name = name
         self.visible = visible
         self.children = children
@@ -12957,6 +12965,15 @@ class CADLayer(_X3DGroupingNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -12967,15 +12984,6 @@ class CADLayer(_X3DGroupingNode):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def name(self):
         """Optional name for this particular CAD node."""
@@ -12988,7 +12996,7 @@ class CADLayer(_X3DGroupingNode):
         self.__name = name
     @property # getter - - - - - - - - - -
     def visible(self):
-        """Array of boolean values that specify whether each individual child CADAssembly is visible."""
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -13025,12 +13033,12 @@ class CADLayer(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.name:
             result += " name='" + self.name + "'"
         if self.visible != True:
@@ -13076,12 +13084,12 @@ class CADLayer(_X3DGroupingNode):
             result += 'CADLayer' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.name:
             result += " name " +  '"' + self.name + '"' + ""
         if self.visible != True:
@@ -13111,9 +13119,9 @@ class CADPart(_X3DProductStructureChildNode, _X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
         ('center', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'CADPart'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('name', '', FieldType.SFString, AccessType.inputOutput, 'X3DProductStructureChildNode'),
         ('rotation', (0, 0, 1, 0), FieldType.SFRotation, AccessType.inputOutput, 'CADPart'),
         ('scale', (1, 1, 1), FieldType.SFVec3f, AccessType.inputOutput, 'CADPart'),
@@ -13128,9 +13136,9 @@ class CADPart(_X3DProductStructureChildNode, _X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  center=(0, 0, 0),
-                 displayBBox=False,
                  name='',
                  rotation=(0, 0, 1, 0),
                  scale=(1, 1, 1),
@@ -13146,9 +13154,9 @@ class CADPart(_X3DProductStructureChildNode, _X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode CADPart __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.center = center
-        self.displayBBox = displayBBox
         self.name = name
         self.rotation = rotation
         self.scale = scale
@@ -13166,6 +13174,16 @@ class CADPart(_X3DProductStructureChildNode, _X3DGroupingNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -13187,15 +13205,6 @@ class CADPart(_X3DProductStructureChildNode, _X3DGroupingNode):
             center = (0, 0, 0) # default
         assertValidSFVec3f(center)
         self.__center = center
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def name(self):
         """Optional name for this particular CAD node."""
@@ -13248,6 +13257,7 @@ class CADPart(_X3DProductStructureChildNode, _X3DGroupingNode):
         self.__translation = translation
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -13284,14 +13294,14 @@ class CADPart(_X3DProductStructureChildNode, _X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.center != (0, 0, 0):
             result += " center='" + SFVec3f(self.center).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.name:
             result += " name='" + self.name + "'"
         if self.rotation != (0, 0, 1, 0):
@@ -13345,14 +13355,14 @@ class CADPart(_X3DProductStructureChildNode, _X3DGroupingNode):
             result += 'CADPart' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.center != (0, 0, 0):
             result += " center " + SFVec3f(self.center).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.name:
             result += " name " +  '"' + self.name + '"' + ""
         if self.rotation != (0, 0, 1, 0):
@@ -13805,8 +13815,8 @@ class CollidableOffset(_X3DNBodyCollidableNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DNBodyCollidableNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DNBodyCollidableNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
         ('rotation', (0, 0, 1, 0), FieldType.SFRotation, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
         ('translation', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
@@ -13819,8 +13829,8 @@ class CollidableOffset(_X3DNBodyCollidableNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  enabled=True,
                  rotation=(0, 0, 1, 0),
                  translation=(0, 0, 0),
@@ -13834,8 +13844,8 @@ class CollidableOffset(_X3DNBodyCollidableNode):
         # if _DEBUG: print('... in ConcreteNode CollidableOffset __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.rotation = rotation
         self.translation = translation
@@ -13852,6 +13862,16 @@ class CollidableOffset(_X3DNBodyCollidableNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -13862,15 +13882,6 @@ class CollidableOffset(_X3DNBodyCollidableNode):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables node operation."""
@@ -13903,6 +13914,7 @@ class CollidableOffset(_X3DNBodyCollidableNode):
         self.__translation = translation
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -13941,12 +13953,12 @@ class CollidableOffset(_X3DNBodyCollidableNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.rotation != (0, 0, 1, 0):
@@ -13994,12 +14006,12 @@ class CollidableOffset(_X3DNBodyCollidableNode):
             result += 'CollidableOffset' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.rotation != (0, 0, 1, 0):
@@ -14032,8 +14044,8 @@ class CollidableShape(_X3DNBodyCollidableNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DNBodyCollidableNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DNBodyCollidableNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
         ('rotation', (0, 0, 1, 0), FieldType.SFRotation, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
         ('translation', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'X3DNBodyCollidableNode'),
@@ -14046,8 +14058,8 @@ class CollidableShape(_X3DNBodyCollidableNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  enabled=True,
                  rotation=(0, 0, 1, 0),
                  translation=(0, 0, 0),
@@ -14061,8 +14073,8 @@ class CollidableShape(_X3DNBodyCollidableNode):
         # if _DEBUG: print('... in ConcreteNode CollidableShape __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.rotation = rotation
         self.translation = translation
@@ -14079,6 +14091,16 @@ class CollidableShape(_X3DNBodyCollidableNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -14089,15 +14111,6 @@ class CollidableShape(_X3DNBodyCollidableNode):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables node operation."""
@@ -14130,6 +14143,7 @@ class CollidableShape(_X3DNBodyCollidableNode):
         self.__translation = translation
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -14168,12 +14182,12 @@ class CollidableShape(_X3DNBodyCollidableNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.rotation != (0, 0, 1, 0):
@@ -14221,12 +14235,12 @@ class CollidableShape(_X3DNBodyCollidableNode):
             result += 'CollidableShape' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.rotation != (0, 0, 1, 0):
@@ -14259,8 +14273,8 @@ class Collision(_X3DGroupingNode, _X3DSensorNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'X3DSensorNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('proxy', None, FieldType.SFNode, AccessType.initializeOnly, 'Collision'),
@@ -14272,8 +14286,8 @@ class Collision(_X3DGroupingNode, _X3DSensorNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  enabled=True,
                  visible=True,
                  proxy=None,
@@ -14286,8 +14300,8 @@ class Collision(_X3DGroupingNode, _X3DSensorNode):
         # if _DEBUG: print('... in ConcreteNode Collision __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.visible = visible
         self.proxy = proxy
@@ -14303,6 +14317,16 @@ class Collision(_X3DGroupingNode, _X3DSensorNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -14313,15 +14337,6 @@ class Collision(_X3DGroupingNode, _X3DSensorNode):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables collision detection for children and all descendants."""
@@ -14334,6 +14349,7 @@ class Collision(_X3DGroupingNode, _X3DSensorNode):
         self.__enabled = enabled
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -14383,12 +14399,12 @@ class Collision(_X3DGroupingNode, _X3DSensorNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.visible != True:
@@ -14436,12 +14452,12 @@ class Collision(_X3DGroupingNode, _X3DSensorNode):
             result += 'Collision' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.visible != True:
@@ -14474,9 +14490,9 @@ class CollisionCollection(_X3DChildNode, _X3DBoundedObject):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('appliedParameters', ["BOUNCE"], FieldType.MFString, AccessType.inputOutput, 'CollisionCollection'),
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
         ('bounce', 0, FieldType.SFFloat, AccessType.inputOutput, 'CollisionCollection'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'CollisionCollection'),
         ('frictionCoefficients', (0, 0), FieldType.SFVec2f, AccessType.inputOutput, 'CollisionCollection'),
         ('minBounceSpeed', 0.1, FieldType.SFFloat, AccessType.inputOutput, 'CollisionCollection'),
@@ -14494,9 +14510,9 @@ class CollisionCollection(_X3DChildNode, _X3DBoundedObject):
     def __init__(self,
                  appliedParameters=["BOUNCE"],
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  bounce=0,
-                 displayBBox=False,
                  enabled=True,
                  frictionCoefficients=(0, 0),
                  minBounceSpeed=0.1,
@@ -14515,9 +14531,9 @@ class CollisionCollection(_X3DChildNode, _X3DBoundedObject):
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.appliedParameters = appliedParameters
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.bounce = bounce
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.frictionCoefficients = frictionCoefficients
         self.minBounceSpeed = minBounceSpeed
@@ -14540,6 +14556,7 @@ class CollisionCollection(_X3DChildNode, _X3DBoundedObject):
         self.__appliedParameters = appliedParameters
     @property # getter - - - - - - - - - -
     def bboxCenter(self):
+        """Bounding box center accompanies bboxSize and provides an optional hint for bounding box position offset from origin of local coordinate system."""
         return self.__bboxCenter
     @bboxCenter.setter
     def bboxCenter(self, bboxCenter):
@@ -14548,7 +14565,18 @@ class CollisionCollection(_X3DChildNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
+        """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
     @bboxSize.setter
     def bboxSize(self, bboxSize):
@@ -14568,15 +14596,6 @@ class CollisionCollection(_X3DChildNode, _X3DBoundedObject):
         assertValidSFFloat(bounce)
         assertZeroToOne('bounce', bounce)
         self.__bounce = bounce
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables node operation."""
@@ -14653,6 +14672,7 @@ class CollisionCollection(_X3DChildNode, _X3DBoundedObject):
         self.__surfaceSpeed = surfaceSpeed
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -14691,14 +14711,14 @@ class CollisionCollection(_X3DChildNode, _X3DBoundedObject):
             result += " appliedParameters='" + MFString(self.appliedParameters).XML() + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.bounce != 0:
             result += " bounce='" + SFFloat(self.bounce).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.frictionCoefficients != (0, 0):
@@ -14758,14 +14778,14 @@ class CollisionCollection(_X3DChildNode, _X3DBoundedObject):
             result += " appliedParameters " + MFString(self.appliedParameters).VRML() + ""
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.bounce != 0:
             result += " bounce " + SFFloat(self.bounce).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.frictionCoefficients != (0, 0):
@@ -14933,8 +14953,8 @@ class CollisionSpace(_X3DNBodyCollisionSpaceNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DNBodyCollisionSpaceNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollisionSpaceNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DNBodyCollisionSpaceNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollisionSpaceNode'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollisionSpaceNode'),
         ('useGeometry', False, FieldType.SFBool, AccessType.inputOutput, 'CollisionSpace'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DNBodyCollisionSpaceNode'),
@@ -14946,8 +14966,8 @@ class CollisionSpace(_X3DNBodyCollisionSpaceNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  enabled=True,
                  useGeometry=False,
                  visible=True,
@@ -14960,8 +14980,8 @@ class CollisionSpace(_X3DNBodyCollisionSpaceNode):
         # if _DEBUG: print('... in ConcreteNode CollisionSpace __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.useGeometry = useGeometry
         self.visible = visible
@@ -14977,6 +14997,16 @@ class CollisionSpace(_X3DNBodyCollisionSpaceNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -14987,15 +15017,6 @@ class CollisionSpace(_X3DNBodyCollisionSpaceNode):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables node operation."""
@@ -15018,6 +15039,7 @@ class CollisionSpace(_X3DNBodyCollisionSpaceNode):
         self.__useGeometry = useGeometry
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -15053,12 +15075,12 @@ class CollisionSpace(_X3DNBodyCollisionSpaceNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.useGeometry != False:
@@ -15106,12 +15128,12 @@ class CollisionSpace(_X3DNBodyCollisionSpaceNode):
             result += 'CollisionSpace' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.useGeometry != False:
@@ -16053,7 +16075,7 @@ class ComposedShader(_X3DShaderNode): # , _X3DProgrammableShaderObject # TODO fi
             field = MFNode.DEFAULT_VALUE(self)
         # TODO type-aware checks for field
         if field: # walk each child in MFNode list, if any
-            for each in __field:
+            for each in field:
                 assertValidFieldInitializationValue(each.name, each.type, each.value, parent='ComposedShader')
         self.__field = field
     @property # getter - - - - - - - - - -
@@ -18488,7 +18510,7 @@ class CylinderSensor(_X3DDragSensorNode):
         self.__axisRotation = axisRotation
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -20459,6 +20481,7 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
         ('articulationParameterIdPartAttachedToArray', list(), FieldType.MFInt32, AccessType.inputOutput, 'EspduTransform'),
         ('articulationParameterTypeArray', list(), FieldType.MFInt32, AccessType.inputOutput, 'EspduTransform'),
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
         ('center', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'EspduTransform'),
         ('collisionType', 0, FieldType.SFInt32, AccessType.inputOutput, 'EspduTransform'),
@@ -20466,7 +20489,6 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
         ('detonationLocation', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'EspduTransform'),
         ('detonationRelativeLocation', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'EspduTransform'),
         ('detonationResult', 0, FieldType.SFInt32, AccessType.inputOutput, 'EspduTransform'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'EspduTransform'),
         ('entityCategory', 0, FieldType.SFInt32, AccessType.inputOutput, 'EspduTransform'),
         ('entityCountry', 0, FieldType.SFInt32, AccessType.inputOutput, 'EspduTransform'),
@@ -20528,6 +20550,7 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
                  articulationParameterIdPartAttachedToArray=list(),
                  articulationParameterTypeArray=list(),
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  center=(0, 0, 0),
                  collisionType=0,
@@ -20535,7 +20558,6 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
                  detonationLocation=(0, 0, 0),
                  detonationRelativeLocation=(0, 0, 0),
                  detonationResult=0,
-                 displayBBox=False,
                  enabled=True,
                  entityCategory=0,
                  entityCountry=0,
@@ -20598,6 +20620,7 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
         self.articulationParameterIdPartAttachedToArray = articulationParameterIdPartAttachedToArray
         self.articulationParameterTypeArray = articulationParameterTypeArray
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.center = center
         self.collisionType = collisionType
@@ -20605,7 +20628,6 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
         self.detonationLocation = detonationLocation
         self.detonationRelativeLocation = detonationRelativeLocation
         self.detonationResult = detonationResult
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.entityCategory = entityCategory
         self.entityCountry = entityCountry
@@ -20743,6 +20765,16 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -20813,15 +20845,6 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
             detonationResult = 0 # default
         assertValidSFInt32(detonationResult)
         self.__detonationResult = detonationResult
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables the sensor node."""
@@ -21245,6 +21268,7 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
         self.__translation = translation
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -21318,6 +21342,8 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
             result += " articulationParameterTypeArray='" + MFInt32(self.articulationParameterTypeArray).XML() + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.center != (0, 0, 0):
@@ -21334,8 +21360,6 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
             result += " detonationRelativeLocation='" + SFVec3f(self.detonationRelativeLocation).XML() + "'"
         if self.detonationResult != 0:
             result += " detonationResult='" + SFInt32(self.detonationResult).XML() + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.entityCategory != 0:
@@ -21483,6 +21507,8 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
             result += " articulationParameterTypeArray " + MFInt32(self.articulationParameterTypeArray).VRML() + ""
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.center != (0, 0, 0):
@@ -21499,8 +21525,6 @@ class EspduTransform(_X3DGroupingNode, _X3DNetworkSensorNode):
             result += " detonationRelativeLocation " + SFVec3f(self.detonationRelativeLocation).VRML() + ""
         if self.detonationResult != 0:
             result += " detonationResult " + SFInt32(self.detonationResult).VRML() + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.entityCategory != 0:
@@ -21797,7 +21821,7 @@ class Extrusion(_X3DGeometryNode):
         ('beginCap', True, FieldType.SFBool, AccessType.initializeOnly, 'Extrusion'),
         ('ccw', True, FieldType.SFBool, AccessType.initializeOnly, 'Extrusion'),
         ('convex', True, FieldType.SFBool, AccessType.initializeOnly, 'Extrusion'),
-        ('creaseAngle', 0.0, FieldType.SFFloat, AccessType.initializeOnly, 'Extrusion'),
+        ('creaseAngle', 0, FieldType.SFFloat, AccessType.initializeOnly, 'Extrusion'),
         ('crossSection', [(1, 1, 1, -1, -1, -1, -1, 1, 1, 1)], FieldType.MFVec2f, AccessType.initializeOnly, 'Extrusion'),
         ('endCap', True, FieldType.SFBool, AccessType.initializeOnly, 'Extrusion'),
         ('orientation', [(0, 0, 1, 0)], FieldType.MFRotation, AccessType.inputOutput, 'Extrusion'),
@@ -21813,7 +21837,7 @@ class Extrusion(_X3DGeometryNode):
                  beginCap=True,
                  ccw=True,
                  convex=True,
-                 creaseAngle=0.0,
+                 creaseAngle=0,
                  crossSection=[(1, 1, 1, -1, -1, -1, -1, 1, 1, 1)],
                  endCap=True,
                  orientation=[(0, 0, 1, 0)],
@@ -21874,7 +21898,7 @@ class Extrusion(_X3DGeometryNode):
     @creaseAngle.setter
     def creaseAngle(self, creaseAngle):
         if  creaseAngle is None:
-            creaseAngle = 0.0 # default
+            creaseAngle = 0 # default
         assertValidSFFloat(creaseAngle)
         assertNonNegative('creaseAngle', creaseAngle)
         self.__creaseAngle = creaseAngle
@@ -21963,7 +21987,7 @@ class Extrusion(_X3DGeometryNode):
             result += " class_='" + self.class_ + "'"
         if self.convex != True:
             result += " convex='" + SFBool(self.convex).XML() + "'"
-        if self.creaseAngle != 0.0:
+        if self.creaseAngle != 0:
             result += " creaseAngle='" + SFFloat(self.creaseAngle).XML() + "'"
         if self.crossSection != [(1, 1, 1, -1, -1, -1, -1, 1, 1, 1)]:
             result += " crossSection='" + MFVec2f(self.crossSection).XML() + "'"
@@ -22020,7 +22044,7 @@ class Extrusion(_X3DGeometryNode):
             result += " class_ " +  '"' + self.class_ + '"' + ""
         if self.convex != True:
             result += " convex " + SFBool(self.convex).VRML() + ""
-        if self.creaseAngle != 0.0:
+        if self.creaseAngle != 0:
             result += " creaseAngle " + SFFloat(self.creaseAngle).VRML() + ""
         if self.crossSection != [(1, 1, 1, -1, -1, -1, -1, 1, 1, 1)]:
             result += " crossSection " + MFVec2f(self.crossSection).VRML() + ""
@@ -23168,6 +23192,7 @@ class GeoCoordinate(_X3DCoordinateNode):
         self.__point = point
     @property # getter - - - - - - - - - -
     def geoOrigin(self):
+        """[GeoOrigin] Single contained GeoOrigin node that specifies a local coordinate frame for extended precision."""
         return self.__geoOrigin
     @geoOrigin.setter
     def geoOrigin(self, geoOrigin):
@@ -23482,6 +23507,7 @@ class GeoElevationGrid(_X3DGeometryNode):
         self.__color = color
     @property # getter - - - - - - - - - -
     def geoOrigin(self):
+        """[GeoOrigin] Single contained GeoOrigin node that specifies a local coordinate frame for extended precision."""
         return self.__geoOrigin
     @geoOrigin.setter
     def geoOrigin(self, geoOrigin):
@@ -23664,8 +23690,8 @@ class GeoLocation(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('geoCoords', (0, 0, 0), FieldType.SFVec3d, AccessType.inputOutput, 'GeoLocation'),
         ('geoSystem', ["GD", "WE"], FieldType.MFString, AccessType.initializeOnly, 'GeoLocation'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
@@ -23678,8 +23704,8 @@ class GeoLocation(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  geoCoords=(0, 0, 0),
                  geoSystem=["GD", "WE"],
                  visible=True,
@@ -23693,8 +23719,8 @@ class GeoLocation(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode GeoLocation __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.geoCoords = geoCoords
         self.geoSystem = geoSystem
         self.visible = visible
@@ -23711,6 +23737,16 @@ class GeoLocation(_X3DGroupingNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -23721,15 +23757,6 @@ class GeoLocation(_X3DGroupingNode):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def geoCoords(self):
         """Geographic location (specified in current geoSystem coordinates) for children geometry (specified in relative coordinate system, in meters)."""
@@ -23752,6 +23779,7 @@ class GeoLocation(_X3DGroupingNode):
         self.__geoSystem = geoSystem
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -23761,6 +23789,7 @@ class GeoLocation(_X3DGroupingNode):
         self.__visible = visible
     @property # getter - - - - - - - - - -
     def geoOrigin(self):
+        """[GeoOrigin] Single contained GeoOrigin node that specifies a local coordinate frame for extended precision."""
         return self.__geoOrigin
     @geoOrigin.setter
     def geoOrigin(self, geoOrigin):
@@ -23800,12 +23829,12 @@ class GeoLocation(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.geoCoords != (0, 0, 0):
             result += " geoCoords='" + SFVec3d(self.geoCoords).XML() + "'"
         if self.geoSystem != ["GD", "WE"]:
@@ -23855,12 +23884,12 @@ class GeoLocation(_X3DGroupingNode):
             result += 'GeoLocation' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.geoCoords != (0, 0, 0):
             result += " geoCoords " + SFVec3d(self.geoCoords).VRML() + ""
         if self.geoSystem != ["GD", "WE"]:
@@ -23894,13 +23923,13 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
         ('center', (0, 0, 0), FieldType.SFVec3d, AccessType.initializeOnly, 'GeoLOD'),
         ('child1Url', list(), FieldType.MFString, AccessType.initializeOnly, 'GeoLOD'),
         ('child2Url', list(), FieldType.MFString, AccessType.initializeOnly, 'GeoLOD'),
         ('child3Url', list(), FieldType.MFString, AccessType.initializeOnly, 'GeoLOD'),
         ('child4Url', list(), FieldType.MFString, AccessType.initializeOnly, 'GeoLOD'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('geoSystem', ["GD", "WE"], FieldType.MFString, AccessType.initializeOnly, 'GeoLOD'),
         ('range', 10, FieldType.SFFloat, AccessType.initializeOnly, 'GeoLOD'),
         ('rootUrl', list(), FieldType.MFString, AccessType.initializeOnly, 'GeoLOD'),
@@ -23914,13 +23943,13 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  center=(0, 0, 0),
                  child1Url=list(),
                  child2Url=list(),
                  child3Url=list(),
                  child4Url=list(),
-                 displayBBox=False,
                  geoSystem=["GD", "WE"],
                  range=10,
                  rootUrl=list(),
@@ -23935,13 +23964,13 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
         # if _DEBUG: print('... in ConcreteNode GeoLOD __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.center = center
         self.child1Url = child1Url
         self.child2Url = child2Url
         self.child3Url = child3Url
         self.child4Url = child4Url
-        self.displayBBox = displayBBox
         self.geoSystem = geoSystem
         self.range = range
         self.rootUrl = rootUrl
@@ -23958,6 +23987,16 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -24020,15 +24059,6 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
         assertValidMFString(child4Url)
         self.__child4Url = child4Url
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def geoSystem(self):
         """Identifies spatial reference frame: Geodetic (GD), Geocentric (GC), Universal Transverse Mercator (UTM)."""
         return self.__geoSystem
@@ -24061,6 +24091,7 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
         self.__rootUrl = rootUrl
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -24070,6 +24101,7 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
         self.__visible = visible
     @property # getter - - - - - - - - - -
     def geoOrigin(self):
+        """[GeoOrigin] Single contained GeoOrigin node that specifies a local coordinate frame for extended precision."""
         return self.__geoOrigin
     @geoOrigin.setter
     def geoOrigin(self, geoOrigin):
@@ -24109,6 +24141,8 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.center != (0, 0, 0):
@@ -24123,8 +24157,6 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
             result += " child4Url='" + MFString(self.child4Url).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.geoSystem != ["GD", "WE"]:
             result += " geoSystem='" + MFString(self.geoSystem).XML() + "'"
         if self.range != 10:
@@ -24176,6 +24208,8 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
             result += 'GeoLOD' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.center != (0, 0, 0):
@@ -24190,8 +24224,6 @@ class GeoLOD(_X3DChildNode, _X3DBoundedObject):
             result += " child4Url " + MFString(self.child4Url).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.geoSystem != ["GD", "WE"]:
             result += " geoSystem " + MFString(self.geoSystem).VRML() + ""
         if self.range != 10:
@@ -24568,6 +24600,7 @@ class GeoPositionInterpolator(_X3DInterpolatorNode):
         self.__keyValue = keyValue
     @property # getter - - - - - - - - - -
     def geoOrigin(self):
+        """[GeoOrigin] Single contained GeoOrigin node that specifies a local coordinate frame for extended precision."""
         return self.__geoOrigin
     @geoOrigin.setter
     def geoOrigin(self, geoOrigin):
@@ -24755,6 +24788,7 @@ class GeoProximitySensor(_X3DEnvironmentalSensorNode):
         self.__size = size
     @property # getter - - - - - - - - - -
     def geoOrigin(self):
+        """[GeoOrigin] Single contained GeoOrigin node that specifies a local coordinate frame for extended precision."""
         return self.__geoOrigin
     @geoOrigin.setter
     def geoOrigin(self, geoOrigin):
@@ -24893,7 +24927,7 @@ class GeoTouchSensor(_X3DTouchSensorNode):
         self.geoOrigin = geoOrigin
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -24923,6 +24957,7 @@ class GeoTouchSensor(_X3DTouchSensorNode):
         self.__geoSystem = geoSystem
     @property # getter - - - - - - - - - -
     def geoOrigin(self):
+        """[GeoOrigin] Single contained GeoOrigin node that specifies a local coordinate frame for extended precision."""
         return self.__geoOrigin
     @geoOrigin.setter
     def geoOrigin(self, geoOrigin):
@@ -25027,8 +25062,8 @@ class GeoTransform(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('geoCenter', (0, 0, 0), FieldType.SFVec3d, AccessType.inputOutput, 'GeoTransform'),
         ('geoSystem', ["GD", "WE"], FieldType.MFString, AccessType.initializeOnly, 'GeoTransform'),
         ('rotation', (0, 0, 1, 0), FieldType.SFRotation, AccessType.inputOutput, 'GeoTransform'),
@@ -25045,8 +25080,8 @@ class GeoTransform(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  geoCenter=(0, 0, 0),
                  geoSystem=["GD", "WE"],
                  rotation=(0, 0, 1, 0),
@@ -25064,8 +25099,8 @@ class GeoTransform(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode GeoTransform __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.geoCenter = geoCenter
         self.geoSystem = geoSystem
         self.rotation = rotation
@@ -25086,6 +25121,16 @@ class GeoTransform(_X3DGroupingNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -25096,15 +25141,6 @@ class GeoTransform(_X3DGroupingNode):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def geoCenter(self):
         """Translation offset from origin of local coordinate system, applied prior to rotation or scaling."""
@@ -25167,6 +25203,7 @@ class GeoTransform(_X3DGroupingNode):
         self.__translation = translation
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -25176,6 +25213,7 @@ class GeoTransform(_X3DGroupingNode):
         self.__visible = visible
     @property # getter - - - - - - - - - -
     def geoOrigin(self):
+        """[GeoOrigin] Single contained GeoOrigin node that specifies a local coordinate frame for extended precision."""
         return self.__geoOrigin
     @geoOrigin.setter
     def geoOrigin(self, geoOrigin):
@@ -25215,12 +25253,12 @@ class GeoTransform(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.geoCenter != (0, 0, 0):
             result += " geoCenter='" + SFVec3d(self.geoCenter).XML() + "'"
         if self.geoSystem != ["GD", "WE"]:
@@ -25278,12 +25316,12 @@ class GeoTransform(_X3DGroupingNode):
             result += 'GeoTransform' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.geoCenter != (0, 0, 0):
             result += " geoCenter " + SFVec3d(self.geoCenter).VRML() + ""
         if self.geoSystem != ["GD", "WE"]:
@@ -25379,7 +25417,7 @@ class GeoViewpoint(_X3DViewpointNode):
         self.__centerOfRotation = centerOfRotation
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -25462,6 +25500,7 @@ class GeoViewpoint(_X3DViewpointNode):
         self.__speedFactor = speedFactor
     @property # getter - - - - - - - - - -
     def geoOrigin(self):
+        """[GeoOrigin] Single contained GeoOrigin node that specifies a local coordinate frame for extended precision."""
         return self.__geoOrigin
     @geoOrigin.setter
     def geoOrigin(self, geoOrigin):
@@ -25590,8 +25629,8 @@ class Group(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('children', list(), FieldType.MFNode, AccessType.inputOutput, 'X3DGroupingNode'),
         ('DEF', '', FieldType.SFString, AccessType.inputOutput, 'X3DNode'),
@@ -25601,8 +25640,8 @@ class Group(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  visible=True,
                  children=None,
                  DEF='',
@@ -25613,8 +25652,8 @@ class Group(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode Group __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.visible = visible
         self.children = children
     @property # getter - - - - - - - - - -
@@ -25628,6 +25667,16 @@ class Group(_X3DGroupingNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -25639,16 +25688,8 @@ class Group(_X3DGroupingNode):
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -25685,12 +25726,12 @@ class Group(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.visible != True:
             result += " visible='" + SFBool(self.visible).XML() + "'"
         if not self.hasChild():
@@ -25734,12 +25775,12 @@ class Group(_X3DGroupingNode):
             result += 'Group' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.visible != True:
             result += " visible " + SFBool(self.visible).VRML() + ""
         if self.IS: # output this SFNode
@@ -25807,6 +25848,7 @@ class HAnimDisplacer(_X3DGeometricPropertyNode):
         self.__coordIndex = coordIndex
     @property # getter - - - - - - - - - -
     def description(self):
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -25942,10 +25984,10 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
         ('center', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'HAnimHumanoid'),
         ('description', '', FieldType.SFString, AccessType.inputOutput, 'HAnimHumanoid'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('info', list(), FieldType.MFString, AccessType.inputOutput, 'HAnimHumanoid'),
         ('jointBindingPositions', [(0, 0, 0)], FieldType.MFVec3f, AccessType.inputOutput, 'HAnimHumanoid'),
         ('jointBindingRotations', [(0, 0, 1, 0)], FieldType.MFRotation, AccessType.inputOutput, 'HAnimHumanoid'),
@@ -25977,10 +26019,10 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  center=(0, 0, 0),
                  description='',
-                 displayBBox=False,
                  info=list(),
                  jointBindingPositions=[(0, 0, 0)],
                  jointBindingRotations=[(0, 0, 1, 0)],
@@ -26013,10 +26055,10 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
         # if _DEBUG: print('... in ConcreteNode HAnimHumanoid __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.center = center
         self.description = description
-        self.displayBBox = displayBBox
         self.info = info
         self.jointBindingPositions = jointBindingPositions
         self.jointBindingRotations = jointBindingRotations
@@ -26052,6 +26094,16 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -26074,6 +26126,7 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
         self.__center = center
     @property # getter - - - - - - - - - -
     def description(self):
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -26081,15 +26134,6 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
             description = SFString.DEFAULT_VALUE(self)
         assertValidSFString(description)
         self.__description = description
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def info(self):
         """Contains metadata keyword=value pairs, where approved keyword terms are humanoidVersion authorName authorEmail copyright creationDate usageRestrictions age gender height and weight."""
@@ -26216,6 +26260,7 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
         self.__version = version
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -26364,6 +26409,8 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.center != (0, 0, 0):
@@ -26372,8 +26419,6 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
             result += " class_='" + self.class_ + "'"
         if self.description:
             result += " description='" + self.description + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.info != list():
             result += " info='" + MFString(self.info).XML() + "'"
         if self.jointBindingPositions != [(0, 0, 0)]:
@@ -26473,6 +26518,8 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
             result += 'HAnimHumanoid' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.center != (0, 0, 0):
@@ -26481,8 +26528,6 @@ class HAnimHumanoid(_X3DChildNode, _X3DBoundedObject):
             result += " class_ " +  '"' + self.class_ + '"' + ""
         if self.description:
             result += " description " +  '"' + self.description + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.info != list():
             result += " info " + MFString(self.info).VRML() + ""
         if self.jointBindingPositions != [(0, 0, 0)]:
@@ -26560,10 +26605,10 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
         ('center', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'HAnimJoint'),
         ('description', '', FieldType.SFString, AccessType.inputOutput, 'HAnimJoint'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('limitOrientation', (0, 0, 1, 0), FieldType.SFRotation, AccessType.inputOutput, 'HAnimJoint'),
         ('llimit', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'HAnimJoint'),
         ('name', '', FieldType.SFString, AccessType.inputOutput, 'HAnimJoint'),
@@ -26585,10 +26630,10 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  center=(0, 0, 0),
                  description='',
-                 displayBBox=False,
                  limitOrientation=(0, 0, 1, 0),
                  llimit=(0, 0, 0),
                  name='',
@@ -26611,10 +26656,10 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
         # if _DEBUG: print('... in ConcreteNode HAnimJoint __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.center = center
         self.description = description
-        self.displayBBox = displayBBox
         self.limitOrientation = limitOrientation
         self.llimit = llimit
         self.name = name
@@ -26640,6 +26685,16 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -26662,6 +26717,7 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
         self.__center = center
     @property # getter - - - - - - - - - -
     def description(self):
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -26669,15 +26725,6 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
             description = SFString.DEFAULT_VALUE(self)
         assertValidSFString(description)
         self.__description = description
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def limitOrientation(self):
         """Orientation of upper/lower rotation limits, relative to HAnimJoint center."""
@@ -26793,6 +26840,7 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
         self.__ulimit = ulimit
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -26839,6 +26887,8 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.center != (0, 0, 0):
@@ -26847,8 +26897,6 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
             result += " class_='" + self.class_ + "'"
         if self.description:
             result += " description='" + self.description + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.limitOrientation != (0, 0, 1, 0):
             result += " limitOrientation='" + SFRotation(self.limitOrientation).XML() + "'"
         if self.llimit != (0, 0, 0):
@@ -26918,6 +26966,8 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
             result += 'HAnimJoint' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.center != (0, 0, 0):
@@ -26926,8 +26976,6 @@ class HAnimJoint(_X3DChildNode, _X3DBoundedObject):
             result += " class_ " +  '"' + self.class_ + '"' + ""
         if self.description:
             result += " description " +  '"' + self.description + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.limitOrientation != (0, 0, 1, 0):
             result += " limitOrientation " + SFRotation(self.limitOrientation).VRML() + ""
         if self.llimit != (0, 0, 0):
@@ -27056,7 +27104,7 @@ class HAnimMotion(_X3DChildNode):
         self.__channelsEnabled = channelsEnabled
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -27313,10 +27361,10 @@ class HAnimSegment(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
         ('centerOfMass', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'HAnimSegment'),
         ('description', '', FieldType.SFString, AccessType.inputOutput, 'HAnimSegment'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('mass', 0, FieldType.SFFloat, AccessType.inputOutput, 'HAnimSegment'),
         ('momentsOfInertia', [0, 0, 0, 0, 0, 0, 0, 0, 0], FieldType.MFFloat, AccessType.inputOutput, 'HAnimSegment'),
         ('name', '', FieldType.SFString, AccessType.inputOutput, 'HAnimSegment'),
@@ -27331,10 +27379,10 @@ class HAnimSegment(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  centerOfMass=(0, 0, 0),
                  description='',
-                 displayBBox=False,
                  mass=0,
                  momentsOfInertia=[0, 0, 0, 0, 0, 0, 0, 0, 0],
                  name='',
@@ -27350,10 +27398,10 @@ class HAnimSegment(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode HAnimSegment __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.centerOfMass = centerOfMass
         self.description = description
-        self.displayBBox = displayBBox
         self.mass = mass
         self.momentsOfInertia = momentsOfInertia
         self.name = name
@@ -27371,6 +27419,16 @@ class HAnimSegment(_X3DGroupingNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -27394,6 +27452,7 @@ class HAnimSegment(_X3DGroupingNode):
         self.__centerOfMass = centerOfMass
     @property # getter - - - - - - - - - -
     def description(self):
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -27401,15 +27460,6 @@ class HAnimSegment(_X3DGroupingNode):
             description = SFString.DEFAULT_VALUE(self)
         assertValidSFString(description)
         self.__description = description
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def mass(self):
         """Total mass of the segment, 0 if not available, defined in mass base units (default is kilograms)."""
@@ -27444,6 +27494,7 @@ class HAnimSegment(_X3DGroupingNode):
         self.__name = name
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -27503,6 +27554,8 @@ class HAnimSegment(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.centerOfMass != (0, 0, 0):
@@ -27511,8 +27564,6 @@ class HAnimSegment(_X3DGroupingNode):
             result += " class_='" + self.class_ + "'"
         if self.description:
             result += " description='" + self.description + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.mass != 0:
             result += " mass='" + SFFloat(self.mass).XML() + "'"
         if self.momentsOfInertia != [0, 0, 0, 0, 0, 0, 0, 0, 0]:
@@ -27568,6 +27619,8 @@ class HAnimSegment(_X3DGroupingNode):
             result += 'HAnimSegment' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.centerOfMass != (0, 0, 0):
@@ -27576,8 +27629,6 @@ class HAnimSegment(_X3DGroupingNode):
             result += " class_ " +  '"' + self.class_ + '"' + ""
         if self.description:
             result += " description " +  '"' + self.description + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.mass != 0:
             result += " mass " + SFFloat(self.mass).VRML() + ""
         if self.momentsOfInertia != [0, 0, 0, 0, 0, 0, 0, 0, 0]:
@@ -27616,10 +27667,10 @@ class HAnimSite(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
         ('center', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'HAnimSite'),
         ('description', '', FieldType.SFString, AccessType.inputOutput, 'HAnimSite'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('name', '', FieldType.SFString, AccessType.inputOutput, 'HAnimSite'),
         ('rotation', (0, 0, 1, 0), FieldType.SFRotation, AccessType.inputOutput, 'HAnimSite'),
         ('scale', (1, 1, 1), FieldType.SFVec3f, AccessType.inputOutput, 'HAnimSite'),
@@ -27634,10 +27685,10 @@ class HAnimSite(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  center=(0, 0, 0),
                  description='',
-                 displayBBox=False,
                  name='',
                  rotation=(0, 0, 1, 0),
                  scale=(1, 1, 1),
@@ -27653,10 +27704,10 @@ class HAnimSite(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode HAnimSite __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.center = center
         self.description = description
-        self.displayBBox = displayBBox
         self.name = name
         self.rotation = rotation
         self.scale = scale
@@ -27674,6 +27725,16 @@ class HAnimSite(_X3DGroupingNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -27697,6 +27758,7 @@ class HAnimSite(_X3DGroupingNode):
         self.__center = center
     @property # getter - - - - - - - - - -
     def description(self):
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -27704,15 +27766,6 @@ class HAnimSite(_X3DGroupingNode):
             description = SFString.DEFAULT_VALUE(self)
         assertValidSFString(description)
         self.__description = description
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def name(self):
         """Unique name attribute must be defined so that HAnimSite node can be identified at run time for animation purposes."""
@@ -27766,6 +27819,7 @@ class HAnimSite(_X3DGroupingNode):
         self.__translation = translation
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -27802,6 +27856,8 @@ class HAnimSite(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.center != (0, 0, 0):
@@ -27810,8 +27866,6 @@ class HAnimSite(_X3DGroupingNode):
             result += " class_='" + self.class_ + "'"
         if self.description:
             result += " description='" + self.description + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.name:
             result += " name='" + self.name + "'"
         if self.rotation != (0, 0, 1, 0):
@@ -27865,6 +27919,8 @@ class HAnimSite(_X3DGroupingNode):
             result += 'HAnimSite' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.center != (0, 0, 0):
@@ -27873,8 +27929,6 @@ class HAnimSite(_X3DGroupingNode):
             result += " class_ " +  '"' + self.class_ + '"' + ""
         if self.description:
             result += " description " +  '"' + self.description + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.name:
             result += " name " +  '"' + self.name + '"' + ""
         if self.rotation != (0, 0, 1, 0):
@@ -30167,8 +30221,8 @@ class Inline(_X3DChildNode, _X3DBoundedObject, _X3DUrlObject):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('load', True, FieldType.SFBool, AccessType.inputOutput, 'Inline'),
         ('url', list(), FieldType.MFString, AccessType.inputOutput, 'X3DUrlObject'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
@@ -30179,8 +30233,8 @@ class Inline(_X3DChildNode, _X3DBoundedObject, _X3DUrlObject):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  load=True,
                  url=list(),
                  visible=True,
@@ -30192,8 +30246,8 @@ class Inline(_X3DChildNode, _X3DBoundedObject, _X3DUrlObject):
         # if _DEBUG: print('... in ConcreteNode Inline __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.load = load
         self.url = url
         self.visible = visible
@@ -30208,6 +30262,16 @@ class Inline(_X3DChildNode, _X3DBoundedObject, _X3DUrlObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -30218,15 +30282,6 @@ class Inline(_X3DChildNode, _X3DBoundedObject, _X3DUrlObject):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def load(self):
         """load=true means load immediately, load=false means defer loading or else unload a previously loaded scene."""
@@ -30249,6 +30304,7 @@ class Inline(_X3DChildNode, _X3DBoundedObject, _X3DUrlObject):
         self.__url = url
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -30275,12 +30331,12 @@ class Inline(_X3DChildNode, _X3DBoundedObject, _X3DUrlObject):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.load != True:
             result += " load='" + SFBool(self.load).XML() + "'"
         if self.url != list():
@@ -30324,12 +30380,12 @@ class Inline(_X3DChildNode, _X3DBoundedObject, _X3DUrlObject):
             result += 'Inline' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.load != True:
             result += " load " + SFBool(self.load).VRML() + ""
         if self.url != list():
@@ -30589,10 +30645,10 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DVolumeDataNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DVolumeDataNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DVolumeDataNode'),
         ('contourStepSize', 0, FieldType.SFFloat, AccessType.inputOutput, 'IsoSurfaceVolumeData'),
         ('dimensions', (1, 1, 1), FieldType.SFVec3f, AccessType.inputOutput, 'X3DVolumeDataNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DVolumeDataNode'),
         ('surfaceTolerance', 0, FieldType.SFFloat, AccessType.inputOutput, 'IsoSurfaceVolumeData'),
         ('surfaceValues', list(), FieldType.MFFloat, AccessType.inputOutput, 'IsoSurfaceVolumeData'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DVolumeDataNode'),
@@ -30606,10 +30662,10 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  contourStepSize=0,
                  dimensions=(1, 1, 1),
-                 displayBBox=False,
                  surfaceTolerance=0,
                  surfaceValues=list(),
                  visible=True,
@@ -30624,10 +30680,10 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
         # if _DEBUG: print('... in ConcreteNode IsoSurfaceVolumeData __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.contourStepSize = contourStepSize
         self.dimensions = dimensions
-        self.displayBBox = displayBBox
         self.surfaceTolerance = surfaceTolerance
         self.surfaceValues = surfaceValues
         self.visible = visible
@@ -30644,6 +30700,16 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -30677,15 +30743,6 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
         assertPositive('dimensions', dimensions)
         self.__dimensions = dimensions
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def surfaceTolerance(self):
         """[0,+infinity) Threshold for gradient magnitude for voxel inolusion in isosurface."""
         return self.__surfaceTolerance
@@ -30708,6 +30765,7 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
         self.__surfaceValues = surfaceValues
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -30770,6 +30828,8 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
@@ -30778,8 +30838,6 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
             result += " contourStepSize='" + SFFloat(self.contourStepSize).XML() + "'"
         if self.dimensions != (1, 1, 1):
             result += " dimensions='" + SFVec3f(self.dimensions).XML() + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.surfaceTolerance != 0:
             result += " surfaceTolerance='" + SFFloat(self.surfaceTolerance).XML() + "'"
         if self.surfaceValues != list():
@@ -30831,6 +30889,8 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
             result += 'IsoSurfaceVolumeData' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
@@ -30839,8 +30899,6 @@ class IsoSurfaceVolumeData(_X3DVolumeDataNode):
             result += " contourStepSize " + SFFloat(self.contourStepSize).VRML() + ""
         if self.dimensions != (1, 1, 1):
             result += " dimensions " + SFVec3f(self.dimensions).VRML() + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.surfaceTolerance != 0:
             result += " surfaceTolerance " + SFFloat(self.surfaceTolerance).VRML() + ""
         if self.surfaceValues != list():
@@ -31012,6 +31070,7 @@ class Layer(_X3DLayerNode):
         self.children = children
     @property # getter - - - - - - - - - -
     def objectType(self):
+        """The objectType field specifies a set of labels used in the picking process."""
         return self.__objectType
     @objectType.setter
     def objectType(self, objectType):
@@ -31031,6 +31090,7 @@ class Layer(_X3DLayerNode):
         self.__pickable = pickable
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -31504,8 +31564,8 @@ class LayoutGroup(_X3DNode): # , _X3DGroupingNode # TODO fix additional inherita
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('layout', None, FieldType.SFNode, AccessType.inputOutput, 'LayoutGroup'),
         ('viewport', None, FieldType.SFNode, AccessType.inputOutput, 'LayoutGroup'),
@@ -31517,8 +31577,8 @@ class LayoutGroup(_X3DNode): # , _X3DGroupingNode # TODO fix additional inherita
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  visible=True,
                  layout=None,
                  viewport=None,
@@ -31531,8 +31591,8 @@ class LayoutGroup(_X3DNode): # , _X3DGroupingNode # TODO fix additional inherita
         # if _DEBUG: print('... in ConcreteNode LayoutGroup __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.visible = visible
         self.layout = layout
         self.viewport = viewport
@@ -31548,6 +31608,16 @@ class LayoutGroup(_X3DNode): # , _X3DGroupingNode # TODO fix additional inherita
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -31559,16 +31629,8 @@ class LayoutGroup(_X3DNode): # , _X3DGroupingNode # TODO fix additional inherita
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -31631,12 +31693,12 @@ class LayoutGroup(_X3DNode): # , _X3DGroupingNode # TODO fix additional inherita
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.visible != True:
             result += " visible='" + SFBool(self.visible).XML() + "'"
         if not self.hasChild():
@@ -31684,12 +31746,12 @@ class LayoutGroup(_X3DNode): # , _X3DGroupingNode # TODO fix additional inherita
             result += 'LayoutGroup' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.visible != True:
             result += " visible " + SFBool(self.visible).VRML() + ""
         if self.IS: # output this SFNode
@@ -31753,6 +31815,7 @@ class LayoutLayer(_X3DLayerNode): #  # TODO fix additional inheritance method re
         self.children = children
     @property # getter - - - - - - - - - -
     def objectType(self):
+        """The objectType field specifies a set of labels used in the picking process."""
         return self.__objectType
     @objectType.setter
     def objectType(self, objectType):
@@ -31772,6 +31835,7 @@ class LayoutLayer(_X3DLayerNode): #  # TODO fix additional inheritance method re
         self.__pickable = pickable
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -32772,9 +32836,9 @@ class LOD(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
         ('center', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'LOD'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('forceTransitions', False, FieldType.SFBool, AccessType.initializeOnly, 'LOD'),
         ('range', list(), FieldType.MFFloat, AccessType.initializeOnly, 'LOD'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
@@ -32786,9 +32850,9 @@ class LOD(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  center=(0, 0, 0),
-                 displayBBox=False,
                  forceTransitions=False,
                  range=list(),
                  visible=True,
@@ -32801,9 +32865,9 @@ class LOD(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode LOD __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.center = center
-        self.displayBBox = displayBBox
         self.forceTransitions = forceTransitions
         self.range = range
         self.visible = visible
@@ -32818,6 +32882,16 @@ class LOD(_X3DGroupingNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -32840,15 +32914,6 @@ class LOD(_X3DGroupingNode):
         assertValidSFVec3f(center)
         self.__center = center
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def forceTransitions(self):
         """Whether to perform every range-based transition, regardless of browser optimizations that might otherwise occur."""
         return self.__forceTransitions
@@ -32870,6 +32935,7 @@ class LOD(_X3DGroupingNode):
         self.__range = range
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -32906,14 +32972,14 @@ class LOD(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.center != (0, 0, 0):
             result += " center='" + SFVec3f(self.center).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.forceTransitions != False:
             result += " forceTransitions='" + SFBool(self.forceTransitions).XML() + "'"
         if self.range != list():
@@ -32961,14 +33027,14 @@ class LOD(_X3DGroupingNode):
             result += 'LOD' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.center != (0, 0, 0):
             result += " center " + SFVec3f(self.center).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.forceTransitions != False:
             result += " forceTransitions " + SFBool(self.forceTransitions).VRML() + ""
         if self.range != list():
@@ -34780,7 +34846,7 @@ class MovieTexture(_X3DSoundSourceNode, _X3DTexture2DNode, _X3DUrlObject):
         self.textureProperties = textureProperties
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -36942,8 +37008,8 @@ class NurbsSet(_X3DChildNode, _X3DBoundedObject):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('tessellationScale', 1.0, FieldType.SFFloat, AccessType.inputOutput, 'NurbsSet'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('geometry', list(), FieldType.MFNode, AccessType.inputOutput, 'NurbsSet'),
@@ -36954,8 +37020,8 @@ class NurbsSet(_X3DChildNode, _X3DBoundedObject):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  tessellationScale=1.0,
                  visible=True,
                  geometry=None,
@@ -36967,8 +37033,8 @@ class NurbsSet(_X3DChildNode, _X3DBoundedObject):
         # if _DEBUG: print('... in ConcreteNode NurbsSet __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.tessellationScale = tessellationScale
         self.visible = visible
         self.geometry = geometry
@@ -36983,6 +37049,16 @@ class NurbsSet(_X3DChildNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -36993,15 +37069,6 @@ class NurbsSet(_X3DChildNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def tessellationScale(self):
         """scale for surface tesselation in children NurbsSurface nodes."""
@@ -37015,6 +37082,7 @@ class NurbsSet(_X3DChildNode, _X3DBoundedObject):
         self.__tessellationScale = tessellationScale
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -37051,12 +37119,12 @@ class NurbsSet(_X3DChildNode, _X3DBoundedObject):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.tessellationScale != 1.0:
             result += " tessellationScale='" + SFFloat(self.tessellationScale).XML() + "'"
         if self.visible != True:
@@ -37102,12 +37170,12 @@ class NurbsSet(_X3DChildNode, _X3DBoundedObject):
             result += 'NurbsSet' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.tessellationScale != 1.0:
             result += " tessellationScale " + SFFloat(self.tessellationScale).VRML() + ""
         if self.visible != True:
@@ -39114,7 +39182,7 @@ class PackagedShader(_X3DShaderNode): # , _X3DUrlObject, _X3DProgrammableShaderO
             field = MFNode.DEFAULT_VALUE(self)
         # TODO type-aware checks for field
         if field: # walk each child in MFNode list, if any
-            for each in __field:
+            for each in field:
                 assertValidFieldInitializationValue(each.name, each.type, each.value, parent='PackagedShader')
         self.__field = field
     # hasChild() function - - - - - - - - - -
@@ -39210,10 +39278,10 @@ class ParticleSystem(_X3DShapeNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DShapeNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DShapeNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DShapeNode'),
         ('colorKey', list(), FieldType.MFFloat, AccessType.initializeOnly, 'ParticleSystem'),
         ('createParticles', True, FieldType.SFBool, AccessType.inputOutput, 'ParticleSystem'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DShapeNode'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'ParticleSystem'),
         ('geometryType', 'QUAD', FieldType.SFString, AccessType.initializeOnly, 'ParticleSystem'),
         ('lifetimeVariation', 0.25, FieldType.SFFloat, AccessType.inputOutput, 'ParticleSystem'),
@@ -39235,10 +39303,10 @@ class ParticleSystem(_X3DShapeNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  colorKey=list(),
                  createParticles=True,
-                 displayBBox=False,
                  enabled=True,
                  geometryType='QUAD',
                  lifetimeVariation=0.25,
@@ -39261,10 +39329,10 @@ class ParticleSystem(_X3DShapeNode):
         # if _DEBUG: print('... in ConcreteNode ParticleSystem __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.colorKey = colorKey
         self.createParticles = createParticles
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.geometryType = geometryType
         self.lifetimeVariation = lifetimeVariation
@@ -39290,6 +39358,16 @@ class ParticleSystem(_X3DShapeNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -39322,15 +39400,6 @@ class ParticleSystem(_X3DShapeNode):
             createParticles = True # default
         assertValidSFBool(createParticles)
         self.__createParticles = createParticles
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables node operation."""
@@ -39408,6 +39477,7 @@ class ParticleSystem(_X3DShapeNode):
         self.__texCoordKey = texCoordKey
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -39522,6 +39592,8 @@ class ParticleSystem(_X3DShapeNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
@@ -39530,8 +39602,6 @@ class ParticleSystem(_X3DShapeNode):
             result += " colorKey='" + MFFloat(self.colorKey).XML() + "'"
         if self.createParticles != True:
             result += " createParticles='" + SFBool(self.createParticles).XML() + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.geometryType != 'QUAD':
@@ -39599,6 +39669,8 @@ class ParticleSystem(_X3DShapeNode):
             result += 'ParticleSystem' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
@@ -39607,8 +39679,6 @@ class ParticleSystem(_X3DShapeNode):
             result += " colorKey " + MFFloat(self.colorKey).VRML() + ""
         if self.createParticles != True:
             result += " createParticles " + SFBool(self.createParticles).VRML() + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.geometryType != 'QUAD':
@@ -39660,8 +39730,8 @@ class PickableGroup(_X3DGroupingNode, _X3DPickableObject):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('objectType', ["ALL"], FieldType.MFString, AccessType.inputOutput, 'X3DPickableObject'),
         ('pickable', True, FieldType.SFBool, AccessType.inputOutput, 'X3DPickableObject'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
@@ -39673,8 +39743,8 @@ class PickableGroup(_X3DGroupingNode, _X3DPickableObject):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  objectType=["ALL"],
                  pickable=True,
                  visible=True,
@@ -39687,8 +39757,8 @@ class PickableGroup(_X3DGroupingNode, _X3DPickableObject):
         # if _DEBUG: print('... in ConcreteNode PickableGroup __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.objectType = objectType
         self.pickable = pickable
         self.visible = visible
@@ -39704,6 +39774,16 @@ class PickableGroup(_X3DGroupingNode, _X3DPickableObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -39714,15 +39794,6 @@ class PickableGroup(_X3DGroupingNode, _X3DPickableObject):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def objectType(self):
         """The objectType field specifies a set of labels used in the picking process."""
@@ -39745,6 +39816,7 @@ class PickableGroup(_X3DGroupingNode, _X3DPickableObject):
         self.__pickable = pickable
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -39781,12 +39853,12 @@ class PickableGroup(_X3DGroupingNode, _X3DPickableObject):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.objectType != ["ALL"]:
             result += " objectType='" + MFString(self.objectType).XML() + "'"
         if self.pickable != True:
@@ -39834,12 +39906,12 @@ class PickableGroup(_X3DGroupingNode, _X3DPickableObject):
             result += 'PickableGroup' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.objectType != ["ALL"]:
             result += " objectType " + MFString(self.objectType).VRML() + ""
         if self.pickable != True:
@@ -40263,7 +40335,7 @@ class PlaneSensor(_X3DDragSensorNode):
         self.__axisRotation = axisRotation
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -42975,6 +43047,7 @@ class ProgramShader(_X3DShaderNode): #  # TODO fix additional inheritance method
         self.__language = language
     @property # getter - - - - - - - - - -
     def programs(self):
+        """[ShaderProgram] ProgramShader contains zero or more ShaderProgram node instances."""
         return self.__programs
     @programs.setter
     def programs(self, programs):
@@ -43252,7 +43325,7 @@ class ProtoInstance(_X3DPrototypeInstance, _X3DChildNode):
             fieldValue = MFNode.DEFAULT_VALUE(self)
         # TODO type-aware checks for fieldValue
         if fieldValue: # walk each child in MFNode list, if any
-            for each in __fieldValue:
+            for each in fieldValue:
                 assertValidFieldInitializationValue(each.name, type(each.value), each.value, parent='fieldValue')
         self.__fieldValue = fieldValue
     # hasChild() function - - - - - - - - - -
@@ -43766,8 +43839,8 @@ class ReceiverPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         ('address', 'localhost', FieldType.SFString, AccessType.inputOutput, 'ReceiverPdu'),
         ('applicationID', 0, FieldType.SFInt32, AccessType.inputOutput, 'ReceiverPdu'),
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'X3DSensorNode'),
         ('entityID', 0, FieldType.SFInt32, AccessType.inputOutput, 'ReceiverPdu'),
         ('geoCoords', (0, 0, 0), FieldType.SFVec3d, AccessType.inputOutput, 'ReceiverPdu'),
@@ -43798,8 +43871,8 @@ class ReceiverPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
                  address='localhost',
                  applicationID=0,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  enabled=True,
                  entityID=0,
                  geoCoords=(0, 0, 0),
@@ -43831,8 +43904,8 @@ class ReceiverPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         self.address = address
         self.applicationID = applicationID
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.entityID = entityID
         self.geoCoords = geoCoords
@@ -43885,6 +43958,16 @@ class ReceiverPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -43895,15 +43978,6 @@ class ReceiverPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxSize)
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables the sensor node."""
@@ -44088,6 +44162,7 @@ class ReceiverPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         self.__transmitterSiteID = transmitterSiteID
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -44139,12 +44214,12 @@ class ReceiverPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " applicationID='" + SFInt32(self.applicationID).XML() + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.entityID != 0:
@@ -44228,12 +44303,12 @@ class ReceiverPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " applicationID " + SFInt32(self.applicationID).VRML() + ""
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.entityID != 0:
@@ -45954,8 +46029,8 @@ class ScreenGroup(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('children', list(), FieldType.MFNode, AccessType.inputOutput, 'X3DGroupingNode'),
         ('DEF', '', FieldType.SFString, AccessType.inputOutput, 'X3DNode'),
@@ -45965,8 +46040,8 @@ class ScreenGroup(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  visible=True,
                  children=None,
                  DEF='',
@@ -45977,8 +46052,8 @@ class ScreenGroup(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode ScreenGroup __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.visible = visible
         self.children = children
     @property # getter - - - - - - - - - -
@@ -45992,6 +46067,16 @@ class ScreenGroup(_X3DGroupingNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -46003,16 +46088,8 @@ class ScreenGroup(_X3DGroupingNode):
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -46049,12 +46126,12 @@ class ScreenGroup(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.visible != True:
             result += " visible='" + SFBool(self.visible).XML() + "'"
         if not self.hasChild():
@@ -46098,12 +46175,12 @@ class ScreenGroup(_X3DGroupingNode):
             result += 'ScreenGroup' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.visible != True:
             result += " visible " + SFBool(self.visible).VRML() + ""
         if self.IS: # output this SFNode
@@ -46195,7 +46272,7 @@ class Script(_X3DScriptNode):
             field = MFNode.DEFAULT_VALUE(self)
         # TODO type-aware checks for field
         if field: # walk each child in MFNode list, if any
-            for each in __field:
+            for each in field:
                 assertValidFieldInitializationValue(each.name, each.type, each.value, parent='Script')
         self.__field = field
     # hasChild() function - - - - - - - - - -
@@ -46295,9 +46372,9 @@ class SegmentedVolumeData(_X3DVolumeDataNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DVolumeDataNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DVolumeDataNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DVolumeDataNode'),
         ('dimensions', (1, 1, 1), FieldType.SFVec3f, AccessType.inputOutput, 'X3DVolumeDataNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DVolumeDataNode'),
         ('segmentEnabled', list(), FieldType.MFBool, AccessType.inputOutput, 'SegmentedVolumeData'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DVolumeDataNode'),
         ('segmentIdentifiers', None, FieldType.SFNode, AccessType.inputOutput, 'SegmentedVolumeData'),
@@ -46310,9 +46387,9 @@ class SegmentedVolumeData(_X3DVolumeDataNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  dimensions=(1, 1, 1),
-                 displayBBox=False,
                  segmentEnabled=list(),
                  visible=True,
                  segmentIdentifiers=None,
@@ -46326,9 +46403,9 @@ class SegmentedVolumeData(_X3DVolumeDataNode):
         # if _DEBUG: print('... in ConcreteNode SegmentedVolumeData __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.dimensions = dimensions
-        self.displayBBox = displayBBox
         self.segmentEnabled = segmentEnabled
         self.visible = visible
         self.segmentIdentifiers = segmentIdentifiers
@@ -46344,6 +46421,16 @@ class SegmentedVolumeData(_X3DVolumeDataNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -46367,15 +46454,6 @@ class SegmentedVolumeData(_X3DVolumeDataNode):
         assertPositive('dimensions', dimensions)
         self.__dimensions = dimensions
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def segmentEnabled(self):
         return self.__segmentEnabled
     @segmentEnabled.setter
@@ -46386,6 +46464,7 @@ class SegmentedVolumeData(_X3DVolumeDataNode):
         self.__segmentEnabled = segmentEnabled
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -46448,14 +46527,14 @@ class SegmentedVolumeData(_X3DVolumeDataNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
         if self.dimensions != (1, 1, 1):
             result += " dimensions='" + SFVec3f(self.dimensions).XML() + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.segmentEnabled != list():
             result += " segmentEnabled='" + MFBool(self.segmentEnabled).XML() + "'"
         if self.visible != True:
@@ -46505,14 +46584,14 @@ class SegmentedVolumeData(_X3DVolumeDataNode):
             result += 'SegmentedVolumeData' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
         if self.dimensions != (1, 1, 1):
             result += " dimensions " + SFVec3f(self.dimensions).VRML() + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.segmentEnabled != list():
             result += " segmentEnabled " + MFBool(self.segmentEnabled).VRML() + ""
         if self.visible != True:
@@ -46917,7 +46996,7 @@ class ShaderProgram(_X3DNode): # , _X3DUrlObject, _X3DProgrammableShaderObject #
             field = MFNode.DEFAULT_VALUE(self)
         # TODO type-aware checks for field
         if field: # walk each child in MFNode list, if any
-            for each in __field:
+            for each in field:
                 assertValidFieldInitializationValue(each.name, each.type, each.value, parent='ShaderProgram')
         self.__field = field
     # hasChild() function - - - - - - - - - -
@@ -47013,8 +47092,8 @@ class Shape(_X3DShapeNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DShapeNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DShapeNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DShapeNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DShapeNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DShapeNode'),
         ('appearance', None, FieldType.SFNode, AccessType.inputOutput, 'X3DShapeNode'),
         ('geometry', None, FieldType.SFNode, AccessType.inputOutput, 'X3DShapeNode'),
@@ -47025,8 +47104,8 @@ class Shape(_X3DShapeNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  visible=True,
                  appearance=None,
                  geometry=None,
@@ -47038,8 +47117,8 @@ class Shape(_X3DShapeNode):
         # if _DEBUG: print('... in ConcreteNode Shape __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.visible = visible
         self.appearance = appearance
         self.geometry = geometry
@@ -47054,6 +47133,16 @@ class Shape(_X3DShapeNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -47065,16 +47154,8 @@ class Shape(_X3DShapeNode):
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -47127,12 +47208,12 @@ class Shape(_X3DShapeNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.visible != True:
             result += " visible='" + SFBool(self.visible).XML() + "'"
         if not self.hasChild():
@@ -47176,12 +47257,12 @@ class Shape(_X3DShapeNode):
             result += 'Shape' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.visible != True:
             result += " visible " + SFBool(self.visible).VRML() + ""
         if self.IS: # output this SFNode
@@ -47212,10 +47293,10 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         ('address', 'localhost', FieldType.SFString, AccessType.inputOutput, 'SignalPdu'),
         ('applicationID', 0, FieldType.SFInt32, AccessType.inputOutput, 'SignalPdu'),
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
         ('data', list(), FieldType.MFInt32, AccessType.inputOutput, 'SignalPdu'),
         ('dataLength', 0, FieldType.SFInt32, AccessType.inputOutput, 'SignalPdu'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'X3DSensorNode'),
         ('encodingScheme', 0, FieldType.SFInt32, AccessType.inputOutput, 'SignalPdu'),
         ('entityID', 0, FieldType.SFInt32, AccessType.inputOutput, 'SignalPdu'),
@@ -47244,10 +47325,10 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
                  address='localhost',
                  applicationID=0,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  data=list(),
                  dataLength=0,
-                 displayBBox=False,
                  enabled=True,
                  encodingScheme=0,
                  entityID=0,
@@ -47277,10 +47358,10 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         self.address = address
         self.applicationID = applicationID
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.data = data
         self.dataLength = dataLength
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.encodingScheme = encodingScheme
         self.entityID = entityID
@@ -47331,6 +47412,16 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -47361,15 +47452,6 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             dataLength = 0 # default
         assertValidSFInt32(dataLength)
         self.__dataLength = dataLength
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables the sensor node."""
@@ -47534,6 +47616,7 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         self.__tdlType = tdlType
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -47585,6 +47668,8 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " applicationID='" + SFInt32(self.applicationID).XML() + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
@@ -47593,8 +47678,6 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " data='" + MFInt32(self.data).XML() + "'"
         if self.dataLength != 0:
             result += " dataLength='" + SFInt32(self.dataLength).XML() + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.encodingScheme != 0:
@@ -47674,6 +47757,8 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " applicationID " + SFInt32(self.applicationID).VRML() + ""
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
@@ -47682,8 +47767,6 @@ class SignalPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " data " + MFInt32(self.data).VRML() + ""
         if self.dataLength != 0:
             result += " dataLength " + SFInt32(self.dataLength).VRML() + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.encodingScheme != 0:
@@ -48847,7 +48930,7 @@ class SphereSensor(_X3DDragSensorNode):
         self.__autoOffset = autoOffset
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -49920,8 +50003,8 @@ class StaticGroup(_X3DChildNode, _X3DBoundedObject):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('children', list(), FieldType.MFNode, AccessType.initializeOnly, 'StaticGroup'),
         ('DEF', '', FieldType.SFString, AccessType.inputOutput, 'X3DNode'),
@@ -49931,8 +50014,8 @@ class StaticGroup(_X3DChildNode, _X3DBoundedObject):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  visible=True,
                  children=None,
                  DEF='',
@@ -49943,8 +50026,8 @@ class StaticGroup(_X3DChildNode, _X3DBoundedObject):
         # if _DEBUG: print('... in ConcreteNode StaticGroup __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.visible = visible
         self.children = children
     @property # getter - - - - - - - - - -
@@ -49958,6 +50041,16 @@ class StaticGroup(_X3DChildNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -49969,16 +50062,8 @@ class StaticGroup(_X3DChildNode, _X3DBoundedObject):
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -50015,12 +50100,12 @@ class StaticGroup(_X3DChildNode, _X3DBoundedObject):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.visible != True:
             result += " visible='" + SFBool(self.visible).XML() + "'"
         if not self.hasChild():
@@ -50064,12 +50149,12 @@ class StaticGroup(_X3DChildNode, _X3DBoundedObject):
             result += 'StaticGroup' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.visible != True:
             result += " visible " + SFBool(self.visible).VRML() + ""
         if self.IS: # output this SFNode
@@ -50421,8 +50506,8 @@ class Switch(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('whichChoice', -1, FieldType.SFInt32, AccessType.inputOutput, 'Switch'),
         ('children', list(), FieldType.MFNode, AccessType.inputOutput, 'X3DGroupingNode'),
@@ -50433,8 +50518,8 @@ class Switch(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
-                 displayBBox=False,
                  visible=True,
                  whichChoice=-1,
                  children=None,
@@ -50446,8 +50531,8 @@ class Switch(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode Switch __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
-        self.displayBBox = displayBBox
         self.visible = visible
         self.whichChoice = whichChoice
         self.children = children
@@ -50462,6 +50547,16 @@ class Switch(_X3DGroupingNode):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -50473,16 +50568,8 @@ class Switch(_X3DGroupingNode):
         assertBoundingBox('bboxSize', bboxSize)
         self.__bboxSize = bboxSize
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -50530,12 +50617,12 @@ class Switch(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.visible != True:
             result += " visible='" + SFBool(self.visible).XML() + "'"
         if self.whichChoice != -1:
@@ -50581,12 +50668,12 @@ class Switch(_X3DGroupingNode):
             result += 'Switch' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.visible != True:
             result += " visible " + SFBool(self.visible).VRML() + ""
         if self.whichChoice != -1:
@@ -53055,7 +53142,7 @@ class TouchSensor(_X3DTouchSensorNode):
         self.enabled = enabled
     @property # getter - - - - - - - - - -
     def description(self):
-        """Author-provided text tooltip that tells users the expected action of this node."""
+        """Author-provided prose that descries intended purpose of this node."""
         return self.__description
     @description.setter
     def description(self, description):
@@ -53159,9 +53246,9 @@ class Transform(_X3DGroupingNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
         ('center', (0, 0, 0), FieldType.SFVec3f, AccessType.inputOutput, 'Transform'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('rotation', (0, 0, 1, 0), FieldType.SFRotation, AccessType.inputOutput, 'Transform'),
         ('scale', (1, 1, 1), FieldType.SFVec3f, AccessType.inputOutput, 'Transform'),
         ('scaleOrientation', (0, 0, 1, 0), FieldType.SFRotation, AccessType.inputOutput, 'Transform'),
@@ -53175,9 +53262,9 @@ class Transform(_X3DGroupingNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  center=(0, 0, 0),
-                 displayBBox=False,
                  rotation=(0, 0, 1, 0),
                  scale=(1, 1, 1),
                  scaleOrientation=(0, 0, 1, 0),
@@ -53192,9 +53279,9 @@ class Transform(_X3DGroupingNode):
         # if _DEBUG: print('... in ConcreteNode Transform __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.center = center
-        self.displayBBox = displayBBox
         self.rotation = rotation
         self.scale = scale
         self.scaleOrientation = scaleOrientation
@@ -53211,6 +53298,16 @@ class Transform(_X3DGroupingNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -53232,15 +53329,6 @@ class Transform(_X3DGroupingNode):
             center = (0, 0, 0) # default
         assertValidSFVec3f(center)
         self.__center = center
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def rotation(self):
         """Orientation (axis, angle in radians) of children relative to local coordinate system."""
@@ -53283,6 +53371,7 @@ class Transform(_X3DGroupingNode):
         self.__translation = translation
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -53319,14 +53408,14 @@ class Transform(_X3DGroupingNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.center != (0, 0, 0):
             result += " center='" + SFVec3f(self.center).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.rotation != (0, 0, 1, 0):
             result += " rotation='" + SFRotation(self.rotation).XML() + "'"
         if self.scale != (1, 1, 1):
@@ -53378,14 +53467,14 @@ class Transform(_X3DGroupingNode):
             result += 'Transform' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.center != (0, 0, 0):
             result += " center " + SFVec3f(self.center).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.rotation != (0, 0, 1, 0):
             result += " rotation " + SFRotation(self.rotation).VRML() + ""
         if self.scale != (1, 1, 1):
@@ -53588,10 +53677,10 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         ('antennaPatternType', 0, FieldType.SFInt32, AccessType.inputOutput, 'TransmitterPdu'),
         ('applicationID', 0, FieldType.SFInt32, AccessType.inputOutput, 'TransmitterPdu'),
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DBoundedObject'),
         ('cryptoKeyID', 0, FieldType.SFInt32, AccessType.inputOutput, 'TransmitterPdu'),
         ('cryptoSystem', 0, FieldType.SFInt32, AccessType.inputOutput, 'TransmitterPdu'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DBoundedObject'),
         ('enabled', True, FieldType.SFBool, AccessType.inputOutput, 'X3DSensorNode'),
         ('entityID', 0, FieldType.SFInt32, AccessType.inputOutput, 'TransmitterPdu'),
         ('frequency', 0, FieldType.SFInt32, AccessType.inputOutput, 'TransmitterPdu'),
@@ -53636,10 +53725,10 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
                  antennaPatternType=0,
                  applicationID=0,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  cryptoKeyID=0,
                  cryptoSystem=0,
-                 displayBBox=False,
                  enabled=True,
                  entityID=0,
                  frequency=0,
@@ -53685,10 +53774,10 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         self.antennaPatternType = antennaPatternType
         self.applicationID = applicationID
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.cryptoKeyID = cryptoKeyID
         self.cryptoSystem = cryptoSystem
-        self.displayBBox = displayBBox
         self.enabled = enabled
         self.entityID = entityID
         self.frequency = frequency
@@ -53782,6 +53871,16 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
     @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
+    @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
         return self.__bboxSize
@@ -53812,15 +53911,6 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             cryptoSystem = 0 # default
         assertValidSFInt32(cryptoSystem)
         self.__cryptoSystem = cryptoSystem
-    @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
     @property # getter - - - - - - - - - -
     def enabled(self):
         """Enables/disables the sensor node."""
@@ -54115,6 +54205,7 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
         self.__transmitState = transmitState
     @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -54172,6 +54263,8 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " applicationID='" + SFInt32(self.applicationID).XML() + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
@@ -54180,8 +54273,6 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " cryptoKeyID='" + SFInt32(self.cryptoKeyID).XML() + "'"
         if self.cryptoSystem != 0:
             result += " cryptoSystem='" + SFInt32(self.cryptoSystem).XML() + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.enabled != True:
             result += " enabled='" + SFBool(self.enabled).XML() + "'"
         if self.entityID != 0:
@@ -54293,6 +54384,8 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " applicationID " + SFInt32(self.applicationID).VRML() + ""
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
@@ -54301,8 +54394,6 @@ class TransmitterPdu(_X3DNetworkSensorNode, _X3DBoundedObject):
             result += " cryptoKeyID " + SFInt32(self.cryptoKeyID).VRML() + ""
         if self.cryptoSystem != 0:
             result += " cryptoSystem " + SFInt32(self.cryptoSystem).VRML() + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.enabled != True:
             result += " enabled " + SFBool(self.enabled).VRML() + ""
         if self.entityID != 0:
@@ -56380,9 +56471,9 @@ class Viewport(_X3DViewportNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DGroupingNode'),
         ('clipBoundary', [0, 1, 0, 1], FieldType.MFFloat, AccessType.inputOutput, 'Viewport'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DGroupingNode'),
         ('children', list(), FieldType.MFNode, AccessType.inputOutput, 'X3DGroupingNode'),
         ('DEF', '', FieldType.SFString, AccessType.inputOutput, 'X3DNode'),
@@ -56392,9 +56483,9 @@ class Viewport(_X3DViewportNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  clipBoundary=[0, 1, 0, 1],
-                 displayBBox=False,
                  visible=True,
                  children=None,
                  DEF='',
@@ -56405,9 +56496,9 @@ class Viewport(_X3DViewportNode):
         # if _DEBUG: print('... in ConcreteNode Viewport __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.clipBoundary = clipBoundary
-        self.displayBBox = displayBBox
         self.visible = visible
         self.children = children
     @property # getter - - - - - - - - - -
@@ -56420,6 +56511,16 @@ class Viewport(_X3DViewportNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -56443,16 +56544,8 @@ class Viewport(_X3DViewportNode):
         assertZeroToOne('clipBoundary', clipBoundary)
         self.__clipBoundary = clipBoundary
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -56489,14 +56582,14 @@ class Viewport(_X3DViewportNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
         if self.clipBoundary != [0, 1, 0, 1]:
             result += " clipBoundary='" + MFFloat(self.clipBoundary).XML() + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.visible != True:
             result += " visible='" + SFBool(self.visible).XML() + "'"
         if not self.hasChild():
@@ -56540,14 +56633,14 @@ class Viewport(_X3DViewportNode):
             result += 'Viewport' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
         if self.clipBoundary != [0, 1, 0, 1]:
             result += " clipBoundary " + MFFloat(self.clipBoundary).VRML() + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.visible != True:
             result += " visible " + SFBool(self.visible).VRML() + ""
         if self.IS: # output this SFNode
@@ -56717,9 +56810,9 @@ class VolumeData(_X3DVolumeDataNode):
     def FIELD_DECLARATIONS(self):
         return [ # name, defaultValue, type, accessType, inheritedFrom
         ('bboxCenter', (0, 0, 0), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DVolumeDataNode'),
+        ('bboxDisplay', False, FieldType.SFBool, AccessType.inputOutput, 'X3DVolumeDataNode'),
         ('bboxSize', (-1, -1, -1), FieldType.SFVec3f, AccessType.initializeOnly, 'X3DVolumeDataNode'),
         ('dimensions', (1, 1, 1), FieldType.SFVec3f, AccessType.inputOutput, 'X3DVolumeDataNode'),
-        ('displayBBox', False, FieldType.SFBool, AccessType.inputOutput, 'X3DVolumeDataNode'),
         ('visible', True, FieldType.SFBool, AccessType.inputOutput, 'X3DVolumeDataNode'),
         ('renderStyle', None, FieldType.SFNode, AccessType.inputOutput, 'VolumeData'),
         ('voxels', None, FieldType.SFNode, AccessType.inputOutput, 'VolumeData'),
@@ -56730,9 +56823,9 @@ class VolumeData(_X3DVolumeDataNode):
         ('metadata', None, FieldType.SFNode, AccessType.inputOutput, 'X3DNode')]
     def __init__(self,
                  bboxCenter=(0, 0, 0),
+                 bboxDisplay=False,
                  bboxSize=(-1, -1, -1),
                  dimensions=(1, 1, 1),
-                 displayBBox=False,
                  visible=True,
                  renderStyle=None,
                  voxels=None,
@@ -56744,9 +56837,9 @@ class VolumeData(_X3DVolumeDataNode):
         # if _DEBUG: print('... in ConcreteNode VolumeData __init__ calling super.__init__(' + str(DEF) + ',' + str(USE) + ',' + str(class_) + ',' + str(metadata) + ',' + str(IS) + ')', flush=True)
         super().__init__(DEF, USE, class_, IS, metadata) # fields for _X3DNode only
         self.bboxCenter = bboxCenter
+        self.bboxDisplay = bboxDisplay
         self.bboxSize = bboxSize
         self.dimensions = dimensions
-        self.displayBBox = displayBBox
         self.visible = visible
         self.renderStyle = renderStyle
         self.voxels = voxels
@@ -56760,6 +56853,16 @@ class VolumeData(_X3DVolumeDataNode):
             bboxCenter = (0, 0, 0) # default
         assertValidSFVec3f(bboxCenter)
         self.__bboxCenter = bboxCenter
+    @property # getter - - - - - - - - - -
+    def bboxDisplay(self):
+        """Whether to display bounding box for associated geometry, aligned with world coordinates."""
+        return self.__bboxDisplay
+    @bboxDisplay.setter
+    def bboxDisplay(self, bboxDisplay):
+        if  bboxDisplay is None:
+            bboxDisplay = False # default
+        assertValidSFBool(bboxDisplay)
+        self.__bboxDisplay = bboxDisplay
     @property # getter - - - - - - - - - -
     def bboxSize(self):
         """Bounding box size is usually omitted, and can easily be calculated automatically by an X3D player at scene-loading time with minimal computational cost."""
@@ -56783,16 +56886,8 @@ class VolumeData(_X3DVolumeDataNode):
         assertPositive('dimensions', dimensions)
         self.__dimensions = dimensions
     @property # getter - - - - - - - - - -
-    def displayBBox(self):
-        return self.__displayBBox
-    @displayBBox.setter
-    def displayBBox(self, displayBBox):
-        if  displayBBox is None:
-            displayBBox = False # default
-        assertValidSFBool(displayBBox)
-        self.__displayBBox = displayBBox
-    @property # getter - - - - - - - - - -
     def visible(self):
+        """Whether or not renderable content within this node is visually displayed."""
         return self.__visible
     @visible.setter
     def visible(self, visible):
@@ -56845,14 +56940,14 @@ class VolumeData(_X3DVolumeDataNode):
             result += " USE='" + self.USE + "'"
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter='" + SFVec3f(self.bboxCenter).XML() + "'"
+        if self.bboxDisplay != False:
+            result += " bboxDisplay='" + SFBool(self.bboxDisplay).XML() + "'"
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize='" + SFVec3f(self.bboxSize).XML() + "'"
         if self.class_:
             result += " class_='" + self.class_ + "'"
         if self.dimensions != (1, 1, 1):
             result += " dimensions='" + SFVec3f(self.dimensions).XML() + "'"
-        if self.displayBBox != False:
-            result += " displayBBox='" + SFBool(self.displayBBox).XML() + "'"
         if self.visible != True:
             result += " visible='" + SFBool(self.visible).XML() + "'"
         if not self.hasChild():
@@ -56896,14 +56991,14 @@ class VolumeData(_X3DVolumeDataNode):
             result += 'VolumeData' + ' {'
         if self.bboxCenter != (0, 0, 0):
             result += " bboxCenter " + SFVec3f(self.bboxCenter).VRML() + ""
+        if self.bboxDisplay != False:
+            result += " bboxDisplay " + SFBool(self.bboxDisplay).VRML() + ""
         if self.bboxSize != (-1, -1, -1):
             result += " bboxSize " + SFVec3f(self.bboxSize).VRML() + ""
         if self.class_:
             result += " class_ " +  '"' + self.class_ + '"' + ""
         if self.dimensions != (1, 1, 1):
             result += " dimensions " + SFVec3f(self.dimensions).VRML() + ""
-        if self.displayBBox != False:
-            result += " displayBBox " + SFBool(self.displayBBox).VRML() + ""
         if self.visible != True:
             result += " visible " + SFBool(self.visible).VRML() + ""
         if self.IS: # output this SFNode
