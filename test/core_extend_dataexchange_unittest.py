@@ -126,7 +126,7 @@ class TestExtendDataExchange(unittest.TestCase):
     def test_doc_from_step(self):
         doc_exp = DocFromSTEP(STEP_AP203_SAMPLE_FILE)
         document = doc_exp.get_doc()
-        SceneGrapheFromDoc(document, log=True)
+        SceneGraphFromDoc(document, log=True)
 
 def suite():
     test_suite = unittest.TestSuite()
