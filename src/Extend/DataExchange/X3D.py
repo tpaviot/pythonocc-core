@@ -168,17 +168,22 @@ class X3DCurveExporter(X3DBaseExporter):
         self._geo = XX3D.LineSet(coord=coord)
 
 
-class X3DShapeExporter(X3DBaseExporter):
+class X3DShapeExporter:
     """ A class for exporting a single TopoDS_Shape to x3d
     """
-    def __init__(self, *args, **kargs):
-        super(X3DShapeExporter, self).__init__(*args, **kargs)
-        self._indexed_triangle_set = None
+    def __init__(self, shape, compute_normals=False, compute_edges=True, uid=None):
+        self._compute_normals = compute_normals
+        self._compute_edges = compute_edges
+
+        if uid is None:
+            self._uid = uuid.uuid4().hex
+        else:
+            self._uid = uid
+
+        self._shape = shape
+
         self._geo = None
         self._edges = None
-        self._compute_normals = False
-        self._compute_edges = True
-        self._DEF = None
 
         self.compute()
 
@@ -191,16 +196,19 @@ class X3DShapeExporter(X3DBaseExporter):
     def compute(self):
         """ compute meshes, return True if successful
         """
-        shape_tesselator = ShapeTesselator(self._shape)
+        shape_tesselator = ShapeTesselator(self._shape,
+                                           compute_normals=self._compute_normals,
+                                           compute_edges=self._compute_edges)
 
         idx = shape_tesselator.get_flattened_vertex_indices()
         coord = XX3D.Coordinate(point=shape_tesselator.get_vertex_coords())
-        coord.DEF = "COORD" + uuid.uuid4().hex
+        coord.DEF = "ITS-COORD-" + self._uid
         if self._compute_normals:
             normal = XX3D.Normal(shape_tesselator.get_normal_coords())
         else:
             normal = None
-        self._geo = XX3D.IndexedTriangleSet(coord=coord, index=idx, normal=normal, solid=False)
+        if coord:
+            self._geo = XX3D.IndexedTriangleSet(coord=coord, index=idx, normal=normal, solid=False)
         # TODO : issue with x3d standard creaseAngle is not a property of this node
         # we need here a creaseAngle of creaseAngle=0.2)
 
@@ -208,41 +216,47 @@ class X3DShapeExporter(X3DBaseExporter):
             # flatten edges indices
             tmp1 = [[a for a in l] + [-1] for l in shape_tesselator._edges_indices]
             edge_idx = [item for sublist in tmp1 for item in sublist]
-            self._edges = XX3D.IndexedLineSet(USE=coord.DEF, coordIndex=edge_idx)
+            if edge_idx:
+                self._edges = XX3D.IndexedLineSet(USE=coord.DEF, coordIndex=edge_idx)
 
-    def write_to_file(self, path, filename="", auto_filename=False):
+
+    def to_x3d_scene_XML(self):
+        x3dnode_geometry = XX3D.Shape()
+        x3dnode_geometry.geometry = self._geo
+
+        x3dnode_edges = XX3D.Shape()
+        x3dnode_edges.geometry = self._edges
+
+        x3dscene = XX3D.Scene(children=[x3dnode_geometry, x3dnode_edges])
+        
+        x3ddoc = XX3D.X3D(Scene=x3dscene)
+
+        return x3ddoc.XML()
+
+    def write_to_file(self, filename):
         """ write to a file. If autofilename is set to True then
         the file name is "shp" and the shape id appended.
         """
-        if auto_filename:
-            filename = "shp%s" % self._shape_id + ".x3d"
-        full_filename = os.path.join(path, filename)
-        with open(full_filename, "w") as f:
-            #f.write(self.to_x3dfile_string())
-            # TODO: rewrite the save to file code
-            pass
+        with open(filename, "w") as f:
+            f.write(self.to_x3d_scene_XML())
+
         # check that the file was written
-        if not os.path.isfile(full_filename):
-            raise IOError("x3d file not written.")
-        return filename
+        if os.path.isfile(filename):
+            return True
+        else:
+            return False
 
 
-def approximate_listoffloat_to_str(list_of_floats, ndigits=4, epsilon=1e-3):
-    """ take a list of floats, returns a simplified list
-    of formatted floats
-    """
-    precision_dict = {1: "{0:.1g}", 2: "{0:.2g}", 3: "{0:.3g}", 4: "{0:.4g}", 5: "{0:.5g}",
-                      6: "{0:.6g}", 7: "{0:.7g}", 8: "{0:.8g}", 9: "{0:.9g}"}
-    listoffloat_to_str = ' '.join(['0' if abs(float_number) < epsilon
-                                   else precision_dict[ndigits].format(float_number)
-                                   for float_number in list_of_floats])
-    return listoffloat_to_str
-
-
-def write_x3d_file(shape, path, filename):
-    x3d_exporter = X3DShapeExporter(shape)
-    x3d_exporter.compute()
-    x3d_exporter.write_to_file(path, filename)
+# def approximate_listoffloat_to_str(list_of_floats, ndigits=4, epsilon=1e-3):
+#     """ take a list of floats, returns a simplified list
+#     of formatted floats
+#     """
+#     precision_dict = {1: "{0:.1g}", 2: "{0:.2g}", 3: "{0:.3g}", 4: "{0:.4g}", 5: "{0:.5g}",
+#                       6: "{0:.6g}", 7: "{0:.7g}", 8: "{0:.8g}", 9: "{0:.9g}"}
+#     listoffloat_to_str = ' '.join(['0' if abs(float_number) < epsilon
+#                                    else precision_dict[ndigits].format(float_number)
+#                                    for float_number in list_of_floats])
+#     return listoffloat_to_str
 
 
 def x3d_from_scenegraph(scene=[],
@@ -274,7 +288,7 @@ def x3d_from_scenegraph(scene=[],
         if is_edge(shape) or is_wire(shape):
             x3d_exporter = X3DCurveExporter(shape)
         else:
-            x3d_exporter = X3DShapeExporter(shape, compute_normals=False, export_edges=True)
+            x3d_exporter = X3DShapeExporter(shape, compute_normals=False, compute_edges=True)
 
         return {'x3dgeo': x3d_exporter.get_geo(), 'x3dedges': x3d_exporter.get_edges()}
 
@@ -395,7 +409,8 @@ if __name__ == "__main__":
     # test with the as1_pe.stp file
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
     shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    exp = X3DShapeExporter(shp, compute_normals=True)
+    exp = X3DShapeExporter(shp)
+    exp.write_to_file("ess.x3d")
 
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
     doc_exp = DocFromSTEP(step_file)
