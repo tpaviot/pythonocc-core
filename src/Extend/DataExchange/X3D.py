@@ -15,80 +15,67 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-__doc__ = "Everything related to X3D export """
+__doc__ = "BRep to X3D exporter """
+
 import os
-import re
-
 import uuid
+
+# core OCC packages
 from OCC.Core.gp import gp_XYZ
-from OCC.Core.TopoDS import TopoDS_Shell
-from OCC.Core.BRep import BRep_Builder
-from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
-                              XCAFDoc_DocumentTool_ColorTool)
-from OCC.Core.TDocStd import TDocStd_Document
-from OCC.Core.TCollection import TCollection_ExtendedString
-from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
-                              XCAFDoc_DocumentTool_ColorTool,
-                              XCAFDoc_DocumentTool_LayerTool,
-                              XCAFDoc_DocumentTool_MaterialTool)
-
-from OCC.Core.TDF import TDF_LabelSequence, TDF_Label
-from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
-from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
-from OCC.Extend.TopologyUtils import TopologyExplorer, get_type_as_string
-from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
-
-import OCC.Extend.DataExchange.x3d_standard.x3d as XX3D
-from OCC.Extend.DataExchange.XDE import SceneGraphFromDoc, DocFromSTEP
-from OCC.Extend.TopologyUtils import is_edge, is_wire
-
-from OCC.Extend.Tesselator import ShapeTesselator, EdgeDiscretizer, WireDiscretizer
 from OCC.Core.TopAbs import TopAbs_ShapeEnum
 
-##############
-# X3D export #
-##############
-X3DFILE_TEMPLATE = """<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Immersive' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
-<head>
-    <meta name='generator' content='pythonocc-%s X3D exporter (www.pythonocc.org)'/>
-    <meta name='creator' content='pythonocc-%s generator'/>
-    <meta name='identifier' content='http://www.pythonocc.org'/>
-    <meta name='description' content='pythonocc-%s x3dom based shape rendering'/>
-</head>
-<Scene>
-    %s
-</Scene>
-</X3D>
-"""
+# OCC extensions
+from OCC.Extend.TopologyUtils import is_edge, is_wire
+from OCC.Extend.DataExchange.XDE import SceneGraphFromDoc, DocFromSTEP
+from OCC.Extend.Tesselator import ShapeTesselator, EdgeDiscretizer, WireDiscretizer
+
+# official x3d package
+import OCC.Extend.DataExchange.x3d_standard.x3d as XX3D
+
+# ##############
+# # X3D export #
+# ##############
+# X3DFILE_TEMPLATE = """<?xml version="1.0" encoding="UTF-8"?>
+# <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+# <X3D profile='Immersive' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+# <head>
+#     <meta name='generator' content='pythonocc-%s X3D exporter (www.pythonocc.org)'/>
+#     <meta name='creator' content='pythonocc-%s generator'/>
+#     <meta name='identifier' content='http://www.pythonocc.org'/>
+#     <meta name='description' content='pythonocc-%s x3dom based shape rendering'/>
+# </head>
+# <Scene>
+#     %s
+# </Scene>
+# </X3D>
+# """
 
 
-X3D_INDEXEDTRIANGLESET_TEMPLATE = """
-<IndexedTriangleSet creaseAngle='0.2' normalPerVertex='true' index='%s' solid='false'>
-  <Coordinate DEF='%s' point='%s'/>
-</IndexedTriangleSet>
-"""
+# X3D_INDEXEDTRIANGLESET_TEMPLATE = """
+# <IndexedTriangleSet creaseAngle='0.2' normalPerVertex='true' index='%s' solid='false'>
+#   <Coordinate DEF='%s' point='%s'/>
+# </IndexedTriangleSet>
+# """
 
-X3D_INDEXEDTRIANGLESET_TEMPLATE_WITH_NORMALS = """
-<IndexedTriangleSet normalPerVertex='true' index='%s' solid='false'>
-  <Coordinate DEF='%s' point='%s'/>
-  <Normal vector='%s'/>
-</IndexedTriangleSet>
-"""
+# X3D_INDEXEDTRIANGLESET_TEMPLATE_WITH_NORMALS = """
+# <IndexedTriangleSet normalPerVertex='true' index='%s' solid='false'>
+#   <Coordinate DEF='%s' point='%s'/>
+#   <Normal vector='%s'/>
+# </IndexedTriangleSet>
+# """
 
 
-X3D_VISIBLE_EDGE_TEMPLATE = """<Shape>
-  <IndexedLineSet coordIndex='%s'>
-    <Coordinate USE='%s'></Coordinate>
-  </IndexedLineSet>
-  <Appearance>
-     <Material emissiveColor='0 0 0'/>
-     <LineProperties applied='true' linetype='1' linewidthScaleFactor='1'>
-     </LineProperties>
-  </Appearance>
-</Shape>
-"""
+# X3D_VISIBLE_EDGE_TEMPLATE = """<Shape>
+#   <IndexedLineSet coordIndex='%s'>
+#     <Coordinate USE='%s'></Coordinate>
+#   </IndexedLineSet>
+#   <Appearance>
+#      <Material emissiveColor='0 0 0'/>
+#      <LineProperties applied='true' linetype='1' linewidthScaleFactor='1'>
+#      </LineProperties>
+#   </Appearance>
+# </Shape>
+# """
 
 class X3DBaseExporter:
     """ Abstract class that supports common methods for each
@@ -134,7 +121,7 @@ class X3DBaseExporter:
         self._optimize_mesh = optimize_mesh
 
     def set_shape_id(self, shape_id):
-        self._shape_def = shape_def
+        self._shape_def = shape_id
 
     def get_shape_id(self):
         return self._shape_id
@@ -177,8 +164,9 @@ class X3DCurveExporter(X3DBaseExporter):
             raise AssertionError('you must provide an edge or a wire to the X3DCurveExporter')
 
         coord = XX3D.Coordinate(point=self._cd.get_points())
-        coord.DEF = "thomas3233edge"
-        self._geo = XX3D.LineSet(coord=coord)#, vertex_count=len(flattened_coords))
+        coord.DEF = "COORD" + uuid.uuid4().hex
+        self._geo = XX3D.LineSet(coord=coord)
+
 
 class X3DShapeExporter(X3DBaseExporter):
     """ A class for exporting a single TopoDS_Shape to x3d
@@ -203,11 +191,11 @@ class X3DShapeExporter(X3DBaseExporter):
     def compute(self):
         """ compute meshes, return True if successful
         """
-        shape_tesselator = ShapeTesselator(self._shape)                                   
+        shape_tesselator = ShapeTesselator(self._shape)
 
         idx = shape_tesselator.get_flattened_vertex_indices()
-        coord = XX3D.Coordinate(point = shape_tesselator.get_vertex_coords())
-        coord.DEF = uuid.uuid4().hex # "thomas3233"#print('DEF:', coord.DEF)
+        coord = XX3D.Coordinate(point=shape_tesselator.get_vertex_coords())
+        coord.DEF = "COORD" + uuid.uuid4().hex
         if self._compute_normals:
             normal = XX3D.Normal(shape_tesselator.get_normal_coords())
         else:
@@ -215,9 +203,9 @@ class X3DShapeExporter(X3DBaseExporter):
         self._geo = XX3D.IndexedTriangleSet(coord=coord, index=idx, normal=normal, solid=False)
         # TODO : issue with x3d standard creaseAngle is not a property of this node
         # we need here a creaseAngle of creaseAngle=0.2)
-        
+
         if self._compute_edges:
-            # flatten edges indices            
+            # flatten edges indices
             tmp1 = [[a for a in l] + [-1] for l in shape_tesselator._edges_indices]
             edge_idx = [item for sublist in tmp1 for item in sublist]
             self._edges = XX3D.IndexedLineSet(USE=coord.DEF, coordIndex=edge_idx)
@@ -230,50 +218,13 @@ class X3DShapeExporter(X3DBaseExporter):
             filename = "shp%s" % self._shape_id + ".x3d"
         full_filename = os.path.join(path, filename)
         with open(full_filename, "w") as f:
-            f.write(self.to_x3dfile_string())
+            #f.write(self.to_x3dfile_string())
+            # TODO: rewrite the save to file code
+            pass
         # check that the file was written
         if not os.path.isfile(full_filename):
             raise IOError("x3d file not written.")
         return filename
-
-    
-class X3DScene:
-    """ the root class for builing an X3D exporter
-    """
-    def __init__(self):
-        # the self._shapes list is a collection
-        # for all <Group><Shapes> strings
-        self._shapes = []
-
-    def add_shape(self, a_topods_shape, shape_color=(0.65, 0.65, 0.7)):
-        """ the a_topo_ds_shape can be either a TopoDS_Solid, TopoDS_Face, 
-        TopoDS_Edge or TopoDS_Wire
-        """
-        shape_type = a_topods_shape.ShapeType()
-        if shape_type in [TopAbs_ShapeEnum.TopAbs_EDGE, TopAbs_ShapeEnum.TopAbs_WIRE]:
-            new_curve = X3DCurveExporter(a_topods_shape)
-            new_curve.compute()
-            shape_str = new_curve.to_x3dfile_string()
-            self._shapes.append(shape_str)
-        else:
-            new_shp = X3DShapeExporter(a_topods_shape, color=shape_color)
-            new_shp.compute()
-            shape_str = new_shp.to_x3dfile_string()
-            self._shapes.append(shape_str)
-
-    def export_to_single_file(self, filename):
-        """ ff """
-        # we simply concatenate all shapes strings
-        # in this case, the filename cannot be ommitted, it's
-        # a mandatory parameter
-        all_shapes_str = ''.join(self._shapes)
-
-        x3d_content = X3DFILE_TEMPLATE % (OCC_VERSION, OCC_VERSION, OCC_VERSION, all_shapes_str)
-        
-        fp = open(filename, "w")
-        fp.write(x3d_content)
-        fp.close()
-
 
 
 def approximate_listoffloat_to_str(list_of_floats, ndigits=4, epsilon=1e-3):
@@ -294,29 +245,30 @@ def write_x3d_file(shape, path, filename):
     x3d_exporter.write_to_file(path, filename)
 
 
-def x3d_from_scenegraph(scene=[], facesInSolids=None, show_edges=True, edge_color=(0,0,0), log=False):#, doc=None):
-    a_x3d_scene = X3DScene()
+def x3d_from_scenegraph(scene=[],
+                        facesInSolids=None,
+                        show_edges=True,
+                        edge_color=(0, 0, 0),
+                        log=False):
     appDEFset = set()
     if facesInSolids is None:
         facesInSolids = set()
-        
-    def print_log( message ):
-        if (log):
-            print (message)
-        return
-    
+
+    def print_log(message):
+        if log:
+            print(message)
+
     def _x3dapplyLocation(x3dtransformnode, location):
-            # get translation and rotation from location
-            transformation = location.Transformation()
-            rot_axis = gp_XYZ()
-            #rot_angle = 0.0
-            success, rot_angle = transformation.GetRotation(rot_axis)#.GetVectorAndAngle(rot_axis, rot_angle)
-            translation = transformation.TranslationPart()
-            scale_factor = transformation.ScaleFactor()
-            x3dtransformnode.rotation = (rot_axis.X(), rot_axis.Y(), rot_axis.Z(), rot_angle)
-            x3dtransformnode.translation = (translation.X(), translation.Y(), translation.Z())
-            x3dtransformnode.scale = (scale_factor, scale_factor, scale_factor)
-            return
+        # get translation and rotation from location
+        transformation = location.Transformation()
+        rot_axis = gp_XYZ()
+        #rot_angle = 0.0
+        success, rot_angle = transformation.GetRotation(rot_axis)
+        translation = transformation.TranslationPart()
+        scale_factor = transformation.ScaleFactor()
+        x3dtransformnode.rotation = (rot_axis.X(), rot_axis.Y(), rot_axis.Z(), rot_angle)
+        x3dtransformnode.translation = (translation.X(), translation.Y(), translation.Z())
+        x3dtransformnode.scale = (scale_factor, scale_factor, scale_factor)
 
     def _x3dgeofromTShape(shape):
         if is_edge(shape) or is_wire(shape):
@@ -330,52 +282,47 @@ def x3d_from_scenegraph(scene=[], facesInSolids=None, show_edges=True, edge_colo
         mflist = sepString.split()
         mf = []
         for i in range(len(mflist)):
-            if (i % 3 == 2):
+            if i % 3 == 2:
                 mf.append((float(mflist[i-2]), float(mflist[i-1]), float(mflist[i])))
         return mf
-    
+
     def _x3dappfromColor(c, DEFname, emissive):
-        if (emissive):
+        if emissive:
             DEFname = DEFname + "-emissive"
         if DEFname in appDEFset:
-            return XX3D.Appearance(USE = DEFname)
+            return XX3D.Appearance(USE=DEFname)
         else:
             appDEFset.add(DEFname)
-            if (emissive):
-                x3dmat = XX3D.Material(emissiveColor = c)
+            if emissive:
+                x3dmat = XX3D.Material(emissiveColor=c)
             else:
-                x3dmat = XX3D.Material(diffuseColor = c, specularColor = (0.9, 0.9, 0.9), shininess = 1, ambientIntensity = 0.1)
-            return XX3D.Appearance(DEF = DEFname, material = x3dmat)
-    
+                x3dmat = XX3D.Material(diffuseColor=c, specularColor=(0.9, 0.9, 0.9),
+                                       shininess=1, ambientIntensity=0.1)
+            return XX3D.Appearance(DEF=DEFname, material=x3dmat)
+
     def _getx3dnode(node):
-        
+
         def _sanitizeDEF(name):
 # IdFirstChar ::=
-# Any ISO-10646 character encoded using UTF-8 except: 0x30-0x3a, 0x0-0x20, 0x22, 0x23, 0x27, 0x2b, 0x2c, 0x2d, 0x2e, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
+# Any ISO-10646 character encoded using UTF-8 except: 0x30-0x3a, 0x0-0x20, 0x22,
+# 0x23, 0x27, 0x2b, 0x2c, 0x2d, 0x2e, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
 # first no [0-9],space,",#,',+,comma,-,.,[,\,],{,}
 # IdRestChars ::=
-# Any number of ISO-10646 characters except: 0x0-0x20, 0x22, 0x23, 0x27, 0x2c, 0x2e, 0x3a, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
+# Any number of ISO-10646 characters except: 0x0-0x20, 0x22, 0x23, 0x27, 0x2c, 0x2e,
+# 0x3a, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
 # rest no space,",#,',comma,.,:,[,\,],{,}
-            return 'L-' + ( name
-                          .replace(" ","_")
-                          .replace('"','^')
-                          .replace('#','N')
-                          .replace("'","^")
-                          .replace(",",";")
-                          .replace(".",";")
-                          .replace(":","-")
-                          .replace("[","(")
-                          .replace("]",")")
-                          .replace("{","(")
-                          .replace("}",")")
-                          .replace("\\","/") )
+            replace_dict = {" ": "_", '"': '^', '#': 'N', "'": "^", ",": ";",
+                            ".": ";", ":": "-", "[": "(", "]": ")", "{": "(",
+                            "}": ")", "\\": "/"}
+            for k, v in replace_dict.items():
+                name = name.replace(k, v)
+            return 'L-' + name
 
         def _applyDEFUSE(x3dnode):
             if 'USE' in node:
                 x3dnode.USE = _sanitizeDEF(node['USE'])
             if 'DEF' in node:
                 x3dnode.DEF = _sanitizeDEF(node['DEF'])
-            return
 
         def _applychildren(x3dnode):
             if 'children' in node:
@@ -383,7 +330,6 @@ def x3d_from_scenegraph(scene=[], facesInSolids=None, show_edges=True, edge_colo
                     success, childlist = _getx3dnode(n)
                     if success:
                         x3dnode.children.extend(childlist)
-            return
 
         if not 'node' in node:
             print_log('no node type, skipping')
@@ -398,22 +344,19 @@ def x3d_from_scenegraph(scene=[], facesInSolids=None, show_edges=True, edge_colo
         edgeNode = None
 
         if ntype == 'Group':
-            x3dnode = XX3D.Group(class_ = node['name'], children = [])
+            x3dnode = XX3D.Group(class_=node['name'], children=[])
             _applyDEFUSE(x3dnode)
             _applychildren(x3dnode)
-        
-        elif (ntype == 'Transform'):
-            x3dnode = XX3D.Transform(class_ = node['name'], children = [])
+
+        elif ntype == 'Transform':
+            x3dnode = XX3D.Transform(class_=node['name'], children=[])
             if 'transform' in node:
                 _x3dapplyLocation(x3dnode, node['transform'])
             _applyDEFUSE(x3dnode)
             _applychildren(x3dnode)
 
-        elif (ntype == 'Shape' or ntype == 'SubShape'):
-            shape_type = node['shapeType']
-#             if (shape_type != "Solid" and shape_type != "Shell"):
-#                 return False, None
-            x3dnode = XX3D.Shape (class_ = node['name'])
+        elif ntype == 'Shape' or ntype == 'SubShape':
+            x3dnode = XX3D.Shape(class_=node['name'])
             _applyDEFUSE(x3dnode)
             if 'shape' in node:
                 shape = node['shape']
@@ -423,27 +366,27 @@ def x3d_from_scenegraph(scene=[], facesInSolids=None, show_edges=True, edge_colo
                 if 'color' in node:
                     colorDEF = _sanitizeDEF(node['colorDEF'])
                     x3dnode.appearance = _x3dappfromColor(node['color'], colorDEF, isEdgeOrWire)
-                if (not isEdgeOrWire):
-                    edgeNode = XX3D.Shape (class_ = node['name']+'-edge', visible = show_edges)
+                if not isEdgeOrWire:
+                    edgeNode = XX3D.Shape(class_=node['name'] + '-edge', visible=show_edges)
                     edgeNode.geometry = geometryDict['x3dedges']
                     edgeNode.appearance = _x3dappfromColor(edge_color, 'app-faceedge', True)
         else:
-            print_log ('unknown node: --' + ntype + "--")
+            print_log('unknown node: --' + ntype + "--")
 
-        x3dnodelist = [x3dnode] 
+        x3dnodelist = [x3dnode]
         if edgeNode is not None:
             x3dnodelist.append(edgeNode)
         return True, x3dnodelist
 
     x3dscene = XX3D.Scene(children=[])
-    x3ddoc = XX3D.X3D(Scene = x3dscene)
+    x3ddoc = XX3D.X3D(Scene=x3dscene)
 
     for node in scene:
         success, x3dnodelist = _getx3dnode(node)
         if success:
             x3dscene.children.extend(x3dnodelist)
         else:
-            print_log ('no x3d for root node, skipped')
+            print_log('no x3d for root node, skipped')
 
     return x3ddoc.XML()
 
