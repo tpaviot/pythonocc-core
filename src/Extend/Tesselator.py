@@ -36,7 +36,7 @@ from OCC.Core.TColStd import TColStd_Array1OfReal
 from OCC.Core.GCPnts import GCPnts_TangentialDeflection
 from OCC.Core.Precision import precision_Confusion
 
-from OCC.Extend.TopologyUtils import TopologyExplorer
+from OCC.Extend.TopologyUtils import TopologyExplorer, WireExplorer
 
 def _flatten(lst):
     return [item for sublist in lst for item in sublist]
@@ -63,12 +63,13 @@ class WireDiscretizer:
         """ splitthe wire into edges, discretize each edge and
         merge points lists
         """
-        wire_explorer = TopologyExplorer(self._wire)
+        wire_explorer = WireExplorer(self._wire)
         wire_pnts = []
         for edg in wire_explorer.ordered_edges():
-            edg_pnts = discretize_edge(edg, deflection)
-            wire_pnts += edg_pnts
+            edg_dscrtzr = EdgeDiscretizer(edg)
+            wire_pnts += edg_dscrtzr.get_points()
         self._pnts = wire_pnts
+
 
 class EdgeDiscretizer:
     def __init__(self, a_curve):
