@@ -133,7 +133,7 @@ class EdgeDiscretizer:
         m = max(m, precision_Confusion())
 
         self._deviation = m * default_deviation
-        print("Curve deflection", self._deviation)
+
 
     def discretize(self):
         """ build the point sets as a list of 3d coordinates
@@ -342,7 +342,8 @@ class FaceTesselator(Tesselator):
 
 class ShapeTesselator(Tesselator):
     def __init__(self, a_topods_shape,
-                 compute_normals=False, compute_edges=False,
+                 compute_normals=False,
+                 compute_edges=False,
                  mesh_quality=1.,
                  global_coordinates=False):
         self._edges_indices = []
@@ -373,7 +374,7 @@ class ShapeTesselator(Tesselator):
             aPoly = BRep_Tool_Polygon3D(anEdge, aLoc)
 
             if aPoly is not None:
-                print("popo")
+                print("The poly is not null.")
             else:
                 aFace = topods_Face(edgeMap.FindFromIndex(iEdge + 1).First())
                 # take the face's triangulation instead
@@ -417,7 +418,6 @@ class ShapeTesselator(Tesselator):
             max_comp_diag = max(self._bb_size)
             deviation_coefficient = 0.001
             self._deviation = max_comp_diag * 4 * deviation_coefficient
-        print("Mesh deviation:", self._deviation)
 
 
     def tesselate(self):
