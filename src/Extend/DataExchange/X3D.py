@@ -105,7 +105,7 @@ class X3DShapeExporter:
         coord = XX3D.Coordinate(point=shape_tesselator.get_vertex_coords())
         coord.DEF = "ITS-COORD-" + self._uid
         if self._compute_normals:
-            normal = XX3D.Normal(shape_tesselator.get_normal_coords())
+            normal = XX3D.Normal(vector=shape_tesselator.get_normal_coords())
         else:
             normal = None
         if coord:
@@ -176,14 +176,6 @@ def x3d_from_scenegraph(scene=[],
             x3d_exporter = X3DShapeExporter(shape, compute_normals=False, compute_edges=True)
 
         return {'x3dgeo': x3d_exporter.get_geo(), 'x3dedges': x3d_exporter.get_edges()}
-
-    def _MFVec3ffromString(sepString):
-        mflist = sepString.split()
-        mf = []
-        for i in range(len(mflist)):
-            if i % 3 == 2:
-                mf.append((float(mflist[i-2]), float(mflist[i-1]), float(mflist[i])))
-        return mf
 
     def _x3dappfromColor(c, DEFname, emissive):
         if emissive:
@@ -304,7 +296,7 @@ if __name__ == "__main__":
     # test with the as1_pe.stp file
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
     shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    exp = X3DShapeExporter(shp)
+    exp = X3DShapeExporter(shp, compute_normals=True)
     exp.write_to_file("ess.x3d")
 
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
