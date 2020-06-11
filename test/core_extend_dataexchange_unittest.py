@@ -128,6 +128,18 @@ class TestExtendDataExchange(unittest.TestCase):
         document = doc_exp.get_doc()
         SceneGraphFromDoc(document, log=True)
 
+    def test_x3d_shape_exporter(self):
+        x3d_shp_exporter_1 = X3DShapeExporter(A_TOPODS_SHAPE, compute_normals=False, compute_edges=False)
+        x3d_shp_exporter_2 = X3DShapeExporter(A_TOPODS_SHAPE, compute_normals=False, compute_edges=True)
+        # TODO uncomment the following test
+        #x3d_shp_exporter_3 = X3DShapeExporter(A_TOPODS_SHAPE, compute_normals=True, compute_edges=True)
+
+    def test_x3d_curve_exporter(self): 
+        for e in TopologyExplorer(A_TOPODS_SHAPE).edges():
+            X3DCurveExporter(e)
+        for w in TopologyExplorer(A_TOPODS_SHAPE).wires():
+            X3DCurveExporter(w)
+
 def suite():
     test_suite = unittest.TestSuite()
     test_suite.addTest(unittest.makeSuite(TestExtendDataExchange))
