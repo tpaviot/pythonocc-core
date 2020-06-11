@@ -105,7 +105,10 @@ class X3DShapeExporter:
         coord = XX3D.Coordinate(point=shape_tesselator.get_vertex_coords())
         coord.DEF = "ITS-COORD-" + self._uid
         if self._compute_normals:
-            normal = XX3D.Normal(vector=shape_tesselator.get_normal_coords())
+            # convert list of list to list of tuples since
+            # Normal expects a list of tuples as the vector
+            normals_as_tuples = list(map(tuple, shape_tesselator.get_normal_coords()))
+            normal = XX3D.Normal(vector=normals_as_tuples)
         else:
             normal = None
         if coord:
@@ -297,6 +300,7 @@ if __name__ == "__main__":
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
     shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
     exp = X3DShapeExporter(shp, compute_normals=True)
+    print(exp.to_x3d_scene_XML())
     exp.write_to_file("ess.x3d")
 
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
