@@ -246,11 +246,6 @@ class SceneGraphFromDoc:
                     subshapenode['color'] = (c.Red(), c.Green(), c.Blue())
                     subshapenode['colorDEF'] = clabelString
 
-#                     for entry in iter(colorColors):
-#                         c2 = colorColors[entry]
-#                         print('    solidface color RGB: ', entry, c2.Red(), c2.Green(), c2.Blue())
-
-                    # if more colors, make group with a shell per color (or compounds ?)
                     if len(list(colorFaceLists)) > 1:
                         subshapenode = {'node' : 'Group',
                                         'label' : lab_subs,
@@ -289,7 +284,6 @@ class SceneGraphFromDoc:
                                         }
                             subshapenode['children'].append(shellnode) #  add to group
                             f = f + 1
-                        #hasMultiColor = True
                     #//end grouping into single color
                 #//end face color check
                 node['children'].append(subshapenode)

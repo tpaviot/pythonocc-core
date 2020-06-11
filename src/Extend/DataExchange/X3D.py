@@ -15,10 +15,11 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-__doc__ = "BRep to X3D exporter """
+__doc__ = "BRep/STEP to X3D exporter """
 
 import os
 import uuid
+import xml.etree.ElementTree as ET
 
 # core OCC packages
 from OCC.Core.gp import gp_XYZ
@@ -32,115 +33,15 @@ from OCC.Extend.Tesselator import ShapeTesselator, EdgeDiscretizer, WireDiscreti
 # official x3d package
 import OCC.Extend.DataExchange.x3d_standard.x3d as XX3D
 
-# ##############
-# # X3D export #
-# ##############
-# X3DFILE_TEMPLATE = """<?xml version="1.0" encoding="UTF-8"?>
-# <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
-# <X3D profile='Immersive' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
-# <head>
-#     <meta name='generator' content='pythonocc-%s X3D exporter (www.pythonocc.org)'/>
-#     <meta name='creator' content='pythonocc-%s generator'/>
-#     <meta name='identifier' content='http://www.pythonocc.org'/>
-#     <meta name='description' content='pythonocc-%s x3dom based shape rendering'/>
-# </head>
-# <Scene>
-#     %s
-# </Scene>
-# </X3D>
-# """
 
-
-# X3D_INDEXEDTRIANGLESET_TEMPLATE = """
-# <IndexedTriangleSet creaseAngle='0.2' normalPerVertex='true' index='%s' solid='false'>
-#   <Coordinate DEF='%s' point='%s'/>
-# </IndexedTriangleSet>
-# """
-
-# X3D_INDEXEDTRIANGLESET_TEMPLATE_WITH_NORMALS = """
-# <IndexedTriangleSet normalPerVertex='true' index='%s' solid='false'>
-#   <Coordinate DEF='%s' point='%s'/>
-#   <Normal vector='%s'/>
-# </IndexedTriangleSet>
-# """
-
-
-# X3D_VISIBLE_EDGE_TEMPLATE = """<Shape>
-#   <IndexedLineSet coordIndex='%s'>
-#     <Coordinate USE='%s'></Coordinate>
-#   </IndexedLineSet>
-#   <Appearance>
-#      <Material emissiveColor='0 0 0'/>
-#      <LineProperties applied='true' linetype='1' linewidthScaleFactor='1'>
-#      </LineProperties>
-#   </Appearance>
-# </Shape>
-# """
-
-class X3DBaseExporter:
-    """ Abstract class that supports common methods for each
-    subclass
-    """
-    def __init__(self,
-                 shape,  # the TopoDS shape to mesh
-                 vertex_shader=None,  # the vertex_shader, passed as a string
-                 compute_normals=False,
-                 fragment_shader=None,  # the fragment shader, passed as a string
-                 export_edges=True,  # if yes, edges are exported to IndexedLineSet (might be SLOWW)
-                 color=(0.65, 0.65, 0.7),  # the default shape color
-                 specular_color=(0.2, 0.2, 0.2),  # shape specular color (white by default)
-                 shininess=0.9,  # shape shininess
-                 transparency=0.,  # shape transparency
-                 line_color=(0, 0., 0.),  # edge color
-                 line_width=2.,  # edge liewidth,
-                 mesh_quality=1., # mesh quality default is 1., good is <1, bad is >1
-                 verbose=False, # if True, log info related to export,
-                 optimize_mesh=True # if true, post process mesh to improve quality/performance
-                ):
-        self._shape = shape
-        # by default, shape_id is computed
-        self._shape_id = uuid.uuid4().hex
-        # the shape DEF, computed by default
-        self._shape_def = "%s" % self._shape_id
-        self._vs = vertex_shader
-        self._fs = fragment_shader
-        self._export_edges = export_edges
-        self._color = color
-        self._shininess = shininess
-        self._specular_color = specular_color
-        self._transparency = transparency
-        self._mesh_quality = mesh_quality
-        # the list of indexed face sets that compose the shape
-        # if ever the map_faces_to_mesh option is enabled, this list
-        # maybe composed of dozains of TriangleSet
-        self._triangle_sets = []
-        self._line_sets = []
-        self._x3d_string = ""  # the string that contains the x3d description
-        self._computed = False  # will be true when mesh is computed
-        self._verbose = False
-        self._optimize_mesh = optimize_mesh
-
-    def set_shape_id(self, shape_id):
-        self._shape_def = shape_id
-
-    def get_shape_id(self):
-        return self._shape_id
-
-    def set_shape_def(self, shape_def):
-        self._shape_def = shape_def
-
-    def get_shape_def(self):
-        return self._shape_def
-
-
-class X3DCurveExporter(X3DBaseExporter):
+class X3DCurveExporter:
     """ A class for exporting 1d topology such as TopoDS_Wire or TopoDS_Edge
     This class takes either a TopoDS_Edge, a TopoDS_Wire or a list of TopoDS_Edge
     or a list of TopoDS_Wire.
     In any case, all that is passd to this exporter is exported to a single
     LineSet instance."""
-    def __init__(self, *kargs):
-        super().__init__(*kargs)
+    def __init__(self, shape):
+        self._shape = shape
         self._cd = None
 
         self._geo = None
@@ -228,7 +129,6 @@ class X3DShapeExporter:
         x3dnode_edges.geometry = self._edges
 
         x3dscene = XX3D.Scene(children=[x3dnode_geometry, x3dnode_edges])
-        
         x3ddoc = XX3D.X3D(Scene=x3dscene)
 
         return x3ddoc.XML()
@@ -241,22 +141,7 @@ class X3DShapeExporter:
             f.write(self.to_x3d_scene_XML())
 
         # check that the file was written
-        if os.path.isfile(filename):
-            return True
-        else:
-            return False
-
-
-# def approximate_listoffloat_to_str(list_of_floats, ndigits=4, epsilon=1e-3):
-#     """ take a list of floats, returns a simplified list
-#     of formatted floats
-#     """
-#     precision_dict = {1: "{0:.1g}", 2: "{0:.2g}", 3: "{0:.3g}", 4: "{0:.4g}", 5: "{0:.5g}",
-#                       6: "{0:.6g}", 7: "{0:.7g}", 8: "{0:.8g}", 9: "{0:.9g}"}
-#     listoffloat_to_str = ' '.join(['0' if abs(float_number) < epsilon
-#                                    else precision_dict[ndigits].format(float_number)
-#                                    for float_number in list_of_floats])
-#     return listoffloat_to_str
+        return os.path.isfile(filename)
 
 
 def x3d_from_scenegraph(scene=[],
@@ -369,7 +254,7 @@ def x3d_from_scenegraph(scene=[],
             _applyDEFUSE(x3dnode)
             _applychildren(x3dnode)
 
-        elif ntype == 'Shape' or ntype == 'SubShape':
+        elif ntype in ['Shape', 'SubShape']:
             x3dnode = XX3D.Shape(class_=node['name'])
             _applyDEFUSE(x3dnode)
             if 'shape' in node:
@@ -405,6 +290,16 @@ def x3d_from_scenegraph(scene=[],
     return x3ddoc.XML()
 
 
+def x3dXML_to_x3domHTML(x3dXML):
+    x3domHEAD = '''<script type='text/javascript' src='https://www.x3dom.org/download/dev/x3dom-full.debug.js'> </script>
+    <link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/dev/x3dom.css'></link>'''
+    x3dele = list(ET.XML(x3dXML).iter('X3D'))[0]
+    next(x3dele.iter('Scene')).append(ET.XML('<Environment gammaCorrectionDefault="none"/>'))
+    x3dHTML = ET.tostring(x3dele, encoding="unicode", short_empty_elements=False)
+    x3dHTML = x3dHTML.replace("visible=", 'render=')
+    return x3domHEAD + x3dHTML
+
+
 if __name__ == "__main__":
     # test with the as1_pe.stp file
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
@@ -415,6 +310,6 @@ if __name__ == "__main__":
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
     doc_exp = DocFromSTEP(step_file)
     document = doc_exp.get_doc()
-    scenegraph = SceneGraphFromDoc(document, log=True)
+    scenegraph = SceneGraphFromDoc(document)
     x3dXML = x3d_from_scenegraph(scenegraph.get_scene(), scenegraph.get_internalFaceEntries())
-    print(x3dXML)
+    print(x3dXML_to_x3domHTML(x3dXML))
