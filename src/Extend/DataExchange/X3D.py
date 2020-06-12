@@ -33,6 +33,8 @@ from OCC.Extend.Tesselator import ShapeTesselator, EdgeDiscretizer, WireDiscreti
 # official x3d package
 import OCC.Extend.DataExchange.x3d_standard.x3d as XX3D
 
+_X3DOM_HEADER = '''<script type='text/javascript' src='https://www.x3dom.org/download/dev/x3dom-full.debug.js'> </script>
+    <link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/dev/x3dom.css'></link>'''
 
 class X3DCurveExporter:
     """ A class for exporting 1d topology such as TopoDS_Wire or TopoDS_Edge
@@ -146,6 +148,54 @@ class X3DShapeExporter:
         # check that the file was written
         return os.path.isfile(filename)
 
+
+
+class X3DSceneExporter:
+    """ creates an x3d scene
+    """
+    def __init__(self):
+        self._x3dscene = XX3D.Scene(children=[])
+        self._x3ddoc = XX3D.X3D(Scene=self._x3dscene)
+
+    def get_scene(self):
+        return self._x3dscene
+
+    def get_doc(self):
+        return self._x3ddoc
+
+    def add_shape(self, shape, color, emissive=True):
+        # create the material
+        if emissive:
+            x3d_mat = XX3D.Material(emissiveColor=color)
+        else:
+            x3d_mat = XX3D.Material(diffuseColor=color, specularColor=(0.9, 0.9, 0.9),
+                                    shininess=1, ambientIntensity=0.1)
+        app = XX3D.Appearance(DEF="matoube", material=x3d_mat)
+
+        if is_edge(shape) or is_wire(shape):
+            x3dcurve_geometry = XX3D.Shape()
+            x3d_exporter = X3DCurveExporter(shape)
+            x3dcurve_geometry.geometry = x3d_exporter.get_geo()
+
+            x3dcurve_geometry.appearance = app
+
+            self._x3dscene.children.extend([x3dcurve_geometry])
+        else:
+            x3d_exporter = X3DShapeExporter(shape, compute_normals=False, compute_edges=True)
+            x3dshape_geometry = XX3D.Shape()
+            x3dshape_geometry.geometry = x3d_exporter.get_geo()
+            x3dshape_geometry.appearance = app
+            x3dvisible_edge_geometry = XX3D.Shape()
+            x3dvisible_edge_geometry.geometry = x3d_exporter.get_edges()
+            x3dvisible_edge_geometry.appearance = app
+            self._x3dscene.children.extend([x3dshape_geometry, x3dvisible_edge_geometry])
+
+    def to_x3domHTML(self):
+        x3dele = list(ET.XML(self._x3ddoc.XML()).iter('X3D'))[0]
+        next(x3dele.iter('Scene')).append(ET.XML('<Environment gammaCorrectionDefault="none"/>'))
+        x3dHTML = ET.tostring(x3dele, encoding="unicode", short_empty_elements=False)
+        x3dHTML = x3dHTML.replace("visible=", 'render=')
+        return _X3DOM_HEADER + x3dHTML
 
 def x3d_from_scenegraph(scene=[],
                         facesInSolids=None,
@@ -286,23 +336,25 @@ def x3d_from_scenegraph(scene=[],
 
 
 def x3dXML_to_x3domHTML(x3dXML):
-    x3domHEAD = '''<script type='text/javascript' src='https://www.x3dom.org/download/dev/x3dom-full.debug.js'> </script>
-    <link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/dev/x3dom.css'></link>'''
     x3dele = list(ET.XML(x3dXML).iter('X3D'))[0]
     next(x3dele.iter('Scene')).append(ET.XML('<Environment gammaCorrectionDefault="none"/>'))
     x3dHTML = ET.tostring(x3dele, encoding="unicode", short_empty_elements=False)
     x3dHTML = x3dHTML.replace("visible=", 'render=')
-    return x3domHEAD + x3dHTML
+    return _X3DOM_HEADER + x3dHTML
 
 
 if __name__ == "__main__":
     # test with the as1_pe.stp file
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
     shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    exp = X3DShapeExporter(shp, compute_normals=True)
-    print(exp.to_x3d_scene_XML())
-    exp.write_to_file("ess.x3d")
+    #exp = X3DShapeExporter(shp, compute_normals=True)
+    #print(exp.to_x3d_scene_XML())
+    #exp.write_to_file("ess.x3d")
 
+    scene_exp = X3DSceneExporter()
+    scene_exp.add_shape(shp, color=(0.5,0.6,0.7), emissive=False)
+    print(scene_exp.to_x3domHTML())
+    d
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
     doc_exp = DocFromSTEP(step_file)
     document = doc_exp.get_doc()

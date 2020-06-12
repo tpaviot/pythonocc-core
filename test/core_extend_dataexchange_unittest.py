@@ -37,7 +37,15 @@ from OCC.Extend.TopologyUtils import TopologyExplorer
 import OCC.Extend.DataExchange.X3D
 
 SAMPLES_DIRECTORY = os.path.join(".", "test_io")
-
+from OCC.Extend.DataExchange.STEP import (read_step_file, write_step_file,
+                                          read_step_file_with_names_colors)
+from OCC.Extend.DataExchange.STL import read_stl_file, write_stl_file
+from OCC.Extend.DataExchange.IGES import read_iges_file, write_iges_file
+from OCC.Extend.DataExchange.SVG import export_shape_to_svg, HAVE_SVGWRITE
+from OCC.Extend.DataExchange.XDE import DocFromSTEP, SceneGraphFromDoc
+from OCC.Extend.DataExchange.X3D import (X3DShapeExporter, X3DCurveExporter,
+                                         X3DSceneExporter, x3d_from_scenegraph,
+                                         x3dXML_to_x3domHTML)
 
 def get_test_fullname(filename):
     return os.path.join(SAMPLES_DIRECTORY, filename)
@@ -138,6 +146,19 @@ class TestExtendDataExchange(unittest.TestCase):
             X3DCurveExporter(e)
         for w in TopologyExplorer(A_TOPODS_SHAPE).wires():
             X3DCurveExporter(w)
+
+    def test_step_to_x3d(self):
+        doc_exp = DocFromSTEP(STEP_AP203_SAMPLE_FILE)
+        document = doc_exp.get_doc()
+        scenegraph = SceneGraphFromDoc(document)
+        x3dXML = x3d_from_scenegraph(scenegraph.get_scene(), scenegraph.get_internalFaceEntries())
+        x3dXML_to_x3domHTML(x3dXML)
+
+    def test_x3d_scene(self):
+        x3d_scene = X3DSceneExporter()
+        x3d_scene.add_shape(A_TOPODS_SHAPE, color=(0.5, 0.5, 0.5), emissive=True)
+        x3d_scene.to_x3domHTML()
+
 
 def suite():
     test_suite = unittest.TestSuite()
