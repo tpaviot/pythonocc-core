@@ -226,6 +226,14 @@ class Tesselator:
         return True
 
 
+    def get_bb_size(self):
+        return self._bb_size
+
+
+    def get_bb_center(self):
+        return self._bb_center
+
+
     def get_vertex_coords(self):
         return self._vertex_coords
 
@@ -256,6 +264,12 @@ class Tesselator:
 
     def get_transformation(self):
         return self._transformation
+
+
+    def get_scale_factor(self):
+        """ returns a float
+        """
+        return self._transformation.ScaleFactor()
 
 
     def get_translation(self):
