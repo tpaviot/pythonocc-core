@@ -34,7 +34,9 @@ from OCC.Extend.Tesselator import ShapeTesselator, EdgeDiscretizer, WireDiscreti
 import OCC.Extend.DataExchange.x3d_standard.x3d as XX3D
 
 _X3DOM_HEADER = '''<script type='text/javascript' src='https://www.x3dom.org/download/dev/x3dom-full.debug.js'> </script>
-    <link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/dev/x3dom.css'></link>'''
+<link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/dev/x3dom.css'></link>
+'''
+
 
 class X3DCurveExporter:
     """ A class for exporting 1d topology such as TopoDS_Wire or TopoDS_Edge
@@ -88,6 +90,14 @@ class X3DShapeExporter:
         self._geo = None
         self._edges = None
 
+        self._bb_center = None
+        self._bb_size = None
+
+        self._rotation_vector = None
+        self._rotation_angle = None
+        self._translation = None
+        self._scale_factor = None
+
         self.compute()
 
     def get_geo(self):
@@ -102,6 +112,13 @@ class X3DShapeExporter:
         shape_tesselator = ShapeTesselator(self._shape,
                                            compute_normals=self._compute_normals,
                                            compute_edges=self._compute_edges)
+        # store shape information
+        self._bb_center = shape_tesselator.get_bb_center()
+        self._bb_size = shape_tesselator.get_bb_size()
+
+        self._rotation_vector, self._rotation_angle = shape_tesselator.get_rotation()
+        self._translation = shape_tesselator.get_translation()
+        self._scale_factor = shape_tesselator.get_scale_factor()
 
         idx = shape_tesselator.get_flattened_vertex_indices()
         coord = XX3D.Coordinate(point=shape_tesselator.get_vertex_coords())
@@ -124,30 +141,6 @@ class X3DShapeExporter:
             edge_idx = [item for sublist in tmp1 for item in sublist]
             if edge_idx:
                 self._edges = XX3D.IndexedLineSet(USE=coord.DEF, coordIndex=edge_idx)
-
-
-    def to_x3d_scene_XML(self):
-        x3dnode_geometry = XX3D.Shape()
-        x3dnode_geometry.geometry = self._geo
-
-        x3dnode_edges = XX3D.Shape()
-        x3dnode_edges.geometry = self._edges
-
-        x3dscene = XX3D.Scene(children=[x3dnode_geometry, x3dnode_edges])
-        x3ddoc = XX3D.X3D(Scene=x3dscene)
-
-        return x3ddoc.XML()
-
-    def write_to_file(self, filename):
-        """ write to a file. If autofilename is set to True then
-        the file name is "shp" and the shape id appended.
-        """
-        with open(filename, "w") as f:
-            f.write(self.to_x3d_scene_XML())
-
-        # check that the file was written
-        return os.path.isfile(filename)
-
 
 
 class X3DSceneExporter:
@@ -182,13 +175,24 @@ class X3DSceneExporter:
             self._x3dscene.children.extend([x3dcurve_geometry])
         else:
             x3d_exporter = X3DShapeExporter(shape, compute_normals=False, compute_edges=True)
+
             x3dshape_geometry = XX3D.Shape()
             x3dshape_geometry.geometry = x3d_exporter.get_geo()
             x3dshape_geometry.appearance = app
+            x3dshape_geometry.bboxCenter = tuple(x3d_exporter._bb_center)
+            x3dshape_geometry.bboxSize = tuple(x3d_exporter._bb_size)
+
             x3dvisible_edge_geometry = XX3D.Shape()
             x3dvisible_edge_geometry.geometry = x3d_exporter.get_edges()
             x3dvisible_edge_geometry.appearance = app
-            self._x3dscene.children.extend([x3dshape_geometry, x3dvisible_edge_geometry])
+
+            transform_node = XX3D.Transform(children=[x3dshape_geometry, x3dvisible_edge_geometry])
+            transform_node.rotation = tuple(x3d_exporter._rotation_vector + [x3d_exporter._rotation_angle])
+            transform_node.translation = tuple(x3d_exporter._translation)
+            sf = x3d_exporter._scale_factor
+            transform_node.scale = (sf, sf, sf)
+
+            self._x3dscene.children.append(transform_node)
 
     def to_x3domHTML(self):
         x3dele = list(ET.XML(self._x3ddoc.XML()).iter('X3D'))[0]
@@ -196,6 +200,10 @@ class X3DSceneExporter:
         x3dHTML = ET.tostring(x3dele, encoding="unicode", short_empty_elements=False)
         x3dHTML = x3dHTML.replace("visible=", 'render=')
         return _X3DOM_HEADER + x3dHTML
+
+    def write_to_file(self, filename):
+        with open(filename, "w") as f:
+            f.write(self.to_x3domHTML())
 
 def x3d_from_scenegraph(scene=[],
                         facesInSolids=None,
@@ -347,17 +355,14 @@ if __name__ == "__main__":
     # test with the as1_pe.stp file
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
     shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    #exp = X3DShapeExporter(shp, compute_normals=True)
-    #print(exp.to_x3d_scene_XML())
-    #exp.write_to_file("ess.x3d")
 
     scene_exp = X3DSceneExporter()
     scene_exp.add_shape(shp, color=(0.5,0.6,0.7), emissive=False)
-    print(scene_exp.to_x3domHTML())
-    d
+
+    scene_exp.write_to_file('ess.x3d')
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
     doc_exp = DocFromSTEP(step_file)
     document = doc_exp.get_doc()
     scenegraph = SceneGraphFromDoc(document)
     x3dXML = x3d_from_scenegraph(scenegraph.get_scene(), scenegraph.get_internalFaceEntries())
-    print(x3dXML_to_x3domHTML(x3dXML))
+    x3dXML_to_x3domHTML(x3dXML)
