@@ -205,24 +205,56 @@ class X3DSceneExporter:
         with open(filename, "w") as f:
             f.write(self.to_x3domHTML())
 
-def x3d_from_scenegraph(scene=[],
-                        facesInSolids=None,
-                        show_edges=True,
-                        edge_color=(0, 0, 0),
-                        log=False):
-    appDEFset = set()
-    if facesInSolids is None:
-        facesInSolids = set()
+class X3DFromSceneGraph:
+    def __init__(self, scene=None, faces_in_solids=None, show_edges=True,
+                 edge_color=(0, 0, 0), log=True):
+        self._app_def_set = set()
 
-    def print_log(message):
-        if log:
+        if faces_in_solids is None:
+            self._faces_in_solids = set()
+        else:
+            self._faces_in_solids = faces_in_solids
+
+        self._scene = scene
+        self._show_edges = show_edges
+        self._edge_color = edge_color
+        self._log = log
+
+        self._x3d_scene = None
+        self._x3d_doc = None
+
+        self.build_x3d_scene()
+
+    def to_xml(self):
+        return self._x3ddoc.XML()
+
+    def to_x3dom_html(self):
+        x3dele = list(ET.XML(self.to_xml()).iter('X3D'))[0]
+        next(x3dele.iter('Scene')).append(ET.XML('<Environment gammaCorrectionDefault="none"/>'))
+        x3d_html = ET.tostring(x3dele, encoding="unicode", short_empty_elements=False)
+        x3d_html = x3d_html.replace("visible=", 'render=')
+        return _X3DOM_HEADER + x3d_html
+
+    def build_x3d_scene(self):
+        self._x3dscene = XX3D.Scene(children=[])
+        self._x3ddoc = XX3D.X3D(Scene=self._x3dscene)
+
+        for node in self._scene:
+            success, x3dnodelist = self.get_x3d_node(node)
+            if success:
+                self._x3dscene.children.extend(x3dnodelist)
+            else:
+                self.print_log('no x3d for root node, skipped')
+
+    def print_log(self, message):
+        if self._log:
             print(message)
 
-    def _x3dapplyLocation(x3dtransformnode, location):
+    def x3d_apply_location(self, x3dtransformnode, location):
         # get translation and rotation from location
         transformation = location.Transformation()
         rot_axis = gp_XYZ()
-        #rot_angle = 0.0
+
         success, rot_angle = transformation.GetRotation(rot_axis)
         translation = transformation.TranslationPart()
         scale_factor = transformation.ScaleFactor()
@@ -230,7 +262,7 @@ def x3d_from_scenegraph(scene=[],
         x3dtransformnode.translation = (translation.X(), translation.Y(), translation.Z())
         x3dtransformnode.scale = (scale_factor, scale_factor, scale_factor)
 
-    def _x3dgeofromTShape(shape):
+    def x3d_geometry_from_TShape(self, shape):
         if is_edge(shape) or is_wire(shape):
             x3d_exporter = X3DCurveExporter(shape)
         else:
@@ -238,117 +270,96 @@ def x3d_from_scenegraph(scene=[],
 
         return {'x3dgeo': x3d_exporter.get_geo(), 'x3dedges': x3d_exporter.get_edges()}
 
-    def _x3dappfromColor(c, DEFname, emissive):
+    def x3d_appearance_from_color(self, color, DEFname, emissive):
         if emissive:
             DEFname = DEFname + "-emissive"
-        if DEFname in appDEFset:
+        if DEFname in self._app_def_set:
             return XX3D.Appearance(USE=DEFname)
         else:
-            appDEFset.add(DEFname)
+            self._app_def_set.add(DEFname)
             if emissive:
-                x3dmat = XX3D.Material(emissiveColor=c)
+                x3dmat = XX3D.Material(emissiveColor=color)
             else:
-                x3dmat = XX3D.Material(diffuseColor=c, specularColor=(0.9, 0.9, 0.9),
+                x3dmat = XX3D.Material(diffuseColor=color, specularColor=(0.9, 0.9, 0.9),
                                        shininess=1, ambientIntensity=0.1)
             return XX3D.Appearance(DEF=DEFname, material=x3dmat)
 
-    def _getx3dnode(node):
+    def sanitize_DEF(self, name):
+        # IdFirstChar ::=
+        # Any ISO-10646 character encoded using UTF-8 except: 0x30-0x3a, 0x0-0x20, 0x22,
+        # 0x23, 0x27, 0x2b, 0x2c, 0x2d, 0x2e, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
+        # first no [0-9],space,",#,',+,comma,-,.,[,\,],{,}
+        # IdRestChars ::=
+        # Any number of ISO-10646 characters except: 0x0-0x20, 0x22, 0x23, 0x27, 0x2c, 0x2e,
+        # 0x3a, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
+        # rest no space,",#,',comma,.,:,[,\,],{,}
+        replace_dict = {" ": "_", '"': '^', '#': 'N', "'": "^", ",": ";",
+                        ".": ";", ":": "-", "[": "(", "]": ")", "{": "(",
+                        "}": ")", "\\": "/"}
+        for k, v in replace_dict.items():
+            name = name.replace(k, v)
+        return 'L-' + name
 
-        def _sanitizeDEF(name):
-# IdFirstChar ::=
-# Any ISO-10646 character encoded using UTF-8 except: 0x30-0x3a, 0x0-0x20, 0x22,
-# 0x23, 0x27, 0x2b, 0x2c, 0x2d, 0x2e, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
-# first no [0-9],space,",#,',+,comma,-,.,[,\,],{,}
-# IdRestChars ::=
-# Any number of ISO-10646 characters except: 0x0-0x20, 0x22, 0x23, 0x27, 0x2c, 0x2e,
-# 0x3a, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
-# rest no space,",#,',comma,.,:,[,\,],{,}
-            replace_dict = {" ": "_", '"': '^', '#': 'N', "'": "^", ",": ";",
-                            ".": ";", ":": "-", "[": "(", "]": ")", "{": "(",
-                            "}": ")", "\\": "/"}
-            for k, v in replace_dict.items():
-                name = name.replace(k, v)
-            return 'L-' + name
+    def apply_DEF_or_USE(self, node, x3dnode):
+        if 'USE' in node:
+            x3dnode.USE = self.sanitize_DEF(node['USE'])
+        if 'DEF' in node:
+            x3dnode.DEF = self.sanitize_DEF(node['DEF'])
 
-        def _applyDEFUSE(x3dnode):
-            if 'USE' in node:
-                x3dnode.USE = _sanitizeDEF(node['USE'])
-            if 'DEF' in node:
-                x3dnode.DEF = _sanitizeDEF(node['DEF'])
+    def set_children(self, node, x3dnode):
+        if 'children' in node:
+            for n in node['children']:
+                success, childlist = self.get_x3d_node(n)
+                if success:
+                    x3dnode.children.extend(childlist)
 
-        def _applychildren(x3dnode):
-            if 'children' in node:
-                for n in node['children']:
-                    success, childlist = _getx3dnode(n)
-                    if success:
-                        x3dnode.children.extend(childlist)
-
+    def get_x3d_node(self, node):
         if not 'node' in node:
-            print_log('no node type, skipping')
+            self.print_log('no node type, skipping')
             return False, None
 
         if 'DEF' in node:
-            if node['DEF'] in facesInSolids:
-                #print('in skipped list')
+            if node['DEF'] in self._faces_in_solids:
                 return False, None
 
         ntype = node['node']
-        edgeNode = None
+        edge_node = None
 
         if ntype == 'Group':
             x3dnode = XX3D.Group(class_=node['name'], children=[])
-            _applyDEFUSE(x3dnode)
-            _applychildren(x3dnode)
+            self.apply_DEF_or_USE(node, x3dnode)
+            self.set_children(node, x3dnode)
 
         elif ntype == 'Transform':
             x3dnode = XX3D.Transform(class_=node['name'], children=[])
             if 'transform' in node:
-                _x3dapplyLocation(x3dnode, node['transform'])
-            _applyDEFUSE(x3dnode)
-            _applychildren(x3dnode)
+                self.x3d_apply_location(x3dnode, node['transform'])
+            self.apply_DEF_or_USE(node, x3dnode)
+            self.set_children(node, x3dnode)
 
         elif ntype in ['Shape', 'SubShape']:
             x3dnode = XX3D.Shape(class_=node['name'])
-            _applyDEFUSE(x3dnode)
+            self.apply_DEF_or_USE(node, x3dnode)
             if 'shape' in node:
                 shape = node['shape']
-                geometryDict = _x3dgeofromTShape(shape)
-                x3dnode.geometry = geometryDict['x3dgeo']
-                isEdgeOrWire = is_edge(shape) or is_wire(shape)
+                geometry_dict = self.x3d_geometry_from_TShape(shape)
+                x3dnode.geometry = geometry_dict['x3dgeo']
+                is_edge_or_wire = is_edge(shape) or is_wire(shape)
                 if 'color' in node:
-                    colorDEF = _sanitizeDEF(node['colorDEF'])
-                    x3dnode.appearance = _x3dappfromColor(node['color'], colorDEF, isEdgeOrWire)
-                if not isEdgeOrWire:
-                    edgeNode = XX3D.Shape(class_=node['name'] + '-edge', visible=show_edges)
-                    edgeNode.geometry = geometryDict['x3dedges']
-                    edgeNode.appearance = _x3dappfromColor(edge_color, 'app-faceedge', True)
+                    color_def = self.sanitize_DEF(node['colorDEF'])
+                    x3dnode.appearance = self.x3d_appearance_from_color(node['color'], color_def, is_edge_or_wire)
+                if not is_edge_or_wire:
+                    edge_node = XX3D.Shape(class_=node['name'] + '-edge', visible=self._show_edges)
+                    edge_node.geometry = geometry_dict['x3dedges']
+                    edge_node.appearance = self.x3d_appearance_from_color(self._edge_color, 'app-faceedge', True)
         else:
-            print_log('unknown node: --' + ntype + "--")
+            self.print_log('unknown node: --' + ntype + "--")
 
         x3dnodelist = [x3dnode]
-        if edgeNode is not None:
-            x3dnodelist.append(edgeNode)
+        if edge_node is not None:
+            x3dnodelist.append(edge_node)
+
         return True, x3dnodelist
-
-    x3dscene = XX3D.Scene(children=[])
-    x3ddoc = XX3D.X3D(Scene=x3dscene)
-
-    for node in scene:
-        success, x3dnodelist = _getx3dnode(node)
-        if success:
-            x3dscene.children.extend(x3dnodelist)
-        else:
-            print_log('no x3d for root node, skipped')
-
-    return x3ddoc.XML()
-
-
-def x3dXML_to_x3domHTML(x3dXML):
-    x3dele = list(ET.XML(x3dXML).iter('X3D'))[0]
-    next(x3dele.iter('Scene')).append(ET.XML('<Environment gammaCorrectionDefault="none"/>'))
-    x3dHTML = ET.tostring(x3dele, encoding="unicode", short_empty_elements=False)
-    x3dHTML = x3dHTML.replace("visible=", 'render=')
-    return _X3DOM_HEADER + x3dHTML
 
 
 if __name__ == "__main__":
@@ -357,12 +368,15 @@ if __name__ == "__main__":
     shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
 
     scene_exp = X3DSceneExporter()
-    scene_exp.add_shape(shp, color=(0.5,0.6,0.7), emissive=False)
+    scene_exp.add_shape(shp, color=(0.5, 0.6, 0.7), emissive=False)
 
     scene_exp.write_to_file('ess.x3d')
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
     doc_exp = DocFromSTEP(step_file)
     document = doc_exp.get_doc()
     scenegraph = SceneGraphFromDoc(document)
-    x3dXML = x3d_from_scenegraph(scenegraph.get_scene(), scenegraph.get_internalFaceEntries())
-    x3dXML_to_x3domHTML(x3dXML)
+    x3dXML = X3DFromSceneGraph(scene=scenegraph.get_scene(),
+                               faces_in_solids=scenegraph.get_internalFaceEntries(),
+                               log=True)
+    print(x3dXML.to_xml())
+    print(x3dXML.to_x3dom_html())

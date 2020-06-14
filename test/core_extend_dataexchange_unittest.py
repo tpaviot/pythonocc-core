@@ -44,8 +44,7 @@ from OCC.Extend.DataExchange.IGES import read_iges_file, write_iges_file
 from OCC.Extend.DataExchange.SVG import export_shape_to_svg, HAVE_SVGWRITE
 from OCC.Extend.DataExchange.XDE import DocFromSTEP, SceneGraphFromDoc
 from OCC.Extend.DataExchange.X3D import (X3DShapeExporter, X3DCurveExporter,
-                                         X3DSceneExporter, x3d_from_scenegraph,
-                                         x3dXML_to_x3domHTML)
+                                         X3DSceneExporter, X3DFromSceneGraph)
 
 def get_test_fullname(filename):
     return os.path.join(SAMPLES_DIRECTORY, filename)
@@ -131,28 +130,34 @@ class TestExtendDataExchange(unittest.TestCase):
         write_stl_file(A_TOPODS_SHAPE, stl_binary_filename, mode="binary")
         self.assertTrue(os.path.isfile(stl_binary_filename))
 
+
     def test_doc_from_step(self):
         doc_exp = DocFromSTEP(STEP_AP203_SAMPLE_FILE)
         document = doc_exp.get_doc()
         SceneGraphFromDoc(document, log=True)
+
 
     def test_x3d_shape_exporter(self):
         x3d_shp_exporter_1 = X3DShapeExporter(A_TOPODS_SHAPE, compute_normals=False, compute_edges=False)
         x3d_shp_exporter_2 = X3DShapeExporter(A_TOPODS_SHAPE, compute_normals=False, compute_edges=True)
         x3d_shp_exporter_3 = X3DShapeExporter(A_TOPODS_SHAPE, compute_normals=True, compute_edges=True)
 
-    def test_x3d_curve_exporter(self): 
+
+    def test_x3d_curve_exporter(self):
         for e in TopologyExplorer(A_TOPODS_SHAPE).edges():
             X3DCurveExporter(e)
         for w in TopologyExplorer(A_TOPODS_SHAPE).wires():
             X3DCurveExporter(w)
 
+
     def test_step_to_x3d(self):
         doc_exp = DocFromSTEP(STEP_AP203_SAMPLE_FILE)
         document = doc_exp.get_doc()
         scenegraph = SceneGraphFromDoc(document)
-        x3dXML = x3d_from_scenegraph(scenegraph.get_scene(), scenegraph.get_internalFaceEntries())
-        x3dXML_to_x3domHTML(x3dXML)
+        x3dXML = X3DFromSceneGraph(scenegraph.get_scene(), scenegraph.get_internalFaceEntries(), log=True)
+        x3dXML.to_xml()
+        x3dXML.to_x3dom_html()
+
 
     def test_x3d_scene(self):
         x3d_scene = X3DSceneExporter()
