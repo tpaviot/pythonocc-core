@@ -19,6 +19,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define TPRSSTD_HXX
 
 
+#include<TPrsStd_AISPresentation.hxx>
+#include<TPrsStd_AISViewer.hxx>
 #include<TPrsStd_AxisDriver.hxx>
 #include<TPrsStd_ConstraintDriver.hxx>
 #include<TPrsStd_ConstraintTools.hxx>

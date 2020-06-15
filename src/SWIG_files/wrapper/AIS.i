@@ -809,6 +809,7 @@ AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
 %wrap_handle(AIS_TypeFilter)
 %wrap_handle(AIS_AnimationCamera)
 %wrap_handle(AIS_AnimationObject)
+%wrap_handle(AIS_Axis)
 %wrap_handle(AIS_Circle)
 %wrap_handle(AIS_ColorScale)
 %wrap_handle(AIS_ConnectedInteractive)
@@ -8337,6 +8338,260 @@ None
 %make_alias(AIS_AnimationObject)
 
 %extend AIS_AnimationObject {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************
+* class AIS_Axis *
+*****************/
+class AIS_Axis : public AIS_InteractiveObject {
+	public:
+		/****************** AIS_Axis ******************/
+		%feature("compactdefaultargs") AIS_Axis;
+		%feature("autodoc", "Initializes the line acomponent.
+
+Parameters
+----------
+aComponent: Geom_Line
+
+Returns
+-------
+None
+") AIS_Axis;
+		 AIS_Axis(const opencascade::handle<Geom_Line> & aComponent);
+
+		/****************** AIS_Axis ******************/
+		%feature("compactdefaultargs") AIS_Axis;
+		%feature("autodoc", "Initializes the axis2 position acomponent. the coordinate system used is right-handed.
+
+Parameters
+----------
+aComponent: Geom_Axis2Placement
+anAxisType: AIS_TypeOfAxis
+
+Returns
+-------
+None
+") AIS_Axis;
+		 AIS_Axis(const opencascade::handle<Geom_Axis2Placement> & aComponent, const AIS_TypeOfAxis anAxisType);
+
+		/****************** AIS_Axis ******************/
+		%feature("compactdefaultargs") AIS_Axis;
+		%feature("autodoc", "Initializes the axis1 position anaxis.
+
+Parameters
+----------
+anAxis: Geom_Axis1Placement
+
+Returns
+-------
+None
+") AIS_Axis;
+		 AIS_Axis(const opencascade::handle<Geom_Axis1Placement> & anAxis);
+
+		/****************** AcceptDisplayMode ******************/
+		%feature("compactdefaultargs") AcceptDisplayMode;
+		%feature("autodoc", "Returns true if the interactive object accepts the display mode amode.
+
+Parameters
+----------
+aMode: int
+
+Returns
+-------
+bool
+") AcceptDisplayMode;
+		Standard_Boolean AcceptDisplayMode(const Standard_Integer aMode);
+
+		/****************** Axis2Placement ******************/
+		%feature("compactdefaultargs") Axis2Placement;
+		%feature("autodoc", "Returns the position of axis2 and positions it by identifying it as the x, y, or z axis and giving its direction in 3d space. the coordinate system used is right-handed.
+
+Returns
+-------
+opencascade::handle<Geom_Axis2Placement>
+") Axis2Placement;
+		const opencascade::handle<Geom_Axis2Placement> & Axis2Placement();
+
+		/****************** Component ******************/
+		%feature("compactdefaultargs") Component;
+		%feature("autodoc", "Returns the axis entity acomponent and identifies it as a component of a shape.
+
+Returns
+-------
+opencascade::handle<Geom_Line>
+") Component;
+		const opencascade::handle<Geom_Line> & Component();
+
+		/****************** Compute ******************/
+		%feature("compactdefaultargs") Compute;
+		%feature("autodoc", "Computes the presentation according to a point of view given by <aprojector>. to be used when the associated degenerated presentations have been transformed by <atrsf> which is not a pure translation. the hlr prs can't be deducted automatically warning :<atrsf> must be applied to the object to display before computation !!!.
+
+Parameters
+----------
+aProjector: Prs3d_Projector
+aTrsf: Geom_Transformation
+aPresentation: Prs3d_Presentation
+
+Returns
+-------
+None
+") Compute;
+		virtual void Compute(const opencascade::handle<Prs3d_Projector> & aProjector, const opencascade::handle<Geom_Transformation> & aTrsf, const opencascade::handle<Prs3d_Presentation> & aPresentation);
+
+		/****************** IsXYZAxis ******************/
+		%feature("compactdefaultargs") IsXYZAxis;
+		%feature("autodoc", "Returns a signature of 2 for axis datums. when you activate mode 2 by a signature, you pick ais objects of type ais_axis.
+
+Returns
+-------
+bool
+") IsXYZAxis;
+		Standard_Boolean IsXYZAxis();
+
+		/****************** SetAxis1Placement ******************/
+		%feature("compactdefaultargs") SetAxis1Placement;
+		%feature("autodoc", "Constructs a new line to serve as the axis anaxis in 3d space.
+
+Parameters
+----------
+anAxis: Geom_Axis1Placement
+
+Returns
+-------
+None
+") SetAxis1Placement;
+		void SetAxis1Placement(const opencascade::handle<Geom_Axis1Placement> & anAxis);
+
+		/****************** SetAxis2Placement ******************/
+		%feature("compactdefaultargs") SetAxis2Placement;
+		%feature("autodoc", "Allows you to provide settings for acomponent:the position and direction of an axis in 3d space. the coordinate system used is right-handed.
+
+Parameters
+----------
+aComponent: Geom_Axis2Placement
+anAxisType: AIS_TypeOfAxis
+
+Returns
+-------
+None
+") SetAxis2Placement;
+		void SetAxis2Placement(const opencascade::handle<Geom_Axis2Placement> & aComponent, const AIS_TypeOfAxis anAxisType);
+
+		/****************** SetColor ******************/
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aColor: Quantity_Color
+
+Returns
+-------
+None
+") SetColor;
+		void SetColor(const Quantity_Color & aColor);
+
+		/****************** SetComponent ******************/
+		%feature("compactdefaultargs") SetComponent;
+		%feature("autodoc", "Sets the coordinates of the lin acomponent.
+
+Parameters
+----------
+aComponent: Geom_Line
+
+Returns
+-------
+None
+") SetComponent;
+		void SetComponent(const opencascade::handle<Geom_Line> & aComponent);
+
+		/****************** SetTypeOfAxis ******************/
+		%feature("compactdefaultargs") SetTypeOfAxis;
+		%feature("autodoc", "Constructs the entity thetypeaxis to stock information concerning type of axis.
+
+Parameters
+----------
+theTypeAxis: AIS_TypeOfAxis
+
+Returns
+-------
+None
+") SetTypeOfAxis;
+		void SetTypeOfAxis(const AIS_TypeOfAxis theTypeAxis);
+
+		/****************** SetWidth ******************/
+		%feature("compactdefaultargs") SetWidth;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aValue: float
+
+Returns
+-------
+None
+") SetWidth;
+		void SetWidth(const Standard_Real aValue);
+
+		/****************** Signature ******************/
+		%feature("compactdefaultargs") Signature;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") Signature;
+		virtual Standard_Integer Signature();
+
+		/****************** Type ******************/
+		%feature("compactdefaultargs") Type;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+AIS_KindOfInteractive
+") Type;
+		virtual AIS_KindOfInteractive Type();
+
+		/****************** TypeOfAxis ******************/
+		%feature("compactdefaultargs") TypeOfAxis;
+		%feature("autodoc", "Returns the type of axis.
+
+Returns
+-------
+AIS_TypeOfAxis
+") TypeOfAxis;
+		AIS_TypeOfAxis TypeOfAxis();
+
+		/****************** UnsetColor ******************/
+		%feature("compactdefaultargs") UnsetColor;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") UnsetColor;
+		void UnsetColor();
+
+		/****************** UnsetWidth ******************/
+		%feature("compactdefaultargs") UnsetWidth;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") UnsetWidth;
+		void UnsetWidth();
+
+};
+
+
+%make_alias(AIS_Axis)
+
+%extend AIS_Axis {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

@@ -41,6 +41,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwgltf.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<Poly_module.hxx>
+#include<TCollection_module.hxx>
+#include<Quantity_module.hxx>
+#include<Bnd_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
 #include<TDF_module.hxx>
@@ -56,6 +60,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_rwgltf.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import Poly.i
+%import TCollection.i
+%import Quantity.i
+%import Bnd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -269,8 +277,11 @@ RWGltf_GltfAccessorLayout_Mat4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLa
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(RWGltf_GltfLatePrimitiveArray)
 %wrap_handle(RWGltf_MaterialCommon)
 %wrap_handle(RWGltf_MaterialMetallicRoughness)
+%wrap_handle(RWGltf_PrimitiveArrayReader)
+%wrap_handle(RWGltf_TriangulationReader)
 /* end handles declaration */
 
 /* templates */
@@ -282,6 +293,99 @@ RWGltf_GltfAccessorLayout_Mat4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLa
 /*************************
 * class RWGltf_CafReader *
 *************************/
+class RWGltf_CafReader : public RWMesh_CafReader {
+	public:
+		/****************** RWGltf_CafReader ******************/
+		%feature("compactdefaultargs") RWGltf_CafReader;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") RWGltf_CafReader;
+		 RWGltf_CafReader();
+
+		/****************** SetMeshNameAsFallback ******************/
+		%feature("compactdefaultargs") SetMeshNameAsFallback;
+		%feature("autodoc", "Set flag to use mesh name in case if node name is empty.
+
+Parameters
+----------
+theToFallback: bool
+
+Returns
+-------
+None
+") SetMeshNameAsFallback;
+		void SetMeshNameAsFallback(bool theToFallback);
+
+		/****************** SetParallel ******************/
+		%feature("compactdefaultargs") SetParallel;
+		%feature("autodoc", "Setup multithreaded execution.
+
+Parameters
+----------
+theToParallel: bool
+
+Returns
+-------
+None
+") SetParallel;
+		void SetParallel(bool theToParallel);
+
+		/****************** SetSkipEmptyNodes ******************/
+		%feature("compactdefaultargs") SetSkipEmptyNodes;
+		%feature("autodoc", "Set flag to ignore nodes without geometry.
+
+Parameters
+----------
+theToSkip: bool
+
+Returns
+-------
+None
+") SetSkipEmptyNodes;
+		void SetSkipEmptyNodes(bool theToSkip);
+
+		/****************** ToParallel ******************/
+		%feature("compactdefaultargs") ToParallel;
+		%feature("autodoc", "Return true if multithreaded optimizations are allowed; false by default.
+
+Returns
+-------
+bool
+") ToParallel;
+		bool ToParallel();
+
+		/****************** ToSkipEmptyNodes ******************/
+		%feature("compactdefaultargs") ToSkipEmptyNodes;
+		%feature("autodoc", "Return true if nodes without geometry should be ignored, true by default.
+
+Returns
+-------
+bool
+") ToSkipEmptyNodes;
+		bool ToSkipEmptyNodes();
+
+		/****************** ToUseMeshNameAsFallback ******************/
+		%feature("compactdefaultargs") ToUseMeshNameAsFallback;
+		%feature("autodoc", "Set flag to use mesh name in case if node name is empty, true by default.
+
+Returns
+-------
+bool
+") ToUseMeshNameAsFallback;
+		bool ToUseMeshNameAsFallback();
+
+};
+
+
+%extend RWGltf_CafReader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /****************************
 * class RWGltf_GltfAccessor *
 ****************************/
@@ -363,6 +467,208 @@ class RWGltf_GltfFace {
 /**************************************
 * class RWGltf_GltfLatePrimitiveArray *
 **************************************/
+class RWGltf_GltfLatePrimitiveArray : public Poly_Triangulation {
+	public:
+		/****************** RWGltf_GltfLatePrimitiveArray ******************/
+		%feature("compactdefaultargs") RWGltf_GltfLatePrimitiveArray;
+		%feature("autodoc", "Constructor.
+
+Parameters
+----------
+theId: TCollection_AsciiString
+theName: TCollection_AsciiString
+
+Returns
+-------
+None
+") RWGltf_GltfLatePrimitiveArray;
+		 RWGltf_GltfLatePrimitiveArray(const TCollection_AsciiString & theId, const TCollection_AsciiString & theName);
+
+		/****************** AddPrimArrayData ******************/
+		%feature("compactdefaultargs") AddPrimArrayData;
+		%feature("autodoc", "Add primitive array data element.
+
+Parameters
+----------
+theType: RWGltf_GltfArrayType
+
+Returns
+-------
+RWGltf_GltfPrimArrayData
+") AddPrimArrayData;
+		RWGltf_GltfPrimArrayData & AddPrimArrayData(RWGltf_GltfArrayType theType);
+
+		/****************** BaseColor ******************/
+		%feature("compactdefaultargs") BaseColor;
+		%feature("autodoc", "Return base color.
+
+Returns
+-------
+Quantity_ColorRGBA
+") BaseColor;
+		Quantity_ColorRGBA BaseColor();
+
+		/****************** BoundingBox ******************/
+		%feature("compactdefaultargs") BoundingBox;
+		%feature("autodoc", "Return bounding box defined within gltf file, or void if not specified.
+
+Returns
+-------
+Bnd_Box
+") BoundingBox;
+		const Bnd_Box & BoundingBox();
+
+		/****************** Data ******************/
+		%feature("compactdefaultargs") Data;
+		%feature("autodoc", "Return primitive array data elements.
+
+Returns
+-------
+NCollection_Sequence<RWGltf_GltfPrimArrayData>
+") Data;
+		const NCollection_Sequence<RWGltf_GltfPrimArrayData> & Data();
+
+		/****************** HasStyle ******************/
+		%feature("compactdefaultargs") HasStyle;
+		%feature("autodoc", "Return true if primitive array has assigned material.
+
+Returns
+-------
+bool
+") HasStyle;
+		bool HasStyle();
+
+		/****************** Id ******************/
+		%feature("compactdefaultargs") Id;
+		%feature("autodoc", "Entity id.
+
+Returns
+-------
+TCollection_AsciiString
+") Id;
+		const TCollection_AsciiString & Id();
+
+		/****************** MaterialCommon ******************/
+		%feature("compactdefaultargs") MaterialCommon;
+		%feature("autodoc", "Return common (obsolete) material definition.
+
+Returns
+-------
+opencascade::handle<RWGltf_MaterialCommon>
+") MaterialCommon;
+		const opencascade::handle<RWGltf_MaterialCommon> & MaterialCommon();
+
+		/****************** MaterialPbr ******************/
+		%feature("compactdefaultargs") MaterialPbr;
+		%feature("autodoc", "Return pbr material definition.
+
+Returns
+-------
+opencascade::handle<RWGltf_MaterialMetallicRoughness>
+") MaterialPbr;
+		const opencascade::handle<RWGltf_MaterialMetallicRoughness> & MaterialPbr();
+
+		/****************** Name ******************/
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "Entity name.
+
+Returns
+-------
+TCollection_AsciiString
+") Name;
+		const TCollection_AsciiString & Name();
+
+		/****************** PrimitiveMode ******************/
+		%feature("compactdefaultargs") PrimitiveMode;
+		%feature("autodoc", "Return type of primitive array.
+
+Returns
+-------
+RWGltf_GltfPrimitiveMode
+") PrimitiveMode;
+		RWGltf_GltfPrimitiveMode PrimitiveMode();
+
+		/****************** SetBoundingBox ******************/
+		%feature("compactdefaultargs") SetBoundingBox;
+		%feature("autodoc", "This method sets input bounding box and assigns a fake data to underlying poly_triangulation as min/max corners of bounding box, so that standard tools like brepbndlib::add() can be used transparently for computing bounding box of this face.
+
+Parameters
+----------
+theBox: Bnd_Box
+
+Returns
+-------
+None
+") SetBoundingBox;
+		void SetBoundingBox(const Bnd_Box & theBox);
+
+		/****************** SetMaterialCommon ******************/
+		%feature("compactdefaultargs") SetMaterialCommon;
+		%feature("autodoc", "Set common (obsolete) material definition.
+
+Parameters
+----------
+theMat: RWGltf_MaterialCommon
+
+Returns
+-------
+None
+") SetMaterialCommon;
+		void SetMaterialCommon(const opencascade::handle<RWGltf_MaterialCommon> & theMat);
+
+		/****************** SetMaterialPbr ******************/
+		%feature("compactdefaultargs") SetMaterialPbr;
+		%feature("autodoc", "Set pbr material definition.
+
+Parameters
+----------
+theMat: RWGltf_MaterialMetallicRoughness
+
+Returns
+-------
+None
+") SetMaterialPbr;
+		void SetMaterialPbr(const opencascade::handle<RWGltf_MaterialMetallicRoughness> & theMat);
+
+		/****************** SetName ******************/
+		%feature("compactdefaultargs") SetName;
+		%feature("autodoc", "Assign entity name.
+
+Parameters
+----------
+theName: TCollection_AsciiString
+
+Returns
+-------
+None
+") SetName;
+		void SetName(const TCollection_AsciiString & theName);
+
+		/****************** SetPrimitiveMode ******************/
+		%feature("compactdefaultargs") SetPrimitiveMode;
+		%feature("autodoc", "Set type of primitive array.
+
+Parameters
+----------
+theMode: RWGltf_GltfPrimitiveMode
+
+Returns
+-------
+None
+") SetPrimitiveMode;
+		void SetPrimitiveMode(RWGltf_GltfPrimitiveMode theMode);
+
+};
+
+
+%make_alias(RWGltf_GltfLatePrimitiveArray)
+
+%extend RWGltf_GltfLatePrimitiveArray {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*********************************
 * class RWGltf_GltfPrimArrayData *
 *********************************/
@@ -486,29 +792,112 @@ None
 /************************************
 * class RWGltf_PrimitiveArrayReader *
 ************************************/
+%nodefaultctor RWGltf_PrimitiveArrayReader;
+class RWGltf_PrimitiveArrayReader : public Standard_Transient {
+	public:
+		/****************** CoordinateSystemConverter ******************/
+		%feature("compactdefaultargs") CoordinateSystemConverter;
+		%feature("autodoc", "Return transformation from gltf to occt coordinate system.
+
+Returns
+-------
+RWMesh_CoordinateSystemConverter
+") CoordinateSystemConverter;
+		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
+
+		/****************** ErrorPrefix ******************/
+		%feature("compactdefaultargs") ErrorPrefix;
+		%feature("autodoc", "Return prefix for reporting issues.
+
+Returns
+-------
+TCollection_AsciiString
+") ErrorPrefix;
+		const TCollection_AsciiString & ErrorPrefix();
+
+		/****************** Load ******************/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "Load primitive array.
+
+Parameters
+----------
+theMesh: RWGltf_GltfLatePrimitiveArray
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") Load;
+		opencascade::handle<Poly_Triangulation> Load(const opencascade::handle<RWGltf_GltfLatePrimitiveArray> & theMesh);
+
+		/****************** SetCoordinateSystemConverter ******************/
+		%feature("compactdefaultargs") SetCoordinateSystemConverter;
+		%feature("autodoc", "Set transformation from gltf to occt coordinate system.
+
+Parameters
+----------
+theConverter: RWMesh_CoordinateSystemConverter
+
+Returns
+-------
+None
+") SetCoordinateSystemConverter;
+		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
+
+		/****************** SetErrorPrefix ******************/
+		%feature("compactdefaultargs") SetErrorPrefix;
+		%feature("autodoc", "Set prefix for reporting issues.
+
+Parameters
+----------
+theErrPrefix: TCollection_AsciiString
+
+Returns
+-------
+None
+") SetErrorPrefix;
+		void SetErrorPrefix(const TCollection_AsciiString & theErrPrefix);
+
+};
+
+
+%make_alias(RWGltf_PrimitiveArrayReader)
+
+%extend RWGltf_PrimitiveArrayReader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************************
 * class RWGltf_TriangulationReader *
 ***********************************/
+class RWGltf_TriangulationReader : public RWGltf_PrimitiveArrayReader {
+	public:
+		/****************** RWGltf_TriangulationReader ******************/
+		%feature("compactdefaultargs") RWGltf_TriangulationReader;
+		%feature("autodoc", "Empty constructor.
+
+Returns
+-------
+None
+") RWGltf_TriangulationReader;
+		 RWGltf_TriangulationReader();
+
+};
+
+
+%make_alias(RWGltf_TriangulationReader)
+
+%extend RWGltf_TriangulationReader {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
 class RWGltf_GltfSharedIStream:
-	pass
-
-@classnotwrapped
-class RWGltf_TriangulationReader:
-	pass
-
-@classnotwrapped
-class RWGltf_GltfLatePrimitiveArray:
-	pass
-
-@classnotwrapped
-class RWGltf_PrimitiveArrayReader:
-	pass
-
-@classnotwrapped
-class RWGltf_CafReader:
 	pass
 
 }

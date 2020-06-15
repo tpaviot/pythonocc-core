@@ -41,10 +41,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tprsstd.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TDataXtd_module.hxx>
-#include<AIS_module.hxx>
-#include<TCollection_module.hxx>
 #include<TDF_module.hxx>
+#include<Quantity_module.hxx>
+#include<AIS_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<V3d_module.hxx>
+#include<TDataXtd_module.hxx>
+#include<TCollection_module.hxx>
 #include<TDF_module.hxx>
 #include<gp_module.hxx>
 #include<HLRAlgo_module.hxx>
@@ -77,10 +80,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tprsstd.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TDataXtd.i
-%import AIS.i
-%import TCollection.i
 %import TDF.i
+%import Quantity.i
+%import AIS.i
+%import Graphic3d.i
+%import V3d.i
+%import TDataXtd.i
+%import TCollection.i
 
 %pythoncode {
 from enum import IntEnum
@@ -96,6 +102,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TPrsStd_AISPresentation)
+%wrap_handle(TPrsStd_AISViewer)
 %wrap_handle(TPrsStd_Driver)
 %wrap_handle(TPrsStd_DriverTable)
 %wrap_handle(TPrsStd_AxisDriver)
@@ -114,6 +122,834 @@ from OCC.Core.Exception import *
 typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TPrsStd_Driver>, Standard_GUID>::Iterator TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver;
 typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TPrsStd_Driver>, Standard_GUID> TPrsStd_DataMapOfGUIDDriver;
 /* end typedefs declaration */
+
+/********************************
+* class TPrsStd_AISPresentation *
+********************************/
+class TPrsStd_AISPresentation : public TDF_Attribute {
+	public:
+		/****************** TPrsStd_AISPresentation ******************/
+		%feature("compactdefaultargs") TPrsStd_AISPresentation;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TPrsStd_AISPresentation;
+		 TPrsStd_AISPresentation();
+
+		/****************** AddSelectionMode ******************/
+		%feature("compactdefaultargs") AddSelectionMode;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSelectionMode: int
+theTransaction: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") AddSelectionMode;
+		void AddSelectionMode(const Standard_Integer theSelectionMode, const Standard_Boolean theTransaction = Standard_True);
+
+		/****************** AfterAddition ******************/
+		%feature("compactdefaultargs") AfterAddition;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") AfterAddition;
+		virtual void AfterAddition();
+
+		/****************** AfterResume ******************/
+		%feature("compactdefaultargs") AfterResume;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") AfterResume;
+		virtual void AfterResume();
+
+		/****************** AfterUndo ******************/
+		%feature("compactdefaultargs") AfterUndo;
+		%feature("autodoc", "Update ais viewer according to delta.
+
+Parameters
+----------
+anAttDelta: TDF_AttributeDelta
+forceIt: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") AfterUndo;
+		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+
+		/****************** BackupCopy ******************/
+		%feature("compactdefaultargs") BackupCopy;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") BackupCopy;
+		virtual opencascade::handle<TDF_Attribute> BackupCopy();
+
+		/****************** BeforeForget ******************/
+		%feature("compactdefaultargs") BeforeForget;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") BeforeForget;
+		virtual void BeforeForget();
+
+		/****************** BeforeRemoval ******************/
+		%feature("compactdefaultargs") BeforeRemoval;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") BeforeRemoval;
+		virtual void BeforeRemoval();
+
+		/****************** BeforeUndo ******************/
+		%feature("compactdefaultargs") BeforeUndo;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+anAttDelta: TDF_AttributeDelta
+forceIt: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+bool
+") BeforeUndo;
+		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+
+		/****************** Color ******************/
+		%feature("compactdefaultargs") Color;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Quantity_NameOfColor
+") Color;
+		Quantity_NameOfColor Color();
+
+		/****************** Display ******************/
+		%feature("compactdefaultargs") Display;
+		%feature("autodoc", "Display presentation of object in ais viewer. if <update> = true then aisobject is recomputed and all the visualization settings are applied.
+
+Parameters
+----------
+update: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") Display;
+		void Display(const Standard_Boolean update = Standard_False);
+
+		/****************** Erase ******************/
+		%feature("compactdefaultargs") Erase;
+		%feature("autodoc", "Removes the presentation of this ais presentation attribute from the tprsstd_aisviewer. if remove is true, this ais presentation attribute is removed from the interactive context.
+
+Parameters
+----------
+remove: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") Erase;
+		void Erase(const Standard_Boolean remove = Standard_False);
+
+		/****************** GetAIS ******************/
+		%feature("compactdefaultargs") GetAIS;
+		%feature("autodoc", "Returns ais_interactiveobject stored in the presentation attribute.
+
+Returns
+-------
+opencascade::handle<AIS_InteractiveObject>
+") GetAIS;
+		opencascade::handle<AIS_InteractiveObject> GetAIS();
+
+		/****************** GetDriverGUID ******************/
+		%feature("compactdefaultargs") GetDriverGUID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") GetDriverGUID;
+		Standard_GUID GetDriverGUID();
+
+		/****************** GetID ******************/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Returns the guid for tprsstd_aispresentation attributes.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** GetNbSelectionModes ******************/
+		%feature("compactdefaultargs") GetNbSelectionModes;
+		%feature("autodoc", "Returns selection mode(s) of the attribute. it starts with 1 .. getnbselectionmodes().
+
+Returns
+-------
+int
+") GetNbSelectionModes;
+		Standard_Integer GetNbSelectionModes();
+
+		/****************** HasOwnColor ******************/
+		%feature("compactdefaultargs") HasOwnColor;
+		%feature("autodoc", "Returns true if this presentation attribute already has a color setting.
+
+Returns
+-------
+bool
+") HasOwnColor;
+		Standard_Boolean HasOwnColor();
+
+		/****************** HasOwnMaterial ******************/
+		%feature("compactdefaultargs") HasOwnMaterial;
+		%feature("autodoc", "Returns true if this presentation attribute already has a material setting.
+
+Returns
+-------
+bool
+") HasOwnMaterial;
+		Standard_Boolean HasOwnMaterial();
+
+		/****************** HasOwnMode ******************/
+		%feature("compactdefaultargs") HasOwnMode;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") HasOwnMode;
+		Standard_Boolean HasOwnMode();
+
+		/****************** HasOwnSelectionMode ******************/
+		%feature("compactdefaultargs") HasOwnSelectionMode;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+bool
+") HasOwnSelectionMode;
+		Standard_Boolean HasOwnSelectionMode();
+
+		/****************** HasOwnTransparency ******************/
+		%feature("compactdefaultargs") HasOwnTransparency;
+		%feature("autodoc", "Returns true if this presentation attribute already has a transparency setting.
+
+Returns
+-------
+bool
+") HasOwnTransparency;
+		Standard_Boolean HasOwnTransparency();
+
+		/****************** HasOwnWidth ******************/
+		%feature("compactdefaultargs") HasOwnWidth;
+		%feature("autodoc", "Returns true if this presentation attribute already has a width setting.
+
+Returns
+-------
+bool
+") HasOwnWidth;
+		Standard_Boolean HasOwnWidth();
+
+		/****************** ID ******************/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		const Standard_GUID & ID();
+
+		/****************** IsDisplayed ******************/
+		%feature("compactdefaultargs") IsDisplayed;
+		%feature("autodoc", "Returns true if this ais presentation attribute is displayed.
+
+Returns
+-------
+bool
+") IsDisplayed;
+		Standard_Boolean IsDisplayed();
+
+		/****************** Material ******************/
+		%feature("compactdefaultargs") Material;
+		%feature("autodoc", "Returns the material setting for this presentation attribute.
+
+Returns
+-------
+Graphic3d_NameOfMaterial
+") Material;
+		Graphic3d_NameOfMaterial Material();
+
+		/****************** Mode ******************/
+		%feature("compactdefaultargs") Mode;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+int
+") Mode;
+		Standard_Integer Mode();
+
+		/****************** NewEmpty ******************/
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		opencascade::handle<TDF_Attribute> NewEmpty();
+
+		/****************** Paste ******************/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+into: TDF_Attribute
+RT: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
+
+		/****************** Restore ******************/
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+with: TDF_Attribute
+
+Returns
+-------
+None
+") Restore;
+		void Restore(const opencascade::handle<TDF_Attribute> & with);
+
+		/****************** SelectionMode ******************/
+		%feature("compactdefaultargs") SelectionMode;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+index: int,optional
+	default value is 1
+
+Returns
+-------
+int
+") SelectionMode;
+		Standard_Integer SelectionMode(const int index = 1);
+
+		/****************** Set ******************/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Creates or retrieves the presentation attribute on the label l, and sets the guid driver.
+
+Parameters
+----------
+L: TDF_Label
+driver: Standard_GUID
+
+Returns
+-------
+opencascade::handle<TPrsStd_AISPresentation>
+") Set;
+		static opencascade::handle<TPrsStd_AISPresentation> Set(const TDF_Label & L, const Standard_GUID & driver);
+
+		/****************** Set ******************/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Creates or retrieves the aispresentation attribute attached to master. the guid of the driver will be the guid of master. master is the attribute you want to display.
+
+Parameters
+----------
+master: TDF_Attribute
+
+Returns
+-------
+opencascade::handle<TPrsStd_AISPresentation>
+") Set;
+		static opencascade::handle<TPrsStd_AISPresentation> Set(const opencascade::handle<TDF_Attribute> & master);
+
+		/****************** SetColor ******************/
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "Sets the color acolor for this presentation attribute.
+
+Parameters
+----------
+aColor: Quantity_NameOfColor
+
+Returns
+-------
+None
+") SetColor;
+		void SetColor(const Quantity_NameOfColor aColor);
+
+		/****************** SetDisplayed ******************/
+		%feature("compactdefaultargs") SetDisplayed;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+B: bool
+
+Returns
+-------
+None
+") SetDisplayed;
+		void SetDisplayed(const Standard_Boolean B);
+
+		/****************** SetDriverGUID ******************/
+		%feature("compactdefaultargs") SetDriverGUID;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+guid: Standard_GUID
+
+Returns
+-------
+None
+") SetDriverGUID;
+		void SetDriverGUID(const Standard_GUID & guid);
+
+		/****************** SetMaterial ******************/
+		%feature("compactdefaultargs") SetMaterial;
+		%feature("autodoc", "Sets the material aname for this presentation attribute.
+
+Parameters
+----------
+aName: Graphic3d_NameOfMaterial
+
+Returns
+-------
+None
+") SetMaterial;
+		void SetMaterial(const Graphic3d_NameOfMaterial aName);
+
+		/****************** SetMode ******************/
+		%feature("compactdefaultargs") SetMode;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theMode: int
+
+Returns
+-------
+None
+") SetMode;
+		void SetMode(const Standard_Integer theMode);
+
+		/****************** SetSelectionMode ******************/
+		%feature("compactdefaultargs") SetSelectionMode;
+		%feature("autodoc", "Sets selection mode. if 'thetransaction' flag is off, modification of the attribute doesn't influence the transaction mechanism (the attribute doesn't participate in undo/redo because of this modification). certainly, if any other data of the attribute is modified (display mode, color, ...), the attribute will be included into undo/redo.
+
+Parameters
+----------
+theSelectionMode: int
+theTransaction: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+None
+") SetSelectionMode;
+		void SetSelectionMode(const Standard_Integer theSelectionMode, const Standard_Boolean theTransaction = Standard_True);
+
+		/****************** SetTransparency ******************/
+		%feature("compactdefaultargs") SetTransparency;
+		%feature("autodoc", "Sets the transparency value avalue for this presentation attribute. this value is 0.6 by default.
+
+Parameters
+----------
+aValue: float,optional
+	default value is 0.6
+
+Returns
+-------
+None
+") SetTransparency;
+		void SetTransparency(const Standard_Real aValue = 0.6);
+
+		/****************** SetWidth ******************/
+		%feature("compactdefaultargs") SetWidth;
+		%feature("autodoc", "Sets the width awidth for this presentation attribute.
+
+Parameters
+----------
+aWidth: float
+
+Returns
+-------
+None
+") SetWidth;
+		void SetWidth(const Standard_Real aWidth);
+
+		/****************** Transparency ******************/
+		%feature("compactdefaultargs") Transparency;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") Transparency;
+		Standard_Real Transparency();
+
+		/****************** Unset ******************/
+		%feature("compactdefaultargs") Unset;
+		%feature("autodoc", "Delete (if exist) the presentation attribute associated to the label <l>.
+
+Parameters
+----------
+L: TDF_Label
+
+Returns
+-------
+None
+") Unset;
+		static void Unset(const TDF_Label & L);
+
+		/****************** UnsetColor ******************/
+		%feature("compactdefaultargs") UnsetColor;
+		%feature("autodoc", "Removes the color setting from this presentation attribute.
+
+Returns
+-------
+None
+") UnsetColor;
+		void UnsetColor();
+
+		/****************** UnsetMaterial ******************/
+		%feature("compactdefaultargs") UnsetMaterial;
+		%feature("autodoc", "Removes the material setting from this presentation attribute.
+
+Returns
+-------
+None
+") UnsetMaterial;
+		void UnsetMaterial();
+
+		/****************** UnsetMode ******************/
+		%feature("compactdefaultargs") UnsetMode;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") UnsetMode;
+		void UnsetMode();
+
+		/****************** UnsetSelectionMode ******************/
+		%feature("compactdefaultargs") UnsetSelectionMode;
+		%feature("autodoc", "Clears all selection modes of the attribute.
+
+Returns
+-------
+None
+") UnsetSelectionMode;
+		void UnsetSelectionMode();
+
+		/****************** UnsetTransparency ******************/
+		%feature("compactdefaultargs") UnsetTransparency;
+		%feature("autodoc", "Removes the transparency setting from this presentation attribute.
+
+Returns
+-------
+None
+") UnsetTransparency;
+		void UnsetTransparency();
+
+		/****************** UnsetWidth ******************/
+		%feature("compactdefaultargs") UnsetWidth;
+		%feature("autodoc", "Removes the width setting from this presentation attribute.
+
+Returns
+-------
+None
+") UnsetWidth;
+		void UnsetWidth();
+
+		/****************** Update ******************/
+		%feature("compactdefaultargs") Update;
+		%feature("autodoc", "Recompute presentation of object and apply the visualization settings.
+
+Returns
+-------
+None
+") Update;
+		void Update();
+
+		/****************** Width ******************/
+		%feature("compactdefaultargs") Width;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+float
+") Width;
+		Standard_Real Width();
+
+};
+
+
+%make_alias(TPrsStd_AISPresentation)
+
+%extend TPrsStd_AISPresentation {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************
+* class TPrsStd_AISViewer *
+**************************/
+class TPrsStd_AISViewer : public TDF_Attribute {
+	public:
+		/****************** TPrsStd_AISViewer ******************/
+		%feature("compactdefaultargs") TPrsStd_AISViewer;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") TPrsStd_AISViewer;
+		 TPrsStd_AISViewer();
+
+		/****************** Find ******************/
+		%feature("compactdefaultargs") Find;
+		%feature("autodoc", "Finds the viewer attribute at the label access, the root of the data framework. calling this function can be used to initialize an ais viewer.
+
+Parameters
+----------
+acces: TDF_Label
+A: TPrsStd_AISViewer
+
+Returns
+-------
+bool
+") Find;
+		static Standard_Boolean Find(const TDF_Label & acces, opencascade::handle<TPrsStd_AISViewer> & A);
+
+		/****************** Find ******************/
+		%feature("compactdefaultargs") Find;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+acces: TDF_Label
+IC: AIS_InteractiveContext
+
+Returns
+-------
+bool
+") Find;
+		static Standard_Boolean Find(const TDF_Label & acces, opencascade::handle<AIS_InteractiveContext> & IC);
+
+		/****************** Find ******************/
+		%feature("compactdefaultargs") Find;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+acces: TDF_Label
+V: V3d_Viewer
+
+Returns
+-------
+bool
+") Find;
+		static Standard_Boolean Find(const TDF_Label & acces, opencascade::handle<V3d_Viewer> & V);
+
+		/****************** GetID ******************/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Class methods =============.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** GetInteractiveContext ******************/
+		%feature("compactdefaultargs") GetInteractiveContext;
+		%feature("autodoc", "Returns the interactive context in this attribute.
+
+Returns
+-------
+opencascade::handle<AIS_InteractiveContext>
+") GetInteractiveContext;
+		opencascade::handle<AIS_InteractiveContext> GetInteractiveContext();
+
+		/****************** Has ******************/
+		%feature("compactdefaultargs") Has;
+		%feature("autodoc", "Returns true if there is an aisviewer attribute in <acces> data framework.
+
+Parameters
+----------
+acces: TDF_Label
+
+Returns
+-------
+bool
+") Has;
+		static Standard_Boolean Has(const TDF_Label & acces);
+
+		/****************** ID ******************/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		const Standard_GUID & ID();
+
+		/****************** New ******************/
+		%feature("compactdefaultargs") New;
+		%feature("autodoc", "Create and set an aisviewer at. raise an exception if has.
+
+Parameters
+----------
+access: TDF_Label
+selector: AIS_InteractiveContext
+
+Returns
+-------
+opencascade::handle<TPrsStd_AISViewer>
+") New;
+		static opencascade::handle<TPrsStd_AISViewer> New(const TDF_Label & access, const opencascade::handle<AIS_InteractiveContext> & selector);
+
+		/****************** New ******************/
+		%feature("compactdefaultargs") New;
+		%feature("autodoc", "Create and set an aisattribute at root label. the interactive context is build. raise an exception if has.
+
+Parameters
+----------
+acces: TDF_Label
+viewer: V3d_Viewer
+
+Returns
+-------
+opencascade::handle<TPrsStd_AISViewer>
+") New;
+		static opencascade::handle<TPrsStd_AISViewer> New(const TDF_Label & acces, const opencascade::handle<V3d_Viewer> & viewer);
+
+		/****************** NewEmpty ******************/
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		opencascade::handle<TDF_Attribute> NewEmpty();
+
+		/****************** Paste ******************/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+into: TDF_Attribute
+RT: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
+
+		/****************** Restore ******************/
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+with: TDF_Attribute
+
+Returns
+-------
+None
+") Restore;
+		void Restore(const opencascade::handle<TDF_Attribute> & with);
+
+		/****************** SetInteractiveContext ******************/
+		%feature("compactdefaultargs") SetInteractiveContext;
+		%feature("autodoc", "Sets the interactive context ctx for this attribute.
+
+Parameters
+----------
+ctx: AIS_InteractiveContext
+
+Returns
+-------
+None
+") SetInteractiveContext;
+		void SetInteractiveContext(const opencascade::handle<AIS_InteractiveContext> & ctx);
+
+		/****************** Update ******************/
+		%feature("compactdefaultargs") Update;
+		%feature("autodoc", "Aisviewer methods =================.
+
+Parameters
+----------
+acces: TDF_Label
+
+Returns
+-------
+None
+") Update;
+		static void Update(const TDF_Label & acces);
+
+		/****************** Update ******************/
+		%feature("compactdefaultargs") Update;
+		%feature("autodoc", "Updates the viewer at the label access. access is the root of the data framework.
+
+Returns
+-------
+None
+") Update;
+		void Update();
+
+};
+
+
+%make_alias(TPrsStd_AISViewer)
+
+%extend TPrsStd_AISViewer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
 
 /********************************
 * class TPrsStd_ConstraintTools *
