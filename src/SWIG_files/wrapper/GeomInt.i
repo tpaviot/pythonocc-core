@@ -105,6 +105,13 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(GeomInt_SequenceOfParameterAndOrientation) NCollection_Sequence<GeomInt_ParameterAndOrientation>;
+
+%extend NCollection_Sequence<GeomInt_ParameterAndOrientation> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(GeomInt_VectorOfReal) NCollection_Vector<Standard_Real>;
 /* end templates declaration */
 

@@ -102,6 +102,13 @@ Convert_Polynomial = Convert_ParameterisationType.Convert_Polynomial
 
 /* templates */
 %template(Convert_SequenceOfArray1OfPoles) NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt>>;
+
+%extend NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

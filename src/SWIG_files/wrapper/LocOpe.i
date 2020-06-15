@@ -114,8 +114,29 @@ LocOpe_INVALID = LocOpe_Operation.LocOpe_INVALID
 /* templates */
 %template(LocOpe_DataMapOfShapePnt) NCollection_DataMap<TopoDS_Shape,gp_Pnt,TopTools_ShapeMapHasher>;
 %template(LocOpe_SequenceOfCirc) NCollection_Sequence<gp_Circ>;
+
+%extend NCollection_Sequence<gp_Circ> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(LocOpe_SequenceOfLin) NCollection_Sequence<gp_Lin>;
+
+%extend NCollection_Sequence<gp_Lin> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(LocOpe_SequenceOfPntFace) NCollection_Sequence<LocOpe_PntFace>;
+
+%extend NCollection_Sequence<LocOpe_PntFace> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

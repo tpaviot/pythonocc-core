@@ -107,6 +107,13 @@ from OCC.Core.Exception import *
 };
 %template(TShort_Array2OfShortReal) NCollection_Array2<Standard_ShortReal>;
 %template(TShort_SequenceOfShortReal) NCollection_Sequence<Standard_ShortReal>;
+
+%extend NCollection_Sequence<Standard_ShortReal> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

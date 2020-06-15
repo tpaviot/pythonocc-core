@@ -216,6 +216,13 @@ Storage_VSReadWrite = Storage_OpenMode.Storage_VSReadWrite
 %template(Storage_MapOfPers) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_Root>,TCollection_AsciiString>;
 %template(Storage_PType) NCollection_IndexedDataMap<TCollection_AsciiString,Standard_Integer,TCollection_AsciiString>;
 %template(Storage_SeqOfRoot) NCollection_Sequence<opencascade::handle<Storage_Root>>;
+
+%extend NCollection_Sequence<opencascade::handle<Storage_Root>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -180,8 +180,29 @@ from OCC.Core.Exception import *
     }
 };
 %template(TColGeom2d_SequenceOfBoundedCurve) NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>>;
+
+%extend NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColGeom2d_SequenceOfCurve) NCollection_Sequence<opencascade::handle<Geom2d_Curve>>;
+
+%extend NCollection_Sequence<opencascade::handle<Geom2d_Curve>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColGeom2d_SequenceOfGeometry) NCollection_Sequence<opencascade::handle<Geom2d_Geometry>>;
+
+%extend NCollection_Sequence<opencascade::handle<Geom2d_Geometry>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

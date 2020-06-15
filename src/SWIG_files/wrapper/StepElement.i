@@ -550,9 +550,37 @@ StepElement_Warping = StepElement_EnumeratedCurveElementPurpose.StepElement_Warp
 %template(StepElement_Array2OfSurfaceElementPurpose) NCollection_Array2<StepElement_SurfaceElementPurpose>;
 %template(StepElement_Array2OfSurfaceElementPurposeMember) NCollection_Array2<opencascade::handle<StepElement_SurfaceElementPurposeMember>>;
 %template(StepElement_SequenceOfCurveElementPurposeMember) NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(StepElement_SequenceOfCurveElementSectionDefinition) NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(StepElement_SequenceOfElementMaterial) NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(StepElement_SequenceOfSurfaceElementPurposeMember) NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

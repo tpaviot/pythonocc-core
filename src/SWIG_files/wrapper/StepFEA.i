@@ -426,9 +426,37 @@ StepFEA_Unspecified = StepFEA_UnspecifiedValue.StepFEA_Unspecified
     }
 };
 %template(StepFEA_SequenceOfCurve3dElementProperty) NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(StepFEA_SequenceOfElementGeometricRelationship) NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(StepFEA_SequenceOfElementRepresentation) NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(StepFEA_SequenceOfNodeRepresentation) NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -141,7 +141,21 @@ MAT_Right = MAT_Side.MAT_Right
     }
 };
 %template(MAT_SequenceOfArc) NCollection_Sequence<opencascade::handle<MAT_Arc>>;
+
+%extend NCollection_Sequence<opencascade::handle<MAT_Arc>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(MAT_SequenceOfBasicElt) NCollection_Sequence<opencascade::handle<MAT_BasicElt>>;
+
+%extend NCollection_Sequence<opencascade::handle<MAT_BasicElt>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

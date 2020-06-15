@@ -237,7 +237,21 @@ AppParCurves_CurvaturePoint = AppParCurves_Constraint.AppParCurves_CurvaturePoin
     }
 };
 %template(AppParCurves_SequenceOfMultiBSpCurve) NCollection_Sequence<AppParCurves_MultiBSpCurve>;
+
+%extend NCollection_Sequence<AppParCurves_MultiBSpCurve> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(AppParCurves_SequenceOfMultiCurve) NCollection_Sequence<AppParCurves_MultiCurve>;
+
+%extend NCollection_Sequence<AppParCurves_MultiCurve> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

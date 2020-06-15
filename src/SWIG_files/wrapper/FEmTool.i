@@ -94,6 +94,13 @@ from OCC.Core.Exception import *
     }
 };
 %template(FEmTool_SeqOfLinConstr) NCollection_Sequence<FEmTool_ListOfVectors>;
+
+%extend NCollection_Sequence<FEmTool_ListOfVectors> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -301,7 +301,21 @@ from OCC.Core.Exception import *
     }
 };
 %template(StepRepr_SequenceOfMaterialPropertyRepresentation) NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(StepRepr_SequenceOfRepresentationItem) NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>;
+
+%extend NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

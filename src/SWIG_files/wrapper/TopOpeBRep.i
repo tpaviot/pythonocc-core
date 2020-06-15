@@ -251,6 +251,13 @@ TopOpeBRep_OTHERTYPE = TopOpeBRep_TypeLineCurve.TopOpeBRep_OTHERTYPE
     }
 };
 %template(TopOpeBRep_SequenceOfPoint2d) NCollection_Sequence<TopOpeBRep_Point2d>;
+
+%extend NCollection_Sequence<TopOpeBRep_Point2d> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

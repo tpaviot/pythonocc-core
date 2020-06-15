@@ -456,15 +456,85 @@ from OCC.Core.Exception import *
 %template(TColgp_Array2OfXY) NCollection_Array2<gp_XY>;
 %template(TColgp_Array2OfXYZ) NCollection_Array2<gp_XYZ>;
 %template(TColgp_SequenceOfArray1OfPnt2d) NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>>;
+
+%extend NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColgp_SequenceOfAx1) NCollection_Sequence<gp_Ax1>;
+
+%extend NCollection_Sequence<gp_Ax1> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColgp_SequenceOfDir) NCollection_Sequence<gp_Dir>;
+
+%extend NCollection_Sequence<gp_Dir> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColgp_SequenceOfDir2d) NCollection_Sequence<gp_Dir2d>;
+
+%extend NCollection_Sequence<gp_Dir2d> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColgp_SequenceOfPnt) NCollection_Sequence<gp_Pnt>;
+
+%extend NCollection_Sequence<gp_Pnt> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColgp_SequenceOfPnt2d) NCollection_Sequence<gp_Pnt2d>;
+
+%extend NCollection_Sequence<gp_Pnt2d> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColgp_SequenceOfVec) NCollection_Sequence<gp_Vec>;
+
+%extend NCollection_Sequence<gp_Vec> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColgp_SequenceOfVec2d) NCollection_Sequence<gp_Vec2d>;
+
+%extend NCollection_Sequence<gp_Vec2d> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColgp_SequenceOfXY) NCollection_Sequence<gp_XY>;
+
+%extend NCollection_Sequence<gp_XY> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColgp_SequenceOfXYZ) NCollection_Sequence<gp_XYZ>;
+
+%extend NCollection_Sequence<gp_XYZ> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

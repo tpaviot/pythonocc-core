@@ -171,8 +171,29 @@ BRepFill_Round = BRepFill_TransitionStyle.BRepFill_Round
     }
 };
 %template(BRepFill_SequenceOfEdgeFaceAndOrder) NCollection_Sequence<BRepFill_EdgeFaceAndOrder>;
+
+%extend NCollection_Sequence<BRepFill_EdgeFaceAndOrder> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BRepFill_SequenceOfFaceAndOrder) NCollection_Sequence<BRepFill_FaceAndOrder>;
+
+%extend NCollection_Sequence<BRepFill_FaceAndOrder> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BRepFill_SequenceOfSection) NCollection_Sequence<BRepFill_Section>;
+
+%extend NCollection_Sequence<BRepFill_Section> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

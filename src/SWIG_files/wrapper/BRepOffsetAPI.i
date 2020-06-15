@@ -133,7 +133,21 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(BRepOffsetAPI_SequenceOfSequenceOfReal) NCollection_Sequence<TColStd_SequenceOfReal>;
+
+%extend NCollection_Sequence<TColStd_SequenceOfReal> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(BRepOffsetAPI_SequenceOfSequenceOfShape) NCollection_Sequence<TopTools_SequenceOfShape>;
+
+%extend NCollection_Sequence<TopTools_SequenceOfShape> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

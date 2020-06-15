@@ -124,10 +124,45 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
 
 /* templates */
 %template(Contap_SequenceOfIWLineOfTheIWalking) NCollection_Sequence<opencascade::handle<Contap_TheIWLineOfTheIWalking>>;
+
+%extend NCollection_Sequence<opencascade::handle<Contap_TheIWLineOfTheIWalking>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Contap_SequenceOfPathPointOfTheSearch) NCollection_Sequence<Contap_ThePathPointOfTheSearch>;
+
+%extend NCollection_Sequence<Contap_ThePathPointOfTheSearch> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Contap_SequenceOfSegmentOfTheSearch) NCollection_Sequence<Contap_TheSegmentOfTheSearch>;
+
+%extend NCollection_Sequence<Contap_TheSegmentOfTheSearch> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Contap_TheSequenceOfLine) NCollection_Sequence<Contap_Line>;
+
+%extend NCollection_Sequence<Contap_Line> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Contap_TheSequenceOfPoint) NCollection_Sequence<Contap_Point>;
+
+%extend NCollection_Sequence<Contap_Point> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

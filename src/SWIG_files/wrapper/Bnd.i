@@ -183,6 +183,13 @@ from OCC.Core.Exception import *
     }
 };
 %template(Bnd_SeqOfBox) NCollection_Sequence<Bnd_Box>;
+
+%extend NCollection_Sequence<Bnd_Box> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -207,8 +207,29 @@ SelectMgr_PickingStrategy_OnlyTopmost = SelectMgr_PickingStrategy.SelectMgr_Pick
 };
 %template(SelectMgr_Mat4) NCollection_Mat4<Standard_Real>;
 %template(SelectMgr_SequenceOfFilter) NCollection_Sequence<opencascade::handle<SelectMgr_Filter>>;
+
+%extend NCollection_Sequence<opencascade::handle<SelectMgr_Filter>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(SelectMgr_SequenceOfOwner) NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>>;
+
+%extend NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(SelectMgr_SequenceOfSelection) NCollection_Sequence<opencascade::handle<SelectMgr_Selection>>;
+
+%extend NCollection_Sequence<opencascade::handle<SelectMgr_Selection>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(SelectMgr_Vec3) NCollection_Vec3<Standard_Real>;
 %template(SelectMgr_Vec4) NCollection_Vec4<Standard_Real>;
 /* end templates declaration */

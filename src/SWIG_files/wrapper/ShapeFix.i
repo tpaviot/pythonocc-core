@@ -115,6 +115,13 @@ from OCC.Core.Exception import *
 /* templates */
 %template(ShapeFix_DataMapOfShapeBox2d) NCollection_DataMap<TopoDS_Shape,Bnd_Box2d,TopTools_ShapeMapHasher>;
 %template(ShapeFix_SequenceOfWireSegment) NCollection_Sequence<ShapeFix_WireSegment>;
+
+%extend NCollection_Sequence<ShapeFix_WireSegment> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

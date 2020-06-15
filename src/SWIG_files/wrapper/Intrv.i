@@ -111,6 +111,13 @@ Intrv_After = Intrv_Position.Intrv_After
 
 /* templates */
 %template(Intrv_SequenceOfInterval) NCollection_Sequence<Intrv_Interval>;
+
+%extend NCollection_Sequence<Intrv_Interval> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

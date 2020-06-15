@@ -514,14 +514,77 @@ from OCC.Core.Exception import *
 %template(TColStd_MapRealHasher) NCollection_DefaultHasher<Standard_Real>;
 %template(TColStd_MapTransientHasher) NCollection_DefaultHasher<opencascade::handle<Standard_Transient>>;
 %template(TColStd_SequenceOfAddress) NCollection_Sequence<Standard_Address>;
+
+%extend NCollection_Sequence<Standard_Address> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColStd_SequenceOfAsciiString) NCollection_Sequence<TCollection_AsciiString>;
+
+%extend NCollection_Sequence<TCollection_AsciiString> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColStd_SequenceOfBoolean) NCollection_Sequence<Standard_Boolean>;
+
+%extend NCollection_Sequence<Standard_Boolean> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColStd_SequenceOfExtendedString) NCollection_Sequence<TCollection_ExtendedString>;
+
+%extend NCollection_Sequence<TCollection_ExtendedString> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColStd_SequenceOfHAsciiString) NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>>;
+
+%extend NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColStd_SequenceOfHExtendedString) NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>>;
+
+%extend NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColStd_SequenceOfInteger) NCollection_Sequence<Standard_Integer>;
+
+%extend NCollection_Sequence<Standard_Integer> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColStd_SequenceOfReal) NCollection_Sequence<Standard_Real>;
+
+%extend NCollection_Sequence<Standard_Real> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(TColStd_SequenceOfTransient) NCollection_Sequence<opencascade::handle<Standard_Transient>>;
+
+%extend NCollection_Sequence<opencascade::handle<Standard_Transient>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -111,8 +111,29 @@ from OCC.Core.Exception import *
     }
 };
 %template(Plate_SequenceOfLinearScalarConstraint) NCollection_Sequence<Plate_LinearScalarConstraint>;
+
+%extend NCollection_Sequence<Plate_LinearScalarConstraint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Plate_SequenceOfLinearXYZConstraint) NCollection_Sequence<Plate_LinearXYZConstraint>;
+
+%extend NCollection_Sequence<Plate_LinearXYZConstraint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Plate_SequenceOfPinpointConstraint) NCollection_Sequence<Plate_PinpointConstraint>;
+
+%extend NCollection_Sequence<Plate_PinpointConstraint> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

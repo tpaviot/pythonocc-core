@@ -234,6 +234,13 @@ HLRBRep_Sharp = HLRBRep_TypeOfResultingEdge.HLRBRep_Sharp
     }
 };
 %template(HLRBRep_SeqOfShapeBounds) NCollection_Sequence<HLRBRep_ShapeBounds>;
+
+%extend NCollection_Sequence<HLRBRep_ShapeBounds> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

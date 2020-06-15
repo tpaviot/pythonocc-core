@@ -276,7 +276,21 @@ GeomFill_ImpossibleContact = GeomFill_PipeError.GeomFill_ImpossibleContact
     }
 };
 %template(GeomFill_SequenceOfAx2) NCollection_Sequence<gp_Ax2>;
+
+%extend NCollection_Sequence<gp_Ax2> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(GeomFill_SequenceOfTrsf) NCollection_Sequence<gp_Trsf>;
+
+%extend NCollection_Sequence<gp_Trsf> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

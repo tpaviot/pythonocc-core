@@ -261,6 +261,13 @@ Interface_CheckNoFail = Interface_CheckStatus.Interface_CheckNoFail
 %template(Interface_DataMapOfTransientInteger) NCollection_DataMap<opencascade::handle<Standard_Transient>,Standard_Integer,TColStd_MapTransientHasher>;
 %template(Interface_IndexedMapOfAsciiString) NCollection_IndexedMap<TCollection_AsciiString,Interface_MapAsciiStringHasher>;
 %template(Interface_SequenceOfCheck) NCollection_Sequence<opencascade::handle<Interface_Check>>;
+
+%extend NCollection_Sequence<opencascade::handle<Interface_Check>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Interface_VectorOfFileParameter) NCollection_Vector<Interface_FileParameter>;
 /* end templates declaration */
 

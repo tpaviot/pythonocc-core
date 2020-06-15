@@ -888,7 +888,21 @@ AIS_DS_None = AIS_DisplayStatus.AIS_DS_None
     }
 };
 %template(AIS_SequenceOfDimension) NCollection_Sequence<opencascade::handle<AIS_Relation>>;
+
+%extend NCollection_Sequence<opencascade::handle<AIS_Relation>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(AIS_SequenceOfInteractive) NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>>;
+
+%extend NCollection_Sequence<opencascade::handle<AIS_InteractiveObject>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

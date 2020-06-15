@@ -83,7 +83,21 @@ Hatch_ANYLINE = Hatch_LineForm.Hatch_ANYLINE
 
 /* templates */
 %template(Hatch_SequenceOfLine) NCollection_Sequence<Hatch_Line>;
+
+%extend NCollection_Sequence<Hatch_Line> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Hatch_SequenceOfParameter) NCollection_Sequence<Hatch_Parameter>;
+
+%extend NCollection_Sequence<Hatch_Parameter> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

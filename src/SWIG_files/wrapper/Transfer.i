@@ -148,7 +148,21 @@ Transfer_StatusUsed = Transfer_StatusResult.Transfer_StatusUsed
 
 /* templates */
 %template(Transfer_SequenceOfBinder) NCollection_Sequence<opencascade::handle<Transfer_Binder>>;
+
+%extend NCollection_Sequence<opencascade::handle<Transfer_Binder>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Transfer_SequenceOfFinder) NCollection_Sequence<opencascade::handle<Transfer_Finder>>;
+
+%extend NCollection_Sequence<opencascade::handle<Transfer_Finder>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Transfer_TransferMapOfProcessForFinder) NCollection_IndexedDataMap<opencascade::handle<Transfer_Finder>,opencascade::handle<Transfer_Binder>,Transfer_FindHasher>;
 %template(Transfer_TransferMapOfProcessForTransient) NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>,opencascade::handle<Transfer_Binder>,TColStd_MapTransientHasher>;
 /* end templates declaration */

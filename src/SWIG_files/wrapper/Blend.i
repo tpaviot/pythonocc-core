@@ -127,6 +127,13 @@ Blend_DecrochBoth = Blend_DecrochStatus.Blend_DecrochBoth
 
 /* templates */
 %template(Blend_SequenceOfPoint) NCollection_Sequence<Blend_Point>;
+
+%extend NCollection_Sequence<Blend_Point> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

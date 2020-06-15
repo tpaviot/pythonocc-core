@@ -173,8 +173,29 @@ from OCC.Core.Exception import *
     }
 };
 %template(GeomPlate_SequenceOfAij) NCollection_Sequence<GeomPlate_Aij>;
+
+%extend NCollection_Sequence<GeomPlate_Aij> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(GeomPlate_SequenceOfCurveConstraint) NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>;
+
+%extend NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(GeomPlate_SequenceOfPointConstraint) NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>;
+
+%extend NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

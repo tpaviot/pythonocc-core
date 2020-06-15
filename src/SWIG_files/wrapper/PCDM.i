@@ -199,7 +199,21 @@ PCDM_RS_NoModel = PCDM_ReaderStatus.PCDM_RS_NoModel
 
 /* templates */
 %template(PCDM_SequenceOfDocument) NCollection_Sequence<opencascade::handle<PCDM_Document>>;
+
+%extend NCollection_Sequence<opencascade::handle<PCDM_Document>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(PCDM_SequenceOfReference) NCollection_Sequence<PCDM_Reference>;
+
+%extend NCollection_Sequence<PCDM_Reference> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

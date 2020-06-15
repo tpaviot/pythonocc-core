@@ -226,10 +226,45 @@ from OCC.Core.Exception import *
 %template(IntTools_MapOfCurveSample) NCollection_Map<IntTools_CurveRangeSample,IntTools_CurveRangeSampleMapHasher>;
 %template(IntTools_MapOfSurfaceSample) NCollection_Map<IntTools_SurfaceRangeSample,IntTools_SurfaceRangeSampleMapHasher>;
 %template(IntTools_SequenceOfCommonPrts) NCollection_Sequence<IntTools_CommonPrt>;
+
+%extend NCollection_Sequence<IntTools_CommonPrt> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntTools_SequenceOfCurves) NCollection_Sequence<IntTools_Curve>;
+
+%extend NCollection_Sequence<IntTools_Curve> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntTools_SequenceOfPntOn2Faces) NCollection_Sequence<IntTools_PntOn2Faces>;
+
+%extend NCollection_Sequence<IntTools_PntOn2Faces> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntTools_SequenceOfRanges) NCollection_Sequence<IntTools_Range>;
+
+%extend NCollection_Sequence<IntTools_Range> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IntTools_SequenceOfRoots) NCollection_Sequence<IntTools_Root>;
+
+%extend NCollection_Sequence<IntTools_Root> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

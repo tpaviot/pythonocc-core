@@ -82,8 +82,29 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(Units_QtsSequence) NCollection_Sequence<opencascade::handle<Units_Quantity>>;
+
+%extend NCollection_Sequence<opencascade::handle<Units_Quantity>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Units_TksSequence) NCollection_Sequence<opencascade::handle<Units_Token>>;
+
+%extend NCollection_Sequence<opencascade::handle<Units_Token>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(Units_UtsSequence) NCollection_Sequence<opencascade::handle<Units_Unit>>;
+
+%extend NCollection_Sequence<opencascade::handle<Units_Unit>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

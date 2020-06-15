@@ -252,10 +252,45 @@ IFSelect_ResultCount = IFSelect_PrintCount.IFSelect_ResultCount
 
 /* templates */
 %template(IFSelect_SequenceOfAppliedModifiers) NCollection_Sequence<opencascade::handle<IFSelect_AppliedModifiers>>;
+
+%extend NCollection_Sequence<opencascade::handle<IFSelect_AppliedModifiers>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IFSelect_SequenceOfGeneralModifier) NCollection_Sequence<opencascade::handle<IFSelect_GeneralModifier>>;
+
+%extend NCollection_Sequence<opencascade::handle<IFSelect_GeneralModifier>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IFSelect_SequenceOfInterfaceModel) NCollection_Sequence<opencascade::handle<Interface_InterfaceModel>>;
+
+%extend NCollection_Sequence<opencascade::handle<Interface_InterfaceModel>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IFSelect_TSeqOfDispatch) NCollection_Sequence<opencascade::handle<IFSelect_Dispatch>>;
+
+%extend NCollection_Sequence<opencascade::handle<IFSelect_Dispatch>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(IFSelect_TSeqOfSelection) NCollection_Sequence<opencascade::handle<IFSelect_Selection>>;
+
+%extend NCollection_Sequence<opencascade::handle<IFSelect_Selection>> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

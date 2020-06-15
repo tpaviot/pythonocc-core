@@ -106,9 +106,37 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 
 /* templates */
 %template(AdvApp2Var_SequenceOfNode) NCollection_Sequence<AdvApp2Var_Node>;
+
+%extend NCollection_Sequence<AdvApp2Var_Node> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(AdvApp2Var_SequenceOfPatch) NCollection_Sequence<AdvApp2Var_Patch>;
+
+%extend NCollection_Sequence<AdvApp2Var_Patch> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(AdvApp2Var_SequenceOfStrip) NCollection_Sequence<AdvApp2Var_Strip>;
+
+%extend NCollection_Sequence<AdvApp2Var_Strip> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 %template(AdvApp2Var_Strip) NCollection_Sequence<AdvApp2Var_Iso>;
+
+%extend NCollection_Sequence<AdvApp2Var_Iso> {
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+    }
+};
 /* end templates declaration */
 
 /* typedefs */
