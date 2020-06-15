@@ -279,7 +279,7 @@ if(PYTHONOCC_WRAP_VISU)
       set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
       set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
       swig_add_library (${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-      swig_link_libraries(${OCE_MODULE} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+      swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
     endforeach(OCE_MODULE)
 
   # Build third part modules
@@ -292,7 +292,7 @@ if(PYTHONOCC_WRAP_VISU)
       ${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Display3d.cpp)
 
     swig_add_library(Visualization LANGUAGE python SOURCES ${VISUALIZATION_SOURCE_FILES} TYPE MODULE)
-    swig_link_libraries(Visualization  ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
+    swig_link_libraries(Visualization ${OCE_MODEL_LIBRARIES} ${OCE_VISUALIZATION_LIBRARIES} Python3::Module)
 
   if(APPLE)
     # on OSX, always add /System/Library/Frameworks/Cocoa.framework, even
@@ -310,7 +310,7 @@ if(PYTHONOCC_WRAP_DATAEXCHANGE)
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCE_MODULE} ${OCE_DATAEXCHANGE_LIBRARIES} Python3::Module)
+    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_DATAEXCHANGE_LIBRARIES} Python3::Module)
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_DATAEXCHANGE)
 
@@ -322,7 +322,7 @@ if(PYTHONOCC_WRAP_OCAF)
     set(FILE ${SWIG_FILES_PATH}/${OCE_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
     swig_add_library(${OCE_MODULE} LANGUAGE python SOURCES ${FILE} TYPE MODULE)
-    swig_link_libraries(${OCE_MODULE}  ${OCE_OCAF_LIBRARIES} Python3::Module)
+    swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} ${OCE_OCAF_LIBRARIES} Python3::Module)
   endforeach(OCE_MODULE)
 endif(PYTHONOCC_WRAP_OCAF)
 
