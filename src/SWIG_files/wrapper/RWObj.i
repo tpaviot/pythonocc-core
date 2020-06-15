@@ -213,46 +213,6 @@ None
 /************************
 * class RWObj_MtlReader *
 ************************/
-class RWObj_MtlReader {
-	public:
-		/****************** RWObj_MtlReader ******************/
-		%feature("compactdefaultargs") RWObj_MtlReader;
-		%feature("autodoc", "Main constructor.
-
-Parameters
-----------
-theMaterials: NCollection_DataMap<TCollection_AsciiString, RWObj_Material>
-
-Returns
--------
-None
-") RWObj_MtlReader;
-		 RWObj_MtlReader(NCollection_DataMap<TCollection_AsciiString, RWObj_Material> & theMaterials);
-
-		/****************** Read ******************/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "Read the file.
-
-Parameters
-----------
-theFolder: TCollection_AsciiString
-theFile: TCollection_AsciiString
-
-Returns
--------
-bool
-") Read;
-		bool Read(const TCollection_AsciiString & theFolder, const TCollection_AsciiString & theFile);
-
-};
-
-
-%extend RWObj_MtlReader {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*********************
 * class RWObj_Reader *
 *********************/
@@ -554,6 +514,14 @@ None
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class RWObj_MtlReader:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
