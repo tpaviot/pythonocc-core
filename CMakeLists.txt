@@ -165,12 +165,13 @@ message(STATUS "pythonOCC modules will be installed to: ${PYTHONOCC_INSTALL_DIRE
 #############################################
 # List of OCE shared libraries to link with #
 #############################################
-set(OCE_MODEL_LIBRARIES TKernel TKMath TKG2d TKG3d TKGeomBase TKBRep TKGeomAlgo
-                        TKTopAlgo TKPrim TKBO TKShHealing TKBool TKHLR TKFillet
-                        TKOffset TKFeat TKMesh TKXMesh)
+set(OCE_MODEL_LIBRARIES TKernel TKMath TKBRep TKG2d TKG3d TKGeomBase TKBO
+                        TKBool TKFeat TKFillet TKGeomAlgo TKHLR TKMesh TKOffset
+                        TKPrim TKShHealing TKTopAlgo TKXMesh)
 set(OCE_VISUALIZATION_LIBRARIES TKService TKV3d TKOpenGl TKMeshVS)
-set(OCE_DATAEXCHANGE_LIBRARIES TKXSBase TKSTEPBase TKSTEPAttr TKSTEP209 TKSTEP TKIGES
-                               TKXCAF TKXDEIGES TKXDESTEP TKSTL TKVRML TKXmlXCAF TKBinXCAF)
+set(OCE_DATAEXCHANGE_LIBRARIES TKBinXCAF TKIGES TKRWMesh TKSTEP TKSTEP209 TKSTEPAttr
+                               TKSTEPBase TKSTL TKVRML TKXCAF TKXDEIGES TKXDESTEP TKXSBase
+                               TKXmlXCAF)
 set(OCE_OCAF_LIBRARIES TKCDF TKLCAF TKCAF TKBinL TKXmlL TKBin TKXml TKStdL
                        TKStd TKTObj TKBinTObj TKXmlTObj TKVCAF)
 
