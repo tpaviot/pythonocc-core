@@ -82,10 +82,10 @@ class TestExtendDataExchange(unittest.TestCase):
         export_shape_to_svg(A_TOPODS_SHAPE, get_test_fullname('sample.svg'))
 
 
-    def test_write_step_ap203(self):
-        write_step_file(A_TOPODS_SHAPE,
-                        get_test_fullname("sample_ap_203.stp"),
-                        application_protocol="AP203")
+    # def test_write_step_ap203(self):
+    #     write_step_file(A_TOPODS_SHAPE,
+    #                     get_test_fullname("sample_ap_203.stp"),
+    #                     application_protocol="AP203")
 
 
     def test_write_step_ap214(self):
