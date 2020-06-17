@@ -15,7 +15,7 @@ HAVE_BACKEND = False
 BACKEND_MODULE = "No backend loaded"
 
 log = logging.getLogger(__name__)
-log.set_level(logging.DEBUG)
+log.setLevel(logging.DEBUG)
 
 
 def load_pyqt5():
