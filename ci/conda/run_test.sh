@@ -5,9 +5,5 @@ mypy test_mypy_classic_occ_bottle.py
 
 if [ $(uname) == Linux ]; then
     # start xvfb
-    Xvfb :99 &
-    export DISPLAY=:99
-    sleep 3 # give xvfb some time to start
-    # then run pyqt5 GUI test
-    python core_display_pyqt5_unittest.py
+    xvfb-run --auto-servernum --server-args='-screen 0, 1024x768x24' python core_display_pyqt5_unittest.py
 fi
