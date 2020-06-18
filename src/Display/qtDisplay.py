@@ -17,8 +17,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import print_function
-
+import ctypes
 import logging
 import os
 import sys
@@ -41,7 +40,7 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
     '''
     def __init__(self, parent=None):
         super(qtBaseViewer, self).__init__(parent)
-        self._display = None
+        self._display = OCCViewer.Viewer3d()
         self._inited = False
 
         # enable Mouse Tracking
@@ -50,7 +49,7 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         # Strong focus
         self.setFocusPolicy(QtCore.Qt.WheelFocus)
 
-        # required for overpainting the widget
+        self.setAttribute(QtCore.Qt.WA_NativeWindow)
         self.setAttribute(QtCore.Qt.WA_PaintOnScreen)
         self.setAttribute(QtCore.Qt.WA_NoSystemBackground)
 
@@ -67,7 +66,6 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
                 ## Be careful, this hack is py27 specific
                 ## does not work with python31 or higher
                 ## since the PyCObject api was changed
-                import ctypes
                 ctypes.pythonapi.PyCObject_AsVoidPtr.restype = ctypes.c_void_p
                 ctypes.pythonapi.PyCObject_AsVoidPtr.argtypes = [ctypes.py_object]
                 win_id = ctypes.pythonapi.PyCObject_AsVoidPtr(win_id)
@@ -79,9 +77,11 @@ class qtBaseViewer(QtOpenGL.QGLWidget):
         return win_id
 
     def resizeEvent(self, event):
-        if self._inited:
-            super(qtBaseViewer, self).resizeEvent(event)
-            self._display.OnResize()
+        super(qtBaseViewer, self).resizeEvent(event)
+        self._display.View.MustBeResized()
+
+    def paintEngine(self):
+        return None
 
 
 class qtViewer3d(qtBaseViewer):
@@ -120,8 +120,7 @@ class qtViewer3d(qtBaseViewer):
         self._qApp = value
 
     def InitDriver(self):
-        self._display = OCCViewer.Viewer3d(window_handle=self.GetHandle(), parent=self)
-        self._display.Create()
+        self._display.Create(window_handle=self.GetHandle(), parent=self)
         # background gradient
         self._display.SetModeShaded()
         self._inited = True
@@ -172,9 +171,12 @@ class qtViewer3d(qtBaseViewer):
             self._display.Repaint()
 
     def paintEvent(self, event):
+        if not self._inited:
+            self.InitDriver()
+
+        self._display.Context.UpdateCurrentViewer()
+
         if self._drawbox:
-            self._display.Repaint()
-            self._display.Repaint()
             painter = QtGui.QPainter(self)
             painter.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0), 2))
             rect = QtCore.QRect(*self._drawbox)

@@ -17,12 +17,11 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
-import os.path
-import time
-import sys
-import math
 import itertools
+import math
+import os
+import sys
+import time
 
 import OCC
 from OCC.Core.Aspect import Aspect_GFM_VER
@@ -55,7 +54,8 @@ from OCC.Core.Graphic3d import (Graphic3d_NOM_NEON_GNC, Graphic3d_NOT_ENV_CLOUDS
                                 Graphic3d_TOSM_FRAGMENT,
                                 Graphic3d_Structure
                                 )
-from OCC.Core.Aspect import Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH, Aspect_FM_NONE
+from OCC.Core.Aspect import (Aspect_TOTP_RIGHT_LOWER, Aspect_FM_STRETCH,
+                             Aspect_FM_NONE)
 
 # Shaders and Units definition must be found by occ
 # the fastest way to get done is to set the CASROOT env variable
@@ -67,7 +67,7 @@ if sys.platform == "win32":
         # raise an error, force the user to correctly set the variable
         err_msg = "Please set the CASROOT env variable (%s is not ok)" % casroot_path
         if not os.path.isdir(casroot_path):
-        	raise AssertionError(err_msg)
+            raise AssertionError(err_msg)
     else:  # on miniconda or anaconda or whatever conda
         occ_package_path = os.path.dirname(OCC.__file__)
         casroot_path = os.path.join(occ_package_path, '..', '..', '..',
@@ -116,16 +116,17 @@ modes = itertools.cycle([TopAbs_FACE, TopAbs_EDGE,
 
 
 class Viewer3d(Display3d):
-    def __init__(self, window_handle, parent=None):
+    def __init__(self):
         Display3d.__init__(self)
-        # enable antialiasing by default
-        self._parent = parent  # the parent opengl GUI container
-        self._window_handle = window_handle
+        self._parent = None  # the parent opengl GUI container
+
         self._inited = False
         self._local_context_opened = False
-        self.Context = None
-        self.Viewer = None
-        self.View = None
+
+        self.Context = self.GetContext()
+        self.Viewer = self.GetViewer()
+        self.View = self.GetView()
+
         self.OverLayer = None
         self.default_drawer = None
         self._struc_mgr = None
@@ -153,16 +154,14 @@ class Viewer3d(Display3d):
         """
         if not callable(callback):
             raise AssertionError("You must provide a callable to register the callback")
-        else:
-            self._select_callbacks.append(callback)
+        self._select_callbacks.append(callback)
 
     def unregister_callback(self, callback):
         """ Remove a callback from the callback list
         """
         if not callback in self._select_callbacks:
             raise AssertionError("This callback is not registered")
-        else:
-            self._select_callbacks.remove(callback)
+        self._select_callbacks.remove(callback)
 
     def MoveTo(self, X, Y):
         self.Context.MoveTo(X, Y, self.View, True)
@@ -171,7 +170,10 @@ class Viewer3d(Display3d):
         self.View.ZFitAll()
         self.View.FitAll()
 
-    def Create(self, create_default_lights=True, draw_face_boundaries=True, phong_shading=True):
+    def Create(self, window_handle=None, parent=None, create_default_lights=True, draw_face_boundaries=True, phong_shading=True):
+        self._window_handle = window_handle
+        self._parent = parent
+
         if self._window_handle is None:
             self.InitOffscreen(640, 480)
             self._is_offscreen = True
@@ -179,12 +181,10 @@ class Viewer3d(Display3d):
             self.Init(self._window_handle)
             self._is_offscreen = False
 
-        self.Context = self.GetContext()
-        self.Viewer = self.GetViewer()
-        self.View = self.GetView()
         if create_default_lights:
             self.Viewer.SetDefaultLights()
             self.Viewer.SetLightOn()
+
         self.camera = self.View.Camera()
         self.default_drawer = self.Context.DefaultDrawer()
 
@@ -219,12 +219,6 @@ class Viewer3d(Display3d):
         self.View.Reset()
 
     def Repaint(self):
-        # overlayed objects
-        #self.OverLayer.Begin()
-        #for item in self._overlay_items:
-        #    item.RedrawLayerPrs()
-        #self.OverLayer.End()
-        # finally redraw the view
         self.Viewer.Redraw()
 
     def SetModeWireFrame(self):
@@ -665,12 +659,12 @@ class OffscreenRenderer(Viewer3d):
             if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH"):
                 path = os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH")
                 if not os.path.isdir(path):
-                	raise IOError("%s is not a valid path" % path)
+                    raise IOError("%s is not a valid path" % path)
             else:
                 path = os.getcwd()
             image_full_name = os.path.join(path, image_filename)
             self.View.Dump(image_full_name)
             if not os.path.isfile(image_full_name):
-            	raise IOError("OffscreenRenderer failed to render image to file")
+                raise IOError("OffscreenRenderer failed to render image to file")
             print("OffscreenRenderer content dumped to %s" % image_full_name)
         return r
