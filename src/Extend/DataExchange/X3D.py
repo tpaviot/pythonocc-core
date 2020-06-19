@@ -140,7 +140,8 @@ class X3DShapeExporter:
             tmp1 = [[a for a in l] + [-1] for l in shape_tesselator._edges_indices]
             edge_idx = [item for sublist in tmp1 for item in sublist]
             if edge_idx:
-                self._edges = XX3D.IndexedLineSet(USE=coord.DEF, coordIndex=edge_idx)
+                edge_coord = XX3D.Coordinate(USE=coord.DEF)
+                self._edges = XX3D.IndexedLineSet(coord=edge_coord, coordIndex=edge_idx)
 
 
 class X3DSceneExporter:
@@ -156,7 +157,7 @@ class X3DSceneExporter:
     def get_doc(self):
         return self._x3ddoc
 
-    def add_shape(self, shape, color, emissive=True):
+    def add_shape(self, shape, color=(0.5, 0.5, 0.5), edge_color=(0, 0, 0), emissive=True):
         # create the material
         if emissive:
             x3d_mat = XX3D.Material(emissiveColor=color)
@@ -169,7 +170,6 @@ class X3DSceneExporter:
             x3dcurve_geometry = XX3D.Shape()
             x3d_exporter = X3DCurveExporter(shape)
             x3dcurve_geometry.geometry = x3d_exporter.get_geo()
-
             x3dcurve_geometry.appearance = app
 
             self._x3dscene.children.extend([x3dcurve_geometry])
@@ -184,7 +184,10 @@ class X3DSceneExporter:
 
             x3dvisible_edge_geometry = XX3D.Shape()
             x3dvisible_edge_geometry.geometry = x3d_exporter.get_edges()
-            x3dvisible_edge_geometry.appearance = app
+
+            edge_material = XX3D.Material(emissiveColor=edge_color)
+            edge_appearance = XX3D.Appearance(DEF="edge_material", material=edge_material)
+            x3dvisible_edge_geometry.appearance = edge_appearance
 
             transform_node = XX3D.Transform(children=[x3dshape_geometry, x3dvisible_edge_geometry])
             transform_node.rotation = tuple(x3d_exporter._rotation_vector + [x3d_exporter._rotation_angle])
@@ -193,6 +196,9 @@ class X3DSceneExporter:
             transform_node.scale = (sf, sf, sf)
 
             self._x3dscene.children.append(transform_node)
+
+    def to_xml(self):
+        return self._x3ddoc.XML()
 
     def to_x3domHTML(self):
         x3dele = list(ET.XML(self._x3ddoc.XML()).iter('X3D'))[0]
