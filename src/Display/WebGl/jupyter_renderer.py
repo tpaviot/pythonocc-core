@@ -15,6 +15,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import base64
 import enum
 from functools import reduce
 import itertools
@@ -49,7 +50,8 @@ try:
         make_text,
     )
     from IPython.display import display, SVG
-    from ipywidgets import HTML, HBox, VBox, Checkbox, Button, Layout, Dropdown, embed
+    from ipywidgets import (HTML, HBox, VBox, Checkbox, Button,
+                            Layout, Dropdown, embed)
     import numpy as np
 except ImportError:
     error_log = """ Error You must install pythreejs/ipywidgets/numpy to run the jupyter notebook renderer.
@@ -57,7 +59,6 @@ If you installed pythonocc using conda, just type :
 $ conda install -c conda-forge pythreejs"""
     print(error_log)
     sys.exit(0)
-
 
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
@@ -68,21 +69,24 @@ from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.Tesselator import ShapeTesselator
 
-from OCC.Extend.TopologyUtils import (
-    TopologyExplorer,
-    is_edge,
-    is_wire,
-    discretize_edge,
-    discretize_wire,
-    get_type_as_string,
-)
-from OCC.Extend.ShapeFactory import (
-    get_oriented_boundingbox,
-    get_aligned_boundingbox,
-    measure_shape_mass_center_of_gravity,
-    recognize_face,
-)
-from OCC.Extend.DataExchange import export_shape_to_svg
+from OCC.Extend.TopologyUtils import (TopologyExplorer, is_edge, is_wire, discretize_edge,
+                                      discretize_wire, get_type_as_string)
+from OCC.Extend.ShapeFactory import (get_oriented_boundingbox,
+                                     get_aligned_boundingbox,
+                                     measure_shape_mass_center_of_gravity,
+                                     recognize_face)
+try:
+    from OCC.Extend.DataExchange import export_shape_to_svg
+    HAVE_SVG = True
+except:
+    HAVE_SVG = False
+
+def create_download_link(a_str, filename):  
+    b64 = base64.b64encode(a_str.encode())
+    payload = b64.decode()
+    html = '<a download="{filename}" href="data:text/x3d;base64,{payload}" target="_blank">{title}</a>'
+    html = html.format(payload=payload, title="Download " + filename, filename=filename)
+    return HTML(html)
 
 #
 # Util mathematical functions
@@ -691,6 +695,7 @@ class JupyterRenderer:
         """Returns the selected shape"""
         return self._current_shape_selection
 
+<<<<<<< HEAD
     def DisplayShapeAsSVG(
         self,
         shp,
@@ -710,8 +715,25 @@ class JupyterRenderer:
             margin_left=0,
             margin_top=0,
         )
+=======
+    def DisplayShapeAsSVG(self,
+                          shp,
+                          export_hidden_edges=True,
+                          location=gp_Pnt(0, 0, 0),
+                          direction=gp_Dir(1, 1, 1),
+                          color="black",
+                          line_width=0.5):
+        if not HAVE_SVG:
+            print("svg export not available")
+            return False
+        svg_string = export_shape_to_svg(shp, export_hidden_edges=export_hidden_edges,
+                                         location=location, direction=direction,
+                                         color=color, line_width=line_width,
+                                         margin_left=0, margin_top=0)
+>>>>>>> added create_download_link to jupyter_renderer
         svg = SVG(data=svg_string)
         display(svg)
+        return True
 
     def DisplayShape(
         self,
