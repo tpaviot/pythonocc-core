@@ -16,6 +16,7 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import json
 import os
 import re
 
@@ -71,6 +72,25 @@ class SceneGraphFromDoc:
         self._log = log
 
         self._get_shapes()
+
+    def to_json_string(self):
+        # this requires a specific encoder because some
+        # occt objects are not seriazables
+        class SceneGraphJSONEncoder(json.JSONEncoder):
+            def default(self, obj):
+                if hasattr(obj, 'DumpJsonToString'):
+                    # it's an occt object
+                    return obj.DumpJsonToString()
+                elif isinstance(obj, TDF_Label):
+                    return "TDF_Label"
+                else:
+                    return json.JSONEncoder.default(self, obj)
+
+        return json.dumps(self._scene, indent=4, sort_keys=True, cls=SceneGraphJSONEncoder)
+
+    def save_as_json(self, filename):
+        with open(filename, "w") as f:
+            f.write(self.to_json_string())
 
     def get_scene(self):
         return self._scene
@@ -171,8 +191,7 @@ class SceneGraphFromDoc:
                          'shape' : shape,
                          'shapeType' : shape_type,
                          'name' : name + '-shape',
-                         'colorString' : f"{c.Red()} {c.Green()} {c.Blue()}",
-                         'color' : (c.Red(), c.Green(), c.Blue()),
+                         'color' : [c.Red(), c.Green(), c.Blue()],
                          'colorDEF' : clabelString
                         }
 
@@ -212,8 +231,7 @@ class SceneGraphFromDoc:
                                 'shapeType': shape_type,
                                 'DEF': def_name,
                                 'name': node_name + '-subshape',
-                                'colorString': f"{c.Red()} {c.Green()} {c.Blue()}",
-                                'color': (c.Red(), c.Green(), c.Blue()),
+                                'color': [c.Red(), c.Green(), c.Blue()],
                                 'colorDEF': clabelString,
                                 'trafo': subloc
                                 }
@@ -242,8 +260,7 @@ class SceneGraphFromDoc:
                     # override default color, if only one color, is last color
                     clabel = self._color_tool.FindColor(c)
                     clabelString = clabel.EntryDumpToString()
-                    subshapenode['colorString'] = f"{c.Red()} {c.Green()} {c.Blue()}"
-                    subshapenode['color'] = (c.Red(), c.Green(), c.Blue())
+                    subshapenode['color'] = [c.Red(), c.Green(), c.Blue()]
                     subshapenode['colorDEF'] = clabelString
 
                     if len(list(colorFaceLists)) > 1:
@@ -252,7 +269,7 @@ class SceneGraphFromDoc:
                                         'shape' : shape_sub,
                                         'shapeType' : shape_type,
                                         'DEF' : def_name,
-                                        'name' : node_name+'-colorshells',
+                                        'name' : node_name + '-colorshells',
                                         'children' : []
                                         }
                         f = 0
@@ -277,9 +294,8 @@ class SceneGraphFromDoc:
                                          'shape' : subshell,
                                          'shapeType' : shape_type,
                                          'DEF' : f"{def_name}:{f}",
-                                         'name' : node_name+'-colorshell',
-                                         'colorString' : f"{c.Red()} {c.Green()} {c.Blue()}",
-                                         'color' : (c.Red(), c.Green(), c.Blue()),
+                                         'name' : node_name + '-colorshell',
+                                         'color' : [c.Red(), c.Green(), c.Blue()],
                                          'colorDEF' : clabelString
                                         }
                             subshapenode['children'].append(shellnode) #  add to group
@@ -335,4 +351,5 @@ if __name__ == "__main__":
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
     doc_exp = DocFromSTEP(step_file)
     document = doc_exp.get_doc()
-    SceneGraphFromDoc(document, log=True)
+    c = SceneGraphFromDoc(document, log=True)
+    c.save_as_json("sc.json")
