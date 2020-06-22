@@ -192,7 +192,7 @@ class SceneGraphFromDoc:
                          'shapeType' : shape_type,
                          'name' : name + '-shape',
                          'color' : [c.Red(), c.Green(), c.Blue()],
-                         'colorDEF' : clabelString
+                         'color_uid' : clabelString
                         }
 
             #shapenode is attached below as needed
@@ -232,7 +232,7 @@ class SceneGraphFromDoc:
                                 'DEF': def_name,
                                 'name': node_name + '-subshape',
                                 'color': [c.Red(), c.Green(), c.Blue()],
-                                'colorDEF': clabelString,
+                                'color_uid': clabelString,
                                 'trafo': subloc
                                 }
 
@@ -261,7 +261,7 @@ class SceneGraphFromDoc:
                     clabel = self._color_tool.FindColor(c)
                     clabelString = clabel.EntryDumpToString()
                     subshapenode['color'] = [c.Red(), c.Green(), c.Blue()]
-                    subshapenode['colorDEF'] = clabelString
+                    subshapenode['color_uid'] = clabelString
 
                     if len(list(colorFaceLists)) > 1:
                         subshapenode = {'node' : 'Group',
@@ -287,7 +287,7 @@ class SceneGraphFromDoc:
                             c = colorColors[entry]
                             clabel = self._color_tool.FindColor(c)
                             clabelString = clabel.EntryDumpToString()
-                            if clabelString != shapenode['colorDEF']:
+                            if clabelString != shapenode['color_uid']:
                                 subcolorsUniform = False
                             shellnode = {'node' : 'SubShape',
                                          'label' : lab_subs,
@@ -296,7 +296,7 @@ class SceneGraphFromDoc:
                                          'DEF' : f"{def_name}:{f}",
                                          'name' : node_name + '-colorshell',
                                          'color' : [c.Red(), c.Green(), c.Blue()],
-                                         'colorDEF' : clabelString
+                                         'color_uid' : clabelString
                                         }
                             subshapenode['children'].append(shellnode) #  add to group
                             f = f + 1

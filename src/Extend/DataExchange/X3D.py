@@ -37,6 +37,21 @@ _X3DOM_HEADER = '''<script type='text/javascript' src='https://www.x3dom.org/dow
 <link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/dev/x3dom.css'></link>
 '''
 
+def _sanitize_DEF(name):
+        # IdFirstChar ::=
+        # Any ISO-10646 character encoded using UTF-8 except: 0x30-0x3a, 0x0-0x20, 0x22,
+        # 0x23, 0x27, 0x2b, 0x2c, 0x2d, 0x2e, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
+        # first no [0-9],space,",#,',+,comma,-,.,[,\,],{,}
+        # IdRestChars ::=
+        # Any number of ISO-10646 characters except: 0x0-0x20, 0x22, 0x23, 0x27, 0x2c, 0x2e,
+        # 0x3a, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
+        # rest no space,",#,',comma,.,:,[,\,],{,}
+        replace_dict = {" ": "_", '"': '^', '#': 'N', "'": "^", ",": ";",
+                        ".": ";", ":": "-", "[": "(", "]": ")", "{": "(",
+                        "}": ")", "\\": "/"}
+        for k, v in replace_dict.items():
+            name = name.replace(k, v)
+        return 'L-' + name
 
 class X3DCurveExporter:
     """ A class for exporting 1d topology such as TopoDS_Wire or TopoDS_Edge
@@ -151,26 +166,50 @@ class X3DSceneExporter:
         self._x3dscene = XX3D.Scene(children=[])
         self._x3ddoc = XX3D.X3D(Scene=self._x3dscene)
 
+        # keep references for DEFs
+        # use a set to prevent duplicates
+        self._app_def_set = set()
+
     def get_scene(self):
         return self._x3dscene
 
     def get_doc(self):
         return self._x3ddoc
 
-    def add_shape(self, shape, color=(0.5, 0.5, 0.5), edge_color=(0, 0, 0), emissive=True):
+    def add_group(self, group_def_name, DEF=None, USE=None):
+        group = XX3D.Group()
+        if DEF:
+            group.DEF = DEF
+        elif USE:
+            group.USE = USE
+        self._x3dscene.children()
+
+    def add_shape(self, shape, shape_DEF_name=None, shape_color=(0.4, 0.4, 0.4),
+                  color_DEF_name=None, emissive=True, edge_color=(0, 0, 0)):
         # create the material
         if emissive:
-            x3d_mat = XX3D.Material(emissiveColor=color)
+            x3d_material = XX3D.Material(emissiveColor=shape_color)
         else:
-            x3d_mat = XX3D.Material(diffuseColor=color, specularColor=(0.9, 0.9, 0.9),
-                                    shininess=1, ambientIntensity=0.1)
-        app = XX3D.Appearance(DEF="matoube", material=x3d_mat)
+            x3d_material = XX3D.Material(diffuseColor=shape_color,
+                                         specularColor=(0.9, 0.9, 0.9),
+                                         shininess=1, ambientIntensity=0.1)
+        if color_DEF_name is not None:
+            if emissive:
+                color_DEF_name += "-emissive"
+            if color_DEF_name in self._app_def_set:
+                shape_appearance = XX3D.Appearance(USE=color_DEF_name)
+            else:
+                self._app_def_set.add(color_DEF_name)
+                shape_appearance = XX3D.Appearance(DEF=color_DEF_name, material=x3d_material)
+        else:
+            shape_appearance = XX3D.Appearance(material=x3d_material)
 
+        # then process shape
         if is_edge(shape) or is_wire(shape):
             x3dcurve_geometry = XX3D.Shape()
             x3d_exporter = X3DCurveExporter(shape)
             x3dcurve_geometry.geometry = x3d_exporter.get_geo()
-            x3dcurve_geometry.appearance = app
+            x3dcurve_geometry.appearance = shape_appearance
 
             self._x3dscene.children.extend([x3dcurve_geometry])
         else:
@@ -178,7 +217,7 @@ class X3DSceneExporter:
 
             x3dshape_geometry = XX3D.Shape()
             x3dshape_geometry.geometry = x3d_exporter.get_geo()
-            x3dshape_geometry.appearance = app
+            x3dshape_geometry.appearance = shape_appearance
             x3dshape_geometry.bboxCenter = tuple(x3d_exporter._bb_center)
             x3dshape_geometry.bboxSize = tuple(x3d_exporter._bb_size)
 
@@ -210,6 +249,7 @@ class X3DSceneExporter:
     def write_to_file(self, filename):
         with open(filename, "w") as f:
             f.write(self.to_x3domHTML())
+
 
 class X3DFromSceneGraph:
     def __init__(self, scene=None, faces_in_solids=None, show_edges=True,
@@ -290,27 +330,12 @@ class X3DFromSceneGraph:
                                        shininess=1, ambientIntensity=0.1)
             return XX3D.Appearance(DEF=DEFname, material=x3dmat)
 
-    def sanitize_DEF(self, name):
-        # IdFirstChar ::=
-        # Any ISO-10646 character encoded using UTF-8 except: 0x30-0x3a, 0x0-0x20, 0x22,
-        # 0x23, 0x27, 0x2b, 0x2c, 0x2d, 0x2e, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
-        # first no [0-9],space,",#,',+,comma,-,.,[,\,],{,}
-        # IdRestChars ::=
-        # Any number of ISO-10646 characters except: 0x0-0x20, 0x22, 0x23, 0x27, 0x2c, 0x2e,
-        # 0x3a, 0x5b, 0x5c, 0x5d, 0x7b, 0x7d, 0x7f ;
-        # rest no space,",#,',comma,.,:,[,\,],{,}
-        replace_dict = {" ": "_", '"': '^', '#': 'N', "'": "^", ",": ";",
-                        ".": ";", ":": "-", "[": "(", "]": ")", "{": "(",
-                        "}": ")", "\\": "/"}
-        for k, v in replace_dict.items():
-            name = name.replace(k, v)
-        return 'L-' + name
 
     def apply_DEF_or_USE(self, node, x3dnode):
         if 'USE' in node:
-            x3dnode.USE = self.sanitize_DEF(node['USE'])
+            x3dnode.USE = _sanitize_DEF(node['USE'])
         if 'DEF' in node:
-            x3dnode.DEF = self.sanitize_DEF(node['DEF'])
+            x3dnode.DEF = _sanitize_DEF(node['DEF'])
 
     def set_children(self, node, x3dnode):
         if 'children' in node:
@@ -352,8 +377,8 @@ class X3DFromSceneGraph:
                 x3dnode.geometry = geometry_dict['x3dgeo']
                 is_edge_or_wire = is_edge(shape) or is_wire(shape)
                 if 'color' in node:
-                    color_def = self.sanitize_DEF(node['colorDEF'])
-                    x3dnode.appearance = self.x3d_appearance_from_color(node['color'], color_def, is_edge_or_wire)
+                    color_def = _sanitize_DEF(node['color_uid'])
+                    x3dnode.appearance = self.x3d_appearance_from_color(tuple(node['color']), color_def, is_edge_or_wire)
                 if not is_edge_or_wire:
                     edge_node = XX3D.Shape(class_=node['name'] + '-edge', visible=self._show_edges)
                     edge_node.geometry = geometry_dict['x3dedges']
@@ -374,7 +399,7 @@ if __name__ == "__main__":
     shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
 
     scene_exp = X3DSceneExporter()
-    scene_exp.add_shape(shp, color=(0.5, 0.6, 0.7), emissive=False)
+    scene_exp.add_shape(shp, shape_color=(0.5, 0.6, 0.7), emissive=False)
 
     scene_exp.write_to_file('ess.x3d')
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
