@@ -663,17 +663,11 @@ def is_compsolid(topods_shape: TopoDS_Shape) -> bool:
 
 
 def get_type_as_string(topods_shape: TopoDS_Shape) -> str:
-    """just get the type string, remove TopAbs_ and lowercas all ending letters"""
-    types = {
-        TopAbs_VERTEX: "Vertex",
-        TopAbs_COMPSOLID: "CompSolid",
-        TopAbs_FACE: "Face",
-        TopAbs_WIRE: "Wire",
-        TopAbs_EDGE: "Edge",
-        TopAbs_COMPOUND: "Compound",
-        TopAbs_COMPSOLID: "CompSolid",
-        TopAbs_SOLID: "Solid",
-    }
+    """ just get the type string, remove TopAbs_ and lowercas all ending letters
+    """
+    types = {TopAbs_VERTEX: "Vertex", TopAbs_COMPSOLID: "CompSolid", TopAbs_FACE: "Face",
+             TopAbs_WIRE: "Wire", TopAbs_EDGE: "Edge", TopAbs_COMPOUND: "Compound",
+             TopAbs_COMPSOLID: "CompSolid", TopAbs_SOLID: "Solid", TopAbs_SHELL: "Shell"}
     return types[topods_shape.ShapeType()]
 
 
