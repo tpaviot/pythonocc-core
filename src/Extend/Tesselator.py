@@ -36,7 +36,7 @@ from OCC.Core.TColStd import TColStd_Array1OfReal
 from OCC.Core.GCPnts import GCPnts_TangentialDeflection
 from OCC.Core.Precision import precision_Confusion
 
-from OCC.Extend.TopologyUtils import TopologyExplorer, WireExplorer
+from OCC.Extend.TopologyUtils import TopologyExplorer, WireExplorer, check_shape
 
 def _flatten(lst):
     return [item for sublist in lst for item in sublist]
@@ -177,8 +177,12 @@ class EdgeDiscretizer:
 class Tesselator:
     def __init__(self, a_topods_shape, compute_normals=False,
                  compute_edges=False, mesh_quality=1., global_coordinates=False):
-        # the shape to tesselate
-        self._shape = a_topods_shape
+        # first check that shape
+        is_valid, fixed_shape_if_not_valid = check_shape(a_topods_shape, fix=True)
+        if not is_valid:  # take the fixed shape
+            self._shape = fixed_shape_if_not_valid
+        else: # take the original shape
+            self._shape = a_topods_shape
 
         # options
         self._compute_normals = compute_normals
