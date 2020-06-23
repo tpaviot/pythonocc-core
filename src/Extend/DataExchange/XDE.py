@@ -36,6 +36,8 @@ from OCC.Extend.TopologyUtils import TopologyExplorer, get_type_as_string
 class DocFromSTEP:
     def __init__(self, stp_filename, doc_name=""):
         # create an handle to a document
+        if not os.path.isfile(stp_filename):
+            raise IOError("%s not found." % stp_filename)
         self._doc = TDocStd_Document(TCollection_ExtendedString(doc_name))
 
         step_reader = STEPCAFControl_Reader()
@@ -95,7 +97,7 @@ class SceneGraphFromDoc:
     def get_scene(self):
         return self._scene
 
-    def get_internalFaceEntries(self):
+    def get_internal_face_entries(self):
         return self._facesInSubshapes
 
     def _print_log(self, message):  # TODO: replace with the logging module functions

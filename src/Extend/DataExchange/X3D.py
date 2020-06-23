@@ -194,8 +194,6 @@ class X3DSceneExporter:
                                          specularColor=(0.9, 0.9, 0.9),
                                          shininess=1, ambientIntensity=0.1)
         if color_DEF_name is not None:
-            if emissive:
-                color_DEF_name += "-emissive"
             if color_DEF_name in self._app_def_set:
                 shape_appearance = XX3D.Appearance(USE=color_DEF_name)
             else:
@@ -407,7 +405,7 @@ if __name__ == "__main__":
     document = doc_exp.get_doc()
     scenegraph = SceneGraphFromDoc(document)
     x3dXML = X3DFromSceneGraph(scene=scenegraph.get_scene(),
-                               faces_in_solids=scenegraph.get_internalFaceEntries(),
+                               faces_in_solids=scenegraph.get_internal_face_entries(),
                                log=True)
     print(x3dXML.to_xml())
     print(x3dXML.to_x3dom_html())
