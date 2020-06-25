@@ -38,6 +38,7 @@ from OCC.Core.Precision import precision_Confusion
 
 from OCC.Extend.TopologyUtils import TopologyExplorer, WireExplorer, check_shape
 
+
 def _flatten(lst):
     return [item for sublist in lst for item in sublist]
 
@@ -87,7 +88,7 @@ class EdgeDiscretizer:
         self._U2 = self._curve_adaptator.LastParameter()
 
         self._deviation = 0.3
-        self._angular_deflection = 20.0 * pi / 180.0
+        self._angular_deflection = 5. * pi / 180.0
 
         # bbsize and center, as lists
         # None by default, lists if computation successfull
@@ -150,7 +151,7 @@ class EdgeDiscretizer:
         # other cases
         else:
             nb_inter = self._curve_adaptator.NbIntervals(GeomAbs_C1)
-            print("Intervals:", nb_inter)
+            #print("Intervals:", nb_inter)
             T = TColStd_Array1OfReal(1, nb_inter+1)
             self._curve_adaptator.Intervals(T, GeomAbs_C1)
 
