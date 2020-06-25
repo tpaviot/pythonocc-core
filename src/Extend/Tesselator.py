@@ -205,12 +205,20 @@ class Tesselator:
         # None by default, lists if computation successfull
         self._bb_size = None
         self._bb_center = None
+
+        # bounding sphere, computed from the bounding box
+        # bounding sphere is used by threejs
+        self.__bs_radius = None
+        self._bs_center = None
+
         self.compute_bounding_box()
 
         self.tesselate() # this method has to be implemented for each child class
 
 
     def compute_bounding_box(self):
+        """ compute the bounding box and sphere
+        """
         shp_bounding_box = Bnd_Box()
         brepbndlib_Add(self._shape, shp_bounding_box, False)
         if shp_bounding_box.IsVoid():
@@ -228,6 +236,12 @@ class Tesselator:
 
         self._bb_size = [dx, dy, dz]
         self._bb_center = [px, py, pz]
+
+        # the bounding sphere is computed from the bounding box
+        # same center, radius is half the max of dx, d, dz
+        self.__bs_radius = max(self._bb_size) / 2.
+        self._bs_center = self._bb_center
+
         return True
 
 
@@ -237,6 +251,14 @@ class Tesselator:
 
     def get_bb_center(self):
         return self._bb_center
+
+
+    def get_bs_size(self):
+        return self._bs_size
+
+
+    def get_bs_center(self):
+        return self._bs_center
 
 
     def get_vertex_coords(self):
