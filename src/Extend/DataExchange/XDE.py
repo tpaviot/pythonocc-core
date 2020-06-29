@@ -33,6 +33,26 @@ from OCC.Core.XCAFDoc import (XCAFDoc_DocumentTool_ShapeTool,
 
 from OCC.Extend.TopologyUtils import TopologyExplorer, get_type_as_string
 
+
+def _toUnicode(match):
+    return chr(int(match.group(1), 16))
+
+
+def _unescapeStep(name):
+    # remove trailing whitespaces
+    new_name = name.strip()
+    # https://stackoverflow.com/questions/730133/what-are-invalid-characters-in-xml
+    replace_dict = {"&": "&amp;", ">": "&gt;", "<": "&lt;", "'": "&apos;", '"': '&quot;'}
+    for k, v in replace_dict.items():
+        new_name = new_name.replace(k, v)
+    reg1 = re.compile(r'\\X\\(..)')
+    reg2 = re.compile(r'\\X2\\(....)\\X0\\')
+    reg3 = re.compile(r'\\X4\\(........)\\X0\\')
+    new_name = reg3.sub(_toUnicode, reg2.sub(_toUnicode, reg1.sub(_toUnicode, new_name)))
+
+    return new_name
+
+
 class DocFromSTEP:
     def __init__(self, stp_filename, doc_name=""):
         # create an handle to a document
@@ -121,7 +141,7 @@ class SceneGraphFromDoc:
             return
 
         self._visited[labelString] = lab
-        name = self._unescapeStep(lab.GetLabelName())
+        name = _unescapeStep(lab.GetLabelName())
 
         if self._shape_tool.IsAssembly(lab):
             node = {'node' : 'Group',
@@ -135,12 +155,12 @@ class SceneGraphFromDoc:
                 label = l_c.Value(i + 1)
                 #print("Group Name DEF :", name, labelString)
                 if self._shape_tool.IsReference(label):
-                    self._print_log("########  component label :" + self._unescapeStep(label.GetLabelName()))
+                    self._print_log("########  component label :" + _unescapeStep(label.GetLabelName()))
                     loc = self._shape_tool.GetLocation(label)
                     #print(" Transform  loc DEF          :", loc.HashCode(100))
                     label_reference = TDF_Label()
                     self._shape_tool.GetReferredShape(label, label_reference)
-                    reference_name = self._unescapeStep(label_reference.GetLabelName())
+                    reference_name = _unescapeStep(label_reference.GetLabelName())
                     self._print_log("########  Transform USE to DEF ==> referenced label : "+ reference_name)
                     trafo = {'node' : 'Transform',
                              'DEF' : label.EntryDumpToString(),
@@ -222,7 +242,7 @@ class SceneGraphFromDoc:
                 clabelString = clabel.EntryDumpToString()
                 #n = c.Name(c.Red(), c.Green(), c.Blue())
                 #print('    solidshape color RGB: ', c.Red(), c.Green(), c.Blue(), n)
-                node_name = self._unescapeStep(lab_subs.GetLabelName())
+                node_name = _unescapeStep(lab_subs.GetLabelName())
                 def_name = lab_subs.EntryDumpToString()
                 subloc = self._shape_tool.GetLocation(lab_subs) # assume identity, otherwise we need another wrapper
                 #print("    subshape Transform: ", subloc.HashCode(100))
@@ -335,17 +355,6 @@ class SceneGraphFromDoc:
             self._color_tool.SetInstanceColor(shape, 2, c)
 
         return c
-
-    def _unescapeStep(self, name):
-
-        def _toUnicode(match):
-            return chr(int(match.group(1), 16))
-
-        reg1 = re.compile(r'\\X\\(..)')
-        reg2 = re.compile(r'\\X2\\(....)\\X0\\')
-        reg3 = re.compile(r'\\X4\\(........)\\X0\\')
-
-        return reg3.sub(_toUnicode, reg2.sub(_toUnicode, reg1.sub(_toUnicode, name)))
 
 
 if __name__ == "__main__":
