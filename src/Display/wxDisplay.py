@@ -152,20 +152,28 @@ class wxViewer3d(wxBaseViewer):
         def set_shade_mode():
             self._display.DisableAntiAliasing()
             self._display.SetModeShaded()
+            
         self._key_map = {ord('W'): self._display.SetModeWireFrame,
                          ord('S'): set_shade_mode,
                          ord('A'): self._display.EnableAntiAliasing,
                          ord('B'): self._display.DisableAntiAliasing,
                          ord('H'): self._display.SetModeHLR,
-                         ord('G'): self._display.SetSelectionModeVertex
+                         ord('G'): self._display.SetSelectionModeVertex,
+                         306: self._shift_down
                         }
+
+    def _shift_down(self, evt = None):
+        print('Shift pressed')
+        if evt:
+            evt.Skip()
 
     def OnKeyDown(self, evt):
         code = evt.GetKeyCode()
         try:
             self._key_map[code]()
+            print('Key pressed: %i' % code)
         except KeyError:
-            print('unrecognized key %i' % evt.GetKeyCode())
+            print('Unrecognized key pressed %i' % code)
 
     def OnMaximize(self, event):
         if self._inited:
@@ -252,16 +260,14 @@ class wxViewer3d(wxBaseViewer):
         if abs(dx) <= tolerance and abs(dy) <= tolerance:
             return
         dc = wx.ClientDC(self)
-        dc.BeginDrawing()
         dc.SetPen(wx.Pen(wx.WHITE, 1, wx.DOT))
         dc.SetBrush(wx.TRANSPARENT_BRUSH)
         dc.SetLogicalFunction(wx.XOR)
         if self._drawbox:
             r = wx.Rect(*self._drawbox)
-            dc.DrawRectangleRect(r)
+            dc.DrawRectangle(r)
         r = wx.Rect(self.dragStartPos.x, self.dragStartPos.y, dx, dy)
-        dc.DrawRectangleRect(r)
-        dc.EndDrawing()
+        dc.DrawRectangle(r)
         self._drawbox = [self.dragStartPos.x, self.dragStartPos.y, dx, dy]
 
     def OnMotion(self, evt):
