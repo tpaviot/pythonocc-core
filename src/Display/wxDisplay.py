@@ -152,7 +152,7 @@ class wxViewer3d(wxBaseViewer):
         def set_shade_mode():
             self._display.DisableAntiAliasing()
             self._display.SetModeShaded()
-            
+
         self._key_map = {ord('W'): self._display.SetModeWireFrame,
                          ord('S'): set_shade_mode,
                          ord('A'): self._display.EnableAntiAliasing,
