@@ -33,9 +33,14 @@ from OCC.Extend.Tesselator import ShapeTesselator, EdgeDiscretizer, WireDiscreti
 # official x3d package
 import OCC.Extend.DataExchange.x3d_standard.x3d as XX3D
 
+
 _X3DOM_HEADER = '''<script type='text/javascript' src='https://www.x3dom.org/download/dev/x3dom-full.debug.js'> </script>
 <link rel='stylesheet' type='text/css' href='https://www.x3dom.org/download/dev/x3dom.css'></link>
 '''
+def _flatten(lst):
+    """ take nested lists and return flattened values
+    """
+    return [item for sublist in lst for item in sublist]
 
 def _sanitize_DEF(name):
         # IdFirstChar ::=
@@ -68,11 +73,14 @@ class X3DCurveExporter:
 
         self.compute()
 
+
     def get_geo(self):
         return self._geo
 
+
     def get_edges(self):
         return self._edges
+
 
     def compute(self):
         shape_type = self._shape.ShapeType()
@@ -91,7 +99,8 @@ class X3DCurveExporter:
 class X3DShapeExporter:
     """ A class for exporting a single TopoDS_Shape to x3d
     """
-    def __init__(self, shape, compute_normals=False, compute_edges=True, uid=None):
+    def __init__(self, shape, compute_normals=False, compute_edges=True, uid=None,
+                 decimation_ratio=0.):
         self._compute_normals = compute_normals
         self._compute_edges = compute_edges
 
@@ -101,6 +110,7 @@ class X3DShapeExporter:
             self._uid = uid
 
         self._shape = shape
+        self._decimation_ratio = decimation_ratio
 
         self._geo = None
         self._edges = None
@@ -115,11 +125,14 @@ class X3DShapeExporter:
 
         self.compute()
 
+
     def get_geo(self):
         return self._geo
 
+
     def get_edges(self):
         return self._edges
+
 
     def compute(self):
         """ compute meshes, return True if successful
@@ -127,6 +140,9 @@ class X3DShapeExporter:
         shape_tesselator = ShapeTesselator(self._shape,
                                            compute_normals=self._compute_normals,
                                            compute_edges=self._compute_edges)
+        if self._decimation_ratio > 0.:
+            shape_tesselator.decimate(self._decimation_ratio)
+
         # store shape information
         self._bb_center = shape_tesselator.get_bb_center()
         self._bb_size = shape_tesselator.get_bb_size()
@@ -136,6 +152,7 @@ class X3DShapeExporter:
         self._scale_factor = shape_tesselator.get_scale_factor()
 
         idx = shape_tesselator.get_flattened_vertex_indices()
+
         coord = XX3D.Coordinate(point=shape_tesselator.get_vertex_coords())
         coord.DEF = "ITS-COORD-" + self._uid
         if self._compute_normals:
@@ -155,7 +172,13 @@ class X3DShapeExporter:
             tmp1 = [[a for a in l] + [-1] for l in shape_tesselator._edges_indices]
             edge_idx = [item for sublist in tmp1 for item in sublist]
             if edge_idx:
-                edge_coord = XX3D.Coordinate(USE=coord.DEF)
+                if self._decimation_ratio == 0.:  # no decimation, use the vertex coord
+                    edge_coord = XX3D.Coordinate(USE=coord.DEF)
+                else:  # we can't use the same coordinates that the faces
+                    # we use the LOD 0 vertex coordinates, more precise
+                    # and decimation algorithm may alter sharp edges
+                    default_vert_coord, _, _ = shape_tesselator.get_lod()[0.]
+                    edge_coord = XX3D.Coordinate(point=default_vert_coord)
                 self._edges = XX3D.IndexedLineSet(coord=edge_coord, coordIndex=edge_idx)
 
 
@@ -170,11 +193,14 @@ class X3DSceneExporter:
         # use a set to prevent duplicates
         self._app_def_set = set()
 
+
     def get_scene(self):
         return self._x3dscene
 
+
     def get_doc(self):
         return self._x3ddoc
+
 
     def add_group(self, group_def_name, DEF=None, USE=None):
         group = XX3D.Group()
@@ -184,8 +210,13 @@ class X3DSceneExporter:
             group.USE = USE
         self._x3dscene.children()
 
+
     def add_shape(self, shape, shape_DEF_name=None, shape_color=(0.4, 0.4, 0.4),
-                  color_DEF_name=None, emissive=True, edge_color=(0, 0, 0)):
+                  color_DEF_name=None, emissive=True, edge_color=(0, 0, 0),
+                  decimation_ratio = 0., export_edges=True):
+        if decimation_ratio < 0. or decimation_ratio > 1.:
+            raise ValueError("decimation ration must be > 0. and < 1.")
+
         # create the material
         if emissive:
             x3d_material = XX3D.Material(emissiveColor=shape_color)
@@ -211,7 +242,10 @@ class X3DSceneExporter:
 
             self._x3dscene.children.extend([x3dcurve_geometry])
         else:
-            x3d_exporter = X3DShapeExporter(shape, compute_normals=False, compute_edges=True)
+            x3d_exporter = X3DShapeExporter(shape,
+                                            compute_normals=False,
+                                            compute_edges=True,
+                                            decimation_ratio= decimation_ratio)
 
             x3dshape_geometry = XX3D.Shape()
             x3dshape_geometry.geometry = x3d_exporter.get_geo()
@@ -219,14 +253,19 @@ class X3DSceneExporter:
             x3dshape_geometry.bboxCenter = tuple(x3d_exporter._bb_center)
             x3dshape_geometry.bboxSize = tuple(x3d_exporter._bb_size)
 
-            x3dvisible_edge_geometry = XX3D.Shape()
-            x3dvisible_edge_geometry.geometry = x3d_exporter.get_edges()
+            child_nodes = [x3dshape_geometry]
 
-            edge_material = XX3D.Material(emissiveColor=edge_color)
-            edge_appearance = XX3D.Appearance(DEF="edge_material", material=edge_material)
-            x3dvisible_edge_geometry.appearance = edge_appearance
+            if export_edges:
+                x3dvisible_edge_geometry = XX3D.Shape()
+                x3dvisible_edge_geometry.geometry = x3d_exporter.get_edges()
 
-            transform_node = XX3D.Transform(children=[x3dshape_geometry, x3dvisible_edge_geometry])
+                edge_material = XX3D.Material(emissiveColor=edge_color)
+                edge_appearance = XX3D.Appearance(DEF="edge_material", material=edge_material)
+                x3dvisible_edge_geometry.appearance = edge_appearance
+
+                child_nodes.append(x3dvisible_edge_geometry)
+
+            transform_node = XX3D.Transform(children=child_nodes)
             transform_node.rotation = tuple(x3d_exporter._rotation_vector + [x3d_exporter._rotation_angle])
             transform_node.translation = tuple(x3d_exporter._translation)
             sf = x3d_exporter._scale_factor
@@ -234,19 +273,35 @@ class X3DSceneExporter:
 
             self._x3dscene.children.append(transform_node)
 
+
     def to_xml(self):
         return self._x3ddoc.XML()
 
-    def to_x3domHTML(self):
-        x3dele = list(ET.XML(self._x3ddoc.XML()).iter('X3D'))[0]
-        next(x3dele.iter('Scene')).append(ET.XML('<Environment gammaCorrectionDefault="none"/>'))
-        x3dHTML = ET.tostring(x3dele, encoding="unicode", short_empty_elements=False)
+
+    def to_x3dom_html(self):
+        """ x3d adaptation to x3dom library
+        """
+        xml_content = self.to_xml()
+        # root node
+        x3d_element = list(ET.XML(xml_content).iter('X3D'))[0]
+
+        # remove gama correction
+        next(x3d_element.iter('Scene')).append(ET.XML('<Environment gammaCorrectionDefault="none"/>'))
+
+        # add crease angle to IndexedTriangleSet instances, supported by x3dom
+        # but not part of the X3D standard
+        for idx_ts in x3d_element.iter('IndexedTriangleSet'):
+            idx_ts.set('creaseAngle', '0.2')
+            print(idx_ts)
+        
+        x3dHTML = ET.tostring(x3d_element, encoding="unicode", short_empty_elements=False)
         x3dHTML = x3dHTML.replace("visible=", 'render=')
         return _X3DOM_HEADER + x3dHTML
 
+
     def write_to_file(self, filename):
         with open(filename, "w") as f:
-            f.write(self.to_x3domHTML())
+            f.write(self.to_x3dom_html())
 
 
 class X3DFromSceneGraph:
@@ -269,8 +324,10 @@ class X3DFromSceneGraph:
 
         self.build_x3d_scene()
 
+
     def to_xml(self):
         return self._x3ddoc.XML()
+
 
     def to_x3dom_html(self):
         x3dele = list(ET.XML(self.to_xml()).iter('X3D'))[0]
@@ -278,6 +335,7 @@ class X3DFromSceneGraph:
         x3d_html = ET.tostring(x3dele, encoding="unicode", short_empty_elements=False)
         x3d_html = x3d_html.replace("visible=", 'render=')
         return _X3DOM_HEADER + x3d_html
+
 
     def build_x3d_scene(self):
         self._x3dscene = XX3D.Scene(children=[])
@@ -290,9 +348,11 @@ class X3DFromSceneGraph:
             else:
                 self.print_log('no x3d for root node, skipped')
 
+
     def print_log(self, message):
         if self._log:
             print(message)
+
 
     def x3d_apply_location(self, x3dtransformnode, location):
         # get translation and rotation from location
@@ -306,6 +366,7 @@ class X3DFromSceneGraph:
         x3dtransformnode.translation = (translation.X(), translation.Y(), translation.Z())
         x3dtransformnode.scale = (scale_factor, scale_factor, scale_factor)
 
+
     def x3d_geometry_from_TShape(self, shape):
         if is_edge(shape) or is_wire(shape):
             x3d_exporter = X3DCurveExporter(shape)
@@ -313,6 +374,7 @@ class X3DFromSceneGraph:
             x3d_exporter = X3DShapeExporter(shape, compute_normals=False, compute_edges=True)
 
         return {'x3dgeo': x3d_exporter.get_geo(), 'x3dedges': x3d_exporter.get_edges()}
+
 
     def x3d_appearance_from_color(self, color, DEFname, emissive):
         if emissive:
@@ -335,12 +397,14 @@ class X3DFromSceneGraph:
         if 'DEF' in node:
             x3dnode.DEF = _sanitize_DEF(node['DEF'])
 
+
     def set_children(self, node, x3dnode):
         if 'children' in node:
             for n in node['children']:
                 success, childlist = self.get_x3d_node(n)
                 if success:
                     x3dnode.children.extend(childlist)
+
 
     def get_x3d_node(self, node):
         if not 'node' in node:
@@ -394,12 +458,12 @@ class X3DFromSceneGraph:
 if __name__ == "__main__":
     # test with the as1_pe.stp file
     from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
-    shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    #shp = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
 
-    scene_exp = X3DSceneExporter()
-    scene_exp.add_shape(shp, shape_color=(0.5, 0.6, 0.7), emissive=False)
+    #scene_exp = X3DSceneExporter()
+    #scene_exp.add_shape(shp, shape_color=(0.5, 0.6, 0.7), emissive=False)
 
-    scene_exp.write_to_file('ess.x3d')
+    #scene_exp.write_to_file('ess.x3d')
     step_file = os.path.join('..', '..', '..', 'test', 'test_io', 'as1_pe_203.stp')
     doc_exp = DocFromSTEP(step_file)
     document = doc_exp.get_doc()
@@ -407,5 +471,6 @@ if __name__ == "__main__":
     x3dXML = X3DFromSceneGraph(scene=scenegraph.get_scene(),
                                faces_in_solids=scenegraph.get_internal_face_entries(),
                                log=True)
-    print(x3dXML.to_xml())
-    print(x3dXML.to_x3dom_html())
+    with open('out.x3d', 'w') as f:
+        f.write(x3dXML.to_xml())
+    x3dXML.to_x3dom_html()
