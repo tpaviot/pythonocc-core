@@ -1964,10 +1964,6 @@ None
 %extend XCAFDimTolObjects_DimensionObject {
 	%pythoncode {
 	__repr__ = _dumps_object
-
-	@methodnotwrapped
-	def GetPoints(self):
-		pass
 	}
 };
 

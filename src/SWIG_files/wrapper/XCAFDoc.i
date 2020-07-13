@@ -119,6 +119,7 @@ XCAFDoc_ColorCurv = XCAFDoc_ColorType.XCAFDoc_ColorCurv
 %wrap_handle(XCAFDoc_ColorTool)
 %wrap_handle(XCAFDoc_Datum)
 %wrap_handle(XCAFDoc_DimTol)
+%wrap_handle(XCAFDoc_DimTolTool)
 %wrap_handle(XCAFDoc_Dimension)
 %wrap_handle(XCAFDoc_DocumentTool)
 %wrap_handle(XCAFDoc_GraphNode)
@@ -2764,6 +2765,717 @@ None
 /***************************
 * class XCAFDoc_DimTolTool *
 ***************************/
+class XCAFDoc_DimTolTool : public TDF_Attribute {
+	public:
+		/****************** XCAFDoc_DimTolTool ******************/
+		%feature("compactdefaultargs") XCAFDoc_DimTolTool;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") XCAFDoc_DimTolTool;
+		 XCAFDoc_DimTolTool();
+
+		/****************** AddDatum ******************/
+		%feature("compactdefaultargs") AddDatum;
+		%feature("autodoc", "Adds a datum definition to the gd&t table and returns its label.
+
+Parameters
+----------
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+theIdentification: TCollection_HAsciiString
+
+Returns
+-------
+TDF_Label
+") AddDatum;
+		TDF_Label AddDatum(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<TCollection_HAsciiString> & theIdentification);
+
+		/****************** AddDatum ******************/
+		%feature("compactdefaultargs") AddDatum;
+		%feature("autodoc", "Adds a datum definition to the gd&t table and returns its label.
+
+Returns
+-------
+TDF_Label
+") AddDatum;
+		TDF_Label AddDatum();
+
+		/****************** AddDimTol ******************/
+		%feature("compactdefaultargs") AddDimTol;
+		%feature("autodoc", "Adds a a dimension tolerance definition with the specified kind, value, name and description to the gd&t table and returns its label.
+
+Parameters
+----------
+theKind: int
+theVal: TColStd_HArray1OfReal
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+
+Returns
+-------
+TDF_Label
+") AddDimTol;
+		TDF_Label AddDimTol(const Standard_Integer theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
+
+		/****************** AddDimension ******************/
+		%feature("compactdefaultargs") AddDimension;
+		%feature("autodoc", "Adds a dimension definition to the gd&t table and returns its label.
+
+Returns
+-------
+TDF_Label
+") AddDimension;
+		TDF_Label AddDimension();
+
+		/****************** AddGeomTolerance ******************/
+		%feature("compactdefaultargs") AddGeomTolerance;
+		%feature("autodoc", "Adds a geomtolerance definition to the gd&t table and returns its label.
+
+Returns
+-------
+TDF_Label
+") AddGeomTolerance;
+		TDF_Label AddGeomTolerance();
+
+		/****************** BaseLabel ******************/
+		%feature("compactdefaultargs") BaseLabel;
+		%feature("autodoc", "Returns the label under which gd&t table is stored.
+
+Returns
+-------
+TDF_Label
+") BaseLabel;
+		TDF_Label BaseLabel();
+
+		/****************** FindDatum ******************/
+		%feature("compactdefaultargs") FindDatum;
+		%feature("autodoc", "Finds a datum sutisfying the specified name, description and identification and returns its label if found.
+
+Parameters
+----------
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+theIdentification: TCollection_HAsciiString
+lab: TDF_Label
+
+Returns
+-------
+bool
+") FindDatum;
+		Standard_Boolean FindDatum(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<TCollection_HAsciiString> & theIdentification, TDF_Label & lab);
+
+		/****************** FindDimTol ******************/
+		%feature("compactdefaultargs") FindDimTol;
+		%feature("autodoc", "Finds a dimension tolerance definition in the gd&t table sutisfying the specified kind, values, name and description and returns its label if found. returns false if dimension tolerance is not found in dgttable.
+
+Parameters
+----------
+theKind: int
+theVal: TColStd_HArray1OfReal
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+lab: TDF_Label
+
+Returns
+-------
+bool
+") FindDimTol;
+		Standard_Boolean FindDimTol(const Standard_Integer theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, TDF_Label & lab);
+
+		/****************** FindDimTol ******************/
+		%feature("compactdefaultargs") FindDimTol;
+		%feature("autodoc", "Finds a dimension tolerance in the gd&t table sutisfying the specified kind, values, name and description and returns its label if found (or null label else).
+
+Parameters
+----------
+theKind: int
+theVal: TColStd_HArray1OfReal
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+
+Returns
+-------
+TDF_Label
+") FindDimTol;
+		TDF_Label FindDimTol(const Standard_Integer theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
+
+		/****************** GetDatum ******************/
+		%feature("compactdefaultargs") GetDatum;
+		%feature("autodoc", "Returns datum assigned to thedatuml label. returns false if no such datum is assigned.
+
+Parameters
+----------
+theDatumL: TDF_Label
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+theIdentification: TCollection_HAsciiString
+
+Returns
+-------
+bool
+") GetDatum;
+		Standard_Boolean GetDatum(const TDF_Label & theDatumL, opencascade::handle<TCollection_HAsciiString> & theName, opencascade::handle<TCollection_HAsciiString> & theDescription, opencascade::handle<TCollection_HAsciiString> & theIdentification);
+
+		/****************** GetDatumLabels ******************/
+		%feature("compactdefaultargs") GetDatumLabels;
+		%feature("autodoc", "Returns a sequence of datums currently stored in the gd&t table.
+
+Parameters
+----------
+Labels: TDF_LabelSequence
+
+Returns
+-------
+None
+") GetDatumLabels;
+		void GetDatumLabels(TDF_LabelSequence & Labels);
+
+		/****************** GetDatumOfTolerLabels ******************/
+		%feature("compactdefaultargs") GetDatumOfTolerLabels;
+		%feature("autodoc", "Returns all datum labels defined for thedimtoll label.
+
+Parameters
+----------
+theDimTolL: TDF_Label
+theDatums: TDF_LabelSequence
+
+Returns
+-------
+bool
+") GetDatumOfTolerLabels;
+		Standard_Boolean GetDatumOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
+
+		/****************** GetDatumWithObjectOfTolerLabels ******************/
+		%feature("compactdefaultargs") GetDatumWithObjectOfTolerLabels;
+		%feature("autodoc", "Returns all datum labels with xcafdimtolobjects_datumobject defined for label thedimtoll.
+
+Parameters
+----------
+theDimTolL: TDF_Label
+theDatums: TDF_LabelSequence
+
+Returns
+-------
+bool
+") GetDatumWithObjectOfTolerLabels;
+		Standard_Boolean GetDatumWithObjectOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
+
+		/****************** GetDimTol ******************/
+		%feature("compactdefaultargs") GetDimTol;
+		%feature("autodoc", "Returns dimension tolerance assigned to thedimtoll label. returns false if no such dimension tolerance is assigned.
+
+Parameters
+----------
+theDimTolL: TDF_Label
+theVal: TColStd_HArray1OfReal
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+
+Returns
+-------
+theKind: int
+") GetDimTol;
+		Standard_Boolean GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theVal, opencascade::handle<TCollection_HAsciiString> & theName, opencascade::handle<TCollection_HAsciiString> & theDescription);
+
+		/****************** GetDimTolLabels ******************/
+		%feature("compactdefaultargs") GetDimTolLabels;
+		%feature("autodoc", "Returns a sequence of d&gts currently stored in the gd&t table.
+
+Parameters
+----------
+Labels: TDF_LabelSequence
+
+Returns
+-------
+None
+") GetDimTolLabels;
+		void GetDimTolLabels(TDF_LabelSequence & Labels);
+
+		/****************** GetDimensionLabels ******************/
+		%feature("compactdefaultargs") GetDimensionLabels;
+		%feature("autodoc", "Returns a sequence of dimension labels currently stored in the gd&t table.
+
+Parameters
+----------
+theLabels: TDF_LabelSequence
+
+Returns
+-------
+None
+") GetDimensionLabels;
+		void GetDimensionLabels(TDF_LabelSequence & theLabels);
+
+		/****************** GetGDTPresentations ******************/
+		%feature("compactdefaultargs") GetGDTPresentations;
+		%feature("autodoc", "Fill the map gdt label -> shape presentation .
+
+Parameters
+----------
+theGDTLabelToShape: NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher>
+
+Returns
+-------
+None
+") GetGDTPresentations;
+		void GetGDTPresentations(NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher> & theGDTLabelToShape);
+
+		/****************** GetGeomToleranceLabels ******************/
+		%feature("compactdefaultargs") GetGeomToleranceLabels;
+		%feature("autodoc", "Returns a sequence of tolerance labels currently stored in the gd&t table.
+
+Parameters
+----------
+theLabels: TDF_LabelSequence
+
+Returns
+-------
+None
+") GetGeomToleranceLabels;
+		void GetGeomToleranceLabels(TDF_LabelSequence & theLabels);
+
+		/****************** GetID ******************/
+		%feature("compactdefaultargs") GetID;
+		%feature("autodoc", "Returns the standard gd&t tool guid.
+
+Returns
+-------
+Standard_GUID
+") GetID;
+		static const Standard_GUID & GetID();
+
+		/****************** GetRefDatumLabel ******************/
+		%feature("compactdefaultargs") GetRefDatumLabel;
+		%feature("autodoc", "Returns datum label defined for theshapel label.
+
+Parameters
+----------
+theShapeL: TDF_Label
+theDatum: TDF_LabelSequence
+
+Returns
+-------
+bool
+") GetRefDatumLabel;
+		Standard_Boolean GetRefDatumLabel(const TDF_Label & theShapeL, TDF_LabelSequence & theDatum);
+
+		/****************** GetRefDimensionLabels ******************/
+		%feature("compactdefaultargs") GetRefDimensionLabels;
+		%feature("autodoc", "Returns all dimension labels defined for theshapel.
+
+Parameters
+----------
+theShapeL: TDF_Label
+theDimensions: TDF_LabelSequence
+
+Returns
+-------
+bool
+") GetRefDimensionLabels;
+		Standard_Boolean GetRefDimensionLabels(const TDF_Label & theShapeL, TDF_LabelSequence & theDimensions);
+
+		/****************** GetRefGeomToleranceLabels ******************/
+		%feature("compactdefaultargs") GetRefGeomToleranceLabels;
+		%feature("autodoc", "Returns all geomtolerance labels defined for theshapel.
+
+Parameters
+----------
+theShapeL: TDF_Label
+theDimTols: TDF_LabelSequence
+
+Returns
+-------
+bool
+") GetRefGeomToleranceLabels;
+		Standard_Boolean GetRefGeomToleranceLabels(const TDF_Label & theShapeL, TDF_LabelSequence & theDimTols);
+
+		/****************** GetRefShapeLabel ******************/
+		%feature("compactdefaultargs") GetRefShapeLabel;
+		%feature("autodoc", "Gets all shape labels reffered by thel label of the gd&t table. returns false if there are no shape labels added to the sequences.
+
+Parameters
+----------
+theL: TDF_Label
+theShapeLFirst: TDF_LabelSequence
+theShapeLSecond: TDF_LabelSequence
+
+Returns
+-------
+bool
+") GetRefShapeLabel;
+		Standard_Boolean GetRefShapeLabel(const TDF_Label & theL, TDF_LabelSequence & theShapeLFirst, TDF_LabelSequence & theShapeLSecond);
+
+		/****************** GetTolerOfDatumLabels ******************/
+		%feature("compactdefaultargs") GetTolerOfDatumLabels;
+		%feature("autodoc", "Returns all geomtoleranses labels defined for thedatuml label.
+
+Parameters
+----------
+theDatumL: TDF_Label
+theTols: TDF_LabelSequence
+
+Returns
+-------
+bool
+") GetTolerOfDatumLabels;
+		Standard_Boolean GetTolerOfDatumLabels(const TDF_Label & theDatumL, TDF_LabelSequence & theTols);
+
+		/****************** ID ******************/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+Standard_GUID
+") ID;
+		const Standard_GUID & ID();
+
+		/****************** IsDatum ******************/
+		%feature("compactdefaultargs") IsDatum;
+		%feature("autodoc", "Returns true if label belongs to the gd&t table and is a datum definition.
+
+Parameters
+----------
+lab: TDF_Label
+
+Returns
+-------
+bool
+") IsDatum;
+		Standard_Boolean IsDatum(const TDF_Label & lab);
+
+		/****************** IsDimTol ******************/
+		%feature("compactdefaultargs") IsDimTol;
+		%feature("autodoc", "Returns true if thelab belongs to the gd&t table and is a dmension tolerance.
+
+Parameters
+----------
+theLab: TDF_Label
+
+Returns
+-------
+bool
+") IsDimTol;
+		Standard_Boolean IsDimTol(const TDF_Label & theLab);
+
+		/****************** IsDimension ******************/
+		%feature("compactdefaultargs") IsDimension;
+		%feature("autodoc", "Returns true if the label belongs to a gd&t table and is a dimension definition.
+
+Parameters
+----------
+theLab: TDF_Label
+
+Returns
+-------
+bool
+") IsDimension;
+		Standard_Boolean IsDimension(const TDF_Label & theLab);
+
+		/****************** IsGeomTolerance ******************/
+		%feature("compactdefaultargs") IsGeomTolerance;
+		%feature("autodoc", "Returns true if the label belongs to the gd&t table and is a dimension tolerance.
+
+Parameters
+----------
+theLab: TDF_Label
+
+Returns
+-------
+bool
+") IsGeomTolerance;
+		Standard_Boolean IsGeomTolerance(const TDF_Label & theLab);
+
+		/****************** IsLocked ******************/
+		%feature("compactdefaultargs") IsLocked;
+		%feature("autodoc", "Returns true if the given gdt is marked as locked.
+
+Parameters
+----------
+theViewL: TDF_Label
+
+Returns
+-------
+bool
+") IsLocked;
+		Standard_Boolean IsLocked(const TDF_Label & theViewL);
+
+		/****************** Lock ******************/
+		%feature("compactdefaultargs") Lock;
+		%feature("autodoc", "Mark the given gdt as locked.
+
+Parameters
+----------
+theViewL: TDF_Label
+
+Returns
+-------
+None
+") Lock;
+		void Lock(const TDF_Label & theViewL);
+
+		/****************** NewEmpty ******************/
+		%feature("compactdefaultargs") NewEmpty;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<TDF_Attribute>
+") NewEmpty;
+		opencascade::handle<TDF_Attribute> NewEmpty();
+
+		/****************** Paste ******************/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+into: TDF_Attribute
+RT: TDF_RelocationTable
+
+Returns
+-------
+None
+") Paste;
+		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
+
+		/****************** Restore ******************/
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+with: TDF_Attribute
+
+Returns
+-------
+None
+") Restore;
+		void Restore(const opencascade::handle<TDF_Attribute> & with);
+
+		/****************** Set ******************/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "Creates (if not exist) dimtoltool attribute.
+
+Parameters
+----------
+L: TDF_Label
+
+Returns
+-------
+opencascade::handle<XCAFDoc_DimTolTool>
+") Set;
+		static opencascade::handle<XCAFDoc_DimTolTool> Set(const TDF_Label & L);
+
+		/****************** SetDatum ******************/
+		%feature("compactdefaultargs") SetDatum;
+		%feature("autodoc", "Sets a datum to the sequence of shape labels.
+
+Parameters
+----------
+theShapeLabels: TDF_LabelSequence
+theDatumL: TDF_Label
+
+Returns
+-------
+None
+") SetDatum;
+		void SetDatum(const TDF_LabelSequence & theShapeLabels, const TDF_Label & theDatumL);
+
+		/****************** SetDatum ******************/
+		%feature("compactdefaultargs") SetDatum;
+		%feature("autodoc", "Sets a datum to thel label and binds it with thetolerl label. a datum with the specified name, description and identification is created if it isn't found in the gd&t table.
+
+Parameters
+----------
+theL: TDF_Label
+theTolerL: TDF_Label
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+theIdentification: TCollection_HAsciiString
+
+Returns
+-------
+None
+") SetDatum;
+		void SetDatum(const TDF_Label & theL, const TDF_Label & theTolerL, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<TCollection_HAsciiString> & theIdentification);
+
+		/****************** SetDatumToGeomTol ******************/
+		%feature("compactdefaultargs") SetDatumToGeomTol;
+		%feature("autodoc", "Sets a datum from thedatuml label to thetoletl label.
+
+Parameters
+----------
+theDatumL: TDF_Label
+theTolerL: TDF_Label
+
+Returns
+-------
+None
+") SetDatumToGeomTol;
+		void SetDatumToGeomTol(const TDF_Label & theDatumL, const TDF_Label & theTolerL);
+
+		/****************** SetDimTol ******************/
+		%feature("compactdefaultargs") SetDimTol;
+		%feature("autodoc", "Sets existing dimension tolerance to thel label.
+
+Parameters
+----------
+theL: TDF_Label
+theDimTolL: TDF_Label
+
+Returns
+-------
+None
+") SetDimTol;
+		void SetDimTol(const TDF_Label & theL, const TDF_Label & theDimTolL);
+
+		/****************** SetDimTol ******************/
+		%feature("compactdefaultargs") SetDimTol;
+		%feature("autodoc", "Creates a dimension tolerance and sets it to thel label.
+
+Parameters
+----------
+theL: TDF_Label
+theKind: int
+theVal: TColStd_HArray1OfReal
+theName: TCollection_HAsciiString
+theDescription: TCollection_HAsciiString
+
+Returns
+-------
+TDF_Label
+") SetDimTol;
+		TDF_Label SetDimTol(const TDF_Label & theL, const Standard_Integer theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
+
+		/****************** SetDimension ******************/
+		%feature("compactdefaultargs") SetDimension;
+		%feature("autodoc", "Sets a dimension to sequences target labels.
+
+Parameters
+----------
+theFirstLS: TDF_LabelSequence
+theSecondLS: TDF_LabelSequence
+theDimL: TDF_Label
+
+Returns
+-------
+None
+") SetDimension;
+		void SetDimension(const TDF_LabelSequence & theFirstLS, const TDF_LabelSequence & theSecondLS, const TDF_Label & theDimL);
+
+		/****************** SetDimension ******************/
+		%feature("compactdefaultargs") SetDimension;
+		%feature("autodoc", "Sets a dimension to target labels.
+
+Parameters
+----------
+theFirstL: TDF_Label
+theSecondL: TDF_Label
+theDimL: TDF_Label
+
+Returns
+-------
+None
+") SetDimension;
+		void SetDimension(const TDF_Label & theFirstL, const TDF_Label & theSecondL, const TDF_Label & theDimL);
+
+		/****************** SetDimension ******************/
+		%feature("compactdefaultargs") SetDimension;
+		%feature("autodoc", "Sets a dimension to the target label.
+
+Parameters
+----------
+theL: TDF_Label
+theDimL: TDF_Label
+
+Returns
+-------
+None
+") SetDimension;
+		void SetDimension(const TDF_Label & theL, const TDF_Label & theDimL);
+
+		/****************** SetGDTPresentations ******************/
+		%feature("compactdefaultargs") SetGDTPresentations;
+		%feature("autodoc", "Set shape presentation for gdt labels according to given map (thegdtlabeltoprs) thegdtlabeltoprsname map is an additional argument, can be used to set presentation names. if label is not in the thegdtlabeltoprsname map, the presentation name will be empty.
+
+Parameters
+----------
+theGDTLabelToPrs: NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher>
+
+Returns
+-------
+None
+") SetGDTPresentations;
+		void SetGDTPresentations(NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher> & theGDTLabelToPrs);
+
+		/****************** SetGeomTolerance ******************/
+		%feature("compactdefaultargs") SetGeomTolerance;
+		%feature("autodoc", "Sets a geometry tolerance from thegeomtoll to thel label. checks if thegeomtoll is a geometry tolerance definition first.
+
+Parameters
+----------
+theL: TDF_Label
+theGeomTolL: TDF_Label
+
+Returns
+-------
+None
+") SetGeomTolerance;
+		void SetGeomTolerance(const TDF_Label & theL, const TDF_Label & theGeomTolL);
+
+		/****************** SetGeomTolerance ******************/
+		%feature("compactdefaultargs") SetGeomTolerance;
+		%feature("autodoc", "Sets a geometry tolerance from thegeomtoll to sequence of labels thel. checks if thegeomtoll is a geometry tolerance definition first.
+
+Parameters
+----------
+theL: TDF_LabelSequence
+theGeomTolL: TDF_Label
+
+Returns
+-------
+None
+") SetGeomTolerance;
+		void SetGeomTolerance(const TDF_LabelSequence & theL, const TDF_Label & theGeomTolL);
+
+		/****************** ShapeTool ******************/
+		%feature("compactdefaultargs") ShapeTool;
+		%feature("autodoc", "Returns internal xcafdoc_shapetool tool.
+
+Returns
+-------
+opencascade::handle<XCAFDoc_ShapeTool>
+") ShapeTool;
+		const opencascade::handle<XCAFDoc_ShapeTool> & ShapeTool();
+
+		/****************** Unlock ******************/
+		%feature("compactdefaultargs") Unlock;
+		%feature("autodoc", "Unlock the given gdt.
+
+Parameters
+----------
+theViewL: TDF_Label
+
+Returns
+-------
+None
+") Unlock;
+		void Unlock(const TDF_Label & theViewL);
+
+};
+
+
+%make_alias(XCAFDoc_DimTolTool)
+
+%extend XCAFDoc_DimTolTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**************************
 * class XCAFDoc_Dimension *
 **************************/
@@ -7976,10 +8688,6 @@ opencascade::handle<XCAFDoc_NoteBalloon>
 
 /* python proxy for excluded classes */
 %pythoncode {
-@classnotwrapped
-class XCAFDoc_DimTolTool:
-	pass
-
 @classnotwrapped
 class XCAFDoc_GeomTolerance:
 	pass
