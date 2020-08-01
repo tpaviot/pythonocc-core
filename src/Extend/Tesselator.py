@@ -187,7 +187,7 @@ class EdgeDiscretizer:
 class Tesselator:
     def __init__(self, a_topods_shape, compute_normals=False,
                  compute_edges=False, mesh_quality=1., global_coordinates=False,
-                 check_shape_before=False):
+                 check_shape_before=True):
         if check_shape_before:  # first check that shape
             is_valid, fixed_shape_if_not_valid = check_shape(a_topods_shape, fix=True)
             if not is_valid:  # take the fixed shape
@@ -225,12 +225,12 @@ class Tesselator:
 
         # bounding sphere, computed from the bounding box
         # bounding sphere is used by threejs
-        self.__bs_radius = None
+        self._bs_radius = None
         self._bs_center = None
 
-        self.compute_bounding_box()
-
         self.tesselate() # this method has to be implemented for each child class
+
+        self.compute_bounding_box()
 
 
     def get_lod(self):
@@ -275,7 +275,7 @@ class Tesselator:
 
         # the bounding sphere is computed from the bounding box
         # same center, radius is half the max of dx, d, dz
-        self.__bs_radius = max(self._bb_size) / 2.
+        self._bs_radius = max(self._bb_size) / 2.
         self._bs_center = self._bb_center
 
         return True
@@ -370,7 +370,7 @@ class Tesselator:
         """ returns a vtkpolydata representation of the mesh
         """
         if not HAVE_VTK:
-            print("vtk not found.")
+            print("vtk not installed, method unavailable.")
             return False
 
         vertex_coords = self.get_vertex_coords()
@@ -405,6 +405,10 @@ class Tesselator:
         """ takes a computed tesselator instance, returns an indexed set of
         vertex indices, coords and normals
         """
+        if not HAVE_VTK:
+            print("vtk not installed, method unavailable.")
+            return False
+
         points = polydata_input.GetPoints()
         dataArray = points.GetData()
         numberOfFaces = polydata_input.GetNumberOfCells()
@@ -437,9 +441,13 @@ class Tesselator:
     def decimate(self, decimation_ratio):
         """" decimation ratio, a float between 0 and 1.
         0 : no decimation
-        0.5 : 50% decimation (i.e. 50% less points)
-        1 : 100% decimation (no more points in the mesh)
+        0.5 : 50% decimation (i.e. 50% less triangles)
+        1 : 100% decimation (all points/triangles removed)
         """
+        if not HAVE_VTK:
+            print("vtk not installed, method unavailable.")
+            return False
+
         # first create a vtk polydata from vertex coords and indices
         if self._vtkpolydata is None:
             self.to_vtk()
@@ -462,15 +470,17 @@ class Tesselator:
         normals = vtk.vtkPolyDataNormals()
         normals.SetInputData(decimate.GetOutput())
         normals.SetFeatureAngle(20.0)
-        normals.ComputePointNormalsOff()
+        normals.ComputePointNormalsOn()
         normals.ComputeCellNormalsOn()
         normals.SplittingOn()
-        normals.AutoOrientNormalsOn()
+        normals.AutoOrientNormalsOn()  # important, reorder vertices
         normals.Update()
-        #decimatedPoly = normals.GetOutput()
         
-        # cleaner
-        # clean_mesh:
+        # the result of the vtkPolyDataNormals filter is
+        # a non indexed triangle set. Thus the number of triangles is much
+        # lower, but the number of points drastically increases. The vtkCleanPolyData
+        # filter is useful to merge points but it does not save the normals orientation
+
         cleaner1 = vtk.vtkCleanPolyData()
         cleaner1.SetInputData(normals.GetOutput())
         cleaner1.Update()
@@ -487,6 +497,7 @@ class Tesselator:
         # convert back the vtkpolydata to an indexed triangle set
         coords, indices = self.vtkpolydata_to_mesh(decimatedPoly)
 
+
         self._lod[decimation_ratio] = (coords, indices, [])
 
         self.set_current_lod_level(decimation_ratio)
@@ -494,7 +505,7 @@ class Tesselator:
         # return True if ok
         return decimatedPoly
 
-
+    
 class FaceTesselator(Tesselator):
     """ Face tesselator. Compute the face triangulation and returns an indexed geometry:
     * the vertex coordinates, in absolute or relative mode
@@ -654,16 +665,15 @@ class ShapeTesselator(Tesselator):
     def tesselate(self):
         """ tesselate the shape
         """
-        print("Tesselate shape")
+        print("Tesselate shape ... ", end="")
         self.compute_deviation()
         # clean shape to remove any previous tringulation
         breptools_Clean(self._shape)
         # Triangulate
         msh_algo = BRepMesh_DiscretFactory_Get().Discret(self._shape,
-                                                         self._deviation,
-                                                         self._angular_deflection)
+                                                         self._deviation * self._mesh_quality,
+                                                         self._angular_deflection * self._mesh_quality)
         msh_algo.Perform()
-
         all_vertex_coords = []
         all_vertex_indices = []
         all_normal_coords = []
@@ -692,7 +702,6 @@ class ShapeTesselator(Tesselator):
 
             face_explorer.Next()
             advance += len(face_vertex_coords)
-
 
         # store information
         self._vertex_coords = all_vertex_coords
@@ -723,10 +732,10 @@ if __name__ == "__main__":
     #t = BRepPrimAPI_MakeBox(100, 20, 30).Shape()
     import time
     init_time = time.perf_counter()
-    tess = ShapeTesselator(bo_t, compute_normals=True, compute_edges=True)
-    print(tess.get_vertex_indices())
-    print(tess.get_vertex_coords())
-    print(tess.get_normal_coords())
+    tess = ShapeTesselator(bo_t, compute_normals=True, compute_edges=True, mesh_quality=0.1)
+    #print(tess.get_vertex_indices())
+    #print(tess.get_vertex_coords())
+    #print(tess.get_normal_coords())
     nb_i = len(tess.get_vertex_indices())
     nb_v = len(tess.get_vertex_coords())
     nb_n = len(tess.get_normal_coords())
@@ -734,7 +743,8 @@ if __name__ == "__main__":
     print('Nb indices :', nb_i)
     print('Nb vertices:', nb_v)
     print('Nb normals:', nb_n)
-    print('Edges:', tess._edges_indices)
+    print('Triangles, points density:', tess.get_mesh_density())
+    #print('Edges:', tess._edges_indices)
     print('Translation', tess.get_translation())
     print('Rotation', tess.get_rotation())
     print(final_time - init_time)
