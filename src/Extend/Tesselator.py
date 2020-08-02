@@ -580,7 +580,7 @@ class ShapeTesselator(Tesselator):
                  compute_normals=False,
                  compute_edges=False,
                  mesh_quality=1.,
-                 global_coordinates=False):
+                 global_coordinates=True):
         self._edges_indices = []
 
         # level of detail
