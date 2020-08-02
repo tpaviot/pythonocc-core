@@ -100,7 +100,7 @@ class X3DLODShapeExporter:
     """ A class that generates several level of detail, with mesh decimation
     """
     def __init__(self, shape, compute_normals=False, compute_edges=True, uid=None,
-               lod_levels=None):
+                 lod_levels=None):
         # LOD levels is a dict with keys: distance from point of view, and
         # the value is the decimation ratio
         # disance is from near to far
@@ -121,8 +121,6 @@ class X3DLODShapeExporter:
                                      shininess=1, ambientIntensity=0.1)
 
         for lod_level in lod_levels:
-            print("Level Of Detail :", lod_level)
-
             decimation_ratio = lod_levels[lod_level]
             shp_exporter.set_decimation_ratio(decimation_ratio)
             shp_exporter.to_x3d_graph()
@@ -139,9 +137,15 @@ class X3DLODShapeExporter:
             mesh_shp = shp_exporter.get_X3DShape_mesh()
             
             mesh_shp.appearance = XX3D.Appearance(material=mesh_material)
-            edge_shp = shp_exporter.get_X3DShape_edges()
-            edge_shp.appearance = XX3D.Appearance(material=edge_material)
-            transform_node.children = [mesh_shp, edge_shp]
+
+            # if the decimation ratio is high, no need to export
+            # edges as well, only mesh triangles is enough
+            if decimation_ratio < 0.8:
+                edge_shp = shp_exporter.get_X3DShape_edges()
+                edge_shp.appearance = XX3D.Appearance(material=edge_material)
+                transform_node.children = [mesh_shp, edge_shp]
+            else:
+                transform_node.children = [mesh_shp]
 
             group.children.append(transform_node)
 
@@ -424,7 +428,6 @@ class X3DSceneExporter:
         # but not part of the X3D standard
         for idx_ts in x3d_element.iter('IndexedTriangleSet'):
             idx_ts.set('creaseAngle', '0.2')
-            print(idx_ts)
         
         x3dHTML = ET.tostring(x3d_element, encoding="unicode", short_empty_elements=False)
         x3dHTML = x3dHTML.replace("visible=", 'render=')
@@ -547,13 +550,19 @@ class X3DFromSceneGraph:
             if node['DEF'] in self._faces_in_solids:
                 return False, None
 
+        if 'is_assembly' in node:
+            node_is_assembly = node['is_assembly']
+        else:
+            node_is_assembly = False
+
         ntype = node['node']
+
         edge_node = None
 
-        node_metadata = XX3D.MetadataString(name="type", value=[node['name']])
+        node_metadata = XX3D.MetadataString(name="type", value=["%s" % node['name']])
 
         if ntype == 'Group':
-            x3dnode = XX3D.Group()
+            x3dnode = XX3D.CADAssembly()
             x3dnode.metadata = node_metadata
             self.apply_DEF_or_USE(node, x3dnode)
             self.set_children(node, x3dnode)
