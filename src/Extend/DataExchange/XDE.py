@@ -147,7 +147,9 @@ class SceneGraphFromDoc:
             node = {'node' : 'Group',
                     'DEF' : labelString,
                     'name' : name,
-                    'children' : []
+                    'children' : [],
+                    'is_assembly' : True,
+                    'is_part' : False,
                     }
             l_c = TDF_LabelSequence()
             self._shape_tool.GetComponents(lab, l_c)
@@ -205,7 +207,9 @@ class SceneGraphFromDoc:
             node = {'node': 'Transform',
                     'DEF': labelString,
                     'name': name,
-                    'children': []
+                    'children': [],
+                    'is_assembly': False,
+                    'is_part': True
                     }
 
             shapenode = {'node' : 'Shape',
