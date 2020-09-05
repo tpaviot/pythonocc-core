@@ -785,6 +785,7 @@ typedef NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_GeomTolerance
 class XCAFDimTolObjects_DatumObject : public Standard_Transient {
 	public:
 		/****************** XCAFDimTolObjects_DatumObject ******************/
+		/**** md5 signature: 740a9a9edb4d4b9d88bb15a7abe65522 ****/
 		%feature("compactdefaultargs") XCAFDimTolObjects_DatumObject;
 		%feature("autodoc", "No available documentation.
 
@@ -795,6 +796,7 @@ None
 		 XCAFDimTolObjects_DatumObject();
 
 		/****************** XCAFDimTolObjects_DatumObject ******************/
+		/**** md5 signature: d941c35c90441a5733d6cb73b4cdaedd ****/
 		%feature("compactdefaultargs") XCAFDimTolObjects_DatumObject;
 		%feature("autodoc", "No available documentation.
 
@@ -809,6 +811,7 @@ None
 		 XCAFDimTolObjects_DatumObject(const opencascade::handle<XCAFDimTolObjects_DatumObject> & theObj);
 
 		/****************** AddModifier ******************/
+		/**** md5 signature: b052f252dc91e84d97c2ac7d3138dbd0 ****/
 		%feature("compactdefaultargs") AddModifier;
 		%feature("autodoc", "Adds a modifier to the datum sequence of modifiers.
 
@@ -823,6 +826,7 @@ None
 		void AddModifier(const XCAFDimTolObjects_DatumSingleModif theModifier);
 
 		/****************** GetDatumTarget ******************/
+		/**** md5 signature: 907a10d068832d0dfb763a345de9f7e3 ****/
 		%feature("compactdefaultargs") GetDatumTarget;
 		%feature("autodoc", "Returns datum target shape.
 
@@ -833,6 +837,7 @@ TopoDS_Shape
 		TopoDS_Shape GetDatumTarget();
 
 		/****************** GetDatumTargetAxis ******************/
+		/**** md5 signature: d7c4bc3b61bf4e4f7a2e5f136bb1bc79 ****/
 		%feature("compactdefaultargs") GetDatumTargetAxis;
 		%feature("autodoc", "Returns datum target axis. the z axis of the datum placement denotes the normal of the surface pointing away from the material. .
 
@@ -843,6 +848,7 @@ gp_Ax2
 		gp_Ax2 GetDatumTargetAxis();
 
 		/****************** GetDatumTargetLength ******************/
+		/**** md5 signature: dceb1778ee1bc3292f37ed1c219551a6 ****/
 		%feature("compactdefaultargs") GetDatumTargetLength;
 		%feature("autodoc", "Returns datum target length for line and rectangle types. the length along the x axis of the datum placement.
 
@@ -853,6 +859,7 @@ float
 		Standard_Real GetDatumTargetLength();
 
 		/****************** GetDatumTargetNumber ******************/
+		/**** md5 signature: 4f4dc912a0ec5187fb922fd2c768c962 ****/
 		%feature("compactdefaultargs") GetDatumTargetNumber;
 		%feature("autodoc", "Returns datum target number.
 
@@ -863,6 +870,7 @@ int
 		Standard_Integer GetDatumTargetNumber();
 
 		/****************** GetDatumTargetType ******************/
+		/**** md5 signature: 29baed0eef88b4da45673256dac43a90 ****/
 		%feature("compactdefaultargs") GetDatumTargetType;
 		%feature("autodoc", "Returns datum target type.
 
@@ -873,6 +881,7 @@ XCAFDimTolObjects_DatumTargetType
 		XCAFDimTolObjects_DatumTargetType GetDatumTargetType();
 
 		/****************** GetDatumTargetWidth ******************/
+		/**** md5 signature: 9a52e7661b91680368d6329aea5d46cf ****/
 		%feature("compactdefaultargs") GetDatumTargetWidth;
 		%feature("autodoc", "Returns datum target width for rectangle type. the width along the derived y axis, with the placement itself positioned at the centre of the rectangle.
 
@@ -883,6 +892,7 @@ float
 		Standard_Real GetDatumTargetWidth();
 
 		/****************** GetModifierWithValue ******************/
+		/**** md5 signature: d0420dfa8bea7c0492f9343a8d1bcd95 ****/
 		%feature("compactdefaultargs") GetModifierWithValue;
 		%feature("autodoc", "Retrieves datum modifier with value.
 
@@ -897,6 +907,7 @@ theValue: float
 		void GetModifierWithValue(XCAFDimTolObjects_DatumModifWithValue & theModifier, Standard_Real &OutValue);
 
 		/****************** GetModifiers ******************/
+		/**** md5 signature: b5adaae02ed3bb65adc417ee83177849 ****/
 		%feature("compactdefaultargs") GetModifiers;
 		%feature("autodoc", "Returns a sequence of modifiers of the datum.
 
@@ -907,6 +918,7 @@ XCAFDimTolObjects_DatumModifiersSequence
 		XCAFDimTolObjects_DatumModifiersSequence GetModifiers();
 
 		/****************** GetName ******************/
+		/**** md5 signature: 23aadc9cd2e3411b58fb02d3fd2db5c9 ****/
 		%feature("compactdefaultargs") GetName;
 		%feature("autodoc", "Returns datum name.
 
@@ -917,6 +929,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> GetName();
 
 		/****************** GetPlane ******************/
+		/**** md5 signature: 236cce5d8f8ab5feac0e3f6311bd05f0 ****/
 		%feature("compactdefaultargs") GetPlane;
 		%feature("autodoc", "Returns annotation plane.
 
@@ -927,6 +940,7 @@ gp_Ax2
 		const gp_Ax2 GetPlane();
 
 		/****************** GetPoint ******************/
+		/**** md5 signature: 75bde715a8ee43e7500d44b575591a80 ****/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", "Gets point on the datum shape.
 
@@ -937,6 +951,7 @@ gp_Pnt
 		const gp_Pnt GetPoint();
 
 		/****************** GetPointTextAttach ******************/
+		/**** md5 signature: e81e077f484c7c68ce183e571e4969e7 ****/
 		%feature("compactdefaultargs") GetPointTextAttach;
 		%feature("autodoc", "Gets datum text position.
 
@@ -947,6 +962,7 @@ gp_Pnt
 		const gp_Pnt GetPointTextAttach();
 
 		/****************** GetPosition ******************/
+		/**** md5 signature: 3a7096bf5e08d1f1157194f392c5b3ec ****/
 		%feature("compactdefaultargs") GetPosition;
 		%feature("autodoc", "Returns datum position in the related geometric tolerance object.
 
@@ -957,6 +973,7 @@ int
 		Standard_Integer GetPosition();
 
 		/****************** GetPresentation ******************/
+		/**** md5 signature: 3a1ba105c920c672ad36e26c32c03ea0 ****/
 		%feature("compactdefaultargs") GetPresentation;
 		%feature("autodoc", "Returns graphical presentation of the object.
 
@@ -967,6 +984,7 @@ TopoDS_Shape
 		TopoDS_Shape GetPresentation();
 
 		/****************** GetPresentationName ******************/
+		/**** md5 signature: ae4fdc476bfb8d85148da7be6e48c228 ****/
 		%feature("compactdefaultargs") GetPresentationName;
 		%feature("autodoc", "Returns graphical presentation of the object.
 
@@ -977,6 +995,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> GetPresentationName();
 
 		/****************** GetSemanticName ******************/
+		/**** md5 signature: 914ea6563027cdf692e218da5b1136d4 ****/
 		%feature("compactdefaultargs") GetSemanticName;
 		%feature("autodoc", "Returns semantic name.
 
@@ -987,6 +1006,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> GetSemanticName();
 
 		/****************** HasDatumTargetParams ******************/
+		/**** md5 signature: ff688881a529fc9676d7f111adc68465 ****/
 		%feature("compactdefaultargs") HasDatumTargetParams;
 		%feature("autodoc", "Returns true if the datum has valid parameters for datum target (width, length, circle radius etc).
 
@@ -997,6 +1017,7 @@ bool
 		Standard_Boolean HasDatumTargetParams();
 
 		/****************** HasPlane ******************/
+		/**** md5 signature: 7cf03566771455c19f444d8a2236d65d ****/
 		%feature("compactdefaultargs") HasPlane;
 		%feature("autodoc", "Returns true if the datum has annotation plane.
 
@@ -1007,6 +1028,7 @@ bool
 		Standard_Boolean HasPlane();
 
 		/****************** HasPoint ******************/
+		/**** md5 signature: 8de3c013a7c1611c02e38dffb22d1c6b ****/
 		%feature("compactdefaultargs") HasPoint;
 		%feature("autodoc", "Returns true if point on the datum target is specified.
 
@@ -1017,6 +1039,7 @@ bool
 		Standard_Boolean HasPoint();
 
 		/****************** HasPointText ******************/
+		/**** md5 signature: 0bf2ec86538f2cbb875c1c0a8313563e ****/
 		%feature("compactdefaultargs") HasPointText;
 		%feature("autodoc", "Returns true if the datum text position is specified.
 
@@ -1027,6 +1050,7 @@ bool
 		Standard_Boolean HasPointText();
 
 		/****************** IsDatumTarget ******************/
+		/**** md5 signature: affa7fb23f28b674a35275ad9431dcfe ****/
 		%feature("compactdefaultargs") IsDatumTarget;
 		%feature("autodoc", "Returns true if the datum target is specified.
 
@@ -1037,6 +1061,7 @@ bool
 		Standard_Boolean IsDatumTarget();
 
 		/****************** IsDatumTarget ******************/
+		/**** md5 signature: 80e38375174ca2c338ba7e04ba982f58 ****/
 		%feature("compactdefaultargs") IsDatumTarget;
 		%feature("autodoc", "Sets or drops the datum target indicator.
 
@@ -1051,6 +1076,7 @@ None
 		void IsDatumTarget(const Standard_Boolean theIsDT);
 
 		/****************** SetDatumTarget ******************/
+		/**** md5 signature: c5e58e62e91021f5eb99ac01a1f98445 ****/
 		%feature("compactdefaultargs") SetDatumTarget;
 		%feature("autodoc", "Sets datum target shape.
 
@@ -1065,6 +1091,7 @@ None
 		void SetDatumTarget(const TopoDS_Shape & theShape);
 
 		/****************** SetDatumTargetAxis ******************/
+		/**** md5 signature: 8d9f74c22cc7df8fca3c99e6de53c1dd ****/
 		%feature("compactdefaultargs") SetDatumTargetAxis;
 		%feature("autodoc", "Sets datum target axis.
 
@@ -1079,6 +1106,7 @@ None
 		void SetDatumTargetAxis(const gp_Ax2 & theAxis);
 
 		/****************** SetDatumTargetLength ******************/
+		/**** md5 signature: f026bdbbc3bf20f77bce308dfba0a65e ****/
 		%feature("compactdefaultargs") SetDatumTargetLength;
 		%feature("autodoc", "Sets datum target length.
 
@@ -1093,6 +1121,7 @@ None
 		void SetDatumTargetLength(const Standard_Real theLength);
 
 		/****************** SetDatumTargetNumber ******************/
+		/**** md5 signature: 0aafb47f190b266f0f3e58d9c1b8de30 ****/
 		%feature("compactdefaultargs") SetDatumTargetNumber;
 		%feature("autodoc", "Sets datum target number.
 
@@ -1107,6 +1136,7 @@ None
 		void SetDatumTargetNumber(const Standard_Integer theNumber);
 
 		/****************** SetDatumTargetType ******************/
+		/**** md5 signature: 6968ab43c60b1bf94d193c1f77d9fc73 ****/
 		%feature("compactdefaultargs") SetDatumTargetType;
 		%feature("autodoc", "Sets datum target to point, line, rectangle, circle or area type.
 
@@ -1121,6 +1151,7 @@ None
 		void SetDatumTargetType(const XCAFDimTolObjects_DatumTargetType theType);
 
 		/****************** SetDatumTargetWidth ******************/
+		/**** md5 signature: d1150520927f93eb207ebc5738b270b2 ****/
 		%feature("compactdefaultargs") SetDatumTargetWidth;
 		%feature("autodoc", "Sets datum target width.
 
@@ -1135,6 +1166,7 @@ None
 		void SetDatumTargetWidth(const Standard_Real theWidth);
 
 		/****************** SetModifierWithValue ******************/
+		/**** md5 signature: 06d6a36c24483e33f9dc42b57e32fdea ****/
 		%feature("compactdefaultargs") SetModifierWithValue;
 		%feature("autodoc", "Sets datum modifier with value.
 
@@ -1150,6 +1182,7 @@ None
 		void SetModifierWithValue(const XCAFDimTolObjects_DatumModifWithValue theModifier, const Standard_Real theValue);
 
 		/****************** SetModifiers ******************/
+		/**** md5 signature: f17a408bcc855b6527c7c915793c7280 ****/
 		%feature("compactdefaultargs") SetModifiers;
 		%feature("autodoc", "Sets new sequence of datum modifiers.
 
@@ -1164,6 +1197,7 @@ None
 		void SetModifiers(const XCAFDimTolObjects_DatumModifiersSequence & theModifiers);
 
 		/****************** SetName ******************/
+		/**** md5 signature: f33a2db64e10616326f3c237e59d5df6 ****/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "Sets datum name.
 
@@ -1178,6 +1212,7 @@ None
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & theTag);
 
 		/****************** SetPlane ******************/
+		/**** md5 signature: 77a07ccd642257136673432fbd51e9ba ****/
 		%feature("compactdefaultargs") SetPlane;
 		%feature("autodoc", "Sets annotation plane.
 
@@ -1192,6 +1227,7 @@ None
 		void SetPlane(const gp_Ax2 & thePlane);
 
 		/****************** SetPoint ******************/
+		/**** md5 signature: 366a57481a7ee35be93bd56983beb928 ****/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "Sets a point on the datum target shape.
 
@@ -1206,6 +1242,7 @@ None
 		void SetPoint(const gp_Pnt & thePnt);
 
 		/****************** SetPointTextAttach ******************/
+		/**** md5 signature: 341561a939b1838061b22f9114c6f676 ****/
 		%feature("compactdefaultargs") SetPointTextAttach;
 		%feature("autodoc", "Sets a position of the datum text.
 
@@ -1220,6 +1257,7 @@ None
 		void SetPointTextAttach(const gp_Pnt & thePntText);
 
 		/****************** SetPosition ******************/
+		/**** md5 signature: 681c50c8b7fc2c907bcb44c47d32b185 ****/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", "Sets datum position in the related geometric tolerance object.
 
@@ -1234,6 +1272,7 @@ None
 		void SetPosition(const Standard_Integer thePosition);
 
 		/****************** SetPresentation ******************/
+		/**** md5 signature: d9f84931766936490b58688f84fa9fa9 ****/
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", "Set graphical presentation for object.
 
@@ -1249,6 +1288,7 @@ None
 		void SetPresentation(const TopoDS_Shape & thePresentation, const opencascade::handle<TCollection_HAsciiString> & thePresentationName);
 
 		/****************** SetSemanticName ******************/
+		/**** md5 signature: 1ae0d4c111cc04ac024e398eb0d74f97 ****/
 		%feature("compactdefaultargs") SetSemanticName;
 		%feature("autodoc", "Sets semantic name.
 
@@ -1279,6 +1319,7 @@ None
 class XCAFDimTolObjects_DimensionObject : public Standard_Transient {
 	public:
 		/****************** XCAFDimTolObjects_DimensionObject ******************/
+		/**** md5 signature: 3a6b058d71b9fa0645e6bfafe165e026 ****/
 		%feature("compactdefaultargs") XCAFDimTolObjects_DimensionObject;
 		%feature("autodoc", "No available documentation.
 
@@ -1289,6 +1330,7 @@ None
 		 XCAFDimTolObjects_DimensionObject();
 
 		/****************** XCAFDimTolObjects_DimensionObject ******************/
+		/**** md5 signature: 187f8e8b37a0a8209bbf130658d7ce37 ****/
 		%feature("compactdefaultargs") XCAFDimTolObjects_DimensionObject;
 		%feature("autodoc", "No available documentation.
 
@@ -1303,6 +1345,7 @@ None
 		 XCAFDimTolObjects_DimensionObject(const opencascade::handle<XCAFDimTolObjects_DimensionObject> & theObj);
 
 		/****************** AddDescription ******************/
+		/**** md5 signature: 54e9721f6e54f76f6035ef85160d7a83 ****/
 		%feature("compactdefaultargs") AddDescription;
 		%feature("autodoc", "Add new description.
 
@@ -1318,6 +1361,7 @@ None
 		void AddDescription(const opencascade::handle<TCollection_HAsciiString > theDescription, const opencascade::handle<TCollection_HAsciiString > theName);
 
 		/****************** AddModifier ******************/
+		/**** md5 signature: d341b63dcff18a6843e5befc8d4284ae ****/
 		%feature("compactdefaultargs") AddModifier;
 		%feature("autodoc", "Adds a modifier to the dimension sequence of modifiers.
 
@@ -1332,6 +1376,7 @@ None
 		void AddModifier(const XCAFDimTolObjects_DimensionModif theModifier);
 
 		/****************** GetClassOfTolerance ******************/
+		/**** md5 signature: 5c7792eec51fc027e2d5d6043f6964ff ****/
 		%feature("compactdefaultargs") GetClassOfTolerance;
 		%feature("autodoc", "Retrieves tolerance class parameters of the dimension. returns true if the dimension is toleranced.
 
@@ -1347,6 +1392,7 @@ theHole: bool
 		Standard_Boolean GetClassOfTolerance(Standard_Boolean &OutValue, XCAFDimTolObjects_DimensionFormVariance & theFormVariance, XCAFDimTolObjects_DimensionGrade & theGrade);
 
 		/****************** GetDescription ******************/
+		/**** md5 signature: b0dd6b983c7652817465a50088ed69a2 ****/
 		%feature("compactdefaultargs") GetDescription;
 		%feature("autodoc", "Returns description with the given number.
 
@@ -1361,6 +1407,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> GetDescription(const Standard_Integer theNumber);
 
 		/****************** GetDescriptionName ******************/
+		/**** md5 signature: 7bbc8fcb96b9a95797f62e7b925ca0e5 ****/
 		%feature("compactdefaultargs") GetDescriptionName;
 		%feature("autodoc", "Returns name of description with the given number.
 
@@ -1375,6 +1422,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> GetDescriptionName(const Standard_Integer theNumber);
 
 		/****************** GetDirection ******************/
+		/**** md5 signature: a767b02b7fd241b74750b61a72de86ac ****/
 		%feature("compactdefaultargs") GetDirection;
 		%feature("autodoc", "Returns the orientation of the dimension in annotation plane.
 
@@ -1389,6 +1437,7 @@ bool
 		Standard_Boolean GetDirection(gp_Dir & theDir);
 
 		/****************** GetLowerBound ******************/
+		/**** md5 signature: 8d41b4601584b9424eb10ef8caf2e4a4 ****/
 		%feature("compactdefaultargs") GetLowerBound;
 		%feature("autodoc", "Returns the lower bound of the range dimension, otherwise - zero.
 
@@ -1399,6 +1448,7 @@ float
 		Standard_Real GetLowerBound();
 
 		/****************** GetLowerTolValue ******************/
+		/**** md5 signature: e72090ed2d5e86760b6ae277b44353b9 ****/
 		%feature("compactdefaultargs") GetLowerTolValue;
 		%feature("autodoc", "Returns the upper value of the toleranced dimension, otherwise - zero.
 
@@ -1409,6 +1459,7 @@ float
 		Standard_Real GetLowerTolValue();
 
 		/****************** GetModifiers ******************/
+		/**** md5 signature: 587262242802230210b3d9aefde982fd ****/
 		%feature("compactdefaultargs") GetModifiers;
 		%feature("autodoc", "Returns a sequence of modifiers of the dimension.
 
@@ -1419,6 +1470,7 @@ XCAFDimTolObjects_DimensionModifiersSequence
 		XCAFDimTolObjects_DimensionModifiersSequence GetModifiers();
 
 		/****************** GetNbOfDecimalPlaces ******************/
+		/**** md5 signature: 72ecb82ef2e8a3ca68fc130b97a81441 ****/
 		%feature("compactdefaultargs") GetNbOfDecimalPlaces;
 		%feature("autodoc", "Returns the number of places to the left and right of the decimal point respectively.
 
@@ -1433,6 +1485,7 @@ theR: int
 		void GetNbOfDecimalPlaces(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** GetPath ******************/
+		/**** md5 signature: d141ed819ccde872312162fa0cc04936 ****/
 		%feature("compactdefaultargs") GetPath;
 		%feature("autodoc", "Returns a 'curve' along which the dimension is measured.
 
@@ -1443,6 +1496,7 @@ TopoDS_Edge
 		TopoDS_Edge GetPath();
 
 		/****************** GetPlane ******************/
+		/**** md5 signature: 236cce5d8f8ab5feac0e3f6311bd05f0 ****/
 		%feature("compactdefaultargs") GetPlane;
 		%feature("autodoc", "Returns annotation plane.
 
@@ -1453,6 +1507,7 @@ gp_Ax2
 		const gp_Ax2 GetPlane();
 
 		/****************** GetPoint ******************/
+		/**** md5 signature: baf1854e20bb314d04b36313e7ea5abb ****/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", "Get connection point (for dimesional_size), get connection point for the first shape (for dimensional_location).
 
@@ -1463,6 +1518,7 @@ gp_Pnt
 		gp_Pnt GetPoint();
 
 		/****************** GetPoint2 ******************/
+		/**** md5 signature: dda8fa40cffd61265b7b5ba471e18189 ****/
 		%feature("compactdefaultargs") GetPoint2;
 		%feature("autodoc", "No available documentation.
 
@@ -1473,6 +1529,7 @@ gp_Pnt
 		gp_Pnt GetPoint2();
 
 		/****************** GetPointTextAttach ******************/
+		/**** md5 signature: e81e077f484c7c68ce183e571e4969e7 ****/
 		%feature("compactdefaultargs") GetPointTextAttach;
 		%feature("autodoc", "Returns position of the dimension text.
 
@@ -1483,6 +1540,7 @@ gp_Pnt
 		const gp_Pnt GetPointTextAttach();
 
 		/****************** GetPresentation ******************/
+		/**** md5 signature: 3a1ba105c920c672ad36e26c32c03ea0 ****/
 		%feature("compactdefaultargs") GetPresentation;
 		%feature("autodoc", "Returns graphical presentation of the object.
 
@@ -1493,6 +1551,7 @@ TopoDS_Shape
 		TopoDS_Shape GetPresentation();
 
 		/****************** GetPresentationName ******************/
+		/**** md5 signature: ae4fdc476bfb8d85148da7be6e48c228 ****/
 		%feature("compactdefaultargs") GetPresentationName;
 		%feature("autodoc", "Returns graphical presentation of the object.
 
@@ -1503,6 +1562,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> GetPresentationName();
 
 		/****************** GetQualifier ******************/
+		/**** md5 signature: e56b8b87f082bfb35d48c4ee1824ba5a ****/
 		%feature("compactdefaultargs") GetQualifier;
 		%feature("autodoc", "Returns dimension qualifier.
 
@@ -1513,6 +1573,7 @@ XCAFDimTolObjects_DimensionQualifier
 		XCAFDimTolObjects_DimensionQualifier GetQualifier();
 
 		/****************** GetSemanticName ******************/
+		/**** md5 signature: 914ea6563027cdf692e218da5b1136d4 ****/
 		%feature("compactdefaultargs") GetSemanticName;
 		%feature("autodoc", "Returns semantic name.
 
@@ -1523,6 +1584,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> GetSemanticName();
 
 		/****************** GetType ******************/
+		/**** md5 signature: bd5e4ead327a740fbdd88a31eb6c5670 ****/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Returns dimension type.
 
@@ -1533,6 +1595,7 @@ XCAFDimTolObjects_DimensionType
 		XCAFDimTolObjects_DimensionType GetType();
 
 		/****************** GetUpperBound ******************/
+		/**** md5 signature: f7f657272409b790d778fe5c3a6c0683 ****/
 		%feature("compactdefaultargs") GetUpperBound;
 		%feature("autodoc", "Returns the upper bound of the range dimension, otherwise - zero.
 
@@ -1543,6 +1606,7 @@ float
 		Standard_Real GetUpperBound();
 
 		/****************** GetUpperTolValue ******************/
+		/**** md5 signature: 7f84a90537f1e0d269263854062fb547 ****/
 		%feature("compactdefaultargs") GetUpperTolValue;
 		%feature("autodoc", "Returns the lower value of the toleranced dimension, otherwise - zero.
 
@@ -1553,6 +1617,7 @@ float
 		Standard_Real GetUpperTolValue();
 
 		/****************** GetValue ******************/
+		/**** md5 signature: 2863c7a566efd7be6530d131f7f2cf29 ****/
 		%feature("compactdefaultargs") GetValue;
 		%feature("autodoc", "Returns the main dimension value. it will be the middle value in case of range dimension.
 
@@ -1563,6 +1628,7 @@ float
 		Standard_Real GetValue();
 
 		/****************** GetValues ******************/
+		/**** md5 signature: c65722835b4c563a820889b9b9297d8a ****/
 		%feature("compactdefaultargs") GetValues;
 		%feature("autodoc", "Returns raw array of dimension values.
 
@@ -1573,6 +1639,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 		opencascade::handle<TColStd_HArray1OfReal> GetValues();
 
 		/****************** HasDescriptions ******************/
+		/**** md5 signature: a29882da325e9c2ee8b0fd068b89d92c ****/
 		%feature("compactdefaultargs") HasDescriptions;
 		%feature("autodoc", "Returns true, if the object has descriptions.
 
@@ -1583,6 +1650,7 @@ bool
 		Standard_Boolean HasDescriptions();
 
 		/****************** HasPlane ******************/
+		/**** md5 signature: 7cf03566771455c19f444d8a2236d65d ****/
 		%feature("compactdefaultargs") HasPlane;
 		%feature("autodoc", "Returns true if the object has annotation plane.
 
@@ -1593,6 +1661,7 @@ bool
 		Standard_Boolean HasPlane();
 
 		/****************** HasPoint ******************/
+		/**** md5 signature: 8de3c013a7c1611c02e38dffb22d1c6b ****/
 		%feature("compactdefaultargs") HasPoint;
 		%feature("autodoc", "Returns true, if connection point exists (for dimesional_size), if connection point for the first shape exists (for dimensional_location).
 
@@ -1603,6 +1672,7 @@ bool
 		Standard_Boolean HasPoint();
 
 		/****************** HasPoint2 ******************/
+		/**** md5 signature: d0e648b8b854584c60c14c4e48233f5f ****/
 		%feature("compactdefaultargs") HasPoint2;
 		%feature("autodoc", "No available documentation.
 
@@ -1613,6 +1683,7 @@ bool
 		Standard_Boolean HasPoint2();
 
 		/****************** HasQualifier ******************/
+		/**** md5 signature: 9764a979a208be8307172054072f77c6 ****/
 		%feature("compactdefaultargs") HasQualifier;
 		%feature("autodoc", "Returns true if the object has dimension qualifier.
 
@@ -1623,6 +1694,7 @@ bool
 		Standard_Boolean HasQualifier();
 
 		/****************** HasTextPoint ******************/
+		/**** md5 signature: 28189ad30d8d9631ec7e30fd59536f6e ****/
 		%feature("compactdefaultargs") HasTextPoint;
 		%feature("autodoc", "Returns true if the position of dimension text is specified.
 
@@ -1633,6 +1705,7 @@ bool
 		Standard_Boolean HasTextPoint();
 
 		/****************** IsDimWithClassOfTolerance ******************/
+		/**** md5 signature: 343c29ecd69891568c9a9fe7e33553f2 ****/
 		%feature("compactdefaultargs") IsDimWithClassOfTolerance;
 		%feature("autodoc", "Returns true if the form variance was set to not xcafdimtolobjects_dimensionformvariance_none value.
 
@@ -1643,6 +1716,7 @@ bool
 		Standard_Boolean IsDimWithClassOfTolerance();
 
 		/****************** IsDimWithPlusMinusTolerance ******************/
+		/**** md5 signature: fd1a809368094942606845789648b18d ****/
 		%feature("compactdefaultargs") IsDimWithPlusMinusTolerance;
 		%feature("autodoc", "Returns true if the dimension is of +/- tolerance kind. dimension is of +/- tolerance kind if its values array contains three elements defining the main value and the lower/upper tolerances.
 
@@ -1653,6 +1727,7 @@ bool
 		Standard_Boolean IsDimWithPlusMinusTolerance();
 
 		/****************** IsDimWithRange ******************/
+		/**** md5 signature: 5e415bcacbf6b8754f400f99b06dd87d ****/
 		%feature("compactdefaultargs") IsDimWithRange;
 		%feature("autodoc", "Returns true if the dimension is of range kind. dimension is of range kind if its values array contains two elements defining lower and upper bounds.
 
@@ -1663,6 +1738,7 @@ bool
 		Standard_Boolean IsDimWithRange();
 
 		/****************** NbDescriptions ******************/
+		/**** md5 signature: 4c4971728539b7092ceee3c61e16666d ****/
 		%feature("compactdefaultargs") NbDescriptions;
 		%feature("autodoc", "Returns number of descriptions.
 
@@ -1673,6 +1749,7 @@ int
 		Standard_Integer NbDescriptions();
 
 		/****************** RemoveDescription ******************/
+		/**** md5 signature: ee32f9f2826c5dc1d626573c9aa3fd3c ****/
 		%feature("compactdefaultargs") RemoveDescription;
 		%feature("autodoc", "Remove description with the given number.
 
@@ -1687,6 +1764,7 @@ None
 		void RemoveDescription(const Standard_Integer theNumber);
 
 		/****************** SetClassOfTolerance ******************/
+		/**** md5 signature: 73c5d12561a820f6615237d0257d08e9 ****/
 		%feature("compactdefaultargs") SetClassOfTolerance;
 		%feature("autodoc", "Sets tolerance class of the dimension. \param thehole - true if the tolerance applies to an internal feature \param theformvariance - represents the fundamental deviation or 'position letter'  of the iso 286 limits-and-fits tolerance classification. \param thegrade - represents the quality or the accuracy grade of a tolerance.
 
@@ -1703,6 +1781,7 @@ None
 		void SetClassOfTolerance(const Standard_Boolean theHole, const XCAFDimTolObjects_DimensionFormVariance theFormVariance, const XCAFDimTolObjects_DimensionGrade theGrade);
 
 		/****************** SetDirection ******************/
+		/**** md5 signature: dd70d2e5545039397501429c9f6d0316 ****/
 		%feature("compactdefaultargs") SetDirection;
 		%feature("autodoc", "Sets an orientation of the dimension in annotation plane.
 
@@ -1717,6 +1796,7 @@ bool
 		Standard_Boolean SetDirection(const gp_Dir & theDir);
 
 		/****************** SetLowerBound ******************/
+		/**** md5 signature: 8573b334b990276727957af5ab003a79 ****/
 		%feature("compactdefaultargs") SetLowerBound;
 		%feature("autodoc", "Sets the lower bound of the range dimension, otherwise resets it to an empty range with the specified lower bound.
 
@@ -1731,6 +1811,7 @@ None
 		void SetLowerBound(const Standard_Real theLowerBound);
 
 		/****************** SetLowerTolValue ******************/
+		/**** md5 signature: 6c70862e28548ec0c7e8b7433a2be50c ****/
 		%feature("compactdefaultargs") SetLowerTolValue;
 		%feature("autodoc", "Sets the lower value of the toleranced dimension, otherwise resets a simple dimension to toleranced one with the specified lower/upper tolerances. returns false in case of range dimension.
 
@@ -1745,6 +1826,7 @@ bool
 		Standard_Boolean SetLowerTolValue(const Standard_Real theLowerTolValue);
 
 		/****************** SetModifiers ******************/
+		/**** md5 signature: 19fb3ee31fa40691139898e74f82abec ****/
 		%feature("compactdefaultargs") SetModifiers;
 		%feature("autodoc", "Sets new sequence of dimension modifiers.
 
@@ -1759,6 +1841,7 @@ None
 		void SetModifiers(const XCAFDimTolObjects_DimensionModifiersSequence & theModifiers);
 
 		/****************** SetNbOfDecimalPlaces ******************/
+		/**** md5 signature: 763c2a69c8382715c9dde8b6cbe70d29 ****/
 		%feature("compactdefaultargs") SetNbOfDecimalPlaces;
 		%feature("autodoc", "Sets the number of places to the left and right of the decimal point respectively.
 
@@ -1774,6 +1857,7 @@ None
 		void SetNbOfDecimalPlaces(const Standard_Integer theL, const Standard_Integer theR);
 
 		/****************** SetPath ******************/
+		/**** md5 signature: 9dd5ad4e5143a918fce26f604e7c095a ****/
 		%feature("compactdefaultargs") SetPath;
 		%feature("autodoc", "Sets a 'curve' along which the dimension is measured.
 
@@ -1788,6 +1872,7 @@ None
 		void SetPath(const TopoDS_Edge & thePath);
 
 		/****************** SetPlane ******************/
+		/**** md5 signature: 77a07ccd642257136673432fbd51e9ba ****/
 		%feature("compactdefaultargs") SetPlane;
 		%feature("autodoc", "Sets annotation plane.
 
@@ -1802,6 +1887,7 @@ None
 		void SetPlane(const gp_Ax2 & thePlane);
 
 		/****************** SetPoint ******************/
+		/**** md5 signature: f9131907cb61340768fb9a1c8b97260a ****/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "Set connection point (for dimesional_size), set connection point for the first shape (for dimensional_location).
 
@@ -1816,6 +1902,7 @@ None
 		void SetPoint(const gp_Pnt thePnt);
 
 		/****************** SetPoint2 ******************/
+		/**** md5 signature: c4e510d21705c6ee2f11aa2dfc519e7a ****/
 		%feature("compactdefaultargs") SetPoint2;
 		%feature("autodoc", "No available documentation.
 
@@ -1830,6 +1917,7 @@ None
 		void SetPoint2(const gp_Pnt thePnt);
 
 		/****************** SetPointTextAttach ******************/
+		/**** md5 signature: 341561a939b1838061b22f9114c6f676 ****/
 		%feature("compactdefaultargs") SetPointTextAttach;
 		%feature("autodoc", "Sets position of the dimension text.
 
@@ -1844,6 +1932,7 @@ None
 		void SetPointTextAttach(const gp_Pnt & thePntText);
 
 		/****************** SetPresentation ******************/
+		/**** md5 signature: d9f84931766936490b58688f84fa9fa9 ****/
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", "Set graphical presentation for the object.
 
@@ -1859,6 +1948,7 @@ None
 		void SetPresentation(const TopoDS_Shape & thePresentation, const opencascade::handle<TCollection_HAsciiString> & thePresentationName);
 
 		/****************** SetQualifier ******************/
+		/**** md5 signature: bbd0001df2bb9d2dbbe1969914014061 ****/
 		%feature("compactdefaultargs") SetQualifier;
 		%feature("autodoc", "Sets dimension qualifier as min., max. or average.
 
@@ -1873,6 +1963,7 @@ None
 		void SetQualifier(const XCAFDimTolObjects_DimensionQualifier theQualifier);
 
 		/****************** SetSemanticName ******************/
+		/**** md5 signature: 1ae0d4c111cc04ac024e398eb0d74f97 ****/
 		%feature("compactdefaultargs") SetSemanticName;
 		%feature("autodoc", "Sets semantic name.
 
@@ -1887,6 +1978,7 @@ None
 		void SetSemanticName(const opencascade::handle<TCollection_HAsciiString> & theName);
 
 		/****************** SetType ******************/
+		/**** md5 signature: f42664d4cf787c360f3e8c514b558de6 ****/
 		%feature("compactdefaultargs") SetType;
 		%feature("autodoc", "Sets a specific type of dimension.
 
@@ -1901,6 +1993,7 @@ None
 		void SetType(const XCAFDimTolObjects_DimensionType theTyupe);
 
 		/****************** SetUpperBound ******************/
+		/**** md5 signature: 9459ed50736fb30efb39b05405ad7e8f ****/
 		%feature("compactdefaultargs") SetUpperBound;
 		%feature("autodoc", "Sets the upper bound of the range dimension, otherwise resets it to an empty range with the specified upper bound.
 
@@ -1915,6 +2008,7 @@ None
 		void SetUpperBound(const Standard_Real theUpperBound);
 
 		/****************** SetUpperTolValue ******************/
+		/**** md5 signature: 1cb611d02a9917e651fdb4507035669d ****/
 		%feature("compactdefaultargs") SetUpperTolValue;
 		%feature("autodoc", "Sets the upper value of the toleranced dimension, otherwise resets a simple dimension to toleranced one with the specified lower/upper tolerances. returns false in case of range dimension.
 
@@ -1929,6 +2023,7 @@ bool
 		Standard_Boolean SetUpperTolValue(const Standard_Real theUperTolValue);
 
 		/****************** SetValue ******************/
+		/**** md5 signature: 5bcfa037669ff7f132a0f41bd6780f3d ****/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "Sets the main dimension value. overwrites previous values.
 
@@ -1943,6 +2038,7 @@ None
 		void SetValue(const Standard_Real theValue);
 
 		/****************** SetValues ******************/
+		/**** md5 signature: 8b6e8145c45d231ecd41d0bbb1d99770 ****/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "Replaces current raw array of dimension values with thevalues array.
 
@@ -1973,6 +2069,7 @@ None
 class XCAFDimTolObjects_GeomToleranceObject : public Standard_Transient {
 	public:
 		/****************** XCAFDimTolObjects_GeomToleranceObject ******************/
+		/**** md5 signature: 8cd9dc8b0cebda31706f05d9938befd7 ****/
 		%feature("compactdefaultargs") XCAFDimTolObjects_GeomToleranceObject;
 		%feature("autodoc", "No available documentation.
 
@@ -1983,6 +2080,7 @@ None
 		 XCAFDimTolObjects_GeomToleranceObject();
 
 		/****************** XCAFDimTolObjects_GeomToleranceObject ******************/
+		/**** md5 signature: 9874913cc7fa144dfeb0ace60377f629 ****/
 		%feature("compactdefaultargs") XCAFDimTolObjects_GeomToleranceObject;
 		%feature("autodoc", "No available documentation.
 
@@ -1997,6 +2095,7 @@ None
 		 XCAFDimTolObjects_GeomToleranceObject(const opencascade::handle<XCAFDimTolObjects_GeomToleranceObject> & theObj);
 
 		/****************** AddModifier ******************/
+		/**** md5 signature: e51adce582bb77089a780be8e9654ea2 ****/
 		%feature("compactdefaultargs") AddModifier;
 		%feature("autodoc", "Adds a tolerance modifier to the sequence of modifiers.
 
@@ -2011,6 +2110,7 @@ None
 		void AddModifier(const XCAFDimTolObjects_GeomToleranceModif theModifier);
 
 		/****************** GetAffectedPlane ******************/
+		/**** md5 signature: a2b83a410ab5eca7c1125298d914df55 ****/
 		%feature("compactdefaultargs") GetAffectedPlane;
 		%feature("autodoc", "Returns affected plane.
 
@@ -2021,6 +2121,7 @@ gp_Pln
 		const gp_Pln GetAffectedPlane();
 
 		/****************** GetAffectedPlaneType ******************/
+		/**** md5 signature: 6060836a6ae29fcfba33448e802cf055 ****/
 		%feature("compactdefaultargs") GetAffectedPlaneType;
 		%feature("autodoc", "No available documentation.
 
@@ -2031,6 +2132,7 @@ XCAFDimTolObjects_ToleranceZoneAffectedPlane
 		XCAFDimTolObjects_ToleranceZoneAffectedPlane GetAffectedPlaneType();
 
 		/****************** GetAxis ******************/
+		/**** md5 signature: 876918b464eea6100446926192b36b4a ****/
 		%feature("compactdefaultargs") GetAxis;
 		%feature("autodoc", "No available documentation.
 
@@ -2041,6 +2143,7 @@ gp_Ax2
 		gp_Ax2 GetAxis();
 
 		/****************** GetMaterialRequirementModifier ******************/
+		/**** md5 signature: c386afc06e956e0910c6dfbfdc4cbad7 ****/
 		%feature("compactdefaultargs") GetMaterialRequirementModifier;
 		%feature("autodoc", "Returns material requirement of the tolerance.
 
@@ -2051,6 +2154,7 @@ XCAFDimTolObjects_GeomToleranceMatReqModif
 		XCAFDimTolObjects_GeomToleranceMatReqModif GetMaterialRequirementModifier();
 
 		/****************** GetMaxValueModifier ******************/
+		/**** md5 signature: 8486b8ab1d9384fda0f47270555163c9 ****/
 		%feature("compactdefaultargs") GetMaxValueModifier;
 		%feature("autodoc", "Returns the maximal upper tolerance.
 
@@ -2061,6 +2165,7 @@ float
 		Standard_Real GetMaxValueModifier();
 
 		/****************** GetModifiers ******************/
+		/**** md5 signature: 4b597c6c86736610c0b2458d359046ef ****/
 		%feature("compactdefaultargs") GetModifiers;
 		%feature("autodoc", "Returns a sequence of modifiers of the tolerance.
 
@@ -2071,6 +2176,7 @@ XCAFDimTolObjects_GeomToleranceModifiersSequence
 		XCAFDimTolObjects_GeomToleranceModifiersSequence GetModifiers();
 
 		/****************** GetPlane ******************/
+		/**** md5 signature: 236cce5d8f8ab5feac0e3f6311bd05f0 ****/
 		%feature("compactdefaultargs") GetPlane;
 		%feature("autodoc", "Returns annotation plane.
 
@@ -2081,6 +2187,7 @@ gp_Ax2
 		const gp_Ax2 GetPlane();
 
 		/****************** GetPoint ******************/
+		/**** md5 signature: 75bde715a8ee43e7500d44b575591a80 ****/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", "Returns reference point.
 
@@ -2091,6 +2198,7 @@ gp_Pnt
 		const gp_Pnt GetPoint();
 
 		/****************** GetPointTextAttach ******************/
+		/**** md5 signature: e81e077f484c7c68ce183e571e4969e7 ****/
 		%feature("compactdefaultargs") GetPointTextAttach;
 		%feature("autodoc", "Returns the text position.
 
@@ -2101,6 +2209,7 @@ gp_Pnt
 		const gp_Pnt GetPointTextAttach();
 
 		/****************** GetPresentation ******************/
+		/**** md5 signature: 3a1ba105c920c672ad36e26c32c03ea0 ****/
 		%feature("compactdefaultargs") GetPresentation;
 		%feature("autodoc", "Returns graphical presentation of the object.
 
@@ -2111,6 +2220,7 @@ TopoDS_Shape
 		TopoDS_Shape GetPresentation();
 
 		/****************** GetPresentationName ******************/
+		/**** md5 signature: ae4fdc476bfb8d85148da7be6e48c228 ****/
 		%feature("compactdefaultargs") GetPresentationName;
 		%feature("autodoc", "Returns graphical presentation of the object.
 
@@ -2121,6 +2231,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> GetPresentationName();
 
 		/****************** GetSemanticName ******************/
+		/**** md5 signature: 914ea6563027cdf692e218da5b1136d4 ****/
 		%feature("compactdefaultargs") GetSemanticName;
 		%feature("autodoc", "Returns semantic name.
 
@@ -2131,6 +2242,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> GetSemanticName();
 
 		/****************** GetType ******************/
+		/**** md5 signature: da7c24562a67c93b80b97fb882ba1b25 ****/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Returns type of the object.
 
@@ -2141,6 +2253,7 @@ XCAFDimTolObjects_GeomToleranceType
 		XCAFDimTolObjects_GeomToleranceType GetType();
 
 		/****************** GetTypeOfValue ******************/
+		/**** md5 signature: dc62c2d3fdbefbb517926b5f2fcca341 ****/
 		%feature("compactdefaultargs") GetTypeOfValue;
 		%feature("autodoc", "Returns type of tolerance value.
 
@@ -2151,6 +2264,7 @@ XCAFDimTolObjects_GeomToleranceTypeValue
 		XCAFDimTolObjects_GeomToleranceTypeValue GetTypeOfValue();
 
 		/****************** GetValue ******************/
+		/**** md5 signature: 2863c7a566efd7be6530d131f7f2cf29 ****/
 		%feature("compactdefaultargs") GetValue;
 		%feature("autodoc", "Returns tolerance value.
 
@@ -2161,6 +2275,7 @@ float
 		Standard_Real GetValue();
 
 		/****************** GetValueOfZoneModifier ******************/
+		/**** md5 signature: e0cd44399ccf3b5576e8bf1a5aca899b ****/
 		%feature("compactdefaultargs") GetValueOfZoneModifier;
 		%feature("autodoc", "Returns value associated with tolerance zone.
 
@@ -2171,6 +2286,7 @@ float
 		Standard_Real GetValueOfZoneModifier();
 
 		/****************** GetZoneModifier ******************/
+		/**** md5 signature: 454b9ee7f2e4e18a2de3523c5eb315c7 ****/
 		%feature("compactdefaultargs") GetZoneModifier;
 		%feature("autodoc", "Returns tolerance zone.
 
@@ -2181,6 +2297,7 @@ XCAFDimTolObjects_GeomToleranceZoneModif
 		XCAFDimTolObjects_GeomToleranceZoneModif GetZoneModifier();
 
 		/****************** HasAffectedPlane ******************/
+		/**** md5 signature: 665f798d616b084cef9e434b59f799d1 ****/
 		%feature("compactdefaultargs") HasAffectedPlane;
 		%feature("autodoc", "No available documentation.
 
@@ -2191,6 +2308,7 @@ bool
 		bool HasAffectedPlane();
 
 		/****************** HasAxis ******************/
+		/**** md5 signature: 4b18911068f4a18ff4ad5450250ccfda ****/
 		%feature("compactdefaultargs") HasAxis;
 		%feature("autodoc", "No available documentation.
 
@@ -2201,6 +2319,7 @@ bool
 		Standard_Boolean HasAxis();
 
 		/****************** HasPlane ******************/
+		/**** md5 signature: 7cf03566771455c19f444d8a2236d65d ****/
 		%feature("compactdefaultargs") HasPlane;
 		%feature("autodoc", "Returns true if the object has annotation plane.
 
@@ -2211,6 +2330,7 @@ bool
 		Standard_Boolean HasPlane();
 
 		/****************** HasPoint ******************/
+		/**** md5 signature: 8de3c013a7c1611c02e38dffb22d1c6b ****/
 		%feature("compactdefaultargs") HasPoint;
 		%feature("autodoc", "Returns true if reference point is specified.
 
@@ -2221,6 +2341,7 @@ bool
 		Standard_Boolean HasPoint();
 
 		/****************** HasPointText ******************/
+		/**** md5 signature: 0bf2ec86538f2cbb875c1c0a8313563e ****/
 		%feature("compactdefaultargs") HasPointText;
 		%feature("autodoc", "Returns true if text position is specified.
 
@@ -2231,6 +2352,7 @@ bool
 		Standard_Boolean HasPointText();
 
 		/****************** SetAffectedPlane ******************/
+		/**** md5 signature: 591f4b5261bb41f55d66281190c2c214 ****/
 		%feature("compactdefaultargs") SetAffectedPlane;
 		%feature("autodoc", "Sets affected plane.
 
@@ -2245,6 +2367,7 @@ None
 		void SetAffectedPlane(const gp_Pln & thePlane);
 
 		/****************** SetAffectedPlane ******************/
+		/**** md5 signature: 135e42e8e355e11d67511b9f230a798c ****/
 		%feature("compactdefaultargs") SetAffectedPlane;
 		%feature("autodoc", "Sets affected plane.
 
@@ -2260,6 +2383,7 @@ None
 		void SetAffectedPlane(const gp_Pln & thePlane, const XCAFDimTolObjects_ToleranceZoneAffectedPlane theType);
 
 		/****************** SetAffectedPlaneType ******************/
+		/**** md5 signature: 89c0a2fd72bf9863e86c4f315cb5bbd4 ****/
 		%feature("compactdefaultargs") SetAffectedPlaneType;
 		%feature("autodoc", "No available documentation.
 
@@ -2274,6 +2398,7 @@ None
 		void SetAffectedPlaneType(const XCAFDimTolObjects_ToleranceZoneAffectedPlane theType);
 
 		/****************** SetAxis ******************/
+		/**** md5 signature: fb235ea263da030c660a8bbe3f5e66b6 ****/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", "No available documentation.
 
@@ -2288,6 +2413,7 @@ None
 		void SetAxis(const gp_Ax2 theAxis);
 
 		/****************** SetMaterialRequirementModifier ******************/
+		/**** md5 signature: de1309ae344830665d02742b0e761a4c ****/
 		%feature("compactdefaultargs") SetMaterialRequirementModifier;
 		%feature("autodoc", "Sets material requirement of the tolerance.
 
@@ -2302,6 +2428,7 @@ None
 		void SetMaterialRequirementModifier(const XCAFDimTolObjects_GeomToleranceMatReqModif theMatReqModif);
 
 		/****************** SetMaxValueModifier ******************/
+		/**** md5 signature: 3cd7df21a5f0df40d2c7ef955188b31a ****/
 		%feature("compactdefaultargs") SetMaxValueModifier;
 		%feature("autodoc", "Sets the maximal upper tolerance value for tolerance with modifiers.
 
@@ -2316,6 +2443,7 @@ None
 		void SetMaxValueModifier(const Standard_Real theModifier);
 
 		/****************** SetModifiers ******************/
+		/**** md5 signature: aec6e8a9f31cb3230ca80908216c9673 ****/
 		%feature("compactdefaultargs") SetModifiers;
 		%feature("autodoc", "Sets new sequence of tolerance modifiers.
 
@@ -2330,6 +2458,7 @@ None
 		void SetModifiers(const XCAFDimTolObjects_GeomToleranceModifiersSequence & theModifiers);
 
 		/****************** SetPlane ******************/
+		/**** md5 signature: 77a07ccd642257136673432fbd51e9ba ****/
 		%feature("compactdefaultargs") SetPlane;
 		%feature("autodoc", "Sets annotation plane.
 
@@ -2344,6 +2473,7 @@ None
 		void SetPlane(const gp_Ax2 & thePlane);
 
 		/****************** SetPoint ******************/
+		/**** md5 signature: 366a57481a7ee35be93bd56983beb928 ****/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "Sets reference point.
 
@@ -2358,6 +2488,7 @@ None
 		void SetPoint(const gp_Pnt & thePnt);
 
 		/****************** SetPointTextAttach ******************/
+		/**** md5 signature: 341561a939b1838061b22f9114c6f676 ****/
 		%feature("compactdefaultargs") SetPointTextAttach;
 		%feature("autodoc", "Sets text position.
 
@@ -2372,6 +2503,7 @@ None
 		void SetPointTextAttach(const gp_Pnt & thePntText);
 
 		/****************** SetPresentation ******************/
+		/**** md5 signature: d9f84931766936490b58688f84fa9fa9 ****/
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", "Set graphical presentation for object.
 
@@ -2387,6 +2519,7 @@ None
 		void SetPresentation(const TopoDS_Shape & thePresentation, const opencascade::handle<TCollection_HAsciiString> & thePresentationName);
 
 		/****************** SetSemanticName ******************/
+		/**** md5 signature: 1ae0d4c111cc04ac024e398eb0d74f97 ****/
 		%feature("compactdefaultargs") SetSemanticName;
 		%feature("autodoc", "Sets semantic name.
 
@@ -2401,6 +2534,7 @@ None
 		void SetSemanticName(const opencascade::handle<TCollection_HAsciiString> & theName);
 
 		/****************** SetType ******************/
+		/**** md5 signature: 4b15d55f2f69f9c27afb8c650c8e94fb ****/
 		%feature("compactdefaultargs") SetType;
 		%feature("autodoc", "Sets type of the object.
 
@@ -2415,6 +2549,7 @@ None
 		void SetType(const XCAFDimTolObjects_GeomToleranceType theType);
 
 		/****************** SetTypeOfValue ******************/
+		/**** md5 signature: 38f3d7f69ea62d58d4906f1c9b9c54ea ****/
 		%feature("compactdefaultargs") SetTypeOfValue;
 		%feature("autodoc", "Sets type of tolerance value.
 
@@ -2429,6 +2564,7 @@ None
 		void SetTypeOfValue(const XCAFDimTolObjects_GeomToleranceTypeValue theTypeOfValue);
 
 		/****************** SetValue ******************/
+		/**** md5 signature: 5bcfa037669ff7f132a0f41bd6780f3d ****/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "Sets tolerance value.
 
@@ -2443,6 +2579,7 @@ None
 		void SetValue(const Standard_Real theValue);
 
 		/****************** SetValueOfZoneModifier ******************/
+		/**** md5 signature: c69f1d85198f0ee12579cac980cafac9 ****/
 		%feature("compactdefaultargs") SetValueOfZoneModifier;
 		%feature("autodoc", "Sets value associated with tolerance zone.
 
@@ -2457,6 +2594,7 @@ None
 		void SetValueOfZoneModifier(const Standard_Real theValue);
 
 		/****************** SetZoneModifier ******************/
+		/**** md5 signature: cf062d025851c9ffd52ff08a1ac15fb6 ****/
 		%feature("compactdefaultargs") SetZoneModifier;
 		%feature("autodoc", "Sets tolerance zone.
 
@@ -2487,6 +2625,7 @@ None
 class XCAFDimTolObjects_Tool {
 	public:
 		/****************** XCAFDimTolObjects_Tool ******************/
+		/**** md5 signature: ffa7452f099cd24d19249cb9debd4fda ****/
 		%feature("compactdefaultargs") XCAFDimTolObjects_Tool;
 		%feature("autodoc", "No available documentation.
 
@@ -2501,6 +2640,7 @@ None
 		 XCAFDimTolObjects_Tool(const opencascade::handle<TDocStd_Document> & theDoc);
 
 		/****************** GetDimensions ******************/
+		/**** md5 signature: 3ec09e7fdddcf9e8b8057fddd723189e ****/
 		%feature("compactdefaultargs") GetDimensions;
 		%feature("autodoc", "Returns a sequence of dimensions currently stored in the gd&t table.
 
@@ -2515,6 +2655,7 @@ None
 		void GetDimensions(XCAFDimTolObjects_DimensionObjectSequence & theDimensionObjectSequence);
 
 		/****************** GetGeomTolerances ******************/
+		/**** md5 signature: efd81f037226e8c3624a047d83c013f0 ****/
 		%feature("compactdefaultargs") GetGeomTolerances;
 		%feature("autodoc", "Returns a sequence of tolerances currently stored in the gd&t table.
 
@@ -2531,6 +2672,7 @@ None
 		void GetGeomTolerances(XCAFDimTolObjects_GeomToleranceObjectSequence & theGeomToleranceObjectSequence, XCAFDimTolObjects_DatumObjectSequence & theDatumObjectSequence, XCAFDimTolObjects_DataMapOfToleranceDatum & theMap);
 
 		/****************** GetRefDatum ******************/
+		/**** md5 signature: e78d285dd71f7aad602496c5286ecc2e ****/
 		%feature("compactdefaultargs") GetRefDatum;
 		%feature("autodoc", "Returns datumobject defined for shape.
 
@@ -2546,6 +2688,7 @@ bool
 		Standard_Boolean GetRefDatum(const TopoDS_Shape & theShape, opencascade::handle<XCAFDimTolObjects_DatumObject> & theDatum);
 
 		/****************** GetRefDimensions ******************/
+		/**** md5 signature: da2a27056f052bead73df4e92b1dcc7e ****/
 		%feature("compactdefaultargs") GetRefDimensions;
 		%feature("autodoc", "Returns all dimensions defined for shape.
 
@@ -2561,6 +2704,7 @@ bool
 		Standard_Boolean GetRefDimensions(const TopoDS_Shape & theShape, XCAFDimTolObjects_DimensionObjectSequence & theDimensions);
 
 		/****************** GetRefGeomTolerances ******************/
+		/**** md5 signature: 9362d8bc0e5541f0393b435b328720ba ****/
 		%feature("compactdefaultargs") GetRefGeomTolerances;
 		%feature("autodoc", "Returns all geomtolerances defined for shape.
 

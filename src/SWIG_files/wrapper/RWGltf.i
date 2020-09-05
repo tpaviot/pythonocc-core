@@ -296,6 +296,7 @@ RWGltf_GltfAccessorLayout_Mat4 = RWGltf_GltfAccessorLayout.RWGltf_GltfAccessorLa
 class RWGltf_CafReader : public RWMesh_CafReader {
 	public:
 		/****************** RWGltf_CafReader ******************/
+		/**** md5 signature: b49d51924e7e037097c2ebd9d2d54ff2 ****/
 		%feature("compactdefaultargs") RWGltf_CafReader;
 		%feature("autodoc", "Empty constructor.
 
@@ -306,6 +307,7 @@ None
 		 RWGltf_CafReader();
 
 		/****************** SetMeshNameAsFallback ******************/
+		/**** md5 signature: 8bcbe5f3e17e020b0661e880c51f5245 ****/
 		%feature("compactdefaultargs") SetMeshNameAsFallback;
 		%feature("autodoc", "Set flag to use mesh name in case if node name is empty.
 
@@ -320,6 +322,7 @@ None
 		void SetMeshNameAsFallback(bool theToFallback);
 
 		/****************** SetParallel ******************/
+		/**** md5 signature: 298b1fbcc88b83d7071890cceab0869e ****/
 		%feature("compactdefaultargs") SetParallel;
 		%feature("autodoc", "Setup multithreaded execution.
 
@@ -334,6 +337,7 @@ None
 		void SetParallel(bool theToParallel);
 
 		/****************** SetSkipEmptyNodes ******************/
+		/**** md5 signature: a7a153b4100df7de6ec47b025f5904c9 ****/
 		%feature("compactdefaultargs") SetSkipEmptyNodes;
 		%feature("autodoc", "Set flag to ignore nodes without geometry.
 
@@ -348,6 +352,7 @@ None
 		void SetSkipEmptyNodes(bool theToSkip);
 
 		/****************** ToParallel ******************/
+		/**** md5 signature: bf4527df56769064945cdf0919b0491e ****/
 		%feature("compactdefaultargs") ToParallel;
 		%feature("autodoc", "Return true if multithreaded optimizations are allowed; false by default.
 
@@ -358,6 +363,7 @@ bool
 		bool ToParallel();
 
 		/****************** ToSkipEmptyNodes ******************/
+		/**** md5 signature: aa5d3722c5c1c7fa9b1374eec1aebf9e ****/
 		%feature("compactdefaultargs") ToSkipEmptyNodes;
 		%feature("autodoc", "Return true if nodes without geometry should be ignored, true by default.
 
@@ -368,6 +374,7 @@ bool
 		bool ToSkipEmptyNodes();
 
 		/****************** ToUseMeshNameAsFallback ******************/
+		/**** md5 signature: db6080fd37887a51344b071137921164 ****/
 		%feature("compactdefaultargs") ToUseMeshNameAsFallback;
 		%feature("autodoc", "Set flag to use mesh name in case if node name is empty, true by default.
 
@@ -399,6 +406,7 @@ class RWGltf_GltfAccessor {
 		RWGltf_GltfAccessorCompType ComponentType;
 		Graphic3d_BndBox3d BndBox;
 		/****************** RWGltf_GltfAccessor ******************/
+		/**** md5 signature: 1ac0c993d4339614409d9c5e0ac9bdc9 ****/
 		%feature("compactdefaultargs") RWGltf_GltfAccessor;
 		%feature("autodoc", "Empty constructor.
 
@@ -428,6 +436,7 @@ class RWGltf_GltfBufferView {
 		int32_t ByteStride;
 		RWGltf_GltfBufferViewTarget Target;
 		/****************** RWGltf_GltfBufferView ******************/
+		/**** md5 signature: 7f05f05ddf9d2f909355f94a9fbcef5d ****/
 		%feature("compactdefaultargs") RWGltf_GltfBufferView;
 		%feature("autodoc", "No available documentation.
 
@@ -470,6 +479,7 @@ class RWGltf_GltfFace {
 class RWGltf_GltfLatePrimitiveArray : public Poly_Triangulation {
 	public:
 		/****************** RWGltf_GltfLatePrimitiveArray ******************/
+		/**** md5 signature: 7107dfd4e0698cb28650e1340d202186 ****/
 		%feature("compactdefaultargs") RWGltf_GltfLatePrimitiveArray;
 		%feature("autodoc", "Constructor.
 
@@ -485,6 +495,7 @@ None
 		 RWGltf_GltfLatePrimitiveArray(const TCollection_AsciiString & theId, const TCollection_AsciiString & theName);
 
 		/****************** AddPrimArrayData ******************/
+		/**** md5 signature: 6b00508c9622c6f7b8308c0e8ee7efd5 ****/
 		%feature("compactdefaultargs") AddPrimArrayData;
 		%feature("autodoc", "Add primitive array data element.
 
@@ -499,6 +510,7 @@ RWGltf_GltfPrimArrayData
 		RWGltf_GltfPrimArrayData & AddPrimArrayData(RWGltf_GltfArrayType theType);
 
 		/****************** BaseColor ******************/
+		/**** md5 signature: f8585c32bce71447f36243b6bcd6baa9 ****/
 		%feature("compactdefaultargs") BaseColor;
 		%feature("autodoc", "Return base color.
 
@@ -509,6 +521,7 @@ Quantity_ColorRGBA
 		Quantity_ColorRGBA BaseColor();
 
 		/****************** BoundingBox ******************/
+		/**** md5 signature: 1be44ba2c9a538ffb30ddb049793a947 ****/
 		%feature("compactdefaultargs") BoundingBox;
 		%feature("autodoc", "Return bounding box defined within gltf file, or void if not specified.
 
@@ -519,6 +532,7 @@ Bnd_Box
 		const Bnd_Box & BoundingBox();
 
 		/****************** Data ******************/
+		/**** md5 signature: 671d99c5b4ce7f7e5b939e40427e52b5 ****/
 		%feature("compactdefaultargs") Data;
 		%feature("autodoc", "Return primitive array data elements.
 
@@ -529,6 +543,7 @@ NCollection_Sequence<RWGltf_GltfPrimArrayData>
 		const NCollection_Sequence<RWGltf_GltfPrimArrayData> & Data();
 
 		/****************** HasStyle ******************/
+		/**** md5 signature: 0269e4556c7e0b5145883ad478e02061 ****/
 		%feature("compactdefaultargs") HasStyle;
 		%feature("autodoc", "Return true if primitive array has assigned material.
 
@@ -539,6 +554,7 @@ bool
 		bool HasStyle();
 
 		/****************** Id ******************/
+		/**** md5 signature: 932272b78b9184cc2485436a72cc2df4 ****/
 		%feature("compactdefaultargs") Id;
 		%feature("autodoc", "Entity id.
 
@@ -549,6 +565,7 @@ TCollection_AsciiString
 		const TCollection_AsciiString & Id();
 
 		/****************** MaterialCommon ******************/
+		/**** md5 signature: 85b380ad63e6ef92cb904824c21269fb ****/
 		%feature("compactdefaultargs") MaterialCommon;
 		%feature("autodoc", "Return common (obsolete) material definition.
 
@@ -559,6 +576,7 @@ opencascade::handle<RWGltf_MaterialCommon>
 		const opencascade::handle<RWGltf_MaterialCommon> & MaterialCommon();
 
 		/****************** MaterialPbr ******************/
+		/**** md5 signature: 0e13967206ad8a2eb39ea88324416ad3 ****/
 		%feature("compactdefaultargs") MaterialPbr;
 		%feature("autodoc", "Return pbr material definition.
 
@@ -569,6 +587,7 @@ opencascade::handle<RWGltf_MaterialMetallicRoughness>
 		const opencascade::handle<RWGltf_MaterialMetallicRoughness> & MaterialPbr();
 
 		/****************** Name ******************/
+		/**** md5 signature: efed61b92683387cd746fb27e0376505 ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Entity name.
 
@@ -579,6 +598,7 @@ TCollection_AsciiString
 		const TCollection_AsciiString & Name();
 
 		/****************** PrimitiveMode ******************/
+		/**** md5 signature: 1388d87831822c6f2201fbc4bc4ec619 ****/
 		%feature("compactdefaultargs") PrimitiveMode;
 		%feature("autodoc", "Return type of primitive array.
 
@@ -589,6 +609,7 @@ RWGltf_GltfPrimitiveMode
 		RWGltf_GltfPrimitiveMode PrimitiveMode();
 
 		/****************** SetBoundingBox ******************/
+		/**** md5 signature: 5279a00cfc27cd83f564390e960b6aa2 ****/
 		%feature("compactdefaultargs") SetBoundingBox;
 		%feature("autodoc", "This method sets input bounding box and assigns a fake data to underlying poly_triangulation as min/max corners of bounding box, so that standard tools like brepbndlib::add() can be used transparently for computing bounding box of this face.
 
@@ -603,6 +624,7 @@ None
 		void SetBoundingBox(const Bnd_Box & theBox);
 
 		/****************** SetMaterialCommon ******************/
+		/**** md5 signature: eb324aa6f8f3dcad75f93a5311e95086 ****/
 		%feature("compactdefaultargs") SetMaterialCommon;
 		%feature("autodoc", "Set common (obsolete) material definition.
 
@@ -617,6 +639,7 @@ None
 		void SetMaterialCommon(const opencascade::handle<RWGltf_MaterialCommon> & theMat);
 
 		/****************** SetMaterialPbr ******************/
+		/**** md5 signature: 3e0bf5941a300faa04272f3890b437a5 ****/
 		%feature("compactdefaultargs") SetMaterialPbr;
 		%feature("autodoc", "Set pbr material definition.
 
@@ -631,6 +654,7 @@ None
 		void SetMaterialPbr(const opencascade::handle<RWGltf_MaterialMetallicRoughness> & theMat);
 
 		/****************** SetName ******************/
+		/**** md5 signature: 273df384551aa519beda71c20cd913ae ****/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "Assign entity name.
 
@@ -645,6 +669,7 @@ None
 		void SetName(const TCollection_AsciiString & theName);
 
 		/****************** SetPrimitiveMode ******************/
+		/**** md5 signature: 9f225fc36e5fa984961bb4bfa76b0b80 ****/
 		%feature("compactdefaultargs") SetPrimitiveMode;
 		%feature("autodoc", "Set type of primitive array.
 
@@ -680,6 +705,7 @@ class RWGltf_GltfPrimArrayData {
 		RWGltf_GltfAccessor Accessor;
 		RWGltf_GltfArrayType Type;
 		/****************** RWGltf_GltfPrimArrayData ******************/
+		/**** md5 signature: 082773010cd7514b9dd09e3d44d4bec5 ****/
 		%feature("compactdefaultargs") RWGltf_GltfPrimArrayData;
 		%feature("autodoc", "No available documentation.
 
@@ -690,6 +716,7 @@ None
 		 RWGltf_GltfPrimArrayData();
 
 		/****************** RWGltf_GltfPrimArrayData ******************/
+		/**** md5 signature: 8b5a6513192f0ecb3cdb8caf0433eb34 ****/
 		%feature("compactdefaultargs") RWGltf_GltfPrimArrayData;
 		%feature("autodoc", "No available documentation.
 
@@ -732,6 +759,7 @@ class RWGltf_MaterialCommon : public Standard_Transient {
 		Standard_ShortReal Shininess;
 		Standard_ShortReal Transparency;
 		/****************** RWGltf_MaterialCommon ******************/
+		/**** md5 signature: 5f7db091e0ba1d4aaa046ad813cbb86f ****/
 		%feature("compactdefaultargs") RWGltf_MaterialCommon;
 		%feature("autodoc", "No available documentation.
 
@@ -769,6 +797,7 @@ class RWGltf_MaterialMetallicRoughness : public Standard_Transient {
 		Standard_ShortReal Metallic;
 		Standard_ShortReal Roughness;
 		/****************** RWGltf_MaterialMetallicRoughness ******************/
+		/**** md5 signature: 3e7e7f6dcac2ab520e773c1e52d06831 ****/
 		%feature("compactdefaultargs") RWGltf_MaterialMetallicRoughness;
 		%feature("autodoc", "No available documentation.
 
@@ -796,6 +825,7 @@ None
 class RWGltf_PrimitiveArrayReader : public Standard_Transient {
 	public:
 		/****************** CoordinateSystemConverter ******************/
+		/**** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ****/
 		%feature("compactdefaultargs") CoordinateSystemConverter;
 		%feature("autodoc", "Return transformation from gltf to occt coordinate system.
 
@@ -806,6 +836,7 @@ RWMesh_CoordinateSystemConverter
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
 		/****************** ErrorPrefix ******************/
+		/**** md5 signature: db3c97facd2cae1d01159991bd8fb159 ****/
 		%feature("compactdefaultargs") ErrorPrefix;
 		%feature("autodoc", "Return prefix for reporting issues.
 
@@ -816,6 +847,7 @@ TCollection_AsciiString
 		const TCollection_AsciiString & ErrorPrefix();
 
 		/****************** Load ******************/
+		/**** md5 signature: ad8d7c937618957c49132de899f328f1 ****/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "Load primitive array.
 
@@ -830,6 +862,7 @@ opencascade::handle<Poly_Triangulation>
 		opencascade::handle<Poly_Triangulation> Load(const opencascade::handle<RWGltf_GltfLatePrimitiveArray> & theMesh);
 
 		/****************** SetCoordinateSystemConverter ******************/
+		/**** md5 signature: 8488d2b612c66076826cc33d2ac72536 ****/
 		%feature("compactdefaultargs") SetCoordinateSystemConverter;
 		%feature("autodoc", "Set transformation from gltf to occt coordinate system.
 
@@ -844,6 +877,7 @@ None
 		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
 
 		/****************** SetErrorPrefix ******************/
+		/**** md5 signature: 0b5039bffc7759d627c4e61bca05d578 ****/
 		%feature("compactdefaultargs") SetErrorPrefix;
 		%feature("autodoc", "Set prefix for reporting issues.
 
@@ -874,6 +908,7 @@ None
 class RWGltf_TriangulationReader : public RWGltf_PrimitiveArrayReader {
 	public:
 		/****************** RWGltf_TriangulationReader ******************/
+		/**** md5 signature: 13fc434c88256ab85cd744519fc5e86f ****/
 		%feature("compactdefaultargs") RWGltf_TriangulationReader;
 		%feature("autodoc", "Empty constructor.
 

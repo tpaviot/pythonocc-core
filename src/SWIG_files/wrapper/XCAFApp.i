@@ -88,6 +88,7 @@ from OCC.Core.Exception import *
 class XCAFApp_Application : public TDocStd_Application {
 	public:
 		/****************** GetApplication ******************/
+		/**** md5 signature: 097aa584b7d888f94db50bb186c7ba88 ****/
 		%feature("compactdefaultargs") GetApplication;
 		%feature("autodoc", "Initializes (for the first time) and returns the static object (xcafapp_application) this is the only valid method to get xcafapp_application object, and it should be called at least once before any actions with documents in order to init application.
 
@@ -98,6 +99,7 @@ opencascade::handle<XCAFApp_Application>
 		static opencascade::handle<XCAFApp_Application> GetApplication();
 
 		/****************** InitDocument ******************/
+		/**** md5 signature: ba05c2f32b1b5c164fe28e112cc836ce ****/
 		%feature("compactdefaultargs") InitDocument;
 		%feature("autodoc", "Set xcafdoc_documenttool attribute.
 
@@ -112,6 +114,7 @@ None
 		virtual void InitDocument(const opencascade::handle<TDocStd_Document> & aDoc);
 
 		/****************** ResourcesName ******************/
+		/**** md5 signature: 96f8731792cfcab6c0cf55cdc1a09a9b ****/
 		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "Methods from tdocstd_application ================================.
 

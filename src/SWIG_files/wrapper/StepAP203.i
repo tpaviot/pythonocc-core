@@ -473,6 +473,7 @@ typedef NCollection_Array1<StepAP203_WorkItem> StepAP203_Array1OfWorkItem;
 class StepAP203_ApprovedItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_ApprovedItem ******************/
+		/**** md5 signature: 82da3dcb301978d49c8edd946dfd0798 ****/
 		%feature("compactdefaultargs") StepAP203_ApprovedItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -483,6 +484,7 @@ None
 		 StepAP203_ApprovedItem();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of approveditem select type 1 -> productdefinitionformation from stepbasic 2 -> productdefinition from stepbasic 3 -> configurationeffectivity from steprepr 4 -> configurationitem from steprepr 5 -> securityclassification from stepbasic 6 -> changerequest from stepap203 7 -> change from stepap203 8 -> startrequest from stepap203 9 -> startwork from stepap203 10 -> certification from stepbasic 11 -> contract from stepbasic 0 else.
 
@@ -497,6 +499,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** Certification ******************/
+		/**** md5 signature: e4fcd85461a5932963bf7a1ac4f009a4 ****/
 		%feature("compactdefaultargs") Certification;
 		%feature("autodoc", "Returns value as certification (or null if another type).
 
@@ -507,6 +510,7 @@ opencascade::handle<StepBasic_Certification>
 		opencascade::handle<StepBasic_Certification> Certification();
 
 		/****************** Change ******************/
+		/**** md5 signature: 45ba42050277592dfcd807d6ac427663 ****/
 		%feature("compactdefaultargs") Change;
 		%feature("autodoc", "Returns value as change (or null if another type).
 
@@ -517,6 +521,7 @@ opencascade::handle<StepAP203_Change>
 		opencascade::handle<StepAP203_Change> Change();
 
 		/****************** ChangeRequest ******************/
+		/**** md5 signature: 716df3705f0b67fd35b2cdb84938decd ****/
 		%feature("compactdefaultargs") ChangeRequest;
 		%feature("autodoc", "Returns value as changerequest (or null if another type).
 
@@ -527,6 +532,7 @@ opencascade::handle<StepAP203_ChangeRequest>
 		opencascade::handle<StepAP203_ChangeRequest> ChangeRequest();
 
 		/****************** ConfigurationEffectivity ******************/
+		/**** md5 signature: 9f4b53b4b2fa9455f7a05b320cd8f30c ****/
 		%feature("compactdefaultargs") ConfigurationEffectivity;
 		%feature("autodoc", "Returns value as configurationeffectivity (or null if another type).
 
@@ -537,6 +543,7 @@ opencascade::handle<StepRepr_ConfigurationEffectivity>
 		opencascade::handle<StepRepr_ConfigurationEffectivity> ConfigurationEffectivity();
 
 		/****************** ConfigurationItem ******************/
+		/**** md5 signature: 19e20aa72323442204af7943ab5779ab ****/
 		%feature("compactdefaultargs") ConfigurationItem;
 		%feature("autodoc", "Returns value as configurationitem (or null if another type).
 
@@ -547,6 +554,7 @@ opencascade::handle<StepRepr_ConfigurationItem>
 		opencascade::handle<StepRepr_ConfigurationItem> ConfigurationItem();
 
 		/****************** Contract ******************/
+		/**** md5 signature: 516418a4278fba9ddb098e0ec67421dd ****/
 		%feature("compactdefaultargs") Contract;
 		%feature("autodoc", "Returns value as contract (or null if another type).
 
@@ -557,6 +565,7 @@ opencascade::handle<StepBasic_Contract>
 		opencascade::handle<StepBasic_Contract> Contract();
 
 		/****************** ProductDefinition ******************/
+		/**** md5 signature: d43b5ca42d8380c05af7f64fb041e89b ****/
 		%feature("compactdefaultargs") ProductDefinition;
 		%feature("autodoc", "Returns value as productdefinition (or null if another type).
 
@@ -567,6 +576,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
 		/****************** ProductDefinitionFormation ******************/
+		/**** md5 signature: 549b153d5236bb5dda717eed81e28565 ****/
 		%feature("compactdefaultargs") ProductDefinitionFormation;
 		%feature("autodoc", "Returns value as productdefinitionformation (or null if another type).
 
@@ -577,6 +587,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
 		/****************** SecurityClassification ******************/
+		/**** md5 signature: 5a1ef075f0f272079bd532895ecc4299 ****/
 		%feature("compactdefaultargs") SecurityClassification;
 		%feature("autodoc", "Returns value as securityclassification (or null if another type).
 
@@ -587,6 +598,7 @@ opencascade::handle<StepBasic_SecurityClassification>
 		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification();
 
 		/****************** StartRequest ******************/
+		/**** md5 signature: 8f24598754db81d3836d88643a7a9ed1 ****/
 		%feature("compactdefaultargs") StartRequest;
 		%feature("autodoc", "Returns value as startrequest (or null if another type).
 
@@ -597,6 +609,7 @@ opencascade::handle<StepAP203_StartRequest>
 		opencascade::handle<StepAP203_StartRequest> StartRequest();
 
 		/****************** StartWork ******************/
+		/**** md5 signature: 3f4501e47c294626db8d74214f59a29f ****/
 		%feature("compactdefaultargs") StartWork;
 		%feature("autodoc", "Returns value as startwork (or null if another type).
 
@@ -621,6 +634,7 @@ opencascade::handle<StepAP203_StartWork>
 class StepAP203_CcDesignApproval : public StepBasic_ApprovalAssignment {
 	public:
 		/****************** StepAP203_CcDesignApproval ******************/
+		/**** md5 signature: d691147dec88b8ef57eb147844de9b21 ****/
 		%feature("compactdefaultargs") StepAP203_CcDesignApproval;
 		%feature("autodoc", "Empty constructor.
 
@@ -631,6 +645,7 @@ None
 		 StepAP203_CcDesignApproval();
 
 		/****************** Init ******************/
+		/**** md5 signature: b0f6754ad5bfa2ccbf314441d1ced319 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -646,6 +661,7 @@ None
 		void Init(const opencascade::handle<StepBasic_Approval> & aApprovalAssignment_AssignedApproval, const opencascade::handle<StepAP203_HArray1OfApprovedItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: 3e0c43c9a1b902045c545b63f098a5be ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -656,6 +672,7 @@ opencascade::handle<StepAP203_HArray1OfApprovedItem>
 		opencascade::handle<StepAP203_HArray1OfApprovedItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: cdf24d3db5cd0ede0924b4ea77f68c65 ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -686,6 +703,7 @@ None
 class StepAP203_CcDesignCertification : public StepBasic_CertificationAssignment {
 	public:
 		/****************** StepAP203_CcDesignCertification ******************/
+		/**** md5 signature: fbe9182c8cda9513bb3dbba5683ea253 ****/
 		%feature("compactdefaultargs") StepAP203_CcDesignCertification;
 		%feature("autodoc", "Empty constructor.
 
@@ -696,6 +714,7 @@ None
 		 StepAP203_CcDesignCertification();
 
 		/****************** Init ******************/
+		/**** md5 signature: 6d47bab477dd75efcf248739eacd81e1 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -711,6 +730,7 @@ None
 		void Init(const opencascade::handle<StepBasic_Certification> & aCertificationAssignment_AssignedCertification, const opencascade::handle<StepAP203_HArray1OfCertifiedItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: 82fb4d8199447a39079d491c5ef747c2 ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -721,6 +741,7 @@ opencascade::handle<StepAP203_HArray1OfCertifiedItem>
 		opencascade::handle<StepAP203_HArray1OfCertifiedItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: 729eb60287db29f9f5f440a44def8231 ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -751,6 +772,7 @@ None
 class StepAP203_CcDesignContract : public StepBasic_ContractAssignment {
 	public:
 		/****************** StepAP203_CcDesignContract ******************/
+		/**** md5 signature: 7bdb5ed85e5006d86f8fe6e6e13db026 ****/
 		%feature("compactdefaultargs") StepAP203_CcDesignContract;
 		%feature("autodoc", "Empty constructor.
 
@@ -761,6 +783,7 @@ None
 		 StepAP203_CcDesignContract();
 
 		/****************** Init ******************/
+		/**** md5 signature: 0625c9f2e1cc037237e83e188d1a1520 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -776,6 +799,7 @@ None
 		void Init(const opencascade::handle<StepBasic_Contract> & aContractAssignment_AssignedContract, const opencascade::handle<StepAP203_HArray1OfContractedItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: 4029d34d684086ba4581879e50159de2 ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -786,6 +810,7 @@ opencascade::handle<StepAP203_HArray1OfContractedItem>
 		opencascade::handle<StepAP203_HArray1OfContractedItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: 14f59215e3e32347cf5f2e87c15a0c33 ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -816,6 +841,7 @@ None
 class StepAP203_CcDesignDateAndTimeAssignment : public StepBasic_DateAndTimeAssignment {
 	public:
 		/****************** StepAP203_CcDesignDateAndTimeAssignment ******************/
+		/**** md5 signature: 57dbf8c6f31d9c8a1e4e7ca7ea2ca1a2 ****/
 		%feature("compactdefaultargs") StepAP203_CcDesignDateAndTimeAssignment;
 		%feature("autodoc", "Empty constructor.
 
@@ -826,6 +852,7 @@ None
 		 StepAP203_CcDesignDateAndTimeAssignment();
 
 		/****************** Init ******************/
+		/**** md5 signature: c9caa4bd465b7af0e2319487aa1fc334 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -842,6 +869,7 @@ None
 		void Init(const opencascade::handle<StepBasic_DateAndTime> & aDateAndTimeAssignment_AssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aDateAndTimeAssignment_Role, const opencascade::handle<StepAP203_HArray1OfDateTimeItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: b1c2a88e6d352404197fe738da682c5e ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -852,6 +880,7 @@ opencascade::handle<StepAP203_HArray1OfDateTimeItem>
 		opencascade::handle<StepAP203_HArray1OfDateTimeItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: d90d59ab538a0d627c493c5a27b3e195 ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -882,6 +911,7 @@ None
 class StepAP203_CcDesignPersonAndOrganizationAssignment : public StepBasic_PersonAndOrganizationAssignment {
 	public:
 		/****************** StepAP203_CcDesignPersonAndOrganizationAssignment ******************/
+		/**** md5 signature: a2ed5c02db47051aca00a757298f075b ****/
 		%feature("compactdefaultargs") StepAP203_CcDesignPersonAndOrganizationAssignment;
 		%feature("autodoc", "Empty constructor.
 
@@ -892,6 +922,7 @@ None
 		 StepAP203_CcDesignPersonAndOrganizationAssignment();
 
 		/****************** Init ******************/
+		/**** md5 signature: 7f084c2e757b7b7baed5b21ec699c363 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -908,6 +939,7 @@ None
 		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aPersonAndOrganizationAssignment_AssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aPersonAndOrganizationAssignment_Role, const opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: 79252d9dba768943961d2b4c9560bf49 ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -918,6 +950,7 @@ opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem>
 		opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: 362a13e43843d28d9fb00bdfe9830f3e ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -948,6 +981,7 @@ None
 class StepAP203_CcDesignSecurityClassification : public StepBasic_SecurityClassificationAssignment {
 	public:
 		/****************** StepAP203_CcDesignSecurityClassification ******************/
+		/**** md5 signature: ab358d146474b2c4d959e7ffbbcc0f68 ****/
 		%feature("compactdefaultargs") StepAP203_CcDesignSecurityClassification;
 		%feature("autodoc", "Empty constructor.
 
@@ -958,6 +992,7 @@ None
 		 StepAP203_CcDesignSecurityClassification();
 
 		/****************** Init ******************/
+		/**** md5 signature: 47ecb1bc1d5b73f30e71202368db7d8f ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -973,6 +1008,7 @@ None
 		void Init(const opencascade::handle<StepBasic_SecurityClassification> & aSecurityClassificationAssignment_AssignedSecurityClassification, const opencascade::handle<StepAP203_HArray1OfClassifiedItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: ff874a2aac4f1181827a3c1621be8055 ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -983,6 +1019,7 @@ opencascade::handle<StepAP203_HArray1OfClassifiedItem>
 		opencascade::handle<StepAP203_HArray1OfClassifiedItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: 80d07f9c40d3de42fa5552cd1c8a5768 ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -1013,6 +1050,7 @@ None
 class StepAP203_CcDesignSpecificationReference : public StepBasic_DocumentReference {
 	public:
 		/****************** StepAP203_CcDesignSpecificationReference ******************/
+		/**** md5 signature: 93efe43c55d2d07b60ff869da1e420f1 ****/
 		%feature("compactdefaultargs") StepAP203_CcDesignSpecificationReference;
 		%feature("autodoc", "Empty constructor.
 
@@ -1023,6 +1061,7 @@ None
 		 StepAP203_CcDesignSpecificationReference();
 
 		/****************** Init ******************/
+		/**** md5 signature: 404a8e64b91deee4db632c695e5d36c1 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -1039,6 +1078,7 @@ None
 		void Init(const opencascade::handle<StepBasic_Document> & aDocumentReference_AssignedDocument, const opencascade::handle<TCollection_HAsciiString> & aDocumentReference_Source, const opencascade::handle<StepAP203_HArray1OfSpecifiedItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: f2200bd42168ec8cd03d8ca5b25e1993 ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -1049,6 +1089,7 @@ opencascade::handle<StepAP203_HArray1OfSpecifiedItem>
 		opencascade::handle<StepAP203_HArray1OfSpecifiedItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: 4c57ff2a1db6ce89384bd2aa7948182d ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -1079,6 +1120,7 @@ None
 class StepAP203_CertifiedItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_CertifiedItem ******************/
+		/**** md5 signature: 199d7e1d24799b561b65ce3132db18db ****/
 		%feature("compactdefaultargs") StepAP203_CertifiedItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -1089,6 +1131,7 @@ None
 		 StepAP203_CertifiedItem();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of certifieditem select type 1 -> suppliedpartrelationship from steprepr 0 else.
 
@@ -1103,6 +1146,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** SuppliedPartRelationship ******************/
+		/**** md5 signature: 82f31c1241b11735fcdd0b11a9fea9a0 ****/
 		%feature("compactdefaultargs") SuppliedPartRelationship;
 		%feature("autodoc", "Returns value as suppliedpartrelationship (or null if another type).
 
@@ -1127,6 +1171,7 @@ opencascade::handle<StepRepr_SuppliedPartRelationship>
 class StepAP203_Change : public StepBasic_ActionAssignment {
 	public:
 		/****************** StepAP203_Change ******************/
+		/**** md5 signature: 3dfb20c6365abb9cbe1fdda05d415363 ****/
 		%feature("compactdefaultargs") StepAP203_Change;
 		%feature("autodoc", "Empty constructor.
 
@@ -1137,6 +1182,7 @@ None
 		 StepAP203_Change();
 
 		/****************** Init ******************/
+		/**** md5 signature: 426f4ad0835cd6d75198846fdbb79aae ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -1152,6 +1198,7 @@ None
 		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<StepAP203_HArray1OfWorkItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: da8df3751d3f4dbe5fbc1686a49a6ff8 ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -1162,6 +1209,7 @@ opencascade::handle<StepAP203_HArray1OfWorkItem>
 		opencascade::handle<StepAP203_HArray1OfWorkItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: 560f3192ead2495f8e28aed14d1b8ccb ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -1192,6 +1240,7 @@ None
 class StepAP203_ChangeRequest : public StepBasic_ActionRequestAssignment {
 	public:
 		/****************** StepAP203_ChangeRequest ******************/
+		/**** md5 signature: 543fe59a78da490926779f3af0d0a4e3 ****/
 		%feature("compactdefaultargs") StepAP203_ChangeRequest;
 		%feature("autodoc", "Empty constructor.
 
@@ -1202,6 +1251,7 @@ None
 		 StepAP203_ChangeRequest();
 
 		/****************** Init ******************/
+		/**** md5 signature: 7f289c3ecc4e259b591d39e41ab8c3b8 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -1217,6 +1267,7 @@ None
 		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<StepAP203_HArray1OfChangeRequestItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: 81792f1414ba5a02b751f1c89437a316 ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -1227,6 +1278,7 @@ opencascade::handle<StepAP203_HArray1OfChangeRequestItem>
 		opencascade::handle<StepAP203_HArray1OfChangeRequestItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: 6da531119799dcb7df5bd2264277b4bb ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -1257,6 +1309,7 @@ None
 class StepAP203_ChangeRequestItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_ChangeRequestItem ******************/
+		/**** md5 signature: c091eeaae978495b9719faae5dbf194d ****/
 		%feature("compactdefaultargs") StepAP203_ChangeRequestItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -1267,6 +1320,7 @@ None
 		 StepAP203_ChangeRequestItem();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of changerequestitem select type 1 -> productdefinitionformation from stepbasic 0 else.
 
@@ -1281,6 +1335,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** ProductDefinitionFormation ******************/
+		/**** md5 signature: 549b153d5236bb5dda717eed81e28565 ****/
 		%feature("compactdefaultargs") ProductDefinitionFormation;
 		%feature("autodoc", "Returns value as productdefinitionformation (or null if another type).
 
@@ -1305,6 +1360,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 class StepAP203_ClassifiedItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_ClassifiedItem ******************/
+		/**** md5 signature: 962ec404da259d5368585e21001ab3a9 ****/
 		%feature("compactdefaultargs") StepAP203_ClassifiedItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -1315,6 +1371,7 @@ None
 		 StepAP203_ClassifiedItem();
 
 		/****************** AssemblyComponentUsage ******************/
+		/**** md5 signature: 9bdb67c5d71ecf8f82c68cc59b16ef47 ****/
 		%feature("compactdefaultargs") AssemblyComponentUsage;
 		%feature("autodoc", "Returns value as assemblycomponentusage (or null if another type).
 
@@ -1325,6 +1382,7 @@ opencascade::handle<StepRepr_AssemblyComponentUsage>
 		opencascade::handle<StepRepr_AssemblyComponentUsage> AssemblyComponentUsage();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of classifieditem select type 1 -> productdefinitionformation from stepbasic 2 -> assemblycomponentusage from steprepr 0 else.
 
@@ -1339,6 +1397,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** ProductDefinitionFormation ******************/
+		/**** md5 signature: 549b153d5236bb5dda717eed81e28565 ****/
 		%feature("compactdefaultargs") ProductDefinitionFormation;
 		%feature("autodoc", "Returns value as productdefinitionformation (or null if another type).
 
@@ -1363,6 +1422,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 class StepAP203_ContractedItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_ContractedItem ******************/
+		/**** md5 signature: 061bb29cfdf9e7cce86a7e6ad71311c3 ****/
 		%feature("compactdefaultargs") StepAP203_ContractedItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -1373,6 +1433,7 @@ None
 		 StepAP203_ContractedItem();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of contracteditem select type 1 -> productdefinitionformation from stepbasic 0 else.
 
@@ -1387,6 +1448,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** ProductDefinitionFormation ******************/
+		/**** md5 signature: 549b153d5236bb5dda717eed81e28565 ****/
 		%feature("compactdefaultargs") ProductDefinitionFormation;
 		%feature("autodoc", "Returns value as productdefinitionformation (or null if another type).
 
@@ -1411,6 +1473,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 class StepAP203_DateTimeItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_DateTimeItem ******************/
+		/**** md5 signature: 2a149b72a4810597fc0bbf4fadf730e8 ****/
 		%feature("compactdefaultargs") StepAP203_DateTimeItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -1421,6 +1484,7 @@ None
 		 StepAP203_DateTimeItem();
 
 		/****************** ApprovalPersonOrganization ******************/
+		/**** md5 signature: af795dc9d70028f3b512bd493ca8a169 ****/
 		%feature("compactdefaultargs") ApprovalPersonOrganization;
 		%feature("autodoc", "Returns value as approvalpersonorganization (or null if another type).
 
@@ -1431,6 +1495,7 @@ opencascade::handle<StepBasic_ApprovalPersonOrganization>
 		opencascade::handle<StepBasic_ApprovalPersonOrganization> ApprovalPersonOrganization();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of datetimeitem select type 1 -> productdefinition from stepbasic 2 -> changerequest from stepap203 3 -> startrequest from stepap203 4 -> change from stepap203 5 -> startwork from stepap203 6 -> approvalpersonorganization from stepbasic 7 -> contract from stepbasic 8 -> securityclassification from stepbasic 9 -> certification from stepbasic 0 else.
 
@@ -1445,6 +1510,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** Certification ******************/
+		/**** md5 signature: e4fcd85461a5932963bf7a1ac4f009a4 ****/
 		%feature("compactdefaultargs") Certification;
 		%feature("autodoc", "Returns value as certification (or null if another type).
 
@@ -1455,6 +1521,7 @@ opencascade::handle<StepBasic_Certification>
 		opencascade::handle<StepBasic_Certification> Certification();
 
 		/****************** Change ******************/
+		/**** md5 signature: 45ba42050277592dfcd807d6ac427663 ****/
 		%feature("compactdefaultargs") Change;
 		%feature("autodoc", "Returns value as change (or null if another type).
 
@@ -1465,6 +1532,7 @@ opencascade::handle<StepAP203_Change>
 		opencascade::handle<StepAP203_Change> Change();
 
 		/****************** ChangeRequest ******************/
+		/**** md5 signature: 716df3705f0b67fd35b2cdb84938decd ****/
 		%feature("compactdefaultargs") ChangeRequest;
 		%feature("autodoc", "Returns value as changerequest (or null if another type).
 
@@ -1475,6 +1543,7 @@ opencascade::handle<StepAP203_ChangeRequest>
 		opencascade::handle<StepAP203_ChangeRequest> ChangeRequest();
 
 		/****************** Contract ******************/
+		/**** md5 signature: 516418a4278fba9ddb098e0ec67421dd ****/
 		%feature("compactdefaultargs") Contract;
 		%feature("autodoc", "Returns value as contract (or null if another type).
 
@@ -1485,6 +1554,7 @@ opencascade::handle<StepBasic_Contract>
 		opencascade::handle<StepBasic_Contract> Contract();
 
 		/****************** ProductDefinition ******************/
+		/**** md5 signature: d43b5ca42d8380c05af7f64fb041e89b ****/
 		%feature("compactdefaultargs") ProductDefinition;
 		%feature("autodoc", "Returns value as productdefinition (or null if another type).
 
@@ -1495,6 +1565,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
 		/****************** SecurityClassification ******************/
+		/**** md5 signature: 5a1ef075f0f272079bd532895ecc4299 ****/
 		%feature("compactdefaultargs") SecurityClassification;
 		%feature("autodoc", "Returns value as securityclassification (or null if another type).
 
@@ -1505,6 +1576,7 @@ opencascade::handle<StepBasic_SecurityClassification>
 		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification();
 
 		/****************** StartRequest ******************/
+		/**** md5 signature: 8f24598754db81d3836d88643a7a9ed1 ****/
 		%feature("compactdefaultargs") StartRequest;
 		%feature("autodoc", "Returns value as startrequest (or null if another type).
 
@@ -1515,6 +1587,7 @@ opencascade::handle<StepAP203_StartRequest>
 		opencascade::handle<StepAP203_StartRequest> StartRequest();
 
 		/****************** StartWork ******************/
+		/**** md5 signature: 3f4501e47c294626db8d74214f59a29f ****/
 		%feature("compactdefaultargs") StartWork;
 		%feature("autodoc", "Returns value as startwork (or null if another type).
 
@@ -1539,6 +1612,7 @@ opencascade::handle<StepAP203_StartWork>
 class StepAP203_PersonOrganizationItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_PersonOrganizationItem ******************/
+		/**** md5 signature: 946049eec51ba62b8216a83385d2ff72 ****/
 		%feature("compactdefaultargs") StepAP203_PersonOrganizationItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -1549,6 +1623,7 @@ None
 		 StepAP203_PersonOrganizationItem();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of personorganizationitem select type 1 -> change from stepap203 2 -> startwork from stepap203 3 -> changerequest from stepap203 4 -> startrequest from stepap203 5 -> configurationitem from steprepr 6 -> product from stepbasic 7 -> productdefinitionformation from stepbasic 8 -> productdefinition from stepbasic 9 -> contract from stepbasic 10 -> securityclassification from stepbasic 0 else.
 
@@ -1563,6 +1638,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** Change ******************/
+		/**** md5 signature: 45ba42050277592dfcd807d6ac427663 ****/
 		%feature("compactdefaultargs") Change;
 		%feature("autodoc", "Returns value as change (or null if another type).
 
@@ -1573,6 +1649,7 @@ opencascade::handle<StepAP203_Change>
 		opencascade::handle<StepAP203_Change> Change();
 
 		/****************** ChangeRequest ******************/
+		/**** md5 signature: 716df3705f0b67fd35b2cdb84938decd ****/
 		%feature("compactdefaultargs") ChangeRequest;
 		%feature("autodoc", "Returns value as changerequest (or null if another type).
 
@@ -1583,6 +1660,7 @@ opencascade::handle<StepAP203_ChangeRequest>
 		opencascade::handle<StepAP203_ChangeRequest> ChangeRequest();
 
 		/****************** ConfigurationItem ******************/
+		/**** md5 signature: 19e20aa72323442204af7943ab5779ab ****/
 		%feature("compactdefaultargs") ConfigurationItem;
 		%feature("autodoc", "Returns value as configurationitem (or null if another type).
 
@@ -1593,6 +1671,7 @@ opencascade::handle<StepRepr_ConfigurationItem>
 		opencascade::handle<StepRepr_ConfigurationItem> ConfigurationItem();
 
 		/****************** Contract ******************/
+		/**** md5 signature: 516418a4278fba9ddb098e0ec67421dd ****/
 		%feature("compactdefaultargs") Contract;
 		%feature("autodoc", "Returns value as contract (or null if another type).
 
@@ -1603,6 +1682,7 @@ opencascade::handle<StepBasic_Contract>
 		opencascade::handle<StepBasic_Contract> Contract();
 
 		/****************** Product ******************/
+		/**** md5 signature: e8c7e89afa6b95e852c44498904e61e4 ****/
 		%feature("compactdefaultargs") Product;
 		%feature("autodoc", "Returns value as product (or null if another type).
 
@@ -1613,6 +1693,7 @@ opencascade::handle<StepBasic_Product>
 		opencascade::handle<StepBasic_Product> Product();
 
 		/****************** ProductDefinition ******************/
+		/**** md5 signature: d43b5ca42d8380c05af7f64fb041e89b ****/
 		%feature("compactdefaultargs") ProductDefinition;
 		%feature("autodoc", "Returns value as productdefinition (or null if another type).
 
@@ -1623,6 +1704,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
 		/****************** ProductDefinitionFormation ******************/
+		/**** md5 signature: 549b153d5236bb5dda717eed81e28565 ****/
 		%feature("compactdefaultargs") ProductDefinitionFormation;
 		%feature("autodoc", "Returns value as productdefinitionformation (or null if another type).
 
@@ -1633,6 +1715,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
 		/****************** SecurityClassification ******************/
+		/**** md5 signature: 5a1ef075f0f272079bd532895ecc4299 ****/
 		%feature("compactdefaultargs") SecurityClassification;
 		%feature("autodoc", "Returns value as securityclassification (or null if another type).
 
@@ -1643,6 +1726,7 @@ opencascade::handle<StepBasic_SecurityClassification>
 		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification();
 
 		/****************** StartRequest ******************/
+		/**** md5 signature: 8f24598754db81d3836d88643a7a9ed1 ****/
 		%feature("compactdefaultargs") StartRequest;
 		%feature("autodoc", "Returns value as startrequest (or null if another type).
 
@@ -1653,6 +1737,7 @@ opencascade::handle<StepAP203_StartRequest>
 		opencascade::handle<StepAP203_StartRequest> StartRequest();
 
 		/****************** StartWork ******************/
+		/**** md5 signature: 3f4501e47c294626db8d74214f59a29f ****/
 		%feature("compactdefaultargs") StartWork;
 		%feature("autodoc", "Returns value as startwork (or null if another type).
 
@@ -1677,6 +1762,7 @@ opencascade::handle<StepAP203_StartWork>
 class StepAP203_SpecifiedItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_SpecifiedItem ******************/
+		/**** md5 signature: 2d345e1f70901b0f8ef0ad3699388b70 ****/
 		%feature("compactdefaultargs") StepAP203_SpecifiedItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -1687,6 +1773,7 @@ None
 		 StepAP203_SpecifiedItem();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of specifieditem select type 1 -> productdefinition from stepbasic 2 -> shapeaspect from steprepr 0 else.
 
@@ -1701,6 +1788,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** ProductDefinition ******************/
+		/**** md5 signature: d43b5ca42d8380c05af7f64fb041e89b ****/
 		%feature("compactdefaultargs") ProductDefinition;
 		%feature("autodoc", "Returns value as productdefinition (or null if another type).
 
@@ -1711,6 +1799,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
 		/****************** ShapeAspect ******************/
+		/**** md5 signature: 6c476d31e71221a87c411540ef5855cb ****/
 		%feature("compactdefaultargs") ShapeAspect;
 		%feature("autodoc", "Returns value as shapeaspect (or null if another type).
 
@@ -1735,6 +1824,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 class StepAP203_StartRequest : public StepBasic_ActionRequestAssignment {
 	public:
 		/****************** StepAP203_StartRequest ******************/
+		/**** md5 signature: d0721a10b129d7c6afb674dbadcbd2b9 ****/
 		%feature("compactdefaultargs") StepAP203_StartRequest;
 		%feature("autodoc", "Empty constructor.
 
@@ -1745,6 +1835,7 @@ None
 		 StepAP203_StartRequest();
 
 		/****************** Init ******************/
+		/**** md5 signature: bc99f5a4049a7b39ce240d6899a58c09 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -1760,6 +1851,7 @@ None
 		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<StepAP203_HArray1OfStartRequestItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: ab5cd2755cb62bbf5e124c6ffae0b5da ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -1770,6 +1862,7 @@ opencascade::handle<StepAP203_HArray1OfStartRequestItem>
 		opencascade::handle<StepAP203_HArray1OfStartRequestItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: 4884427346c77148853c13edfb84152f ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -1800,6 +1893,7 @@ None
 class StepAP203_StartRequestItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_StartRequestItem ******************/
+		/**** md5 signature: b863f069f7ab37fc5098e5bc32d1a264 ****/
 		%feature("compactdefaultargs") StepAP203_StartRequestItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -1810,6 +1904,7 @@ None
 		 StepAP203_StartRequestItem();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of startrequestitem select type 1 -> productdefinitionformation from stepbasic 0 else.
 
@@ -1824,6 +1919,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** ProductDefinitionFormation ******************/
+		/**** md5 signature: 549b153d5236bb5dda717eed81e28565 ****/
 		%feature("compactdefaultargs") ProductDefinitionFormation;
 		%feature("autodoc", "Returns value as productdefinitionformation (or null if another type).
 
@@ -1848,6 +1944,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 class StepAP203_StartWork : public StepBasic_ActionAssignment {
 	public:
 		/****************** StepAP203_StartWork ******************/
+		/**** md5 signature: a25ce866d89740fb1b56a45675f52512 ****/
 		%feature("compactdefaultargs") StepAP203_StartWork;
 		%feature("autodoc", "Empty constructor.
 
@@ -1858,6 +1955,7 @@ None
 		 StepAP203_StartWork();
 
 		/****************** Init ******************/
+		/**** md5 signature: 426f4ad0835cd6d75198846fdbb79aae ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -1873,6 +1971,7 @@ None
 		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<StepAP203_HArray1OfWorkItem> & aItems);
 
 		/****************** Items ******************/
+		/**** md5 signature: da8df3751d3f4dbe5fbc1686a49a6ff8 ****/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Returns field items.
 
@@ -1883,6 +1982,7 @@ opencascade::handle<StepAP203_HArray1OfWorkItem>
 		opencascade::handle<StepAP203_HArray1OfWorkItem> Items();
 
 		/****************** SetItems ******************/
+		/**** md5 signature: 560f3192ead2495f8e28aed14d1b8ccb ****/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "Set field items.
 
@@ -1913,6 +2013,7 @@ None
 class StepAP203_WorkItem : public StepData_SelectType {
 	public:
 		/****************** StepAP203_WorkItem ******************/
+		/**** md5 signature: 4149507a54a0c133573b86ac4d0cd3b3 ****/
 		%feature("compactdefaultargs") StepAP203_WorkItem;
 		%feature("autodoc", "Empty constructor.
 
@@ -1923,6 +2024,7 @@ None
 		 StepAP203_WorkItem();
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of workitem select type 1 -> productdefinitionformation from stepbasic 0 else.
 
@@ -1937,6 +2039,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** ProductDefinitionFormation ******************/
+		/**** md5 signature: 549b153d5236bb5dda717eed81e28565 ****/
 		%feature("compactdefaultargs") ProductDefinitionFormation;
 		%feature("autodoc", "Returns value as productdefinitionformation (or null if another type).
 

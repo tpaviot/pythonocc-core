@@ -106,6 +106,7 @@ typedef NCollection_Sequence<XmlLDrivers_NamespaceDef> XmlLDrivers_SequenceOfNam
 class XmlLDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: 08d744ca820fa43305d43b8e54b1d5dc ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -120,6 +121,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 		static opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** CreationDate ******************/
+		/**** md5 signature: c3236ab34dc20a2deee56080c6681b3e ****/
 		%feature("compactdefaultargs") CreationDate;
 		%feature("autodoc", "No available documentation.
 
@@ -130,6 +132,7 @@ TCollection_AsciiString
 		static TCollection_AsciiString CreationDate();
 
 		/****************** DefineFormat ******************/
+		/**** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ****/
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "Defines format 'xmllocaf' and registers its read and write drivers in the specified application.
 
@@ -144,6 +147,7 @@ None
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
+		/**** md5 signature: 9e70ed3bca71e988f9b9e86628ed8ed4 ****/
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", "No available documentation.
 
@@ -158,6 +162,7 @@ opencascade::handle<Standard_Transient>
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & theGUID);
 
 		/****************** StorageVersion ******************/
+		/**** md5 signature: 31bd68873566544a57a9fa9494380ade ****/
 		%feature("compactdefaultargs") StorageVersion;
 		%feature("autodoc", "No available documentation.
 
@@ -182,6 +187,7 @@ int
 class XmlLDrivers_DocumentRetrievalDriver : public PCDM_RetrievalDriver {
 	public:
 		/****************** XmlLDrivers_DocumentRetrievalDriver ******************/
+		/**** md5 signature: b7cc7840dd73193a835f8ea879c08109 ****/
 		%feature("compactdefaultargs") XmlLDrivers_DocumentRetrievalDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -192,6 +198,7 @@ None
 		 XmlLDrivers_DocumentRetrievalDriver();
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: 8df783b7f95c753e0804758cea795cef ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -206,6 +213,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** CreateDocument ******************/
+		/**** md5 signature: d7e352e938b9f62ab597a280f53e96dc ****/
 		%feature("compactdefaultargs") CreateDocument;
 		%feature("autodoc", "No available documentation.
 
@@ -216,6 +224,7 @@ opencascade::handle<CDM_Document>
 		virtual opencascade::handle<CDM_Document> CreateDocument();
 
 		/****************** Read ******************/
+		/**** md5 signature: a0e4644be6fe7bbb4ae862adb6817646 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "No available documentation.
 
@@ -248,6 +257,7 @@ None
 class XmlLDrivers_DocumentStorageDriver : public PCDM_StorageDriver {
 	public:
 		/****************** XmlLDrivers_DocumentStorageDriver ******************/
+		/**** md5 signature: 5091fd5bd4fa743ad8fe7947041658e6 ****/
 		%feature("compactdefaultargs") XmlLDrivers_DocumentStorageDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -262,6 +272,7 @@ None
 		 XmlLDrivers_DocumentStorageDriver(const TCollection_ExtendedString & theCopyright);
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: 8df783b7f95c753e0804758cea795cef ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -276,6 +287,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Write ******************/
+		/**** md5 signature: 6a7ef59f77968568190e502f957cdad3 ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "No available documentation.
 
@@ -307,6 +319,7 @@ None
 class XmlLDrivers_NamespaceDef {
 	public:
 		/****************** XmlLDrivers_NamespaceDef ******************/
+		/**** md5 signature: 4322762040d34698d4489046962dbd43 ****/
 		%feature("compactdefaultargs") XmlLDrivers_NamespaceDef;
 		%feature("autodoc", "No available documentation.
 
@@ -317,6 +330,7 @@ None
 		 XmlLDrivers_NamespaceDef();
 
 		/****************** XmlLDrivers_NamespaceDef ******************/
+		/**** md5 signature: 891fdab46adff6414fc7856d235fadd7 ****/
 		%feature("compactdefaultargs") XmlLDrivers_NamespaceDef;
 		%feature("autodoc", "No available documentation.
 
@@ -332,6 +346,7 @@ None
 		 XmlLDrivers_NamespaceDef(const TCollection_AsciiString & thePrefix, const TCollection_AsciiString & theURI);
 
 		/****************** Prefix ******************/
+		/**** md5 signature: 3891509b09d4df1a141a4efe34da89ee ****/
 		%feature("compactdefaultargs") Prefix;
 		%feature("autodoc", "No available documentation.
 
@@ -342,6 +357,7 @@ TCollection_AsciiString
 		const TCollection_AsciiString & Prefix();
 
 		/****************** URI ******************/
+		/**** md5 signature: cc974bf2bbf82049cc50012b0e0c123a ****/
 		%feature("compactdefaultargs") URI;
 		%feature("autodoc", "No available documentation.
 

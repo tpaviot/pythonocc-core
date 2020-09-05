@@ -96,6 +96,7 @@ from OCC.Core.Exception import *
 class XmlDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: 08d744ca820fa43305d43b8e54b1d5dc ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -110,6 +111,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 		static opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** DefineFormat ******************/
+		/**** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ****/
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "Defines format 'xmlocaf' and registers its read and write drivers in the specified application.
 
@@ -124,6 +126,7 @@ None
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
+		/**** md5 signature: 9e70ed3bca71e988f9b9e86628ed8ed4 ****/
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", "No available documentation.
 
@@ -152,6 +155,7 @@ opencascade::handle<Standard_Transient>
 class XmlDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** XmlDrivers_DocumentRetrievalDriver ******************/
+		/**** md5 signature: 1c38d20bba89fba514dd979e4c136cac ****/
 		%feature("compactdefaultargs") XmlDrivers_DocumentRetrievalDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -162,6 +166,7 @@ None
 		 XmlDrivers_DocumentRetrievalDriver();
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -176,6 +181,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadShapeSection ******************/
+		/**** md5 signature: 6949cfd7e18188434f9061929247af90 ****/
 		%feature("compactdefaultargs") ReadShapeSection;
 		%feature("autodoc", "No available documentation.
 
@@ -191,6 +197,7 @@ opencascade::handle<XmlMDF_ADriver>
 		virtual opencascade::handle<XmlMDF_ADriver> ReadShapeSection(const XmlObjMgt_Element & thePDoc, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ShapeSetCleaning ******************/
+		/**** md5 signature: 4932412d0f0136668a4280a7c86030ec ****/
 		%feature("compactdefaultargs") ShapeSetCleaning;
 		%feature("autodoc", "No available documentation.
 
@@ -221,6 +228,7 @@ None
 class XmlDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDriver {
 	public:
 		/****************** XmlDrivers_DocumentStorageDriver ******************/
+		/**** md5 signature: fd136f261cd9e3224f53b77b7c675099 ****/
 		%feature("compactdefaultargs") XmlDrivers_DocumentStorageDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -235,6 +243,7 @@ None
 		 XmlDrivers_DocumentStorageDriver(const TCollection_ExtendedString & theCopyright);
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -249,6 +258,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** WriteShapeSection ******************/
+		/**** md5 signature: b4ec6d75c8a984688290a7a253ae2c49 ****/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "No available documentation.
 

@@ -119,6 +119,7 @@ VrmlAPI_BothRepresentation = VrmlAPI_RepresentationOfShape.VrmlAPI_BothRepresent
 class VrmlAPI {
 	public:
 		/****************** Write ******************/
+		/**** md5 signature: eadf93f5a80979126b45a40f5dc9c966 ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "With help of this class user can change parameters of writing. converts the shape ashape to vrml format of the passed version and writes it to the file identified by afilename using default parameters.
 
@@ -150,6 +151,7 @@ bool
 class VrmlAPI_Writer {
 	public:
 		/****************** VrmlAPI_Writer ******************/
+		/**** md5 signature: 5eaf9bcd9756148b60fcb8334055ebfa ****/
 		%feature("compactdefaultargs") VrmlAPI_Writer;
 		%feature("autodoc", "Creates a writer object with default parameters.
 
@@ -160,6 +162,7 @@ None
 		 VrmlAPI_Writer();
 
 		/****************** Drawer ******************/
+		/**** md5 signature: 2efaaaeee5ddb6cd7ee59bcf60a558c1 ****/
 		%feature("compactdefaultargs") Drawer;
 		%feature("autodoc", "Returns drawer object.
 
@@ -170,6 +173,7 @@ opencascade::handle<VrmlConverter_Drawer>
 		opencascade::handle<VrmlConverter_Drawer> Drawer();
 
 		/****************** GetFreeBoundsMaterial ******************/
+		/**** md5 signature: fe4c1151101cc344b252a5d73cd68d3b ****/
 		%feature("compactdefaultargs") GetFreeBoundsMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -180,6 +184,7 @@ opencascade::handle<Vrml_Material>
 		opencascade::handle<Vrml_Material> GetFreeBoundsMaterial();
 
 		/****************** GetFrontMaterial ******************/
+		/**** md5 signature: 23f82f7b0d60edd57a13f31bc1287eff ****/
 		%feature("compactdefaultargs") GetFrontMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -190,6 +195,7 @@ opencascade::handle<Vrml_Material>
 		opencascade::handle<Vrml_Material> GetFrontMaterial();
 
 		/****************** GetLineMaterial ******************/
+		/**** md5 signature: 73b4703624f0cdbc3650507273196d50 ****/
 		%feature("compactdefaultargs") GetLineMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -200,6 +206,7 @@ opencascade::handle<Vrml_Material>
 		opencascade::handle<Vrml_Material> GetLineMaterial();
 
 		/****************** GetPointsMaterial ******************/
+		/**** md5 signature: 65596f0649f84f113f36c51fe2680899 ****/
 		%feature("compactdefaultargs") GetPointsMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -210,6 +217,7 @@ opencascade::handle<Vrml_Material>
 		opencascade::handle<Vrml_Material> GetPointsMaterial();
 
 		/****************** GetRepresentation ******************/
+		/**** md5 signature: e9c1ddb4c7b3b4716910fa39c202c359 ****/
 		%feature("compactdefaultargs") GetRepresentation;
 		%feature("autodoc", "Returns the representation of the shape which is written to the vrml file. types of representation are set through the vrmlapi_representationofshape enumeration.
 
@@ -220,6 +228,7 @@ VrmlAPI_RepresentationOfShape
 		VrmlAPI_RepresentationOfShape GetRepresentation();
 
 		/****************** GetUisoMaterial ******************/
+		/**** md5 signature: 776cfb5f2e82e8648181bdaea3cd6449 ****/
 		%feature("compactdefaultargs") GetUisoMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -230,6 +239,7 @@ opencascade::handle<Vrml_Material>
 		opencascade::handle<Vrml_Material> GetUisoMaterial();
 
 		/****************** GetUnfreeBoundsMaterial ******************/
+		/**** md5 signature: 5eced13a0c7ac60253e78dd919d957e7 ****/
 		%feature("compactdefaultargs") GetUnfreeBoundsMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -240,6 +250,7 @@ opencascade::handle<Vrml_Material>
 		opencascade::handle<Vrml_Material> GetUnfreeBoundsMaterial();
 
 		/****************** GetVisoMaterial ******************/
+		/**** md5 signature: f1f4363a269bce56ee0aea83a1966dfa ****/
 		%feature("compactdefaultargs") GetVisoMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -250,6 +261,7 @@ opencascade::handle<Vrml_Material>
 		opencascade::handle<Vrml_Material> GetVisoMaterial();
 
 		/****************** GetWireMaterial ******************/
+		/**** md5 signature: 59d162a02218be7e6b150b536beac723 ****/
 		%feature("compactdefaultargs") GetWireMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -260,6 +272,7 @@ opencascade::handle<Vrml_Material>
 		opencascade::handle<Vrml_Material> GetWireMaterial();
 
 		/****************** ResetToDefaults ******************/
+		/**** md5 signature: 67891028b88b004fc4406bb67359856a ****/
 		%feature("compactdefaultargs") ResetToDefaults;
 		%feature("autodoc", "Resets all parameters (representation, deflection) to their default values..
 
@@ -270,6 +283,7 @@ None
 		void ResetToDefaults();
 
 		/****************** SetAmbientColorToMaterial ******************/
+		/**** md5 signature: ff58bc5173015f1d152e07a1fce01896 ****/
 		%feature("compactdefaultargs") SetAmbientColorToMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -285,6 +299,7 @@ None
 		void SetAmbientColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
 		/****************** SetDeflection ******************/
+		/**** md5 signature: 66f0952d6a5fb24175d4c477b25a2145 ****/
 		%feature("compactdefaultargs") SetDeflection;
 		%feature("autodoc", "Sets the deflection adef of the mesh algorithm which is used to compute the shaded representation of the translated shape. the default value is -1. when the deflection value is less than 0, the deflection is calculated from the relative size of the shaped.
 
@@ -299,6 +314,7 @@ None
 		void SetDeflection(const Standard_Real aDef);
 
 		/****************** SetDiffuseColorToMaterial ******************/
+		/**** md5 signature: c4180794403474cbd61cc41108eaa759 ****/
 		%feature("compactdefaultargs") SetDiffuseColorToMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -314,6 +330,7 @@ None
 		void SetDiffuseColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
 		/****************** SetEmissiveColorToMaterial ******************/
+		/**** md5 signature: d14ea7513242ae41b196539a22ad2104 ****/
 		%feature("compactdefaultargs") SetEmissiveColorToMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -329,6 +346,7 @@ None
 		void SetEmissiveColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
 		/****************** SetRepresentation ******************/
+		/**** md5 signature: 0369655e9fa20e8a3bf3d2fc75c6f6c5 ****/
 		%feature("compactdefaultargs") SetRepresentation;
 		%feature("autodoc", "Sets the representation of the shape arep which is written to the vrml file. the three options are : - shaded - wireframe - both shaded and wireframe (default) defined through the vrmlapi_representationofshape enumeration.
 
@@ -343,6 +361,7 @@ None
 		void SetRepresentation(const VrmlAPI_RepresentationOfShape aRep);
 
 		/****************** SetShininessToMaterial ******************/
+		/**** md5 signature: 21587669ae68343630ae9c1178e09a99 ****/
 		%feature("compactdefaultargs") SetShininessToMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -358,6 +377,7 @@ None
 		void SetShininessToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const Standard_Real aShininess);
 
 		/****************** SetSpecularColorToMaterial ******************/
+		/**** md5 signature: d95b9c8c286dfb0cba79da45d846ef18 ****/
 		%feature("compactdefaultargs") SetSpecularColorToMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -373,6 +393,7 @@ None
 		void SetSpecularColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
 		/****************** SetTransparencyToMaterial ******************/
+		/**** md5 signature: 4feb0931bc6ea687fcd929caed5868f2 ****/
 		%feature("compactdefaultargs") SetTransparencyToMaterial;
 		%feature("autodoc", "Set transparency to given material.
 
@@ -388,6 +409,7 @@ None
 		void SetTransparencyToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const Standard_Real aTransparency);
 
 		/****************** Write ******************/
+		/**** md5 signature: badea54785d979ffd7adddf30e53d573 ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Converts the shape ashape to vrml format of the passed version and writes it to the file identified by afile.
 
@@ -405,6 +427,7 @@ bool
 		Standard_Boolean Write(const TopoDS_Shape & aShape, const char * aFile, const Standard_Integer aVersion = 2);
 
 		/****************** WriteDoc ******************/
+		/**** md5 signature: 293e597b30a83ac910add0bca5222bf1 ****/
 		%feature("compactdefaultargs") WriteDoc;
 		%feature("autodoc", "Converts the document to vrml format of the passed version and writes it to the file identified by afile.
 

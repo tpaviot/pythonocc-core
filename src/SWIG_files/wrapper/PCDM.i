@@ -229,6 +229,7 @@ typedef NCollection_Sequence<PCDM_Reference> PCDM_SequenceOfReference;
 class PCDM {
 	public:
 		/****************** FileDriverType ******************/
+		/**** md5 signature: addcc38b3196015d27f9942f5ddebae8 ****/
 		%feature("compactdefaultargs") FileDriverType;
 		%feature("autodoc", "No available documentation.
 
@@ -265,6 +266,7 @@ PCDM_TypeOfFileDriver
 class PCDM_ReadWriter : public Standard_Transient {
 	public:
 		/****************** FileFormat ******************/
+		/**** md5 signature: b520f0cc5162eb6c2dc2ec34b97c43ec ****/
 		%feature("compactdefaultargs") FileFormat;
 		%feature("autodoc", "Tries to get a format in the file. returns an empty string if the file could not be read or does not have a fileformat information.
 
@@ -279,6 +281,7 @@ TCollection_ExtendedString
 		static TCollection_ExtendedString FileFormat(const TCollection_ExtendedString & aFileName);
 
 		/****************** Open ******************/
+		/**** md5 signature: 2bce6d13ddc8fb38fe945eb8b065e2d0 ****/
 		%feature("compactdefaultargs") Open;
 		%feature("autodoc", "No available documentation.
 
@@ -295,6 +298,7 @@ None
 		static void Open(Storage_BaseDriver & aDriver, const TCollection_ExtendedString & aFileName, const Storage_OpenMode anOpenMode);
 
 		/****************** ReadDocumentVersion ******************/
+		/**** md5 signature: bf1f618098d7343ef9fbe7740b59f3aa ****/
 		%feature("compactdefaultargs") ReadDocumentVersion;
 		%feature("autodoc", "No available documentation.
 
@@ -310,6 +314,7 @@ int
 		virtual Standard_Integer ReadDocumentVersion(const TCollection_ExtendedString & aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadExtensions ******************/
+		/**** md5 signature: 2739d7ca0016c071d9071f6a6efd593b ****/
 		%feature("compactdefaultargs") ReadExtensions;
 		%feature("autodoc", "No available documentation.
 
@@ -326,6 +331,7 @@ None
 		virtual void ReadExtensions(const TCollection_ExtendedString & aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferenceCounter ******************/
+		/**** md5 signature: c78e646bc2907d99bd148ca5d6ab0520 ****/
 		%feature("compactdefaultargs") ReadReferenceCounter;
 		%feature("autodoc", "No available documentation.
 
@@ -341,6 +347,7 @@ int
 		virtual Standard_Integer ReadReferenceCounter(const TCollection_ExtendedString & theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferences ******************/
+		/**** md5 signature: b3faa5a407a9c6a70f34faa350ed3328 ****/
 		%feature("compactdefaultargs") ReadReferences;
 		%feature("autodoc", "No available documentation.
 
@@ -357,6 +364,7 @@ None
 		virtual void ReadReferences(const TCollection_ExtendedString & aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Reader ******************/
+		/**** md5 signature: 5abfb4fc6587b1edbdb91359566a4f72 ****/
 		%feature("compactdefaultargs") Reader;
 		%feature("autodoc", "Returns the convenient reader for a file.
 
@@ -371,6 +379,7 @@ opencascade::handle<PCDM_ReadWriter>
 		static opencascade::handle<PCDM_ReadWriter> Reader(const TCollection_ExtendedString & aFileName);
 
 		/****************** Version ******************/
+		/**** md5 signature: 3a6502e85781045440638f7269538a9b ****/
 		%feature("compactdefaultargs") Version;
 		%feature("autodoc", "Returns pcdm_readwriter_1.
 
@@ -381,6 +390,7 @@ TCollection_AsciiString
 		virtual TCollection_AsciiString Version();
 
 		/****************** WriteExtensions ******************/
+		/**** md5 signature: ff046bbd64ddfb5c98b698fb97500cce ****/
 		%feature("compactdefaultargs") WriteExtensions;
 		%feature("autodoc", "No available documentation.
 
@@ -396,6 +406,7 @@ None
 		virtual void WriteExtensions(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteFileFormat ******************/
+		/**** md5 signature: a5aae79ebf9a26cf742edfd2cad4f010 ****/
 		%feature("compactdefaultargs") WriteFileFormat;
 		%feature("autodoc", "No available documentation.
 
@@ -411,6 +422,7 @@ None
 		static void WriteFileFormat(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteReferenceCounter ******************/
+		/**** md5 signature: 288d068aadabd53bbeea3b420603b92b ****/
 		%feature("compactdefaultargs") WriteReferenceCounter;
 		%feature("autodoc", "No available documentation.
 
@@ -426,6 +438,7 @@ None
 		virtual void WriteReferenceCounter(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteReferences ******************/
+		/**** md5 signature: a29b472aa14bc7a7c4fa45af6a247126 ****/
 		%feature("compactdefaultargs") WriteReferences;
 		%feature("autodoc", "No available documentation.
 
@@ -442,6 +455,7 @@ None
 		virtual void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & theReferencerFileName);
 
 		/****************** WriteVersion ******************/
+		/**** md5 signature: 159c6fe061eaba42cff513dc8813ee2f ****/
 		%feature("compactdefaultargs") WriteVersion;
 		%feature("autodoc", "No available documentation.
 
@@ -457,6 +471,7 @@ None
 		virtual void WriteVersion(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** Writer ******************/
+		/**** md5 signature: 64097579d1166d4efdc2fd6a6f0a76a8 ****/
 		%feature("compactdefaultargs") Writer;
 		%feature("autodoc", "No available documentation.
 
@@ -484,6 +499,7 @@ opencascade::handle<PCDM_ReadWriter>
 class PCDM_Reader : public Standard_Transient {
 	public:
 		/****************** CreateDocument ******************/
+		/**** md5 signature: 3dc32007df460b98657018893f54f5da ****/
 		%feature("compactdefaultargs") CreateDocument;
 		%feature("autodoc", "This method is called by the framework before the read method.
 
@@ -494,6 +510,7 @@ opencascade::handle<CDM_Document>
 		virtual opencascade::handle<CDM_Document> CreateDocument();
 
 		/****************** GetStatus ******************/
+		/**** md5 signature: 7da0146422c21bfb19406a01283cc862 ****/
 		%feature("compactdefaultargs") GetStatus;
 		%feature("autodoc", "No available documentation.
 
@@ -504,6 +521,7 @@ PCDM_ReaderStatus
 		PCDM_ReaderStatus GetStatus();
 
 		/****************** Read ******************/
+		/**** md5 signature: a7baf220a11f13ece99e614c8d1613b0 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Retrieves the content of the file into a new document.
 
@@ -536,6 +554,7 @@ None
 class PCDM_Reference {
 	public:
 		/****************** PCDM_Reference ******************/
+		/**** md5 signature: fcb919a21fac80885f7167c85ef93229 ****/
 		%feature("compactdefaultargs") PCDM_Reference;
 		%feature("autodoc", "No available documentation.
 
@@ -546,6 +565,7 @@ None
 		 PCDM_Reference();
 
 		/****************** PCDM_Reference ******************/
+		/**** md5 signature: a461ba6e086806da3bb8a64471ca9927 ****/
 		%feature("compactdefaultargs") PCDM_Reference;
 		%feature("autodoc", "No available documentation.
 
@@ -562,6 +582,7 @@ None
 		 PCDM_Reference(const Standard_Integer aReferenceIdentifier, const TCollection_ExtendedString & aFileName, const Standard_Integer aDocumentVersion);
 
 		/****************** DocumentVersion ******************/
+		/**** md5 signature: bf19019d65def7107fbf722b45605af2 ****/
 		%feature("compactdefaultargs") DocumentVersion;
 		%feature("autodoc", "No available documentation.
 
@@ -572,6 +593,7 @@ int
 		Standard_Integer DocumentVersion();
 
 		/****************** FileName ******************/
+		/**** md5 signature: 55453540d5ecaade8ddcde5846f5b88f ****/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "No available documentation.
 
@@ -582,6 +604,7 @@ TCollection_ExtendedString
 		TCollection_ExtendedString FileName();
 
 		/****************** ReferenceIdentifier ******************/
+		/**** md5 signature: 0b6f1d6aeee20151c55bab21628d6c27 ****/
 		%feature("compactdefaultargs") ReferenceIdentifier;
 		%feature("autodoc", "No available documentation.
 
@@ -606,6 +629,7 @@ int
 class PCDM_ReferenceIterator : public Standard_Transient {
 	public:
 		/****************** PCDM_ReferenceIterator ******************/
+		/**** md5 signature: bc2c61f33a2535f4140a63d8a42bf573 ****/
 		%feature("compactdefaultargs") PCDM_ReferenceIterator;
 		%feature("autodoc", "Warning! the constructor does not initialization.
 
@@ -620,6 +644,7 @@ None
 		 PCDM_ReferenceIterator(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** Init ******************/
+		/**** md5 signature: e27dcfd0fb2609919194e4e256a89398 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
@@ -634,6 +659,7 @@ None
 		virtual void Init(const opencascade::handle<CDM_MetaData> & aMetaData);
 
 		/****************** LoadReferences ******************/
+		/**** md5 signature: 1c28e34b7e3d8ffab22557e150b82442 ****/
 		%feature("compactdefaultargs") LoadReferences;
 		%feature("autodoc", "No available documentation.
 
@@ -668,6 +694,7 @@ None
 class PCDM_Writer : public Standard_Transient {
 	public:
 		/****************** Write ******************/
+		/**** md5 signature: 02447f9eb5129963c0e3f61ace05fbfe ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "No available documentation.
 
@@ -699,6 +726,7 @@ None
 class PCDM_ReadWriter_1 : public PCDM_ReadWriter {
 	public:
 		/****************** PCDM_ReadWriter_1 ******************/
+		/**** md5 signature: 3712b2a104424c2ca788af2565ee13ef ****/
 		%feature("compactdefaultargs") PCDM_ReadWriter_1;
 		%feature("autodoc", "No available documentation.
 
@@ -709,6 +737,7 @@ None
 		 PCDM_ReadWriter_1();
 
 		/****************** ReadDocumentVersion ******************/
+		/**** md5 signature: 6fa0d97ebadaf88d4c19a79af48272e8 ****/
 		%feature("compactdefaultargs") ReadDocumentVersion;
 		%feature("autodoc", "No available documentation.
 
@@ -724,6 +753,7 @@ int
 		Standard_Integer ReadDocumentVersion(const TCollection_ExtendedString & aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadExtensions ******************/
+		/**** md5 signature: e79724363b9b64d4ee07dc721eaab89c ****/
 		%feature("compactdefaultargs") ReadExtensions;
 		%feature("autodoc", "No available documentation.
 
@@ -740,6 +770,7 @@ None
 		void ReadExtensions(const TCollection_ExtendedString & aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferenceCounter ******************/
+		/**** md5 signature: 2a9d538fbc9a34aae5162f188bc0dec8 ****/
 		%feature("compactdefaultargs") ReadReferenceCounter;
 		%feature("autodoc", "No available documentation.
 
@@ -755,6 +786,7 @@ int
 		Standard_Integer ReadReferenceCounter(const TCollection_ExtendedString & aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** ReadReferences ******************/
+		/**** md5 signature: c890e9c775ee329a9c416a624708d4fb ****/
 		%feature("compactdefaultargs") ReadReferences;
 		%feature("autodoc", "No available documentation.
 
@@ -771,6 +803,7 @@ None
 		void ReadReferences(const TCollection_ExtendedString & aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Version ******************/
+		/**** md5 signature: 0ac00c5dd4c467cbc7e9c3010b5092a6 ****/
 		%feature("compactdefaultargs") Version;
 		%feature("autodoc", "Returns pcdm_readwriter_1.
 
@@ -781,6 +814,7 @@ TCollection_AsciiString
 		TCollection_AsciiString Version();
 
 		/****************** WriteExtensions ******************/
+		/**** md5 signature: 85b751cddf0f4ac1b87e8791d6807b9c ****/
 		%feature("compactdefaultargs") WriteExtensions;
 		%feature("autodoc", "No available documentation.
 
@@ -796,6 +830,7 @@ None
 		void WriteExtensions(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteReferenceCounter ******************/
+		/**** md5 signature: f007ff2a88f7afd58caed0ad641afa67 ****/
 		%feature("compactdefaultargs") WriteReferenceCounter;
 		%feature("autodoc", "No available documentation.
 
@@ -811,6 +846,7 @@ None
 		void WriteReferenceCounter(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** WriteReferences ******************/
+		/**** md5 signature: 60084cf94d2b5578acc0f69aeb515c97 ****/
 		%feature("compactdefaultargs") WriteReferences;
 		%feature("autodoc", "No available documentation.
 
@@ -827,6 +863,7 @@ None
 		void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & theReferencerFileName);
 
 		/****************** WriteVersion ******************/
+		/**** md5 signature: 1237b39223ebf6a0c84b2cfc30675d46 ****/
 		%feature("compactdefaultargs") WriteVersion;
 		%feature("autodoc", "No available documentation.
 
@@ -859,6 +896,7 @@ None
 class PCDM_RetrievalDriver : public PCDM_Reader {
 	public:
 		/****************** DocumentVersion ******************/
+		/**** md5 signature: f11c15e892e5505b77706d6fd7a1801f ****/
 		%feature("compactdefaultargs") DocumentVersion;
 		%feature("autodoc", "No available documentation.
 
@@ -874,6 +912,7 @@ int
 		static Standard_Integer DocumentVersion(const TCollection_ExtendedString & theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** GetFormat ******************/
+		/**** md5 signature: fffd3a693cb020e12e5658bc526df844 ****/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "No available documentation.
 
@@ -884,6 +923,7 @@ TCollection_ExtendedString
 		TCollection_ExtendedString GetFormat();
 
 		/****************** ReferenceCounter ******************/
+		/**** md5 signature: 088a295a6318f05f8f6c481d75ee6b7d ****/
 		%feature("compactdefaultargs") ReferenceCounter;
 		%feature("autodoc", "No available documentation.
 
@@ -899,6 +939,7 @@ int
 		static Standard_Integer ReferenceCounter(const TCollection_ExtendedString & theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** SetFormat ******************/
+		/**** md5 signature: 0a047ddc473d166aa027611e6069ffc3 ****/
 		%feature("compactdefaultargs") SetFormat;
 		%feature("autodoc", "No available documentation.
 
@@ -929,6 +970,7 @@ None
 class PCDM_StorageDriver : public PCDM_Writer {
 	public:
 		/****************** GetFormat ******************/
+		/**** md5 signature: fffd3a693cb020e12e5658bc526df844 ****/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "No available documentation.
 
@@ -939,6 +981,7 @@ TCollection_ExtendedString
 		TCollection_ExtendedString GetFormat();
 
 		/****************** GetStoreStatus ******************/
+		/**** md5 signature: aa33a6ff6e8cb07ab8472ff009fae2e1 ****/
 		%feature("compactdefaultargs") GetStoreStatus;
 		%feature("autodoc", "No available documentation.
 
@@ -949,6 +992,7 @@ PCDM_StoreStatus
 		PCDM_StoreStatus GetStoreStatus();
 
 		/****************** IsError ******************/
+		/**** md5 signature: c52b85ee17e423925f2cd97bf6879614 ****/
 		%feature("compactdefaultargs") IsError;
 		%feature("autodoc", "No available documentation.
 
@@ -959,6 +1003,7 @@ bool
 		Standard_Boolean IsError();
 
 		/****************** Make ******************/
+		/**** md5 signature: 39cf823dff5118394c88e4f36d9f1903 ****/
 		%feature("compactdefaultargs") Make;
 		%feature("autodoc", "Raises notimplemented.
 
@@ -973,6 +1018,7 @@ opencascade::handle<PCDM_Document>
 		virtual opencascade::handle<PCDM_Document> Make(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****************** Make ******************/
+		/**** md5 signature: 41f831e6d4c5111bd8e3059da3abdca8 ****/
 		%feature("compactdefaultargs") Make;
 		%feature("autodoc", "By default, puts in the sequence the document returns by the previous make method.
 
@@ -988,6 +1034,7 @@ None
 		virtual void Make(const opencascade::handle<CDM_Document> & aDocument, PCDM_SequenceOfDocument & Documents);
 
 		/****************** SetFormat ******************/
+		/**** md5 signature: 0a047ddc473d166aa027611e6069ffc3 ****/
 		%feature("compactdefaultargs") SetFormat;
 		%feature("autodoc", "No available documentation.
 
@@ -1002,6 +1049,7 @@ None
 		void SetFormat(const TCollection_ExtendedString & aformat);
 
 		/****************** SetIsError ******************/
+		/**** md5 signature: 62f1d1b8739fce144b7c044eeba2371b ****/
 		%feature("compactdefaultargs") SetIsError;
 		%feature("autodoc", "No available documentation.
 
@@ -1016,6 +1064,7 @@ None
 		void SetIsError(const Standard_Boolean theIsError);
 
 		/****************** SetStoreStatus ******************/
+		/**** md5 signature: 93e09ef2094b69fe064748e4a8b36ded ****/
 		%feature("compactdefaultargs") SetStoreStatus;
 		%feature("autodoc", "No available documentation.
 
@@ -1030,6 +1079,7 @@ None
 		void SetStoreStatus(const PCDM_StoreStatus theStoreStatus);
 
 		/****************** Write ******************/
+		/**** md5 signature: b113baff4fa5e386bf838af5dc4fcd6b ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Warning! raises drivererror if an error occurs during inside the make method. stores the content of the document into a new file. //! by default write will use make method to build a persistent document and the schema method to write the persistent document.
 

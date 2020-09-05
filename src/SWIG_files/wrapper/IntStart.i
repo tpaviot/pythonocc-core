@@ -83,6 +83,7 @@ from OCC.Core.Exception import *
 class IntStart_SITopolTool : public Standard_Transient {
 	public:
 		/****************** Classify ******************/
+		/**** md5 signature: 57cb8b2ba77b23acfa05dd678fe20285 ****/
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "No available documentation.
 

@@ -108,6 +108,7 @@ BinDrivers_ENDLABEL = BinDrivers_Marker.BinDrivers_ENDLABEL
 class BinDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: a3052842141074dac4fa7742d5b7f7f0 ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "Creates the table of drivers of types supported.
 
@@ -122,6 +123,7 @@ opencascade::handle<BinMDF_ADriverTable>
 		static opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & MsgDrv);
 
 		/****************** DefineFormat ******************/
+		/**** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ****/
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "Defines format 'binocaf' and registers its read and write drivers in the specified application.
 
@@ -136,6 +138,7 @@ None
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
+		/**** md5 signature: 9e70ed3bca71e988f9b9e86628ed8ed4 ****/
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", "No available documentation.
 
@@ -150,6 +153,7 @@ opencascade::handle<Standard_Transient>
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & theGUID);
 
 		/****************** StorageVersion ******************/
+		/**** md5 signature: a68044f4a6f5d5c72fd58dc4fdd88764 ****/
 		%feature("compactdefaultargs") StorageVersion;
 		%feature("autodoc", "Returns '1'.
 
@@ -174,6 +178,7 @@ TCollection_AsciiString
 class BinDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** BinDrivers_DocumentRetrievalDriver ******************/
+		/**** md5 signature: 88a86fff6ba1732274c9249348dbc12e ****/
 		%feature("compactdefaultargs") BinDrivers_DocumentRetrievalDriver;
 		%feature("autodoc", "Constructor.
 
@@ -184,6 +189,7 @@ None
 		 BinDrivers_DocumentRetrievalDriver();
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -198,6 +204,7 @@ opencascade::handle<BinMDF_ADriverTable>
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Clear ******************/
+		/**** md5 signature: f671931d03948860d0ead34afbe920aa ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clears the namedshape driver.
 
@@ -224,6 +231,7 @@ None
 class BinDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageDriver {
 	public:
 		/****************** BinDrivers_DocumentStorageDriver ******************/
+		/**** md5 signature: ffc37e36fdced2b619cac020c0f0156f ****/
 		%feature("compactdefaultargs") BinDrivers_DocumentStorageDriver;
 		%feature("autodoc", "Constructor.
 
@@ -234,6 +242,7 @@ None
 		 BinDrivers_DocumentStorageDriver();
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -248,6 +257,7 @@ opencascade::handle<BinMDF_ADriverTable>
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** IsWithTriangles ******************/
+		/**** md5 signature: 32c48a11bbc2ae55f906cde0d81b8f2d ****/
 		%feature("compactdefaultargs") IsWithTriangles;
 		%feature("autodoc", "Return true if shape should be stored with triangles.
 
@@ -258,6 +268,7 @@ bool
 		Standard_Boolean IsWithTriangles();
 
 		/****************** SetWithTriangles ******************/
+		/**** md5 signature: db0227376859215948d44ae6c914f15c ****/
 		%feature("compactdefaultargs") SetWithTriangles;
 		%feature("autodoc", "Set if triangulation should be stored or not.
 

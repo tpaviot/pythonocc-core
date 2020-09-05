@@ -94,6 +94,7 @@ from OCC.Core.Exception import *
 class XmlXCAFDrivers {
 	public:
 		/****************** DefineFormat ******************/
+		/**** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ****/
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "Defines format 'xmlxcaf' and registers its read and write drivers in the specified application.
 
@@ -108,6 +109,7 @@ None
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
+		/**** md5 signature: 3da280e6bb218a5037c98dc98a4e3815 ****/
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", "Depending from the id, returns a list of storage or retrieval attribute drivers. used for plugin. //! standard data model drivers =========================== 47b0b826-d931-11d1-b5da-00a0c9064368 transient-persistent 47b0b827-d931-11d1-b5da-00a0c9064368 persistent-transient //! xcaf data model drivers ================================= ed8793f8-3142-11d4-b9b5-0060b0ee281b transient-persistent ed8793f9-3142-11d4-b9b5-0060b0ee281b persistent-transient ed8793fa-3142-11d4-b9b5-0060b0ee281b xcafschema.
 
@@ -136,6 +138,7 @@ opencascade::handle<Standard_Transient>
 class XmlXCAFDrivers_DocumentRetrievalDriver : public XmlDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** XmlXCAFDrivers_DocumentRetrievalDriver ******************/
+		/**** md5 signature: 9beb6699d1b2c6ff4d2c46e0f7ad385b ****/
 		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentRetrievalDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -146,6 +149,7 @@ None
 		 XmlXCAFDrivers_DocumentRetrievalDriver();
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -176,6 +180,7 @@ opencascade::handle<XmlMDF_ADriverTable>
 class XmlXCAFDrivers_DocumentStorageDriver : public XmlDrivers_DocumentStorageDriver {
 	public:
 		/****************** XmlXCAFDrivers_DocumentStorageDriver ******************/
+		/**** md5 signature: 71d96a93a79deba990e4fea2cd40f4ed ****/
 		%feature("compactdefaultargs") XmlXCAFDrivers_DocumentStorageDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -190,6 +195,7 @@ None
 		 XmlXCAFDrivers_DocumentStorageDriver(const TCollection_ExtendedString & theCopyright);
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 

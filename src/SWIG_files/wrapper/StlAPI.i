@@ -82,6 +82,7 @@ from OCC.Core.Exception import *
 class StlAPI {
 	public:
 		/****************** Read ******************/
+		/**** md5 signature: 04193a3dd7bc184e35d71f6296bb4160 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Legacy interface. read stl file and create a shape composed of triangular faces, one per facet. this approach is very inefficient, especially for large files. consider reading stl file to poly_triangulation object instead (see class rwstl).
 
@@ -97,6 +98,7 @@ bool
 		static Standard_Boolean Read(TopoDS_Shape & theShape, const char * aFile);
 
 		/****************** Write ******************/
+		/**** md5 signature: 6440898486e448da078517629383a97a ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Convert and write shape to stl format. file is written in binary if aasciimode is false otherwise it is written in ascii (by default).
 
@@ -128,6 +130,7 @@ bool
 class StlAPI_Reader {
 	public:
 		/****************** Read ******************/
+		/**** md5 signature: 7175fc9409b969fddd6af571d4af05e4 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Reads stl file to the topods_shape (each triangle is converted to the face). returns true if reading is successful.
 
@@ -157,6 +160,7 @@ bool
 class StlAPI_Writer {
 	public:
 		/****************** StlAPI_Writer ******************/
+		/**** md5 signature: bb0903a29083f9fab3c6442a6e38972c ****/
 		%feature("compactdefaultargs") StlAPI_Writer;
 		%feature("autodoc", "Creates a writer object with default parameters: asciimode.
 
@@ -180,6 +184,7 @@ None
             }
         };
 		/****************** Write ******************/
+		/**** md5 signature: 0d7f29b491afa209c52b0b9f23ebebfc ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "Converts a given shape to stl format and writes it to file with a given filename. eturn the error state.
 

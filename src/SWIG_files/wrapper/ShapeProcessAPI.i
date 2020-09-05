@@ -99,6 +99,7 @@ from OCC.Core.Exception import *
 class ShapeProcessAPI_ApplySequence {
 	public:
 		/****************** ShapeProcessAPI_ApplySequence ******************/
+		/**** md5 signature: f5377d66263c9513eab7d2e2af5df61a ****/
 		%feature("compactdefaultargs") ShapeProcessAPI_ApplySequence;
 		%feature("autodoc", "Creates an object and loads resource file and sequence of operators given by their names.
 
@@ -115,6 +116,7 @@ None
 		 ShapeProcessAPI_ApplySequence(const char * rscName, const char * seqName = "");
 
 		/****************** ClearMap ******************/
+		/**** md5 signature: 9356b49e3e18c060604ef62eda302963 ****/
 		%feature("compactdefaultargs") ClearMap;
 		%feature("autodoc", "Clears mymap with accumulated history.
 
@@ -125,6 +127,7 @@ None
 		void ClearMap();
 
 		/****************** Context ******************/
+		/**** md5 signature: b0b09a3cdce6c6dc8869f38cc643ed97 ****/
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "Returns object for managing resource file and sequence of operators.
 
@@ -135,6 +138,7 @@ opencascade::handle<ShapeProcess_ShapeContext>
 		opencascade::handle<ShapeProcess_ShapeContext> & Context();
 
 		/****************** Map ******************/
+		/**** md5 signature: f3544fddbdbe445b92ed0b96e5dc0e82 ****/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Returns mymap with accumulated history.
 
@@ -145,6 +149,7 @@ TopTools_DataMapOfShapeShape
 		const TopTools_DataMapOfShapeShape & Map();
 
 		/****************** PrepareShape ******************/
+		/**** md5 signature: 43c81d82dc68892e9bbcada26c22f9de ****/
 		%feature("compactdefaultargs") PrepareShape;
 		%feature("autodoc", "Performs sequence of operators stored in myrsc. if <fillmap> is true adds history 'shape-shape' into mymap for shape and its subshapes until level <until> (included). if <until> is topabs_shape, all the subshapes are considered.
 
@@ -163,6 +168,7 @@ TopoDS_Shape
 		TopoDS_Shape PrepareShape(const TopoDS_Shape & shape, const Standard_Boolean fillmap = Standard_False, const TopAbs_ShapeEnum until = TopAbs_SHAPE);
 
 		/****************** PrintPreparationResult ******************/
+		/**** md5 signature: 9f69281710e5ed4ccee63017708a3d97 ****/
 		%feature("compactdefaultargs") PrintPreparationResult;
 		%feature("autodoc", "Prints result of preparation onto the messenger of the context. note that results can be accumulated from previous preparations it method clearmap was not called before prepareshape.
 

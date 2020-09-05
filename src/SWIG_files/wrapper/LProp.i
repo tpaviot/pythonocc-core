@@ -119,6 +119,7 @@ typedef NCollection_Sequence<LProp_CIType> LProp_SequenceOfCIType;
 class LProp_AnalyticCurInf {
 	public:
 		/****************** LProp_AnalyticCurInf ******************/
+		/**** md5 signature: 9de12ef8d5db0001e2fa7ce01e701e3c ****/
 		%feature("compactdefaultargs") LProp_AnalyticCurInf;
 		%feature("autodoc", "No available documentation.
 
@@ -129,6 +130,7 @@ None
 		 LProp_AnalyticCurInf();
 
 		/****************** Perform ******************/
+		/**** md5 signature: 01f4e3cadaf6b2c8a8f2d693af66c125 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -160,6 +162,7 @@ None
 class LProp_CurAndInf {
 	public:
 		/****************** LProp_CurAndInf ******************/
+		/**** md5 signature: 85c542266e7272b195e0e3fb8f5234dc ****/
 		%feature("compactdefaultargs") LProp_CurAndInf;
 		%feature("autodoc", "No available documentation.
 
@@ -170,6 +173,7 @@ None
 		 LProp_CurAndInf();
 
 		/****************** AddExtCur ******************/
+		/**** md5 signature: 67bfbd091f41a325996083b02ceb306b ****/
 		%feature("compactdefaultargs") AddExtCur;
 		%feature("autodoc", "No available documentation.
 
@@ -185,6 +189,7 @@ None
 		void AddExtCur(const Standard_Real Param, const Standard_Boolean IsMin);
 
 		/****************** AddInflection ******************/
+		/**** md5 signature: 9bc91f7af843b6b7d866668e1cfda6c4 ****/
 		%feature("compactdefaultargs") AddInflection;
 		%feature("autodoc", "No available documentation.
 
@@ -199,6 +204,7 @@ None
 		void AddInflection(const Standard_Real Param);
 
 		/****************** Clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "No available documentation.
 
@@ -209,6 +215,7 @@ None
 		void Clear();
 
 		/****************** IsEmpty ******************/
+		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -219,6 +226,7 @@ bool
 		Standard_Boolean IsEmpty();
 
 		/****************** NbPoints ******************/
+		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Returns the number of points. the points are stored to increasing parameter.
 
@@ -229,6 +237,7 @@ int
 		Standard_Integer NbPoints();
 
 		/****************** Parameter ******************/
+		/**** md5 signature: 4c21efa46e26472b743cb69dd5cd7987 ****/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Returns the parameter of the nth point. raises if n not in the range [1,nbpoints()].
 
@@ -243,6 +252,7 @@ float
 		Standard_Real Parameter(const Standard_Integer N);
 
 		/****************** Type ******************/
+		/**** md5 signature: 8c342754ff31a2a8867996891924e0bb ****/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Returns - mincur if the nth parameter corresponds to a minimum of the radius of curvature. - maxcur if the nth parameter corresponds to a maximum of the radius of curvature. - inflection if the parameter corresponds to a point of inflection. raises if n not in the range [1,nbpoints()].
 

@@ -985,6 +985,7 @@ typedef void * HANDLE;
 class Aspect_Background {
 	public:
 		/****************** Aspect_Background ******************/
+		/**** md5 signature: c285d3f164d7d45415123925b55dfa2d ****/
 		%feature("compactdefaultargs") Aspect_Background;
 		%feature("autodoc", "Creates a window background. default color : noc_matragray.
 
@@ -995,6 +996,7 @@ None
 		 Aspect_Background();
 
 		/****************** Aspect_Background ******************/
+		/**** md5 signature: 5dbd53dd21ee3414ceec63d3dadf45f2 ****/
 		%feature("compactdefaultargs") Aspect_Background;
 		%feature("autodoc", "Creates a window background with the colour <acolor>.
 
@@ -1009,6 +1011,7 @@ None
 		 Aspect_Background(const Quantity_Color & AColor);
 
 		/****************** Color ******************/
+		/**** md5 signature: b37a2e584a895a08fcf8ead60940b246 ****/
 		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "Returns the colour of the window background <self>.
 
@@ -1019,6 +1022,7 @@ Quantity_Color
 		Quantity_Color Color();
 
 		/****************** SetColor ******************/
+		/**** md5 signature: 5aebf70a123538e7dff670112c56db0d ****/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "Modifies the colour of the window background <self>.
 
@@ -1087,6 +1091,7 @@ class Aspect_DisplayConnection : public Standard_Transient {
 class Aspect_GenId {
 	public:
 		/****************** Aspect_GenId ******************/
+		/**** md5 signature: 569c368c12c13ee3f3906663aa53662b ****/
 		%feature("compactdefaultargs") Aspect_GenId;
 		%feature("autodoc", "Creates an available set of identifiers with the lower bound 0 and the upper bound int_max / 2.
 
@@ -1097,6 +1102,7 @@ None
 		 Aspect_GenId();
 
 		/****************** Aspect_GenId ******************/
+		/**** md5 signature: 3f26c1994924a0cb83cef8d1c5e3f8d3 ****/
 		%feature("compactdefaultargs") Aspect_GenId;
 		%feature("autodoc", "Creates an available set of identifiers with specified range. raises identdefinitionerror if theupper is less than thelow.
 
@@ -1112,6 +1118,7 @@ None
 		 Aspect_GenId(const Standard_Integer theLow, const Standard_Integer theUpper);
 
 		/****************** Available ******************/
+		/**** md5 signature: 697caaa4e9190a2cfddfe8f6ce24ea8c ****/
 		%feature("compactdefaultargs") Available;
 		%feature("autodoc", "Returns the number of available identifiers.
 
@@ -1122,6 +1129,7 @@ int
 		Standard_Integer Available();
 
 		/****************** Free ******************/
+		/**** md5 signature: adf04b00a0d9dc585c1f31bcdbc395bf ****/
 		%feature("compactdefaultargs") Free;
 		%feature("autodoc", "Free all identifiers - make the whole range available again.
 
@@ -1132,6 +1140,7 @@ None
 		void Free();
 
 		/****************** Free ******************/
+		/**** md5 signature: 912044af0159c0455ab1de14a2ea922d ****/
 		%feature("compactdefaultargs") Free;
 		%feature("autodoc", "Free specified identifier. warning - method has no protection against double-freeing!.
 
@@ -1146,6 +1155,7 @@ None
 		void Free(const Standard_Integer theId);
 
 		/****************** HasFree ******************/
+		/**** md5 signature: b1851639e312df8e9d1643954f18fb9e ****/
 		%feature("compactdefaultargs") HasFree;
 		%feature("autodoc", "Returns true if there are available identifiers in range.
 
@@ -1156,6 +1166,7 @@ bool
 		Standard_Boolean HasFree();
 
 		/****************** Lower ******************/
+		/**** md5 signature: a2a9f1c3c17fa0f26434aadaabeff45a ****/
 		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "Returns the lower identifier in range.
 
@@ -1166,6 +1177,7 @@ int
 		Standard_Integer Lower();
 
 		/****************** Next ******************/
+		/**** md5 signature: e7361d634adcab8f63c24d757e1e478e ****/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Returns the next available identifier. warning: raises identdefinitionerror if all identifiers are busy.
 
@@ -1176,6 +1188,7 @@ int
 		Standard_Integer Next();
 
 		/****************** Next ******************/
+		/**** md5 signature: 3fd1eee7f153c7ff797dea1b9f67ad85 ****/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Generates the next available identifier. @param theid [out] generated identifier returns false if all identifiers are busy.
 
@@ -1189,6 +1202,7 @@ theId: int
 		Standard_Boolean Next(Standard_Integer &OutValue);
 
 		/****************** Upper ******************/
+		/**** md5 signature: 621f04fab59b49711e54299100973c4e ****/
 		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "Returns the upper identifier in range.
 
@@ -1214,6 +1228,7 @@ int
 class Aspect_Grid : public Standard_Transient {
 	public:
 		/****************** Activate ******************/
+		/**** md5 signature: 3c1c2136e4be5cb74d5a6a6df9f2730e ****/
 		%feature("compactdefaultargs") Activate;
 		%feature("autodoc", "Activates the grid. the hit method will return gridx and gridx computed according to the steps of the grid.
 
@@ -1224,6 +1239,7 @@ None
 		void Activate();
 
 		/****************** Colors ******************/
+		/**** md5 signature: febac332dabf87330fc8ae564a90811c ****/
 		%feature("compactdefaultargs") Colors;
 		%feature("autodoc", "Returns the colors of the grid.
 
@@ -1239,6 +1255,7 @@ None
 		void Colors(Quantity_Color & aColor, Quantity_Color & aTenthColor);
 
 		/****************** Compute ******************/
+		/**** md5 signature: f2dc3bb20b3dea64f42829e338efc410 ****/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Returns the point of the grid the closest to the point x,y.
 
@@ -1255,6 +1272,7 @@ gridY: float
 		virtual void Compute(const Standard_Real X, const Standard_Real Y, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Deactivate ******************/
+		/**** md5 signature: d5b1d14a550597a64031c7a7feceee08 ****/
 		%feature("compactdefaultargs") Deactivate;
 		%feature("autodoc", "Deactivates the grid. the hit method will return gridx and gridx as the enter value x & y.
 
@@ -1265,6 +1283,7 @@ None
 		void Deactivate();
 
 		/****************** Display ******************/
+		/**** md5 signature: a5bb9d443eb910f59769ed67aea52525 ****/
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "Display the grid at screen.
 
@@ -1275,6 +1294,7 @@ None
 		virtual void Display();
 
 		/****************** DrawMode ******************/
+		/**** md5 signature: 820acf5cdbd9b081ca2fdb9e8fa43978 ****/
 		%feature("compactdefaultargs") DrawMode;
 		%feature("autodoc", "Returns the grid aspect.
 
@@ -1285,6 +1305,7 @@ Aspect_GridDrawMode
 		Aspect_GridDrawMode DrawMode();
 
 		/****************** Erase ******************/
+		/**** md5 signature: c55517fe39ff6c9fe42803167b097498 ****/
 		%feature("compactdefaultargs") Erase;
 		%feature("autodoc", "Erase the grid from screen.
 
@@ -1295,6 +1316,7 @@ None
 		virtual void Erase();
 
 		/****************** Hit ******************/
+		/**** md5 signature: a0d754d9f4e2a7f6a6b3cbe673f29375 ****/
 		%feature("compactdefaultargs") Hit;
 		%feature("autodoc", "Returns the point of the grid the closest to the point x,y if the grid is active. if the grid is not active returns x,y.
 
@@ -1311,6 +1333,7 @@ gridY: float
 		void Hit(const Standard_Real X, const Standard_Real Y, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Init ******************/
+		/**** md5 signature: ae70d610df2081e50f19659c49fb9bd4 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
@@ -1321,6 +1344,7 @@ None
 		virtual void Init();
 
 		/****************** IsActive ******************/
+		/**** md5 signature: 1430a89053d4b0413f25b185201efe70 ****/
 		%feature("compactdefaultargs") IsActive;
 		%feature("autodoc", "Returns true when the grid is active.
 
@@ -1331,6 +1355,7 @@ bool
 		Standard_Boolean IsActive();
 
 		/****************** IsDisplayed ******************/
+		/**** md5 signature: f0a946c4c132eaa80b7a2b5b8752ab0c ****/
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", "Returns true when the grid is displayed at screen.
 
@@ -1341,6 +1366,7 @@ bool
 		virtual Standard_Boolean IsDisplayed();
 
 		/****************** Rotate ******************/
+		/**** md5 signature: ba6155601a6a3ebf5db401b4fcb0cac9 ****/
 		%feature("compactdefaultargs") Rotate;
 		%feature("autodoc", "Rotate the grid from a relative angle.
 
@@ -1355,6 +1381,7 @@ None
 		void Rotate(const Standard_Real anAngle);
 
 		/****************** RotationAngle ******************/
+		/**** md5 signature: 6c7adcb07df938548950d9bd86bc732a ****/
 		%feature("compactdefaultargs") RotationAngle;
 		%feature("autodoc", "Returns the x angle of the grid.
 
@@ -1365,6 +1392,7 @@ float
 		Standard_Real RotationAngle();
 
 		/****************** SetColors ******************/
+		/**** md5 signature: f81cf1490ceea17485c0de0269e7ec9c ****/
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "Change the colors of the grid.
 
@@ -1380,6 +1408,7 @@ None
 		virtual void SetColors(const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
 		/****************** SetDrawMode ******************/
+		/**** md5 signature: ee6037d77208349cb9a8e316a9952fc6 ****/
 		%feature("compactdefaultargs") SetDrawMode;
 		%feature("autodoc", "Change the grid aspect.
 
@@ -1394,6 +1423,7 @@ None
 		void SetDrawMode(const Aspect_GridDrawMode aDrawMode);
 
 		/****************** SetRotationAngle ******************/
+		/**** md5 signature: f85165df588b8bb105e7c1fc95c0038c ****/
 		%feature("compactdefaultargs") SetRotationAngle;
 		%feature("autodoc", "Defines the orientation of the grid.
 
@@ -1408,6 +1438,7 @@ None
 		void SetRotationAngle(const Standard_Real anAngle);
 
 		/****************** SetXOrigin ******************/
+		/**** md5 signature: 5f29e91eabd84d1fb448e2f1a42216fa ****/
 		%feature("compactdefaultargs") SetXOrigin;
 		%feature("autodoc", "Defines the x origin of the grid.
 
@@ -1422,6 +1453,7 @@ None
 		void SetXOrigin(const Standard_Real anOrigin);
 
 		/****************** SetYOrigin ******************/
+		/**** md5 signature: 8ae28e02e415aeae0cabe4ebeb845aac ****/
 		%feature("compactdefaultargs") SetYOrigin;
 		%feature("autodoc", "Defines the y origin of the grid.
 
@@ -1436,6 +1468,7 @@ None
 		void SetYOrigin(const Standard_Real anOrigin);
 
 		/****************** Translate ******************/
+		/**** md5 signature: 2c4d53c487acc4e66ea6ff494e659356 ****/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "Translate the grid from a relative distance.
 
@@ -1451,6 +1484,7 @@ None
 		void Translate(const Standard_Real aDx, const Standard_Real aDy);
 
 		/****************** XOrigin ******************/
+		/**** md5 signature: 2ca8cc35b96fb011ff973786f0ef31b1 ****/
 		%feature("compactdefaultargs") XOrigin;
 		%feature("autodoc", "Returns the x origin of the grid.
 
@@ -1461,6 +1495,7 @@ float
 		Standard_Real XOrigin();
 
 		/****************** YOrigin ******************/
+		/**** md5 signature: 7f8bdf33836dd27df5ea3c3e718919d0 ****/
 		%feature("compactdefaultargs") YOrigin;
 		%feature("autodoc", "Returns the x origin of the grid.
 
@@ -1489,6 +1524,7 @@ class Aspect_ScrollDelta {
 		float Delta;
 		Aspect_VKeyFlags Flags;
 		/****************** Aspect_ScrollDelta ******************/
+		/**** md5 signature: 0d3fcbaf34563dcd0f20bf50c1b22bc1 ****/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
 		%feature("autodoc", "Empty constructor.
 
@@ -1499,6 +1535,7 @@ None
 		 Aspect_ScrollDelta();
 
 		/****************** Aspect_ScrollDelta ******************/
+		/**** md5 signature: f8460f2fd92f69dbd6ae1c79508cf38b ****/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
 		%feature("autodoc", "Constructor.
 
@@ -1516,6 +1553,7 @@ None
 		 Aspect_ScrollDelta(const NCollection_Vec2<int> & thePnt, Standard_Real theValue, Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
 
 		/****************** Aspect_ScrollDelta ******************/
+		/**** md5 signature: 4c6a15a03d5e8065050d3ebd39119299 ****/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
 		%feature("autodoc", "Constructor with undefined point.
 
@@ -1532,6 +1570,7 @@ None
 		 Aspect_ScrollDelta(Standard_Real theValue, Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
 
 		/****************** HasPoint ******************/
+		/**** md5 signature: 314e70d3c9f0b28261d75c0c6244be38 ****/
 		%feature("compactdefaultargs") HasPoint;
 		%feature("autodoc", "Return true if action has point defined.
 
@@ -1542,6 +1581,7 @@ bool
 		bool HasPoint();
 
 		/****************** ResetPoint ******************/
+		/**** md5 signature: d4f07a32710ac608e876db8058caee64 ****/
 		%feature("compactdefaultargs") ResetPoint;
 		%feature("autodoc", "Reset at point.
 
@@ -1567,6 +1607,7 @@ class Aspect_Touch {
 	public:
 		bool IsPreciseDevice;
 		/****************** Aspect_Touch ******************/
+		/**** md5 signature: a51d1277d944673675b62a1916b1d065 ****/
 		%feature("compactdefaultargs") Aspect_Touch;
 		%feature("autodoc", "Empty constructor.
 
@@ -1577,6 +1618,7 @@ None
 		 Aspect_Touch();
 
 		/****************** Aspect_Touch ******************/
+		/**** md5 signature: f577ccd3298bca230729e387e7c8ee22 ****/
 		%feature("compactdefaultargs") Aspect_Touch;
 		%feature("autodoc", "Constructor with initialization.
 
@@ -1592,6 +1634,7 @@ None
 		 Aspect_Touch(const NCollection_Vec2<Standard_Real> & thePnt, Standard_Boolean theIsPreciseDevice);
 
 		/****************** Aspect_Touch ******************/
+		/**** md5 signature: d7a9f77f97f217469aa14c1453a5ec71 ****/
 		%feature("compactdefaultargs") Aspect_Touch;
 		%feature("autodoc", "Constructor with initialization.
 
@@ -1608,6 +1651,7 @@ None
 		 Aspect_Touch(Standard_Real theX, Standard_Real theY, Standard_Boolean theIsPreciseDevice);
 
 		/****************** Delta ******************/
+		/**** md5 signature: 633ea93d8b8f65b7d72a9eb7e3592640 ****/
 		%feature("compactdefaultargs") Delta;
 		%feature("autodoc", "Return values delta.
 
@@ -1633,6 +1677,7 @@ NCollection_Vec2<float >
 class Aspect_Window : public Standard_Transient {
 	public:
 		/****************** Background ******************/
+		/**** md5 signature: c745ba92fb6d5e6544856c59b201a620 ****/
 		%feature("compactdefaultargs") Background;
 		%feature("autodoc", "Returns the window background.
 
@@ -1643,6 +1688,7 @@ Aspect_Background
 		Aspect_Background Background();
 
 		/****************** BackgroundFillMethod ******************/
+		/**** md5 signature: 3dc602ad8e5026afe96d15088c7b9833 ****/
 		%feature("compactdefaultargs") BackgroundFillMethod;
 		%feature("autodoc", "Returns the current image background fill mode.
 
@@ -1653,6 +1699,7 @@ Aspect_FillMethod
 		Aspect_FillMethod BackgroundFillMethod();
 
 		/****************** DoMapping ******************/
+		/**** md5 signature: bccedbb13c087bbcb0fdc2dc4be5fafa ****/
 		%feature("compactdefaultargs") DoMapping;
 		%feature("autodoc", "Apply the mapping change to the window <self>. and returns true if the window is mapped at screen.
 
@@ -1663,6 +1710,7 @@ bool
 		virtual Standard_Boolean DoMapping();
 
 		/****************** DoResize ******************/
+		/**** md5 signature: 3bfba56102be8f1f57df3978a84581c9 ****/
 		%feature("compactdefaultargs") DoResize;
 		%feature("autodoc", "Apply the resizing to the window <self>.
 
@@ -1673,6 +1721,7 @@ Aspect_TypeOfResize
 		virtual Aspect_TypeOfResize DoResize();
 
 		/****************** GradientBackground ******************/
+		/**** md5 signature: d48840592ec4f12118e8b8d065c33698 ****/
 		%feature("compactdefaultargs") GradientBackground;
 		%feature("autodoc", "Returns the window gradient background.
 
@@ -1683,6 +1732,7 @@ Aspect_GradientBackground
 		Aspect_GradientBackground GradientBackground();
 
 		/****************** InvalidateContent ******************/
+		/**** md5 signature: c3842a52e192571bdc8176fffa5e2159 ****/
 		%feature("compactdefaultargs") InvalidateContent;
 		%feature("autodoc", "Invalidate entire window content. //! implementation is expected to allow calling this method from non-gui thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! optional display argument should be passed when called from non-gui thread on platforms implementing thread-unsafe connections to display. null can be passed instead otherwise.
 
@@ -1697,6 +1747,7 @@ None
 		virtual void InvalidateContent(const opencascade::handle<Aspect_DisplayConnection> & theDisp);
 
 		/****************** IsMapped ******************/
+		/**** md5 signature: 4d5cfb66280177c9e63a17b79e45005f ****/
 		%feature("compactdefaultargs") IsMapped;
 		%feature("autodoc", "Returns true if the window <self> is opened and false if the window is closed.
 
@@ -1707,6 +1758,7 @@ bool
 		virtual Standard_Boolean IsMapped();
 
 		/****************** IsVirtual ******************/
+		/**** md5 signature: 6b108b5483133abeb2e67cd521931989 ****/
 		%feature("compactdefaultargs") IsVirtual;
 		%feature("autodoc", "Returns true if the window <self> is virtual.
 
@@ -1717,6 +1769,7 @@ bool
 		Standard_Boolean IsVirtual();
 
 		/****************** Map ******************/
+		/**** md5 signature: 0e63cf65e00294792f8d62b1c43bea62 ****/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Opens the window <self>.
 
@@ -1727,6 +1780,7 @@ None
 		virtual void Map();
 
 		/****************** NativeFBConfig ******************/
+		/**** md5 signature: 4c353bf7a84ef94261f833f6d54eaa5e ****/
 		%feature("compactdefaultargs") NativeFBConfig;
 		%feature("autodoc", "Returns native window fb config (glxfbconfig on xlib).
 
@@ -1737,6 +1791,7 @@ Aspect_FBConfig
 		virtual Aspect_FBConfig NativeFBConfig();
 
 		/****************** Position ******************/
+		/**** md5 signature: 30fa6ef63eb4cfa1d4d0a6a072935a04 ****/
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "Returns the window position in pixel.
 
@@ -1753,6 +1808,7 @@ Y2: int
 		virtual void Position(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** Ratio ******************/
+		/**** md5 signature: d40ca1d2627bbb87a34e5c89b2c7db06 ****/
 		%feature("compactdefaultargs") Ratio;
 		%feature("autodoc", "Returns the window ratio equal to the physical width/height dimensions.
 
@@ -1763,6 +1819,7 @@ float
 		virtual Standard_Real Ratio();
 
 		/****************** SetBackground ******************/
+		/**** md5 signature: 1ead7ff97ae08966fe95d016244fe9b6 ****/
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "Modifies the window background.
 
@@ -1777,6 +1834,7 @@ None
 		void SetBackground(const Aspect_Background & ABack);
 
 		/****************** SetBackground ******************/
+		/**** md5 signature: d24f1efd14ab0c25fed5c82da2583a6f ****/
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "Modifies the window background.
 
@@ -1791,6 +1849,7 @@ None
 		void SetBackground(const Quantity_Color & color);
 
 		/****************** SetBackground ******************/
+		/**** md5 signature: e326ee0ef2c818116b46fe0d832b2c39 ****/
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "Modifies the window gradient background.
 
@@ -1805,6 +1864,7 @@ None
 		void SetBackground(const Aspect_GradientBackground & ABackground);
 
 		/****************** SetBackground ******************/
+		/**** md5 signature: 333d66c15042163afcf370e304fa7b6a ****/
 		%feature("compactdefaultargs") SetBackground;
 		%feature("autodoc", "Modifies the window gradient background.
 
@@ -1821,6 +1881,7 @@ None
 		void SetBackground(const Quantity_Color & theFirstColor, const Quantity_Color & theSecondColor, const Aspect_GradientFillMethod theFillMethod);
 
 		/****************** SetTitle ******************/
+		/**** md5 signature: e6432d7e27226322b8262b3f3f4d5a28 ****/
 		%feature("compactdefaultargs") SetTitle;
 		%feature("autodoc", "Sets window title.
 
@@ -1835,6 +1896,7 @@ None
 		virtual void SetTitle(const TCollection_AsciiString & theTitle);
 
 		/****************** SetVirtual ******************/
+		/**** md5 signature: f013b7099e5195f3ad8ac5f9c350083a ****/
 		%feature("compactdefaultargs") SetVirtual;
 		%feature("autodoc", "Setup the virtual state.
 
@@ -1849,6 +1911,7 @@ None
 		void SetVirtual(const Standard_Boolean theVirtual);
 
 		/****************** Size ******************/
+		/**** md5 signature: 5ff69e0e67e54ec54de4bd366eb3aa6a ****/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "Returns the window size in pixel.
 
@@ -1863,6 +1926,7 @@ Height: int
 		virtual void Size(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** Unmap ******************/
+		/**** md5 signature: 2681daf3d4beece6a894fb54cb645818 ****/
 		%feature("compactdefaultargs") Unmap;
 		%feature("autodoc", "Closes the window <self>.
 
@@ -1900,6 +1964,7 @@ None
 class Aspect_GradientBackground : public Aspect_Background {
 	public:
 		/****************** Aspect_GradientBackground ******************/
+		/**** md5 signature: 2a3b12e3984621a36868307403d00696 ****/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
 		%feature("autodoc", "Creates a window gradient background. default colors : quantity_noc_black. default fill method : aspect_gfm_none.
 
@@ -1910,6 +1975,7 @@ None
 		 Aspect_GradientBackground();
 
 		/****************** Aspect_GradientBackground ******************/
+		/**** md5 signature: a6f68c9f1a0e9cb605f0a1cfca9bada3 ****/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
 		%feature("autodoc", "Creates a window gradient background with colours <acolor1, acolor2>.
 
@@ -1927,6 +1993,7 @@ None
 		 Aspect_GradientBackground(const Quantity_Color & AColor1, const Quantity_Color & AColor2, const Aspect_GradientFillMethod AMethod = Aspect_GFM_HOR);
 
 		/****************** BgGradientFillMethod ******************/
+		/**** md5 signature: 7ed50907542306114d5e90acbea724cc ****/
 		%feature("compactdefaultargs") BgGradientFillMethod;
 		%feature("autodoc", "Returns the current gradient background fill mode.
 
@@ -1937,6 +2004,7 @@ Aspect_GradientFillMethod
 		Aspect_GradientFillMethod BgGradientFillMethod();
 
 		/****************** Colors ******************/
+		/**** md5 signature: 1f444dae8ef6192a952d97253320da63 ****/
 		%feature("compactdefaultargs") Colors;
 		%feature("autodoc", "Returns colours of the window gradient background <self>.
 
@@ -1952,6 +2020,7 @@ None
 		void Colors(Quantity_Color & AColor1, Quantity_Color & AColor2);
 
 		/****************** SetColors ******************/
+		/**** md5 signature: e9d1a160fb9ca8b15bcaf9ca8e97b5f0 ****/
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "Modifies the colours of the window gradient background <self>.
 

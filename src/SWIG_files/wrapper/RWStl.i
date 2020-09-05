@@ -85,6 +85,7 @@ from OCC.Core.Exception import *
 class RWStl {
 	public:
 		/****************** ReadAscii ******************/
+		/**** md5 signature: ee11f0bf8131771a8fb08fc5e104edad ****/
 		%feature("compactdefaultargs") ReadAscii;
 		%feature("autodoc", "Read triangulation from an ascii stl file in case of error, returns null handle.
 
@@ -101,6 +102,7 @@ opencascade::handle<Poly_Triangulation>
 		static opencascade::handle<Poly_Triangulation> ReadAscii(const OSD_Path & thePath, const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
 
 		/****************** ReadBinary ******************/
+		/**** md5 signature: 866da70f30bdaac89e98426c73d2e6ac ****/
 		%feature("compactdefaultargs") ReadBinary;
 		%feature("autodoc", "Read triangulation from a binary stl file in case of error, returns null handle.
 
@@ -117,6 +119,7 @@ opencascade::handle<Poly_Triangulation>
 		static opencascade::handle<Poly_Triangulation> ReadBinary(const OSD_Path & thePath, const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
 
 		/****************** ReadFile ******************/
+		/**** md5 signature: 293310934284db880032507aba06aa6e ****/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "Read specified stl file and returns its content as triangulation. in case of error, returns null handle.
 
@@ -133,6 +136,7 @@ opencascade::handle<Poly_Triangulation>
 		static opencascade::handle<Poly_Triangulation> ReadFile(const OSD_Path & theFile, const opencascade::handle<Message_ProgressIndicator> & aProgInd = opencascade::handle<Message_ProgressIndicator>());
 
 		/****************** ReadFile ******************/
+		/**** md5 signature: 15a5b5614d960e1512f0f7cb77b371ef ****/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "Read specified stl file and returns its content as triangulation. in case of error, returns null handle.
 
@@ -149,6 +153,7 @@ opencascade::handle<Poly_Triangulation>
 		static opencascade::handle<Poly_Triangulation> ReadFile(const char * theFile, const opencascade::handle<Message_ProgressIndicator> & aProgInd = opencascade::handle<Message_ProgressIndicator>());
 
 		/****************** WriteAscii ******************/
+		/**** md5 signature: 4e074416d39d5ad0261bcbf2e8663b50 ****/
 		%feature("compactdefaultargs") WriteAscii;
 		%feature("autodoc", "Write the meshing in a file following the ascii format of an stl file. returns false if the cannot be opened;.
 
@@ -166,6 +171,7 @@ bool
 		static Standard_Boolean WriteAscii(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const opencascade::handle<Message_ProgressIndicator> & theProgInd = opencascade::handle<Message_ProgressIndicator>());
 
 		/****************** WriteBinary ******************/
+		/**** md5 signature: c16756be3ac5eccd7cb2b9a471cb70ac ****/
 		%feature("compactdefaultargs") WriteBinary;
 		%feature("autodoc", "Write triangulation to binary stl file. binary format of an stl file. returns false if the cannot be opened;.
 

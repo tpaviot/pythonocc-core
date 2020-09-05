@@ -97,6 +97,7 @@ from OCC.Core.Exception import *
 class XmlMNaming {
 	public:
 		/****************** AddDrivers ******************/
+		/**** md5 signature: e8cbd68e09b8e62468cffcea900d0dd2 ****/
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "Adds the attribute drivers to <adrivertable>.
 
@@ -126,6 +127,7 @@ None
 class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 	public:
 		/****************** XmlMNaming_NamedShapeDriver ******************/
+		/**** md5 signature: eb360ba0141d9e6480529612664e3297 ****/
 		%feature("compactdefaultargs") XmlMNaming_NamedShapeDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -140,6 +142,7 @@ None
 		 XmlMNaming_NamedShapeDriver(const opencascade::handle<Message_Messenger> & aMessageDriver);
 
 		/****************** Clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clear myshapeset.
 
@@ -150,6 +153,7 @@ None
 		void Clear();
 
 		/****************** GetShapesLocations ******************/
+		/**** md5 signature: 822d6ca7fbf300e31ea29679fc02745e ****/
 		%feature("compactdefaultargs") GetShapesLocations;
 		%feature("autodoc", "Get the format of topology.
 
@@ -160,6 +164,7 @@ TopTools_LocationSet
 		TopTools_LocationSet & GetShapesLocations();
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -170,6 +175,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 175da9d64d03984ff0a1e9404e96e330 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -186,6 +192,7 @@ bool
 		virtual Standard_Boolean Paste(const XmlObjMgt_Persistent & theSource, const opencascade::handle<TDF_Attribute> & theTarget, XmlObjMgt_RRelocationTable & theRelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 9c9a6281aaafe1c72d86f4bb8a4e351c ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -202,6 +209,7 @@ None
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & theSource, XmlObjMgt_Persistent & theTarget, XmlObjMgt_SRelocationTable & theRelocTable);
 
 		/****************** ReadShapeSection ******************/
+		/**** md5 signature: bd887c21c2ef6e34d0ed00ee3f6cdf1a ****/
 		%feature("compactdefaultargs") ReadShapeSection;
 		%feature("autodoc", "Input the shapes from dom element.
 
@@ -216,6 +224,7 @@ None
 		void ReadShapeSection(const XmlObjMgt_Element & anElement);
 
 		/****************** WriteShapeSection ******************/
+		/**** md5 signature: aee556aa2c4d33725fc493906f65ddda ****/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "Output the shapes into dom element.
 
@@ -246,6 +255,7 @@ None
 class XmlMNaming_NamingDriver : public XmlMDF_ADriver {
 	public:
 		/****************** XmlMNaming_NamingDriver ******************/
+		/**** md5 signature: 1795c8a38adf3a7a18e075fe33dc960c ****/
 		%feature("compactdefaultargs") XmlMNaming_NamingDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -260,6 +270,7 @@ None
 		 XmlMNaming_NamingDriver(const opencascade::handle<Message_Messenger> & aMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -270,6 +281,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 031c6cb06a428765ac4d078be7d14cf9 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -286,6 +298,7 @@ bool
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & theSource, const opencascade::handle<TDF_Attribute> & theTarget, XmlObjMgt_RRelocationTable & theRelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: f2623a6490ed13129844514bdeadf8d1 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -318,6 +331,7 @@ None
 class XmlMNaming_Shape1 {
 	public:
 		/****************** XmlMNaming_Shape1 ******************/
+		/**** md5 signature: a65cd736b18e5ede9dfb57d185742e54 ****/
 		%feature("compactdefaultargs") XmlMNaming_Shape1;
 		%feature("autodoc", "No available documentation.
 
@@ -332,6 +346,7 @@ None
 		 XmlMNaming_Shape1(XmlObjMgt_Document & Doc);
 
 		/****************** XmlMNaming_Shape1 ******************/
+		/**** md5 signature: 3e71a1e34dcdefa49528b808f520b575 ****/
 		%feature("compactdefaultargs") XmlMNaming_Shape1;
 		%feature("autodoc", "No available documentation.
 
@@ -346,6 +361,7 @@ None
 		 XmlMNaming_Shape1(const XmlObjMgt_Element & E);
 
 		/****************** Element ******************/
+		/**** md5 signature: b048e740461d546184db9889ca335c27 ****/
 		%feature("compactdefaultargs") Element;
 		%feature("autodoc", "Return myelement.
 
@@ -356,6 +372,7 @@ XmlObjMgt_Element
 		const XmlObjMgt_Element & Element();
 
 		/****************** Element ******************/
+		/**** md5 signature: cda4b976f272db0cf7f309190b0cde07 ****/
 		%feature("compactdefaultargs") Element;
 		%feature("autodoc", "Return myelement.
 
@@ -366,6 +383,7 @@ XmlObjMgt_Element
 		XmlObjMgt_Element & Element();
 
 		/****************** LocId ******************/
+		/**** md5 signature: 53e3e499ef70d321e21aedbf55e51520 ****/
 		%feature("compactdefaultargs") LocId;
 		%feature("autodoc", "No available documentation.
 
@@ -376,6 +394,7 @@ int
 		Standard_Integer LocId();
 
 		/****************** Orientation ******************/
+		/**** md5 signature: 328242fe19b1f80489d8169681ebc029 ****/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "No available documentation.
 
@@ -386,6 +405,7 @@ TopAbs_Orientation
 		TopAbs_Orientation Orientation();
 
 		/****************** SetShape ******************/
+		/**** md5 signature: 56b77bc4968b59430da809fe1b3fd0eb ****/
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "No available documentation.
 
@@ -402,6 +422,7 @@ None
 		void SetShape(const Standard_Integer ID, const Standard_Integer LocID, const TopAbs_Orientation Orient);
 
 		/****************** SetVertex ******************/
+		/**** md5 signature: 2a04083159eea9de2121be2b885c7c20 ****/
 		%feature("compactdefaultargs") SetVertex;
 		%feature("autodoc", "No available documentation.
 
@@ -416,6 +437,7 @@ None
 		void SetVertex(const TopoDS_Shape & theVertex);
 
 		/****************** TShapeId ******************/
+		/**** md5 signature: ebfc1170e9714dfa7b02dd5c04120318 ****/
 		%feature("compactdefaultargs") TShapeId;
 		%feature("autodoc", "No available documentation.
 

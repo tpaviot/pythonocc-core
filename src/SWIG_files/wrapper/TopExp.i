@@ -87,6 +87,7 @@ typedef TopoDS_Iterator * TopExp_Stack;
 class TopExp {
 	public:
 		/****************** CommonVertex ******************/
+		/**** md5 signature: 988ba28b6b8eed9cf889373017dc105e ****/
 		%feature("compactdefaultargs") CommonVertex;
 		%feature("autodoc", "Finds the vertex <v> common to the two edges <e1,e2>, returns true if this vertex exists. //! warning: <v> has sense only if the value <true> is returned.
 
@@ -103,6 +104,7 @@ bool
 		static Standard_Boolean CommonVertex(const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopoDS_Vertex & V);
 
 		/****************** FirstVertex ******************/
+		/**** md5 signature: 1e3a778db1d24724585ef762df35b8da ****/
 		%feature("compactdefaultargs") FirstVertex;
 		%feature("autodoc", "Returns the vertex of orientation forward in e. if there is none returns a null shape. cumori = true : taking account the edge orientation.
 
@@ -119,6 +121,7 @@ TopoDS_Vertex
 		static TopoDS_Vertex FirstVertex(const TopoDS_Edge & E, const Standard_Boolean CumOri = Standard_False);
 
 		/****************** LastVertex ******************/
+		/**** md5 signature: 04fb60a9260731d34a4cd1067f86b9c3 ****/
 		%feature("compactdefaultargs") LastVertex;
 		%feature("autodoc", "Returns the vertex of orientation reversed in e. if there is none returns a null shape. cumori = true : taking account the edge orientation.
 
@@ -135,6 +138,7 @@ TopoDS_Vertex
 		static TopoDS_Vertex LastVertex(const TopoDS_Edge & E, const Standard_Boolean CumOri = Standard_False);
 
 		/****************** MapShapes ******************/
+		/**** md5 signature: 60bc2b4e0c9273357852c8e9beffdff3 ****/
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "Tool to explore a topological data structure. stores in the map <m> all the sub-shapes of <s> of type <t>. //! warning: the map is not cleared at first.
 
@@ -151,6 +155,7 @@ None
 		static void MapShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, TopTools_IndexedMapOfShape & M);
 
 		/****************** MapShapes ******************/
+		/**** md5 signature: 94f7d823ed41941f39e632a563df0e48 ****/
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "Stores in the map <m> all the sub-shapes of <s>.
 
@@ -166,6 +171,7 @@ None
 		static void MapShapes(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M);
 
 		/****************** MapShapes ******************/
+		/**** md5 signature: 9dc648d2173c121ef4f4177538e54c8f ****/
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "Stores in the map <m> all the sub-shapes of <s>.
 
@@ -181,6 +187,7 @@ None
 		static void MapShapes(const TopoDS_Shape & S, TopTools_MapOfShape & M);
 
 		/****************** MapShapesAndAncestors ******************/
+		/**** md5 signature: fc7e7494ab1de4025c967815075492e6 ****/
 		%feature("compactdefaultargs") MapShapesAndAncestors;
 		%feature("autodoc", "Stores in the map <m> all the subshape of <s> of type <ts> for each one append to the list all the ancestors of type <ta>. for example map all the edges and bind the list of faces. warning: the map is not cleared at first.
 
@@ -198,6 +205,7 @@ None
 		static void MapShapesAndAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M);
 
 		/****************** MapShapesAndUniqueAncestors ******************/
+		/**** md5 signature: f94b9653fca47c3f0b754b8acac0dde2 ****/
 		%feature("compactdefaultargs") MapShapesAndUniqueAncestors;
 		%feature("autodoc", "Stores in the map <m> all the subshape of <s> of type <ts> for each one append to the list all unique ancestors of type <ta>. for example map all the edges and bind the list of faces. useorientation = true : taking account the ancestor orientation warning: the map is not cleared at first.
 
@@ -217,6 +225,7 @@ None
 		static void MapShapesAndUniqueAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M, const Standard_Boolean useOrientation = Standard_False);
 
 		/****************** Vertices ******************/
+		/**** md5 signature: a72e80c884bcaa3dda22157f5840ea7b ****/
 		%feature("compactdefaultargs") Vertices;
 		%feature("autodoc", "Returns in vfirst, vlast the forward and reversed vertices of the edge <e>. may be null shapes. cumori = true : taking account the edge orientation.
 
@@ -235,6 +244,7 @@ None
 		static void Vertices(const TopoDS_Edge & E, TopoDS_Vertex & Vfirst, TopoDS_Vertex & Vlast, const Standard_Boolean CumOri = Standard_False);
 
 		/****************** Vertices ******************/
+		/**** md5 signature: 859807e2bbe069634fa97df162545baa ****/
 		%feature("compactdefaultargs") Vertices;
 		%feature("autodoc", "Returns in vfirst, vlast the first and last vertices of the open wire <w>. may be null shapes. if <w> is closed vfirst and vlast are a same vertex on <w>. if <w> is no manifold. vfirst and vlast are null shapes.
 
@@ -265,6 +275,7 @@ None
 class TopExp_Explorer {
 	public:
 		/****************** TopExp_Explorer ******************/
+		/**** md5 signature: 114ebc7b26413ef0fdc8ef82c2742207 ****/
 		%feature("compactdefaultargs") TopExp_Explorer;
 		%feature("autodoc", "Creates an empty explorer, becomes usefull after init.
 
@@ -275,6 +286,7 @@ None
 		 TopExp_Explorer();
 
 		/****************** TopExp_Explorer ******************/
+		/**** md5 signature: 589f01dcb817bc2e0b8d8c5724883ba7 ****/
 		%feature("compactdefaultargs") TopExp_Explorer;
 		%feature("autodoc", "Creates an explorer on the shape <s>. //! <tofind> is the type of shapes to search. topabs_vertex, topabs_edge, ... //! <toavoid> is the type of shape to skip in the exploration. if <toavoid> is equal or less complex than <tofind> or if <toavoid> is shape it has no effect on the exploration.
 
@@ -292,6 +304,7 @@ None
 		 TopExp_Explorer(const TopoDS_Shape & S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
 
 		/****************** Clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clears the content of the explorer. it will return false on more().
 
@@ -302,6 +315,7 @@ None
 		void Clear();
 
 		/****************** Current ******************/
+		/**** md5 signature: b191bf677bf7b52144f20d0821ea8f06 ****/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Returns the current shape in the exploration. exceptions standard_nosuchobject if this explorer has no more shapes to explore.
 
@@ -312,6 +326,7 @@ TopoDS_Shape
 		const TopoDS_Shape Current();
 
 		/****************** Depth ******************/
+		/**** md5 signature: b6eaa771d2fe709741b9c1e8ce5ec68f ****/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Returns the current depth of the exploration. 0 is the shape to explore itself.
 
@@ -322,6 +337,7 @@ int
 		Standard_Integer Depth();
 
 		/****************** Destroy ******************/
+		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "No available documentation.
 
@@ -332,6 +348,7 @@ None
 		void Destroy();
 
 		/****************** Init ******************/
+		/**** md5 signature: 4f638c73ea412faa633dc32890a0e8ef ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Resets this explorer on the shape s. it is initialized to search the shape s, for shapes of type tofind, that are not part of a shape toavoid. if the shape toavoid is equal to topabs_shape, or if it is the same as, or less complex than, the shape tofind it has no effect on the search.
 
@@ -349,6 +366,7 @@ None
 		void Init(const TopoDS_Shape & S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
 
 		/****************** More ******************/
+		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Returns true if there are more shapes in the exploration.
 
@@ -359,6 +377,7 @@ bool
 		Standard_Boolean More();
 
 		/****************** Next ******************/
+		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Moves to the next shape in the exploration. exceptions standard_nomoreobject if there are no more shapes to explore.
 
@@ -369,6 +388,7 @@ None
 		void Next();
 
 		/****************** ReInit ******************/
+		/**** md5 signature: fcda78d8b1268862e93fbb2cf6a2a652 ****/
 		%feature("compactdefaultargs") ReInit;
 		%feature("autodoc", "Reinitialize the exploration with the original arguments.
 
@@ -379,6 +399,7 @@ None
 		void ReInit();
 
 		/****************** Value ******************/
+		/**** md5 signature: ebbff234a3094c505e960926e0773ed1 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Returns the current shape in the exploration. exceptions standard_nosuchobject if this explorer has no more shapes to explore.
 

@@ -119,6 +119,7 @@ class BVH_AxisSelector<T,2> {
 	public:
 typedef typename BVH ::VectorType<T , 2>::Type BVH_VecNt;
 		/****************** MainAxis ******************/
+		/**** md5 signature: 3eeb73485373349ee6e5770c410c7405 ****/
 		%feature("compactdefaultargs") MainAxis;
 		%feature("autodoc", "No available documentation.
 
@@ -349,6 +350,7 @@ class BVH_Tree<T,N,BVH_BinaryTree> : public BVH_TreeBase<T,N> {
 	public:
 typedef typename BVH_TreeBase<T , N>::BVH_VecNt BVH_VecNt;
 		/****************** BVH_Tree ******************/
+		/**** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ****/
 		%feature("compactdefaultargs") BVH_Tree;
 		%feature("autodoc", "Creates new empty bvh tree.
 
@@ -359,6 +361,7 @@ None
 		 BVH_Tree();
 
 		/****************** AddInnerNode ******************/
+		/**** md5 signature: f58328730bdea31b9795074762e2ff33 ****/
 		%feature("compactdefaultargs") AddInnerNode;
 		%feature("autodoc", "Adds new inner node to the bvh.
 
@@ -376,6 +379,7 @@ int
 		int AddInnerNode(const BVH_VecNt & theMinPoint, const BVH_VecNt & theMaxPoint, const int theLftChild, const int theRghChild);
 
 		/****************** AddInnerNode ******************/
+		/**** md5 signature: 5f6cb26dae5b038c2e68cab73611154e ****/
 		%feature("compactdefaultargs") AddInnerNode;
 		%feature("autodoc", "Adds new inner node to the bvh.
 
@@ -392,6 +396,7 @@ int
 		int AddInnerNode(const BVH_Box<T, N> & theAABB, const int theLftChild, const int theRghChild);
 
 		/****************** AddInnerNode ******************/
+		/**** md5 signature: 7349e9c4c6e6de36606d9ec9f409a423 ****/
 		%feature("compactdefaultargs") AddInnerNode;
 		%feature("autodoc", "Adds new inner node to the bvh with uninitialized bounds.
 
@@ -407,6 +412,7 @@ int
 		int AddInnerNode(const int theLftChild, const int theRghChild);
 
 		/****************** AddLeafNode ******************/
+		/**** md5 signature: 0cd89637e7eea803e0a24110ae682988 ****/
 		%feature("compactdefaultargs") AddLeafNode;
 		%feature("autodoc", "Adds new leaf node to the bvh.
 
@@ -424,6 +430,7 @@ int
 		int AddLeafNode(const BVH_VecNt & theMinPoint, const BVH_VecNt & theMaxPoint, const int theBegElem, const int theEndElem);
 
 		/****************** AddLeafNode ******************/
+		/**** md5 signature: 5fe9f2fb528719ca7bfb42a304e784f8 ****/
 		%feature("compactdefaultargs") AddLeafNode;
 		%feature("autodoc", "Adds new leaf node to the bvh.
 
@@ -440,6 +447,7 @@ int
 		int AddLeafNode(const BVH_Box<T, N> & theAABB, const int theBegElem, const int theEndElem);
 
 		/****************** AddLeafNode ******************/
+		/**** md5 signature: 0b15c5077d62fd3e3e631a06cb249fdb ****/
 		%feature("compactdefaultargs") AddLeafNode;
 		%feature("autodoc", "Adds new leaf node to the bvh with uninitialized bounds.
 
@@ -455,6 +463,7 @@ int
 		int AddLeafNode(const int theBegElem, const int theEndElem);
 
 		/****************** Clear ******************/
+		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Removes all nodes from the tree.
 
@@ -465,6 +474,7 @@ None
 		void Clear();
 
 		/****************** CollapseToQuadTree ******************/
+		/**** md5 signature: 26af2d95ff6621c0dd1347a8eddea988 ****/
 		%feature("compactdefaultargs") CollapseToQuadTree;
 		%feature("autodoc", "Collapses the tree into qbvh an returns it. as a result, each 2-nd level of current tree is kept and the rest are discarded.
 
@@ -475,6 +485,7 @@ BVH_Tree<T, N, BVH_QuadTree> *
 		BVH_Tree<T, N, BVH_QuadTree> * CollapseToQuadTree();
 
 		/****************** EstimateSAH ******************/
+		/**** md5 signature: 3b150e7f34a26485a48f784b21aaf6ef ****/
 		%feature("compactdefaultargs") EstimateSAH;
 		%feature("autodoc", "Returns value of sah (surface area heuristic). allows to compare the quality of bvh trees constructed for the same sets of geometric objects with different methods.
 
@@ -485,6 +496,7 @@ T
 		T EstimateSAH();
 
 		/****************** Reserve ******************/
+		/**** md5 signature: 19d96c51c8d28b94e8cf4c818e3f894e ****/
 		%feature("compactdefaultargs") Reserve;
 		%feature("autodoc", "Reserves internal bvh storage, so that it can contain the given number of bvh nodes.
 
@@ -499,6 +511,7 @@ None
 		void Reserve(const int theNbNodes);
 
 		/****************** SetInner ******************/
+		/**** md5 signature: e211f149b4289ac87e5ce7758471a95a ****/
 		%feature("compactdefaultargs") SetInner;
 		%feature("autodoc", "Sets node type to 'inner'.
 
@@ -513,6 +526,7 @@ None
 		void SetInner(const int theNodeIndex);
 
 		/****************** SetOuter ******************/
+		/**** md5 signature: 17ac31f632333f17c9c7c88deadd549f ****/
 		%feature("compactdefaultargs") SetOuter;
 		%feature("autodoc", "Sets node type to 'outer'.
 
@@ -541,6 +555,7 @@ None
 class BVH_Tree<T,N,BVH_QuadTree> : public BVH_TreeBase<T,N> {
 	public:
 		/****************** BVH_Tree ******************/
+		/**** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ****/
 		%feature("compactdefaultargs") BVH_Tree;
 		%feature("autodoc", "Creates new empty bvh tree.
 

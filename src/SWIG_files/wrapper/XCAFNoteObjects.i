@@ -83,6 +83,7 @@ from OCC.Core.Exception import *
 class XCAFNoteObjects_NoteObject : public Standard_Transient {
 	public:
 		/****************** XCAFNoteObjects_NoteObject ******************/
+		/**** md5 signature: 357f3a705f8cd028a73286f89bb8e6f5 ****/
 		%feature("compactdefaultargs") XCAFNoteObjects_NoteObject;
 		%feature("autodoc", "Empty object.
 
@@ -93,6 +94,7 @@ None
 		 XCAFNoteObjects_NoteObject();
 
 		/****************** XCAFNoteObjects_NoteObject ******************/
+		/**** md5 signature: 1e85291b29eafb63444f490fe4fb2ff8 ****/
 		%feature("compactdefaultargs") XCAFNoteObjects_NoteObject;
 		%feature("autodoc", "Copy constructor.
 
@@ -107,6 +109,7 @@ None
 		 XCAFNoteObjects_NoteObject(const opencascade::handle<XCAFNoteObjects_NoteObject> & theObj);
 
 		/****************** GetPlane ******************/
+		/**** md5 signature: 236cce5d8f8ab5feac0e3f6311bd05f0 ****/
 		%feature("compactdefaultargs") GetPlane;
 		%feature("autodoc", "Returns a right-handed coordinate system of the plane.
 
@@ -117,6 +120,7 @@ gp_Ax2
 		const gp_Ax2 GetPlane();
 
 		/****************** GetPoint ******************/
+		/**** md5 signature: 75bde715a8ee43e7500d44b575591a80 ****/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", "Returns the attachment point on the annotated object.
 
@@ -127,6 +131,7 @@ gp_Pnt
 		const gp_Pnt GetPoint();
 
 		/****************** GetPointText ******************/
+		/**** md5 signature: 06c6e417556426891d63389a3d4f891d ****/
 		%feature("compactdefaultargs") GetPointText;
 		%feature("autodoc", "Returns the text position.
 
@@ -137,6 +142,7 @@ gp_Pnt
 		const gp_Pnt GetPointText();
 
 		/****************** GetPresentation ******************/
+		/**** md5 signature: bbc5f4d37a92b27b1fad241f99fa7409 ****/
 		%feature("compactdefaultargs") GetPresentation;
 		%feature("autodoc", "Returns a tesselated annotation if specified.
 
@@ -147,6 +153,7 @@ TopoDS_Shape
 		const TopoDS_Shape GetPresentation();
 
 		/****************** HasPlane ******************/
+		/**** md5 signature: 7cf03566771455c19f444d8a2236d65d ****/
 		%feature("compactdefaultargs") HasPlane;
 		%feature("autodoc", "Returns true if plane is specified.
 
@@ -157,6 +164,7 @@ bool
 		Standard_Boolean HasPlane();
 
 		/****************** HasPoint ******************/
+		/**** md5 signature: 8de3c013a7c1611c02e38dffb22d1c6b ****/
 		%feature("compactdefaultargs") HasPoint;
 		%feature("autodoc", "Returns true if the attachment point on the annotated object is specified.
 
@@ -167,6 +175,7 @@ bool
 		Standard_Boolean HasPoint();
 
 		/****************** HasPointText ******************/
+		/**** md5 signature: 0bf2ec86538f2cbb875c1c0a8313563e ****/
 		%feature("compactdefaultargs") HasPointText;
 		%feature("autodoc", "Returns true if the text position is specified.
 
@@ -177,6 +186,7 @@ bool
 		Standard_Boolean HasPointText();
 
 		/****************** Reset ******************/
+		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "Resets data to the state after calling the default constructor.
 
@@ -187,6 +197,7 @@ None
 		void Reset();
 
 		/****************** SetPlane ******************/
+		/**** md5 signature: eec35fdff3dc3078c0c5502bd3e3fc6e ****/
 		%feature("compactdefaultargs") SetPlane;
 		%feature("autodoc", "Sets a right-handed coordinate system of the plane.
 
@@ -201,6 +212,7 @@ None
 		void SetPlane(const gp_Ax2 & thePlane);
 
 		/****************** SetPoint ******************/
+		/**** md5 signature: 29b33efc7a75a6b104a8306bb1983089 ****/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "Sets the anchor point on the annotated object.
 
@@ -215,6 +227,7 @@ None
 		void SetPoint(const gp_Pnt & thePnt);
 
 		/****************** SetPointText ******************/
+		/**** md5 signature: a0c6d16a6d2d423f3f567284b4d931b2 ****/
 		%feature("compactdefaultargs") SetPointText;
 		%feature("autodoc", "Sets the text position.
 
@@ -229,6 +242,7 @@ None
 		void SetPointText(const gp_Pnt & thePnt);
 
 		/****************** SetPresentation ******************/
+		/**** md5 signature: a7d37bb77417d96a9ced3154dcaff279 ****/
 		%feature("compactdefaultargs") SetPresentation;
 		%feature("autodoc", "Sets a tesselated annotation.
 

@@ -82,6 +82,7 @@ from OCC.Core.Exception import *
 class IntImpParGen {
 	public:
 		/****************** DeterminePosition ******************/
+		/**** md5 signature: 2311389a4097b825249812f448715aba ****/
 		%feature("compactdefaultargs") DeterminePosition;
 		%feature("autodoc", "No available documentation.
 
@@ -99,6 +100,7 @@ None
 		static void DeterminePosition(IntRes2d_Position & Pos1, const IntRes2d_Domain & Dom1, const gp_Pnt2d & P1, const Standard_Real Tol);
 
 		/****************** DetermineTransition ******************/
+		/**** md5 signature: e1ccc20a7d6725566e0bdbf35ac12b3c ****/
 		%feature("compactdefaultargs") DetermineTransition;
 		%feature("autodoc", "Template class for an implicit curve. math function, instantiated inside the intersector. tool used by the package intcurve and intimppargen.
 
@@ -121,6 +123,7 @@ None
 		static void DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, const gp_Vec2d & Norm1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, const gp_Vec2d & Norm2, IntRes2d_Transition & Trans2, const Standard_Real Tol);
 
 		/****************** DetermineTransition ******************/
+		/**** md5 signature: 750da560212e082031f278352e1006f5 ****/
 		%feature("compactdefaultargs") DetermineTransition;
 		%feature("autodoc", "No available documentation.
 
@@ -141,6 +144,7 @@ bool
 		static Standard_Boolean DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, IntRes2d_Transition & Trans2, const Standard_Real Tol);
 
 		/****************** NormalizeOnDomain ******************/
+		/**** md5 signature: 49d232da43b9807ba00746a6d2513277 ****/
 		%feature("compactdefaultargs") NormalizeOnDomain;
 		%feature("autodoc", "No available documentation.
 

@@ -82,6 +82,7 @@ from OCC.Core.Exception import *
 class AppBlend_Approx {
 	public:
 		/****************** Curve2d ******************/
+		/**** md5 signature: 6ef1d581e8883ca21d640959b427812e ****/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "No available documentation.
 
@@ -99,6 +100,7 @@ None
 		virtual void Curve2d(const Standard_Integer Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
 		/****************** Curve2dPoles ******************/
+		/**** md5 signature: 21b8c37cf290ddbf86d8741351d65e6f ****/
 		%feature("compactdefaultargs") Curve2dPoles;
 		%feature("autodoc", "No available documentation.
 
@@ -113,6 +115,7 @@ TColgp_Array1OfPnt2d
 		virtual const TColgp_Array1OfPnt2d & Curve2dPoles(const Standard_Integer Index);
 
 		/****************** Curves2dDegree ******************/
+		/**** md5 signature: 4509acc411fdc27018b295deca2cb8c4 ****/
 		%feature("compactdefaultargs") Curves2dDegree;
 		%feature("autodoc", "No available documentation.
 
@@ -123,6 +126,7 @@ int
 		virtual Standard_Integer Curves2dDegree();
 
 		/****************** Curves2dKnots ******************/
+		/**** md5 signature: 1fce4ab4de82998f2a2d9c8deabc481d ****/
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "No available documentation.
 
@@ -133,6 +137,7 @@ TColStd_Array1OfReal
 		virtual const TColStd_Array1OfReal & Curves2dKnots();
 
 		/****************** Curves2dMults ******************/
+		/**** md5 signature: 74370fb1d6aa282da8696027e9fc8b1a ****/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "No available documentation.
 
@@ -143,6 +148,7 @@ TColStd_Array1OfInteger
 		virtual const TColStd_Array1OfInteger & Curves2dMults();
 
 		/****************** Curves2dShape ******************/
+		/**** md5 signature: f9f7c23cba49fa5b9e086d4d285a1ea8 ****/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", "No available documentation.
 
@@ -158,6 +164,7 @@ NbKnots: int
 		virtual void Curves2dShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** IsDone ******************/
+		/**** md5 signature: 36fb91162f1629bd3590f9505ad76527 ****/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "No available documentation.
 
@@ -168,6 +175,7 @@ bool
 		virtual Standard_Boolean IsDone();
 
 		/****************** NbCurves2d ******************/
+		/**** md5 signature: b464512c5d6604037088136e2a46084c ****/
 		%feature("compactdefaultargs") NbCurves2d;
 		%feature("autodoc", "No available documentation.
 
@@ -178,6 +186,7 @@ int
 		virtual Standard_Integer NbCurves2d();
 
 		/****************** SurfPoles ******************/
+		/**** md5 signature: 3feda0b0926d82c7983d7133a272d10e ****/
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "No available documentation.
 
@@ -188,6 +197,7 @@ TColgp_Array2OfPnt
 		virtual const TColgp_Array2OfPnt & SurfPoles();
 
 		/****************** SurfShape ******************/
+		/**** md5 signature: 0c93f2a9040da0496a6f04a40b0a1a26 ****/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", "No available documentation.
 
@@ -206,6 +216,7 @@ NbVKnots: int
 		virtual void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** SurfUKnots ******************/
+		/**** md5 signature: 91644c8d2b15417aea0d1b6f71d5fd9d ****/
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "No available documentation.
 
@@ -216,6 +227,7 @@ TColStd_Array1OfReal
 		virtual const TColStd_Array1OfReal & SurfUKnots();
 
 		/****************** SurfUMults ******************/
+		/**** md5 signature: b004082cbd8fd147e3c9ac946a6ce77c ****/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "No available documentation.
 
@@ -226,6 +238,7 @@ TColStd_Array1OfInteger
 		virtual const TColStd_Array1OfInteger & SurfUMults();
 
 		/****************** SurfVKnots ******************/
+		/**** md5 signature: d94937812d05e1a5a45d49af1046f23a ****/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "No available documentation.
 
@@ -236,6 +249,7 @@ TColStd_Array1OfReal
 		virtual const TColStd_Array1OfReal & SurfVKnots();
 
 		/****************** SurfVMults ******************/
+		/**** md5 signature: e3026c1f9e4d8ad28f9b02514bcb563b ****/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "No available documentation.
 
@@ -246,6 +260,7 @@ TColStd_Array1OfInteger
 		virtual const TColStd_Array1OfInteger & SurfVMults();
 
 		/****************** SurfWeights ******************/
+		/**** md5 signature: 0094429327b3e1793b1574a1c3f24891 ****/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "No available documentation.
 
@@ -256,6 +271,7 @@ TColStd_Array2OfReal
 		virtual const TColStd_Array2OfReal & SurfWeights();
 
 		/****************** Surface ******************/
+		/**** md5 signature: 3dc7a47afa12113df713d63f693e8a9c ****/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "No available documentation.
 
@@ -275,6 +291,7 @@ None
 		virtual void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
 		/****************** TolCurveOnSurf ******************/
+		/**** md5 signature: 77dc1cab6bb65cb31b29453e222cda0d ****/
 		%feature("compactdefaultargs") TolCurveOnSurf;
 		%feature("autodoc", "No available documentation.
 
@@ -289,6 +306,7 @@ float
 		virtual Standard_Real TolCurveOnSurf(const Standard_Integer Index);
 
 		/****************** TolReached ******************/
+		/**** md5 signature: 5e9aae13c8bbf85f458ef90b551aedd6 ****/
 		%feature("compactdefaultargs") TolReached;
 		%feature("autodoc", "No available documentation.
 
@@ -303,6 +321,7 @@ Tol2d: float
 		virtual void TolReached(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** UDegree ******************/
+		/**** md5 signature: 99251021d46ac57c1f99021acfd6c37a ****/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "No available documentation.
 
@@ -313,6 +332,7 @@ int
 		virtual Standard_Integer UDegree();
 
 		/****************** VDegree ******************/
+		/**** md5 signature: 392167bc1e0a7022cba57acab5609126 ****/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "No available documentation.
 
