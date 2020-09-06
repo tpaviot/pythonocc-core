@@ -4345,10 +4345,6 @@ GccEnt_Position
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
-class Geom2dGcc_FuncTCuCuCuOfMyC2d3Tan:
-	pass
-
-@classnotwrapped
 class Geom2dGcc_FunctionTanCuCuCu:
 	pass
 
