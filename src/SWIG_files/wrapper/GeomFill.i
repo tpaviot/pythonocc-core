@@ -3044,24 +3044,6 @@ None
 ") GeomFill_FunctionGuide;
 		 GeomFill_FunctionGuide(const opencascade::handle<GeomFill_SectionLaw> & S, const opencascade::handle<Adaptor3d_HCurve> & Guide, const Standard_Real ParamOnLaw = 0.0);
 
-		/****************** Deriv2T ******************/
-		/**** md5 signature: 997b5adbebf60f0b487a20872cd9decb ****/
-		%feature("compactdefaultargs") Deriv2T;
-		%feature("autodoc", "Returns the values <f> of the t2 derivatives for the parameter param . returns the values <d> of the tx derivatives for the parameter param . returns boolean is static; returns the values <t> of the x2 derivatives for the parameter param . returns boolean is static;.
-
-Parameters
-----------
-DCentre: gp_XYZ
-DDir: gp_XYZ
-DFDT: math_Vector
-D2FT: math_Vector
-
-Returns
--------
-bool
-") Deriv2T;
-		Standard_Boolean Deriv2T(const gp_XYZ & DCentre, const gp_XYZ & DDir, math_Vector & DFDT, math_Vector & D2FT);
-
 		/****************** DerivT ******************/
 		/**** md5 signature: 8497a0e1c79d28b9784f7f110d8384d9 ****/
 		%feature("compactdefaultargs") DerivT;
@@ -3175,6 +3157,10 @@ bool
 %extend GeomFill_FunctionGuide {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Deriv2T(self):
+		pass
 	}
 };
 
@@ -9960,24 +9946,6 @@ Returns
 None
 ") GeomFill_NSections;
 		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const TColStd_SequenceOfReal & NP);
-
-		/****************** GeomFill_NSections ******************/
-		/**** md5 signature: 637af4a0f33ec19afb7aacd41d59fa97 ****/
-		%feature("compactdefaultargs") GeomFill_NSections;
-		%feature("autodoc", "Make a sectionlaw with n curves and n associated parameters. uf and ul are the parametric bounds of the nsections.
-
-Parameters
-----------
-NC: TColGeom_SequenceOfCurve
-NP: TColStd_SequenceOfReal
-UF: float
-UL: float
-
-Returns
--------
-None
-") GeomFill_NSections;
-		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const TColStd_SequenceOfReal & NP, const Standard_Real UF, const Standard_Real UL);
 
 		/****************** GeomFill_NSections ******************/
 		/**** md5 signature: 979fe2339b2fd239655f9ddec9dcb075 ****/
