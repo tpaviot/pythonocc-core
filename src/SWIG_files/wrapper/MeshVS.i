@@ -577,6 +577,7 @@ typedef NCollection_DefaultHasher<MeshVS_TwoNodes> MeshVS_TwoNodesHasher;
 class MeshVS_Buffer {
 	public:
 		/****************** MeshVS_Buffer ******************/
+		/**** md5 signature: 6aa133acb7bf6a8defb6a753a4c6dbff ****/
 		%feature("compactdefaultargs") MeshVS_Buffer;
 		%feature("autodoc", "Constructor of the buffer of the requested size.
 
@@ -605,6 +606,7 @@ None
 class MeshVS_CommonSensitiveEntity : public Select3D_SensitiveSet {
 	public:
 		/****************** MeshVS_CommonSensitiveEntity ******************/
+		/**** md5 signature: 88c055c73321e66b439e5e4e9ef7a9f3 ****/
 		%feature("compactdefaultargs") MeshVS_CommonSensitiveEntity;
 		%feature("autodoc", "Default constructor.
 
@@ -621,6 +623,7 @@ None
 		 MeshVS_CommonSensitiveEntity(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<MeshVS_Mesh> & theParentMesh, const MeshVS_MeshSelectionMethod theSelMethod);
 
 		/****************** BoundingBox ******************/
+		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
 		%feature("autodoc", "Returns bounding box of the triangulation. if location transformation is set, it will be applied.
 
@@ -631,6 +634,7 @@ Select3D_BndBox3d
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** Box ******************/
+		/**** md5 signature: 9170e3bfd20dbcabd7ec332ab26bb9fa ****/
 		%feature("compactdefaultargs") Box;
 		%feature("autodoc", "Returns bounding box of sub-entity with index theidx in sub-entity list.
 
@@ -645,6 +649,7 @@ Select3D_BndBox3d
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
 		/****************** Center ******************/
+		/**** md5 signature: 82dec1d5725b85fd9fe04818aa66dc03 ****/
 		%feature("compactdefaultargs") Center;
 		%feature("autodoc", "Returns geometry center of sensitive entity index theidx along the given axis theaxis.
 
@@ -660,6 +665,7 @@ float
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
 		/****************** CenterOfGeometry ******************/
+		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
 		%feature("autodoc", "Returns center of a mesh.
 
@@ -670,6 +676,7 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 		/****************** GetConnected ******************/
+		/**** md5 signature: 6710de9a0213ce4cb10f7bdf207b1540 ****/
 		%feature("compactdefaultargs") GetConnected;
 		%feature("autodoc", "Create a copy.
 
@@ -680,6 +687,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** NbSubElements ******************/
+		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Number of elements.
 
@@ -690,6 +698,7 @@ int
 		virtual Standard_Integer NbSubElements();
 
 		/****************** Size ******************/
+		/**** md5 signature: 8b9290cdf9c653fc150b9b31776f3f21 ****/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "Returns the amount of sub-entities of the complex entity.
 
@@ -700,6 +709,7 @@ int
 		virtual Standard_Integer Size();
 
 		/****************** Swap ******************/
+		/**** md5 signature: 19b601a9d7acdae056493eb6f9eb0b63 ****/
 		%feature("compactdefaultargs") Swap;
 		%feature("autodoc", "Swaps items with indexes theidx1 and theidx2.
 
@@ -732,6 +742,7 @@ None
 class MeshVS_DataSource : public Standard_Transient {
 	public:
 		/****************** Get3DGeom ******************/
+		/**** md5 signature: ca8c9922d6918767dee0581d1d849a7b ****/
 		%feature("compactdefaultargs") Get3DGeom;
 		%feature("autodoc", "This method returns topology information about 3d-element returns false if element with id isn't 3d or because other troubles.
 
@@ -747,6 +758,7 @@ NbNodes: int
 		virtual Standard_Boolean Get3DGeom(const Standard_Integer ID, Standard_Integer &OutValue, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> & Data);
 
 		/****************** GetAddr ******************/
+		/**** md5 signature: 6ede570d714200ef2042aae5eaa49c23 ****/
 		%feature("compactdefaultargs") GetAddr;
 		%feature("autodoc", "This method returns pointer which represents element or node data structure. this address will be saved in meshvs_meshentityowner, so that you can access to data structure fast by the method owner(). in the redefined method you can return null. id is the numerical identificator of node or element iselement indicates this id describe node ( if standard_false ) or element ( if standard_true ).
 
@@ -762,6 +774,7 @@ Standard_Address
 		virtual Standard_Address GetAddr(const Standard_Integer ID, const Standard_Boolean IsElement);
 
 		/****************** GetAllElements ******************/
+		/**** md5 signature: f85e71abd796a5398a1de8f5fade7da2 ****/
 		%feature("compactdefaultargs") GetAllElements;
 		%feature("autodoc", "This method returns map of all elements the object consist of.
 
@@ -772,6 +785,7 @@ TColStd_PackedMapOfInteger
 		virtual const TColStd_PackedMapOfInteger & GetAllElements();
 
 		/****************** GetAllGroups ******************/
+		/**** md5 signature: 3b325eb8b0334ce7f7b23771f6ea3b64 ****/
 		%feature("compactdefaultargs") GetAllGroups;
 		%feature("autodoc", "This method returns map of all groups the object contains.
 
@@ -786,6 +800,7 @@ None
 		virtual void GetAllGroups(TColStd_PackedMapOfInteger & Ids);
 
 		/****************** GetAllNodes ******************/
+		/**** md5 signature: d9ec1f37bed757ebe7b546ba878e8230 ****/
 		%feature("compactdefaultargs") GetAllNodes;
 		%feature("autodoc", "This method returns map of all nodes the object consist of.
 
@@ -796,6 +811,7 @@ TColStd_PackedMapOfInteger
 		virtual const TColStd_PackedMapOfInteger & GetAllNodes();
 
 		/****************** GetBoundingBox ******************/
+		/**** md5 signature: c776ca3f9f7d80c6934fc1b6003552bc ****/
 		%feature("compactdefaultargs") GetBoundingBox;
 		%feature("autodoc", "Returns the bounding box of the whole mesh. it is used in advanced selection mode to define roughly the sensitive area of the mesh. it can be redefined to get access to a box computed in advance.
 
@@ -806,6 +822,7 @@ Bnd_Box
 		virtual Bnd_Box GetBoundingBox();
 
 		/****************** GetDetectedEntities ******************/
+		/**** md5 signature: d6cc9c51b75a2f4602aade3bdf974e7c ****/
 		%feature("compactdefaultargs") GetDetectedEntities;
 		%feature("autodoc", "Returns maps of entities (nodes and elements) detected by mouse click at the point (x,y) on the current view plane, with the tolerance atol. dmin - is out argument should return actual detection tolerance. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
 
@@ -825,6 +842,7 @@ DMin: float
 		virtual Standard_Boolean GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, const Standard_Real X, const Standard_Real Y, const Standard_Real aTol, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements, Standard_Real &OutValue);
 
 		/****************** GetDetectedEntities ******************/
+		/**** md5 signature: 39ca460111ab817983a833e2f70887f6 ****/
 		%feature("compactdefaultargs") GetDetectedEntities;
 		%feature("autodoc", "Returns maps of entities (nodes and elements) detected by mouse selection with rectangular box (xmin, ymin, xmax, ymax) on the current veiw plane, with the tolerance atol. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
 
@@ -846,6 +864,7 @@ bool
 		virtual Standard_Boolean GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, const Standard_Real XMin, const Standard_Real YMin, const Standard_Real XMax, const Standard_Real YMax, const Standard_Real aTol, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements);
 
 		/****************** GetDetectedEntities ******************/
+		/**** md5 signature: fece8acd4a4e76d11f294ba9cc6b4863 ****/
 		%feature("compactdefaultargs") GetDetectedEntities;
 		%feature("autodoc", "Returns maps of entities (nodes and elements) detected by mouse selection with the polyline <polyline> on the current veiw plane, with the tolerance atol. returns true if something is detected. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
 
@@ -865,6 +884,7 @@ bool
 		virtual Standard_Boolean GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, const TColgp_Array1OfPnt2d & Polyline, const Bnd_Box2d & aBox, const Standard_Real aTol, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements);
 
 		/****************** GetDetectedEntities ******************/
+		/**** md5 signature: 97a7d4ba6637c92d2a6b081bba5e00d5 ****/
 		%feature("compactdefaultargs") GetDetectedEntities;
 		%feature("autodoc", "Filter out the maps of mesh entities so as to keep only the entities that are allowed to be selected according to the current context. returns true if any of the maps has been changed. it should be redefined if the advanced mesh selection is activated. default implementation returns false.
 
@@ -881,6 +901,7 @@ bool
 		virtual Standard_Boolean GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements);
 
 		/****************** GetGeom ******************/
+		/**** md5 signature: 236738bc464d6c86415c7d5b5ad6b029 ****/
 		%feature("compactdefaultargs") GetGeom;
 		%feature("autodoc", "Returns geometry information about node or element id is the numerical identificator of node or element iselement indicates this id describe node ( if standard_false ) or element ( if standard_true ) coords is an array of co-ordinates of node(s). for node it is only 3 numbers: x, y, z in the strict order for element it is 3*n numbers, where n is number of this element vertices the order is strict also: x1, y1, z1, x2,...., where xi, yi, zi are co-ordinates of vertices nbnodes is number of nodes. it is recommended this parameter to be set to 1 for node. type is type of node or element (from enumeration). it is recommended this parameter to be set to meshvs_et_node for node.
 
@@ -898,6 +919,7 @@ NbNodes: int
 		virtual Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType & Type);
 
 		/****************** GetGeomType ******************/
+		/**** md5 signature: eb6b64ef92d6a945955b31254bcb6494 ****/
 		%feature("compactdefaultargs") GetGeomType;
 		%feature("autodoc", "This method is similar to getgeom, but returns only element or node type.
 
@@ -914,6 +936,7 @@ bool
 		virtual Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType & Type);
 
 		/****************** GetGroup ******************/
+		/**** md5 signature: 1a3c1478c7f404ba800dbc98c1c57d18 ****/
 		%feature("compactdefaultargs") GetGroup;
 		%feature("autodoc", "This method returns map of all group elements.
 
@@ -930,6 +953,7 @@ bool
 		virtual Standard_Boolean GetGroup(const Standard_Integer Id, MeshVS_EntityType & Type, TColStd_PackedMapOfInteger & Ids);
 
 		/****************** GetGroupAddr ******************/
+		/**** md5 signature: f59ca8de5242f70e386e2080c54c525e ****/
 		%feature("compactdefaultargs") GetGroupAddr;
 		%feature("autodoc", "This method returns pointer which represents group data structure. this address will be saved in meshvs_meshowner, so that you can access to data structure fast by the method owner(). in the redefined method you can return null. id is the numerical identificator of group.
 
@@ -944,6 +968,7 @@ Standard_Address
 		virtual Standard_Address GetGroupAddr(const Standard_Integer ID);
 
 		/****************** GetNodeNormal ******************/
+		/**** md5 signature: a73de6e26f9a8368c5f1f3a63f1b8361 ****/
 		%feature("compactdefaultargs") GetNodeNormal;
 		%feature("autodoc", "This method return normal of node ranknode of face id, which is using for smooth shading presentation. returns false if normal isn't defined.
 
@@ -961,6 +986,7 @@ nz: float
 		virtual Standard_Boolean GetNodeNormal(const Standard_Integer ranknode, const Standard_Integer ElementId, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** GetNodesByElement ******************/
+		/**** md5 signature: d0d6e8359648ad25a1192af7b2745033 ****/
 		%feature("compactdefaultargs") GetNodesByElement;
 		%feature("autodoc", "This method returns information about nodes this element consist of. id is the numerical identificator of element. nodeids is the output array of nodes ids in correct order, the same as coordinates returned by getgeom(). nbnodes is number of nodes (number of items set in nodeids). returns false if element does not exist.
 
@@ -976,6 +1002,7 @@ NbNodes: int
 		virtual Standard_Boolean GetNodesByElement(const Standard_Integer ID, TColStd_Array1OfInteger & NodeIDs, Standard_Integer &OutValue);
 
 		/****************** GetNormal ******************/
+		/**** md5 signature: 500534b89a1e875e9c4d452ed489ad06 ****/
 		%feature("compactdefaultargs") GetNormal;
 		%feature("autodoc", "This method calculates normal of face, which is using for correct reflection presentation. there is default method, for advance reflection this method can be redefined. id is the numerical identificator of only element! max is maximal number of nodes an element can consist of nx, ny, nz are values whose represent co-ordinates of normal (will be returned) in the redefined method you can return normal with length more then 1, but in this case the appearance of element will be more bright than usual. for ordinary brightness you must return normal with length 1.
 
@@ -993,6 +1020,7 @@ nz: float
 		virtual Standard_Boolean GetNormal(const Standard_Integer Id, const Standard_Integer Max, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** GetNormalsByElement ******************/
+		/**** md5 signature: 5bc1160db0f3dacd3684809a3c6741ee ****/
 		%feature("compactdefaultargs") GetNormalsByElement;
 		%feature("autodoc", "This method puts components of normal vectors at each node of a mesh face (at each face of a mesh volume) into the output array. returns false if some problem was detected during calculation of normals. id is an identifier of the mesh element. isnodal, when true, means that normals at mesh element nodes are needed. if nodal normals are not available, or isnodal is false, or the mesh element is a volume, then the output array contents depend on the element type: face: a normal calculated by getnormal() is duplicated for each node of the face; volume: normals to all faces of the volume are computed (not for each node!). maxnodes is maximal number of nodes an element can consist of. normals contains the result.
 
@@ -1010,6 +1038,7 @@ bool
 		virtual Standard_Boolean GetNormalsByElement(const Standard_Integer Id, const Standard_Boolean IsNodal, const Standard_Integer MaxNodes, opencascade::handle<TColStd_HArray1OfReal> & Normals);
 
 		/****************** IsAdvancedSelectionEnabled ******************/
+		/**** md5 signature: 0a4527ba84561e243a67ee25f22fa965 ****/
 		%feature("compactdefaultargs") IsAdvancedSelectionEnabled;
 		%feature("autodoc", "Returns true if advanced mesh selection is enabled. default implementation returns false. it should be redefined to return true for advanced mesh selection activation.
 
@@ -1036,6 +1065,7 @@ bool
 class MeshVS_Drawer : public Standard_Transient {
 	public:
 		/****************** Assign ******************/
+		/**** md5 signature: 67d5c1cb61cb7dc5c5dcda590104f88e ****/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "This method copies other drawer contents to this.
 
@@ -1050,6 +1080,7 @@ None
 		virtual void Assign(const opencascade::handle<MeshVS_Drawer> & aDrawer);
 
 		/****************** GetAsciiString ******************/
+		/**** md5 signature: 980447bc465e0e51928234e7974d5e51 ****/
 		%feature("compactdefaultargs") GetAsciiString;
 		%feature("autodoc", "No available documentation.
 
@@ -1065,6 +1096,7 @@ bool
 		Standard_Boolean GetAsciiString(const Standard_Integer Key, TCollection_AsciiString & Value);
 
 		/****************** GetBoolean ******************/
+		/**** md5 signature: 661236443c09aa3dea3e0628bbae48cc ****/
 		%feature("compactdefaultargs") GetBoolean;
 		%feature("autodoc", "No available documentation.
 
@@ -1079,6 +1111,7 @@ Value: bool
 		Standard_Boolean GetBoolean(const Standard_Integer Key, Standard_Boolean &OutValue);
 
 		/****************** GetColor ******************/
+		/**** md5 signature: 954adab9cb8c5c3525c2d25399bc0a02 ****/
 		%feature("compactdefaultargs") GetColor;
 		%feature("autodoc", "No available documentation.
 
@@ -1094,6 +1127,7 @@ bool
 		Standard_Boolean GetColor(const Standard_Integer Key, Quantity_Color & Value);
 
 		/****************** GetDouble ******************/
+		/**** md5 signature: bc999c492e4b274fc40d2be78d129201 ****/
 		%feature("compactdefaultargs") GetDouble;
 		%feature("autodoc", "No available documentation.
 
@@ -1108,6 +1142,7 @@ Value: float
 		Standard_Boolean GetDouble(const Standard_Integer Key, Standard_Real &OutValue);
 
 		/****************** GetInteger ******************/
+		/**** md5 signature: 05ce6af02ccf603cf6ad37f1d6765637 ****/
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", "No available documentation.
 
@@ -1122,6 +1157,7 @@ Value: int
 		Standard_Boolean GetInteger(const Standard_Integer Key, Standard_Integer &OutValue);
 
 		/****************** GetMaterial ******************/
+		/**** md5 signature: 7f38c85ff79dfe29671c1206fcac61e9 ****/
 		%feature("compactdefaultargs") GetMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -1137,6 +1173,7 @@ bool
 		Standard_Boolean GetMaterial(const Standard_Integer Key, Graphic3d_MaterialAspect & Value);
 
 		/****************** RemoveAsciiString ******************/
+		/**** md5 signature: 1739edca05fc8a72d5e20d42d9c98fba ****/
 		%feature("compactdefaultargs") RemoveAsciiString;
 		%feature("autodoc", "No available documentation.
 
@@ -1151,6 +1188,7 @@ bool
 		Standard_Boolean RemoveAsciiString(const Standard_Integer Key);
 
 		/****************** RemoveBoolean ******************/
+		/**** md5 signature: d180d64aa3a9b6170f2087ee87c2892e ****/
 		%feature("compactdefaultargs") RemoveBoolean;
 		%feature("autodoc", "No available documentation.
 
@@ -1165,6 +1203,7 @@ bool
 		Standard_Boolean RemoveBoolean(const Standard_Integer Key);
 
 		/****************** RemoveColor ******************/
+		/**** md5 signature: 0dbc5af555966db5baf7a8fdaa19e379 ****/
 		%feature("compactdefaultargs") RemoveColor;
 		%feature("autodoc", "No available documentation.
 
@@ -1179,6 +1218,7 @@ bool
 		Standard_Boolean RemoveColor(const Standard_Integer Key);
 
 		/****************** RemoveDouble ******************/
+		/**** md5 signature: c8f20967e75146b3e9064cbab4cdd2b5 ****/
 		%feature("compactdefaultargs") RemoveDouble;
 		%feature("autodoc", "No available documentation.
 
@@ -1193,6 +1233,7 @@ bool
 		Standard_Boolean RemoveDouble(const Standard_Integer Key);
 
 		/****************** RemoveInteger ******************/
+		/**** md5 signature: 41ccd6ede3a72d28cd4e5f162ef39a69 ****/
 		%feature("compactdefaultargs") RemoveInteger;
 		%feature("autodoc", "No available documentation.
 
@@ -1207,6 +1248,7 @@ bool
 		Standard_Boolean RemoveInteger(const Standard_Integer Key);
 
 		/****************** RemoveMaterial ******************/
+		/**** md5 signature: f7240a5f552dfcea104ac4efaa46303d ****/
 		%feature("compactdefaultargs") RemoveMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -1221,6 +1263,7 @@ bool
 		Standard_Boolean RemoveMaterial(const Standard_Integer Key);
 
 		/****************** SetAsciiString ******************/
+		/**** md5 signature: 4bb4dfb7bba0ee266a870b60887f1414 ****/
 		%feature("compactdefaultargs") SetAsciiString;
 		%feature("autodoc", "No available documentation.
 
@@ -1236,6 +1279,7 @@ None
 		void SetAsciiString(const Standard_Integer Key, const TCollection_AsciiString & Value);
 
 		/****************** SetBoolean ******************/
+		/**** md5 signature: de57cc8afe03434b7e50da2a4245e18d ****/
 		%feature("compactdefaultargs") SetBoolean;
 		%feature("autodoc", "No available documentation.
 
@@ -1251,6 +1295,7 @@ None
 		void SetBoolean(const Standard_Integer Key, const Standard_Boolean Value);
 
 		/****************** SetColor ******************/
+		/**** md5 signature: 51518b287c4b057fdfb682712d6beb0d ****/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "No available documentation.
 
@@ -1266,6 +1311,7 @@ None
 		void SetColor(const Standard_Integer Key, const Quantity_Color & Value);
 
 		/****************** SetDouble ******************/
+		/**** md5 signature: c6f733ec0fc0c0ae57652aabe5b63172 ****/
 		%feature("compactdefaultargs") SetDouble;
 		%feature("autodoc", "No available documentation.
 
@@ -1281,6 +1327,7 @@ None
 		void SetDouble(const Standard_Integer Key, const Standard_Real Value);
 
 		/****************** SetInteger ******************/
+		/**** md5 signature: 9b086ff56befec593e73f8dbc44e910d ****/
 		%feature("compactdefaultargs") SetInteger;
 		%feature("autodoc", "No available documentation.
 
@@ -1296,6 +1343,7 @@ None
 		void SetInteger(const Standard_Integer Key, const Standard_Integer Value);
 
 		/****************** SetMaterial ******************/
+		/**** md5 signature: ec5bef34f51823a11fa87227c77cfb26 ****/
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "No available documentation.
 
@@ -1327,6 +1375,7 @@ None
 class MeshVS_DummySensitiveEntity : public Select3D_SensitiveEntity {
 	public:
 		/****************** MeshVS_DummySensitiveEntity ******************/
+		/**** md5 signature: c3ed78b0bf1ed26fef4c19f03cff20ad ****/
 		%feature("compactdefaultargs") MeshVS_DummySensitiveEntity;
 		%feature("autodoc", "No available documentation.
 
@@ -1341,6 +1390,7 @@ None
 		 MeshVS_DummySensitiveEntity(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
 		/****************** BVH ******************/
+		/**** md5 signature: 9d26e1a47d3d96ad1039d301e2b44c49 ****/
 		%feature("compactdefaultargs") BVH;
 		%feature("autodoc", "No available documentation.
 
@@ -1351,6 +1401,7 @@ None
 		virtual void BVH();
 
 		/****************** BoundingBox ******************/
+		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
 		%feature("autodoc", "No available documentation.
 
@@ -1361,6 +1412,7 @@ Select3D_BndBox3d
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
+		/**** md5 signature: 91b253b06a291fc09a167246137ee4aa ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
 		%feature("autodoc", "No available documentation.
 
@@ -1371,6 +1423,7 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 		/****************** Clear ******************/
+		/**** md5 signature: f671931d03948860d0ead34afbe920aa ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "No available documentation.
 
@@ -1381,6 +1434,7 @@ None
 		virtual void Clear();
 
 		/****************** HasInitLocation ******************/
+		/**** md5 signature: edc5a554015cfcdb8ed506ef584abd9a ****/
 		%feature("compactdefaultargs") HasInitLocation;
 		%feature("autodoc", "No available documentation.
 
@@ -1391,6 +1445,7 @@ bool
 		virtual Standard_Boolean HasInitLocation();
 
 		/****************** InvInitLocation ******************/
+		/**** md5 signature: 0936d499373bc9751f62eda55911c449 ****/
 		%feature("compactdefaultargs") InvInitLocation;
 		%feature("autodoc", "No available documentation.
 
@@ -1401,6 +1456,7 @@ gp_GTrsf
 		virtual gp_GTrsf InvInitLocation();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "No available documentation.
 
@@ -1416,6 +1472,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
+		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "No available documentation.
 
@@ -1442,6 +1499,7 @@ int
 class MeshVS_Mesh : public AIS_InteractiveObject {
 	public:
 		/****************** MeshVS_Mesh ******************/
+		/**** md5 signature: fe240a75d13b9391c25314abc0867d90 ****/
 		%feature("compactdefaultargs") MeshVS_Mesh;
 		%feature("autodoc", "Constructor. theisallowoverlapped is standard_true, if it is allowed to draw edges overlapped with beams its value is stored in drawer.
 
@@ -1457,6 +1515,7 @@ None
 		 MeshVS_Mesh(const Standard_Boolean theIsAllowOverlapped = Standard_False);
 
 		/****************** AcceptDisplayMode ******************/
+		/**** md5 signature: 73e6b64240388c9f5967edd29a7d922a ****/
 		%feature("compactdefaultargs") AcceptDisplayMode;
 		%feature("autodoc", "Returns true for supported display modes basing on a list of defined builders.
 
@@ -1471,6 +1530,7 @@ bool
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
 		/****************** AddBuilder ******************/
+		/**** md5 signature: d60e5808e5ea2af86163a042c40daf6b ****/
 		%feature("compactdefaultargs") AddBuilder;
 		%feature("autodoc", "Adds builder to tale of sequence. prsbuilder is builder to be added if treatashilighter is true, meshvs_mesh will use this builder to create presentation of hilighted and selected owners. only one builder can be hilighter, so that if you call this method with treatashilighter = standard_true some times, only last builder will be hilighter warning: as minimum one builder must be added as hilighter, otherwise selection cannot be computed.
 
@@ -1487,6 +1547,7 @@ None
 		void AddBuilder(const opencascade::handle<MeshVS_PrsBuilder> & Builder, const Standard_Boolean TreatAsHilighter = Standard_False);
 
 		/****************** ClearSelected ******************/
+		/**** md5 signature: 3aaae3eac8509b6abfc3ffd58cbe26e1 ****/
 		%feature("compactdefaultargs") ClearSelected;
 		%feature("autodoc", "Clears internal selection presentation.
 
@@ -1497,6 +1558,7 @@ None
 		virtual void ClearSelected();
 
 		/****************** Compute ******************/
+		/**** md5 signature: 843401e4757df99542b92ba39cbdf61f ****/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Computes presentation using builders added to sequence. each builder computes own part of mesh presentation according to its type.
 
@@ -1513,6 +1575,7 @@ None
 		virtual void Compute(const opencascade::handle<PrsMgr_PresentationManager3d> & PM, const opencascade::handle<Prs3d_Presentation> & Prs, const Standard_Integer DisplayMode);
 
 		/****************** ComputeSelection ******************/
+		/**** md5 signature: 3bf0ee6eb1ecda287a21d6e66e3c34c0 ****/
 		%feature("compactdefaultargs") ComputeSelection;
 		%feature("autodoc", "Computes selection according to selectmode.
 
@@ -1528,6 +1591,7 @@ None
 		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & Sel, const Standard_Integer SelectMode);
 
 		/****************** FindBuilder ******************/
+		/**** md5 signature: bb263b949271eb7f143c55d2bc9b8716 ****/
 		%feature("compactdefaultargs") FindBuilder;
 		%feature("autodoc", "Finds builder by its type the string represents.
 
@@ -1542,6 +1606,7 @@ opencascade::handle<MeshVS_PrsBuilder>
 		opencascade::handle<MeshVS_PrsBuilder> FindBuilder(const char * TypeString);
 
 		/****************** GetBuilder ******************/
+		/**** md5 signature: 4c9607e94ac7aa236064857b9e1b7e7b ****/
 		%feature("compactdefaultargs") GetBuilder;
 		%feature("autodoc", "Returns builder by its index in sequence.
 
@@ -1556,6 +1621,7 @@ opencascade::handle<MeshVS_PrsBuilder>
 		opencascade::handle<MeshVS_PrsBuilder> GetBuilder(const Standard_Integer Index);
 
 		/****************** GetBuilderById ******************/
+		/**** md5 signature: c5e3b37adcea1aa322a932d8bd63ddf5 ****/
 		%feature("compactdefaultargs") GetBuilderById;
 		%feature("autodoc", "Returns builder by its id.
 
@@ -1570,6 +1636,7 @@ opencascade::handle<MeshVS_PrsBuilder>
 		opencascade::handle<MeshVS_PrsBuilder> GetBuilderById(const Standard_Integer Id);
 
 		/****************** GetBuildersCount ******************/
+		/**** md5 signature: 32eab94530beac056352712ae1bad7a6 ****/
 		%feature("compactdefaultargs") GetBuildersCount;
 		%feature("autodoc", "How many builders there are in sequence.
 
@@ -1580,6 +1647,7 @@ int
 		Standard_Integer GetBuildersCount();
 
 		/****************** GetDataSource ******************/
+		/**** md5 signature: ca32be43189ef73b1d72b94994846adb ****/
 		%feature("compactdefaultargs") GetDataSource;
 		%feature("autodoc", "Returns default builders' data source.
 
@@ -1590,6 +1658,7 @@ opencascade::handle<MeshVS_DataSource>
 		opencascade::handle<MeshVS_DataSource> GetDataSource();
 
 		/****************** GetDrawer ******************/
+		/**** md5 signature: e55b0999dd530fcd96c63028c7005ff9 ****/
 		%feature("compactdefaultargs") GetDrawer;
 		%feature("autodoc", "Returns default builders' drawer.
 
@@ -1600,6 +1669,7 @@ opencascade::handle<MeshVS_Drawer>
 		opencascade::handle<MeshVS_Drawer> GetDrawer();
 
 		/****************** GetFreeId ******************/
+		/**** md5 signature: 34e64d8664d6cf8b1d7cb4b452f9928a ****/
 		%feature("compactdefaultargs") GetFreeId;
 		%feature("autodoc", "Returns the smallest positive id, not occupied by any builder. this method using when builder is created with id = -1.
 
@@ -1610,6 +1680,7 @@ int
 		Standard_Integer GetFreeId();
 
 		/****************** GetHiddenElems ******************/
+		/**** md5 signature: be1d71f2cbf4dea596755f02dc1b09df ****/
 		%feature("compactdefaultargs") GetHiddenElems;
 		%feature("autodoc", "Returns map of hidden elements (may be null handle).
 
@@ -1620,6 +1691,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & GetHiddenElems();
 
 		/****************** GetHiddenNodes ******************/
+		/**** md5 signature: 1023896b08414adc50dd0515c5cbb9d5 ****/
 		%feature("compactdefaultargs") GetHiddenNodes;
 		%feature("autodoc", "Returns map of hidden nodes (may be null handle).
 
@@ -1630,6 +1702,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & GetHiddenNodes();
 
 		/****************** GetHilighter ******************/
+		/**** md5 signature: 2e4cedd742a8e16362b582ee7244c945 ****/
 		%feature("compactdefaultargs") GetHilighter;
 		%feature("autodoc", "Returns hilighter.
 
@@ -1640,6 +1713,7 @@ opencascade::handle<MeshVS_PrsBuilder>
 		opencascade::handle<MeshVS_PrsBuilder> GetHilighter();
 
 		/****************** GetMeshSelMethod ******************/
+		/**** md5 signature: a5526e7d4552c8494b10304212397f1c ****/
 		%feature("compactdefaultargs") GetMeshSelMethod;
 		%feature("autodoc", "Returns set mesh selection method (see meshvs.cdl).
 
@@ -1650,6 +1724,7 @@ MeshVS_MeshSelectionMethod
 		MeshVS_MeshSelectionMethod GetMeshSelMethod();
 
 		/****************** GetOwnerMaps ******************/
+		/**** md5 signature: e7c60cba79c9850e273bd8f1163979a1 ****/
 		%feature("compactdefaultargs") GetOwnerMaps;
 		%feature("autodoc", "Returns map of owners.
 
@@ -1664,6 +1739,7 @@ MeshVS_DataMapOfIntegerOwner
 		const MeshVS_DataMapOfIntegerOwner & GetOwnerMaps(const Standard_Boolean IsElement);
 
 		/****************** GetSelectableNodes ******************/
+		/**** md5 signature: 9edd74a16dbce1c76f74fa06853e8c35 ****/
 		%feature("compactdefaultargs") GetSelectableNodes;
 		%feature("autodoc", "Returns map of selectable elements (may be null handle).
 
@@ -1674,6 +1750,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & GetSelectableNodes();
 
 		/****************** HilightOwnerWithColor ******************/
+		/**** md5 signature: 6f4d973046ef824a20ee54ff5ca89e9b ****/
 		%feature("compactdefaultargs") HilightOwnerWithColor;
 		%feature("autodoc", "Draw hilighted owner presentation.
 
@@ -1690,6 +1767,7 @@ None
 		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theColor, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
 		/****************** HilightSelected ******************/
+		/**** md5 signature: 49a0436e98cdb1d487388b0211b1c14d ****/
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "Draw selected owners presentation.
 
@@ -1705,6 +1783,7 @@ None
 		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager3d> & PM, const SelectMgr_SequenceOfOwner & Owners);
 
 		/****************** IsHiddenElem ******************/
+		/**** md5 signature: 339016e180c5cdd521a10fae084f893c ****/
 		%feature("compactdefaultargs") IsHiddenElem;
 		%feature("autodoc", "Returns true if specified element is hidden by default no elements are hidden.
 
@@ -1719,6 +1798,7 @@ bool
 		Standard_Boolean IsHiddenElem(const Standard_Integer ID);
 
 		/****************** IsHiddenNode ******************/
+		/**** md5 signature: a06a0f17f5ce205e01607e3374ef1f31 ****/
 		%feature("compactdefaultargs") IsHiddenNode;
 		%feature("autodoc", "Returns true if specified node is hidden. by default all nodes are hidden.
 
@@ -1733,6 +1813,7 @@ bool
 		Standard_Boolean IsHiddenNode(const Standard_Integer ID);
 
 		/****************** IsSelectableElem ******************/
+		/**** md5 signature: a233c34e87306c44ddab4d20330c1538 ****/
 		%feature("compactdefaultargs") IsSelectableElem;
 		%feature("autodoc", "Returns true if specified element is not hidden.
 
@@ -1747,6 +1828,7 @@ bool
 		Standard_Boolean IsSelectableElem(const Standard_Integer ID);
 
 		/****************** IsSelectableNode ******************/
+		/**** md5 signature: 2f1097431eb644cb5272a29635d8afd7 ****/
 		%feature("compactdefaultargs") IsSelectableNode;
 		%feature("autodoc", "Returns true if specified node is specified as selectable.
 
@@ -1761,6 +1843,7 @@ bool
 		Standard_Boolean IsSelectableNode(const Standard_Integer ID);
 
 		/****************** IsWholeMeshOwner ******************/
+		/**** md5 signature: c9123b7ffaf4c7d5c14ccf4f0f01f4a7 ****/
 		%feature("compactdefaultargs") IsWholeMeshOwner;
 		%feature("autodoc", "Returns true if the given owner represents a whole mesh.
 
@@ -1775,6 +1858,7 @@ bool
 		virtual Standard_Boolean IsWholeMeshOwner(const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
 		/****************** RemoveBuilder ******************/
+		/**** md5 signature: 91238f8d2688b9d457e0aa4a98ead380 ****/
 		%feature("compactdefaultargs") RemoveBuilder;
 		%feature("autodoc", "Removes builder from sequence. if it is hilighter, hilighter will be null ( don't remember to set it to other after!!! ).
 
@@ -1789,6 +1873,7 @@ None
 		void RemoveBuilder(const Standard_Integer Index);
 
 		/****************** RemoveBuilderById ******************/
+		/**** md5 signature: d33c5b2b3523d19b34f1219fd1f5d68e ****/
 		%feature("compactdefaultargs") RemoveBuilderById;
 		%feature("autodoc", "Removes builder with identificator id.
 
@@ -1803,6 +1888,7 @@ None
 		void RemoveBuilderById(const Standard_Integer Id);
 
 		/****************** SetDataSource ******************/
+		/**** md5 signature: cf54d237029680a3719d8edb73eef545 ****/
 		%feature("compactdefaultargs") SetDataSource;
 		%feature("autodoc", "Sets default builders' data source.
 
@@ -1817,6 +1903,7 @@ None
 		void SetDataSource(const opencascade::handle<MeshVS_DataSource> & aDataSource);
 
 		/****************** SetDrawer ******************/
+		/**** md5 signature: 2eccb5055064a6c34829ec8b5575e9e1 ****/
 		%feature("compactdefaultargs") SetDrawer;
 		%feature("autodoc", "Sets default builders' drawer.
 
@@ -1831,6 +1918,7 @@ None
 		void SetDrawer(const opencascade::handle<MeshVS_Drawer> & aDrawer);
 
 		/****************** SetHiddenElems ******************/
+		/**** md5 signature: 834907541ed9fd153ae875a7d6fab8ad ****/
 		%feature("compactdefaultargs") SetHiddenElems;
 		%feature("autodoc", "Sets map of hidden elements.
 
@@ -1845,6 +1933,7 @@ None
 		void SetHiddenElems(const opencascade::handle<TColStd_HPackedMapOfInteger> & Ids);
 
 		/****************** SetHiddenNodes ******************/
+		/**** md5 signature: bc57e17e115dc7e6d5e4771ae554e85e ****/
 		%feature("compactdefaultargs") SetHiddenNodes;
 		%feature("autodoc", "Sets map of hidden nodes, which shall not be displayed individually. if nodes shared by some elements shall not be drawn, they should be included into that map.
 
@@ -1859,6 +1948,7 @@ None
 		void SetHiddenNodes(const opencascade::handle<TColStd_HPackedMapOfInteger> & Ids);
 
 		/****************** SetHilighter ******************/
+		/**** md5 signature: 8504bcd4ae7a31d283b945f96d87c649 ****/
 		%feature("compactdefaultargs") SetHilighter;
 		%feature("autodoc", "Changes hilighter ( see above ).
 
@@ -1873,6 +1963,7 @@ None
 		void SetHilighter(const opencascade::handle<MeshVS_PrsBuilder> & Builder);
 
 		/****************** SetHilighter ******************/
+		/**** md5 signature: e5f68f6036b771f1b0297867186d1c58 ****/
 		%feature("compactdefaultargs") SetHilighter;
 		%feature("autodoc", "Sets builder with sequence index 'index' as hilighter.
 
@@ -1887,6 +1978,7 @@ bool
 		Standard_Boolean SetHilighter(const Standard_Integer Index);
 
 		/****************** SetHilighterById ******************/
+		/**** md5 signature: 848dc5ba14481455f494297e6a4bf1b4 ****/
 		%feature("compactdefaultargs") SetHilighterById;
 		%feature("autodoc", "Sets builder with identificator 'id' as hilighter.
 
@@ -1901,6 +1993,7 @@ bool
 		Standard_Boolean SetHilighterById(const Standard_Integer Id);
 
 		/****************** SetMeshSelMethod ******************/
+		/**** md5 signature: c10e4a5f5393f18d85fd94be33f8cdab ****/
 		%feature("compactdefaultargs") SetMeshSelMethod;
 		%feature("autodoc", "Sets mesh selection method (see meshvs.cdl).
 
@@ -1915,6 +2008,7 @@ None
 		void SetMeshSelMethod(const MeshVS_MeshSelectionMethod M);
 
 		/****************** SetSelectableNodes ******************/
+		/**** md5 signature: 6092b46eb1966f9197594ca27a1efb6a ****/
 		%feature("compactdefaultargs") SetSelectableNodes;
 		%feature("autodoc", "Sets map of selectable nodes.
 
@@ -1929,6 +2023,7 @@ None
 		void SetSelectableNodes(const opencascade::handle<TColStd_HPackedMapOfInteger> & Ids);
 
 		/****************** UpdateSelectableNodes ******************/
+		/**** md5 signature: 5490c8d651606c343ee26ac0fab57f44 ****/
 		%feature("compactdefaultargs") UpdateSelectableNodes;
 		%feature("autodoc", "Automatically computes selectable nodes; the node is considered as being selectable if it is either not hidden, or is hidden but referred by at least one non-hidden element. thus all nodes that are visible (either individually, or as ends or corners of elements) are selectable by default.
 
@@ -1955,6 +2050,7 @@ None
 class MeshVS_MeshEntityOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** MeshVS_MeshEntityOwner ******************/
+		/**** md5 signature: 4ff68da3fa84eee78cd8e30f3caf051e ****/
 		%feature("compactdefaultargs") MeshVS_MeshEntityOwner;
 		%feature("autodoc", "No available documentation.
 
@@ -1976,6 +2072,7 @@ None
 		 MeshVS_MeshEntityOwner(const SelectMgr_SOPtr & SelObj, const Standard_Integer ID, const Standard_Address MeshEntity, const MeshVS_EntityType & Type, const Standard_Integer Priority = 0, const Standard_Boolean IsGroup = Standard_False);
 
 		/****************** Clear ******************/
+		/**** md5 signature: 401ba939842ce70931456eb9d3e1a706 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "No available documentation.
 
@@ -1992,6 +2089,7 @@ None
 		virtual void Clear(const opencascade::handle<PrsMgr_PresentationManager> & PM, const Standard_Integer Mode = 0);
 
 		/****************** HilightWithColor ******************/
+		/**** md5 signature: 56e556dd0edce796a3c3d12b272af59e ****/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "Hilights owner with the certain color.
 
@@ -2009,6 +2107,7 @@ None
 		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode = 0);
 
 		/****************** ID ******************/
+		/**** md5 signature: bad178b94960474569631e20c0ad1e69 ****/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Returns id of element or node data structure.
 
@@ -2019,6 +2118,7 @@ int
 		Standard_Integer ID();
 
 		/****************** IsGroup ******************/
+		/**** md5 signature: e660c7bda60aefcf529299fcfc114978 ****/
 		%feature("compactdefaultargs") IsGroup;
 		%feature("autodoc", "Returns true if owner represents group of nodes or elements.
 
@@ -2029,6 +2129,7 @@ bool
 		Standard_Boolean IsGroup();
 
 		/****************** IsHilighted ******************/
+		/**** md5 signature: 9c4f932880358f701615d9dc25c4681e ****/
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "Returns true if owner is hilighted.
 
@@ -2045,6 +2146,7 @@ bool
 		virtual Standard_Boolean IsHilighted(const opencascade::handle<PrsMgr_PresentationManager> & PM, const Standard_Integer Mode = 0);
 
 		/****************** Owner ******************/
+		/**** md5 signature: f0f0b85617a42f6e65494d2589a58a54 ****/
 		%feature("compactdefaultargs") Owner;
 		%feature("autodoc", "Returns an address of element or node data structure.
 
@@ -2055,6 +2157,7 @@ Standard_Address
 		Standard_Address Owner();
 
 		/****************** Type ******************/
+		/**** md5 signature: bbf39ad1e96486bac0abdece768add02 ****/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Returns type of element or node data structure.
 
@@ -2065,6 +2168,7 @@ MeshVS_EntityType
 		MeshVS_EntityType Type();
 
 		/****************** Unhilight ******************/
+		/**** md5 signature: 9ae1a51ca1eb9f753166d846d77a208b ****/
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "Strip hilight of owner.
 
@@ -2097,6 +2201,7 @@ None
 class MeshVS_MeshOwner : public SelectMgr_EntityOwner {
 	public:
 		/****************** MeshVS_MeshOwner ******************/
+		/**** md5 signature: 651f9f3d2936c3393298891c4c7d9142 ****/
 		%feature("compactdefaultargs") MeshVS_MeshOwner;
 		%feature("autodoc", "No available documentation.
 
@@ -2114,6 +2219,7 @@ None
 		 MeshVS_MeshOwner(const SelectMgr_SOPtr & theSelObj, const opencascade::handle<MeshVS_DataSource> & theDS, const Standard_Integer thePriority = 0);
 
 		/****************** AddSelectedEntities ******************/
+		/**** md5 signature: 930a2aa4220ee7f25e67119672984a05 ****/
 		%feature("compactdefaultargs") AddSelectedEntities;
 		%feature("autodoc", "Saves ids of selected mesh entities.
 
@@ -2129,6 +2235,7 @@ None
 		virtual void AddSelectedEntities(const opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, const opencascade::handle<TColStd_HPackedMapOfInteger> & Elems);
 
 		/****************** ClearSelectedEntities ******************/
+		/**** md5 signature: af2bd659b7b2c6682a06adb420ba4d31 ****/
 		%feature("compactdefaultargs") ClearSelectedEntities;
 		%feature("autodoc", "Clears ids of selected mesh entities.
 
@@ -2139,6 +2246,7 @@ None
 		virtual void ClearSelectedEntities();
 
 		/****************** GetDataSource ******************/
+		/**** md5 signature: d85e268855ae7570709111f1bfed2357 ****/
 		%feature("compactdefaultargs") GetDataSource;
 		%feature("autodoc", "No available documentation.
 
@@ -2149,6 +2257,7 @@ opencascade::handle<MeshVS_DataSource>
 		const opencascade::handle<MeshVS_DataSource> & GetDataSource();
 
 		/****************** GetDetectedElements ******************/
+		/**** md5 signature: 04b7410693d348f1c14a3a9427d1f89c ****/
 		%feature("compactdefaultargs") GetDetectedElements;
 		%feature("autodoc", "Returns ids of hilighted mesh elements.
 
@@ -2159,6 +2268,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & GetDetectedElements();
 
 		/****************** GetDetectedNodes ******************/
+		/**** md5 signature: c0389016e4ca7143ab9f3b57802362c0 ****/
 		%feature("compactdefaultargs") GetDetectedNodes;
 		%feature("autodoc", "Returns ids of hilighted mesh nodes.
 
@@ -2169,6 +2279,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & GetDetectedNodes();
 
 		/****************** GetSelectedElements ******************/
+		/**** md5 signature: dff7dcfb193f36f3bdf59e566d193e5e ****/
 		%feature("compactdefaultargs") GetSelectedElements;
 		%feature("autodoc", "Returns ids of selected mesh elements.
 
@@ -2179,6 +2290,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & GetSelectedElements();
 
 		/****************** GetSelectedNodes ******************/
+		/**** md5 signature: f43499b5276f262e4f555eee435c7e1a ****/
 		%feature("compactdefaultargs") GetSelectedNodes;
 		%feature("autodoc", "Returns ids of selected mesh nodes.
 
@@ -2189,6 +2301,7 @@ opencascade::handle<TColStd_HPackedMapOfInteger>
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & GetSelectedNodes();
 
 		/****************** HilightWithColor ******************/
+		/**** md5 signature: 05860da31473a9974b1ca9e787c9d31e ****/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "No available documentation.
 
@@ -2206,6 +2319,7 @@ None
 		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager3d> & thePM, const opencascade::handle<Prs3d_Drawer> & theColor, const Standard_Integer theMode = 0);
 
 		/****************** IsForcedHilight ******************/
+		/**** md5 signature: b7e8a39578fc441f958f06f3cf923c7d ****/
 		%feature("compactdefaultargs") IsForcedHilight;
 		%feature("autodoc", "No available documentation.
 
@@ -2216,6 +2330,7 @@ bool
 		virtual Standard_Boolean IsForcedHilight();
 
 		/****************** SetDetectedEntities ******************/
+		/**** md5 signature: 04e17c5f7ec31d9c8284ca04c87e19de ****/
 		%feature("compactdefaultargs") SetDetectedEntities;
 		%feature("autodoc", "Saves ids of hilighted mesh entities.
 
@@ -2231,6 +2346,7 @@ None
 		void SetDetectedEntities(const opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, const opencascade::handle<TColStd_HPackedMapOfInteger> & Elems);
 
 		/****************** Unhilight ******************/
+		/**** md5 signature: 9ae1a51ca1eb9f753166d846d77a208b ****/
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "No available documentation.
 
@@ -2264,6 +2380,7 @@ None
 class MeshVS_PrsBuilder : public Standard_Transient {
 	public:
 		/****************** Build ******************/
+		/**** md5 signature: f1fffe91fd488e2d1a9e79c01f80773b ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds presentation of certain type of data. prs is presentation object which this method constructs. ids is set of numeric identificators forming object appearance. idstoexclude is set of ids to exclude from processing. if some entity has been excluded, it is not processed by other builders. iselement indicates, ids is identificators of nodes or elements. displaymode is numeric constant describing display mode (see meshvs_displaymodeflags.hxx).
 
@@ -2282,6 +2399,7 @@ None
 		virtual void Build(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Boolean IsElement, const Standard_Integer DisplayMode);
 
 		/****************** CustomBuild ******************/
+		/**** md5 signature: 75716b05b96392b7ded84d62e3ac633e ****/
 		%feature("compactdefaultargs") CustomBuild;
 		%feature("autodoc", "This method is called to build presentation of custom elements (they have meshvs_et_0d type). ids is set of numeric identificators of elements for custom building. idstoexclude is set of ids to exclude from processing. if some entity has been excluded, it is not processed by other builders. displaymode is numeric constant describing display mode (see meshvs_displaymodeflags.hxx).
 
@@ -2299,6 +2417,7 @@ None
 		virtual void CustomBuild(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Integer DisplayMode);
 
 		/****************** CustomSensitiveEntity ******************/
+		/**** md5 signature: 4c22a4dbf4612bcb6578f5bc2cc90590 ****/
 		%feature("compactdefaultargs") CustomSensitiveEntity;
 		%feature("autodoc", "This method is called to build sensitive of custom elements ( they have meshvs_et_0d type ).
 
@@ -2314,6 +2433,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 		virtual opencascade::handle<Select3D_SensitiveEntity> CustomSensitiveEntity(const opencascade::handle<SelectMgr_EntityOwner> & Owner, const Standard_Integer SelectMode);
 
 		/****************** GetDataSource ******************/
+		/**** md5 signature: ca32be43189ef73b1d72b94994846adb ****/
 		%feature("compactdefaultargs") GetDataSource;
 		%feature("autodoc", "Returns custom data source or default ( from meshvs_mesh ) if custom is null.
 
@@ -2324,6 +2444,7 @@ opencascade::handle<MeshVS_DataSource>
 		opencascade::handle<MeshVS_DataSource> GetDataSource();
 
 		/****************** GetDrawer ******************/
+		/**** md5 signature: e55b0999dd530fcd96c63028c7005ff9 ****/
 		%feature("compactdefaultargs") GetDrawer;
 		%feature("autodoc", "Returns custom drawer or default ( from meshvs_mesh ) if custom is null.
 
@@ -2334,6 +2455,7 @@ opencascade::handle<MeshVS_Drawer>
 		opencascade::handle<MeshVS_Drawer> GetDrawer();
 
 		/****************** GetFlags ******************/
+		/**** md5 signature: 38653d26e8e65805738b7154ff29aed8 ****/
 		%feature("compactdefaultargs") GetFlags;
 		%feature("autodoc", "Returns flags, assigned with builder during creation.
 
@@ -2344,6 +2466,7 @@ int
 		Standard_Integer GetFlags();
 
 		/****************** GetId ******************/
+		/**** md5 signature: 11c7246d8af76c1198cac9fd7724d2dd ****/
 		%feature("compactdefaultargs") GetId;
 		%feature("autodoc", "Returns builder id.
 
@@ -2354,6 +2477,7 @@ int
 		Standard_Integer GetId();
 
 		/****************** GetPresentationManager ******************/
+		/**** md5 signature: d64c4e3f5d65eee4fe2343ade7564913 ****/
 		%feature("compactdefaultargs") GetPresentationManager;
 		%feature("autodoc", "Get presentation manager of builder.
 
@@ -2364,6 +2488,7 @@ opencascade::handle<PrsMgr_PresentationManager3d>
 		opencascade::handle<PrsMgr_PresentationManager3d> GetPresentationManager();
 
 		/****************** GetPriority ******************/
+		/**** md5 signature: 14b4b2b155ca725d4cb06c0280e4a399 ****/
 		%feature("compactdefaultargs") GetPriority;
 		%feature("autodoc", "Returns priority; as priority bigger, as soon builder will be called.
 
@@ -2374,6 +2499,7 @@ int
 		Standard_Integer GetPriority();
 
 		/****************** IsExcludingOn ******************/
+		/**** md5 signature: 0975046299496f8881159ae681af1f35 ****/
 		%feature("compactdefaultargs") IsExcludingOn;
 		%feature("autodoc", "Read excluding state.
 
@@ -2384,6 +2510,7 @@ bool
 		Standard_Boolean IsExcludingOn();
 
 		/****************** SetDataSource ******************/
+		/**** md5 signature: acf169d625c2a3f54c3be9a96b5dd7e1 ****/
 		%feature("compactdefaultargs") SetDataSource;
 		%feature("autodoc", "Change custom data source.
 
@@ -2398,6 +2525,7 @@ None
 		void SetDataSource(const opencascade::handle<MeshVS_DataSource> & newDS);
 
 		/****************** SetDrawer ******************/
+		/**** md5 signature: f908e5dab8929fcf39a3d215cf9ced40 ****/
 		%feature("compactdefaultargs") SetDrawer;
 		%feature("autodoc", "Change custom drawer.
 
@@ -2412,6 +2540,7 @@ None
 		void SetDrawer(const opencascade::handle<MeshVS_Drawer> & newDr);
 
 		/****************** SetExcluding ******************/
+		/**** md5 signature: 150df8f9b6aba7cbc32445f11e1c7503 ****/
 		%feature("compactdefaultargs") SetExcluding;
 		%feature("autodoc", "Set excluding state. if it is standard_true, the nodes or elements, processed by current builder will be noted and next builder won't process its.
 
@@ -2426,6 +2555,7 @@ None
 		void SetExcluding(const Standard_Boolean state);
 
 		/****************** SetPresentationManager ******************/
+		/**** md5 signature: 938b7d07e72abc561bff70afcf6fe6e8 ****/
 		%feature("compactdefaultargs") SetPresentationManager;
 		%feature("autodoc", "Set presentation manager for builder.
 
@@ -2440,6 +2570,7 @@ None
 		void SetPresentationManager(const opencascade::handle<PrsMgr_PresentationManager3d> & thePrsMgr);
 
 		/****************** TestFlags ******************/
+		/**** md5 signature: 3f81fdd69e6875a0d0713045b35799f3 ****/
 		%feature("compactdefaultargs") TestFlags;
 		%feature("autodoc", "Test whether display mode has flags assigned with this builder. this method has default implementation and can be redefined for advance behavior returns standard_true only if display mode is appropriate for this builder.
 
@@ -2470,6 +2601,7 @@ bool
 class MeshVS_SensitiveFace : public Select3D_SensitiveFace {
 	public:
 		/****************** MeshVS_SensitiveFace ******************/
+		/**** md5 signature: cd5bfe64bc48e5864fc6fe3173c13a4c ****/
 		%feature("compactdefaultargs") MeshVS_SensitiveFace;
 		%feature("autodoc", "No available documentation.
 
@@ -2503,6 +2635,7 @@ None
 class MeshVS_SensitiveMesh : public Select3D_SensitiveEntity {
 	public:
 		/****************** MeshVS_SensitiveMesh ******************/
+		/**** md5 signature: f0afd46a7fa181a120825a9dae839b6a ****/
 		%feature("compactdefaultargs") MeshVS_SensitiveMesh;
 		%feature("autodoc", "No available documentation.
 
@@ -2519,6 +2652,7 @@ None
 		 MeshVS_SensitiveMesh(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const Standard_Integer theMode = 0);
 
 		/****************** BoundingBox ******************/
+		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
 		%feature("autodoc", "Returns bounding box of mesh.
 
@@ -2529,6 +2663,7 @@ Select3D_BndBox3d
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
+		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
 		%feature("autodoc", "Returns center of mesh.
 
@@ -2539,6 +2674,7 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 		/****************** GetConnected ******************/
+		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
 		%feature("autodoc", "No available documentation.
 
@@ -2549,6 +2685,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** GetMode ******************/
+		/**** md5 signature: 8a406f0a5af92395f75f8988d367be4e ****/
 		%feature("compactdefaultargs") GetMode;
 		%feature("autodoc", "No available documentation.
 
@@ -2559,6 +2696,7 @@ int
 		Standard_Integer GetMode();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 683d61af923e98abd5b9028ab7397b73 ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "Checks whether sensitive overlaps current selecting volume.
 
@@ -2574,6 +2712,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
+		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of mesh nodes.
 
@@ -2600,6 +2739,7 @@ int
 class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
 	public:
 		/****************** MeshVS_SensitivePolyhedron ******************/
+		/**** md5 signature: 9d565f0228ccf4e8902f6ea9478a947e ****/
 		%feature("compactdefaultargs") MeshVS_SensitivePolyhedron;
 		%feature("autodoc", "No available documentation.
 
@@ -2616,6 +2756,7 @@ None
 		 MeshVS_SensitivePolyhedron(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const TColgp_Array1OfPnt & theNodes, const opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> & theTopo);
 
 		/****************** BoundingBox ******************/
+		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
 		%feature("autodoc", "No available documentation.
 
@@ -2626,6 +2767,7 @@ Select3D_BndBox3d
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
+		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
 		%feature("autodoc", "No available documentation.
 
@@ -2636,6 +2778,7 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 		/****************** GetConnected ******************/
+		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
 		%feature("autodoc", "No available documentation.
 
@@ -2646,6 +2789,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "No available documentation.
 
@@ -2661,6 +2805,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
+		/**** md5 signature: 9a9c39e37bdc624dc977efb35a8f1e7f ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of nodes of polyhedron.
 
@@ -2687,6 +2832,7 @@ int
 class MeshVS_SensitiveQuad : public Select3D_SensitiveEntity {
 	public:
 		/****************** MeshVS_SensitiveQuad ******************/
+		/**** md5 signature: cabec64e54089ae532909beb1c0b3d4f ****/
 		%feature("compactdefaultargs") MeshVS_SensitiveQuad;
 		%feature("autodoc", "Creates a new instance and initializes quadrangle vertices with the given points.
 
@@ -2702,6 +2848,7 @@ None
 		 MeshVS_SensitiveQuad(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const TColgp_Array1OfPnt & theQuadVerts);
 
 		/****************** MeshVS_SensitiveQuad ******************/
+		/**** md5 signature: 8164a0cdeb9a24fa1506bde94ab30186 ****/
 		%feature("compactdefaultargs") MeshVS_SensitiveQuad;
 		%feature("autodoc", "Creates a new instance and initializes quadrangle vertices with the given points.
 
@@ -2720,6 +2867,7 @@ None
 		 MeshVS_SensitiveQuad(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, const gp_Pnt & thePnt4);
 
 		/****************** BoundingBox ******************/
+		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
 		%feature("autodoc", "Returns coordinates of the box.
 
@@ -2730,6 +2878,7 @@ Select3D_BndBox3d
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
+		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
 		%feature("autodoc", "Returns center of the box.
 
@@ -2740,6 +2889,7 @@ gp_Pnt
 		virtual gp_Pnt CenterOfGeometry();
 
 		/****************** GetConnected ******************/
+		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
 		%feature("autodoc", "Returns a copy of this sensitive quadrangle.
 
@@ -2750,6 +2900,7 @@ opencascade::handle<Select3D_SensitiveEntity>
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "Checks whether the box overlaps current selecting volume.
 
@@ -2765,6 +2916,7 @@ bool
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
+		/**** md5 signature: 439de2a2c8730a0ea35a2e05a19dcb72 ****/
 		%feature("compactdefaultargs") NbSubElements;
 		%feature("autodoc", "Returns the amount of sub-entities in sensitive.
 
@@ -2791,6 +2943,7 @@ int
 class MeshVS_SensitiveSegment : public Select3D_SensitiveSegment {
 	public:
 		/****************** MeshVS_SensitiveSegment ******************/
+		/**** md5 signature: efc5c2e36dd0f6deb1081e6a21890c91 ****/
 		%feature("compactdefaultargs") MeshVS_SensitiveSegment;
 		%feature("autodoc", "No available documentation.
 
@@ -2823,6 +2976,7 @@ None
 class MeshVS_SymmetricPairHasher {
 	public:
 		/****************** HashCode ******************/
+		/**** md5 signature: aedcb80faa6c1ae5983ea6c9930793b2 ****/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Computes a hash code for the node pair, in the range [1, theupperbound] @param thenodepair the node pair which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
 
@@ -2838,6 +2992,7 @@ int
 		static Standard_Integer HashCode(const MeshVS_NodePair & theNodePair, const Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
+		/**** md5 signature: b067ecbfd671478a0c046f63d5cd878e ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "No available documentation.
 
@@ -2867,6 +3022,7 @@ bool
 class MeshVS_Tool {
 	public:
 		/****************** CreateAspectFillArea3d ******************/
+		/**** md5 signature: b15df73c10a2e3399531964f22de803d ****/
 		%feature("compactdefaultargs") CreateAspectFillArea3d;
 		%feature("autodoc", "Creates fill area aspect with values from drawer according to keys from drawerattribute.
 
@@ -2883,6 +3039,7 @@ opencascade::handle<Graphic3d_AspectFillArea3d>
 		static opencascade::handle<Graphic3d_AspectFillArea3d> CreateAspectFillArea3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Standard_Boolean UseDefaults = Standard_True);
 
 		/****************** CreateAspectFillArea3d ******************/
+		/**** md5 signature: a14dbd7ddfea48c4fc1fe8baa222e55c ****/
 		%feature("compactdefaultargs") CreateAspectFillArea3d;
 		%feature("autodoc", "Creates fill aspect with values from drawer according to keys from drawerattribute and specific material aspect.
 
@@ -2900,6 +3057,7 @@ opencascade::handle<Graphic3d_AspectFillArea3d>
 		static opencascade::handle<Graphic3d_AspectFillArea3d> CreateAspectFillArea3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Graphic3d_MaterialAspect & Mat, const Standard_Boolean UseDefaults = Standard_True);
 
 		/****************** CreateAspectLine3d ******************/
+		/**** md5 signature: 1ac241a34d1948fa04552f4c4d6ca8e7 ****/
 		%feature("compactdefaultargs") CreateAspectLine3d;
 		%feature("autodoc", "Creates line aspect with values from drawer according to keys from drawerattribute.
 
@@ -2916,6 +3074,7 @@ opencascade::handle<Graphic3d_AspectLine3d>
 		static opencascade::handle<Graphic3d_AspectLine3d> CreateAspectLine3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Standard_Boolean UseDefaults = Standard_True);
 
 		/****************** CreateAspectMarker3d ******************/
+		/**** md5 signature: e68390ab1e22d98f8697ae81c2f777f8 ****/
 		%feature("compactdefaultargs") CreateAspectMarker3d;
 		%feature("autodoc", "Creates marker aspect with values from drawer according to keys from drawerattribute.
 
@@ -2932,6 +3091,7 @@ opencascade::handle<Graphic3d_AspectMarker3d>
 		static opencascade::handle<Graphic3d_AspectMarker3d> CreateAspectMarker3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Standard_Boolean UseDefaults = Standard_True);
 
 		/****************** CreateAspectText3d ******************/
+		/**** md5 signature: 697b6464c0903aeb618e0bf708ae3d99 ****/
 		%feature("compactdefaultargs") CreateAspectText3d;
 		%feature("autodoc", "Creates text aspect with values from drawer according to keys from drawerattribute.
 
@@ -2948,6 +3108,7 @@ opencascade::handle<Graphic3d_AspectText3d>
 		static opencascade::handle<Graphic3d_AspectText3d> CreateAspectText3d(const opencascade::handle<MeshVS_Drawer> & theDr, const Standard_Boolean UseDefaults = Standard_True);
 
 		/****************** GetAverageNormal ******************/
+		/**** md5 signature: 8b4f5212e8217a3da2adeb55bd9ba7f8 ****/
 		%feature("compactdefaultargs") GetAverageNormal;
 		%feature("autodoc", "Get an average of normals to non-planar polygon described by these points or compute normal of planar polygon. if the polygon isn't planar, function returns false.
 
@@ -2963,6 +3124,7 @@ bool
 		static Standard_Boolean GetAverageNormal(const TColStd_Array1OfReal & Nodes, gp_Vec & Norm);
 
 		/****************** GetNormal ******************/
+		/**** md5 signature: 5b9243d886e7ebebb545b6a5f139b18e ****/
 		%feature("compactdefaultargs") GetNormal;
 		%feature("autodoc", "Get one of normals to polygon described by these points. if the polygon isn't planar, function returns false.
 
@@ -3014,6 +3176,7 @@ class MeshVS_TwoNodes {
 		int First;
 		int Second;
 		/****************** MeshVS_TwoNodes ******************/
+		/**** md5 signature: 2b6bd8f3a56b7ff4d11d86701a1067ce ****/
 		%feature("compactdefaultargs") MeshVS_TwoNodes;
 		%feature("autodoc", "No available documentation.
 
@@ -3046,6 +3209,7 @@ None
 class MeshVS_DataSource3D : public MeshVS_DataSource {
 	public:
 		/****************** CreatePrismTopology ******************/
+		/**** md5 signature: d6c8e6da9b8f6d56fae463a6502f1c1e ****/
 		%feature("compactdefaultargs") CreatePrismTopology;
 		%feature("autodoc", "No available documentation.
 
@@ -3060,6 +3224,7 @@ opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>
 		static opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> CreatePrismTopology(const Standard_Integer BasePoints);
 
 		/****************** CreatePyramidTopology ******************/
+		/**** md5 signature: a01fe74af1ce1a2fcabf0240543835d0 ****/
 		%feature("compactdefaultargs") CreatePyramidTopology;
 		%feature("autodoc", "No available documentation.
 
@@ -3074,6 +3239,7 @@ opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>
 		static opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> CreatePyramidTopology(const Standard_Integer BasePoints);
 
 		/****************** GetPrismTopology ******************/
+		/**** md5 signature: 1eed36ce2e4dca7ee6cdee762154ec5e ****/
 		%feature("compactdefaultargs") GetPrismTopology;
 		%feature("autodoc", "No available documentation.
 
@@ -3088,6 +3254,7 @@ opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>
 		opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> GetPrismTopology(const Standard_Integer BasePoints);
 
 		/****************** GetPyramidTopology ******************/
+		/**** md5 signature: d68eadfc6f799e8b800964b3dfb63291 ****/
 		%feature("compactdefaultargs") GetPyramidTopology;
 		%feature("autodoc", "No available documentation.
 
@@ -3118,6 +3285,7 @@ opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>
 class MeshVS_DeformedDataSource : public MeshVS_DataSource {
 	public:
 		/****************** MeshVS_DeformedDataSource ******************/
+		/**** md5 signature: 1580b4cec98b6d92485c753e2395227a ****/
 		%feature("compactdefaultargs") MeshVS_DeformedDataSource;
 		%feature("autodoc", "Constructor thenondeformds is canonical non-deformed data source, by which we are able to calculate deformed mesh geometry themagnify is coefficient of displacement magnify.
 
@@ -3133,6 +3301,7 @@ None
 		 MeshVS_DeformedDataSource(const opencascade::handle<MeshVS_DataSource> & theNonDeformDS, const Standard_Real theMagnify);
 
 		/****************** Get3DGeom ******************/
+		/**** md5 signature: 248332cf1504c0563ce79341122b1b05 ****/
 		%feature("compactdefaultargs") Get3DGeom;
 		%feature("autodoc", "No available documentation.
 
@@ -3148,6 +3317,7 @@ NbNodes: int
 		virtual Standard_Boolean Get3DGeom(const Standard_Integer ID, Standard_Integer &OutValue, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> & Data);
 
 		/****************** GetAddr ******************/
+		/**** md5 signature: 9eef9a013ff48901691f937d1fbd84ab ****/
 		%feature("compactdefaultargs") GetAddr;
 		%feature("autodoc", "No available documentation.
 
@@ -3163,6 +3333,7 @@ Standard_Address
 		virtual Standard_Address GetAddr(const Standard_Integer ID, const Standard_Boolean IsElement);
 
 		/****************** GetAllElements ******************/
+		/**** md5 signature: f28cb49754df54daa20b135dbeb6da7e ****/
 		%feature("compactdefaultargs") GetAllElements;
 		%feature("autodoc", "No available documentation.
 
@@ -3173,6 +3344,7 @@ TColStd_PackedMapOfInteger
 		virtual const TColStd_PackedMapOfInteger & GetAllElements();
 
 		/****************** GetAllNodes ******************/
+		/**** md5 signature: cbc5a32f3977b8c638304b70fa2dc0ac ****/
 		%feature("compactdefaultargs") GetAllNodes;
 		%feature("autodoc", "No available documentation.
 
@@ -3183,6 +3355,7 @@ TColStd_PackedMapOfInteger
 		virtual const TColStd_PackedMapOfInteger & GetAllNodes();
 
 		/****************** GetGeom ******************/
+		/**** md5 signature: 58ede1ff023cbc8642d219add50c5f6c ****/
 		%feature("compactdefaultargs") GetGeom;
 		%feature("autodoc", "No available documentation.
 
@@ -3200,6 +3373,7 @@ NbNodes: int
 		virtual Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType & Type);
 
 		/****************** GetGeomType ******************/
+		/**** md5 signature: bb5b618dd799ac6b0b83296054d88ff0 ****/
 		%feature("compactdefaultargs") GetGeomType;
 		%feature("autodoc", "No available documentation.
 
@@ -3216,6 +3390,7 @@ bool
 		virtual Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType & Type);
 
 		/****************** GetMagnify ******************/
+		/**** md5 signature: c25f154c290857e0adeac01588dbd60a ****/
 		%feature("compactdefaultargs") GetMagnify;
 		%feature("autodoc", "With this methods you can read and change magnify coefficient of nodal displacements.
 
@@ -3226,6 +3401,7 @@ float
 		Standard_Real GetMagnify();
 
 		/****************** GetNodesByElement ******************/
+		/**** md5 signature: d551dcad637c3b3952d4c02e8d7a1e94 ****/
 		%feature("compactdefaultargs") GetNodesByElement;
 		%feature("autodoc", "No available documentation.
 
@@ -3241,6 +3417,7 @@ NbNodes: int
 		virtual Standard_Boolean GetNodesByElement(const Standard_Integer ID, TColStd_Array1OfInteger & NodeIDs, Standard_Integer &OutValue);
 
 		/****************** GetNonDeformedDataSource ******************/
+		/**** md5 signature: 1fb350b85c910da319116b42f8799dba ****/
 		%feature("compactdefaultargs") GetNonDeformedDataSource;
 		%feature("autodoc", "With this methods you can read and change internal canonical data source.
 
@@ -3251,6 +3428,7 @@ opencascade::handle<MeshVS_DataSource>
 		opencascade::handle<MeshVS_DataSource> GetNonDeformedDataSource();
 
 		/****************** GetVector ******************/
+		/**** md5 signature: 6068e33fec73a5ca0842696db331b0fa ****/
 		%feature("compactdefaultargs") GetVector;
 		%feature("autodoc", "This method returns vector ( vect ) assigned to node number id.
 
@@ -3266,6 +3444,7 @@ bool
 		Standard_Boolean GetVector(const Standard_Integer ID, gp_Vec & Vect);
 
 		/****************** GetVectors ******************/
+		/**** md5 signature: 0a7de57afdae824e78b66d772b516c08 ****/
 		%feature("compactdefaultargs") GetVectors;
 		%feature("autodoc", "This method returns map of nodal displacement vectors.
 
@@ -3276,6 +3455,7 @@ MeshVS_DataMapOfIntegerVector
 		const MeshVS_DataMapOfIntegerVector & GetVectors();
 
 		/****************** SetMagnify ******************/
+		/**** md5 signature: 66f2f51fb8010e769c899b3529f183d0 ****/
 		%feature("compactdefaultargs") SetMagnify;
 		%feature("autodoc", "No available documentation.
 
@@ -3290,6 +3470,7 @@ None
 		void SetMagnify(const Standard_Real theMagnify);
 
 		/****************** SetNonDeformedDataSource ******************/
+		/**** md5 signature: f4016f982dace6441c1f73e6a09237e8 ****/
 		%feature("compactdefaultargs") SetNonDeformedDataSource;
 		%feature("autodoc", "No available documentation.
 
@@ -3304,6 +3485,7 @@ None
 		void SetNonDeformedDataSource(const opencascade::handle<MeshVS_DataSource> & theDS);
 
 		/****************** SetVector ******************/
+		/**** md5 signature: 16ab9f734e3df5f98c352a22ab233a69 ****/
 		%feature("compactdefaultargs") SetVector;
 		%feature("autodoc", "This method sets vector ( vect ) assigned to node number id.
 
@@ -3319,6 +3501,7 @@ None
 		void SetVector(const Standard_Integer ID, const gp_Vec & Vect);
 
 		/****************** SetVectors ******************/
+		/**** md5 signature: bd08de1933618bdd4f69df8b9cb95030 ****/
 		%feature("compactdefaultargs") SetVectors;
 		%feature("autodoc", "This method sets map of nodal displacement vectors (map).
 
@@ -3349,6 +3532,7 @@ None
 class MeshVS_ElementalColorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** MeshVS_ElementalColorPrsBuilder ******************/
+		/**** md5 signature: 868ca6d00fa839d89fb857c48906a4a4 ****/
 		%feature("compactdefaultargs") MeshVS_ElementalColorPrsBuilder;
 		%feature("autodoc", "Constructor.
 
@@ -3371,6 +3555,7 @@ None
 		 MeshVS_ElementalColorPrsBuilder(const opencascade::handle<MeshVS_Mesh> & Parent, int Flags = MeshVS_DMF_ElementalColorDataPrs, const opencascade::handle<MeshVS_DataSource> & DS = 0, const Standard_Integer Id = -1, int Priority = MeshVS_BP_ElemColor);
 
 		/****************** Build ******************/
+		/**** md5 signature: 31ffdae6ff383eb79244b2dcd10b995a ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds presentation of elements with assigned colors.
 
@@ -3389,6 +3574,7 @@ None
 		virtual void Build(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Boolean IsElement, const Standard_Integer DisplayMode);
 
 		/****************** GetColor1 ******************/
+		/**** md5 signature: 316734a949c246eb7006c2c1e89d5443 ****/
 		%feature("compactdefaultargs") GetColor1;
 		%feature("autodoc", "Returns color assigned with element number id.
 
@@ -3404,6 +3590,7 @@ bool
 		Standard_Boolean GetColor1(const Standard_Integer ID, Quantity_Color & theColor);
 
 		/****************** GetColor2 ******************/
+		/**** md5 signature: 0baf105ae378c11796eb9e8f104400ab ****/
 		%feature("compactdefaultargs") GetColor2;
 		%feature("autodoc", "Returns colors assigned with element number id.
 
@@ -3419,6 +3606,7 @@ bool
 		Standard_Boolean GetColor2(const Standard_Integer ID, MeshVS_TwoColors & theColor);
 
 		/****************** GetColor2 ******************/
+		/**** md5 signature: 088bee49a807a668ccd88f1f7fe4d23f ****/
 		%feature("compactdefaultargs") GetColor2;
 		%feature("autodoc", "Returns colors assigned with element number id thecolor1 is the front element color thecolor2 is the back element color.
 
@@ -3435,6 +3623,7 @@ bool
 		Standard_Boolean GetColor2(const Standard_Integer ID, Quantity_Color & theColor1, Quantity_Color & theColor2);
 
 		/****************** GetColors1 ******************/
+		/**** md5 signature: 0f02cc1a51ab836c612f279711433a7c ****/
 		%feature("compactdefaultargs") GetColors1;
 		%feature("autodoc", "Returns map of colors same for front and back side of face.
 
@@ -3445,6 +3634,7 @@ MeshVS_DataMapOfIntegerColor
 		const MeshVS_DataMapOfIntegerColor & GetColors1();
 
 		/****************** GetColors2 ******************/
+		/**** md5 signature: 77621e87abd6e6c57ed8dbb36732483d ****/
 		%feature("compactdefaultargs") GetColors2;
 		%feature("autodoc", "Returns map of different colors for front and back side of face.
 
@@ -3455,6 +3645,7 @@ MeshVS_DataMapOfIntegerTwoColors
 		const MeshVS_DataMapOfIntegerTwoColors & GetColors2();
 
 		/****************** HasColors1 ******************/
+		/**** md5 signature: 80d604f29a20acc630c1afb7f0fd734b ****/
 		%feature("compactdefaultargs") HasColors1;
 		%feature("autodoc", "Returns true, if map of colors isn't empty.
 
@@ -3465,6 +3656,7 @@ bool
 		Standard_Boolean HasColors1();
 
 		/****************** HasColors2 ******************/
+		/**** md5 signature: 66838064007421f60ad8491aa0504bd1 ****/
 		%feature("compactdefaultargs") HasColors2;
 		%feature("autodoc", "Returns true, if map isn't empty.
 
@@ -3475,6 +3667,7 @@ bool
 		Standard_Boolean HasColors2();
 
 		/****************** SetColor1 ******************/
+		/**** md5 signature: f16638a050a01c8524265d0d5d384433 ****/
 		%feature("compactdefaultargs") SetColor1;
 		%feature("autodoc", "Sets color assigned with element number id.
 
@@ -3490,6 +3683,7 @@ None
 		void SetColor1(const Standard_Integer ID, const Quantity_Color & theColor);
 
 		/****************** SetColor2 ******************/
+		/**** md5 signature: 4c73cea48e1f219df19d0fa40005fa03 ****/
 		%feature("compactdefaultargs") SetColor2;
 		%feature("autodoc", "Sets colors assigned with element number id.
 
@@ -3505,6 +3699,7 @@ None
 		void SetColor2(const Standard_Integer ID, const MeshVS_TwoColors & theTwoColors);
 
 		/****************** SetColor2 ******************/
+		/**** md5 signature: 8fee8ff6c0e3ac27e6ab8015178c6b10 ****/
 		%feature("compactdefaultargs") SetColor2;
 		%feature("autodoc", "Sets color assigned with element number id thecolor1 is the front element color thecolor2 is the back element color.
 
@@ -3521,6 +3716,7 @@ None
 		void SetColor2(const Standard_Integer ID, const Quantity_Color & theColor1, const Quantity_Color & theColor2);
 
 		/****************** SetColors1 ******************/
+		/**** md5 signature: 1145b5bf67847c6cf5eec67b0cf40f0b ****/
 		%feature("compactdefaultargs") SetColors1;
 		%feature("autodoc", "Sets map of colors same for front and back side of face.
 
@@ -3535,6 +3731,7 @@ None
 		void SetColors1(const MeshVS_DataMapOfIntegerColor & Map);
 
 		/****************** SetColors2 ******************/
+		/**** md5 signature: e6aa762d48996cddc42fbef31789c1fe ****/
 		%feature("compactdefaultargs") SetColors2;
 		%feature("autodoc", "Sets map of different colors for front and back side of face.
 
@@ -3565,6 +3762,7 @@ None
 class MeshVS_MeshPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** MeshVS_MeshPrsBuilder ******************/
+		/**** md5 signature: 5ded4c0d5d5f7b37e0268457f9a79fb8 ****/
 		%feature("compactdefaultargs") MeshVS_MeshPrsBuilder;
 		%feature("autodoc", "Creates builder with certain display mode flags, data source, id and priority.
 
@@ -3587,6 +3785,7 @@ None
 		 MeshVS_MeshPrsBuilder(const opencascade::handle<MeshVS_Mesh> & Parent, int Flags = MeshVS_DMF_OCCMask, const opencascade::handle<MeshVS_DataSource> & DS = 0, const Standard_Integer Id = -1, int Priority = MeshVS_BP_Mesh);
 
 		/****************** AddVolumePrs ******************/
+		/**** md5 signature: a53d326bac8c80ed690cb15f4370a3a2 ****/
 		%feature("compactdefaultargs") AddVolumePrs;
 		%feature("autodoc", "Add to array polygons or polylines representing volume.
 
@@ -3608,6 +3807,7 @@ None
 		static void AddVolumePrs(const opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> & Topo, const TColStd_Array1OfReal & Nodes, const Standard_Integer NbNodes, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Array, const Standard_Boolean IsReflected, const Standard_Boolean IsShrinked, const Standard_Boolean IsSelect, const Standard_Real ShrinkCoef);
 
 		/****************** Build ******************/
+		/**** md5 signature: 31ffdae6ff383eb79244b2dcd10b995a ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds base mesh presentation by calling the methods below.
 
@@ -3626,6 +3826,7 @@ None
 		virtual void Build(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Boolean IsElement, const Standard_Integer DisplayMode);
 
 		/****************** BuildElements ******************/
+		/**** md5 signature: 54614eeea53d9adec28be04fed575e38 ****/
 		%feature("compactdefaultargs") BuildElements;
 		%feature("autodoc", "Builds elements presentation.
 
@@ -3643,6 +3844,7 @@ None
 		virtual void BuildElements(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Integer DisplayMode);
 
 		/****************** BuildHilightPrs ******************/
+		/**** md5 signature: 404a7f1a8db878b685edfaf3dea16d95 ****/
 		%feature("compactdefaultargs") BuildHilightPrs;
 		%feature("autodoc", "Builds presentation of hilighted entity.
 
@@ -3659,6 +3861,7 @@ None
 		virtual void BuildHilightPrs(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, const Standard_Boolean IsElement);
 
 		/****************** BuildNodes ******************/
+		/**** md5 signature: 21d3c7340d7887823b24003fdc6855af ****/
 		%feature("compactdefaultargs") BuildNodes;
 		%feature("autodoc", "Builds nodes presentation.
 
@@ -3676,6 +3879,7 @@ None
 		virtual void BuildNodes(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Integer DisplayMode);
 
 		/****************** HowManyPrimitives ******************/
+		/**** md5 signature: e773806eeb215dffd1428634f52b00ca ****/
 		%feature("compactdefaultargs") HowManyPrimitives;
 		%feature("autodoc", "Calculate how many polygons or polylines are necessary to draw passed topology.
 
@@ -3710,6 +3914,7 @@ Bounds: int
 class MeshVS_NodalColorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** MeshVS_NodalColorPrsBuilder ******************/
+		/**** md5 signature: 985cc9c67bf650613585f93c94c8f618 ****/
 		%feature("compactdefaultargs") MeshVS_NodalColorPrsBuilder;
 		%feature("autodoc", "No available documentation.
 
@@ -3732,6 +3937,7 @@ None
 		 MeshVS_NodalColorPrsBuilder(const opencascade::handle<MeshVS_Mesh> & Parent, int Flags = MeshVS_DMF_NodalColorDataPrs, const opencascade::handle<MeshVS_DataSource> & DS = 0, const Standard_Integer Id = -1, int Priority = MeshVS_BP_NodalColor);
 
 		/****************** AddVolumePrs ******************/
+		/**** md5 signature: 21ad97fc7d1f49fb246d5e04f8a23b29 ****/
 		%feature("compactdefaultargs") AddVolumePrs;
 		%feature("autodoc", "Add to array polygons or polylines representing volume.
 
@@ -3753,6 +3959,7 @@ None
 		void AddVolumePrs(const opencascade::handle<MeshVS_HArray1OfSequenceOfInteger> & theTopo, const TColStd_Array1OfInteger & theNodes, const TColStd_Array1OfReal & theCoords, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & theArray, const Standard_Boolean theIsShaded, const Standard_Integer theNbColors, const Standard_Integer theNbTexColors, const Standard_Real theColorRatio);
 
 		/****************** Build ******************/
+		/**** md5 signature: 31ffdae6ff383eb79244b2dcd10b995a ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds presentation of nodes with assigned color.
 
@@ -3771,6 +3978,7 @@ None
 		virtual void Build(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Boolean IsElement, const Standard_Integer DisplayMode);
 
 		/****************** GetColor ******************/
+		/**** md5 signature: 2d7a7e331945dc2dd8e3d91c84e4d855 ****/
 		%feature("compactdefaultargs") GetColor;
 		%feature("autodoc", "Returns color assigned to single node.
 
@@ -3786,6 +3994,7 @@ bool
 		Standard_Boolean GetColor(const Standard_Integer ID, Quantity_Color & theColor);
 
 		/****************** GetColorMap ******************/
+		/**** md5 signature: 391549c09e812bde473d08f4bc848b7b ****/
 		%feature("compactdefaultargs") GetColorMap;
 		%feature("autodoc", "Return colors used for texrture presentation.
 
@@ -3796,6 +4005,7 @@ Aspect_SequenceOfColor
 		const Aspect_SequenceOfColor & GetColorMap();
 
 		/****************** GetColors ******************/
+		/**** md5 signature: 91df126a989fe0b5dde0f0fa185a9923 ****/
 		%feature("compactdefaultargs") GetColors;
 		%feature("autodoc", "Returns map of colors assigned to nodes.
 
@@ -3806,6 +4016,7 @@ MeshVS_DataMapOfIntegerColor
 		const MeshVS_DataMapOfIntegerColor & GetColors();
 
 		/****************** GetInvalidColor ******************/
+		/**** md5 signature: fadb3ec9710e50245d895eab1b9ccd53 ****/
 		%feature("compactdefaultargs") GetInvalidColor;
 		%feature("autodoc", "Return color representing invalid texture coordinate (laying outside range [0, 1]).
 
@@ -3816,6 +4027,7 @@ Quantity_Color
 		Quantity_Color GetInvalidColor();
 
 		/****************** GetTextureCoord ******************/
+		/**** md5 signature: fc1058fecaa4f73c3763697750a10397 ****/
 		%feature("compactdefaultargs") GetTextureCoord;
 		%feature("autodoc", "Return correspondence between node ids and texture coordinate (range [0, 1]).
 
@@ -3830,6 +4042,7 @@ float
 		Standard_Real GetTextureCoord(const Standard_Integer theID);
 
 		/****************** GetTextureCoords ******************/
+		/**** md5 signature: 996d3495372c168b45030e9e7155d751 ****/
 		%feature("compactdefaultargs") GetTextureCoords;
 		%feature("autodoc", "Get correspondence between node ids and texture coordinates (range [0, 1]).
 
@@ -3840,6 +4053,7 @@ TColStd_DataMapOfIntegerReal
 		const TColStd_DataMapOfIntegerReal & GetTextureCoords();
 
 		/****************** HasColors ******************/
+		/**** md5 signature: 65ba7837088c84d78ae17f8fd49f49fc ****/
 		%feature("compactdefaultargs") HasColors;
 		%feature("autodoc", "Returns true, if map isn't empty.
 
@@ -3850,6 +4064,7 @@ bool
 		Standard_Boolean HasColors();
 
 		/****************** IsUseTexture ******************/
+		/**** md5 signature: c8f7a210ef2beb1aceab46ef9f6d94e4 ****/
 		%feature("compactdefaultargs") IsUseTexture;
 		%feature("autodoc", "Verify whether texture is used to build presentation.
 
@@ -3860,6 +4075,7 @@ bool
 		Standard_Boolean IsUseTexture();
 
 		/****************** SetColor ******************/
+		/**** md5 signature: 28c479cc3b6ea8981a12a4b07d4cdbab ****/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "Sets color assigned to single node.
 
@@ -3875,6 +4091,7 @@ None
 		void SetColor(const Standard_Integer ID, const Quantity_Color & theColor);
 
 		/****************** SetColorMap ******************/
+		/**** md5 signature: c91cbeb13214ca4c7dfedf0ef58a1007 ****/
 		%feature("compactdefaultargs") SetColorMap;
 		%feature("autodoc", "Set colors to be used for texrture presentation thecolors - colors for valid coordinates (laying in range [0, 1]).
 
@@ -3889,6 +4106,7 @@ None
 		void SetColorMap(const Aspect_SequenceOfColor & theColors);
 
 		/****************** SetColors ******************/
+		/**** md5 signature: 7fa1791ec1f2198e20cc531a89ec67e6 ****/
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "Sets map of colors assigned to nodes.
 
@@ -3903,6 +4121,7 @@ None
 		void SetColors(const MeshVS_DataMapOfIntegerColor & Map);
 
 		/****************** SetInvalidColor ******************/
+		/**** md5 signature: 1ef0ceb8c20a55bffa37ac95b9992618 ****/
 		%feature("compactdefaultargs") SetInvalidColor;
 		%feature("autodoc", "Set color representing invalid texture coordinate (laying outside range [0, 1]).
 
@@ -3917,6 +4136,7 @@ None
 		void SetInvalidColor(const Quantity_Color & theInvalidColor);
 
 		/****************** SetTextureCoord ******************/
+		/**** md5 signature: 056cb0a9015e59373e314cd92ecee7af ****/
 		%feature("compactdefaultargs") SetTextureCoord;
 		%feature("autodoc", "Specify correspondence between node id and texture coordinate (range [0, 1]).
 
@@ -3932,6 +4152,7 @@ None
 		void SetTextureCoord(const Standard_Integer theID, const Standard_Real theCoord);
 
 		/****************** SetTextureCoords ******************/
+		/**** md5 signature: 642e16bca0d45f6c91ff3696d5ff9134 ****/
 		%feature("compactdefaultargs") SetTextureCoords;
 		%feature("autodoc", "Specify correspondence between node ids and texture coordinates (range [0, 1]).
 
@@ -3946,6 +4167,7 @@ None
 		void SetTextureCoords(const TColStd_DataMapOfIntegerReal & theMap);
 
 		/****************** UseTexture ******************/
+		/**** md5 signature: 05bcc5f219da4328bcdf495738f08ceb ****/
 		%feature("compactdefaultargs") UseTexture;
 		%feature("autodoc", "Specify whether texture must be used to build presentation.
 
@@ -3976,6 +4198,7 @@ None
 class MeshVS_TextPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** MeshVS_TextPrsBuilder ******************/
+		/**** md5 signature: c75545b76161764142de559166018b6a ****/
 		%feature("compactdefaultargs") MeshVS_TextPrsBuilder;
 		%feature("autodoc", "No available documentation.
 
@@ -4000,6 +4223,7 @@ None
 		 MeshVS_TextPrsBuilder(const opencascade::handle<MeshVS_Mesh> & Parent, const Standard_Real Height, const Quantity_Color & Color, int Flags = MeshVS_DMF_TextDataPrs, const opencascade::handle<MeshVS_DataSource> & DS = 0, const Standard_Integer Id = -1, int Priority = MeshVS_BP_Text);
 
 		/****************** Build ******************/
+		/**** md5 signature: 16c3e861f91dde5189444492d787571f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds presentation of text data.
 
@@ -4018,6 +4242,7 @@ None
 		virtual void Build(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Boolean IsElement, const Standard_Integer theDisplayMode);
 
 		/****************** GetText ******************/
+		/**** md5 signature: 690073f8769705d72981e33275ee059c ****/
 		%feature("compactdefaultargs") GetText;
 		%feature("autodoc", "Returns text assigned with single node or element.
 
@@ -4034,6 +4259,7 @@ bool
 		Standard_Boolean GetText(const Standard_Boolean IsElement, const Standard_Integer ID, TCollection_AsciiString & Text);
 
 		/****************** GetTexts ******************/
+		/**** md5 signature: 860b64bb07e9b4ca7a665e7c37cf934f ****/
 		%feature("compactdefaultargs") GetTexts;
 		%feature("autodoc", "Returns map of text assigned with nodes ( iselement = false ) or elements ( iselement = true ).
 
@@ -4048,6 +4274,7 @@ MeshVS_DataMapOfIntegerAsciiString
 		const MeshVS_DataMapOfIntegerAsciiString & GetTexts(const Standard_Boolean IsElement);
 
 		/****************** HasTexts ******************/
+		/**** md5 signature: 9a3c2af6a0ace364b34161202e646171 ****/
 		%feature("compactdefaultargs") HasTexts;
 		%feature("autodoc", "Returns true if map isn't empty.
 
@@ -4062,6 +4289,7 @@ bool
 		Standard_Boolean HasTexts(const Standard_Boolean IsElement);
 
 		/****************** SetText ******************/
+		/**** md5 signature: be01fdae7d9106e2dfbc1e0bc67adcfe ****/
 		%feature("compactdefaultargs") SetText;
 		%feature("autodoc", "Sets text assigned with single node or element.
 
@@ -4078,6 +4306,7 @@ None
 		void SetText(const Standard_Boolean IsElement, const Standard_Integer ID, const TCollection_AsciiString & Text);
 
 		/****************** SetTexts ******************/
+		/**** md5 signature: 417e71af0ee08340a68f99a92c30842d ****/
 		%feature("compactdefaultargs") SetTexts;
 		%feature("autodoc", "Sets map of text assigned with nodes or elements.
 
@@ -4109,6 +4338,7 @@ None
 class MeshVS_VectorPrsBuilder : public MeshVS_PrsBuilder {
 	public:
 		/****************** MeshVS_VectorPrsBuilder ******************/
+		/**** md5 signature: 5a294477d95f03d7d047542386b8df19 ****/
 		%feature("compactdefaultargs") MeshVS_VectorPrsBuilder;
 		%feature("autodoc", "No available documentation.
 
@@ -4135,6 +4365,7 @@ None
 		 MeshVS_VectorPrsBuilder(const opencascade::handle<MeshVS_Mesh> & Parent, const Standard_Real MaxLength, const Quantity_Color & VectorColor, int Flags = MeshVS_DMF_VectorDataPrs, const opencascade::handle<MeshVS_DataSource> & DS = 0, const Standard_Integer Id = -1, int Priority = MeshVS_BP_Vector, const Standard_Boolean IsSimplePrs = Standard_False);
 
 		/****************** Build ******************/
+		/**** md5 signature: 16c3e861f91dde5189444492d787571f ****/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Builds vector data presentation.
 
@@ -4153,6 +4384,7 @@ None
 		virtual void Build(const opencascade::handle<Prs3d_Presentation> & Prs, const TColStd_PackedMapOfInteger & IDs, TColStd_PackedMapOfInteger & IDsToExclude, const Standard_Boolean IsElement, const Standard_Integer theDisplayMode);
 
 		/****************** DrawVector ******************/
+		/**** md5 signature: 045b3dcc631565562bb2df5f6368f32e ****/
 		%feature("compactdefaultargs") DrawVector;
 		%feature("autodoc", "Adds to array of polygons and polylines some primitive representing single vector.
 
@@ -4173,6 +4405,7 @@ None
 		void DrawVector(const gp_Trsf & theTrsf, const Standard_Real Length, const Standard_Real MaxLength, const TColgp_Array1OfPnt & ArrowPoints, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Lines, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & ArrowLines, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Triangles);
 
 		/****************** GetMinMaxVectorValue ******************/
+		/**** md5 signature: 251df3ee4048171257895f593b3e51df ****/
 		%feature("compactdefaultargs") GetMinMaxVectorValue;
 		%feature("autodoc", "Calculates minimal and maximal length of vectors in map ( nodal, if iselement = false or elemental, if iselement = true ).
 
@@ -4188,6 +4421,7 @@ MaxValue: float
 		void GetMinMaxVectorValue(const Standard_Boolean IsElement, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** GetVector ******************/
+		/**** md5 signature: 79033433e30156afb5e89b07eb819b01 ****/
 		%feature("compactdefaultargs") GetVector;
 		%feature("autodoc", "Returns vector assigned with certain node or element.
 
@@ -4204,6 +4438,7 @@ bool
 		Standard_Boolean GetVector(const Standard_Boolean IsElement, const Standard_Integer ID, gp_Vec & Vect);
 
 		/****************** GetVectors ******************/
+		/**** md5 signature: 1cfbe565a9df501d7ee76dd52e0301b3 ****/
 		%feature("compactdefaultargs") GetVectors;
 		%feature("autodoc", "Returns map of vectors assigned with nodes or elements.
 
@@ -4218,6 +4453,7 @@ MeshVS_DataMapOfIntegerVector
 		const MeshVS_DataMapOfIntegerVector & GetVectors(const Standard_Boolean IsElement);
 
 		/****************** HasVectors ******************/
+		/**** md5 signature: 7638ed98bb71c24915acaf2b229ca905 ****/
 		%feature("compactdefaultargs") HasVectors;
 		%feature("autodoc", "Returns true, if map isn't empty.
 
@@ -4232,6 +4468,7 @@ bool
 		Standard_Boolean HasVectors(const Standard_Boolean IsElement);
 
 		/****************** SetSimplePrsMode ******************/
+		/**** md5 signature: 7e5ce5ef286c9353a831233b580d92ba ****/
 		%feature("compactdefaultargs") SetSimplePrsMode;
 		%feature("autodoc", "Sets flag that indicates is simple vector arrow mode uses or not default value is false.
 
@@ -4246,6 +4483,7 @@ None
 		void SetSimplePrsMode(const Standard_Boolean IsSimpleArrow);
 
 		/****************** SetSimplePrsParams ******************/
+		/**** md5 signature: c462cc17e2cd1d6421c9d60375dffa34 ****/
 		%feature("compactdefaultargs") SetSimplePrsParams;
 		%feature("autodoc", "Sets parameters of simple vector arrwo presentation thelinewidthparam - coefficient of vector line width (to draw line instead of arrow) thestartparam and theendparam parameters of start and end of thickened ends position of thickening calculates according to parameters and maximum vector length default values are: thelinewidthparam = 2.5 thestartparam = 0.85 theendparam = 0.95.
 
@@ -4262,6 +4500,7 @@ None
 		void SetSimplePrsParams(const Standard_Real theLineWidthParam, const Standard_Real theStartParam, const Standard_Real theEndParam);
 
 		/****************** SetVector ******************/
+		/**** md5 signature: bebdb47d3d97fae7fd6c1765acd455aa ****/
 		%feature("compactdefaultargs") SetVector;
 		%feature("autodoc", "Sets vector assigned with certain node or element.
 
@@ -4278,6 +4517,7 @@ None
 		void SetVector(const Standard_Boolean IsElement, const Standard_Integer ID, const gp_Vec & Vect);
 
 		/****************** SetVectors ******************/
+		/**** md5 signature: bc95fae69f03488582eb83dfd6c4fa50 ****/
 		%feature("compactdefaultargs") SetVectors;
 		%feature("autodoc", "Sets map of vectors assigned with nodes or elements.
 
@@ -4293,6 +4533,7 @@ None
 		void SetVectors(const Standard_Boolean IsElement, const MeshVS_DataMapOfIntegerVector & Map);
 
 		/****************** calculateArrow ******************/
+		/**** md5 signature: 8706342719c42713485fdd4a73264c7d ****/
 		%feature("compactdefaultargs") calculateArrow;
 		%feature("autodoc", "Calculates points of arrow presentation.
 

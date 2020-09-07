@@ -83,6 +83,7 @@ from OCC.Core.Exception import *
 class BRepProj_Projection {
 	public:
 		/****************** BRepProj_Projection ******************/
+		/**** md5 signature: 05a528b4fa808ed3e5606951be3f247c ****/
 		%feature("compactdefaultargs") BRepProj_Projection;
 		%feature("autodoc", "Makes a cylindrical projection of wire om shape.
 
@@ -99,6 +100,7 @@ None
 		 BRepProj_Projection(const TopoDS_Shape & Wire, const TopoDS_Shape & Shape, const gp_Dir & D);
 
 		/****************** BRepProj_Projection ******************/
+		/**** md5 signature: 66694c5d0609b9bd950faaceb10748b1 ****/
 		%feature("compactdefaultargs") BRepProj_Projection;
 		%feature("autodoc", "Makes a conical projection of wire om shape.
 
@@ -115,6 +117,7 @@ None
 		 BRepProj_Projection(const TopoDS_Shape & Wire, const TopoDS_Shape & Shape, const gp_Pnt & P);
 
 		/****************** Current ******************/
+		/**** md5 signature: f1373d555d44b8af5f09b63aa71dbac4 ****/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Returns the current result wire.
 
@@ -125,6 +128,7 @@ TopoDS_Wire
 		TopoDS_Wire Current();
 
 		/****************** Init ******************/
+		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Resets the iterator by resulting wires.
 
@@ -135,6 +139,7 @@ None
 		void Init();
 
 		/****************** IsDone ******************/
+		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Returns false if the section failed.
 
@@ -145,6 +150,7 @@ bool
 		Standard_Boolean IsDone();
 
 		/****************** More ******************/
+		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Returns true if there is a current result wire.
 
@@ -155,6 +161,7 @@ bool
 		Standard_Boolean More();
 
 		/****************** Next ******************/
+		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Move to the next result wire.
 
@@ -165,6 +172,7 @@ None
 		void Next();
 
 		/****************** Shape ******************/
+		/**** md5 signature: 1b3c03b494fbe92ca2dc8e2599c5e3a1 ****/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Returns the complete result as compound of wires.
 

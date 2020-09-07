@@ -130,6 +130,7 @@ typedef NCollection_DataMap<Standard_Integer, opencascade::handle<Adaptor2d_HCur
 class ChFiKPart_ComputeData {
 	public:
 		/****************** Compute ******************/
+		/**** md5 signature: 1167d77608a1449aee3092d8a823be80 ****/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Computes a simple fillet in several particular cases.
 
@@ -151,6 +152,7 @@ bool
 		static Standard_Boolean Compute(TopOpeBRepDS_DataStructure & DStr, opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const opencascade::handle<ChFiDS_Spine> & Sp, const Standard_Integer Iedge);
 
 		/****************** ComputeCorner ******************/
+		/**** md5 signature: 4e661a9eb2006f7b6d6fb9b7c223ee31 ****/
 		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "Computes a toric or spheric corner fillet.
 
@@ -178,6 +180,7 @@ bool
 		static Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure & DStr, const opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const TopAbs_Orientation OrFace1, const TopAbs_Orientation OrFace2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const Standard_Real minRad, const Standard_Real majRad, const gp_Pnt2d & P1S1, const gp_Pnt2d & P2S1, const gp_Pnt2d & P1S2, const gp_Pnt2d & P2S2);
 
 		/****************** ComputeCorner ******************/
+		/**** md5 signature: 7e17d6233f97f8c3d7241e4c6005f843 ****/
 		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "Computes spheric corner fillet with non iso pcurve on s2.
 
@@ -203,6 +206,7 @@ bool
 		static Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure & DStr, const opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_HSurface> & S1, const opencascade::handle<Adaptor3d_HSurface> & S2, const TopAbs_Orientation OrFace1, const TopAbs_Orientation OrFace2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const Standard_Real Rad, const gp_Pnt2d & PS1, const gp_Pnt2d & P1S2, const gp_Pnt2d & P2S2);
 
 		/****************** ComputeCorner ******************/
+		/**** md5 signature: cbc142609e66adc363ea0e77e7b9cf21 ****/
 		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "Computes a toric corner rotule.
 

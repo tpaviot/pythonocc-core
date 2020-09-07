@@ -84,6 +84,7 @@ from OCC.Core.Exception import *
 class Hermit {
 	public:
 		/****************** Solution ******************/
+		/**** md5 signature: 09f17358299a55b10621c9b761fd7966 ****/
 		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "Returns the correct spline a(u) which will be multiplicated with bs later.
 
@@ -102,6 +103,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom_BSplineCurve> & BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
 
 		/****************** Solution ******************/
+		/**** md5 signature: 49129ffe8056f7bced41bcc0d1d841e1 ****/
 		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "Returns the correct spline a(u) which will be multiplicated with bs later.
 
@@ -120,6 +122,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom2d_BSplineCurve> & BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
 
 		/****************** Solutionbis ******************/
+		/**** md5 signature: 3bce282eb0b1307dc53349f35dd12afa ****/
 		%feature("compactdefaultargs") Solutionbis;
 		%feature("autodoc", "Returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
 

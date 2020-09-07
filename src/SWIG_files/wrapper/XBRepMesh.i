@@ -96,6 +96,7 @@ from OCC.Core.Exception import *
 class XBRepMesh {
 	public:
 		/****************** Discret ******************/
+		/**** md5 signature: 2d40e0c47db8d58631623439c9d30c12 ****/
 		%feature("compactdefaultargs") Discret;
 		%feature("autodoc", "No available documentation.
 

@@ -114,6 +114,7 @@ from OCC.Core.Exception import *
 class BinMDataStd {
 	public:
 		/****************** AddDrivers ******************/
+		/**** md5 signature: 3b175e0207523895c819eaf3e413231f ****/
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "Adds the attribute drivers to <thedrivertable>.
 
@@ -147,6 +148,7 @@ None
 class BinMDataStd_AsciiStringDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_AsciiStringDriver ******************/
+		/**** md5 signature: 188836d86692645c787f700473cd4701 ****/
 		%feature("compactdefaultargs") BinMDataStd_AsciiStringDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -161,6 +163,7 @@ None
 		 BinMDataStd_AsciiStringDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -171,6 +174,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "Persistent -> transient (retrieve).
 
@@ -187,6 +191,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "Transient -> persistent (store).
 
@@ -219,6 +224,7 @@ None
 class BinMDataStd_BooleanArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_BooleanArrayDriver ******************/
+		/**** md5 signature: f5bb0d94c6ce1700a4890524ec6a435a ****/
 		%feature("compactdefaultargs") BinMDataStd_BooleanArrayDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -233,6 +239,7 @@ None
 		 BinMDataStd_BooleanArrayDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -243,6 +250,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -259,6 +267,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -291,6 +300,7 @@ None
 class BinMDataStd_BooleanListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_BooleanListDriver ******************/
+		/**** md5 signature: 27642213d0e2b698c2ecd0a9d507e751 ****/
 		%feature("compactdefaultargs") BinMDataStd_BooleanListDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -305,6 +315,7 @@ None
 		 BinMDataStd_BooleanListDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -315,6 +326,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -331,6 +343,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -363,6 +376,7 @@ None
 class BinMDataStd_ByteArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ByteArrayDriver ******************/
+		/**** md5 signature: 7421ceb2628d7ffe6b7d210929b3f449 ****/
 		%feature("compactdefaultargs") BinMDataStd_ByteArrayDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -377,6 +391,7 @@ None
 		 BinMDataStd_ByteArrayDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -387,6 +402,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -403,6 +419,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -435,6 +452,7 @@ None
 class BinMDataStd_CommentDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_CommentDriver ******************/
+		/**** md5 signature: b6d47276490452e418306c1bb0f1a1d6 ****/
 		%feature("compactdefaultargs") BinMDataStd_CommentDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -449,6 +467,7 @@ None
 		 BinMDataStd_CommentDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -459,6 +478,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -475,6 +495,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -507,6 +528,7 @@ None
 class BinMDataStd_DirectoryDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_DirectoryDriver ******************/
+		/**** md5 signature: a42115436536bc68eb25e46f08ce9a26 ****/
 		%feature("compactdefaultargs") BinMDataStd_DirectoryDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -521,6 +543,7 @@ None
 		 BinMDataStd_DirectoryDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -531,6 +554,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -547,6 +571,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -579,6 +604,7 @@ None
 class BinMDataStd_ExpressionDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ExpressionDriver ******************/
+		/**** md5 signature: 44b8f4421d10d38a72ec459a6d734809 ****/
 		%feature("compactdefaultargs") BinMDataStd_ExpressionDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -593,6 +619,7 @@ None
 		 BinMDataStd_ExpressionDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -603,6 +630,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -619,6 +647,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -651,6 +680,7 @@ None
 class BinMDataStd_ExtStringArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ExtStringArrayDriver ******************/
+		/**** md5 signature: e4594ab60a3ad31866ae4d5d389d8922 ****/
 		%feature("compactdefaultargs") BinMDataStd_ExtStringArrayDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -665,6 +695,7 @@ None
 		 BinMDataStd_ExtStringArrayDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -675,6 +706,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -691,6 +723,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -723,6 +756,7 @@ None
 class BinMDataStd_ExtStringListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ExtStringListDriver ******************/
+		/**** md5 signature: d8001b61a1b250aaef87b7d236283261 ****/
 		%feature("compactdefaultargs") BinMDataStd_ExtStringListDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -737,6 +771,7 @@ None
 		 BinMDataStd_ExtStringListDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -747,6 +782,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -763,6 +799,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -795,6 +832,7 @@ None
 class BinMDataStd_IntPackedMapDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_IntPackedMapDriver ******************/
+		/**** md5 signature: 1c438d931e66ed4639378f15a9d51636 ****/
 		%feature("compactdefaultargs") BinMDataStd_IntPackedMapDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -809,6 +847,7 @@ None
 		 BinMDataStd_IntPackedMapDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -819,6 +858,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "Persistent -> transient (retrieve).
 
@@ -835,6 +875,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "Transient -> persistent (store).
 
@@ -867,6 +908,7 @@ None
 class BinMDataStd_IntegerArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_IntegerArrayDriver ******************/
+		/**** md5 signature: ac3bf857f4f0a69b5c3fc00b747f3574 ****/
 		%feature("compactdefaultargs") BinMDataStd_IntegerArrayDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -881,6 +923,7 @@ None
 		 BinMDataStd_IntegerArrayDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -891,6 +934,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -907,6 +951,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -939,6 +984,7 @@ None
 class BinMDataStd_IntegerDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_IntegerDriver ******************/
+		/**** md5 signature: f770b41e1007f40902117f8f9b9cfe91 ****/
 		%feature("compactdefaultargs") BinMDataStd_IntegerDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -953,6 +999,7 @@ None
 		 BinMDataStd_IntegerDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -963,6 +1010,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -979,6 +1027,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1011,6 +1060,7 @@ None
 class BinMDataStd_IntegerListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_IntegerListDriver ******************/
+		/**** md5 signature: f6e36c89eac46357557f49bf8bfc4f82 ****/
 		%feature("compactdefaultargs") BinMDataStd_IntegerListDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1025,6 +1075,7 @@ None
 		 BinMDataStd_IntegerListDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1035,6 +1086,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1051,6 +1103,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1083,6 +1136,7 @@ None
 class BinMDataStd_NameDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_NameDriver ******************/
+		/**** md5 signature: f44e4b17aa4b180554584a08f686b9e0 ****/
 		%feature("compactdefaultargs") BinMDataStd_NameDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1097,6 +1151,7 @@ None
 		 BinMDataStd_NameDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1107,6 +1162,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "Persistent -> transient (retrieve).
 
@@ -1123,6 +1179,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "Transient -> persistent (store).
 
@@ -1155,6 +1212,7 @@ None
 class BinMDataStd_NamedDataDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_NamedDataDriver ******************/
+		/**** md5 signature: 9630554939964fd88c768db697943156 ****/
 		%feature("compactdefaultargs") BinMDataStd_NamedDataDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1169,6 +1227,7 @@ None
 		 BinMDataStd_NamedDataDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1179,6 +1238,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1195,6 +1255,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1227,6 +1288,7 @@ None
 class BinMDataStd_NoteBookDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_NoteBookDriver ******************/
+		/**** md5 signature: bc2b3c067890d26036ddc79aba0e2da1 ****/
 		%feature("compactdefaultargs") BinMDataStd_NoteBookDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1241,6 +1303,7 @@ None
 		 BinMDataStd_NoteBookDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1251,6 +1314,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1267,6 +1331,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1299,6 +1364,7 @@ None
 class BinMDataStd_RealArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_RealArrayDriver ******************/
+		/**** md5 signature: 7957e537c1292ff19d2445c66ad7c5b2 ****/
 		%feature("compactdefaultargs") BinMDataStd_RealArrayDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1313,6 +1379,7 @@ None
 		 BinMDataStd_RealArrayDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1323,6 +1390,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1339,6 +1407,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1371,6 +1440,7 @@ None
 class BinMDataStd_RealDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_RealDriver ******************/
+		/**** md5 signature: 7848592ee60f06d3d879056b31225e0b ****/
 		%feature("compactdefaultargs") BinMDataStd_RealDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1385,6 +1455,7 @@ None
 		 BinMDataStd_RealDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1395,6 +1466,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1411,6 +1483,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1443,6 +1516,7 @@ None
 class BinMDataStd_RealListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_RealListDriver ******************/
+		/**** md5 signature: 4d917328831565da9e238c529f3dfca1 ****/
 		%feature("compactdefaultargs") BinMDataStd_RealListDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1457,6 +1531,7 @@ None
 		 BinMDataStd_RealListDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1467,6 +1542,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1483,6 +1559,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1515,6 +1592,7 @@ None
 class BinMDataStd_ReferenceArrayDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ReferenceArrayDriver ******************/
+		/**** md5 signature: 0d981c16e5fb7c8503ffb7223c5ddf44 ****/
 		%feature("compactdefaultargs") BinMDataStd_ReferenceArrayDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1529,6 +1607,7 @@ None
 		 BinMDataStd_ReferenceArrayDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1539,6 +1618,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1555,6 +1635,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1587,6 +1668,7 @@ None
 class BinMDataStd_ReferenceListDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_ReferenceListDriver ******************/
+		/**** md5 signature: b6cec0295e9eb724a2ff7cf82c47ff5f ****/
 		%feature("compactdefaultargs") BinMDataStd_ReferenceListDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1601,6 +1683,7 @@ None
 		 BinMDataStd_ReferenceListDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1611,6 +1694,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1627,6 +1711,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1659,6 +1744,7 @@ None
 class BinMDataStd_RelationDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_RelationDriver ******************/
+		/**** md5 signature: 3533d11faf0f973cba68b234138bc626 ****/
 		%feature("compactdefaultargs") BinMDataStd_RelationDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1673,6 +1759,7 @@ None
 		 BinMDataStd_RelationDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1683,6 +1770,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1699,6 +1787,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1731,6 +1820,7 @@ None
 class BinMDataStd_TickDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_TickDriver ******************/
+		/**** md5 signature: 7a6e2090df9449eaa931a0caf1321996 ****/
 		%feature("compactdefaultargs") BinMDataStd_TickDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1745,6 +1835,7 @@ None
 		 BinMDataStd_TickDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1755,6 +1846,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1771,6 +1863,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1803,6 +1896,7 @@ None
 class BinMDataStd_TreeNodeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_TreeNodeDriver ******************/
+		/**** md5 signature: ca7bdecd6842ce94f98736f13985710a ****/
 		%feature("compactdefaultargs") BinMDataStd_TreeNodeDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1817,6 +1911,7 @@ None
 		 BinMDataStd_TreeNodeDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1827,6 +1922,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1843,6 +1939,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1875,6 +1972,7 @@ None
 class BinMDataStd_UAttributeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_UAttributeDriver ******************/
+		/**** md5 signature: d654807c685041b41f83e46af76ab304 ****/
 		%feature("compactdefaultargs") BinMDataStd_UAttributeDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1889,6 +1987,7 @@ None
 		 BinMDataStd_UAttributeDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1899,6 +1998,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1915,6 +2015,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1947,6 +2048,7 @@ None
 class BinMDataStd_VariableDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDataStd_VariableDriver ******************/
+		/**** md5 signature: 3e4e0a65242c346149a9c3a8042b175e ****/
 		%feature("compactdefaultargs") BinMDataStd_VariableDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -1961,6 +2063,7 @@ None
 		 BinMDataStd_VariableDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -1971,6 +2074,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -1987,6 +2091,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 

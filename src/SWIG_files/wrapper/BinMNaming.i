@@ -97,6 +97,7 @@ from OCC.Core.Exception import *
 class BinMNaming {
 	public:
 		/****************** AddDrivers ******************/
+		/**** md5 signature: 3b175e0207523895c819eaf3e413231f ****/
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "Adds the attribute drivers to <thedrivertable>.
 
@@ -126,6 +127,7 @@ None
 class BinMNaming_NamedShapeDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMNaming_NamedShapeDriver ******************/
+		/**** md5 signature: 3b7497ac148acc93869b3866b0dc9ece ****/
 		%feature("compactdefaultargs") BinMNaming_NamedShapeDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -140,6 +142,7 @@ None
 		 BinMNaming_NamedShapeDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** Clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clear myshapeset.
 
@@ -150,6 +153,7 @@ None
 		void Clear();
 
 		/****************** GetFormatNb ******************/
+		/**** md5 signature: 9809eaa2f443c2602f3527736fa218f2 ****/
 		%feature("compactdefaultargs") GetFormatNb;
 		%feature("autodoc", "Get the format of topology.
 
@@ -160,6 +164,7 @@ int
 		Standard_Integer GetFormatNb();
 
 		/****************** GetShapesLocations ******************/
+		/**** md5 signature: 747eb6b8251eb0259ac6f889ad0dbe04 ****/
 		%feature("compactdefaultargs") GetShapesLocations;
 		%feature("autodoc", "Get the format of topology.
 
@@ -170,6 +175,7 @@ BinTools_LocationSet
 		BinTools_LocationSet & GetShapesLocations();
 
 		/****************** IsWithTriangles ******************/
+		/**** md5 signature: 2adacf1f8e5d4c926108b4db84751e9a ****/
 		%feature("compactdefaultargs") IsWithTriangles;
 		%feature("autodoc", "Return true if shape should be stored with triangles.
 
@@ -180,6 +186,7 @@ bool
 		Standard_Boolean IsWithTriangles();
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -190,6 +197,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -206,6 +214,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -229,6 +238,7 @@ None
                 self->ReadShapeSection(s);}
             };
 		/****************** SetFormatNb ******************/
+		/**** md5 signature: 0be85d313a433ece54bf3e7f8567bba5 ****/
 		%feature("compactdefaultargs") SetFormatNb;
 		%feature("autodoc", "Set the format of topology first : does not write curveonsurface uv points into the file on reading calls check() method. second: stores curveonsurface uv points.
 
@@ -243,6 +253,7 @@ None
 		void SetFormatNb(const Standard_Integer theFormat);
 
 		/****************** SetWithTriangles ******************/
+		/**** md5 signature: ac168a6a3fad4f9bcc30c8362a1cf0c6 ****/
 		%feature("compactdefaultargs") SetWithTriangles;
 		%feature("autodoc", "Set whether to store triangulation.
 
@@ -281,6 +292,7 @@ None
 class BinMNaming_NamingDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMNaming_NamingDriver ******************/
+		/**** md5 signature: 66ad4fbcadd530e903526cb2d9a97e31 ****/
 		%feature("compactdefaultargs") BinMNaming_NamingDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -295,6 +307,7 @@ None
 		 BinMNaming_NamingDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -305,6 +318,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -321,6 +335,7 @@ bool
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 67b435110398ae49c79b33db64bbe228 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 

@@ -658,6 +658,7 @@ typedef NCollection_Sequence<opencascade::handle<Standard_Transient>> TColStd_Se
 class TColStd_HPackedMapOfInteger : public Standard_Transient {
 	public:
 		/****************** TColStd_HPackedMapOfInteger ******************/
+		/**** md5 signature: 7dbfb789a2d13306defa568ad5aebfb5 ****/
 		%feature("compactdefaultargs") TColStd_HPackedMapOfInteger;
 		%feature("autodoc", "No available documentation.
 
@@ -673,6 +674,7 @@ None
 		 TColStd_HPackedMapOfInteger(const Standard_Integer NbBuckets = 1);
 
 		/****************** TColStd_HPackedMapOfInteger ******************/
+		/**** md5 signature: 89e534bef075b502a40c10c743d38652 ****/
 		%feature("compactdefaultargs") TColStd_HPackedMapOfInteger;
 		%feature("autodoc", "No available documentation.
 
@@ -687,6 +689,7 @@ None
 		 TColStd_HPackedMapOfInteger(const TColStd_PackedMapOfInteger & theOther);
 
 		/****************** ChangeMap ******************/
+		/**** md5 signature: ac7c29d51e6428dd947136d83ae404c5 ****/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "No available documentation.
 
@@ -697,6 +700,7 @@ TColStd_PackedMapOfInteger
 		TColStd_PackedMapOfInteger & ChangeMap();
 
 		/****************** Map ******************/
+		/**** md5 signature: 9730b67796975602112304ea27686558 ****/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "No available documentation.
 

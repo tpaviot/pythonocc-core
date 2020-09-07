@@ -87,6 +87,7 @@ from OCC.Core.Exception import *
 class AppStdL_Application : public TDocStd_Application {
 	public:
 		/****************** ResourcesName ******************/
+		/**** md5 signature: 93814b3160304ee63e9655e18518a289 ****/
 		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "Returns the file name which contains application resources.
 

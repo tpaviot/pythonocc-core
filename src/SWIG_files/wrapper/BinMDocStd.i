@@ -89,6 +89,7 @@ from OCC.Core.Exception import *
 class BinMDocStd {
 	public:
 		/****************** AddDrivers ******************/
+		/**** md5 signature: 3b175e0207523895c819eaf3e413231f ****/
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "Adds the attribute drivers to <thedrivertable>.
 
@@ -118,6 +119,7 @@ None
 class BinMDocStd_XLinkDriver : public BinMDF_ADriver {
 	public:
 		/****************** BinMDocStd_XLinkDriver ******************/
+		/**** md5 signature: a5195ef2d9e329387cf15b5356a946a2 ****/
 		%feature("compactdefaultargs") BinMDocStd_XLinkDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -132,6 +134,7 @@ None
 		 BinMDocStd_XLinkDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -142,6 +145,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 37851bb93a225f90250afe4fb5e61e60 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -158,6 +162,7 @@ bool
 		virtual Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: da6a0a35498ea18a652c6a19d6364015 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 

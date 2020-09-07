@@ -7,15 +7,15 @@ trigger:
 jobs:
 - template: conda-build.yml
   parameters:
-    name: Ubuntu_16_04_python37
-    vmImage: 'ubuntu-16.04'
+    name: Ubuntu_18_04_python36
+    vmImage: 'ubuntu-18.04'
     py_maj: 3
-    py_min: 7
+    py_min: 6
 
 - template: conda-build.yml
   parameters:
-    name: Ubuntu_18_04_python36
-    vmImage: 'ubuntu-18.04'
+    name: Ubuntu_20_04_python36
+    vmImage: 'ubuntu-20.04'
     py_maj: 3
     py_min: 6
 
@@ -46,6 +46,13 @@ jobs:
   parameters:
     name: Ubuntu_18_04_python37
     vmImage: 'ubuntu-18.04'
+    py_maj: 3
+    py_min: 7
+
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_20_04_python37
+    vmImage: 'ubuntu-20.04'
     py_maj: 3
     py_min: 7
 

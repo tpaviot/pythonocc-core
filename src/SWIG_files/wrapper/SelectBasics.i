@@ -88,6 +88,7 @@ from OCC.Core.Exception import *
 class SelectBasics {
 	public:
 		/****************** MaxOwnerPriority ******************/
+		/**** md5 signature: 87c4c8fbae09e9b90b74aa582df2924a ****/
 		%feature("compactdefaultargs") MaxOwnerPriority;
 		%feature("autodoc", "Structure to provide all-in-one result of selection of sensitive for 'matches' method of select3d_sensitiveentity.
 
@@ -98,6 +99,7 @@ int
 		static Standard_Integer MaxOwnerPriority();
 
 		/****************** MinOwnerPriority ******************/
+		/**** md5 signature: d127234fdcddfbfba2493b87cb50a82b ****/
 		%feature("compactdefaultargs") MinOwnerPriority;
 		%feature("autodoc", "No available documentation.
 
@@ -122,6 +124,7 @@ int
 class SelectBasics_PickResult {
 	public:
 		/****************** SelectBasics_PickResult ******************/
+		/**** md5 signature: 70c24972c2e1acb414eec1dcb85de08a ****/
 		%feature("compactdefaultargs") SelectBasics_PickResult;
 		%feature("autodoc", "Empty constructor defining an invalid result.
 
@@ -132,6 +135,7 @@ None
 		 SelectBasics_PickResult();
 
 		/****************** SelectBasics_PickResult ******************/
+		/**** md5 signature: efe0549d557fe14d14d3bce83544927e ****/
 		%feature("compactdefaultargs") SelectBasics_PickResult;
 		%feature("autodoc", "Constructor with initialization.
 
@@ -148,6 +152,7 @@ None
 		 SelectBasics_PickResult(Standard_Real theDepth, Standard_Real theDistToCenter, const gp_Pnt & theObjPickedPnt);
 
 		/****************** Depth ******************/
+		/**** md5 signature: 25ee6373f55a52708b56125539b46226 ****/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Return depth along picking ray.
 
@@ -158,6 +163,7 @@ float
 		Standard_Real Depth();
 
 		/****************** DistToGeomCenter ******************/
+		/**** md5 signature: 07d82d88f16b57d130cf7123362c8d01 ****/
 		%feature("compactdefaultargs") DistToGeomCenter;
 		%feature("autodoc", "Return distance to geometry center (auxiliary value for comparing results).
 
@@ -168,6 +174,7 @@ float
 		Standard_Real DistToGeomCenter();
 
 		/****************** HasPickedPoint ******************/
+		/**** md5 signature: 621f45af5c1eb7c5e15872d0374f6b99 ****/
 		%feature("compactdefaultargs") HasPickedPoint;
 		%feature("autodoc", "Return true if picked point lying on detected entity was set.
 
@@ -178,6 +185,7 @@ bool
 		Standard_Boolean HasPickedPoint();
 
 		/****************** Invalidate ******************/
+		/**** md5 signature: 704a551b2c709fd4c2d751a8cf3ee8ff ****/
 		%feature("compactdefaultargs") Invalidate;
 		%feature("autodoc", "Reset depth value.
 
@@ -188,6 +196,7 @@ None
 		void Invalidate();
 
 		/****************** IsValid ******************/
+		/**** md5 signature: 7d115ff85bb657b98ab8790006673845 ****/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Return true if result was been defined.
 
@@ -198,6 +207,7 @@ bool
 		Standard_Boolean IsValid();
 
 		/****************** Min ******************/
+		/**** md5 signature: 6422e8d9851b1c76234f967288b153a4 ****/
 		%feature("compactdefaultargs") Min;
 		%feature("autodoc", "Return closest result between two pick results according to depth value.
 
@@ -213,6 +223,7 @@ SelectBasics_PickResult
 		static const SelectBasics_PickResult & Min(const SelectBasics_PickResult & thePickResult1, const SelectBasics_PickResult & thePickResult2);
 
 		/****************** PickedPoint ******************/
+		/**** md5 signature: e5411db2d7bfcda96402fde38f143185 ****/
 		%feature("compactdefaultargs") PickedPoint;
 		%feature("autodoc", "Return picked point lying on detected entity. warning! point is defined in local coordinate system and should be translated into world system before usage!.
 
@@ -223,6 +234,7 @@ gp_Pnt
 		const gp_Pnt PickedPoint();
 
 		/****************** SetDepth ******************/
+		/**** md5 signature: 20b371790974ee9cc48c83264842232b ****/
 		%feature("compactdefaultargs") SetDepth;
 		%feature("autodoc", "Set depth along picking ray.
 
@@ -237,6 +249,7 @@ None
 		void SetDepth(Standard_Real theDepth);
 
 		/****************** SetDistToGeomCenter ******************/
+		/**** md5 signature: 83a88150dabab87b04c89a6695a6f142 ****/
 		%feature("compactdefaultargs") SetDistToGeomCenter;
 		%feature("autodoc", "Set distance to geometry center.
 
@@ -251,6 +264,7 @@ None
 		void SetDistToGeomCenter(Standard_Real theDistToCenter);
 
 		/****************** SetPickedPoint ******************/
+		/**** md5 signature: a0d31924196d7102372ca1122f6e29a4 ****/
 		%feature("compactdefaultargs") SetPickedPoint;
 		%feature("autodoc", "Set picked point.
 
@@ -305,6 +319,7 @@ Unknown = SelectionType.Unknown
 /* end python proxy for enums */
 
 		/****************** DetectedPoint ******************/
+		/**** md5 signature: 1cc054e8948b7dd95fff0b23ad64230e ****/
 		%feature("compactdefaultargs") DetectedPoint;
 		%feature("autodoc", "No available documentation.
 
@@ -319,6 +334,7 @@ gp_Pnt
 		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
 
 		/****************** DistToGeometryCenter ******************/
+		/**** md5 signature: 3ed12881a75ce1f126dcb222173a8123 ****/
 		%feature("compactdefaultargs") DistToGeometryCenter;
 		%feature("autodoc", "Calculates distance from 3d projection of user-defined selection point to the given point thecog.
 
@@ -333,6 +349,7 @@ float
 		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
 
 		/****************** GetActiveSelectionType ******************/
+		/**** md5 signature: 56d78b21d70ce91662f965e54361b877 ****/
 		%feature("compactdefaultargs") GetActiveSelectionType;
 		%feature("autodoc", "No available documentation.
 
@@ -343,6 +360,7 @@ int
 		virtual Standard_Integer GetActiveSelectionType();
 
 		/****************** GetFarPickedPnt ******************/
+		/**** md5 signature: 98748d26ff588dc3070493ca523b8947 ****/
 		%feature("compactdefaultargs") GetFarPickedPnt;
 		%feature("autodoc", "Valid only for point and rectangular selection. returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto far view frustum plane.
 
@@ -353,6 +371,7 @@ gp_Pnt
 		virtual gp_Pnt GetFarPickedPnt();
 
 		/****************** GetMousePosition ******************/
+		/**** md5 signature: dc663ddc1edfd7aac3a43a6122139863 ****/
 		%feature("compactdefaultargs") GetMousePosition;
 		%feature("autodoc", "Return mouse coordinates for point selection mode.
 
@@ -363,6 +382,7 @@ gp_Pnt2d
 		virtual gp_Pnt2d GetMousePosition();
 
 		/****************** GetNearPickedPnt ******************/
+		/**** md5 signature: 40f25cf5811df8ab5573eff7cb14f3a1 ****/
 		%feature("compactdefaultargs") GetNearPickedPnt;
 		%feature("autodoc", "Valid only for point and rectangular selection. returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto near view frustum plane.
 
@@ -373,6 +393,7 @@ gp_Pnt
 		virtual gp_Pnt GetNearPickedPnt();
 
 		/****************** GetPlanes ******************/
+		/**** md5 signature: d44b074df2b940111bb3147c05251a88 ****/
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "Stores plane equation coefficients (in the following form: ax + by + cz + d = 0) to the given vector.
 
@@ -387,6 +408,7 @@ None
 		virtual void GetPlanes(NCollection_Vector<NCollection_Vec4<Standard_Real> > & thePlaneEquations);
 
 		/****************** IsOverlapAllowed ******************/
+		/**** md5 signature: f2e1ce20431c82909b70df801eabd2d8 ****/
 		%feature("compactdefaultargs") IsOverlapAllowed;
 		%feature("autodoc", "No available documentation.
 
@@ -397,6 +419,7 @@ bool
 		virtual Standard_Boolean IsOverlapAllowed();
 
 		/****************** Overlaps ******************/
+		/**** md5 signature: 72b3b9147f4c25df38e77cb007eab045 ****/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by box thebox.
 
@@ -413,6 +436,7 @@ bool
 		virtual Standard_Boolean Overlaps(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, SelectBasics_PickResult & thePickResult);
 
 		/****************** Overlaps ******************/
+		/**** md5 signature: c4d2989a14a3b6b7b945864761359688 ****/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theminpt and maximum at point themaxpt.
 
@@ -430,6 +454,7 @@ bool
 		virtual Standard_Boolean Overlaps(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, Standard_Boolean * theInside = NULL);
 
 		/****************** Overlaps ******************/
+		/**** md5 signature: 3947ed629721749a6624af1b76a64e6b ****/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by point thepnt.
 
@@ -445,6 +470,7 @@ bool
 		virtual Standard_Boolean Overlaps(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
 
 		/****************** Overlaps ******************/
+		/**** md5 signature: 19dbdf40957c9f9c60452134ba0cc798 ****/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by point thepnt. does not perform depth calculation, so this method is defined as helper function for inclusion test.
 
@@ -459,6 +485,7 @@ bool
 		virtual Standard_Boolean Overlaps(const gp_Pnt & thePnt);
 
 		/****************** Overlaps ******************/
+		/**** md5 signature: 7b7a6a3461966a96a25e6b01b456944f ****/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by planar convex polygon, which points are stored in thearrayofpts, taking into account sensitivity type thesenstype.
 
@@ -475,6 +502,7 @@ bool
 		virtual Standard_Boolean Overlaps(const opencascade::handle<TColgp_HArray1OfPnt> & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****************** Overlaps ******************/
+		/**** md5 signature: 7942e5ce29609ec05b0fae7fdf359421 ****/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by planar convex polygon, which points are stored in thearrayofpts, taking into account sensitivity type thesenstype.
 
@@ -491,6 +519,7 @@ bool
 		virtual Standard_Boolean Overlaps(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****************** Overlaps ******************/
+		/**** md5 signature: 468be8c1f2bde407985bdc5b908467e6 ****/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by line segment with start point at thept1 and end point at thept2.
 
@@ -507,6 +536,7 @@ bool
 		virtual Standard_Boolean Overlaps(const gp_Pnt & thePt1, const gp_Pnt & thePt2, SelectBasics_PickResult & thePickResult);
 
 		/****************** Overlaps ******************/
+		/**** md5 signature: 6c2231a8cdc0689ab90add91a851ffb8 ****/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "Returns true if selecting volume is overlapped by triangle with vertices thept1, thept2 and thept3, taking into account sensitivity type thesenstype.
 

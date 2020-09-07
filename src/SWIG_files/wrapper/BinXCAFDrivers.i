@@ -93,6 +93,7 @@ from OCC.Core.Exception import *
 class BinXCAFDrivers {
 	public:
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: a3052842141074dac4fa7742d5b7f7f0 ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "Creates the table of drivers of types supported.
 
@@ -107,6 +108,7 @@ opencascade::handle<BinMDF_ADriverTable>
 		static opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & MsgDrv);
 
 		/****************** DefineFormat ******************/
+		/**** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ****/
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "Defines format 'binxcaf' and registers its read and write drivers in the specified application.
 
@@ -121,6 +123,7 @@ None
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
+		/**** md5 signature: 9e70ed3bca71e988f9b9e86628ed8ed4 ****/
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", "No available documentation.
 
@@ -149,6 +152,7 @@ opencascade::handle<Standard_Transient>
 class BinXCAFDrivers_DocumentRetrievalDriver : public BinDrivers_DocumentRetrievalDriver {
 	public:
 		/****************** BinXCAFDrivers_DocumentRetrievalDriver ******************/
+		/**** md5 signature: b996bd3d7ecdeda355b84bdba5452cbd ****/
 		%feature("compactdefaultargs") BinXCAFDrivers_DocumentRetrievalDriver;
 		%feature("autodoc", "Constructor.
 
@@ -159,6 +163,7 @@ None
 		 BinXCAFDrivers_DocumentRetrievalDriver();
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 
@@ -189,6 +194,7 @@ opencascade::handle<BinMDF_ADriverTable>
 class BinXCAFDrivers_DocumentStorageDriver : public BinDrivers_DocumentStorageDriver {
 	public:
 		/****************** BinXCAFDrivers_DocumentStorageDriver ******************/
+		/**** md5 signature: df3e8bf2e0cf21923e17f35b3771a100 ****/
 		%feature("compactdefaultargs") BinXCAFDrivers_DocumentStorageDriver;
 		%feature("autodoc", "Constructor.
 
@@ -199,6 +205,7 @@ None
 		 BinXCAFDrivers_DocumentStorageDriver();
 
 		/****************** AttributeDrivers ******************/
+		/**** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ****/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "No available documentation.
 

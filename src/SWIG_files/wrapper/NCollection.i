@@ -181,6 +181,7 @@ typedef const void * const_pointer;
 typedef void value_type;
 		class rebind {};
 		/****************** NCollection_StdAllocator ******************/
+		/**** md5 signature: 240c03d4b72541b1a032e1913b305d8b ****/
 		%feature("compactdefaultargs") NCollection_StdAllocator;
 		%feature("autodoc", "/*! creates an object using default open cascade allocation mechanism, i.e. which uses standard::allocate() and standard::free() underneath. */.
 
@@ -191,6 +192,7 @@ None
 		 NCollection_StdAllocator();
 
 		/****************** NCollection_StdAllocator ******************/
+		/**** md5 signature: c45105f788e0b68d85b5ae58987f113a ****/
 		%feature("compactdefaultargs") NCollection_StdAllocator;
 		%feature("autodoc", "/*! saves \a thealloc as an underlying allocator instance.*/.
 
@@ -205,6 +207,7 @@ None
 		 NCollection_StdAllocator(const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
 
 		/****************** NCollection_StdAllocator ******************/
+		/**** md5 signature: d36f86ffeabb62b4a5cec1623b3cf39b ****/
 		%feature("compactdefaultargs") NCollection_StdAllocator;
 		%feature("autodoc", "/*! copies allocator() from \a x.*/.
 
@@ -219,6 +222,7 @@ None
 		 NCollection_StdAllocator(const NCollection_StdAllocator & X);
 
 		/****************** Allocator ******************/
+		/**** md5 signature: c2190efebec564fb34d6c8e52682605e ****/
 		%feature("compactdefaultargs") Allocator;
 		%feature("autodoc", "/*! returns an object specified in the constructor.*/.
 

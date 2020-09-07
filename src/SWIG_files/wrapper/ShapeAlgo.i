@@ -102,6 +102,7 @@ from OCC.Core.Exception import *
 class ShapeAlgo {
 	public:
 		/****************** AlgoContainer ******************/
+		/**** md5 signature: c1f523c465ca6cba85665bd0de49f1d1 ****/
 		%feature("compactdefaultargs") AlgoContainer;
 		%feature("autodoc", "Returns default algocontainer.
 
@@ -112,6 +113,7 @@ opencascade::handle<ShapeAlgo_AlgoContainer>
 		static opencascade::handle<ShapeAlgo_AlgoContainer> AlgoContainer();
 
 		/****************** Init ******************/
+		/**** md5 signature: 342fdccc4643f67c269591c4b6447108 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Provides initerface to the algorithms from shape healing. creates and initializes default algocontainer.
 
@@ -122,6 +124,7 @@ None
 		static void Init();
 
 		/****************** SetAlgoContainer ******************/
+		/**** md5 signature: 0f08b7ef735a36117834ac8cb4c7072a ****/
 		%feature("compactdefaultargs") SetAlgoContainer;
 		%feature("autodoc", "Sets default algocontainer.
 
@@ -153,6 +156,7 @@ None
 class ShapeAlgo_ToolContainer : public Standard_Transient {
 	public:
 		/****************** ShapeAlgo_ToolContainer ******************/
+		/**** md5 signature: 80836b1fd7be7ee0f942f7a26d297738 ****/
 		%feature("compactdefaultargs") ShapeAlgo_ToolContainer;
 		%feature("autodoc", "Empty constructor.
 
@@ -163,6 +167,7 @@ None
 		 ShapeAlgo_ToolContainer();
 
 		/****************** EdgeProjAux ******************/
+		/**** md5 signature: 526a36aa395ee919ad5f3bedac952d00 ****/
 		%feature("compactdefaultargs") EdgeProjAux;
 		%feature("autodoc", "Returns shapefix_edgeprojaux.
 
@@ -173,6 +178,7 @@ opencascade::handle<ShapeFix_EdgeProjAux>
 		virtual opencascade::handle<ShapeFix_EdgeProjAux> EdgeProjAux();
 
 		/****************** FixShape ******************/
+		/**** md5 signature: 178f51e71f6d84a5c9616b5fbf61610a ****/
 		%feature("compactdefaultargs") FixShape;
 		%feature("autodoc", "Returns shapefix_shape.
 

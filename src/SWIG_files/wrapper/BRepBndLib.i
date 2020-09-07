@@ -84,6 +84,7 @@ from OCC.Core.Exception import *
 class BRepBndLib {
 	public:
 		/****************** Add ******************/
+		/**** md5 signature: 9c3545c9b1c2df3d52fed48b98ad0a1a ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "Adds the shape s to the bounding box b. more precisely are successively added to b: - each face of s; the triangulation of the face is used if it exists, - then each edge of s which does not belong to a face, the polygon of the edge is used if it exists - and last each vertex of s which does not belong to an edge. after each elementary operation, the bounding box b is enlarged by the tolerance value of the relative sub-shape. when working with the triangulation of a face this value of enlargement is the sum of the triangulation deflection and the face tolerance. when working with the polygon of an edge this value of enlargement is the sum of the polygon deflection and the edge tolerance. warning - this algorithm is time consuming if triangulation has not been inserted inside the data structure of the shape s. - the resulting bounding box may be somewhat larger than the object.
 
@@ -101,6 +102,7 @@ None
 		static void Add(const TopoDS_Shape & S, Bnd_Box & B, const Standard_Boolean useTriangulation = Standard_True);
 
 		/****************** AddClose ******************/
+		/**** md5 signature: 5b4c3dd1c546b82ab92a38e981573fb5 ****/
 		%feature("compactdefaultargs") AddClose;
 		%feature("autodoc", "Adds the shape s to the bounding box b. this is a quick algorithm but only works if the shape s is composed of polygonal planar faces, as is the case if s is an approached polyhedral representation of an exact shape. pay particular attention to this because this condition is not checked and, if it not respected, an error may occur in the algorithm for which the bounding box is built. note that the resulting bounding box is not enlarged by the tolerance value of the sub-shapes as is the case with the add function. so the added part of the resulting bounding box is closer to the shape s.
 
@@ -116,6 +118,7 @@ None
 		static void AddClose(const TopoDS_Shape & S, Bnd_Box & B);
 
 		/****************** AddOBB ******************/
+		/**** md5 signature: 4475957a182d53ac4344f17f5720d203 ****/
 		%feature("compactdefaultargs") AddOBB;
 		%feature("autodoc", "Computes the oriented bounding box for the shape <thes>. two independent methods of computation are implemented: first method based on set of points (so, it demands the triangulated shape or shape with planar faces and linear edges). the second method is based on use of inertia axes and is called if use of the first method is impossible. if theistriangulationused == false then the triangulation will be ignored at all. if theisshapetoleranceused == true then resulting box will be extended on the tolerance of the shape. theisoptimal flag defines whether to look for the more tight obb for the cost of performance or not.
 
@@ -137,6 +140,7 @@ None
 		static void AddOBB(const TopoDS_Shape & theS, Bnd_OBB & theOBB, const Standard_Boolean theIsTriangulationUsed = Standard_True, const Standard_Boolean theIsOptimal = Standard_False, const Standard_Boolean theIsShapeToleranceUsed = Standard_True);
 
 		/****************** AddOptimal ******************/
+		/**** md5 signature: bd6c1029fd07d68da48862cc70fd6a39 ****/
 		%feature("compactdefaultargs") AddOptimal;
 		%feature("autodoc", "Adds the shape s to the bounding box b. this algorith builds precise bounding box, which differs from exact geometry boundaries of shape only on shape entities tolerances algorithm is the same as for method add(..), but uses more precise methods for building boxes for geometry objects. if useshapetolerance = true, bounding box is enlardged by shape tolerances and these tolerances are used for numerical methods of bounding box size calculations, otherwise bounding box is built according to sizes of uderlined geometrical entities, numerical calculation use tolerance precision::confusion().
 

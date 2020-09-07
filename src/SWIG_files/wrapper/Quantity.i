@@ -1973,6 +1973,7 @@ typedef Standard_Real Quantity_Work;
 class Quantity_Color {
 	public:
 		/****************** Quantity_Color ******************/
+		/**** md5 signature: f5c209f4d44b927ac7bf1775a9844c4f ****/
 		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "Creates quantity_noc_yellow color.
 
@@ -1983,6 +1984,7 @@ None
 		 Quantity_Color();
 
 		/****************** Quantity_Color ******************/
+		/**** md5 signature: 4d0575f62c5a31e3c97c1999086879b2 ****/
 		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "Creates the color from enumeration value.
 
@@ -1997,6 +1999,7 @@ None
 		 Quantity_Color(const Quantity_NameOfColor AName);
 
 		/****************** Quantity_Color ******************/
+		/**** md5 signature: 401f2b53fbd4b1b72f42fdb5e22554a6 ****/
 		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "Creates a color according to the definition system thetype. quantity_toc_rgb: - ther1 the value of red within range [0.0; 1.0] - ther2 the value of green within range [0.0; 1.0] - ther3 the value of blue within range [0.0; 1.0] //! quantity_toc_hls: - ther1 is the hue (h) angle in degrees within range [0.0; 360.0], 0.0 being red. value -1.0 is a special value reserved for grayscale color (s should be 0.0). - ther2 is the lightness (l) within range [0.0; 1.0] - ther3 is the saturation (s) within range [0.0; 1.0].
 
@@ -2014,6 +2017,7 @@ None
 		 Quantity_Color(const Standard_Real theR1, const Standard_Real theR2, const Standard_Real theR3, const Quantity_TypeOfColor theType);
 
 		/****************** Quantity_Color ******************/
+		/**** md5 signature: 835816f393d027a4564b61805ac875a4 ****/
 		%feature("compactdefaultargs") Quantity_Color;
 		%feature("autodoc", "Define color from rgb values.
 
@@ -2028,6 +2032,7 @@ None
 		 Quantity_Color(const NCollection_Vec3<float> & theRgb);
 
 		/****************** Argb2color ******************/
+		/**** md5 signature: d611989bc196b9eace2cf55dd7e3b12b ****/
 		%feature("compactdefaultargs") Argb2color;
 		%feature("autodoc", "Convert integer argb value to color. alpha bits are ignored.
 
@@ -2043,6 +2048,7 @@ None
 		static void Argb2color(const Standard_Integer theARGB, Quantity_Color & theColor);
 
 		/****************** Blue ******************/
+		/**** md5 signature: 4771e446272835844a2885353fcdb8a9 ****/
 		%feature("compactdefaultargs") Blue;
 		%feature("autodoc", "Returns the blue component (quantity of blue) of the color within range [0.0; 1.0].
 
@@ -2053,6 +2059,7 @@ float
 		Standard_Real Blue();
 
 		/****************** ChangeContrast ******************/
+		/**** md5 signature: 5e22a8be68499bb6494ff16698899d8e ****/
 		%feature("compactdefaultargs") ChangeContrast;
 		%feature("autodoc", "Increases or decreases the contrast by <adelta>. <adelta> is a percentage. any value greater than zero will increase the contrast. the variation is expressed as a percentage of the current value. it is a variation of the saturation.
 
@@ -2067,6 +2074,7 @@ None
 		void ChangeContrast(const Standard_Real ADelta);
 
 		/****************** ChangeIntensity ******************/
+		/**** md5 signature: 55083a7cc56cf85f230d7f99a0573614 ****/
 		%feature("compactdefaultargs") ChangeIntensity;
 		%feature("autodoc", "Increases or decreases the intensity by <adelta>. <adelta> is a percentage. any value greater than zero will increase the intensity. the variation is expressed as a percentage of the current value. it is a variation of the lightness.
 
@@ -2081,6 +2089,7 @@ None
 		void ChangeIntensity(const Standard_Real ADelta);
 
 		/****************** Color2argb ******************/
+		/**** md5 signature: b5590b8f95cab902628e196486ec17c3 ****/
 		%feature("compactdefaultargs") Color2argb;
 		%feature("autodoc", "Convert the color value to argb integer value. theargb has alpha equal to zero, so the output is formatted as 0x00rrggbb.
 
@@ -2095,6 +2104,7 @@ theARGB: int
 		static void Color2argb(const Quantity_Color & theColor, Standard_Integer &OutValue);
 
 		/****************** ColorFromHex ******************/
+		/**** md5 signature: cf1c58e7652e94fdb05ddd8062f56f58 ****/
 		%feature("compactdefaultargs") ColorFromHex;
 		%feature("autodoc", "Parses the string as a hex color (like '#ff0' for short rgb color, or '#ffff00' for rgb color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing returns true if parsing was successful, or false otherwise.
 
@@ -2110,6 +2120,7 @@ bool
 		static bool ColorFromHex(const char * theHexColorString, Quantity_Color & theColor);
 
 		/****************** ColorFromName ******************/
+		/**** md5 signature: 52336467154f50ffb70349ec504d092e ****/
 		%feature("compactdefaultargs") ColorFromName;
 		%feature("autodoc", "Finds color from predefined names. for example, the name of the color which corresponds to 'black' is quantity_noc_black. returns false if name is unknown.
 
@@ -2125,6 +2136,7 @@ bool
 		static Standard_Boolean ColorFromName(const char * theName, Quantity_NameOfColor & theColor);
 
 		/****************** ColorFromName ******************/
+		/**** md5 signature: 22de797bd27b14fa445f1fc6383d0e84 ****/
 		%feature("compactdefaultargs") ColorFromName;
 		%feature("autodoc", "Finds color from predefined names. for example, the name of the color which corresponds to 'black' is quantity_noc_black. returns false if name is unknown. @param thecolornamestring the color name @param thecolor a found color returns false if the color name is unknown, or true if the search by color name was successful.
 
@@ -2140,6 +2152,7 @@ bool
 		static Standard_Boolean ColorFromName(const char * theColorNameString, Quantity_Color & theColor);
 
 		/****************** ColorToHex ******************/
+		/**** md5 signature: bca5c2e992e444dd039bba70d7834eaf ****/
 		%feature("compactdefaultargs") ColorToHex;
 		%feature("autodoc", "Returns hex srgb string in format '#ffaaff'.
 
@@ -2156,6 +2169,7 @@ TCollection_AsciiString
 		static TCollection_AsciiString ColorToHex(const Quantity_Color & theColor, const bool theToPrefixHash = true);
 
 		/****************** Delta ******************/
+		/**** md5 signature: dc33dc66508989719716ce6762bd0925 ****/
 		%feature("compactdefaultargs") Delta;
 		%feature("autodoc", "Returns the percentage change of contrast and intensity between <self> and <acolor>. <dc> and <di> are percentages, either positive or negative. the calculation is with respect to the current value of <self> if <dc> is positive then <self> is more contrasty. if <di> is positive then <self> is more intense.
 
@@ -2171,6 +2185,7 @@ DI: float
 		void Delta(const Quantity_Color & AColor, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Distance ******************/
+		/**** md5 signature: 68385c1ebe94c26d97b2af2a1c48854b ****/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "Returns the distance between two colours. it's a value between 0 and the square root of 3 (the black/white distance).
 
@@ -2193,6 +2208,7 @@ float
                 return s.str();}
             };
 		/****************** Epsilon ******************/
+		/**** md5 signature: 67863b45c70903f3df8806ec9bb0512a ****/
 		%feature("compactdefaultargs") Epsilon;
 		%feature("autodoc", "Returns the specified value used to compare <self> and an other color in isdifferent and in isequal methods.
 
@@ -2203,6 +2219,7 @@ float
 		static Standard_Real Epsilon();
 
 		/****************** Green ******************/
+		/**** md5 signature: 3857670a16bf31e5b3300ec575b3b216 ****/
 		%feature("compactdefaultargs") Green;
 		%feature("autodoc", "Returns the green component (quantity of green) of the color within range [0.0; 1.0].
 
@@ -2213,6 +2230,7 @@ float
 		Standard_Real Green();
 
 		/****************** HlsRgb ******************/
+		/**** md5 signature: 92189fe5c2c27b89f1a448ea8893e8be ****/
 		%feature("compactdefaultargs") HlsRgb;
 		%feature("autodoc", "Converts hls components into rgb ones.
 
@@ -2231,6 +2249,7 @@ B: float
 		static void HlsRgb(const Standard_Real H, const Standard_Real L, const Standard_Real S, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Hue ******************/
+		/**** md5 signature: a02b54936ad6d62636d67739ec91e04f ****/
 		%feature("compactdefaultargs") Hue;
 		%feature("autodoc", "Returns the hue component (hue angle) of the color in degrees within range [0.0; 360.0], 0.0 being red. -1.0 is a special value reserved for grayscale color (s should be 0.0).
 
@@ -2241,6 +2260,7 @@ float
 		Standard_Real Hue();
 
 		/****************** IsDifferent ******************/
+		/**** md5 signature: b99f5c524426499e6ab1d3876aaa32a8 ****/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "Returns standard_true if the distance between <self> and <other> is greater than epsilon ().
 
@@ -2255,6 +2275,7 @@ bool
 		Standard_Boolean IsDifferent(const Quantity_Color & Other);
 
 		/****************** IsEqual ******************/
+		/**** md5 signature: bd3a4ca19f4acdf78c62adc39d7350e2 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true if the other color is - different from, or - equal to this color. two colors are considered to be equal if their distance is no greater than epsilon(). these methods are aliases of operator != and operator ==.
 
@@ -2269,6 +2290,7 @@ bool
 		Standard_Boolean IsEqual(const Quantity_Color & Other);
 
 		/****************** Light ******************/
+		/**** md5 signature: 245b383c2d9d02d69d1375d652800d97 ****/
 		%feature("compactdefaultargs") Light;
 		%feature("autodoc", "Returns the light component (value of the lightness) of the color within range [0.0; 1.0].
 
@@ -2279,6 +2301,7 @@ float
 		Standard_Real Light();
 
 		/****************** Name ******************/
+		/**** md5 signature: d49ea227fff1359b6ccda02d482f1a1c ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Returns the name of the color defined by its quantities of red r, green g and blue b; more precisely this is the nearest color from the quantity_nameofcolor enumeration. exceptions standard_outofrange if r, g or b is less than 0. or greater than 1.
 
@@ -2289,6 +2312,7 @@ Quantity_NameOfColor
 		Quantity_NameOfColor Name();
 
 		/****************** Name ******************/
+		/**** md5 signature: bb33171b41501dac337433bfd7a55395 ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Returns the name of the colour for which the rgb components are nearest to <r>, <g> and <b>.
 
@@ -2305,6 +2329,7 @@ Quantity_NameOfColor
 		static Quantity_NameOfColor Name(const Standard_Real R, const Standard_Real G, const Standard_Real B);
 
 		/****************** Red ******************/
+		/**** md5 signature: 0afa693a7d24010fd8ce065be2035322 ****/
 		%feature("compactdefaultargs") Red;
 		%feature("autodoc", "Returns the red component (quantity of red) of the color within range [0.0; 1.0].
 
@@ -2315,6 +2340,7 @@ float
 		Standard_Real Red();
 
 		/****************** RgbHls ******************/
+		/**** md5 signature: 15add06275baea2eca31ebbe5b267721 ****/
 		%feature("compactdefaultargs") RgbHls;
 		%feature("autodoc", "Converts rgb components into hls ones.
 
@@ -2333,6 +2359,7 @@ S: float
 		static void RgbHls(const Standard_Real R, const Standard_Real G, const Standard_Real B, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Saturation ******************/
+		/**** md5 signature: 747824b2fc2142cfe3c7ee7950129f3d ****/
 		%feature("compactdefaultargs") Saturation;
 		%feature("autodoc", "Returns the saturation component (value of the saturation) of the color within range [0.0; 1.0].
 
@@ -2343,6 +2370,7 @@ float
 		Standard_Real Saturation();
 
 		/****************** SetEpsilon ******************/
+		/**** md5 signature: 22c8a4122adae5e07b77464a5cf22523 ****/
 		%feature("compactdefaultargs") SetEpsilon;
 		%feature("autodoc", "Sets the specified value used to compare <self> and an other color in isdifferent and in isequal methods. warning: the default value is 0.0001.
 
@@ -2357,6 +2385,7 @@ None
 		static void SetEpsilon(const Standard_Real AnEpsilon);
 
 		/****************** SetValues ******************/
+		/**** md5 signature: 476e1fb37d7bef1bf4f57b9156d165e7 ****/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "Updates the colour <self> from the definition of the colour <aname>.
 
@@ -2371,6 +2400,7 @@ None
 		void SetValues(const Quantity_NameOfColor AName);
 
 		/****************** SetValues ******************/
+		/**** md5 signature: 40a5146f92fc1b9e2c94d344d3adcdd4 ****/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "Updates a color according to the mode specified by thetype. quantity_toc_rgb: - ther1 the value of red within range [0.0; 1.0] - ther2 the value of green within range [0.0; 1.0] - ther3 the value of blue within range [0.0; 1.0] //! quantity_toc_hls: - ther1 is the hue (h) angle in degrees within range [0.0; 360.0], 0.0 being red. -1.0 is a special value reserved for grayscale color (s should be 0.0). - ther2 is the lightness (l) within range [0.0; 1.0] - ther3 is the saturation (s) within range [0.0; 1.0].
 
@@ -2388,6 +2418,7 @@ None
 		void SetValues(const Standard_Real theR1, const Standard_Real theR2, const Standard_Real theR3, const Quantity_TypeOfColor theType);
 
 		/****************** SquareDistance ******************/
+		/**** md5 signature: 98b5f279d4d304157693644e9a73823a ****/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "Returns the square of distance between two colours.
 
@@ -2402,6 +2433,7 @@ float
 		Standard_Real SquareDistance(const Quantity_Color & AColor);
 
 		/****************** StringName ******************/
+		/**** md5 signature: 2a518c52a5a4cb1c4f1cc420b4f6d199 ****/
 		%feature("compactdefaultargs") StringName;
 		%feature("autodoc", "Returns the name of the color identified by aname in the quantity_nameofcolor enumeration. for example, the name of the color which corresponds to quantity_noc_black is 'black'. exceptions standard_outofrange if aname in not known in the quantity_nameofcolor enumeration.
 
@@ -2416,6 +2448,7 @@ char *
 		static const char * StringName(const Quantity_NameOfColor AColor);
 
 		/****************** Test ******************/
+		/**** md5 signature: ae4e459a4b4af36590706ec67f676d7b ****/
 		%feature("compactdefaultargs") Test;
 		%feature("autodoc", "Internal test.
 
@@ -2426,6 +2459,7 @@ None
 		static void Test();
 
 		/****************** Values ******************/
+		/**** md5 signature: edaefe1997c63fed76a7fec2d901c8e5 ****/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "Returns in ther1, ther2 and ther3 the components of this color according to the color system definition thetype. if thetype is quantity_toc_rgb: - ther1 the value of red between 0.0 and 1.0 - ther2 the value of green between 0.0 and 1.0 - ther3 the value of blue between 0.0 and 1.0 if thetype is quantity_toc_hls: - ther1 is the hue (h) angle in degrees within range [0.0; 360.0], 0.0 being red. -1.0 is a special value reserved for grayscale color (s should be 0.0). - ther2 is the lightness (l) within range [0.0; 1.0] - ther3 is the saturation (s) within range [0.0; 1.0].
 
@@ -2484,6 +2518,7 @@ theR3: float
 class Quantity_ColorHasher {
 	public:
 		/****************** HashCode ******************/
+		/**** md5 signature: 8fd37c076f802d432dcef25930612415 ****/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Returns hash code for the given rgb color, in the range [1, theupperbound] @param thecolor the rgb color object which hash code is to be computed @param theupperbound the upper bound of the range a computing range must be within returns a computed hash code, in the range [1, theupperbound].
 
@@ -2499,6 +2534,7 @@ int
 		static Standard_Integer HashCode(const Quantity_Color & theColor, const Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
+		/**** md5 signature: a0becaf8231438906c4ce4901fd8290b ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true if two colors are equal.
 
@@ -2528,6 +2564,7 @@ bool
 class Quantity_ColorRGBA {
 	public:
 		/****************** Quantity_ColorRGBA ******************/
+		/**** md5 signature: 59cdeedded54e4a79897a6a11ec68037 ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates a color with the default value.
 
@@ -2538,6 +2575,7 @@ None
 		 Quantity_ColorRGBA();
 
 		/****************** Quantity_ColorRGBA ******************/
+		/**** md5 signature: c2578e3af784ca8c36479364834b45cf ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates the color with specified rgb value.
 
@@ -2552,6 +2590,7 @@ None
 		 Quantity_ColorRGBA(const Quantity_Color & theRgb);
 
 		/****************** Quantity_ColorRGBA ******************/
+		/**** md5 signature: 12805420d06dcf56a46265f53218218a ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates the color with specified rgba values.
 
@@ -2567,6 +2606,7 @@ None
 		 Quantity_ColorRGBA(const Quantity_Color & theRgb, float theAlpha);
 
 		/****************** Quantity_ColorRGBA ******************/
+		/**** md5 signature: 169a4fc643fdae14510d92bffe1581fe ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates the color from rgba vector.
 
@@ -2581,6 +2621,7 @@ None
 		 Quantity_ColorRGBA(const NCollection_Vec4<float> & theRgba);
 
 		/****************** Quantity_ColorRGBA ******************/
+		/**** md5 signature: 8bf5ac0c566506e4521f2e554e6547b7 ****/
 		%feature("compactdefaultargs") Quantity_ColorRGBA;
 		%feature("autodoc", "Creates the color from rgba values.
 
@@ -2598,6 +2639,7 @@ None
 		 Quantity_ColorRGBA(float theRed, float theGreen, float theBlue, float theAlpha);
 
 		/****************** Alpha ******************/
+		/**** md5 signature: 7ca16a70b060b6cea195b679eee9d6a0 ****/
 		%feature("compactdefaultargs") Alpha;
 		%feature("autodoc", "Return alpha value (1.0 means opaque, 0.0 means fully transparent).
 
@@ -2608,6 +2650,7 @@ Standard_ShortReal
 		Standard_ShortReal Alpha();
 
 		/****************** ChangeRGB ******************/
+		/**** md5 signature: 3b675b0933baf08208bc6568524de17c ****/
 		%feature("compactdefaultargs") ChangeRGB;
 		%feature("autodoc", "Modify rgb color components without affecting alpha value.
 
@@ -2618,6 +2661,7 @@ Quantity_Color
 		Quantity_Color & ChangeRGB();
 
 		/****************** ColorFromHex ******************/
+		/**** md5 signature: b3634b5c703eedf63647f9e571d57b71 ****/
 		%feature("compactdefaultargs") ColorFromHex;
 		%feature("autodoc", "Parses the string as a hex color (like '#ff0' for short rgb color, '#ff0f' for short rgba color, '#ffff00' for rgb color, or '#ffff00ff' for rgba color) @param thehexcolorstring the string to be parsed @param thecolor a color that is a result of parsing @param thealphacomponentisoff the flag that indicates if a color alpha component is presented in the input string (false) or not (true) returns true if parsing was successful, or false otherwise.
 
@@ -2635,6 +2679,7 @@ bool
 		static bool ColorFromHex(const char * const theHexColorString, Quantity_ColorRGBA & theColor, const bool theAlphaComponentIsOff = false);
 
 		/****************** ColorFromName ******************/
+		/**** md5 signature: b7369db5af7825fb8b564a5624fec500 ****/
 		%feature("compactdefaultargs") ColorFromName;
 		%feature("autodoc", "Finds color from predefined names. for example, the name of the color which corresponds to 'black' is quantity_noc_black. returns false if name is unknown. an alpha component is set to 1.0. @param thecolornamestring the color name @param thecolor a found color returns false if the color name is unknown, or true if the search by color name was successful.
 
@@ -2650,6 +2695,7 @@ bool
 		static Standard_Boolean ColorFromName(const char * theColorNameString, Quantity_ColorRGBA & theColor);
 
 		/****************** ColorToHex ******************/
+		/**** md5 signature: 2ddaf7ca0d632cd7bd0bafa4a9a275e3 ****/
 		%feature("compactdefaultargs") ColorToHex;
 		%feature("autodoc", "Returns hex srgba string in format '#rrggbbaa'.
 
@@ -2674,6 +2720,7 @@ TCollection_AsciiString
                 return s.str();}
             };
 		/****************** GetRGB ******************/
+		/**** md5 signature: a34b3caa70b44fb7fb19647f1c2d613b ****/
 		%feature("compactdefaultargs") GetRGB;
 		%feature("autodoc", "Return rgb color value.
 
@@ -2684,6 +2731,7 @@ Quantity_Color
 		const Quantity_Color & GetRGB();
 
 		/****************** IsDifferent ******************/
+		/**** md5 signature: c920c33d4688df25d56cabe0d9340122 ****/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "Returns true if the distance between colors is greater than epsilon().
 
@@ -2698,6 +2746,7 @@ bool
 		bool IsDifferent(const Quantity_ColorRGBA & theOther);
 
 		/****************** IsEqual ******************/
+		/**** md5 signature: 211551909666d7a2f8e83995e83f95d8 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Two colors are considered to be equal if their distance is no greater than epsilon().
 
@@ -2712,6 +2761,7 @@ bool
 		bool IsEqual(const Quantity_ColorRGBA & theOther);
 
 		/****************** SetAlpha ******************/
+		/**** md5 signature: 69b23018f0550922a3fe1a354f493661 ****/
 		%feature("compactdefaultargs") SetAlpha;
 		%feature("autodoc", "Assign the alpha value.
 
@@ -2726,6 +2776,7 @@ None
 		void SetAlpha(const Standard_ShortReal theAlpha);
 
 		/****************** SetRGB ******************/
+		/**** md5 signature: 2cc6a699c1ae321fa89378049e348ca7 ****/
 		%feature("compactdefaultargs") SetRGB;
 		%feature("autodoc", "Assign rgb color components without affecting alpha value.
 
@@ -2740,6 +2791,7 @@ None
 		void SetRGB(const Quantity_Color & theRgb);
 
 		/****************** SetValues ******************/
+		/**** md5 signature: 5a6708d73c546b77771916e443ba23ca ****/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "Assign new values to the color.
 
@@ -2799,6 +2851,7 @@ None
 class Quantity_ColorRGBAHasher {
 	public:
 		/****************** HashCode ******************/
+		/**** md5 signature: 8fc030a9b42b32361b4374d824d85f29 ****/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Returns hash code for the given rgba color, in the range [1, theupperbound] @param thecolor the rgba color object which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
 
@@ -2814,6 +2867,7 @@ int
 		static Standard_Integer HashCode(const Quantity_ColorRGBA & theColor, const Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
+		/**** md5 signature: 19e2fc14fd433f961e867bf190723e87 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true if two colors are equal.
 
@@ -2843,6 +2897,7 @@ bool
 class Quantity_Date {
 	public:
 		/****************** Quantity_Date ******************/
+		/**** md5 signature: 8d43f6af738c96e1986f49ba2f274591 ****/
 		%feature("compactdefaultargs") Quantity_Date;
 		%feature("autodoc", "Constructs a default date (00:00 gmt, january 1, 1979 (zero hour)); use the function setvalues to define the required date; or.
 
@@ -2853,6 +2908,7 @@ None
 		 Quantity_Date();
 
 		/****************** Quantity_Date ******************/
+		/**** md5 signature: 4805f2bee53d65862d22e4b69f715ca6 ****/
 		%feature("compactdefaultargs") Quantity_Date;
 		%feature("autodoc", "Constructs a date from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0).. with: 1 <= mm <= 12 1 <= dd <= max number of days of <mm> 1979 <= yyyy 0 <= hh <= 23 0 <= mn <= 59 0 <= ss <= 59 0 <= mis <= 999 0 <= mics <= 999 exceptions quantity_datedefinitionerror if mm, dd, hh, mn, ss, mis and mics are not the components of the valid date.
 
@@ -2876,6 +2932,7 @@ None
 		 Quantity_Date(const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer yyyy, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
 		/****************** Add ******************/
+		/**** md5 signature: 6b980cdb180067930c314362f5a81835 ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "Adds a period to a date and returns the new date.
 
@@ -2890,6 +2947,7 @@ Quantity_Date
 		Quantity_Date Add(const Quantity_Period & aPeriod);
 
 		/****************** Day ******************/
+		/**** md5 signature: 64a5159d4ccaad3f9f4f452566b1d949 ****/
 		%feature("compactdefaultargs") Day;
 		%feature("autodoc", "Returns day of a date.
 
@@ -2900,6 +2958,7 @@ int
 		Standard_Integer Day();
 
 		/****************** Difference ******************/
+		/**** md5 signature: 9371c141eda9ebda87b5eddf4e0b4d6f ****/
 		%feature("compactdefaultargs") Difference;
 		%feature("autodoc", "Subtracts one date from another one to find the period between and returns the value. the result is the absolute value between the difference of two dates.
 
@@ -2914,6 +2973,7 @@ Quantity_Period
 		Quantity_Period Difference(const Quantity_Date & anOther);
 
 		/****************** Hour ******************/
+		/**** md5 signature: 462fc02c8419c4ebffa0db630a83c728 ****/
 		%feature("compactdefaultargs") Hour;
 		%feature("autodoc", "Returns hour of a date.
 
@@ -2924,6 +2984,7 @@ int
 		Standard_Integer Hour();
 
 		/****************** IsEarlier ******************/
+		/**** md5 signature: 632372f2398aab43fcac77b5881999ac ****/
 		%feature("compactdefaultargs") IsEarlier;
 		%feature("autodoc", "Returns true if <self> is earlier than <other>.
 
@@ -2938,6 +2999,7 @@ bool
 		Standard_Boolean IsEarlier(const Quantity_Date & anOther);
 
 		/****************** IsEqual ******************/
+		/**** md5 signature: e7666362280964dc6fe1156f418d6f0c ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true if both <self> and <other> are equal. this method is an alias of operator ==.
 
@@ -2952,6 +3014,7 @@ bool
 		Standard_Boolean IsEqual(const Quantity_Date & anOther);
 
 		/****************** IsLater ******************/
+		/**** md5 signature: 3838a9fcdc42fe7d9378844e560f9c70 ****/
 		%feature("compactdefaultargs") IsLater;
 		%feature("autodoc", "Returns true if <self> is later then <other>.
 
@@ -2966,6 +3029,7 @@ bool
 		Standard_Boolean IsLater(const Quantity_Date & anOther);
 
 		/****************** IsLeap ******************/
+		/**** md5 signature: 637a928f83e67c8159746f72af70ea4b ****/
 		%feature("compactdefaultargs") IsLeap;
 		%feature("autodoc", "Returns true if a year is a leap year. the leap years are divisable by 4 and not by 100 except the years divisable by 400.
 
@@ -2980,6 +3044,7 @@ bool
 		static Standard_Boolean IsLeap(const Standard_Integer yy);
 
 		/****************** IsValid ******************/
+		/**** md5 signature: e2890948f667611b751db246614e7815 ****/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Checks the validity of a date - returns true if a date defined from the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0) is valid. a date must satisfy the conditions above: - yyyy is greater than or equal to 1979, - mm lies within the range [1, 12] (with 1 corresponding to january and 12 to december), - dd lies within a valid range for the month mm (from 1 to 28, 29, 30 or 31 depending on mm and whether yyyy is a leap year or not), - hh lies within the range [0, 23], - mn lies within the range [0, 59], - ss lies within the range [0, 59], - mis lies within the range [0, 999], - mics lies within the range [0, 999].c.
 
@@ -3003,6 +3068,7 @@ bool
 		static Standard_Boolean IsValid(const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer yy, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
 		/****************** MicroSecond ******************/
+		/**** md5 signature: 812377edfa7441362339d6a475931c30 ****/
 		%feature("compactdefaultargs") MicroSecond;
 		%feature("autodoc", "Returns microsecond of a date.
 
@@ -3013,6 +3079,7 @@ int
 		Standard_Integer MicroSecond();
 
 		/****************** MilliSecond ******************/
+		/**** md5 signature: aa8d2db286c7effa611527b9956ef85d ****/
 		%feature("compactdefaultargs") MilliSecond;
 		%feature("autodoc", "Returns millisecond of a date.
 
@@ -3023,6 +3090,7 @@ int
 		Standard_Integer MilliSecond();
 
 		/****************** Minute ******************/
+		/**** md5 signature: e00440345125e331bdde27963fd5f640 ****/
 		%feature("compactdefaultargs") Minute;
 		%feature("autodoc", "Returns minute of a date.
 
@@ -3033,6 +3101,7 @@ int
 		Standard_Integer Minute();
 
 		/****************** Month ******************/
+		/**** md5 signature: fe37dee5337f8b8d353e963726f0d5bf ****/
 		%feature("compactdefaultargs") Month;
 		%feature("autodoc", "Returns month of a date.
 
@@ -3043,6 +3112,7 @@ int
 		Standard_Integer Month();
 
 		/****************** Second ******************/
+		/**** md5 signature: cef0dbe51764679506c173ac71d2b104 ****/
 		%feature("compactdefaultargs") Second;
 		%feature("autodoc", "Returns seconde of a date.
 
@@ -3053,6 +3123,7 @@ int
 		Standard_Integer Second();
 
 		/****************** SetValues ******************/
+		/**** md5 signature: 51473998ba54cd19064ae3575d5af6f1 ****/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "Assigns to this date the year yyyy, the month mm, the day dd, the hour hh, the minute mn, the second ss, the millisecond mis (defaulted to 0) and the microsecond mics (defaulted to 0). exceptions quantity_datedefinitionerror if mm, dd, hh, mn, ss, mis and mics are not components of a valid date.
 
@@ -3076,6 +3147,7 @@ None
 		void SetValues(const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer yy, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
 		/****************** Subtract ******************/
+		/**** md5 signature: 7efe0d480376249606f0794680582ba9 ****/
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "Subtracts a period from a date and returns the new date. raises an exception if the result date is anterior to jan 1, 1979.
 
@@ -3090,6 +3162,7 @@ Quantity_Date
 		Quantity_Date Subtract(const Quantity_Period & aPeriod);
 
 		/****************** Values ******************/
+		/**** md5 signature: 4777448c9c4089d555da4c905325fc97 ****/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "Gets a complete date. - in mm - the month, - in dd - the day, - in yyyy - the year, - in hh - the hour, - in mn - the minute, - in ss - the second, - in mis - the millisecond, and - in mics - the microsecond.
 
@@ -3110,6 +3183,7 @@ mics: int
 		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** Year ******************/
+		/**** md5 signature: 1e53d2ba9089d382117a297db3ab656e ****/
 		%feature("compactdefaultargs") Year;
 		%feature("autodoc", "Returns year of a date.
 
@@ -3120,6 +3194,7 @@ int
 		Standard_Integer Year();
 
 		/****************** operator + ******************/
+		/**** md5 signature: 065c8848e25f4dc08493ff98a099e834 ****/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "No available documentation.
 
@@ -3134,6 +3209,7 @@ Quantity_Date
 		Quantity_Date operator +(const Quantity_Period & aPeriod);
 
 		/****************** operator - ******************/
+		/**** md5 signature: 5cea87d1632e6f9fcc5dbab51dccbf79 ****/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "No available documentation.
 
@@ -3176,6 +3252,7 @@ Quantity_Date
 class Quantity_Period {
 	public:
 		/****************** Quantity_Period ******************/
+		/**** md5 signature: 1744ee752006ad16eb0534d09d10100e ****/
 		%feature("compactdefaultargs") Quantity_Period;
 		%feature("autodoc", "Creates a period with: 0 <= dd 0 <= hh 0 <= mn 0 <= ss 0 <= mis 0 <= mics.
 
@@ -3197,6 +3274,7 @@ None
 		 Quantity_Period(const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
 		/****************** Quantity_Period ******************/
+		/**** md5 signature: ff517b7cb0b1514e9260a0424e55f874 ****/
 		%feature("compactdefaultargs") Quantity_Period;
 		%feature("autodoc", "Creates a period with a number of seconds and microseconds. exceptions quantity_perioddefinitionerror: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - mics is less than 0.
 
@@ -3213,6 +3291,7 @@ None
 		 Quantity_Period(const Standard_Integer ss, const Standard_Integer mics = 0);
 
 		/****************** Add ******************/
+		/**** md5 signature: 0e9a39b4d418d4361aca2e1f77209cdf ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "Adds one period to another one.
 
@@ -3227,6 +3306,7 @@ Quantity_Period
 		Quantity_Period Add(const Quantity_Period & anOther);
 
 		/****************** IsEqual ******************/
+		/**** md5 signature: 9ac45f7130e60832d0e58a3749d58cc0 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true if both <self> and <other> are equal.
 
@@ -3241,6 +3321,7 @@ bool
 		Standard_Boolean IsEqual(const Quantity_Period & anOther);
 
 		/****************** IsLonger ******************/
+		/**** md5 signature: f5ef59e521630d0f19766352ff861256 ****/
 		%feature("compactdefaultargs") IsLonger;
 		%feature("autodoc", "Returns true if <self> is longer then <other>.
 
@@ -3255,6 +3336,7 @@ bool
 		Standard_Boolean IsLonger(const Quantity_Period & anOther);
 
 		/****************** IsShorter ******************/
+		/**** md5 signature: 4cfeb8469244bbd23f3362cf5812a804 ****/
 		%feature("compactdefaultargs") IsShorter;
 		%feature("autodoc", "Returns true if <self> is shorter than <other>.
 
@@ -3269,6 +3351,7 @@ bool
 		Standard_Boolean IsShorter(const Quantity_Period & anOther);
 
 		/****************** IsValid ******************/
+		/**** md5 signature: daa38478ca0b1ca8f401a8402a56a3b8 ****/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Checks the validity of a period in form (dd,hh,mn,ss,mil,mic) with: 0 <= dd 0 <= hh 0 <= mn 0 <= ss 0 <= mis 0 <= mics.
 
@@ -3290,6 +3373,7 @@ bool
 		static Standard_Boolean IsValid(const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
 		/****************** IsValid ******************/
+		/**** md5 signature: b63c92eb4edbf27b56fbd58df4e78bfd ****/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Checks the validity of a period in form (ss,mic) with: 0 <= ss 0 <= mics.
 
@@ -3306,6 +3390,7 @@ bool
 		static Standard_Boolean IsValid(const Standard_Integer ss, const Standard_Integer mics = 0);
 
 		/****************** SetValues ******************/
+		/**** md5 signature: 929d6e94cdbae4e6dfe7090c56837378 ****/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "Assigns to this period the time interval defined - with dd days, hh hours, mn minutes, ss seconds, mis (defaulted to 0) milliseconds and mics (defaulted to 0) microseconds; or.
 
@@ -3327,6 +3412,7 @@ None
 		void SetValues(const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, const Standard_Integer mis = 0, const Standard_Integer mics = 0);
 
 		/****************** SetValues ******************/
+		/**** md5 signature: 4a43be4e5034c3b5d62f7e92501cc260 ****/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "Assigns to this period the time interval defined - with ss seconds and mics (defaulted to 0) microseconds. exceptions quantity_perioddefinitionerror: - if the number of seconds expressed either by: - dd days, hh hours, mn minutes and ss seconds, or - ss is less than 0. - if the number of microseconds expressed either by: - mis milliseconds and mics microseconds, or - mics is less than 0.
 
@@ -3343,6 +3429,7 @@ None
 		void SetValues(const Standard_Integer ss, const Standard_Integer mics = 0);
 
 		/****************** Subtract ******************/
+		/**** md5 signature: 2e82f0457853be8b33b2f39e8671979b ****/
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "Subtracts one period from another and returns the difference.
 
@@ -3357,6 +3444,7 @@ Quantity_Period
 		Quantity_Period Subtract(const Quantity_Period & anOther);
 
 		/****************** Values ******************/
+		/**** md5 signature: de41225dda45151d407832b30cb61435 ****/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "Decomposes this period into a number of days,hours, minutes,seconds,milliseconds and microseconds example of return values: 2 days, 15 hours, 0 minute , 0 second 0 millisecond and 0 microsecond.
 
@@ -3375,6 +3463,7 @@ mics: int
 		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** Values ******************/
+		/**** md5 signature: 0bd43b78efbe121977f35bb694c18737 ****/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "Returns the number of seconds in ss and the number of remainding microseconds in mics of this period. example of return values: 3600 seconds and 0 microseconds.
 
@@ -3389,6 +3478,7 @@ mics: int
 		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** operator + ******************/
+		/**** md5 signature: b469a74a9bde44265acc9f3c4cbf2364 ****/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "No available documentation.
 
@@ -3403,6 +3493,7 @@ Quantity_Period
 		Quantity_Period operator +(const Quantity_Period & anOther);
 
 		/****************** operator - ******************/
+		/**** md5 signature: 0986ca7dc4739dd0190ddec4db2fa4cf ****/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "No available documentation.
 

@@ -98,6 +98,7 @@ from OCC.Core.Exception import *
 class HLRAppli_ReflectLines {
 	public:
 		/****************** HLRAppli_ReflectLines ******************/
+		/**** md5 signature: c68fdca60efe22186684369fafa6346f ****/
 		%feature("compactdefaultargs") HLRAppli_ReflectLines;
 		%feature("autodoc", "Constructor.
 
@@ -112,6 +113,7 @@ None
 		 HLRAppli_ReflectLines(const TopoDS_Shape & aShape);
 
 		/****************** GetCompoundOf3dEdges ******************/
+		/**** md5 signature: 56814c9f5f74fb78cdeb6b9ce73f3eda ****/
 		%feature("compactdefaultargs") GetCompoundOf3dEdges;
 		%feature("autodoc", "Returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d.
 
@@ -128,6 +130,7 @@ TopoDS_Shape
 		TopoDS_Shape GetCompoundOf3dEdges(const HLRBRep_TypeOfResultingEdge type, const Standard_Boolean visible, const Standard_Boolean In3d);
 
 		/****************** GetResult ******************/
+		/**** md5 signature: 61ceaea87a267f8cb3587a019bfaa140 ****/
 		%feature("compactdefaultargs") GetResult;
 		%feature("autodoc", "Returns resulting compound of reflect lines represented by edges in 3d.
 
@@ -138,6 +141,7 @@ TopoDS_Shape
 		TopoDS_Shape GetResult();
 
 		/****************** Perform ******************/
+		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "No available documentation.
 
@@ -148,6 +152,7 @@ None
 		void Perform();
 
 		/****************** SetAxes ******************/
+		/**** md5 signature: 4220cc44329eacefbd57c3d09a70953f ****/
 		%feature("compactdefaultargs") SetAxes;
 		%feature("autodoc", "Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
 

@@ -81,6 +81,7 @@ from OCC.Core.Exception import *
 class TopCnx_EdgeFaceTransition {
 	public:
 		/****************** TopCnx_EdgeFaceTransition ******************/
+		/**** md5 signature: 1e1067a755e152c2af0a73a891072d00 ****/
 		%feature("compactdefaultargs") TopCnx_EdgeFaceTransition;
 		%feature("autodoc", "Creates an empty algorithm.
 
@@ -91,6 +92,7 @@ None
 		 TopCnx_EdgeFaceTransition();
 
 		/****************** AddInterference ******************/
+		/**** md5 signature: 65f7e21e78a92b664019e6880e4b200c ****/
 		%feature("compactdefaultargs") AddInterference;
 		%feature("autodoc", "Add a curve element to the boundary. or is the orientation of the interference on the boundary curve. tr is the transition of the interference. btr is the boundary transition of the interference.
 
@@ -111,6 +113,7 @@ None
 		void AddInterference(const Standard_Real Tole, const gp_Dir & Tang, const gp_Dir & Norm, const Standard_Real Curv, const TopAbs_Orientation Or, const TopAbs_Orientation Tr, const TopAbs_Orientation BTr);
 
 		/****************** BoundaryTransition ******************/
+		/**** md5 signature: 74f690bd95102dfac559cd0dc3a25347 ****/
 		%feature("compactdefaultargs") BoundaryTransition;
 		%feature("autodoc", "Returns the current cumulated boundarytransition.
 
@@ -121,6 +124,7 @@ TopAbs_Orientation
 		TopAbs_Orientation BoundaryTransition();
 
 		/****************** Reset ******************/
+		/**** md5 signature: 41688a7deec782701e541aa14a291d6c ****/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "Initialize the algorithm with the local description of the edge.
 
@@ -137,6 +141,7 @@ None
 		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm, const Standard_Real Curv);
 
 		/****************** Reset ******************/
+		/**** md5 signature: 477dbad6632871c94ebb699631f93444 ****/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "Initialize the algorithm with a linear edge.
 
@@ -151,6 +156,7 @@ None
 		void Reset(const gp_Dir & Tgt);
 
 		/****************** Transition ******************/
+		/**** md5 signature: 054591dc4fd0ee1810f89fdf4fe89b33 ****/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "Returns the current cumulated transition.
 

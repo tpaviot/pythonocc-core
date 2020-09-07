@@ -607,6 +607,7 @@ typedef NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurpo
 class StepElement_AnalysisItemWithinRepresentation : public Standard_Transient {
 	public:
 		/****************** StepElement_AnalysisItemWithinRepresentation ******************/
+		/**** md5 signature: 6d0a39d780983d9346befebf05c0cee9 ****/
 		%feature("compactdefaultargs") StepElement_AnalysisItemWithinRepresentation;
 		%feature("autodoc", "Empty constructor.
 
@@ -617,6 +618,7 @@ None
 		 StepElement_AnalysisItemWithinRepresentation();
 
 		/****************** Description ******************/
+		/**** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ****/
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "Returns field description.
 
@@ -627,6 +629,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****************** Init ******************/
+		/**** md5 signature: e780b8274d3a9418c125c4fca0e023fc ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -644,6 +647,7 @@ None
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepRepr_RepresentationItem> & aItem, const opencascade::handle<StepRepr_Representation> & aRep);
 
 		/****************** Item ******************/
+		/**** md5 signature: aa18c8deb00ab1bbc1c297a46d577e7a ****/
 		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "Returns field item.
 
@@ -654,6 +658,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 		opencascade::handle<StepRepr_RepresentationItem> Item();
 
 		/****************** Name ******************/
+		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Returns field name.
 
@@ -664,6 +669,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****************** Rep ******************/
+		/**** md5 signature: 786d1c1b696b9088aaaf40e21e0573fd ****/
 		%feature("compactdefaultargs") Rep;
 		%feature("autodoc", "Returns field rep.
 
@@ -674,6 +680,7 @@ opencascade::handle<StepRepr_Representation>
 		opencascade::handle<StepRepr_Representation> Rep();
 
 		/****************** SetDescription ******************/
+		/**** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ****/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "Set field description.
 
@@ -688,6 +695,7 @@ None
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
 		/****************** SetItem ******************/
+		/**** md5 signature: 1c40282c2ba6b421330e84617d91abdf ****/
 		%feature("compactdefaultargs") SetItem;
 		%feature("autodoc", "Set field item.
 
@@ -702,6 +710,7 @@ None
 		void SetItem(const opencascade::handle<StepRepr_RepresentationItem> & Item);
 
 		/****************** SetName ******************/
+		/**** md5 signature: 1a85c1f4dd446039f14efe98df7aeb03 ****/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "Set field name.
 
@@ -716,6 +725,7 @@ None
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
 		/****************** SetRep ******************/
+		/**** md5 signature: 2747dcef6cd4bd273631a8c694283599 ****/
 		%feature("compactdefaultargs") SetRep;
 		%feature("autodoc", "Set field rep.
 
@@ -746,6 +756,7 @@ None
 class StepElement_CurveElementEndReleasePacket : public Standard_Transient {
 	public:
 		/****************** StepElement_CurveElementEndReleasePacket ******************/
+		/**** md5 signature: 02222b0c605756e5fde894e48ab9147d ****/
 		%feature("compactdefaultargs") StepElement_CurveElementEndReleasePacket;
 		%feature("autodoc", "Empty constructor.
 
@@ -756,6 +767,7 @@ None
 		 StepElement_CurveElementEndReleasePacket();
 
 		/****************** Init ******************/
+		/**** md5 signature: e3e8efc9ba7f7efc4d25849ac56e8986 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -771,6 +783,7 @@ None
 		void Init(const StepElement_CurveElementFreedom & aReleaseFreedom, const Standard_Real aReleaseStiffness);
 
 		/****************** ReleaseFreedom ******************/
+		/**** md5 signature: 2e7b9e60bfd6f99976be44b7ca276768 ****/
 		%feature("compactdefaultargs") ReleaseFreedom;
 		%feature("autodoc", "Returns field releasefreedom.
 
@@ -781,6 +794,7 @@ StepElement_CurveElementFreedom
 		StepElement_CurveElementFreedom ReleaseFreedom();
 
 		/****************** ReleaseStiffness ******************/
+		/**** md5 signature: a06ea60cfba7e870778d6e7245190bed ****/
 		%feature("compactdefaultargs") ReleaseStiffness;
 		%feature("autodoc", "Returns field releasestiffness.
 
@@ -791,6 +805,7 @@ float
 		Standard_Real ReleaseStiffness();
 
 		/****************** SetReleaseFreedom ******************/
+		/**** md5 signature: 66316e0eb66facbaf7e20185c6378c33 ****/
 		%feature("compactdefaultargs") SetReleaseFreedom;
 		%feature("autodoc", "Set field releasefreedom.
 
@@ -805,6 +820,7 @@ None
 		void SetReleaseFreedom(const StepElement_CurveElementFreedom & ReleaseFreedom);
 
 		/****************** SetReleaseStiffness ******************/
+		/**** md5 signature: 0dea1cf3cadb0b86eac6954132eac99a ****/
 		%feature("compactdefaultargs") SetReleaseStiffness;
 		%feature("autodoc", "Set field releasestiffness.
 
@@ -835,6 +851,7 @@ None
 class StepElement_CurveElementFreedom : public StepData_SelectType {
 	public:
 		/****************** StepElement_CurveElementFreedom ******************/
+		/**** md5 signature: c786db80e629edae96af3388330acfe1 ****/
 		%feature("compactdefaultargs") StepElement_CurveElementFreedom;
 		%feature("autodoc", "Empty constructor.
 
@@ -845,6 +862,7 @@ None
 		 StepElement_CurveElementFreedom();
 
 		/****************** ApplicationDefinedDegreeOfFreedom ******************/
+		/**** md5 signature: 0fd0c542a18b9422fd76d5c703619d4c ****/
 		%feature("compactdefaultargs") ApplicationDefinedDegreeOfFreedom;
 		%feature("autodoc", "Returns value as applicationdefineddegreeoffreedom (or null if another type).
 
@@ -855,6 +873,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedDegreeOfFreedom();
 
 		/****************** CaseMem ******************/
+		/**** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ****/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "Recognizes a items of select member curveelementfreedommember 1 -> enumeratedcurveelementfreedom 2 -> applicationdefineddegreeoffreedom 0 else.
 
@@ -869,6 +888,7 @@ int
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of curveelementfreedom select type return 0.
 
@@ -883,6 +903,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** EnumeratedCurveElementFreedom ******************/
+		/**** md5 signature: b71c5ae5364bbdcd46b9e8f2ddc88e71 ****/
 		%feature("compactdefaultargs") EnumeratedCurveElementFreedom;
 		%feature("autodoc", "Returns value as enumeratedcurveelementfreedom (or null if another type).
 
@@ -893,6 +914,7 @@ StepElement_EnumeratedCurveElementFreedom
 		StepElement_EnumeratedCurveElementFreedom EnumeratedCurveElementFreedom();
 
 		/****************** NewMember ******************/
+		/**** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ****/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Returns a new select member the type curveelementfreedommember.
 
@@ -903,6 +925,7 @@ opencascade::handle<StepData_SelectMember>
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
 		/****************** SetApplicationDefinedDegreeOfFreedom ******************/
+		/**** md5 signature: 5befbf4bc7a536042078023a85fb19e3 ****/
 		%feature("compactdefaultargs") SetApplicationDefinedDegreeOfFreedom;
 		%feature("autodoc", "Set value for applicationdefineddegreeoffreedom.
 
@@ -917,6 +940,7 @@ None
 		void SetApplicationDefinedDegreeOfFreedom(const opencascade::handle<TCollection_HAsciiString> & aVal);
 
 		/****************** SetEnumeratedCurveElementFreedom ******************/
+		/**** md5 signature: dcbe2fcf6cba62bcfc42eabf55a4527c ****/
 		%feature("compactdefaultargs") SetEnumeratedCurveElementFreedom;
 		%feature("autodoc", "Set value for enumeratedcurveelementfreedom.
 
@@ -945,6 +969,7 @@ None
 class StepElement_CurveElementFreedomMember : public StepData_SelectNamed {
 	public:
 		/****************** StepElement_CurveElementFreedomMember ******************/
+		/**** md5 signature: a80e8d71b9aee6024b140926970f1136 ****/
 		%feature("compactdefaultargs") StepElement_CurveElementFreedomMember;
 		%feature("autodoc", "Empty constructor.
 
@@ -955,6 +980,7 @@ None
 		 StepElement_CurveElementFreedomMember();
 
 		/****************** HasName ******************/
+		/**** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ****/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Returns true if has name.
 
@@ -965,6 +991,7 @@ bool
 		virtual Standard_Boolean HasName();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 926675035b73f94f6faae7b81ca23022 ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "Tells if the name of a selectmember matches a given one;.
 
@@ -979,6 +1006,7 @@ bool
 		virtual Standard_Boolean Matches(const char * name);
 
 		/****************** Name ******************/
+		/**** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Returns set name.
 
@@ -989,6 +1017,7 @@ char *
 		virtual const char * Name();
 
 		/****************** SetName ******************/
+		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "Set name.
 
@@ -1019,6 +1048,7 @@ bool
 class StepElement_CurveElementPurpose : public StepData_SelectType {
 	public:
 		/****************** StepElement_CurveElementPurpose ******************/
+		/**** md5 signature: 74b762aa764fb6a55c725ff1d3e51bf9 ****/
 		%feature("compactdefaultargs") StepElement_CurveElementPurpose;
 		%feature("autodoc", "Empty constructor.
 
@@ -1029,6 +1059,7 @@ None
 		 StepElement_CurveElementPurpose();
 
 		/****************** ApplicationDefinedElementPurpose ******************/
+		/**** md5 signature: 37b0611195f319b893231cccd0578aba ****/
 		%feature("compactdefaultargs") ApplicationDefinedElementPurpose;
 		%feature("autodoc", "Returns value as applicationdefinedelementpurpose (or null if another type).
 
@@ -1039,6 +1070,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedElementPurpose();
 
 		/****************** CaseMem ******************/
+		/**** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ****/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "Recognizes a items of select member curveelementpurposemember 1 -> enumeratedcurveelementpurpose 2 -> applicationdefinedelementpurpose 0 else.
 
@@ -1053,6 +1085,7 @@ int
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of curveelementpurpose select type return 0.
 
@@ -1067,6 +1100,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** EnumeratedCurveElementPurpose ******************/
+		/**** md5 signature: 91ab4c6ed2b40f82fd1e9173a56308a2 ****/
 		%feature("compactdefaultargs") EnumeratedCurveElementPurpose;
 		%feature("autodoc", "Returns value as enumeratedcurveelementpurpose (or null if another type).
 
@@ -1077,6 +1111,7 @@ StepElement_EnumeratedCurveElementPurpose
 		StepElement_EnumeratedCurveElementPurpose EnumeratedCurveElementPurpose();
 
 		/****************** NewMember ******************/
+		/**** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ****/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Returns a new select member the type curveelementpurposemember.
 
@@ -1087,6 +1122,7 @@ opencascade::handle<StepData_SelectMember>
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
 		/****************** SetApplicationDefinedElementPurpose ******************/
+		/**** md5 signature: d492d8d068b95f939b146ce83ba4dd81 ****/
 		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
 		%feature("autodoc", "Set value for applicationdefinedelementpurpose.
 
@@ -1101,6 +1137,7 @@ None
 		void SetApplicationDefinedElementPurpose(const opencascade::handle<TCollection_HAsciiString> & aVal);
 
 		/****************** SetEnumeratedCurveElementPurpose ******************/
+		/**** md5 signature: 5628d158c9f11478c0309d3930892019 ****/
 		%feature("compactdefaultargs") SetEnumeratedCurveElementPurpose;
 		%feature("autodoc", "Set value for enumeratedcurveelementpurpose.
 
@@ -1129,6 +1166,7 @@ None
 class StepElement_CurveElementPurposeMember : public StepData_SelectNamed {
 	public:
 		/****************** StepElement_CurveElementPurposeMember ******************/
+		/**** md5 signature: 212b074a2f288699effaa52db6ccb6f9 ****/
 		%feature("compactdefaultargs") StepElement_CurveElementPurposeMember;
 		%feature("autodoc", "Empty constructor.
 
@@ -1139,6 +1177,7 @@ None
 		 StepElement_CurveElementPurposeMember();
 
 		/****************** HasName ******************/
+		/**** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ****/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Returns true if has name.
 
@@ -1149,6 +1188,7 @@ bool
 		virtual Standard_Boolean HasName();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 926675035b73f94f6faae7b81ca23022 ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "Tells if the name of a selectmember matches a given one;.
 
@@ -1163,6 +1203,7 @@ bool
 		virtual Standard_Boolean Matches(const char * name);
 
 		/****************** Name ******************/
+		/**** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Returns set name.
 
@@ -1173,6 +1214,7 @@ char *
 		virtual const char * Name();
 
 		/****************** SetName ******************/
+		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "Set name.
 
@@ -1203,6 +1245,7 @@ bool
 class StepElement_CurveElementSectionDefinition : public Standard_Transient {
 	public:
 		/****************** StepElement_CurveElementSectionDefinition ******************/
+		/**** md5 signature: 6cec97292cf2428ad7648cc4ba7160ff ****/
 		%feature("compactdefaultargs") StepElement_CurveElementSectionDefinition;
 		%feature("autodoc", "Empty constructor.
 
@@ -1213,6 +1256,7 @@ None
 		 StepElement_CurveElementSectionDefinition();
 
 		/****************** Description ******************/
+		/**** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ****/
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "Returns field description.
 
@@ -1223,6 +1267,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****************** Init ******************/
+		/**** md5 signature: 44417457cbd7725388314a318276ec96 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -1238,6 +1283,7 @@ None
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aDescription, const Standard_Real aSectionAngle);
 
 		/****************** SectionAngle ******************/
+		/**** md5 signature: b9b364e3c46e925b34ee3072e227e757 ****/
 		%feature("compactdefaultargs") SectionAngle;
 		%feature("autodoc", "Returns field sectionangle.
 
@@ -1248,6 +1294,7 @@ float
 		Standard_Real SectionAngle();
 
 		/****************** SetDescription ******************/
+		/**** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ****/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "Set field description.
 
@@ -1262,6 +1309,7 @@ None
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
 		/****************** SetSectionAngle ******************/
+		/**** md5 signature: 0ab7588c24ea100afda44048c522d6f9 ****/
 		%feature("compactdefaultargs") SetSectionAngle;
 		%feature("autodoc", "Set field sectionangle.
 
@@ -1292,6 +1340,7 @@ None
 class StepElement_ElementAspect : public StepData_SelectType {
 	public:
 		/****************** StepElement_ElementAspect ******************/
+		/**** md5 signature: a082380f7ee362d9ca9e3bb052698fa9 ****/
 		%feature("compactdefaultargs") StepElement_ElementAspect;
 		%feature("autodoc", "Empty constructor.
 
@@ -1302,6 +1351,7 @@ None
 		 StepElement_ElementAspect();
 
 		/****************** CaseMem ******************/
+		/**** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ****/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "Recognizes a items of select member elementaspectmember 1 -> elementvolume 2 -> volume3dface 3 -> volume2dface 4 -> volume3dedge 5 -> volume2dedge 6 -> surface3dface 7 -> surface2dface 8 -> surface3dedge 9 -> surface2dedge 10 -> curveedge 0 else.
 
@@ -1316,6 +1366,7 @@ int
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of elementaspect select type return 0.
 
@@ -1330,6 +1381,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** CurveEdge ******************/
+		/**** md5 signature: f5054aa2a7f76509e2108aa74f772094 ****/
 		%feature("compactdefaultargs") CurveEdge;
 		%feature("autodoc", "Returns value as curveedge (or null if another type).
 
@@ -1340,6 +1392,7 @@ StepElement_CurveEdge
 		StepElement_CurveEdge CurveEdge();
 
 		/****************** ElementVolume ******************/
+		/**** md5 signature: 494aa2ea04812e53548cf44240a9048a ****/
 		%feature("compactdefaultargs") ElementVolume;
 		%feature("autodoc", "Returns value as elementvolume (or null if another type).
 
@@ -1350,6 +1403,7 @@ StepElement_ElementVolume
 		StepElement_ElementVolume ElementVolume();
 
 		/****************** NewMember ******************/
+		/**** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ****/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Returns a new select member the type elementaspectmember.
 
@@ -1360,6 +1414,7 @@ opencascade::handle<StepData_SelectMember>
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
 		/****************** SetCurveEdge ******************/
+		/**** md5 signature: bc8f336e88a6428165f02ef4f6f2a109 ****/
 		%feature("compactdefaultargs") SetCurveEdge;
 		%feature("autodoc", "Set value for curveedge.
 
@@ -1374,6 +1429,7 @@ None
 		void SetCurveEdge(const StepElement_CurveEdge aVal);
 
 		/****************** SetElementVolume ******************/
+		/**** md5 signature: 8fd5f0f96e96b6f20a06fc0a8e20be1b ****/
 		%feature("compactdefaultargs") SetElementVolume;
 		%feature("autodoc", "Set value for elementvolume.
 
@@ -1388,6 +1444,7 @@ None
 		void SetElementVolume(const StepElement_ElementVolume aVal);
 
 		/****************** SetSurface2dEdge ******************/
+		/**** md5 signature: 509ba9de78170033f83ed5a62efa91a8 ****/
 		%feature("compactdefaultargs") SetSurface2dEdge;
 		%feature("autodoc", "Set value for surface2dedge.
 
@@ -1402,6 +1459,7 @@ None
 		void SetSurface2dEdge(const Standard_Integer aVal);
 
 		/****************** SetSurface2dFace ******************/
+		/**** md5 signature: 10b1f217fd74746850cc52fe90c032b9 ****/
 		%feature("compactdefaultargs") SetSurface2dFace;
 		%feature("autodoc", "Set value for surface2dface.
 
@@ -1416,6 +1474,7 @@ None
 		void SetSurface2dFace(const Standard_Integer aVal);
 
 		/****************** SetSurface3dEdge ******************/
+		/**** md5 signature: 7867338a73c21c2c77f89d0e9be62c94 ****/
 		%feature("compactdefaultargs") SetSurface3dEdge;
 		%feature("autodoc", "Set value for surface3dedge.
 
@@ -1430,6 +1489,7 @@ None
 		void SetSurface3dEdge(const Standard_Integer aVal);
 
 		/****************** SetSurface3dFace ******************/
+		/**** md5 signature: f39b9c7696fe7efd293b10dbd9017eed ****/
 		%feature("compactdefaultargs") SetSurface3dFace;
 		%feature("autodoc", "Set value for surface3dface.
 
@@ -1444,6 +1504,7 @@ None
 		void SetSurface3dFace(const Standard_Integer aVal);
 
 		/****************** SetVolume2dEdge ******************/
+		/**** md5 signature: 7f1e72393ad06e57292608be49cd8c6c ****/
 		%feature("compactdefaultargs") SetVolume2dEdge;
 		%feature("autodoc", "Set value for volume2dedge.
 
@@ -1458,6 +1519,7 @@ None
 		void SetVolume2dEdge(const Standard_Integer aVal);
 
 		/****************** SetVolume2dFace ******************/
+		/**** md5 signature: 8595ce9e71376dc48ed5508c561fa2c2 ****/
 		%feature("compactdefaultargs") SetVolume2dFace;
 		%feature("autodoc", "Set value for volume2dface.
 
@@ -1472,6 +1534,7 @@ None
 		void SetVolume2dFace(const Standard_Integer aVal);
 
 		/****************** SetVolume3dEdge ******************/
+		/**** md5 signature: 0b9cf65d298173f61996bc9f22d3bc81 ****/
 		%feature("compactdefaultargs") SetVolume3dEdge;
 		%feature("autodoc", "Set value for volume3dedge.
 
@@ -1486,6 +1549,7 @@ None
 		void SetVolume3dEdge(const Standard_Integer aVal);
 
 		/****************** SetVolume3dFace ******************/
+		/**** md5 signature: 47b0e994072ec87685142b423eeb764b ****/
 		%feature("compactdefaultargs") SetVolume3dFace;
 		%feature("autodoc", "Set value for volume3dface.
 
@@ -1500,6 +1564,7 @@ None
 		void SetVolume3dFace(const Standard_Integer aVal);
 
 		/****************** Surface2dEdge ******************/
+		/**** md5 signature: 9483647436778d6a468daf242625cf78 ****/
 		%feature("compactdefaultargs") Surface2dEdge;
 		%feature("autodoc", "Returns value as surface2dedge (or null if another type).
 
@@ -1510,6 +1575,7 @@ int
 		Standard_Integer Surface2dEdge();
 
 		/****************** Surface2dFace ******************/
+		/**** md5 signature: fcadbb58624a1c60c76ed758a6444727 ****/
 		%feature("compactdefaultargs") Surface2dFace;
 		%feature("autodoc", "Returns value as surface2dface (or null if another type).
 
@@ -1520,6 +1586,7 @@ int
 		Standard_Integer Surface2dFace();
 
 		/****************** Surface3dEdge ******************/
+		/**** md5 signature: f0c7f5a888348bc96c40cde9a37aa9e7 ****/
 		%feature("compactdefaultargs") Surface3dEdge;
 		%feature("autodoc", "Returns value as surface3dedge (or null if another type).
 
@@ -1530,6 +1597,7 @@ int
 		Standard_Integer Surface3dEdge();
 
 		/****************** Surface3dFace ******************/
+		/**** md5 signature: e745d84eb40daf36db233afabc767585 ****/
 		%feature("compactdefaultargs") Surface3dFace;
 		%feature("autodoc", "Returns value as surface3dface (or null if another type).
 
@@ -1540,6 +1608,7 @@ int
 		Standard_Integer Surface3dFace();
 
 		/****************** Volume2dEdge ******************/
+		/**** md5 signature: a331bc7c8be0569c0e44c6992e119e12 ****/
 		%feature("compactdefaultargs") Volume2dEdge;
 		%feature("autodoc", "Returns value as volume2dedge (or null if another type).
 
@@ -1550,6 +1619,7 @@ int
 		Standard_Integer Volume2dEdge();
 
 		/****************** Volume2dFace ******************/
+		/**** md5 signature: e072f67894d136d30262e4dfaeeb487c ****/
 		%feature("compactdefaultargs") Volume2dFace;
 		%feature("autodoc", "Returns value as volume2dface (or null if another type).
 
@@ -1560,6 +1630,7 @@ int
 		Standard_Integer Volume2dFace();
 
 		/****************** Volume3dEdge ******************/
+		/**** md5 signature: 8035d3d759fb8159e3846278747e7fb4 ****/
 		%feature("compactdefaultargs") Volume3dEdge;
 		%feature("autodoc", "Returns value as volume3dedge (or null if another type).
 
@@ -1570,6 +1641,7 @@ int
 		Standard_Integer Volume3dEdge();
 
 		/****************** Volume3dFace ******************/
+		/**** md5 signature: 3bb430eb38f9f1bded6d2304ebe06b48 ****/
 		%feature("compactdefaultargs") Volume3dFace;
 		%feature("autodoc", "Returns value as volume3dface (or null if another type).
 
@@ -1594,6 +1666,7 @@ int
 class StepElement_ElementAspectMember : public StepData_SelectNamed {
 	public:
 		/****************** StepElement_ElementAspectMember ******************/
+		/**** md5 signature: 7f20eb16d3d83424682d76c1a0d20104 ****/
 		%feature("compactdefaultargs") StepElement_ElementAspectMember;
 		%feature("autodoc", "Empty constructor.
 
@@ -1604,6 +1677,7 @@ None
 		 StepElement_ElementAspectMember();
 
 		/****************** HasName ******************/
+		/**** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ****/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Returns true if has name.
 
@@ -1614,6 +1688,7 @@ bool
 		virtual Standard_Boolean HasName();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 926675035b73f94f6faae7b81ca23022 ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "Tells if the name of a selectmember matches a given one;.
 
@@ -1628,6 +1703,7 @@ bool
 		virtual Standard_Boolean Matches(const char * name);
 
 		/****************** Name ******************/
+		/**** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Returns set name.
 
@@ -1638,6 +1714,7 @@ char *
 		virtual const char * Name();
 
 		/****************** SetName ******************/
+		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "Set name.
 
@@ -1668,6 +1745,7 @@ bool
 class StepElement_ElementDescriptor : public Standard_Transient {
 	public:
 		/****************** StepElement_ElementDescriptor ******************/
+		/**** md5 signature: 41a9109dc5567d013df5a08ef5520692 ****/
 		%feature("compactdefaultargs") StepElement_ElementDescriptor;
 		%feature("autodoc", "Empty constructor.
 
@@ -1678,6 +1756,7 @@ None
 		 StepElement_ElementDescriptor();
 
 		/****************** Description ******************/
+		/**** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ****/
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "Returns field description.
 
@@ -1688,6 +1767,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****************** Init ******************/
+		/**** md5 signature: 0843df5c4b51487add3a288b44ce397b ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -1703,6 +1783,7 @@ None
 		void Init(const StepElement_ElementOrder aTopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****************** SetDescription ******************/
+		/**** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ****/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "Set field description.
 
@@ -1717,6 +1798,7 @@ None
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
 		/****************** SetTopologyOrder ******************/
+		/**** md5 signature: 67ae1e7dc41269bd9d88dfa89a119670 ****/
 		%feature("compactdefaultargs") SetTopologyOrder;
 		%feature("autodoc", "Set field topologyorder.
 
@@ -1731,6 +1813,7 @@ None
 		void SetTopologyOrder(const StepElement_ElementOrder TopologyOrder);
 
 		/****************** TopologyOrder ******************/
+		/**** md5 signature: 736662bde35b90ec990339434be00ad8 ****/
 		%feature("compactdefaultargs") TopologyOrder;
 		%feature("autodoc", "Returns field topologyorder.
 
@@ -1757,6 +1840,7 @@ StepElement_ElementOrder
 class StepElement_ElementMaterial : public Standard_Transient {
 	public:
 		/****************** StepElement_ElementMaterial ******************/
+		/**** md5 signature: 46a30cefae87bd17c809ad06ab810a35 ****/
 		%feature("compactdefaultargs") StepElement_ElementMaterial;
 		%feature("autodoc", "Empty constructor.
 
@@ -1767,6 +1851,7 @@ None
 		 StepElement_ElementMaterial();
 
 		/****************** Description ******************/
+		/**** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ****/
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "Returns field description.
 
@@ -1777,6 +1862,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****************** Init ******************/
+		/**** md5 signature: 34239b17d8897e144582b34efcd27a85 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -1793,6 +1879,7 @@ None
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aMaterialId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> & aProperties);
 
 		/****************** MaterialId ******************/
+		/**** md5 signature: 984e9b7b658fb9d72c61c2aacacd0e4a ****/
 		%feature("compactdefaultargs") MaterialId;
 		%feature("autodoc", "Returns field materialid.
 
@@ -1803,6 +1890,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> MaterialId();
 
 		/****************** Properties ******************/
+		/**** md5 signature: a549631887748a397841cd02c61fbc0a ****/
 		%feature("compactdefaultargs") Properties;
 		%feature("autodoc", "Returns field properties.
 
@@ -1813,6 +1901,7 @@ opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation>
 		opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> Properties();
 
 		/****************** SetDescription ******************/
+		/**** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ****/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "Set field description.
 
@@ -1827,6 +1916,7 @@ None
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
 		/****************** SetMaterialId ******************/
+		/**** md5 signature: 573021172c67fb1a12a3daefb8ff9c8b ****/
 		%feature("compactdefaultargs") SetMaterialId;
 		%feature("autodoc", "Set field materialid.
 
@@ -1841,6 +1931,7 @@ None
 		void SetMaterialId(const opencascade::handle<TCollection_HAsciiString> & MaterialId);
 
 		/****************** SetProperties ******************/
+		/**** md5 signature: 1cbc03f1726993887e873e0578b9bff5 ****/
 		%feature("compactdefaultargs") SetProperties;
 		%feature("autodoc", "Set field properties.
 
@@ -1871,6 +1962,7 @@ None
 class StepElement_MeasureOrUnspecifiedValue : public StepData_SelectType {
 	public:
 		/****************** StepElement_MeasureOrUnspecifiedValue ******************/
+		/**** md5 signature: 806193f9c9d92063fcdf7d3a30cdcc4c ****/
 		%feature("compactdefaultargs") StepElement_MeasureOrUnspecifiedValue;
 		%feature("autodoc", "Empty constructor.
 
@@ -1881,6 +1973,7 @@ None
 		 StepElement_MeasureOrUnspecifiedValue();
 
 		/****************** CaseMem ******************/
+		/**** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ****/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "Recognizes a items of select member measureorunspecifiedvaluemember 1 -> contextdependentmeasure 2 -> unspecifiedvalue 0 else.
 
@@ -1895,6 +1988,7 @@ int
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of measureorunspecifiedvalue select type return 0.
 
@@ -1909,6 +2003,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** ContextDependentMeasure ******************/
+		/**** md5 signature: 568437f42df21c23c4156094b79b4c29 ****/
 		%feature("compactdefaultargs") ContextDependentMeasure;
 		%feature("autodoc", "Returns value as contextdependentmeasure (or null if another type).
 
@@ -1919,6 +2014,7 @@ float
 		Standard_Real ContextDependentMeasure();
 
 		/****************** NewMember ******************/
+		/**** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ****/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Returns a new select member the type measureorunspecifiedvaluemember.
 
@@ -1929,6 +2025,7 @@ opencascade::handle<StepData_SelectMember>
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
 		/****************** SetContextDependentMeasure ******************/
+		/**** md5 signature: 07010e9a0752546d6bb9aa7e3e22aacf ****/
 		%feature("compactdefaultargs") SetContextDependentMeasure;
 		%feature("autodoc", "Set value for contextdependentmeasure.
 
@@ -1943,6 +2040,7 @@ None
 		void SetContextDependentMeasure(const Standard_Real aVal);
 
 		/****************** SetUnspecifiedValue ******************/
+		/**** md5 signature: be9d00c6897eacbfb95a54795ed0d387 ****/
 		%feature("compactdefaultargs") SetUnspecifiedValue;
 		%feature("autodoc", "Set value for unspecifiedvalue.
 
@@ -1957,6 +2055,7 @@ None
 		void SetUnspecifiedValue(const StepElement_UnspecifiedValue aVal);
 
 		/****************** UnspecifiedValue ******************/
+		/**** md5 signature: fb449b0d13bcc92ad6a836b809472b40 ****/
 		%feature("compactdefaultargs") UnspecifiedValue;
 		%feature("autodoc", "Returns value as unspecifiedvalue (or null if another type).
 
@@ -1981,6 +2080,7 @@ StepElement_UnspecifiedValue
 class StepElement_MeasureOrUnspecifiedValueMember : public StepData_SelectNamed {
 	public:
 		/****************** StepElement_MeasureOrUnspecifiedValueMember ******************/
+		/**** md5 signature: 7c9fc3cdeb9293b8df571158a98cfc8c ****/
 		%feature("compactdefaultargs") StepElement_MeasureOrUnspecifiedValueMember;
 		%feature("autodoc", "Empty constructor.
 
@@ -1991,6 +2091,7 @@ None
 		 StepElement_MeasureOrUnspecifiedValueMember();
 
 		/****************** HasName ******************/
+		/**** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ****/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Returns true if has name.
 
@@ -2001,6 +2102,7 @@ bool
 		virtual Standard_Boolean HasName();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 926675035b73f94f6faae7b81ca23022 ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "Tells if the name of a selectmember matches a given one;.
 
@@ -2015,6 +2117,7 @@ bool
 		virtual Standard_Boolean Matches(const char * name);
 
 		/****************** Name ******************/
+		/**** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Returns set name.
 
@@ -2025,6 +2128,7 @@ char *
 		virtual const char * Name();
 
 		/****************** SetName ******************/
+		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "Set name.
 
@@ -2055,6 +2159,7 @@ bool
 class StepElement_SurfaceElementProperty : public Standard_Transient {
 	public:
 		/****************** StepElement_SurfaceElementProperty ******************/
+		/**** md5 signature: 4b2226c8dd20f37f207e524829caa36d ****/
 		%feature("compactdefaultargs") StepElement_SurfaceElementProperty;
 		%feature("autodoc", "Empty constructor.
 
@@ -2065,6 +2170,7 @@ None
 		 StepElement_SurfaceElementProperty();
 
 		/****************** Description ******************/
+		/**** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ****/
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "Returns field description.
 
@@ -2075,6 +2181,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****************** Init ******************/
+		/**** md5 signature: cfe082a0ce8491067ce71f67b9c8742d ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -2091,6 +2198,7 @@ None
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aPropertyId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepElement_SurfaceSectionField> & aSection);
 
 		/****************** PropertyId ******************/
+		/**** md5 signature: 4864667399554fed4d5fa9ae9070d731 ****/
 		%feature("compactdefaultargs") PropertyId;
 		%feature("autodoc", "Returns field propertyid.
 
@@ -2101,6 +2209,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> PropertyId();
 
 		/****************** Section ******************/
+		/**** md5 signature: c8705f600954c1a1f9dc910730d27fa0 ****/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "Returns field section.
 
@@ -2111,6 +2220,7 @@ opencascade::handle<StepElement_SurfaceSectionField>
 		opencascade::handle<StepElement_SurfaceSectionField> Section();
 
 		/****************** SetDescription ******************/
+		/**** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ****/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "Set field description.
 
@@ -2125,6 +2235,7 @@ None
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
 		/****************** SetPropertyId ******************/
+		/**** md5 signature: 24eb0454213ca7d7517eb5464cb641c2 ****/
 		%feature("compactdefaultargs") SetPropertyId;
 		%feature("autodoc", "Set field propertyid.
 
@@ -2139,6 +2250,7 @@ None
 		void SetPropertyId(const opencascade::handle<TCollection_HAsciiString> & PropertyId);
 
 		/****************** SetSection ******************/
+		/**** md5 signature: d6c76dc557f609a3c90a47b0e262d6cc ****/
 		%feature("compactdefaultargs") SetSection;
 		%feature("autodoc", "Set field section.
 
@@ -2169,6 +2281,7 @@ None
 class StepElement_SurfaceElementPurpose : public StepData_SelectType {
 	public:
 		/****************** StepElement_SurfaceElementPurpose ******************/
+		/**** md5 signature: c395f4a4371458a619f583d40a3cfa7f ****/
 		%feature("compactdefaultargs") StepElement_SurfaceElementPurpose;
 		%feature("autodoc", "Empty constructor.
 
@@ -2179,6 +2292,7 @@ None
 		 StepElement_SurfaceElementPurpose();
 
 		/****************** ApplicationDefinedElementPurpose ******************/
+		/**** md5 signature: 37b0611195f319b893231cccd0578aba ****/
 		%feature("compactdefaultargs") ApplicationDefinedElementPurpose;
 		%feature("autodoc", "Returns value as applicationdefinedelementpurpose (or null if another type).
 
@@ -2189,6 +2303,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedElementPurpose();
 
 		/****************** CaseMem ******************/
+		/**** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ****/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "Recognizes a items of select member surfaceelementpurposemember 1 -> enumeratedsurfaceelementpurpose 2 -> applicationdefinedelementpurpose 0 else.
 
@@ -2203,6 +2318,7 @@ int
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of surfaceelementpurpose select type return 0.
 
@@ -2217,6 +2333,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** EnumeratedSurfaceElementPurpose ******************/
+		/**** md5 signature: 30a59187261b825edb9e5e442e97f1c3 ****/
 		%feature("compactdefaultargs") EnumeratedSurfaceElementPurpose;
 		%feature("autodoc", "Returns value as enumeratedsurfaceelementpurpose (or null if another type).
 
@@ -2227,6 +2344,7 @@ StepElement_EnumeratedSurfaceElementPurpose
 		StepElement_EnumeratedSurfaceElementPurpose EnumeratedSurfaceElementPurpose();
 
 		/****************** NewMember ******************/
+		/**** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ****/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Returns a new select member the type surfaceelementpurposemember.
 
@@ -2237,6 +2355,7 @@ opencascade::handle<StepData_SelectMember>
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
 		/****************** SetApplicationDefinedElementPurpose ******************/
+		/**** md5 signature: d492d8d068b95f939b146ce83ba4dd81 ****/
 		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
 		%feature("autodoc", "Set value for applicationdefinedelementpurpose.
 
@@ -2251,6 +2370,7 @@ None
 		void SetApplicationDefinedElementPurpose(const opencascade::handle<TCollection_HAsciiString> & aVal);
 
 		/****************** SetEnumeratedSurfaceElementPurpose ******************/
+		/**** md5 signature: 5fc0d060fe41c551757dec7a75429573 ****/
 		%feature("compactdefaultargs") SetEnumeratedSurfaceElementPurpose;
 		%feature("autodoc", "Set value for enumeratedsurfaceelementpurpose.
 
@@ -2279,6 +2399,7 @@ None
 class StepElement_SurfaceElementPurposeMember : public StepData_SelectNamed {
 	public:
 		/****************** StepElement_SurfaceElementPurposeMember ******************/
+		/**** md5 signature: 6119b2abd1c031b7fe2e577f1de81898 ****/
 		%feature("compactdefaultargs") StepElement_SurfaceElementPurposeMember;
 		%feature("autodoc", "Empty constructor.
 
@@ -2289,6 +2410,7 @@ None
 		 StepElement_SurfaceElementPurposeMember();
 
 		/****************** HasName ******************/
+		/**** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ****/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Returns true if has name.
 
@@ -2299,6 +2421,7 @@ bool
 		virtual Standard_Boolean HasName();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 926675035b73f94f6faae7b81ca23022 ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "Tells if the name of a selectmember matches a given one;.
 
@@ -2313,6 +2436,7 @@ bool
 		virtual Standard_Boolean Matches(const char * name);
 
 		/****************** Name ******************/
+		/**** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Returns set name.
 
@@ -2323,6 +2447,7 @@ char *
 		virtual const char * Name();
 
 		/****************** SetName ******************/
+		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "Set name.
 
@@ -2353,6 +2478,7 @@ bool
 class StepElement_SurfaceSection : public Standard_Transient {
 	public:
 		/****************** StepElement_SurfaceSection ******************/
+		/**** md5 signature: 03838c228a62a7dc7d640aa9d5e71e7d ****/
 		%feature("compactdefaultargs") StepElement_SurfaceSection;
 		%feature("autodoc", "Empty constructor.
 
@@ -2363,6 +2489,7 @@ None
 		 StepElement_SurfaceSection();
 
 		/****************** Init ******************/
+		/**** md5 signature: ab1e2630df5e18e84ead9333e3a8a022 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -2379,6 +2506,7 @@ None
 		void Init(const StepElement_MeasureOrUnspecifiedValue & aOffset, const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMass, const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMassOffset);
 
 		/****************** NonStructuralMass ******************/
+		/**** md5 signature: 436bf6f6d969edecc7164d2766614e71 ****/
 		%feature("compactdefaultargs") NonStructuralMass;
 		%feature("autodoc", "Returns field nonstructuralmass.
 
@@ -2389,6 +2517,7 @@ StepElement_MeasureOrUnspecifiedValue
 		StepElement_MeasureOrUnspecifiedValue NonStructuralMass();
 
 		/****************** NonStructuralMassOffset ******************/
+		/**** md5 signature: bc43309846597942687395e3ac2827dd ****/
 		%feature("compactdefaultargs") NonStructuralMassOffset;
 		%feature("autodoc", "Returns field nonstructuralmassoffset.
 
@@ -2399,6 +2528,7 @@ StepElement_MeasureOrUnspecifiedValue
 		StepElement_MeasureOrUnspecifiedValue NonStructuralMassOffset();
 
 		/****************** Offset ******************/
+		/**** md5 signature: 94a5a5660525c58b7411f51af748b9fe ****/
 		%feature("compactdefaultargs") Offset;
 		%feature("autodoc", "Returns field offset.
 
@@ -2409,6 +2539,7 @@ StepElement_MeasureOrUnspecifiedValue
 		StepElement_MeasureOrUnspecifiedValue Offset();
 
 		/****************** SetNonStructuralMass ******************/
+		/**** md5 signature: 2f170bd9d8f328de42de37ef7e35b20b ****/
 		%feature("compactdefaultargs") SetNonStructuralMass;
 		%feature("autodoc", "Set field nonstructuralmass.
 
@@ -2423,6 +2554,7 @@ None
 		void SetNonStructuralMass(const StepElement_MeasureOrUnspecifiedValue & NonStructuralMass);
 
 		/****************** SetNonStructuralMassOffset ******************/
+		/**** md5 signature: cd7a7537cbeeae4c2e6d71e33c03b69f ****/
 		%feature("compactdefaultargs") SetNonStructuralMassOffset;
 		%feature("autodoc", "Set field nonstructuralmassoffset.
 
@@ -2437,6 +2569,7 @@ None
 		void SetNonStructuralMassOffset(const StepElement_MeasureOrUnspecifiedValue & NonStructuralMassOffset);
 
 		/****************** SetOffset ******************/
+		/**** md5 signature: 71b00d207d6dd43d1afdba09ddd7558d ****/
 		%feature("compactdefaultargs") SetOffset;
 		%feature("autodoc", "Set field offset.
 
@@ -2467,6 +2600,7 @@ None
 class StepElement_SurfaceSectionField : public Standard_Transient {
 	public:
 		/****************** StepElement_SurfaceSectionField ******************/
+		/**** md5 signature: 566fa5f005af84196920451ac86b5527 ****/
 		%feature("compactdefaultargs") StepElement_SurfaceSectionField;
 		%feature("autodoc", "Empty constructor.
 
@@ -2493,6 +2627,7 @@ None
 class StepElement_VolumeElementPurpose : public StepData_SelectType {
 	public:
 		/****************** StepElement_VolumeElementPurpose ******************/
+		/**** md5 signature: d3d3dbb1ab7e251a7ecceed493ca42b8 ****/
 		%feature("compactdefaultargs") StepElement_VolumeElementPurpose;
 		%feature("autodoc", "Empty constructor.
 
@@ -2503,6 +2638,7 @@ None
 		 StepElement_VolumeElementPurpose();
 
 		/****************** ApplicationDefinedElementPurpose ******************/
+		/**** md5 signature: 37b0611195f319b893231cccd0578aba ****/
 		%feature("compactdefaultargs") ApplicationDefinedElementPurpose;
 		%feature("autodoc", "Returns value as applicationdefinedelementpurpose (or null if another type).
 
@@ -2513,6 +2649,7 @@ opencascade::handle<TCollection_HAsciiString>
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedElementPurpose();
 
 		/****************** CaseMem ******************/
+		/**** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ****/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "Recognizes a items of select member volumeelementpurposemember 1 -> enumeratedvolumeelementpurpose 2 -> applicationdefinedelementpurpose 0 else.
 
@@ -2527,6 +2664,7 @@ int
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****************** CaseNum ******************/
+		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "Recognizes a kind of volumeelementpurpose select type return 0.
 
@@ -2541,6 +2679,7 @@ int
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****************** EnumeratedVolumeElementPurpose ******************/
+		/**** md5 signature: 122e50dda055acb15443287acded36cf ****/
 		%feature("compactdefaultargs") EnumeratedVolumeElementPurpose;
 		%feature("autodoc", "Returns value as enumeratedvolumeelementpurpose (or null if another type).
 
@@ -2551,6 +2690,7 @@ StepElement_EnumeratedVolumeElementPurpose
 		StepElement_EnumeratedVolumeElementPurpose EnumeratedVolumeElementPurpose();
 
 		/****************** NewMember ******************/
+		/**** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ****/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Returns a new select member the type volumeelementpurposemember.
 
@@ -2561,6 +2701,7 @@ opencascade::handle<StepData_SelectMember>
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
 		/****************** SetApplicationDefinedElementPurpose ******************/
+		/**** md5 signature: d492d8d068b95f939b146ce83ba4dd81 ****/
 		%feature("compactdefaultargs") SetApplicationDefinedElementPurpose;
 		%feature("autodoc", "Set value for applicationdefinedelementpurpose.
 
@@ -2575,6 +2716,7 @@ None
 		void SetApplicationDefinedElementPurpose(const opencascade::handle<TCollection_HAsciiString> & aVal);
 
 		/****************** SetEnumeratedVolumeElementPurpose ******************/
+		/**** md5 signature: d1c9f18f950ffbc85bfe7d7078a6fae4 ****/
 		%feature("compactdefaultargs") SetEnumeratedVolumeElementPurpose;
 		%feature("autodoc", "Set value for enumeratedvolumeelementpurpose.
 
@@ -2603,6 +2745,7 @@ None
 class StepElement_VolumeElementPurposeMember : public StepData_SelectNamed {
 	public:
 		/****************** StepElement_VolumeElementPurposeMember ******************/
+		/**** md5 signature: b8e2406754f7cfcd0795197bf7ec79fb ****/
 		%feature("compactdefaultargs") StepElement_VolumeElementPurposeMember;
 		%feature("autodoc", "Empty constructor.
 
@@ -2613,6 +2756,7 @@ None
 		 StepElement_VolumeElementPurposeMember();
 
 		/****************** HasName ******************/
+		/**** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ****/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Returns true if has name.
 
@@ -2623,6 +2767,7 @@ bool
 		virtual Standard_Boolean HasName();
 
 		/****************** Matches ******************/
+		/**** md5 signature: 926675035b73f94f6faae7b81ca23022 ****/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "Tells if the name of a selectmember matches a given one;.
 
@@ -2637,6 +2782,7 @@ bool
 		virtual Standard_Boolean Matches(const char * name);
 
 		/****************** Name ******************/
+		/**** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ****/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Returns set name.
 
@@ -2647,6 +2793,7 @@ char *
 		virtual const char * Name();
 
 		/****************** SetName ******************/
+		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "Set name.
 
@@ -2677,6 +2824,7 @@ bool
 class StepElement_Curve3dElementDescriptor : public StepElement_ElementDescriptor {
 	public:
 		/****************** StepElement_Curve3dElementDescriptor ******************/
+		/**** md5 signature: 9e44c235a5082b53d6ebd6a02e3fcf06 ****/
 		%feature("compactdefaultargs") StepElement_Curve3dElementDescriptor;
 		%feature("autodoc", "Empty constructor.
 
@@ -2687,6 +2835,7 @@ None
 		 StepElement_Curve3dElementDescriptor();
 
 		/****************** Init ******************/
+		/**** md5 signature: f791c47d02f853a79dcb28d7b692f6b6 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -2703,6 +2852,7 @@ None
 		void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description, const opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> & aPurpose);
 
 		/****************** Purpose ******************/
+		/**** md5 signature: d68a294e6807fcfa4e5c4d83aa73e9d8 ****/
 		%feature("compactdefaultargs") Purpose;
 		%feature("autodoc", "Returns field purpose.
 
@@ -2713,6 +2863,7 @@ opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember>
 		opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> Purpose();
 
 		/****************** SetPurpose ******************/
+		/**** md5 signature: f077eb037391daa86c1611a7465a7d7f ****/
 		%feature("compactdefaultargs") SetPurpose;
 		%feature("autodoc", "Set field purpose.
 
@@ -2743,6 +2894,7 @@ None
 class StepElement_CurveElementSectionDerivedDefinitions : public StepElement_CurveElementSectionDefinition {
 	public:
 		/****************** StepElement_CurveElementSectionDerivedDefinitions ******************/
+		/**** md5 signature: baf807b35b9a7d63ac6879d400cd3764 ****/
 		%feature("compactdefaultargs") StepElement_CurveElementSectionDerivedDefinitions;
 		%feature("autodoc", "Empty constructor.
 
@@ -2753,6 +2905,7 @@ None
 		 StepElement_CurveElementSectionDerivedDefinitions();
 
 		/****************** CrossSectionalArea ******************/
+		/**** md5 signature: c4c4db959d3a6d76f8788bd9f4c07722 ****/
 		%feature("compactdefaultargs") CrossSectionalArea;
 		%feature("autodoc", "Returns field crosssectionalarea.
 
@@ -2763,6 +2916,7 @@ float
 		Standard_Real CrossSectionalArea();
 
 		/****************** Init ******************/
+		/**** md5 signature: 5757e9a93ff929964c8c95cc2440c517 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -2788,6 +2942,7 @@ None
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aCurveElementSectionDefinition_Description, const Standard_Real aCurveElementSectionDefinition_SectionAngle, const Standard_Real aCrossSectionalArea, const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aShearArea, const opencascade::handle<TColStd_HArray1OfReal> & aSecondMomentOfArea, const Standard_Real aTorsionalConstant, const StepElement_MeasureOrUnspecifiedValue & aWarpingConstant, const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aLocationOfCentroid, const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aLocationOfShearCentre, const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & aLocationOfNonStructuralMass, const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMass, const StepElement_MeasureOrUnspecifiedValue & aPolarMoment);
 
 		/****************** LocationOfCentroid ******************/
+		/**** md5 signature: b0ccf28c499261fe4b7b5eb96d8f5ebe ****/
 		%feature("compactdefaultargs") LocationOfCentroid;
 		%feature("autodoc", "Returns field locationofcentroid.
 
@@ -2798,6 +2953,7 @@ opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> LocationOfCentroid();
 
 		/****************** LocationOfNonStructuralMass ******************/
+		/**** md5 signature: ea5935e0a6cfbe6157b28c9a39cb44e3 ****/
 		%feature("compactdefaultargs") LocationOfNonStructuralMass;
 		%feature("autodoc", "Returns field locationofnonstructuralmass.
 
@@ -2808,6 +2964,7 @@ opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> LocationOfNonStructuralMass();
 
 		/****************** LocationOfShearCentre ******************/
+		/**** md5 signature: d1aa5dfde5ebac41b996448e20355cb1 ****/
 		%feature("compactdefaultargs") LocationOfShearCentre;
 		%feature("autodoc", "Returns field locationofshearcentre.
 
@@ -2818,6 +2975,7 @@ opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> LocationOfShearCentre();
 
 		/****************** NonStructuralMass ******************/
+		/**** md5 signature: 436bf6f6d969edecc7164d2766614e71 ****/
 		%feature("compactdefaultargs") NonStructuralMass;
 		%feature("autodoc", "Returns field nonstructuralmass.
 
@@ -2828,6 +2986,7 @@ StepElement_MeasureOrUnspecifiedValue
 		StepElement_MeasureOrUnspecifiedValue NonStructuralMass();
 
 		/****************** PolarMoment ******************/
+		/**** md5 signature: 0bba9dfa7ecffce0c53f92a3d3724ccb ****/
 		%feature("compactdefaultargs") PolarMoment;
 		%feature("autodoc", "Returns field polarmoment.
 
@@ -2838,6 +2997,7 @@ StepElement_MeasureOrUnspecifiedValue
 		StepElement_MeasureOrUnspecifiedValue PolarMoment();
 
 		/****************** SecondMomentOfArea ******************/
+		/**** md5 signature: ef9720202c45808a5bdf8cf3a6879630 ****/
 		%feature("compactdefaultargs") SecondMomentOfArea;
 		%feature("autodoc", "Returns field secondmomentofarea.
 
@@ -2848,6 +3008,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 		opencascade::handle<TColStd_HArray1OfReal> SecondMomentOfArea();
 
 		/****************** SetCrossSectionalArea ******************/
+		/**** md5 signature: 72589f3e6009d128eedc7d44a2031c73 ****/
 		%feature("compactdefaultargs") SetCrossSectionalArea;
 		%feature("autodoc", "Set field crosssectionalarea.
 
@@ -2862,6 +3023,7 @@ None
 		void SetCrossSectionalArea(const Standard_Real CrossSectionalArea);
 
 		/****************** SetLocationOfCentroid ******************/
+		/**** md5 signature: 1afd086f8f7549268a625b3c7cba6942 ****/
 		%feature("compactdefaultargs") SetLocationOfCentroid;
 		%feature("autodoc", "Set field locationofcentroid.
 
@@ -2876,6 +3038,7 @@ None
 		void SetLocationOfCentroid(const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfCentroid);
 
 		/****************** SetLocationOfNonStructuralMass ******************/
+		/**** md5 signature: bfc21b2635a9ebb39f7db0a10629d8f4 ****/
 		%feature("compactdefaultargs") SetLocationOfNonStructuralMass;
 		%feature("autodoc", "Set field locationofnonstructuralmass.
 
@@ -2890,6 +3053,7 @@ None
 		void SetLocationOfNonStructuralMass(const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfNonStructuralMass);
 
 		/****************** SetLocationOfShearCentre ******************/
+		/**** md5 signature: 440ce2082eee6722f5eb9dfa738054e2 ****/
 		%feature("compactdefaultargs") SetLocationOfShearCentre;
 		%feature("autodoc", "Set field locationofshearcentre.
 
@@ -2904,6 +3068,7 @@ None
 		void SetLocationOfShearCentre(const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfShearCentre);
 
 		/****************** SetNonStructuralMass ******************/
+		/**** md5 signature: 2f170bd9d8f328de42de37ef7e35b20b ****/
 		%feature("compactdefaultargs") SetNonStructuralMass;
 		%feature("autodoc", "Set field nonstructuralmass.
 
@@ -2918,6 +3083,7 @@ None
 		void SetNonStructuralMass(const StepElement_MeasureOrUnspecifiedValue & NonStructuralMass);
 
 		/****************** SetPolarMoment ******************/
+		/**** md5 signature: 0fe3795d054d0c13b371423820bb5402 ****/
 		%feature("compactdefaultargs") SetPolarMoment;
 		%feature("autodoc", "Set field polarmoment.
 
@@ -2932,6 +3098,7 @@ None
 		void SetPolarMoment(const StepElement_MeasureOrUnspecifiedValue & PolarMoment);
 
 		/****************** SetSecondMomentOfArea ******************/
+		/**** md5 signature: 24242d7bdf009086f2c5a23054ba07ee ****/
 		%feature("compactdefaultargs") SetSecondMomentOfArea;
 		%feature("autodoc", "Set field secondmomentofarea.
 
@@ -2946,6 +3113,7 @@ None
 		void SetSecondMomentOfArea(const opencascade::handle<TColStd_HArray1OfReal> & SecondMomentOfArea);
 
 		/****************** SetShearArea ******************/
+		/**** md5 signature: 875119e3ee55e930d3befe8908934be9 ****/
 		%feature("compactdefaultargs") SetShearArea;
 		%feature("autodoc", "Set field sheararea.
 
@@ -2960,6 +3128,7 @@ None
 		void SetShearArea(const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & ShearArea);
 
 		/****************** SetTorsionalConstant ******************/
+		/**** md5 signature: 2419aee66c8099156b0932b6510c2cee ****/
 		%feature("compactdefaultargs") SetTorsionalConstant;
 		%feature("autodoc", "Set field torsionalconstant.
 
@@ -2974,6 +3143,7 @@ None
 		void SetTorsionalConstant(const Standard_Real TorsionalConstant);
 
 		/****************** SetWarpingConstant ******************/
+		/**** md5 signature: 78a8252027e7cf5837c7f54960fe9061 ****/
 		%feature("compactdefaultargs") SetWarpingConstant;
 		%feature("autodoc", "Set field warpingconstant.
 
@@ -2988,6 +3158,7 @@ None
 		void SetWarpingConstant(const StepElement_MeasureOrUnspecifiedValue & WarpingConstant);
 
 		/****************** ShearArea ******************/
+		/**** md5 signature: 59691f847fa9a792cb8d69e7f9ee5e93 ****/
 		%feature("compactdefaultargs") ShearArea;
 		%feature("autodoc", "Returns field sheararea.
 
@@ -2998,6 +3169,7 @@ opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> ShearArea();
 
 		/****************** TorsionalConstant ******************/
+		/**** md5 signature: 68bf303720706f3456d10506e7e3f690 ****/
 		%feature("compactdefaultargs") TorsionalConstant;
 		%feature("autodoc", "Returns field torsionalconstant.
 
@@ -3008,6 +3180,7 @@ float
 		Standard_Real TorsionalConstant();
 
 		/****************** WarpingConstant ******************/
+		/**** md5 signature: 4b51d9b3dc33bb3d393d0e927f1aff85 ****/
 		%feature("compactdefaultargs") WarpingConstant;
 		%feature("autodoc", "Returns field warpingconstant.
 
@@ -3034,6 +3207,7 @@ StepElement_MeasureOrUnspecifiedValue
 class StepElement_Surface3dElementDescriptor : public StepElement_ElementDescriptor {
 	public:
 		/****************** StepElement_Surface3dElementDescriptor ******************/
+		/**** md5 signature: edb1b1f637fec1bdb387b41b3589ca8e ****/
 		%feature("compactdefaultargs") StepElement_Surface3dElementDescriptor;
 		%feature("autodoc", "Empty constructor.
 
@@ -3044,6 +3218,7 @@ None
 		 StepElement_Surface3dElementDescriptor();
 
 		/****************** Init ******************/
+		/**** md5 signature: b92301cbca7e40ea0e0646e96cc37e7e ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -3061,6 +3236,7 @@ None
 		void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description, const opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> & aPurpose, const StepElement_Element2dShape aShape);
 
 		/****************** Purpose ******************/
+		/**** md5 signature: 93103c1dcf38ce96e5c6db63f11d3bd8 ****/
 		%feature("compactdefaultargs") Purpose;
 		%feature("autodoc", "Returns field purpose.
 
@@ -3071,6 +3247,7 @@ opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember>
 		opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> Purpose();
 
 		/****************** SetPurpose ******************/
+		/**** md5 signature: 2c7ded550ad5e933007eb5824850a36e ****/
 		%feature("compactdefaultargs") SetPurpose;
 		%feature("autodoc", "Set field purpose.
 
@@ -3085,6 +3262,7 @@ None
 		void SetPurpose(const opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> & Purpose);
 
 		/****************** SetShape ******************/
+		/**** md5 signature: db12ec83382603e29422b58584b1e14d ****/
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "Set field shape.
 
@@ -3099,6 +3277,7 @@ None
 		void SetShape(const StepElement_Element2dShape Shape);
 
 		/****************** Shape ******************/
+		/**** md5 signature: 09f72024414df5fac3dce89a57082809 ****/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Returns field shape.
 
@@ -3125,6 +3304,7 @@ StepElement_Element2dShape
 class StepElement_SurfaceSectionFieldConstant : public StepElement_SurfaceSectionField {
 	public:
 		/****************** StepElement_SurfaceSectionFieldConstant ******************/
+		/**** md5 signature: a62a586adc83d5727369f3f6d8cc75bb ****/
 		%feature("compactdefaultargs") StepElement_SurfaceSectionFieldConstant;
 		%feature("autodoc", "Empty constructor.
 
@@ -3135,6 +3315,7 @@ None
 		 StepElement_SurfaceSectionFieldConstant();
 
 		/****************** Definition ******************/
+		/**** md5 signature: 19d87fb03b026a9cea42ec31c9a40c62 ****/
 		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "Returns field definition.
 
@@ -3145,6 +3326,7 @@ opencascade::handle<StepElement_SurfaceSection>
 		opencascade::handle<StepElement_SurfaceSection> Definition();
 
 		/****************** Init ******************/
+		/**** md5 signature: c89ef10596bef59a827b5e9ccf55aa79 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -3159,6 +3341,7 @@ None
 		void Init(const opencascade::handle<StepElement_SurfaceSection> & aDefinition);
 
 		/****************** SetDefinition ******************/
+		/**** md5 signature: 34dce54504bb22d6ea9a0795cf9eade2 ****/
 		%feature("compactdefaultargs") SetDefinition;
 		%feature("autodoc", "Set field definition.
 
@@ -3189,6 +3372,7 @@ None
 class StepElement_SurfaceSectionFieldVarying : public StepElement_SurfaceSectionField {
 	public:
 		/****************** StepElement_SurfaceSectionFieldVarying ******************/
+		/**** md5 signature: f1f3bead4f4a6b89fb745f64b2acf4eb ****/
 		%feature("compactdefaultargs") StepElement_SurfaceSectionFieldVarying;
 		%feature("autodoc", "Empty constructor.
 
@@ -3199,6 +3383,7 @@ None
 		 StepElement_SurfaceSectionFieldVarying();
 
 		/****************** AdditionalNodeValues ******************/
+		/**** md5 signature: 5fd1596bede3a5c1da4f7be9dab66cc5 ****/
 		%feature("compactdefaultargs") AdditionalNodeValues;
 		%feature("autodoc", "Returns field additionalnodevalues.
 
@@ -3209,6 +3394,7 @@ bool
 		Standard_Boolean AdditionalNodeValues();
 
 		/****************** Definitions ******************/
+		/**** md5 signature: d7a63d44921bc5fa82990812de0c74ee ****/
 		%feature("compactdefaultargs") Definitions;
 		%feature("autodoc", "Returns field definitions.
 
@@ -3219,6 +3405,7 @@ opencascade::handle<StepElement_HArray1OfSurfaceSection>
 		opencascade::handle<StepElement_HArray1OfSurfaceSection> Definitions();
 
 		/****************** Init ******************/
+		/**** md5 signature: b53ea2a579a16979ac28e2e138f2ae8c ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -3234,6 +3421,7 @@ None
 		void Init(const opencascade::handle<StepElement_HArray1OfSurfaceSection> & aDefinitions, const Standard_Boolean aAdditionalNodeValues);
 
 		/****************** SetAdditionalNodeValues ******************/
+		/**** md5 signature: 25d9a886f0f6d21f4556d40f95421311 ****/
 		%feature("compactdefaultargs") SetAdditionalNodeValues;
 		%feature("autodoc", "Set field additionalnodevalues.
 
@@ -3248,6 +3436,7 @@ None
 		void SetAdditionalNodeValues(const Standard_Boolean AdditionalNodeValues);
 
 		/****************** SetDefinitions ******************/
+		/**** md5 signature: 763519c48a74c8b983ef48dac439424a ****/
 		%feature("compactdefaultargs") SetDefinitions;
 		%feature("autodoc", "Set field definitions.
 
@@ -3278,6 +3467,7 @@ None
 class StepElement_UniformSurfaceSection : public StepElement_SurfaceSection {
 	public:
 		/****************** StepElement_UniformSurfaceSection ******************/
+		/**** md5 signature: 75517b06d51c689748c1bc64e3460462 ****/
 		%feature("compactdefaultargs") StepElement_UniformSurfaceSection;
 		%feature("autodoc", "Empty constructor.
 
@@ -3288,6 +3478,7 @@ None
 		 StepElement_UniformSurfaceSection();
 
 		/****************** BendingThickness ******************/
+		/**** md5 signature: f253410999df80c3d5927466a577b446 ****/
 		%feature("compactdefaultargs") BendingThickness;
 		%feature("autodoc", "Returns field bendingthickness.
 
@@ -3298,6 +3489,7 @@ StepElement_MeasureOrUnspecifiedValue
 		StepElement_MeasureOrUnspecifiedValue BendingThickness();
 
 		/****************** Init ******************/
+		/**** md5 signature: 571445c82da6853c2df9d0fdd82095c4 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -3317,6 +3509,7 @@ None
 		void Init(const StepElement_MeasureOrUnspecifiedValue & aSurfaceSection_Offset, const StepElement_MeasureOrUnspecifiedValue & aSurfaceSection_NonStructuralMass, const StepElement_MeasureOrUnspecifiedValue & aSurfaceSection_NonStructuralMassOffset, const Standard_Real aThickness, const StepElement_MeasureOrUnspecifiedValue & aBendingThickness, const StepElement_MeasureOrUnspecifiedValue & aShearThickness);
 
 		/****************** SetBendingThickness ******************/
+		/**** md5 signature: dc2faf138ce9c5b540eb84ce1935c3b7 ****/
 		%feature("compactdefaultargs") SetBendingThickness;
 		%feature("autodoc", "Set field bendingthickness.
 
@@ -3331,6 +3524,7 @@ None
 		void SetBendingThickness(const StepElement_MeasureOrUnspecifiedValue & BendingThickness);
 
 		/****************** SetShearThickness ******************/
+		/**** md5 signature: fee97e3fce2d7b1704efa897fb913887 ****/
 		%feature("compactdefaultargs") SetShearThickness;
 		%feature("autodoc", "Set field shearthickness.
 
@@ -3345,6 +3539,7 @@ None
 		void SetShearThickness(const StepElement_MeasureOrUnspecifiedValue & ShearThickness);
 
 		/****************** SetThickness ******************/
+		/**** md5 signature: e890f371344924c21fffcd2b04786eb0 ****/
 		%feature("compactdefaultargs") SetThickness;
 		%feature("autodoc", "Set field thickness.
 
@@ -3359,6 +3554,7 @@ None
 		void SetThickness(const Standard_Real Thickness);
 
 		/****************** ShearThickness ******************/
+		/**** md5 signature: b81478ee35263bdf7f0647396a897fe1 ****/
 		%feature("compactdefaultargs") ShearThickness;
 		%feature("autodoc", "Returns field shearthickness.
 
@@ -3369,6 +3565,7 @@ StepElement_MeasureOrUnspecifiedValue
 		StepElement_MeasureOrUnspecifiedValue ShearThickness();
 
 		/****************** Thickness ******************/
+		/**** md5 signature: 5da481900c5ee9cbd00990ff84a638f7 ****/
 		%feature("compactdefaultargs") Thickness;
 		%feature("autodoc", "Returns field thickness.
 
@@ -3395,6 +3592,7 @@ float
 class StepElement_Volume3dElementDescriptor : public StepElement_ElementDescriptor {
 	public:
 		/****************** StepElement_Volume3dElementDescriptor ******************/
+		/**** md5 signature: a7a81e049ff38a2c01cba3f4a902be78 ****/
 		%feature("compactdefaultargs") StepElement_Volume3dElementDescriptor;
 		%feature("autodoc", "Empty constructor.
 
@@ -3405,6 +3603,7 @@ None
 		 StepElement_Volume3dElementDescriptor();
 
 		/****************** Init ******************/
+		/**** md5 signature: 6080fc5fbaeefd1208c22db5bfade876 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize all fields (own and inherited).
 
@@ -3422,6 +3621,7 @@ None
 		void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description, const opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> & aPurpose, const StepElement_Volume3dElementShape aShape);
 
 		/****************** Purpose ******************/
+		/**** md5 signature: f36f2b68d531db72629040dc79478f03 ****/
 		%feature("compactdefaultargs") Purpose;
 		%feature("autodoc", "Returns field purpose.
 
@@ -3432,6 +3632,7 @@ opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember>
 		opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> Purpose();
 
 		/****************** SetPurpose ******************/
+		/**** md5 signature: 8b461f5fe0a310ebdcde1c98ed621e05 ****/
 		%feature("compactdefaultargs") SetPurpose;
 		%feature("autodoc", "Set field purpose.
 
@@ -3446,6 +3647,7 @@ None
 		void SetPurpose(const opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> & Purpose);
 
 		/****************** SetShape ******************/
+		/**** md5 signature: 26dc4c77406a82a4a6edd356c81140a2 ****/
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "Set field shape.
 
@@ -3460,6 +3662,7 @@ None
 		void SetShape(const StepElement_Volume3dElementShape Shape);
 
 		/****************** Shape ******************/
+		/**** md5 signature: 63bd5bdf950cd1412d19119beeba48f0 ****/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Returns field shape.
 

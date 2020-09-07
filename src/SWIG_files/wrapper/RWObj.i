@@ -121,6 +121,7 @@ RWObj_SubMeshReason_NewSmoothGroup = RWObj_SubMeshReason.RWObj_SubMeshReason_New
 class RWObj {
 	public:
 		/****************** ReadFile ******************/
+		/**** md5 signature: 7fc90c2b37a779cd61ea8aab67c27303 ****/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "Read specified obj file and returns its content as triangulation. in case of error, returns null handle.
 
@@ -152,6 +153,7 @@ opencascade::handle<Poly_Triangulation>
 class RWObj_IShapeReceiver {
 	public:
 		/****************** BindNamedShape ******************/
+		/**** md5 signature: c4a7e1b6b51bf16257e0884d8678f1e6 ****/
 		%feature("compactdefaultargs") BindNamedShape;
 		%feature("autodoc", "@param theshape shape to register @param thename shape name @param thematerial shape material @param theisrootshape indicates that this is a root object (free shape).
 
@@ -192,6 +194,7 @@ class RWObj_Material {
 		Standard_ShortReal Shininess;
 		Standard_ShortReal Transparency;
 		/****************** RWObj_Material ******************/
+		/**** md5 signature: e824e5ca5d324e17a53317770dbbc543 ****/
 		%feature("compactdefaultargs") RWObj_Material;
 		%feature("autodoc", "No available documentation.
 
@@ -222,6 +225,7 @@ class RWObj_Reader : public Standard_Transient {
 		class ObjVec3iHasher {};
 		class VectorOfVertices {};
 		/****************** ExternalFiles ******************/
+		/**** md5 signature: 1100efdc16f5df4da63f3649f3bae2f1 ****/
 		%feature("compactdefaultargs") ExternalFiles;
 		%feature("autodoc", "Return the list of external file references.
 
@@ -232,6 +236,7 @@ NCollection_IndexedMap<TCollection_AsciiString>
 		const NCollection_IndexedMap<TCollection_AsciiString> & ExternalFiles();
 
 		/****************** FileComments ******************/
+		/**** md5 signature: 5907111e18d42fb1ae04fda50f8a0338 ****/
 		%feature("compactdefaultargs") FileComments;
 		%feature("autodoc", "Returns file comments (lines starting with # at the beginning of file).
 
@@ -242,6 +247,7 @@ TCollection_AsciiString
 		const TCollection_AsciiString & FileComments();
 
 		/****************** IsSinglePrecision ******************/
+		/**** md5 signature: 3d9bd168ea3086792839d0ab7bd5e36e ****/
 		%feature("compactdefaultargs") IsSinglePrecision;
 		%feature("autodoc", "Return single precision flag for reading vertex data (coordinates); false by default.
 
@@ -252,6 +258,7 @@ bool
 		Standard_Boolean IsSinglePrecision();
 
 		/****************** MemoryLimit ******************/
+		/**** md5 signature: 497f9f79bb3dc4c92ac3499c3f934cca ****/
 		%feature("compactdefaultargs") MemoryLimit;
 		%feature("autodoc", "Returns memory limit in bytes; -1 (no limit) by default.
 
@@ -262,6 +269,7 @@ Standard_Size
 		Standard_Size MemoryLimit();
 
 		/****************** NbProbeElems ******************/
+		/**** md5 signature: c59d60ae4f689662b396b03b87801ea5 ****/
 		%feature("compactdefaultargs") NbProbeElems;
 		%feature("autodoc", "//!< number of probed polygon elements (of unknown size).
 
@@ -272,6 +280,7 @@ int
 		Standard_Integer NbProbeElems();
 
 		/****************** NbProbeNodes ******************/
+		/**** md5 signature: a00db32de75db319aa32d1b94016db1a ****/
 		%feature("compactdefaultargs") NbProbeNodes;
 		%feature("autodoc", "Number of probed nodes.
 
@@ -282,6 +291,7 @@ int
 		Standard_Integer NbProbeNodes();
 
 		/****************** Probe ******************/
+		/**** md5 signature: 587b820e8804b376b7eeb1e390fc1f5b ****/
 		%feature("compactdefaultargs") Probe;
 		%feature("autodoc", "Probe data from obj file (comments, external references) without actually reading mesh data. although mesh data will not be collected, the full file content will be parsed, due to obj format limitations. @param thefile path to the file @param theprogress progress indicator returns true if success, false on error or user break. @sa filecomments(), externalfiles(), nbprobenodes(), nbprobeelems().
 
@@ -297,6 +307,7 @@ bool
 		Standard_Boolean Probe(const TCollection_AsciiString & theFile, const opencascade::handle<Message_ProgressIndicator> & theProgress);
 
 		/****************** Read ******************/
+		/**** md5 signature: 48923c847bd1104d6ef6381c9de33937 ****/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "Reads data from obj file. unicode paths can be given in utf-8 encoding. returns true if success, false on error or user break.
 
@@ -312,6 +323,7 @@ bool
 		Standard_Boolean Read(const TCollection_AsciiString & theFile, const opencascade::handle<Message_ProgressIndicator> & theProgress);
 
 		/****************** SetMemoryLimit ******************/
+		/**** md5 signature: 6570682bb3b681c7b6ede732333556b3 ****/
 		%feature("compactdefaultargs") SetMemoryLimit;
 		%feature("autodoc", "Specify memory limit in bytes, so that import will be aborted by specified limit before memory allocation error occurs.
 
@@ -326,6 +338,7 @@ None
 		void SetMemoryLimit(Standard_Size theMemLimit);
 
 		/****************** SetSinglePrecision ******************/
+		/**** md5 signature: 99984d661982e5c23a64361939c67a89 ****/
 		%feature("compactdefaultargs") SetSinglePrecision;
 		%feature("autodoc", "Setup single/double precision flag for reading vertex data (coordinates).
 
@@ -340,6 +353,7 @@ None
 		void SetSinglePrecision(Standard_Boolean theIsSinglePrecision);
 
 		/****************** SetTransformation ******************/
+		/**** md5 signature: e3e728f65ab2c16f510366aff5821cf5 ****/
 		%feature("compactdefaultargs") SetTransformation;
 		%feature("autodoc", "Setup transformation from one coordinate system to another. obj file might be exported following various coordinate system conventions, so that it might be useful automatically transform data during file reading.
 
@@ -354,6 +368,7 @@ None
 		void SetTransformation(const RWMesh_CoordinateSystemConverter & theCSConverter);
 
 		/****************** Transformation ******************/
+		/**** md5 signature: 71feef5f1946dae77a000bd50a820aec ****/
 		%feature("compactdefaultargs") Transformation;
 		%feature("autodoc", "Return transformation from one coordinate system to another; no transformation by default.
 
@@ -398,6 +413,7 @@ class RWObj_SubMesh {
 class RWObj_CafReader : public RWMesh_CafReader, protected RWObj_IShapeReceiver {
 	public:
 		/****************** RWObj_CafReader ******************/
+		/**** md5 signature: abe4f70bfb71b45929fc0ef0b7d4c19d ****/
 		%feature("compactdefaultargs") RWObj_CafReader;
 		%feature("autodoc", "Empty constructor.
 
@@ -408,6 +424,7 @@ None
 		 RWObj_CafReader();
 
 		/****************** IsSinglePrecision ******************/
+		/**** md5 signature: 3d9bd168ea3086792839d0ab7bd5e36e ****/
 		%feature("compactdefaultargs") IsSinglePrecision;
 		%feature("autodoc", "Return single precision flag for reading vertex data (coordinates); false by default.
 
@@ -418,6 +435,7 @@ bool
 		Standard_Boolean IsSinglePrecision();
 
 		/****************** SetSinglePrecision ******************/
+		/**** md5 signature: 99984d661982e5c23a64361939c67a89 ****/
 		%feature("compactdefaultargs") SetSinglePrecision;
 		%feature("autodoc", "Setup single/double precision flag for reading vertex data (coordinates).
 
@@ -446,6 +464,7 @@ None
 class RWObj_TriangulationReader : public RWObj_Reader {
 	public:
 		/****************** RWObj_TriangulationReader ******************/
+		/**** md5 signature: 3c004fcddd264c3577c6f2cb0d444634 ****/
 		%feature("compactdefaultargs") RWObj_TriangulationReader;
 		%feature("autodoc", "Constructor.
 
@@ -456,6 +475,7 @@ None
 		 RWObj_TriangulationReader();
 
 		/****************** GetTriangulation ******************/
+		/**** md5 signature: c78dd6225813894d19d3b8c88964d3eb ****/
 		%feature("compactdefaultargs") GetTriangulation;
 		%feature("autodoc", "Create poly_triangulation from collected data.
 
@@ -466,6 +486,7 @@ opencascade::handle<Poly_Triangulation>
 		virtual opencascade::handle<Poly_Triangulation> GetTriangulation();
 
 		/****************** ResultShape ******************/
+		/**** md5 signature: 2cda1838bd6e38f0292afee2ec85f65a ****/
 		%feature("compactdefaultargs") ResultShape;
 		%feature("autodoc", "Return result shape.
 
@@ -476,6 +497,7 @@ TopoDS_Shape
 		TopoDS_Shape ResultShape();
 
 		/****************** SetCreateShapes ******************/
+		/**** md5 signature: 4c73f709306991520386237767d81b43 ****/
 		%feature("compactdefaultargs") SetCreateShapes;
 		%feature("autodoc", "Set flag to create shapes.
 
@@ -490,6 +512,7 @@ None
 		void SetCreateShapes(Standard_Boolean theToCreateShapes);
 
 		/****************** SetShapeReceiver ******************/
+		/**** md5 signature: 66b62525eaf3c6d46991dcbfa30569e4 ****/
 		%feature("compactdefaultargs") SetShapeReceiver;
 		%feature("autodoc", "Set shape receiver callback.
 

@@ -87,6 +87,7 @@ from OCC.Core.Exception import *
 class GeomTools {
 	public:
 		/****************** GetUndefinedTypeHandler ******************/
+		/**** md5 signature: 4feeff4a1f6ab5a12fb2effedf9bc1c3 ****/
 		%feature("compactdefaultargs") GetUndefinedTypeHandler;
 		%feature("autodoc", "No available documentation.
 
@@ -97,6 +98,7 @@ opencascade::handle<GeomTools_UndefinedTypeHandler>
 		static opencascade::handle<GeomTools_UndefinedTypeHandler> GetUndefinedTypeHandler();
 
 		/****************** SetUndefinedTypeHandler ******************/
+		/**** md5 signature: 924bb9ac20d7bc97a8eee36d4f9f3c0b ****/
 		%feature("compactdefaultargs") SetUndefinedTypeHandler;
 		%feature("autodoc", "No available documentation.
 
@@ -125,6 +127,7 @@ None
 class GeomTools_Curve2dSet {
 	public:
 		/****************** GeomTools_Curve2dSet ******************/
+		/**** md5 signature: fd1845b0ee77ab29f7ca4ee6ff8d9279 ****/
 		%feature("compactdefaultargs") GeomTools_Curve2dSet;
 		%feature("autodoc", "Returns an empty set of curves.
 
@@ -135,6 +138,7 @@ None
 		 GeomTools_Curve2dSet();
 
 		/****************** Add ******************/
+		/**** md5 signature: 947264273ed6b5c72eac1f308b1f2487 ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "Incorporate a new curve in the set and returns its index.
 
@@ -149,6 +153,7 @@ int
 		Standard_Integer Add(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****************** Clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clears the content of the set.
 
@@ -159,6 +164,7 @@ None
 		void Clear();
 
 		/****************** Curve2d ******************/
+		/**** md5 signature: aca04b75893a006fca996d6d157d858d ****/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "Returns the curve of index <i>.
 
@@ -181,6 +187,7 @@ opencascade::handle<Geom2d_Curve>
             return s.str();}
         };
 		/****************** GetProgress ******************/
+		/**** md5 signature: 5ccd431fdaac188bfde6910f9c87adba ****/
 		%feature("compactdefaultargs") GetProgress;
 		%feature("autodoc", "No available documentation.
 
@@ -191,6 +198,7 @@ opencascade::handle<Message_ProgressIndicator>
 		opencascade::handle<Message_ProgressIndicator> GetProgress();
 
 		/****************** Index ******************/
+		/**** md5 signature: e1559320ddf80ce0263d324c781a3407 ****/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Returns the index of <l>.
 
@@ -219,6 +227,7 @@ int
                 self->ReadCurve2d(s);}
             };
 		/****************** SetProgress ******************/
+		/**** md5 signature: b010efa5a4169e377c5a67920d2de5f9 ****/
 		%feature("compactdefaultargs") SetProgress;
 		%feature("autodoc", "No available documentation.
 
@@ -255,6 +264,7 @@ None
 class GeomTools_CurveSet {
 	public:
 		/****************** GeomTools_CurveSet ******************/
+		/**** md5 signature: db7c2b276941a40dfd1eecce0ab38615 ****/
 		%feature("compactdefaultargs") GeomTools_CurveSet;
 		%feature("autodoc", "Returns an empty set of curves.
 
@@ -265,6 +275,7 @@ None
 		 GeomTools_CurveSet();
 
 		/****************** Add ******************/
+		/**** md5 signature: 4548eacacd2a36c829559b37d6b57411 ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "Incorporate a new curve in the set and returns its index.
 
@@ -279,6 +290,7 @@ int
 		Standard_Integer Add(const opencascade::handle<Geom_Curve> & C);
 
 		/****************** Clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clears the content of the set.
 
@@ -289,6 +301,7 @@ None
 		void Clear();
 
 		/****************** Curve ******************/
+		/**** md5 signature: 3509a433898cb7510761da8b37eedb3b ****/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Returns the curve of index <i>.
 
@@ -311,6 +324,7 @@ opencascade::handle<Geom_Curve>
             return s.str();}
         };
 		/****************** GetProgress ******************/
+		/**** md5 signature: 5ccd431fdaac188bfde6910f9c87adba ****/
 		%feature("compactdefaultargs") GetProgress;
 		%feature("autodoc", "No available documentation.
 
@@ -321,6 +335,7 @@ opencascade::handle<Message_ProgressIndicator>
 		opencascade::handle<Message_ProgressIndicator> GetProgress();
 
 		/****************** Index ******************/
+		/**** md5 signature: c53cbf4d0efdfb90843e67e9b32c5252 ****/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Returns the index of <l>.
 
@@ -349,6 +364,7 @@ int
                 self->ReadCurve(s);}
             };
 		/****************** SetProgress ******************/
+		/**** md5 signature: b010efa5a4169e377c5a67920d2de5f9 ****/
 		%feature("compactdefaultargs") SetProgress;
 		%feature("autodoc", "No available documentation.
 
@@ -385,6 +401,7 @@ None
 class GeomTools_SurfaceSet {
 	public:
 		/****************** GeomTools_SurfaceSet ******************/
+		/**** md5 signature: 13978194ee9f9c91ee7a81cdf7063dc2 ****/
 		%feature("compactdefaultargs") GeomTools_SurfaceSet;
 		%feature("autodoc", "Returns an empty set of surfaces.
 
@@ -395,6 +412,7 @@ None
 		 GeomTools_SurfaceSet();
 
 		/****************** Add ******************/
+		/**** md5 signature: 6108c9acf8995214a7cb8b8e5a0b937c ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "Incorporate a new surface in the set and returns its index.
 
@@ -409,6 +427,7 @@ int
 		Standard_Integer Add(const opencascade::handle<Geom_Surface> & S);
 
 		/****************** Clear ******************/
+		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Clears the content of the set.
 
@@ -427,6 +446,7 @@ None
             return s.str();}
         };
 		/****************** GetProgress ******************/
+		/**** md5 signature: 5ccd431fdaac188bfde6910f9c87adba ****/
 		%feature("compactdefaultargs") GetProgress;
 		%feature("autodoc", "No available documentation.
 
@@ -437,6 +457,7 @@ opencascade::handle<Message_ProgressIndicator>
 		opencascade::handle<Message_ProgressIndicator> GetProgress();
 
 		/****************** Index ******************/
+		/**** md5 signature: 7fc50802d17ebd7c660284e6560fb7f6 ****/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Returns the index of <l>.
 
@@ -465,6 +486,7 @@ int
                 self->ReadSurface(s);}
             };
 		/****************** SetProgress ******************/
+		/**** md5 signature: b010efa5a4169e377c5a67920d2de5f9 ****/
 		%feature("compactdefaultargs") SetProgress;
 		%feature("autodoc", "No available documentation.
 
@@ -479,6 +501,7 @@ None
 		void SetProgress(const opencascade::handle<Message_ProgressIndicator> & PR);
 
 		/****************** Surface ******************/
+		/**** md5 signature: f08a9f2a886e0a3933ae15a38f9b8dda ****/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Returns the surface of index <i>.
 
@@ -515,6 +538,7 @@ opencascade::handle<Geom_Surface>
 class GeomTools_UndefinedTypeHandler : public Standard_Transient {
 	public:
 		/****************** GeomTools_UndefinedTypeHandler ******************/
+		/**** md5 signature: cc90fa1e9e672821392fcca7d830ff55 ****/
 		%feature("compactdefaultargs") GeomTools_UndefinedTypeHandler;
 		%feature("autodoc", "No available documentation.
 

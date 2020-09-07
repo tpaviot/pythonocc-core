@@ -140,6 +140,7 @@ typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMa
 class XCAFPrs {
 	public:
 		/****************** CollectStyleSettings ******************/
+		/**** md5 signature: 7a262a4756e5937c27328da5edc3fabd ****/
 		%feature("compactdefaultargs") CollectStyleSettings;
 		%feature("autodoc", "Collect styles defined for shape on label l and its components and subshapes and fills a map of shape - style correspondence the location <loc> is for internal use, it should be null location for external call.
 
@@ -158,6 +159,7 @@ None
 		static void CollectStyleSettings(const TDF_Label & L, const TopLoc_Location & loc, XCAFPrs_IndexedDataMapOfShapeStyle & settings, const Quantity_ColorRGBA & theLayerColor = Quantity_ColorRGBA(Quantity_NOC_WHITE));
 
 		/****************** GetViewNameMode ******************/
+		/**** md5 signature: 00babb1f013f86f66ee15ee01531e437 ****/
 		%feature("compactdefaultargs") GetViewNameMode;
 		%feature("autodoc", "No available documentation.
 
@@ -168,6 +170,7 @@ bool
 		static Standard_Boolean GetViewNameMode();
 
 		/****************** SetViewNameMode ******************/
+		/**** md5 signature: 42d2caa5815110f47af30e5cb5a0c0d6 ****/
 		%feature("compactdefaultargs") SetViewNameMode;
 		%feature("autodoc", "Set viewnamemode for indicate display names or not.
 
@@ -196,6 +199,7 @@ None
 class XCAFPrs_AISObject : public AIS_ColoredShape {
 	public:
 		/****************** XCAFPrs_AISObject ******************/
+		/**** md5 signature: f0e55528fe8ff1d29919bf9ea5fa6e58 ****/
 		%feature("compactdefaultargs") XCAFPrs_AISObject;
 		%feature("autodoc", "Creates an object to visualise the shape label.
 
@@ -210,6 +214,7 @@ None
 		 XCAFPrs_AISObject(const TDF_Label & theLabel);
 
 		/****************** DispatchStyles ******************/
+		/**** md5 signature: 94e0ed354143041186c38dc4735f7b0d ****/
 		%feature("compactdefaultargs") DispatchStyles;
 		%feature("autodoc", "Fetch the shape from associated label and fill the map of sub-shapes styles. by default, this method is called implicitly within first ::compute(). application might call this method explicitly to manipulate styles afterwards. @param thetosyncstyles flag indicating if method ::compute() should call this method again on first compute or re-compute.
 
@@ -225,6 +230,7 @@ None
 		virtual void DispatchStyles(const Standard_Boolean theToSyncStyles = Standard_False);
 
 		/****************** GetLabel ******************/
+		/**** md5 signature: cc78125194d6893ebcb2c586f4ec4787 ****/
 		%feature("compactdefaultargs") GetLabel;
 		%feature("autodoc", "Returns the label which was visualised by this presentation.
 
@@ -235,6 +241,7 @@ TDF_Label
 		const TDF_Label & GetLabel();
 
 		/****************** SetLabel ******************/
+		/**** md5 signature: cc470d5ce9738c8709b266c2b6c1b90a ****/
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "Assign the label to this presentation (but does not mark it outdated with settoupdate()).
 
@@ -249,6 +256,7 @@ None
 		void SetLabel(const TDF_Label & theLabel);
 
 		/****************** SetMaterial ******************/
+		/**** md5 signature: 1fdce10ca979b439818a2f4eb876e6cc ****/
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "Sets the material aspect. this method assigns the new default material without overriding xde styles. re-computation of existing presentation is not required after calling this method.
 
@@ -279,6 +287,7 @@ None
 class XCAFPrs_DocumentExplorer {
 	public:
 		/****************** XCAFPrs_DocumentExplorer ******************/
+		/**** md5 signature: aa276310e32f5cd8603391addf99321a ****/
 		%feature("compactdefaultargs") XCAFPrs_DocumentExplorer;
 		%feature("autodoc", "Empty constructor.
 
@@ -289,6 +298,7 @@ None
 		 XCAFPrs_DocumentExplorer();
 
 		/****************** XCAFPrs_DocumentExplorer ******************/
+		/**** md5 signature: 5c8b0df27ab7c88c0f701f14704a7726 ****/
 		%feature("compactdefaultargs") XCAFPrs_DocumentExplorer;
 		%feature("autodoc", "Constructor for exploring the whole document. @param thedocument document to explore @param theflags iteration flags @param thedefstyle default style for nodes with undefined style.
 
@@ -306,6 +316,7 @@ None
 		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****************** XCAFPrs_DocumentExplorer ******************/
+		/**** md5 signature: 3a7cecc626d3723ed3253f4ffca51442 ****/
 		%feature("compactdefaultargs") XCAFPrs_DocumentExplorer;
 		%feature("autodoc", "Constructor for exploring specified list of root shapes in the document. @param thedocument document to explore @param theroots root labels to explore within specified document @param theflags iteration flags @param thedefstyle default style for nodes with undefined style.
 
@@ -324,6 +335,7 @@ None
 		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****************** ChangeCurrent ******************/
+		/**** md5 signature: d8575b117c3ddc102a80c8f34d2d5ff3 ****/
 		%feature("compactdefaultargs") ChangeCurrent;
 		%feature("autodoc", "Return current position.
 
@@ -334,6 +346,7 @@ XCAFPrs_DocumentNode
 		XCAFPrs_DocumentNode & ChangeCurrent();
 
 		/****************** Current ******************/
+		/**** md5 signature: 222ab8031f0a08f42b668a2b614cea4d ****/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return current position.
 
@@ -344,6 +357,7 @@ XCAFPrs_DocumentNode
 		const XCAFPrs_DocumentNode & Current();
 
 		/****************** Current ******************/
+		/**** md5 signature: efe0137b5d9a49ad6fe44f6c87e91380 ****/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return current position within specified assembly depth.
 
@@ -358,6 +372,7 @@ XCAFPrs_DocumentNode
 		const XCAFPrs_DocumentNode & Current(Standard_Integer theDepth);
 
 		/****************** CurrentDepth ******************/
+		/**** md5 signature: ec69b73ad734be8bbe2b41903c6bfb39 ****/
 		%feature("compactdefaultargs") CurrentDepth;
 		%feature("autodoc", "Return depth of the current node in hierarchy, starting from 0. zero means root label.
 
@@ -368,6 +383,7 @@ int
 		Standard_Integer CurrentDepth();
 
 		/****************** DefineChildId ******************/
+		/**** md5 signature: 408d6adf19c4d2c6d062f1bce2dab794 ****/
 		%feature("compactdefaultargs") DefineChildId;
 		%feature("autodoc", "Construct a unique string identifier for the given label. the identifier is a concatenation of label entries (tdf_tool::entry() with tailing '.') of hierarchy from parent to child joined via '/' and looking like this: @code 0:1:1:1./0:1:1:1:9./0:1:1:5:7. @endcode this generation scheme also allows finding originating labels using tdf_tool::label(). the tailing dot simplifies parent equality check. @param thelabel child label to define id @param theparentid parent string identifier defined by this method.
 
@@ -383,6 +399,7 @@ TCollection_AsciiString
 		static TCollection_AsciiString DefineChildId(const TDF_Label & theLabel, const TCollection_AsciiString & theParentId);
 
 		/****************** FindLabelFromPathId ******************/
+		/**** md5 signature: 36bd799783495ac64d75996cfdfc41d5 ****/
 		%feature("compactdefaultargs") FindLabelFromPathId;
 		%feature("autodoc", "Find a shape entity based on a text identifier constructed from ocaf labels defining full path. @sa definechildid().
 
@@ -400,6 +417,7 @@ TDF_Label
 		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, const TCollection_AsciiString & theId, TopLoc_Location & theParentLocation, TopLoc_Location & theLocation);
 
 		/****************** FindLabelFromPathId ******************/
+		/**** md5 signature: c5c736078028775b674842dc6f73fef0 ****/
 		%feature("compactdefaultargs") FindLabelFromPathId;
 		%feature("autodoc", "Find a shape entity based on a text identifier constructed from ocaf labels defining full path. @sa definechildid().
 
@@ -416,6 +434,7 @@ TDF_Label
 		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, const TCollection_AsciiString & theId, TopLoc_Location & theLocation);
 
 		/****************** FindShapeFromPathId ******************/
+		/**** md5 signature: fd58ff02219632fc8856de9d76e8dfa9 ****/
 		%feature("compactdefaultargs") FindShapeFromPathId;
 		%feature("autodoc", "Find a shape entity based on a text identifier constructed from ocaf labels defining full path. @sa definechildid().
 
@@ -431,6 +450,7 @@ TopoDS_Shape
 		static TopoDS_Shape FindShapeFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, const TCollection_AsciiString & theId);
 
 		/****************** Init ******************/
+		/**** md5 signature: eec1c7e6d6c080cb010b849abf99e398 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize the iterator from a single root shape in the document. @param thedocument document to explore @param theroot single root label to explore within specified document @param theflags iteration flags @param thedefstyle default style for nodes with undefined style.
 
@@ -449,6 +469,7 @@ None
 		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_Label & theRoot, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****************** Init ******************/
+		/**** md5 signature: 98f0800ab577cc74a88fca7a42e9982f ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Initialize the iterator from the list of root shapes in the document. @param thedocument document to explore @param theroots root labels to explore within specified document @param theflags iteration flags @param thedefstyle default style for nodes with undefined style.
 
@@ -467,6 +488,7 @@ None
 		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****************** More ******************/
+		/**** md5 signature: cff271d3b32940da94bada40648f9096 ****/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return true if iterator points to the valid node.
 
@@ -477,6 +499,7 @@ bool
 		Standard_Boolean More();
 
 		/****************** Next ******************/
+		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Go to the next node.
 
@@ -501,6 +524,7 @@ None
 class XCAFPrs_DocumentIdIterator {
 	public:
 		/****************** XCAFPrs_DocumentIdIterator ******************/
+		/**** md5 signature: 6eadeae34139dcef0fb7e3b2667aa2e8 ****/
 		%feature("compactdefaultargs") XCAFPrs_DocumentIdIterator;
 		%feature("autodoc", "Main constructor.
 
@@ -515,6 +539,7 @@ None
 		 XCAFPrs_DocumentIdIterator(const TCollection_AsciiString & thePath);
 
 		/****************** More ******************/
+		/**** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ****/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return true if iterator points to a value.
 
@@ -525,6 +550,7 @@ bool
 		bool More();
 
 		/****************** Next ******************/
+		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Find the next value.
 
@@ -535,6 +561,7 @@ None
 		void Next();
 
 		/****************** Value ******************/
+		/**** md5 signature: 984f9d59b062e7ebff353351a4b04ca9 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return current value.
 
@@ -567,6 +594,7 @@ class XCAFPrs_DocumentNode {
 		TDF_ChildIterator ChildIter;
 		bool IsAssembly;
 		/****************** XCAFPrs_DocumentNode ******************/
+		/**** md5 signature: 2d49950cf26abc8cee5d537bc0321564 ****/
 		%feature("compactdefaultargs") XCAFPrs_DocumentNode;
 		%feature("autodoc", "No available documentation.
 
@@ -591,6 +619,7 @@ None
 class XCAFPrs_Driver : public TPrsStd_Driver {
 	public:
 		/****************** GetID ******************/
+		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "Returns guid of the driver.
 
@@ -601,6 +630,7 @@ Standard_GUID
 		static const Standard_GUID & GetID();
 
 		/****************** Update ******************/
+		/**** md5 signature: ec78618f91177554d26e45cdddd4ea50 ****/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "No available documentation.
 
@@ -632,6 +662,7 @@ bool
 class XCAFPrs_Style {
 	public:
 		/****************** XCAFPrs_Style ******************/
+		/**** md5 signature: 9543f66d0ab16adfbffa6f1ff76c2dd5 ****/
 		%feature("compactdefaultargs") XCAFPrs_Style;
 		%feature("autodoc", "Empty constructor - colors are unset, visibility is true.
 
@@ -650,6 +681,7 @@ None
                 return s.str();}
             };
 		/****************** GetColorCurv ******************/
+		/**** md5 signature: 94dac84988e85c1a6c1fff8156adc1a0 ****/
 		%feature("compactdefaultargs") GetColorCurv;
 		%feature("autodoc", "Return curve color.
 
@@ -660,6 +692,7 @@ Quantity_Color
 		const Quantity_Color & GetColorCurv();
 
 		/****************** GetColorSurf ******************/
+		/**** md5 signature: a374a5c5f178aeaf928cc98a510eb507 ****/
 		%feature("compactdefaultargs") GetColorSurf;
 		%feature("autodoc", "Return surface color.
 
@@ -670,6 +703,7 @@ Quantity_Color
 		const Quantity_Color & GetColorSurf();
 
 		/****************** GetColorSurfRGBA ******************/
+		/**** md5 signature: 3160a42dbee284647420257ee6038479 ****/
 		%feature("compactdefaultargs") GetColorSurfRGBA;
 		%feature("autodoc", "Return surface color.
 
@@ -680,6 +714,7 @@ Quantity_ColorRGBA
 		const Quantity_ColorRGBA & GetColorSurfRGBA();
 
 		/****************** HashCode ******************/
+		/**** md5 signature: 815866ace2120ed6a0aade78641943c6 ****/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Computes a hash code for the given set of styling settings, in the range [1, theupperbound] @param thestyle the set of styling settings which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within returns a computed hash code, in the range [1, theupperbound].
 
@@ -695,6 +730,7 @@ int
 		static Standard_Integer HashCode(const XCAFPrs_Style & theStyle, const Standard_Integer theUpperBound);
 
 		/****************** IsEqual ******************/
+		/**** md5 signature: bc0bb14527a436f5e61f4f2840f337dd ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true if styles are the same methods for using style as key in maps.
 
@@ -709,6 +745,7 @@ bool
 		Standard_Boolean IsEqual(const XCAFPrs_Style & theOther);
 
 		/****************** IsEqual ******************/
+		/**** md5 signature: c0449415bf9985342d955191e7ff7a56 ****/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "Returns true when the two keys are the same.
 
@@ -724,6 +761,7 @@ bool
 		static Standard_Boolean IsEqual(const XCAFPrs_Style & theS1, const XCAFPrs_Style & theS2);
 
 		/****************** IsSetColorCurv ******************/
+		/**** md5 signature: 64313982bf697dffdbaa22ea5a964e21 ****/
 		%feature("compactdefaultargs") IsSetColorCurv;
 		%feature("autodoc", "Return true if curve color has been defined.
 
@@ -734,6 +772,7 @@ bool
 		Standard_Boolean IsSetColorCurv();
 
 		/****************** IsSetColorSurf ******************/
+		/**** md5 signature: d9778230338d66c28842ee9deaba02eb ****/
 		%feature("compactdefaultargs") IsSetColorSurf;
 		%feature("autodoc", "Return true if surface color has been defined.
 
@@ -744,6 +783,7 @@ bool
 		Standard_Boolean IsSetColorSurf();
 
 		/****************** IsVisible ******************/
+		/**** md5 signature: d2de178c6bd2985a6f06b17107c0b3e4 ****/
 		%feature("compactdefaultargs") IsVisible;
 		%feature("autodoc", "Manage visibility.
 
@@ -754,6 +794,7 @@ bool
 		Standard_Boolean IsVisible();
 
 		/****************** SetColorCurv ******************/
+		/**** md5 signature: 2e698f922d193bf6b1a67515dc2ebc31 ****/
 		%feature("compactdefaultargs") SetColorCurv;
 		%feature("autodoc", "Set curve color.
 
@@ -768,6 +809,7 @@ None
 		void SetColorCurv(const Quantity_Color & col);
 
 		/****************** SetColorSurf ******************/
+		/**** md5 signature: e9eab2473a29158ea5b9c596748c7881 ****/
 		%feature("compactdefaultargs") SetColorSurf;
 		%feature("autodoc", "Set surface color.
 
@@ -782,6 +824,7 @@ None
 		void SetColorSurf(const Quantity_Color & theColor);
 
 		/****************** SetColorSurf ******************/
+		/**** md5 signature: 9a15c6ee293d6149e1a723c4eb5768eb ****/
 		%feature("compactdefaultargs") SetColorSurf;
 		%feature("autodoc", "Set surface color.
 
@@ -796,6 +839,7 @@ None
 		void SetColorSurf(const Quantity_ColorRGBA & theColor);
 
 		/****************** SetVisibility ******************/
+		/**** md5 signature: 71f6f1775dc0a92e7f83855c46ebf1b8 ****/
 		%feature("compactdefaultargs") SetVisibility;
 		%feature("autodoc", "Assign visibility.
 
@@ -810,6 +854,7 @@ None
 		void SetVisibility(const Standard_Boolean theVisibility);
 
 		/****************** UnSetColorCurv ******************/
+		/**** md5 signature: 9be030dda02ca97eff5127a9e3cee728 ****/
 		%feature("compactdefaultargs") UnSetColorCurv;
 		%feature("autodoc", "Manage curve color setting.
 
@@ -820,6 +865,7 @@ None
 		void UnSetColorCurv();
 
 		/****************** UnSetColorSurf ******************/
+		/**** md5 signature: 0529b14576d6cd5e89114f6c947f96ce ****/
 		%feature("compactdefaultargs") UnSetColorSurf;
 		%feature("autodoc", "Manage surface color setting.
 

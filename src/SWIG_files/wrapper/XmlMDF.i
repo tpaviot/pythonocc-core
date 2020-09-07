@@ -97,6 +97,7 @@ typedef NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::han
 class XmlMDF {
 	public:
 		/****************** AddDrivers ******************/
+		/**** md5 signature: a036f2e24a6710bf8e540cdbbab785d0 ****/
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "Adds the attribute storage drivers to <adriverseq>.
 
@@ -112,6 +113,7 @@ None
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** FromTo ******************/
+		/**** md5 signature: f03d56eb25e1bc630f2b83a82bb86e5b ****/
 		%feature("compactdefaultargs") FromTo;
 		%feature("autodoc", "Translates a transient <asource> into a persistent <atarget>.
 
@@ -129,6 +131,7 @@ None
 		static void FromTo(const opencascade::handle<TDF_Data> & aSource, XmlObjMgt_Element & aTarget, XmlObjMgt_SRelocationTable & aReloc, const opencascade::handle<XmlMDF_ADriverTable> & aDrivers);
 
 		/****************** FromTo ******************/
+		/**** md5 signature: dd28f435847b34c13a1d4c27db15e113 ****/
 		%feature("compactdefaultargs") FromTo;
 		%feature("autodoc", "Translates a persistent <asource> into a transient <atarget>. returns true if completed successfully (false on error).
 
@@ -161,6 +164,7 @@ bool
 class XmlMDF_ADriver : public Standard_Transient {
 	public:
 		/****************** NewEmpty ******************/
+		/**** md5 signature: 537251aec6cd2736ac1f1abe6868dc70 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Creates a new attribute from tdf.
 
@@ -171,6 +175,7 @@ opencascade::handle<TDF_Attribute>
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 9ba11d4291f863a0ebfa7adc5ddc82da ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "Translate the contents of <asource> and put it into <atarget>, using the relocation table <areloctable> to keep the sharings.
 
@@ -187,6 +192,7 @@ bool
 		virtual Standard_Boolean Paste(const XmlObjMgt_Persistent & aSource, const opencascade::handle<TDF_Attribute> & aTarget, XmlObjMgt_RRelocationTable & aRelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: 52806332c1e637e234838754c7c1b878 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "Translate the contents of <asource> and put it into <atarget>, using the relocation table <areloctable> to keep the sharings.
 
@@ -203,6 +209,7 @@ None
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & aSource, XmlObjMgt_Persistent & aTarget, XmlObjMgt_SRelocationTable & aRelocTable);
 
 		/****************** SourceType ******************/
+		/**** md5 signature: a8d83f9f06c48d1a3057ab3a1b1fa810 ****/
 		%feature("compactdefaultargs") SourceType;
 		%feature("autodoc", "Returns the type of source object, inheriting from attribute from tdf.
 
@@ -213,6 +220,7 @@ opencascade::handle<Standard_Type>
 		opencascade::handle<Standard_Type> SourceType();
 
 		/****************** TypeName ******************/
+		/**** md5 signature: 191a1aa753fb8d39d56bcfd7505ea0e7 ****/
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "Returns the full xml tag name (including ns prefix).
 
@@ -223,6 +231,7 @@ TCollection_AsciiString
 		const TCollection_AsciiString & TypeName();
 
 		/****************** VersionNumber ******************/
+		/**** md5 signature: debfb90d077419555d82ec5a7fb62cea ****/
 		%feature("compactdefaultargs") VersionNumber;
 		%feature("autodoc", "Returns the version number from which the driver is available.
 
@@ -249,6 +258,7 @@ int
 class XmlMDF_ADriverTable : public Standard_Transient {
 	public:
 		/****************** XmlMDF_ADriverTable ******************/
+		/**** md5 signature: 019227b2f290ebee141aefb3a01e3eae ****/
 		%feature("compactdefaultargs") XmlMDF_ADriverTable;
 		%feature("autodoc", "Creates a mutable adrivertable from xmlmdf.
 
@@ -259,6 +269,7 @@ None
 		 XmlMDF_ADriverTable();
 
 		/****************** AddDriver ******************/
+		/**** md5 signature: a1862a3b70afac69a2082adfc7eb62a0 ****/
 		%feature("compactdefaultargs") AddDriver;
 		%feature("autodoc", "Sets a translation driver: <adriver>.
 
@@ -273,6 +284,7 @@ None
 		void AddDriver(const opencascade::handle<XmlMDF_ADriver> & anHDriver);
 
 		/****************** GetDriver ******************/
+		/**** md5 signature: 763c6a31ed937de5ac5b90bcf8e9b09c ****/
 		%feature("compactdefaultargs") GetDriver;
 		%feature("autodoc", "Gets a driver <adriver> according to <atype> //! returns true if a driver is found; false otherwise.
 
@@ -288,6 +300,7 @@ bool
 		Standard_Boolean GetDriver(const opencascade::handle<Standard_Type> & aType, opencascade::handle<XmlMDF_ADriver> & anHDriver);
 
 		/****************** GetDrivers ******************/
+		/**** md5 signature: 999fa2e5dc9fdc31ba5e7e3e043fdcd9 ****/
 		%feature("compactdefaultargs") GetDrivers;
 		%feature("autodoc", "Gets a map of drivers.
 
@@ -314,6 +327,7 @@ XmlMDF_TypeADriverMap
 class XmlMDF_ReferenceDriver : public XmlMDF_ADriver {
 	public:
 		/****************** XmlMDF_ReferenceDriver ******************/
+		/**** md5 signature: b53c8eb2906d5bbe7f077cd2090ccdd0 ****/
 		%feature("compactdefaultargs") XmlMDF_ReferenceDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -328,6 +342,7 @@ None
 		 XmlMDF_ReferenceDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -338,6 +353,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -354,6 +370,7 @@ bool
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -386,6 +403,7 @@ None
 class XmlMDF_TagSourceDriver : public XmlMDF_ADriver {
 	public:
 		/****************** XmlMDF_TagSourceDriver ******************/
+		/**** md5 signature: c41a1e34cf012a6f231ee5225f896395 ****/
 		%feature("compactdefaultargs") XmlMDF_TagSourceDriver;
 		%feature("autodoc", "No available documentation.
 
@@ -400,6 +418,7 @@ None
 		 XmlMDF_TagSourceDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****************** NewEmpty ******************/
+		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "No available documentation.
 
@@ -410,6 +429,7 @@ opencascade::handle<TDF_Attribute>
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****************** Paste ******************/
+		/**** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 
@@ -426,6 +446,7 @@ bool
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
 		/****************** Paste ******************/
+		/**** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ****/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "No available documentation.
 

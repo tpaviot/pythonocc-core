@@ -116,6 +116,7 @@ typedef NCollection_Sequence<FEmTool_ListOfVectors> FEmTool_SeqOfLinConstr;
 class FEmTool_Assembly {
 	public:
 		/****************** FEmTool_Assembly ******************/
+		/**** md5 signature: 96158227d814599b3ae02105b166f5e2 ****/
 		%feature("compactdefaultargs") FEmTool_Assembly;
 		%feature("autodoc", "No available documentation.
 
@@ -131,6 +132,7 @@ None
 		 FEmTool_Assembly(const TColStd_Array2OfInteger & Dependence, const opencascade::handle<FEmTool_HAssemblyTable> & Table);
 
 		/****************** AddConstraint ******************/
+		/**** md5 signature: fe883dd81a9c291c56ac1a29315527a8 ****/
 		%feature("compactdefaultargs") AddConstraint;
 		%feature("autodoc", "No available documentation.
 
@@ -149,6 +151,7 @@ None
 		void AddConstraint(const Standard_Integer IndexofConstraint, const Standard_Integer Element, const Standard_Integer Dimension, const math_Vector & LinearForm, const Standard_Real Value);
 
 		/****************** AddMatrix ******************/
+		/**** md5 signature: 8b037ebf1f406ea6c4b7327cc705fbd8 ****/
 		%feature("compactdefaultargs") AddMatrix;
 		%feature("autodoc", "Add an elementary matrix in the assembly matrix if dependence(dimension1,dimension2) is false.
 
@@ -166,6 +169,7 @@ None
 		void AddMatrix(const Standard_Integer Element, const Standard_Integer Dimension1, const Standard_Integer Dimension2, const math_Matrix & Mat);
 
 		/****************** AddVector ******************/
+		/**** md5 signature: 1675a62ff93b728407cced1b0f033e74 ****/
 		%feature("compactdefaultargs") AddVector;
 		%feature("autodoc", "Add an elementary vector in the assembly vector (second member).
 
@@ -182,6 +186,7 @@ None
 		void AddVector(const Standard_Integer Element, const Standard_Integer Dimension, const math_Vector & Vec);
 
 		/****************** GetAssemblyTable ******************/
+		/**** md5 signature: b5866dc87b64fa0dc5b97604a67c6735 ****/
 		%feature("compactdefaultargs") GetAssemblyTable;
 		%feature("autodoc", "No available documentation.
 
@@ -196,6 +201,7 @@ None
 		void GetAssemblyTable(opencascade::handle<FEmTool_HAssemblyTable> & AssTable);
 
 		/****************** NbGlobVar ******************/
+		/**** md5 signature: 77043715953538130b36cdac7f06debd ****/
 		%feature("compactdefaultargs") NbGlobVar;
 		%feature("autodoc", "No available documentation.
 
@@ -206,6 +212,7 @@ int
 		Standard_Integer NbGlobVar();
 
 		/****************** NullifyConstraint ******************/
+		/**** md5 signature: 8a02cc6f24f02ea8b5980766fb0ed3c6 ****/
 		%feature("compactdefaultargs") NullifyConstraint;
 		%feature("autodoc", "Nullify all constraints.
 
@@ -216,6 +223,7 @@ None
 		void NullifyConstraint();
 
 		/****************** NullifyMatrix ******************/
+		/**** md5 signature: 5c4b35bdd7a2222da7a43900236d464a ****/
 		%feature("compactdefaultargs") NullifyMatrix;
 		%feature("autodoc", "Nullify all matrix 's coefficient.
 
@@ -226,6 +234,7 @@ None
 		void NullifyMatrix();
 
 		/****************** NullifyVector ******************/
+		/**** md5 signature: 6a2b113ced1eaa545dd17b600364545a ****/
 		%feature("compactdefaultargs") NullifyVector;
 		%feature("autodoc", "Nullify all coordinate of assembly vector (second member).
 
@@ -236,6 +245,7 @@ None
 		void NullifyVector();
 
 		/****************** ResetConstraint ******************/
+		/**** md5 signature: 2f92b87d7e89be6b0033f11bdbdf7ac9 ****/
 		%feature("compactdefaultargs") ResetConstraint;
 		%feature("autodoc", "Delete all constraints.
 
@@ -246,6 +256,7 @@ None
 		void ResetConstraint();
 
 		/****************** Solution ******************/
+		/**** md5 signature: ccfe70d0030a1bcbffd9a7eee2ad8c39 ****/
 		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "No available documentation.
 
@@ -260,6 +271,7 @@ None
 		void Solution(math_Vector & Solution);
 
 		/****************** Solve ******************/
+		/**** md5 signature: 63b2aae3177e0f0ac1d5888b4a317c9e ****/
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "Solve the assembly system returns standard_false if the computation failed.
 
@@ -284,6 +296,7 @@ bool
 class FEmTool_Curve : public Standard_Transient {
 	public:
 		/****************** FEmTool_Curve ******************/
+		/**** md5 signature: 036d699d11ca2c4b38b3954a971b2bf0 ****/
 		%feature("compactdefaultargs") FEmTool_Curve;
 		%feature("autodoc", "No available documentation.
 
@@ -301,6 +314,7 @@ None
 		 FEmTool_Curve(const Standard_Integer Dimension, const Standard_Integer NbElements, const opencascade::handle<PLib_Base> & TheBase, const Standard_Real Tolerance);
 
 		/****************** Base ******************/
+		/**** md5 signature: 5e8735568e5cf4110e1444491c884633 ****/
 		%feature("compactdefaultargs") Base;
 		%feature("autodoc", "No available documentation.
 
@@ -311,6 +325,7 @@ opencascade::handle<PLib_Base>
 		opencascade::handle<PLib_Base> Base();
 
 		/****************** D0 ******************/
+		/**** md5 signature: 9bcc691693e727a0fff20cf1285d9d8f ****/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "No available documentation.
 
@@ -326,6 +341,7 @@ None
 		void D0(const Standard_Real U, TColStd_Array1OfReal & Pnt);
 
 		/****************** D1 ******************/
+		/**** md5 signature: b6c1a087dc7557cc306803b19b81818f ****/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "No available documentation.
 
@@ -341,6 +357,7 @@ None
 		void D1(const Standard_Real U, TColStd_Array1OfReal & Vec);
 
 		/****************** D2 ******************/
+		/**** md5 signature: 918a75093a3b29c9bcd0227f26273523 ****/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "No available documentation.
 
@@ -356,6 +373,7 @@ None
 		void D2(const Standard_Real U, TColStd_Array1OfReal & Vec);
 
 		/****************** Degree ******************/
+		/**** md5 signature: b4ef83894b79cff3b5925ccd3bfa0d9e ****/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "No available documentation.
 
@@ -370,6 +388,7 @@ int
 		Standard_Integer Degree(const Standard_Integer IndexOfElement);
 
 		/****************** Dimension ******************/
+		/**** md5 signature: e4bdde894007391dd45dcb2fa38eb0af ****/
 		%feature("compactdefaultargs") Dimension;
 		%feature("autodoc", "No available documentation.
 
@@ -380,6 +399,7 @@ int
 		Standard_Integer Dimension();
 
 		/****************** GetElement ******************/
+		/**** md5 signature: 6a80c458a643b77ade4b5622b1c1171e ****/
 		%feature("compactdefaultargs") GetElement;
 		%feature("autodoc", "No available documentation.
 
@@ -395,6 +415,7 @@ None
 		void GetElement(const Standard_Integer IndexOfElement, TColStd_Array2OfReal & Coeffs);
 
 		/****************** GetPolynom ******************/
+		/**** md5 signature: f58deb6dd62e944d51b7487019f57fc6 ****/
 		%feature("compactdefaultargs") GetPolynom;
 		%feature("autodoc", "Returns coefficients of all elements in canonical base.
 
@@ -409,6 +430,7 @@ None
 		void GetPolynom(TColStd_Array1OfReal & Coeffs);
 
 		/****************** Knots ******************/
+		/**** md5 signature: fd96f5eb5fd759af9a801dddcaa133ac ****/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "No available documentation.
 
@@ -419,6 +441,7 @@ TColStd_Array1OfReal
 		TColStd_Array1OfReal & Knots();
 
 		/****************** Length ******************/
+		/**** md5 signature: 9ef39fbde69fcafa47832d47f14a7dc7 ****/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "No available documentation.
 
@@ -434,6 +457,7 @@ Length: float
 		void Length(const Standard_Real FirstU, const Standard_Real LastU, Standard_Real &OutValue);
 
 		/****************** NbElements ******************/
+		/**** md5 signature: bda4abdd1e5bc28bcadae491494177fe ****/
 		%feature("compactdefaultargs") NbElements;
 		%feature("autodoc", "No available documentation.
 
@@ -444,6 +468,7 @@ int
 		Standard_Integer NbElements();
 
 		/****************** ReduceDegree ******************/
+		/**** md5 signature: 245851b83c4b2416c782eefdaf5f0600 ****/
 		%feature("compactdefaultargs") ReduceDegree;
 		%feature("autodoc", "No available documentation.
 
@@ -460,6 +485,7 @@ MaxError: float
 		void ReduceDegree(const Standard_Integer IndexOfElement, const Standard_Real Tol, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****************** SetDegree ******************/
+		/**** md5 signature: 54389e06937c1eb92c44f6d8ba7d04ed ****/
 		%feature("compactdefaultargs") SetDegree;
 		%feature("autodoc", "No available documentation.
 
@@ -475,6 +501,7 @@ None
 		void SetDegree(const Standard_Integer IndexOfElement, const Standard_Integer Degree);
 
 		/****************** SetElement ******************/
+		/**** md5 signature: 7297777fe2f03bdaab85331cd948fca5 ****/
 		%feature("compactdefaultargs") SetElement;
 		%feature("autodoc", "No available documentation.
 
@@ -507,6 +534,7 @@ None
 class FEmTool_ElementaryCriterion : public Standard_Transient {
 	public:
 		/****************** DependenceTable ******************/
+		/**** md5 signature: c016d827aafaa774489e50229cf20da6 ****/
 		%feature("compactdefaultargs") DependenceTable;
 		%feature("autodoc", "To know if two dimension are independent.
 
@@ -517,6 +545,7 @@ opencascade::handle<TColStd_HArray2OfInteger>
 		virtual opencascade::handle<TColStd_HArray2OfInteger> DependenceTable();
 
 		/****************** Gradient ******************/
+		/**** md5 signature: f7e2f4e4cbb2f3a1b60cabcc3ea6a2a2 ****/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "To compute the coefficients in the dimension <dim> of the j(e)'s gradient where e is the current element.
 
@@ -532,6 +561,7 @@ None
 		virtual void Gradient(const Standard_Integer Dim, math_Vector & G);
 
 		/****************** Hessian ******************/
+		/**** md5 signature: afd9ce62ebfa0d84f7d2055f5de32ffd ****/
 		%feature("compactdefaultargs") Hessian;
 		%feature("autodoc", "To compute j(e) the coefficients of hessian matrix of j(e) wich are crossed derivatives in dimensions <dim1> and <dim2>. if dependencetable(dimension1,dimension2) is false.
 
@@ -548,6 +578,7 @@ None
 		virtual void Hessian(const Standard_Integer Dim1, const Standard_Integer Dim2, math_Matrix & H);
 
 		/****************** Set ******************/
+		/**** md5 signature: f291e68d252e2fa2d735922af9a10404 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "Set the coefficient of the element (the curve).
 
@@ -562,6 +593,7 @@ None
 		void Set(const opencascade::handle<TColStd_HArray2OfReal> & Coeff);
 
 		/****************** Set ******************/
+		/**** md5 signature: 49c62dfc093e2f429d1422e9197e0f4a ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "Set the definition interval of the element.
 
@@ -577,6 +609,7 @@ None
 		virtual void Set(const Standard_Real FirstKnot, const Standard_Real LastKnot);
 
 		/****************** Value ******************/
+		/**** md5 signature: 6c8c41ee5ba5de549c3f50aa67613a94 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "To compute j(e) where e is the current element.
 
@@ -603,6 +636,7 @@ float
 class FEmTool_ElementsOfRefMatrix : public math_FunctionSet {
 	public:
 		/****************** FEmTool_ElementsOfRefMatrix ******************/
+		/**** md5 signature: a440bdf11d4bef87b2c5a20125b17f87 ****/
 		%feature("compactdefaultargs") FEmTool_ElementsOfRefMatrix;
 		%feature("autodoc", "No available documentation.
 
@@ -618,6 +652,7 @@ None
 		 FEmTool_ElementsOfRefMatrix(const opencascade::handle<PLib_Base> & TheBase, const Standard_Integer DerOrder);
 
 		/****************** NbEquations ******************/
+		/**** md5 signature: 42be0dc2e32c8e563393e8490171707e ****/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Returns the number of equations of the function.
 
@@ -628,6 +663,7 @@ int
 		Standard_Integer NbEquations();
 
 		/****************** NbVariables ******************/
+		/**** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ****/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Returns the number of variables of the function. it is supposed that nbvariables = 1.
 
@@ -638,6 +674,7 @@ int
 		Standard_Integer NbVariables();
 
 		/****************** Value ******************/
+		/**** md5 signature: 31f6ba581b8fae503400d98976418349 ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise. f contains results only for i<=j in following order: p0*p0, p0*p1, p0*p2... p1*p1, p1*p2,... (upper triangle of matrix {pipj}).
 
@@ -668,6 +705,7 @@ bool
 class FEmTool_SparseMatrix : public Standard_Transient {
 	public:
 		/****************** ChangeValue ******************/
+		/**** md5 signature: 60190ec9f89d0f92be80ff89b41ab886 ****/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "No available documentation.
 
@@ -683,6 +721,7 @@ float
 		virtual Standard_Real & ChangeValue(const Standard_Integer I, const Standard_Integer J);
 
 		/****************** ColNumber ******************/
+		/**** md5 signature: 9199b384a5ac34cf234bbacc411828a9 ****/
 		%feature("compactdefaultargs") ColNumber;
 		%feature("autodoc", "Returns the column range of the matrix.
 
@@ -693,6 +732,7 @@ int
 		virtual Standard_Integer ColNumber();
 
 		/****************** Decompose ******************/
+		/**** md5 signature: c0a915c8fce68c1ae5c34262cf409e91 ****/
 		%feature("compactdefaultargs") Decompose;
 		%feature("autodoc", "To make a factorization of <self>.
 
@@ -703,6 +743,7 @@ bool
 		virtual Standard_Boolean Decompose();
 
 		/****************** Init ******************/
+		/**** md5 signature: f3944f0e4b8afce50ed3f816b0c7fc58 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
@@ -717,6 +758,7 @@ None
 		virtual void Init(const Standard_Real Value);
 
 		/****************** Multiplied ******************/
+		/**** md5 signature: e2ecea8cb0f8e4dcb1808f8de3164f0c ****/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "Returns the product of a sparsematrix by a vector. an exception is raised if the dimensions are different.
 
@@ -732,6 +774,7 @@ None
 		virtual void Multiplied(const math_Vector & X, math_Vector & MX);
 
 		/****************** Prepare ******************/
+		/**** md5 signature: 4e61eb6dd1d4aaab0b208edaf791c652 ****/
 		%feature("compactdefaultargs") Prepare;
 		%feature("autodoc", "Make preparation to iterative solve.
 
@@ -742,6 +785,7 @@ bool
 		virtual Standard_Boolean Prepare();
 
 		/****************** RowNumber ******************/
+		/**** md5 signature: 5019db809302667b5b261386638c73f7 ****/
 		%feature("compactdefaultargs") RowNumber;
 		%feature("autodoc", "Returns the row range of a matrix.
 
@@ -752,6 +796,7 @@ int
 		virtual Standard_Integer RowNumber();
 
 		/****************** Solve ******************/
+		/**** md5 signature: 664f6f787732ee0d185a9637206fc9e5 ****/
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "Direct solve of ax = b.
 
@@ -767,6 +812,7 @@ None
 		virtual void Solve(const math_Vector & B, math_Vector & X);
 
 		/****************** Solve ******************/
+		/**** md5 signature: c0aa6353624cc667da06209e69715b7e ****/
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "Iterative solve of ax = b.
 
@@ -804,6 +850,7 @@ None
 class FEmTool_LinearFlexion : public FEmTool_ElementaryCriterion {
 	public:
 		/****************** FEmTool_LinearFlexion ******************/
+		/**** md5 signature: debd63e824b7d5551dbcb2f97560d688 ****/
 		%feature("compactdefaultargs") FEmTool_LinearFlexion;
 		%feature("autodoc", "No available documentation.
 
@@ -819,6 +866,7 @@ None
 		 FEmTool_LinearFlexion(const Standard_Integer WorkDegree, const GeomAbs_Shape ConstraintOrder);
 
 		/****************** DependenceTable ******************/
+		/**** md5 signature: 0752ec015464359dc6004796aed10eec ****/
 		%feature("compactdefaultargs") DependenceTable;
 		%feature("autodoc", "No available documentation.
 
@@ -829,6 +877,7 @@ opencascade::handle<TColStd_HArray2OfInteger>
 		virtual opencascade::handle<TColStd_HArray2OfInteger> DependenceTable();
 
 		/****************** Gradient ******************/
+		/**** md5 signature: c0aba8dece3dba473a7ac4e2f3784d13 ****/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "No available documentation.
 
@@ -844,6 +893,7 @@ None
 		virtual void Gradient(const Standard_Integer Dimension, math_Vector & G);
 
 		/****************** Hessian ******************/
+		/**** md5 signature: 874b143891a07798655bd7015200046a ****/
 		%feature("compactdefaultargs") Hessian;
 		%feature("autodoc", "No available documentation.
 
@@ -860,6 +910,7 @@ None
 		virtual void Hessian(const Standard_Integer Dimension1, const Standard_Integer Dimension2, math_Matrix & H);
 
 		/****************** Value ******************/
+		/**** md5 signature: e502c3097b1969f1c34a7e76a839ac8b ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "No available documentation.
 
@@ -886,6 +937,7 @@ float
 class FEmTool_LinearJerk : public FEmTool_ElementaryCriterion {
 	public:
 		/****************** FEmTool_LinearJerk ******************/
+		/**** md5 signature: a63d1a8fafe3e1f87598a4a4f0810ae1 ****/
 		%feature("compactdefaultargs") FEmTool_LinearJerk;
 		%feature("autodoc", "No available documentation.
 
@@ -901,6 +953,7 @@ None
 		 FEmTool_LinearJerk(const Standard_Integer WorkDegree, const GeomAbs_Shape ConstraintOrder);
 
 		/****************** DependenceTable ******************/
+		/**** md5 signature: 0752ec015464359dc6004796aed10eec ****/
 		%feature("compactdefaultargs") DependenceTable;
 		%feature("autodoc", "No available documentation.
 
@@ -911,6 +964,7 @@ opencascade::handle<TColStd_HArray2OfInteger>
 		virtual opencascade::handle<TColStd_HArray2OfInteger> DependenceTable();
 
 		/****************** Gradient ******************/
+		/**** md5 signature: c0aba8dece3dba473a7ac4e2f3784d13 ****/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "No available documentation.
 
@@ -926,6 +980,7 @@ None
 		virtual void Gradient(const Standard_Integer Dimension, math_Vector & G);
 
 		/****************** Hessian ******************/
+		/**** md5 signature: 874b143891a07798655bd7015200046a ****/
 		%feature("compactdefaultargs") Hessian;
 		%feature("autodoc", "No available documentation.
 
@@ -942,6 +997,7 @@ None
 		virtual void Hessian(const Standard_Integer Dimension1, const Standard_Integer Dimension2, math_Matrix & H);
 
 		/****************** Value ******************/
+		/**** md5 signature: e502c3097b1969f1c34a7e76a839ac8b ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "No available documentation.
 
@@ -968,6 +1024,7 @@ float
 class FEmTool_LinearTension : public FEmTool_ElementaryCriterion {
 	public:
 		/****************** FEmTool_LinearTension ******************/
+		/**** md5 signature: af4392b5b0da4abbc0fbcfd532d1e3bd ****/
 		%feature("compactdefaultargs") FEmTool_LinearTension;
 		%feature("autodoc", "No available documentation.
 
@@ -983,6 +1040,7 @@ None
 		 FEmTool_LinearTension(const Standard_Integer WorkDegree, const GeomAbs_Shape ConstraintOrder);
 
 		/****************** DependenceTable ******************/
+		/**** md5 signature: 0752ec015464359dc6004796aed10eec ****/
 		%feature("compactdefaultargs") DependenceTable;
 		%feature("autodoc", "No available documentation.
 
@@ -993,6 +1051,7 @@ opencascade::handle<TColStd_HArray2OfInteger>
 		virtual opencascade::handle<TColStd_HArray2OfInteger> DependenceTable();
 
 		/****************** Gradient ******************/
+		/**** md5 signature: c0aba8dece3dba473a7ac4e2f3784d13 ****/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "No available documentation.
 
@@ -1008,6 +1067,7 @@ None
 		virtual void Gradient(const Standard_Integer Dimension, math_Vector & G);
 
 		/****************** Hessian ******************/
+		/**** md5 signature: 874b143891a07798655bd7015200046a ****/
 		%feature("compactdefaultargs") Hessian;
 		%feature("autodoc", "No available documentation.
 
@@ -1024,6 +1084,7 @@ None
 		virtual void Hessian(const Standard_Integer Dimension1, const Standard_Integer Dimension2, math_Matrix & H);
 
 		/****************** Value ******************/
+		/**** md5 signature: e502c3097b1969f1c34a7e76a839ac8b ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "No available documentation.
 
@@ -1050,6 +1111,7 @@ float
 class FEmTool_ProfileMatrix : public FEmTool_SparseMatrix {
 	public:
 		/****************** FEmTool_ProfileMatrix ******************/
+		/**** md5 signature: bc2f20075f7d7bc70e2fe7993b5149da ****/
 		%feature("compactdefaultargs") FEmTool_ProfileMatrix;
 		%feature("autodoc", "No available documentation.
 
@@ -1077,6 +1139,7 @@ None
             }
         };
 		/****************** ColNumber ******************/
+		/**** md5 signature: 4bc4d89ce77beff94380a0a337894f80 ****/
 		%feature("compactdefaultargs") ColNumber;
 		%feature("autodoc", "Returns the column range of the matrix.
 
@@ -1087,6 +1150,7 @@ int
 		Standard_Integer ColNumber();
 
 		/****************** Decompose ******************/
+		/**** md5 signature: d359c0fb13839fc630dd774822bd449a ****/
 		%feature("compactdefaultargs") Decompose;
 		%feature("autodoc", "To make a factorization of <self>.
 
@@ -1097,6 +1161,7 @@ bool
 		Standard_Boolean Decompose();
 
 		/****************** Init ******************/
+		/**** md5 signature: da86c6439d962bb56684d7ee024ea3ba ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "No available documentation.
 
@@ -1111,6 +1176,7 @@ None
 		void Init(const Standard_Real Value);
 
 		/****************** IsInProfile ******************/
+		/**** md5 signature: 215884c12360c85645932da398e25891 ****/
 		%feature("compactdefaultargs") IsInProfile;
 		%feature("autodoc", "No available documentation.
 
@@ -1126,6 +1192,7 @@ bool
 		Standard_Boolean IsInProfile(const Standard_Integer i, const Standard_Integer j);
 
 		/****************** Multiplied ******************/
+		/**** md5 signature: 7df2604400224ca12c6e2b7669eebf52 ****/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "Returns the product of a sparsematrix by a vector. an exception is raised if the dimensions are different.
 
@@ -1141,6 +1208,7 @@ None
 		void Multiplied(const math_Vector & X, math_Vector & MX);
 
 		/****************** OutM ******************/
+		/**** md5 signature: b0cb8109100bf4db2c14cc074b61b717 ****/
 		%feature("compactdefaultargs") OutM;
 		%feature("autodoc", "No available documentation.
 
@@ -1151,6 +1219,7 @@ None
 		void OutM();
 
 		/****************** OutS ******************/
+		/**** md5 signature: ce362500a2cd63849a85260491dd46e6 ****/
 		%feature("compactdefaultargs") OutS;
 		%feature("autodoc", "No available documentation.
 
@@ -1161,6 +1230,7 @@ None
 		void OutS();
 
 		/****************** Prepare ******************/
+		/**** md5 signature: 980761b67c7a0b5bba03444f30b973d0 ****/
 		%feature("compactdefaultargs") Prepare;
 		%feature("autodoc", "Make preparation to iterative solve.
 
@@ -1171,6 +1241,7 @@ bool
 		Standard_Boolean Prepare();
 
 		/****************** RowNumber ******************/
+		/**** md5 signature: 165e3865ececf7b6bf1dbb8ad5afba49 ****/
 		%feature("compactdefaultargs") RowNumber;
 		%feature("autodoc", "Returns the row range of a matrix.
 
@@ -1181,6 +1252,7 @@ int
 		Standard_Integer RowNumber();
 
 		/****************** Solve ******************/
+		/**** md5 signature: 2d99f08a635594c7a8aa7f456cfc775a ****/
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "Direct solve of ax = b.
 
@@ -1196,6 +1268,7 @@ None
 		void Solve(const math_Vector & B, math_Vector & X);
 
 		/****************** Solve ******************/
+		/**** md5 signature: 69d3a27f7cc289852f6ebd67497cf1dc ****/
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "Iterative solve of ax = b.
 
