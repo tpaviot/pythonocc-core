@@ -1316,3 +1316,6 @@ class FEmTool_HAssemblyTable : public FEmTool_AssemblyTable, public Standard_Tra
 
 
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

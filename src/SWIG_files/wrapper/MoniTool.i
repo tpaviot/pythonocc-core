@@ -2976,3 +2976,6 @@ class MoniTool_HSequenceOfElement : public MoniTool_SequenceOfElement, public St
 %make_alias(MoniTool_HSequenceOfElement)
 
 
+/* class aliases */
+%pythoncode {
+}

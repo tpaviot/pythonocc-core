@@ -1886,3 +1886,9 @@ None
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+Prs3d_Presentation=OCC.Core.Graphic3d.Graphic3d_Structure
+PrsMgr_Presentation3d=PrsMgr_Presentation
+PrsMgr_PresentationManager3d=PrsMgr_PresentationManager
+}

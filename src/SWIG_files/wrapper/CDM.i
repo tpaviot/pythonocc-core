@@ -1617,3 +1617,7 @@ int
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+CDM_NamesDirectory=OCC.Core.TColStd.TColStd_DataMapOfStringInteger
+}

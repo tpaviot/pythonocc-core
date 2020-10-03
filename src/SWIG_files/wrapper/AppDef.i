@@ -6373,3 +6373,6 @@ class AppDef_HArray1OfMultiPointConstraint : public AppDef_Array1OfMultiPointCon
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

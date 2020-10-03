@@ -5283,3 +5283,9 @@ None
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+V3d_Light=OCC.Core.Graphic3d.Graphic3d_CLight
+V3d_TypeOfLight=OCC.Core.Graphic3d.Graphic3d_TypeOfLightSource
+V3d_TypeOfShadingModel=OCC.Core.Graphic3d.Graphic3d_TypeOfShadingModel
+}

@@ -14081,3 +14081,6 @@ class StepBasic_HArray1OfProduct : public StepBasic_Array1OfProduct, public Stan
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

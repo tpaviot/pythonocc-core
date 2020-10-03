@@ -3474,3 +3474,6 @@ class TObj_HSequenceOfObject : public TObj_SequenceOfObject, public Standard_Tra
 %make_alias(TObj_HSequenceOfObject)
 
 
+/* class aliases */
+%pythoncode {
+}

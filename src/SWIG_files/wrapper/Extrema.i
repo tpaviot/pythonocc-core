@@ -11622,3 +11622,6 @@ class Extrema_HArray2OfPOnSurfParams : public Extrema_Array2OfPOnSurfParams, pub
 
 
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

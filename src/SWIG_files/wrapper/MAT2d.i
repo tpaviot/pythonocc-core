@@ -1452,3 +1452,6 @@ class MAT2d_CutCurve:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

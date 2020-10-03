@@ -1936,3 +1936,6 @@ class TFunction_HArray1OfDataMapOfGUIDDriver : public TFunction_Array1OfDataMapO
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

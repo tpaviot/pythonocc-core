@@ -5722,3 +5722,6 @@ class StepAP214_HArray1OfDateAndTimeItem : public StepAP214_Array1OfDateAndTimeI
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

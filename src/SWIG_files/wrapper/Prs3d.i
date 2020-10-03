@@ -5490,3 +5490,8 @@ class Prs3d_Point:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+Graphic3d_HighlightStyle=Prs3d_Drawer
+Prs3d_Presentation=OCC.Core.Graphic3d.Graphic3d_Structure
+}

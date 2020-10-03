@@ -799,3 +799,6 @@ class BVH_AxisSelector:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

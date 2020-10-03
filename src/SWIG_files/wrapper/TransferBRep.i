@@ -1706,3 +1706,6 @@ class TransferBRep_HSequenceOfTransferResultInfo : public TransferBRep_SequenceO
 %make_alias(TransferBRep_HSequenceOfTransferResultInfo)
 
 
+/* class aliases */
+%pythoncode {
+}

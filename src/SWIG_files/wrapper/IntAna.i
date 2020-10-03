@@ -2154,3 +2154,6 @@ NCollection_List<gp_Pnt>
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

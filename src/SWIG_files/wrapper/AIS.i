@@ -19872,3 +19872,7 @@ None
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+AIS_AnimationTimer=OCC.Core.Media.Media_Timer
+}

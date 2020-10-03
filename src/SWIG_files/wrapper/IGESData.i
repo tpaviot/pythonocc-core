@@ -7725,3 +7725,6 @@ class IGESData_HArray1OfIGESEntity : public IGESData_Array1OfIGESEntity, public 
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

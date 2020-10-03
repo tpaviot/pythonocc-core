@@ -3356,3 +3356,6 @@ class TDataXtd_HArray1OfTrsf : public TDataXtd_Array1OfTrsf, public Standard_Tra
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

@@ -13535,3 +13535,6 @@ class IFSelect_HSeqOfSelection : public IFSelect_TSeqOfSelection, public Standar
 %make_alias(IFSelect_HSeqOfSelection)
 
 
+/* class aliases */
+%pythoncode {
+}

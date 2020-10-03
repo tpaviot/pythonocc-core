@@ -14397,3 +14397,6 @@ class Geom_HSequenceOfBSplineSurface : public Geom_SequenceOfBSplineSurface, pub
 %make_alias(Geom_HSequenceOfBSplineSurface)
 
 
+/* class aliases */
+%pythoncode {
+}

@@ -2171,3 +2171,6 @@ class StepAP203_HArray1OfClassifiedItem : public StepAP203_Array1OfClassifiedIte
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

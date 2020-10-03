@@ -10264,3 +10264,6 @@ class Interface_HSequenceOfCheck : public Interface_SequenceOfCheck, public Stan
 %make_alias(Interface_HSequenceOfCheck)
 
 
+/* class aliases */
+%pythoncode {
+}

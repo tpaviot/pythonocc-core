@@ -8496,3 +8496,6 @@ class StepVisual_HArray1OfInvisibleItem : public StepVisual_Array1OfInvisibleIte
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

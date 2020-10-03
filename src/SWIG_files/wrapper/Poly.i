@@ -1853,3 +1853,6 @@ class Poly_HArray1OfTriangle : public Poly_Array1OfTriangle, public Standard_Tra
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

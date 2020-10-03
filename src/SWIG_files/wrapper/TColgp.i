@@ -909,3 +909,6 @@ class TColgp_HSequenceOfDir : public TColgp_SequenceOfDir, public Standard_Trans
 %make_alias(TColgp_HSequenceOfDir)
 
 
+/* class aliases */
+%pythoncode {
+}

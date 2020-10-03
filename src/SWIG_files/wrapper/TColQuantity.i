@@ -138,3 +138,6 @@ class TColQuantity_HArray2OfLength : public TColQuantity_Array2OfLength, public 
 
 
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

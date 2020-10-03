@@ -980,3 +980,6 @@ class TColStd_HSequenceOfReal : public TColStd_SequenceOfReal, public Standard_T
 %make_alias(TColStd_HSequenceOfReal)
 
 
+/* class aliases */
+%pythoncode {
+}

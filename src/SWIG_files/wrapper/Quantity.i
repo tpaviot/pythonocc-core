@@ -3544,3 +3544,6 @@ class Quantity_HArray1OfColor : public Quantity_Array1OfColor, public Standard_T
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

@@ -210,3 +210,6 @@ class ShapeAlgo_AlgoContainer:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

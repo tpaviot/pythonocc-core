@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 6b40356
+git revision : 1d49643
 
-operating system : Linux 64bit 4.15.0-115-generic
+operating system : Linux 64bit 4.15.0-118-generic
 
 occt version targeted : 7.4.0
 
-date : 2020-09-06 17:33:07.429412
+date : 2020-10-03 06:47:55.914614
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -1524,6 +1524,7 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]  GeomFill_Filling
 [INFO ]  GeomFill_FunctionDraft
 [INFO ]  GeomFill_FunctionGuide
+[INFO ]      skipped method GeomFill_FunctionGuide::997b5adbebf60f0b487a20872cd9decb
 [INFO ]  GeomFill_Line
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  GeomFill_LocFunction
@@ -1567,6 +1568,7 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]  GeomFill_LocationDraft
 [INFO ]  GeomFill_LocationGuide
 [INFO ]  GeomFill_NSections
+[INFO ]      skipped method GeomFill_NSections::637af4a0f33ec19afb7aacd41d59fa97
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  GeomFill_SectionGenerator
 [INFO ]  GeomFill_SimpleBound
@@ -3488,52 +3490,52 @@ date : 2020-09-06 17:33:07.429412
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IEdgePtr &, should contain _
 [INFO ]  ## Processing module IMeshData
 [WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_DataMap<IFacePtr, opencascade::handle<MapOfIEdgePtr>, WeakEqual<IMeshData_Face>>>
-[WARNI]  Template: IMeshData::Array1OfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::Array1OfVertexOfDelaunskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::BndBox2dTreeskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::BndBox2dTreeFillerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::CircleCellFilterskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::DMapOfIFacePtrsListOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::DMapOfIFacePtrsMapOfIEdgePtrsskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::DMapOfIntegerListOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::DMapOfShapeIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ICurveArrayAdaptorHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ICurveHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IDMapOfIFacePtrsListOfIPCurvesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IDMapOfLinkskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IEdgeHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IFaceHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IMapOfRealskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IPCurveHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::IWireHandleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ListOfIPCurvesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ListOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::ListOfPnt2dskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfIEdgePtrskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfIFacePtrskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfIntegerIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfOrientedEdgesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::MapOfRealskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::Model::SequenceOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::Model::SequenceOfPntskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::Model::SequenceOfPnt2dskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::Model::SequenceOfRealskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::SequenceOfBndB2dskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::SequenceOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::SequenceOfRealskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfBooleanskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfCircleskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfElementsskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIEdgeHandlesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIEdgePtrsskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIFaceHandlesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIPCurveHandlesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIWireHandlesskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfIntegerskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfOrientationskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VectorOfVertexskipped because name does'nt contain _.
-[WARNI]  Template: IMeshData::VertexCellFilterskipped because name does'nt contain _.
+[WARNI]  Template: IMeshData::Array1OfIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::Array1OfVertexOfDelaunskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::BndBox2dTreeskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::BndBox2dTreeFillerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::CircleCellFilterskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::DMapOfIFacePtrsListOfIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::DMapOfIFacePtrsMapOfIEdgePtrsskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::DMapOfIntegerListOfIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::DMapOfShapeIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::ICurveArrayAdaptorHandleskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::ICurveHandleskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::IDMapOfIFacePtrsListOfIPCurvesskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::IDMapOfLinkskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::IEdgeHandleskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::IFaceHandleskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::IMapOfRealskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::IPCurveHandleskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::IWireHandleskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::ListOfIPCurvesskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::ListOfIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::ListOfPnt2dskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::MapOfIEdgePtrskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::MapOfIFacePtrskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::MapOfIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::MapOfIntegerIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::MapOfOrientedEdgesskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::MapOfRealskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::Model::SequenceOfIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::Model::SequenceOfPntskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::Model::SequenceOfPnt2dskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::Model::SequenceOfRealskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::SequenceOfBndB2dskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::SequenceOfIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::SequenceOfRealskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfBooleanskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfCircleskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfElementsskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfIEdgeHandlesskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfIEdgePtrsskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfIFaceHandlesskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfIPCurveHandlesskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfIWireHandlesskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfIntegerskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfOrientationskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VectorOfVertexskipped because name doesn't contain _.
+[WARNI]  Template: IMeshData::VertexCellFilterskipped because name doesn't contain _.
 [INFO ]  IMeshData_ParametersList
 [INFO ]      Class IMeshData_ParametersList is abstract, using %nodefaultctor.
 [INFO ]  IMeshData_Shape
@@ -3702,6 +3704,879 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]  Draft_Modification
 [INFO ]  Draft_VertexInfo
 [INFO ]      Creating Get and Set methods for method ChangeParameter
+[INFO ]  Processing toolkit TKOpenGl ===
+[INFO ]  ## Processing module OpenGl
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[WARNI]      [TypeHint] Skip type TCollection_AsciiString,opencascade::handle, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type, size not in module list
+[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[WARNI]  Template: QuadBvhHandleskipped because name doesn't contain _.
+[INFO ]  OpenGl_AspectsProgram
+[INFO ]  OpenGl_AspectsSprite
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_AspectsTextureSet
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_CappingAlgo
+[INFO ]  OpenGl_Caps
+[INFO ]  OpenGl_Clipping
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_ClippingIterator
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_ClippingState
+[INFO ]  OpenGl_Context
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type EAGLContext *, should contain _
+[WARNI]      [TypeHint] Skipping type NSOpenGLContext *, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_Element
+[INFO ]      Class OpenGl_Element is abstract, using %nodefaultctor.
+[INFO ]  Constructor skipped for abstract class OpenGl_Element
+[INFO ]  OpenGl_ElementNode
+[INFO ]  OpenGl_FrameStats
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[INFO ]  OpenGl_GlFunctions
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_GraphicDriver
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[INFO ]  OpenGl_Group
+[INFO ]  OpenGl_HaltonSampler
+[WARNI]      [TypeHint] Skipping type static unsigned, should contain _
+[WARNI]      [TypeHint] Skipping type float, should contain _
+[WARNI]      [TypeHint] Skipping type unsigned, should contain _
+[INFO ]  OpenGl_LayerList
+[INFO ]      Wrap nested class OpenGl_LayerList::OpenGl_LayerStack
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_DataMap<Graphic3d_ZLayerId,, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<Graphic3d_Layer>>, because of trailing :
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[INFO ]  OpenGl_Material
+[WARNI]      [TypeHint] Skipping type float &, should contain _
+[WARNI]      [TypeHint] Skipping type float &, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type float, should contain _
+[WARNI]      [TypeHint] Skipping type float, should contain _
+[INFO ]  OpenGl_Matrix
+[INFO ]  OpenGl_MatrixState
+[WARNI]      [TypeHint] Skipping type typename OpenGl::MatrixType<T >::Mat4 &, should contain _
+[WARNI]      [TypeHint] Skipping type const typename OpenGl::MatrixType<T >::Mat4 &, should contain _
+[WARNI]      [TypeHint] Skipping type const typename OpenGl::MatrixType<T >::Mat4 &, should contain _
+[INFO ]  OpenGl_RaytraceGeometry
+[WARNI]      [TypeHint] Skipping type const QuadBvhHandle &, should contain _
+[WARNI]      [TypeHint] Skipping type const std::vector<GLuint64> &, should contain _
+[INFO ]  OpenGl_RaytraceLight
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  OpenGl_RaytraceMaterial
+[INFO ]      Wrap nested class OpenGl_RaytraceMaterial::Physical
+[INFO ]  OpenGl_Resource
+[INFO ]      Class OpenGl_Resource is abstract, using %nodefaultctor.
+[INFO ]  Constructor skipped for abstract class OpenGl_Resource
+[INFO ]  OpenGl_SetOfPrograms
+[INFO ]  OpenGl_SetOfShaderPrograms
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  OpenGl_SetterInterface
+[INFO ]      Class OpenGl_SetterInterface is abstract, using %nodefaultctor.
+[INFO ]  OpenGl_ShaderManager
+[INFO ]      Wrap nested class OpenGl_ShaderManager::OpenGl_ShaderLightParameters
+[INFO ]      Wrap nested class OpenGl_ShaderManager::OpenGl_ShaderLightType
+[INFO ]      Wrap nested class OpenGl_ShaderManager::OpenGl_ShaderProgramFFP
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const bool, should contain _
+[WARNI]      [TypeHint] Skipping type const float, should contain _
+[INFO ]  OpenGl_ShaderUniformLocation
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_StateCounter
+[INFO ]  OpenGl_StateInterface
+[INFO ]  OpenGl_Structure
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[INFO ]  OpenGl_TextBuilder
+[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[INFO ]  OpenGl_TextureFormat
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[INFO ]  OpenGl_TextureFormatSelector
+[INFO ]  OpenGl_TextureFormatSelector<GLbyte>
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_TextureFormatSelector<GLfloat>
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_TextureFormatSelector<GLint>
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_TextureFormatSelector<GLshort>
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_TextureFormatSelector<GLubyte>
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_TextureFormatSelector<GLuint>
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_TextureFormatSelector<GLushort>
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type static GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_TextureSet
+[INFO ]      Wrap nested class OpenGl_TextureSet::Iterator
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_TileSampler
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const bool, should contain _
+[WARNI]      [TypeHint] Skipping type float, should contain _
+[INFO ]  OpenGl_TmplCore12
+[INFO ]  OpenGl_TmplCore14
+[INFO ]  OpenGl_TmplCore15
+[INFO ]  OpenGl_TmplCore20
+[INFO ]  OpenGl_TmplCore21
+[INFO ]  OpenGl_TmplCore30
+[INFO ]  OpenGl_TmplCore31
+[INFO ]  OpenGl_TmplCore32
+[INFO ]  OpenGl_TmplCore33
+[INFO ]  OpenGl_TmplCore40
+[INFO ]  OpenGl_TmplCore41
+[INFO ]  OpenGl_TmplCore42
+[INFO ]  OpenGl_TmplCore43
+[INFO ]  OpenGl_TmplCore44
+[INFO ]  OpenGl_TmplCore45
+[INFO ]  OpenGl_VariableSetterSelector
+[INFO ]  OpenGl_VertexBufferEditor
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type, theVec not in module list
+[WARNI]      [TypeHint] Skipping unknown type, theVec not in module list
+[INFO ]  OpenGl_View
+[INFO ]      Wrap nested class OpenGl_View::ShaderSource
+[INFO ]      Wrap nested class OpenGl_View::RaytracingParams
+[INFO ]      Wrap nested class OpenGl_View::StructState
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<Graphic3d_Layer>>, because of trailing :
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[INFO ]  OpenGl_Window
+[INFO ]  OpenGl_Workspace
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]      Creating Get and Set methods for method UseDepthWrite
+[INFO ]      Creating Get and Set methods for method UseZBuffer
+[INFO ]  OpenGl_ArbDbg
+[INFO ]  OpenGl_ArbFBO
+[INFO ]  OpenGl_ArbFBOBlit
+[INFO ]  OpenGl_ArbIns
+[INFO ]  OpenGl_ArbSamplerObject
+[INFO ]  OpenGl_ArbTBO
+[INFO ]  OpenGl_ArbTexBindless
+[INFO ]  OpenGl_Aspects
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_CappingPlaneResource
+[INFO ]  OpenGl_ExtGS
+[INFO ]  OpenGl_Flipper
+[INFO ]  OpenGl_Font
+[INFO ]      Wrap nested class OpenGl_Font::Tile
+[INFO ]      Wrap nested class OpenGl_Font::RectI
+[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping type float, should contain _
+[WARNI]      [TypeHint] Skipping type float, should contain _
+[WARNI]      [TypeHint] Skipping unknown type, Font not in module list
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type Tile, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_FrameBuffer
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[INFO ]  OpenGl_FrameStatsPrs
+[INFO ]  OpenGl_GlCore11
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLbyte, should contain _
+[WARNI]      [TypeHint] Skipping type const GLbyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLubyte, should contain _
+[WARNI]      [TypeHint] Skipping type const GLubyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLushort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLushort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLbyte, should contain _
+[WARNI]      [TypeHint] Skipping type const GLbyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLubyte, should contain _
+[WARNI]      [TypeHint] Skipping type const GLubyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLushort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLushort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type const GLboolean *, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLubyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLubyte, should contain _
+[WARNI]      [TypeHint] Skipping type const GLubyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLbyte, should contain _
+[WARNI]      [TypeHint] Skipping type const GLbyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLubyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLbitfield, should contain _
+[WARNI]      [TypeHint] Skipping type GLbitfield, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLdouble, should contain _
+[WARNI]      [TypeHint] Skipping type const GLdouble *, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type const GLfloat *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint *, should contain _
+[WARNI]      [TypeHint] Skipping type GLshort, should contain _
+[WARNI]      [TypeHint] Skipping type const GLshort *, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[INFO ]  OpenGl_GlCore11Fwd
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLbitfield, should contain _
+[WARNI]      [TypeHint] Skipping type GLclampf, should contain _
+[WARNI]      [TypeHint] Skipping type GLclampd, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLclampd, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type const GLubyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[INFO ]  OpenGl_GlCore13
+[INFO ]  OpenGl_GlCore13Fwd
+[INFO ]  OpenGl_GraduatedTrihedron
+[INFO ]      Wrap nested class OpenGl_GraduatedTrihedron::Axis
+[INFO ]      Wrap nested class OpenGl_GraduatedTrihedron::GridAxes
+[INFO ]  OpenGl_LightSourceState
+[INFO ]  OpenGl_LineAttributes
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const bool, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[WARNI]      [TypeHint] Skipping type int, should contain _
+[INFO ]  OpenGl_MaterialState
+[WARNI]      [TypeHint] Skipping type float, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const float, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_ModelWorldState
+[INFO ]  OpenGl_NamedResource
+[INFO ]  OpenGl_OitState
+[WARNI]      [TypeHint] Skipping type float, should contain _
+[WARNI]      [TypeHint] Skipping type const bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_PrimitiveArray
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[INFO ]  OpenGl_ProjectionState
+[INFO ]  OpenGl_Sampler
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_ShaderObject
+[INFO ]      Wrap nested class OpenGl_ShaderObject::ShaderVariable
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type const ShaderVariableList &, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[INFO ]  OpenGl_StencilTest
+[INFO ]  OpenGl_StructureShadow
+[INFO ]  OpenGl_Text
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  OpenGl_TriangleSet
+[WARNI]      [TypeHint] Skipping type BVH_Builder<float,, seems to be a template
+[WARNI]      [TypeHint] Skipping type const QuadBvhHandle &, should contain _
+[INFO ]  OpenGl_VariableSetter
+[INFO ]  OpenGl_VertexBuffer
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLubyte *, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type virtual GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping unknown type, size not in module list
+[WARNI]      [TypeHint] Skipping type const GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[INFO ]  OpenGl_WorldViewState
+[INFO ]  OpenGl_BackgroundArray
+[INFO ]      Wrap nested class OpenGl_BackgroundArray::OpenGl_GradientParameters
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_IndexBuffer
+[WARNI]      [TypeHint] Skipping type virtual GLenum, should contain _
+[INFO ]  OpenGl_ShaderProgram
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLfloat, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLboolean, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type static bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[INFO ]  OpenGl_Texture
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type static bool, should contain _
+[WARNI]      [TypeHint] Skipping type GLint &, should contain _
+[WARNI]      [TypeHint] Skipping type static bool, should contain _
+[WARNI]      [TypeHint] Skipping type GLint &, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const bool, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLsizei, should contain _
+[WARNI]      [TypeHint] Skipping type GLint, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_TextureBufferArb
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type virtual GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type GLenum, should contain _
+[WARNI]      [TypeHint] Skipping type GLuint, should contain _
+[INFO ]  OpenGl_VertexBufferCompat
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLsizei, should contain _
+[INFO ]  OpenGl_PointSprite
+[WARNI]      [TypeHint] Skipping type virtual bool, should contain _
+[WARNI]      [TypeHint] Skipping type const GLuint, should contain _
 [INFO ]  Processing toolkit TKPrim ===
 [INFO ]  ## Processing module BRepPrim
 [INFO ]  BRepPrim_Builder
@@ -5827,7 +6702,7 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method ModeDropSmallEdges
 [INFO ]  ## Processing module ShapeProcess
-[WARNI]  Template: )skipped because name does'nt contain _.
+[WARNI]  Template: )skipped because name doesn't contain _.
 [INFO ]  ShapeProcess
 [INFO ]  ShapeProcess_Context
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -5970,7 +6845,7 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]  BRepBndLib
 [INFO ]  ## Processing module BRepBuilderAPI
 [WARNI]      [TypeHint] Skipping unknown type, int,Bnd not in module list
-[WARNI]  Template: VectorOfPointskipped because name does'nt contain _.
+[WARNI]  Template: VectorOfPointskipped because name doesn't contain _.
 [INFO ]  BRepBuilderAPI
 [INFO ]  BRepBuilderAPI_Collect
 [INFO ]  BRepBuilderAPI_Command
@@ -7217,7 +8092,7 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]  Processing toolkit TKXSBase ===
 [INFO ]  ## Processing module IFSelect
 [INFO ]  Found HSEQUENCE definitionIFSelect_HSeqOfSelection: IFSelect_TSeqOfSelection
-[WARNI]  Template: )skipped because name does'nt contain _.
+[WARNI]  Template: )skipped because name doesn't contain _.
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -7340,7 +8215,7 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]  ## Processing module Interface
 [INFO ]  Found HARRAY1 definitionInterface_HArray1OfHAsciiString: Interface_Array1OfHAsciiString
 [INFO ]  Found HSEQUENCE definitionInterface_HSequenceOfCheck: Interface_SequenceOfCheck
-[WARNI]  Template: )skipped because name does'nt contain _.
+[WARNI]  Template: )skipped because name doesn't contain _.
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -7422,7 +8297,7 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module MoniTool
 [INFO ]  Found HSEQUENCE definitionMoniTool_HSequenceOfElement: MoniTool_SequenceOfElement
-[WARNI]  Template: )skipped because name does'nt contain _.
+[WARNI]  Template: )skipped because name doesn't contain _.
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type Standard_CString,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
@@ -7757,7 +8632,7 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]  Found HARRAY1 definitionHClassName: _Array1Type_
 [INFO ]  Found HARRAY2 definitionHClassName: _Array2Type_
 [INFO ]  Found HSEQUENCE definitionHClassName: _SequenceType_
-[WARNI]  Template: )skipped because name does'nt contain _.
+[WARNI]  Template: )skipped because name doesn't contain _.
 [INFO ]  NCollection_StdAllocator<void>
 [INFO ]      Wrap nested class NCollection_StdAllocator<void>::rebind
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7997,8 +8872,8 @@ date : 2020-09-06 17:33:07.429412
 [INFO ]  UnitsAPI
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 31.95s
+SWIG interface file generation completed in 31.38s
 #################################################
 
-[INFO ]  Number of classes: 4465
-[INFO ]  Number of methods: 44609
+[INFO ]  Number of classes: 4572
+[INFO ]  Number of methods: 45967

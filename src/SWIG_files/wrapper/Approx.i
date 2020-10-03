@@ -2340,3 +2340,6 @@ class Approx_HArray1OfAdHSurface : public Approx_Array1OfAdHSurface, public Stan
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

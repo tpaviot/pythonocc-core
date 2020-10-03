@@ -4574,3 +4574,7 @@ class MeshVS_HArray1OfSequenceOfInteger : public MeshVS_Array1OfSequenceOfIntege
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+MeshVS_ColorHasher=OCC.Core.Quantity.Quantity_ColorHasher
+}

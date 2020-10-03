@@ -377,3 +377,6 @@ opencascade::handle<TCollection_HAsciiString>
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

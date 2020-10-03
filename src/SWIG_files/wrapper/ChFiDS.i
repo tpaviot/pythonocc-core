@@ -4721,3 +4721,6 @@ class ChFiDS_HData : public ChFiDS_SequenceOfSurfData, public Standard_Transient
 %make_alias(ChFiDS_HData)
 
 
+/* class aliases */
+%pythoncode {
+}

@@ -4353,3 +4353,6 @@ class Geom2dGcc_FunctionTanCuCuCu:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

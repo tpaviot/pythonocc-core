@@ -5908,3 +5908,6 @@ class TopOpeBRep_HArray1OfLineInter : public TopOpeBRep_Array1OfLineInter, publi
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

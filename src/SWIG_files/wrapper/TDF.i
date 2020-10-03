@@ -4210,3 +4210,6 @@ class TDF_HAttributeArray1 : public TDF_AttributeArray1, public Standard_Transie
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

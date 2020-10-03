@@ -780,3 +780,8 @@ None
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+XmlObjMgt_Document=OCC.Core.LDOM.LDOM_Document
+XmlObjMgt_Element=OCC.Core.LDOM.LDOM_Element
+}

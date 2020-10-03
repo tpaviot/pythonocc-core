@@ -1120,3 +1120,6 @@ class PCDM_Document:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

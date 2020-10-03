@@ -2133,3 +2133,6 @@ class GeomPlate_HSequenceOfCurveConstraint : public GeomPlate_SequenceOfCurveCon
 %make_alias(GeomPlate_HSequenceOfCurveConstraint)
 
 
+/* class aliases */
+%pythoncode {
+}

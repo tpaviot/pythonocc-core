@@ -274,3 +274,6 @@ class TColGeom2d_HSequenceOfCurve : public TColGeom2d_SequenceOfCurve, public St
 %make_alias(TColGeom2d_HSequenceOfCurve)
 
 
+/* class aliases */
+%pythoncode {
+}

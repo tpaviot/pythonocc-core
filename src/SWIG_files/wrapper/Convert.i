@@ -1494,3 +1494,7 @@ None
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+Convert_SequenceOfArray1OfPoles2d=OCC.Core.TColgp.TColgp_SequenceOfArray1OfPnt2d
+}

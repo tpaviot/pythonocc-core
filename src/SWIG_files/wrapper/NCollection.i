@@ -495,3 +495,7 @@ class NCollection_HeapAllocator:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+NCollection_String=NCollection_Utf8String
+}
