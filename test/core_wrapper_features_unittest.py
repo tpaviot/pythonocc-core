@@ -32,6 +32,7 @@ from OCC.Core.AIS import AIS_Manipulator
 from OCC.Core.Standard import Standard_Transient
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
+from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_Sewing
 from OCC.Core.BRepBndLib import brepbndlib_Add
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeSphere
@@ -814,6 +815,14 @@ class TestWrapperFeatures(unittest.TestCase):
         for core_module in available_core_modules:
             module_name = os.path.basename(core_module).split('.')[0]
             importlib.import_module('OCC.Core.%s' % module_name)
+
+    def test_aliases(self) -> None:
+        """ some classes are defined in c++ as typedef, i.e. they are only
+        aliases, e.g. BRepOffsetAPI_Sewing is an alias for BRepBuilderAPI_Sewing
+        """
+        sewing_1 = BRepOffsetAPI_Sewing()
+        sewing_2 = BRepBuilderAPI_Sewing()
+
 
 def suite() -> unittest.TestSuite:
     test_suite = unittest.TestSuite()

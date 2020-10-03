@@ -5584,3 +5584,6 @@ class IntTools_CArray1OfReal:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

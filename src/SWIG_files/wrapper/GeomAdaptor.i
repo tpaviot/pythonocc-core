@@ -2853,3 +2853,6 @@ opencascade::handle<Adaptor3d_HSurface>
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

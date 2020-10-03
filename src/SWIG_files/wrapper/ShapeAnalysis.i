@@ -5781,3 +5781,6 @@ class ShapeAnalysis_HSequenceOfFreeBounds : public ShapeAnalysis_SequenceOfFreeB
 %make_alias(ShapeAnalysis_HSequenceOfFreeBounds)
 
 
+/* class aliases */
+%pythoncode {
+}

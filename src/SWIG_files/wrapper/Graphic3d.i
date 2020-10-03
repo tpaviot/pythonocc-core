@@ -19315,3 +19315,6 @@ class Graphic3d_BvhCStructureSetTrsfPers:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

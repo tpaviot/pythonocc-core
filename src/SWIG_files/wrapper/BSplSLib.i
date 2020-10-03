@@ -1139,3 +1139,6 @@ class BSplSLib_EvaluatorFunction:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

@@ -8366,3 +8366,6 @@ class TDataStd_HLabelArray1 : public TDataStd_LabelArray1, public Standard_Trans
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

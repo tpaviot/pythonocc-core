@@ -8968,3 +8968,6 @@ class StepShape_HArray1OfOrientedEdge : public StepShape_Array1OfOrientedEdge, p
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

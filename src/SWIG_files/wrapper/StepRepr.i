@@ -5837,3 +5837,6 @@ class StepRepr_HSequenceOfMaterialPropertyRepresentation : public StepRepr_Seque
 %make_alias(StepRepr_HSequenceOfMaterialPropertyRepresentation)
 
 
+/* class aliases */
+%pythoncode {
+}

@@ -9296,3 +9296,7 @@ class XCAFDoc_GeomTolerance:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+XCAFDoc_PartId=OCC.Core.TCollection.TCollection_AsciiString
+}

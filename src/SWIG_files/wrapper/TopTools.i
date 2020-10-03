@@ -932,3 +932,6 @@ class TopTools_HSequenceOfShape : public TopTools_SequenceOfShape, public Standa
 %make_alias(TopTools_HSequenceOfShape)
 
 
+/* class aliases */
+%pythoncode {
+}

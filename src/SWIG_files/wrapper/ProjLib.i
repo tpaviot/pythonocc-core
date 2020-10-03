@@ -3856,3 +3856,6 @@ class ProjLib_HSequenceOfHSequenceOfPnt : public ProjLib_SequenceOfHSequenceOfPn
 %make_alias(ProjLib_HSequenceOfHSequenceOfPnt)
 
 
+/* class aliases */
+%pythoncode {
+}

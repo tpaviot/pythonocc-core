@@ -1346,3 +1346,6 @@ class AppParCurves_HArray1OfMultiBSpCurve : public AppParCurves_Array1OfMultiBSp
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

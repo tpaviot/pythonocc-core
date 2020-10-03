@@ -3060,3 +3060,7 @@ class SelectMgr_SensitiveEntitySet:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+SelectBasics_EntityOwner=SelectMgr_EntityOwner
+}

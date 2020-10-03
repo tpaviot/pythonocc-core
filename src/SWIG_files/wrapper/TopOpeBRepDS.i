@@ -8142,3 +8142,6 @@ class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public TopOpeBR
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

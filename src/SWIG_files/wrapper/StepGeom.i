@@ -10120,3 +10120,6 @@ class StepGeom_HArray2OfCartesianPoint : public StepGeom_Array2OfCartesianPoint,
 
 
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

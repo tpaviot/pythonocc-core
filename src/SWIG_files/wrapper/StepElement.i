@@ -3861,3 +3861,6 @@ class StepElement_HSequenceOfSurfaceElementPurposeMember : public StepElement_Se
 %make_alias(StepElement_HSequenceOfSurfaceElementPurposeMember)
 
 
+/* class aliases */
+%pythoncode {
+}

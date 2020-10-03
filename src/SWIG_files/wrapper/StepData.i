@@ -7047,3 +7047,6 @@ class StepData_HArray1OfField : public StepData_Array1OfField, public Standard_T
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

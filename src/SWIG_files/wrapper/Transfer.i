@@ -4769,3 +4769,6 @@ class Transfer_HSequenceOfFinder : public Transfer_SequenceOfFinder, public Stan
 %make_alias(Transfer_HSequenceOfFinder)
 
 
+/* class aliases */
+%pythoncode {
+}

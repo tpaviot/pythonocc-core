@@ -2750,3 +2750,7 @@ class Select3D_SensitiveSet:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+SelectBasics_SensitiveEntity=Select3D_SensitiveEntity
+}

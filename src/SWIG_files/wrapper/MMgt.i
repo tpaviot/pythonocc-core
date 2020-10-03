@@ -75,3 +75,6 @@ typedef Standard_Transient MMgt_TShared;
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

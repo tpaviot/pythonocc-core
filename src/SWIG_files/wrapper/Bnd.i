@@ -4044,3 +4044,6 @@ class Bnd_HArray1OfBox2d : public Bnd_Array1OfBox2d, public Standard_Transient {
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

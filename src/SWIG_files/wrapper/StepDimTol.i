@@ -4853,3 +4853,6 @@ class StepDimTol_HArray1OfGeometricToleranceModifier : public StepDimTol_Array1O
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

@@ -2530,3 +2530,6 @@ class Units_UnitsSequence : public Units_UtsSequence, public Standard_Transient 
 %make_alias(Units_UnitsSequence)
 
 
+/* class aliases */
+%pythoncode {
+}

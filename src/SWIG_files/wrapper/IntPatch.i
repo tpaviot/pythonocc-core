@@ -7721,3 +7721,7 @@ class IntPatch_Polyhedron:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+IntPatch_SearchPnt=OCC.Core.Intf.Intf_InterferencePolygon2d
+}

@@ -1121,3 +1121,6 @@ class BRepClass3d_BndBoxTreeSelectorPoint:
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

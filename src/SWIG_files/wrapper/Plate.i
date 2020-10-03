@@ -1516,3 +1516,6 @@ class Plate_HArray1OfPinpointConstraint : public Plate_Array1OfPinpointConstrain
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

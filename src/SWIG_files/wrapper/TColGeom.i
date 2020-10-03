@@ -340,3 +340,6 @@ class TColGeom_HSequenceOfCurve : public TColGeom_SequenceOfCurve, public Standa
 %make_alias(TColGeom_HSequenceOfCurve)
 
 
+/* class aliases */
+%pythoncode {
+}

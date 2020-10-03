@@ -6207,3 +6207,22 @@ None
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+BRepBlend_CSCircular=OCC.Core.BlendFunc.BlendFunc_CSCircular
+BRepBlend_CSConstRad=OCC.Core.BlendFunc.BlendFunc_CSConstRad
+BRepBlend_ChAsym=OCC.Core.BlendFunc.BlendFunc_ChAsym
+BRepBlend_ChAsymInv=OCC.Core.BlendFunc.BlendFunc_ChAsymInv
+BRepBlend_ChamfInv=OCC.Core.BlendFunc.BlendFunc_ChamfInv
+BRepBlend_Chamfer=OCC.Core.BlendFunc.BlendFunc_Chamfer
+BRepBlend_ConstRad=OCC.Core.BlendFunc.BlendFunc_ConstRad
+BRepBlend_ConstRadInv=OCC.Core.BlendFunc.BlendFunc_ConstRadInv
+BRepBlend_ConstThroat=OCC.Core.BlendFunc.BlendFunc_ConstThroat
+BRepBlend_ConstThroatInv=OCC.Core.BlendFunc.BlendFunc_ConstThroatInv
+BRepBlend_ConstThroatWithPenetration=OCC.Core.BlendFunc.BlendFunc_ConstThroatWithPenetration
+BRepBlend_ConstThroatWithPenetrationInv=OCC.Core.BlendFunc.BlendFunc_ConstThroatWithPenetrationInv
+BRepBlend_EvolRad=OCC.Core.BlendFunc.BlendFunc_EvolRad
+BRepBlend_EvolRadInv=OCC.Core.BlendFunc.BlendFunc_EvolRadInv
+BRepBlend_Ruled=OCC.Core.BlendFunc.BlendFunc_Ruled
+BRepBlend_RuledInv=OCC.Core.BlendFunc.BlendFunc_RuledInv
+}

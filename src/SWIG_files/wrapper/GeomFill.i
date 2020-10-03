@@ -11712,3 +11712,6 @@ class GeomFill_HSequenceOfAx2 : public GeomFill_SequenceOfAx2, public Standard_T
 %make_alias(GeomFill_HSequenceOfAx2)
 
 
+/* class aliases */
+%pythoncode {
+}

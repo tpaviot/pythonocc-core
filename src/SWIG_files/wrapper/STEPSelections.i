@@ -991,3 +991,6 @@ class STEPSelections_HSequenceOfAssemblyLink : public STEPSelections_SequenceOfA
 %make_alias(STEPSelections_HSequenceOfAssemblyLink)
 
 
+/* class aliases */
+%pythoncode {
+}

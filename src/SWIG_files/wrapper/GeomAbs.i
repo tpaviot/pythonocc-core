@@ -287,3 +287,6 @@ GeomAbs_OppositeUV = GeomAbs_UVSense.GeomAbs_OppositeUV
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

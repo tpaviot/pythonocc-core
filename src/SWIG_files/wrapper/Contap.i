@@ -3635,3 +3635,6 @@ class Contap_TheHSequenceOfPoint : public Contap_TheSequenceOfPoint, public Stan
 %make_alias(Contap_TheHSequenceOfPoint)
 
 
+/* class aliases */
+%pythoncode {
+}

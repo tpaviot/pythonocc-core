@@ -1381,3 +1381,6 @@ opencascade::handle<Geom2d_TrimmedCurve>
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

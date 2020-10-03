@@ -1754,3 +1754,6 @@ opencascade::handle<Geom_RectangularTrimmedSurface>
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

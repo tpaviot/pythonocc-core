@@ -847,3 +847,7 @@ opencascade::handle<Adaptor3d_HVertex>
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+BRepTopAdaptor_SeqOfPtr=OCC.Core.TColStd.TColStd_SequenceOfAddress
+}

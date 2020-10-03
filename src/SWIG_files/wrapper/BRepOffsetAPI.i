@@ -2770,3 +2770,7 @@ TopTools_ListOfShape
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+BRepOffsetAPI_Sewing=OCC.Core.BRepBuilderAPI.BRepBuilderAPI_Sewing
+}

@@ -394,3 +394,6 @@ class Storage_HSeqOfRoot : public Storage_SeqOfRoot, public Standard_Transient {
 %make_alias(Storage_HSeqOfRoot)
 
 
+/* class aliases */
+%pythoncode {
+}

@@ -5333,3 +5333,6 @@ class StepFEA_HSequenceOfCurve3dElementProperty : public StepFEA_SequenceOfCurve
 %make_alias(StepFEA_HSequenceOfCurve3dElementProperty)
 
 
+/* class aliases */
+%pythoncode {
+}

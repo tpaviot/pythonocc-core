@@ -2318,3 +2318,6 @@ class BRepAdaptor_HArray1OfCurve : public BRepAdaptor_Array1OfCurve, public Stan
 
 /* harray2 classes */
 /* hsequence classes */
+/* class aliases */
+%pythoncode {
+}

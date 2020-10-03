@@ -161,3 +161,6 @@ class TShort_HSequenceOfShortReal : public TShort_SequenceOfShortReal, public St
 %make_alias(TShort_HSequenceOfShortReal)
 
 
+/* class aliases */
+%pythoncode {
+}
