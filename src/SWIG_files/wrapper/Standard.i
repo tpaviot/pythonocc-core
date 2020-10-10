@@ -76,6 +76,7 @@ Standard_HandlerProcessed = Standard_HandlerStatus.Standard_HandlerProcessed
 %wrap_handle(Standard_Transient)
 %wrap_handle(Standard_OutOfMemory)
 %wrap_handle(Standard_Persistent)
+%wrap_handle(Standard_Type)
 /* end handles declaration */
 
 /* templates */
@@ -1535,6 +1536,120 @@ None
 /**********************
 * class Standard_Type *
 **********************/
+%nodefaultctor Standard_Type;
+class Standard_Type : public Standard_Transient {
+	public:
+		/****************** Name ******************/
+		/**** md5 signature: dbebb34a777ed2cce75639b98f8c3cbf ****/
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "Returns the given name of the class type (get_type_name).
+
+Returns
+-------
+char *
+") Name;
+		const char * Name();
+
+		/****************** Parent ******************/
+		/**** md5 signature: 4c52a6847edce109e140e2343296b76f ****/
+		%feature("compactdefaultargs") Parent;
+		%feature("autodoc", "Returns descriptor of the base class in the hierarchy.
+
+Returns
+-------
+opencascade::handle<Standard_Type>
+") Parent;
+		const opencascade::handle<Standard_Type> & Parent();
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+		/****************** Register ******************/
+		/**** md5 signature: 8e6b8df94dcb0fc4b1d9d92877cf9314 ****/
+		%feature("compactdefaultargs") Register;
+		%feature("autodoc", "Register a type; returns either new or existing descriptor. //! @param thesystemname name of the class as returned by typeid(class).name() @param thename name of the class to be stored in name field @param thesize size of the class instance @param theparent base class in the transient hierarchy //! note that this function is intended for use by opencascade::type_instance only. .
+
+Parameters
+----------
+theSystemName: char *
+theName: char *
+theSize: Standard_Size
+theParent: Standard_Type
+
+Returns
+-------
+Standard_Type *
+") Register;
+		static Standard_Type * Register(const char * theSystemName, const char * theName, Standard_Size theSize, const opencascade::handle<Standard_Type> & theParent);
+
+		/****************** Size ******************/
+		/**** md5 signature: 84043604cd4d694d29fbe523f032e5d8 ****/
+		%feature("compactdefaultargs") Size;
+		%feature("autodoc", "Returns the size of the class instance in bytes.
+
+Returns
+-------
+Standard_Size
+") Size;
+		Standard_Size Size();
+
+		/****************** SubType ******************/
+		/**** md5 signature: c3ab17d05fad515519faa56550ba2910 ****/
+		%feature("compactdefaultargs") SubType;
+		%feature("autodoc", "Returns true if this type is the same as theother, or inherits from theother. note that multiple inheritance is not supported.
+
+Parameters
+----------
+theOther: Standard_Type
+
+Returns
+-------
+bool
+") SubType;
+		Standard_Boolean SubType(const opencascade::handle<Standard_Type> & theOther);
+
+		/****************** SubType ******************/
+		/**** md5 signature: e4908284e5a25023425f29a02b92ebdc ****/
+		%feature("compactdefaultargs") SubType;
+		%feature("autodoc", "Returns true if this type is the same as theother, or inherits from theother. note that multiple inheritance is not supported.
+
+Parameters
+----------
+theOther: char *
+
+Returns
+-------
+bool
+") SubType;
+		Standard_Boolean SubType(const char * theOther);
+
+		/****************** SystemName ******************/
+		/**** md5 signature: 3db3c1797a8dec854871c6caaa05c939 ****/
+		%feature("compactdefaultargs") SystemName;
+		%feature("autodoc", "Returns the system type name of the class (typeinfo.name).
+
+Returns
+-------
+char *
+") SystemName;
+		const char * SystemName();
+
+};
+
+
+%make_alias(Standard_Type)
+
+%extend Standard_Type {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
@@ -1547,10 +1662,6 @@ class Standard_Static_Assert:
 
 @classnotwrapped
 class Standard_CLocaleSentry:
-	pass
-
-@classnotwrapped
-class Standard_Type:
 	pass
 
 @classnotwrapped
