@@ -532,6 +532,9 @@ class Prs3d_PlaneAspect(Prs3d_BasicAspect):
 	def SetIsoDistance(self, theL: float) -> None: ...
 	def SetPlaneLength(self, theLX: float, theLY: float) -> None: ...
 
+class Prs3d_Point(Prs3d_Root):
+	pass
+
 class Prs3d_PointAspect(Prs3d_BasicAspect):
 	@overload
 	def __init__(self, theType: Aspect_TypeOfMarker, theColor: Quantity_Color, theScale: float) -> None: ...
@@ -624,12 +627,6 @@ class Prs3d_IsoAspect(Prs3d_LineAspect):
 	def Number(self) -> int: ...
 	def SetNumber(self, theNumber: int) -> None: ...
 
-#classnotwrapped
-class Prs3d_WFShape: ...
-
-#classnotwrapped
-class Prs3d_Point: ...
-
 # harray1 classes
 # harray2 classes
 # hsequence classes
@@ -646,6 +643,8 @@ Prs3d_Arrow_Draw = Prs3d_Arrow.Draw
 Prs3d_Arrow_Draw = Prs3d_Arrow.Draw
 Prs3d_Arrow_DrawSegments = Prs3d_Arrow.DrawSegments
 Prs3d_Arrow_DrawShaded = Prs3d_Arrow.DrawShaded
+Prs3d_Point_Add = Prs3d_Point.Add
+Prs3d_Point_Match = Prs3d_Point.Match
 Prs3d_Text_Draw = Prs3d_Text.Draw
 Prs3d_Text_Draw = Prs3d_Text.Draw
 Prs3d_Text_Draw = Prs3d_Text.Draw
