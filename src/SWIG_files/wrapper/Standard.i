@@ -39,10 +39,6 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_standard.html"
 #include<Standard_module.hxx>
 
 //Dependencies
-#include<TColgp_module.hxx>
-#include<TColStd_module.hxx>
-#include<TCollection_module.hxx>
-#include<Storage_module.hxx>
 %};
 
 %pythoncode {
@@ -74,6 +70,7 @@ Standard_HandlerProcessed = Standard_HandlerStatus.Standard_HandlerProcessed
 
 /* handles */
 %wrap_handle(Standard_Transient)
+%wrap_handle(Standard_Failure)
 %wrap_handle(Standard_OutOfMemory)
 %wrap_handle(Standard_Persistent)
 %wrap_handle(Standard_Type)
@@ -1130,6 +1127,203 @@ char *
 /*************************
 * class Standard_Failure *
 *************************/
+class Standard_Failure : public Standard_Transient {
+	public:
+		/****************** Standard_Failure ******************/
+		/**** md5 signature: 28eca828ed422c117208722fa40f1b8f ****/
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "Creates a status object of type 'failure'.
+
+Returns
+-------
+None
+") Standard_Failure;
+		 Standard_Failure();
+
+		/****************** Standard_Failure ******************/
+		/**** md5 signature: 40dc4b89af78d8e64d2a9c054dd7a60f ****/
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "Copy constructor.
+
+Parameters
+----------
+f: Standard_Failure
+
+Returns
+-------
+None
+") Standard_Failure;
+		 Standard_Failure(const Standard_Failure & f);
+
+		/****************** Standard_Failure ******************/
+		/**** md5 signature: 1ca069088790633532f3fc20a7e3084c ****/
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "Creates a status object of type 'failure'.
+
+Parameters
+----------
+aString: char *
+
+Returns
+-------
+None
+") Standard_Failure;
+		 Standard_Failure(const char * aString);
+
+		/****************** Caught ******************/
+		/**** md5 signature: e487ba4f8c916a476ce53b88d6e749b0 ****/
+		%feature("compactdefaultargs") Caught;
+		%feature("autodoc", "Returns the last caught exception. needed when exceptions are emulated by c longjumps, in other cases is also provided for compatibility.
+
+Returns
+-------
+opencascade::handle<Standard_Failure>
+") Caught;
+		static opencascade::handle<Standard_Failure> Caught();
+
+		/****************** GetMessageString ******************/
+		/**** md5 signature: 6cf28bba781d197207e850c1ab1a1376 ****/
+		%feature("compactdefaultargs") GetMessageString;
+		%feature("autodoc", "Returns error message.
+
+Returns
+-------
+char *
+") GetMessageString;
+		virtual const char * GetMessageString();
+
+		/****************** Jump ******************/
+		/**** md5 signature: e33ef5a1dbf8b90ad71d2447437ae607 ****/
+		%feature("compactdefaultargs") Jump;
+		%feature("autodoc", "Used to throw cascade exception from c signal handler. on platforms that do not allow throwing c++ exceptions from this handler (e.g. linux), uses longjump to get to the current active signal handler, and only then is converted to c++ exception.
+
+Returns
+-------
+None
+") Jump;
+		void Jump();
+
+		/****************** NewInstance ******************/
+		/**** md5 signature: 9286e9615414b307ea2d1b0cb0dc3aa6 ****/
+		%feature("compactdefaultargs") NewInstance;
+		%feature("autodoc", "Used to construct an instance of the exception object as a handle. shall be used to protect against possible construction of exception object in c stack -- that is dangerous since some of methods require that object was allocated dynamically.
+
+Parameters
+----------
+aMessage: char *
+
+Returns
+-------
+opencascade::handle<Standard_Failure>
+") NewInstance;
+		static opencascade::handle<Standard_Failure> NewInstance(const char * aMessage);
+
+
+        %feature("autodoc", "1");
+        %extend{
+            std::string PrintToString() {
+            std::stringstream s;
+            self->Print(s);
+            return s.str();}
+        };
+		/****************** Raise ******************/
+		/**** md5 signature: 91c037d4badacf1008e024b8b4afb779 ****/
+		%feature("compactdefaultargs") Raise;
+		%feature("autodoc", "Raises an exception of type 'failure' and associates an error message to it. the message can be printed in an exception handler.
+
+Parameters
+----------
+aMessage: char *,optional
+	default value is ""
+
+Returns
+-------
+None
+") Raise;
+		static void Raise(const char * aMessage = "");
+
+		/****************** Raise ******************/
+		/**** md5 signature: 03c559f09da27928a7c59a30a5a6ce57 ****/
+		%feature("compactdefaultargs") Raise;
+		%feature("autodoc", "Raises an exception of type 'failure' and associates an error message to it. the message can be constructed at run-time.
+
+Parameters
+----------
+aReason: Standard_SStream
+
+Returns
+-------
+None
+") Raise;
+		static void Raise(const Standard_SStream & aReason);
+
+		/****************** Reraise ******************/
+		/**** md5 signature: 657c2a99b33e637f9ff1c137fe6e034b ****/
+		%feature("compactdefaultargs") Reraise;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+None
+") Reraise;
+		void Reraise();
+
+		/****************** Reraise ******************/
+		/**** md5 signature: fdb5d161a9b733854991a035221e32d5 ****/
+		%feature("compactdefaultargs") Reraise;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aMessage: char *
+
+Returns
+-------
+None
+") Reraise;
+		void Reraise(const char * aMessage);
+
+		/****************** Reraise ******************/
+		/**** md5 signature: 77af3b338ca71e96bbc8da8476367087 ****/
+		%feature("compactdefaultargs") Reraise;
+		%feature("autodoc", "Reraises a caught exception and changes its error message.
+
+Parameters
+----------
+aReason: Standard_SStream
+
+Returns
+-------
+None
+") Reraise;
+		void Reraise(const Standard_SStream & aReason);
+
+		/****************** SetMessageString ******************/
+		/**** md5 signature: e114353f153670bda6bb3ce3aa4b0258 ****/
+		%feature("compactdefaultargs") SetMessageString;
+		%feature("autodoc", "Sets error message.
+
+Parameters
+----------
+aMessage: char *
+
+Returns
+-------
+None
+") SetMessageString;
+		virtual void SetMessageString(const char * aMessage);
+
+};
+
+
+%make_alias(Standard_Failure)
+
+%extend Standard_Failure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*************************
 * class Standard_MMgrOpt *
 *************************/
@@ -1662,10 +1856,6 @@ class Standard_Static_Assert:
 
 @classnotwrapped
 class Standard_CLocaleSentry:
-	pass
-
-@classnotwrapped
-class Standard_Failure:
 	pass
 
 @classnotwrapped
