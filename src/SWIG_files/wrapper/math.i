@@ -3188,16 +3188,23 @@ None
 ") SetTol;
 		void SetTol(const Standard_Real theDiscretizationTol, const Standard_Real theSameTol);
 
+		/****************** isDone ******************/
+		/**** md5 signature: fbb42ba7dccdaf2fe81e0200c743c59b ****/
+		%feature("compactdefaultargs") isDone;
+		%feature("autodoc", "Return computation state of the algorithm.
+
+Returns
+-------
+bool
+") isDone;
+		Standard_Boolean isDone();
+
 };
 
 
 %extend math_GlobOptMin {
 	%pythoncode {
 	__repr__ = _dumps_object
-
-	@methodnotwrapped
-	def isDone(self):
-		pass
 	}
 };
 
@@ -7468,14 +7475,6 @@ D: float
 	}
 };
 
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class math_SingleTab:
-	pass
-
-}
-/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
