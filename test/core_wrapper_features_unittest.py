@@ -823,6 +823,15 @@ class TestWrapperFeatures(unittest.TestCase):
         sewing_1 = BRepOffsetAPI_Sewing()
         sewing_2 = BRepBuilderAPI_Sewing()
 
+    def test_Standard_Type(self) -> None:
+        """ test that Standard_Type returns the correct type name
+        """
+        edge = BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, 0),
+                                       gp_Pnt(1, 0, 0)).Edge()
+        curve, _, _ = BRep_Tool_Curve(edge)
+        line = Geom_Line.DownCast(curve)
+        self.assertEqual(line.DynamicType().Name(), "Geom_Line")
+
 
 def suite() -> unittest.TestSuite:
     test_suite = unittest.TestSuite()
