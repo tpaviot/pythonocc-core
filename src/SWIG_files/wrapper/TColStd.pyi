@@ -465,9 +465,6 @@ class TColStd_HPackedMapOfInteger(Standard_Transient):
 	def ChangeMap(self) -> TColStd_PackedMapOfInteger: ...
 	def Map(self) -> TColStd_PackedMapOfInteger: ...
 
-#classnotwrapped
-class TColStd_PackedMapOfInteger: ...
-
 # harray1 classes
 
 class TColStd_HArray1OfExtendedString(TColStd_Array1OfExtendedString, Standard_Transient):
