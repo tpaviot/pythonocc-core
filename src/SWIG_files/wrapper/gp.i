@@ -41,6 +41,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gp.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -48,6 +49,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gp.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -15296,6 +15298,21 @@ gp_Ax1
 ") Axis;
 		const gp_Ax1 Axis();
 
+		/****************** Coefficients ******************/
+		/**** md5 signature: f3843308545d4e3af26668e295f3d035 ****/
+		%feature("compactdefaultargs") Coefficients;
+		%feature("autodoc", "Computes the coefficients of the implicit equation of the surface in the absolute cartesian coordinate system: coef(1) * x^4 + coef(2) * y^4 + coef(3) * z^4 + coef(4) * x^3 * y + coef(5) * x^3 * z + coef(6) * y^3 * x + coef(7) * y^3 * z + coef(8) * z^3 * x + coef(9) * z^3 * y + coef(10) * x^2 * y^2 + coef(11) * x^2 * z^2 + coef(12) * y^2 * z^2 + coef(13) * x^2 * y * z + coef(14) * x * y^2 * z + coef(15) * x * y * z^2 + coef(16) * x^3 + coef(17) * y^3 + coef(18) * z^3 + coef(19) * x^2 * y + coef(20) * x^2 * z + coef(21) * y^2 * x + coef(22) * y^2 * z + coef(23) * z^2 * x + coef(24) * z^2 * y + coef(25) * x * y * z + coef(26) * x^2 + coef(27) * y^2 + coef(28) * z^2 + coef(29) * x * y + coef(30) * x * z + coef(31) * y * z + coef(32) * x + coef(33) * y + coef(34) * z + coef(35) = 0.0 raises dimensionerror if the length of coef is lower than 35.
+
+Parameters
+----------
+Coef: TColStd_Array1OfReal
+
+Returns
+-------
+None
+") Coefficients;
+		void Coefficients(TColStd_Array1OfReal & Coef);
+
 		/****************** Direct ******************/
 		/**** md5 signature: 33e4e96f61de8e23c989d6f9aec7d457 ****/
 		%feature("compactdefaultargs") Direct;
@@ -15733,10 +15750,6 @@ gp_Ax1
 %extend gp_Torus {
 	%pythoncode {
 	__repr__ = _dumps_object
-
-	@methodnotwrapped
-	def Coefficients(self):
-		pass
 	}
 };
 
@@ -16304,10 +16317,6 @@ gp_Trsf
 %extend gp_Trsf {
 	%pythoncode {
 	__repr__ = _dumps_object
-
-	@methodnotwrapped
-	def GetMat4(self):
-		pass
 	}
 };
 
