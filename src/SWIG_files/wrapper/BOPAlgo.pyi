@@ -167,8 +167,6 @@ class BOPAlgo_Tools:
 	@staticmethod
 	def PerformCommonBlocks(theMBlocks: BOPDS_IndexedDataMapOfPaveBlockListOfInteger, theAllocator: NCollection_BaseAllocator, pDS: BOPDS_PDS, theContext: Optional[IntTools_Context] = IntTools_Context()) -> None: ...
 	@staticmethod
-	def TreatCompound(theS: TopoDS_Shape, theMFence: TopTools_MapOfShape, theLS: TopTools_ListOfShape) -> None: ...
-	@staticmethod
 	def WiresToFaces(theWires: TopoDS_Shape, theFaces: TopoDS_Shape, theAngTol: Optional[float] = 1e-8) -> bool: ...
 
 class BOPAlgo_WireEdgeSet:
@@ -481,7 +479,6 @@ BOPAlgo_Tools_FillInternals = BOPAlgo_Tools.FillInternals
 BOPAlgo_Tools_IntersectVertices = BOPAlgo_Tools.IntersectVertices
 BOPAlgo_Tools_PerformCommonBlocks = BOPAlgo_Tools.PerformCommonBlocks
 BOPAlgo_Tools_PerformCommonBlocks = BOPAlgo_Tools.PerformCommonBlocks
-BOPAlgo_Tools_TreatCompound = BOPAlgo_Tools.TreatCompound
 BOPAlgo_Tools_WiresToFaces = BOPAlgo_Tools.WiresToFaces
 BOPAlgo_MakePeriodic_ToDirectionID = BOPAlgo_MakePeriodic.ToDirectionID
 BOPAlgo_ShellSplitter_SplitBlock = BOPAlgo_ShellSplitter.SplitBlock
