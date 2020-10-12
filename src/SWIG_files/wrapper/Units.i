@@ -67,7 +67,9 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(Units_Dimensions)
 %wrap_handle(Units_Lexicon)
+%wrap_handle(Units_Quantity)
 %wrap_handle(Units_Token)
 %wrap_handle(Units_Unit)
 %wrap_handle(Units_UnitsDictionary)
@@ -343,6 +345,352 @@ None
 /*************************
 * class Units_Dimensions *
 *************************/
+class Units_Dimensions : public Standard_Transient {
+	public:
+		/****************** Units_Dimensions ******************/
+		/**** md5 signature: 975dcf713d046cd058800d166ad813f0 ****/
+		%feature("compactdefaultargs") Units_Dimensions;
+		%feature("autodoc", "Returns a dimensions object which represents the dimension of a physical quantity. each of the <amass>, <alength>, <atime>, <anelectriccurrent>, <athermodynamictemperature>, <anamountofsubstance>, <aluminousintensity>, <aplaneangle>, <asolidangle> are the powers for the 7 fundamental units of physical quantity and the 2 secondary fundamental units of physical quantity.
+
+Parameters
+----------
+amass: float
+alength: float
+atime: float
+anelectriccurrent: float
+athermodynamictemperature: float
+anamountofsubstance: float
+aluminousintensity: float
+aplaneangle: float
+asolidangle: float
+
+Returns
+-------
+None
+") Units_Dimensions;
+		 Units_Dimensions(const Standard_Real amass, const Standard_Real alength, const Standard_Real atime, const Standard_Real anelectriccurrent, const Standard_Real athermodynamictemperature, const Standard_Real anamountofsubstance, const Standard_Real aluminousintensity, const Standard_Real aplaneangle, const Standard_Real asolidangle);
+
+		/****************** AAmountOfSubstance ******************/
+		/**** md5 signature: 63abc0e7be931ff72f6ca88e61dd17e2 ****/
+		%feature("compactdefaultargs") AAmountOfSubstance;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") AAmountOfSubstance;
+		static opencascade::handle<Units_Dimensions> AAmountOfSubstance();
+
+		/****************** AElectricCurrent ******************/
+		/**** md5 signature: f9c24167d985631057846e51d10166df ****/
+		%feature("compactdefaultargs") AElectricCurrent;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") AElectricCurrent;
+		static opencascade::handle<Units_Dimensions> AElectricCurrent();
+
+		/****************** ALength ******************/
+		/**** md5 signature: 4f64b4d4e2c0ca907acbcdafc4af9fbe ****/
+		%feature("compactdefaultargs") ALength;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") ALength;
+		static opencascade::handle<Units_Dimensions> ALength();
+
+		/****************** ALess ******************/
+		/**** md5 signature: 5bec61cec7e8ac92b5fa54f4c66293e1 ****/
+		%feature("compactdefaultargs") ALess;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") ALess;
+		static opencascade::handle<Units_Dimensions> ALess();
+
+		/****************** ALuminousIntensity ******************/
+		/**** md5 signature: 3404de6cf51ae0de3b58b74046913ea0 ****/
+		%feature("compactdefaultargs") ALuminousIntensity;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") ALuminousIntensity;
+		static opencascade::handle<Units_Dimensions> ALuminousIntensity();
+
+		/****************** AMass ******************/
+		/**** md5 signature: a2414aaa69606a356103ae05576f7edd ****/
+		%feature("compactdefaultargs") AMass;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") AMass;
+		static opencascade::handle<Units_Dimensions> AMass();
+
+		/****************** APlaneAngle ******************/
+		/**** md5 signature: c9e7da3a1e46cbcfd9ef347668c87c52 ****/
+		%feature("compactdefaultargs") APlaneAngle;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") APlaneAngle;
+		static opencascade::handle<Units_Dimensions> APlaneAngle();
+
+		/****************** ASolidAngle ******************/
+		/**** md5 signature: bec6fd1521d8717bee8ced3dafec2fd2 ****/
+		%feature("compactdefaultargs") ASolidAngle;
+		%feature("autodoc", "Returns the basic dimensions.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") ASolidAngle;
+		static opencascade::handle<Units_Dimensions> ASolidAngle();
+
+		/****************** AThermodynamicTemperature ******************/
+		/**** md5 signature: 33ec66a866f8f2afdbeb44f68a782fbe ****/
+		%feature("compactdefaultargs") AThermodynamicTemperature;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") AThermodynamicTemperature;
+		static opencascade::handle<Units_Dimensions> AThermodynamicTemperature();
+
+		/****************** ATime ******************/
+		/**** md5 signature: b2807cad2db41c8608f548109ee219c8 ****/
+		%feature("compactdefaultargs") ATime;
+		%feature("autodoc", "No available documentation.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") ATime;
+		static opencascade::handle<Units_Dimensions> ATime();
+
+		/****************** AmountOfSubstance ******************/
+		/**** md5 signature: d0a50e7688dd01fdb0a81b6e0ce7c4a7 ****/
+		%feature("compactdefaultargs") AmountOfSubstance;
+		%feature("autodoc", "Returns the power of quantity of material (mole) stored in the dimensions.
+
+Returns
+-------
+float
+") AmountOfSubstance;
+		Standard_Real AmountOfSubstance();
+
+		/****************** Divide ******************/
+		/**** md5 signature: 2017e5023c65919fe4353e5afc314d62 ****/
+		%feature("compactdefaultargs") Divide;
+		%feature("autodoc", "Creates and returns a new dimensions object which is the result of the division of <self> by <adimensions>.
+
+Parameters
+----------
+adimensions: Units_Dimensions
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") Divide;
+		opencascade::handle<Units_Dimensions> Divide(const opencascade::handle<Units_Dimensions> & adimensions);
+
+		/****************** Dump ******************/
+		/**** md5 signature: 9b3bd8d196da0d1f33184e996ae9cbf4 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Useful for degugging.
+
+Parameters
+----------
+ashift: int
+
+Returns
+-------
+None
+") Dump;
+		void Dump(const Standard_Integer ashift);
+
+		/****************** ElectricCurrent ******************/
+		/**** md5 signature: 57733ce346654d092ffbc2cbbac0213a ****/
+		%feature("compactdefaultargs") ElectricCurrent;
+		%feature("autodoc", "Returns the power of electrical intensity (current) stored in the dimensions.
+
+Returns
+-------
+float
+") ElectricCurrent;
+		Standard_Real ElectricCurrent();
+
+		/****************** IsEqual ******************/
+		/**** md5 signature: 8e0b598f425a2f805aa6408b0ee4da6e ****/
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "Returns true if <self> and <adimensions> have the same dimensions, false otherwise.
+
+Parameters
+----------
+adimensions: Units_Dimensions
+
+Returns
+-------
+bool
+") IsEqual;
+		Standard_Boolean IsEqual(const opencascade::handle<Units_Dimensions> & adimensions);
+
+		/****************** IsNotEqual ******************/
+		/**** md5 signature: 9573d9fa7b1efcf9409a939d8e6422a6 ****/
+		%feature("compactdefaultargs") IsNotEqual;
+		%feature("autodoc", "Returns false if <self> and <adimensions> have the same dimensions, true otherwise.
+
+Parameters
+----------
+adimensions: Units_Dimensions
+
+Returns
+-------
+bool
+") IsNotEqual;
+		Standard_Boolean IsNotEqual(const opencascade::handle<Units_Dimensions> & adimensions);
+
+		/****************** Length ******************/
+		/**** md5 signature: 7a11021be5ff74a321b964da373ca8bd ****/
+		%feature("compactdefaultargs") Length;
+		%feature("autodoc", "Returns the power of length stored in the dimensions.
+
+Returns
+-------
+float
+") Length;
+		Standard_Real Length();
+
+		/****************** LuminousIntensity ******************/
+		/**** md5 signature: 64be7cc0b40448eb05c75dfc2d1eb250 ****/
+		%feature("compactdefaultargs") LuminousIntensity;
+		%feature("autodoc", "Returns the power of light intensity stored in the dimensions.
+
+Returns
+-------
+float
+") LuminousIntensity;
+		Standard_Real LuminousIntensity();
+
+		/****************** Mass ******************/
+		/**** md5 signature: 83051d7e192d0c36782eba6ee49a8a36 ****/
+		%feature("compactdefaultargs") Mass;
+		%feature("autodoc", "Returns the power of mass stored in the dimensions.
+
+Returns
+-------
+float
+") Mass;
+		Standard_Real Mass();
+
+		/****************** Multiply ******************/
+		/**** md5 signature: 7c9d6fc1a4c76cadbdec3e4e8472d1f2 ****/
+		%feature("compactdefaultargs") Multiply;
+		%feature("autodoc", "Creates and returns a new dimensions object which is the result of the multiplication of <self> and <adimensions>.
+
+Parameters
+----------
+adimensions: Units_Dimensions
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") Multiply;
+		opencascade::handle<Units_Dimensions> Multiply(const opencascade::handle<Units_Dimensions> & adimensions);
+
+		/****************** PlaneAngle ******************/
+		/**** md5 signature: f5635a277d24f5fc925f4ee6cbb3589c ****/
+		%feature("compactdefaultargs") PlaneAngle;
+		%feature("autodoc", "Returns the power of plane angle stored in the dimensions.
+
+Returns
+-------
+float
+") PlaneAngle;
+		Standard_Real PlaneAngle();
+
+		/****************** Power ******************/
+		/**** md5 signature: 75bc7c507c932efa8265856e7393e850 ****/
+		%feature("compactdefaultargs") Power;
+		%feature("autodoc", "Creates and returns a new dimensions object which is the result of the power of <self> and <anexponent>.
+
+Parameters
+----------
+anexponent: float
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") Power;
+		opencascade::handle<Units_Dimensions> Power(const Standard_Real anexponent);
+
+		/****************** Quantity ******************/
+		/**** md5 signature: c920b8781d89bd17c597f2f399eef4e9 ****/
+		%feature("compactdefaultargs") Quantity;
+		%feature("autodoc", "Returns the quantity string of the dimension.
+
+Returns
+-------
+char *
+") Quantity;
+		const char * Quantity();
+
+		/****************** SolidAngle ******************/
+		/**** md5 signature: 31e4e2ea379c30067ca33e39d0264cd8 ****/
+		%feature("compactdefaultargs") SolidAngle;
+		%feature("autodoc", "Returns the power of solid angle stored in the dimensions.
+
+Returns
+-------
+float
+") SolidAngle;
+		Standard_Real SolidAngle();
+
+		/****************** ThermodynamicTemperature ******************/
+		/**** md5 signature: c915fea640de78c930543465bdbfece8 ****/
+		%feature("compactdefaultargs") ThermodynamicTemperature;
+		%feature("autodoc", "Returns the power of temperature stored in the dimensions.
+
+Returns
+-------
+float
+") ThermodynamicTemperature;
+		Standard_Real ThermodynamicTemperature();
+
+		/****************** Time ******************/
+		/**** md5 signature: a359c7d15562aef65105797b80b4fd2d ****/
+		%feature("compactdefaultargs") Time;
+		%feature("autodoc", "Returns the power of time stored in the dimensions.
+
+Returns
+-------
+float
+") Time;
+		Standard_Real Time();
+
+};
+
+
+%make_alias(Units_Dimensions)
+
+%extend Units_Dimensions {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************
 * class Units_Explorer *
 ***********************/
@@ -982,6 +1330,100 @@ Units_Measurement
 /***********************
 * class Units_Quantity *
 ***********************/
+class Units_Quantity : public Standard_Transient {
+	public:
+		/****************** Units_Quantity ******************/
+		/**** md5 signature: 29dfd2c01261b16860d7422111c097c6 ****/
+		%feature("compactdefaultargs") Units_Quantity;
+		%feature("autodoc", "Creates a new quantity object with <aname> which is the name of the physical quantity, <adimensions> which is the physical dimensions, and <aunitssequence> which describes all the units known for this quantity.
+
+Parameters
+----------
+aname: char *
+adimensions: Units_Dimensions
+aunitssequence: Units_UnitsSequence
+
+Returns
+-------
+None
+") Units_Quantity;
+		 Units_Quantity(const char * aname, const opencascade::handle<Units_Dimensions> & adimensions, const opencascade::handle<Units_UnitsSequence> & aunitssequence);
+
+		/****************** Dimensions ******************/
+		/**** md5 signature: f6d82f417c034a7603f1ff62dccce1d1 ****/
+		%feature("compactdefaultargs") Dimensions;
+		%feature("autodoc", "Returns the physical dimensions of the quantity.
+
+Returns
+-------
+opencascade::handle<Units_Dimensions>
+") Dimensions;
+		opencascade::handle<Units_Dimensions> Dimensions();
+
+		/****************** Dump ******************/
+		/**** md5 signature: 34be4d9f12ae70558c563310451f527a ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Useful for debugging.
+
+Parameters
+----------
+ashift: int
+alevel: int
+
+Returns
+-------
+None
+") Dump;
+		void Dump(const Standard_Integer ashift, const Standard_Integer alevel);
+
+		/****************** IsEqual ******************/
+		/**** md5 signature: 4e07c23bce6b8d25cdaaf5ee04a419fb ****/
+		%feature("compactdefaultargs") IsEqual;
+		%feature("autodoc", "Returns true if the name of the quantity <self> is equal to <astring>, false otherwise.
+
+Parameters
+----------
+astring: char *
+
+Returns
+-------
+bool
+") IsEqual;
+		Standard_Boolean IsEqual(const char * astring);
+
+		/****************** Name ******************/
+		/**** md5 signature: 4ede994349b8ea032efece942c57861d ****/
+		%feature("compactdefaultargs") Name;
+		%feature("autodoc", "Returns in a asciistring from tcollection the name of the quantity.
+
+Returns
+-------
+TCollection_AsciiString
+") Name;
+		TCollection_AsciiString Name();
+
+		/****************** Sequence ******************/
+		/**** md5 signature: c3d2b803f44f670a6ddd44881910c01a ****/
+		%feature("compactdefaultargs") Sequence;
+		%feature("autodoc", "Returns <theunitssequence>, which is the sequence of all the units stored for this physical quantity.
+
+Returns
+-------
+opencascade::handle<Units_UnitsSequence>
+") Sequence;
+		opencascade::handle<Units_UnitsSequence> Sequence();
+
+};
+
+
+%make_alias(Units_Quantity)
+
+%extend Units_Quantity {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***********************
 * class Units_Sentence *
 ***********************/
@@ -2479,18 +2921,6 @@ None
 	}
 };
 
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class Units_Quantity:
-	pass
-
-@classnotwrapped
-class Units_Dimensions:
-	pass
-
-}
-/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

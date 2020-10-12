@@ -4507,6 +4507,53 @@ None
 /********************
 * class Prs3d_Point *
 ********************/
+class Prs3d_Point : private Prs3d_Root {
+	public:
+		/****************** Add ******************/
+		/**** md5 signature: f098a76bd5f794fe58bf9a789f260112 ****/
+		%feature("compactdefaultargs") Add;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePresentation: Handle ( Prs3d_Presentation )
+thePoint: AnyPoint
+theDrawer: Handle ( Prs3d_Drawer )
+
+Returns
+-------
+None
+") Add;
+		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const AnyPoint & thePoint, const Handle ( Prs3d_Drawer ) & theDrawer);
+
+		/****************** Match ******************/
+		/**** md5 signature: 0b99a7d2ff1fac1a4a91e5728b1339c9 ****/
+		%feature("compactdefaultargs") Match;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePoint: AnyPoint
+theX: float
+theY: float
+theZ: float
+theDistance: float
+
+Returns
+-------
+bool
+") Match;
+		static Standard_Boolean Match(const AnyPoint & thePoint, const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance);
+
+};
+
+
+%extend Prs3d_Point {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**************************
 * class Prs3d_PointAspect *
 **************************/
@@ -5475,18 +5522,6 @@ None
 	}
 };
 
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class Prs3d_WFShape:
-	pass
-
-@classnotwrapped
-class Prs3d_Point:
-	pass
-
-}
-/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

@@ -721,14 +721,6 @@ TColStd_PackedMapOfInteger
 	}
 };
 
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class TColStd_PackedMapOfInteger:
-	pass
-
-}
-/* end python proxy for excluded classes */
 /* harray1 classes */
 
 class TColStd_HArray1OfExtendedString : public TColStd_Array1OfExtendedString, public Standard_Transient {

@@ -3535,14 +3535,36 @@ float
 /***********************************
 * class BSplCLib_EvaluatorFunction *
 ***********************************/
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class BSplCLib_EvaluatorFunction:
-	pass
+%nodefaultctor BSplCLib_EvaluatorFunction;
+class BSplCLib_EvaluatorFunction {
+	public:
+		/****************** Evaluate ******************/
+		/**** md5 signature: 6d18f8c62d991decc4c1a3aca376d7bf ****/
+		%feature("compactdefaultargs") Evaluate;
+		%feature("autodoc", "Function evaluation method to be defined by descendant.
 
-}
-/* end python proxy for excluded classes */
+Parameters
+----------
+theDerivativeRequest: int
+theStartEnd: float *
+theParameter: float
+
+Returns
+-------
+theResult: float
+theErrorCode: int
+") Evaluate;
+		virtual void Evaluate(const Standard_Integer theDerivativeRequest, const Standard_Real * theStartEnd, const Standard_Real theParameter, Standard_Real &OutValue, Standard_Integer &OutValue);
+
+};
+
+
+%extend BSplCLib_EvaluatorFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
