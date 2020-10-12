@@ -1128,14 +1128,36 @@ bool
 /***********************************
 * class BSplSLib_EvaluatorFunction *
 ***********************************/
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class BSplSLib_EvaluatorFunction:
-	pass
+%nodefaultctor BSplSLib_EvaluatorFunction;
+class BSplSLib_EvaluatorFunction {
+	public:
+		/****************** Evaluate ******************/
+		/**** md5 signature: 1e372440244caef055e485ce59a6c276 ****/
+		%feature("compactdefaultargs") Evaluate;
+		%feature("autodoc", "Function evaluation method to be defined by descendant.
 
-}
-/* end python proxy for excluded classes */
+Parameters
+----------
+theDerivativeRequest: int
+theUParameter: float
+theVParameter: float
+
+Returns
+-------
+theResult: float
+theErrorCode: int
+") Evaluate;
+		virtual void Evaluate(const Standard_Integer theDerivativeRequest, const Standard_Real theUParameter, const Standard_Real theVParameter, Standard_Real &OutValue, Standard_Integer &OutValue);
+
+};
+
+
+%extend BSplSLib_EvaluatorFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
