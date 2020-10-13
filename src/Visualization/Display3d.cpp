@@ -129,12 +129,16 @@ Standard_Boolean Display3d::GetSize(int &size_x, int &size_y)
   return false;
 }
 
-Standard_Boolean Display3d::GetImageData(const char* &data, size_t &size, const Graphic3d_BufferType& theBufferType)
+Standard_Boolean Display3d::GetImageData(int width,
+                                         int height,
+                                         const char* &data,
+                                         size_t &size,
+                                         const Graphic3d_BufferType& theBufferType)
 {
   if(myIsOffscreen)
   {
     static Image_PixMap anImage;
-    if (myV3dView->ToPixMap (anImage, mySizeX, mySizeY, theBufferType))
+    if (myV3dView->ToPixMap (anImage, width, height, theBufferType))
     {
       data = (const char*)anImage.Data();
       size = anImage.SizeBytes();

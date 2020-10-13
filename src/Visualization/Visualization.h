@@ -75,7 +75,11 @@ public:
   Standard_EXPORT bool InitOffscreen(int size_x, int size_y);
   Standard_EXPORT bool SetSize(int size_x, int size_y);
   Standard_EXPORT bool GetSize(int &size_x, int &size_y);
-  Standard_EXPORT bool GetImageData(const char* &data, size_t &size, const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB);
+  Standard_EXPORT bool GetImageData(int width,
+                                    int height,
+                                    const char* &data,
+                                    size_t &size,
+                                    const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB);
 
 protected:
    Handle_AIS_InteractiveContext myAISContext;
