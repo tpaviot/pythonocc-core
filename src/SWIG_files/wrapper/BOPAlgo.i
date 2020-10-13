@@ -1016,23 +1016,6 @@ None
 ") PerformCommonBlocks;
 		static void PerformCommonBlocks(const BOPDS_IndexedDataMapOfPaveBlockListOfInteger & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & pDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
-		/****************** TreatCompound ******************/
-		/**** md5 signature: b1cc9e0d4e7a7bd0544b9bc0f8d37159 ****/
-		%feature("compactdefaultargs") TreatCompound;
-		%feature("autodoc", "Collect in the output list recursively all non-compound subshapes of the first level of the given shape thes. if a shape presents in the map themfence it is skipped. all shapes put in the output are also added into themfence.
-
-Parameters
-----------
-theS: TopoDS_Shape
-theMFence: TopTools_MapOfShape
-theLS: TopTools_ListOfShape
-
-Returns
--------
-None
-") TreatCompound;
-		static void TreatCompound(const TopoDS_Shape & theS, TopTools_MapOfShape & theMFence, TopTools_ListOfShape & theLS);
-
 		/****************** WiresToFaces ******************/
 		/**** md5 signature: 16dc9996c77bddaa892446101a7cb4b5 ****/
 		%feature("compactdefaultargs") WiresToFaces;
@@ -1064,6 +1047,10 @@ bool
 
 	@methodnotwrapped
 	def FillMap(self):
+		pass
+
+	@methodnotwrapped
+	def TreatCompound(self):
 		pass
 	}
 };
