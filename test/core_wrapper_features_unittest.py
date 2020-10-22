@@ -19,6 +19,7 @@
 
 from contextlib import contextmanager
 import glob
+import json
 from math import sqrt
 import importlib
 import os
@@ -83,7 +84,7 @@ def assert_warns_deprecated() -> Iterator[Any]:
         # Verify some things
         if not issubclass(w[-1].category, DeprecationWarning):
             raise AssertionError("Wrong exception type")
-        if not "deprecated" in str(w[-1].message):
+        if "deprecated" not in str(w[-1].message):
             raise AssertionError("deprecated string not in message")
 
 
@@ -191,7 +192,7 @@ class TestWrapperFeatures(unittest.TestCase):
         # adding two gp_Vec
         v5 = gp_Vec(1, 2, 3) + gp_Vec(4, 5, 6)
         self.assertEqual((v5.X(), v5.Y(), v5.Z()), (5, 7, 9))
-        # substracting two gp_Vec
+        # subtracting two gp_Vec
         v6 = gp_Vec(1, 2, 3) - gp_Vec(6, 5, 4)
         self.assertEqual((v6.X(), v6.Y(), v6.Z()), (-5, -3, -1))
 
@@ -305,9 +306,8 @@ class TestWrapperFeatures(unittest.TestCase):
         Standard_Real by reference. Ref github Issue #710
         '''
         # create a 2*2 matrix
-        #    | -1.    -2. |
-        #m = |  4.    5.5 |
-        
+        #     | -1.    -2. |
+        # m = |  4.    5.5 |
         # lower indices are 0, to comply with python list indexing
         mat = math_Matrix(0, 1, 0, 1)
         mat.SetValue(0, 0, -1)
@@ -370,13 +370,13 @@ class TestWrapperFeatures(unittest.TestCase):
         # file to dump to/from
         filename = os.path.join('.', 'test_io', 'box_shape_generated.brep')
         # write to file
-        with open(filename, "wb") as output: 
+        with open(filename, "wb") as output:
             output.write(shp_dump)
         self.assertTrue(os.path.isfile(filename))
         # load from file
         with open(filename, "rb") as dump_from_file:
             pickled_shape = pickle.load(dump_from_file)
-        self.assertFalse(pickled_shape.IsNull())       
+        self.assertFalse(pickled_shape.IsNull())
 
     def test_sub_class(self) -> None:
         """ Test: subclass """
@@ -469,7 +469,7 @@ class TestWrapperFeatures(unittest.TestCase):
         t = self
         class InheritEdge(TopoDS_Edge):
             def __init__(self, edge: TopoDS_Edge) -> None:
-                # following constructor creates an empy TopoDS_Edge
+                # following constructor creates an empty TopoDS_Edge
                 super(InheritEdge, self).__init__()
                 # we need to copy the base shape using the following three
                 # lines
@@ -489,7 +489,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual(length, 50.)
 
     def test_default_constructor_DEFINE_STANDARD_ALLOC(self) -> None:
-        ''' OCE classes the defines standard alllocator can be instanciated
+        ''' OCE classes the defines standard alllocator can be instantiated
         if they're not abstract nor define any protected or private
         constructor '''
         b = BRep_Builder()
@@ -500,7 +500,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertIsInstance(s, ShapeAnalysis_Curve)
 
     def test_handling_exceptions(self) -> None:
-        """ asserts that handling of OCC exceptions is handled correctly catched
+        """ asserts that handling of OCC exceptions is handled correctly caught
         see issue #259 -- Standard errors like Standard_OutOfRange not caught
         """
         # Standard_OutOfRange
@@ -511,7 +511,7 @@ class TestWrapperFeatures(unittest.TestCase):
             BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, 0), gp_Pnt(0, 0, 0)).Edge()
         # Standard_DomainError
         with self.assertRaises(RuntimeError):
-            BRepPrimAPI_MakeBox(0, 0, 0)
+            BRepPrimAPI_MakeBox(0, 0, 0).Shape()
         # Standard_OutOfRange, related to specific issue in #778
         # Note: the exception is raised if and only if OCCT is compiled
         # using -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF
@@ -571,7 +571,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertTrue(bspline is None)
 
     def test_return_enum(self) -> None:
-        """ Check that returned enums are properly handled, wether they're returned
+        """ Check that returned enums are properly handled, whether they're returned
         by reference or not. To check that point, we use the BRepCheck_ListOfStatus class,
         where methods take and return BRepCheck_Status values
         """
@@ -703,7 +703,7 @@ class TestWrapperFeatures(unittest.TestCase):
         """ Since opencascade 7x, some objects can be serialized to json
         """
         # create a sphere with a radius of 10.
-        sph= BRepPrimAPI_MakeSphere(10.).Shape()
+        sph = BRepPrimAPI_MakeSphere(10.).Shape()
         # compute the Bnd box for this sphere
         bnd_box = Bnd_Box()
         brepbndlib_Add(sph, bnd_box)
@@ -711,14 +711,15 @@ class TestWrapperFeatures(unittest.TestCase):
         corner_min = bnd_box.CornerMin()
         self.assertEqual([round(corner_min.X(), 3), round(corner_min.Y(), 3), round(corner_min.Z(), 3)],
                          [-10., -10., -10.])
-        # check dump json is working
+        # check dump json export is working
         json_string = bnd_box.DumpJsonToString()
-        expected_output = '"Bnd_Box": {"CornerMin": [-10, -10, -10], "CornerMax": [10, 10, 10], "Gap": 1e-07, "Flags": 0}'
-        self.assertEqual(json_string, expected_output)
+        # try to load the output string
+        json_imported_dict = json.loads("{" + json_string + "}")
+        self.assertTrue(len(json_imported_dict) > 0)  # at least one entry
 
     def test_harray1_harray2_hsequence(self) -> None:
         """ Check that special wrappers for harray1, harray2 and hsequence.
-        Only check that related classes can be instanciated.
+        Only check that related classes can be instantiated.
         """
         TopTools_HArray1OfShape(0, 3)
         TopTools_HArray2OfShape(0, 3, 0, 3)
@@ -797,7 +798,7 @@ class TestWrapperFeatures(unittest.TestCase):
         a.meth1()
         with self.assertRaises(MethodNotWrappedError):
             a.meth2()
-        # test iwth OCC
+        # test with OCC
         m = AIS_Manipulator()
         with self.assertRaises(MethodNotWrappedError):
             m.TransformBehavior()
@@ -809,9 +810,9 @@ class TestWrapperFeatures(unittest.TestCase):
         pythonocc_core_path = OCC.Core.__path__[0]
         available_core_modules = glob.glob(os.path.join(pythonocc_core_path, "*.py"))
         nb_available_modules = len(available_core_modules)
-        #self.assertEqual(nb_available_modules, 412)
+        self.assertEqual(nb_available_modules, 302)
+
         # try to import the module
-        #mod = importlib.import_module('vfs_tests')
         for core_module in available_core_modules:
             module_name = os.path.basename(core_module).split('.')[0]
             importlib.import_module('OCC.Core.%s' % module_name)
