@@ -213,9 +213,9 @@ opencascade::handle<VrmlData_Node>
 
 Returns
 -------
-inline int
+int
 ") GlobalIndent;
-		static inline Standard_Integer GlobalIndent();
+		static Standard_Integer GlobalIndent();
 
 		/****************** IsDefault ******************/
 		/**** md5 signature: 1b7a136faa0c8ac407d7529214546ac4 ****/
@@ -250,9 +250,9 @@ theStat: VrmlData_ErrorStatus
 
 Returns
 -------
-inline bool
+bool
 ") OK;
-		static inline Standard_Boolean OK(const VrmlData_ErrorStatus theStat);
+		static Standard_Boolean OK(const VrmlData_ErrorStatus theStat);
 
 		/****************** OK ******************/
 		/**** md5 signature: 78490ef035e0d10fa78bb02187dae4ae ****/
@@ -266,9 +266,9 @@ theStat: VrmlData_ErrorStatus
 
 Returns
 -------
-inline bool
+bool
 ") OK;
-		static inline Standard_Boolean OK(VrmlData_ErrorStatus & outStat, const VrmlData_ErrorStatus theStat);
+		static Standard_Boolean OK(VrmlData_ErrorStatus & outStat, const VrmlData_ErrorStatus theStat);
 
 		/****************** Read ******************/
 		/**** md5 signature: 1ad536bb6f0a141f658023ed487ae5c4 ****/

@@ -68,6 +68,13 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_meshvs.html"
 #include<Prs3d_module.hxx>
 #include<StdSelect_module.hxx>
 #include<Media_module.hxx>
+#include<BRep_module.hxx>
+#include<Geom2d_module.hxx>
+#include<StdPrs_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<Adaptor3d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

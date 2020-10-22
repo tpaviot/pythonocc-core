@@ -538,76 +538,6 @@ None
 /******************************
 * class CDF_DirectoryIterator *
 ******************************/
-class CDF_DirectoryIterator {
-	public:
-		/****************** CDF_DirectoryIterator ******************/
-		/**** md5 signature: 316f0bdfc834bb5a8b63eb124c157da2 ****/
-		%feature("compactdefaultargs") CDF_DirectoryIterator;
-		%feature("autodoc", "Creates an iterator with the directory of the current cdf.
-
-Returns
--------
-None
-") CDF_DirectoryIterator;
-		 CDF_DirectoryIterator();
-
-		/****************** CDF_DirectoryIterator ******************/
-		/**** md5 signature: f24bc6c0ddf288238dbdc502366201c4 ****/
-		%feature("compactdefaultargs") CDF_DirectoryIterator;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-aDirectory: CDF_Directory
-
-Returns
--------
-None
-") CDF_DirectoryIterator;
-		 CDF_DirectoryIterator(const opencascade::handle<CDF_Directory> & aDirectory);
-
-		/****************** Document ******************/
-		/**** md5 signature: 55ff6bd0395bbe9a88684a923d438ce4 ****/
-		%feature("compactdefaultargs") Document;
-		%feature("autodoc", "Returns item value of current entry.
-
-Returns
--------
-opencascade::handle<CDM_Document>
-") Document;
-		opencascade::handle<CDM_Document> Document();
-
-		/****************** MoreDocument ******************/
-		/**** md5 signature: 730aecc2f48742774c05452aae894266 ****/
-		%feature("compactdefaultargs") MoreDocument;
-		%feature("autodoc", "Returns true if there are more entries to return.
-
-Returns
--------
-bool
-") MoreDocument;
-		Standard_Boolean MoreDocument();
-
-		/****************** NextDocument ******************/
-		/**** md5 signature: 461652bdaf60c070a13d655488b9747f ****/
-		%feature("compactdefaultargs") NextDocument;
-		%feature("autodoc", "Go to the next entry (if there is not, value will raise an exception).
-
-Returns
--------
-None
-") NextDocument;
-		void NextDocument();
-
-};
-
-
-%extend CDF_DirectoryIterator {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /***************************
 * class CDF_MetaDataDriver *
 ***************************/
@@ -1659,6 +1589,14 @@ TCollection_ExtendedString
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class CDF_DirectoryIterator:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

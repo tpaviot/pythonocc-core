@@ -583,6 +583,9 @@ class TDF_DefaultDeltaOnRemoval(TDF_DeltaOnRemoval):
 #classnotwrapped
 class TDF_LabelNode: ...
 
+#classnotwrapped
+class TDF_DerivedAttribute: ...
+
 # harray1 classes
 
 class TDF_HAttributeArray1(TDF_AttributeArray1, Standard_Transient):

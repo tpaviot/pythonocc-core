@@ -1360,9 +1360,6 @@ Graphic3d_NOT_ENV_UNKNOWN = Graphic3d_NameOfTextureEnv.Graphic3d_NOT_ENV_UNKNOWN
     __next__ = next
     }
 };
-%template(Graphic3d_BndBox3d) BVH_Box<Standard_Real,3>;
-%template(Graphic3d_BndBox4d) BVH_Box<Standard_Real,4>;
-%template(Graphic3d_BndBox4f) BVH_Box<Standard_ShortReal,4>;
 %template(Graphic3d_CameraLerp) NCollection_Lerp<opencascade::handle<Graphic3d_Camera>>;
 %template(Graphic3d_IndexedMapOfStructure) NCollection_IndexedMap<const Graphic3d_CStructure *>;
 %template(Graphic3d_IndexedMapOfView) NCollection_IndexedMap<Graphic3d_CView*>;

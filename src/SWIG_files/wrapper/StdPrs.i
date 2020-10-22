@@ -72,6 +72,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stdprs.html"
 #include<SelectMgr_module.hxx>
 #include<Select3D_module.hxx>
 #include<Media_module.hxx>
+#include<Prs3d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -128,8 +129,6 @@ StdPrs_Volume_Opened = StdPrs_Volume.StdPrs_Volume_Opened
 /* end handles declaration */
 
 /* templates */
-%template(StdPrs_Point) Prs3d_Point<opencascade::handle<Geom_Point>,StdPrs_ToolPoint>;
-%template(StdPrs_Vertex) Prs3d_Point<TopoDS_Vertex,StdPrs_ToolVertex>;
 /* end templates declaration */
 
 /* typedefs */
@@ -682,7 +681,7 @@ theDeflection: float
 
 Returns
 -------
-void
+None
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection);
 

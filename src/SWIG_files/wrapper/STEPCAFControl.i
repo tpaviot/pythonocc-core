@@ -81,6 +81,10 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepcafcontrol.ht
 #include<StepRepr_module.hxx>
 #include<TDataStd_module.hxx>
 #include<MoniTool_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<Bnd_module.hxx>
+#include<Aspect_module.hxx>
+#include<Media_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

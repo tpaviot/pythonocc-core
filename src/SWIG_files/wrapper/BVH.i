@@ -55,7 +55,6 @@ from OCC.Core.Exception import *
 };
 
 
-%include "BVH_Box.hxx";
 %include "BVH_PrimitiveSet.hxx";
 /* public enums */
 enum  {

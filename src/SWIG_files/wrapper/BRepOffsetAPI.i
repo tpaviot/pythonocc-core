@@ -94,6 +94,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffsetapi.htm
 #include<Adaptor2d_module.hxx>
 #include<Geom_module.hxx>
 #include<BRepAlgo_module.hxx>
+#include<ChFiDS_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

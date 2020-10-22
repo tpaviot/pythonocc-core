@@ -4194,6 +4194,10 @@ None
 class TDF_LabelNode:
 	pass
 
+@classnotwrapped
+class TDF_DerivedAttribute:
+	pass
+
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */

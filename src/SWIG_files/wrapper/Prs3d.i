@@ -49,10 +49,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prs3d.html"
 #include<GeomAbs_module.hxx>
 #include<Aspect_module.hxx>
 #include<HLRAlgo_module.hxx>
-#include<TopLoc_module.hxx>
 #include<Poly_module.hxx>
-#include<Bnd_module.hxx>
-#include<TopTools_module.hxx>
 #include<Quantity_module.hxx>
 #include<TColStd_module.hxx>
 #include<TShort_module.hxx>
@@ -64,6 +61,17 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prs3d.html"
 #include<SelectMgr_module.hxx>
 #include<Select3D_module.hxx>
 #include<Media_module.hxx>
+#include<BRep_module.hxx>
+#include<Geom2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
+#include<Adaptor2d_module.hxx>
+#include<BRepAdaptor_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<StdSelect_module.hxx>
+#include<TopTools_module.hxx>
+#include<TopoDS_module.hxx>
+#include<HLRAlgo_module.hxx>
+#include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -79,10 +87,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prs3d.html"
 %import GeomAbs.i
 %import Aspect.i
 %import HLRAlgo.i
-%import TopLoc.i
 %import Poly.i
-%import Bnd.i
-%import TopTools.i
 %import Quantity.i
 %import TColStd.i
 
@@ -2615,305 +2620,6 @@ opencascade::handle<Graphic3d_Group>
 /************************
 * class Prs3d_ShapeTool *
 ************************/
-class Prs3d_ShapeTool {
-	public:
-		/****************** Prs3d_ShapeTool ******************/
-		/**** md5 signature: afd79355ebb317b6553c73ca3bd75a60 ****/
-		%feature("compactdefaultargs") Prs3d_ShapeTool;
-		%feature("autodoc", "Constructs the tool and initializes it using theshape and theallvertices (optional) arguments. by default, only isolated and internal vertices are considered, however if theallvertices argument is equal to true, all shape's vertices are taken into account.
-
-Parameters
-----------
-theShape: TopoDS_Shape
-theAllVertices: bool,optional
-	default value is Standard_False
-
-Returns
--------
-None
-") Prs3d_ShapeTool;
-		 Prs3d_ShapeTool(const TopoDS_Shape & theShape, const Standard_Boolean theAllVertices = Standard_False);
-
-		/****************** CurrentTriangulation ******************/
-		/**** md5 signature: e174edc94303c301ad3d548683d6e8cf ****/
-		%feature("compactdefaultargs") CurrentTriangulation;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-l: TopLoc_Location
-
-Returns
--------
-opencascade::handle<Poly_Triangulation>
-") CurrentTriangulation;
-		opencascade::handle<Poly_Triangulation> CurrentTriangulation(TopLoc_Location & l);
-
-		/****************** CurveBound ******************/
-		/**** md5 signature: 26827d6be3ffbbdaf33493171ed02d7d ****/
-		%feature("compactdefaultargs") CurveBound;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-Bnd_Box
-") CurveBound;
-		Bnd_Box CurveBound();
-
-		/****************** FaceBound ******************/
-		/**** md5 signature: f856e3a5aaaa04bd47251b5baf43000b ****/
-		%feature("compactdefaultargs") FaceBound;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-Bnd_Box
-") FaceBound;
-		Bnd_Box FaceBound();
-
-		/****************** FacesOfEdge ******************/
-		/**** md5 signature: 89082386bc651a78938e536e5113de7e ****/
-		%feature("compactdefaultargs") FacesOfEdge;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-opencascade::handle<TopTools_HSequenceOfShape>
-") FacesOfEdge;
-		opencascade::handle<TopTools_HSequenceOfShape> FacesOfEdge();
-
-		/****************** GetCurve ******************/
-		/**** md5 signature: c1c7d959d4b8cb32d8a52f70e0dc8f6f ****/
-		%feature("compactdefaultargs") GetCurve;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TopoDS_Edge
-") GetCurve;
-		const TopoDS_Edge GetCurve();
-
-		/****************** GetFace ******************/
-		/**** md5 signature: 24f8605987955c9a8fdd14219215e9a9 ****/
-		%feature("compactdefaultargs") GetFace;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TopoDS_Face
-") GetFace;
-		const TopoDS_Face GetFace();
-
-		/****************** GetVertex ******************/
-		/**** md5 signature: 3209509153a1292eb231ab12724fd9a6 ****/
-		%feature("compactdefaultargs") GetVertex;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-TopoDS_Vertex
-") GetVertex;
-		const TopoDS_Vertex GetVertex();
-
-		/****************** HasCurve ******************/
-		/**** md5 signature: 24512d68611f1b569c1022347b56d2ba ****/
-		%feature("compactdefaultargs") HasCurve;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") HasCurve;
-		Standard_Boolean HasCurve();
-
-		/****************** HasSurface ******************/
-		/**** md5 signature: e1636f96e3c29ca0e588fc628f12d790 ****/
-		%feature("compactdefaultargs") HasSurface;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") HasSurface;
-		Standard_Boolean HasSurface();
-
-		/****************** InitCurve ******************/
-		/**** md5 signature: 6dc0273d45605584199fda6adfd790b6 ****/
-		%feature("compactdefaultargs") InitCurve;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") InitCurve;
-		void InitCurve();
-
-		/****************** InitFace ******************/
-		/**** md5 signature: 0e969d0225b2576ac55e2fb0e7a91460 ****/
-		%feature("compactdefaultargs") InitFace;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") InitFace;
-		void InitFace();
-
-		/****************** InitVertex ******************/
-		/**** md5 signature: 12fa7b14d7e7f4c6f0e753d97f3e91ab ****/
-		%feature("compactdefaultargs") InitVertex;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") InitVertex;
-		void InitVertex();
-
-		/****************** IsPlanarFace ******************/
-		/**** md5 signature: 6b8c88789eed31202251b15ca3358b7f ****/
-		%feature("compactdefaultargs") IsPlanarFace;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") IsPlanarFace;
-		Standard_Boolean IsPlanarFace();
-
-		/****************** IsPlanarFace ******************/
-		/**** md5 signature: dbd07f0e3771524116dd33a19d098b26 ****/
-		%feature("compactdefaultargs") IsPlanarFace;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-theFace: TopoDS_Face
-
-Returns
--------
-bool
-") IsPlanarFace;
-		static Standard_Boolean IsPlanarFace(const TopoDS_Face & theFace);
-
-		/****************** MoreCurve ******************/
-		/**** md5 signature: 2ff43f9bf67be51929802d92d92ea8d6 ****/
-		%feature("compactdefaultargs") MoreCurve;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") MoreCurve;
-		Standard_Boolean MoreCurve();
-
-		/****************** MoreFace ******************/
-		/**** md5 signature: 9ce280b3ff0f94e82bd4ccb635ad91a7 ****/
-		%feature("compactdefaultargs") MoreFace;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") MoreFace;
-		Standard_Boolean MoreFace();
-
-		/****************** MoreVertex ******************/
-		/**** md5 signature: a83eb0d708855c09e405b7e894d8577e ****/
-		%feature("compactdefaultargs") MoreVertex;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-bool
-") MoreVertex;
-		Standard_Boolean MoreVertex();
-
-		/****************** Neighbours ******************/
-		/**** md5 signature: f7632ca6a981fecfee9d23781ab8df33 ****/
-		%feature("compactdefaultargs") Neighbours;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-int
-") Neighbours;
-		Standard_Integer Neighbours();
-
-		/****************** NextCurve ******************/
-		/**** md5 signature: 266773bb8c14bae6ac7e8e0825edd866 ****/
-		%feature("compactdefaultargs") NextCurve;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") NextCurve;
-		void NextCurve();
-
-		/****************** NextFace ******************/
-		/**** md5 signature: 33ae62d7d15ec80966f0219be1a267db ****/
-		%feature("compactdefaultargs") NextFace;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") NextFace;
-		void NextFace();
-
-		/****************** NextVertex ******************/
-		/**** md5 signature: c800122ce4f2c3bd5f52dba7f14e300c ****/
-		%feature("compactdefaultargs") NextVertex;
-		%feature("autodoc", "No available documentation.
-
-Returns
--------
-None
-") NextVertex;
-		void NextVertex();
-
-		/****************** Polygon3D ******************/
-		/**** md5 signature: 3b403e8330a44f3bb52392ce5d5be05c ****/
-		%feature("compactdefaultargs") Polygon3D;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-l: TopLoc_Location
-
-Returns
--------
-opencascade::handle<Poly_Polygon3D>
-") Polygon3D;
-		opencascade::handle<Poly_Polygon3D> Polygon3D(TopLoc_Location & l);
-
-		/****************** PolygonOnTriangulation ******************/
-		/**** md5 signature: 86ca6ba9c814d8c843f2ef01be368f3b ****/
-		%feature("compactdefaultargs") PolygonOnTriangulation;
-		%feature("autodoc", "No available documentation.
-
-Parameters
-----------
-Indices: Poly_PolygonOnTriangulation
-T: Poly_Triangulation
-l: TopLoc_Location
-
-Returns
--------
-None
-") PolygonOnTriangulation;
-		void PolygonOnTriangulation(opencascade::handle<Poly_PolygonOnTriangulation> & Indices, opencascade::handle<Poly_Triangulation> & T, TopLoc_Location & l);
-
-};
-
-
-%extend Prs3d_ShapeTool {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /**************************
 * class Prs3d_ToolQuadric *
 **************************/
@@ -5522,6 +5228,14 @@ None
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class Prs3d_ShapeTool:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
