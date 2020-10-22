@@ -3,7 +3,7 @@ Version 7.4.0 - February2020
 
 This release requires opencascade 7.4.0
 
-* jupyter : improved webgl display, added utility fonctions (abb, oobb, mass computation etc.), fixed edges display wrong line type (dash)
+* jupyter : improved webgl display, added utility functions (abb, oobb, mass computation etc.), fixed edges display wrong line type (dash)
 
 * display : added PySide2 to the backend list
 
@@ -32,7 +32,7 @@ This release requires opencascade 7.4.0
 
 * wrapper : added GetLabelName method to TDF_Label class to fix step part names
 
-* display : tesselator computes mesh if not already done
+* display : tessellator computes mesh if not already done
 
 * webgl : html and js fixes in x3dom and threejs renderers, simple_server uses flask if available
 
@@ -101,7 +101,7 @@ each example, in rst format
 
 * gui : fix SimpleGui position at startup, wx fixes
 
-* ci/cd : upload each successfull travis or appveyor built to anaconda cloud,
+* ci/cd : upload each successful travis or appveyor built to anaconda cloud,
 tagged using the branch name
 
 ==========================
@@ -239,7 +239,7 @@ parallel_slicer, topology_glue
 
 * PyQt5 support
 
-* Improvements and fixes to the Tesselator class:
+* Improvements and fixes to the Tessellator class:
 Computation of edges, Interface to Vertices, Normals, and Triangles
 
 * minor portability fixes/improvements.
@@ -295,7 +295,7 @@ This release requires oce-0.16.0
 
 * added x3dom renderer and x3d export feature
 
-* improved project quality (travis-ci, pylint check, pep8 compliancy,
+* improved project quality (travis-ci, pylint check, pep8 compliance,
   removed old and/or untested code)
 
 * sphinx based documentation, both for api documentation and getting started

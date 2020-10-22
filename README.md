@@ -1,4 +1,4 @@
-[![Azure Build Status](https://dev.azure.com/tpaviot/pythonocc-core/_apis/build/status/tpaviot.pythonocc-core?branchName=master)](https://dev.azure.com/tpaviot/pythonocc-core/_build/latest?definitionId=1?branchName=master)
+[![Azure Build Status](https://dev.azure.com/tpaviot/pythonocc-core/_apis/build/status/tpaviot.pythonocc-core?branchName=master)](https://dev.azure.com/tpaviot/pythonocc-core/_build?definitionId=2)
 [![Conda installer](https://anaconda.org/pythonocc/pythonocc-core/badges/installer/conda.svg)](https://anaconda.org/pythonocc/pythonocc-core)
 [![Downloads Badge](https://anaconda.org/pythonocc/pythonocc-core/badges/downloads.svg)](https://anaconda.org/pythonocc/pythonocc-core)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tpaviot/pythonocc-core.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tpaviot/pythonocc-core/context:python)
@@ -29,7 +29,7 @@ pythonocc provides the following features:
 
 *   3D visualization and work within a jupyter notebook
 
-*   Various utility Python classes/methods for DataExchange, Topology operations, intertia computations etc.
+*   Various utility Python classes/methods for DataExchange, Topology operations, inertia computations etc.
 
 Try online at mybinder
 ----------------------
