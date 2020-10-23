@@ -8352,6 +8352,18 @@ TCollection_AsciiString
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class TDataStd_GenericEmpty:
+	pass
+
+@classnotwrapped
+class TDataStd_GenericExtString:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 
 class TDataStd_HLabelArray1 : public TDataStd_LabelArray1, public Standard_Transient {

@@ -591,6 +591,30 @@ TCollection_AsciiString
 %extend Message {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Send(self):
+		pass
+
+	@methodnotwrapped
+	def SendAlarm(self):
+		pass
+
+	@methodnotwrapped
+	def SendInfo(self):
+		pass
+
+	@methodnotwrapped
+	def SendTrace(self):
+		pass
+
+	@methodnotwrapped
+	def SendWarning(self):
+		pass
+
+	@methodnotwrapped
+	def SendFail(self):
+		pass
 	}
 };
 
@@ -1441,63 +1465,6 @@ int
 ") RemovePrinters;
 		Standard_Integer RemovePrinters(const opencascade::handle<Standard_Type> & theType);
 
-		/****************** Send ******************/
-		/**** md5 signature: 5d474490ec8d1918454b38990984b81b ****/
-		%feature("compactdefaultargs") Send;
-		%feature("autodoc", "Dispatch a message to all the printers in the list. three versions of string representations are accepted for convenience, by default all are converted to extendedstring. the parameter putendl specifies whether the new line should be started after this message (default) or not (may have sense in some conditions).
-
-Parameters
-----------
-theString: char *
-theGravity: Message_Gravity,optional
-	default value is Message_Warning
-putEndl: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") Send;
-		void Send(const char * theString, const Message_Gravity theGravity = Message_Warning, const Standard_Boolean putEndl = Standard_True);
-
-		/****************** Send ******************/
-		/**** md5 signature: 453a431a3bffd08469ed3f7e44063ee1 ****/
-		%feature("compactdefaultargs") Send;
-		%feature("autodoc", "See above.
-
-Parameters
-----------
-theString: TCollection_AsciiString
-theGravity: Message_Gravity,optional
-	default value is Message_Warning
-putEndl: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") Send;
-		void Send(const TCollection_AsciiString & theString, const Message_Gravity theGravity = Message_Warning, const Standard_Boolean putEndl = Standard_True);
-
-		/****************** Send ******************/
-		/**** md5 signature: c8a803f815610044c12fb7fc877cfa0a ****/
-		%feature("compactdefaultargs") Send;
-		%feature("autodoc", "See above.
-
-Parameters
-----------
-theString: TCollection_ExtendedString
-theGravity: Message_Gravity,optional
-	default value is Message_Warning
-putEndl: bool,optional
-	default value is Standard_True
-
-Returns
--------
-None
-") Send;
-		void Send(const TCollection_ExtendedString & theString, const Message_Gravity theGravity = Message_Warning, const Standard_Boolean putEndl = Standard_True);
-
 };
 
 
@@ -1506,6 +1473,30 @@ None
 %extend Message_Messenger {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Send(self):
+		pass
+
+	@methodnotwrapped
+	def SendAlarm(self):
+		pass
+
+	@methodnotwrapped
+	def SendInfo(self):
+		pass
+
+	@methodnotwrapped
+	def SendTrace(self):
+		pass
+
+	@methodnotwrapped
+	def SendWarning(self):
+		pass
+
+	@methodnotwrapped
+	def SendFail(self):
+		pass
 	}
 };
 
@@ -3146,6 +3137,14 @@ None
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class Message_ProgressScope:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

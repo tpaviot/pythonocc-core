@@ -684,6 +684,9 @@ class Aspect_NeutralWindow: ...
 #classnotwrapped
 class Aspect_RectangularGrid: ...
 
+#classnotwrapped
+class Aspect_FrustumLRBT: ...
+
 # harray1 classes
 # harray2 classes
 # hsequence classes

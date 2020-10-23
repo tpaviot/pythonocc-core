@@ -879,6 +879,12 @@ class TDataStd_Variable(TDF_Attribute):
 	@overload
 	def Unit(self) -> TCollection_AsciiString: ...
 
+#classnotwrapped
+class TDataStd_GenericEmpty: ...
+
+#classnotwrapped
+class TDataStd_GenericExtString: ...
+
 # harray1 classes
 
 class TDataStd_HLabelArray1(TDataStd_LabelArray1, Standard_Transient):

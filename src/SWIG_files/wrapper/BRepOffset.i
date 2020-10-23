@@ -89,6 +89,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepoffset.html"
 #include<Geom2dAdaptor_module.hxx>
 #include<BRepBuilderAPI_module.hxx>
 #include<Adaptor2d_module.hxx>
+#include<Law_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

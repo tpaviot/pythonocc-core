@@ -195,7 +195,7 @@ endif(MINGW)
 # MACOSX_DEPLOYEMENT_TARGET
 # explicit link to libc++ for recent osx versions
 if(APPLE)
-  message(STATUS "Explicitely link to libc++ on modern osx versions")
+  message(STATUS "Explicitly link to libc++ on modern osx versions")
   add_definitions(-stdlib=libc++)
 endif(APPLE)
 
@@ -256,9 +256,9 @@ foreach(OCE_MODULE ${OCE_TOOLKIT_MODEL})
     swig_link_libraries(${OCE_MODULE} ${OCE_MODEL_LIBRARIES} Python3::Module)
 endforeach(OCE_MODULE)
 
-##############
-# Tesselator #
-##############
+###############
+# Tessellator #
+###############
 execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Tesselator)
 set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/Tesselator.i PROPERTIES CPLUSPLUS ON)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator)

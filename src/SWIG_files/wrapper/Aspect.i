@@ -43,6 +43,8 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_aspect.html"
 #include<NCollection_module.hxx>
 #include<Quantity_module.hxx>
 #include<TCollection_module.hxx>
+#include<Bnd_module.hxx>
+#include<Media_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -2064,6 +2066,10 @@ class Aspect_NeutralWindow:
 
 @classnotwrapped
 class Aspect_RectangularGrid:
+	pass
+
+@classnotwrapped
+class Aspect_FrustumLRBT:
 	pass
 
 }
