@@ -1,34 +1,62 @@
-# https://stackoverflow.com/questions/18860816/technique-for-using-stdifstream-stdofstream-in-python-via-swig
+/*
 
-%fragment("iostream_header", "header") %{
-#include <stdio.h>
-#include <memory.h>
-#include <boost/iostreams/stream.hpp>
-#include <boost/iostreams/device/file_descriptor.hpp>
-using boost_ofd_stream = boost::iostreams::stream<boost::iostreams::file_descriptor_sink>;
-using boost_ifd_stream = boost::iostreams::stream<boost::iostreams::file_descriptor_source>;
-%}  
+Copyright 2020 Thomas Paviot (tpaviot@gmail.com)
 
-%typemap(in, fragment="iostream_header") std::ostream& (std::unique_ptr<boost_ofd_stream> stream) {
-    PyObject *flush_result = PyObject_CallMethod($input, const_cast<char*>("flush"), nullptr);
-    if (flush_result) Py_DECREF(flush_result);
-%#if PY_VERSION_HEX < 0x03000000
-    int fd = fileno(PyFile_AsFile($input));
-%#else
-    int fd = PyObject_AsFileDescriptor($input);
-%#endif
-    if (fd < 0) { SWIG_Error(SWIG_TypeError, "File object expected."); SWIG_fail; }
-    stream = std::make_unique<boost_ofd_stream>(fd, boost::iostreams::never_close_handle);
-    $1 = stream.get();
-}   
+This file is part of pythonOCC.
 
-%typemap(in, fragment="iostream_header") std::istream& (std::unique_ptr<boost_ifd_stream> stream) {
-%#if PY_VERSION_HEX < 0x03000000
-    int fd = fileno(PyFile_AsFile($input));
-%#else
-    int fd = PyObject_AsFileDescriptor($input);
-%#endif
-    if (fd < 0) { SWIG_Error(SWIG_TypeError, "File object expected.");  SWIG_fail; }
-    stream = std::make_unique<boost_ifd_stream>(fd, boost::iostreams::never_close_handle);
-    $1 = stream.get();
-}   
+pythonOCC is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+pythonOCC is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+%include <python/std_iostream.i>
+%include <python/std_string.i>
+
+/*
+Standard_OStream & function transformation
+The float number is returned in the output tuple
+*/
+%typemap(argout) Standard_OStream &OutValue {
+    PyObject *o, *o2, *o3;
+    std::ostringstream *output = static_cast<std::ostringstream *> ($1);
+    o = PyString_FromString(output->str().c_str());
+    if ((!$result) || ($result == Py_None)) {
+        $result = o;
+    } else {
+        if (!PyTuple_Check($result)) {
+            PyObject *o2 = $result;
+            $result = PyTuple_New(1);
+            PyTuple_SetItem($result,0,o2);
+        }
+        o3 = PyTuple_New(1);
+        PyTuple_SetItem(o3,0,o);
+        o2 = $result;
+        $result = PySequence_Concat(o2,o3);
+        Py_DECREF(o2);
+        Py_DECREF(o3);
+    }
+}
+
+%typemap(in, numinputs=0) Standard_OStream &OutValue (std::ostringstream temp) {
+    $1 = &temp;
+}
+
+/*
+Standard_IStream & function transformation
+takes a string as input
+*/
+%typemap(in) Standard_IStream & {
+    char * in = PyString_AsString($input);
+    std::istringstream ss(in);
+    $1 = &ss;
+}
