@@ -57,6 +57,7 @@ from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopAbs import TopAbs_FACE
 from OCC.Core.GProp import GProp_GProps
 from OCC.Core.BRepGProp import brepgprop_LinearProperties
+from OCC.Core.BRepClass import BRepClass_FaceClassifier
 from OCC.Core.ShapeAnalysis import ShapeAnalysis_Curve
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.ChFiDS import ChFiDS_ChamfSpine
@@ -833,6 +834,11 @@ class TestWrapperFeatures(unittest.TestCase):
         line = Geom_Line.DownCast(curve)
         self.assertEqual(line.DynamicType().Name(), "Geom_Line")
 
+    def test_BRepClass_FaceClassifier(self) -> None:
+        """ ensure BRepClass_FaceClassifier can be instantiated
+        """
+        bfc = BRepClass_FaceClassifier()
+        self.assertIsInstance(bfc, BRepClass_FaceClassifier)
 
 def suite() -> unittest.TestSuite:
     test_suite = unittest.TestSuite()

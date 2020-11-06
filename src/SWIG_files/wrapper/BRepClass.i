@@ -795,14 +795,113 @@ None
 /*********************************
 * class BRepClass_FaceClassifier *
 *********************************/
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class BRepClass_FaceClassifier:
-	pass
+class BRepClass_FaceClassifier : public BRepClass_FClassifier {
+	public:
+		/****************** BRepClass_FaceClassifier ******************/
+		/**** md5 signature: 3aeb4d4449ed7e7167a0e7f4bbb500a3 ****/
+		%feature("compactdefaultargs") BRepClass_FaceClassifier;
+		%feature("autodoc", "Empty constructor, undefined algorithm.
 
-}
-/* end python proxy for excluded classes */
+Returns
+-------
+None
+") BRepClass_FaceClassifier;
+		 BRepClass_FaceClassifier();
+
+		/****************** BRepClass_FaceClassifier ******************/
+		/**** md5 signature: 9f90975def9132fa18342a3e56ae4e4a ****/
+		%feature("compactdefaultargs") BRepClass_FaceClassifier;
+		%feature("autodoc", "Creates an algorithm to classify the point p with tolerance <t> on the face described by <f>.
+
+Parameters
+----------
+F: BRepClass_FaceExplorer
+P: gp_Pnt2d
+Tol: float
+
+Returns
+-------
+None
+") BRepClass_FaceClassifier;
+		 BRepClass_FaceClassifier(BRepClass_FaceExplorer & F, const gp_Pnt2d & P, const Standard_Real Tol);
+
+		/****************** BRepClass_FaceClassifier ******************/
+		/**** md5 signature: 66903fd3767dd144ed0e3a25b29cb078 ****/
+		%feature("compactdefaultargs") BRepClass_FaceClassifier;
+		%feature("autodoc", "Creates an algorithm to classify the point p with tolerance <t> on the face <f>.
+
+Parameters
+----------
+F: TopoDS_Face
+P: gp_Pnt2d
+Tol: float
+
+Returns
+-------
+None
+") BRepClass_FaceClassifier;
+		 BRepClass_FaceClassifier(const TopoDS_Face & F, const gp_Pnt2d & P, const Standard_Real Tol);
+
+		/****************** BRepClass_FaceClassifier ******************/
+		/**** md5 signature: ed0c6349f82f0afdf68beb1a375112db ****/
+		%feature("compactdefaultargs") BRepClass_FaceClassifier;
+		%feature("autodoc", "Creates an algorithm to classify the point p with tolerance <t> on the face <f>.
+
+Parameters
+----------
+F: TopoDS_Face
+P: gp_Pnt
+Tol: float
+
+Returns
+-------
+None
+") BRepClass_FaceClassifier;
+		 BRepClass_FaceClassifier(const TopoDS_Face & F, const gp_Pnt & P, const Standard_Real Tol);
+
+		/****************** Perform ******************/
+		/**** md5 signature: 9e3c267a5919cb2c1592840d20d26604 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Classify the point p with tolerance <t> on the face described by <f>.
+
+Parameters
+----------
+F: TopoDS_Face
+P: gp_Pnt2d
+Tol: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const TopoDS_Face & F, const gp_Pnt2d & P, const Standard_Real Tol);
+
+		/****************** Perform ******************/
+		/**** md5 signature: 76ed91a10bd09a942fede5c41a7caa8b ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Classify the point p with tolerance <t> on the face described by <f>.
+
+Parameters
+----------
+F: TopoDS_Face
+P: gp_Pnt
+Tol: float
+
+Returns
+-------
+None
+") Perform;
+		void Perform(const TopoDS_Face & F, const gp_Pnt & P, const Standard_Real Tol);
+
+};
+
+
+%extend BRepClass_FaceClassifier {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
