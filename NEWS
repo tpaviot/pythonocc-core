@@ -1,5 +1,31 @@
 ==========================
-Version 7.4.0 - February2020
+Version 7.4.1 - November 2020
+
+This release requires opencascade 7.4.0 or 7.4.0p1
+
+* display: fix antialiasing in SimpleGui
+
+* wrapper : refactored exception catcher reduce code duplication
+
+* webgl : added a flask web server for ThreeJs
+
+* wrapper : added stub .pyi files for type hints (e.g. mypy, PyCharm etc.)
+
+* wrapper : small optimizations in Tesselator
+
+* wrapper : added missing classes XCAFDoc_DimTolTool, BRepClass_FaceClassifier, Standard_Type,
+Standard_Failure, Prs3d_Point, Units_Quantity_, Units_Dimension
+
+* wrapper : added support for class aliases defined as typedefs (e.g. BRepOffsetAPI_Sewing)
+
+* wrapper : fix support for occt7.4.0p1
+
+* wrapper : changed GetImageData to take width and height parameters
+
+* misc cleanup, typos, small fixes all over the code base
+
+==========================
+Version 7.4.0 - February 2020
 
 This release requires opencascade 7.4.0
 
