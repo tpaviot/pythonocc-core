@@ -26,7 +26,7 @@ jobs:
   - ${{ if contains(parameters.vmImage, 'Ubuntu') }}:
     - bash: |
         sudo apt-get update && \
-        sudo apt-get -q -y install libglu1-mesa-dev libgl1-mesa-dev
+        sudo apt-get -q -y install libglu1-mesa-dev libgl1-mesa-dev libxmu-dev libxi-dev
       displayName: 'Install OpenGL headers'
 
   # macOS ownership workaround and fix osx sdk
@@ -43,7 +43,7 @@ jobs:
         conda config --set always_yes yes --set changeps1 no && \
         conda update -q conda && \
         conda info -a && \
-        conda config --add channels https://conda.anaconda.org/dlr-sc
+        conda config --add channels https://conda.anaconda.org/conda-forge
     displayName: 'Conda config and info'
 
   # on windows, set arch if ever 32 is in the build name
