@@ -74,6 +74,7 @@ from OCC.Core.TopTools import (TopTools_HArray1OfShape,
                                TopTools_HSequenceOfShape,
                                TopTools_ListOfShape)
 from OCC.Core.TDF import TDF_LabelNode
+from OCC.Core.Quantity import Quantity_NameOfColor, Quantity_Color
 from OCC.Core.Exception import (methodnotwrapped, classnotwrapped,
                                 MethodNotWrappedError, ClassNotWrappedError)
 
@@ -839,6 +840,26 @@ class TestWrapperFeatures(unittest.TestCase):
         """
         bfc = BRepClass_FaceClassifier()
         self.assertIsInstance(bfc, BRepClass_FaceClassifier)
+
+    def test_wrap_enum(self) -> None:
+        """ check that enum integer values match c++ name
+        """
+        red = Quantity_Color(Quantity_NameOfColor.Quantity_NOC_RED)
+        self.assertEqual(red.Red(), 1.)
+        self.assertEqual(red.Green(), 0.)
+        self.assertEqual(red.Blue(), 0.)
+        green = Quantity_Color(Quantity_NameOfColor.Quantity_NOC_GREEN)
+        self.assertEqual(green.Red(), 0.)
+        self.assertEqual(green.Green(), 1.)
+        self.assertEqual(green.Blue(), 0.)
+        blue = Quantity_Color(Quantity_NameOfColor.Quantity_NOC_BLUE)
+        self.assertEqual(blue.Red(), 0.)
+        self.assertEqual(blue.Green(), 0.)
+        self.assertEqual(blue.Blue(), 1.)
+        white = Quantity_Color(Quantity_NameOfColor.Quantity_NOC_WHITE)
+        self.assertEqual(white.Red(), 1.)
+        self.assertEqual(white.Green(), 1.)
+        self.assertEqual(white.Blue(), 1.)
 
 def suite() -> unittest.TestSuite:
     test_suite = unittest.TestSuite()
