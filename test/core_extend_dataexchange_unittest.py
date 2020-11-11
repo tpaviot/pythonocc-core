@@ -79,42 +79,55 @@ class TestExtendDataExchange(unittest.TestCase):
 
 
     def test_export_shape_to_svg(self):
-        export_shape_to_svg(A_TOPODS_SHAPE, get_test_fullname('sample.svg'))
+        svg_filename = get_test_fullname('sample.svg')
+        export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
+        self.assertTrue(os.path.isfile(svg_filename))
 
 
-    # def test_write_step_ap203(self):
-    #     write_step_file(A_TOPODS_SHAPE,
-    #                     get_test_fullname("sample_ap_203.stp"),
-    #                     application_protocol="AP203")
+    def test_write_step_ap203(self):
+        ap203_filename = get_test_fullname("sample_ap_203.stp")
+        write_step_file(A_TOPODS_SHAPE,
+                        ap203_filename,
+                        application_protocol="AP203")
+        self.assertTrue(os.path.isfile(ap203_filename))
 
 
     def test_write_step_ap214(self):
+        as214_filename = get_test_fullname("sample_214.stp")
         write_step_file(A_TOPODS_SHAPE,
-                        get_test_fullname("sample_214.stp"),
+                        as214_filename,
                         application_protocol="AP214IS")
+        self.assertTrue(os.path.isfile(as214_filename))
 
 
     def test_write_step_ap242(self):
+        ap242_filename = get_test_fullname("sample_242.stp")
         write_step_file(A_TOPODS_SHAPE,
-                        get_test_fullname("sample_242.stp"),
+                        ap242_filename,
                         application_protocol="AP242DIS")
+        self.assertTrue(os.path.isfile(ap242_filename))
 
 
     def test_write_iges(self):
-        write_iges_file(A_TOPODS_SHAPE,
-                        get_test_fullname("sample.igs"))
+        iges_filename = get_test_fullname("sample.igs")
+        write_iges_file(A_TOPODS_SHAPE, iges_filename)
+        self.assertTrue(os.path.isfile(iges_filename))
 
 
     def test_stl_ascii(self):
+        stl_ascii_filename  = get_test_fullname("sample_ascii.stl")
         write_stl_file(A_TOPODS_SHAPE,
-                       get_test_fullname("sample_ascii.stl"),
+                       stl_ascii_filename,
                        mode="ascii")
+        self.assertTrue(os.path.isfile(stl_ascii_filename))
 
 
     def test_stl_binary(self):
+        stl_binary_filename = get_test_fullname("sample_binary.stl")
         write_stl_file(A_TOPODS_SHAPE,
-                       get_test_fullname("sample_binary.stl"),
+                       stl_binary_filename,
                        mode="binary")
+        self.assertTrue(os.path.isfile(stl_binary_filename))
 
 
 def suite():
