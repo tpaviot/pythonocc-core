@@ -638,7 +638,7 @@ class OffscreenRenderer(Viewer3d):
     each time it is called.
     """
     def __init__(self, screen_size=(640, 480)):
-        Viewer3d.__init__(self, None)
+        Viewer3d.__init__(self)
         # create the renderer
         self.Create()
         self.SetSize(screen_size[0], screen_size[1])
